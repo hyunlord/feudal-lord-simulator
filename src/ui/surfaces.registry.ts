@@ -13,11 +13,19 @@
 // rect, measured on the PNG); `flat` — no art frame (a plain fill with a CSS rule).
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
+import { DECISION_SURFACES } from "./lord/decisions/surfaces";
+import { ESTATES_SURFACES } from "./lord/estates/surfaces";
+import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
+import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
+import { REGION_SURFACES } from "./lord/region/surfaces";
+import { SCREEN_SURFACES } from "./lord/screen/surfaces";
+
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
  * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice;
- * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments";
+ * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments;
+ * LM-R2 `lord2`: scripts/lmr2States.ts, ~/fls-lmr2-states — the lord's marriage, estates, promises and suits played to their states). */
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -479,6 +487,10 @@ export const SURFACES: readonly SurfaceRow[] = [
   // Lord mode's command pins in the build drawer's place, on the receipt's lord-mode state (scripts/lmr1LordStates.ts).
   { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: LORD_TOWN, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
     requires: [".command-pin"], data: "the lord's public work (the keep, locked until the fortified town) and encouragement-zone pins" },
+  // LM-R2: the lord screen host and its four areas' screens (each area's rows in its own file, src/ui/lord/<area>/surfaces.ts).
+  ...SCREEN_SURFACES, ...NEGOTIATION_SURFACES, ...LEDGER_SURFACES, ...ESTATES_SURFACES, ...REGION_SURFACES,
+  // LM-R2: the lord's decision cards (src/ui/lord/decisions/surfaces.ts).
+  ...DECISION_SURFACES,
 ];
 
 /**

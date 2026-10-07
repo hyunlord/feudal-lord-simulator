@@ -13,7 +13,7 @@
 // the input hash scripts/checks/uiGeometry.mjs compares, the failure count).
 // Needs the dev server (?pseudo-long=1 is a dev-server transform): on the DGX, npm run remote:ui-geometry.
 //   PLAYWRIGHT_MODULE=... node_modules/.bin/tsx scripts/uiGeometryAudit.mjs <out> --url <dev server> --states5 <dir> --states6 <dir>
-//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-petitions <dir>] [--states-lord <dir>] [--states-moments <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
+//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-petitions <dir>] [--states-lord <dir>] [--states-moments <dir>] [--states-lord2 <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
 //     [--numbers normal,extreme] [--jobs 4] [--shots 40] [--summary <path>|none]
 // Exit 1 when any condition fails or cannot be opened.
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
@@ -25,7 +25,7 @@ import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded, surfaceFontsLoaded } from './uiGeometryMeasure.ts';
 import { HIDE_CSS, paintFacts, STILL_CSS } from './uiGeometryPaint.ts';
 import { decodePng } from './keyartDerivatives.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
@@ -36,9 +36,9 @@ const list = (name, all) => (flag(name) ?? all.join(',')).split(',').filter(Bool
 if (out === undefined || out.startsWith('--')) { console.error('usage: uiGeometryAudit.mjs <out> --url <url> --states5 <dir> …'); process.exit(2); }
 const url = flag('url') ?? 'http://127.0.0.1:5173/';
 // The flag each state set's folder comes by (`lands`: scripts/landStates.ts's states, LAND-UI; `petitions` and `lord`: LM-R1;
-// `moments`: scripts/wave40MomentStates.ts's, EVENT-ART).
+// `moments`: scripts/wave40MomentStates.ts's, EVENT-ART; `lord2`: scripts/lmr2States.ts's, LM-R2).
 const STATE_FLAGS = { ui5: 'states5', ui6: 'states6', ui8: 'states8', ui9: 'states9', ui10: 'states10', 'ui10-extra': 'extra', lands: 'states-lands',
-  petitions: 'states-petitions', lord: 'states-lord', moments: 'states-moments' };
+  petitions: 'states-petitions', lord: 'states-lord', moments: 'states-moments', lord2: 'states-lord2' };
 const STATE_DIRS = Object.fromEntries(Object.entries(STATE_FLAGS).map(([set, name]) => [set, flag(name)]));
 const viewports = list('viewports', Object.keys(VIEWPORTS));
 const copies = list('copy', ['normal', 'long']);
@@ -134,7 +134,8 @@ async function runStep(page, state, step) {
       for (let chip = 0; chip < 8 && !await wanted(); chip += 1) {
         if (await page.locator(shown('.story-modal')).count() > 0) { await page.locator(shown('.story-modal-later')).first().click({ timeout: 5_000 }).catch(() => undefined); await pause(500); }
         if (await page.locator(shown('.event-chip')).count() === 0) break;
-        await page.locator(shown('.event-chip')).first().click({ timeout: 5_000 }); await pause(600);
+        // The chips in turn (LM-R2): the first again would reopen the same other decision forever.
+        await page.locator(shown('.event-chip')).nth(chip % Math.max(1, await page.locator(shown('.event-chip')).count())).click({ timeout: 5_000 }); await pause(600);
         if (await page.locator(shown('.event-card-decide')).count() > 0) { await page.locator(shown('.event-card-decide')).first().click({ timeout: 5_000 }); await pause(900); continue; }
         await page.locator(shown('.event-card-actions > button:last-child')).first().click({ timeout: 5_000 }).catch(() => undefined); await pause(500);
       }
@@ -178,6 +179,7 @@ const conditionsOf = row => {
   return rows;
 };
 const results = {};
+const ruleDiff = [];   // FLS_GEOMETRY_RULE_DIFF=1: the text-clip failures the rule before LR2-D5 and this one disagree on
 for (const row of SURFACES) if (selected(row)) results[row.id] = { frame: row.frame, root: row.root, data: row.data, ...(row.unreachable ? { unreachable: row.unreachable } : {}), conditions: {} };
 const shots = { count: 0, bytes: 0, rows: new Set() };
 const specOf = row => ({ root: row.root, frame: row.frame, gap: FRAME_GAP_PX, frameLayer: row.frameLayer, contentSlot: row.contentSlot, frameSlots: row.frameSlots,
@@ -230,9 +232,34 @@ async function measure(row, condition, page) {
   // Its art has loaded (a busy DGX served a drawer's frame and its tabs' button art after the captures); a page whose
   // timers are stopped has no setTimeout, so the wait is bounded here too.
   if (await Promise.race([page.evaluate(surfaceArtLoaded, { selector: row.root, ms: 8_000 }), pause(9_000).then(() => 0)]) > 0) await twoFrames(page);
+  // And its web fonts (a late font widens text after the measure; REMOTE review of LR2-D5, 2026-10-07), bounded the same way.
+  if (await Promise.race([page.evaluate(surfaceFontsLoaded).then(() => 1), pause(8_000).then(() => 0)]) > 0) await twoFrames(page);
   let collected = await page.evaluate(collectSurface, spec);
   if (collected.found) { const paint = await paintPass(page, collected); if (paint !== undefined) collected = { ...collected, paint }; }
   const evaluation = evaluateSurface(collected, spec);
+  // FLS_GEOMETRY_RULE_DIFF=1 (REMOTE review of LR2-D5): also judge "text clipped" by the rule before LR2-D5 (every
+  // clipper, scrollers included: no hardRect) and keep what differs, with a capture of the old rule's boxes, in
+  // rule-diff.json — a failure the new rule drops is either a fixed false failure or a miss, and is looked at by eye.
+  if (process.env.FLS_GEOMETRY_RULE_DIFF === '1' && evaluation.found) {
+    const textClip = failure => failure.check === 'overflow' && /text clipped/.test(failure.what);
+    const old = evaluateSurface({ ...collected, items: collected.items.map(({ hardRect, ...item }) => item) }, spec).failures.filter(textClip);
+    const now = evaluation.failures.filter(textClip);
+    const key = failure => `${failure.path}|${failure.text ?? ''}`;
+    const removed = old.filter(failure => !now.some(other => key(other) === key(failure)));
+    const added = now.filter(failure => !old.some(other => key(other) === key(failure)));
+    if (removed.length + added.length > 0) {
+      const entry = { row: row.id, condition: condition.id, removed: removed.map(f => ({ path: f.path, text: f.text, px: f.px, rect: roundBox(f.rect) })), added: added.map(f => ({ path: f.path, text: f.text, px: f.px })) };
+      if (ruleDiff.length < 60) {
+        const id = await page.evaluate(markFailures, { boxes: removed.map(f => f.full ?? f.rect).filter(Boolean).slice(0, 20), inner: evaluation.inner });
+        const file = join('rule-diff', `${row.id}--${condition.id.replace(/\//g, '-')}.jpg`);
+        mkdirSync(join(out, 'rule-diff'), { recursive: true });
+        await page.screenshot({ path: join(out, file), type: 'jpeg', quality: 55 }).catch(() => undefined);
+        await page.evaluate(layer => document.getElementById(layer)?.remove(), id);
+        entry.shot = file;
+      }
+      ruleDiff.push(entry);
+    }
+  }
   for (const { kind, path } of collected.unregistered ?? []) {
     const key = `${kind} ${path}`; if (!unregisteredFramed.has(key)) unregisteredFramed.set(key, new Set()); unregisteredFramed.get(key).add(row.id);
   }
@@ -369,6 +396,7 @@ const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: in
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, retried, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
+if (process.env.FLS_GEOMETRY_RULE_DIFF === '1') writeFileSync(join(out, 'rule-diff.json'), `${JSON.stringify(ruleDiff, null, 1)}\n`);
 
 const md = [`# UI-AUDIT-1 geometry audit — ${run}`, '',
   `Commit ${report.commit.slice(0, 8)}${dirty ? ' (dirty tree)' : ''}, ${totals.rows} registry rows, ${totals.conditions} row × condition cells (${viewports.length} viewports × ${copies.length} copy × ${numberModes.length} numbers where they apply), ${Math.round(report.durationS / 60)} min.`,

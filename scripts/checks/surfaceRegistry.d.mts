@@ -2,6 +2,7 @@
 export type SurfaceCandidate = { readonly kind: "dialog" | "class" | "frame" | "css"; readonly path: string; readonly line: number; readonly names: readonly string[]; readonly selector?: string };
 export type SurfaceReader = { readonly list: () => readonly string[]; readonly read: (path: string) => string };
 export declare const REGISTRY_PATH: string;
+export declare function isRegistryPart(path: string): boolean;
 export declare function stripComments(text: string, options?: { readonly css?: boolean }): string;
 export declare function registeredClasses(registryText: string): Set<string>;
 export declare function tsxCandidates(path: string, source: string): SurfaceCandidate[];
