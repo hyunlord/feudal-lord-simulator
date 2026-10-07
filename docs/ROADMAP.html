@@ -259,6 +259,7 @@ const STAGES = [
 // A task without stage: a done one stays in the folded record of the old phases below; an open one falls into a stage by its old phase.
 const STAGE_OF_PHASE = {LM:1, C:3, E:3, F0:3, F1:3, P:4};
 const TASKS = [
+  {id:"RB-WORLD-FIRE", phase:"C", stage:3, track:"렌더", title:"집 화재와 급수 사실을 불길·물동이 무리로 표시", status:"done", gate:"같은 저장 전후 · 변경 시험 · 병합 검사 · 기하", deps:["ASSET-ARCH-1"], note:"74fe1398 + ee3f0249 여름·겨울 무리2장·불길1장 설치. 같은 저장10쌍·기하80조건 실패0. cf0ffec7 큐 분리로250줄 가드 유지"},
   {id:"RB-ERA-SIGNS", phase:"C", stage:3, track:"렌더", title:"직업 간판 8장을 집 벽과 시대에 연결", status:"done", gate:"같은 저장 전후 · 변경 시험 · 병합 검사", deps:["ASSET-ARCH-1"], note:"f749fecc 간판8장, 네 L2 본체·네 직업. 변경시험1478·기하80·실제18쌍, 작은 문양 판독 한계 유지"},
   {id:"RB-SEASON-BOUNDARY", phase:"C", stage:2, track:"렌더", title:"계절 경계 안에서 나무 낙엽과 지붕 눈 진행 마치기", status:"done", gate:"네 시점 실제 전후 · 영향 시험 · 병합 검사", deps:["NAT-3"], note:"494fb0d1 봄8장과 통합. 실제20쌍·영향1204 중 옛 시점 가정1건 보정 후 해당13 통과. 새 그림0장"},
   {id:"RB-SPRING", phase:"C", track:"렌더", title:"봄 그림 8장: 강가·양·벚나무·생울타리 꽃·빨랫줄·둥지", status:"done", gate:"실제 계절·줌 전후 · 영향 시험 · 기하 감사 · 병합 전 검사(RR16)", deps:["NAT-3"], note:"5c61e56c 봄8장 설치. 실제133쌍·기하2262 실패0·DGX 영향1489 및 병합검사 통과. 전체 클론은 본선 묶음 회귀"},
