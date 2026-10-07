@@ -6,7 +6,7 @@ import type { TileMarkReason } from "./placementTileMarks";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // INSTALL-18: the Wave 18 pictures the map canvas draws (the placement reasons, the placement patterns, the service
-// edge), from the art catalog's `hud-wave18` bundle (ui-image, renderer B's contract). Each draw returns false until its
+// edge), from the art catalog's `ui-wave18-hud` bundle (ui-image, renderer B's contract). Each draw returns false until its
 // picture has loaded at its declared size — and when it is missing or fails — so the caller keeps its own drawing (the
 // P0 icon, the code hatch, the gold line). Patterns are laid one per tile at the tile's own 64 × 32 diamond (the lattice
 // the records give: top vertex (32,0), left (0,16)); nothing is stretched or mirrored.

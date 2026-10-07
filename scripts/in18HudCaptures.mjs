@@ -2,7 +2,8 @@
 //   PLAYWRIGHT_MODULE=... node scripts/in18HudCaptures.mjs <out-dir> --url <url> --states <dir>
 //  hud: the status pill, the layer switch and the action dock — sandbox and lord mode (명령) — with the pictures and with
 //    every Wave 18 request refused (the current look must stay), each HUD box measured both ways (same box = no growth);
-//  placement: each blocked reason's scene (colour and grey), the overlap scene at zoom 0.6 / 1.0 / 1.4, the service
+//  placement: each blocked reason's scene (colour and grey), a fine ghost and one with fine and blocked tiles side by side,
+//    all grey states in one sheet (placement-grey-sheet.jpg), the overlap scene at zoom 0.6 / 1.0 / 1.4, the service
 //    edge of a well's range at 0.6 / 1.0 / 1.4; zone: the toolbar with the brush at sizes 1 / 2 / 3, the eraser, grey;
 //  crisis: three states with the six crisis kinds between them (colour, grey, refused); tablet: the confirm bar (1180 × 820, touch);
 //  pause: the menu's "H: HUD 숨기기" line; pulse: the ring's three frames (animation held at 0 / 240 / 480 ms) and the
@@ -125,6 +126,24 @@ for (const scene of scenes) {
   }
 }
 result.placement = [...done.values()];
+
+// The grey-scale judgement in one view: every placement state's grey capture at zoom 1 side by side, cropped around its
+// ghost (the tile sits at 200,150 of each 660 × 300 shot), with the state named under it — real captures, laid out only.
+{
+  const order = [["ok", "가능 (점)"], ["mixed", "가능 + 겹침 한 화면"], ["building", "건물·길 겹침 (사선)"], ["water", "물 (사선)"],
+    ["wall", "성벽 1칸 (교차)"], ["needs_road", "길 없음 (교차)"], ["zone", "구역 밖 (교차)"]];
+  const cells = order.filter(([reason]) => result.shots.includes(`placement-${reason}-z1-grey.jpg`)).map(([reason, label]) =>
+    `<figure><div style="width:300px;height:190px;background:url(data:image/jpeg;base64,${readFileSync(join(out, `placement-${reason}-z1-grey.jpg`)).toString("base64")}) -50px -55px"></div><figcaption>${label}</figcaption></figure>`);
+  const context = await browser.newContext({ viewport: { width: 1280, height: 520 } });
+  const page = await context.newPage();
+  await page.setContent(`<html><body style="margin:0;padding:8px;background:#fff;font:14px sans-serif;display:flex;flex-wrap:wrap;gap:8px">${cells.join("")}</body></html>`);
+  await page.addStyleTag({ content: "figure{margin:0}figcaption{padding:2px 0}" });
+  const height = await page.evaluate(() => document.body.scrollHeight);
+  await page.setViewportSize({ width: 1280, height });
+  await shot(page, "placement-grey-sheet.jpg", null, { quality: 72 });
+  result.greySheet = order.map(([reason]) => reason).filter(reason => result.shots.includes(`placement-${reason}-z1-grey.jpg`));
+  await context.close();
+}
 
 // The service edge: a well's range in the new game, at three zooms.
 result.edge = [];

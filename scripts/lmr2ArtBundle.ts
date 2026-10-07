@@ -17,8 +17,8 @@ type Bundle = { readonly bundleId: string; readonly entries: readonly { readonly
 
 /** The catalog text with `bundle` in place of its namesake (or appended). Throws on any validation failure. */
 export function upsertCatalogBundle(root: string, catalogText: string, bundle: Bundle): string {
-  // INSTALL-18: the HUD's pictures (Wave 18) go in the same screen kinds, in a bundle named hud-<batch>.
-  if (!/^(lord|hud)-/.test(bundle.bundleId)) throw new Error(`Screen-part bundles are named lord-<area> or hud-<batch>: ${bundle.bundleId}`);
+  // INSTALL-18: renderer A's other screens' parts are ui-<area> (the chronicle, the HUD); renderer B's bundles stay untouched.
+  if (!/^(lord|ui)-/.test(bundle.bundleId)) throw new Error(`Screen bundles are named lord-<area> or ui-<area>…: ${bundle.bundleId}`);
   const offKind = bundle.entries.filter(entry => !UI_KINDS.has(entry.kind));
   if (offKind.length > 0) throw new Error(`Not a screen kind: ${offKind.map(entry => `${entry.id} (${entry.kind})`).join(", ")}`);
   const catalog = JSON.parse(catalogText) as Bundle[];

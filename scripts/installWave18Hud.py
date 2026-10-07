@@ -1,6 +1,6 @@
 """INSTALL-18 (renderer A): install the Wave 18 HUD pictures (assets-inbox/wave18/candidates-v1, confirmed 2026-09-27 in
 assets-inbox/INBOX_LEDGER.csv; docs/ops/install-plan-20261003/SPECS/wave18-hud.md) into public/assets/wave18/<group>/ and
-the `hud-wave18` bundle of renderer B's art catalog (src/render/art/catalog.json, through scripts/lmr2ArtBundle.ts), in
+the `ui-wave18-hud` bundle of renderer B's art catalog (src/render/art/catalog.json, through scripts/lmr2ArtBundle.ts), in
 the screen kinds LM-R2 added (`ui-image`; nothing added to the contract):
 - main: dock_build / dock_ledger (32 css px, the action dock), pill_population / pill_food_days / pill_money (24, the
   status pill);
@@ -192,7 +192,7 @@ def main() -> None:
                      "seed": "not exposed", "candidates": "1", "manualEdits": f"at delivery: {processing}",
                      "artBible": "ART_BIBLE_v2", "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra", "usedIn": USED[group], "status": "runtime",
                      "notes": f"Astra wave18 {group}/{name} (confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-27) installed by "
-                              f"{INSTALLED_BY} on 2026-10-07 through the art contract (catalog bundle hud-wave18, ui-image hud.{group}.{name}, css widths "
+                              f"{INSTALLED_BY} on 2026-10-07 through the art contract (catalog bundle ui-wave18-hud, ui-image hud.{group}.{name}, css widths "
                               f"{'/'.join(str(width) for width in css_widths)}); no C2PA chunk, received bytes = runtime bytes; {width} x {height}. "
                               "The batch records give the verdict date, not a generation time."})
         entries.append({"id": f"hud.{group}.{name}", "kind": "ui-image", "image": {"url": url, "width": width, "height": height},
@@ -202,7 +202,7 @@ def main() -> None:
     notes = {f"wave18/candidates-v1/assets/{name}.png": note for name, note in NOT_INSTALLED.items()}
     for key in notes:
         assert inbox[key]["status"] == "confirmed" and inbox[key]["installed_by"] == "", key
-    bundle = {"schemaVersion": 1, "bundleId": "hud-wave18", "entries": entries, "rules": []}
+    bundle = {"schemaVersion": 1, "bundleId": "ui-wave18-hud", "entries": entries, "rules": []}
     BUNDLE.write_text(json.dumps(bundle, ensure_ascii=False, indent=2) + "\n")
     before = CATALOG.read_bytes().decode("utf-8")
     # The tool validates the whole catalog with this bundle (schema, registry, files) and writes it re-serialised; the

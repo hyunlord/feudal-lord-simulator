@@ -17,7 +17,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
 import { lordMode } from "../src/engine/townAgency";
 import { placementPreview } from "../src/render/interactions";
-import type { TileMarkReason } from "../src/render/placementTileMarks";
+import type { TileMark, TileMarkReason } from "../src/render/placementTileMarks";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { newGameState } from "../src/state/newGame";
 import { alertStackRows, type AlertCrisis } from "../src/ui/alertStackModel";
@@ -83,7 +83,7 @@ const SEARCH: readonly { readonly fixture: string; readonly kinds: readonly Buil
   { fixture: "palisade-construction", kinds: ["house", "storehouse", "market"] },
   { fixture: "chapter-two-town", kinds: ["house", "storehouse", "market", "well"] },
 ];
-const scenes: { reason: TileMarkReason; fixture: string; kind: BuildingKind; name: string; category: string; tile: { tx: number; ty: number } }[] = [];
+const scenes: { reason: TileMarkReason | "mixed" | "ok"; fixture: string; kind: BuildingKind; name: string; category: string; tile: { tx: number; ty: number } }[] = [];
 for (const reason of WANT) {
   let found = null as (typeof scenes)[number] | null;
   for (const { fixture, kinds } of SEARCH) {
@@ -101,6 +101,27 @@ for (const reason of WANT) {
   }
   if (found === null) { about[`scene-${reason}`] = "not found in the searched fixtures"; continue; }
   scenes.push(found);
+}
+// Grey-scale judgement (fine vs blocked by shape alone): in one view, a storehouse ghost with fine and blocked footprint
+// tiles side by side ("mixed"), and a ghost that is fine everywhere ("ok"), in population-176 near the starting house.
+{
+  const fixture = "population-176";
+  const state = load(fixture);
+  const home = state.buildings.find(building => building.kind === "house") ?? state.buildings[0]!;
+  for (const [label, test] of [
+    ["mixed", (marks: readonly TileMark[]) => marks.some(mark => !mark.ring && mark.ok) && marks.some(mark => !mark.ring && !mark.ok && mark.reason === "building")],
+    ["ok", (marks: readonly TileMark[]) => marks.filter(mark => !mark.ring).length > 0 && marks.every(mark => mark.ring || mark.ok)],
+  ] as const) {
+    let best: { d: number; tile: { tx: number; ty: number } } | null = null;
+    for (let dy = -10; dy <= 10; dy += 1) for (let dx = -10; dx <= 10; dx += 1) {
+      const tile = { tx: home.tx + dx, ty: home.ty + dy };
+      if (!test(placementPreview(state, "storehouse", tile, null).marks ?? [])) continue;
+      const d = Math.abs(dx) + Math.abs(dy);
+      if (best === null || d < best.d) best = { d, tile };
+    }
+    if (best === null) { about[`scene-${label}`] = "not found"; continue; }
+    scenes.push({ reason: label, fixture, kind: "storehouse", name: BUILDING_CONFIG_BY_KIND.storehouse.name, category: buildCategory("storehouse"), tile: best.tile });
+  }
 }
 for (const fixture of new Set(scenes.map(scene => scene.fixture))) copyFileSync(join(FIXTURES, `${fixture}.save.json`), join(out, `${fixture}.save.json`));
 writeFileSync(join(out, "scenes.json"), JSON.stringify({ scenes, about }, null, 1) + "\n");

@@ -3,7 +3,7 @@ import { useEffect, type ReactNode } from "react";
 import type { AlertCrisis } from "../alertStackModel";
 import { useUiParts } from "../lord/uiPartArt";
 
-// INSTALL-18: the HUD's Wave 18 pictures (catalog bundle `hud-wave18`, renderer B's `ui-image` kind, through LM-R2's
+// INSTALL-18: the HUD's Wave 18 pictures (catalog bundle `ui-wave18-hud`, renderer B's `ui-image` kind, through LM-R2's
 // screen-part loader). A picture shows only once it has loaded at one of its declared CSS widths, in the same box the
 // current icon had; until then — and when it is missing or fails — the current icon (the fallback) stays. HUD pictures
 // load with the HUD (they cannot wait for a screen).

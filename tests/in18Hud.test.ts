@@ -13,7 +13,7 @@ import { UiIcon } from "../src/ui/UiIcon";
 import { placementChipModel } from "../src/ui/placementChip";
 import { loadSaveFile } from "../scripts/loadSaveFile";
 
-// INSTALL-18: the Wave 18 HUD pictures — each id the HUD asks for is a ui-image entry of the hud-wave18 bundle at the
+// INSTALL-18: the Wave 18 HUD pictures — each id the HUD asks for is a ui-image entry of the ui-wave18-hud bundle at the
 // width it is drawn at; the rows carry their crisis kind; with no picture the current look stays.
 
 const entry = (id: string) => {
