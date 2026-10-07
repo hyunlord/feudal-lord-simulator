@@ -10,7 +10,7 @@
  * scripts/provenanceLedger.ts `retiredRows`), and this task's installed_by on its ledger row is cleared. Turned on again,
  * its row is written afresh after its capture.
  */
-import { parseCsv, type CsvRow } from "./provenanceLedgerCsv";
+import { CSV_COLUMNS, parseCsv, stringifyCsv, type CsvRow } from "./provenanceLedgerCsv";
 
 export const EVENT_ART_AUTO_COMMAND = "npm run eventart:auto";
 export const EVENT_ART_CAPTURES = "docs/verification/eventart/auto/captures.json";
@@ -133,4 +133,27 @@ export function ledgerInstalledBy(ledger: string): ReadonlyMap<string, string> {
   const file = header!.indexOf("file");
   const installed = header!.indexOf("installed_by");
   return new Map(rows.map(row => [row[file] ?? "", row[installed] ?? ""]));
+}
+
+/** The file's records as written, each with its own line end (quoted newlines kept inside), the header first. */
+export function rawRecords(raw: string): string[] {
+  const records: string[] = [];
+  let start = 0; let quoted = false;
+  for (let i = 0; i < raw.length; i++) {
+    if (raw[i] === '"') quoted = !quoted;
+    else if (raw[i] === "\n" && !quoted) { records.push(raw.slice(start, i + 1)); start = i + 1; }
+  }
+  if (start < raw.length) records.push(raw.slice(start));
+  return records;
+}
+
+/** The ledger with `rows`: a row other lanes wrote and this run did not change keeps its bytes (its own line end — some
+ * end in CRLF in this LF file); only the event-art rows this run writes are serialised. */
+export function provenanceText(raw: string, existing: readonly CsvRow[], rows: readonly CsvRow[]): string {
+  const [header, ...records] = rawRecords(raw);
+  const key = (row: CsvRow) => JSON.stringify(CSV_COLUMNS.map(column => row[column] ?? ""));
+  const kept = new Map<string, string[]>();
+  existing.forEach((row, index) => { const list = kept.get(key(row)) ?? []; list.push(records[index]!); kept.set(key(row), list); });
+  const line = (row: CsvRow) => stringifyCsv([row]).split("\n").slice(1).join("\n");
+  return header! + rows.map(row => kept.get(key(row))?.shift() ?? line(row)).join("");
 }

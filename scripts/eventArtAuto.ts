@@ -26,8 +26,8 @@ import path from "node:path";
 import { macHostName } from "./remote/localGuard.mjs";
 import { buildKeyartDerivative, EVENT_ART_DERIVATIVES, JPEG_QUALITY, sha256 } from "./keyartDerivatives";
 import { eventArtIntakeCheck, generation, type Picture } from "./eventArtIntake";
-import { parseCsv, stringifyCsv, CSV_COLUMNS, type CsvRow } from "./provenanceLedgerCsv";
-import { EVENT_ART_CAPTURES, EVENT_ART_INSTALLED_BY, eventArtLedger, eventArtProvenanceRows, type EventArtCaptures } from "./eventArtAutoRows";
+import { parseCsv, CSV_COLUMNS, type CsvRow } from "./provenanceLedgerCsv";
+import { EVENT_ART_CAPTURES, EVENT_ART_INSTALLED_BY, eventArtLedger, eventArtProvenanceRows, provenanceText, rawRecords, type EventArtCaptures } from "./eventArtAutoRows";
 import { eventCardEntryIds } from "../src/ui/eventArtSelection";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
@@ -75,7 +75,11 @@ function apply(): number {
   const [header, ...body] = parseCsv(raw);
   if (header!.join(",") !== CSV_COLUMNS.join(",")) throw new Error(`${LEDGER}: unexpected header`);
   const existing = body.map(cells => Object.fromEntries(CSV_COLUMNS.map((name, index) => [name, cells[index] ?? ""])) as CsvRow);
-  if (stringifyCsv(existing) !== raw) throw new Error(`${LEDGER} does not round-trip; refusing to rewrite it`);
+  // Each record as written must parse to its row (a record this run rewrites is serialised; the rest keep their bytes).
+  const records = rawRecords(raw).slice(1);
+  if (records.length !== existing.length || records.some((record, index) => JSON.stringify(parseCsv(`${CSV_COLUMNS.join(",")}\n${record}`)[1]) !== JSON.stringify(body[index]))) {
+    throw new Error(`${LEDGER}: its records do not match its rows; refusing to rewrite it`);
+  }
 
   const fresh = new Map<string, CsvRow>();
   const others = new Set<string>();
@@ -91,7 +95,7 @@ function apply(): number {
     fresh.set(id, provenanceRow(picture, derived));
   }
   const rows = eventArtProvenanceRows(existing, fresh, others);
-  writeFileSync(at(LEDGER), stringifyCsv(rows), "utf8");
+  writeFileSync(at(LEDGER), provenanceText(raw, existing, rows), "utf8");
 
   const drawn = new Set([...fresh.keys(), ...others]);
   const files = new Map(pictures.map(picture => [picture.file.slice("assets-inbox/".length), picture.id]));
