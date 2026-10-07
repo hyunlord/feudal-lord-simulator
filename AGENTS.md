@@ -110,6 +110,7 @@
   - `src/ui/**`·`src/styles/**`·`src/input/**`·`src/App.tsx`·`src/main.tsx`.
   - `src/render/`의 캔버스 입력·런타임 연결(`canvas*Runtime*`·`canvas*Resolution*`·`canvas*Handler*`·`camera*`)과 React 부품(`*.tsx`, 예: `BuildingInspector`)·문구(`*.ko.ts`).
   - 그림을 보여 주는 화면(초상 틀·삽화 카드·지역 지도 화면)은 렌더 A, 그 그림의 계약·파일은 렌더 B다.
+  - 배치 표시 `src/render/placementTileOverlay.ts`·`src/render/placementPredictionOverlay.ts`: 지도 위에 그리는 입력·UI 피드백(가능·막힘 무늬, 막힌 까닭 아이콘, 봉사 범위 가장자리)이라 렌더 A(사용자 판정 2026-10-07, INSTALL-18 — 결정 IN18-D4).
 - **경계에 걸친 파일**: 위 목록으로 갈리지 않으면 먼저 손대는 레인이 판정(Claude 채팅)에 묻고, 결정을 이 목록에 한 줄로 더한다. 다른 레인의 파일이 필요하면 고치지 말고 보고서에 "넘김"으로 적는다(규칙 18의 상태 분기 한 줄 예외는 그대로).
 - **판정 기준**: 그림은 실제 게임 장면 합성으로 판정한다(헌장 5절). 사람 키 정본은 아트 바이블 17.6px다(결정 FND-3).
 
