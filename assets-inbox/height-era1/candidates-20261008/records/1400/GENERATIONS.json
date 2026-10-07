@@ -1,0 +1,502 @@
+[
+  {
+    "id": "a-01",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-736bded5-e3f2-4e80-86ab-4c1d648bb96a.png",
+    "promptFile": "prompt-a-01.txt",
+    "rawFile": "body-a-01-raw.png",
+    "rawSha256": "2376c8d67ebd57e70c4cace5c86c3b13d8ed41446f798e467ab8909f94f2e338",
+    "references": [
+      {
+        "path": "reference-a-top36.png",
+        "sha256": "85d3b1cce8497c57f70d56dcb6c61cd90b395a909afeccfbac88d0b215b95301"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1118,
+        1407
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12432915921288014,
+        0.12437810945273632
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "b-01",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-e694d9bf-c484-47bc-9498-022031241cdf.png",
+    "promptFile": "prompt-b-01.txt",
+    "rawFile": "body-b-01-raw.png",
+    "rawSha256": "c29a168f508c227b23746edc207069cbe5c6f9381793f6959dae2760fa100a3c",
+    "references": [
+      {
+        "path": "reference-b-top36.png",
+        "sha256": "f746f670a1360f0a96d3d2981df5b6273a53de792fde0635d2c2cda26bc7bc14"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1117,
+        1408
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12444046553267682,
+        0.12428977272727272
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "a-02",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-75d15bb7-9225-4ec4-bbd8-90d762960d4a.png",
+    "promptFile": "prompt-a-02.txt",
+    "rawFile": "body-a-02-raw.png",
+    "rawSha256": "a765386bfe34374601384c12840866fa967f496c1eea48a3079486d8d68aacb2",
+    "references": [
+      {
+        "path": "body-a-01-raw.png",
+        "sha256": "2376c8d67ebd57e70c4cace5c86c3b13d8ed41446f798e467ab8909f94f2e338"
+      },
+      {
+        "path": "reference-a-top36.png",
+        "sha256": "85d3b1cce8497c57f70d56dcb6c61cd90b395a909afeccfbac88d0b215b95301"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1118,
+        1407
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12432915921288014,
+        0.12437810945273632
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "b-02",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-d57ab4f8-aa31-4eb6-accf-e45150c7a66e.png",
+    "promptFile": "prompt-b-02.txt",
+    "rawFile": "body-b-02-raw.png",
+    "rawSha256": "23dabbc6442abaa8d775564ef596403d4afbaf04449bd301fcbd6dfdd0acc37a",
+    "references": [
+      {
+        "path": "body-b-01-raw.png",
+        "sha256": "c29a168f508c227b23746edc207069cbe5c6f9381793f6959dae2760fa100a3c"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1118,
+        1407
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12432915921288014,
+        0.12437810945273632
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "a-03",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-a377533b-dda8-49a8-8416-3ef96e427c00.png",
+    "promptFile": "prompt-a-03.txt",
+    "rawFile": "body-a-03-raw.png",
+    "rawSha256": "21cdca2660041720153dbc0115ca93491c50f7807b701c7d498dbc80391a6b5a",
+    "references": [
+      {
+        "path": "/tmp/astra-height-era-candidates-20261008/body-04-registered.png",
+        "sha256": "bb73edb1bb0976d28e984d99b7dd76cb9153ba057e9ee298e177d88eff287493"
+      },
+      {
+        "path": "reference-a-top36.png",
+        "sha256": "85d3b1cce8497c57f70d56dcb6c61cd90b395a909afeccfbac88d0b215b95301"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1118,
+        1407
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12432915921288014,
+        0.12437810945273632
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "b-03",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-d60f44cb-f28e-4873-93e4-08e8665bb7ac.png",
+    "promptFile": "prompt-b-03.txt",
+    "rawFile": "body-b-03-raw.png",
+    "rawSha256": "a8ba82e14d26cfcd4e2ae0a6d35491c6a1e48ae3be8dfc6aebef86a9bc96d80f",
+    "references": [
+      {
+        "path": "/tmp/astra-height-era-candidates-20261008/body-04-registered.png",
+        "sha256": "bb73edb1bb0976d28e984d99b7dd76cb9153ba057e9ee298e177d88eff287493"
+      },
+      {
+        "path": "reference-b-top36.png",
+        "sha256": "f746f670a1360f0a96d3d2981df5b6273a53de792fde0635d2c2cda26bc7bc14"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1118,
+        1407
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12432915921288014,
+        0.12437810945273632
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "body-a-04",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-3f113be6-1958-4e1a-b6a5-02791840954d.png",
+    "promptFile": "prompt-a-04.txt",
+    "rawFile": "body-a-04-raw.png",
+    "rawSha256": "71af1d8243a98caf31eb1df3bd70564f2488aa8389a42a9dade07d87b7161bd9",
+    "references": [
+      {
+        "path": "body-b-03-raw.png",
+        "sha256": "a8ba82e14d26cfcd4e2ae0a6d35491c6a1e48ae3be8dfc6aebef86a9bc96d80f"
+      },
+      {
+        "path": "reference-a-top36.png",
+        "sha256": "85d3b1cce8497c57f70d56dcb6c61cd90b395a909afeccfbac88d0b215b95301"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1118,
+        1407
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12432915921288014,
+        0.12437810945273632
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "snow-a",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-b2cde2fc-789f-45f1-9339-82bef6a48ea7.png",
+    "promptFile": "prompt-snow-a.txt",
+    "rawFile": "snow-a-raw.png",
+    "rawSha256": "f5370e19c242f96d75e1685b14b990ad474c8bb9564b58d971551bf4b42dd5c2",
+    "references": [
+      {
+        "path": "body-a-04-registered.png",
+        "sha256": "e721efc7234032f3ab7baea7e46d62967d4089c9d83d6d08ed58d1637680237e"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1117,
+        1408
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12444046553267682,
+        0.12428977272727272
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "snow-a-02",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-d6696079-b3f7-47fa-9e48-0b7a8f8acb3a.png",
+    "promptFile": "prompt-snow-a-02.txt",
+    "rawFile": "snow-a-02-raw.png",
+    "rawSha256": "fe3165f21967dab667da6119d4e69b040c07c72c0c8d99702d5053519b55a605",
+    "references": [
+      {
+        "path": "snow-a-raw.png",
+        "sha256": "f5370e19c242f96d75e1685b14b990ad474c8bb9564b58d971551bf4b42dd5c2"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1117,
+        1408
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12444046553267682,
+        0.12428977272727272
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "snow-b",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-6431d7e1-148f-4a58-afd5-ef5cda1d5243.png",
+    "promptFile": "prompt-snow-b.txt",
+    "rawFile": "snow-b-raw.png",
+    "rawSha256": "df4502f7d4794b026cdf3c4203c959c6a783e338bfb9575f31e5ad2763b0bfeb",
+    "references": [
+      {
+        "path": "body-b-03-registered.png",
+        "sha256": "99b151740f6fa920417dda498ed321738f5ad4b9c27844088a90461358939d4c"
+      },
+      {
+        "path": "snow-a-02-raw.png",
+        "sha256": "fe3165f21967dab667da6119d4e69b040c07c72c0c8d99702d5053519b55a605"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1117,
+        1408
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12444046553267682,
+        0.12428977272727272
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "boards-a",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-5ac59b16-6721-44d0-93ca-f6838b1b2406.png",
+    "promptFile": "prompt-boards-a.txt",
+    "rawFile": "boards-a-raw.png",
+    "rawSha256": "e11dac0ec49d37dd1bf618df11793ea02e3a5fd464fe854323ecf8d4ff65c3da",
+    "references": [
+      {
+        "path": "body-a-04-registered.png",
+        "sha256": "e721efc7234032f3ab7baea7e46d62967d4089c9d83d6d08ed58d1637680237e"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1117,
+        1408
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12444046553267682,
+        0.12428977272727272
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  },
+  {
+    "id": "boards-b",
+    "tool": "image_gen.imagegen built-in",
+    "model": "not returned",
+    "seed": "not returned",
+    "toolOutputFile": "exec-aa01bcd7-e2f8-4efe-ab5a-4fcb926f6da0.png",
+    "promptFile": "prompt-boards-b.txt",
+    "rawFile": "boards-b-raw.png",
+    "rawSha256": "fbe4b86ff10a89dd108d52cb06870477564fc064f41eeee8db618e31578316bc",
+    "references": [
+      {
+        "path": "body-b-03-registered.png",
+        "sha256": "99b151740f6fa920417dda498ed321738f5ad4b9c27844088a90461358939d4c"
+      }
+    ],
+    "registration": {
+      "raw": [
+        1117,
+        1408
+      ],
+      "target": [
+        139,
+        175
+      ],
+      "scaleXY": [
+        0.12444046553267682,
+        0.12428977272727272
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "method": "one whole canvas area resample; no part transforms"
+    }
+  }
+]

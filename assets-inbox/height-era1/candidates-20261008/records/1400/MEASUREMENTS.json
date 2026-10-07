@@ -1,0 +1,295 @@
+{
+  "method": "manual visible leaf excluding frame; endpoint difference, same-x vertical; native zero-based coords; original ground includes lower foundation contour",
+  "uncertainty": {
+    "doorEndpoint": 1,
+    "doorDimension": 2,
+    "groundPoint": 2
+  },
+  "target": {
+    "height": [
+      44,
+      46
+    ],
+    "width": [
+      19,
+      20
+    ]
+  },
+  "originalPaddedGround": [
+    [
+      21,
+      127
+    ],
+    [
+      85,
+      159
+    ],
+    [
+      122,
+      140
+    ]
+  ],
+  "results": {
+    "a-01": {
+      "height": 33,
+      "width": 14,
+      "verdict": "below target"
+    },
+    "a-02": {
+      "height": 36,
+      "width": 15,
+      "verdict": "below target"
+    },
+    "b-01": {
+      "height": 45,
+      "width": 16,
+      "verdict": "width below target"
+    },
+    "b-02": {
+      "height": 51,
+      "width": 22,
+      "ground": [
+        [
+          11,
+          123
+        ],
+        [
+          83,
+          158
+        ],
+        [
+          132,
+          133
+        ]
+      ],
+      "verdict": "global footprint enlarged, reject"
+    },
+    "a-03": {
+      "height": 38,
+      "width": 19,
+      "ground": [
+        [
+          21,
+          137
+        ],
+        [
+          82,
+          171
+        ],
+        [
+          121,
+          150
+        ]
+      ],
+      "verdict": "height below target and lower placement; reject"
+    },
+    "b-03": {
+      "heightSample": {
+        "x": 60,
+        "y": [
+          102,
+          147
+        ]
+      },
+      "widthSample": {
+        "y": 125,
+        "x": [
+          51,
+          70
+        ]
+      },
+      "height": 45,
+      "width": 19,
+      "ground": [
+        [
+          20,
+          129
+        ],
+        [
+          85,
+          159
+        ],
+        [
+          125,
+          141
+        ]
+      ],
+      "translation": [
+        -1,
+        -1
+      ],
+      "registeredGround": [
+        [
+          19,
+          128
+        ],
+        [
+          84,
+          158
+        ],
+        [
+          124,
+          140
+        ]
+      ],
+      "registeredResidual": [
+        [
+          -2,
+          1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "worldHeight": 22.43797770419582,
+      "worldWidth": 9.473812808438236,
+      "verdict": "candidate near static target; independent visual measurement pending, not runtime approved",
+      "sampleCoordinateSpace": "unregistered native139x175",
+      "registeredHeightSample": {
+        "x": 59,
+        "y": [
+          101,
+          146
+        ]
+      },
+      "registeredWidthSample": {
+        "y": 124,
+        "x": [
+          50,
+          69
+        ]
+      }
+    },
+    "a-04": {
+      "heightSample": {
+        "x": 60,
+        "y": [
+          102,
+          147
+        ]
+      },
+      "widthSample": {
+        "y": 125,
+        "x": [
+          51,
+          70
+        ]
+      },
+      "height": 45,
+      "width": 19,
+      "ground": [
+        [
+          21,
+          130
+        ],
+        [
+          85,
+          161
+        ],
+        [
+          125,
+          141
+        ]
+      ],
+      "translation": [
+        -1,
+        -1
+      ],
+      "registeredGround": [
+        [
+          20,
+          129
+        ],
+        [
+          84,
+          160
+        ],
+        [
+          124,
+          140
+        ]
+      ],
+      "registeredResidual": [
+        [
+          -1,
+          2
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "worldHeight": 22.43797770419582,
+      "worldWidth": 9.473812808438236,
+      "verdict": "static candidate; parent visual inspection accepted; not runtime approved",
+      "sampleCoordinateSpace": "unregistered native139x175",
+      "registeredHeightSample": {
+        "x": 59,
+        "y": [
+          101,
+          146
+        ]
+      },
+      "registeredWidthSample": {
+        "y": 124,
+        "x": [
+          50,
+          69
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "door opening behind opaque leaf not directly measurable",
+    "manual endpoint uncertainty not zero",
+    "B3 reuses successful1350 whole geometry with1400 shutters/material reference; 1400 A/B identity similarity needs parent judgement",
+    "no install or runtime scene validation",
+    "colored fringe visible in black-background inspection; light compositing suggests low-alpha edge contamination, not repaired"
+  ],
+  "selected": {
+    "a": "a-04",
+    "b": "b-03"
+  },
+  "generatedBodies": 7,
+  "failedBodies": 5,
+  "roofRidge": {
+    "a": {
+      "registeredPoints": [
+        [
+          47,
+          24
+        ],
+        [
+          103,
+          52
+        ]
+      ],
+      "angleDegrees": 26.56505117707799
+    },
+    "b": {
+      "registeredPoints": [
+        [
+          47,
+          24
+        ],
+        [
+          103,
+          52
+        ]
+      ],
+      "angleDegrees": 26.56505117707799
+    },
+    "method": "manual centers of broad rolled thatch ridge; indicative axis, not pixel-exact straight line",
+    "endpointUncertaintyNative": 2
+  },
+  "registrationNote": "Selected bodies undergo whole-image area resize139x175 then integer translation(-1,-1); no whole-house size fit or per-part edits. Same canvas/pivot retained. Layers have whole-canvas resize only, no mask clipping."
+}

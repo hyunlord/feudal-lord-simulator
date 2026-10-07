@@ -1,0 +1,38 @@
+{
+  "polygon_native": [
+    [
+      11,
+      58
+    ],
+    [
+      42,
+      14
+    ],
+    [
+      109,
+      52
+    ],
+    [
+      131,
+      77
+    ],
+    [
+      125,
+      80
+    ],
+    [
+      108,
+      64
+    ],
+    [
+      86,
+      96
+    ]
+  ],
+  "manual_roi": true,
+  "boundary_uncertainty_native": 2,
+  "roi_pixels": 4580,
+  "alpha_weighted_percent": 75.68062334103946,
+  "binary_alpha_gt0_percent": 89.65065502183405,
+  "binary_alpha_ge128_percent": 76.09170305676855
+}

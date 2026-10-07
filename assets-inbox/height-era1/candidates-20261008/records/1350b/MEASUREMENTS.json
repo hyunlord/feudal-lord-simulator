@@ -1,0 +1,230 @@
+{
+  "status": "NO_PASS_CANDIDATE",
+  "source": {
+    "path": "/tmp/astra-height-doors2/public/assets/wave20/houses/house_l1_1350_b-v1.png",
+    "sha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+    "canvas": [
+      139,
+      139
+    ],
+    "scale": 0.4986217267599071,
+    "pivot": [
+      71.66148325358851,
+      125.92025518341308
+    ]
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL_DOOR_SIZE_AND_GROUND_FOOTPRINT",
+      "rawPath": "/tmp/astra-height-era-1350b-20261008/raw/body-01.png",
+      "rawSHA256": "9ed42329d354aaa25c2dfc941ab0d9903577beaa51baa9afafff1b37b8bb6994",
+      "nativePath": "/tmp/astra-height-era-1350b-20261008/native/body-01.png",
+      "nativeSHA256": "90e769642d2126ce537e8c960f135f8d9366c50867115f3be9e4fb9360d566e2",
+      "registration": {
+        "raw": [
+          1188,
+          1324
+        ],
+        "native": [
+          139,
+          155
+        ],
+        "oneResize": true,
+        "scaleXY": [
+          0.117003367003367,
+          0.11706948640483383
+        ],
+        "pivot": [
+          71.66148325358851,
+          141.92025518341308
+        ],
+        "worldScale": 0.4986217267599071,
+        "translation": [
+          0,
+          0
+        ],
+        "wholePainting": true
+      },
+      "doorMeasurement": {
+        "method": "Manual native-grid closed leaf at same x; excludes frame/threshold; not a recovered hidden architectural aperture",
+        "sameX": 60,
+        "approxEndpoints": [
+          [
+            60,
+            94
+          ],
+          [
+            60,
+            126
+          ]
+        ],
+        "heightIntervalNative": [
+          29,
+          35
+        ],
+        "projectedWidthIntervalNative": [
+          14,
+          18
+        ],
+        "uncertainty": "Approximately 1–2 px each edge, conservative ±3 px height; earlier chat preliminary estimates superseded",
+        "targetHeightNative": [
+          44,
+          46
+        ],
+        "targetWidthNative": [
+          19,
+          20
+        ]
+      },
+      "ground": {
+        "referenceCorners": [
+          [
+            22,
+            107
+          ],
+          [
+            87,
+            138
+          ],
+          [
+            121,
+            121
+          ]
+        ],
+        "candidateApproxCorners": [
+          [
+            17,
+            107
+          ],
+          [
+            86,
+            142
+          ],
+          [
+            125,
+            121
+          ]
+        ],
+        "uncertaintyNativePx": 2,
+        "verdict": "FAIL: broader/shifted instead of fixed support"
+      },
+      "windowCheck": "Broad facade window plus short right end-wall window both retained",
+      "alpha": {
+        "mode": "RGBA",
+        "extrema": [
+          0,
+          254
+        ]
+      },
+      "actualGameValidation": false
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL_DOOR_SIZE_AND_GROUND_FOOTPRINT",
+      "rawPath": "/tmp/astra-height-era-1350b-20261008/raw/body-02.png",
+      "rawSHA256": "66362cba33615dfcad73c2f514ccc1716ebd4c95b71464667bdee4c9d137b47e",
+      "nativePath": "/tmp/astra-height-era-1350b-20261008/native/body-02.png",
+      "nativeSHA256": "5f9a14c1fbd546c7bfa972790a4804febe8f63622af8c42a63d1e2eccd40b57c",
+      "registration": {
+        "raw": [
+          1118,
+          1407
+        ],
+        "native": [
+          139,
+          175
+        ],
+        "oneResize": true,
+        "scaleXY": [
+          0.12432915921288014,
+          0.12437810945273632
+        ],
+        "pivot": [
+          71.66148325358851,
+          161.92025518341308
+        ],
+        "worldScale": 0.4986217267599071,
+        "translation": [
+          0,
+          0
+        ],
+        "wholePainting": true
+      },
+      "doorMeasurement": {
+        "method": "Manual native-grid closed leaf at same x; excludes frame/threshold; not a recovered hidden architectural aperture",
+        "sameX": 60,
+        "approxEndpoints": [
+          [
+            60,
+            104
+          ],
+          [
+            60,
+            141
+          ]
+        ],
+        "heightIntervalNative": [
+          34,
+          40
+        ],
+        "projectedWidthIntervalNative": [
+          14,
+          18
+        ],
+        "uncertainty": "Approximately 1–2 px each edge, conservative ±3 px height; earlier chat preliminary estimates superseded",
+        "targetHeightNative": [
+          44,
+          46
+        ],
+        "targetWidthNative": [
+          19,
+          20
+        ]
+      },
+      "ground": {
+        "referenceCorners": [
+          [
+            22,
+            127
+          ],
+          [
+            87,
+            158
+          ],
+          [
+            121,
+            141
+          ]
+        ],
+        "candidateApproxCorners": [
+          [
+            15,
+            119
+          ],
+          [
+            85,
+            157
+          ],
+          [
+            127,
+            135
+          ]
+        ],
+        "uncertaintyNativePx": 2,
+        "verdict": "FAIL: broader/shifted instead of fixed support"
+      },
+      "windowCheck": "Broad facade window plus short right end-wall window both retained",
+      "alpha": {
+        "mode": "RGBA",
+        "extrema": [
+          0,
+          253
+        ]
+      },
+      "actualGameValidation": false
+    }
+  ],
+  "layersProduced": 0,
+  "productInstalled": false
+}

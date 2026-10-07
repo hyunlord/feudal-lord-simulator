@@ -1,0 +1,82 @@
+[
+  {
+    "year": 1350,
+    "variant": "a",
+    "height": 175,
+    "roofRidge": {
+      "x": 76,
+      "y": 36
+    },
+    "files": {
+      "body": "/tmp/astra-height-era-candidates-20261008/house_l1_1350_a-height-candidate.png",
+      "snow": "/tmp/astra-height-era-candidates-20261008/house_l1_1350_a-snow-candidate.png",
+      "boarded": "/tmp/astra-height-era-candidates-20261008/house_l1_1350_a-boarded-candidate.png"
+    },
+    "sha": {
+      "body": "bb73edb1bb0976d28e984d99b7dd76cb9153ba057e9ee298e177d88eff287493",
+      "snow": "7352de834b7cbd1b97a97f6609e5daee2166df0ad49143511f52eed263051617",
+      "boarded": "9cc3de91b184aa24e48edacf1ff63bb551ed886150706e2a2f146208b1a17ed0"
+    },
+    "roofRidgeMeasurement": "Registered native grid: ridge runs approximately (42,18) to (110,54); midpoint (76,36), manual +/-2 native. Runtime attachment pending."
+  },
+  {
+    "year": 1350,
+    "variant": "b",
+    "height": 175,
+    "roofRidge": {
+      "x": 75,
+      "y": 35
+    },
+    "files": {
+      "body": "/tmp/astra-height-era-1350b-20261008/native/body-03-registered.png",
+      "boarded": "/tmp/astra-height-era-1350b-20261008/native/boarded-01.png",
+      "snow": "/tmp/astra-height-era-1350b-20261008/native/snow-02.png"
+    },
+    "sha": {
+      "body": "7cc514bab7e5f50d3e89f51ed098a0b7f4a1cfac5a6079c8e629cddc9efbc416",
+      "boarded": "f3ae83d1c5b8300fd225afe7bc48da96b1c88ede533b9b1e0fe3f35dfbbc3790",
+      "snow": "759e8605dabdc816e70d4cd958fd1a4c62b290ef836b3a28da67a8fef3acba30"
+    },
+    "roofRidgeMeasurement": "Registered native visible ridge midpoint approximately (75,35), manual +/-2 native; runtime attachment pending."
+  },
+  {
+    "year": 1400,
+    "variant": "a",
+    "height": 175,
+    "roofRidge": {
+      "x": 75,
+      "y": 35
+    },
+    "files": {
+      "body": "/tmp/astra-height-era-1400-20261008/assets/house_l1_1400_a_body-height-era1.png",
+      "boarded": "/tmp/astra-height-era-1400-20261008/assets/house_l1_1400_a_boards-height-era1.png",
+      "snow": "/tmp/astra-height-era-1400-20261008/assets/house_l1_1400_a_snow-height-era1.png"
+    },
+    "sha": {
+      "body": "e721efc7234032f3ab7baea7e46d62967d4089c9d83d6d08ed58d1637680237e",
+      "boarded": "cc7fd8f353f92fe97ce4cf8bc0f259e35107d0407b2fc9f4bfc99be34ae78e26",
+      "snow": "085b96d4ac39874107d48da7edf98cd82e578eb0dccbf333cb5affd978e79c5e"
+    },
+    "roofRidgeMeasurement": "Native visible ridge midpoint (75,35), manual +/-2 native; actual runtime attachment to be checked."
+  },
+  {
+    "year": 1400,
+    "variant": "b",
+    "height": 175,
+    "roofRidge": {
+      "x": 75,
+      "y": 35
+    },
+    "files": {
+      "body": "/tmp/astra-height-era-1400-20261008/assets/house_l1_1400_b_body-height-era1.png",
+      "boarded": "/tmp/astra-height-era-1400-20261008/assets/house_l1_1400_b_boards-height-era1.png",
+      "snow": "/tmp/astra-height-era-1400-20261008/assets/house_l1_1400_b_snow-height-era1.png"
+    },
+    "sha": {
+      "body": "99b151740f6fa920417dda498ed321738f5ad4b9c27844088a90461358939d4c",
+      "boarded": "139f32a817737d1dde0c7543f542dba9a2efa0fc634d2febfefcfc7a5c2b89d6",
+      "snow": "93fec6b743b9653c2e6aa6ddd8dd04458fec1900813c11b76e933c3e908dda4a"
+    },
+    "roofRidgeMeasurement": "Native visible ridge midpoint (75,35), manual +/-2 native; actual runtime attachment to be checked."
+  }
+]

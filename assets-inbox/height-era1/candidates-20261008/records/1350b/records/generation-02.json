@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen.imagegen builtin",
+  "model": null,
+  "seed": null,
+  "notReturned": [
+    "model name",
+    "seed"
+  ],
+  "originalOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a1110d-2b2c-7090-9489-b645c6ae92ce/exec-bf9aedce-d246-4034-8e4b-1811f4643fc0.png",
+  "copiedRawSHA256": "66362cba33615dfcad73c2f514ccc1716ebd4c95b71464667bdee4c9d137b47e",
+  "editReference": "/tmp/astra-height-era-1350b-20261008/reference-padded36.png",
+  "exactPrompt": "Edit target is the original padded 139x175 sprite, NOT a new building. Draw one complete finished transparent summer house: 1350 English cottage, golden straw thatch, warm plaster and brown oak timber, small dark shuttered windows, no chimney. Preserve its exact projected foundation corners: left=(22,127), foremost=(87,158), right=(121,141) in normalized 139x175 image pixels. These three points and the doorstep must not move, and do not grow the roof horizontally beyond original bounds. The entrance is on the BROAD LEFT-FACING facade, toward its RIGHT end, near the front corner (not on the narrow right gable). Redraw the whole complete house with MUCH TALLER walls and move the roof UPWARD to make the entrance truly adult-size. The new CLOSED WOODEN DOOR LEAF excluding framing must project from x=53 to x=73, with top edge running approximately (53,95) to (73,105), and bottom edge from (53,140) to (73,150): thus 45px tall at every x, 20px projected width, inside a plain wooden door frame. Keep ground level and foundation unchanged. This is a proportional redesign of the same house, not a resize of the original. Make the door opening this large, even if that requires shortening the blank wall area or raising the thatch ridge almost to the top canvas edge. There is extra transparent room above the roof expressly for vertical growth. Original window remains to the left of this entrance, smaller than doorway. Keep the right gable facade visible and all original material identity. Strict orthographic 2:1 isometric ground axes±26.565°, no perspective, perfectly vertical upright walls, daylight upper left. Hand-painted detailed strategy game sprite consistent with reference, no harsh outlines or plastic texture. Return one whole painted house, not parts; do not broaden its footprint, shift it, shrink the whole building to make it fit, add floors, add a porch, add props, or add ground slab. Preserve genuinely transparent RGBA outside. No diagrams, captions, measurements, guidelines, frame or checkerboard.",
+  "transparentBackground": true,
+  "notes": "First prompt wrongly described the original entrance as right short-facade; corrected in attempt2. Both finished house attempts retained."
+}

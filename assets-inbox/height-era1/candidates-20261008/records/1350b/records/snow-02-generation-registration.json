@@ -1,0 +1,24 @@
+{
+  "tool": "builtin image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "source": "raw/snow-01.png",
+  "raw_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a1110d-2b2c-7090-9489-b645c6ae92ce/exec-04006650-2b49-48fd-a320-111458468d7d.png",
+  "exact_prompt": "records/snow-02-prompt.txt",
+  "raw_dimensions": [
+    1118,
+    1407
+  ],
+  "native_dimensions": [
+    139,
+    175
+  ],
+  "resize_count": 1,
+  "resize": "existing resizeArea",
+  "translation": [
+    0,
+    0
+  ],
+  "visual_observation": "No brown straw texture observed in snow-only raw. Golden thatch seen in composite comes through transparency from unchanged body.",
+  "not_tested": "Actual game and final root visual verdict."
+}

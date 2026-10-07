@@ -1,0 +1,104 @@
+[
+  {
+    "variant": "a",
+    "roofMaskPolygon": [
+      [
+        11,
+        57
+      ],
+      [
+        39,
+        13
+      ],
+      [
+        107,
+        49
+      ],
+      [
+        130,
+        76
+      ],
+      [
+        125,
+        79
+      ],
+      [
+        112,
+        62
+      ],
+      [
+        87,
+        96
+      ]
+    ],
+    "roofArea": 4668,
+    "weightedCoverage": 0.6741233597123512,
+    "binaryAlpha128Coverage": 0.6810197086546701,
+    "binaryAlpha1Coverage": 0.8031276778063411,
+    "outsideWeightedPixels": 142.27450980392157,
+    "warmOpaquePixels": 0,
+    "maskUncertaintyNative": 2,
+    "binaryAlphaGreater32Coverage": 0.7345758354755784,
+    "outsideAlphaGreater32Count": 171,
+    "outsideByDilatedSupportPixels": {
+      "1": 79,
+      "2": 17,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "8": 0
+    }
+  },
+  {
+    "variant": "b",
+    "roofMaskPolygon": [
+      [
+        11,
+        57
+      ],
+      [
+        39,
+        13
+      ],
+      [
+        107,
+        49
+      ],
+      [
+        130,
+        76
+      ],
+      [
+        125,
+        79
+      ],
+      [
+        112,
+        62
+      ],
+      [
+        87,
+        96
+      ]
+    ],
+    "roofArea": 4668,
+    "weightedCoverage": 0.7025396105314448,
+    "binaryAlpha128Coverage": 0.7099400171379606,
+    "binaryAlpha1Coverage": 0.8547557840616966,
+    "outsideWeightedPixels": 249.6392156862745,
+    "warmOpaquePixels": 0,
+    "maskUncertaintyNative": 2,
+    "binaryAlphaGreater32Coverage": 0.7632819194515853,
+    "outsideAlphaGreater32Count": 291,
+    "outsideByDilatedSupportPixels": {
+      "1": 193,
+      "2": 115,
+      "3": 56,
+      "4": 17,
+      "5": 2,
+      "6": 0,
+      "8": 0
+    }
+  }
+]

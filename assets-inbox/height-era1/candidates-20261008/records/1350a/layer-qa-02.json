@@ -1,0 +1,81 @@
+{
+  "roofPolygonNative": [
+    [
+      14,
+      56
+    ],
+    [
+      42,
+      16
+    ],
+    [
+      109,
+      56
+    ],
+    [
+      128,
+      75
+    ],
+    [
+      126,
+      80
+    ],
+    [
+      109,
+      66
+    ],
+    [
+      85,
+      96
+    ],
+    [
+      15,
+      62
+    ]
+  ],
+  "roofROIPixels": 4356,
+  "layers": {
+    "snow": {
+      "alphaGT32": 4296,
+      "bounds": [
+        14,
+        16,
+        131,
+        99
+      ],
+      "outsideBody": 58,
+      "roofCoverageBinary": 0.8755739210284664,
+      "roofCoverageAlphaWeighted": 0.8167134806172239,
+      "outsideRoofROI": 482,
+      "outsideBodyDilation2": 6
+    },
+    "boarded": {
+      "alphaGT32": 1683,
+      "bounds": [
+        26,
+        87,
+        106,
+        147
+      ],
+      "outsideBody": 0,
+      "roofCoverageBinary": 0.0,
+      "roofCoverageAlphaWeighted": 0.0,
+      "outsideRoofROI": 1683,
+      "outsideBodyDilation2": 0
+    },
+    "snow02": {
+      "alphaGT32": 3850,
+      "bounds": [
+        14,
+        16,
+        127,
+        100
+      ],
+      "outsideBody": 26,
+      "roofCoverageBinary": 0.7741046831955923,
+      "roofCoverageAlphaWeighted": 0.6927627432975028,
+      "outsideRoofROI": 478
+    }
+  },
+  "manualROIUncertaintyNative": 2
+}
