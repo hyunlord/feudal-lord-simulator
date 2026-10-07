@@ -1,0 +1,160 @@
+{
+  "method": "Independent AI, fork_turns none, random labels, shuffled titles, no source/key access before answer",
+  "total": 15,
+  "correct": 15,
+  "rate": 1,
+  "threshold": 0.8,
+  "pass": true,
+  "results": [
+    {
+      "label": "P01",
+      "id": "ck_evt_203",
+      "title": "빈손으로 기다리는 일꾼은 드물다",
+      "sha256": "c8b4f6fbe86cbecf54d4d5f7528b67cf99745ce479e5c71b61544f577d25b441",
+      "answer": "빈손으로 기다리는 일꾼은 드물다",
+      "correct": true,
+      "confidence": 0.89,
+      "reason": "일꾼들이 갈퀴와 목재 등 작업 물건을 들고 양쪽 일터로 걸어가며, 가운데 인물만 그 모습을 지켜본다. 노동력이 이미 각 작업으로 흩어진 상황처럼 보인다."
+    },
+    {
+      "label": "P02",
+      "id": "ck_evt_214",
+      "title": "프랑스 원정과 마을의 들보",
+      "sha256": "edd9514977ec15e75dd0829c8c6cf06e31ecd0daacb904e1a23f1398c08d93a4",
+      "answer": "프랑스 원정과 마을의 들보",
+      "correct": true,
+      "confidence": 0.94,
+      "reason": "투구와 붉은 망토를 착용한 기마 인물이 마을 주민들과 이야기하고, 전경 수레에 굵은 들보가 실려 있다. 군사와 마을 목재가 함께 보이지만 프랑스라는 지역은 그림만으로 확인할 수 없다."
+    },
+    {
+      "label": "P03",
+      "id": "ck_evt_210",
+      "title": "곡식이 귀해진 뒤의 순서",
+      "sha256": "f51b245864410757660977fbc6a5a3ad74202c3030659b49995bad1d17306726",
+      "answer": "곡식이 귀해진 뒤의 순서",
+      "correct": true,
+      "confidence": 0.91,
+      "reason": "여성이 바닥에 곡식이 조금만 남은 나무 통을 기울여 보고, 남성은 거의 빈 자루를 큰 바구니 위에서 털고 있다. 곡식 부족은 명확하나 배분 순서는 직접 드러나지 않는다."
+    },
+    {
+      "label": "P04",
+      "id": "ck_evt_206",
+      "title": "불길 뒤에 남은 서까래",
+      "sha256": "7c575b3c7a9e498ea985aa4b00c2c8abbeb5558358514df512fdb3fce2013abb",
+      "answer": "불길 뒤에 남은 서까래",
+      "correct": true,
+      "confidence": 0.99,
+      "reason": "무너진 건물의 검게 탄 목재와 잔해 속에서 주민들이 긴 탄 들보를 함께 들어 옮긴다."
+    },
+    {
+      "label": "P05",
+      "id": "ck_evt_208",
+      "title": "수확철에 남지 않는 일손",
+      "sha256": "0e15f7e7518c118b3f84b30fcb98345d90b91834fff013bac34400524e68802c",
+      "answer": "수확철에 남지 않는 일손",
+      "correct": true,
+      "confidence": 0.99,
+      "reason": "누렇게 익은 곡식밭에서 여러 사람이 낫으로 베거나 곡식단을 묶고 있어 수확 작업에 일손이 집중된 장면이다."
+    },
+    {
+      "label": "P06",
+      "id": "ck_evt_202",
+      "title": "한 집의 빈 식탁이 묻는 일",
+      "sha256": "1498ebc6bafe323301bb0ed1e98a60ad35f23c0360386b7cd08e03deced2d76c",
+      "answer": "한 집의 빈 식탁이 묻는 일",
+      "correct": true,
+      "confidence": 0.98,
+      "reason": "집 안 전경에 빈 나무 그릇이 놓인 식탁이 있고, 여성이 문 앞 방문자에게 빈 바구니를 내보인다."
+    },
+    {
+      "label": "P07",
+      "id": "ck_evt_204",
+      "title": "직물 꾸러미가 놓인 장터",
+      "sha256": "3475cc0eb1ce6b798ffc6cfeda9427258f17be27eab38d4ae82e4a6731237c1c",
+      "answer": "직물 꾸러미가 놓인 장터",
+      "correct": true,
+      "confidence": 0.97,
+      "reason": "두 사람이 긴 파란 직물을 펼치고 있으며 주위에 접어 묶은 직물 더미와 양모 자루가 놓여 있다. 직물 거래나 생산 공간이라는 단서가 매우 강하다."
+    },
+    {
+      "label": "P08",
+      "id": "ck_evt_207",
+      "title": "겨울 문턱의 빈 바구니",
+      "sha256": "99c488db0d54ddb4452eb6a8a5b986628d612c50986f07679a23774980cbc433",
+      "answer": "겨울 문턱의 빈 바구니",
+      "correct": true,
+      "confidence": 0.99,
+      "reason": "서리나 눈이 조금 남은 집 문턱에 가족이 모여 적은 빵을 나누고, 여성이 거의 빈 바구니를 기울여 들고 있다."
+    },
+    {
+      "label": "P09",
+      "id": "ck_evt_213",
+      "title": "랭커스터 왕실 아래의 옛 권리",
+      "sha256": "7c4a347c522eacbbacaa01d593664774aac2c39d0594dfbc98645a549df98d11",
+      "answer": "랭커스터 왕실 아래의 옛 권리",
+      "correct": true,
+      "confidence": 0.48,
+      "reason": "붉은 옷의 인물이 주민들과 장터를 바라보며 손으로 가리키는 모습은 장터의 권리나 운영을 논의하는 장면으로 읽힌다. 그러나 왕실 문장이나 문서 등 랭커스터와 옛 권리를 특정할 직접 단서는 보이지 않으며, 다른 제목과의 일대일 대응을 고려한 불확실한 선택이다."
+    },
+    {
+      "label": "P10",
+      "id": "ck_evt_205",
+      "title": "물통 줄 끝의 두 집",
+      "sha256": "894bbf0d19896eb11448295d38551fd685422652ecd7abc4ca21967054c5831a",
+      "answer": "물통 줄 끝의 두 집",
+      "correct": true,
+      "confidence": 0.99,
+      "reason": "우물 앞까지 물통과 사람들이 길게 줄지어 있고, 줄 끝 전경에 남녀 두 사람이 빈 물통 두 개 옆에서 기다린다."
+    },
+    {
+      "label": "P11",
+      "id": "ck_evt_211",
+      "title": "상인 가문 대표와 처음 정할 몫",
+      "sha256": "7139cd60fa43ac8f5bbda1e58eaa36feaa69857ffa7991852b67c88ab0d3bcb0",
+      "answer": "상인 가문 대표와 처음 정할 몫",
+      "correct": true,
+      "confidence": 0.91,
+      "reason": "직물 꾸러미를 실은 수레 옆에서 상인처럼 보이는 남성과 잘 차려입은 남성이 마주 협의한다. 후자는 동전이 든 접시를 들고 있어 상인의 부담이나 몫을 정하는 상황으로 보인다. 가문 및 첫 협상이라는 시간 정보는 직접 확인되지 않는다."
+    },
+    {
+      "label": "P12",
+      "id": "ck_evt_201",
+      "title": "이번 철 좌판의 몫",
+      "sha256": "f161e204981926c296730dd9a6d6651ad1a6ce7251990c3dc3ca7c08fb71d9a3",
+      "answer": "이번 철 좌판의 몫",
+      "correct": true,
+      "confidence": 0.98,
+      "reason": "여성이 장터 좌판의 천막을 고정하고 뒤에서 물건을 준비하는 동안, 전경 인물이 동전 몇 개가 든 나무 접시를 내민다. 좌판 운영과 납부할 몫이 함께 표현되어 있다."
+    },
+    {
+      "label": "P13",
+      "id": "ck_evt_209",
+      "title": "공사장 빈 목재 받침대",
+      "sha256": "0620cac00a231f36213bbcf28d46fc67f0a284364ea9557a290be4006e6e0ba9",
+      "answer": "공사장 빈 목재 받침대",
+      "correct": true,
+      "confidence": 0.99,
+      "reason": "벽과 지붕이 아직 완성되지 않은 건물 골조 앞에 비어 있는 목재 작업 받침대가 있고, 일꾼은 오른쪽의 적은 목재 더미를 천으로 덮거나 확인한다."
+    },
+    {
+      "label": "P14",
+      "id": "ck_evt_215",
+      "title": "겨울 장터를 누가 먼저 도울까",
+      "sha256": "bf27ed685289312a2f07bb892c2bd9b102fd3952d561418bacbdb6be3fbbc1ec",
+      "answer": "겨울 장터를 누가 먼저 도울까",
+      "correct": true,
+      "confidence": 0.95,
+      "reason": "잎이 없는 나무와 차가운 계절의 장터에서 가운데 여성이 왼쪽 곡물 판매자와 오른쪽 직물 판매자 사이에 서 있다. 서로 다른 장터 생업 가운데 우선 지원 대상을 고르는 구도로 읽힌다."
+    },
+    {
+      "label": "P15",
+      "id": "ck_evt_212",
+      "title": "일손을 두고 대표가 다시 온 여름",
+      "sha256": "18f98e3d7fbaf50286c6e09b146120af340fc47e6d833277c0ca8ac417c8a2e4",
+      "answer": "일손을 두고 대표가 다시 온 여름",
+      "correct": true,
+      "confidence": 0.91,
+      "reason": "녹음이 무성한 마을에서 말을 데리고 온 잘 차려입은 방문자가 주민들과 대화한다. 주민들 옆에 농기구와 바구니가 있어 농사 일손에 관한 협의로 읽힌다. 재방문 여부는 그림만으로 확인할 수 없다."
+    }
+  ]
+}
