@@ -13,10 +13,10 @@ import { categorize, loadBudgetConfig } from "../scripts/checks/distBudget.mjs";
 import { eventArtIntakeCheck, MANIFEST } from "../scripts/eventArtIntake";
 import {
   EVENT_ART_AUTO_COMMAND, EVENT_ART_CAPTURES, EVENT_ART_INSTALLED_BY, eventArtLedger, eventArtProblems, eventArtProvenanceRows, eventArtStandings,
-  ledgerInstalledBy, type EventArtCaptures, type EventArtEntry, type EventArtRelationInput,
+  ledgerInstalledBy, provenanceText, rawRecords, type EventArtCaptures, type EventArtEntry, type EventArtRelationInput,
 } from "../scripts/eventArtAutoRows";
 import { buildKeyartDerivative, EVENT_ART_DERIVATIVES, eventArtDerivatives, sha256 } from "../scripts/keyartDerivatives";
-import { parseCsvRows, type CsvRow } from "../scripts/provenanceLedgerCsv";
+import { CSV_COLUMNS, parseCsvRows, stringifyCsv, type CsvRow } from "../scripts/provenanceLedgerCsv";
 import { registryV4Support } from "../src/engine/registryV4";
 import { eventArtFor } from "../src/ui/eventArt";
 import { EVENT_ART_IMAGES } from "../src/ui/eventArtManifest.generated";
@@ -126,4 +126,17 @@ test("the command's rows from the tree as it is change nothing (a second run is 
   const files = new Map(Object.entries(EVENT_ART_IMAGES).map(([id, image]) => [inbox(image.source), id]));
   const drawn = new Set(tree.shipped.filter(id => tree.installedBy(id) !== ""));
   assert.equal(eventArtLedger(ledger, files, drawn).text, ledger);
+});
+
+test("the provenance write keeps other lanes' rows byte for byte (a CRLF row in the LF file) and serialises only the rows it writes", () => {
+  const header = CSV_COLUMNS.join(",");
+  const blank = Object.fromEntries(CSV_COLUMNS.map(column => [column, ""])) as CsvRow;
+  const other = { ...blank, assetId: "wave42/log", runtimePath: "public/x.png", notes: "kept\nas written" };
+  const mine = { ...blank, assetId: "event-art/ck_evt_201", runtimePath: "assets-inbox/a.jpg", status: "runtime" };
+  const raw = `${header}\n${stringifyCsv([other]).split("\n").slice(1).join("\n").replace(/\n$/, "\r\n")}`;
+  assert.deepEqual(rawRecords(raw).length, 2, "the quoted newline stays inside its record");
+  const existing = [other];
+  const text = provenanceText(raw, existing, [other, mine]);
+  assert.ok(text.startsWith(raw), "the CRLF row is untouched");
+  assert.equal(text.slice(raw.length), stringifyCsv([mine]).split("\n").slice(1).join("\n"), "only the new row is serialised");
 });
