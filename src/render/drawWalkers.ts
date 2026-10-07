@@ -1,3 +1,4 @@
+import type { CartPayloadPlacement } from './art/walkerTransportPlacement';
 import { TRADE_WORLD_ART, tradeWorldHeldCargoForWalker } from "./tradeWorldArt";
 import { BLOCKS_MAX_ZOOM } from "./buildingVisualState";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
@@ -86,7 +87,11 @@ export function drawWalker(
   // NAT-4 QA-026: the body's step rise on the passing beat, in whole device pixels.
   const lift = walkerStepLift(presentation.gaitFrame, 32 * scale, transform === undefined ? 1 : Math.hypot(transform.a, transform.b));
   const composed = state !== null && zoom > BLOCKS_MAX_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom, lift);
-  if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
+  let runtimeCartDrawn = false;
+  if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter", payload => {
+    runtimeCartDrawn = true;
+    if (walker.cargo !== null && zoom >= CART_LOAD_MIN_ZOOM) drawCartPayload(context, payload, walker.cargo.resource, presentation.direction);
+  })) {
     drawWalkerHalo(context, footX, footY, scale, transform);
     drawProceduralWalkerSprite(context, {
       footX,
@@ -101,7 +106,7 @@ export function drawWalker(
   const loafInHand = composed && state !== null && walkerAppearance(state, walker).prop === "loaf";
   // F0-V: no colour square over the head. Goods the cart does not show (grain, bread, coin) get their resource icon
   // at the close zoom only (1.35); below it the walker, its cart and its payload say enough.
-  const onCart = composed && walker.kind === "carter" && walker.cargo !== null && cartLoadArt(walker.cargo.resource, presentation.direction) !== null;
+  const onCart = (composed || runtimeCartDrawn) && walker.kind === "carter" && walker.cargo !== null && cartLoadArt(walker.cargo.resource, presentation.direction) !== null;
   if (walker.kind !== "builder" && walker.cargo !== null && !loafInHand && !heldInHand && !onCart) {
     if (zoom >= CLOSE_ZOOM) drawCargoIcon(context, footX, footY, walker.cargo.resource, scale);
     else if (!composed) drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom, transform);
@@ -129,23 +134,23 @@ export function cartLoadArt(resource: ResourceType, direction: string): { readon
   return { key: `cart_load_${entry.cartLoadKey}_${axis}` as const, width: WAVE7_CARGO_WIDTH, pile: entry.cartPileKey ?? null };
 }
 
-function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: number; readonly y: number; readonly width: number; readonly height: number },
+function drawCartPayload(context: CanvasRenderingContext2D, cart: CartPayloadPlacement,
   resource: ResourceType, direction: string): void {
   const art = cartLoadArt(resource, direction);
   if (art === null) return;
   // The load's pivot (bottom centre of its cargo) on the cart bed, the cargo about 0.55 of the cart's width. INSTALL-3:
   // barley, malt and ale ride as Wave 3's loads (same pivot and cargo box as Wave 7's), the sacks or crates while they load.
   const ale = aleCartLoad(resource, direction);
-  if (ale !== null && drawWave3Ale(context, ale, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / WAVE7_CARGO_WIDTH)) return;
+  if (ale !== null && drawWave3Ale(context, ale, cart.x, cart.y, cart.width / WAVE7_CARGO_WIDTH)) return;
   // CLOTH-UI: fleece bales, raw cloth and dyed cloth ride as Wave 3's cloth loads (same pivot and scale as ale/Wave 7).
   const cloth = clothCartLoad(resource, direction);
-  if (cloth !== null && drawWave3Cloth(context, cloth, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / WAVE7_CARGO_WIDTH)) return;
-  if (drawWave7(context, art.key, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / art.width)) return;
+  if (cloth !== null && drawWave3Cloth(context, cloth, cart.x, cart.y, cart.width / WAVE7_CARGO_WIDTH)) return;
+  if (drawWave7(context, art.key, cart.x, cart.y, cart.width / art.width)) return;
   const image = art.pile === null ? null : visibilityArt(art.pile);
   if (image === null) return;
-  const width = cart.width * 0.62;
+  const width = cart.width * 0.62 / 0.55;
   drawCroppedWorldSprite(context, image, { x: 12, y: 16, width: 72, height: 44 },
-    { x: cart.x + cart.width / 2 - width / 2, y: cart.y + cart.height * 0.42 - width * 0.4, width, height: width * 44 / 72 }, false, true);
+    { x: cart.x - width / 2, y: cart.y - width * 0.4, width, height: width * 44 / 72 }, false, true);
 }
 
 function drawCargoIcon(context: CanvasRenderingContext2D, footX: number, footY: number, resource: ResourceType, scale: number): void {
@@ -162,8 +167,8 @@ function drawComposedWalkerWithCart(context: CanvasRenderingContext2D, state: Ga
   const cartBehind = presentation.direction === "SE" || presentation.direction === "SW";
   // F0-V cart payload: timber / logs or stone / raw stone ride on the cart bed (the Wave 6 level-1 pile, scaled).
   const cart = () => {
-    const rect = drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
-    if (rect !== null && walker.cargo !== null && zoom >= CART_LOAD_MIN_ZOOM) drawCartPayload(context, rect, walker.cargo.resource, presentation.direction);
+    const rect = drawRuntimeHandcart(context, presentation.direction, footX, footY, scale, presentation.gaitFrame);
+    if (rect !== null && walker.cargo !== null && zoom >= CART_LOAD_MIN_ZOOM) drawCartPayload(context, rect.payload, walker.cargo.resource, presentation.direction);
   };
   if (handcart && cartBehind) cart();
   drawComposedWalker(context, state, walker, presentation, footX, footY - lift, scale);

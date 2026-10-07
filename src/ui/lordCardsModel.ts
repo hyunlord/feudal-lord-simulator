@@ -17,6 +17,7 @@ import { lordMode, lordRequests } from "../engine/townAgency";
 import type { LordRequest } from "../engine/townAgency.types";
 import type { GameAction } from "../state/gameStore.types";
 import { calendarDays } from "./gameTimeCopy.ko";
+import { perState } from "./perState";
 import { HOME_PETITION_COPY, LORD_CARDS_COPY, type PetitionParties } from "./lordCardsCopy.ko";
 import { PETITION_COPY } from "./petitionCopy.ko";
 import { HOME_PETITION_ART, PRECEDENT_ART, type Wave44ImageId } from "./wave44Art";
@@ -106,8 +107,9 @@ function settledAnswer(state: GameState, kind: HomePetitionKind): boolean | null
   return last !== undefined && before !== undefined && last.status === before.status ? last.status === "granted" : null;
 }
 
-/** The first home petition waiting for the lord as its card shows it, or null (none, or not lord mode). */
-export function homePetitionView(state: GameState): HomePetitionView | null {
+/** The first home petition waiting for the lord as its card shows it, or null (none, or not lord mode). Once per state
+ * (`perState`): the story's chips and the card read it on every render. */
+export const homePetitionView = perState((state: GameState): HomePetitionView | null => {
   const petition = openHomePetitions(state)[0];
   if (petition === undefined) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
@@ -128,7 +130,7 @@ export function homePetitionView(state: GameState): HomePetitionView | null {
     recurring, options: [option(true), option(false)],
     arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(lordHouse(state).name),
   };
-}
+});
 
 export type PrecedentView = Readonly<{ key: string; art: Wave44ImageId; court: string; recurring: boolean; items: readonly string[] }>;
 

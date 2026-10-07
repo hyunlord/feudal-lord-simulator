@@ -9,7 +9,7 @@
 // a 1 px rule) where the kit asks for a decorated frame (DECORATED_BOXES: the ledger, a record book like the chronicle).
 // Writes <out>/audit.json (per state: counts and every skinless element) and a capture per state with the skinless
 // elements outlined, plus sheet-desktop.jpg (every state) and the gallery at desktop and tablet size (gate ③).
-//   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts> [--states6 <dir of scripts/ui6States.ts>]
+//   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts> [--states6 <dir of scripts/ui6States.ts>] [--states-lord2 <dir of scripts/lmr2States.ts>]
 // Exit 1 when any state has a skinless element or a state could not be opened.
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/uiSkinAudit.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/uiSkinAudit.mjs …", entry: import.meta.url });
@@ -434,6 +434,52 @@ if (states10 !== undefined) {
 }
 
 // Gate ③: the gallery at desktop and tablet size (full page), audited as well.
+// LM-R2: the lord screens and the lord's decision cards (the states of scripts/lmr2States.ts, with --states-lord2): the
+// 혼인, 약속·소송, 영지 and 지역 screens as a player opens them (dock 장부 → 영주 → 영주 집무 열기 → the menu item), and
+// the father's will, the audit and an off-map petition's cards (their chips, then [결정하기]). Every control on them is
+// kit UI art like the rest; the story waits ten minutes on the screens (no chip opens over the panel).
+const statesLord2 = flag('states-lord2');
+const loadLord2 = name => JSON.parse(readFileSync(join(statesLord2, `${name}.json`), 'utf8'));
+async function sceneLord2(stateName, query) {
+  const state = loadLord2(stateName);
+  const opened = await openScene(browser, { state, tile: keepTile(state), baseUrl: url, width: 1280, height: 800, zoom: 1.1, run: false, initScript: TUTORIAL_OFF, query });
+  opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
+  return opened;
+}
+/** The decision card behind its chip: the waiting chips in turn (another card is put off), as the geometry audit's `story` step. */
+async function lordDecision(page, selector) {
+  const wanted = () => page.locator(selector).count().then(count => count > 0);
+  await page.locator('.event-chip').first().waitFor({ timeout: 30_000 });
+  for (let chip = 0; chip < 8 && !await wanted(); chip += 1) {
+    if (await page.locator('.story-modal').count() > 0) { await page.locator('.story-modal-later').first().click({ timeout: 5_000 }).catch(() => undefined); await pause(500); }
+    if (await page.locator('.event-chip').count() === 0) break;
+    await page.locator('.event-chip').nth(chip % Math.max(1, await page.locator('.event-chip').count())).click({ timeout: 5_000 }); await pause(600);
+    if (await page.locator('.event-card-decide').count() > 0) { await page.locator('.event-card-decide').first().click({ timeout: 5_000 }); await pause(900); }
+  }
+  await page.locator(selector).first().waitFor({ timeout: 10_000 });
+}
+if (statesLord2 !== undefined) {
+  for (const [name, stateName, screen, pick] of [['lord-marriage', 'offer-countered', 'marriage', null], ['lord-ledger', 'contested', 'ledger', null],
+    ['lord-estates', 'audit-pending', 'estates', 'estate-neighbour-3'], ['lord-region', 'inherited', 'region', null]]) {
+    await step(name, async () => {
+      const { context, page } = await sceneLord2(stateName, '&story-delay=600000');
+      await pause(1000);
+      for (const selector of ["[data-dock='ledger']", "[data-ledger-tab='lord']", '[data-lord-open]', `[data-lord-nav='${screen}']`]) { await page.locator(selector).first().click({ timeout: 10_000 }); await pause(500); }
+      if (pick !== null) { await page.locator(`.lord-estates-pick[data-estate='${pick}']`).click({ timeout: 10_000 }); await pause(500); }
+      await audit(name, page, `s40-${name}.jpg`);
+      await context.close();
+    });
+  }
+  for (const [name, stateName, kind] of [['lord-will-change', 'will-change', 'will_change'], ['lord-audit', 'audit-pending', 'audit'], ['lord-offmap-petition', 'inherited', 'estate_petition_offmap']]) {
+    await step(name, async () => {
+      const { context, page } = await sceneLord2(stateName, '&story-delay=3000');
+      await lordDecision(page, `.lord-card[data-lord-decision='${kind}']`); await pause(700);
+      await audit(name, page, `s41-${name}.jpg`);
+      await context.close();
+    });
+  }
+}
+
 for (const [name, viewport, touch] of [['gallery-desktop', { width: 1280, height: 800 }, false], ['gallery-tablet', { width: 1180, height: 820 }, true]]) {
   await step(name, async () => {
     const context = await browser.newContext({ viewport, hasTouch: touch, isMobile: touch });
@@ -466,7 +512,8 @@ const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection',
   ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page']),
   ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page']),
   ...(states9 === undefined ? [] : ['reorg-petition', 'factions-chapter4', 'rights-chapter4', 'reorg-ledger', 'chapter4-page']),
-  ...(states10 === undefined ? [] : ['legacy-petition', 'heir-petition', 'chapter5-page', 'legacy-verdict', 'chronicle-book'])];
+  ...(states10 === undefined ? [] : ['legacy-petition', 'heir-petition', 'chapter5-page', 'legacy-verdict', 'chronicle-book']),
+  ...(statesLord2 === undefined ? [] : ['lord-marriage', 'lord-ledger', 'lord-estates', 'lord-region', 'lord-will-change', 'lord-audit', 'lord-offmap-petition'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
 // NAT-1: frameless floating boxes are also failures.
 result.pass = result.total.skinless === 0 && result.missing.length === 0 && (result.total.frameless ?? 0) === 0;
