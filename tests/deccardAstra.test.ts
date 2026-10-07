@@ -19,6 +19,7 @@ import type { LedgerEntry } from "../src/ledger/ledger.types";
 import { advanceTick } from "../src/engine/tick";
 import { createMemoryPlatformServices } from "../src/platform/memoryPlatform";
 import { setPlatformServicesForTest } from "../src/platform/platform";
+import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import type { StoryBeat, StoryKind } from "../src/ui/eventStory";
@@ -88,8 +89,12 @@ test("A1: the levers follow the policy in force and the subsidy on offer (the en
   const levers = lordLevers(stable, granary);
   assert.match(levers[0]!, /곡창에 장려금을 걸면 10d마다 점수 \+4/, "the policy in force is no lever: the subsidy comes first");
   assert.match(levers[1]!, /지금 '안정' 방침이 곡창에 점수 \+25/);
-  assert.equal(subsidyRefusal(stable, "granary", 10), null, "a year in, the treasury allows a 10d subsidy");
-  const funded = gameReducer(stable, { type: "set_project_subsidy", kind: "granary", amount: 10 });
+  // DEC-TRACE (GP7-ENGINE): the steward answers the home petitions by the standing policy, so a year's treasury is no
+  // longer sure to hold four times a 10d subsidy (TA-6 ②) — the treasury is given 40d here. (렌더 파일을 엔진이 예외로 갱신 — 렌더가 인계)
+  const posted = postLedgerEntries(stable, [{ account: "cash", category: "opening_balance", amount: Math.max(0, 40 - treasuryBalance(stable)), sourceRefs: [{ type: "scenario", id: "test" }] }]);
+  const rich: GameState = { ...stable, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+  assert.equal(subsidyRefusal(rich, "granary", 10), null, "with 40d in the treasury, a 10d subsidy is allowed");
+  const funded = gameReducer(rich, { type: "set_project_subsidy", kind: "granary", amount: 10 });
   assert.match(lordLevers(funded, granary)[0]!, /곡창 장려금이 한 건에 10d 걸려 있습니다/);
   assert.equal(lordAdvice(lord, granary).length, 2);
   assert.deepEqual(lordLevers(campaign, granary), []);

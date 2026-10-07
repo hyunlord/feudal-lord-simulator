@@ -118,7 +118,9 @@ test("DEC-CARD results (A3): the wardship begun is one house card, before the ye
   const beats = storyBeats(town);
   const house = beats.findIndex(beat => beat.id === `house:${change.id}`);
   const petition = beats.findIndex(beat => beat.kind === "home_petition");
-  assert.ok(house === 0 && petition > house, `house ${house}, petition ${petition}`);
+  // DEC-TRACE (GP7-ENGINE): no winter home petition is forced on the lord any more (FX14-1 gone) and the steward answers
+  // them by the standing policy — a petition's card, when one comes, is after the house's. (렌더 파일을 엔진이 예외로 갱신 — 렌더가 인계)
+  assert.ok(house === 0 && (petition === -1 || petition > house), `house ${house}, petition ${petition}`);
   assert.equal(decisionModal(beats[house]!.decision!), "house_change");
   assert.equal(beats[house]!.openLabel, RESULTS_COPY.house.openLabel);
   assert.equal(beats.some(beat => beat.id === `lord-moment:${change.records[0]!.id}`), false, "no second chip for the same event");
