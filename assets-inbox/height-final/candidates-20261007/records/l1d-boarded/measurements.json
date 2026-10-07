@@ -1,0 +1,99 @@
+{
+  "alphaThreshold": 32,
+  "opaquePixelCount": 1017,
+  "alphaBBox": [
+    26,
+    54,
+    114,
+    103
+  ],
+  "groupMountingROIsNativeInclusive": {
+    "left_window": [
+      25,
+      53,
+      44,
+      78
+    ],
+    "door": [
+      45,
+      56,
+      75,
+      109
+    ],
+    "right_window": [
+      96,
+      72,
+      116,
+      96
+    ]
+  },
+  "roofPolygonNative": [
+    [
+      13,
+      35
+    ],
+    [
+      59,
+      0
+    ],
+    [
+      87,
+      14
+    ],
+    [
+      128,
+      44
+    ],
+    [
+      130,
+      49
+    ],
+    [
+      87,
+      67
+    ],
+    [
+      13,
+      38
+    ]
+  ],
+  "outsideBodyPixels": 0,
+  "outsideMountingROIsPixels": 0,
+  "roofOverlapPixels": 0,
+  "topHalfAlphaOver32": 0,
+  "registration": {
+    "generatedActualCanvas": [
+      1254,
+      1254
+    ],
+    "resize": [
+      126,
+      112
+    ],
+    "translate": [
+      4,
+      5
+    ],
+    "outputCanvas": [
+      139,
+      139
+    ],
+    "scale": [
+      0.10047846889952153,
+      0.08931419457735247
+    ],
+    "bodyUnchanged": true,
+    "bodySHA256": "451f97f20ff65bf6abf812d9ad720a4cec31c63f6fcaecce92d0c4252148957f",
+    "pivot": [
+      71.66148325358851,
+      125.92025518341308
+    ],
+    "worldPxPerNativePx": 0.4986217267599071
+  },
+  "limitations": [
+    "Static inspection composites, not game captures.",
+    "Mounting ROIs include jamb margins, not exact opening pixel masks; boards intentionally overlap frame to attach.",
+    "Whole-layer nonuniform registration compensates generated positional drift; wood is vertically compressed. No independent fragment manipulation.",
+    "Three groups/seven boards; alpha gaps intentionally expose underlying original door/windows."
+  ]
+}
