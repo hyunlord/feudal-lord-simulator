@@ -9,7 +9,7 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingC
 import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
-  LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
+  COMMUNITY_FALLBACK, LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
   START_SCORE, STARTS_PER_WEEK, TEMPERAMENT_SPREAD, CHOICE_SPAN, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
   WALK_REUSE_IDLE_WEEKS, WALK_REUSE_TICKS,
 } from "../content/townAgencyConfig";
@@ -138,6 +138,16 @@ export interface Proposal {
   readonly sites?: ReceiptSites;
   /** LM-E5 (LG-2): its site drawn by chance among its sites. */
   readonly siteChance?: ChoiceChance;
+  /** DTR-15: a need its builder refuses (still waiting for the community), or the community's taking it up after the wait. */
+  readonly refusedBy?: ActorKind;
+  readonly fallback?: { readonly builder: ActorKind; readonly since: number };
+}
+
+/** DTR-15: the community's own bar — a storage need with a hoard in the stores is not its want of room. */
+function communityWants(state: GameState, planner: string): boolean {
+  if (planner !== "storage") return true;
+  return (["timber", "logs", "stone"] as const).every(resource => state.buildings.reduce((sum, building) => sum + (building.inventory?.[resource] ?? 0), 0)
+    < COMMUNITY_FALLBACK.storageHoard);
 }
 
 /** LM-E5 (LG-2) API: an actor's temperament, from the game seed (the same seed, the same temperaments). */
@@ -205,7 +215,7 @@ function costOf(action: TownAction): number {
   return 0;
 }
 
-const FACTION_OF_ACTOR: Readonly<Record<ActorKind, string>> = {
+export const FACTION_OF_ACTOR: Readonly<Record<ActorKind, string>> = {
   households: "commons", merchants: "merchant_house_1", guild: "merchant_house_2", community: "town", church: "bishop",
 };
 
@@ -338,8 +348,25 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
     const key = `${whatOf(action)}@${site.tx},${site.ty}`;
     if (seen.has(key)) return;
     seen.add(key);
-    const actor = actorOf(state, action);
-    const scored = reasonsOf(state, agency, action, actor, rank, stuckWheat, stuckRoads);
+    let actor = actorOf(state, action);
+    let scored = reasonsOf(state, agency, action, actor, rank, stuckWheat, stuckRoads);
+    // DEC-TRACE (DTR-15): a needed building its builder will not take up (its reasons under the start, a grudge against
+    // the lord among them) falls to the community — after a year's wait, at a premium (`COMMUNITY_FALLBACK`), and by the
+    // community's own bar (no barn for a hoard). The grudge shows in the delay, in who builds and in what it cost; the
+    // town's need is not left for good (125-year runs: a needed storehouse at 31 points, the quarry behind it, never built).
+    let refusedBy: ActorKind | undefined;
+    let fallback: { readonly builder: ActorKind; readonly since: number } | undefined;
+    if (rank !== null && action.kind === "place_building" && actor !== "community" && scoreOf(scored.reasons) < START_SCORE && communityWants(state, planner)) {
+      refusedBy = actor;
+      const since = agency.refusedNeeds?.find(entry => entry.what === whatOf(action))?.since;
+      const community = reasonsOf(state, agency, action, "community", rank, stuckWheat, stuckRoads);
+      if (since !== undefined && state.tick - since >= COMMUNITY_FALLBACK.waitTicks && scoreOf(community.reasons) > scoreOf(scored.reasons)) {
+        fallback = { builder: actor, since };
+        refusedBy = undefined;
+        actor = "community";
+        scored = community;
+      }
+    }
     const base = scoreOf(scored.reasons);
     if (action.kind !== "place_building") {
       proposals.push({ actor, what: whatOf(action), planner, rank, action, tx: site.tx, ty: site.ty, reasons: scored.reasons,
@@ -360,7 +387,7 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
       runnerUp: next === undefined ? null : { tx: next.tx, ty: next.ty, reasons: next.reasons, score: next.score } };
     proposals.push({ actor, what: whatOf(action), planner, rank, action: { ...action, tx: chosen.tx, ty: chosen.ty }, tx: chosen.tx, ty: chosen.ty,
       reasons: [...scored.reasons, ...chosen.reasons], score: chosen.score, cost: scored.cost, subsidy: scored.subsidy, sites,
-      ...(ranked.length > 1 ? { siteChance: drawn.chance } : {}) });
+      ...(ranked.length > 1 ? { siteChance: drawn.chance } : {}), ...(refusedBy === undefined ? {} : { refusedBy }), ...(fallback === undefined ? {} : { fallback }) });
   };
   for (const need of needs) propose(need.action, need.planner, need.rank);
   // TA-3: the opportunities — a subsidised or policy-backed kind no need asks for, at its first legal site, while the
@@ -555,8 +582,12 @@ export function advanceTownAgency(state: GameState): GameState {
     if (started > 0 && !stillFits(next, proposal)) continue;
     const actor = actors.find(entry => entry.kind === proposal.actor)!;
     const paid = Math.min(proposal.subsidy, Math.max(0, treasuryBalance(next)));
+    // DTR-15: the community's want of capital — the premium from the treasury as far as it holds, the rest its own.
+    const premium = proposal.fallback === undefined ? 0 : Math.round(proposal.cost * COMMUNITY_FALLBACK.premiumPermille / 1000);
+    const premiumTreasury = Math.min(premium, Math.max(0, treasuryBalance(next) - paid));
+    const cost = proposal.cost + premium - premiumTreasury;
     // TA-5: a needed project the actor cannot pay borrows the rest from the community's purse (when that is another's).
-    const short = Math.max(0, proposal.cost - actor.funds - paid);
+    const short = Math.max(0, cost - actor.funds - paid);
     const need = proposal.reasons.find(reason => reason.name === "need")?.value ?? 0;
     const community = actors.find(entry => entry.kind === "community")!;
     const loan = short > 0 && need >= LOAN_NEED && actor !== community && community.funds >= short ? short : 0;
@@ -564,7 +595,7 @@ export function advanceTownAgency(state: GameState): GameState {
     const siteId = proposal.action.kind === "place_building" ? constructionSiteId(next.nextConstructionOrdinal) : null;
     const after = applyTownAction(next, proposal.action);
     if (after === next) continue;
-    actors[actors.indexOf(actor)] = { ...actor, funds: actor.funds + paid + loan - proposal.cost };
+    actors[actors.indexOf(actor)] = { ...actor, funds: actor.funds + paid + loan - cost };
     if (loan > 0) actors[actors.indexOf(community)] = { ...community, funds: community.funds - loan };
     next = after;
     if (paid > 0) {
@@ -572,12 +603,18 @@ export function advanceTownAgency(state: GameState): GameState {
         sourceRefs: [{ type: "actor", id: FACTION_OF_ACTOR[proposal.actor] }, { type: "claim", id: "project_subsidy", detail: proposal.what }] }]);
       next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
     }
+    if (premiumTreasury > 0) {
+      const posted = postLedgerEntries(next, [{ account: "cash", category: "project", amount: -premiumTreasury,
+        sourceRefs: [{ type: "actor", id: FACTION_OF_ACTOR.community }, { type: "claim", id: "community_fallback", detail: `${proposal.what}:${proposal.fallback!.builder}` }] }]);
+      next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+    }
     const reasons = topReasons(proposal.reasons);
     receipts.push({ id: `receipt-${ordinal}`, tick: next.tick, actor: proposal.actor, what: proposal.what, tx: proposal.tx, ty: proposal.ty, siteId,
       planner: proposal.planner, rank: proposal.rank, reasons, score: proposal.score, cost: proposal.cost, subsidy: paid, loan,
       decisionIds: lordDecisionIds(next, proposal.what, proposal.reasons), ...(proposal.sites === undefined ? {} : { sites: proposal.sites }),
       chance: { project: chance, ...(proposal.siteChance === undefined ? {} : { site: proposal.siteChance }) },
-      ...(reused === undefined ? {} : { reusedWalk: reused.tick }) });
+      ...(reused === undefined ? {} : { reusedWalk: reused.tick }),
+      ...(proposal.fallback === undefined ? {} : { fallback: { ...proposal.fallback, premium, treasury: premiumTreasury } }) });
     ordinal += 1;
     started += 1;
   }
@@ -592,8 +629,16 @@ export function advanceTownAgency(state: GameState): GameState {
   const lastWalk: AgencyWalk | undefined = started > 0 ? undefined : reused !== undefined ? { ...reused, idleWeeks }
     : { tick: week.tick, key, needs, proposals, requests, fundThreshold: short.length === 0 ? null : Math.min(...short),
       ...(tried === undefined ? {} : { charterWallTried: tried }), idleWeeks };
-  return { ...next, agency: { ...kept2, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }),
-    ...(lastWalk === undefined ? {} : { lastWalk }) } };
+  // DTR-15: the needs refused this week (each keeps the tick it was first refused); a need started, or no longer refused, goes.
+  const startedWhat = new Set(receipts.map(receipt => receipt.what));
+  const refusedNeeds = proposals.flatMap(proposal => {
+    const builder = proposal.refusedBy ?? proposal.fallback?.builder;
+    if (builder === undefined || startedWhat.has(proposal.what)) return [];
+    return [{ what: proposal.what, builder, since: agency.refusedNeeds?.find(entry => entry.what === proposal.what)?.since ?? week.tick }];
+  }).filter((entry, index, all) => all.findIndex(other => other.what === entry.what) === index);
+  const { refusedNeeds: _refused, ...kept3 } = kept2;
+  return { ...next, agency: { ...kept3, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }),
+    ...(lastWalk === undefined ? {} : { lastWalk }), ...(refusedNeeds.length === 0 ? {} : { refusedNeeds }) } };
 }
 
 /** TA-7 API: what the town asks of its lord this week — the era's proclamation, the wall's priority, the traders'

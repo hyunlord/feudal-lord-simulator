@@ -19,6 +19,15 @@ export const LEDGER_RETAINED_PERIODS = 6;
 /** Per-period roll-ups kept; older ones merge into a single archive roll-up per account. */
 export const LEDGER_ROLLUP_PERIODS = 120;
 
+/**
+ * DEC-TRACE §6 API: whether the town's money was settled in [start, end) — it settles every ledger period (2,400 ticks),
+ * a season is 1,000, so some seasons have no settlement (their card shows the town's own income as none).
+ */
+export function settlementIn(start: number, end: number): boolean {
+  const first = Math.ceil(Math.max(1, start) / LEDGER_PERIOD_TICKS) * LEDGER_PERIOD_TICKS;
+  return first < end;
+}
+
 export const EMPTY_LEDGER: Ledger = { entries: [], rollups: [], nextEntryOrdinal: 1 };
 
 export function ledgerEntryId(ordinal: number): string {

@@ -44,6 +44,8 @@ export const LEDGER_CATEGORIES = [
   "estate_income", "audit_recovery",
   // LM-E9 (ER-4, ER-7): a registry answer's payment, and a timed instalment plan's yearly payment.
   "registry_settlement", "instalment",
+  // DEC-TRACE §3: a faction's gift to the treasury, and what a faction demands of it.
+  "faction_gift", "faction_demand",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

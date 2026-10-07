@@ -11,7 +11,7 @@ import { housingLotCount } from '../population/housing';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { buildingRoadAccessTiles } from './routing';
 import { allocateHouseServices, type ServiceAllocation } from '../population/serviceAllocation';
-import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked, placementSpendableResource } from '../world/placement';
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingOpen, placementSpendableResource } from '../world/placement';
 import { householdServices } from './householdServices';
 import { MARKET_ROAD_REACH, MARKET_UNSERVED_LOTS_FOR_ANOTHER, anotherMarketAllowed, marketRoadService } from './marketService';
 import { serviceAccessDistances } from './autoplayServiceAccess';
@@ -237,7 +237,7 @@ export function marketGapAction(state: GameState, collector?: BotRecoveryCollect
 
 /** A market can be started now: unlocked, none being built, its workers idle. */
 function marketSiteOpen(state: GameState): boolean {
-  return isBuildingUnlocked('market', state.era, state.scenarioId)
+  return isBuildingOpen(state, 'market')
     && !state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'market')
     && state.idleWorkers >= BUILDING_CONFIG_BY_KIND.market.workersRequired;
 }

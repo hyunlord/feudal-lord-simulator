@@ -53,6 +53,21 @@ export const LOAN_NEED = 70;
 /** TA-5: a proposal is started when its score reaches this and its actor can pay. */
 export const START_SCORE = 40;
 /**
+ * DTR-15 (the user's instruction 2026-10-07): a need its builder refuses (its reasons under the start) falls to the
+ * community only after it has waited a year, and costs half as much again — no merchants' capital, credit or carters;
+ * the premium from the lord's treasury as far as it holds, the rest from the community's purse.
+ */
+export const COMMUNITY_FALLBACK = {
+  waitTicks: 4_000,
+  premiumPermille: 500,
+  /**
+   * The community's own bar for a storage need: stores holding this much of one material (timber, logs, stone) are a
+   * hoard, not a want of room — it builds no barn for it (125-year runs: 11–16 storehouses round 1,000–1,800 timber;
+   * the usual stock is 340–500, trunk's 1336 and this branch's 1340 — at 400 the bar refused seed 1's real need).
+   */
+  storageHoard: 800,
+} as const;
+/**
  * LM-E5 (LG-2): an actor chooses by chance, not always the best: a choice's weight is exp((score − best) / spread),
  * the spread its temperament's (a cautious actor mostly takes the best, a bold one often the next). The draw is the
  * game seed's, so the same seed makes the same choices. Only the alternatives within `CHOICE_SPAN` of the best count.
