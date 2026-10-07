@@ -85,8 +85,8 @@
 
 ## 필수 조건
 - 관련 시험(Mac): decisionTrace 16/16, townAgency 16/16, townAgencyWalkReuse 6/6, stewardship 10/10, fix14 4/4, lmr1Petitions 15/15, registry 9/9, registryV4 8/8, eventArtCard 13/13, verifyProvenance 5/5, ledger 10/10, lordSlice 4/4, saveSchemaFingerprint 2/2. typecheck 통과.
-- 바뀐 줄 기하 감사(관문 줄, DGX): 바뀐 문구 셋(`historyCopy`·`factionCopy`·`registryHeldChoices`)을 쓰는 62줄 1,230칸 실패 0(`engine-DECTRACE-geo-2f7e4e0`), 본선을 다시 합친 머리에서 그 문구가 보이는 7줄 140칸 실패 0(`engine-DECTRACE-geo2-3d76c3c`, `engine-DECTRACE-geo3-3c49b3c`).
-- `test:changed`(관문 줄, DGX): 첫 판(`engine-DECTRACE-changed-2e87209`)에서 렌더 A의 DEC-CARD 시험 둘이 GP7-ENGINE 전의 엔진 동작을 전제로 해 실패했다 — 한 해 뒤 금고가 장려금 10d를 허락한다(이제 청지기가 장원 청원을 처리해 금고가 덜 참: 시험 안에서 금고를 40d로 채움), 같은 틱의 장원 청원 카드가 후견 카드 뒤에 온다(겨울 강제 청원 FX14-1이 없어져 청원 카드가 없을 수 있음: "있으면 뒤"로). 렌더 파일(`tests/deccardAstra.test.ts`·`tests/deccardResults.test.ts`)을 엔진이 예외로 갱신 — 렌더가 인계. 고친 뒤 마지막 커밋에서 다시 돌린 판이 올리기 기록이다(`engine-DECTRACE-changed2-…`).
+- 바뀐 줄 기하 감사(관문 줄, DGX): 바뀐 문구 셋(`historyCopy`·`factionCopy`·`registryHeldChoices`)을 쓰는 62줄 1,230칸 실패 0(`engine-DECTRACE-geo-2f7e4e0`), 본선을 다시 합친 머리에서 그 문구가 보이는 7줄 140칸 실패 0(`engine-DECTRACE-geo2-3d76c3c`·`geo3-3c49b3c`, 마지막 합친 머리 `engine-DECTRACE-geo4-6d0ee0f`).
+- `test:changed`(관문 줄, DGX): 첫 판(`engine-DECTRACE-changed-2e87209`)에서 렌더 A의 DEC-CARD 시험 둘이 GP7-ENGINE 전의 엔진 동작을 전제로 해 실패했다 — 한 해 뒤 금고가 장려금 10d를 허락한다(이제 청지기가 장원 청원을 처리해 금고가 덜 참: 시험 안에서 금고를 40d로 채움), 같은 틱의 장원 청원 카드가 후견 카드 뒤에 온다(겨울 강제 청원 FX14-1이 없어져 청원 카드가 없을 수 있음: "있으면 뒤"로). 렌더 파일(`tests/deccardAstra.test.ts`·`tests/deccardResults.test.ts`)을 엔진이 예외로 갱신 — 렌더가 인계. 고친 뒤 4,448/4,459 통과·실패 0·건너뜀 11(`engine-DECTRACE-changed2-6265187`); 본선을 다시 합친 마지막 커밋에서 다시 돌린 판이 올리기 기록이다(`engine-DECTRACE-changed3-…`).
 
 ## 다음 후보
 - **DUES-REL**(사용자 지시 2026-10-08, DEC-TRACE 다음): 좌판세를 바꿀 때마다 −5인 지금 방식은 세율 조정만으로 관계가 계속 떨어진다. 관계가 명령이 아니라 상태에 반응하게 — 합의·관습 수준보다 높게 유지되는 동안 철마다 조금씩, 합의를 어기면 한 번 크게("○○년 합의를 어겨서" 결과의 실).
