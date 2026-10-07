@@ -49,7 +49,7 @@
 ## 필수 조건
 - 바뀐 것에 걸린 시험: 4,286/4,286 — DGX(`engine-EXT1-changed2-fa513b6-fa513b6`, 가벼운 칸, `fa513b6`)
 - typecheck — Mac.
-- ui-geometry: LM-R2-E와 본선을 합친 머리에서 바뀐 줄 10줄, 200/200칸, 실패 0 — DGX(`engine-EXTLMR-geo4-89819eb`, 관문 줄).
+- ui-geometry: LM-R2-E와 본선을 합친 머리에서 바뀐 줄 10줄, 200/200칸, 실패 0 — DGX(`engine-EXTLMR-geo5-9a70d70`, 관문 줄). 그 뒤 합친 본선은 화면 입력을 바꾸지 않았다(입력 해시 같음). 앞선 `engine-EXTLMR-geo4-89819eb`도 같은 결과였다.
   - 앞선 시도: `engine-EXTLMR-geo2-0469810`은 DGX가 가득 찬 때라 `modal.lord.registry` 16칸이 클릭 시간 초과였다. `engine-EXTLMR-geo3-0469810`에서 그 줄을 다시 재 20/20을 얻었다.
 
 ## 다음 후보
