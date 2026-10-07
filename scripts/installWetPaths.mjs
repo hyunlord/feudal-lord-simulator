@@ -38,6 +38,8 @@ for (const [axis, digest] of Object.entries(hashes)) {
 }
 const bundle = { schemaVersion: 1, bundleId: 'wet-paths', entries, rules };
 const prior = catalog.findIndex(item => item.bundleId === bundle.bundleId);
-if (prior === -1) catalog.push(bundle); else catalog[prior] = bundle;
-writeFileSync(catalogFile, `${JSON.stringify(catalog, null, 2)}\n`);
+if (prior === -1 || JSON.stringify(catalog[prior]) !== JSON.stringify(bundle)) {
+  if (prior === -1) catalog.push(bundle); else catalog[prior] = bundle;
+  writeFileSync(catalogFile, `${JSON.stringify(catalog, null, 2)}\n`);
+}
 console.log('RB-WET-PATHS: two byte-identical warm-season strips; winter and bookkeeping untouched');
