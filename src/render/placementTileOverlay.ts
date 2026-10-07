@@ -74,7 +74,7 @@ export function drawMarkTile(context: CanvasRenderingContext2D, mark: TileMark, 
   context.fillStyle = withAlpha(mark.ok ? placementFineColour() : PALETTE.vermilion, mark.ok ? 0.6 : 0.55);
   context.fill();
   const pattern = mark.ok ? HUD_PATTERN_ART.ok : mark.reason === null || TILE_REASONS.has(mark.reason) ? HUD_PATTERN_ART.hatch : HUD_PATTERN_ART.cross;
-  if (!drawTilePattern(context, pattern, centre.sx, centre.sy, mark.ok ? 0.8 : 0.75) && !mark.ok) hatch(context, mark.tx, mark.ty, zoom, 0.75);
+  if (!drawTilePattern(context, pattern, centre.sx, centre.sy) && !mark.ok) hatch(context, mark.tx, mark.ty, zoom, 0.75);
   traceDiamond(context, mark.tx, mark.ty);
   // A light rim reads on grass and forest alike; the ink outline sits inside it.
   applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);

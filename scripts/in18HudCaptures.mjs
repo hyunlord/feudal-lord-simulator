@@ -31,7 +31,17 @@ async function open(options) {
   const { context, page } = await openScene(browser, { baseUrl: url, width: 1280, height: 800, run: false, initScript: TUTORIAL_OFF, ...options,
     state: options.state ?? null, tile: options.tile ?? [45, 41] });
   page.on("pageerror", error => result.errors.push(String(error)));
-  if (options.refuse === true) await page.route("**/assets/wave18/**", route => route.abort());
+  if (options.refuse === true) {
+    // Every Wave 18 request refused from the first one: the route is in place, then the page loads again (openScene's
+    // state and camera routes stay), as a bad URL or a missing file would leave it.
+    await page.route("**/assets/wave18/**", route => route.abort());
+    await page.reload();
+    await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
+    if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click({ position: { x: 20, y: 20 } });
+    await page.keyboard.press("Escape");
+    if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
+    await page.waitForTimeout(1_500);
+  }
   return { context, page };
 }
 /** Waits until every Wave 18 picture the page asked for has settled (loaded or refused). */
@@ -39,10 +49,10 @@ const settle = page => page.waitForFunction(() => {
   const asked = performance.getEntriesByType("resource").filter(entry => entry.name.includes("/assets/wave18/"));
   return asked.every(entry => entry.responseEnd > 0);
 }, null, { timeout: 15_000 }).catch(() => undefined).then(() => page.waitForTimeout(400));
-async function shot(page, file, clip, { grey = false } = {}) {
+async function shot(page, file, clip, { grey = false, quality = clip ? 78 : 55 } = {}) {
   const style = grey ? await page.addStyleTag({ content: GREY }) : null;
   if (style !== null) await page.waitForTimeout(150);
-  const options = { type: "jpeg", quality: 78, ...(clip ? { clip: { x: Math.max(0, Math.round(clip.x)), y: Math.max(0, Math.round(clip.y)), width: Math.round(clip.width), height: Math.round(clip.height) } } : {}) };
+  const options = { type: "jpeg", quality, ...(clip ? { clip: { x: Math.max(0, Math.round(clip.x)), y: Math.max(0, Math.round(clip.y)), width: Math.round(clip.width), height: Math.round(clip.height) } } : {}) };
   writeFileSync(join(out, file), await page.screenshot(options));
   if (style !== null) await style.evaluate(element => element.remove());
   result.shots.push(file);
@@ -62,7 +72,10 @@ const same = (a, b) => JSON.stringify({ ...a, art: [] }) === JSON.stringify({ ..
 const pickTool = async (page, category, name) => {
   await page.locator("[data-dock='build']").click(); await page.waitForTimeout(250);
   await page.locator(`button.build-menu-category[data-category='${category}']`).first().click(); await page.waitForTimeout(250);
-  await page.locator(`button[aria-label="${name}"]:visible`).first().click(); await page.waitForTimeout(250);
+  const tool = page.locator(`button[aria-label="${name}"]:visible`).first();
+  if (await tool.getAttribute("aria-disabled") === "true") return false;
+  await tool.click(); await page.waitForTimeout(250);
+  return true;
 };
 
 // HUD: sandbox (new game) and lord mode, with the pictures and refused.
@@ -73,11 +86,13 @@ for (const [label, stateFile] of [["sandbox", null], ["lord", "lord.json"]]) {
     await settle(page);
     boxes[refuse ? "refused" : "art"] = await hudBoxes(page);
     const suffix = refuse ? "-refused" : "";
-    await shot(page, `hud-${label}-1280${suffix}.jpg`);
+    if (!refuse) await shot(page, `hud-${label}-1280.jpg`);
+    for (const [part, selector] of [["pill", ".status-pill"], ["layers", ".layer-switch"], ["dock", ".action-dock"]]) {
+      const b = await box(page, selector);
+      if (b !== null) await shot(page, `hud-${label}-${part}${suffix}.jpg`, { x: b.x - 6, y: b.y - 6, width: b.width + 12, height: b.height + 12 });
+    }
     if (!refuse) {
-      await shot(page, `hud-${label}-pill.jpg`, await box(page, ".status-pill"));
       const dock = await box(page, ".action-dock");
-      await shot(page, `hud-${label}-dock.jpg`, { x: dock.x - 8, y: dock.y - 8, width: dock.width + 16, height: dock.height + 16 });
       await shot(page, `hud-${label}-dock-grey.jpg`, { x: dock.x - 8, y: dock.y - 8, width: dock.width + 16, height: dock.height + 16 }, { grey: true });
     }
     await context.close();
@@ -94,10 +109,13 @@ for (const scene of scenes) {
   const zooms = scene.reason === "building" ? [0.6, 1, 1.4] : [1];
   for (const zoom of zooms) {
     const { context, page } = await open({ state: state(`${scene.fixture}.save.json`), tile: [scene.tile.tx, scene.tile.ty], zoom });
-    await pickTool(page, scene.category, scene.name);
+    if (!await pickTool(page, scene.category, scene.name)) {
+      row.skipped = "the build menu disables this tool here (the town cannot pay for it), so it cannot be armed to show the mark";
+      await context.close(); break;
+    }
     const p = await at(page, scene.tile.tx, scene.tile.ty);
     await page.mouse.move(p.x, p.y); await page.waitForTimeout(600); await settle(page);
-    const clip = { x: p.x - 230, y: p.y - 160, width: 520, height: 300 };
+    const clip = { x: p.x - 200, y: p.y - 150, width: 660, height: 300 };
     const base = `placement-${scene.reason}-z${String(zoom).replace(".", "")}`;
     await shot(page, `${base}.jpg`, clip); await shot(page, `${base}-grey.jpg`, clip, { grey: true });
     row.shots.push(`${base}.jpg`, `${base}-grey.jpg`);
@@ -112,7 +130,7 @@ result.placement = [...done.values()];
 result.edge = [];
 for (const zoom of [0.6, 1, 1.4]) {
   const { context, page } = await open({ tile: [40, 44], zoom });
-  await pickTool(page, "living", "우물");
+  if (!await pickTool(page, "living", "우물")) throw new Error("the well cannot be armed in the new game");
   const p = await at(page, 40, 44);
   await page.mouse.move(p.x, p.y); await page.waitForTimeout(600); await settle(page);
   const file = `edge-well-z${String(zoom).replace(".", "")}.jpg`;
@@ -155,7 +173,7 @@ for (const name of ["crisis-a", "crisis-b"]) {
     const icons = await box(page, ".crisis-icons");
     const clip = { x: icons.x - 8, y: icons.y - 8, width: icons.width + 16, height: icons.height + 16 };
     await shot(page, `${name}${refuse ? "-refused" : ""}.jpg`, clip);
-    if (!refuse) { await shot(page, `${name}-grey.jpg`, clip, { grey: true }); await shot(page, `${name}-1280.jpg`); }
+    if (!refuse) await shot(page, `${name}-grey.jpg`, clip, { grey: true });
     await context.close();
   }
   result[name] = { ...boxes, sameBoxes: same(boxes.art, boxes.refused) };
