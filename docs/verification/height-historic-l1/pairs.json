@@ -1,0 +1,2148 @@
+{
+  "pairs": [
+    {
+      "group": 0,
+      "id": "maintained",
+      "name": "after-maintained-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-maintained-z1.jpg",
+          "sha256": "c899d4f7d9fb19fbd43f384a404bd76a9e76362535001ffff594b1e68eda947c"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-maintained-z1.png",
+          "sha256": "9dd7d7e34c24edef2d5f34234ec0ed6852d7d128528c05fa73166dcf271b1869"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-maintained-z1.jpg",
+          "sha256": "7ed154933d3bd51eaeca3a57700255e13a53a65759233a15351347403e62efa5"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-maintained-z1.png",
+          "sha256": "b95cc506313ea5d657c2793b179227aa12cb30b2e2ffc6c7b4c749849f83feea"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "b96ef7b9f47ad5363c1a8684c2b8a7b246ca827c4616cdd4f7f88a5f4eb3a69b",
+      "stateSHA256": "3084d4680bf2949a4c253c9ea64bedc37a633290f9634f6620923209723f23d1",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 0,
+      "id": "maintained",
+      "name": "after-maintained-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-maintained-z0.6.jpg",
+          "sha256": "bbe48b9f892cc41ffb3f4093d421ceb59db1aba6a452f7f2d924b76dd59c5261"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-maintained-z0.6.png",
+          "sha256": "99e0b3630522d4692b6376ab64b2ae834fdfd9ba6af6e745dd72845ab6615849"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-maintained-z0.6.jpg",
+          "sha256": "1c2417a0986e7fd2e3ff4676311b9fb0775c94f426d3a11f75673c2a933a20f1"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-maintained-z0.6.png",
+          "sha256": "f20bee4677543f0943ae11a64aec8ac2d75af63e9531e8f15fd84698879cf923"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "b96ef7b9f47ad5363c1a8684c2b8a7b246ca827c4616cdd4f7f88a5f4eb3a69b",
+      "stateSHA256": "3084d4680bf2949a4c253c9ea64bedc37a633290f9634f6620923209723f23d1",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 0,
+      "id": "strained",
+      "name": "after-strained-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-strained-z1.jpg",
+          "sha256": "ff985d3e4af4da0f74b8a205e20eb3663ee46e2c574b01350b8d584f6632e30b"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-strained-z1.png",
+          "sha256": "da80d4da54641a9139de4f9b1cd872f02e797639d2848526e98df5871e892b12"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-strained-z1.jpg",
+          "sha256": "0092264b5da35331c8b46de1f013d6057a901374a139250a493d745fd82bc45e"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-strained-z1.png",
+          "sha256": "cde69c3440dbf45e8b181aa4fadce1992766feb2ac33440060339593718a7c49"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].level",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "dba188bac738be35fc50ac905af42959ef4497b154128ec4806a6b03540175b3",
+      "stateSHA256": "c1f36eedde1a0caec75a136be5e9824ee7467e6381198ebb67c1ebeb8aa863df",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-strained-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-strained-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 0,
+      "id": "strained",
+      "name": "after-strained-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-strained-z0.6.jpg",
+          "sha256": "1c874311aa873487581e224d3d01d3a27981f3b75d963cb9f57d73d83c781bbc"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-strained-z0.6.png",
+          "sha256": "c29858dceae0f951fc062711421bf2f947280c8e53974c3d69cd5cde0d076cbd"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-strained-z0.6.jpg",
+          "sha256": "d0b7d930cf13b280b6fcd591e8c4fdffda7466a2a7e223cb5067d6e0b4d08d1a"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-strained-z0.6.png",
+          "sha256": "cedd8d6b6981b890eed8658ed2810c08d51f0364944d0c8b897ebd041e298d5c"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].level",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "dba188bac738be35fc50ac905af42959ef4497b154128ec4806a6b03540175b3",
+      "stateSHA256": "c1f36eedde1a0caec75a136be5e9824ee7467e6381198ebb67c1ebeb8aa863df",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-strained-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-strained-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 0,
+      "id": "neglected",
+      "name": "after-neglected-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-neglected-z1.jpg",
+          "sha256": "8bf62d1064004c697f3af413ef119ebdf47c488ecd8cb5cb0d7e95f6f13ff1d6"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-neglected-z1.png",
+          "sha256": "de870c2f3344cec836c08d95b41602c6d275c7f21655589a5b4ca6dd554f6e90"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-neglected-z1.jpg",
+          "sha256": "c160329c98a59a9bee8e4a3285cdc626be0d1ed62295727ea6692e5e62326012"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-neglected-z1.png",
+          "sha256": "6827977b093b1eec0942d770afe4e729a72259f7ede48c25198c78830d9c668a"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].unmetRequirementTicks",
+          "before": 0,
+          "after": 1200
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "2a87fbee0eeb06a984dc6fedd1195a9e401e0374a8a69023ab92aba7cdf8c8b7",
+      "stateSHA256": "509a8be0634e8f470a0f1bfd4e79ad83153fd93d7cc17bb2d58997b1d429aae5",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-neglected-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-neglected-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 0,
+      "id": "neglected",
+      "name": "after-neglected-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-neglected-z0.6.jpg",
+          "sha256": "c182e675aed7324640c29f4188049f6918a88016aaea3f03f846414a456041ae"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-neglected-z0.6.png",
+          "sha256": "9d76c2f48c6e0a3af70ff49d73bff64bf297bc2b785c4302ac099c50ff33b8a7"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-neglected-z0.6.jpg",
+          "sha256": "6ab424c7a25d7a1902f6d4abb22212ad60c1d0fb7de04d6f06619acd819d568b"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-neglected-z0.6.png",
+          "sha256": "e0f682d01506114730c7fdfc98c028e394f96169139f8432153d319265a5e14b"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].unmetRequirementTicks",
+          "before": 0,
+          "after": 1200
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "2a87fbee0eeb06a984dc6fedd1195a9e401e0374a8a69023ab92aba7cdf8c8b7",
+      "stateSHA256": "509a8be0634e8f470a0f1bfd4e79ad83153fd93d7cc17bb2d58997b1d429aae5",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-neglected-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-neglected-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 0,
+      "id": "vacant",
+      "name": "after-vacant-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-vacant-z1.jpg",
+          "sha256": "d493596ab6008f56efae9cede38ed5b5de628e5080ac37f9403ecb33c56f802d"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-vacant-z1.png",
+          "sha256": "2c5bc47c00d75060edc0aa2cb1da4eea5476a39da9871a5d2540e2a2fa3a5d09"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-vacant-z1.jpg",
+          "sha256": "a7b2aa49e92f4ce61c454234fd275e6e8598be218b5f59ae436b374726f1801e"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-vacant-z1.png",
+          "sha256": "a38104ac126110be4660d8dd5b8ddc2e227c318ec681a5037379ef2863e21ba9"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "a3dc9ed9d76bcc36b71034614d2e5a4696a057fb9dad213faa4d8928c919cb13",
+      "stateSHA256": "30a8df828229b4348e244cf0f2a48f5ae8f81c5d81b48eb575c1645e38775005",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 0,
+      "id": "vacant",
+      "name": "after-vacant-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-vacant-z0.6.jpg",
+          "sha256": "bf80565aa1753f089d504449ff42de7b17d57f13142cb6df310832c34fa7ee86"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-0/before-vacant-z0.6.png",
+          "sha256": "f4ae65b36d1039d1c61c06fbd0d3e831809aca3687c91e47cc9508f4fcec9741"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-vacant-z0.6.jpg",
+          "sha256": "20612d960aee0ed86efcd0986e26429a3a3a7d622ad2e082652ded4308181485"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-0/after-vacant-z0.6.png",
+          "sha256": "8a7ba510776dc64c5259fc18135944c9507ba0f3f7d6ed88c4b96971d27d65d0"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "a3dc9ed9d76bcc36b71034614d2e5a4696a057fb9dad213faa4d8928c919cb13",
+      "stateSHA256": "30a8df828229b4348e244cf0f2a48f5ae8f81c5d81b48eb575c1645e38775005",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 1,
+      "id": "abandoned",
+      "name": "after-abandoned-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-abandoned-z1.jpg",
+          "sha256": "a08ca0b191b72632feb1c5c501ecb8202670bdd1f90b81566d2f3cfa6f5ce15f"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-abandoned-z1.png",
+          "sha256": "4c9b0a06fa9e61af2e98a0061005fe33af551c1079359aaa112efdfee8ab7a29"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-abandoned-z1.jpg",
+          "sha256": "9e366c379ca6d961e4d4228fad95a1aa3904239ee451695754d34cead412d47c"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-abandoned-z1.png",
+          "sha256": "f7a070cea723b9056b7bde93061a0c24114a8195bfd1a6e01e747aee0d08e128"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "e0bf1d76a252c1d49e4175e6cb6c80427bdfc01bd406813a26309c540809d970",
+      "stateSHA256": "a7032268b4b9b52c6c1967dac9f7fcee2baf6226802811a0001d24c62ba037ad",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-boarded-v3.png",
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-boarded-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 1,
+      "id": "abandoned",
+      "name": "after-abandoned-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-abandoned-z0.6.jpg",
+          "sha256": "b1bf21039d871c2860ccf1917496440ce7bdc036ef6fca40fb062757a1ebb7f8"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-abandoned-z0.6.png",
+          "sha256": "39ed597b2dd633bcce75e2bad5c22d04f346cabe1fc0ee42da2c3eb8ace1c840"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-abandoned-z0.6.jpg",
+          "sha256": "3d67118a9dc8052e1920b74e1f95e9b6a9503b09e2c297b605d6e154e98a8409"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-abandoned-z0.6.png",
+          "sha256": "0d8770a74c4f3f0f4238f6b8be2ba9c5a3047fa6cdd494ee19948c900a4d5be8"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "e0bf1d76a252c1d49e4175e6cb6c80427bdfc01bd406813a26309c540809d970",
+      "stateSHA256": "a7032268b4b9b52c6c1967dac9f7fcee2baf6226802811a0001d24c62ba037ad",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-boarded-v3.png",
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-boarded-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 1,
+      "id": "plague-abandoned",
+      "name": "after-plague-abandoned-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-plague-abandoned-z1.jpg",
+          "sha256": "0a6da4db0bdb0e31e2e79c4e589ecfa41e7712d431b4f357d6f8223ecaa565ee"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-plague-abandoned-z1.png",
+          "sha256": "f3ccf777a45cdebbea00bf009f2594cd85b9d4005959cbfaa124d86ea5d3d3f9"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-plague-abandoned-z1.jpg",
+          "sha256": "5b46673a6a1ccd184a3540ea58e5328f6ea606034a91e72228d3745ac498b6d9"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-plague-abandoned-z1.png",
+          "sha256": "5967bb3ace0bd066c8dabe18b77df1b7f5e8ad143f57abacbc7c1ef3173bbcdb"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        },
+        {
+          "path": "plague",
+          "before": null,
+          "after": {
+            "eraTick": 160000,
+            "answers": {},
+            "vacantHouseIds": [
+              "construction-site-000021"
+            ],
+            "resettled": 0,
+            "recovered": 0,
+            "fled": 0
+          }
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "54d1686a72679919f9aadad67edd8850d98c7b7a5574ecb965237350b8b7e408",
+      "stateSHA256": "72f475da1be29eb896c2a496d8c7c40781f9689ca99dc294a6b1d81cd876e953",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-plague-shut-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-plague-shut-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 1,
+      "id": "plague-abandoned",
+      "name": "after-plague-abandoned-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-plague-abandoned-z0.6.jpg",
+          "sha256": "2ee0407ee9086eba3184d8db58951f88f31dacb094330294e3191b5279a35607"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-plague-abandoned-z0.6.png",
+          "sha256": "e885c1a6f14ea6fceb0a9b22e56c64ce49d436c85b48b513a8f069efee19c269"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-plague-abandoned-z0.6.jpg",
+          "sha256": "90f9082b2210ecbe950e9dee4cc3e532cbd28c54c32fc346e1682f3e47671244"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-plague-abandoned-z0.6.png",
+          "sha256": "5840abb236e87ebc5cbafe5e2ed9d647b59e33ef133b8cadf27b2e9ab0d521ff"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        },
+        {
+          "path": "plague",
+          "before": null,
+          "after": {
+            "eraTick": 160000,
+            "answers": {},
+            "vacantHouseIds": [
+              "construction-site-000021"
+            ],
+            "resettled": 0,
+            "recovered": 0,
+            "fled": 0
+          }
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "54d1686a72679919f9aadad67edd8850d98c7b7a5574ecb965237350b8b7e408",
+      "stateSHA256": "72f475da1be29eb896c2a496d8c7c40781f9689ca99dc294a6b1d81cd876e953",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-plague-shut-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-plague-shut-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 1,
+      "id": "winter",
+      "name": "after-winter-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-z1.jpg",
+          "sha256": "6a888eb8e8d48185b24695c1cc7e8918200206bfb8eab5ee980c5bc6674005e3"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-z1.png",
+          "sha256": "6c4106cfad4d8c1c348265175698c56e916e46cf78d1b6eca7c464dd3e07f713"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-z1.jpg",
+          "sha256": "c1458470c8fe6d4897e120b83c2460a0821b7824ad813536ab9f212073e6f0f3"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-z1.png",
+          "sha256": "d2f6af58e4e935f048c88c33b7330c0afd8f111fadd8d3cbc68d0790ff94440e"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 163500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "53fa179f16ffdf9fc2a4b328bebc7b16212bfb6e2582f443b6b8df8d1cb2e00e",
+      "stateSHA256": "c8ce0e0360f1b98e59cbebdb5cc8c78160d2793683a2a3d07b122abc4275ab32",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 42
+    },
+    {
+      "group": 1,
+      "id": "winter",
+      "name": "after-winter-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-z0.6.jpg",
+          "sha256": "865142e0bea6fe33137f00985f706cc7c65a1853ffd6fbd79825f494805f8191"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-z0.6.png",
+          "sha256": "8a32c55532ef5523283d2d37632464e9e39c262644ed682c30e1fe8d391d9a51"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-z0.6.jpg",
+          "sha256": "d39842bf0e8e2f5b97d8d640dfed35e4646d9ad937ef8823d008be3ee5b99f6c"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-z0.6.png",
+          "sha256": "39040863711f4643635cbbbe1bb3561b4287b4123ea5505bd6247a1344595e97"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 163500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "53fa179f16ffdf9fc2a4b328bebc7b16212bfb6e2582f443b6b8df8d1cb2e00e",
+      "stateSHA256": "c8ce0e0360f1b98e59cbebdb5cc8c78160d2793683a2a3d07b122abc4275ab32",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 42
+    },
+    {
+      "group": 1,
+      "id": "winter-abandoned",
+      "name": "after-winter-abandoned-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-abandoned-z1.jpg",
+          "sha256": "c09222ece129df6a4bdac49c300fce9b603566d9354b046723efda119a7ca795"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-abandoned-z1.png",
+          "sha256": "84ddfeba80aed806e73e28910e848a37ab58f2b98c1e3c89742b2d87e882e017"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-abandoned-z1.jpg",
+          "sha256": "1f1734fadfebc0438996057c557803de7d14686e68da1448dea0688bc224cf4d"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-abandoned-z1.png",
+          "sha256": "975e51113f11d0abfd8f83ad1162f889e06fb0181a5754e6f663facf9a58e656"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 163500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "e75449de93d93504487188f50293e70b2265c90724b7aeeb5ac2cb786ce671bf",
+      "stateSHA256": "393c7e732ebef891a4ac78b3f2623ec15dc359be774879b48e927f165d6a8bf9",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-boarded-v3.png",
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-boarded-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 44
+    },
+    {
+      "group": 1,
+      "id": "winter-abandoned",
+      "name": "after-winter-abandoned-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-abandoned-z0.6.jpg",
+          "sha256": "b1ea07fb057dcf9047a70f5a45adc50c8e8ff18bac1b186e33e5abf16463c40e"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-1/before-winter-abandoned-z0.6.png",
+          "sha256": "e8fe420cb1397997253be74cd91a8e4132c9ce7dc4f64e601269160fec4b289e"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-abandoned-z0.6.jpg",
+          "sha256": "b210a5f2dabb7010868cd7d85e11002dd0eb7e27d473055bf47db2b2a7434377"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-1/after-winter-abandoned-z0.6.png",
+          "sha256": "e4f2436ad4d85413d87aa1542024fa894bfdca3f32fb0c4ab313b3685979ebb3"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 163500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "e75449de93d93504487188f50293e70b2265c90724b7aeeb5ac2cb786ce671bf",
+      "stateSHA256": "393c7e732ebef891a4ac78b3f2623ec15dc359be774879b48e927f165d6a8bf9",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-boarded-v3.png",
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-boarded-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 44
+    },
+    {
+      "group": 2,
+      "id": "melt",
+      "name": "after-melt-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-z1.jpg",
+          "sha256": "14071deafcb67094486bdf234f03190e7e789a6e9dddad9c8098eb81e94e4b32"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-z1.png",
+          "sha256": "2f6434456152a7509cb3c428593deb319c54ba6725491df6bc8d21b9c987fb03"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-z1.jpg",
+          "sha256": "69dc57a2864ec1dee032bc1d9a601f2d8782e7409bdf27c1726b032163e0ead6"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-z1.png",
+          "sha256": "61d0eb11b2b84d0dbbbab1f05d1a93ff72bc79f76cd4cd79fc1238b995ee6827"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 164150
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "61b6a487932629d760a7d6a58e15f6fe1e7394f792fe81731f3ce567849e0833",
+      "stateSHA256": "896d8d044c547f8eff227efe95ceb236c635b1348fa7f1bc0cb6eadff3f4f4bb",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          0.4698990248609062
+        ]
+      },
+      "walkerCount": 43
+    },
+    {
+      "group": 2,
+      "id": "melt",
+      "name": "after-melt-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-z0.6.jpg",
+          "sha256": "ed2d5c9f4199ae9a6e1abc349402c57bb9c62c49c0c334eb1504552a854a3bfc"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-z0.6.png",
+          "sha256": "eb9e13ddd06423c97cea33e9d514e6d00133109241ee5b89d08431b6fbf19df4"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-z0.6.jpg",
+          "sha256": "74c383b62fda3f4e119889105cac52be04b5f5d347250e818fd24e87e07917f3"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-z0.6.png",
+          "sha256": "55c742a09fe47bb33d32697c6a5a281447756f1c22fd092ac9d819012cc42436"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 164150
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "61b6a487932629d760a7d6a58e15f6fe1e7394f792fe81731f3ce567849e0833",
+      "stateSHA256": "896d8d044c547f8eff227efe95ceb236c635b1348fa7f1bc0cb6eadff3f4f4bb",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          0.4698990248609062
+        ]
+      },
+      "walkerCount": 43
+    },
+    {
+      "group": 2,
+      "id": "melt-abandoned",
+      "name": "after-melt-abandoned-z1",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-abandoned-z1.jpg",
+          "sha256": "5035bd937ab967147ff348c712269bcf65383057aed46eeabd0b600b07cbed60"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-abandoned-z1.png",
+          "sha256": "883a9f73f24bc3958ae6e92477b9a3add6d3486685a22af698117a7a8246f669"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-abandoned-z1.jpg",
+          "sha256": "42add331e32b02345aa2d282275fb59a8d4d03617a9e66656c29f271d4367d71"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-abandoned-z1.png",
+          "sha256": "8b7b547e03b04df218a33aeba2a9feadcba4978ed2841a9d7887ae0e00c284c2"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 164150
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "e8ce87ca2c619192f86f114e1cac1c93b9a80dd619298d7f89cca15918cfc852",
+      "stateSHA256": "e97a12893bf397c624ea2ae388d0db82131681cb72251297511ec725dde03dca",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-boarded-v3.png",
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-boarded-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          0.4698990248609062
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 2,
+      "id": "melt-abandoned",
+      "name": "after-melt-abandoned-z0.6",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-abandoned-z0.6.jpg",
+          "sha256": "8a7edea8c25b863bd01870f0ce607bd3ce35624ae6d38478c2399cf063682e19"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-2/before-melt-abandoned-z0.6.png",
+          "sha256": "689f2517f48d63b006fdf84cc825386963b3ce389e6bc772a2c1a919c76d72c4"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-abandoned-z0.6.jpg",
+          "sha256": "0688bccc68aa635db52d5c311988dab3bda26844e110c45cb2052a085f020a19"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-2/after-melt-abandoned-z0.6.png",
+          "sha256": "3469488301d3943a5579b0c7198416c0a0f3325a06268b1bdd968a63ad52463a"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 164150
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        },
+        {
+          "path": "houses[13].residents",
+          "before": 32,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.adults",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].members.children",
+          "before": 16,
+          "after": 0
+        },
+        {
+          "path": "houses[13].abandonedTick",
+          "before": null,
+          "after": 160183
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "e8ce87ca2c619192f86f114e1cac1c93b9a80dd619298d7f89cca15918cfc852",
+      "stateSHA256": "e97a12893bf397c624ea2ae388d0db82131681cb72251297511ec725dde03dca",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-boarded-v3.png",
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png",
+        "height-historic-l1/house_l1-historic-vacant-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-boarded-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          0.4698990248609062
+        ],
+        "height-historic-l1/house_l1-historic-vacant-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 41
+    },
+    {
+      "group": 3,
+      "id": "maintained",
+      "name": "after-maintained-z3",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-3/before-maintained-z3.jpg",
+          "sha256": "f9f02be7f61cb1f0b96914f4a4b973ed2302f8522773c87ebaf817dbc77d410f"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-3/before-maintained-z3.png",
+          "sha256": "5c70d18e386d65d3e2a31ff649ec356ea7f67a97a2eda2df5894e65ef0269d78"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-3/after-maintained-z3.jpg",
+          "sha256": "d92862add6c71c0b540125b2b88886ab21ef1ee29fa59fa7ad4e70c9fa880fd1"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-3/after-maintained-z3.png",
+          "sha256": "1dd894e7abed751b02b586d93c05286414d42a2df800a1d89541f02693fecf76"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 161500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "b96ef7b9f47ad5363c1a8684c2b8a7b246ca827c4616cdd4f7f88a5f4eb3a69b",
+      "stateSHA256": "3084d4680bf2949a4c253c9ea64bedc37a633290f9634f6620923209723f23d1",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 40
+    },
+    {
+      "group": 3,
+      "id": "winter",
+      "name": "after-winter-z3",
+      "classification": "명시적 prepared QA 저장. 자연 플레이/역병 발생/이주/계절 진행 증거 아님",
+      "baseline": "Original 4fe31789 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-historic-l1-before-3/before-winter-z3.jpg",
+          "sha256": "245a5545213e0f9bbf57954756da0c1d32fbf49a9abed5f3c3730bfa2dda4950"
+        },
+        {
+          "file": "output/rb-height-historic-l1-before-3/before-winter-z3.png",
+          "sha256": "97a7b9882c077eda745cfdf13922d27d9624f0a48809849c61c980aa56976af7"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-3/after-winter-z3.jpg",
+          "sha256": "6b8799e0150a5bc3fc845c80bc23c71ab9a7739bf0dce3e474839d17f0ee8789"
+        },
+        {
+          "file": "output/rb-height-historic-l1-after-3/after-winter-z3.png",
+          "sha256": "bad2913de397ea4c506caff1b9f7d08d21abb02e2235372ff318b8476702ad0f"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        50,
+        39
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000021",
+      "fields": [
+        {
+          "path": "tick",
+          "before": 160183,
+          "after": 163500
+        },
+        {
+          "path": "seed",
+          "before": 1,
+          "after": 24
+        }
+      ],
+      "seed": 24,
+      "sourceSHA256": "1233eeac2874be9731bc5a1741d6211ee6f83f2ddb62c853c64ac52f6adeb1d9",
+      "saveSHA256": "53fa179f16ffdf9fc2a4b328bebc7b16212bfb6e2582f443b6b8df8d1cb2e00e",
+      "stateSHA256": "c8ce0e0360f1b98e59cbebdb5cc8c78160d2793683a2a3d07b122abc4275ab32",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-historic-l1/house_l1-historic-body-v3.png",
+        "height-historic-l1/house_l1-historic-snow-v3.png"
+      ],
+      "observedAlpha": {
+        "height-historic-l1/house_l1-historic-body-v3.png": [
+          1
+        ],
+        "height-historic-l1/house_l1-historic-snow-v3.png": [
+          1
+        ]
+      },
+      "walkerCount": 42
+    }
+  ],
+  "runs": [
+    {
+      "group": 0,
+      "stage": "before",
+      "head": "4fe31789a34d20495e8581ea6fc494bca32a4c0a",
+      "startedAt": "2026-10-07T22:03:35.281Z",
+      "finishedAt": "2026-10-07T22:05:51.288Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "8056778e0eea035d5000b20894f88e5b6703f21fb790ad3908c41523f92e0307"
+    },
+    {
+      "group": 0,
+      "stage": "after",
+      "head": "f689e467ac3322e9e06127908bf8b0d5bfabb410",
+      "startedAt": "2026-10-07T22:09:15.949Z",
+      "finishedAt": "2026-10-07T22:10:33.989Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-maintained-z1",
+          "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-neglected-z0.6",
+          "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "3b5b4677af0016338037466a0233ba2f642a439542fa8786a0a9415156383d50"
+    },
+    {
+      "group": 1,
+      "stage": "before",
+      "head": "4fe31789a34d20495e8581ea6fc494bca32a4c0a",
+      "startedAt": "2026-10-07T22:05:53.653Z",
+      "finishedAt": "2026-10-07T22:07:11.157Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-abandoned-z1",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-winter-abandoned-z0.6",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "afaa8a32b0060680bb1f8cc9db20dcaa171acaf8ecd422de7fbc9d56456a46c1"
+    },
+    {
+      "group": 1,
+      "stage": "after",
+      "head": "f689e467ac3322e9e06127908bf8b0d5bfabb410",
+      "startedAt": "2026-10-07T22:10:35.225Z",
+      "finishedAt": "2026-10-07T22:11:46.172Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "03d4219f1d957f5ec0b0693e9faa68b62f2d4c090f208e59e24840c31a9fe345"
+    },
+    {
+      "group": 2,
+      "stage": "before",
+      "head": "4fe31789a34d20495e8581ea6fc494bca32a4c0a",
+      "startedAt": "2026-10-07T22:07:12.379Z",
+      "finishedAt": "2026-10-07T22:07:56.882Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-melt-z1",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-melt-z0.6",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-melt-abandoned-z0.6",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "444d8d35197c8c5673bb9231998bd8bb165858cab22c5f3f99352c50f94508c5"
+    },
+    {
+      "group": 2,
+      "stage": "after",
+      "head": "f689e467ac3322e9e06127908bf8b0d5bfabb410",
+      "startedAt": "2026-10-07T22:11:47.345Z",
+      "finishedAt": "2026-10-07T22:12:22.690Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "8745b27576613817638b090fccbb871935c980741ac3df96892f8d7901402833"
+    },
+    {
+      "group": 3,
+      "stage": "before",
+      "head": "4fe31789a34d20495e8581ea6fc494bca32a4c0a",
+      "startedAt": "2026-10-07T22:07:58.062Z",
+      "finishedAt": "2026-10-07T22:08:20.725Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-maintained-z3",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-winter-z3",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "fe42bee87a7844ebf86b5fda04258ce011038cfc5182c05be889832dddacda3b"
+    },
+    {
+      "group": 3,
+      "stage": "after",
+      "head": "f689e467ac3322e9e06127908bf8b0d5bfabb410",
+      "startedAt": "2026-10-07T22:12:23.847Z",
+      "finishedAt": "2026-10-07T22:12:42.346Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "1c1b2318edc8e533133dbbb3fb449bf36a6f2820a28bc9c81637efbba5430159"
+    }
+  ],
+  "scope": "Prepared historic L1 QA with disclosed seed24, tick, condition, vacancy and plague edits; no natural growth claim. Identical state, camera, clock, and actors before/after."
+}

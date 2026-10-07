@@ -252,3 +252,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 ### RB-HEIGHT-L0E — 덧채 집의 문과 상태층
 
 기존 e형 선택을 보존하며 본체와 fresh 완성 상태·이끼·판자·눈 다섯 장을 설치했다. 같은 저장18쌍과 실제 대상 draw18/18에서 여름·겨울·부분해빙을 확인했다. 문짝 측정 중앙값은 기준 안이지만 오차범위 하한 교차, 발판 최대4.472native 잔차와 두꺼운 눈처마는 남는다. 원본과 준비 저장 차이는 `docs/verification/height-l0e/README.md` 및 배포 ZIP에 보존한다.
+
+### RB-HEIGHT-HISTORIC-L1 — 기본 집의 문과 일곱 상태
+
+기본 historic L1의 본체·눈·일반판자·관리부족·보수필요·빈집·역병봉쇄 일곱 장을 전용 계약으로 등록했다. 기존 엔진 사실을 읽는 공용 소비자가 상태층0→판자10→눈20과 이미지 누락 시 전체 폴백을 지킨다. 동일 seed24 준비 저장22쌍에서 실제 대상 그림·상태순서·해빙alpha를 확인했고 기하80조건 실패0이다. 작은 strained 표시와 오른쪽 박공 눈잔차 및 문 하단 점포가림 한계는 `docs/verification/height-historic-l1/README.md`에 보존했다.
