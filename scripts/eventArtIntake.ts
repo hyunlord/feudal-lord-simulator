@@ -1,11 +1,13 @@
 /**
- * EVENT-ART intake: the confirmed event illustrations of the pack Astra delivered (assets-inbox/event-art/final200-20261004,
- * filed by INBOX-3z, confirmed 2026-10-04 in assets-inbox/INBOX_LEDGER.csv) → src/ui/eventArtManifest.generated.ts.
+ * EVENT-ART intake: the confirmed event illustrations of every pack Astra delivered → src/ui/eventArtManifest.generated.ts.
+ * A pack is a batch under assets-inbox/event-art/ with its own records/ASSETS.csv (event_id, file, sha256, title): today
+ * final200-20261004 (INBOX-3z, confirmed 2026-10-04) and v41-201-215-20261007 (INBOX-4b, the v4.1 new events). A new
+ * batch filed the same way is read with no code change; an id two packs both name is refused.
  * Run it only when pictures arrive or change in the inbox; turning an event on needs nothing here (EVA-AUTO: the build
  * ships the live entries' pictures, src/ui/eventArtSelection.ts, and `npm run eventart:auto` draws each through the real
  * card and then writes its provenance row and its ledger mark).
  * File name = the content canon v4 event id; records/ASSETS.csv maps each id to its file. Most are in the pack's assets/;
- * the identical ones that stayed in older batches (records/README.md lists each: event-art/candidates-20261003,
+ * final200's identical ones that stayed in older batches (its records/README.md lists each: event-art/candidates-20261003,
  * event-art/rework-20261003, wave44 07_market_stall_dispute.jpg for ck_evt_012) are each read where they lie and checked
  * byte for byte against ASSETS.csv.
  * Every picture: its ledger row confirmed with no replaced_by, its SHA-256 = ASSETS.csv's = the ledger's, 960 × 540 from
@@ -22,7 +24,12 @@ import path from "node:path";
 import { parseCsv } from "./provenanceLedgerCsv";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
-export const PACK = "assets-inbox/event-art/final200-20261004";
+const EVENT_ART = "assets-inbox/event-art";
+/** final200's records keep one ASSETS.csv per review round (records/rNN/); the generation reader below follows them. */
+const FINAL200 = `${EVENT_ART}/final200-20261004`;
+/** The packs: every batch under assets-inbox/event-art/ with a records/ASSETS.csv, in name order. */
+export const PACKS: readonly string[] = readdirSync(path.join(ROOT, EVENT_ART))
+  .filter(name => existsSync(path.join(ROOT, EVENT_ART, name, "records", "ASSETS.csv"))).sort().map(name => `${EVENT_ART}/${name}`);
 const INBOX_LEDGER = "assets-inbox/INBOX_LEDGER.csv";
 export const MANIFEST = "src/ui/eventArtManifest.generated.ts";
 const SIZE = [960, 540] as const;
@@ -68,18 +75,18 @@ export function generation(picture: Picture): { version: string; tool: string; p
       references: ((record.style_references ?? record.references) as string[] | undefined ?? []).map(reference => path.basename(reference)).join(";") || "none",
       edits: `${String(record.conversion ?? record.format ?? "")}${edits.length > 0 ? `; ${edits.length} image edit(s) after the generation (record history)` : ""} (${batch} record)` };
   }
-  if (batch === PACK.slice("assets-inbox/".length)) {
+  if (batch === FINAL200.slice("assets-inbox/".length)) {
     // The round that selected these bytes: its ASSETS.csv row with this id and SHA, and that version's prompt file.
-    const rounds = readdirSync(path.join(ROOT, PACK, "records")).filter(name => /^r\d\d$/.test(name)).sort().reverse();
+    const rounds = readdirSync(path.join(ROOT, FINAL200, "records")).filter(name => /^r\d\d$/.test(name)).sort().reverse();
     for (const round of rounds) {
-      const assets = `${PACK}/records/${round}/ASSETS.csv`;
+      const assets = `${FINAL200}/records/${round}/ASSETS.csv`;
       if (!existsSync(path.join(ROOT, assets))) continue;
       const row = table(assets).find(entry => entry.event_id === picture.id && entry.sha256 === picture.sha256);
       if (row === undefined) continue;
       // A round names its version "v2" or plainly "2" (the prompt file is …-v2.txt); "existing_reuse" took an earlier
       // round's; r03 and r04 keep one prompt per picture (…/prompts/<id>.txt) and no version, so the round stands for it.
       const version = row.selected_version === undefined ? round : /^\d+$/.test(row.selected_version) ? `v${row.selected_version}` : row.selected_version;
-      const prompt = `${PACK}/records/${round}/prompts/${picture.id}${row.selected_version === undefined ? "" : `-${version}`}.txt`;
+      const prompt = `${FINAL200}/records/${round}/prompts/${picture.id}${row.selected_version === undefined ? "" : `-${version}`}.txt`;
       if (!existsSync(path.join(ROOT, prompt))) {
         if (version === "existing_reuse") continue;
         throw new Error(`${picture.id}: ${round} selected ${row.selected_version} but ${prompt} is missing`);
@@ -87,16 +94,16 @@ export function generation(picture: Picture): { version: string; tool: string; p
       if (row.selected_version === undefined) {
         // r03/r04: the generation prompt, then every other prompt the round kept for this picture (redraws and edits),
         // each under its file name; the round's records (…-paths.json, edits-*.json) say which edit was kept.
-        const others = readdirSync(path.join(ROOT, PACK, "records", round, "prompts")).filter(name => name.startsWith(`${picture.id}-`)).sort();
+        const others = readdirSync(path.join(ROOT, FINAL200, "records", round, "prompts")).filter(name => name.startsWith(`${picture.id}-`)).sort();
         const selected = (["composition", "semantic"] as const).flatMap(kind => {
-          const file = path.join(ROOT, PACK, "records", round, "records", `${kind}-edit-paths.json`);
+          const file = path.join(ROOT, FINAL200, "records", round, "records", `${kind}-edit-paths.json`);
           if (!existsSync(file)) return [];
           const paths = JSON.parse(readFileSync(file, "utf8")) as { selected?: Record<string, { version: string }>; edits?: Record<string, { version: string }> };
           const chosen = (paths.selected ?? paths.edits ?? {})[String(Number(picture.id.slice("ck_evt_".length)))];
           return chosen === undefined ? [] : [`${kind}-${chosen.version}`];
         });
         return { version: selected.at(-1) ?? round, tool: `not recorded in the ${round} records`,
-          prompt: [text(prompt).trim(), ...others.map(name => `[${name}] ${text(`${PACK}/records/${round}/prompts/${name}`).trim()}`)].join("\n\n"), references: "not recorded",
+          prompt: [text(prompt).trim(), ...others.map(name => `[${name}] ${text(`${FINAL200}/records/${round}/prompts/${name}`).trim()}`)].join("\n\n"), references: "not recorded",
           edits: `${round} as delivered${selected.length === 0 ? "" : ` (selected edit ${selected.join(", ")} in records/${round}/records/*-edit-paths.json)`}; `
             + `${others.length} further prompt(s) of the round for this picture kept in the prompt file (final200 records/${round}/ASSETS.csv)` };
       }
@@ -104,6 +111,15 @@ export function generation(picture: Picture): { version: string; tool: string; p
         edits: `${round} ${row.selected_version} as selected (final200 records/${round}/ASSETS.csv)` };
     }
     throw new Error(`${picture.id}: no round record selects ${picture.sha256}`);
+  }
+  if (PACKS.includes(`assets-inbox/${batch}`) && existsSync(path.join(ROOT, `assets-inbox/${batch}/records/prompts/${picture.id}.txt`))) {
+    // A pack that keeps one saved prompt per picture (records/prompts/<id>.txt) and the selected version in ASSETS.csv
+    // (v41-201-215: "_v2"); its records/records/generation-history.json lists every generation by SHA.
+    const row = table(`assets-inbox/${batch}/records/ASSETS.csv`).find(entry => entry.event_id === picture.id && entry.sha256 === picture.sha256);
+    if (row === undefined) throw new Error(`${picture.id}: ${batch} records/ASSETS.csv has no row with ${picture.sha256}`);
+    const version = (row.version ?? "").replace(/^_/, "") || "as delivered";
+    return { version, tool: "not recorded in the pack's records", prompt: text(`assets-inbox/${batch}/records/prompts/${picture.id}.txt`).trim(),
+      references: "not recorded", edits: `${version} as selected (${batch} records/ASSETS.csv; records/records/generation-history.json lists the generations)` };
   }
   if (batch === "wave44/candidates-20261002") {
     const record = (JSON.parse(text(`assets-inbox/${batch}/records/manifest.json`)) as Record<string, unknown>[])
@@ -115,22 +131,22 @@ export function generation(picture: Picture): { version: string; tool: string; p
 }
 
 
-/** The pack's pictures in ASSETS.csv order, each checked against the inbox ledger and its own bytes (throws on any doubt). */
-export function readEventArtPack(): Picture[] {
-  const assets = table(`${PACK}/records/ASSETS.csv`);
-  // records/README.md: the identical pictures already in the ledger, each with the file it is (`ck_evt_NNN(`path`)`).
-  const elsewhere = new Map([...text(`${PACK}/records/README.md`).matchAll(/(ck_evt_\d{3})\(`([^`]+)`\)/g)].map(match => [match[1]!, `assets-inbox/${match[2]!}`]));
-  const inbox = table(INBOX_LEDGER);
-  const byFile = new Map(inbox.map(row => [`assets-inbox/${row.file}`, row]));
-  const local = new Set(readdirSync(path.join(ROOT, PACK, "assets")));
-  if (new Set(assets.map(row => row.event_id)).size !== assets.length) throw new Error("ASSETS.csv names an id twice");
-  if (local.size + elsewhere.size !== assets.length) throw new Error(`${PACK}: ${local.size} in assets/ + ${elsewhere.size} elsewhere ≠ ${assets.length} ASSETS.csv rows`);
+/** One pack's pictures in its ASSETS.csv order, each checked against the inbox ledger and its own bytes (throws on any doubt). */
+function readPack(pack: string, byFile: ReadonlyMap<string, Record<string, string>>): Picture[] {
+  const assets = table(`${pack}/records/ASSETS.csv`);
+  // records/README.md (final200): the identical pictures already in the ledger, each with the file it is (`ck_evt_NNN(`path`)`).
+  const readme = `${pack}/records/README.md`;
+  const elsewhere = new Map(existsSync(path.join(ROOT, readme))
+    ? [...text(readme).matchAll(/(ck_evt_\d{3})\(`([^`]+)`\)/g)].map(match => [match[1]!, `assets-inbox/${match[2]!}`] as const) : []);
+  const local = new Set(readdirSync(path.join(ROOT, pack, "assets")));
+  if (new Set(assets.map(row => row.event_id)).size !== assets.length) throw new Error(`${pack}: ASSETS.csv names an id twice`);
+  if (local.size + elsewhere.size !== assets.length) throw new Error(`${pack}: ${local.size} in assets/ + ${elsewhere.size} elsewhere ≠ ${assets.length} ASSETS.csv rows`);
 
   const pictures: Picture[] = [];
   for (const row of assets) {
     const id = row.event_id!;
-    const file = elsewhere.get(id) ?? `${PACK}/${row.file}`;
-    if (!elsewhere.has(id) && !local.delete(path.basename(row.file!))) throw new Error(`${id}: ${row.file} is not in ${PACK}/assets`);
+    const file = elsewhere.get(id) ?? `${pack}/${row.file}`;
+    if (!elsewhere.has(id) && !local.delete(path.basename(row.file!))) throw new Error(`${id}: ${row.file} is not in ${pack}/assets`);
     const entry = byFile.get(file);
     // INSTALL_PROTOCOL 1: the ledger is the truth for which file is current.
     if (entry === undefined) throw new Error(`${file}: no INBOX_LEDGER row`);
@@ -141,10 +157,22 @@ export function readEventArtPack(): Picture[] {
     const facts = jpegFacts(data);
     if (facts.c2pa) throw new Error(`${file} carries a C2PA / JUMBF segment`);
     if (facts.width !== SIZE[0] || facts.height !== SIZE[1]) throw new Error(`${file}: ${facts.width}x${facts.height}`);
-    pictures.push({ id, title: row.title!, file, sha256: digest, bytes: data.length });
+    // final200 calls the title `title`, v41-201-215 `title_ko`.
+    const title = row.title || row.title_ko;
+    if (!title) throw new Error(`${id}: ${pack} records/ASSETS.csv gives no title`);
+    pictures.push({ id, title, file, sha256: digest, bytes: data.length });
   }
   const unnamed = [...local];
-  if (unnamed.length > 0) throw new Error(`${PACK}/assets has files no id names: ${unnamed.join(", ")}`);
+  if (unnamed.length > 0) throw new Error(`${pack}/assets has files no id names: ${unnamed.join(", ")}`);
+  return pictures;
+}
+
+/** Every pack's pictures, pack by pack (an id two packs name is refused: which picture is current would be a guess). */
+export function readEventArtPack(): Picture[] {
+  const byFile = new Map(table(INBOX_LEDGER).map(row => [`assets-inbox/${row.file}`, row]));
+  const pictures = PACKS.flatMap(pack => readPack(pack, byFile));
+  const twice = pictures.map(picture => picture.id).filter((id, index, ids) => ids.indexOf(id) !== index);
+  if (twice.length > 0) throw new Error(`event ids in two packs: ${[...new Set(twice)].join(", ")}`);
   return pictures;
 }
 
@@ -152,7 +180,7 @@ export function readEventArtPack(): Picture[] {
 export function eventArtManifestText(pictures: readonly Picture[]): string {
   const literal = (value: Readonly<Record<string, string | number>>) => `{${Object.entries(value).map(([key, field]) => `${JSON.stringify(key)}: ${JSON.stringify(field)}`).join(", ")}}`;
   const entries = pictures.map(picture => `  ${picture.id}: ${literal({ path: `assets/event-art/${picture.id}.jpg`, width: SIZE[0], height: SIZE[1], title: picture.title, source: picture.file })},`);
-  return "// Generated by scripts/eventArtIntake.ts — the confirmed event illustrations (EVENT-ART; assets-inbox/event-art/final200-20261004,\n"
+  return "// Generated by scripts/eventArtIntake.ts — the confirmed event illustrations (EVENT-ART; every pack under assets-inbox/event-art/,\n"
     + "// key = the content canon v4 event id): 960 × 540 JPEGs, re-encoded at build (scripts/keyartDerivatives.ts, format jpeg-reencoded)\n"
     + "// only for the registry's live entries (src/ui/eventArtSelection.ts). `path` is where a shipped one is served; `source` the received file.\n"
     + `export const EVENT_ART_IMAGES = {\n${entries.join("\n")}\n} as const;\n`;
