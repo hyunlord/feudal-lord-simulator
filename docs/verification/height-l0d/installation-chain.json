@@ -1,0 +1,57 @@
+[
+  {
+    "id": "height-l0d/house_l0_d-v2",
+    "name": "house_l0_d-v2",
+    "layer": "body",
+    "candidate": "/tmp/astra-height-l0d-candidates-20261008/house_l0_d-body-candidate.png",
+    "native": "assets-inbox/height-l0d/candidates-20261008/approved-native/house_l0_d-v2.png",
+    "runtime": "public/assets/height-l0d/house_l0_d-v2.png",
+    "sha": "4c6f14ea5d5b68417bf7f7cae946a051db3b8b707211f60a48c8eaff51c2d7ce",
+    "raw": "/tmp/astra-height-l0d-candidates-20261008/body-02-raw.png",
+    "prompt": "/tmp/astra-height-l0d-candidates-20261008/body-02-prompt.txt"
+  },
+  {
+    "id": "height-l0d/house_l0_d-v2_fresh",
+    "name": "house_l0_d-v2_fresh",
+    "layer": "fresh",
+    "candidate": "/tmp/astra-height-l0d-candidates-20261008/house_l0_d-fresh-candidate.png",
+    "native": "assets-inbox/height-l0d/candidates-20261008/approved-native/house_l0_d-v2_fresh.png",
+    "runtime": "public/assets/height-l0d/house_l0_d-v2_fresh.png",
+    "sha": "cee11ff6a50e7cc0e6c3e06d04c7a8903daedf498ba360a2c9f39039a93d226d",
+    "raw": "/tmp/astra-height-l0d-candidates-20261008/fresh-03-raw.png",
+    "prompt": "/tmp/astra-height-l0d-candidates-20261008/fresh-03-prompt.txt"
+  },
+  {
+    "id": "height-l0d/house_l0_d-v2_weathered",
+    "name": "house_l0_d-v2_weathered",
+    "layer": "weathered",
+    "candidate": "/tmp/astra-height-l0d-candidates-20261008/house_l0_d-weathered-candidate.png",
+    "native": "assets-inbox/height-l0d/candidates-20261008/approved-native/house_l0_d-v2_weathered.png",
+    "runtime": "public/assets/height-l0d/house_l0_d-v2_weathered.png",
+    "sha": "84fca6cb7b89f7f64f162458e8b0fe4932e04e6f125f721169f7c59e59215041",
+    "raw": "/tmp/astra-height-l0d-candidates-20261008/weathered-02-raw.png",
+    "prompt": "/tmp/astra-height-l0d-candidates-20261008/weathered-02-prompt.txt"
+  },
+  {
+    "id": "height-l0d/house_l0_d-v2_boarded",
+    "name": "house_l0_d-v2_boarded",
+    "layer": "boarded",
+    "candidate": "/tmp/astra-height-l0d-candidates-20261008/house_l0_d-boarded-candidate.png",
+    "native": "assets-inbox/height-l0d/candidates-20261008/approved-native/house_l0_d-v2_boarded.png",
+    "runtime": "public/assets/height-l0d/house_l0_d-v2_boarded.png",
+    "sha": "02bd35ebf46ff227da8e75a0a0d8480ecf03aba0ec1e5863cfbd62497c4edc1e",
+    "raw": "/tmp/astra-height-l0d-candidates-20261008/boarded-01-raw.png",
+    "prompt": "/tmp/astra-height-l0d-candidates-20261008/boarded-01-prompt.txt"
+  },
+  {
+    "id": "height-l0d/house_l0_d-v2_snow",
+    "name": "house_l0_d-v2_snow",
+    "layer": "snow",
+    "candidate": "/tmp/astra-height-l0d-candidates-20261008/house_l0_d-snow-candidate.png",
+    "native": "assets-inbox/height-l0d/candidates-20261008/approved-native/house_l0_d-v2_snow.png",
+    "runtime": "public/assets/height-l0d/house_l0_d-v2_snow.png",
+    "sha": "cb20f3dce54cf3545762fa8c845b4fff0c956dc30d317808ec6c5501272064b4",
+    "raw": "/tmp/astra-height-l0d-candidates-20261008/snow-02-raw.png",
+    "prompt": "/tmp/astra-height-l0d-candidates-20261008/snow-02-prompt.txt"
+  }
+]
