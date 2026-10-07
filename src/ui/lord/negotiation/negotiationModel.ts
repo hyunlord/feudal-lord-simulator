@@ -6,13 +6,15 @@ import type { Acceptance, AcceptanceReasonName, AcceptanceTier, MarriagePlan, Ma
 import type { GameState } from "../../../engine/engine.types";
 import { estatePerson, estatesOf, LORD } from "../../../engine/estates";
 import { lordshipOf } from "../../../engine/lordshipState";
-import { answerCounter, marriageCandidates, marriageDecisionDue, marriageGrooms, marriageRefusal, MARRIAGE_ESTATE_ID, type MarriageRefusal } from "../../../engine/marriage";
+import { marriageCandidates, marriageDecisionDue, marriageGrooms, marriageRefusal, MARRIAGE_ESTATE_ID, type MarriageRefusal } from "../../../engine/marriage";
 import { counterpartEstate, debtInstalmentCap, debtInstalmentYears, diplomacyOf, evaluateOffer, jointurePiece, materialCeiling } from "../../../engine/negotiation";
 import type { Person } from "../../../engine/persons.types";
 import { ageOf, currentYear } from "../../../engine/persons";
 import { calendar, scenarioOf } from "../../../engine/scenarioState";
 import { lordMode } from "../../../engine/townAgency";
 import { treasuryBalance } from "../../../ledger/ledger";
+import { lordOutcome } from "../../decisionCard/families/lordOutcome";
+import { afterAnswer } from "../../decisionCard/remembers";
 import { moneyFull } from "../../money.ko";
 import { lordPersonRow, type LordPersonRow } from "../screen/lordPortrait";
 import { NEGOTIATION_COPY as COPY } from "./negotiationCopy.ko";
@@ -24,7 +26,9 @@ import { NEGOTIATION_COPY as COPY } from "./negotiationCopy.ko";
 //    every edit: `evaluateOffer` (tier, top reasons), `materialCeiling`, `marriageRefusal`. An offer is answered as it is
 //    sent (`proposeMarriage` draws at once), so the last answer shows above the next draft.
 //  - countered: the counter's clauses with what changed (`counter.changes`: added / raised → changed, removed → rejected);
-//    `answer_counter` accept or refuse, each shut when the engine's own command would change nothing.
+//    `answer_counter` accept or refuse, each shut when the engine's own command would change nothing. DEC-CARD: each
+//    answer's now / later / who remembers from that same run (lordOutcome: the contract's cash, the claim it raises, the
+//    promises it writes with their deadlines, stakes and witnesses, the house's relation), in the heavy cards' words.
 //  - contract: the `MarriagePlan` timeline — stage, the middle events as they fell, brother-in-law, the will answer, the
 //    rival, the jointure, the deferred debt; a contested estate links to its suit (no command of its own, NG-8).
 // No engine rule is copied: the numbers come from the read models; where a refusal reason is not exposed (answering a
@@ -215,9 +219,15 @@ export type DraftView = Readonly<{
 }>;
 
 export type CounterRow = TreatyRow & Readonly<{ mark: "same" | "changed" | "rejected"; markWord: string; change: string | null }>;
+/** DEC-CARD: one answer to the counter — what it does now, later, and who remembers it (the heavy cards' words). */
+export type CounterOutlook = Readonly<{ id: "accept" | "refuse"; label: string; now: readonly string[]; later: readonly string[]; remembers: readonly string[] }>;
 export type CounterView = Readonly<{
   phase: "countered"; houses: string; negotiationId: string; rows: readonly CounterRow[]; preview: AcceptanceView; offered: string;
   deadline: string; canAccept: boolean; canRefuse: boolean; last: LastAnswer; seal: "empty";
+  /** What silence means: a counter not answered by its deadline lapses (withdrawn, NG-5). */
+  silence: string;
+  /** Each answer the engine takes now, run on the state (`answer_counter`): the contract, its promises and witnesses. */
+  outlook: readonly CounterOutlook[];
 }>;
 
 export type TimelineEvent = Readonly<{ key: string; tick: number; date: string; text: string }>;
@@ -271,12 +281,20 @@ export function counterRows(negotiation: Negotiation): readonly CounterRow[] {
 
 export function counterView(state: GameState, negotiation: Negotiation): CounterView {
   const left = negotiation.deadline - state.tick;
+  // The engine's own command, run on the state (gameReducer, so the faction records it writes are in it too): a refused
+  // answer returns the same state (no reason is exposed yet); a taken one is put in words by lordOutcome.
+  const run = (accept: boolean) => afterAnswer(state, { type: "answer_counter", negotiationId: negotiation.id, accept });
+  const [accepted, refused] = [run(true), run(false)];
+  const outlook = ([["accept", accepted], ["refuse", refused]] as const).flatMap(([id, after]): CounterOutlook[] => {
+    if (after === null) return [];
+    const outcome = lordOutcome(state, after);
+    return [{ id, label: id === "accept" ? COPY.accept : COPY.refuse, now: outcome.now, later: outcome.later,
+      remembers: outcome.remembers.map(entry => `${entry.who}: ${entry.how}`) }];
+  });
   return { phase: "countered", houses: houses(state), negotiationId: negotiation.id, rows: counterRows(negotiation),
     preview: acceptanceView(negotiation.counter!.acceptance), offered: COPY.answerTier(COPY.tiers[negotiation.acceptance.tier]),
-    deadline: left < 0 ? COPY.deadlinePast : COPY.deadline(Math.ceil(left / TICKS_PER_DAY)),
-    // The engine's own command, run on the state: a refused answer returns the same state (no reason is exposed yet).
-    canAccept: answerCounter(state, negotiation.id, true) !== state, canRefuse: answerCounter(state, negotiation.id, false) !== state,
-    last: lastAnswer(negotiation)!, seal: "empty" };
+    deadline: left < 0 ? COPY.deadlinePast : COPY.deadline(Math.ceil(left / TICKS_PER_DAY)), silence: COPY.counterSilence,
+    canAccept: accepted !== null, canRefuse: refused !== null, outlook, last: lastAnswer(negotiation)!, seal: "empty" };
 }
 
 const EVENT_ORDER = ["bride_arrived", "child_born", "brother_in_law_born", "father_ill", "will_change", "will_dropped", "father_died"] as const;

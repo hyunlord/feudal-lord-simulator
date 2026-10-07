@@ -19,6 +19,8 @@ import "./styles/stuckGoods.css";
 import "./styles/chronicle.css";
 import "./styles/legacy.css";
 import "./styles/lordCards.css";
+import "./styles/decisionCard.css";
+import "./styles/results.css";
 import "./styles/registryCard.css";
 import "./styles/lordMode.css";
 // LM-R2: the lord screen host and its four areas' screens (lord mode only).
@@ -27,6 +29,8 @@ import "./styles/lordNegotiation.css";
 import "./styles/lordLedger.css";
 import "./styles/lordEstates.css";
 import "./styles/lordRegion.css";
+// DEC-CARD (Astra's lord-mode play): the way back to town, the treasury by estate, a recurring card's "since last time".
+import "./styles/lordAdvice.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.
 import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";

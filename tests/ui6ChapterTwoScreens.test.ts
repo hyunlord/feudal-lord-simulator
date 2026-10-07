@@ -13,6 +13,7 @@ import { endChapterTwo, initialPolitics, openPetitions, respondToPetition } from
 import { advanceWar, beaconLit, warForecast } from "../src/engine/war";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { decodeSave } from "../src/save/saveCodec";
+import { petitionCard, type PetitionCardView } from "../src/ui/decisionCard/families/petitionCard";
 import { petitionDecisionView } from "../src/ui/decisionModels";
 import { storyBeats } from "../src/ui/eventStory";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
@@ -55,7 +56,8 @@ function run(to: number, seen: (state: GameState, defId: string) => void = () =>
 
 test("UI-6 the war's five demands each open their own card: Wave 17 scene, title, the ledger's answers, the rules' numbers", () => {
   const cards = new Map<string, ReturnType<typeof petitionDecisionView>>();
-  run(15, (state, defId) => { if (!cards.has(defId)) cards.set(defId, petitionDecisionView(state)); });
+  const decks = new Map<string, PetitionCardView>();
+  run(15, (state, defId) => { if (!cards.has(defId)) { cards.set(defId, petitionDecisionView(state)); decks.set(defId, petitionCard(state)!); } });
   assert.deepEqual([...cards.keys()].sort(), [...WAR_PETITION_IDS].sort());
   for (const [defId, view] of cards) {
     assert.ok(view !== null, defId);
@@ -71,7 +73,8 @@ test("UI-6 the war's five demands each open their own card: Wave 17 scene, title
   assert.equal(wool.presentation.from?.name, "국왕과 왕실");
   assert.equal(wool.presentation.from?.leader?.name, "에드워드 3세");
   assert.match(wool.presentation.demand, /× 1s 8d = (?:£[\d,]+(?: \d+s)?|\d+s(?: \d+d)?|\d+d)\./);
-  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: wool, onRespond: () => undefined, onLater: () => undefined, onPerson: () => undefined }));
+  // DEC-CARD: the card is the heavy decision card (the writ's seal among the senders, the Wave 17 scene in its head).
+  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: decks.get("wool_payment")!, onRespond: () => undefined, onLater: () => undefined, onPerson: () => undefined }));
   assert.match(markup, /data-def="wool_payment"/);
   assert.match(markup, /wave17\/[^"]*wool_payment[^"]*\.jpg/);
   assert.match(markup, /wax_seal_hanging/);
@@ -175,12 +178,12 @@ test("UI-6b the Crown bears the king's arms of the year: England's lions until 1
 });
 
 test("UI-6b the decision card puts the sender's arms in the frame's roundel; the bishop brings the refugees' plea on their behalf", () => {
-  const cards = new Map<string, NonNullable<ReturnType<typeof petitionDecisionView>>>();
-  run(15, (state, defId) => { const view = petitionDecisionView(state); if (view !== null && !cards.has(defId)) cards.set(defId, view); });
-  const render = (view: NonNullable<ReturnType<typeof petitionDecisionView>>) =>
+  const cards = new Map<string, PetitionCardView>();
+  run(15, (state, defId) => { const view = petitionCard(state); if (view !== null && !cards.has(defId)) cards.set(defId, view); });
+  const render = (view: PetitionCardView) =>
     renderToStaticMarkup(createElement(PetitionModal, { view, onRespond: () => undefined, onLater: () => undefined, onPerson: () => undefined }));
   const wool = cards.get("wool_payment")!;
-  assert.deepEqual(wool.presentation.from?.arms, { kind: "royal", arms: "england" }, "1337: England's arms");
+  assert.deepEqual(wool.from?.arms, { kind: "royal", arms: "england" }, "1337: England's arms");
   assert.match(render(wool), /class="petition-roundel"/);
   const refugees = render(cards.get("refugee_admission")!);
   assert.match(refugees, /보낸 이: .+ \(피란민을 대신해\)/);

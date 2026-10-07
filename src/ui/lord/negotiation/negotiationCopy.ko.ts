@@ -98,6 +98,9 @@ export const NEGOTIATION_COPY = {
   changeRemoved: "상대가 뺐습니다",
   deadline: (days: number) => `답할 기한: ${days}일 남음`,
   deadlinePast: "답할 기한이 지났습니다.",
+  /** DEC-CARD: what silence means (NG-5: a counter not answered by its deadline is withdrawn). */
+  counterSilence: "기한까지 답하지 않으면 역제안은 거두어지고 혼담이 끝납니다.",
+  outlookHeading: "답마다 일어날 일",
   accept: "역제안 받아들이기",
   acceptLabel: "상대의 역제안을 받아들여 계약 맺기",
   refuse: "역제안 거두기",

@@ -13,7 +13,7 @@ import { portraitFor } from "../../engine/portraits";
 import { calendar, scenarioOf } from "../../engine/scenarioState";
 import { factionDisplayName } from "../../content/factionCopy.ko";
 import type { FactionRecord } from "../../engine/faction.types";
-import { lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
+import { lordHouseByOrder, lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
 import { chronicleIllustration, legacyRecordArt, reorgRecordArt } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
@@ -300,11 +300,13 @@ export function factionNameOf(state: Partial<Pick<GameState, "factions">>, id: s
   return faction === undefined ? null : factionDisplayName(faction.id, faction.name);
 }
 
-/** A lord's house by its record (`order`, else its name among the houses): its arms (FAIL-3 FL-7). */
+/** A lord's house by its record (`order`, else its name among the houses): its arms (FAIL-3 FL-7). MANOR-1: a house the
+ * game has had carries its own arms (the first is the house chosen in the new game, not the default one); the order's
+ * seed is only for a house the lordship no longer lists. */
 function houseArms(state: Pick<GameState, "seed" | "lordship">, record: HistoryRecord): ChronicleArt {
   const order = record.params?.order;
   const lordship = lordshipOf(state as GameState);
-  const seed = typeof order === "number" ? lordHouseHeraldrySeed(state.seed, order)
+  const seed = typeof order === "number" ? lordHouseByOrder(state, order)?.heraldrySeed ?? lordHouseHeraldrySeed(state.seed, order)
     : [lordship.house, ...lordship.pastHouses].find(house => house.name === record.params?.name)?.heraldrySeed;
   return seed === undefined ? null : { kind: "emblem", emblem: { kind: "arms", recipe: armsRecipe(seed, MANOR_HOUSEHOLD) } };
 }

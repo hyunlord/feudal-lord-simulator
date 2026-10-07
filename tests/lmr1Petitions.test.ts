@@ -30,7 +30,13 @@ import { LORD_SLICE_FACTIONS } from "../src/content/lordSliceConfig";
 import { lordSliceFactionsMet } from "../src/engine/lordSlice";
 import { factionRows } from "../src/ui/chronicle/factionTabModel";
 import { lordHouseArms } from "../src/ui/persons/personModels";
-import { HomePetitionModal } from "../src/ui/hud/LordCards";
+import { DecisionCard } from "../src/ui/decisionCard/DecisionCard";
+import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
+import { lordRequestCard } from "../src/ui/decisionCard/families/lordRequestCard";
+import { afterAnswer } from "../src/ui/decisionCard/remembers";
+import { LordRequestModal } from "../src/ui/hud/LordCards";
+import { buildingFootprint } from "../src/geometry/buildingFootprint";
+import { homePetitionCard } from "../src/ui/decisionCard/families/homePetitionCard";
 import { directionAccess, tutorialAccess } from "../src/ui/tutorial/tutorialModel";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -196,6 +202,41 @@ test("the town's request: a proclamation waiting is a card whose answer is the c
   assert.equal(timber.more, "요청 2건 가운데 첫째");
 });
 
+test("DEC-CARD: the town's request is the heavy card — the request's words, its stake, no deadline, and the grant's now / later from the engine", () => {
+  for (const request of [{ kind: "order_timber", amount: 40 } as const, { kind: "proclaim_era" } as const]) {
+    const state = { ...firstPetition, agency: { ...firstPetition.agency!, requests: [request] } } as GameState;
+    const view = lordRequestView(state)!;
+    const card = lordRequestCard(state)!;
+    assert.equal(card.situation, view.demand);
+    assert.ok(card.stake !== "" && card.deadline !== null, request.kind);
+    assert.deepEqual(card.choices.map(choice => choice.id), ["grant"]);
+    const [grant] = card.choices;
+    const after = afterAnswer(state, view.command!);
+    assert.equal(grant!.refusal === null, after !== null, `${request.kind}: shut exactly when the engine refuses it`);
+    if (after !== null) {
+      const outcome = lordOutcome(state, after);
+      assert.deepEqual([grant!.now, grant!.later, grant!.remembers], [outcome.now, outcome.later, outcome.remembers], request.kind);
+    }
+    const markup = renderToStaticMarkup(createElement(LordRequestModal, { view, card, onGrant: () => undefined, onLater: () => undefined }));
+    // DEC-CARD: the situation and the stake always; now / later / who remembers exactly where an open answer has lines (an empty part is left out).
+    for (const part of ["무슨 일인가", "걸린 것"]) assert.ok(markup.includes(part), part);
+    const open = card.choices.filter(choice => choice.refusal === null);
+    for (const [part, has] of [["지금", open.some(c => c.now.length > 0)], ["나중에", open.some(c => c.later.length > 0)], ["기억하는 이", open.some(c => c.remembers.length > 0)]] as const) assert.equal(markup.includes(`class="decision-card-part-head">${part}</span>`), has, part);
+    assert.match(markup, /data-lord-request="/);
+    assert.doesNotMatch(markup, /ui-btn--primary/);
+  }
+  const timber = { ...firstPetition, agency: { ...firstPetition.agency!, requests: [{ kind: "order_timber", amount: 40 }] } } as GameState;
+  assert.ok(lordRequestCard(timber)!.choices[0]!.now.includes("시장 상인에게 목재 40개를 주문해 둡니다."), "the order the command leaves");
+});
+
+test("MANOR-1: the lord's chips look at the manor's middle tile, not its top-left one", () => {
+  const manor = firstPetition.buildings.find(building => building.kind === "manor_house")!;
+  const size = buildingFootprint(manor);
+  const beat = lordBeats(firstPetition).find(entry => entry.kind === "home_petition")!;
+  assert.deepEqual(beat.tile, { tx: manor.tx + Math.floor((size.width - 1) / 2), ty: manor.ty + Math.floor((size.height - 1) / 2) });
+  assert.equal(size.width, 3, "the 3 × 3 manor");
+});
+
 test("the court line: the king at the date (kingAt), the old lord by the engine's age, a minor lord's guardian", () => {
   const at = (year: number, season: number) => ({ ...firstPetition, tick: (year - 1300) * 4 * SEASON + season * SEASON });
   assert.match(courtLine(at(1399, 1)), /1399년 여름 · 국왕 리처드 2세/);
@@ -247,6 +288,28 @@ test("LR1-D5: a home petition's roundel holds the lord house's arms, as the lord
   const view = homePetitionView(firstPetition)!;
   assert.deepEqual(view.arms, lordHouseArms(firstPetition));
   assert.match(view.armsLabel, new RegExp(lordHouse(firstPetition).name));
-  const markup = renderToStaticMarkup(createElement(HomePetitionModal, { view, onAnswer: () => undefined, onRecurring: () => undefined, onLater: () => undefined }));
+  const card = homePetitionCard(firstPetition)!;
+  const markup = renderToStaticMarkup(createElement(DecisionCard, { view: card, crest: { arms: view.arms, label: view.armsLabel }, onChoose: () => undefined, onLater: () => undefined }));
   assert.match(markup, /class="petition-roundel"/);
+});
+
+test("DEC-CARD: the home petition's card says what is happening, what is at stake, and each answer's now / later / who remembers — the engine's own", () => {
+  const view = homePetitionView(firstPetition)!;
+  const card = homePetitionCard(firstPetition)!;
+  assert.equal(card.subjectId, view.petitionId);
+  assert.ok(card.situation.length > 0 && card.stake.length > 0 && card.deadline !== null);
+  for (const choice of card.choices) {
+    const after = gameReducer(firstPetition, { type: "answer_estate_petition", petitionId: view.petitionId, grant: choice.id === "grant" });
+    assert.notEqual(after, firstPetition, "an answer the engine takes");
+    assert.equal(choice.refusal, null);
+    const moved = treasuryBalance(after) - treasuryBalance(firstPetition);
+    assert.equal(choice.now.length, 1, "the treasury's line, in words");
+    assert.equal(/그대로/.test(choice.now[0]!), moved === 0, `${choice.id}: ${choice.now[0]} (${moved})`);
+    assert.ok(choice.later.length > 0, "what follows (the precedent rule)");
+    assert.ok(choice.remembers.every(entry => entry.who.length > 0 && entry.how.length > 0 && entry.delta !== 0));
+  }
+  const markup = renderToStaticMarkup(createElement(DecisionCard, { view: card, onChoose: () => undefined, onLater: () => undefined }));
+  for (const part of ["무슨 일인가", "걸린 것", "지금", "나중에", "기억하는 이"]) assert.ok(markup.includes(part), part);
+  assert.doesNotMatch(markup, /ui-btn--primary/, "equal answers, all secondary (LR1-D2)");
+  assert.doesNotMatch(markup, /\stitle="/);
 });

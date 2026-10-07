@@ -6,7 +6,7 @@
 
 ## 실제 화면과 판정
 
-기준선 `ff8f3512`, 설치 뒤 `ace906a6`에 같은 저장 네 개를 주입했다. 벌목소·제재소 여섯 장면을 줌1.0·0.6·확대3.0으로 확인해 **전후18쌍**을 얻었다. 저장 SHA·전체 게임 상태 SHA·tick·재고·카메라·대상 화면 좌표가 모두 같다([comparison.json](comparison.json)).
+최신 기준선 `883b989b`, 설치 뒤 병합판 `57938679`에 같은 저장 네 개를 주입했다. 벌목소·제재소 여섯 장면을 줌1.0·0.6·확대3.0으로 확인해 **전후18쌍**을 얻었다. 저장 SHA·전체 게임 상태 SHA·tick·재고·카메라·대상 화면 좌표가 모두 같다([comparison.json](comparison.json)).
 
 - 양성15뷰: 실제 문 옆 기준점의 drawImage 좌표와 파일 이름을 확인했다. 4PNG 모두 실제 게임 그리기로 소비됐다.
 - 음성3뷰: 1305년 겨울 제재소는 원목0·판재1이다. 세 줌 모두 대상 위치에 새 원목 호출이 없다.
@@ -19,9 +19,9 @@
 
 ## 실행 증거
 
-- `astra-LOGS-final-before-ff8f351`: 공식 light, exit0,238.6초,18뷰.
-- `astra-LOGS-final-after-ace906a`: 공식 light, exit0,238.0초,18뷰.
-- 양쪽 page 오류0. 각각18개의 telemetry sample 요청이 페이지 종료 때 ERR_ABORTED로 기록됐다. 모두 `@fls-telemetry/sample`이며 원목 PNG 실패는 없다. 실제 기록은 [before.json](before.json), [after.json](after.json)에 보존했다.
+- `astra-LOGS-latest-before-883b989`: 공식 light, exit0,170.6초,18뷰.
+- `astra-LOGS-latest-after-5793867`: 공식 light, exit0,139.6초,18뷰.
+- 최신 두 실행의 page 오류0. 기준선6개·설치 뒤1개의 telemetry sample 요청이 페이지 종료 때 ERR_ABORTED로 기록됐다. 모두 `@fls-telemetry/sample`이며 원목 PNG 실패는 없다. 실제 기록은 [before.json](before.json), [after.json](after.json)에 보존했다.
 - 이전 독립 검증·오류 감시기 수정·가려진 보충 장면도 [독립 보고서](INDEPENDENT_QA.md)와 [기록](INDEPENDENT_QA_JOURNAL.md)에 남겼다. 판정에 쓴 실행 이름을 보존해 RR15 kept 결과와 연결했다.
 - 병합 뒤 원목·목축군·스키마 집중 시험45개, 타입 검사 통과. 최종 기하와 exact-tree test:changed/check:merge 결과는 아래 및 게시 ZIP의 실행 영수증에 기록한다.
 
@@ -45,3 +45,13 @@
 `astra-LOGS-final-tests-86f0d14`는 1,656개 통과·1개 실패·9개 건너뜀으로 끝났다. 곡선 땅 기능을 끈 프레임에서도 원목 형태 선택이 경계 모듈의 해시 함수를 호출한 것이 원인이다. 원목 전용 계산으로 의존을 제거했고 경계 모듈을 끈다는 기존 시험은 바꾸지 않았다. 768개 ID/seed 조합에서 기존 형태 선택과 같고, 해당 가드를 포함한 집중 시험15개가 통과했다.
 
 이 첫 실행은 기하 결과의 미추적 하위 폴더도 포함해 제품 tree와 달랐다. 하위 폴더는 보고 ZIP 보관 위치로 옮기고, 최종 실행은 제품 tree와 같은지 별도로 대조한다. 이 실패 실행을 최종 통과 영수증으로 사용하지 않는다.
+
+
+### 최신 본선 병합 뒤 재확인
+
+`astra-LOGS-latest-before-883b989`와 `astra-LOGS-latest-after-5793867`에서 같은 저장 전후18쌍을 다시 확인했다. DEC-CARD 본선 변경을 보존한 판이며, 경계 모듈 의존 수정 뒤에도 4PNG 실제 사용·양성15뷰·원목0 음성3뷰·동일 상태/카메라가 통과했다. 이전 `astra-LOGS-fixed-after-7aa10b4`도 수정판18뷰 통과 증거로 ZIP에 남긴다.
+
+
+### 최종 입력 기하
+
+경계 모듈 의존 수정과 DEC-CARD 병합 뒤 `astra-LOGS-geometry-fixed-fcfa270`에서 다시 화면4종·80조건, 실패0·미열림0을 확인했다. 최종 입력 해시는 `36963c0a8eb68a804be27002b9b8762f412da34ab8066aad03d24281bcdca98b`다. 최종 tree 시험과 check:merge의 기준선은 `883b989bfd785fc3198a488493823d215a871ad7`이다. 최초 80조건 결과는 수정 전 이력이고, 이 재검사가 게시 입력을 검증한다.

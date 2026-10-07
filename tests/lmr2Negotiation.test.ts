@@ -10,6 +10,8 @@ import type { GameState } from "../src/engine/engine.types";
 import { marriageGrooms } from "../src/engine/marriage";
 import { counterOffer, debtInstalmentCap, debtInstalmentYears, diplomacyOf, evaluateOffer, jointurePiece, materialCeiling } from "../src/engine/negotiation";
 import { gameReducer } from "../src/state/gameStore";
+import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
+import { afterAnswer } from "../src/ui/decisionCard/remembers";
 import { newGameState } from "../src/state/newGame";
 import { NEGOTIATION_COPY as COPY } from "../src/ui/lord/negotiation/negotiationCopy.ko";
 import { SCALE_CELL } from "../src/ui/lord/negotiation/negotiationArt";
@@ -132,6 +134,37 @@ test("sent: the answer shows at once — a red line draws a counter with the cha
     assert.deepEqual(accepted.rows.map(row => row.kind), negotiation.counter!.terms.map(term => term.kind));
     assert.equal(accepted.last?.status, "accepted");
   }
+});
+
+test("DEC-CARD: each answer to the counter shows its now / later / who remembers — the engine's own run of answer_counter", () => {
+  const state = slice();
+  const draft = chooseGroom(on("wardship"), marriageGrooms(state)[0]!.person.id);
+  const sent = gameReducer(state, { type: "propose_marriage", terms: draftView(state, draft).terms, groomId: draftView(state, draft).groomId! });
+  const negotiation = diplomacyOf(sent).negotiations.at(-1)!;
+  const view = negotiationScreen(sent, EMPTY_DRAFT);
+  assert.equal(view.phase, "countered");
+  if (view.phase !== "countered") return;
+  assert.equal(view.silence, COPY.counterSilence);
+  assert.deepEqual(view.outlook.map(answer => answer.id), ["accept", "refuse"]);
+  for (const answer of view.outlook) {
+    const after = afterAnswer(sent, { type: "answer_counter", negotiationId: negotiation.id, accept: answer.id === "accept" })!;
+    const outcome = lordOutcome(sent, after);
+    assert.deepEqual(answer.now, outcome.now, answer.id);
+    assert.deepEqual(answer.later, outcome.later, answer.id);
+    assert.deepEqual(answer.remembers, outcome.remembers.map(entry => `${entry.who}: ${entry.how}`), answer.id);
+  }
+  // Accepted: the contract's promises (the counterpart's word on the inheritance) and the house's relation.
+  const accept = view.outlook[0]!;
+  const made = diplomacyOf(gameReducer(sent, { type: "answer_counter", negotiationId: negotiation.id, accept: true })).promises;
+  assert.equal(accept.later.length > 0, made.length > 0, "a promise the contract writes is said, with its deadline");
+  assert.ok(accept.remembers.length > 0, "the counterpart's house remembers the contract");
+  const markup = renderToStaticMarkup(createElement(NegotiationPanel, { state: sent, dispatch: () => undefined, focus: null, onOpen: () => undefined, onPerson: undefined }));
+  // DEC-CARD: an answer's part shows exactly where it has lines (an empty part is left out); the silence line always.
+  assert.ok(markup.includes(COPY.counterSilence));
+  const answers = view.outlook;
+  for (const [part, has] of [["지금", answers.some(a => a.now.length > 0)], ["나중에", answers.some(a => a.later.length > 0)], ["기억하는 이", answers.some(a => a.remembers.length > 0)]] as const) assert.equal(markup.includes(`class="decision-card-part-head">${part}</span>`), has, part);
+  assert.equal((markup.match(/data-answer-outlook="/g) ?? []).length, 2);
+  assert.doesNotMatch(markup, /ui-btn--primary/, "the counter's two answers are equal choices");
 });
 
 test("the counter rows follow termChanges exactly (raised shows from → to)", () => {

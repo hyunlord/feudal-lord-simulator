@@ -10,18 +10,24 @@ import { AudioControls } from "../AudioControls";
 import type { BuildCategory } from "../buildMenuPresentation";
 import { ChronicleScreen } from "../chronicle/ChronicleScreen";
 import { chronicleView } from "../chronicleModel";
-import { famineDecisionView, petitionDecisionView } from "../decisionModels";
 import { PauseMenu } from "../hud/HudShell";
 import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
-import { HomePetitionModal, LordRequestModal, PrecedentModal } from "../hud/LordCards";
+import { LordRequestModal, PrecedentModal, RecurringSwitch } from "../hud/LordCards";
+import { DecisionCard } from "../decisionCard/DecisionCard";
+import { famineCard } from "../decisionCard/families/famineCard";
+import { homePetitionCard } from "../decisionCard/families/homePetitionCard";
+import { lordRequestCard } from "../decisionCard/families/lordRequestCard";
+import { petitionCard } from "../decisionCard/families/petitionCard";
 import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
-import { requestArt } from "../lordStoryBeats";
 import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
 import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
+import { houseChangeView } from "../results/houseChange";
+import { HouseChangeCard, YearReviewCard } from "../results/ResultCards";
+import { lastYearReview } from "../results/yearReview";
 import { stewardshipOf } from "../../engine/stewardship";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
@@ -73,25 +79,33 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const idleStateRef = useRef<GameState | null>(null);
   const state = useGameUiSelector(top !== null ? presentedState : (current: GameState) => (idleStateRef.current ??= presentedState(current)));
   const seasonCard = top === "season_ledger" ? seasonLedgerCardModel(state) : null;
-  const famineView = top === "decision" ? famineDecisionView(state) : null;
-  const petitionView = top === "petition" ? petitionDecisionView(state) : null;
+  // DEC-CARD: the famine and every political petition in the heavy card's layout (each answer run on the state).
+  const famineView = top === "decision" ? famineCard(state) : null;
+  const petitionView = top === "petition" ? petitionCard(state) : null;
   const chronicle = top === "chronicle" ? chronicleView(state) : null;
   const personCard = top === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;
   // LM-R1 (lord mode): the home estate's petition, the steward's precedents, the town's request.
   const homeView = top === "estate_petition" ? homePetitionView(state) : null;
+  // DEC-CARD: the home petition in the heavy card's layout (the situation, the stake, each answer now / later / who remembers).
+  const homeCard = top === "estate_petition" ? homePetitionCard(state) : null;
   const precedent = top === "precedent" ? precedentView(state) : null;
   const asked = top === "lord_request" ? lordRequestView(state) : null;
   const request = asked?.command === null ? null : asked;
+  // DEC-CARD: the town's request in the heavy card's layout (its grant run on the state: what it opens, the actual to come).
+  const requestCard = request === null ? null : lordRequestCard(state);
   // EVENT-ART: the registry's event card; it goes when its offer is answered, lapsed or invalid (no open offer left).
   const offer = top === "registry_offer" ? registryOfferView(state) : null;
   // LM-R2: the father's will or the contested inheritance, an audit's finding, an off-map estate's petition.
   const marriage = top === "marriage_decision" ? marriageDecisionView(state) : null;
   const audit = top === "audit_decision" ? auditDecisionView(state) : null;
   const offMap = top === "estate_petition_offmap" ? offMapPetitionView(state) : null;
+  // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"); (lord mode, A3) the season's change in the lord's house.
+  const yearView = top === "year_review" ? lastYearReview(state) : null;
+  const house = top === "house_change" ? houseChangeView(state) : null;
   const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null)
     || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)
-    || (top === "estate_petition_offmap" && offMap === null);
+    || (top === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null);
   const setRecurring = (recurring: boolean) => dispatch({ type: "set_exception_rules", rules: { ...stewardshipOf(state).rules, recurring } });
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
@@ -111,10 +125,12 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })} onPerson={onPerson}
       petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
       onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
-    {homeView === null ? null : <HomePetitionModal view={homeView} onLater={() => sendUi({ type: "pop_modal" })} onRecurring={setRecurring}
-      onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
+    {homeView === null || homeCard === null ? null : <DecisionCard view={homeCard} className="lord-card" crest={{ arms: homeView.arms, label: homeView.armsLabel }}
+      data={{ "data-home-petition": homeView.kind, "data-petition": homeView.petitionId }}
+      extra={<RecurringSwitch on={homeView.recurring} onToggle={setRecurring} />} onLater={() => sendUi({ type: "pop_modal" })}
+      onChoose={choice => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }); sendUi({ type: "pop_modal" }); }} />}
     {precedent === null ? null : <PrecedentModal view={precedent} onRecurring={setRecurring} onClose={() => sendUi({ type: "pop_modal" })} />}
-    {request === null ? null : <LordRequestModal view={request} art={requestArt(request.kind)} onLater={() => sendUi({ type: "pop_modal" })}
+    {request === null || requestCard === null ? null : <LordRequestModal view={request} card={requestCard} onLater={() => sendUi({ type: "pop_modal" })}
       onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
     {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={choiceId => { dispatch({ type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }); sendUi({ type: "pop_modal" }); }} />}
@@ -125,6 +141,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onAnswer={choice => { dispatch({ type: "answer_audit", auditId: audit.auditId, choice }); sendUi({ type: "pop_modal" }); }} />}
     {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: offMap.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
+    {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
+      onChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
+    {house === null ? null : <HouseChangeCard view={house} onContinue={() => sendUi({ type: "pop_modal" })}
+      onNext={next => { sendUi({ type: "pop_modal" }); if (next.kind === "screen") onOpenLord?.(next.screen, next.focus); else onPerson(next.personId); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
       // UI-10 (LG-8): chapter 5's end is the campaign's — its page leads to the legacy verdict, not to a chapter 6.
       {...(chronicle.chapter === CHAPTER_FIVE.chapter ? { nextLabel: LEGACY_SCREEN_COPY.toVerdict } : {})}
