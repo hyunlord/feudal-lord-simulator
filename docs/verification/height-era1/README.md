@@ -38,3 +38,5 @@ Gallery는 원래부터 수동 준비된 저장이다. 현재 codec으로 변환
 실제 캡처 실행 `astra-HEIGHT-ERA1-after12-fd2786b-fd2786b`는 공식 light에서 30뷰를 직렬로 253.4초에 마쳤다. 고정 저장의 짧은 화면 수집이며 엔진 전진·성능 부하는 없다. before/after 페이지 오류는 0, town1350 줌1에서 telemetry 요청 중단이 양쪽 각각 1건 남았다. 원커밋 before와 설치 직전 dirty after를 비교하며 설치 catalog/PNG 바이트는 제품 `c634c7dd`와 같다. 이후 테스트 타입 좁히기와 문서만 바뀌었다. 보고서 JPG는 같은1280×800의 quality45 파생본이고 원본 JPG는 ZIP에 있다.
 
 원본 `view.targets[].bodyUrl`은 교체 전 준비 장면을 만들 때 기록한 Wave20 URL이다. 실제 after 소비 URL은 draw 기록의 `assets/height-era1/…`이며 targets 메타데이터를 현재 소비 결과로 사용하지 않았다. 원문 추적 기록은 그대로 보존한다.
+
+기하 `astra-HEIGHT-ERA1-geometry-10a0eb3-10a0eb3`는 깨끗한 HEAD에서 4행·80조건 실패0을 확인했다. 이 영수증 뒤 정확한 트리의 변경 시험과 병합 검사, 본선 해시는 ZIP 최종 게시 기록을 따른다. 사전 장부 검사에서 누락된 raw 원본12행을 찾아 추가했고 native와 runtime 픽셀은 바꾸지 않았다.

@@ -1,0 +1,88 @@
+{
+  "productCommit": "c634c7dd",
+  "bookkeepingCommit": "10a0eb38",
+  "newRuntimePNGCount": 12,
+  "geometry": {
+    "schema": 1,
+    "run": "astra-HEIGHT-ERA1-geometry-10a0eb3-10a0eb3",
+    "commit": "10a0eb38a054168103a56c5445d4d16a47085d2f",
+    "dirty": false,
+    "inputs": 2343,
+    "inputHash": "19050b3f21236ea9b635a09073402b9d70ee9965f94925bbb0db53c09ee9b8e0",
+    "measuredAt": "2026-10-07T16:24:18.707Z",
+    "report": "docs/verification/uiaudit1/geometry/astra-HEIGHT-ERA1-geometry-10a0eb3-10a0eb3/geometry.json",
+    "axes": {
+      "viewports": [
+        "1280x800",
+        "1920x1080",
+        "tablet-1180x820",
+        "1024x768",
+        "1280x720"
+      ],
+      "copies": [
+        "normal",
+        "long"
+      ],
+      "numbers": [
+        "normal",
+        "extreme"
+      ]
+    },
+    "rows": 4,
+    "conditions": 80,
+    "measured": 80,
+    "failures": 0,
+    "unopened": 0,
+    "unreachable": [],
+    "warnings": 0,
+    "byCheck": {
+      "outside": 0,
+      "overflow": 0,
+      "border": 0,
+      "portrait": 0,
+      "overlap": 0,
+      "empty": 0,
+      "controls": 0,
+      "content": 0,
+      "hud": 0,
+      "ornament": 0
+    },
+    "unregisteredFramed": 0,
+    "baseline": {
+      "entries": 0,
+      "counted": 0,
+      "excepted": 0,
+      "exceptions": 0,
+      "added": 0,
+      "fixed": 0
+    },
+    "bySurface": {
+      "hud.status-pill": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "hud.time-cluster": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "hud.action-dock": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "map.selection.house": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      }
+    },
+    "failureKeys": []
+  },
+  "focusedTests": 45,
+  "catalogFileChecks": 428,
+  "sameStatePairs": 30,
+  "ledgerPreflightCorrection": "Added twelve raw source rows after preflight detected missing rows; approved native/runtime remain unchanged. No checker changes.",
+  "finalChecks": "Run exact-tree test:changed and check:merge after this receipt commit; final immutable output and trunk SHA in ZIP."
+}
