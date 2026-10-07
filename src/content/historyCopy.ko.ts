@@ -1,3 +1,4 @@
+import { LEDGER_CATEGORY_LABELS } from "../ledger/ledgerCopy.ko";
 import { moneyWords, moneyWordsFullDelta, moneyWordsJosa } from "../ledger/moneyWords.ko";
 import { BUILDING_COPY } from "./buildingCatalog.ko";
 /**
@@ -174,6 +175,12 @@ const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
     ? `흉년이 지나갔다 — 굶어 죽거나 떠난 집 없음(${CRISIS_REASONS[s(params, "reason")] ?? s(params, "reason")})`
     : `흉년이 지나갔다 — 굶주림으로 ${n(params, "deaths")}명이 죽고 ${n(params, "departures")}가구가 떠났다`,
   right_income: params => `얻은 권리에서 첫 수입 ${moneyWords(n(params, "income"))}${josa(moneyWords(n(params, "income")), "이", "가")} 들어왔다`,
+  payment_flow: params => {
+    const line = LEDGER_CATEGORY_LABELS[s(params, "category") as keyof typeof LEDGER_CATEGORY_LABELS] ?? s(params, "category");
+    const out = n(params, "expense") > n(params, "income");
+    const money = moneyWords(Math.abs(n(params, "income") - n(params, "expense")));
+    return `그 뒤 첫 ${line} ${money}${josa(money, "이", "가")} ${out ? "나갔다" : "들어왔다"}`;
+  },
 };
 /** DEC-TRACE §6: why a dearth did no harm, and the weak points a town met it with. */
 const CRISIS_REASONS: Readonly<Record<string, string>> = { stores: "곡식을 쌓아 둔 덕", relief: "영주의 구휼 덕", weak: "흉년이 약했다", damage: "" };

@@ -7,15 +7,17 @@ import test from "node:test";
 
 import { FACTION_ACT_BALANCE } from "../src/content/factionActConfig";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
-import { DECISION_WEIGHT_BALANCE } from "../src/content/stewardPolicyConfig";
+import { DECISION_WEIGHT_BALANCE, HOME_PETITION_CUSTOM } from "../src/content/stewardPolicyConfig";
+import { HOME_ESTATE_ID } from "../src/content/estateConfig";
+import { HOME_PETITION_KINDS } from "../src/content/stewardshipConfig";
 import { decisionRemembers, standingPolicies, stewardReport, traceInRange, yearReview } from "../src/engine/decisionReads";
 import { largeSumLine, stewardPick, type ChoiceWeighing } from "../src/engine/decisionLayer";
-import { traceOf } from "../src/engine/decisionTrace";
+import { advanceTrace, traceOf } from "../src/engine/decisionTrace";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceFactionActs } from "../src/engine/factionActs";
 import { registryV4Support, v4Entry } from "../src/engine/registryV4";
 import { advanceTick } from "../src/engine/tick";
-import { postLedgerEntries } from "../src/ledger/ledger";
+import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { answerOutlook } from "../src/state/decisionOutlook";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
@@ -38,6 +40,10 @@ test("§1 the steward's pick by the standing policy: lightly the most given, str
   assert.equal(stewardPick("customary", choices), "c");
   assert.equal(stewardPick("lord", choices), null);
   assert.equal(stewardPick("customary", [choice("hold", 0, [])]), "hold");
+  // He pays no more than the treasury holds: the dearest then goes to the next.
+  const paying = [{ ...choice("a", 40), paid: 40 }, choice("c", 5), choice("hold", 0, [])];
+  assert.equal(stewardPick("lenient", paying, 30), "c");
+  assert.equal(stewardPick("lenient", paying, 40), "a");
 });
 
 test("§1 v4.2 applied: the held events never run, and no running event offers a choice that only sets a subsidy or the policy", () => {
@@ -65,6 +71,39 @@ test("§2 a command of the lord's is a decision whose id is its history record; 
   assert.deepEqual(remembers.map(entry => [entry.actor, entry.delta]).sort(), [["merchant_house_1", -10], ["merchant_house_2", -10]]);
   assert.ok(traceInRange(state, before.tick, state.tick + 1).some(row => row.decisionId === decision.id && row.key === "relation"));
   assert.ok(yearReview(state, 1300).decisions.some(entry => entry.decisionId === decision.id && entry.kind === "dues"));
+});
+
+test("§2 DTR-11: the first posting of a ledger line a decision set going is its consequence (the dues' stall fees), once", () => {
+  let state = run(lordGame(), 50);
+  state = gameReducer(state, { type: "set_market_dues", permille: 1200 });
+  const decision = traceOf(state).decisions.at(-1)!;
+  const fee = (from: GameState, amount: number): GameState => {
+    const posted = postLedgerEntries({ ...from, tick: from.tick + 1 }, [{ account: "cash", category: "stall_fee", amount, sourceRefs: [{ type: "actor", id: "test" }] }]);
+    return { ...from, tick: from.tick + 1, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+  };
+  const once = advanceTrace(state, fee(state, 12));
+  const flows = (at: GameState) => at.history!.records.filter(record => record.template === "consequence" && record.params?.key === "payment_flow");
+  assert.equal(flows(once).length, 1);
+  assert.deepEqual([flows(once)[0]!.params?.target, flows(once)[0]!.params?.category, flows(once)[0]!.params?.income], ["dues", "stall_fee", 12]);
+  assert.equal(flows(once)[0]!.because?.[0]?.decisionId, decision.id);
+  assert.equal(flows(advanceTrace(once, fee(once, 9))).length, 1, "only the first posting after the decision");
+});
+
+test("§1 the steward never grants a home petition that costs more than the treasury holds, whatever the policy (FIX-14's rule)", () => {
+  let state = lordGame();
+  for (const kind of Object.keys(HOME_PETITION_CUSTOM)) state = gameReducer(state, { type: "set_standing_policy", kind, setting: "lenient" });
+  const empty = (from: GameState): GameState => {
+    const held = treasuryBalance(from);
+    if (held <= 0) return from;
+    const posted = postLedgerEntries(from, [{ account: "cash", category: "upkeep", amount: -held, sourceRefs: [{ type: "actor", id: "test" }] }]);
+    return { ...from, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+  };
+  for (let tick = 0; tick < 12_000; tick += 1) state = advanceTick(empty(state));
+  const homes = (state.stewardship?.petitions ?? []).filter(petition => petition.estateId === HOME_ESTATE_ID && petition.decidedBy === "steward");
+  const costs = (kind: string) => HOME_PETITION_KINDS[kind as keyof typeof HOME_PETITION_KINDS].grant.income < 0;
+  assert.ok(homes.length > 0);
+  // Lenient grants all; with the treasury kept empty, the costly kinds are refused and the rest granted.
+  for (const petition of homes) assert.equal(petition.status, costs(petition.kind) ? "refused" : "granted", `${petition.id} ${petition.kind}`);
 });
 
 test("§2 answerOutlook runs the answer on a copy: now (the treasury, the minds it moves), later, and who remembers — the state untouched", () => {

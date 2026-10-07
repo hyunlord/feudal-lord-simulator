@@ -2,7 +2,7 @@
  * DEC-TRACE §2–§4 (docs/design/dec-trace.md, save v52): the thread of consequence. Each decision of the lord's (and each
  * answer the steward gave by the lord's standing policy) is kept with what it touched; what later happens to those
  * things — a faction's act, a household leaving or arriving, a suit's turn, a marriage's turn, a project started, goods
- * delivered, an estate's audit or mood, a right's first income — is written in the history with the decisions behind
+ * delivered, an estate's audit or mood, a right's first income, the first payment of a line it set going — is written in the history with the decisions behind
  * it (`HistoryRecord.because`). Lord mode only.
  */
 import type { DecisionWeight, StandingSetting } from "../content/stewardPolicyConfig";
@@ -23,7 +23,7 @@ export interface TracedDecision {
   readonly weights: readonly DecisionWeight[];
   /** The steward's: the standing policy he followed. */
   readonly policy?: StandingSetting;
-  /** What it touched: `faction:<id>`, `suit:<id>`, `negotiation:<id>`, `promise:<id>`, `estate:<id>`, `subsidy:<kind>`, `build:<kind>`, `right:<id>`, `policy`, `dues`, `timber`, `war_tax`, `guild`. */
+  /** What it touched: `faction:<id>`, `suit:<id>`, `negotiation:<id>`, `promise:<id>`, `estate:<id>`, `subsidy:<kind>`, `build:<kind>`, `right:<id>`, `flow:<ledger category>`, `policy`, `dues`, `timber`, `war_tax`, `guild`. */
   readonly targets: readonly string[];
   /** The later commands that carried on the same matter and joined it (their keys, for the factions' memories), and the last one's tick. */
   readonly also?: readonly string[];
@@ -34,7 +34,7 @@ export interface TracedDecision {
 
 /** What followed (the key the screens word, `HistoryBecause.key`). */
 export const CONSEQUENCE_KEYS = ["faction_act", "households_left", "households_arrived", "suit_turned", "marriage_turned", "promise_made", "promise_kept",
-  "promise_broken", "project_started", "goods_delivered", "audit", "estate_mood", "right_income", "crisis_prepared", "crisis_outcome"] as const;
+  "promise_broken", "project_started", "goods_delivered", "audit", "estate_mood", "right_income", "payment_flow", "crisis_prepared", "crisis_outcome"] as const;
 export type ConsequenceKey = (typeof CONSEQUENCE_KEYS)[number];
 
 /** §3: a faction's act on crossing a threshold (for the once-a-year and once-a-decade limits). */

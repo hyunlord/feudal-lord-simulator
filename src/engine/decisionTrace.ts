@@ -20,6 +20,7 @@ import { appendHistoryRecords, type HistoryDraft } from "./history";
 import type { ActorRef, HistoryBecause } from "./history.types";
 import type { ConsequenceKey, TracedDecision, TracedDecisionKind, TraceState } from "./decisionTrace.types";
 import { CRISIS_RESERVE_DAYS } from "../content/crisisConfig";
+import { PETITION_FLOWS, TARGET_FLOWS } from "../content/decisionFlowConfig";
 import { preparedness } from "./crisisReads";
 import { stateCalendar } from "./scenarioState";
 
@@ -84,6 +85,10 @@ export function changedTargets(before: GameState, after: GameState): string[] {
   for (const petition of after.politics?.petitions ?? []) {
     const old = before.politics?.petitions.find(entry => entry.id === petition.id);
     if (petition.response === "accept" && old?.response !== "accept") for (const kind of PETITION_OPENS[petition.defId] ?? []) targets.add(`build:${kind}`);
+    // DTR-11: the ledger lines the answer sets going in the seasons after (the wool in kind, the loan repaid, the wages).
+    if (petition.response !== undefined && petition.response !== "expired" && old?.response !== petition.response) {
+      for (const category of PETITION_FLOWS[petition.defId]?.[petition.response] ?? []) targets.add(`flow:${category}`);
+    }
   }
   // A right granted: its income (its piece's ledger categories) is what follows from it.
   const rights = new Set((before.politics?.rights ?? []).map(right => right.id));
@@ -312,6 +317,26 @@ function onTarget(state: GameState, key: ConsequenceKey, target: string, detail:
   return writeConsequence(state, key, target, causes, partial, detail);
 }
 
+/** The ledger lines a target's later postings fall in (a right's piece, a setting's, a chapter answer's), or null. */
+function flowOf(target: string): { readonly key: "right_income" | "payment_flow"; readonly categories: readonly string[] } | null {
+  if (target.startsWith("right:")) return { key: "right_income", categories: PIECE_INCOME_CATEGORIES[GRANT_PIECE[target.slice("right:".length)]!] ?? [] };
+  if (target.startsWith("flow:")) return { key: "payment_flow", categories: [target.slice("flow:".length)] };
+  const categories = TARGET_FLOWS[target];
+  return categories === undefined ? null : { key: "payment_flow", categories };
+}
+
+/** The decision's first such posting is already written (the history's records since the decision, newest first). */
+function followed(state: GameState, decision: TracedDecision, key: ConsequenceKey, target: string): boolean {
+  const records = state.history?.records ?? [];
+  for (let index = records.length - 1; index >= 0; index -= 1) {
+    const record = records[index]!;
+    if (record.tick < decision.tick) return false;
+    if (record.template === "consequence" && record.params?.key === key && record.params?.target === target
+      && record.because?.some(entry => entry.decisionId === decision.id) === true) return true;
+  }
+  return false;
+}
+
 /** What happened this tick to the live decisions' targets. */
 function consequences(before: GameState, after: GameState): GameState {
   let next = after;
@@ -366,18 +391,22 @@ function consequences(before: GameState, after: GameState): GameState {
     // P-C2: a project the actor chose by its reasons — the lord's conditions were a share of them, never all.
     next = writeConsequence(next, "project_started", `build:${receipt.what}`, causes, true, { what: receipt.what, actor: receipt.actor, subsidy: receipt.subsidy, receipt: receipt.id });
   }
-  // A granted right's first income after the grant (the stall fees of a market charter, the tolls of a bridge).
+  // A granted right's first income after the grant (the stall fees of a market charter, the tolls of a bridge); DTR-11:
+  // the first posting of the ledger lines a decision set going (the dues' stall fees, the wool in kind, the wages).
   const fresh = after.ledger === before.ledger || after.ledger === undefined ? 0 : after.ledger.nextEntryOrdinal - (before.ledger?.nextEntryOrdinal ?? 1);
-  const posted = fresh <= 0 ? [] : after.ledger!.entries.slice(-fresh).filter(entry => entry.amount > 0);
+  const posted = fresh <= 0 ? [] : after.ledger!.entries.slice(-fresh).filter(entry => entry.account === "cash" && entry.amount !== 0);
   if (posted.length > 0) {
     for (const decision of traceOf(next).decisions) {
-      if (next.tick - decision.tick > TRACE_LIVE_TICKS) continue;
-      for (const target of decision.targets.filter(entry => entry.startsWith("right:"))) {
-        if (next.history?.records.some(record => record.template === "consequence" && record.params?.key === "right_income" && record.params?.target === target
-          && record.because?.some(entry => entry.decisionId === decision.id) === true) === true) continue;
-        const categories = PIECE_INCOME_CATEGORIES[GRANT_PIECE[target.slice("right:".length)]!] ?? [];
-        const income = posted.filter(entry => categories.includes(entry.category)).reduce((sum, entry) => sum + entry.amount, 0);
-        if (income > 0) next = writeConsequence(next, "right_income", target, [decision.id], true, { income });
+      if (next.tick - (decision.lastTick ?? decision.tick) > TRACE_LIVE_TICKS) continue;
+      for (const target of decision.targets) {
+        const flow = flowOf(target);
+        if (flow === null) continue;
+        const amounts = posted.filter(entry => flow.categories.includes(entry.category) && (flow.key === "payment_flow" || entry.amount > 0));
+        if (amounts.length === 0 || followed(next, decision, flow.key, target)) continue;
+        const income = amounts.filter(entry => entry.amount > 0).reduce((sum, entry) => sum + entry.amount, 0);
+        const expense = -amounts.filter(entry => entry.amount < 0).reduce((sum, entry) => sum + entry.amount, 0);
+        next = writeConsequence(next, flow.key, target, [decision.id], true,
+          flow.key === "right_income" ? { income } : { category: amounts[0]!.category, income, expense });
       }
     }
   }

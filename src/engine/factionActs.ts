@@ -10,7 +10,7 @@
 import { FACTION_ACT_BALANCE as B, FACTION_ACTS, type FactionActDef, type FactionActEffect } from "../content/factionActConfig";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { houseLotArea } from "../geometry/buildingFootprint";
-import { postLedgerEntries } from "../ledger/ledger";
+import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { SourceRef } from "../contracts";
 import { becauseOf, traceOf, TRACE_LIVE_TICKS } from "./decisionTrace";
 import { appendHistoryRecords } from "./history";
@@ -87,7 +87,9 @@ function applyEffect(state: GameState, faction: FactionRecord, effect: FactionAc
         detail: { actor: effect.actor, money: funds - actor.funds } };
     }
     case "treasury": {
-      const amount = effect.sign * money(state, effect.size);
+      // A demand takes no more than the treasury holds (an empty treasury leaves the wells and the mill unpaid).
+      const amount = effect.sign > 0 ? money(state, effect.size) : -Math.min(money(state, effect.size), Math.max(0, treasuryBalance(state)));
+      if (amount === 0) return { state, detail: { money: 0 } };
       const sources: [SourceRef, ...SourceRef[]] = [{ type: "actor", id: faction.id }, ...causes.slice(0, 3).map(id => ({ type: "decision" as const, id }))];
       const posted = postLedgerEntries(state, [{ account: "cash", category: amount > 0 ? "faction_gift" : "faction_demand", amount, sourceRefs: sources }]);
       return { state: { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin }, detail: { money: amount } };

@@ -32,6 +32,8 @@ export interface ChoiceWeighing {
   readonly commands: readonly string[];
   /** Pennies the choice commits from the lord's purse (subsidies, a timber order at its dearest, dues forgone for a year, paid now). */
   readonly spend: number;
+  /** Pennies of it the treasury pays now (absent: none). */
+  readonly paid?: number;
   /** The sender's relation change (a hold's cost). */
   readonly senderDelta: number;
   readonly weights: readonly DecisionWeight[];
@@ -46,12 +48,12 @@ function stallYearIncome(state: GameState): number {
 }
 
 /** What a choice commits, from the state before and after it (on a copy). */
-function spendOf(before: GameState, after: GameState): number {
+function spendOf(before: GameState, after: GameState): { readonly spend: number; readonly paid: number } {
   const subsidies = subsidyTotal(after) - subsidyTotal(before);
   const timber = ((after.timberOrder ?? 0) - (before.timberOrder ?? 0)) * Math.max(TIMBER_TRADE_BALANCE.price, TIMBER_TRADE_BALANCE.hamletPrice);
   const dues = Math.round(((before.agency?.duesPermille ?? 1000) - (after.agency?.duesPermille ?? 1000)) * stallYearIncome(before) / 1000);
   const paid = before.treasuryCoin - after.treasuryCoin;
-  return subsidies + timber + dues + paid;
+  return { spend: subsidies + timber + dues + paid, paid };
 }
 
 /**
@@ -75,17 +77,18 @@ export function weighOffer(state: GameState, occurrence: RegistryOccurrence): { 
       if (weight !== undefined) weights.add(weight);
     }
     let spend = 0;
+    let paid = 0;
     let senderDelta = 0;
     if (choice.commands.length === 0) {
       const held = applyHold(state, entry, bound);
       senderDelta = held?.hold.faction === sender ? held?.hold.delta ?? 0 : 0;
     } else {
       const after = runCommands(state, choice.commands, { state, bound, vars: {} });
-      if (after !== null) spend = spendOf(state, after);
+      if (after !== null) ({ spend, paid } = spendOf(state, after));
     }
     if (Math.abs(spend) >= line) weights.add("large_sum");
     if (senderDelta < 0 && relation + senderDelta <= DECISION_WEIGHT_BALANCE.ruptureRelation) weights.add("faction_rupture");
-    choices.push({ id, commands: choice.commands.map(command => command.type), spend, senderDelta, weights: [...weights].sort() });
+    choices.push({ id, commands: choice.commands.map(command => command.type), spend, ...(paid > 0 ? { paid } : {}), senderDelta, weights: [...weights].sort() });
   }
   const weights = [...new Set(choices.flatMap(choice => choice.weights))].sort();
   return { weights, choices };
@@ -94,12 +97,14 @@ export function weighOffer(state: GameState, occurrence: RegistryOccurrence): { 
 /**
  * DEC-TRACE §1: the choice the steward takes under a stance — lightly: the most given (the petitioner's side); strictly:
  * the least given (the purse's side); as custom has it: the least change. A steward does not put a matter off (a hold
- * only costs): he holds only when no other choice is open. Ties go to the canon's order. Null for "bring it to me".
+ * only costs): he holds only when no other choice is open; nor does he pay more than the treasury holds (FIX-14's rule).
+ * Ties go to the canon's order. Null for "bring it to me".
  */
-export function stewardPick(setting: StandingSetting, choices: readonly ChoiceWeighing[]): string | null {
+export function stewardPick(setting: StandingSetting, choices: readonly ChoiceWeighing[], treasury = Infinity): string | null {
   if (setting === "lord" || choices.length === 0) return null;
-  const acting = choices.filter(choice => choice.commands.length > 0);
-  const pool = acting.length > 0 ? acting : choices;
+  const payable = choices.filter(choice => (choice.paid ?? 0) <= treasury);
+  const acting = payable.filter(choice => choice.commands.length > 0);
+  const pool = acting.length > 0 ? acting : payable.length > 0 ? payable : choices;
   const order = (pick: (left: ChoiceWeighing, right: ChoiceWeighing) => number) => [...pool].sort((left, right) => pick(left, right) || pool.indexOf(left) - pool.indexOf(right))[0]!.id;
   if (setting === "lenient") return order((left, right) => right.spend - left.spend);
   if (setting === "strict") return order((left, right) => left.spend - right.spend);

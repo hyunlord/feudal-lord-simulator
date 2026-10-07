@@ -430,7 +430,7 @@ function layerOffer(state: GameState, offer: RegistryOccurrence): GameState {
   if (weighed === null) return state;
   if (weighed.weights.length > 0) return settleWeights(state, offer.id, weighed.weights);
   const policy = standingSetting(state, `sender:${v4SenderFaction(offer.entryId) ?? "none"}`);
-  const pick = stewardPick(policy, weighed.choices);
+  const pick = stewardPick(policy, weighed.choices, treasuryBalance(state));
   if (pick === null) return settleWeights(state, offer.id, []);
   const answered = answerV4Offer(state, offer, pick);
   const settled = registryOf(answered).occurrences.find(entry => entry.id === offer.id);

@@ -18,7 +18,7 @@ import { DEFAULT_STANDING_SETTING, HOME_PETITION_CUSTOM, STANDING_SETTINGS, type
 import { HOME_PETITION_ENTRIES, homeCycleKinds } from "../content/registry/homePetitions";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { MALE_GIVEN_NAMES, TOPOGRAPHIC_SURNAMES } from "../content/personNames";
-import { postLedgerEntries } from "../ledger/ledger";
+import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import { largeSumLine, standingSetting } from "./decisionLayer";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
@@ -224,7 +224,10 @@ function homePetitionSeason(state: GameState): GameState {
     const escalated = large ? "amount" as const : "direct" as const;
     return withStewardship(state, { ...stewardship, petitions: [...stewardship.petitions, { ...petition, escalated }], nextPetition: stewardship.nextPetition + 1 });
   }
-  const grant = policy === "lenient" ? true : policy === "strict" ? false : HOME_PETITION_CUSTOM[kind];
+  // FIX-14's rule kept for the steward: a grant that would cost the treasury more than it holds is refused, whatever the
+  // policy (an empty treasury leaves the wells and the mill unpaid at the period's end — the town's water lost).
+  const wanted = policy === "lenient" ? true : policy === "strict" ? false : HOME_PETITION_CUSTOM[kind];
+  const grant = wanted && -petitionEffect(petition, true, false).income <= treasuryBalance(state);
   const { escalated: _escalated, ...rest } = petition;
   const answered: EstatePetition = { ...rest, status: grant ? "granted" : "refused", decidedBy: "steward", policy };
   let next: GameState = state;
