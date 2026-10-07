@@ -1,3 +1,4 @@
+import { restoreSourceHand } from "./walkerAttachment";
 import { TRADE_WORLD_ART, tradeWorldHeldCargoForWalker } from "./tradeWorldArt";
 import type { WalkerCargoEntry } from "./art/artContract";
 import type { GameState } from "../engine/engine.types";
@@ -110,7 +111,7 @@ const cellOwner: BudgetOwner = {
 };
 
 /** The composed cell of a look in one direction and gait frame, or null while the look's images load. */
-function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null,
+export function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null,
   direction: WalkerPresentationDirection, gaitFrame: number, held: WalkerCargoEntry | null = null): Cell | null {
   const key: CellKey = `${sheetId}|${held?.id ?? prop ?? "-"}|${cloak ?? "-"}|${direction}${gaitFrame}`;
   const nowMs = typeof performance === "undefined" ? 0 : performance.now();
@@ -134,7 +135,8 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
   // registerRuntimeAsset maps (drawCroppedWorldSprite crops through that registry).
   const sheetCellWidth = sheet.width / 4; const sheetCellHeight = sheet.height / 2;
   const column = DIRECTION_COLUMN[direction]; const row = gaitFrame;
-  const near = direction === "SE" || direction === "NE";
+  const attachment = frame.heldAttachment?.propId === prop ? frame.heldAttachment : undefined;
+  const near = attachment !== undefined || direction === "SE" || direction === "NE";
   const drawProp = () => {
     if (held !== null) {
       const hand = rightHand(frame);
@@ -150,7 +152,7 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
     const entry = walkerPropDirections(prop)[direction];
     // INSTALL-7: a Wave 7 work prop carries Astra's attachment point in the 74 px frame and is drawn at its own
     // scale there (shoulder bag, hand basket / bucket / plough, waist purse); the older props go to the right hand.
-    const hand = entry.walkerPoint ?? rightHand(frame);
+    const hand = attachment?.grip ?? entry.walkerPoint ?? rightHand(frame);
     const scale = entry.walkerPoint !== undefined ? 1 : entry.referenceFigureHeight !== undefined
       ? (entry.scale ?? PROP_SCALE) * frame.figureHeight / entry.referenceFigureHeight : entry.scale ?? PROP_SCALE;
     const size = 32 * scale;
@@ -167,6 +169,7 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
       { x: cellBox.x + fit.x, y: cellBox.y + fit.y, width: WALKER_CELL * fit.scale, height: WALKER_CELL * fit.scale }, false, true);
   }
   if (near) drawProp();
+  if (attachment !== undefined) restoreSourceHand(context, images.body, column * sheetCellWidth, row * sheetCellHeight, attachment.grip, WALKER_PAD);
   const elapsed = typeof performance === "undefined" ? 0 : performance.now() - started;
   stats.composed += 1; stats.composeMsTotal += elapsed; stats.composeMsMax = Math.max(stats.composeMsMax, elapsed);
   stats.firstComposeMs ??= elapsed;

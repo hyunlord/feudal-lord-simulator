@@ -1,0 +1,400 @@
+{
+  "head": "db41ab970bf6f058aada95a4872b5b80d7f9f356",
+  "date": "2026-10-08",
+  "recommendedScope": "I0340 + I0321/I0322/I0323/I0324; five PNG completed purveyor-with-ledger vignette; not body-only success",
+  "mode": "read-only preparation; no product edits/tests/DGX/commits",
+  "assets": [
+    {
+      "id": "I0340",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/wk/wk_royal_purveyor-v1.png",
+      "sha256": "dfb6e1b54910f60fb3b4bd125e2e06b46024494ab2998a9c7df79c6dfa00564c",
+      "size": [
+        296,
+        148
+      ],
+      "alphaBounds": [
+        20,
+        0,
+        292,
+        146
+      ],
+      "installed": false
+    },
+    {
+      "id": "I0321",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_ne-v1.png",
+      "sha256": "a49270e2d120fbc383236e4108af19be8eee7aed34b9afa1c6288e52031ea5ac",
+      "size": [
+        32,
+        32
+      ],
+      "alphaBounds": [
+        8,
+        9,
+        24,
+        23
+      ],
+      "installed": false
+    },
+    {
+      "id": "I0322",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_nw-v1.png",
+      "sha256": "310bde0e9bc5f46531b2b67e26b25476fbf1f9445e76f40621cabc17e8e63f35",
+      "size": [
+        32,
+        32
+      ],
+      "alphaBounds": [
+        8,
+        9,
+        24,
+        23
+      ],
+      "installed": false
+    },
+    {
+      "id": "I0323",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_se-v1.png",
+      "sha256": "606ecfb0ae6946952ac77c52241512789dab826064ec9c6b5339cff34f889c2a",
+      "size": [
+        32,
+        32
+      ],
+      "alphaBounds": [
+        8,
+        9,
+        24,
+        22
+      ],
+      "installed": false
+    },
+    {
+      "id": "I0324",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_sw-v1.png",
+      "sha256": "d758b8222cf359eda17d51f9ea2a202b499d0e7d40c17bdd823c4e67b955cd2f",
+      "size": [
+        32,
+        32
+      ],
+      "alphaBounds": [
+        8,
+        9,
+        24,
+        22
+      ],
+      "installed": false
+    }
+  ],
+  "frames": [
+    {
+      "direction": "NE",
+      "gait": 0,
+      "originalHand": [
+        61.0,
+        32.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        45.0,
+        16.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        32.06,
+        68.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 52,
+        "y": 33
+      },
+      "wrongIfReuseP1DeltaNative": 9.055,
+      "wrongIfReuseP1DeltaWorldAt68": 2.344,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "front",
+      "specificRisk": "NE original extended hand is farther outward than current P1 template"
+    },
+    {
+      "direction": "SE",
+      "gait": 0,
+      "originalHand": [
+        23.0,
+        36.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        7.0,
+        20.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        44.89,
+        69.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 23,
+        "y": 39
+      },
+      "wrongIfReuseP1DeltaNative": 3.0,
+      "wrongIfReuseP1DeltaWorldAt68": 0.776,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "front",
+      "specificRisk": "SE close but frame1 hand differs4px/4px; do not copy current P1"
+    },
+    {
+      "direction": "SW",
+      "gait": 0,
+      "originalHand": [
+        26.0,
+        31.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        10.0,
+        15.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        26.56,
+        70.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 23,
+        "y": 36
+      },
+      "wrongIfReuseP1DeltaNative": 5.831,
+      "wrongIfReuseP1DeltaWorldAt68": 1.509,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "back",
+      "specificRisk": "SW original body→prop→3x3hand differs from current prop-behind-body"
+    },
+    {
+      "direction": "NW",
+      "gait": 0,
+      "originalHand": [
+        17.0,
+        35.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        1.0,
+        19.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        40.29,
+        68.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 47,
+        "y": 36
+      },
+      "wrongIfReuseP1DeltaNative": 30.017,
+      "wrongIfReuseP1DeltaWorldAt68": 7.769,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "back",
+      "specificRisk": "NW uses screen-left original attachment but current rightHand selects screen-right; behind-body book would also be swallowed"
+    },
+    {
+      "direction": "NE",
+      "gait": 1,
+      "originalHand": [
+        61.0,
+        32.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        45.0,
+        16.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        31.0,
+        68.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 53,
+        "y": 34
+      },
+      "wrongIfReuseP1DeltaNative": 8.246,
+      "wrongIfReuseP1DeltaWorldAt68": 2.134,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "front",
+      "specificRisk": "NE original extended hand is farther outward than current P1 template"
+    },
+    {
+      "direction": "SE",
+      "gait": 1,
+      "originalHand": [
+        23.0,
+        36.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        7.0,
+        20.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        46.47,
+        69.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 27,
+        "y": 40
+      },
+      "wrongIfReuseP1DeltaNative": 5.657,
+      "wrongIfReuseP1DeltaWorldAt68": 1.464,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "front",
+      "specificRisk": "SE close but frame1 hand differs4px/4px; do not copy current P1"
+    },
+    {
+      "direction": "SW",
+      "gait": 1,
+      "originalHand": [
+        26.0,
+        32.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        10.0,
+        16.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        26.53,
+        69.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 23,
+        "y": 36
+      },
+      "wrongIfReuseP1DeltaNative": 5.0,
+      "wrongIfReuseP1DeltaWorldAt68": 1.294,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "back",
+      "specificRisk": "SW original body→prop→3x3hand differs from current prop-behind-body"
+    },
+    {
+      "direction": "NW",
+      "gait": 1,
+      "originalHand": [
+        17.0,
+        35.0
+      ],
+      "propGrip": [
+        16,
+        16
+      ],
+      "bodyLocalOverlay": [
+        1.0,
+        19.0
+      ],
+      "nativePropScale": 1,
+      "footReference": [
+        43.6,
+        68.0
+      ],
+      "currentP1SelectedHand": {
+        "x": 49,
+        "y": 37
+      },
+      "wrongIfReuseP1DeltaNative": 32.062,
+      "wrongIfReuseP1DeltaWorldAt68": 8.299,
+      "originalLayerOrder": "body; prop; original 3x3 hand",
+      "currentComposerPropLayer": "back",
+      "specificRisk": "NW uses screen-left original attachment but current rightHand selects screen-right; behind-body book would also be swallowed"
+    }
+  ],
+  "scale": {
+    "worldFigureHeight": 17.6,
+    "referenceFigureHeight": 68,
+    "referenceEvidence": "Existing Wave17 collector manifest uses68 for same generation template; must use original purveyor registration rather than currentP1 per-frame66–68 blindly",
+    "worldPerSource": 0.25882352941176473,
+    "nativePropScale": 1,
+    "defaultComposerPropScale": 0.65,
+    "warning": "Original source world_scale1 means prop relative to74px body cell, not final1worldpx/source. Apply same17.6/68 factor to body and prop. Keep original (16,16)grip. No2x bow scale, no implicit0.65 ledger shrink."
+  },
+  "currentP1NotSameSilhouette": {
+    "alphaPixelsDifferent": 6514,
+    "alphaDifferenceBBox": [
+      20,
+      0,
+      292,
+      124
+    ],
+    "meaning": "Same P1 name is not identical current template. Original author metadata, not current P1 hand/foot copying, is authoritative."
+  },
+  "reuse": {
+    "yes": [
+      "core pack+walker-body/4walker-held-prop contract types",
+      "createWalkerArt selectors and four-direction validation",
+      "walkerArtManifest body/prop adapter",
+      "shared image loader, drawCroppedWorldSprite, canvasBudget",
+      "17.6px figure scaling and existing episode foot/depth/occlusion patterns",
+      "actual purveyance ledger trigger from previous mapping"
+    ],
+    "notAutomatic": [
+      "composedCell is private; drawComposedWalker requires a real Walker and occupation/look selection",
+      "regular merchant classBand may put purveyor in ordinary job pool; must keep episode-only selection",
+      "current rightHand/currentP1 metadata and near/back order disagree with authored attachment",
+      "walker-cargo permits supplied grip but does not own body/hand-patch composition; registering5PNGs alone insufficient",
+      "collectorWalker is body-only, so cannot call it and claim equipped purveyor complete"
+    ]
+  },
+  "minimalRequiredRendererAdaptation": "Reuse shared loader/contracts; expose/reuse explicit-look composition for episode-only body+prop without faking GameState.walkers. Register8authored hand/frame anchors, native scale1, authored body→prop→original3x3hand layer. If common composer cannot express that, add narrow reusable authored-attachment option; never alter all walkers rightHand/near semantics. Preserve cached composed-cell key and canvas budget.",
+  "visualReview": {
+    "viewed": [
+      "assets-inbox/wave17/candidates-20260926/assets/wk/wk_royal_purveyor-v1.png",
+      "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_ne-v1.png",
+      "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_se-v1.png",
+      "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_sw-v1.png",
+      "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_nw-v1.png",
+      "assets-inbox/wave17/candidates-20260926/proofs/01_workers_convoy.png"
+    ],
+    "finding": "Authored proof shows ledger-equipped purveyor at all4directions and2frames, book held close to extended hand. Static coherent5asset bundle. Proof source50% body~34px is not current17.6px runtime evidence. At17.6px book opaque~4worldpx/~2.5screenpx atzoom.6: book presence may read, page/strap/hand detail not guaranteed.",
+    "notProven": [
+      "Currentgame naturalness",
+      "17.6px hand overlap and draw order in browser",
+      "moving8frame continuity",
+      "zoom.6 hand/book legibility"
+    ]
+  },
+  "successScope": "Keep5assets as acceptance unit, all4direction props actualdraw and8authored joints checked. May omit prop only at agreed lowLOD fallback, not count unexplored directions as installed-proof. No body-only scope reduction.",
+  "evidenceSha256": {
+    "src/render/art/artContract.ts": "35b0e6b3c1664e15ef4821fc69f34e5bb584c091088349896a7038b4e66f266e",
+    "src/render/art/walkerArt.ts": "adb415574efaa60aef339d1534fcbbb3dd397a54a54a99c8ce6ea1733b9f24c9",
+    "src/render/art/walkerArtValidation.ts": "41d988e4f431640632f81959ee136603ab4a315de86fcf3aa9e06b32d1ff856f",
+    "src/render/art/artAdapters.ts": "229202a25b2efe0b9bede8e489e8717a0e900ba8b95fb38585ceeac9bde9c3fe",
+    "src/render/walkerArtManifest.ts": "1fb58f73ef07597987b242b032a0d039c2e856445154077b78b7427018d5357a",
+    "src/render/walkerComposer.ts": "43b88ef0afbae7e02219ee385c2535f9d43df9502c236addb24c49f65baed738",
+    "src/render/walkerLook.ts": "a999cb4afa72f175c3ce46dba876ed8623eca22db7f2b351b23304d9cefdd56d",
+    "src/render/collectorWalker.ts": "4b5177eeee16751a1c6be802c25cc06c167bc786c50061a889d3c8b8275fb5b5",
+    "assets-inbox/wave17/candidates-20260926/records/worker_prop_attachments.csv": "2d8bc3a732a240bdbb0e4e167d5ba358343c487fab9c70aea409902739f9ad78",
+    "assets-inbox/wave17/candidates-20260926/records/prop_anchors.csv": "104d6327135d34d8af0810072387263583f1d72182bee148fda30effb9209d4f",
+    "assets-inbox/wave17/candidates-20260926/records/frame_pivots.csv": "7ddceb1bf0dae94b8715e64cd5febad2643ac1a82cb215ebe9355d4bbed1c598",
+    "assets-inbox/wave17/candidates-20260926/records/generation/wk_royal_purveyor-v1.json": "90c17ee322f4f60dc4bf592b4f12594ce37598c688cb86de1636009519d5694f",
+    "assets-inbox/wave17/candidates-20260926/records/README.md": "1ca6b5f725a3311fa26d18e8b3e31e8cb35bbad564e87d7c23e7142e5c0d103d"
+  }
+}

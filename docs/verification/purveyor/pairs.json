@@ -1,0 +1,129 @@
+{
+  "productCommit": "f012955c194ad9ef090b0dd91736b53e05e66145",
+  "productTree": "20598af6d0e3ab380174ba4160a5fc500a4777a6",
+  "productTreeClean": true,
+  "pairs": [
+    {
+      "id": "natural",
+      "zoom": 1,
+      "matchedFields": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "tile",
+        "zoom",
+        "nowMs",
+        "camera"
+      ],
+      "diffBounds": [
+        638,
+        382,
+        648,
+        400
+      ],
+      "drawCount": 31
+    },
+    {
+      "id": "natural",
+      "zoom": 0.6,
+      "matchedFields": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "tile",
+        "zoom",
+        "nowMs",
+        "camera"
+      ],
+      "diffBounds": [
+        639,
+        389,
+        645,
+        400
+      ],
+      "drawCount": 22
+    },
+    {
+      "id": "summer",
+      "zoom": 1,
+      "matchedFields": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "tile",
+        "zoom",
+        "nowMs",
+        "camera"
+      ],
+      "diffBounds": [
+        638,
+        382,
+        648,
+        400
+      ],
+      "drawCount": 23
+    },
+    {
+      "id": "summer",
+      "zoom": 0.6,
+      "matchedFields": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "tile",
+        "zoom",
+        "nowMs",
+        "camera"
+      ],
+      "diffBounds": [
+        639,
+        389,
+        645,
+        400
+      ],
+      "drawCount": 15
+    },
+    {
+      "id": "winter",
+      "zoom": 1,
+      "matchedFields": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "tile",
+        "zoom",
+        "nowMs",
+        "camera"
+      ],
+      "diffBounds": [
+        638,
+        382,
+        648,
+        400
+      ],
+      "drawCount": 17
+    },
+    {
+      "id": "winter",
+      "zoom": 0.6,
+      "matchedFields": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "tile",
+        "zoom",
+        "nowMs",
+        "camera"
+      ],
+      "diffBounds": [
+        639,
+        389,
+        645,
+        400
+      ],
+      "drawCount": 19
+    }
+  ],
+  "errors": [],
+  "networkFailures": []
+}

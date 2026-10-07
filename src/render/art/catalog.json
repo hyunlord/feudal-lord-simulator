@@ -26558,6 +26558,511 @@
   },
   {
     "schemaVersion": 1,
+    "bundleId": "core-wave17-purveyor",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wk_royal_purveyor",
+        "kind": "walker-body",
+        "allowMirror": false,
+        "image": {
+          "url": "assets/wave17/wk/wk_royal_purveyor-v1.png",
+          "width": 296,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave17/candidates-20260926/assets/wk/wk_royal_purveyor-v1.png",
+          "sourceSha256": "dfb6e1b54910f60fb3b4bd125e2e06b46024494ab2998a9c7df79c6dfa00564c",
+          "runtimeSha256": "dfb6e1b54910f60fb3b4bd125e2e06b46024494ab2998a9c7df79c6dfa00564c"
+        },
+        "registration": {
+          "classBand": "receipt-presentation",
+          "sex": "male",
+          "occupationTags": [],
+          "legacy": false,
+          "holdsTool": false,
+          "template": "wave17-original-P1",
+          "season": "all",
+          "directionOrder": [
+            "NE",
+            "SE",
+            "SW",
+            "NW"
+          ],
+          "cloak": null,
+          "cloakPoke": null,
+          "frames": [
+            {
+              "direction": "NE",
+              "gaitFrame": 0,
+              "foot": {
+                "x": 32.06,
+                "y": 68.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 61,
+                  "y": 32
+                },
+                "right": {
+                  "x": 61,
+                  "y": 32
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 61,
+                  "y": 32
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "SE",
+              "gaitFrame": 0,
+              "foot": {
+                "x": 44.89,
+                "y": 69.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 23,
+                  "y": 36
+                },
+                "right": {
+                  "x": 23,
+                  "y": 36
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 23,
+                  "y": 36
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "SW",
+              "gaitFrame": 0,
+              "foot": {
+                "x": 26.56,
+                "y": 70.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 26,
+                  "y": 31
+                },
+                "right": {
+                  "x": 26,
+                  "y": 31
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 26,
+                  "y": 31
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "NW",
+              "gaitFrame": 0,
+              "foot": {
+                "x": 40.29,
+                "y": 68.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 17,
+                  "y": 35
+                },
+                "right": {
+                  "x": 17,
+                  "y": 35
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 17,
+                  "y": 35
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "NE",
+              "gaitFrame": 1,
+              "foot": {
+                "x": 31.0,
+                "y": 68.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 61,
+                  "y": 32
+                },
+                "right": {
+                  "x": 61,
+                  "y": 32
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 61,
+                  "y": 32
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "SE",
+              "gaitFrame": 1,
+              "foot": {
+                "x": 46.47,
+                "y": 69.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 23,
+                  "y": 36
+                },
+                "right": {
+                  "x": 23,
+                  "y": 36
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 23,
+                  "y": 36
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "SW",
+              "gaitFrame": 1,
+              "foot": {
+                "x": 26.53,
+                "y": 69.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 26,
+                  "y": 32
+                },
+                "right": {
+                  "x": 26,
+                  "y": 32
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 26,
+                  "y": 32
+                },
+                "restoreHandSize": 3
+              }
+            },
+            {
+              "direction": "NW",
+              "gaitFrame": 1,
+              "foot": {
+                "x": 43.6,
+                "y": 68.0
+              },
+              "figureHeight": 68,
+              "hands": {
+                "left": {
+                  "x": 17,
+                  "y": 35
+                },
+                "right": {
+                  "x": 17,
+                  "y": 35
+                }
+              },
+              "heldAttachment": {
+                "propId": "wave17_ledger",
+                "grip": {
+                  "x": 17,
+                  "y": 35
+                },
+                "restoreHandSize": 3
+              }
+            }
+          ],
+          "propVariants": [
+            {
+              "slot": "receipt",
+              "propId": "wave17_ledger"
+            }
+          ]
+        }
+      },
+      {
+        "id": "held_ledger_ne",
+        "kind": "walker-held-prop",
+        "allowMirror": false,
+        "image": {
+          "url": "assets/wave17/prop/held_ledger_ne-v1.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_ne-v1.png",
+          "sourceSha256": "a49270e2d120fbc383236e4108af19be8eee7aed34b9afa1c6288e52031ea5ac",
+          "runtimeSha256": "a49270e2d120fbc383236e4108af19be8eee7aed34b9afa1c6288e52031ea5ac"
+        },
+        "propId": "wave17_ledger",
+        "direction": "NE",
+        "anchor": {
+          "x": 16,
+          "y": 16
+        },
+        "role": "receipt",
+        "scale": 1,
+        "referenceFigureHeight": 68,
+        "opaqueBounds": {
+          "x": 8,
+          "y": 9,
+          "width": 16,
+          "height": 14
+        }
+      },
+      {
+        "id": "held_ledger_nw",
+        "kind": "walker-held-prop",
+        "allowMirror": false,
+        "image": {
+          "url": "assets/wave17/prop/held_ledger_nw-v1.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_nw-v1.png",
+          "sourceSha256": "310bde0e9bc5f46531b2b67e26b25476fbf1f9445e76f40621cabc17e8e63f35",
+          "runtimeSha256": "310bde0e9bc5f46531b2b67e26b25476fbf1f9445e76f40621cabc17e8e63f35"
+        },
+        "propId": "wave17_ledger",
+        "direction": "NW",
+        "anchor": {
+          "x": 16,
+          "y": 16
+        },
+        "role": "receipt",
+        "scale": 1,
+        "referenceFigureHeight": 68,
+        "opaqueBounds": {
+          "x": 8,
+          "y": 9,
+          "width": 16,
+          "height": 14
+        }
+      },
+      {
+        "id": "held_ledger_se",
+        "kind": "walker-held-prop",
+        "allowMirror": false,
+        "image": {
+          "url": "assets/wave17/prop/held_ledger_se-v1.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_se-v1.png",
+          "sourceSha256": "606ecfb0ae6946952ac77c52241512789dab826064ec9c6b5339cff34f889c2a",
+          "runtimeSha256": "606ecfb0ae6946952ac77c52241512789dab826064ec9c6b5339cff34f889c2a"
+        },
+        "propId": "wave17_ledger",
+        "direction": "SE",
+        "anchor": {
+          "x": 16,
+          "y": 16
+        },
+        "role": "receipt",
+        "scale": 1,
+        "referenceFigureHeight": 68,
+        "opaqueBounds": {
+          "x": 8,
+          "y": 9,
+          "width": 16,
+          "height": 13
+        }
+      },
+      {
+        "id": "held_ledger_sw",
+        "kind": "walker-held-prop",
+        "allowMirror": false,
+        "image": {
+          "url": "assets/wave17/prop/held_ledger_sw-v1.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave17/candidates-20260926/assets/prop/held_ledger_sw-v1.png",
+          "sourceSha256": "d758b8222cf359eda17d51f9ea2a202b499d0e7d40c17bdd823c4e67b955cd2f",
+          "runtimeSha256": "d758b8222cf359eda17d51f9ea2a202b499d0e7d40c17bdd823c4e67b955cd2f"
+        },
+        "propId": "wave17_ledger",
+        "direction": "SW",
+        "anchor": {
+          "x": 16,
+          "y": 16
+        },
+        "role": "receipt",
+        "scale": 1,
+        "referenceFigureHeight": 68,
+        "opaqueBounds": {
+          "x": 8,
+          "y": 9,
+          "width": 16,
+          "height": 13
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "purveyor-wk_royal_purveyor",
+        "kind": "walker-body",
+        "slot": "walker-body",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "wk_royal_purveyor"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wk_royal_purveyor",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "purveyor-held_ledger_ne",
+        "kind": "walker-held-prop",
+        "slot": "walker-held-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "propId",
+            "value": "wave17_ledger"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "NE"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "held_ledger_ne",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "purveyor-held_ledger_nw",
+        "kind": "walker-held-prop",
+        "slot": "walker-held-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "propId",
+            "value": "wave17_ledger"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "NW"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "held_ledger_nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "purveyor-held_ledger_se",
+        "kind": "walker-held-prop",
+        "slot": "walker-held-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "propId",
+            "value": "wave17_ledger"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "SE"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "held_ledger_se",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "purveyor-held_ledger_sw",
+        "kind": "walker-held-prop",
+        "slot": "walker-held-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "propId",
+            "value": "wave17_ledger"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "SW"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "held_ledger_sw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
     "bundleId": "height-l0c",
     "packId": "core",
     "entries": [
