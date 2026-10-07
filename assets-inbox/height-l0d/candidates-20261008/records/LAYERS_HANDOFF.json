@@ -1,0 +1,124 @@
+{
+  "status": "STATIC_DRAFT_ONLY_NOT_INSTALLED",
+  "bodySHA": "4c6f14ea5d5b68417bf7f7cae946a051db3b8b707211f60a48c8eaff51c2d7ce",
+  "geometry": {
+    "canvas": [
+      153,
+      153
+    ],
+    "pivot": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "scale": 0.49957049486461247,
+    "footprint": [
+      1,
+      1
+    ]
+  },
+  "files": [
+    {
+      "role": "fresh",
+      "file": "house_l0_d-fresh-candidate.png",
+      "sha256": "cee11ff6a50e7cc0e6c3e06d04c7a8903daedf498ba360a2c9f39039a93d226d",
+      "raw": "fresh-03-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "nativeSize": [
+        153,
+        153
+      ],
+      "resize": "whole image single Lanczos",
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "role": "weathered",
+      "file": "house_l0_d-weathered-candidate.png",
+      "sha256": "84fca6cb7b89f7f64f162458e8b0fe4932e04e6f125f721169f7c59e59215041",
+      "raw": "weathered-02-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "nativeSize": [
+        153,
+        153
+      ],
+      "resize": "whole image single Lanczos",
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "role": "boarded",
+      "file": "house_l0_d-boarded-candidate.png",
+      "sha256": "02bd35ebf46ff227da8e75a0a0d8480ecf03aba0ec1e5863cfbd62497c4edc1e",
+      "raw": "boarded-01-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "nativeSize": [
+        153,
+        153
+      ],
+      "resize": "whole image single Lanczos",
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "role": "snow",
+      "file": "house_l0_d-snow-candidate.png",
+      "sha256": "cb20f3dce54cf3545762fa8c845b4fff0c956dc30d317808ec6c5501272064b4",
+      "raw": "snow-02-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "nativeSize": [
+        153,
+        153
+      ],
+      "resize": "whole image single Lanczos",
+      "translation": [
+        0,
+        -2
+      ]
+    }
+  ],
+  "auditFile": "LAYERS_AUDIT.json",
+  "composite": "layers-opaque-composites.png",
+  "failures": [
+    {
+      "attempt": "fresh01",
+      "reason": "Copied structural house instead of sparse material"
+    },
+    {
+      "attempt": "fresh02",
+      "reason": "Patch covered window/firewood"
+    },
+    {
+      "attempt": "weathered01",
+      "reason": "Copied structural house"
+    },
+    {
+      "attempt": "snow01",
+      "reason": "Whole translation(-4,-15) fixes offset but weighted85.18% exceeds80%"
+    }
+  ],
+  "limitations": [
+    "Body43x18\u00b12 still nominal shortfall recorded in body HANDOFF; bible interval inside.",
+    "Fresh03 leftmost limewash patch slightly overlaps front vertical timber; small visible pale spot, retained for review not called clean.",
+    "Snow02 at alpha>32 has71pixels outsidebody; dilation1leaves8,2leaves1,3leaves0.",
+    "No per-part transforms/painting/clipping.",
+    "No runtime capture, installation, commit or DGX."
+  ]
+}

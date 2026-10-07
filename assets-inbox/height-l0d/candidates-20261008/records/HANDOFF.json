@@ -1,0 +1,127 @@
+{
+  "status": "CANDIDATE_NOMINAL_REQUEST_NOT_MET",
+  "runtimeValidated": false,
+  "file": "house_l0_d-body-candidate.png",
+  "sha256": "4c6f14ea5d5b68417bf7f7cae946a051db3b8b707211f60a48c8eaff51c2d7ce",
+  "canvas": [
+    153,
+    153
+  ],
+  "pivot": [
+    77.35406698564593,
+    139.57894736842104
+  ],
+  "scale": 0.49957049486461247,
+  "footprint": [
+    1,
+    1
+  ],
+  "raw": "body-02-raw.png",
+  "rawSize": [
+    1254,
+    1254
+  ],
+  "transform": {
+    "method": "Whole-image Lanczos downsample once",
+    "size": [
+      153,
+      153
+    ],
+    "translation": [
+      0,
+      0
+    ],
+    "localPixelEdits": false
+  },
+  "measurements": {
+    "doorHeight": 43,
+    "doorWidth": 18,
+    "dimensionUncertainty": 2,
+    "heightEndpoints": [
+      [
+        65,
+        81
+      ],
+      [
+        65,
+        124
+      ]
+    ],
+    "widthEndpoints": [
+      [
+        56,
+        99
+      ],
+      [
+        74,
+        99
+      ]
+    ],
+    "worldHeightInterval": [
+      20.48239028944911,
+      22.48067226890756
+    ],
+    "worldWidthInterval": [
+      7.9931279178337995,
+      9.99140989729225
+    ],
+    "bibleIntervalsContained": true,
+    "requestedNominal45to46By19to20Met": false,
+    "masterGround": [
+      [
+        28,
+        107
+      ],
+      [
+        91,
+        137
+      ],
+      [
+        128,
+        117
+      ]
+    ],
+    "candidateGround": [
+      [
+        28,
+        107
+      ],
+      [
+        90,
+        138
+      ],
+      [
+        129,
+        117
+      ]
+    ],
+    "residualEuclidean": [
+      0,
+      1.4142135623730951,
+      1
+    ],
+    "groundPointUncertainty": 2
+  },
+  "attempts": [
+    {
+      "id": "body01",
+      "result": "Door41px nominal: conservative lower height misses bible; retained."
+    },
+    {
+      "id": "body02",
+      "result": "Door43x18\u00b12: bible interval fits, nominal45\u201346x19\u201320 not achieved. Stop at two requested attempts."
+    }
+  ],
+  "preservedIdentity": [
+    "four-sided hipped straw roof",
+    "small firewood pile against right wall",
+    "single frontleft shutter",
+    "no endwallwindow"
+  ],
+  "limitations": [
+    "candidate only, not approved/installable claim",
+    "manual endpoint uncertainty not exact pixelcertification",
+    "no layers created",
+    "no runtime or DGX execution"
+  ]
+}
