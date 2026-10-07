@@ -68,6 +68,7 @@
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 
+- **사건 201–215 그림 붙음**(Claude Code, 렌더 A, 사용자 지시 2026-10-07): INBOX-4b가 받은 v4.1 새 사건 그림 15장. 그림 받기(`scripts/eventArtIntake.ts`)가 `assets-inbox/event-art/`의 모든 묶음(제 `records/ASSETS.csv`가 있는 것)을 읽게 되어 다음 묶음도 코드 없이 들어온다(목록 200 → 215). `npm run eventart:auto`로 켜진 사건 그림 86/86이 진짜 카드에 그려짐(`render-EVA201-capture`), 출처 줄·장부 표시 15. 쓰기는 다른 레인이 쓴 줄(LF 파일 안의 CRLF 다섯 줄)을 바이트 그대로 둔다. 이제 그림 없는 켜진 사건은 없다.
 - **EVA-AUTO 사건 그림이 엔진을 따라가게 — 완료, 본선 병합**(Claude Code, 렌더 A, 본선 `97779d29`): [보고서](verification/evaauto/REPORT.md), 결정 EVA-D5~D7.
   - 명령 하나 `npm run eventart:auto`가 등록기의 켜진 사건마다 진짜 카드를 머리 없이 그려 그림이 정말 그려졌을 때만 출처 줄·장부 `installed_by`를 쓴다(71/71). 숫자 시험(70·71·200) 대신 관계 시험 "켜진 사건마다 그림이 그려졌거나 밝힌 막힌 까닭", 모드 꼴 항목이 렌더 코드 없이 실림. 엔진 세션은 사건을 켜거나 끈 뒤 이 명령을 돌려 커밋(안 돌리면 시험이 이 명령을 부르며 실패). 켜진 사건 그림 71/71 그려짐(render-EVAAUTO-full2-35d1bdc) · 등록기 카드 기하 40칸 실패 0(render-EVAAUTO-geometry3-97779d2). ck_evt_201–215는 팩에 그림이 없음(콘텐츠·Astra).
 
