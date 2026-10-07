@@ -3,9 +3,7 @@
  "blankFloor": 8,
  "live": [
   "ck_evt_002",
-  "ck_evt_004",
   "ck_evt_005",
-  "ck_evt_008",
   "ck_evt_009",
   "ck_evt_010",
   "ck_evt_011",
@@ -13,13 +11,9 @@
   "ck_evt_015",
   "ck_evt_018",
   "ck_evt_019",
-  "ck_evt_020",
   "ck_evt_024",
   "ck_evt_025",
-  "ck_evt_027",
-  "ck_evt_028",
   "ck_evt_029",
-  "ck_evt_030",
   "ck_evt_031",
   "ck_evt_032",
   "ck_evt_033",
@@ -29,71 +23,34 @@
   "ck_evt_038",
   "ck_evt_042",
   "ck_evt_046",
-  "ck_evt_049",
   "ck_evt_051",
   "ck_evt_052",
   "ck_evt_053",
   "ck_evt_059",
-  "ck_evt_101",
-  "ck_evt_102",
-  "ck_evt_105",
-  "ck_evt_108",
-  "ck_evt_111",
-  "ck_evt_113",
-  "ck_evt_115",
-  "ck_evt_117",
-  "ck_evt_123",
   "ck_evt_124",
-  "ck_evt_127",
   "ck_evt_128",
   "ck_evt_130",
   "ck_evt_131",
   "ck_evt_132",
   "ck_evt_133",
-  "ck_evt_136",
-  "ck_evt_138",
   "ck_evt_139",
   "ck_evt_140",
-  "ck_evt_141",
   "ck_evt_143",
   "ck_evt_144",
-  "ck_evt_145",
   "ck_evt_150",
-  "ck_evt_155",
-  "ck_evt_156",
   "ck_evt_157",
-  "ck_evt_160",
-  "ck_evt_161",
-  "ck_evt_162",
   "ck_evt_163",
-  "ck_evt_164",
   "ck_evt_165",
-  "ck_evt_171",
-  "ck_evt_173",
   "ck_evt_174",
-  "ck_evt_179",
-  "ck_evt_180",
   "ck_evt_201",
-  "ck_evt_202",
-  "ck_evt_203",
   "ck_evt_204",
-  "ck_evt_205",
   "ck_evt_206",
-  "ck_evt_207",
-  "ck_evt_208",
   "ck_evt_209",
-  "ck_evt_210",
-  "ck_evt_211",
-  "ck_evt_212",
-  "ck_evt_213",
-  "ck_evt_214",
-  "ck_evt_215"
+  "ck_evt_211"
  ],
  "shipped": [
   "ck_evt_002",
-  "ck_evt_004",
   "ck_evt_005",
-  "ck_evt_008",
   "ck_evt_009",
   "ck_evt_010",
   "ck_evt_011",
@@ -101,13 +58,9 @@
   "ck_evt_015",
   "ck_evt_018",
   "ck_evt_019",
-  "ck_evt_020",
   "ck_evt_024",
   "ck_evt_025",
-  "ck_evt_027",
-  "ck_evt_028",
   "ck_evt_029",
-  "ck_evt_030",
   "ck_evt_031",
   "ck_evt_032",
   "ck_evt_033",
@@ -117,71 +70,36 @@
   "ck_evt_038",
   "ck_evt_042",
   "ck_evt_046",
-  "ck_evt_049",
   "ck_evt_051",
   "ck_evt_052",
   "ck_evt_053",
   "ck_evt_059",
-  "ck_evt_101",
-  "ck_evt_102",
-  "ck_evt_105",
-  "ck_evt_108",
-  "ck_evt_111",
-  "ck_evt_113",
-  "ck_evt_115",
-  "ck_evt_117",
-  "ck_evt_123",
   "ck_evt_124",
-  "ck_evt_127",
   "ck_evt_128",
   "ck_evt_130",
   "ck_evt_131",
   "ck_evt_132",
   "ck_evt_133",
-  "ck_evt_136",
-  "ck_evt_138",
   "ck_evt_139",
   "ck_evt_140",
-  "ck_evt_141",
   "ck_evt_143",
   "ck_evt_144",
-  "ck_evt_145",
   "ck_evt_150",
-  "ck_evt_155",
-  "ck_evt_156",
   "ck_evt_157",
-  "ck_evt_160",
-  "ck_evt_161",
-  "ck_evt_162",
   "ck_evt_163",
-  "ck_evt_164",
   "ck_evt_165",
-  "ck_evt_171",
-  "ck_evt_173",
   "ck_evt_174",
-  "ck_evt_179",
-  "ck_evt_180",
   "ck_evt_201",
-  "ck_evt_202",
-  "ck_evt_203",
   "ck_evt_204",
-  "ck_evt_205",
   "ck_evt_206",
-  "ck_evt_207",
-  "ck_evt_208",
   "ck_evt_209",
-  "ck_evt_210",
-  "ck_evt_211",
-  "ck_evt_212",
-  "ck_evt_213",
-  "ck_evt_214",
-  "ck_evt_215"
+  "ck_evt_211"
  ],
  "shots": [
   "shot-ck_evt_002.jpg",
-  "shot-ck_evt_051.jpg",
-  "shot-ck_evt_155.jpg",
-  "shot-ck_evt_215.jpg"
+  "shot-ck_evt_034.jpg",
+  "shot-ck_evt_133.jpg",
+  "shot-ck_evt_211.jpg"
  ],
  "pictures": {
   "ck_evt_002": {
@@ -200,22 +118,6 @@
    ],
    "luminance": 55.8
   },
-  "ck_evt_004": {
-   "derivativeSha": "123076d0372bbd9c0438932c1ba9e15b24c5581f244e5d1548c4313c2781295d",
-   "derivativeBytes": 146621,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 55
-  },
   "ck_evt_005": {
    "derivativeSha": "04c80c101d0ff125001a3827db80e642d2f4691a8b74d61bc648b923fdd72769",
    "derivativeBytes": 101555,
@@ -231,22 +133,6 @@
     169
    ],
    "luminance": 57.6
-  },
-  "ck_evt_008": {
-   "derivativeSha": "e0fb8e3e69fd97a9f6330442d365ea4c550a44b5fbd7b5b0b5f7750c8482d9d1",
-   "derivativeBytes": 162547,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 52.6
   },
   "ck_evt_009": {
    "derivativeSha": "cd8b81cdd66c67a51b83621044fcb956a5e9876f5ac81398cbf5564ac5bb4f0e",
@@ -360,22 +246,6 @@
    ],
    "luminance": 53.4
   },
-  "ck_evt_020": {
-   "derivativeSha": "5e7600625efcb1afedd7e6b54ec2cb7ec861113d5cc64a73fb1927f0070b7d2f",
-   "derivativeBytes": 95759,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 50.5
-  },
   "ck_evt_024": {
    "derivativeSha": "5dee1a1570f2954d256f95b4185c8bc4dc6e12a2055d413586b7e8efaa6e54fd",
    "derivativeBytes": 119271,
@@ -408,38 +278,6 @@
    ],
    "luminance": 40.2
   },
-  "ck_evt_027": {
-   "derivativeSha": "2803b2f9b7aeb0c46a6c4ef5b1997e1452b87f64c1914eceb48ca2aa69668084",
-   "derivativeBytes": 151700,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 55.4
-  },
-  "ck_evt_028": {
-   "derivativeSha": "3812e59110cfa3cd122e6286258745977b17fe22dbcac54b74a6637e7788de73",
-   "derivativeBytes": 132919,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 47.5
-  },
   "ck_evt_029": {
    "derivativeSha": "6bd35fb8edd5dda308096a5883794939ea3619a5c7610053fbba510b67ed8aa6",
    "derivativeBytes": 127376,
@@ -455,22 +293,6 @@
     169
    ],
    "luminance": 60.5
-  },
-  "ck_evt_030": {
-   "derivativeSha": "7c6033566bef2e00e61cbd0c23cb96e362c1f91a7d225393f9930fff97795ec5",
-   "derivativeBytes": 136295,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 52.2
   },
   "ck_evt_031": {
    "derivativeSha": "6612f3881a026943f853d5ce81c4e418a972ff00be9bbf70c864e23b96b516b9",
@@ -616,22 +438,6 @@
    ],
    "luminance": 51.5
   },
-  "ck_evt_049": {
-   "derivativeSha": "7e0f1061ccbbc3bb07d763a2059e81e8e66cb8446639c6f0de4a0e586d83af0d",
-   "derivativeBytes": 130357,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 52.7
-  },
   "ck_evt_051": {
    "derivativeSha": "8a7141261762bb514276614eff7632fb95e6db982235d9c1ebe6afae3adc070f",
    "derivativeBytes": 139048,
@@ -696,150 +502,6 @@
    ],
    "luminance": 55
   },
-  "ck_evt_101": {
-   "derivativeSha": "1b1c5b1c12a2d456ab8a3d30341b0e11a3670f97ae98a6f4a538e03fe821a5e7",
-   "derivativeBytes": 136613,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 48.3
-  },
-  "ck_evt_102": {
-   "derivativeSha": "3eb3a0e4a616fed4567811a0c71c5ecfbb233da8248d19bd8487fd6afe952d03",
-   "derivativeBytes": 133041,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 47.7
-  },
-  "ck_evt_105": {
-   "derivativeSha": "ff16174d0dce93db2321f78ba12161481a8a8014aab1e9788c02b84c12afc3d8",
-   "derivativeBytes": 115009,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 57
-  },
-  "ck_evt_108": {
-   "derivativeSha": "3d948a41769d11ef0fea8339ff3d869256188b226038084b9419e9f8e0faf7bc",
-   "derivativeBytes": 93362,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 39.8
-  },
-  "ck_evt_111": {
-   "derivativeSha": "03fc1d49ec02c335803f8efb1c57b84d85f42d5cd6b84ac3522da164dce7ac3e",
-   "derivativeBytes": 91908,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 28
-  },
-  "ck_evt_113": {
-   "derivativeSha": "6527fca2576beae9b2b401f63c7df86adc24c06dc6e1e7de34efb9c0659bee17",
-   "derivativeBytes": 123986,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 53.4
-  },
-  "ck_evt_115": {
-   "derivativeSha": "0d54fceff8e99590140bea5d0ea16f5f8bd59873821b5065154906036ccf193d",
-   "derivativeBytes": 138153,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 44.7
-  },
-  "ck_evt_117": {
-   "derivativeSha": "c0f05a7daacabcb9047940493ddea4a1697b621152ff02852e8dd7c16de3e471",
-   "derivativeBytes": 101566,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 47.9
-  },
-  "ck_evt_123": {
-   "derivativeSha": "3eefe835abee29e9f67b86f29e9657b119ae525d4145736994578301fcf7b43e",
-   "derivativeBytes": 129359,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 50.9
-  },
   "ck_evt_124": {
    "derivativeSha": "424dd0d84bc77aee3738e75d9a51f00af876fc28bf89585c6ae4ad41310ae25f",
    "derivativeBytes": 98437,
@@ -855,22 +517,6 @@
     169
    ],
    "luminance": 45.8
-  },
-  "ck_evt_127": {
-   "derivativeSha": "c4ecb15cc4b2e97ad3986f47398e1cb602384075f341fee0dcd2feff74d381fa",
-   "derivativeBytes": 141016,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 49.9
   },
   "ck_evt_128": {
    "derivativeSha": "7a9b35593d6ff66490e736acbc45006b44d3c7071958b15a48a7edc41b7e050f",
@@ -952,38 +598,6 @@
    ],
    "luminance": 50.3
   },
-  "ck_evt_136": {
-   "derivativeSha": "d8c5f4ebba11cb8e8953c7dec68c9cc013cf4b2ca67500a0402d037b5d7db377",
-   "derivativeBytes": 118709,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 49.7
-  },
-  "ck_evt_138": {
-   "derivativeSha": "025d3a5b10c1513686cfb08c384fe5b2b95fa348877d39d3e0afe1eee4864dfc",
-   "derivativeBytes": 149523,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 43.1
-  },
   "ck_evt_139": {
    "derivativeSha": "a925680d8eec669cabc12930386b5c50d726e8d3edbb3a8a04945ad022c2cb1c",
    "derivativeBytes": 129591,
@@ -1015,22 +629,6 @@
     169
    ],
    "luminance": 53.1
-  },
-  "ck_evt_141": {
-   "derivativeSha": "e5db0abdc2e6ea1a762e6aa9d9e9327a37775a797c3bf0d150ab85d42041af50",
-   "derivativeBytes": 134981,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 44.5
   },
   "ck_evt_143": {
    "derivativeSha": "066e9ae86d470d07bc048906eb8374f47f30ea9b9a9751962be3cca6c15f325b",
@@ -1064,22 +662,6 @@
    ],
    "luminance": 43.8
   },
-  "ck_evt_145": {
-   "derivativeSha": "66f47b308cf5c744f653b69bcb87e6bdd1ee47f3ae6c09bfee26c669de9fc30a",
-   "derivativeBytes": 125362,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 39.6
-  },
   "ck_evt_150": {
    "derivativeSha": "3efb4426b7fe39d37df9c2dbdc9258824a06544c2a8034d1b6ee298ecf47d6a3",
    "derivativeBytes": 115754,
@@ -1095,38 +677,6 @@
     169
    ],
    "luminance": 56.3
-  },
-  "ck_evt_155": {
-   "derivativeSha": "294e10571e16a400ad9ac889359faffd8101b5384a6e88e04f298286999592fb",
-   "derivativeBytes": 132595,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 50.3
-  },
-  "ck_evt_156": {
-   "derivativeSha": "9cbe89db0782f49285bf9e95fdf085f04604bacca88c861179e6dad0c1ca5a96",
-   "derivativeBytes": 121537,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 46.3
   },
   "ck_evt_157": {
    "derivativeSha": "f21e4b2a50c12e0bf6dc38efc4ecb89f51216044772ed1038562a1ed9292c0de",
@@ -1144,54 +694,6 @@
    ],
    "luminance": 50.7
   },
-  "ck_evt_160": {
-   "derivativeSha": "7c11c747cf014b1159446662a4ca0c959aef9fbc681b762951e72466a76d3f9d",
-   "derivativeBytes": 152820,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 48.1
-  },
-  "ck_evt_161": {
-   "derivativeSha": "a7bc98b3c0c610302ff639894366b3fd5b2eb00536b40e03af5e2f25af193cbb",
-   "derivativeBytes": 120988,
-   "bound": true,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 45.1
-  },
-  "ck_evt_162": {
-   "derivativeSha": "b1b2cf0d061dba42fab669029edb45d1869bf5ae15b1e1feb42d04c8dd962751",
-   "derivativeBytes": 122773,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 61.4
-  },
   "ck_evt_163": {
    "derivativeSha": "b9d404741b679fd2d48b9397e005a9730d21b0f72c3bb235ddbae0bfed3e950f",
    "derivativeBytes": 143158,
@@ -1207,22 +709,6 @@
     169
    ],
    "luminance": 46.1
-  },
-  "ck_evt_164": {
-   "derivativeSha": "2f08f54c85f5a2f635af055d2a55e6efdfa033e43b338681bcbbadd2611a83df",
-   "derivativeBytes": 136478,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 52.3
   },
   "ck_evt_165": {
    "derivativeSha": "7b134ccf2db84e2262f22ed6bd5a80744e35a358d1f7d926533aa845d7c83940",
@@ -1240,38 +726,6 @@
    ],
    "luminance": 35.5
   },
-  "ck_evt_171": {
-   "derivativeSha": "e8ac3b8f7505709a7e61922176a7e74662970e3663f78ddfd7f806ce05119230",
-   "derivativeBytes": 143376,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 46.6
-  },
-  "ck_evt_173": {
-   "derivativeSha": "fe22edae09e59e44b5df04b3c2397bafb7f72f013bdb27f89e520864a8779f8e",
-   "derivativeBytes": 93669,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 51
-  },
   "ck_evt_174": {
    "derivativeSha": "90b766b58fd6020bd56392d3e8971f1572e81a15f2d1574c36de8950dc660fd0",
    "derivativeBytes": 115280,
@@ -1287,38 +741,6 @@
     169
    ],
    "luminance": 58.3
-  },
-  "ck_evt_179": {
-   "derivativeSha": "4d8f09911fb0db96556f33632c0e7fcb37a70e10d64cd826d678f43859cdc043",
-   "derivativeBytes": 149711,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 55.1
-  },
-  "ck_evt_180": {
-   "derivativeSha": "80be25c63394eb51d375886e09adfcb5066b389721fef7b77f86111abf0f80ed",
-   "derivativeBytes": 157379,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 51.2
   },
   "ck_evt_201": {
    "derivativeSha": "70715b7d0aafd0d0cbf7f9ba3a0681415a72edd092f4b368c4d2fa015b475edf",
@@ -1336,38 +758,6 @@
    ],
    "luminance": 51.4
   },
-  "ck_evt_202": {
-   "derivativeSha": "58329f094996c87b1396b4688065b66534437111f03fd7b3db320ee2a17ac037",
-   "derivativeBytes": 70535,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 49.7
-  },
-  "ck_evt_203": {
-   "derivativeSha": "b3a4cf9a54f869291edda2ef5ca0dfec7ffe7e1ad52957e3d46945e724044a12",
-   "derivativeBytes": 126898,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 53
-  },
   "ck_evt_204": {
    "derivativeSha": "f4489e04c196fa01fdbea96a6639f75b529baed58ec72a037027487948facfb7",
    "derivativeBytes": 93473,
@@ -1383,22 +773,6 @@
     169
    ],
    "luminance": 41.5
-  },
-  "ck_evt_205": {
-   "derivativeSha": "b71ddfc121594fe39d7a0216bdbfebbdee477e90dd16562c955afa8fe084e35d",
-   "derivativeBytes": 111415,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 47.4
   },
   "ck_evt_206": {
    "derivativeSha": "b7ed12978e1d2efd9e88c28547cc64ac8a0ed35eba0b8e303252fd1622ad9f3c",
@@ -1416,38 +790,6 @@
    ],
    "luminance": 52.3
   },
-  "ck_evt_207": {
-   "derivativeSha": "ccf54dd8fa5c183bf87b6facccd374ef4eb68f42b01c1bea26519e68c2ab5171",
-   "derivativeBytes": 99643,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 48.7
-  },
-  "ck_evt_208": {
-   "derivativeSha": "2ae6e12aa895e7a06fb43c02ac8f447407a7f25608350af080b766d3e017ece9",
-   "derivativeBytes": 126139,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 44.7
-  },
   "ck_evt_209": {
    "derivativeSha": "a622b34a36eb1cbf3cc3fefea7bd3db8f918ff96c1cb910ad0cf13e970432334",
    "derivativeBytes": 113114,
@@ -1464,22 +806,6 @@
    ],
    "luminance": 51.3
   },
-  "ck_evt_210": {
-   "derivativeSha": "24549ed26e633465b9309e11554cd5fbcbe501e3dc582fb52f64d2aea5b5c836",
-   "derivativeBytes": 92425,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 49.3
-  },
   "ck_evt_211": {
    "derivativeSha": "b28348301334ee1640e9bd5fd0f0b4a112223df9a26b683a669460abe38f58f5",
    "derivativeBytes": 88596,
@@ -1495,70 +821,6 @@
     169
    ],
    "luminance": 49.7
-  },
-  "ck_evt_212": {
-   "derivativeSha": "561652f69d1cd7ccb81048a99840f344e66f20f9189e4b1f5c7154203014885b",
-   "derivativeBytes": 108656,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 50.8
-  },
-  "ck_evt_213": {
-   "derivativeSha": "d5d5080caaf91d0bc9369c557f68e45cff679c234a362a5776c66e7918ca9795",
-   "derivativeBytes": 111977,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 47.5
-  },
-  "ck_evt_214": {
-   "derivativeSha": "e557aec91d633ff56f9a3c2a76436745cae0a1d65d0884c72eebe7ef1f79c205",
-   "derivativeBytes": 131582,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 49.9
-  },
-  "ck_evt_215": {
-   "derivativeSha": "f712aa9507e47786bc05e401296d23a89ee2e0f458c75653a77f03a781f13878",
-   "derivativeBytes": 95295,
-   "bound": false,
-   "ok": true,
-   "why": null,
-   "natural": [
-    960,
-    540
-   ],
-   "box": [
-    300,
-    169
-   ],
-   "luminance": 46.4
   }
  }
 }
