@@ -110,7 +110,7 @@ async function capture({ id, item }) {
     await page.waitForTimeout(800);
     const shown = await page.evaluate(async selector => {
       const root = document.querySelector(selector);
-      const art = root?.querySelector('.lord-card-art') ?? null;
+      const art = root?.querySelector('.decision-card-art, .lord-card-art') ?? null; // the heavy card (DEC-CARD) or the older lord card
       const background = art === null ? null : getComputedStyle(art).backgroundImage;
       const src = background?.match(/url\("?([^")]+)"?\)/)?.[1] ?? null;
       const natural = src === null ? null : await new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done(null); image.src = src; });

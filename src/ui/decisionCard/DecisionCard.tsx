@@ -54,7 +54,7 @@ export function DecisionCard({ view, onChoose, onLater, extra = null, laterLabel
         <div className="petition-body decision-card-body">
           {view.court === null ? null : <p className="decision-card-court">{view.court}</p>}
           <header className="decision-card-head">
-            {view.illustration === null ? null : <div className="decision-card-art" aria-hidden="true" style={storyArtStyle(view.illustration, ART_WIDTH)} />}
+            {view.illustration === null ? null : <div className="decision-card-art" aria-hidden="true" data-art={view.illustration} style={storyArtStyle(view.illustration, ART_WIDTH)} />}
             <div className="decision-card-heading">
               {view.from === null ? null : <p className="decision-card-from">{view.from}</p>}
               <h2>{view.title}</h2>
