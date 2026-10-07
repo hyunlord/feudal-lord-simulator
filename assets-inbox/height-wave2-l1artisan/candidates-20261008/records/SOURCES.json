@@ -1,0 +1,104 @@
+[
+  {
+    "role": "body-runtime",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/buildings/variants-wave2/house_l1_artisan-v1.png",
+    "copy": "originals/body-runtime-house_l1_artisan-v1.png",
+    "sha256": "903f214c669da374ec2663ee32307d3e28ddbef9ab49baac0e3857bc6b8e811e",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "body-inbox",
+    "path": "/tmp/astra-height-historic-l1-install/assets-inbox/wave2/house_l1_artisan-v1.png",
+    "copy": "originals/body-inbox-house_l1_artisan-v1.png",
+    "sha256": "903f214c669da374ec2663ee32307d3e28ddbef9ab49baac0e3857bc6b8e811e",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "snow",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/wave7/season/roof_snow_l1-v2.png",
+    "copy": "originals/snow-roof_snow_l1-v2.png",
+    "sha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "boarded",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/wave7/overlay/boarded_l1-v2.png",
+    "copy": "originals/boarded-boarded_l1-v2.png",
+    "sha256": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "strained",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/phase16-house-condition/house_l1-strained-v1.png",
+    "copy": "originals/strained-house_l1-strained-v1.png",
+    "sha256": "355a0b2e97aa7bf28dd4b133f0f6a91cf74800c29d4b9213ada4d50ebb1e017a",
+    "canvas": [
+      178,
+      178
+    ]
+  },
+  {
+    "role": "neglected",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/phase16-house-condition/house_l1-neglected-v1.png",
+    "copy": "originals/neglected-house_l1-neglected-v1.png",
+    "sha256": "14f3daeaa4c8552cb5a75d54b6ee6b9327896ce359d4f2df917b499711161a71",
+    "canvas": [
+      178,
+      178
+    ]
+  },
+  {
+    "role": "vacant",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/phase16-house-condition/house_l1-vacant-v1.png",
+    "copy": "originals/vacant-house_l1-vacant-v1.png",
+    "sha256": "e39a26224b24aecc7a69886fbca24a56430b4ebcc0bbd6ae5904e579fa37ebba",
+    "canvas": [
+      178,
+      178
+    ]
+  },
+  {
+    "role": "plague-shut",
+    "path": "/tmp/astra-height-historic-l1-install/public/assets/wave9/event/plague_shut_l1-v1.png",
+    "copy": "originals/plague-shut-plague_shut_l1-v1.png",
+    "sha256": "9b142f8864ce724c14aedfac3cb359e4fd289ed4880de57bd7cb900dbe71f9ef",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "geometry-reference-only",
+    "path": "/tmp/astra-height-historic-l1-candidates-20261008/raw/body-05.png",
+    "copy": "originals/historic-door-geometry-raw.png",
+    "sha256": "f22a96b3d56e24e73fd207fb8bc72d7fc53eb9d312326ecb34e504f71b382985",
+    "canvas": [
+      1059,
+      1486
+    ],
+    "note": "Full-house generative reference, no source-pixel part assembly"
+  },
+  {
+    "role": "geometry-reference-only",
+    "path": "/tmp/astra-height-historic-l1-candidates-20261008/registered/body-05.png",
+    "copy": "originals/historic-door-geometry-native.png",
+    "sha256": "7742bd9d112750bf034993d221071f901c5a04ec7efe0d6d9286ee638c75c5b8",
+    "canvas": [
+      139,
+      175
+    ],
+    "note": "Full-house generative reference, no source-pixel part assembly"
+  }
+]

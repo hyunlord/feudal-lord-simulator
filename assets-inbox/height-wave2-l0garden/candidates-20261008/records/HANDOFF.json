@@ -1,0 +1,551 @@
+{
+  "task": "RB-HEIGHT-WAVE2-L0GARDEN",
+  "status": "six static candidates complete; not installed; no runtime validation",
+  "file": "house_l0_garden-body-candidate.png",
+  "sha256": "15e14fa46ccabf855de7cf01e9eda4d29c84f1f6398746e3d455bcf2049afcf3",
+  "size": [
+    153,
+    153
+  ],
+  "mode": "RGBA",
+  "selectedAttempt": "body-04",
+  "sourceReferences": [
+    {
+      "file": "source-runtime.png",
+      "sha256": "c320744da6a2b850b0c078c36f2357166840a3d43e2a028acb8e31b28ec8348a",
+      "size": [
+        153,
+        153
+      ],
+      "bboxAlpha32": [
+        21,
+        53,
+        134,
+        140
+      ]
+    },
+    {
+      "file": "source-authored.png",
+      "sha256": "bf49c3143a45e894731de374080a287cad7fdf9af42073126a13886bb98835c2",
+      "size": [
+        1254,
+        1254
+      ],
+      "bboxAlpha32": [
+        176,
+        373,
+        1111,
+        1086
+      ]
+    }
+  ],
+  "sourcePaths": [
+    "public/assets/buildings/variants-wave2/house_l0_garden-v1.png",
+    "assets-inbox/wave2/house_l0_garden-v1.png",
+    "docs/asset-evidence/runtime-sources/variants-wave2/house_l0_garden-v1.png"
+  ],
+  "identityCorrection": "Original depicts small stacked logs between stakes at left and two low earth-bordered vegetable beds at right, not basket/high fence. Preserve actual reference.",
+  "registration": {
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "uniformResize": [
+      122,
+      122
+    ],
+    "translation": [
+      13,
+      24
+    ],
+    "filter": "format=rgba,scale=122:122:flags=lanczos,pad=153:153:13:24:color=black@0",
+    "canvasExpansion": 0,
+    "pivot": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "worldPxPerNativePx": 0.4995704948646126,
+    "formula": "56.32/924*1254/153",
+    "basis": "runtime153 canvas ground, not direct authored1254 registration"
+  },
+  "door": {
+    "type": "closed leaf as proxy; actual clear aperture obscured",
+    "sameX": 54,
+    "topY": 70,
+    "bottomY": 117,
+    "height": 47,
+    "widthAtY": 95,
+    "leftX": 44,
+    "rightX": 64,
+    "width": 20,
+    "dimensionUncertainty": 2,
+    "worldHeightRange": [
+      22.480672268907565,
+      24.478954248366016
+    ],
+    "worldWidthRange": [
+      8.992268907563027,
+      10.990550887021477
+    ],
+    "method": "Manual nearestneighbor visual endpoint estimates, frame and roof excluded"
+  },
+  "ground": {
+    "manualAnchors": [
+      "left post foot",
+      "front corner footing",
+      "right garden edge"
+    ],
+    "source": [
+      [
+        28,
+        107
+      ],
+      [
+        85,
+        133
+      ],
+      [
+        133,
+        123
+      ]
+    ],
+    "candidate": [
+      [
+        29,
+        108
+      ],
+      [
+        86,
+        134
+      ],
+      [
+        132,
+        123
+      ]
+    ],
+    "residualPixels": [
+      1.4142135623730951,
+      1.4142135623730951,
+      1
+    ],
+    "coordinateUncertainty": 2,
+    "limitation": "Manual correspondence approximate, not pixel-identical geometry. Garden plants and individual logs redrawn."
+  },
+  "bboxAlpha32": [
+    22,
+    25,
+    133,
+    139
+  ],
+  "roofTopChangeFromRuntime": -28,
+  "boundaryAlphaMax": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0
+  },
+  "offCanvasNonzeroAlphaLost": 0,
+  "offCanvasEvidence": "Entire122square at13,24 fits153canvas, no crop. Boundary measurement separate.",
+  "authoredRuntimeDifference": "Authored alpha>32 bbox(176,373,1111,1086); normalized153 bbox about(21.47,45.51,135.55,132.50), runtime(21,53,134,140). Therefore direct153 resize is not runtime registration; body aligned against runtime ground.",
+  "failedAttempts": [
+    {
+      "id": "01",
+      "reason": "door too short and narrow at matched ground width"
+    },
+    {
+      "id": "02",
+      "reason": "door leaf about42x14native, narrow"
+    },
+    {
+      "id": "03",
+      "reason": "door width corrected but height about42native with uncertainty crossing lower target"
+    },
+    {
+      "id": "layers-initial-registration",
+      "reason": "samebodyoffset placed wallwear oncornerpost and snow beyond eaves; intermediatecomposites preserved, finalwholeimage transforms corrected"
+    }
+  ],
+  "visualQA": {
+    "viewed": [
+      "original-candidate-comparison.png",
+      "proof-light.png",
+      "proof-darkgreen.png",
+      "proof-snow-backgrounds.png",
+      "proof-boarded-backgrounds.png",
+      "proof-strained-backgrounds.png",
+      "proof-neglected-backgrounds.png",
+      "proof-vacant-backgrounds.png"
+    ],
+    "observed": "Hipped roof, left logs, right two beds retained. Tall single-storey walls; no added porch or wings. Roof raised to accommodate door.",
+    "notTested": [
+      "runtime",
+      "adult overlap",
+      "DPR/occlusion",
+      "engine condition selection",
+      "combined layers in actualgame"
+    ]
+  },
+  "nextRoles": [],
+  "generationPaths": [
+    {
+      "attempt": 1,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a117bb-604a-7b33-bc22-f04674d9b4b7/exec-b40cd7b3-c698-4912-9d81-9abf8eb85a71.png",
+      "rawSHA256": "c4af78e34b547c4cc29228f7a5184201e3ab2dc643270e0b1319d14778a8cb6c"
+    },
+    {
+      "attempt": 2,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a117bb-604a-7b33-bc22-f04674d9b4b7/exec-af5dfa1e-6d74-48a1-915a-c87ad4da5884.png",
+      "rawSHA256": "466b523c1c382831ba5b9e7e69be91274cb4eab1aca65df44a9ea8a17c2d3e7a"
+    },
+    {
+      "attempt": 3,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a117bb-604a-7b33-bc22-f04674d9b4b7/exec-942e8ab0-7161-45e2-ac4e-524b737d8a25.png",
+      "rawSHA256": "a399e4d49f73f083b90da1e6fbfaa1a841dcb68cd48be0dce7b1a2e682854ab8"
+    },
+    {
+      "attempt": 4,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a117bb-604a-7b33-bc22-f04674d9b4b7/exec-3de4ca18-85d3-4fb5-9f9d-73f4a996e9c2.png",
+      "rawSHA256": "a004e803edb44cf112dacd2d88a90b6785f11a712fad39841778f15026d1706b"
+    }
+  ],
+  "files": [
+    {
+      "role": "body",
+      "file": "house_l0_garden-body-candidate.png",
+      "sha256": "15e14fa46ccabf855de7cf01e9eda4d29c84f1f6398746e3d455bcf2049afcf3",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        22,
+        25,
+        133,
+        139
+      ],
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawBoundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 1,
+        "right": 0
+      },
+      "rawSHA256": "a004e803edb44cf112dacd2d88a90b6785f11a712fad39841778f15026d1706b",
+      "uniformRegistration": {
+        "size": [
+          122,
+          122
+        ],
+        "translation": [
+          13,
+          24
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "filter": "format=rgba,scale=122:122:flags=lanczos,pad=153:153:13:24:color=black@0"
+      },
+      "offCanvasAlphaLostDuringRegistration": 0,
+      "offCanvasEvidence": "Entire uniformly resized rectangle fits finalcanvas. No crop. Does not certify generator did not truncate raw features.",
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "role": "snow",
+      "file": "house_l0_garden-snow-candidate.png",
+      "sha256": "5edb8bb5e6651d59d2929e526e2324d414c4885b22dada7cd2df25d61c36db67",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        25,
+        25,
+        122,
+        90
+      ],
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawBoundaryAlphaMax": {
+        "top": 1,
+        "bottom": 0,
+        "left": 1,
+        "right": 0
+      },
+      "rawSHA256": "adaea7142631f3c1075849fc1ebca1025d2f81aa479e7318d880b318c645a4f2",
+      "uniformRegistration": {
+        "size": [
+          105,
+          105
+        ],
+        "translation": [
+          19,
+          24
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "filter": "format=rgba,scale=105:105:flags=lanczos,pad=153:153:19:24:color=black@0"
+      },
+      "offCanvasAlphaLostDuringRegistration": 0,
+      "offCanvasEvidence": "Entire uniformly resized rectangle fits finalcanvas. No crop. Does not certify generator did not truncate raw features.",
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 3,
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "role": "boarded",
+      "file": "house_l0_garden-boarded-candidate.png",
+      "sha256": "64408e56a1f78ed744098b2426c26ad312dd28259930dbdb34ecb76fe8d2025e",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        37,
+        66,
+        88,
+        118
+      ],
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawBoundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawSHA256": "bd2c7e72e1dbd4f2a0353925509c98d8e454b55b1b72b23f4126c271ba3bcf9c",
+      "uniformRegistration": {
+        "size": [
+          122,
+          122
+        ],
+        "translation": [
+          10,
+          24
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "filter": "format=rgba,scale=122:122:flags=lanczos,pad=153:153:10:24:color=black@0"
+      },
+      "offCanvasAlphaLostDuringRegistration": 0,
+      "offCanvasEvidence": "Entire uniformly resized rectangle fits finalcanvas. No crop. Does not certify generator did not truncate raw features.",
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "role": "strained",
+      "file": "house_l0_garden-strained-candidate.png",
+      "sha256": "1a07cc09890a4f25f970af36ab7e30e0e113f345dec583d01d16430c0cd3b4ce",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        72,
+        111,
+        83,
+        130
+      ],
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawBoundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawSHA256": "92f4abe4427994bf60c93d7387bd409fe92b6340f439cf23e2e0d2d13cc16f1d",
+      "uniformRegistration": {
+        "size": [
+          122,
+          122
+        ],
+        "translation": [
+          11,
+          21
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "filter": "format=rgba,scale=122:122:flags=lanczos,pad=153:153:11:21:color=black@0"
+      },
+      "offCanvasAlphaLostDuringRegistration": 0,
+      "offCanvasEvidence": "Entire uniformly resized rectangle fits finalcanvas. No crop. Does not certify generator did not truncate raw features.",
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "role": "neglected",
+      "file": "house_l0_garden-neglected-candidate.png",
+      "sha256": "9ed4b17bd7608fb258d5f60a5dde8a62aa9164035a508bdd0ea6d6384e4fcc09",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        73,
+        61,
+        91,
+        128
+      ],
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawBoundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawSHA256": "f8ff3cf7542e374fd28586bb65ac7c17b91f441a1b5d3e3ae79d6e7b31b2182a",
+      "uniformRegistration": {
+        "size": [
+          122,
+          122
+        ],
+        "translation": [
+          8,
+          22
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "filter": "format=rgba,scale=122:122:flags=lanczos,pad=153:153:8:22:color=black@0"
+      },
+      "offCanvasAlphaLostDuringRegistration": 0,
+      "offCanvasEvidence": "Entire uniformly resized rectangle fits finalcanvas. No crop. Does not certify generator did not truncate raw features.",
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "role": "vacant",
+      "file": "house_l0_garden-vacant-candidate.png",
+      "sha256": "8485bba8d5d33fc48b5ec4f7b655bb10f4d410dd72a3b1ce3a2a1b1d08558367",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        68,
+        54,
+        89,
+        132
+      ],
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "rawBoundaryAlphaMax": {
+        "top": 0,
+        "bottom": 1,
+        "left": 0,
+        "right": 0
+      },
+      "rawSHA256": "0cca281cbce1b65d6a2967aca1ba7714a73bd89570a5a56e5db66e1f460845cc",
+      "uniformRegistration": {
+        "size": [
+          122,
+          122
+        ],
+        "translation": [
+          8,
+          21
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "filter": "format=rgba,scale=122:122:flags=lanczos,pad=153:153:8:21:color=black@0"
+      },
+      "offCanvasAlphaLostDuringRegistration": 0,
+      "offCanvasEvidence": "Entire uniformly resized rectangle fits finalcanvas. No crop. Does not certify generator did not truncate raw features.",
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    }
+  ],
+  "snowAudit": {
+    "roofPolygon": [
+      [
+        59,
+        25
+      ],
+      [
+        126,
+        75
+      ],
+      [
+        85,
+        89
+      ],
+      [
+        22,
+        56
+      ]
+    ],
+    "roofPixels": 3145,
+    "alphaWeightedCoverage": 0.6104429689204776,
+    "binaryAlpha32Coverage": 0.690302066772655,
+    "limitation": "Manual roof outline ±1–2px; coverage near lower60% target, not exact physicalarea certification. Snow generatedshape needed uniform shrink105vsbody122. Ridge/eave conformity approximate. Rawtop alpha touches boundary; generatoroffcanvasloss unknown. Finalregisteredboundary0 and processingloss0 are separate facts."
+  },
+  "conditionMeaning": {
+    "strained": "single mild chipped plasterpatch belowwindow",
+    "neglected": "larger plasterwear plus roofbundle repair",
+    "vacant": "plasterwear and roofrepair plus single windowbatten; no doorboards",
+    "boarded": "crossed boards over actualdoor/window; separate abandoned state",
+    "snow": "roofonly irregular snow"
+  },
+  "layerRegistrationNotes": "All layers generated against body04; wholeimage translation adjusted marks to actual wall/openings. Body122+13,24; conditions remain122scale with offsets. Snow wholeimage105 fitsroof. No parts moved separately, clipped, painted or warped."
+}

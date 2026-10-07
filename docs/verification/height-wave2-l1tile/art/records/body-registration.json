@@ -1,0 +1,61 @@
+{
+  "raw": "raw/body-v3.png",
+  "native": "registered/house_l1_tile-body-v2.png",
+  "nativeCanvas": [
+    139,
+    163
+  ],
+  "addedTopPadding": 24,
+  "pivot": [
+    71.66148325358851,
+    149.92025518341308
+  ],
+  "worldScale": 0.498621726759907,
+  "rawToNative": {
+    "uniformScale": 0.11188118811881188,
+    "translate": [
+      6.385148514851485,
+      6.936096767571485
+    ],
+    "noWarpOrComponentAssembly": true
+  },
+  "rawDoorPointsManual": {
+    "leaf_top_left": [
+      426,
+      702
+    ],
+    "leaf_bottom_left": [
+      426,
+      1087
+    ],
+    "leaf_top_right": [
+      573,
+      777
+    ],
+    "leaf_bottom_right": [
+      573,
+      1160
+    ]
+  },
+  "doorMeasurement": {
+    "definition": "actual wood leaf inside jambs, mean vertical side length; width is horizontal screen projection",
+    "rawHeight": 384.0,
+    "rawWidth": 147,
+    "nativeHeight": 42.962376237623765,
+    "nativeWidth": 16.446534653465346,
+    "worldHeight": 21.42197422531276,
+    "worldWidth": 8.200599508127539,
+    "uncertaintyRawPx": 4,
+    "uncertaintyWorldPx": 0.2231455648470079,
+    "targetHeight": [
+      20.24,
+      24.64
+    ],
+    "targetWidth": [
+      7.92,
+      11.44
+    ]
+  },
+  "rawSHA256": "d9d7904bdedeebfa59c2084d19e7013234362e1d2fc0838305b03feca5524e85",
+  "nativeSHA256": "5f556aa20c60d2bdd6303b4fc7630bf4af926cdd42b65940d624cef7752a7073"
+}

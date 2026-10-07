@@ -1,0 +1,458 @@
+{
+  "status": "CANDIDATE_STATIC_REVIEW_ONLY",
+  "generator": "builtin image_gen; 5body attempts,6independent state calls",
+  "files": [
+    {
+      "role": "body",
+      "file": "final/house_l1_garden-body-v2.png",
+      "sha256": "c16943e42245baa321ed1a41f85cae807e9f6b94fdce04ecc278a8e408ff6e4e",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        14,
+        30,
+        128,
+        163
+      ],
+      "nontransparent_gt16": 9515,
+      "outside_body_gt16": 0
+    },
+    {
+      "role": "snow",
+      "file": "final/house_l1_garden-snow04.png",
+      "sha256": "e1515a84e5d8f26122d622dcc357490c11988641f77b6e22ef235ece609df6c2",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        21,
+        31,
+        100,
+        93
+      ],
+      "nontransparent_gt16": 2129,
+      "outside_body_gt16": 11
+    },
+    {
+      "role": "boarded",
+      "file": "final/house_l1_garden-boarded-v2.png",
+      "sha256": "103822c9efb4b15a2eeb76d5abf69cb190e324c1c7e0f8fd1e3ddf361e12f5e2",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        25,
+        101,
+        91,
+        131
+      ],
+      "nontransparent_gt16": 411,
+      "outside_body_gt16": 0
+    },
+    {
+      "role": "strained",
+      "file": "final/house_l1_garden-strained-v2.png",
+      "sha256": "91e3d76a8aff35064d93af3d453d2696068ba3434b601932c2af567a33a18b3d",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        88,
+        128,
+        94,
+        135
+      ],
+      "nontransparent_gt16": 25,
+      "outside_body_gt16": 0
+    },
+    {
+      "role": "neglected",
+      "file": "final/house_l1_garden-neglected-v2.png",
+      "sha256": "70fbd690ea2b80c62e212de7fe05a8bfb3eaae6889f2b588545a75e7590a0211",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        74,
+        59,
+        98,
+        141
+      ],
+      "nontransparent_gt16": 215,
+      "outside_body_gt16": 0
+    },
+    {
+      "role": "vacant",
+      "file": "final/house_l1_garden-vacant-v2.png",
+      "sha256": "11ca0705e2462e21646121a570996e96f403e301b51d2f1092de4be5fa42bca8",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        26,
+        102,
+        38,
+        120
+      ],
+      "nontransparent_gt16": 149,
+      "outside_body_gt16": 0
+    },
+    {
+      "role": "plague-shut",
+      "file": "final/house_l1_garden-plague-shut-v2.png",
+      "sha256": "313ebe5b16f774d793557b24c53714950fadb0086f26a0958321f264fdff1b43",
+      "dimensions": [
+        139,
+        175
+      ],
+      "alpha16_bbox": [
+        27,
+        98,
+        90,
+        126
+      ],
+      "nontransparent_gt16": 359,
+      "outside_body_gt16": 0
+    }
+  ],
+  "registration": {
+    "raw_size": [
+      1118,
+      1407
+    ],
+    "raw_alpha16_bbox": [
+      61,
+      103,
+      1116,
+      1334
+    ],
+    "uniform_scale": 0.10710900473933649,
+    "rounded_resize": [
+      120,
+      151
+    ],
+    "translation": [
+      8,
+      19
+    ],
+    "final_size": [
+      139,
+      175
+    ],
+    "padding_up": 36,
+    "runtime_scale": 0.498621726759907,
+    "runtime_pivot": [
+      71.66148325358851,
+      161.92025518341308
+    ],
+    "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+    "layers": {
+      "snow": {
+        "raw_size": [
+          1118,
+          1407
+        ],
+        "resize": [
+          87,
+          109
+        ],
+        "translation": [
+          17,
+          21
+        ],
+        "final_size": [
+          139,
+          175
+        ],
+        "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+      },
+      "neglected": {
+        "resize": [
+          120,
+          151
+        ],
+        "translation": [
+          6,
+          20
+        ],
+        "reason": "whole-layer uniform registration; no alpha clip"
+      }
+    }
+  },
+  "measurement": {
+    "method": "manual native edge landmark reading, +/-1native px per endpoint; vertical jamb height, not bbox diagonal or roof; approximate artwork QA, not engine capture",
+    "leaf_polygon_native": [
+      [
+        43,
+        90
+      ],
+      [
+        60,
+        98
+      ],
+      [
+        60,
+        140
+      ],
+      [
+        43,
+        133
+      ]
+    ],
+    "opening_polygon_native": [
+      [
+        42,
+        88
+      ],
+      [
+        61,
+        97
+      ],
+      [
+        61,
+        141
+      ],
+      [
+        42,
+        133
+      ]
+    ],
+    "leaf_height_native": [
+      43,
+      42
+    ],
+    "opening_height_native": [
+      45,
+      44
+    ],
+    "leaf_width_native": 17,
+    "opening_width_native": 19,
+    "leaf_height_world": [
+      21.440734250676,
+      20.942112523916094
+    ],
+    "opening_height_world": [
+      22.437977704195816,
+      21.93935597743591
+    ],
+    "leaf_width_world": 8.47656935491842,
+    "opening_width_world": 9.473812808438232,
+    "height_error_world": 0.997243453519814,
+    "width_error_world": 0.997243453519814,
+    "target_height_world": [
+      20.24,
+      24.64
+    ],
+    "target_width_world": [
+      7.92,
+      11.44
+    ],
+    "nominal_dimensions": "inside target; with +/-2px measurement uncertainty lower leaf bound is marginal; installer should independently measure original landmarks"
+  },
+  "body_source_reference": "references/runtime-original.png",
+  "source_reference": "references/source-original.png",
+  "contract": {
+    "legacyBodyUrl": "assets/buildings/variants-wave2/house_l1_garden-v1.png",
+    "level": 1,
+    "year_max_exclusive": 1350,
+    "geometry": {
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.498621726759907,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 139,
+        "height": 175
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "allowMirror": false
+    },
+    "layers": {
+      "strained": {
+        "layer": "worn",
+        "condition": "strained",
+        "order": 0
+      },
+      "neglected": {
+        "layer": "worn",
+        "condition": "neglected",
+        "order": 0
+      },
+      "vacant": {
+        "layer": "worn",
+        "condition": "vacant",
+        "order": 0
+      },
+      "boarded": {
+        "layer": "boarded",
+        "plagueVacant": false,
+        "order": 10
+      },
+      "plague-shut": {
+        "layer": "boarded",
+        "plagueVacant": true,
+        "order": 10
+      },
+      "snow": {
+        "layer": "snow",
+        "order": 20
+      }
+    },
+    "all_layers_transform": "inherit-body",
+    "abandoned_guard": "required forbothboarded variants; residents0 alone doesnot triggerboards"
+  },
+  "limitations": [
+    "No actual game rendering/save evidence.",
+    "Generated walls taller; roof/garden identity preserved visually, original footprint corners are not byte identical.",
+    "No mask clipping or part assembly used; all registration from raw via singlewhole-image resample/translation.",
+    "Layer dimensions rounded to integers yield subpixel isotropy rounding <=0.1%; no intended nonuniform warp.",
+    "Selected snow04 transparent snow-only layer passed static fixed-ROI coverage; earlier snow-v2 and snow03 retained but not selected."
+  ],
+  "snow_registration_check": {
+    "alpha_threshold": 16,
+    "outside_pixels": 11,
+    "max_outside_distance_native": 1.0,
+    "interpretation": "snow04 roof-edge thickness, unmasked"
+  },
+  "snow03_revision": {
+    "file": "final/house_l1_garden-snow03.png",
+    "sha256": "76bd66c92c31b3ea645501a04cee6a2315cee736a08338729fb8f8ec4af6d951",
+    "replaces": "not promoted; snow-v2 retained as failed brown-roof-material overlay",
+    "qa": "snow03-qa.json",
+    "verdict": {
+      "brown_roof_material": "visually corrected; transparent gaps visible",
+      "binary_gt16_rule": "within60-80percent",
+      "alpha_weighted_rule": "FAIL57.397percent below60percent",
+      "overall": "candidate only, not coverage PASS; one requested generation correction completed"
+    }
+  },
+  "floor_correspondences": [
+    {
+      "point": "left_front_foundation",
+      "original_native139": [
+        20,
+        92
+      ],
+      "original_with_padding36": [
+        20,
+        128
+      ],
+      "candidate_native139x175": [
+        22,
+        127
+      ],
+      "residual_native": [
+        2,
+        -1
+      ],
+      "distance_native": 2.23606797749979,
+      "distance_world": 1.1149520760934781,
+      "manual_uncertainty_per_endpoint_native": 1.5
+    },
+    {
+      "point": "near_front_corner",
+      "original_native139": [
+        68,
+        114
+      ],
+      "original_with_padding36": [
+        68,
+        150
+      ],
+      "candidate_native139x175": [
+        70,
+        149
+      ],
+      "residual_native": [
+        2,
+        -1
+      ],
+      "distance_native": 2.23606797749979,
+      "distance_world": 1.1149520760934781,
+      "manual_uncertainty_per_endpoint_native": 1.5
+    },
+    {
+      "point": "right_rear_foundation",
+      "original_native139": [
+        95,
+        98
+      ],
+      "original_with_padding36": [
+        95,
+        134
+      ],
+      "candidate_native139x175": [
+        97,
+        133
+      ],
+      "residual_native": [
+        2,
+        -1
+      ],
+      "distance_native": 2.23606797749979,
+      "distance_world": 1.1149520760934781,
+      "manual_uncertainty_per_endpoint_native": 1.5
+    }
+  ],
+  "retained_snow_v2_failed": {
+    "role": "snow",
+    "file": "final/house_l1_garden-snow-v2.png",
+    "sha256": "34d460480a3590a895d4d9f01390b1fbef82942f37d5cd71e0015aa476ef6726",
+    "dimensions": [
+      139,
+      175
+    ],
+    "alpha16_bbox": [
+      14,
+      30,
+      102,
+      96
+    ],
+    "nontransparent_gt16": 2749,
+    "outside_body_gt16": 62
+  },
+  "snow04_revision": {
+    "selected": true,
+    "qa": "snow04-qa.json",
+    "generation": "snow04-generation.json",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "resize": [
+        87,
+        109
+      ],
+      "translation": [
+        17,
+        21
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+    },
+    "static_verdict": {
+      "alpha_weighted_60_80": "PASS",
+      "binary_gt16_60_80": "PASS",
+      "alpha_weighted_preferred_65_70": "PASS",
+      "roof_material": "visual transparent gaps, no brown roof restoration",
+      "scope": "static only; real game not checked"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "method": "manual roof polygon; area-weighted overlay alpha, not automatic roof segmentation",
+  "rawRoofPolygon": [
+    [
+      77,
+      395
+    ],
+    [
+      326,
+      38
+    ],
+    [
+      910,
+      417
+    ],
+    [
+      1087,
+      626
+    ],
+    [
+      1033,
+      650
+    ],
+    [
+      915,
+      476
+    ],
+    [
+      704,
+      778
+    ]
+  ],
+  "polygonPixels": 4108,
+  "meanCoverage": 0.6506615499169482,
+  "opaqueCoverage": 0.6582278481012658,
+  "outsidePolygonAlphaMass": 40.909803921568624,
+  "interpretation": "manual roof edge uncertainties and snow cap overhang are included; visual assessment still required",
+  "raw": "raw/snow-v3.png"
+}

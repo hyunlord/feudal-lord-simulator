@@ -1,0 +1,183 @@
+{
+  "candidateOnly": true,
+  "building": "l1_tile",
+  "inside_wall": "unchanged; integration owner retains existing condition",
+  "topPadding": 24,
+  "roles": [
+    {
+      "id": "l1_tile",
+      "role": "body",
+      "file": "registered/house_l1_tile-body-v2.png",
+      "raw": "raw/body-v3.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "5f556aa20c60d2bdd6303b4fc7630bf4af926cdd42b65940d624cef7752a7073",
+      "rawSHA256": "d9d7904bdedeebfa59c2084d19e7013234362e1d2fc0838305b03feca5524e85",
+      "alphaBBox": [
+        15,
+        11,
+        128,
+        150
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    },
+    {
+      "id": "l1_tile",
+      "role": "snow",
+      "file": "registered/house_l1_tile-snow-v2.png",
+      "raw": "raw/snow-v3.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "449eff01d529b3ea776b620ca92c997cf04165a6a22fe5f1559162c374075f14",
+      "rawSHA256": "00d78bcc7caaccf50b04a954c36b52742b0efcb1c63f0c63c810cb44001f28c6",
+      "alphaBBox": [
+        14,
+        11,
+        126,
+        95
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    },
+    {
+      "id": "l1_tile",
+      "role": "boarded",
+      "file": "registered/house_l1_tile-boarded-v2.png",
+      "raw": "raw/boarded-extract-v3.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "4032ad7242aba3d6de6f1ab76041f55dbde53a9643483b7401c145467e3fc808",
+      "rawSHA256": "b0ef4211af4e606f096eb4c13ec488293955224d29f48f5e5ec912b8b246cd3b",
+      "alphaBBox": [
+        12,
+        78,
+        112,
+        127
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    },
+    {
+      "id": "l1_tile",
+      "role": "strained",
+      "file": "registered/house_l1_tile-strained-v2.png",
+      "raw": "raw/strained-v1.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "fae4cae5c0d0d60bfc513e3ab2c9016228c5ab3e0f465d5e9504393267285116",
+      "rawSHA256": "817aaabc1166a37bc66ff8a1351b80069f150439830dc48f6303050021d60a73",
+      "alphaBBox": [
+        48,
+        112,
+        77,
+        140
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    },
+    {
+      "id": "l1_tile",
+      "role": "neglected",
+      "file": "registered/house_l1_tile-neglected-v2.png",
+      "raw": "raw/neglected-v1.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "7274981ed61bc1c892a40eb98a548e6e4cc475b9faa02d162b2dca452ba4dc43",
+      "rawSHA256": "ae8b5bf1fe25568cff0f6967b6f89cd0d76453e247cf7f7842c643c826cf3618",
+      "alphaBBox": [
+        49,
+        47,
+        77,
+        139
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    },
+    {
+      "id": "l1_tile",
+      "role": "vacant",
+      "file": "registered/house_l1_tile-vacant-v2.png",
+      "raw": "raw/vacant-v2.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "9a0ac671bd6e40d0829f4e43490ece10be1b937d025a4badc33dbffb427f38a7",
+      "rawSHA256": "5fe6d990920388ded35c6f05a9283a791da5d078742623d649c579af374ce412",
+      "alphaBBox": [
+        30,
+        47,
+        73,
+        139
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    },
+    {
+      "id": "l1_tile",
+      "role": "plague-shut",
+      "file": "registered/house_l1_tile-plague-shut-v2.png",
+      "raw": "raw/plague-extract-v1.png",
+      "canvas": [
+        139,
+        163
+      ],
+      "pivot": [
+        71.66148325358851,
+        149.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "sha256": "10c12fd2597fc900c27ac350ac29856ee0b97a28b47041cb80fce457a819e6fa",
+      "rawSHA256": "31b8c74661b598608f58288ef95b38ac2940def3779fc87d3b98976b6a140fbe",
+      "alphaBBox": [
+        26,
+        84,
+        112,
+        128
+      ],
+      "borderMaxAlpha": 0,
+      "runtimeVerified": false
+    }
+  ]
+}
