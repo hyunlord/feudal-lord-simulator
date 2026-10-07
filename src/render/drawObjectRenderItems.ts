@@ -32,7 +32,7 @@ import { beginHouseVariantFrame } from "./wave26HouseArt";
 import { beginGranaryVariantFrame } from "./wave32GranaryArt";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
-import { drawPlagueProp } from "./plagueWorldProps";
+import { drawPlagueProp, funeralQueueItems, drawFuneralScene } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
 import { drawAleDrinker } from "./alehouseCrowd";
 import { drawCountrysideItem } from "./countrysideDraw";
@@ -40,7 +40,6 @@ import { drawTradeWorldProp } from "./tradeWorldDraw";
 import { drawDoorSign } from "./doorSigns";
 import { inGatePassage, placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
 import { beginSpriteMipFrame, endSpriteMipFrame } from "./spriteMipCache";
-
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
   readonly problemOnly?: boolean;
@@ -61,7 +60,6 @@ type DrawObjectRenderItemsInput = {
   /** NAT-1: the selected walker, outlined faintly when an object in front hides it. */
   readonly selectedWalkerId?: string | null;
 };
-
 export function drawObjectRenderItems(
   context: CanvasRenderingContext2D,
   input: DrawObjectRenderItemsInput,
@@ -89,7 +87,7 @@ export function drawObjectRenderItems(
   probe?.enter("objects.sort");
   // NAT-1: walkers in the same order as the objects (walkerOcclusion.ts); those in a stone gate's passage or on a bridge
   // keep the queue's own place, where the gate's arch and the bridge's rails are drawn around them by depth.
-  const queue = placeWalkers(sortRenderItems([...input.objectRenderItems, ...rails]), input.state, item =>
+  const queue = placeWalkers(sortRenderItems([...input.objectRenderItems, ...rails, ...funeralQueueItems(input.state, input.nowMs ?? 0)]), input.state, item =>
     inGatePassage(item.walker.position, stoneGates)
     || bridgeDeckAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null);
   // SMOOTH-2R: the camera transform, read once for the queue; walls and walkers read it per item before (a new
@@ -100,6 +98,7 @@ export function drawObjectRenderItems(
   const fireBrigades = viewMode === "normal" ? worldFireBrigadeIds(input.objectRenderItems) : undefined;
   for (const item of queue) {
     probe?.enter(stageForRenderItem(item.kind));
+    if (item.kind === "funeral") { if (viewMode === "normal") drawFuneralScene(context, item.scene); continue; }
     if (item.kind === "bridge_rail") {
       drawBridgeRail(context, item.piece);
       continue;

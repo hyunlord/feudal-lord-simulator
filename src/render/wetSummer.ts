@@ -2,7 +2,6 @@ import type { GameState } from "../engine/engine.types";
 import { weatherAt } from "../engine/eventSchedule";
 import { stateCalendar } from "../engine/scenarioState";
 import { drawDepartures } from "./storyWorldProps";
-import { drawFuneralProcession } from "./plagueWorldProps";
 import { drawReorgOverlays } from "./reorgWorldProps";
 import { drawSeasonFx } from "./seasonFx";
 import { drawWeatherSky } from "./weatherOverlay";
@@ -21,7 +20,6 @@ export function wetSummer(state: Pick<GameState, "tick" | "scenarioId"> & Parame
 export function drawStoryWorldOverlays(context: CanvasRenderingContext2D, state: GameState,
   viewport: { readonly width: number; readonly height: number }, zoom: number, nowMs: number): void {
   drawDepartures(context, state, nowMs);
-  drawFuneralProcession(context, state, nowMs); // UI-8: chapter 3 bearers walk to the church during plague arrival
   drawReorgOverlays(context, state, nowMs); // UI-9: chapter 4 textile walkers, alehouse drinkers, collector chase
   drawSeasonFx(context, state, viewport, zoom, nowMs);
   drawWeatherSky(context, state, viewport, zoom, nowMs);
