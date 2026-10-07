@@ -33,3 +33,7 @@
 ## 구현 검증
 
 제품 커밋 `001a4873`. Mac 집중 시험 99개·타입 검사·변경 파일 린트 통과. 계약은 원본 치수·crop·pivot·정적 선택을 검사하며 잘못된 이미지와 로딩 실패 때 기존 그림과 기존 봄 충돌 범위를 함께 쓴다. 설치 출처·장부는 각각 한 행이다. 최종 게시의 변경 시험과 기하 감사 결과는 전달 ZIP의 관문 기록으로 확인한다.
+
+## 최종 본선 병합과 기하
+
+CART 본선 `f9f4f2cf`를 병합한 `a77c3df5`에서 본선의 18개 계약 bundle과 HERDS 2개를 모두 보존했다. 병합 뒤 관련 시험 120/120·TypeScript 통과. 깨끗한 입력을 공식 DGX 관문 줄로 실행한 `astra-HERDS-geometry-final-a77c3df`는 네 줄(hud.status-pill, hud.time-cluster, hud.action-dock, map.selection.house) 80조건에서 실패 0·미개방 0이다. 입력 해시는 `76fc77e1bd66f2f0380bf89dacc3a9576315e958724586ef2175bdfa422d9639`. 실제 실행 695.9초이며 최종 변경 시험·check:merge 영수증은 전달 ZIP의 gates/에 포함한다. 이 기하는 추가 동물 움직임이나 모든 방향의 시각 품질을 검증하지 않는다.
