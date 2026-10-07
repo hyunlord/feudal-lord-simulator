@@ -1,3 +1,4 @@
+<!-- RB-PURVEYOR geometry: astra-PURVEYOR-geometry-029a112, 80 conditions, 0 failures; final test/push receipts in delivery ZIP. -->
 - **RB-PURVEYOR 왕실 구매 담당자5장**: 제품 `f012955c`. 실제 구매 영수증과 창고 도로 접근으로 잠깐 표시하고, 원본 장부4방향·8프레임 손 연결을 공용 합성기에 보존했다. 자연 봄 및 명시적 계절 QA의 줌1/.6 전후를 확인했다. 엔진 인물·재고·저장은 그대로다. [보고서](verification/purveyor/README.md).
 - **RB-HEIGHT-L0D 작은 우진각 집5장**: 제품 `8c49302b`. L0 d 완성 본체와 새집·풍화·눈·판자층을 기존 선택 계약에 연결했다. 준비 저장 전후18쌍과 실제 보행자 비교, 대상 해빙 alpha0.44804를 확인했다. 문짝 대리 측정·fresh 목재 겹침은 한계로 남겼다. 누적14/23종,9종 후속. [보고서](verification/height-l0d/README.md).
 - **RB-HEIGHT-ERA2 시대 작은집4종·12장**: 제품 `46be0f0e`. 1350/1400 L0 a/b 완성 본체와 전용 눈·판자를 공용 계약에 연결했다. 같은 준비 저장·카메라 전후30쌍으로 여름·겨울·해빙과 실제 보행자9명의 비교를 남겼다. 누적13/23종이며10종은 후속 범위다. [보고서](verification/height-era2/README.md).

@@ -1,6 +1,6 @@
 # 왕실 구매 뒤 창고의 장부 담당자
 
-관문: 진행 중 — 제품 `f012955c`, 원본 5장. 최종 기하·변경 시험·게시 영수증은 전달 ZIP에 기록한다.
+관문: 실제 전후6쌍·기하80조건 실패0 — 제품 `f012955c`, 원본5장. 정확한 최종 트리의 변경 시험·병합 검사·게시 영수증은 전달 ZIP에 기록한다.
 
 I0340 몸체와 I0321–I0324 장부 네 방향을 공용 `walker-body` / `walker-held-prop` 계약에 넣었다. 실제 금전 원장에 Crown의 양수 `cash/purveyance`가 있고 해당 창고가 남아 있을 때, 영수증 뒤 250 saved ticks 동안 가까운 연결 도로에 담당자 한 명을 그린다. 이는 화면 연출의 수명이며 역사적 체류 시간이나 새 엔진 인물이 아니다. 일반 상인 풀·재고·경제·저장 형식은 바꾸지 않았다.
 
@@ -30,3 +30,7 @@ Mac 집중 회귀50개·크기 가드·캐시 회귀·typecheck·바뀐 렌더 l
 최종 여섯 쌍은 저장·읽기 상태·tick·타일·줌·시계·카메라가 모두 같고 오류0이다. 여름·겨울도 줌1의 새 인물 영역10×18px, 줌.6의6×11px 밖에는 PNG 차이가 없었다(`pairs.json`). 저장 원본의24명은 그대로이며 기존 주민 표현층이 여름15명·겨울18명을 추가해 읽기 상태 SHA가 정본 저장 SHA와 다르다. 전후 각 쌍의 읽기 상태는 완전히 같다.
 
 저장소 JPG는 같은1280×800 크기에서 quality65로 재압축한 열람본이다. 원본 PNG/JPEG와 전체 상태·하네스는 전달 ZIP에 보존한다. `image-derivatives.json`의 양쪽 해시로 구분한다. 최종 장면은 `f012955c`의 제품 tree가 clean임을 실행 안에서 확인했다. 앞선 dirty 관찰을 제품 HEAD 단독 증거로 쓰지 않았다.
+
+독립 읽기 상태 비교(`astra-purveyor-root-loaded-state-diff.json`)에서 자연 봄은 저장24명을 바꾸거나 지우지 않고 주민 표현16명만 더했다. 이 경로는 `src/render/presentation/residentWalkerState.ts`와 `src/testing/phase10ProofRuntime.ts`의 기존 읽기 상태 준비다. 계절 네 쌍의 별도 비교도 `astra-purveyor-root-seasonal-pair-review.json`에 보존했다.
+
+기하 실행 `astra-PURVEYOR-geometry-029a112`는 변경 관련4줄·80조건을 측정해 실패0이었다. 입력 SHA는 `3c844cfa1f3e015404275c7ad824d416c53afa5f659372c7c4d665dfc30907b3`이며 정본 영수증과 실행별 보고서를 함께 커밋했다.
