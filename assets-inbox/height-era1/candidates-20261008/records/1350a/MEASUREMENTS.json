@@ -1,0 +1,187 @@
+{
+  "status": "two attempts exhausted; no accepted body candidate",
+  "task": "Wave20 L1 1350a static full body only",
+  "generatedCount": 2,
+  "tool": "image_gen.imagegen",
+  "model": "not returned",
+  "source": {
+    "path": "/tmp/astra-height-doors2/public/assets/wave20/houses/house_l1_1350_a-v1.png",
+    "sha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+    "native": [
+      139,
+      139
+    ],
+    "paddingReference": [
+      0,
+      16
+    ],
+    "candidateCanvas": [
+      139,
+      155
+    ],
+    "candidatePivot": [
+      71.66148325358851,
+      141.92025518341308
+    ],
+    "scale": 0.4986217267599071
+  },
+  "requestedDoorNative": {
+    "height": [
+      44,
+      46
+    ],
+    "screenHorizontalWidth": [
+      19,
+      20
+    ]
+  },
+  "method": "manual same-x visible closed wooden leaf excluding jamb/lintel/step; zero-based coordinates; endpoint differences not inclusive count; existing native grid",
+  "endpointUncertaintyNative": 1,
+  "groundPointUncertaintyNative": 2,
+  "measurements": {
+    "original": {
+      "heightSameX": 60,
+      "heightY": [
+        105,
+        125
+      ],
+      "heightNative": 20,
+      "widthY": 115,
+      "widthX": [
+        57,
+        66
+      ],
+      "widthNative": 9,
+      "ground": [
+        [
+          21,
+          106
+        ],
+        [
+          85,
+          140
+        ],
+        [
+          122,
+          120
+        ]
+      ],
+      "heightWorld": 9.972434535198143,
+      "widthWorld": 4.487595540839164
+    },
+    "attempt01": {
+      "heightSameX": 60,
+      "heightY": [
+        94,
+        125
+      ],
+      "heightNative": 31,
+      "widthY": 108,
+      "widthX": [
+        53,
+        66
+      ],
+      "widthNative": 13,
+      "ground": [
+        [
+          21,
+          108
+        ],
+        [
+          82,
+          138
+        ],
+        [
+          121,
+          121
+        ]
+      ],
+      "verdict": "height and width below target",
+      "heightWorld": 15.45727352955712,
+      "widthWorld": 6.482082447878793,
+      "groundResidualNative": [
+        [
+          0,
+          2
+        ],
+        [
+          -3,
+          -2
+        ],
+        [
+          -1,
+          1
+        ]
+      ]
+    },
+    "attempt02": {
+      "heightSameX": 58,
+      "heightY": [
+        89,
+        132
+      ],
+      "heightNative": 43,
+      "widthY": 108,
+      "widthX": [
+        50,
+        65
+      ],
+      "widthNative": 15,
+      "ground": [
+        [
+          9,
+          110
+        ],
+        [
+          83,
+          148
+        ],
+        [
+          130,
+          125
+        ]
+      ],
+      "verdict": "width below target, height marginal, footprint grew and moved",
+      "heightWorld": 21.440734250676005,
+      "widthWorld": 7.479325901398607,
+      "groundResidualNative": [
+        [
+          -12,
+          4
+        ],
+        [
+          -2,
+          8
+        ],
+        [
+          8,
+          5
+        ]
+      ]
+    }
+  },
+  "registration": "Whole raw image resizeArea to139x155; no perpart transforms, no further global scale to force footprint. Raw dimensions actual from PNG headers, exact coefficients in registration01/02.",
+  "limitations": [
+    "Actual painted opening behind the frame is not measurable; visible door leaf used.",
+    "Manual endpoints each +/-1 and dimension difference +/-2 native.",
+    "Second body enlarged footprint; shrinking entire house would shrink already insufficient door, not acceptable repair.",
+    "Warm oak, regular bays and tidy thatch retained visually but some shutter treatment differs from original.",
+    "No state layers, runtime evidence, product changes, installation or commit.",
+    "Not mixed with current DOORS2 delivery."
+  ],
+  "references": {
+    "body-02-native.png": "ca27ee06f67f7a2f6220f42338df1e4d7563ba209782fb91aad3d5596bd69505",
+    "body-01-light-inspection.png": "72fb8740a3b14badf1c8ab2b4a259a0515b876152d0eb62e37764b42802b6ad6",
+    "body-01-grid.png": "e18c44b9bb4cfff08d954362e7b97c62344eb8f93dbc0a483f0fd79fbcbf1c36",
+    "original-inspection.png": "4eef7ba16f06644b88b71bca9999f572a4713138d8df42269ae9ffc0cdf34218",
+    "body-01-raw.png": "1488f94e6d4e4dc8b49807347796145e28fc2e5df67f398cee58dc838d271386",
+    "body-02-dark-inspection.png": "a43b5a8b378d23d79c868f2e122d11979e2ce4a383770cf5b516646394aed9d1",
+    "body-01-dark-inspection.png": "96c3198bc311ab24d7e77f9e211afce647d1d558d997175c9a803906bc7faa01",
+    "original-grid.png": "281fea72b46a2e48465ea0eb0f8f546cf8b3dd27888ea45ab1fbdf32c3289325",
+    "original-top16-reference.png": "cb92099946536faa3933202231195ce41aa2f6105ad7ba0176c1b174fc81e1bf",
+    "body-02-grid.png": "a97178cd4edb9d1df10b00ee41f57adb9983fff32222636194b7f670b9c376ff",
+    "body-01-native.png": "7f802afdfdbf9ab58b71450e3db8a6356e46660b600b7a4c3e586335e298c9e9",
+    "body-02-light-inspection.png": "84c9f2a4007f2293958d62aec90469f1313172536c365d968061d553e86e9856",
+    "body-02-raw.png": "23550ba17b10e93518d29f45aebcdec93a32c9443f83073889161dc3a05a0a31"
+  }
+}

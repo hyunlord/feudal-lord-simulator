@@ -5,6 +5,7 @@ import { validateRegionTextures } from './regionTextureValidation';
 import { validateLandDecals } from './landDecalValidation';
 import { validateFieldTextures } from './fieldTextureValidation';
 import { validateSeasonVariants } from './seasonVariantValidation';
+import { validateWalkerArt } from './walkerArtValidation';
 import { validateUiParts } from './uiPartValidation';
 import type { ArtBundle, ArtPoint, ArtRect } from './artContract';
 import type { ArtSchemaIssue } from './schemaValidation';
@@ -13,6 +14,7 @@ import type { ArtSchemaIssue } from './schemaValidation';
 export function validateRegistryData(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
   const issues: ArtSchemaIssue[] = [...validateNature(bundles), ...validateSeasonVariants(bundles), ...validateFieldTextures(bundles), ...validateLandDecals(bundles), ...validateSeasonalGround(bundles), ...validateRegionTextures(bundles), ...validateWeatherShadows(bundles), ...validateUiParts(bundles)];
   const identities = new Set<string>();
+  issues.push(...validateWalkerArt(bundles));
   const entries = bundles.flatMap(bundle => bundle.entries);
   const byId = new Map(entries.map(entry => [entry.id, entry]));
   const report = (path: string, message: string): void => { issues.push({ path, message }); };
@@ -54,6 +56,10 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
       if (new Set(entry.frames.map(frame => frame.gaitFrame)).size !== 2) report(at, 'Transport requires both distinct gait frames');
       if (entry.frames.some(frame => !pointFits(entry.payloadAnchor, frame.sourceRect) || entry.payloadWidth > frame.sourceRect.width)) report(at, 'Transport payload is outside frame-local bounds');
       if (![entry.scale, entry.payloadWidth, ...Object.values(entry.mountOffset)].every(value => Number.isFinite(value / entry.referenceFigureHeight))) report(at, 'Transport reference scaling overflows');
+    }
+    if (entry.kind === 'building-body' && entry.roofRidge !== undefined) {
+      if (!pointFits(entry.roofRidge, entry.image)) report(at, 'Roof ridge is outside image canvas');
+      if (!finiteScaled(Object.values(entry.roofRidge))) report(at, 'Roof ridge scaled geometry overflows');
     }
     if (entry.kind === 'walker-cargo' && entry.frames.some(frame => !pointFits(entry.attachment.pivot, frame.sourceRect))) report(at, 'Attachment pivot is outside frame-local bounds');
     if (entry.kind === 'walker-cargo' && !finiteScaled(Object.values(entry.attachment.pivot))) report(at, 'Scaled attachment pivot overflows');

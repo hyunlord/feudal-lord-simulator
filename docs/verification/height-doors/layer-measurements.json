@@ -1,0 +1,74 @@
+[
+  {
+    "body": "house_l1_d-v2",
+    "method": "Manually outlined visible roof polygon; alpha >32 binary coverage, not snow opacity integral; \u00b12native outline uncertainty",
+    "roofPolygon": [
+      [
+        16,
+        29
+      ],
+      [
+        59,
+        2
+      ],
+      [
+        126,
+        38
+      ],
+      [
+        126,
+        48
+      ],
+      [
+        91,
+        65
+      ],
+      [
+        16,
+        36
+      ]
+    ],
+    "roofPixels": 3806,
+    "snowPixelsInRoof": 2914,
+    "coverage": 0.765633210719916,
+    "snowOutsideBody": 0,
+    "bodySha256": "451f97f20ff65bf6abf812d9ad720a4cec31c63f6fcaecce92d0c4252148957f",
+    "snowSha256": "16e332fcc880b3912e2794d55c8bff8b451f1333b5126698ba4c8c8745587e64"
+  },
+  {
+    "body": "house_l0-v4",
+    "method": "Manually outlined visible roof polygon; alpha >32 binary coverage, not snow opacity integral; \u00b12native outline uncertainty",
+    "roofPolygon": [
+      [
+        21,
+        44
+      ],
+      [
+        56,
+        13
+      ],
+      [
+        132,
+        62
+      ],
+      [
+        133,
+        74
+      ],
+      [
+        93,
+        88
+      ],
+      [
+        22,
+        51
+      ]
+    ],
+    "roofPixels": 4332,
+    "snowPixelsInRoof": 2760,
+    "coverage": 0.6371191135734072,
+    "snowOutsideBody": 25,
+    "bodySha256": "e512ad4ba236fa3f8ff543bbd581a1e63b4831d0abe153d338816d5d8493d2cf",
+    "snowSha256": "5242b31c64bd42601c85e399c420533b0b72c107f0e37c723fc3c05edbac4d35"
+  }
+]

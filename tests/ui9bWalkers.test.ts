@@ -5,7 +5,7 @@ import type { Building } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { clothWorkerSheet } from "../src/render/clothWorkerSheet";
 import { walkerSheet } from "../src/render/walkerLook";
-import { walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
+import { walkerSheetManifest } from "../src/render/walkerArtManifest";
 import { WAVE3_CLOTH_IMAGES } from "../src/render/wave3ClothManifest.generated";
 import { walkerAppearance } from "../src/render/walkerComposer";
 import { readFileSync } from "node:fs";

@@ -1,0 +1,7731 @@
+{
+  "label": "after",
+  "url": "http://127.0.0.1:4549/",
+  "views": [
+    {
+      "name": "pending",
+      "zoom": 1,
+      "saveSHA256": "795e2422f0d6c1ce942589aebf40427398b708030d1050e7463dd67439246684",
+      "tick": 152000,
+      "stateSHA256": "13b9015c1d4acff0cf48f22a4453d693f1932b5607a4273af245c4d444f91c83",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "pending-z1.jpg",
+      "imageSHA256": "091049f3c7c1843f0326cd7b547e22bdf163c25ac9058323aa19c35b2c90f3fc"
+    },
+    {
+      "name": "pending",
+      "zoom": 0.6,
+      "saveSHA256": "795e2422f0d6c1ce942589aebf40427398b708030d1050e7463dd67439246684",
+      "tick": 152000,
+      "stateSHA256": "13b9015c1d4acff0cf48f22a4453d693f1932b5607a4273af245c4d444f91c83",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "pending-z0.6.jpg",
+      "imageSHA256": "4db7ce48ed0563fd5071b6d8e50d8c4ad33ddd84b9178bd6b333bbcae817e463"
+    },
+    {
+      "name": "active",
+      "zoom": 1,
+      "saveSHA256": "2bb08da13dc37f3f93d3e29a3f5ad32c064b8215048dd8c610a8ebe0dca2c7ce",
+      "tick": 152000,
+      "stateSHA256": "491463272d9ab99119090d36ebaf6a9e06d8d241b6dc3d9011385ae2d711d028",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        }
+      ],
+      "expectedVisible": true,
+      "image": "active-z1.jpg",
+      "imageSHA256": "e76634a80c31d44a5319385ed2677f4b921167b6b3646c344af34ca279cf8cbe"
+    },
+    {
+      "name": "active",
+      "zoom": 0.6,
+      "saveSHA256": "2bb08da13dc37f3f93d3e29a3f5ad32c064b8215048dd8c610a8ebe0dca2c7ce",
+      "tick": 152000,
+      "stateSHA256": "491463272d9ab99119090d36ebaf6a9e06d8d241b6dc3d9011385ae2d711d028",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        }
+      ],
+      "expectedVisible": true,
+      "image": "active-z0.6.jpg",
+      "imageSHA256": "2d417ec0bcdf991ff5d54e1018567b7750307d894b118fcf8805d49673783020"
+    },
+    {
+      "name": "last-active",
+      "zoom": 1,
+      "saveSHA256": "f9e28ff1717165b24df89d94aa830d0fcba94158a0f66d503ca25fe15f587530",
+      "tick": 152249,
+      "stateSHA256": "c2d59cbde018b989105ac4ef5b6b4b0b07bfcf9d948b1ed32826cc956a5e24c0",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 960,
+            "f": -1072
+          }
+        }
+      ],
+      "expectedVisible": true,
+      "image": "last-active-z1.jpg",
+      "imageSHA256": "ba4f45ab91a73cab54ba401987d034cd3b7c6950a8be36606f48c946442d939a"
+    },
+    {
+      "name": "last-active",
+      "zoom": 0.6,
+      "saveSHA256": "f9e28ff1717165b24df89d94aa830d0fcba94158a0f66d503ca25fe15f587530",
+      "tick": 152249,
+      "stateSHA256": "c2d59cbde018b989105ac4ef5b6b4b0b07bfcf9d948b1ed32826cc956a5e24c0",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            256,
+            192,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        },
+        {
+          "src": "http://127.0.0.1:4549/assets/wave17/bld/muster_field-v1.png",
+          "args": [
+            0,
+            0,
+            128,
+            96,
+            -448,
+            1408.5,
+            128,
+            96
+          ],
+          "transform": {
+            "a": 0.6000000238418579,
+            "d": 0.6000000238418579,
+            "e": 832,
+            "f": -483.20001220703125
+          }
+        }
+      ],
+      "expectedVisible": true,
+      "image": "last-active-z0.6.jpg",
+      "imageSHA256": "af253a35273d4a67999d2cf6b62013b517473e75c3abdb55c8beff59454e0e7c"
+    },
+    {
+      "name": "expired",
+      "zoom": 1,
+      "saveSHA256": "07846e15a0749295b6b466ddc6623c4b01630c1a307674215c9e02066ab1d946",
+      "tick": 152250,
+      "stateSHA256": "f029b62d3fbe77a5ca9715c8acdf7cd429b19714becd469cbde9ed3775282287",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "expired-z1.jpg",
+      "imageSHA256": "a7e154d2b749a284ca739304099a85d63c44efd9a037556d5b7d2ed77003df76"
+    },
+    {
+      "name": "expired",
+      "zoom": 0.6,
+      "saveSHA256": "07846e15a0749295b6b466ddc6623c4b01630c1a307674215c9e02066ab1d946",
+      "tick": 152250,
+      "stateSHA256": "f029b62d3fbe77a5ca9715c8acdf7cd429b19714becd469cbde9ed3775282287",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "expired-z0.6.jpg",
+      "imageSHA256": "475b3706d4c352863f093ccf8d6a0a8a444fc890649b73718c17350afabd42c1"
+    }
+  ],
+  "errors": []
+}

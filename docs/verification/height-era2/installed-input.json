@@ -1,0 +1,102 @@
+[
+  {
+    "year": 1350,
+    "variant": "a",
+    "folder": "/tmp/astra-height-era2-candidates-20261008/",
+    "files": {
+      "body": "/tmp/astra-height-era2-candidates-20261008/house_l0_1350_a-body-candidate.png",
+      "snow": "/tmp/astra-height-era2-candidates-20261008/snow-01-native.png",
+      "boarded": "/tmp/astra-height-era2-candidates-20261008/boarded-01-native.png"
+    },
+    "raw": {
+      "body": "body-02-raw.png",
+      "snow": "snow-01-raw.png",
+      "boarded": "boarded-01-raw.png"
+    },
+    "prompts": {
+      "body": "prompt-02.txt",
+      "snow": "snow-prompt-01.txt",
+      "boarded": "boarded-prompt-01.txt"
+    },
+    "sha": {
+      "body": "d92e046f84df490072f986f468596103461f74c30154ce2273efd0a8513a015c",
+      "snow": "d853e59dafc856d4c878d0a49a7bd30ea3273e1c6e2e4bf6371d9697c7d35de8",
+      "boarded": "15c330ae52bdd6f97e58bead66a2f4155957f503a86aeec1aa39741f6474fb48"
+    }
+  },
+  {
+    "year": 1350,
+    "variant": "b",
+    "folder": "/tmp/astra-height-era2-1350b-20261008/",
+    "files": {
+      "body": "/tmp/astra-height-era2-1350b-20261008/house_l0_1350_b-body-candidate.png",
+      "snow": "/tmp/astra-height-era2-1350b-20261008/house_l0_1350_b-snow-candidate.png",
+      "boarded": "/tmp/astra-height-era2-1350b-20261008/house_l0_1350_b-boarded-candidate.png"
+    },
+    "raw": {
+      "body": "body-02-raw.png",
+      "snow": "snow-02-raw.png",
+      "boarded": "boarded-01-raw.png"
+    },
+    "prompts": {
+      "body": "body-02-prompt.txt",
+      "snow": "snow-02-prompt.txt",
+      "boarded": "boarded-01-prompt.txt"
+    },
+    "sha": {
+      "body": "53786d2d7a968350532b9407e7c6cf4ac24b834ac2c5502237c10b45a7b86848",
+      "snow": "c47305aac6451fdeebc274ea328934e1d2ae79a3ecc685826b9e242d732d76b9",
+      "boarded": "b414d3d9e35355c3181f5982cf8ea795f3015f1b84ea9bede0e74139cd3d3f80"
+    }
+  },
+  {
+    "year": 1400,
+    "variant": "a",
+    "folder": "/tmp/astra-height-era2-1400-20261008/",
+    "files": {
+      "body": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_a-body.png",
+      "snow": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_a-snow.png",
+      "boarded": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_a-boarded.png"
+    },
+    "raw": {
+      "body": "raw/body-a-01.png",
+      "snow": "raw/snow-a-01.png",
+      "boarded": "raw/board-a-01.png"
+    },
+    "prompts": {
+      "body": "prompts/body-a-01.txt",
+      "snow": "prompts/snow-a-01.txt",
+      "boarded": "prompts/board-a-01.txt"
+    },
+    "sha": {
+      "body": "821de11ffb0fc4c8183e8e5b18f753df1b823b07762f3902441ef1389accf84f",
+      "snow": "a146989117c41b8b4581294cea317e01ab231fc01782104b632fc917f48a7d5a",
+      "boarded": "a04a221dd4f32bcfdff047ed567122385e2c7e958c6a255e4fa2ba181bccbf9e"
+    }
+  },
+  {
+    "year": 1400,
+    "variant": "b",
+    "folder": "/tmp/astra-height-era2-1400-20261008/",
+    "files": {
+      "body": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_b-body.png",
+      "snow": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_b-snow.png",
+      "boarded": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_b-boarded.png"
+    },
+    "raw": {
+      "body": "raw/body-b-01.png",
+      "snow": "raw/snow-b-01.png",
+      "boarded": "raw/board-b-01.png"
+    },
+    "prompts": {
+      "body": "prompts/body-b-01.txt",
+      "snow": "prompts/snow-b-01.txt",
+      "boarded": "prompts/board-b-01.txt"
+    },
+    "sha": {
+      "body": "e0953cfce3288fe3ba00ac775036addf4f406a18e1a3378647c64f81aa9c1898",
+      "snow": "074be616d44bb9fd91db839f321703962bdc943ce28b3a14cf34eee7ea173fec",
+      "boarded": "95043eeeb77826cb3784c7575e546d793cb5a0125fccffff92f270ef1b337a44"
+    }
+  }
+]

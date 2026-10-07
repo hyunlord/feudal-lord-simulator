@@ -5,7 +5,7 @@ import { resourceEntry } from "../content/resourceCatalog";
 import { stateCalendar, type CalendarDate } from "../engine/scenarioState";
 import { householdMembers, type MemberSex } from "../population/householdMembers";
 import { boundaryHash, hashNumbers } from "../world/boundary/boundaryGeometry";
-import { walkerSheetManifest, type walkerCloakManifest, type walkerPropManifest } from "./walkerSheetManifest.generated";
+import { walkerSheetManifest, type walkerCloakManifest, type WalkerSheet } from "./walkerArtManifest";
 
 // V2 walker looks (spec docs/design/walker-composer.md WC-1..WC-5): which sheet, sex, trade item and cloak a walker
 // wears. Pure and derived from the saved state (nothing saved): the same state gives the same looks, before and after
@@ -16,10 +16,10 @@ import { walkerSheetManifest, type walkerCloakManifest, type walkerPropManifest 
 //  - Sheet (WC-2, WC-3): one weighted draw over the sheets of the occupation's class bands for that sex (plus the
 //    occupation's own legacy sheet for men); no near rejection, see walkerLook.
 
-export type WalkerSheet = typeof walkerSheetManifest[number];
+export type { WalkerSheet } from "./walkerArtManifest";
 export type WalkerSheetId = WalkerSheet["id"];
 export type WalkerClassBand = WalkerSheet["classBand"];
-export type WalkerPropKind = keyof typeof walkerPropManifest;
+export type WalkerPropKind = string;
 /** Winter cloaks: men's and women's (Wave 5a) and the merchant's (Wave 4e, merchant template bodies only). */
 export type WalkerCloakKind = keyof typeof walkerCloakManifest;
 export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor"
@@ -33,6 +33,8 @@ export interface WalkerLook {
   readonly sex: MemberSex;
   /** Carried when the hands are free and there is no tool for the occupation (textile bundles, a servant's jug). */
   readonly trinket: WalkerPropKind | null;
+  /** Stable own-ID/seed draw; pilot props use only registered final-art bodies. */
+  readonly pilotProp?: boolean;
 }
 
 /** WC-2: class band weights per occupation. Bands with no walking occupation yet (gentry, clergy, visitors) wait for C3 / E. */
@@ -130,7 +132,7 @@ export function walkerLook(state: Pick<GameState, "houses" | "seed">, walker: Wa
   const occupation = walkerOccupation(walker);
   // INSTALL-5c: a household member's age band (MOVE-1 tag): a child companion wears its own sex, an elder the elder bodies.
   const member = "resident" in walker ? (walker as { readonly resident: { readonly ageBand: string; readonly sex: MemberSex } }).resident : null;
-  const sex = member?.ageBand === "child" ? member.sex : walkerSex(state, walker, key);
+  const sex = (member?.ageBand === "child" || member?.ageBand === "elder") ? member.sex : walkerSex(state, walker, key);
   const bands = member?.ageBand === "elder" ? ELDER_BANDS : OCCUPATION_BANDS[occupation];
   const pool = bands.flatMap(([band, weight]) => {
     const sheets = walkerCandidates(occupation, band, sex, key, state.seed);
@@ -140,7 +142,12 @@ export function walkerLook(state: Pick<GameState, "houses" | "seed">, walker: Wa
   let pick = (boundaryHash(key, state.seed, SALT.sheet) / 2 ** 32) * total;
   const chosen = pool.find(entry => (pick -= entry.weight) < 0) ?? pool[pool.length - 1]!;
   const band = walkerSheet(chosen.sheetId).classBand;
-  return { sheetId: chosen.sheetId, band, occupation, sex, trinket: trinketFor(band, key, state.seed) };
+  const variants = walkerSheet(chosen.sheetId).propVariants ?? [];
+  const pilotProp = variants.length > 0 && (boundaryHash(key, state.seed, SALT.trinket) & 1) === 0;
+  // Personal possessions on actual resident trips; neither implies a payment or a new occupation.
+  const trinketSlot = member?.ageBand === "elder" ? "elder" : occupation;
+  const trinket = (pilotProp ? variants.find(variant => variant.slot === trinketSlot)?.propId : null) ?? trinketFor(band, key, state.seed);
+  return { sheetId: chosen.sheetId, band, occupation, sex, trinket, pilotProp };
 }
 
 /** Looks of every walker of the state (pure). */
@@ -161,7 +168,9 @@ export function walkerHeldProp(look: WalkerLook, walker: Walker, siteStage: numb
   // INSTALL-7 work props (Wave 7): the bread round's basket, the well errand's bucket, the collector's purse, and the
   // field hand's plough (first half of spring), seed bag (second half) and sickle (autumn harvest, Wave 6).
   const prop = workProp(look.occupation, date);
-  if (prop !== null) return prop;
+  if (prop !== null) {
+    return look.pilotProp ? walkerSheet(look.sheetId).propVariants?.find(variant => variant.slot === prop)?.propId ?? prop : prop;
+  }
   if (walker.cargo !== null) return walker.cargo.resource === "bread" ? "loaf" : null;
   if (look.occupation === "builder") return "tool_hammer";
   if (look.occupation === "logger") return "tool_axe";

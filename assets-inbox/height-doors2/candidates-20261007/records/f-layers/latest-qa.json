@@ -1,0 +1,62 @@
+{
+  "roofPolygonNative": [
+    [
+      15,
+      55
+    ],
+    [
+      42,
+      12
+    ],
+    [
+      109,
+      45
+    ],
+    [
+      128,
+      64
+    ],
+    [
+      125,
+      68
+    ],
+    [
+      109,
+      52
+    ],
+    [
+      90,
+      80
+    ],
+    [
+      59,
+      64
+    ],
+    [
+      53,
+      70
+    ],
+    [
+      39,
+      48
+    ],
+    [
+      17,
+      57
+    ]
+  ],
+  "roofPolygonPixels": 3388,
+  "layers": {
+    "snow-05-globalfit": {
+      "alpha_gt32_pixels": 2900,
+      "outside_body_alpha_gt32_pixels": 44,
+      "outside_roof_polygon_pixels": 178,
+      "roof_coverage_alpha_gt32": 0.8034238488783944,
+      "roof_alpha_weighted_coverage": 0.7220675046878255,
+      "canvas": [
+        139,
+        155
+      ]
+    }
+  }
+}

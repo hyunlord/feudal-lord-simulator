@@ -1,0 +1,168 @@
+{
+  "scope": "Actual visual observations; source run exit1 due10 telemetry aborts, cause unconfirmed. No overall execution PASS.",
+  "source": {
+    "source": ".omo/wet-paths/source-inputs/warm-rain.save.json",
+    "originalPath": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-005000.save.json",
+    "sourceSHA": "4eaf078c2c42deb86a96f06ab7392bad79f97ccf674b09e20f51efbb0195ec8f",
+    "startSHA": "59e49ea3523765c0d4b97396c8fe003577683e0041d5201c26396623cfb27a2b",
+    "tick": 5000,
+    "seed": 1,
+    "calendar": {
+      "season": 1,
+      "year": 1301,
+      "fraction": 0,
+      "seconds": 500
+    },
+    "wetness": 0,
+    "weather": {
+      "kind": "wet",
+      "seasonIndex": 5
+    },
+    "advanced": 0,
+    "method": "Existing valid save through current codec only; capture uses normal 1x gameplay to5450."
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "dpr": 1
+  },
+  "cameraTile": [
+    43,
+    37
+  ],
+  "views": [
+    {
+      "name": "rain-z1",
+      "sourceFrames": 212,
+      "firstTick": 5000,
+      "lastTick": 5451,
+      "elapsedMs": 45430.799999952316,
+      "medianFrameGapMs": 214.89999997615814,
+      "maxFrameGapMs": 464.5,
+      "rainDrawFrames": 210,
+      "wetness": [
+        0,
+        1
+      ],
+      "roofSnowMax": 0,
+      "treeSnowMax": 0,
+      "pathROI": [
+        630,
+        525,
+        190,
+        90
+      ],
+      "grassROI": [
+        350,
+        530,
+        120,
+        80
+      ],
+      "roiPresentation": "World original at left; right top path190x90 world-equivalent, bottom grass120x80; nearest-neighbor display enlargement only. No contrast/color adjustment.",
+      "video": {
+        "width": 1280,
+        "height": 800,
+        "duration": "45.480000",
+        "nb_read_frames": "212"
+      }
+    },
+    {
+      "name": "rain-z0.6",
+      "sourceFrames": 167,
+      "firstTick": 5000,
+      "lastTick": 5450,
+      "elapsedMs": 45376.09999990463,
+      "medianFrameGapMs": 267.0999999642372,
+      "maxFrameGapMs": 556.1999999284744,
+      "rainDrawFrames": 165,
+      "wetness": [
+        0,
+        1
+      ],
+      "roofSnowMax": 0,
+      "treeSnowMax": 0,
+      "pathROI": [
+        634,
+        475,
+        114,
+        54
+      ],
+      "grassROI": [
+        466,
+        478,
+        72,
+        48
+      ],
+      "roiPresentation": "World original at left; right top path190x90 world-equivalent, bottom grass120x80; nearest-neighbor display enlargement only. No contrast/color adjustment.",
+      "video": {
+        "width": 1280,
+        "height": 800,
+        "duration": "45.400000",
+        "nb_read_frames": "167"
+      }
+    }
+  ],
+  "errors": [],
+  "network": [
+    {
+      "view": "rain-z1",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z1",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z1",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z1",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z1",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z0.6",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z0.6",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z0.6",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z0.6",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "rain-z0.6",
+      "phase": "capture",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}

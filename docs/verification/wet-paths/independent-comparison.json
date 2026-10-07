@@ -1,0 +1,197 @@
+[
+  {
+    "name": "stage0",
+    "pixels": 0,
+    "meanRGBDelta": 0,
+    "maxRGBSum": 0,
+    "bbox": null,
+    "expectIdentical": true,
+    "stateSHA": "feea56375572205226464b371a0b647f1e70f85946cdd38151b2093beb9a184f",
+    "sourceToWorld": 0
+  },
+  {
+    "name": "stage1",
+    "pixels": 3696,
+    "meanRGBDelta": 4.687590187590188,
+    "maxRGBSum": 50,
+    "bbox": [
+      371,
+      316,
+      845,
+      630
+    ],
+    "expectIdentical": false,
+    "stateSHA": "85af1e5f95ae973d7722628c0065b8880b32242cacfe5f8725612a7faaa781d7",
+    "sourceToWorld": 1000
+  },
+  {
+    "name": "stage2",
+    "pixels": 3908,
+    "meanRGBDelta": 8.414107813033095,
+    "maxRGBSum": 100,
+    "bbox": [
+      371,
+      315,
+      846,
+      630
+    ],
+    "expectIdentical": false,
+    "stateSHA": "e2a40368d9676a5a0297ed63acb87fa8f66348b614bf5bc63d8568579e66b407",
+    "sourceToWorld": 978
+  },
+  {
+    "name": "stage3",
+    "pixels": 4095,
+    "meanRGBDelta": 11.887993487993489,
+    "maxRGBSum": 150,
+    "bbox": [
+      370,
+      313,
+      846,
+      630
+    ],
+    "expectIdentical": false,
+    "stateSHA": "22da45818255afb6f9a8d3255c70b44b4fc9b70c69c85a8584606a7e21cc5600",
+    "sourceToWorld": 1010
+  },
+  {
+    "name": "stage4",
+    "pixels": 4239,
+    "meanRGBDelta": 15.228748918770151,
+    "maxRGBSum": 200,
+    "bbox": [
+      370,
+      313,
+      846,
+      630
+    ],
+    "expectIdentical": false,
+    "stateSHA": "0aa71a4b84bd4d4a174ec155c95cf022aeace55fc1bf01fe7f5a743d647a3bdd",
+    "sourceToWorld": 982
+  },
+  {
+    "name": "stage5",
+    "pixels": 4289,
+    "meanRGBDelta": 18.76808890961374,
+    "maxRGBSum": 250,
+    "bbox": [
+      371,
+      313,
+      846,
+      631
+    ],
+    "expectIdentical": false,
+    "stateSHA": "f6891b0794fdefb1ee64ae06986e40051d266e10071f6a6174d8f2ce9a58ef14",
+    "sourceToWorld": 992
+  },
+  {
+    "name": "stage6",
+    "pixels": 4356,
+    "meanRGBDelta": 21.857591062136517,
+    "maxRGBSum": 300,
+    "bbox": [
+      371,
+      313,
+      846,
+      631
+    ],
+    "expectIdentical": false,
+    "stateSHA": "24baae58b60ad1fc40afaf9ca4dcb6e59efb9f67e988e60870532f1207b37765",
+    "sourceToWorld": 1073
+  },
+  {
+    "name": "summer",
+    "pixels": 4317,
+    "meanRGBDelta": 22.069878773839857,
+    "maxRGBSum": 320,
+    "bbox": [
+      371,
+      314,
+      846,
+      631
+    ],
+    "expectIdentical": false,
+    "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+    "sourceToWorld": 1299
+  },
+  {
+    "name": "winter",
+    "pixels": 0,
+    "meanRGBDelta": 0,
+    "maxRGBSum": 0,
+    "bbox": null,
+    "expectIdentical": true,
+    "stateSHA": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+    "sourceToWorld": 0
+  },
+  {
+    "name": "summer-z0.6",
+    "pixels": 1722,
+    "meanRGBDelta": 23.972706155632988,
+    "maxRGBSum": 323,
+    "bbox": [
+      477,
+      349,
+      763,
+      537
+    ],
+    "expectIdentical": false,
+    "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+    "sourceToWorld": 816
+  },
+  {
+    "name": "summer-z1.4",
+    "pixels": 8440,
+    "meanRGBDelta": 22.63783570300158,
+    "maxRGBSum": 314,
+    "bbox": [
+      262,
+      279,
+      929,
+      724
+    ],
+    "expectIdentical": false,
+    "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+    "sourceToWorld": 1315
+  },
+  {
+    "name": "winter-z0.6",
+    "pixels": 0,
+    "meanRGBDelta": 0,
+    "maxRGBSum": 0,
+    "bbox": null,
+    "expectIdentical": true,
+    "stateSHA": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+    "sourceToWorld": 0
+  },
+  {
+    "name": "winter-z1.4",
+    "pixels": 0,
+    "meanRGBDelta": 0,
+    "maxRGBSum": 0,
+    "bbox": null,
+    "expectIdentical": true,
+    "stateSHA": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+    "sourceToWorld": 0
+  },
+  {
+    "name": "summer-off",
+    "pixels": 0,
+    "meanRGBDelta": 0,
+    "maxRGBSum": 0,
+    "bbox": null,
+    "expectIdentical": true,
+    "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+    "sourceToWorld": 0
+  },
+  {
+    "name": "summer-unready",
+    "pixels": 0,
+    "meanRGBDelta": 0,
+    "maxRGBSum": 0,
+    "bbox": null,
+    "expectIdentical": true,
+    "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+    "sourceToWorld": 0
+  }
+]

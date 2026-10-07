@@ -85,11 +85,13 @@ function renderSortY(item: SortableRenderItem): number {
       return item.descriptor.sortY;
     case "land_stage":
       return item.piece.ty;
+    case "funeral": return item.foot.ty;
     case "walker":
       return item.walker.position.ty;
     case "zone_prop":
     case "farm_prop":
       return item.prop.y;
+    case "muster_field":
     case "wash_pool":
     case "world_fire":
     case "spring_prop":

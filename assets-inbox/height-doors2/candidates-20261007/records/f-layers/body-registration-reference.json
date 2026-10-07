@@ -1,0 +1,115 @@
+{
+  "source": ".omo/height-doors2/art/f/body-04.png",
+  "sourceSHA256": "0c0ee432438c5c25d80e6ccbd3b96ee26aa8bebce608e96f4de64aae86ee7418",
+  "runtimeSHA256": "a24109ab4334d25c705d8866c792d95a5ade0fa15b010835c86d2cc35f4e5643",
+  "originalSize": [
+    1254,
+    1254
+  ],
+  "wholeImageSize": [
+    139,
+    139
+  ],
+  "translationBeforePadding": [
+    0,
+    -8
+  ],
+  "topPadding": 16,
+  "scaleXY": [
+    0.11084529505582137,
+    0.11084529505582137
+  ],
+  "canvas": [
+    139,
+    155
+  ],
+  "pivot": [
+    71.66148325358851,
+    141.92025518341308
+  ],
+  "worldPxPerNativePx": 0.4986217267599071,
+  "clippedOpaque": 0,
+  "status": "registered static candidate; runtime scene not yet tested",
+  "measurement": {
+    "method": "manual visible inner door panel, excludes jamb/lintel/step; 8x native grid",
+    "door": {
+      "heightEndpoints": [
+        [
+          67,
+          83
+        ],
+        [
+          67,
+          126
+        ]
+      ],
+      "widthEndpoints": [
+        [
+          61,
+          105
+        ],
+        [
+          77,
+          105
+        ]
+      ],
+      "heightNative": 43,
+      "projectedWidthNative": 16,
+      "endpointUncertaintyNative": 1,
+      "heightWorld": 21.440734250676005,
+      "projectedWidthWorld": 7.977947628158514
+    },
+    "ground": {
+      "originalPoints": [
+        [
+          21,
+          91
+        ],
+        [
+          85,
+          125
+        ],
+        [
+          123,
+          104
+        ]
+      ],
+      "candidatePoints": [
+        [
+          21,
+          107
+        ],
+        [
+          84,
+          141
+        ],
+        [
+          123,
+          120
+        ]
+      ],
+      "worldAlignedCandidatePoints": [
+        [
+          21,
+          91
+        ],
+        [
+          84,
+          125
+        ],
+        [
+          123,
+          104
+        ]
+      ],
+      "pointUncertaintyNative": 2,
+      "maximumResidualNative": 1,
+      "limitation": "Manual stylized foundation outer-contact landmarks, not analytic 2:1 geometry certification"
+    },
+    "roofRidge": [
+      84,
+      34
+    ],
+    "identity": "Original front projecting small gable, warm plaster and dark braces maintained; roof became shallower while retaining visibly pitched thatch."
+  }
+}

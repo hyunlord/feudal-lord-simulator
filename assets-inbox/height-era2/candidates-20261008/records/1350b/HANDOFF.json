@@ -1,0 +1,91 @@
+{
+  "candidateOnly": true,
+  "noRuntimeValidation": true,
+  "tool": "builtin image_gen imagegen",
+  "canvas": [
+    153,
+    153
+  ],
+  "pivot": [
+    77.35406698564593,
+    139.57894736842104
+  ],
+  "scale": 0.49957049486461247,
+  "footprint": [
+    1,
+    1
+  ],
+  "files": [
+    {
+      "role": "body",
+      "file": "house_l0_1350_b-body-candidate.png",
+      "sha256": "53786d2d7a968350532b9407e7c6cf4ac24b834ac2c5502237c10b45a7b86848",
+      "raw": "body-02-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        153,
+        153
+      ],
+      "translationAfterResize": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "role": "snow",
+      "file": "house_l0_1350_b-snow-candidate.png",
+      "sha256": "c47305aac6451fdeebc274ea328934e1d2ae79a3ecc685826b9e242d732d76b9",
+      "raw": "snow-02-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        153,
+        153
+      ],
+      "translationAfterResize": [
+        1,
+        -5
+      ]
+    },
+    {
+      "role": "boarded",
+      "file": "house_l0_1350_b-boarded-candidate.png",
+      "sha256": "b414d3d9e35355c3181f5982cf8ea795f3015f1b84ea9bede0e74139cd3d3f80",
+      "raw": "boarded-01-raw.png",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        153,
+        153
+      ],
+      "translationAfterResize": [
+        -1,
+        -1
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "attempt": "body01",
+      "reason": "Door width17\u201318native; conservative interval below target minimum."
+    },
+    {
+      "attempt": "snow01",
+      "reason": "Snow below eaves/wall overlap and excess side overhang."
+    }
+  ],
+  "caveats": [
+    "Manual point uncertainty, not pixel-exact certified geometry.",
+    "Snow02 outside-body101px at alpha>32 before dilation; see LAYER_AUDIT.",
+    "Only wholeimage resize/translation; no cutout mask, paint, per-part assembly.",
+    "Body retains very low alpha RGB edge specks; inspect actual composite/game before runtime approval.",
+    "Boarded overlay includes matching vertical door leaf between horizontal planks; no wall/roof, actual composite alignment retained."
+  ]
+}

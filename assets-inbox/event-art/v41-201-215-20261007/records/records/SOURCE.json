@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/hyunlord/feudal-lord-simulator",
+  "branch": "codex/phase15-organic-ground",
+  "commit": "2b6d820cc4bf7f6d5e5501dc9d5908b7a267433a",
+  "date": "2026-10-07",
+  "files": [
+    {
+      "file": "docs/design/content-drafts-20261002/v4.1/events-v4.1.json",
+      "sha256": "fce914fe651dd22000ff33d6975e8fb7ad8ed9479cce062b89e21054ff619ab1"
+    },
+    {
+      "file": "docs/design/art-bible.md",
+      "sha256": "1dfcb594b561ae098139ddeff997ac31cb9ec70122589ec9c464eec7538ee1b3"
+    }
+  ],
+  "senderCorrection": "v4.1-senders changes 008/024/035 only; no 201–215 sender change",
+  "existingArt": "167 JPGs in specified clone directory; 33 missing files recovered read-only from CUMULATIVE.csv local source paths and SHA verified by composition reviewer. All 200 actual images reviewed; full-size close comparisons recorded in FINAL_VISUAL_AUDIT.md."
+}

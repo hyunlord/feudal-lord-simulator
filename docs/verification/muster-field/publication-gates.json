@@ -1,0 +1,84 @@
+{
+  "geometry": {
+    "schema": 1,
+    "run": "astra-MUSTER1-geometry-d8d390c",
+    "commit": "d8d390ccf16850119bf626c7073478806f7e096b",
+    "dirty": false,
+    "inputs": 2308,
+    "inputHash": "da30cc3d321a5dce21a040e3dd16cc75e3deb8981fac1c6ef88e748d69a6205a",
+    "measuredAt": "2026-10-07T11:53:42.090Z",
+    "report": "docs/verification/uiaudit1/geometry/astra-MUSTER1-geometry-d8d390c/geometry.json",
+    "axes": {
+      "viewports": [
+        "1280x800",
+        "1920x1080",
+        "tablet-1180x820",
+        "1024x768",
+        "1280x720"
+      ],
+      "copies": [
+        "normal",
+        "long"
+      ],
+      "numbers": [
+        "normal",
+        "extreme"
+      ]
+    },
+    "rows": 4,
+    "conditions": 80,
+    "measured": 80,
+    "failures": 0,
+    "unopened": 0,
+    "unreachable": [],
+    "warnings": 0,
+    "byCheck": {
+      "outside": 0,
+      "overflow": 0,
+      "border": 0,
+      "portrait": 0,
+      "overlap": 0,
+      "empty": 0,
+      "controls": 0,
+      "content": 0,
+      "hud": 0,
+      "ornament": 0
+    },
+    "unregisteredFramed": 0,
+    "baseline": {
+      "entries": 0,
+      "counted": 0,
+      "excepted": 0,
+      "exceptions": 0,
+      "added": 0,
+      "fixed": 0
+    },
+    "bySurface": {
+      "hud.status-pill": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "hud.time-cluster": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "hud.action-dock": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "map.selection.house": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      }
+    },
+    "failureKeys": []
+  },
+  "sourceAfterAudit": "c33184cd",
+  "sameGeometryInputHash": "da30cc3d321a5dce21a040e3dd16cc75e3deb8981fac1c6ef88e748d69a6205a",
+  "sourceAfterAuditReason": "Only extra base ground-cover reservation; natural4states same SHA/anchor/visibility. Repository geometryInputs excludes render .ts and confirms same hash.",
+  "finalTreeTests": "Run after this receipt commit. Exact commit, kept execution and final check:merge logs accompany the delivered ZIP; not claimed in advance."
+}

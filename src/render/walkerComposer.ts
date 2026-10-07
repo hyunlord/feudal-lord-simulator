@@ -10,7 +10,7 @@ import { assetUrlForBase } from "./worldAssets";
 import { canvasBudget, type BudgetOwner } from "./canvasBudget";
 import { createTintCanvas, drawCroppedWorldSprite } from "./worldSprite";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
-import { walkerCloakManifest, walkerPropManifest } from "./walkerSheetManifest.generated";
+import { walkerCloakManifest, walkerPropDirections } from "./walkerArtManifest";
 import { stateCalendar } from "../engine/scenarioState";
 import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerCloakKind, type WalkerLook, type WalkerPropKind, type WalkerSheetId } from "./walkerLook";
 import { constructionStageIndex, constructionWorkProgress } from "./constructionVisibility";
@@ -68,8 +68,8 @@ function lookImages(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: 
   const body = imageFor(sheet.url, sheet.width, sheet.height);
   const cloakImage = cloak === null ? null : imageFor(walkerCloakManifest[cloak].url, 296, 148);
   // F0-V work tools are one 128 px sheet with a 32 px cell per direction (`cell`, `sheetWidth`).
-  const propImages = prop === null ? null : Object.fromEntries(Object.entries(walkerPropManifest[prop]).map(([direction, entry]) =>
-    [direction, imageFor(entry.url, "sheetWidth" in entry ? entry.sheetWidth : 32, 32)]));
+  const propImages = prop === null ? null : Object.fromEntries(Object.entries(walkerPropDirections(prop)).map(([direction, entry]) =>
+    [direction, imageFor(entry.url, entry.sheetWidth ?? 32, 32)]));
   if (body === null || (cloak !== null && cloakImage === null) || (propImages !== null && Object.values(propImages).some(image => image === null))) return null;
   return { body, cloak: cloakImage, props: propImages as Record<string, HTMLImageElement> | null };
 }
@@ -147,21 +147,25 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
       return;
     }
     if (prop === null || images.props === null) return;
-    const entry = walkerPropManifest[prop][direction];
+    const entry = walkerPropDirections(prop)[direction];
     // INSTALL-7: a Wave 7 work prop carries Astra's attachment point in the 74 px frame and is drawn at its own
     // scale there (shoulder bag, hand basket / bucket / plough, waist purse); the older props go to the right hand.
-    const placed = "walkerPoint" in entry;
-    const hand = placed ? entry.walkerPoint : rightHand(frame);
-    const scale = placed ? 1 : PROP_SCALE;
+    const hand = entry.walkerPoint ?? rightHand(frame);
+    const scale = entry.walkerPoint !== undefined ? 1 : entry.referenceFigureHeight !== undefined
+      ? (entry.scale ?? PROP_SCALE) * frame.figureHeight / entry.referenceFigureHeight : entry.scale ?? PROP_SCALE;
     const size = 32 * scale;
-    drawCroppedWorldSprite(context, images.props[direction]!, { x: ("cell" in entry ? entry.cell : 0) * 32, y: 0, width: 32, height: 32 },
+    drawCroppedWorldSprite(context, images.props[direction]!, { x: (entry.cell ?? 0) * 32, y: 0, width: 32, height: 32 },
       { x: WALKER_PAD + hand.x - entry.anchor.x * scale, y: WALKER_PAD + hand.y - entry.anchor.y * scale, width: size, height: size }, false, true);
   };
   // Layer order per cell: back-hand prop, body, cloak, front-hand prop.
   if (!near) drawProp();
   const cellBox = { x: WALKER_PAD, y: WALKER_PAD, width: WALKER_CELL, height: WALKER_CELL };
   drawCroppedWorldSprite(context, images.body, { x: column * sheetCellWidth, y: row * sheetCellHeight, width: sheetCellWidth, height: sheetCellHeight }, cellBox, false, true);
-  if (images.cloak !== null) drawCroppedWorldSprite(context, images.cloak, { x: column * WALKER_CELL, y: row * WALKER_CELL, width: WALKER_CELL, height: WALKER_CELL }, cellBox, false, true);
+  if (images.cloak !== null) {
+    const fit = frame.cloakRegistration ?? { x: 0, y: 0, scale: 1 };
+    drawCroppedWorldSprite(context, images.cloak, { x: column * WALKER_CELL, y: row * WALKER_CELL, width: WALKER_CELL, height: WALKER_CELL },
+      { x: cellBox.x + fit.x, y: cellBox.y + fit.y, width: WALKER_CELL * fit.scale, height: WALKER_CELL * fit.scale }, false, true);
+  }
   if (near) drawProp();
   const elapsed = typeof performance === "undefined" ? 0 : performance.now() - started;
   stats.composed += 1; stats.composeMsTotal += elapsed; stats.composeMsMax = Math.max(stats.composeMsMax, elapsed);

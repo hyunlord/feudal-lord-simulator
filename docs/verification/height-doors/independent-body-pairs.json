@@ -1,0 +1,61 @@
+{
+  "method": "Actual installed contract body and required layers versus same build with new contract body and roof-point consumers disabled. Canonical normal saves unchanged per paired capture. L0 normal seed2 road walker and L1d existing summer21000.",
+  "pairs": [
+    {
+      "body": "l0",
+      "zoom": "1",
+      "state_equal": true,
+      "before_sha256": "ee5296b0760dfb78d176fdf1141304d599cfaf91bbcbc14c42172b804a9616cf",
+      "after_sha256": "be21235421f3fc699308003785f25f33c3fc781c61a28249b8d6ee52b8e77e23"
+    },
+    {
+      "body": "l0",
+      "zoom": "0.6",
+      "state_equal": true,
+      "before_sha256": "9152e9161994f8556ad4cae2db54868e9aca11b36e4b454b90aaa9222391b950",
+      "after_sha256": "855d5511df6ba81ace1c8adf67abf274715e71e7eefef0eac29d2a9f2cd0715a"
+    },
+    {
+      "body": "l0",
+      "zoom": "3",
+      "state_equal": true,
+      "before_sha256": "58b1422792a2ea1b269a7b60cf58b0e657989502e52665478620c60bd0b3afc8",
+      "after_sha256": "1b024662cfb7ebc9c08ab4f8161528f57076d70c82d3e7f68b017185d06b6db4"
+    },
+    {
+      "body": "l1d",
+      "zoom": "1",
+      "state_equal": true,
+      "before_sha256": "f8b801ae2e612ae0540ad3a7b42ea1f48f494cf91637ffcbb2b555fe169e1659",
+      "after_sha256": "ca84d06744f7d194f22ef2f0a54c48e4075163c169f4a9db0f29f9d88efb4526"
+    },
+    {
+      "body": "l1d",
+      "zoom": "0.6",
+      "state_equal": true,
+      "before_sha256": "8409f2f3e00db13636da505c936bf2aeb120798ad0f3f6ba3ad4ddb7e4ce8ed8",
+      "after_sha256": "1417210bfc96bff250f4eaeb1ae7b9746cb8b40bc321afd67dddd3a9e022cd42"
+    },
+    {
+      "body": "l1d",
+      "zoom": "3",
+      "state_equal": true,
+      "before_sha256": "fab1ab94c0b1c5909301f559c5a1608f6952b451bf37715fd268f1ee8df9b4a9",
+      "after_sha256": "6aa582076af08ca9d553a1285509104b59f00ba91bf75f5ea57418d4fe0aa58f"
+    }
+  ],
+  "page_errors": [],
+  "network_failures_preserved": [
+    {
+      "view": "before-l1d-z1",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l0-z0.6",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "visual_review": "root directly viewed both after z3; L0 now enlarged body and visible adult on nearby open road; L1d weathered visually reviewed. Winter/state-layer combination remains pending."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "house_l0-v3",
+  "wave": "historical",
+  "level": 0,
+  "public": {
+    "path": "public/assets/buildings/historical-houses/house_l0-v3.png",
+    "sha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+    "canvas": [
+      153,
+      153
+    ]
+  },
+  "source": {
+    "path": "docs/asset-evidence/runtime-sources/buildings/historical-houses/house_l0-v3.png",
+    "sha256": "6a51abfea2b84e72a3764c4b50ec45668de9c61af660f04840c34bc1e9b9ef6e",
+    "canvas": [
+      1254,
+      1254
+    ]
+  },
+  "authoredRegistrationCanvas": [
+    1254,
+    1254
+  ],
+  "authoredCropXYWH": [
+    172,
+    378,
+    924,
+    766
+  ],
+  "nativeSamplingCropXYWH": [
+    20.985645933014354,
+    46.119617224880386,
+    112.73684210526316,
+    93.45933014354067
+  ],
+  "baseAlphaCropXYWH": [
+    172,
+    378,
+    924,
+    766
+  ],
+  "worldPxPerNativePx": 0.49957049486461247,
+  "equivalentNativeGroundPivot": [
+    77.35406698564593,
+    139.57894736842104
+  ],
+  "nativeDoorHeightRange": [
+    21,
+    25
+  ],
+  "nativeProjectedDoorWidthRange": [
+    9,
+    13
+  ],
+  "manualUncertaintyNativePx": 2,
+  "inspectionROI": [
+    50,
+    87,
+    76,
+    129
+  ],
+  "measurement": "Closed-leaf inferred inner aperture, same-x vertical; excludes frame/lintel/step; original crop and shipped pixels inspected.",
+  "worldDoorHeightRange": [
+    10.490980392156862,
+    12.489262371615311
+  ],
+  "worldProjectedDoorWidthRange": [
+    4.496134453781512,
+    6.494416433239962
+  ],
+  "sourceEqualsPublic": false
+}

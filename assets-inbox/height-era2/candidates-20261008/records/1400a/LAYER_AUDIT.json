@@ -1,0 +1,76 @@
+{
+  "a": {
+    "roofPolygonManual": [
+      [
+        59,
+        17
+      ],
+      [
+        101,
+        38
+      ],
+      [
+        136,
+        69
+      ],
+      [
+        92,
+        85
+      ],
+      [
+        21,
+        50
+      ]
+    ],
+    "pointUncertaintyNative": 2,
+    "weightedCoveragePct": 76.02140121313283,
+    "alphaGt32CoveragePct": 81.17557638712947,
+    "outsideRoofAlphaGt32Pixels": 561,
+    "outsideBodyAlphaGt32Pixels": 49,
+    "boardOutsideBodyAlphaGt32Pixels": 0,
+    "outsideRoofDilated1Pixels": 345,
+    "outsideRoofDilated2Pixels": 209,
+    "outsideRoofDilated3Pixels": 122,
+    "outsideRoofDilated4Pixels": 61,
+    "outsideRoofDilated6Pixels": 4,
+    "outsideRoofDilated8Pixels": 0,
+    "outsideRoofDilated10Pixels": 0
+  },
+  "b": {
+    "roofPolygonManual": [
+      [
+        59,
+        17
+      ],
+      [
+        101,
+        38
+      ],
+      [
+        136,
+        69
+      ],
+      [
+        92,
+        85
+      ],
+      [
+        21,
+        50
+      ]
+    ],
+    "pointUncertaintyNative": 2,
+    "weightedCoveragePct": 78.35606094477315,
+    "alphaGt32CoveragePct": 85.20395236888776,
+    "outsideRoofAlphaGt32Pixels": 458,
+    "outsideBodyAlphaGt32Pixels": 1,
+    "boardOutsideBodyAlphaGt32Pixels": 0,
+    "outsideRoofDilated1Pixels": 275,
+    "outsideRoofDilated2Pixels": 145,
+    "outsideRoofDilated3Pixels": 83,
+    "outsideRoofDilated4Pixels": 32,
+    "outsideRoofDilated6Pixels": 0,
+    "outsideRoofDilated8Pixels": 0,
+    "outsideRoofDilated10Pixels": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "tool": "builtin image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "reference": "native/body-03-registered.png",
+  "boarded_original": "exec-1989a2c8-e72e-431c-9421-6eef2ca13a0b.png",
+  "snow_original": "exec-e13ed36d-b67a-4f78-a5d0-52eb5e46f3e0.png",
+  "raw_folder": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a1110d-2b2c-7090-9489-b645c6ae92ce",
+  "exact_prompts": [
+    "records/boarded-01-prompt.txt",
+    "records/snow-01-prompt.txt"
+  ],
+  "observed_limits": [
+    "Snow includes some opaque brown thatch between snow patches rather than only snow.",
+    "Boarded includes some vertical wood of openings.",
+    "Static composites only, no runtime evidence."
+  ]
+}

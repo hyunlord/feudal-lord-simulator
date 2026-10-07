@@ -414,6 +414,9 @@
         "variantId": {
           "type": "string",
           "minLength": 1
+        },
+        "roofRidge": {
+          "$ref": "#/$defs/point"
         }
       },
       "required": [
@@ -483,6 +486,8 @@
           "enum": [
             "snow",
             "boarded",
+            "fresh",
+            "weathered",
             "worn",
             "wealth",
             "era"
@@ -1821,6 +1826,12 @@
         },
         {
           "$ref": "#/$defs/walker-transport"
+        },
+        {
+          "$ref": "#/$defs/walker-body"
+        },
+        {
+          "$ref": "#/$defs/walker-held-prop"
         }
       ]
     },
@@ -1851,7 +1862,9 @@
             "building-attachment",
             "ui-frame",
             "ui-image",
-            "walker-transport"
+            "walker-transport",
+            "walker-body",
+            "walker-held-prop"
           ]
         },
         "slot": {
@@ -2673,6 +2686,284 @@
         "payloadAnchor",
         "payloadWidth",
         "frames"
+      ],
+      "additionalProperties": false
+    },
+    "walker-body-frame": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "enum": [
+            "NE",
+            "SE",
+            "SW",
+            "NW"
+          ]
+        },
+        "gaitFrame": {
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "foot": {
+          "$ref": "#/$defs/point"
+        },
+        "figureHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "hands": {
+          "type": "object",
+          "properties": {
+            "left": {
+              "$ref": "#/$defs/point"
+            },
+            "right": {
+              "$ref": "#/$defs/point"
+            }
+          },
+          "required": [
+            "left",
+            "right"
+          ],
+          "additionalProperties": false
+        },
+        "cloakRegistration": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "scale"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "direction",
+        "gaitFrame",
+        "foot",
+        "figureHeight",
+        "hands"
+      ],
+      "additionalProperties": false
+    },
+    "walker-body-registration": {
+      "type": "object",
+      "properties": {
+        "classBand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sex": {
+          "enum": [
+            "male",
+            "female"
+          ]
+        },
+        "occupationTags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "legacy": {
+          "const": false
+        },
+        "holdsTool": {
+          "type": "boolean"
+        },
+        "template": {
+          "type": "string",
+          "minLength": 1
+        },
+        "season": {
+          "const": "all"
+        },
+        "directionOrder": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "NE",
+              "SE",
+              "SW",
+              "NW"
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "cloak": {
+          "enum": [
+            "male",
+            "female",
+            "merchant",
+            null
+          ]
+        },
+        "cloakPoke": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/walker-body-frame"
+          },
+          "minItems": 8,
+          "maxItems": 8
+        },
+        "propVariants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "slot": {
+                "type": "string",
+                "minLength": 1
+              },
+              "propId": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "slot",
+              "propId"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "classBand",
+        "sex",
+        "occupationTags",
+        "legacy",
+        "holdsTool",
+        "template",
+        "season",
+        "directionOrder",
+        "cloak",
+        "cloakPoke",
+        "frames",
+        "propVariants"
+      ],
+      "additionalProperties": false
+    },
+    "walker-body": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "allowMirror": {
+          "const": false
+        },
+        "kind": {
+          "const": "walker-body"
+        },
+        "registration": {
+          "$ref": "#/$defs/walker-body-registration"
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "allowMirror",
+        "kind",
+        "registration"
+      ],
+      "additionalProperties": false
+    },
+    "walker-held-prop": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "allowMirror": {
+          "const": false
+        },
+        "kind": {
+          "const": "walker-held-prop"
+        },
+        "propId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "enum": [
+            "NE",
+            "SE",
+            "SW",
+            "NW"
+          ]
+        },
+        "anchor": {
+          "$ref": "#/$defs/point"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "referenceFigureHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "opaqueBounds": {
+          "$ref": "#/$defs/rect"
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "allowMirror",
+        "kind",
+        "propId",
+        "direction",
+        "anchor",
+        "role",
+        "scale",
+        "opaqueBounds"
       ],
       "additionalProperties": false
     }

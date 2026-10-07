@@ -5,7 +5,7 @@ import { frameBuildingVariant } from "./buildingVariants";
 import { shownHouseVariantUrl } from "./wave26HouseArt";
 import { renderDetailLevel } from "./buildingVisualState";
 import type { CameraState } from "./camera";
-import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect } from "./historicalHouseAssets";
+import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect, registeredHouseRoofPoint } from "./historicalHouseAssets";
 import { houseCompoundAssetMeta, houseCompoundAssetStatuses, houseCompoundSpriteRect } from "./houseCompoundAssets";
 import { tileToScreen } from "./iso";
 import type { RenderQueueItem } from "./objectRenderTypes";
@@ -133,11 +133,13 @@ function flight(entry: VillageLifeItem, nowMs: number, camera: CameraState, view
 }
 
 /** The ridge point of the house art (the roof smoke's anchor, roofSmokeAnchors.py), or null when that art is not drawn. */
-function ridge(state: Pick<GameState, "houses" | "buildings">, buildingId: string): { x: number; y: number } | null {
+function ridge(state: GameState, buildingId: string): { x: number; y: number } | null {
   const building: Building | undefined = state.buildings.find(candidate => candidate.id === buildingId);
   const house = state.houses.find(candidate => candidate.buildingId === buildingId);
   if (building === undefined || house === undefined) return null;
   const level = houseBuiltLevel(house);
+  const registered = registeredHouseRoofPoint(state, building, level);
+  if (registered !== null) return registered;
   const pair = building.houseLot !== undefined;
   const meta = pair ? houseCompoundAssetMeta(building, level) : historicalHouseAssetMeta(level);
   if (meta === null) return null;

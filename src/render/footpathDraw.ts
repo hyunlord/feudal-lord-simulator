@@ -2,6 +2,7 @@ import { ART_REGISTRY, selectLandArt } from './art/wave42Registry';
 import { SEMANTIC_PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { chunkFootpaths, type FootpathPiece, type Port } from "./footpathModel";
+import { drawWetPathOverlay, wetPathCondition } from './footpathWet';
 import { tileToScreen } from "./iso";
 import { stageSeason, type StageSeason } from "./landStageModel";
 import type { SeasonIndex } from "./seasonArt";
@@ -42,7 +43,7 @@ export function footpathChunkToken(state: GameState, plan: { readonly cx: number
   const { signature } = chunkFootpaths(state, plan.cx, plan.cy);
   if (signature === "") return "";
   if (!pathArtReady) pathArtReady = stageArtReady(PATH_KEYS);
-  return `:fp${pathArtReady ? 1 : 0}${signature}`;
+  return `:fp${pathArtReady ? 1 : 0}${signature}${wetPathCondition(state).token}`;
 }
 
 type Axis = "ne" | "nw";
@@ -87,7 +88,8 @@ export function drawFootpathsInChunk(context: CanvasRenderingContext2D, state: G
   const { pieces } = chunkFootpaths(state, plan.cx, plan.cy);
   if (pieces.length === 0) return;
   const file = stageSeason(season);
-  for (const run of footpathRuns(pieces)) drawRun(context, run, file);
+  const wet = wetPathCondition(state).stage;
+  for (const run of footpathRuns(pieces)) drawRun(context, run, file, pieces, wet);
   const joins = pieces.filter(piece => piece.rule.connector !== null).sort((a, b) => a.tx + a.ty - (b.tx + b.ty) || a.tx - b.tx);
   for (const piece of joins) {
     const at = tileToScreen(piece.tx, piece.ty);
@@ -108,7 +110,7 @@ export function stripTransform(axis: Axis, line: number, from: number): readonly
 
 let scratch: (OffscreenCanvas | HTMLCanvasElement) | null = null;
 
-function drawRun(context: CanvasRenderingContext2D, run: FootpathRun, file: StageSeason): void {
+function drawRun(context: CanvasRenderingContext2D, run: FootpathRun, file: StageSeason, pieces: readonly FootpathPiece[], wet: number): void {
   const image = stageArt(selectLandArt('path-strip', { family: 'path', stage: run.axis, season: file }).id);
   if (image === null) return;
   const from = run.from - (run.fadeFrom ? TAIL_UV : OVERLAP_UV);
@@ -122,6 +124,7 @@ function drawRun(context: CanvasRenderingContext2D, run: FootpathRun, file: Stag
   for (let start = Math.floor(from / STRIP_UV) * STRIP_UV; start < to; start += STRIP_UV) {
     drawCroppedWorldSprite(paint, image, { x: 0, y: 0, width: STRIP_UV, height: STRIP_V }, { x: start - from, y: 0, width: STRIP_UV, height: STRIP_V }, false, false);
   }
+  drawWetPathOverlay(paint, run, from, to, pieces, wet, file);
   paint.save();
   paint.globalCompositeOperation = "destination-out";
   paint.fillStyle = SEMANTIC_PALETTE.ink;

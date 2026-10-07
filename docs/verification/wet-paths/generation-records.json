@@ -1,0 +1,34 @@
+[
+  {
+    "id": "path_muddy_ne_summer",
+    "state": "muddy",
+    "dir": "ne",
+    "prompt": "Use case: stylized-concept. Create ONE seamless horizontal flat unwrapped UV ground path overlay strip for a medieval southern England 1300 painterly isometric strategy game. Final intended dimensions 512x64, aspect 8:1. The image contains only a very long narrow straight horizontal path running continuously off LEFT and RIGHT canvas edges, no end caps. This is an unwrapped ground texture, NOT a diagonal isometric object; renderer transforms it into NE world axis. Independently draw an original arrangement for ne, never mirror another drawing. Wet dark warm brown churned mud after rain, irregular shallow puddles with restrained upper-left glints, compressed grassy margins and uneven ruts. Distinctly darker and wetter than dry path. Hand-painted soft medium-scale texture matching muted olive grass reference; no black outlines, no photoreal micrograin. Central path approximately middle half of height, irregular grassy feathering into true transparency above/below; top/bottom outer eighth completely transparent. Left and right edges must tile continuously, same color and path width. Summer. Soft upper-left lighting, restrained contact depth only. No people, stones larger than gravel, signs, buildings, forks, corner, text, watermark, black background or checkerboard. Reference image is material palette only, NOT composition.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb08-bf05-7c72-977a-160eb9335aa1/exec-433b04e0-e062-461e-afb6-fbb980faafd8.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input_path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "raw_copy": "raw/paths-path_muddy_ne_summer.png",
+    "raw_sha256": "1e9af1181afcd7ef1b4f1b1a11f944c3e54b20945aeec2c15bf695b10137bee1",
+    "input_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "output_sha256": "799ccd46ae92650f033240863227db1aab519afeac6cb266ec72641f1d85643d",
+    "postprocess": "Summer crop shared with corresponding winter; one resize to512x48; Y8 transparent +8 inward fade; X24 endpoint blend; zero RGB at alpha0; no mirrors/rotations"
+  },
+  {
+    "id": "path_muddy_nw_summer",
+    "state": "muddy",
+    "dir": "nw",
+    "prompt": "Use case: stylized-concept. Create ONE seamless horizontal flat unwrapped UV ground path overlay strip for a medieval southern England 1300 painterly isometric strategy game. Final intended dimensions 512x64, aspect 8:1. The image contains only a very long narrow straight horizontal path running continuously off LEFT and RIGHT canvas edges, no end caps. This is an unwrapped ground texture, NOT a diagonal isometric object; renderer transforms it into NW world axis. Independently draw an original arrangement for nw, never mirror another drawing. Wet dark warm brown churned mud after rain, irregular shallow puddles with restrained upper-left glints, compressed grassy margins and uneven ruts. Distinctly darker and wetter than dry path. Hand-painted soft medium-scale texture matching muted olive grass reference; no black outlines, no photoreal micrograin. Central path approximately middle half of height, irregular grassy feathering into true transparency above/below; top/bottom outer eighth completely transparent. Left and right edges must tile continuously, same color and path width. Summer. Soft upper-left lighting, restrained contact depth only. No people, stones larger than gravel, signs, buildings, forks, corner, text, watermark, black background or checkerboard. Reference image is material palette only, NOT composition.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb08-bf05-7c72-977a-160eb9335aa1/exec-1595d373-5e2f-44cb-8f2c-ab510bfca4a9.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input_path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "raw_copy": "raw/paths-path_muddy_nw_summer.png",
+    "raw_sha256": "4359e52539261e486eee467e98e09348fe2af9bb7cbf89392093f66b8383dbfd",
+    "input_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "output_sha256": "463aee24fdb0247e576c5bf9aafc065e159de9cc00473882e085ce9cebaba2f8",
+    "postprocess": "Summer crop shared with corresponding winter; one resize to512x48; Y8 transparent +8 inward fade; X24 endpoint blend; zero RGB at alpha0; no mirrors/rotations"
+  }
+]

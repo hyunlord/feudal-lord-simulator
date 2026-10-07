@@ -1,0 +1,41 @@
+{
+  "roofPolygon": [
+    [
+      20,
+      50
+    ],
+    [
+      60,
+      15
+    ],
+    [
+      98,
+      34
+    ],
+    [
+      134,
+      71
+    ],
+    [
+      91,
+      85
+    ]
+  ],
+  "roofPolygonUncertaintyPx": 2,
+  "roofPixels": 4096,
+  "weightedCoveragePct": 72.0687806372549,
+  "alphaGt32CoveragePct": 79.3701171875,
+  "alphaGe128CoveragePct": 72.998046875,
+  "outsideRoofAlphaGt32": 446,
+  "outsideBodyAlphaGt32": 101,
+  "snowOutsideBodyByDilation": {
+    "1": 22,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "boardsOutsideBodyAlphaGt32": 0,
+  "noClipping": true
+}

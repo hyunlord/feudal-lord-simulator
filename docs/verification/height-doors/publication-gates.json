@@ -1,0 +1,106 @@
+{
+  "productCommit": "acc20e8c",
+  "bookkeepingCommit": "38303d91",
+  "focusedTests": {
+    "passed": 98,
+    "failed": 0
+  },
+  "typecheck": "pass",
+  "lint": "pass",
+  "actualScenePairs": 21,
+  "newPNGCount": 8,
+  "bodyVariants": 2,
+  "remainingBodyVariants": 21,
+  "geometry": {
+    "run": "astra-HEIGHT-DOORS-geometry-38303d9-38303d9",
+    "commit": "38303d9106d4605f2cb571f5d4722f0862acb7fe",
+    "inputHash": "dc026bb3b18c25264a9b1bb2a65f5169cee95ffa4194cab7b7da95d137e3f362",
+    "summary": {
+      "schema": 1,
+      "run": "astra-HEIGHT-DOORS-geometry-38303d9-38303d9",
+      "commit": "38303d9106d4605f2cb571f5d4722f0862acb7fe",
+      "dirty": false,
+      "inputs": 2316,
+      "inputHash": "dc026bb3b18c25264a9b1bb2a65f5169cee95ffa4194cab7b7da95d137e3f362",
+      "measuredAt": "2026-10-07T13:52:38.099Z",
+      "report": "docs/verification/uiaudit1/geometry/astra-HEIGHT-DOORS-geometry-38303d9-38303d9/geometry.json",
+      "axes": {
+        "viewports": [
+          "1280x800",
+          "1920x1080",
+          "tablet-1180x820",
+          "1024x768",
+          "1280x720"
+        ],
+        "copies": [
+          "normal",
+          "long"
+        ],
+        "numbers": [
+          "normal",
+          "extreme"
+        ]
+      },
+      "rows": 4,
+      "conditions": 80,
+      "measured": 80,
+      "failures": 0,
+      "unopened": 0,
+      "unreachable": [],
+      "warnings": 0,
+      "byCheck": {
+        "outside": 0,
+        "overflow": 0,
+        "border": 0,
+        "portrait": 0,
+        "overlap": 0,
+        "empty": 0,
+        "controls": 0,
+        "content": 0,
+        "hud": 0,
+        "ornament": 0
+      },
+      "unregisteredFramed": 0,
+      "baseline": {
+        "entries": 0,
+        "counted": 0,
+        "excepted": 0,
+        "exceptions": 0,
+        "added": 0,
+        "fixed": 0
+      },
+      "bySurface": {
+        "hud.status-pill": {
+          "failures": 0,
+          "unopened": 0,
+          "byCheck": {}
+        },
+        "hud.time-cluster": {
+          "failures": 0,
+          "unopened": 0,
+          "byCheck": {}
+        },
+        "hud.action-dock": {
+          "failures": 0,
+          "unopened": 0,
+          "byCheck": {}
+        },
+        "map.selection.house": {
+          "failures": 0,
+          "unopened": 0,
+          "byCheck": {}
+        }
+      },
+      "failureKeys": []
+    }
+  },
+  "promptRecovery": "Exact candidate4 prompt and decoded generated-image SHA recovered after bookkeeping; original commit retained.",
+  "finalChangedTests": {
+    "requiredBeforePush": true,
+    "receiptLocation": ".remote-runs/test-changed/<final-tree>.json and report ZIP"
+  },
+  "mergeChecks": {
+    "requiredBeforePush": true,
+    "logLocation": "report ZIP final-check-merge.txt"
+  }
+}

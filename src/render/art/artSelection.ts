@@ -7,11 +7,13 @@ const number = (unit: string): ArtContextField => ({ type: 'number', unit });
 /** Closed adapter facts: no arbitrary GameState paths and no engine state invention. */
 export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string, ArtContextField>>>> = Object.freeze({
   'building-attachment': { bodyId: text, occupation: text, calendarYear: number('calendar-year'), season: text, role: text },
-  'building-body': { buildingKind: text, level: number('level'), season: text, calendarYear: number('calendar-year'), lot: text, eligible: { type: 'boolean', unit: 'boolean' } },
+  'building-body': { buildingKind: text, level: number('level'), season: text, calendarYear: number('calendar-year'), lot: text, legacyBodyUrl: text, eligible: { type: 'boolean', unit: 'boolean' } },
   'state-overlay': { bodyId: text, layer: text, season: text, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
   'ground-prop': { buildingKind: text, resource: text, baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },
   'walker-transport': { group: text, facing: text },
   'walker-cargo': { role: text, cargoKind: text, facing: text, frame: number('frame-index') },
+  'walker-body': { bodyId: text, classBand: text, sex: text },
+  'walker-held-prop': { propId: text, facing: text },
   'land-stage': { family: text, stage: text, season: text, layout: text, connectionMask: number('connection-mask'), ageYears: number('engine-year'), stageProgress: number('stage-fraction'), parity: number('cell-hash-modulo-2'), plot: { type: 'boolean', unit: 'boolean' } },
   landmark: { family: text, growthStage: text, season: text },
   'event-scene': { eventId: text, group: text, placement: text, season: text, active: { type: 'boolean', unit: 'boolean' } },

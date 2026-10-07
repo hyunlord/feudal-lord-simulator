@@ -1,0 +1,134 @@
+{
+  "status": "static measured candidate; no runtime/layers yet",
+  "generationAttemptsTotal": 4,
+  "newRoundAttempts": 2,
+  "tool": "image_gen.imagegen",
+  "model": "not returned",
+  "seed": "not returned",
+  "canvas": [
+    139,
+    175
+  ],
+  "pivot": [
+    71.66148325358851,
+    161.92025518341308
+  ],
+  "worldScale": 0.4986217267599071,
+  "door": {
+    "sameX": 60,
+    "y": [
+      97,
+      143
+    ],
+    "heightNative": 46,
+    "widthAtY": 117,
+    "x": [
+      50,
+      69
+    ],
+    "widthNative": 19,
+    "heightWorld": 22.936599430955727,
+    "widthWorld": 9.473812808438236,
+    "endpointUncertaintyNative": 1,
+    "method": "manual visible closed leaf excludes jamb/lintel/threshold; endpoint difference"
+  },
+  "ground": {
+    "originalTop36": [
+      [
+        21,
+        126
+      ],
+      [
+        85,
+        160
+      ],
+      [
+        122,
+        140
+      ]
+    ],
+    "candidate": [
+      [
+        21,
+        128
+      ],
+      [
+        85,
+        159
+      ],
+      [
+        122,
+        140
+      ]
+    ],
+    "residual": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "pointUncertaintyNative": 2
+  },
+  "wholeRegistration": {
+    "original": [
+      1117,
+      1408
+    ],
+    "resize": [
+      139,
+      175
+    ],
+    "scaleXY": [
+      0.12444046553267682,
+      0.12428977272727272
+    ],
+    "translation": [
+      0,
+      -8
+    ],
+    "canvas": [
+      139,
+      175
+    ],
+    "pivot": [
+      71.66148325358851,
+      161.92025518341308
+    ],
+    "worldScale": 0.4986217267599071
+  },
+  "clippedAlphaPositivePixels": 0,
+  "sourceSHA256": "66ae2b28f9603dcf21e916a9a7a36a375bcc21a0c4036ec6424e48342e500aa0",
+  "nativeSHA256": "bb73edb1bb0976d28e984d99b7dd76cb9153ba057e9ee298e177d88eff287493",
+  "limits": [
+    "Source ground residual and source nonexact isometric axes not reprojected; no analytic2:1 certification.",
+    "Door46x19 is manual nominal measure, not exact architectural opening behind drawn frame.",
+    "Source identity warmoak/regularbays/tidythatch retained; front window lattice detail changed; right small wooden shutter retained, low native contrast.",
+    "No snow/boarded layers or actual runtime verification yet."
+  ],
+  "previousAttempts": "01/02 prior failures untouched;03 door stillshort;04 raisedroof andwideneddoor without wideningfootprint.",
+  "rightWindow": {
+    "present": true,
+    "form": "small closed wood shutter, dark-on-dark against V brace; low native contrast",
+    "rawInspectionRectangle": [
+      700,
+      900,
+      980,
+      1240
+    ],
+    "nativeInspectionRectangle": [
+      90,
+      110,
+      119,
+      143
+    ],
+    "newGenerationForWindow": false
+  }
+}

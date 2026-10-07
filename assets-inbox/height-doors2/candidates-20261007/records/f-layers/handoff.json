@@ -1,0 +1,162 @@
+{
+  "status": "4 static candidates; snow05 global registration resolved earlier failed attempts",
+  "tool": "image_gen.imagegen",
+  "model": "not returned",
+  "newBodyGenerated": false,
+  "bodyReference": "/tmp/astra-height-doors2/.omo/height-doors2/art/f/body-04-registered.png",
+  "bodySHA256": "a24109ab4334d25c705d8866c792d95a5ade0fa15b010835c86d2cc35f4e5643",
+  "bodyMeasurementIndependent": {
+    "doorSameX": 67,
+    "y": [
+      83,
+      126
+    ],
+    "heightNative": 43,
+    "heightWorld": 21.44073425068,
+    "widthX": [
+      61,
+      77
+    ],
+    "widthNative": 16,
+    "widthWorld": 7.97794762816,
+    "endpointUncertaintyNative": 1,
+    "groundCandidate": [
+      [
+        21,
+        107
+      ],
+      [
+        84,
+        141
+      ],
+      [
+        123,
+        120
+      ]
+    ],
+    "groundOriginal": [
+      [
+        21,
+        91
+      ],
+      [
+        85,
+        125
+      ],
+      [
+        123,
+        104
+      ]
+    ],
+    "groundNote": "Subtract16 top padding before comparing; maximum manual coordinate residual1native within uncertainty2."
+  },
+  "canvas": [
+    139,
+    155
+  ],
+  "pivot": [
+    71.66148325358851,
+    141.92025518341308
+  ],
+  "scale": 0.4986217267599071,
+  "derivation": "Existing keyartDerivatives.ts resizeArea139x139 from actual1254square, translation0,-8 then topPadding16. No keying, masking, compositing or repainting in final layers. Composites QA only. Snow05 uses separate whole-layer125x114+(5,+10), recorded explicitly in snow-registration.json.",
+  "layers": {
+    "fresh": {
+      "selectedAttempt": "fresh-02",
+      "path": "/tmp/astra-height-doors2-f-layers/fresh-candidate.png",
+      "sha256": "c63ddbea4a050d6367d358019b714787f4fa3d48256eeb4d34e7dbc64a86f189",
+      "alphaGT32Count": 700,
+      "alphaGT32BoundsInclusive": [
+        23,
+        12,
+        123,
+        79
+      ],
+      "outsideBodyAlphaGT32Count": 4,
+      "outsideBodyPixels": [
+        [
+          62,
+          18,
+          86
+        ],
+        [
+          63,
+          18,
+          69
+        ],
+        [
+          87,
+          31,
+          96
+        ],
+        [
+          88,
+          31,
+          118
+        ]
+      ],
+      "composites": [
+        "/tmp/astra-height-doors2-f-layers/fresh-02-light-inspection.png",
+        "/tmp/astra-height-doors2-f-layers/fresh-02-dark-inspection.png"
+      ]
+    },
+    "weathered": {
+      "selectedAttempt": "weathered-02",
+      "path": "/tmp/astra-height-doors2-f-layers/weathered-candidate.png",
+      "sha256": "d6eecc7b3df632a4419c38edc706255ee44ed0cba753a03947f92a7de7c5d6d5",
+      "alphaGT32Count": 1191,
+      "alphaGT32BoundsInclusive": [
+        15,
+        12,
+        126,
+        136
+      ],
+      "outsideBodyAlphaGT32Count": 1,
+      "outsideBodyPixels": [
+        [
+          35,
+          22,
+          50
+        ]
+      ],
+      "composites": [
+        "/tmp/astra-height-doors2-f-layers/weathered-02-light-inspection.png",
+        "/tmp/astra-height-doors2-f-layers/weathered-02-dark-inspection.png"
+      ]
+    },
+    "boarded": {
+      "selectedAttempt": "boarded-raw",
+      "path": "/tmp/astra-height-doors2-f-layers/boarded-candidate.png",
+      "sha256": "0bfc16b923cdfd71460af059d9f350b4df5720529c94b9f7129ab90c7db69075",
+      "alphaGT32Count": 1222,
+      "alphaGT32BoundsInclusive": [
+        30,
+        78,
+        111,
+        128
+      ],
+      "outsideBodyAlphaGT32Count": 0,
+      "outsideBodyPixels": [],
+      "composites": [
+        "/tmp/astra-height-doors2-f-layers/boarded-raw-light-inspection.png",
+        "/tmp/astra-height-doors2-f-layers/boarded-raw-dark-inspection.png"
+      ]
+    },
+    "snow": {
+      "path": "/tmp/astra-height-doors2-f-layers/snow-candidate.png",
+      "sha256": "f5e2400e444bb66a8b70056a9679f20dbfed7536a81430ec94af08951b15d98e",
+      "qa": "snow-05-qa.json",
+      "registration": "snow-registration.json",
+      "composites": [
+        "/tmp/astra-height-doors2-f-layers/snow-05-globalfit-light-inspection.png",
+        "/tmp/astra-height-doors2-f-layers/snow-05-globalfit-dark-inspection.png"
+      ]
+    }
+  },
+  "snow": "Root snow05 selected with one whole-image125x114+(5,+10) registration; see snow-05-qa.json. Earlier failed attempts remain rejected.",
+  "limitations": [
+    "Static layers only, not runtime validated.",
+    "Fresh4 and weathered1 alpha>32 pixels lie outside body alpha>32 threshold; reported, not erased.",
+    "Manual ROI/threshold is not exact geometric silhouette proof."
+  ]
+}

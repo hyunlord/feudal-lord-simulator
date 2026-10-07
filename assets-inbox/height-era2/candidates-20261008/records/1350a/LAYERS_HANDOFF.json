@@ -1,0 +1,249 @@
+{
+  "task": "RB-HEIGHT-ERA2",
+  "status": "static candidate complete; not runtime verified",
+  "body": {
+    "상태": "2차 완성몸체 정적후보; 목표폭nominal1native부족/수동오차포함,무조건통과아님",
+    "범위": "다음HEIGHT-ERA2 사전준비만,현재ERA1설치에포함하지않음",
+    "원본": [
+      {
+        "path": "/tmp/astra-height-era1/public/assets/height-final/house_l0-v4.png",
+        "sha256": "e512ad4ba236fa3f8ff543bbd581a1e63b4831d0abe153d338816d5d8493d2cf"
+      },
+      {
+        "path": "/tmp/astra-height-era1/public/assets/wave20/houses/house_l0_1350_a-v1.png",
+        "sha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c"
+      }
+    ],
+    "후보": {
+      "path": "/tmp/astra-height-era2-candidates-20261008/house_l0_1350_a-body-candidate.png",
+      "sha256": "d92e046f84df490072f986f468596103461f74c30154ce2273efd0a8513a015c"
+    },
+    "등록": {
+      "raw": [
+        1254,
+        1254
+      ],
+      "resize": [
+        153,
+        153
+      ],
+      "scaleXY": [
+        0.12200956937799043,
+        0.12200956937799043
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "canvas": [
+        153,
+        153
+      ],
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "worldScale": 0.49957049486461247
+    },
+    "문": {
+      "같은x": 65,
+      "위아래y": [
+        78,
+        123
+      ],
+      "높이native": 45,
+      "높이world": 22.48067226890756,
+      "너비측정y": 100,
+      "좌우x": [
+        55,
+        74
+      ],
+      "너비native": 19,
+      "너비world": 9.491839402427637,
+      "끝점각불확실성native": 1,
+      "측정법": "문틀/문턱제외닫힌leaf시각경계,끝점차이;실제건축개구부확정아님"
+    },
+    "발판": {
+      "기준": [
+        [
+          28,
+          107
+        ],
+        [
+          91,
+          137
+        ],
+        [
+          128,
+          117
+        ]
+      ],
+      "후보": [
+        [
+          28,
+          107
+        ],
+        [
+          91,
+          139
+        ],
+        [
+          128,
+          118
+        ]
+      ],
+      "잔차": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "지점불확실성native": 2
+    },
+    "정체성": "황토빛회벽/어두운골조/따뜻한초가,앞왼작은닫힌창1·오른끝벽무창유지",
+    "생성": {
+      "횟수": 2,
+      "tool": "image_gen.imagegen",
+      "model": "미반환",
+      "seed": "미반환"
+    },
+    "보존": "1차및2차원시/exactprompt/생성원본경로/등록/눈금검사보존",
+    "한계": [
+      "문폭nominal19은목표20보다1작고끝점각±1오차가있음;정확20달성주장없음.",
+      "지붕/발판은수동시각대응만,분석적2:1인증아님.",
+      "등록은전체원시를153²로단한번resizeArea. 부분조립/전체집추가축소없음.",
+      "눈/판자전용층생성금지준수. 기존승인층재사용정합미검증.",
+      "실게임/설치/코드/커밋/DGX없음."
+    ]
+  },
+  "layers": [
+    {
+      "kind": "snow",
+      "native": "/tmp/astra-height-era2-candidates-20261008/snow-01-native.png",
+      "sha256": "d853e59dafc856d4c878d0a49a7bd30ea3273e1c6e2e4bf6371d9697c7d35de8",
+      "raw": "/tmp/astra-height-era2-candidates-20261008/snow-01-raw.png",
+      "rawSHA256": "d06d7802c21ecd7556fe9f45731d7204a88b47ffb6c11cc3169b1e3141d883a5",
+      "prompt": "/tmp/astra-height-era2-candidates-20261008/snow-prompt-01.txt",
+      "originalGeneratedBasename": "exec-d76cb6b7-6a97-4edc-889d-936680d7cc8b.png",
+      "registration": {
+        "raw": [
+          1254,
+          1254
+        ],
+        "resize": [
+          153,
+          153
+        ],
+        "translation": [
+          0,
+          0
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not returned",
+        "seed": "not returned"
+      },
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "scale": 0.49957049486461247
+    },
+    {
+      "kind": "boarded",
+      "native": "/tmp/astra-height-era2-candidates-20261008/boarded-01-native.png",
+      "sha256": "15c330ae52bdd6f97e58bead66a2f4155957f503a86aeec1aa39741f6474fb48",
+      "raw": "/tmp/astra-height-era2-candidates-20261008/boarded-01-raw.png",
+      "rawSHA256": "7df98e62ac5770b610389936373c75086eca0d976fedc03b20b201da41a6629f",
+      "prompt": "/tmp/astra-height-era2-candidates-20261008/boarded-prompt-01.txt",
+      "originalGeneratedBasename": "exec-e920612b-1484-458b-a97b-373f55df60e8.png",
+      "registration": {
+        "raw": [
+          1254,
+          1254
+        ],
+        "resize": [
+          153,
+          153
+        ],
+        "translation": [
+          0,
+          0
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not returned",
+        "seed": "not returned"
+      },
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "scale": 0.49957049486461247
+    }
+  ],
+  "qa": {
+    "roofPolygonNative": [
+      [
+        21,
+        49
+      ],
+      [
+        57,
+        15
+      ],
+      [
+        102,
+        40
+      ],
+      [
+        134,
+        71
+      ],
+      [
+        91,
+        86
+      ],
+      [
+        21,
+        54
+      ]
+    ],
+    "ROIUncertaintyNative": 2,
+    "layers": {
+      "snow": {
+        "alphaWeightedRoofCoverage": 0.7137226763463098,
+        "binaryGT32RoofCoverage": 0.7888065056206649,
+        "outsideBodyGT32": 15,
+        "boundsAlphaGT32": [
+          20,
+          15,
+          135,
+          89
+        ]
+      },
+      "boarded": {
+        "alphaWeightedRoofCoverage": 1.0317449151389807e-05,
+        "binaryGT32RoofCoverage": 0.0,
+        "outsideBodyGT32": 0,
+        "boundsAlphaGT32": [
+          32,
+          62,
+          79,
+          125
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "Snow follows thatch courses in broad bands despite broken irregular edges; weighted and binary coverage are distinct.",
+    "Snow extends beyond body alpha at 15 native pixels; no clipping applied.",
+    "Door dimensions are manually measured leaf boundaries, not architectural opening proof."
+  ]
+}

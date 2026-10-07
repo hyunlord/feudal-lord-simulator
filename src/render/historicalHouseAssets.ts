@@ -10,7 +10,7 @@ import { frameBuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
 import { alehouseArt } from "./aleWorldArt";
 import { WAVE3_ALE_IMAGES } from "./wave3AleManifest.generated";
-import { drawWave26House, shownHouseVariant } from "./wave26HouseArt";
+import { drawWave26House, shownHouseVariant, shownHouseVariantUrl } from "./wave26HouseArt";
 
 export type HistoricalHouseAssetMeta = Readonly<{
   level: 0 | 1 | 2 | 3 | 4;
@@ -111,8 +111,21 @@ export function drawHistoricalHouse(context: CanvasRenderingContext2D, building:
   return drawHistoricalHouseBody(context, building, builtLevel, state).drawn;
 }
 
+/** Selection identities stay independent of the deployment prefix added by the image loader. */
+export function selectedLegacyHouseUrl(building: Building, level: number): string | undefined {
+  return shownHouseVariantUrl(building, level) ?? frameBuildingVariant(building)?.url
+    ?? historicalHouseAssetManifest.find(meta => meta.level === level)?.url;
+}
+
+export function registeredHouseRoofPoint(state: ContractHouseInput['state'], building: Building, level: number) {
+  const legacyBodyUrl = selectedLegacyHouseUrl(building, level);
+  return contractHouseArt.roofPoint({ state, building, level, ...(legacyBodyUrl === undefined ? {} : { legacyBodyUrl }) });
+}
+
 export function drawHistoricalHouseBody(context: CanvasRenderingContext2D, building: Building, builtLevel: number,
   state?: ContractHouseInput['state']): { readonly drawn: boolean; readonly contract: ContractHouseDraw | null } {
-  const contract = contractHouseArt.drawBody(context, { state, building, level: builtLevel });
+  const legacyBodyUrl = selectedLegacyHouseUrl(building, builtLevel);
+  const contract = contractHouseArt.drawBody(context, { state, building, level: builtLevel,
+    ...(legacyBodyUrl === undefined ? {} : { legacyBodyUrl }) });
   return { drawn: contract !== null || drawLegacyHistoricalHouse(context, building, builtLevel, state), contract };
 }

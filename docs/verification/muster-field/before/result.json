@@ -1,0 +1,127 @@
+{
+  "label": "before",
+  "url": "http://127.0.0.1:4550/",
+  "views": [
+    {
+      "name": "pending",
+      "zoom": 1,
+      "saveSHA256": "795e2422f0d6c1ce942589aebf40427398b708030d1050e7463dd67439246684",
+      "tick": 152000,
+      "stateSHA256": "13b9015c1d4acff0cf48f22a4453d693f1932b5607a4273af245c4d444f91c83",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "pending-z1.jpg",
+      "imageSHA256": "2ccb81f5a9c06cd9b7e448e7d85d04358df353eacc9cf178b5ab3b141edbec5d"
+    },
+    {
+      "name": "pending",
+      "zoom": 0.6,
+      "saveSHA256": "795e2422f0d6c1ce942589aebf40427398b708030d1050e7463dd67439246684",
+      "tick": 152000,
+      "stateSHA256": "13b9015c1d4acff0cf48f22a4453d693f1932b5607a4273af245c4d444f91c83",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "pending-z0.6.jpg",
+      "imageSHA256": "bec20e751063f6b3f4c404403a8fb5902f18acf98e6503738b82dc46e6c67341"
+    },
+    {
+      "name": "active",
+      "zoom": 1,
+      "saveSHA256": "2bb08da13dc37f3f93d3e29a3f5ad32c064b8215048dd8c610a8ebe0dca2c7ce",
+      "tick": 152000,
+      "stateSHA256": "491463272d9ab99119090d36ebaf6a9e06d8d241b6dc3d9011385ae2d711d028",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "active-z1.jpg",
+      "imageSHA256": "ac6e3799ec4755b1f2d5ae5e5b9e3755e7d2dbc0806fcc7a18b4112d16b0d447"
+    },
+    {
+      "name": "active",
+      "zoom": 0.6,
+      "saveSHA256": "2bb08da13dc37f3f93d3e29a3f5ad32c064b8215048dd8c610a8ebe0dca2c7ce",
+      "tick": 152000,
+      "stateSHA256": "491463272d9ab99119090d36ebaf6a9e06d8d241b6dc3d9011385ae2d711d028",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "active-z0.6.jpg",
+      "imageSHA256": "f130ff3482adcdf60ab43ab82a2c0f818f7e2a455dd34f2a4636d9253a4820a8"
+    },
+    {
+      "name": "last-active",
+      "zoom": 1,
+      "saveSHA256": "f9e28ff1717165b24df89d94aa830d0fcba94158a0f66d503ca25fe15f587530",
+      "tick": 152249,
+      "stateSHA256": "c2d59cbde018b989105ac4ef5b6b4b0b07bfcf9d948b1ed32826cc956a5e24c0",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "last-active-z1.jpg",
+      "imageSHA256": "90979ccb442c55189abdb716c640f38089c3a82c2613ef038fbe3d6ba29e4d4b"
+    },
+    {
+      "name": "last-active",
+      "zoom": 0.6,
+      "saveSHA256": "f9e28ff1717165b24df89d94aa830d0fcba94158a0f66d503ca25fe15f587530",
+      "tick": 152249,
+      "stateSHA256": "c2d59cbde018b989105ac4ef5b6b4b0b07bfcf9d948b1ed32826cc956a5e24c0",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "last-active-z0.6.jpg",
+      "imageSHA256": "967b4f589ca8b23e222539d30347e57f50ff155bf5e3ec4907c130e4816ef6d5"
+    },
+    {
+      "name": "expired",
+      "zoom": 1,
+      "saveSHA256": "07846e15a0749295b6b466ddc6623c4b01630c1a307674215c9e02066ab1d946",
+      "tick": 152250,
+      "stateSHA256": "f029b62d3fbe77a5ca9715c8acdf7cd429b19714becd469cbde9ed3775282287",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "expired-z1.jpg",
+      "imageSHA256": "4f9fcc6e93ef2a44f7a3c4bd736fffadaddd8f78e07676b0b03b638d94d49bab"
+    },
+    {
+      "name": "expired",
+      "zoom": 0.6,
+      "saveSHA256": "07846e15a0749295b6b466ddc6623c4b01630c1a307674215c9e02066ab1d946",
+      "tick": 152250,
+      "stateSHA256": "f029b62d3fbe77a5ca9715c8acdf7cd429b19714becd469cbde9ed3775282287",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "draws": [],
+      "expectedVisible": false,
+      "image": "expired-z0.6.jpg",
+      "imageSHA256": "322bcb77dfb1eda41736c08fcf3c624778fd1ba8ffcba1c047151c44099278c4"
+    }
+  ],
+  "errors": []
+}

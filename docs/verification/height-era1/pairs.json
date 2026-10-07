@@ -1,0 +1,4067 @@
+{
+  "pairs": [
+    {
+      "group": 0,
+      "id": "1350-summer",
+      "name": "after-1350-summer-gallery-z1",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-gallery-z1.jpg",
+          "sha256": "07ce64db498192a82e90ae547c5631b303b85be7e42887839077b58728e0cb05"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-gallery-z1.png",
+          "sha256": "520ee5f52b583c2003458b3d90c618754a28e8cecc3bac3ebe500925bf449be7"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-gallery-z1.jpg",
+          "sha256": "bea9616997792c39aa576e35542e1c8c425a5ca2a6e55953fc72e7b03cfb4dc7"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-gallery-z1.png",
+          "sha256": "813a64ed8ae9896fbdb505420102d18de76e55ad0d8911e12b3b001b1552323d"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1350-summer",
+      "name": "after-1350-summer-gallery-z0.6",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-gallery-z0.6.jpg",
+          "sha256": "a6f0e32bdc37eeb667355b94441e146abb778917ae2f807f31fa80ad492904cf"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-gallery-z0.6.png",
+          "sha256": "ac309755ba153f69489827882b9e89bd03558c745ee52e54c06d839c21368875"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-gallery-z0.6.jpg",
+          "sha256": "8ac25922614bb08737dd5c375f1061c25fb0f545415df2b61144d42b11f3fc14"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-gallery-z0.6.png",
+          "sha256": "5274d5f51be5a0c7f7df4a54c6c4e256ab34b8474ed3ce155adfe0a1acd1a51c"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1350-summer",
+      "name": "after-1350-summer-prepared-1350-l1-a-settled-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-prepared-1350-l1-a-settled-0-z3.jpg",
+          "sha256": "cde7b8bc9b03b2b1b146658411254e407d5878f592555db021c1fc83919a59d3"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-prepared-1350-l1-a-settled-0-z3.png",
+          "sha256": "7fba9cf90decb923dfb3832c88739d6f7110cc28525a5378c9ebfb0cbce3b8f9"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-prepared-1350-l1-a-settled-0-z3.jpg",
+          "sha256": "1a3f805170e3220b9e58197bfb802ec361e03f0e3176c9e623226769f1355aa1"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-prepared-1350-l1-a-settled-0-z3.png",
+          "sha256": "3af9315aa0384fbec7e31c676407c62cc7b0bbdfc41cd6bfd3ac68dac08e5906"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        28
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1350-summer",
+      "name": "after-1350-summer-prepared-1350-l1-b-settled-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-prepared-1350-l1-b-settled-0-z3.jpg",
+          "sha256": "317259d510cb63d2627e9f76f1ea7fb91e1abee2dd8e330c0169e5451f928423"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1350-summer-prepared-1350-l1-b-settled-0-z3.png",
+          "sha256": "bd477a7a3d8a3a00788baf36023fa325557724742dc28b9860f54fb07f210274"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-prepared-1350-l1-b-settled-0-z3.jpg",
+          "sha256": "4ab9288c5a4b8660e6e1c77df4ddb263f7a4ed4225edb7035b9d3cc7e5cefdd6"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1350-summer-prepared-1350-l1-b-settled-0-z3.png",
+          "sha256": "ecd2540734e7d9e0ecda8ab333326b109b85bf1fb61bec8c5b91661cfd57c76b"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        36
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 197500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1400-summer",
+      "name": "after-1400-summer-gallery-z1",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-gallery-z1.jpg",
+          "sha256": "732c7f3a9b7bb873f4ca977d40799a943e3474447f28a36477ba94a72517ef39"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-gallery-z1.png",
+          "sha256": "69be0b4e0250d00c2144dc64f5fd4a98a1ba0f1f21e86299b80baf88e5c95181"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-gallery-z1.jpg",
+          "sha256": "3a8a839436d270e023233a4fa7ee2cae33935e2e512f71073ccdd83cfdc34061"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-gallery-z1.png",
+          "sha256": "375c76b3e071b5e07469669b9140cf54935b4e7d689249dd17c8480afdf3fb2e"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1400-summer",
+      "name": "after-1400-summer-gallery-z0.6",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-gallery-z0.6.jpg",
+          "sha256": "abcfa8fb7ea7ad2cf78a9a894edbb1a43ecce64306712bb1c773d569764f0b85"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-gallery-z0.6.png",
+          "sha256": "ad7d11477421e6c7280494ad76463fccd3a6f714b581b810c702af49317ab391"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-gallery-z0.6.jpg",
+          "sha256": "401d340aff2c599a04a87df71fda83012114e49af26f8ef0ed5e9e1d176a9ab3"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-gallery-z0.6.png",
+          "sha256": "624a962a726d9c7a3fa3d13f8ee5be934269d22676d5b7607dc2f6d6ffde53b7"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1400-summer",
+      "name": "after-1400-summer-prepared-1400-l1-a-settled-2-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-prepared-1400-l1-a-settled-2-z3.jpg",
+          "sha256": "425ed54ff0205d470d9df430a2f2911f878c9ebc4ba09b8c0b529d97906a4f91"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-prepared-1400-l1-a-settled-2-z3.png",
+          "sha256": "79eceee4e9a15caa1b11f956995b5c7d8fbb36d7d2287f009db087b0b23fd04f"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-prepared-1400-l1-a-settled-2-z3.jpg",
+          "sha256": "6355642e05b934d06e9520776abf155df83c2a69577a14b8e05c487adb7cd58d"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-prepared-1400-l1-a-settled-2-z3.png",
+          "sha256": "658909ce6adb1cc6c6897cbe626bc3cbc5d2a1cc1c11d185e73d301e0ee3e4e9"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        28
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 0,
+      "id": "1400-summer",
+      "name": "after-1400-summer-prepared-1400-l1-b-settled-1-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-prepared-1400-l1-b-settled-1-z3.jpg",
+          "sha256": "2d9412fcd13fd3af6bb135f0c10473dfa6c67208ef551452af137019a6254d20"
+        },
+        {
+          "file": "output/rb-height-era1-before-0/before-1400-summer-prepared-1400-l1-b-settled-1-z3.png",
+          "sha256": "49c6952c03f44cd055dc4e8376b2a7b5b4028f51d5e175720140a5d63f09bc9c"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-prepared-1400-l1-b-settled-1-z3.jpg",
+          "sha256": "e8185d7016a16196be9ba80eed55d3903176d824630ea2dab338dbdfa1a3969e"
+        },
+        {
+          "file": "output/rb-height-era1-after-0/after-1400-summer-prepared-1400-l1-b-settled-1-z3.png",
+          "sha256": "cb6d160943e44157db3c805342a7c8bbb87a2777e137730a2f1493c1caa73cba"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        36
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 397500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1350-winter",
+      "name": "after-1350-winter-gallery-z1",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-gallery-z1.jpg",
+          "sha256": "23ae559f629ee945def8edbfc09ef3a6cc41d5a220e22e164daf856bd9916bff"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-gallery-z1.png",
+          "sha256": "6a603d9bad65c9afb8379517ed21e553879bb86ae914dd064b7f43486bffd542"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-gallery-z1.jpg",
+          "sha256": "011f13444788bd7419bc71760038303d6c1675b3c27a2122876edc5360667446"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-gallery-z1.png",
+          "sha256": "0967d9a1013a56a4d52273a3c1105c225403333ea6a789b8db7ce558020b2cbc"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1350-winter",
+      "name": "after-1350-winter-gallery-z0.6",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-gallery-z0.6.jpg",
+          "sha256": "1d7660ae8c92b2ac968c9d24489aa7cf842df183c60e6c3d690bd277b1063285"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-gallery-z0.6.png",
+          "sha256": "511f36c2014d28b757079f607854542a4bda531975c93f602e9f9038adde0411"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-gallery-z0.6.jpg",
+          "sha256": "44d005f3538f07aae5cb93411fefc7384174fc0f18a0f0cda1b4c3381a0da055"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-gallery-z0.6.png",
+          "sha256": "3dc9586812c8b3b7019751496e80010fb59213ae411b206df78d228e0aa34b24"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1350-winter",
+      "name": "after-1350-winter-prepared-1350-l1-a-empty-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-prepared-1350-l1-a-empty-0-z3.jpg",
+          "sha256": "ab522894e06678ce2d8517fa71f0c0f1aa9b38d2036e059a0a7e19a1f95c00ee"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-prepared-1350-l1-a-empty-0-z3.png",
+          "sha256": "a59e5a8be16c86ead430102ec04c28d1b9e3aa14e41c9a9680dc339bff7231d9"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-prepared-1350-l1-a-empty-0-z3.jpg",
+          "sha256": "b47f69a8b69da5c7146c37da2687ab4eeb93b9b3babad4d1f746c69388354df1"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-prepared-1350-l1-a-empty-0-z3.png",
+          "sha256": "36fa9a4903603cf7833c888a243b3c8916c03e931f435e57d1f3ba09a7a177c4"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        32
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1350-winter",
+      "name": "after-1350-winter-prepared-1350-l1-b-empty-1-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-prepared-1350-l1-b-empty-1-z3.jpg",
+          "sha256": "451968cfb3cca6cc7fb620722e003d3c3ea4d796502f655d881439c6fffaae87"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1350-winter-prepared-1350-l1-b-empty-1-z3.png",
+          "sha256": "f09796b042b6d8dfd988b9dfe294bbf3254b2f9b67b85478022fc88f01cc76b2"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-prepared-1350-l1-b-empty-1-z3.jpg",
+          "sha256": "c45f069c5f444110aa531afbe8451d39976a3960b693fcea0f67d089c8d0acb3"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1350-winter-prepared-1350-l1-b-empty-1-z3.png",
+          "sha256": "608b86d14365d12253378a66530603272c7a75be2842d042d0aa629636684d7e"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        40
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1400-winter",
+      "name": "after-1400-winter-gallery-z1",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-gallery-z1.jpg",
+          "sha256": "a796cfe2544a47e0d8f4b90ae919a759b831ea815a995498c03e5c5286b3b145"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-gallery-z1.png",
+          "sha256": "ee48338e4e028069f8ac4a630f37375fa963a87da6bb29365a42f7a2854336cf"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-gallery-z1.jpg",
+          "sha256": "2fd971d8b352475f2d9ac61871ddb6c073b901f7285df82d264303948d9a6864"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-gallery-z1.png",
+          "sha256": "151f1134fc2954c06aee7ac94bf4c71565dbf93137465042d5c4d601295b7dc3"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1400-winter",
+      "name": "after-1400-winter-gallery-z0.6",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-gallery-z0.6.jpg",
+          "sha256": "28a32545ce03a0b5822ee07ae0ce56f290a59150e7b851fc28f5e29035579a79"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-gallery-z0.6.png",
+          "sha256": "9e8668111c67b8ab5bcda5bb1d4b495207ef118338095b829b1d111a4f1e106a"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-gallery-z0.6.jpg",
+          "sha256": "3029602df7584f50879bc40c3959cc43cfa5d117d52db00507cd5e592a2a79b9"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-gallery-z0.6.png",
+          "sha256": "d7d15a5e208d28650acf50880d35908a4df52020b53296153e89a4ba1b6c07b8"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1400-winter",
+      "name": "after-1400-winter-prepared-1400-l1-a-empty-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-prepared-1400-l1-a-empty-0-z3.jpg",
+          "sha256": "1067d84be612868394ae9a5e54bf18ca36ee791e6f8e9c17fc431aefdc7a641e"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-prepared-1400-l1-a-empty-0-z3.png",
+          "sha256": "b1c7fddd12c13490324357736b18a139201db6a1d69a250a63b66c7cd60d6042"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-prepared-1400-l1-a-empty-0-z3.jpg",
+          "sha256": "3345cd359ba470f1bfec8e161ca69d12ae879cdbca5b5e2035ecd86e62a56a1d"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-prepared-1400-l1-a-empty-0-z3.png",
+          "sha256": "2527da8616ee70fa649a4134634ae10cf867f0f48dcf1c105f8bc086e0a23e0b"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        32
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 1,
+      "id": "1400-winter",
+      "name": "after-1400-winter-prepared-1400-l1-b-empty-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-prepared-1400-l1-b-empty-0-z3.jpg",
+          "sha256": "294b736820e32181ea614debf91a6821f06e025110bccc2688a1c2337703e4d3"
+        },
+        {
+          "file": "output/rb-height-era1-before-1/before-1400-winter-prepared-1400-l1-b-empty-0-z3.png",
+          "sha256": "e63c2a2b68432c66043b205e4fe4096768aa7fdce60ecab79d27d29fa5fbcced"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-prepared-1400-l1-b-empty-0-z3.jpg",
+          "sha256": "30640a4b05fd36f3b1729a823aa4caae9eb995dafd9ad1c8e8785d68154a9ed8"
+        },
+        {
+          "file": "output/rb-height-era1-after-1/after-1400-winter-prepared-1400-l1-b-empty-0-z3.png",
+          "sha256": "6f457aa63c2cb2bde8771d49e4c77a06ad7f8c011383d3db4b95f81bc790f1cc"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        40
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 1
+        }
+      ],
+      "preparedChanges": [],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1350-melt",
+      "name": "after-1350-melt-gallery-z1",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-gallery-z1.jpg",
+          "sha256": "fa3939709b0549345838b94522c69d40e7717c0d4e11e23dc41d36131aadb485"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-gallery-z1.png",
+          "sha256": "21bd69763f10ab1f55980db8f1abc76e9ea5330d480e7f24175e6e0a63220729"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-gallery-z1.jpg",
+          "sha256": "c8d8362d3cb95d3d98d816b8fa4875cd399e3494ea661d156e358482739e3ee8"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-gallery-z1.png",
+          "sha256": "58ce20aa722d97e245b12eb12a1378ac1536c7516d8bad7aac8208aebf8b78a6"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.46028236083694885
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.45383435149997653
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4497571772621122
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4581261028482523
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 203500,
+          "after": 204140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          0.45383435149997653,
+          0.46028236083694885
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          0.4497571772621122,
+          0.4581261028482523
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1350-melt",
+      "name": "after-1350-melt-gallery-z0.6",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-gallery-z0.6.jpg",
+          "sha256": "6c18de87490c05bc09fc990794559e2797c201e36df2cd68f8b014c06589f34a"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-gallery-z0.6.png",
+          "sha256": "e4fee5e6539c5eb157ab429f929aa02e26177c69e7acddcae817e743a8b7001f"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-gallery-z0.6.jpg",
+          "sha256": "cfff47f4ace9bb2f766c0cd71749ff8bbdc6f45b64a0136e1ee932da35535070"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-gallery-z0.6.png",
+          "sha256": "7888580fdaad0f71fa035ce855e401a5837c4176df63b05d3022a230cb2ee7f2"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.46028236083694885
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.45383435149997653
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4497571772621122
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4581261028482523
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 203500,
+          "after": 204140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          0.45383435149997653,
+          0.46028236083694885
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          0.4497571772621122,
+          0.4581261028482523
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1350-melt",
+      "name": "after-1350-melt-prepared-1350-l1-a-empty-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-prepared-1350-l1-a-empty-0-z3.jpg",
+          "sha256": "ab0bcba4860ff55071ab9c6b5be4f78a1f9c51c4ebab13ff9fe1505649aa861f"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-prepared-1350-l1-a-empty-0-z3.png",
+          "sha256": "d6e730cf080b918f3d628047057ab8592b8f8083f2e934aabce7915e06db7cdd"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-prepared-1350-l1-a-empty-0-z3.jpg",
+          "sha256": "03410517dd342da3550a6044621662f2d592a9c5d53cf1a13fac608106ef6c9a"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-prepared-1350-l1-a-empty-0-z3.png",
+          "sha256": "f263755e3c28b2a7c063c38cd53ad94680aa4caeb237ae2900fcad47f1d67cf8"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        32
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.46028236083694885
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.45383435149997653
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4497571772621122
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4581261028482523
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 203500,
+          "after": 204140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          0.45383435149997653,
+          0.46028236083694885
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          0.4497571772621122,
+          0.4581261028482523
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1350-melt",
+      "name": "after-1350-melt-prepared-1350-l1-b-empty-1-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-prepared-1350-l1-b-empty-1-z3.jpg",
+          "sha256": "8a70b158c64e3c466246e123afa271a9de38f0675b854a6ca48e962ddb06bed3"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1350-melt-prepared-1350-l1-b-empty-1-z3.png",
+          "sha256": "85c062894b83e1f7b4ff4a13ae45b8ada30919742add77ef4bf8fca9b4728868"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-prepared-1350-l1-b-empty-1-z3.jpg",
+          "sha256": "dc92cec6ea76fb4d28d609a8adabfccf8cacc71df3dc7d3b2c1ff237711b4985"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1350-melt-prepared-1350-l1-b-empty-1-z3.png",
+          "sha256": "25e231823e2389bde7646816870bfd5f63cb09b1bb0eb963c46ed0eaf22379ca"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        40
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1350-l1-a-settled-0",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.46028236083694885
+        },
+        {
+          "buildingId": "prepared-1350-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "snowAlpha": 0.45383435149997653
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-settled-0",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4497571772621122
+        },
+        {
+          "buildingId": "prepared-1350-l1-b-empty-1",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 199500,
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "snowAlpha": 0.4581261028482523
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 203500,
+          "after": 204140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "ee6128e27435ac11af31bdd474b5999ba46eaeb3cefc0b836192f203b0b5600c",
+          "afterSHA256": "33e0a4ccb7122fe8d720a02969ac3d7454791158c367140a180998a272db92fa",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-boarded-v2.png",
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_a-snow-v2.png",
+        "height-era1/house_l1_1350_b-boarded-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png",
+        "height-era1/house_l1_1350_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_a-snow-v2.png": [
+          0.45383435149997653
+        ],
+        "height-era1/house_l1_1350_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-snow-v2.png": [
+          0.4497571772621122,
+          0.4581261028482523
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1400-melt",
+      "name": "after-1400-melt-gallery-z1",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-gallery-z1.jpg",
+          "sha256": "5618726ccb8a54f9f5964f779c3365c7cfcb2ea4602df8ba5c6597c4d758d18b"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-gallery-z1.png",
+          "sha256": "665d8e18ec82d0b863e9c713dfa1867791d280543abd3e9099b4438bb57479cc"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-gallery-z1.jpg",
+          "sha256": "e8cc2c101f92f3757eaa21ca70fe6556b8ccd5bfc4188ec22b94bc33ecb73e5a"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-gallery-z1.png",
+          "sha256": "87577b2740e4a5e895169c17696ce4a20e5a50692c66a0c35defe89577bfb7ad"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.5221804045087328
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.44446890398115046
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.49701422765918235
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.48181885912606526
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 403500,
+          "after": 404140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          0.44446890398115046,
+          0.5221804045087328
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          0.48181885912606526,
+          0.49701422765918235
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1400-melt",
+      "name": "after-1400-melt-gallery-z0.6",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-gallery-z0.6.jpg",
+          "sha256": "915517c21391422ea34665c88c4325faf6a61c70b600179423052c82685b47c3"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-gallery-z0.6.png",
+          "sha256": "8699132ac92305dc4d67e0f1d9695f13a550592e47467c95c6f599a3efcd3016"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-gallery-z0.6.jpg",
+          "sha256": "9f4076d584561be0ef4f1383eeef68d189172d1383d4a48cd3bc7e8aa900adf4"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-gallery-z0.6.png",
+          "sha256": "eeda36c90cc5521018384e42d284c6346e909ce6e259fede5d5e1b732240ad3c"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        30,
+        34
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.5221804045087328
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.44446890398115046
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.49701422765918235
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.48181885912606526
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 403500,
+          "after": 404140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          0.44446890398115046,
+          0.5221804045087328
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          0.48181885912606526,
+          0.49701422765918235
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1400-melt",
+      "name": "after-1400-melt-prepared-1400-l1-a-empty-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-prepared-1400-l1-a-empty-0-z3.jpg",
+          "sha256": "ca719aa7acc6b68235ba0912aeb07fa4a0071281658589116f8d2430e8bb2250"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-prepared-1400-l1-a-empty-0-z3.png",
+          "sha256": "8f65cf2d1f75fdaab7c2dc81d4454c84173027b00a028c9f64a665aa944ce815"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-prepared-1400-l1-a-empty-0-z3.jpg",
+          "sha256": "5090735a2a25eb269ebdcd313e386275d7742b0b894b720c5d09d8b951d3a90d"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-prepared-1400-l1-a-empty-0-z3.png",
+          "sha256": "e33929e9ec3e94dbeaae3dbb866072436d631a270f0b03555cbfe07530a349a9"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        32
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.5221804045087328
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.44446890398115046
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.49701422765918235
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.48181885912606526
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 403500,
+          "after": 404140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          0.44446890398115046,
+          0.5221804045087328
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          0.48181885912606526,
+          0.49701422765918235
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 2,
+      "id": "1400-melt",
+      "name": "after-1400-melt-prepared-1400-l1-b-empty-0-z3",
+      "classification": "Existing explicitly prepared art gallery, canonical codec migration; melt changes paused tick only. Not natural progression evidence.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-prepared-1400-l1-b-empty-0-z3.jpg",
+          "sha256": "ee5bc26cc16078b3af7806cf3f9350bbfda7cc203d063a0a2be3f64c1f6b7bf1"
+        },
+        {
+          "file": "output/rb-height-era1-before-2/before-1400-melt-prepared-1400-l1-b-empty-0-z3.png",
+          "sha256": "830af24c240b3089ab3f393f784fb2520a123db9d485bca4745be8b87b1e1f1b"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-prepared-1400-l1-b-empty-0-z3.jpg",
+          "sha256": "6a30c82007b2c256b0df0ebb206125d378378f1580fd1c1493ef6d7f1a9e6efb"
+        },
+        {
+          "file": "output/rb-height-era1-after-2/after-1400-melt-prepared-1400-l1-b-empty-0-z3.png",
+          "sha256": "a954fbc9a360d603bd24f40d1b07cad7ba66ff086cc269069e644e9e07b7a49a"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        32,
+        40
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "prepared-1400-l1-a-settled-2",
+          "tile": [
+            32,
+            28
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.5221804045087328
+        },
+        {
+          "buildingId": "prepared-1400-l1-a-empty-0",
+          "tile": [
+            32,
+            32
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "snowAlpha": 0.44446890398115046
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-settled-1",
+          "tile": [
+            32,
+            36
+          ],
+          "residents": 4,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.49701422765918235
+        },
+        {
+          "buildingId": "prepared-1400-l1-b-empty-0",
+          "tile": [
+            32,
+            40
+          ],
+          "residents": 0,
+          "abandonedTick": 399500,
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "bodyUrl": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "snowAlpha": 0.48181885912606526
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 403500,
+          "after": 404140
+        }
+      ],
+      "migrationChanges": [
+        {
+          "path": "tiles",
+          "beforeSHA256": "a77f414725408b52f49f4bfb136b76ec2e4f5479318144482a48e06ffa246f06",
+          "afterSHA256": "aba83858e9f09b400a804da92550df06c1ca28dd56aa058a142be7c758393241",
+          "beforeCount": 4096,
+          "afterCount": 4096,
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        },
+        {
+          "path": "lordship",
+          "beforeSHA256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "afterSHA256": "77ff1a5a2aecad99720ed51b15f12c539505a85c7e0c720cd4ced22ef96ddc11",
+          "detail": "Full before/after field values preserved in proofs/local/migrations-full.json; canonical codec only"
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-boarded-v2.png",
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_a-snow-v2.png",
+        "height-era1/house_l1_1400_b-boarded-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png",
+        "height-era1/house_l1_1400_b-snow-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_a-snow-v2.png": [
+          0.44446890398115046
+        ],
+        "height-era1/house_l1_1400_b-boarded-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-snow-v2.png": [
+          0.48181885912606526,
+          0.49701422765918235
+        ]
+      },
+      "walkerCount": 0
+    },
+    {
+      "group": 3,
+      "id": "town-1350",
+      "name": "after-town-1350-normal-town-clock-QA-z1",
+      "classification": "Paused QA clock change in an existing natural1303 town; not1350/1400 normal progression.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1350-normal-town-clock-QA-z1.jpg",
+          "sha256": "69cc11817ccc7e7c43f58058155cb9df74876dfe683ae19dffd307f036204473"
+        },
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1350-normal-town-clock-QA-z1.png",
+          "sha256": "1658e421b107b00499fab8843a438d865abdf2b67c28d3ba85870139cf50b4a0"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1350-normal-town-clock-QA-z1.jpg",
+          "sha256": "5419eaec9cd0b6bab12c45d9b3c48a72bbcef2485b6448ee775156094378ed68"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1350-normal-town-clock-QA-z1.png",
+          "sha256": "1562626b883583b0293a3079c038270c89e1f8a9ff54226d9347e37c8d78364c"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        49.5,
+        44
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "construction-site-000012",
+          "tile": [
+            50,
+            42
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000018",
+          "tile": [
+            46,
+            36
+          ],
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000019",
+          "tile": [
+            48,
+            44
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000022",
+          "tile": [
+            44,
+            43
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 7
+        },
+        {
+          "buildingId": "construction-site-000023",
+          "tile": [
+            49,
+            46
+          ],
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "residents": 6
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 13000,
+          "after": 201500
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 9
+    },
+    {
+      "group": 3,
+      "id": "town-1350",
+      "name": "after-town-1350-normal-town-clock-QA-z0.6",
+      "classification": "Paused QA clock change in an existing natural1303 town; not1350/1400 normal progression.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1350-normal-town-clock-QA-z0.6.jpg",
+          "sha256": "1cd94aabfb5b0a96cd39aef3c5ef925763aaed98658f9a529100965a11e45b8b"
+        },
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1350-normal-town-clock-QA-z0.6.png",
+          "sha256": "9c773eed09acc38f6834e0e975441d5635a41239dfe04eaebb08ef483fb36823"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1350-normal-town-clock-QA-z0.6.jpg",
+          "sha256": "cf4c2cfd45e31ad41b95884601aaf7090001ccd9940b6d2e6428b3c8200603e6"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1350-normal-town-clock-QA-z0.6.png",
+          "sha256": "4821a76695727c97d332fade561a4093c12219bc982f04ab4200c9696e90200f"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        49.5,
+        44
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "construction-site-000012",
+          "tile": [
+            50,
+            42
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000018",
+          "tile": [
+            46,
+            36
+          ],
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000019",
+          "tile": [
+            48,
+            44
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000022",
+          "tile": [
+            44,
+            43
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 7
+        },
+        {
+          "buildingId": "construction-site-000023",
+          "tile": [
+            49,
+            46
+          ],
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "residents": 6
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 13000,
+          "after": 201500
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 9
+    },
+    {
+      "group": 3,
+      "id": "town-1350",
+      "name": "after-town-1350-normal-town-clock-QA-z3",
+      "classification": "Paused QA clock change in an existing natural1303 town; not1350/1400 normal progression.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1350-normal-town-clock-QA-z3.jpg",
+          "sha256": "897eeea5c62b9937f87a9e3463177e6943024d527c205d117c3c3eb077cd0d78"
+        },
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1350-normal-town-clock-QA-z3.png",
+          "sha256": "a6590ef5af670d27f335a2b8e6de375bd4efe6b58e0e532369d51f9590322ba0"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1350-normal-town-clock-QA-z3.jpg",
+          "sha256": "083da1dbdcb51f58edbd2ddcd6ca6d052e6ee1fa5b75c70838eabe9904a7f8b6"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1350-normal-town-clock-QA-z3.png",
+          "sha256": "a2be942a278cba4bcb9d77d546ecfebef9647eeeff9c8c04d80c37269c05cfd8"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        49.5,
+        44
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "construction-site-000012",
+          "tile": [
+            50,
+            42
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000018",
+          "tile": [
+            46,
+            36
+          ],
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000019",
+          "tile": [
+            48,
+            44
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000022",
+          "tile": [
+            44,
+            43
+          ],
+          "bodyId": "wave20/house_l1_1350_a-v1",
+          "residents": 7
+        },
+        {
+          "buildingId": "construction-site-000023",
+          "tile": [
+            49,
+            46
+          ],
+          "bodyId": "wave20/house_l1_1350_b-v1",
+          "residents": 6
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 13000,
+          "after": 201500
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1350_a-body-v2.png",
+        "height-era1/house_l1_1350_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1350_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1350_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 9
+    },
+    {
+      "group": 3,
+      "id": "town-1400",
+      "name": "after-town-1400-normal-town-clock-QA-z1",
+      "classification": "Paused QA clock change in an existing natural1303 town; not1350/1400 normal progression.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1400-normal-town-clock-QA-z1.jpg",
+          "sha256": "c9ea9939b3ecc987d43eb3f6d115faf1f2ed0a2934f7c125e64f0a63191200d4"
+        },
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1400-normal-town-clock-QA-z1.png",
+          "sha256": "089b41512834525cc16d7159bb8b810c789ca2c4eb6d683a6f44438808531d53"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1400-normal-town-clock-QA-z1.jpg",
+          "sha256": "f4d2d8b0ce206405b16ed3edec1fb74b501b47f931004ebdf32bac5b6d024f8f"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1400-normal-town-clock-QA-z1.png",
+          "sha256": "50a8bbae68a40a526e0d99ca7c10decea003a7b7900de532607becad4d3bfd74"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        49.5,
+        44
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "construction-site-000012",
+          "tile": [
+            50,
+            42
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000018",
+          "tile": [
+            46,
+            36
+          ],
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000019",
+          "tile": [
+            48,
+            44
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000022",
+          "tile": [
+            44,
+            43
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 7
+        },
+        {
+          "buildingId": "construction-site-000023",
+          "tile": [
+            49,
+            46
+          ],
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "residents": 6
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 13000,
+          "after": 401500
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 7
+    },
+    {
+      "group": 3,
+      "id": "town-1400",
+      "name": "after-town-1400-normal-town-clock-QA-z0.6",
+      "classification": "Paused QA clock change in an existing natural1303 town; not1350/1400 normal progression.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1400-normal-town-clock-QA-z0.6.jpg",
+          "sha256": "c207c84179b00d84d92210bd2bfe0ba23b8a6d0b1b856c1a971ce861d7facb9c"
+        },
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1400-normal-town-clock-QA-z0.6.png",
+          "sha256": "e43a20d931f5878e68f87e2ecdbdf9ec447474f38c5cbd1c0c0c206300519a38"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1400-normal-town-clock-QA-z0.6.jpg",
+          "sha256": "7461ef9098aa16d07d0c90c5da9d89b5d4ac69891d3ee6603ca997508e95758f"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1400-normal-town-clock-QA-z0.6.png",
+          "sha256": "799b6ef47747e8f574ede347b20605e1d3045b55d31cdc022c9199e3add60e66"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        49.5,
+        44
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "construction-site-000012",
+          "tile": [
+            50,
+            42
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000018",
+          "tile": [
+            46,
+            36
+          ],
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000019",
+          "tile": [
+            48,
+            44
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000022",
+          "tile": [
+            44,
+            43
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 7
+        },
+        {
+          "buildingId": "construction-site-000023",
+          "tile": [
+            49,
+            46
+          ],
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "residents": 6
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 13000,
+          "after": 401500
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 7
+    },
+    {
+      "group": 3,
+      "id": "town-1400",
+      "name": "after-town-1400-normal-town-clock-QA-z3",
+      "classification": "Paused QA clock change in an existing natural1303 town; not1350/1400 normal progression.",
+      "baseline": "Original fd2786b2 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1400-normal-town-clock-QA-z3.jpg",
+          "sha256": "f71ecfa206e45d0430479e21203441ad1ae57125c7fcd6f6986a3bf5eb533908"
+        },
+        {
+          "file": "output/rb-height-era1-before-3/before-town-1400-normal-town-clock-QA-z3.png",
+          "sha256": "0e2b41a4c49b489d2c7c827720b44eeac46e56920e78b9ec900f96050018dfec"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1400-normal-town-clock-QA-z3.jpg",
+          "sha256": "c2f1fda0cc5b274ba642025f6f1f9cd0d354bfff2cfebc12c59ddb89bb99af7e"
+        },
+        {
+          "file": "output/rb-height-era1-after-3/after-town-1400-normal-town-clock-QA-z3.png",
+          "sha256": "93740ac5cf2119a4e829c8be1945841de4030fa4d0deff7467b9531f61061e8c"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        49.5,
+        44
+      ],
+      "nowMs": 4000,
+      "targets": [
+        {
+          "buildingId": "construction-site-000012",
+          "tile": [
+            50,
+            42
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000018",
+          "tile": [
+            46,
+            36
+          ],
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000019",
+          "tile": [
+            48,
+            44
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 8
+        },
+        {
+          "buildingId": "construction-site-000022",
+          "tile": [
+            44,
+            43
+          ],
+          "bodyId": "wave20/house_l1_1400_a-v1",
+          "residents": 7
+        },
+        {
+          "buildingId": "construction-site-000023",
+          "tile": [
+            49,
+            46
+          ],
+          "bodyId": "wave20/house_l1_1400_b-v1",
+          "residents": 6
+        }
+      ],
+      "preparedChanges": [
+        {
+          "path": "tick",
+          "before": 13000,
+          "after": 401500
+        }
+      ],
+      "sources": [
+        "height-era1/house_l1_1400_a-body-v2.png",
+        "height-era1/house_l1_1400_b-body-v2.png"
+      ],
+      "observedAlpha": {
+        "height-era1/house_l1_1400_a-body-v2.png": [
+          1
+        ],
+        "height-era1/house_l1_1400_b-body-v2.png": [
+          1
+        ]
+      },
+      "walkerCount": 7
+    }
+  ],
+  "runs": [
+    {
+      "group": 0,
+      "stage": "before",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T15:54:02.030Z",
+      "finishedAt": "2026-10-07T15:54:53.597Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "18fcf88b02d2fb16bc371bee7a106360720fe75ca7ce0d35dc9068370c93531f"
+    },
+    {
+      "group": 0,
+      "stage": "after",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T16:14:48.567Z",
+      "finishedAt": "2026-10-07T16:15:58.261Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "d784a67122d5edd3d33afec221fcce9d27f1c064bca06bb69fdb1b0ea976ddd0"
+    },
+    {
+      "group": 1,
+      "stage": "before",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T15:58:19.100Z",
+      "finishedAt": "2026-10-07T15:59:12.958Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "724d80116a7490701cb310d36adf5440481911fe17c7583722ca9fdb2568255d"
+    },
+    {
+      "group": 1,
+      "stage": "after",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T16:16:00.443Z",
+      "finishedAt": "2026-10-07T16:17:02.238Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "1428d5a1c20c8b3b017d7d5a7c7b0b9efb23ef54763884522993d544f4408be2"
+    },
+    {
+      "group": 2,
+      "stage": "before",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T16:00:43.298Z",
+      "finishedAt": "2026-10-07T16:01:40.883Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "368cad333cf6897e5fbbed39a72cce2bf42422c8dce3c15095b21e1256f3093f"
+    },
+    {
+      "group": 2,
+      "stage": "after",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T16:17:04.881Z",
+      "finishedAt": "2026-10-07T16:18:06.946Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "e837057236ba659ad02f54ffd417fa1c89db480a181800e02b182c51fc295ce8"
+    },
+    {
+      "group": 3,
+      "stage": "before",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T16:01:42.036Z",
+      "finishedAt": "2026-10-07T16:02:29.453Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-town-1350-normal-town-clock-QA-z1",
+          "url": "http://127.0.0.1:4303/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "f38420f3f81aaa1613f7007dfa4e84c28d4cc91046355333f4b9f17aa630a825"
+    },
+    {
+      "group": 3,
+      "stage": "after",
+      "head": "fd2786b239b2fb01d307316e5eae669898f6de47",
+      "startedAt": "2026-10-07T16:18:08.106Z",
+      "finishedAt": "2026-10-07T16:18:59.690Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-town-1350-normal-town-clock-QA-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "fcbbb6584f782c24cbce4cd356452ce2edfc0c4ffcf7d4d20912b242f7cda6f7"
+    }
+  ],
+  "scope": "Prepared gallery and disclosed tick-only town QA; no natural era growth claim. Identical state, camera, clock, and actors before/after."
+}

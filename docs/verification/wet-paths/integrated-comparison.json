@@ -1,0 +1,115 @@
+{
+  "scope": "Seven integrated same-state raw pixel and draw observations, NOT overall execution PASS; run exit1 due one telemetry abort.",
+  "baseline": "1a02c93a",
+  "after": "7478f970",
+  "rows": [
+    {
+      "name": "stage0",
+      "pixels": 0,
+      "stateSHA": "feea56375572205226464b371a0b647f1e70f85946cdd38151b2093beb9a184f",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "worldDraws": 0,
+      "expectedIdentical": true,
+      "bbox": null
+    },
+    {
+      "name": "stage3",
+      "pixels": 4090,
+      "stateSHA": "22da45818255afb6f9a8d3255c70b44b4fc9b70c69c85a8584606a7e21cc5600",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "worldDraws": 1180,
+      "expectedIdentical": false,
+      "bbox": [
+        370,
+        313,
+        847,
+        631
+      ]
+    },
+    {
+      "name": "stage6",
+      "pixels": 4356,
+      "stateSHA": "24baae58b60ad1fc40afaf9ca4dcb6e59efb9f67e988e60870532f1207b37765",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "worldDraws": 1235,
+      "expectedIdentical": false,
+      "bbox": [
+        371,
+        313,
+        847,
+        632
+      ]
+    },
+    {
+      "name": "summer-z0.6",
+      "pixels": 1722,
+      "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "worldDraws": 828,
+      "expectedIdentical": false,
+      "bbox": [
+        477,
+        349,
+        764,
+        538
+      ]
+    },
+    {
+      "name": "winter-z0.6",
+      "pixels": 0,
+      "stateSHA": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "worldDraws": 0,
+      "expectedIdentical": true,
+      "bbox": null
+    },
+    {
+      "name": "summer-off",
+      "pixels": 0,
+      "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "worldDraws": 0,
+      "expectedIdentical": true,
+      "bbox": null
+    },
+    {
+      "name": "summer-unready",
+      "pixels": 0,
+      "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "worldDraws": 0,
+      "expectedIdentical": true,
+      "bbox": null
+    }
+  ],
+  "errors": [],
+  "network": [
+    {
+      "view": "stage0",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED",
+      "expected": false
+    }
+  ]
+}

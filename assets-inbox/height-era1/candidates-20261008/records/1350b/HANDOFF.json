@@ -1,0 +1,96 @@
+{
+  "assets": [
+    {
+      "path": "/tmp/astra-height-era-1350b-20261008/native/body-03-registered.png",
+      "sha256": "7cc514bab7e5f50d3e89f51ed098a0b7f4a1cfac5a6079c8e629cddc9efbc416",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "rawToNativeResizes": 1,
+      "translation": [
+        -1,
+        -3
+      ]
+    },
+    {
+      "path": "/tmp/astra-height-era-1350b-20261008/native/boarded-01.png",
+      "sha256": "f3ae83d1c5b8300fd225afe7bc48da96b1c88ede533b9b1e0fe3f35dfbbc3790",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "rawToNativeResizes": 1,
+      "translation": [
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/astra-height-era-1350b-20261008/native/snow-02.png",
+      "sha256": "759e8605dabdc816e70d4cd958fd1a4c62b290ef836b3a28da67a8fef3acba30",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "rawToNativeResizes": 1,
+      "translation": [
+        0,
+        0
+      ]
+    }
+  ],
+  "body_manual_measurement": {
+    "door_leaf_height_native": 46,
+    "door_leaf_projected_width_native": 20,
+    "uncertainty_native": 2,
+    "ground_max_residual_native": 3,
+    "ground_manual_uncertainty_native": 2
+  },
+  "snow": {
+    "alphaWeightedRoofPercent": 75.68062334103946,
+    "alphaGE128RoofPercent": 76.09170305676855,
+    "alphaGT0RoofPercent": 89.65065502183405,
+    "alphaGT32RoofPercent": 82.03056768558952,
+    "outsideBodyAlphaGT32": 58,
+    "outsideDilation1": 41,
+    "outsideDilation2": 23,
+    "outsideDilation3": 9,
+    "outsideDilation4": 3
+  },
+  "status": "Parent static review confirmed body/boards registration and removal of copied golden thatch from snow02. Actual-game validation still required.",
+  "limitations": [
+    "Right eave snow tip visibly droops downward.",
+    "Snow alpha>32 outside body:58px; outside body dilation1/2/3/4:41/23/9/3px.",
+    "Manual roof ROI, native boundary uncertainty +/-2px.",
+    "Body ground alignment is approximate, not exact."
+  ],
+  "unchanged": "No repository code, installation, commit, DGX, or other owner files changed."
+}

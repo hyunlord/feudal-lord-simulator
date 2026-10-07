@@ -1,0 +1,137 @@
+{
+  "baseline": "fd2786b239b2fb01d307316e5eae669898f6de47",
+  "unchangedBundles": [
+    "wave42",
+    "wave15-season-migration",
+    "wave43-spring-nine",
+    "field-ridge-baseline",
+    "wave43-field-spring3",
+    "wave22-land-decals",
+    "wave22-region-textures",
+    "wave43-region-spring4",
+    "wave23-weather-shadows",
+    "rb-trade-world-72",
+    "wave7-seasonal-ground-old3",
+    "wave39-nat3-world",
+    "wave39-seasons-snow",
+    "wave43-spring-context",
+    "core-era-signs",
+    "lord-ledger",
+    "lord-estates",
+    "lord-negotiation",
+    "lord-region",
+    "core-world-fire",
+    "core-wave13-handcart",
+    "core-wave13-pasture-herds",
+    "core-wave13-pasture-herds-extension",
+    "core-wave42-log-stockpiles",
+    "core-collapsed-fence",
+    "core-pasture-wash",
+    "walker-pilot2",
+    "wet-paths",
+    "core-muster-field",
+    "height-final",
+    "height-doors2"
+  ],
+  "unchangedBodyRules": [
+    "wave20/rule/body-l0-1350",
+    "wave20/rule/body-l0-1400",
+    "wave20/rule/body-l1-1350",
+    "wave20/rule/body-l1-1400",
+    "wave20/rule/body-l2-1350",
+    "wave20/rule/body-l2-1400",
+    "wave20/rule/body-l3-1350",
+    "wave20/rule/body-l3-1400",
+    "wave20/rule/body-l4-1350",
+    "wave20/rule/body-l4-1400"
+  ],
+  "replacedBodyIds": [
+    "wave20/house_l1_1350_a-v1",
+    "wave20/house_l1_1350_b-v1",
+    "wave20/house_l1_1400_a-v1",
+    "wave20/house_l1_1400_b-v1"
+  ],
+  "unchangedOtherEraEntries": [
+    "wave20/house_l0_1350_a-v1",
+    "wave20/house_l0_1350_b-v1",
+    "wave20/house_l0_1400_a-v1",
+    "wave20/house_l0_1400_b-v1",
+    "wave20/house_l2_1350_a-v2",
+    "wave20/house_l2_1350_b-v2",
+    "wave20/house_l2_1400_a-v2",
+    "wave20/house_l2_1400_b-v2",
+    "wave20/house_l3_1350_a-v2",
+    "wave20/house_l3_1350_b-v2",
+    "wave20/house_l3_1400_a-v2",
+    "wave20/house_l3_1400_b-v2",
+    "wave20/house_l4_1350_a-v2",
+    "wave20/house_l4_1350_b-v2",
+    "wave20/house_l4_1400_a-v2",
+    "wave20/house_l4_1400_b-v2",
+    "wave20/boarded_l2_1350-v3",
+    "wave20/boarded_l2_1400-v3",
+    "wave20/boarded_l3_1350-v3",
+    "wave20/boarded_l3_1400-v3",
+    "wave20/boarded_l4_1350-v3",
+    "wave20/boarded_l4_1400-v3",
+    "wave20/roof_snow_l2_1350-v4",
+    "wave20/roof_snow_l2_1400-v4",
+    "wave20/roof_snow_l3_1350-v4",
+    "wave20/roof_snow_l3_1400-v4",
+    "wave20/roof_snow_l4_1350-v4",
+    "wave20/roof_snow_l4_1400-v4",
+    "wave20/reused-boarded_l0-v2",
+    "wave20/reused-roof_snow_l0-v2"
+  ],
+  "privateOverlays": [
+    {
+      "id": "height-era1/house_l1_1350_a-boarded-v2",
+      "targets": [
+        "wave20/house_l1_1350_a-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1350_a-snow-v2",
+      "targets": [
+        "wave20/house_l1_1350_a-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1350_b-boarded-v2",
+      "targets": [
+        "wave20/house_l1_1350_b-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1350_b-snow-v2",
+      "targets": [
+        "wave20/house_l1_1350_b-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1400_a-boarded-v2",
+      "targets": [
+        "wave20/house_l1_1400_a-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1400_a-snow-v2",
+      "targets": [
+        "wave20/house_l1_1400_a-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1400_b-boarded-v2",
+      "targets": [
+        "wave20/house_l1_1400_b-v1"
+      ]
+    },
+    {
+      "id": "height-era1/house_l1_1400_b-snow-v2",
+      "targets": [
+        "wave20/house_l1_1400_b-v1"
+      ]
+    }
+  ],
+  "pass": true
+}

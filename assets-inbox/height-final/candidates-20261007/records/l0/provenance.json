@@ -1,0 +1,70 @@
+{
+  "tool": "image_gen.imagegen built-in",
+  "mode": "precise-object-edit; transparent_background=true",
+  "model": "not returned",
+  "date": "2026-10-07",
+  "original_repo_source": "/tmp/astra-height-final/docs/asset-evidence/runtime-sources/buildings/historical-houses/house_l0-v3.png",
+  "original_repo_public": "/tmp/astra-height-final/public/assets/buildings/historical-houses/house_l0-v3.png",
+  "canonical_request": "/tmp/astra-height-final/docs/requests/render-human-scale-art-request.json",
+  "calls": [
+    {
+      "attempt": 1,
+      "owner": "herd_impl; output and exact prompt handed over",
+      "input": "references/original-source.png",
+      "prompt": "candidate-01-prompt.txt",
+      "saved_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a1110b-219d-7c02-99f9-f1f5c966e6c0/exec-70d41ed9-2cfc-4041-8a1a-5ba7fdea58fc.png"
+    },
+    {
+      "attempt": 2,
+      "input": "candidate-01-generated.png",
+      "prompt": "candidate-02-prompt.txt",
+      "saved_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a11098-22e1-72e2-a8e6-e07774d1bf7a/exec-0c8f681e-aee6-4162-a570-0b1e9cf9812a.png"
+    },
+    {
+      "attempt": 3,
+      "input": "candidate-02-generated.png",
+      "prompt": "candidate-03-prompt.txt",
+      "saved_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a11098-22e1-72e2-a8e6-e07774d1bf7a/exec-9ca17c33-2699-4feb-84e3-ebe2274b8e03.png"
+    }
+  ],
+  "derivative": {
+    "method": "Existing repository alpha-weighted resizeArea once from complete generated1254x1254 to148x148, then copy intact into transparent153x153 at(+1,+3). No body parts, painting, warping, rotation or nonuniform scaling.",
+    "source_to_native_scale_xy": [
+      0.11802232854864433,
+      0.11802232854864433
+    ],
+    "translate_native": [
+      1,
+      3
+    ],
+    "canvas": [
+      153,
+      153
+    ],
+    "world_px_per_native_px": 0.49957049486461247,
+    "ground_pivot_native": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "logical_footprint": [
+      1,
+      1
+    ],
+    "recommended_sampling_crop_xywh": [
+      0,
+      0,
+      153,
+      153
+    ],
+    "old_native_sampling_crop_xywh": [
+      20.985645933014354,
+      46.119617224880386,
+      112.73684210526316,
+      93.45933014354067
+    ],
+    "must_expand_crop": true,
+    "warning": "Do not retain old y46 crop or recalculate display scale from new total alpha height/width. New roof occupies y13. Metadata pivot unchanged; measured raster ground points have residual0,1,1native px.",
+    "implementation": "/tmp/astra-height-final/scripts/keyartDerivatives.ts:210 resizeArea, decodePng/encodePng; pattern reused from .omo/height-final/register-candidate.mjs; reproduction script register.mjs"
+  },
+  "measurement_plates": "Pillow crop/grid/nearest-neighbor inspection only; not final art editing. Final candidate art changed only by imagegen and repository resizeArea/padding."
+}

@@ -5,7 +5,7 @@ import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
 import { householdMembers } from "../src/population/householdMembers";
 import { OCCUPATION_BANDS, walkerLook, walkerLooks, walkerSheet, ELDER_BANDS } from "../src/render/walkerLook";
-import { walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
+import { walkerSheetManifest } from "../src/render/walkerArtManifest";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { withResidentWalkers } from "../src/render/presentation/residentWalkerState";
 import { absoluteDay, dayStartTick, isMarketDay, isResidentWalker, MARKET_DAY_OF_MONTH, RESIDENT_WALKER_CAP, residentWalkers, VISITOR_REACH,

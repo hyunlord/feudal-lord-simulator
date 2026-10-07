@@ -7,6 +7,7 @@ import { tileToScreen } from "./iso";
 import { drawWave7 } from "./wave7Art";
 import { drawWave9, wave9Art, wave9Meta, type Wave9Key } from "./wave9Art";
 import { WALKER_FIGURE_PX } from "./walkerComposer";
+import { petitionCrowdScale } from './storyCrowdScale';
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // UI-4 story props in the world, before any card:
@@ -63,7 +64,7 @@ export function petitionGathering(state: GameState): Building | null {
 export function drawStoryProps(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
   if (petitionGathering(state)?.id === building.id) {
     const at = door(building);
-    drawWave9(context, "event_crowd_manor_gate", at.sx, at.sy + 8, 0.55);
+    drawWave9(context, "event_crowd_manor_gate", at.sx, at.sy + 8, petitionCrowdScale());
     drawCell(context, "wk_petitioner_m", "NW", 0, at.sx - 22, at.sy + 18, storyWalkerScale("wk_petitioner_m"));
     drawCell(context, "wk_petitioner_f", "NE", 0, at.sx + 20, at.sy + 20, storyWalkerScale("wk_petitioner_f"));
   }

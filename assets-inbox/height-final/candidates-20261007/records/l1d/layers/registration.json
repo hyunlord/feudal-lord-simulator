@@ -1,0 +1,63 @@
+{
+  "bodyNative": "../house_l1_d-height-candidate-4-native.png",
+  "bodyUnchanged": true,
+  "tool": "image_gen.imagegen",
+  "model": "not returned",
+  "date": "2026-10-07",
+  "method": "Whole generated transparent layers only; existing resizeArea alpha-weighted registration and transparent padding. No painted pixel editing or component reconstruction.",
+  "layers": [
+    {
+      "name": "weathered",
+      "source": "weathered-02.png",
+      "size": [
+        134,
+        132
+      ],
+      "offset": [
+        2,
+        -4
+      ],
+      "prompt": "weathered-02-prompt.txt",
+      "notes": "First attempt retained opaque roof/door and is rejected; second sparse layer inspected over actual fixed body."
+    },
+    {
+      "name": "fresh",
+      "source": "fresh-01.png",
+      "size": [
+        134,
+        132
+      ],
+      "offset": [
+        2,
+        -4
+      ],
+      "prompt": "fresh-01-prompt.txt",
+      "notes": "Sparse repair highlights; slight generated jamb highlights require actual scene check."
+    },
+    {
+      "name": "snow",
+      "source": "snow-01.png",
+      "size": [
+        114,
+        110
+      ],
+      "offset": [
+        12,
+        -2
+      ],
+      "prompt": "snow-01-prompt.txt",
+      "notes": "Same whole-layer registration differs from body to correct generated footprint drift. Initial same-body transform spilled onto facade and is rejected. Final fit follows roof, repeated stripe character remains."
+    }
+  ],
+  "canvas": [
+    139,
+    139
+  ],
+  "pivot": [
+    71.66148325358851,
+    125.92025518341308
+  ],
+  "worldScale": 0.4986217267599071,
+  "status": "Offline candidate composite inspected, runtime state layers pending",
+  "opaqueRedPixelsAlphaAbove32": 0
+}

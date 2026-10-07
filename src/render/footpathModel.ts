@@ -14,8 +14,8 @@ import { landOf } from "../engine/land";
 //    piece: the top and bottom corners (NE + NW, SE + SW), the two other forks and the crossing are strip halves that
 //    meet at the cell centre (each half runs from its port to the centre, 8 UV px over it), an end is one half that
 //    fades out past the centre, and a lone cell a short stub along the NE axis fading at both ends. FOOTPATH_RULES.
-//  - Strengths: the pack's joins are clear only and it has no faint/muddy transitions, and the engine keeps no wear of a
-//    path past the year's count, so every path is clear (faint and muddy are not installed; engine handoff).
+//  - The base and junctions remain clear. RB-WET-PATHS blends warm-season muddy strips away from junctions using
+//    the existing visual weather curve (footpathWet.ts). Faint wear and winter muddy stages remain uninstalled.
 //  - Worn areas: the pack draws single tracks, and a town's walks to its well, market and church wear bands and patches
 //    several cells wide (a forest town's common: a 20 x 8 patch). Laid cell by cell, a patch is a lattice of crossing
 //    strips; so the picture draws the patch's centre lines — the cells kept by thinning the worn cells (Zhang-Suen, the
