@@ -2770,6 +2770,27 @@
             "scale"
           ],
           "additionalProperties": false
+        },
+        "heldAttachment": {
+          "type": "object",
+          "properties": {
+            "propId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "grip": {
+              "$ref": "#/$defs/point"
+            },
+            "restoreHandSize": {
+              "const": 3
+            }
+          },
+          "required": [
+            "propId",
+            "grip",
+            "restoreHandSize"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
