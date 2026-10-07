@@ -1,0 +1,223 @@
+{
+  "method": "Existing summer/winter campaign saves migrated through current codec; no authored state changes; codec migration may remove legacy wheat_farm markers. Target logging/sawmill IDs, positions and inventory are asserted identical.",
+  "scenes": [
+    {
+      "season": "summer",
+      "source": ".omo/log-stockpiles/source-inputs/summer.save.json",
+      "sourceSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "file": "states/summer.save.json",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "tick": 21000,
+      "seed": 1,
+      "homes": [
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {
+            "logs": 3
+          },
+          "selected": "core-log-stack-a-summer",
+          "anchor": {
+            "x": 337.6,
+            "y": 1449.92
+          }
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "sawmill",
+          "tx": 42,
+          "ty": 39,
+          "inventory": {
+            "logs": 1,
+            "timber": 1
+          },
+          "selected": "core-log-stack-a-summer",
+          "anchor": {
+            "x": 113.6,
+            "y": 1305.92
+          }
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "source": ".omo/log-stockpiles/source-inputs/winter.save.json",
+      "sourceSHA256": "d02b73f6b034023118332367026f82bf4975534be5554efcae959ba940d92c0e",
+      "file": "states/winter.save.json",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "tick": 23450,
+      "seed": 1,
+      "homes": [
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {
+            "logs": 2
+          },
+          "selected": "core-log-stack-a-winter",
+          "anchor": {
+            "x": 337.6,
+            "y": 1449.92
+          }
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "sawmill",
+          "tx": 42,
+          "ty": 39,
+          "inventory": {
+            "logs": 0,
+            "timber": 1
+          },
+          "selected": null,
+          "anchor": {
+            "x": 113.6,
+            "y": 1305.92
+          }
+        }
+      ]
+    },
+    {
+      "season": "winter-seed5",
+      "source": "tests/fixtures/money/seed5-stable-2ba96a7.json.gz",
+      "sourceSHA256": "c5d9846157bcb1a57e38399de65b345ed43fb2f5259e6027ba80f0532c0b1380",
+      "file": "states/winter-seed5.save.json",
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "tick": 527422,
+      "seed": 5,
+      "homes": [
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 9,
+          "inventory": {
+            "logs": 20
+          },
+          "selected": "core-log-stack-a-winter",
+          "anchor": {
+            "x": 1329.6,
+            "y": 953.92
+          }
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 44,
+          "ty": 7,
+          "inventory": {
+            "logs": 0,
+            "timber": 4
+          },
+          "selected": null,
+          "anchor": {
+            "x": 1201.6,
+            "y": 825.92
+          }
+        },
+        {
+          "id": "construction-site-000057",
+          "kind": "sawmill",
+          "tx": 44,
+          "ty": 12,
+          "inventory": {
+            "logs": 1,
+            "timber": 4
+          },
+          "selected": "core-log-stack-b-winter",
+          "anchor": {
+            "x": 1041.6,
+            "y": 905.92
+          }
+        },
+        {
+          "id": "construction-site-000064",
+          "kind": "logging_camp",
+          "tx": 37,
+          "ty": 2,
+          "inventory": {
+            "logs": 12
+          },
+          "selected": "core-log-stack-a-winter",
+          "anchor": {
+            "x": 1137.6,
+            "y": 633.92
+          }
+        }
+      ]
+    },
+    {
+      "season": "spring-seed5",
+      "source": "tests/fixtures/storage-recovery/seed5-504000.json.gz",
+      "sourceSHA256": "a80d8ed089aae8a24d43e13ef282081904e53691272e5f5a1113eb3ac8255f86",
+      "file": "states/spring-seed5.save.json",
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "tick": 504000,
+      "seed": 5,
+      "homes": [
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 9,
+          "inventory": {
+            "logs": 20
+          },
+          "selected": "core-log-stack-a-summer",
+          "anchor": {
+            "x": 1329.6,
+            "y": 953.92
+          }
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 44,
+          "ty": 7,
+          "inventory": {
+            "logs": 1,
+            "timber": 19
+          },
+          "selected": "core-log-stack-a-summer",
+          "anchor": {
+            "x": 1201.6,
+            "y": 825.92
+          }
+        },
+        {
+          "id": "construction-site-000057",
+          "kind": "sawmill",
+          "tx": 44,
+          "ty": 12,
+          "inventory": {
+            "logs": 1,
+            "timber": 19
+          },
+          "selected": "core-log-stack-b-summer",
+          "anchor": {
+            "x": 1041.6,
+            "y": 905.92
+          }
+        },
+        {
+          "id": "construction-site-000064",
+          "kind": "logging_camp",
+          "tx": 61,
+          "ty": 11,
+          "inventory": {
+            "logs": 20
+          },
+          "selected": "core-log-stack-a-summer",
+          "anchor": {
+            "x": 1617.6,
+            "y": 1161.92
+          }
+        }
+      ]
+    }
+  ]
+}

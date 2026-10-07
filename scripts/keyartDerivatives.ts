@@ -95,10 +95,13 @@ export const WAVE44_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WA
 export const WAVE40_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE40_IMAGES)
   .map(([id, image]) => ({ id: `wave40_${id}`, source: image.source, url: image.url, format: "jpeg-reencoded" as const }));
 /** EVENT-ART: the event illustrations (960 × 540 received JPEGs, re-encoded smaller) — only those of the registry's
- *  entries (`shippedEventArtIds`: an entry the engine adds ships its picture; the other of the 200 stay in assets-inbox).
- *  They load when their card or chip shows (never at start; distBudget's own on-demand category). */
-export const EVENT_ART_DERIVATIVES: readonly KeyartDerivative[] = shippedEventArtIds(EVENT_ART_IMAGES)
-  .map(id => { const image = EVENT_ART_IMAGES[id as keyof typeof EVENT_ART_IMAGES]; return { id: `event_${id}`, source: image.source, url: image.path, format: "jpeg-reencoded" as const }; });
+ *  entries (`shippedEventArtIds`: an entry the engine adds ships its picture; the rest of the pack stays in assets-inbox).
+ *  They load when their card or chip shows (never at start; distBudget's own on-demand category). `known`: any pack's
+ *  manifest (key = the event id), `ids`: the live entries (EVA-AUTO: a mod's entry and picture ship by this alone). */
+export function eventArtDerivatives(known: Readonly<Record<string, Readonly<{ path: string; source: string }>>>, ids?: readonly string[]): readonly KeyartDerivative[] {
+  return shippedEventArtIds(known, ids).map(id => ({ id: `event_${id}`, source: known[id]!.source, url: known[id]!.path, format: "jpeg-reencoded" as const }));
+}
+export const EVENT_ART_DERIVATIVES: readonly KeyartDerivative[] = eventArtDerivatives(EVENT_ART_IMAGES);
 /** CHRON-1: each pool portrait twice — at 256 px (biography) and 96 px (cards, lists). */
 export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(PORTRAIT_IMAGES).flatMap(([id, image]) => [
   { id, source: image.source, url: image.url, format: "portrait" as const },

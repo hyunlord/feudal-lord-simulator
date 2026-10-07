@@ -27,7 +27,8 @@
 
 ## 필수 조건
 - 바뀐 것에 걸린 시험: 3,939/3,939 — DGX `fc7b197`(`engine-LMR2E-changed-fc7b197`, 가벼운 칸, 본선 3841159b를 합친 머리)
-- typecheck — Mac. ui-geometry: 화면 파일을 바꾸지 않았다(렌더 요청서만).
+- typecheck — Mac.
+- ui-geometry: 2,262칸 실패 0(기준선 대비 새 실패 0) — DGX(`engine-LMR2E-geo-6b1334c`, `6b1334c`). 화면 파일은 바꾸지 않았지만, 단어표를 내보내느라 고친 `*.ko.ts`가 기하 입력이라 다시 쟀다.
 
 ## 다음 후보
 - EXT-1 → EXT-2(달력·화폐·시작·끝 연도·시대 구분을 팩 설정으로, 박힌 연도 목록) → EXT-3 → EXT-3b, LM-E9c와 번갈아.

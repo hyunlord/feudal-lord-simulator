@@ -1,0 +1,123 @@
+{
+ "promise-due": {
+  "seed": 1,
+  "tick": 63000,
+  "year": 1315,
+  "season": 3,
+  "promise": "promise-4",
+  "term": "debt_after_inheritance",
+  "amount": 261,
+  "left": 1000,
+  "statuses": [
+   "promise-1 kept",
+   "promise-2 kept",
+   "promise-3 broken",
+   "promise-4 open",
+   "promise-5 open",
+   "promise-6 open"
+  ]
+ },
+ "promise-due-today": {
+  "seed": 1,
+  "tick": 64000,
+  "year": 1316,
+  "season": 0,
+  "promise": "promise-4",
+  "term": "debt_after_inheritance",
+  "amount": 261,
+  "left": 0,
+  "statuses": [
+   "promise-1 kept",
+   "promise-2 kept",
+   "promise-3 broken",
+   "promise-4 open",
+   "promise-5 open",
+   "promise-6 open"
+  ]
+ },
+ "suit-evidence": {
+  "seed": 5,
+  "tick": 54000,
+  "year": 1313,
+  "season": 2,
+  "suit": "suit-1",
+  "stage": "evidence",
+  "patron": null,
+  "verdict": null,
+  "enforcements": 0,
+  "hold": null,
+  "evidence": [
+   "deed",
+   "witnesses",
+   "charter"
+  ]
+ },
+ "suit-patronage": {
+  "seed": 5,
+  "tick": 55000,
+  "year": 1313,
+  "season": 3,
+  "suit": "suit-1",
+  "stage": "patronage",
+  "patron": null,
+  "verdict": null,
+  "enforcements": 0,
+  "hold": null,
+  "evidence": [
+   "deed",
+   "witnesses",
+   "charter"
+  ]
+ },
+ "suit-hearing": {
+  "seed": 5,
+  "tick": 56000,
+  "year": 1314,
+  "season": 0,
+  "suit": "suit-1",
+  "stage": "hearing",
+  "patron": null,
+  "verdict": null,
+  "enforcements": 0,
+  "hold": null,
+  "evidence": [
+   "deed",
+   "witnesses",
+   "charter"
+  ]
+ },
+ "suit-enforcing": {
+  "seed": 5,
+  "tick": 57000,
+  "year": 1314,
+  "season": 1,
+  "suit": "suit-1",
+  "stage": "enforcing",
+  "patron": null,
+  "verdict": "plaintiff",
+  "enforcements": 0,
+  "hold": 75,
+  "evidence": [
+   "deed",
+   "witnesses",
+   "charter"
+  ]
+ },
+ "suit-closed": {
+  "seed": 5,
+  "tick": 57177,
+  "year": 1314,
+  "season": 1,
+  "suit": "suit-1",
+  "stage": "closed",
+  "patron": null,
+  "verdict": "plaintiff",
+  "enforcements": 3,
+  "hold": 35,
+  "evidence": [
+   "deed",
+   "witnesses",
+   "charter"
+  ]
+ }
+}

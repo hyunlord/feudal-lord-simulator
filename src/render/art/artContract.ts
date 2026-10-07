@@ -1,6 +1,7 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
-export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
-  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle';
+export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo' | 'walker-transport'
+  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle'
+  | 'ui-frame' | 'ui-image';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
 export type ArtImage = { readonly url: string; readonly width: number; readonly height: number };
@@ -64,7 +65,19 @@ export type SpringWorldEntry = EntryBase & {
   readonly season: 'spring'; readonly group: string; readonly geometry: ArtGeometry;
   readonly opacity: number; readonly minZoom: number;
 };
-export type GroundPropEntry = SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
+export type StockPileEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'stock-pile'; readonly resource: string;
+  readonly geometry: ArtGeometry; readonly season: ArtSeason;
+};
+export type FarmGroundPropEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'farm-prop'; readonly baseId: string;
+  readonly staticCluster: true; readonly animation: false; readonly geometry: ArtGeometry;
+};
+export type FacilityGroundPropEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'facility-ground';
+  readonly buildingKinds: readonly string[]; readonly geometry: ArtGeometry;
+};
+export type GroundPropEntry = FacilityGroundPropEntry | StockPileEntry | FarmGroundPropEntry | SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
 export type WalkerCargoEntry = EntryBase & {
   readonly kind: 'walker-cargo'; readonly cargoKinds: readonly string[];
   readonly frames: readonly ArtFrame[]; readonly facing: ArtFacing; readonly scale: number; readonly allowMirror: false;
@@ -72,6 +85,15 @@ export type WalkerCargoEntry = EntryBase & {
   | { readonly role: 'cargo'; readonly attachment: { readonly anchor: 'grip'; readonly pivot: ArtPoint } }
   | { readonly role: 'walker'; readonly attachment: { readonly anchor: 'foot'; readonly pivot: ArtPoint } }
 );
+export type WalkerTransportEntry = EntryBase & {
+  readonly kind: 'walker-transport'; readonly group: string; readonly facing: 'ne' | 'se' | 'sw' | 'nw';
+  readonly frameSelection: 'gait'; readonly scale: number; readonly referenceFigureHeight: number; readonly allowMirror: false;
+  /** World offset from actor foot at referenceFigureHeight, independent of body step lift. */
+  readonly mountOffset: ArtPoint;
+  /** Cell-local cargo contact and useful cargo width, independent of transparent canvas padding. */
+  readonly payloadAnchor: ArtPoint; readonly payloadWidth: number;
+  readonly frames: readonly { readonly gaitFrame: 0 | 1; readonly sourceRect: ArtRect; readonly pivot: ArtPoint }[];
+};
 /** Source-pixel endpoints; connectivity masks are selector facts, never port coordinates. */
 export type LandStagePorts = {
   readonly SW?: ArtPoint; readonly NW?: ArtPoint; readonly SE?: ArtPoint; readonly NE?: ArtPoint;
@@ -109,6 +131,23 @@ export type RegionalMapEntry = EntryBase & {
   readonly coordinateSpace: { readonly width: number; readonly height: number };
   readonly slots: readonly (ArtPoint & { readonly id: string; readonly landType: string })[];
 };
+/** Source-pixel edges, named so no side order can be misread. */
+export type ArtInsets = { readonly top: number; readonly right: number; readonly bottom: number; readonly left: number };
+/** A 9-slice screen frame: corners keep their shape, edges and centre stretch; slice values come from the records, never guessed. */
+export type UiFrameEntry = EntryBase & {
+  readonly kind: 'ui-frame'; readonly slice: ArtInsets;
+  /** CSS pixels per source pixel for the drawn edges. */
+  readonly scale: number;
+  /** Source pixels from each image edge to where content may sit. */
+  readonly contentInset: ArtInsets;
+  readonly centre: 'fill' | 'empty'; readonly repeat: 'stretch' | 'round';
+};
+/** A fixed-size screen picture or icon, shown only at its declared CSS widths (height keeps the source aspect). */
+export type UiImageEntry = EntryBase & {
+  readonly kind: 'ui-image'; readonly cssWidths: readonly number[];
+  /** Same picture at other source widths (e.g. a 2x copy); each is its own ui-image entry. */
+  readonly derivatives: readonly { readonly width: number; readonly assetId: string }[];
+};
 export type SeasonVariantEntry = EntryBase & {
   readonly kind: 'season-variant';
   readonly base: { readonly namespace: 'world-sprite' | 'zone-prop'; readonly key: string };
@@ -132,8 +171,9 @@ export type WeatherShadowEntry = EntryBase & {
 export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEntry;
 export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
 export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
-export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
-  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry;
+export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | WalkerTransportEntry | LandStageEntry
+  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry
+  | UiFrameEntry | UiImageEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =
   | { readonly op: 'eq'; readonly field: string; readonly value: ArtScalar }

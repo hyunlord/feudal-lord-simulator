@@ -1,3 +1,6 @@
+import { drawWashPool } from './washPoolDraw';
+import { worldFireBrigadeIds } from "./worldFireProps";
+import { WORLD_FIRE_ART } from "./worldFireArt";
 import { drawSpringWorldProp } from "./springWorldProps";
 import { unitEdgeKey } from "../world/boundary/wallBaseline";
 import { causeBuildingAlpha } from "./causeMapOverlay";
@@ -93,6 +96,7 @@ export function drawObjectRenderItems(
   const transform = context.getTransform?.();
   // NAT-2 QA-008: the queue's world blits draw from the mip level of their device size (spriteMipCache.ts).
   if (transform !== undefined) beginSpriteMipFrame(context, Math.hypot(transform.a, transform.b));
+  const fireBrigades = viewMode === "normal" ? worldFireBrigadeIds(input.objectRenderItems) : undefined;
   for (const item of queue) {
     probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
@@ -117,6 +121,11 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls
       if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
+      continue;
+    }
+    if (item.kind === "wash_pool") { if (viewMode === "normal") drawWashPool(context, item.prop, input.zoom); continue; }
+    if (item.kind === "world_fire") {
+      if (viewMode === "normal") WORLD_FIRE_ART.draw(context, item.prop, input.nowMs ?? 0);
       continue;
     }
     if (item.kind === "spring_prop") {
@@ -176,6 +185,7 @@ export function drawObjectRenderItems(
       dpr: input.dpr,
       viewport: input.viewport,
       objectRenderItems: [item],
+      ...(fireBrigades === undefined ? {} : { fireBrigades }),
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,

@@ -1,0 +1,30 @@
+{
+  "id": "pasture/wash_pool-v1",
+  "width": 192,
+  "height": 128,
+  "refs": [
+    "farmstead_a-v1.png"
+  ],
+  "prompt": "ROLE module. Isolated medieval southern England SHEEP WASH POOL 192x128 transparentRGBA game sprite,2:1 SW isometric. Match attached project warm weathered natural colors and handpainted broad brushwork. One shallow small irregular oval basin of subdued grey-green water, low broad rough stone lip around three sides, open shallow muddy entry ramp on front side for sheep to walk in. Water not brightblue. A tiny ripple broad enough to read, sparse natural stone blocks 12-20px. NO sheep people buildings hoses pumps taps modern masonry. Groundcontact bottomcenter,8px clear margins,softupperleftlight contactAO only,no longshadow,no terrain tile or text.",
+  "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-c5976574-2ee0-422b-a220-2e5dad646137.png",
+  "generatedAt": "2026-09-25T15:28:36.050Z",
+  "outputPath": "/tmp/astra-wave3-candidates-20260926/pasture/wash_pool-v1.png",
+  "nativeSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    294,
+    274,
+    950,
+    455
+  ],
+  "pivot": [
+    96,
+    120
+  ],
+  "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+  "status": "candidate",
+  "sourceSha256": "7ab013b8cc0df2566383dd3280f68019261fa950f4c1cc108bfde7a382f22d1c",
+  "runtimeSha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f"
+}

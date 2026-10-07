@@ -14,9 +14,6 @@ export const DECISION_COPY = {
   demand: "요구: 시장권(상인 감독 아래 장을 열 권리)",
   choose: (label: string) => `${label} — 고르기`,
   later: "나중에 정하기",
-  predictedHeading: "두 계절 뒤 예측",
-  /** NAT-2 (QA-009): no forecast (an answer the engine does not predict yet) is no line, not "두 계절 뒤 예측 ·" alone. */
-  predictedLine: (numbers: string): string | null => numbers.trim() === "" ? null : `두 계절 뒤 예측 · ${numbers}`,
   predicted: (now: Readonly<Record<string, number>>, after: Readonly<Record<string, number>>) =>
     Object.keys(after).map(key => `${METRIC_NAMES[key] ?? key} ${value(key, after[key] ?? 0)}(지금 ${value(key, now[key] ?? 0)})`).join(" · "),
   famine: {

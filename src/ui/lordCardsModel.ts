@@ -17,6 +17,7 @@ import { lordMode, lordRequests } from "../engine/townAgency";
 import type { LordRequest } from "../engine/townAgency.types";
 import type { GameAction } from "../state/gameStore.types";
 import { calendarDays } from "./gameTimeCopy.ko";
+import { perState } from "./perState";
 import { HOME_PETITION_COPY, LORD_CARDS_COPY, type PetitionParties } from "./lordCardsCopy.ko";
 import { PETITION_COPY } from "./petitionCopy.ko";
 import { HOME_PETITION_ART, PRECEDENT_ART, type Wave44ImageId } from "./wave44Art";
@@ -42,11 +43,12 @@ export type HomePetitionView = Readonly<{
 
 const isHomeKind = (kind: EstatePetition["kind"]): kind is HomePetitionKind => Object.hasOwn(HOME_PETITION_KINDS, kind);
 
-/** The home petitions waiting for the lord, oldest first (none outside lord mode). */
+/** The home petitions waiting for the lord and still answerable, oldest first (none outside lord mode). DEC-CARD: one past
+ * its deadline only waits for the season to lapse it (refused) — the engine refuses an answer to it, so it is not offered. */
 export function openHomePetitions(state: GameState): readonly (EstatePetition & { readonly kind: HomePetitionKind })[] {
   if (!lordMode(state)) return [];
   return lordEstatePetitions(state).filter((petition): petition is EstatePetition & { readonly kind: HomePetitionKind } =>
-    petition.estateId === HOME_ESTATE_ID && isHomeKind(petition.kind));
+    petition.estateId === HOME_ESTATE_ID && isHomeKind(petition.kind) && state.tick <= petition.deadline);
 }
 
 const factionName = (state: GameState, id: string): string | null => {
@@ -54,7 +56,7 @@ const factionName = (state: GameState, id: string): string | null => {
   return view === undefined ? null : factionDisplayName(view.id, view.name);
 };
 
-function parties(state: GameState, petition: Pick<EstatePetition, "party">): PetitionParties {
+export function parties(state: GameState, petition: Pick<EstatePetition, "party">): PetitionParties {
   return {
     party: (petition.party === undefined ? null : factionName(state, petition.party)) ?? PETITION_COPY.relationNames.neighbour_1!,
     firstHouse: factionName(state, "merchant_house_1") ?? "", secondHouse: factionName(state, "merchant_house_2") ?? "",
@@ -99,15 +101,16 @@ export function courtLine(state: GameState): string {
 }
 
 /** The answer a settled kind's precedent repeats (the lord's last two answers alike), or null. */
-function settledAnswer(state: GameState, kind: HomePetitionKind): boolean | null {
+export function settledHomeAnswer(state: GameState, kind: HomePetitionKind): boolean | null {
   const answers = stewardshipOf(state).petitions.filter(entry => entry.estateId === HOME_ESTATE_ID && entry.kind === kind && entry.decidedBy === "lord"
     && (entry.status === "granted" || entry.status === "refused"));
   const [last, before] = [answers.at(-1), answers.at(-2)];
   return last !== undefined && before !== undefined && last.status === before.status ? last.status === "granted" : null;
 }
 
-/** The first home petition waiting for the lord as its card shows it, or null (none, or not lord mode). */
-export function homePetitionView(state: GameState): HomePetitionView | null {
+/** The first home petition waiting for the lord as its card shows it, or null (none, or not lord mode). Once per state
+ * (`perState`): the story's chips and the card read it on every render. */
+export const homePetitionView = perState((state: GameState): HomePetitionView | null => {
   const petition = openHomePetitions(state)[0];
   if (petition === undefined) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
@@ -119,7 +122,7 @@ export function homePetitionView(state: GameState): HomePetitionView | null {
       line: `${LORD_CARDS_COPY.treasury(treasury)} · ${relationsLine(relations)}` };
   };
   const recurring = stewardshipOf(state).rules.recurring === true;
-  const settled = settledAnswer(state, petition.kind);
+  const settled = settledHomeAnswer(state, petition.kind);
   return {
     petitionId: petition.id, kind: petition.kind, art: HOME_PETITION_ART[petition.kind], title: copy.title,
     demand: copy.demand(petition.amount, named), court: courtLine(state),
@@ -128,7 +131,7 @@ export function homePetitionView(state: GameState): HomePetitionView | null {
     recurring, options: [option(true), option(false)],
     arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(lordHouse(state).name),
   };
-}
+});
 
 export type PrecedentView = Readonly<{ key: string; art: Wave44ImageId; court: string; recurring: boolean; items: readonly string[] }>;
 

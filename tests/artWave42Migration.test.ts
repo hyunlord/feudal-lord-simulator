@@ -28,7 +28,7 @@ test('preserves all 36 metadata records exactly against the pre-migration digest
 });
 
 test('records independently verified source and runtime hashes for every migrated image', () => {
-  const entries = ART_REGISTRY.entries('land-stage');
+  const entries = ART_REGISTRY.entries('land-stage').filter(entry => entry.id in WAVE42_STAGES);
   assert.equal(entries.length, 36);
   for (const entry of entries) {
     assert.equal(sha(readFileSync(entry.provenance.inboxFile)), entry.provenance.sourceSha256, entry.id);

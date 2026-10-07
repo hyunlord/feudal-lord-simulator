@@ -7,11 +7,12 @@ import { BALANCE } from "../src/content/balanceConfig";
 import { CLOTH_BALANCE } from "../src/content/clothConfig";
 import { BREW_ALE_CRAFT_ID, townAle } from "../src/engine/ale";
 import type { GameState } from "../src/engine/engine.types";
+import { initialPolitics } from "../src/engine/politics";
 import { woolInKindPerSeason, woolLevyAmount } from "../src/engine/war";
 import { decodeSave } from "../src/save/saveCodec";
 import { farmsteadCropModel } from "../src/ui/farmsteadCropModel";
 import { LedgerDrawer } from "../src/ui/hud/HudShell";
-import { petitionPresentation } from "../src/ui/petitionPresentation";
+import { petitionCard } from "../src/ui/decisionCard/families/petitionCard";
 import { storeInspectorModel } from "../src/ui/storeInspectorModel";
 import { TOWN_ALE_COPY } from "../src/ui/townAleCopy.ko";
 import { townAleView } from "../src/ui/townAleModel";
@@ -74,13 +75,15 @@ test("barley waits for the malt kiln: before the market town the choice is disab
 
 test("the wool levy's in-kind answer says what a season takes: the town's stored fleece first, the rest in coin", () => {
   const town = load("palisade-construction");
-  const petition = { id: "petition-test", defId: "wool_payment", petitioner: "crown", subject: "wool_payment", createdTick: town.tick, status: "open" } as never;
+  // DEC-CARD: the in-kind answer's card (the petition open on the town) says it among what follows.
+  const open = (state: GameState): GameState => ({ ...state, politics: { ...(state.politics ?? initialPolitics(state)),
+    petitions: [{ id: "wool_payment@1", defId: "wool_payment", petitioner: "crown", arrivedTick: state.tick }] } });
   const perSeason = woolInKindPerSeason(woolLevyAmount(town));
-  const line = (state: GameState) => petitionPresentation(state, petition).line("accept");
-  assert.ok(line(town).includes(`창고에 양털이 없어 계절마다 ${moneyShort(perSeason)} 모두 현금`), line(town));
+  const line = (state: GameState) => petitionCard(open(state))!.card.choices.find(choice => choice.id === "accept")!.later.join(" ");
+  assert.ok(line(town).includes(`양털이 없어, 한 몫 ${moneyShort(perSeason)}`), line(town));
   // Fleece for half the share in a storehouse (C5 CL-9: the levy takes it from the stores).
   const half = Math.floor(perSeason / CLOTH_BALANCE.fleeceValue / 2);
   const store = town.buildings.find(building => building.kind === "storehouse")!;
   const stocked = { ...town, buildings: town.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, fleece: half } } : building) } as GameState;
-  assert.ok(line(stocked).includes(`계절마다 창고 양털 ${half}뭉치(${moneyShort(half * CLOTH_BALANCE.fleeceValue)}) + 현금 ${moneyShort(perSeason - half * CLOTH_BALANCE.fleeceValue)}`), line(stocked));
+  assert.ok(line(stocked).includes(`한 몫은 창고 양털 ${half}뭉치(${moneyShort(half * CLOTH_BALANCE.fleeceValue)})와 현금 ${moneyShort(perSeason - half * CLOTH_BALANCE.fleeceValue)}`), line(stocked));
 });

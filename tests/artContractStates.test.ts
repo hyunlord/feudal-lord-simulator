@@ -8,6 +8,7 @@ import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 import { createArtRegistry } from '../src/render/art/artRegistry';
 import { admitSceneState, staleStateKeys } from '../scripts/sceneState';
 import { decodeSave, encodeSave } from '../src/save/saveCodec';
+import { WAVE42_STAGES } from '../src/render/wave42StageManifest.generated';
 import { ART_REGISTRY } from '../src/render/art/wave42Registry';
 
 const wave20: unknown = JSON.parse(readFileSync(new URL('./fixtures/art-house-bundle.json', import.meta.url), 'utf8'));
@@ -15,7 +16,7 @@ test('prepared scenes cover all 36 land assets and all 32 new house assets at bo
   const prepared = prepareArtContractStates(DEFAULT_GAME_STATE, wave20);
   assert.equal(Object.keys(prepared.states).length, 6);
   assert.equal(prepared.views.length, 20);
-  const expected = [...ART_REGISTRY.entries('land-stage'), ...createArtRegistry([wave20]).entries()]
+  const expected = [...ART_REGISTRY.entries('land-stage').filter(entry => entry.id in WAVE42_STAGES), ...createArtRegistry([wave20]).entries()]
     .map(entry => `/${entry.image.url}`);
   for (const zoom of [1, 0.6]) {
     const urls = new Set(prepared.views.filter(view => view.zoom === zoom).flatMap(view => view.expectedRequests));

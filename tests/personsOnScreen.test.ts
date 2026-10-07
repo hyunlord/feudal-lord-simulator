@@ -71,9 +71,12 @@ test("UI-5 petitioners: the petition's two or three heads by name (PERSON-0 PS-4
   const rows = petitionerRows(town, { petitionerIds: heads.map(person => person.id) });
   assert.deepEqual(rows.map(row => row.id), heads.map(person => person.id));
   assert.deepEqual(petitionerRows(town, {}), []);
-  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: { petitionId: "market_rights@1", options: [],
-    presentation: petitionPresentation(town, { id: "market_rights@1", defId: "market_charter", petitioner: "merchants", arrivedTick: town.tick }) }, onRespond: () => undefined,
-    onLater: () => undefined, petitioners: rows, onPerson: () => undefined }));
+  // DEC-CARD: the petitioners' chips are the heavy card's `extra`, between the stake and the answers.
+  const presentation = petitionPresentation(town, { id: "market_rights@1", defId: "market_charter", petitioner: "merchants", arrivedTick: town.tick });
+  const card = { family: "petition", subjectId: "market_rights@1", title: presentation.title, court: null, from: null, situation: presentation.demand, stake: presentation.demand,
+    deadline: null, illustration: null, choices: [] };
+  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: { card, defId: "market_charter", petitionId: "market_rights@1", from: presentation.from, heirs: [] },
+    onRespond: () => undefined, onLater: () => undefined, petitioners: rows, onPerson: () => undefined }));
   assert.match(markup, new RegExp(PERSONS_COPY.petitionersHeading));
   for (const row of rows) assert.match(markup, new RegExp(`data-person="${row.id}"`));
 });

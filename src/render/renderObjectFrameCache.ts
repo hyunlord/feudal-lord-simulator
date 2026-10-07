@@ -1,3 +1,6 @@
+import { withWashPoolProps } from './washPoolDraw';
+import { compareObjectRenderItems, mergeObjectRenderItems } from "./objectRenderMerge";
+import { withWorldFireProps } from "./worldFireProps";
 import { withSpringWorldProps } from "./springWorldProps";
 import type { Walker } from "../agents/walker.types";
 import type { GameState } from "../engine/engine.types";
@@ -15,7 +18,7 @@ import type { ZoneLayer } from "./zoneLayer";
 import { groundBoundaryScene } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { farmProps, type FarmProp } from "./farmProps";
-import { hurdleAssetKey } from "./hurdleArt";
+import { withYardHurdles } from "./yardHurdleItems";
 import { warProps, type WarProp } from "./warWorldProps";
 import { withVillageLife } from "./villageLifeDraw";
 import { withPlagueProps } from "./plagueWorldProps";
@@ -48,7 +51,7 @@ export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
   const baseItems = withDoorSigns(withLandFallow(withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd, NAT-5 fallow, LM-R1 door signs
-  const staticItems = withSpringWorldProps(withTradeWorldProps(baseItems, input.state, input.range), input.state, input.range);
+  const staticItems = withWorldFireProps(withSpringWorldProps(withTradeWorldProps(withWashPoolProps(baseItems, input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
@@ -171,28 +174,6 @@ const withoutCoverOnCrops = (items: readonly RenderQueueItem[], layer: ZoneLayer
   return kept;
 };
 
-/**
- * Yard hurdles (C1e) join the queue while curved ground is on; like zone props they come from the ground scene, whose
- * key covers the buildings, roads and wall the yards are cut from. Each panel sorts by the middle of the edge it
- * covers, so a panel behind a house draws before it and one in front after it.
- */
-const yardHurdleItems = new WeakMap<object, readonly ObjectRenderItem[]>();
-const withYardHurdles = (items: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
-  if (!boundaryV2Enabled()) return items;
-  const props = groundBoundaryScene(input.state).yardProps;
-  if (props.hurdles.length === 0) return items;
-  let all = yardHurdleItems.get(props);
-  if (all === undefined) {
-    all = props.hurdles.map(piece => ({ kind: "zone_prop" as const, id: piece.id, depth: piece.depth, anchorTx: Math.round(piece.anchor.x),
-      prop: { kind: hurdleAssetKey(piece), x: piece.anchor.x, y: piece.anchor.y,
-        flip: piece.mirror, scale: 1, id: piece.id, depth: piece.depth } }))
-      .sort(compareObjectRenderItems);
-    yardHurdleItems.set(props, all);
-  }
-  const visible = all.filter(item => item.kind === "zone_prop" && tileIsVisibleInRange(Math.round(item.prop.x), Math.round(item.prop.y), input.range));
-  return visible.length === 0 ? items : mergeObjectRenderItems(items, visible);
-};
-
 const walkerRenderItemsForFrame = (
   walkers: readonly Walker[],
   range: TileRange,
@@ -210,43 +191,6 @@ const walkerRenderItemsForFrame = (
     });
   }
   return items;
-};
-
-const mergeObjectRenderItems = (
-  left: readonly RenderQueueItem[],
-  right: readonly ObjectRenderItem[],
-): readonly RenderQueueItem[] => {
-  const merged: RenderQueueItem[] = [];
-  let leftIndex = 0;
-  let rightIndex = 0;
-  while (leftIndex < left.length && rightIndex < right.length) {
-    const leftItem = left[leftIndex];
-    const rightItem = right[rightIndex];
-    if (leftItem === undefined || rightItem === undefined) break;
-    if (compareObjectRenderItems(leftItem, rightItem) <= 0) {
-      merged.push(leftItem);
-      leftIndex += 1;
-    } else {
-      merged.push(rightItem);
-      rightIndex += 1;
-    }
-  }
-  for (; leftIndex < left.length; leftIndex += 1) {
-    const item = left[leftIndex];
-    if (item !== undefined) merged.push(item);
-  }
-  for (; rightIndex < right.length; rightIndex += 1) {
-    const item = right[rightIndex];
-    if (item !== undefined) merged.push(item);
-  }
-  return merged;
-};
-
-const compareObjectRenderItems = (left: RenderQueueItem, right: RenderQueueItem): number => {
-  const depthDifference = left.depth - right.depth;
-  if (depthDifference !== 0) return depthDifference;
-  const anchorDifference = left.anchorTx - right.anchorTx;
-  return anchorDifference !== 0 ? anchorDifference : left.id.localeCompare(right.id);
 };
 
 const objectRenderCacheKey = (input: ObjectRenderFrameInput): string =>

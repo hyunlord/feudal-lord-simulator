@@ -1,0 +1,230 @@
+{
+  "id": "herd/sheep_cluster_moving_a-v1",
+  "file": "assets/herd/sheep_cluster_moving_a-v1.png",
+  "cell": [
+    128,
+    96
+  ],
+  "pivot": [
+    64,
+    63
+  ],
+  "sheet": [
+    4,
+    1
+  ],
+  "role": "object",
+  "status": "candidate",
+  "generationRecords": [
+    {
+      "prompt": "Create a transparent RGBA hand-painted medieval game sheep direction reference sheet. Image 1 style reference only. Four equal columns in ONE horizontal row, same SINGLE cream wool medieval sheep standing, no horns. Orthographic isometric camera elevated 30 degrees. Column1 facing NE upper-right head farther than rump, col2 SE lower-right head nearer, col3 SW lower-left head nearer,col4 NW upper-left head farther. Show clearly 4 stout brown lower legs extended beneath white wool body. SAME animal and proportions all4, no scenery no shadows no text no labels. Each sheep centered separate, generous transparent gutters. Fine warm painted project style but strong compact readable silhouette for48x40cells. Transparentbackground. Do NOT mirror directions; render true four views.",
+      "rawFile": "raw/small-animals/sheep-base.png",
+      "referenceImages": [
+        "references/sheep_flock-v1.png"
+      ]
+    },
+    {
+      "prompt": "Edit this exact four-sheep reference sheet. Keep ALL wool bodies, heads, ears, tails, scale, positions, four directional camera views and transparent background identical. Change ONLY the dark lower legs below the wool: alternate the walking pose, near front leg swings forward several pixels and near hind leg back, far legs opposite. Make a clearly separated step, no legs added, no body bobbing, no head movement. Four columns remain same. This is second animation frame, not new sheep.",
+      "rawFile": "raw/small-animals/sheep-step.png",
+      "referenceImages": [
+        "raw/small-animals/sheep-base.png"
+      ]
+    }
+  ],
+  "processing": {
+    "mode": "deterministic source-cell composition; no new image generation",
+    "source": "assets/animal_walk/sheep_single-v1.png",
+    "sourceCells": [
+      {
+        "direction": "ne",
+        "sourceCell": [
+          0,
+          0
+        ],
+        "members": [
+          {
+            "i": 0,
+            "x": 12,
+            "y": 7,
+            "foot": [
+              36,
+              43
+            ]
+          },
+          {
+            "i": 1,
+            "x": 64,
+            "y": 13,
+            "foot": [
+              88,
+              49
+            ]
+          },
+          {
+            "i": 2,
+            "x": 27,
+            "y": 35,
+            "foot": [
+              51,
+              71
+            ]
+          },
+          {
+            "i": 3,
+            "x": 70,
+            "y": 48,
+            "foot": [
+              94,
+              84
+            ]
+          }
+        ]
+      },
+      {
+        "direction": "se",
+        "sourceCell": [
+          1,
+          0
+        ],
+        "members": [
+          {
+            "i": 0,
+            "x": 12,
+            "y": 7,
+            "foot": [
+              36,
+              43
+            ]
+          },
+          {
+            "i": 1,
+            "x": 64,
+            "y": 13,
+            "foot": [
+              88,
+              49
+            ]
+          },
+          {
+            "i": 2,
+            "x": 27,
+            "y": 35,
+            "foot": [
+              51,
+              71
+            ]
+          },
+          {
+            "i": 3,
+            "x": 70,
+            "y": 48,
+            "foot": [
+              94,
+              84
+            ]
+          }
+        ]
+      },
+      {
+        "direction": "sw",
+        "sourceCell": [
+          2,
+          0
+        ],
+        "members": [
+          {
+            "i": 0,
+            "x": 12,
+            "y": 7,
+            "foot": [
+              36,
+              43
+            ]
+          },
+          {
+            "i": 1,
+            "x": 64,
+            "y": 13,
+            "foot": [
+              88,
+              49
+            ]
+          },
+          {
+            "i": 2,
+            "x": 27,
+            "y": 35,
+            "foot": [
+              51,
+              71
+            ]
+          },
+          {
+            "i": 3,
+            "x": 70,
+            "y": 48,
+            "foot": [
+              94,
+              84
+            ]
+          }
+        ]
+      },
+      {
+        "direction": "nw",
+        "sourceCell": [
+          3,
+          0
+        ],
+        "members": [
+          {
+            "i": 0,
+            "x": 12,
+            "y": 7,
+            "foot": [
+              36,
+              43
+            ]
+          },
+          {
+            "i": 1,
+            "x": 64,
+            "y": 13,
+            "foot": [
+              88,
+              49
+            ]
+          },
+          {
+            "i": 2,
+            "x": 27,
+            "y": 35,
+            "foot": [
+              51,
+              71
+            ]
+          },
+          {
+            "i": 3,
+            "x": 70,
+            "y": 48,
+            "foot": [
+              94,
+              84
+            ]
+          }
+        ]
+      }
+    ],
+    "depthSort": "ascending visible ground anchor y then x",
+    "resize": false,
+    "mirror": false,
+    "ground": false
+  },
+  "qa": {
+    "rgba": true,
+    "memberCount": 4,
+    "staticCluster": true,
+    "animation": false
+  }
+}
