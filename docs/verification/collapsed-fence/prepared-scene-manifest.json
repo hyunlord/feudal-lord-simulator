@@ -1,0 +1,143 @@
+{
+  "kind": "prepared-renderer-scene",
+  "naturalGameplayReachability": false,
+  "base": "56aae1a6",
+  "source": "tests/fixtures/distributor-entry-seed5.json.gz",
+  "sourceSHA256": "74c6704eb011e00a4b34320a4de678831b7220080ad2c857ee0eebcdda18246a",
+  "migratedStateSHA256": "e97ddb3f1d792833493006955bc4f737ebcb551bf778900650b76d194c99ffd0",
+  "method": "loadSaveFile migration; two existing vacant houses explicitly assigned abandonedTick; seasonal presentation tick explicitly chosen. No objects, yard geometry, engine rules, stock or resident changes. This is not advanceTick gameplay.",
+  "scenes": [
+    {
+      "season": "summer",
+      "file": "states/summer.save.json",
+      "tick": 1201500,
+      "calendar": {
+        "season": 1,
+        "year": 1600,
+        "fraction": 0.5,
+        "seconds": 120150
+      },
+      "saveSHA256": "06d5ae5ad3db4323fa8fcf18946021f046be772607e55d4b039be1b473f62c77",
+      "stateSHA256": "1701b65f67ee32c37e5e1dbb9d014aa3ffb6382d0082c4fc23005cd7566e778e",
+      "cameraTile": [
+        45,
+        11.75
+      ],
+      "zooms": [
+        1,
+        0.6,
+        3
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "bindings": [
+        {
+          "panelId": "yard-hurdle:house-44-42-0:straight:45,12",
+          "buildingId": "house-44-42-0",
+          "tx": 44.5,
+          "ty": 11.75
+        },
+        {
+          "panelId": "yard-hurdle:house-46-42-0:straight:46,12",
+          "buildingId": "house-46-42-0",
+          "tx": 45.5,
+          "ty": 11.75
+        }
+      ],
+      "mutations": [
+        {
+          "path": "/tick",
+          "before": 1200000,
+          "after": 1201500,
+          "purpose": "fixed seasonal renderer specimen; not simulated elapsed time"
+        },
+        {
+          "path": "/houses/2/abandonedTick",
+          "owner": "house-44-42-0",
+          "before": {
+            "absent": true
+          },
+          "after": 1200000,
+          "purpose": "prepared renderer abandonment condition, not natural gameplay"
+        },
+        {
+          "path": "/houses/3/abandonedTick",
+          "owner": "house-46-42-0",
+          "before": {
+            "absent": true
+          },
+          "after": 1200000,
+          "purpose": "prepared renderer abandonment condition, not natural gameplay"
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "file": "states/winter.save.json",
+      "tick": 1203500,
+      "calendar": {
+        "season": 3,
+        "year": 1600,
+        "fraction": 0.5,
+        "seconds": 120350
+      },
+      "saveSHA256": "ff4b50074e41d9870038443080f07ea52415827812a89fd46c8f63d24d520577",
+      "stateSHA256": "eb4dde88ebc42c8d007b94daf5e2adc8b2ae6f792e7ebbaab926c0007e8e87d4",
+      "cameraTile": [
+        45,
+        11.75
+      ],
+      "zooms": [
+        1,
+        0.6,
+        3
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "bindings": [
+        {
+          "panelId": "yard-hurdle:house-44-42-0:straight:45,12",
+          "buildingId": "house-44-42-0",
+          "tx": 44.5,
+          "ty": 11.75
+        },
+        {
+          "panelId": "yard-hurdle:house-46-42-0:straight:46,12",
+          "buildingId": "house-46-42-0",
+          "tx": 45.5,
+          "ty": 11.75
+        }
+      ],
+      "mutations": [
+        {
+          "path": "/tick",
+          "before": 1200000,
+          "after": 1203500,
+          "purpose": "fixed seasonal renderer specimen; not simulated elapsed time"
+        },
+        {
+          "path": "/houses/2/abandonedTick",
+          "owner": "house-44-42-0",
+          "before": {
+            "absent": true
+          },
+          "after": 1200000,
+          "purpose": "prepared renderer abandonment condition, not natural gameplay"
+        },
+        {
+          "path": "/houses/3/abandonedTick",
+          "owner": "house-46-42-0",
+          "before": {
+            "absent": true
+          },
+          "after": 1200000,
+          "purpose": "prepared renderer abandonment condition, not natural gameplay"
+        }
+      ]
+    }
+  ]
+}
