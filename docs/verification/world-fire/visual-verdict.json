@@ -1,0 +1,18 @@
+{
+  "reviewer": "render B executing agent",
+  "independentBlindReview": false,
+  "sameSaveCameraPairs": 10,
+  "acceptedRuntimeHead": "ee3f024975f4022a055b7ade7135a28aa7ecc561",
+  "observations": [
+    "summer/winter group on safe foreground ground",
+    "roof no longer hides response group",
+    "group only during doused actual record",
+    "all four flame cells consumed",
+    "zoom0.6 individual bucket action not reliably legible"
+  ],
+  "limitations": [
+    "controlled fixture, not natural fire incidence",
+    "static response group, not simulated individual transport",
+    "no measured performance or arbitrary scene occlusion guarantee"
+  ]
+}

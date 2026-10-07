@@ -49,8 +49,8 @@ export function vacantHouseBoards(level: number, variant: boolean, plagueVacant:
   return plagueVacant && level >= 1 && level <= 3 ? "plague_shut" : "boarded";
 }
 /** `props` false (NAT-2: the zoomed-out status view) leaves out the door piles and story props, a speck there. */
-export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building, props = true, drawn: ContractHouseDraw | null = null): void {
-  if (building.kind === "house") drawHouseEventOverlays(context, state, building);
+export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building, props = true, drawn: ContractHouseDraw | null = null, fireBrigade = false): void {
+  if (building.kind === "house") drawHouseEventOverlays(context, state, building, fireBrigade);
   if (building.kind === "house" && building.houseLot === undefined) {
     const level = buildBuildingVisualState(building, state.houses).houseLevel;
     const contract = contractHouseArt.drawLayers(context, drawn);
@@ -99,8 +99,8 @@ function drawPairHouseLayers(context: CanvasRenderingContext2D, state: GameState
   drawWave26HouseLayers(context, wave30, meta.alphaBounds, houseCompoundSpriteRect(building, meta), { state: houseStateLayerNow(state, house), boarded, snow, snowAlpha });
 }
 
-function drawHouseEventOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
-  const burning = state.events?.burning.find(entry => entry.buildingId === building.id);
+function drawHouseEventOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building, fireBrigade: boolean): void {
+  const burning = state.events?.burning.find(entry => entry.buildingId === building.id && entry.ignitedTick <= state.tick && state.tick < entry.outTick);
   const house = state.houses.find(candidate => candidate.buildingId === building.id);
   const burnt = burning === undefined && house?.burntTick !== undefined;
   if (burning === undefined && !burnt) return;
@@ -117,7 +117,7 @@ function drawHouseEventOverlays(context: CanvasRenderingContext2D, state: GameSt
   const now = typeof performance === "undefined" ? 0 : performance.now();
   const top = rect === null ? base.sy - 48 : rect.y + rect.height * 0.3;
   drawWave9(context, "fx_black_smoke_column_sheet", rect === null ? base.sx : rect.x + rect.width / 2, top, 0.55, Math.floor(now / SMOKE_FRAME_MS));
-  if (burning?.doused !== true) return;
+  if (burning?.doused !== true || fireBrigade) return;
   // The household fights it with water: two buckets set down toward the nearest well.
   const well = state.buildings.filter(candidate => candidate.kind === "well")
     .sort((a, b) => Math.abs(a.tx - building.tx) + Math.abs(a.ty - building.ty) - Math.abs(b.tx - building.tx) - Math.abs(b.ty - building.ty))[0];
