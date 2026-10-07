@@ -6,8 +6,11 @@
 import type { Petitioner } from "./chapterConfig";
 import { BISHOP_SURNAMES, EARL_SURNAMES, EARLDOM_TITLES, NEIGHBOUR_SURNAMES, SEE_NAMES } from "./gentryNames";
 
-export type FactionKind = "overlord" | "crown" | "neighbour" | "church" | "merchant_house" | "town" | "commons";
-export type FactionId = "overlord" | "crown" | "neighbour_1" | "neighbour_2" | "bishop" | "merchant_house_1" | "merchant_house_2" | "town" | "commons";
+/** EXT-1: the core pack's faction kinds and ids as data — the types are taken from these lists (the registry checks saves). */
+export const FACTION_KINDS = ["overlord", "crown", "neighbour", "church", "merchant_house", "town", "commons"] as const;
+export type FactionKind = (typeof FACTION_KINDS)[number];
+export const FACTION_IDS = ["overlord", "crown", "neighbour_1", "neighbour_2", "bishop", "merchant_house_1", "merchant_house_2", "town", "commons"] as const;
+export type FactionId = (typeof FACTION_IDS)[number];
 
 export interface FactionDef {
   readonly id: FactionId;
@@ -16,18 +19,27 @@ export interface FactionDef {
   readonly startRelation: number;
   /** FX-2: `outside` leaders are the faction's own people (aging, dying, succeeded); `town` leaders are household heads. */
   readonly leaders: "outside" | "town";
+  /** CODE-1a (decision FX6-2; EXT-1, was FACTION_PORTRAIT_POOLS): the portrait pool 3 factions its leaders and heirs come from. */
+  readonly portraitPools: readonly string[];
+  /** FIX-9 (EXT-1, was FACTION_LEADER_MIN_AGE): the youngest its leader may be. */
+  readonly leaderMinAge: number;
 }
 
+/**
+ * The pools: the Crown's are its officers (sheriff, escheator, herald: the pool paints no crowns); the town community's
+ * its mayor, council clerk and guild; the commons' their rural and community representatives. The ages: a bishop is a
+ * man of 40; an earl, a neighbouring lord, a merchant's or the commons' head 25; the town community's 30.
+ */
 export const FACTION_DEFS: readonly FactionDef[] = [
-  { id: "overlord", kind: "overlord", startRelation: 20, leaders: "outside" },
-  { id: "crown", kind: "crown", startRelation: 10, leaders: "outside" },
-  { id: "neighbour_1", kind: "neighbour", startRelation: 0, leaders: "outside" },
-  { id: "neighbour_2", kind: "neighbour", startRelation: 0, leaders: "outside" },
-  { id: "bishop", kind: "church", startRelation: 10, leaders: "outside" },
-  { id: "merchant_house_1", kind: "merchant_house", startRelation: 0, leaders: "town" },
-  { id: "merchant_house_2", kind: "merchant_house", startRelation: 0, leaders: "town" },
-  { id: "town", kind: "town", startRelation: 10, leaders: "town" },
-  { id: "commons", kind: "commons", startRelation: 10, leaders: "town" },
+  { id: "overlord", kind: "overlord", startRelation: 20, leaders: "outside", portraitPools: ["earl_house"], leaderMinAge: 25 },
+  { id: "crown", kind: "crown", startRelation: 10, leaders: "outside", portraitPools: ["crown"], leaderMinAge: 25 },
+  { id: "neighbour_1", kind: "neighbour", startRelation: 0, leaders: "outside", portraitPools: ["neighbor_a"], leaderMinAge: 25 },
+  { id: "neighbour_2", kind: "neighbour", startRelation: 0, leaders: "outside", portraitPools: ["neighbor_b"], leaderMinAge: 25 },
+  { id: "bishop", kind: "church", startRelation: 10, leaders: "outside", portraitPools: ["diocese"], leaderMinAge: 40 },
+  { id: "merchant_house_1", kind: "merchant_house", startRelation: 0, leaders: "town", portraitPools: ["merchant_a"], leaderMinAge: 25 },
+  { id: "merchant_house_2", kind: "merchant_house", startRelation: 0, leaders: "town", portraitPools: ["merchant_b"], leaderMinAge: 25 },
+  { id: "town", kind: "town", startRelation: 10, leaders: "town", portraitPools: ["town", "town_council", "guild"], leaderMinAge: 30 },
+  { id: "commons", kind: "commons", startRelation: 10, leaders: "town", portraitPools: ["rural_community", "community"], leaderMinAge: 25 },
 ];
 export const FACTION_DEF_BY_ID: ReadonlyMap<FactionId, FactionDef> = new Map(FACTION_DEFS.map(def => [def.id, def]));
 
@@ -54,10 +66,7 @@ export { BISHOP_SURNAMES };
  * drawn from. The Crown's are its officers (sheriff, escheator, herald: the pool paints no crowns); the town community's
  * its mayor, council clerk and guild; the commons' their rural and community representatives.
  */
-export const FACTION_PORTRAIT_POOLS: Readonly<Record<FactionId, readonly string[]>> = {
-  overlord: ["earl_house"], crown: ["crown"], neighbour_1: ["neighbor_a"], neighbour_2: ["neighbor_b"], bishop: ["diocese"],
-  merchant_house_1: ["merchant_a"], merchant_house_2: ["merchant_b"], town: ["town", "town_council", "guild"], commons: ["rural_community", "community"],
-};
+export const FACTION_PORTRAIT_POOLS: Readonly<Record<FactionId, readonly string[]>> = Object.fromEntries(FACTION_DEFS.map(def => [def.id, def.portraitPools])) as Record<FactionId, readonly string[]>;
 /**
  * PERSON-1a (spec docs/design/lineage.md LN-5, LN-7): the noble factions whose leaders are a family — the heir is the
  * leader's son — and the lineage portrait set their heirs are drawn from (the set's first generation is pool 3's).
@@ -71,9 +80,7 @@ export const FAMILY_FACTIONS: ReadonlySet<FactionId> = new Set(["overlord", "nei
  * head 25; the town community's 30. The Crown's leader is the reigning king (history's age); its officer's portrait is
  * drawn at 25 at least.
  */
-export const FACTION_LEADER_MIN_AGE: Readonly<Record<FactionId, number>> = {
-  overlord: 25, crown: 25, neighbour_1: 25, neighbour_2: 25, bishop: 40, merchant_house_1: 25, merchant_house_2: 25, town: 30, commons: 25,
-};
+export const FACTION_LEADER_MIN_AGE: Readonly<Record<FactionId, number>> = Object.fromEntries(FACTION_DEFS.map(def => [def.id, def.leaderMinAge])) as Record<FactionId, number>;
 
 /** CODE-1a: the pool-3 ranks a leader prefers (the earl before his heir, the bishop before his deputy). */
 export const FACTION_HEAD_RANKS: readonly string[] = ["earl", "sheriff", "escheator", "herald", "knight_lord", "bishop", "house_head", "mayor_candidate",

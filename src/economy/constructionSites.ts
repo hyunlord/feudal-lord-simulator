@@ -53,33 +53,8 @@ export type CreateStoneWallConstructionSiteInput = CreatePalisadeConstructionSit
 export const CONSTRUCTION = {
   MAX_BUILDERS_PER_SITE: 3,
   MIN_VISIBLE_TICKS: 60,
-  REQUIRED_BUILDER_TICKS: {
-    house: 240,
-    well: 200,
-    logging_camp: 400,
-    sawmill: 600,
-    mill: 600,
-    storehouse: 800,
-    granary: 800,
-    chapel: 600,
-    wheat_farm: 500,
-    farmstead: 400,
-    quarry: 700,
-    masonry: 600,
-    market: 700,
-    church: 900,
-    keep: 1200,
-    // C4 (AL-3)
-    malt_kiln: 500,
-    // C5 (CL-2…CL-7)
-    pastoral_farm: 400,
-    weaver_house: 500,
-    fulling_mill: 800,
-    dyehouse: 600,
-    tenter_yard: 400,
-    // FIX-11 (11): the manor house is pre-placed; it is never built by players or bots. 0 ticks as a sentinel.
-    manor_house: 0,
-  },
+  // EXT-1: each kind's builder-ticks are on its definition (`builderTicks`); this view keeps the old name.
+  REQUIRED_BUILDER_TICKS: Object.fromEntries(Object.values(BUILDING_CONFIG_BY_KIND).map(definition => [definition.kind, definition.builderTicks])) as Record<BuildingKind, number>,
 } as const satisfies {
   readonly MAX_BUILDERS_PER_SITE: number;
   readonly MIN_VISIBLE_TICKS: number;

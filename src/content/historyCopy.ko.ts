@@ -116,21 +116,27 @@ const DEATH_CAUSES: Readonly<Record<string, string>> = {
 /** LM-E1: the estate's policies, the town's actors, a project's name. */
 const ESTATE_POLICY_KO: Readonly<Record<string, string>> = { growth: "성장", revenue: "세입", stability: "안정", defence: "방어" };
 // LM-E3: the negotiation's words — the tiers and the terms.
-const TIER_KO: Readonly<Record<string, string>> = { impossible: "불가능", unlikely: "불리", close: "박빙", likely: "유력", almost_certain: "거의 확실" };
-const TERM_KO: Readonly<Record<string, string>> = { cash: "계약금", pension: "연금", right_piece: "권리 조각", political_support: "정치적 지원",
+/** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
+export const TIER_KO: Readonly<Record<string, string>> = { impossible: "불가능", unlikely: "불리", close: "박빙", likely: "유력", almost_certain: "거의 확실" };
+/** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
+export const TERM_KO: Readonly<Record<string, string>> = { cash: "계약금", pension: "연금", right_piece: "권리 조각", political_support: "정치적 지원",
   debt_assumption: "채무 인수", consent: "혼인 동의", inheritance_non_infringement: "상속 기대권 불침해", residence: "배우자 거주", land_use: "토지 사용수익",
   wardship: "후견 합의", jointure: "과부산", debt_after_inheritance: "상속 뒤 빚 갚기" };
 // LM-E2: the estates' words — holders, pieces, a claim's basis, a suit's stages.
-const HOLDER_KO: Readonly<Record<string, string>> = { lord: "영주", overlord: "상위 영주", crown: "국왕", merchants: "상인들", townsfolk: "주민들",
+/** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
+export const HOLDER_KO: Readonly<Record<string, string>> = { lord: "영주", overlord: "상위 영주", crown: "국왕", merchants: "상인들", townsfolk: "주민들",
   neighbour_1: "첫째 이웃 영주", neighbour_2: "둘째 이웃 영주", bishop: "주교" };
 const holderWord = (holder: string) => HOLDER_KO[holder] ?? (holder.startsWith("person:") ? "옛 가문의 친족" : holder.startsWith("estate:") ? "이웃 영주" : holder);
-const PIECE_KO: Readonly<Record<string, string>> = { land_rent: "토지 지대", manor_court: "장원 법정", mill: "방앗간 사용료", market: "시장 좌판세",
+/** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
+export const PIECE_KO: Readonly<Record<string, string>> = { land_rent: "토지 지대", manor_court: "장원 법정", mill: "방앗간 사용료", market: "시장 좌판세",
   tolls: "통행세", fishery: "어업권", advowson: "성직자 추천권", hunting: "사냥권" };
 const pieceWord = (piece: string, estate: string) => piece === "" ? (estate === "" ? "영지" : "영지 전체") : PIECE_KO[piece.slice(piece.lastIndexOf(":") + 1)] ?? piece;
-const CLAIM_BASIS_KO: Readonly<Record<string, string>> = { inheritance: "상속", marriage: "혼인", purchase_deed: "매입 문서", grant: "하사", old_possession: "오래된 점유" };
+/** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
+export const CLAIM_BASIS_KO: Readonly<Record<string, string>> = { inheritance: "상속", marriage: "혼인", purchase_deed: "매입 문서", grant: "하사", old_possession: "오래된 점유" };
 const basisWord = (basis: string) => CLAIM_BASIS_KO[basis] ?? basis;
 const ESTATE_ROLE_KO: Readonly<Record<string, string>> = { head: "이웃 영주", steward: "청지기", kin: "이웃 가문" };
-const SUIT_STAGE_KO: Readonly<Record<string, string>> = { evidence: "증거", patronage: "후원", hearing: "심리", enforcing: "점유 집행" };
+/** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
+export const SUIT_STAGE_KO: Readonly<Record<string, string>> = { evidence: "증거", patronage: "후원", hearing: "심리", enforcing: "점유 집행" };
 const ACTOR_KO: Readonly<Record<string, string>> = { households: "가구들", merchants: "상인 가문", guild: "길드", community: "공동체", church: "교회" };
 const buildingWord = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
 const projectWord = (what: string) => what === "road" ? "길" : what.startsWith("zone:") ? "구역" : what === "rebuild_house" ? "집 재건"

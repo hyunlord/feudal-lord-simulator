@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "astra-HANDCART-gate-final-1714f9f",
- "commit": "1714f9f386056ed58b03f59dcef05aed380aba19",
+ "run": "engine-EXTLMR-geo5-9a70d70",
+ "commit": "9a70d703a6de29a6b655e7e655714368c7a1fa37",
  "dirty": false,
- "inputs": 2141,
- "inputHash": "4ddbc0247cde542fa196e6ff2a0b53be9112fed276e4bd3c7275a933c35f727f",
- "measuredAt": "2026-10-07T05:33:58.909Z",
- "report": "docs/verification/uiaudit1/geometry/astra-HANDCART-gate-final-1714f9f/geometry.json",
+ "inputs": 2238,
+ "inputHash": "094ddbfb3933acee0696037a18e709c67168140ad1bc73140e0ff3dcb010016a",
+ "measuredAt": "2026-10-07T06:26:37.275Z",
+ "report": "docs/verification/uiaudit1/geometry/engine-EXTLMR-geo5-9a70d70/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,9 +24,9 @@
    "extreme"
   ]
  },
- "rows": 4,
- "conditions": 80,
- "measured": 80,
+ "rows": 10,
+ "conditions": 200,
+ "measured": 200,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
@@ -68,7 +68,37 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "hud.event-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "map.selection.house": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.records": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.record-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.factions": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry-hold": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
