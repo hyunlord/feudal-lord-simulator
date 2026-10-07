@@ -9,6 +9,7 @@ import type {
 } from "./treeLayout";
 
 export type ObjectRenderItem =
+  | { readonly kind: "world_fire"; readonly id: string; readonly prop: import("./worldFireArt").WorldFireProp; readonly depth: number; readonly anchorTx: number }
   | { readonly kind: "spring_prop"; readonly id: string; readonly prop: import("./springWorldProps").SpringWorldProp; readonly depth: number; readonly anchorTx: number }
   | { readonly kind: "trade_prop"; readonly id: string; readonly prop: import("./tradeWorldGround").TradeWorldProp; readonly depth: number; readonly anchorTx: number }
   | {

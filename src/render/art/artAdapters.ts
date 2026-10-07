@@ -1,3 +1,4 @@
+import { walkerTransportPlacement } from './walkerTransportPlacement';
 import type { ArtEntry, ArtFrame, ArtPoint, ArtRect, LandStageEntry } from './artContract';
 import type { ArtRegistry } from './artRegistry';
 import { createArtImageLoader, type ArtImageEnvironment } from './artImageLoader';
@@ -9,6 +10,8 @@ export type ArtPlacementInput = {
   readonly at: ArtPoint;
   /** Explicit animation time from the consumer. No wall clock or simulation facts are invented here. */
   readonly elapsedMs?: number;
+  readonly gaitFrame?: 0 | 1;
+  readonly figureHeight?: number;
   readonly grip?: ArtPoint;
   readonly body?: { readonly bodyId: string; readonly sourceRect: ArtRect; readonly targetRect: ArtRect };
 };
@@ -59,6 +62,11 @@ export function createArtAdapters(registry: ArtRegistry, environment?: ArtImageE
       case 'state-overlay': {
         if (input.body === undefined || !entry.targetBodyIds.includes(input.body.bodyId)) throw new ArtAdapterError('Overlay requires its declared body geometry');
         return { type: 'blit', sourceRect: input.body.sourceRect, targetRect: input.body.targetRect };
+      }
+      case 'walker-transport': {
+        if (input.gaitFrame === undefined || input.figureHeight === undefined) throw new ArtAdapterError('Transport requires gait frame and figure height');
+        const { sourceRect, targetRect } = walkerTransportPlacement(entry, input.at, input.gaitFrame, input.figureHeight);
+        return { type: 'blit', sourceRect, targetRect };
       }
       case 'walker-cargo': {
         if (input.elapsedMs === undefined) throw new ArtAdapterError('Walker frames require explicit elapsedMs');

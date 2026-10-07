@@ -66,21 +66,34 @@ heavy_take_slot() { # <base> <run> <what> [gate|experiment]
       for t in $(live "$gq" "$ticket"); do ahead+=("${t#*-}"); done
       if [ "${#ahead[@]}" -eq 0 ]; then slots=("$HEAVY_SLOTS"); for n in $(seq 1 $((HEAVY_SLOTS - 1))); do slots+=("$n"); done; fi
     else
-      # Experiments: never while a gate waits, never the reserved last slot, and among experiments a slot is taken
-      # only when no run ahead could take it (a ticket of an older copy of this file is empty and counts as 2).
+      # Experiments: never while a gate waits, never the reserved last slot, one at a time per session (the run name's
+      # first part: engine, engineB, render, astra, infra, trunk), and sessions take turns: of the sessions that have
+      # none running, the one served longest ago goes next, with its earliest run (decision RR21). A ticket of an older
+      # copy of this file (empty) keeps first come first served among the tickets before it and takes no turn here
+      # (it waits only for the tickets ahead of it, so a turn given to it could wait forever).
       gates_waiting=$(live "$gq" | wc -l)
-      for t in $(live "$eq" "$ticket"); do
-        ahead+=("${t#*-}")
-        read -r cap 2> /dev/null < "$eq/$t"; [[ ${cap:-} =~ ^[1-9][0-9]?$ ]] || cap=2
-        [ "$cap" -gt "$above" ] && above=$cap
+      local me=${run%%-*} top=$((HEAVY_SLOTS > 1 ? HEAVY_SLOTS - 1 : 1)) busy=" " r w s seen=" " next="" next_t="" next_age="" age waiting=""
+      for n in $(seq 1 "$HEAVY_SLOTS"); do
+        heavy__held "$HEAVY_DIR/heavy.$n.lock" || continue
+        IFS=$'\t' read -r r _ w < "$HEAVY_DIR/heavy.$n.info" 2> /dev/null || continue
+        case "$w" in "[gate]"*) ;; *) busy="$busy${r%%-*} " ;; esac
       done
-      local top=$((HEAVY_SLOTS > 1 ? HEAVY_SLOTS - 1 : 1))
-      if [ "$gates_waiting" -eq 0 ] && [ "$above" -lt "$top" ]; then for n in $(seq $((above + 1)) "$top"); do slots+=("$n"); done; fi
+      for t in $(live "$eq"); do
+        r=${t#*-}; s=${r%%-*}; waiting="$waiting $s"
+        [ "$eq/$t" != "$ticket" ] && ahead+=("$r")
+        [ -s "$eq/$t" ] || continue                              # an older copy's ticket: no turn
+        case "$busy" in *" $s "*) continue ;; esac              # that session has an experiment running
+        case "$seen" in *" $s "*) continue ;; esac; seen="$seen$s "   # each session's earliest ticket only
+        age=$(stat -c %Y "$HEAVY_DIR/served/$s" 2> /dev/null || echo 0)
+        if [ -z "$next_t" ] || [ "$age" -lt "$next_age" ]; then next=$s; next_t=$t; next_age=$age; fi
+      done
+      if [ "$gates_waiting" -eq 0 ] && [ "$eq/$next_t" = "$ticket" ]; then for n in $(seq 1 "$top"); do slots+=("$n"); done; fi
     fi
     for n in "${slots[@]}"; do
       exec 5> "$HEAVY_DIR/heavy.$n.lock"
       if flock -n 5; then
         printf '%s\t%s\t%s\n' "$run" "$now" "[$class] $what" > "$HEAVY_DIR/heavy.$n.info"
+        [ "$class" = experiment ] && mkdir -p "$HEAVY_DIR/served" && touch "$HEAVY_DIR/served/${run%%-*}"
         echo "== heavy slot $n/$HEAVY_SLOTS ($class line)"
         exec 6>&-; rm -f "$ticket"
         return 0
@@ -88,10 +101,16 @@ heavy_take_slot() { # <base> <run> <what> [gate|experiment]
       exec 5>&-
     done
     place=$(( ${#ahead[@]} + 1 ))
-    state="$place|$gates_waiting|$(heavy__running --names | tr '\n' ' ')|${ahead[*]:-}"
+    state="$place|$gates_waiting|${next:-}|$(heavy__running --names | tr '\n' ' ')|${ahead[*]:-}"
     if [ "$state" != "$last" ] || [ $((now - last_at)) -ge 600 ]; then
       if [ "$class" = gate ]; then echo "== waiting for a heavy slot (gate line, every slot busy): number $place among gates"
-      else echo "== waiting for a heavy slot (experiment line: slots 1-$((HEAVY_SLOTS > 1 ? HEAVY_SLOTS - 1 : 1)), slot $HEAVY_SLOTS kept for gates$([ "$gates_waiting" -gt 0 ] && echo ", $gates_waiting gate(s) go first")): number $place in line"; fi
+      else
+        echo "== waiting for a heavy slot (experiment line: slots 1-$((HEAVY_SLOTS > 1 ? HEAVY_SLOTS - 1 : 1)), slot $HEAVY_SLOTS kept for gates$([ "$gates_waiting" -gt 0 ] && echo ", $gates_waiting gate(s) go first")): number $place by arrival"
+        local mine="" counts
+        [[ "$busy" == *" $me "* ]] && mine=" ($me already has one running: one at a time)"
+        counts=$(printf '%s\n' $waiting | sort | uniq -c | awk '{printf "%s %s, ", $2, $1}' | sed 's/, $//')
+        echo "   turns by session — waiting: $counts; running:${busy% }; next: ${next:-none}$mine"
+      fi
       heavy__running | sed 's/^/   running /'
       [ "${#ahead[@]}" -gt 0 ] && echo "   ahead in line: ${ahead[*]}"
       last=$state; last_at=$now

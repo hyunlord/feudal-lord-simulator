@@ -1,0 +1,26 @@
+✔ fire brigade selection uses actual active facts and calendar seasons, without an event id whitelist (1.175917ms)
+✔ brigade paintings keep one ground pivot and calibrated adult size across seasons (0.93ms)
+✔ flame animation repeats four native cells without moving its ground anchor (0.482542ms)
+✔ actual burning record deterministically anchors flame on house and reserves the whole brigade span (4.618042ms)
+✔ no invented fire before ignition or after expiry at tick 0 (0.227083ms)
+✔ no invented fire before ignition or after expiry at tick 9 (0.143208ms)
+✔ no invented fire before ignition or after expiry at tick 50 (0.09075ms)
+✔ no invented fire before ignition or after expiry at tick 51 (0.094ms)
+✔ non-doused and no-well records retain flames but never invent a brigade (0.357625ms)
+✔ no safe space retains fallback eligibility and refuses water, trees, occupied cells (5.353083ms)
+✔ unavailable image leaves original queue untouched, including ordinary no-fire frames (0.48475ms)
+✔ all brigade support rejects a wall between well-side placement and household (1.3615ms)
+✔ seven-person groups are capped at five without changing residents (0.790833ms)
+✔ decoded images choose seasonal whole groups and draw one unmirrored authored rectangle (0.781375ms)
+✔ load failure and wrong decoded size never remove the bucket fallback (0.445208ms)
+✔ fire objects join world depth ordering and offscreen objects are culled (0.688125ms)
+✔ only actual visible brigade queue receipts suppress legacy buckets; crops stay clear (1.329083ms)
+✔ a well behind the burning house cannot hide the brigade behind its roof (0.287208ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 727.717917

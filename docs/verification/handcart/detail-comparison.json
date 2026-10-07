@@ -1,0 +1,80 @@
+{
+  "pass": true,
+  "pairs": [
+    {
+      "name": "detail-1-NE",
+      "saveSHA256": "51145d83aca33d0c9b71e6b660b35ac669d478bd7cda85ea1b1854dd2298c89b",
+      "stateSHA256": "31a1c102151ab7e8802c7bd2730e33f345161cfac86668ff6fc543b64000b747",
+      "tick": 22920,
+      "zoom": 3,
+      "installedDraws": 54,
+      "carters": 9
+    },
+    {
+      "name": "detail-2-NE",
+      "saveSHA256": "51145d83aca33d0c9b71e6b660b35ac669d478bd7cda85ea1b1854dd2298c89b",
+      "stateSHA256": "31a1c102151ab7e8802c7bd2730e33f345161cfac86668ff6fc543b64000b747",
+      "tick": 22920,
+      "zoom": 3,
+      "installedDraws": 42,
+      "carters": 9
+    },
+    {
+      "name": "detail-3-SE",
+      "saveSHA256": "51145d83aca33d0c9b71e6b660b35ac669d478bd7cda85ea1b1854dd2298c89b",
+      "stateSHA256": "31a1c102151ab7e8802c7bd2730e33f345161cfac86668ff6fc543b64000b747",
+      "tick": 22920,
+      "zoom": 3,
+      "installedDraws": 42,
+      "carters": 9
+    },
+    {
+      "name": "detail-4-SE",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "zoom": 3,
+      "installedDraws": 54,
+      "carters": 9
+    },
+    {
+      "name": "detail-5-SW",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "zoom": 3,
+      "installedDraws": 30,
+      "carters": 9
+    },
+    {
+      "name": "detail-6-NW",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "zoom": 3,
+      "installedDraws": 54,
+      "carters": 9
+    },
+    {
+      "name": "detail-7-NW",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "zoom": 3,
+      "installedDraws": 42,
+      "carters": 9
+    },
+    {
+      "name": "detail-8-NW",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "zoom": 3,
+      "installedDraws": 35,
+      "carters": 9
+    }
+  ],
+  "limits": "Static actual captures and asset draw trace, not proof every cart is unobscured or that an individual wheel animation is perceptible at zoom0.6. Network cancellations kept in source results.",
+  "beforeHead": "bd626bf2a2c7cbf5b373b9c6eeae099c2e0fe38c",
+  "afterHead": "62e4a720dcd0e2f67ad6064e0bc113df54ea6647"
+}

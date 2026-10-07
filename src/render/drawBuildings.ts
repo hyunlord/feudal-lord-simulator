@@ -38,6 +38,7 @@ type ObjectRenderInput = {
   readonly objectRenderItems?: readonly WorldObjectRenderItem[];
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
+  readonly fireBrigades?: ReadonlySet<string>;
   readonly hoveredTile?: TileCoordinate | null;
   readonly selectionMode?: boolean;
   // SMOOTH-2R `transform`: the context's transform as the frame set it (drawObjectRenderItems reads it once), for walkers.
