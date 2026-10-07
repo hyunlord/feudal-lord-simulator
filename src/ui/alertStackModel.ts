@@ -18,6 +18,8 @@ import { resourceName } from "../content/resourceCatalog.ko";
 // then by how many buildings share the cause. At most three rows.
 
 export type AlertSeverity = "immediate" | "caution";
+/** INSTALL-18: the kind of trouble a row is, for its crisis picture (null: the row keeps the bell). */
+export type AlertCrisis = "fire" | "household_leaving" | "construction_blocked" | "upkeep_unpaid" | "storage_full" | "food_shortage";
 
 export type AlertRow = Readonly<{
   /** Stable aggregation key (severity + cause). */
@@ -33,6 +35,7 @@ export type AlertRow = Readonly<{
   /** One-line cause of the first affected building, e.g. `곡창에 밀 재고가 없습니다`. */
   cause: string;
   causeId: CauseId | null;
+  crisis: AlertCrisis | null;
   /** Affected building or construction-site ids, in state order; `[보기]` inspects the first. */
   targetIds: readonly string[];
   /** Tile of the first affected building (camera `lookAt` target). */
@@ -56,6 +59,7 @@ export type AlertEntry = Readonly<{
   title: string;
   cause: string;
   causeId: CauseId | null;
+  crisis: AlertCrisis | null;
   name: string;
   targetId: string;
   tile: TileCoordinate;
@@ -93,9 +97,11 @@ function buildingEntry(building: Building, cause: BuildingCausePresentation): Al
   const title = house ? ALERT_STACK_COPY.house[blocker.requirement] : facilityTitle(building, blocker);
   // Labels carry per-building numbers (거리 5 / 범위 4, 12/20): the same wording with other numbers is the same cause.
   const wording = blocker.label.replace(/\d+/g, "#");
+  const crisis: AlertCrisis | null = house ? blocker.requirement === "bread" ? "food_shortage" : null
+    : blocker.reason === "upkeep_unpaid" ? "upkeep_unpaid" : blocker.reason === "storage_overflow" || blocker.reason === "output_full" ? "storage_full" : null;
   return {
     key: `${severity}|building|${blocker.causeId}|${blocker.requirement}|${blocker.reason}|${title}|${wording}`,
-    severity, title, cause: blocker.label, causeId: blocker.causeId,
+    severity, title, cause: blocker.label, causeId: blocker.causeId, crisis,
     name: house ? ALERT_STACK_COPY.houseName : BUILDING_CONFIG_BY_KIND[building.kind].name,
     targetId: building.id, tile: footprintCentre(building),
   };
@@ -110,7 +116,7 @@ function siteEntries(state: GameState): readonly AlertEntry[] {
     const causeId: CauseId = access.cause === "reserve_deadlock" ? "reserve_deadlock" : "construction_access";
     return [{
       key: `${severity}|site|${access.cause}`, severity, title: copy.title,
-      cause: access.cause === "reserve_deadlock" ? access.label : copy.cause, causeId,
+      cause: access.cause === "reserve_deadlock" ? access.label : copy.cause, causeId, crisis: "construction_blocked",
       name: ALERT_STACK_COPY.siteName, targetId: site.id, tile: constructionSiteAnchor(site),
     }];
   });
@@ -121,10 +127,10 @@ function storyEntries(state: GameState): readonly AlertEntry[] {
   const at = (id: string) => state.buildings.find(building => building.id === id);
   const copy = ALERT_STACK_COPY.story;
   const fires = (state.events?.burning ?? []).flatMap(entry => { const building = at(entry.buildingId); return building === undefined ? [] : [{
-    key: "immediate|story|fire", severity: "immediate" as const, title: copy.fireTitle, cause: copy.fireCause, causeId: null,
+    key: "immediate|story|fire", severity: "immediate" as const, title: copy.fireTitle, cause: copy.fireCause, causeId: null, crisis: "fire" as const,
     name: ALERT_STACK_COPY.houseName, targetId: building.id, tile: footprintCentre(building) }]; });
   const leaving = state.houses.flatMap(house => { const building = house.leavingSinceTick !== undefined && house.abandonedTick === undefined ? at(house.buildingId) : undefined;
-    return building === undefined ? [] : [{ key: "caution|story|leaving", severity: "caution" as const, title: copy.leavingTitle, cause: copy.leavingCause, causeId: null,
+    return building === undefined ? [] : [{ key: "caution|story|leaving", severity: "caution" as const, title: copy.leavingTitle, cause: copy.leavingCause, causeId: null, crisis: "household_leaving" as const,
       name: ALERT_STACK_COPY.houseName, targetId: building.id, tile: footprintCentre(building) }]; });
   const pasture = pastureAlertEntry(state);
   return [...fires, ...leaving, ...(pasture === null ? [] : [pasture])];
@@ -143,7 +149,7 @@ export function pastureAlertEntry(state: GameState): AlertEntry | null {
     .sort((a, b) => Math.abs(a.tx - tile.tx) + Math.abs(a.ty - tile.ty) - (Math.abs(b.tx - tile.tx) + Math.abs(b.ty - tile.ty)) || a.id.localeCompare(b.id))[0];
   if (farm === undefined) return null;
   return { key: "caution|story|pasture", severity: "caution", title: WALL_EXPANSION_COPY.alertTitle, cause: WALL_EXPANSION_COPY.alertCause(pasture.cells.length, pasture.date),
-    causeId: null, name: BUILDING_CONFIG_BY_KIND[farm.kind].name, targetId: farm.id, tile };
+    causeId: null, crisis: null, name: BUILDING_CONFIG_BY_KIND[farm.kind].name, targetId: farm.id, tile };
 }
 
 function deriveRows(state: GameState): readonly AlertRow[] {
@@ -176,6 +182,7 @@ function deriveRows(state: GameState): readonly AlertRow[] {
       count: ids.length,
       cause: first.cause,
       causeId: first.causeId,
+      crisis: first.crisis,
       targetIds: ids,
       focusTile: first.tile,
     }));
