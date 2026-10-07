@@ -7,6 +7,7 @@ import { purveyorEpisodes } from '../src/render/purveyorPresentation';
 import { ART_REGISTRY } from '../src/render/art/wave42Registry';
 import { createArtRegistry } from '../src/render/art/artRegistry';
 import catalog from '../src/render/art/catalog.json';
+import { OCCUPATION_BANDS, ELDER_BANDS, walkerCandidates, walkerLook, walkerSheet, type WalkerOccupation } from '../src/render/walkerLook';
 
 const state = decodeSave(new Uint8Array(gunzipSync(readFileSync('docs/qa/round02/repro/saves/chapter2-war1340.json.gz')))).envelope.state;
 test('an actual purchase creates a deterministic road-side presentation without changing the archived save', () => {
@@ -73,4 +74,27 @@ test('invalid authored grip and incomplete directional prop family reject the wh
   })) } };
   assert.throws(() => createArtRegistry([{ ...bundle, entries: bundle.entries.map(e => e.id === body.id ? bad : e) }]));
   assert.throws(() => createArtRegistry([{ ...bundle, entries: bundle.entries.filter(e => e.id !== 'held_ledger_nw') }]));
+});
+
+test('the explicitly registered receipt body is absent from every ordinary occupation and age/sex selection', () => {
+  const body = walkerSheet('wk_royal_purveyor');
+  assert.equal(body.classBand, 'receipt-presentation');
+  const base = state.walkers[0]; assert.ok(base);
+  for (const occupation of Object.keys(OCCUPATION_BANDS) as WalkerOccupation[]) {
+    for (const ageBand of ['child', 'adult', 'elder'] as const) {
+      const bands = ageBand === 'elder' ? ELDER_BANDS : OCCUPATION_BANDS[occupation];
+      assert.ok(bands.every(([band]) => band !== body.classBand));
+      for (const sex of ['male', 'female'] as const) {
+        for (const seed of [1, 2, 7, 41]) {
+          for (const [band] of bands) assert.ok(!walkerCandidates(occupation, band, sex, 17, seed).includes(body.id));
+          const walker = { ...base, id: `ordinary:${occupation}:${ageBand}:${sex}:${seed}`,
+            resident: { occupation, ageBand, sex } };
+          // Guards have no female body; the renderer's explicit guard path is outside this generated cross-product.
+          if (occupation !== 'guard' || ageBand === 'elder') {
+            assert.notEqual(walkerLook({ ...state, seed }, walker).sheetId, body.id);
+          }
+        }
+      }
+    }
+  }
 });

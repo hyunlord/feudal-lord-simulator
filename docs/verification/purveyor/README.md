@@ -34,3 +34,5 @@ Mac 집중 회귀50개·크기 가드·캐시 회귀·typecheck·바뀐 렌더 l
 독립 읽기 상태 비교(`astra-purveyor-root-loaded-state-diff.json`)에서 자연 봄은 저장24명을 바꾸거나 지우지 않고 주민 표현16명만 더했다. 이 경로는 `src/render/presentation/residentWalkerState.ts`와 `src/testing/phase10ProofRuntime.ts`의 기존 읽기 상태 준비다. 계절 네 쌍의 별도 비교도 `astra-purveyor-root-seasonal-pair-review.json`에 보존했다.
 
 기하 실행 `astra-PURVEYOR-geometry-029a112`는 변경 관련4줄·80조건을 측정해 실패0이었다. 입력 SHA는 `3c844cfa1f3e015404275c7ad824d416c53afa5f659372c7c4d665dfc30907b3`이며 정본 영수증과 실행별 보고서를 함께 커밋했다.
+
+첫 최종 변경 시험 `astra-PURVEYOR-release-tests-fa90ecd`는 2,507통과·1실패·11skip이었다. 기존 주민 직업 검사에 모든 신규 몸체 band가 주민 풀이어야 한다는 가정이 있어 전용 `receipt-presentation`이 걸렸다. 일반 band 검사는 유지하고 전용 band만 명시적으로 분리했다. 추가 회귀는 모든 직업·연령·남녀의 후보 풀에서 이 몸체가 빠지고, 실제 선택에서도 빠짐을 확인한다. 여성 경비 몸체가 없는 비현실적인 조합은 실제 선택 교차곱에서만 제외하며 경비 후보 풀 검사는 유지했다. 제품 그림·배치·기하 입력은 바꾸지 않았다.
