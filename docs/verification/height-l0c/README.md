@@ -25,3 +25,5 @@
 ## 실행과 관문
 
 공식 실행 `astra-HEIGHT-L0C-before-dc881bb`, `astra-HEIGHT-L0C-after-09ddf12`를 판정에 사용했다. 전체 원본 JPEG·저장·측정·실패 생성물은 ZIP에, 세계 PNG는 해당 로컬 output 및 DGX _kept 실행에 보존하고 SHA를 원시 result에 남겼다. 새 계약 회귀는 적색 후 관련10/10 통과, 타입·lint 통과. 변경입력 기하 `astra-HEIGHT-L0C-geometry-09ddf12`는4행80조건 실패0·미개방0으로 통과했다. 최종트리 변경시험·병합검사·본선 SHA는 게시 영수증에 기록한다.
+
+Purveyor 본선1bbe579b를 합친4f62de5d에서 변경시험275파일·1926통과·실패0(11skip)을 확인했다. 병합검사는 기존09ddf126 기하의 입력해시가 오래됐다고 거부했다. 그 실패 기록을 보존하고 병합된 입력으로 `astra-HEIGHT-L0C-geometry02-4f62de5`를 다시 실행해4행80조건 실패0·미개방0을 확인했다. 새 기하 영수증을 포함한 최종트리의 변경시험과 게시 SHA는 ZIP 영수증에 별도로 기록한다.
