@@ -130,3 +130,41 @@ test("an older copy goes only when it is first in its line; when the keeper stop
     await b.until("a run takes a slot by its own rules", () => /== heavy slot 3\/4 \(experiment line\)$/m.test(b.out["engine-f"] ?? ""));
   } finally { b.done(); }
 });
+
+test("the keeper writes down what it cannot explain: a free slot nobody may take, a slot it did not give, a door nobody takes", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const b = bench("anomaly");
+  const holders: ChildProcess[] = [];
+  const hold = (file: string) => { const c = spawn("bash", ["-c", `exec 9<"$1"; flock -n 9 || exit 1; exec sleep 600`, "hold", file], { stdio: "ignore" }); holders.push(c); };
+  const held = (file: string) => spawnSync("bash", ["-c", `( flock -n 9 ) 9<"$1"`, "c", file]).status !== 0;
+  const anomalies = () => existsSync(join(b.base, "_slots/keeper-anomalies.log")) ? readFileSync(join(b.base, "_slots/keeper-anomalies.log"), "utf8") : "";
+  // A waiting run of <copy> whose process only holds its ticket (it never takes a slot by itself).
+  const ticket = (run: string, copy: keyof typeof COPIES, ageMs: number) => {
+    mkdirSync(join(b.base, run, "scripts/remote"), { recursive: true });
+    copyFileSync(COPIES[copy], join(b.base, run, "scripts/remote/heavySlots.sh"));
+    const file = join(b.base, "_slots/queue", `${(BigInt(Date.now() - ageMs) * 1_000_000n).toString()}-${run}`);
+    writeFileSync(file, "4\n"); hold(file);
+    return file;
+  };
+  try {
+    mkdirSync(join(b.base, "_slots/queue"), { recursive: true });
+    writeFileSync(join(b.base, "_slots/heavy.1.info"), "engineB-run\t0\ttest\n"); writeFileSync(join(b.base, "_slots/heavy.1.lock"), ""); hold(join(b.base, "_slots/heavy.1.lock"));
+    // engineB's old copy is first in line and engineB has one running; astra's old copy behind it may go but cannot be let in.
+    const first = ticket("engineB-old", "fifo", 20_000); const second = ticket("astra-old", "fifo", 10_000);
+    await b.until("slot and tickets held", () => held(join(b.base, "_slots/heavy.1.lock")) && held(first) && held(second));
+    const keeper = spawn("bash", [KEEPER], { env: { ...process.env, FLS_KEEPER_BASE: b.base, KEEPER_POLL_S: "0.3", KEEPER_DOOR_S: "2", KEEPER_STALL_S: "2", KEEPER_UPDATE: "0" }, stdio: ["ignore", "pipe", "pipe"] });
+    keeper.stdout!.on("data", chunk => { b.out.keeper = (b.out.keeper ?? "") + chunk; }); holders.push(keeper);
+    await b.until("the stall is written", () => /slot\(s\) 2 3 4 free for 0 min while experiments astra-old wait, and nobody is let in/.test(anomalies()));
+    assert.match(b.out.keeper ?? "", /ANOMALY: slot\(s\) 2 3 4 free/);
+    // A slot taken without the keeper.
+    writeFileSync(join(b.base, "_slots/heavy.2.info"), "intruder-x\t0\ttest\n"); writeFileSync(join(b.base, "_slots/heavy.2.lock"), ""); hold(join(b.base, "_slots/heavy.2.lock"));
+    await b.until("the intruder is written", () => /intruder-x is in slot 2 but the keeper did not let it in/.test(anomalies()));
+    // A run of this protocol that never takes its grant.
+    ticket("engine-ghost", "now", 0);
+    await b.until("the door nobody took is written", () => /the door for engine-ghost \(keeper copy\) → slot 3 was open 2s and it did not take the slot/.test(anomalies()));
+    await b.until("the status shows the last anomaly", () => /last anomaly \(_slots\/keeper-anomalies\.log\): .*engine-ghost/.test(b.status()));
+    assert.equal(anomalies().split("\n").filter(Boolean).length, 3, "each written once");
+  } finally {
+    for (const c of holders) if (c.exitCode === null) c.kill("SIGKILL");
+    b.done();
+  }
+});

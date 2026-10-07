@@ -5,10 +5,8 @@ import type { ForestBoundary } from "../world/boundary/terrainBoundaries";
 import { zonesOf } from "../zones/zoneEdits";
 import { farmsteadFieldWork } from "./farmsteadArt";
 import { groundBoundaryScene } from "./groundBoundaryScene";
-import { tileToScreen } from "./iso";
-import { drawCroppedWorldSprite } from "./worldSprite";
-import { ZONE_ASSETS, ZONE_VARIANTS } from "./zoneAssetManifest";
-import { zoneAsset, zoneAssetRaster } from "./zoneAssets";
+import { ZONE_VARIANTS } from "./zoneAssetManifest";
+import { FARM_PROP_ART } from "./farmPropArt";
 
 // Farm props (C1f, Wave 4c), display only: nothing moves, nothing is simulated, the same state gives the same props.
 //  - Pasture zones: sheep flocks and cattle pairs, one per PASTURE_CELLS_PER_PROP owned cells (at least one), on cells
@@ -163,13 +161,6 @@ export function heardFarmAnimals(state: GameState): readonly FarmProp[] {
 }
 
 export function drawFarmProp(context: CanvasRenderingContext2D, prop: FarmProp, spring?: { readonly state: GameState; readonly season: number; readonly zoom: number }): void {
-  const meta = ZONE_ASSETS.find(asset => asset.key === prop.kind);
-  const image = zoneAsset(prop.kind);
-  if (meta === undefined || meta.role !== "prop" || image === null) return;
-  const raster = zoneAssetRaster(prop.kind);
-  const foot = tileToScreen(prop.x, prop.y);
-  const width = meta.displayWidth; const height = width * meta.height / meta.width;
-  drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? { x: 0, y: 0, width: meta.width, height: meta.height },
-    { x: foot.sx - width * meta.anchorX / meta.width, y: foot.sy - height * meta.anchorY / meta.height, width, height }, false, true);
+  if (!FARM_PROP_ART.draw(context, prop)) return;
   if (spring !== undefined && spring.season === 0 && spring.zoom >= 0.6) drawSpringPasture(context, spring.state, prop, farmProps(spring.state), spring.season, spring.zoom);
 }

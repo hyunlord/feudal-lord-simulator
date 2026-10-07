@@ -821,6 +821,52 @@
             "season"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "placement": {
+              "const": "farm-prop"
+            },
+            "baseId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "staticCluster": {
+              "const": true
+            },
+            "animation": {
+              "const": false
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "image",
+            "provenance",
+            "geometry",
+            "placement",
+            "baseId",
+            "staticCluster",
+            "animation"
+          ],
+          "additionalProperties": false
         }
       ]
     },

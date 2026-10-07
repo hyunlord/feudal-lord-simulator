@@ -20664,5 +20664,683 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave13-pasture-herds",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wave13:sheep_cluster_a:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 64,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_a:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 128,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 192,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_a:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 256,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 320,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_a:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 448,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave13:pasture-sheep",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "sheep_flock"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:sheep_cluster_a:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_a:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_a:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_a:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave13-pasture-herds-extension",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 72,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 144,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 216,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 288,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 360,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 432,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 504,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 96,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 192,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 288,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 480,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 576,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 672,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 64,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 128,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 192,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 256,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 320,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 448,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave13:sheep_flock_b-static-rule",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "sheep_flock_b"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:cattle_pair-static-rule",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "cattle_pair"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:cattle_drove-v1:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:cattle_drove-v1:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:cattle_drove-v1:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:cattle_drove-v1:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:pig_pair-static-rule",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "pig_pair"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:pig_cluster-v1:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:pig_cluster-v1:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:pig_cluster-v1:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:pig_cluster-v1:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

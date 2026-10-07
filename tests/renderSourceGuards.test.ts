@@ -23,6 +23,7 @@ const PHASE5_RENDER_FILES = [
   "src/render/drawTerrain.ts",
   "src/render/drawBuildings.ts",
   "src/render/buildingAppearance.ts",
+  "src/render/farmPropArt.ts",
   "src/render/drawObjectRenderItems.ts",
   "src/render/constructionRenderItems.ts",
   "src/render/drawConstructionSites.ts",
@@ -38,6 +39,7 @@ const PHASE5_RENDER_FILES = [
 
 const PHASE5_IMPLEMENTATION_FILES = [
   "src/render/buildingAppearance.ts",
+  "src/render/farmPropArt.ts",
   "src/render/renderer.ts",
   "src/render/onboardingGuidanceOverlay.ts",
   "src/render/renderVisibility.ts",
