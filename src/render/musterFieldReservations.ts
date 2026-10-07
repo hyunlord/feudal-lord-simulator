@@ -11,6 +11,8 @@ import { washPoolProps, washPoolBox } from './washPoolPlacement';
 import { ART_REGISTRY } from './art/wave42Registry';
 import { isSpringWorldEntry, springWorldSlot } from './art/springWorldValidation';
 import { springWorldProps } from './springWorldProps';
+import { buildGroundCover } from './groundCoverLayout';
+import { spriteMetaView } from './worldAssets';
 import { worldFireProps } from './worldFireProps';
 
 function blitBox(blit: CountryBlit): ArtRect {
@@ -22,6 +24,12 @@ function blitBox(blit: CountryBlit): ArtRect {
 /** Whole painted envelopes, independent of viewport, draw readiness and zoom. */
 export function musterFieldReservations(state: GameState): readonly ArtRect[] {
   const boxes = [...washPoolReservations(state)], country = countrysideOf(state), season = stateCalendar(state).season;
+  // Reserve even potentially hidden cover: changing a nearby road/yard must not reveal a shrub through this scene.
+  for (const tile of state.tiles) for (const cover of buildGroundCover({ tile, seed: state.seed })) {
+    const meta = spriteMetaView(cover.spriteKey); if (!meta) continue;
+    const scale = meta.renderScale * cover.scale;
+    boxes.push({ x: cover.x - meta.anchor.x * scale, y: cover.y - meta.anchor.y * scale, width: meta.width * scale, height: meta.height * scale });
+  }
   for (const p of [...country.props, ...country.fields]) boxes.push(blitBox(pieceBlit(p, season)));
   for (const p of country.strips) for (const blit of stripBlits(p, season)) boxes.push(blitBox(blit));
   for (const p of warProps(state)) {
