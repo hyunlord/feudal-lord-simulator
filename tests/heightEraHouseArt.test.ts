@@ -20,7 +20,7 @@ for (const year of [1350, 1400] as const) {
         assert.ok(selected.id.startsWith(`wave20/house_l${level}_${year}_`));
         assert.ok(!ART_REGISTRY.select('building-body', 'house-body', { ...context, calendarYear: year - 1 }, seed)?.id.startsWith(`wave20/house_l${level}_${year}_`));
         if (level === 0) {
-          assert.equal(selected.image.url, `assets/wave20/houses/${selected.id.split('/')[1]}.png`);
+          assert.ok(selected.image.url.startsWith('assets/height-era2/'));
           assert.deepEqual(selected.geometry.pivot, { x: 77.35406698564593, y: 139.57894736842104 });
           assert.equal(selected.image.height, 153);
         }
@@ -45,6 +45,29 @@ for (const year of [1350, 1400] as const) {
         assert.deepEqual(overlay.geometry, body.geometry);
         assert.deepEqual([overlay.image.width, overlay.image.height], [body.image.width, body.image.height]);
         assert.ok(overlay.image.url.startsWith('assets/height-era1/'));
+      }
+    });
+  }
+}
+
+for (const year of [1350, 1400] as const) {
+  for (const variant of ['a', 'b'] as const) {
+    const id = `wave20/house_l0_${year}_${variant}-v1`;
+    test(`${id} keeps its L0 ground registration with private snow and boarded layers`, () => {
+      const body = ART_REGISTRY.entry(id);
+      assert.ok(body?.kind === 'building-body');
+      assert.ok(body.image.url.startsWith('assets/height-era2/'));
+      assert.equal(body.geometry.scale, 0.4995704948646125);
+      assert.deepEqual(body.geometry.pivot, { x: 77.35406698564593, y: 139.57894736842104 });
+      assert.deepEqual([body.image.width, body.image.height], [153, 153]);
+      assert.deepEqual(body.geometry.footprint, { width: 1, height: 1 });
+      for (const layer of ['boarded', 'snow'] as const) {
+        const overlay = ART_REGISTRY.select('state-overlay', `house-${layer}`, { bodyId: id, layer, season: 'winter', vacant: true }, 0);
+        assert.ok(overlay?.kind === 'state-overlay');
+        assert.deepEqual(overlay.targetBodyIds, [id]);
+        assert.deepEqual(overlay.geometry, body.geometry);
+        assert.deepEqual([overlay.image.width, overlay.image.height], [153, 153]);
+        assert.ok(overlay.image.url.startsWith('assets/height-era2/'));
       }
     });
   }

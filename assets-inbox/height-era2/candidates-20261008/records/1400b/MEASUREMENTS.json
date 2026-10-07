@@ -1,0 +1,163 @@
+{
+  "method": "Manual native-grid inner doorleaf endpoints, each point +/-1native; differences +/-2. No pixel-exact projection certification.",
+  "variants": {
+    "a": {
+      "doorTop": [
+        65,
+        78
+      ],
+      "doorBottom": [
+        65,
+        123
+      ],
+      "heightNative": 45,
+      "widthNative": 19,
+      "widthEndpointsX": [
+        56,
+        75
+      ],
+      "differenceUncertaintyNative": 2,
+      "heightWorldInterval": [
+        21.481531279178338,
+        23.479813258636785
+      ],
+      "widthWorldInterval": [
+        8.492698412698411,
+        10.490980392156862
+      ],
+      "groundCorners": [
+        [
+          28,
+          107
+        ],
+        [
+          92,
+          139
+        ],
+        [
+          129,
+          118
+        ]
+      ],
+      "masterCorners": [
+        [
+          28,
+          107
+        ],
+        [
+          91,
+          139
+        ],
+        [
+          128,
+          118
+        ]
+      ],
+      "maxGroundResidualNative": 1,
+      "groundPointUncertaintyNative": 2,
+      "frontWindows": 1,
+      "endWindows": 0,
+      "roofPolygonManual": [
+        [
+          59,
+          17
+        ],
+        [
+          101,
+          38
+        ],
+        [
+          136,
+          69
+        ],
+        [
+          92,
+          85
+        ],
+        [
+          21,
+          50
+        ]
+      ]
+    },
+    "b": {
+      "doorTop": [
+        65,
+        79
+      ],
+      "doorBottom": [
+        65,
+        124
+      ],
+      "heightNative": 45,
+      "widthNative": 19,
+      "widthEndpointsX": [
+        56,
+        75
+      ],
+      "differenceUncertaintyNative": 2,
+      "heightWorldInterval": [
+        21.481531279178338,
+        23.479813258636785
+      ],
+      "widthWorldInterval": [
+        8.492698412698411,
+        10.490980392156862
+      ],
+      "groundCorners": [
+        [
+          28,
+          107
+        ],
+        [
+          92,
+          139
+        ],
+        [
+          129,
+          118
+        ]
+      ],
+      "masterCorners": [
+        [
+          28,
+          107
+        ],
+        [
+          91,
+          139
+        ],
+        [
+          128,
+          118
+        ]
+      ],
+      "maxGroundResidualNative": 1,
+      "groundPointUncertaintyNative": 2,
+      "frontWindows": 1,
+      "endWindows": 0,
+      "roofPolygonManual": [
+        [
+          59,
+          17
+        ],
+        [
+          101,
+          38
+        ],
+        [
+          136,
+          69
+        ],
+        [
+          92,
+          85
+        ],
+        [
+          21,
+          50
+        ]
+      ]
+    }
+  }
+}

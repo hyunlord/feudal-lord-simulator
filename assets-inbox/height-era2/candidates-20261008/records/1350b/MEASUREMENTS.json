@@ -1,0 +1,90 @@
+{
+  "method": "Manual same-x leaf endpoints; each endpoint \u00b11px => dimension \u00b12px; groundpoints \u00b12px. No runtime claim.",
+  "door": {
+    "heightPx": 44,
+    "widthPx": 20,
+    "dimensionUncertaintyPx": 2,
+    "heightEndpoints": [
+      [
+        64,
+        78
+      ],
+      [
+        64,
+        122
+      ]
+    ],
+    "widthEndpoints": [
+      [
+        55,
+        98
+      ],
+      [
+        75,
+        98
+      ]
+    ],
+    "worldHeightInterval": [
+      20.981960784313724,
+      22.980242763772175
+    ],
+    "worldWidthInterval": [
+      8.992268907563025,
+      10.990550887021474
+    ]
+  },
+  "approvedMasterGround": [
+    [
+      28,
+      107
+    ],
+    [
+      91,
+      137
+    ],
+    [
+      128,
+      117
+    ]
+  ],
+  "candidateGround": [
+    [
+      27,
+      106
+    ],
+    [
+      92,
+      137
+    ],
+    [
+      128,
+      117
+    ]
+  ],
+  "groundResidualEuclideanPx": [
+    1.4142135623730951,
+    1,
+    0
+  ],
+  "groundUncertaintyPx": 2,
+  "roofRidgeManual": [
+    [
+      60,
+      16
+    ],
+    [
+      99,
+      35
+    ]
+  ],
+  "openings": {
+    "frontWindow": 1,
+    "door": 1,
+    "endwallWindow": 0
+  },
+  "transforms": {
+    "body02": "Full image Lanczos to153sq then(-1,-1)",
+    "boards01": "Full image Lanczos to153sq then(-1,-1)",
+    "snow02": "Full image Lanczos to153sq then(1,-5)"
+  }
+}
