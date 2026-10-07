@@ -1,0 +1,53 @@
+[
+  {
+    "id": "c",
+    "source": ".omo/height-doors2/art/c/body-01.png",
+    "sha256": "8b930621918226504e08fd5a773357e414414d89caeb9dd1420a1a46f66abbf4",
+    "prompt": ".omo/height-doors2/art/c/body-01-prompt.txt",
+    "promptSHA256": "a60df4a7a73ea434d605d0c4876608b0eae280782bd6b6bf6ee7f1cb9ee8c859",
+    "tool": "image_gen.imagegen",
+    "model": "not returned",
+    "date": "2026-10-07",
+    "input": "public/assets/wave26/house/house_l1_c.png",
+    "inputSHA256": "7aa5228f420c4591861e604bf5d98be5e92099964daaf83f2c13cd6d1f9dd594",
+    "actualCanvas": [
+      1254,
+      1254
+    ],
+    "status": "candidate only; too short door"
+  },
+  {
+    "id": "e",
+    "source": ".omo/height-doors2/art/e/body-01.png",
+    "sha256": "37c27af6c30787b50e941f09c0cbaf51859a85afbfae166729431790aa8fffd8",
+    "prompt": ".omo/height-doors2/art/e/body-01-prompt.txt",
+    "promptSHA256": "a87236479c53af2030c5ef34eb59806db1d15dbd7bd759c43a39790f777065e8",
+    "tool": "image_gen.imagegen",
+    "model": "not returned",
+    "date": "2026-10-07",
+    "input": "public/assets/wave26/house/house_l1_e.png",
+    "inputSHA256": "c17be28b2c677b279e5531faf87d16305ce5e050f074e2aebfdc42fec8585865",
+    "actualCanvas": [
+      1254,
+      1254
+    ],
+    "status": "candidate only; too short door"
+  },
+  {
+    "id": "f",
+    "source": ".omo/height-doors2/art/f/body-01.png",
+    "sha256": "66a3470728195a9800a85b1c04a92ffa01fb5d23307a358fad38baea43bf1bcd",
+    "prompt": ".omo/height-doors2/art/f/body-01-prompt.txt",
+    "promptSHA256": "2812990f911b22b75d0a42a5f1b1243dffa0d7f6f8c5500bbd60428cdd51f290",
+    "tool": "image_gen.imagegen",
+    "model": "not returned",
+    "date": "2026-10-07",
+    "input": "public/assets/wave26/house/house_l1_f.png",
+    "inputSHA256": "f19579921f7c3154c24c77ee0768df4442addd53ede6fbe5433b39eab42ab937",
+    "actualCanvas": [
+      1254,
+      1254
+    ],
+    "status": "candidate only; too short door"
+  }
+]

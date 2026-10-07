@@ -1,0 +1,169 @@
+{
+  "roofPolygonNative": [
+    [
+      15,
+      55
+    ],
+    [
+      42,
+      12
+    ],
+    [
+      109,
+      45
+    ],
+    [
+      128,
+      64
+    ],
+    [
+      125,
+      68
+    ],
+    [
+      109,
+      52
+    ],
+    [
+      90,
+      80
+    ],
+    [
+      59,
+      64
+    ],
+    [
+      53,
+      70
+    ],
+    [
+      39,
+      48
+    ],
+    [
+      17,
+      57
+    ]
+  ],
+  "roofPolygonPixels": 3388,
+  "layers": {
+    "snow-05-globalfit": {
+      "alpha_gt32_pixels": 2900,
+      "outside_body_alpha_gt32_pixels": 44,
+      "outside_roof_polygon_pixels": 178,
+      "roof_coverage_alpha_gt32": 0.8034238488783944,
+      "roof_alpha_weighted_coverage": 0.7220675046878255,
+      "canvas": [
+        139,
+        155
+      ]
+    }
+  },
+  "status": "viable static candidate; no actual runtime validation",
+  "source": "/tmp/astra-height-doors2-f-snow-root/snow-05-raw.png",
+  "sourceSHA256": "afd062eedf92516900dd633cc14ceb4813085140f39ba4da1bdbb6adf41a433c",
+  "promptProvenanceOwner": "root; /tmp/astra-height-doors2-f-snow-root/prompt.txt and prompt-05.txt",
+  "transform": {
+    "actualRaw": [
+      1254,
+      1254
+    ],
+    "resize": [
+      125,
+      114
+    ],
+    "scaleXY": [
+      0.09968102073365231,
+      0.09090909090909091
+    ],
+    "translateIntoFinalCanvas": [
+      5,
+      10
+    ],
+    "canvas": [
+      139,
+      155
+    ],
+    "pivot": [
+      71.66148325358851,
+      141.92025518341308
+    ],
+    "method": "whole-image resizeArea then translation; no per-piece transforms, cropping mask, alpha removal or painting"
+  },
+  "nativeBoundsAlphaGT32": [
+    12,
+    12,
+    128,
+    78
+  ],
+  "alphaGT32BelowY83": 0,
+  "outsideBodyAlphaGT32": 44,
+  "outsideBodyDilated1Native": 4,
+  "outsideBodyDilated2Native": 0,
+  "manualMarkersApproximate": [
+    {
+      "name": "ridgeLeft",
+      "body": [
+        43,
+        15
+      ],
+      "snow": [
+        42,
+        15
+      ]
+    },
+    {
+      "name": "ridgeRight",
+      "body": [
+        108,
+        48
+      ],
+      "snow": [
+        106,
+        49
+      ]
+    },
+    {
+      "name": "frontGableTip",
+      "body": [
+        16,
+        54
+      ],
+      "snow": [
+        16,
+        55
+      ]
+    },
+    {
+      "name": "gableRidgeJoin",
+      "body": [
+        62,
+        32
+      ],
+      "snow": [
+        61,
+        34
+      ]
+    },
+    {
+      "name": "frontEaveCorner",
+      "body": [
+        89,
+        79
+      ],
+      "snow": [
+        87,
+        75
+      ],
+      "note": "snow inset; not all roof corners must be covered"
+    }
+  ],
+  "markerUncertaintyNative": 2,
+  "limitations": [
+    "effective alpha-weighted roof coverage72.21%; alpha>32binary coverage80.34% marginally above80 due manual ROI/edge threshold; do not report both as72%.",
+    "RoofROI3388pixels manually traced; exactpolygon retained.",
+    "44 outside-body thresholdpixels all within2native: plausible snow ridge/eave thickness, not zero-leak claim.",
+    "Snow arrangement partly follows thatch courses; gaps irregular but not fully random distribution.",
+    "No new imagegen by this worker for attempt05; root owns generation provenance."
+  ]
+}

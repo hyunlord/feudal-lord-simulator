@@ -1,0 +1,95 @@
+{
+  "roofPolygonNative": [
+    [
+      15,
+      55
+    ],
+    [
+      42,
+      12
+    ],
+    [
+      109,
+      45
+    ],
+    [
+      128,
+      64
+    ],
+    [
+      125,
+      68
+    ],
+    [
+      109,
+      52
+    ],
+    [
+      90,
+      80
+    ],
+    [
+      59,
+      64
+    ],
+    [
+      53,
+      70
+    ],
+    [
+      39,
+      48
+    ],
+    [
+      17,
+      57
+    ]
+  ],
+  "roofPolygonPixels": 3388,
+  "layers": {
+    "snow": {
+      "alpha_gt32_pixels": 4074,
+      "outside_body_alpha_gt32_pixels": 45,
+      "outside_roof_polygon_pixels": 874,
+      "roof_coverage_alpha_gt32": 0.9445100354191264,
+      "roof_alpha_weighted_coverage": 0.9238917054425076,
+      "canvas": [
+        139,
+        155
+      ]
+    },
+    "boarded": {
+      "alpha_gt32_pixels": 1222,
+      "outside_body_alpha_gt32_pixels": 0,
+      "outside_roof_polygon_pixels": 1222,
+      "roof_coverage_alpha_gt32": 0.0,
+      "roof_alpha_weighted_coverage": 0.0,
+      "canvas": [
+        139,
+        155
+      ]
+    },
+    "fresh": {
+      "alpha_gt32_pixels": 3202,
+      "outside_body_alpha_gt32_pixels": 5,
+      "outside_roof_polygon_pixels": 1436,
+      "roof_coverage_alpha_gt32": 0.5212514757969303,
+      "roof_alpha_weighted_coverage": 0.4357675301525569,
+      "canvas": [
+        139,
+        155
+      ]
+    },
+    "weathered": {
+      "alpha_gt32_pixels": 6642,
+      "outside_body_alpha_gt32_pixels": 0,
+      "outside_roof_polygon_pixels": 3380,
+      "roof_coverage_alpha_gt32": 0.9628099173553719,
+      "roof_alpha_weighted_coverage": 0.9352802277935969,
+      "canvas": [
+        139,
+        155
+      ]
+    }
+  }
+}

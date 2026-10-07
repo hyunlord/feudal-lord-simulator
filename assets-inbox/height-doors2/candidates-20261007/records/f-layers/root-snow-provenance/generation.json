@@ -1,0 +1,40 @@
+[
+  {
+    "attempt": 4,
+    "tool": "image_gen.imagegen",
+    "model": "not returned",
+    "seed": "not returned",
+    "reference": "/tmp/astra-height-doors2/.omo/height-doors2/art/f/body-04.png",
+    "referenceSHA256": "0c0ee432438c5c25d80e6ccbd3b96ee26aa8bebce608e96f4de64aae86ee7418",
+    "promptFile": "prompt.txt",
+    "promptSHA256": "74e8bf545f319e06b88ceb6551503a62615ef192bc96db1efb5293ece857e523",
+    "rawFile": "snow-04-raw.png",
+    "rawSHA256": "31e18d41e141dd353578e03635bf03b8a1602de0e9dc4a528cba57ef417311e3",
+    "decodedPngDimensions": [
+      1254,
+      1254
+    ],
+    "toolOutputId": "exec-e862e186-c944-4691-be6b-36dc8cce5b57",
+    "transparent_background": true,
+    "status": "04 rejected: golden roof pixels remain;05 snow-only, pending global registration and QA"
+  },
+  {
+    "attempt": 5,
+    "tool": "image_gen.imagegen",
+    "model": "not returned",
+    "seed": "not returned",
+    "reference": "/tmp/astra-height-doors2-f-snow-root/snow-04-raw.png",
+    "referenceSHA256": "31e18d41e141dd353578e03635bf03b8a1602de0e9dc4a528cba57ef417311e3",
+    "promptFile": "prompt-05.txt",
+    "promptSHA256": "d10b0505fe87070edb6dc9b85ea78597bf9ef0740a55e70eb5d0d176c5fc4411",
+    "rawFile": "snow-05-raw.png",
+    "rawSHA256": "afd062eedf92516900dd633cc14ceb4813085140f39ba4da1bdbb6adf41a433c",
+    "decodedPngDimensions": [
+      1254,
+      1254
+    ],
+    "toolOutputId": "exec-c370597d-3fcf-40b0-bad6-1acd07d1096e",
+    "transparent_background": true,
+    "status": "snow-only output, pending registration and QA"
+  }
+]
