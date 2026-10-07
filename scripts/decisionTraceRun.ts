@@ -1,6 +1,7 @@
 // DEC-TRACE gate (docs/design/dec-trace.md): the lord's slice played by the lord-mode bot from a new game for N years
-// (`core:lord_slice`). Counted by the year: the decisions that came to the lord with a weight (P-D5, the heavy ones),
-// the lord's own, the steward's answers by policy, the faction acts. For every decision: the consequences tied to it
+// (`core:lord_slice`). Counted by the year: the decisions that came to the lord with a weight (P-D5, the heavy ones; P-T1
+// counts these — `cameHeavyToLord`, not his own initiatives), all the lord's heavy ones, the lord's, the steward's answers
+// by policy, the faction acts. For every decision: the consequences tied to it
 // within three years (the thread), and the decisions with none, with what they touched. Reads only the game's APIs.
 //   tsx scripts/decisionTraceRun.ts <seed> [years] > run.json
 import { resolve } from "node:path";
@@ -8,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import type { FactionAct, TracedDecision } from "../src/engine/decisionTrace.types";
 import type { HistoryRecord } from "../src/engine/history.types";
 import { TRACE_LIVE_TICKS } from "../src/engine/decisionTrace";
+import { cameHeavyToLord } from "../src/engine/decisionLayer";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
@@ -52,18 +54,19 @@ export function decisionTraceRun(seed: number, years = 20) {
   }
   const rows = [...decisions.values()].map(decision => ({
     id: decision.id, year: yearOf(decision.tick), tick: decision.tick, by: decision.by, kind: decision.kind, source: decision.source, weights: decision.weights,
-    heavy: decision.weights.length > 0, targets: decision.targets,
+    heavy: decision.weights.length > 0, came: cameHeavyToLord(decision), targets: decision.targets,
     // A decision of the last three years has not had its three years (reported apart).
     fullWindow: endTick - decision.tick >= TRACE_LIVE_TICKS,
     consequences: (after.get(decision.id) ?? []).length,
     consequenceKinds: [...new Set((after.get(decision.id) ?? []).map(consequence => String(consequence.params?.key ?? consequence.template)))],
   }));
-  const table: Record<number, { heavyToLord: number; lord: number; steward: number; acts: number; consequences: number }> = {};
-  for (let year = startYear; year < startYear + years; year += 1) table[year] = { heavyToLord: 0, lord: 0, steward: 0, acts: 0, consequences: 0 };
+  const table: Record<number, { heavyToLord: number; heavyAll: number; lord: number; steward: number; acts: number; consequences: number }> = {};
+  for (let year = startYear; year < startYear + years; year += 1) table[year] = { heavyToLord: 0, heavyAll: 0, lord: 0, steward: 0, acts: 0, consequences: 0 };
   for (const row of rows) {
     const cell = table[row.year]; if (cell === undefined) continue;
     if (row.by === "lord") cell.lord += 1; else cell.steward += 1;
-    if (row.heavy && row.by === "lord") cell.heavyToLord += 1;
+    if (row.came) cell.heavyToLord += 1;
+    if (row.heavy && row.by === "lord") cell.heavyAll += 1;
   }
   for (const act of acts) { const cell = table[yearOf(act.tick)]; if (cell !== undefined) cell.acts += 1; }
   for (const consequence of consequences.values()) { const cell = table[yearOf(consequence.tick)]; if (cell !== undefined) cell.consequences += 1; }

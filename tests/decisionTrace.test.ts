@@ -11,7 +11,8 @@ import { DECISION_WEIGHT_BALANCE, HOME_PETITION_CUSTOM } from "../src/content/st
 import { HOME_ESTATE_ID } from "../src/content/estateConfig";
 import { HOME_PETITION_KINDS } from "../src/content/stewardshipConfig";
 import { decisionRemembers, standingPolicies, stewardReport, traceInRange, yearReview } from "../src/engine/decisionReads";
-import { largeSumLine, stewardPick, type ChoiceWeighing } from "../src/engine/decisionLayer";
+import { cameHeavyToLord, heavyLoad, largeSumLine, stewardPick, type ChoiceWeighing } from "../src/engine/decisionLayer";
+import { hamletTimberKeep } from "../src/engine/marketSettlement";
 import { advanceTrace, traceOf } from "../src/engine/decisionTrace";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceFactionActs } from "../src/engine/factionActs";
@@ -104,6 +105,26 @@ test("§1 the steward never grants a home petition that costs more than the trea
   assert.ok(homes.length > 0);
   // Lenient grants all; with the treasury kept empty, the costly kinds are refused and the rest granted.
   for (const petition of homes) assert.equal(petition.status, costs(petition.kind) ? "refused" : "granted", `${petition.id} ${petition.kind}`);
+});
+
+test("§1 DTR-14: the heavy matters that came to the lord in the year (not his own initiatives) — the registry's heavy offer waits at three", () => {
+  const state = run(lordGame(), 10);
+  const decision = (id: string, source: string, weights: string[], tick = state.tick) => ({ id, tick, by: "lord" as const, kind: "registry" as const, source, weights: weights as never, targets: [] });
+  assert.equal(cameHeavyToLord(decision("h-1", "registry:ck_evt_211:a", ["faction_rupture"])), true);
+  assert.equal(cameHeavyToLord(decision("h-2", "file_suit:claim-1", ["rights"])), false, "his own suit");
+  assert.equal(cameHeavyToLord(decision("h-3", "registry:ck_evt_002:a", [])), false, "no weight");
+  const crowded = { ...state, trace: { acts: [], decisions: [decision("h-1", "petition:wages:accept", ["crisis"]), decision("h-2", "audit:tolerate:a-1", ["land"]),
+    decision("h-3", "set_audit_mode:e-1", ["land"]), decision("h-4", "registry:ck_evt_140:a", ["land"], state.tick - 4_000)] } };
+  assert.equal(heavyLoad(crowded), 2, "the setting is his own, the last is over a year old");
+  assert.ok(DECISION_WEIGHT_BALANCE.registryCrowded < DECISION_WEIGHT_BALANCE.heavyPerYear);
+});
+
+test("§6 DTR-13: a lord-mode hamlet's market keeps the timber its market-town proclamation needs; elsewhere nothing is kept", () => {
+  const lord = lordGame();
+  assert.ok(hamletTimberKeep(lord) > 0);
+  assert.equal(hamletTimberKeep({ ...lord, era: "palisade" }), 0);
+  const { agency: _agency, ...sandbox } = lord;
+  assert.equal(hamletTimberKeep(sandbox as GameState), 0);
 });
 
 test("§2 answerOutlook runs the answer on a copy: now (the treasury, the minds it moves), later, and who remembers — the state untouched", () => {

@@ -6,13 +6,14 @@
  * the state (P-D4: the engine's own values, not a guess).
  */
 import {
-  COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STANDING_SETTING, type DecisionWeight, type StandingSetting,
+  COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STANDING_SETTING, LORD_INITIATIVES, type DecisionWeight, type StandingSetting,
 } from "../content/stewardPolicyConfig";
 import { BALANCE } from "../content/balanceConfig";
 import { TIMBER_TRADE_BALANCE } from "../content/timberTradeConfig";
 import type { GameState } from "./engine.types";
 import { estateYearIncome } from "./negotiation";
 import type { RegistryOccurrence } from "./registry.types";
+import type { TracedDecision } from "./decisionTrace.types";
 import { applyHold, bindEntry, runCommands, v4EnabledChoices, v4Entry, v4SenderFaction } from "./registryV4";
 import { stewardshipOf } from "./stewardship";
 
@@ -109,4 +110,14 @@ export function stewardPick(setting: StandingSetting, choices: readonly ChoiceWe
   if (setting === "lenient") return order((left, right) => right.spend - left.spend);
   if (setting === "strict") return order((left, right) => left.spend - right.spend);
   return order((left, right) => Math.abs(left.spend) - Math.abs(right.spend) || left.commands.length - right.commands.length);
+}
+
+/** P-T1: a decision of the lord's with a weight on a matter that came to him (not his own initiative, `LORD_INITIATIVES`). */
+export function cameHeavyToLord(decision: Pick<TracedDecision, "by" | "weights" | "source">): boolean {
+  return decision.by === "lord" && decision.weights.length > 0 && !LORD_INITIATIVES.some(prefix => decision.source.startsWith(prefix));
+}
+
+/** DTR-14: the heavy matters that came to the lord within the year before now. */
+export function heavyLoad(state: GameState): number {
+  return (state.trace?.decisions ?? []).filter(decision => state.tick - decision.tick < BALANCE.TICKS_PER_YEAR && cameHeavyToLord(decision)).length;
 }

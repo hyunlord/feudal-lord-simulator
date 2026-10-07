@@ -12,6 +12,7 @@ import { constructionExportReserve } from './constructionExportReserve';
 import { existingRoadComponent } from "../world/roadGraph";
 import { postLedgerEntries } from "../ledger/ledger";
 import { scenarioOf } from "./scenarioState";
+import { stageDef } from "../content/scenario/registry";
 import type { LedgerPosting } from "../ledger/ledger.types";
 import { foodPricePermille } from "./eventSchedule";
 import { foodPriceSource } from "./events";
@@ -104,8 +105,21 @@ function connectedStorageSources(
     );
 }
 
+/**
+ * DEC-TRACE (DTR-13): a lord-mode hamlet whose market charter opened its market before its era (DTR-8) keeps out of the
+ * market the timber its market-town proclamation waits on — else the stalls sell what the palisade needs and the town
+ * stays a hamlet (125-year runs: 24 houses for good). Elsewhere a hamlet has no market, so nothing changes.
+ */
+export function hamletTimberKeep(state: GameState): number {
+  if (state.era !== "hamlet" || state.agency === undefined) return 0;
+  const condition = stageDef(scenarioOf(state), "market_town").enterWhen.all
+    .find(entry => entry.kind === "spendable_resource_at_least" && entry.resource === "timber");
+  return condition?.kind === "spendable_resource_at_least" ? condition.value : 0;
+}
+
 function saleCandidates(sources: readonly Building[], state: GameState): readonly SaleCandidate[] {
   const civicReserve = constructionExportReserve(state);
+  const hamletKeep = hamletTimberKeep(state);
   const availableTimber = sources.reduce((total, building) => total +
     Math.max(0, amount(building.inventory, "timber") - amount(building.stockReserved, "timber")), 0);
   const availableStone = sources.reduce((total, building) => total +
@@ -113,7 +127,7 @@ function saleCandidates(sources: readonly Building[], state: GameState): readonl
   return sources.flatMap((building) =>
     SALE_RULES.flatMap((rule) => {
       if (state.era === "palisade" && rule.resource === "stone" && availableStone <= 400) return [];
-      if (rule.resource === "timber" && availableTimber <= civicReserve.timber) return [];
+      if (rule.resource === "timber" && availableTimber <= civicReserve.timber + hamletKeep) return [];
       if (rule.resource === "stone" && availableStone <= civicReserve.stone) return [];
       const stock = amount(building.inventory, rule.resource);
       const reserved = amount(building.stockReserved, rule.resource);

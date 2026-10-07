@@ -34,3 +34,9 @@ export const PETITION_FLOWS: Readonly<Record<string, Partial<Record<PetitionResp
   [BOROUGH_CHARTER_PETITION_ID]: { accept: ["fee_farm"] },
   [BOROUGH_AUTONOMY_PETITION_ID]: { accept: ["fee_farm"] },
 };
+
+/** FC-2: the famine's answer → the season's relief bought and released, or the granaries' grain sold, while it lasts. */
+export const FAMINE_FLOWS: Readonly<Record<string, readonly LedgerCategory[]>> = {
+  relief: ["famine_relief"],
+  speculation: ["famine_sale"],
+};

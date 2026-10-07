@@ -23,8 +23,8 @@ import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode,
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
 import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry, v4SenderFaction } from "./registryV4";
-import { stewardPick, standingSetting, weighOffer } from "./decisionLayer";
-import type { DecisionWeight } from "../content/stewardPolicyConfig";
+import { heavyLoad, stewardPick, standingSetting, weighOffer } from "./decisionLayer";
+import { DECISION_WEIGHT_BALANCE, type DecisionWeight } from "../content/stewardPolicyConfig";
 import { DECISION_RELATION } from "../content/decisionRelationConfig";
 
 const SEASON = 1_000;
@@ -416,7 +416,7 @@ function offerV4Season(state: GameState): GameState {
   const offer: RegistryOccurrence = { id: `registry:${chosen.entry.id}:${chosen.key}:${index}`, entryId: chosen.entry.id, boundId: Object.values(bound)[0] ?? "",
     offeredTick: state.tick, deadline: state.tick + REGISTRY_ANSWER_TICKS, status: "offered",
     receipt: { draw: chosen.draw, chancePermille: chosen.entry.frequency.chancePermille, conditions: [] }, source: "v4", bound, key: chosen.key, context: chosen.context };
-  return layerOffer({ ...state, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } }, offer);
+  return layerOffer({ ...state, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } }, offer, state);
 }
 
 /**
@@ -425,9 +425,11 @@ function offerV4Season(state: GameState): GameState {
  * steward's, answered now by the lord's standing policy for its sender (`sender:<faction>`; unless that policy is "bring
  * it to me").
  */
-function layerOffer(state: GameState, offer: RegistryOccurrence): GameState {
+function layerOffer(state: GameState, offer: RegistryOccurrence, before: GameState = state): GameState {
   const weighed = weighOffer(state, offer);
   if (weighed === null) return state;
+  // DTR-14 (P-T1): a heavy offer in a crowded year waits (it is not made this season); a light one is the steward's.
+  if (weighed.weights.length > 0 && heavyLoad(state) >= DECISION_WEIGHT_BALANCE.registryCrowded) return before;
   if (weighed.weights.length > 0) return settleWeights(state, offer.id, weighed.weights);
   const policy = standingSetting(state, `sender:${v4SenderFaction(offer.entryId) ?? "none"}`);
   const pick = stewardPick(policy, weighed.choices, treasuryBalance(state));

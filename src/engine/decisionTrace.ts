@@ -18,9 +18,10 @@ import type { GameState } from "./engine.types";
 import type { FactionMemory } from "./faction.types";
 import { appendHistoryRecords, type HistoryDraft } from "./history";
 import type { ActorRef, HistoryBecause } from "./history.types";
+import type { LedgerEntry } from "../ledger/ledger.types";
 import type { ConsequenceKey, TracedDecision, TracedDecisionKind, TraceState } from "./decisionTrace.types";
 import { CRISIS_RESERVE_DAYS } from "../content/crisisConfig";
-import { PETITION_FLOWS, TARGET_FLOWS } from "../content/decisionFlowConfig";
+import { FAMINE_FLOWS, PETITION_FLOWS, TARGET_FLOWS } from "../content/decisionFlowConfig";
 import { preparedness } from "./crisisReads";
 import { stateCalendar } from "./scenarioState";
 
@@ -57,7 +58,12 @@ export function changedTargets(before: GameState, after: GameState): string[] {
   if (before.agency?.duesPermille !== after.agency?.duesPermille) targets.add("dues");
   if ((before.timberOrder ?? 0) !== (after.timberOrder ?? 0)) targets.add("timber");
   const suits = new Map((before.estates?.suits ?? []).map(suit => [suit.id, suit] as const));
-  for (const suit of after.estates?.suits ?? []) if (suits.get(suit.id) !== suit) targets.add(`suit:${suit.id}`);
+  for (const suit of after.estates?.suits ?? []) {
+    if (suits.get(suit.id) === suit) continue;
+    targets.add(`suit:${suit.id}`);
+    // DTR-11: a judgment enforced — the estate's next yield to the lord carries it (the piece now his).
+    if (suit.enforced === true && suits.get(suit.id)?.enforced !== true) targets.add(`flow:estate_income@${suit.estateId}`);
+  }
   const claims = new Map((before.estates?.claims ?? []).map(claim => [claim.id, claim] as const));
   for (const claim of after.estates?.claims ?? []) {
     if (claims.get(claim.id) === claim) continue;
@@ -98,7 +104,11 @@ export function changedTargets(before: GameState, after: GameState): string[] {
   }
   // A crisis answered (the famine's response): its outcome follows from it.
   const events = new Map((before.events?.records ?? []).map(record => [record.id, record] as const));
-  for (const record of after.events?.records ?? []) if (record.response !== undefined && events.get(record.id)?.response === undefined) targets.add(`event:${record.id}`);
+  for (const record of after.events?.records ?? []) {
+    if (record.response === undefined || events.get(record.id)?.response !== undefined) continue;
+    targets.add(`event:${record.id}`);
+    for (const category of FAMINE_FLOWS[record.response.choice] ?? []) targets.add(`flow:${category}`);
+  }
   const guild = (state: GameState) => state.politics?.petitions.find(petition => petition.defId === GUILD_CHARTER_PETITION_ID)?.response;
   if (guild(before) !== guild(after) && guild(after) !== undefined) targets.add("guild");
   return [...targets].sort();
@@ -318,11 +328,24 @@ function onTarget(state: GameState, key: ConsequenceKey, target: string, detail:
 }
 
 /** The ledger lines a target's later postings fall in (a right's piece, a setting's, a chapter answer's), or null. */
-function flowOf(target: string): { readonly key: "right_income" | "payment_flow"; readonly categories: readonly string[] } | null {
+function flowOf(target: string): { readonly key: "right_income" | "payment_flow"; readonly categories: readonly string[]; readonly estate?: string } | null {
   if (target.startsWith("right:")) return { key: "right_income", categories: PIECE_INCOME_CATEGORIES[GRANT_PIECE[target.slice("right:".length)]!] ?? [] };
-  if (target.startsWith("flow:")) return { key: "payment_flow", categories: [target.slice("flow:".length)] };
+  if (target.startsWith("flow:")) {
+    // `flow:<category>@<estate>`: that estate's own postings only (its season's yield, not a petition's).
+    const [category, estate] = target.slice("flow:".length).split("@");
+    return { key: "payment_flow", categories: [category!], ...(estate === undefined ? {} : { estate }) };
+  }
   const categories = TARGET_FLOWS[target];
   return categories === undefined ? null : { key: "payment_flow", categories };
+}
+
+/** A posting falls in a flow: its category, its estate when the flow names one; rights count only cash coming in. */
+function inFlow(entry: LedgerEntry, flow: NonNullable<ReturnType<typeof flowOf>>): boolean {
+  if (!flow.categories.includes(entry.category)) return false;
+  if (flow.key === "right_income") return entry.account === "cash" && entry.amount > 0;
+  if (flow.estate !== undefined) return entry.sourceRefs.some(ref => ref.type === "actor" && ref.id === `estate:${flow.estate}`)
+    && !entry.sourceRefs.some(ref => ref.type === "claim");
+  return true;
 }
 
 /** The decision's first such posting is already written (the history's records since the decision, newest first). */
@@ -394,14 +417,14 @@ function consequences(before: GameState, after: GameState): GameState {
   // A granted right's first income after the grant (the stall fees of a market charter, the tolls of a bridge); DTR-11:
   // the first posting of the ledger lines a decision set going (the dues' stall fees, the wool in kind, the wages).
   const fresh = after.ledger === before.ledger || after.ledger === undefined ? 0 : after.ledger.nextEntryOrdinal - (before.ledger?.nextEntryOrdinal ?? 1);
-  const posted = fresh <= 0 ? [] : after.ledger!.entries.slice(-fresh).filter(entry => entry.account === "cash" && entry.amount !== 0);
+  const posted = fresh <= 0 ? [] : after.ledger!.entries.slice(-fresh).filter(entry => entry.amount !== 0);
   if (posted.length > 0) {
     for (const decision of traceOf(next).decisions) {
       if (next.tick - (decision.lastTick ?? decision.tick) > TRACE_LIVE_TICKS) continue;
       for (const target of decision.targets) {
         const flow = flowOf(target);
         if (flow === null) continue;
-        const amounts = posted.filter(entry => flow.categories.includes(entry.category) && (flow.key === "payment_flow" || entry.amount > 0));
+        const amounts = posted.filter(entry => inFlow(entry, flow));
         if (amounts.length === 0 || followed(next, decision, flow.key, target)) continue;
         const income = amounts.filter(entry => entry.amount > 0).reduce((sum, entry) => sum + entry.amount, 0);
         const expense = -amounts.filter(entry => entry.amount < 0).reduce((sum, entry) => sum + entry.amount, 0);

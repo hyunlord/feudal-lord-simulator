@@ -45,7 +45,22 @@ export const DECISION_WEIGHT_BALANCE = {
   largeSumFloor: 240,
   /** A choice that could take a faction's relation to this or below is a rupture. */
   ruptureRelation: -60,
+  /** P-T1: heavy decisions a year that come to the lord, at most (the gate's 1~4). */
+  heavyPerYear: 4,
+  /**
+   * DTR-14: the registry's heavy offer waits when this many heavy matters already came to the lord within the year —
+   * one place kept for what cannot wait (a crisis petition, an audit, an estate's large sum).
+   */
+  registryCrowded: 3,
 } as const;
+
+/**
+ * P-T1: the lord's own initiatives (a suit he files and presses, a marriage he proposes and its promises he keeps, his
+ * settings) are not matters that came to him; their keys (`TracedDecision.source`) start with these.
+ */
+export const LORD_INITIATIVES = ["file_suit", "add_suit_evidence", "seek_suit_patron", "enforce_possession", "propose_marriage", "keep_promise",
+  "set_estate_oversight", "set_audit_mode", "set_exception_rules", "set_estate_policy", "set_project_subsidy", "set_market_dues", "order_timber",
+  "set_standing_policy"] as const;
 
 /** The weight a registry command carries by itself (the rest weigh by their sums, or nothing). */
 export const COMMAND_WEIGHT: Readonly<Record<string, DecisionWeight>> = {
