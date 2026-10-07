@@ -5,9 +5,7 @@
 //    occurrence answered, the treasury moved as the card said, the card gone);
 //  - the same offer from its story chip ([결정하기] after [나중에 정하기]);
 //  - a hold: its card says what holding costs; held, the occurrence keeps that cost (ER-19);
-//  - each shipped picture through the real card: the same state with the open offer's entry set to each v4 entry the
-//    registry runs in turn, bound to its first targets there when it has them (injected; marked so in captures.json) — the
-//    card's picture loaded at 960 × 540 (the scene, a small JPEG);
+//  - (each live event's picture through the real card: `npm run eventart:auto`, scripts/eventArtAutoCapture.mjs — EVA-AUTO);
 //  - the card at 1024 × 768 and on the tablet (1180 × 820, touch): inside the view, text ≥ 12 px, answers ≥ 44 px;
 //  - lord mode only: the campaign's ui5 merchant town has no registry chip or card.
 //   scripts/remote/run.sh render-EVENTART-card -- bash scripts/eventArtCaptures.sh
@@ -17,9 +15,6 @@ refuseHeavyOnMac("브라우저 확인(scripts/eventArtCaptures.mjs)", { remote: 
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { shippedEventArtIds } from '../src/ui/eventArtSelection.ts';
-import { EVENT_ART_IMAGES } from '../src/ui/eventArtManifest.generated.ts';
-import { bindEntry, boundIdentities, v4Entry } from '../src/engine/registryV4.ts';
 import { registryOfferView } from '../src/ui/registryCardModel.ts';
 
 const [out] = process.argv.slice(2);
@@ -150,22 +145,6 @@ const rows = {};
   console.log(`${rows.hold.ok ? 'ok ' : 'BAD'} hold: ${JSON.stringify(rows.hold)}`);
   await context.close();
 }
-// 4. Every shipped picture through the real card (the open offer's entry set to each v4 entry the registry runs, in turn).
-const shipped = shippedEventArtIds(EVENT_ART_IMAGES);
-rows.pictures = {};
-for (const id of shipped) {
-  const bound = bindEntry(base, v4Entry(id));
-  const occurrences = base.registry.occurrences.map(o => o.id === offer.id ? { ...o, entryId: id, id: `${o.id}:as:${id}`, source: 'v4', bound: bound === null ? {} : boundIdentities(bound), key: id } : o);
-  const { context, page } = await open({ ...base, registry: { ...base.registry, occurrences } }, {}, 4000);
-  const opened = await waitCard(page, `picture-${id}`);
-  const shown = opened ? await card(page) : null;
-  const size = opened ? await shoot(page, `${CARD} .decision-card-art, ${CARD} .petition-scene`, `picture-${id}`, 30) : 0;
-  const ok = opened && shown.entry === id && shown.art === id && shown.src?.endsWith(`assets/event-art/${id}.jpg`) && Array.isArray(shown.loaded) && shown.loaded[0] === 960 && shown.loaded[1] === 540;
-  rows.pictures[id] = { injected: true, bound: bound !== null, opened, art: shown?.art ?? null, src: shown?.src ?? null, loaded: shown?.loaded ?? null, artBox: shown?.artBox ?? null,
-    title: shown?.title ?? null, answers: shown?.answers.map(answer => [answer.choice, answer.enabled, answer.hold]) ?? [], bytes: size, ok };
-  console.log(`${ok ? 'ok ' : 'BAD'} picture ${id}: ${shown?.src} ${JSON.stringify(shown?.loaded)} ${shown?.artBox} bound ${bound !== null}`);
-  await context.close();
-}
 // 5. The small view and the tablet.
 for (const [name, options] of [['1024x768', { width: 1024, height: 768 }], ['tablet', { width: 1180, height: 820, hasTouch: true }]]) {
   const { context, page } = await open(base, options);
@@ -188,8 +167,7 @@ for (const [name, options] of [['1024x768', { width: 1024, height: 768 }], ['tab
   await context.close();
 }
 await browser.close();
-const pictures = Object.values(rows.pictures);
-const ok = rows.drawn.ok && rows.chip.ok && rows.hold.ok && pictures.length === shipped.length && pictures.every(row => row.ok) && rows['1024x768'].ok && rows.tablet.ok && rows.campaign.ok;
-writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, offer: { id: offer.id, entryId: offer.entryId, receipt: offer.receipt }, shipped, rows }, null, 1) + '\n');
-console.log(JSON.stringify({ ok, bytes, pictures: pictures.filter(row => row.ok).length }));
+const ok = rows.drawn.ok && rows.chip.ok && rows.hold.ok && rows['1024x768'].ok && rows.tablet.ok && rows.campaign.ok;
+writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, offer: { id: offer.id, entryId: offer.entryId, receipt: offer.receipt }, rows }, null, 1) + '\n');
+console.log(JSON.stringify({ ok, bytes }));
 if (!ok) process.exitCode = 1;
