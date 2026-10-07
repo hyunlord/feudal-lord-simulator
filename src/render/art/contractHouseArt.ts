@@ -2,6 +2,8 @@ import type { Building } from '../../content/buildingConfig';
 import type { GameState } from '../../engine/engine.types';
 import { stateCalendar } from '../../engine/scenarioState';
 import { housePressureStatus } from '../../population/housePressure';
+import { houseCondition } from '../../population/houseCondition';
+import { plagueVacantPlots } from '../../engine/plague';
 import { textRandom } from '../buildingVariants';
 import { houseBodyEligible } from '../houseVariantChoice';
 import { houseStateLayerNow } from '../wave26HouseArt';
@@ -14,7 +16,7 @@ import type { ArtRegistry } from './artRegistry';
 import type { ArtPoint, ArtRect, BuildingBodyEntry, StateOverlayEntry } from './artContract';
 import { ART_REGISTRY } from './wave42Registry';
 
-type HouseArtState = Pick<GameState, 'seed' | 'houses'> & Partial<Pick<GameState, 'tick' | 'scenarioId' | 'events' | 'history'>>;
+type HouseArtState = Pick<GameState, 'seed' | 'houses'> & Partial<Pick<GameState, 'tick' | 'scenarioId' | 'events' | 'history' | 'plague'>>;
 export type ContractHouseInput = {
   readonly state: HouseArtState | undefined; readonly building: Building; readonly level: number;
   readonly legacyBodyUrl?: string;
@@ -40,7 +42,8 @@ export function createContractHouseArt(registry: ArtRegistry, environment?: ArtI
     const seasons = ['spring', 'summer', 'autumn', 'winter'] as const;
     return { context: { buildingKind: building.kind, level, calendarYear: stateCalendar(clock).year,
       lot: 'single', eligible: true, season: seasons[effective], legacyBodyUrl },
-    ageLayer: houseStateLayerNow(clock, house), snowAlpha, vacant: housePressureStatus(house) === 'abandoned', seed: Math.floor(textRandom(state.seed, building.id, 0) * 0x1_0000_0000) >>> 0 };
+    ageLayer: houseStateLayerNow(clock, house), condition: houseCondition(house), plagueVacant: plagueVacantPlots(state).includes(building.id),
+    snowAlpha, vacant: housePressureStatus(house) === 'abandoned', seed: Math.floor(textRandom(state.seed, building.id, 0) * 0x1_0000_0000) >>> 0 };
   };
   const selection = (input: ContractHouseInput) => {
     const read = facts(input);
@@ -48,8 +51,10 @@ export function createContractHouseArt(registry: ArtRegistry, environment?: ArtI
     const body = registry.select('building-body', 'house-body', read.context, read.seed);
     if (body?.kind !== 'building-body' || !body.buildingKinds.includes(input.building.kind) || !body.levels.includes(input.level)) return null;
     const layers: StateOverlayEntry[] = [];
-    for (const layer of [read.ageLayer, 'boarded', 'snow'] as const) {
+    for (const layer of [read.ageLayer, 'worn', 'boarded', 'snow'] as const) {
       if (layer === null) continue;
+      if (layer === 'worn' && (read.condition === 'maintained' || !registry.entries('state-overlay').some(entry =>
+        entry.kind === 'state-overlay' && entry.layer === 'worn' && entry.targetBodyIds.includes(body.id)))) continue;
       if ((layer === 'fresh' || layer === 'weathered') && !registry.entries('state-overlay').some(entry =>
         entry.kind === 'state-overlay' && entry.layer === layer && entry.targetBodyIds.includes(body.id))) continue;
       if (layer === 'boarded' && !read.vacant) continue;
@@ -57,8 +62,9 @@ export function createContractHouseArt(registry: ArtRegistry, environment?: ArtI
       // Spring melt applies only to bodies with an authored snow layer; do not invent a required layer for other catalogs.
       if (layer === 'snow' && read.context.season === 'spring' && !registry.entries('state-overlay').some(entry =>
         entry.kind === 'state-overlay' && entry.layer === 'snow' && entry.targetBodyIds.includes(body.id))) continue;
-      const overlay = registry.select('state-overlay', `house-${layer}`, {
+      const overlay = registry.select('state-overlay', layer === 'worn' ? 'house-condition' : `house-${layer}`, {
         bodyId: body.id, layer, season: layer === 'snow' ? 'winter' : read.context.season, vacant: read.vacant,
+        houseCondition: read.condition, plagueVacant: read.plagueVacant,
       }, read.seed);
       // Registry geometry compatibility is guaranteed only for declared targets, not every rule match.
       if (overlay?.kind !== 'state-overlay' || overlay.layer !== layer || !overlay.targetBodyIds.includes(body.id)) return null;
