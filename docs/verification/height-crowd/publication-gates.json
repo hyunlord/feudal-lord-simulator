@@ -1,11 +1,29 @@
 {
   "productCommit": "e75f2bab",
-  "focusedTests": {"passed": 10, "failed": 0},
+  "focusedTests": {
+    "passed": 10,
+    "failed": 0
+  },
   "typecheck": "pass",
   "lint": "pass",
   "actualScenePairs": 3,
   "newPNGCount": 0,
-  "geometry": "pending official changed-row gate",
-  "finalChangedTests": "pending exact final tree",
-  "mergeChecks": "pending final gate"
+  "geometry": {
+    "run": "astra-HEIGHT-CROWD-geometry-6f24e64",
+    "commit": "6f24e64ade0d24905bdf5409b4b3fd1c4b7f896e",
+    "inputHash": "da30cc3d321a5dce21a040e3dd16cc75e3deb8981fac1c6ef88e748d69a6205a",
+    "rows": 4,
+    "conditions": 80,
+    "measured": 80,
+    "failures": 0,
+    "unopened": 0
+  },
+  "finalChangedTests": {
+    "requiredBeforePush": true,
+    "receiptLocation": ".remote-runs/test-changed/<final-tree>.json; exact receipt also included in report ZIP"
+  },
+  "mergeChecks": {
+    "requiredBeforePush": true,
+    "logLocation": "report ZIP final-check-merge.txt"
+  }
 }
