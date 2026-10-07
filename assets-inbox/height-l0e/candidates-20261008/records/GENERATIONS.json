@@ -1,0 +1,386 @@
+[
+  {
+    "attempt": "boarded01",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/boarded01.png",
+    "rawSha256": "4eeacbd48ff605805c7ad73c8c398ca01207edf6315e464493f1cbd79db55a93",
+    "prompt": "prompts/boarded01.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "boarded02",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/boarded02.png",
+    "rawSha256": "5b7c3aa5dabd19e4a836d6fbfc6d1e3133d5ee1706e6d6baf05aa6646b6478a5",
+    "prompt": "prompts/boarded02.txt",
+    "inputImages": [
+      {
+        "path": "assets/house_l0_e-body.png",
+        "sha256": "ebe5c16e4f2dd80efd415bf9231ad7ad2867becc8d5933986331c475398f7750"
+      }
+    ],
+    "selected": true
+  },
+  {
+    "attempt": "body01",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body01.png",
+    "rawSha256": "f772b490796d9f2aebae2f661d8ef7af5e8a1d7f3936598654617246b69f5895",
+    "prompt": "prompts/body01.txt",
+    "inputImages": [
+      {
+        "path": "references/house_l0_e.png",
+        "sha256": "0ce018808f5860fb0248ab6d9afd23ee1f7bab00bb341019ab082bcdeaf292b9"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body02",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body02.png",
+    "rawSha256": "b2eb9844f688672493cff4623a9d688e39c92bced65477486430ef5651062ade",
+    "prompt": "prompts/body02.txt",
+    "inputImages": [
+      {
+        "path": "body01-native.png",
+        "sha256": "c3b022e4e38e9bb62954f968f0207033ba0edea3283b234711df85c9ad96cc84"
+      },
+      {
+        "path": "references/house_l0_e.png",
+        "sha256": "0ce018808f5860fb0248ab6d9afd23ee1f7bab00bb341019ab082bcdeaf292b9"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body03",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body03.png",
+    "rawSha256": "8d10f30cad8d2b02e01b4b22d017c29a717c3ace62b6716cc2b2b35e10c0ddb2",
+    "prompt": "prompts/body03.txt",
+    "inputImages": [
+      {
+        "path": "body02-native.png",
+        "sha256": "146b390e1c63298052dee1e5d0f2d0d50c1db9324fb1d24602d07f11e1b06f44"
+      },
+      {
+        "path": "references/height-era2-house_l0_1350_a-body-candidate.png",
+        "sha256": "d92e046f84df490072f986f468596103461f74c30154ce2273efd0a8513a015c"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body04",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body04.png",
+    "rawSha256": "2c4b079db2911008796424d71160ec51afeba84d00bd08ecda0531665eb97ae7",
+    "prompt": "prompts/body04.txt",
+    "inputImages": [
+      {
+        "path": "body03-native.png",
+        "sha256": "44cb3321a6cbaaad43c03fe0ed99f651e910d8c68ae14f63b8fcbc1a411b60c3"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body05",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body05.png",
+    "rawSha256": "7aa6cff047149144f289de912beb5a9adf30562ff6c0d3f4f9651f4fea47fc3c",
+    "prompt": "prompts/body05.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body06",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body06.png",
+    "rawSha256": "1a4f8692ead2cb3fe2de8ab785054a83ab408ee8d556f91bb54b7646e0c41000",
+    "prompt": "prompts/body06.txt",
+    "inputImages": [
+      {
+        "path": "body05-native.png",
+        "sha256": "bbd0f3d49f672d5615685a39fc99317b2e1b85457860cf720efa83acec541906"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body07",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body07.png",
+    "rawSha256": "bed5501993a02d6d22b0b1fb5a8d7919cd361f41b5d1de1e2dbbd3d9821688bb",
+    "prompt": "prompts/body07.txt",
+    "inputImages": [
+      {
+        "path": "body06-native.png",
+        "sha256": "829296edc1b364ff5d1bb37e9e7b964df4942dd67f750b72afdfe75e2fcecf1f"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body08",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body08.png",
+    "rawSha256": "84d231876b21045e3f2aaeb5eb31f42949ef2cf444a03a16178cbb8dbf11590c",
+    "prompt": "prompts/body08.txt",
+    "inputImages": [
+      {
+        "path": "body07-native.png",
+        "sha256": "9522b357e6f91b0c023f1c12fb08d64a69c16b49b5c7f2ddec3cb41f9b0d8808"
+      },
+      {
+        "path": "references/house_l0_e.png",
+        "sha256": "0ce018808f5860fb0248ab6d9afd23ee1f7bab00bb341019ab082bcdeaf292b9"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body09",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body09.png",
+    "rawSha256": "956f83036284acadb916ae4619e75737ceb80e7e4200306afd4447f308b74f36",
+    "prompt": "prompts/body09.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body10",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body10.png",
+    "rawSha256": "a67c7bd193a50d9726b819ef15ac9bfc4b687404425111228ff9b1daade70e7d",
+    "prompt": "prompts/body10.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body11",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body11.png",
+    "rawSha256": "d00d14cef9231d9a0c78f3f80ae326a7467e2c9fa0afd52ee6bfb138063dd8b3",
+    "prompt": "prompts/body11.txt",
+    "inputImages": [
+      {
+        "path": "body10-native.png",
+        "sha256": "835bf374591f87d762203e170715ff11a2b9baeed3a731ff4425ad4df55e9028"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body12",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body12.png",
+    "rawSha256": "81661d5ef29d28cd5bcc65ea2973d3f685a2c5865968180be46f16ae9a0ea0bf",
+    "prompt": "prompts/body12.txt",
+    "inputImages": [
+      {
+        "path": "body11-native.png",
+        "sha256": "4fc240c68507f34aca8df9bd7b88cc5f02c71e3fbb24588a9b2ee527f480d244"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "body13",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/body13.png",
+    "rawSha256": "7ea15b739d04b827db2998408c9cdfc8aa4ab6eaa00383c0fbbca5f2f30bdc6f",
+    "prompt": "prompts/body13.txt",
+    "inputImages": [
+      {
+        "path": "body10-native.png",
+        "sha256": "835bf374591f87d762203e170715ff11a2b9baeed3a731ff4425ad4df55e9028"
+      }
+    ],
+    "selected": true
+  },
+  {
+    "attempt": "fresh01",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/fresh01.png",
+    "rawSha256": "9aecab302684dd189928e71a180274dc20010ca22209e1b353285cec93670d7f",
+    "prompt": "prompts/fresh01.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      },
+      {
+        "path": "references/house_l0_e_fresh.png",
+        "sha256": "c31f88025d287eb7fcaa343c8699687dcd026cdcaa25a8524bd4553afc73d2fc"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "fresh02",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/fresh02.png",
+    "rawSha256": "c236ffa7409c787fc6aef0f4a9c994a6066976c89890d1a19b91281d54b436d3",
+    "prompt": "prompts/fresh02.txt",
+    "inputImages": [
+      {
+        "path": "assets/house_l0_e-body.png",
+        "sha256": "ebe5c16e4f2dd80efd415bf9231ad7ad2867becc8d5933986331c475398f7750"
+      }
+    ],
+    "selected": true
+  },
+  {
+    "attempt": "snow01",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/snow01.png",
+    "rawSha256": "ec13343508d5d1547abf2fd5eca3426c648aad8535f12b6d7142b440276a4b43",
+    "prompt": "prompts/snow01.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "snow02",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/snow02.png",
+    "rawSha256": "6627083eabb45d9312b9339f69d00b5c5bcbb09aee584bcb19a48a1421d3f485",
+    "prompt": "prompts/snow02.txt",
+    "inputImages": [
+      {
+        "path": "snow01-rejected-native.png",
+        "sha256": "45d1e57bae3d6534e929712ac488fba1f25cbaaceaee1dcdc74c8e924dfaba08"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "snow03",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/snow03.png",
+    "rawSha256": "6c57546258600149968b15f655dbfe2777fab2616dcf8d17ad5b59c08f06a099",
+    "prompt": "prompts/snow03.txt",
+    "inputImages": [
+      {
+        "path": "assets/house_l0_e-body.png",
+        "sha256": "ebe5c16e4f2dd80efd415bf9231ad7ad2867becc8d5933986331c475398f7750"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "snow04",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/snow04.png",
+    "rawSha256": "e34e6bbe214df37cbd6b767354e9d9da60d1fc7e920edd13c07eed26c361decc",
+    "prompt": "prompts/snow04.txt",
+    "inputImages": [
+      {
+        "path": "snow03-native.png",
+        "sha256": "d03a6d041ec0c3ac725556b0222e86449929b8ebfda85039cbc8d4547e70a8c2"
+      }
+    ],
+    "selected": true
+  },
+  {
+    "attempt": "weathered01",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/weathered01.png",
+    "rawSha256": "4c1cedadc168afe54d01940e71fa523f0a2f98eb7f23477551aaab144ba0f6f1",
+    "prompt": "prompts/weathered01.txt",
+    "inputImages": [
+      {
+        "path": "body04-layer-candidates/house_l0_e-body.png",
+        "sha256": "2995dbe64e6e771216c1985115813032220812ad698978a523220e286de6fe19"
+      },
+      {
+        "path": "references/house_l0_e_weathered.png",
+        "sha256": "81b6caee21c8835025d7f19b53588cbd71dfccf53a6141b9b590ffe1a3014dd7"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "weathered02",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/weathered02.png",
+    "rawSha256": "2175b773301468ecbc7a9208e4c1bb90eb8ae755d908198b6eecd76b74c2157f",
+    "prompt": "prompts/weathered02.txt",
+    "inputImages": [
+      {
+        "path": "weathered01-rejected-native.png",
+        "sha256": "ca71bad83f4741e5aea81f7ad2792969ef3ecd243a1ac37db6ff83d03d49b5b9"
+      },
+      {
+        "path": "references/house_l0_e_weathered.png",
+        "sha256": "81b6caee21c8835025d7f19b53588cbd71dfccf53a6141b9b590ffe1a3014dd7"
+      }
+    ],
+    "selected": false
+  },
+  {
+    "attempt": "weathered03",
+    "tool": "builtin image_gen.imagegen",
+    "transparentBackground": true,
+    "raw": "raw/weathered03.png",
+    "rawSha256": "043c0596d3969d064964aed510e3c59255fb516c1bdbba8e378e0a3701b949e9",
+    "prompt": "prompts/weathered03.txt",
+    "inputImages": [
+      {
+        "path": "assets/house_l0_e-body.png",
+        "sha256": "ebe5c16e4f2dd80efd415bf9231ad7ad2867becc8d5933986331c475398f7750"
+      }
+    ],
+    "selected": true
+  }
+]

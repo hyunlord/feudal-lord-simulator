@@ -8,7 +8,7 @@ const number = (unit: string): ArtContextField => ({ type: 'number', unit });
 export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string, ArtContextField>>>> = Object.freeze({
   'building-attachment': { bodyId: text, occupation: text, calendarYear: number('calendar-year'), season: text, role: text },
   'building-body': { buildingKind: text, level: number('level'), season: text, calendarYear: number('calendar-year'), lot: text, legacyBodyUrl: text, eligible: { type: 'boolean', unit: 'boolean' } },
-  'state-overlay': { bodyId: text, layer: text, season: text, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
+  'state-overlay': { bodyId: text, layer: text, season: text, houseCondition: text, plagueVacant: { type: 'boolean', unit: 'boolean' }, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
   'ground-prop': { buildingKind: text, resource: text, baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },
   'walker-transport': { group: text, facing: text },
   'walker-cargo': { role: text, cargoKind: text, facing: text, frame: number('frame-index') },

@@ -1,0 +1,62 @@
+{
+  "pairs": 22,
+  "positiveRuntimeImages": [
+    "height-historic-l1/house_l1-historic-boarded-v3.png",
+    "height-historic-l1/house_l1-historic-body-v3.png",
+    "height-historic-l1/house_l1-historic-neglected-v3.png",
+    "height-historic-l1/house_l1-historic-plague-shut-v3.png",
+    "height-historic-l1/house_l1-historic-snow-v3.png",
+    "height-historic-l1/house_l1-historic-strained-v3.png",
+    "height-historic-l1/house_l1-historic-vacant-v3.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "after-maintained-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-neglected-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-abandoned-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-abandoned-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-abandoned-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-maintained-z3",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-z3",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": "Historical L1 condition consumer; seed24 prepared QA; snow right gable residual max4native; weak strain visibility; closed doorleaf proxy not effective opening certification; no natural growth claim.",
+  "observations": "See README for actual close and play-zoom inspection."
+}
