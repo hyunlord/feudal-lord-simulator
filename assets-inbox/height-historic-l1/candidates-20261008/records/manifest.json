@@ -1,0 +1,359 @@
+{
+  "task": "RB-HEIGHT-HISTORIC-L1",
+  "status": "candidate-art-only; static QA, NOT installed or real-game verified",
+  "readBase": "09ddf126aff03d4b79b577775671404a2aa3029e",
+  "assets": [
+    {
+      "role": "body",
+      "file": "HANDOFF7/house_l1-historic-body-v3.png",
+      "sha256": "7742bd9d112750bf034993d221071f901c5a04ec7efe0d6d9286ee638c75c5b8",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/body-05.png",
+      "rawSHA256": "f22a96b3d56e24e73fd207fb8bc72d7fc53eb9d312326ecb34e504f71b382985",
+      "rawCanvas": [
+        1059,
+        1486
+      ],
+      "registration": {
+        "uniformScale": 0.104,
+        "translation": [
+          13,
+          12
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 84,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        15,
+        14,
+        123,
+        164
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    },
+    {
+      "role": "snow",
+      "file": "HANDOFF7/house_l1-historic-snow-v3.png",
+      "sha256": "8fe87ced5575f4f00fde9b5764bb4dd0f0699a20c656b8ba0c13d3a1cad56e5c",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/snow-01.png",
+      "rawSHA256": "128d786fa006aaf1594ff5523e152afd028514c02749223092ae9994cb40f861",
+      "rawCanvas": [
+        1117,
+        1408
+      ],
+      "registration": {
+        "uniformScale": 0.11448522829006268,
+        "translation": [
+          2,
+          1
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        18,
+        16,
+        123,
+        98
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    },
+    {
+      "role": "boarded",
+      "file": "HANDOFF7/house_l1-historic-boarded-v3.png",
+      "sha256": "5271937497b45492922951b250ba5b47014ba953ed9be88ac2c764e1cfaaec55",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/boarded-01.png",
+      "rawSHA256": "afcf2763fa131635366eddaec14f8c1c2f55e64c164c938bdf9f970745df02e6",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        28,
+        89,
+        112,
+        160
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    },
+    {
+      "role": "strained",
+      "file": "HANDOFF7/house_l1-historic-strained-v3.png",
+      "sha256": "f7c4026670f40199809f0a4ea4a1a452d9ccc1f2934d7cbc9fb13d8331490310",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/strained-01.png",
+      "rawSHA256": "54fa847fb870f6deea04b66b23f0d894b7576caaa39630984785fb025afa0700",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          -5,
+          22
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        73,
+        127,
+        78,
+        149
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    },
+    {
+      "role": "neglected",
+      "file": "HANDOFF7/house_l1-historic-neglected-v3.png",
+      "sha256": "cbe030d4f68902c966be991559992fe0b1db80e72dae1183709bcf2bce91683f",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/neglected-01.png",
+      "rawSHA256": "f3ee84b2ccf33214ecbfd129b63ce3ca56e4a9106584436d1ebad6dce8e733bf",
+      "rawCanvas": [
+        1117,
+        1408
+      ],
+      "registration": {
+        "uniformScale": 0.12444046553267682,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        56,
+        26,
+        86,
+        151
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    },
+    {
+      "role": "vacant",
+      "file": "HANDOFF7/house_l1-historic-vacant-v3.png",
+      "sha256": "5bbc55b9b47479547e3ad9f9c066681d4a3e1699391dd6de3ac0f951390432d7",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/vacant-01.png",
+      "rawSHA256": "be458f317500cf9feb6e7115be8a55a8e4fae98720b04f4a3abed4c2ef5fc11a",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        31,
+        51,
+        95,
+        142
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    },
+    {
+      "role": "plague-shut",
+      "file": "HANDOFF7/house_l1-historic-plague-shut-v3.png",
+      "sha256": "e4d9d57331f3953a240df271c034a51cb1d1c25f640320242801b6ed58788d5c",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/plague-shut-01.png",
+      "rawSHA256": "d934aed7bcdbde2952243201387c4ce6c1929045d2fa571805a23a6cac00a3f7",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine Bicubic; no local edits/masks/warp",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        26,
+        83,
+        113,
+        152
+      ],
+      "nativeEdgeAlphaNonzero": 0
+    }
+  ],
+  "generations": {
+    "total": 11,
+    "body": 5,
+    "layers": 6,
+    "rejectedBodies": [
+      "body-01",
+      "body-02",
+      "body-03",
+      "body-04"
+    ],
+    "selectedBody": "body-05",
+    "rejectedRegistrations": [
+      "snow-01 initial scale produced right overhang; adjusted uniformly without pixel clipping"
+    ],
+    "model": "builtin imagegen; model/seed not returned"
+  },
+  "forbiddenOperationsUsed": [],
+  "stateRolesRetained": [
+    "body",
+    "snow",
+    "boarded",
+    "strained",
+    "neglected",
+    "vacant",
+    "plague-shut"
+  ],
+  "excludedLegacyFallback": [
+    "fire_roof",
+    "burnt"
+  ]
+}
