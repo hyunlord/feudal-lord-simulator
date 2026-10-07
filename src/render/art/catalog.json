@@ -23793,5 +23793,613 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "ui-wave18-hud",
+    "entries": [
+      {
+        "id": "hud.main.dock_build",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/main/dock_build.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/main/dock_build.png",
+          "sourceSha256": "9e26630219c4373959beeff825fdf651034fd0792ef0c6db6ec41f0e6b0bdf56",
+          "runtimeSha256": "9e26630219c4373959beeff825fdf651034fd0792ef0c6db6ec41f0e6b0bdf56"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.main.dock_ledger",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/main/dock_ledger.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/main/dock_ledger.png",
+          "sourceSha256": "c144c4c7ed1f941187a110be65736daf485b5d4b8a803d6b05da5bdd8b848836",
+          "runtimeSha256": "c144c4c7ed1f941187a110be65736daf485b5d4b8a803d6b05da5bdd8b848836"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.main.pill_population",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/main/pill_population.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/main/pill_population.png",
+          "sourceSha256": "1ba597a5c5f1e0bbe2e234430c48d4b885cbbe1c9791c2482fd31f943622b910",
+          "runtimeSha256": "1ba597a5c5f1e0bbe2e234430c48d4b885cbbe1c9791c2482fd31f943622b910"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.main.pill_food_days",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/main/pill_food_days.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/main/pill_food_days.png",
+          "sourceSha256": "1d242e4a04928ca18607ae4c164716768cf0e6c05a53fb7fd15be51eebdef7ab",
+          "runtimeSha256": "1d242e4a04928ca18607ae4c164716768cf0e6c05a53fb7fd15be51eebdef7ab"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.main.pill_money",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/main/pill_money.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/main/pill_money.png",
+          "sourceSha256": "e4e064fe40919e2affb0943067235db149a236be50c7e52d6af3016f953da144",
+          "runtimeSha256": "e4e064fe40919e2affb0943067235db149a236be50c7e52d6af3016f953da144"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.reasons.reason_no_road",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/reasons/reason_no_road.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/reasons/reason_no_road.png",
+          "sourceSha256": "bc9fc7f37855a85e15d022398305a2059465466d0f5d15fb3cefd50d71ab356f",
+          "runtimeSha256": "bc9fc7f37855a85e15d022398305a2059465466d0f5d15fb3cefd50d71ab356f"
+        },
+        "cssWidths": [
+          20,
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.reasons.reason_overlap",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/reasons/reason_overlap.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/reasons/reason_overlap.png",
+          "sourceSha256": "e475ed010253c05a103d81637bc2dffc56b569d1e6ab5d426eefe64d24d03431",
+          "runtimeSha256": "e475ed010253c05a103d81637bc2dffc56b569d1e6ab5d426eefe64d24d03431"
+        },
+        "cssWidths": [
+          20,
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.reasons.reason_water",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/reasons/reason_water.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/reasons/reason_water.png",
+          "sourceSha256": "3e7d9c28501d9a75316fa98ec6fea26b0cafbe21842deb52667e0f44cb25df78",
+          "runtimeSha256": "3e7d9c28501d9a75316fa98ec6fea26b0cafbe21842deb52667e0f44cb25df78"
+        },
+        "cssWidths": [
+          20,
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.reasons.reason_wall_forbidden",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/reasons/reason_wall_forbidden.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/reasons/reason_wall_forbidden.png",
+          "sourceSha256": "c1ccc2afd808db9d70bebf97f4c3114b497a4666f5daefc4894868f0693bdbb0",
+          "runtimeSha256": "c1ccc2afd808db9d70bebf97f4c3114b497a4666f5daefc4894868f0693bdbb0"
+        },
+        "cssWidths": [
+          20,
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.reasons.reason_zone_forbidden",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/reasons/reason_zone_forbidden.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/reasons/reason_zone_forbidden.png",
+          "sourceSha256": "9c959c509af7e8d1774d7edbb4333998079169d0623b7d375086d33486a43aa2",
+          "runtimeSha256": "9c959c509af7e8d1774d7edbb4333998079169d0623b7d375086d33486a43aa2"
+        },
+        "cssWidths": [
+          20,
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.reasons.reason_material_shortage",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/reasons/reason_material_shortage.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/reasons/reason_material_shortage.png",
+          "sourceSha256": "89065db518b7f3fdbaaaf17b5c9a27b8210ed240b62973a41f2bddead5e6735e",
+          "runtimeSha256": "89065db518b7f3fdbaaaf17b5c9a27b8210ed240b62973a41f2bddead5e6735e"
+        },
+        "cssWidths": [
+          20,
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_brush",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_brush.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_brush.png",
+          "sourceSha256": "f6a40d2f9aeb7fcd7accbf92dc0d53a8725ad97e3961e423444e11687233a463",
+          "runtimeSha256": "f6a40d2f9aeb7fcd7accbf92dc0d53a8725ad97e3961e423444e11687233a463"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_polygon",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_polygon.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_polygon.png",
+          "sourceSha256": "dc1eae2f0505bb6b5d4c74da51b667d8daab24c957c674b4eaa43e6283d8b3ab",
+          "runtimeSha256": "dc1eae2f0505bb6b5d4c74da51b667d8daab24c957c674b4eaa43e6283d8b3ab"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_erase",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_erase.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_erase.png",
+          "sourceSha256": "b25b53d3613f1bce5197e4b35cd0d0f53098d10d565478ab4336c986a9b845d0",
+          "runtimeSha256": "b25b53d3613f1bce5197e4b35cd0d0f53098d10d565478ab4336c986a9b845d0"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_undo",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_undo.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_undo.png",
+          "sourceSha256": "bdf1c1c861525ca76d2b6c0c630b55a5a5ef2b248f951b850efc5f9f0d60bd5b",
+          "runtimeSha256": "bdf1c1c861525ca76d2b6c0c630b55a5a5ef2b248f951b850efc5f9f0d60bd5b"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_redo",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_redo.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_redo.png",
+          "sourceSha256": "f3e5f681dc16d8c8c2a6f7e8b29f3a1f349ec0d986062516c3413d93346f0b96",
+          "runtimeSha256": "f3e5f681dc16d8c8c2a6f7e8b29f3a1f349ec0d986062516c3413d93346f0b96"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_size_small",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_size_small.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_size_small.png",
+          "sourceSha256": "d79b9520fa076f0345c96c2f45e1057b56a3f2a4009f94535c0ac58f83477b76",
+          "runtimeSha256": "d79b9520fa076f0345c96c2f45e1057b56a3f2a4009f94535c0ac58f83477b76"
+        },
+        "cssWidths": [
+          18
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_size_large",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_size_large.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_size_large.png",
+          "sourceSha256": "0b2c61438b0ab26e14d909866ea76f3e8d553444ba7a889b012725a06da21b0e",
+          "runtimeSha256": "0b2c61438b0ab26e14d909866ea76f3e8d553444ba7a889b012725a06da21b0e"
+        },
+        "cssWidths": [
+          14,
+          18
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.zone.zone_paint_forbidden",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/zone/zone_paint_forbidden.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/zone/zone_paint_forbidden.png",
+          "sourceSha256": "9cd66e634ce1eeb0a95c27f021841f689874daca4c5f635221b1370241035487",
+          "runtimeSha256": "9cd66e634ce1eeb0a95c27f021841f689874daca4c5f635221b1370241035487"
+        },
+        "cssWidths": [
+          14
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.crisis.crisis_fire",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/crisis/crisis_fire.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/crisis/crisis_fire.png",
+          "sourceSha256": "40905b23a78a175eb2f25e04bfa1c988606f315140da4a56a3d8b3074856ee63",
+          "runtimeSha256": "40905b23a78a175eb2f25e04bfa1c988606f315140da4a56a3d8b3074856ee63"
+        },
+        "cssWidths": [
+          36
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.crisis.crisis_household_leaving",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/crisis/crisis_household_leaving.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/crisis/crisis_household_leaving.png",
+          "sourceSha256": "94a4d9579926f6d210abc59b4b0449cd2fcb32b74ccf90caae24ce73d41b6a4f",
+          "runtimeSha256": "94a4d9579926f6d210abc59b4b0449cd2fcb32b74ccf90caae24ce73d41b6a4f"
+        },
+        "cssWidths": [
+          36
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.crisis.crisis_construction_blocked",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/crisis/crisis_construction_blocked.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/crisis/crisis_construction_blocked.png",
+          "sourceSha256": "1898fdbe3b9339bcff7034a3af27d40ec884da4ed2779d4381d23d6f22123708",
+          "runtimeSha256": "1898fdbe3b9339bcff7034a3af27d40ec884da4ed2779d4381d23d6f22123708"
+        },
+        "cssWidths": [
+          36
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.crisis.crisis_upkeep_unpaid",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/crisis/crisis_upkeep_unpaid.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/crisis/crisis_upkeep_unpaid.png",
+          "sourceSha256": "994d2ad8f0e0dda6ee05c1ebd7dee16f4cd8d9382c05be1fd9ea29537bc8f642",
+          "runtimeSha256": "994d2ad8f0e0dda6ee05c1ebd7dee16f4cd8d9382c05be1fd9ea29537bc8f642"
+        },
+        "cssWidths": [
+          36
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.crisis.crisis_storage_full",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/crisis/crisis_storage_full.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/crisis/crisis_storage_full.png",
+          "sourceSha256": "1377a0abf2650efb45e369190259266ed2e27bdba50eee24a8067bb2cac7b32d",
+          "runtimeSha256": "1377a0abf2650efb45e369190259266ed2e27bdba50eee24a8067bb2cac7b32d"
+        },
+        "cssWidths": [
+          36
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.crisis.crisis_food_shortage",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/crisis/crisis_food_shortage.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/crisis/crisis_food_shortage.png",
+          "sourceSha256": "54927e1f3785334679eeb706a7a5972cc0b3f0c0ea5a29c73d58c1c347e7340e",
+          "runtimeSha256": "54927e1f3785334679eeb706a7a5972cc0b3f0c0ea5a29c73d58c1c347e7340e"
+        },
+        "cssWidths": [
+          36
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.misc.layer_lock_badge",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/misc/layer_lock_badge.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/misc/layer_lock_badge.png",
+          "sourceSha256": "daf7a3984859dab26bf63a6dac3507962ba3a76bbdefad94bd2175e4cd6e2c76",
+          "runtimeSha256": "daf7a3984859dab26bf63a6dac3507962ba3a76bbdefad94bd2175e4cd6e2c76"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.misc.confirm_check_touch",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/misc/confirm_check_touch.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/misc/confirm_check_touch.png",
+          "sourceSha256": "a23ae391d547c278d93d6c17d4048c3dde7ce80dbc07b03093c983b5dcb368f8",
+          "runtimeSha256": "a23ae391d547c278d93d6c17d4048c3dde7ce80dbc07b03093c983b5dcb368f8"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.misc.cancel_touch",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/misc/cancel_touch.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/misc/cancel_touch.png",
+          "sourceSha256": "c0f25dbb5b2add2f397b7560b086f413fd8fb391af270be74bc77e639f2974f9",
+          "runtimeSha256": "c0f25dbb5b2add2f397b7560b086f413fd8fb391af270be74bc77e639f2974f9"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.misc.pulse_ring",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/misc/pulse_ring.png",
+          "width": 288,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/misc/pulse_ring.png",
+          "sourceSha256": "614889c4445c1f7ca98c197a691f627f4887e12660f28d19ddd99eb62055cae3",
+          "runtimeSha256": "614889c4445c1f7ca98c197a691f627f4887e12660f28d19ddd99eb62055cae3"
+        },
+        "cssWidths": [
+          288
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.patterns.pattern_ok",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/patterns/pattern_ok.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/patterns/pattern_ok.png",
+          "sourceSha256": "e4262411b60f1cb56067d16eef58f67f0f91392de5a8ba381832f5eb560df901",
+          "runtimeSha256": "e4262411b60f1cb56067d16eef58f67f0f91392de5a8ba381832f5eb560df901"
+        },
+        "cssWidths": [
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.patterns.pattern_blocked_hatch",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/patterns/pattern_blocked_hatch.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/patterns/pattern_blocked_hatch.png",
+          "sourceSha256": "bc593738f230d12cab565e40413b1967e1e404bb0542aaa085593d0949532554",
+          "runtimeSha256": "bc593738f230d12cab565e40413b1967e1e404bb0542aaa085593d0949532554"
+        },
+        "cssWidths": [
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.patterns.pattern_blocked_cross",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/patterns/pattern_blocked_cross.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/patterns/pattern_blocked_cross.png",
+          "sourceSha256": "853ca606b7edbdeec36c8d076dfcec79f49f75e6261541dd7a3bfb6ed560fea4",
+          "runtimeSha256": "853ca606b7edbdeec36c8d076dfcec79f49f75e6261541dd7a3bfb6ed560fea4"
+        },
+        "cssWidths": [
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "hud.patterns.pattern_service_range_edge",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/wave18/patterns/pattern_service_range_edge.png",
+          "width": 128,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave18/candidates-v1/assets/patterns/pattern_service_range_edge.png",
+          "sourceSha256": "9bedd3699eecbe920ce30c1a3997945449fc466dd5ba32d29063ff44260693ab",
+          "runtimeSha256": "9bedd3699eecbe920ce30c1a3997945449fc466dd5ba32d29063ff44260693ab"
+        },
+        "cssWidths": [
+          128
+        ],
+        "derivatives": []
+      }
+    ],
+    "rules": []
   }
 ]
