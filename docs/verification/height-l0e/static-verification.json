@@ -1,0 +1,120 @@
+{
+  "runtimeExact": [
+    {
+      "role": "body",
+      "sha256": "ebe5c16e4f2dd80efd415bf9231ad7ad2867becc8d5933986331c475398f7750"
+    },
+    {
+      "role": "fresh",
+      "sha256": "f8f1f8b0cda0a8629722ff5bb707bcf55db4481c06c38875af0a9b09ef4aab49"
+    },
+    {
+      "role": "weathered",
+      "sha256": "73c0c2e9694f640a3f2713b6d5261b7d50f1891c3b506144d7cdea9e8a7dc5b3"
+    },
+    {
+      "role": "snow",
+      "sha256": "df054a2db4b1cbb000dd7f31e4d3a014e72f2eefe079072c44cc8cc733622a94"
+    },
+    {
+      "role": "boarded",
+      "sha256": "7ac2ae9242db55b82564d94f796f4a3b72aaa97df670b6666f627263a431b58a"
+    }
+  ],
+  "sourceFilesSHA": 122,
+  "originalLedgerBytesExact": true,
+  "nativeViewed": 5,
+  "opaqueCompositesViewed": 3,
+  "limitations": {
+    "candidate": "body13-native.png",
+    "registrationWholeOffset": [
+      0,
+      0
+    ],
+    "door": {
+      "measurement": "closed wooden leaf used as conservative aperture proxy, excludes frame/roof",
+      "verticalSampleX": 58,
+      "topY": 72,
+      "bottomY": 114,
+      "heightNative": 42,
+      "leftX": 49,
+      "rightX": 66,
+      "widthNative": 17,
+      "endpointUncertainty": 1,
+      "differenceUncertainty": 2,
+      "worldScale": 0.49957049486461247,
+      "heightWorldCentral": 20.981960784313724,
+      "heightWorldInterval": [
+        19.9828197945845,
+        21.981101774042948
+      ],
+      "widthWorldCentral": 8.492698412698411,
+      "widthWorldInterval": [
+        7.493557422969187,
+        9.491839402427637
+      ],
+      "centralMeetsBible": true,
+      "uncertaintyCrossesLowerBounds": true
+    },
+    "ground": {
+      "originalManual": [
+        [
+          26,
+          106
+        ],
+        [
+          89,
+          137
+        ],
+        [
+          130,
+          117
+        ]
+      ],
+      "candidateManual": [
+        [
+          28,
+          102
+        ],
+        [
+          87,
+          137
+        ],
+        [
+          130,
+          120
+        ]
+      ],
+      "pointUncertainty": 2,
+      "residualNative": [
+        4.47213595499958,
+        2,
+        3
+      ],
+      "maxResidualNative": 4.47213595499958
+    },
+    "roofTopManual": {
+      "originalY": 48,
+      "candidateY": 10,
+      "raisedNative": 38,
+      "pointUncertainty": 2
+    },
+    "alpha": {
+      "anyBBox": [
+        4,
+        4,
+        147,
+        150
+      ],
+      "gt32BBox": [
+        20,
+        9,
+        132,
+        140
+      ],
+      "edgeAnyPixels": 0,
+      "wholeRegistrationClippedPixels": 0,
+      "explanation": "No whole translation currently applied; edge pixels and transform loss are different checks."
+    }
+  }
+}
