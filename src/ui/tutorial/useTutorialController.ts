@@ -28,6 +28,8 @@ import { plagueRecoveryPermille } from "../../engine/plague";
 import { CHAPTER_COPY } from "../chapterCopy.ko";
 import { legacyGoalProgress } from "../legacyGoalProgress";
 import { goalPinFor, type GoalPinAction } from "../hud/goalPinModel";
+import { lordMode } from "../../engine/townAgency";
+import { lordLeanSeason } from "../lord/advice/lordAdvice";
 
 // UX-1 tutorial controller (App shell): the record, the current step, the goal cards (the active one, the last
 // completion held SUCCESS_HOLD_MS, "이미 갖춰짐 ✓" for steps the game had already met), unlock banners, the steward's
@@ -133,7 +135,8 @@ export function useTutorialController(input: {
     const next = change(current); writeTutorialRecord(next); return next;
   }), []);
   const setRecord = useCallback((next: TutorialRecord) => { writeTutorialRecord(next); setRecordState(next); }, []);
-  const enabled = record?.enabled === true;
+  // DEC-CARD A1: the tutorial teaches placing buildings; in lord mode the town builds, so it never runs there.
+  const enabled = record?.enabled === true && !lordMode(state);
   const acks = useMemo(() => new Set(record?.acks ?? []), [record]);
   const index = enabled ? currentStepIndex(state, acks) : TUTORIAL_STEP_IDS.length;
   const running = enabled && index < TUTORIAL_STEP_IDS.length;
@@ -269,7 +272,7 @@ export function useTutorialController(input: {
   // UX-0b: otherwise the most urgent crisis row (a stopped mill, a house without bread …) is.
   const crisis = stepId === null && !leanSeason && forecast === null ? crisisStewardLine(state) : null;
   const advisor = advisorKey !== null && dismissedAdvisor !== stepId ? { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId!, tone: ADVISOR_TONE[advisorKey] }
-    : leanSeason && dismissedAdvisor !== "lean_season" ? { text: TUTORIAL_COPY.leanSeason.steward, key: "lean_season", tone: "concern" as const }
+    : leanSeason && dismissedAdvisor !== "lean_season" ? { text: lordLeanSeason(state)?.steward ?? TUTORIAL_COPY.leanSeason.steward, key: "lean_season", tone: "concern" as const }
     : forecast !== null && dismissedAdvisor !== forecast.key ? { text: forecast.text, key: forecast.key, tone: "concern" as const }
     : crisis !== null && dismissedAdvisor !== crisis.key ? { text: crisis.text, key: crisis.key, tone: "concern" as const } : null;
 
@@ -371,7 +374,11 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
     }
   }
   // UI-3 (FP-4): the first winter warning puts the lean season first — a granary if there is none, else more arable.
-  if (firstWinterWarningActive(state)) {
+  // DEC-CARD A1: lord mode's says what the town does about it and the lord's lever, with no placement to arm.
+  const lean = lordLeanSeason(state);
+  if (firstWinterWarningActive(state) && lean !== null) {
+    cards.unshift({ key: "lean_season", title: TUTORIAL_COPY.leanSeason.title, why: lean.why, progress: null, ctaLabel: null, status: "active", help: null, hasTarget: false });
+  } else if (firstWinterWarningActive(state)) {
     const next: TutorialAction = placedCount(state, "granary") === 0 ? { kind: "arm", tool: "granary" } : { kind: "armZone", target: "arable" };
     actions.set("lean_season", next);
     cards.unshift({ key: "lean_season", title: TUTORIAL_COPY.leanSeason.title, why: TUTORIAL_COPY.leanSeason.why, progress: null,

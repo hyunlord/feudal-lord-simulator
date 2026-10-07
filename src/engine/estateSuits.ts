@@ -164,6 +164,40 @@ export function enforcePossession(state: GameState, suitId: string): GameState {
   return next;
 }
 
+/**
+ * LM-R2-E ② API: what the lord can do in a suit now and why not — each kind of evidence (its cost to the lord, its
+ * weight, the refusal), each faction as patron (its support, the refusal), the enforcement (its cost, the force against
+ * the hold), and the tick the suit moves to its next stage (null when it has none). The screen reads this rather than the
+ * costs and thresholds (`estateConfig.ts`); the commands refuse by the same rules.
+ */
+export interface SuitActions {
+  readonly evidence: readonly { readonly kind: Evidence["kind"]; readonly cost: number; readonly weight: number; readonly refusal: "stage" | "given" | "treasury" | null }[];
+  readonly patrons: readonly { readonly factionId: string; readonly support: number; readonly refusal: "stage" | "chosen" | "relation" | null }[];
+  readonly enforce: { readonly cost: number; readonly force: number; readonly hold: number; readonly refusal: "stage" | "treasury" | null } | null;
+  readonly nextStageTick: number | null;
+}
+export function suitActions(state: GameState, suitId: string): SuitActions | null {
+  const estates = estatesOf(state);
+  const suit = estates.suits.find(entry => entry.id === suitId);
+  const claim = estates.claims.find(entry => entry.id === suit?.claimId);
+  // A suit against the lord (a neighbour's recovery, ER-21) has no command of his: the screen shows it only.
+  if (suit === undefined || claim === undefined || suit.plaintiff !== LORD) return null;
+  const treasury = treasuryBalance(state);
+  const gathering = suit.stage === "filed" || suit.stage === "evidence";
+  const evidence = (Object.keys(EVIDENCE_COST) as Evidence["kind"][]).map(kind => {
+    const cost = EVIDENCE_COST[kind];
+    const refusal = !gathering ? "stage" as const : claim.evidence.some(entry => entry.kind === kind) ? "given" as const : cost > 0 && treasury < cost ? "treasury" as const : null;
+    return { kind, cost, weight: EVIDENCE_WEIGHT[kind], refusal };
+  });
+  const patrons = (state.factions?.factions ?? []).map(faction => ({ factionId: faction.id, support: Math.min(PATRON_SUPPORT_MAX, Math.max(0, faction.relation)),
+    refusal: suit.stage !== "patronage" ? "stage" as const : suit.patron !== undefined ? "chosen" as const : faction.relation < PATRON_MIN_RELATION ? "relation" as const : null }));
+  const enforceCost = SUIT_STAGE_COST.enforcing ?? 0;
+  const enforce = suit.stage === "closed" ? null : { cost: enforceCost, force: ENFORCEMENT_BASE + suit.patronSupport, hold: suit.hold ?? 0,
+    refusal: suit.stage !== "enforcing" ? "stage" as const : enforceCost > 0 && treasury < enforceCost ? "treasury" as const : null };
+  const nextStageTick = NEXT_STAGE[suit.stage] === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON;
+  return { evidence, patrons, enforce, nextStageTick };
+}
+
 /** ES-7: the stage after each; a stage lasts one season at least, and the hearing waits for its fee. */
 const NEXT_STAGE: Readonly<Partial<Record<SuitStage, SuitStage>>> = { filed: "evidence", evidence: "patronage", patronage: "hearing", hearing: "judged" };
 

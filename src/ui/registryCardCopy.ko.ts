@@ -52,9 +52,12 @@ const SHUT_WORDS: Readonly<Record<Exclude<ShutReason["kind"], "money" | "evidenc
   refused: "지금 형편으로는 이 일을 해낼 수 없습니다",
 };
 
+/** Who sends it: the canon's sender, and the faction it speaks for. */
+const senderWords = (sender: string, faction: string | null) => sender === "" ? faction ?? "영지에 온 일" : faction === null || faction === sender ? sender : `${sender}(${faction})`;
+
 export const REGISTRY_CARD_COPY = {
   /** The card's kicker: who sends it — the canon's sender, and the faction it speaks for. */
-  from: (sender: string, faction: string | null) => `보낸 쪽 · ${sender === "" ? faction ?? "영지에 온 일" : faction === null || faction === sender ? sender : `${sender}(${faction})`}`,
+  from: (sender: string, faction: string | null) => `보낸 쪽 · ${senderWords(sender, faction)}`,
   /** An entry the canon has no words for (one added before its copy). */
   title: "영지에 온 일",
   choice: (index: number) => `${index}번째 답`,
@@ -85,4 +88,10 @@ export const REGISTRY_CARD_COPY = {
   /** What an unanswered offer does at its deadline (a v4 offer lapses with no answer and no cost). */
   lapse: "답하지 않으면 기한이 지나 그대로 넘어갑니다",
   advice: "답하면 바로 장부에 적힙니다. 나중에 정해도 기한까지 기다립니다",
+  /** DEC-CARD: what is at stake — the offer's bound targets ("걸린 청구" → "청구(어업권)"), else the sender. */
+  stakeItem: (what: string, name: string | null) => { const word = what.replace(/^걸린 /, ""); return name === null ? word : `${word}: ${name}`; },
+  stake: (items: readonly string[]) => `${items.join(" · ")}.`,
+  stakeSender: (sender: string, faction: string | null) => `${senderWords(sender, faction)}의 청과, 그쪽과의 사이가 걸려 있습니다.`,
+  /** DEC-CARD: until when, and what silence means (a v4 offer lapses with no answer and no cost). */
+  deadline: (days: number, year: number, season: string) => `${days}일 안에(${year}년 ${season}까지) 답해야 합니다. 답하지 않으면 기한이 지나 그대로 넘어갑니다.`,
 } as const;

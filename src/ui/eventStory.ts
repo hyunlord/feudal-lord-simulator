@@ -9,6 +9,7 @@ import { stateCalendar } from "../engine/scenarioState";
 import { wetSummer } from "../render/wetSummer";
 import { beaconSpot, raidQuaySpot } from "../render/warWorldProps";
 import { EVENT_STORY_COPY } from "./eventStoryCopy.ko";
+import { lordForecastLine, withLordAdvice } from "./lord/advice/lordBeatAdvice";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { reorganisationOf } from "../engine/reorganisation";
 import { CHURCH_REBUILDING_PETITION_ID, GUILD_DISPUTE_PETITION_ID, LEGACY_BALANCE, type LegacyInterludeId, type LegacyStepId } from "../content/legacyConfig";
@@ -20,7 +21,9 @@ import { beaconLit, conscriptsAway, warForecast, warOf } from "../engine/war";
 import { moneyShort } from "./money.ko";
 import { petitionPresentation } from "./petitionPresentation";
 import type { StoryIllustration } from "./storyArt";
-import { lordBeats } from "./lordStoryBeats";
+import { houseBeats, lordBeats } from "./lordStoryBeats";
+import { actualNews } from "./results/actualNews";
+import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { UiModal } from "./stateMachine/uiStateMachine";
 
 // UI-4 (world before UI): what the town is living through now, as story beats. Each beat is read from the engine's
@@ -46,7 +49,11 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // EVENT-ART (lord mode): a ledger moment with its Wave 40 picture — the marriage, the suit, the wardship (lordMomentBeats.ts).
   | "lord_moment"
   // EVENT-ART (lord mode): an offer of the engine's registry (an event entry, not a home petition).
-  | "registry_event";
+  | "registry_event"
+  // LM-R2 (lord mode): the lord's decision cards — the father's will, the contested inheritance, an audit, an off-map petition.
+  | "lord_decision"
+  // DEC-CARD: a big decision's actual written (every mode); (lord mode, Astra A3) a change in the lord's house.
+  | "decision_actual" | "house_change";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -59,8 +66,14 @@ export type StoryBeat = Readonly<{
   facts: readonly string[];
   advice: string;
   /** The beat is a decision the lord answers in a modal (the famine, a petition; LM-R1: a home petition, the steward's
-   * precedents, the town's request; EVENT-ART: a registry offer). */
-  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | "registry_offer" | null;
+   * precedents, the town's request; EVENT-ART: a registry offer; LM-R2: the lord's decision cards). */
+  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | "registry_offer"
+    /** LM-R2 (lord mode): the father's will or the contested inheritance, an audit's finding, an off-map estate's petition. */
+    | "marriage_decision" | "audit_decision" | "estate_petition_offmap"
+    /** DEC-CARD (lord mode, Astra A3): the house card (no choice in it: its chip's button says so, `openLabel`). */
+    | "house_change" | null;
+  /** The chip's button when the card it opens is no decision (absent: [결정하기]). */
+  openLabel?: string;
 }>;
 
 /** The modal a decision beat's [결정하기] opens. */
@@ -92,7 +105,8 @@ const arableTile = (state: GameState) => {
 };
 
 export function storyBeats(state: GameState): readonly StoryBeat[] {
-  const beats: StoryBeat[] = [];
+  // DEC-CARD (Astra A3): a change in the lord's house first — before any petition of the same tick.
+  const beats: StoryBeat[] = [...houseBeats(state)];
   const copy = EVENT_STORY_COPY;
   const records = state.events?.records ?? [];
   const burning = state.events?.burning ?? [];
@@ -143,13 +157,12 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
   const petition = openPetitions(state)[0];
   if (petition !== undefined) {
     const presentation = petitionPresentation(state, petition);
-    const war = WAR_DEMAND_ART[petition.defId];
     const plaguePetition = PLAGUE_DEMAND_ART[petition.defId];
     const reorgPetition = REORG_DEMAND_ART[petition.defId];
     const legacyPetition = LEGACY_DEMAND_ART[petition.defId];
-    const merchants = war === undefined && plaguePetition === undefined && reorgPetition === undefined && legacyPetition === undefined && petition.defId === "market_charter";
+    const merchants = WAR_DEMAND_ART[petition.defId] === undefined && plaguePetition === undefined && reorgPetition === undefined && legacyPetition === undefined && petition.defId === "market_charter";
     beats.push({ id: `petition:${petition.id}`, kind: "petition",
-      illustration: war ?? plaguePetition ?? reorgPetition ?? legacyPetition ?? "event_market_petition", tile: keepTile(state), decision: "petition",
+      illustration: petitionArt(petition.defId), tile: keepTile(state), decision: "petition",
       title: merchants ? copy.petition.title : presentation.title,
       line: merchants ? copy.petition.line : presentation.demand,
       // UI-10: the Crown's tax is chapter 5's (its silence is not the war's refusal).
@@ -175,7 +188,30 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
     if (!building && state.tick - since < 3 * SEASON) beats.push({ id: "palisade", kind: "palisade", illustration: "event_palisade", tile: null, decision: null,
       title: copy.palisade.title, line: copy.palisade.line, advice: copy.palisade.advice, facts: [] });
   }
-  return beats;
+  beats.push(...actualBeats(state));
+  // DEC-CARD A1: in lord mode the town builds — the [조언] that asks to build says the lord's levers instead.
+  return withLordAdvice(state, beats);
+}
+
+/** A petition's chip picture by its kind (the war's, the plague's, the reorganisation's, chapter 5's; else the merchants'). */
+function petitionArt(defId: string): StoryIllustration {
+  return WAR_DEMAND_ART[defId] ?? PLAGUE_DEMAND_ART[defId] ?? REORG_DEMAND_ART[defId] ?? LEGACY_DEMAND_ART[defId] ?? "event_market_petition";
+}
+
+/** DEC-CARD: a big decision's own story picture (the famine's answer, the petition's, the town's proclamations), else none. */
+function decisionArt(kind: string, defId: string): StoryIllustration | null {
+  if (kind === "petition_response") return petitionArt(defId);
+  return kind === "famine_response" ? "decision_famine_intro" : kind === "market_town" ? "event_market_town" : kind === "wall_expand" ? "event_palisade"
+    : kind === "stone_town" ? "event_stonewall_charter" : null;
+}
+
+/**
+ * DEC-CARD: "the actual is in" — for the season after the ledger writes a big decision's actual (results/actualNews.ts),
+ * its chip says what was expected and what came (every mode). One per decision record (`actual:<record id>`).
+ */
+function actualBeats(state: GameState): readonly StoryBeat[] {
+  return actualNews(state).map(news => ({ id: `actual:${news.recordId}`, kind: "decision_actual", illustration: decisionArt(news.kind, news.defId), tile: null,
+    decision: null, title: RESULTS_COPY.actual.title, line: news.line, facts: news.facts, advice: RESULTS_COPY.actual.advice }));
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */
@@ -518,7 +554,8 @@ export function forecastStewardLine(state: GameState): { readonly key: string; r
   const entry = eventForecast(state).find(candidate => candidate.stage === "rumour" || candidate.stage === "sign");
   if (entry === undefined) return null;
   const lines = EVENT_STORY_COPY.steward;
-  const text = entry.kind === "fire" ? lines.fire(entry.stage === "sign") : entry.defId === GREAT_FAMINE_EVENT_ID ? lines.famine(entry.stage === "sign") : lines.dearth(entry.stage === "sign");
+  const which = entry.kind === "fire" ? "fire" : entry.defId === GREAT_FAMINE_EVENT_ID ? "famine" : "dearth";
+  const text = lordForecastLine(state, which, entry.stage === "sign") ?? lines[which](entry.stage === "sign");
   return { key: `forecast:${entry.id}:${entry.stage}`, text };
 }
 

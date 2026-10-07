@@ -14,6 +14,7 @@ import { buildKeyartDerivative, encodeJpeg, EVENT_ART_DERIVATIVES, JPEG_QUALITY,
 import { decodeJpeg } from "../scripts/jpegDecode";
 import { categorize, evaluateBudget, loadBudgetConfig } from "../scripts/checks/distBudget.mjs";
 import { enumerateRuntimeAssets } from "../scripts/provenanceLedgerAssets";
+import { parseCsvRows } from "../scripts/provenanceLedgerCsv";
 import { factionDisplayName } from "../src/content/factionCopy.ko";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { HOLD_CLAIM_WEAKEN, HOLD_RELATION_DELTA } from "../src/content/registry/registryHoldConfig";
@@ -39,6 +40,8 @@ import { courtLine } from "../src/ui/lordCardsModel";
 import { lordBeats } from "../src/ui/lordStoryBeats";
 import { REGISTRY_CARD_COPY } from "../src/ui/registryCardCopy.ko";
 import { openRegistryCards, registryOfferView } from "../src/ui/registryCardModel";
+import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
+import { afterAnswer } from "../src/ui/decisionCard/remembers";
 import { storyArtStyle } from "../src/ui/storyArt";
 
 const SEASON = 1_000;
@@ -183,24 +186,57 @@ test("the card renders the picture whole, equal answers all secondary, a hold wi
   const fishery = registryOfferView(offered(lord, "ck_evt_010").state)!;
   const html = renderToStaticMarkup(createElement(RegistryOfferModal, { view: fishery, onAnswer: () => undefined, onLater: () => undefined }));
   assert.match(html, /data-registry-offer="ck_evt_010"/);
-  assert.match(html, /data-art="ck_evt_010"[^>]*background-size:contain/);
-  assert.equal((html.match(/class="petition-option registry-card-option ui-btn ui-btn--secondary"/g) ?? []).length, 3);
+  // DEC-CARD: the heavy card's head holds the picture (contain), beside the canon's words.
+  assert.match(html, /class="decision-card-art"[^>]*background-image:url\(&quot;[^"]*ck_evt_010[^>]*background-size:contain/);
+  assert.equal((html.match(/class="decision-card-choose ui-btn ui-btn--secondary/g) ?? []).length, 3);
   assert.ok(!html.includes("ui-btn--primary"), "one primary per screen at most; equal answers are secondary (LR1-D2)");
-  assert.match(html, /data-choice="c" data-enabled="false" data-hold="false" disabled=""/);
-  assert.match(html, /data-choice="b" data-enabled="true" data-hold="true"/);
-  assert.ok(html.includes(`<span class="registry-card-hold">${REGISTRY_CARD_COPY.holdClaim}</span>`));
-  assert.match(html, /class="registry-card-money">금고 /, "the 60d filing fee");
+  assert.match(html, /data-choice="c" data-refused="true"/);
+  assert.match(html, /data-choose="c" disabled=""/);
+  // The hold's cost as the engine's run shows it: the claim weakened (ER-19), in the hold's own block.
+  const hold = fishery.card.choices.find(choice => choice.id === "b")!;
+  assert.ok(hold.now.some(line => /청구가 힘 \d+에서 \d+(으)?로 약해집니다/.test(line)), hold.now.join(" / "));
+  assert.ok(fishery.card.choices.find(choice => choice.id === "a")!.now.includes("금고에서 5s이 나갑니다."), "the 60d filing fee");
   assert.match(html, new RegExp(REGISTRY_CARD_COPY.whyHeading));
-  assert.ok(!renderToStaticMarkup(createElement(RegistryOfferModal, { view: { ...fishery, art: null }, onAnswer: () => undefined, onLater: () => undefined })).includes("lord-card-art"));
+  const bare = { ...fishery, card: { ...fishery.card, illustration: null } };
+  assert.ok(!renderToStaticMarkup(createElement(RegistryOfferModal, { view: bare, onAnswer: () => undefined, onLater: () => undefined })).includes("decision-card-art"));
+});
+
+test("DEC-CARD: the offer's card says what is happening, what is at stake, until when, and each answer's now / later / who remembers — the engine's own", () => {
+  for (const [base, id] of [[town, "ck_evt_005"], [lord, "ck_evt_010"]] as const) {
+    const { state, occurrence } = offered(base, id);
+    const view = registryOfferView(state)!;
+    const card = view.card;
+    assert.equal(card.subjectId, occurrence.id);
+    assert.equal(card.situation, V4_COPY[id]!.body);
+    assert.ok(card.stake.length > 0 && card.deadline !== null && card.illustration === view.art, id);
+    assert.deepEqual(card.choices.map(choice => choice.id), view.choices.map(choice => choice.id));
+    for (const choice of card.choices) {
+      const shown = view.choices.find(entry => entry.id === choice.id)!;
+      if (!shown.enabled) { assert.equal(choice.refusal, shown.line, `${id} ${choice.id}: shut with why`); continue; }
+      const after = afterAnswer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: choice.id });
+      assert.ok(after !== null, `${id} ${choice.id}: the engine takes it`);
+      const outcome = lordOutcome(state, after);
+      assert.equal(choice.now[0], shown.line, "the canon's tradeoff first");
+      assert.deepEqual(choice.now.slice(1), outcome.now, `${id} ${choice.id}: the run's own lines`);
+      assert.deepEqual(choice.remembers, outcome.remembers);
+      assert.ok(choice.remembers.every(entry => entry.who !== "" && entry.delta !== 0));
+    }
+  }
+  // ck_evt_005's hold costs the merchants' relation: the run's faction record says so in "who remembers".
+  const dues = registryOfferView(offered(town, "ck_evt_005").state)!;
+  const holdId = dues.choices.find(choice => choice.hold)!.id;
+  assert.deepEqual(dues.card.choices.find(choice => choice.id === holdId)!.remembers.map(entry => [entry.who, entry.delta]), [[merchants(town), HOLD_RELATION_DELTA]]);
+  const html = renderToStaticMarkup(createElement(RegistryOfferModal, { view: dues, onAnswer: () => undefined, onLater: () => undefined }));
+  for (const part of ["무슨 일인가", "걸린 것", "지금", "나중에", "기억하는 이"]) assert.ok(html.includes(part), part);
+  assert.doesNotMatch(html, /ui-btn--primary/);
+  assert.doesNotMatch(html, /\stitle="/);
 });
 
 test("the picture by the v4 id; none for an id the build does not ship", () => {
   assert.equal(eventArtFor("ck_evt_005"), "ck_evt_005");
-  assert.equal(eventArtFor("ck_evt_180"), "ck_evt_180");
   assert.equal(eventArtFor("test:none"), null);
-  assert.equal(eventArtFor("ck_evt_001"), null, "a variant of an existing occurrence's words: never an offer, its picture not shipped");
-  // RECOVER-1 (engine, render file updated as an exception — render takes it over): v4.1 fixed 011's derived name, so it runs.
-  assert.equal(eventArtFor("ck_evt_011"), "ck_evt_011", "v4.1 unblocked it: the registry runs it and its picture ships");
+  // EVA-AUTO: by the registry alone — a picture for every entry it runs that has one, none for a variant or a blocked one.
+  for (const entry of registryV4Support()) assert.equal(eventArtFor(entry.id), entry.runs && Object.hasOwn(EVENT_ART_IMAGES, entry.id) ? entry.id : null, entry.id);
   assert.ok(v4Entries().every(entry => !("artId" in entry)), "no v4 entry carries an artId: the picture is its id's");
 });
 
@@ -208,7 +244,6 @@ test("the shipped pictures follow the registry alone: every v4 entry it runs, no
   assert.deepEqual(eventCardEntryIds(), runs);
   const live = runs.filter(id => Object.hasOwn(EVENT_ART_IMAGES, id)).sort();
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES), live);
-  assert.equal(live.length, 71);
   assert.ok(v4Entries().filter(entry => entry.contentClass !== "new_event_draft").every(entry => !live.includes(entry.id)));
   // An entry the registry turns on later ships its picture by the same rule; an id without a picture is left out.
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, ["ck_evt_150", "ck_evt_011", "home:heriot", "ck_evt_150"]), ["ck_evt_011", "ck_evt_150"]);
@@ -228,7 +263,7 @@ test("the build ships exactly those pictures, each re-encoded smaller and under 
     const bytes = buildKeyartDerivative(item);
     // The same bytes every build (the cache only stores them): decode + encode again, without the cache, is identical (three of them).
     if (index % 30 === 0) assert.equal(sha256(encodeJpeg(decodeJpeg(source), JPEG_QUALITY)), sha256(bytes), `${item.id} deterministic`);
-    // Pinned: the provenance row names the runtime file's size and SHA (scripts/installEventArt.ts writes them).
+    // Pinned: the provenance row names the runtime file's size and SHA (`npm run eventart:auto` writes them after the capture).
     assert.ok(provenance.includes(`jpeg-reencoded: ${bytes.length} bytes, sha256 ${sha256(bytes)}`), `${item.id}: provenance pins the derivative`);
     const sof = bytes.indexOf(Buffer.from([0xff, 0xc0]));
     assert.deepEqual([bytes[0], bytes[1], bytes.readUInt16BE(sof + 7), bytes.readUInt16BE(sof + 5)], [0xff, 0xd8, 960, 540], `${item.id}: baseline 960 × 540`);
@@ -258,13 +293,11 @@ test("the pictures load only when a card or chip shows them: nothing at start, n
   assert.match(String(storyArtStyle("ck_evt_005", 64).backgroundImage), /^url\("\/?assets\/event-art\/ck_evt_005\.jpg"\)$/);
 });
 
-test("all 200 are in the manifest from their confirmed ledger rows; only the shipped are runtime assets with provenance; installed_by only on those", () => {
-  const ids = Object.keys(EVENT_ART_IMAGES);
-  assert.equal(ids.length, 200);
+test("every picture of the pack is in the manifest from its confirmed ledger row; only the shipped are runtime assets with provenance; installed_by only on those", () => {
   const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8").split("\r\n");
   const shipped = shippedEventArtIds(EVENT_ART_IMAGES);
   const runtime = new Set(enumerateRuntimeAssets().map(asset => asset.runtimePath));
-  const provenance = readFileSync("docs/provenance/assets.csv", "utf8");
+  const rows = parseCsvRows(readFileSync("docs/provenance/assets.csv", "utf8"));
   for (const [id, image] of Object.entries(EVENT_ART_IMAGES)) {
     assert.equal(image.width, 960); assert.equal(image.height, 540);
     assert.ok(existsSync(image.source), image.source);
@@ -275,7 +308,10 @@ test("all 200 are in the manifest from their confirmed ledger rows; only the shi
     // EVENT-ART's mark only on a shipped picture (set after its capture through the card); ck_evt_012 is LM-R1's Wave 44 file.
     if (row.endsWith(",EVENT-ART")) assert.ok(shipped.includes(id), `${id}: marked installed but not shipped`);
     if (id !== "ck_evt_012") assert.equal(runtime.has(image.source), shipped.includes(id), `${id} runtime`);
-    assert.equal(provenance.includes(`\nevent-art/${id},`), shipped.includes(id), `${id} provenance row`);
-    assert.equal(existsSync(`docs/provenance/prompts/${id}-event-art.txt`), shipped.includes(id), `${id} prompt file`);
+    // A runtime row for each shipped one; one that is no longer live keeps its row as retired (tests/eventArtAuto.test.ts).
+    const status = rows.find(entry => entry.assetId === `event-art/${id}`)?.status ?? null;
+    if (shipped.includes(id)) assert.equal(status, "runtime", `${id} provenance row`);
+    else assert.notEqual(status, "runtime", `${id} provenance row`);
+    if (shipped.includes(id)) assert.ok(existsSync(`docs/provenance/prompts/${id}-event-art.txt`), `${id} prompt file`);
   }
 });

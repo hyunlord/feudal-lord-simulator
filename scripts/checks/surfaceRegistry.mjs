@@ -15,6 +15,8 @@ import { join } from 'node:path';
 import { git, isMain } from './gitRange.mjs';
 
 export const REGISTRY_PATH = 'src/ui/surfaces.registry.ts';
+/** A file of registry rows spread into the registry (LM-R2: each lord screen area's). */
+export const isRegistryPart = path => /^src\/ui\/lord\/[^/]+\/surfaces\.ts$/.test(path);
 const FRAMED_WORD = /(^|-)(panel|card|modal|drawer|popover|tooltip|chip|page|book|sheet|dialog)$/;
 
 /** Blanks comments (block and line) and keeps every newline, so offsets still give line numbers. */
@@ -160,8 +162,9 @@ export function cssCandidates(path, source) {
 
 /** Files and contents to scan, from a reader ({ list(prefix) → paths, read(path) → text }). */
 export function unregisteredSurfaces(reader) {
-  const registered = registeredClasses(reader.read(REGISTRY_PATH));
   const paths = reader.list();
+  // LM-R2: the lord screens' rows live in one file per area (src/ui/lord/<area>/surfaces.ts), spread into the registry.
+  const registered = new Set([REGISTRY_PATH, ...paths.filter(isRegistryPart)].flatMap(path => [...registeredClasses(reader.read(path))]));
   const tsx = paths.filter(path => (/^src\/ui\/.+\.tsx$/.test(path) || /^src\/render\/[^/]+\.tsx$/.test(path) || path === 'src/App.tsx'));
   const css = paths.filter(path => /^src\/styles\/[^/]+\.css$/.test(path) || /^src\/ui\/.+\.css$/.test(path));
   const candidates = [...tsx.flatMap(path => tsxCandidates(path, reader.read(path))), ...css.flatMap(path => cssCandidates(path, reader.read(path)))];

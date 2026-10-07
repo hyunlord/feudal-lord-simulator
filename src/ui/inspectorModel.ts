@@ -4,6 +4,7 @@ import { isStorableResource, STORAGE_KIND_BY_RESOURCE, type ResourceType } from 
 import { constructionSiteDisplayName, type ConstructionSite } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import { lordshipOf } from "../engine/lordshipState";
+import { lordMode } from "../engine/townAgency";
 import { stateCalendar } from "../engine/scenarioState";
 import { houseHasFood } from "../population/houseFood";
 import { buildingInspectorModel } from "../render/buildingInspectorModel";
@@ -14,6 +15,7 @@ import { constructionAccessModel, currentConstructionSiteLabel, type Constructio
 import { houseDiagnosisModel } from "./houseDiagnosisModel";
 import { buildingCausePresentation, houseProgressModel } from "./houseProgressModel";
 import { INSPECTOR_COPY } from "./inspectorCopy.ko";
+import { lordBlockerActions, lordPileActions, lordSiteActions } from "./lord/advice/lordInspector";
 import { buildingProblemCause } from "./problemCauseModel";
 import { STUCK_GOODS_COPY } from "./stuckGoodsCopy.ko";
 import type { StuckRow } from "./hud/stuckStockView";
@@ -180,13 +182,21 @@ function buildingInspector(state: GameState, building: Building, stuck: readonly
     stateLine: building.kind === "house" ? houseState(state, building, basics.name)
       : required > 0 ? INSPECTOR_COPY.facilityState(building.workers, required, facilityStatus) : facilityStatus,
     why: lines.slice(0, MAX_WHY_LINES),
-    actions: [...new Set([...piled?.actions ?? [], ...blocker === null ? [] : blockerActions(state, building, blocker)])].slice(0, MAX_ACTIONS),
+    actions: [...new Set([...pileActions(state, pile, piled), ...blocker === null ? [] : causeActions(state, building, blocker)])].slice(0, MAX_ACTIONS),
     ...(piled?.toStore === undefined ? {} : { toStore: piled.toStore }),
   };
 }
 
+// DEC-CARD A1: in lord mode the town builds; a cause that would ask the lord to build says what the town is doing
+// about it and what he can set instead (lord/advice/lordInspector.ts). The sandbox and the campaign keep these lines.
+const pileActions = (state: GameState, pile: StuckRow | undefined, piled: ReturnType<typeof stuckExplanation> | null): readonly string[] =>
+  pile === undefined || piled === null ? [] : lordMode(state) ? lordPileActions(state, pile) : piled.actions;
+const causeActions = (state: GameState, building: Building, blocker: CauseDetail): readonly string[] =>
+  (lordMode(state) ? lordBlockerActions(state, building, blocker) : null) ?? blockerActions(state, building, blocker);
+
 /** What to do about a construction site's cause (LM-R1: the burnt house's rebuild says the same). */
-export function siteActions(access: ConstructionAccessModel): readonly string[] {
+export function siteActions(access: ConstructionAccessModel, state: GameState | null = null): readonly string[] {
+  if (state !== null && lordMode(state)) { const lord = lordSiteActions(state, access); if (lord !== null) return lord; }
   const copy = INSPECTOR_COPY.action;
   switch (access.cause) {
     case "road_disconnected": case "no_route":
@@ -213,7 +223,7 @@ function siteInspector(state: GameState, site: ConstructionSite): InspectorModel
       text: access.cause === "reserve_deadlock" ? access.label : ALERT_STACK_COPY.site[access.cause].cause,
       block: true,
     }],
-    actions: siteActions(access).slice(0, MAX_ACTIONS),
+    actions: siteActions(access, state).slice(0, MAX_ACTIONS),
   };
 }
 

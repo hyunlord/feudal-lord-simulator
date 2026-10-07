@@ -1,0 +1,1434 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "ok": true,
+ "bytes": 602515,
+ "rows": {
+  "estate-home": {
+   "state": "inherited",
+   "shown": {
+    "estate": "estate-home",
+    "possessor": "lord",
+    "annualValue": 827,
+    "picture": "ordinary",
+    "overlayFlag": "false",
+    "art": "ordinary",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_ordinary.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": null,
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£3 8s 11d",
+     "burdens": "부담 없음",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "home:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "home:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "home:market",
+      "possessor": "lord"
+     },
+     {
+      "id": "home:tolls",
+      "possessor": "lord"
+     },
+     {
+      "id": "home:mill",
+      "possessor": "lord"
+     },
+     {
+      "id": "home:fishery",
+      "possessor": "lord"
+     },
+     {
+      "id": "home:advowson",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": null,
+    "office": null,
+    "officeIcon": null,
+    "traits": [],
+    "dispositions": [],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_rights.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 0,
+    "totals": [
+     "2곳",
+     "£20 2s 3d",
+     "1 / 2",
+     "감사까지 206일"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "engine": {
+    "id": "estate-home",
+    "possessor": "lord",
+    "title": "lord",
+    "annualValue": 0,
+    "offMap": false,
+    "pieces": [
+     {
+      "id": "home:land_rent",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "home:manor_court",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "home:market",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "home:tolls",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "home:mill",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "home:fishery",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "home:advowson",
+      "possessor": "lord",
+      "title": "lord"
+     }
+    ]
+   },
+   "bytes": 94305,
+   "extra": {
+    "worldVisible": 512,
+    "alerts": [
+     [
+      32,
+      32
+     ],
+     [
+      32,
+      32
+     ]
+    ],
+    "smallestText": 12,
+    "smallestButton": 44
+   },
+   "ok": true
+  },
+  "estate-rich": {
+   "state": "inherited",
+   "shown": {
+    "estate": "estate-neighbour-1",
+    "possessor": "neighbour_1",
+    "annualValue": 6400,
+    "picture": "wealthy",
+    "overlayFlag": "false",
+    "art": "wealthy",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_wealthy.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": null,
+    "facts": {
+     "title": "de Ivrecourt",
+     "possessor": "de Ivrecourt",
+     "value": "£26 13s 4d",
+     "burdens": "빚 0d · 지대 부담 £2 · 수리 £1 6s 8d",
+     "claims": "1건"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-1:land_rent",
+      "possessor": "neighbour_1"
+     },
+     {
+      "id": "estate-neighbour-1:manor_court",
+      "possessor": "neighbour_1"
+     },
+     {
+      "id": "estate-neighbour-1:fishery",
+      "possessor": "neighbour_1"
+     },
+     {
+      "id": "estate-neighbour-1:hunting",
+      "possessor": "neighbour_1"
+     }
+    ],
+    "oversight": null,
+    "office": null,
+    "officeIcon": null,
+    "traits": [],
+    "dispositions": [],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_rights.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 0,
+    "totals": [
+     "2곳",
+     "£20 2s 3d",
+     "1 / 2",
+     "감사까지 206일"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "engine": {
+    "id": "estate-neighbour-1",
+    "possessor": "neighbour_1",
+    "title": "neighbour_1",
+    "annualValue": 6400,
+    "offMap": true,
+    "pieces": [
+     {
+      "id": "estate-neighbour-1:land_rent",
+      "possessor": "neighbour_1",
+      "title": "neighbour_1"
+     },
+     {
+      "id": "estate-neighbour-1:manor_court",
+      "possessor": "neighbour_1",
+      "title": "neighbour_1"
+     },
+     {
+      "id": "estate-neighbour-1:fishery",
+      "possessor": "neighbour_1",
+      "title": "neighbour_1"
+     },
+     {
+      "id": "estate-neighbour-1:hunting",
+      "possessor": "neighbour_1",
+      "title": "neighbour_1"
+     }
+    ]
+   },
+   "bytes": 38644,
+   "extra": null,
+   "ok": true
+  },
+  "estate-mill": {
+   "state": "inherited",
+   "shown": {
+    "estate": "estate-neighbour-2",
+    "possessor": "neighbour_2",
+    "annualValue": 4000,
+    "picture": "riverside_mill",
+    "overlayFlag": "false",
+    "art": "riverside_mill",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_riverside_mill.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": null,
+    "facts": {
+     "title": "de Ambreth",
+     "possessor": "de Ambreth",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £3 6s 8d · 지대 부담 £1 6s 8d · 수리 £2",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-2:land_rent",
+      "possessor": "neighbour_2"
+     },
+     {
+      "id": "estate-neighbour-2:manor_court",
+      "possessor": "neighbour_2"
+     },
+     {
+      "id": "estate-neighbour-2:mill",
+      "possessor": "neighbour_2"
+     },
+     {
+      "id": "estate-neighbour-2:advowson",
+      "possessor": "neighbour_2"
+     }
+    ],
+    "oversight": null,
+    "office": null,
+    "officeIcon": null,
+    "traits": [],
+    "dispositions": [],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_rights.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 0,
+    "totals": [
+     "2곳",
+     "£20 2s 3d",
+     "1 / 2",
+     "감사까지 206일"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "engine": {
+    "id": "estate-neighbour-2",
+    "possessor": "neighbour_2",
+    "title": "neighbour_2",
+    "annualValue": 4000,
+    "offMap": true,
+    "pieces": [
+     {
+      "id": "estate-neighbour-2:land_rent",
+      "possessor": "neighbour_2",
+      "title": "neighbour_2"
+     },
+     {
+      "id": "estate-neighbour-2:manor_court",
+      "possessor": "neighbour_2",
+      "title": "neighbour_2"
+     },
+     {
+      "id": "estate-neighbour-2:mill",
+      "possessor": "neighbour_2",
+      "title": "neighbour_2"
+     },
+     {
+      "id": "estate-neighbour-2:advowson",
+      "possessor": "neighbour_2",
+      "title": "neighbour_2"
+     }
+    ]
+   },
+   "bytes": 38948,
+   "extra": null,
+   "ok": true
+  },
+  "estate-poor": {
+   "state": "offer-countered",
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "estate:estate-neighbour-3",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "false",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": null,
+    "facts": {
+     "title": "de Kestevale 가문",
+     "possessor": "de Kestevale 가문",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "estate:estate-neighbour-3"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "estate:estate-neighbour-3"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "estate:estate-neighbour-3"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "estate:estate-neighbour-3"
+     }
+    ],
+    "oversight": null,
+    "office": null,
+    "officeIcon": null,
+    "traits": [],
+    "dispositions": [],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 0,
+    "totals": [
+     "1곳",
+     "£2 6s 8d",
+     "1 / 2",
+     "감사할 영지 없음"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 71
+   },
+   "engine": null,
+   "bytes": 38305,
+   "extra": null,
+   "ok": true
+  },
+  "estate-delegated": {
+   "state": "inherited",
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "lord",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "true",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": "steward",
+    "office": "steward",
+    "officeIcon": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/office_steward_32.png",
+     "size": [
+      32,
+      32
+     ]
+    },
+    "traits": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     }
+    ],
+    "dispositions": [
+     {
+      "disposition": "greedy",
+      "icon": false
+     },
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     }
+    ],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_rights.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 1,
+    "totals": [
+     "2곳",
+     "£20 2s 3d",
+     "1 / 2",
+     "감사까지 206일"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "engine": {
+    "id": "estate-neighbour-3",
+    "possessor": "lord",
+    "title": "lord",
+    "annualValue": 4000,
+    "offMap": true,
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord",
+      "title": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord",
+      "title": "lord"
+     }
+    ]
+   },
+   "bytes": 36610,
+   "extra": {
+    "oversight": "steward",
+    "office": "steward",
+    "officeIcon": [
+     32,
+     32
+    ],
+    "dispositions": [
+     {
+      "disposition": "greedy",
+      "icon": false
+     },
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     }
+    ],
+    "traits": [
+     [
+      24,
+      24
+     ],
+     [
+      24,
+      24
+     ]
+    ]
+   },
+   "ok": true
+  },
+  "estate-home-tablet": {
+   "shown": {
+    "picture": "ordinary",
+    "art": "ordinary",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_ordinary.png",
+     "size": [
+      480,
+      270
+     ]
+    }
+   },
+   "bytes": 37543,
+   "extra": {
+    "coarse": true,
+    "panelInside": true,
+    "smallestButton": 48,
+    "smallestText": 12
+   },
+   "ok": true
+  },
+  "estate-home-dpr2": {
+   "shown": {
+    "picture": "ordinary",
+    "art": "ordinary",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_ordinary.png",
+     "size": [
+      480,
+      270
+     ]
+    }
+   },
+   "bytes": 104560,
+   "extra": {
+    "coarse": false,
+    "panelInside": true,
+    "smallestButton": 44,
+    "smallestText": 12
+   },
+   "ok": true
+  },
+  "delegation-0": {
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "lord",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "true",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": "direct",
+    "office": "receiver",
+    "officeIcon": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/office_receiver_32.png",
+     "size": [
+      32,
+      32
+     ]
+    },
+    "traits": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     }
+    ],
+    "dispositions": [
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     },
+     {
+      "disposition": "greedy",
+      "icon": false
+     }
+    ],
+    "attention": "직접 돌보는 영지 2 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 8,
+    "totals": [
+     "2곳",
+     "£21 3s",
+     "2 / 2",
+     "감사까지 209일"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "bytes": 28272,
+   "extra": {
+    "oversight": "direct",
+    "office": "receiver",
+    "officeIcon": [
+     32,
+     32
+    ],
+    "attention": "직접 돌보는 영지 2 / 한도 2"
+   },
+   "ok": true
+  },
+  "delegation-1": {
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "lord",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "true",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": "steward",
+    "office": "steward",
+    "officeIcon": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/office_steward_32.png",
+     "size": [
+      32,
+      32
+     ]
+    },
+    "traits": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     }
+    ],
+    "dispositions": [
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     },
+     {
+      "disposition": "greedy",
+      "icon": false
+     }
+    ],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_rights.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": null,
+    "pendingText": null,
+    "auditArt": null,
+    "summaries": 1,
+    "totals": [
+     "2곳",
+     "£20 2s 3d",
+     "1 / 2",
+     "감사까지 206일"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "bytes": 28548,
+   "extra": {
+    "before": {
+     "estateId": "estate-neighbour-3",
+     "mode": "steward",
+     "stewardId": "est-000006",
+     "auditMode": "visit"
+    },
+    "candidate": "est-000004",
+    "appointed": {
+     "estateId": "estate-neighbour-3",
+     "mode": "steward",
+     "stewardId": "est-000004",
+     "auditMode": "visit"
+    },
+    "audited": {
+     "estateId": "estate-neighbour-3",
+     "mode": "steward",
+     "stewardId": "est-000004",
+     "auditMode": "accounts"
+    },
+    "rules": {
+     "amountAtLeast": 1440,
+     "rights": false,
+     "marriage": false
+    }
+   },
+   "ok": true
+  },
+  "attention-overloaded": {
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "lord",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "true",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": "direct",
+    "office": "receiver",
+    "officeIcon": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/office_receiver_32.png",
+     "size": [
+      32,
+      32
+     ]
+    },
+    "traits": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     }
+    ],
+    "dispositions": [
+     {
+      "disposition": "greedy",
+      "icon": false
+     },
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     }
+    ],
+    "attention": "직접 돌보는 영지 2 / 한도 1",
+    "overloaded": "true",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_urgent.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": "visit",
+    "pendingText": "토머스 아트레인의 장부에서 £1 9s 8d을 찾았습니다 · 답할 날 90일 남음",
+    "auditArt": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/annual_audit.png",
+     "size": [
+      960,
+      540
+     ]
+    },
+    "summaries": 3,
+    "totals": [
+     "2곳",
+     "£21 3s 4d",
+     "2 / 1",
+     "감사 대기"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "bytes": 36782,
+   "extra": {
+    "attention": "직접 돌보는 영지 2 / 한도 1",
+    "alerts": [
+     [
+      32,
+      32
+     ],
+     [
+      32,
+      32
+     ],
+     [
+      32,
+      32
+     ]
+    ]
+   },
+   "ok": true
+  },
+  "audit-visit": {
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "lord",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "true",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": "steward",
+    "office": "steward",
+    "officeIcon": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/office_steward_32.png",
+     "size": [
+      32,
+      32
+     ]
+    },
+    "traits": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     }
+    ],
+    "dispositions": [
+     {
+      "disposition": "greedy",
+      "icon": false
+     },
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     }
+    ],
+    "attention": "직접 돌보는 영지 1 / 한도 1",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": "visit",
+    "pendingText": "토머스 아트레인의 장부에서 £1 9s 8d을 찾았습니다 · 답할 날 90일 남음",
+    "auditArt": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/annual_audit.png",
+     "size": [
+      960,
+      540
+     ]
+    },
+    "summaries": 3,
+    "totals": [
+     "2곳",
+     "£21 3s 4d",
+     "1 / 1",
+     "감사 대기"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "bytes": 33437,
+   "extra": {
+    "pending": "visit",
+    "text": "토머스 아트레인의 장부에서 £1 9s 8d을 찾았습니다 · 답할 날 90일 남음",
+    "art": [
+     960,
+     540
+    ]
+   },
+   "ok": true
+  },
+  "audit-accounts": {
+   "shown": {
+    "estate": "estate-neighbour-3",
+    "possessor": "lord",
+    "annualValue": 4000,
+    "picture": "poor",
+    "overlayFlag": "true",
+    "art": "poor",
+    "pictureLoaded": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_poor.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "overlay": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+     "size": [
+      480,
+      270
+     ]
+    },
+    "facts": {
+     "title": "영주(de Fauconval 가문)",
+     "possessor": "영주(de Fauconval 가문)",
+     "value": "£16 13s 4d",
+     "burdens": "빚 £26 13s 4d · 지대 부담 £2 13s 4d · 수리 £4",
+     "claims": "없음"
+    },
+    "pieces": [
+     {
+      "id": "estate-neighbour-3:land_rent",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:manor_court",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:advowson",
+      "possessor": "lord"
+     },
+     {
+      "id": "estate-neighbour-3:hunting",
+      "possessor": "lord"
+     }
+    ],
+    "oversight": "steward",
+    "office": "steward",
+    "officeIcon": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/office_steward_32.png",
+     "size": [
+      32,
+      32
+     ]
+    },
+    "traits": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     },
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+      "size": [
+       24,
+       24
+      ]
+     }
+    ],
+    "dispositions": [
+     {
+      "disposition": "greedy",
+      "icon": false
+     },
+     {
+      "disposition": "merchant",
+      "icon": true
+     },
+     {
+      "disposition": "peasant",
+      "icon": true
+     }
+    ],
+    "attention": "직접 돌보는 영지 1 / 한도 2",
+    "overloaded": "false",
+    "alerts": [
+     {
+      "src": "http://127.0.0.1:4300/assets/lord-ui/lord-components-ui/alert_deadline.png",
+      "size": [
+       32,
+       32
+      ]
+     }
+    ],
+    "pending": "accounts",
+    "pendingText": "토머스 아트레인의 장부에서 6s 3d을 찾았습니다 · 답할 날 90일 남음",
+    "auditArt": {
+     "src": "http://127.0.0.1:4300/assets/lord-ui/wave35-operations/annual_audit.png",
+     "size": [
+      960,
+      540
+     ]
+    },
+    "summaries": 7,
+    "totals": [
+     "2곳",
+     "£21 2s 11d",
+     "1 / 2",
+     "감사 대기"
+    ],
+    "worldVisible": 512,
+    "panelInside": true,
+    "smallestText": 12,
+    "coarse": false,
+    "smallestButton": 44
+   },
+   "bytes": 36295,
+   "extra": {
+    "played": 6290,
+    "audit": {
+     "id": "audit-2",
+     "mode": "accounts",
+     "kept": 0,
+     "errors": 75
+    },
+    "text": "토머스 아트레인의 장부에서 6s 3d을 찾았습니다 · 답할 날 90일 남음"
+   },
+   "ok": true
+  },
+  "policy-subsidy": {
+   "bytes": 24756,
+   "extra": {
+    "switched": [
+     {
+      "policy": "growth",
+      "now": "growth",
+      "art": "growth"
+     },
+     {
+      "policy": "revenue",
+      "now": "revenue",
+      "art": "revenue"
+     },
+     {
+      "policy": "stability",
+      "now": "stability",
+      "art": "stability"
+     },
+     {
+      "policy": "defence",
+      "now": "defence",
+      "art": "defence"
+     }
+    ],
+    "notice": [
+     192,
+     256
+    ]
+   },
+   "ok": true
+  },
+  "subsidy-refused": {
+   "bytes": 25510,
+   "extra": {
+    "treasury": 60,
+    "refusal": "걸 수 없음: 장려금 합계 4s 2d — 한도(금고의 4분의 1) 1s 3d 초과",
+    "shut": true,
+    "before": 0,
+    "after": 0
+   },
+   "ok": true
+  }
+ }
+}

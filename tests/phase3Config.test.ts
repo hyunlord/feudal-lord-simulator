@@ -41,91 +41,91 @@ test("Phase 3 building table includes chapel without changing ordinary building 
 
   assert.deepEqual(phase3BuildingConfig, {
     house: {
-      kind: "house", name: "오두막", width: 1, height: 1, workersRequired: 0, buildCost: {},
+      kind: "house", builderTicks: 240, name: "오두막", width: 1, height: 1, workersRequired: 0, buildCost: {},
       requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 0, serviceRadius: 0,
     },
     well: {
-      kind: "well", name: "우물", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 10 },
+      kind: "well", builderTicks: 200, name: "우물", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 10 },
       requiresAdjacentTerrain: null, requiresRoad: false,       production: null, storageCapacity: 0, serviceRadius: 6,
     },
     storehouse: {
-      kind: "storehouse", name: "창고", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
+      kind: "storehouse", builderTicks: 800, name: "창고", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 200, serviceRadius: 0,
     },
     granary: {
-      kind: "granary", name: "곡창", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
+      kind: "granary", builderTicks: 800, name: "곡창", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 200, serviceRadius: 0,
     },
     chapel: {
-      kind: "chapel", name: "예배당", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 40 },
+      kind: "chapel", builderTicks: 600, name: "예배당", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 40 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 0, serviceRadius: 0,
     },
     wheat_farm: {
-      kind: "wheat_farm", name: "밀밭", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 20 },
+      kind: "wheat_farm", builderTicks: 500, name: "밀밭", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 20 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "wheat", input: null, inputPerOutput: 0, ticksPerOutput: 40 },
       storageCapacity: 20, serviceRadius: 0,
     },
     farmstead: {
-      kind: "farmstead", name: "헛간", width: 1, height: 1, workersRequired: 4, buildCost: { timber: 20 },
+      kind: "farmstead", builderTicks: 400, name: "헛간", width: 1, height: 1, workersRequired: 4, buildCost: { timber: 20 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 1000, serviceRadius: 0,
       fieldOutput: "wheat", carterCapacity: 60,
     },
     mill: {
-      kind: "mill", name: "방앗간", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
+      kind: "mill", builderTicks: 600, name: "방앗간", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "bread", input: "wheat", inputPerOutput: 2, ticksPerOutput: 30, outputHoldLimit: 16 },
       // LB-7 (C3): half the room for two 12-wheat carts on their way, half for bread waiting to go out.
       storageCapacity: 32, serviceRadius: 0, carterCapacity: 12,
     },
     logging_camp: {
-      kind: "logging_camp", name: "벌목소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 15 },
+      kind: "logging_camp", builderTicks: 400, name: "벌목소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 15 },
       requiresAdjacentTerrain: "forest", requiresRoad: true,       production: { output: "logs", input: null, inputPerOutput: 0, ticksPerOutput: 50 },
       storageCapacity: 20, serviceRadius: 0,
     },
     sawmill: {
-      kind: "sawmill", name: "제재소", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
+      kind: "sawmill", builderTicks: 600, name: "제재소", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "timber", input: "logs", inputPerOutput: 2, ticksPerOutput: 35 },
       storageCapacity: 20, serviceRadius: 0,
     },
     quarry: {
-      kind: "quarry", name: "채석장", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 50 },
+      kind: "quarry", builderTicks: 700, name: "채석장", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 50 },
       requiresAdjacentTerrain: "rock", requiresRoad: true,       production: { output: "stone_raw", input: null, inputPerOutput: 0, ticksPerOutput: 60 },
       storageCapacity: 20, serviceRadius: 0,
     },
     masonry: {
-      kind: "masonry", name: "석공소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 45 },
+      kind: "masonry", builderTicks: 600, name: "석공소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 45 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "stone", input: "stone_raw", inputPerOutput: 2, ticksPerOutput: 45 },
       storageCapacity: 20, serviceRadius: 0,
     },
     market: {
-      kind: "market", name: "시장", width: 2, height: 2, workersRequired: 3, buildCost: { timber: 60 },
+      kind: "market", builderTicks: 700, name: "시장", width: 2, height: 2, workersRequired: 3, buildCost: { timber: 60 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 0, serviceRadius: 8,
     },
     malt_kiln: {
-      kind: "malt_kiln", name: "엿기름 가마", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
+      kind: "malt_kiln", builderTicks: 500, name: "엿기름 가마", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 20, outputHoldLimit: 20 },
       storageCapacity: 40, serviceRadius: 0, carterCapacity: 12,
     },
     // C5 (CL-2…CL-7) the cloth chain.
     pastoral_farm: {
-      kind: "pastoral_farm", name: "목축 농장", width: 2, height: 1, workersRequired: 1, buildCost: { timber: 30 },
+      kind: "pastoral_farm", builderTicks: 400, name: "목축 농장", width: 2, height: 1, workersRequired: 1, buildCost: { timber: 30 },
       requiresAdjacentTerrain: null, requiresRoad: true, production: null, storageCapacity: 400, serviceRadius: 0, yardOutput: "fleece", carterCapacity: 40,
     },
     weaver_house: {
-      kind: "weaver_house", name: "직조공 집", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 }, requiresAdjacentTerrain: null, requiresRoad: true,
+      kind: "weaver_house", builderTicks: 500, name: "직조공 집", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 }, requiresAdjacentTerrain: null, requiresRoad: true,
       production: { output: "raw_cloth", input: "yarn", inputPerOutput: 4, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 40, serviceRadius: 0,
     },
     fulling_mill: {
       // ARCH-1b (MA-10): its wheel needs running water.
-      kind: "fulling_mill", name: "축융 방앗간", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 }, requiresAdjacentTerrain: "water", requiresFlowingWater: true, requiresRoad: true,
+      kind: "fulling_mill", builderTicks: 800, name: "축융 방앗간", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 }, requiresAdjacentTerrain: "water", requiresFlowingWater: true, requiresRoad: true,
       production: { output: "fulled_cloth", input: "raw_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
     },
     dyehouse: {
-      kind: "dyehouse", name: "염색집", width: 2, height: 1, workersRequired: 2, buildCost: { timber: 40 }, requiresAdjacentTerrain: "water", requiresRoad: true,
+      kind: "dyehouse", builderTicks: 600, name: "염색집", width: 2, height: 1, workersRequired: 2, buildCost: { timber: 40 }, requiresAdjacentTerrain: "water", requiresRoad: true,
       production: { output: "dyed_cloth", input: "fulled_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10, alsoConsumes: { resource: "dyes", amount: 1 } },
       storageCapacity: 40, serviceRadius: 0,
     },
     tenter_yard: {
-      kind: "tenter_yard", name: "텐터 틀", width: 3, height: 2, workersRequired: 1, buildCost: { timber: 20 }, requiresAdjacentTerrain: null, requiresRoad: true,
+      kind: "tenter_yard", builderTicks: 400, name: "텐터 틀", width: 3, height: 2, workersRequired: 1, buildCost: { timber: 20 }, requiresAdjacentTerrain: null, requiresRoad: true,
       production: { output: "finished_cloth", input: "dyed_cloth", inputPerOutput: 1, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
     },
   });

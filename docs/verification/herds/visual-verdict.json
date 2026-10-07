@@ -1,0 +1,54 @@
+{
+  "verdict": "PASS_WITH_LIMITS",
+  "baseline": "8936a4699fbc654f42ca135701433bf332022862",
+  "product": "001a48737b461e315b93c85eaeeb5fa8e4378852",
+  "actualPairs": 6,
+  "invariants": [
+    "save",
+    "state",
+    "tick",
+    "camera",
+    "zoom",
+    "props"
+  ],
+  "pageErrors": 0,
+  "networkFailures": 0,
+  "observedDirections": [
+    "se",
+    "ne"
+  ],
+  "unobservedDirections": [
+    "sw",
+    "nw"
+  ],
+  "visualFindings": [
+    "Summer and winter close views retain the same pasture and surrounding cattle/other flock variants.",
+    "The four sheep in the replacement central flock are smaller and more sharply outlined than the old flock; retained b/c flocks visibly differ in style and size (parent also inspected summer z3 and winter z0.6).",
+    "At zoom 0.6 the herd is visible, but individual count and direction are too small for a readability claim.",
+    "No animation or engine animal population change is claimed."
+  ],
+  "notCovered": [
+    "spring exclusion visual check",
+    "long-run performance",
+    "SW/NW actual scene appearance"
+  ],
+  "runs": [
+    "astra-HERDS-prepare-8936a46",
+    "astra-HERDS-before-8936a46",
+    "astra-HERDS-after-001a487"
+  ],
+  "scale": {
+    "source": "shared animalScale",
+    "value": 0.20670180722891565,
+    "crop": [
+      128,
+      96
+    ],
+    "worldCanvas": [
+      26.457831325301203,
+      19.843373493975903
+    ],
+    "originalArtModified": false,
+    "perAssetScaleOverride": false
+  }
+}

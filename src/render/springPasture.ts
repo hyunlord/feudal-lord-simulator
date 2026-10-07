@@ -1,9 +1,10 @@
+import { FARM_PROP_ART } from './farmPropArt';
 import type { GameState } from '../engine/engine.types';
 import type { ArtRect } from './art/artContract';
 import { SPRING_WORLD_ART } from './art/springWorldArt';
 import type { FarmProp } from './farmProps';
 import { screenToTile, tileToScreen } from './iso';
-import { ZONE_ASSETS, ZONE_VARIANTS } from './zoneAssetManifest';
+import { ZONE_VARIANTS } from './zoneAssetManifest';
 import { zonesOf } from '../zones/zoneEdits';
 
 export type SpringPastureState = Pick<GameState, 'tiles' | 'zones' | 'width'>;
@@ -14,12 +15,6 @@ function identitySeed(id: string): number {
   let seed = 2166136261;
   for (let i = 0; i < id.length; i += 1) seed = Math.imul(seed ^ id.charCodeAt(i), 16777619) >>> 0;
   return seed;
-}
-function propBounds(prop: FarmProp): ArtRect | null {
-  const meta = ZONE_ASSETS.find(asset => asset.key === prop.kind);
-  if (!meta || meta.role !== 'prop') return null;
-  const foot = tileToScreen(prop.x, prop.y); const scale = meta.displayWidth / meta.width;
-  return { x: foot.sx - meta.anchorX * scale, y: foot.sy - meta.anchorY * scale, width: meta.displayWidth, height: meta.height * scale };
 }
 function overlaps(a: ArtRect, b: ArtRect): boolean {
   return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
@@ -54,7 +49,7 @@ function supports(rect: ArtRect, cells: ReadonlyMap<number, string>, width: numb
 }
 
 /** A display companion for an already-present flock; never a new simulation animal or birth. */
-export function springPasturePlacement(state: SpringPastureState, prop: FarmProp, props: readonly FarmProp[], season: number, zoom: number, art: SpringArt = SPRING_WORLD_ART): Placement | null {
+export function springPasturePlacement(state: SpringPastureState, prop: FarmProp, props: readonly FarmProp[], season: number, zoom: number, art: SpringArt = SPRING_WORLD_ART, propBounds: (prop: FarmProp) => ArtRect | null = FARM_PROP_ART.bounds): Placement | null {
   if (season !== 0 || zoom < 0.6 || !flockKinds.has(prop.kind)) return null;
   const cells = supportCells(state); const owner = cells.get(Math.round(prop.y) * state.width + Math.round(prop.x));
   if (!owner || !prop.id.startsWith(`farm-prop:${owner}:`)) return null;

@@ -9,6 +9,10 @@ import { calendarLabel, historicalEra, scenarioOf } from "../engine/scenarioStat
 import { calendarDays, durationLabel, humanizeTicks } from "./gameTimeCopy.ko";
 import { SETTLEMENT_PANEL_COPY } from "./settlementPanelCopy.ko";
 import { Button, Disclosure } from "./kit";
+import { LORD_SLICE_GOAL_YEARS } from "../content/lordSliceConfig";
+import { lordMode } from "../engine/townAgency";
+import { LORD_ADVICE_COPY } from "./lord/advice/lordAdviceCopy.ko";
+import { TITLE_COPY } from "./titleCopy.ko";
 
 export function SettlementPanel({ state, onRestart, developmentContent }: {
   readonly state: GameState;
@@ -17,6 +21,7 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
 }) {
   const [confirmRestart, setConfirmRestart] = useState(false);
   const view = getSettlementView(state);
+  const lord = lordMode(state);
   const goal = view.currentGoal;
   const changeKey = JSON.stringify([view.outcome, view.crisis, goal?.id, view.metrics.suppliedHouses, view.metrics.occupiedHouses,
     goal?.criteria.map(item => [item.id, Math.floor(item.current), item.met]),
@@ -45,8 +50,9 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
       <div className="settlement-progress-body">
         <p className="settlement-calendar">{calendarLabel(state)} · {SCENARIO_COPY.eraLabel(historicalEra(state).name)}</p>
         <p>{SETTLEMENT_PANEL_COPY.householdBread(bread, calendarDays(HOUSE_FOOD_INTERVAL), ration)}</p>
-        <p>{SETTLEMENT_PANEL_COPY.larderRule}</p>
-        {goal === null ? <p>{view.mode === "sandbox" ? SCENARIO_COPY.sandboxGoal : SCENARIO_COPY.allGoalsDone}</p> : <>
+        {/* DEC-CARD A1: lord mode is no free-building sandbox — the town builds, the lord sets its conditions. */}
+        <p>{lord ? LORD_ADVICE_COPY.larderRule : SETTLEMENT_PANEL_COPY.larderRule}</p>
+        {goal === null ? <p>{lord ? TITLE_COPY.lordGoal(LORD_SLICE_GOAL_YEARS.min, LORD_SLICE_GOAL_YEARS.max) : view.mode === "sandbox" ? SCENARIO_COPY.sandboxGoal : SCENARIO_COPY.allGoalsDone}</p> : <>
           <ul>{goal.criteria.map(item => <li key={item.id}>
             <span>{humanizeTicks(item.label)}</span><strong>{Math.floor(item.current)}/{item.target}{item.met ? SETTLEMENT_PANEL_COPY.met : ""}</strong>
           </li>)}</ul>

@@ -1,12 +1,13 @@
 import type { FamineResponseChoice, PetitionResponse } from "../../content/chapterConfig";
 import { CHRONICLE_COPY } from "../chronicleCopy.ko";
 import type { ChronicleView } from "../chronicleModel";
-import { DECISION_COPY } from "../decisionCopy.ko";
-import type { FamineDecisionView, PetitionDecisionView } from "../decisionModels";
+import { DecisionCard } from "../decisionCard/DecisionCard";
+import type { FamineCardView } from "../decisionCard/families/famineCard";
+import type { PetitionCardView } from "../decisionCard/families/petitionCard";
 import type { HeirCandidateView } from "../heirCandidateModel";
 import { UiIcon } from "../UiIcon";
-import { wave8ContentStyle, wave8FrameLayerStyle, wave8ImageStyle, wave8Url } from "../wave8Art";
-import { wave16ImageStyle, wave16Url } from "../wave16Art";
+import { wave8ContentStyle, wave8FrameLayerStyle } from "../wave8Art";
+import { wave16Url } from "../wave16Art";
 import { chapterIntro, wave31Url } from "../wave31Art";
 import { PersonChip, PersonPortrait } from "../persons/PersonViews";
 import type { PersonRow } from "../persons/personModels";
@@ -16,137 +17,74 @@ import { Button } from "../kit";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { PETITION_COPY } from "../petitionCopy.ko";
 import { wave14ImageStyle } from "../wave14Art";
-import { wave17ImageStyle, wave17Url } from "../wave17Art";
-import { wave21ImageStyle, wave21Url } from "../wave21Art";
-import { wave33ImageStyle } from "../wave33Art";
+import { wave17Url } from "../wave17Art";
+import { wave21Url } from "../wave21Art";
 import { storyArtStyle } from "../storyArt";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
-//  - The Great Famine's answer: the 1315 loading keyart behind, the intro illustration, four answers each with its
-//    Wave 16 illustration, its line and the engine's predicted numbers. [나중에 정하기] closes it; the event chip reopens it.
-//  - The merchants' petition: the Wave 8 petition frame, the petitioners and their demand, three answers with seals.
+//  - DEC-CARD: the Great Famine's answer and every political petition are the heavy decision card (`DecisionCard`): what
+//    is happening, what is at stake, until when, and each answer's now / later / who remembers, from the answer run on
+//    the state (`decisionCard/families/famineCard.ts`, `petitionCard.ts`). [나중에 정한다] closes it; the chip reopens it.
 //  - The chronicle page at the chapter's end, and the chapter 2 preview.
 
-/** NAT-2 (QA-009): an answer's forecast line, none while the engine gives it no numbers (it shows once it does). */
-function PredictedLine({ className, numbers }: { readonly className: string; readonly numbers: string }) {
-  const line = DECISION_COPY.predictedLine(numbers);
-  return line === null ? null : <span className={className}>{line}</span>;
-}
-
 export function FamineDecisionModal({ view, onChoose, onLater, steward = null, onPerson }: {
-  readonly view: FamineDecisionView; readonly onChoose: (choice: FamineResponseChoice) => void; readonly onLater: () => void;
+  readonly view: FamineCardView; readonly onChoose: (choice: FamineResponseChoice) => void; readonly onLater: () => void;
   /** UI-5: the lord's steward, who brings the matter (the fixed portrait's look of concern, the name; the chip opens the card). */
   readonly steward?: PersonRow | null; readonly onPerson?: (personId: string) => void;
 }) {
-  return (
-    <div className="story-modal-backdrop story-modal-backdrop--famine" role="presentation" style={{ backgroundImage: `url("${wave8Url("loading_1315_famine")}")` }}>
-      <section className="story-modal famine-decision" data-frame="flat" role="dialog" aria-modal="true" aria-label={DECISION_COPY.famineTitle} data-decision={view.eventId}>
-        <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("decision_famine_intro", 320)} />
-        <h2>{DECISION_COPY.famineTitle}</h2>
-        {steward === null ? null : <div className="decision-steward" data-steward={steward.id}>
-          {onPerson === undefined ? <PersonPortrait portraitId={STEWARD_PORTRAIT.concern} size={64} />
-            : <PersonChip row={{ ...steward, portraitId: STEWARD_PORTRAIT.concern }} size={64} onOpen={id => onPerson(id)} />}
-          <p className="decision-steward-advice">{PERSONS_COPY.stewardAdvice}</p>
-        </div>}
-        <p>{DECISION_COPY.famineIntro}</p>
-        <ol className="famine-options">
-          {view.options.map(option => (
-            <li key={option.choice}>
-              <Button type="button" className="famine-option" data-choice={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onChoose(option.choice)} variant="secondary">
-                <span className="famine-option-art" aria-hidden="true" style={wave16ImageStyle(option.illustration, 132)} />
-                <strong>{option.label}</strong>
-                <span className="famine-option-line">{option.line}</span>
-                <PredictedLine className="famine-option-predicted" numbers={option.predicted} />
-              </Button>
-            </li>
-          ))}
-        </ol>
-        <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
-      </section>
-    </div>
-  );
-}
-
-/** UI-6: the scene of a petition's kind (Wave 16 for chapter 1's, the Wave 17 decision cards for the war's five).
- *  UI-8: extended to accept "wave21" for the chapter 3 plague decisions. UI-10: "wave33" for the interlude's two. */
-function PetitionArt({ art }: { readonly art: PetitionDecisionView["presentation"]["art"] }) {
-  if (art === null) return null;
-  // Wave 17 and Wave 21 decision cards are 4:3 (taller than Wave 16's): narrower so the three answers stay inside the frame.
-  if (art.sheet === "wave21") return <div className="story-modal-art" aria-hidden="true" style={wave21ImageStyle(art.id, 208)} />;
-  // UI-10: the Wave 33 interlude illustrations are 16:9, as tall at 240 as a 4:3 card at 180.
-  if (art.sheet === "wave33") return <div className="story-modal-art" aria-hidden="true" style={wave33ImageStyle(art.id, 240)} />;
-  return <div className="story-modal-art" aria-hidden="true" style={art.sheet === "wave16" ? wave16ImageStyle(art.id, 300) : wave17ImageStyle(art.id, 208)} />;
+  // DEC-CARD: the famine in the heavy card's layout; the steward who brings it stays beside the stake (the card's `extra`).
+  const extra = steward === null ? null : <div className="decision-steward" data-steward={steward.id}>
+    {onPerson === undefined ? <PersonPortrait portraitId={STEWARD_PORTRAIT.concern} size={64} />
+      : <PersonChip row={{ ...steward, portraitId: STEWARD_PORTRAIT.concern }} size={64} onOpen={id => onPerson(id)} />}
+    <p className="decision-steward-advice">{PERSONS_COPY.stewardAdvice}</p>
+  </div>;
+  return <DecisionCard view={view.card} className="famine-decision" data={{ "data-decision": view.eventId }} extra={extra}
+    onLater={onLater} onChoose={choice => onChoose(choice as FamineResponseChoice)} />;
 }
 
 /** UI-10 (LG-3): the heir an answer names — the portrait, the name, who they are to the old lord, their likeness and records. */
-function HeirCandidate({ heir }: { readonly heir: HeirCandidateView }) {
+function HeirCandidate({ heir, answer }: { readonly heir: HeirCandidateView; readonly answer: string }) {
   return (
-    <span className="petition-heir" data-person={heir.personId} data-portrait-exact={heir.exact ? "true" : "false"}>
+    <li className="petition-heir" data-person={heir.personId} data-portrait-exact={heir.exact ? "true" : "false"} data-choice={heir.response}>
       <PersonPortrait portraitId={heir.portraitId} size={48} />
       <strong className="petition-heir-name">{heir.name}</strong>
       <span className="petition-heir-who">{heir.who}</span>
+      <span className="petition-heir-answer">{answer}</span>
       <span className="petition-heir-line">{heir.lineage}</span>
       <span className="petition-heir-line">{heir.resemblance}</span>
       <span className="petition-heir-line">{heir.records}</span>
-    </span>
+    </li>
   );
 }
 
 export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPerson }: {
-  readonly view: PetitionDecisionView; readonly onRespond: (response: PetitionResponse) => void; readonly onLater: () => void;
+  readonly view: PetitionCardView; readonly onRespond: (response: PetitionResponse) => void; readonly onLater: () => void;
   /** UI-5: the heads who bring the petition (PERSON-0 PS-4: two or three), each a chip that opens their card. */
   readonly petitioners?: readonly PersonRow[]; readonly onPerson?: (personId: string) => void;
 }) {
-  const { presentation } = view;
-  const from = presentation.from;
-  const behalf = PETITION_COPY.onBehalf[presentation.defId];
-  // UI-6: who brings it — the faction by its display name and arms; the Crown's writ hangs its seal with those arms;
-  // the faction's leader (a person: the king, the earl, the refugees' or townsfolk's head) as a chip beside the town's heads.
+  const from = view.from;
+  // UI-6: who brings it — the faction's arms in the roundel; the Crown's writ hangs its seal with those arms; the faction's
+  // leader (the king, the earl, the refugees' or townsfolk's head) as a chip beside the town's heads. DEC-CARD: these and
+  // the heir candidates are the card's `extra`, between the stake and the answers.
   const people = [...(from?.leader === null || from?.leader === undefined ? [] : [from.leader]), ...petitioners.filter(row => row.id !== from?.leader?.id)];
-  return (
-    <div className="story-modal-backdrop" role="presentation">
-      <section className="story-modal petition-card" data-frame="petition" role="dialog" aria-modal="true" aria-label={presentation.title} data-petition={view.petitionId}
-        data-def={presentation.defId} data-answers={view.options.length}>
-        <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
-        {/* UI-6b: the sender's arms in the frame's empty roundel (its top-left corner). */}
-        {from === null ? null : <span className="petition-roundel"><EmblemImage emblem={from.arms} size={38} label={PETITION_COPY.arms(from.name)} /></span>}
-        <div className="petition-body">
-          <div className="petition-scene">
-            <PetitionArt art={presentation.art} />
-            {people.length === 0 || onPerson === undefined ? null : (
-              <section className="petition-people" aria-label={PERSONS_COPY.petitionersHeading}>
-                <h3>{from?.writ === true ? PETITION_COPY.senderHeading : PERSONS_COPY.petitionersHeading}</h3>
-                <ul className="person-list">{people.map(row => <li key={row.id}><PersonChip row={row} onOpen={id => onPerson(id)} /></li>)}</ul>
-              </section>
-            )}
-          </div>
-          <h2>{presentation.title}</h2>
-          {from === null ? null : (
-            <p className="petition-who" data-faction={from.factionId}>
-              {from.writ ? <span className="petition-writ" role="img" aria-label={PETITION_COPY.writ} style={wave14ImageStyle("wax_seal_hanging", 36)}>
-                <span className="petition-writ-arms"><EmblemImage emblem={from.arms} size={22} label={from.name} /></span></span> : null}
-              {behalf === undefined ? PETITION_COPY.from(from.name) : PETITION_COPY.fromOnBehalf(from.name, behalf)}
-            </p>
-          )}
-          <p>{presentation.demand}</p>
-          <ol className="petition-options">
-            {view.options.map(option => (
-              <li key={option.choice}>
-                <Button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onRespond(option.choice)} variant="secondary">
-                  <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.seal, 44)} />
-                  <strong>{option.label}</strong>
-                  {option.heir === undefined ? null : <HeirCandidate heir={option.heir} />}
-                  <span>{option.line}</span>
-                  <PredictedLine className="petition-predicted" numbers={option.predicted} />
-                </Button>
-              </li>
-            ))}
-          </ol>
-          <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
-        </div>
+  const extra = <>
+    {people.length === 0 || onPerson === undefined ? null : (
+      <section className="petition-people" aria-label={PERSONS_COPY.petitionersHeading}>
+        <h3>{from?.writ === true ? <span className="petition-writ" role="img" aria-label={PETITION_COPY.writ} style={wave14ImageStyle("wax_seal_hanging", 36)}>
+          <span className="petition-writ-arms"><EmblemImage emblem={from.arms} size={22} label={from.name} /></span></span> : null}
+          {from?.writ === true ? PETITION_COPY.senderHeading : PERSONS_COPY.petitionersHeading}</h3>
+        <ul className="person-list">{people.map(row => <li key={row.id}><PersonChip row={row} onOpen={id => onPerson(id)} /></li>)}</ul>
       </section>
-    </div>
-  );
+    )}
+    {view.heirs.length === 0 ? null : <section className="petition-heirs" aria-label={PETITION_COPY.heir.heading}>
+      <h3>{PETITION_COPY.heir.heading}</h3>
+      <ul>{view.heirs.map(entry => <HeirCandidate key={entry.heir.personId} heir={entry.heir} answer={entry.label} />)}</ul>
+    </section>}
+  </>;
+  return <DecisionCard view={view.card} className="petition-decision" extra={extra}
+    crest={from === null ? null : { arms: from.arms, label: PETITION_COPY.arms(from.name) }}
+    data={{ "data-petition": view.petitionId, "data-def": view.defId, ...(from === null ? {} : { "data-faction": from.factionId }) }}
+    onLater={onLater} onChoose={choice => onRespond(choice as PetitionResponse)} />;
 }
 
 export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChronicle, nextLabel }: {

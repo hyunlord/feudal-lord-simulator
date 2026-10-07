@@ -1,0 +1,44 @@
+{
+  "scope": "actual static cluster installation; not locomotion or all-direction approval",
+  "reviewers": [
+    {
+      "reviewer": "herd_impl",
+      "samples": [
+        "summer-sheep-b-z3",
+        "summer-cattle-z3",
+        "summer-pig-north-z3",
+        "summer-pig-south-z3",
+        "winter-pig-south-z3"
+      ],
+      "observations": [
+        "sheep five and cattle three bodies visible in closeups",
+        "pig four separated bodies at alternative existing south/north location",
+        "original pig center occluded by forest; that sample not treated as full-body proof"
+      ]
+    },
+    {
+      "reviewer": "parent /root",
+      "samples": [
+        "summer-sheep-b-z3",
+        "summer-cattle-z3",
+        "winter-cattle-z0.6",
+        "summer-pig-south-z3",
+        "winter-pig-south-z3"
+      ],
+      "observations": [
+        "closeup bodies separate with feet on ground",
+        "pig right foliage partly overlaps; group not hidden as at initial position",
+        "no obvious new major clipping in these samples",
+        "sharper outline than ground and static gait poses remain",
+        "zoom0.6 cannot establish animal counts or orientation"
+      ]
+    }
+  ],
+  "limitations": [
+    "No movement or new AI",
+    "Unseen directions unverified in actual scene",
+    "Existing prop locations and engine aggregates unchanged",
+    "Smaller/crisper than retained legacy flocks",
+    "No long-term performance claim"
+  ]
+}
