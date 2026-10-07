@@ -1,0 +1,80 @@
+{
+  "pairs": 18,
+  "positiveRuntimeImages": [
+    "height-l0e/house_l0_e-v2.png",
+    "height-l0e/house_l0_e-v2_boarded.png",
+    "height-l0e/house_l0_e-v2_fresh.png",
+    "height-l0e/house_l0_e-v2_snow.png",
+    "height-l0e/house_l0_e-v2_weathered.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "after-summer-fresh-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-fresh-z3",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-weathered-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-weathered-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-weathered-z3",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-z3",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-boarded-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-boarded-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-boarded-z3",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": "Ridge38native upward; ground residual max4.472native; full fresh-state image; door uncertainty crosses Bible lower bound; thick eave snow; closed doorleaf proxy not effective opening certification; no natural growth claim.",
+  "observations": "See README for actual close and play-zoom inspection."
+}

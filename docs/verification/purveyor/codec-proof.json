@@ -1,0 +1,8 @@
+{
+  "originalSchema": 33,
+  "tick": 160183,
+  "stateSHA256": "9eb9ba729cec67d84530c7e29f81ecbe39587d48818ed6faace62db40d035f04",
+  "inputSHA256": "dbd85751060d7cdc1c801851111da78357ee8679a0dedb82f3e388052bf9d9c1",
+  "stateUnchanged": true,
+  "correction": "decodeSave migrates state but retains original envelope checksum; re-encode unchanged state with canonical codec before browser load"
+}

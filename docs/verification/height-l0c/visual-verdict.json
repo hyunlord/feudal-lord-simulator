@@ -1,0 +1,151 @@
+{
+  "pairs": 18,
+  "positiveRuntimeImages": [
+    "height-l0c/house_l0_c-v2.png",
+    "height-l0c/house_l0_c-v2_boarded.png",
+    "height-l0c/house_l0_c-v2_fresh.png",
+    "height-l0c/house_l0_c-v2_snow.png",
+    "height-l0c/house_l0_c-v2_weathered.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "before-summer-fresh-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-summer-fresh-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-summer-weathered-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-summer-weathered-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-summer-weathered-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-fresh-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-boarded-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-boarded-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-winter-boarded-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-boarded-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-boarded-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-melt-boarded-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-boarded-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-boarded-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-boarded-z0.6",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-boarded-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": "Closed-leaf proxy, ridge41native higher, ground residual max2.236, topedge alpha4, existing neighbouring windmill overlap retained; source/prepared state distinctions explicit.",
+  "observations": "See README for actual close and play-zoom inspection.",
+  "directlyViewed": [
+    "before-winter-z3",
+    "after-winter-z3",
+    "after-summer-weathered-z3",
+    "after-summer-fresh-z3",
+    "after-winter-z1",
+    "after-winter-z0.6",
+    "after-winter-boarded-z3",
+    "after-melt-z3",
+    "after-summer-fresh-z1"
+  ]
+}

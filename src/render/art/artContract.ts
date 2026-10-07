@@ -28,6 +28,7 @@ export type WalkerBodyFrame = {
   readonly direction: WalkerArtDirection; readonly gaitFrame: 0 | 1;
   readonly foot: ArtPoint; readonly figureHeight: number;
   readonly hands: { readonly left: ArtPoint; readonly right: ArtPoint };
+  readonly heldAttachment?: { readonly propId: string; readonly grip: ArtPoint; readonly restoreHandSize: 3 };
   readonly cloakRegistration?: ArtPoint & { readonly scale: number };
 };
 /** The existing composer reads four columns and two gait rows in 74px cell coordinates. */

@@ -97,7 +97,7 @@ test("RM-4 guards wear the guard sheet (male legacy art) and clergy the clergy b
   assert.ok(clergy.length > 0 && clergy.every(look => ["priest", "monk", "nun"].includes(look.band)));
 });
 
-test("V2 mapping: every installed class band has a walking occupation, and every resident occupation draws from both sexes", () => {
+test("V2 mapping: every general class band has a walking occupation, and every resident occupation draws from both sexes", () => {
   const bands = new Set(walkerSheetManifest.filter(sheet => !["legacy_civilian_man", "legacy_civilian_woman", "legacy_merchant", "legacy_cleric"].includes(sheet.id))
     .map(sheet => sheet.classBand));
   // INSTALL-5c: the elder band is drawn by age (ELDER_BANDS), whatever the errand.
@@ -105,7 +105,9 @@ test("V2 mapping: every installed class band has a walking occupation, and every
   // INSTALL-11: the kit band (carpenter, mason) is worn only by builders at a kit site (walkerAppearance), never drawn from a pool.
   // INSTALL-3: the ale band (alewife, maltster) is worn only on the ale chain's errands and carts (walkerAppearance);
   // UI-9b: the cloth band (shepherd, fuller, wool merchant) only on the cloth buildings' carts.
-  assert.deepEqual([...bands].filter(band => !mapped.has(band) && band !== "kit" && band !== "ale" && band !== "cloth"), []);
+  // RB-PURVEYOR: receipt presentations use explicit looks, never resident occupation pools.
+  assert.equal(mapped.has("receipt-presentation"), false);
+  assert.deepEqual([...bands].filter(band => !mapped.has(band) && band !== "kit" && band !== "ale" && band !== "cloth" && band !== "receipt-presentation"), []);
   const residentOccupations: readonly ResidentOccupation[] = ["water_fetcher", "marketgoer", "churchgoer", "field_hand", "market_visitor", "clergy"];
   for (const occupation of residentOccupations) {
     for (const sex of ["female", "male"] as const) {

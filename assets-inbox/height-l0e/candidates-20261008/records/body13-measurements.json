@@ -1,0 +1,92 @@
+{
+  "candidate": "body13-native.png",
+  "registrationWholeOffset": [
+    0,
+    0
+  ],
+  "door": {
+    "measurement": "closed wooden leaf used as conservative aperture proxy, excludes frame/roof",
+    "verticalSampleX": 58,
+    "topY": 72,
+    "bottomY": 114,
+    "heightNative": 42,
+    "leftX": 49,
+    "rightX": 66,
+    "widthNative": 17,
+    "endpointUncertainty": 1,
+    "differenceUncertainty": 2,
+    "worldScale": 0.49957049486461247,
+    "heightWorldCentral": 20.981960784313724,
+    "heightWorldInterval": [
+      19.9828197945845,
+      21.981101774042948
+    ],
+    "widthWorldCentral": 8.492698412698411,
+    "widthWorldInterval": [
+      7.493557422969187,
+      9.491839402427637
+    ],
+    "centralMeetsBible": true,
+    "uncertaintyCrossesLowerBounds": true
+  },
+  "ground": {
+    "originalManual": [
+      [
+        26,
+        106
+      ],
+      [
+        89,
+        137
+      ],
+      [
+        130,
+        117
+      ]
+    ],
+    "candidateManual": [
+      [
+        28,
+        102
+      ],
+      [
+        87,
+        137
+      ],
+      [
+        130,
+        120
+      ]
+    ],
+    "pointUncertainty": 2,
+    "residualNative": [
+      4.47213595499958,
+      2,
+      3
+    ],
+    "maxResidualNative": 4.47213595499958
+  },
+  "roofTopManual": {
+    "originalY": 48,
+    "candidateY": 10,
+    "raisedNative": 38,
+    "pointUncertainty": 2
+  },
+  "alpha": {
+    "anyBBox": [
+      4,
+      4,
+      147,
+      150
+    ],
+    "gt32BBox": [
+      20,
+      9,
+      132,
+      140
+    ],
+    "edgeAnyPixels": 0,
+    "wholeRegistrationClippedPixels": 0,
+    "explanation": "No whole translation currently applied; edge pixels and transform loss are different checks."
+  }
+}

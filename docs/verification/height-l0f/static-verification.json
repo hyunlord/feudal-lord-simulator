@@ -1,0 +1,123 @@
+{
+  "runtimeExact": [
+    {
+      "role": "body",
+      "runtime": "public/assets/height-l0f/house_l0_f-v2.png",
+      "sha256": "40996bd9066af0e3d6bab1b3049fff5f799c2a62afce54aba43626187d105158"
+    },
+    {
+      "role": "fresh",
+      "runtime": "public/assets/height-l0f/house_l0_f-v2_fresh.png",
+      "sha256": "edacbd27af2c3d31f973099ae4b359be259f3ba470a9562e0698a5a7eb07a5df"
+    },
+    {
+      "role": "weathered",
+      "runtime": "public/assets/height-l0f/house_l0_f-v2_weathered.png",
+      "sha256": "7a62529ef265ef42d7b738246042ed015f05831cbdcf97c802ba0ad18a82879b"
+    },
+    {
+      "role": "boarded",
+      "runtime": "public/assets/height-l0f/house_l0_f-v2_boarded.png",
+      "sha256": "01d16c02309e1ce4baf0d423d74fd00c4a3192ae688d8e5f716fb929ec608c44"
+    },
+    {
+      "role": "snow",
+      "runtime": "public/assets/height-l0f/house_l0_f-v2_snow.png",
+      "sha256": "1d146e2f3482be6e131441fd6627d0c4ca1051bf838eba2941c8f51ac050b569"
+    }
+  ],
+  "sourceFilesSHA": 90,
+  "originalLedgerBytesExact": true,
+  "nativeViewed": 5,
+  "opaqueCompositeViewed": 4,
+  "limitations": {
+    "method": "Manual same-x closedleaf measurement on nativeimage enlarged nearestneighbor; endpoints about\u00b11px, dimensions\u00b12px. Porch gable/roof/frame NOT counted as doorleaf.",
+    "doorLeaf": {
+      "sameX": 59,
+      "topY": 75,
+      "bottomY": 118,
+      "height": 43,
+      "widthAtY": 97,
+      "leftX": 50,
+      "rightX": 68,
+      "width": 18,
+      "dimensionUncertainty": 2
+    },
+    "actualClearOpening": "Not independently visible behind closeddoor; leaf is apertureproxy, not clearopening certification.",
+    "worldScale": 0.49957049486461247,
+    "worldDoorHeightRange": [
+      20.48239028944911,
+      22.48067226890756
+    ],
+    "worldDoorWidthRange": [
+      7.9931279178337995,
+      9.99140989729225
+    ],
+    "bibleWorldHeight": [
+      20.24,
+      24.64
+    ],
+    "bibleWorldWidth": [
+      7.92,
+      11.44
+    ],
+    "originalGroundLandmarks": [
+      [
+        26,
+        106
+      ],
+      [
+        90,
+        138
+      ],
+      [
+        129,
+        118
+      ]
+    ],
+    "candidateGroundLandmarks": [
+      [
+        24,
+        107
+      ],
+      [
+        90,
+        138
+      ],
+      [
+        130,
+        119
+      ]
+    ],
+    "groundEuclideanResiduals": [
+      2.23606797749979,
+      0.0,
+      1.4142135623730951
+    ],
+    "groundCoordinateUncertainty": 2,
+    "footprint": [
+      1,
+      1
+    ],
+    "pivot": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "sourceAlpha32BBox": [
+      16,
+      53,
+      134,
+      140
+    ],
+    "candidateAlpha32BBox": [
+      16,
+      19,
+      138,
+      140
+    ],
+    "roofTopShift": -34,
+    "identity": "broad lowhipped mainroof; frontleft crossgabled porch; creamplaster; rightXbrace; one small unglazed barred frontwindow",
+    "geometryLimitation": "Walls and both roof systems raised; originalplan/ground registration approximate, not pixelidentical. Uniform wholeimage registration only for selected final files.",
+    "planWidthLimitation": "Manual groundspan106px versusoriginal103px (~+3px); outerroof alpha>32 span122 versus118px. Approximate sameplan, not exactsamewidth."
+  }
+}

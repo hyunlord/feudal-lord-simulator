@@ -1,0 +1,450 @@
+{
+  "task": "RB-HEIGHT-L0C",
+  "status": "static art candidates only; not installed, not runtime verified",
+  "files": [
+    {
+      "role": "body",
+      "file": "house_l0_c-body-candidate.png",
+      "sha256": "513eb7c56e28408baf572b22b293003e28f7a8f2dcb936824b0fca0bc92f8888",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        21,
+        2,
+        134,
+        142
+      ],
+      "nonzeroAlphaPixels": 11150,
+      "visibleAlpha32Pixels": 10710,
+      "boundaryAlphaMax": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "registration": {
+        "rawSize": [
+          1254,
+          1254
+        ],
+        "uniformResize": [
+          149,
+          149
+        ],
+        "translation": [
+          3,
+          -3
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "tool": "ffmpeg scale Lanczos then transparent pad/crop implementing wholeimage translation; no local paint, masks or part clipping"
+      },
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "role": "fresh",
+      "file": "house_l0_c-fresh-candidate.png",
+      "sha256": "1b7b9373319bdfc636c277a54f8afa98ae00bb14acd237f07528ea3a47731027",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        33,
+        53,
+        125,
+        114
+      ],
+      "nonzeroAlphaPixels": 774,
+      "visibleAlpha32Pixels": 539,
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "registration": {
+        "rawSize": [
+          1254,
+          1254
+        ],
+        "uniformResize": [
+          149,
+          149
+        ],
+        "translation": [
+          3,
+          -3
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "tool": "ffmpeg scale Lanczos then transparent pad/crop implementing wholeimage translation; no local paint, masks or part clipping"
+      },
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "role": "weathered",
+      "file": "house_l0_c-weathered-candidate.png",
+      "sha256": "ab6791522f3e0ce2a3a296a23a78c0c7e8fd96bd7b694581cb1b35391072d6f6",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        34,
+        96,
+        126,
+        133
+      ],
+      "nonzeroAlphaPixels": 508,
+      "visibleAlpha32Pixels": 138,
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "registration": {
+        "rawSize": [
+          1254,
+          1254
+        ],
+        "uniformResize": [
+          149,
+          149
+        ],
+        "translation": [
+          3,
+          -3
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "tool": "ffmpeg scale Lanczos then transparent pad/crop implementing wholeimage translation; no local paint, masks or part clipping"
+      },
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "role": "boarded",
+      "file": "house_l0_c-boarded-candidate.png",
+      "sha256": "ebb0f1f186367295535a91cd90687328e17cb241ab9bd0fe0a74b789e42b5613",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        34,
+        71,
+        79,
+        115
+      ],
+      "nonzeroAlphaPixels": 882,
+      "visibleAlpha32Pixels": 659,
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "registration": {
+        "rawSize": [
+          1254,
+          1254
+        ],
+        "uniformResize": [
+          149,
+          149
+        ],
+        "translation": [
+          3,
+          -3
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "tool": "ffmpeg scale Lanczos then transparent pad/crop implementing wholeimage translation; no local paint, masks or part clipping"
+      },
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    },
+    {
+      "role": "snow",
+      "file": "house_l0_c-snow-candidate.png",
+      "sha256": "232a64881e53fab72860b7bcd7f396a76ff1cde091b0109ade114a3f5798ef5f",
+      "size": [
+        153,
+        153
+      ],
+      "mode": "RGBA",
+      "bboxAlpha32": [
+        22,
+        3,
+        133,
+        83
+      ],
+      "nonzeroAlphaPixels": 4381,
+      "visibleAlpha32Pixels": 3718,
+      "boundaryAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "registration": {
+        "rawSize": [
+          1254,
+          1254
+        ],
+        "uniformResize": [
+          134,
+          134
+        ],
+        "translation": [
+          8,
+          -2
+        ],
+        "canvas": [
+          153,
+          153
+        ],
+        "tool": "ffmpeg scale Lanczos then transparent pad/crop implementing wholeimage translation; no local paint, masks or part clipping"
+      },
+      "outsideBodyAlpha32ByChebyshevDilation": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    }
+  ],
+  "bodyMeasurement": {
+    "method": "manual native-pixel landmark reading from enlarged complete image, endpoint uncertainty about1px; dimension uncertainty2px",
+    "closedDoorLeaf": {
+      "sameX": 63,
+      "topY": 77,
+      "bottomY": 122,
+      "height": 45,
+      "widthAtY": 98,
+      "leftX": 54,
+      "rightX": 73,
+      "width": 19,
+      "dimensionUncertainty": 2
+    },
+    "worldScale": 0.49957049486461247,
+    "doorWorldHeight": [
+      21.481531279178338,
+      23.479813258636785
+    ],
+    "doorWorldWidth": [
+      8.492698412698411,
+      10.490980392156862
+    ],
+    "bibleTargetWorldHeight": [
+      20.24,
+      24.64
+    ],
+    "bibleTargetWorldWidth": [
+      7.92,
+      11.44
+    ],
+    "apertureLimitation": "Closed door leaf is an aperture proxy only; actual clear opening hidden by leaf/jamb. No runtime adult-overlap proof.",
+    "originalGroundLandmarks": [
+      [
+        26,
+        106
+      ],
+      [
+        90,
+        138
+      ],
+      [
+        129,
+        117
+      ]
+    ],
+    "registeredGroundLandmarks": [
+      [
+        26,
+        104
+      ],
+      [
+        90,
+        139
+      ],
+      [
+        130,
+        119
+      ]
+    ],
+    "groundEuclideanResiduals": [
+      2.0,
+      1.0,
+      2.23606797749979
+    ],
+    "groundCoordinateUncertainty": 2,
+    "pivot": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "originalAlpha32RoofTopY": 44,
+    "candidateAlpha32RoofTopY": 3,
+    "roofTopShift": -41,
+    "identity": "long steep gabled golden thatch; warm plaster; simple posts; one frontleft window; no sidewindow or extension",
+    "geometryLimitation": "Roof shape identity retained, not pixel-identical. Walls/roof raised substantially; ground residual is nonzero."
+  },
+  "snowAudit": {
+    "method": "alpha weighted over manually defined roof polygon; measurement selection never applied to asset",
+    "roofPolygon": [
+      [
+        49,
+        3
+      ],
+      [
+        111,
+        39
+      ],
+      [
+        134,
+        67
+      ],
+      [
+        89,
+        81
+      ],
+      [
+        22,
+        45
+      ]
+    ],
+    "roofPixels": 4457,
+    "alphaWeightedCoverage": 0.7077899052822834,
+    "binaryAlpha32Coverage": 0.7810186223917434,
+    "uncertainty": "roof outline about1–2px; coverage approximate; no wall/ground snow visually observed"
+  },
+  "visualInspection": {
+    "backgrounds": [
+      "dark",
+      "light",
+      "green",
+      "checker"
+    ],
+    "proofs": [
+      "original-candidate-comparison.png",
+      "proof-fresh-backgrounds.png",
+      "proof-weathered-backgrounds.png",
+      "proof-boarded-backgrounds.png",
+      "proof-snow-backgrounds.png"
+    ],
+    "fresh": "Three limewash patches inside wall panels, openings still visible.",
+    "weathered": "Sparse stains near base; subtle at native scale.",
+    "boarded": "Separate boards across actual door/window; ends overlap timber/plaster for attachment; no copied doorleaf.",
+    "snow": "Irregular exposed gaps, weighted70.8%;1 alpha>32 pixel beyond body outline, none beyond1px dilation.",
+    "limitations": "Native153 static composites, enlarged nearest-neighbor evidence; actualgame zoom/DPR/render layering not tested."
+  },
+  "failedAttempts": [
+    {
+      "id": "body-01",
+      "reason": "short door about27nativepx"
+    },
+    {
+      "id": "body-02",
+      "reason": "door still short; footprint moved up"
+    },
+    {
+      "id": "body-03",
+      "reason": "door too short/narrow despite higherwall"
+    },
+    {
+      "id": "body-04",
+      "reason": "excessively tall door and footprint drift"
+    },
+    {
+      "id": "body-05",
+      "reason": "door width improved but height stillshort"
+    },
+    {
+      "id": "weathered-01",
+      "reason": "copied timber/wall/roof structural material; rejected for additive overlay"
+    },
+    {
+      "id": "snow-01",
+      "reason": "copied underlying strawroof and mismatched placement; rejected"
+    }
+  ],
+  "selectedAttempts": {
+    "body": "body-06",
+    "fresh": "fresh-01",
+    "weathered": "weathered-02",
+    "boarded": "boarded-01",
+    "snow": "snow-02"
+  },
+  "clippingAudit": "Body final top canvas edge has faint alpha maximum4/255; its other three edges and all four edges of the other four final PNGs have alpha maximum0. This boundary contact is distinct from translated-offcanvas loss: measured nonzero alpha pixels lost in pre-registration rows are0 for every selected image, see wholeRegistrationClippingAudit. No PNG or partial asset mask was changed for this correction.",
+  "wholeRegistrationClippingAudit": [
+    {
+      "attempt": "body-06",
+      "offCanvasPixelNonzeroAlpha": 0,
+      "offCanvasMaxAlpha": 0,
+      "offCanvasAlphaMass": 0.0
+    },
+    {
+      "attempt": "fresh-01",
+      "offCanvasPixelNonzeroAlpha": 0,
+      "offCanvasMaxAlpha": 0,
+      "offCanvasAlphaMass": 0.0
+    },
+    {
+      "attempt": "weathered-02",
+      "offCanvasPixelNonzeroAlpha": 0,
+      "offCanvasMaxAlpha": 0,
+      "offCanvasAlphaMass": 0.0
+    },
+    {
+      "attempt": "boarded-01",
+      "offCanvasPixelNonzeroAlpha": 0,
+      "offCanvasMaxAlpha": 0,
+      "offCanvasAlphaMass": 0.0
+    },
+    {
+      "attempt": "snow-02",
+      "offCanvasPixelNonzeroAlpha": 0,
+      "offCanvasMaxAlpha": 0,
+      "offCanvasAlphaMass": 0.0
+    }
+  ],
+  "reportCorrection": "Earlier narrative saying all final boundary alpha values were0 was incorrect. Numeric files[body].boundaryAlphaMax.top was already4. Corrected documentation only; five candidate PNG SHA256 values unchanged."
+}
