@@ -10,7 +10,7 @@ pivot. The received files carry no C2PA chunk (asserted; the inventory's metadat
 received bytes = runtime bytes. The records give no content rect for the frame, so its content inset is the slice.
 One docs/provenance/assets.csv row each (replacing earlier rows for these runtime paths) from records/metadata-*.json, one
 prompt file each. Every run writes the not-installed notes (NOT_INSTALLED: the ledger's verdict_note only, the reason
-appended once). `--installed` also writes installed_by = the inventory's installed_by_proposed on the five installed rows
+appended once). `--installed` also writes installed_by = INSTALL-18 (this task's id) on the five installed rows
 (only that field; CRLF kept); run it only after the consumer and the captures are confirmed (INSTALL_PROTOCOL 6).
 Run: python3 scripts/installIn18W14.py [--installed]
 """
@@ -31,7 +31,7 @@ LEDGER = ROOT / "docs/provenance/assets.csv"
 INBOX_LEDGER = ROOT / "assets-inbox/INBOX_LEDGER.csv"
 BUNDLE = ROOT / "scripts/in18W14Bundle.json"
 C2PA_CHUNKS = {b"caBX", b"jumb", b"c2pa"}
-INSTALLED_BY = "INSTALL-WAVE14-20261003"  # INVENTORY.csv installed_by_proposed for these rows
+INSTALLED_BY = "INSTALL-18"  # the ledger's task-id convention (INSTALL-7, -26, -30 …), as the Wave 18 rows of this task; INVENTORY proposed INSTALL-WAVE14-20261003
 USED_IN = "src/ui/chronicle/FactionTab.tsx; src/ui/chronicle/FactionPage.tsx; src/ui/chronicle/factionArt.ts (INSTALL-18: the chronicle's faction tab panel and faction-kind icons)"
 # name: (group, file, width, height, record file, nine-slice t|r|b|l or None, ui kind fields) — sizes measured on the
 # files, the slices from records/metadata-frames.json, the CSS widths the screens draw them at.
