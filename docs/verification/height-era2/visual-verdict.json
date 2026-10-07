@@ -1,0 +1,32 @@
+{
+  "pairs": 30,
+  "positiveRuntimeImages": [
+    "height-era2/house_l0_1350_a-boarded-v2.png",
+    "height-era2/house_l0_1350_a-body-v2.png",
+    "height-era2/house_l0_1350_a-snow-v2.png",
+    "height-era2/house_l0_1350_b-boarded-v2.png",
+    "height-era2/house_l0_1350_b-body-v2.png",
+    "height-era2/house_l0_1350_b-snow-v2.png",
+    "height-era2/house_l0_1400_a-boarded-v2.png",
+    "height-era2/house_l0_1400_a-body-v2.png",
+    "height-era2/house_l0_1400_a-snow-v2.png",
+    "height-era2/house_l0_1400_b-boarded-v2.png",
+    "height-era2/house_l0_1400_b-body-v2.png",
+    "height-era2/house_l0_1400_b-snow-v2.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "before-town-1350-normal-town-clock-QA-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-town-1350-normal-town-clock-QA-z1",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "scope": "Prepared galleries24 plus17existingtownhouses level/builtLevel0 QA6,9realwalkers. Not natural era progression.",
+  "observations": "Actual source and game views visually inspected; full uncertainties in README and source records."
+}

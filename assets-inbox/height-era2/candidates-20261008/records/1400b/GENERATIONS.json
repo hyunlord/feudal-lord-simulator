@@ -1,0 +1,85 @@
+[
+  {
+    "raw": "raw/board-a-01.png",
+    "prompt": "prompts/board-a-01.txt",
+    "inputs": [
+      "assets/house_l0_1400_a-body.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": true
+  },
+  {
+    "raw": "raw/board-b-01.png",
+    "prompt": "prompts/board-b-01.txt",
+    "inputs": [
+      "assets/house_l0_1400_b-body.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": true
+  },
+  {
+    "raw": "raw/body-a-01.png",
+    "prompt": "prompts/body-a-01.txt",
+    "inputs": [
+      "references/house_l0_1350_a-body-candidate.png",
+      "references/house_l0_1400_a-v1.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": true
+  },
+  {
+    "raw": "raw/body-b-01.png",
+    "prompt": "prompts/body-b-01.txt",
+    "inputs": [
+      "references/house_l0_1350_a-body-candidate.png",
+      "references/house_l0_1400_b-v1.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": true
+  },
+  {
+    "raw": "raw/snow-a-01.png",
+    "prompt": "prompts/snow-a-01.txt",
+    "inputs": [
+      "assets/house_l0_1400_a-body.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": true
+  },
+  {
+    "raw": "raw/snow-a-02.png",
+    "prompt": "prompts/snow-a-02.txt",
+    "inputs": [
+      "assets/house_l0_1400_a-body.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": false
+  },
+  {
+    "raw": "raw/snow-a-03.png",
+    "prompt": "prompts/snow-a-03.txt",
+    "inputs": [
+      "assets/house_l0_1400_b-snow.png",
+      "assets/house_l0_1400_a-body.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": false
+  },
+  {
+    "raw": "raw/snow-b-01.png",
+    "prompt": "prompts/snow-b-01.txt",
+    "inputs": [
+      "assets/house_l0_1400_b-body.png"
+    ],
+    "tool": "builtin image_gen.imagegen",
+    "transparent_background": true,
+    "selected": true
+  }
+]
