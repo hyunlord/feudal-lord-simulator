@@ -2,8 +2,8 @@
 //  - crisis-a: zone-undo (its five sites wait for workers: "공사 일꾼 없음") at tick 40 (rows show from tick 20), one house
 //    on fire (events.burning) and another getting ready to leave (leavingSinceTick) — fire / household_leaving /
 //    construction_blocked;
-//  - crisis-b: population-176 with one facility's upkeep unpaid (upkeepUnpaid) and one storehouse holding more than it
-//    can (inventory over storageCapacity) beside its own bread-short houses — upkeep_unpaid / storage_full / food_shortage;
+//  - crisis-b: money-arrears (its own unpaid upkeep, in its arrears queue) with one storehouse holding more than it can
+//    (inventory over storageCapacity) — upkeep_unpaid / storage_full; crisis-c: population-176 as saved (food_shortage);
 //  - lord: the lord's slice (core:lord_slice) after 40 ticks, for the dock's 명령 (lord mode);
 //  - placement scenes: for each placement reason the HUD pictures, the first (fixture, kind, tile) whose placement
 //    preview (render/interactions placementPreview, the game's own verdict) marks that reason, nearest the town's
@@ -56,14 +56,16 @@ function write(name: string, state: GameState, want: readonly AlertCrisis[] | nu
   write("crisis-a", state, ["fire", "household_leaving", "construction_blocked"]);
 }
 {
-  const base = load("population-176");
-  const facility = base.buildings.find(building => building.kind !== "house" && BUILDING_CONFIG_BY_KIND[building.kind].production !== null);
-  const store = base.buildings.find(building => building.kind === "storehouse");
-  if (facility === undefined || store === undefined) throw new Error("population-176: a facility and a storehouse needed");
-  const capacity = BUILDING_CONFIG_BY_KIND.storehouse.storageCapacity;
-  const state: GameState = { ...base, buildings: base.buildings.map(building => building.id === facility.id ? { ...building, upkeepUnpaid: true as const }
-    : building.id === store.id ? { ...building, inventory: { ...building.inventory, timber: capacity + 12 } } : building) };
-  write("crisis-b", state, ["upkeep_unpaid", "storage_full", "food_shortage"]);
+  // The unpaid upkeep is the fixture's own (its arrears queue holds it); only the storehouse is overfilled.
+  const base = load("money-arrears");
+  const store = base.buildings.find(building => (building.kind === "storehouse" || building.kind === "granary") && building.upkeepUnpaid !== true);
+  if (store === undefined) throw new Error("money-arrears: a paid storehouse or granary needed");
+  const capacity = BUILDING_CONFIG_BY_KIND[store.kind].storageCapacity;
+  const state: GameState = { ...base, buildings: base.buildings.map(building => building.id === store.id
+    ? { ...building, inventory: { ...building.inventory, [store.kind === "granary" ? "wheat" : "timber"]: capacity + 12 } } : building) };
+  write("crisis-b", state, ["upkeep_unpaid", "storage_full"]);
+  // The bread-short houses of population-176 as saved.
+  write("crisis-c", load("population-176"), ["food_shortage"]);
 }
 {
   let state = newGameState({ scenarioId: "core:lord_slice" })!;

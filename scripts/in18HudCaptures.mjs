@@ -4,7 +4,7 @@
 //    every Wave 18 request refused (the current look must stay), each HUD box measured both ways (same box = no growth);
 //  placement: each blocked reason's scene (colour and grey), the overlap scene at zoom 0.6 / 1.0 / 1.4, the service
 //    edge of a well's range at 0.6 / 1.0 / 1.4; zone: the toolbar with the brush at sizes 1 / 2 / 3, the eraser, grey;
-//  crisis: the two three-crisis states (colour, grey, refused); tablet: the confirm bar (1180 × 820, touch);
+//  crisis: three states with the six crisis kinds between them (colour, grey, refused); tablet: the confirm bar (1180 × 820, touch);
 //  pause: the menu's "H: HUD 숨기기" line; pulse: the ring's three frames (animation held at 0 / 240 / 480 ms) and the
 //    reduced-motion still frame.
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
@@ -150,10 +150,11 @@ for (const zoom of [0.6, 1, 1.4]) {
     boxes[refuse ? "refused" : "art"] = await hudBoxes(page);
     const bar = await box(page, ".zone-toolbar");
     const clip = { x: bar.x, y: bar.y, width: bar.width + 4, height: bar.height };
-    if (refuse) { await shot(page, "zone-size1-refused.jpg", clip); await context.close(); continue; }
-    for (const size of [1, 2, 3]) {
+    if (refuse) { await shot(page, "zone-refused.jpg", clip); await context.close(); continue; }
+    for (let press = 0; press < 3; press += 1) {
+      const size = await page.locator(".zone-toolbar [data-zone-mode='size'] [data-size]").first().getAttribute("data-size");
       await shot(page, `zone-size${size}.jpg`, clip);
-      if (size === 1) await shot(page, "zone-size1-grey.jpg", clip, { grey: true });
+      if (press === 0) await shot(page, `zone-size${size}-grey.jpg`, clip, { grey: true });
       await page.locator(".zone-toolbar [data-zone-mode='size']").click(); await page.waitForTimeout(250);
     }
     await page.locator(".zone-toolbar [data-zone-mode='erase']").click(); await page.waitForTimeout(250);
@@ -163,8 +164,8 @@ for (const zoom of [0.6, 1, 1.4]) {
   result.zone = { ...boxes, sameBoxes: same(boxes.art, boxes.refused) };
 }
 
-// Crisis icons: two states of three crises each (colour, grey, refused).
-for (const name of ["crisis-a", "crisis-b"]) {
+// Crisis icons: three states, the six crisis kinds between them (colour, grey, refused).
+for (const name of ["crisis-a", "crisis-b", "crisis-c"]) {
   const boxes = {};
   for (const refuse of [false, true]) {
     const { context, page } = await open({ state: state(`${name}.json`), refuse });
@@ -231,4 +232,4 @@ for (const motion of ["no-preference", "reduce"]) {
 await browser.close();
 writeFileSync(join(out, "captures.json"), JSON.stringify(result, null, 1) + "\n");
 console.log(JSON.stringify({ shots: result.shots.length, errors: result.errors.length, placement: result.placement.map(row => [row.reasons, row.chip]),
-  same: { sandbox: result["hud-sandbox"].sameBoxes, lord: result["hud-lord"].sameBoxes, zone: result.zone.sameBoxes, a: result["crisis-a"].sameBoxes, b: result["crisis-b"].sameBoxes } }, null, 1));
+  same: { sandbox: result["hud-sandbox"].sameBoxes, lord: result["hud-lord"].sameBoxes, zone: result.zone.sameBoxes, a: result["crisis-a"].sameBoxes, b: result["crisis-b"].sameBoxes, c: result["crisis-c"].sameBoxes } }, null, 1));
