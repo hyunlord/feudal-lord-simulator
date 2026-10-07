@@ -221,7 +221,7 @@ test("CHRON-1 30,000 records: the data the screen opens on (rows, markers, peopl
 });
 
 test("CHRON-1 faction page: the Wave 19 frame with its slots, the relation pin on the scale (UI-6 fills it: tests/factionChronicleTab)", () => {
-  const markup = renderToStaticMarkup(createElement(FactionPage, { scale: 0.5, onRecord: () => undefined, view: { id: "overlord", name: "해로미어 백작", kind: "상위 영주",
+  const markup = renderToStaticMarkup(createElement(FactionPage, { scale: 0.5, onRecord: () => undefined, view: { id: "overlord", name: "해로미어 백작", kind: "상위 영주", kindId: "overlord",
     emblem: { kind: "arms", recipe: heraldryArms(1) }, emblemLabel: "문장", leader: { id: "f-000001", name: "Roger 드 로슈펠", role: "백작", line: "백작 · 40살", portraitId: "P05" },
     relation: 20, relationX: 0.6, relationText: "호의 +20", demands: [], promises: [], memory: [], timeline: [],
     // UI-9: revoltPressure added to FactionPageView; null for this non-commons faction.
