@@ -1,0 +1,38 @@
+✔ funeral uses the footprint depth rule at 10,10 (1.154375ms)
+✖ funeral uses the footprint depth rule at 11.6,9.8 (1.494125ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 453.683417
+
+✖ failing tests:
+
+test at tests/funeralOcclusion.test.ts:1:460
+✖ funeral uses the footprint depth rule at 11.6,9.8 (1.494125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'funeral',
+      'house',
+  -   'funeral'
+    ]
+  
+      at TestContext.<anonymous> (/private/tmp/astra-height-funeral/tests/funeralOcclusion.test.ts:14:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'funeral', 'house' ],
+    expected: [ 'house', 'funeral' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

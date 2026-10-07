@@ -57,6 +57,10 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
       if (entry.frames.some(frame => !pointFits(entry.payloadAnchor, frame.sourceRect) || entry.payloadWidth > frame.sourceRect.width)) report(at, 'Transport payload is outside frame-local bounds');
       if (![entry.scale, entry.payloadWidth, ...Object.values(entry.mountOffset)].every(value => Number.isFinite(value / entry.referenceFigureHeight))) report(at, 'Transport reference scaling overflows');
     }
+    if (entry.kind === 'building-body' && entry.roofRidge !== undefined) {
+      if (!pointFits(entry.roofRidge, entry.image)) report(at, 'Roof ridge is outside image canvas');
+      if (!finiteScaled(Object.values(entry.roofRidge))) report(at, 'Roof ridge scaled geometry overflows');
+    }
     if (entry.kind === 'walker-cargo' && entry.frames.some(frame => !pointFits(entry.attachment.pivot, frame.sourceRect))) report(at, 'Attachment pivot is outside frame-local bounds');
     if (entry.kind === 'walker-cargo' && !finiteScaled(Object.values(entry.attachment.pivot))) report(at, 'Scaled attachment pivot overflows');
     if (entry.kind === 'land-stage' && entry.ports) {

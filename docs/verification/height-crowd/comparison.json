@@ -1,0 +1,161 @@
+{
+  "productCommit": "e75f2bab",
+  "pairs": [
+    {
+      "view": "crowd-z1",
+      "stateEqual": true,
+      "cameraEqual": true,
+      "clockEqual": true,
+      "beforeDraw": {
+        "src": "http://127.0.0.1:4304/assets/wave9/event/crowd_manor_gate-v1.png",
+        "args": [
+          0,
+          0,
+          192,
+          128,
+          231.99999999999994,
+          1462.3999999999999,
+          105.60000000000001,
+          70.4
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          384,
+          -1104
+        ]
+      },
+      "afterDraw": {
+        "src": "http://127.0.0.1:4302/assets/wave9/event/crowd_manor_gate-v1.png",
+        "args": [
+          0,
+          0,
+          96,
+          64,
+          245.506976744186,
+          1471.4046511627905,
+          78.58604651162791,
+          52.39069767441861
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          384,
+          -1104
+        ]
+      }
+    },
+    {
+      "view": "crowd-z0.6",
+      "stateEqual": true,
+      "cameraEqual": true,
+      "clockEqual": true,
+      "beforeDraw": {
+        "src": "http://127.0.0.1:4304/assets/wave9/event/crowd_manor_gate-v1.png",
+        "args": [
+          0,
+          0,
+          96,
+          64,
+          231.99999999999994,
+          1462.3999999999999,
+          105.60000000000001,
+          70.4
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          486.3999938964844,
+          -502.3999938964844
+        ]
+      },
+      "afterDraw": {
+        "src": "http://127.0.0.1:4302/assets/wave9/event/crowd_manor_gate-v1.png",
+        "args": [
+          0,
+          0,
+          48,
+          32,
+          245.506976744186,
+          1471.4046511627905,
+          78.58604651162791,
+          52.39069767441861
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          486.3999938964844,
+          -502.3999938964844
+        ]
+      }
+    },
+    {
+      "view": "crowd-z3",
+      "stateEqual": true,
+      "cameraEqual": true,
+      "clockEqual": true,
+      "beforeDraw": {
+        "src": "http://127.0.0.1:4304/assets/wave9/event/crowd_manor_gate-v1.png",
+        "args": [
+          0,
+          0,
+          192,
+          128,
+          231.99999999999994,
+          1462.3999999999999,
+          105.60000000000001,
+          70.4
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -128,
+          -4112
+        ]
+      },
+      "afterDraw": {
+        "src": "http://127.0.0.1:4302/assets/wave9/event/crowd_manor_gate-v1.png",
+        "args": [
+          0,
+          0,
+          192,
+          128,
+          245.506976744186,
+          1471.4046511627905,
+          78.58604651162791,
+          52.39069767441861
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -128,
+          -4112
+        ]
+      }
+    }
+  ],
+  "newPNGCount": 0,
+  "existingPNGCount": 1,
+  "sourceSHA256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1",
+  "medianBeforeWorld": 23.650000000000002,
+  "medianAfterWorld": 17.6,
+  "scaleBefore": 0.55,
+  "scaleAfter": 0.4093023255813954,
+  "runs": [
+    "astra-HEIGHT-crowd-prepare-2b6d820",
+    "astra-HEIGHT-crowd-compare-before-41761f0",
+    "astra-HEIGHT-crowd-after-41761f0"
+  ]
+}

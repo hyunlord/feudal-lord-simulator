@@ -1,0 +1,138 @@
+{
+  "results": [
+    {
+      "folder": "rb-height-installed-layers",
+      "method": "Actual installed contract body and required layers versus same build with new contract body and roof-point consumers disabled. Canonical normal saves unchanged per paired capture. L1d existing normal fresh13000 and winter23450 saves.",
+      "pairs": [
+        {
+          "before": "before-l1d-fresh-z1",
+          "after": "after-l1d-fresh-z1",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "09993a2df71c5276f943719079c7356f9a6901b2f459721e8fe57b021b00ac1b",
+          "after_jpg_sha256": "742bf777cad845f2ca79ca671b7192acc752dd5921a9a46da4cc9bb77b1fa2fa"
+        },
+        {
+          "before": "before-l1d-fresh-z0.6",
+          "after": "after-l1d-fresh-z0.6",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "479007452882a30e26a7b41687c92068d61281a61f863c6dffbb4f1c7f20a9d1",
+          "after_jpg_sha256": "2f4b0e79c83bd68d094398c2d514a037823eebe0fd63e6922ca6d46c4b00bbe3"
+        },
+        {
+          "before": "before-l1d-fresh-z3",
+          "after": "after-l1d-fresh-z3",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "f81d4ecd8f88288ebd2b5bebc11421a7c8e538c86ca143b7fe1875376d05478c",
+          "after_jpg_sha256": "9b5f96b116a41bcfc65381f75ed3bd84ee5c31b30539ba6bed60c6ac59b711b1"
+        },
+        {
+          "before": "before-l1d-winter-z1",
+          "after": "after-l1d-winter-z1",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "e64050806965918e343a97fd1fd52a812cd04102ac70064e9ebff49b3ed90716",
+          "after_jpg_sha256": "009042b72dc2a9d85a9a799937897c4c528f9a880e2bb9680c3c6aca336369eb"
+        },
+        {
+          "before": "before-l1d-winter-z0.6",
+          "after": "after-l1d-winter-z0.6",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "28aebcb3c3db58e4b2c79b6852226e37710c0491b67dc503097dba1466096a2d",
+          "after_jpg_sha256": "cb27b0cf004709249e221eb66b837edd009c725f540b36a7ebf4cc55962745eb"
+        },
+        {
+          "before": "before-l1d-winter-z3",
+          "after": "after-l1d-winter-z3",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "e10e7fec62abb8d7d06a29940cd0d95025f9a2e236a362db07999874530c235c",
+          "after_jpg_sha256": "d49be4aaea5a9302b15155c3b7ca1630086c14904b521a4dea5e34308090b165"
+        }
+      ],
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-l1d-fresh-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "folder": "rb-height-installed-qa",
+      "method": "Actual installed contract body and required layers versus same build with new contract body and roof-point consumers disabled. Prepared QA copies unchanged per paired capture; QA provenance records every field edit. Paused renderer attachment test only, not normal growth/abandonment evidence.",
+      "pairs": [
+        {
+          "before": "before-l0-qa-winter-z1",
+          "after": "after-l0-qa-winter-z1",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "0387bbebbb7b2835d64c156858622c8247495c1de3b201ff082ba8a5d2a06749",
+          "after_jpg_sha256": "7423db63c6747a199bc7789404de9f1bd62219eaadeb3e464f604a45e16c6817"
+        },
+        {
+          "before": "before-l0-qa-winter-z0.6",
+          "after": "after-l0-qa-winter-z0.6",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "7daedef5e5b61452c628e525810b90648f0654158d656d42e1bc20b25a7e9b6d",
+          "after_jpg_sha256": "efb80c29e6a0e627dfe09e63c0bbcfb21c155e21b8b1d58e3b9b130faff6afe6"
+        },
+        {
+          "before": "before-l0-qa-winter-z3",
+          "after": "after-l0-qa-winter-z3",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "e950b944048428e7c5357ad439624ec8642d30b64f5af7c118dfbff488813b6f",
+          "after_jpg_sha256": "c6fbd2b6fe9d24edfdf2e6181b935cefcd1879511c2bb460b4048a65be7093db"
+        },
+        {
+          "before": "before-l0-qa-winter-boarded-z1",
+          "after": "after-l0-qa-winter-boarded-z1",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "62baee4ca17e2bdd9226e73aec87624966c3197804cbb8965ba0836c8b8603b6",
+          "after_jpg_sha256": "4166bda7baed1ad2d1ae235115114160e47f593ae629d6b7901e73a22d8c7245"
+        },
+        {
+          "before": "before-l0-qa-winter-boarded-z0.6",
+          "after": "after-l0-qa-winter-boarded-z0.6",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "2df539f2059757ed08d5a8f678cb98a0e0bc5d42d994ad4bf5136d7180fea6da",
+          "after_jpg_sha256": "ffac34ab5cb342ee2b338ee3d71f412b47a48fe9ac220256be5a1b1d551f4ffe"
+        },
+        {
+          "before": "before-l0-qa-winter-boarded-z3",
+          "after": "after-l0-qa-winter-boarded-z3",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "d6b89a9ac84d7fd290eb568494ca3d24a3e4b3cc2c0b2e0b1a3610d11681ed82",
+          "after_jpg_sha256": "2459754e406a7d3e55d1d7d9ae0fbe9264b3247146521622c1123ade7555a566"
+        },
+        {
+          "before": "before-l1d-qa-winter-boarded-z1",
+          "after": "after-l1d-qa-winter-boarded-z1",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "e3c74588c14c159a7d167367d1c48e9e75623a282760b2cd28ff0c9ecd36f65f",
+          "after_jpg_sha256": "4bd21b3c5ed5d88f129f59983307d64b2b431e8a7d38f54efd6d09eaa73686c4"
+        },
+        {
+          "before": "before-l1d-qa-winter-boarded-z0.6",
+          "after": "after-l1d-qa-winter-boarded-z0.6",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "36760b3df12ec051c971cf23a18b23d80a5134e9a7ad1028edaac719ec1aaadd",
+          "after_jpg_sha256": "cd40a79fedcae6f0d651bd3809f29e71909e9e109ea8115a0ce372df8b4deeaf"
+        },
+        {
+          "before": "before-l1d-qa-winter-boarded-z3",
+          "after": "after-l1d-qa-winter-boarded-z3",
+          "same_state_camera_clock": true,
+          "before_jpg_sha256": "f1e104357080cb361eecf6ea7fe46c7a0d63ebb39ad99767961f28bfeab027ec",
+          "after_jpg_sha256": "6e7578074d70536e00685352f68ee6aee7151a041f26b747a03160900235f0c0"
+        }
+      ],
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-l1d-qa-winter-boarded-z1",
+          "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ]
+    }
+  ],
+  "visual_review": "Root directly viewed after-L1d-fresh/winter and both QA winter-boarded z3. Snow and boards align; L1d lower door partly hidden by foreground roof. QA prepared states are not natural occurrence evidence."
+}

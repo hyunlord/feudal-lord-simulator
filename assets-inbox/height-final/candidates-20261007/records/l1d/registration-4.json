@@ -1,0 +1,117 @@
+{
+  "source": ".omo/height-final/candidates/house_l1_d-height-candidate-4.png",
+  "output": ".omo/height-final/candidates/house_l1_d-height-candidate-4-native.png",
+  "method": "Existing resizeArea registration 1254 square (actual PNG header; original prompt requested1280) to134\u00d7132, translation(+2,-4) onto original139canvas; separately fit footprint width and lowest ground row. This is a geometric derivative of one complete generated body, not component composition.",
+  "scale": [
+    0.10685805422647528,
+    0.10526315789473684
+  ],
+  "translate": [
+    2,
+    -4
+  ],
+  "canvas": [
+    139,
+    139
+  ],
+  "pivot": [
+    71.66148325358851,
+    125.92025518341308
+  ],
+  "worldPxPerNativePx": 0.4986217267599071,
+  "status": "Static complete-body candidate; provisional aperture measurement and registered footprint, actual scene preview underway; old4 state layers invalid for raised roof/body.",
+  "opening": {
+    "method": "Manual same-x closed-leaf inner edge, excludes jamb/lintel/step; source native image inspected at nearest8x. \u00b11 endpoint px; not open physical interior proof.",
+    "points": {
+      "top": [
+        58,
+        58
+      ],
+      "bottom": [
+        58,
+        105
+      ],
+      "left": [
+        50,
+        76
+      ],
+      "right": [
+        67,
+        76
+      ]
+    },
+    "heightNative": 47,
+    "widthNative": 17,
+    "heightWorld": 23.435221157715635,
+    "widthWorld": 8.476569354918421,
+    "heightRangeWorld": [
+      22.43797770419582,
+      24.43246461123545
+    ],
+    "widthRangeWorld": [
+      7.479325901398607,
+      9.473812808438236
+    ],
+    "note": "Width lower uncertainty bound7.48 straddles7.92target; central8.48 within. Do not claim uncertainty interval fully within target."
+  },
+  "ground": {
+    "method": "Three visible lower stone-edge contacts, \u00b12native endpoints. Original and candidate independently inspected; not alpha-bbox as footprint.",
+    "original": [
+      [
+        20,
+        89
+      ],
+      [
+        86,
+        125
+      ],
+      [
+        123,
+        104
+      ]
+    ],
+    "candidate": [
+      [
+        20,
+        90
+      ],
+      [
+        86,
+        125
+      ],
+      [
+        123,
+        104
+      ]
+    ],
+    "residualNative": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "slopesOriginal": [
+      0.5454545454545454,
+      -0.5675675675675675
+    ],
+    "slopesCandidate": [
+      0.5303030303030303,
+      -0.5675675675675675
+    ],
+    "note": "Original axes not exact2:1; candidate does not materially worsen under manual endpoint uncertainty. Logical1x1 footprint and original pivot unchanged."
+  },
+  "runtimeCandidateSHA256": "451f97f20ff65bf6abf812d9ad720a4cec31c63f6fcaecce92d0c4252148957f",
+  "generatedCanvasActual": [
+    1254,
+    1254
+  ],
+  "metadataCorrection": "Earlier note assumed1280 from requested size; PNG header is1254. resizeArea always used actual decoded dimensions, so native candidate and runtime measurements are unchanged."
+}

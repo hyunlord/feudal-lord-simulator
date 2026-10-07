@@ -1,0 +1,15 @@
+{
+  "pairs": 8,
+  "imageSHA256Verified": 16,
+  "saveStateTickZoomMetadataMatch": true,
+  "cameraCenterEvidence": "capture.mjs fixed tile [41,51] both variants and direct visual comparison; diagnosis metadata records zoom/lod only",
+  "runtimeDrawPositiveViews": 4,
+  "runtimeDrawNegativeViews": 4,
+  "wholeScenePixelEquality": "not claimed; visible tree animation changes",
+  "rootVisualViews": [
+    "before/active-z1.jpg",
+    "after/active-z1.jpg",
+    "after/expired-z0.6.jpg"
+  ],
+  "verdict": "bounded-final-product-proof-pass; publication gates pending"
+}

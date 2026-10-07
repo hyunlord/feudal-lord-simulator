@@ -1,0 +1,69 @@
+{
+  "sourceRun": "astra-MUSTER-natural-prep-dbf6027",
+  "source": "docs/qa/round02/repro/saves/chapter2-before-war1336.json.gz",
+  "sourceSHA256": "f3796585260fe0d2f963809236a34f52e9ef0b6b0124711b497c421ee189f5a8",
+  "method": "Codec-valid natural1336 save→normal autoplay/ticks to pending152000; normal accept14; normal249+1 ticks. No field overrides.",
+  "records": [
+    {
+      "name": "pending",
+      "file": "states/pending.save.json",
+      "tick": 152000,
+      "sha256": "795e2422f0d6c1ce942589aebf40427398b708030d1050e7463dd67439246684",
+      "men": 0,
+      "anchor": null,
+      "props": []
+    },
+    {
+      "name": "active",
+      "file": "states/active.save.json",
+      "tick": 152000,
+      "sha256": "2bb08da13dc37f3f93d3e29a3f5ad32c064b8215048dd8c610a8ebe0dca2c7ce",
+      "men": 14,
+      "anchor": {
+        "tx": 41,
+        "ty": 53
+      },
+      "props": [
+        {
+          "id": "muster:levy_response@152000",
+          "assetId": "world-events/muster-field",
+          "petitionId": "levy_response@152000",
+          "tx": 41,
+          "ty": 53
+        }
+      ]
+    },
+    {
+      "name": "last-active",
+      "file": "states/last-active.save.json",
+      "tick": 152249,
+      "sha256": "f9e28ff1717165b24df89d94aa830d0fcba94158a0f66d503ca25fe15f587530",
+      "men": 14,
+      "anchor": {
+        "tx": 41,
+        "ty": 53
+      },
+      "props": [
+        {
+          "id": "muster:levy_response@152000",
+          "assetId": "world-events/muster-field",
+          "petitionId": "levy_response@152000",
+          "tx": 41,
+          "ty": 53
+        }
+      ]
+    },
+    {
+      "name": "expired",
+      "file": "states/expired.save.json",
+      "tick": 152250,
+      "sha256": "07846e15a0749295b6b466ddc6623c4b01630c1a307674215c9e02066ab1d946",
+      "men": 14,
+      "anchor": {
+        "tx": 41,
+        "ty": 53
+      },
+      "props": []
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "status": "STATIC_REGISTERED_LAYER_CANDIDATES; NOT_INSTALLED; NO_RUNTIME_GATE",
+  "date": "2026-10-07T21:48:34.802825+09:00",
+  "body_sha256_unchanged": "e512ad4ba236fa3f8ff543bbd581a1e63b4831d0abe153d338816d5d8493d2cf",
+  "layers": [
+    {
+      "path": "/tmp/astra-height-l0-art/layers/snow-candidate.png",
+      "sha256": "5242b31c64bd42601c85e399c420533b0b72c107f0e37c723fc3c05edbac4d35",
+      "canvas": [
+        153,
+        153
+      ],
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "world_px_per_native_px": 0.49957049486461247,
+      "sampling_crop": [
+        0,
+        0,
+        153,
+        153
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          21,
+          12,
+          137,
+          87
+        ],
+        "32": [
+          21,
+          13,
+          136,
+          86
+        ],
+        "128": [
+          22,
+          14,
+          136,
+          85
+        ]
+      },
+      "alpha0_count": 19420,
+      "alpha1_to8_count": 636,
+      "outside_body_alpha32_pixels": 25,
+      "registration": {
+        "source": "snow-02-generated.png",
+        "source_canvas": [
+          1254,
+          1254
+        ],
+        "resize": [
+          148,
+          144
+        ],
+        "coefficients": [
+          0.11802232854864433,
+          0.11483253588516747
+        ],
+        "pad_xy": [
+          1,
+          3
+        ],
+        "explanation": "Whole snow layer only; vertical4/148 registration correction removes the generated deeper eave offset. No house pixels altered or source patches rearranged."
+      },
+      "coverage_over_qa_roof_alpha32": 0.7225806451612903,
+      "coverage_over_qa_roof_alpha_weighted": 0.6213919928783939,
+      "outside_qa_roof_alpha32_pixels": 61,
+      "below_eave_more_than2native_alpha32_pixels": 1,
+      "below_eave_more_than4native_alpha32_pixels": 0,
+      "door_or_window_alpha32_pixels": 4,
+      "interpretation": "60–80% coverage supported under stated approximate roof ROI. Bands follow thatch courses and are somewhat regular; gaps/edges irregular, not naturalistic random snowfall simulation. Minor edge overhang remains; no opaque wall/door/ground white block visually observed.",
+      "sloped_aperture_alpha32_pixels": 0
+    },
+    {
+      "path": "/tmp/astra-height-l0-art/layers/boarded-candidate.png",
+      "sha256": "4d2b7fb9abf3bf9662a60a5980dd7f34c82307d6546393552258514eedc2909a",
+      "canvas": [
+        153,
+        153
+      ],
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "world_px_per_native_px": 0.49957049486461247,
+      "sampling_crop": [
+        0,
+        0,
+        153,
+        153
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          35,
+          63,
+          83,
+          114
+        ],
+        "32": [
+          35,
+          64,
+          75,
+          114
+        ],
+        "128": [
+          36,
+          64,
+          74,
+          114
+        ]
+      },
+      "alpha0_count": 22825,
+      "alpha1_to8_count": 37,
+      "outside_body_alpha32_pixels": 0,
+      "registration": {
+        "source": "boarded-01-generated.png",
+        "source_canvas": [
+          1254,
+          1254
+        ],
+        "resize": [
+          130,
+          130
+        ],
+        "coefficients": [
+          0.10366826156299841,
+          0.10366826156299841
+        ],
+        "pad_xy": [
+          1,
+          3
+        ],
+        "explanation": "Imagegen placed both groups about1.14x farther from origin; one uniform whole-layer downsample aligns both, no independent piece movement."
+      },
+      "outside_window_or_door_roi_alpha32_pixels": 0,
+      "over_qa_roof_alpha32_pixels": 0,
+      "interpretation": "Four painted planks in two X groups, no body pixels. Both groups within conservative opening ROIs after whole-layer registration. Snow remains visible when both composited."
+    }
+  ],
+  "qa_roof_region": {
+    "coordinates": "native153pixel indices; x,y integer",
+    "body_alpha_threshold": 32,
+    "lower_edge_points": [
+      [
+        22,
+        46
+      ],
+      [
+        92,
+        84
+      ],
+      [
+        134,
+        68
+      ]
+    ],
+    "predicate": "body.A>32 and y<= (x<=92 ? 46+(x-22)*38/70 :84+(x-92)*(-16)/42)",
+    "pixel_count": 4185,
+    "uncertainty": "Manual eave points approximately±1–2native. Coverage is approximate art-area audit, not physics measurement. Alpha-weighted and alpha>32 area reported separately."
+  },
+  "opening_rois_xywh": {
+    "window": [
+      34,
+      61,
+      15,
+      25
+    ],
+    "door": [
+      52,
+      72,
+      25,
+      55
+    ]
+  },
+  "red_edge_analysis": [
+    {
+      "path": "references/original-source.png",
+      "predicate": "R>150,G<65,B<65,A>0",
+      "pixels": 3042,
+      "min_alpha": 1,
+      "max_alpha": 5,
+      "alpha_over8_pixels": 0
+    },
+    {
+      "path": "references/original-public.png",
+      "predicate": "R>150,G<65,B<65,A>0",
+      "pixels": 31,
+      "min_alpha": 1,
+      "max_alpha": 1,
+      "alpha_over8_pixels": 0
+    },
+    {
+      "path": "candidate-03-generated.png",
+      "predicate": "R>150,G<65,B<65,A>0",
+      "pixels": 2717,
+      "min_alpha": 1,
+      "max_alpha": 8,
+      "alpha_over8_pixels": 0
+    },
+    {
+      "path": "house_l0-v3-height-candidate.png",
+      "predicate": "R>150,G<65,B<65,A>0",
+      "pixels": 4,
+      "min_alpha": 1,
+      "max_alpha": 1,
+      "alpha_over8_pixels": 0
+    }
+  ],
+  "red_edge_conclusion": "Not inspection marks. Original/generated body RGB contains extreme red at alpha1–8; final body4such pixels are alpha1. Transparent image preview exaggerates those RGB edges. Direct dark40 and light230 opaque composites inspected: no visible red outline. No chroma cleanup applied.",
+  "proofs": [
+    {
+      "path": "snow-inspection-composite.png",
+      "sha256": "ccdb8770badea8140cc75e7da5e79dc0f058077ae93afd62e06936f3ecf0b159",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "snow-inspection-4x.png",
+      "sha256": "a11c4e9c39dc6f9e8c4c637589df8445dbdace5f46836890994e8ecd890ae01e",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "snow-inspection-opaque-40.png",
+      "sha256": "2546586f0bef69d42be176381f85f043e68415f538b48f5245ca4e6cea238caa",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "snow-inspection-opaque-230.png",
+      "sha256": "dc55ce63b83dab95800e24fa2673f23f516c4090e1a1eaab559b62645ab84b57",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "boarded-inspection-composite.png",
+      "sha256": "11ea24fae84b015d7c12c917bda52695bca3878a1107d4038b872ed13f06aea8",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "boarded-inspection-4x.png",
+      "sha256": "0a74bebdb398206acd475b559f5413cd5c80519dfddf6237b5f05e427c08639a",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "boarded-inspection-opaque-40.png",
+      "sha256": "c2d8e64bbcf959a98a3f8743c361b7726e7c70ffcbaea4c2e498ec3581ac1db9",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "boarded-inspection-opaque-230.png",
+      "sha256": "cba7ac929fe37ebcb006137292be25ed4565e6ffc69dcd877b2f8c777ddc045e",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "both-inspection-composite.png",
+      "sha256": "826d31554e9e841994d3c7b02b96d2a01a957e4f1ce36d3d6c76198c862ec3bf",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "both-inspection-4x.png",
+      "sha256": "f09a1c04880774b0c21c43b7d99c19831c11e32d72e70b5ae2a0c02fb9dce68e",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "both-inspection-opaque-40.png",
+      "sha256": "912b7adfb062b7ef3d8e98cffec6b9757401e2aad5f54ea18eddf35f2c7e3939",
+      "role": "inspection composite only; not product asset"
+    },
+    {
+      "path": "both-inspection-opaque-230.png",
+      "sha256": "98fba1e45f65b4d65e0fa4f1453cbb35ef452ae2df40a9f1d3200765065b3332",
+      "role": "inspection composite only; not product asset"
+    }
+  ],
+  "attempts": {
+    "snow1": "Rejected: opaque thatch copied and recentered/enlarged roof; preserved raw only.",
+    "snow2": "Snow-only output; registered and measured; final candidate.",
+    "boarded1": "Only boards; single uniform layer registration matched both openings."
+  },
+  "limitations": [
+    "Snow gaps are irregular but row/ribbon rhythm remains somewhat regular.",
+    "Twenty-five snow alpha>32 pixels extend outside body alpha>32, mostly edge pile; not claimed zero leakage. One pixel remains more than2native below manual eave; zero beyond4native.",
+    "No game scene tested; parent owns installation/runtime evidence.",
+    "No new body pixels or direct geometric patch painting. Only imagegen edits, existing resizeArea registration and inspection composites."
+  ],
+  "sloped_aperture_rois": {
+    "door": "54<=x<=74 and72+.45*(x-54)<=y<=118+.45*(x-54)",
+    "window": "37<=x<=46 and65+.5*(x-37)<=y<=81+.5*(x-37)",
+    "method": "Manual inferred inner aperture excluding lintel; native pixel centres, coordinates approximately1native uncertainty."
+  }
+}

@@ -50,8 +50,8 @@ export type ToggleKind = Exclude<OurKind | TheirKind, AmountKind>;
 const AMOUNT_KINDS: readonly AmountKind[] = ["cash", "debt_assumption", "debt_after_inheritance", "pension"];
 const isAmount = (kind: TermKind): kind is AmountKind => (AMOUNT_KINDS as readonly TermKind[]).includes(kind);
 
-/** The editor's two step sizes per amount, in pence (a pension's is a year's): whole shillings and pounds, so the steps read
- * as the money the screens write (£1 = 20s = 240d). A screen convenience, not an engine rule. */
+/** The editor's two step sizes per amount, counted in pence, a pension's per year: whole shillings and pounds, so the steps read
+ * as the money the screens write (a pound is twenty shillings, a shilling twelve pence). A screen convenience, not an engine rule. */
 export const STEPS: Readonly<Record<AmountKind, readonly [number, number]>> = {
   cash: [12, 240], debt_assumption: [12, 60], debt_after_inheritance: [240, 1200], pension: [12, 60],
 };

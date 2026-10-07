@@ -1,0 +1,123 @@
+{
+  "asset_count": 15,
+  "exact_ids": true,
+  "unique_hashes": true,
+  "all_jpeg": true,
+  "dimensions_pass": true,
+  "rgb_pass": true,
+  "blind_match": "15/15",
+  "blind_pass": true,
+  "repository_status": "clean",
+  "source_commit": "2b6d820cc4bf7f6d5e5501dc9d5908b7a267433a",
+  "overview": "Viewed after Chrome generation; all15 labels and scenes present",
+  "runtime_render": "not tested; not installed",
+  "checks": [
+    {
+      "id": "ck_evt_201",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "f161e204981926c296730dd9a6d6651ad1a6ce7251990c3dc3ca7c08fb71d9a3",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_202",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "1498ebc6bafe323301bb0ed1e98a60ad35f23c0360386b7cd08e03deced2d76c",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_203",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "c8b4f6fbe86cbecf54d4d5f7528b67cf99745ce479e5c71b61544f577d25b441",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_204",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "3475cc0eb1ce6b798ffc6cfeda9427258f17be27eab38d4ae82e4a6731237c1c",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_205",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "894bbf0d19896eb11448295d38551fd685422652ecd7abc4ca21967054c5831a",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_206",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "7c575b3c7a9e498ea985aa4b00c2c8abbeb5558358514df512fdb3fce2013abb",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_207",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "99c488db0d54ddb4452eb6a8a5b986628d612c50986f07679a23774980cbc433",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_208",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "0e15f7e7518c118b3f84b30fcb98345d90b91834fff013bac34400524e68802c",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_209",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "0620cac00a231f36213bbcf28d46fc67f0a284364ea9557a290be4006e6e0ba9",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_210",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "f51b245864410757660977fbc6a5a3ad74202c3030659b49995bad1d17306726",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_211",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "7139cd60fa43ac8f5bbda1e58eaa36feaa69857ffa7991852b67c88ab0d3bcb0",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_212",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "18f98e3d7fbaf50286c6e09b146120af340fc47e6d833277c0ca8ac417c8a2e4",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_213",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "7c4a347c522eacbbacaa01d593664774aac2c39d0594dfbc98645a549df98d11",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_214",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "edd9514977ec15e75dd0829c8c6cf06e31ecd0daacb904e1a23f1398c08d93a4",
+      "blind_hash_match": true
+    },
+    {
+      "id": "ck_evt_215",
+      "dimensions": "960x540",
+      "space": "RGB",
+      "sha256": "bf27ed685289312a2f07bb892c2bd9b102fd3952d561418bacbdb6be3fbbc1ec",
+      "blind_hash_match": true
+    }
+  ],
+  "csv_round_trip": "15 rows, exact IDs, dimensions and existing paths",
+  "blind_board": "Visually verified P01-P15 after regenerated overview"
+}

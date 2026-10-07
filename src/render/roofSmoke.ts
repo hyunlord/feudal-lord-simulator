@@ -4,7 +4,7 @@ import type { GameState } from "../engine/engine.types";
 import { housePressureStatus } from "../population/housePressure";
 import { frameBuildingVariant } from "./buildingVariants";
 import { shownHouseVariantUrl } from "./wave26HouseArt";
-import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "./historicalHouseAssets";
+import { historicalHouseAssetMeta, historicalHouseSpriteRect, registeredHouseRoofPoint } from "./historicalHouseAssets";
 import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
 import { millRegistration } from "./animatedMill";
 import { historicalFacilityAssetId, historicalFacilitySpriteRect } from "./historicalFacilityAssets";
@@ -47,9 +47,14 @@ export function millOvenBurning(building: Building): boolean {
 }
 
 /** Smoke from the house's ridge (single or pair art, variants included), when it has any. */
-export function drawHouseRoofSmoke(context: CanvasRenderingContext2D, state: Pick<GameState, "houses">, building: Building, level: number, nowMs: number): void {
+export function drawHouseRoofSmoke(context: CanvasRenderingContext2D, state: Pick<GameState, "houses"> & Partial<Pick<GameState, "seed" | "tick" | "scenarioId" | "events" | "history">>, building: Building, level: number, nowMs: number): void {
   const strength = houseSmokeStrength(state, building);
   if (strength === 0) return;
+  const registered = state.seed === undefined ? null : registeredHouseRoofPoint({ ...state, seed: state.seed }, building, level);
+  if (registered !== null) {
+    drawSmokePlume(context, registered.x, registered.y, strength, nowMs, building.tx * 7 + building.ty * 3);
+    return;
+  }
   const pair = building.houseLot !== undefined;
   const meta = pair ? houseCompoundAssetMeta(building, level) : historicalHouseAssetMeta(level);
   if (meta === null) return;

@@ -24,7 +24,7 @@ import { WALKER_HALF_WIDTH, wallItemEdges, type Box, type Foot, type WallEdge } 
 // or on a bridge keep the queue's own order (the gate's arch and the bridge's rails are drawn around them by depth).
 type WalkerItem = Extract<RenderQueueItem, { readonly kind: "walker" }>;
 /** NAT-2: an alehouse drinker's place (alehouseCrowd.ts), placed like a walker at its foot. */
-type FigureItem = Extract<RenderQueueItem, { readonly kind: "ale_drinker" }>;
+type FigureItem = Extract<RenderQueueItem, { readonly kind: "ale_drinker" | "funeral" }>;
 /** The draw queue: the object items and the bridges' rails (drawObjectRenderItems). */
 type Queued = RenderQueueItem | Readonly<{ kind: "bridge_rail"; depth: number; anchorTx: number; id: string }>;
 type Blocker = { readonly index: number; readonly box: Box | null; readonly site?: boolean; readonly edge: WallEdge | null };
@@ -130,14 +130,14 @@ export function placeWalkers<T extends Queued>(queue: readonly T[], state: Occlu
   const base: T[] = [];
   const moving: { item: T & (WalkerItem | FigureItem); at: number; order: number }[] = [];
   for (const item of queue) {
-    if ((item.kind === "walker" && !keepOrder(item as T & WalkerItem)) || item.kind === "ale_drinker") moving.push({ item: item as T & (WalkerItem | FigureItem), at: base.length, order: moving.length });
+    if ((item.kind === "walker" && !keepOrder(item as T & WalkerItem)) || item.kind === "ale_drinker" || item.kind === "funeral") moving.push({ item: item as T & (WalkerItem | FigureItem), at: base.length, order: moving.length });
     else base.push(item);
   }
   if (moving.length === 0) return base;
   const buckets = bucketed(blockersOf(base, state));
   for (const entry of moving) {
     // A drinker's place holds both ends of its short walk: where it stands and the door it comes out of.
-    const feet = entry.item.kind === "walker" ? [walkerVisualAnchor(entry.item.walker.position)] : [entry.item.stand.foot, entry.item.stand.door];
+    const feet = entry.item.kind === "walker" ? [walkerVisualAnchor(entry.item.walker.position)] : entry.item.kind === "funeral" ? [entry.item.foot] : [entry.item.stand.foot, entry.item.stand.door];
     const near = nearBlockers(buckets, feet[0]!);
     const both = (blockers: readonly Blocker[]) => feet.map(foot => bounds(foot, blockers))
       .reduce((a, b) => ({ lo: Math.max(a.lo, b.lo), hi: Math.min(a.hi, b.hi) }));

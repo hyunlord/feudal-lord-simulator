@@ -1,0 +1,1888 @@
+{
+  "head": "116e9d4231b3dd38bfd53813e3c301f39684838f",
+  "person_scale": 0.2707692307692308,
+  "bier_scale": 0.65,
+  "walker_pivot": [
+    37,
+    70
+  ],
+  "bier_pivot": [
+    32,
+    16
+  ],
+  "hands_frame_local": {
+    "NE": [
+      [
+        [
+          34,
+          36
+        ],
+        [
+          59,
+          35
+        ]
+      ],
+      [
+        [
+          33,
+          35
+        ],
+        [
+          60,
+          34
+        ]
+      ]
+    ],
+    "SE": [
+      [
+        [
+          25,
+          38
+        ],
+        [
+          48,
+          34
+        ]
+      ],
+      [
+        [
+          25,
+          36
+        ],
+        [
+          50,
+          34
+        ]
+      ]
+    ],
+    "SW": [
+      [
+        [
+          25,
+          35
+        ],
+        [
+          48,
+          37
+        ]
+      ],
+      [
+        [
+          23,
+          35
+        ],
+        [
+          49,
+          36
+        ]
+      ]
+    ],
+    "NW": [
+      [
+        [
+          15,
+          37
+        ],
+        [
+          41,
+          36
+        ]
+      ],
+      [
+        [
+          14,
+          35
+        ],
+        [
+          41,
+          35
+        ]
+      ]
+    ]
+  },
+  "tips_bier_native": {
+    "NE": [
+      [
+        10,
+        25
+      ],
+      [
+        16,
+        28
+      ],
+      [
+        46,
+        3
+      ],
+      [
+        52,
+        7
+      ]
+    ],
+    "NW": [
+      [
+        11,
+        7
+      ],
+      [
+        16,
+        3
+      ],
+      [
+        45,
+        28
+      ],
+      [
+        51,
+        24
+      ]
+    ]
+  },
+  "records": [
+    {
+      "count": 2,
+      "direction": "NE",
+      "gait": 0,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -14.922307692307694,
+            16.166538461538465
+          ],
+          "hands": [
+            [
+              34,
+              36
+            ],
+            [
+              59,
+              35
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            8.477692307692308,
+            2.191538461538462
+          ],
+          "hands": [
+            [
+              34,
+              36
+            ],
+            [
+              59,
+              35
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        1.8141321054041226,
+        1.814132105404121,
+        2.029396534898487,
+        2.02939653489849
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        3.2223076923076928,
+        -9.179038461538465
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.700000000000001,
+          6.987500000000001
+        ],
+        [
+          11.700000000000001,
+          -6.9875000000000025
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "NE",
+      "gait": 1,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -14.922307692307694,
+            16.437307692307694
+          ],
+          "hands": [
+            [
+              33,
+              35
+            ],
+            [
+              60,
+              34
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            8.477692307692308,
+            2.462307692307693
+          ],
+          "hands": [
+            [
+              33,
+              35
+            ],
+            [
+              60,
+              34
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        2.03501613764446,
+        2.035016137644459,
+        2.2290503988186026,
+        2.2290503988186043
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        3.2223076923076928,
+        -9.449807692307694
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.700000000000001,
+          6.987500000000001
+        ],
+        [
+          11.700000000000001,
+          -6.987500000000001
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "SE",
+      "gait": 0,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -11.889615384615386,
+            2.0561538461538476
+          ],
+          "hands": [
+            [
+              25,
+              38
+            ],
+            [
+              48,
+              34
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            10.535384615384615,
+            15.706153846153848
+          ],
+          "hands": [
+            [
+              25,
+              38
+            ],
+            [
+              48,
+              34
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        1.670905974358801,
+        1.6709059743588,
+        1.3891730544276815,
+        1.3891730544276804
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.6771153846153855,
+        -8.881153846153847
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.2125,
+          -6.824999999999999
+        ],
+        [
+          11.2125,
+          6.825000000000001
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "SE",
+      "gait": 1,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -12.160384615384615,
+            2.3269230769230784
+          ],
+          "hands": [
+            [
+              25,
+              36
+            ],
+            [
+              50,
+              34
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            10.264615384615386,
+            15.976923076923079
+          ],
+          "hands": [
+            [
+              25,
+              36
+            ],
+            [
+              50,
+              34
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        2.0385196290706915,
+        2.038519629070692,
+        1.7656265964542193,
+        1.7656265964542195
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.9478846153846145,
+        -9.15192307692308
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.2125,
+          -6.825000000000001
+        ],
+        [
+          11.2125,
+          6.824999999999999
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "SW",
+      "gait": 0,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -12.214615384615387,
+            16.03115384615385
+          ],
+          "hands": [
+            [
+              25,
+              35
+            ],
+            [
+              48,
+              37
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            11.185384615384615,
+            2.0561538461538476
+          ],
+          "hands": [
+            [
+              25,
+              35
+            ],
+            [
+              48,
+              37
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        1.360323066831497,
+        1.360323066831495,
+        1.553658214072145,
+        1.5536582140721453
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.5146153846153858,
+        -9.043653846153848
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.700000000000001,
+          6.987500000000001
+        ],
+        [
+          11.700000000000001,
+          -6.987500000000001
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "SW",
+      "gait": 1,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -12.07923076923077,
+            16.166538461538465
+          ],
+          "hands": [
+            [
+              23,
+              35
+            ],
+            [
+              49,
+              36
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            11.320769230769232,
+            2.191538461538462
+          ],
+          "hands": [
+            [
+              23,
+              35
+            ],
+            [
+              49,
+              36
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        1.780408378457831,
+        1.7804083784578282,
+        1.954796407322982,
+        1.9547964073229833
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.3792307692307695,
+        -9.179038461538465
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.700000000000001,
+          6.987500000000001
+        ],
+        [
+          11.700000000000001,
+          -6.9875000000000025
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "NW",
+      "gait": 0,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -9.588076923076922,
+            1.9207692307692312
+          ],
+          "hands": [
+            [
+              15,
+              37
+            ],
+            [
+              41,
+              36
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            12.836923076923078,
+            15.570769230769232
+          ],
+          "hands": [
+            [
+              15,
+              37
+            ],
+            [
+              41,
+              36
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        2.224264821032524,
+        2.2242648210325235,
+        1.9547964073229844,
+        1.9547964073229835
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        -1.6244230769230779,
+        -8.74576923076923
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.2125,
+          -6.824999999999999
+        ],
+        [
+          11.2125,
+          6.825000000000001
+        ]
+      ]
+    },
+    {
+      "count": 2,
+      "direction": "NW",
+      "gait": 1,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -9.452692307692308,
+            2.3269230769230784
+          ],
+          "hands": [
+            [
+              14,
+              35
+            ],
+            [
+              41,
+              35
+            ]
+          ],
+          "tip_indices": [
+            0,
+            1
+          ],
+          "side": "mixed"
+        },
+        {
+          "anchor": [
+            12.972307692307693,
+            15.976923076923079
+          ],
+          "hands": [
+            [
+              14,
+              35
+            ],
+            [
+              41,
+              35
+            ]
+          ],
+          "tip_indices": [
+            2,
+            3
+          ],
+          "side": "mixed"
+        }
+      ],
+      "contact_residuals_world": [
+        2.4109047443626928,
+        2.410904744362692,
+        2.1443732619090694,
+        2.144373261909068
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        -1.7598076923076924,
+        -9.15192307692308
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -11.2125,
+          -6.825000000000001
+        ],
+        [
+          11.2125,
+          6.824999999999999
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "NE",
+      "gait": 0,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -20.25692307692308,
+            15.32692307692308
+          ],
+          "hands": [
+            [
+              59,
+              35
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            -9.587692307692308,
+            17.00615384615385
+          ],
+          "hands": [
+            [
+              34,
+              36
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            3.1430769230769213,
+            1.0269230769230777
+          ],
+          "hands": [
+            [
+              59,
+              35
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            13.812307692307693,
+            3.3561538461538474
+          ],
+          "hands": [
+            [
+              34,
+              36
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "near"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        3.2223076923076936,
+        -9.179038461538465
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -17.034615384615385,
+          6.147884615384616
+        ],
+        [
+          -6.365384615384614,
+          7.827115384615386
+        ],
+        [
+          6.365384615384615,
+          -8.152115384615387
+        ],
+        [
+          17.034615384615385,
+          -5.822884615384617
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "NE",
+      "gait": 1,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -20.52769230769231,
+            15.59769230769231
+          ],
+          "hands": [
+            [
+              60,
+              34
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            -9.316923076923077,
+            17.27692307692308
+          ],
+          "hands": [
+            [
+              33,
+              35
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            2.8723076923076905,
+            1.2976923076923086
+          ],
+          "hands": [
+            [
+              60,
+              34
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            14.083076923076923,
+            3.6269230769230782
+          ],
+          "hands": [
+            [
+              33,
+              35
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "near"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        3.2223076923076928,
+        -9.449807692307694
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -17.305384615384618,
+          6.147884615384616
+        ],
+        [
+          -6.094615384615384,
+          7.827115384615386
+        ],
+        [
+          6.094615384615383,
+          -8.152115384615385
+        ],
+        [
+          17.305384615384618,
+          -5.822884615384615
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "SE",
+      "gait": 0,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -16.62846153846154,
+            3.897692307692309
+          ],
+          "hands": [
+            [
+              48,
+              34
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            -7.150769230769231,
+            0.2146153846153851
+          ],
+          "hands": [
+            [
+              25,
+              38
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            5.4715384615384615,
+            17.54769230769231
+          ],
+          "hands": [
+            [
+              48,
+              34
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            15.599230769230768,
+            13.864615384615387
+          ],
+          "hands": [
+            [
+              25,
+              38
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "far"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.6771153846153852,
+        -8.881153846153847
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -15.951346153846155,
+          -4.983461538461538
+        ],
+        [
+          -6.473653846153845,
+          -8.666538461538462
+        ],
+        [
+          6.148653846153847,
+          8.666538461538462
+        ],
+        [
+          16.276346153846152,
+          4.98346153846154
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "SE",
+      "gait": 1,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -17.17,
+            3.897692307692309
+          ],
+          "hands": [
+            [
+              50,
+              34
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            -7.150769230769231,
+            0.7561538461538468
+          ],
+          "hands": [
+            [
+              25,
+              36
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            4.930000000000001,
+            17.54769230769231
+          ],
+          "hands": [
+            [
+              50,
+              34
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            15.599230769230768,
+            14.406153846153849
+          ],
+          "hands": [
+            [
+              25,
+              36
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "far"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.9478846153846159,
+        -9.151923076923078
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -16.222115384615385,
+          -5.254230769230769
+        ],
+        [
+          -6.202884615384615,
+          -8.39576923076923
+        ],
+        [
+          5.877884615384616,
+          8.39576923076923
+        ],
+        [
+          16.547115384615385,
+          5.254230769230771
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "SW",
+      "gait": 0,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -17.27846153846154,
+            14.785384615384618
+          ],
+          "hands": [
+            [
+              48,
+              37
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            -7.150769230769231,
+            17.27692307692308
+          ],
+          "hands": [
+            [
+              25,
+              35
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            6.12153846153846,
+            0.48538461538461597
+          ],
+          "hands": [
+            [
+              48,
+              37
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            16.24923076923077,
+            3.6269230769230782
+          ],
+          "hands": [
+            [
+              25,
+              35
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "near"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.5146153846153847,
+        -9.043653846153848
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -16.763846153846153,
+          5.74173076923077
+        ],
+        [
+          -6.636153846153846,
+          8.233269230769231
+        ],
+        [
+          6.636153846153845,
+          -8.558269230769232
+        ],
+        [
+          16.763846153846156,
+          -5.41673076923077
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "SW",
+      "gait": 1,
+      "bier_kind": "NE",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -14.3,
+          5.8500000000000005
+        ],
+        [
+          -10.4,
+          7.800000000000001
+        ],
+        [
+          9.1,
+          -8.450000000000001
+        ],
+        [
+          13.0,
+          -5.8500000000000005
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -17.54923076923077,
+            15.056153846153848
+          ],
+          "hands": [
+            [
+              49,
+              36
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            -6.609230769230769,
+            17.27692307692308
+          ],
+          "hands": [
+            [
+              23,
+              35
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            5.85076923076923,
+            0.7561538461538468
+          ],
+          "hands": [
+            [
+              49,
+              36
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            16.790769230769232,
+            3.6269230769230782
+          ],
+          "hands": [
+            [
+              23,
+              35
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "near"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        0.3792307692307695,
+        -9.179038461538463
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -17.17,
+          5.877115384615385
+        ],
+        [
+          -6.2299999999999995,
+          8.097884615384617
+        ],
+        [
+          6.2299999999999995,
+          -8.422884615384616
+        ],
+        [
+          17.17,
+          -5.552115384615385
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "NW",
+      "gait": 0,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -14.733076923076924,
+            3.3561538461538474
+          ],
+          "hands": [
+            [
+              41,
+              36
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            -4.443076923076922,
+            0.48538461538461597
+          ],
+          "hands": [
+            [
+              15,
+              37
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            7.366923076923078,
+            17.00615384615385
+          ],
+          "hands": [
+            [
+              41,
+              36
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            18.306923076923077,
+            14.135384615384616
+          ],
+          "hands": [
+            [
+              15,
+              37
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "far"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        -1.6244230769230772,
+        -8.745769230769232
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -16.3575,
+          -5.389615384615385
+        ],
+        [
+          -6.067499999999999,
+          -8.260384615384616
+        ],
+        [
+          5.742500000000001,
+          8.260384615384618
+        ],
+        [
+          16.6825,
+          5.389615384615384
+        ]
+      ]
+    },
+    {
+      "count": 4,
+      "direction": "NW",
+      "gait": 1,
+      "bier_kind": "NW",
+      "targets_world_relative_to_bier_pivot": [
+        [
+          -13.65,
+          -5.8500000000000005
+        ],
+        [
+          -10.4,
+          -8.450000000000001
+        ],
+        [
+          8.450000000000001,
+          7.800000000000001
+        ],
+        [
+          12.35,
+          5.2
+        ]
+      ],
+      "actors": [
+        {
+          "anchor": [
+            -14.733076923076924,
+            3.6269230769230782
+          ],
+          "hands": [
+            [
+              41,
+              35
+            ]
+          ],
+          "tip_indices": [
+            0
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            -4.172307692307691,
+            1.0269230769230777
+          ],
+          "hands": [
+            [
+              14,
+              35
+            ]
+          ],
+          "tip_indices": [
+            1
+          ],
+          "hand_index": 0,
+          "side": "far"
+        },
+        {
+          "anchor": [
+            7.366923076923078,
+            17.27692307692308
+          ],
+          "hands": [
+            [
+              41,
+              35
+            ]
+          ],
+          "tip_indices": [
+            2
+          ],
+          "hand_index": 1,
+          "side": "near"
+        },
+        {
+          "anchor": [
+            18.57769230769231,
+            14.676923076923078
+          ],
+          "hands": [
+            [
+              14,
+              35
+            ]
+          ],
+          "tip_indices": [
+            3
+          ],
+          "hand_index": 0,
+          "side": "far"
+        }
+      ],
+      "contact_residuals_world": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bier_anchor_offset_from_ground_path_point": [
+        -1.759807692307693,
+        -9.151923076923078
+      ],
+      "actor_foot_offsets_from_ground_path_point": [
+        [
+          -16.492884615384618,
+          -5.5249999999999995
+        ],
+        [
+          -5.9321153846153845,
+          -8.125
+        ],
+        [
+          5.607115384615384,
+          8.125000000000002
+        ],
+        [
+          16.817884615384617,
+          5.525
+        ]
+      ]
+    }
+  ],
+  "proposed_bier_direction_map": {
+    "NE": "NE",
+    "SW": "NE",
+    "SE": "NW",
+    "NW": "NW"
+  },
+  "current_bier_direction_map": {
+    "NE": "NE",
+    "SE": "NE",
+    "SW": "NW",
+    "NW": "NW"
+  },
+  "formula": {
+    "scales": "sw=17.6/65; sb=0.65 (unchanged)",
+    "local_foot_offset": "Oi=sb*(Ti-Pb)-sw*(Hi-Pw)",
+    "centering": "B=P-mean(Oi); Ai=P+Oi-mean(Oi)",
+    "identity": "Ai+sw*(Hi-Pw) == B+sb*(Ti-Pb)",
+    "gait": "g=floor(nowMs/260)%2; choose measured hand from exact g, not fixed gait0",
+    "draw_order": "far two sorted Ai.y ascending, complete bier, near two sorted Ai.y ascending; stable tip-index tie break",
+    "hand_assignment": "Within each endpoint pair sorted by tip.x: smaller x uses actor screen-right hand, larger x uses actor screen-left hand. The other hand remains free.",
+    "near_side": "Within each endpoint pair: higher native tip.y is near; lower tip.y far.",
+    "snap": "Do not independently snap actor and bier target origins before solving; preserve existing false snap path."
+  },
+  "measurement_uncertainty": {
+    "native_hand_per_axis": 2,
+    "native_tip_per_axis": 2,
+    "worst_combined_world_per_axis": 1.8415384615384616,
+    "worst_combined_world_radial": 2.604328667939377,
+    "meaning": "Manual source registration uncertainty, not measured runtime residual; nominal algebraic zero is not pixel-exact physical grip."
+  },
+  "native_visibility": {
+    "NE": {
+      "left": "visible skin at sleeve end; partial sleeve occlusion",
+      "right": "visible skin at sleeve end; small/blurred pixels",
+      "limits": "No clenched grasp drawn. NE/NW back-facing sleeve can hide part of palm."
+    },
+    "SE": {
+      "left": "visible skin at sleeve end; partial sleeve occlusion",
+      "right": "visible skin at sleeve end; small/blurred pixels",
+      "limits": "No clenched grasp drawn. NE/NW back-facing sleeve can hide part of palm."
+    },
+    "SW": {
+      "left": "visible skin at sleeve end; partial sleeve occlusion",
+      "right": "visible skin at sleeve end; small/blurred pixels",
+      "limits": "No clenched grasp drawn. NE/NW back-facing sleeve can hide part of palm."
+    },
+    "NW": {
+      "left": "visible skin at sleeve end; partial sleeve occlusion",
+      "right": "visible skin at sleeve end; small/blurred pixels",
+      "limits": "No clenched grasp drawn. NE/NW back-facing sleeve can hide part of palm."
+    }
+  },
+  "composite_visibility": {
+    "near": "Whole near sprite drawn last: gripping hand visible over terminal support; free hand remains visible where not covered by its own tunic.",
+    "far": "Bier drawn after far sprite: wooden tip overlays part of hand/palm, and some upper-leg pixels can be hidden by shroud. Do not count hidden palm as independently verified grip.",
+    "review": "All four directions x two gaits directly inspected on neutral offline composite; no detached nominal contact. Walking pose/unclosed hands remain limitation."
+  },
+  "source_hashes": {
+    "public/assets/wave9/walker/wk_funeral_bearers-v1.png": "8e51b570cd335df31af90ddaff625102d4db57beb31ee04784a17f10c0dcee68",
+    "public/assets/wave9/prop/bier_shroud_ne-v1.png": "5726d1eb760a2fe604616766f221b10a63270c7f94a9a7a92c9d2b4974884fa7",
+    "public/assets/wave9/prop/bier_shroud_nw-v1.png": "0431d99caf69ce82867f313c214f5751f7090d698b6b36b06b32d15a39393533",
+    "src/render/plagueWorldProps.ts": "d66131f9e47409b6e0610e859aebed552a13ecda8913ce924adfa64e3d4ed276",
+    "src/render/storyWorldProps.ts": "1e9f051cdc7938408662f37c5c5bf4fff18513a55dec92effaf9bf098dae6742"
+  },
+  "graft_estimated_tokens_saved": 10853
+}

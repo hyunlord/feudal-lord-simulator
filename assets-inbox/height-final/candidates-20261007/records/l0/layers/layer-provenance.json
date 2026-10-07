@@ -1,0 +1,47 @@
+{
+  "tool": "image_gen.imagegen built-in",
+  "model": "not returned",
+  "transparent_background": true,
+  "source_body": "../candidate-03-generated.png",
+  "source_body_sha256": "4fa2edb224b814a1f945c9d6270ed0634c01ed5fdf9613d23c8756aa5921ded1",
+  "reference_snow": "../references/original-snow.png",
+  "reference_boarded": "../references/original-boarded.png",
+  "attempts": [
+    {
+      "name": "snow1",
+      "prompt": "snow1-prompt.txt",
+      "original_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a11098-22e1-72e2-a8e6-e07774d1bf7a/exec-9ab1154d-443b-4a56-aa83-69e497613ef1.png",
+      "preserved": "snow-01-generated.png",
+      "inputs": [
+        "../candidate-03-generated.png",
+        "../references/original-snow.png"
+      ],
+      "selected": false
+    },
+    {
+      "name": "snow2",
+      "prompt": "snow2-prompt.txt",
+      "original_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a11098-22e1-72e2-a8e6-e07774d1bf7a/exec-613e0e47-a2fe-4706-8556-aabd7a080059.png",
+      "preserved": "snow-02-generated.png",
+      "inputs": [
+        "../candidate-03-generated.png"
+      ],
+      "selected": true
+    },
+    {
+      "name": "boarded1",
+      "prompt": "boarded1-prompt.txt",
+      "original_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a11098-22e1-72e2-a8e6-e07774d1bf7a/exec-70d2b3e4-6964-4c13-a5e8-e1c49d95b360.png",
+      "preserved": "boarded-01-generated.png",
+      "inputs": [
+        "../candidate-03-generated.png",
+        "../references/original-boarded.png"
+      ],
+      "selected": true
+    }
+  ],
+  "registration_script": "register-layers.mjs",
+  "registration_implementation": "/tmp/astra-height-final/scripts/keyartDerivatives.ts:210 resizeArea; decodePng/encodePng",
+  "body_modified": false,
+  "shared_legacy_layers_modified": false
+}

@@ -1,0 +1,38 @@
+✔ only actual accepted levy with live nonzero conscripts has an active saved-tick window (1.930667ms)
+✔ anchor does not depend on occupancy or query history; missing saved source hides (169.199375ms)
+✔ full paint support includes nominal footprint; road/water/zones/forest invalidate instead of teleporting (367.0005ms)
+✔ one source PNG remains byte identical; no derived winter or actor sheet (3.213208ms)
+✔ drainage completion restores original water for anchor selection; reload and rewind agree (164.160916ms)
+✔ zero grass cannot create a placement; one removed source hides all (50.16075ms)
+✔ winter never borrows this single warm-season ground painting (0.593125ms)
+✔ full-canvas support keeps all sixteen inverse-projected cells (1.772833ms)
+✔ completed normal-command farm has a safe deterministic non-economic pool (328.864208ms)
+✔ missing image and removed farms never leave a stale pool (82.191458ms)
+✔ winter has no invented seasonal image and spring restores stable placement (3.28575ms)
+✔ all roads or water across pasture eliminate every candidate without changing other props (267.108458ms)
+✔ selected pool canvas overlaps none of the existing reserved pictures (29.447917ms)
+✔ a new occupied support cell invalidates the old anchor (169.327709ms)
+✔ no tended pasture means no farm decoration (24.20575ms)
+✔ actual burning record deterministically anchors flame on house and reserves the whole brigade span (7.599833ms)
+✔ no invented fire before ignition or after expiry at tick 0 (0.13525ms)
+✔ no invented fire before ignition or after expiry at tick 9 (0.092416ms)
+✔ no invented fire before ignition or after expiry at tick 50 (0.085708ms)
+✔ no invented fire before ignition or after expiry at tick 51 (0.074208ms)
+✔ non-doused and no-well records retain flames but never invent a brigade (0.267791ms)
+✔ no safe space retains fallback eligibility and refuses water, trees, occupied cells (12.77925ms)
+✔ unavailable image leaves original queue untouched, including ordinary no-fire frames (0.702417ms)
+✔ all brigade support rejects a wall between well-side placement and household (1.970125ms)
+✔ seven-person groups are capped at five without changing residents (0.61525ms)
+✔ decoded images choose seasonal whole groups and draw one unmirrored authored rectangle (0.616375ms)
+✔ load failure and wrong decoded size never remove the bucket fallback (0.212583ms)
+✔ fire objects join world depth ordering and offscreen objects are culled (0.610291ms)
+✔ only actual visible brigade queue receipts suppress legacy buckets; crops stay clear (1.661917ms)
+✔ a well behind the burning house cannot hide the brigade behind its roof (0.225292ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3015.842042

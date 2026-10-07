@@ -1,0 +1,70 @@
+{
+  "pairs": 8,
+  "rows": [
+    {
+      "name": "pending",
+      "zoom": 1,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 0,
+      "expectedVisible": false
+    },
+    {
+      "name": "pending",
+      "zoom": 0.6,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 0,
+      "expectedVisible": false
+    },
+    {
+      "name": "active",
+      "zoom": 1,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 100,
+      "expectedVisible": true
+    },
+    {
+      "name": "active",
+      "zoom": 0.6,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 100,
+      "expectedVisible": true
+    },
+    {
+      "name": "last-active",
+      "zoom": 1,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 100,
+      "expectedVisible": true
+    },
+    {
+      "name": "last-active",
+      "zoom": 0.6,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 100,
+      "expectedVisible": true
+    },
+    {
+      "name": "expired",
+      "zoom": 1,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 0,
+      "expectedVisible": false
+    },
+    {
+      "name": "expired",
+      "zoom": 0.6,
+      "sameSaveStateTickCamera": true,
+      "beforeDraws": 0,
+      "afterDraws": 0,
+      "expectedVisible": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,2382 @@
+{
+  "productCommit": "acc20e8c",
+  "pairs": [
+    {
+      "view": "after-l0-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-fresh-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-fresh-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-fresh-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-winter-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-winter-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-winter-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-qa-winter-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-qa-winter-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-qa-winter-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-qa-winter-boarded-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-qa-winter-boarded-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l0-qa-winter-boarded-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-qa-winter-boarded-z1",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-qa-winter-boarded-z0.6",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    },
+    {
+      "view": "after-l1d-qa-winter-boarded-z3",
+      "identical": [
+        "saveSHA256",
+        "stateSHA256",
+        "tick",
+        "zoom",
+        "nowMs",
+        "camera",
+        "tile"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "run": "astra-HEIGHT-contract-finalpair-116e9d4-116e9d4",
+      "mode": "official --light capture; one Playwright browser, serial fixed views, no simulation batch or heavy test",
+      "commandSeconds": 116.0,
+      "head": "116e9d4231b3dd38bfd53813e3c301f39684838f",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-l1d-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-l0-z0.6",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "views": [
+        {
+          "id": "l0",
+          "stage": "before",
+          "name": "before-l0-z1",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+          "tick": 84,
+          "stateSHA256": "3dedb51bcac19e929826e4d330050485e495dac390aa1407c488faa6ba60402a",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "8cc4c36ac8201927a985839ab1ed89f250c8abcde695f3d06f9a712712fc01db",
+          "jpegSHA256": "ee5296b0760dfb78d176fdf1141304d599cfaf91bbcbc14c42172b804a9616cf",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0",
+          "stage": "before",
+          "name": "before-l0-z0.6",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+          "tick": 84,
+          "stateSHA256": "3dedb51bcac19e929826e4d330050485e495dac390aa1407c488faa6ba60402a",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "10ce4e8ee88d81640906c0977c9d58513cb535221be828970ab5d99b39d8c5e0",
+          "jpegSHA256": "9152e9161994f8556ad4cae2db54868e9aca11b36e4b454b90aaa9222391b950",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0",
+          "stage": "before",
+          "name": "before-l0-z3",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+          "tick": 84,
+          "stateSHA256": "3dedb51bcac19e929826e4d330050485e495dac390aa1407c488faa6ba60402a",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "e8e301adb2f5cf1cca00a349f955c472fd09ff6699f87df8beb466d4ee56d51d",
+          "jpegSHA256": "58b1422792a2ea1b269a7b60cf58b0e657989502e52665478620c60bd0b3afc8",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d",
+          "stage": "before",
+          "name": "before-l1d-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "0467c37ffe02b3232f4124d4f52e93d4f8a08409b13af0957af59d33182ddb4b",
+          "tick": 21000,
+          "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "782eabcc2d2350384d3ffe643aa13b86bfeb2c63c42c8791956a2fe622289f79",
+          "jpegSHA256": "f8b801ae2e612ae0540ad3a7b42ea1f48f494cf91637ffcbb2b555fe169e1659",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d",
+          "stage": "before",
+          "name": "before-l1d-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "0467c37ffe02b3232f4124d4f52e93d4f8a08409b13af0957af59d33182ddb4b",
+          "tick": 21000,
+          "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "a6307cdb56dd7fd144ae1a5d45b05d1583e6aed2ebe302058409abcfe0d95679",
+          "jpegSHA256": "8409f2f3e00db13636da505c936bf2aeb120798ad0f3f6ba3ad4ddb7e4ce8ed8",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d",
+          "stage": "before",
+          "name": "before-l1d-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "0467c37ffe02b3232f4124d4f52e93d4f8a08409b13af0957af59d33182ddb4b",
+          "tick": 21000,
+          "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "2798c330651e933dc6a080fa48f7be298505308a931f9e367058ab268eca9d9e",
+          "jpegSHA256": "fab1ab94c0b1c5909301f559c5a1608f6952b451bf37715fd268f1ee8df9b4a9",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0",
+          "stage": "after",
+          "name": "after-l0-z1",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+          "tick": 84,
+          "stateSHA256": "3dedb51bcac19e929826e4d330050485e495dac390aa1407c488faa6ba60402a",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "1bea965771a9c863f371fd07eab78ca286fbfaaf7090791b0115147d650bf6de",
+          "jpegSHA256": "be21235421f3fc699308003785f25f33c3fc781c61a28249b8d6ee52b8e77e23",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                416,
+                -896
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0",
+          "stage": "after",
+          "name": "after-l0-z0.6",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+          "tick": 84,
+          "stateSHA256": "3dedb51bcac19e929826e4d330050485e495dac390aa1407c488faa6ba60402a",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "2ab276a5e98b5af593a03812e8b617178599b08f4dc2e0f0a6aabbcddf2c8c2e",
+          "jpegSHA256": "855d5511df6ba81ace1c8adf67abf274715e71e7eefef0eac29d2a9f2cd0715a",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                505.6000061035156,
+                -377.6000061035156
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0",
+          "stage": "after",
+          "name": "after-l0-z3",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+          "tick": 84,
+          "stateSHA256": "3dedb51bcac19e929826e4d330050485e495dac390aa1407c488faa6ba60402a",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "8bc1df1aca4b63c4d648d3f80fc96b0b4634da76251a38a1fffc34a9cc765c4b",
+          "jpegSHA256": "1b024662cfb7ebc9c08ab4f8161528f57076d70c82d3e7f68b017185d06b6db4",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                153,
+                153,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                -32,
+                -3488
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d",
+          "stage": "after",
+          "name": "after-l1d-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "0467c37ffe02b3232f4124d4f52e93d4f8a08409b13af0957af59d33182ddb4b",
+          "tick": 21000,
+          "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "1c9e57f7eb7f3943eb60de2f019faf9d0626dd3799ac90d18e3a0dfdaafd7ff1",
+          "jpegSHA256": "ca84d06744f7d194f22ef2f0a54c48e4075163c169f4a9db0f29f9d88efb4526",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d",
+          "stage": "after",
+          "name": "after-l1d-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "0467c37ffe02b3232f4124d4f52e93d4f8a08409b13af0957af59d33182ddb4b",
+          "tick": 21000,
+          "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "2f3b1c50a6964f34dbfc32603fb49ad05a335a765d34dfae86c98d01c3bc9583",
+          "jpegSHA256": "1417210bfc96bff250f4eaeb1ae7b9746cb8b40bc321afd67dddd3a9e022cd42",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d",
+          "stage": "after",
+          "name": "after-l1d-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "0467c37ffe02b3232f4124d4f52e93d4f8a08409b13af0957af59d33182ddb4b",
+          "tick": 21000,
+          "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "7f0b3ceb88a407d260dd59b66fed19fb5404005f9103fcec62f212bf5a514581",
+          "jpegSHA256": "6aa582076af08ca9d553a1285509104b59f00ba91bf75f5ea57418d4fe0aa58f",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "astra-HEIGHT-layers-pair-116e9d4-116e9d4",
+      "mode": "official --light capture; one Playwright browser, serial fixed views, no simulation batch or heavy test",
+      "commandSeconds": 106.9,
+      "head": "116e9d4231b3dd38bfd53813e3c301f39684838f",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-l1d-fresh-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "views": [
+        {
+          "id": "l1d-fresh",
+          "stage": "before",
+          "name": "before-l1d-fresh-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+          "tick": 13000,
+          "stateSHA256": "0a62b191308b0cbf9433d3febbe71c9999b3175bb92c534ebda2ee479abe671e",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "7297ef8ee2eb46c37b482f0b871580899b5929f831a9e7a89baf12e0e429ff1f",
+          "jpegSHA256": "09993a2df71c5276f943719079c7356f9a6901b2f459721e8fe57b021b00ac1b",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-fresh",
+          "stage": "before",
+          "name": "before-l1d-fresh-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+          "tick": 13000,
+          "stateSHA256": "0a62b191308b0cbf9433d3febbe71c9999b3175bb92c534ebda2ee479abe671e",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "c116ab216c4accc719a09b7f13257da1425970c24c27825d1de238e91d0fd9f8",
+          "jpegSHA256": "479007452882a30e26a7b41687c92068d61281a61f863c6dffbb4f1c7f20a9d1",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-fresh",
+          "stage": "before",
+          "name": "before-l1d-fresh-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+          "tick": 13000,
+          "stateSHA256": "0a62b191308b0cbf9433d3febbe71c9999b3175bb92c534ebda2ee479abe671e",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "9b21edc89d880ece9a9f8d2f0aa36013f4a424c85e5923ac7528b857ae18b506",
+          "jpegSHA256": "f81d4ecd8f88288ebd2b5bebc11421a7c8e538c86ca143b7fe1875376d05478c",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-winter",
+          "stage": "before",
+          "name": "before-l1d-winter-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+          "tick": 23450,
+          "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "029213285d2ce50d61bcecd199dd39318c17079f81b6b9bcd6d633f6f1e24758",
+          "jpegSHA256": "e64050806965918e343a97fd1fd52a812cd04102ac70064e9ebff49b3ed90716",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-winter",
+          "stage": "before",
+          "name": "before-l1d-winter-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+          "tick": 23450,
+          "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "724a7771ba13184b6345e36810271c3ffb9cb3bca098f9634066fec40fb5c755",
+          "jpegSHA256": "28aebcb3c3db58e4b2c79b6852226e37710c0491b67dc503097dba1466096a2d",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-winter",
+          "stage": "before",
+          "name": "before-l1d-winter-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+          "tick": 23450,
+          "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "ce8f5ab27aa4c8630f63bc7f9eef8220f07c92ec5b0ead0113294b8d0895c12f",
+          "jpegSHA256": "e10e7fec62abb8d7d06a29940cd0d95025f9a2e236a362db07999874530c235c",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-fresh",
+          "stage": "after",
+          "name": "after-l1d-fresh-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+          "tick": 13000,
+          "stateSHA256": "0a62b191308b0cbf9433d3febbe71c9999b3175bb92c534ebda2ee479abe671e",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "04350854e19a22ffcce399064a614529afe3fc2a70021fca7cdc08ebc2641660",
+          "jpegSHA256": "742bf777cad845f2ca79ca671b7192acc752dd5921a9a46da4cc9bb77b1fa2fa",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                284.26802747791953,
+                1265.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                284.26802747791953,
+                1265.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_fresh.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-fresh",
+          "stage": "after",
+          "name": "after-l1d-fresh-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+          "tick": 13000,
+          "stateSHA256": "0a62b191308b0cbf9433d3febbe71c9999b3175bb92c534ebda2ee479abe671e",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "494cdd0c1513467f0e0c1bb2a5370a467bf485111457c40428cf5a01652b484a",
+          "jpegSHA256": "2f4b0e79c83bd68d094398c2d514a037823eebe0fd63e6922ca6d46c4b00bbe3",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                284.26802747791953,
+                1265.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                284.26802747791953,
+                1265.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_fresh.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-fresh",
+          "stage": "after",
+          "name": "after-l1d-fresh-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+          "tick": 13000,
+          "stateSHA256": "0a62b191308b0cbf9433d3febbe71c9999b3175bb92c534ebda2ee479abe671e",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "5df842f9538df822d1e69201f57b014797d36db2a816c3d9cbe16c8721400452",
+          "jpegSHA256": "9b5f96b116a41bcfc65381f75ed3bd84ee5c31b30539ba6bed60c6ac59b711b1",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_fresh.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-winter",
+          "stage": "after",
+          "name": "after-l1d-winter-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+          "tick": 23450,
+          "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "9e98d5c0d0050dde0406944b741e68f8594761c67f08f198a821eaf189a6ccde",
+          "jpegSHA256": "009042b72dc2a9d85a9a799937897c4c528f9a880e2bb9680c3c6aca336369eb",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_snow.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-winter",
+          "stage": "after",
+          "name": "after-l1d-winter-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+          "tick": 23450,
+          "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "95bbf73b8e3f9937e6ef14840b0ac91ace30ff812641f6ce268b69385070140a",
+          "jpegSHA256": "cb27b0cf004709249e221eb66b837edd009c725f540b36a7ebf4cc55962745eb",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_snow.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-winter",
+          "stage": "after",
+          "name": "after-l1d-winter-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+          "tick": 23450,
+          "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "46fb37e54bfb156a737976c8a1660e183a8dab4343c98d51ee93bc1ef05db16a",
+          "jpegSHA256": "d49be4aaea5a9302b15155c3b7ca1630086c14904b521a4dea5e34308090b165",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4304/assets/height-final/house_l1_d-v2_snow.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "astra-HEIGHT-prepared-layers-116e9d4-116e9d4",
+      "mode": "official --light capture; one Playwright browser, serial fixed views, no simulation batch or heavy test",
+      "commandSeconds": 150.3,
+      "head": "116e9d4231b3dd38bfd53813e3c301f39684838f",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-l1d-qa-winter-boarded-z1",
+          "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "views": [
+        {
+          "id": "l0-qa-winter",
+          "stage": "before",
+          "name": "before-l0-qa-winter-z1",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+          "tick": 3500,
+          "stateSHA256": "883654ae3f9e7309029b1b72ab7c2176232c49805af71344398969a95a6a97c3",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "9176f1bbb41dca3ae22b362aa9a5720aba333ef9e9bb9b4916ee999d16794a0c",
+          "jpegSHA256": "0387bbebbb7b2835d64c156858622c8247495c1de3b201ff082ba8a5d2a06749",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0-qa-winter",
+          "stage": "before",
+          "name": "before-l0-qa-winter-z0.6",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+          "tick": 3500,
+          "stateSHA256": "883654ae3f9e7309029b1b72ab7c2176232c49805af71344398969a95a6a97c3",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "da623d578160c0dfedcbb78df295f7d9c3a2f8d5ef233b37577d6c558c60a6ed",
+          "jpegSHA256": "7daedef5e5b61452c628e525810b90648f0654158d656d42e1bc20b25a7e9b6d",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0-qa-winter",
+          "stage": "before",
+          "name": "before-l0-qa-winter-z3",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+          "tick": 3500,
+          "stateSHA256": "883654ae3f9e7309029b1b72ab7c2176232c49805af71344398969a95a6a97c3",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "b525e408b8ac80b6bb09c10482902ef71bcef64cfee02acfad1c078934580403",
+          "jpegSHA256": "e950b944048428e7c5357ad439624ec8642d30b64f5af7c118dfbff488813b6f",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0-qa-winter-boarded",
+          "stage": "before",
+          "name": "before-l0-qa-winter-boarded-z1",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+          "tick": 3500,
+          "stateSHA256": "37c611607502e15425c1a741bd219f8d141e63175a935af27099f8ed9ab45f00",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "6a360daa06cc5dcbc0aa984925ef53dd38bccc2517e294e272d081d0f089e8c3",
+          "jpegSHA256": "62baee4ca17e2bdd9226e73aec87624966c3197804cbb8965ba0836c8b8603b6",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0-qa-winter-boarded",
+          "stage": "before",
+          "name": "before-l0-qa-winter-boarded-z0.6",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+          "tick": 3500,
+          "stateSHA256": "37c611607502e15425c1a741bd219f8d141e63175a935af27099f8ed9ab45f00",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "14987c03dd4b716137e9ba965c998c3bf23454ffb73f21e5b2865d24f449fa07",
+          "jpegSHA256": "2df539f2059757ed08d5a8f678cb98a0e0bc5d42d994ad4bf5136d7180fea6da",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0-qa-winter-boarded",
+          "stage": "before",
+          "name": "before-l0-qa-winter-boarded-z3",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+          "tick": 3500,
+          "stateSHA256": "37c611607502e15425c1a741bd219f8d141e63175a935af27099f8ed9ab45f00",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "fd6945e3442519634cb487288c9b1b5e94ea8736b095a064ef65f84ff7bec493",
+          "jpegSHA256": "d6b89a9ac84d7fd290eb568494ca3d24a3e4b3cc2c0b2e0b1a3610d11681ed82",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-qa-winter-boarded",
+          "stage": "before",
+          "name": "before-l1d-qa-winter-boarded-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+          "tick": 23450,
+          "stateSHA256": "ed2549f7bb190c01cb62ae5a06e039130d886547bca050e9f2329a917d2d0323",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "e7fb396ff9595a921c889846e810c12e828ee2a0b4cac94c14590b8f5493db18",
+          "jpegSHA256": "e3c74588c14c159a7d167367d1c48e9e75623a282760b2cd28ff0c9ecd36f65f",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-qa-winter-boarded",
+          "stage": "before",
+          "name": "before-l1d-qa-winter-boarded-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+          "tick": 23450,
+          "stateSHA256": "ed2549f7bb190c01cb62ae5a06e039130d886547bca050e9f2329a917d2d0323",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "00896f52d2e43fa3c8e88e9120304ba25fcdb3af13399ef1a3b087e71b368e6a",
+          "jpegSHA256": "36760b3df12ec051c971cf23a18b23d80a5134e9a7ad1028edaac719ec1aaadd",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l1d-qa-winter-boarded",
+          "stage": "before",
+          "name": "before-l1d-qa-winter-boarded-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+          "tick": 23450,
+          "stateSHA256": "ed2549f7bb190c01cb62ae5a06e039130d886547bca050e9f2329a917d2d0323",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "b79d263117c0be396c1af91798f1d00987b5da1907e99134676732d00cbadc43",
+          "jpegSHA256": "f1e104357080cb361eecf6ea7fe46c7a0d63ebb39ad99767961f28bfeab027ec",
+          "newAssetDraws": []
+        },
+        {
+          "id": "l0-qa-winter",
+          "stage": "after",
+          "name": "after-l0-qa-winter-z1",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+          "tick": 3500,
+          "stateSHA256": "883654ae3f9e7309029b1b72ab7c2176232c49805af71344398969a95a6a97c3",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "cb0ce066e5d87de87afdde6598dc7230a1dd76cbad03c301f3fef3769d55e4a7",
+          "jpegSHA256": "7423db63c6747a199bc7789404de9f1bd62219eaadeb3e464f604a45e16c6817",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                416,
+                -896
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_snow.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                416,
+                -896
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0-qa-winter",
+          "stage": "after",
+          "name": "after-l0-qa-winter-z0.6",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+          "tick": 3500,
+          "stateSHA256": "883654ae3f9e7309029b1b72ab7c2176232c49805af71344398969a95a6a97c3",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "711d10339ce282ebe62ec10d47905952393dc3272bdc065d3816ff58c9d27322",
+          "jpegSHA256": "efb80c29e6a0e627dfe09e63c0bbcfb21c155e21b8b1d58e3b9b130faff6afe6",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                505.6000061035156,
+                -377.6000061035156
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_snow.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                505.6000061035156,
+                -377.6000061035156
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0-qa-winter",
+          "stage": "after",
+          "name": "after-l0-qa-winter-z3",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+          "tick": 3500,
+          "stateSHA256": "883654ae3f9e7309029b1b72ab7c2176232c49805af71344398969a95a6a97c3",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "44ed2e31eb7460308c70f42778f6247d232d41974970baf445a03026bcc2f0a9",
+          "jpegSHA256": "c6fbd2b6fe9d24edfdf2e6181b935cefcd1879511c2bb460b4048a65be7093db",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                153,
+                153,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                -32,
+                -3488
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_snow.png",
+              "args": [
+                0,
+                0,
+                153,
+                153,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                -32,
+                -3488
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0-qa-winter-boarded",
+          "stage": "after",
+          "name": "after-l0-qa-winter-boarded-z1",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+          "tick": 3500,
+          "stateSHA256": "37c611607502e15425c1a741bd219f8d141e63175a935af27099f8ed9ab45f00",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "f1e3a75492d30ee596e181c3b63e8618846bad36192f9d18213c3aed3da91371",
+          "jpegSHA256": "4166bda7baed1ad2d1ae235115114160e47f593ae629d6b7901e73a22d8c7245",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                416,
+                -896
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_boarded.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                416,
+                -896
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_snow.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                416,
+                -896
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0-qa-winter-boarded",
+          "stage": "after",
+          "name": "after-l0-qa-winter-boarded-z0.6",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+          "tick": 3500,
+          "stateSHA256": "37c611607502e15425c1a741bd219f8d141e63175a935af27099f8ed9ab45f00",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "2f9ed3367103aee228ec1ea60fdda7dc96c291d1212d448920e498c1d8ea73c9",
+          "jpegSHA256": "ffac34ab5cb342ee2b338ee3d71f412b47a48fe9ac220256be5a1b1d551f4ffe",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                505.6000061035156,
+                -377.6000061035156
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_boarded.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                505.6000061035156,
+                -377.6000061035156
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_snow.png",
+              "args": [
+                0,
+                0,
+                77,
+                77,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                505.6000061035156,
+                -377.6000061035156
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l0-qa-winter-boarded",
+          "stage": "after",
+          "name": "after-l0-qa-winter-boarded-z3",
+          "tile": [
+            44,
+            37
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+          "tick": 3500,
+          "stateSHA256": "37c611607502e15425c1a741bd219f8d141e63175a935af27099f8ed9ab45f00",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "0b27b5b2381a824d77de60f40f5874963bb8c3cf3905d093a78e0c16a7f8eb06",
+          "jpegSHA256": "2459754e406a7d3e55d1d7d9ae0fbe9264b3247146521622c1123ade7555a566",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4.png",
+              "args": [
+                0,
+                0,
+                153,
+                153,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                -32,
+                -3488
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_boarded.png",
+              "args": [
+                0,
+                0,
+                153,
+                153,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                -32,
+                -3488
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l0-v4_snow.png",
+              "args": [
+                0,
+                0,
+                153,
+                153,
+                185.35619047619048,
+                1242.2704761904763,
+                76.4342857142857,
+                76.4342857142857
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                -32,
+                -3488
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-qa-winter-boarded",
+          "stage": "after",
+          "name": "after-l1d-qa-winter-boarded-z1",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 1,
+          "nowMs": 4000,
+          "saveSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+          "tick": 23450,
+          "stateSHA256": "ed2549f7bb190c01cb62ae5a06e039130d886547bca050e9f2329a917d2d0323",
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "784a885882ba80c3ffd0b6742d9f004d2649596beb0dcd360276357a6e2bf353",
+          "jpegSHA256": "4bd21b3c5ed5d88f129f59983307d64b2b431e8a7d38f54efd6d09eaa73686c4",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_boarded.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_snow.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                1,
+                0,
+                0,
+                1,
+                608,
+                -992
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-qa-winter-boarded",
+          "stage": "after",
+          "name": "after-l1d-qa-winter-boarded-z0.6",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 0.6,
+          "nowMs": 4000,
+          "saveSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+          "tick": 23450,
+          "stateSHA256": "ed2549f7bb190c01cb62ae5a06e039130d886547bca050e9f2329a917d2d0323",
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "c0621df470ae35dc09b3fa6c5580ecc3e08afb9128a454707968ea4a3b5a1104",
+          "jpegSHA256": "cd40a79fedcae6f0d651bd3809f29e71909e9e109ea8115a0ce372df8b4deeaf",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_boarded.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_snow.png",
+              "args": [
+                0,
+                0,
+                70,
+                70,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                0.6000000238418579,
+                0,
+                0,
+                0.6000000238418579,
+                620.7999877929688,
+                -435.20001220703125
+              ]
+            }
+          ]
+        },
+        {
+          "id": "l1d-qa-winter-boarded",
+          "stage": "after",
+          "name": "after-l1d-qa-winter-boarded-z3",
+          "tile": [
+            44,
+            43
+          ],
+          "zoom": 3,
+          "nowMs": 4000,
+          "saveSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+          "tick": 23450,
+          "stateSHA256": "ed2549f7bb190c01cb62ae5a06e039130d886547bca050e9f2329a917d2d0323",
+          "camera": {
+            "zoom": 3,
+            "lod": "full"
+          },
+          "pngSHA256": "7a4f7523e61000e15d9aaf34bc9b1c9ba10bf3d79794e1d5241d426987ff7a90",
+          "jpegSHA256": "6e7578074d70536e00685352f68ee6aee7151a041f26b747a03160900235f0c0",
+          "newAssetDraws": [
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_weathered.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_boarded.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:4306/assets/height-final/house_l1_d-v2_snow.png",
+              "args": [
+                0,
+                0,
+                139,
+                139,
+                -3.7319725220804756,
+                1345.2134249263984,
+                69.30842001962709,
+                69.30842001962709
+              ],
+              "transform": [
+                3,
+                0,
+                0,
+                3,
+                544,
+                -3776
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "seenRuntimePNGs": [
+    "house_l0-v4.png",
+    "house_l0-v4_boarded.png",
+    "house_l0-v4_snow.png",
+    "house_l1_d-v2.png",
+    "house_l1_d-v2_boarded.png",
+    "house_l1_d-v2_fresh.png",
+    "house_l1_d-v2_snow.png",
+    "house_l1_d-v2_weathered.png"
+  ],
+  "count": 8,
+  "method": "Same build with new contract body and roof-point consumers disabled for before; not original-checkout screenshots. Actual game renderer after. All cameras frozen4000ms. QA copies explicitly listed separately."
+}

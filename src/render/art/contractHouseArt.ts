@@ -4,6 +4,7 @@ import { stateCalendar } from '../../engine/scenarioState';
 import { housePressureStatus } from '../../population/housePressure';
 import { textRandom } from '../buildingVariants';
 import { houseBodyEligible } from '../houseVariantChoice';
+import { houseStateLayerNow } from '../wave26HouseArt';
 import { tileToScreen, TILE_H } from '../iso';
 import { roofSnowAlpha } from '../seasonProgression';
 import { calendarProgress } from '../calendarProgress';
@@ -13,8 +14,11 @@ import type { ArtRegistry } from './artRegistry';
 import type { ArtPoint, ArtRect, BuildingBodyEntry, StateOverlayEntry } from './artContract';
 import { ART_REGISTRY } from './wave42Registry';
 
-type HouseArtState = Pick<GameState, 'seed' | 'houses'> & Partial<Pick<GameState, 'tick' | 'scenarioId' | 'events'>>;
-export type ContractHouseInput = { readonly state: HouseArtState | undefined; readonly building: Building; readonly level: number };
+type HouseArtState = Pick<GameState, 'seed' | 'houses'> & Partial<Pick<GameState, 'tick' | 'scenarioId' | 'events' | 'history'>>;
+export type ContractHouseInput = {
+  readonly state: HouseArtState | undefined; readonly building: Building; readonly level: number;
+  readonly legacyBodyUrl?: string;
+};
 export type ContractHouseDraw = {
   readonly at: ArtPoint; readonly layers: readonly string[];
   readonly layerAlpha: Readonly<Record<string, number>>;
@@ -26,7 +30,7 @@ type DrawContext = Parameters<ReturnType<typeof createArtAdapters>['draw']>[0] &
 export function createContractHouseArt(registry: ArtRegistry, environment?: ArtImageEnvironment) {
   const adapters = createArtAdapters(registry, environment);
   const hasBodies = registry.entries('building-body').length > 0;
-  const facts = ({ state, building, level }: ContractHouseInput) => {
+  const facts = ({ state, building, level, legacyBodyUrl }: ContractHouseInput) => {
     if (!hasBodies || state?.tick === undefined || !Number.isFinite(state.tick) || building.kind !== 'house' || building.houseLot !== undefined) return null;
     const house = state.houses.find(candidate => candidate.buildingId === building.id);
     if (house === undefined || !houseBodyEligible(state, building, house)) return null;
@@ -35,8 +39,8 @@ export function createContractHouseArt(registry: ArtRegistry, environment?: ArtI
     const snowAlpha = roofSnowAlpha(clock, building);
     const seasons = ['spring', 'summer', 'autumn', 'winter'] as const;
     return { context: { buildingKind: building.kind, level, calendarYear: stateCalendar(clock).year,
-      lot: 'single', eligible: true, season: seasons[effective] },
-    snowAlpha, vacant: housePressureStatus(house) === 'abandoned', seed: Math.floor(textRandom(state.seed, building.id, 0) * 0x1_0000_0000) >>> 0 };
+      lot: 'single', eligible: true, season: seasons[effective], legacyBodyUrl },
+    ageLayer: houseStateLayerNow(clock, house), snowAlpha, vacant: housePressureStatus(house) === 'abandoned', seed: Math.floor(textRandom(state.seed, building.id, 0) * 0x1_0000_0000) >>> 0 };
   };
   const selection = (input: ContractHouseInput) => {
     const read = facts(input);
@@ -44,8 +48,12 @@ export function createContractHouseArt(registry: ArtRegistry, environment?: ArtI
     const body = registry.select('building-body', 'house-body', read.context, read.seed);
     if (body?.kind !== 'building-body' || !body.buildingKinds.includes(input.building.kind) || !body.levels.includes(input.level)) return null;
     const layers: StateOverlayEntry[] = [];
-    for (const layer of ['boarded', 'snow'] as const) {
-      if (layer === 'boarded' ? !read.vacant : read.context.season !== 'winter' && read.snowAlpha <= 0) continue;
+    for (const layer of [read.ageLayer, 'boarded', 'snow'] as const) {
+      if (layer === null) continue;
+      if ((layer === 'fresh' || layer === 'weathered') && !registry.entries('state-overlay').some(entry =>
+        entry.kind === 'state-overlay' && entry.layer === layer && entry.targetBodyIds.includes(body.id))) continue;
+      if (layer === 'boarded' && !read.vacant) continue;
+      if (layer === 'snow' && read.context.season !== 'winter' && read.snowAlpha <= 0) continue;
       // Spring melt applies only to bodies with an authored snow layer; do not invent a required layer for other catalogs.
       if (layer === 'snow' && read.context.season === 'spring' && !registry.entries('state-overlay').some(entry =>
         entry.kind === 'state-overlay' && entry.layer === 'snow' && entry.targetBodyIds.includes(body.id))) continue;
@@ -73,6 +81,13 @@ export function createContractHouseArt(registry: ArtRegistry, environment?: ArtI
     select: (input: ContractHouseInput): BuildingBodyEntry | null => selection(input)?.body ?? null,
     ready: (input: ContractHouseInput): boolean => readySelection(input) !== null,
     status: adapters.status,
+    roofPoint: (input: ContractHouseInput): ArtPoint | null => {
+      const selected = readySelection(input);
+      if (selected?.body.roofRidge === undefined) return null;
+      const at = anchor(input.building), geometry = selected.body.geometry;
+      return { x: at.x + (selected.body.roofRidge.x - geometry.pivot.x) * geometry.scale,
+        y: at.y + (selected.body.roofRidge.y - geometry.pivot.y) * geometry.scale };
+    },
     drawBody: (context: DrawContext, input: ContractHouseInput): ContractHouseDraw | null => {
       const selected = readySelection(input);
       if (selected === null) return null;

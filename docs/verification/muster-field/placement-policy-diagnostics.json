@@ -1,0 +1,9041 @@
+[
+  {
+    "seed": 1,
+    "codecValid": true,
+    "anchor": {
+      "tx": 44,
+      "ty": 51
+    },
+    "terrainCandidates": 182,
+    "unoccupied": 165,
+    "fullyClear": 10,
+    "margins": [
+      {
+        "margin": 3,
+        "candidates": 165,
+        "first": {
+          "tx": 44,
+          "ty": 51,
+          "clearance": 5,
+          "distance": 265,
+          "occupied": false,
+          "paints": 3,
+          "margins": [
+            3
+          ]
+        }
+      },
+      {
+        "margin": 6,
+        "candidates": 140,
+        "first": {
+          "tx": 47,
+          "ty": 54,
+          "clearance": 7,
+          "distance": 361,
+          "occupied": false,
+          "paints": 2,
+          "margins": [
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "margin": 9,
+        "candidates": 75,
+        "first": {
+          "tx": 47,
+          "ty": 57,
+          "clearance": 6,
+          "distance": 484,
+          "occupied": false,
+          "paints": 2,
+          "margins": [
+            3,
+            6,
+            9
+          ]
+        }
+      },
+      {
+        "margin": 12,
+        "candidates": 0
+      }
+    ],
+    "largestClearing": [
+      {
+        "tx": 40,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 410,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 51,
+        "clearance": 8,
+        "distance": 305,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 51,
+        "clearance": 8,
+        "distance": 320,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 52,
+        "clearance": 8,
+        "distance": 338,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 52,
+        "clearance": 8,
+        "distance": 353,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 53,
+        "clearance": 8,
+        "distance": 360,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      }
+    ],
+    "nearestClear": [
+      {
+        "tx": 40,
+        "ty": 50,
+        "clearance": 7,
+        "distance": 274,
+        "occupied": false,
+        "paints": 0,
+        "margins": []
+      },
+      {
+        "tx": 41,
+        "ty": 51,
+        "clearance": 7,
+        "distance": 292,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 52,
+        "clearance": 7,
+        "distance": 314,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 340,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 53,
+        "clearance": 7,
+        "distance": 349,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 53,
+        "clearance": 8,
+        "distance": 360,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 377,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 386,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6
+        ]
+      }
+    ],
+    "candidates": [
+      {
+        "tx": 43,
+        "ty": 47,
+        "clearance": 4,
+        "distance": 160,
+        "occupied": true,
+        "paints": 6,
+        "margins": []
+      },
+      {
+        "tx": 42,
+        "ty": 47,
+        "clearance": 5,
+        "distance": 169,
+        "occupied": true,
+        "paints": 5,
+        "margins": []
+      },
+      {
+        "tx": 43,
+        "ty": 48,
+        "clearance": 5,
+        "distance": 185,
+        "occupied": true,
+        "paints": 5,
+        "margins": []
+      },
+      {
+        "tx": 42,
+        "ty": 48,
+        "clearance": 5,
+        "distance": 194,
+        "occupied": true,
+        "paints": 4,
+        "margins": []
+      },
+      {
+        "tx": 41,
+        "ty": 48,
+        "clearance": 6,
+        "distance": 205,
+        "occupied": true,
+        "paints": 3,
+        "margins": []
+      },
+      {
+        "tx": 43,
+        "ty": 49,
+        "clearance": 5,
+        "distance": 212,
+        "occupied": true,
+        "paints": 3,
+        "margins": []
+      },
+      {
+        "tx": 40,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 218,
+        "occupied": true,
+        "paints": 3,
+        "margins": []
+      },
+      {
+        "tx": 42,
+        "ty": 49,
+        "clearance": 6,
+        "distance": 221,
+        "occupied": true,
+        "paints": 3,
+        "margins": []
+      },
+      {
+        "tx": 41,
+        "ty": 49,
+        "clearance": 6,
+        "distance": 232,
+        "occupied": true,
+        "paints": 3,
+        "margins": []
+      },
+      {
+        "tx": 44,
+        "ty": 50,
+        "clearance": 5,
+        "distance": 234,
+        "occupied": true,
+        "paints": 4,
+        "margins": []
+      },
+      {
+        "tx": 43,
+        "ty": 50,
+        "clearance": 5,
+        "distance": 241,
+        "occupied": false,
+        "paints": 3,
+        "margins": []
+      },
+      {
+        "tx": 40,
+        "ty": 49,
+        "clearance": 7,
+        "distance": 245,
+        "occupied": true,
+        "paints": 2,
+        "margins": []
+      },
+      {
+        "tx": 42,
+        "ty": 50,
+        "clearance": 6,
+        "distance": 250,
+        "occupied": false,
+        "paints": 2,
+        "margins": []
+      },
+      {
+        "tx": 39,
+        "ty": 49,
+        "clearance": 7,
+        "distance": 260,
+        "occupied": true,
+        "paints": 0,
+        "margins": []
+      },
+      {
+        "tx": 41,
+        "ty": 50,
+        "clearance": 7,
+        "distance": 261,
+        "occupied": false,
+        "paints": 2,
+        "margins": []
+      },
+      {
+        "tx": 44,
+        "ty": 51,
+        "clearance": 5,
+        "distance": 265,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 51,
+        "clearance": 6,
+        "distance": 272,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 50,
+        "clearance": 7,
+        "distance": 274,
+        "occupied": false,
+        "paints": 0,
+        "margins": []
+      },
+      {
+        "tx": 38,
+        "ty": 49,
+        "clearance": 7,
+        "distance": 277,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 51,
+        "clearance": 6,
+        "distance": 281,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 50,
+        "clearance": 8,
+        "distance": 289,
+        "occupied": false,
+        "paints": 1,
+        "margins": []
+      },
+      {
+        "tx": 41,
+        "ty": 51,
+        "clearance": 7,
+        "distance": 292,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 52,
+        "clearance": 5,
+        "distance": 293,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 52,
+        "clearance": 5,
+        "distance": 298,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 51,
+        "clearance": 8,
+        "distance": 305,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 52,
+        "clearance": 6,
+        "distance": 305,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 50,
+        "clearance": 7,
+        "distance": 306,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 52,
+        "clearance": 7,
+        "distance": 314,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 51,
+        "clearance": 8,
+        "distance": 320,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 52,
+        "clearance": 7,
+        "distance": 325,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 328,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 333,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 51,
+        "clearance": 7,
+        "distance": 337,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 52,
+        "clearance": 8,
+        "distance": 338,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 340,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 53,
+        "clearance": 7,
+        "distance": 349,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 52,
+        "clearance": 8,
+        "distance": 353,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 53,
+        "clearance": 8,
+        "distance": 360,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 361,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 362,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 362,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 365,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 365,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 52,
+        "clearance": 7,
+        "distance": 370,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 370,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 370,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 53,
+        "clearance": 8,
+        "distance": 373,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 377,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 377,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 386,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 386,
+        "occupied": true,
+        "paints": 11,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 53,
+        "clearance": 8,
+        "distance": 388,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 54,
+        "clearance": 8,
+        "distance": 397,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 400,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 401,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 401,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 404,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 404,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 53,
+        "clearance": 7,
+        "distance": 405,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 409,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 409,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 410,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 416,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 416,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 54,
+        "clearance": 8,
+        "distance": 425,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 425,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 425,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 436,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 436,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 441,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 442,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 442,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 442,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 445,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 445,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 449,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 449,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 450,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 450,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 457,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 457,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 464,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 464,
+        "occupied": false,
+        "paints": 5,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 466,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 466,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 477,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 477,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 481,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 481,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 484,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 485,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 485,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 488,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 488,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 490,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 490,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 493,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 493,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 55,
+        "clearance": 6,
+        "distance": 500,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 500,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 500,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 505,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 505,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 509,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 509,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 520,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 520,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 55,
+        "clearance": 5,
+        "distance": 521,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 522,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 522,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 529,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 530,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 530,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 533,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 533,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 533,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 533,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 538,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 538,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 56,
+        "clearance": 6,
+        "distance": 541,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 55,
+        "clearance": 4,
+        "distance": 544,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 545,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 545,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 548,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 548,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 554,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 554,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 56,
+        "clearance": 5,
+        "distance": 562,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 565,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 565,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 565,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 565,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 55,
+        "clearance": 3,
+        "distance": 569,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 576,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 577,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 577,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 578,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 578,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 580,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 580,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 584,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 56,
+        "clearance": 4,
+        "distance": 585,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 585,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 585,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 592,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 592,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 593,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 593,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 55,
+        "clearance": 2,
+        "distance": 596,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 601,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 601,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 57,
+        "clearance": 5,
+        "distance": 605,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 56,
+        "clearance": 3,
+        "distance": 610,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 610,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 610,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 612,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 612,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 55,
+        "clearance": 1,
+        "distance": 625,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 625,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 625,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 57,
+        "clearance": 4,
+        "distance": 628,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 629,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 56,
+        "clearance": 2,
+        "distance": 637,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 640,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 640,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 650,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 57,
+        "clearance": 3,
+        "distance": 653,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 657,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 657,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 56,
+        "clearance": 1,
+        "distance": 666,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 58,
+        "clearance": 4,
+        "distance": 673,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 676,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 57,
+        "clearance": 2,
+        "distance": 680,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 697,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 58,
+        "clearance": 3,
+        "distance": 698,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 57,
+        "clearance": 1,
+        "distance": 709,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 720,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 58,
+        "clearance": 2,
+        "distance": 725,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 59,
+        "clearance": 3,
+        "distance": 745,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 58,
+        "clearance": 1,
+        "distance": 754,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 59,
+        "clearance": 2,
+        "distance": 772,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 59,
+        "clearance": 1,
+        "distance": 801,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "seed": 2,
+    "codecValid": false,
+    "anchor": {
+      "tx": 37,
+      "ty": 45
+    },
+    "terrainCandidates": 484,
+    "unoccupied": 438,
+    "fullyClear": 59,
+    "margins": [
+      {
+        "margin": 3,
+        "candidates": 478,
+        "first": {
+          "tx": 37,
+          "ty": 45,
+          "clearance": 4,
+          "distance": 202,
+          "occupied": true,
+          "paints": 4,
+          "margins": [
+            3
+          ]
+        }
+      },
+      {
+        "margin": 6,
+        "candidates": 450,
+        "first": {
+          "tx": 43,
+          "ty": 51,
+          "clearance": 3,
+          "distance": 250,
+          "occupied": true,
+          "paints": 2,
+          "margins": [
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "margin": 9,
+        "candidates": 367,
+        "first": {
+          "tx": 48,
+          "ty": 54,
+          "clearance": 6,
+          "distance": 324,
+          "occupied": false,
+          "paints": 1,
+          "margins": [
+            3,
+            6,
+            9
+          ]
+        }
+      },
+      {
+        "margin": 12,
+        "candidates": 235,
+        "first": {
+          "tx": 48,
+          "ty": 57,
+          "clearance": 6,
+          "distance": 441,
+          "occupied": false,
+          "paints": 0,
+          "margins": [
+            3,
+            6,
+            9,
+            12
+          ]
+        }
+      }
+    ],
+    "largestClearing": [
+      {
+        "tx": 33,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 481,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 512,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 545,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 580,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 617,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 656,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      }
+    ],
+    "nearestClear": [
+      {
+        "tx": 31,
+        "ty": 44,
+        "clearance": 3,
+        "distance": 353,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 362,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 44,
+        "clearance": 3,
+        "distance": 388,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 400,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 401,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 404,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 405,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 44,
+        "clearance": 4,
+        "distance": 425,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      }
+    ],
+    "candidates": [
+      {
+        "tx": 38,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 181,
+        "occupied": true,
+        "paints": 5,
+        "margins": []
+      },
+      {
+        "tx": 39,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 181,
+        "occupied": false,
+        "paints": 5,
+        "margins": []
+      },
+      {
+        "tx": 40,
+        "ty": 47,
+        "clearance": 4,
+        "distance": 185,
+        "occupied": false,
+        "paints": 5,
+        "margins": []
+      },
+      {
+        "tx": 38,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 200,
+        "occupied": false,
+        "paints": 4,
+        "margins": []
+      },
+      {
+        "tx": 37,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 202,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 47,
+        "clearance": 5,
+        "distance": 202,
+        "occupied": false,
+        "paints": 4,
+        "margins": []
+      },
+      {
+        "tx": 40,
+        "ty": 48,
+        "clearance": 4,
+        "distance": 208,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 221,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 221,
+        "occupied": false,
+        "paints": 2,
+        "margins": []
+      },
+      {
+        "tx": 36,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 225,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 48,
+        "clearance": 5,
+        "distance": 225,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 49,
+        "clearance": 4,
+        "distance": 233,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 242,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 244,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 48,
+        "clearance": 6,
+        "distance": 244,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 50,
+        "clearance": 3,
+        "distance": 245,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 250,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 49,
+        "clearance": 5,
+        "distance": 250,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 51,
+        "clearance": 3,
+        "distance": 250,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 256,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 257,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 257,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 50,
+        "clearance": 4,
+        "distance": 260,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 260,
+        "occupied": true,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 260,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 51,
+        "clearance": 3,
+        "distance": 261,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 265,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 265,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 265,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 265,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 269,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 49,
+        "clearance": 6,
+        "distance": 269,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 272,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 272,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 51,
+        "clearance": 3,
+        "distance": 274,
+        "occupied": true,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 277,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 50,
+        "clearance": 5,
+        "distance": 277,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 281,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 288,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 51,
+        "clearance": 4,
+        "distance": 289,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 289,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 290,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 49,
+        "clearance": 7,
+        "distance": 290,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 290,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 290,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 292,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 293,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 293,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 296,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 50,
+        "clearance": 6,
+        "distance": 296,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 298,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 298,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 305,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 305,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 305,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 306,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 51,
+        "clearance": 5,
+        "distance": 306,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 313,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 313,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 314,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 314,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 317,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 50,
+        "clearance": 7,
+        "distance": 317,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 44,
+        "clearance": 3,
+        "distance": 320,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 52,
+        "clearance": 4,
+        "distance": 320,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 324,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 325,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 51,
+        "clearance": 6,
+        "distance": 325,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 325,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 325,
+        "occupied": true,
+        "paints": 22,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 325,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 325,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 328,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 328,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 333,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 333,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 337,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 52,
+        "clearance": 5,
+        "distance": 337,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 338,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 338,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 338,
+        "occupied": true,
+        "paints": 29,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 340,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 50,
+        "clearance": 8,
+        "distance": 340,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 340,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 340,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 346,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 51,
+        "clearance": 7,
+        "distance": 346,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 349,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 349,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 44,
+        "clearance": 3,
+        "distance": 353,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 353,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 353,
+        "occupied": true,
+        "paints": 29,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 356,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 52,
+        "clearance": 6,
+        "distance": 356,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 360,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 360,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 361,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 362,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 362,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 365,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 365,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 365,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 365,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 369,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 51,
+        "clearance": 8,
+        "distance": 369,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 370,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 370,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 370,
+        "occupied": true,
+        "paints": 32,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 370,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 370,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 373,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 373,
+        "occupied": true,
+        "paints": 14,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 377,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 52,
+        "clearance": 7,
+        "distance": 377,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 377,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 377,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 386,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 386,
+        "occupied": true,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 44,
+        "clearance": 3,
+        "distance": 388,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 388,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 388,
+        "occupied": true,
+        "paints": 19,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 389,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 53,
+        "clearance": 6,
+        "distance": 389,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 53,
+        "clearance": 5,
+        "distance": 389,
+        "occupied": true,
+        "paints": 22,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 392,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 394,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 51,
+        "clearance": 9,
+        "distance": 394,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 397,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 397,
+        "occupied": true,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 400,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 52,
+        "clearance": 8,
+        "distance": 400,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 400,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 401,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 401,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 404,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 404,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 405,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 405,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 54,
+        "clearance": 5,
+        "distance": 405,
+        "occupied": true,
+        "paints": 19,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 409,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 409,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 410,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 53,
+        "clearance": 7,
+        "distance": 410,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 53,
+        "clearance": 4,
+        "distance": 410,
+        "occupied": true,
+        "paints": 22,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 410,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 410,
+        "occupied": true,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 416,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 416,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 421,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 421,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 424,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 54,
+        "clearance": 6,
+        "distance": 424,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 54,
+        "clearance": 5,
+        "distance": 424,
+        "occupied": true,
+        "paints": 18,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 44,
+        "clearance": 4,
+        "distance": 425,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 425,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 52,
+        "clearance": 9,
+        "distance": 425,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 425,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 55,
+        "clearance": 6,
+        "distance": 425,
+        "occupied": true,
+        "paints": 10,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 425,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 425,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 433,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 53,
+        "clearance": 8,
+        "distance": 433,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 53,
+        "clearance": 3,
+        "distance": 433,
+        "occupied": true,
+        "paints": 19,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 436,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 436,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 441,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 45,
+        "clearance": 4,
+        "distance": 442,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 442,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 55,
+        "clearance": 5,
+        "distance": 442,
+        "occupied": true,
+        "paints": 8,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 442,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 442,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 445,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 54,
+        "clearance": 7,
+        "distance": 445,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 54,
+        "clearance": 4,
+        "distance": 445,
+        "occupied": true,
+        "paints": 18,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 445,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 445,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 43,
+        "clearance": 5,
+        "distance": 449,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 449,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 449,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 450,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 450,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 450,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 452,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 52,
+        "clearance": 10,
+        "distance": 452,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 457,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 457,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 458,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 53,
+        "clearance": 9,
+        "distance": 458,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 53,
+        "clearance": 2,
+        "distance": 458,
+        "occupied": true,
+        "paints": 8,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 461,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 461,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 55,
+        "clearance": 4,
+        "distance": 461,
+        "occupied": true,
+        "paints": 8,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 44,
+        "clearance": 5,
+        "distance": 464,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 464,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 56,
+        "clearance": 6,
+        "distance": 464,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 466,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 466,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 468,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 54,
+        "clearance": 8,
+        "distance": 468,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 54,
+        "clearance": 3,
+        "distance": 468,
+        "occupied": true,
+        "paints": 13,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 42,
+        "clearance": 5,
+        "distance": 477,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 477,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 477,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 45,
+        "clearance": 5,
+        "distance": 481,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 481,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 481,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 481,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 56,
+        "clearance": 5,
+        "distance": 481,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 482,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 55,
+        "clearance": 7,
+        "distance": 482,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 55,
+        "clearance": 4,
+        "distance": 482,
+        "occupied": true,
+        "paints": 8,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 484,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 485,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 485,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 53,
+        "clearance": 1,
+        "distance": 485,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 485,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 485,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 488,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 488,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 43,
+        "clearance": 6,
+        "distance": 490,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 490,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 490,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 493,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 493,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 54,
+        "clearance": 2,
+        "distance": 493,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 493,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 493,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 46,
+        "clearance": 5,
+        "distance": 500,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 500,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 56,
+        "clearance": 4,
+        "distance": 500,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 500,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 500,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 44,
+        "clearance": 6,
+        "distance": 505,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 505,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 505,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 55,
+        "clearance": 3,
+        "distance": 505,
+        "occupied": true,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 505,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 505,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 509,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 509,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 512,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 514,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 514,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 42,
+        "clearance": 6,
+        "distance": 520,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 520,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 520,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 54,
+        "clearance": 1,
+        "distance": 520,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 520,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 520,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 521,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 521,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 56,
+        "clearance": 3,
+        "distance": 521,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 45,
+        "clearance": 6,
+        "distance": 522,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 522,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 57,
+        "clearance": 5,
+        "distance": 522,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 529,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 530,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 530,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 55,
+        "clearance": 2,
+        "distance": 530,
+        "occupied": true,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 530,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 530,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 43,
+        "clearance": 6,
+        "distance": 533,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 533,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 533,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 533,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 533,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 538,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 538,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 46,
+        "clearance": 6,
+        "distance": 541,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 541,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 57,
+        "clearance": 4,
+        "distance": 541,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 544,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 544,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 56,
+        "clearance": 3,
+        "distance": 544,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 545,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 545,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 545,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 545,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 44,
+        "clearance": 7,
+        "distance": 548,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 548,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 548,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 549,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 549,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 41,
+        "clearance": 6,
+        "distance": 554,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 554,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 554,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 557,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 557,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 55,
+        "clearance": 1,
+        "distance": 557,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 47,
+        "clearance": 6,
+        "distance": 562,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 562,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 57,
+        "clearance": 3,
+        "distance": 562,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 42,
+        "clearance": 6,
+        "distance": 565,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 45,
+        "clearance": 7,
+        "distance": 565,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 565,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 565,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 565,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 565,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 569,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 569,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 56,
+        "clearance": 2,
+        "distance": 569,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 48,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 576,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 47,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 577,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 49,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 577,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 43,
+        "clearance": 7,
+        "distance": 578,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 578,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 578,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 578,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 580,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 580,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 46,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 580,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 50,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 580,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 46,
+        "clearance": 7,
+        "distance": 584,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 584,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 58,
+        "clearance": 4,
+        "distance": 584,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 585,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 585,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 57,
+        "clearance": 2,
+        "distance": 585,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 45,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 585,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 51,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 585,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 586,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 586,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 40,
+        "clearance": 5,
+        "distance": 592,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 44,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 592,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 52,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 592,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 44,
+        "clearance": 7,
+        "distance": 593,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 593,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 593,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 596,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 596,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 56,
+        "clearance": 1,
+        "distance": 596,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 41,
+        "clearance": 6,
+        "distance": 601,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 43,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 601,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 53,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 601,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 47,
+        "clearance": 7,
+        "distance": 605,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 605,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 58,
+        "clearance": 3,
+        "distance": 605,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 45,
+        "clearance": 8,
+        "distance": 610,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 610,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 610,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 57,
+        "clearance": 2,
+        "distance": 610,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 610,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 610,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 42,
+        "clearance": 7,
+        "distance": 612,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 42,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 612,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 54,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 612,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 613,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 613,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 617,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 617,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 43,
+        "clearance": 7,
+        "distance": 625,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 625,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 625,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 41,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 625,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 55,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 625,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 48,
+        "clearance": 7,
+        "distance": 628,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 628,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 58,
+        "clearance": 2,
+        "distance": 628,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 46,
+        "clearance": 8,
+        "distance": 629,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 629,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 629,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 637,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 637,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 57,
+        "clearance": 1,
+        "distance": 637,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 44,
+        "clearance": 8,
+        "distance": 640,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 40,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 640,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 56,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 640,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 648,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 47,
+        "clearance": 8,
+        "distance": 650,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 650,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 650,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 650,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 59,
+        "clearance": 3,
+        "distance": 650,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 653,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 653,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 58,
+        "clearance": 1,
+        "distance": 653,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 656,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 656,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 45,
+        "clearance": 8,
+        "distance": 657,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 39,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 657,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 57,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 657,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 666,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 666,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 48,
+        "clearance": 8,
+        "distance": 673,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 673,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 59,
+        "clearance": 2,
+        "distance": 673,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 46,
+        "clearance": 9,
+        "distance": 676,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 38,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 676,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 58,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 676,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 680,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 680,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 62,
+        "ty": 58,
+        "clearance": 1,
+        "distance": 680,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 685,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 685,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 689,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 689,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 47,
+        "clearance": 9,
+        "distance": 697,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 697,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 697,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 37,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 697,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 59,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 697,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 49,
+        "clearance": 8,
+        "distance": 698,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 698,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 59,
+        "clearance": 1,
+        "distance": 698,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 709,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 709,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 48,
+        "clearance": 9,
+        "distance": 720,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 36,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 720,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 60,
+        "ty": 60,
+        "clearance": 2,
+        "distance": 720,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 722,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 724,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 724,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 725,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 725,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 730,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 730,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 740,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 740,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 49,
+        "clearance": 9,
+        "distance": 745,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 35,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 745,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 61,
+        "ty": 60,
+        "clearance": 1,
+        "distance": 745,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 754,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 754,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 761,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 761,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 765,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 765,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 50,
+        "clearance": 9,
+        "distance": 772,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 34,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 772,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 773,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 773,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 785,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 785,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 800,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 51,
+        "clearance": 10,
+        "distance": 801,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 33,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 801,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 802,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 802,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 808,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 808,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 818,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 818,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 52,
+        "clearance": 11,
+        "distance": 832,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 32,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 832,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 841,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 841,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 845,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 845,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 853,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 853,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 53,
+        "clearance": 10,
+        "distance": 865,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 31,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 865,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 882,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 884,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 884,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 890,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 890,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 54,
+        "clearance": 9,
+        "distance": 900,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 30,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 900,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 925,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 925,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 929,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 929,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 55,
+        "clearance": 8,
+        "distance": 937,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 29,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 937,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 968,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 970,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 970,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 56,
+        "clearance": 7,
+        "distance": 976,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 28,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 976,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 1013,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 1013,
+        "occupied": false,
+        "paints": 0,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 15,
+        "clearance": 4,
+        "distance": 1017,
+        "occupied": false,
+        "paints": 4,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 57,
+        "clearance": 6,
+        "distance": 1017,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 27,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 1017,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 1058,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 14,
+        "clearance": 4,
+        "distance": 1060,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 58,
+        "clearance": 5,
+        "distance": 1060,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 26,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 1060,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 13,
+        "clearance": 4,
+        "distance": 1105,
+        "occupied": false,
+        "paints": 3,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 59,
+        "clearance": 4,
+        "distance": 1105,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 25,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 1105,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 12,
+        "clearance": 4,
+        "distance": 1152,
+        "occupied": false,
+        "paints": 1,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      },
+      {
+        "tx": 24,
+        "ty": 60,
+        "clearance": 3,
+        "distance": 1152,
+        "occupied": false,
+        "paints": 2,
+        "margins": [
+          3,
+          6,
+          9,
+          12
+        ]
+      }
+    ]
+  }
+]

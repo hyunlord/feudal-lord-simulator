@@ -2,12 +2,13 @@ import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { plagueStage, plagueVacantPlots } from "../engine/plague";
 import { buildingFootprint } from "../geometry/buildingFootprint";
-import { depthKey, tileToScreen } from "./iso";
+import { depthKey, tileToScreen, screenToTile } from "./iso";
 import type { RenderQueueItem } from "./objectRenderOrder";
 import { tileIsVisibleInRange } from "./renderVisibility";
 import type { TileRange } from "./renderVisibility";
 import { storyWalkerScale } from "./storyWorldProps";
 import { wave9Art, drawWave9, wave9Meta, type Wave9Key } from "./wave9Art";
+import { funeralRegistration, FUNERAL_BIER_SCALE } from "./funeralRegistration";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // UI-8 chapter 3 plague world props (spec docs/design/chapter-three-plague.md PL-2, PL-6):
@@ -16,8 +17,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //      plague.first.dead (capped at MAX_GRAVES); persist after the plague (they are graves). If
 //      no church, beside the chapel, then the keep.
 //   2. Funeral procession (wk_funeral_bearers, 4×2 sheet) during plagueStage "arrival" (both
-//      pestilences): drawn after the object pass via drawFuneralProcession called from wetSummer.ts
-//      drawStoryWorldOverlays. Looping animation from a source house to the church; deterministic
+//      pestilences): a decorative group placed in the object queue by the existing footprint rule.
+//      Looping animation from a source house to the church; deterministic
 //      path from seed + plague.first.arrivalTick; direction-aware; prop_bier_shroud beside it.
 // Plague-shut overlays (event_plague_shut_l*) replacing boarded: done in buildingOverlays.ts.
 // Departure suppression + abandoned_house suppression: done in storyWorldProps.ts + worldSigns.ts.
@@ -158,12 +159,12 @@ function mergeSortedPlagueItems(left: readonly RenderQueueItem[], right: readonl
   return out;
 }
 
-// ─── Funeral procession (drawn after the object pass; called from drawStoryWorldOverlays) ───────
+// Funeral procession: presentation only, placed among buildings by drawObjectRenderItems.
 
 const PROCESSION_LOOP_MS = 16_000; // total cycle: travel + pause
 const PROCESSION_MS = 12_000; // travel time house → church
 const GAIT_MS = 260;
-const BIER_SCALE = 0.65;
+
 
 const DIR_COL = { NE: 0, SE: 1, SW: 2, NW: 3 } as const;
 type Direction = keyof typeof DIR_COL;
@@ -206,22 +207,44 @@ function getProcessionPath(state: GameState): { from: { sx: number; sy: number }
   return cachedPath;
 }
 
-/** Funeral bearers over the world during plagueStage "arrival" (both pestilences).
- *  Called from wetSummer.ts drawStoryWorldOverlays after the object pass. */
-export function drawFuneralProcession(context: CanvasRenderingContext2D, state: GameState, nowMs: number): void {
-  if (plagueStage(state) !== "arrival") return;
+export type FuneralScene = {
+  readonly x: number; readonly y: number; readonly dir: Direction; readonly gait: number;
+};
+
+export function funeralScene(state: GameState, nowMs: number): FuneralScene | null {
+  if (plagueStage(state) !== "arrival") return null;
   const path = getProcessionPath(state);
-  if (path === null) return;
+  if (path === null) return null;
   const t = (nowMs % PROCESSION_LOOP_MS) / PROCESSION_MS;
-  if (t >= 1) return; // pause / return — not visible
+  if (t >= 1) return null;
   const x = path.from.sx + (path.to.sx - path.from.sx) * t;
   const y = path.from.sy + (path.to.sy - path.from.sy) * t;
   const dx = path.to.sx - path.from.sx; const dy = path.to.sy - path.from.sy;
   const dir: Direction = dx >= 0 ? (dy >= 0 ? "SE" : "NE") : (dy >= 0 ? "SW" : "NW");
-  const gait = Math.floor(nowMs / GAIT_MS);
-  drawWalkerCell(context, "wk_funeral_bearers", dir, gait, x, y, storyWalkerScale("wk_funeral_bearers"));
-  // Bier: NE for eastward legs, NW for westward; drawn slightly ahead of the bearers.
-  const bierKey: Wave9Key = dir === "NE" || dir === "SE" ? "prop_bier_shroud_ne" : "prop_bier_shroud_nw";
-  const bierOffX = dir === "NE" || dir === "SE" ? 10 : -10;
-  drawWave9(context, bierKey, x + bierOffX, y + 6, BIER_SCALE);
+  return { x, y, dir, gait: Math.floor(nowMs / GAIT_MS) % 2 };
+}
+
+export function funeralQueueItems(state: GameState, nowMs: number) {
+  const scene = funeralScene(state, nowMs);
+  if (scene === null) return [];
+  const foot = screenToTile(scene.x, scene.y);
+  return [{ kind: "funeral" as const, id: "plague:funeral", scene, foot,
+    depth: depthKey(foot.tx, foot.ty), anchorTx: foot.tx }];
+}
+
+export function drawFuneralScene(context: CanvasRenderingContext2D, scene: FuneralScene): void {
+  const { x, y, dir, gait } = scene;
+  const layout = funeralRegistration(dir, gait);
+  const draw = (behind: boolean) => {
+    for (const bearer of layout.bearers) if (bearer.behind === behind)
+      drawWalkerCell(context, "wk_funeral_bearers", dir, gait, x + bearer.x, y + bearer.y, storyWalkerScale("wk_funeral_bearers"));
+  };
+  draw(true);
+  drawWave9(context, layout.bierKey, x + layout.bier.x, y + layout.bier.y, FUNERAL_BIER_SCALE);
+  draw(false);
+}
+
+export function drawFuneralProcession(context: CanvasRenderingContext2D, state: GameState, nowMs: number): void {
+  const scene = funeralScene(state, nowMs);
+  if (scene !== null) drawFuneralScene(context, scene);
 }
