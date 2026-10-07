@@ -1,0 +1,64 @@
+[
+  {
+    "id": "pasture/sheepfold-v1",
+    "width": 256,
+    "height": 192,
+    "refs": [
+      "farmstead_a-v1.png",
+      "sheep_flock-v1.png"
+    ],
+    "prompt": "ROLE module. ONE empty medieval English sheepfold pasture module, 256x192 transparent RGBA sprite, 2:1 isometric SW view. Match attached game farmstead weathered timber muted olive/warm brown palette, hand-painted broad readable forms. Low woven hazel hurdles enclose an irregular rectangular pen with a simple open gap entrance at front left, lightly trodden earth inside, few broad grass clumps at feet. NO sheep or humans (separate game sprites). No building, roof, machinery, metal wire. Large sparse wicker bands not tiny noisy weave; structural shapes minimum 8-12px at target size. Entire isolated module fits with 8px transparent margin all sides, bottom center contact pivot, soft upper-left light contact AO only no long shadow, no surrounding terrain square or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-50c03df7-1102-4a19-8942-a3da3e1d8b02.png",
+    "generatedAt": "2026-09-25T15:25:04.163Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/pasture/sheepfold-v1.png",
+    "nativeSize": [
+      1448,
+      1086
+    ],
+    "crop": [
+      100,
+      198,
+      1284,
+      715
+    ],
+    "pivot": [
+      128,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "068419976e9dd944afea14ef89dd2b33e466f09a2ec8b5680d9e1807615540f8",
+    "runtimeSha256": "254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824"
+  },
+  {
+    "id": "pasture/shearing_pen-v1",
+    "width": 256,
+    "height": 192,
+    "refs": [
+      "farmstead_a-v1.png",
+      "sheep_flock-v1.png"
+    ],
+    "prompt": "ROLE module. ONE medieval English SHEARING PEN module 256x192, genuine transparent RGBA, SW 2:1 isometric. Match attached game farmstead weathered timber and sheep fleece cream, painterly game style. A small low open-sided hazel hurdle pen, a simple stout wooden shearing support frame, and a clearly visible large cream freshly shorn loose FLEECE HEAP in front corner. Distinct from empty sheepfold: pen smaller, open working side, wooden restraint frame and fleece are main silhouettes. NO sheep no person no machine no steel modern fence. Broad 12-24px forms and sparse texture, soft upper-left light contact AO only. Isolated entire module 8px empty margin, bottom-center ground pivot, no terrain tile, text, numbers or watermark.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-d3b6bdac-5b06-4602-962c-eff90d3f0c1b.png",
+    "generatedAt": "2026-09-25T15:25:42.628Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/pasture/shearing_pen-v1.png",
+    "nativeSize": [
+      1448,
+      1086
+    ],
+    "crop": [
+      221,
+      218,
+      1008,
+      670
+    ],
+    "pivot": [
+      128,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "1cd51cd5e61c4051eae8d562f5adee5a8b478ba32069e3564a00041863a6ec10",
+    "runtimeSha256": "e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058"
+  }
+]
