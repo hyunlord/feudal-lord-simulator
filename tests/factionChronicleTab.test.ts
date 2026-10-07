@@ -16,7 +16,7 @@ import { EARLDOM_TITLES, GENTRY_SURNAMES, SEE_NAMES } from "../src/content/gentr
 import type { GameState } from "../src/engine/engine.types";
 import { advanceFactions, factionsList, worldTimeline } from "../src/engine/factions";
 import type { ActorRef, HistoryRecord } from "../src/engine/history.types";
-import { armsHeraldrySeed, lordHouseHeraldrySeed, lordshipOf } from "../src/engine/lordshipState";
+import { armsHeraldrySeed, lordHouseByOrder, lordHouseHeraldrySeed, lordshipOf } from "../src/engine/lordshipState";
 import { MANOR_HOUSEHOLD } from "../src/engine/persons.types";
 import { currentYear } from "../src/engine/persons";
 import { initialPolitics } from "../src/engine/politics";
@@ -175,6 +175,11 @@ test("UI-6 new ledger records are cards: war, faction and house records have the
   ordinal = 0;
   const base = town();
   const house2 = lordHouseHeraldrySeed(base.seed, 2);
+  // MANOR-1 follow-up (DEC-CARD survey §7): the first house's arms are its own (the house the game was started with),
+  // as the lordship screen shows them — not the default house's. This town's save is older than MANOR-1, so its first
+  // house kept its own arms, which are not the default de Haverel's.
+  const house1 = lordHouseByOrder(base, 1)!.heraldrySeed;
+  assert.notEqual(house1, armsHeraldrySeed("haverel"));
   const cases: readonly [HistoryRecord, string, RegExp][] = [
     [record(100, "event", "war.messenger", 2), "wave17:chronicle_messenger", /국왕의 전령이 왔다/],
     [record(110, "event", "war.beacon", 2), "wave17:chronicle_beacon", /봉화가 올랐다/],
@@ -192,7 +197,7 @@ test("UI-6 new ledger records are cards: war, faction and house records have the
       `arms:${armsKey(heraldryArms(base.factions!.factions[0]!.heraldrySeed))}`, /백작의 마음이 돌아섰다\(-20, 이제 0\) — 사람이 떠나 쇠퇴/],
     [record(200, "milestone", "decline.entered", 3, { params: { cause: "depopulated", right: "tolls", by: "overlord" } }), "wave16:chronicle_settlement", /사람이 떠나, 통행세를 상위 영주가 맡았고/],
     [record(210, "milestone", "decline.entered", 3, { params: { cause: "empty", right: "none", by: "overlord" } }), "wave16:chronicle_settlement", /도시가 비어, 잃은 권리 없이/],
-    [record(220, "milestone", "house.withdrew", 3, { params: { name: "de Haverel", order: 1 } }), `arms:${armsKey(armsRecipe(armsHeraldrySeed("haverel"), MANOR_HOUSEHOLD))}`, /드 해버럴 가문이 물러났다/],
+    [record(220, "milestone", "house.withdrew", 3, { params: { name: "de Haverel", order: 1 } }), `arms:${armsKey(armsRecipe(house1, MANOR_HOUSEHOLD))}`, /드 해버럴 가문이 물러났다/],
     [record(220, "milestone", "house.arrived", 2, { params: { name: "de Coldmere", order: 2 } }), `arms:${armsKey(armsRecipe(house2, MANOR_HOUSEHOLD))}`, /드 콜드미어 가문이 영지를 맡았다/],
     [record(220, "milestone", "milestone.chapter_start", 2, { params: { chapter: 2 } }), "wave16:chapter2_intro", /2장이 시작되었다/],
   ];

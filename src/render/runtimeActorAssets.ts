@@ -1,3 +1,5 @@
+import { TRANSPORT_ART } from './runtimeTransportAssets';
+import type { CartPayloadPlacement } from './art/walkerTransportPlacement';
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { runtimeActorManifest } from "./runtimeActorManifest.generated";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
@@ -81,24 +83,30 @@ export function preloadRuntimeActorAssets(): Promise<void> { return loader.prelo
 export function runtimeActorAssetStatuses() { return loader.statuses(); }
 
 export function drawRuntimeActor(context: CanvasRenderingContext2D, presentation: WalkerPresentation,
-  footX: number, footY: number, scale: number, zoom: number, handcart: boolean): boolean {
+  footX: number, footY: number, scale: number, zoom: number, handcart: boolean, onCartDrawn?: (payload: CartPayloadPlacement) => void): boolean {
   if (zoom <= 0.7) return false;
   const frame = actorFrameFor(presentation);
   const image = loader.image(presentation.role);
   if (frame === null || image === null) return false;
+  const drawCart = () => {
+    const cart = drawRuntimeHandcart(context, presentation.direction, footX, footY, scale, presentation.gaitFrame);
+    if (cart !== null) onCartDrawn?.(cart.payload);
+  };
   const cartBehind = presentation.direction === "SE" || presentation.direction === "SW";
-  if (handcart && cartBehind) drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
+  if (handcart && cartBehind) drawCart();
   const raster = loader.raster(presentation.role, frame);
   drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? frame.source,
     actorFrameDestination(frame, footX, footY, scale), false, true);
-  if (handcart && !cartBehind) drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
+  if (handcart && !cartBehind) drawCart();
   return true;
 }
 
 /** The handcart of a carter, its handles at the carter's hands (also drawn behind / in front of a V2 composed walker). */
 /** Draws the handcart at the walker's hands; returns where (F0-V: the cart payload sits on its bed). */
 export function drawRuntimeHandcart(context: CanvasRenderingContext2D, direction: WalkerPresentationDirection,
-  footX: number, footY: number, scale: number): { readonly x: number; readonly y: number; readonly width: number; readonly height: number } | null {
+  footX: number, footY: number, scale: number, gaitFrame: 0 | 1 = 0): { readonly x: number; readonly y: number; readonly width: number; readonly height: number; readonly payload: CartPayloadPlacement } | null {
+  const transport = TRANSPORT_ART.draw(context, { direction, gaitFrame }, footX, footY, scale);
+  if (transport !== null) return { ...transport.targetRect, payload: transport.payload };
   const meta = runtimeActorManifest.find(asset => asset.id === "handcart");
   const frame = meta?.frames.find(candidate => candidate.direction === direction);
   const image = loader.image("handcart");
@@ -111,5 +119,5 @@ export function drawRuntimeHandcart(context: CanvasRenderingContext2D, direction
     width: frame.source.width * factor, height: frame.source.height * factor,
   };
   drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? frame.source, rect, false, true);
-  return rect;
+  return { ...rect, payload: { x: rect.x + rect.width / 2, y: rect.y + rect.height * 0.5, width: rect.width * 0.55 } };
 }

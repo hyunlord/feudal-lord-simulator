@@ -1,0 +1,621 @@
+{
+  "task": "RB-WALKER-PILOT2",
+  "runtimeAssets": 20,
+  "bodyFrames": 32,
+  "grips": 16,
+  "originalsPreserved": true,
+  "pngCrcAllPass": true,
+  "maxGroundPenetrationNativePx": 0.5573770491803316,
+  "minimumHandAlpha": 156,
+  "frames": [
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "NE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 30.0,
+        "y": 68.0
+      },
+      "figureHeight": 67.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.19672131147541,
+      "staffBottom": 61.55737704918033,
+      "footGapNativePx": 6.442622950819668,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "SE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 45.5,
+        "y": 69.0
+      },
+      "figureHeight": 68.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.2295081967213113,
+      "staffBottom": 67.98360655737704,
+      "footGapNativePx": 1.016393442622956,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180326
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "SW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 26.5,
+        "y": 69.0
+      },
+      "figureHeight": 68.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.2295081967213113,
+      "staffBottom": 64.98360655737704,
+      "footGapNativePx": 4.016393442622956,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180326
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "NW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 42.0,
+        "y": 68.0
+      },
+      "figureHeight": 67.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.19672131147541,
+      "staffBottom": 64.55737704918033,
+      "footGapNativePx": 3.4426229508196684,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "NE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 30.5,
+        "y": 67.0
+      },
+      "figureHeight": 66.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.1639344262295084,
+      "staffBottom": 62.131147540983605,
+      "footGapNativePx": 4.868852459016395,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "SE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 47.0,
+        "y": 68.0
+      },
+      "figureHeight": 67.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.19672131147541,
+      "staffBottom": 68.55737704918033,
+      "footGapNativePx": -0.5573770491803316,
+      "groundPenetrationNativePx": 0.5573770491803316,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "SW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 26.5,
+        "y": 68.0
+      },
+      "figureHeight": 67.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.19672131147541,
+      "staffBottom": 64.55737704918033,
+      "footGapNativePx": 3.4426229508196684,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P1_merchant_m",
+      "direction": "NW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 44.0,
+        "y": 67.0
+      },
+      "figureHeight": 66.0,
+      "handAlpha": {
+        "left": 252,
+        "right": 252
+      },
+      "staffScale": 2.1639344262295084,
+      "staffBottom": 65.1311475409836,
+      "footGapNativePx": 1.868852459016395,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "NE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 41.5,
+        "y": 66.0
+      },
+      "figureHeight": 64.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.098360655737705,
+      "staffBottom": 62.278688524590166,
+      "footGapNativePx": 3.721311475409834,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "SE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 45.5,
+        "y": 67.0
+      },
+      "figureHeight": 65.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.1311475409836067,
+      "staffBottom": 66.70491803278688,
+      "footGapNativePx": 0.29508196721312174,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180333
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "SW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 29.0,
+        "y": 67.0
+      },
+      "figureHeight": 65.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.1311475409836067,
+      "staffBottom": 62.704918032786885,
+      "footGapNativePx": 4.295081967213115,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180333
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "NW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 32.0,
+        "y": 67.0
+      },
+      "figureHeight": 65.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.1311475409836067,
+      "staffBottom": 63.704918032786885,
+      "footGapNativePx": 3.2950819672131146,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180333
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "NE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 39.5,
+        "y": 66.0
+      },
+      "figureHeight": 65.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.1311475409836067,
+      "staffBottom": 61.704918032786885,
+      "footGapNativePx": 4.295081967213115,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180333
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "SE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 46.0,
+        "y": 66.0
+      },
+      "figureHeight": 65.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 252
+      },
+      "staffScale": 2.1311475409836067,
+      "staffBottom": 64.70491803278688,
+      "footGapNativePx": 1.2950819672131217,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.157377049180333
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "SW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 28.5,
+        "y": 66.0
+      },
+      "figureHeight": 64.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.098360655737705,
+      "staffBottom": 63.278688524590166,
+      "footGapNativePx": 2.721311475409834,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P4_labour_m",
+      "direction": "NW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 32.0,
+        "y": 66.0
+      },
+      "figureHeight": 64.0,
+      "handAlpha": {
+        "left": 253,
+        "right": 253
+      },
+      "staffScale": 2.098360655737705,
+      "staffBottom": 63.278688524590166,
+      "footGapNativePx": 2.721311475409834,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "NE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 34.5,
+        "y": 66.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 239,
+        "right": 240
+      },
+      "staffScale": 2.0,
+      "staffBottom": 65.0,
+      "footGapNativePx": 1.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "SE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 43.5,
+        "y": 66.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 249,
+        "right": 254
+      },
+      "staffScale": 2.0,
+      "staffBottom": 65.0,
+      "footGapNativePx": 1.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "SW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 30.5,
+        "y": 66.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 225,
+        "right": 252
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 60.57377049180327,
+      "footGapNativePx": 5.426229508196727,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "NW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 37.5,
+        "y": 66.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 199,
+        "right": 180
+      },
+      "staffScale": 2.0,
+      "staffBottom": 60.0,
+      "footGapNativePx": 6.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "NE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 33.5,
+        "y": 64.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 192,
+        "right": 207
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 63.57377049180327,
+      "footGapNativePx": 0.42622950819672667,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "SE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 44.5,
+        "y": 63.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 255,
+        "right": 252
+      },
+      "staffScale": 2.0,
+      "staffBottom": 62.0,
+      "footGapNativePx": 1.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "SW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 28.0,
+        "y": 63.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 215,
+        "right": 253
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 58.57377049180327,
+      "footGapNativePx": 4.426229508196727,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P5_labour_f",
+      "direction": "NW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 40.0,
+        "y": 64.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 197,
+        "right": 156
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 59.57377049180327,
+      "footGapNativePx": 4.426229508196727,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "NE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 34.5,
+        "y": 66.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 239,
+        "right": 240
+      },
+      "staffScale": 2.0,
+      "staffBottom": 65.0,
+      "footGapNativePx": 1.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "SE",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 43.5,
+        "y": 66.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 249,
+        "right": 254
+      },
+      "staffScale": 2.0,
+      "staffBottom": 65.0,
+      "footGapNativePx": 1.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "SW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 30.5,
+        "y": 66.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 225,
+        "right": 252
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 60.57377049180327,
+      "footGapNativePx": 5.426229508196727,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "NW",
+      "gaitFrame": 0,
+      "foot": {
+        "x": 37.5,
+        "y": 66.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 199,
+        "right": 180
+      },
+      "staffScale": 2.0,
+      "staffBottom": 60.0,
+      "footGapNativePx": 6.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "NE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 33.5,
+        "y": 64.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 192,
+        "right": 207
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 63.57377049180327,
+      "footGapNativePx": 0.42622950819672667,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "SE",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 44.5,
+        "y": 63.0
+      },
+      "figureHeight": 61.0,
+      "handAlpha": {
+        "left": 255,
+        "right": 252
+      },
+      "staffScale": 2.0,
+      "staffBottom": 62.0,
+      "footGapNativePx": 1.0,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "SW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 28.0,
+        "y": 63.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 215,
+        "right": 253
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 58.57377049180327,
+      "footGapNativePx": 4.426229508196727,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    },
+    {
+      "sheet": "wk_reskin_P6_widow_f",
+      "direction": "NW",
+      "gaitFrame": 1,
+      "foot": {
+        "x": 40.0,
+        "y": 64.0
+      },
+      "figureHeight": 60.0,
+      "handAlpha": {
+        "left": 221,
+        "right": 156
+      },
+      "staffScale": 1.9672131147540983,
+      "staffBottom": 59.57377049180327,
+      "footGapNativePx": 4.426229508196727,
+      "groundPenetrationNativePx": 0,
+      "staffShaftWorldHeight": 16.15737704918033
+    }
+  ],
+  "runtimeValidated": false
+}

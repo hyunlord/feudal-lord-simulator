@@ -1,0 +1,31 @@
+/* DEC-CARD: the heavy decision card (src/ui/decisionCard/DecisionCard.tsx). The petition frame's card, wider (only heavy
+   decisions reach the lord, GP-7): the situation and the stake in words, then the answers side by side while each can be
+   ~240 px wide (three at 960, two at 720), stacked below that. Text 13 px, nothing under 12 (LM-R2 floor). */
+.petition-card.decision-card { width: min(960px, 96vw); min-height: 0; }
+.decision-card-body { gap: 8px; }
+.decision-card-court { margin: 0; font-size: 12px; line-height: 1.4; color: var(--palette-ink-light); }
+.decision-card-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; }
+.decision-card-head:not(:has(.decision-card-art)) { grid-template-columns: minmax(0, 1fr); }
+.decision-card-art { flex: 0 0 auto; border-radius: 2px; }
+.decision-card-heading { display: grid; gap: 6px; min-width: 0; }
+.decision-card-heading h2 { margin: 0; font-size: 18px; line-height: 1.3; }
+.decision-card-from { margin: 0; font-size: 12px; line-height: 1.4; color: var(--palette-ink-light); }
+.decision-card-situation, .decision-card-stake, .decision-card-deadline {
+  margin: 0; font-size: 14px; line-height: 1.55; word-break: keep-all; overflow-wrap: anywhere;
+}
+.decision-card-deadline { font-size: 13px; color: var(--palette-ink-light); }
+.decision-card-part-head { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: var(--palette-ink-light); }
+.decision-card-choices {
+  /* up to four answers side by side in the 960 px card (4 × 200 px + gaps fit its body at every audited view) */
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none;
+}
+.decision-card-choice {
+  display: grid; grid-template-rows: auto auto auto 1fr auto auto; gap: 6px; padding: 8px; min-width: 0;
+  border: 1px solid var(--palette-earth); border-radius: 2px; background: var(--palette-vellum);
+}
+.decision-card-choice[data-refused="true"] { opacity: 0.75; }
+.decision-card-choice h3 { margin: 0; font-size: 15px; line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+.decision-card-part ul { margin: 2px 0 0; padding-left: 16px; }
+.decision-card-part li { font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+.decision-card-refusal { margin: 0; font-size: 13px; line-height: 1.45; color: var(--palette-vermilion); }
+.decision-card-choose { justify-self: stretch; }

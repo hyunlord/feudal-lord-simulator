@@ -17,9 +17,11 @@ const ROOT = resolve(import.meta.dirname, "..");
 // [file, anchor, text put before it (every occurrence when `all`)].
 type Insert = readonly [string, string, string, boolean?];
 const ENGINE_LINES: readonly Insert[] = [
-  ["src/content/buildingConfig.ts", '  | "keep"', '  | "test_hall"\n'],
+  // EXT-1: the kinds are a const id list and each definition carries its builder ticks.
+  ["src/content/buildingConfig.ts", '"keep", "malt_kiln"', '"test_hall", '],
   ["src/content/buildingConfig.ts", "  keep: {\n    kind: \"keep\",", `  test_hall: {
     kind: "test_hall",
+    builderTicks: 300,
     name: "시험 회관",
     width: 1,
     height: 1,
@@ -32,7 +34,6 @@ const ENGINE_LINES: readonly Insert[] = [
     serviceRadius: 0,
   },
 `],
-  ["src/economy/constructionSites.ts", "    keep: 1200,", "    test_hall: 300,\n"],
   ["src/content/scenario/coreScenarios.ts", '"keep"],', '"test_hall", '],
   // C4: the construction sites read the kind from BUILDING_CONFIG_BY_KIND (no switch over the kinds to extend).
 ];

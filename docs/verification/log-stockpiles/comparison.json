@@ -1,0 +1,423 @@
+{
+  "beforeHead": "883b989bfd785fc3198a488493823d215a871ad7",
+  "afterHead": "57938679ed2fedb70bf1eb595ab9c0dd91ece478",
+  "matchingSameSaveViews": 18,
+  "positiveViews": 15,
+  "zeroStockViews": 3,
+  "note": "Actual target draws and identical saved state/camera are asserted. JPEG changes are recorded, not a substitute for visual grounding/occlusion review.",
+  "networkFailures": {
+    "before": [
+      {
+        "view": "summer-logging_camp-logging-camp-50-40-0-z1",
+        "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "view": "winter-seed5-sawmill-construction-site-000057-z0.6",
+        "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "view": "winter-seed5-sawmill-construction-site-000057-z3",
+        "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "view": "spring-seed5-sawmill-construction-site-000057-z1",
+        "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "view": "spring-seed5-sawmill-construction-site-000057-z0.6",
+        "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "view": "spring-seed5-sawmill-construction-site-000057-z3",
+        "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "after": [
+      {
+        "view": "summer-logging_camp-logging-camp-50-40-0-z1",
+        "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  "pairs": [
+    {
+      "name": "summer-logging_camp-logging-camp-50-40-0-z1",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "zoom": 1,
+      "inventory": {
+        "logs": 3
+      },
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 26,
+      "beforeJPEG": "2058ce066091bd6ca861c6ebf7b95b7b43104b5aefd5ea1c7a575df72bfb020f",
+      "afterJPEG": "63c7be83032cc3d78e7f70ea3a7ab5b25eda61cd8e057799b2f168b8bbfa4364",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "summer-logging_camp-logging-camp-50-40-0-z0.6",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "zoom": 0.6,
+      "inventory": {
+        "logs": 3
+      },
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 15,
+      "beforeJPEG": "b85b98193ac0ded65fabca17b1653c1077b219c60c96b59b1a80ba54b06e2b08",
+      "afterJPEG": "6977a93b124769c848d7c27ff6c7b16597c0d16d444c0f7df1c56d454a72877e",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "summer-logging_camp-logging-camp-50-40-0-z3",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "zoom": 3,
+      "inventory": {
+        "logs": 3
+      },
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 20,
+      "beforeJPEG": "e7fd54e4ac282eb8ba2affb49282fc5b47c4ba4742ac76bfbd3cc45ba8847d57",
+      "afterJPEG": "0ceabcbf3d81207ea45fadcd28ff2639d8455879cc23a97451bdb252cab2bc04",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "summer-sawmill-construction-site-000003-z1",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "zoom": 1,
+      "inventory": {
+        "logs": 1,
+        "timber": 1
+      },
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 19,
+      "beforeJPEG": "99efea9317cfc3c008da37bc9004fd4c5323ed956bff68e518e6c20160c9b8d4",
+      "afterJPEG": "cbf1e33702918c703011a845fa07b11427c0f3d3f70ea7a95448ec986684b6f5",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "summer-sawmill-construction-site-000003-z0.6",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "zoom": 0.6,
+      "inventory": {
+        "logs": 1,
+        "timber": 1
+      },
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 12,
+      "beforeJPEG": "656cf2ce5e2ea52fc8abe57c54bfa282aaf6f79172b88c618ac5e398c7561db9",
+      "afterJPEG": "f38ab9cb886d9e323cdce2c23a5bf531b1acf242bf726538300b8e5fba2d478c",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "summer-sawmill-construction-site-000003-z3",
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "zoom": 3,
+      "inventory": {
+        "logs": 1,
+        "timber": 1
+      },
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 18,
+      "beforeJPEG": "14904b8f0662c5bc93d97dffeca31c698368eeecc729be30f65e25e92ff04722",
+      "afterJPEG": "231badcb073406be716a2518c8e9ba3900c01d6cdcf3993e769ec6e690a4d2a1",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-logging_camp-logging-camp-50-40-0-z1",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "zoom": 1,
+      "inventory": {
+        "logs": 2
+      },
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 17,
+      "beforeJPEG": "88f9390290d97aa98534a16fa96e91c918151fac003d2f5db9d2af3e4398a680",
+      "afterJPEG": "da5001c050ac67fd85894c4b05d4d3f6dde1d2fe52a2f27c0887947d5b1ff976",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-logging_camp-logging-camp-50-40-0-z0.6",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "zoom": 0.6,
+      "inventory": {
+        "logs": 2
+      },
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 16,
+      "beforeJPEG": "9cb46f0c2caf812b94f8cf96616bc4aeba7d947fb01ddbfb360ce7b1b727808f",
+      "afterJPEG": "bcf14ca995a5a806d5ed46b9395d31a25c9453d3c26a6a21cced7bf97ebe7840",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-logging_camp-logging-camp-50-40-0-z3",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "zoom": 3,
+      "inventory": {
+        "logs": 2
+      },
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 17,
+      "beforeJPEG": "041712806976ffa0fa3002da1c1d39b2e00a45ac91ac1adb5b2cfaf1236bcecd",
+      "afterJPEG": "381f0c2c5c2b182ae7e832c55fda59f4818d027e3707755714f274602e149dc5",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-sawmill-construction-site-000003-z1",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "zoom": 1,
+      "inventory": {
+        "logs": 0,
+        "timber": 1
+      },
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": false,
+      "targetDrawCount": 0,
+      "beforeJPEG": "5ea0e6f6b41e3b3d132a8b0ac64386ad0fa00458db1fe49232bd2ca948e9417a",
+      "afterJPEG": "b1ea713c7fcac4d9f4ef24e2fbf426d0258a2874089cbae2e36eac469ba8cf92",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-sawmill-construction-site-000003-z0.6",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "zoom": 0.6,
+      "inventory": {
+        "logs": 0,
+        "timber": 1
+      },
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": false,
+      "targetDrawCount": 0,
+      "beforeJPEG": "244fe209981301da0c2e7c80b93bf80d047a4aaec98b984c6317cee9b615fb7f",
+      "afterJPEG": "2b4d53d346765f719198dbe7a9c366546e6861ebbdb90732d2cde919290dbc86",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-sawmill-construction-site-000003-z3",
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "zoom": 3,
+      "inventory": {
+        "logs": 0,
+        "timber": 1
+      },
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": false,
+      "targetDrawCount": 0,
+      "beforeJPEG": "83f8d596dceeace1c1259c9f4b610ea27872862ff1cfcba302eaa91fdc90d3ac",
+      "afterJPEG": "39346f2dd7bbd95a2e94a1188e0e11b6bb00ba4d739fab9e2fc14b8fdd2503a1",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-seed5-sawmill-construction-site-000057-z1",
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "stateSHA256": "6b8ad8fa82e5a634bda32723b3db9ff446d225bfbdb24e7979367ddea0f41794",
+      "zoom": 1,
+      "inventory": {
+        "logs": 1,
+        "timber": 4
+      },
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 15,
+      "beforeJPEG": "401f4bf341eeb3a127b63beb92a94cc413bb9ae58a83bf1923ac289388cc63e0",
+      "afterJPEG": "5b84580125c07d2993c1b85d0c3f3eb5ab0204264b7dc2315f38020a593f938f",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-seed5-sawmill-construction-site-000057-z0.6",
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "stateSHA256": "6b8ad8fa82e5a634bda32723b3db9ff446d225bfbdb24e7979367ddea0f41794",
+      "zoom": 0.6,
+      "inventory": {
+        "logs": 1,
+        "timber": 4
+      },
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 18,
+      "beforeJPEG": "ee41cafb23e72f52f5d03c555b39502681ccf67b7bb8728e834ec04e96fb3e0e",
+      "afterJPEG": "c036b4f403d8b403db682deb27cb8f38f4ce41af87869324e6ace8ff20a525d2",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "winter-seed5-sawmill-construction-site-000057-z3",
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "stateSHA256": "6b8ad8fa82e5a634bda32723b3db9ff446d225bfbdb24e7979367ddea0f41794",
+      "zoom": 3,
+      "inventory": {
+        "logs": 1,
+        "timber": 4
+      },
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 20,
+      "beforeJPEG": "d895eea23406fe13e56968ce8a2875ce4e0d9e79477352ad313ca5112a3edce8",
+      "afterJPEG": "42eba959efccaf86de0d5aef5699841bb359b83bb644083b0eb4f1efeaf8d02a",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "spring-seed5-sawmill-construction-site-000057-z1",
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "stateSHA256": "22357ec97f6375fc8a3afa3f851bc71890d849517f086a68fec8416e624afec9",
+      "zoom": 1,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 16,
+      "beforeJPEG": "cc1d6a157e02e18c4abd51bc9f0f216b50cafe8430a826274e3bc10d2c3ee47b",
+      "afterJPEG": "557a7d4c9bbb78bd1415b848ad16286853e383638f445499a751affbd0d7f18d",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "spring-seed5-sawmill-construction-site-000057-z0.6",
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "stateSHA256": "22357ec97f6375fc8a3afa3f851bc71890d849517f086a68fec8416e624afec9",
+      "zoom": 0.6,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 19,
+      "beforeJPEG": "852d8aa161d65a405d3e907021ea12307fce242310c9d17a40bda37c0b5f047f",
+      "afterJPEG": "b727fe0a678d18dca8745d3c3b842e5a8b1612a1f0a010581a5c3e77e53ec39f",
+      "screenshotBytesDiffer": true
+    },
+    {
+      "name": "spring-seed5-sawmill-construction-site-000057-z3",
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "stateSHA256": "22357ec97f6375fc8a3afa3f851bc71890d849517f086a68fec8416e624afec9",
+      "zoom": 3,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "positive": true,
+      "targetDrawCount": 17,
+      "beforeJPEG": "e726751e22a9c3d793676b3d07917f69ffadd215cabd4d745f6caf6e7e9931cc",
+      "afterJPEG": "cbd7a32b5ed32cede0f547c79228ccbe43263df353077a6c423f7771687c2251",
+      "screenshotBytesDiffer": true
+    }
+  ]
+}

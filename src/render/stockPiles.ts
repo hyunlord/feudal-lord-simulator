@@ -1,8 +1,9 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
-import { buildingFootprint } from "../geometry/buildingFootprint";
+import { stockPileLayout } from "./stockPileLayout";
+import { RESOURCE_STOCK_PILE_ART } from "./art/resourceStockPileArt";
 import { farmsteadFieldWork } from "./farmsteadArt";
-import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { TILE_H, tileToScreen } from "./iso";
 import { drawWave7, type Wave7Key } from "./wave7Art";
 import { drawWave3Ale, type Wave3AleKey } from "./wave3AleArt";
 import { drawWave3Cloth, type Wave3ClothKey } from "./wave3ClothArt";
@@ -37,11 +38,7 @@ type Pile = { readonly key: Wave7Key; readonly x: number; readonly y: number; re
   | { readonly key: Wave3ClothKey; readonly x: number; readonly y: number; readonly wave3?: undefined; readonly cloth: true };
 
 export function buildingStockPiles(state: GameState, building: Building): readonly Pile[] {
-  const size = buildingFootprint(building);
-  const centre = tileToScreen(building.tx + (size.width - 1) / 2, building.ty + (size.height - 1) / 2);
-  const hw = (size.width + size.height) * TILE_W / 4, hh = (size.width + size.height) * TILE_H / 4;
-  // The door side: the footprint's front right edge, a little outside the art's foot.
-  const door = { x: centre.sx + hw * 0.55, y: centre.sy + hh * 0.62 };
+  const { hw, hh, door } = stockPileLayout(building);
   const capacity = BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity;
   const piles: Pile[] = [];
   const add = (family: "sacks" | "bread" | "crates", amount: number) => {
@@ -80,6 +77,7 @@ export function buildingStockPiles(state: GameState, building: Building): readon
 }
 
 export function drawStockPiles(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
+  RESOURCE_STOCK_PILE_ART.draw(context, state, building, stockPileLayout(building).door);
   for (const pile of buildingStockPiles(state, building)) {
     if (pile.cloth === true) drawWave3Cloth(context, pile.key, pile.x, pile.y, PILE_SCALE);
     else if (pile.wave3 === true) drawWave3Ale(context, pile.key, pile.x, pile.y, PILE_SCALE);

@@ -1,0 +1,131 @@
+[
+  {
+    "schemaVersion": 1,
+    "packId": "core",
+    "bundleId": "core-collapsed-fence",
+    "entries": [
+      {
+        "id": "core:yard-fence/abandoned_collapsed_fence_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_collapsed_fence_summer.png",
+          "sourceSha256": "8c3f5b9ad110a73310734adc7902afa8d0fb9578c475896d6076d44a346d75f6",
+          "runtimeSha256": "8c3f5b9ad110a73310734adc7902afa8d0fb9578c475896d6076d44a346d75f6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.25,
+          "footprint": {
+            "width": 0.5,
+            "height": 0.5
+          },
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "yard-fence",
+        "stage": "collapsed",
+        "layout": "single"
+      },
+      {
+        "id": "core:yard-fence/abandoned_collapsed_fence_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_collapsed_fence_winter.png",
+          "sourceSha256": "df3b9f9dfb5648bc7c0d5012269a83199d726429d333fc86112e9290dff69dda",
+          "runtimeSha256": "df3b9f9dfb5648bc7c0d5012269a83199d726429d333fc86112e9290dff69dda"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.25,
+          "footprint": {
+            "width": 0.5,
+            "height": 0.5
+          },
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "yard-fence",
+        "stage": "collapsed",
+        "layout": "single"
+      }
+    ],
+    "rules": [
+      {
+        "id": "select/core:yard-fence/abandoned_collapsed_fence_summer",
+        "kind": "land-stage",
+        "slot": "yard-fence",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "yard-fence"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "collapsed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core:yard-fence/abandoned_collapsed_fence_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "select/core:yard-fence/abandoned_collapsed_fence_winter",
+        "kind": "land-stage",
+        "slot": "yard-fence",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "yard-fence"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "collapsed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core:yard-fence/abandoned_collapsed_fence_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  }
+]

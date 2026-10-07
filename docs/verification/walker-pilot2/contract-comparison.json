@@ -1,0 +1,1115 @@
+{
+  "task": "RB-WALKER-PILOT2",
+  "commit": "4a34335359bbd1fcd2ded0d3c5fa4e733425120a",
+  "baseline": "d2ba0656a24285b882c31b3afdcbcbf65f09ccb4",
+  "run": "astra-WALKER-contract-final-4a34335",
+  "exit": 0,
+  "normalConsumerFiles": 20,
+  "publicBodyTargetReceipts": 20,
+  "uniquePublicBodyTargets": 4,
+  "publicPropTargetReceipts": 16,
+  "uniquePublicPropTargets": 14,
+  "composites": 160,
+  "decodedPixelIdentical": 160,
+  "encodedShaIdentical": 160,
+  "sameSaveCameraPairs": 4,
+  "wholeScenePixelIdentity": false,
+  "wholeSceneLimit": "Whole-scene screenshots differ; water animation, HUD/font readiness and tooltip differences observed but not exhaustively attributed. Exact sameness applies to160 walker composites only. No extra attribution runs.",
+  "attributionLimit": "Draw observer proves normal world-canvas source-file use, not which actor produced every call or unobstructed visibility. Sample names predate curved-road alignment. NE purse and NW staff file witnesses include neighboring real actors, not their logical-direction camera target.",
+  "targetReceipts": [
+    {
+      "sampleName": "wk_reskin_P5_labour_f",
+      "cameraTargetId": "carter:construction-site-000050:328964",
+      "seed": 1,
+      "tick": 329000,
+      "stateSha256": "0914805af432f87e416abb199a8a7591a156572d185d130b5fc21d32a1ef10dc",
+      "bodyContractId": "wk_reskin_P5_labour_f",
+      "propContractId": null,
+      "renderPosition": {
+        "tx": 43.32615384615385,
+        "ty": 30.510769230769213
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P5_labour_f-v1.png"
+      ]
+    },
+    {
+      "sampleName": "wk_reskin_P1_merchant_m",
+      "cameraTargetId": "resident-market:construction-site-000010:construction-site-000041:0@328690",
+      "seed": 1,
+      "tick": 329010,
+      "stateSha256": "1f2ad62a2688558959f935c951861b3c9df22a281e3b123114ba9e7337572aa1",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": null,
+      "renderPosition": {
+        "tx": 50.8625,
+        "ty": 42.7375
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png"
+      ]
+    },
+    {
+      "sampleName": "wk_reskin_P4_labour_m",
+      "cameraTargetId": "carter:construction-site-000066:329015",
+      "seed": 1,
+      "tick": 329015,
+      "stateSha256": "a4d508f387d96a03dcd2776e7d64aeb29cb00281d117881d75682b8423578cc1",
+      "bodyContractId": "wk_reskin_P4_labour_m",
+      "propContractId": null,
+      "renderPosition": {
+        "tx": 37,
+        "ty": 34
+      },
+      "renderDirection": "SW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_purse:SE",
+      "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048",
+      "seed": 1,
+      "tick": 329210,
+      "stateSha256": "eb522be0d23aa5191525e4ba59320c1f081aedd81ca154b6d8d896b878eb1c03",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_purse_SE",
+      "renderPosition": {
+        "tx": 50.8625,
+        "ty": 42.7375
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_purse_SE-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_purse:NE",
+      "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048",
+      "seed": 1,
+      "tick": 329220,
+      "stateSha256": "569031cba79db68434f3ac36ccc17fa094e079488854705e525c415b67f52ef3",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_purse_SE",
+      "renderPosition": {
+        "tx": 51.4375,
+        "ty": 42.3125
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_purse_SE-v1.png"
+      ]
+    },
+    {
+      "sampleName": "wk_reskin_P6_widow_f",
+      "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@329359",
+      "seed": 1,
+      "tick": 329445,
+      "stateSha256": "5f066413a276be755dfd6b5d1f6634a3e1bab4357d033ae1291fc7b06ca9e909",
+      "bodyContractId": "wk_reskin_P6_widow_f",
+      "propContractId": null,
+      "renderPosition": {
+        "tx": 49.32045081967213,
+        "ty": 36.99504098360656
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "held_staff_NW-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P6_widow_f-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_purse:NW",
+      "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370",
+      "seed": 1,
+      "tick": 330610,
+      "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_purse_NW",
+      "renderPosition": {
+        "tx": 51.43991150442478,
+        "ty": 38.228672566371685
+      },
+      "renderDirection": "NW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "held_purse_NW-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_purse_NE-v1.png",
+        "held_purse_SE-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_purse:SW",
+      "cameraTargetId": "resident-market:construction-site-000028:construction-site-000041:0@330388",
+      "seed": 1,
+      "tick": 330650,
+      "stateSha256": "bf6d8afbb1bb7963ed11ab565f56662daa8b5ee04cb7b0724d30aad9dfa193be",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_purse_SW",
+      "renderPosition": {
+        "tx": 50,
+        "ty": 38.04
+      },
+      "renderDirection": "SW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "held_purse_SW-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_purse_NW-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_staff:SE",
+      "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@331359",
+      "seed": 1,
+      "tick": 331445,
+      "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+      "bodyContractId": "wk_reskin_P6_widow_f",
+      "propContractId": "pilot2_staff_SE",
+      "renderPosition": {
+        "tx": 49.32045081967213,
+        "ty": 36.99504098360656
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P6_widow_f-v1.png",
+        "held_staff_SE-v1.png",
+        "held_staff_SW-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_staff:SW",
+      "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360",
+      "seed": 1,
+      "tick": 331445,
+      "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+      "bodyContractId": "wk_reskin_P6_widow_f",
+      "propContractId": "pilot2_staff_SW",
+      "renderPosition": {
+        "tx": 51.99081491712707,
+        "ty": 40.20048342541437
+      },
+      "renderDirection": "SW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P6_widow_f-v1.png",
+        "held_staff_SE-v1.png",
+        "held_staff_SW-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_staff:NW",
+      "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360",
+      "seed": 1,
+      "tick": 331470,
+      "stateSha256": "40b12c015c81597cbdad16ff32f91c768bda5efb412b13a949fa4b5424329cc4",
+      "bodyContractId": "wk_reskin_P6_widow_f",
+      "propContractId": "pilot2_staff_SW",
+      "renderPosition": {
+        "tx": 51.3125,
+        "ty": 42.4375
+      },
+      "renderDirection": "SW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P6_widow_f-v1.png",
+        "held_staff_SE-v1.png",
+        "held_staff_SW-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_staff:NE",
+      "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360",
+      "seed": 1,
+      "tick": 331620,
+      "stateSha256": "de54b9fc4a2e15282851d23019ca6f7bd91e467807f5819cd627548538b81297",
+      "bodyContractId": "wk_reskin_P6_widow_f",
+      "propContractId": "pilot2_staff_NE",
+      "renderPosition": {
+        "tx": 51.93753355704698,
+        "ty": 41.22897651006711
+      },
+      "renderDirection": "NE",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "wk_reskin_P6_widow_f-v1.png",
+        "held_staff_NE-v1.png",
+        "held_staff_SW-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_basket:NW",
+      "cameraTargetId": "distributor:granary-42-37-0:331920",
+      "seed": 1,
+      "tick": 332095,
+      "stateSha256": "4262e83f9d0a2e23683d2a56e95615b2c2cbf6ec4261377722ed6bc21a1bc499",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_basket_NW",
+      "renderPosition": {
+        "tx": 43.648,
+        "ty": 40.824
+      },
+      "renderDirection": "NW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "held_basket_NW-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_basket:NE",
+      "cameraTargetId": "distributor:granary-42-37-0:331920",
+      "seed": 1,
+      "tick": 332105,
+      "stateSha256": "4a306bd451a08329738ac32dbf3aba8fac08596689960a7e7f7779d57c5335fa",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_basket_NE",
+      "renderPosition": {
+        "tx": 43.358333333333334,
+        "ty": 40.416666666666664
+      },
+      "renderDirection": "NE",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_basket_NE-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_sack:NE",
+      "cameraTargetId": "resident-field:construction-site-000011:construction-site-000025:0@332198",
+      "seed": 1,
+      "tick": 332515,
+      "stateSha256": "da3b8a08bbb4d7c3baf4dffd0d4cb581246a9b470594f2d9cef0834ebb59c2dc",
+      "bodyContractId": "wk_reskin_P4_labour_m",
+      "propContractId": "pilot2_sack_NE",
+      "renderPosition": {
+        "tx": 51.96817073170732,
+        "ty": 41.03646341463415
+      },
+      "renderDirection": "NE",
+      "worldDrawFiles": [
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P4_labour_m-v1.png",
+        "held_sack_NE-v1.png",
+        "wk_reskin_P6_widow_f-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_sack:SE",
+      "cameraTargetId": "resident-field:construction-site-000012:construction-site-000038:1@332195",
+      "seed": 1,
+      "tick": 332540,
+      "stateSha256": "20e4de8cbb9e1e6dce7444a1cf167bd3ee32c49bebc94a34032285c6bdcb6ba7",
+      "bodyContractId": "wk_reskin_P6_widow_f",
+      "propContractId": "pilot2_sack_SE",
+      "renderPosition": {
+        "tx": 47.4,
+        "ty": 43
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P4_labour_m-v1.png",
+        "wk_reskin_P6_widow_f-v1.png",
+        "held_sack_SE-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_sack:NW",
+      "cameraTargetId": "resident-field:house-46-40-0:construction-site-000001:1@332771",
+      "seed": 1,
+      "tick": 332775,
+      "stateSha256": "cda2b9da43a5ee4777783fb697b8e415586e25fb25982d7b53fedc4c976cad8f",
+      "bodyContractId": "wk_reskin_P5_labour_f",
+      "propContractId": "pilot2_sack_NW",
+      "renderPosition": {
+        "tx": 45.52,
+        "ty": 39
+      },
+      "renderDirection": "NW",
+      "worldDrawFiles": [
+        "wk_reskin_P6_widow_f-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "held_sack_NW-v1.png",
+        "wk_reskin_P4_labour_m-v1.png",
+        "held_staff_SE-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_basket:SW",
+      "cameraTargetId": "distributor:construction-site-000034:335640",
+      "seed": 1,
+      "tick": 335755,
+      "stateSha256": "5a4437f7020eac3015a408a65cf7abb6fa97873562ac0acfb77da81c1f2201a6",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_basket_SW",
+      "renderPosition": {
+        "tx": 52,
+        "ty": 40.44
+      },
+      "renderDirection": "SW",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "held_basket_SW-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_basket:SE",
+      "cameraTargetId": "distributor:construction-site-000034:335760",
+      "seed": 1,
+      "tick": 335915,
+      "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+      "bodyContractId": "wk_reskin_P1_merchant_m",
+      "propContractId": "pilot2_basket_SE",
+      "renderPosition": {
+        "tx": 48.583333333333336,
+        "ty": 36.791666666666664
+      },
+      "renderDirection": "SE",
+      "worldDrawFiles": [
+        "wk_reskin_P4_labour_m-v1.png",
+        "held_staff_SW-v1.png",
+        "wk_reskin_P6_widow_f-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_basket_SE-v1.png",
+        "wk_reskin_P5_labour_f-v1.png"
+      ]
+    },
+    {
+      "sampleName": "pilot2_sack:SW",
+      "cameraTargetId": "resident-field:construction-site-000031:construction-site-000066:1@340119",
+      "seed": 1,
+      "tick": 340750,
+      "stateSha256": "1ec36b11de3aa07b7687ef96ba6f0854b023bbb152ff273eafef88215f23d356",
+      "bodyContractId": "wk_reskin_P5_labour_f",
+      "propContractId": "pilot2_sack_SW",
+      "renderPosition": {
+        "tx": 47.93068791946309,
+        "ty": 29.73223154362416
+      },
+      "renderDirection": "SW",
+      "worldDrawFiles": [
+        "held_sack_SW-v1.png",
+        "wk_reskin_P5_labour_f-v1.png",
+        "wk_reskin_P1_merchant_m-v1.png",
+        "held_purse_NE-v1.png",
+        "held_basket_SE-v1.png"
+      ]
+    }
+  ],
+  "fileWitnesses": [
+    {
+      "file": "held_basket_NE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_basket:NE",
+          "screenshot": "consumer-pilot2_basket-NE.jpg",
+          "stateSha256": "4a306bd451a08329738ac32dbf3aba8fac08596689960a7e7f7779d57c5335fa",
+          "tick": 332105,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        }
+      ]
+    },
+    {
+      "file": "held_basket_NW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_basket:NW",
+          "screenshot": "consumer-pilot2_basket-NW.jpg",
+          "stateSha256": "4262e83f9d0a2e23683d2a56e95615b2c2cbf6ec4261377722ed6bc21a1bc499",
+          "tick": 332095,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        }
+      ]
+    },
+    {
+      "file": "held_basket_SE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_basket:SE",
+          "screenshot": "consumer-pilot2_basket-SE.jpg",
+          "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+          "tick": 335915,
+          "cameraTargetId": "distributor:construction-site-000034:335760"
+        },
+        {
+          "sampleName": "pilot2_sack:SW",
+          "screenshot": "consumer-pilot2_sack-SW.jpg",
+          "stateSha256": "1ec36b11de3aa07b7687ef96ba6f0854b023bbb152ff273eafef88215f23d356",
+          "tick": 340750,
+          "cameraTargetId": "resident-field:construction-site-000031:construction-site-000066:1@340119"
+        }
+      ]
+    },
+    {
+      "file": "held_basket_SW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_basket:SW",
+          "screenshot": "consumer-pilot2_basket-SW.jpg",
+          "stateSha256": "5a4437f7020eac3015a408a65cf7abb6fa97873562ac0acfb77da81c1f2201a6",
+          "tick": 335755,
+          "cameraTargetId": "distributor:construction-site-000034:335640"
+        }
+      ]
+    },
+    {
+      "file": "held_purse_NE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_purse:NW",
+          "screenshot": "consumer-pilot2_purse-NW.jpg",
+          "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+          "tick": 330610,
+          "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370"
+        },
+        {
+          "sampleName": "pilot2_sack:SW",
+          "screenshot": "consumer-pilot2_sack-SW.jpg",
+          "stateSha256": "1ec36b11de3aa07b7687ef96ba6f0854b023bbb152ff273eafef88215f23d356",
+          "tick": 340750,
+          "cameraTargetId": "resident-field:construction-site-000031:construction-site-000066:1@340119"
+        }
+      ]
+    },
+    {
+      "file": "held_purse_NW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_purse:NW",
+          "screenshot": "consumer-pilot2_purse-NW.jpg",
+          "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+          "tick": 330610,
+          "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370"
+        },
+        {
+          "sampleName": "pilot2_purse:SW",
+          "screenshot": "consumer-pilot2_purse-SW.jpg",
+          "stateSha256": "bf6d8afbb1bb7963ed11ab565f56662daa8b5ee04cb7b0724d30aad9dfa193be",
+          "tick": 330650,
+          "cameraTargetId": "resident-market:construction-site-000028:construction-site-000041:0@330388"
+        }
+      ]
+    },
+    {
+      "file": "held_purse_SE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_purse:SE",
+          "screenshot": "consumer-pilot2_purse-SE.jpg",
+          "stateSha256": "eb522be0d23aa5191525e4ba59320c1f081aedd81ca154b6d8d896b878eb1c03",
+          "tick": 329210,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "pilot2_purse:NE",
+          "screenshot": "consumer-pilot2_purse-NE.jpg",
+          "stateSha256": "569031cba79db68434f3ac36ccc17fa094e079488854705e525c415b67f52ef3",
+          "tick": 329220,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "pilot2_purse:NW",
+          "screenshot": "consumer-pilot2_purse-NW.jpg",
+          "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+          "tick": 330610,
+          "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370"
+        }
+      ]
+    },
+    {
+      "file": "held_purse_SW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_purse:SW",
+          "screenshot": "consumer-pilot2_purse-SW.jpg",
+          "stateSha256": "bf6d8afbb1bb7963ed11ab565f56662daa8b5ee04cb7b0724d30aad9dfa193be",
+          "tick": 330650,
+          "cameraTargetId": "resident-market:construction-site-000028:construction-site-000041:0@330388"
+        }
+      ]
+    },
+    {
+      "file": "held_sack_NE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_sack:NE",
+          "screenshot": "consumer-pilot2_sack-NE.jpg",
+          "stateSha256": "da3b8a08bbb4d7c3baf4dffd0d4cb581246a9b470594f2d9cef0834ebb59c2dc",
+          "tick": 332515,
+          "cameraTargetId": "resident-field:construction-site-000011:construction-site-000025:0@332198"
+        }
+      ]
+    },
+    {
+      "file": "held_sack_NW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_sack:NW",
+          "screenshot": "consumer-pilot2_sack-NW.jpg",
+          "stateSha256": "cda2b9da43a5ee4777783fb697b8e415586e25fb25982d7b53fedc4c976cad8f",
+          "tick": 332775,
+          "cameraTargetId": "resident-field:house-46-40-0:construction-site-000001:1@332771"
+        }
+      ]
+    },
+    {
+      "file": "held_sack_SE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_sack:SE",
+          "screenshot": "consumer-pilot2_sack-SE.jpg",
+          "stateSha256": "20e4de8cbb9e1e6dce7444a1cf167bd3ee32c49bebc94a34032285c6bdcb6ba7",
+          "tick": 332540,
+          "cameraTargetId": "resident-field:construction-site-000012:construction-site-000038:1@332195"
+        }
+      ]
+    },
+    {
+      "file": "held_sack_SW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_sack:SW",
+          "screenshot": "consumer-pilot2_sack-SW.jpg",
+          "stateSha256": "1ec36b11de3aa07b7687ef96ba6f0854b023bbb152ff273eafef88215f23d356",
+          "tick": 340750,
+          "cameraTargetId": "resident-field:construction-site-000031:construction-site-000066:1@340119"
+        }
+      ]
+    },
+    {
+      "file": "held_staff_NE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_staff:NE",
+          "screenshot": "consumer-pilot2_staff-NE.jpg",
+          "stateSha256": "de54b9fc4a2e15282851d23019ca6f7bd91e467807f5819cd627548538b81297",
+          "tick": 331620,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        }
+      ]
+    },
+    {
+      "file": "held_staff_NW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "wk_reskin_P6_widow_f",
+          "screenshot": "consumer-wk_reskin_P6_widow_f.jpg",
+          "stateSha256": "5f066413a276be755dfd6b5d1f6634a3e1bab4357d033ae1291fc7b06ca9e909",
+          "tick": 329445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@329359"
+        }
+      ]
+    },
+    {
+      "file": "held_staff_SE-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_staff:SE",
+          "screenshot": "consumer-pilot2_staff-SE.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@331359"
+        },
+        {
+          "sampleName": "pilot2_staff:SW",
+          "screenshot": "consumer-pilot2_staff-SW.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NW",
+          "screenshot": "consumer-pilot2_staff-NW.jpg",
+          "stateSha256": "40b12c015c81597cbdad16ff32f91c768bda5efb412b13a949fa4b5424329cc4",
+          "tick": 331470,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_sack:NW",
+          "screenshot": "consumer-pilot2_sack-NW.jpg",
+          "stateSha256": "cda2b9da43a5ee4777783fb697b8e415586e25fb25982d7b53fedc4c976cad8f",
+          "tick": 332775,
+          "cameraTargetId": "resident-field:house-46-40-0:construction-site-000001:1@332771"
+        }
+      ]
+    },
+    {
+      "file": "held_staff_SW-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "pilot2_staff:SE",
+          "screenshot": "consumer-pilot2_staff-SE.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@331359"
+        },
+        {
+          "sampleName": "pilot2_staff:SW",
+          "screenshot": "consumer-pilot2_staff-SW.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NW",
+          "screenshot": "consumer-pilot2_staff-NW.jpg",
+          "stateSha256": "40b12c015c81597cbdad16ff32f91c768bda5efb412b13a949fa4b5424329cc4",
+          "tick": 331470,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NE",
+          "screenshot": "consumer-pilot2_staff-NE.jpg",
+          "stateSha256": "de54b9fc4a2e15282851d23019ca6f7bd91e467807f5819cd627548538b81297",
+          "tick": 331620,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_basket:SE",
+          "screenshot": "consumer-pilot2_basket-SE.jpg",
+          "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+          "tick": 335915,
+          "cameraTargetId": "distributor:construction-site-000034:335760"
+        }
+      ]
+    },
+    {
+      "file": "wk_reskin_P1_merchant_m-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "wk_reskin_P1_merchant_m",
+          "screenshot": "consumer-wk_reskin_P1_merchant_m.jpg",
+          "stateSha256": "1f2ad62a2688558959f935c951861b3c9df22a281e3b123114ba9e7337572aa1",
+          "tick": 329010,
+          "cameraTargetId": "resident-market:construction-site-000010:construction-site-000041:0@328690"
+        },
+        {
+          "sampleName": "wk_reskin_P4_labour_m",
+          "screenshot": "consumer-wk_reskin_P4_labour_m.jpg",
+          "stateSha256": "a4d508f387d96a03dcd2776e7d64aeb29cb00281d117881d75682b8423578cc1",
+          "tick": 329015,
+          "cameraTargetId": "carter:construction-site-000066:329015"
+        },
+        {
+          "sampleName": "pilot2_purse:SE",
+          "screenshot": "consumer-pilot2_purse-SE.jpg",
+          "stateSha256": "eb522be0d23aa5191525e4ba59320c1f081aedd81ca154b6d8d896b878eb1c03",
+          "tick": 329210,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "pilot2_purse:NE",
+          "screenshot": "consumer-pilot2_purse-NE.jpg",
+          "stateSha256": "569031cba79db68434f3ac36ccc17fa094e079488854705e525c415b67f52ef3",
+          "tick": 329220,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "pilot2_purse:NW",
+          "screenshot": "consumer-pilot2_purse-NW.jpg",
+          "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+          "tick": 330610,
+          "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370"
+        },
+        {
+          "sampleName": "pilot2_purse:SW",
+          "screenshot": "consumer-pilot2_purse-SW.jpg",
+          "stateSha256": "bf6d8afbb1bb7963ed11ab565f56662daa8b5ee04cb7b0724d30aad9dfa193be",
+          "tick": 330650,
+          "cameraTargetId": "resident-market:construction-site-000028:construction-site-000041:0@330388"
+        },
+        {
+          "sampleName": "pilot2_staff:NE",
+          "screenshot": "consumer-pilot2_staff-NE.jpg",
+          "stateSha256": "de54b9fc4a2e15282851d23019ca6f7bd91e467807f5819cd627548538b81297",
+          "tick": 331620,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_basket:NW",
+          "screenshot": "consumer-pilot2_basket-NW.jpg",
+          "stateSha256": "4262e83f9d0a2e23683d2a56e95615b2c2cbf6ec4261377722ed6bc21a1bc499",
+          "tick": 332095,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        },
+        {
+          "sampleName": "pilot2_basket:NE",
+          "screenshot": "consumer-pilot2_basket-NE.jpg",
+          "stateSha256": "4a306bd451a08329738ac32dbf3aba8fac08596689960a7e7f7779d57c5335fa",
+          "tick": 332105,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        },
+        {
+          "sampleName": "pilot2_basket:SW",
+          "screenshot": "consumer-pilot2_basket-SW.jpg",
+          "stateSha256": "5a4437f7020eac3015a408a65cf7abb6fa97873562ac0acfb77da81c1f2201a6",
+          "tick": 335755,
+          "cameraTargetId": "distributor:construction-site-000034:335640"
+        },
+        {
+          "sampleName": "pilot2_basket:SE",
+          "screenshot": "consumer-pilot2_basket-SE.jpg",
+          "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+          "tick": 335915,
+          "cameraTargetId": "distributor:construction-site-000034:335760"
+        },
+        {
+          "sampleName": "pilot2_sack:SW",
+          "screenshot": "consumer-pilot2_sack-SW.jpg",
+          "stateSha256": "1ec36b11de3aa07b7687ef96ba6f0854b023bbb152ff273eafef88215f23d356",
+          "tick": 340750,
+          "cameraTargetId": "resident-field:construction-site-000031:construction-site-000066:1@340119"
+        }
+      ]
+    },
+    {
+      "file": "wk_reskin_P4_labour_m-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "wk_reskin_P4_labour_m",
+          "screenshot": "consumer-wk_reskin_P4_labour_m.jpg",
+          "stateSha256": "a4d508f387d96a03dcd2776e7d64aeb29cb00281d117881d75682b8423578cc1",
+          "tick": 329015,
+          "cameraTargetId": "carter:construction-site-000066:329015"
+        },
+        {
+          "sampleName": "pilot2_purse:SE",
+          "screenshot": "consumer-pilot2_purse-SE.jpg",
+          "stateSha256": "eb522be0d23aa5191525e4ba59320c1f081aedd81ca154b6d8d896b878eb1c03",
+          "tick": 329210,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "pilot2_purse:NE",
+          "screenshot": "consumer-pilot2_purse-NE.jpg",
+          "stateSha256": "569031cba79db68434f3ac36ccc17fa094e079488854705e525c415b67f52ef3",
+          "tick": 329220,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "wk_reskin_P6_widow_f",
+          "screenshot": "consumer-wk_reskin_P6_widow_f.jpg",
+          "stateSha256": "5f066413a276be755dfd6b5d1f6634a3e1bab4357d033ae1291fc7b06ca9e909",
+          "tick": 329445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@329359"
+        },
+        {
+          "sampleName": "pilot2_purse:NW",
+          "screenshot": "consumer-pilot2_purse-NW.jpg",
+          "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+          "tick": 330610,
+          "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370"
+        },
+        {
+          "sampleName": "pilot2_purse:SW",
+          "screenshot": "consumer-pilot2_purse-SW.jpg",
+          "stateSha256": "bf6d8afbb1bb7963ed11ab565f56662daa8b5ee04cb7b0724d30aad9dfa193be",
+          "tick": 330650,
+          "cameraTargetId": "resident-market:construction-site-000028:construction-site-000041:0@330388"
+        },
+        {
+          "sampleName": "pilot2_staff:SE",
+          "screenshot": "consumer-pilot2_staff-SE.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@331359"
+        },
+        {
+          "sampleName": "pilot2_staff:SW",
+          "screenshot": "consumer-pilot2_staff-SW.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NW",
+          "screenshot": "consumer-pilot2_staff-NW.jpg",
+          "stateSha256": "40b12c015c81597cbdad16ff32f91c768bda5efb412b13a949fa4b5424329cc4",
+          "tick": 331470,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NE",
+          "screenshot": "consumer-pilot2_staff-NE.jpg",
+          "stateSha256": "de54b9fc4a2e15282851d23019ca6f7bd91e467807f5819cd627548538b81297",
+          "tick": 331620,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_basket:NW",
+          "screenshot": "consumer-pilot2_basket-NW.jpg",
+          "stateSha256": "4262e83f9d0a2e23683d2a56e95615b2c2cbf6ec4261377722ed6bc21a1bc499",
+          "tick": 332095,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        },
+        {
+          "sampleName": "pilot2_basket:NE",
+          "screenshot": "consumer-pilot2_basket-NE.jpg",
+          "stateSha256": "4a306bd451a08329738ac32dbf3aba8fac08596689960a7e7f7779d57c5335fa",
+          "tick": 332105,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        },
+        {
+          "sampleName": "pilot2_sack:NE",
+          "screenshot": "consumer-pilot2_sack-NE.jpg",
+          "stateSha256": "da3b8a08bbb4d7c3baf4dffd0d4cb581246a9b470594f2d9cef0834ebb59c2dc",
+          "tick": 332515,
+          "cameraTargetId": "resident-field:construction-site-000011:construction-site-000025:0@332198"
+        },
+        {
+          "sampleName": "pilot2_sack:SE",
+          "screenshot": "consumer-pilot2_sack-SE.jpg",
+          "stateSha256": "20e4de8cbb9e1e6dce7444a1cf167bd3ee32c49bebc94a34032285c6bdcb6ba7",
+          "tick": 332540,
+          "cameraTargetId": "resident-field:construction-site-000012:construction-site-000038:1@332195"
+        },
+        {
+          "sampleName": "pilot2_sack:NW",
+          "screenshot": "consumer-pilot2_sack-NW.jpg",
+          "stateSha256": "cda2b9da43a5ee4777783fb697b8e415586e25fb25982d7b53fedc4c976cad8f",
+          "tick": 332775,
+          "cameraTargetId": "resident-field:house-46-40-0:construction-site-000001:1@332771"
+        },
+        {
+          "sampleName": "pilot2_basket:SW",
+          "screenshot": "consumer-pilot2_basket-SW.jpg",
+          "stateSha256": "5a4437f7020eac3015a408a65cf7abb6fa97873562ac0acfb77da81c1f2201a6",
+          "tick": 335755,
+          "cameraTargetId": "distributor:construction-site-000034:335640"
+        },
+        {
+          "sampleName": "pilot2_basket:SE",
+          "screenshot": "consumer-pilot2_basket-SE.jpg",
+          "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+          "tick": 335915,
+          "cameraTargetId": "distributor:construction-site-000034:335760"
+        }
+      ]
+    },
+    {
+      "file": "wk_reskin_P5_labour_f-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "wk_reskin_P5_labour_f",
+          "screenshot": "consumer-wk_reskin_P5_labour_f.jpg",
+          "stateSha256": "0914805af432f87e416abb199a8a7591a156572d185d130b5fc21d32a1ef10dc",
+          "tick": 329000,
+          "cameraTargetId": "carter:construction-site-000050:328964"
+        },
+        {
+          "sampleName": "wk_reskin_P1_merchant_m",
+          "screenshot": "consumer-wk_reskin_P1_merchant_m.jpg",
+          "stateSha256": "1f2ad62a2688558959f935c951861b3c9df22a281e3b123114ba9e7337572aa1",
+          "tick": 329010,
+          "cameraTargetId": "resident-market:construction-site-000010:construction-site-000041:0@328690"
+        },
+        {
+          "sampleName": "wk_reskin_P4_labour_m",
+          "screenshot": "consumer-wk_reskin_P4_labour_m.jpg",
+          "stateSha256": "a4d508f387d96a03dcd2776e7d64aeb29cb00281d117881d75682b8423578cc1",
+          "tick": 329015,
+          "cameraTargetId": "carter:construction-site-000066:329015"
+        },
+        {
+          "sampleName": "pilot2_purse:SE",
+          "screenshot": "consumer-pilot2_purse-SE.jpg",
+          "stateSha256": "eb522be0d23aa5191525e4ba59320c1f081aedd81ca154b6d8d896b878eb1c03",
+          "tick": 329210,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "pilot2_purse:NE",
+          "screenshot": "consumer-pilot2_purse-NE.jpg",
+          "stateSha256": "569031cba79db68434f3ac36ccc17fa094e079488854705e525c415b67f52ef3",
+          "tick": 329220,
+          "cameraTargetId": "resident-market:construction-site-000029:construction-site-000041:0@329048"
+        },
+        {
+          "sampleName": "wk_reskin_P6_widow_f",
+          "screenshot": "consumer-wk_reskin_P6_widow_f.jpg",
+          "stateSha256": "5f066413a276be755dfd6b5d1f6634a3e1bab4357d033ae1291fc7b06ca9e909",
+          "tick": 329445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@329359"
+        },
+        {
+          "sampleName": "pilot2_purse:NW",
+          "screenshot": "consumer-pilot2_purse-NW.jpg",
+          "stateSha256": "6a140c1d257b6e5e36d19727f0cb44fba4c1991512053dc13a33cac917be1e22",
+          "tick": 330610,
+          "cameraTargetId": "resident-market:construction-site-000027:construction-site-000041:0@330370"
+        },
+        {
+          "sampleName": "pilot2_purse:SW",
+          "screenshot": "consumer-pilot2_purse-SW.jpg",
+          "stateSha256": "bf6d8afbb1bb7963ed11ab565f56662daa8b5ee04cb7b0724d30aad9dfa193be",
+          "tick": 330650,
+          "cameraTargetId": "resident-market:construction-site-000028:construction-site-000041:0@330388"
+        },
+        {
+          "sampleName": "pilot2_staff:SE",
+          "screenshot": "consumer-pilot2_staff-SE.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@331359"
+        },
+        {
+          "sampleName": "pilot2_staff:SW",
+          "screenshot": "consumer-pilot2_staff-SW.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NW",
+          "screenshot": "consumer-pilot2_staff-NW.jpg",
+          "stateSha256": "40b12c015c81597cbdad16ff32f91c768bda5efb412b13a949fa4b5424329cc4",
+          "tick": 331470,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_basket:NW",
+          "screenshot": "consumer-pilot2_basket-NW.jpg",
+          "stateSha256": "4262e83f9d0a2e23683d2a56e95615b2c2cbf6ec4261377722ed6bc21a1bc499",
+          "tick": 332095,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        },
+        {
+          "sampleName": "pilot2_basket:NE",
+          "screenshot": "consumer-pilot2_basket-NE.jpg",
+          "stateSha256": "4a306bd451a08329738ac32dbf3aba8fac08596689960a7e7f7779d57c5335fa",
+          "tick": 332105,
+          "cameraTargetId": "distributor:granary-42-37-0:331920"
+        },
+        {
+          "sampleName": "pilot2_sack:NE",
+          "screenshot": "consumer-pilot2_sack-NE.jpg",
+          "stateSha256": "da3b8a08bbb4d7c3baf4dffd0d4cb581246a9b470594f2d9cef0834ebb59c2dc",
+          "tick": 332515,
+          "cameraTargetId": "resident-field:construction-site-000011:construction-site-000025:0@332198"
+        },
+        {
+          "sampleName": "pilot2_sack:SE",
+          "screenshot": "consumer-pilot2_sack-SE.jpg",
+          "stateSha256": "20e4de8cbb9e1e6dce7444a1cf167bd3ee32c49bebc94a34032285c6bdcb6ba7",
+          "tick": 332540,
+          "cameraTargetId": "resident-field:construction-site-000012:construction-site-000038:1@332195"
+        },
+        {
+          "sampleName": "pilot2_sack:NW",
+          "screenshot": "consumer-pilot2_sack-NW.jpg",
+          "stateSha256": "cda2b9da43a5ee4777783fb697b8e415586e25fb25982d7b53fedc4c976cad8f",
+          "tick": 332775,
+          "cameraTargetId": "resident-field:house-46-40-0:construction-site-000001:1@332771"
+        },
+        {
+          "sampleName": "pilot2_basket:SE",
+          "screenshot": "consumer-pilot2_basket-SE.jpg",
+          "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+          "tick": 335915,
+          "cameraTargetId": "distributor:construction-site-000034:335760"
+        },
+        {
+          "sampleName": "pilot2_sack:SW",
+          "screenshot": "consumer-pilot2_sack-SW.jpg",
+          "stateSha256": "1ec36b11de3aa07b7687ef96ba6f0854b023bbb152ff273eafef88215f23d356",
+          "tick": 340750,
+          "cameraTargetId": "resident-field:construction-site-000031:construction-site-000066:1@340119"
+        }
+      ]
+    },
+    {
+      "file": "wk_reskin_P6_widow_f-v1.png",
+      "witnesses": [
+        {
+          "sampleName": "wk_reskin_P6_widow_f",
+          "screenshot": "consumer-wk_reskin_P6_widow_f.jpg",
+          "stateSha256": "5f066413a276be755dfd6b5d1f6634a3e1bab4357d033ae1291fc7b06ca9e909",
+          "tick": 329445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@329359"
+        },
+        {
+          "sampleName": "pilot2_staff:SE",
+          "screenshot": "consumer-pilot2_staff-SE.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000008:construction-site-000041:0@331359"
+        },
+        {
+          "sampleName": "pilot2_staff:SW",
+          "screenshot": "consumer-pilot2_staff-SW.jpg",
+          "stateSha256": "60d0f782460c65756b0a13a3cb8c66eb12b911843438ff1332ccc5d16d4dc865",
+          "tick": 331445,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NW",
+          "screenshot": "consumer-pilot2_staff-NW.jpg",
+          "stateSha256": "40b12c015c81597cbdad16ff32f91c768bda5efb412b13a949fa4b5424329cc4",
+          "tick": 331470,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_staff:NE",
+          "screenshot": "consumer-pilot2_staff-NE.jpg",
+          "stateSha256": "de54b9fc4a2e15282851d23019ca6f7bd91e467807f5819cd627548538b81297",
+          "tick": 331620,
+          "cameraTargetId": "resident-market:construction-site-000015:construction-site-000041:0@331360"
+        },
+        {
+          "sampleName": "pilot2_sack:NE",
+          "screenshot": "consumer-pilot2_sack-NE.jpg",
+          "stateSha256": "da3b8a08bbb4d7c3baf4dffd0d4cb581246a9b470594f2d9cef0834ebb59c2dc",
+          "tick": 332515,
+          "cameraTargetId": "resident-field:construction-site-000011:construction-site-000025:0@332198"
+        },
+        {
+          "sampleName": "pilot2_sack:SE",
+          "screenshot": "consumer-pilot2_sack-SE.jpg",
+          "stateSha256": "20e4de8cbb9e1e6dce7444a1cf167bd3ee32c49bebc94a34032285c6bdcb6ba7",
+          "tick": 332540,
+          "cameraTargetId": "resident-field:construction-site-000012:construction-site-000038:1@332195"
+        },
+        {
+          "sampleName": "pilot2_sack:NW",
+          "screenshot": "consumer-pilot2_sack-NW.jpg",
+          "stateSha256": "cda2b9da43a5ee4777783fb697b8e415586e25fb25982d7b53fedc4c976cad8f",
+          "tick": 332775,
+          "cameraTargetId": "resident-field:house-46-40-0:construction-site-000001:1@332771"
+        },
+        {
+          "sampleName": "pilot2_basket:SE",
+          "screenshot": "consumer-pilot2_basket-SE.jpg",
+          "stateSha256": "b0dbc64a41e1c45d190f78f190a89a0ff5b7cad91156c6d9cbc9aa99d431b54d",
+          "tick": 335915,
+          "cameraTargetId": "distributor:construction-site-000034:335760"
+        }
+      ]
+    }
+  ]
+}
