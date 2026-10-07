@@ -37,3 +37,5 @@
 ## 최종 본선 병합과 기하
 
 CART 본선 `f9f4f2cf`를 병합한 `a77c3df5`에서 본선의 18개 계약 bundle과 HERDS 2개를 모두 보존했다. 병합 뒤 관련 시험 120/120·TypeScript 통과. 깨끗한 입력을 공식 DGX 관문 줄로 실행한 `astra-HERDS-geometry-final-a77c3df`는 네 줄(hud.status-pill, hud.time-cluster, hud.action-dock, map.selection.house) 80조건에서 실패 0·미개방 0이다. 입력 해시는 `76fc77e1bd66f2f0380bf89dacc3a9576315e958724586ef2175bdfa422d9639`. 실제 실행 695.9초이며 최종 변경 시험·check:merge 영수증은 전달 ZIP의 gates/에 포함한다. 이 기하는 추가 동물 움직임이나 모든 방향의 시각 품질을 검증하지 않는다.
+
+이후 본선 LM-R2 `3ea84578`의 UI 부품 계약·화면·기하 감사 변경을 모두 보존하여 병합했다. 새 기하 실행 `astra-HERDS-geometry-lmr2-624c6f9`는 clean 입력에서 다시 80조건 실패 0·미개방 0으로 통과했다(실행 706.9초). 현재 유효 입력 해시는 `13331b376bd509f23019324cd2faa3cd41c9c018c23764e3491f486ffaf8b465`다. 추가 슬롯 관리자 본선 `33e39559` 병합 뒤에도 이 해시가 동일함을 확인하여 불필요한 기하 재실행을 생략했다. LM-R2 병합 뒤 집중 시험은 UI 부품 사례를 포함해 143/143·TypeScript 통과했다. 위 a77c3df5 실행은 이전 입력 기록으로 보존한다.
