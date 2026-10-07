@@ -62,9 +62,10 @@ export const COMMUNITY_FALLBACK = {
   premiumPermille: 500,
   /**
    * The community's own bar for a storage need: stores holding this much of one material (timber, logs, stone) are a
-   * hoard, not a want of room — it builds no barn for it (125-year runs: 11–16 storehouses round 1,000–1,800 timber).
+   * hoard, not a want of room — it builds no barn for it (125-year runs: 11–16 storehouses round 1,000–1,800 timber;
+   * the usual stock is 340–500, trunk's 1336 and this branch's 1340 — at 400 the bar refused seed 1's real need).
    */
-  storageHoard: 400,
+  storageHoard: 800,
 } as const;
 /**
  * LM-E5 (LG-2): an actor chooses by chance, not always the best: a choice's weight is exp((score − best) / spread),

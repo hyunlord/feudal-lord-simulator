@@ -21,6 +21,8 @@ import { advanceTick } from "../src/engine/tick";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { answerOutlook } from "../src/state/decisionOutlook";
 import { gameReducer } from "../src/state/gameStore";
+import { lordBotCommands } from "../src/engine/lordBot";
+import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
 import { newGameState } from "../src/state/newGame";
 
 const lordGame = (): GameState => newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
@@ -125,6 +127,17 @@ test("§6 DTR-13: a lord-mode hamlet's market keeps the timber its market-town p
   assert.equal(hamletTimberKeep({ ...lord, era: "palisade" }), 0);
   const { agency: _agency, ...sandbox } = lord;
   assert.equal(hamletTimberKeep(sandbox as GameState), 0);
+});
+
+test("DTR-17: the bot keeps the stall fee the lord agreed with the merchants (a registry answer) for ten years", () => {
+  // The bot's own moves come the tick after a week's turn.
+  const state = run(lordGame(), AGENCY_WEEK_TICKS + 1);
+  const off: GameState = { ...state, agency: { ...state.agency!, duesPermille: 950 } };
+  const dues = (at: GameState) => lordBotCommands(at).filter(entry => entry.command.type === "set_market_dues").length;
+  assert.equal(dues(off), 1, "the bot's schedule otherwise");
+  const agreed: GameState = { ...off, trace: { acts: [], decisions: [{ id: "h-1", tick: off.tick - 10, by: "lord", kind: "registry", source: "registry:ck_evt_211:a",
+    weights: ["faction_rupture"], targets: ["dues", "faction:merchant_house_1"] }] } };
+  assert.equal(dues(agreed), 0, "the agreed fee kept");
 });
 
 test("§2 answerOutlook runs the answer on a copy: now (the treasury, the minds it moves), later, and who remembers — the state untouched", () => {
