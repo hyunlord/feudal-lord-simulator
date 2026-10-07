@@ -1,0 +1,36 @@
+[
+  {
+    "season": "summer",
+    "changes": [
+      {
+        "field": "state.tick",
+        "from": 160183,
+        "to": 161683
+      },
+      {
+        "field": "state.ledger.entries[id=ledger-002062].tick",
+        "from": 160000,
+        "to": 161500
+      }
+    ],
+    "receiptAge": 183,
+    "classification": "Explicit QA seasonal copy, not evidence of a natural seasonal purchase"
+  },
+  {
+    "season": "winter",
+    "changes": [
+      {
+        "field": "state.tick",
+        "from": 160183,
+        "to": 163683
+      },
+      {
+        "field": "state.ledger.entries[id=ledger-002062].tick",
+        "from": 160000,
+        "to": 163500
+      }
+    ],
+    "receiptAge": 183,
+    "classification": "Explicit QA seasonal copy, not evidence of a natural seasonal purchase"
+  }
+]

@@ -144,7 +144,7 @@ export function installRenderStageProbe(
 /** Stage for one object-queue item; only evaluated as an argument of `probe?.enter(...)`. */
 export function stageForRenderItem(kind: string): RenderStage {
   switch (kind) {
-    case "walker": case "ale_drinker": return "walkers";
+    case "purveyor": case "walker": case "ale_drinker": return "walkers";
     case "construction_site": return "construction";
     case "palisade_segment": return "walls";
     case "bridge_rail": return "bridges";

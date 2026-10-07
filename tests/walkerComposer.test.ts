@@ -117,7 +117,7 @@ test("Given the composer cache When cells are counted Then each is one 108 px ce
 
 test("Given the installed walker batches When the manifest is read Then all body and prop files match their declared bytes", () => {
   const wave5a = walkerSheetManifest.filter(sheet => !sheet.legacy);
-  assert.equal(wave5a.length, 29 + 7 + 8 + 2 + 2 + 3 + 4, "Wave 5a 29, Wave 4e 7, Wave 5c 8, Wave 11 carpenter and mason, Wave 3 alewife and maltster, Wave 3 cloth shepherd / fuller / wool merchant (UI-9)");
+  assert.equal(wave5a.length, 29 + 7 + 8 + 2 + 2 + 3 + 4 + 1, "Wave 5a 29, Wave 4e 7, Wave 5c 8, Wave 11 carpenter and mason, Wave 3 alewife and maltster, Wave 3 cloth shepherd / fuller / wool merchant (UI-9)");
   // INSTALL-5c: the child and elder bodies (4 each), no winter cloak.
   assert.deepEqual(wave5a.filter(sheet => (sheet.classBand === "child" || sheet.classBand === "elder") && !sheet.id.startsWith("wk_reskin_P")).map(sheet => `${sheet.classBand}:${sheet.cloak}`).sort(),
     [...Array(4).fill("child:null"), ...Array(4).fill("elder:null")]);
@@ -127,7 +127,7 @@ test("Given the installed walker batches When the manifest is read Then all body
     assert.deepEqual(sheet.directionOrder, ["NE", "SE", "SW", "NW"]);
   }
   const props = Object.values(walkerPropManifest).flatMap(directions => Object.values(directions));
-  assert.equal(props.length, 24 + 8 + 12 + 20 + 12 + 16, "Wave 5a 24, Wave 4e 8, Wave 6 work tools 12 (hammer, shovel, sickle), Wave 7 work props 20, Wave 11 kit tools 12");
+  assert.equal(props.length, 24 + 8 + 12 + 20 + 12 + 16 + 4, "Wave 5a 24, Wave 4e 8, Wave 6 work tools 12 (hammer, shovel, sickle), Wave 7 work props 20, Wave 11 kit tools 12");
   for (const prop of props) readFileSync(new URL(`../public/${prop.url}`, import.meta.url));
   assert.deepEqual(Object.keys(walkerCloakManifest).sort(), ["female", "male", "merchant"]);
   for (const cloak of Object.values(walkerCloakManifest)) readFileSync(new URL(`../public/${cloak.url}`, import.meta.url));
