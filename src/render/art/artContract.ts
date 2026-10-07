@@ -52,6 +52,7 @@ type WorldEntry = EntryBase & { readonly geometry: ArtGeometry; readonly season?
 export type BuildingBodyEntry = WorldEntry & {
   readonly kind: 'building-body'; readonly buildingKinds: readonly string[];
   readonly levels: readonly number[]; readonly variantId: string;
+  readonly roofRidge?: ArtPoint;
 };
 export type BuildingAttachmentEntry = WorldEntry & {
   readonly kind: 'building-attachment'; readonly role: string;
@@ -61,7 +62,7 @@ export type BuildingAttachmentEntry = WorldEntry & {
 };
 export type StateOverlayEntry = WorldEntry & {
   readonly kind: 'state-overlay'; readonly targetBodyIds: readonly string[];
-  readonly layer: 'snow' | 'boarded' | 'worn' | 'wealth' | 'era';
+  readonly layer: 'snow' | 'boarded' | 'worn' | 'wealth' | 'era' | 'fresh' | 'weathered';
   readonly transform: 'inherit-body'; readonly order: number;
 };
 export type ArtRange = { readonly min: number; readonly max?: number } | { readonly min?: number; readonly max: number };
