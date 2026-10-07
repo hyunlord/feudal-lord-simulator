@@ -1,0 +1,24 @@
+{
+  "videos": [
+    {
+      "file": "/tmp/astra-rain-band-visibility/output/rain-band/z1.webm",
+      "sha256": "acb455504a4a852d9d29e60bf8dd09af6159a73e15986a6f78600f0d90cdef0b",
+      "frameCount": 839,
+      "firstPTS": 0.0,
+      "lastPTS": 30.859,
+      "observedFPS": 27.15577303217862,
+      "monotonicPTS": true
+    },
+    {
+      "file": "/tmp/astra-rain-band-visibility/output/rain-band/z0.6.webm",
+      "sha256": "91f787de5aa248c8579685d6a83b67bc615b5af19f79d72ccb4dacd52a0cb98f",
+      "frameCount": 558,
+      "firstPTS": 0.0,
+      "lastPTS": 30.996,
+      "observedFPS": 17.970060652987485,
+      "monotonicPTS": true
+    }
+  ],
+  "resultSHA256": "46ae9578acb8c2edc3c4e5a849473cf473a56f6d2efc4304f8699f03e1612cd7",
+  "scope": "Actual encoded frame timestamps, not requested30fps or browser rAF rate. Root only inspected static frames/native sequence, not full video playback."
+}

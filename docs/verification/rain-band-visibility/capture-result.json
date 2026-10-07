@@ -1,0 +1,87 @@
+{
+  "base": "a666482c",
+  "sourceSHA": "4eaf078c2c42deb86a96f06ab7392bad79f97ccf674b09e20f51efbb0195ec8f",
+  "startSaveSHA": "6223bf4b90ee32f66e7821d43a1de893dfeb56ae9ab09656c6e44dd2574a1ad5",
+  "tile": [
+    43,
+    37
+  ],
+  "viewport": [
+    1280,
+    800
+  ],
+  "dpr": 1,
+  "method": "Unmodified game, existing seed1 tick5000 save. Normal1x. Canvas captureStream requested30fps MediaRecorder VP9; actual timestamps and draw batches recorded. No contrast change.",
+  "views": [
+    {
+      "zoom": 1,
+      "records": 1035,
+      "firstTick": 5000,
+      "lastTick": 5307,
+      "elapsedMs": 31663.900000095367,
+      "rafFPS": 33.39200077505611,
+      "medianGapMs": 33.29999999999927,
+      "maxGapMs": 83.40000000000146,
+      "rainDraws": 289682,
+      "overflow": 0,
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      }
+    },
+    {
+      "zoom": 0.6,
+      "records": 610,
+      "firstTick": 5000,
+      "lastTick": 5308,
+      "elapsedMs": 31996.599999904633,
+      "rafFPS": 19.572301818392177,
+      "medianGapMs": 50,
+      "maxGapMs": 100.10000000000036,
+      "rainDraws": 473125,
+      "overflow": 0,
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      }
+    }
+  ],
+  "errors": [],
+  "network": [
+    {
+      "zoom": 1,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "zoom": 1,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "zoom": 1,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "zoom": 1,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "zoom": 0.6,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "zoom": 0.6,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "zoom": 0.6,
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}
