@@ -221,19 +221,24 @@ door_check() { # closes the door once its run took a slot, left, or the time is 
 }
 
 # A run in a slot that the keeper did not let in (the slots seen last loop, the open door's run and the last one let in
-# are known).
-declare -A SEEN_IN=()
+# are known). Only when it is still there one loop later: a free slot looks held for an instant whenever another
+# process tests its lock at the same moment (every waiting copy tests the slot locks), and then the name in the slot's
+# info is its last run's (2026-10-07 20:25, astra-WET-geometry-b65ca77, ten minutes after it had ended).
+declare -A SEEN_IN=() ODD_IN=()
 SEEN_FIRST=1; LET_IN=""; STALL_SINCE=""
 watch_slots() {
   local r
+  declare -A odd=()
   if [ -z "$SEEN_FIRST" ]; then
     for r in "${!INSLOT[@]}"; do
       [ -n "${SEEN_IN[$r]:-}" ] || [ "$r" = "$LET_IN" ] || [ "$r" = "${DOOR#*-}" ] && continue
-      anomaly "in:$r:${INSLOT[$r]}" "$r is in slot ${INSLOT[$r]} but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)"
+      odd[$r]=1
+      [ -n "${ODD_IN[$r]:-}" ] && anomaly "in:$r:${INSLOT[$r]}" "$r is in slot ${INSLOT[$r]} but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)"
     done
   fi
-  SEEN_FIRST=""; SEEN_IN=()
-  for r in "${!INSLOT[@]}"; do SEEN_IN[$r]=1; done
+  SEEN_FIRST=""; SEEN_IN=(); ODD_IN=()
+  for r in "${!INSLOT[@]}"; do [ -n "${odd[$r]:-}" ] || SEEN_IN[$r]=1; done
+  for r in "${!odd[@]}"; do ODD_IN[$r]=1; done
 }
 # A free slot, runs that may go, and nobody let in (checked after decide, while no door is open).
 watch_stall() {
