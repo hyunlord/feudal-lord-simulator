@@ -134,10 +134,14 @@ const YEAR = 4 * PRESSURE_BALANCE.seasonTicks;
  */
 export function debtInstalmentCap(state: GameState): number {
   if (!estatesOf(state).estates.some(estate => estate.possessor === LORD)) return 0;
+  return Math.floor(estateYearIncome(state) * DEBT_INSTALMENT_SHARE);
+}
+
+/** What the lord's estates paid into the treasury over the last year (the ledger: rent, stall fees, tolls, the mill). */
+export function estateYearIncome(state: Pick<GameState, "tick" | "ledger">): number {
   const from = state.tick - YEAR;
-  const year = (state.ledger?.entries ?? []).filter(entry => entry.tick > from && entry.amount > 0 && ESTATE_INCOME.has(entry.category))
+  return (state.ledger?.entries ?? []).filter(entry => entry.tick > from && entry.amount > 0 && ESTATE_INCOME.has(entry.category))
     .reduce((sum, entry) => sum + entry.amount, 0);
-  return Math.floor(year * DEBT_INSTALMENT_SHARE);
 }
 
 /** FIX-12 (item 1): the instalments a debt takes at the lord's cap (1…5 years), or null when five years cannot carry it. */

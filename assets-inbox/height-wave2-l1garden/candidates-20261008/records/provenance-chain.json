@@ -1,0 +1,443 @@
+[
+  {
+    "role": "body",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-body-v2.png",
+    "runtimeSHA256": "c16943e42245baa321ed1a41f85cae807e9f6b94fdce04ecc278a8e408ff6e4e",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-body-v2.png",
+    "nativeSHA256": "c16943e42245baa321ed1a41f85cae807e9f6b94fdce04ecc278a8e408ff6e4e",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/body-attempt5.png",
+    "rawSHA256": "205f72a14ada6057d841bcbcb1ef93f30fa2e8d858e25ad2f1b32953c8410888",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/generation.json",
+    "promptRecordSHA256": "dfb6257a7ac7bc7ada96564edfe3eb8ee8d38d347fabec1109c0d87d4a670708",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "raw_alpha16_bbox": [
+        61,
+        103,
+        1116,
+        1334
+      ],
+      "uniform_scale": 0.10710900473933649,
+      "rounded_resize": [
+        120,
+        151
+      ],
+      "translation": [
+        8,
+        19
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "padding_up": 36,
+      "runtime_scale": 0.498621726759907,
+      "runtime_pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+      "layers": {
+        "snow": {
+          "raw_size": [
+            1118,
+            1407
+          ],
+          "resize": [
+            87,
+            109
+          ],
+          "translation": [
+            17,
+            21
+          ],
+          "final_size": [
+            139,
+            175
+          ],
+          "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+        },
+        "neglected": {
+          "resize": [
+            120,
+            151
+          ],
+          "translation": [
+            6,
+            20
+          ],
+          "reason": "whole-layer uniform registration; no alpha clip"
+        }
+      }
+    }
+  },
+  {
+    "role": "snow",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-snow04.png",
+    "runtimeSHA256": "e1515a84e5d8f26122d622dcc357490c11988641f77b6e22ef235ece609df6c2",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-snow04.png",
+    "nativeSHA256": "e1515a84e5d8f26122d622dcc357490c11988641f77b6e22ef235ece609df6c2",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/snow04.png",
+    "rawSHA256": "5259dbd1cc55108c3e81ac4fb7586b67866f92cfb26950faee8a1017d5394371",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/snow04-generation.json",
+    "promptRecordSHA256": "ef75c520833a7695dbea2cf47fe90e48077192de1044540f0f88685f7bf71542",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "resize": [
+        87,
+        109
+      ],
+      "translation": [
+        17,
+        21
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+    }
+  },
+  {
+    "role": "boarded",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-boarded-v2.png",
+    "runtimeSHA256": "103822c9efb4b15a2eeb76d5abf69cb190e324c1c7e0f8fd1e3ddf361e12f5e2",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-boarded-v2.png",
+    "nativeSHA256": "103822c9efb4b15a2eeb76d5abf69cb190e324c1c7e0f8fd1e3ddf361e12f5e2",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/boarded-attempt1.png",
+    "rawSHA256": "4a96bfb8465c5522332da8fc939f488d7e59217b9577bb7e79378f928a88fa71",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/generation.json",
+    "promptRecordSHA256": "dfb6257a7ac7bc7ada96564edfe3eb8ee8d38d347fabec1109c0d87d4a670708",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "raw_alpha16_bbox": [
+        61,
+        103,
+        1116,
+        1334
+      ],
+      "uniform_scale": 0.10710900473933649,
+      "rounded_resize": [
+        120,
+        151
+      ],
+      "translation": [
+        8,
+        19
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "padding_up": 36,
+      "runtime_scale": 0.498621726759907,
+      "runtime_pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+      "layers": {
+        "snow": {
+          "raw_size": [
+            1118,
+            1407
+          ],
+          "resize": [
+            87,
+            109
+          ],
+          "translation": [
+            17,
+            21
+          ],
+          "final_size": [
+            139,
+            175
+          ],
+          "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+        },
+        "neglected": {
+          "resize": [
+            120,
+            151
+          ],
+          "translation": [
+            6,
+            20
+          ],
+          "reason": "whole-layer uniform registration; no alpha clip"
+        }
+      }
+    }
+  },
+  {
+    "role": "strained",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-strained-v2.png",
+    "runtimeSHA256": "91e3d76a8aff35064d93af3d453d2696068ba3434b601932c2af567a33a18b3d",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-strained-v2.png",
+    "nativeSHA256": "91e3d76a8aff35064d93af3d453d2696068ba3434b601932c2af567a33a18b3d",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/strained-attempt1.png",
+    "rawSHA256": "eeed3dcb74b26ffdf021a4d1ceb2efd1eac7cfd55b954bd448986ad0c3bbcaeb",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/generation.json",
+    "promptRecordSHA256": "dfb6257a7ac7bc7ada96564edfe3eb8ee8d38d347fabec1109c0d87d4a670708",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "raw_alpha16_bbox": [
+        61,
+        103,
+        1116,
+        1334
+      ],
+      "uniform_scale": 0.10710900473933649,
+      "rounded_resize": [
+        120,
+        151
+      ],
+      "translation": [
+        8,
+        19
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "padding_up": 36,
+      "runtime_scale": 0.498621726759907,
+      "runtime_pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+      "layers": {
+        "snow": {
+          "raw_size": [
+            1118,
+            1407
+          ],
+          "resize": [
+            87,
+            109
+          ],
+          "translation": [
+            17,
+            21
+          ],
+          "final_size": [
+            139,
+            175
+          ],
+          "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+        },
+        "neglected": {
+          "resize": [
+            120,
+            151
+          ],
+          "translation": [
+            6,
+            20
+          ],
+          "reason": "whole-layer uniform registration; no alpha clip"
+        }
+      }
+    }
+  },
+  {
+    "role": "neglected",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-neglected-v2.png",
+    "runtimeSHA256": "70fbd690ea2b80c62e212de7fe05a8bfb3eaae6889f2b588545a75e7590a0211",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-neglected-v2.png",
+    "nativeSHA256": "70fbd690ea2b80c62e212de7fe05a8bfb3eaae6889f2b588545a75e7590a0211",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/neglected-attempt1.png",
+    "rawSHA256": "c30d4887160ab7e65f30af2b56d3aafcbd1d7a37b1378696ce131285e656432b",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/generation.json",
+    "promptRecordSHA256": "dfb6257a7ac7bc7ada96564edfe3eb8ee8d38d347fabec1109c0d87d4a670708",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "resize": [
+        120,
+        151
+      ],
+      "translation": [
+        6,
+        20
+      ],
+      "reason": "whole-layer uniform registration; no alpha clip"
+    }
+  },
+  {
+    "role": "vacant",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-vacant-v2.png",
+    "runtimeSHA256": "11ca0705e2462e21646121a570996e96f403e301b51d2f1092de4be5fa42bca8",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-vacant-v2.png",
+    "nativeSHA256": "11ca0705e2462e21646121a570996e96f403e301b51d2f1092de4be5fa42bca8",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/vacant-attempt1.png",
+    "rawSHA256": "d300cd42db598a1e7ac37f33507f76595ef438e13c0259efcab06fa27444207e",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/generation.json",
+    "promptRecordSHA256": "dfb6257a7ac7bc7ada96564edfe3eb8ee8d38d347fabec1109c0d87d4a670708",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "raw_alpha16_bbox": [
+        61,
+        103,
+        1116,
+        1334
+      ],
+      "uniform_scale": 0.10710900473933649,
+      "rounded_resize": [
+        120,
+        151
+      ],
+      "translation": [
+        8,
+        19
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "padding_up": 36,
+      "runtime_scale": 0.498621726759907,
+      "runtime_pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+      "layers": {
+        "snow": {
+          "raw_size": [
+            1118,
+            1407
+          ],
+          "resize": [
+            87,
+            109
+          ],
+          "translation": [
+            17,
+            21
+          ],
+          "final_size": [
+            139,
+            175
+          ],
+          "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+        },
+        "neglected": {
+          "resize": [
+            120,
+            151
+          ],
+          "translation": [
+            6,
+            20
+          ],
+          "reason": "whole-layer uniform registration; no alpha clip"
+        }
+      }
+    }
+  },
+  {
+    "role": "plague-shut",
+    "runtime": "public/assets/height-wave2-l1garden/house_l1_garden-plague-shut-v2.png",
+    "runtimeSHA256": "313ebe5b16f774d793557b24c53714950fadb0086f26a0958321f264fdff1b43",
+    "native": "assets-inbox/height-wave2-l1garden/candidates-20261008/approved-native/house_l1_garden-plague-shut-v2.png",
+    "nativeSHA256": "313ebe5b16f774d793557b24c53714950fadb0086f26a0958321f264fdff1b43",
+    "selectedRaw": "/tmp/astra-height-wave2-l1garden-candidates-20261008/raw/plague-shut-attempt1.png",
+    "rawSHA256": "9ac6f328f2fcd2165e3ebf7d4629617150b4e46b95c953a6c7b3142c628aced8",
+    "promptRecord": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/generation.json",
+    "promptRecordSHA256": "dfb6257a7ac7bc7ada96564edfe3eb8ee8d38d347fabec1109c0d87d4a670708",
+    "manifest": "assets-inbox/height-wave2-l1garden/candidates-20261008/records/manifest.json",
+    "manifestSHA256": "1790e353ab964d6344f94df6b3b170cdf2494327bc360f29df8b56e95f3ba547",
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "raw_alpha16_bbox": [
+        61,
+        103,
+        1116,
+        1334
+      ],
+      "uniform_scale": 0.10710900473933649,
+      "rounded_resize": [
+        120,
+        151
+      ],
+      "translation": [
+        8,
+        19
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "padding_up": 36,
+      "runtime_scale": 0.498621726759907,
+      "runtime_pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+      "layers": {
+        "snow": {
+          "raw_size": [
+            1118,
+            1407
+          ],
+          "resize": [
+            87,
+            109
+          ],
+          "translation": [
+            17,
+            21
+          ],
+          "final_size": [
+            139,
+            175
+          ],
+          "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+        },
+        "neglected": {
+          "resize": [
+            120,
+            151
+          ],
+          "translation": [
+            6,
+            20
+          ],
+          "reason": "whole-layer uniform registration; no alpha clip"
+        }
+      }
+    }
+  }
+]

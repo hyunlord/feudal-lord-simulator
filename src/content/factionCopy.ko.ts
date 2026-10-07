@@ -2,6 +2,7 @@
  * FACTION-0 (spec docs/design/factions.md FX-*): the factions' Korean copy — their kinds, the world's events, their own
  * affairs and what moved their relation. Proper nouns (earldoms, houses, sees, kings) stay as the period wrote them.
  */
+import { V4_COPY } from "./registry/v4Copy.generated";
 import { GENTRY_NAMES_KO } from "./gentryNames";
 import { SURNAMES_KO } from "./personNames.ko";
 import { PETITION_CHOICES } from "./petitionChoices.ko";
@@ -81,6 +82,12 @@ export function factionReasonLine(reason: string): string {
   if (kind === "promise_broken") return "영주가 우리 세력 앞에서 한 약속을 어김";
   // LM-E4 (SW-6): the faction a punished steward was tied to.
   if (kind === "steward_punished") return "제 사람인 청지기가 감사 끝에 벌을 받음";
+  // DEC-TRACE §3: the lord's answers and settings the factions remember.
+  if (kind === "registry") return `「${V4_COPY[a ?? ""]?.title ?? a}」에 대한 영주의 답`;
+  if (kind === "manor_petition") return `장원 청원에 ${b === "granted" ? "들어줌" : "물리침"}`;
+  if (kind === "set_market_dues") return `좌판세를 평소의 ${Math.round(Number(a) / 10)}%로 정함`;
+  if (kind === "set_project_subsidy") return "사업 장려금을 바꿈";
+  if (kind === "set_estate_policy") return "영지 방침을 바꿈";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";
   if (kind === "legacy") return a === "deposition" ? "리처드 2세가 폐위되고 헨리 4세의 치세가 시작됨" : reason;
   if (kind === "reorg") return a === "wage_competition" ? "더 높은 임금으로 가구를 데려감" : a === "overlord_warning" ? "도시가 커지는 것을 경계함"

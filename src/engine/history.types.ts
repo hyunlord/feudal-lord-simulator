@@ -29,6 +29,13 @@ export interface HistoryDecision {
   readonly actualDueTick?: number;
 }
 
+/** DEC-TRACE §2: a decision behind a record (`decisionId` is the decision's own record id). */
+export interface HistoryBecause {
+  readonly decisionId: string;
+  readonly key: string;
+  readonly part?: true;
+}
+
 export type HistoryParams = Readonly<Record<string, number | string>>;
 
 export interface HistoryRecord {
@@ -44,6 +51,11 @@ export interface HistoryRecord {
   readonly place?: { readonly tx: number; readonly ty: number; readonly buildingId?: string };
   readonly cause?: SourceRef;
   readonly decision?: HistoryDecision;
+  /**
+   * DEC-TRACE §2 (save v52): the decisions behind it (at most four, the main one first) — each with the key of what
+   * followed and `part` when it was one cause among others (P-C2). Records with it are never folded (HL-10).
+   */
+  readonly because?: readonly HistoryBecause[];
   readonly severity: HistorySeverity;
   readonly illustration?: string;
   readonly snapshotId?: string;

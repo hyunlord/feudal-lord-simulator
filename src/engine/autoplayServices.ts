@@ -8,7 +8,7 @@ import { availableWorkers } from '../population/labour';
 import { rankServiceCandidates } from './autoplayServiceCandidates';
 import { rankServiceRoadPlans } from './autoplayServiceRoadPlans';
 import { serviceAccessDistances } from './autoplayServiceAccess';
-import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked } from '../world/placement';
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingOpen } from '../world/placement';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { householdServices } from './householdServices';
@@ -34,11 +34,11 @@ export interface ServicePlanningCollector { services?: readonly ServicePlanningD
 /** `accepts` (BOT-1 AR-7): a further bot filter on the market and church placements; every placement passes by default. */
 export function urbanServiceAction(state: GameState, diagnostic?: ServicePlanningCollector,
   accepts: (action: AutoplayAction) => boolean = () => true): AutoplayAction {
-  if (!isBuildingUnlocked('market', state.era, state.scenarioId)) return NONE;
+  if (!isBuildingOpen(state, 'market')) return NONE;
   const current = householdServices(state);
   const roadService = marketRoadService(state);
   for (const kind of ['market', 'church'] as const) {
-    if (!isBuildingUnlocked(kind, state.era, state.scenarioId)) continue;
+    if (!isBuildingOpen(state, kind)) continue;
     if (state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === kind)) continue;
     const underserved = state.buildings.filter(home => home.kind === 'house' && current.houses.has(home.id)
       && current.houses.get(home.id)?.[kind].kind !== 'served');

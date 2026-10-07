@@ -71,6 +71,18 @@ export interface ProjectReceipt {
   readonly chance?: { readonly project: ChoiceChance; readonly site?: ChoiceChance };
   /** TA-13 (LM-E9b): started from a reused week's judgement — the tick of the walk reused (absent when walked this week). */
   readonly reusedWalk?: number;
+  /**
+   * DTR-15 (save v52): a need its builder refused, taken up by the community after the wait — the builder, the tick it
+   * first refused, and the premium the community's want of capital cost (pennies), of which the treasury paid this much.
+   */
+  readonly fallback?: { readonly builder: ActorKind; readonly since: number; readonly premium: number; readonly treasury: number };
+}
+
+/** DTR-15: a need its builder will not take up — what, who, since when (the community takes it up after the wait). */
+export interface RefusedNeed {
+  readonly what: string;
+  readonly builder: ActorKind;
+  readonly since: number;
 }
 
 /** TA-10: the candidate sites of a building project — how many, the plan's own, the chosen one's and the next best's. */
@@ -120,6 +132,8 @@ export interface AgencyState {
   readonly lastRefusal?: SubsidyRefusal;
   /** TA-13 (LM-E9b, save v48): the last week's walk, kept while it started nothing (absent otherwise and before v48). */
   readonly lastWalk?: AgencyWalk;
+  /** DTR-15 (save v52): the needs their builders refuse, while they do (absent when none). */
+  readonly refusedNeeds?: readonly RefusedNeed[];
 }
 
 /** TA-13: a week's walk kept for the next weeks while nothing changes — its needs, proposals and requests. */

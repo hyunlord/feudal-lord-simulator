@@ -1,0 +1,72 @@
+{
+  "method": "manual matching of three bottom foundation vertices; original native uncertainty +-1 px, new raw +-6 px; do not read residual as exact footprint equality",
+  "combinedConservativeWorldUncertainty": 0.8333400740304189,
+  "pairs": [
+    {
+      "name": "left",
+      "originalNative": [
+        21,
+        90
+      ],
+      "newRaw": [
+        123,
+        933
+      ],
+      "newNativeTopPaddingRemoved": [
+        20.146534653465345,
+        87.32124528242298
+      ],
+      "residualNative": [
+        -0.8534653465346551,
+        -2.6787547175770214
+      ],
+      "residualWorld": 1.4018393088626968
+    },
+    {
+      "name": "front",
+      "originalNative": [
+        85,
+        125
+      ],
+      "newRaw": [
+        696,
+        1275
+      ],
+      "newNativeTopPaddingRemoved": [
+        84.25445544554455,
+        125.58461161905663
+      ],
+      "residualNative": [
+        -0.7455445544554493,
+        0.5846116190566306
+      ],
+      "residualWorld": 0.4724049256560259
+    },
+    {
+      "name": "right",
+      "originalNative": [
+        123,
+        103
+      ],
+      "newRaw": [
+        1050,
+        1070
+      ],
+      "newNativeTopPaddingRemoved": [
+        123.86039603960396,
+        102.6489680547002
+      ],
+      "residualNative": [
+        0.8603960396039554,
+        -0.35103194529979476
+      ],
+      "residualWorld": 0.46334402739555447
+    }
+  ],
+  "maxResidualWorld": 1.4018393088626968,
+  "original_left_ground_angle_degrees": 28.673146489434995,
+  "new_left_ground_angle_degrees": 30.831229907554157,
+  "original_right_ground_angle_degrees": 30.068582821862453,
+  "new_right_ground_angle_degrees": 30.074962487743342,
+  "strict2to1ProjectionPassed": false
+}
