@@ -7,7 +7,7 @@ import test from "node:test";
 
 import { FACTION_ACT_BALANCE } from "../src/content/factionActConfig";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
-import { DECISION_WEIGHT_BALANCE, HOME_PETITION_CUSTOM } from "../src/content/stewardPolicyConfig";
+import { DECISION_WEIGHT_BALANCE, HOME_PETITION_CUSTOM, homePetitionFactions } from "../src/content/stewardPolicyConfig";
 import { HOME_ESTATE_ID } from "../src/content/estateConfig";
 import { HOME_PETITION_KINDS } from "../src/content/stewardshipConfig";
 import { decisionRemembers, standingPolicies, stewardReport, traceInRange, yearReview } from "../src/engine/decisionReads";
@@ -174,6 +174,15 @@ test("§1 the standing policies and the steward's report: every small kind with 
   const report = stewardReport(state, 0, state.tick + 1);
   assert.ok(report.handled.length > 0 && report.handled.every(entry => entry.policy !== undefined));
   assert.ok(report.handled.filter(entry => entry.kind === "heriot").every(entry => entry.granted && entry.policy === "lenient"));
+  // DTR-16: an answer as custom has it moves a faction by a fifth of the table's (at most one), lightly or strictly by the whole;
+  // the report sums each policy's moves by faction ("이 방침으로 ○○ 관계 −○").
+  assert.deepEqual(homePetitionFactions("stall_dispute", false, true), { merchant_house_1: -1, merchant_house_2: 1 });
+  assert.deepEqual(homePetitionFactions("stall_dispute", false, false), HOME_PETITION_KINDS.stall_dispute.refuse.factions);
+  assert.ok(report.handled.filter(entry => entry.policy === "customary").every(entry => Object.values(entry.relations).every(delta => Math.abs(delta) <= 1)));
+  const summed = new Map<string, number>();
+  for (const entry of report.handled) for (const [faction, delta] of Object.entries(entry.relations)) summed.set(`${entry.policy}|${faction}`, (summed.get(`${entry.policy}|${faction}`) ?? 0) + delta);
+  assert.deepEqual(report.policyRelations.map(row => [`${row.policy}|${row.faction}`, row.delta]).sort(), [...summed].filter(([, delta]) => delta !== 0).sort());
+  assert.ok(report.policyRelations.length > 0);
 });
 
 test("§6 in lord mode the heir takes the house the day the lord dies, and the history writes it as a big event (no interregnum to the year's turn)", () => {

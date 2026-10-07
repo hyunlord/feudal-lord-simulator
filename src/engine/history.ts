@@ -19,7 +19,8 @@ import { MANOR_HOUSEHOLD } from "./persons.types";
 import { V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
 import { DECISION_RELATION, NEIGHBOUR_FACTION_BY_ESTATE, POLICY_RELATION, SUBSIDY_FACTION } from "../content/decisionRelationConfig";
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
-import { HOME_PETITION_KINDS, PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
+import { PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
+import { homePetitionFactions } from "../content/stewardPolicyConfig";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import type { HomePetitionKind } from "./stewardship.types";
 import { estatesOf } from "./estates";
@@ -1062,7 +1063,8 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
         if (bySteward && petition.precedent === true) line("manor.petition_precedent", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
         else if (bySteward) line("manor.petition_steward", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount, policy: petition.policy ?? "customary" }, 0);
         else line(petition.status === "lapsed" ? "manor.petition_lapsed" : "manor.petition_answered", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 1);
-        const table = HOME_PETITION_KINDS[petition.kind as HomePetitionKind][petition.status === "granted" ? "grant" : "refuse"].factions;
+        // DTR-16: the steward's answer as custom has it moves the factions by the custom's share.
+        const table = homePetitionFactions(petition.kind as HomePetitionKind, petition.status === "granted", bySteward && petition.policy === "customary");
         for (const [key, delta] of Object.entries(table)) {
           const faction = after.factions?.factions.find(entry => entry.id === (key === "party" ? petition.party : key));
           if (faction === undefined) continue;

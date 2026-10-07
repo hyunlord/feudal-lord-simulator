@@ -5,6 +5,7 @@
  * to the lord. Lord mode only.
  */
 import type { HomePetitionKind } from "../engine/stewardship.types";
+import { HOME_PETITION_KINDS } from "./stewardshipConfig";
 
 /**
  * The lord's standing policy for a kind of small matter: as custom has it, lightly (the petitioner's side), strictly
@@ -34,6 +35,25 @@ export const HOME_PETITION_CUSTOM: Readonly<Record<HomePetitionKind, boolean>> =
   pannage: false,
   chancel_repair: true,
 };
+
+/**
+ * DTR-16 (the user's instruction 2026-10-07): a home petition answered as custom has it surprises no one — its factions
+ * move by this share of the table's (permille); answered lightly, strictly or by the lord himself, by the whole. Without
+ * it the custom's six refusals a cycle drove the merchants to −43 and kept the town's storehouse unbuilt (DTR-15).
+ */
+export const CUSTOMARY_RELATION_PERMILLE = 200;
+
+/** The factions a home petition's answer moves (`party`: the dispute's other side, by its id), with the custom's share. */
+export function homePetitionFactions(kind: HomePetitionKind, granted: boolean, customary: boolean): Readonly<Record<string, number>> {
+  const table = HOME_PETITION_KINDS[kind][granted ? "grant" : "refuse"].factions;
+  if (!customary) return table;
+  const scaled: Record<string, number> = {};
+  for (const [key, delta] of Object.entries(table)) {
+    const moved = Math.sign(delta) * Math.round(Math.abs(delta) * CUSTOMARY_RELATION_PERMILLE / 1000);
+    if (moved !== 0) scaled[key] = moved;
+  }
+  return scaled;
+}
 
 /** P-D5: the kinds of weight that bring a matter to the lord. */
 export const DECISION_WEIGHTS = ["rights", "land", "marriage", "inheritance", "wardship", "large_sum", "years_promise", "faction_rupture", "crisis"] as const;

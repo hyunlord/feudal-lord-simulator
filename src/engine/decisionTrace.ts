@@ -24,6 +24,7 @@ import { CRISIS_RESERVE_DAYS } from "../content/crisisConfig";
 import { FAMINE_FLOWS, PETITION_FLOWS, TARGET_FLOWS } from "../content/decisionFlowConfig";
 import { preparedness } from "./crisisReads";
 import { stateCalendar } from "./scenarioState";
+import { FACTION_OF_ACTOR } from "./townAgency";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
 /** A decision's targets stay live this long (the user's gate: a consequence within three years). */
@@ -413,6 +414,16 @@ function consequences(before: GameState, after: GameState): GameState {
     const causes = [...named, ...live.filter(decision => !named.includes(decision))].map(decision => decision.id);
     // P-C2: a project the actor chose by its reasons — the lord's conditions were a share of them, never all.
     next = writeConsequence(next, "project_started", `build:${receipt.what}`, causes, true, { what: receipt.what, actor: receipt.actor, subsidy: receipt.subsidy, receipt: receipt.id });
+    // DTR-15 (the user's instruction): a need its builder refused, built by the community after the wait and at a premium —
+    // behind it the decisions that turned the builder's mind (live on its faction); written even when none did (A4).
+    if (receipt.fallback !== undefined) {
+      const builderFaction = FACTION_OF_ACTOR[receipt.fallback.builder];
+      const turned = liveDecisionsOn(traceOf(next), `faction:${builderFaction}`, next.tick).map(decision => decision.id);
+      const detail = { what: receipt.what, builder: receipt.fallback.builder, delay: receipt.tick - receipt.fallback.since,
+        premium: receipt.fallback.premium, treasury: receipt.fallback.treasury, receipt: receipt.id };
+      next = appendHistoryRecords(next, [{ tick: next.tick, kind: "event", template: "consequence", subject: TOWN, severity: 2,
+        params: { key: "community_built", target: `faction:${builderFaction}`, ...detail }, ...(turned.length === 0 ? {} : { because: becauseOf(turned, "community_built", true) }) }]);
+    }
   }
   // A granted right's first income after the grant (the stall fees of a market charter, the tolls of a bridge); DTR-11:
   // the first posting of the ledger lines a decision set going (the dues' stall fees, the wool in kind, the wages).

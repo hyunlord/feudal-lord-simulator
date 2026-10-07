@@ -4,7 +4,7 @@
  * review, who remembers a decision, the standing policies with what each setting does, and the steward's report. They
  * read the state only (the rules never read them). Lord mode.
  */
-import { HOME_PETITION_CUSTOM, STANDING_SETTINGS, type StandingSetting } from "../content/stewardPolicyConfig";
+import { HOME_PETITION_CUSTOM, homePetitionFactions, STANDING_SETTINGS, type StandingSetting } from "../content/stewardPolicyConfig";
 import { HOME_PETITION_KINDS, PETITION_KINDS } from "../content/stewardshipConfig";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { V4_SENDER_FACTION } from "../content/registry/registryHoldCopy.ko";
@@ -98,7 +98,9 @@ export interface YearDecision {
 export function yearReview(state: GameState, year: number): {
   /** DEC-TRACE §6 (the user's decision): the house's big changes first — a lord's death and his heir, a house withdrawn or come. */
   readonly house: readonly { readonly recordId: string; readonly tick: number; readonly template: string; readonly params: Readonly<Record<string, string | number>> }[];
-  readonly decisions: readonly YearDecision[]; readonly consequences: readonly TraceRow[] } {
+  readonly decisions: readonly YearDecision[]; readonly consequences: readonly TraceRow[];
+  /** DTR-15 (the user's instruction): what the community built because its builder refused — late and dearer, with or without a decision behind it. */
+  readonly communityBuilt: readonly { readonly recordId: string; readonly tick: number; readonly params: Readonly<Record<string, string | number>>; readonly decisionIds: readonly string[] }[] } {
   const from = (year - scenarioOf(state).startYear) * YEAR;
   const to = from + YEAR;
   const traced = new Map(traceOf(state).decisions.map(decision => [decision.id, decision] as const));
@@ -111,7 +113,9 @@ export function yearReview(state: GameState, year: number): {
     });
   const house = (state.history?.records ?? []).filter(record => record.tick >= from && record.tick < to && HOUSE_TEMPLATES.has(record.template))
     .map(record => ({ recordId: record.id, tick: record.tick, template: record.template, params: record.params ?? {} }));
-  return { house, decisions, consequences: traceInRange(state, from, to) };
+  const communityBuilt = (state.history?.records ?? []).filter(record => record.tick >= from && record.tick < to && record.template === "consequence" && record.params?.key === "community_built")
+    .map(record => ({ recordId: record.id, tick: record.tick, params: record.params ?? {}, decisionIds: (record.because ?? []).map(entry => entry.decisionId) }));
+  return { house, decisions, consequences: traceInRange(state, from, to), communityBuilt };
 }
 
 /** What one setting does to a kind of small matter (the steward's answer, the treasury, the factions). */
@@ -151,9 +155,11 @@ export function standingPolicies(state: GameState): readonly StandingPolicyView[
   };
   for (const kind of Object.keys(HOME_PETITION_KINDS) as HomePetitionKind[]) {
     const def = HOME_PETITION_KINDS[kind];
-    const answer = (granted: boolean): SettingAnswer => ({ granted, treasury: granted ? def.grant.income : def.refuse.income, factions: granted ? def.grant.factions : def.refuse.factions });
+    // DTR-16: the custom's answer moves the factions by the custom's share.
+    const answer = (granted: boolean, customary = false): SettingAnswer => ({ granted, treasury: granted ? def.grant.income : def.refuse.income,
+      factions: homePetitionFactions(kind, granted, customary) });
     views.push({ kind, family: "manor", heavy: false, heavyBecause: null, setting: standingSetting(state, kind),
-      answers: { customary: answer(HOME_PETITION_CUSTOM[kind]), lenient: answer(true), strict: answer(false) },
+      answers: { customary: answer(HOME_PETITION_CUSTOM[kind], true), lenient: answer(true), strict: answer(false) },
       ...lastOf(petition => petition.estateId === HOME_ESTATE_ID && petition.kind === kind) });
   }
   for (const kind of Object.keys(PETITION_KINDS) as EstatePetitionKind[]) {
@@ -181,9 +187,19 @@ export function stewardReport(state: GameState, fromTick: number, toTick: number
     const home = petition.estateId === HOME_ESTATE_ID ? HOME_PETITION_KINDS[petition.kind as HomePetitionKind] : undefined;
     const granted = petition.status === "granted";
     const effect = home === undefined ? undefined : granted ? home.grant : home.refuse;
-    return { petitionId: petition.id, estateId: petition.estateId, kind: petition.kind, policy: petition.policy ?? (petition.precedent === true ? "precedent" : "customary"),
-      granted, amount: petition.amount, tick: petition.tick, treasury: effect === undefined ? null : effect.income * petition.amount, relations: effect?.factions ?? {} };
+    const policy = petition.policy ?? (petition.precedent === true ? "precedent" : "customary");
+    const relations = home === undefined ? {} : homePetitionFactions(petition.kind as HomePetitionKind, granted, petition.policy === "customary");
+    // The dispute's other side by its id (the table's `party`).
+    const named: Record<string, number> = {};
+    for (const [key, delta] of Object.entries(relations)) named[key === "party" ? petition.party ?? key : key] = delta;
+    return { petitionId: petition.id, estateId: petition.estateId, kind: petition.kind, policy, granted, amount: petition.amount, tick: petition.tick,
+      treasury: effect === undefined ? null : effect.income * petition.amount, relations: named };
   });
+  // DTR-16 (the user's instruction): what each standing policy did to each faction this span — "이 방침으로 ○○ 관계 −○".
+  const byPolicy = new Map<string, number>();
+  for (const entry of handled) for (const [faction, delta] of Object.entries(entry.relations)) byPolicy.set(`${entry.policy}|${faction}`, (byPolicy.get(`${entry.policy}|${faction}`) ?? 0) + delta);
+  const policyRelations = [...byPolicy].filter(([, delta]) => delta !== 0).map(([key, delta]) => ({ policy: key.split("|")[0]!, faction: key.split("|")[1]!, delta }))
+    .sort((left, right) => Math.abs(right.delta) - Math.abs(left.delta) || left.faction.localeCompare(right.faction));
   const events = (state.registry?.occurrences ?? []).filter(occurrence => occurrence.decidedBy === "steward" && occurrence.offeredTick >= fromTick && occurrence.offeredTick < toTick)
     .map(occurrence => ({ occurrenceId: occurrence.id, entryId: occurrence.entryId, choiceId: occurrence.choiceId ?? null, policy: occurrence.policy ?? "customary", tick: occurrence.offeredTick,
       ...(occurrence.side === undefined ? {} : { side: occurrence.side }) }));
@@ -193,7 +209,7 @@ export function stewardReport(state: GameState, fromTick: number, toTick: number
     .map(occurrence => ({ subjectId: occurrence.id, kind: occurrence.entryId, layer: occurrence.weights!.join(",") }))];
   const lapsed = petitions.filter(petition => petition.status === "lapsed").length
     + (state.registry?.occurrences ?? []).filter(occurrence => occurrence.status === "lapsed" && (occurrence.settledTick ?? -1) >= fromTick && (occurrence.settledTick ?? -1) < toTick).length;
-  return { handled, events, brought, lapsed };
+  return { handled, events, brought, lapsed, policyRelations };
 }
 
 /** The settings a standing policy takes (for the screens' choice). */

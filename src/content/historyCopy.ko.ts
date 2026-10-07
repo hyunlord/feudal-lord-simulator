@@ -1,6 +1,7 @@
 import { LEDGER_CATEGORY_LABELS } from "../ledger/ledgerCopy.ko";
 import { moneyWords, moneyWordsFullDelta, moneyWordsJosa } from "../ledger/moneyWords.ko";
 import { BUILDING_COPY } from "./buildingCatalog.ko";
+import { BALANCE } from "./balanceConfig";
 /**
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
  * saves only the template id and its parameters; `historySummary` rebuilds the sentence from here.
@@ -140,6 +141,8 @@ const ESTATE_ROLE_KO: Readonly<Record<string, string>> = { head: "이웃 영주"
 export const SUIT_STAGE_KO: Readonly<Record<string, string>> = { evidence: "증거", patronage: "후원", hearing: "심리", enforcing: "점유 집행" };
 const ACTOR_KO: Readonly<Record<string, string>> = { households: "가구들", merchants: "상인 가문", guild: "길드", community: "공동체", church: "교회" };
 const buildingWord = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
+/** A season, for "○철 늦게" (the calendar's words, not ticks). */
+const SEASON_TICKS_FOR_WORDS = BALANCE.TICKS_PER_YEAR / 4;
 const projectWord = (what: string) => what === "road" ? "길" : what.startsWith("zone:") ? "구역" : what === "rebuild_house" ? "집 재건"
   : what === "demolish_house" ? "집 헐기" : what === "farmstead_crop" ? "작물 바꾸기" : buildingWord(what);
 
@@ -175,6 +178,14 @@ const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
     ? `흉년이 지나갔다 — 굶어 죽거나 떠난 집 없음(${CRISIS_REASONS[s(params, "reason")] ?? s(params, "reason")})`
     : `흉년이 지나갔다 — 굶주림으로 ${n(params, "deaths")}명이 죽고 ${n(params, "departures")}가구가 떠났다`,
   right_income: params => `얻은 권리에서 첫 수입 ${moneyWords(n(params, "income"))}${josa(moneyWords(n(params, "income")), "이", "가")} 들어왔다`,
+  community_built: params => {
+    const builder = ACTOR_KO[s(params, "builder")] ?? s(params, "builder");
+    const seasons = Math.max(1, Math.round(n(params, "delay") / SEASON_TICKS_FOR_WORDS));
+    const late = seasons < 4 ? `${seasons}철` : seasons % 4 === 0 ? `${seasons / 4}년` : `${Math.floor(seasons / 4)}년 ${seasons % 4}철`;
+    const treasury = n(params, "treasury");
+    return `${builder}${josa(builder, "이", "가")} 거절해 공동체가 대신 지었다 — ${buildingWord(s(params, "what"))}, ${late} 늦게, `
+      + (treasury > 0 ? `금고 ${moneyWords(treasury)}` : `공동체 웃돈 ${moneyWords(n(params, "premium"))}`);
+  },
   payment_flow: params => {
     const line = LEDGER_CATEGORY_LABELS[s(params, "category") as keyof typeof LEDGER_CATEGORY_LABELS] ?? s(params, "category");
     const out = n(params, "expense") > n(params, "income");
