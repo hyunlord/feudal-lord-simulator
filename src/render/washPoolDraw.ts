@@ -5,12 +5,12 @@ import { depthKey, tileToScreen } from './iso';
 import { BLOCKS_MAX_ZOOM } from './buildingVisualState';
 import { compareRenderItems } from './objectRenderSort';
 import { boundaryV2Enabled } from './renderBoundaryFlag';
-import { washPoolProps, type WashPoolProp } from './washPoolPlacement';
-import { WASH_POOL_ART } from './washPoolArt';
+import { facilityGroundProps, type WashPoolProp } from './washPoolPlacement';
+import { WASH_POOL_ART, FACILITY_GROUND_ENTRIES } from './washPoolArt';
 
 export function withWashPoolProps(queue: readonly RenderQueueItem[], state: GameState, range: TileRange): readonly RenderQueueItem[] {
   if (!boundaryV2Enabled()) return queue;
-  const props = washPoolProps(state, WASH_POOL_ART.readyEntry()).filter(p => tileIsVisibleInRange(p.tx, p.ty, range));
+  const props = facilityGroundProps(state, FACILITY_GROUND_ENTRIES).filter(p => WASH_POOL_ART.image(p.assetId) && tileIsVisibleInRange(p.tx, p.ty, range));
   if (!props.length) return queue;
   const additions: RenderQueueItem[] = props.map(prop => ({ kind: 'wash_pool', id: prop.id, prop, depth: depthKey(prop.tx, prop.ty), anchorTx: prop.tx }));
   additions.sort(compareRenderItems);

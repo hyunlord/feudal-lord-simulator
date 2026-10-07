@@ -102,6 +102,8 @@ export type FarmGroundPropEntry = EntryBase & {
 export type FacilityGroundPropEntry = EntryBase & {
   readonly kind: 'ground-prop'; readonly placement: 'facility-ground';
   readonly buildingKinds: readonly string[]; readonly geometry: ArtGeometry;
+  /** All-season owned pasture, sharing reservations after water facilities. Stock is a real farm inventory key. */
+  readonly pastureYard?: { readonly group: string; readonly priority: number; readonly positiveStock?: string };
 };
 export type GroundPropEntry = FacilityGroundPropEntry | StockPileEntry | FarmGroundPropEntry | SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
 export type WalkerCargoEntry = EntryBase & {

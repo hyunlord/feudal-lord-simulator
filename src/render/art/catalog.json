@@ -26486,5 +26486,74 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-pasture-facilities",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "pasture_shearing_pen",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/wave3/pasture/shearing_pen-v1.png",
+          "width": 256,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave3/candidates-20260926/assets/pasture/shearing_pen-v1.png",
+          "sourceSha256": "e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058",
+          "runtimeSha256": "e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 184
+          },
+          "scale": 0.25,
+          "allowMirror": false
+        },
+        "placement": "facility-ground",
+        "buildingKinds": [
+          "pastoral_farm"
+        ],
+        "pastureYard": {
+          "group": "pasture-yard",
+          "priority": 1,
+          "positiveStock": "fleece"
+        }
+      },
+      {
+        "id": "pasture_sheepfold",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/wave3/pasture/sheepfold-v1.png",
+          "width": 256,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave3/candidates-20260926/assets/pasture/sheepfold-v1.png",
+          "sourceSha256": "254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824",
+          "runtimeSha256": "254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 184
+          },
+          "scale": 0.25,
+          "allowMirror": false
+        },
+        "placement": "facility-ground",
+        "buildingKinds": [
+          "pastoral_farm"
+        ],
+        "pastureYard": {
+          "group": "pasture-yard",
+          "priority": 0
+        }
+      }
+    ],
+    "rules": []
   }
 ]
