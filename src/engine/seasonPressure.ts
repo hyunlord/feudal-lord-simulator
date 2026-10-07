@@ -79,12 +79,18 @@ function seasonsOf(state: GameState): SeasonState {
   return state.seasons ?? initialSeasonState(state);
 }
 
-/** FP-1: cash income and expense posted in (start, end]; the opening balance is neither. */
+/**
+ * FP-1: cash income and expense posted in (start, end]; the opening balance is neither. DEC-TRACE §6 (the user's
+ * decision 2026-10-06): in lord mode [start, end) — what is posted on a season's first tick (the off-map estates' yield,
+ * the steward's answers, after the last season closed on that tick) is the new season's, so none falls between.
+ */
 function cashFlow(state: GameState, start: number, end: number): { readonly income: number; readonly expense: number } {
   let income = 0;
   let expense = 0;
+  const lordMode = state.agency !== undefined;
   for (const entry of (state.ledger ?? EMPTY_LEDGER).entries) {
-    if (entry.account !== "cash" || entry.category === "opening_balance" || entry.tick <= start || entry.tick > end) continue;
+    if (entry.account !== "cash" || entry.category === "opening_balance") continue;
+    if (lordMode ? entry.tick < start || entry.tick >= end : entry.tick <= start || entry.tick > end) continue;
     if (entry.amount > 0) income += entry.amount; else expense -= entry.amount;
   }
   return { income, expense };

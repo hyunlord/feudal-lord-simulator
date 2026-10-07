@@ -36,7 +36,7 @@ const fixture = (name: string): GameState =>
   decodeSave(readFileSync(`fixtures/saves/v4/${name}.save.json`)).envelope.state as GameState;
 
 test("SourceRef has exactly the ten contract types and validates plain JSON refs", () => {
-  assert.deepEqual([...SOURCE_REF_TYPES], ["building", "zone", "policy", "event", "scenario", "trade", "right", "instrument", "actor", "claim"]);
+  assert.deepEqual([...SOURCE_REF_TYPES], ["building", "zone", "policy", "event", "scenario", "trade", "right", "instrument", "actor", "claim", "decision"]);
   for (const type of SOURCE_REF_TYPES) assert.equal(isSourceRef({ type, id: "x" }), true);
   assert.equal(isSourceRef({ type: "building", id: "b", detail: "rule-2" }), true);
   assert.equal(isSourceRef({ type: "guild", id: "x" }), false);

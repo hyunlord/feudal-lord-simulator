@@ -1,0 +1,308 @@
+[
+  {
+    "id": "boarded01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/boarded01.png",
+    "raw_sha256": "ec67d05feeb4cfd54c61271c59634b1f46243c9bac73a974be5e6ea23a5f91dd",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/boarded01.txt",
+    "prompt_sha256": "682bcfd983b08415476c444ec2607305065fb508d8d94cc1ff848de3708fabe8",
+    "selected": true,
+    "raw_size": [
+      970,
+      1622
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png",
+      "references/boarded.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a",
+      "3b3e63fea713e6d5be4f0971b16002512fadd836924d9daf760e4311a21fb5d1"
+    ],
+    "verdict": "selected offline candidate"
+  },
+  {
+    "id": "body01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body01.png",
+    "raw_sha256": "6815d1999e7b38d7b7b188535c7b607b320e96e24e09f6109f89344fbebeb7b0",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body01.txt",
+    "prompt_sha256": "4eb81581cdd48354fca1b36d2d43ba7767a9d63b366b3b0b6b86c836ffb84028",
+    "selected": false,
+    "raw_size": [
+      1036,
+      1518
+    ],
+    "inputs": [
+      "references/house_l2_1420-padded.png"
+    ],
+    "input_sha256": [
+      "a08a8415a47ad73608fdc2e552a8bc46e456d9576bfa5c27698a447a771f4c1c"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "body02",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body02.png",
+    "raw_sha256": "c6636bf5fd95ab202e435aae375a3f25e86ed4ffd041c18715bb69ce97bd2b33",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body02.txt",
+    "prompt_sha256": "02a48965b81f1768532b0ee58511a5ea66bd1d8d4545b693df6f1d2a143f5f7e",
+    "selected": false,
+    "raw_size": [
+      1037,
+      1517
+    ],
+    "inputs": [
+      "body01-native.png"
+    ],
+    "input_sha256": [
+      "b44fee05f8440d2e8360a77a623e892ccaec22416eaf1f69347852647f279b6d"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "body03",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body03.png",
+    "raw_sha256": "7f0da926f4f257e1c93b0f775a54368ab56c7f46317e7783426dfeee44b156ab",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body03.txt",
+    "prompt_sha256": "a1574f4bf452a83ea50aa4270910194759b077ebfab5e8e49189af480cf6ab48",
+    "selected": false,
+    "raw_size": [
+      1015,
+      1549
+    ],
+    "inputs": [
+      "body02-registered-held.png"
+    ],
+    "input_sha256": [
+      "0b895b2d8a8b58f096ad9ab8fbbe3ab47cb9299e9dd8186651dd8509e7d6ee35"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "body04",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body04.png",
+    "raw_sha256": "997060f2ee27c674e353fe6efecfb667eb33aed8254dddf9ffb1f2543606624a",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body04.txt",
+    "prompt_sha256": "24144ab63618f69d8130c3e86e69211ebdc3588c9c9373c0bd783e47691b9b04",
+    "selected": false,
+    "raw_size": [
+      1015,
+      1549
+    ],
+    "inputs": [
+      "body03-native.png"
+    ],
+    "input_sha256": [
+      "ce64ec208f6c1d5527b44a0382fb71d2d5e70b57520b39b51f23deb3dab0adc6"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "body05",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body05.png",
+    "raw_sha256": "dbcd8c65b3b30476c23183152f0930a33c7bb3b94d6635a00f73572b162d82ef",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body05.txt",
+    "prompt_sha256": "70d9d3dc5193a5b5422e322afdfd46817ee30e244633cf80390cf0a0bfdf61e3",
+    "selected": false,
+    "raw_size": [
+      1015,
+      1549
+    ],
+    "inputs": [
+      "body04-native.png"
+    ],
+    "input_sha256": [
+      "ca783e3c8dba8ce44f62274df840f470047510a502fc6ee9282227ceeaa1d1df"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "body06",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body06.png",
+    "raw_sha256": "77f8873dbd67681676b8ce921a0aa35bd638b77e926a242b0a2a69377fd5999b",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body06.txt",
+    "prompt_sha256": "91761ac15a05aa41b3a1f7f24dd443c5b85fbd44b1517280d7e8669e1c4f8988",
+    "selected": false,
+    "raw_size": [
+      1015,
+      1549
+    ],
+    "inputs": [
+      "body05-native.png"
+    ],
+    "input_sha256": [
+      "0bd02dd71044b84372c665ca70344ee7db88bb950feca9828ffca5eb0e1371d0"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "body07",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body07.png",
+    "raw_sha256": "ac75f74f2cbaca360f29ddc170e235ae268658cdb342af2eaf195f2cb6f65fc2",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body07.txt",
+    "prompt_sha256": "9ba8f5aff8dd60bb9c09ddfa5c3f02260dc52753bf6889c1d1bd81c9349ed07c",
+    "selected": true,
+    "raw_size": [
+      1015,
+      1549
+    ],
+    "inputs": [
+      "body06-native.png"
+    ],
+    "input_sha256": [
+      "0b6d3fd01d80adf712e98edce934d04031a25d131673ea1f20effe0ba65ee3ec"
+    ],
+    "verdict": "selected offline candidate"
+  },
+  {
+    "id": "neglected01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/neglected01.png",
+    "raw_sha256": "d787e177f3a24aa69623cee078be68317159f1f4047486e20bd75d3024b65146",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/neglected01.txt",
+    "prompt_sha256": "49e808efa2f76cc4aee938b0215fcf64e03d1480f8b34fa84ea858634e209353",
+    "selected": true,
+    "raw_size": [
+      970,
+      1622
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png",
+      "references/neglected.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a",
+      "848a4359f4b4f4c1dc2115c0169e5c114481895cce765de69dace837d546c850"
+    ],
+    "verdict": "selected offline candidate"
+  },
+  {
+    "id": "plague-shut01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/plague-shut01.png",
+    "raw_sha256": "78e4b3c1d46d948c342cfc846bd42a7e21548570c49afd6683e73374db47e186",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/plague-shut01.txt",
+    "prompt_sha256": "95deeeccbd020b83fd59b48e231df35491ccce95644a9ec16e69143004d0525f",
+    "selected": true,
+    "raw_size": [
+      970,
+      1621
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png",
+      "references/plague-shut.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a",
+      "f451409a2d218143db8db9b248fa6b820580c68db44d05d1bdb6f0e1fa114fb7"
+    ],
+    "verdict": "selected offline candidate"
+  },
+  {
+    "id": "snow01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/snow01.png",
+    "raw_sha256": "e76e3de9cf165405f619a6d2c2b2d487262bdd108df854756c4a28876b7c7117",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/snow01.txt",
+    "prompt_sha256": "0d6b59815406b26e3cf46c1a72ddccffaf40f2d06b5ace9eaeb95d5f0e34d6a7",
+    "selected": true,
+    "raw_size": [
+      970,
+      1622
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a"
+    ],
+    "verdict": "selected offline candidate"
+  },
+  {
+    "id": "strained01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/strained01.png",
+    "raw_sha256": "cc15891956bf5c46face6186d581c3bf992f13d11c8c957e0a3d316a8b6e89b3",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/strained01.txt",
+    "prompt_sha256": "2ff6c9e365241dcde1948a6cbcf2f2eb1ec1129367658662df95e61cddb72319",
+    "selected": true,
+    "raw_size": [
+      970,
+      1622
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png",
+      "references/strained.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a",
+      "6d0513755750f62251c9412b0a54c624e27ca2261133e4830f3e7b5404b0105e"
+    ],
+    "verdict": "selected offline candidate"
+  },
+  {
+    "id": "vacant01",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/vacant01.png",
+    "raw_sha256": "74460e18871947bc52dfe4f96a65cff6affacb60f2f2721c0d4b85f56fc49cc1",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/vacant01.txt",
+    "prompt_sha256": "41511b54d93e15c7c32827011544f0e0a6ae3a82aff3aa19aea76c01156a7841",
+    "selected": false,
+    "raw_size": [
+      970,
+      1621
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png",
+      "references/vacant.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a",
+      "1a2a0ee175e3f8afefa66c0501cd1c1c337d83fcd5e25dd0fed52f3d1c3ee4e3"
+    ],
+    "verdict": "rejected/held; body audit lists reason; vacant01 produced only57raw nonzeroalpha pixels"
+  },
+  {
+    "id": "vacant02",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/vacant02.png",
+    "raw_sha256": "5200770b4b6e2a42df8d7399583c98435142083d745b87f48dad798dc3998a33",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/vacant02.txt",
+    "prompt_sha256": "b8c26d3f6bbe38b98bfcf992e4a43060ce8318971d18ce1c389f9512fc7f7604",
+    "selected": true,
+    "raw_size": [
+      970,
+      1622
+    ],
+    "inputs": [
+      "registration-before-top15/house_l2_1420-body.png"
+    ],
+    "input_sha256": [
+      "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a"
+    ],
+    "verdict": "Selected after whole-set top15/pivot15 expansion; no loss or crop"
+  },
+  {
+    "id": "vacant03",
+    "tool": "builtin imagegen",
+    "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/vacant03.png",
+    "raw_sha256": "7507e104a342abf42145c595aa1ffe2ce46905cd7736f83d913f8ecd862dbbe0",
+    "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/vacant03.txt",
+    "prompt_sha256": "e269fe1e79242c932fbe3a956a4abdeb23929d95722ff7a0092e5d5df1abf6cf",
+    "selected": false,
+    "inputs": [
+      "vacant02-registered-rejected-loss11.png"
+    ],
+    "input_sha256": [
+      "081d1afff8502cf1b8cf8eebb8843678def6366a5ec6a8b639af7f8facd77053"
+    ],
+    "verdict": "rejected geometric downshift and faint topalpha; no crop applied"
+  }
+]

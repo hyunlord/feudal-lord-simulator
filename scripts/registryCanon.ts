@@ -17,6 +17,8 @@ export interface CanonFiles<Event extends { readonly id: string }, Entry extends
 export interface CanonDelta<Event extends { readonly id: string }, Entry extends { readonly id: string }> {
   readonly events: readonly Event[];
   readonly registry?: { readonly policy: unknown; readonly entries: readonly Entry[] };
+  /** DEC-TRACE (v4.2): an events-only delta that rewrites only these fields of each event (the rest kept as merged so far). */
+  readonly fields?: readonly string[];
 }
 
 /**
@@ -38,7 +40,11 @@ export function mergeCanon<Event extends { readonly id: string }, Entry extends 
     if (delta.registry === undefined) {
       const unknown = eventIds.filter(id => !events.some(event => event.id === id));
       if (unknown.length > 0) throw new Error(`an events-only delta may only replace events: ${unknown.join(",")} are new`);
-      events = merge(events, delta.events);
+      const fields = delta.fields;
+      events = fields === undefined ? merge(events, delta.events) : events.map(event => {
+        const change = delta.events.find(entry => entry.id === event.id) as Readonly<Record<string, unknown>> | undefined;
+        return change === undefined ? event : { ...event, ...Object.fromEntries(fields.filter(field => field in change).map(field => [field, change[field]])) } as Event;
+      });
       continue;
     }
     const entryIds = delta.registry.entries.map(entry => entry.id).sort();
@@ -51,13 +57,17 @@ export function mergeCanon<Event extends { readonly id: string }, Entry extends 
 
 const DRAFTS = resolve(import.meta.dirname, "../docs/design/content-drafts-20261002");
 /**
- * The canon releases in order (v4, then its deltas). v4.1-senders rewrites three events' senders only (008 → the church,
- * 024·035 → the town community: one faction each, so their holds can cost a relation, ER-19); no registry file.
+ * The canon releases in order (v4, then its deltas). v4.2 (the audit of the 86 active events: 30 revised — five
+ * commands and 25 cards' words) replaces its 30 ids. v4.1-senders rewrites three events' senders only (008 → the church,
+ * 024·035 → the town community: one faction each, so their holds can cost a relation, ER-19); no registry file. It is
+ * applied last and to the sender field alone: v4.2's 024 and 035 were written before it and carry the old senders,
+ * while their words are v4.2's.
  */
-export const CANON_RELEASES: readonly { readonly dir: string; readonly events: string; readonly registry?: string }[] = [
+export const CANON_RELEASES: readonly { readonly dir: string; readonly events: string; readonly registry?: string; readonly fields?: readonly string[] }[] = [
   { dir: "v4", events: "events-v4.json", registry: "registry-v4.json" },
   { dir: "v4.1", events: "events-v4.1.json", registry: "registry-v4.1.json" },
-  { dir: "v4.1-senders", events: "events-v4.1.json" },
+  { dir: "v4.2", events: "events-v4.2.json", registry: "registry-v4.2.json" },
+  { dir: "v4.1-senders", events: "events-v4.1.json", fields: ["sender"] },
 ];
 
 /** The merged canon read from the repository's content drafts. */
@@ -65,6 +75,7 @@ export function readCanon<Event extends { readonly id: string }, Entry extends {
   const [base, ...deltas] = CANON_RELEASES.map(release => ({
     events: JSON.parse(readFileSync(resolve(DRAFTS, release.dir, release.events), "utf8")) as Event[],
     ...(release.registry === undefined ? {} : { registry: JSON.parse(readFileSync(resolve(DRAFTS, release.dir, release.registry), "utf8")) as { policy: unknown; entries: Entry[] } }),
+    ...(release.fields === undefined ? {} : { fields: release.fields }),
   }));
   return mergeCanon(base as CanonFiles<Event, Entry>, deltas);
 }

@@ -1,0 +1,144 @@
+{
+  "pairs": 92,
+  "positiveRuntimeImages": [
+    "height-wave2-l0garden/house_l0_garden-boarded-v2.png",
+    "height-wave2-l0garden/house_l0_garden-body-v2.png",
+    "height-wave2-l0garden/house_l0_garden-neglected-v2.png",
+    "height-wave2-l0garden/house_l0_garden-snow-v2.png",
+    "height-wave2-l0garden/house_l0_garden-vacant-v2.png",
+    "height-wave2-l0pen/house_l0_pen-boarded-v2.png",
+    "height-wave2-l0pen/house_l0_pen-body-v2.png",
+    "height-wave2-l0pen/house_l0_pen-neglected-v2.png",
+    "height-wave2-l0pen/house_l0_pen-snow-v2.png",
+    "height-wave2-l0pen/house_l0_pen-vacant-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-boarded-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-body-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-neglected-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-plague-shut-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-snow-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-strained-v2.png",
+    "height-wave2-l1artisan/house_l1_artisan-vacant-v2.png",
+    "height-wave2-l1garden/house_l1_garden-boarded-v2.png",
+    "height-wave2-l1garden/house_l1_garden-body-v2.png",
+    "height-wave2-l1garden/house_l1_garden-neglected-v2.png",
+    "height-wave2-l1garden/house_l1_garden-plague-shut-v2.png",
+    "height-wave2-l1garden/house_l1_garden-snow04.png",
+    "height-wave2-l1garden/house_l1_garden-strained-v2.png",
+    "height-wave2-l1garden/house_l1_garden-vacant-v2.png",
+    "height-wave2-l1tile/house_l1_tile-boarded-v2.png",
+    "height-wave2-l1tile/house_l1_tile-body-v2.png",
+    "height-wave2-l1tile/house_l1_tile-neglected-v2.png",
+    "height-wave2-l1tile/house_l1_tile-plague-shut-v2.png",
+    "height-wave2-l1tile/house_l1_tile-snow-v2.png",
+    "height-wave2-l1tile/house_l1_tile-strained-v2.png",
+    "height-wave2-l1tile/house_l1_tile-vacant-v2.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "before-l0garden-original-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l0garden-neglected-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l0garden-vacant-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l0garden-abandoned-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l0garden-abandoned-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l0garden-original-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l0garden-melt-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l1artisan-strained-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l1artisan-neglected-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l1artisan-neglected-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l1artisan-winter-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-l1artisan-winter-abandoned-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1garden-abandoned-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1tile-strained-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1tile-neglected-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1tile-vacant-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1tile-melt-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1tile-melt-z0.6",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-l1tile-melt-abandoned-z1",
+      "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": "Five prepared Wave2 families; two L0 strained images data-only; closed doorleaf proxy; L0pen snow80.22%, artisan awning82.17%, tile strict2:1 projection failed; low-zoom fine-state readability limited; see per-family measurements.",
+  "observations": "Five roof snow layers attached; raised doors/walls; L1 artisan/tile lower doorway occluded by existing shop; L1garden green garden retained in winter; L0 scenes have zero actors; low zoom fine states not certified. Original source angles/coverage exceptions remain.",
+  "directlyViewed": {
+    "closeBefore": 5,
+    "closeAfter": 10,
+    "normalAfter": 5,
+    "winterZoom06After": 5,
+    "stateExamplesAfter": 5
+  },
+  "dataOnlyImages": 2
+}

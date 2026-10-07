@@ -9,6 +9,8 @@ import { HOLD_CLAIM_WEAKEN, HOLD_RELATION_DELTA } from "../content/registry/regi
 import { V4_SENDER_FACTION } from "../content/registry/registryHoldCopy.ko";
 import { V4_COPY } from "../content/registry/v4Copy.generated";
 import { V4_BLOCKED_ENTRIES, V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
+import { V4_HELD_ENTRIES } from "../content/registry/v4Holds.generated";
+import { TOO_FEW_CHOICES_LEFT, V4_HELD_CHOICES } from "../content/registry/registryHeldChoices.ko";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "./estateSuits";
@@ -75,9 +77,11 @@ export const V4_COMMANDS: Readonly<Record<string, Dispatch>> = {
   file_suit: { run: (state, args) => (estatesOf(state).claims.find(claim => claim.id === args.claimId)?.claimant === LORD ? fileSuit(state, str(args.claimId)) : state),
     did: (after, _, args) => estatesOf(after).suits.some(suit => suit.claimId === args.claimId) },
   add_suit_evidence: { run: (state, args) => (lordSuit(state, args.suitId) ? addSuitEvidence(state, str(args.suitId), args.evidence as Parameters<typeof addSuitEvidence>[2]) : state),
-    did: (after, _, args) => {
+    did: (after, before, args) => {
       const suit = estatesOf(after).suits.find(entry => entry.id === args.suitId);
-      return estatesOf(after).claims.find(claim => claim.id === suit?.claimId)?.evidence.some(entry => entry.kind === args.evidence) === true;
+      // DEC-TRACE (P-D1): the evidence is new — a choice that hands in what the court already has does nothing.
+      const has = (state: GameState) => estatesOf(state).claims.find(claim => claim.id === suit?.claimId)?.evidence.filter(entry => entry.kind === args.evidence).length ?? 0;
+      return has(after) > has(before);
     } },
   seek_suit_patron: { run: (state, args) => (lordSuit(state, args.suitId) ? seekSuitPatron(state, str(args.suitId), str(args.factionId)) : state),
     did: (after, _, args) => estatesOf(after).suits.find(suit => suit.id === args.suitId)?.patron === args.factionId },
@@ -152,6 +156,9 @@ export function runCommands(state: GameState, commands: readonly V4Command[], sc
 // --- ER-19 holds (R3) -------------------------------------------------------------------------------------------------------
 
 /** ER-19: what holding costs on this entry — its claim weakens, its promise or negotiation runs on, or its sender's relation falls (null: no cost, the hold is hidden). */
+/** DEC-TRACE: the faction an entry's sender speaks for (the canon's sender role), or undefined. */
+export const v4SenderFaction = (entryId: string): string | undefined => V4_SENDER_FACTION[V4_COPY[entryId]?.senderFaction ?? ""];
+
 export type HoldCost = { readonly kind: "claim" } | { readonly kind: "deadline"; readonly binding: string } | { readonly kind: "relation"; readonly faction: string };
 export function holdCost(entry: V4Entry): HoldCost | null {
   const names = Object.keys(entry.bindings);
@@ -189,7 +196,13 @@ export function applyHold(state: GameState, entry: V4Entry, bound: Readonly<Reco
 export interface V4ChoiceSupport { readonly id: string; readonly supported: boolean; readonly reason: string | null }
 export interface V4EntrySupport { readonly id: string; readonly contentClass: string; readonly runs: boolean; readonly reason: string | null; readonly choices: readonly V4ChoiceSupport[] }
 
+/** DEC-TRACE: the v4.2 audit's held events and the choices held after it (their reasons kept as data). */
+const HELD_ENTRIES: ReadonlyMap<string, string> = new Map(V4_HELD_ENTRIES.map(entry => [entry.id, `held (v4.2 audit, ${entry.effectClass}): ${entry.reason}`]));
+const HELD_CHOICES: ReadonlyMap<string, string> = new Map(V4_HELD_CHOICES.map(entry => [`${entry.entry}:${entry.choice}`, `held (DEC-TRACE): ${entry.reason}`]));
+
 function choiceSupport(entry: V4Entry, choice: V4Choice): V4ChoiceSupport {
+  const held = HELD_CHOICES.get(`${entry.id}:${choice.id}`);
+  if (held !== undefined) return { id: choice.id, supported: false, reason: held };
   if (choice.execution === "blocked_unsupported_effect") return { id: choice.id, supported: false, reason: "new effect (R5)" };
   // R4: a compound choice runs through `runCommands`, which is atomic (blocked_until_atomic_adapter is lifted here).
   if (choice.commands.length === 0 && holdCost(entry) === null) return { id: choice.id, supported: false, reason: "hold without a time cost (R3)" };
@@ -203,8 +216,12 @@ function entrySupport(entry: V4Entry): V4EntrySupport {
   const choices = entry.choices.map(choice => choiceSupport(entry, choice));
   const problem = expressionProblem([entry.bindings, entry.conditions]);
   const supported = choices.filter(choice => choice.supported).length;
-  const reason = entry.contentClass !== "new_event_draft" ? "a variant of an existing occurrence's words (ER-13), not drawn"
-    : problem !== null ? problem : supported < entry.minimumEnabledConsequentialChoices ? `${supported} supported choice(s), ${entry.minimumEnabledConsequentialChoices} needed` : null;
+  const heldChoices = entry.choices.some(choice => HELD_CHOICES.has(`${entry.id}:${choice.id}`));
+  const reason = HELD_ENTRIES.get(entry.id) ?? (entry.contentClass !== "new_event_draft" ? "a variant of an existing occurrence's words (ER-13), not drawn"
+    : problem !== null ? problem
+    // DEC-TRACE: an event its held choices leave with fewer than two is held whole.
+    : heldChoices && supported < 2 ? `held (DEC-TRACE): ${TOO_FEW_CHOICES_LEFT}`
+    : supported < entry.minimumEnabledConsequentialChoices ? `${supported} supported choice(s), ${entry.minimumEnabledConsequentialChoices} needed` : null);
   return { id: entry.id, contentClass: entry.contentClass, runs: reason === null, reason, choices };
 }
 

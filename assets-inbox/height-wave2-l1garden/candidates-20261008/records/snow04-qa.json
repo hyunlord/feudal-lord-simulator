@@ -1,0 +1,105 @@
+{
+  "manual_roof_roi_polygons_native": [
+    [
+      [
+        38,
+        31
+      ],
+      [
+        87,
+        60
+      ],
+      [
+        69,
+        92
+      ],
+      [
+        17,
+        67
+      ]
+    ],
+    [
+      [
+        87,
+        60
+      ],
+      [
+        102,
+        82
+      ],
+      [
+        98,
+        82
+      ],
+      [
+        84,
+        63
+      ]
+    ]
+  ],
+  "roi_pixel_count": 2414,
+  "alpha_weighted_coverage": 0.6760157252627647,
+  "binary_alpha_gt16_coverage": 0.7932891466445733,
+  "binary_alpha_ge128_coverage": 0.6855840927920464,
+  "target_coverage": [
+    0.6,
+    0.8
+  ],
+  "preferred_alpha_weighted_target": [
+    0.65,
+    0.7
+  ],
+  "outside_manual_roi_alpha_gt16": 214,
+  "outside_body_alpha_gt16": 11,
+  "registration": {
+    "raw_size": [
+      1118,
+      1407
+    ],
+    "resize": [
+      87,
+      109
+    ],
+    "translation": [
+      17,
+      21
+    ],
+    "final_size": [
+      139,
+      175
+    ],
+    "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+  },
+  "note": "Same fixed manual roofROI as snow03; whole-layer registration corrected regenerated enlarged eave; no pixel masks",
+  "first_registration_measurement": {
+    "alpha_weighted_coverage": 0.74595902984226,
+    "binary_alpha_gt16_coverage": 0.8628831814415907,
+    "registration": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "resize": [
+        96,
+        121
+      ],
+      "translation": [
+        12,
+        19
+      ],
+      "policy": "whole generated RGBA uniform downsample+translation, integer size rounding; no clipping/color key deletion/masking",
+      "final_size": [
+        139,
+        175
+      ]
+    }
+  },
+  "max_outside_body_distance_native": 1.0,
+  "verdict": {
+    "alpha_weighted_60_80": "PASS",
+    "binary_gt16_60_80": "PASS",
+    "alpha_weighted_preferred_65_70": "PASS",
+    "roof_material": "visual transparent gaps, no brown roof restoration",
+    "scope": "static only; real game not checked"
+  }
+}

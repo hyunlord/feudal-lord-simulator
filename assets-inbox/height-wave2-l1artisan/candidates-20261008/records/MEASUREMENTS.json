@@ -1,0 +1,322 @@
+{
+  "doorLeafExcludesFrame": {
+    "rawEndpoints": {
+      "topLeft": [
+        450,
+        794
+      ],
+      "topRight": [
+        620,
+        884
+      ],
+      "bottomLeft": [
+        450,
+        1225
+      ],
+      "bottomRight": [
+        620,
+        1314
+      ]
+    },
+    "nativeHeightsLeftRight": [
+      46.548,
+      46.44
+    ],
+    "nativeProjectedWidth": 18.36,
+    "worldHeightsLeftRight": [
+      23.209844137220152,
+      23.15599299073008
+    ],
+    "worldProjectedWidth": 9.154694903311892,
+    "heightHumanRatios": [
+      1.318741144160236,
+      1.3156814199278455
+    ],
+    "widthHumanRatio": 0.5201531195063575,
+    "manualNativeUncertainty": 1.2
+  },
+  "clearOpeningEstimateSeparateFromLeaf": {
+    "rawEndpoints": {
+      "topLeft": [
+        440,
+        784
+      ],
+      "topRight": [
+        628,
+        880
+      ],
+      "bottomLeft": [
+        440,
+        1222
+      ],
+      "bottomRight": [
+        628,
+        1318
+      ]
+    },
+    "nativeHeightsLeftRight": [
+      47.304,
+      47.304
+    ],
+    "nativeProjectedWidth": 20.304,
+    "worldHeightsLeftRight": [
+      23.586802162650642,
+      23.586802162650642
+    ],
+    "worldProjectedWidth": 10.12401554013315,
+    "heightHumanRatios": [
+      1.3401592137869682,
+      1.3401592137869682
+    ],
+    "widthHumanRatio": 0.5752281556893835,
+    "manualNativeUncertainty": 1.2
+  },
+  "doorFrameNotUsedForPass": {
+    "note": "Thick lintel and side jamb are excluded from both measurements"
+  },
+  "awningClearanceNotDoor": {
+    "leftPostRawTopFoot": [
+      [
+        84,
+        747
+      ],
+      [
+        84,
+        1156
+      ]
+    ],
+    "rightPostRawTopFoot": [
+      [
+        400,
+        849
+      ],
+      [
+        400,
+        1298
+      ]
+    ],
+    "nativeVerticalClearance": [
+      44.172,
+      48.492
+    ],
+    "warning": "Worktable obstructs this bay; this is awning frame height, NOT usable house entrance and not counted as door."
+  },
+  "bodyGround": {
+    "near": {
+      "originalNative": [
+        86,
+        123
+      ],
+      "rawSelected": [
+        709,
+        1411
+      ],
+      "registeredNative": [
+        86.072,
+        160.388
+      ],
+      "expectedWithTopPadding": [
+        86,
+        159
+      ],
+      "signedResidualNative": [
+        0.07200000000000273,
+        1.3880000000000052
+      ]
+    },
+    "right": {
+      "originalNative": [
+        121,
+        107
+      ],
+      "rawSelected": [
+        1027,
+        1228
+      ],
+      "registeredNative": [
+        120.416,
+        140.624
+      ],
+      "expectedWithTopPadding": [
+        121,
+        143
+      ],
+      "signedResidualNative": [
+        -0.5840000000000032,
+        -2.3760000000000048
+      ]
+    },
+    "thresholdRight": {
+      "originalNative": [
+        73,
+        115
+      ],
+      "rawSelected": [
+        629,
+        1320
+      ],
+      "registeredNative": [
+        77.432,
+        150.56
+      ],
+      "expectedWithTopPadding": [
+        73,
+        151
+      ],
+      "signedResidualNative": [
+        4.432000000000002,
+        -0.4399999999999977
+      ]
+    }
+  },
+  "workstationFeetSeparate": {
+    "leftAwningPost": {
+      "originalNative": [
+        20,
+        98
+      ],
+      "rawSelected": [
+        91,
+        1159
+      ],
+      "registeredNative": [
+        19.328,
+        133.172
+      ],
+      "expectedWithTopPadding": [
+        20,
+        134
+      ],
+      "signedResidualNative": [
+        -0.6720000000000006,
+        -0.828000000000003
+      ]
+    },
+    "frontBenchLeg": {
+      "originalNative": [
+        44,
+        111
+      ],
+      "rawSelected": [
+        304,
+        1300
+      ],
+      "registeredNative": [
+        42.332,
+        148.4
+      ],
+      "expectedWithTopPadding": [
+        44,
+        147
+      ],
+      "signedResidualNative": [
+        -1.6679999999999993,
+        1.4000000000000057
+      ]
+    },
+    "rightAwningPost": {
+      "originalNative": [
+        56,
+        109
+      ],
+      "rawSelected": [
+        414,
+        1299
+      ],
+      "registeredNative": [
+        54.211999999999996,
+        148.292
+      ],
+      "expectedWithTopPadding": [
+        56,
+        145
+      ],
+      "signedResidualNative": [
+        -1.7880000000000038,
+        3.2920000000000016
+      ]
+    }
+  },
+  "groundManualUncertaintyNative": 2,
+  "roofRidgeNative": [
+    [
+      42,
+      20
+    ],
+    [
+      109,
+      61
+    ]
+  ],
+  "snow": {
+    "main": {
+      "areaPixels": 4408,
+      "weightedCoveragePercent": 69.92722678908224,
+      "binaryAlphaOver32CoveragePercent": 74.2967332123412,
+      "binaryAlphaAtLeast128CoveragePercent": 70.508166969147
+    },
+    "awning": {
+      "areaPixels": 610,
+      "weightedCoveragePercent": 82.16779170684669,
+      "binaryAlphaOver32CoveragePercent": 86.55737704918033,
+      "binaryAlphaAtLeast128CoveragePercent": 83.27868852459017
+    },
+    "union": {
+      "areaPixels": 5005,
+      "weightedCoveragePercent": 71.51781551781552,
+      "binaryAlphaOver32CoveragePercent": 75.88411588411589,
+      "binaryAlphaAtLeast128CoveragePercent": 72.16783216783217
+    },
+    "maskPolygons": {
+      "main": [
+        [
+          15,
+          63
+        ],
+        [
+          42,
+          20
+        ],
+        [
+          109,
+          61
+        ],
+        [
+          122,
+          86
+        ],
+        [
+          111,
+          78
+        ],
+        [
+          86,
+          104
+        ]
+      ],
+      "awning": [
+        [
+          15,
+          80
+        ],
+        [
+          26,
+          69
+        ],
+        [
+          57,
+          88
+        ],
+        [
+          44,
+          100
+        ]
+      ]
+    },
+    "measurementOnlyNeverAppliedToArt": true,
+    "manualMaskUncertaintyNative": 2,
+    "outsideMaskAlphaOver32Pixels": 286,
+    "outsideMaskAlphaWeightedPixels": 261.01176470588234,
+    "maxOutsideChebyshevDistanceNative": 3
+  }
+}

@@ -10,6 +10,8 @@
 /** The ten kinds of origin a cause or effect can point back to. */
 export const SOURCE_REF_TYPES = [
   "building", "zone", "policy", "event", "scenario", "trade", "right", "instrument", "actor", "claim",
+  // DEC-TRACE §2: a decision of the lord's (or the steward's by his policy) behind it (`d-000001`).
+  "decision",
 ] as const;
 export type SourceRefType = (typeof SOURCE_REF_TYPES)[number];
 

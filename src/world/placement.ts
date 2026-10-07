@@ -1,3 +1,4 @@
+import { MARKET_CHARTER_RIGHT_ID } from "../content/chapterConfig";
 import { scenarioById } from "../content/scenario/registry";
 import { STAGE_ORDER, type StageId } from "../content/scenario/types";
 import {
@@ -53,7 +54,20 @@ type ResourceWorldView = WorldView & {
   readonly palisade?: WallBoundary | null;
   /** ARCH-1b (MA-10): the map's river; absent (an older save), all water flows. */
   readonly river?: RiverData;
+  /** DEC-TRACE §6: lord mode (the town agency) and the rights granted (a market charter opens the market). */
+  readonly agency?: unknown;
+  readonly politics?: { readonly rights: readonly { readonly id: string }[] };
 };
+
+/**
+ * DEC-TRACE §6 (the user's decision 2026-10-06): in lord mode a market charter opens the market to the town before its
+ * era would — historically a charter was granted to a village and its market was held there (A1: the lord sets the
+ * condition, the town answers). Elsewhere, and for the other kinds, the era decides as before.
+ */
+export function isBuildingOpen(world: Pick<ResourceWorldView, "era" | "scenarioId" | "agency" | "politics">, kind: BuildingKind): boolean {
+  if (isBuildingUnlocked(kind, world.era ?? "hamlet", world.scenarioId)) return true;
+  return kind === "market" && world.agency !== undefined && world.politics?.rights.some(right => right.id.split("@")[0] === MARKET_CHARTER_RIGHT_ID) === true;
+}
 
 const ERA_STAGE_INDEX = {
   hamlet: 0,
@@ -192,7 +206,7 @@ export function canPlaceBuildingBeforeRoad(
   const origin = { tx, ty };
   const footprint = footprintTiles(origin, definition);
 
-  if (!isBuildingUnlocked(kind, world.era ?? "hamlet", world.scenarioId)) {
+  if (!isBuildingOpen(world, kind)) {
     return { ok: false, reason: PlacementFailure.locked_era };
   }
 

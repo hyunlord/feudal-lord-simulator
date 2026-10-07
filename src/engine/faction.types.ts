@@ -12,6 +12,8 @@ export interface FactionMemory {
   readonly delta: number;
   /** What moved it: `petition:<defId>:<answer>`, `famine:<choice>`, `decline:<cause>`, `restored`, `house_change`, `raid:held|breached`. */
   readonly reason: string;
+  /** DEC-TRACE §2 (save v52): the decision whose words it carries (the thread of consequence). */
+  readonly decisionId?: string;
 }
 
 /** FX-5: one line of the faction's own history (not the lord's doing): a leader's death and heir, a world event, its own affairs. */

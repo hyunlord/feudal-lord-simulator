@@ -32,8 +32,10 @@ const YEAR = BALANCE.TICKS_PER_YEAR;
 const advance = (state: GameState, ticks: number) => { let next = state; for (let tick = 0; tick < ticks; tick += 1) next = advanceTick(next); return next; };
 const homes = (state: GameState) => stewardshipOf(state).petitions.filter(petition => petition.estateId === HOME_ESTATE_ID);
 
-test("SW-11 the home estate's petitions come to the lord himself every year, the twelve kinds in cycles; an answer moves the treasury by its table and the factions through the ledger", () => {
+test("SW-11 a home petition the lord keeps comes to him, the twelve kinds in cycles; an answer moves the treasury by its table and the factions through the ledger", () => {
+  // DEC-TRACE §1 (GP-7): the home petitions are the steward's by default; here the lord keeps every kind ("bring it to me").
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
+  for (const kind of Object.keys(HOME_PETITION_KINDS)) state = gameReducer(state, { type: "set_standing_policy", kind, setting: "lord" });
   const answered: { readonly petition: EstatePetition; readonly before: number; readonly after: number }[] = [];
   let left: EstatePetition | undefined;
   for (let tick = 0; tick < 3 * YEAR; tick += 1) {
@@ -96,25 +98,24 @@ function held(): GameState {
   return state;
 }
 
-test("SW-12 the steward answers by precedent a kind the lord answered there before; the exceptions can bring recurring ones up again", () => {
+test("SW-12 (DEC-TRACE §1, GP-7) a delegated estate's steward answers by the lord's standing policy, never by precedent; the exceptions and \"bring it to me\" bring it up", () => {
   let state = held();
   const stewardship = stewardshipOf(state);
   const oversight = stewardship.oversight[0]!;
   const candidate = stewardship.stewards.find(entry => entry.estateId === oversight.estateId && entry.personId !== oversight.stewardId)!;
   state = gameReducer(state, { type: "set_estate_oversight", estateId: oversight.estateId, mode: "steward", stewardId: candidate.personId });
-  state = gameReducer(state, { type: "set_exception_rules", rules: { amountAtLeast: 0, rights: true, marriage: true } });
-  // The lord has answered every kind there before (refused).
+  // The lord has answered every kind there before (refused): LM9-3's precedent is gone, the steward follows the policy.
   const prior = (Object.keys(PETITION_KINDS) as EstatePetitionKind[]).map((kind, index): EstatePetition => ({ id: `prior-${index}`, estateId: oversight.estateId, kind,
     group: PETITION_KINDS[kind].group, amount: 1, rights: false, marriage: false, tick: state.tick - 10, deadline: state.tick, status: "refused", decidedBy: "lord", escalated: "amount" }));
   state = { ...state, stewardship: { ...stewardshipOf(state), petitions: [...stewardshipOf(state).petitions, ...prior] } };
+  for (const kind of Object.keys(PETITION_KINDS)) state = gameReducer(state, { type: "set_standing_policy", kind, setting: "lenient" });
   const from = state.tick;
   state = advance(state, 1_000);
   const followed = stewardshipOf(state).petitions.find(entry => entry.estateId === oversight.estateId && entry.tick > from)!;
-  assert.deepEqual([followed.status, followed.decidedBy, followed.precedent, followed.escalated], ["refused", "steward", true, undefined]);
-  const line = state.history!.records.find(record => record.tick > from && record.template === "stewardship.precedent")!;
-  assert.match(historySummary(line, state), /선례대로/);
-  // Recurring kinds brought up again: the next season's petition comes to the lord.
-  state = gameReducer(state, { type: "set_exception_rules", rules: { amountAtLeast: 0, rights: true, marriage: true, recurring: true } });
+  if (followed.decidedBy === "steward") assert.deepEqual([followed.status, followed.policy, followed.precedent], ["granted", "lenient", undefined]);
+  else assert.equal(followed.escalated, "amount", "only a large sum goes past the steward");
+  // The exceptions bring it up again.
+  state = gameReducer(state, { type: "set_exception_rules", rules: { amountAtLeast: 0, rights: true, marriage: true } });
   const again = state.tick;
   state = advance(state, 1_000);
   const brought = stewardshipOf(state).petitions.find(entry => entry.estateId === oversight.estateId && entry.tick > again)!;

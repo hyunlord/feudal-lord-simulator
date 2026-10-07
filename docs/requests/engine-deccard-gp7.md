@@ -69,3 +69,48 @@
 8. **장터 결산의 보관**: `stallSettlements(state)` — 결산마다 좌판 수·사용료를 장부 접기(약 3.6년) 뒤에도. 지금은 그 뒤 "옛 결산은 접혔다"고만 말한다.
 
 함께 쓰면 좋은 것(§3 `answerOutlook`에 들어갈 나중 줄): 기근의 철마다 상인 기분·떠날 가구, 역병 임금·정착·지대·유지비, 4장 건설 속도·직조공·옷감값·수확 몫·인두세·도시 청부·자치 해, 5장 확인 벌금, `influence_later`; 유언 답 기한 `MarriagePlan.willAnswerDeadline`; 약속 어김 때 증인 몫(`WITNESS_RELATION_LOSS`)을 약속 기록이나 나중 줄에; 감사 "묵인" 뒤 계속 빼돌림; "그대로 둠" 뒤 다툼 단계; `answer_will_change`의 금고 밖 거절 까닭. 선택 사항: 저장에 카메라(지금은 화면 쪽 설정에 둔다).
+
+## 엔진 답 (DEC-TRACE, 2026-10-06)
+설계는 [dec-trace.md](../design/dec-trace.md), 결정은 DTR-1~10, 저장은 v52다. 영주 모드에서만 동작한다.
+
+- **§1 결정 기록**:
+  - 영주 모드의 카드 답은 명령 하나에 기록 하나다(`decision.card`; `params.decisionKind`·`command`·`subjectId`·`chosen`, `decision.alternatives`).
+  - 큰 다섯은 지금처럼 `decision.<kind>`다.
+  - 청지기의 답은 `decision.steward`(`params.policy`), 기한이 지난 것은 `decision.lapsed`(`chosen: "lapsed"`)다.
+  - 결정 id는 그 기록의 id다. `trace.decisions[].id`도 같다.
+- **§2 나중 기록에서 결정으로**:
+  - `HistoryRecord.because?: { decisionId; key; part? }[]`(넷까지, 주원인 먼저)다.
+  - 열쇠(`CONSEQUENCE_KEYS`): `faction_act`, `households_left`, `households_arrived`, `suit_turned`, `marriage_turned`, `promise_made`, `promise_kept`, `promise_broken`, `project_started`, `goods_delivered`, `audit`, `estate_mood`, `right_income`, `crisis_prepared`, `crisis_outcome`.
+  - 결정이 그 자리에서 움직인 세력 마음은 기록 대신 세력 기억(`FactionMemory.decisionId`)에 붙는다. `traceInRange`가 `key: "relation"`으로 함께 준다.
+  - `because`가 있는 기록은 접히지 않는다.
+- **§3 읽기 모델**:
+  - `answerOutlook(state, command)`(`src/state/decisionOutlook.ts`): `{ now, later, remembers }`. 명령을 사본에 돌린다.
+  - `traceInRange(state, from, to)` → `{ recordId, tick, key, actor, delta, part, decisionId, decisionTick }`.
+  - `yearReview(state, year)` → `{ house, decisions, consequences }`. `house`는 가문의 큰 변화(상속·혼인 상속 등)로 맨 앞에 둘 것이다.
+  - `decisionRemembers(state, decisionId)`.
+  - 모두 `src/engine/decisionReads.ts`에 있다.
+- **§4 청지기와 상시 방침**:
+  - 상태는 `stewardship.standing[kind]`다. 값은 `customary`·`lenient`·`strict`·`lord`이고, 없으면 관습대로다.
+  - 명령은 `set_standing_policy { kind, setting }`이고 결정으로 기록된다.
+  - 종류: 장원 청원 12종, 지도 밖 영지 청원 6종, 사건은 `sender:<세력>`.
+  - `standingPolicies(state)`: 종류마다 `{ kind, family, heavy, heavyBecause, setting, answers{customary,lenient,strict → granted, treasury, factions}, handledThisYear, last }`.
+  - `stewardReport(state, from, to)`: `{ handled[petitionId, estateId, kind, policy, granted, amount, tick, treasury, relations], events[청지기가 답한 사건], brought[subjectId, kind, layer], lapsed }`.
+  - 철 창은 `[from, to)`로 주면 닫힌 철의 첫 틱이 들어간다.
+  - 다툼 종류의 편: 가볍게 = 청원한 쪽(소작인·공동체), 엄하게 = 영주 금고·권리 쪽. 관습 답은 `HOME_PETITION_CUSTOM`(데이터)이다.
+- **§5 한 해 카드의 "봤음"**: `mark_story_seen`에 `year-review:<해>` id를 그대로 쓰면 된다(`storySeen`은 아무 id나 받는다).
+- **함께 넣은 것**:
+  - 금고 내역 `treasuryBreakdown(state, from, to)`(`src/engine/treasuryReads.ts`).
+  - 그 철에 정산이 있었는지 `settlementIn(start, end)`(`src/ledger/ledger.ts`).
+  - 위기 `crisisReview(state)`(`src/engine/crisisReads.ts`).
+  - 상속 기록 `house.succession`.
+- **렌더가 넘겨받을 것**:
+  - 장원 청원이 이제 기본적으로 청지기 몫이다. 홈 청원 카드 시험은 "영주에게" 방침으로 카드를 띄운다(`tests/lmr1Petitions.test.ts`의 준비만 바꿈).
+  - 선례 그림·문구(`precedentView`)는 상시 방침 화면으로 바꿀 것이다. `precedentReport`는 방침으로 답한 것도 준다.
+  - 시장 칙허가 열린 촌락의 건설 메뉴 잠금 표시(`eraLockReason`, `buildMenuGroups`)와 칙허 카드 문구.
+  - 사건 그림 40장. 꺼진 31장의 설치 표시와 프롬프트 파일은 엔진이 예외로 거두었다.
+- **§6(1단계에서 나온 여덟)에 대한 답**:
+  1. 영주 교체: 영주 모드에서는 죽은 그 틱에 상속자가 잇는다. 기록은 `house.succession { deceasedId, heirId, heirAge, kin, died, deadAge }`(심각도 3)이고, 요청한 `lord.succeeded { from, to }`와 같은 뜻이다. `yearReview().house`의 맨 앞에 온다.
+  2. 세력 관계 까닭의 말: `factionReasonLine`에 `registry:*`, `manor_petition:*`, `set_market_dues:*`, `set_project_subsidy:*`, `set_estate_policy:*`의 말을 더했다.
+  6. 영지별 장부: `treasuryBreakdown`이 영지와 종류로 나눈다(지대·세금, 청원, 계약, 혼인, 상속, 세력, 왕실·전쟁, 거래, 건설, 지출). 접힌 roll-up은 `unattributed`로 따로 센다.
+  7. 조건이 바뀔 때의 결정 기록: 영주 모드에서 등록기 답은 `decision.card` 하나로 남고, 그 답이 바꾼 것(장려금·방침·장세…)은 결정의 `targets`(`traceOf().decisions`)에 있다. 이전 값은 아직 남기지 않는다.
+  - 3·4·5·8(청원 만료 틱, 왕실 보조금 요구액, 도시가 왜 시작하지 않나, 장터 결산 보관)은 이번에 넣지 않았다. 다음 엔진 작업 후보로 둔다.
