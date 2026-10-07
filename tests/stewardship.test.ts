@@ -9,7 +9,7 @@ import { estatesOf, LORD } from "../src/engine/estates";
 import { historySummary } from "../src/engine/history";
 import { MARRIAGE_ESTATE_ID } from "../src/engine/marriage";
 import {
-  answerAudit, attention, exceptionMatch, lordEstatePetitions, nextMichaelmas, oversightViews, pendingAudits, stewardCandidates, stewardshipOf,
+  answerAudit, attention, auditAnswerEffect, estatePetitionEffect, exceptionMatch, lordEstatePetitions, nextMichaelmas, oversightViews, pendingAudits, stewardCandidates, stewardshipOf,
 } from "../src/engine/stewardship";
 import type { StewardDisposition } from "../src/engine/stewardship.types";
 import { advanceTick } from "../src/engine/tick";
@@ -107,7 +107,10 @@ test("SW-5 the exceptions bring a petition to the lord (here: 1d or more, a righ
   assert.equal(waiting.length, 1);
   assert.ok(waiting[0]!.escalated !== undefined && waiting[0]!.escalated !== "direct");
   assert.ok(ledgerLines(state, state.tick - 1).some(entry => entry.template === "stewardship.escalated" && entry.line.includes("영주에게 올렸다")));
+  // LM-R2-E ②: the read gives the answer's effect, and none once it is answered.
+  assert.notEqual(estatePetitionEffect(state, waiting[0]!.id, false), null);
   const answered = gameReducer(state, { type: "answer_estate_petition", petitionId: waiting[0]!.id, grant: false });
+  assert.equal(estatePetitionEffect(answered, waiting[0]!.id, false), null);
   assert.equal(stewardshipOf(answered).petitions.find(entry => entry.id === waiting[0]!.id)?.decidedBy, "lord");
   assert.ok(ledgerLines(answered, answered.tick).some(entry => entry.template === "stewardship.lord_decided" || entry.template.startsWith("decision")) || answered.history!.records.length > state.history!.records.length);
   // Unanswered within its season, it lapses (refused, the wait remembered).
@@ -128,8 +131,13 @@ test("SW-6 Michaelmas: a visit finds what a greedy steward kept back; punished, 
   assert.equal(stewardshipOf(state).visitTick, state.tick, "the visit costs the lord's attention for a year");
   assert.ok(ledgerLines(state, state.tick).some(entry => entry.template === "stewardship.audit_found" && entry.line.includes("빼돌림")));
   const treasury = state.ledger!.entries.length;
+  // LM-R2-E ②: the read tells what the answer will do.
+  const effect = auditAnswerEffect(state, audit.id, "punish")!;
   const punished = gameReducer(state, { type: "answer_audit", auditId: audit.id, choice: "punish" });
   const own = stewardshipOf(punished);
+  assert.equal(effect.recovered, Math.round(audit.revealedKept / 2));
+  assert.equal(effect.successorId, own.oversight[0]!.stewardId);
+  assert.equal(auditAnswerEffect(punished, audit.id, "punish"), null, "answered: no more effect");
   assert.equal(own.stewards.find(entry => entry.personId === greedy.personId)?.status, "dismissed");
   assert.notEqual(own.oversight[0]!.stewardId, greedy.personId);
   assert.equal(own.stewards.find(entry => entry.personId === own.oversight[0]!.stewardId)?.status, "serving");
@@ -146,6 +154,8 @@ test("SW-6 by the accounts alone, what was kept may stay hidden; tolerated, the 
   assert.equal(audit.revealedKept + audit.hidden > 0, true, "he kept something");
   const before = stewardshipOf(state).stewards.find(entry => entry.personId === audit.stewardId)!;
   if (audit.status === "pending") {
+    assert.equal(auditAnswerEffect(state, audit.id, "tolerate")!.loyalty, Math.min(100, before.loyalty + TOLERATE_LOYALTY) - before.loyalty);
+    assert.equal(auditAnswerEffect(state, audit.id, "replace", "person:nobody"), null, "a named successor who is not a living candidate");
     const tolerated = answerAudit(state, audit.id, "tolerate");
     assert.equal(stewardshipOf(tolerated).stewards.find(entry => entry.personId === audit.stewardId)!.loyalty, Math.min(100, before.loyalty + TOLERATE_LOYALTY));
     const lapsed = advance(state, 1_100);
