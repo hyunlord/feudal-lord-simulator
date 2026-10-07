@@ -201,6 +201,8 @@ export interface GameState {
   readonly trades?: import("./trades.types").TradeState;
   /** LM-E9 (ER-12, save v47): the registry's occurrences, timed terms and the player's house. Absent outside lord mode. */
   readonly registry?: import("./registry.types").RegistryState;
+  /** LM-R2-E ① (save v51): the stories the screen has shown (`storySeen.ts`). Absent until the first mark; every mode. */
+  readonly seen?: import("./storySeen").StorySeenState;
   /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
   readonly war?: import("./war.types").WarState;
   /** FACTION-0 the factions around the town (save v21, spec FX-1…FX-8). Absent until the first tick. */

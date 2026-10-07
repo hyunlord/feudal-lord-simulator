@@ -96,7 +96,7 @@ test("Phase 9 resource contracts include stone while coin remains treasury-only"
 test("Phase 9 stone buildings have exact palisade-era config", () => {
   // Given / When / Then
   assert.deepEqual(BUILDING_CONFIG_BY_KIND.quarry, {
-    kind: "quarry",
+    kind: "quarry", builderTicks: 700,
     name: "채석장",
     width: 2,
     height: 2,
@@ -114,7 +114,7 @@ test("Phase 9 stone buildings have exact palisade-era config", () => {
     serviceRadius: 0,
   });
   assert.deepEqual(BUILDING_CONFIG_BY_KIND.masonry, {
-    kind: "masonry",
+    kind: "masonry", builderTicks: 600,
     name: "석공소",
     width: 1,
     height: 1,
@@ -139,7 +139,7 @@ test("Phase 9 market has exact palisade-era config and visible menu copy", () =>
 
   // When / Then
   assert.deepEqual(BUILDING_CONFIG_BY_KIND.market, {
-    kind: "market",
+    kind: "market", builderTicks: 700,
     name: "시장",
     width: 2,
     height: 2,
