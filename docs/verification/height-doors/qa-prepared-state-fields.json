@@ -1,0 +1,103 @@
+[
+  {
+    "id": "l0-qa-winter",
+    "source": "l0",
+    "tick": 3500,
+    "buildingId": "house-44-40-0",
+    "boarded": false,
+    "sourcePath": ".omo/height-installed/states/l0.json",
+    "sourceSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+    "derivedSHA256": "c72f06f16f46b9294fe69f0f075b59d7baf2382e74abcb78bc8682865d05fe65",
+    "fields": [
+      {
+        "path": "tick",
+        "before": 84,
+        "after": 3500
+      }
+    ],
+    "classification": "prepared renderer QA fixture, not a normal progression/abandonment simulation",
+    "reason": "Natural L0 promoted before winter; exact body/vacancy combination absent from searched normal saves. Isolate existing renderer snow and boarded conditions with original art registration unchanged.",
+    "limits": "Population/person ledger and historical progression are not recomputed; paused renderer only. This proves layer consumption and attachment, not valid economic/demographic progression or occurrence frequency."
+  },
+  {
+    "id": "l0-qa-winter-boarded",
+    "source": "l0",
+    "tick": 3500,
+    "buildingId": "house-44-40-0",
+    "boarded": true,
+    "sourcePath": ".omo/height-installed/states/l0.json",
+    "sourceSHA256": "e55f59f3cf4322a247ed653efff9c2192b1aed2a35858c6e08b1e492b02994b6",
+    "derivedSHA256": "cb5cf35933b39eed57f2eccd6a74ce8512d45f03b7011024d8d8da382b86782c",
+    "fields": [
+      {
+        "path": "tick",
+        "before": 84,
+        "after": 3500
+      },
+      {
+        "path": "houses[house-44-40-0].abandonedTick",
+        "before": null,
+        "after": 3500
+      },
+      {
+        "path": "houses[house-44-40-0].residents",
+        "before": 3,
+        "after": 0
+      },
+      {
+        "path": "houses[house-44-40-0].members",
+        "before": {
+          "adults": 1,
+          "children": 2,
+          "seed": 2528197994
+        },
+        "after": {
+          "adults": 0,
+          "children": 0,
+          "seed": 2528197994
+        }
+      }
+    ],
+    "classification": "prepared renderer QA fixture, not a normal progression/abandonment simulation",
+    "reason": "Natural L0 promoted before winter; exact body/vacancy combination absent from searched normal saves. Isolate existing renderer snow and boarded conditions with original art registration unchanged.",
+    "limits": "Population/person ledger and historical progression are not recomputed; paused renderer only. This proves layer consumption and attachment, not valid economic/demographic progression or occurrence frequency."
+  },
+  {
+    "id": "l1d-qa-winter-boarded",
+    "source": "l1d-winter",
+    "tick": 23450,
+    "buildingId": "construction-site-000022",
+    "boarded": true,
+    "sourcePath": ".omo/height-installed/states/l1d-winter.json",
+    "sourceSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+    "derivedSHA256": "9a016a908f5b3084892c0a85066d91e6d3f380419a0c7c233fc93446ee74a494",
+    "fields": [
+      {
+        "path": "houses[construction-site-000022].abandonedTick",
+        "before": null,
+        "after": 23450
+      },
+      {
+        "path": "houses[construction-site-000022].residents",
+        "before": 8,
+        "after": 0
+      },
+      {
+        "path": "houses[construction-site-000022].members",
+        "before": {
+          "adults": 4,
+          "children": 4,
+          "seed": 1446269003
+        },
+        "after": {
+          "adults": 0,
+          "children": 0,
+          "seed": 1446269003
+        }
+      }
+    ],
+    "classification": "prepared renderer QA fixture, not a normal progression/abandonment simulation",
+    "reason": "Natural L0 promoted before winter; exact body/vacancy combination absent from searched normal saves. Isolate existing renderer snow and boarded conditions with original art registration unchanged.",
+    "limits": "Population/person ledger and historical progression are not recomputed; paused renderer only. This proves layer consumption and attachment, not valid economic/demographic progression or occurrence frequency."
+  }
+]

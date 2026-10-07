@@ -1,0 +1,404 @@
+{
+  "status": "STATIC_ART_CANDIDATE_DIMENSIONS_PASS_WITH_REGISTRATION_RESIDUAL; NOT_INSTALLED; NOT_RUNTIME_VERIFIED",
+  "date": "2026-10-07T21:37:44.391814+09:00",
+  "id": "historical/house_l0-v3",
+  "scope": "Complete basic body only, independent L0 candidate. No original/product edits.",
+  "target": {
+    "adult_height_world": 17.6,
+    "door_height_world": [
+      20.24,
+      24.64
+    ],
+    "door_width_world": [
+      7.92,
+      11.44
+    ]
+  },
+  "original": {
+    "door_points_native": {
+      "inner_top_left": [
+        58,
+        97.5
+      ],
+      "inner_top_right": [
+        68,
+        102.5
+      ],
+      "inner_bottom_left": [
+        58,
+        120.5
+      ]
+    },
+    "same_x_inner_height_native": 23,
+    "projected_width_native": 10,
+    "ground_contact_points_native": [
+      [
+        28,
+        107
+      ],
+      [
+        91,
+        138
+      ],
+      [
+        128,
+        118
+      ]
+    ],
+    "door_endpoint_uncertainty_native_px": 1,
+    "height_range_native": [
+      21,
+      25
+    ],
+    "width_range_native": [
+      8,
+      12
+    ],
+    "height_range_world": [
+      10.490980392156862,
+      12.489262371615311
+    ],
+    "width_range_world": [
+      3.9965639589168998,
+      5.99484593837535
+    ],
+    "ground_axis_slopes": [
+      0.49206349206349204,
+      -0.5405405405405406
+    ],
+    "ground_contact_uncertainty_native_px": 1
+  },
+  "candidate": {
+    "door_points_native": {
+      "inner_top_left": [
+        54,
+        72
+      ],
+      "inner_top_right": [
+        74,
+        81
+      ],
+      "inner_bottom_left": [
+        54,
+        118
+      ]
+    },
+    "same_x_inner_height_native": 46,
+    "projected_width_native": 20,
+    "ground_contact_points_native": [
+      [
+        28,
+        107
+      ],
+      [
+        91,
+        139
+      ],
+      [
+        128,
+        119
+      ]
+    ],
+    "door_endpoint_uncertainty_native_px": 1,
+    "height_range_native": [
+      44,
+      48
+    ],
+    "width_range_native": [
+      18,
+      22
+    ],
+    "height_range_world": [
+      21.981101774042948,
+      23.9793837535014
+    ],
+    "width_range_world": [
+      8.992268907563025,
+      10.990550887021474
+    ],
+    "ground_axis_slopes": [
+      0.5079365079365079,
+      -0.5405405405405406
+    ],
+    "ground_contact_uncertainty_native_px": 1
+  },
+  "registration": {
+    "method": "Existing repository alpha-weighted resizeArea once from complete generated1254x1254 to148x148, then copy intact into transparent153x153 at(+1,+3). No body parts, painting, warping, rotation or nonuniform scaling.",
+    "source_to_native_scale_xy": [
+      0.11802232854864433,
+      0.11802232854864433
+    ],
+    "translate_native": [
+      1,
+      3
+    ],
+    "canvas": [
+      153,
+      153
+    ],
+    "world_px_per_native_px": 0.49957049486461247,
+    "ground_pivot_native": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "logical_footprint": [
+      1,
+      1
+    ],
+    "recommended_sampling_crop_xywh": [
+      0,
+      0,
+      153,
+      153
+    ],
+    "old_native_sampling_crop_xywh": [
+      20.985645933014354,
+      46.119617224880386,
+      112.73684210526316,
+      93.45933014354067
+    ],
+    "must_expand_crop": true,
+    "warning": "Do not retain old y46 crop or recalculate display scale from new total alpha height/width. New roof occupies y13. Metadata pivot unchanged; measured raster ground points have residual0,1,1native px.",
+    "implementation": "/tmp/astra-height-final/scripts/keyartDerivatives.ts:210 resizeArea, decodePng/encodePng; pattern reused from .omo/height-final/register-candidate.mjs; reproduction script register.mjs"
+  },
+  "ground_residuals_native": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "ground_point_span_x_original_and_new": 100,
+  "axis_note": "Source L0 measured visible stone-ground three-point axes are approximately+0.492/-0.541, not assumed perfect+/-0.5. Candidate+0.508/-0.541. Differences under endpoint uncertainty; no global2:1 reprojection. These stone footprint axes are not roof pitch.",
+  "assets": [
+    {
+      "path": "references/original-source.png",
+      "sha256": "6a51abfea2b84e72a3764c4b50ec45668de9c61af660f04840c34bc1e9b9ef6e",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          9,
+          21,
+          1200,
+          1228
+        ],
+        "32": [
+          173,
+          379,
+          1096,
+          1144
+        ],
+        "128": [
+          173,
+          380,
+          1095,
+          1143
+        ]
+      },
+      "transparent_pixel_count": 1119677
+    },
+    {
+      "path": "references/original-public.png",
+      "sha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+      "canvas": [
+        153,
+        153
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          19,
+          44,
+          136,
+          142
+        ],
+        "32": [
+          21,
+          46,
+          134,
+          140
+        ],
+        "128": [
+          21,
+          46,
+          133,
+          139
+        ]
+      },
+      "transparent_pixel_count": 16363
+    },
+    {
+      "path": "candidate-01-generated.png",
+      "sha256": "8d665afc80b232b4d6cd06b5e98a8fd89eec8385d7338e66fd4d7eb45dd03d83",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          0,
+          52,
+          1222,
+          1254
+        ],
+        "32": [
+          173,
+          240,
+          1126,
+          1154
+        ],
+        "128": [
+          174,
+          241,
+          1125,
+          1154
+        ]
+      },
+      "transparent_pixel_count": 997769
+    },
+    {
+      "path": "candidate-02-generated.png",
+      "sha256": "8560bc23b168afa6735200d02745853fd7f4244cdd9c2ec76798a9de6335f631",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          0,
+          53,
+          1214,
+          1172
+        ],
+        "32": [
+          174,
+          90,
+          1130,
+          1157
+        ],
+        "128": [
+          175,
+          91,
+          1129,
+          1157
+        ]
+      },
+      "transparent_pixel_count": 871030
+    },
+    {
+      "path": "candidate-03-generated.png",
+      "sha256": "4fa2edb224b814a1f945c9d6270ed0634c01ed5fdf9613d23c8756aa5921ded1",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          0,
+          53,
+          1140,
+          1206
+        ],
+        "32": [
+          174,
+          88,
+          1130,
+          1159
+        ],
+        "128": [
+          175,
+          89,
+          1129,
+          1159
+        ]
+      },
+      "transparent_pixel_count": 864083
+    },
+    {
+      "path": "house_l0-v3-height-candidate.png",
+      "sha256": "e512ad4ba236fa3f8ff543bbd581a1e63b4831d0abe153d338816d5d8493d2cf",
+      "canvas": [
+        153,
+        153
+      ],
+      "alpha_bbox_exclusive": {
+        "0": [
+          21,
+          13,
+          135,
+          140
+        ],
+        "32": [
+          21,
+          13,
+          135,
+          140
+        ],
+        "128": [
+          22,
+          14,
+          134,
+          140
+        ]
+      },
+      "transparent_pixel_count": 13445
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "producer": "herd_impl",
+      "actual_canvas": [
+        1254,
+        1254
+      ],
+      "prompt": "candidate-01-prompt.txt",
+      "diagnosis": "Door ~300high/~120wide source px: about18.3high/7.3wide world with full153 normalization; both too small. Earlier1280 canvas message was corrected by PNG metadata."
+    },
+    {
+      "attempt": 2,
+      "producer": "handcart_impl",
+      "actual_canvas": [
+        1254,
+        1254
+      ],
+      "prompt": "candidate-02-prompt.txt",
+      "diagnosis": "Door ~394high/~120wide source px: height~24.0world near upper bound; width~7.3world fails. Initial eyeball420high overestimated it; grid inspection corrected before iteration3. No claimed height failure remains."
+    },
+    {
+      "attempt": 3,
+      "producer": "handcart_impl",
+      "actual_canvas": [
+        1254,
+        1254
+      ],
+      "prompt": "candidate-03-prompt.txt",
+      "diagnosis": "Width-only repaint worked; final registered door46+/-2high,20+/-2wide native is inside world bands. Generation stopped."
+    }
+  ],
+  "layer_impacts": [
+    {
+      "path": "public/assets/wave7/season/roof_snow_l0-v2.png",
+      "impact": "Old snow follows old roof around y46..110; new roof begins y13 and eaves are raised. Reusing it would put snow on walls/door and omit upper roof. New body-specific registered snow required; do not overwrite shared era-house layer."
+    },
+    {
+      "path": "public/assets/wave7/overlay/boarded_l0-v2.png",
+      "impact": "Old shutter/window boards target old lower window and old narrow doorway. New window is higher, door wider/taller; dedicated layer registration required. No replacement layer generated."
+    }
+  ],
+  "limitations": [
+    "Manual closed-leaf inferred aperture, same-x height; exclude jamb/lintel/step. Physical internal opening cannot be observed behind closed door.",
+    "Ground contact endpoint uncertainty1native px; exact pixel identity and zero residual not claimed.",
+    "Static original/derivative viewed directly including enlarged measurement plates. No game scene, screenshot gate, installation or snow/boarded composition run.",
+    "No characters added or resized. No model name was returned by built-in tool."
+  ]
+}
