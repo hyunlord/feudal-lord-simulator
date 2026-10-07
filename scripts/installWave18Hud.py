@@ -20,7 +20,8 @@ Screen art: no pivot; sizes measured on the files against records/assets.csv and
 no C2PA chunk (asserted; the install plan's INVENTORY gives metadata-stripped SHA = source SHA): received bytes = runtime
 bytes. One docs/provenance/assets.csv row each (replacing earlier rows for these runtime paths) from records/assets.csv
 (tool, prompts, references, processing), one prompt file each. `--installed` also writes installed_by = INSTALL-18 on the
-33 installed rows; run it only after the consumers and the captures are confirmed (INSTALL_PROTOCOL 6). Rerunnable.
+installed rows seen in play (all but NOT_CAPTURED); run it only after the consumers and the captures are confirmed
+(INSTALL_PROTOCOL 6). Rerunnable.
 Run: python3 scripts/installWave18Hud.py [--installed]
 """
 import csv
@@ -74,6 +75,9 @@ NOT_INSTALLED = {
     **{f"reused/pill_season_{season}": f"INSTALL-18 설치 안 함: 상태 알약이 이미 그리는 P0 셀(icon_resource_sheet 96px 셀 {cell})과 RGBA 픽셀 동일(해시 확인 2026-10-07) — 바뀌는 것 없음"
        for season, cell in (("spring", 5), ("summer", 6), ("autumn", 7), ("winter", 8))},
 }
+# Copied and wired, but not seen in play: the build menu disables a tool the town cannot pay for, so the canvas's
+# materials mark only shows when the stock falls while the tool is armed — no capture yet, so no installed_by (protocol 6).
+NOT_CAPTURED = {"reasons/reason_material_shortage"}
 csv.field_size_limit(sys.maxsize)
 
 
@@ -213,7 +217,8 @@ def main() -> None:
     buffer = io.StringIO()
     csv.DictWriter(buffer, fieldnames=header, lineterminator="\n").writerows([{key: row.get(key, "") for key in header} for row in rows])
     LEDGER.write_bytes(("".join(kept) + buffer.getvalue()).encode("utf-8"))
-    changed = rewrite_ledger(keys if mark else set(), notes)
+    captured = {key for key in keys if key.removeprefix("wave18/candidates-v1/assets/").removesuffix(".png") not in NOT_CAPTURED}
+    changed = rewrite_ledger(captured if mark else set(), notes)
     print(json.dumps({"installed": len(keys), "ledgerChanged": sorted(changed)}, ensure_ascii=False))
 
 
