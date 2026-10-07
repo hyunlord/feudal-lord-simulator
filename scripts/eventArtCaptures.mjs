@@ -15,6 +15,7 @@ refuseHeavyOnMac("브라우저 확인(scripts/eventArtCaptures.mjs)", { remote: 
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
+import { registryOfferView } from '../src/ui/registryCardModel.ts';
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -36,20 +37,25 @@ const proof = page => page.evaluate(() => {
 const card = page => page.evaluate(async selector => {
   const root = document.querySelector(selector);
   if (root === null) return null;
-  const art = root.querySelector('.lord-card-art');
+  // DEC-CARD: the heavy card's picture and answer blocks (data-choice, data-refused; the choose button inside), or the old ones.
+  const art = root.querySelector('.decision-card-art, .lord-card-art');
   const background = art === null ? null : getComputedStyle(art).backgroundImage;
   const src = background === null ? null : background.match(/url\("?([^")]+)"?\)/)?.[1] ?? null;
   const loaded = src === null ? null : await new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done('error'); image.src = src; });
   const box = root.getBoundingClientRect();
   const artBox = art?.getBoundingClientRect();
   return { entry: root.getAttribute('data-registry-offer'), occurrence: root.getAttribute('data-occurrence'), title: root.querySelector('h2')?.textContent ?? null, court: root.querySelector('.lord-card-court')?.textContent ?? null,
-    kicker: root.querySelector('.lord-card-kicker')?.textContent ?? null, body: root.querySelector('h2 + p')?.textContent ?? null,
-    why: [...root.querySelectorAll('.registry-card-why li')].map(li => li.textContent), lapse: root.querySelector('.lord-card-precedent')?.textContent ?? null,
-    art: art?.getAttribute('data-art') ?? null, src, loaded, artBox: artBox === undefined ? null : [Math.round(artBox.width), Math.round(artBox.height)],
-    answers: [...root.querySelectorAll('.registry-card-option')].map(button => ({ choice: button.getAttribute('data-choice'), enabled: button.getAttribute('data-enabled'),
-      hold: button.getAttribute('data-hold'), cost: button.querySelector('.registry-card-hold')?.textContent ?? null, line: button.querySelector('.lord-card-forecast')?.textContent ?? null,
-      disabled: button.disabled, primary: button.classList.contains('ui-btn--primary'), text: button.textContent,
-      treasury: button.querySelector('.lord-card-forecast')?.getAttribute('data-treasury') ?? null, height: Math.round(button.getBoundingClientRect().height) })),
+    kicker: root.querySelector('.decision-card-from, .lord-card-kicker')?.textContent ?? null, body: root.querySelector('.decision-card-situation, h2 + p')?.textContent ?? null,
+    why: [...root.querySelectorAll('.registry-card-why li')].map(li => li.textContent), lapse: root.querySelector('.decision-card-deadline, .lord-card-precedent')?.textContent ?? null,
+    art: art?.getAttribute('data-art') ?? (src?.match(/event-art\/([^/.]+)\./)?.[1] ?? null), src, loaded, artBox: artBox === undefined ? null : [Math.round(artBox.width), Math.round(artBox.height)],
+    answers: [...root.querySelectorAll('.decision-card-choice, .registry-card-option')].map(node => {
+      const button = node.matches('button') ? node : node.querySelector('.decision-card-choose') ?? node;
+      return { choice: node.getAttribute('data-choice'), enabled: node.getAttribute('data-enabled') ?? (node.getAttribute('data-refused') === 'true' ? 'false' : 'true'),
+        hold: node.getAttribute('data-hold'), cost: node.querySelector('.registry-card-hold')?.textContent ?? null,
+        line: node.querySelector('.lord-card-forecast')?.textContent ?? node.querySelector('.decision-card-part li, .decision-card-refusal')?.textContent ?? null,
+        disabled: button.disabled, primary: button.classList.contains('ui-btn--primary'), text: node.textContent,
+        treasury: node.querySelector('.lord-card-forecast')?.getAttribute('data-treasury') ?? null, height: Math.round(button.getBoundingClientRect().height) };
+    }),
     later: Math.round(root.querySelector('.story-modal-later')?.getBoundingClientRect().height ?? 0),
     box: { left: Math.round(box.left), top: Math.round(box.top), right: Math.round(box.right), bottom: Math.round(box.bottom), inside: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight },
     smallestText: Math.min(...[...root.querySelectorAll('*')].filter(el => [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim() !== '')).map(el => parseFloat(getComputedStyle(el).fontSize))) };
@@ -90,8 +96,11 @@ const rows = {};
   const shown = await card(page);
   const size = await shoot(page, CARD, `card-${offer.entryId}`, 45);
   const before = await proof(page);
-  const choice = shown.answers.find(answer => answer.enabled === 'true' && answer.hold !== 'true');
-  await page.locator(`${CARD} .registry-card-option[data-choice="${choice.choice}"]`).first().click(); await page.waitForTimeout(800);
+  // The hold and the treasury from the card's own view model (the heavy card's markup carries neither).
+  const viewed = registryOfferView(base);
+  const pick = viewed.choices.find(entry => entry.enabled && !entry.hold);
+  const choice = { ...shown.answers.find(answer => answer.choice === pick.id), treasury: shown.answers.find(answer => answer.choice === pick.id)?.treasury ?? String(pick.treasury) };
+  await page.locator(`${CARD} .registry-card-option[data-choice="${choice.choice}"], ${CARD} [data-choose="${choice.choice}"]`).first().click(); await page.waitForTimeout(800);
   const after = await proof(page);
   const answered = after.occurrences.find(o => o.id === offer.id);
   rows.drawn = { opened, card: shown, bytes: size, choice: choice.choice, status: answered?.status ?? null, choiceId: answered?.choiceId ?? null,
@@ -123,9 +132,12 @@ const rows = {};
   const { context, page } = await open(holdBase);
   const opened = await waitCard(page, 'hold');
   const shown = opened ? await card(page) : null;
-  const hold = shown?.answers.find(answer => answer.hold === 'true' && answer.enabled === 'true') ?? null;
+  const holdId = registryOfferView(holdBase)?.choices.find(entry => entry.hold && entry.enabled)?.id ?? null;
+  const holdView = registryOfferView(holdBase)?.choices.find(entry => entry.id === holdId) ?? null;
+  const shownHold = shown?.answers.find(answer => answer.choice === holdId) ?? null;
+  const hold = shownHold === null ? null : { ...shownHold, cost: shownHold.cost ?? holdView?.cost ?? null };
   const size = opened ? await shoot(page, CARD, `card-hold-${shown.entry}`, 40) : 0;
-  if (hold !== null) { await page.locator(`${CARD} .registry-card-option[data-choice="${hold.choice}"]`).first().click(); await page.waitForTimeout(800); }
+  if (hold !== null) { await page.locator(`${CARD} .registry-card-option[data-choice="${hold.choice}"], ${CARD} [data-choose="${hold.choice}"]`).first().click(); await page.waitForTimeout(800); }
   const after = (await proof(page)).occurrences.find(o => o.id === shown?.occurrence) ?? null;
   rows.hold = { opened, entry: shown?.entry ?? null, offer: held?.id ?? null, shownOffer: shown?.occurrence ?? null, choice: hold?.choice ?? null, cost: hold?.cost ?? null, line: hold?.line ?? null,
     status: after?.status ?? null, kept: after?.hold ?? null, closed: (await page.locator(CARD).count()) === 0, bytes: size };

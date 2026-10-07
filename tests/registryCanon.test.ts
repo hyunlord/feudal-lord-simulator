@@ -7,6 +7,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { mergeCanon, readCanon } from "../scripts/registryCanon";
+import { holdCost, registryV4Support, v4Entry } from "../src/engine/registryV4";
 import { V4_COPY } from "../src/content/registry/v4Copy.generated";
 import { V4_BLOCKED_ENTRIES, V4_LIVE_ENTRIES } from "../src/content/registry/v4Entries.generated";
 
@@ -37,4 +38,23 @@ test("ER-13 a delta whose events and registry name different ids is refused", ()
   assert.throws(() => mergeCanon(base, [{ events: [{ id: "a" }, { id: "b" }], registry: { policy: {}, entries: [{ id: "a" }] } }]), /different ids/);
   const merged = mergeCanon(base, [{ events: [{ id: "a" }, { id: "b" }], registry: { policy: {}, entries: [{ id: "b" }, { id: "a" }] } }]);
   assert.deepEqual(merged.events.map(event => event.id), ["a", "b"]);
+});
+
+test("ER-13, ER-19 v4.1-senders: 008 → the church, 024·035 → the town community — merged by id (still 215), and their holds now cost a relation", () => {
+  const canon = readCanon<Item & { readonly sender?: { readonly faction?: string } }, Item>();
+  assert.equal(canon.events.length, 215);
+  const senders = read("v4.1-senders/events-v4.1.json") as (Item & { readonly sender: { readonly faction: string } })[];
+  for (const event of senders) assert.deepEqual(canon.events.filter(entry => entry.id === event.id), [event], `${event.id} once, the senders' release`);
+  assert.deepEqual(Object.fromEntries(["ck_evt_008", "ck_evt_024", "ck_evt_035"].map(id => [id, holdCost(v4Entry(id)!)])),
+    { ck_evt_008: { kind: "relation", faction: "bishop" }, ck_evt_024: { kind: "relation", faction: "town" }, ck_evt_035: { kind: "relation", faction: "town" } });
+  const support = registryV4Support();
+  const hidden = support.flatMap(row => row.choices.filter(choice => choice.reason === "hold without a time cost (R3)").map(() => row.id));
+  assert.deepEqual(hidden.sort(), ["ck_evt_003", "ck_evt_046"], "only 003 (a variant) and 046 (the lord's own house) still hide a hold");
+  for (const id of ["ck_evt_008", "ck_evt_024", "ck_evt_035"]) assert.ok(support.find(row => row.id === id)!.choices.every(choice => choice.supported), `${id}: every choice on`);
+});
+
+test("ER-13 an events-only delta (a sender fix) may only replace events the canon has", () => {
+  const base = { events: [{ id: "a" }], registry: { policy: {}, entries: [{ id: "a" }] } };
+  assert.deepEqual(mergeCanon(base, [{ events: [{ id: "a", fixed: true } as Item] }]).events, [{ id: "a", fixed: true }]);
+  assert.throws(() => mergeCanon(base, [{ events: [{ id: "b" }] }]), /may only replace events/);
 });

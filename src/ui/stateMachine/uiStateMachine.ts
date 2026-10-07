@@ -1,7 +1,7 @@
 // UX-3 UI state machine (research 15 A, S-20..S-35): which UI is on screen is one state, enforced here, not a set of
 // independent booleans.
-//  - S-30 one panel slot: the build drawer, the ledger drawer, the inspector, the population drawer and the goal
-//    drawer share it; opening one closes the one before.
+//  - S-30 one panel slot: the build drawer, the ledger drawer, the inspector, the population drawer, the goal
+//    drawer and (LM-R2, lord mode) the lord screen share it; opening one closes the one before.
 //  - S-31 Esc goes back one step: placement -> build drawer -> idle -> pause menu (a modal); right-click = one Esc.
 //  - S-32 modals push onto a stack over the state they interrupt and pop back to it; while any modal is up time stops
 //    (`timeStopped`), and the speed comes back when the last one closes.
@@ -16,7 +16,8 @@ export type UiMode =
   | "selection" // S-25 inspector
   | "ledger" // S-26
   | "population" // pop pill -> household events
-  | "goals"; // the goal log drawer
+  | "goals" // the goal log drawer
+  | "lord"; // LM-R2 (lord mode): the lord screen host, a side panel over the running town
 /** UI-4: `decision` the famine's answer, `petition` a petition, `chronicle` the chapter's page and its next-chapter preview.
  * CHRON-1: `history` the full chronicle screen (the ledger drawer's tab, C, or the chapter page's [전체 연대기 보기]). */
 export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "petition" | "chronicle" | "chapter_preview" | "history"
@@ -27,7 +28,12 @@ export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "p
   /** LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request. */
   | "estate_petition" | "precedent" | "lord_request"
   /** EVENT-ART (lord mode): the registry's event card. */
-  | "registry_offer";
+  | "registry_offer"
+  /** LM-R2 (lord mode): the father's will to answer, an audit's finding, an off-map estate's petition (the lead wires them). */
+  | "marriage_decision" | "audit_decision" | "estate_petition_offmap"
+  /** DEC-CARD: the year's card ("올해 당신의 결정이 바꾼 것") at the first tick of the next year; (lord mode, Astra A3) a
+   * change in the lord's house — a death, a new house, an inheritance, a wardship — before the petitions. */
+  | "year_review" | "house_change";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }
@@ -37,6 +43,7 @@ export type UiEvent =
   | { readonly type: "select" } | { readonly type: "deselect" }
   | { readonly type: "open_ledger" } | { readonly type: "toggle_ledger" }
   | { readonly type: "open_population" } | { readonly type: "open_goals" } | { readonly type: "toggle_goals" }
+  | { readonly type: "open_lord" } | { readonly type: "toggle_lord" }
   | { readonly type: "escape" }
   | { readonly type: "push_modal"; readonly modal: UiModal } | { readonly type: "pop_modal" }
   | { readonly type: "toggle_hud" };
@@ -44,7 +51,7 @@ export type UiEvent =
 export const INITIAL_UI_STATE: UiState = { mode: "idle", modals: [], hudHidden: false };
 
 /** The panel slot's occupant (S-30): at most one. */
-export type PanelSlot = "build" | "ledger" | "inspector" | "population" | "goals" | null;
+export type PanelSlot = "build" | "ledger" | "inspector" | "population" | "goals" | "lord" | null;
 export function panelSlot(state: UiState): PanelSlot {
   switch (state.mode) {
     case "build": return "build";
@@ -52,6 +59,7 @@ export function panelSlot(state: UiState): PanelSlot {
     case "selection": return "inspector";
     case "population": return "population";
     case "goals": return "goals";
+    case "lord": return "lord";
     default: return null;
   }
 }
@@ -94,6 +102,8 @@ export function reduceUi(state: UiState, event: UiEvent): UiState {
     case "open_population": return { ...state, mode: "population" };
     case "open_goals": return { ...state, mode: "goals" };
     case "toggle_goals": return toggle(state, "goals");
+    case "open_lord": return { ...state, mode: "lord" };
+    case "toggle_lord": return toggle(state, "lord");
     case "push_modal": return { ...state, modals: [...state.modals, { modal: event.modal, under: state.mode }] };
     case "pop_modal": {
       const top = state.modals.at(-1);

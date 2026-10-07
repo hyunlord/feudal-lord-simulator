@@ -1,3 +1,4 @@
+import { CONTENT_REGISTRY } from "../contentRegistry";
 import { BUILDING_CONFIG_BY_KIND, isPreplacedBuildingKind, type BuildingKind } from "../buildingConfig";
 import { EVENT_DEF_BY_ID, WEATHER_EVENT_ID } from "../eventConfig";
 import { WAR_SEQUENCE_ID } from "../warConfig";
@@ -83,7 +84,8 @@ function validateCondition(scenario: string, condition: Condition): void {
       if (!(STAGE_ORDER as readonly string[]).includes(condition.stage)) fail(scenario, `unknown stage ${condition.stage}`);
       return;
     case "building_count_at_least":
-      if (BUILDING_CONFIG_BY_KIND[condition.building] === undefined) fail(scenario, `unknown building ${condition.building}`);
+      // EXT-1: the building is one the content registry knows.
+      if (!CONTENT_REGISTRY.building.has(condition.building)) fail(scenario, `unknown building ${condition.building}`);
       return validateNumber(scenario, condition.value, condition.kind);
     case "spendable_resource_at_least":
       if (condition.resource !== "timber" && condition.resource !== "stone") fail(scenario, `unknown resource ${String(condition.resource)}`);

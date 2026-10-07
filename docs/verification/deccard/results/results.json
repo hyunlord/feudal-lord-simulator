@@ -1,0 +1,166 @@
+{
+ "rows": {
+  "house-wardship": {
+   "state": "home-boundary_dispute",
+   "opened": true,
+   "petitionFirst": false,
+   "card": {
+    "title": "어린 영주의 후견이 시작되었습니다",
+    "text": "1305년 봄 · 국왕 에드워드 1세 · 영주 조앤 드 메로언(15살) · 후견인 앨리스 드 메로언\n\n가문의 일\n\n어린 영주의 후견이 시작되었습니다\n무슨 일인가\n조앤 드 메로언이 미성년 영주다 — 후견인 앨리스 드 메로언\n이제 가문을 이끄는 이\n\n조앤 드 메로언(15세) · 후견인 앨리스 드 메로언\n\n바뀐 권리와 영지\n이 일로 장부에 적힌 권리·영지의 변화는 없습니다.\n다음에 할 일\n조앤 드 메로언의 인물 카드 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "조앤 드 메로언의 인물 카드 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "box": {
+     "left": 200,
+     "top": 156,
+     "right": 1080,
+     "bottom": 645,
+     "inside": true
+    }
+   },
+   "bytes": 66004,
+   "petitionAfter": true,
+   "houseAgain": false,
+   "pass": true
+  },
+  "house-lord-died": {
+   "state": "home-pannage",
+   "opened": true,
+   "petitionFirst": false,
+   "card": {
+    "title": "영주가 세상을 떠났습니다",
+    "text": "1304년 가을 · 국왕 에드워드 1세 · 영주 앨리스 드 메로언(40살)\n\n가문의 일\n\n영주가 세상을 떠났습니다\n무슨 일인가\n랠프 드 메로언 영주가 45세로 세상을 떠났습니다.\n이제 가문을 이끄는 이\n\n앨리스 드 메로언(40세)\n\n바뀐 권리와 영지\n이 일로 장부에 적힌 권리·영지의 변화는 없습니다.\n다음에 할 일\n앨리스 드 메로언의 인물 카드 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "앨리스 드 메로언의 인물 카드 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "box": {
+     "left": 200,
+     "top": 193,
+     "right": 1080,
+     "bottom": 607,
+     "inside": true
+    }
+   },
+   "bytes": 45765,
+   "pass": true
+  },
+  "house-inherited": {
+   "state": "inheritance_fealty",
+   "opened": true,
+   "petitionFirst": false,
+   "card": {
+    "title": "영지를 물려받았습니다",
+    "text": "1313년 봄 · 국왕 에드워드 2세 · 영주 조앤 드 포콩발(25살)\n\n가문의 일\n\n영지를 물려받았습니다\n무슨 일인가\n윌리엄 드 케스트베일(이웃 영주)이 76세로 세상을 떠났다\n이웃 영주가 죽었다\n아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다\n이제 가문을 이끄는 이\n\n조앤 드 포콩발(25세)\n\n바뀐 권리와 영지\n영지 전체의 권원이 이웃 영주에게서 영주에게 넘어갔다\n영지 전체의 점유가 이웃 영주에게서 영주에게 넘어갔다\n드 케스트베일 영지가 영주의 손에 들어왔다 — 영주가 직접 보고, 리처드 아트우드가 장부를 맡는다\n따라온 약속\n약속을 했다: 상속 뒤 빚 갚기 £1 1s (5건)\n다음에 할 일\n영지 화면에서 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "영지 화면에서 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "box": {
+     "left": 200,
+     "top": 110,
+     "right": 1080,
+     "bottom": 690,
+     "inside": true
+    }
+   },
+   "bytes": 84170,
+   "estates": true,
+   "estatesBytes": 91143,
+   "pass": true
+  },
+  "actual-in": {
+   "state": "actual-in",
+   "chip": true,
+   "card": {
+    "title": "결정의 실제가 적혔습니다",
+    "text": "결정의 실제가 적혔습니다\n\n1300년 봄의 시장 부담(좌판세 평소의 80%): 예상 금고 0d / 실제 금고 0d\n\n금고 0d: 예측대로\n조언\n닫기",
+    "primary": 0,
+    "buttons": [
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "box": {
+     "left": 912,
+     "top": 176,
+     "right": 1272,
+     "bottom": 341,
+     "inside": true
+    }
+   },
+   "primaries": 0,
+   "line": [
+    "결정의 실제가 적혔습니다",
+    "",
+    "1300년 봄의 시장 부담(좌판세 평소의 80%): 예상 금고 0d / 실제 금고 0d"
+   ],
+   "bytes": 71097,
+   "pass": true
+  },
+  "year-lord": {
+   "state": "year-eve",
+   "opened": true,
+   "putOff": [
+    "season"
+   ],
+   "card": {
+    "title": "1300년 — 올해 당신의 결정이 바꾼 것",
+    "text": "1300년 — 올해 당신의 결정이 바꾼 것\n큰 결정과 그 결과\n1300년 봄 — 시장 부담을 평소의 80%로 정했다\n예상 금고 0d / 실제 금고 0d\n영주가 답한 일\n1300년 여름 — 영주가 공유지 방목 한도를 정해 달라는 청원에 답했다: 방목 한도를 정했다\n세력의 마음\n\n이 결정 때문에 — 장원 청원\n\n장원 청원 '공유지 방목'을 들어줌 — 농민 공동체: 고마워합니다 (관계 +5)\n장원 청원 '공유지 방목'을 들어줌 — 스펜서 상인 가문: 조금 서운해합니다 (관계 -4)\n결정이 고른 까닭 중 하나였던 공사\n시장 부담을 평소의 80%로 정했다 — 상인 가문이 제재소 공사를 시작했다\n올해 마을\n인구가 한 해 동안 44명 늘었습니다.\n한 해 금고의 수입 10d · 지출 5s 9d\n연대기에서 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "연대기에서 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "box": {
+     "left": 200,
+     "top": 166,
+     "right": 1080,
+     "bottom": 634,
+     "inside": true
+    }
+   },
+   "bytes": 61542,
+   "again": false,
+   "pass": true
+  },
+  "year-campaign": {
+   "state": "aging-eve",
+   "opened": true,
+   "putOff": [
+    "season",
+    "story-modal petition-card results-card year-review"
+   ],
+   "card": {
+    "title": "1303년 — 올해 당신의 결정이 바꾼 것",
+    "text": "1303년 — 올해 당신의 결정이 바꾼 것\n큰 결정과 그 결과\n\n올해는 영주가 내린 큰 결정이 없었습니다.\n\n올해 마을\n인구가 한 해 동안 59명 늘었습니다.\n한 해 금고의 수입 5s 9d · 지출 2s 4d\n연대기에서 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "연대기에서 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "box": {
+     "left": 200,
+     "top": 270,
+     "right": 1080,
+     "bottom": 530,
+     "inside": true
+    }
+   },
+   "bytes": 75402,
+   "again": false,
+   "pass": true
+  }
+ },
+ "bytes": 495123,
+ "errors": []
+}

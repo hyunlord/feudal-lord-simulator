@@ -1,0 +1,22 @@
+{
+  "status": "observed-with-limits",
+  "reviewer": "primary assistant",
+  "sameStatePairs": 16,
+  "installedSheetActuallyDrawnInPairs": 16,
+  "pageExceptionsAcrossAcceptedCaptures": 0,
+  "networkCancellationsAcrossAcceptedCaptures": 4,
+  "visibleCloseups": [
+    "detail-3-SE: wheat load and male grip",
+    "detail-5-SW: empty cart and female winter cloak",
+    "detail-6-NW: bread load and winter cloak",
+    "detail-7-NW: empty cart and winter cloak"
+  ],
+  "limits": [
+    "NE contact remains obscured by tree/building in actual chosen saves; no unobscured four-direction claim.",
+    "At zoom0.6 the cart is small; wheel-spoke animation and individual cargo type are not visually established.",
+    "Manual hand-fit preparation leaves male residual up to3.43worldpx; exact hand-contact claim withheld.",
+    "Original alpha/RGBA untouched. Existing held props/capes may overlap handles.",
+    "Wind, snow, smoke use wall time; before/after whole-scene pixel equality not claimed."
+  ],
+  "initialFailure": "First detail draw buffer reached2000 legacy fallback entries before new sheet load; retained original, corrected instrumentation only. Repeated candidate detail2 passed all8 exact-save comparisons."
+}

@@ -25,6 +25,7 @@ import { stateCalendar } from "../src/engine/scenarioState";
 import { doorSignFront, doorSignKind, doorSigns } from "../src/render/doorSigns";
 import { yardHash } from "../src/render/backyardDecals";
 import { lordInResidence, manorHousePictures } from "../src/render/manorHouseArt";
+import { buildingFootprint } from "../src/geometry/buildingFootprint";
 import { tradesOf } from "../src/engine/trades";
 import { lordModeRun } from "./lordModeRun";
 
@@ -188,11 +189,15 @@ if (sections.has("manor")) {
       for (const [label, state] of states) {
         const manor = state.buildings.find(building => building.kind === "manor_house")!;
         const save = writeState(state, `manor-${name}-${season}-${label}`);
+        // MANOR-1: the manor is 3 × 3 — the camera on its footprint's middle, the clip as wide as the footprint
+        // (260 × 220 per zoom was a 2 × 2's, i.e. 130 × 110 per tile).
+        const size = buildingFootprint(manor);
+        const middle = { tx: manor.tx + size.width / 2, ty: manor.ty + size.height / 2 };
         for (const zoom of [0.6, 1.0, 1.4]) {
           const view = { width: 900, height: 700 };
-          const { page, context, proof } = await openPaused(save, cameraOn(manor.tx + 0.5, manor.ty + 0.5, zoom), view);
-          const point = await proof(`tileClientPoint(${JSON.stringify({ tx: manor.tx + 0.5, ty: manor.ty + 0.5 })})`) as Point;
-          await shot(page, `manor-${name}-${season}-${label}-z${zoom.toFixed(1)}`, clip(point, { width: Math.round(260 * zoom), height: Math.round(220 * zoom) }, view, 0.62));
+          const { page, context, proof } = await openPaused(save, cameraOn(middle.tx, middle.ty, zoom), view);
+          const point = await proof(`tileClientPoint(${JSON.stringify(middle)})`) as Point;
+          await shot(page, `manor-${name}-${season}-${label}-z${zoom.toFixed(1)}`, clip(point, { width: Math.round(130 * size.width * zoom), height: Math.round(110 * size.height * zoom) }, view, 0.62));
           rows.push({ name, season, label, zoom, tick: state.tick, residence: lordInResidence(state), pictures: manorHousePictures(state, manor) });
           await context.close();
         }

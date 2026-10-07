@@ -58,5 +58,5 @@ export function burntHouseView(state: GameState, buildingId: string): BurntHouse
   const blocked = access.cause === "none" ? [] : [{ text: access.cause === "reserve_deadlock" ? access.label : ALERT_STACK_COPY.site[access.cause].cause, met: false }];
   const conditions = [...materials(site, true), ...blocked];
   return { buildingId, status: BURNT_HOUSE_COPY.rebuilding(percent, site.assignedBuilders),
-    conditions: conditions.length > 0 ? conditions : [{ text: BURNT_HOUSE_COPY.allMet, met: true }], now: siteActions(access)[0] ?? BURNT_HOUSE_COPY.wait, canRebuild: false, household };
+    conditions: conditions.length > 0 ? conditions : [{ text: BURNT_HOUSE_COPY.allMet, met: true }], now: siteActions(access, state)[0] ?? BURNT_HOUSE_COPY.wait, canRebuild: false, household };
 }

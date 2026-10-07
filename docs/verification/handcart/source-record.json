@@ -1,0 +1,173 @@
+{
+  "id": "cart/handcart_body-v2",
+  "file": "assets/cart/handcart_body-v2.png",
+  "cell": [
+    96,
+    74
+  ],
+  "pivot": [
+    48,
+    70
+  ],
+  "generationRecords": [
+    {
+      "prompt": "Edit attached existing handcart sprite sheet into FOUR views of SAME EMPTY two-wheel medieval handcart, retain original rustic oak color/material/model. ONE HORIZONTAL ROW, directions left-right NE handles upper-right, SE handles lower-right, SW handles lower-left, NW handles upper-left. Generous transparent spacing between exact four views, transparent RGBA. No pusher/person, no cargo, noanimal, no writing. Small low flatdeck with two restrained sideplanks, TWO wooden spoke wheels, paired wooden handhandles. True2:1isometric fixed upperleft light, muted painted projectstyle. Shape should closely match attached cart_hand-v4, native96x74 cellgameasset.",
+      "rawFile": "raw/carts/hand-cart.png",
+      "referenceImages": [
+        "references/cart_hand-v4.png"
+      ]
+    }
+  ],
+  "processing": {
+    "directions": [
+      {
+        "direction": "ne",
+        "crop": [
+          73,
+          187,
+          395,
+          364
+        ],
+        "scale": 0.1793478260869565,
+        "placement": [
+          13,
+          5
+        ],
+        "cell": [
+          96,
+          74
+        ],
+        "ground": [
+          48,
+          70
+        ]
+      },
+      {
+        "direction": "se",
+        "crop": [
+          589,
+          208,
+          384,
+          353
+        ],
+        "scale": 0.1793478260869565,
+        "placement": [
+          14,
+          7
+        ],
+        "cell": [
+          96,
+          74
+        ],
+        "ground": [
+          48,
+          70
+        ]
+      },
+      {
+        "direction": "sw",
+        "crop": [
+          1059,
+          210,
+          390,
+          351
+        ],
+        "scale": 0.1793478260869565,
+        "placement": [
+          13,
+          7
+        ],
+        "cell": [
+          96,
+          74
+        ],
+        "ground": [
+          48,
+          70
+        ]
+      },
+      {
+        "direction": "nw",
+        "crop": [
+          1572,
+          183,
+          398,
+          368
+        ],
+        "scale": 0.1793478260869565,
+        "placement": [
+          13,
+          4
+        ],
+        "cell": [
+          96,
+          74
+        ],
+        "ground": [
+          48,
+          70
+        ]
+      }
+    ],
+    "removedAlphaPixels": 1304660,
+    "frame2": "Nearest visible wheel inner spoke texture rotated 18deg in elliptical wheel mask; cart pixels outside wheel unchanged.",
+    "layerAssemblyContract": "records/carts/layer-anchors.json"
+  },
+  "qa": {
+    "wheelFrames": [
+      {
+        "direction": "ne",
+        "changedPixels": 114,
+        "outsideWheelMask": 0,
+        "wheelEllipse": [
+          49,
+          52,
+          4,
+          8
+        ]
+      },
+      {
+        "direction": "se",
+        "changedPixels": 114,
+        "outsideWheelMask": 0,
+        "wheelEllipse": [
+          24,
+          41,
+          4,
+          8
+        ]
+      },
+      {
+        "direction": "sw",
+        "changedPixels": 114,
+        "outsideWheelMask": 0,
+        "wheelEllipse": [
+          71,
+          41,
+          4,
+          8
+        ]
+      },
+      {
+        "direction": "nw",
+        "changedPixels": 114,
+        "outsideWheelMask": 0,
+        "wheelEllipse": [
+          45,
+          53,
+          4,
+          8
+        ]
+      }
+    ],
+    "actualSize": [
+      384,
+      148
+    ],
+    "rgba": true,
+    "candidateOnly": true,
+    "gameInstallation": false,
+    "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+    "legibility": "Direction/bodytypevisible;wheelrotationnotguaranteedreadableat0.3."
+  }
+}

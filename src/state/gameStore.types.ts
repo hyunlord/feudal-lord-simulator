@@ -39,6 +39,8 @@ type GameCommand =
   | { readonly type: "answer_audit"; readonly auditId: string; readonly choice: "punish" | "replace" | "tolerate"; readonly replacementId?: string }
   /** QA032: the player saw the chapter's page (the screens open it once; kept in the save). */
   | { readonly type: "mark_chapter_page_seen"; readonly chapter: number }
+  /** LM-R2-E ①: the screen showed, opened or dismissed a story (not a decision). */
+  | { readonly type: "mark_story_seen"; readonly id: string; readonly how: string }
   /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */
   | { readonly type: "drain_fen"; readonly tx: number; readonly ty: number }
   | { readonly type: "order_timber"; readonly amount: number }

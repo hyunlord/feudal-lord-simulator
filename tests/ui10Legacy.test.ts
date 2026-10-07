@@ -244,8 +244,9 @@ test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a foo
   assert.match(css, /\.legacy-ending-footer \{[^}]*background: var\(--parchment\);[^}]*border-top:/);
   const hud = readFileSync("src/styles/hudShell.css", "utf8");
   // UI-AUDIT-1: the card grows with its body; [나중에 정하기] is the body's last row, never over an answer.
-  assert.match(readFileSync("src/ui/hud/StoryModals.tsx", "utf8"), /<\/ol>\s*<Button type="button" className="story-modal-later"[^\n]*\n\s*<\/div>/, "the later button the body's last row");
-  assert.match(hud, /\[data-def="borough_autonomy"\][^{]*\{ min-height: 620px; \}/, "the charter card's full height");
+  // DEC-CARD: every petition is the heavy decision card — the later button its body's last row, the card as tall as its body.
+  assert.match(readFileSync("src/ui/decisionCard/DecisionCard.tsx", "utf8"), /<\/ol>\s*<Button type="button" className="story-modal-later"[^\n]*\n\s*<\/div>/, "the later button the body's last row");
+  assert.match(readFileSync("src/styles/decisionCard.css", "utf8"), /\.petition-card\.decision-card \{[^}]*min-height: 0; \}/, "the card grows with its body");
   // UI-AUDIT-1: the chapter page's footer is the body's row under the scrolling lines (not held over them).
   assert.match(hud, /\.chapter-page-main \{ grid-template-rows: minmax\(0, 1fr\) auto;/, "the lines above the footer");
   assert.match(hud, /\.chapter-page-scroll \{[^}]*overflow-y: auto;/, "the lines scroll");

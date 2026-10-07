@@ -43,14 +43,16 @@ export function famineDecisionView(state: GameState): FamineDecisionView | null 
   };
 }
 
-export type PetitionDecisionView = Readonly<{ petitionId: string; presentation: PetitionPresentation;
-  /** UI-10: `heir` — on the heir's card (LG-3), the candidate the answer names. */
-  options: readonly (DecisionOption<PetitionResponse> & { readonly seal: Wave8ImageId; readonly heir?: HeirCandidateView })[] }>;
+/** DEC-CARD: a petition's answer — its label, seal and forecast; what it does, now and later, is the card's (`petitionCard`). */
+export type PetitionOption = Readonly<{ choice: PetitionResponse; label: string; predicted: string; seal: Wave8ImageId;
+  /** UI-10: on the heir's card (LG-3), the candidate the answer names. */
+  heir?: HeirCandidateView }>;
+export type PetitionDecisionView = Readonly<{ petitionId: string; presentation: PetitionPresentation; options: readonly PetitionOption[] }>;
 const SEALS: Readonly<Record<PetitionResponse, Wave8ImageId>> = { accept: "seal_petition_accept", accept_with_price: "seal_petition_price", refuse: "seal_petition_reject" };
 const ORDER: readonly PetitionResponse[] = ["accept", "accept_with_price", "refuse"];
 
 /**
- * UI-6: the open petition as its kind presents it (`petitionPresentation`: scene, title, demand, who, each answer's line).
+ * UI-6: the open petition as its kind presents it (`petitionPresentation`: scene, title, demand, who, each answer's label).
  * UI-8: the four plague petitions (F3-A PL-5…PL-8) use `plagueDecisionForecast` for their treasury prediction, and
  * show only the two answers the def offers (`PetitionDef.responses`) — ORDER is filtered accordingly.
  * UI-10 (LG-3): the answers are those the record allows (`PetitionRecord.options`, the heir's card: the heirs there are),
@@ -78,7 +80,7 @@ export function petitionDecisionView(state: GameState): PetitionDecisionView | n
       .map(response => {
         const heir = heirs?.get(response);
         return {
-          response, choice: response, label: presentation.label(response), seal: SEALS[response], line: presentation.line(response), ...(heir === undefined ? {} : { heir }),
+          choice: response, label: presentation.label(response), seal: SEALS[response], ...(heir === undefined ? {} : { heir }),
           predicted: war ? DECISION_COPY.predicted(warNow, { treasury: warDecisionForecast(state, petition.defId, response) })
             : plague ? DECISION_COPY.predicted(warNow, { treasury: plagueDecisionForecast(state, petition.defId, response) })
             : reorg ? DECISION_COPY.predicted(warNow, { treasury: reorganisationDecisionForecast(state, petition.defId, response) })
