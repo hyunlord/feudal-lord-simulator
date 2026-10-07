@@ -121,3 +121,16 @@ test('all four installed source canvases, pixels and hashes match their approved
   assert.equal(checked.length, 4);
   assert.ok(checked.every(row => row.errors.length === 0), JSON.stringify(checked));
 });
+
+
+test('decoupling curved-ground hashing preserves the captured stock variant for all checked IDs and seeds', async () => {
+  const { boundaryHash, hashNumbers } = await import('../src/world/boundary/boundaryGeometry');
+  for (const seed of [0, 1, 4, 5, 999, 0xffff_ffff]) for (let index = 0; index < 128; index++) {
+    const building = home('logging_camp', 1, `construction-site-${index.toString().padStart(6, '0')}`);
+    const oldSeed = boundaryHash(hashNumbers(Array.from(building.id, character => character.charCodeAt(0))), seed, 31);
+    const reference = ART_REGISTRY.select('ground-prop', 'stock-pile', {
+      placement: 'stock-pile', buildingKind: building.kind, resource: 'logs', season: 'summer',
+    }, oldSeed);
+    assert.equal(art.select({ ...summer, seed }, building)?.id, reference?.id);
+  }
+});

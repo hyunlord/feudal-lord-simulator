@@ -1,7 +1,6 @@
 import type { Building } from '../../content/buildingConfig';
 import type { GameState } from '../../engine/engine.types';
 import { stateCalendar } from '../../engine/scenarioState';
-import { boundaryHash, hashNumbers } from '../../world/boundary/boundaryGeometry';
 import type { ArtEntry, ArtPoint, StockPileEntry } from './artContract';
 import { createArtAdapters } from './artAdapters';
 import type { ArtImageEnvironment } from './artImageLoader';
@@ -19,7 +18,7 @@ export function createResourceStockPileArt(registry: ArtRegistry, environment?: 
   const select = (state: StockState, building: Pick<Building, 'id' | 'kind' | 'inventory'>): StockPileEntry | null => {
     const seasons = ['spring', 'summer', 'autumn', 'winter'] as const;
     const season = seasons[stateCalendar(state).season];
-    const seed = boundaryHash(hashNumbers(Array.from(building.id, character => character.charCodeAt(0))), state.seed, 31);
+    const seed = stockPileSeed(building.id, state.seed);
     for (const resource of resources) {
       const amount = Object.entries(building.inventory).find(([key]) => key === resource)?.[1] ?? 0;
       if (!(amount > 0)) continue;
@@ -35,3 +34,17 @@ export function createResourceStockPileArt(registry: ArtRegistry, environment?: 
   return { select, draw, loadSettled: adapters.loadSettled, placement: adapters.placement };
 }
 export const RESOURCE_STOCK_PILE_ART = createResourceStockPileArt(ART_REGISTRY);
+
+// Preserve the authored a/b choice without activating the optional curved-ground modules.
+function stockPileSeed(id: string, seed: number): number {
+  let key = 2_166_136_261;
+  for (const character of id) {
+    const scaled = character.charCodeAt(0) * 1024;
+    key = Math.imul(key ^ (scaled & 0xffff), 16_777_619) >>> 0;
+    key = Math.imul(key ^ ((scaled >>> 16) & 0xffff), 16_777_619) >>> 0;
+  }
+  let hash = Math.imul(key ^ 0x9e37_79b9, 73_856_093) ^ Math.imul(seed + 101_111, 19_349_663) ^ Math.imul(38, 83_492_791);
+  hash = Math.imul(hash ^ (hash >>> 13), 1_274_126_177);
+  hash = Math.imul(hash ^ (hash >>> 16), 2_246_822_519);
+  return (hash ^ (hash >>> 15)) >>> 0;
+}

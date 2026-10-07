@@ -1,0 +1,1193 @@
+{
+  "contactOnly": false,
+  "installed": false,
+  "head": "ff8f35121412b34a9f011f3a35e06e097dec5d13",
+  "provenance": {
+    "method": "Existing summer/winter campaign saves migrated through current codec; no authored state changes; codec migration may remove legacy wheat_farm markers. Target logging/sawmill IDs, positions and inventory are asserted identical.",
+    "scenes": [
+      {
+        "season": "summer",
+        "source": ".omo/log-stockpiles/source-inputs/summer.save.json",
+        "sourceSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+        "file": "states/summer.save.json",
+        "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+        "tick": 21000,
+        "seed": 1,
+        "homes": [
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 40,
+            "inventory": {
+              "logs": 3
+            },
+            "selected": "core-log-stack-a-summer",
+            "anchor": {
+              "x": 337.6,
+              "y": 1449.92
+            }
+          },
+          {
+            "id": "construction-site-000003",
+            "kind": "sawmill",
+            "tx": 42,
+            "ty": 39,
+            "inventory": {
+              "logs": 1,
+              "timber": 1
+            },
+            "selected": "core-log-stack-a-summer",
+            "anchor": {
+              "x": 113.6,
+              "y": 1305.92
+            }
+          }
+        ]
+      },
+      {
+        "season": "winter",
+        "source": ".omo/log-stockpiles/source-inputs/winter.save.json",
+        "sourceSHA256": "d02b73f6b034023118332367026f82bf4975534be5554efcae959ba940d92c0e",
+        "file": "states/winter.save.json",
+        "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+        "tick": 23450,
+        "seed": 1,
+        "homes": [
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 40,
+            "inventory": {
+              "logs": 2
+            },
+            "selected": "core-log-stack-a-winter",
+            "anchor": {
+              "x": 337.6,
+              "y": 1449.92
+            }
+          },
+          {
+            "id": "construction-site-000003",
+            "kind": "sawmill",
+            "tx": 42,
+            "ty": 39,
+            "inventory": {
+              "logs": 0,
+              "timber": 1
+            },
+            "selected": null,
+            "anchor": {
+              "x": 113.6,
+              "y": 1305.92
+            }
+          }
+        ]
+      },
+      {
+        "season": "winter-seed5",
+        "source": "tests/fixtures/money/seed5-stable-2ba96a7.json.gz",
+        "sourceSHA256": "c5d9846157bcb1a57e38399de65b345ed43fb2f5259e6027ba80f0532c0b1380",
+        "file": "states/winter-seed5.save.json",
+        "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+        "tick": 527422,
+        "seed": 5,
+        "homes": [
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 9,
+            "inventory": {
+              "logs": 20
+            },
+            "selected": "core-log-stack-a-winter",
+            "anchor": {
+              "x": 1329.6,
+              "y": 953.92
+            }
+          },
+          {
+            "id": "construction-site-000001",
+            "kind": "sawmill",
+            "tx": 44,
+            "ty": 7,
+            "inventory": {
+              "logs": 0,
+              "timber": 4
+            },
+            "selected": null,
+            "anchor": {
+              "x": 1201.6,
+              "y": 825.92
+            }
+          },
+          {
+            "id": "construction-site-000057",
+            "kind": "sawmill",
+            "tx": 44,
+            "ty": 12,
+            "inventory": {
+              "logs": 1,
+              "timber": 4
+            },
+            "selected": "core-log-stack-b-winter",
+            "anchor": {
+              "x": 1041.6,
+              "y": 905.92
+            }
+          },
+          {
+            "id": "construction-site-000064",
+            "kind": "logging_camp",
+            "tx": 37,
+            "ty": 2,
+            "inventory": {
+              "logs": 12
+            },
+            "selected": "core-log-stack-a-winter",
+            "anchor": {
+              "x": 1137.6,
+              "y": 633.92
+            }
+          }
+        ]
+      },
+      {
+        "season": "spring-seed5",
+        "source": "tests/fixtures/storage-recovery/seed5-504000.json.gz",
+        "sourceSHA256": "a80d8ed089aae8a24d43e13ef282081904e53691272e5f5a1113eb3ac8255f86",
+        "file": "states/spring-seed5.save.json",
+        "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+        "tick": 504000,
+        "seed": 5,
+        "homes": [
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 9,
+            "inventory": {
+              "logs": 20
+            },
+            "selected": "core-log-stack-a-summer",
+            "anchor": {
+              "x": 1329.6,
+              "y": 953.92
+            }
+          },
+          {
+            "id": "construction-site-000001",
+            "kind": "sawmill",
+            "tx": 44,
+            "ty": 7,
+            "inventory": {
+              "logs": 1,
+              "timber": 19
+            },
+            "selected": "core-log-stack-a-summer",
+            "anchor": {
+              "x": 1201.6,
+              "y": 825.92
+            }
+          },
+          {
+            "id": "construction-site-000057",
+            "kind": "sawmill",
+            "tx": 44,
+            "ty": 12,
+            "inventory": {
+              "logs": 1,
+              "timber": 19
+            },
+            "selected": "core-log-stack-b-summer",
+            "anchor": {
+              "x": 1041.6,
+              "y": 905.92
+            }
+          },
+          {
+            "id": "construction-site-000064",
+            "kind": "logging_camp",
+            "tx": 61,
+            "ty": 11,
+            "inventory": {
+              "logs": 20
+            },
+            "selected": "core-log-stack-a-summer",
+            "anchor": {
+              "x": 1617.6,
+              "y": 1161.92
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "views": [
+    {
+      "name": "summer-logging_camp-logging-camp-50-40-0-z1",
+      "scene": "summer",
+      "target": {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 3
+        },
+        "selected": "core-log-stack-a-summer",
+        "anchor": {
+          "x": 337.6,
+          "y": 1449.92
+        }
+      },
+      "zoom": 1,
+      "tile": [
+        50,
+        40
+      ],
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "tick": 21000,
+      "inventory": {
+        "logs": 3
+      },
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "15f9251edf1409ca5013293a118ed194d959adad3e1e5e5b763fc47172d7aba2"
+    },
+    {
+      "name": "summer-logging_camp-logging-camp-50-40-0-z0.6",
+      "scene": "summer",
+      "target": {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 3
+        },
+        "selected": "core-log-stack-a-summer",
+        "anchor": {
+          "x": 337.6,
+          "y": 1449.92
+        }
+      },
+      "zoom": 0.6,
+      "tile": [
+        50,
+        40
+      ],
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "tick": 21000,
+      "inventory": {
+        "logs": 3
+      },
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "fb7b9cae5afafb83465376e1843f10f1b0c286b7b9d1e7c600559713c8ecfbb2"
+    },
+    {
+      "name": "summer-logging_camp-logging-camp-50-40-0-z3",
+      "scene": "summer",
+      "target": {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 3
+        },
+        "selected": "core-log-stack-a-summer",
+        "anchor": {
+          "x": 337.6,
+          "y": 1449.92
+        }
+      },
+      "zoom": 3,
+      "tile": [
+        50,
+        40
+      ],
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "tick": 21000,
+      "inventory": {
+        "logs": 3
+      },
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "8116081249173337a3d02c28a8712d1b72c7755e1e2c551fb6c8aa2fe01b4600"
+    },
+    {
+      "name": "summer-sawmill-construction-site-000003-z1",
+      "scene": "summer",
+      "target": {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 1,
+          "timber": 1
+        },
+        "selected": "core-log-stack-a-summer",
+        "anchor": {
+          "x": 113.6,
+          "y": 1305.92
+        }
+      },
+      "zoom": 1,
+      "tile": [
+        42,
+        39
+      ],
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "tick": 21000,
+      "inventory": {
+        "logs": 1,
+        "timber": 1
+      },
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "4322ff167c0413e86ac299d5be2603106ee138a0e8e2ad6f589ae8117d9e9316"
+    },
+    {
+      "name": "summer-sawmill-construction-site-000003-z0.6",
+      "scene": "summer",
+      "target": {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 1,
+          "timber": 1
+        },
+        "selected": "core-log-stack-a-summer",
+        "anchor": {
+          "x": 113.6,
+          "y": 1305.92
+        }
+      },
+      "zoom": 0.6,
+      "tile": [
+        42,
+        39
+      ],
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "tick": 21000,
+      "inventory": {
+        "logs": 1,
+        "timber": 1
+      },
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "dddca35dcd018afff78da2d3c443e9cf9803e70c79b6f531bdc33e816173423c"
+    },
+    {
+      "name": "summer-sawmill-construction-site-000003-z3",
+      "scene": "summer",
+      "target": {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 1,
+          "timber": 1
+        },
+        "selected": "core-log-stack-a-summer",
+        "anchor": {
+          "x": 113.6,
+          "y": 1305.92
+        }
+      },
+      "zoom": 3,
+      "tile": [
+        42,
+        39
+      ],
+      "saveSHA256": "606aa9114e3df040f9e9699a06bccbd4fb01b672ea7979bfbea7806cfa124bf6",
+      "stateSHA256": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+      "tick": 21000,
+      "inventory": {
+        "logs": 1,
+        "timber": 1
+      },
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "6769cb2a4f0eaf8ff0c8487f0e78c0c59eb8cf4107dcb661079b9a9f3e4351e9"
+    },
+    {
+      "name": "winter-logging_camp-logging-camp-50-40-0-z1",
+      "scene": "winter",
+      "target": {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 2
+        },
+        "selected": "core-log-stack-a-winter",
+        "anchor": {
+          "x": 337.6,
+          "y": 1449.92
+        }
+      },
+      "zoom": 1,
+      "tile": [
+        50,
+        40
+      ],
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "inventory": {
+        "logs": 2
+      },
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "b14f30f8cd3709cadd6f7324ec231bc3057648441ee4137a8c96f10421d5eb01"
+    },
+    {
+      "name": "winter-logging_camp-logging-camp-50-40-0-z0.6",
+      "scene": "winter",
+      "target": {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 2
+        },
+        "selected": "core-log-stack-a-winter",
+        "anchor": {
+          "x": 337.6,
+          "y": 1449.92
+        }
+      },
+      "zoom": 0.6,
+      "tile": [
+        50,
+        40
+      ],
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "inventory": {
+        "logs": 2
+      },
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "d76fa7ad89005915ad2a4c2609468f7b1ff50227786810026761c13f0687841b"
+    },
+    {
+      "name": "winter-logging_camp-logging-camp-50-40-0-z3",
+      "scene": "winter",
+      "target": {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 2
+        },
+        "selected": "core-log-stack-a-winter",
+        "anchor": {
+          "x": 337.6,
+          "y": 1449.92
+        }
+      },
+      "zoom": 3,
+      "tile": [
+        50,
+        40
+      ],
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "inventory": {
+        "logs": 2
+      },
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 318.40000000000003,
+        "y": 1417.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "11245c64fb95e20c1d4bf4ae2156b40379e6e6bfb4ad387c2f0887e451fb7299"
+    },
+    {
+      "name": "winter-sawmill-construction-site-000003-z1",
+      "scene": "winter",
+      "target": {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 0,
+          "timber": 1
+        },
+        "selected": null,
+        "anchor": {
+          "x": 113.6,
+          "y": 1305.92
+        }
+      },
+      "zoom": 1,
+      "tile": [
+        42,
+        39
+      ],
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "inventory": {
+        "logs": 0,
+        "timber": 1
+      },
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "4436e5fc5b6d8880aa6e3fbff0c80f0a153f8f18e2312ad8be76ad2c1f6e78c8"
+    },
+    {
+      "name": "winter-sawmill-construction-site-000003-z0.6",
+      "scene": "winter",
+      "target": {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 0,
+          "timber": 1
+        },
+        "selected": null,
+        "anchor": {
+          "x": 113.6,
+          "y": 1305.92
+        }
+      },
+      "zoom": 0.6,
+      "tile": [
+        42,
+        39
+      ],
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "inventory": {
+        "logs": 0,
+        "timber": 1
+      },
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "bdfa59af65d2e7c24cc18bd1178986ce0155c23b233c3ddc27184e8a282acb80"
+    },
+    {
+      "name": "winter-sawmill-construction-site-000003-z3",
+      "scene": "winter",
+      "target": {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 0,
+          "timber": 1
+        },
+        "selected": null,
+        "anchor": {
+          "x": 113.6,
+          "y": 1305.92
+        }
+      },
+      "zoom": 3,
+      "tile": [
+        42,
+        39
+      ],
+      "saveSHA256": "b3354c129050b59f76626095d668c5eecb2f5056f68a5e33978ca9caa190f160",
+      "stateSHA256": "8a70e676163950e6d1284f75032499fd2bcb5b7edc6b3f983f4c851781e7e157",
+      "tick": 23450,
+      "inventory": {
+        "logs": 0,
+        "timber": 1
+      },
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 94.39999999999999,
+        "y": 1273.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "06c36c014c24074baa1d4eedf6c6ec9b219d2bfc1fcf6268e489848aa30f41f9"
+    },
+    {
+      "name": "winter-seed5-sawmill-construction-site-000057-z1",
+      "scene": "winter-seed5",
+      "target": {
+        "id": "construction-site-000057",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 12,
+        "inventory": {
+          "logs": 1,
+          "timber": 4
+        },
+        "selected": "core-log-stack-b-winter",
+        "anchor": {
+          "x": 1041.6,
+          "y": 905.92
+        }
+      },
+      "zoom": 1,
+      "tile": [
+        44,
+        12
+      ],
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "stateSHA256": "6b8ad8fa82e5a634bda32723b3db9ff446d225bfbdb24e7979367ddea0f41794",
+      "tick": 527422,
+      "inventory": {
+        "logs": 1,
+        "timber": 4
+      },
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "95c80ccd8f77193ee55385321f3fa3f876f5c5838c79d7364d72ddf09c06212c"
+    },
+    {
+      "name": "winter-seed5-sawmill-construction-site-000057-z0.6",
+      "scene": "winter-seed5",
+      "target": {
+        "id": "construction-site-000057",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 12,
+        "inventory": {
+          "logs": 1,
+          "timber": 4
+        },
+        "selected": "core-log-stack-b-winter",
+        "anchor": {
+          "x": 1041.6,
+          "y": 905.92
+        }
+      },
+      "zoom": 0.6,
+      "tile": [
+        44,
+        12
+      ],
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "stateSHA256": "6b8ad8fa82e5a634bda32723b3db9ff446d225bfbdb24e7979367ddea0f41794",
+      "tick": 527422,
+      "inventory": {
+        "logs": 1,
+        "timber": 4
+      },
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "1c3c134c6fe80c1c17c016051c37ad87634a0ebe25e6aa46d558d6c4e8222a19"
+    },
+    {
+      "name": "winter-seed5-sawmill-construction-site-000057-z3",
+      "scene": "winter-seed5",
+      "target": {
+        "id": "construction-site-000057",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 12,
+        "inventory": {
+          "logs": 1,
+          "timber": 4
+        },
+        "selected": "core-log-stack-b-winter",
+        "anchor": {
+          "x": 1041.6,
+          "y": 905.92
+        }
+      },
+      "zoom": 3,
+      "tile": [
+        44,
+        12
+      ],
+      "saveSHA256": "4225690d6f598dac712dbe9d9eb166e5331185b61b4f1228219721b27eb06b96",
+      "stateSHA256": "6b8ad8fa82e5a634bda32723b3db9ff446d225bfbdb24e7979367ddea0f41794",
+      "tick": 527422,
+      "inventory": {
+        "logs": 1,
+        "timber": 4
+      },
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "c4f9b5db427d639258eb0f181cb2b23979256b97cef473b933ada0971b7be131"
+    },
+    {
+      "name": "spring-seed5-sawmill-construction-site-000057-z1",
+      "scene": "spring-seed5",
+      "target": {
+        "id": "construction-site-000057",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 12,
+        "inventory": {
+          "logs": 1,
+          "timber": 19
+        },
+        "selected": "core-log-stack-b-summer",
+        "anchor": {
+          "x": 1041.6,
+          "y": 905.92
+        }
+      },
+      "zoom": 1,
+      "tile": [
+        44,
+        12
+      ],
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "stateSHA256": "22357ec97f6375fc8a3afa3f851bc71890d849517f086a68fec8416e624afec9",
+      "tick": 504000,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "939e2a59f1fb89e06e23c053e00004c4148cdaa263b3906066c29fe17efd1c76"
+    },
+    {
+      "name": "spring-seed5-sawmill-construction-site-000057-z0.6",
+      "scene": "spring-seed5",
+      "target": {
+        "id": "construction-site-000057",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 12,
+        "inventory": {
+          "logs": 1,
+          "timber": 19
+        },
+        "selected": "core-log-stack-b-summer",
+        "anchor": {
+          "x": 1041.6,
+          "y": 905.92
+        }
+      },
+      "zoom": 0.6,
+      "tile": [
+        44,
+        12
+      ],
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "stateSHA256": "22357ec97f6375fc8a3afa3f851bc71890d849517f086a68fec8416e624afec9",
+      "tick": 504000,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "75621a90070d192cdaa4bfbca4c8ce923bf7b03cc1241a898400081087e2bd80"
+    },
+    {
+      "name": "spring-seed5-sawmill-construction-site-000057-z3",
+      "scene": "spring-seed5",
+      "target": {
+        "id": "construction-site-000057",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 12,
+        "inventory": {
+          "logs": 1,
+          "timber": 19
+        },
+        "selected": "core-log-stack-b-summer",
+        "anchor": {
+          "x": 1041.6,
+          "y": 905.92
+        }
+      },
+      "zoom": 3,
+      "tile": [
+        44,
+        12
+      ],
+      "saveSHA256": "733650364dc7e22bb4309aae66c36614928bc28ffe1910896bad64495e7da90d",
+      "stateSHA256": "22357ec97f6375fc8a3afa3f851bc71890d849517f086a68fec8416e624afec9",
+      "tick": 504000,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "targetClientPoint": {
+        "clientX": 640,
+        "clientY": 400
+      },
+      "draws": [],
+      "drawTotals": {},
+      "expectedWorldRect": {
+        "x": 1022.3999999999999,
+        "y": 873.52,
+        "width": 38.4,
+        "height": 38.4
+      },
+      "targetDraws": [],
+      "jpegSHA256": "f5b2fe6d0a765046b5c322688d38cf2d5540695f8dd081c26c279dc89a963e32"
+    }
+  ],
+  "errors": [],
+  "networkFailures": [
+    {
+      "view": "summer-logging_camp-logging-camp-50-40-0-z1",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "summer-logging_camp-logging-camp-50-40-0-z0.6",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "summer-logging_camp-logging-camp-50-40-0-z3",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "summer-sawmill-construction-site-000003-z1",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "summer-sawmill-construction-site-000003-z0.6",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "summer-sawmill-construction-site-000003-z3",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-logging_camp-logging-camp-50-40-0-z1",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-logging_camp-logging-camp-50-40-0-z0.6",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-logging_camp-logging-camp-50-40-0-z3",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-sawmill-construction-site-000003-z1",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-sawmill-construction-site-000003-z0.6",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-sawmill-construction-site-000003-z3",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-seed5-sawmill-construction-site-000057-z1",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-seed5-sawmill-construction-site-000057-z0.6",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "winter-seed5-sawmill-construction-site-000057-z3",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "spring-seed5-sawmill-construction-site-000057-z1",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "spring-seed5-sawmill-construction-site-000057-z0.6",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "spring-seed5-sawmill-construction-site-000057-z3",
+      "url": "http://127.0.0.1:4308/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}
