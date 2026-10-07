@@ -27060,5 +27060,339 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "height-l0c",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "height-l0c/house_l0_c-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/height-l0c/house_l0_c-v2.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-l0c/candidates-20261008/approved-native/house_l0_c-v2.png",
+          "sourceSha256": "513eb7c56e28408baf572b22b293003e28f7a8f2dcb936824b0fca0bc92f8888",
+          "runtimeSha256": "513eb7c56e28408baf572b22b293003e28f7a8f2dcb936824b0fca0bc92f8888"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.49957049486461247,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          0
+        ],
+        "variantId": "c-height",
+        "roofRidge": {
+          "x": 49,
+          "y": 3
+        }
+      },
+      {
+        "id": "height-l0c/house_l0_c-v2_fresh",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/height-l0c/house_l0_c-v2_fresh.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-l0c/candidates-20261008/approved-native/house_l0_c-v2_fresh.png",
+          "sourceSha256": "1b7b9373319bdfc636c277a54f8afa98ae00bb14acd237f07528ea3a47731027",
+          "runtimeSha256": "1b7b9373319bdfc636c277a54f8afa98ae00bb14acd237f07528ea3a47731027"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.49957049486461247,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "height-l0c/house_l0_c-v2"
+        ],
+        "layer": "fresh",
+        "transform": "inherit-body",
+        "order": 0
+      },
+      {
+        "id": "height-l0c/house_l0_c-v2_weathered",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/height-l0c/house_l0_c-v2_weathered.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-l0c/candidates-20261008/approved-native/house_l0_c-v2_weathered.png",
+          "sourceSha256": "ab6791522f3e0ce2a3a296a23a78c0c7e8fd96bd7b694581cb1b35391072d6f6",
+          "runtimeSha256": "ab6791522f3e0ce2a3a296a23a78c0c7e8fd96bd7b694581cb1b35391072d6f6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.49957049486461247,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "height-l0c/house_l0_c-v2"
+        ],
+        "layer": "weathered",
+        "transform": "inherit-body",
+        "order": 0
+      },
+      {
+        "id": "height-l0c/house_l0_c-v2_boarded",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/height-l0c/house_l0_c-v2_boarded.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-l0c/candidates-20261008/approved-native/house_l0_c-v2_boarded.png",
+          "sourceSha256": "ebb0f1f186367295535a91cd90687328e17cb241ab9bd0fe0a74b789e42b5613",
+          "runtimeSha256": "ebb0f1f186367295535a91cd90687328e17cb241ab9bd0fe0a74b789e42b5613"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.49957049486461247,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "height-l0c/house_l0_c-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "height-l0c/house_l0_c-v2_snow",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/height-l0c/house_l0_c-v2_snow.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-l0c/candidates-20261008/approved-native/house_l0_c-v2_snow.png",
+          "sourceSha256": "232a64881e53fab72860b7bcd7f396a76ff1cde091b0109ade114a3f5798ef5f",
+          "runtimeSha256": "232a64881e53fab72860b7bcd7f396a76ff1cde091b0109ade114a3f5798ef5f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.49957049486461247,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "height-l0c/house_l0_c-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      }
+    ],
+    "rules": [
+      {
+        "id": "height-l0c/l0c-body",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 50,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "legacyBodyUrl",
+            "value": "assets/wave26/house/house_l0_c.png"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "max": 1350
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-l0c/house_l0_c-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-l0c/l0c-fresh",
+        "kind": "state-overlay",
+        "slot": "house-fresh",
+        "priority": 50,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-l0c/house_l0_c-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "fresh"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-l0c/house_l0_c-v2_fresh",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-l0c/l0c-weathered",
+        "kind": "state-overlay",
+        "slot": "house-weathered",
+        "priority": 50,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-l0c/house_l0_c-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "weathered"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-l0c/house_l0_c-v2_weathered",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-l0c/l0c-boarded",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 50,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-l0c/house_l0_c-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-l0c/house_l0_c-v2_boarded",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-l0c/l0c-snow",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 50,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-l0c/house_l0_c-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-l0c/house_l0_c-v2_snow",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

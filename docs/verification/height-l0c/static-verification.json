@@ -1,0 +1,124 @@
+{
+  "sourceRuntimeExact": [
+    {
+      "role": "body",
+      "source": "/tmp/astra-height-l0c-candidates-20261008/house_l0_c-body-candidate.png",
+      "runtime": "public/assets/height-l0c/house_l0_c-v2.png",
+      "sha256": "513eb7c56e28408baf572b22b293003e28f7a8f2dcb936824b0fca0bc92f8888"
+    },
+    {
+      "role": "fresh",
+      "source": "/tmp/astra-height-l0c-candidates-20261008/house_l0_c-fresh-candidate.png",
+      "runtime": "public/assets/height-l0c/house_l0_c-v2_fresh.png",
+      "sha256": "1b7b9373319bdfc636c277a54f8afa98ae00bb14acd237f07528ea3a47731027"
+    },
+    {
+      "role": "weathered",
+      "source": "/tmp/astra-height-l0c-candidates-20261008/house_l0_c-weathered-candidate.png",
+      "runtime": "public/assets/height-l0c/house_l0_c-v2_weathered.png",
+      "sha256": "ab6791522f3e0ce2a3a296a23a78c0c7e8fd96bd7b694581cb1b35391072d6f6"
+    },
+    {
+      "role": "boarded",
+      "source": "/tmp/astra-height-l0c-candidates-20261008/house_l0_c-boarded-candidate.png",
+      "runtime": "public/assets/height-l0c/house_l0_c-v2_boarded.png",
+      "sha256": "ebb0f1f186367295535a91cd90687328e17cb241ab9bd0fe0a74b789e42b5613"
+    },
+    {
+      "role": "snow",
+      "source": "/tmp/astra-height-l0c-candidates-20261008/house_l0_c-snow-candidate.png",
+      "runtime": "public/assets/height-l0c/house_l0_c-v2_snow.png",
+      "sha256": "232a64881e53fab72860b7bcd7f396a76ff1cde091b0109ade114a3f5798ef5f"
+    }
+  ],
+  "otherBundlesUnchanged": 34,
+  "existingLedgerBytesExact": true,
+  "ledgerCRLF": true,
+  "individualNativeViewed": 5,
+  "opaqueCompositeViewed": 4,
+  "limitations": {
+    "method": "manual native-pixel landmark reading from enlarged complete image, endpoint uncertainty about1px; dimension uncertainty2px",
+    "closedDoorLeaf": {
+      "sameX": 63,
+      "topY": 77,
+      "bottomY": 122,
+      "height": 45,
+      "widthAtY": 98,
+      "leftX": 54,
+      "rightX": 73,
+      "width": 19,
+      "dimensionUncertainty": 2
+    },
+    "worldScale": 0.49957049486461247,
+    "doorWorldHeight": [
+      21.481531279178338,
+      23.479813258636785
+    ],
+    "doorWorldWidth": [
+      8.492698412698411,
+      10.490980392156862
+    ],
+    "bibleTargetWorldHeight": [
+      20.24,
+      24.64
+    ],
+    "bibleTargetWorldWidth": [
+      7.92,
+      11.44
+    ],
+    "apertureLimitation": "Closed door leaf is an aperture proxy only; actual clear opening hidden by leaf/jamb. No runtime adult-overlap proof.",
+    "originalGroundLandmarks": [
+      [
+        26,
+        106
+      ],
+      [
+        90,
+        138
+      ],
+      [
+        129,
+        117
+      ]
+    ],
+    "registeredGroundLandmarks": [
+      [
+        26,
+        104
+      ],
+      [
+        90,
+        139
+      ],
+      [
+        130,
+        119
+      ]
+    ],
+    "groundEuclideanResiduals": [
+      2.0,
+      1.0,
+      2.23606797749979
+    ],
+    "groundCoordinateUncertainty": 2,
+    "pivot": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "originalAlpha32RoofTopY": 44,
+    "candidateAlpha32RoofTopY": 3,
+    "roofTopShift": -41,
+    "identity": "long steep gabled golden thatch; warm plaster; simple posts; one frontleft window; no sidewindow or extension",
+    "geometryLimitation": "Roof shape identity retained, not pixel-identical. Walls/roof raised substantially; ground residual is nonzero."
+  },
+  "boundaryAlphaMax": {
+    "top": 4,
+    "bottom": 0,
+    "left": 0,
+    "right": 0
+  }
+}
