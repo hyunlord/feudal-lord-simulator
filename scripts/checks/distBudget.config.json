@@ -1,5 +1,5 @@
 {
-  "about": "Build output (dist) size budget (BUDGET-1). scripts/checks/distBudget.mjs sorts every dist file into a category by the first rule whose pattern matches its dist-relative path; a file no rule matches is counted as 기타 and listed. Budgets are in MB = 1,000,000 bytes; null = measured, no budget. check:merge fails when the total or a budgeted category is over. A category with onDemand true loads only when its screen needs it (EVENT-ART, user decision 2026-10-05: the event pictures when their card opens): it is measured, but the total — the first load — leaves it out.",
+  "about": "Build output (dist) size budget (BUDGET-1). scripts/checks/distBudget.mjs sorts every dist file into a category by the first rule whose pattern matches its dist-relative path; a file no rule matches is counted as 기타 and listed. Budgets are in MB = 1,000,000 bytes; null = measured, no budget. check:merge fails when the total or a budgeted category is over. A category with onDemand true loads only when its screen needs it (EVENT-ART, user decision 2026-10-05: the event pictures when their card opens; LR2-D1, user decision 2026-10-06: the lord screens' pictures when a lord screen opens): it is measured, but the total — the first load — leaves it out.",
   "megabyte": 1000000,
   "totalBudgetMB": 150,
   "categories": [
@@ -7,6 +7,7 @@
     { "id": "portraits", "name": "초상", "budgetMB": 20 },
     { "id": "illustrations", "name": "삽화", "budgetMB": 25 },
     { "id": "event_cards", "name": "사건 삽화(카드에서 불러옴)", "budgetMB": null, "onDemand": true },
+    { "id": "lord_screens", "name": "영주 화면 그림(화면에서 불러옴)", "budgetMB": null, "onDemand": true },
     { "id": "keyart", "name": "키아트", "budgetMB": null },
     { "id": "ui", "name": "UI", "budgetMB": null },
     { "id": "sound", "name": "소리", "budgetMB": null },
@@ -31,6 +32,7 @@
     { "category": "ui", "label": "P0 kit: frames, textures, icons, cursors, buttons", "patterns": ["assets/ui/**", "assets/ui-p0/**"] },
     { "category": "ui", "label": "Wave 8 frames, icons, ornaments, time strip", "patterns": ["assets/wave8/{frames,icons,ornaments,time}/**"] },
     { "category": "ui", "label": "heraldry, merchant marks, seals, UI frames and icons (Wave 14)", "patterns": ["assets/wave14/**"] },
+    { "category": "lord_screens", "label": "the lord screens' pictures (LM-R2: frames, icons, estate cards, the region map; loaded when a lord screen or the ledger's lord tab mounts)", "patterns": ["assets/lord-ui/**"] },
     { "category": "ui", "label": "record cards, chronicle pages, timeline (Wave 19)", "patterns": ["assets/wave19/{cards,pages,timeline}/**"] },
     { "category": "ui", "label": "pad glyphs, person-state ornaments, royal arms (Wave 23)", "patterns": ["assets/wave23/{pad,person_state,royal}/**"] },
     { "category": "ui", "label": "family tree parts (Wave 25)", "patterns": ["assets/wave25/tree/**"] },

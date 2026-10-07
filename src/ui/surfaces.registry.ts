@@ -13,11 +13,19 @@
 // rect, measured on the PNG); `flat` — no art frame (a plain fill with a CSS rule).
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
+import { DECISION_SURFACES } from "./lord/decisions/surfaces";
+import { ESTATES_SURFACES } from "./lord/estates/surfaces";
+import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
+import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
+import { REGION_SURFACES } from "./lord/region/surfaces";
+import { SCREEN_SURFACES } from "./lord/screen/surfaces";
+
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
  * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice;
- * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments";
+ * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments;
+ * LM-R2 `lord2`: scripts/lmr2States.ts, ~/fls-lmr2-states — the lord's marriage, estates, promises and suits played to their states). */
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -134,6 +142,21 @@ const PETITION = {
   siblingsNoOverlap: [".petition-option", ".story-modal-later"],
   // QA-034: the title, the request, every answer and the later button are shown and painted (not under the frame layer).
   requires: ["h2", ".petition-body > p:not(.petition-who)", ".petition-option", ".story-modal-later"],
+} as const;
+/** DEC-CARD (A3): the house card opens first of the scene's cards; the delay outlasts the page load (as CHAPTER_DELAY's
+ * does), or openScene's opening Escape closes it as it opens and the petition behind it comes instead. */
+const HOUSE_DELAY = 20_000;
+/** DEC-CARD (result side): the year's card and the house card — the petition frame's layer, the body scrolling inside. */
+const RESULTS_CARD = {
+  frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".petition-body"],
+  siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
+} as const;
+/** DEC-CARD: the famine and the political petitions in the heavy decision card (the petition frame; the situation, the
+ * stake, the deadline, then the answers as a grid, each with now / later / who remembers). Its body scrolls past the view. */
+const DECISION_CARD = {
+  ...PETITION, root: ".story-modal.petition-card.decision-card.petition-decision", scrollParts: [".decision-card-body"],
+  siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+  requires: ["h2", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
 } as const;
 const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
   scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=20000" } } as const;
@@ -308,22 +331,30 @@ export const SURFACES: readonly SurfaceRow[] = [
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "ui5", name: "carrying", tile: "house", zoom: 1.4, query: QUIET, run: true },
     open: [{ key: "Digit3" }, { wait: ".season-ledger-card", timeout: 90_000 }, { pause: 900 }], requires: ["h2", ".season-ledger-line", ".season-ledger-resume"],
     data: "the carter town's season close" },
-  { id: "modal.famine", root: ".story-modal.famine-decision", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    open: [{ story: ".famine-decision" }, { pause: 800 }], scroll: "y", siblingsNoOverlap: [".famine-option", ".story-modal-later"], requires: ["h2", ".famine-option", ".story-modal-later"],
-    data: "chapter 1's famine decision" },
-  { id: "modal.petition.ch1", ...PETITION, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
-  { id: "modal.petition.ch2-war", ...PETITION, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
-  { id: "modal.petition.ch4-reorg", ...PETITION, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },
-  { id: "modal.petition.ch5-legacy", ...PETITION, scene: petitionScene("ui10", "borough_autonomy", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough's autonomy (legacy)" },
-  { id: "modal.petition.heir", ...PETITION, scene: petitionScene("ui10-extra", "heir_choice", 0), open: [{ story: ".petition-card[data-def='heir_choice']" }, { pause: 600 }],
+  // DEC-CARD (result side): the year's card (src/ui/results/ResultCards.tsx) — the hook opens it at the next year's first
+  // tick it sees, so the scene runs the 1302 town over its year's turn (120 ticks, at 10×); the winter's season card first.
+  { id: "modal.year-review", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.year-review",
+    scene: { kind: "state", set: "ui5", name: "aging-eve", tile: "house", zoom: 1.1, query: "&story-delay=1500", run: true },
+    open: [{ key: "Digit0" }, { wait: ".season-ledger-resume, .results-card.year-review", timeout: 90_000 }, { click: ".season-ledger-resume", optional: true },
+      { wait: ".results-card.year-review", timeout: 60_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-part h3", ".results-card-part li", ".results-card-chronicle", ".results-card-continue"],
+    data: "1302's card at 1303's first tick: its decisions (or none), the factions' moves, the town's people and money" },
+  { id: "modal.famine", ...DECISION_CARD, root: ".story-modal.petition-card.decision-card.famine-decision", frameSlots: [],
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
+    open: [{ story: ".famine-decision" }, { pause: 800 }], data: "chapter 1's famine decision (DEC-CARD: four answers, the steward beside the stake)" },
+  { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
+  { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
+  { id: "modal.petition.ch4-reorg", ...DECISION_CARD, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },
+  { id: "modal.petition.ch5-legacy", ...DECISION_CARD, scene: petitionScene("ui10", "borough_autonomy", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough's autonomy (legacy)" },
+  { id: "modal.petition.heir", ...DECISION_CARD, scene: petitionScene("ui10-extra", "heir_choice", 0), open: [{ story: ".petition-card[data-def='heir_choice']" }, { pause: 600 }],
     expect: ".petition-heir", data: "the heir's card with three candidates" },
   // QA-034: every chapter's decision cards (the frame layer covered all of them on 3acc04ff).
-  { id: "modal.petition.ch3-plague", ...PETITION, scene: petitionScene("ui8", "cash_rent", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 3's cash rent" },
-  { id: "modal.petition.ch4-guild", ...PETITION, scene: petitionScene("ui9", "guild_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 4's guild charter" },
-  { id: "modal.petition.ch5-royal-tax", ...PETITION, scene: petitionScene("ui10", "royal_tax", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the Crown's tax, 1384 (QA-034)" },
-  { id: "modal.petition.ch5-legacy-choice", ...PETITION, scene: petitionScene("ui10", "legacy_choice", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the legacy choice" },
-  { id: "modal.petition.interlude-guild", ...PETITION, scene: petitionScene("ui10", "guild_dispute", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's guild dispute" },
-  { id: "modal.petition.interlude-church", ...PETITION, scene: petitionScene("ui10", "church_rebuilding", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's church rebuilding" },
+  { id: "modal.petition.ch3-plague", ...DECISION_CARD, scene: petitionScene("ui8", "cash_rent", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 3's cash rent" },
+  { id: "modal.petition.ch4-guild", ...DECISION_CARD, scene: petitionScene("ui9", "guild_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 4's guild charter" },
+  { id: "modal.petition.ch5-royal-tax", ...DECISION_CARD, scene: petitionScene("ui10", "royal_tax", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the Crown's tax, 1384 (QA-034)" },
+  { id: "modal.petition.ch5-legacy-choice", ...DECISION_CARD, scene: petitionScene("ui10", "legacy_choice", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the legacy choice" },
+  { id: "modal.petition.interlude-guild", ...DECISION_CARD, scene: petitionScene("ui10", "guild_dispute", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's guild dispute" },
+  { id: "modal.petition.interlude-church", ...DECISION_CARD, scene: petitionScene("ui10", "church_rebuilding", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's church rebuilding" },
   { id: "modal.chapter-page.ch1", ...CHAPTER_PAGE, scene: chapterScene("ui5", "chapter-end"), data: "chapter 1's end page" },
   { id: "modal.chapter-page.ch2", ...CHAPTER_PAGE, scene: chapterScene("ui6", "chapter2-end"), data: "chapter 2's end page" },
   { id: "modal.chapter-page.ch3", ...CHAPTER_PAGE, scene: chapterScene("ui8", "chapter3-end"), data: "chapter 3's end page" },
@@ -421,35 +452,52 @@ export const SURFACES: readonly SurfaceRow[] = [
   // the steward's precedents and the town's request (from their chips).
   // The picture is not a required element: the content check proves paint by text and controls changing between its two
   // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
-  { id: "modal.lord.home-petition", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".lord-card-recurring", ".story-modal-later"],
-    scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01), both answers' numbers" },
-  { id: "modal.lord.home-petition.no-art", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".story-modal-later"],
+  { id: "modal.lord.home-petition", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".lord-card-recurring", ".story-modal-later"],
+    scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01) in the DEC-CARD layout: the situation, the stake, each answer now / later / who remembers" },
+  { id: "modal.lord.home-petition.no-art", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
-  { id: "modal.lord.home-petition.guardian", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-option", ".story-modal-later"],
+  { id: "modal.lord.home-petition.guardian", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
   { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "precedent", 1500), open: [{ story: ".lord-card[data-precedent]" }, { pause: 600 }], data: "the steward's answers by precedent (Wave 44 13)" },
-  { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
-    scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }], data: "the town's request (a proclamation waiting)" },
+  { id: "modal.lord.request", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
+    siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
+    scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }],
+    data: "the town's request (a proclamation waiting) in the DEC-CARD layout: the grant's now (the works it opens) and later (the actual's day)" },
+  // DEC-CARD (Astra A3): a change in the lord's house as one card before the petitions (src/ui/results/ResultCards.tsx), on
+  // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the lord dead (1304),
+  // the neighbour's estate inherited through the wife (its title, possession and the debts promised with it).
+  { id: "modal.house-change.wardship", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='wardship_begun']",
+    scene: petitionScene("petitions", "home-boundary_dispute", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
+    data: "a minor lord's wardship begun (Wave 40 13): who, the guardian, no right changed, his card as the next act — before the boundary dispute's card" },
+  { id: "modal.house-change.lord-died", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='lord_died']",
+    scene: petitionScene("petitions", "home-pannage", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".results-card-continue"],
+    data: "the lord's death (no picture): his name and age, who leads the house now" },
+  { id: "modal.house-change.inherited", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='inherited']",
+    scene: petitionScene("moments", "inheritance_fealty", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
+    data: "the neighbour's estate inherited (Wave 40 08): the old lord's death, the title and possession, five debts promised, the estates screen as the next act" },
   // EVENT-ART: the registry's event card (src/ui/hud/RegistryCard.tsx) on scripts/eventArtStates.ts's states — the lord's
   // slice played by the lord bot to the first content canon v4 offer the registry draws, and to the first whose card has a
   // hold (ER-19: its cost under its tradeoff); it opens by itself after the world, as a petition does. The picture is not
   // a required element (as above).
-  { id: "modal.lord.registry", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
-    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".lord-card-precedent", ".story-modal-later"],
+  { id: "modal.lord.registry", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
-    data: "the first v4 offer the registry drew in the lord's slice: its why, each answer's tradeoff" },
-  { id: "modal.lord.registry-hold", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
-    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".registry-card-hold", ".story-modal-later"],
+    data: "the first v4 offer the registry drew in the lord's slice (DEC-CARD layout): its why, each answer's tradeoff, now / later / who remembers, the shut one with why" },
+  { id: "modal.lord.registry-hold", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer-hold", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
-    data: "the first v4 offer with a hold the lord can choose: the hold's cost in words under its tradeoff" },
+    data: "the first v4 offer with a hold the lord can choose (DEC-CARD layout): the hold's cost as the engine's run shows it (the claim weakened)" },
   // LM-R1 receipt: lord mode's "왜 여기?" receipt beside a selected building's card, and the ledger drawer's lord tab
   // (scripts/lmr1LordStates.ts: the lord's slice with the stability policy, dues 80% and a 10d farmstead subsidy).
   { id: "map.selection.lord-farmstead", root: ".diagnostic-card", frame: "css", scene: LORD_TOWN, open: [LORD_PICK], scroll: "y",
@@ -476,9 +524,20 @@ export const SURFACES: readonly SurfaceRow[] = [
   // Playtest 2026-10-02 #5: the food cell's breakdown under the pill (total, milling, carrying, access, hunger).
   { id: "hud.food-breakdown", root: ".food-breakdown", frame: "css", scene: TOWN, open: [{ click: ".status-pill-cell[data-food-days]" }, { pause: 500 }],
     requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
+  // DEC-CARD A2: lord mode's pill ends with "내 도시로" (the camera to the town's seat); A5: the stock tab under the
+  // treasury line shows the treasury by estate (rent, taxes, contracts, spending), lord mode only.
+  { id: "hud.status-pill.lord", root: ".status-pill", frame: "css", scene: LORD_TOWN, open: [], requires: [".status-pill-town"],
+    data: "the lord's slice: date, population, food, coin and the way back to town" },
+  { id: "slot.ledger.stock-lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
+    scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", ".treasury-estates-list > li", ".treasury-estates-note"],
+    data: "the lord's slice stock tab: the treasury by estate under the treasury line, then the stocks" },
   // Lord mode's command pins in the build drawer's place, on the receipt's lord-mode state (scripts/lmr1LordStates.ts).
   { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: LORD_TOWN, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
     requires: [".command-pin"], data: "the lord's public work (the keep, locked until the fortified town) and encouragement-zone pins" },
+  // LM-R2: the lord screen host and its four areas' screens (each area's rows in its own file, src/ui/lord/<area>/surfaces.ts).
+  ...SCREEN_SURFACES, ...NEGOTIATION_SURFACES, ...LEDGER_SURFACES, ...ESTATES_SURFACES, ...REGION_SURFACES,
+  // LM-R2: the lord's decision cards (src/ui/lord/decisions/surfaces.ts).
+  ...DECISION_SURFACES,
 ];
 
 /**

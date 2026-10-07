@@ -36,6 +36,7 @@ import { getTile } from '../world/grid';
 import { LordWhyHere } from "../ui/lord/ReceiptPanel";
 import { MapCardExtras } from "../ui/MapCardExtras";
 import { platformServices } from "../platform/platform";
+import { useLordCamera } from "../ui/lord/camera/useLordCamera";
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
@@ -125,6 +126,8 @@ export function GameCanvas({
     onDrainToolChange,
     setPendingPlacement,
   });
+  // DEC-CARD A2: lord mode opens a loaded game where the lord last looked, a new one on its seat (after the runtime above).
+  useLordCamera(state);
 
   let cardModel: DiagnosticCardModel | null = null;
   if (selection?.kind === "building") {

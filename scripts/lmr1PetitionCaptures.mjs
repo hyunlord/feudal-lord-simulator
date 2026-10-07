@@ -46,9 +46,10 @@ const card = page => page.evaluate(async () => {
   const src = background === null ? null : background.match(/url\("?([^")]+)"?\)/)?.[1] ?? null;
   const loaded = src === null ? null : await new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done('error'); image.src = src; });
   const box = root.getBoundingClientRect();
-  return { title: root.querySelector('h2')?.textContent ?? null, court: root.querySelector('.lord-card-court')?.textContent ?? null,
-    demand: root.querySelector('h2 + p')?.textContent ?? null, art: art?.getAttribute('data-art') ?? null, src, loaded,
-    answers: [...root.querySelectorAll('.petition-option')].map(button => ({ grant: button.getAttribute('data-grant'), text: button.textContent,
+  return { title: root.querySelector('h2')?.textContent ?? null, court: root.querySelector('.lord-card-court, .decision-card-court')?.textContent ?? null,
+    demand: root.querySelector('.decision-card-situation, h2 + p')?.textContent ?? null, art: art?.getAttribute('data-art') ?? null, src, loaded,
+    // DEC-CARD: a card in the heavy layout has answer blocks (data-choice grant / refuse) in place of the option buttons.
+    answers: [...root.querySelectorAll('.petition-option, .decision-card-choice')].map(button => ({ grant: button.getAttribute('data-grant') ?? (button.getAttribute('data-choice') === null ? null : String(button.getAttribute('data-choice') === 'grant')), text: button.textContent,
       treasury: button.querySelector('.lord-card-forecast')?.getAttribute('data-treasury') ?? null, relations: button.querySelector('.lord-card-forecast')?.getAttribute('data-relations') ?? null,
       height: Math.round(button.getBoundingClientRect().height) })),
     precedent: root.querySelector('.lord-card-precedent')?.textContent ?? null, recurring: root.querySelector('.lord-card-recurring')?.getAttribute('aria-pressed') ?? null,
@@ -86,7 +87,7 @@ for (const kind of KINDS) {
     row.opened = await waitCard(page, `.lord-card[data-home-petition="${kind}"]`);
     if (grant) { row.card = await card(page); row.bytes = await shoot(page, `home-${kind}`); bytes += row.bytes; }
     const before = await proof(page);
-    await page.locator(`.lord-card .petition-option[data-grant="${grant}"]`).first().click(); await page.waitForTimeout(600);
+    await page.locator(`.lord-card .petition-option[data-grant="${grant}"], .lord-card [data-choose="${grant ? 'grant' : 'refuse'}"]`).first().click(); await page.waitForTimeout(600);
     const after = await proof(page);
     const answered = after.petitions.find(p => p.id === petition.id);
     const shown = row.card?.answers.find(answer => answer.grant === String(grant));

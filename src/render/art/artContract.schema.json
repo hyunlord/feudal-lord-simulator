@@ -829,6 +829,99 @@
               "type": "string",
               "minLength": 1
             },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "placement": {
+              "const": "farm-prop"
+            },
+            "baseId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "staticCluster": {
+              "const": true
+            },
+            "animation": {
+              "const": false
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "image",
+            "provenance",
+            "geometry",
+            "placement",
+            "baseId",
+            "staticCluster",
+            "animation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "placement": {
+              "const": "stock-pile"
+            },
+            "resource": {
+              "type": "string",
+              "minLength": 1
+            },
+            "season": {
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "geometry",
+            "kind",
+            "placement",
+            "resource",
+            "season"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
             "image": {
               "$ref": "#/$defs/image"
             },
@@ -1719,6 +1812,15 @@
         },
         {
           "$ref": "#/$defs/building-attachment"
+        },
+        {
+          "$ref": "#/$defs/ui-frame"
+        },
+        {
+          "$ref": "#/$defs/ui-image"
+        },
+        {
+          "$ref": "#/$defs/walker-transport"
         }
       ]
     },
@@ -1746,7 +1848,10 @@
             "ground-texture",
             "weather-shadow",
             "weather-particle",
-            "building-attachment"
+            "building-attachment",
+            "ui-frame",
+            "ui-image",
+            "walker-transport"
           ]
         },
         "slot": {
@@ -2316,6 +2421,258 @@
         "occupations",
         "minZoom",
         "mounts"
+      ],
+      "additionalProperties": false
+    },
+    "insets": {
+      "type": "object",
+      "properties": {
+        "top": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "right": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bottom": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "left": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ],
+      "additionalProperties": false
+    },
+    "ui-frame": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "ui-frame"
+        },
+        "slice": {
+          "$ref": "#/$defs/insets"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "contentInset": {
+          "$ref": "#/$defs/insets"
+        },
+        "centre": {
+          "type": "string",
+          "enum": [
+            "fill",
+            "empty"
+          ]
+        },
+        "repeat": {
+          "type": "string",
+          "enum": [
+            "stretch",
+            "round"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "slice",
+        "scale",
+        "contentInset",
+        "centre",
+        "repeat"
+      ],
+      "additionalProperties": false
+    },
+    "ui-image": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "ui-image"
+        },
+        "cssWidths": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "derivatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "width",
+              "assetId"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "cssWidths",
+        "derivatives"
+      ],
+      "additionalProperties": false
+    },
+    "walker-transport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "walker-transport"
+        },
+        "group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "facing": {
+          "enum": [
+            "ne",
+            "se",
+            "sw",
+            "nw"
+          ]
+        },
+        "frameSelection": {
+          "const": "gait"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "referenceFigureHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "allowMirror": {
+          "const": false
+        },
+        "mountOffset": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "additionalProperties": false
+        },
+        "payloadAnchor": {
+          "$ref": "#/$defs/point"
+        },
+        "payloadWidth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "frames": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "gaitFrame": {
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              "sourceRect": {
+                "$ref": "#/$defs/rect"
+              },
+              "pivot": {
+                "$ref": "#/$defs/point"
+              }
+            },
+            "required": [
+              "gaitFrame",
+              "sourceRect",
+              "pivot"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "group",
+        "image",
+        "provenance",
+        "facing",
+        "frameSelection",
+        "scale",
+        "referenceFigureHeight",
+        "allowMirror",
+        "mountOffset",
+        "payloadAnchor",
+        "payloadWidth",
+        "frames"
       ],
       "additionalProperties": false
     }

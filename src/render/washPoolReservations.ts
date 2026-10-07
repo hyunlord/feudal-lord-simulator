@@ -1,3 +1,7 @@
+import { FARM_PROP_ART } from './farmPropArt';
+import { RESOURCE_STOCK_PILE_ART } from './art/resourceStockPileArt';
+import { stockPileLayout } from './stockPileLayout';
+import { collapsedFenceBindings } from './collapsedFenceBinding';
 import { constructionArtLayers } from './constructionArtAssets';
 import { fittedBuildingSpriteRect, isFittedSpriteKey } from './buildingSpriteFit';
 import { buildingSpriteKey } from './buildingSprites';
@@ -23,7 +27,17 @@ function groundBox(bounds: BoundaryBounds): ArtRect {
 /** Conservative screen rectangles reserve existing pictures, including possible spring flock companions. */
 export function washPoolReservations(state: GameState, scene: GroundBoundaryScene = groundBoundaryScene(state)): readonly ArtRect[] {
   const boxes: ArtRect[] = [...scene.grounds.yards, ...scene.grounds.aprons].map(p => groundBox(p.bounds));
+  for (const binding of collapsedFenceBindings(state, scene)) {
+    const foot = tileToScreen(binding.tx, binding.ty);
+    for (const e of ART_REGISTRY.entries('land-stage')) if (e.kind === 'land-stage' && e.family === 'yard-fence' && e.stage === 'collapsed')
+      boxes.push({ x: foot.sx - e.geometry.pivot.x * e.geometry.scale, y: foot.sy - e.geometry.pivot.y * e.geometry.scale, width: e.image.width * e.geometry.scale, height: e.image.height * e.geometry.scale });
+  }
   for (const building of state.buildings) {
+    const pile = RESOURCE_STOCK_PILE_ART.select(state, building);
+    if (pile) {
+      const placement = RESOURCE_STOCK_PILE_ART.placement(pile.id, { at: stockPileLayout(building).door });
+      if (placement?.type === 'blit') boxes.push(placement.targetRect);
+    }
     const meta = building.kind === 'house' ? historicalHouseAssetMeta(state.houses.find(h => h.buildingId === building.id)?.level ?? 0) : null;
     const box = meta ? historicalHouseSpriteRect(building, meta) : historicalFacilitySpriteRect(building, state);
     if (box) boxes.push(box);
@@ -63,6 +77,13 @@ export function washPoolReservations(state: GameState, scene: GroundBoundaryScen
   const reach = Math.max(0, ...companion.map(e => 'geometry' in e ? e.image.width * e.geometry.scale + 4 : 0));
   const above = Math.max(0, ...companion.map(e => 'geometry' in e ? e.geometry.pivot.y * e.geometry.scale : 0));
   const below = Math.max(0, ...companion.map(e => 'geometry' in e ? (e.image.height - e.geometry.pivot.y) * e.geometry.scale : 0));
+  for (const prop of farmProps(state)) {
+    const selected = FARM_PROP_ART.select(prop); if (!selected) continue;
+    const foot = tileToScreen(prop.x, prop.y), { pivot, scale } = selected.geometry;
+    const padding = (ZONE_VARIANTS.sheepFlock as readonly string[]).includes(prop.kind) ? reach : 0;
+    const top = Math.max(pivot.y * scale, padding ? above : 0), bottom = Math.max((selected.image.height - pivot.y) * scale, padding ? below : 0);
+    boxes.push({ x: foot.sx - pivot.x * scale - padding, y: foot.sy - top, width: selected.image.width * scale + padding * 2, height: top + bottom });
+  }
   for (const prop of [...farmProps(state), ...scene.zones.props]) {
     const meta = ZONE_ASSETS.find(e => e.key === prop.kind);
     if (!meta || !('anchorX' in meta) || !('displayWidth' in meta)) continue;

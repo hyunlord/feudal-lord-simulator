@@ -7,7 +7,7 @@ import { ACCEPT_THETA, COUNTER_MARGIN, GREED_MAX, MATERIAL_CAP, MARRIAGE_TIMES, 
 import type { GameState } from "../src/engine/engine.types";
 import { estateById, estatesOf, LORD } from "../src/engine/estates";
 import {
-  advanceDiplomacy, answerCounter, answerWillChange, keepPromise, lordBotMarriageCommands, lordHouseKin, marriageCandidates, marriageRefusal, MARRIAGE_ESTATE_ID, proposeMarriage,
+  advanceDiplomacy, answerCounter, answerCounterRefusal, answerWillChange, keepPromise, keepPromiseRefusal, willChangeRefusal, lordBotMarriageCommands, lordHouseKin, marriageCandidates, marriageRefusal, MARRIAGE_ESTATE_ID, proposeMarriage,
 } from "../src/engine/marriage";
 import { counterOffer, diplomacyOf, evaluateOffer, materialCeiling } from "../src/engine/negotiation";
 import type { Term } from "../src/engine/diplomacy.types";
@@ -114,7 +114,19 @@ test("NG-6 a promise kept is trust in the next offer; a promise broken at its de
   if (negotiation.status === "countered") state = answerCounter(state, negotiation.id, true);
   const ours = diplomacyOf(state).promises.filter(entry => entry.promisor === LORD);
   assert.ok(ours.length > 0, "the counter's debt is a promise");
+  // LM-R2-E ②: the refusal read agrees with the command.
+  assert.equal(keepPromiseRefusal(state, ours[0]!.id), null);
+  assert.equal(keepPromiseRefusal({ ...state, tick: ours[0]!.deadline + 1 }, ours[0]!.id), "late");
+  const theirs = diplomacyOf(state).promises.find(entry => entry.promisor !== LORD);
+  if (theirs !== undefined) assert.equal(keepPromiseRefusal(state, theirs.id), "not_lord");
+  if ((ours[0]!.amount ?? 0) > 0) {
+    const broke = postLedgerEntries(state, [{ account: "cash", category: "promise_payment", amount: -treasuryBalance(state), sourceRefs: [{ type: "actor", id: "test" }] }]);
+    const poor = { ...state, ledger: broke.ledger, treasuryCoin: broke.treasuryCoin };
+    assert.equal(keepPromiseRefusal(poor, ours[0]!.id), "treasury");
+    assert.equal(keepPromise(poor, ours[0]!.id), poor);
+  }
   const kept = keepPromise(state, ours[0]!.id);
+  assert.equal(keepPromiseRefusal(kept, ours[0]!.id), "not_open");
   assert.equal(diplomacyOf(kept).promises.find(entry => entry.id === ours[0]!.id)!.status, "kept");
   assert.ok(evaluateOffer(kept, LORD, COUNTERPART, OFFER).reasons.some(reason => reason.name === "trust" && reason.value > 0));
   // Not kept: past its deadline it is broken — the relation falls by its stake, the next offer carries the floor.
@@ -144,7 +156,9 @@ test("NG-5 a counter not answered within its season lapses", () => {
   const offered = proposeMarriage(base, [{ kind: "cash", giver: "proposer", amount: 10 }]);
   const negotiation = diplomacyOf(offered).negotiations[0]!;
   if (negotiation.status !== "countered") return;
+  assert.equal(answerCounterRefusal({ ...offered, tick: negotiation.deadline + 1 }, negotiation.id), "late");
   const lapsed = advanceDiplomacy({ ...offered, tick: negotiation.deadline + 1 });
+  assert.equal(answerCounterRefusal(lapsed, negotiation.id), "not_countered");
   assert.equal(diplomacyOf(lapsed).negotiations[0]!.status, "withdrawn");
   assert.equal(answerCounter(lapsed, negotiation.id, true), lapsed);
 });
@@ -203,7 +217,9 @@ test("NG-8 a new will let stand: a nephew holds the estate, the counterpart's wo
   // Whether the old lord tried (the seed) or not, letting a will stand is the lord's answer when he does.
   if (plan.stage !== "will_change") state = { ...state, diplomacy: { ...diplomacyOf(state), marriage: { ...plan, stage: "will_change" } } };
   const before = estatesOf(state).claims.find(claim => claim.id === plan.claimId)!.strength;
+  assert.equal(willChangeRefusal(state, "let_it_be"), null);
   state = answerWillChange(state, "let_it_be");
+  assert.equal(willChangeRefusal(state, "let_it_be"), "not_due");
   state = moveTo(state, MARRIAGE_TIMES.fatherDies);
   const after = diplomacyOf(state).marriage!;
   assert.equal(after.stage, "contested");

@@ -163,6 +163,7 @@ ui-geometry)
   petitions=${LMR1_PETITION_STATES:-$HOME/fls-lmr1-petition-states}
   lord=${LORD_STATES:-$HOME/fls-lord-states}
   moments=${WAVE40_MOMENT_STATES:-$HOME/fls-wave40-moment-states}
+  lord2=${LMR2_STATES:-$HOME/fls-lmr2-states}
   # The registry's scenes (src/ui/surfaces.registry.ts) read these; each folder is built by its scripts/ui*States.ts.
   missing=""
   for f in "$states5/merchant-town.json" "$states5/carrying.json" "$states5/famine-arrival.json" "$states5/petition-open.json" "$states5/chapter-end.json" \
@@ -170,11 +171,13 @@ ui-geometry)
     "$states9/reorg.alehouse_boom.json" "$states9/chapter4-end.json" "$states9/borough_charter.json" "$states9/rumour-chased.json" "$states9/reorg.wage_competition.json" \
     "$states10/chapter5-end.json" "$states10/borough_autonomy.json" "$extra/heir_choice.json" "$lands/fen_drainage-summer.json" \
     "$petitions/home-boundary_dispute.json" "$petitions/precedent.json" "$petitions/request.json" "$petitions/guardian.json" "$lord/lord-receipts.json" \
-    "$lord/registry-offer.json" "$lord/registry-offer-hold.json" "$moments/lawsuit_filed.json"; do
+    "$lord/registry-offer.json" "$lord/registry-offer-hold.json" "$moments/lawsuit_filed.json" \
+    "$lord2/offer-countered.json" "$lord2/marriage-contracted.json" "$lord2/will-change.json" "$lord2/contested.json" "$lord2/inherited.json" \
+    "$lord2/audit-pending.json" "$lord2/attention-overloaded.json" "$lord2/promises.json" "$lord2/neighbour-suit.json"; do
     [ -f "$f" ] || missing="$missing $f"
   done
   if [ -n "$missing" ]; then
-    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts, landStates.ts, lmr1PetitionStates.ts, lmr1LordStates.ts, eventArtStates.ts, wave40MomentStates.ts)" | tee "$OUT/summary.txt"
+    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts, landStates.ts, lmr1PetitionStates.ts, lmr1LordStates.ts, eventArtStates.ts, wave40MomentStates.ts, lmr2States.ts)" | tee "$OUT/summary.txt"
     exit 2
   fi
   # No file watching (scripts/remote/viteNoWatch.config.ts): the audit needs the dev transforms, not hot reload, and a
@@ -186,7 +189,7 @@ ui-geometry)
   curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; cat "$OUT/ui-geometry/vite.log"; exit 1; }
   out=docs/verification/uiaudit1/geometry/$FLS_REMOTE_RUN
   node_modules/.bin/tsx scripts/uiGeometryAudit.mjs "$out" --url "$url" --states5 "$states5" --states6 "$states6" --states8 "$states8" \
-    --states9 "$states9" --states10 "$states10" --extra "$extra" --states-lands "$lands" --states-petitions "$petitions" --states-lord "$lord" --states-moments "$moments" "$@" > "$OUT/ui-geometry/audit.log" 2>&1
+    --states9 "$states9" --states10 "$states10" --extra "$extra" --states-lands "$lands" --states-petitions "$petitions" --states-lord "$lord" --states-moments "$moments" --states-lord2 "$lord2" "$@" > "$OUT/ui-geometry/audit.log" 2>&1
   rc=$?
   tail -n 3 "$OUT/ui-geometry/audit.log" | tee "$OUT/summary.txt"
   [ -f "$out/geometry.md" ] && sed -n '1,4p' "$out/geometry.md" | tee -a "$OUT/summary.txt"
