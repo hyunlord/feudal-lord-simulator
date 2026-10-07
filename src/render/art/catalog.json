@@ -28556,5 +28556,514 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "height-era-l2late",
+    "entries": [
+      {
+        "id": "height-era-l2late/house_l2_1420-body-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-body-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-body-v2.png",
+          "sourceSha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92",
+          "runtimeSha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "building-body",
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          2
+        ],
+        "variantId": "late-historic-l2",
+        "roofRidge": {
+          "x": 67,
+          "y": 69
+        }
+      },
+      {
+        "id": "height-era-l2late/house_l2_1420-snow-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-snow-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-snow-v2.png",
+          "sourceSha256": "def07f2356b7d74b5dc9ac15b8e49ac573a3d2c1ea08e5b976e1fdf57dd8e26c",
+          "runtimeSha256": "def07f2356b7d74b5dc9ac15b8e49ac573a3d2c1ea08e5b976e1fdf57dd8e26c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "state-overlay",
+        "targetBodyIds": [
+          "height-era-l2late/house_l2_1420-body-v2"
+        ],
+        "layer": "snow",
+        "order": 20,
+        "transform": "inherit-body"
+      },
+      {
+        "id": "height-era-l2late/house_l2_1420-boarded-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-boarded-v2.png",
+          "sourceSha256": "248867db3ba5fef382e5d59da3d06eb19d701e4dfab90d61debde3d7c337429d",
+          "runtimeSha256": "248867db3ba5fef382e5d59da3d06eb19d701e4dfab90d61debde3d7c337429d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "state-overlay",
+        "targetBodyIds": [
+          "height-era-l2late/house_l2_1420-body-v2"
+        ],
+        "layer": "boarded",
+        "order": 10,
+        "transform": "inherit-body"
+      },
+      {
+        "id": "height-era-l2late/house_l2_1420-strained-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-strained-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-strained-v2.png",
+          "sourceSha256": "53919b271c27eb03f7d026f5c604823814b0c3a9b0f4bdf98b57f92b9cd7469a",
+          "runtimeSha256": "53919b271c27eb03f7d026f5c604823814b0c3a9b0f4bdf98b57f92b9cd7469a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "state-overlay",
+        "targetBodyIds": [
+          "height-era-l2late/house_l2_1420-body-v2"
+        ],
+        "layer": "worn",
+        "order": 0,
+        "transform": "inherit-body"
+      },
+      {
+        "id": "height-era-l2late/house_l2_1420-neglected-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-neglected-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-neglected-v2.png",
+          "sourceSha256": "8aa6cc9d2905f6c4f41c735716dac6a8441b80fa4eba53e96466a46f0ee05edb",
+          "runtimeSha256": "8aa6cc9d2905f6c4f41c735716dac6a8441b80fa4eba53e96466a46f0ee05edb"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "state-overlay",
+        "targetBodyIds": [
+          "height-era-l2late/house_l2_1420-body-v2"
+        ],
+        "layer": "worn",
+        "order": 0,
+        "transform": "inherit-body"
+      },
+      {
+        "id": "height-era-l2late/house_l2_1420-vacant-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-vacant-v2.png",
+          "sourceSha256": "0cd81943aa878d88bcb9d6f9c242fbc72169dc7c981687a480a94322b4717226",
+          "runtimeSha256": "0cd81943aa878d88bcb9d6f9c242fbc72169dc7c981687a480a94322b4717226"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "state-overlay",
+        "targetBodyIds": [
+          "height-era-l2late/house_l2_1420-body-v2"
+        ],
+        "layer": "worn",
+        "order": 0,
+        "transform": "inherit-body"
+      },
+      {
+        "id": "height-era-l2late/house_l2_1420-plague-shut-v2",
+        "image": {
+          "url": "assets/height-era-l2late/house_l2_1420-plague-shut-v2.png",
+          "width": 137,
+          "height": 244
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-plague-shut-v2.png",
+          "sourceSha256": "47348a8ae1e8cac511780529eab9c2bd042b62acaf6e0dfc6d541d5bdd880522",
+          "runtimeSha256": "47348a8ae1e8cac511780529eab9c2bd042b62acaf6e0dfc6d541d5bdd880522"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 211.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 244
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "kind": "state-overlay",
+        "targetBodyIds": [
+          "height-era-l2late/house_l2_1420-body-v2"
+        ],
+        "layer": "boarded",
+        "order": 10,
+        "transform": "inherit-body"
+      }
+    ],
+    "rules": [
+      {
+        "id": "height-era-l2late/body",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "legacyBodyUrl",
+            "value": "assets/buildings/historical-houses/house_l2-v2.png"
+          },
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 2
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1400
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-body-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-era-l2late/snow",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-era-l2late/house_l2_1420-body-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-snow-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-era-l2late/boarded",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-era-l2late/house_l2_1420-body-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          },
+          {
+            "op": "eq",
+            "field": "plagueVacant",
+            "value": false
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-boarded-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-era-l2late/strained",
+        "kind": "state-overlay",
+        "slot": "house-condition",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-era-l2late/house_l2_1420-body-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "worn"
+          },
+          {
+            "op": "eq",
+            "field": "houseCondition",
+            "value": "strained"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-strained-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-era-l2late/neglected",
+        "kind": "state-overlay",
+        "slot": "house-condition",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-era-l2late/house_l2_1420-body-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "worn"
+          },
+          {
+            "op": "eq",
+            "field": "houseCondition",
+            "value": "neglected"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-neglected-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-era-l2late/vacant",
+        "kind": "state-overlay",
+        "slot": "house-condition",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-era-l2late/house_l2_1420-body-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "worn"
+          },
+          {
+            "op": "eq",
+            "field": "houseCondition",
+            "value": "vacant"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-vacant-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "height-era-l2late/plague-shut",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 110,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "bodyId",
+            "value": "height-era-l2late/house_l2_1420-body-v2"
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          },
+          {
+            "op": "eq",
+            "field": "plagueVacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "height-era-l2late/house_l2_1420-plague-shut-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

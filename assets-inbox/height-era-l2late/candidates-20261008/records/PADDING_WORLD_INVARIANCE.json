@@ -1,0 +1,118 @@
+{
+  "canvas": [
+    137,
+    244
+  ],
+  "pivot": [
+    70.95813397129186,
+    211.08373205741626
+  ],
+  "checks": [
+    {
+      "role": "body",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        15
+      ],
+      "pivot_delta": [
+        0,
+        15
+      ],
+      "world_y_identity": "(pixelY+15-(oldPivotY+15))*scale == (pixelY-oldPivotY)*scale",
+      "offcanvas_loss": 0,
+      "old_sha256": "c27f9c6eaadf43093d350555eb864904c9090201b38fed91d2026aa4ad67db2a",
+      "new_sha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92"
+    },
+    {
+      "role": "snow",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        15
+      ],
+      "pivot_delta": [
+        0,
+        15
+      ],
+      "world_y_identity": "(pixelY+15-(oldPivotY+15))*scale == (pixelY-oldPivotY)*scale",
+      "offcanvas_loss": 0,
+      "old_sha256": "e0e4432e25c06b08f7e5271f40ecacdc7579b41acfb096902997d1ece56e22d7",
+      "new_sha256": "def07f2356b7d74b5dc9ac15b8e49ac573a3d2c1ea08e5b976e1fdf57dd8e26c"
+    },
+    {
+      "role": "boarded",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        15
+      ],
+      "pivot_delta": [
+        0,
+        15
+      ],
+      "world_y_identity": "(pixelY+15-(oldPivotY+15))*scale == (pixelY-oldPivotY)*scale",
+      "offcanvas_loss": 0,
+      "old_sha256": "68aa8ec2fa43c00cf2b183b40f81460c7ef0fbef41a5cc73c0c0649c41179faa",
+      "new_sha256": "248867db3ba5fef382e5d59da3d06eb19d701e4dfab90d61debde3d7c337429d"
+    },
+    {
+      "role": "strained",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        15
+      ],
+      "pivot_delta": [
+        0,
+        15
+      ],
+      "world_y_identity": "(pixelY+15-(oldPivotY+15))*scale == (pixelY-oldPivotY)*scale",
+      "offcanvas_loss": 0,
+      "old_sha256": "2f674660ce8c03cfc0e0177a610eda1a609a9290f7642b39c7999caf47d36fa3",
+      "new_sha256": "53919b271c27eb03f7d026f5c604823814b0c3a9b0f4bdf98b57f92b9cd7469a"
+    },
+    {
+      "role": "neglected",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        15
+      ],
+      "pivot_delta": [
+        0,
+        15
+      ],
+      "world_y_identity": "(pixelY+15-(oldPivotY+15))*scale == (pixelY-oldPivotY)*scale",
+      "offcanvas_loss": 0,
+      "old_sha256": "a7c231ca30f29a5cfafa1f2e9a87f24acfa7aa51b3b9e4e88b6b0f90d9a2f92c",
+      "new_sha256": "8aa6cc9d2905f6c4f41c735716dac6a8441b80fa4eba53e96466a46f0ee05edb"
+    },
+    {
+      "role": "plague-shut",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        15
+      ],
+      "pivot_delta": [
+        0,
+        15
+      ],
+      "world_y_identity": "(pixelY+15-(oldPivotY+15))*scale == (pixelY-oldPivotY)*scale",
+      "offcanvas_loss": 0,
+      "old_sha256": "ef3831a0a53030bba441ba60092b3af209625fccd96db4eb5391ee09b5999161",
+      "new_sha256": "47348a8ae1e8cac511780529eab9c2bd042b62acaf6e0dfc6d541d5bdd880522"
+    },
+    {
+      "role": "vacant",
+      "rgba_exact_translation": true,
+      "offset": [
+        0,
+        0
+      ],
+      "world_y_identity": "(pixelY-(oldPivotY+15))*scale == ((pixelY-15)-oldPivotY)*scale; also retains previously cropped11faint alpha pixels",
+      "offcanvas_loss": 0
+    }
+  ]
+}
