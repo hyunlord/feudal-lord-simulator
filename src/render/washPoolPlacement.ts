@@ -33,14 +33,16 @@ export function washPoolProps(state: GameState, entry: FacilityGroundPropEntry |
   return facilityGroundProps(state, entries);
 }
 export function facilityGroundProps(state: GameState, entries: readonly FacilityGroundPropEntry[]): readonly WashPoolProp[] {
-  const eligible = entries.filter(e => e.buildingKinds.includes('pastoral_farm') && (e.pastureYard || calendarProgress(state).season !== 3))
-    .sort((a, b) => Number(Boolean(a.pastureYard)) - Number(Boolean(b.pastureYard)) || (b.pastureYard?.priority ?? 0) - (a.pastureYard?.priority ?? 0) || a.id.localeCompare(b.id));
-  if (!eligible.length) return [];
+  if (!entries.length || !state.buildings.some(b => b.kind === 'pastoral_farm')) return [];
   const scene = groundBoundaryScene(state);
   const cached = cache.get(state)?.get(entries); if (cached?.scene === scene) return cached.props;
+  const eligible = entries.filter(e => e.buildingKinds.includes('pastoral_farm') && (e.pastureYard || calendarProgress(state).season !== 3));
+  if (!eligible.length) return [];
   const tending = pastureTending(state);
-  const farms = state.buildings.filter(b => b.kind === 'pastoral_farm' && (tending.get(b.id) ?? 0) > 0).sort((a, b) => a.id.localeCompare(b.id));
+  const farms = state.buildings.filter(b => b.kind === 'pastoral_farm' && (tending.get(b.id) ?? 0) > 0);
   if (!farms.length) return [];
+  farms.sort((a, b) => a.id.localeCompare(b.id));
+  eligible.sort((a, b) => Number(Boolean(a.pastureYard)) - Number(Boolean(b.pastureYard)) || (b.pastureYard?.priority ?? 0) - (a.pastureYard?.priority ?? 0) || a.id.localeCompare(b.id));
   const pasture = new Set<number>();
   for (const zone of zonesOf(state)) if (zone.kind === 'pasture') for (const at of zone.membership) pasture.add(at);
   for (const zone of zonesOf(state)) if (zone.kind !== 'pasture') for (const at of zone.membership) pasture.delete(at);
