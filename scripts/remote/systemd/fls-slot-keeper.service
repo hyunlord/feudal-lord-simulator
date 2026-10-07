@@ -1,0 +1,18 @@
+# The DGX slot keeper (scripts/remote/slotKeeper.sh, decision RR23): it decides which waiting run takes a heavy slot, for
+# every copy of heavySlots.sh. Installed on the DGX as a user unit:
+#   cp scripts/remote/systemd/fls-slot-keeper.service ~/.config/systemd/user/ && systemctl --user daemon-reload \
+#     && systemctl --user enable --now fls-slot-keeper.service
+# It starts the trunk's copy (read from the mirror; the copy already in _bin when the trunk has none) and then follows the
+# trunk by itself (KEEPER_UPDATE_S), so a change to the script needs no reinstall. Stopping it lifts its fences: every
+# copy then follows its own rules.
+[Unit]
+Description=Feudal Lord Simulator: the DGX slot keeper (who takes a heavy slot)
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=2
+ExecStart=/bin/bash -c 'B=$HOME/fls-runs; mkdir -p $B/_bin; git -C $B/_cache/repo.git show refs/heads/codex/phase15-organic-ground:scripts/remote/slotKeeper.sh > $B/_bin/slotKeeper.sh.new 2>/dev/null && bash -n $B/_bin/slotKeeper.sh.new && mv -f $B/_bin/slotKeeper.sh.new $B/_bin/slotKeeper.sh; rm -f $B/_bin/slotKeeper.sh.new; exec bash $B/_bin/slotKeeper.sh'
+
+[Install]
+WantedBy=default.target
