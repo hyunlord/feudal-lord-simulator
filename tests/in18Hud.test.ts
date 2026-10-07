@@ -44,6 +44,16 @@ test("every HUD picture id is a ui-image at the CSS width the HUD draws it", () 
   assert.deepEqual([ring.image.width, ring.image.height], [288, 96], "three 96 px frames");
 });
 
+test("the 33 installed pictures carry installed_by INSTALL-18 in the inbox ledger (CRLF rows)", () => {
+  const ledger = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
+  const bundle = ART_REGISTRY.entries().filter(art => art.id.startsWith("hud."));
+  assert.equal(bundle.length, 33);
+  for (const art of bundle) {
+    const line = ledger.split("\r\n").find(row => row.startsWith(`wave18,${art.provenance.inboxFile.replace("assets-inbox/", "")},`));
+    assert.ok(line?.endsWith(",INSTALL-18"), art.id);
+  }
+});
+
 test("the skipped pictures are not in the catalog and their ledger rows say why", () => {
   const ledger = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
   for (const name of ["main/dock_steward", "misc/hud_hide", "reasons/reason_tree", "reasons/reason_slope_rock",

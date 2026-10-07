@@ -1,0 +1,143 @@
+{
+ "scenes": [
+  {
+   "reason": "building",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 40
+   }
+  },
+  {
+   "reason": "water",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 48,
+    "ty": 36
+   }
+  },
+  {
+   "reason": "wall",
+   "fixture": "timber-shortage",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 44
+   }
+  },
+  {
+   "reason": "needs_road",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 43
+   }
+  },
+  {
+   "reason": "materials",
+   "fixture": "chapter-two-town",
+   "kind": "well",
+   "name": "우물",
+   "category": "living",
+   "tile": {
+    "tx": 41,
+    "ty": 39
+   }
+  },
+  {
+   "reason": "zone",
+   "fixture": "zoned-opening",
+   "kind": "house",
+   "name": "오두막",
+   "category": "living",
+   "tile": {
+    "tx": 45,
+    "ty": 40
+   }
+  },
+  {
+   "reason": "road",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 40
+   }
+  }
+ ],
+ "about": {
+  "crisis-a": [
+   {
+    "title": "불이 났습니다",
+    "severity": "immediate",
+    "crisis": "fire",
+    "first": "house-46-40-0"
+   },
+   {
+    "title": "공사 일꾼 없음",
+    "severity": "caution",
+    "crisis": "construction_blocked",
+    "first": "construction-site-000001"
+   },
+   {
+    "title": "떠날 채비",
+    "severity": "caution",
+    "crisis": "household_leaving",
+    "first": "house-44-40-0"
+   }
+  ],
+  "crisis-b": [
+   {
+    "title": "유지비 미납",
+    "severity": "immediate",
+    "crisis": "upkeep_unpaid",
+    "first": "well-45-41-0"
+   },
+   {
+    "title": "창고 넘침",
+    "severity": "immediate",
+    "crisis": "storage_full",
+    "first": "granary-42-37-0"
+   },
+   {
+    "title": "물 부족",
+    "severity": "caution",
+    "crisis": null,
+    "first": "house-44-40-0"
+   }
+  ],
+  "crisis-c": [
+   {
+    "title": "빵 부족",
+    "severity": "immediate",
+    "crisis": "food_shortage",
+    "first": "construction-site-000007"
+   },
+   {
+    "title": "시장 이용 불가",
+    "severity": "caution",
+    "crisis": null,
+    "first": "house-44-40-0"
+   },
+   {
+    "title": "빵 부족",
+    "severity": "caution",
+    "crisis": "food_shortage",
+    "first": "house-46-42-0"
+   }
+  ]
+ }
+}

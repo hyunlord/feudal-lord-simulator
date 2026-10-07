@@ -1,0 +1,1887 @@
+{
+ "url": "http://127.0.0.1:4304/",
+ "errors": [],
+ "shots": [
+  "hud-sandbox-1280.jpg",
+  "hud-sandbox-pill.jpg",
+  "hud-sandbox-layers.jpg",
+  "hud-sandbox-dock.jpg",
+  "hud-sandbox-dock-grey.jpg",
+  "hud-sandbox-pill-refused.jpg",
+  "hud-sandbox-layers-refused.jpg",
+  "hud-sandbox-dock-refused.jpg",
+  "hud-lord-1280.jpg",
+  "hud-lord-pill.jpg",
+  "hud-lord-dock.jpg",
+  "hud-lord-dock-grey.jpg",
+  "hud-lord-pill-refused.jpg",
+  "hud-lord-dock-refused.jpg",
+  "placement-building-z06.jpg",
+  "placement-building-z06-grey.jpg",
+  "placement-building-z1.jpg",
+  "placement-building-z1-grey.jpg",
+  "placement-building-z14.jpg",
+  "placement-building-z14-grey.jpg",
+  "placement-water-z1.jpg",
+  "placement-water-z1-grey.jpg",
+  "placement-wall-z1.jpg",
+  "placement-wall-z1-grey.jpg",
+  "placement-needs_road-z1.jpg",
+  "placement-needs_road-z1-grey.jpg",
+  "placement-zone-z1.jpg",
+  "placement-zone-z1-grey.jpg",
+  "edge-well-z06.jpg",
+  "edge-well-z06-grey.jpg",
+  "edge-well-z1.jpg",
+  "edge-well-z1-grey.jpg",
+  "edge-well-z14.jpg",
+  "edge-well-z14-grey.jpg",
+  "zone-size2.jpg",
+  "zone-size2-grey.jpg",
+  "zone-size3.jpg",
+  "zone-size1.jpg",
+  "zone-erase.jpg",
+  "zone-refused.jpg",
+  "crisis-a.jpg",
+  "crisis-a-grey.jpg",
+  "crisis-a-refused.jpg",
+  "crisis-b.jpg",
+  "crisis-b-grey.jpg",
+  "crisis-b-refused.jpg",
+  "crisis-c.jpg",
+  "crisis-c-grey.jpg",
+  "crisis-c-refused.jpg",
+  "tablet-confirm-bar.jpg",
+  "tablet-confirm-bar-grey.jpg",
+  "tablet-1180.jpg",
+  "pause-menu-h-line.jpg",
+  "pulse-frame-0.jpg",
+  "pulse-frame-240.jpg",
+  "pulse-frame-480.jpg",
+  "pulse-reduced-300.jpg"
+ ],
+ "hud-sandbox": {
+  "art": {
+   "pill": [
+    [
+     8,
+     8,
+     338.2,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_build",
+    "hud.main.dock_ledger"
+   ]
+  },
+  "refused": {
+   "pill": [
+    [
+     8,
+     8,
+     338.2,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": []
+  },
+  "sameBoxes": true
+ },
+ "hud-lord": {
+  "art": {
+   "pill": [
+    [
+     8,
+     8,
+     426,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     44
+    ],
+    [
+     338.2,
+     18,
+     87.8,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "layers": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_ledger"
+   ]
+  },
+  "refused": {
+   "pill": [
+    [
+     8,
+     8,
+     426,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     44
+    ],
+    [
+     338.2,
+     18,
+     87.8,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "layers": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": []
+  },
+  "sameBoxes": true
+ },
+ "placement": [
+  {
+   "reason": "building",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 40
+   },
+   "reasons": [
+    "building",
+    "road"
+   ],
+   "shots": [
+    "placement-building-z06.jpg",
+    "placement-building-z06-grey.jpg",
+    "placement-building-z1.jpg",
+    "placement-building-z1-grey.jpg",
+    "placement-building-z14.jpg",
+    "placement-building-z14-grey.jpg"
+   ],
+   "chip": {
+    "text": "건물·공사장 3칸 — 비운 땅에 +1",
+    "art": "hud.reasons.reason_overlap"
+   }
+  },
+  {
+   "reason": "water",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 48,
+    "ty": 36
+   },
+   "reasons": [
+    "water"
+   ],
+   "shots": [
+    "placement-water-z1.jpg",
+    "placement-water-z1-grey.jpg"
+   ],
+   "chip": {
+    "text": "물 1칸 — 뭍에 +1",
+    "art": "hud.reasons.reason_water"
+   }
+  },
+  {
+   "reason": "wall",
+   "fixture": "timber-shortage",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 44
+   },
+   "reasons": [
+    "wall"
+   ],
+   "shots": [
+    "placement-wall-z1.jpg",
+    "placement-wall-z1-grey.jpg"
+   ],
+   "chip": {
+    "text": "성벽과 1칸 띄우세요",
+    "art": "hud.reasons.reason_wall_forbidden"
+   }
+  },
+  {
+   "reason": "needs_road",
+   "fixture": "population-176",
+   "kind": "storehouse",
+   "name": "창고",
+   "category": "storage",
+   "tile": {
+    "tx": 44,
+    "ty": 43
+   },
+   "reasons": [
+    "needs_road"
+   ],
+   "shots": [
+    "placement-needs_road-z1.jpg",
+    "placement-needs_road-z1-grey.jpg"
+   ],
+   "chip": {
+    "text": "길에 닿아야 함 — 먼저 길",
+    "art": "hud.reasons.reason_no_road"
+   }
+  },
+  {
+   "reason": "materials",
+   "fixture": "chapter-two-town",
+   "kind": "well",
+   "name": "우물",
+   "category": "living",
+   "tile": {
+    "tx": 41,
+    "ty": 39
+   },
+   "reasons": [
+    "materials"
+   ],
+   "shots": [],
+   "skipped": "the build menu disables this tool here (the town cannot pay for it), so it cannot be armed to show the mark"
+  },
+  {
+   "reason": "zone",
+   "fixture": "zoned-opening",
+   "kind": "house",
+   "name": "오두막",
+   "category": "living",
+   "tile": {
+    "tx": 45,
+    "ty": 40
+   },
+   "reasons": [
+    "zone"
+   ],
+   "shots": [
+    "placement-zone-z1.jpg",
+    "placement-zone-z1-grey.jpg"
+   ],
+   "chip": {
+    "text": "맞는 구역 밖",
+    "art": "hud.reasons.reason_zone_forbidden"
+   }
+  }
+ ],
+ "edge": [
+  "edge-well-z06.jpg",
+  "edge-well-z1.jpg",
+  "edge-well-z14.jpg"
+ ],
+ "zone": {
+  "art": {
+   "pill": [
+    [
+     8,
+     8,
+     338.2,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "dockButtons": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [
+    [
+     0,
+     238.5,
+     164,
+     323
+    ]
+   ],
+   "zoneButtons": [
+    [
+     8,
+     246.5,
+     72,
+     44
+    ],
+    [
+     84,
+     246.5,
+     72,
+     44
+    ],
+    [
+     8,
+     294.5,
+     72,
+     44
+    ],
+    [
+     84,
+     294.5,
+     72,
+     44
+    ],
+    [
+     8,
+     342.5,
+     72,
+     44
+    ],
+    [
+     84,
+     342.5,
+     72,
+     44
+    ],
+    [
+     8,
+     390.5,
+     72,
+     44
+    ],
+    [
+     84,
+     390.5,
+     72,
+     44
+    ],
+    [
+     8,
+     438.5,
+     72,
+     44
+    ],
+    [
+     84,
+     438.5,
+     72,
+     44
+    ]
+   ],
+   "confirm": [],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.zone.zone_brush",
+    "hud.zone.zone_polygon",
+    "hud.zone.zone_erase",
+    "hud.zone.zone_undo",
+    "hud.zone.zone_redo",
+    "hud.zone.zone_size_large",
+    "hud.zone.zone_paint_forbidden",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_build",
+    "hud.main.dock_ledger",
+    "hud.zone.zone_paint_forbidden"
+   ]
+  },
+  "refused": {
+   "pill": [
+    [
+     8,
+     8,
+     338.2,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "dockButtons": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [
+    [
+     0,
+     238.5,
+     164,
+     323
+    ]
+   ],
+   "zoneButtons": [
+    [
+     8,
+     246.5,
+     72,
+     44
+    ],
+    [
+     84,
+     246.5,
+     72,
+     44
+    ],
+    [
+     8,
+     294.5,
+     72,
+     44
+    ],
+    [
+     84,
+     294.5,
+     72,
+     44
+    ],
+    [
+     8,
+     342.5,
+     72,
+     44
+    ],
+    [
+     84,
+     342.5,
+     72,
+     44
+    ],
+    [
+     8,
+     390.5,
+     72,
+     44
+    ],
+    [
+     84,
+     390.5,
+     72,
+     44
+    ],
+    [
+     8,
+     438.5,
+     72,
+     44
+    ],
+    [
+     84,
+     438.5,
+     72,
+     44
+    ]
+   ],
+   "confirm": [],
+   "art": []
+  },
+  "sameBoxes": true
+ },
+ "crisis-a": {
+  "art": {
+   "pill": [
+    [
+     8,
+     8,
+     340.1,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     53,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1022.7,
+     729,
+     257.3,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [
+    [
+     1124,
+     68,
+     156,
+     60
+    ]
+   ],
+   "crisisButtons": [
+    [
+     1132,
+     76,
+     44,
+     44
+    ],
+    [
+     1180,
+     76,
+     44,
+     44
+    ],
+    [
+     1228,
+     76,
+     44,
+     44
+    ]
+   ],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.crisis.crisis_fire",
+    "hud.crisis.crisis_construction_blocked",
+    "hud.crisis.crisis_household_leaving",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_build",
+    "hud.main.dock_ledger"
+   ]
+  },
+  "refused": {
+   "pill": [
+    [
+     8,
+     8,
+     340.1,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     44
+    ],
+    [
+     109,
+     18,
+     79.2,
+     44
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     44
+    ],
+    [
+     287.1,
+     18,
+     53,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1022.7,
+     729,
+     257.3,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [
+    [
+     1124,
+     68,
+     156,
+     60
+    ]
+   ],
+   "crisisButtons": [
+    [
+     1132,
+     76,
+     44,
+     44
+    ],
+    [
+     1180,
+     76,
+     44,
+     44
+    ],
+    [
+     1228,
+     76,
+     44,
+     44
+    ]
+   ],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": []
+  },
+  "sameBoxes": true
+ },
+ "crisis-b": {
+  "art": {
+   "pill": [
+    [
+     8,
+     8,
+     352.7,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     105.6,
+     44
+    ],
+    [
+     121.6,
+     18,
+     79.2,
+     44
+    ],
+    [
+     200.8,
+     18,
+     98.8,
+     44
+    ],
+    [
+     299.7,
+     18,
+     53,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [
+    [
+     1124,
+     68,
+     156,
+     60
+    ]
+   ],
+   "crisisButtons": [
+    [
+     1132,
+     76,
+     44,
+     44
+    ],
+    [
+     1180,
+     76,
+     44,
+     44
+    ],
+    [
+     1228,
+     76,
+     44,
+     44
+    ]
+   ],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.crisis.crisis_upkeep_unpaid",
+    "hud.crisis.crisis_storage_full",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_build",
+    "hud.main.dock_ledger"
+   ]
+  },
+  "refused": {
+   "pill": [
+    [
+     8,
+     8,
+     352.7,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     105.6,
+     44
+    ],
+    [
+     121.6,
+     18,
+     79.2,
+     44
+    ],
+    [
+     200.8,
+     18,
+     98.8,
+     44
+    ],
+    [
+     299.7,
+     18,
+     53,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [
+    [
+     1124,
+     68,
+     156,
+     60
+    ]
+   ],
+   "crisisButtons": [
+    [
+     1132,
+     76,
+     44,
+     44
+    ],
+    [
+     1180,
+     76,
+     44,
+     44
+    ],
+    [
+     1228,
+     76,
+     44,
+     44
+    ]
+   ],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": []
+  },
+  "sameBoxes": true
+ },
+ "crisis-c": {
+  "art": {
+   "pill": [
+    [
+     8,
+     8,
+     345.1,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     105.6,
+     44
+    ],
+    [
+     121.6,
+     18,
+     86.9,
+     44
+    ],
+    [
+     208.5,
+     18,
+     83.5,
+     44
+    ],
+    [
+     292,
+     18,
+     53,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [
+    [
+     1124,
+     68,
+     156,
+     60
+    ]
+   ],
+   "crisisButtons": [
+    [
+     1132,
+     76,
+     44,
+     44
+    ],
+    [
+     1180,
+     76,
+     44,
+     44
+    ],
+    [
+     1228,
+     76,
+     44,
+     44
+    ]
+   ],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.crisis.crisis_food_shortage",
+    "hud.crisis.crisis_food_shortage",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_build",
+    "hud.main.dock_ledger"
+   ]
+  },
+  "refused": {
+   "pill": [
+    [
+     8,
+     8,
+     345.1,
+     63
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     105.6,
+     44
+    ],
+    [
+     121.6,
+     18,
+     86.9,
+     44
+    ],
+    [
+     208.5,
+     18,
+     83.5,
+     44
+    ],
+    [
+     292,
+     18,
+     53,
+     44
+    ]
+   ],
+   "dock": [
+    [
+     1116.9,
+     729,
+     163.1,
+     71
+    ]
+   ],
+   "dockButtons": [
+    [
+     1124.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1174.9,
+     737,
+     46,
+     55
+    ],
+    [
+     1224.9,
+     737,
+     47.1,
+     55
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     740,
+     245.3,
+     60
+    ]
+   ],
+   "layers": [
+    [
+     8,
+     748,
+     64.1,
+     44
+    ],
+    [
+     76.1,
+     748,
+     62.1,
+     44
+    ],
+    [
+     142.2,
+     748,
+     95.1,
+     44
+    ]
+   ],
+   "crisis": [
+    [
+     1124,
+     68,
+     156,
+     60
+    ]
+   ],
+   "crisisButtons": [
+    [
+     1132,
+     76,
+     44,
+     44
+    ],
+    [
+     1180,
+     76,
+     44,
+     44
+    ],
+    [
+     1228,
+     76,
+     44,
+     44
+    ]
+   ],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [],
+   "art": []
+  },
+  "sameBoxes": true
+ },
+ "tablet": {
+  "bar": true,
+  "boxes": {
+   "pill": [
+    [
+     8,
+     8,
+     338.2,
+     67
+    ]
+   ],
+   "pillCells": [
+    [
+     16,
+     18,
+     93,
+     48
+    ],
+    [
+     109,
+     18,
+     79.2,
+     48
+    ],
+    [
+     188.3,
+     18,
+     98.8,
+     48
+    ],
+    [
+     287.1,
+     18,
+     51.1,
+     48
+    ]
+   ],
+   "dock": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "dockButtons": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "layerSwitch": [
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "layers": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ],
+   "crisis": [],
+   "crisisButtons": [],
+   "zoneToolbar": [],
+   "zoneButtons": [],
+   "confirm": [
+    [
+     462.7,
+     725,
+     254.6,
+     83
+    ]
+   ],
+   "art": [
+    "hud.main.pill_population",
+    "hud.main.pill_food_days",
+    "hud.main.pill_money",
+    "hud.misc.confirm_check_touch",
+    "hud.misc.cancel_touch",
+    "hud.misc.layer_lock_badge",
+    "hud.main.dock_build",
+    "hud.main.dock_ledger"
+   ]
+  }
+ },
+ "pause": {
+  "line": "H: HUD 숨기기"
+ },
+ "pulse-no-preference": {
+  "ready": "ready",
+  "animations": [
+   "hud-pulse-ring"
+  ]
+ },
+ "pulse-reduce": {
+  "ready": "ready",
+  "animations": [
+   "hud-pulse-ring-still"
+  ]
+ }
+}
