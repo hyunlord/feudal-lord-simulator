@@ -1,0 +1,713 @@
+{
+  "productCommit": "ed483f09",
+  "installationCount": 3,
+  "contractEntryCount": 12,
+  "packId": "core",
+  "unknownPolicy": "최초 생성 tool/model/date/seed 누락은 unknown; 판정일로 대체하지 않음.",
+  "assets": [
+    {
+      "source": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+      "runtime": "public/assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+      "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+      "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+      "bytes": 32703,
+      "byteIdentical": true,
+      "pngChunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paChunkCount": 0,
+      "c2paRemoved": 0,
+      "sourceRecord": "assets-inbox/wave13/candidates-v1/records/metadata-herds.json#herd/sheep_cluster_moving_b-v1",
+      "generationTool": "unknown",
+      "generationModel": "unknown",
+      "generationTimestamp": "unknown",
+      "generationSeed": "unknown",
+      "baseId": "sheep_flock_b",
+      "legacyVisibleBodies": 3,
+      "installedVisibleBodies": 5,
+      "engineAggregateChanged": false,
+      "staticCluster": true,
+      "animation": false,
+      "cell": [
+        144,
+        112
+      ],
+      "pivot": [
+        72,
+        74
+      ],
+      "sheet": [
+        4,
+        1
+      ],
+      "worldScale": 0.20670180722891565,
+      "processing": {
+        "mode": "deterministic source-cell composition; no new image generation",
+        "source": "assets/animal_walk/sheep_single-v1.png",
+        "sourceCells": [
+          {
+            "direction": "ne",
+            "sourceCell": [
+              0,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 10,
+                "foot": [
+                  37,
+                  46
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 14,
+                "foot": [
+                  89,
+                  50
+                ]
+              },
+              {
+                "i": 2,
+                "x": 11,
+                "y": 36,
+                "foot": [
+                  35,
+                  72
+                ]
+              },
+              {
+                "i": 3,
+                "x": 61,
+                "y": 42,
+                "foot": [
+                  85,
+                  78
+                ]
+              },
+              {
+                "i": 4,
+                "x": 84,
+                "y": 66,
+                "foot": [
+                  108,
+                  102
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "se",
+            "sourceCell": [
+              1,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 10,
+                "foot": [
+                  37,
+                  46
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 14,
+                "foot": [
+                  89,
+                  50
+                ]
+              },
+              {
+                "i": 2,
+                "x": 11,
+                "y": 36,
+                "foot": [
+                  35,
+                  72
+                ]
+              },
+              {
+                "i": 3,
+                "x": 61,
+                "y": 42,
+                "foot": [
+                  85,
+                  78
+                ]
+              },
+              {
+                "i": 4,
+                "x": 84,
+                "y": 66,
+                "foot": [
+                  108,
+                  102
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "sw",
+            "sourceCell": [
+              2,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 10,
+                "foot": [
+                  37,
+                  46
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 14,
+                "foot": [
+                  89,
+                  50
+                ]
+              },
+              {
+                "i": 2,
+                "x": 11,
+                "y": 36,
+                "foot": [
+                  35,
+                  72
+                ]
+              },
+              {
+                "i": 3,
+                "x": 61,
+                "y": 42,
+                "foot": [
+                  85,
+                  78
+                ]
+              },
+              {
+                "i": 4,
+                "x": 84,
+                "y": 66,
+                "foot": [
+                  108,
+                  102
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "nw",
+            "sourceCell": [
+              3,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 10,
+                "foot": [
+                  37,
+                  46
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 14,
+                "foot": [
+                  89,
+                  50
+                ]
+              },
+              {
+                "i": 2,
+                "x": 11,
+                "y": 36,
+                "foot": [
+                  35,
+                  72
+                ]
+              },
+              {
+                "i": 3,
+                "x": 61,
+                "y": 42,
+                "foot": [
+                  85,
+                  78
+                ]
+              },
+              {
+                "i": 4,
+                "x": 84,
+                "y": 66,
+                "foot": [
+                  108,
+                  102
+                ]
+              }
+            ]
+          }
+        ],
+        "depthSort": "ascending visible ground anchor y then x",
+        "resize": false,
+        "mirror": false,
+        "ground": false
+      }
+    },
+    {
+      "source": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+      "runtime": "public/assets/wave13/herd/cattle_drove-v1.png",
+      "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+      "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+      "bytes": 75229,
+      "byteIdentical": true,
+      "pngChunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paChunkCount": 0,
+      "c2paRemoved": 0,
+      "sourceRecord": "assets-inbox/wave13/candidates-v1/records/metadata-herds.json#herd/cattle_drove-v1",
+      "generationTool": "unknown",
+      "generationModel": "unknown",
+      "generationTimestamp": "unknown",
+      "generationSeed": "unknown",
+      "baseId": "cattle_pair",
+      "legacyVisibleBodies": 2,
+      "installedVisibleBodies": 3,
+      "engineAggregateChanged": false,
+      "staticCluster": true,
+      "animation": false,
+      "cell": [
+        192,
+        144
+      ],
+      "pivot": [
+        96,
+        95
+      ],
+      "sheet": [
+        4,
+        1
+      ],
+      "worldScale": 0.20670180722891565,
+      "processing": {
+        "mode": "deterministic source-cell composition; no new image generation",
+        "source": "assets/animal_walk/cow_single-v1.png",
+        "sourceCells": [
+          {
+            "direction": "ne",
+            "sourceCell": [
+              0,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 10,
+                "y": 9,
+                "foot": [
+                  50,
+                  69
+                ]
+              },
+              {
+                "i": 1,
+                "x": 62,
+                "y": 32,
+                "foot": [
+                  102,
+                  92
+                ]
+              },
+              {
+                "i": 2,
+                "x": 100,
+                "y": 62,
+                "foot": [
+                  140,
+                  122
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "se",
+            "sourceCell": [
+              1,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 10,
+                "y": 9,
+                "foot": [
+                  50,
+                  69
+                ]
+              },
+              {
+                "i": 1,
+                "x": 62,
+                "y": 32,
+                "foot": [
+                  102,
+                  92
+                ]
+              },
+              {
+                "i": 2,
+                "x": 100,
+                "y": 62,
+                "foot": [
+                  140,
+                  122
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "sw",
+            "sourceCell": [
+              2,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 10,
+                "y": 9,
+                "foot": [
+                  50,
+                  69
+                ]
+              },
+              {
+                "i": 1,
+                "x": 62,
+                "y": 32,
+                "foot": [
+                  102,
+                  92
+                ]
+              },
+              {
+                "i": 2,
+                "x": 100,
+                "y": 62,
+                "foot": [
+                  140,
+                  122
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "nw",
+            "sourceCell": [
+              3,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 10,
+                "y": 9,
+                "foot": [
+                  50,
+                  69
+                ]
+              },
+              {
+                "i": 1,
+                "x": 62,
+                "y": 32,
+                "foot": [
+                  102,
+                  92
+                ]
+              },
+              {
+                "i": 2,
+                "x": 100,
+                "y": 62,
+                "foot": [
+                  140,
+                  122
+                ]
+              }
+            ]
+          }
+        ],
+        "depthSort": "ascending visible ground anchor y then x",
+        "resize": false,
+        "mirror": false,
+        "ground": false
+      }
+    },
+    {
+      "source": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+      "runtime": "public/assets/wave13/herd/pig_cluster-v1.png",
+      "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+      "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+      "bytes": 21083,
+      "byteIdentical": true,
+      "pngChunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paChunkCount": 0,
+      "c2paRemoved": 0,
+      "sourceRecord": "assets-inbox/wave13/candidates-v1/records/metadata-herds.json#herd/pig_cluster-v1",
+      "generationTool": "unknown",
+      "generationModel": "unknown",
+      "generationTimestamp": "unknown",
+      "generationSeed": "unknown",
+      "baseId": "pig_pair",
+      "legacyVisibleBodies": 2,
+      "installedVisibleBodies": 4,
+      "engineAggregateChanged": false,
+      "staticCluster": true,
+      "animation": false,
+      "cell": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        63
+      ],
+      "sheet": [
+        4,
+        1
+      ],
+      "worldScale": 0.20670180722891565,
+      "processing": {
+        "mode": "deterministic source-cell composition; no new image generation",
+        "source": "assets/animal_walk/pig_single-v1.png",
+        "sourceCells": [
+          {
+            "direction": "ne",
+            "sourceCell": [
+              0,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 8,
+                "foot": [
+                  37,
+                  44
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 16,
+                "foot": [
+                  89,
+                  52
+                ]
+              },
+              {
+                "i": 2,
+                "x": 27,
+                "y": 39,
+                "foot": [
+                  51,
+                  75
+                ]
+              },
+              {
+                "i": 3,
+                "x": 71,
+                "y": 48,
+                "foot": [
+                  95,
+                  84
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "se",
+            "sourceCell": [
+              1,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 8,
+                "foot": [
+                  37,
+                  44
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 16,
+                "foot": [
+                  89,
+                  52
+                ]
+              },
+              {
+                "i": 2,
+                "x": 27,
+                "y": 39,
+                "foot": [
+                  51,
+                  75
+                ]
+              },
+              {
+                "i": 3,
+                "x": 71,
+                "y": 48,
+                "foot": [
+                  95,
+                  84
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "sw",
+            "sourceCell": [
+              2,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 8,
+                "foot": [
+                  37,
+                  44
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 16,
+                "foot": [
+                  89,
+                  52
+                ]
+              },
+              {
+                "i": 2,
+                "x": 27,
+                "y": 39,
+                "foot": [
+                  51,
+                  75
+                ]
+              },
+              {
+                "i": 3,
+                "x": 71,
+                "y": 48,
+                "foot": [
+                  95,
+                  84
+                ]
+              }
+            ]
+          },
+          {
+            "direction": "nw",
+            "sourceCell": [
+              3,
+              0
+            ],
+            "members": [
+              {
+                "i": 0,
+                "x": 13,
+                "y": 8,
+                "foot": [
+                  37,
+                  44
+                ]
+              },
+              {
+                "i": 1,
+                "x": 65,
+                "y": 16,
+                "foot": [
+                  89,
+                  52
+                ]
+              },
+              {
+                "i": 2,
+                "x": 27,
+                "y": 39,
+                "foot": [
+                  51,
+                  75
+                ]
+              },
+              {
+                "i": 3,
+                "x": 71,
+                "y": 48,
+                "foot": [
+                  95,
+                  84
+                ]
+              }
+            ]
+          }
+        ],
+        "depthSort": "ascending visible ground anchor y then x",
+        "resize": false,
+        "mirror": false,
+        "ground": false
+      }
+    }
+  ]
+}

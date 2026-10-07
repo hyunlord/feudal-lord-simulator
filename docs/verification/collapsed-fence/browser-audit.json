@@ -1,0 +1,1034 @@
+{
+  "classification": "prepared renderer fixture, not natural gameplay",
+  "beforeCommit": "7de6dce4ccd8d581105246c177a5ff839780420e",
+  "afterCommit": "2fd03f3493bd6620f591a7885214bf4c40d65996",
+  "runs": {
+    "before": "astra-FENCE-final-before-7de6dce",
+    "after": "astra-FENCE-final-after-2fd03f3"
+  },
+  "pairedViews": [
+    {
+      "name": "summer-z1",
+      "tick": 1201500,
+      "saveSHA256": "06d5ae5ad3db4323fa8fcf18946021f046be772607e55d4b039be1b473f62c77",
+      "stateSHA256": "eeea930042bc4a930cd90257ede37a5d5e85c502eb02b1349ba57f58a8679b62",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "drawings": [
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "args": [
+            0,
+            0,
+            64,
+            80,
+            1032,
+            870,
+            32,
+            40
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            -424,
+            -508
+          ],
+          "viaMip": true
+        },
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "args": [
+            0,
+            0,
+            64,
+            80,
+            1064,
+            886,
+            32,
+            40
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            -424,
+            -508
+          ],
+          "viaMip": true
+        }
+      ],
+      "queueAudit": {
+        "preparedStateOnly": true,
+        "mutationsAppliedToVisibleGame": false,
+        "replaced": [
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+            "depth": 56.25,
+            "anchorTx": 44.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 44.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          },
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+            "depth": 57.25,
+            "anchorTx": 45.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 45.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          }
+        ],
+        "activeIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "resettledIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "clearedIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "rewoundIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "sameGroundAfterResettlement": true,
+        "sameGroundAfterRewind": true
+      }
+    },
+    {
+      "name": "summer-z0.6",
+      "tick": 1201500,
+      "saveSHA256": "06d5ae5ad3db4323fa8fcf18946021f046be772607e55d4b039be1b473f62c77",
+      "stateSHA256": "eeea930042bc4a930cd90257ede37a5d5e85c502eb02b1349ba57f58a8679b62",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "drawings": [
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "args": [
+            0,
+            0,
+            32,
+            40,
+            1032,
+            870,
+            32,
+            40
+          ],
+          "matrix": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            1.600000023841858,
+            -144.8000030517578
+          ],
+          "viaMip": true
+        },
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "args": [
+            0,
+            0,
+            32,
+            40,
+            1064,
+            886,
+            32,
+            40
+          ],
+          "matrix": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            1.600000023841858,
+            -144.8000030517578
+          ],
+          "viaMip": true
+        }
+      ],
+      "queueAudit": {
+        "preparedStateOnly": true,
+        "mutationsAppliedToVisibleGame": false,
+        "replaced": [
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+            "depth": 56.25,
+            "anchorTx": 44.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 44.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          },
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+            "depth": 57.25,
+            "anchorTx": 45.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 45.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          }
+        ],
+        "activeIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "resettledIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "clearedIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "rewoundIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "sameGroundAfterResettlement": true,
+        "sameGroundAfterRewind": true
+      }
+    },
+    {
+      "name": "summer-z3",
+      "tick": 1201500,
+      "saveSHA256": "06d5ae5ad3db4323fa8fcf18946021f046be772607e55d4b039be1b473f62c77",
+      "stateSHA256": "eeea930042bc4a930cd90257ede37a5d5e85c502eb02b1349ba57f58a8679b62",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "drawings": [
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "args": [
+            0,
+            0,
+            128,
+            160,
+            1032,
+            870,
+            32,
+            40
+          ],
+          "matrix": [
+            3,
+            0,
+            0,
+            3,
+            -2552,
+            -2324
+          ],
+          "viaMip": false
+        },
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "args": [
+            0,
+            0,
+            128,
+            160,
+            1064,
+            886,
+            32,
+            40
+          ],
+          "matrix": [
+            3,
+            0,
+            0,
+            3,
+            -2552,
+            -2324
+          ],
+          "viaMip": false
+        }
+      ],
+      "queueAudit": {
+        "preparedStateOnly": true,
+        "mutationsAppliedToVisibleGame": false,
+        "replaced": [
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+            "depth": 56.25,
+            "anchorTx": 44.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 44.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          },
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+            "depth": 57.25,
+            "anchorTx": 45.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 45.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          }
+        ],
+        "activeIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "resettledIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "clearedIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "rewoundIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "sameGroundAfterResettlement": true,
+        "sameGroundAfterRewind": true
+      }
+    },
+    {
+      "name": "winter-z1",
+      "tick": 1203500,
+      "saveSHA256": "ff4b50074e41d9870038443080f07ea52415827812a89fd46c8f63d24d520577",
+      "stateSHA256": "e6a6ec0799f4147434e3a9a7dfe84734357415dd46f87f779b07589a125f6162",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "drawings": [
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "args": [
+            0,
+            0,
+            64,
+            80,
+            1032,
+            870,
+            32,
+            40
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            -424,
+            -508
+          ],
+          "viaMip": true
+        },
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "args": [
+            0,
+            0,
+            64,
+            80,
+            1064,
+            886,
+            32,
+            40
+          ],
+          "matrix": [
+            1,
+            0,
+            0,
+            1,
+            -424,
+            -508
+          ],
+          "viaMip": true
+        }
+      ],
+      "queueAudit": {
+        "preparedStateOnly": true,
+        "mutationsAppliedToVisibleGame": false,
+        "replaced": [
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+            "depth": 56.25,
+            "anchorTx": 44.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 44.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          },
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+            "depth": 57.25,
+            "anchorTx": 45.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 45.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          }
+        ],
+        "activeIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "resettledIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "clearedIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "rewoundIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "sameGroundAfterResettlement": true,
+        "sameGroundAfterRewind": true
+      }
+    },
+    {
+      "name": "winter-z0.6",
+      "tick": 1203500,
+      "saveSHA256": "ff4b50074e41d9870038443080f07ea52415827812a89fd46c8f63d24d520577",
+      "stateSHA256": "e6a6ec0799f4147434e3a9a7dfe84734357415dd46f87f779b07589a125f6162",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "drawings": [
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "args": [
+            0,
+            0,
+            32,
+            40,
+            1032,
+            870,
+            32,
+            40
+          ],
+          "matrix": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            1.600000023841858,
+            -144.8000030517578
+          ],
+          "viaMip": true
+        },
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "args": [
+            0,
+            0,
+            32,
+            40,
+            1064,
+            886,
+            32,
+            40
+          ],
+          "matrix": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            1.600000023841858,
+            -144.8000030517578
+          ],
+          "viaMip": true
+        }
+      ],
+      "queueAudit": {
+        "preparedStateOnly": true,
+        "mutationsAppliedToVisibleGame": false,
+        "replaced": [
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+            "depth": 56.25,
+            "anchorTx": 44.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 44.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          },
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+            "depth": 57.25,
+            "anchorTx": 45.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 45.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          }
+        ],
+        "activeIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "resettledIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "clearedIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "rewoundIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "sameGroundAfterResettlement": true,
+        "sameGroundAfterRewind": true
+      }
+    },
+    {
+      "name": "winter-z3",
+      "tick": 1203500,
+      "saveSHA256": "ff4b50074e41d9870038443080f07ea52415827812a89fd46c8f63d24d520577",
+      "stateSHA256": "e6a6ec0799f4147434e3a9a7dfe84734357415dd46f87f779b07589a125f6162",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "drawings": [
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "args": [
+            0,
+            0,
+            128,
+            160,
+            1032,
+            870,
+            32,
+            40
+          ],
+          "matrix": [
+            3,
+            0,
+            0,
+            3,
+            -2552,
+            -2324
+          ],
+          "viaMip": false
+        },
+        {
+          "src": "http://127.0.0.1:4306/assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "args": [
+            0,
+            0,
+            128,
+            160,
+            1064,
+            886,
+            32,
+            40
+          ],
+          "matrix": [
+            3,
+            0,
+            0,
+            3,
+            -2552,
+            -2324
+          ],
+          "viaMip": false
+        }
+      ],
+      "queueAudit": {
+        "preparedStateOnly": true,
+        "mutationsAppliedToVisibleGame": false,
+        "replaced": [
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+            "depth": 56.25,
+            "anchorTx": 44.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 44.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          },
+          {
+            "kind": "land_stage",
+            "id": "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+            "depth": 57.25,
+            "anchorTx": 45.5,
+            "piece": {
+              "picture": "collapsed",
+              "editions": {
+                "summer": "core:yard-fence/abandoned_collapsed_fence_summer",
+                "winter": "core:yard-fence/abandoned_collapsed_fence_winter"
+              },
+              "tx": 45.5,
+              "ty": 11.75,
+              "salt": 0
+            }
+          }
+        ],
+        "activeIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "collapsed:yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "collapsed:yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "resettledIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "clearedIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "rewoundIds": [
+          "yard-hurdle:house-44-42-0:west:43,12",
+          "yard-hurdle:construction-site-000010:three_quarter:47,8.75",
+          "yard-hurdle:house-44-42-0:straight:45,12",
+          "yard-hurdle:construction-site-000010:straight:49,8",
+          "yard-hurdle:house-46-42-0:straight:46,12",
+          "yard-hurdle:house-46-42-0:south:47,12",
+          "yard-hurdle:construction-site-000015:straight:48,12",
+          "yard-hurdle:construction-site-000016:west:48,13",
+          "yard-hurdle:construction-site-000018:straight:49,14",
+          "yard-hurdle:construction-site-000025:straight:48,21",
+          "yard-hurdle:construction-site-000027:straight:48,22",
+          "yard-hurdle:construction-site-000033:straight:49,24",
+          "yard-hurdle:construction-site-000040:straight:49,30",
+          "yard-hurdle:construction-site-000040:straight:48,32",
+          "yard-hurdle:construction-site-000051:straight:52,36",
+          "yard-hurdle:construction-site-000053:straight:52,39"
+        ],
+        "sameGroundAfterResettlement": true,
+        "sameGroundAfterRewind": true
+      }
+    }
+  ],
+  "visual": {
+    "zoom3": "Broken rails and gap visible; smaller than retained full-size upright panels; no rectangular block or stretched source.",
+    "zoom1": "Gap and small debris visible when location known; standalone collapsed-fence meaning weak.",
+    "zoom06": "Collapsed-fence detail unreadable. Do not claim .6 legibility pass.",
+    "geometry": "No obvious floating slab or cross-road intrusion in sampled views; alpha footprint exactness and moving walker occlusion not proven.",
+    "restore": "Actual browser queue consumer checked; visible game state was not mutated, so no resettlement/rewind screenshots."
+  },
+  "verdict": "Runtime replacement passes; small-zoom legibility limited; final integration gates not run.",
+  "finalGeometry": {
+    "run": "astra-FENCE-geometry-clean-2fd03f3",
+    "dirty": false,
+    "conditions": 80,
+    "failures": 0,
+    "unopened": 0
+  }
+}

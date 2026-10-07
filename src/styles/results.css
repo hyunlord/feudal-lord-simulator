@@ -1,0 +1,28 @@
+/* DEC-CARD (result side): the year's card and the house card (src/ui/results/ResultCards.tsx) — the petition frame's card
+   (hudShell.css .petition-card) as wide as the decision card (decisionCard.css), its height its content's (the body
+   scrolls inside on a short view). Text 13–14 px, nothing under 12 (LM-R2 floor). */
+.petition-card.results-card { width: min(880px, 96vw); min-height: 0; }
+.results-card-body { gap: 10px; }
+.results-card-body h2 { margin: 0; font-size: 18px; line-height: 1.3; }
+.results-card-court, .results-card-from { margin: 0; font-size: 12px; line-height: 1.4; color: var(--palette-ink-light); }
+.results-card-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; }
+.results-card-head:not(:has(.results-card-art)) { grid-template-columns: minmax(0, 1fr); }
+.results-card-art { flex: 0 0 auto; border-radius: 2px; }
+.results-card-heading { display: grid; gap: 6px; min-width: 0; }
+.results-card-part { display: grid; gap: 2px; min-width: 0; }
+.results-card-part h3 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: var(--palette-ink-light); }
+.results-card-part ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; }
+.results-card-part li, .results-card-part p, .results-card-empty {
+  margin: 0; font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere;
+}
+.results-card-none { color: var(--palette-ink-light); }
+.results-card-empty { font-size: 14px; }
+.house-change-heir { font-size: 14px; font-weight: 600; }
+.year-review-decisions li { display: grid; gap: 1px; }
+.year-review-outcome { font-size: 13px; color: var(--palette-ink-light); }
+.year-review-group { display: grid; gap: 1px; }
+.year-review-group + .year-review-group { margin-top: 4px; }
+.results-card-part .year-review-group-head { font-size: 12px; font-weight: 600; color: var(--palette-ink-light); }
+.results-card-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; }
+.results-card-actions > .ui-btn, .house-change-next { min-height: 44px; }
+.house-change-next { justify-self: start; }

@@ -33,6 +33,7 @@
     "hooks:install": "sh scripts/git-hooks/install.sh",
     "postinstall": "test ! -f scripts/git-hooks/install.sh || sh scripts/git-hooks/install.sh",
     "check:merge": "node scripts/checks/mergeChecks.mjs",
+    "eventart:auto": "tsx scripts/eventArtAuto.ts",
     "budget:dist": "node scripts/checks/distBudget.mjs --build",
     "lint": "npm --prefix tools/eslint ci --no-audit --no-fund --loglevel=error && tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --max-warnings 0 src"
   },

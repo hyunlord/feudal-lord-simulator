@@ -56,3 +56,25 @@ test('consumer draws full source with native scale/pivot and never mirrors', asy
   assert.equal(drawSpringPasture(context, input, flock, [flock], 0, 1, art), true);
   assert.deepEqual(calls[0]?.slice(1, 5), [0, 0, 128, 96]); assert.deepEqual(calls[0]?.slice(-2), [23, 17.25]); assert.equal(context.globalAlpha, 0.8);
 });
+
+test('Given a decoded herd crop When spring companions are placed Then their gap follows the new crop bounds instead of the legacy canvas', async () => {
+  // Given
+  const { createFarmPropArt } = await import('../src/render/farmPropArt');
+  const images: HTMLImageElement[] = [];
+  const herd = createFarmPropArt(createArtRegistry(catalog), { baseUrl: '/', createImage: () => {
+    const image: HTMLImageElement = Object.assign(Object.create(null), { naturalWidth: 512, naturalHeight: 96, decode: async () => {}, onload: null, onerror: null, src: '' }); images.push(image); return image;
+  } });
+  const entry = herd.select(flock); assert.ok(entry); herd.ready(flock);
+  for (const image of images) image.onload?.call(image, new Event('load'));
+  await herd.loadSettled(entry.id);
+  const art = await readyArt();
+  // When
+  const placement = springPasturePlacement(state(), flock, [flock], 0, 1, art, herd.bounds);
+  // Then
+  assert.ok(placement); const bounds = herd.bounds(flock); assert.ok(bounds);
+  const selected = art.entry(placement.id); assert.ok(selected);
+  const left = placement.x - selected.geometry.pivot.x * selected.geometry.scale;
+  const right = left + selected.image.width * selected.geometry.scale;
+  assert.ok(Math.abs(left - bounds.x - bounds.width - 4) < 1e-8 || Math.abs(bounds.x - right - 4) < 1e-8);
+  assert.equal(placement.y, 128);
+});

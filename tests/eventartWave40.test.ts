@@ -27,11 +27,13 @@ import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
 import { recordArt } from "../src/ui/chronicle/chronicleScreenModel";
 import { storyBeats } from "../src/ui/eventStory";
+import { houseRecordIds } from "../src/ui/results/houseChange";
 import { LORD_MOMENT_COPY } from "../src/ui/lordMomentCopy.ko";
 import { lordMomentBeats, lordMoments } from "../src/ui/lordMomentBeats";
 import { storyArtStyle } from "../src/ui/storyArt";
 import { wave40RecordArt, type Wave40ImageId } from "../src/ui/wave40Art";
 import { WAVE40_IMAGES } from "../src/ui/wave40ArtManifest.generated";
+import { marriageDecisionHead } from "../src/ui/lord/decisions/decisionCardsModel";
 
 const SEASON = 1_000;
 const YEAR = 4_000;
@@ -196,8 +198,18 @@ test("Wave 40: one story beat per history record — its id the record's, the sa
         assert.equal(beat.kind, "lord_moment");
         assert.ok(String(storyArtStyle(beat.illustration as Wave40ImageId, 64).backgroundImage).includes(WAVE40_IMAGES[beat.illustration as Wave40ImageId].url));
       }
-      // The story's beats hold each moment once (lordBeats → storyBeats).
-      assert.deepEqual(storyBeats(state).map(beat => beat.id).filter(id => id.startsWith("lord-moment:")), beats.map(beat => beat.id));
+      // The story's beats hold each moment once (lordBeats → storyBeats). LM-R2: while the father's will waits for
+      // the lord's answer, its decision chip wears the will's moment and stands for it (one chip, not two).
+      // DEC-CARD (A3): a change in the lord's house (the inheritance, the wardship) is its house card's chip, wearing the moment.
+      const story = storyBeats(state);
+      const willDue = marriageDecisionHead(state)?.kind === "will_change";
+      const house = houseRecordIds(state);
+      assert.deepEqual(story.map(beat => beat.id).filter(id => id.startsWith("lord-moment:")),
+        beats.filter(beat => (!willDue || beat.illustration !== "moment_attempted_will_change") && !house.has(beat.id.slice("lord-moment:".length))).map(beat => beat.id));
+      if (willDue) assert.equal(story.find(beat => beat.decision === "marriage_decision")?.illustration, "moment_attempted_will_change");
+      for (const beat of beats.filter(entry => house.has(entry.id.slice("lord-moment:".length)))) {
+        assert.ok(story.some(entry => entry.kind === "house_change" && entry.illustration === beat.illustration), `${beat.id}: its house card's chip wears it`);
+      }
     }
     // Every moment of the path that was offered at all was one beat, by its record's id.
     for (const id of seen.keys()) assert.ok(path.moments.some(entry => `lord-moment:${entry.record.id}` === id), id);

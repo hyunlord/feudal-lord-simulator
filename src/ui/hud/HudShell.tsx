@@ -12,6 +12,7 @@ import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import type { ControlLayer } from "../tutorial/tutorialModel";
 import { HUD_COPY } from "./hudCopy.ko";
+import { LORD_SCREEN_COPY } from "../lord/screen/lordScreenCopy.ko";
 import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { FoodBreakdownPanel } from "./FoodBreakdown";
@@ -28,6 +29,8 @@ import { PersonList } from "../persons/PersonViews";
 import { Button } from "../kit";
 import { lordMode } from "../../engine/townAgency";
 import { LordPolicyPanel } from "../lord/LordPolicyPanel";
+import { TownSeatButton } from "../lord/camera/TownSeatButton";
+import { TreasuryByEstate } from "../lord/treasury/TreasuryByEstate";
 import { POLICY_COPY } from "../lord/policyCopy.ko";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { LORDSHIP_COPY } from "../lordshipCopy.ko";
@@ -83,6 +86,8 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onIns
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} onPress={() => onOpenLedger()} variant="surface">
         <UiIcon sheet="resource" cell="coin" />{HUD_COPY.money(model.coin)}
       </Button>
+      {/* DEC-CARD A2: lord mode's way back to the town's seat, in the pill (no new HUD surface). */}
+      {lordMode(state) ? <TownSeatButton state={state} /> : null}
     </nav>
   );
 }
@@ -250,7 +255,7 @@ export function RightsRegister({ view, onPerson }: { readonly view: LordshipView
   );
 }
 
-export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle, onPerson, initialTab = "stock" }: {
+export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle, onPerson, onOpenLord, initialTab = "stock" }: {
   readonly state: GameState; readonly onInspect: (id: string) => void; readonly onClose: () => void;
   /** LM-R1 (Astra B02): the tab it opens on (the direction layer opens it on the lord's conditions). */
   readonly initialTab?: LedgerTab;
@@ -259,6 +264,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   readonly onOpenChronicle?: () => void;
   /** UI-7: a person of the lord's household (the rights tab) opens their person card. */
   readonly onPerson?: (personId: string) => void;
+  /** LM-R2 (lord mode): the lord tab's way into the lord screens (they take the slot). */
+  readonly onOpenLord?: (() => void) | undefined;
   readonly history?: StoreStockHistory | null; readonly food?: { readonly days: number | null };
   readonly highlighted?: readonly string[]; readonly onHighlight?: (ids: readonly string[]) => void;
 }) {
@@ -292,6 +299,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
       {/* UI-AUDIT-1: the status pill's coin cell opens this drawer; here the treasury reads to the penny. */}
       {tab === "stock" ? <p className="ledger-treasury" data-ledger-treasury="true"><UiIcon sheet="resource" cell="coin" />
         {HUD_COPY.ledgerTreasuryLine(Math.floor(economyStockTotals(state).coin))}</p> : null}
+      {/* DEC-CARD A5: lord mode — the treasury by estate (rent, taxes, contracts, spending), under the treasury line. */}
+      {tab === "stock" ? <TreasuryByEstate state={state} /> : null}
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
         // UX-0b: the total, the week and the lasts first; NAT-2 (QA-006): the stores folded into one column (LedgerStockTable).
         <LedgerStockTable state={state} matrix={matrix} history={history} food={food} highlighted={highlighted} onHighlight={onHighlight} onInspect={onInspect} />)) : null}
@@ -336,6 +345,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>
           <Button type="button" className="ledger-alert-look" onPress={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }} variant="secondary">
             <UiIcon sheet="action" cell="look" />{ALERT_STACK_COPY.inspect}</Button></li>))}</ul>) : null}
+      {tab === "lord" && onOpenLord !== undefined ? <Button type="button" className="lord-screen-open" data-lord-open="true" aria-label={LORD_SCREEN_COPY.openLabel}
+        onPress={() => onOpenLord()} variant="secondary">{LORD_SCREEN_COPY.open}</Button> : null}
       {tab === "lord" ? <LordPolicyPanel state={state} /> : null}
       {tab === "view" ? viewTab : null}
       {tab === "map" ? mapTab : null}

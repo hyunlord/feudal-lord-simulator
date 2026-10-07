@@ -16,7 +16,8 @@ import { MANOR_HOUSE_IMAGES, type ManorHouseKey } from "./manorHouseManifest.gen
 // centring: the pivot stands 41 px right of the canvas middle, so a centred painting would slide off its plot.
 // Scale: the paintings' alpha width (x 20–395 = 376 px in all six, measured) at 0.87 of the footprint diamond's width,
 // the fill the historical houses and the fitted buildings use (buildingSpriteFit.ts). Astra drew the manor for a 3 × 3
-// plot; the engine's is 2 × 2 (buildingConfig), so it is drawn at 2 × 2's size and stays on its own plot.
+// plot, and since MANOR-1 the engine's is 3 × 3 too (buildingConfig), so the scale taken from the footprint draws it at
+// its painted size on its own plot.
 // Which picture:
 //  - empty (A: manor_house_a_empty-v1; B: only v2, the reworked one) when the lordship says no lord lives there: the
 //    family left for its country seat (F5-A LG-1 `legacy.family` "departed"), or the ruling house's family, once in

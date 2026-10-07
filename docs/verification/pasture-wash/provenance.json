@@ -1,0 +1,45 @@
+{
+  "source": "tests/fixtures/pasture-wash/seed5.json.gz",
+  "sourceSHA256": "9eff242783727260965c4c88f71f7377c4b8a4bb92e92b8eb83d7b1efad89f66",
+  "beforeTick": 1206364,
+  "steps": 3136,
+  "runtimeMs": 3242.599917,
+  "mutations": [],
+  "method": "normal advanceTick only; prepared render fixture, not natural gameplay",
+  "records": [
+    {
+      "season": "winter",
+      "file": "winter.save.json",
+      "tick": 1207500,
+      "calendar": {
+        "season": 3,
+        "year": 1601,
+        "fraction": 0.5,
+        "seconds": 120750
+      },
+      "sha256": "7bc334991649832df5a84bfed5d469c20c9d54e5c30217ed743d1c6b8d00ceaf",
+      "props": []
+    },
+    {
+      "season": "summer",
+      "file": "summer.save.json",
+      "tick": 1209500,
+      "calendar": {
+        "season": 1,
+        "year": 1602,
+        "fraction": 0.5,
+        "seconds": 120950
+      },
+      "sha256": "122596bbb804a9bf6904ef63f426548db0b143c69173955a7839d1bd8e61e296",
+      "props": [
+        {
+          "id": "wash-pool:construction-site-000108",
+          "assetId": "pasture_wash_pool",
+          "farmId": "construction-site-000108",
+          "tx": 8,
+          "ty": 38
+        }
+      ]
+    }
+  ]
+}

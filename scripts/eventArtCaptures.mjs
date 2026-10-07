@@ -5,9 +5,7 @@
 //    occurrence answered, the treasury moved as the card said, the card gone);
 //  - the same offer from its story chip ([결정하기] after [나중에 정하기]);
 //  - a hold: its card says what holding costs; held, the occurrence keeps that cost (ER-19);
-//  - each shipped picture through the real card: the same state with the open offer's entry set to each v4 entry the
-//    registry runs in turn, bound to its first targets there when it has them (injected; marked so in captures.json) — the
-//    card's picture loaded at 960 × 540 (the scene, a small JPEG);
+//  - (each live event's picture through the real card: `npm run eventart:auto`, scripts/eventArtAutoCapture.mjs — EVA-AUTO);
 //  - the card at 1024 × 768 and on the tablet (1180 × 820, touch): inside the view, text ≥ 12 px, answers ≥ 44 px;
 //  - lord mode only: the campaign's ui5 merchant town has no registry chip or card.
 //   scripts/remote/run.sh render-EVENTART-card -- bash scripts/eventArtCaptures.sh
@@ -17,9 +15,7 @@ refuseHeavyOnMac("브라우저 확인(scripts/eventArtCaptures.mjs)", { remote: 
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { shippedEventArtIds } from '../src/ui/eventArtSelection.ts';
-import { EVENT_ART_IMAGES } from '../src/ui/eventArtManifest.generated.ts';
-import { bindEntry, boundIdentities, v4Entry } from '../src/engine/registryV4.ts';
+import { registryOfferView } from '../src/ui/registryCardModel.ts';
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -41,20 +37,25 @@ const proof = page => page.evaluate(() => {
 const card = page => page.evaluate(async selector => {
   const root = document.querySelector(selector);
   if (root === null) return null;
-  const art = root.querySelector('.lord-card-art');
+  // DEC-CARD: the heavy card's picture and answer blocks (data-choice, data-refused; the choose button inside), or the old ones.
+  const art = root.querySelector('.decision-card-art, .lord-card-art');
   const background = art === null ? null : getComputedStyle(art).backgroundImage;
   const src = background === null ? null : background.match(/url\("?([^")]+)"?\)/)?.[1] ?? null;
   const loaded = src === null ? null : await new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done('error'); image.src = src; });
   const box = root.getBoundingClientRect();
   const artBox = art?.getBoundingClientRect();
   return { entry: root.getAttribute('data-registry-offer'), occurrence: root.getAttribute('data-occurrence'), title: root.querySelector('h2')?.textContent ?? null, court: root.querySelector('.lord-card-court')?.textContent ?? null,
-    kicker: root.querySelector('.lord-card-kicker')?.textContent ?? null, body: root.querySelector('h2 + p')?.textContent ?? null,
-    why: [...root.querySelectorAll('.registry-card-why li')].map(li => li.textContent), lapse: root.querySelector('.lord-card-precedent')?.textContent ?? null,
-    art: art?.getAttribute('data-art') ?? null, src, loaded, artBox: artBox === undefined ? null : [Math.round(artBox.width), Math.round(artBox.height)],
-    answers: [...root.querySelectorAll('.registry-card-option')].map(button => ({ choice: button.getAttribute('data-choice'), enabled: button.getAttribute('data-enabled'),
-      hold: button.getAttribute('data-hold'), cost: button.querySelector('.registry-card-hold')?.textContent ?? null, line: button.querySelector('.lord-card-forecast')?.textContent ?? null,
-      disabled: button.disabled, primary: button.classList.contains('ui-btn--primary'), text: button.textContent,
-      treasury: button.querySelector('.lord-card-forecast')?.getAttribute('data-treasury') ?? null, height: Math.round(button.getBoundingClientRect().height) })),
+    kicker: root.querySelector('.decision-card-from, .lord-card-kicker')?.textContent ?? null, body: root.querySelector('.decision-card-situation, h2 + p')?.textContent ?? null,
+    why: [...root.querySelectorAll('.registry-card-why li')].map(li => li.textContent), lapse: root.querySelector('.decision-card-deadline, .lord-card-precedent')?.textContent ?? null,
+    art: art?.getAttribute('data-art') ?? (src?.match(/event-art\/([^/.]+)\./)?.[1] ?? null), src, loaded, artBox: artBox === undefined ? null : [Math.round(artBox.width), Math.round(artBox.height)],
+    answers: [...root.querySelectorAll('.decision-card-choice, .registry-card-option')].map(node => {
+      const button = node.matches('button') ? node : node.querySelector('.decision-card-choose') ?? node;
+      return { choice: node.getAttribute('data-choice'), enabled: node.getAttribute('data-enabled') ?? (node.getAttribute('data-refused') === 'true' ? 'false' : 'true'),
+        hold: node.getAttribute('data-hold'), cost: node.querySelector('.registry-card-hold')?.textContent ?? null,
+        line: node.querySelector('.lord-card-forecast')?.textContent ?? node.querySelector('.decision-card-part li, .decision-card-refusal')?.textContent ?? null,
+        disabled: button.disabled, primary: button.classList.contains('ui-btn--primary'), text: node.textContent,
+        treasury: node.querySelector('.lord-card-forecast')?.getAttribute('data-treasury') ?? null, height: Math.round(button.getBoundingClientRect().height) };
+    }),
     later: Math.round(root.querySelector('.story-modal-later')?.getBoundingClientRect().height ?? 0),
     box: { left: Math.round(box.left), top: Math.round(box.top), right: Math.round(box.right), bottom: Math.round(box.bottom), inside: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight },
     smallestText: Math.min(...[...root.querySelectorAll('*')].filter(el => [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim() !== '')).map(el => parseFloat(getComputedStyle(el).fontSize))) };
@@ -95,8 +96,11 @@ const rows = {};
   const shown = await card(page);
   const size = await shoot(page, CARD, `card-${offer.entryId}`, 45);
   const before = await proof(page);
-  const choice = shown.answers.find(answer => answer.enabled === 'true' && answer.hold !== 'true');
-  await page.locator(`${CARD} .registry-card-option[data-choice="${choice.choice}"]`).first().click(); await page.waitForTimeout(800);
+  // The hold and the treasury from the card's own view model (the heavy card's markup carries neither).
+  const viewed = registryOfferView(base);
+  const pick = viewed.choices.find(entry => entry.enabled && !entry.hold);
+  const choice = { ...shown.answers.find(answer => answer.choice === pick.id), treasury: shown.answers.find(answer => answer.choice === pick.id)?.treasury ?? String(pick.treasury) };
+  await page.locator(`${CARD} .registry-card-option[data-choice="${choice.choice}"], ${CARD} [data-choose="${choice.choice}"]`).first().click(); await page.waitForTimeout(800);
   const after = await proof(page);
   const answered = after.occurrences.find(o => o.id === offer.id);
   rows.drawn = { opened, card: shown, bytes: size, choice: choice.choice, status: answered?.status ?? null, choiceId: answered?.choiceId ?? null,
@@ -128,30 +132,17 @@ const rows = {};
   const { context, page } = await open(holdBase);
   const opened = await waitCard(page, 'hold');
   const shown = opened ? await card(page) : null;
-  const hold = shown?.answers.find(answer => answer.hold === 'true' && answer.enabled === 'true') ?? null;
+  const holdId = registryOfferView(holdBase)?.choices.find(entry => entry.hold && entry.enabled)?.id ?? null;
+  const holdView = registryOfferView(holdBase)?.choices.find(entry => entry.id === holdId) ?? null;
+  const shownHold = shown?.answers.find(answer => answer.choice === holdId) ?? null;
+  const hold = shownHold === null ? null : { ...shownHold, cost: shownHold.cost ?? holdView?.cost ?? null };
   const size = opened ? await shoot(page, CARD, `card-hold-${shown.entry}`, 40) : 0;
-  if (hold !== null) { await page.locator(`${CARD} .registry-card-option[data-choice="${hold.choice}"]`).first().click(); await page.waitForTimeout(800); }
+  if (hold !== null) { await page.locator(`${CARD} .registry-card-option[data-choice="${hold.choice}"], ${CARD} [data-choose="${hold.choice}"]`).first().click(); await page.waitForTimeout(800); }
   const after = (await proof(page)).occurrences.find(o => o.id === shown?.occurrence) ?? null;
   rows.hold = { opened, entry: shown?.entry ?? null, offer: held?.id ?? null, shownOffer: shown?.occurrence ?? null, choice: hold?.choice ?? null, cost: hold?.cost ?? null, line: hold?.line ?? null,
     status: after?.status ?? null, kept: after?.hold ?? null, closed: (await page.locator(CARD).count()) === 0, bytes: size };
   rows.hold.ok = opened && hold !== null && (hold.cost ?? '').startsWith('보류') && after?.status === 'answered' && after.choiceId === hold.choice && after.hold !== null && rows.hold.closed;
   console.log(`${rows.hold.ok ? 'ok ' : 'BAD'} hold: ${JSON.stringify(rows.hold)}`);
-  await context.close();
-}
-// 4. Every shipped picture through the real card (the open offer's entry set to each v4 entry the registry runs, in turn).
-const shipped = shippedEventArtIds(EVENT_ART_IMAGES);
-rows.pictures = {};
-for (const id of shipped) {
-  const bound = bindEntry(base, v4Entry(id));
-  const occurrences = base.registry.occurrences.map(o => o.id === offer.id ? { ...o, entryId: id, id: `${o.id}:as:${id}`, source: 'v4', bound: bound === null ? {} : boundIdentities(bound), key: id } : o);
-  const { context, page } = await open({ ...base, registry: { ...base.registry, occurrences } }, {}, 4000);
-  const opened = await waitCard(page, `picture-${id}`);
-  const shown = opened ? await card(page) : null;
-  const size = opened ? await shoot(page, `${CARD} .petition-scene`, `picture-${id}`, 30) : 0;
-  const ok = opened && shown.entry === id && shown.art === id && shown.src?.endsWith(`assets/event-art/${id}.jpg`) && Array.isArray(shown.loaded) && shown.loaded[0] === 960 && shown.loaded[1] === 540;
-  rows.pictures[id] = { injected: true, bound: bound !== null, opened, art: shown?.art ?? null, src: shown?.src ?? null, loaded: shown?.loaded ?? null, artBox: shown?.artBox ?? null,
-    title: shown?.title ?? null, answers: shown?.answers.map(answer => [answer.choice, answer.enabled, answer.hold]) ?? [], bytes: size, ok };
-  console.log(`${ok ? 'ok ' : 'BAD'} picture ${id}: ${shown?.src} ${JSON.stringify(shown?.loaded)} ${shown?.artBox} bound ${bound !== null}`);
   await context.close();
 }
 // 5. The small view and the tablet.
@@ -176,8 +167,7 @@ for (const [name, options] of [['1024x768', { width: 1024, height: 768 }], ['tab
   await context.close();
 }
 await browser.close();
-const pictures = Object.values(rows.pictures);
-const ok = rows.drawn.ok && rows.chip.ok && rows.hold.ok && pictures.length === shipped.length && pictures.every(row => row.ok) && rows['1024x768'].ok && rows.tablet.ok && rows.campaign.ok;
-writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, offer: { id: offer.id, entryId: offer.entryId, receipt: offer.receipt }, shipped, rows }, null, 1) + '\n');
-console.log(JSON.stringify({ ok, bytes, pictures: pictures.filter(row => row.ok).length }));
+const ok = rows.drawn.ok && rows.chip.ok && rows.hold.ok && rows['1024x768'].ok && rows.tablet.ok && rows.campaign.ok;
+writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, offer: { id: offer.id, entryId: offer.entryId, receipt: offer.receipt }, rows }, null, 1) + '\n');
+console.log(JSON.stringify({ ok, bytes }));
 if (!ok) process.exitCode = 1;

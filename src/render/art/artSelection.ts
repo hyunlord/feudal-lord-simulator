@@ -9,7 +9,8 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'building-attachment': { bodyId: text, occupation: text, calendarYear: number('calendar-year'), season: text, role: text },
   'building-body': { buildingKind: text, level: number('level'), season: text, calendarYear: number('calendar-year'), lot: text, eligible: { type: 'boolean', unit: 'boolean' } },
   'state-overlay': { bodyId: text, layer: text, season: text, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
-  'ground-prop': { baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },
+  'ground-prop': { buildingKind: text, resource: text, baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },
+  'walker-transport': { group: text, facing: text },
   'walker-cargo': { role: text, cargoKind: text, facing: text, frame: number('frame-index') },
   'walker-body': { bodyId: text, classBand: text, sex: text },
   'walker-held-prop': { propId: text, facing: text },
@@ -23,6 +24,8 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'ground-texture': { fieldState: text, baseId: text, season: text },
   'season-variant': { baseKey: text, season: text },
   'regional-map': { mapId: text, landType: text },
+  'ui-frame': { state: text },
+  'ui-image': { state: text },
 });
 for (const fields of Object.values(ART_CONTEXT_FIELDS)) {
   for (const field of Object.values(fields)) Object.freeze(field);

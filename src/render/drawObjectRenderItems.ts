@@ -1,3 +1,4 @@
+import { drawWashPool } from './washPoolDraw';
 import { worldFireBrigadeIds } from "./worldFireProps";
 import { WORLD_FIRE_ART } from "./worldFireArt";
 import { drawSpringWorldProp } from "./springWorldProps";
@@ -122,6 +123,7 @@ export function drawObjectRenderItems(
       if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
       continue;
     }
+    if (item.kind === "wash_pool") { if (viewMode === "normal") drawWashPool(context, item.prop, input.zoom); continue; }
     if (item.kind === "world_fire") {
       if (viewMode === "normal") WORLD_FIRE_ART.draw(context, item.prop, input.nowMs ?? 0);
       continue;

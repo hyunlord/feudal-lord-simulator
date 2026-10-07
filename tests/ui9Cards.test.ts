@@ -38,16 +38,17 @@ test("all four reorganisation petition ids are defined", () => {
   assert.deepEqual([...REORGANISATION_PETITION_IDS].sort(), ["borough_charter", "cloth_or_grain", "guild_charter", "tax_collection"].sort());
 });
 
-test("PETITION_COPY has Korean copy for all four reorg petitions", async () => {
+test("PETITION_COPY has Korean copy for all four reorg petitions; the card has their stake and answers", async () => {
   const { PETITION_COPY } = await import("../src/ui/petitionCopy.ko");
+  const { PETITION_ANSWER_COPY, PETITION_STAKE } = await import("../src/ui/decisionCard/families/petitionCardCopy.ko");
   for (const id of REORGANISATION_PETITION_IDS) {
     const entry = (PETITION_COPY as Record<string, unknown>)[id];
     assert.ok(entry !== undefined, `PETITION_COPY.${id} must exist`);
-    const typed = entry as { title: string; demand: string; accept: () => string; refuse: unknown };
+    const typed = entry as { title: string; demand: string };
     assert.ok(typeof typed.title === "string" && typed.title.length > 0, `${id}.title`);
     assert.ok(typeof typed.demand === "string" && typed.demand.length > 0, `${id}.demand`);
-    assert.ok(typeof typed.accept === "function", `${id}.accept`);
-    assert.ok(typeof typed.refuse === "function", `${id}.refuse`);
+    assert.match(PETITION_STAKE[id], /걸려 있습니다\.$/, `${id}: the stake`);
+    assert.ok(PETITION_ANSWER_COPY[id] !== undefined, `${id}: the answers' words`);
   }
 });
 
@@ -66,18 +67,28 @@ test("petitionPresentation has ch4 Wave 21 art for all four reorg petitions", as
   }
 });
 
-test("UI-9: the four cards' lines follow the spec — relations from the engine's table, the earl's larger turn after his warning", async () => {
-  const { petitionPresentation } = await import("../src/ui/petitionPresentation");
-  const { decodeSave } = await import("../src/save/saveCodec");
-  const { readFileSync } = await import("node:fs");
-  const base = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v27/chapter-four-town.save.json"))).envelope.state as import("../src/engine/engine.types").GameState;
-  const card = (defId: string, reorg?: object) => petitionPresentation({ ...base, ...(reorg === undefined ? {} : { reorganisation: { influence: { town: 0, merchant_house_1: 0, merchant_house_2: 0 }, ...(base.reorganisation ?? {}), ...reorg } as never }) },
-    { id: `${defId}@1`, defId, petitioner: "townsfolk" } as never);
-  assert.match(card("guild_charter").line("accept"), /관계 도시 \+10 · 상인 \+5 · 백작 −5$/);
-  assert.match(card("guild_charter").line("refuse"), /직조공 2가구가 떠남.*관계 상인 −15 · 도시 −10$/);
-  assert.match(card("tax_collection").line("refuse"), /영주의 징수원이 걷습니다 · 어른 한 사람당 3d · 반란 압력 \+40 · 관계 평민 −10 · 국왕 \+5$/);
-  assert.match(card("cloth_or_grain").line("accept"), /직물 값 4s 2d · 흉년 수확 85 %로 줄어듦.*반란 압력 \+10/);
-  assert.doesNotMatch(card("cloth_or_grain").line("accept"), /감소|줄어듦\(식량이 강/);
-  assert.match(card("borough_charter", { warningTick: undefined }).line("accept"), /시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 자치 연납금 10s.*백작 −15/);
-  assert.match(card("borough_charter", { warningTick: 1 }).line("accept"), /백작 −25/);
+test("UI-9 DEC-CARD: the four cards' answers in words, who remembers them the engine's own relation moves, the earl's larger turn after his warning", async () => {
+  const { petitionCard } = await import("../src/ui/decisionCard/families/petitionCard");
+  const { gameReducer } = await import("../src/state/gameStore");
+  const { openPetitions } = await import("../src/engine/politics");
+  type State = import("../src/engine/engine.types").GameState;
+  const { reorganisationState } = await import("./helpers/deccardCampaignStates");
+  const open = (defId: string, reorg?: object): State => reorganisationState(defId, reorg);
+  const answer = (defId: string, response: string, reorg?: object) => petitionCard(open(defId, reorg))!.card.choices.find(choice => choice.id === response)!;
+  for (const defId of REORGANISATION_PETITION_IDS) {
+    for (const choice of petitionCard(open(defId))!.card.choices) {
+      const state = open(defId);
+      const after = gameReducer(state, { type: "petition_response", petitionId: openPetitions(state)[0]!.id, response: choice.id as never });
+      const moved = after.factions!.factions.map(faction => faction.relation - state.factions!.factions.find(entry => entry.id === faction.id)!.relation).filter(delta => delta !== 0);
+      assert.deepEqual(choice.remembers.map(entry => entry.delta).sort(), moved.sort(), `${defId}:${choice.id}: the factions as the answer moves them`);
+      assert.ok(choice.now.length > 0, `${defId}:${choice.id}: what it does now`);
+    }
+  }
+  assert.match(answer("guild_charter", "refuse").later.join(" "), /직조공 2가구가 떠납니다.*반란 압력이 10 오릅니다/);
+  assert.match(answer("tax_collection", "refuse").later.join(" "), /어른 한 사람당 3d가 들어옵니다.*반란 압력이 40 오릅니다/);
+  assert.match(answer("cloth_or_grain", "accept").now.join(" "), /직물 값이 4s 2d가 됩니다/);
+  assert.match(answer("cloth_or_grain", "accept").later.join(" "), /수확이 85%로 줄어/);
+  assert.match(answer("borough_charter", "accept", { warningTick: undefined }).later.join(" "), /자치 연납금 10s을 냅니다/);
+  assert.ok(answer("borough_charter", "accept", { warningTick: undefined }).remembers.some(entry => entry.delta === -15));
+  assert.ok(answer("borough_charter", "accept", { warningTick: 1 }).remembers.some(entry => entry.delta === -25), "the earl's larger turn after his warning");
 });

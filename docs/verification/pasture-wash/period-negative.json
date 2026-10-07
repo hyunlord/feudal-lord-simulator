@@ -1,0 +1,2061 @@
+{
+  "selectorCommit": "8d18d99f156bd0e1d6091894917c74b0f16d053f",
+  "readOnly": true,
+  "results": [
+    {
+      "path": "fixtures/saves/v46/chapter-five-town.save.json",
+      "sourceSha256": "61d9cc08ff83446ea679870d033724150d4cad0dfc19a235b7dc8f717dcc3972",
+      "decodedStateSha256": "0914805af432f87e416abb199a8a7591a156572d185d130b5fc21d32a1ef10dc",
+      "seed": 1,
+      "tick": 329000,
+      "calendar": {
+        "season": 1,
+        "year": 1382,
+        "fraction": 0,
+        "seconds": 32900
+      },
+      "selected": [],
+      "unchanged": true,
+      "farms": [
+        {
+          "id": "construction-site-000082",
+          "tx": 39,
+          "ty": 41,
+          "tending": 61,
+          "ownedCandidateCount": 61,
+          "waterCandidates": 0,
+          "waterAndFullSupportCandidates": 0,
+          "passing": [],
+          "failureCounts": {
+            "no_water_distance2": 61,
+            "non_grass_support": 28,
+            "not_same_owned_pasture": 46,
+            "building_support": 13,
+            "picture_reservation": 59
+          },
+          "rows": [
+            {
+              "tx": 35,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "building_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "building_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "building_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "building_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 51,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 52,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 53,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "construction-site-000088",
+          "tx": 31,
+          "ty": 38,
+          "tending": 56,
+          "ownedCandidateCount": 56,
+          "waterCandidates": 0,
+          "waterAndFullSupportCandidates": 0,
+          "passing": [],
+          "failureCounts": {
+            "no_water_distance2": 56,
+            "non_grass_support": 33,
+            "not_same_owned_pasture": 45,
+            "picture_reservation": 48,
+            "building_support": 1
+          },
+          "rows": [
+            {
+              "tx": 30,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 44,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 45,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 46,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 47,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 48,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 49,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 50,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "fixtures/perf-gate/ch4-1380.save.json.gz",
+      "sourceSha256": "4b3fb4ef1aa1be2e381e4fe572bab295cf8adb9c6fd42002fc19b6e94ad742ff",
+      "decodedStateSha256": "08dec79ac21117551650fbbb35618c18109946b78089b698aca8924a5acca7c8",
+      "seed": 2,
+      "tick": 320000,
+      "calendar": {
+        "season": 0,
+        "year": 1380,
+        "fraction": 0,
+        "seconds": 32000
+      },
+      "selected": [],
+      "unchanged": true,
+      "farms": [
+        {
+          "id": "construction-site-000076",
+          "tx": 36,
+          "ty": 28,
+          "tending": 6,
+          "ownedCandidateCount": 6,
+          "waterCandidates": 0,
+          "waterAndFullSupportCandidates": 0,
+          "passing": [],
+          "failureCounts": {
+            "no_water_distance2": 6,
+            "non_grass_support": 5,
+            "not_same_owned_pasture": 6,
+            "building_support": 3,
+            "picture_reservation": 6,
+            "road_support": 3
+          },
+          "rows": [
+            {
+              "tx": 35,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 36,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "building_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 37,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "building_support",
+                "not_same_owned_pasture",
+                "road_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 36,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 37,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "road_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 37,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "road_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "construction-site-000082",
+          "tx": 24,
+          "ty": 31,
+          "tending": 90,
+          "ownedCandidateCount": 90,
+          "waterCandidates": 0,
+          "waterAndFullSupportCandidates": 0,
+          "passing": [],
+          "failureCounts": {
+            "no_water_distance2": 90,
+            "not_same_owned_pasture": 63,
+            "picture_reservation": 70,
+            "non_grass_support": 18,
+            "building_support": 2,
+            "road_support": 3
+          },
+          "rows": [
+            {
+              "tx": 26,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 28,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 29,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 38,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "building_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 28,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 29,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 39,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 20,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 21,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 28,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 29,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 36,
+              "ty": 40,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 20,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 21,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 28,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 29,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 36,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 37,
+              "ty": 41,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "road_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 20,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 21,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 28,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 29,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 36,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "non_grass_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 37,
+              "ty": 42,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "road_support",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 20,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 21,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 22,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 23,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 24,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 25,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 26,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 27,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 28,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 29,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 30,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 31,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 32,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 33,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture"
+              ]
+            },
+            {
+              "tx": 34,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 35,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 36,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            },
+            {
+              "tx": 37,
+              "ty": 43,
+              "reasons": [
+                "no_water_distance2",
+                "road_support",
+                "not_same_owned_pasture",
+                "picture_reservation"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

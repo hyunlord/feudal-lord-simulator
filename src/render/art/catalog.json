@@ -18843,6 +18843,1246 @@
   },
   {
     "schemaVersion": 1,
+    "bundleId": "lord-ledger",
+    "entries": [
+      {
+        "id": "lord.ledger.ledger_book",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/ledger_book.png",
+          "width": 768,
+          "height": 512
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/ledger_book.png",
+          "sourceSha256": "2a5205f5cb450813014d03ce105c13857f1ae7127b3669f2ab6582940303e040",
+          "runtimeSha256": "2a5205f5cb450813014d03ce105c13857f1ae7127b3669f2ab6582940303e040"
+        },
+        "slice": {
+          "top": 72,
+          "right": 72,
+          "bottom": 72,
+          "left": 72
+        },
+        "scale": 0.375,
+        "contentInset": {
+          "top": 72,
+          "right": 72,
+          "bottom": 72,
+          "left": 72
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.ledger.ledger_spine",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/ledger_spine.png",
+          "width": 24,
+          "height": 384
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/ledger_spine.png",
+          "sourceSha256": "c362c599e75dcfee5fd17f92cf14ad5d458ba26789a36adb2fbd933a5bad26a2",
+          "runtimeSha256": "c362c599e75dcfee5fd17f92cf14ad5d458ba26789a36adb2fbd933a5bad26a2"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.promise_active",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/promise_active.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_active.png",
+          "sourceSha256": "cef311cd372f54cc75e87dc8f66ed0eb615a55cf4fe5ee812ecb1e075ddf789f",
+          "runtimeSha256": "cef311cd372f54cc75e87dc8f66ed0eb615a55cf4fe5ee812ecb1e075ddf789f"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.promise_due",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/promise_due.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_due.png",
+          "sourceSha256": "2b69f532987007e9639eb6b2ceedd1330088a275cf7a3801ef989985022eb47c",
+          "runtimeSha256": "2b69f532987007e9639eb6b2ceedd1330088a275cf7a3801ef989985022eb47c"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.promise_kept",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/promise_kept.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_kept.png",
+          "sourceSha256": "f9c388ba345e0ba0e67a28a54171bf67c9c6110dde61ed3328ae742d62c83259",
+          "runtimeSha256": "f9c388ba345e0ba0e67a28a54171bf67c9c6110dde61ed3328ae742d62c83259"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.promise_broken",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/promise_broken.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_broken.png",
+          "sourceSha256": "4019cb7e43c35794f4540e0b69300870b3718d5421614b64622b979884cce96d",
+          "runtimeSha256": "4019cb7e43c35794f4540e0b69300870b3718d5421614b64622b979884cce96d"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.deadline_marker",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/deadline_marker.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/deadline_marker.png",
+          "sourceSha256": "eb9cdc22a28b4c969a970bf0b76854b64699570f87561009416f6b4660220ef5",
+          "runtimeSha256": "eb9cdc22a28b4c969a970bf0b76854b64699570f87561009416f6b4660220ef5"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.witness_seal",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/witness_seal.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/witness_seal.png",
+          "sourceSha256": "749f53e93e0a6b623281a38e80cb5215a1022b97a5a97a3509f5b94d4526589b",
+          "runtimeSha256": "749f53e93e0a6b623281a38e80cb5215a1022b97a5a97a3509f5b94d4526589b"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.debt_note",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-promises/debt_note.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/debt_note.png",
+          "sourceSha256": "23a2bf0b8584dfce71fa1365f0a2ae3ccd3ceba5c6cd2e366ced217b337e7c61",
+          "runtimeSha256": "23a2bf0b8584dfce71fa1365f0a2ae3ccd3ceba5c6cd2e366ced217b337e7c61"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.ledger.litigation_track",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/litigation_track.png",
+          "width": 640,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/litigation_track.png",
+          "sourceSha256": "d58284acf4511c21ab6111a4b7c6882f6735aa50698ddc31fe50b67ca253943d",
+          "runtimeSha256": "d58284acf4511c21ab6111a4b7c6882f6735aa50698ddc31fe50b67ca253943d"
+        },
+        "slice": {
+          "top": 20,
+          "right": 72,
+          "bottom": 20,
+          "left": 72
+        },
+        "scale": 0.5,
+        "contentInset": {
+          "top": 20,
+          "right": 72,
+          "bottom": 20,
+          "left": 72
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      }
+    ],
+    "rules": []
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "lord-estates",
+    "entries": [
+      {
+        "id": "lord.estates.estate_ordinary",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-estates/estate_ordinary.png",
+          "width": 480,
+          "height": 270
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/A_estates/estate_ordinary.png",
+          "sourceSha256": "6d5e32b472391bd0f1f6061cd9c416645fceb3762f26288037815eea9dc49ca7",
+          "runtimeSha256": "6d5e32b472391bd0f1f6061cd9c416645fceb3762f26288037815eea9dc49ca7"
+        },
+        "cssWidths": [
+          240
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.estate_poor",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-estates/estate_poor.png",
+          "width": 480,
+          "height": 270
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/A_estates/estate_poor.png",
+          "sourceSha256": "4042531b716e012d85d6a92bafc3a1267b524843e444f0437f023bd14eb99d2a",
+          "runtimeSha256": "4042531b716e012d85d6a92bafc3a1267b524843e444f0437f023bd14eb99d2a"
+        },
+        "cssWidths": [
+          240
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.estate_wealthy",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-estates/estate_wealthy.png",
+          "width": 480,
+          "height": 270
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/A_estates/estate_wealthy.png",
+          "sourceSha256": "ba6db344f4ed7baa4df7b63ac5e1e991c9ab66b29f2f7b8974380f99378e45ec",
+          "runtimeSha256": "ba6db344f4ed7baa4df7b63ac5e1e991c9ab66b29f2f7b8974380f99378e45ec"
+        },
+        "cssWidths": [
+          240
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.estate_riverside_mill",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-estates/estate_riverside_mill.png",
+          "width": 480,
+          "height": 270
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/A_estates/estate_riverside_mill.png",
+          "sourceSha256": "48d7ddc3e2eb63bcca935467c31ca18a7e52a06c5937460dff4aa83c108393b7",
+          "runtimeSha256": "48d7ddc3e2eb63bcca935467c31ca18a7e52a06c5937460dff4aa83c108393b7"
+        },
+        "cssWidths": [
+          240
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.estate_integrated_overlay",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-estates/estate_integrated_overlay.png",
+          "width": 480,
+          "height": 270
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/A_estates/estate_integrated_overlay.png",
+          "sourceSha256": "86381194c8b68ad56afdc231e17a4caac86e1c5b18154e933088dfeca8f9a136",
+          "runtimeSha256": "86381194c8b68ad56afdc231e17a4caac86e1c5b18154e933088dfeca8f9a136"
+        },
+        "cssWidths": [
+          240
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.annual_audit",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/annual_audit.png",
+          "width": 960,
+          "height": 540
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/annual_audit.png",
+          "sourceSha256": "13c4072c144d4908f4f0c3f593553eb9cd8d53b99a52698491f5eb26ea51a915",
+          "runtimeSha256": "13c4072c144d4908f4f0c3f593553eb9cd8d53b99a52698491f5eb26ea51a915"
+        },
+        "cssWidths": [
+          240
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.office_receiver",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/office_receiver_64.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/office_receiver_64.png",
+          "sourceSha256": "b560c41b66b88bd2539b171c03b5ac613fc96e4d9b1915c2d727227d0aca655b",
+          "runtimeSha256": "b560c41b66b88bd2539b171c03b5ac613fc96e4d9b1915c2d727227d0aca655b"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": [
+          {
+            "width": 32,
+            "assetId": "lord.estates.office_receiver_32"
+          }
+        ]
+      },
+      {
+        "id": "lord.estates.office_receiver_32",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/office_receiver_32.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/office_receiver_32.png",
+          "sourceSha256": "0550b9a9145fdfbb1d485d31cc4ae140f13fe340c99c575b26df0b80a215e837",
+          "runtimeSha256": "0550b9a9145fdfbb1d485d31cc4ae140f13fe340c99c575b26df0b80a215e837"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.office_steward",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/office_steward_64.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/office_steward_64.png",
+          "sourceSha256": "1ea62182c35a00b4c37243f3b1a0abb934ac46eb75705b664a1450dd28491671",
+          "runtimeSha256": "1ea62182c35a00b4c37243f3b1a0abb934ac46eb75705b664a1450dd28491671"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": [
+          {
+            "width": 32,
+            "assetId": "lord.estates.office_steward_32"
+          }
+        ]
+      },
+      {
+        "id": "lord.estates.office_steward_32",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/office_steward_32.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/office_steward_32.png",
+          "sourceSha256": "23c852234d68314d855e920b9f66fc49d9c507214aa4c067d552e629e781ec78",
+          "runtimeSha256": "23c852234d68314d855e920b9f66fc49d9c507214aa4c067d552e629e781ec78"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.policy_growth",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/policy_growth.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/policy_growth.png",
+          "sourceSha256": "e6dce51aa053bb0e2a6c011fe0da7b52849f5dd34f363d24b8e569703aefe898",
+          "runtimeSha256": "e6dce51aa053bb0e2a6c011fe0da7b52849f5dd34f363d24b8e569703aefe898"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.policy_revenue",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/policy_revenue.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/policy_revenue.png",
+          "sourceSha256": "dc122888fce99356134828d7bf471523db765bd91e2221e34949c17ad7ca9509",
+          "runtimeSha256": "dc122888fce99356134828d7bf471523db765bd91e2221e34949c17ad7ca9509"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.policy_stability",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/policy_stability.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/policy_stability.png",
+          "sourceSha256": "8cf3415e74c7bc8b19279f692ed8269fd274384164168d500c956fcb92b6c31d",
+          "runtimeSha256": "8cf3415e74c7bc8b19279f692ed8269fd274384164168d500c956fcb92b6c31d"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.policy_defence",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/policy_defence.png",
+          "width": 64,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/policy_defence.png",
+          "sourceSha256": "9d39ce02ff69f9880da9af3b48fa4ad0d472724a1974531d11bd72788a7a162e",
+          "runtimeSha256": "9d39ce02ff69f9880da9af3b48fa4ad0d472724a1974531d11bd72788a7a162e"
+        },
+        "cssWidths": [
+          32
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.subsidy_notice",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-operations/subsidy_notice.png",
+          "width": 192,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/subsidy_notice.png",
+          "sourceSha256": "b875b590ccc6556054fb1c077324bc2873d616d4d559d76ffcb0898cfc286353",
+          "runtimeSha256": "b875b590ccc6556054fb1c077324bc2873d616d4d559d76ffcb0898cfc286353"
+        },
+        "cssWidths": [
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.trait_merchant_friendly",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/trait_merchant_friendly_48.png",
+          "width": 48,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/trait_merchant_friendly_48x48.png",
+          "sourceSha256": "15a20d0e72fb4352daf5c544b0869d82fcb6fc653d3c2780e53be918fd96577e",
+          "runtimeSha256": "15a20d0e72fb4352daf5c544b0869d82fcb6fc653d3c2780e53be918fd96577e"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": [
+          {
+            "width": 24,
+            "assetId": "lord.estates.trait_merchant_friendly_24"
+          }
+        ]
+      },
+      {
+        "id": "lord.estates.trait_merchant_friendly_24",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/trait_merchant_friendly_24.png",
+          "width": 24,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/trait_merchant_friendly_24x24.png",
+          "sourceSha256": "3102e05be3efd91800e466829c848ec58fded0c5b97a8827b1610d497f8abbb6",
+          "runtimeSha256": "3102e05be3efd91800e466829c848ec58fded0c5b97a8827b1610d497f8abbb6"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.trait_peasant_friendly",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/trait_peasant_friendly_48.png",
+          "width": 48,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/trait_peasant_friendly_48x48.png",
+          "sourceSha256": "7a915e9cc332ca3d53c8af5f99df3b89e0313cfb71c3d9e782197ce16bd8a275",
+          "runtimeSha256": "7a915e9cc332ca3d53c8af5f99df3b89e0313cfb71c3d9e782197ce16bd8a275"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": [
+          {
+            "width": 24,
+            "assetId": "lord.estates.trait_peasant_friendly_24"
+          }
+        ]
+      },
+      {
+        "id": "lord.estates.trait_peasant_friendly_24",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/trait_peasant_friendly_24.png",
+          "width": 24,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/trait_peasant_friendly_24x24.png",
+          "sourceSha256": "6f1b74b10ad06b5dd97bbdc86a17e092a05940634aea684581041065dff7fbda",
+          "runtimeSha256": "6f1b74b10ad06b5dd97bbdc86a17e092a05940634aea684581041065dff7fbda"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.alert_deadline",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/alert_deadline.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/alert_deadline_32x32.png",
+          "sourceSha256": "d5fb01f76e4ee782c0b5b68110db4800f9d1bad267ecf3864acc6f18d615fee6",
+          "runtimeSha256": "d5fb01f76e4ee782c0b5b68110db4800f9d1bad267ecf3864acc6f18d615fee6"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.alert_rights",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/alert_rights.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/alert_rights_32x32.png",
+          "sourceSha256": "64cbabe7f989488dd9c539d5e39d8d1c74eccc22389aced62acb9df9c3c484f3",
+          "runtimeSha256": "64cbabe7f989488dd9c539d5e39d8d1c74eccc22389aced62acb9df9c3c484f3"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.estates.alert_urgent",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-ui/alert_urgent.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/alert_urgent_32x32.png",
+          "sourceSha256": "73171481328a29a6c33d664a66edda0a6add891b3cfbb33b8e3852aad600327d",
+          "runtimeSha256": "73171481328a29a6c33d664a66edda0a6add891b3cfbb33b8e3852aad600327d"
+        },
+        "cssWidths": [
+          24
+        ],
+        "derivatives": []
+      }
+    ],
+    "rules": []
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "lord-negotiation",
+    "entries": [
+      {
+        "id": "lord.negotiation.treaty_frame",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/treaty_frame.png",
+          "width": 768,
+          "height": 512
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/treaty_frame.png",
+          "sourceSha256": "30edbdb9516dcf33774cba274efe4d44978a00c416315a42468bf280ab3a1a62",
+          "runtimeSha256": "30edbdb9516dcf33774cba274efe4d44978a00c416315a42468bf280ab3a1a62"
+        },
+        "slice": {
+          "top": 160,
+          "right": 128,
+          "bottom": 112,
+          "left": 128
+        },
+        "scale": 0.375,
+        "contentInset": {
+          "top": 160,
+          "right": 128,
+          "bottom": 112,
+          "left": 128
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.negotiation.clause_row",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/clause_row.png",
+          "width": 512,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/clause_row.png",
+          "sourceSha256": "f29b72d689e7a942fd5dd71fe6cf069a3dfcbf5ee07dd4bb4ac90a4375c28de3",
+          "runtimeSha256": "f29b72d689e7a942fd5dd71fe6cf069a3dfcbf5ee07dd4bb4ac90a4375c28de3"
+        },
+        "slice": {
+          "top": 18,
+          "right": 48,
+          "bottom": 18,
+          "left": 48
+        },
+        "scale": 0.5,
+        "contentInset": {
+          "top": 18,
+          "right": 48,
+          "bottom": 18,
+          "left": 48
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.negotiation.clause_row_changed",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/clause_row_changed.png",
+          "width": 512,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/clause_row_changed.png",
+          "sourceSha256": "9714cf3b579ef725414bffb66873e2c539634454963797e4097979efa9cbf924",
+          "runtimeSha256": "9714cf3b579ef725414bffb66873e2c539634454963797e4097979efa9cbf924"
+        },
+        "slice": {
+          "top": 18,
+          "right": 48,
+          "bottom": 18,
+          "left": 48
+        },
+        "scale": 0.5,
+        "contentInset": {
+          "top": 18,
+          "right": 48,
+          "bottom": 18,
+          "left": 48
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.negotiation.clause_row_rejected",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/clause_row_rejected.png",
+          "width": 512,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/clause_row_rejected.png",
+          "sourceSha256": "58f04260e9da3ef3fcfd63840b1897020e826831911ea0efc5e875f776cd0d81",
+          "runtimeSha256": "58f04260e9da3ef3fcfd63840b1897020e826831911ea0efc5e875f776cd0d81"
+        },
+        "slice": {
+          "top": 18,
+          "right": 48,
+          "bottom": 18,
+          "left": 48
+        },
+        "scale": 0.5,
+        "contentInset": {
+          "top": 18,
+          "right": 48,
+          "bottom": 18,
+          "left": 48
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.negotiation.reason_chip_plus",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/reason_chip_plus.png",
+          "width": 256,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/reason_chip_plus.png",
+          "sourceSha256": "ac3a93f63bad47d291534dd16e8075e522ca2b2bfe9abc7fe3dc4f00705c3ccf",
+          "runtimeSha256": "ac3a93f63bad47d291534dd16e8075e522ca2b2bfe9abc7fe3dc4f00705c3ccf"
+        },
+        "slice": {
+          "top": 14,
+          "right": 24,
+          "bottom": 14,
+          "left": 44
+        },
+        "scale": 0.5,
+        "contentInset": {
+          "top": 14,
+          "right": 24,
+          "bottom": 14,
+          "left": 44
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.negotiation.reason_chip_minus",
+        "kind": "ui-frame",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/reason_chip_minus.png",
+          "width": 256,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/reason_chip_minus.png",
+          "sourceSha256": "7701c2c315c504c50da829fb9a869f14bd4fc38d9c2e9516de2f7d206cd81dc9",
+          "runtimeSha256": "7701c2c315c504c50da829fb9a869f14bd4fc38d9c2e9516de2f7d206cd81dc9"
+        },
+        "slice": {
+          "top": 14,
+          "right": 24,
+          "bottom": 14,
+          "left": 44
+        },
+        "scale": 0.5,
+        "contentInset": {
+          "top": 14,
+          "right": 24,
+          "bottom": 14,
+          "left": 44
+        },
+        "centre": "fill",
+        "repeat": "stretch"
+      },
+      {
+        "id": "lord.negotiation.seal_empty",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/seal_empty.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/seal_empty.png",
+          "sourceSha256": "b5e0728ededf2c9643afc1427b4a6ca3d09ca10170bef403ec48565357b4a657",
+          "runtimeSha256": "b5e0728ededf2c9643afc1427b4a6ca3d09ca10170bef403ec48565357b4a657"
+        },
+        "cssWidths": [
+          48
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.negotiation.seal_stamped",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/seal_stamped.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/seal_stamped.png",
+          "sourceSha256": "0bbe10ccfe0bb3d842a45f09ee3cbe486bbdfeed10b8d03ec91a80bbc0710b03",
+          "runtimeSha256": "0bbe10ccfe0bb3d842a45f09ee3cbe486bbdfeed10b8d03ec91a80bbc0710b03"
+        },
+        "cssWidths": [
+          48
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.negotiation.seal_broken",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/seal_broken.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/seal_broken.png",
+          "sourceSha256": "563e2fdef5d813f15bbe452552aa9119225f74ffc11cdd457ae3fea7578dfa7d",
+          "runtimeSha256": "563e2fdef5d813f15bbe452552aa9119225f74ffc11cdd457ae3fea7578dfa7d"
+        },
+        "cssWidths": [
+          48
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.negotiation.acceptance_scale",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/acceptance_scale.png",
+          "width": 640,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/acceptance_scale.png",
+          "sourceSha256": "adfcbfe986bdf7e7fb0a7fdfae0ef0e9be50c816775523c3079ce64ce095301f",
+          "runtimeSha256": "adfcbfe986bdf7e7fb0a7fdfae0ef0e9be50c816775523c3079ce64ce095301f"
+        },
+        "cssWidths": [
+          320
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.negotiation.treaty_divider",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/wave35-negotiation/treaty_divider.png",
+          "width": 16,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/B_negotiation/treaty_divider.png",
+          "sourceSha256": "e07c738201497c230ccd309c42fa5b858f41ef17d1be1931eff4dd0789fd37b7",
+          "runtimeSha256": "e07c738201497c230ccd309c42fa5b858f41ef17d1be1931eff4dd0789fd37b7"
+        },
+        "cssWidths": [
+          16
+        ],
+        "derivatives": []
+      }
+    ],
+    "rules": []
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "lord-region",
+    "entries": [
+      {
+        "id": "lord.region.map_region",
+        "kind": "regional-map",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_region_1600x1000.png",
+          "width": 1600,
+          "height": 1000
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_region_1600x1000.png",
+          "sourceSha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8",
+          "runtimeSha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8"
+        },
+        "mapId": "map_region",
+        "landTypes": [
+          "southern-district"
+        ],
+        "coordinateSpace": {
+          "width": 1600,
+          "height": 1000
+        },
+        "slots": [
+          {
+            "id": "manor",
+            "x": 360,
+            "y": 270,
+            "landType": "southern-district"
+          },
+          {
+            "id": "manor.flag",
+            "x": 388,
+            "y": 255,
+            "landType": "southern-district"
+          },
+          {
+            "id": "market",
+            "x": 1210,
+            "y": 240,
+            "landType": "southern-district"
+          },
+          {
+            "id": "market.flag",
+            "x": 1238,
+            "y": 225,
+            "landType": "southern-district"
+          },
+          {
+            "id": "mill",
+            "x": 1140,
+            "y": 585,
+            "landType": "southern-district"
+          },
+          {
+            "id": "mill.flag",
+            "x": 1168,
+            "y": 570,
+            "landType": "southern-district"
+          },
+          {
+            "id": "abbey",
+            "x": 325,
+            "y": 735,
+            "landType": "southern-district"
+          },
+          {
+            "id": "abbey.flag",
+            "x": 353,
+            "y": 720,
+            "landType": "southern-district"
+          }
+        ]
+      },
+      {
+        "id": "lord.region.map_manor",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_manor_96x96.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_manor_96x96.png",
+          "sourceSha256": "35865158992c50355ac8b48917e0c70161d5abaee709b938cd6404a88c012191",
+          "runtimeSha256": "35865158992c50355ac8b48917e0c70161d5abaee709b938cd6404a88c012191"
+        },
+        "cssWidths": [
+          48,
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.map_market",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_market_96x96.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_market_96x96.png",
+          "sourceSha256": "eb3d02cfc97067d724e4bb970d7e48bfb03e65c86d058ba279b7ebab9c299852",
+          "runtimeSha256": "eb3d02cfc97067d724e4bb970d7e48bfb03e65c86d058ba279b7ebab9c299852"
+        },
+        "cssWidths": [
+          48,
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.map_mill",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_mill_96x96.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_mill_96x96.png",
+          "sourceSha256": "409dd604f4e90ec06833b681c3994a30ec8e8b4505e806029bc915f68a3fbc59",
+          "runtimeSha256": "409dd604f4e90ec06833b681c3994a30ec8e8b4505e806029bc915f68a3fbc59"
+        },
+        "cssWidths": [
+          48,
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.flag_direct",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/flag_direct_64x96.png",
+          "width": 64,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/flag_direct_64x96.png",
+          "sourceSha256": "58dd104a0b86b6de0cdb99fd7927de3d51d04655522555dd14275a815cd85dc3",
+          "runtimeSha256": "58dd104a0b86b6de0cdb99fd7927de3d51d04655522555dd14275a815cd85dc3"
+        },
+        "cssWidths": [
+          32,
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.flag_delegated",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/flag_delegated_64x96.png",
+          "width": 64,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/flag_delegated_64x96.png",
+          "sourceSha256": "0162b7020a5f4b23bbedeea05fd39c9a79aca97b43b2f10b3444e13e09751586",
+          "runtimeSha256": "0162b7020a5f4b23bbedeea05fd39c9a79aca97b43b2f10b3444e13e09751586"
+        },
+        "cssWidths": [
+          32,
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.flag_neighbor",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/flag_neighbor_64x96.png",
+          "width": 64,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/flag_neighbor_64x96.png",
+          "sourceSha256": "194b0c66af75a0a182805aabc6deec2ca34b4b89fb466ea2f982a231d223e686",
+          "runtimeSha256": "194b0c66af75a0a182805aabc6deec2ca34b4b89fb466ea2f982a231d223e686"
+        },
+        "cssWidths": [
+          32,
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.character",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_character_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_character_40x40.png",
+          "sourceSha256": "a0d76420159cd06a5e4ed489887ca034cb3a48accbcd00615a592e524dfb4030",
+          "runtimeSha256": "a0d76420159cd06a5e4ed489887ca034cb3a48accbcd00615a592e524dfb4030"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.council",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_council_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_council_40x40.png",
+          "sourceSha256": "00728c910fc607c4bfdd36af5751d262f60a3588ff90a417ad26ead168439be1",
+          "runtimeSha256": "00728c910fc607c4bfdd36af5751d262f60a3588ff90a417ad26ead168439be1"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.dynasty",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_dynasty_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_dynasty_40x40.png",
+          "sourceSha256": "e0c271d508536a85b225d89300f3f0d52463293386647706e8e0220d954ad0b1",
+          "runtimeSha256": "e0c271d508536a85b225d89300f3f0d52463293386647706e8e0220d954ad0b1"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.estates",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_estates_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_estates_40x40.png",
+          "sourceSha256": "d2808687a00f1fd191b0791187473001e0bb3081e334e214f0e49946fb1833b8",
+          "runtimeSha256": "d2808687a00f1fd191b0791187473001e0bb3081e334e214f0e49946fb1833b8"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.marriage",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_marriage_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_marriage_40x40.png",
+          "sourceSha256": "f403b7e38ab41118da6143340dc87f2bfa13192116cd11feff7fcd11d730ca78",
+          "runtimeSha256": "f403b7e38ab41118da6143340dc87f2bfa13192116cd11feff7fcd11d730ca78"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.military",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_military_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_military_40x40.png",
+          "sourceSha256": "c293fcddf758a191e5b8aad3fb9fb48bfe01c4733aeab4d67b1d90fb2d14fa32",
+          "runtimeSha256": "c293fcddf758a191e5b8aad3fb9fb48bfe01c4733aeab4d67b1d90fb2d14fa32"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.petitions",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_petitions_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_petitions_40x40.png",
+          "sourceSha256": "327d23448cc69d14115dffa2fe54ca3bfa2757cf6ef5f946e114d227c32f47e4",
+          "runtimeSha256": "327d23448cc69d14115dffa2fe54ca3bfa2757cf6ef5f946e114d227c32f47e4"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.region",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_region_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_region_40x40.png",
+          "sourceSha256": "f6e3a193451dd011b64d59237dc6b054993d0084bc2105a7f6170fbb4b8cb754",
+          "runtimeSha256": "f6e3a193451dd011b64d59237dc6b054993d0084bc2105a7f6170fbb4b8cb754"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      }
+    ],
+    "rules": []
+  },
+  {
+    "schemaVersion": 1,
     "packId": "core",
     "bundleId": "core-world-fire",
     "entries": [
@@ -19087,6 +20327,1383 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave13-handcart",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wave13:handcart-ne",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "ne",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": 0.5618241042345318,
+          "y": -8.860195439739414
+        },
+        "payloadAnchor": {
+          "x": 39.5,
+          "y": 36.5
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 72.5,
+              "y": 10.5
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 0,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 72.5,
+              "y": 10.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave13:handcart-se",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "se",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": -0.059863945578236155,
+          "y": -8.668869452542921
+        },
+        "payloadAnchor": {
+          "x": 43.25,
+          "y": 31
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 96,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 70,
+              "y": 63
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 96,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 70,
+              "y": 63
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave13:handcart-sw",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "sw",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": -0.373789924267367,
+          "y": -8.95647020085611
+        },
+        "payloadAnchor": {
+          "x": 47.75,
+          "y": 32.25
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 192,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 25.5,
+              "y": 63
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 192,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 25.5,
+              "y": 63
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave13:handcart-nw",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "nw",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": -0.9481578516456501,
+          "y": -8.71498280661536
+        },
+        "payloadAnchor": {
+          "x": 56.75,
+          "y": 36
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 288,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 23,
+              "y": 9.5
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 288,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 23,
+              "y": 9.5
+            }
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave13:handcart-ne-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "ne"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-ne",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:handcart-se-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "se"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-se",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:handcart-sw-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "sw"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-sw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:handcart-nw-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "nw"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave13-pasture-herds",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wave13:sheep_cluster_a:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 64,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_a:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 128,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 192,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_a:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 256,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 320,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_a:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_a-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_a-v1.png",
+          "sourceSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a",
+          "runtimeSha256": "f74aa7a61063a809789709b65d436b7a5a49841834145080d5720425de40872a"
+        },
+        "geometry": {
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 448,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave13:pasture-sheep",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "sheep_flock"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:sheep_cluster_a:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_a:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_a:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_a:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave13-pasture-herds-extension",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 72,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 144,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 216,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 288,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 360,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:sheep_cluster_moving_b-v1:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "sheep_flock_b",
+        "image": {
+          "url": "assets/wave13/herd/sheep_cluster_moving_b-v1.png",
+          "width": 576,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/sheep_cluster_moving_b-v1.png",
+          "sourceSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089",
+          "runtimeSha256": "5773f9120006a7f4bfc4bc639efcc1d52a14002801692cacbdf7d163d86b0089"
+        },
+        "geometry": {
+          "crop": {
+            "x": 432,
+            "y": 0,
+            "width": 144,
+            "height": 112
+          },
+          "pivot": {
+            "x": 504,
+            "y": 74
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 96,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 192,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 288,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 480,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:cattle_drove-v1:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "cattle_pair",
+        "image": {
+          "url": "assets/wave13/herd/cattle_drove-v1.png",
+          "width": 768,
+          "height": 144
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/cattle_drove-v1.png",
+          "sourceSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0",
+          "runtimeSha256": "ee1cac4b8a84621fc5269ad0477760b0eb4d2adb95a5bd958c55706bafd293e0"
+        },
+        "geometry": {
+          "crop": {
+            "x": 576,
+            "y": 0,
+            "width": 192,
+            "height": 144
+          },
+          "pivot": {
+            "x": 672,
+            "y": 95
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:ne",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 64,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:se",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 128,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 192,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:sw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 256,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 320,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      },
+      {
+        "id": "wave13:pig_cluster-v1:nw",
+        "kind": "ground-prop",
+        "placement": "farm-prop",
+        "baseId": "pig_pair",
+        "image": {
+          "url": "assets/wave13/herd/pig_cluster-v1.png",
+          "width": 512,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/herd/pig_cluster-v1.png",
+          "sourceSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845",
+          "runtimeSha256": "8c03e6d713df6004d81af32cf58d984f4f2661b1e675d8ad9e1f17788c42a845"
+        },
+        "geometry": {
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "width": 128,
+            "height": 96
+          },
+          "pivot": {
+            "x": 448,
+            "y": 63
+          },
+          "scale": 0.20670180722891565,
+          "allowMirror": false
+        },
+        "staticCluster": true,
+        "animation": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave13:sheep_flock_b-static-rule",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "sheep_flock_b"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:sheep_cluster_moving_b-v1:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:cattle_pair-static-rule",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "cattle_pair"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:cattle_drove-v1:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:cattle_drove-v1:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:cattle_drove-v1:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:cattle_drove-v1:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:pig_pair-static-rule",
+        "kind": "ground-prop",
+        "slot": "farm-prop",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseId",
+            "value": "pig_pair"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "farm-prop"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:pig_cluster-v1:ne",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:pig_cluster-v1:se",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:pig_cluster-v1:sw",
+            "weight": 1
+          },
+          {
+            "assetId": "wave13:pig_cluster-v1:nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave42-log-stockpiles",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "core-log-stack-a-summer",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "summer",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_a_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_a_summer.png",
+          "sourceSha256": "939aa30123e143d42d851afbb298f66a9bd446505fd7fc737812700cd79a0af8",
+          "runtimeSha256": "939aa30123e143d42d851afbb298f66a9bd446505fd7fc737812700cd79a0af8"
+        }
+      },
+      {
+        "id": "core-log-stack-b-summer",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "summer",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_b_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_b_summer.png",
+          "sourceSha256": "71106370e1adc23619df0cc77016a8c7e36e271c205183658489f48ef087fd3a",
+          "runtimeSha256": "71106370e1adc23619df0cc77016a8c7e36e271c205183658489f48ef087fd3a"
+        }
+      },
+      {
+        "id": "core-log-stack-a-winter",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "winter",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_a_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_a_winter.png",
+          "sourceSha256": "b760e7f60afcdc7fe88326f14a731ac7b1d7257c7f6a3a415da88e30408d90a2",
+          "runtimeSha256": "b760e7f60afcdc7fe88326f14a731ac7b1d7257c7f6a3a415da88e30408d90a2"
+        }
+      },
+      {
+        "id": "core-log-stack-b-winter",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "winter",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_b_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_b_winter.png",
+          "sourceSha256": "a04e37fc95bbc6e4ccad48b5eb02d5c778e41b7d255156f25efbd18c22d42a55",
+          "runtimeSha256": "a04e37fc95bbc6e4ccad48b5eb02d5c778e41b7d255156f25efbd18c22d42a55"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "core-log-stock-summer",
+        "kind": "ground-prop",
+        "slot": "stock-pile",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "stock-pile"
+          },
+          {
+            "field": "buildingKind",
+            "op": "in",
+            "values": [
+              "logging_camp",
+              "sawmill"
+            ]
+          },
+          {
+            "field": "resource",
+            "op": "eq",
+            "value": "logs"
+          },
+          {
+            "field": "season",
+            "op": "in",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core-log-stack-a-summer",
+            "weight": 1
+          },
+          {
+            "assetId": "core-log-stack-b-summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "core-log-stock-winter",
+        "kind": "ground-prop",
+        "slot": "stock-pile",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "stock-pile"
+          },
+          {
+            "field": "buildingKind",
+            "op": "in",
+            "values": [
+              "logging_camp",
+              "sawmill"
+            ]
+          },
+          {
+            "field": "resource",
+            "op": "eq",
+            "value": "logs"
+          },
+          {
+            "field": "season",
+            "op": "in",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core-log-stack-a-winter",
+            "weight": 1
+          },
+          {
+            "assetId": "core-log-stack-b-winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "packId": "core",
+    "bundleId": "core-collapsed-fence",
+    "entries": [
+      {
+        "id": "core:yard-fence/abandoned_collapsed_fence_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_collapsed_fence_summer.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_collapsed_fence_summer.png",
+          "sourceSha256": "8c3f5b9ad110a73310734adc7902afa8d0fb9578c475896d6076d44a346d75f6",
+          "runtimeSha256": "8c3f5b9ad110a73310734adc7902afa8d0fb9578c475896d6076d44a346d75f6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.25,
+          "footprint": {
+            "width": 0.5,
+            "height": 0.5
+          },
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "yard-fence",
+        "stage": "collapsed",
+        "layout": "single"
+      },
+      {
+        "id": "core:yard-fence/abandoned_collapsed_fence_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_collapsed_fence_winter.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_collapsed_fence_winter.png",
+          "sourceSha256": "df3b9f9dfb5648bc7c0d5012269a83199d726429d333fc86112e9290dff69dda",
+          "runtimeSha256": "df3b9f9dfb5648bc7c0d5012269a83199d726429d333fc86112e9290dff69dda"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.25,
+          "footprint": {
+            "width": 0.5,
+            "height": 0.5
+          },
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "yard-fence",
+        "stage": "collapsed",
+        "layout": "single"
+      }
+    ],
+    "rules": [
+      {
+        "id": "select/core:yard-fence/abandoned_collapsed_fence_summer",
+        "kind": "land-stage",
+        "slot": "yard-fence",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "yard-fence"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "collapsed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core:yard-fence/abandoned_collapsed_fence_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "select/core:yard-fence/abandoned_collapsed_fence_winter",
+        "kind": "land-stage",
+        "slot": "yard-fence",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "yard-fence"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "collapsed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core:yard-fence/abandoned_collapsed_fence_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-pasture-wash",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "pasture_wash_pool",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/wave3/pasture/wash_pool-v1.png",
+          "width": 192,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave3/candidates-20260926/assets/pasture/wash_pool-v1.png",
+          "sourceSha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f",
+          "runtimeSha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 96,
+            "y": 120
+          },
+          "scale": 0.3333333333333333,
+          "allowMirror": false
+        },
+        "placement": "facility-ground",
+        "buildingKinds": [
+          "pastoral_farm"
+        ]
+      }
+    ],
+    "rules": []
   },
   {
     "schemaVersion": 1,
