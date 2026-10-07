@@ -38,8 +38,8 @@ test('Given the approved walker20 When the public catalog loads Then every runti
   assert.equal(files.length, 20);
   assert.deepEqual(files.filter(file => !file.samePixels || file.errors.length), []);
   const art = createWalkerArt(ART_REGISTRY);
-  assert.equal(art.bodies.length, 4);
-  assert.equal(art.props.length, 16);
+  assert.equal(art.bodies.filter(entry => entry.provenance.inboxFile.includes("walker-pilot2/")).length, 4);
+  assert.equal(art.props.filter(entry => entry.provenance.inboxFile.includes("walker-pilot2/")).length, 16);
   for (const entry of entries) {
     assert.equal(createArtAdapters(ART_REGISTRY, { baseUrl: '/', createImage: null }).placement(entry.id, { at: { x: 0, y: 0 } })?.type, 'walker-composition-source');
     assert.equal(createArtAdapters(ART_REGISTRY, { baseUrl: '/', createImage: null }).image(entry.id), null, 'unloaded art cannot pretend to be ready');

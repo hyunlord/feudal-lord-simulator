@@ -950,6 +950,27 @@
               },
               "minItems": 1,
               "uniqueItems": true
+            },
+            "pastureYard": {
+              "type": "object",
+              "properties": {
+                "group": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "priority": {
+                  "type": "integer"
+                },
+                "positiveStock": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "group",
+                "priority"
+              ],
+              "additionalProperties": false
             }
           },
           "required": [
@@ -2747,6 +2768,27 @@
             "x",
             "y",
             "scale"
+          ],
+          "additionalProperties": false
+        },
+        "heldAttachment": {
+          "type": "object",
+          "properties": {
+            "propId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "grip": {
+              "$ref": "#/$defs/point"
+            },
+            "restoreHandSize": {
+              "const": 3
+            }
+          },
+          "required": [
+            "propId",
+            "grip",
+            "restoreHandSize"
           ],
           "additionalProperties": false
         }

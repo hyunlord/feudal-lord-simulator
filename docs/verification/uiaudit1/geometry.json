@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-DECTRACE-geo-2f7e4e0",
- "commit": "2f7e4e086ebb27b9917cf0a6afde261b3d2b850c",
+ "run": "astra-PURVEYOR-geometry-029a112",
+ "commit": "029a112a266bb3bfcd347aa00521e0eef682c8ee",
  "dirty": false,
- "inputs": 2348,
- "inputHash": "e79654f08e90a5cdf3029ed995e6dff9ce06f5582f154d87fa4bd9ee7ac1773c",
- "measuredAt": "2026-10-07T20:05:10.670Z",
- "report": "docs/verification/uiaudit1/geometry/engine-DECTRACE-geo-2f7e4e0/geometry.json",
+ "inputs": 2359,
+ "inputHash": "3c844cfa1f3e015404275c7ad824d416c53afa5f659372c7c4d665dfc30907b3",
+ "measuredAt": "2026-10-07T20:49:20.410Z",
+ "report": "docs/verification/uiaudit1/geometry/astra-PURVEYOR-geometry-029a112/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,13 +24,13 @@
    "extreme"
   ]
  },
- "rows": 62,
- "conditions": 1230,
- "measured": 1230,
+ "rows": 4,
+ "conditions": 80,
+ "measured": 80,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 455,
+ "warnings": 0,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -53,312 +53,22 @@
   "fixed": 0
  },
  "bySurface": {
-  "hud.season-strip-panel": {
+  "hud.status-pill": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "hud.steward-bubble": {
+  "hud.time-cluster": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "hud.event-card": {
+  "hud.action-dock": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "slot.ledger.stock": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.steward": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.steward-concern": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.alerts": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.view": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.map": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.map-overview": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.rights": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.rights-decline": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.wage": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.reorg": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.legacy": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.season-ledger": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.year-review": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch1": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch2-war": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch4-reorg": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch5-legacy": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.heir": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch3-plague": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch4-guild": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch5-royal-tax": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.ch5-legacy-choice": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.interlude-guild": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.petition.interlude-church": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.records": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.record-card": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.snapshot-map": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.snapshot-figure": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.decision": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.biography": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.biography.king": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.family-tree": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.tree-banner": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.tree-generation": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.tree-node": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.factions": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.history.faction-page": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.chronicle-book": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.home-petition": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.home-petition.no-art": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.home-petition.guardian": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.precedent": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.request": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.house-change.wardship": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.house-change.lord-died": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.house-change.inherited": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.registry": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.registry-hold": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.receipt": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.lord": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.lord-refusal": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.stock-lord": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.lord-open": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "slot.ledger.lord-policy-subsidy": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.will-change": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.contested": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.audit": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.offmap-petition": {
+  "map.selection.house": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}

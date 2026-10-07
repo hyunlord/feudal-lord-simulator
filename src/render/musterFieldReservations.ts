@@ -7,7 +7,8 @@ import { warProps } from './warWorldProps';
 import { WAVE17_WORLD_IMAGES } from './wave17WorldManifest.generated';
 import { tileToScreen } from './iso';
 import { washPoolReservations } from './washPoolReservations';
-import { washPoolProps, washPoolBox } from './washPoolPlacement';
+import { facilityGroundProps, washPoolBox } from './washPoolPlacement';
+import { FACILITY_GROUND_ENTRIES } from './washPoolArt';
 import { ART_REGISTRY } from './art/wave42Registry';
 import { isSpringWorldEntry, springWorldSlot } from './art/springWorldValidation';
 import { springWorldProps } from './springWorldProps';
@@ -36,9 +37,10 @@ export function musterFieldReservations(state: GameState): readonly ArtRect[] {
     const m = WAVE17_WORLD_IMAGES[p.kind], at = tileToScreen(p.x, p.y), scale = m.zoom1Scale;
     boxes.push({ x: at.sx - m.pivot.x * scale, y: at.sy - m.pivot.y * scale, width: m.cell.width * scale, height: m.cell.height * scale });
   }
-  const pool = ART_REGISTRY.entry('pasture_wash_pool');
-  if (pool?.kind === 'ground-prop' && pool.placement === 'facility-ground')
-    for (const p of washPoolProps(state, pool)) boxes.push(washPoolBox(pool, p.tx, p.ty));
+  for (const p of facilityGroundProps(state, FACILITY_GROUND_ENTRIES)) {
+    const entry = FACILITY_GROUND_ENTRIES.find(e => e.id === p.assetId);
+    if (entry) boxes.push(washPoolBox(entry, p.tx, p.ty));
+  }
   const spring = springWorldProps(state, (role, seed, group = 'all') => {
     const entry = ART_REGISTRY.select('ground-prop', springWorldSlot(role), { placement: 'spring-context', season: 'spring', role, group }, seed);
     return isSpringWorldEntry(entry) ? entry : null;

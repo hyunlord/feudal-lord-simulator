@@ -24,15 +24,25 @@ export function washPoolSupport(entry: FacilityGroundPropEntry, tx: number, ty: 
     for (let x = Math.floor(Math.min(...corners.map(p => p.tx)) + 0.5); x <= Math.floor(Math.max(...corners.map(p => p.tx)) + 0.5); x++) cells.push({ tx: x, ty: y });
   return cells;
 }
-const cache = new WeakMap<GameState, WeakMap<FacilityGroundPropEntry, { scene: GroundBoundaryScene; props: readonly WashPoolProp[] }>>();
+const cache = new WeakMap<GameState, WeakMap<readonly FacilityGroundPropEntry[], { scene: GroundBoundaryScene; props: readonly WashPoolProp[] }>>();
 /** No economy, animals or jobs are created. Missing support always means no prop. */
+const singleEntries = new WeakMap<FacilityGroundPropEntry, readonly FacilityGroundPropEntry[]>();
 export function washPoolProps(state: GameState, entry: FacilityGroundPropEntry | null): readonly WashPoolProp[] {
-  if (!entry || !entry.buildingKinds.includes('pastoral_farm') || calendarProgress(state).season === 3) return [];
+  if (!entry) return [];
+  let entries = singleEntries.get(entry); if (!entries) { entries = [entry]; singleEntries.set(entry, entries); }
+  return facilityGroundProps(state, entries);
+}
+export function facilityGroundProps(state: GameState, entries: readonly FacilityGroundPropEntry[]): readonly WashPoolProp[] {
+  if (!entries.length || !state.buildings.some(b => b.kind === 'pastoral_farm')) return [];
   const scene = groundBoundaryScene(state);
-  const cached = cache.get(state)?.get(entry); if (cached?.scene === scene) return cached.props;
+  const cached = cache.get(state)?.get(entries); if (cached?.scene === scene) return cached.props;
+  const eligible = entries.filter(e => e.buildingKinds.includes('pastoral_farm') && (e.pastureYard || calendarProgress(state).season !== 3));
+  if (!eligible.length) return [];
   const tending = pastureTending(state);
-  const farms = state.buildings.filter(b => b.kind === 'pastoral_farm' && (tending.get(b.id) ?? 0) > 0).sort((a, b) => a.id.localeCompare(b.id));
+  const farms = state.buildings.filter(b => b.kind === 'pastoral_farm' && (tending.get(b.id) ?? 0) > 0);
   if (!farms.length) return [];
+  farms.sort((a, b) => a.id.localeCompare(b.id));
+  eligible.sort((a, b) => Number(Boolean(a.pastureYard)) - Number(Boolean(b.pastureYard)) || (b.pastureYard?.priority ?? 0) - (a.pastureYard?.priority ?? 0) || a.id.localeCompare(b.id));
   const pasture = new Set<number>();
   for (const zone of zonesOf(state)) if (zone.kind === 'pasture') for (const at of zone.membership) pasture.add(at);
   for (const zone of zonesOf(state)) if (zone.kind !== 'pasture') for (const at of zone.membership) pasture.delete(at);
@@ -52,21 +62,26 @@ export function washPoolProps(state: GameState, entry: FacilityGroundPropEntry |
   }
   const boxes = [...washPoolReservations(state, scene)], result: WashPoolProp[] = [];
   const at = (x: number, y: number) => x >= 0 && y >= 0 && x < state.width && y < state.height ? state.tiles[y * state.width + x] : undefined;
-  for (const farm of farms) {
+  const chosen = new Set<string>();
+  for (const entry of eligible) for (const farm of farms) {
+    const policy = entry.pastureYard, group = `${farm.id}:${policy?.group ?? entry.id}`;
+    if (chosen.has(group)) continue;
+    if (policy?.positiveStock && !(Object.entries(farm.inventory).some(([resource, amount]) => resource === policy.positiveStock && amount > 0))) continue;
+    chosen.add(group);
     const candidates = [...owners].filter(([, id]) => id === farm.id).map(([cell]) => cell)
       .sort((a, b) => yardHash(`${farm.id}:${a}`, state.seed) - yardHash(`${farm.id}:${b}`, state.seed) || a - b);
     for (const cell of candidates) {
       const tx = cell % state.width, ty = Math.floor(cell / state.width);
       let nearWater = false;
       for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) if (Math.max(Math.abs(dx), Math.abs(dy)) === 2 && at(tx + dx, ty + dy)?.terrain === 'water') nearWater = true;
-      if (!nearWater) continue;
+      if (!entry.pastureYard && !nearWater) continue;
       const cells = washPoolSupport(entry, tx, ty);
       if (cells.some(p => { const tile = at(p.tx, p.ty), index = p.ty * state.width + p.tx;
         return !tile || tile.terrain !== 'grass' || tile.hasRoad || tile.buildingId !== null || reserved.has(index) || owners.get(index) !== farm.id; })) continue;
       const box = washPoolBox(entry, tx, ty); if (boxes.some(other => boxesOverlap(box, other))) continue;
-      result.push({ id: `wash-pool:${farm.id}`, assetId: entry.id, farmId: farm.id, tx, ty }); boxes.push(box); break;
+      result.push({ id: entry.pastureYard ? `facility:${entry.pastureYard.group}:${farm.id}` : `wash-pool:${farm.id}`, assetId: entry.id, farmId: farm.id, tx, ty }); boxes.push(box); break;
     }
   }
-  let byEntry = cache.get(state); if (!byEntry) { byEntry = new WeakMap(); cache.set(state, byEntry); } byEntry.set(entry, { scene, props: result });
+  let byEntry = cache.get(state); if (!byEntry) { byEntry = new WeakMap(); cache.set(state, byEntry); } byEntry.set(entries, { scene, props: result });
   return result;
 }

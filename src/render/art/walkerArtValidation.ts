@@ -63,6 +63,14 @@ export function validateWalkerArt(bundles: readonly ArtBundle[]): readonly ArtSc
         report(entry.id, `Cloak exceeds padded compositor cell ${key}`);
       }
     }
+    const attached = registration.frames.filter(frame => frame.heldAttachment !== undefined);
+    if (attached.length > 0 && attached.length !== 8) report(entry.id, 'Authored attachment requires all eight frames');
+    for (const frame of attached) {
+      const attachment = frame.heldAttachment;
+      if (!attachment) continue;
+      if (attachment.grip.x < 1 || attachment.grip.y < 1 || attachment.grip.x >= 73 || attachment.grip.y >= 73) report(entry.id, 'Restored hand exceeds source cell');
+      if (!registration.propVariants.some(variant => variant.propId === attachment.propId)) report(entry.id, 'Authored attachment requires a registered prop family');
+    }
     const slots = new Set<string>();
     for (const variant of registration.propVariants) {
       if (slots.has(variant.slot)) report(entry.id, `Duplicate prop slot ${variant.slot}`);

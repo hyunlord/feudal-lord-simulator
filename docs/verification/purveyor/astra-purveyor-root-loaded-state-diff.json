@@ -1,0 +1,5963 @@
+{
+  "source": "/tmp/astra-purveyor-natural-prep/migrated-state.json",
+  "loaded": "/tmp/astra-purveyor-install/output/rb-purveyor-after/after-natural-z1-loaded-state.json",
+  "differences": [
+    {
+      "path": "state.walkers",
+      "before": [
+        {
+          "id": "carter:construction-site-000001:160068",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000001",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000017"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000017"
+            },
+            "resource": "timber",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 44.01999999999997,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 50,
+              "ty": 41
+            },
+            {
+              "tx": 49,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 7,
+          "previousTile": {
+            "tx": 46,
+            "ty": 39
+          },
+          "cargo": null,
+          "spawnedTick": 160068,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000003:intake:160180",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000003",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000003"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 43.42,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 43,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": null,
+          "cargo": null,
+          "spawnedTick": 160180,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000023:intake:160159",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000023",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000023"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 44.360000000000014,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 43,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 160159,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000024:push:160021",
+          "kind": "carter",
+          "cart": "push",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000024",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000011"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000011"
+            },
+            "resource": "wheat",
+            "amount": 10,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 49,
+            "ty": 38.680000000000035
+          },
+          "path": [
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 49,
+            "ty": 37
+          },
+          "cargo": null,
+          "spawnedTick": 160021,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000025:160133",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000025",
+          "destination": {
+            "kind": "building",
+            "buildingId": "granary-42-37-0"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "granary-42-37-0"
+            },
+            "resource": "wheat",
+            "amount": 10,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": {
+              "buildingId": "construction-site-000025",
+              "resource": "wheat",
+              "amount": 10
+            }
+          },
+          "position": {
+            "tx": 47.99999999999997,
+            "ty": 41
+          },
+          "path": [
+            {
+              "tx": 52,
+              "ty": 44
+            },
+            {
+              "tx": 52,
+              "ty": 43
+            },
+            {
+              "tx": 52,
+              "ty": 42
+            },
+            {
+              "tx": 52,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 41
+            },
+            {
+              "tx": 50,
+              "ty": 41
+            },
+            {
+              "tx": 49,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 7,
+          "previousTile": {
+            "tx": 49,
+            "ty": 41
+          },
+          "cargo": {
+            "resource": "wheat",
+            "amount": 10
+          },
+          "spawnedTick": 160133,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000029:160176",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000029",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000037"
+            },
+            "resource": "logs",
+            "amount": 3,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": {
+              "buildingId": "construction-site-000029",
+              "resource": "logs",
+              "amount": 3
+            }
+          },
+          "position": {
+            "tx": 41,
+            "ty": 33.019999999999996
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": null,
+          "cargo": {
+            "resource": "logs",
+            "amount": 3
+          },
+          "spawnedTick": 160176,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000031:160042",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000031",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 40.680000000000035,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 39,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160042,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000032:160127",
+          "kind": "carter",
+          "mission": "fetch",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000032",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000032"
+            },
+            "resource": "logs",
+            "amount": 8,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000037",
+              "resource": "logs",
+              "amount": 8
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 39.80000000000001,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 41,
+              "ty": 32
+            }
+          ],
+          "pathIndex": 2,
+          "previousTile": {
+            "tx": 38,
+            "ty": 33
+          },
+          "cargo": {
+            "resource": "logs",
+            "amount": 8
+          },
+          "spawnedTick": 160127,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000033:160154",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000033",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 3,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": {
+              "buildingId": "construction-site-000033",
+              "resource": "logs",
+              "amount": 3
+            }
+          },
+          "position": {
+            "tx": 37,
+            "ty": 33.06000000000002
+          },
+          "path": [
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 35,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 4,
+          "previousTile": {
+            "tx": 38,
+            "ty": 33
+          },
+          "cargo": {
+            "resource": "logs",
+            "amount": 3
+          },
+          "spawnedTick": 160154,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000034:160086",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000034",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 2,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 38.58000000000003,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 6,
+          "previousTile": {
+            "tx": 37,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160086,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000035:160037",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000035",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 40.38000000000004,
+            "ty": 32
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 41,
+              "ty": 32
+            },
+            {
+              "tx": 42,
+              "ty": 32
+            }
+          ],
+          "pathIndex": 9,
+          "previousTile": {
+            "tx": 40,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160037,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000036:160118",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000036",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000037"
+            },
+            "resource": "timber",
+            "amount": 2,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 39.10000000000001,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 41,
+              "ty": 32
+            },
+            {
+              "tx": 42,
+              "ty": 32
+            },
+            {
+              "tx": 43,
+              "ty": 32
+            }
+          ],
+          "pathIndex": 2,
+          "previousTile": {
+            "tx": 38,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160118,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000037:159924",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000037",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "palisade-000028-segment-009-stone"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "palisade-000028-segment-009-stone"
+            },
+            "resource": "stone",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000037",
+              "resource": "stone",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 39.799999999999955,
+            "ty": 44
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 46
+            },
+            {
+              "tx": 48,
+              "ty": 46
+            },
+            {
+              "tx": 47,
+              "ty": 46
+            },
+            {
+              "tx": 46,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 45
+            },
+            {
+              "tx": 44,
+              "ty": 45
+            },
+            {
+              "tx": 43,
+              "ty": 45
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            },
+            {
+              "tx": 41,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 44
+            },
+            {
+              "tx": 39,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 43
+            },
+            {
+              "tx": 38,
+              "ty": 42
+            },
+            {
+              "tx": 38,
+              "ty": 41
+            },
+            {
+              "tx": 38,
+              "ty": 40
+            },
+            {
+              "tx": 38,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 38
+            },
+            {
+              "tx": 37,
+              "ty": 37
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 11,
+          "previousTile": {
+            "tx": 40,
+            "ty": 45
+          },
+          "cargo": null,
+          "spawnedTick": 159924,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000038:160178",
+          "kind": "carter",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000038",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000038"
+            },
+            "resource": "stone_raw",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000048",
+              "resource": "stone_raw",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 37.3,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 35,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": null,
+          "cargo": null,
+          "spawnedTick": 160178,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000039:160040",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000039",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "stone_raw",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 32.05999999999996,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 35,
+              "ty": 33
+            },
+            {
+              "tx": 34,
+              "ty": 33
+            },
+            {
+              "tx": 33,
+              "ty": 33
+            },
+            {
+              "tx": 32,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 9,
+          "previousTile": {
+            "tx": 34,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160040,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000041:159844",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000041",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "palisade-000028-segment-009-stone"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "palisade-000028-segment-009-stone"
+            },
+            "resource": "stone",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000041",
+              "resource": "stone",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 37,
+            "ty": 37.55999999999992
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 46
+            },
+            {
+              "tx": 48,
+              "ty": 46
+            },
+            {
+              "tx": 47,
+              "ty": 46
+            },
+            {
+              "tx": 46,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 45
+            },
+            {
+              "tx": 44,
+              "ty": 45
+            },
+            {
+              "tx": 43,
+              "ty": 45
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            },
+            {
+              "tx": 41,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 44
+            },
+            {
+              "tx": 39,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 43
+            },
+            {
+              "tx": 38,
+              "ty": 42
+            },
+            {
+              "tx": 38,
+              "ty": 41
+            },
+            {
+              "tx": 38,
+              "ty": 40
+            },
+            {
+              "tx": 38,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 38
+            },
+            {
+              "tx": 37,
+              "ty": 37
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 35,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 20,
+          "previousTile": {
+            "tx": 37,
+            "ty": 39
+          },
+          "cargo": null,
+          "spawnedTick": 159844,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000043:intake:159897",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000043",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000043"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 42,
+            "ty": 35.039999999999935
+          },
+          "path": [
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 15,
+          "previousTile": {
+            "tx": 43,
+            "ty": 36
+          },
+          "cargo": {
+            "resource": "wheat",
+            "amount": 12
+          },
+          "spawnedTick": 159897,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000044:intake:160144",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000044",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000044"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 40.46000000000002,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 5,
+          "previousTile": {
+            "tx": 39,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160144,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000046:159981",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000046",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000024"
+            },
+            "resource": "bread",
+            "amount": 2,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 47.22000000000001,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 47,
+            "ty": 40
+          },
+          "cargo": null,
+          "spawnedTick": 159981,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000046:intake:159957",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000046",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000025"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000046"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000025",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 51.359999999999985,
+            "ty": 41
+          },
+          "path": [
+            {
+              "tx": 52,
+              "ty": 44
+            },
+            {
+              "tx": 52,
+              "ty": 43
+            },
+            {
+              "tx": 52,
+              "ty": 42
+            },
+            {
+              "tx": 52,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 40
+            },
+            {
+              "tx": 51,
+              "ty": 39
+            },
+            {
+              "tx": 51,
+              "ty": 38
+            },
+            {
+              "tx": 50,
+              "ty": 38
+            },
+            {
+              "tx": 50,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 52,
+            "ty": 42
+          },
+          "cargo": {
+            "resource": "wheat",
+            "amount": 12
+          },
+          "spawnedTick": 159957,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000047:159801",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000047",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "palisade-000028-segment-009-stone"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "palisade-000028-segment-009-stone"
+            },
+            "resource": "stone",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000047",
+              "resource": "stone",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 36.5199999999999,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 46
+            },
+            {
+              "tx": 48,
+              "ty": 46
+            },
+            {
+              "tx": 47,
+              "ty": 46
+            },
+            {
+              "tx": 46,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 45
+            },
+            {
+              "tx": 44,
+              "ty": 45
+            },
+            {
+              "tx": 43,
+              "ty": 45
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            },
+            {
+              "tx": 41,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 44
+            },
+            {
+              "tx": 39,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 43
+            },
+            {
+              "tx": 38,
+              "ty": 42
+            },
+            {
+              "tx": 38,
+              "ty": 41
+            },
+            {
+              "tx": 38,
+              "ty": 40
+            },
+            {
+              "tx": 38,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 38
+            },
+            {
+              "tx": 37,
+              "ty": 37
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 35,
+              "ty": 33
+            },
+            {
+              "tx": 34,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 25,
+          "previousTile": {
+            "tx": 37,
+            "ty": 34
+          },
+          "cargo": null,
+          "spawnedTick": 159801,
+          "cancellation": null
+        },
+        {
+          "id": "carter:farmstead-48-38-0:160131",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "farmstead-48-38-0",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000024"
+            },
+            "resource": "wheat",
+            "amount": 10,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 47.22000000000001,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 47,
+            "ty": 40
+          },
+          "cargo": null,
+          "spawnedTick": 160131,
+          "cancellation": null
+        },
+        {
+          "id": "distributor:granary-42-37-0:159960",
+          "kind": "distributor",
+          "phase": "roaming",
+          "homeBuildingId": "granary-42-37-0",
+          "position": {
+            "tx": 47,
+            "ty": 40.22
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": {
+            "tx": 47,
+            "ty": 39
+          },
+          "cargo": {
+            "resource": "bread",
+            "amount": 5
+          },
+          "spawnedTick": 159960,
+          "junctionVisits": 4,
+          "tilesTravelled": 23,
+          "priorTile": {
+            "tx": 47,
+            "ty": 40
+          }
+        },
+        {
+          "id": "distributor:granary-42-37-0:160080",
+          "kind": "distributor",
+          "phase": "roaming",
+          "homeBuildingId": "granary-42-37-0",
+          "position": {
+            "tx": 47,
+            "ty": 39.22
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": {
+            "tx": 46,
+            "ty": 39
+          },
+          "cargo": {
+            "resource": "bread",
+            "amount": 5
+          },
+          "spawnedTick": 160080,
+          "junctionVisits": 1,
+          "tilesTravelled": 11,
+          "priorTile": {
+            "tx": 47,
+            "ty": 39
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "carter:construction-site-000001:160068",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000001",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000017"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000017"
+            },
+            "resource": "timber",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 44.01999999999997,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 50,
+              "ty": 41
+            },
+            {
+              "tx": 49,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 7,
+          "previousTile": {
+            "tx": 46,
+            "ty": 39
+          },
+          "cargo": null,
+          "spawnedTick": 160068,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000003:intake:160180",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000003",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000003"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 43.42,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 43,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": null,
+          "cargo": null,
+          "spawnedTick": 160180,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000023:intake:160159",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000023",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000023"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 44.360000000000014,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 43,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 160159,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000024:push:160021",
+          "kind": "carter",
+          "cart": "push",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000024",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000011"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000011"
+            },
+            "resource": "wheat",
+            "amount": 10,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 49,
+            "ty": 38.680000000000035
+          },
+          "path": [
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 49,
+            "ty": 37
+          },
+          "cargo": null,
+          "spawnedTick": 160021,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000025:160133",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000025",
+          "destination": {
+            "kind": "building",
+            "buildingId": "granary-42-37-0"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "granary-42-37-0"
+            },
+            "resource": "wheat",
+            "amount": 10,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": {
+              "buildingId": "construction-site-000025",
+              "resource": "wheat",
+              "amount": 10
+            }
+          },
+          "position": {
+            "tx": 47.99999999999997,
+            "ty": 41
+          },
+          "path": [
+            {
+              "tx": 52,
+              "ty": 44
+            },
+            {
+              "tx": 52,
+              "ty": 43
+            },
+            {
+              "tx": 52,
+              "ty": 42
+            },
+            {
+              "tx": 52,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 41
+            },
+            {
+              "tx": 50,
+              "ty": 41
+            },
+            {
+              "tx": 49,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 7,
+          "previousTile": {
+            "tx": 49,
+            "ty": 41
+          },
+          "cargo": {
+            "resource": "wheat",
+            "amount": 10
+          },
+          "spawnedTick": 160133,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000029:160176",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000029",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000037"
+            },
+            "resource": "logs",
+            "amount": 3,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": {
+              "buildingId": "construction-site-000029",
+              "resource": "logs",
+              "amount": 3
+            }
+          },
+          "position": {
+            "tx": 41,
+            "ty": 33.019999999999996
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": null,
+          "cargo": {
+            "resource": "logs",
+            "amount": 3
+          },
+          "spawnedTick": 160176,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000031:160042",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000031",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 40.680000000000035,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 39,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160042,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000032:160127",
+          "kind": "carter",
+          "mission": "fetch",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000032",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000032"
+            },
+            "resource": "logs",
+            "amount": 8,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000037",
+              "resource": "logs",
+              "amount": 8
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 39.80000000000001,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 41,
+              "ty": 32
+            }
+          ],
+          "pathIndex": 2,
+          "previousTile": {
+            "tx": 38,
+            "ty": 33
+          },
+          "cargo": {
+            "resource": "logs",
+            "amount": 8
+          },
+          "spawnedTick": 160127,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000033:160154",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000033",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 3,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": {
+              "buildingId": "construction-site-000033",
+              "resource": "logs",
+              "amount": 3
+            }
+          },
+          "position": {
+            "tx": 37,
+            "ty": 33.06000000000002
+          },
+          "path": [
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 35,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 4,
+          "previousTile": {
+            "tx": 38,
+            "ty": 33
+          },
+          "cargo": {
+            "resource": "logs",
+            "amount": 3
+          },
+          "spawnedTick": 160154,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000034:160086",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000034",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 2,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 38.58000000000003,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 6,
+          "previousTile": {
+            "tx": 37,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160086,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000035:160037",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000035",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "logs",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 40.38000000000004,
+            "ty": 32
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 41,
+              "ty": 32
+            },
+            {
+              "tx": 42,
+              "ty": 32
+            }
+          ],
+          "pathIndex": 9,
+          "previousTile": {
+            "tx": 40,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160037,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000036:160118",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000036",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000037"
+            },
+            "resource": "timber",
+            "amount": 2,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 39.10000000000001,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 32
+            },
+            {
+              "tx": 41,
+              "ty": 32
+            },
+            {
+              "tx": 42,
+              "ty": 32
+            },
+            {
+              "tx": 43,
+              "ty": 32
+            }
+          ],
+          "pathIndex": 2,
+          "previousTile": {
+            "tx": 38,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160118,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000037:159924",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000037",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "palisade-000028-segment-009-stone"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "palisade-000028-segment-009-stone"
+            },
+            "resource": "stone",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000037",
+              "resource": "stone",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 39.799999999999955,
+            "ty": 44
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 46
+            },
+            {
+              "tx": 48,
+              "ty": 46
+            },
+            {
+              "tx": 47,
+              "ty": 46
+            },
+            {
+              "tx": 46,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 45
+            },
+            {
+              "tx": 44,
+              "ty": 45
+            },
+            {
+              "tx": 43,
+              "ty": 45
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            },
+            {
+              "tx": 41,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 44
+            },
+            {
+              "tx": 39,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 43
+            },
+            {
+              "tx": 38,
+              "ty": 42
+            },
+            {
+              "tx": 38,
+              "ty": 41
+            },
+            {
+              "tx": 38,
+              "ty": 40
+            },
+            {
+              "tx": 38,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 38
+            },
+            {
+              "tx": 37,
+              "ty": 37
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 11,
+          "previousTile": {
+            "tx": 40,
+            "ty": 45
+          },
+          "cargo": null,
+          "spawnedTick": 159924,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000038:160178",
+          "kind": "carter",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000038",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000038"
+            },
+            "resource": "stone_raw",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000048",
+              "resource": "stone_raw",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 37.3,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 35,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": null,
+          "cargo": null,
+          "spawnedTick": 160178,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000039:160040",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000039",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000048"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000048"
+            },
+            "resource": "stone_raw",
+            "amount": 1,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 32.05999999999996,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 36
+            },
+            {
+              "tx": 36,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 35,
+              "ty": 33
+            },
+            {
+              "tx": 34,
+              "ty": 33
+            },
+            {
+              "tx": 33,
+              "ty": 33
+            },
+            {
+              "tx": 32,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 9,
+          "previousTile": {
+            "tx": 34,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160040,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000041:159844",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000041",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "palisade-000028-segment-009-stone"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "palisade-000028-segment-009-stone"
+            },
+            "resource": "stone",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000041",
+              "resource": "stone",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 37,
+            "ty": 37.55999999999992
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 46
+            },
+            {
+              "tx": 48,
+              "ty": 46
+            },
+            {
+              "tx": 47,
+              "ty": 46
+            },
+            {
+              "tx": 46,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 45
+            },
+            {
+              "tx": 44,
+              "ty": 45
+            },
+            {
+              "tx": 43,
+              "ty": 45
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            },
+            {
+              "tx": 41,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 44
+            },
+            {
+              "tx": 39,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 43
+            },
+            {
+              "tx": 38,
+              "ty": 42
+            },
+            {
+              "tx": 38,
+              "ty": 41
+            },
+            {
+              "tx": 38,
+              "ty": 40
+            },
+            {
+              "tx": 38,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 38
+            },
+            {
+              "tx": 37,
+              "ty": 37
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 35,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 20,
+          "previousTile": {
+            "tx": 37,
+            "ty": 39
+          },
+          "cargo": null,
+          "spawnedTick": 159844,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000043:intake:159897",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000043",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000043"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 42,
+            "ty": 35.039999999999935
+          },
+          "path": [
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 15,
+          "previousTile": {
+            "tx": 43,
+            "ty": 36
+          },
+          "cargo": {
+            "resource": "wheat",
+            "amount": 12
+          },
+          "spawnedTick": 159897,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000044:intake:160144",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000044",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000044"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000024",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 40.46000000000002,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 35,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 48,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 5,
+          "previousTile": {
+            "tx": 39,
+            "ty": 33
+          },
+          "cargo": null,
+          "spawnedTick": 160144,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000046:159981",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000046",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000024"
+            },
+            "resource": "bread",
+            "amount": 2,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 47.22000000000001,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 47,
+            "ty": 40
+          },
+          "cargo": null,
+          "spawnedTick": 159981,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000046:intake:159957",
+          "kind": "carter",
+          "cart": "intake",
+          "mission": "fetch",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000046",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000025"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000046"
+            },
+            "resource": "wheat",
+            "amount": 12,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000025",
+              "resource": "wheat",
+              "amount": 12
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 51.359999999999985,
+            "ty": 41
+          },
+          "path": [
+            {
+              "tx": 52,
+              "ty": 44
+            },
+            {
+              "tx": 52,
+              "ty": 43
+            },
+            {
+              "tx": 52,
+              "ty": 42
+            },
+            {
+              "tx": 52,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 40
+            },
+            {
+              "tx": 51,
+              "ty": 39
+            },
+            {
+              "tx": 51,
+              "ty": 38
+            },
+            {
+              "tx": 50,
+              "ty": 38
+            },
+            {
+              "tx": 50,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 35
+            },
+            {
+              "tx": 41,
+              "ty": 34
+            },
+            {
+              "tx": 41,
+              "ty": 33
+            },
+            {
+              "tx": 40,
+              "ty": 33
+            },
+            {
+              "tx": 39,
+              "ty": 33
+            },
+            {
+              "tx": 38,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 52,
+            "ty": 42
+          },
+          "cargo": {
+            "resource": "wheat",
+            "amount": 12
+          },
+          "spawnedTick": 159957,
+          "cancellation": null
+        },
+        {
+          "id": "carter:construction-site-000047:159801",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "construction-site-000047",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "palisade-000028-segment-009-stone"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "palisade-000028-segment-009-stone"
+            },
+            "resource": "stone",
+            "amount": 1,
+            "sourceStockClaim": {
+              "kind": "building",
+              "buildingId": "construction-site-000047",
+              "resource": "stone",
+              "amount": 1
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 36.5199999999999,
+            "ty": 33
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 46
+            },
+            {
+              "tx": 48,
+              "ty": 46
+            },
+            {
+              "tx": 47,
+              "ty": 46
+            },
+            {
+              "tx": 46,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 46
+            },
+            {
+              "tx": 45,
+              "ty": 45
+            },
+            {
+              "tx": 44,
+              "ty": 45
+            },
+            {
+              "tx": 43,
+              "ty": 45
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            },
+            {
+              "tx": 41,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 45
+            },
+            {
+              "tx": 40,
+              "ty": 44
+            },
+            {
+              "tx": 39,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 44
+            },
+            {
+              "tx": 38,
+              "ty": 43
+            },
+            {
+              "tx": 38,
+              "ty": 42
+            },
+            {
+              "tx": 38,
+              "ty": 41
+            },
+            {
+              "tx": 38,
+              "ty": 40
+            },
+            {
+              "tx": 38,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 39
+            },
+            {
+              "tx": 37,
+              "ty": 38
+            },
+            {
+              "tx": 37,
+              "ty": 37
+            },
+            {
+              "tx": 37,
+              "ty": 36
+            },
+            {
+              "tx": 37,
+              "ty": 35
+            },
+            {
+              "tx": 37,
+              "ty": 34
+            },
+            {
+              "tx": 37,
+              "ty": 33
+            },
+            {
+              "tx": 36,
+              "ty": 33
+            },
+            {
+              "tx": 35,
+              "ty": 33
+            },
+            {
+              "tx": 34,
+              "ty": 33
+            }
+          ],
+          "pathIndex": 25,
+          "previousTile": {
+            "tx": 37,
+            "ty": 34
+          },
+          "cargo": null,
+          "spawnedTick": 159801,
+          "cancellation": null
+        },
+        {
+          "id": "carter:farmstead-48-38-0:160131",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "returning",
+          "homeBuildingId": "farmstead-48-38-0",
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000024"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "building",
+              "buildingId": "construction-site-000024"
+            },
+            "resource": "wheat",
+            "amount": 10,
+            "sourceStockClaim": null,
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 47.22000000000001,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 48,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 3,
+          "previousTile": {
+            "tx": 47,
+            "ty": 40
+          },
+          "cargo": null,
+          "spawnedTick": 160131,
+          "cancellation": null
+        },
+        {
+          "id": "distributor:granary-42-37-0:159960",
+          "kind": "distributor",
+          "phase": "roaming",
+          "homeBuildingId": "granary-42-37-0",
+          "position": {
+            "tx": 47,
+            "ty": 40.22
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": {
+            "tx": 47,
+            "ty": 39
+          },
+          "cargo": {
+            "resource": "bread",
+            "amount": 5
+          },
+          "spawnedTick": 159960,
+          "junctionVisits": 4,
+          "tilesTravelled": 23,
+          "priorTile": {
+            "tx": 47,
+            "ty": 40
+          }
+        },
+        {
+          "id": "distributor:granary-42-37-0:160080",
+          "kind": "distributor",
+          "phase": "roaming",
+          "homeBuildingId": "granary-42-37-0",
+          "position": {
+            "tx": 47,
+            "ty": 39.22
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            }
+          ],
+          "pathIndex": 0,
+          "previousTile": {
+            "tx": 46,
+            "ty": 39
+          },
+          "cargo": {
+            "resource": "bread",
+            "amount": 5
+          },
+          "spawnedTick": 160080,
+          "junctionVisits": 1,
+          "tilesTravelled": 11,
+          "priorTile": {
+            "tx": 47,
+            "ty": 39
+          }
+        },
+        {
+          "id": "resident-patrol:construction-site-000030:1:2965:0",
+          "kind": "builder",
+          "homeBuildingId": "gate",
+          "position": {
+            "tx": 47.08,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 1,
+          "previousTile": {
+            "tx": 46,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 160137,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "guard",
+            "purpose": "patrol",
+            "houseId": null,
+            "memberIndex": null,
+            "sex": "male",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-clergy:construction-site-000006:1:266",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000042",
+          "position": {
+            "tx": 42.72,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 41,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 11,
+          "previousTile": {
+            "tx": 44,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159900,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "clergy",
+            "purpose": "clergy",
+            "houseId": null,
+            "memberIndex": null,
+            "sex": "female",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000004:construction-site-000042:0@159750",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000004",
+          "position": {
+            "tx": 45.120000000000005,
+            "ty": 39
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 40
+            },
+            {
+              "tx": 43,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 14,
+          "previousTile": {
+            "tx": 47,
+            "ty": 39
+          },
+          "cargo": null,
+          "spawnedTick": 159750,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "construction-site-000004",
+            "memberIndex": 0,
+            "sex": "female",
+            "ageBand": "elder"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000004:construction-site-000042:0@159750:child",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000004",
+          "position": {
+            "tx": 45.120000000000005,
+            "ty": 38.7
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 40
+            },
+            {
+              "tx": 43,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 14,
+          "previousTile": {
+            "tx": 47,
+            "ty": 39
+          },
+          "cargo": null,
+          "spawnedTick": 159750,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "child_companion",
+            "purpose": "church",
+            "houseId": "construction-site-000004",
+            "memberIndex": 29,
+            "sex": "male",
+            "ageBand": "child"
+          }
+        },
+        {
+          "id": "resident-church:house-44-42-0:construction-site-000042:0@159825",
+          "kind": "builder",
+          "homeBuildingId": "house-44-42-0",
+          "position": {
+            "tx": 45.92,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 39
+            },
+            {
+              "tx": 43,
+              "ty": 40
+            },
+            {
+              "tx": 43,
+              "ty": 41
+            },
+            {
+              "tx": 44,
+              "ty": 41
+            }
+          ],
+          "pathIndex": 4,
+          "previousTile": {
+            "tx": 44,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159825,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "house-44-42-0",
+            "memberIndex": 16,
+            "sex": "male",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000008:construction-site-000042:0@159833",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000008",
+          "position": {
+            "tx": 49,
+            "ty": 37
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 9,
+          "previousTile": {
+            "tx": 48,
+            "ty": 37
+          },
+          "cargo": null,
+          "spawnedTick": 159833,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "construction-site-000008",
+            "memberIndex": 5,
+            "sex": "male",
+            "ageBand": "elder"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000008:construction-site-000042:0@159833:child",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000008",
+          "position": {
+            "tx": 48.7,
+            "ty": 37
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 9,
+          "previousTile": {
+            "tx": 48,
+            "ty": 37
+          },
+          "cargo": null,
+          "spawnedTick": 159833,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "child_companion",
+            "purpose": "church",
+            "houseId": "construction-site-000008",
+            "memberIndex": 30,
+            "sex": "male",
+            "ageBand": "child"
+          }
+        },
+        {
+          "id": "resident-church:house-44-40-0:construction-site-000042:0@159849",
+          "kind": "builder",
+          "homeBuildingId": "house-44-40-0",
+          "position": {
+            "tx": 47,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 6,
+          "previousTile": {
+            "tx": 46,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159849,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "house-44-40-0",
+            "memberIndex": 8,
+            "sex": "male",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:house-44-40-0:construction-site-000042:0@159849:child",
+          "kind": "builder",
+          "homeBuildingId": "house-44-40-0",
+          "position": {
+            "tx": 47,
+            "ty": 36.3
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 6,
+          "previousTile": {
+            "tx": 46,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159849,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "child_companion",
+            "purpose": "church",
+            "houseId": "house-44-40-0",
+            "memberIndex": 26,
+            "sex": "female",
+            "ageBand": "child"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000021:construction-site-000042:0@159907",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000021",
+          "position": {
+            "tx": 45.08,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 50,
+              "ty": 37
+            },
+            {
+              "tx": 50,
+              "ty": 38
+            }
+          ],
+          "pathIndex": 4,
+          "previousTile": {
+            "tx": 44,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159907,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "construction-site-000021",
+            "memberIndex": 13,
+            "sex": "female",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000021:construction-site-000042:0@159907:child",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000021",
+          "position": {
+            "tx": 45.08,
+            "ty": 36.3
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 50,
+              "ty": 37
+            },
+            {
+              "tx": 50,
+              "ty": 38
+            }
+          ],
+          "pathIndex": 4,
+          "previousTile": {
+            "tx": 44,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159907,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "child_companion",
+            "purpose": "church",
+            "houseId": "construction-site-000021",
+            "memberIndex": 29,
+            "sex": "female",
+            "ageBand": "child"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000010:construction-site-000042:0@159923",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000010",
+          "position": {
+            "tx": 42.2,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 41,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            }
+          ],
+          "pathIndex": 1,
+          "previousTile": {
+            "tx": 41,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 159923,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "construction-site-000010",
+            "memberIndex": 16,
+            "sex": "female",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000004:construction-site-000042:0@160061",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000004",
+          "position": {
+            "tx": 45.36,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 43,
+              "ty": 41
+            },
+            {
+              "tx": 43,
+              "ty": 40
+            },
+            {
+              "tx": 43,
+              "ty": 39
+            },
+            {
+              "tx": 44,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 41,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 14,
+          "previousTile": {
+            "tx": 47,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 160061,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "construction-site-000004",
+            "memberIndex": 11,
+            "sex": "female",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000007:construction-site-000042:0@160069",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000007",
+          "position": {
+            "tx": 42.32,
+            "ty": 36
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 41,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 13,
+          "previousTile": {
+            "tx": 44,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 160069,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "churchgoer",
+            "purpose": "church",
+            "houseId": "construction-site-000007",
+            "memberIndex": 13,
+            "sex": "male",
+            "ageBand": "adult"
+          }
+        },
+        {
+          "id": "resident-church:construction-site-000007:construction-site-000042:0@160069:child",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000007",
+          "position": {
+            "tx": 42.32,
+            "ty": 35.7
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 41
+            },
+            {
+              "tx": 47,
+              "ty": 40
+            },
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 48,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 39
+            },
+            {
+              "tx": 49,
+              "ty": 38
+            },
+            {
+              "tx": 49,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 37
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 44,
+              "ty": 36
+            },
+            {
+              "tx": 43,
+              "ty": 36
+            },
+            {
+              "tx": 42,
+              "ty": 36
+            },
+            {
+              "tx": 41,
+              "ty": 36
+            }
+          ],
+          "pathIndex": 13,
+          "previousTile": {
+            "tx": 44,
+            "ty": 36
+          },
+          "cargo": null,
+          "spawnedTick": 160069,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "child_companion",
+            "purpose": "church",
+            "houseId": "construction-site-000007",
+            "memberIndex": 22,
+            "sex": "male",
+            "ageBand": "child"
+          }
+        },
+        {
+          "id": "resident-field:construction-site-000022:construction-site-000025:1@160163",
+          "kind": "builder",
+          "homeBuildingId": "construction-site-000022",
+          "position": {
+            "tx": 51.4,
+            "ty": 41
+          },
+          "path": [
+            {
+              "tx": 49,
+              "ty": 41
+            },
+            {
+              "tx": 50,
+              "ty": 41
+            },
+            {
+              "tx": 51,
+              "ty": 41
+            },
+            {
+              "tx": 52,
+              "ty": 41
+            },
+            {
+              "tx": 52,
+              "ty": 42
+            },
+            {
+              "tx": 52,
+              "ty": 43
+            },
+            {
+              "tx": 52,
+              "ty": 44
+            }
+          ],
+          "pathIndex": 2,
+          "previousTile": {
+            "tx": 50,
+            "ty": 41
+          },
+          "cargo": null,
+          "spawnedTick": 160163,
+          "siteId": "",
+          "slotIndex": 0,
+          "resident": {
+            "occupation": "field_hand",
+            "purpose": "field",
+            "houseId": "construction-site-000022",
+            "memberIndex": 4,
+            "sex": "male",
+            "ageBand": "elder"
+          }
+        }
+      ]
+    }
+  ]
+}
