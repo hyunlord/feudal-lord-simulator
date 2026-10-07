@@ -44,7 +44,7 @@ test("a new inbox JPG outside LFS fails, a large plain image warns, a moved plai
   const git = (...args: string[]) => execFileSync("git", args, { cwd: dir, encoding: "utf8" }).trim();
   const put = (path: string, text: string) => { mkdirSync(join(dir, dirname(path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   const pointer = (oid: string, size: number) => `version https://git-lfs.github.com/spec/v1\noid sha256:${oid.repeat(64)}\nsize ${size}\n`;
-  const ledger = (...files: string[]) => put("assets-inbox/INBOX_LEDGER.csv", `wave,file,sha256,status,replaced_by,verdict_note,installed_by\r\n${files.map((file, i) => `w,${file},${i},confirmed,,,\r\n`).sort((x, y) => x.split(",")[1] < y.split(",")[1] ? -1 : 1).join("")}`);   // in form: sorted by file (check 6)
+  const ledger = (...files: string[]) => put("assets-inbox/INBOX_LEDGER.csv", `wave,file,sha256,status,replaced_by,verdict_note,installed_by\r\n${files.map((file, i) => ({ file, row: `w,${file},${i},confirmed,,,\r\n` })).sort((x, y) => x.file < y.file ? -1 : 1).map(({ row }) => row).join("")}`);   // in form: sorted by file (check 6)
   const commit = () => { git("add", "-A"); git("commit", "-qm", "c"); return git("rev-parse", "HEAD"); };
   try {
     git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t");
