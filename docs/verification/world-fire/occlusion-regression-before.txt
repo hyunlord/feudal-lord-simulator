@@ -1,0 +1,43 @@
+✔ actual burning record deterministically anchors flame on house and reserves the whole brigade span (4.832584ms)
+✔ no invented fire before ignition or after expiry at tick 0 (0.225958ms)
+✔ no invented fire before ignition or after expiry at tick 9 (0.116292ms)
+✔ no invented fire before ignition or after expiry at tick 50 (0.085ms)
+✔ no invented fire before ignition or after expiry at tick 51 (0.1ms)
+✔ non-doused and no-well records retain flames but never invent a brigade (0.408958ms)
+✔ no safe space retains fallback eligibility and refuses water, trees, occupied cells (6.102167ms)
+✔ unavailable image leaves original queue untouched, including ordinary no-fire frames (0.451208ms)
+✔ all brigade support rejects a wall between well-side placement and household (1.392917ms)
+✔ seven-person groups are capped at five without changing residents (0.786458ms)
+✔ decoded images choose seasonal whole groups and draw one unmirrored authored rectangle (0.842667ms)
+✔ load failure and wrong decoded size never remove the bucket fallback (0.287917ms)
+✔ fire objects join world depth ordering and offscreen objects are culled (0.927125ms)
+✔ only actual visible brigade queue receipts suppress legacy buckets; crops stay clear (2.409667ms)
+✖ a well behind the burning house cannot hide the brigade behind its roof (1.821709ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 892.08225
+
+✖ failing tests:
+
+test at tests/worldFireProps.test.ts:1:8429
+✖ a well behind the burning house cannot hide the brigade behind its roof (1.821709ms)
+  AssertionError [ERR_ASSERTION]: whole brigade anchor must be in front of the burning building
+      at TestContext.<anonymous> (/private/tmp/astra-world-fire/tests/worldFireProps.test.ts:150:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -28,6 +28,7 @@ type BuildingAppearanceInput = {
   readonly zoom: number;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
+  readonly fireBrigades?: ReadonlySet<string>;
   readonly viewMode?: ObjectRenderViewMode;
 };
 type Point = { readonly x: number; readonly y: number };
@@ -42,7 +43,7 @@ export function drawBuildingAppearance(
   // INSTALL-7 snow, boards, piles; NAT-2: the snow, boards and fire on the painted houses of the status view too (the
   // boards are a state), without the door piles and story props (a speck there; the piles were ~0.37 ms a frame in
   // the 1380 town at zoom 0.6, 5x: CPU profile, 20 ms/s at ~55 frames/s).
-  const detail = renderDetailLevel(input.zoom); if (detail !== "blocks") drawBuildingOverlays(context, input.state, building, detail === "full", contract);
+  const detail = renderDetailLevel(input.zoom); if (detail !== "blocks") drawBuildingOverlays(context, input.state, building, detail === "full", contract, input.fireBrigades?.has(building.id) ?? false);
   if ((input.viewMode ?? 'normal') === 'normal' && contract !== null) {
     buildingAttachmentArt.draw(context, { state: input.state, building, drawn: contract, zoom: input.zoom });
   }

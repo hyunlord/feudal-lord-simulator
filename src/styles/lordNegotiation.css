@@ -1,0 +1,85 @@
+/* LM-R2 (negotiation area): the lord screen's negotiation styles (src/ui/lord/negotiation/). Lord mode only; text ≥ 12 px
+   (tests/lmr2LordScreen.test.ts). Imported once from src/main.tsx.
+   The Wave 35 parts (treaty frame, clause rows, reason chips) arrive as inline 9-slice styles from the art contract
+   (src/ui/lord/uiPartArt.ts); until they load, or when one fails, the kit's own frames below stand in (an inline style
+   wins over these, so each rule here is the fallback only). Every state the art shows is also written. */
+.app-shell .lord-neg { display: grid; gap: 10px; padding: 2px 4px 8px 0; font-size: 13px; line-height: 1.45; color: var(--palette-ink); }
+.app-shell .lord-neg h3 { margin: 0; font-size: 18px; line-height: 1.3; }
+.app-shell .lord-neg h4 { margin: 0 0 4px; font-size: 15px; line-height: 1.3; }
+.app-shell .lord-neg h5 { margin: 0 0 4px; font-size: 13px; line-height: 1.3; color: var(--palette-ink-muted); }
+.app-shell .lord-neg p { margin: 0; }
+.app-shell .lord-neg ul, .app-shell .lord-neg ol { margin: 0; padding: 0; list-style: none; }
+.app-shell .lord-neg-houses, .app-shell .lord-neg-note, .app-shell .lord-neg-score, .app-shell .lord-neg-party-line { font-size: 12px; color: var(--palette-ink-muted); }
+.app-shell .lord-neg-note, .app-shell .lord-neg-answer, .app-shell .lord-neg-ceiling, .app-shell .lord-neg-refusal, .app-shell .lord-neg-due,
+.app-shell .lord-neg-outcome, .app-shell .lord-neg-row, .app-shell .lord-neg-reason { word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-neg-answer { font-weight: 600; }
+.app-shell .lord-neg-answer > span { display: block; font-size: 12px; font-weight: 400; color: var(--palette-ink-muted); }
+
+/* The parties: the groom picked from the house's men (toggle buttons), the bride beside. */
+.app-shell .lord-neg-parties { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 10px; }
+.app-shell .lord-neg-grooms { display: flex; flex-wrap: wrap; gap: 6px; }
+.app-shell .lord-neg-groom { display: flex; align-items: center; gap: 6px; min-height: 48px; padding: 4px 8px; text-align: left; }
+.app-shell .lord-neg-bride { display: flex; align-items: center; gap: 6px; min-height: 48px; }
+.app-shell .lord-neg-face { flex: 0 0 auto; display: inline-block; background-color: var(--palette-parchment-dark); }
+.app-shell .lord-neg-party-text { display: grid; min-width: 0; }
+.app-shell .lord-neg-party-name { font-size: 13px; font-weight: 600; line-height: 1.3; }
+
+/* The clause editor: a clause's name and amount, its steps (or its switch), its note under it. */
+.app-shell .lord-neg-editor { display: grid; gap: 6px; }
+.app-shell .lord-neg-editor-side { display: grid; gap: 4px; }
+.app-shell .lord-neg-clauses { display: grid; gap: 6px; }
+.app-shell .lord-neg-clause { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 8px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--palette-parchment-dark); }
+.app-shell .lord-neg-clause-head { display: grid; min-width: 0; }
+.app-shell .lord-neg-clause-name { font-weight: 600; }
+.app-shell .lord-neg-clause-value { font-size: 13px; }
+.app-shell .lord-neg-steps { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+.app-shell .lord-neg-step, .app-shell .lord-neg-switch { min-width: 48px; min-height: 44px; padding: 2px 6px; font-size: 12px; }
+.app-shell .lord-neg-clause > .lord-neg-note { grid-column: 1 / -1; }
+
+/* The treaty: the Wave 35 frame (×0.375), its title and seal, the two sides with the 16 px centre line between. */
+.app-shell .lord-neg-treaty { display: grid; gap: 10px; background: none; border-image: var(--frame-light-art); }
+.app-shell .lord-neg-treaty-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; }
+.app-shell .lord-neg-seal { flex: 0 0 auto; display: inline-block; width: 48px; height: 48px; }
+.app-shell .lord-neg-sides { display: grid; grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr); gap: 0 8px; align-items: start; }
+.app-shell .lord-neg-divider { display: block; align-self: center; justify-self: center; }
+.app-shell .lord-neg-divider[data-art="none"] { align-self: stretch; width: 16px; background: linear-gradient(var(--palette-ink-muted), var(--palette-ink-muted)) center / 1px 100% no-repeat; }
+.app-shell .lord-neg-rows { display: grid; gap: 4px; }
+.app-shell .lord-neg-row { display: grid; gap: 0 6px; min-height: 44px; align-content: center; background: none; border-image: var(--frame-record-art); }
+.app-shell .lord-neg-row-name { font-weight: 600; }
+.app-shell .lord-neg-row-item { display: grid; gap: 2px; }
+.app-shell .lord-neg-row-value, .app-shell .lord-neg-row-change { font-size: 12px; }
+.app-shell .lord-neg-row-change { padding: 0 4px; }
+.app-shell .lord-neg-row-mark { font-weight: 700; }
+.app-shell .lord-neg-row[data-mark="rejected"] .lord-neg-row-name { text-decoration: line-through; }
+.app-shell .lord-neg-empty { font-size: 12px; color: var(--palette-ink-muted); }
+
+/* The counterpart's view: the scale (one 64 px cell of the tier), the tier, the score, the top reasons as chips. */
+.app-shell .lord-neg-acceptance { display: grid; gap: 6px; }
+.app-shell .lord-neg-tier { display: flex; align-items: center; gap: 10px; min-height: 64px; }
+.app-shell .lord-neg-scale { flex: 0 0 auto; display: inline-block; }
+.app-shell .lord-neg-scale[data-art="none"] { display: none; }
+.app-shell .lord-neg-tier-word { font-size: 15px; font-weight: 700; }
+.app-shell .lord-neg-reasons { display: flex; flex-wrap: wrap; gap: 6px; }
+.app-shell .lord-neg-reason { font-size: 12px; line-height: 1.3; background: none; border-image: var(--frame-record-art); }
+.app-shell .lord-neg-ceiling { font-size: 12px; }
+.app-shell .lord-neg-ceiling[data-below="true"], .app-shell .lord-neg-refusal { font-weight: 600; color: var(--palette-vermilion); }
+.app-shell .lord-neg-refusal { font-size: 12px; }
+.app-shell .lord-neg-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
+.app-shell .lord-neg-actions > .ui-btn { min-height: 44px; }
+.app-shell .lord-neg-actions > .lord-neg-refusal { flex: 1 1 200px; }
+.app-shell .lord-neg-deadline { font-size: 13px; font-weight: 600; }
+
+/* The marriage's progress: the stage, the events as they fell, the facts, what is due. */
+.app-shell .lord-neg-timeline { display: grid; gap: 6px; }
+.app-shell .lord-neg-stage { font-size: 15px; font-weight: 700; }
+.app-shell .lord-neg-events { display: grid; gap: 2px; border-left: 2px solid var(--palette-parchment-dark); padding-left: 10px; }
+.app-shell .lord-neg-events > li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 6px; }
+.app-shell .lord-neg-event-date { font-size: 12px; color: var(--palette-ink-muted); }
+.app-shell .lord-neg-details { display: grid; gap: 2px; font-size: 12px; }
+.app-shell .lord-neg-outcome { font-weight: 600; }
+.app-shell .lord-neg-due { font-weight: 600; color: var(--palette-vermilion); }
+
+@media (pointer: coarse) {
+  .app-shell .lord-neg-step, .app-shell .lord-neg-switch, .app-shell .lord-neg-actions > .ui-btn { min-height: 48px; }
+}

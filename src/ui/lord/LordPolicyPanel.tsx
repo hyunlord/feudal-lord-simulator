@@ -6,13 +6,16 @@ import { useGameApi } from "../../state/gameStore";
 import type { GameAction } from "../../state/gameStore.types";
 import { Button, Select } from "../kit";
 import { POLICY_COPY as COPY } from "./policyCopy.ko";
-import { duesStep, policyView, SUBSIDY_KINDS, SUBSIDY_STEP, subsidyDraft } from "./policyModel";
+import { duesStep, POLICY_ART_IDS, POLICY_ICON_WIDTH, policyIconId, policyView, SUBSIDY_KINDS, SUBSIDY_NOTICE_ID, SUBSIDY_NOTICE_WIDTH, SUBSIDY_STEP, subsidyDraft } from "./policyModel";
+import { useUiParts } from "./uiPartArt";
 import { BUILDING_COPY } from "../../content/buildingCatalog.ko";
 
 // LM-R1 (TA-6, lord-mode §2): the ledger drawer's lord tab — the lord sets conditions, the town builds. Kit controls
 // only: the policy's four toggle buttons, the subsidy's kind (kit Select) and amount (±10d buttons) with the engine's
 // refusal shown and the set button shut while it holds, each subsidy's withdraw button, and the dues' ±5%p buttons.
 // Each press is the game's own command (set_estate_policy, set_project_subsidy, set_market_dues: ledger decisions).
+// LM-R2 (wave35-operations): each policy wears its EstatePolicy key's icon, and a subsidy on offer its notice; until the
+// pictures load (or without them) the buttons and the list keep their text alone.
 
 /** A subsidy's points stop at 60 (4 per 10d): 150d is the most that still moves a score. */
 const MAX_SUBSIDY = 150;
@@ -25,8 +28,10 @@ export function LordPolicyPanel({ state }: { readonly state: GameState }): React
 export function LordPolicyView({ state, dispatch }: { readonly state: GameState; readonly dispatch: (action: GameAction) => void }): ReactElement | null {
   const [kind, setKind] = useState<BuildingKind>(SUBSIDY_KINDS[0]!);
   const [amount, setAmount] = useState(SUBSIDY_STEP);
+  const parts = useUiParts(POLICY_ART_IDS);
   const view = policyView(state);
   if (view === null) return null;
+  const notice = view.subsidies.length === 0 ? null : parts.image(SUBSIDY_NOTICE_ID, SUBSIDY_NOTICE_WIDTH);
   const draft = subsidyDraft(state, kind, amount);
   // The lord's commands (as GameCanvas's demolishHouse): a press names the command, the command dispatches it.
   const command = (action: GameAction) => dispatch(action);
@@ -36,17 +41,21 @@ export function LordPolicyView({ state, dispatch }: { readonly state: GameState;
       <h3>{COPY.policyHeading}</h3>
       <p className="lord-policy-now" data-policy-now="true">{view.policy}</p>
       <div className="lord-policy-options">
-        {view.options.map(option => (
-          <Button key={option.key} type="button" className="lord-policy-option" data-policy={option.key} aria-pressed={option.chosen}
+        {view.options.map(option => {
+          const icon = parts.image(policyIconId(option.key), POLICY_ICON_WIDTH);
+          return <Button key={option.key} type="button" className="lord-policy-option" data-policy={option.key} aria-pressed={option.chosen}
+            data-policy-art={icon === null ? "none" : option.key}
             aria-label={COPY.policyChoose(option.label)} onPress={() => { if (!option.chosen) command({ type: "set_estate_policy", policy: option.key }); }} variant="toggle">
+            {icon === null ? null : <span className="lord-policy-option-icon" aria-hidden="true" style={icon} />}
             <span className="lord-policy-option-name">{option.label}</span>
             <span className="lord-policy-option-weights">{option.weights}</span>
-          </Button>
-        ))}
+          </Button>;
+        })}
       </div>
       <h3>{COPY.subsidyHeading}</h3>
       <p className="lord-policy-line">{view.subsidyRule}</p>
       <p className="lord-policy-line" data-subsidy-total="true">{view.offered}</p>
+      {notice === null ? null : <span className="lord-policy-notice" data-art="subsidy_notice" aria-hidden="true" style={notice} />}
       {view.subsidies.length === 0 ? null : <ul className="lord-policy-subsidies">
         {view.subsidies.map(subsidy => (
           <li key={subsidy.kind}>

@@ -1,0 +1,2722 @@
+{
+ "rows": [
+  {
+   "name": "p1-empty",
+   "file": "p1-empty.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 50,
+    "art": "ledger_spine"
+   },
+   "promises": [],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "promises",
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 3,
+    "promises": {},
+    "suits": [],
+    "evidence": {}
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "p2-active",
+   "file": "p2-active.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 205,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1304년 가을 8일 · 4년 뒤 가을쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": null,
+     "page": "open"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open",
+    "claim-2:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 81,
+    "promises": {
+     "promise-1": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "p3-due",
+   "file": "p3-due.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 689,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-4",
+     "state": "due",
+     "mark": "lord-ui/wave35-promises/promise_due.png",
+     "label": "기한 임박",
+     "deadline": "기한 1316년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 3년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 63000,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "broken",
+     "promise-4": "open",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "p4-due-today",
+   "file": "p4-due-today.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 689,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-4",
+     "state": "due",
+     "mark": "lord-ui/wave35-promises/promise_due.png",
+     "label": "기한 임박",
+     "deadline": "기한 1316년 봄 1일 · 오늘 마감",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": "true",
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 64000,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "broken",
+     "promise-4": "open",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "p5-kept-now",
+   "file": "p5-kept-now.jpg",
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 591,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-4",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 64000,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "broken",
+     "promise-4": "kept",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   }
+  },
+  {
+   "name": "p5-kept-now:check",
+   "before": {
+    "promise-1": "kept",
+    "promise-2": "kept",
+    "promise-3": "broken",
+    "promise-4": "open",
+    "promise-5": "open",
+    "promise-6": "open"
+   },
+   "after": {
+    "promise-1": "kept",
+    "promise-2": "kept",
+    "promise-3": "broken",
+    "promise-4": "kept",
+    "promise-5": "open",
+    "promise-6": "open"
+   },
+   "moved": [
+    "promise-4"
+   ]
+  },
+  {
+   "name": "p6-kept-broken",
+   "file": "p6-kept-broken.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 689,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-4",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1316년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 3년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 60001,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "broken",
+     "promise-4": "open",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "p7-tablet-dpr2",
+   "file": "p7-tablet-dpr2.jpg",
+   "viewport": "1180x820",
+   "dpr": 2,
+   "touch": true,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 701,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-4",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1316년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 3년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 48,
+   "natives": 0,
+   "coarse": true,
+   "panel": {
+    "left": 412,
+    "right": 1172,
+    "top": 80,
+    "bottom": 695,
+    "viewport": 1180
+   },
+   "engine": {
+    "tick": 60001,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "broken",
+     "promise-4": "open",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "p8-art-missing",
+   "file": "p8-art-missing.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "none",
+   "spine": {
+    "width": 24,
+    "height": 637,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-4",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1316년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 3년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": null,
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": null,
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 60001,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "broken",
+     "promise-4": "open",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     404
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     404
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s1-filed",
+   "file": "s1-filed.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "filed",
+     "neighbour": null,
+     "now": "제기",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 65 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:open",
+      "deed:open",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 5
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 52029,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "filed",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s2-evidence-given",
+   "file": "s2-evidence-given.jpg",
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "filed",
+     "neighbour": null,
+     "now": "제기",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 80 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:open",
+      "deed:냄 · 무게 15",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 4
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 52029,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "filed",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   }
+  },
+  {
+   "name": "s1-tablet-dpr2",
+   "file": "s1-tablet-dpr2.jpg",
+   "viewport": "1180x820",
+   "dpr": 2,
+   "touch": true,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "filed",
+     "neighbour": null,
+     "now": "제기",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 65 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:open",
+      "deed:open",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 5
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 48,
+   "natives": 0,
+   "coarse": true,
+   "panel": {
+    "left": 412,
+    "right": 1172,
+    "top": 80,
+    "bottom": 695,
+    "viewport": 1180
+   },
+   "engine": {
+    "tick": 52029,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "filed",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s3-evidence",
+   "file": "s3-evidence.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "evidence",
+     "neighbour": null,
+     "now": "증거",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 108 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:냄 · 무게 20",
+      "deed:냄 · 무게 15",
+      "court_roll:open",
+      "witnesses:냄 · 무게 8",
+      "possession_years:open"
+     ],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 2
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 54000,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "evidence",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s4-patronage",
+   "file": "s4-patronage.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "patronage",
+     "neighbour": null,
+     "now": "후원",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 108 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:냄 · 무게 20",
+      "deed:냄 · 무게 15",
+      "witnesses:냄 · 무게 8"
+     ],
+     "patrons": [
+      "overlord",
+      "crown",
+      "merchant_house_2"
+     ],
+     "patron": null,
+     "enforce": null,
+     "buttons": 3
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 55000,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "patronage",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s5-patron-chosen",
+   "file": "s5-patron-chosen.jpg",
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "patronage",
+     "neighbour": null,
+     "now": "후원",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 128 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:냄 · 무게 20",
+      "deed:냄 · 무게 15",
+      "witnesses:냄 · 무게 8"
+     ],
+     "patrons": [],
+     "patron": "손홀로 백작 · 지지 20",
+     "enforce": null,
+     "buttons": 0
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 55000,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "patronage",
+      "patron": "overlord",
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   }
+  },
+  {
+   "name": "s6-hearing",
+   "file": "s6-hearing.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "hearing",
+     "neighbour": null,
+     "now": "심리",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 청구 쪽 108 · 방어 쪽 80",
+     "verdict": null,
+     "evidence": [
+      "charter:냄 · 무게 20",
+      "deed:냄 · 무게 15",
+      "witnesses:냄 · 무게 8"
+     ],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 0
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 56000,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "hearing",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s7-enforcing",
+   "file": "s7-enforcing.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "enforcing",
+     "neighbour": null,
+     "now": "점유 집행",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": null,
+     "verdict": "판결: 원고가 이겼습니다",
+     "evidence": [],
+     "patrons": [],
+     "patron": null,
+     "enforce": "open",
+     "buttons": 1
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 57000,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "enforcing",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "s8-enforce-result",
+   "file": "s8-enforce-result.jpg",
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 144,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "enforcing",
+     "neighbour": null,
+     "now": "점유 집행",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": null,
+     "verdict": "판결: 원고가 이겼습니다",
+     "evidence": [],
+     "patrons": [],
+     "patron": null,
+     "enforce": "open",
+     "buttons": 1
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 57000,
+    "promises": {
+     "promise-1": "broken"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "enforcing",
+      "patron": null,
+      "enforcements": 1,
+      "enforced": false
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   }
+  },
+  {
+   "name": "s9-closed",
+   "file": "s9-closed.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 1222,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-2",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1315년 여름 16일 · 내년 여름 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1316년 여름 16일 · 2년 뒤 여름쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-4",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 여름 16일 · 3년 뒤 여름쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 여름 16일 · 4년 뒤 여름쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1319년 여름 16일 · 5년 뒤 여름쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-1",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "neighbour": null,
+     "now": "끝남",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": null,
+     "verdict": "판결: 원고가 이겼습니다",
+     "evidence": [],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 0
+    }
+   ],
+   "claims": [
+    "claim-1:open",
+    "claim-3:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 57177,
+    "promises": {
+     "promise-1": "broken",
+     "promise-2": "open",
+     "promise-3": "open",
+     "promise-4": "open",
+     "promise-5": "open",
+     "promise-6": "open"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "closed",
+      "patron": null,
+      "enforcements": 3,
+      "enforced": true
+     }
+    ],
+    "evidence": {
+     "claim-1": [],
+     "claim-2": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20"
+     ],
+     "claim-3": [],
+     "claim-4": []
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "n1-neighbour",
+   "file": "n1-neighbour.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "touch": false,
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 889,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-3",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-4",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-5",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-6",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "neighbour": null,
+     "now": "끝남",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": null,
+     "verdict": "판결: 원고가 이겼습니다",
+     "evidence": [],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 0
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "neighbour": null,
+     "now": "끝남",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": null,
+     "verdict": "판결: 원고가 이겼습니다",
+     "evidence": [],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 0
+    },
+    {
+     "id": "suit-3",
+     "stage": "filed",
+     "neighbour": "true",
+     "now": "제기",
+     "track": "flat",
+     "trackArt": "lord-ui/wave35-operations/litigation_track.png",
+     "hearing": "심리 · 원고 쪽 83 · 영주 쪽 80",
+     "verdict": null,
+     "evidence": [],
+     "patrons": [],
+     "patron": null,
+     "enforce": null,
+     "buttons": 0
+    }
+   ],
+   "claims": [],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "claims"
+   ],
+   "smallestText": 12,
+   "smallestButton": null,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   },
+   "engine": {
+    "tick": 84000,
+    "promises": {
+     "promise-1": "kept",
+     "promise-2": "kept",
+     "promise-3": "kept",
+     "promise-4": "kept",
+     "promise-5": "kept",
+     "promise-6": "kept"
+    },
+    "suits": [
+     {
+      "id": "suit-1",
+      "stage": "closed",
+      "patron": null,
+      "enforcements": 3,
+      "enforced": true
+     },
+     {
+      "id": "suit-2",
+      "stage": "closed",
+      "patron": null,
+      "enforcements": 3,
+      "enforced": true
+     },
+     {
+      "id": "suit-3",
+      "stage": "filed",
+      "patron": null,
+      "enforcements": 0,
+      "enforced": null
+     }
+    ],
+    "evidence": {
+     "claim-1": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20",
+      "court_roll:10"
+     ],
+     "claim-2": [],
+     "claim-3": [
+      "deed:15",
+      "witnesses:8",
+      "charter:20",
+      "court_roll:10"
+     ],
+     "claim-4": [
+      "deed:15",
+      "witnesses:8"
+     ]
+    }
+   },
+   "art": [
+    [
+     "lord-ui/wave35-promises/ledger_book.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/ledger_spine.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_kept.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/debt_note.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/witness_seal.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/deadline_marker.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-operations/litigation_track.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_active.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_due.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-promises/promise_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "w1-world",
+   "file": "w1-world.jpg",
+   "book": "ledger_book",
+   "spine": {
+    "width": 24,
+    "height": 689,
+    "art": "ledger_spine"
+   },
+   "promises": [
+    {
+     "id": "promise-4",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1316년 봄 1일 · 내년 봄 초쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-5",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1317년 봄 1일 · 2년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-6",
+     "state": "open",
+     "mark": "lord-ui/wave35-promises/promise_active.png",
+     "label": "진행 중",
+     "deadline": "기한 1318년 봄 1일 · 3년 뒤 봄쯤",
+     "deadlineMark": "lord-ui/wave35-promises/deadline_marker.png",
+     "dueToday": null,
+     "keep": "open",
+     "page": "open"
+    },
+    {
+     "id": "promise-3",
+     "state": "broken",
+     "mark": "lord-ui/wave35-promises/promise_broken.png",
+     "label": "어김",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-2",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    },
+    {
+     "id": "promise-1",
+     "state": "kept",
+     "mark": "lord-ui/wave35-promises/promise_kept.png",
+     "label": "지킴",
+     "deadline": null,
+     "deadlineMark": null,
+     "dueToday": null,
+     "keep": null,
+     "page": "past"
+    }
+   ],
+   "suits": [],
+   "claims": [
+    "claim-1:open"
+   ],
+   "neighbourButtons": 0,
+   "empty": [
+    "terms",
+    "suits",
+    "neighbour-suits"
+   ],
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "coarse": false,
+   "panel": {
+    "left": 512,
+    "right": 1272,
+    "top": 76,
+    "bottom": 675,
+    "viewport": 1280
+   }
+  }
+ ],
+ "failures": [],
+ "bytes": 896270
+}

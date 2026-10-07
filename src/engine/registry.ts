@@ -3,6 +3,7 @@
  * in lord mode in a stable order (conditions → the seed's draw → conflicts → atomic update → receipt), answered through
  * commands the engine already has. Nothing runs without `state.agency`.
  */
+import { CONTENT_REGISTRY } from "../content/contentRegistry";
 import type { BuildingKind } from "../content/buildingConfig";
 import { ALL_REGISTRY_ENTRIES } from "../content/registry/registryEntries";
 import {
@@ -50,6 +51,8 @@ function conditionProblem(condition: RegistryCondition): string | null {
   if ((condition.op === "has" || condition.op === "lacks") && (condition.field !== "bound.evidence" || typeof condition.value !== "string")) return `${condition.op} needs bound.evidence and a kind`;
   if ((condition.op === "gte" || condition.op === "lte") && typeof condition.value !== "number") return `${condition.op} needs a number`;
   if (condition.field === "faction.relation" && condition.faction === undefined) return "faction.relation needs a faction";
+  // EXT-1: the faction is one the content registry knows.
+  if (condition.field === "faction.relation" && !CONTENT_REGISTRY.faction.has(condition.faction)) return `unknown faction ${String(condition.faction)}`;
   return null;
 }
 

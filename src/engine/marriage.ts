@@ -150,12 +150,24 @@ export function proposeMarriage(state: GameState, offered: readonly Term[], groo
   return accepted ? contract(next, negotiation, terms) : next;
 }
 
+/**
+ * LM-R2-E ② API: why the lord cannot take a counter now (null: he can) — not countered, past its deadline, or (taking
+ * it) the treasury short of its cash terms. Letting it go is refused only for the first two.
+ */
+export function answerCounterRefusal(state: GameState, negotiationId: string, accept = true): "late" | "treasury" | "not_countered" | null {
+  const negotiation = diplomacyOf(state).negotiations.find(entry => entry.id === negotiationId);
+  if (negotiation === undefined || negotiation.status !== "countered" || negotiation.counter === undefined) return "not_countered";
+  if (state.tick > negotiation.deadline) return "late";
+  if (accept && cashOf(negotiation.counter.terms) > Math.max(0, treasuryBalance(state))) return "treasury";
+  return null;
+}
+
 /** NG-5: the lord takes the counter (the counterpart's own terms: it holds to them) or lets it go. */
 export function answerCounter(state: GameState, negotiationId: string, accept: boolean): GameState {
+  if (answerCounterRefusal(state, negotiationId, accept) !== null) return state;
   const diplomacy = diplomacyOf(state);
-  const negotiation = diplomacy.negotiations.find(entry => entry.id === negotiationId);
-  if (negotiation === undefined || negotiation.status !== "countered" || negotiation.counter === undefined || state.tick > negotiation.deadline) return state;
-  if (accept && cashOf(negotiation.counter.terms) > Math.max(0, treasuryBalance(state))) return state;
+  const negotiation = diplomacy.negotiations.find(entry => entry.id === negotiationId)!;
+  if (negotiation.counter === undefined) return state;
   const settled = { ...negotiation, status: accept ? "accepted" as const : "withdrawn" as const };
   const next = withDiplomacy(state, { ...diplomacy, negotiations: diplomacy.negotiations.map(entry => entry.id === negotiationId ? settled : entry) });
   return accept ? contract(next, settled, negotiation.counter.terms) : next;
@@ -207,15 +219,24 @@ function contractPromises(diplomacy: DiplomacyState, negotiation: Negotiation, t
   return next;
 }
 
+/** LM-R2-E ② API: why the lord cannot keep a promise now (null: he can) — not open, not his, past its deadline, or the treasury short. */
+export function keepPromiseRefusal(state: GameState, promiseId: string): "not_open" | "not_lord" | "late" | "treasury" | null {
+  const record = diplomacyOf(state).promises.find(entry => entry.id === promiseId);
+  if (record === undefined || record.status !== "open") return "not_open";
+  if (record.promisor !== LORD) return "not_lord";
+  if (state.tick > record.deadline) return "late";
+  if ((record.amount ?? 0) > 0 && treasuryBalance(state) < (record.amount ?? 0)) return "treasury";
+  return null;
+}
+
 /** NG-6 API: the lord keeps a promise before its deadline — a payment is paid from the treasury; support is given. */
 export function keepPromise(state: GameState, promiseId: string): GameState {
+  if (keepPromiseRefusal(state, promiseId) !== null) return state;
   const diplomacy = diplomacyOf(state);
-  const record = diplomacy.promises.find(entry => entry.id === promiseId);
-  if (record === undefined || record.status !== "open" || record.promisor !== LORD || state.tick > record.deadline) return state;
+  const record = diplomacy.promises.find(entry => entry.id === promiseId)!;
   let next = state;
   const amount = record.amount ?? 0;
   if (amount > 0) {
-    if (treasuryBalance(state) < amount) return state;
     const posted = postLedgerEntries(state, [{ account: "cash", category: "promise_payment", amount: -amount,
       sourceRefs: [{ type: "claim", id: record.id, detail: record.term }, { type: "actor", id: record.promisee }] }]);
     next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
@@ -371,11 +392,17 @@ function oldLord(state: GameState): Person | undefined {
 }
 
 /** NG-8 API: the will-change answer — a favour paid, support promised, or the new will let stand (it names a rival). */
-export function answerWillChange(state: GameState, choice: "favour" | "support_promise" | "let_it_be"): GameState {
+/** LM-R2-E ② API: why the lord cannot answer the will now (null: he can) — no will change waiting, or the favour's 120d short. */
+export function willChangeRefusal(state: GameState, choice: "favour" | "support_promise" | "let_it_be"): "not_due" | "treasury" | null {
   const plan = diplomacyOf(state).marriage;
-  if (plan === undefined || plan.stage !== "will_change" || plan.willAnswer !== undefined) return state;
+  if (plan === undefined || plan.stage !== "will_change" || plan.willAnswer !== undefined) return "not_due";
+  return choice === "favour" && treasuryBalance(state) < WILL_FAVOUR_PENNIES ? "treasury" : null;
+}
+
+export function answerWillChange(state: GameState, choice: "favour" | "support_promise" | "let_it_be"): GameState {
+  if (willChangeRefusal(state, choice) !== null) return state;
+  const plan = diplomacyOf(state).marriage!;
   if (choice === "favour") {
-    if (treasuryBalance(state) < WILL_FAVOUR_PENNIES) return state;
     const posted = postLedgerEntries(state, [{ account: "cash", category: "promise_payment", amount: -WILL_FAVOUR_PENNIES,
       sourceRefs: [{ type: "claim", id: plan.claimId, detail: "will_favour" }, { type: "actor", id: COUNTERPART }] }]);
     return withPlan({ ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin },
