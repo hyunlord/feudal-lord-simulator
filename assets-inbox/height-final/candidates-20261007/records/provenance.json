@@ -68,7 +68,7 @@
       "runtimeSha256": "7b6d0243d82afa74a8b0667ddfba2e71a208f34c114029d0c0a692bda73e8a18"
     }
   ],
-  "bodyL1dPrompt": "Exact fourth-call text was not persisted locally; do not represent reconstructed intent as verbatim. Existing original whole-body edit, raised wall and doorway, fixed footprint/pivot; registration-4.json preserves measured output. Other seven assets have original prompts in records.",
+  "bodyL1dPrompt": "l1d/candidate-4-prompt.txt: recovered exact tool-call text with call ID/time/session line and prompt SHA in l1d/prompt-recovery.json.",
   "sourceOriginalsPreserved": true,
   "derivatives": "Whole-image alpha-weighted resizeArea and transparent canvas registration; X/Y factors and offsets recorded individually. No component composition.",
   "scope": "2 bodies + 6 layers; not all 23 bodies or remaining 64-file review scope."
