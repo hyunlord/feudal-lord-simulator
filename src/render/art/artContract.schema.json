@@ -1724,6 +1724,12 @@
           "$ref": "#/$defs/building-attachment"
         },
         {
+          "$ref": "#/$defs/ui-frame"
+        },
+        {
+          "$ref": "#/$defs/ui-image"
+        },
+        {
           "$ref": "#/$defs/walker-transport"
         }
       ]
@@ -1753,6 +1759,8 @@
             "weather-shadow",
             "weather-particle",
             "building-attachment",
+            "ui-frame",
+            "ui-image",
             "walker-transport"
           ]
         },
@@ -2323,6 +2331,146 @@
         "occupations",
         "minZoom",
         "mounts"
+      ],
+      "additionalProperties": false
+    },
+    "insets": {
+      "type": "object",
+      "properties": {
+        "top": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "right": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bottom": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "left": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ],
+      "additionalProperties": false
+    },
+    "ui-frame": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "ui-frame"
+        },
+        "slice": {
+          "$ref": "#/$defs/insets"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "contentInset": {
+          "$ref": "#/$defs/insets"
+        },
+        "centre": {
+          "type": "string",
+          "enum": [
+            "fill",
+            "empty"
+          ]
+        },
+        "repeat": {
+          "type": "string",
+          "enum": [
+            "stretch",
+            "round"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "slice",
+        "scale",
+        "contentInset",
+        "centre",
+        "repeat"
+      ],
+      "additionalProperties": false
+    },
+    "ui-image": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "ui-image"
+        },
+        "cssWidths": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "derivatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "width",
+              "assetId"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "cssWidths",
+        "derivatives"
       ],
       "additionalProperties": false
     },

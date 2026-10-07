@@ -19,6 +19,9 @@ import { homePetitionView, lordRequestView, precedentView } from "../lordCardsMo
 import { requestArt } from "../lordStoryBeats";
 import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
+import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
+import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
+import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { stewardshipOf } from "../../engine/stewardship";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
@@ -46,7 +49,7 @@ import { chapterStartYear, latestChapterEnd } from "../chronicleModel";
  * any time, and the ending again from the chronicle screen once it is written.
  */
 export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChroniclePerson, steward, onPerson, ledgerAuto, onLedgerAuto,
-  ledgerFirst = false, onMenuRequest, tutorial, chapterGoalsView = false }: {
+  ledgerFirst = false, onMenuRequest, tutorial, chapterGoalsView = false, onOpenLord }: {
   readonly ui: UiState;
   readonly sendUi: (event: UiEvent) => void;
   readonly personCardId: string | null;
@@ -62,6 +65,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   readonly tutorial: Pick<TutorialController, "enabled" | "setEnabled">;
   /** QA-025: the preview was opened from the chapter's card ("목표 보기"): the current chapter's goals, a close button. */
   readonly chapterGoalsView?: boolean;
+  /** LM-R2 (lord mode): open the lord screen host on a screen and an engine id (the contested inheritance's suit). */
+  readonly onOpenLord?: (screen: LordScreenId, focus: string) => void;
 }) {
   const { dispatch } = useGameApi();
   const top = topModal(ui);
@@ -80,8 +85,13 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const request = asked?.command === null ? null : asked;
   // EVENT-ART: the registry's event card; it goes when its offer is answered, lapsed or invalid (no open offer left).
   const offer = top === "registry_offer" ? registryOfferView(state) : null;
+  // LM-R2: the father's will or the contested inheritance, an audit's finding, an off-map estate's petition.
+  const marriage = top === "marriage_decision" ? marriageDecisionView(state) : null;
+  const audit = top === "audit_decision" ? auditDecisionView(state) : null;
+  const offMap = top === "estate_petition_offmap" ? offMapPetitionView(state) : null;
   const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null)
-    || (top === "registry_offer" && offer === null);
+    || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)
+    || (top === "estate_petition_offmap" && offMap === null);
   const setRecurring = (recurring: boolean) => dispatch({ type: "set_exception_rules", rules: { ...stewardshipOf(state).rules, recurring } });
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
@@ -108,6 +118,13 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
     {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={choiceId => { dispatch({ type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }); sendUi({ type: "pop_modal" }); }} />}
+    {marriage === null ? null : <MarriageDecisionModal view={marriage} onLater={() => sendUi({ type: "pop_modal" })}
+      onAnswer={choice => { dispatch({ type: "answer_will_change", choice }); sendUi({ type: "pop_modal" }); }}
+      onOpenSuit={focus => { sendUi({ type: "pop_modal" }); onOpenLord?.("ledger", focus); }} />}
+    {audit === null ? null : <AuditDecisionModal view={audit} onLater={() => sendUi({ type: "pop_modal" })}
+      onAnswer={choice => { dispatch({ type: "answer_audit", auditId: audit.auditId, choice }); sendUi({ type: "pop_modal" }); }} />}
+    {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
+      onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: offMap.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
       // UI-10 (LG-8): chapter 5's end is the campaign's — its page leads to the legacy verdict, not to a chapter 6.
       {...(chronicle.chapter === CHAPTER_FIVE.chapter ? { nextLabel: LEGACY_SCREEN_COPY.toVerdict } : {})}

@@ -54,6 +54,16 @@ test("Given a surface that scrolls vertically When its text runs into the bottom
   assert.deepEqual(result.failures.map(failure => [failure.check, failure.path]), [["outside", "li.wide"]]);
 });
 
+test("Given text in an overflow-hidden box inside a scrolled screen When the scroll cuts it Then no overflow; when the box itself cuts it Then overflow", () => {
+  // LM-R2 region map: a label near the map's top while the lord screen is scrolled down. The innermost clipper is the
+  // map (it does not scroll), but the cut is the screen's scroll: reachable. Only the map's own cut counts.
+  const map = { path: "div.lord-region-map", scroll: false, ellipsis: false };
+  const scrolled = text("span.lord-region-label", box(124, 124, 200, 140), { full: box(124, 110, 200, 140), clipper: map, hardRect: box(124, 110, 200, 140) });
+  assert.deepEqual(evaluateSurface(surface([scrolled]), css).failures.filter(failure => failure.check === "overflow"), []);
+  const cut = text("span.lord-region-label", box(124, 124, 200, 140), { full: box(124, 110, 200, 140), clipper: map, hardRect: box(124, 124, 200, 140) });
+  assert.deepEqual(evaluateSurface(surface([cut]), css).failures.map(failure => [failure.check, failure.px]), [["overflow", 14]]);
+});
+
 test("Given clipped text When the clipper has no ellipsis Then overflow fails; with an ellipsis or a scroller it does not", () => {
   const clipped = (clipper: Item["clipper"]) => text("h2", box(124, 124, 200, 140), { full: box(124, 124, 260, 140), clipper });
   const bare = evaluateSurface(surface([clipped({ path: "div.text", scroll: false, ellipsis: false })]), css);

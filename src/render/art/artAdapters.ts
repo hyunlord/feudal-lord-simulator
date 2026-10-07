@@ -21,7 +21,7 @@ export type ArtPlacement =
   | { readonly type: 'weather-shadow-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'weather-shadow' }> }
   | { readonly type: 'texture-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'ground-texture' }> }
   | { readonly type: 'image-substitution'; readonly entry: Extract<ArtEntry, { readonly kind: 'season-variant' }> }
-  | { readonly type: 'ui-handoff'; readonly entry: Extract<ArtEntry, { readonly kind: 'event-illustration' | 'portrait' | 'regional-map' }> };
+  | { readonly type: 'ui-handoff'; readonly entry: Extract<ArtEntry, { readonly kind: 'event-illustration' | 'portrait' | 'regional-map' | 'ui-frame' | 'ui-image' }> };
 
 /** Half-open frame durations, looping only the frames actually authored in the contract. */
 export function artFrameAt(frames: readonly ArtFrame[], elapsedMs: number): ArtFrame {
@@ -57,7 +57,7 @@ export function createArtAdapters(registry: ArtRegistry, environment?: ArtImageE
       case 'weather-shadow': return { type: 'weather-shadow-source', entry };
       case 'ground-texture': return { type: 'texture-source', entry };
       case 'season-variant': return { type: 'image-substitution', entry };
-      case 'event-illustration': case 'portrait': case 'regional-map':
+      case 'event-illustration': case 'portrait': case 'regional-map': case 'ui-frame': case 'ui-image':
         return { type: 'ui-handoff', entry: { ...entry, image: { ...entry.image, url: assetUrlForBase(entry.image.url, environment?.baseUrl ?? import.meta.env?.BASE_URL ?? '/') } } };
       case 'state-overlay': {
         if (input.body === undefined || !entry.targetBodyIds.includes(input.body.bodyId)) throw new ArtAdapterError('Overlay requires its declared body geometry');

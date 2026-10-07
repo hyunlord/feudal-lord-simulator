@@ -9,7 +9,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { autoplayActionToGameAction } from "../src/engine/autoplayActions";
 import { chapterDecisionAction } from "../src/engine/autoplayEvents";
-import type { Term } from "../src/engine/diplomacy.types";
+import type { PromiseRecord, Term } from "../src/engine/diplomacy.types";
 import type { GameState } from "../src/engine/engine.types";
 import { estateById, estatesOf, LORD } from "../src/engine/estates";
 import { historySummary } from "../src/engine/history";
@@ -38,6 +38,8 @@ export interface MarriagePathOptions {
   readonly keepState?: boolean;
   /** EVENT-ART: sees the state after each tick (scripts/wave40MomentStates.ts keeps the moments' states); true stops the path. */
   readonly observe?: (state: GameState) => boolean | void;
+  /** LM-R2: which of his open promises the lord keeps when the treasury carries it (default: every one; the others lapse). */
+  readonly keepPromise?: (state: GameState, promise: PromiseRecord) => boolean;
 }
 
 export function marriagePath(options: MarriagePathOptions) {
@@ -72,7 +74,8 @@ export function marriagePath(options: MarriagePathOptions) {
         send({ type: "propose_marriage", terms: FIRST_OFFER.map(term => term.kind === "cash" ? { ...term, amount: cash } : term) }, `propose_marriage(${cash})`);
       }
       // Every promise kept as soon as the treasury carries it (support at once).
-      for (const promise of diplomacyOf(state).promises.filter(entry => entry.status === "open" && entry.promisor === LORD && (entry.amount ?? 0) <= treasuryBalance(state))) {
+      for (const promise of diplomacyOf(state).promises.filter(entry => entry.status === "open" && entry.promisor === LORD && (entry.amount ?? 0) <= treasuryBalance(state)
+        && (options.keepPromise?.(state, entry) ?? true))) {
         send({ type: "keep_promise", promiseId: promise.id }, `keep_promise(${promise.term})`);
       }
       if (marriageDecisionDue(state) === "will_change") send({ type: "answer_will_change", choice: options.willAnswer ?? "favour" }, `answer_will_change(${options.willAnswer ?? "favour"})`);

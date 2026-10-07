@@ -1,6 +1,7 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
 export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo' | 'walker-transport'
-  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle';
+  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle'
+  | 'ui-frame' | 'ui-image';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
 export type ArtImage = { readonly url: string; readonly width: number; readonly height: number };
@@ -122,6 +123,23 @@ export type RegionalMapEntry = EntryBase & {
   readonly coordinateSpace: { readonly width: number; readonly height: number };
   readonly slots: readonly (ArtPoint & { readonly id: string; readonly landType: string })[];
 };
+/** Source-pixel edges, named so no side order can be misread. */
+export type ArtInsets = { readonly top: number; readonly right: number; readonly bottom: number; readonly left: number };
+/** A 9-slice screen frame: corners keep their shape, edges and centre stretch; slice values come from the records, never guessed. */
+export type UiFrameEntry = EntryBase & {
+  readonly kind: 'ui-frame'; readonly slice: ArtInsets;
+  /** CSS pixels per source pixel for the drawn edges. */
+  readonly scale: number;
+  /** Source pixels from each image edge to where content may sit. */
+  readonly contentInset: ArtInsets;
+  readonly centre: 'fill' | 'empty'; readonly repeat: 'stretch' | 'round';
+};
+/** A fixed-size screen picture or icon, shown only at its declared CSS widths (height keeps the source aspect). */
+export type UiImageEntry = EntryBase & {
+  readonly kind: 'ui-image'; readonly cssWidths: readonly number[];
+  /** Same picture at other source widths (e.g. a 2x copy); each is its own ui-image entry. */
+  readonly derivatives: readonly { readonly width: number; readonly assetId: string }[];
+};
 export type SeasonVariantEntry = EntryBase & {
   readonly kind: 'season-variant';
   readonly base: { readonly namespace: 'world-sprite' | 'zone-prop'; readonly key: string };
@@ -146,7 +164,8 @@ export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEn
 export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
 export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
 export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | WalkerTransportEntry | LandStageEntry
-  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry;
+  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry
+  | UiFrameEntry | UiImageEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =
   | { readonly op: 'eq'; readonly field: string; readonly value: ArtScalar }
