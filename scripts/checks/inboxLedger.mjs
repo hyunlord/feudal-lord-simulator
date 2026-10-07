@@ -16,7 +16,14 @@
 //     (.gitattributes keeps 27 batch folders of JPGs received before 2026-10-03 as plain files, and a new JPG put into
 //     one of them would land as plain bytes too); an added image of any kind over 1 MB (2^20) that is not LFS is a
 //     warning. A file whose bytes were already under assets-inbox/ at <base> (a move or a copy) is not new.
+//  6. form (user order 2026-10-08, decision RR11): every row of the ledger ends in CRLF, the last one too, and the rows
+//     after the header are in byte order of the file column (what `LC_ALL=C sort` gives). Render B's install commits
+//     wrote rows with LF and appended them at the end (80 LF lines and 45 rows out of order at 2b6d820c). A range that
+//     changes the ledger fails on it; otherwise it is a warning (someone else's ledger work does not stop a push).
+//     `node scripts/checks/inboxLedger.mjs --fix-form` rewrites the working-tree ledger in that form, changing
+//     nothing but the order of the rows and their line ends.
 import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { changedFiles, git, isMain, resolveRange } from './gitRange.mjs';
 
 export const LEDGER = 'assets-inbox/INBOX_LEDGER.csv';
@@ -47,6 +54,53 @@ export function parseCsv(text) {
   return rows;
 }
 
+/** The ledger's records as written: { line (1-based, of its first line), text (without its line end), end ("\r\n",
+ *  "\n" or "" for a last line without one) }. A line break inside a quoted field stays inside its record. */
+export function ledgerRecords(text) {
+  const records = []; let start = 0; let line = 1; let startLine = 1; let quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') quoted = !quoted;
+    else if (c === '\n') {
+      if (!quoted) {
+        const cr = i > start && text[i - 1] === '\r';
+        records.push({ line: startLine, text: text.slice(start, cr ? i - 1 : i), end: cr ? '\r\n' : '\n' });
+        start = i + 1; startLine = line + 1;
+      }
+      line++;
+    }
+  }
+  if (start < text.length) records.push({ line: startLine, text: text.slice(start), end: '' });
+  return records;
+}
+const fileOf = (record, column) => parseCsv(record.text)[0]?.[column] ?? '';
+const byteOrder = (a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b));
+
+/** Check 6: the rows that do not end in CRLF ({ line }) and the rows out of byte order of the file column
+ *  ({ line, file, after }). */
+export function ledgerForm(text) {
+  const records = ledgerRecords(text);
+  const column = (parseCsv(records[0]?.text ?? '')[0] ?? []).indexOf('file');
+  const notCrlf = records.filter(record => record.end !== '\r\n').map(record => record.line);
+  const unsorted = [];
+  for (let i = 2; i < records.length; i++) {
+    const after = fileOf(records[i - 1], column); const file = fileOf(records[i], column);
+    if (byteOrder(after, file) > 0) unsorted.push({ line: records[i].line, file, after });
+  }
+  return { notCrlf, unsorted };
+}
+
+/** The ledger in check 6's form: the header, then the rows sorted by the file column (byte order, stable), every one
+ *  ending in CRLF. Nothing else changes. */
+export function fixLedgerForm(text) {
+  const [header, ...rows] = ledgerRecords(text);
+  if (header === undefined) return text;
+  const column = (parseCsv(header.text)[0] ?? []).indexOf('file');
+  const sorted = rows.filter(row => row.text !== '').map((row, i) => ({ row, i, file: fileOf(row, column) }))
+    .sort((a, b) => byteOrder(a.file, b.file) || a.i - b.i).map(entry => entry.row);
+  return [header, ...sorted].map(record => `${record.text}\r\n`).join('');
+}
+
 function readLedger(rev, cwd) {
   let text;
   try { text = git(['show', `${rev}:${LEDGER}`], cwd); } catch { return null; }
@@ -58,7 +112,7 @@ function readLedger(rev, cwd) {
 
 export function checkInboxLedger({ base, head, cwd = process.cwd() }) {
   const rows = readLedger(head, cwd);
-  if (rows === null) return { present: false, rows: 0, dangling: [], badMarks: [], unmarked: [], added: 0, images: null, unledgered: [], fileless: [], plainJpegs: [], largePlain: [] };
+  if (rows === null) return { present: false, rows: 0, dangling: [], badMarks: [], unmarked: [], added: 0, images: null, unledgered: [], fileless: [], plainJpegs: [], largePlain: [], form: { notCrlf: [], unsorted: [], strict: false } };
   const byFile = new Map(rows.map(row => [row.file, row]));
   const bySha = new Map();
   for (const row of rows) bySha.set(row.sha, [...(bySha.get(row.sha) ?? []), row]);
@@ -89,7 +143,9 @@ export function checkInboxLedger({ base, head, cwd = process.cwd() }) {
   const present = new Set(files ?? []);
   const fileless = files === null ? [] : rows.map(row => row.file).filter(file => !present.has(file));
   const { plainJpegs, largePlain } = changed === null ? { plainJpegs: [], largePlain: [] } : newImageStorage(base, head, changed, cwd);
-  return { present: true, rows: rows.length, dangling, badMarks, unmarked, added: added.length, images: files === null ? null : files.length, unledgered, fileless, plainJpegs, largePlain };
+  // Check 6 binds a range that changes the ledger (or a run without a base); for the others it is a warning.
+  const form = { ...ledgerForm(git(['show', `${head}:${LEDGER}`], cwd)), strict: changed === null || changed.some(file => file.path === LEDGER) };
+  return { present: true, rows: rows.length, dangling, badMarks, unmarked, added: added.length, images: files === null ? null : files.length, unledgered, fileless, plainJpegs, largePlain, form };
 }
 
 /** Images added base..head under assets-inbox/ whose bytes are new there: JPG/JPEG stored without LFS (plainJpegs) and
@@ -124,8 +180,23 @@ export function inboxImages(rev, cwd) {
     .filter(path => path.startsWith(INBOX) && IMAGE.test(path)).map(path => path.slice(INBOX.length));
 }
 
+const formOk = form => form === undefined || form.notCrlf.length + form.unsorted.length === 0;
 export const ledgerOk = result => result.dangling.length === 0 && result.badMarks.length === 0 && result.unmarked.length === 0
-  && result.unledgered.length === 0 && result.fileless.length === 0 && result.plainJpegs.length === 0;
+  && result.unledgered.length === 0 && result.fileless.length === 0 && result.plainJpegs.length === 0
+  && (formOk(result.form) || !result.form.strict);
+
+/** Check 6's lines: what is out of form, and how to fix it. */
+function formLines(form, prefix) {
+  if (formOk(form)) return [];
+  const some = (list, show) => list.slice(0, 8).map(show).join(', ') + (list.length > 8 ? `, … ${list.length - 8} more` : '');
+  const lines = [];
+  if (form.notCrlf.length > 0) lines.push(`${prefix}FORM ${form.notCrlf.length} row(s) of ${LEDGER} end in LF, not CRLF: line ${some(form.notCrlf, line => line)}`);
+  if (form.unsorted.length > 0) lines.push(`${prefix}FORM ${form.unsorted.length} row(s) out of the file column's byte order: ${some(form.unsorted, ({ line, file, after }) => `line ${line} ${file} (after ${after})`)}`);
+  lines.push(`${prefix}  The ledger keeps every row ending in CRLF and its rows sorted by file (byte order, as LC_ALL=C sort); a new row goes in its place, not at the end (decision RR11).`);
+  lines.push(`${prefix}  Fix: node scripts/checks/inboxLedger.mjs --fix-form   (rewrites ${LEDGER}: header first, rows sorted by file, CRLF line ends; nothing else changes — git diff --stat shows only the moved and re-ended rows), then commit it.`);
+  lines.push(`${prefix}  Or by hand (Mac or Linux; no field before file holds a comma): f=${LEDGER}; { head -n 1 "$f" | tr -d '\\r'; tail -n +2 "$f" | tr -d '\\r' | LC_ALL=C sort -t, -k2,2; } | awk '{ printf "%s\\r\\n", $0 }' > "$f.tmp" && mv "$f.tmp" "$f"`);
+  return lines;
+}
 
 export function formatLedgerResult(result) {
   const { present, rows, dangling, badMarks, unmarked, added, images, unledgered, fileless, plainJpegs, largePlain } = result;
@@ -133,8 +204,12 @@ export function formatLedgerResult(result) {
   const count = images === null ? 'no assets-inbox change, rows = images not checked' : `${images} image(s) under assets-inbox/`;
   // A warning, not a failure: a large new image stored as plain bytes (every clone carries it in full).
   const warnings = largePlain.map(({ file, bytes }) => `  warning: ${file} is ${(bytes / 2 ** 20).toFixed(2)} MB and not in Git LFS — add its folder's pattern to .gitattributes (filter=lfs)`);
+  // Check 6 out of form in a range that leaves the ledger alone: a warning (it fails the push that changes the ledger).
+  const form = result.form ?? { notCrlf: [], unsorted: [], strict: false };
+  if (!form.strict) warnings.push(...formLines(form, '  warning: '));
   if (ledgerOk(result)) return [`ledger: ${rows} rows, ${count}${images === null ? '' : ', one row each'}, every replaced_by path is a ledger row, canonical marks match, ${added} new row(s) and none an unmarked duplicate`, ...warnings].join('\n');
-  const lines = [`ledger: ${rows} rows vs ${count}: ${unledgered.length} image(s) without a row, ${fileless.length} row(s) without a file, ${plainJpegs.length} new JPG(s) outside LFS, ${dangling.length} dangling replaced_by, ${badMarks.length} bad canonical mark(s), ${unmarked.length} new duplicate row(s) without a canonical mark`];
+  const lines = [`ledger: ${rows} rows vs ${count}: ${unledgered.length} image(s) without a row, ${fileless.length} row(s) without a file, ${plainJpegs.length} new JPG(s) outside LFS, ${dangling.length} dangling replaced_by, ${badMarks.length} bad canonical mark(s), ${unmarked.length} new duplicate row(s) without a canonical mark, ${form.strict ? form.notCrlf.length + form.unsorted.length : 0} row(s) out of form`];
+  if (form.strict) lines.push(...formLines(form, '  '));
   for (const file of unledgered) lines.push(`  NOROW ${file}`);
   if (unledgered.length > 0) lines.push(`  Every image (png, jpg, jpeg, webp, gif, svg) under assets-inbox/ has one ledger row (wave, file, sha256, status…), retired or moved files too (docs/ASSET_INBOX.md).`);
   for (const file of fileless) lines.push(`  NOFILE ${file}`);
@@ -149,7 +224,13 @@ export function formatLedgerResult(result) {
   return [...lines, ...warnings].join('\n');
 }
 
-if (isMain(import.meta.url)) {
+if (isMain(import.meta.url) && process.argv.includes('--fix-form')) {
+  const before = readFileSync(LEDGER, 'utf8');
+  const after = fixLedgerForm(before);
+  const { notCrlf, unsorted } = ledgerForm(before);
+  if (after === before) console.log(`${LEDGER}: already in form (CRLF, sorted by file)`);
+  else { writeFileSync(LEDGER, after); console.log(`${LEDGER}: rewritten — ${notCrlf.length} line end(s) made CRLF, ${unsorted.length} row(s) that were out of order put in place; check git diff --stat, then commit`); }
+} else if (isMain(import.meta.url)) {
   const result = checkInboxLedger(resolveRange());
   console.log(formatLedgerResult(result));
   process.exitCode = ledgerOk(result) ? 0 : 1;
