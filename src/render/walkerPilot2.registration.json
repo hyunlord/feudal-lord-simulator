@@ -6,8 +6,8 @@
     "hands": "Visible final-raster hand centres manually inspected on coordinate grids; 1px uncertainty.",
     "grips": "Source prop-anchors.json; all sixteen final PNGs visually inspected.",
     "runtimeBytes": "Identical to preserved final source PNG; no C2PA chunks present.",
-    "visualStatus": "Contacts and winter cloak calibration pending; numeric contact is not pixel-contact proof.",
-    "cloak": "Each of 32 final body/cloak raster combinations inspected. Native 74px overlay registration (x0,y0,scale1) retained; browser zoom/contact review remains pending.",
+    "visualStatus": "32 final body cells and16 directional grips visually reviewed in actual browser composites at0.6/1/1.4; physical winter occlusion retained. Normal-scene20-file witness union; not every target is unobstructed. See docs/verification/walker-pilot2/README.md.",
+    "cloak": "Each of32 final body/cloak browser composites inspected. Native74px overlay registration (x0,y0,scale1) retained at0.6/1/1.4. NW elder staff partly hidden by cloak; no visibility-driven enlargement.",
     "staffScale": "2 * frame.figureHeight / 61 native body-cell pixels per prop pixel, fixing the 28px opaque shaft at 16.1574 world px for a 17.6px human. Held personal staff; ground contact is not a simulation claim."
   },
   "sheets": [

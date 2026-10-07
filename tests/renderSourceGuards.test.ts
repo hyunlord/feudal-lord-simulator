@@ -7,6 +7,15 @@ const SOURCE_ROOT = new URL("../src", import.meta.url);
 const REPO_ROOT = new URL("..", import.meta.url);
 
 const PHASE5_RENDER_FILES = [
+  "src/render/art/artAdapters.ts",
+  "src/render/art/artContract.ts",
+  "src/render/art/artRegistryValidation.ts",
+  "src/render/art/artSelection.ts",
+  "src/render/art/walkerArt.ts",
+  "src/render/art/walkerArtValidation.ts",
+  "src/render/walkerArtManifest.ts",
+  "src/render/walkerComposer.ts",
+  "src/render/walkerLook.ts",
   "src/render/renderer.ts",
   "src/render/onboardingGuidanceOverlay.ts",
   "src/render/renderVisibility.ts",
@@ -44,6 +53,15 @@ const PHASE5_RENDER_FILES = [
 ] as const;
 
 const PHASE5_IMPLEMENTATION_FILES = [
+  "src/render/art/artAdapters.ts",
+  "src/render/art/artContract.ts",
+  "src/render/art/artRegistryValidation.ts",
+  "src/render/art/artSelection.ts",
+  "src/render/art/walkerArt.ts",
+  "src/render/art/walkerArtValidation.ts",
+  "src/render/walkerArtManifest.ts",
+  "src/render/walkerComposer.ts",
+  "src/render/walkerLook.ts",
   "src/render/buildingAppearance.ts",
   "src/render/washPoolArt.ts",
   "src/render/washPoolDraw.ts",
