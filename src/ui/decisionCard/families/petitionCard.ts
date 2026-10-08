@@ -1,3 +1,4 @@
+import { isBuildingOpen } from "../../../world/placement";
 import { PETITION_DEFS, type PetitionResponse } from "../../../content/chapterConfig";
 import { LEGACY_AXIS_COPY } from "../../../content/legacyCopy.ko";
 import { LEGACY_BALANCE, LEGACY_BY_RESPONSE } from "../../../content/legacyConfig";
@@ -50,7 +51,8 @@ function answerWords(defId: PetitionDefId, state: GameState, after: GameState, p
   heir: HeirCandidateView | undefined): AnswerWords {
   switch (defId) {
     case "market_charter":
-      return ANSWER.market_charter(response, after.politics?.rights.find(right => right.petitionId === petition.id)?.stallFeePermille ?? null);
+      return ANSWER.market_charter(response, after.politics?.rights.find(right => right.petitionId === petition.id)?.stallFeePermille ?? null,
+        !isBuildingOpen(state, "market") && isBuildingOpen(after, "market"));
     case "restore_right": {
       const decline = lordshipOf(after).decline;
       if (response === "refuse") return ANSWER.restore_right.refuse(label(state, decline?.petitionFrom ?? state.tick));

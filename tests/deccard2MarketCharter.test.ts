@@ -32,3 +32,17 @@ test("with the market charter the same hamlet lists the market and shows no lock
   // Only the market: the charter opens nothing else before its era.
   for (const group of buildMenuGroups(state)) for (const option of group.options) if (option.tool !== "road") assert.equal(isBuildingOpen(state, option.tool), true, option.tool);
 });
+
+test("the charter card says the town may raise a market only when the answer really opens it (the engine's dry run)", async () => {
+  const { petitionStates } = await import("./helpers/deccardCampaignStates");
+  const { petitionCard } = await import("../src/ui/decisionCard/families/petitionCard");
+  const line = "칙허를 내리면 마을이 장터를 세울 수 있게 됩니다. 세울지는 마을이 정합니다.";
+  const has = (state: GameState) => petitionCard(state)!.card.choices.map(choice => [choice.id, choice.later.includes(line)] as const);
+  // The campaign: the charter opens no market before its era (no lord-mode agency) — the line is not said.
+  const campaign = petitionStates().get("market_charter")!;
+  assert.ok(has(campaign).every(([, said]) => !said));
+  // The same petition in a lord-mode hamlet: each granting answer opens the market, refusing does not.
+  const lord = { ...campaign, agency: lordGame().agency };
+  assert.equal(isBuildingOpen(lord, "market"), false);
+  for (const [id, said] of has(lord)) assert.equal(said, id !== "refuse", id);
+});
