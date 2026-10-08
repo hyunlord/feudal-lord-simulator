@@ -6,10 +6,10 @@ import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { decodeSave } from '../src/save/saveCodec.ts';
+import { withResidentWalkers } from '../src/render/presentation/residentWalkerState.ts';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
 
-const IDS = ['ck_evt_005', 'ck_evt_092', 'ck_evt_211', 'ck_evt_201', 'ck_evt_038'];
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const CHIP = '.event-chip[data-story="decision_trace"]';
 const CARD = '.event-card[data-story="decision_trace"]';
@@ -21,6 +21,9 @@ export function readCheckpoints(directory, manifestSha256) {
   if (!/^[a-f0-9]{64}$/.test(manifestSha256) || sha(manifestBytes) !== manifestSha256) throw new Error('Manifest SHA-256 mismatch');
   const manifest = JSON.parse(manifestBytes);
   if (manifest.schemaVersion !== 1 || manifest.dirtyPaths !== '' || !/^[a-f0-9]{40}$/.test(manifest.sourceRevision)) throw new Error('Invalid checkpoint provenance');
+  if (!Array.isArray(manifest.pairs) || manifest.pairs.length === 0) throw new Error('Checkpoint pairs must be nonempty');
+  const ids = manifest.pairs.map(pair => pair?.entryId);
+  if (ids.some(id => typeof id !== 'string' || !/^ck_evt_\d{3}$/.test(id)) || new Set(ids).size !== ids.length) throw new Error('Checkpoint entry IDs must be valid and unique');
   const read = record => {
     if (record === null || typeof record?.file !== 'string' || basename(record.file) !== record.file) throw new Error('Invalid checkpoint filename');
     const compressed = readFileSync(join(directory, record.file));
@@ -34,10 +37,9 @@ export function readCheckpoints(directory, manifestSha256) {
     return { record, text: bytes.toString('utf8'), state: decoded.envelope.state };
   };
   const cases = [];
-  for (const id of IDS) {
-    const matches = manifest.pairs.filter(pair => pair.entryId === id);
-    if (matches.length !== 1) throw new Error(`Expected one smoke checkpoint pair: ${id}`);
-    const pair = matches[0];
+  const finalCheckpoint = read(manifest.finalSave);
+  for (const pair of manifest.pairs) {
+    const id = pair.entryId;
     const answer = read(pair.answer);
     const decision = answer.state.history?.records.find(record => record.id === pair.decisionId);
     if (decision?.kind !== 'decision' || decision.tick !== pair.decisionTick) throw new Error(`Missing actual answer history: ${id}`);
@@ -47,9 +49,9 @@ export function readCheckpoints(directory, manifestSha256) {
       const result = checkpoint.state.history?.records.find(record => record.id === pair.consequence.historyId);
       if (result === undefined || result.tick <= pair.decisionTick || !result.because?.some(cause => cause.decisionId === pair.decisionId)) throw new Error(`Missing actual consequence link: ${id}`);
       cases.push({ name: `${id}-consequence`, pair, checkpoint });
-    } else cases.push({ name: `${id}-final-no-pair`, pair, checkpoint: read(manifest.finalSave) });
+    } else cases.push({ name: `${id}-final-no-pair`, pair, checkpoint: finalCheckpoint });
   }
-  cases.push({ name: 'final-year-review', pair: null, checkpoint: read(manifest.finalSave) });
+  cases.push({ name: 'final-year-review', pair: null, checkpoint: finalCheckpoint });
   return { manifest, manifestSha256, cases };
 }
 
@@ -103,7 +105,13 @@ async function inspectCase(browser, item, out, url) {
       'History navigation is manual. No first-season automatic visibility claim. No simulation resumed.'] };
   page.on('pageerror', error => row.errors.push(String(error)));
   try {
-    const runtime = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state());
+    const expectedPresentationJson = JSON.stringify(withResidentWalkers(state));
+    row.expectedPresentationSha256 = sha(expectedPresentationJson);
+    row.presentationContract = 'Proof port returns withResidentWalkers presentation state; raw save is unchanged input.';
+    const runtimeJson = await page.evaluate(() => JSON.stringify(window.__FEUDAL_PHASE10_PROOF__.state()));
+    const runtime = JSON.parse(runtimeJson);
+    row.initialPresentationStateExact = runtimeJson === expectedPresentationJson;
+    row.initialPresentationSha256 = sha(runtimeJson);
     row.loadedTick = runtime.tick;
     row.initialStateExact = JSON.stringify(runtime) === JSON.stringify(state);
     row.initialHistoryTraceExact = JSON.stringify([runtime.history, runtime.trace]) === JSON.stringify([state.history, state.trace]);
@@ -121,6 +129,11 @@ async function inspectCase(browser, item, out, url) {
         row.panels.push(await capture(page, out, `${item.name}-chip`, CARD));
         if (await visible(page, `${CARD} .event-card-chronicle`)) {
           await page.locator(`${CARD} .event-card-chronicle`).click(); row.actions.push(`${CARD} .event-card-chronicle`);
+          await page.locator('.chronicle-screen:visible').waitFor({ timeout: 10000 });
+          await page.waitForTimeout(150);
+          row.chipSelectedRecords = await page.locator('.chronicle-card[data-selected="true"]').evaluateAll(nodes => nodes.map(node => ({
+            recordId: node.getAttribute('data-record'), text: node.innerText })));
+          row.chipMatchesExpectedDecision = row.chipSelectedRecords.some(record => record.recordId === item.pair.decisionId);
           row.panels.push(await capture(page, out, `${item.name}-chip-history`, '.chronicle-detail'));
         }
       }
@@ -144,7 +157,11 @@ async function inspectCase(browser, item, out, url) {
         if (row.exactCauseBackLinkShown) { await page.locator(back).click(); row.actions.push(back); }
       }
     }
-    const finalState = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state());
+    const finalPresentationJson = await page.evaluate(() => JSON.stringify(window.__FEUDAL_PHASE10_PROOF__.state()));
+    const finalState = JSON.parse(finalPresentationJson);
+    row.finalPresentationSha256 = sha(finalPresentationJson);
+    row.finalPresentationStateExact = finalPresentationJson === expectedPresentationJson;
+    row.presentationUnchangedDuringCapture = finalPresentationJson === runtimeJson;
     row.finalTick = finalState.tick;
     row.tickUnchanged = finalState.tick === state.tick;
     row.finalHistoryTraceExact = JSON.stringify([finalState.history, finalState.trace]) === JSON.stringify([state.history, state.trace]);

@@ -162,3 +162,7 @@ JS
 각 3년 창에는 해당 결정의 because 연결뿐 아니라 `params.target === 'dues'`인 history가 어느 원인으로도 없다. 보관 history의 마지막 dues 결과는 `h-020166@309600`(stall_fee income 23, expense 0, because h-020165)이다. 원자료는 전체 ledger·매 tick 전체 상태를 보관하지 않았으므로 **이후 수수료가 없었다거나 방침이 무효과였다는 증거는 아니다**. `src/engine/decisionTrace.ts:466` 이후 수입 추적은 살아 있는 각 결정을 순회하므로 ‘새 답변이 이전 원인을 덮었다’만으로 설명해서도 안 된다. 엔진 담당에는 해당 구간 ledger와 dues 결과 생성 조건을 함께 남기는 제한 재현을 요청한다. 3년 이후 지속 방침의 연결 정책도 별도 판단 사항이다.
 
 이 인계는 위 단일 대조군의 실제 연결 공백을 기록한다. 코어·canonical 변경이나 소식 등급 전환을 포함하지 않으며, 권리·지속 세율 결정의 무게를 낮출 근거로 사용하지 않는다.
+
+### TRACE-KEEP 통합 후 최신125년 seed1 재확인
+
+깨끗한2485af400의 실제125년 첫 판에서 위9건의 결정 ID·시각·선택과 엄격한3년 창 후속0이 모두 동일했다. [원본·독립 재계산](../verification/eb-weight/kept-2485af4/verification.md), raw SHA-256 `3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd`. TRACE-KEEP 보존 정책 통합으로 이9공백이 해소됐다는 주장은 하지 않는다. seed2·3 합산은 아직 미완료다.
