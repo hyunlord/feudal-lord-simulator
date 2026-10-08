@@ -442,7 +442,9 @@ export function applyFactionRecords(factions: FactionState, records: readonly Hi
     for (const record of own) {
       const delta = Number(record.params?.delta ?? 0);
       relation = clamp(relation + delta);
-      memory.push({ recordId: record.id, tick: record.tick, delta, reason: String(record.params?.reason ?? "") });
+      // DUES-REL: a record that names its decision ties the memory to it (the thread's faction acts read it).
+      const decisionId = record.because?.[0]?.decisionId;
+      memory.push({ recordId: record.id, tick: record.tick, delta, reason: String(record.params?.reason ?? ""), ...(decisionId === undefined ? {} : { decisionId }) });
     }
     return { ...faction, relation, memory };
   }) };

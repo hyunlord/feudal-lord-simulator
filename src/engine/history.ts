@@ -17,6 +17,7 @@
  */
 import { MANOR_HOUSEHOLD } from "./persons.types";
 import { V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
+import { duesBreachDrafts, duesSeasonDrafts } from "./duesMind";
 import { DECISION_RELATION, NEIGHBOUR_FACTION_BY_ESTATE, POLICY_RELATION, SUBSIDY_FACTION } from "../content/decisionRelationConfig";
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
 import { PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
@@ -322,12 +323,9 @@ function relationDraft(after: GameState, factionId: string, delta: number, reaso
  */
 function decisionRelationDrafts(before: GameState, after: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): Draft[] {
   if (after.agency === undefined || before.agency === undefined) return [];
-  if (command.type === "set_market_dues" && after.agency.duesPermille !== before.agency.duesPermille) {
-    const raw = Math.round((before.agency.duesPermille - after.agency.duesPermille) / 100 * DECISION_RELATION.duesPer100Permille);
-    const delta = Math.max(-DECISION_RELATION.duesCap, Math.min(DECISION_RELATION.duesCap, raw));
-    const reason = `set_market_dues:${after.agency.duesPermille}`;
-    return [...relationDraft(after, "merchant_house_1", delta, reason), ...relationDraft(after, "merchant_house_2", delta, reason)];
-  }
+  // DUES-REL (DTR-18): the fee's command moves no mind by itself (the houses answer the fee as it stands, each season,
+  // `duesSeasonDrafts`) — unless it breaks an agreement of the lord's: once, sharply.
+  if (command.type === "set_market_dues") return duesBreachDrafts(before, after);
   if (command.type === "set_project_subsidy") {
     const kind = String(command.kind);
     const was = before.agency.subsidies.find(subsidy => subsidy.kind === kind)?.amount ?? 0;
@@ -887,6 +885,8 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
   const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
   drafts.push(...eventDrafts(before, after));
+  // DUES-REL (DTR-18): the season's turn — the merchant houses' mind on the fee as it stands.
+  if (after.tick !== before.tick) drafts.push(...duesSeasonDrafts(after));
   const beforeEras = before.historicalEras?.length ?? 0;
   for (const era of (after.historicalEras ?? []).slice(beforeEras)) {
     drafts.push({ tick: after.tick, kind: "era", template: "era.entered", params: { eraId: era.id, forced: era.forced ? 1 : 0 }, subject: TOWN, severity: 3,

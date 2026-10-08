@@ -86,6 +86,10 @@ export function factionReasonLine(reason: string): string {
   if (kind === "registry") return `「${V4_COPY[a ?? ""]?.title ?? a}」에 대한 영주의 답`;
   if (kind === "manor_petition") return `장원 청원에 ${b === "granted" ? "들어줌" : "물리침"}`;
   if (kind === "set_market_dues") return `좌판세를 평소의 ${Math.round(Number(a) / 10)}%로 정함`;
+  // DUES-REL (DTR-18): the fee as it stands against the agreed or customary rate; an agreement the lord broke.
+  if (kind === "dues_held") return Number(a) > Number(b) ? `좌판세가 ${Math.round(Number(b) / 10)}% 기준보다 높게 이어짐(${Math.round(Number(a) / 10)}%)`
+    : `좌판세가 ${Math.round(Number(b) / 10)}% 기준보다 낮게 이어짐(${Math.round(Number(a) / 10)}%)`;
+  if (kind === "agreement_broken") return `${a}년 좌판세 합의를 어겨서`;
   if (kind === "set_project_subsidy") return "사업 장려금을 바꿈";
   if (kind === "set_estate_policy") return "영지 방침을 바꿈";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";

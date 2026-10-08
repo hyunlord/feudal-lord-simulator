@@ -5,6 +5,7 @@
  */
 import type { GameState } from "../engine/engine.types";
 import { decisionRemembers } from "../engine/decisionReads";
+import { duesSeasonStep } from "../engine/duesMind";
 import { traceOf } from "../engine/decisionTrace";
 import type { GameAction } from "./gameStore.types";
 import { gameReducer } from "./gameStore";
@@ -22,6 +23,12 @@ export function answerOutlook(state: GameState, command: GameAction): { readonly
     ?? traceOf(after).decisions.find(entry => entry.lastTick === after.tick);
   const remembers = decision === undefined ? [] : decisionRemembers(after, decision.id).filter(entry => entry.tick === after.tick).map(({ actor, delta }) => ({ actor, delta }));
   for (const entry of remembers) now.push({ key: "relation", actor: entry.actor, amount: entry.delta });
+  // DUES-REL (DTR-18): an agreement this answer breaks — the houses' sharp turn now ("○○년 합의를 어겨서").
+  for (const record of (after.history?.records ?? []).slice(state.history?.records.length ?? 0)) {
+    if (record.template === "faction.relation" && String(record.params?.reason ?? "").startsWith("agreement_broken:")) {
+      now.push({ key: "agreement_broken", actor: record.subject.id, amount: Number(record.params?.delta ?? 0) });
+    }
+  }
   const later: LaterRow[] = [];
   for (const target of decision?.targets ?? []) {
     if (target.startsWith("promise:")) {
@@ -40,6 +47,9 @@ export function answerOutlook(state: GameState, command: GameAction): { readonly
       later.push({ key: "timber_order", tick: null, amount: after.timberOrder ?? 0 });
     } else if (target === "dues") {
       later.push({ key: "stall_dues", tick: null, amount: after.agency?.duesPermille ?? 1000 });
+      // DUES-REL (DTR-18): the merchant houses' turn each season while the fee stands so (against the agreed or customary rate).
+      const step = duesSeasonStep(after);
+      if (step.perSeason !== 0) later.push({ key: "dues_mind", tick: null, perSeason: step.perSeason, amount: step.reference });
     } else if (target.startsWith("faction:")) {
       later.push({ key: "faction_mind", tick: null, actor: target.slice("faction:".length) });
     }
