@@ -1,7 +1,7 @@
 /**
  * DEC-TRACE §3 (docs/design/dec-trace.md, A6): a decision costs or wins a faction's mind — the side the lord took is
  * remembered (lord mode only). The registry's event: its sender is pleased by the most the lord gave of the choices and
- * displeased by the least. The stall dues: the merchant houses, by how far they rose or fell. A subsidy: the faction its
+ * displeased by the least. A subsidy: the faction its
  * kind serves. The estate policy: the factions it favours or burdens.
  */
 import type { EstatePolicy } from "../engine/townAgency.types";
@@ -9,9 +9,7 @@ import type { EstatePolicy } from "../engine/townAgency.types";
 export const DECISION_RELATION = {
   /** The registry event's sender: the most given of its choices, the least given (the choices between move nothing). */
   registrySide: 6,
-  /** The merchant houses: per 100 permille the dues rose (−) or fell (+), at most this cap either way. */
-  duesPer100Permille: 5,
-  duesCap: 10,
+  // The merchant houses and the stall dues: DUES-REL (`duesMindConfig.ts`) — the fee as it stands, not its changes.
   /** The faction a subsidy's kind serves: set or raised (+), withdrawn (−). */
   subsidy: 3,
   /** The defendant's house, when the lord sues it or enforces a judgment on it. */

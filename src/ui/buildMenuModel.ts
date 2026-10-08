@@ -6,7 +6,7 @@ import {
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
-import { buildingUnlockStage, isBuildingUnlocked, placementSpendableResource } from "../world/placement";
+import { buildingUnlockStage, isBuildingOpen, placementSpendableResource } from "../world/placement";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { resourceName } from "../content/resourceCatalog.ko";
 import { BUILD_MENU_MODEL_COPY, BUILD_TOOL_GROUP_LABELS, buildToolPurpose } from "./buildMenuCopy.ko";
@@ -81,7 +81,7 @@ export const BUILD_TOOL_OPTIONS: readonly BuildToolOption[] = [
 
 export function buildMenuGroups(state: GameState, { includeEraLocked = false }: { readonly includeEraLocked?: boolean } = {}): readonly BuildToolGroup[] {
   const options = BUILDING_TOOL_OPTIONS
-    .filter((option) => includeEraLocked || isBuildingUnlocked(option.tool, state.era, state.scenarioId))
+    .filter((option) => includeEraLocked || isBuildingOpen(state, option.tool))
     .map((option) => ({
       ...option,
       affordable: buildToolAffordability(option.tool, state).affordable,
@@ -166,9 +166,10 @@ function shortfallLabel(amounts: Partial<Record<ResourceType, number>>): string 
 
 /**
  * UX-0 / UX-1 "해금 안내": a building the settlement stage has not opened yet is shown with a lock and the stage that
- * opens it (e.g. "시장도시 이후"), not hidden; null when it is open.
+ * opens it (e.g. "시장도시 이후"), not hidden; null when it is open. The engine's own rule decides what is open
+ * (`isBuildingOpen`): in lord mode a market charter opens the market before its era (DEC-TRACE §6, DTR-8).
  */
-export function eraLockReason(tool: PlacementTool, state: Pick<GameState, "era" | "scenarioId">): string | null {
-  if (tool === "road" || isBuildingUnlocked(tool, state.era, state.scenarioId)) return null;
+export function eraLockReason(tool: PlacementTool, state: Pick<GameState, "era" | "scenarioId" | "agency" | "politics">): string | null {
+  if (tool === "road" || isBuildingOpen(state, tool)) return null;
   return SCENARIO_COPY.unlockedAfter(SCENARIO_COPY.stages[buildingUnlockStage(tool, state.scenarioId)]);
 }

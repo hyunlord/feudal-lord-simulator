@@ -25,8 +25,8 @@ export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "p
   | "person_card"
   /** UI-10: the legacy verdict and the campaign's ending (after chapter 5's page), and the chronicle book (LG-9). */
   | "legacy_ending" | "chronicle_book"
-  /** LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request. */
-  | "estate_petition" | "precedent" | "lord_request"
+  /** LM-R1 (lord mode): a home estate's petition, the town's request. */
+  | "estate_petition" | "lord_request"
   /** EVENT-ART (lord mode): the registry's event card. */
   | "registry_offer"
   /** LM-R2 (lord mode): the father's will to answer, an audit's finding, an off-map estate's petition (the lead wires them). */

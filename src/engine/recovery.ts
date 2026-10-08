@@ -11,16 +11,34 @@ import type { IntakeRules } from "../economy/storage";
 import { houseBuiltLevel } from "../population/houseCondition";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
+import type { Era } from "../content/eraConfig";
+import { constructionDeliveryNeed, isWallConstructionSite } from "../economy/construction";
 
 /** RC-1: the recovery rules are lord mode's. */
 export function recoveryActive(state: Pick<GameState, "agency">): boolean {
   return state.agency !== undefined;
 }
 
-/** RC-6: lord mode's intake rules (the caps' lines); none elsewhere. */
-export const LORD_INTAKE_RULES: IntakeRules = { caps: LORD_INTAKE_CAPS };
-export function lordIntakeRules(state: Pick<GameState, "agency">): IntakeRules | undefined {
-  return recoveryActive(state) ? LORD_INTAKE_RULES : undefined;
+/** RC-6: lord mode's intake rules (the caps' lines); none elsewhere. DTR-19: a line holds from its era on. */
+export const LORD_INTAKE_RULES: IntakeRules = { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined) };
+const ERA_ORDER: Readonly<Record<Era, number>> = { hamlet: 0, palisade: 1, stone_town: 2 };
+const RULES_BY_ERA: Readonly<Record<Era, IntakeRules>> = {
+  hamlet: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 0) },
+  palisade: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 1) },
+  stone_town: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 2) },
+};
+/** DTR-19: the wood's lines wait while a wall waits on timber (its reserve and deliveries need the stores whole). */
+const WOOD: ReadonlySet<string> = new Set(["timber", "logs"]);
+const WALL_BUILDING_RULES: Readonly<Record<Era, IntakeRules>> = {
+  hamlet: { caps: RULES_BY_ERA.hamlet.caps!.filter(line => line.fromEra === undefined || !WOOD.has(line.resource)) },
+  palisade: { caps: RULES_BY_ERA.palisade.caps!.filter(line => line.fromEra === undefined || !WOOD.has(line.resource)) },
+  stone_town: { caps: RULES_BY_ERA.stone_town.caps!.filter(line => line.fromEra === undefined || !WOOD.has(line.resource)) },
+};
+export function lordIntakeRules(state: Pick<GameState, "agency"> & Partial<Pick<GameState, "era" | "constructionSites">>): IntakeRules | undefined {
+  if (!recoveryActive(state)) return undefined;
+  const era = state.era ?? "hamlet";
+  const wallWaits = (state.constructionSites ?? []).some(site => isWallConstructionSite(site) && (constructionDeliveryNeed(site).timber ?? 0) > 0);
+  return wallWaits ? WALL_BUILDING_RULES[era] : RULES_BY_ERA[era];
 }
 
 /** RC-4: the labour shortage, permille — the job slots left unfilled over the slots the town's buildings need. */

@@ -15,12 +15,10 @@ import { holds, type Scope } from "../engine/registryDsl";
 import { bindEntry, holdCost, registryV4Support, v4Entry, type HoldCost, type V4Choice, type V4Entry } from "../engine/registryV4";
 import { stateCalendar } from "../engine/scenarioState";
 import { lordMode } from "../engine/townAgency";
-import { treasuryBalance } from "../ledger/ledger";
 import { eventArtFor, type EventArtId } from "./eventArt";
 import { calendarDays } from "./gameTimeCopy.ko";
 import type { DecisionCardView, DecisionChoiceView } from "./decisionCard/decisionCardTypes";
-import { lordOutcome } from "./decisionCard/families/lordOutcome";
-import { afterAnswer } from "./decisionCard/remembers";
+import { lordAnswer } from "./decisionCard/families/lordOutcome";
 import { courtLine } from "./lordCardsModel";
 import { perState } from "./perState";
 import { sinceLastAnswer, type SinceLastView } from "./lord/since/sinceLastModel";
@@ -33,7 +31,8 @@ import { BINDING_WORDS, PIECE_WORDS, REGISTRY_CARD_COPY, SUIT_STAGE_WORDS, type 
 // out now (`offerChoices`; each other one shut with why), what a hold costs (ER-19 `holdCost`) and the deadline. The
 // answer is `answer_registry_offer`, applied whole or not at all. DEC-CARD: the card is the heavy decision card — the
 // canon's body as what is happening, the bound targets as what is at stake, and each answer's now / later / who
-// remembers from `answer_registry_offer` run on the state (lordOutcome), the canon's tradeoff first.
+// remembers from `answer_registry_offer` — the engine's outlook, and the dry run for what it lacks (DEC-CARD-2
+// `lordAnswer`) — the canon's tradeoff first.
 
 export type RegistryChoiceView = Readonly<{
   id: string; label: string; enabled: boolean;
@@ -197,7 +196,6 @@ export function registryCardView(state: GameState, card: RegistryCard): Registry
   const bound = bindEntry(state, entry, occurrence.bound);
   const offered = new Set(offerChoices(state, occurrence));
   const cost = holdCost(entry);
-  const before = treasuryBalance(state);
   const rows = entry.choices.flatMap((choice, index): (RegistryChoiceView & { readonly answer: DecisionChoiceView })[] => {
     const hold = choice.commands.length === 0;
     const enabled = offered.has(choice.id);
@@ -209,16 +207,15 @@ export function registryCardView(state: GameState, card: RegistryCard): Registry
       const line = REGISTRY_CARD_COPY.shut(shutReason(state, entry, choice, bound));
       return [{ id: choice.id, label, enabled, hold, line, cost: null, treasury: null, answer: { id: choice.id, label, now: [], later: [], remembers: [], refusal: line } }];
     }
-    const after = afterAnswer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: choice.id });
+    const outcome = lordAnswer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: choice.id });
     const tradeoff = words?.tradeoff ?? REGISTRY_CARD_COPY.noTradeoff;
-    const outcome = after === null ? null : lordOutcome(state, after);
     // A hold whose cost is a deadline running on: what the deadline does is the engine's lapse, said in words (the claim's
     // and the relation's costs are in the run's own lines).
     const holdLater = hold && cost?.kind === "deadline" ? [holdWords(state, cost)] : [];
     return [{ id: choice.id, label, enabled, hold, line: tradeoff, cost: hold ? holdWords(state, cost!) : null,
-      treasury: after === null ? 0 : treasuryBalance(after) - before,
+      treasury: outcome?.treasury ?? 0,
       answer: { id: choice.id, label, now: [tradeoff, ...outcome?.now ?? []], later: [...holdLater, ...outcome?.later ?? []], remembers: outcome?.remembers ?? [],
-        refusal: after === null ? REGISTRY_CARD_COPY.shut({ kind: "refused" }) : null } }];
+        refusal: outcome === null ? REGISTRY_CARD_COPY.shut({ kind: "refused" }) : null } }];
   });
   const head = headline(state, card);
   const from = sender(state, entry.id);

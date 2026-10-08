@@ -22,6 +22,7 @@ import { lordBeats } from "../src/ui/lordStoryBeats";
 import type { DecisionCardView } from "../src/ui/decisionCard/decisionCardTypes";
 import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
 import { afterAnswer } from "../src/ui/decisionCard/remembers";
+import { answerOutlook } from "../src/state/decisionOutlook";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../src/ui/lord/decisions/DecisionCards";
 import { gameReducer } from "../src/state/gameStore";
 import type { GameAction } from "../src/state/gameStore.types";
@@ -154,7 +155,7 @@ test("DEC-CARD: the will, the audit and the off-map petition say what is happeni
         const after = afterAnswer(state, ACTION[card.family]!(state, choice.id));
         assert.equal(choice.refusal === null, after !== null, `${name} ${card.family} ${choice.id}: shut exactly when the engine refuses it`);
         if (after === null) continue;
-        const outcome = lordOutcome(state, after);
+        const outcome = lordOutcome(state, after, answerOutlook(state, ACTION[card.family]!(state, choice.id))!);
         assert.ok(outcome.now.every(line => choice.now.includes(line)), `${name} ${choice.id}: the run's now`);
         assert.ok(outcome.later.every(line => choice.later.includes(line)), `${name} ${choice.id}: the run's later`);
         assert.deepEqual(choice.remembers, outcome.remembers, `${name} ${choice.id}`);

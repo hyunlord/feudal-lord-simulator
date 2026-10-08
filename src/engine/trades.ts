@@ -7,7 +7,7 @@
  */
 import { INPUT_PULL } from "../content/recoveryConfig";
 import { inputReorderPoint } from "../agents/deliverySpawn";
-import { LORD_INTAKE_RULES } from "./recovery";
+import { LORD_INTAKE_RULES, lordIntakeRules } from "./recovery";
 import { BUILDING_CONFIG_BY_KIND, type Building, operationSuspended } from "../content/buildingConfig";
 import { hashSeed } from "../content/seedHash";
 import type { StorableResourceType } from "../content/resourceConfig";
@@ -434,7 +434,8 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
   const stuck = stuckStock(state).filter(entry => entry.source === "stock" && isStorableResource(entry.resource));
   const entries = stuck.filter(entry => entry.reason === "no_carrier")
     .sort((left, right) => right.amount - left.amount || left.buildingId.localeCompare(right.buildingId));
-  const inventory = createDeliveryInventoryPort(LORD_INTAKE_RULES);
+  const rules = lordIntakeRules(state) ?? LORD_INTAKE_RULES;
+  const inventory = createDeliveryInventoryPort(rules);
   let buildings = state.buildings;
   let moved = 0;
   for (const entry of entries) {
@@ -444,7 +445,7 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
       const available = Math.min(TRADE_BALANCE.carterLoad, capacity, inventory.availableStock(source, resource));
       if (available <= 0) break;
       const receivers = buildings.filter(building => building.id !== source.id && acceptsResource(building.kind, resource))
-        .map(building => ({ building, room: storageIntakeSpace(building, resource, availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind]), LORD_INTAKE_RULES) }))
+        .map(building => ({ building, room: storageIntakeSpace(building, resource, availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind]), rules) }))
         .filter(candidate => candidate.room > 0)
         .sort((left, right) => chebyshev(source.tx, source.ty, left.building.tx, left.building.ty) - chebyshev(source.tx, source.ty, right.building.tx, right.building.ty)
           || left.building.id.localeCompare(right.building.id));
@@ -481,7 +482,7 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
       const target = buildings.find(building => building.id === entry.id)!;
       const source = nearestSource(target);
       if (source === undefined) break;
-      const room = storageIntakeSpace(target, chain.input, availableSpace(target, BUILDING_CONFIG_BY_KIND[target.kind]), LORD_INTAKE_RULES);
+      const room = storageIntakeSpace(target, chain.input, availableSpace(target, BUILDING_CONFIG_BY_KIND[target.kind]), rules);
       const amount = Math.min(TRADE_BALANCE.carterLoad, capacity, entry.want, inventory.availableStock(source, chain.input), room);
       if (amount <= 0) continue;
       buildings = buildings.map(building => building.id === source.id ? { ...building, inventory: { ...building.inventory, [chain.input]: (building.inventory[chain.input] ?? 0) - amount } }

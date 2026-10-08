@@ -4,82 +4,61 @@ import { estatesOf } from "../../../engine/estates";
 import { lordHouse } from "../../../engine/lordshipState";
 import { calendarLabel } from "../../../engine/scenarioState";
 import { lordMode } from "../../../engine/townAgency";
+import { treasuryBreakdown, type TreasuryKind, type TreasuryLine } from "../../../engine/treasuryReads";
 import { LEDGER_PERIOD_TICKS } from "../../../ledger/ledger";
-import { LEDGER_CATEGORY_LABELS } from "../../../ledger/ledgerCopy.ko";
-import type { LedgerCategory, LedgerEntry } from "../../../ledger/ledger.types";
-import { ledgerView } from "../../../ledger/ledgerView";
 import { perState } from "../../perState";
 import { ESTATES_COPY } from "../estates/estatesCopy.ko";
 import { houseNameKo } from "../estates/estatesModel";
 import { TREASURY_COPY as COPY } from "./treasuryCopy.ko";
 
-// DEC-CARD A5: the treasury by estate, read from the ledger as it stands (src/ledger: every cash entry and its sources).
-// An entry belongs to the estate its sources name (`actor estate:<id>`: an estate's season, a petition's fee — the
-// stewardship's postings); the town's own lines name a building, a zone or a right instead, and are the home estate's.
-// Within an estate the categories are put under the lord's four questions — rent, taxes and dues, contracts, spending
-// (every outgoing line) — with "그 밖" for the rest; the amounts and the category names are the ledger's. The window is
-// the ledger's recent one (ledgerView "recent"), as the stock tab's treasury. Lord mode only.
-// The engine has no per-estate read model yet: the request `ledgerByEstate` (DEC-CARD report) would give the estate of
-// each entry directly instead of this reading of its sources.
+// DEC-CARD A5 → DEC-CARD-2: the treasury by estate, read from the engine's `treasuryBreakdown` (DEC-TRACE §6) over the
+// ledger's recent window (as the stock tab's treasury): each estate's lines by the engine's kinds — the home estate,
+// each off-map estate, and the lord's own affairs (a line that names no estate, building or right) — whether the town's
+// money was settled in the window (`settled`), and what the ledger keeps only as roll-ups (`unattributed`, no sources).
+// The attribution and the kinds are the engine's; this file only words them. Lord mode only.
 
-type Group = keyof typeof COPY.groups;
-/** The incoming categories by the lord's question (spending is the sign, not a list). */
-const GROUP_OF: Partial<Record<LedgerCategory, Group>> = {
-  rent: "rent", estate_income: "rent", entry_fine: "rent",
-  stall_fee: "taxes", toll: "taxes", mill_toll: "taxes", murage: "taxes", war_tax: "taxes", fulling_toll: "taxes", ulnage: "taxes",
-  cloth_toll: "taxes", poll_tax: "taxes", fee_farm: "taxes", charter_fee: "taxes",
-  marriage_portion: "contracts", promise_payment: "contracts", instalment: "contracts", registry_settlement: "contracts", war_loan: "contracts",
-};
-const GROUP_ORDER: readonly Group[] = ["rent", "taxes", "contracts", "other", "spending"];
+/** The engine's estate for the lord's own affairs (`treasuryBreakdown` rows: an estate id, or this). */
+const LORD_ROW = "lord";
+const KIND_ORDER: readonly TreasuryKind[] = ["rents_dues", "petitions", "contracts", "marriage", "inheritance", "factions", "crown_war", "trade", "building", "spending", "other"];
 
-export type TreasuryGroupRow = Readonly<{ group: Group; line: string; amount: number; parts: readonly string[] }>;
+export type TreasuryGroupRow = Readonly<{ group: TreasuryKind; line: string; amount: number; parts: readonly string[] }>;
 export type TreasuryEstateRow = Readonly<{ estateId: string; name: string; home: boolean; net: string; amount: number; groups: readonly TreasuryGroupRow[] }>;
-export type TreasuryView = Readonly<{ window: string; net: string; estates: readonly TreasuryEstateRow[]; none: string | null; note: string }>;
+export type TreasuryView = Readonly<{
+  window: string; net: string; settled: string; estates: readonly TreasuryEstateRow[]; unattributed: string | null; none: string | null; note: string;
+}>;
 
-/** The estate an entry's sources name, else the home estate. */
-export function entryEstate(entry: Pick<LedgerEntry, "sourceRefs">): string {
-  const named = entry.sourceRefs.find(source => source.type === "actor" && source.id.startsWith("estate:"));
-  return named === undefined ? HOME_ESTATE_ID : named.id.slice("estate:".length);
-}
-
-function estateName(state: GameState, estateId: string): string {
+/** An estate's name as the lord screens say it: the home estate by the lord's house, an off-map one by its own. */
+export function estateName(state: GameState, estateId: string): string {
   if (estateId === HOME_ESTATE_ID) return ESTATES_COPY.homeName(houseNameKo(lordHouse(state).name));
+  if (estateId === LORD_ROW) return COPY.lordRow;
   const estate = estatesOf(state).estates.find(entry => entry.id === estateId);
   return ESTATES_COPY.estateName(houseNameKo(estate?.name ?? estateId));
 }
 
-function groupRows(entries: readonly LedgerEntry[]): readonly TreasuryGroupRow[] {
-  const sums = new Map<Group, Map<LedgerCategory, number>>();
-  for (const entry of entries) {
-    const group: Group = entry.amount < 0 ? "spending" : GROUP_OF[entry.category] ?? "other";
-    const byCategory = sums.get(group) ?? new Map<LedgerCategory, number>();
-    byCategory.set(entry.category, (byCategory.get(entry.category) ?? 0) + entry.amount);
-    sums.set(group, byCategory);
-  }
-  return GROUP_ORDER.flatMap(group => {
-    const byCategory = sums.get(group);
-    if (byCategory === undefined) return [];
-    const parts = [...byCategory].sort((left, right) => Math.abs(right[1]) - Math.abs(left[1]));
-    const amount = parts.reduce((sum, [, value]) => sum + value, 0);
-    return [{ group, amount, line: COPY.group(COPY.groups[group], amount), parts: parts.map(([category, value]) => COPY.part(LEDGER_CATEGORY_LABELS[category], value)) }];
+function groupRows(lines: readonly TreasuryLine[]): readonly TreasuryGroupRow[] {
+  return KIND_ORDER.flatMap(kind => {
+    const line = lines.find(entry => entry.kind === kind);
+    if (line === undefined) return [];
+    const amount = line.income - line.expense;
+    const parts = line.income > 0 && line.expense > 0 ? [COPY.came(line.income), COPY.went(line.expense)] : [];
+    return [{ group: kind, amount, line: COPY.group(COPY.kinds[kind], amount), parts }];
   });
 }
 
 /** The stock tab's treasury by estate (lord mode only; null otherwise). Once per state (perState). */
 export const treasuryByEstate = perState((state: GameState): TreasuryView | null => {
   if (!lordMode(state)) return null;
-  const entries = ledgerView(state, "cash", "recent").entries.filter(entry => entry.category !== "opening_balance");
-  const byEstate = new Map<string, LedgerEntry[]>();
-  for (const entry of entries) {
-    const estateId = entryEstate(entry);
-    byEstate.set(estateId, [...byEstate.get(estateId) ?? [], entry]);
-  }
-  const estates = [...byEstate].map(([estateId, list]) => {
-    const amount = list.reduce((sum, entry) => sum + entry.amount, 0);
-    return { estateId, name: estateName(state, estateId), home: estateId === HOME_ESTATE_ID, amount, net: COPY.net(amount), groups: groupRows(list) };
-  }).sort((left, right) => Number(right.home) - Number(left.home) || Math.abs(right.amount) - Math.abs(left.amount) || left.estateId.localeCompare(right.estateId));
   const first = Math.max(0, state.tick - LEDGER_PERIOD_TICKS + 1);
-  const total = entries.reduce((sum, entry) => sum + entry.amount, 0);
-  return { window: COPY.window(calendarLabel({ ...state, tick: first }), calendarLabel(state)), net: COPY.net(total), estates,
+  const breakdown = treasuryBreakdown(state, first, state.tick + 1);
+  const byEstate = new Map<string, TreasuryLine[]>();
+  for (const row of breakdown.rows) byEstate.set(row.estate, [...byEstate.get(row.estate) ?? [], row]);
+  const rank = (estateId: string) => estateId === HOME_ESTATE_ID ? 0 : estateId === LORD_ROW ? 2 : 1;
+  const estates = [...byEstate].map(([estateId, lines]) => {
+    const amount = lines.reduce((sum, line) => sum + line.income - line.expense, 0);
+    return { estateId, name: estateName(state, estateId), home: estateId === HOME_ESTATE_ID, amount, net: COPY.net(amount), groups: groupRows(lines) };
+  }).sort((left, right) => rank(left.estateId) - rank(right.estateId) || Math.abs(right.amount) - Math.abs(left.amount) || left.estateId.localeCompare(right.estateId));
+  return { window: COPY.window(calendarLabel({ ...state, tick: first }), calendarLabel(state)), net: COPY.net(breakdown.net),
+    settled: breakdown.settled ? COPY.settled : COPY.unsettled, estates,
+    unattributed: breakdown.unattributed === 0 ? null : COPY.unattributed(breakdown.unattributed),
     none: estates.length === 0 ? COPY.none : null, note: COPY.homeNote };
 });

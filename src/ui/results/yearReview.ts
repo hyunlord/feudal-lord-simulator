@@ -29,7 +29,16 @@ export type YearReviewGroup = Readonly<{ key: string; heading: string; lines: re
 export type YearReviewView = Readonly<{
   year: number;
   title: string;
+  /** DEC-CARD-2: the engine's yearReview (lord mode) or v1 (the sandbox and the campaign). */
+  lord: boolean;
+  /** DEC-CARD-2 (lord mode): the house's big changes, first. */
+  house: readonly string[];
   decisions: readonly YearReviewDecision[];
+  /** DEC-CARD-2 (lord mode): the steward's answers by the standing policies (empty in v1). */
+  steward: readonly YearReviewDecision[];
+  /** DEC-CARD-2 (lord mode): what followed, grouped by the decision behind it; what the community built in a builder's place. */
+  threads: readonly YearReviewGroup[];
+  community: readonly string[];
   answers: readonly string[];
   relations: readonly YearReviewGroup[];
   receipts: readonly string[];
@@ -108,7 +117,18 @@ export function yearReview(state: GameState, year: number): YearReviewView {
   const town = ledgers.length === 0 ? [] : [copy.population(Math.round(people)), copy.money(moneyFull(Math.round(income)), moneyFull(Math.round(expense)))];
   const quiet = decisions.length === 0 && answers.length === 0 && relations.length === 0 && receipts.length === 0;
   const still = ledgers.length === 0 || (Math.round(people) === 0 && Math.round(income) === 0 && Math.round(expense) === 0);
-  return { year, title: copy.title(year), decisions, answers, relations, receipts, town: quiet && still ? [] : town, empty: quiet && still ? copy.nothing : null };
+  return { year, title: copy.title(year), lord: false, house: [], decisions, steward: [], answers, relations, receipts, threads: [], community: [],
+    town: quiet && still ? [] : town, empty: quiet && still ? copy.nothing : null };
+}
+
+/** The town's year in its season ledgers: the people and the money (a quiet year still shows them, P-T1). */
+export function yearTown(state: GameState, year: number): readonly string[] {
+  const copy = RESULTS_COPY.year;
+  const ledgers = (state.seasons?.history ?? []).filter(ledger => ledger.year === year);
+  const people = Math.round(ledgers.reduce((sum, ledger) => sum + ledger.popDelta, 0));
+  const income = Math.round(ledgers.reduce((sum, ledger) => sum + ledger.income, 0));
+  const expense = Math.round(ledgers.reduce((sum, ledger) => sum + ledger.expense, 0));
+  return ledgers.length === 0 || (people === 0 && income === 0 && expense === 0) ? [] : [copy.population(people), copy.money(moneyFull(income), moneyFull(expense))];
 }
 
 /** The year just ended: the card the hook opens at the first tick of the next year. */

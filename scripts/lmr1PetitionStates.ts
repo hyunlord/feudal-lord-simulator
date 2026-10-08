@@ -3,8 +3,8 @@
 // the home petitions as they come, tenants granted, so the kinds settle into precedents; the town's requests granted):
 //  - `home-<kind>`: the first tick each of the twelve home petition kinds waits for the lord (FIX-14: they come in cycles
 //    of twelve, the first cycle by about 1305);
-//  - `precedent`: the first season the steward answered one by precedent (ER-6: the lord's same answer twice running, not
-//    the year's first), as its season report shows it;
+//  (DEC-CARD-2: the `precedent` state is gone with the precedent — DEC-TRACE DTR-1 — the steward's season is the season
+//  card's "청지기가 처리한 일" now;)
 //  - `request`: the first week the town asks its lord (TA-7: the market town's proclamation, the wall, timber); none by
 //    1321 → the latest state with the proclamation the TA-12 wait would ask for (`injected: true` in moments.json);
 //  - `guardian`: `home-wardship` with its lord made 15 and the engine's own wardship begun (`beginWardship`: the mother,
@@ -27,7 +27,7 @@ import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { openPetitions } from "../src/engine/politics";
-import { lordRequestView, openHomePetitions, precedentView } from "../src/ui/lordCardsModel";
+import { lordRequestView, openHomePetitions } from "../src/ui/lordCardsModel";
 
 /** LM-E8: seed 3's town asks its lord within the slice's 20 years (docs/verification/lme8/REPORT.md: the charter, timber). */
 const SEED = 3;
@@ -46,11 +46,10 @@ const save = (name: string, state: GameState, about: Record<string, unknown>) =>
 const END = 21 * 4_000;
 let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: SEED })!;
 const kinds = new Set<string>();
-let precedent = false;
 let request = false;
 let homeWardship: GameState | null = null;
-while (state.tick < END && (kinds.size < HOME_PETITION_ORDER.length || !precedent || !request)) {
-  // The moments as the lord finds them (before he acts this tick); the precedent and the request with nothing else waiting.
+while (state.tick < END && (kinds.size < HOME_PETITION_ORDER.length || !request)) {
+  // The moments as the lord finds them (before he acts this tick); the request with nothing else waiting.
   const waiting = openHomePetitions(state);
   for (const petition of waiting) {
     if (kinds.has(petition.kind)) continue;
@@ -60,10 +59,6 @@ while (state.tick < END && (kinds.size < HOME_PETITION_ORDER.length || !preceden
     if (petition.kind === "wardship") homeWardship = state;
   }
   const quiet = waiting.length === 0 && openPetitions(state).length === 0;
-  if (!precedent && quiet) {
-    const view = precedentView(state);
-    if (view !== null) { precedent = true; save("precedent", state, { petitions: view.key, items: view.items }); }
-  }
   if (!request && quiet) {
     const view = lordRequestView(state);
     if (view !== null && view.command !== null) { request = true; save("request", state, { request: view.kind, command: view.command.type, injected: false }); }
@@ -85,4 +80,4 @@ if (homeWardship !== null) {
   save("guardian", ward, { lord: lord.id, age: 15, guardian: ward.lordship?.wardship?.guardianId ?? null, injected: "the lord's birth year" });
 }
 writeFileSync(join(out, "moments.json"), JSON.stringify(found, null, 1));
-process.stderr.write(`kinds ${kinds.size}/${HOME_PETITION_ORDER.length}, precedent ${precedent}, request ${request} (end tick ${state.tick})\n`);
+process.stderr.write(`kinds ${kinds.size}/${HOME_PETITION_ORDER.length}, request ${request} (end tick ${state.tick})\n`);

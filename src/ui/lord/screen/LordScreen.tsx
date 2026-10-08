@@ -6,6 +6,7 @@ import { PortfolioPanel, portfolioGate } from "../estates/PortfolioPanel";
 import { LedgerPanel, ledgerGate } from "../ledger/LedgerPanel";
 import { NegotiationPanel, negotiationGate } from "../negotiation/NegotiationPanel";
 import { RegionPanel, regionGate } from "../region/RegionPanel";
+import { StandingPolicyPanel, policyGate } from "../steward/StandingPolicyPanel";
 import { useUiParts } from "../uiPartArt";
 import { LORD_SCREEN_COPY as COPY } from "./lordScreenCopy.ko";
 import type { LordNavGate, LordPanelProps, LordScreenId } from "./lordScreenTypes";
@@ -26,7 +27,8 @@ export const LORD_NAV: readonly NavItem[] = [
   { id: "council", gate: shut(COPY.soon), Panel: null },
   { id: "marriage", gate: negotiationGate, Panel: NegotiationPanel },
   { id: "ledger", gate: ledgerGate, Panel: LedgerPanel },
-  { id: "petitions", gate: shut(COPY.soon), Panel: null },
+  // DEC-CARD-2: the petitions' item is the standing policies (each kind of small matter, the steward's setting for it).
+  { id: "petitions", gate: policyGate, Panel: StandingPolicyPanel },
   { id: "military", gate: shut(COPY.noRules), Panel: null },
 ];
 export const navIconId = (id: LordScreenId): string => `lord.nav.${id}`;
