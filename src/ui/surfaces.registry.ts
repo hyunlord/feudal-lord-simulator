@@ -604,7 +604,9 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.slice-end.season-card", extends: "modal.slice-end", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-last-year .slice-season-card" }, { wait: ".season-ledger-card", timeout: 30_000 }, { pause: 900 }],
-    requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], data: "1319 winter's season card opened from the end page's link (it does not open by itself at the end)" },
+    // Its content scrolls in its own region, as the lord-mode season card's row (modal.season-ledger.steward) declares.
+    requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
+    data: "1319 winter's season card opened from the end page's link (it does not open by itself at the end)" },
 ];
 
 /**
