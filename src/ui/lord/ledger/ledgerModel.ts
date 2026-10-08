@@ -20,6 +20,7 @@ import { calendarArrivalLabel } from "../../calendarArrival";
 import { durationLabel } from "../../gameTimeCopy.ko";
 import { moneyFull, moneyShort } from "../../money.ko";
 import { lordPersonRow } from "../screen/lordPortrait";
+import { claimOutlook } from "./claimOutlook";
 import { LORD_LEDGER_COPY as COPY, type PromiseState } from "./ledgerCopy.ko";
 
 // LM-R2 (ledger area): the lord screen's promises and suits as pure rows read from the engine's read models —
@@ -28,7 +29,8 @@ import { LORD_LEDGER_COPY as COPY, type PromiseState } from "./ledgerCopy.ko";
 // No engine rule is copied here: whether a press would do anything is the game's own reducer tried on the current state
 // (`would`: the same command the button sends; a refused command hands back the same state object). Where the engine
 // exposes no reason (keepPromiseRefusal, suitActions: filed, docs/requests/engine-lmr2-seen-and-reads.md) the button is
-// shut with a neutral line, never a guessed cause; costs and weights not yet given are not shown (suitActions).
+// shut with a neutral line, never a guessed cause; costs and weights not yet given are not shown (suitActions). PLAY-2:
+// a claim's filing cost and the hearing's two sides are the filing tried on the state (claimOutlook).
 
 /** NG-6 has no "due" status: an open promise is shown due when its deadline falls within a season (the calendar's). */
 export const DUE_WITHIN_TICKS = BALANCE.TICKS_PER_YEAR / 4;
@@ -61,7 +63,8 @@ export type PromiseRow = Readonly<{
   keep: Shut | null; focused: boolean;
 }>;
 export type TermRow = Readonly<{ id: string; kind: string; what: string; amount: string; years: string; end: string; running: boolean }>;
-export type ClaimRow = Readonly<{ id: string; what: string; line: string; refusal: string | null; focused: boolean }>;
+/** PLAY-2: `cost` and `hearing` from the filing tried on the state (claimOutlook), null when it would be refused. */
+export type ClaimRow = Readonly<{ id: string; what: string; line: string; refusal: string | null; cost: string | null; hearing: string | null; focused: boolean }>;
 export type TrackStep = Readonly<{ stage: SuitStage; label: string; at: "done" | "now" | "ahead" }>;
 export type EvidenceRow = Readonly<{ kind: Evidence["kind"]; label: string; given: string | null; bring: Shut | null }>;
 export type PatronRow = Readonly<{ factionId: string; name: string; relation: string }>;
@@ -225,8 +228,10 @@ export function ledgerView(state: GameState, focus: string | null): LedgerView |
   const estates = estatesOf(state);
   const claims = estates.claims.filter(claim => claim.claimant === LORD && claim.status === "open").map(claim => {
     const refusal = fileSuitRefusal(state, claim.id);
+    const outlook = refusal === null ? claimOutlook(state, claim.id) : null;
     return { id: claim.id, what: onWhat(state, claim.estateId, claim.pieceId), line: COPY.claimLine(COPY.basis[claim.basis], claim.strength),
-      refusal: refusal === null ? null : COPY.refusals[refusal], focused: focus === claim.id };
+      refusal: refusal === null ? null : COPY.refusals[refusal], cost: outlook === null ? null : moneyShort(outlook.cost),
+      hearing: outlook === null || outlook.sides === null ? null : COPY.hearingIfFiled(outlook.sides.plaintiff, outlook.sides.defence), focused: focus === claim.id };
   });
   const claimOf = (suit: Suit) => estates.claims.find(claim => claim.id === suit.claimId);
   // The lord's suits under way first (then the closed, newest first); the neighbours' against him apart.

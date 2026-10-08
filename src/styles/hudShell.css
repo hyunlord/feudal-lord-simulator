@@ -52,6 +52,10 @@
 /* contrast-audit selector=".speed-seal-mark" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
 .app-shell .speed-seal-mark { position: absolute; right: 1px; bottom: 1px; padding: 0 2px; font-size: 12px; font-weight: 700; line-height: 1.1;
   color: var(--palette-ink); background-color: var(--palette-vellum); pointer-events: none; }
+/* PLAY-2: the mark holds both fast speeds ("×5·10"); the one the game runs at is inked (the same two tokens, swapped). */
+/* contrast-audit selector=".speed-seal-step[data-on]" fg="--palette-vellum" bg="--palette-ink" size="12" role="body" */
+.app-shell .speed-seal-mark { display: inline-flex; align-items: baseline; }
+.app-shell .speed-seal-step[data-on="true"] { color: var(--palette-vellum); background-color: var(--palette-ink); }
 
 /* Crisis icons: under the speed, at most three, square. */
 .app-shell .crisis-icons { position: absolute; top: calc(var(--hud-right-top) - var(--frame-gap)); right: 0; z-index: 4; display: flex; gap: 4px; }

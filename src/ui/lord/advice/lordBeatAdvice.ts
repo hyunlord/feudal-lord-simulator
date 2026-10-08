@@ -2,6 +2,7 @@ import type { BuildingKind } from "../../../content/buildingConfig";
 import type { GameState } from "../../../engine/engine.types";
 import { lordMode } from "../../../engine/townAgency";
 import type { StoryBeat, StoryKind } from "../../eventStory";
+import { famineNeed } from "./famineAfter";
 import { lordAdvice, whoBuilds, type TownNeed } from "./lordAdvice";
 import { LORD_ADVICE_COPY as COPY } from "./lordAdviceCopy.ko";
 
@@ -26,7 +27,8 @@ function adviceFor(state: GameState, need: TownNeed): string {
 
 function beatAdvice(state: GameState, kind: StoryKind): string | null {
   if (kind === "fire_aftermath") return COPY.fireAftermath;
-  const need = NEED[kind];
+  // PLAY-2: the famine answered — the town's doing and the lord's levers for the bottleneck left (famineAfter).
+  const need = (kind === "famine" ? famineNeed(state) : NEED[kind]) ?? undefined;
   return need === undefined ? null : adviceFor(state, need);
 }
 

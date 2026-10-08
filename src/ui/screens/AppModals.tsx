@@ -24,6 +24,7 @@ import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
 import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
+import { focusChronicleYears } from "../lord/chronicleFocus";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { houseChangeView } from "../results/houseChange";
 import { HouseChangeCard, YearReviewCard } from "../results/ResultCards";
@@ -140,7 +141,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: offMap.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
     {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
-      onChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
+      onChronicle={() => { focusChronicleYears(yearView.year, yearView.year); sendUi({ type: "push_modal", modal: "history" }); }} />}
     {house === null ? null : <HouseChangeCard view={house} onContinue={() => sendUi({ type: "pop_modal" })}
       onNext={next => { sendUi({ type: "pop_modal" }); if (next.kind === "screen") onOpenLord?.(next.screen, next.focus); else onPerson(next.personId); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}

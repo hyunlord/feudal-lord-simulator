@@ -56,6 +56,11 @@ export const LORD_LEDGER_COPY = {
   claimLine: (basis: string, strength: number) => `근거 ${basis} · 힘 ${strength}`,
   fileSuit: "소송 걸기",
   fileSuitLabel: (what: string) => `소송 걸기: ${what}`,
+  /** PLAY-2: the button with the treasury the filing takes now (the game's own command tried on the state). */
+  fileSuitCost: (money: string) => `소송 걸기 · ${money}`,
+  fileSuitCostLabel: (what: string, money: string) => `소송 걸기: ${what} · 비용 ${money}`,
+  /** PLAY-2: the hearing's two sides for the suit filed now (the engine's suitHearing; who wins is not worded). */
+  hearingIfFiled: (plaintiff: number, defence: number) => `지금 걸면 심리에서 청구 쪽 ${plaintiff} · 방어 쪽 ${defence}`,
   refusals: {
     no_claim: "청구가 없습니다", not_open: "이미 다룬 청구입니다", own_title: "이미 권원을 가진 쪽입니다", treasury: "금고가 모자랍니다",
   } satisfies Record<SuitRefusal, string>,
