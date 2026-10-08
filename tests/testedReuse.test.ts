@@ -14,7 +14,7 @@ import { checkTestedChanges, formatTestedChanges, reuseEvidence } from "../scrip
 // test:changed record of the branch, then the trunk moves and the branch merges it (the long gate's race).
 const APP = Array.from({ length: 12 }, (_, i) => `export const line${i} = ${i};`).join("\n") + "\n";
 
-function story(trunkMove: (write: (path: string, text: string) => void, remove: (path: string) => void) => void) {
+function story(trunkMove: (write: (path: string, text: string) => void, remove: (path: string) => void, git: (...args: string[]) => string) => void) {
   const dir = mkdtempSync(join(tmpdir(), "fls-reuse-"));
   const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
   const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
@@ -24,7 +24,8 @@ function story(trunkMove: (write: (path: string, text: string) => void, remove: 
   write("src/engine/core.ts", "export const core = 1;\n");
   write("src/engine/data.ts", "export const data = 1;\n");
   write("src/engine/extra.ts", "export const extra = 1;\n");
-  write("src/engine/rules.ts", 'import { core } from "./core.ts";\nimport { data } from "./data.ts";\nexport const rules = core + data;\n');
+  write("src/engine/rules.ts", 'import { core } from "./core.ts";\nimport { data } from "./data.ts";\nimport table from "./table.json";\nexport const rules = core + data + table.n;\n');
+  write("src/engine/table.json", '{"n":1}\n');
   write("src/ui/panel.tsx", "export const panel = 1;\n");
   write("src/App.tsx", APP);
   write("tests/engine.test.ts", 'import { rules } from "../src/engine/rules.ts";\nimport { extra } from "../src/engine/extra";\n');
@@ -37,13 +38,13 @@ function story(trunkMove: (write: (path: string, text: string) => void, remove: 
   write("src/engine/core.ts", "export const core = 2;\n");                         // the branch's engine change
   write("src/App.tsx", APP.replace("line0 = 0", "line0 = 100"));                   // and a line of App.tsx
   git("commit", "-qam", "branch: engine and App");
-  const record = (name: string, picked: string[]) => {
+  const record = (name: string, picked: string[], passed = true) => {
     const tree = testedTree(dir);
-    write(`.remote-runs/${name}/test-changed.json`, JSON.stringify({ tree, head: git("rev-parse", "HEAD"), passed: true, picked, tests: picked.length, pass: picked.length, where: name, at: new Date().toISOString() }));
+    write(`.remote-runs/${name}/test-changed.json`, JSON.stringify({ tree, head: git("rev-parse", "HEAD"), passed, picked, tests: picked.length, pass: passed ? picked.length : 0, where: name, at: new Date().toISOString() }));
   };
   // The long gate: every test the branch picks passed on the branch's content.
   record("gate", ["tests/appText.test.ts", "tests/engine.test.ts", "tests/phase3Architecture.test.ts"]);
-  git("checkout", "-q", "trunk"); trunkMove(write, remove); git("add", "-A"); git("commit", "-qm", "trunk moves");
+  git("checkout", "-q", "trunk"); trunkMove(write, remove, git); git("add", "-A"); git("commit", "-qm", "trunk moves");
   const trunk1 = git("rev-parse", "HEAD");
   git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
   const check = () => checkTestedChanges({ top: dir, work: dir, base: trunk1, head: git("rev-parse", "HEAD") });
@@ -62,7 +63,7 @@ test("no overlap: the trunk changed only a document — every result is kept, th
 });
 
 test("overlap by a direct import: the trunk changed rules.ts, which engine.test imports — only engine.test runs again", () => {
-  const s = story(write => write("src/engine/rules.ts", 'import { core } from "./core.ts";\nimport { data } from "./data.ts";\nexport const rules = core * data;\n'));
+  const s = story(write => write("src/engine/rules.ts", 'import { core } from "./core.ts";\nimport { data } from "./data.ts";\nimport table from "./table.json";\nexport const rules = core * data + table.n;\n'));
   try {
     const result = s.check();
     assert.equal(result.ok, false);
@@ -134,5 +135,47 @@ test("only the overlapping tests run again, and the reused and the new record to
     assert.deepEqual(evidence!.tests, ["tests/appText.test.ts"]);
     assert.equal(evidence!.from.run, "gate"); assert.match(evidence!.from.commit!, /^[0-9a-f]{40}$/); assert.match(evidence!.from.tree, /^[0-9a-f]{40}$/);
     assert.equal(evidence!.changedSince, 1); assert.match(evidence!.why, /^no overlap/);
+  } finally { s.done(); }
+});
+
+// Cases from the independent review (RR22): each was a push the exact-content rule refused and the first reuse rule let
+// through.
+test("overlap by a rename: the trunk renamed extra.ts, which engine.test still imports by its old path — engine.test runs again", () => {
+  const s = story((_write, _remove, git) => git("mv", "src/engine/extra.ts", "src/engine/extra2.ts"));
+  try {
+    const result = s.check();
+    assert.ok(uncovered(result).includes("tests/engine.test.ts"), "a rename is its old path deleted");
+    assert.ok(result.overlaps?.get("tests/engine.test.ts")?.files.includes("src/engine/extra.ts"));
+  } finally { s.done(); }
+});
+
+test("overlap by an imported JSON: the trunk changed table.json, which rules.ts imports — engine.test runs again", () => {
+  const s = story(write => write("src/engine/table.json", '{"n":2}\n'));
+  try {
+    const result = s.check();
+    assert.ok(uncovered(result).includes("tests/engine.test.ts"));
+    assert.deepEqual(result.overlaps?.get("tests/engine.test.ts")?.files, ["src/engine/table.json"]);
+  } finally { s.done(); }
+});
+
+test("a newer failure on the same inputs outweighs an older pass: engine.test failed after the merge — it is not reused", () => {
+  const s = story(write => write("docs/notes.md", "moved\n"));
+  try {
+    s.record("after-merge", ["tests/engine.test.ts"], false);   // test:changed -- --all on the merged content: engine.test FAILED
+    const result = s.check();
+    assert.ok(uncovered(result).includes("tests/engine.test.ts"));
+    assert.match(formatTestedChanges(result), /tests\/engine\.test\.ts — FAILED on this content \(after-merge, /);
+    assert.ok(!uncovered(result).includes("tests/appText.test.ts"), "the failed run did not run appText.test: its pass stands");
+  } finally { s.done(); }
+});
+
+test("overlap by the test itself: engine.test.ts edited after the gate's run — it runs again", () => {
+  const s = story(write => write("docs/notes.md", "moved\n"));
+  try {
+    s.write("tests/engine.test.ts", 'import { rules } from "../src/engine/rules.ts";\nimport { extra } from "../src/engine/extra";\n// one more check\n');
+    s.git("commit", "-qam", "branch: the test changes");
+    const result = s.check();
+    assert.ok(uncovered(result).includes("tests/engine.test.ts"));
+    assert.deepEqual(result.overlaps?.get("tests/engine.test.ts")?.files, ["tests/engine.test.ts"]);
   } finally { s.done(); }
 });

@@ -18,12 +18,13 @@ export const gitIn = (root) => (...a) => execFileSync("git", a, { cwd: root, enc
 // root: a checkout whose files are the content to judge. head: undefined = the working tree (vs base, plus untracked);
 // a commit or a tree = base..head (root must hold head's files; base and head may be trees, decision RR25).
 // Returns picked (test -> the first reason) and causes (test -> every changed file that picks it). A deleted file picks
-// the tests that still import it by an import that no longer resolves, or name its path.
+// the tests that still import it by an import that no longer resolves, or name its path. A rename is its old path
+// deleted and its new path added (--no-renames). Any file a module imports (a .json too) picks that module's tests.
 export function pickTests({ root, base, head }) {
   const git = gitIn(root);
   const changed = new Set((head
-    ? git("diff", "--name-only", base, head).split("\n")
-    : [...git("diff", "--name-only", base).split("\n"), ...git("ls-files", "--others", "--exclude-standard").split("\n")]
+    ? git("diff", "--name-only", "--no-renames", base, head).split("\n")
+    : [...git("diff", "--name-only", "--no-renames", base).split("\n"), ...git("ls-files", "--others", "--exclude-standard").split("\n")]
   ).filter(Boolean));
 
   const walk = (dir, out = []) => {
@@ -74,7 +75,7 @@ export function pickTests({ root, base, head }) {
   if (everything) for (const t of tests) add(t, `${everything} changed`, everything);
   for (const f of changed) {
     if (isTest(f)) { if (existsSync(join(root, f))) add(f, "the test changed", f); continue; }
-    if (CODE.has(extname(f))) {
+    if (CODE.has(extname(f)) || importers.has(f)) {
       const seen = new Set([f]); const queue = [f];
       while (queue.length) {
         const cur = queue.shift();
@@ -83,6 +84,8 @@ export function pickTests({ root, base, head }) {
           if (isTest(imp)) add(imp, `imports ${f}`, f);
         }
       }
+    }
+    if (CODE.has(extname(f))) {
       // A test that reads the file as text by its path (readFileSync("../src/App.tsx")) imports nothing: by its path only
       // (decision RR24; e77841161 changed App.tsx's onNewGame and tests/chapterLoadingStore.test.ts went unpicked).
       for (const t of tests) if (text.get(t).includes(f)) add(t, `names ${f}`, f);

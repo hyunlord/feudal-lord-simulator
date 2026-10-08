@@ -18,7 +18,7 @@
 // code file by its path (it reads it as text) is picked too.
 // On the Mac at most MAC_LIMIT tests run (the source scans, ~11 s together, not counted); more fail (exit 3) with the
 // runner command to use instead.
-// The record: {tree, head, base, picked, pass, fail, passed, where, at} in .remote-runs/test-changed/<tree>.json, or
+// The record: {tree, head, base, picked, pass, fail, passed, where, at, reused} in .remote-runs/test-changed/<tree>.<ms>.json, or
 // .remote/test-changed.json in a DGX run (run.sh brings it back under .remote-runs/<run>/). <tree> is the tree of the
 // content that was tested (what `git add -A` would commit now, built in a copy of the index). check:merge looks for
 // a passing record of the pushed head's tree that covers the tests its range picks (scripts/checks/mergeChecks.mjs).
@@ -89,7 +89,7 @@ async function main() {
     const coverage = testCoverage({ top: ROOT, work: ROOT, required: list, headTree: tree, records });
     run = coverage.uncovered; reused = reuseEvidence(coverage.covered);
     if (coverage.covered.size > 0) console.log([`reused (decision RR25): ${coverage.covered.size} of ${list.length}`, ...coverageLines(coverage.covered)].join("\n"));
-    if (coverage.covered.size > 0 && run.length > 0) console.log([`to run (${run.length}):`, ...overlapLines(run, coverage.overlaps, 40)].join("\n"));
+    if (coverage.covered.size > 0 && run.length > 0) console.log([`to run (${run.length}):`, ...overlapLines(run, coverage.overlaps, 40, coverage.failed)].join("\n"));
   }
   console.log(`changed: ${changed.size} file(s) since ${base.slice(0, 8)}; tests picked: ${list.length} of ${total} — running ${run.length}`);
   for (const t of run) console.log(`  ${t}  (${picked.get(t)})`);
@@ -101,10 +101,10 @@ async function main() {
   }
   let rc = 0, counts = { tests: 0, pass: 0, fail: 0 };
   const where = process.env.FLS_REMOTE ? `DGX ${process.env.FLS_REMOTE_RUN ?? ""}`.trim() : `${process.platform === "darwin" ? "Mac" : "local"}`;
-  // Nothing to run: the reuse evidence alone, in a file of its own (a <tree>.json of tests that ran stays as it is).
+  // Nothing to run: the reuse evidence alone, in a file of its own (every run writes its own file, so none overwrites another).
   if (run.length === 0) {
     const evidence = { tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: [], tests: 0, pass: 0, fail: 0, passed: true, where, at: new Date().toISOString(), reused };
-    const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.reuse.json`);
+    const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.${Date.now()}.reuse.json`);
     mkdirSync(dirname(file), { recursive: true }); writeFileSync(file, JSON.stringify(evidence, null, 1));
     console.log(`test:changed: nothing to run — every picked test is covered; the reuse evidence is in ${file.slice(ROOT.length + 1)}`);
     process.exit(0);
@@ -117,7 +117,7 @@ async function main() {
   const record = {
     tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: run, ...counts, passed: rc === 0, where, at: new Date().toISOString(), reused,
   };
-  const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.json`);
+  const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.${Date.now()}.json`);   // one file per run: a later run never overwrites
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, JSON.stringify(record, null, 1));
   console.log(`test:changed ${record.passed ? "passed" : "FAILED"}: ${counts.pass}/${counts.tests} in ${run.length} file(s), tree ${tree.slice(0, 12)} (${record.where}) — recorded for check:merge`);
