@@ -961,3 +961,5 @@ Engine B [실제 답변 재현 도구](verification/eb-weight/answer-replay-cont
 Engine B 공식 기하 재측정19행·380조건이 완료됐다(exit0,1356.1초). 측정 위반0·미개방0이지만 미등록 프레임4개가 남아 기하 병합 관문은 미해결이다. [실제 출력](verification/uiaudit1/geometry/EB-geometry-039b387f2-4e028b4/geometry.md)으로 summary만 갱신했으며 예외·기준선은 그대로다.
 
 Engine B 미제시29 중 시대 제외2개 외27개의 [조건·생산 경로 감사](verification/eb-freq/README.md)를 추가했다.033의 수락 후 미선정,147의 창 안 pace/draw 차단,061/077의 봇 방침과 사정 조건 불일치,029의 단일 실행 선택을 구분했다. 새 어댑터 결함이나 생산자 부재는 입증되지 않았으며 조건을 완화하지 않았다.
+
+Engine B 검증 재현 결과용 오프라인 연간 답변 집계기를 추가했다. 실제 manifest 바이트 SHA·세 seed·검증 상태·중복을 검사하고 분류 밖 명령을 별도 보존한다.8시험·lint·독립 검토 통과, 실제 재현 자료는 아직 대기 중이다.
