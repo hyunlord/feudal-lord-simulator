@@ -6,6 +6,7 @@ import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { decodeSave } from '../src/save/saveCodec.ts';
+import { stateCalendar } from '../src/engine/scenarioState.ts';
 import { withResidentWalkers } from '../src/render/presentation/residentWalkerState.ts';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
@@ -15,6 +16,31 @@ const CHIP = '.event-chip[data-story="decision_trace"]';
 const CARD = '.event-card[data-story="decision_trace"]';
 const INIT = `globalThis.__name ??= target => target; localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({enabled:false,acks:[],pulsed:[],log:[]}));`;
 const visible = async (page, selector) => page.locator(`${selector}:visible`).count().then(n => n > 0);
+
+export function recordYear(state, recordId) {
+  const record = state.history?.records.find(entry => entry.id === recordId);
+  if (record === undefined) throw new Error(`Target history record not retained: ${recordId}`);
+  return stateCalendar({ scenarioId: state.scenarioId, tick: record.tick }).year;
+}
+
+export function presentationDifference(expected, actual) {
+  const paths = [];
+  let count = 0;
+  const describe = value => value === undefined ? { type: 'missing' } : value === null ? { type: 'null' }
+    : typeof value === 'object' ? { type: Array.isArray(value) ? 'array' : 'object', size: Object.keys(value).length }
+      : { type: typeof value, ...(typeof value === 'string' && value.length > 120 ? { length: value.length, sha256: sha(value) } : { value }) };
+  const walk = (left, right, path) => {
+    if (Object.is(left, right)) return;
+    if (left !== null && right !== null && typeof left === 'object' && typeof right === 'object' && Array.isArray(left) === Array.isArray(right)) {
+      for (const key of new Set([...Object.keys(left), ...Object.keys(right)])) walk(left[key], right[key], `${path}/${key.replaceAll('~', '~0').replaceAll('/', '~1')}`);
+      return;
+    }
+    count += 1;
+    if (paths.length < 24) paths.push({ path, expected: describe(left), actual: describe(right) });
+  };
+  walk(expected, actual, '');
+  return { differingPaths: count, paths, truncated: count > paths.length, serializationOnly: count === 0 };
+}
 
 export function readCheckpoints(directory, manifestSha256) {
   const manifestBytes = readFileSync(join(directory, 'manifest.json'));
@@ -68,6 +94,16 @@ async function capture(page, out, name, selector) {
   return { selector, shown, panel, screenshot };
 }
 
+export function selectCaptureCases(cases, requested) {
+  if (requested === undefined) return { cases, requestedCases: null };
+  const names = requested.split(',');
+  if (names.some(name => name.length === 0) || new Set(names).size !== names.length) throw new Error('EB_CAPTURE_CASES requires nonempty, unique exact case names');
+  const known = new Map(cases.map(item => [item.name, item]));
+  const unknown = names.filter(name => !known.has(name));
+  if (unknown.length > 0) throw new Error(`Unknown EB_CAPTURE_CASES: ${unknown.join(',')}`);
+  return { cases: names.map(name => known.get(name)), requestedCases: names };
+}
+
 async function clearOverlays(page, actions) {
   for (let i = 0; i < 8; i += 1) {
     let clicked = false;
@@ -80,7 +116,13 @@ async function clearOverlays(page, actions) {
   }
 }
 
-async function findRecord(page, recordId, actions) {
+async function findRecord(page, recordId, state, actions) {
+  const year = String(recordYear(state, recordId));
+  for (const [label, option] of [['중요도', '모든 기록'], ['부터', year], ['까지', year]]) {
+    await page.locator('.chronicle-screen').getByRole('button', { name: new RegExp(`^${label}:`) }).click();
+    await page.getByRole('listbox', { name: label, exact: true }).getByRole('option', { name: option, exact: true }).click();
+    actions.push(`Chronicle ${label} → ${option} (actual Select)`);
+  }
   const selector = `.chronicle-card[data-record="${recordId}"] .chronicle-card-body`;
   const list = page.locator('.chronicle-list:visible');
   if (await list.count() === 0) return false;
@@ -112,6 +154,7 @@ async function inspectCase(browser, item, out, url) {
     const runtime = JSON.parse(runtimeJson);
     row.initialPresentationStateExact = runtimeJson === expectedPresentationJson;
     row.initialPresentationSha256 = sha(runtimeJson);
+    if (!row.initialPresentationStateExact) row.initialPresentationDifference = presentationDifference(JSON.parse(expectedPresentationJson), runtime);
     row.loadedTick = runtime.tick;
     row.initialStateExact = JSON.stringify(runtime) === JSON.stringify(state);
     row.initialHistoryTraceExact = JSON.stringify([runtime.history, runtime.trace]) === JSON.stringify([state.history, state.trace]);
@@ -144,7 +187,7 @@ async function inspectCase(browser, item, out, url) {
         await page.keyboard.press('KeyC'); row.actions.push('KeyC (manual history)');
       }
       row.historyOpened = await visible(page, '.chronicle-screen');
-      row.decisionLocated = await findRecord(page, item.pair.decisionId, row.actions);
+      row.decisionLocated = await findRecord(page, item.pair.decisionId, state, row.actions);
       row.panels.push(await capture(page, out, `${item.name}-decision`, '.chronicle-detail'));
       const target = item.pair.consequence?.historyId;
       const link = target === undefined ? null : `.chronicle-thread[data-thread="decision"] .chronicle-thread-link[data-record="${target}"]`;
@@ -161,6 +204,7 @@ async function inspectCase(browser, item, out, url) {
     const finalState = JSON.parse(finalPresentationJson);
     row.finalPresentationSha256 = sha(finalPresentationJson);
     row.finalPresentationStateExact = finalPresentationJson === expectedPresentationJson;
+    if (!row.finalPresentationStateExact) row.finalPresentationDifference = presentationDifference(JSON.parse(expectedPresentationJson), finalState);
     row.presentationUnchangedDuringCapture = finalPresentationJson === runtimeJson;
     row.finalTick = finalState.tick;
     row.tickUnchanged = finalState.tick === state.tick;
@@ -176,15 +220,17 @@ async function main() {
   if (!directory || !expectedSha || !out || !url || extra) throw new Error('Usage: engineBVisibleCapture.mjs CHECKPOINT_DIRECTORY MANIFEST_SHA256 OUT URL');
   refuseHeavyOnMac('EB saved-checkpoint browser capture', { remote: 'scripts/remote/run.sh render-EB-visible --light -- bash scripts/engineBVisibleCapture.sh ...', entry: import.meta.url });
   const input = readCheckpoints(directory, expectedSha);
+  const selected = selectCaptureCases(input.cases, process.env.EB_CAPTURE_CASES);
   mkdirSync(out, { recursive: true });
   const results = { schemaVersion: 1, sourceRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
     dirtyPaths: execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim(), checkpointSourceRevision: input.manifest.sourceRevision,
-    checkpointDirectory: resolve(directory), manifestSha256: expectedSha, viewport: { width: 1280, height: 800 }, run: false, cases: [] };
+    checkpointDirectory: resolve(directory), manifestSha256: expectedSha, requestedCases: selected.requestedCases,
+    viewport: { width: 1280, height: 800 }, run: false, cases: [] };
   writeFileSync(join(out, 'source-manifest.json'), readFileSync(join(directory, 'manifest.json')));
   const chromium = await loadChromium();
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
   try {
-    for (const item of input.cases) {
+    for (const item of selected.cases) {
       try { results.cases.push(await inspectCase(browser, item, out, url)); }
       catch (error) { results.cases.push({ name: item.name, errors: [String(error)] }); }
       writeFileSync(join(out, 'results.json'), JSON.stringify(results, null, 2));
