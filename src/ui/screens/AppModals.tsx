@@ -13,13 +13,13 @@ import { chronicleView } from "../chronicleModel";
 import { PauseMenu } from "../hud/HudShell";
 import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
-import { LordRequestModal, PrecedentModal, RecurringSwitch } from "../hud/LordCards";
+import { LordRequestModal } from "../hud/LordCards";
 import { DecisionCard } from "../decisionCard/DecisionCard";
 import { famineCard } from "../decisionCard/families/famineCard";
 import { homePetitionCard } from "../decisionCard/families/homePetitionCard";
 import { lordRequestCard } from "../decisionCard/families/lordRequestCard";
 import { petitionCard } from "../decisionCard/families/petitionCard";
-import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
+import { homePetitionView, lordRequestView } from "../lordCardsModel";
 import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
@@ -28,7 +28,6 @@ import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { houseChangeView } from "../results/houseChange";
 import { HouseChangeCard, YearReviewCard } from "../results/ResultCards";
 import { lastYearReview } from "../results/yearReview";
-import { stewardshipOf } from "../../engine/stewardship";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
 import { LegacyEndingScreen } from "../legacy/LegacyEndingScreen";
@@ -85,11 +84,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const chronicle = top === "chronicle" ? chronicleView(state) : null;
   const personCard = top === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;
-  // LM-R1 (lord mode): the home estate's petition, the steward's precedents, the town's request.
+  // LM-R1 (lord mode): the home estate's petition, the town's request.
   const homeView = top === "estate_petition" ? homePetitionView(state) : null;
   // DEC-CARD: the home petition in the heavy card's layout (the situation, the stake, each answer now / later / who remembers).
   const homeCard = top === "estate_petition" ? homePetitionCard(state) : null;
-  const precedent = top === "precedent" ? precedentView(state) : null;
   const asked = top === "lord_request" ? lordRequestView(state) : null;
   const request = asked?.command === null ? null : asked;
   // DEC-CARD: the town's request in the heavy card's layout (its grant run on the state: what it opens, the actual to come).
@@ -103,10 +101,9 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"); (lord mode, A3) the season's change in the lord's house.
   const yearView = top === "year_review" ? lastYearReview(state) : null;
   const house = top === "house_change" ? houseChangeView(state) : null;
-  const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null)
+  const lordGone = (top === "estate_petition" && homeView === null) || (top === "lord_request" && request === null)
     || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)
     || (top === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null);
-  const setRecurring = (recurring: boolean) => dispatch({ type: "set_exception_rules", rules: { ...stewardshipOf(state).rules, recurring } });
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
   const famineGone = famineView === null; const petitionGone = petitionView === null;
@@ -118,6 +115,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   return <>
     {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto} first={ledgerFirst}
       onAutoChange={onLedgerAuto}
+      onPolicy={onOpenLord === undefined ? undefined : kind => { sendUi({ type: "pop_modal" }); onOpenLord("petitions", kind); }}
       onResume={() => sendUi({ type: "pop_modal" })}
       onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) onMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
     {famineView === null ? null : <FamineDecisionModal view={famineView} onLater={() => sendUi({ type: "pop_modal" })} steward={steward} onPerson={onPerson}
@@ -127,9 +125,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
     {homeView === null || homeCard === null ? null : <DecisionCard view={homeCard} className="lord-card" crest={{ arms: homeView.arms, label: homeView.armsLabel }}
       data={{ "data-home-petition": homeView.kind, "data-petition": homeView.petitionId }}
-      extra={<RecurringSwitch on={homeView.recurring} onToggle={setRecurring} />} onLater={() => sendUi({ type: "pop_modal" })}
+      onLater={() => sendUi({ type: "pop_modal" })}
       onChoose={choice => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }); sendUi({ type: "pop_modal" }); }} />}
-    {precedent === null ? null : <PrecedentModal view={precedent} onRecurring={setRecurring} onClose={() => sendUi({ type: "pop_modal" })} />}
     {request === null || requestCard === null ? null : <LordRequestModal view={request} card={requestCard} onLater={() => sendUi({ type: "pop_modal" })}
       onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
     {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}

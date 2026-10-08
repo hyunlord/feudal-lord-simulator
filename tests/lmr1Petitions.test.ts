@@ -1,6 +1,7 @@
 /**
  * LM-R1 (petitions): the home estate's petitions as the lord's cards (lord mode only) with Astra's Wave 44 pictures
- * (spec docs/ops/install-plan-20261003/SPECS/wave44.md), the steward's precedents, the town's requests and the court line.
+ * (spec docs/ops/install-plan-20261003/SPECS/wave44.md), the town's requests and the court line (DEC-CARD-2: the steward's
+ * precedent card is gone — DEC-TRACE DTR-1; tests/deccard2Steward.test.ts has his season and his standing policies).
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -22,7 +23,7 @@ import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { decisionModal, storyBeats } from "../src/ui/eventStory";
 import { HOME_PETITION_COPY } from "../src/ui/lordCardsCopy.ko";
-import { courtLine, homePetitionView, lordRequestView, openHomePetitions, precedentView } from "../src/ui/lordCardsModel";
+import { courtLine, homePetitionView, lordRequestView, openHomePetitions } from "../src/ui/lordCardsModel";
 import { lordBeats } from "../src/ui/lordStoryBeats";
 import { HOME_PETITION_ART, PRECEDENT_ART } from "../src/ui/wave44Art";
 import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
@@ -155,30 +156,9 @@ test("lord mode only: the sandbox and the campaign have no home petition card, n
     assert.equal(openHomePetitions(state).length, 0, scenarioId);
     assert.equal(homePetitionView(state), null);
     assert.equal(lordRequestView(state), null);
-    assert.equal(precedentView(state), null);
     assert.deepEqual(lordBeats(state), []);
-    assert.ok(!storyBeats(state).some(beat => beat.kind === "home_petition" || beat.kind === "lord_request" || beat.kind === "home_precedent"));
+    assert.ok(!storyBeats(state).some(beat => beat.kind === "home_petition" || beat.kind === "lord_request"));
   }
-});
-
-test("the steward's precedent: only decidedBy steward and precedent records, the Wave 44 precedent picture, the recurring rule", () => {
-  const petition = open(firstPetition);
-  const stewardship = stewardshipOf(firstPetition);
-  // The next season, with last season's petition answered by the steward by precedent (as homePetitionSeason writes it).
-  const byPrecedent: EstatePetition = { ...petition, kind: "boundary_dispute", party: "neighbour_2", status: "granted", decidedBy: "steward", precedent: true };
-  const later = { ...firstPetition, tick: firstPetition.tick + SEASON, stewardship: { ...stewardship, petitions: stewardship.petitions.map(entry => entry.id === petition.id ? byPrecedent : entry) } };
-  const view = precedentView(later)!;
-  assert.equal(view.art, "by_precedent");
-  assert.deepEqual(view.items, ["경계 다툼: 우리 소작인 편을 든다"]);
-  assert.equal(view.recurring, false);
-  assert.equal(lordBeats(later).find(beat => beat.kind === "home_precedent")?.illustration, "by_precedent");
-  // A lord's answer is no precedent.
-  const lords = { ...later, stewardship: { ...later.stewardship, petitions: later.stewardship.petitions.map(entry => entry.id === petition.id ? { ...byPrecedent, decidedBy: "lord" as const, precedent: undefined } : entry) } };
-  assert.equal(precedentView(lords as GameState), null);
-  // The switch is the engine's exception rule.
-  const recurring = gameReducer(later, { type: "set_exception_rules", rules: { ...stewardship.rules, recurring: true } });
-  assert.equal(precedentView(recurring)!.recurring, true);
-  assert.equal(homePetitionView(gameReducer(firstPetition, { type: "set_exception_rules", rules: { ...stewardship.rules, recurring: true } }))!.recurring, true);
 });
 
 test("the card says what the steward will do: a hint before a precedent, the settled answer when the rule still brings it", () => {

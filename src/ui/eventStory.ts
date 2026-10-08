@@ -44,8 +44,8 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   | "legacy_mayor_demand" | "legacy_royal_tax" | "legacy_succession" | "legacy_city_seal" | "legacy_charter"
   | "legacy_departure" | "legacy_record" | "legacy_last_market"
   | "interlude_staple" | "interlude_guild_dispute" | "interlude_market_fire" | "interlude_church_rebuilding" | "interlude_deposition"
-  // LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request (lordStoryBeats.ts).
-  | "home_petition" | "home_precedent" | "lord_request"
+  // LM-R1 (lord mode): a home estate's petition, the town's request (lordStoryBeats.ts).
+  | "home_petition" | "lord_request"
   // EVENT-ART (lord mode): a ledger moment with its Wave 40 picture — the marriage, the suit, the wardship (lordMomentBeats.ts).
   | "lord_moment"
   // EVENT-ART (lord mode): an offer of the engine's registry (an event entry, not a home petition).
@@ -65,9 +65,9 @@ export type StoryBeat = Readonly<{
   line: string;
   facts: readonly string[];
   advice: string;
-  /** The beat is a decision the lord answers in a modal (the famine, a petition; LM-R1: a home petition, the steward's
-   * precedents, the town's request; EVENT-ART: a registry offer; LM-R2: the lord's decision cards). */
-  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | "registry_offer"
+  /** The beat is a decision the lord answers in a modal (the famine, a petition; LM-R1: a home petition, the town's
+   * request; EVENT-ART: a registry offer; LM-R2: the lord's decision cards). */
+  decision: "famine" | "petition" | "estate_petition" | "lord_request" | "registry_offer"
     /** LM-R2 (lord mode): the father's will or the contested inheritance, an audit's finding, an off-map estate's petition. */
     | "marriage_decision" | "audit_decision" | "estate_petition_offmap"
     /** DEC-CARD (lord mode, Astra A3): the house card (no choice in it: its chip's button says so, `openLabel`). */

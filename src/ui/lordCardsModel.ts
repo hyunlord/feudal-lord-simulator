@@ -11,7 +11,7 @@ import type { EmblemSpec } from "./heraldry/EmblemImage";
 import { lordHouseArms } from "./persons/personModels";
 import { ageOf, manorLord, personById, personDisplayName } from "../engine/persons";
 import { stateCalendar } from "../engine/scenarioState";
-import { lordEstatePetitions, precedentReport, stewardshipOf } from "../engine/stewardship";
+import { lordEstatePetitions, stewardshipOf } from "../engine/stewardship";
 import type { EstatePetition, HomePetitionKind } from "../engine/stewardship.types";
 import { lordMode, lordRequests } from "../engine/townAgency";
 import type { LordRequest } from "../engine/townAgency.types";
@@ -20,14 +20,14 @@ import { calendarDays } from "./gameTimeCopy.ko";
 import { perState } from "./perState";
 import { HOME_PETITION_COPY, LORD_CARDS_COPY, type PetitionParties } from "./lordCardsCopy.ko";
 import { PETITION_COPY } from "./petitionCopy.ko";
-import { HOME_PETITION_ART, PRECEDENT_ART, type Wave44ImageId } from "./wave44Art";
+import { HOME_PETITION_ART, type Wave44ImageId } from "./wave44Art";
 
 // LM-R1 (petitions) the lord's cards, lord mode only (`lordMode`): the home estate's petitions as the engine raises them
 // (`lordEstatePetitions`, estate "estate-home", FIX-14 SW-11) — a different API from the political petitions'
 // (`PetitionRecord.defId`): each card is answered through `answer_estate_petition`, and each answer shows what the
 // engine's own table (`HOME_PETITION_KINDS`) does to the treasury now and to each faction (`history.ts` moves them by
-// that table on the answer). The steward's answers by precedent (`precedentReport`, SW-12), the town's requests
-// (`lordRequests`, TA-7) and the court line (the king `kingAt`, the lord's age, the guardian of a minor lord).
+// that table on the answer). The town's requests (`lordRequests`, TA-7) and the court line (the king `kingAt`, the
+// lord's age, the guardian of a minor lord).
 
 export type RelationMove = Readonly<{ factionId: string; name: string; delta: number }>;
 export type HomePetitionOption = Readonly<{ grant: boolean; label: string; treasury: number; relations: readonly RelationMove[]; line: string }>;
@@ -132,24 +132,6 @@ export const homePetitionView = perState((state: GameState): HomePetitionView | 
     arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(lordHouse(state).name),
   };
 });
-
-export type PrecedentView = Readonly<{ key: string; art: Wave44ImageId; court: string; recurring: boolean; items: readonly string[] }>;
-
-/** ER-6: the home petitions the steward answered by precedent in the season just closed (the season report's list), or null. */
-export function precedentView(state: GameState): PrecedentView | null {
-  if (!lordMode(state)) return null;
-  const answered = precedentReport(state).filter((petition): petition is EstatePetition & { readonly kind: HomePetitionKind } =>
-    petition.estateId === HOME_ESTATE_ID && petition.decidedBy === "steward" && petition.precedent === true && isHomeKind(petition.kind));
-  if (answered.length === 0) return null;
-  return {
-    key: answered.map(petition => petition.id).join("+"), art: PRECEDENT_ART, court: courtLine(state), recurring: stewardshipOf(state).rules.recurring === true,
-    items: answered.map(petition => {
-      const copy = HOME_PETITION_COPY[petition.kind];
-      const named = parties(state, petition);
-      return LORD_CARDS_COPY.precedentItem(copy.title, petition.status === "granted" ? copy.grant(named) : copy.refuse(named));
-    }),
-  };
-}
 
 export type LordRequestView = Readonly<{ key: string; kind: LordRequest["kind"]; title: string; demand: string; grant: string; court: string;
   more: string; command: GameAction | null }>;

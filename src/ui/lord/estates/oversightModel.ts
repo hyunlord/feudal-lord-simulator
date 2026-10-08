@@ -60,7 +60,7 @@ export type AttentionView = Readonly<{
 
 export type RulesView = Readonly<{
   amountAtLeast: number | null; amountLine: string; canLess: boolean; canMore: boolean;
-  rights: boolean; marriage: boolean; recurring: boolean;
+  rights: boolean; marriage: boolean;
 }>;
 
 export type PetitionRow = Readonly<{ id: string; estateId: string; line: string; rights: boolean; marriage: boolean; days: number }>;
@@ -150,7 +150,8 @@ export function rulesView(state: GameState): RulesView | null {
   const amount = rules.amountAtLeast;
   return { amountAtLeast: amount, amountLine: amount === null ? COPY.ruleAmountOff : COPY.ruleAmount(moneyFull(amount)),
     canLess: amount !== null && amount > RULE_MIN, canMore: amount !== null && amount < RULE_MAX,
-    rights: rules.rights, marriage: rules.marriage, recurring: rules.recurring === true };
+    // DEC-CARD-2: the old switch `recurring` (every home petition to the lord) is the standing-policy screen's now.
+    rights: rules.rights, marriage: rules.marriage };
 }
 
 /** The exceptions with one change (the command carries every field, as `set_exception_rules` takes them). */

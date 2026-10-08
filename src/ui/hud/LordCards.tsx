@@ -1,31 +1,14 @@
 import { DecisionCard } from "../decisionCard/DecisionCard";
 import type { DecisionCardView } from "../decisionCard/decisionCardTypes";
 import { EmblemImage, type EmblemSpec } from "../heraldry/EmblemImage";
-import { Button } from "../kit";
-import { LORD_CARDS_COPY } from "../lordCardsCopy.ko";
-import type { LordRequestView, PrecedentView } from "../lordCardsModel";
-import { wave44ImageStyle, type Wave44ImageId } from "../wave44Art";
+import type { LordRequestView } from "../lordCardsModel";
 import { wave8FrameLayerStyle } from "../wave8Art";
 
 // LM-R1 (petitions) the lord's cards (lord mode only; state machine modals: time stops while one is up). They wear the
 // petition card's Wave 8 frame and body as the political petitions do; the Wave 44 picture is shown whole (16:9), the
 // title, the request and the answers are text over nothing painted. Answers are kit buttons with their seal; each shows
-// the engine's numbers for it (the treasury now and the factions' relation moves).
-
-const SCENE_WIDTH = 320;
-
-function Scene({ art }: { readonly art: Wave44ImageId | null }) {
-  return art === null ? null : <div className="petition-scene"><div className="story-modal-art lord-card-art" aria-hidden="true" data-art={art} style={wave44ImageStyle(art, SCENE_WIDTH)} /></div>;
-}
-
-/** The lord's exception rule `recurring` ("선례가 있어도 다시 올린다") as a switch. */
-export function RecurringSwitch({ on, onToggle }: { readonly on: boolean; readonly onToggle: (next: boolean) => void }) {
-  return (
-    <Button type="button" className="lord-card-recurring" variant="toggle" aria-pressed={on} onPress={() => onToggle(!on)}>
-      {LORD_CARDS_COPY.recurring} · {on ? LORD_CARDS_COPY.recurringOn : LORD_CARDS_COPY.recurringOff}
-    </Button>
-  );
-}
+// the engine's numbers for it (the treasury now and the factions' relation moves). DEC-CARD-2: the precedent card and
+// its switch are gone (DEC-TRACE DTR-1): the steward's season is the season card's, his settings the lord screen's.
 
 export function Frame({ label, data, children, crest = null }: {
   readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: React.ReactNode;
@@ -40,24 +23,6 @@ export function Frame({ label, data, children, crest = null }: {
         <div className="petition-body">{children}</div>
       </section>
     </div>
-  );
-}
-
-export function PrecedentModal({ view, onRecurring, onClose }: {
-  readonly view: PrecedentView; readonly onRecurring: (next: boolean) => void; readonly onClose: () => void;
-}) {
-  return (
-    <Frame label={LORD_CARDS_COPY.precedentTitle} data={{ "data-precedent": view.key, "data-answers": "1" }}>
-      <p className="lord-card-court">{view.court}</p>
-      <Scene art={view.art} />
-      <h2>{LORD_CARDS_COPY.precedentTitle}</h2>
-      <p>{LORD_CARDS_COPY.precedentLine}</p>
-      <ul className="lord-card-precedents">{view.items.map(item => <li key={item}>{item}</li>)}</ul>
-      <div className="lord-card-actions">
-        <RecurringSwitch on={view.recurring} onToggle={onRecurring} />
-        <Button type="button" className="story-modal-later" onPress={() => onClose()} variant="secondary">{LORD_CARDS_COPY.precedentClose}</Button>
-      </div>
-    </Frame>
   );
 }
 

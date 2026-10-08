@@ -5,7 +5,7 @@ import type { StoryBeat } from "./eventStory";
 import { DECISION_CARDS_COPY } from "./lord/decisions/decisionCardsCopy.ko";
 import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead } from "./lord/decisions/decisionCardsModel";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
-import { homePetitionView, lordRequestView, precedentView, type LordRequestView } from "./lordCardsModel";
+import { homePetitionView, lordRequestView, type LordRequestView } from "./lordCardsModel";
 import { lordMomentBeats } from "./lordMomentBeats";
 import { REGISTRY_CARD_COPY } from "./registryCardCopy.ko";
 import { registryHeadline } from "./registryCardModel";
@@ -52,11 +52,6 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
   if (home !== null) {
     beats.push({ id: `home-petition:${home.petitionId}`, kind: "home_petition", illustration: home.art, tile: seatTile(state), decision: "estate_petition",
       title: home.title, line: home.demand, facts: [home.waits], advice: home.precedent ?? LORD_CARDS_COPY.precedentHint });
-  }
-  const precedent = precedentView(state);
-  if (precedent !== null) {
-    beats.push({ id: `home-precedent:${precedent.key}`, kind: "home_precedent", illustration: precedent.art, tile: seatTile(state), decision: "precedent",
-      title: LORD_CARDS_COPY.precedentTitle, line: LORD_CARDS_COPY.precedentLine, facts: precedent.items, advice: LORD_CARDS_COPY.precedentHint });
   }
   const offer = registryHeadline(state);
   if (offer !== null) {
