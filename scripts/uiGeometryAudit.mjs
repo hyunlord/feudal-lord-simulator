@@ -22,7 +22,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
+import { compareBaseline, geometryInputHash, geometryInputs, uiInputsDirty, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
 import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded, surfaceFontsLoaded } from './uiGeometryMeasure.ts';
@@ -364,8 +364,11 @@ await browser.close();
 // --- Totals, the report, the committed summary.
 const git = args => { try { return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
 const inputs = geometryInputs('HEAD');
-// public/assets is left out of the status check: its LFS files can show as changed where git-lfs is missing.
-const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', ...UI_INPUT_ROOTS.map(item => item.root).filter(root => root !== 'public/assets')]) !== '';
+// RR26: any UI input of the measured tree that is not HEAD's committed blob (pictures compared by content, LFS-safe;
+// untracked files count) makes the run dirty: its hash is of committed blobs.
+const dirtyPaths = uiInputsDirty();
+const dirty = process.env.DIRTY === '1' || dirtyPaths.length > 0;
+if (dirtyPaths.length > 0) console.log(`dirty UI inputs (${dirtyPaths.length}): ${dirtyPaths.slice(0, 8).join(', ')}${dirtyPaths.length > 8 ? ' …' : ''}`);
 const totals = { rows: Object.keys(results).length, conditions: 0, measured: 0, failures: 0, unopened: 0, unreachable: [], warnings: 0, byCheck: Object.fromEntries(CHECKS.map(check => [check, 0])) };
 const bySurface = {};
 const kindNotes = [];

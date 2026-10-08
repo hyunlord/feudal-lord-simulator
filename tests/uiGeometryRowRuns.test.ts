@@ -4,7 +4,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { checkUiGeometry, formatUiGeometryResult, geometryInputHash, geometryInputs } from "../scripts/checks/uiGeometry.mjs";
+import { createHash } from "node:crypto";
+import { checkUiGeometry, formatUiGeometryResult, geometryInputHash, geometryInputs, uiInputsDirty } from "../scripts/checks/uiGeometry.mjs";
 
 // RR26 (user ruling 2026-10-09, step (c)): a changed-rows audit run that a push names (UI-Geometry-Run trailer) counts
 // in place of the stale shared result when no UI input changed since it was measured. Each case is made to overlap or to
@@ -14,10 +15,11 @@ const RUN = "render-TEST-geometry-1";
 const ROW = "modal.panel";
 const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 
-type Report = { dirty?: boolean; unopened?: number; keys?: string[]; inputHash?: string };
+type Report = { dirty?: boolean; unopened?: number; keys?: string[]; inputHash?: string; runName?: string; commit?: string | null; unregistered?: number; noRows?: boolean };
 
-function story({ trunkMove, report = {}, baseline = [], trailer = true }: {
+function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFailure = null }: {
   trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
+  sharedFailure?: string | null;   // a current shared result (of the head's inputs) with this failure key
 }) {
   const dir = mkdtempSync(join(tmpdir(), "fls-rowrun-"));
   const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
@@ -39,9 +41,11 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true }: {
   write("src/ui/Panel.tsx", "export const Panel = () => 'panel';\n"); write("src/styles/panel.css", ".panel { padding: 12px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
   git("commit", "-qam", "branch: the panel");
   const measured = git("rev-parse", "HEAD");
-  const rows = { [ROW]: { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) } };
-  write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: RUN, commit: measured, dirty: report.dirty ?? false,
-    inputHash: report.inputHash ?? geometryInputHash(geometryInputs(measured, dir)), totals: { unopened: report.unopened ?? 0 }, unregisteredFramed: [], rows }));
+  const rows = report.noRows ? {} : { [ROW]: { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) } };
+  write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: report.runName ?? RUN, commit: report.commit === undefined ? measured : report.commit ?? undefined,
+    dirty: report.dirty ?? false, inputHash: report.inputHash ?? geometryInputHash(geometryInputs(measured, dir)), totals: { unopened: report.unopened ?? 0 },
+    unregisteredFramed: Array.from({ length: report.unregistered ?? 0 }, (_, i) => ({ root: `.stray-${i}`, seenIn: [ROW] })), rows }));
+  if (sharedFailure !== null) write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ inputHash: geometryInputHash(geometryInputs(measured, dir)), failureKeys: [sharedFailure], unopened: 0 }));
   git("add", "-A"); git("commit", "-qm", `branch: the changed rows' geometry${trailer ? `\n\nUI-Geometry-Run: ${RUN}` : ""}`);
   git("checkout", "-q", "trunk"); trunkMove(write); git("add", "-A"); git("commit", "-qm", "trunk moves", "--allow-empty");
   const trunk = git("rev-parse", "HEAD");
@@ -126,4 +130,73 @@ test("a trailer naming a run with no committed report does not count", () => {
     assert.equal(result.ok, false);
     assert.ok(result.reasons.some(reason => reason.includes("render-TEST-missing") && reason.includes("commit the run's report")));
   } finally { s.done(); }
+});
+
+// Cases from the independent review (RR22).
+test("a current shared result with its own new failure is not set aside by a trailer (it is not stale)", () => {
+  const s = story({ trunkMove: engineOnly, sharedFailure: "other.row|1280x800/normal/normal|overflow|.x" });
+  try {
+    const result = s.check();
+    assert.equal(result.ok, false);
+    assert.ok(result.reasons.some(reason => /1 new failure\(s\), in no baseline entry or exception/.test(reason)), result.reasons.join("\n"));
+  } finally { s.done(); }
+});
+
+test("a run that is not what the trailer names, or has no measured commit, does not count", () => {
+  for (const [report, expected] of [
+    [{ runName: "render-SOMETHING-ELSE" }, /its report names another run \(render-SOMETHING-ELSE\)/],
+    [{ commit: null }, /its report has no measured commit/],
+  ] as const) {
+    const s = story({ trunkMove: engineOnly, report });
+    try {
+      const result = s.check();
+      assert.equal(result.ok, false);
+      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
+    } finally { s.done(); }
+  }
+});
+
+test("a run with a framed root outside the registry, or with no row measured, does not count", () => {
+  for (const [report, expected] of [
+    [{ unregistered: 1 }, /1 framed root\(s\) on screen that no registry row measures/],
+    [{ noRows: true }, /no row was measured/],
+  ] as const) {
+    const s = story({ trunkMove: engineOnly, report });
+    try {
+      const result = s.check();
+      assert.equal(result.ok, false);
+      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
+    } finally { s.done(); }
+  }
+});
+
+test("another row's baseline entries are not this run's to fix: the run counts", () => {
+  const s = story({ trunkMove: engineOnly, baseline: ["other.row|1280x800/normal/normal|overflow|.x"] });
+  try { assert.equal(s.check().ok, true); } finally { s.done(); }
+});
+
+test("the measured tree is dirty when a UI input is not its committed blob: an edit, a new file, a picture; an LFS picture compares by content", () => {
+  const dir = mkdtempSync(join(tmpdir(), "fls-dirty-"));
+  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write = (path: string, text: string | Buffer) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  try {
+    const picture = Buffer.from("real picture bytes");
+    const oid = createHash("sha256").update(picture).digest("hex");
+    write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("public/assets/plain.png", "plain\n");
+    write("public/assets/lfs.png", `version https://git-lfs.github.com/spec/v1\noid sha256:${oid}\nsize ${picture.length}\n`);   // committed as a pointer
+    write("src/engine/core.ts", "export const core = 1;\n");
+    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
+    write("public/assets/lfs.png", picture);   // the run folder holds the real content (no git-lfs there)
+    assert.deepEqual(uiInputsDirty(dir), [], "an LFS picture whose content matches its pointer is clean");
+    write("src/engine/core.ts", "export const core = 2;\n");
+    assert.deepEqual(uiInputsDirty(dir), [], "the engine is not a UI input");
+    write("public/assets/lfs.png", Buffer.from("another picture"));
+    assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"]);
+    write("public/assets/lfs.png", picture); write("public/assets/plain.png", "changed\n");
+    assert.deepEqual(uiInputsDirty(dir), ["public/assets/plain.png"]);
+    write("public/assets/plain.png", "plain\n"); write("src/ui/New.tsx", "export const New = 1;\n");
+    assert.deepEqual(uiInputsDirty(dir), ["src/ui/New.tsx"], "an untracked UI file");
+    rmSync(join(dir, "src/ui/New.tsx")); write("src/ui/Panel.tsx", "export const Panel = 2;\n");
+    assert.deepEqual(uiInputsDirty(dir), ["src/ui/Panel.tsx"]);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
 });

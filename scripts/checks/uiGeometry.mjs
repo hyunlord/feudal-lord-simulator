@@ -28,7 +28,7 @@
 //   node scripts/checks/uiGeometry.mjs [--base <rev>] [--head <rev>]
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { appendFileSync, mkdirSync } from 'node:fs';
+import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { hostname } from 'node:os';
 import { join } from 'node:path';
 import { git, isMain, resolveRange } from './gitRange.mjs';
@@ -60,6 +60,40 @@ export function geometryInputs(rev, cwd = process.cwd()) {
     if (input !== undefined && (input.only === null || input.only.test(path))) lines.push(`${blob} ${path}`);
   }
   return lines.sort();
+}
+
+/**
+ * Whether the working tree's UI inputs differ from <rev>'s (RR26 rests on it: a run's hash is of committed blobs, so
+ * what it measured must be them): a tracked change, an untracked file not ignored, or a picture whose content is not its
+ * committed blob. Pictures are compared directly, not by `git status`: an LFS pointer blob gives the content's sha256
+ * (a run folder without git-lfs would show every LFS file as changed), any other blob its git id. Returns the paths.
+ */
+export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
+  const roots = UI_INPUT_ROOTS.map(item => item.root);
+  const quiet = args => { try { return execFileSync('git', args, { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return ''; } };
+  const lines = text => text.split('\n').map(line => line.trim()).filter(Boolean);
+  const dirty = new Set(lines(quiet(['ls-files', '--others', '--exclude-standard', '--', ...roots])));
+  for (const line of quiet(['status', '--porcelain', '--untracked-files=no', '--', ...roots.filter(root => root !== 'public/assets')]).split('\n')) if (line.length > 3) dirty.add(line.slice(3));
+  const assets = lines(quiet(['ls-tree', '-r', '--full-tree', rev, '--', 'public/assets'])).map(row => { const tab = row.indexOf('\t'); return { blob: row.slice(0, tab).split(' ')[2], path: row.slice(tab + 1) }; });
+  // Every committed blob in one `git cat-file --batch` ("<id> blob <size>\n<content>\n" each).
+  const batch = assets.length === 0 ? Buffer.alloc(0) : execFileSync('git', ['cat-file', '--batch'], { cwd, input: `${assets.map(entry => entry.blob).join('\n')}\n`, maxBuffer: 2 ** 31 - 1 });
+  const blobs = new Map(); let at = 0;
+  while (at < batch.length) {
+    const end = batch.indexOf(0x0a, at); const [id, , size] = batch.subarray(at, end).toString().split(' ');
+    blobs.set(id, batch.subarray(end + 1, end + 1 + Number(size))); at = end + 1 + Number(size) + 1;
+  }
+  for (const { blob, path } of assets) {
+    const file = join(cwd, path);
+    if (!existsSync(file)) { dirty.add(path); continue; }
+    const content = readFileSync(file);
+    const committed = blobs.get(blob) ?? Buffer.alloc(0);
+    const pointer = /^version https:\/\/git-lfs\.github\.com\/spec\/v1\noid sha256:([0-9a-f]{64})\nsize (\d+)/.exec(committed.toString('latin1'));
+    const same = pointer !== null
+      ? createHash('sha256').update(content).digest('hex') === pointer[1] || content.equals(committed)
+      : createHash('sha1').update(`blob ${content.length}\0`).update(content).digest('hex') === blob;
+    if (!same) dirty.add(path);
+  }
+  return [...dirty].sort();
 }
 
 export function geometryInputHash(inputs) {
@@ -138,9 +172,11 @@ export function checkRowRun({ run, head, hash, baseline, exceptions, cwd = proce
   const report = readJson(head, `${UI_GEOMETRY_RUNS}/${run}/geometry.json`, cwd);
   if (report === null) return { run, ok: false, reasons: [`run ${run}: no ${UI_GEOMETRY_RUNS}/${run}/geometry.json at ${head.slice(0, 8)} (commit the run's report)`] };
   const reasons = [];
-  const commit = String(report.commit ?? '');
+  const commit = /^[0-9a-f]{40}$/.test(String(report.commit ?? '')) ? report.commit : '';
+  if (report.run !== run) reasons.push(`run ${run}: its report names another run (${report.run ?? 'none'})`);
+  if (commit === '') reasons.push(`run ${run}: its report has no measured commit`);
   if (report.inputHash !== hash) {
-    const files = changedUiInputs(commit, head, cwd);
+    const files = commit === '' ? null : changedUiInputs(commit, head, cwd);
     reasons.push(files === null
       ? `run ${run}: the UI inputs changed since it was measured at ${commit.slice(0, 8)} (that commit is not here to name them): audit the changed rows again`
       : `run ${run}: ${files.length} UI input file(s) changed since it was measured at ${commit.slice(0, 8)}: ${files.slice(0, 6).join(', ')}${files.length > 6 ? ` … ${files.length - 6} more` : ''} — audit the changed rows again`);
@@ -154,7 +190,8 @@ export function checkRowRun({ run, head, hash, baseline, exceptions, cwd = proce
   const comparison = compareBaseline({ keys, baseline: baseline.filter(ofRun), exceptions: exceptions.filter(entry => measured.has(entry.row)) });
   if (comparison.added.length > 0) reasons.push(`run ${run}: ${comparison.added.length} new failure(s), in no baseline entry or exception:`, ...sample(comparison.added));
   if (comparison.fixed.length > 0) reasons.push(`run ${run}: ${comparison.fixed.length} baseline entr(ies) of its rows fixed, drop them (npm run ui-geometry:baseline):`, ...sample(comparison.fixed));
-  let moved = null; try { moved = git(['diff', '--name-only', commit, head], cwd).split('\n').filter(Boolean).length; } catch { /* the commit is not here */ }
+  let moved = null;
+  if (commit !== '') try { moved = execFileSync('git', ['diff', '--name-only', commit, head], { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split('\n').filter(Boolean).length; } catch { /* the commit is not here */ }
   const cells = [...measured.values()].reduce((sum, set) => sum + set.size, 0);
   return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved };
 }
@@ -195,9 +232,10 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
       if (comparison.staleExceptions.length > 0) reasons.push(`${comparison.staleExceptions.length} exception(s) match no failure, drop them:`, ...sample(comparison.staleExceptions));
     }
   }
-  // RR26: a stale or missing shared result gives way to the changed-rows runs the range names, when every one holds.
+  // RR26: a stale or missing shared result (not a current one with its own failures) gives way to the changed-rows runs
+  // the range names, when every one holds.
   let rowRuns = null;
-  if (!unchanged && reasons.length > 0) {
+  if (!unchanged && reasons.length > 0 && (summary === null || summary.inputHash !== hash)) {
     const runs = rowRunsInRange(base, head, cwd);
     if (runs.length > 0) {
       rowRuns = runs.map(run => checkRowRun({ run, head, hash, baseline: baselineFile?.entries ?? [], exceptions, cwd }));
