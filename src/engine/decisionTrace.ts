@@ -9,6 +9,7 @@
  *   decisions behind it in `because` — the main one first, `part` when it had other causes or other decisions a share.
  * The thread never changes the simulation; the faction acts (`factionActs.ts`) read the memories' decisions.
  */
+import { v4Entry } from "./registryV4";
 import { MARKET_CHARTER_PETITION_ID } from "../content/chapterConfig";
 import { BALANCE } from "../content/balanceConfig";
 import { GRANT_PIECE, HOME_ESTATE_ID, PIECE_INCOME_CATEGORIES } from "../content/estateConfig";
@@ -28,6 +29,7 @@ import type { PetitionRecord } from "./politics.types";
 import { preparedness } from "./crisisReads";
 import { stateCalendar } from "./scenarioState";
 import { FACTION_OF_ACTOR } from "./townAgency";
+import { POSSESSION_RENT_DETAIL } from "./possessionRent";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
 /** A decision's targets stay live this long (the user's gate: a consequence within three years). */
@@ -65,8 +67,10 @@ export function changedTargets(before: GameState, after: GameState): string[] {
   for (const suit of after.estates?.suits ?? []) {
     if (suits.get(suit.id) === suit) continue;
     targets.add(`suit:${suit.id}`);
-    // DTR-11: a judgment enforced — the estate's next yield to the lord carries it (the piece now his).
-    if (suit.enforced === true && suits.get(suit.id)?.enforced !== true) targets.add(`flow:estate_income@${suit.estateId}`);
+    // DTR-11, SUIT-THREAD (DTR-20): a judgment enforced — the possession's first rent to the lord carries it.
+    if (suit.enforced === true && suits.get(suit.id)?.enforced !== true) targets.add(`rent:${suit.estateId}|${suit.pieceId ?? suit.estateId}`);
+    // DTR-23: a concord the lord paid keeps the piece — its next rent to him carries the concord.
+    if (suit.settled === "pay" && suits.get(suit.id)?.settled !== "pay") targets.add(`rent:${suit.estateId}|${suit.pieceId ?? suit.estateId}|concord`);
   }
   const claims = new Map((before.estates?.claims ?? []).map(claim => [claim.id, claim] as const));
   for (const claim of after.estates?.claims ?? []) {
@@ -138,6 +142,7 @@ type Action = { readonly type: string } & Readonly<Record<string, unknown>>;
 const COMMAND_KIND: Readonly<Record<string, TracedDecisionKind>> = {
   answer_registry_offer: "registry", answer_estate_petition: "estate_petition", petition_response: "chapter_petition", famine_response: "famine",
   file_suit: "suit", add_suit_evidence: "suit", seek_suit_patron: "suit", enforce_possession: "suit",
+  add_defence_evidence: "suit", seek_defence_patron: "suit", settle_suit: "suit", hold_possession: "suit", guard_possession: "suit", appease_neighbour: "suit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
   set_estate_oversight: "oversight", set_audit_mode: "oversight", set_exception_rules: "oversight", answer_audit: "audit",
   set_estate_policy: "policy", set_project_subsidy: "subsidy", set_market_dues: "dues", order_timber: "timber", set_standing_policy: "standing_policy",
@@ -213,6 +218,13 @@ export function traceCommand(before: GameState, after: GameState, action: Action
   const id = newHistoryDecision(before, after);
   if (id === undefined) return after;
   const targets = changedTargets(before, after);
+  // LP2-E ⑤: an answer to a matter of the stall dues (now the lord's) is followed by the dues as they come in — kept as
+  // they were, too (its next stall fees are what the answer left).
+  if (action.type === "answer_registry_offer") {
+    const occurrence = after.registry?.occurrences.find(entry => entry.id === action.occurrenceId);
+    const entry = occurrence?.source === "v4" ? v4Entry(occurrence.entryId) : undefined;
+    if (entry?.choices.some(choice => choice.commands.some(command => command.type === "set_market_dues")) === true && !targets.includes("dues")) targets.push("dues");
+  }
   if (decisionKind === "estate_petition") {
     const estateId = after.stewardship?.petitions.find(entry => entry.id === action.petitionId)?.estateId;
     if (estateId !== undefined) targets.push(`estate:${estateId}`);
@@ -274,6 +286,12 @@ function tickDecisions(before: GameState, after: GameState): GameState {
     if (chapterRegistryOccurrence(after, petition) !== undefined) continue;
     next = tickDecision(next, { tick: after.tick, by: "lord", kind: "chapter_petition", lapsed: true, source: `petition:${petition.defId}:expired`,
       weights: ["crisis"], targets: changedTargets(before, after) }, { subjectId: petition.id, chosen: "lapsed", alternatives: [...(petition.options ?? [])] });
+  }
+  // Astra lordplay2 ⑦: the will's answer left to its time — a silence, not the lord's "let it be".
+  const plan = after.diplomacy?.marriage;
+  if (plan?.willLapsed === true && before.diplomacy?.marriage?.willLapsed !== true) {
+    next = tickDecision(next, { tick: after.tick, by: "lord", kind: "marriage", lapsed: true, source: "answer_will_change:lapsed", weights: ["inheritance"],
+      targets: [`negotiation:${plan.negotiationId}`] }, { subjectId: plan.negotiationId, chosen: "lapsed", alternatives: ["favour", "support_promise", "let_it_be"] });
   }
   return next;
 }
@@ -342,8 +360,13 @@ function onTarget(state: GameState, key: ConsequenceKey, target: string, detail:
 }
 
 /** The ledger lines a target's later postings fall in (a right's piece, a setting's, a chapter answer's), or null. */
-function flowOf(target: string): { readonly key: "right_income" | "payment_flow"; readonly categories: readonly string[]; readonly estate?: string } | null {
+function flowOf(target: string): { readonly key: "right_income" | "payment_flow" | "suit_rent"; readonly categories: readonly string[]; readonly estate?: string; readonly piece?: string; readonly concord?: true } | null {
   if (target.startsWith("right:")) return { key: "right_income", categories: PIECE_INCOME_CATEGORIES[GRANT_PIECE[target.slice("right:".length)]!] ?? [] };
+  // SUIT-THREAD (DTR-20): `rent:<estate>|<piece>` — the possession's rent (`possessionRent.ts`; a piece's id holds a colon).
+  if (target.startsWith("rent:")) {
+    const [estate, piece, how] = target.slice("rent:".length).split("|");
+    return { key: "suit_rent", categories: ["estate_income"], estate: estate!, piece: piece ?? estate!, ...(how === "concord" ? { concord: true } : {}) };
+  }
   if (target.startsWith("flow:")) {
     // `flow:<category>@<estate>`: that estate's own postings only (its season's yield, not a petition's).
     const [category, estate] = target.slice("flow:".length).split("@");
@@ -357,6 +380,7 @@ function flowOf(target: string): { readonly key: "right_income" | "payment_flow"
 function inFlow(entry: LedgerEntry, flow: NonNullable<ReturnType<typeof flowOf>>): boolean {
   if (!flow.categories.includes(entry.category)) return false;
   if (flow.key === "right_income") return entry.account === "cash" && entry.amount > 0;
+  if (flow.key === "suit_rent") return entry.amount > 0 && entry.sourceRefs.some(ref => ref.type === "right" && ref.id === flow.piece && ref.detail === POSSESSION_RENT_DETAIL);
   if (flow.estate !== undefined) return entry.sourceRefs.some(ref => ref.type === "actor" && ref.id === `estate:${flow.estate}`)
     && !entry.sourceRefs.some(ref => ref.type === "claim");
   return true;
@@ -452,8 +476,10 @@ function consequences(before: GameState, after: GameState): GameState {
         if (amounts.length === 0 || followed(next, decision, flow.key, target)) continue;
         const income = amounts.filter(entry => entry.amount > 0).reduce((sum, entry) => sum + entry.amount, 0);
         const expense = -amounts.filter(entry => entry.amount < 0).reduce((sum, entry) => sum + entry.amount, 0);
-        next = writeConsequence(next, flow.key, target, [decision.id], true,
-          flow.key === "right_income" ? { income } : { category: amounts[0]!.category, income, expense });
+        // SUIT-THREAD: the rent names its judgment's year ("○○년 판결로").
+        next = writeConsequence(next, flow.key, target, [decision.id], flow.key !== "suit_rent",
+          flow.key === "right_income" ? { income } : flow.key === "suit_rent" ? { income, year: scenarioYear(next, decision.tick), estate: flow.estate!, ...(flow.concord === true ? { concord: 1 } : {}) }
+            : { category: amounts[0]!.category, income, expense });
       }
     }
   }
@@ -492,8 +518,8 @@ function crises(before: GameState, after: GameState, state: GameState): GameStat
       const prepared = traceOf(next).decisions.filter(decision => next.tick - decision.tick <= 2 * YEAR && decision.targets.some(target => PREPARES.test(target))).map(decision => decision.id);
       next = appendHistoryRecords(next, [{ tick: next.tick, kind: "event", template: "crisis.arrived", subject: TOWN, severity: 2,
         params: { eventId: record.id, foodDays: prep.foodDays ?? -1, granaries: prep.granaries, markets: prep.markets, shortHouseholds: prep.shortHouseholds,
-          weakPoints: prep.weakPoints.join(","), policy: prep.policy ?? "" },
-        ...(prepared.length === 0 ? {} : { because: becauseOf(prepared, "crisis_prepared", true) }) }]);
+          weakPoints: prep.weakPoints.join(","), policy: prep.policy ?? "", ...(prepared.length === 0 ? {} : { prepared: 1 }) },
+        ...(prepared.length === 0 ? {} : { because: becauseOf(prepared, "crisis_prepared", true).map(entry => ({ ...entry, relation: "preparedness" as const })) }) }]);
     } else if (old.endTick === undefined && record.endTick !== undefined) {
       const arrived = next.history?.records.find(entry => entry.template === "crisis.arrived" && entry.params?.eventId === record.id);
       const fromYear = scenarioYear(next, record.arrivalTick), toYear = scenarioYear(next, record.endTick);

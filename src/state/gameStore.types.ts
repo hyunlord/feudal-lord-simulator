@@ -25,6 +25,14 @@ type GameCommand =
   | { readonly type: "add_suit_evidence"; readonly suitId: string; readonly evidence: import("../engine/estates.types").Evidence["kind"] }
   | { readonly type: "seek_suit_patron"; readonly suitId: string; readonly factionId: string }
   | { readonly type: "enforce_possession"; readonly suitId: string }
+  // DTR-23: the lord sued — his evidence and patron, a final concord (pay or yield), men to hold the possession; and a
+  // forcible entry forewarned — guard the piece or appease the house.
+  | { readonly type: "add_defence_evidence"; readonly suitId: string; readonly evidence: import("../engine/estates.types").Evidence["kind"] }
+  | { readonly type: "seek_defence_patron"; readonly suitId: string; readonly factionId: string }
+  | { readonly type: "settle_suit"; readonly suitId: string; readonly terms: "pay" | "yield" }
+  | { readonly type: "hold_possession"; readonly suitId: string }
+  | { readonly type: "guard_possession"; readonly threatId: string }
+  | { readonly type: "appease_neighbour"; readonly threatId: string }
   // LM-E3 (NG-7, NG-5, NG-6, NG-8): a marriage offer, the answer to its counter, a promise kept, the will-change answer.
   | { readonly type: "propose_marriage"; readonly terms: readonly import("../engine/diplomacy.types").Term[]; readonly groomId?: string }
   | { readonly type: "answer_counter"; readonly negotiationId: string; readonly accept: boolean }

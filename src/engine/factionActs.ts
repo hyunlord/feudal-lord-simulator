@@ -7,6 +7,7 @@
  * decisions behind it (the faction's memories of the last three years that moved it that way, the largest first), and
  * the history writes it. The neighbour houses act by the same table (A3).
  */
+import { threatenEntry } from "./suitDefence";
 import { FACTION_ACT_BALANCE as B, FACTION_ACTS, type FactionActDef, type FactionActEffect } from "../content/factionActConfig";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { houseLotArea } from "../geometry/buildingFootprint";
@@ -101,6 +102,11 @@ function applyEffect(state: GameState, faction: FactionRecord, effect: FactionAc
       const add = effect.size === "small" ? B.favourStrength : B.confirmStrength;
       const claims = estates.claims.map(claim => open.includes(claim) ? { ...claim, strength: Math.min(100, claim.strength + add) } : claim);
       return { state: { ...state, estates: { ...estates, claims } }, detail: { claims: open.length, strength: add } };
+    }
+    case "forcible_entry": {
+      const estateId = neighbourEstate(faction.id);
+      const threatened = estateId === null ? null : threatenEntry(state, faction.id, estateId);
+      return threatened === null ? null : { state: threatened.state, detail: { threat: threatened.threat.id, piece: threatened.threat.pieceId } };
     }
     case "claim_against": {
       const estateId = neighbourEstate(faction.id);

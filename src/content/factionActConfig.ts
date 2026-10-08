@@ -33,7 +33,9 @@ export type FactionActEffect =
   | { readonly effect: "actor_funds"; readonly actor: "merchants" | "community" | "church" | "guild"; readonly sign: 1 | -1; readonly size: "small" | "large" }
   | { readonly effect: "treasury"; readonly sign: 1 | -1; readonly size: "small" | "large" }
   | { readonly effect: "claim_strength"; readonly size: "small" | "large" }
-  | { readonly effect: "claim_against"; readonly sue: boolean };
+  | { readonly effect: "claim_against"; readonly sue: boolean }
+  /** DTR-23 (S3): men gathered to enter a piece the lord possesses of the house's estate — forewarned a season ahead. */
+  | { readonly effect: "forcible_entry" };
 
 export interface FactionActDef {
   readonly id: string;
@@ -90,6 +92,7 @@ export const FACTION_ACTS: Readonly<Record<FactionKind, FactionActRow>> = {
     favourSmall: { id: "neighbour_support", effects: [{ effect: "claim_strength", size: "small" }, { effect: "treasury", sign: 1, size: "small" }] },
     favourLarge: { id: "neighbour_alliance", effects: [{ effect: "claim_strength", size: "large" }, { effect: "treasury", sign: 1, size: "large" }] },
     grudgeSmall: { id: "neighbour_claim", effects: [{ effect: "claim_against", sue: false }, { effect: "treasury", sign: -1, size: "small" }] },
-    grudgeLarge: { id: "neighbour_suit", effects: [{ effect: "claim_against", sue: true }, { effect: "treasury", sign: -1, size: "large" }] },
+    // DTR-23 (S3, the user's decision 2026-10-08): past −60 a house first tries force on what the lord holds of its estate.
+    grudgeLarge: { id: "neighbour_suit", effects: [{ effect: "forcible_entry" }, { effect: "claim_against", sue: true }, { effect: "treasury", sign: -1, size: "large" }] },
   },
 };

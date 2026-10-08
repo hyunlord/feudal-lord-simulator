@@ -32,6 +32,7 @@ import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, se
 import { answerRegistryOffer } from "../engine/registry";
 import { estatesOf, LORD } from "../engine/estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
+import { addDefenceEvidence, appeaseNeighbour, guardPossession, holdPossession, seekDefencePatron, settleSuit } from "../engine/suitDefence";
 
 /** LM-E2 (ES-7): the suit is the lord's (the player commands only the lord's suits). */
 function lordSuit(state: GameState, suitId: string): boolean {
@@ -155,6 +156,13 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "add_suit_evidence": return lordSuit(state, action.suitId) ? addSuitEvidence(state, action.suitId, action.evidence) : state;
     case "seek_suit_patron": return lordSuit(state, action.suitId) ? seekSuitPatron(state, action.suitId, action.factionId) : state;
     case "enforce_possession": return lordSuit(state, action.suitId) ? enforcePossession(state, action.suitId) : state;
+    // DTR-23: the suits against the lord and the entries threatened (each refuses what is not his to do).
+    case "add_defence_evidence": return addDefenceEvidence(state, action.suitId, action.evidence);
+    case "seek_defence_patron": return seekDefencePatron(state, action.suitId, action.factionId);
+    case "settle_suit": return settleSuit(state, action.suitId, action.terms);
+    case "hold_possession": return holdPossession(state, action.suitId);
+    case "guard_possession": return guardPossession(state, action.threatId);
+    case "appease_neighbour": return appeaseNeighbour(state, action.threatId);
     case "mark_chapter_page_seen": return markChapterPageSeen(state, action.chapter);
     case "mark_story_seen": return markStorySeen(state, action.id, action.how);
     case "propose_marriage": return proposeMarriage(state, action.terms, action.groomId);

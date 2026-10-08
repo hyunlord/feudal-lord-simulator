@@ -25,7 +25,8 @@ function funded(state: GameState, amount: number): GameState {
 }
 /** A lord's town of chapter two with a funded treasury and the lord's suits on the given claims. */
 function suing(claims: number): GameState {
-  let state: GameState = funded({ ...load("chapter-two-town"), agency: initialAgency(), registry: initialRegistry() }, 500);
+  // DTR-21: a stage costs a share of the stake's year in lord mode — the treasury given enough for the suits and their papers.
+  let state: GameState = funded({ ...load("chapter-two-town"), agency: initialAgency(), registry: initialRegistry() }, 2_000);
   const neighbour = estatesOf(state).estates.find(estate => estate.id !== "estate-home")!;
   for (let index = 0; index < claims; index += 1) {
     const piece = neighbour.pieces[index]!;
