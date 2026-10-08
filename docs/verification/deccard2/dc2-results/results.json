@@ -1,0 +1,188 @@
+{
+ "rows": {
+  "trace-chip": {
+   "state": "trace-season",
+   "chip": true,
+   "card": {
+    "title": "1300년 당신의 결정 때문에: 소송을 걸었다",
+    "text": "1300년 당신의 결정 때문에: 소송을 걸었다\n\n1300년 봄 — 소송을 걸었다\n\n드 코르벨 가문(이웃 영주): 못마땅해합니다 (관계 −5)\n연대기에서 보기\n조언\n닫기",
+    "primary": 0,
+    "buttons": [
+     "연대기에서 보기",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 272,
+     "right": 1272,
+     "bottom": 418,
+     "inside": true
+    }
+   },
+   "primaries": 0,
+   "bytes": 105856,
+   "pass": true
+  },
+  "trace-chronicle": {
+   "state": "trace-season",
+   "opened": true,
+   "picked": "h-000004",
+   "card": {
+    "title": "1300년 봄",
+    "text": "1300년 봄\n\n소송을 걸었다\n\n고른 길\n소송을 걸었다\n다른 길\n\n다른 길이 없었습니다\n\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n기억하는 이\n드 코르벨 가문(이웃 영주): 못마땅해합니다 (관계 −5)\n그때 지도",
+    "primary": 0,
+    "buttons": [
+     "그때 지도"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 748,
+     "top": 231,
+     "right": 1264,
+     "bottom": 788,
+     "inside": true
+    }
+   },
+   "primaries": 0,
+   "bytes": 81878,
+   "pass": true
+  },
+  "thread-decision": {
+   "state": "trace-later",
+   "chip": true,
+   "card": {
+    "title": null,
+    "text": "그 뒤에 일어난 일\n1300년 가을 — 소송이 증거 단계로 넘어갔다\n기억하는 이\n드 코르벨 가문(이웃 영주): 못마땅해합니다 (관계 −5)",
+    "primary": 0,
+    "buttons": [
+     "1300년 가을 — 소송이 증거 단계로 넘어갔다"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 758,
+     "top": 523,
+     "right": 1256,
+     "bottom": 635,
+     "inside": true
+    }
+   },
+   "primaries": 0,
+   "opened": true,
+   "links": 1,
+   "bytes": 84407,
+   "pass": true
+  },
+  "thread-because": {
+   "state": "trace-later",
+   "because": true,
+   "card": {
+    "title": null,
+    "text": "이 일이 따라 나온 결정\n1300년 당신의 결정 때문에 — 소송을 걸었다",
+    "primary": 0,
+    "buttons": [
+     "1300년 당신의 결정 때문에 — 소송을 걸었다"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 758,
+     "top": 286,
+     "right": 1256,
+     "bottom": 353,
+     "inside": true
+    }
+   },
+   "primaries": 0,
+   "bytes": 81207,
+   "back": true,
+   "pass": true
+  },
+  "year-lord": {
+   "state": "year-eve",
+   "opened": true,
+   "putOff": [
+    "season"
+   ],
+   "card": {
+    "title": "1300년 — 올해 당신의 결정이 바꾼 것",
+    "text": "1300년 — 올해 당신의 결정이 바꾼 것\n영주가 정한 일\n1300년 봄 — 소송을 걸었다\n1300년 봄 — 시장 부담: 좌판세 평소의 80%\n예상 금고 0d / 실제 금고 0d\n청지기가 처리한 일\n1300년 여름 — 장원 청원 '공유지 방목' — 청지기가 관습대로 처리했다 (들어줌)\n결정 뒤에 일어난 일\n\n1300년 당신의 결정 때문에 — 소송을 걸었다\n\n소송이 증거 단계로 넘어갔다\n소송이 후원 단계로 넘어갔다\n드 코르벨 가문(이웃 영주): 못마땅해합니다 (관계 −5)\n\n1300년 당신의 결정 때문에 — 시장 부담: 좌판세 평소의 80%\n\n제재소 사업이 시작되었다 (여러 까닭 가운데 하나)\n롤린슨 상인 가문: 크게 고마워합니다 (관계 +10)\n스펜서 상인 가문: 크게 고마워합니다 (관계 +10)\n\n청지기의 처리 때문에 — 세력의 마음\n\n농민 공동체: 조금 반깁니다 (관계 +1)\n스펜서 상인 가문: 조금 서운해합니다 (관계 −1)\n올해 마을\n인구가 한 해 동안 44명 늘었습니다.\n한 해 금고의 수입 10d · 지출 5s 9d\n연대기에서 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "연대기에서 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 200,
+     "top": 92,
+     "right": 1080,
+     "bottom": 708,
+     "inside": true
+    }
+   },
+   "source": "engine",
+   "bytes": 61988,
+   "again": false,
+   "pass": true
+  },
+  "year-loaded": {
+   "state": "year-loaded",
+   "opened": true,
+   "card": {
+    "title": "1300년 — 올해 당신의 결정이 바꾼 것",
+    "text": "1300년 — 올해 당신의 결정이 바꾼 것\n영주가 정한 일\n1300년 봄 — 소송을 걸었다\n1300년 봄 — 시장 부담: 좌판세 평소의 80%\n예상 금고 0d / 실제 금고 0d\n청지기가 처리한 일\n1300년 여름 — 장원 청원 '공유지 방목' — 청지기가 관습대로 처리했다 (들어줌)\n결정 뒤에 일어난 일\n\n1300년 당신의 결정 때문에 — 소송을 걸었다\n\n소송이 증거 단계로 넘어갔다\n소송이 후원 단계로 넘어갔다\n드 코르벨 가문(이웃 영주): 못마땅해합니다 (관계 −5)\n\n1300년 당신의 결정 때문에 — 시장 부담: 좌판세 평소의 80%\n\n제재소 사업이 시작되었다 (여러 까닭 가운데 하나)\n롤린슨 상인 가문: 크게 고마워합니다 (관계 +10)\n스펜서 상인 가문: 크게 고마워합니다 (관계 +10)\n\n청지기의 처리 때문에 — 세력의 마음\n\n농민 공동체: 조금 반깁니다 (관계 +1)\n스펜서 상인 가문: 조금 서운해합니다 (관계 −1)\n올해 마을\n인구가 한 해 동안 44명 늘었습니다.\n한 해 금고의 수입 10d · 지출 5s 9d\n연대기에서 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "연대기에서 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 200,
+     "top": 92,
+     "right": 1080,
+     "bottom": 708,
+     "inside": true
+    }
+   },
+   "bytes": 62399,
+   "pass": true
+  },
+  "succession": {
+   "state": "succession",
+   "opened": true,
+   "kind": "lord_died",
+   "card": {
+    "title": "영주가 세상을 떠났습니다",
+    "text": "1304년 여름 · 국왕 에드워드 1세 · 영주 조앤 드 해버럴(16살)\n\n가문의 일\n\n영주가 세상을 떠났습니다\n무슨 일인가\n영주 월터 드 해버럴이 49살에 죽고, 딸 조앤 드 해버럴(16살)이 가문을 이었다\n이제 가문을 이끄는 이\n\n조앤 드 해버럴(16세)\n\n바뀐 권리와 영지\n이 일로 장부에 적힌 권리·영지의 변화는 없습니다.\n다음에 할 일\n조앤 드 해버럴의 인물 카드 보기\n계속",
+    "primary": 1,
+    "buttons": [
+     "조앤 드 해버럴의 인물 카드 보기",
+     "계속"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 200,
+     "top": 193,
+     "right": 1080,
+     "bottom": 607,
+     "inside": true
+    }
+   },
+   "bytes": 68647,
+   "chipAfter": false,
+   "again": false,
+   "pass": true
+  }
+ },
+ "bytes": 546382,
+ "errors": []
+}
