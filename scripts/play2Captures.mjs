@@ -58,6 +58,7 @@ const only = flags.only === undefined ? null : new Set(flags.only.split(','));
 const wanted = name => only === null || only.has(name);
 const resultsPath = join(out, 'results.json');
 if (only !== null && existsSync(resultsPath)) Object.assign(rows, JSON.parse(readFileSync(resultsPath, 'utf8')).rows);
+for (const name of only ?? []) delete rows[name];
 const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[data-lord-open]", "[data-lord-nav='ledger']"];
 
 // 1. The lord's claim: the file-suit button with its cost and the hearing's two sides (every lmr2 state read).
