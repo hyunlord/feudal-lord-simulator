@@ -1,0 +1,58 @@
+{
+  "sourceRevision": "56ee1d9d8259f89e6122153cedd82e783a74f5c7",
+  "files": {
+    "src/engine/registryV4.ts": {
+      "originalSha256": "a2f9b9fc60e0281d5bce348d644da012a2c51f533f94f17f1170d64d939481bf",
+      "patchedSha256": "9cf033c637eb9441f689e7c20824eebbc2d0c20d1df5f381c31a5129139bc83a"
+    },
+    "src/engine/registry.ts": {
+      "originalSha256": "6e39a0ca4ccee233ac450ca680660eeab29c920d9ca8e50c60956a4ea83a2e6d",
+      "patchedSha256": "4d5fc314d64455e169616c4a3421fe42ec5a35b57345259b4b1bba4609a85aba"
+    }
+  },
+  "observerSha256": "b83ef40a50232a167cc998b7f86e2cf755f0ba1affe97d6a7663bbe6221ee6d5",
+  "mechanism": "insertion-only marked scalar taps; callbacks isolated; no engine call repetition",
+  "observerPath": "src/engine/historicalRegistryObserver.ts",
+  "scopes": [
+    "candidate",
+    "v4_outer",
+    "v4_selection",
+    "legacy_selection",
+    "layer"
+  ],
+  "candidateGates": [
+    "support",
+    "calendar",
+    "once_or_pace",
+    "year_limit",
+    "gap",
+    "chance",
+    "chapter_prepare",
+    "binding_or_context",
+    "open_key",
+    "used_context",
+    "enabled_choices",
+    "accepted"
+  ],
+  "limitations": [
+    "enabledChoices is intentionally null; enabledChoicesObserved=false; inline evaluation not repeated",
+    "binding_or_context combines bindEntry-null outcomes; internal binding failures not diagnosed",
+    "boundJson is a detached JSON serialization, not canonical bound identities",
+    "constructed_offer is before layer admission; layer stage distinguishes crowded rejection",
+    "No full-state/per-tick/original-runtime claim; runtime projection parity remains required"
+  ],
+  "validation": {
+    "tests": 10,
+    "strictObserverTypecheck": true,
+    "engineExecution": false,
+    "simulationTicks": 0,
+    "historicalTreeTypecheck": {
+      "platform": "darwin",
+      "sourceRevision": "56ee1d9d8259f89e6122153cedd82e783a74f5c7",
+      "command": "tsc --noEmit",
+      "exitCode": 0,
+      "engineExecution": false
+    },
+    "independentReview": "PASS WITH LIMITS"
+  }
+}
