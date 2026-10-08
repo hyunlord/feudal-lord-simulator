@@ -97,12 +97,19 @@ export async function openScene(page: any, input: { readonly url: string; readon
     await page.reload({ waitUntil: "load" });
     await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 });
   } else {
-    // LM-R3: the campaign is the sandbox's "목표와 함께" option and a mode press opens the house choice (default house).
+    // The goal campaign on today's land. LM-R3 (e7784116): it is the sandbox's "목표와 함께" switch, and a mode press opens
+    // the house choice (the default house starts the same game). The trend and perf:ab also measure builds from before
+    // it, whose welcome has a "목표형으로 시작" button: that path stays, else their side never starts (A-B with no pairs).
     const goal = page.locator(".welcome-parchment [data-sandbox-goal]");
     if (await goal.count() > 0) {
       if (await goal.getAttribute("aria-checked") !== "true") await goal.click();
       await page.locator(".welcome-parchment [data-scenario='core:campaign_market_town']").click();
       await page.locator(".welcome-parchment [data-house-start]").click();
+    } else {
+      for (const name of ["목표형으로 시작", "새 게임", "새 게임 시작"]) {
+        const button = page.getByRole("button", { name, exact: true });
+        if (await button.count() > 0 && await button.first().isVisible()) { await button.first().click(); break; }
+      }
     }
   }
   if (proof) await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });

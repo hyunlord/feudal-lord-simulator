@@ -201,7 +201,8 @@ ui-geometry)
 trunk-bisect)
   # Called by scripts/remote/trunkClone.sh when the trunk's bundled clone fails: the first commit between the last
   # passing trunk and this one where <command> fails (git bisect, merges included). A commit whose package-lock.json
-  # differs from this run's is skipped (125) rather than installed. Writes .remote/bisect.txt: "<sha> <subject> (<author>)".
+  # differs from this run's is skipped (125) rather than installed. Writes .remote/bisect.txt: "<sha> <subject> (<author>) —
+  # owner: <session>".
   good=${1:?good}; bad=${2:?bad}; shift 2; [ "${1:-}" = -- ] && shift
   [ $# -gt 0 ] || { echo "trunk-bisect: no command"; exit 2; }
   wt=$PWD/.remote/bisect-tree; rm -rf "$wt"; git worktree prune
@@ -214,7 +215,8 @@ trunk-bisect)
   ( cd "$wt" && git bisect start "$bad" "$good" > /dev/null && git bisect run "$OUT/bisect-step.sh" "$@" ) > "$OUT/bisect.log" 2>&1
   first=$(grep -oE '^[0-9a-f]{40} is the first bad commit' "$OUT/bisect.log" | cut -c1-40)
   (cd "$wt" && git bisect reset -q 2> /dev/null); git worktree remove --force "$wt" 2> /dev/null
-  if [ -n "$first" ]; then git log -1 --format='%h %s (%an)' "$first" | cut -c1-200 > "$OUT/bisect.txt"
+  # The author is the same git user for every session: the owner comes from the prefix/trailers (commitOwner.sh).
+  if [ -n "$first" ]; then echo "$(git log -1 --format='%h %s (%an)' "$first" | cut -c1-200) — owner: $(bash "$(dirname "${BASH_SOURCE[0]}")/commitOwner.sh" "$first")" > "$OUT/bisect.txt"
   else echo "(git bisect found no single commit: see bisect.log)" > "$OUT/bisect.txt"; fi
   cat "$OUT/bisect.txt"
   ;;
