@@ -15,6 +15,7 @@ import { openHomePetitions } from "../lordCardsModel";
 import { openRegistryCards } from "../registryCardModel";
 import { houseChangeView } from "../results/houseChange";
 import { lordMattersDueNow } from "../lord/decisions/lordMattersDue";
+import { SLICE_END_ID, SLICE_START_ID, sliceEndDue, slicePageDue, takeSliceStart } from "../slice/sliceDue";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -105,6 +106,8 @@ export function useStoryPresentation(input: {
   const yearRef = useRef<{ year: number; tick: number } | null>(null);
   const yearDueRef = useRef<{ year: number; sinceMs: number } | null>(null);
   const yearShownRef = useRef(new Set<number>());
+  // LM-R3: when the slice's end was first seen due (its page opens `delayMs` on, after the world, as a chapter's page).
+  const sliceEndSinceRef = useRef<number | null>(null);
   const [, setRevision] = useState(0);
   const [delayMs] = useState(eventWorldFirstMs);
   const beats = storyBeats(state);
@@ -136,6 +139,7 @@ export function useStoryPresentation(input: {
     const turned = blocked ? null : yearCardDue(yearRef.current, state);
     if (!blocked) yearRef.current = { year, tick: state.tick };
     if (turned !== null && !yearShownRef.current.has(turned)) { yearDueRef.current = { year: turned, sinceMs: now }; changed = true; }
+    if (!blocked && sliceEndSinceRef.current === null && sliceEndDue(state)) { sliceEndSinceRef.current = now; changed = true; }
     if (changed) setRevision(revision => revision + 1);
   });
   const current = new Set(beats.map(beat => beat.id));
@@ -167,6 +171,13 @@ export function useStoryPresentation(input: {
   }, [topModal, house]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (blocked || topModal !== null) return;
+    // LM-R3: the lord slice's opening page before anything; its end after the year's card (the year, then the twenty).
+    const slice = slicePageDue(state, yearDueRef.current !== null);
+    const endSince = sliceEndSinceRef.current;
+    if (slice !== null && !openedRef.current.has(slice) && (slice === "slice_start" || (endSince !== null && nowMs - endSince >= delayMs))) {
+      openedRef.current.add(slice); if (slice === "slice_start") takeSliceStart();
+      pushModal(slice); markOpened(slice === "slice_start" ? SLICE_START_ID : SLICE_END_ID); return;
+    }
     // DEC-CARD (A3): a change in the lord's house before any petition of the same tick.
     if (house !== null && !openedRef.current.has(`house:${house.id}`) && !houseRead(`house:${house.id}`) && ready(`house:${house.id}`)) {
       openedRef.current.add(`house:${house.id}`); pushModal("house_change"); markOpened(`house:${house.id}`); return;
@@ -205,6 +216,7 @@ export function useStoryPresentation(input: {
   const chapterSince = end === null || openedRef.current.has(`chapter:${end.chapter}`) ? undefined : chapterSeenRef.current.get(`chapter:${end.chapter}`);
   if (chapterSince !== undefined) wakes.push(chapterSince + delayMs);
   if (yearDueRef.current !== null) wakes.push(yearDueRef.current.sinceMs + delayMs);
+  if (sliceEndSinceRef.current !== null && !openedRef.current.has("slice_end")) wakes.push(sliceEndSinceRef.current + delayMs);
   const nextWakeMs = wakes.length === 0 ? null : Math.min(...wakes);
   useEffect(() => {
     if (nextWakeMs === null) return undefined;

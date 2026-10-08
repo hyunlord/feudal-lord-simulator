@@ -1,5 +1,4 @@
 import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "./content/scenario/coreScenarios";
-import { LORD_SLICE_GOAL_YEARS } from "./content/lordSliceConfig";
 import { SCENARIO_COPY } from "./content/scenario/scenarioCopy.ko";
 import {
   useCallback,
@@ -44,6 +43,7 @@ import { releaseControlFocus } from "./input/domInputBindings";
 import { stateCalendar } from "./engine/scenarioState";
 import { TITLE_COPY } from "./ui/titleCopy.ko";
 import { showStartHint as setStartHint, useStartHint } from "./ui/startHintStore";
+import { requestSliceStart } from "./ui/slice/sliceDue";
 import { wave8Url } from "./ui/wave8Art";
 import { seasonJustClosed } from "./ui/seasonLedgerCard";
 import { seasonLedgerChoice, setSeasonLedgerAuto, type SeasonLedgerChoice } from "./ui/seasonLedgerPreference";
@@ -466,9 +466,12 @@ export function App() {
     if (saveSystem.offerContinue) saveSystem.declineContinue();
     else tutorial.startNewGame(welcomeTutorial, state);
   };
-  // LR1-D7: what the welcome no longer says, once the mode is chosen — the sandbox's build guidance, lord mode's goal.
-  const showStartHint = (scenarioId: string) => setStartHint(scenarioId === SANDBOX_SCENARIO_ID ? TITLE_COPY.sandboxHint
-    : scenarioId === LORD_SLICE_SCENARIO_ID ? TITLE_COPY.lordGoal(LORD_SLICE_GOAL_YEARS.min, LORD_SLICE_GOAL_YEARS.max) : null);
+  // LR1-D7: what the welcome no longer says, once the mode is chosen — the sandbox's build guidance. LM-R3: lord mode's
+  // goal is its opening page's (the slice's start, requested here as the start remounts the app).
+  const showStartHint = (scenarioId: string) => {
+    if (scenarioId === LORD_SLICE_SCENARIO_ID) requestSliceStart();
+    setStartHint(scenarioId === SANDBOX_SCENARIO_ID ? TITLE_COPY.sandboxHint : null);
+  };
   // LM-R3: a start takes the house chosen on the welcome (HOUSE-1, MNR-3), the default house when none was.
   const startNewGameOverSave = (scenarioId: string, land: LandChoice, house: HouseChoice) => {
     showStartHint(scenarioId);

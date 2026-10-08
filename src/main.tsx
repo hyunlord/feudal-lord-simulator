@@ -21,6 +21,8 @@ import "./styles/legacy.css";
 import "./styles/lordCards.css";
 import "./styles/decisionCard.css";
 import "./styles/results.css";
+// LM-R3: the lord slice's opening page and its end.
+import "./styles/slice.css";
 import "./styles/registryCard.css";
 import "./styles/lordMode.css";
 // LM-R2: the lord screen host and its four areas' screens (lord mode only).

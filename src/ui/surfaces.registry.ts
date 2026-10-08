@@ -29,7 +29,9 @@ export type FrameKind = "css" | "layer" | "painting" | "flat";
  * LM-R2 `lord2`: scripts/lmr2States.ts, ~/fls-lmr2-states — the lord's marriage, estates, promises and suits played to their states). */
 export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2"
   // DEC-CARD-2: scripts/deccard2ResultsStates.ts (the result thread).
-  | "deccard2";
+  | "deccard2"
+  // LM-R3: scripts/sliceEndsStates.ts (the lord slice played by the lord bot to its end, ~/fls-slice-end-states).
+  | "slice";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -575,6 +577,22 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...STEWARD_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
+  // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step) and its end (scripts/sliceEndsStates.ts:
+  // the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card opens after the load — the end page does).
+  { id: "modal.slice-start", root: ".chronicle-page.slice-page[data-slice='start']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
+    scrollParts: [".chapter-page-scroll"], scene: { kind: "title" }, numbers: false,
+    open: [{ click: ".welcome-parchment [data-scenario='core:lord_slice']" }, { wait: ".welcome-house" }, { click: ".welcome-parchment [data-house-start]" },
+      { wait: ".slice-page[data-slice='start']", timeout: 30_000 }, { pause: 1_200 }],
+    requires: ["h2", ".slice-you", ".slice-neighbours li", ".slice-factions li", ".slice-rules li", ".slice-begin"],
+    data: "a new lord-slice game's opening page (de Haverel): the house and its arms, the home estate, the town, the neighbours, the five factions, the slice's years" },
+  { id: "modal.slice-end", root: ".chronicle-page.slice-page[data-slice='end']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
+    scrollParts: [".chapter-page-scroll"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
+    open: [{ wait: ".slice-page[data-slice='end']", timeout: 90_000 }, { pause: 800 }],
+    requires: ["h2", ".slice-why p", ".chronicle-maps", ".slice-decisions li", ".slice-record", ".slice-remembers li", ".slice-year-lines li", ".slice-chronicle", ".slice-continue"],
+    data: "the slice's end in 1320 (seed 3, twenty years): why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year" },
+  { id: "modal.slice-end.record", extends: "modal.slice-end", root: ".chronicle-screen", frame: "flat", scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
+    open: [{ click: ".slice-decisions .slice-record" }, { wait: ".chronicle-screen", timeout: 30_000 }, { pause: 900 }], scrollParts: [".chronicle-list", ".chronicle-detail"],
+    requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision opened in the chronicle on its record (closing it comes back to the page)" },
 ];
 
 /**

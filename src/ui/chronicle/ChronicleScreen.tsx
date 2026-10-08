@@ -91,13 +91,15 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
   );
 }
 
-export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = null, onBook, onEnding }: {
+export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = null, onBook, onEnding, endingLabel }: {
   readonly state: GameState; readonly onClose: () => void; readonly onLookAt: (tile: Tile) => void;
   /** UI-5: opened from a person card's [전기 보기], on that person's biography. */
   readonly initialPersonId?: string | null;
   /** UI-10 (LG-9): [연대기 책] opens the book so far; [결말 다시 보기] the campaign's ending once it is written. */
   readonly onBook?: () => void;
   readonly onEnding?: (() => void) | null;
+  /** LM-R3: the ending button's words when it opens another ending (the lord slice's end page). */
+  readonly endingLabel?: string;
 }) {
   // LM-R1: opened from a receipt's decision ribbon, on that decision's record.
   const [focus] = useState(chronicleFocus);
@@ -263,7 +265,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
         {onBook === undefined ? null : <Button type="button" className="chronicle-book" onPress={() => onBook()} variant="secondary">
           <UiIcon sheet="action" cell="log" />{LEGACY_SCREEN_COPY.book.open}</Button>}
         {onEnding === undefined || onEnding === null ? null : <Button type="button" className="chronicle-ending" onPress={() => onEnding()} variant="secondary">
-          <UiIcon sheet="action" cell="open" />{LEGACY_SCREEN_COPY.openEnding}</Button>}
+          <UiIcon sheet="action" cell="open" />{endingLabel ?? LEGACY_SCREEN_COPY.openEnding}</Button>}
         <Button type="button" className="chronicle-close" aria-label={COPY.closeLabel} onPress={() => onClose()} variant="icon">{COPY.close}</Button>
       </header>
       {personId !== null ? (

@@ -33,7 +33,9 @@ export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "p
   | "marriage_decision" | "audit_decision" | "estate_petition_offmap"
   /** DEC-CARD: the year's card ("올해 당신의 결정이 바꾼 것") at the first tick of the next year; (lord mode, Astra A3) a
    * change in the lord's house — a death, a new house, an inheritance, a wardship — before the petitions. */
-  | "year_review" | "house_change";
+  | "year_review" | "house_change"
+  /** LM-R3 (the lord slice): its opening page after the welcome's house step, and its end ("이 도시가 내 결정의 결과인가"). */
+  | "slice_start" | "slice_end";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }
