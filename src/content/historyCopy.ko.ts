@@ -200,7 +200,8 @@ const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
 };
 /** DEC-TRACE §6: why a dearth did no harm, and the weak points a town met it with. */
 const CRISIS_REASONS: Readonly<Record<string, string>> = { stores: "곡식을 쌓아 둔 덕", relief: "영주의 구휼 덕", weak: "흉년이 약했다", damage: "" };
-const WEAK_POINTS: Readonly<Record<string, string>> = { no_granary: "곡창 없음", food_under_a_season: "식량이 한 철도 안 됨", households_short: "이미 굶는 집", no_market: "곡식을 살 장터 없음" };
+/** The weak points' words (PLAY-2: shared with the screens — one word for one thing). */
+export const WEAK_POINTS: Readonly<Record<string, string>> = { no_granary: "곡창 없음", food_under_a_season: "식량이 한 철도 안 됨", households_short: "이미 굶는 집", no_market: "곡식을 살 장터 없음" };
 
 /** DEC-TRACE §3: a faction's act. */
 const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {

@@ -509,7 +509,7 @@ function crises(before: GameState, after: GameState, state: GameState): GameStat
       next = appendHistoryRecords(next, [{ tick: next.tick, kind: "event", template: "crisis.arrived", subject: TOWN, severity: 2,
         params: { eventId: record.id, foodDays: prep.foodDays ?? -1, granaries: prep.granaries, markets: prep.markets, shortHouseholds: prep.shortHouseholds,
           weakPoints: prep.weakPoints.join(","), policy: prep.policy ?? "", ...(prepared.length === 0 ? {} : { prepared: 1 }) },
-        ...(prepared.length === 0 ? {} : { because: becauseOf(prepared, "crisis_prepared", true) }) }]);
+        ...(prepared.length === 0 ? {} : { because: becauseOf(prepared, "crisis_prepared", true).map(entry => ({ ...entry, relation: "preparedness" as const })) }) }]);
     } else if (old.endTick === undefined && record.endTick !== undefined) {
       const arrived = next.history?.records.find(entry => entry.template === "crisis.arrived" && entry.params?.eventId === record.id);
       const fromYear = scenarioYear(next, record.arrivalTick), toYear = scenarioYear(next, record.endTick);

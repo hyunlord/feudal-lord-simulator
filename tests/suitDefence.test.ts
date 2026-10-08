@@ -257,3 +257,38 @@ test("Astra lordplay2 ⑦: the will waits two seasons in the lord's matters due;
   assert.equal(lapsed.diplomacy!.marriage!.willLapsed, true);
   assert.ok(lapsed.history!.records.some(entry => entry.template === "decision.lapsed" && entry.params?.source === "answer_will_change:lapsed"));
 });
+
+// --- PLAY-2 reads (renderer A's request, docs/requests/engine-play2-reads.md) ----------------------------------------------
+
+test("PLAY-2: a filing's outlook shows its cost even when refused, and the hearing it would open — who leads now, and whether the claim can still pass the defence", async () => {
+  const { suitFilingOutlook, suitActions } = await import("../src/engine/estateSuits");
+  const poor = funded(lordGame(), 10);
+  const claim = estatesOf(poor).claims.find(entry => entry.claimant === LORD && entry.status === "open")!;
+  const refused = suitFilingOutlook(poor, claim.id);
+  assert.equal(refused.refusal, "treasury");
+  assert.ok(refused.cost > 10, "the cost though refused");
+  const hearing = refused.hearing!;
+  assert.equal(hearing.verdictNow, hearing.plaintiff > hearing.defence ? "plaintiff" : "defendant");
+  // Reachable: what the claim has plus every kind of evidence still to bring (and a patron) against the defence.
+  const evidence = Object.values(EVIDENCE_WEIGHT).reduce((sum, weight) => sum + weight, 0);
+  assert.equal(hearing.reachable, hearing.plaintiff + evidence + Math.max(0, ...poor.factions!.factions.filter(faction => faction.relation >= 10).map(faction => Math.min(30, faction.relation))) > hearing.defence);
+  // Filed, the suit's track lists what each stage still ahead costs, the enforcement's attempt last.
+  const rich = funded(lordGame(), 50_000);
+  const filed = gameReducer(rich, { type: "file_suit", claimId: claim.id });
+  const suit = estatesOf(filed).suits.find(entry => entry.claimId === claim.id)!;
+  const costs = suitActions(filed, suit.id)!.stageCosts;
+  assert.deepEqual(costs.map(entry => entry.stage), ["evidence", "patronage", "hearing", "enforcing"]);
+  assert.ok(costs.find(entry => entry.stage === "hearing")!.cost >= 120);
+  assert.equal(suitHearing(filed, suit.id)!.verdictNow, suitHearing(filed, suit.id)!.plaintiff > suitHearing(filed, suit.id)!.defence ? "plaintiff" : "defendant");
+});
+
+test("PLAY-2: each weak point after a dearth names the town project that answers it; the dearth's tie to a preparing decision is marked as preparedness", async () => {
+  const { preparedness } = await import("../src/engine/crisisReads");
+  const { WEAK_POINTS } = await import("../src/content/historyCopy.ko");
+  const prep = preparedness(lordGame());
+  assert.deepEqual(prep.levers.map(entry => entry.point), prep.weakPoints);
+  const project = Object.fromEntries(prep.levers.map(entry => [entry.point, entry.project]));
+  if ("no_granary" in project) assert.equal(project.no_granary, "granary");
+  if ("households_short" in project) assert.equal(project.households_short, null);
+  assert.equal(WEAK_POINTS.no_market, "곡식을 살 장터 없음");
+});

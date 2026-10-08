@@ -136,19 +136,69 @@ export function seekSuitPatron(state: GameState, suitId: string, factionId: stri
   return withSuit(state, { ...suit, patron: factionId, patronSupport: Math.min(PATRON_SUPPORT_MAX, relation) });
 }
 
-/** ES-7 API: the hearing's two sides now — the claim with its evidence and patron, the defence's title and hold. */
-export function suitHearing(state: GameState, suitId: string): { readonly plaintiff: number; readonly defence: number } | null {
+/**
+ * ES-7 API: the hearing's two sides now — the claim with its evidence and patron, the defence's title and hold — and
+ * (PLAY-2, renderer A's request) the rule between them: the plaintiff wins only above the defence (a tie is the
+ * defendant's, `judge`), and whether the plaintiff's side can still pass it — the evidence not yet given while it may be
+ * brought, and the strongest patron the lord could still win over.
+ */
+export interface SuitHearing {
+  readonly plaintiff: number;
+  readonly defence: number;
+  /** Judged now, who would win. */
+  readonly verdictNow: "plaintiff" | "defendant";
+  /** The plaintiff's most (now + what it can still add) passes the defence. */
+  readonly reachable: boolean;
+}
+
+function defenceSide(estate: Estate, suit?: Pick<Suit, "defenceEvidence" | "defenceSupport">): number {
+  // DTR-23: the lord sued brings his own evidence and patron.
+  return Math.floor(estate.titleStrength * DEFENCE_TITLE_PERMILLE / 1000) + Math.floor(estate.possessionStrength * DEFENCE_POSSESSION_PERMILLE / 1000)
+    + (suit?.defenceEvidence ?? []).reduce((sum, entry) => sum + entry.weight, 0) + (suit?.defenceSupport ?? 0);
+}
+
+/** What the plaintiff can still add: evidence not given (while evidence may be brought), and a patron (until the hearing). */
+function addable(state: GameState, claim: Claim, plaintiff: string, stage: SuitStage | "unfiled", hasPatron: boolean): number {
+  const gathering = stage === "unfiled" || stage === "filed" || stage === "evidence";
+  const evidence = !gathering ? 0 : (Object.keys(EVIDENCE_WEIGHT) as Evidence["kind"][])
+    .filter(kind => !claim.evidence.some(entry => entry.kind === kind)).reduce((sum, kind) => sum + EVIDENCE_WEIGHT[kind], 0);
+  const patronOpen = !hasPatron && (gathering || stage === "patronage") && plaintiff === LORD;
+  const patron = !patronOpen ? 0 : Math.max(0, ...(state.factions?.factions ?? []).filter(faction => faction.relation >= PATRON_MIN_RELATION)
+    .map(faction => Math.min(PATRON_SUPPORT_MAX, faction.relation)));
+  return evidence + patron;
+}
+
+const verdictOf = (plaintiff: number, defence: number): SuitHearing["verdictNow"] => plaintiff > defence ? "plaintiff" : "defendant";
+
+export function suitHearing(state: GameState, suitId: string): SuitHearing | null {
   const estates = estatesOf(state);
   const suit = estates.suits.find(entry => entry.id === suitId);
   const claim = estates.claims.find(entry => entry.id === suit?.claimId);
   const found = suit === undefined ? null : suitTarget(estates, suit.estateId, suit.pieceId);
   if (suit === undefined || claim === undefined || found === null) return null;
   const plaintiff = claim.strength + claim.evidence.reduce((sum, entry) => sum + entry.weight, 0) + suit.patronSupport;
-  // DTR-23: the lord sued brings his own evidence and patron.
-  const defence = Math.floor(found.estate.titleStrength * DEFENCE_TITLE_PERMILLE / 1000)
-    + Math.floor(found.estate.possessionStrength * DEFENCE_POSSESSION_PERMILLE / 1000)
-    + (suit.defenceEvidence ?? []).reduce((sum, entry) => sum + entry.weight, 0) + (suit.defenceSupport ?? 0);
-  return { plaintiff, defence };
+  const defence = defenceSide(found.estate, suit);
+  return { plaintiff, defence, verdictNow: verdictOf(plaintiff, defence),
+    reachable: plaintiff + addable(state, claim, suit.plaintiff, suit.stage, suit.patron !== undefined) > defence };
+}
+
+/**
+ * PLAY-2 API (renderer A's request): a claim's filing as it would go now — its cost (shown even when refused), the
+ * refusal, and the hearing it would open (the claim's strength and evidence against the defence; null: no target).
+ */
+export function suitFilingOutlook(state: GameState, claimId: string): { readonly cost: number; readonly refusal: SuitRefusal | null; readonly hearing: SuitHearing | null } {
+  const estates = estatesOf(state);
+  const claim = estates.claims.find(entry => entry.id === claimId);
+  const refusal = fileSuitRefusal(state, claimId);
+  if (claim === undefined) return { cost: 0, refusal, hearing: null };
+  const piece = claim.pieceId === undefined ? {} : { pieceId: claim.pieceId };
+  const cost = suitStageCost(state, { estateId: claim.estateId, ...piece }, "filed");
+  const found = suitTarget(estates, claim.estateId, claim.pieceId);
+  if (found === null) return { cost, refusal, hearing: null };
+  const plaintiff = claim.strength + claim.evidence.reduce((sum, entry) => sum + entry.weight, 0);
+  const defence = defenceSide(found.estate);
+  return { cost, refusal, hearing: { plaintiff, defence, verdictNow: verdictOf(plaintiff, defence),
+    reachable: plaintiff + addable(state, claim, claim.claimant, "unfiled", false) > defence } };
 }
 
 /**
@@ -225,6 +275,8 @@ export interface SuitActions {
   readonly patrons: readonly { readonly factionId: string; readonly support: number; readonly refusal: "stage" | "chosen" | "relation" | null }[];
   readonly enforce: { readonly cost: number; readonly force: number; readonly hold: number; readonly refusal: "stage" | "treasury" | null } | null;
   readonly nextStageTick: number | null;
+  /** PLAY-2 (renderer A's request): what each stage still ahead takes from the treasury as it comes (enforcing: each attempt). */
+  readonly stageCosts: readonly { readonly stage: SuitStage; readonly cost: number }[];
 }
 export function suitActions(state: GameState, suitId: string): SuitActions | null {
   const estates = estatesOf(state);
@@ -245,7 +297,12 @@ export function suitActions(state: GameState, suitId: string): SuitActions | nul
   const enforce = suit.stage === "closed" ? null : { cost: enforceCost, force: ENFORCEMENT_BASE + suit.patronSupport, hold: suit.hold ?? 0,
     refusal: suit.stage !== "enforcing" ? "stage" as const : enforceCost > 0 && treasury < enforceCost ? "treasury" as const : null };
   const nextStageTick = nextSuitStage(suit) === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON;
-  return { evidence, patrons, enforce, nextStageTick };
+  const stageCosts: { stage: SuitStage; cost: number }[] = [];
+  for (let stage = nextSuitStage(suit); stage !== undefined && stage !== "judged"; stage = nextSuitStage({ stage, ...(suit.fast === true ? { fast: true as const } : {}) })) {
+    stageCosts.push({ stage, cost: suitStageCost(state, suit, stage) });
+  }
+  if (suit.stage !== "closed" && suit.verdict !== "defendant") stageCosts.push({ stage: "enforcing", cost: enforceCost });
+  return { evidence, patrons, enforce, nextStageTick, stageCosts };
 }
 
 /** ES-7: the stage after each; a stage lasts one season at least, and the hearing waits for its fee. */
