@@ -1,6 +1,6 @@
 import { KING_NAMES_KO } from "../content/personNames.ko";
 import type { HomePetitionKind } from "../engine/stewardship.types";
-import { moneyFullDelta, moneyJosa, moneyObject, moneyShort } from "./money.ko";
+import { moneyJosa, moneyObject, moneyShort } from "./money.ko";
 
 // LM-R1 (petitions) the lord's cards in lord mode: the home estate's petitions (FIX-14 SW-11, one per kind), the steward's
 // answers by precedent (SW-12), the town's requests (TA-7) and the court line (the king, the lord, the guardian). The
@@ -86,9 +86,6 @@ export const HOME_PETITION_COPY: Readonly<Record<HomePetitionKind, KindCopy>> = 
 export const LORD_CARDS_COPY = {
   /** The card's kicker: whose petition it is. */
   homeFrom: "장원의 청원",
-  /** One answer's numbers: the treasury now, then the relation moves (`PETITION_COPY.relations`), or none. */
-  treasury: (pennies: number) => pennies === 0 ? "금고 변화 없음" : `금고 ${moneyFullDelta(pennies)}`,
-  noRelations: "관계 변화 없음",
   /** How long the petition waits for an answer (it lapses as refused after). */
   waits: (days: number) => `답을 기다림 · ${days}일 남음`,
   /** ER-6: the lord's same answer twice running makes the kind a precedent; the steward answers it after that. */

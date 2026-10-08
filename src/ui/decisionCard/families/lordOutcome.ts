@@ -1,64 +1,40 @@
-import { SCENARIO_COPY } from "../../../content/scenario/scenarioCopy.ko";
 import type { GameState } from "../../../engine/engine.types";
-import { estatePerson, estatesOf } from "../../../engine/estates";
-import { faction } from "../../../engine/factions";
-import { personDisplayName } from "../../../engine/persons";
-import { factionDisplayName } from "../../../content/factionCopy.ko";
+import { estatesOf } from "../../../engine/estates";
 import type { Claim, Suit } from "../../../engine/estates.types";
 import { historySummary } from "../../../engine/history";
 import type { HistoryRecord } from "../../../engine/history.types";
 import { diplomacyOf } from "../../../engine/negotiation";
 import type { PromiseRecord } from "../../../engine/diplomacy.types";
-import { calendar, scenarioOf } from "../../../engine/scenarioState";
 import { stewardshipOf } from "../../../engine/stewardship";
 import { wallConstructionPriority } from "../../../engine/constructionReserve";
-import { treasuryBalance } from "../../../ledger/ledger";
-import { BUILDING_COPY } from "../../../content/buildingCatalog.ko";
 import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
+import type { GameAction } from "../../../state/gameStore.types";
 import { NEGOTIATION_COPY } from "../../lord/negotiation/negotiationCopy.ko";
 import { POLICY_COPY } from "../../lord/policyCopy.ko";
 import { moneyShort } from "../../money.ko";
+import { dateWord, holderName } from "../answerWords";
 import type { Rememberer } from "../decisionCardTypes";
-import { remembersOf } from "../remembers";
+import { outlookLater, outlookOf, outlookRemembers, outlookTreasury, type AnswerOutlook, type OutlookLater } from "../outlook";
+import { afterAnswer } from "../remembers";
 import { LORD_OUTCOME_COPY as COPY, LORD_OUTCOME_WORDS as WORDS } from "./lordOutcomeCopy.ko";
 
-// DEC-CARD, the lord-mode cards: what an answer does, read off the state the engine leaves after it (the answer run on
-// the state with gameReducer, `afterAnswer`) — never a rule or a table copied here (P-D4). The diff is put in sentences:
-//  - now: the treasury, claims raised or moved, suits, evidence, a patron, promises settled, the steward kept or sent
-//    away, the town's conditions, and the chronicle's own sentences for what else it writes;
-//  - later: the promises the answer makes (their deadlines, what a breach costs, the witnesses), a timed term, and the
-//    day a big decision's actual is written (`actualDueTick`);
-//  - who remembers: the factions (recordDecision's faction.relation records), the houses that are not factions
-//    (diplomacy relations) and an estate's tenants and merchants (its goodwill).
+// DEC-CARD, the lord-mode cards: what an answer does. DEC-CARD-2 (DC-D7): the engine's outlook (`answerOutlook`, outlook.ts)
+// gives the treasury (지금), what the answer sets going (나중에: a promise's deadline, a subsidy, the dues, the timber
+// order, a suit's stage, the factions whose later acts follow from it) and the factions that remember it. What the
+// outlook does not give is read off the state the engine leaves after the answer (the dry run, `afterAnswer`) — never a
+// rule or a table copied here (P-D4):
+//  - now: claims raised or moved, suits, evidence, a patron, promises kept or broken, the steward kept or sent away, the
+//    estate policy, the wall's priority, new building sites, an estate's value, and the chronicle's own sentences;
+//  - later: a promise's term and who gives it (beside the outlook's deadline), what a breach costs and its witnesses, a
+//    timed term, and the day a big decision's actual is written (`actualDueTick`);
+//  - who remembers: the houses that are not factions (diplomacy relations), an estate's tenants and merchants (its
+//    goodwill), and a promise's promisee and witnesses.
 // A marriage offer is answered by the seed's draw as it is sent (NG-3): when the answer sends one, only the offer and its
-// tier are said — what the draw brings is not shown before it is made. DEC-TRACE's `answerOutlook` will give all of
-// this directly (docs/requests/engine-deccard-gp7.md §3).
+// tier are said — what the draw brings is not shown before it is made.
 
-export type LordOutcome = Readonly<{ now: readonly string[]; later: readonly string[]; remembers: readonly Rememberer[] }>;
-
-/** "1305년 여름": a tick's year and season (glossary rule 5: no ticks, no days counted down). */
-export function dateWord(state: GameState, tick: number): string {
-  const date = calendar(tick, scenarioOf(state).startYear);
-  return COPY.date(date.year, SCENARIO_COPY.seasons[date.season] ?? "");
-}
-
-/** A holder's name (ES-1 HolderId) as the lord screens write it: the lord, a person, a neighbour's house, a faction. */
-function holderName(state: GameState, holder: string): string {
-  if (holder.startsWith("person:")) {
-    const id = holder.slice("person:".length);
-    const person = estatePerson(state, id) ?? state.persons?.people.find(entry => entry.id === id);
-    return person === undefined ? WORDS.oldKin : personDisplayName(person);
-  }
-  if (holder.startsWith("estate:")) {
-    const estate = estatesOf(state).estates.find(entry => entry.id === holder.slice("estate:".length));
-    const name = estate?.house?.name ?? estate?.name ?? holder;
-    return WORDS.houseOf(GENTRY_NAMES_KO[name] ?? name);
-  }
-  const known = WORDS.holders[holder];
-  if (known !== undefined) return known;
-  const view = faction(state, holder as Parameters<typeof faction>[1]);
-  return view === undefined ? holder : factionDisplayName(view.id, view.name);
-}
+export type LordOutcome = Readonly<{ now: readonly string[]; later: readonly string[]; remembers: readonly Rememberer[];
+  /** The pennies the answer moves now (the outlook's). */
+  treasury: number }>;
 
 const money = (pennies: number) => pennies > 0 ? COPY.treasuryIn(pennies) : pennies < 0 ? COPY.treasuryOut(-pennies) : COPY.treasurySame;
 
@@ -99,36 +75,43 @@ function suitLines(before: GameState, after: GameState): string[] {
   });
 }
 
-/** The promises the answer makes (later) and settles (now); one line for a debt or a pension paid year by year. */
+/** The promises the answer settles (now), and what a breach of the lord's new word costs (later; once per promisee). */
 function promiseLines(before: GameState, after: GameState): { now: string[]; later: string[] } {
   const was = new Map(diplomacyOf(before).promises.map(entry => [entry.id, entry] as const));
   const now: string[] = [];
-  const made: PromiseRecord[] = [];
+  const stakes = new Map<string, PromiseRecord>();
   for (const record of diplomacyOf(after).promises) {
     const old = was.get(record.id);
-    if (old === undefined) { made.push(record); continue; }
+    if (old === undefined) { if (record.promisor === "lord" && !stakes.has(record.promisee)) stakes.set(record.promisee, record); continue; }
     if (old.status === "open" && record.status === "broken") now.push(COPY.promiseBroken(holderName(after, record.promisor), WORDS.terms[record.term]));
     if (old.status === "open" && record.status === "kept" && record.promisor === "lord") now.push(COPY.promiseKept(WORDS.terms[record.term]));
   }
-  const later: string[] = [];
-  const groups = new Map<string, PromiseRecord[]>();
-  for (const record of made) groups.set(`${record.promisor}|${record.term}`, [...groups.get(`${record.promisor}|${record.term}`) ?? [], record]);
-  for (const records of groups.values()) {
-    const first = records[0]!;
-    const last = records.at(-1)!;
-    const term = WORDS.terms[first.term];
-    if (first.promisor !== "lord") { later.push(COPY.promiseToLord(holderName(after, first.promisor), term, dateWord(after, first.deadline))); continue; }
-    later.push(records.length === 1 ? COPY.promiseByLord(term, dateWord(after, first.deadline))
-      : COPY.promisesByLord(term, records.length, dateWord(after, first.deadline), dateWord(after, last.deadline)));
-  }
-  // What a breach of the lord's word costs: the promise's own stake and witnesses (once per promisee).
-  const stakes = new Map<string, PromiseRecord>();
-  for (const record of made) if (record.promisor === "lord" && !stakes.has(record.promisee)) stakes.set(record.promisee, record);
-  for (const record of stakes.values()) {
+  const later = [...stakes.values()].map(record => {
     const witnesses = record.witnesses.map(id => holderName(after, id)).join(", ");
-    later.push(COPY.stake(holderName(after, record.promisee), record.stake.relation, witnesses === "" ? null : witnesses));
-  }
+    return COPY.stake(holderName(after, record.promisee), record.stake.relation, witnesses === "" ? null : witnesses);
+  });
   return { now, later };
+}
+
+/** The outlook's open promises (promise_due) with the term and the one who gives the word, from the promise ledger after
+ * the answer; one line for a debt or a pension paid year by year. A row the ledger does not match keeps the outlook's words. */
+function promiseDue(after: GameState, rows: readonly OutlookLater[]): string[] {
+  const promises = diplomacyOf(after).promises;
+  const groups = new Map<string, { record: PromiseRecord; ticks: number[] }>();
+  const unmatched: OutlookLater[] = [];
+  for (const row of [...rows].sort((a, b) => (a.tick ?? 0) - (b.tick ?? 0))) {
+    const record = promises.find(entry => entry.status === "open" && entry.deadline === row.tick && entry.promisee === row.actor);
+    if (record === undefined || row.tick === null) { unmatched.push(row); continue; }
+    const key = `${record.promisor}|${record.promisee}|${record.term}`;
+    groups.set(key, { record: groups.get(key)?.record ?? record, ticks: [...groups.get(key)?.ticks ?? [], row.tick] });
+  }
+  const lines = [...groups.values()].map(({ record, ticks }) => {
+    const term = WORDS.terms[record.term];
+    const [first, last] = [dateWord(after, ticks[0]!), dateWord(after, ticks.at(-1)!)];
+    if (record.promisor !== "lord") return COPY.promiseToLord(holderName(after, record.promisor), term, first);
+    return ticks.length === 1 ? COPY.promiseByLord(term, first) : COPY.promisesByLord(term, ticks.length, first, last);
+  });
+  return unmatched.length === 0 ? lines : [...lines, ...outlookLater(after, { now: [], later: unmatched, remembers: [] })];
 }
 
 function termLines(before: GameState, after: GameState): string[] {
@@ -150,18 +133,11 @@ function stewardLines(before: GameState, after: GameState): string[] {
   return lines;
 }
 
-/** The town's conditions the answer sets (the lord's policy screen's words). */
+/** The town's conditions the answer sets that the outlook does not word (the dues, subsidies and timber are its later keys). */
 function conditionLines(before: GameState, after: GameState): string[] {
   const lines: string[] = [];
   const [was, now] = [before.agency, after.agency];
   if (now?.policy !== undefined && now.policy !== was?.policy) lines.push(COPY.policy(POLICY_COPY.policies[now.policy]));
-  if (now?.duesPermille !== undefined && now.duesPermille !== was?.duesPermille) lines.push(COPY.dues(Math.round(now.duesPermille / 10)));
-  const name = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
-  for (const subsidy of now?.subsidies ?? []) {
-    if (!(was?.subsidies ?? []).some(old => old.kind === subsidy.kind && old.amount === subsidy.amount)) lines.push(COPY.subsidy(name(subsidy.kind), moneyShort(subsidy.amount)));
-  }
-  for (const subsidy of was?.subsidies ?? []) if (!(now?.subsidies ?? []).some(entry => entry.kind === subsidy.kind)) lines.push(COPY.subsidyGone(name(subsidy.kind)));
-  if ((after.timberOrder ?? 0) !== (before.timberOrder ?? 0) && (after.timberOrder ?? 0) > 0) lines.push(COPY.timber(after.timberOrder!));
   const [wallWas, wallNow] = [wallConstructionPriority(before), wallConstructionPriority(after)];
   if (wallNow !== wallWas) lines.push(wallNow === "priority" ? COPY.wallFirst : COPY.wallNotFirst);
   const sites = after.constructionSites.length - before.constructionSites.length;
@@ -229,12 +205,13 @@ function goodwillMoves(before: GameState, after: GameState): Rememberer[] {
   });
 }
 
-/** The answer's outcome, from the state before it and the state the engine leaves after it. */
-export function lordOutcome(before: GameState, after: GameState): LordOutcome {
+/** The answer's outcome: the engine's outlook, and the state before and after it for what the outlook lacks. */
+export function lordOutcome(before: GameState, after: GameState, outlook: AnswerOutlook): LordOutcome {
   const records = newRecords(before, after);
+  const treasury = outlookTreasury(outlook);
   const offers = diplomacyOf(after).negotiations.filter(entry => !diplomacyOf(before).negotiations.some(old => old.id === entry.id));
   if (offers.length > 0) {
-    return { now: offers.map(offer => COPY.offerSent(NEGOTIATION_COPY.tiers[offer.acceptance.tier])), later: [COPY.offerAnswer], remembers: [] };
+    return { now: offers.map(offer => COPY.offerSent(NEGOTIATION_COPY.tiers[offer.acceptance.tier])), later: [COPY.offerAnswer], remembers: [], treasury };
   }
   const promises = promiseLines(before, after);
   const quoted = records.filter(record => !SAID.test(record.template)).map(record => COPY.record(historySummary(record, after)));
@@ -242,9 +219,16 @@ export function lordOutcome(before: GameState, after: GameState): LordOutcome {
   const [valueWas, valueNow] = [value(before), value(after)];
   const dropped = [...valueNow].filter(([id, now]) => now < (valueWas.get(id) ?? now)).map(([id]) => COPY.valueDrop(estateWord(after, id)));
   return {
-    now: [money(treasuryBalance(after) - treasuryBalance(before)), ...conditionLines(before, after), ...claimLines(before, after), ...suitLines(before, after),
+    now: [money(treasury), ...conditionLines(before, after), ...claimLines(before, after), ...suitLines(before, after),
       ...promises.now, ...stewardLines(before, after), ...dropped, ...quoted],
-    later: [...promises.later, ...termLines(before, after), ...actualLines(after, records)],
-    remembers: dedupe([...remembersOf(before, after), ...houseMoves(before, after), ...goodwillMoves(before, after), ...promiseRememberers(before, after)]),
+    later: [...outlookLater(after, outlook, { promise_due: rows => promiseDue(after, rows) }), ...promises.later, ...termLines(before, after), ...actualLines(after, records)],
+    remembers: dedupe([...outlookRemembers(before, outlook), ...houseMoves(before, after), ...goodwillMoves(before, after), ...promiseRememberers(before, after)]), treasury,
   };
+}
+
+/** A lord-mode answer as its card says it (the outlook, then the dry run for the rest), or null when the engine refuses it. */
+export function lordAnswer(state: GameState, command: GameAction): LordOutcome | null {
+  const outlook = outlookOf(state, command);
+  const after = outlook === null ? null : afterAnswer(state, command);
+  return outlook === null || after === null ? null : lordOutcome(state, after, outlook);
 }

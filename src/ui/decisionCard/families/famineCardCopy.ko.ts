@@ -32,6 +32,10 @@ export const FAMINE_CARD_COPY = {
   },
   forecast: (population: number, populationNow: number, treasury: number, treasuryNow: number) =>
     `두 계절 뒤 인구는 ${population}명(지금 ${populationNow}명), 금고는 ${sumSubject(treasury)} 될 것으로 봅니다(지금 ${moneyShort(treasuryNow)}).`,
+  /** The treasury's change now (the engine's outlook). */
+  treasuryIn: (pennies: number) => `금고에 ${sumSubject(pennies)} 들어옵니다.`,
+  treasuryOut: (pennies: number) => `금고에서 ${sumSubject(pennies)} 나갑니다.`,
+  treasurySame: "지금은 금고에서 나가는 돈이 없습니다.",
   leaving: (people: number) => `그때까지 ${people}명쯤이 마을을 떠날 것으로 봅니다.`,
   nobodyLeaves: "그때까지 떠나는 집은 없을 것으로 봅니다.",
   actualDue: (date: string) => `실제로 어떻게 되었는지는 ${date}에 연대기에 적힙니다.`,

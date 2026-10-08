@@ -51,7 +51,7 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
   const home = homePetitionView(state);
   if (home !== null) {
     beats.push({ id: `home-petition:${home.petitionId}`, kind: "home_petition", illustration: home.art, tile: seatTile(state), decision: "estate_petition",
-      title: home.title, line: home.demand, facts: [home.waits], advice: home.precedent ?? LORD_CARDS_COPY.precedentHint });
+      title: home.title, line: home.demand, facts: [home.waits], advice: home.standing });
   }
   const precedent = precedentView(state);
   if (precedent !== null) {

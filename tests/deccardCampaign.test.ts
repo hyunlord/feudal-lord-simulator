@@ -55,7 +55,10 @@ test("DEC-CARD famine: who suffers, the stake, until when, and each answer's for
     const after = gameReducer(state, { type: "famine_response", choice: choice.id as FamineResponseChoice });
     const decision = decisionOf(state, after);
     assert.equal(choice.refusal, null);
-    assert.equal(choice.now.length, 1, `${choice.id}: what it does, in words`);
+    // DEC-CARD-2 (DC-D7): what it does, in words, then the treasury's change from the engine's outlook.
+    assert.equal(choice.now.length, 2, `${choice.id}: what it does, in words, and the treasury`);
+    const paid = treasuryBalance(after) - treasuryBalance(state);
+    assert.equal(choice.now[1], paid > 0 ? FAMINE_CARD_COPY.treasuryIn(paid) : paid < 0 ? FAMINE_CARD_COPY.treasuryOut(-paid) : FAMINE_CARD_COPY.treasurySame, choice.id);
     assert.ok(choice.later.includes(FAMINE_CARD_COPY.forecast(decision.predicted.population!, state.population, decision.predicted.treasury!, treasuryBalance(state))), choice.id);
     const leaving = state.population - decision.predicted.population!;
     assert.ok(choice.later.includes(leaving > 0 ? FAMINE_CARD_COPY.leaving(leaving) : FAMINE_CARD_COPY.nobodyLeaves), `${choice.id}: who may leave`);

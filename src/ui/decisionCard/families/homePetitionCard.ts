@@ -1,18 +1,19 @@
 import type { GameState } from "../../../engine/engine.types";
-import { treasuryBalance } from "../../../ledger/ledger";
 import { calendarDays } from "../../gameTimeCopy.ko";
 import { HOME_PETITION_COPY } from "../../lordCardsCopy.ko";
-import { courtLine, openHomePetitions, parties, settledHomeAnswer } from "../../lordCardsModel";
+import { courtLine, homeStanding, openHomePetitions, parties } from "../../lordCardsModel";
 import { perState } from "../../perState";
 import { HOME_PETITION_ART } from "../../wave44Art";
 import type { DecisionCardView, DecisionChoiceView } from "../decisionCardTypes";
-import { afterAnswer, remembersOf } from "../remembers";
+import { outlookLater, outlookOf, outlookRemembers, outlookTreasury } from "../outlook";
 import { HOME_PETITION_CARD_COPY as COPY, HOME_PETITION_STAKE } from "./homePetitionCopy.ko";
 
 // DEC-CARD, the home estate's petition (LM-R1 FIX-14): the petition's own words as the situation, its kind's stake,
-// and each answer from the engine — the answer run on the state: the treasury's change and the factions it moves
-// (recordDecision's faction.relation records). The precedent line is the steward's rule as it stands (LM9-3).
-// Once per state (`perState`): the chips read `homePetitionView`, this only the card that is up.
+// and each answer from the engine's outlook (DEC-CARD-2, DC-D7 `answerOutlook`): the treasury's change now, what it sets
+// going later, and the factions that remember it. A home petition is lord mode's, so the outlook gives it all — no dry
+// run here. Later also says the kind's standing policy: the steward answers it so from now on unless it is set to
+// 영주에게 (DTR-1; LM9-3's "the same answer twice" is gone). Once per state (`perState`): the chips read
+// `homePetitionView`, this only the card that is up.
 
 const money = (pennies: number): string => pennies > 0 ? COPY.treasuryIn(pennies) : pennies < 0 ? COPY.treasuryOut(-pennies) : COPY.treasurySame;
 
@@ -21,16 +22,14 @@ export const homePetitionCard = perState((state: GameState): DecisionCardView | 
   if (petition === undefined) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
   const named = parties(state, petition);
-  const settled = settledHomeAnswer(state, petition.kind);
+  const standing = homeStanding(state, petition);
   const choice = (grant: boolean): DecisionChoiceView => {
-    const after = afterAnswer(state, { type: "answer_estate_petition", petitionId: petition.id, grant });
+    const id = grant ? "grant" : "refuse";
     const label = grant ? copy.grant(named) : copy.refuse(named);
-    return {
-      id: grant ? "grant" : "refuse", label,
-      now: after === null ? [] : [money(treasuryBalance(after) - treasuryBalance(state))],
-      later: [settled === null ? COPY.precedent : COPY.settled(settled ? copy.grant(named) : copy.refuse(named))],
-      remembers: remembersOf(state, after), refusal: after === null ? COPY.refused : null,
-    };
+    const outlook = outlookOf(state, { type: "answer_estate_petition", petitionId: petition.id, grant });
+    if (outlook === null) return { id, label, now: [], later: [], remembers: [], refusal: COPY.refused };
+    return { id, label, now: [money(outlookTreasury(outlook))], later: [standing, ...outlookLater(state, outlook)],
+      remembers: outlookRemembers(state, outlook), refusal: null };
   };
   return {
     family: "home_petition", subjectId: petition.id, title: copy.title, court: courtLine(state), from: COPY.from,
