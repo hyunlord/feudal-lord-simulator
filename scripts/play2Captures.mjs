@@ -50,13 +50,13 @@ const measure = (page, selector) => page.evaluate(sel => {
 const shoot = async (page, name, clip) => { const path = join(out, `${name}.jpg`); await page.screenshot({ path, type: 'jpeg', quality: QUALITY, ...(clip ? { clip } : {}) }); return statSync(path).size; };
 const ok = row => row.card !== null && row.card !== undefined && (row.card.smallestText ?? 12) >= 12 && row.card.box.inside && row.card.titles === 0;
 const rows = {}; let bytes = 0; const errors = [];
-const resultsPath = join(out, 'results.json');
-if (only !== null && existsSync(resultsPath)) Object.assign(rows, JSON.parse(readFileSync(resultsPath, 'utf8')).rows);
 const report = (name, row, extra = true) => { row.pass = ok(row) && extra; rows[name] = row; console.log(`${row.pass ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(row)}`); };
 const watch = (page, name) => page.on('pageerror', error => errors.push(`${name}: ${String(error).slice(0, 300)}`));
 /** `--only a,b`: run only these captures (a rerun of some keeps the others' files). */
 const only = flags.only === undefined ? null : new Set(flags.only.split(','));
 const wanted = name => only === null || only.has(name);
+const resultsPath = join(out, 'results.json');
+if (only !== null && existsSync(resultsPath)) Object.assign(rows, JSON.parse(readFileSync(resultsPath, 'utf8')).rows);
 const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[data-lord-open]", "[data-lord-nav='ledger']"];
 
 // 1. The lord's claim: the file-suit button with its cost and the hearing's two sides (every lmr2 state read).
