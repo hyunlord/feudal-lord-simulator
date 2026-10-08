@@ -15,7 +15,8 @@ const RUN = "render-TEST-geometry-1";
 const ROW = "modal.panel";
 const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 
-type Report = { dirty?: boolean; unopened?: number; keys?: string[]; inputHash?: string; runName?: string; commit?: string | null; unregistered?: number; noRows?: boolean };
+type Report = { dirty?: boolean; unopened?: number; keys?: string[]; inputHash?: string; runName?: string; commit?: string | null; unregistered?: number;
+  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "trunk0" };
 
 function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFailure = null }: {
   trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
@@ -37,13 +38,15 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFa
   write("docs/verification/uiaudit1/geometry-exceptions.json", JSON.stringify({ exceptions: [] }));
   write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ inputHash: "stale", failureKeys: [], unopened: 0 }));   // the shared result, of older inputs
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
+  const trunk0 = git("rev-parse", "HEAD");
   git("checkout", "-qb", "branch");
   write("src/ui/Panel.tsx", "export const Panel = () => 'panel';\n"); write("src/styles/panel.css", ".panel { padding: 12px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
   git("commit", "-qam", "branch: the panel");
   const measured = git("rev-parse", "HEAD");
-  const rows = report.noRows ? {} : { [ROW]: { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) } };
-  write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: report.runName ?? RUN, commit: report.commit === undefined ? measured : report.commit ?? undefined,
-    dirty: report.dirty ?? false, inputHash: report.inputHash ?? geometryInputHash(geometryInputs(measured, dir)), totals: { unopened: report.unopened ?? 0 },
+  const rows = report.rowsNull ? { [ROW]: null } : report.noRows ? {} : { [ROW]: { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) } };
+  write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: report.runName ?? RUN,
+    commit: report.commitOf === "trunk0" ? trunk0 : report.commit === undefined ? measured : report.commit ?? undefined,
+    axesNarrowed: report.axesNarrowed === null ? undefined : report.axesNarrowed ?? false, dirty: report.dirty ?? false, inputHash: report.inputHash ?? geometryInputHash(geometryInputs(measured, dir)), totals: { unopened: report.unopened ?? 0 },
     unregisteredFramed: Array.from({ length: report.unregistered ?? 0 }, (_, i) => ({ root: `.stray-${i}`, seenIn: [ROW] })), rows }));
   if (sharedFailure !== null) write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ inputHash: geometryInputHash(geometryInputs(measured, dir)), failureKeys: [sharedFailure], unopened: 0 }));
   git("add", "-A"); git("commit", "-qm", `branch: the changed rows' geometry${trailer ? `\n\nUI-Geometry-Run: ${RUN}` : ""}`);
@@ -51,7 +54,13 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFa
   const trunk = git("rev-parse", "HEAD");
   git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
   const check = () => checkUiGeometry({ base: trunk, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
-  return { git, write, check, done: () => rmSync(dir, { recursive: true, force: true }) };
+  const run = (name: string) => {   // a new changed-rows run of the same row on the branch's current content, with its trailer
+    const commit = git("rev-parse", "HEAD");
+    write(`docs/verification/uiaudit1/geometry/${name}/geometry.json`, JSON.stringify({ run: name, commit, axesNarrowed: false, dirty: false,
+      inputHash: geometryInputHash(geometryInputs(commit, dir)), totals: { unopened: 0 }, unregisteredFramed: [], rows }));
+    git("add", "-A"); git("commit", "-qm", `a new changed-rows run\n\nUI-Geometry-Run: ${name}`);
+  };
+  return { git, write, check, run, done: () => rmSync(dir, { recursive: true, force: true }) };
 }
 
 const engineOnly = (write: (path: string, text: string) => void) => { write("src/engine/core.ts", "export const core = 2;\n"); write("docs/notes.md", "y\n"); };
@@ -198,5 +207,61 @@ test("the measured tree is dirty when a UI input is not its committed blob: an e
     assert.deepEqual(uiInputsDirty(dir), ["src/ui/New.tsx"], "an untracked UI file");
     rmSync(join(dir, "src/ui/New.tsx")); write("src/ui/Panel.tsx", "export const Panel = 2;\n");
     assert.deepEqual(uiInputsDirty(dir), ["src/ui/Panel.tsx"]);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+// Cases from the second independent review (RR22).
+test("a run narrowed by --viewports, --copy or --numbers, or one that does not say, does not count", () => {
+  for (const [report, expected] of [
+    [{ axesNarrowed: true }, /narrowed by --viewports, --copy or --numbers/],
+    [{ axesNarrowed: null }, /does not say it measured every condition/],
+  ] as const) {
+    const s = story({ trunkMove: engineOnly, report });
+    try {
+      const result = s.check();
+      assert.equal(result.ok, false);
+      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
+    } finally { s.done(); }
+  }
+});
+
+test("the remedy works: a stale run is superseded by a newer named run of the same rows", () => {
+  const s = story({ trunkMove: write => write("src/styles/global.css", ":root { --gap: 10px; }\n") });
+  try {
+    assert.equal(s.check().ok, false, "the first run is stale: a UI input moved");
+    s.run("render-TEST-geometry-2");
+    const result = s.check();
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(result), /run render-TEST-geometry-1: superseded — a newer named run measured its rows \(modal\.panel\) again/);
+  } finally { s.done(); }
+});
+
+test("a report whose hash is not its commit's, or with a broken row, does not count (and does not crash)", () => {
+  for (const [report, expected] of [
+    [{ commitOf: "trunk0" }, /its hash is not its measured commit's/],
+    [{ rowsNull: true }, /no row was measured/],
+  ] as const) {
+    const s = story({ trunkMove: engineOnly, report });
+    try {
+      const result = s.check();
+      assert.equal(result.ok, false);
+      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
+    } finally { s.done(); }
+  }
+});
+
+test("dirty counts only UI inputs, and an LFS pointer left as text is no picture", () => {
+  const dir = mkdtempSync(join(tmpdir(), "fls-dirty2-"));
+  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write = (path: string, text: string | Buffer) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  try {
+    const picture = Buffer.from("real picture bytes"); const oid = createHash("sha256").update(picture).digest("hex");
+    const pointer = `version https://git-lfs.github.com/spec/v1\noid sha256:${oid}\nsize ${picture.length}\n`;
+    write("src/render/draw.ts", "export const draw = 1;\n"); write("public/assets/lfs.png", pointer);
+    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
+    write("src/render/draw.ts", "export const draw = 2;\n"); write("src/content/new.ts", "export const n = 1;\n");   // not UI inputs
+    assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"], "the pointer text in place of the picture");
+    write("public/assets/lfs.png", picture);
+    assert.deepEqual(uiInputsDirty(dir), []);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

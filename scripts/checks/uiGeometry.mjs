@@ -89,11 +89,12 @@ export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
     const committed = blobs.get(blob) ?? Buffer.alloc(0);
     const pointer = /^version https:\/\/git-lfs\.github\.com\/spec\/v1\noid sha256:([0-9a-f]{64})\nsize (\d+)/.exec(committed.toString('latin1'));
     const same = pointer !== null
-      ? createHash('sha256').update(content).digest('hex') === pointer[1] || content.equals(committed)
+      ? createHash('sha256').update(content).digest('hex') === pointer[1]   // the pointer text itself is no picture: dirty
       : createHash('sha1').update(`blob ${content.length}\0`).update(content).digest('hex') === blob;
     if (!same) dirty.add(path);
   }
-  return [...dirty].sort();
+  const isInput = path => UI_INPUT_ROOTS.some(item => (path === item.root || path.startsWith(`${item.root}/`)) && (item.only === null || item.only.test(path)));
+  return [...dirty].filter(isInput).sort();
 }
 
 export function geometryInputHash(inputs) {
@@ -147,12 +148,13 @@ export function rowRunsInRange(base, head, cwd = process.cwd()) {
 /** A run report's failure keys (row | condition | check | path), its measured rows and their conditions. */
 export function reportFailures(report) {
   const keys = []; const measured = new Map();
-  for (const [row, entry] of Object.entries(report?.rows ?? {})) {
-    for (const [condition, record] of Object.entries(entry.conditions ?? {})) {
-      if (record.status !== 'measured') continue;
+  const rows = report?.rows !== null && typeof report?.rows === 'object' ? report.rows : {};
+  for (const [row, entry] of Object.entries(rows)) {
+    for (const [condition, record] of Object.entries(entry?.conditions ?? {})) {
+      if (record?.status !== 'measured') continue;
       if (!measured.has(row)) measured.set(row, new Set());
       measured.get(row).add(condition);
-      for (const key of record.keys ?? []) keys.push(`${row}|${condition}|${key}`);
+      for (const key of Array.isArray(record.keys) ? record.keys : []) keys.push(`${row}|${condition}|${key}`);
     }
   }
   return { keys: keys.sort(), measured };
@@ -175,6 +177,12 @@ export function checkRowRun({ run, head, hash, baseline, exceptions, cwd = proce
   const commit = /^[0-9a-f]{40}$/.test(String(report.commit ?? '')) ? report.commit : '';
   if (report.run !== run) reasons.push(`run ${run}: its report names another run (${report.run ?? 'none'})`);
   if (commit === '') reasons.push(`run ${run}: its report has no measured commit`);
+  else {
+    let atCommit = null; try { atCommit = geometryInputHash(geometryInputs(commit, cwd)); } catch { /* not here */ }
+    if (atCommit === null) reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not here to check its hash`);
+    else if (atCommit !== report.inputHash) reasons.push(`run ${run}: its hash is not its measured commit's (${commit.slice(0, 8)})`);
+  }
+  if (report.axesNarrowed !== false) reasons.push(`run ${run}: ${report.axesNarrowed === true ? 'narrowed by --viewports, --copy or --numbers' : 'its report does not say it measured every condition (an audit from before RR26)'}: audit the rows in every condition`);
   if (report.inputHash !== hash) {
     const files = commit === '' ? null : changedUiInputs(commit, head, cwd);
     reasons.push(files === null
@@ -238,7 +246,16 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   if (!unchanged && reasons.length > 0 && (summary === null || summary.inputHash !== hash)) {
     const runs = rowRunsInRange(base, head, cwd);
     if (runs.length > 0) {
-      rowRuns = runs.map(run => checkRowRun({ run, head, hash, baseline: baselineFile?.entries ?? [], exceptions, cwd }));
+      // Newest first: a run whose rows a newer named run measured again is superseded (the remedy for a stale run is a
+      // new one, so the old trailer must not keep refusing).
+      const covered = new Set(); rowRuns = [];
+      for (const run of runs) {
+        const entry = checkRowRun({ run, head, hash, baseline: baselineFile?.entries ?? [], exceptions, cwd });
+        const rows = entry.rows ?? [];
+        if (rows.length > 0 && rows.every(row => covered.has(row))) { rowRuns.push({ ...entry, ok: true, superseded: true, reasons: [] }); continue; }
+        for (const row of rows) covered.add(row);
+        rowRuns.push(entry);
+      }
       reasons.length = 0; comparison = null;
       for (const entry of rowRuns) reasons.push(...entry.reasons);
     }
@@ -290,8 +307,9 @@ export function formatUiGeometryResult(result) {
   const counts = result.comparison === null || result.comparison === undefined ? ''
     : ` — ${result.comparison.failures} failure(s): ${result.comparison.baseline} in the baseline, ${result.comparison.excepted} under ${result.comparison.exceptions} exception(s)`;
   if (result.ok && result.unchanged) return `ui-geometry: no UI inputs changed${tag}`;
-  if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry =>
-    `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; no UI input changed since it was measured${entry.moved === null ? '' : ` (${entry.moved} file(s) changed since, none a UI input)`} — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
+  if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
+    ? `  run ${entry.run}: superseded — a newer named run measured its rows (${entry.rows.join(', ')}) again`
+    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; no UI input changed since it was measured${entry.moved === null ? '' : ` (${entry.moved} file(s) changed since, none a UI input)`} — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
   if (result.ok) return `ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`;
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);
