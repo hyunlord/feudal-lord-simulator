@@ -40,6 +40,19 @@ test('deterministic collector comparison permits only unrelated raw envelope fie
   assert.throws(() => compareReplayProjection(actual, { decisions: [{ id: 'h-1' }], observation: actual.observation }), /decisions/);
   assert.throws(() => compareReplayProjection(actual, { decisions: actual.decisions, observation: { observations: 3 } }), /observation/);
 });
+test('collector comparison preserves JSON archive semantics for history fields and zero expense', () => {
+  const actual = { history: [{ id: 'h-1', decision: { chosen: 'a', actual: undefined }, because: undefined }] };
+  const archived = { history: [{ id: 'h-1', decision: { chosen: 'a' } }] };
+  assert.doesNotThrow(() => compareReplayProjection(actual, archived));
+  assert.throws(() => compareReplayProjection(actual, { history: [{ id: 'h-1', decision: { chosen: 'b' } }] }), /history/);
+  assert.throws(() => compareReplayProjection(actual, { history: [{ id: 'h-1', decision: { chosen: 'a', actual: null } }] }), /history/);
+  assert.throws(() => compareReplayProjection(actual, { history: [] }), /history/);
+  assert.equal(Object.hasOwn(actual.history[0]!.decision, 'actual'), true);
+  assert.doesNotThrow(() => compareReplayProjection({ history: [{ params: { income: 20, expense: -0 } }] }, { history: [{ params: { income: 20, expense: 0 } }] }));
+  assert.throws(() => compareReplayProjection({ history: [{ params: { income: 20, expense: -0 } }] }, { history: [{ params: { income: 21, expense: 0 } }] }), /history/);
+  assert.doesNotThrow(() => compareReplayProjection({ candidateObservation: { enabledChoices: undefined, count: 1 } }, { candidateObservation: { count: 1 } }));
+  assert.throws(() => compareReplayProjection({ candidateObservation: { count: 1 } }, { candidateObservation: { count: 2 } }), /candidateObservation/);
+});
 test('passive recorder mutation guard checks both actual state objects', () => {
   const before = { tick: 7, data: { value: 1 } }, after = { tick: 7, data: { value: 2 } };
   assert.doesNotThrow(() => passiveReplayObservation(before, after, () => { structuredClone(before); structuredClone(after); }));

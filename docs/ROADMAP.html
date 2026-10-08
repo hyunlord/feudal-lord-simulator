@@ -527,5 +527,6 @@ for(const p of PHASES){
 }
 root.appendChild(past);
 </script>
+<p>Engine B 답변 재현59d42d0은 seed1의28개 중간 저장과 최종 상태가 같았지만 메모리의 expense:-0과 JSON의0 비교 오류로 종료1했다. 저장된8개 수집 항목은 원본과 동일하다. JSON 표현 비교로 고치고 회귀 포함25시험·lint를 통과했다. 기존 실패 실행은 유효화하지 않으며 수정 도구의 DGX 전체 재현은 미완료다.</p>
 </body>
 </html>

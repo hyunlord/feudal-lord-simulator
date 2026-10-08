@@ -47,7 +47,9 @@ export function verifyStateSerialization(stored: string, decoded: unknown, check
   return replaySha(json);
 }
 export function compareReplayProjection(actual: Record<string, unknown>, expected: Record<string, unknown>): void {
-  for (const [key, value] of Object.entries(actual)) requireReplay(isDeepStrictEqual(value, expected[key]), `Original collector mismatch: ${key}`);
+  // Compare the pinned JSON representation, which omits undefined fields and serializes -0 as 0.
+  const archived = object(JSON.parse(JSON.stringify(actual)) as unknown);
+  for (const key of Object.keys(actual)) requireReplay(isDeepStrictEqual(archived[key], expected[key]), `Original collector mismatch: ${key}`);
 }
 export function verifyRegistryAnswerSet(actual: readonly Record<string, unknown>[], sidecar: unknown): void {
   const expected = object(sidecar);
@@ -248,7 +250,7 @@ export function runAnswerReplay(seed: number, rawPath: string, checkpointDirecto
     final.hit = true;
     writeFileSync(join(output, 'audit-snapshot.json.gz'), gzipSync(JSON.stringify(audit.snapshot())));
     compareReplayProjection(audit.snapshot(), raw);
-    requireReplay(isDeepStrictEqual({ ...candidates.snapshot(), observerFailures: registryCandidateObserverFailures() }, raw.candidateObservation), 'Candidate projection mismatch');
+    compareReplayProjection({ candidateObservation: { ...candidates.snapshot(), observerFailures: registryCandidateObserverFailures() } }, raw);
     requireReplay(changedCommands === raw.commands && registryCandidateObserverFailures() === 0, 'Command count or observer mismatch');
     requireReplay(seed !== 1 || captures.length === 4, 'Missing seed1 preclose captures');
     saveContexts(); const contexts = answers.snapshot();
