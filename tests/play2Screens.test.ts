@@ -12,6 +12,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { HOME_ESTATE_ID } from "../src/content/estateConfig";
+import { WEAK_POINTS } from "../src/content/historyCopy.ko";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { V4_COPY } from "../src/content/registry/v4Copy.generated";
 import { preparedness } from "../src/engine/crisisReads";
@@ -46,7 +47,7 @@ import { lordWallGuidance } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { DECISION_CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
 import { familyPeople } from "../src/ui/persons/familyNews";
-import { LORD_MATTER_CHIP, lordMattersDueNow } from "../src/ui/lord/decisions/lordMattersDue";
+import { LORD_MATTER_CHIP, lordMatterChipIds } from "../src/ui/lord/decisions/lordMattersDue";
 
 const LATIN = /[A-Za-z]{2,}/;
 const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 3 })!;
@@ -94,12 +95,12 @@ test("PLAY-2 기근 대응 뒤: once answered, the famine's card says the bottle
   const [left, status, next] = famineAfterFacts(state);
   assert.deepEqual(beat.facts.slice(1), [left, status, next]);
   assert.equal(status, townStatus(state, { kind: "building", building: "market" }), "what the town is doing about it (the report's 대기 상태)");
-  assert.equal(left, FAMINE_AFTER_COPY.left(FAMINE_AFTER_COPY.points.no_market()));
+  assert.equal(left, FAMINE_AFTER_COPY.left(WEAK_POINTS.no_market!));
   assert.equal(next, FAMINE_AFTER_COPY.next(lordLevers(state, { kind: "building", building: "market" })[0]!));
   assert.match(beat.advice, /시장/, "the [조언] is the lord's advice on the market");
   // No granary: that comes first (the engine's order), with the granary's lever.
   const bare = { ...state, buildings: state.buildings.filter(building => building.kind !== "granary") };
-  assert.ok(famineAfterFacts(bare)[0]!.startsWith(FAMINE_AFTER_COPY.left(FAMINE_AFTER_COPY.points.no_granary())), famineAfterFacts(bare)[0]);
+  assert.ok(famineAfterFacts(bare)[0]!.startsWith(FAMINE_AFTER_COPY.left(WEAK_POINTS.no_granary!)), famineAfterFacts(bare)[0]);
   assert.equal(famineAfterFacts(bare).at(-1), FAMINE_AFTER_COPY.next(lordLevers(bare, { kind: "building", building: "granary" })[0]!));
   for (const line of beat.facts) assert.doesNotMatch(line, LATIN);
   // Nothing left: what the engine checked, with its numbers; no lever.
@@ -190,8 +191,8 @@ test("PLAY-2 friction 8: a house decision with a deadline stays among the chips 
   assert.ok(!storyChips(entries, current, 10_000, 500, () => false).some(entry => entry.id === will.id), "not due (the adapter's list): put away as closed");
   current.delete(will.id); due.delete(will.id);
   assert.ok(!storyChips(entries, current, 10_000, 500, () => false, due).some(entry => entry.id === will.id), "answered: gone at once");
-  // The adapter's ids are the chips' (lordStoryBeats), read from the decision cards' heads (the swap point for lordMattersDue).
-  assert.deepEqual(lordMattersDueNow(lord), []);
+  // The chips' ids (lordStoryBeats); SUIT-THREAD: the engine's lordMattersDue and the cards' heads (tests/suitRestScreens.test.ts).
+  assert.deepEqual([...lordMatterChipIds(lord)], []);
   assert.equal(LORD_MATTER_CHIP.marriage("will_change", "c1"), will.id);
-  assert.ok(DECISION_CARDS_COPY.willDeadline.length > 0);
+  assert.ok(DECISION_CARDS_COPY.willDeadline(null).length > 0);
 });

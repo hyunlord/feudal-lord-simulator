@@ -33,11 +33,10 @@ export const DECISION_CARDS_COPY = {
   estate: (house: string | null) => house === null ? "이웃 영지" : `${house} 영지`,
   // The father's will (NG-8).
   willTitle: "늙은 영주의 새 유언",
-  willLine: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 한 철 안에 답하지 않으면 새 유언이 그대로 섭니다.`,
+  willLine: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 답하지 않으면 기한에 새 유언이 그대로 섭니다.`,
   willFavour: "호의를 보낸다",
   willSupport: "지원을 약속한다",
   willLetBe: "그대로 둔다",
-  willAdvice: "한 철 안에 답하지 않으면 그대로 둔 것으로 칩니다.",
   refusedTreasury: "금고가 모자랍니다",
   refusedNow: "지금은 할 수 없습니다",
   // The contested inheritance (answered by the suit on the marriage's claim).
@@ -70,7 +69,8 @@ export const DECISION_CARDS_COPY = {
   willSituation: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다.`,
   willStake: (estate: string, strength: number) =>
     `${estate} 전체가 걸려 있습니다. 혼인으로 얻은 영주의 상속 청구(힘 ${strength})가 새 유언에 밀릴 수 있습니다.`,
-  willDeadline: "한 철 안에 답해야 합니다. 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.",
+  /** SUIT-THREAD: the engine's deadline (`lordMattersDue` dueTick) as its season; null: the engine names none. */
+  willDeadline: (date: string | null) => `${date === null ? "기한 안에" : `${date}까지`} 답해야 합니다. 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.`,
   willLetBeLater: "늙은 영주가 죽으면 조카가 영지를 차지하고, 영주는 소송으로 다투게 됩니다.",
   contestStake: (estate: string, ours: number | null, theirs: number | null) =>
     `${estate} 전체가 걸려 있습니다.${ours === null ? "" : ` 영주의 청구 힘 ${ours}`}${theirs === null ? "" : `${ours === null ? " " : ", "}상대의 청구 힘 ${theirs}`}${ours === null && theirs === null ? "" : "."}`,
