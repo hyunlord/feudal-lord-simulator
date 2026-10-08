@@ -180,3 +180,11 @@ JS
 [seed3 원본 대조](../verification/eb-weight/kept-2485af4/seed3-trace-gaps.md), [정확한 ID·명령·후속 기록](../verification/eb-weight/kept-2485af4/seed3-trace-gaps.json.gz).1349년에 중대 root5건(임금·211a·토지 재분배·감사·영지 수리)이 응답됐다. 등록기1건 외4건은 등록 제시 시점의 rolling heavyLoad 관문 밖에서 들어온다. 실제 전체 답변 수 누락과 무관하게 P-T1 초과가 확인됐으며 엔진 전체 결정 유입 예산의 검토가 필요하다. B는 무게·조건을 낮추지 않는다.
 
 seed3 성숙 등록 root14건의 엄격한3년 후속이 없다(관계 hold8, 세율 변경6). 추가로083c h-018126@367069는800을 설정했지만449000–453000의10개 dues_held:1100:1000 기록이 이를 원인으로 가리킨다. 중간의 실제1100 설정 h-020065@407083은 무게 없는 root이며, source의40000tick 보존 경계와 duesMind의 최신 **남아 있는** dues target 선택이 맞물리는 설명과 일치한다. 정확한 prune 경계 상태는 재현하지 않았으므로 그 전환은 소스에 부합하는 추론으로 남긴다. 엔진에는 현재 세율을 실제 설정한 결정의 소유권을 오래된 보존 root와 혼동하지 않는 읽기/원인 계약을 요청한다. 늦은10개를083의3년 성과나 인과 증명으로 세지 않는다.
+
+### 무효 답변 시도의 기록·trace 불일치 — 세 판 원자료 확인
+
+[원자료 진단](../verification/eb-weight/invalid-attempts/report.md), [정확한 occurrence·동일 tick 명령·history·trace](../verification/eb-weight/invalid-attempts/evidence.json.gz), [SHA·출처](../verification/eb-weight/invalid-attempts/provenance.json). 전체 invalid는 seed1 1건(051), seed2 2건(053·010), seed3 2건(059·010)이다. 010·051·059의 합계4회 제시는 모두 invalid이며 성공한 답변은0이다. 따라서 이 세 ID를 **성공 답변의 UI 캡처 누락**으로 분류하지 않는다. 다만 무효 시도에도 `decision.card` history가 남으므로 기록 자체가 없다고 해석해서도 안 된다.
+
+010·051의 세 사례는 동일 tick에서 해당 bound claim의 `file_suit` 기록이 registry 답변 시도보다 먼저 있다. `estateSuits.ts:100`은 claim을 open에서 suing으로 바꾸므로 open 청구를 요구하는 재바인딩을 막기에 충분하다. 059도 같은 영지에 대한 `set_estate_oversight(steward)` h-002125가 시도 h-002131보다 먼저 있어 direct 조건과 충돌한다. `lordBot.ts:60`은 한 상태에서 명령 목록을 만들고 소송·청지기 명령 뒤에 registry 답변을 넣으며, 실행기는 이를 순서대로 적용한다. 이는 **실제 선행 명령 기록과 소스로 확인한 충분한 차단 조건**이다. 명령 직전 상태를 재현하거나 최초 실패 predicate를 직접 관측한 것은 아니며, 어댑터 바인딩 결함을 입증하지 않는다. 053의 정확한 실패 조건은 미확정이다.
+
+별도 엔진 검토점: invalid5건 모두 시도 선택지를 담은 history card가 있으나 자체 answer trace와 이를 가리키는 후속 because는0이다. `history.ts:255,278`의 `recordDecision`은 invalid 상태 변경도 변경된 상태로 받아 card를 쓰지만, `decisionTrace.ts:193`의 `traceCommand`는 answered가 아니면 trace를 만들지 않는다. 무효 시도를 성공한 결정처럼 기록하지 않는 history 계약 검토가 필요하다. B는 코어·UI를 수정하지 않았고, 이 관찰을 새 재현이나 실제 화면 검증으로 확대하지 않는다.
