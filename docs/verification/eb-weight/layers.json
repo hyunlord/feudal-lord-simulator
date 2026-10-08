@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "static_inventory_runtime_pending",
-  "sourceCommit": "de3d9e224636c5e69bc18e2ea7ccb7d7bd97c69d",
+  "sourceCommit": "d281483c4e0447036c5ccf062a244fb1208bb3cf",
   "sourceNote": "sourceCommit is the generation checkout HEAD, not a claim that its tree equals the working sources. sourceFiles hashes the actual working bytes, including edits and untracked source files.",
   "sourceScope": "Conservative dependency superset: all src files, the generator and HOLD recommendations. HEAD-only or documentation-only changes do not invalidate an unchanged source inventory.",
   "sourceFiles": [
@@ -867,11 +867,11 @@
     },
     {
       "path": "src/engine/decisionReads.ts",
-      "sha256": "ff8d3f19a40c3494435273ff2c78589fa71b40275645c83053ac0a046d1b68fb"
+      "sha256": "d74ec53364dec01c1cfbbce89c48861a920a8fe6f4f0f57dc86cda4dc5d2210b"
     },
     {
       "path": "src/engine/decisionTrace.ts",
-      "sha256": "ae6febc915d32f7cc58480bd4685124855c23c47368a4c72b9baf7f6c1b40354"
+      "sha256": "abad9e310732ba82cfeff99faebbfd4262f4f6af37183fc390101e15f76dd719"
     },
     {
       "path": "src/engine/decisionTrace.types.ts",
@@ -1052,6 +1052,10 @@
     {
       "path": "src/engine/marriage.ts",
       "sha256": "7edb589a3e061c7c36a6df6a3beb4ebacf46b518070f2432df199b4e25d185b5"
+    },
+    {
+      "path": "src/engine/memoryFold.ts",
+      "sha256": "bb2a07c17d77b856ef8ffb3446daf7797254581c8f6590e643375e1c9e691a72"
     },
     {
       "path": "src/engine/money.types.ts",
