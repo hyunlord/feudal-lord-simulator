@@ -182,7 +182,7 @@ state=$(rsh "mkdir -p $RROOT/$RUN/.remote-in && \
 PREV=$(printf '%s\n' "$state" | sed -n 's/^PREV=//p')
 # The trunk's bundled clean clone (scripts/remote/trunkClone.sh) failed: every run says so until a later trunk passes.
 TRUNK_STATE=$(printf '%s\n' "$state" | sed -n 's/^TRUNK=//p')
-case "$TRUNK_STATE" in FAILED*) echo "== TRUNK CLONE FAILED — the session whose commit it names fixes or reverts it: ${TRUNK_STATE#FAILED }" >&2 ;; esac
+case "$TRUNK_STATE" in FAILED*) echo "== TRUNK CLONE FAILED — the owner it names (the first bad commit's session) fixes or reverts it: ${TRUNK_STATE#FAILED }" >&2 ;; esac
 COPY_DEST=""; [ -n "$PREV" ] && COPY_DEST="--copy-dest=../$PREV"
 
 echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy $CLASS line}) -> $HOST"
