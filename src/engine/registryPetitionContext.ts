@@ -1,3 +1,4 @@
+import { logisticsContext } from './registryLogisticsContext';
 import { parishContext } from './registryParishContext';
 import { woodlandPetitionContext } from './registryWoodlandPetitionContext';
 import { pasturePetitionContext } from './registryPasturePetitionContext';
@@ -20,7 +21,7 @@ export function petitionContext(state: GameState, entryId: string, bound: Readon
   if (strategy === 'steward_succession') return stewardSuccessionContext(state, bound, fixed);
   const pinned = fixed === undefined ? undefined : readFixedContext(fixed);
   if (pinned === null) return null;
-  const current = estatePetitionContext(state, strategy, bound, pinned) ?? townPetitionContext(state, strategy, pinned);
+  const current = strategy === 'grain_haulage' ? logisticsContext(state, pinned) : estatePetitionContext(state, strategy, bound, pinned) ?? townPetitionContext(state, strategy, pinned);
   if (current === null || pinned === undefined) return current;
   return sameContextSources(strategy, current, pinned) ? fixed ?? null : null;
 }

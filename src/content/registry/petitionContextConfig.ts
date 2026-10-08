@@ -1,5 +1,7 @@
 /** Cumulative Engine B context rollout; unlisted premises remain unsupported. */
 export const PETITION_CONTEXT_STRATEGIES: Readonly<Record<string, string>> = {
+  ck_evt_087: 'replacement_trade', ck_evt_088: 'malt_grain', ck_evt_093: 'new_artisan',
+  ck_evt_095: 'unused_subsidy', ck_evt_100: 'market_storage', ck_evt_170: 'grain_haulage',
   ck_evt_067: 'ability_loyalty', ck_evt_078: 'dispositions', ck_evt_050: 'parish',
   ck_evt_062: 'logs_waiting', ck_evt_065: 'fields_storage', ck_evt_068: 'paid_subsidy', ck_evt_085: 'grain_water',
   ck_evt_041: 'home_woodland', ck_evt_048: 'home_pasture', ck_evt_056: 'home_market_road',
@@ -12,7 +14,7 @@ export function handlesPetitionContext(entryId: string): boolean {
 }
 
 export const PETITION_CONTEXT_FILTERS: Readonly<Record<string, string>> = {
-  ck_evt_050: 'parish_residential_context',
+  ck_evt_050: 'parish_residential_context', ck_evt_170: 'NE_SR01_FN15',
   ck_evt_041: 'home_customary_forest_use', ck_evt_048: 'home_common_pasture_geometry',
   ck_evt_056: 'market_approach_route', ck_evt_147: 'NE_SR01_FN03',
 };
