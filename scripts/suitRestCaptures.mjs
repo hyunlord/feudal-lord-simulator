@@ -146,7 +146,10 @@ const putOff = async page => { if (await waitFor(page, '.story-modal', 6_000)) {
     await click(page, "[data-dock='ledger']"); await click(page, "[data-ledger-tab='rights']"); await page.waitForTimeout(700);
     await click(page, '.ledger-rights-household .person-list-toggle'); await page.waitForTimeout(400);
     await page.locator(`.ledger-rights-household [data-person='${child}']`).first().scrollIntoViewIfNeeded().catch(() => undefined);
-    await capture(page, 'kin-household', '.ledger-rights-household', text => /영주의 사촌의 (아들|딸)/.test(text) && text.includes('영주의 사촌의 아내'));
+    // The list runs on below the register page's fold: the child's chip is measured, the list's words read whole.
+    const household = await page.locator('.ledger-rights-household').first().innerText().catch(() => '');
+    await capture(page, 'kin-household', `.ledger-rights-household [data-person='${child}']`, text => /영주의 사촌의 (아들|딸)/.test(text) && household.includes('영주의 사촌의 아내'));
+    rows['kin-household'].household = household;
     if (await click(page, `.ledger-rights-household [data-person='${child}']`)) {
       await waitFor(page, '.person-card', 10_000); await click(page, '.person-card .person-card-action');
       await waitFor(page, '.chronicle-biography', 20_000); await page.waitForTimeout(1_200);
