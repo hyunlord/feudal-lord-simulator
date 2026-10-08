@@ -1,4 +1,5 @@
 import { HOME_ESTATE_ID } from "../content/estateConfig";
+import { LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
 import { factionDisplayName } from "../content/factionCopy.ko";
 import { LEGACY_BALANCE } from "../content/legacyConfig";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
@@ -101,7 +102,8 @@ export const homePetitionView = perState((state: GameState): HomePetitionView | 
     demand: copy.demand(petition.amount, parties(state, petition)), court: courtLine(state),
     waits: LORD_CARDS_COPY.waits(calendarDays(petition.deadline - state.tick)),
     standing: homeStanding(state, petition),
-    arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(lordHouse(state).name),
+    // LM-R3: the roundel's label reads the house in Korean (the chosen house's name is the engine's Latin one).
+    arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(LORD_HOUSE_NAMES_KO[lordHouse(state).name] ?? lordHouse(state).name),
   };
 });
 

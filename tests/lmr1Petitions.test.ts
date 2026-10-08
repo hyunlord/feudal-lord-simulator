@@ -25,6 +25,7 @@ import { decisionModal, storyBeats } from "../src/ui/eventStory";
 import { HOME_PETITION_COPY } from "../src/ui/lordCardsCopy.ko";
 import { courtLine, homePetitionView, lordRequestView, openHomePetitions, parties } from "../src/ui/lordCardsModel";
 import { factionDisplayName } from "../src/content/factionCopy.ko";
+import { GENTRY_NAMES_KO } from "../src/content/gentryNames";
 import { standingPolicies } from "../src/engine/decisionReads";
 import { HOME_PETITION_CARD_COPY } from "../src/ui/decisionCard/families/homePetitionCopy.ko";
 import { outlookTreasury } from "../src/ui/decisionCard/outlook";
@@ -297,7 +298,9 @@ test("LM-R1 (Astra B02): the direction layer opens with the lord's first answer,
 test("LR1-D5: a home petition's roundel holds the lord house's arms, as the lordship screen shows them", () => {
   const view = homePetitionView(firstPetition)!;
   assert.deepEqual(view.arms, lordHouseArms(firstPetition));
-  assert.match(view.armsLabel, new RegExp(lordHouse(firstPetition).name));
+  // LM-R3: the label reads the house in Korean, never the engine's Latin name.
+  assert.match(view.armsLabel, new RegExp(GENTRY_NAMES_KO[lordHouse(firstPetition).name]!));
+  assert.doesNotMatch(view.armsLabel, /[A-Za-z]/);
   const card = homePetitionCard(firstPetition)!;
   const markup = renderToStaticMarkup(createElement(DecisionCard, { view: card, crest: { arms: view.arms, label: view.armsLabel }, onChoose: () => undefined, onLater: () => undefined }));
   assert.match(markup, /class="petition-roundel"/);

@@ -7,6 +7,7 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/landPickerCaptures.mjs <outDir> [--url http://127.0.0.1:4213/] [--shots 0]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/landPickerCaptures.mjs)", { remote: "scripts/remote/run.sh render-LANDUI-lands-<sha7> -- node scripts/landPickerCaptures.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -101,7 +102,7 @@ const flows = {};
     welcome: await page.locator(".welcome-parchment").count() === 1 };
   await page.locator(".welcome-parchment .tutorial-switch").click();
   flows.proofDefaultValue = await value();
-  await page.locator(".welcome-parchment [data-scenario='core:campaign_market_town']").click(); await page.waitForTimeout(800);
+  await startFromWelcome(page, "core:campaign_market_town"); await page.waitForTimeout(800);
   flows.defaultModeButton = await land();
   await fresh();
   await page.locator(".welcome-seed-random").click();
@@ -119,6 +120,8 @@ const flows = {};
   await fresh();
   await page.locator(".welcome-seed-field").fill("118");
   // aria-disabled: Playwright waits for an enabled element, so the refused press is forced (it still reaches the button).
+  // LM-R3: the campaign is the sandbox's "목표와 함께" option.
+  await page.locator(".welcome-parchment [data-sandbox-goal]").click();
   await page.locator(".welcome-parchment [data-scenario='core:campaign_market_town']").click({ force: true }); await centre(); await page.waitForTimeout(500);
   flows.unbuildableRefused = { welcome: await page.locator(".welcome-parchment").count() === 1, problem: await page.locator(".welcome-seed-problem").textContent() };
   await page.locator(".welcome-seed-field").fill("");
@@ -141,7 +144,7 @@ const flows = {};
   if (shots) await writeFile(join(outDir, "title-1280x800-over-save.jpg"), await page.screenshot({ type: "jpeg", quality: 62 }));
   await page.locator(".welcome-land").nth(1).click();
   await page.locator(".welcome-seed-field").fill("3");
-  await page.getByRole("button", { name: "목표형으로 시작", exact: true }).click(); await page.waitForTimeout(1_500);
+  await startFromWelcome(page, "core:campaign_market_town"); await page.waitForTimeout(1_500);
   flows.overSavePick = await land();
   await context.close();
 }

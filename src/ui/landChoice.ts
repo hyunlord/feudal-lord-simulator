@@ -4,9 +4,13 @@
 // (randomNewGameSeed), shown, which the player can type over or draw again. A number with no game (newGameState → null:
 // on the riverside, a map with no legal site for the village) cannot be started. The riverside on map 1 is today's map
 // exactly: it sends no command for the campaign (the tutorial gets the current state), as before.
+// LM-R3: every start also sends its mode (lord mode for the lord's slice, else the player builds) and the house chosen
+// on the welcome (HOUSE-1, MNR-3: the lord's first house in every mode); the default house on today's game still sends
+// nothing, as the current state is that game.
 import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { SCENARIOS } from "../content/scenario/registry";
 import { NEW_GAME_SEED_MAX, mapArchetypes, newGameState, randomNewGameSeed } from "../state/newGame";
+import { DEFAULT_HOUSE_CHOICE, type HouseChoice } from "./houseChoice";
 
 export interface LandChoice {
   readonly archetypeId: string;
@@ -25,7 +29,10 @@ export const LAND_SEED_DIGITS = String(NEW_GAME_SEED_MAX).length;
  */
 export const PIN_SEED_QUERY = "new-game-seed";
 
-export type LandStartCommand = { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number };
+export type LandStartCommand = {
+  readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number;
+  readonly mode: "lord" | "sandbox"; readonly house: HouseChoice;
+};
 export type LandSeedProblem = "range" | "unbuildable";
 
 /** The default campaign's own land (the riverside town). */
@@ -102,13 +109,20 @@ export function isDefaultLand(choice: LandChoice): boolean {
 }
 
 /**
- * The command a start sends: none for the default campaign on today's land (the current state is that game), the
- * scenario alone for the sandbox on today's land, and the land and map number for any other choice. Only a playable
- * choice is started (the welcome refuses the others: landPlayable).
+ * The command a start sends: none for the default campaign on today's land with the default house (the current state is
+ * that game), the scenario alone (with its mode and house) for the sandbox on today's land, and the land and map number
+ * for any other choice. Only a playable choice is started (the welcome refuses the others: landPlayable).
  */
-export function landStartCommand(scenarioId: string, choice: LandChoice, overSave: boolean): LandStartCommand | null {
+export function landStartCommand(scenarioId: string, choice: LandChoice, overSave: boolean, house: HouseChoice = DEFAULT_HOUSE_CHOICE): LandStartCommand | null {
+  const start = { type: "start_new_game", scenarioId, mode: scenarioId === LORD_SLICE_SCENARIO_ID ? "lord" : "sandbox", house: { name: house.name, arms: house.arms } } as const;
+  const seed = choice.seed === null ? {} : { seed: choice.seed };
   // LM-R1: the lord's slice is the riverside market town (LS-1); the chosen map number is kept, the land is not.
-  if (scenarioId === LORD_SLICE_SCENARIO_ID) return { type: "start_new_game", scenarioId, ...(choice.seed === null ? {} : { seed: choice.seed }) };
-  if (isDefaultLand(choice)) return overSave || scenarioId !== DEFAULT_SCENARIO_ID ? { type: "start_new_game", scenarioId } : null;
-  return { type: "start_new_game", scenarioId, archetypeId: choice.archetypeId, ...(choice.seed === null ? {} : { seed: choice.seed }) };
+  if (scenarioId === LORD_SLICE_SCENARIO_ID) return { ...start, ...seed };
+  if (isDefaultLand(choice)) return overSave || scenarioId !== DEFAULT_SCENARIO_ID || !isDefaultHouse(house) ? start : null;
+  return { ...start, archetypeId: choice.archetypeId, ...seed };
+}
+
+/** True for HOUSE-1's default: de Haverel with its own arms. */
+export function isDefaultHouse(house: HouseChoice): boolean {
+  return house.name === DEFAULT_HOUSE_CHOICE.name && house.arms === DEFAULT_HOUSE_CHOICE.arms;
 }

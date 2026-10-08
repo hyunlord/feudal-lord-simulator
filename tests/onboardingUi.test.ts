@@ -37,7 +37,8 @@ test("welcome parchment renders exact opening copy; a mode button starts (LR1-D7
   assert.match(markup, /aria-modal="true"/);
   assert.match(markup, /tabindex="-1"/);
   assert.match(markup, /class="app-interaction-layer" inert="" aria-hidden="true"/);
-  assert.match(markup, /영지에 오신 것을 환영합니다/);
+  // LM-R3: the game's logo heads the welcome (its text heading is gone).
+  assert.match(markup, /<h2 class="welcome-logo">/);
   // LR1-D7 (user 2026-10-05): nothing a mode would contradict — the build guidance comes after the sandbox starts.
   assert.match(markup, /땅을 고르고, 어떻게 다스릴지 고르세요\./);
   assert.doesNotMatch(markup, /오른쪽 아래 \[건설\]에서 건물을 고르고/);

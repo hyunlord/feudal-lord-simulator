@@ -7,6 +7,7 @@
 // With --speed 5 the site is watched at 5x (the completion keeps only its dust and sound).
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/constructionObservation.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/constructionObservation.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -22,7 +23,7 @@ const page = await (await browser.newContext({ viewport: { width: 1280, height: 
 await page.routeWebSocket('**', socket => socket.close());
 await page.goto(`${url}?phase10-proof=1`);
 await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
+await startFromWelcome(page, "core:campaign_market_town");
 await page.waitForTimeout(1_200);
 const sites = () => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state().constructionSites.map(site => ({ id: site.id, kind: site.kind, tx: site.tx, ty: site.ty,
   delivered: site.delivered, required: site.required, builderTicks: site.builderTicks, requiredBuilderTicks: site.requiredBuilderTicks, stall: site.stall, builders: site.assignedBuilders })));

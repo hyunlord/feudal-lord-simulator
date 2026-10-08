@@ -7,6 +7,7 @@
 //  6 title -> mode -> game, save, reload -> title with 이어하기, the mode backdrop, continue.
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/ui3Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ui3Captures.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
@@ -89,7 +90,7 @@ const proofTick = page => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.st
   await page.goto(`${url}?phase10-proof=1`);
   await page.waitForSelector('.title-screen'); await page.waitForTimeout(1200);
   await shot(page, 'title.jpg');
-  await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click(); await page.waitForTimeout(200);
+  await startFromWelcome(page, "core:campaign_market_town"); await page.waitForTimeout(200);
   const loading = await page.locator('.chapter-loading').count();
   await shot(page, 'chapter-loading.jpg');
   await page.waitForTimeout(1200);

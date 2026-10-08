@@ -369,7 +369,9 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.chapter-preview.goals", extends: "modal.chapter-preview", root: ".chapter-preview-goals", frame: "flat", scene: chapterScene("ui5", "chapter-end"), open: [],
     data: "chapter 2's goals on the preview" },
   { id: "modal.chapter-loading", root: ".chapter-loading", frame: "flat", scene: { kind: "title" }, numbers: false,
-    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-scenario='core:campaign_market_town']" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
+    // LM-R3: the campaign is the sandbox's "목표와 함께" option, and a mode press opens the house choice first.
+    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-sandbox-goal]" }, { click: ".welcome-parchment [data-scenario='core:campaign_market_town']" },
+      { click: ".welcome-parchment [data-house-start]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
   { id: "modal.person-card", extends: "map.selection.house", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART, scene: TOWN_CLOSE,
     frameSlots: [".person-card-emblem-cover"],
     portraitRing: { cx: 59.5, cy: 83.5, r: 43, inner: 33.5, face: ".person-card-portrait .person-portrait-layer", ornament: ".person-card-portrait .person-state-ornament" },
@@ -443,7 +445,11 @@ export const SURFACES: readonly SurfaceRow[] = [
 
   // --- Screens outside the town.
   { id: "screen.welcome", root: ".welcome-parchment", frame: "css", scene: { kind: "title" }, numbers: false, open: [{ pause: 800 }],
-    data: "a fresh profile's title parchment and mode buttons" },
+    data: "a fresh profile's title parchment: the logo, the lands, lord mode and the sandbox (its goal option)" },
+  // LM-R3 (HOUSE-1): the house choice after a mode press — the twenty names, the arms, the start.
+  { id: "screen.welcome.house", root: ".welcome-house", frame: "css", scene: { kind: "title" }, numbers: false,
+    open: [{ click: ".welcome-parchment [data-scenario='core:lord_slice']" }, { wait: ".welcome-house" }, { pause: 800 }],
+    data: "the welcome's house choice (lord mode, de Haverel by default)" },
   { id: "dev.ui-kit", root: ".ui-kit-gallery-frame", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [{ pause: 800 }],
     data: "the kit gallery's first frame" },
   { id: "dev.ui-kit.section", extends: "dev.ui-kit", root: ".ui-kit-gallery-section", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],

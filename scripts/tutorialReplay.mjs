@@ -7,6 +7,7 @@
 // near-black flat bars, and line-drawn SVG icons.
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/tutorialReplay.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/tutorialReplay.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -88,7 +89,7 @@ const audit = () => page.evaluate(() => {
 });
 const welcomeAudit = flags.audit === '1' ? await audit() : null;
 if (flags.audit === '1') await writeFile(join(outDir, '00-welcome.jpg'), await page.screenshot({ type: 'jpeg', quality: 62 }));
-await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
+await startFromWelcome(page, "core:campaign_market_town");
 await page.waitForTimeout(1_200);
 const stepOf = () => page.evaluate(() => document.querySelector('[data-tutorial-cta]')?.getAttribute('data-tutorial-cta') ?? null);
 const rows = []; const seen = new Set(); let presses = 0; let last = null;
