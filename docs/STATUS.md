@@ -989,3 +989,5 @@ Engine B [과거 기준 묶음 검증기](verification/eb-freq/historical-refere
 Engine B [과거 관측 집계기](verification/eb-freq/historical-observations.md)는 부재40개의 경로별 기록 수를 스트리밍 집계하고 전역 생략·대상 밖 기록을 분리한다. 관련9시험·lint 통과. 계수는 계절 수나 원인 판정이 아니며 실제 재현·적용 보고는 미완료다.
 
 Engine B [가드레일](verification/eb-weight/guardrail-016ab02e/README.md) 종료0: 샌드박스3해시·캠페인3쌍 전체 상태 바이트 동일. 두 번째 실행은 생략한다. 실제 전체 답변 재현을 clean59d42d0에서 DGX 직렬 실행으로 시작했으며 결과는 대기 중이다. 공용 시험·기하 관문 및 실제 계절 UI는 미완료다.
+
+Engine B [과거 재현 산출물 검증기](verification/eb-freq/historical-replay-artifacts.md)는 외부 manifest 해시와12개 파일 해시, 전체 결과·보고서·NDJSON/gzip·40행 집계를 대조한다. 합성9시험·lint 통과. 파일 일관성만 검증하며 실제 실행·원인 적용은 미완료다.
