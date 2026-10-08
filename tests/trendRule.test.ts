@@ -41,6 +41,8 @@ test("the A-B band is the 95 % band for that many pairs (Student's t), not ±2 S
   assert.equal(abVerdict({ table: [{ key: "canvasPerSec", verdict: "나빠짐", diff: 0.407, band: 0.322, n: 4 }] }, "canvasPerSec"), "소음 안");
   // A real change stays confirmed (SMOOTH-2R, big town canvases per second −88 %).
   assert.equal(abVerdict({ table: [{ key: "canvasPerSec", verdict: "좋아짐", diff: -101.438, band: 6, n: 4 }] }, "canvasPerSec"), "좋아짐");
+  // A side that never ran (78601144's new-game A-B against a welcome from before LM-R3): no pairs is no verdict.
+  assert.equal(abVerdict({ table: [{ key: "heapAfterGcMB", verdict: "소음 안", diff: 0, band: null as unknown as number, n: 0 }] }, "heapAfterGcMB"), null);
 });
 
 test("worse stands only when a second A-B also finds it worse", () => {

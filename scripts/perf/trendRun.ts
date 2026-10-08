@@ -119,7 +119,10 @@ async function runAb(a: string, b: string, scene: string): Promise<any | null> {
       "--out", out, "--ports", `${port},${second.port}`], { encoding: "utf8", env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
     const file = readdirSync(out).find(entry => entry.endsWith(".json"));
     if (ab.status !== 0 || file === undefined) { console.log(`   A-B failed: ${(ab.stderr || ab.stdout).split("\n").filter(Boolean).slice(-2).join(" / ")}`); return null; }
-    return JSON.parse(readFileSync(join(out, file), "utf8"));
+    const record = JSON.parse(readFileSync(join(out, file), "utf8"));
+    // A side that never ran leaves no pairs: not kept, so the next confirm runs it again.
+    if ((record.pairedRounds ?? 0) < 2) { console.log(`   A-B failed: ${record.pairedRounds ?? 0} paired rounds (${(ab.stdout.match(/run failed: .*/g) ?? []).slice(0, 2).join(" / ")})`); return null; }
+    return record;
   } finally { second.release(); rmSync(out, { recursive: true, force: true }); }
 }
 
