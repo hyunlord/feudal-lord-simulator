@@ -85,3 +85,22 @@ test('unknown registry sources and forged B11 membership are rejected', () => {
     assert.throws(() => aggregateWeightAudits(runs, inventory), /registry source|B11 predicate/);
   }
 });
+
+test('lapsed heavy matters remain in annual density but do not inflate answered consequence denominators', () => {
+  const runs = fixtures();
+  runs[0].summary.decisions = [{ id: 'h-lapsed', tick: 1, year: 1300, kind: 'registry', source: 'registry:ck_evt_001:lapsed',
+    by: 'lord', weights: ['rights'], heavyToLord: true, priorBatchB11: false, mature: true, lapsed: true,
+    futureConsequenceCount: 0, consequences: [], firstConsequence: null }];
+  runs[0].summary.annual[0].wholeGameHeavyResolved = 1;
+  runs[0].summary.annual[0].registryHeavyResolved = 1;
+  const report = aggregateWeightAudits(runs, inventory);
+  assert.equal(report.pooled.wholeGame.total, 1);
+  assert.equal(report.pooled.matureLord.denominator, 1);
+  assert.equal(report.pooled.lapsedLordCount, 1);
+  assert.equal(report.pooled.matureAnsweredLord.denominator, 0);
+  assert.deepEqual(report.pooled.matureAnsweredLord.withoutOutcome, []);
+  assert.equal(report.perSeed[0].trace.matureAnsweredLord.denominator, 0);
+  assert.equal(report.perSeed[0].trace.lapsedLordCount, 1);
+  assert.equal(report.perEntry[0].matureAnsweredRegistryLord.denominator, 0);
+  assert.equal(report.perEntry[0].lapsed, 1);
+});

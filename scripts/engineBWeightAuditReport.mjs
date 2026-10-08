@@ -108,13 +108,22 @@ function perSeedMetrics(run) {
   });
   return { seed: run.seed, wholeGame: statistics(run.summary.annual.map(row => row.wholeGameHeavyResolved)),
     registry: statistics(run.summary.annual.map(row => row.registryHeavyResolved)), priorBatchB11: statistics(run.summary.annual.map(row => row.priorBatchB11HeavyResolved)),
-    trace: { matureLord: coverage(lord.filter(row => row.mature)), censoredLord: coverage(lord.filter(row => !row.mature)),
+    trace: { ...answeredCoverage(lord), matureLord: coverage(lord.filter(row => row.mature)), censoredLord: coverage(lord.filter(row => !row.mature)),
       matureHeavyLord: coverage(lord.filter(row => row.mature && row.weights.length > 0)), censoredHeavyLord: coverage(lord.filter(row => !row.mature && row.weights.length > 0)),
       matureRegistryLord: coverage(lord.filter(row => row.mature && row.kind === 'registry')), maturePriorBatchB11Lord: coverage(lord.filter(row => row.mature && row.priorBatchB11)) },
     steward: { denominator: steward.length, witnessed: steward.filter(row => row.inStewardReport).length,
       fraction: steward.length === 0 ? null : steward.filter(row => row.inStewardReport).length / steward.length,
       missingDecisionIds: steward.filter(row => !row.inStewardReport).map(row => row.id) },
     registryHeavyArrivalDensity: statistics(annualArrivals), candidateObservations: run.candidateObservation.observations };
+}
+
+function answeredCoverage(lord) {
+  const answered = lord.filter(row => row.lapsed !== true);
+  return { lapsedLordCount: lord.filter(row => row.lapsed === true).length,
+    matureAnsweredLord: coverage(answered.filter(row => row.mature)),
+    censoredAnsweredLord: coverage(answered.filter(row => !row.mature)),
+    matureAnsweredRegistryLord: coverage(answered.filter(row => row.mature && row.kind === 'registry')),
+    matureAnsweredB11Lord: coverage(answered.filter(row => row.mature && row.priorBatchB11)) };
 }
 
 /** Offline report only; historical inventory identity is preserved independently of current observations. */
@@ -135,7 +144,7 @@ export function aggregateWeightAudits(runs, inventory) {
     const item = { id, historical40: historical.has(id), occurrences: occurrences.length,
       occurrencesBySeed: ordered.map(run => ({ seed: run.seed, count: occurrences.filter(row => row.seed === run.seed).length })),
       lord: lord.length, steward: steward.length, lapsed: rows.filter(row => row.lapsed === true).length,
-      matureLord: coverage(lord.filter(row => row.mature)), censoredLord: coverage(lord.filter(row => !row.mature)),
+      ...answeredCoverage(lord), matureLord: coverage(lord.filter(row => row.mature)), censoredLord: coverage(lord.filter(row => !row.mature)),
       stewardReport: { denominator: steward.length, witnessed: steward.filter(row => row.inStewardReport).length,
         missing: steward.filter(row => !row.inStewardReport).map(row => ({ seed: row.seed, decisionId: row.id, reportKey: row.reportKey })) },
       decisionEvidence: rows.map(row => ({ seed: row.seed, id: row.id, source: row.source, tick: row.tick, by: row.by, lapsed: row.lapsed === true,
@@ -154,7 +163,7 @@ export function aggregateWeightAudits(runs, inventory) {
     annualMeaning: '375 seed-years pooled; resolved/lapsed trace matters, not all command responses or classified whole-game arrivals',
     pooled: { wholeGame: statistics(annual.map(row => row.wholeGameHeavyResolved)), registry: statistics(annual.map(row => row.registryHeavyResolved)),
       priorBatchB11: statistics(annual.map(row => row.priorBatchB11HeavyResolved)),
-      matureLord: coverage(lord.filter(row => row.mature)), censoredLord: coverage(lord.filter(row => !row.mature)),
+      ...answeredCoverage(lord), matureLord: coverage(lord.filter(row => row.mature)), censoredLord: coverage(lord.filter(row => !row.mature)),
       matureHeavyLord: coverage(lord.filter(row => row.mature && row.weights.length > 0)),
       stewardReport: { denominator: steward.length, witnessed: steward.filter(row => row.inStewardReport).length,
         fraction: steward.length === 0 ? null : steward.filter(row => row.inStewardReport).length / steward.length } },
@@ -163,6 +172,7 @@ export function aggregateWeightAudits(runs, inventory) {
     historical40: { sourceRevision: inventory.historicalSourceRevision, ids: inventory.entries.map(row => row.id),
       entries: inventory.entries.map(row => ({ historical: row, current: perEntry.find(entry => entry.id === row.id) })) },
     limits: ['Legacy home-cycle registry definitions do not generate registry offers in this new-game harness; unknown registry source IDs are rejected rather than silently dropped.',
+      'Answered-lord consequence denominators exclude lapsed decisions; heavy annual counts retain lapsed decisions separately from coverage.',
       'Ordered first because attribution is not independent causal validity or proof of rendered visibility.',
       'Accepted evaluation counts lack per-attempt identity; subtraction from offers is a diagnostic difference, not an exact accepted-but-unoffered count.',
       'Candidate observations exclude outer registry budget and legacy-path skips; classifications are suggestions, not proven engine fact absence or adapter defects.',
