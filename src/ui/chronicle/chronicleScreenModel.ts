@@ -34,6 +34,9 @@ import { WAVE33_IMAGES } from "../wave33ArtManifest.generated";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
 import { recordSentence } from "../legacy/chapterRecords";
 import { WAVE17_IMAGES } from "../wave17ArtManifest.generated";
+import { V4_COPY } from "../../content/registry/v4Copy.generated";
+import { RESULTS_COPY } from "../results/resultsCopy.ko";
+import { decisionBy, recordIndex } from "./historyIndex";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): the whole history ledger read on three axes — the town's
 // timeline (a 1300→1450 strip of the scenario's eras, one Wave 19 segment each, markers for the weightiest record of
@@ -478,7 +481,8 @@ export function recordCard(state: Pick<GameState, "history" | "persons" | "scena
   const sentence = personName === null || record.kind !== "person" ? summary
     : HOUSEHOLD_TEMPLATES.has(record.template) ? CHRONICLE_SCREEN_COPY.householdLine(personName, summary) : CHRONICLE_SCREEN_COPY.personLine(personName, summary);
   return {
-    id: item.key, kind: record.kind, frame: FRAMES[record.kind], date: chronicleDate(state, record.tick), sentence,
+    // DEC-CARD-2: a record that followed from a decision says so first (becauseLine).
+    id: item.key, kind: record.kind, frame: FRAMES[record.kind], date: chronicleDate(state, record.tick), sentence: becauseLine(state, record, sentence),
     numbers: recordNumbers(record, bundle), art: recordArt(state, record),
     place: record.place === undefined ? null : { tx: record.place.tx, ty: record.place.ty },
     snapshot: snapshotFor(state, record.tick, record.snapshotId), personId: person?.id ?? null, personName,
@@ -486,6 +490,15 @@ export function recordCard(state: Pick<GameState, "history" | "persons" | "scena
       return factionName === null ? { factionId: null, factionName: null } : { factionId, factionName }; })(),
     decision: record.decision !== undefined, folded: record.template === "ledger.rollup",
   };
+}
+
+/** DEC-CARD-2: "1300년 당신의 결정 때문에 — …" before a record that followed from a decision (its main cause; "…도 한몫해"
+ * when it was one cause among others, P-C2; the steward's answer and a silence say what they were). */
+export function becauseLine(state: Partial<Pick<GameState, "history" | "scenarioId">>, record: Pick<HistoryRecord, "because">, sentence: string): string {
+  const because = record.because?.[0];
+  const decision = because === undefined ? undefined : recordIndex(state).get(because.decisionId);
+  if (because === undefined || decision === undefined) return sentence;
+  return RESULTS_COPY.trace.prefixed(RESULTS_COPY.trace.because(yearOfTick(state, decision.tick), decisionBy(decision), because.part === true), sentence);
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -496,12 +509,15 @@ export type DecisionCompareView = Readonly<{
   id: string; heading: string; chosen: string; alternatives: readonly string[]; art: ChronicleArt; rows: readonly DecisionRow[]; pending: string | null;
 }>;
 
-export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): DecisionCompareView | null {
+export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions" | "registry">>, record: HistoryRecord): DecisionCompareView | null {
   const decision = record.decision;
   if (decision === undefined) return null;
   const kind = String(record.params?.decisionKind ?? record.template.slice("decision.".length));
   // LM-R1: the lord's conditions are named by the lord tab's own words, not the engine's keys.
-  const choiceLabel = (key: string) => lordChoiceLabel(kind, key) ?? label(key);
+  // DEC-CARD-2: a card's, the steward's or a lapse's answer in words — an event's by its own choices, a petition's granted or refused.
+  const entryId = state.registry?.occurrences.find(entry => entry.id === record.params?.subjectId)?.entryId;
+  const choiceLabel = (key: string) => lordChoiceLabel(kind, key) ?? (entryId === undefined ? undefined : V4_COPY[entryId]?.choices[key]?.label)
+    ?? CHRONICLE_SCREEN_COPY.cardChoices[key] ?? label(key);
   const rows = Object.entries(decision.predicted).map(([key, predicted]): DecisionRow => {
     const actual = decision.actual?.[key];
     if (actual === undefined) return { key, predicted: CHRONICLE_SCREEN_COPY.predictedValue(key, predicted), actual: null, delta: null, deltaLabel: null };
@@ -511,7 +527,7 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
       deltaLabel: actual > predicted ? CHRONICLE_SCREEN_COPY.deltaUp(difference) : actual < predicted ? CHRONICLE_SCREEN_COPY.deltaDown(difference) : CHRONICLE_SCREEN_COPY.deltaSame };
   });
   return {
-    id: record.id, heading: CHRONICLE_SCREEN_COPY.decisionHeading(chronicleDate(state, record.tick), kind), chosen: choiceLabel(decision.chosen),
+    id: record.id, heading: CHRONICLE_SCREEN_COPY.decisionHeading(chronicleDate(state, record.tick), kind, record.template), chosen: choiceLabel(decision.chosen),
     alternatives: decision.alternatives.map(choiceLabel), art: recordArt(state, record), rows,
     pending: decision.actual === undefined && decision.actualDueTick !== undefined ? CHRONICLE_SCREEN_COPY.actualPending(chronicleDate(state, decision.actualDueTick)) : null,
   };

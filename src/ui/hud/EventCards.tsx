@@ -8,6 +8,7 @@ import { Button } from "../kit";
 import { storyArtStyle } from "../storyArt";
 import { NAT1_BOX_COPY } from "../nat1TextBoxCopy.ko";
 import { textCut } from "./textCut";
+import { openChronicleRecord } from "../lord/chronicleFocus";
 
 // UI-4 event cards (not modal: time runs on unless the setting stops it): a folded chip under the crisis icons for
 // each beat the world has already shown; a tap opens its card — the Wave 16 illustration, one line, the facts,
@@ -79,6 +80,9 @@ export function EventCardDetail({ open, onDismiss, onDecide }: {
       <div className="event-card-actions">
         {open.decision !== null ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
         {open.tile === null ? null : <Button type="button" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: open.tile! }); }} variant="secondary"><UiIcon sheet="action" cell="look" />{EVENT_STORY_COPY.lookAt}</Button>}
+        {/* DEC-CARD-2: what followed a decision opens that decision in the chronicle. */}
+        {open.chronicle === undefined ? null : <Button type="button" className="event-card-chronicle" aria-label={open.chronicle.label}
+          onPress={() => { if (open.chronicle !== undefined) openChronicleRecord(open.chronicle.recordId, open.chronicle.tick); }} variant="secondary"><UiIcon sheet="action" cell="log" />{EVENT_STORY_COPY.chronicle}</Button>}
         <Button type="button" aria-pressed={adviceId === open.id} onPress={() => setAdviceId(current => current === open.id ? null : open.id)} variant="secondary"><UiIcon sheet="lock" cell="help" />{EVENT_STORY_COPY.advice}</Button>
         <Button type="button" onPress={() => { onDismiss(open.id); }} variant="secondary">{EVENT_STORY_COPY.close}</Button>
       </div>

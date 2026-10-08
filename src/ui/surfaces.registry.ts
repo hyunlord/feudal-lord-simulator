@@ -19,13 +19,16 @@ import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
 import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
 import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
+import { RESULTS_SURFACES } from "./results/surfaces";
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
  * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice;
  * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments;
  * LM-R2 `lord2`: scripts/lmr2States.ts, ~/fls-lmr2-states — the lord's marriage, estates, promises and suits played to their states). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2";
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2"
+  // DEC-CARD-2: scripts/deccard2ResultsStates.ts (the result thread).
+  | "deccard2";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -470,16 +473,13 @@ export const SURFACES: readonly SurfaceRow[] = [
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }],
     data: "the town's request (a proclamation waiting) in the DEC-CARD layout: the grant's now (the works it opens) and later (the actual's day)" },
   // DEC-CARD (Astra A3): a change in the lord's house as one card before the petitions (src/ui/results/ResultCards.tsx), on
-  // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the lord dead (1304),
-  // the neighbour's estate inherited through the wife (its title, possession and the debts promised with it).
+  // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the neighbour's estate
+  // inherited through the wife (its title, possession and the debts promised with it). DEC-CARD-2: the lord's death is
+  // src/ui/results/surfaces.ts's row, on the engine's succession.
   { id: "modal.house-change.wardship", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='wardship_begun']",
     scene: petitionScene("petitions", "home-boundary_dispute", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
     data: "a minor lord's wardship begun (Wave 40 13): who, the guardian, no right changed, his card as the next act — before the boundary dispute's card" },
-  { id: "modal.house-change.lord-died", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='lord_died']",
-    scene: petitionScene("petitions", "home-pannage", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
-    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".results-card-continue"],
-    data: "the lord's death (no picture): his name and age, who leads the house now" },
   { id: "modal.house-change.inherited", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='inherited']",
     scene: petitionScene("moments", "inheritance_fealty", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
@@ -538,6 +538,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...SCREEN_SURFACES, ...NEGOTIATION_SURFACES, ...LEDGER_SURFACES, ...ESTATES_SURFACES, ...REGION_SURFACES,
   // LM-R2: the lord's decision cards (src/ui/lord/decisions/surfaces.ts).
   ...DECISION_SURFACES,
+  // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
+  ...RESULTS_SURFACES,
 ];
 
 /**

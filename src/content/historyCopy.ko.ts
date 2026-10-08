@@ -138,7 +138,7 @@ export const CLAIM_BASIS_KO: Readonly<Record<string, string>> = { inheritance: "
 const basisWord = (basis: string) => CLAIM_BASIS_KO[basis] ?? basis;
 const ESTATE_ROLE_KO: Readonly<Record<string, string>> = { head: "이웃 영주", steward: "청지기", kin: "이웃 가문" };
 /** LM-R2-E ③: shared with the screens (one word for one thing, the ledger and the screen alike). */
-export const SUIT_STAGE_KO: Readonly<Record<string, string>> = { evidence: "증거", patronage: "후원", hearing: "심리", enforcing: "점유 집행" };
+export const SUIT_STAGE_KO: Readonly<Record<string, string>> = { filed: "제기", evidence: "증거", patronage: "후원", hearing: "심리", judged: "판결", enforcing: "점유 집행" };
 const ACTOR_KO: Readonly<Record<string, string>> = { households: "가구들", merchants: "상인 가문", guild: "길드", community: "공동체", church: "교회" };
 const buildingWord = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
 /** A season, for "○철 늦게" (the calendar's words, not ticks). */
@@ -165,7 +165,8 @@ const STANDING_WORDS: Readonly<Record<string, string>> = { customary: "관습대
 const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
   households_left: params => `${n(params, "households")}가구가 떠났다`,
   households_arrived: params => `${n(params, "households")}가구가 들어왔다`,
-  suit_turned: params => `소송이 다음 단계로 넘어갔다(${s(params, "stage")})`,
+  // DEC-CARD-2 (render): the stage in words, as the ledger's own suit line says it (it showed the engine's id).
+  suit_turned: params => s(params, "stage") === "closed" ? "소송이 끝났다" : `소송이 ${SUIT_STAGE_KO[s(params, "stage")] ?? s(params, "stage")} 단계로 넘어갔다`,
   marriage_turned: () => "혼인이 한 걸음 나아갔다",
   promise_made: () => "약속이 맺어졌다",
   promise_kept: () => "약속이 지켜졌다",

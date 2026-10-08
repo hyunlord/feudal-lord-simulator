@@ -287,3 +287,14 @@
 .chronicle-screen .family-tree-toggle { display: grid; place-items: center; width: 44px; height: 44px; min-height: 44px; padding: 0; background: none; box-shadow: none; }
 .family-tree-hidden { font-size: 12px; white-space: nowrap; color: var(--palette-ink-muted); }
 @media (pointer: coarse) { .chronicle-screen .family-tree-toggle { width: 48px; height: 48px; min-height: 48px; } }
+
+/* DEC-CARD-2: the picked record's thread — the decisions it followed from, what followed a decision, who remembers it. */
+.chronicle-thread { display: grid; gap: 6px; width: 100%; }
+.chronicle-thread-part { display: grid; gap: 4px; }
+.chronicle-thread-part h4 { margin: 0; font-size: 13px; }
+.chronicle-thread-links, .chronicle-thread-minds { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.chronicle-thread-link { display: block; width: 100%; min-height: 44px; padding: 6px 8px; font-size: 12px; line-height: 1.35; text-align: left; white-space: normal;
+  background: var(--palette-vellum); border: 1px solid var(--palette-ink-muted); }
+.chronicle-thread-minds li, .chronicle-thread-none { margin: 0; font-size: 12px; line-height: 1.35; }
+/* A touch tablet: one line with this padding is 50 px (uiBoundaries pins min-height to 44 px; the lines may wrap, so no fixed height). */
+@media (pointer: coarse) { .chronicle-screen .chronicle-thread-link { padding: 16px 8px; } }
