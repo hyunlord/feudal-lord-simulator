@@ -62,3 +62,61 @@ JS
 ```
 
 위 assertion은 현재 결함을 재현한다. 수정 뒤에는 `dues` target과 해당 because가 없음을 검증하는 회귀 시험으로 바꾼다.
+
+## 추가 넘김: 상신 규칙은 바뀌지만 결정 target이 비어 있음
+
+Node v25.8.2, Mac, 소스 HEAD a04f1e2023c2a6ac004308f303290b9f75767c37에서 기존 delegated fixture 구성으로 실제 reducer 응답을 대조했다. 디버거 연결·장기 실행·코어 수정 없이 실행했으며 종료 0이다. 가설은 ① 무효/무변화 명령 ② 규칙은 변경되지만 target 누락 ③ 세력 기억이 대신 연결함으로 구분했다.
+
+| 실제 답 | 변경 뒤 규칙 | 같은 10d 권리 청원의 exceptionMatch | 실제 결정 무게 | changedTargets / 결정 targets / 연결 기억 / 즉시 인과 읽기 행 |
+|---|---|---|---|---|
+| 061:b | 금액40·권리true·혼인true·되풀이true | null→rights | land, rights | 모두 빈 배열 |
+| 077:a | 금액80·권리true·혼인true·되풀이true | null→rights | rights | 모두 빈 배열 |
+| 130:a | 금액100·권리true·혼인false·되풀이false | null→rights | land | 모두 빈 배열 |
+
+세 경우 모두 원래 규칙은 금액100·권리false·혼인false이고 occurrence는 answered가 된다. 결정 기록 자체는 존재한다. 따라서 **무의미한 선택이나 기록 전체 부재가 아니라, 실제 상신 행동에 영향을 주는 규칙 변경의 target 공백**이다. ③ 즉시 세력 기억으로 메워진다는 가설도 이 fixture에서는 성립하지 않았다. 실제 미래 청원을 생성하거나 철을 진행하지 않았으므로 “미래의 모든 because 연결이 없다”는 결론은 내리지 않는다.
+
+근거: src/engine/stewardship.ts:429는 실제 rules를 갱신하며 :252의 exceptionMatch가 권리·혼인·금액 상신을 정한다. src/engine/decisionTrace.ts:58의 changedTargets는 :89~95에서 감독 mode·stewardId·auditMode와 감사 변화를 비교하지만 rules는 비교하지 않는다. :302의 linkMemories도 이번 실행에서는 보완 target을 만들지 않았다.
+
+엔진 담당 요청: 이 의미 있는 권리·상신 결정의 target과, 그 방침 때문에 뒤에 올라온 청원의 인과 연결 계약을 정한다. 기존 권리 무게를 낮추거나 소식으로 전환할 근거가 아니다. 아래 즉시 상태 재현을 회귀 기준으로 삼고, 후속 청원 발생·연결은 별도의 실제 실행으로 검증한다. 코어 소유권 때문에 이 문서에서는 수정하지 않는다.
+
+다음 명령은 기존 tests/engineBBatch1Answers.test.ts의 delegated 구성을 재사용한 독립 대조다. 세계 틱을 진행하지 않는다.
+
+```sh
+node --import tsx --input-type=module <<'JS'
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {decodeSave} from './src/save/saveCodec.ts';
+import {initialAgency} from './src/engine/townAgency.ts';
+import {estatesOf} from './src/engine/estates.ts';
+import {EMPTY_STEWARDSHIP,exceptionMatch} from './src/engine/stewardship.ts';
+import {bindEntry,boundIdentities,v4Entry,v4EnabledChoices} from './src/engine/registryV4.ts';
+import {initialRegistry} from './src/engine/registry.ts';
+import {weighOffer} from './src/engine/decisionLayer.ts';
+import {changedTargets} from './src/engine/decisionTrace.ts';
+import {traceInRange} from './src/engine/decisionReads.ts';
+import {gameReducer} from './src/state/gameStore.ts';
+const base=decodeSave(new Uint8Array(readFileSync('fixtures/saves/v49/chapter-two-town.save.json'))).envelope.state;
+const house=base.houses.find(h=>h.residents>0), person=base.persons.people.find(p=>p.alive);
+assert.ok(house&&person);
+const estates=estatesOf(base), original=estates.estates[0];assert.ok(original);
+const estate={...original,id:'delegated-estate',offMap:true,titleHolder:'lord',possessor:'lord'};
+const state={...base,agency:{...initialAgency(),duesPermille:1200},persons:{people:[{...person,householdId:house.buildingId,birthYear:1280,role:'head',classBand:'merchant'}],past:[],nextOrdinal:2},
+ estates:{...estates,estates:[estate],people:[{...person,id:'current',birthYear:1300,alive:true}]},
+ stewardship:{...EMPTY_STEWARDSHIP,stewards:[{personId:'current',estateId:estate.id,ability:40,loyalty:40,disposition:'greedy',connection:null,since:0,kept:0,errors:0,status:'serving'}],
+ oversight:[{estateId:estate.id,mode:'steward',stewardId:'current',auditMode:'accounts',tenants:0,merchants:0,undetected:0,since:0}],rules:{amountAtLeast:100,rights:false,marriage:false},
+ petitions:[{id:'small-right',estateId:estate.id,kind:'common_dispute',group:'tenants',amount:10,rights:true,marriage:false,tick:1,deadline:20,status:'granted',decidedBy:'steward'}]},trace:{decisions:[],acts:[]}};
+for(const [id,choiceId] of [['ck_evt_061','b'],['ck_evt_077','a'],['ck_evt_130','a']]) {
+ const entry=v4Entry(id),bound=bindEntry(state,entry);
+ if(!bound){console.log(JSON.stringify({id,status:'fixture_not_bound',staticCommands:entry.choices.find(c=>c.id===choiceId)?.commands}));continue;}
+ const offer={id:'rules:'+id,entryId:id,source:'v4',boundId:'',bound:boundIdentities(bound),offeredTick:state.tick,deadline:state.tick+1000,status:'offered',receipt:{draw:0,chancePermille:1000,conditions:[]}};
+ const weighing=weighOffer(state,offer);assert.ok(weighing);
+ const before={...state,registry:{...initialRegistry(),occurrences:[{...offer,weights:weighing.weights}]}};
+ assert.ok(v4EnabledChoices(before,entry,bound).includes(choiceId));
+ const after=gameReducer(before,{type:'answer_registry_offer',occurrenceId:offer.id,choiceId});
+ const decision=after.trace.decisions.find(d=>d.source===`registry:${id}:${choiceId}`);assert.ok(decision);
+ assert.notDeepEqual(after.stewardship.rules,before.stewardship.rules);
+ const memories=after.factions.factions.flatMap(f=>f.memory.filter(m=>m.decisionId===decision.id).map(m=>({faction:f.id,...m})));
+ console.log(JSON.stringify({id,choiceId,commands:entry.choices.find(c=>c.id===choiceId).commands,status:after.registry.occurrences[0].status,beforeRules:before.stewardship.rules,afterRules:after.stewardship.rules,exceptionBefore:exceptionMatch(before.stewardship.rules,{amount:10,rights:true,marriage:false}),exceptionAfter:exceptionMatch(after.stewardship.rules,{amount:10,rights:true,marriage:false}),changedTargets:changedTargets(before,after),decision,linkedMemories:memories,readModelRows:traceInRange(after,after.tick,after.tick+1).filter(r=>r.decisionId===decision.id)}));
+}
+JS
+```
