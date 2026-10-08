@@ -1,4 +1,4 @@
-export interface TestedRecord { file?: string; tree: string; passed: boolean; picked?: string[]; tests?: number; pass?: number; where?: string; at?: string }
+export interface TestedRecord { file?: string; tree: string; head?: string; passed: boolean; picked?: string[]; tests?: number; pass?: number; where?: string; at?: string }
 export interface Covered { record: TestedRecord; how: "same" | "reused"; changed: number }
 export interface Overlap { record: TestedRecord; files: string[] }
 export interface Coverage { covered: Map<string, Covered>; overlaps: Map<string, Overlap>; uncovered: string[] }
@@ -9,3 +9,5 @@ export function checkTestedChanges(options: { top: string; work: string; base: s
 export function coverageLines(covered: Map<string, Covered>): string[];
 export function overlapLines(uncovered: string[], overlaps: Map<string, Overlap>, limit?: number): string[];
 export function formatTestedChanges(result: TestedResult): string;
+export interface ReuseEvidence { from: { tree: string; commit: string | null; run: string | null; at: string | null }; changedSince: number; why: string; tests: string[] }
+export function reuseEvidence(covered: Map<string, Covered>): ReuseEvidence[];

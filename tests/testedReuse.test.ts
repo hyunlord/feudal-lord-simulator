@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { testedTree } from "../scripts/checks/changedTests.mjs";
-import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/testedChanges.mjs";
+import { checkTestedChanges, formatTestedChanges, reuseEvidence } from "../scripts/checks/testedChanges.mjs";
 
 // RR25 (user ruling 2026-10-09): a picked test keeps an earlier passing result when no file changed since that result's
 // content is one it reads (imports, directly or through other files, or names by its path; the source-scan list; the
@@ -39,7 +39,7 @@ function story(trunkMove: (write: (path: string, text: string) => void, remove: 
   git("commit", "-qam", "branch: engine and App");
   const record = (name: string, picked: string[]) => {
     const tree = testedTree(dir);
-    write(`.remote-runs/${name}/test-changed.json`, JSON.stringify({ tree, passed: true, picked, tests: picked.length, pass: picked.length, where: name, at: new Date().toISOString() }));
+    write(`.remote-runs/${name}/test-changed.json`, JSON.stringify({ tree, head: git("rev-parse", "HEAD"), passed: true, picked, tests: picked.length, pass: picked.length, where: name, at: new Date().toISOString() }));
   };
   // The long gate: every test the branch picks passed on the branch's content.
   record("gate", ["tests/appText.test.ts", "tests/engine.test.ts", "tests/phase3Architecture.test.ts"]);
@@ -57,7 +57,7 @@ test("no overlap: the trunk changed only a document — every result is kept, th
   try {
     const result = s.check();
     assert.equal(result.ok, true);
-    assert.match(formatTestedChanges(result), /3 reused, no overlap: 1 file\(s\) changed since the run's content [0-9a-f]{8} \(gate, .*\), none read by them/);
+    assert.match(formatTestedChanges(result), /3 reused, no overlap: 1 file\(s\) changed since the run's content [0-9a-f]{8} \(commit [0-9a-f]{8}, gate, .*\), none read by them/);
   } finally { s.done(); }
 });
 
@@ -127,6 +127,12 @@ test("only the overlapping tests run again, and the reused and the new record to
     assert.equal(after.ok, true);
     const text = formatTestedChanges(after);
     assert.match(text, /2 on this content — 2\/2 at rerun/);
-    assert.match(text, /1 reused, no overlap: 1 file\(s\) changed since the run's content/);
+    assert.match(text, /1 reused, no overlap: 1 file\(s\) changed since the run's content [0-9a-f]{8} \(commit [0-9a-f]{8}, gate, /);
+    // The evidence a record keeps: what was reused, whose result (content, commit, run, time), why.
+    const [evidence, ...rest] = reuseEvidence(after.covered!);
+    assert.equal(rest.length, 0);
+    assert.deepEqual(evidence!.tests, ["tests/appText.test.ts"]);
+    assert.equal(evidence!.from.run, "gate"); assert.match(evidence!.from.commit!, /^[0-9a-f]{40}$/); assert.match(evidence!.from.tree, /^[0-9a-f]{40}$/);
+    assert.equal(evidence!.changedSince, 1); assert.match(evidence!.why, /^no overlap/);
   } finally { s.done(); }
 });

@@ -70,6 +70,22 @@ export function checkTestedChanges({ top, work, base, head }) {
 
 const short = value => String(value ?? '?').slice(0, 8);
 
+/**
+ * The reuse evidence a test:changed record keeps (user order 2026-10-09: what was reused, whose result, why): per source
+ * record, the tests it covers, its content (tree), commit, run (where) and time, how many files changed since, and why.
+ */
+export function reuseEvidence(covered) {
+  const bySource = new Map();
+  for (const [test, entry] of covered) {
+    if (entry.how !== 'reused') continue;
+    const key = entry.record.file ?? entry.record.tree;
+    if (!bySource.has(key)) bySource.set(key, { from: { tree: entry.record.tree, commit: entry.record.head ?? null, run: entry.record.where ?? null,
+      at: entry.record.at ?? null }, changedSince: entry.changed, why: 'no overlap: none of the files changed since that content is one these tests read (RR25)', tests: [] });
+    bySource.get(key).tests.push(test);
+  }
+  return [...bySource.values()].map(entry => ({ ...entry, tests: entry.tests.sort() }));
+}
+
 /** The evidence lines: per record, how many tests it covers and how ("on this content" / "no overlap"). */
 export function coverageLines(covered) {
   const byRecord = new Map();
@@ -80,7 +96,7 @@ export function coverageLines(covered) {
   }
   return [...byRecord.values()].map(entry => entry.how === 'same'
     ? `  ${entry.tests.length} on this content — ${entry.record.pass}/${entry.record.tests} at ${entry.record.where}, ${entry.record.at}`
-    : `  ${entry.tests.length} reused, no overlap: ${entry.changed} file(s) changed since the run's content ${short(entry.record.tree)} (${entry.record.where}, ${entry.record.at}), none read by them`);
+    : `  ${entry.tests.length} reused, no overlap: ${entry.changed} file(s) changed since the run's content ${short(entry.record.tree)} (commit ${short(entry.record.head)}, ${entry.record.where}, ${entry.record.at}), none read by them`);
 }
 
 /** The lines for the tests still to run: the changed files each reads, or that no passing record ran it. */

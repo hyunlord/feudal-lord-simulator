@@ -7,7 +7,8 @@
 //   npm run test:changed -- --all            run every picked test, even those an earlier passing record covers
 // RR25: a picked test that a passing record ran is not run again when no file changed since that record's content is
 // one the test reads (scripts/checks/testedChanges.mjs testCoverage); the run says which it reuses and why it runs the
-// rest. On the DGX the Mac's records come with the run (run.sh: .remote-in/tested-records.json).
+// rest. On the DGX the Mac's records come with the run (run.sh: .remote-in/tested-records.json). The record keeps the
+// evidence as `reused`: per source record its tests, tree, commit, run, time, the files changed since and why.
 // Changed files: <base> against the working tree, tracked and untracked (default base: the merge base with the trunk).
 // A test is picked when it changed itself, when it imports a changed file directly or through other files (static
 // import / export from / import() / require, relative paths in src, tests, scripts, tools), or when its text names a
@@ -27,7 +28,7 @@ import { tmpdir } from "node:os";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { gitIn, pickTests, SOURCE_SCAN_WHY } from "./pickTests.mjs";
-import { coverageLines, overlapLines, testCoverage, testedRecords } from "./testedChanges.mjs";
+import { coverageLines, overlapLines, reuseEvidence, testCoverage, testedRecords } from "./testedChanges.mjs";
 
 export { pickTests, SOURCE_SCAN_WHY };
 
@@ -80,13 +81,13 @@ async function main() {
     process.exit(0);
   }
   const tree = testedTree(ROOT);
-  let run = list;
+  let run = list; let reused = [];
   if (!args.includes("--all") && list.length > 0) {
     const carried = join(ROOT, ".remote-in/tested-records.json");
     const extra = process.env.FLS_REMOTE && existsSync(carried) ? JSON.parse(readFileSync(carried, "utf8")) : [];
     const records = [...testedRecords(ROOT), ...extra].sort((a, b) => String(b.at).localeCompare(String(a.at)));
     const coverage = testCoverage({ top: ROOT, work: ROOT, required: list, headTree: tree, records });
-    run = coverage.uncovered;
+    run = coverage.uncovered; reused = reuseEvidence(coverage.covered);
     if (coverage.covered.size > 0) console.log([`reused (decision RR25): ${coverage.covered.size} of ${list.length}`, ...coverageLines(coverage.covered)].join("\n"));
     if (coverage.covered.size > 0 && run.length > 0) console.log([`to run (${run.length}):`, ...overlapLines(run, coverage.overlaps, 40)].join("\n"));
   }
@@ -99,16 +100,22 @@ async function main() {
     process.exit(3);
   }
   let rc = 0, counts = { tests: 0, pass: 0, fail: 0 };
-  if (run.length === 0) { console.log(`test:changed: nothing to run — every picked test is covered (check:merge reads the same records)`); process.exit(0); }
+  const where = process.env.FLS_REMOTE ? `DGX ${process.env.FLS_REMOTE_RUN ?? ""}`.trim() : `${process.platform === "darwin" ? "Mac" : "local"}`;
+  // Nothing to run: the reuse evidence alone, in a file of its own (a <tree>.json of tests that ran stays as it is).
+  if (run.length === 0) {
+    const evidence = { tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: [], tests: 0, pass: 0, fail: 0, passed: true, where, at: new Date().toISOString(), reused };
+    const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.reuse.json`);
+    mkdirSync(dirname(file), { recursive: true }); writeFileSync(file, JSON.stringify(evidence, null, 1));
+    console.log(`test:changed: nothing to run — every picked test is covered; the reuse evidence is in ${file.slice(ROOT.length + 1)}`);
+    process.exit(0);
+  }
   {
     const r = spawnSync(join(ROOT, "node_modules/.bin/tsx"), ["--test", ...run], { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 30 });
     process.stdout.write(r.stdout ?? ""); process.stderr.write(r.stderr ?? "");
     rc = r.status ?? 1; counts = summary(r.stdout ?? "");
   }
   const record = {
-    tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: run, ...counts, passed: rc === 0,
-    where: process.env.FLS_REMOTE ? `DGX ${process.env.FLS_REMOTE_RUN ?? ""}`.trim() : `${process.platform === "darwin" ? "Mac" : "local"}`,
-    at: new Date().toISOString(),
+    tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: run, ...counts, passed: rc === 0, where, at: new Date().toISOString(), reused,
   };
   const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.json`);
   mkdirSync(dirname(file), { recursive: true });
