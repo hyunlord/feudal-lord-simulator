@@ -1,51 +1,5 @@
 {
  "rows": {
-  "ledger-claim": {
-   "state": "offer-countered",
-   "claim": [
-    {
-     "button": "소송 걸기 · 5s",
-     "cost": true,
-     "disabled": false,
-     "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80",
-     "refusal": null
-    }
-   ],
-   "card": {
-    "text": "드 이브르쿠르 영지 · 어업권\n\n근거 하사 · 힘 45\n\n지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80\n\n소송 걸기 · 5s",
-    "buttons": [
-     "소송 걸기 · 5s"
-    ],
-    "smallestText": 12,
-    "titles": 0,
-    "box": {
-     "left": 667,
-     "top": 439,
-     "width": 594,
-     "height": 66,
-     "right": 1261,
-     "bottom": 505,
-     "inside": true
-    }
-   },
-   "button": {
-    "text": "소송 걸기 · 5s",
-    "buttons": [],
-    "smallestText": null,
-    "titles": 0,
-    "box": {
-     "left": 1125,
-     "top": 450,
-     "width": 127,
-     "height": 44,
-     "right": 1252,
-     "bottom": 494,
-     "inside": true
-    }
-   },
-   "bytes": 113254,
-   "pass": true
-  },
   "ledger-claims-by-state": {
    "claims": {
     "offer-countered": [
@@ -510,8 +464,54 @@
    "chipAfter": true,
    "afterBytes": 93850,
    "pass": true
+  },
+  "ledger-claim": {
+   "state": "offer-countered",
+   "claim": [
+    {
+     "button": "소송 걸기 · 5s",
+     "cost": true,
+     "disabled": false,
+     "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+     "refusal": null
+    }
+   ],
+   "card": {
+    "text": "드 이브르쿠르 영지 · 어업권\n\n근거 하사 · 힘 45\n\n지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다\n\n소송 걸기 · 5s",
+    "buttons": [
+     "소송 걸기 · 5s"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 667,
+     "top": 439,
+     "width": 594,
+     "height": 84,
+     "right": 1261,
+     "bottom": 523,
+     "inside": true
+    }
+   },
+   "button": {
+    "text": "소송 걸기 · 5s",
+    "buttons": [],
+    "smallestText": null,
+    "titles": 0,
+    "box": {
+     "left": 1125,
+     "top": 459,
+     "width": 127,
+     "height": 44,
+     "right": 1252,
+     "bottom": 503,
+     "inside": true
+    }
+   },
+   "bytes": 115001,
+   "pass": true
   }
  },
- "bytes": 149947,
+ "bytes": 115001,
  "errors": []
 }
