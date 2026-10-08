@@ -13,9 +13,8 @@ import type { EstatePetition } from "../../../engine/stewardship.types";
 import { lordMode } from "../../../engine/townAgency";
 import type { GameAction } from "../../../state/gameStore.types";
 import type { DecisionCardView, DecisionChoiceView } from "../../decisionCard/decisionCardTypes";
-import { lordOutcome } from "../../decisionCard/families/lordOutcome";
+import { lordAnswer } from "../../decisionCard/families/lordOutcome";
 import { LORD_OUTCOME_COPY as OUTCOME } from "../../decisionCard/families/lordOutcomeCopy.ko";
-import { afterAnswer } from "../../decisionCard/remembers";
 import { calendarDays } from "../../gameTimeCopy.ko";
 import { courtLine } from "../../lordCardsModel";
 import { perState } from "../../perState";
@@ -26,8 +25,9 @@ import { DECISION_CARDS_COPY as COPY, OFFMAP_PETITION_COPY } from "./decisionCar
 // (NG-8 `marriageDecisionDue`), a Michaelmas audit's finding (SW-6 `pendingAudits`) and an off-map estate's petition
 // (SW-4 `lordEstatePetitions`, the home estate's are LM-R1's card). DEC-CARD: each is the heavy decision card
 // (src/ui/decisionCard/): the situation, the stake, the deadline and what silence means, and each answer's now / later /
-// who remembers from the engine's own command run on the state (gameReducer is pure: the same state back means the
-// engine refuses it; lordOutcome puts the difference in words), so no rule, cost or threshold is copied here. Engine request docs/requests/engine-lmr2-seen-and-reads.md §2 asks for the
+// who remembers from the engine's outlook for its command (DEC-CARD-2 `lordAnswer`: `answerOutlook`, null = the engine
+// refuses it) and the dry run for what the outlook lacks (claims, the steward, goodwill, promises' terms), so no rule,
+// cost or threshold is copied here. Engine request docs/requests/engine-lmr2-seen-and-reads.md §2 asks for the
 // same as read models (`estatePetitionEffect`, `auditAnswerEffect`, `willChangeRefusal`); they would replace the runs.
 // The runs happen only for a card that is up, once per state (`perState`: AppModals re-renders on clock and UI events
 // while a card is up); the chips read the heads, which run nothing.
@@ -44,12 +44,11 @@ export type MarriageDecisionView = WillChangeView | ContestedView;
 export type AuditDecisionView = AuditDecisionHead & Readonly<{ card: DecisionCardView }>;
 export type OffMapPetitionView = OffMapPetitionHead & Readonly<{ card: DecisionCardView }>;
 
-/** One answer: the engine's command run on the state (`afterAnswer`, gameReducer), its outcome in words, or shut with why. */
+/** One answer: the engine's outlook for its command and the dry run (`lordAnswer`), in words, or shut with why. */
 function answer(state: GameState, id: string, label: string, action: GameAction, refused: string,
   extra: { readonly now?: readonly string[]; readonly later?: readonly string[] } = {}): Choice {
-  const after = afterAnswer(state, action);
-  if (after === null) return { id, label, now: [], later: [], remembers: [], refusal: refused };
-  const outcome = lordOutcome(state, after);
+  const outcome = lordAnswer(state, action);
+  if (outcome === null) return { id, label, now: [], later: [], remembers: [], refusal: refused };
   return { id, label, now: [...extra.now ?? [], ...outcome.now], later: [...outcome.later, ...extra.later ?? []], remembers: outcome.remembers, refusal: null };
 }
 

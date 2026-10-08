@@ -1,6 +1,6 @@
 // DEC-CARD (renderer A, lord cards): the lord-mode decision cards in the heavy layout, in the browser on real states —
-// the town's request (~/fls-lmr1-petition-states request), the registry offer and its hold (~/fls-lord-states
-// registry-offer, registry-offer-hold), the father's will, the contested inheritance, the audit and the off-map petition
+// the home petition (~/fls-lmr1-petition-states home-boundary_dispute; DEC-CARD-2), the town's request (the same
+// folder's request), the registry offer and its hold (~/fls-lord-states registry-offer, registry-offer-hold), the father's will, the contested inheritance, the audit and the off-map petition
 // (~/fls-lmr2-states), and the negotiation counter's answers on the lord screen (lord2 offer-countered). Each card is
 // reached as a player reaches it (by itself, or its chip and [결정하기]), shot at 1280 × 800 (JPEG), and checked: the
 // headings (무슨 일인가, 걸린 것, and per answer 지금 / 나중에 / 기억하는 이), no text under 12 px, inside the view, and no
@@ -71,6 +71,8 @@ async function reach(page, card, story) {
 
 const HEADS = ['지금', '나중에', '기억하는 이'];
 const CARDS = [
+  // DEC-CARD-2: the home petition (its answers from the engine's outlook, the kind's standing policy in 나중에).
+  { name: 'home-petition', dir: flags.petitions, state: 'home-boundary_dispute', card: '.decision-card.lord-card[data-home-petition]', story: 'home_petition', delay: 1500 },
   { name: 'request', dir: flags.petitions, state: 'request', card: '.decision-card.lord-card[data-lord-request]', story: 'lord_request', delay: 1500 },
   { name: 'registry', dir: flags.lord, state: 'registry-offer', card: '.decision-card.lord-card[data-registry-offer]', story: 'registry_event', delay: 3000 },
   { name: 'registry-hold', dir: flags.lord, state: 'registry-offer-hold', card: '.decision-card.lord-card[data-registry-offer]', story: 'registry_event', delay: 3000 },

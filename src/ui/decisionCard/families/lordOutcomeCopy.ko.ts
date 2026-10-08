@@ -4,7 +4,8 @@ import type { RegistryTerm } from "../../../engine/registry.types";
 import { moneyJosa, moneyShort } from "../../money.ko";
 
 // DEC-CARD, the lord-mode cards (the town's request, the registry offer, the will, the audit, the off-map petition, the
-// counter): what an answer changes, said in sentences from the state the engine leaves after it (lordOutcome.ts). Words
+// counter): what an answer changes that the engine's outlook does not word (outlookCopy.ko.ts has its later keys), said in
+// sentences from the state the engine leaves after it (lordOutcome.ts). Words
 // follow docs/design/glossary.md: the card's lines "~합니다", the chronicle's own sentences quoted as they are ("~했다").
 
 /** The particle after a Korean word: the first form after a final consonant (받침), the second after a vowel. */
@@ -67,10 +68,6 @@ export const LORD_OUTCOME_COPY = {
   loyalty: (name: string, delta: number) => `청지기 ${name}의 충성이 ${Math.abs(delta)} ${delta > 0 ? "오릅니다" : "떨어집니다"}.`,
   valueDrop: (estate: string) => `${estate}의 한 해 가치가 떨어집니다.`,
   policy: (name: string) => `영지 방침을 "${name}"에 둡니다.`,
-  dues: (percent: number) => `좌판세가 평소의 ${percent}%가 됩니다.`,
-  subsidy: (name: string, amount: string) => `${name} 사업에 한 건 ${amount}의 장려금을 겁니다.`,
-  subsidyGone: (name: string) => `${name} 장려금을 거둡니다.`,
-  timber: (amount: number) => `시장 상인에게 목재 ${amount}개를 주문해 둡니다.`,
   wallFirst: "성벽 공사가 일손과 자재를 먼저 받습니다.",
   wallNotFirst: "성벽 공사가 다른 공사와 같은 차례로 돌아갑니다.",
   sites: (count: number) => `새 공사 ${count}곳이 열립니다.`,

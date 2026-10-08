@@ -8,7 +8,7 @@ out=${1:-docs/verification/deccard/lordcards}
 petitions=${PETITION_STATES:-$HOME/fls-lmr1-petition-states}
 lord=${LORD_STATES:-$HOME/fls-lord-states}
 lord2=${LMR2_STATES:-$HOME/fls-lmr2-states}
-for file in "$petitions/request.json" "$lord/registry-offer.json" "$lord/registry-offer-hold.json" "$lord2/will-change.json" "$lord2/offer-countered.json"; do
+for file in "$petitions/home-boundary_dispute.json" "$petitions/request.json" "$lord/registry-offer.json" "$lord/registry-offer-hold.json" "$lord2/will-change.json" "$lord2/offer-countered.json"; do
   [ -f "$file" ] || { echo "missing state $file"; exit 1; }
 done
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}

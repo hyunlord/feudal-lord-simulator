@@ -16,6 +16,9 @@ import type { EstatePetition, HomePetitionKind } from "../engine/stewardship.typ
 import { lordMode, lordRequests } from "../engine/townAgency";
 import type { LordRequest } from "../engine/townAgency.types";
 import type { GameAction } from "../state/gameStore.types";
+import { standingSetting } from "../engine/decisionLayer";
+import { standingPolicies } from "../engine/decisionReads";
+import { HOME_PETITION_CARD_COPY as HOME_CARD } from "./decisionCard/families/homePetitionCopy.ko";
 import { calendarDays } from "./gameTimeCopy.ko";
 import { perState } from "./perState";
 import { HOME_PETITION_COPY, LORD_CARDS_COPY, type PetitionParties } from "./lordCardsCopy.ko";
@@ -24,19 +27,16 @@ import { HOME_PETITION_ART, PRECEDENT_ART, type Wave44ImageId } from "./wave44Ar
 
 // LM-R1 (petitions) the lord's cards, lord mode only (`lordMode`): the home estate's petitions as the engine raises them
 // (`lordEstatePetitions`, estate "estate-home", FIX-14 SW-11) — a different API from the political petitions'
-// (`PetitionRecord.defId`): each card is answered through `answer_estate_petition`, and each answer shows what the
-// engine's own table (`HOME_PETITION_KINDS`) does to the treasury now and to each faction (`history.ts` moves them by
-// that table on the answer). The steward's answers by precedent (`precedentReport`, SW-12), the town's requests
-// (`lordRequests`, TA-7) and the court line (the king `kingAt`, the lord's age, the guardian of a minor lord).
+// (`PetitionRecord.defId`): each card is answered through `answer_estate_petition`; what each answer does is the
+// engine's outlook on the card (DEC-CARD-2, homePetitionCard.ts), and the chip says what the steward does with the kind
+// from now on (its standing policy, DTR-1). The steward's answers by precedent (`precedentReport`, SW-12), the town's
+// requests (`lordRequests`, TA-7) and the court line (the king `kingAt`, the lord's age, the guardian of a minor lord).
 
-export type RelationMove = Readonly<{ factionId: string; name: string; delta: number }>;
-export type HomePetitionOption = Readonly<{ grant: boolean; label: string; treasury: number; relations: readonly RelationMove[]; line: string }>;
 export type HomePetitionView = Readonly<{
   petitionId: string; kind: HomePetitionKind; art: Wave44ImageId | null; title: string; demand: string; court: string; waits: string;
-  /** ER-6: what the steward does with the kind next (a hint before a precedent; why a settled kind still came). */
-  precedent: string | null;
+  /** DTR-1: the kind's standing policy and what the steward does with the kind from now on (and why this one came). */
+  standing: string;
   recurring: boolean;
-  options: readonly [HomePetitionOption, HomePetitionOption];
   /** LR1-D5 (user 2026-10-05): the lord house's arms in the frame's roundel, as the lordship screen shows them. */
   arms: EmblemSpec; armsLabel: string;
 }>;
@@ -64,27 +64,6 @@ export function parties(state: GameState, petition: Pick<EstatePetition, "party"
   };
 }
 
-/** An answer's moves by the engine's table: `party` is the petition's neighbour house; a faction the town lacks is skipped (as history.ts does). */
-export function homeRelationMoves(state: GameState, petition: Pick<EstatePetition, "kind" | "party">, grant: boolean): readonly RelationMove[] {
-  if (!isHomeKind(petition.kind)) return [];
-  const table = HOME_PETITION_KINDS[petition.kind][grant ? "grant" : "refuse"].factions;
-  const moves: RelationMove[] = [];
-  for (const [key, delta] of Object.entries(table)) {
-    const id = key === "party" ? petition.party : key;
-    const name = id === undefined ? null : factionName(state, id);
-    if (id !== undefined && name !== null && delta !== 0) moves.push({ factionId: id, name, delta });
-  }
-  return moves;
-}
-
-/** The pennies an answer moves now (the engine's `petitionEffect`: the table's sign × the petition's amount). */
-export function homeTreasury(petition: Pick<EstatePetition, "kind" | "amount">, grant: boolean): number {
-  return isHomeKind(petition.kind) ? HOME_PETITION_KINDS[petition.kind][grant ? "grant" : "refuse"].income * petition.amount : 0;
-}
-
-const relationsLine = (moves: readonly RelationMove[]) =>
-  moves.length === 0 ? LORD_CARDS_COPY.noRelations : PETITION_COPY.relations(moves.map(move => [move.name, move.delta] as const));
-
 /** The court line: the season, the king reigning then (`kingAt`), the lord with his age ("늙은" from the engine's old age) and his guardian. */
 export function courtLine(state: GameState): string {
   const date = stateCalendar(state);
@@ -100,35 +79,29 @@ export function courtLine(state: GameState): string {
   return LORD_CARDS_COPY.court(date.year, season, king, guardian === null ? who : `${who} · ${guardian}`);
 }
 
-/** The answer a settled kind's precedent repeats (the lord's last two answers alike), or null. */
-export function settledHomeAnswer(state: GameState, kind: HomePetitionKind): boolean | null {
-  const answers = stewardshipOf(state).petitions.filter(entry => entry.estateId === HOME_ESTATE_ID && entry.kind === kind && entry.decidedBy === "lord"
-    && (entry.status === "granted" || entry.status === "refused"));
-  const [last, before] = [answers.at(-1), answers.at(-2)];
-  return last !== undefined && before !== undefined && last.status === before.status ? last.status === "granted" : null;
+/** DTR-1: what the steward does with a home petition's kind from now on — its standing policy (the engine's
+ * `standingPolicies` answer for it), and why this one came to the lord (a large sum, or the rule that brings them all). */
+export function homeStanding(state: GameState, petition: EstatePetition & { readonly kind: HomePetitionKind }): string {
+  const setting = standingSetting(state, petition.kind);
+  if (setting === "lord") return HOME_CARD.standingLord;
+  const why = petition.escalated === "amount" ? "large" : stewardshipOf(state).rules.recurring === true ? "recurring" : null;
+  const granted = standingPolicies(state).find(view => view.kind === petition.kind)?.answers[setting].granted ?? null;
+  const copy = HOME_PETITION_COPY[petition.kind];
+  const named = parties(state, petition);
+  return HOME_CARD.standing(HOME_CARD.settings[setting], why, granted === null ? null : granted ? copy.grant(named) : copy.refuse(named));
 }
 
-/** The first home petition waiting for the lord as its card shows it, or null (none, or not lord mode). Once per state
- * (`perState`): the story's chips and the card read it on every render. */
+/** The first home petition waiting for the lord as its chip and card frame show it, or null (none, or not lord mode). Once per
+ * state (`perState`): the story's chips read it on every render; it runs no answer (the card's outlook is homePetitionCard's). */
 export const homePetitionView = perState((state: GameState): HomePetitionView | null => {
   const petition = openHomePetitions(state)[0];
   if (petition === undefined) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
-  const named = parties(state, petition);
-  const option = (grant: boolean): HomePetitionOption => {
-    const treasury = homeTreasury(petition, grant);
-    const relations = homeRelationMoves(state, petition, grant);
-    return { grant, label: grant ? copy.grant(named) : copy.refuse(named), treasury, relations,
-      line: `${LORD_CARDS_COPY.treasury(treasury)} · ${relationsLine(relations)}` };
-  };
-  const recurring = stewardshipOf(state).rules.recurring === true;
-  const settled = settledHomeAnswer(state, petition.kind);
   return {
     petitionId: petition.id, kind: petition.kind, art: HOME_PETITION_ART[petition.kind], title: copy.title,
-    demand: copy.demand(petition.amount, named), court: courtLine(state),
+    demand: copy.demand(petition.amount, parties(state, petition)), court: courtLine(state),
     waits: LORD_CARDS_COPY.waits(calendarDays(petition.deadline - state.tick)),
-    precedent: settled === null ? LORD_CARDS_COPY.precedentHint : LORD_CARDS_COPY.precedentSettled(settled ? copy.grant(named) : copy.refuse(named)),
-    recurring, options: [option(true), option(false)],
+    standing: homeStanding(state, petition), recurring: stewardshipOf(state).rules.recurring === true,
     arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(lordHouse(state).name),
   };
 });

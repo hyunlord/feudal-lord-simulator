@@ -1,3 +1,4 @@
+import type { StandingSetting } from "../../../content/stewardPolicyConfig";
 import type { HomePetitionKind } from "../../../engine/stewardship.types";
 import type { PetitionParties } from "../../lordCardsCopy.ko";
 import { moneyJosa, moneyShort } from "../../money.ko";
@@ -32,8 +33,12 @@ export const HOME_PETITION_CARD_COPY = {
   treasuryIn: (pennies: number) => `금고에 ${sumSubject(pennies)} 들어옵니다.`,
   treasuryOut: (pennies: number) => `금고에서 ${sumSubject(pennies)} 나갑니다.`,
   treasurySame: "금고는 그대로입니다.",
-  /** The steward's precedent rule as it stands (LM9-3; GP7-ENGINE replaces it with the standing policy). */
-  precedent: "같은 답을 두 번 이어서 하면, 다음부터는 청지기가 이 답대로 처리합니다.",
-  settled: (answer: string) => `지금 선례는 "${answer}"입니다. 다시 올리는 규칙이 켜져 있어 영주에게 왔습니다.`,
+  /** DTR-1: the standing policies' words (the lord's policy screen sets them; `set_standing_policy`). */
+  settings: { customary: "관습대로", lenient: "가볍게", strict: "엄하게", lord: "영주에게" } satisfies Record<StandingSetting, string>,
+  /** DTR-1: what the steward does with the kind from now on — its standing policy, and why this one came to the lord. */
+  standingLord: "이 청원의 상시 방침은 \"영주에게\"라서, 이런 청원은 앞으로도 영주에게 옵니다.",
+  standing: (setting: string, why: "large" | "recurring" | null, answer: string | null) =>
+    `이 청원의 상시 방침은 "${setting}"입니다. ${why === "large" ? "이번에는 큰 돈이 걸려 영주에게 왔습니다. " : why === "recurring" ? "이번에는 장원 청원을 모두 올리라는 규칙이 켜져 있어 영주에게 왔습니다. " : ""}`
+    + `앞으로 이런 청원은 청지기가 그 방침대로${answer === null ? "" : `("${answer}")`} 답합니다. "영주에게"로 두면 영주에게 옵니다.`,
   refused: "지금은 이 답을 할 수 없습니다.",
 } as const;
