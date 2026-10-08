@@ -54,16 +54,19 @@ test("check:merge's tested step: a passing record of exactly the pushed content 
     const head = git("rev-parse", "HEAD");
     assert.equal(tree, git("rev-parse", "HEAD^{tree}"));
     const none = checkTestedChanges({ top: dir, work: dir, base, head });
-    assert.equal(none.ok, false); assert.match(formatTestedChanges(none), /no test:changed record of this exact content/);
+    assert.equal(none.ok, false); assert.match(formatTestedChanges(none), /tests\/a\.test\.ts — no passing record ran it/);
 
     const write = (name: string, record: object) => { mkdirSync(join(dir, ".remote-runs", name), { recursive: true }); writeFileSync(join(dir, ".remote-runs", name, "test-changed.json"), JSON.stringify(record)); };
     write("failed-run", { tree, passed: false, picked: ["tests/a.test.ts"], tests: 1, pass: 0, at: "1" });
     assert.match(formatTestedChanges(checkTestedChanges({ top: dir, work: dir, base, head })), /FAILED/);
     write("dgx-run", { tree, passed: true, picked: ["tests/a.test.ts"], tests: 1, pass: 1, where: "DGX x", at: "2" });
     const ok = checkTestedChanges({ top: dir, work: dir, base, head });
-    assert.equal(ok.ok, true); assert.match(formatTestedChanges(ok), /1 picked test file\(s\) passed on this content — 1\/1 at DGX x/);
+    assert.equal(ok.ok, true); assert.match(formatTestedChanges(ok), /1 picked test file\(s\) passed on this content\n  1 on this content — 1\/1 at DGX x/);
 
     writeFileSync(join(dir, "src/b.ts"), "export const b = 4;\n"); git("commit", "-qam", "changed after the run");
-    assert.equal(checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") }).ok, false, "a record of other content does not count");
+    // A record of other content counts only for tests that read none of the difference (RR25): a.test.ts imports b.ts.
+    const later = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
+    assert.equal(later.ok, false, "the test reads the file that changed after the run");
+    assert.match(formatTestedChanges(later), /tests\/a\.test\.ts — reads src\/b\.ts \(changed since /);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
