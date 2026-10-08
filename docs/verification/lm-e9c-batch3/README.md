@@ -38,3 +38,7 @@ git diff --check
 DGX `engineB-batch3-20y-7c2a29b`는 exit0으로 끝났다. 1300–1320 미만 seed1/2/3 발생10/12/12건, 응답8/8/9건, 무효2/4/3건이다. 새 API 두 건과 보류 다섯 건은 독립 사건을 추가하지 않는다. 원본7개 원격SHA-256 일치·보고서3개 재생성 바이트 일치를 확인해 `distribution/`에 보관했다. GP7은`measured_not_adjudicated`이다. 최신 본선의 경제 변경 이전 결과이며 최종 병합판 관측으로 주장하지 않는다.
 
 기하 실행 `engineB-batch3-geometry-7c2a29b`도 exit0이다. 해당 이름의 기하 보고서를 함께 보존한다. 본선 카드 변경을 합친 뒤 필요한 관문은 별도로 갱신한다.
+
+## 최신 경제판 통합 뒤 그림·기하
+
+소스19481db3에서 공식 Mac`npm run eventart:auto` 완료: DGX`eventart-auto-19481db`56/56,명령380.1초·exit0,Mac 적용 후7시험 통과. 기하`engineB-batch3-geometry-19481db`는40조건·실패0·미개방0,337.2초·exit0. 이것은 준비 상태 카드 검증이며 변주API 화면 소비나 자연 발생의 증거가 아니다. 최신 경제판20년 실행과 최종 변경 시험·게시 관문은 별도다.
