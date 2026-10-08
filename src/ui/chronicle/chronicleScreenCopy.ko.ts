@@ -148,6 +148,8 @@ export const CHRONICLE_SCREEN_COPY = {
   recordsTab: "기록",
   factionsTab: "세력",
   factionsLabel: "주변 세력 아홉",
+  /** INSTALL-18: the faction panel's title (lord mode lists only the factions met, so no count). */
+  factionsHeading: "주변 세력",
   factionRowLabel: (name: string, leader: string, relation: string, demands: number) =>
     demands === 0 ? `${name} — 수장 ${leader}, 관계 ${relation}. 세력 연대기 열기` : `${name} — 수장 ${leader}, 관계 ${relation}, 요구 ${demands}건. 세력 연대기 열기`,
   noLeader: "수장 없음",

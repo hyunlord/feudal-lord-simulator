@@ -1,0 +1,469 @@
+{
+ "campaign-tab-1280": {
+  "panel": {
+   "art": true,
+   "width": 1164,
+   "height": 707,
+   "borderImage": "assets/wave14/ui-frames/frame_faction_panel-v1.png\")",
+   "borderWidth": "60px 20px 20px",
+   "heading": {
+    "top": 13,
+    "bottom": 33,
+    "text": "주변 세력",
+    "fontSize": "14px"
+   }
+  },
+  "rows": [
+   {
+    "faction": "overlord",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "crown",
+    "height": 60,
+    "icon": {
+     "kind": "crown",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_crown-v1.png"
+    }
+   },
+   {
+    "faction": "neighbour_1",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "neighbour_2",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "bishop",
+    "height": 60,
+    "icon": {
+     "kind": "church",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_church-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_1",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_2",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "town",
+    "height": 73,
+    "icon": {
+     "kind": "town",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+    }
+   },
+   {
+    "faction": "commons",
+    "height": 60,
+    "icon": null
+   }
+  ]
+ },
+ "page-crown": {
+  "faction": "crown",
+  "name": "국왕과 왕실",
+  "icon": {
+   "kind": "crown",
+   "size": 32,
+   "file": "assets/wave14/ui-icons/icon_faction_crown-v1.png"
+  },
+  "nameSlot": {
+   "clientHeight": 162,
+   "scrollHeight": 162,
+   "clientWidth": 215,
+   "scrollWidth": 215
+  }
+ },
+ "page-bishop": {
+  "faction": "bishop",
+  "name": "윈캐스터 주교",
+  "icon": {
+   "kind": "church",
+   "size": 32,
+   "file": "assets/wave14/ui-icons/icon_faction_church-v1.png"
+  },
+  "nameSlot": {
+   "clientHeight": 162,
+   "scrollHeight": 162,
+   "clientWidth": 215,
+   "scrollWidth": 215
+  }
+ },
+ "page-merchant_house_1": {
+  "faction": "merchant_house_1",
+  "name": "스펜서 상인 가문",
+  "icon": {
+   "kind": "merchant_house",
+   "size": 32,
+   "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+  },
+  "nameSlot": {
+   "clientHeight": 162,
+   "scrollHeight": 162,
+   "clientWidth": 215,
+   "scrollWidth": 215
+  }
+ },
+ "page-town": {
+  "faction": "town",
+  "name": "도시 공동체",
+  "icon": {
+   "kind": "town",
+   "size": 32,
+   "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+  },
+  "nameSlot": {
+   "clientHeight": 162,
+   "scrollHeight": 162,
+   "clientWidth": 215,
+   "scrollWidth": 215
+  }
+ },
+ "long-row": {
+  "panel": {
+   "art": true,
+   "width": 1164,
+   "height": 707,
+   "borderImage": "assets/wave14/ui-frames/frame_faction_panel-v1.png\")",
+   "borderWidth": "60px 20px 20px",
+   "heading": {
+    "top": 13,
+    "bottom": 33,
+    "text": "주변 세력",
+    "fontSize": "14px"
+   }
+  },
+  "rows": [
+   {
+    "faction": "overlord",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "crown",
+    "height": 60,
+    "icon": {
+     "kind": "crown",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_crown-v1.png"
+    }
+   },
+   {
+    "faction": "neighbour_1",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "neighbour_2",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "bishop",
+    "height": 60,
+    "icon": {
+     "kind": "church",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_church-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_1",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_2",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "town",
+    "height": 73,
+    "icon": {
+     "kind": "town",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+    }
+   },
+   {
+    "faction": "commons",
+    "height": 60,
+    "icon": null
+   }
+  ]
+ },
+ "long-page": {
+  "faction": "town",
+  "name": "도시 공동체 자치 도시의 아주 길게 늘인 이름",
+  "icon": {
+   "kind": "town",
+   "size": 32,
+   "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+  },
+  "nameSlot": {
+   "clientHeight": 162,
+   "scrollHeight": 162,
+   "clientWidth": 215,
+   "scrollWidth": 215
+  }
+ },
+ "campaign-tab-1024": {
+  "panel": {
+   "art": true,
+   "width": 976,
+   "height": 707,
+   "borderImage": "assets/wave14/ui-frames/frame_faction_panel-v1.png\")",
+   "borderWidth": "60px 20px 20px",
+   "heading": {
+    "top": 13,
+    "bottom": 33,
+    "text": "주변 세력",
+    "fontSize": "14px"
+   }
+  },
+  "rows": [
+   {
+    "faction": "overlord",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "crown",
+    "height": 60,
+    "icon": {
+     "kind": "crown",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_crown-v1.png"
+    }
+   },
+   {
+    "faction": "neighbour_1",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "neighbour_2",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "bishop",
+    "height": 60,
+    "icon": {
+     "kind": "church",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_church-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_1",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_2",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "town",
+    "height": 73,
+    "icon": {
+     "kind": "town",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+    }
+   },
+   {
+    "faction": "commons",
+    "height": 60,
+    "icon": null
+   }
+  ]
+ },
+ "lord-tab": {
+  "panel": {
+   "art": true,
+   "width": 1164,
+   "height": 476,
+   "borderImage": "assets/wave14/ui-frames/frame_faction_panel-v1.png\")",
+   "borderWidth": "60px 20px 20px",
+   "heading": {
+    "top": 13,
+    "bottom": 33,
+    "text": "주변 세력",
+    "fontSize": "14px"
+   }
+  },
+  "rows": [
+   {
+    "faction": "overlord",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "bishop",
+    "height": 60,
+    "icon": {
+     "kind": "church",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_church-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_1",
+    "height": 60,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_2",
+    "height": 60,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "town",
+    "height": 60,
+    "icon": {
+     "kind": "town",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+    }
+   },
+   {
+    "faction": "commons",
+    "height": 60,
+    "icon": null
+   }
+  ]
+ },
+ "panel-missing": {
+  "panel": {
+   "art": false,
+   "width": 1164,
+   "height": 637,
+   "borderImage": "none",
+   "borderWidth": "0px",
+   "heading": {
+    "top": 0,
+    "bottom": 20,
+    "text": "주변 세력",
+    "fontSize": "15px"
+   }
+  },
+  "rows": [
+   {
+    "faction": "overlord",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "crown",
+    "height": 60,
+    "icon": {
+     "kind": "crown",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_crown-v1.png"
+    }
+   },
+   {
+    "faction": "neighbour_1",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "neighbour_2",
+    "height": 60,
+    "icon": null
+   },
+   {
+    "faction": "bishop",
+    "height": 60,
+    "icon": {
+     "kind": "church",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_church-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_1",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "merchant_house_2",
+    "height": 73,
+    "icon": {
+     "kind": "merchant_house",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png"
+    }
+   },
+   {
+    "faction": "town",
+    "height": 73,
+    "icon": {
+     "kind": "town",
+     "size": 24,
+     "file": "assets/wave14/ui-icons/icon_faction_commune-v1.png"
+    }
+   },
+   {
+    "faction": "commons",
+    "height": 60,
+    "icon": null
+   }
+  ]
+ },
+ "errors": []
+}

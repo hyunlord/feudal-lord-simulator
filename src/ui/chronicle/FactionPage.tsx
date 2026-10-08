@@ -9,6 +9,9 @@ import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import { leaderName, type FactionPageView } from "./factionTabModel";
 // UI-9: revolt pressure (RG-8); UI-9b: a cell on the page.
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "./factionInfluenceCopy.ko";
+// INSTALL-18: the faction kind's Wave 14 icon beside the name (none for a kind without one).
+import { useUiParts } from "../lord/uiPartArt";
+import { FACTION_ART_PARTS, factionKindIcon } from "./factionArt";
 
 // CHRON-2 faction chronicle page (CHRONICLE_DESIGN 2.3; UI-6 first pass). The Wave 19 `frame_faction_page` (640 x 800
 // art, drawn at one scale so its printed slots stay where they are): the leader's portrait in the circle, the arms in
@@ -56,6 +59,7 @@ export function FactionPage({ view, scale, onRecord }: {
 }) {
   const leader = view.leader === null ? null : portraitStyle(view.leader.portraitId, Math.round(148 * scale));
   const pressure = view.revoltPressure;
+  const icon = factionKindIcon(useUiParts(FACTION_ART_PARTS), view.kindId, 32);
   return (
     <article className="chronicle-faction" data-frame="faction-page" aria-label={COPY.factionTitle(view.name)} data-faction={view.id} data-relation={view.relation}
       style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale, ...frameBoxStyle("faction-page", scale) }}>
@@ -71,7 +75,7 @@ export function FactionPage({ view, scale, onRecord }: {
         <EmblemImage emblem={view.emblem} size={Math.round(CREST_ART * scale)} label={view.emblemLabel} />
       </span>
       <header className="chronicle-faction-name" style={FACTION_PAGE_SLOTS.name}>
-        <h3>{view.name}</h3>
+        <h3>{icon === null ? null : <span className="chronicle-faction-kind-icon" data-kind={view.kindId} aria-hidden="true" style={icon} />}{view.name}</h3>
         {view.kind === view.name ? null : <p className="chronicle-faction-kind">{view.kind}</p>}
         <p className="chronicle-faction-leader-name">{view.leader === null ? COPY.noLeader : view.leader.name}</p>
         {view.leader === null ? null : <p>{view.leader.line}</p>}

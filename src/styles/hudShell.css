@@ -217,6 +217,7 @@
 .pause-menu h2 { margin: 0; font-size: 18px; }
 /* UI-KIT-1b: the settings are items of a wrapping row (they were inline and a switch's line ran under the next button);
    a switch and its line stay together. */
+.pause-menu-shortcut { margin: 0; font-size: 13px; }
 .pause-menu-settings { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 .setting-pair { display: inline-flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; max-width: 100%; }
 .pause-menu-resume { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-height: 48px; font-size: 15px; font-weight: 700; }
@@ -344,6 +345,8 @@
 .app-shell .zone-toolbar-size[data-size="1"] { --dot: 6; }
 .app-shell .zone-toolbar-size[data-size="2"] { --dot: 11; }
 .app-shell .zone-toolbar-size[data-size="3"] { --dot: 16; }
+/* INSTALL-18: Wave 18's brush stamps sit in the same 18 px box as the dot (hudArt ZONE_SIZE_ART). */
+.app-shell .zone-toolbar-size-box { display: inline-grid; flex: 0 0 18px; place-items: center; width: 18px; height: 18px; }
 @media (pointer: coarse) { .app-shell .zone-toolbar-button { min-height: 48px; } }
 /* The paintable-land legend under the kind chips: swatches of the overlay's colours (barred also hatched). */
 .app-shell .zone-land-legend { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin: 0; font-size: 12px; }
@@ -351,6 +354,7 @@
 .app-shell .zone-land-swatch { display: inline-block; flex: 0 0 auto; width: 16px; height: 12px; border: 1px solid var(--palette-ink); }
 .app-shell .zone-land-swatch--good { background-color: color-mix(in srgb, var(--palette-sage) 55%, transparent); }
 .app-shell .zone-land-swatch--fair { background-color: color-mix(in srgb, var(--palette-gold) 45%, transparent); }
+.app-shell .zone-land-swatch-art { display: inline-block; flex: 0 0 auto; margin: 0 2px; }
 .app-shell .zone-land-swatch--barred { background: repeating-linear-gradient(135deg, var(--palette-ink) 0 2px, color-mix(in srgb, var(--palette-ink) 35%, transparent) 2px 5px); }
 
 /* UX-3R2 storage inspector (UX3R 6절) in the selection card and the slot: capacity bar, items, week, users. */

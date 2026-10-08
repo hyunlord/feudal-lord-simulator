@@ -27,6 +27,11 @@
   "ck_evt_052",
   "ck_evt_053",
   "ck_evt_059",
+  "ck_evt_061",
+  "ck_evt_077",
+  "ck_evt_083",
+  "ck_evt_090",
+  "ck_evt_092",
   "ck_evt_124",
   "ck_evt_128",
   "ck_evt_130",
@@ -74,6 +79,11 @@
   "ck_evt_052",
   "ck_evt_053",
   "ck_evt_059",
+  "ck_evt_061",
+  "ck_evt_077",
+  "ck_evt_083",
+  "ck_evt_090",
+  "ck_evt_092",
   "ck_evt_124",
   "ck_evt_128",
   "ck_evt_130",
@@ -97,8 +107,8 @@
  ],
  "shots": [
   "shot-ck_evt_002.jpg",
-  "shot-ck_evt_034.jpg",
-  "shot-ck_evt_133.jpg",
+  "shot-ck_evt_035.jpg",
+  "shot-ck_evt_131.jpg",
   "shot-ck_evt_211.jpg"
  ],
  "pictures": {
@@ -501,6 +511,86 @@
     169
    ],
    "luminance": 55
+  },
+  "ck_evt_061": {
+   "derivativeSha": "6571af83f79b9ff7f2dc1dd735901d25cd168160b1ddace9c05fea64aa912f7c",
+   "derivativeBytes": 92354,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 54.4
+  },
+  "ck_evt_077": {
+   "derivativeSha": "f83215127133fd72b2ea615b90b1e8da593cb24972e732d3e5435359099cf762",
+   "derivativeBytes": 121772,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 58.6
+  },
+  "ck_evt_083": {
+   "derivativeSha": "25d06ac20e79b627dbb4efca8dfee8e5c30d5c73d8ea7df293ed97359d8007a3",
+   "derivativeBytes": 137146,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 46
+  },
+  "ck_evt_090": {
+   "derivativeSha": "0a43ddd63c875e6f7daa211a224d9153813be920007dc4c8a69195ec39b1c27a",
+   "derivativeBytes": 112949,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 55.3
+  },
+  "ck_evt_092": {
+   "derivativeSha": "39ce6d4aba8bfb3b387b1a70b2bd225fd345ed44fa84b57d0dcb4b845f8076c1",
+   "derivativeBytes": 103352,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 62.1
   },
   "ck_evt_124": {
    "derivativeSha": "424dd0d84bc77aee3738e75d9a51f00af876fc28bf89585c6ae4ad41310ae25f",

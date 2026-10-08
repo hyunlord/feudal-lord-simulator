@@ -173,6 +173,34 @@
   0%, 100% { box-shadow: 0 0 0 0 var(--palette-gold); }
   50% { box-shadow: 0 0 0 5px var(--palette-gold); }
 }
+/* INSTALL-18: once Wave 18's ring sheet has loaded (src/ui/hud/hudArt.tsx puts it on the root), the HUD's layer,
+   category and zone buttons pulse with its three 96 px frames (48 / 66 / 84 px rings centred on the button), twice, then
+   still, instead of the box-shadow. Reduced motion: the middle ring, still, for the same time. */
+:root[data-hud-pulse-ring] :is(.control-layer, .build-menu-category, .zone-toolbar-button)[data-pulse] { position: relative; animation: none; }
+:root[data-hud-pulse-ring] :is(.control-layer, .build-menu-category, .zone-toolbar-button)[data-pulse]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  pointer-events: none;
+  background: var(--hud-pulse-ring) 0 0 / 288px 96px no-repeat;
+  opacity: 0;
+  animation: hud-pulse-ring 700ms steps(3) 2;
+}
+@keyframes hud-pulse-ring {
+  from { opacity: 1; background-position: 0 0; }
+  to { opacity: 1; background-position: -288px 0; }
+}
+@keyframes hud-pulse-ring-still {
+  from, to { opacity: 1; background-position: -96px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-hud-pulse-ring] :is(.control-layer, .build-menu-category, .zone-toolbar-button)[data-pulse]::after { animation: hud-pulse-ring-still 1400ms step-end 1; }
+}
 
 /* ---- Locks ---- */
 .build-menu-category--locked, .control-layer--locked, .build-tool--locked { opacity: 0.55; }

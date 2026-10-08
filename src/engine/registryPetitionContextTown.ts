@@ -72,9 +72,10 @@ export function townPetitionContext(state: GameState, strategy: string, fixed?: 
     return snapshot(newcomer.householdId, [newcomer.id, merchant.id], { duesPermille: agency.duesPermille, ...support(['market', 'malt_kiln']) }, { arrivalRecordId: record.id, arrivalTick: record.tick });
   }
   if (strategy === 'shop_repair') {
+    const carpenter = residents.find(item => trades.some(trade => trade.houseId === item.householdId && trade.tradeId === 'carpenter'));
     const site = timberSites.find(item => 'rebuildOf' in item && item.rebuildOf !== undefined && trades.some(trade => trade.houseId === item.rebuildOf));
-    if (artisan === undefined || site === undefined || !('rebuildOf' in site) || site.rebuildOf === undefined) return null;
-    return snapshot(site.id, [artisan.id, ...parties([site.rebuildOf])], { timberOrder: state.timberOrder ?? 0, ...support(['sawmill']) }, {
+    if (carpenter === undefined || site === undefined || !('rebuildOf' in site) || site.rebuildOf === undefined) return null;
+    return snapshot(site.id, [carpenter.id, ...parties([site.rebuildOf])], { timberOrder: state.timberOrder ?? 0, ...support(['sawmill']) }, {
       houseId: site.rebuildOf, timberRequired: site.required.timber, timberDelivered: site.delivered.timber ?? 0,
     });
   }
