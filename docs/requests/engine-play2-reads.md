@@ -19,3 +19,9 @@ Astra 영주 모드 두 번째 플레이([docs/qa/lordplay2-20261008](../qa/lord
 - 소식 칩의 주어(점유를 넘겨받은 쪽·잃은 쪽·권리 이름, TOP10 1) — `suit_turned`·점유 집행 기록의 params에 원고·피고·조각을 넣어 주면 화면이 문장에 쓴다.
 - 이웃 소송에 대한 방어 명령(TOP10 1) — 명령이 생기면 화면이 소송 트랙에 버튼을 단다.
 - "당신의 결정 때문에"의 인과 문구(TOP10 5: 재난 발생과 그때의 대비를 나눔) — `because`에 관계 종류(`cause` / `preparedness`)가 오면 화면이 말을 나눈다.
+
+## 4. 더 나온 것 (PLAY-2 마찰 10·9·8, 렌더 A 2026-10-08 늦게)
+엔진이 이 요청서를 SUIT-THREAD에 이미 받아 갔으므로, 아래는 그 뒤에 더해진 것이다.
+- **목책(마찰 10)**: 마을이 특허 성벽 둘레를 찾지 못한 까닭(`charterWallFailure`) — 지금 화면은 제 추천의 실패 까닭을 붙인다. 시대 선포 조건 키(인구·곡창·예배당·목재 …)마다 그 조건을 채우는 사업 키 — 화면이 제 짝을 지운다.
+- **가족 소식(마찰 9)**: `marriage.child_born`·`marriage.brother_in_law_born`의 params에 `child`·`father`, `person.died`·`person.married`에 `spouseId` — 지금 화면은 기록이 주는 사람만 이름한다(첫아이의 이름은 비움). 화면 사이 부모 불일치(캡처 070/127) 확인.
+- **가문의 일(마찰 8)**: 유언·상속 다툼·감사·지도 밖 청원의 답할 기한 틱 — SUIT-THREAD의 `lordMattersDue`가 이를 주면 화면의 어댑터(`src/ui/lord/decisions/lordMattersDue.ts` `lordMattersDueNow`)를 바꾼다.
