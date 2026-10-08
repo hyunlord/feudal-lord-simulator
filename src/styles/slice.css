@@ -19,8 +19,11 @@
 .slice-decisions > li { display: grid; gap: 3px; min-width: 0; font-size: 13px; }
 .slice-decision-head { display: grid; gap: 1px; }
 .slice-decision-head strong { font-size: 14px; }
-.slice-page .slice-record { justify-self: start; min-height: 44px; font-size: 13px; }
+.slice-page :is(.slice-record, .slice-year-card, .slice-season-card) { justify-self: start; min-height: 44px; font-size: 13px; }
+.slice-last-year { padding: 6px 0 8px; border-bottom: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
+.slice-last-group { display: grid; gap: 1px; }
+.slice-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .slice-year-lines { padding-left: 0; list-style: none; }
 .slice-question { font-weight: 700; padding-top: 4px; border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
-@media (pointer: coarse) { .slice-page .slice-record { min-height: 48px; } }
+@media (pointer: coarse) { .slice-page :is(.slice-record, .slice-year-card, .slice-season-card) { min-height: 48px; } }
 @media (max-width: 720px) { .slice-page .chronicle-columns { grid-template-columns: minmax(0, 1fr); } }

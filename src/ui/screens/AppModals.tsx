@@ -28,7 +28,7 @@ import { focusChronicleRecord, focusChronicleYears } from "../lord/chronicleFocu
 import { SliceEndPage, SliceStartPage } from "../slice/SlicePages";
 import { SLICE_COPY } from "../slice/sliceCopy.ko";
 import { sliceEnded } from "../slice/sliceDue";
-import { sliceEndView } from "../slice/sliceEndModel";
+import { sliceEndView, sliceYearCard } from "../slice/sliceEndModel";
 import { sliceStartView } from "../slice/sliceStartModel";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { houseChangeView } from "../results/houseChange";
@@ -106,7 +106,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const offMap = top === "estate_petition_offmap" ? offMapPetitionView(state) : null;
   // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"; DEC-CARD-2: the engine's yearReview in lord mode); (lord
   // mode, A3) the season's change in the lord's house.
-  const yearView = top === "year_review" ? yearCard(state) : null;
+  // LM-R3: opened from the slice's end page, the year card is the slice's last year's (the page took its place).
+  const yearView = top === "year_review" ? ui.modals.at(-2)?.modal === "slice_end" ? sliceYearCard(state) : yearCard(state) : null;
   const house = top === "house_change" ? houseChangeView(state) : null;
   // LM-R3: the lord slice's opening page and its end (reopened from the chronicle and the pause menu once it has ended).
   const sliceStart = top === "slice_start" ? sliceStartView(state) : null;
@@ -155,7 +156,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {sliceStart === null ? null : <SliceStartPage view={sliceStart} onBegin={() => sendUi({ type: "pop_modal" })} />}
     {sliceEnd === null ? null : <SliceEndPage state={state} view={sliceEnd} onContinue={() => sendUi({ type: "pop_modal" })}
       onChronicle={() => { focusChronicleYears(sliceEnd.fromYear, sliceEnd.toYear); sendUi({ type: "push_modal", modal: "history" }); }}
-      onRecord={(recordId, tick) => { focusChronicleRecord(recordId, tick); sendUi({ type: "push_modal", modal: "history" }); }} />}
+      onRecord={(recordId, tick) => { focusChronicleRecord(recordId, tick); sendUi({ type: "push_modal", modal: "history" }); }}
+      onYearCard={() => sendUi({ type: "push_modal", modal: "year_review" })} onSeasonCard={() => sendUi({ type: "push_modal", modal: "season_ledger" })} />}
     {house === null ? null : <HouseChangeCard view={house} onContinue={() => sendUi({ type: "pop_modal" })}
       onNext={next => { sendUi({ type: "pop_modal" }); if (next.kind === "screen") onOpenLord?.(next.screen, next.focus); else onPerson(next.personId); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}

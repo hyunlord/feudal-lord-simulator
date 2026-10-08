@@ -15,7 +15,7 @@ import { openHomePetitions } from "../lordCardsModel";
 import { openRegistryCards } from "../registryCardModel";
 import { houseChangeView } from "../results/houseChange";
 import { lordMattersDueNow } from "../lord/decisions/lordMattersDue";
-import { SLICE_END_ID, SLICE_START_ID, sliceEndDue, slicePageDue, takeSliceStart } from "../slice/sliceDue";
+import { SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLastYear, slicePageDue, takeSliceStart } from "../slice/sliceDue";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -136,7 +136,9 @@ export function useStoryPresentation(input: {
     }
     // DEC-CARD: a year turned under the hook's eyes (not behind the welcome screen), or (DEC-CARD-2) an unseen one after a
     // load: its card is due `delayMs` on.
-    const turned = blocked ? null : yearCardDue(yearRef.current, state);
+    // LM-R3 (the user's ruling): the slice's end page takes the last year's card's place.
+    const due = blocked ? null : yearCardDue(yearRef.current, state);
+    const turned = due !== null && sliceEndOwnsTurn(state, due) ? null : due;
     if (!blocked) yearRef.current = { year, tick: state.tick };
     if (turned !== null && !yearShownRef.current.has(turned)) { yearDueRef.current = { year: turned, sinceMs: now }; changed = true; }
     if (!blocked && sliceEndSinceRef.current === null && sliceEndDue(state)) { sliceEndSinceRef.current = now; changed = true; }
@@ -172,11 +174,16 @@ export function useStoryPresentation(input: {
   useEffect(() => {
     if (blocked || topModal !== null) return;
     // LM-R3: the lord slice's opening page before anything; its end after the year's card (the year, then the twenty).
-    const slice = slicePageDue(state, yearDueRef.current !== null);
+    const slice = slicePageDue(state);
     const endSince = sliceEndSinceRef.current;
     if (slice !== null && !openedRef.current.has(slice) && (slice === "slice_start" || (endSince !== null && nowMs - endSince >= delayMs))) {
       openedRef.current.add(slice); if (slice === "slice_start") takeSliceStart();
-      pushModal(slice); markOpened(slice === "slice_start" ? SLICE_START_ID : SLICE_END_ID); return;
+      pushModal(slice);
+      // The last year's card is the end page's link now: marked seen as the page opens, it never pops later.
+      for (const id of slice === "slice_start" ? [SLICE_START_ID] : sliceEndMarkIds(state, yearCardId)) markOpened(id);
+      const last = slice === "slice_end" ? sliceLastYear(state) : null;
+      if (last !== null) { yearShownRef.current.add(last); if (yearDueRef.current?.year === last) yearDueRef.current = null; }
+      return;
     }
     // DEC-CARD (A3): a change in the lord's house before any petition of the same tick.
     if (house !== null && !openedRef.current.has(`house:${house.id}`) && !houseRead(`house:${house.id}`) && ready(`house:${house.id}`)) {

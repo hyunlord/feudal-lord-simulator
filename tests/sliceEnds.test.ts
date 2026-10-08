@@ -26,8 +26,11 @@ import { moneyFull } from "../src/ui/money.ko";
 import { onlyMinds, traceGroups } from "../src/ui/results/decisionThread";
 import { SliceEndPage, SliceStartPage } from "../src/ui/slice/SlicePages";
 import { SLICE_COPY } from "../src/ui/slice/sliceCopy.ko";
-import { requestSliceStart, SLICE_END_ID, SLICE_START_ID, sliceEndDue, slicePageDue, sliceStartDue, takeSliceStart } from "../src/ui/slice/sliceDue";
-import { sliceEndView } from "../src/ui/slice/sliceEndModel";
+import { requestSliceStart, SLICE_END_ID, SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLastYear, slicePageDue, sliceStartDue,
+  takeSliceStart } from "../src/ui/slice/sliceDue";
+import { sliceEndView, sliceYearCard } from "../src/ui/slice/sliceEndModel";
+import { yearCardDue, yearCardId } from "../src/ui/hud/useStoryPresentation";
+import { lordYearReview } from "../src/ui/results/lordYearReview";
 import { sliceStartView } from "../src/ui/slice/sliceStartModel";
 
 const SEASON = 1_000;
@@ -72,18 +75,17 @@ test("slice start: due once, as a game the welcome started begins — from its f
   assert.equal(sliceStartDue({ ...begun, tick: SEASON }, true), false, "past the first season");
   assert.equal(sliceStartDue(markStorySeen(begun, SLICE_START_ID, "opened"), true), false, "seen");
   requestSliceStart();
-  assert.equal(slicePageDue(begun, false), "slice_start");
+  assert.equal(slicePageDue(begun), "slice_start");
   takeSliceStart();
-  assert.equal(slicePageDue(begun, false), null);
+  assert.equal(slicePageDue(begun), null);
 });
 
-test("slice end: opens once on `ended` — not before, not with the year's card waiting, not after its season; marked, it survives a load as seen", () => {
+test("slice end: opens once on `ended` — not before, not after its season; marked, it survives a load as seen", () => {
   assert.equal(lordSliceOutcome(town)!.ended, false);
   assert.equal(sliceEndDue(town), false);
   assert.equal(lordSliceOutcome(ended)!.ended, true);
   assert.equal(sliceEndDue(ended), true);
-  assert.equal(slicePageDue(ended, false), "slice_end");
-  assert.equal(slicePageDue(ended, true), null, "the year's card first");
+  assert.equal(slicePageDue(ended), "slice_end");
   assert.equal(sliceEndDue({ ...ended, tick: ended.tick + SEASON }), false, "a season after the end");
   const loaded = roundTrip(markStorySeen(ended, SLICE_END_ID, "opened"));
   assert.equal(sliceEndDue(loaded), false, "the save keeps the mark");
@@ -109,9 +111,42 @@ test("slice end: the decisions ranked by what followed them in the engine's thre
   assert.ok(view.remembers.length > 0, "the factions' memories of the decisions");
   assert.equal(view.years.length, 20);
   assert.equal(view.then.snapshot?.tick, 1, "the first map");
-  const markup = renderToStaticMarkup(createElement(SliceEndPage, { state: ended, view, onContinue: () => {}, onChronicle: () => {}, onRecord: () => {} }));
+  const markup = renderToStaticMarkup(createElement(SliceEndPage, { state: ended, view, onContinue: () => {}, onChronicle: () => {}, onRecord: () => {},
+    onYearCard: () => {}, onSeasonCard: () => {} }));
   assert.equal(primaries(markup), 1);
   assert.equal(markup.match(/slice-record/g)?.length, view.shaped.length, "each decision opens its record");
   assert.match(markup, /slice-chronicle/);
   assert.equal(sliceEndView(town), null, "not before the end");
+});
+
+test("slice end (the user's ruling): the page takes the live end's cards' place — the last year's card and the end season's card stay shut, are its links, and the year card is marked seen as it opens", () => {
+  assert.equal(sliceLastYear(ended), 1319);
+  assert.equal(sliceEndOwnsTurn(ended, 1319), true, "1319's card is the page's");
+  assert.equal(sliceEndOwnsTurn(ended, 1318), false);
+  assert.equal(sliceEndOwnsTurn(ended), true, "the season closing at the end: no card of its own");
+  assert.equal(sliceEndOwnsTurn(town), false);
+  assert.equal(sliceEndOwnsTurn(markStorySeen(ended, SLICE_END_ID, "opened")), false, "once opened, the turn's cards are the game's again");
+  // The marks the page writes: its own and 1319's card — after them neither the page nor that card is due (a live turn or a load).
+  assert.deepEqual(sliceEndMarkIds(ended, yearCardId), [SLICE_END_ID, yearCardId(1319)]);
+  const marked = sliceEndMarkIds(ended, yearCardId).reduce((state, id) => markStorySeen(state, id, "opened"), ended);
+  assert.equal(sliceEndDue(roundTrip(marked)), false);
+  assert.equal(yearCardDue({ year: 1319, tick: ended.tick - 1 }, marked), null, "the year card never pops later");
+  assert.equal(yearCardDue({ year: 1319, tick: ended.tick - 1 }, ended), 1319, "unmarked, the hook would have shown it");
+  // At the top: the last year as its card shows it, and the two links.
+  const view = sliceEndView(ended)!;
+  const card = lordYearReview(ended, 1319);
+  assert.equal(view.last.heading, SLICE_COPY.end.lastYear(1319));
+  assert.deepEqual(view.last.house, card.house);
+  assert.deepEqual(view.last.changed.map(group => group.heading), card.threads.slice(0, 3).map(group => group.heading));
+  assert.deepEqual(sliceYearCard(ended), card);
+  assert.equal(view.seasonCard, false, "the end's season is not the last one closed (this history stops in 1301)");
+  const history = ended.seasons!.history;
+  const closedAtEnd: GameState = { ...ended, seasons: { ...ended.seasons!, history: [...history.slice(0, -1), { ...history.at(-1)!, endTick: ended.tick }] } };
+  assert.equal(sliceEndView(closedAtEnd)!.seasonCard, true);
+  const markup = renderToStaticMarkup(createElement(SliceEndPage, { state: closedAtEnd, view: sliceEndView(closedAtEnd)!, onContinue: () => {}, onChronicle: () => {},
+    onRecord: () => {}, onYearCard: () => {}, onSeasonCard: () => {} }));
+  assert.ok(markup.indexOf("slice-last-year") < markup.indexOf("slice-why"), "the last year at the top");
+  assert.match(markup, /slice-year-card/);
+  assert.match(markup, /slice-season-card/);
+  assert.equal(primaries(markup), 1, "the links are secondary");
 });
