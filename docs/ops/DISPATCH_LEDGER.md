@@ -16,7 +16,7 @@
 - [x] 정확한 최종 트리 `b399b03c`: DGX 변경시험4,383통과/11건너뜀/실패0, Mac check:merge·보호 pre-push 통과.
 - [x] 본선 `b399b03c`(12:24 KST 원격 확인), 정적45→50과 신규 자연0/0/1을 구분해 보고.
 - [x] Engine B 27건 어댑터를5·9·7·6건 네 묶음으로 본선 게시(b399b03c·48a125b2·cf077031·56ee1d9d). 독립11·API5·보류11을 구분.
-- [ ] 최종125년 관측과 최종 분포·요청 인계 보고는 미완료.
+- [x] 최종125년 단일 seed 관측과 [분포·요청 인계 보고](../verification/lm-e9c-final/REPORT.md) 작성. 111건 전부 활성화·GP7 사람 판정 완료를 뜻하지 않음.
 
 ### Engine B — LM-E9c 두 번째6독립+3API (본선48a125b2)
 - [x] 057·058·075·076·080·147 독립 어댑터,041·048·056 문구API. 정적50→56,API는 추가 활성으로 세지 않음. HOLD38 유지.
@@ -38,7 +38,7 @@
 
 ### Engine B — 누적 검증
 - [x] DGX `engineB-final-guardrail-f9f9c48`: 성장5개 seed 끝 상태 SHA-256가 baseline-11205c9와 동일. 두 번째 실행 생략. humanPath12/12 통과. 캠페인 전체 상태 해시 증거와 구분. [원본과 대조](../verification/lm-e9c-final/guardrail/README.md).
-- [ ] 최종125년 단일 seed1 관측 `engineB-final125-56ee1d9`: 실험 줄에 제출, 완료·분포 판정 전.
+- [x] 최종125년 단일 seed1 관측 `engineB-final125-56ee1d9`:1783.1초·exit0,85건(82응답·3무효),중대결정 연간최대2,조용한 해92 모두 연대기 모델 기록. 원본3해시·보고서 재현 확인. GP7은 measured_not_adjudicated.
 
 ### A1. 완료·검증됨
 | 작업 | 본선 커밋 | 비고 |
