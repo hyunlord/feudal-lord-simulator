@@ -75,7 +75,8 @@ export function yearCardDue(previous: Readonly<{ year: number; tick: number }> |
  * PLAY-2 (friction 8): a house matter due with a deadline (`due`: lordMatterChipIds — SUIT-THREAD: the engine's
  * `lordMattersDue`, the will, the contested inheritance, a suit against the lord, an entry forewarned; and an audit, an
  * off-map estate's petition) stays among the chips until it is answered or past: closing its card does not put it away,
- * newer chips do not push it out, and it goes the moment it is answered (no lingering).
+ * newer chips do not push it out, and it goes the moment it is answered (no lingering). SUIT-THREAD: the lord's loss of
+ * a possession (`lasting`) is pinned as a house change is, until put away.
  */
 export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean }>[],
   current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean, due: ReadonlySet<string> = new Set()): readonly StoryBeat[] {
@@ -84,8 +85,9 @@ export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSe
     .filter(entry => (!entry.dismissed || unanswered(entry.beat)) && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs
       && (current.has(entry.beat.id) || (entry.beat.kind !== "lord_decision" && nowMs - entry.lastSeenMs < LINGER_MS)))
     .map(entry => entry.beat);
-  const pinned = shown.filter(beat => beat.kind === "house_change" || unanswered(beat));
-  const rest = shown.filter(beat => beat.kind !== "house_change" && !unanswered(beat));
+  const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat);
+  const pinned = shown.filter(held);
+  const rest = shown.filter(beat => !held(beat));
   return [...pinned, ...rest.slice(rest.length - Math.max(0, MAX_CHIPS - pinned.length))].slice(0, MAX_CHIPS);
 }
 

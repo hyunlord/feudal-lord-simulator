@@ -49,9 +49,11 @@ export function lordMomentBeats(state: GameState, seat: { readonly tx: number; r
     // PLAY-2 (friction 9): a marriage's or a birth's moment names its people, and opens its record (their biographies).
     const people = familyLine(familyPeople(state, record));
     // Astra lordplay2 ②: a house's enforcement against the lord is his loss (or his hold), not "점유를 넘겨받았다".
-    const words = lordMomentWords(art, wave40RecordSide(record));
+    const side = wave40RecordSide(record);
+    const words = lordMomentWords(art, side);
     return { id: `lord-moment:${record.id}`, kind: "lord_moment", illustration: art, tile: AT_SEAT.has(art) ? seat : null, decision: null,
       title: words.title, line: recordSentence(state, record), facts: people === null ? [] : [people], advice: words.advice,
+      ...(side === "against" && art === "moment_possession_taken" ? { lasting: true } : {}),
       ...(people === null ? {} : { chronicle: { recordId: record.id, tick: record.tick, label: FAMILY_NEWS_COPY.openLabel(words.title) } }) };
   });
 }

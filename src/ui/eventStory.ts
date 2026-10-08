@@ -82,6 +82,9 @@ export type StoryBeat = Readonly<{
   /** SUIT-THREAD: the lord screen page the chip's button opens instead of a modal (the will → 혼인, a suit or an entry
    * forewarned against the lord → 약속·소송 on it), with the engine id it opens on. */
   screen?: Readonly<{ screen: LordScreenId; focus: string | null }>;
+  /** SUIT-THREAD (Astra lordplay2 ②): the lord's own loss (a house took his possession) — newer chips do not push it out
+   * until it is put away, as a house change's (storyChips). */
+  lasting?: true;
   /** DEC-CARD-2: the chronicle record the card's [연대기에서 보기] opens on (the decision a consequence followed from). */
   chronicle?: Readonly<{ recordId: string; tick: number; label: string }>;
 }>;

@@ -32,6 +32,8 @@ import { ledgerView, type LedgerView } from "../src/ui/lord/ledger/ledgerModel";
 import { LedgerPanel } from "../src/ui/lord/ledger/LedgerPanel";
 import { SUIT_DEFENCE_COPY } from "../src/ui/lord/ledger/suitDefenceCopy.ko";
 import { LORD_MOMENT_COPY, lordMomentWords } from "../src/ui/lordMomentCopy.ko";
+import type { StoryBeat } from "../src/ui/eventStory";
+import { storyChips } from "../src/ui/hud/useStoryPresentation";
 import { lordMomentBeats } from "../src/ui/lordMomentBeats";
 import { moneyShort } from "../src/ui/money.ko";
 import { wave40RecordSide } from "../src/ui/wave40Art";
@@ -211,6 +213,15 @@ test("§4 the subject: a house's enforcement against the lord reads as his loss 
   assert.ok(beat !== undefined, "the enforcement's moment");
   assert.deepEqual([beat.title, beat.advice], [lordMomentWords("moment_possession_taken", "against").title, lordMomentWords("moment_possession_taken", "against").advice]);
   assert.match(beat.line, /영주가 잃었다/);
+  // Pinned as a house change is (the neighbour-took state lost it to a later chip): two chips due and a newer one do not push it out.
+  assert.equal(beat.lasting, true);
+  const other = (id: string): StoryBeat => { const { lasting: _lasting, ...rest } = beat; return { ...rest, id, kind: "fire" }; };
+  const chips = [beat, other("due-1"), other("due-2"), other("newer")];
+  const entries = chips.map((entry, index) => ({ beat: entry, firstSeenMs: index, lastSeenMs: 9_000, dismissed: false }));
+  const ids = (shown: readonly StoryBeat[]) => shown.map(entry => entry.id);
+  assert.deepEqual(ids(storyChips(entries, new Set(chips.map(entry => entry.id)), 10_000, 0, () => false, new Set(["due-1", "due-2"]))), [beat.id, "due-1", "due-2"]);
+  assert.ok(!ids(storyChips([{ ...entries[0]!, dismissed: true }, ...entries.slice(1)], new Set(chips.map(entry => entry.id)), 10_000, 0, () => false)).includes(beat.id), "put away: gone");
+  assert.equal(lordMomentBeats(lost, null).some(entry => entry.illustration === "moment_possession_refused" && entry.lasting === true), false, "the hold is not pinned");
   assert.equal(view(lost).neighbourSuits.find(entry => entry.id === suitId)!.enforce!.lines.at(-1), LORD_LEDGER_COPY.enforcedBy(view(lost).neighbourSuits.find(entry => entry.id === suitId)!.party.replace(/^원고 /, "")));
 });
 
