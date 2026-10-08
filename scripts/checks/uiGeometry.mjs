@@ -12,6 +12,12 @@
 //  - a baseline entry no longer fails ("N fixed, drop them": npm run ui-geometry:baseline), or an exception matches
 //    nothing — both lists only shrink;
 //  - base..head adds baseline entries without a recorded reason (the baseline script's --reason), or adds exceptions.
+// A changed-rows audit (`--only`) counts in place of a stale shared result (decision RR26, the first step of the user's
+// ruling 2026-10-09) when a commit in base..head names it with a `UI-Geometry-Run: <run>` trailer and its report
+// (docs/verification/uiaudit1/geometry/<run>/geometry.json at <head>) was measured from a clean tree, opened every
+// condition, has no framed root outside the registry, has no failure of its rows outside the baseline and the
+// exceptions, no baseline entry of its rows left unfailing, and has <head>'s UI input hash: no UI input changed since
+// it was measured, however far the trunk moved. Otherwise the step names the UI input files changed since that run.
 // The thresholds are the audit's (8 px gap, 40 % empty warning, 0.5–1 px tolerance); an exemption is an exception entry,
 // never a looser check. Mode: UI_GEOMETRY_GATE ('enforce' fails check:merge, 'warn' only reports);
 // FLS_UI_GEOMETRY_GATE=warn lets a failing result through only with a reason: FLS_UI_GEOMETRY_REASON="<one line>" (a few
@@ -95,6 +101,64 @@ const readJson = (rev, path, cwd) => {
 };
 const sample = list => list.slice(0, 5).map(item => `    ${typeof item === 'string' ? item : exceptionId(item)}`);
 
+export const UI_GEOMETRY_RUNS = 'docs/verification/uiaudit1/geometry';
+
+/** The UI-Geometry-Run trailers of base..head: the changed-rows audit runs a push names (RR26). */
+export function rowRunsInRange(base, head, cwd = process.cwd()) {
+  const range = base === null ? ['-1', head] : [`${base}..${head}`];
+  const out = git(['log', '--format=%(trailers:key=UI-Geometry-Run,valueonly,separator=%x01)%x02', ...range], cwd);
+  return [...new Set(out.split('\x02').flatMap(row => row.split('\x01')).map(value => value.trim()).filter(Boolean))];
+}
+
+/** A run report's failure keys (row | condition | check | path), its measured rows and their conditions. */
+export function reportFailures(report) {
+  const keys = []; const measured = new Map();
+  for (const [row, entry] of Object.entries(report?.rows ?? {})) {
+    for (const [condition, record] of Object.entries(entry.conditions ?? {})) {
+      if (record.status !== 'measured') continue;
+      if (!measured.has(row)) measured.set(row, new Set());
+      measured.get(row).add(condition);
+      for (const key of record.keys ?? []) keys.push(`${row}|${condition}|${key}`);
+    }
+  }
+  return { keys: keys.sort(), measured };
+}
+
+/** The UI input files that differ between two commits (added, removed or changed), or null when `from` is not here. */
+export function changedUiInputs(from, to, cwd = process.cwd()) {
+  let before; try { before = geometryInputs(from, cwd); } catch { return null; }
+  const after = geometryInputs(to, cwd);
+  const blobs = lines => new Map(lines.map(line => { const space = line.indexOf(' '); return [line.slice(space + 1), line.slice(0, space)]; }));
+  const a = blobs(before); const b = blobs(after);
+  return [...new Set([...a.keys(), ...b.keys()])].filter(path => a.get(path) !== b.get(path)).sort();
+}
+
+/** One changed-rows run against <head> (RR26): ok, the reasons it is not, and the evidence. */
+export function checkRowRun({ run, head, hash, baseline, exceptions, cwd = process.cwd() }) {
+  const report = readJson(head, `${UI_GEOMETRY_RUNS}/${run}/geometry.json`, cwd);
+  if (report === null) return { run, ok: false, reasons: [`run ${run}: no ${UI_GEOMETRY_RUNS}/${run}/geometry.json at ${head.slice(0, 8)} (commit the run's report)`] };
+  const reasons = [];
+  const commit = String(report.commit ?? '');
+  if (report.inputHash !== hash) {
+    const files = changedUiInputs(commit, head, cwd);
+    reasons.push(files === null
+      ? `run ${run}: the UI inputs changed since it was measured at ${commit.slice(0, 8)} (that commit is not here to name them): audit the changed rows again`
+      : `run ${run}: ${files.length} UI input file(s) changed since it was measured at ${commit.slice(0, 8)}: ${files.slice(0, 6).join(', ')}${files.length > 6 ? ` … ${files.length - 6} more` : ''} — audit the changed rows again`);
+  }
+  if (report.dirty) reasons.push(`run ${run}: measured from a tree with uncommitted changes`);
+  if ((report.totals?.unopened ?? 0) !== 0) reasons.push(`run ${run}: ${report.totals.unopened} surface condition(s) could not be opened`);
+  if ((report.unregisteredFramed?.length ?? 0) !== 0) reasons.push(`run ${run}: ${report.unregisteredFramed.length} framed root(s) on screen that no registry row measures`);
+  const { keys, measured } = reportFailures(report);
+  if (measured.size === 0) reasons.push(`run ${run}: no row was measured`);
+  const ofRun = key => { const { row, condition } = splitKey(key); return measured.get(row)?.has(condition) === true; };
+  const comparison = compareBaseline({ keys, baseline: baseline.filter(ofRun), exceptions: exceptions.filter(entry => measured.has(entry.row)) });
+  if (comparison.added.length > 0) reasons.push(`run ${run}: ${comparison.added.length} new failure(s), in no baseline entry or exception:`, ...sample(comparison.added));
+  if (comparison.fixed.length > 0) reasons.push(`run ${run}: ${comparison.fixed.length} baseline entr(ies) of its rows fixed, drop them (npm run ui-geometry:baseline):`, ...sample(comparison.fixed));
+  let moved = null; try { moved = git(['diff', '--name-only', commit, head], cwd).split('\n').filter(Boolean).length; } catch { /* the commit is not here */ }
+  const cells = [...measured.values()].reduce((sum, set) => sum + set.size, 0);
+  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved };
+}
+
 /** The UI-Geometry-Override trailers of base..head (the head alone without a base): [{ commit, reason }]. */
 export function overridesInRange(base, head, cwd = process.cwd()) {
   const range = base === null ? ['-1', head] : [`${base}..${head}`];
@@ -131,6 +195,16 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
       if (comparison.staleExceptions.length > 0) reasons.push(`${comparison.staleExceptions.length} exception(s) match no failure, drop them:`, ...sample(comparison.staleExceptions));
     }
   }
+  // RR26: a stale or missing shared result gives way to the changed-rows runs the range names, when every one holds.
+  let rowRuns = null;
+  if (!unchanged && reasons.length > 0) {
+    const runs = rowRunsInRange(base, head, cwd);
+    if (runs.length > 0) {
+      rowRuns = runs.map(run => checkRowRun({ run, head, hash, baseline: baselineFile?.entries ?? [], exceptions, cwd }));
+      reasons.length = 0; comparison = null;
+      for (const entry of rowRuns) reasons.push(...entry.reasons);
+    }
+  }
   // Only shrink: what base..head adds.
   if (base !== null && baselineFile !== null) {
     const before = readJson(base, UI_GEOMETRY_BASELINE, cwd);
@@ -155,7 +229,7 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     else override = { reason };
   }
   const pass = ok || (mode === 'warn' && env.FLS_UI_GEOMETRY_GATE !== 'warn') || override?.reason !== undefined;
-  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, hash, comparison, unchanged, override };
+  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, hash, comparison, unchanged, override, rowRuns };
 }
 
 /** An accepted override: the line a report must carry, also appended (time, host, commit, reason) to .remote-runs/local-heavy.log. */
@@ -178,6 +252,8 @@ export function formatUiGeometryResult(result) {
   const counts = result.comparison === null || result.comparison === undefined ? ''
     : ` — ${result.comparison.failures} failure(s): ${result.comparison.baseline} in the baseline, ${result.comparison.excepted} under ${result.comparison.exceptions} exception(s)`;
   if (result.ok && result.unchanged) return `ui-geometry: no UI inputs changed${tag}`;
+  if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry =>
+    `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; no UI input changed since it was measured${entry.moved === null ? '' : ` (${entry.moved} file(s) changed since, none a UI input)`} — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
   if (result.ok) return `ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`;
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);
