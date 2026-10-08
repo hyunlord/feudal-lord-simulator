@@ -15,21 +15,7 @@ Astra 영주 모드 두 번째 플레이([docs/qa/lordplay2-20261008](../qa/lord
 - **병목 → 지렛대**: 어느 병목을 어느 사업이 푸는지는 화면이 병목의 말로 읽었다(곡창 없음 → 곡창, 장터 없음 → 시장, 식량이 한 철도 안 됨 → 경작지). "이미 굶는 집"은 지렛대가 없다. 요청: `Preparedness.weakPoints` 항목마다 엔진이 보는 사업·조건(`{ point, project: string | null }` — 마을 사업 키 `granary`·`market`·`zone:arable` 등).
 - **같은 말**: `src/content/historyCopy.ko.ts`의 모듈 안 `WEAK_POINTS`(곡창 없음·식량이 한 철도 안 됨·이미 굶는 집·곡식을 살 장터 없음)를 내보내 주면 화면이 사본(`famineAfterCopy.ko.ts`)을 지운다.
 
-## 3. 영주 모드의 목책 안내 (TOP10 10)
-목표 서랍의 시대 칸은 영주 모드에서 마을의 청(`lordRequests` proclaim_era)·첫 미충족 조건과 영주의 지렛대·`agency.charterWallTried`로 말한다(`src/ui/lord/advice/lordWall.ts`). "직접 긋기"는 마을의 마지막 탐색이 둘레를 못 찾았을 때만 권한다.
-- **못 찾은 까닭**: `charterWallTried`는 배치 키만 남긴다. 요청: 마을 탐색이 둘레를 못 찾은 까닭(`PalisadeFailureReason`)을 함께(`charterWallFailure?`). 지금은 화면의 추천 계산(`proposalSummaryForState`)의 까닭을 대신 붙인다.
-- **조건마다 지렛대**: 선포 조건 키(population·granary·chapel·timber…)에 맞는 마을 사업을 엔진이 이름 붙여 주면(목재는 마을이 상인에게 주문하는지 등, FIX-14) 화면이 사본 대응표를 지운다.
-
-## 4. 출생·혼인·사망 소식의 사람 (TOP10 9)
-화면은 기록의 subject·params(`person.born`의 motherId·fatherId, `marriage.contracted`의 groom·bride)로 이름과 전기 버튼을 보인다(`src/ui/persons/familyNews.ts`).
-- `marriage.child_born`·`marriage.brother_in_law_born`에 아이 id가 없어(신부·처남만) 첫아이는 "신부가 어머니이고 그해 태어난 사람"으로 찾는다. 요청: params에 `child`(그리고 `father`).
-- `person.died`·`person.married`에 배우자 id(`spouseId`)를 넣어 주면 사망·혼인 소식이 짝도 부른다.
-- 부모 표기가 전기와 가계도에서 다른 것(070·127)은 엔진 쪽 확인 요청(화면은 기록대로 보인다).
-
-## 5. 기한이 있는 가문 결정 (TOP10 8)
-유언 변경 칩은 답할 때까지 칩 줄에 남는다(`storyChips`). 요청: 유언·다툼·감사·지도 밖 청원의 **답 기한 틱**을 읽기로(`marriageDecisionDue`에 `{ kind, dueTick }`) — 화면이 "한 철 안에"가 아니라 날짜로 말한다.
-
-## 6. 엔진 몫, 화면은 아직 만들지 않음 (작업 지시서)
+## 3. 엔진 몫, 화면은 아직 만들지 않음 (작업 지시서)
 - 소식 칩의 주어(점유를 넘겨받은 쪽·잃은 쪽·권리 이름, TOP10 1) — `suit_turned`·점유 집행 기록의 params에 원고·피고·조각을 넣어 주면 화면이 문장에 쓴다.
 - 이웃 소송에 대한 방어 명령(TOP10 1) — 명령이 생기면 화면이 소송 트랙에 버튼을 단다.
 - "당신의 결정 때문에"의 인과 문구(TOP10 5: 재난 발생과 그때의 대비를 나눔) — `because`에 관계 종류(`cause` / `preparedness`)가 오면 화면이 말을 나눈다.
