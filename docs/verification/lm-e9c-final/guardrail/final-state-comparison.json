@@ -1,0 +1,66 @@
+{
+  "recordCommit": null,
+  "seeds": [
+    {
+      "seed": 1,
+      "finalTick": 372667,
+      "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+      "expected": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+      "identical": true,
+      "victoryTick": 100686,
+      "expectedVictoryTick": 100686,
+      "guardrail": "passed",
+      "zones": 10,
+      "zoneUndo": true
+    },
+    {
+      "seed": 2,
+      "finalTick": 281540,
+      "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+      "expected": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+      "identical": true,
+      "victoryTick": 91698,
+      "expectedVictoryTick": 91698,
+      "guardrail": "passed",
+      "zones": 5,
+      "zoneUndo": true
+    },
+    {
+      "seed": 3,
+      "finalTick": 299186,
+      "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+      "expected": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+      "identical": true,
+      "victoryTick": 87860,
+      "expectedVictoryTick": 87860,
+      "guardrail": "passed",
+      "zones": 3,
+      "zoneUndo": true
+    },
+    {
+      "seed": 4,
+      "finalTick": 281572,
+      "sha256": "52114274ff6260212fc2769cc85d4ad523f338d76cf3fe545cc42b12f16c5c1e",
+      "expected": "52114274ff6260212fc2769cc85d4ad523f338d76cf3fe545cc42b12f16c5c1e",
+      "identical": true,
+      "victoryTick": 97962,
+      "expectedVictoryTick": 97962,
+      "guardrail": "passed",
+      "zones": 3,
+      "zoneUndo": true
+    },
+    {
+      "seed": 5,
+      "finalTick": 599642,
+      "sha256": "abebbf9529dc3f063148d1146e29b3c1767c3fdd3a013fedd0294907cbc82f27",
+      "expected": "abebbf9529dc3f063148d1146e29b3c1767c3fdd3a013fedd0294907cbc82f27",
+      "identical": true,
+      "victoryTick": 128941,
+      "expectedVictoryTick": 128941,
+      "guardrail": "passed",
+      "zones": 4,
+      "zoneUndo": true
+    }
+  ],
+  "passed": true
+}
