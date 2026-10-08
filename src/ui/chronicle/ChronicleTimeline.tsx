@@ -12,6 +12,10 @@ import { Button } from "../kit";
 /** The coloured band inside the strip art (measured on timeline_strip_base.png: x 41–984 of 1024). */
 export const STRIP_BAND = { left: 41 / 1024, right: 984 / 1024 } as const;
 const MARKER_SIZE = 22;
+/** PLAY-2: a chapter bar narrower than this (% of the strip) drops its label, which would be cut: "제1장" at 12 px with
+ *  its 8 px padding and 2 px border needs about 46 px; the strip is about 1,130 px at 1280 (capture year-chronicle), so
+ *  5 % leaves room for narrower views too. */
+const CHAPTER_LABEL_MIN_PERCENT = 5;
 const PIN_SIZE = 20;
 /** The picked time's ring sits over the band's marker. */
 const RING_SIZE = 28;
@@ -59,8 +63,11 @@ export function ChronicleTimeline({ segments, markers, chapters, nowTick, picked
         ))}
         {chapters.map(chapter => {
           const from = timelineX(segments, chapter.from); const to = timelineX(segments, chapter.to);
+          const width = Math.max(0.4, (to - from) * (STRIP_BAND.right - STRIP_BAND.left) * 100);
+          // PLAY-2: a chapter just begun (the first year) is a sliver: its bar without the label, which would be cut (the
+          // label ends in an ellipsis when it is only a little too long).
           return <span key={chapter.chapter} className="chronicle-chapter-bar" data-ended={chapter.ended ? "true" : undefined}
-            style={{ ...bandLeft(from), width: `${Math.max(0.4, (to - from) * (STRIP_BAND.right - STRIP_BAND.left) * 100)}%` }}>{COPY.chapter(chapter.chapter)}</span>;
+            style={{ ...bandLeft(from), width: `${width}%` }}>{width < CHAPTER_LABEL_MIN_PERCENT ? null : COPY.chapter(chapter.chapter)}</span>;
         })}
       </div>
       {zoomed ? (
