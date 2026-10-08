@@ -9,7 +9,8 @@
 // import / export from / import() / require, relative paths in src, tests, scripts, tools), or when its text names a
 // changed non-code file by its path (or by its bare name when no other tracked file has it). A change to
 // package-lock.json, tsconfig.json or the dependencies in package.json picks every test. A change in src/ also picks
-// the tests that walk src/'s folders instead of importing (sourceScanTests.mjs, decision RR24).
+// the tests that walk src/'s folders instead of importing (sourceScanTests.mjs, decision RR24); a test naming a changed
+// code file by its path (it reads it as text) is picked too.
 // On the Mac at most MAC_LIMIT tests run (the source scans, ~11 s together, not counted); more fail (exit 3) with the
 // runner command to use instead.
 // The record: {tree, head, base, picked, pass, fail, passed, where, at} in .remote-runs/test-changed/<tree>.json, or
@@ -109,6 +110,9 @@ export function pickTests({ root, base, head }) {
           if (isTest(imp) && !picked.has(imp)) picked.set(imp, `imports ${f}`);
         }
       }
+      // A test that reads the file as text by its path (readFileSync("../src/App.tsx")) imports nothing: by its path only
+      // (decision RR24; e77841161 changed App.tsx's onNewGame and tests/chapterLoadingStore.test.ts went unpicked).
+      for (const t of tests) if (!picked.has(t) && text.get(t).includes(f)) picked.set(t, `names ${f}`);
     } else {
       // By its path; by its bare name only when no other tracked file has that name (REPORT.md, index.json … are many).
       const name = basename(f);
