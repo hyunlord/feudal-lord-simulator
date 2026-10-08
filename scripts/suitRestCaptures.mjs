@@ -67,7 +67,7 @@ const putOff = async page => { if (await waitFor(page, '.story-modal', 6_000)) {
     const chip = ".event-chip[data-chip-id^='marriage-decision:will_change:']";
     if (await waitFor(page, chip, 90_000)) {
       await click(page, chip); await page.waitForTimeout(600);
-      await capture(page, 'will-chip', ".event-card[data-chip-id^='marriage-decision:will_change:']", text => SEASON.test(text) && text.includes('혼인 화면에서 답하기'));
+      await capture(page, 'will-chip', ".event-card[data-chip-id^='marriage-decision:will_change:']", text => SEASON.test(text) && text.includes('혼인 화면 보기'));
       await click(page, ".event-card[data-chip-id^='marriage-decision:will_change:'] .event-card-decide");
       const shown = await waitFor(page, `${LORD_SCREEN} .lord-neg-due`, 20_000); await page.waitForTimeout(600);
       await capture(page, 'will-page', LORD_SCREEN, text => shown && SEASON.test(text));

@@ -6,7 +6,7 @@
 export const LORD_MATTERS_COPY = {
   /** The will's chip: the day it stands without him (the engine's `dueTick`), and its way to the 혼인 page. */
   willDue: (date: string) => `${date}까지 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.`,
-  willOpen: "혼인 화면에서 답하기",
+  willOpen: "혼인 화면 보기",
   willAdvice: "혼인 화면의 유언 변경 줄에서 답합니다. 기한이 지나면 그대로 둔 것으로 칩니다.",
   // A suit against the lord (the engine's sentence of its filing is the chip's line).
   suitTitle: "영주를 상대로 한 소송",
