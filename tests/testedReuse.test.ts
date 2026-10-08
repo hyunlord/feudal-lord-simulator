@@ -38,8 +38,7 @@ function story(trunkMove: (write: (path: string, text: string) => void, remove: 
   write("src/engine/core.ts", "export const core = 2;\n");                         // the branch's engine change
   write("src/App.tsx", APP.replace("line0 = 0", "line0 = 100"));                   // and a line of App.tsx
   git("commit", "-qam", "branch: engine and App");
-  const record = (name: string, picked: string[], passed = true) => {
-    const tree = testedTree(dir);
+  const record = (name: string, picked: string[], passed = true, tree = testedTree(dir)) => {
     write(`.remote-runs/${name}/test-changed.json`, JSON.stringify({ tree, head: git("rev-parse", "HEAD"), passed, picked, tests: picked.length, pass: passed ? picked.length : 0, where: name, at: new Date().toISOString() }));
   };
   // The long gate: every test the branch picks passed on the branch's content.
@@ -130,8 +129,10 @@ test("only the overlapping tests run again, and the reused and the new record to
     assert.match(text, /2 on this content — 2\/2 at rerun/);
     assert.match(text, /1 reused, no overlap: 1 file\(s\) changed since the run's content [0-9a-f]{8} \(commit [0-9a-f]{8}, gate, /);
     // The evidence a record keeps: what was reused, whose result (content, commit, run, time), why.
-    const [evidence, ...rest] = reuseEvidence(after.covered!);
-    assert.equal(rest.length, 0);
+    const evidences = reuseEvidence(after.covered!);
+    assert.deepEqual(evidences.map(e => e.how).sort(), ["reused", "same"]);
+    assert.deepEqual(evidences.find(e => e.how === "same")!.tests, ["tests/engine.test.ts", "tests/phase3Architecture.test.ts"]);
+    const evidence = evidences.find(e => e.how === "reused");
     assert.deepEqual(evidence!.tests, ["tests/appText.test.ts"]);
     assert.equal(evidence!.from.run, "gate"); assert.match(evidence!.from.commit!, /^[0-9a-f]{40}$/); assert.match(evidence!.from.tree, /^[0-9a-f]{40}$/);
     assert.equal(evidence!.changedSince, 1); assert.match(evidence!.why, /^no overlap/);
@@ -161,10 +162,10 @@ test("overlap by an imported JSON: the trunk changed table.json, which rules.ts 
 test("a newer failure on the same inputs outweighs an older pass: engine.test failed after the merge — it is not reused", () => {
   const s = story(write => write("docs/notes.md", "moved\n"));
   try {
-    s.record("after-merge", ["tests/engine.test.ts"], false);   // test:changed -- --all on the merged content: engine.test FAILED
+    s.record("zz-after-merge", ["tests/engine.test.ts"], false);   // test:changed -- --all after the merge: FAILED; its folder lists after "gate": the time decides
     const result = s.check();
     assert.ok(uncovered(result).includes("tests/engine.test.ts"));
-    assert.match(formatTestedChanges(result), /tests\/engine\.test\.ts — FAILED on this content \(after-merge, /);
+    assert.match(formatTestedChanges(result), /tests\/engine\.test\.ts — FAILED on this content \(zz-after-merge, /);
     assert.ok(!uncovered(result).includes("tests/appText.test.ts"), "the failed run did not run appText.test: its pass stands");
   } finally { s.done(); }
 });
@@ -178,4 +179,44 @@ test("overlap by the test itself: engine.test.ts edited after the gate's run —
     assert.ok(uncovered(result).includes("tests/engine.test.ts"));
     assert.deepEqual(result.overlaps?.get("tests/engine.test.ts")?.files, ["tests/engine.test.ts"]);
   } finally { s.done(); }
+});
+
+test("a record of content this checkout does not have is never reused", () => {
+  const s = story(write => write("docs/notes.md", "moved\n"));
+  try {
+    rmSync(join(s.dir, ".remote-runs/gate"), { recursive: true });
+    s.record("elsewhere", ["tests/appText.test.ts", "tests/engine.test.ts", "tests/phase3Architecture.test.ts"], true, "0123456789abcdef0123456789abcdef01234567");
+    const result = s.check();
+    assert.equal(result.ok, false);
+    assert.match(formatTestedChanges(result), /tests\/engine\.test\.ts — no passing record ran it/);
+  } finally { s.done(); }
+});
+
+// Folders walked outside src/ (RR25's second review: a changed save fixture reused saveFixtures.test, which then failed).
+function walkStory(files: Record<string, string>, branch: Record<string, string>, trunk: Record<string, string>, ran: string[]) {
+  const dir = mkdtempSync(join(tmpdir(), "fls-walk-"));
+  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"scripts":{}}\n');
+  for (const [path, text] of Object.entries(files)) write(path, text);
+  git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
+  git("checkout", "-qb", "branch"); for (const [path, text] of Object.entries(branch)) write(path, text); git("add", "-A"); git("commit", "-qm", "branch");
+  write(".remote-runs/gate/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ran, tests: 1, pass: 1, where: "gate", at: new Date().toISOString() }));
+  git("checkout", "-q", "trunk"); for (const [path, text] of Object.entries(trunk)) write(path, text); git("add", "-A"); git("commit", "-qm", "trunk moves");
+  const base = git("rev-parse", "HEAD"); git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
+  try { return checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") }); } finally { rmSync(dir, { recursive: true, force: true }); }
+}
+
+test("overlap by a walked folder outside src/: the trunk changed another save fixture — saveFixtures.test runs again", () => {
+  const result = walkStory({ "tests/saveFixtures.test.ts": "export {};\n", "fixtures/saves/v1/a.save.json": "{}\n", "fixtures/saves/v1/b.save.json": "{}\n" },
+    { "fixtures/saves/v1/a.save.json": '{"a":1}\n' }, { "fixtures/saves/v1/b.save.json": '{"b":1}\n' }, ["tests/saveFixtures.test.ts"]);
+  assert.ok(result.uncovered?.includes("tests/saveFixtures.test.ts"));
+  assert.deepEqual(result.overlaps?.get("tests/saveFixtures.test.ts")?.files, ["fixtures/saves/v1/b.save.json"]);
+});
+
+test("overlap by a walked folder outside src/: the trunk added a script — sceneStateGuard.test runs again", () => {
+  const result = walkStory({ "tests/sceneStateGuard.test.ts": "export {};\n", "scripts/x.mjs": "export {};\n" },
+    { "scripts/x.mjs": "export const x = 1;\n" }, { "scripts/newTool.mjs": "export {};\n" }, ["tests/sceneStateGuard.test.ts"]);
+  assert.ok(result.uncovered?.includes("tests/sceneStateGuard.test.ts"));
+  assert.deepEqual(result.overlaps?.get("tests/sceneStateGuard.test.ts")?.files, ["scripts/newTool.mjs"]);
 });

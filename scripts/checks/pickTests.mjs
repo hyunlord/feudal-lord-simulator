@@ -4,9 +4,9 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { basename, dirname, extname, join } from "node:path";
-import { SOURCE_SCAN_GUARD, SOURCE_SCAN_TESTS } from "./sourceScanTests.mjs";
+import { FOLDER_WALKS, underFolders } from "./sourceScanTests.mjs";
 
-export const SOURCE_SCAN_WHY = "walks src/ (decision RR24)";
+export const SOURCE_SCAN_WHY = "walks a folder (decisions RR24, RR25)";
 const CODE = new Set([".ts", ".tsx", ".mts", ".mjs", ".js", ".cjs"]);
 const SCAN = ["src", "tests", "scripts", "tools"];
 const ALL_TRIGGERS = new Set(["package.json", "package-lock.json", "tsconfig.json"]);
@@ -96,9 +96,10 @@ export function pickTests({ root, base, head }) {
       for (const t of tests) if (text.get(t).includes(f) || (byName && text.get(t).includes(name))) add(t, `names ${f}`, f);
     }
   }
-  const testChanged = [...changed].find(f => isTest(f) && f !== SOURCE_SCAN_GUARD);
-  if (testChanged && existsSync(join(root, SOURCE_SCAN_GUARD))) add(SOURCE_SCAN_GUARD, `${SOURCE_SCAN_WHY}: the list's guard; ${testChanged} changed`, testChanged);
-  const srcChanged = [...changed].filter(f => f.startsWith("src/"));
-  if (srcChanged.length > 0) for (const t of SOURCE_SCAN_TESTS) if (existsSync(join(root, t))) for (const f of srcChanged) add(t, `${SOURCE_SCAN_WHY}; ${srcChanged[0]} changed`, f);
+  // A test that walks a folder (sourceScanTests.mjs FOLDER_WALKS) reads every file under it.
+  for (const [t, folders] of Object.entries(FOLDER_WALKS)) {
+    if (!existsSync(join(root, t))) continue;
+    for (const f of changed) if (underFolders(f, folders)) add(t, `${SOURCE_SCAN_WHY}; ${f} changed`, f);
+  }
   return { changed, picked, causes, total: tests.length };
 }

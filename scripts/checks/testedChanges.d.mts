@@ -10,5 +10,6 @@ export function checkTestedChanges(options: { top: string; work: string; base: s
 export function coverageLines(covered: Map<string, Covered>): string[];
 export function overlapLines(uncovered: string[], overlaps: Map<string, Overlap>, limit?: number, failed?: Map<string, Failed>): string[];
 export function formatTestedChanges(result: TestedResult): string;
-export interface ReuseEvidence { from: { tree: string; commit: string | null; run: string | null; at: string | null }; changedSince: number; why: string; tests: string[] }
+export interface ReuseEvidence { how: "same" | "reused"; from: { tree: string; commit: string | null; run: string | null; at: string | null }; changedSince: number; why: string; tests: string[] }
 export function reuseEvidence(covered: Map<string, Covered>): ReuseEvidence[];
+export function newestFirst(a: { at?: string }, b: { at?: string }): number;

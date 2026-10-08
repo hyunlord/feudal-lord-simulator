@@ -28,7 +28,7 @@ import { tmpdir } from "node:os";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { gitIn, pickTests, SOURCE_SCAN_WHY } from "./pickTests.mjs";
-import { coverageLines, overlapLines, reuseEvidence, testCoverage, testedRecords } from "./testedChanges.mjs";
+import { coverageLines, newestFirst, overlapLines, reuseEvidence, testCoverage, testedRecords } from "./testedChanges.mjs";
 
 export { pickTests, SOURCE_SCAN_WHY };
 
@@ -85,7 +85,7 @@ async function main() {
   if (!args.includes("--all") && list.length > 0) {
     const carried = join(ROOT, ".remote-in/tested-records.json");
     const extra = process.env.FLS_REMOTE && existsSync(carried) ? JSON.parse(readFileSync(carried, "utf8")) : [];
-    const records = [...testedRecords(ROOT), ...extra].sort((a, b) => String(b.at).localeCompare(String(a.at)));
+    const records = [...testedRecords(ROOT), ...extra].sort(newestFirst);
     const coverage = testCoverage({ top: ROOT, work: ROOT, required: list, headTree: tree, records });
     run = coverage.uncovered; reused = reuseEvidence(coverage.covered);
     if (coverage.covered.size > 0) console.log([`reused (decision RR25): ${coverage.covered.size} of ${list.length}`, ...coverageLines(coverage.covered)].join("\n"));

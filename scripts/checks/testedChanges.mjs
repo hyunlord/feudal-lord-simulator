@@ -18,6 +18,9 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { pickTests } from './pickTests.mjs';
 
+/** Newest first by the record's time (a record without a readable time counts as the oldest). */
+export const newestFirst = (a, b) => (Date.parse(b.at) || -Infinity) - (Date.parse(a.at) || -Infinity);
+
 /** Every test:changed record this checkout has, newest first. */
 export function testedRecords(top) {
   const dir = join(top, '.remote-runs');
@@ -27,7 +30,7 @@ export function testedRecords(top) {
   if (existsSync(own)) for (const f of readdirSync(own)) if (f.endsWith('.json')) files.push(join(own, f));
   for (const run of readdirSync(dir)) { const f = join(dir, run, 'test-changed.json'); if (existsSync(f)) files.push(f); }
   return files.flatMap(file => { try { return [{ file, ...JSON.parse(readFileSync(file, 'utf8')) }]; } catch { return []; } })
-    .sort((a, b) => String(b.at).localeCompare(String(a.at)));
+    .sort(newestFirst);
 }
 
 const treeKnown = (work, tree) => { try { execFileSync('git', ['cat-file', '-e', `${tree}^{tree}`], { cwd: work, stdio: 'ignore' }); return true; } catch { return false; } };
@@ -38,7 +41,7 @@ const treeKnown = (work, tree) => { try { execFileSync('git', ['cat-file', '-e',
  * newest record that ran it, and the changed files it reads); uncovered: the tests to run again.
  */
 export function testCoverage({ top, work, required, headTree, records = testedRecords(top) }) {
-  const known = records.filter(r => typeof r.tree === 'string');
+  const known = records.filter(r => typeof r.tree === 'string').sort(newestFirst);
   const between = new Map();   // record tree -> { causes, changed } | null (a tree this checkout does not have)
   const diff = tree => {
     if (!between.has(tree)) {
@@ -79,15 +82,16 @@ const short = value => String(value ?? '?').slice(0, 8);
 
 /**
  * The reuse evidence a test:changed record keeps (user order 2026-10-09: what was reused, whose result, why): per source
- * record, the tests it covers, its content (tree), commit, run (where) and time, how many files changed since, and why.
+ * record, the tests it covers, how ('same' content or 'reused' with no overlap), its content (tree), commit, run (where)
+ * and time, how many files changed since, and why.
  */
 export function reuseEvidence(covered) {
   const bySource = new Map();
   for (const [test, entry] of covered) {
-    if (entry.how !== 'reused') continue;
-    const key = entry.record.file ?? entry.record.tree;
-    if (!bySource.has(key)) bySource.set(key, { from: { tree: entry.record.tree, commit: entry.record.head ?? null, run: entry.record.where ?? null,
-      at: entry.record.at ?? null }, changedSince: entry.changed, why: 'no overlap: none of the files changed since that content is one these tests read (RR25)', tests: [] });
+    const key = entry.record.file ?? `${entry.record.tree}|${entry.record.at}`;
+    if (!bySource.has(key)) bySource.set(key, { how: entry.how, from: { tree: entry.record.tree, commit: entry.record.head ?? null, run: entry.record.where ?? null,
+      at: entry.record.at ?? null }, changedSince: entry.changed, why: entry.how === 'same' ? 'same content: that run was of this exact tree'
+      : 'no overlap: none of the files changed since that content is one these tests read (RR25)', tests: [] });
     bySource.get(key).tests.push(test);
   }
   return [...bySource.values()].map(entry => ({ ...entry, tests: entry.tests.sort() }));
