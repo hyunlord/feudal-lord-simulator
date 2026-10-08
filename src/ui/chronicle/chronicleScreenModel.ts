@@ -500,7 +500,9 @@ export function becauseLine(state: Partial<Pick<GameState, "history" | "scenario
   const because = record.because?.[0];
   const decision = because === undefined ? undefined : recordIndex(state).get(because.decisionId);
   if (because === undefined || decision === undefined) return sentence;
-  return RESULTS_COPY.trace.prefixed(RESULTS_COPY.trace.because(yearOfTick(state, decision.tick), decisionBy(decision), because.part === true), sentence);
+  // SUIT-THREAD (lordplay2 ④): a decision that prepared for the crisis says what it left, not that it caused it.
+  const year = yearOfTick(state, decision.tick);
+  return RESULTS_COPY.trace.prefixed(because.key === "crisis_prepared" ? RESULTS_COPY.trace.prepared(year) : RESULTS_COPY.trace.because(year, decisionBy(decision), because.part === true), sentence);
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -574,9 +576,23 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const biography = persons.biography(state, personId);
   if (biography === null) return null;
   const { person } = biography;
-  const members = personsOf(state, person.householdId).filter(member => member.id !== person.id)
-    .sort((a, b) => (RELATION_ORDER[a.role] ?? 9) - (RELATION_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear);
-  const relations = members.map(member => ({ id: member.id, line: CHRONICLE_SCREEN_COPY.relation(person.role, member.role, personDisplayName(member)),
+  // SUIT-THREAD (lordplay2 ⑥, TOP10 9): the parents are the engine's (`persons.parents`: a kinsman's child is his and
+  // his bride's, not the lord's), first, wherever they live; the household's others by their roles after them.
+  const parents = persons.parents(state, person.id);
+  const parentIds = [parents.father, parents.mother].flatMap(parent => parent === null ? [] : [parent.id]);
+  const members = [...[parents.father, parents.mother].filter((parent): parent is Person => parent !== null),
+    ...personsOf(state, person.householdId).filter(member => member.id !== person.id && !parentIds.includes(member.id))
+      .sort((a, b) => (RELATION_ORDER[a.role] ?? 9) - (RELATION_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear)];
+  // The marriage's couple (the engine's plan: a kinsman's bride is his wife, not "영주의 친척").
+  const plan = state.diplomacy?.marriage;
+  const couple = plan !== undefined && [plan.groomId, plan.brideId].includes(person.id) ? (person.id === plan.groomId ? plan.brideId : plan.groomId) : null;
+  const kinship = (member: Person) => member.id === parents.father?.id ? "father" as const : member.id === parents.mother?.id ? "mother" as const
+    : member.fatherId === person.id || member.motherId === person.id ? "child" as const : member.id === couple ? "spouse" as const : null;
+  // A child whose parents the engine knows does not call the household's head and spouse "부모" when they are not.
+  const known = parentIds.length > 0;
+  const asRole = (member: Person) => known && person.role === "child" && (member.role === "head" || member.role === "spouse") ? "kin" : person.role;
+  const relations = members.map(member => ({ id: member.id,
+    line: CHRONICLE_SCREEN_COPY.relation(asRole(member), member.role, personDisplayName(member), kinship(member), person.householdId === MANOR_HOUSEHOLD),
     portraitId: drawnPortraitId(member, persons.portrait(state, member).portraitId) }));
   // UI-7b: the shield and the small circle are the emblem slots (a family member stays in the relations below).
   const emblem = personEmblem(state, person);

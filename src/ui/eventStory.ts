@@ -24,9 +24,10 @@ import { petitionPresentation } from "./petitionPresentation";
 import type { StoryIllustration } from "./storyArt";
 import { houseBeats, lordBeats } from "./lordStoryBeats";
 import { actualNews } from "./results/actualNews";
-import { traceNews } from "./results/decisionThread";
+import { preparedThen, traceNews } from "./results/decisionThread";
 import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { UiModal } from "./stateMachine/uiStateMachine";
+import type { LordScreenId } from "./lord/screen/lordScreenTypes";
 
 // UI-4 (world before UI): what the town is living through now, as story beats. Each beat is read from the engine's
 // state (F0-B events and forecast, F0-C1 politics) — nothing here decides anything. The app shows a beat's card only
@@ -78,6 +79,12 @@ export type StoryBeat = Readonly<{
     | "house_change" | null;
   /** The chip's button when the card it opens is no decision (absent: [결정하기]). */
   openLabel?: string;
+  /** SUIT-THREAD: the lord screen page the chip's button opens instead of a modal (the will → 혼인, a suit or an entry
+   * forewarned against the lord → 약속·소송 on it), with the engine id it opens on. */
+  screen?: Readonly<{ screen: LordScreenId; focus: string | null }>;
+  /** SUIT-THREAD (Astra lordplay2 ②): the lord's own loss (a house took his possession) — newer chips do not push it out
+   * until it is put away, as a house change's (storyChips). */
+  lasting?: true;
   /** DEC-CARD-2: the chronicle record the card's [연대기에서 보기] opens on (the decision a consequence followed from). */
   chronicle?: Readonly<{ recordId: string; tick: number; label: string }>;
 }>;
@@ -147,7 +154,9 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
   for (const record of records) {
     if (record.kind !== "dearth" || record.defId === GREAT_FAMINE_EVENT_ID || record.endTick !== undefined) continue;
     beats.push({ id: `dearth:${record.id}`, kind: "bad_harvest", illustration: "event_bad_harvest", tile: arableTile(state), decision: null,
-      title: copy.badHarvest.title, line: copy.badHarvest.line, advice: copy.badHarvest.advice, facts: [copy.badHarvest.lost(record.losses.harvestLost)] });
+      title: copy.badHarvest.title, line: copy.badHarvest.line, advice: copy.badHarvest.advice,
+      // SUIT-THREAD (lordplay2 ④, lord mode): the decisions that left the town ready when it came, as what they left.
+      facts: [copy.badHarvest.lost(record.losses.harvestLost), ...preparedThen(state, record.id)] });
   }
   const famine = famineStatus(state);
   if (famine !== null && (famine.stage === "arrival" || famine.stage === "recovery")) {

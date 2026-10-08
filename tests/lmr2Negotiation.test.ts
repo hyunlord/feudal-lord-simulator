@@ -193,7 +193,8 @@ test("lord2 states: the counter waiting, the contract, the will change due, the 
   const contracted = negotiationScreen(lord2("marriage-contracted")!, EMPTY_DRAFT);
   assert.equal(contracted.phase === "contract" && contracted.stage, "contracted");
   const will = negotiationScreen(lord2("will-change")!, EMPTY_DRAFT);
-  assert.ok(will.phase === "contract" && will.due === "will_change" && will.dueText === COPY.willDue);
+  // SUIT-THREAD: the will's deadline is the engine's (lordMattersDue), as its season.
+  assert.ok(will.phase === "contract" && will.due === "will_change" && /^유언 변경에 답할 때입니다\. \d+년 (봄|여름|가을|겨울)까지 /.test(will.dueText ?? ""), will.phase === "contract" ? will.dueText ?? "" : "");
   const contestedState = lord2("contested")!;
   const contested = negotiationScreen(contestedState, EMPTY_DRAFT);
   assert.ok(contested.phase === "contract" && contested.due === "contested");

@@ -1,10 +1,14 @@
 import type { GameState } from "../engine/engine.types";
 import { buildingFootprint } from "../geometry/buildingFootprint";
+import { diplomacyOf } from "../engine/negotiation";
 import { lordMode } from "../engine/townAgency";
+import { dateWord } from "./decisionCard/answerWords";
 import type { StoryBeat } from "./eventStory";
 import { DECISION_CARDS_COPY } from "./lord/decisions/decisionCardsCopy.ko";
 import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead } from "./lord/decisions/decisionCardsModel";
-import { LORD_MATTER_CHIP } from "./lord/decisions/lordMattersDue";
+import { lordMatterBeats } from "./lord/decisions/lordMatterBeats";
+import { LORD_MATTERS_COPY } from "./lord/decisions/lordMattersCopy.ko";
+import { LORD_MATTER_CHIP, lordMatter } from "./lord/decisions/lordMattersDue";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
 import { homePetitionView, lordRequestView, type LordRequestView } from "./lordCardsModel";
 import { lordMomentBeats } from "./lordMomentBeats";
@@ -46,6 +50,13 @@ export function houseBeats(state: GameState): readonly StoryBeat[] {
     decision: "house_change", openLabel: RESULTS_COPY.house.openLabel, title: view.title, line: view.happened.join(" "), facts: [view.heir], advice: RESULTS_COPY.house.advice }));
 }
 
+/** A suit's filing moment whose suit has its own chip (a suit against the lord, lordMatterBeats). */
+function defendedFiling(state: GameState, beat: StoryBeat, chips: ReadonlySet<string>): boolean {
+  if (beat.illustration !== "moment_lawsuit_filed") return false;
+  const record = state.history?.records.find(entry => entry.id === beat.id.slice("lord-moment:".length));
+  return record !== undefined && chips.has(LORD_MATTER_CHIP.suit(String(record.params?.suit ?? "")));
+}
+
 export function lordBeats(state: GameState): readonly StoryBeat[] {
   if (!lordMode(state)) return [];
   const beats: StoryBeat[] = [];
@@ -65,13 +76,22 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
       decision: "lord_request", title: request.title, line: request.demand, facts: request.more === "" ? [] : [request.more], advice: LORD_CARDS_COPY.requestAdvice });
   }
   // LM-R2: the lord's decision cards. The will's chip wears the will's Wave 40 moment and stands for it (one chip). PLAY-2:
-  // these stay among the chips until answered (lordMattersDue, useStoryPresentation); the will's says its deadline.
+  // these stay among the chips until answered (lordMattersDue, useStoryPresentation). SUIT-THREAD: the will's says the
+  // engine's deadline (`lordMattersDue` dueTick, as a season) and opens the lord screen's 혼인 page, where it is answered.
   const marriage = marriageDecisionHead(state);
-  if (marriage !== null) {
-    beats.push({ id: LORD_MATTER_CHIP.marriage(marriage.kind, marriage.claimId), kind: "lord_decision",
-      illustration: marriage.kind === "will_change" ? WILL_MOMENT : null, tile: null, decision: "marriage_decision",
-      title: marriage.title, line: marriage.line, facts: marriage.kind === "contested" ? [marriage.suit] : [DECISION_CARDS_COPY.willDeadline], advice: marriage.kind === "contested" ? DECISION_CARDS_COPY.contestOpen : DECISION_CARDS_COPY.willAdvice });
+  if (marriage !== null && marriage.kind === "will_change") {
+    const plan = diplomacyOf(state).marriage;
+    const due = plan === undefined ? null : lordMatter(state, "will_change", plan.negotiationId)?.dueTick ?? null;
+    beats.push({ id: LORD_MATTER_CHIP.marriage(marriage.kind, marriage.claimId), kind: "lord_decision", illustration: WILL_MOMENT, tile: null, decision: null,
+      screen: { screen: "marriage", focus: null }, openLabel: LORD_MATTERS_COPY.willOpen, title: marriage.title, line: marriage.line,
+      facts: [due === null ? DECISION_CARDS_COPY.willDeadline(null) : LORD_MATTERS_COPY.willDue(dateWord(state, due))], advice: LORD_MATTERS_COPY.willAdvice });
+  } else if (marriage !== null) {
+    beats.push({ id: LORD_MATTER_CHIP.marriage(marriage.kind, marriage.claimId), kind: "lord_decision", illustration: null, tile: null, decision: "marriage_decision",
+      title: marriage.title, line: marriage.line, facts: [marriage.suit], advice: DECISION_CARDS_COPY.contestOpen });
   }
+  // SUIT-THREAD: a suit against the lord, an entry forewarned (the engine's matters due); a suit's chip stands for its filing's moment.
+  const matters = lordMatterBeats(state);
+  beats.push(...matters);
   const audit = auditDecisionHead(state);
   if (audit !== null) {
     beats.push({ id: LORD_MATTER_CHIP.audit(audit.auditId), kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
@@ -85,7 +105,8 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
   // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record. DEC-CARD (A3): a house change's moments
   // (the inheritance, the wardship) are its house card's picture, not chips of their own — one chip stands for the event.
   const folded = houseRecordIds(state);
-  const moments = lordMomentBeats(state, seatTile(state)).filter(beat => !folded.has(beat.id.slice("lord-moment:".length)));
+  const defended = new Set(matters.map(beat => beat.id));
+  const moments = lordMomentBeats(state, seatTile(state)).filter(beat => !folded.has(beat.id.slice("lord-moment:".length)) && !defendedFiling(state, beat, defended));
   beats.push(...(marriage?.kind === "will_change" ? moments.filter(beat => beat.illustration !== WILL_MOMENT) : moments));
   return beats;
 }

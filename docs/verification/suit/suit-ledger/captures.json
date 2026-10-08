@@ -1,0 +1,1978 @@
+{
+ "rows": [
+  {
+   "name": "d1-defence-filed",
+   "file": "d1-defence-filed.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "filed",
+     "hearing": "심리 · 청구 쪽(원고) 83 · 방어 쪽(영주) 80. 지금 판결하면 청구 쪽이 이깁니다 · 증거와 후원으로 방어 쪽을 올리거나 합의할 수 있습니다",
+     "verdict": null,
+     "settled": null,
+     "defence": true,
+     "evidence": [
+      "charter:open",
+      "deed:open",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 0 · 사람을 들이면 +25",
+      "버티기는 판결에 진 뒤 점유 집행 단계에서 할 수 있습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 84000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "filed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d2-defence-evidence",
+   "file": "d2-defence-evidence.jpg",
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "filed",
+     "hearing": "심리 · 청구 쪽(원고) 83 · 방어 쪽(영주) 95. 지금 판결하면 방어 쪽이 이깁니다 · 원고가 남은 증거와 후원을 다 더하면 넘을 수 있습니다",
+     "verdict": null,
+     "settled": null,
+     "defence": true,
+     "evidence": [
+      "charter:open",
+      "deed:냄 · 무게 15",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 0 · 사람을 들이면 +25",
+      "버티기는 판결에 진 뒤 점유 집행 단계에서 할 수 있습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 84000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "filed",
+      "defenceEvidence": [
+       "deed"
+      ],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d1-tablet-dpr2",
+   "file": "d1-tablet-dpr2.jpg",
+   "viewport": "1180x820",
+   "dpr": 2,
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "filed",
+     "hearing": "심리 · 청구 쪽(원고) 83 · 방어 쪽(영주) 80. 지금 판결하면 청구 쪽이 이깁니다 · 증거와 후원으로 방어 쪽을 올리거나 합의할 수 있습니다",
+     "verdict": null,
+     "settled": null,
+     "defence": true,
+     "evidence": [
+      "charter:open",
+      "deed:open",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 0 · 사람을 들이면 +25",
+      "버티기는 판결에 진 뒤 점유 집행 단계에서 할 수 있습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 48,
+   "natives": 0,
+   "engine": {
+    "tick": 84000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "filed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d3-defence-patronage",
+   "file": "d3-defence-patronage.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "patronage",
+     "hearing": "심리 · 청구 쪽(원고) 83 · 방어 쪽(영주) 80. 지금 판결하면 청구 쪽이 이깁니다 · 증거와 후원으로 방어 쪽을 올리거나 합의할 수 있습니다",
+     "verdict": null,
+     "settled": null,
+     "defence": true,
+     "evidence": [],
+     "evidenceShut": "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+     "patrons": [
+      "overlord",
+      "crown",
+      "bishop",
+      "merchant_house_2"
+     ],
+     "patron": "솔트월드 백작지지 20후원 청하기",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 0 · 사람을 들이면 +25",
+      "버티기는 판결에 진 뒤 점유 집행 단계에서 할 수 있습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 86000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "patronage",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d4-patron-chosen",
+   "file": "d4-patron-chosen.jpg",
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "patronage",
+     "hearing": "심리 · 청구 쪽(원고) 83 · 방어 쪽(영주) 100. 지금 판결하면 방어 쪽이 이깁니다 · 원고가 남은 증거와 후원을 다 더해도 넘기 어렵습니다",
+     "verdict": null,
+     "settled": null,
+     "defence": true,
+     "evidence": [],
+     "evidenceShut": "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+     "patrons": [],
+     "patron": "솔트월드 백작 · 지지 20",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+      "솔트월드 백작 · 지지 20",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 0 · 사람을 들이면 +25",
+      "버티기는 판결에 진 뒤 점유 집행 단계에서 할 수 있습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 86000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "patronage",
+      "defenceEvidence": [],
+      "defencePatron": "overlord",
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d5-defence-enforcing",
+   "file": "d5-defence-enforcing.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "enforcing",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": true,
+     "evidence": [],
+     "evidenceShut": "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+     "patrons": [],
+     "patron": "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+     "pay": "open",
+     "yield": "open",
+     "hold": "open",
+     "lines": [
+      "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+      "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 35 · 사람을 들이면 +25"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 88000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "enforcing",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": 35,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d6-held",
+   "file": "d6-held.jpg",
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "enforcing",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": true,
+     "evidence": [],
+     "evidenceShut": "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+     "patrons": [],
+     "patron": "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "증거는 소송이 제기·증거 단계일 때만 낼 수 있습니다",
+      "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 60 · 사람을 들이면 +25",
+      "올해는 이미 사람을 들였습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 88000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "enforcing",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": 60,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d7-concord-before",
+   "file": "d7-concord-before.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "filed",
+     "hearing": "심리 · 청구 쪽(원고) 83 · 방어 쪽(영주) 80. 지금 판결하면 청구 쪽이 이깁니다 · 증거와 후원으로 방어 쪽을 올리거나 합의할 수 있습니다",
+     "verdict": null,
+     "settled": null,
+     "defence": true,
+     "evidence": [
+      "charter:open",
+      "deed:open",
+      "court_roll:open",
+      "witnesses:open",
+      "possession_years:open"
+     ],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+     "pay": "open",
+     "yield": "open",
+     "hold": "shut",
+     "lines": [
+      "후원은 소송이 후원 단계일 때만 청할 수 있습니다",
+      "합의하면 소송이 끝나고, 그 가문의 남은 권리도 끝납니다",
+      "지금 버티는 힘 0 · 사람을 들이면 +25",
+      "버티기는 판결에 진 뒤 점유 집행 단계에서 할 수 있습니다"
+     ]
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 84000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "filed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "d7-concord-paid",
+   "file": "d7-concord-paid.jpg",
+   "against": [
+    {
+     "id": "suit-3",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": null,
+     "settled": "합의로 끝났다: 영주가 첫째 이웃 영주에게 £5 1s를 주고 사냥권을 지켰다 · 1321년 봄 1일",
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": null,
+   "natives": 0,
+   "engine": {
+    "tick": 84000,
+    "suits": [
+     {
+      "id": "suit-3",
+      "stage": "closed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": "pay",
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "t1-entry-threat",
+   "file": "t1-entry-threat.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "against": [
+    {
+     "id": "suit-15",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-13",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-10",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-8",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-7",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-6",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-3",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-16",
+     "stage": "filed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": "심리 · 청구 쪽 98 · 방어 쪽 80. 지금 판결하면 청구 쪽이 이깁니다",
+     "costs": "앞으로 들 비용: 심리 £1 5s · 점유 집행 시도마다 12s 6d"
+    },
+    {
+     "id": "suit-14",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-12",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-11",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-9",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-5",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-4",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [
+    {
+     "id": "threat-177000-estate-neighbour-2:advowson",
+     "guarded": null,
+     "guard": "open",
+     "appease": "open",
+     "lines": [
+      "상대 드 앰브레스 가문(이웃 영주) · 예고 1344년 여름 1일 · 올 때 1344년 가을 1일(가을 초쯤)",
+      "둘째 이웃 영주가 사람을 모은다: 다음 철에 성직자 추천권에 힘으로 들어오려 한다 — 지킬 사람을 들이거나 선물로 달랠 수 있다"
+     ]
+    }
+   ],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 177000,
+    "suits": [
+     {
+      "id": "suit-16",
+      "stage": "filed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": [
+     {
+      "id": "threat-177000-estate-neighbour-2:advowson",
+      "guarded": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "t2-guarded",
+   "file": "t2-guarded.jpg",
+   "against": [
+    {
+     "id": "suit-15",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-13",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-10",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-8",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-7",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-6",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-3",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-16",
+     "stage": "filed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": "심리 · 청구 쪽 98 · 방어 쪽 80. 지금 판결하면 청구 쪽이 이깁니다",
+     "costs": "앞으로 들 비용: 심리 £1 5s · 점유 집행 시도마다 12s 6d"
+    },
+    {
+     "id": "suit-14",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-12",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-11",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-9",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-5",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-4",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [
+    {
+     "id": "threat-177000-estate-neighbour-2:advowson",
+     "guarded": "true",
+     "guard": null,
+     "appease": "open",
+     "lines": [
+      "상대 드 앰브레스 가문(이웃 영주) · 예고 1344년 여름 1일 · 올 때 1344년 가을 1일(가을 초쯤)",
+      "둘째 이웃 영주가 사람을 모은다: 다음 철에 성직자 추천권에 힘으로 들어오려 한다 — 지킬 사람을 들이거나 선물로 달랠 수 있다",
+      "지킬 사람을 들였습니다"
+     ]
+    }
+   ],
+   "past": [],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 177000,
+    "suits": [
+     {
+      "id": "suit-16",
+      "stage": "filed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": [
+     {
+      "id": "threat-177000-estate-neighbour-2:advowson",
+      "guarded": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "t3-entry-forced",
+   "file": "t3-entry-forced.jpg",
+   "viewport": "1280x800",
+   "dpr": 1,
+   "against": [
+    {
+     "id": "suit-15",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-13",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-10",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-8",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-7",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-6",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-3",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-16",
+     "stage": "evidence",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": "심리 · 청구 쪽 93 · 방어 쪽 80. 지금 판결하면 청구 쪽이 이깁니다",
+     "costs": "앞으로 들 비용: 심리 £1 5s · 점유 집행 시도마다 12s 6d"
+    },
+    {
+     "id": "suit-14",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-12",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-11",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-9",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-5",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-4",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [
+    "둘째 이웃 영주가 힘으로 성직자 추천권에 들어왔다 — 영주가 점유를 잃었다. 점유 침탈 소송을 낼 수 있다 · 1344년 가을 1일"
+   ],
+   "claims": [
+    {
+     "id": "claim-19",
+     "novel": "true",
+     "button": "소송 걸기 · 5s",
+     "file": "open",
+     "refusal": null,
+     "hearing": "지금 걸면 심리에서 청구 쪽 80 · 방어 쪽 80. 지금 판결하면 방어 쪽이 이깁니다 · 남은 증거와 후원을 다 더하면 넘을 수 있습니다"
+    }
+   ],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 178000,
+    "suits": [
+     {
+      "id": "suit-16",
+      "stage": "evidence",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "t4-novel-filed",
+   "file": "t4-novel-filed.jpg",
+   "against": [
+    {
+     "id": "suit-15",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-13",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-10",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-8",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-7",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 앰브레스 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-6",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 졌습니다 — 영주가 지켰습니다",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    },
+    {
+     "id": "suit-3",
+     "stage": "closed",
+     "hearing": null,
+     "verdict": "판결: 드 이브르쿠르 가문(이웃 영주)가 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)",
+     "settled": null,
+     "defence": false,
+     "evidence": [],
+     "evidenceShut": null,
+     "patrons": [],
+     "patron": null,
+     "pay": null,
+     "yield": null,
+     "hold": null,
+     "lines": []
+    }
+   ],
+   "suits": [
+    {
+     "id": "suit-16",
+     "stage": "evidence",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": "심리 · 청구 쪽 93 · 방어 쪽 80. 지금 판결하면 청구 쪽이 이깁니다",
+     "costs": "앞으로 들 비용: 심리 £1 5s · 점유 집행 시도마다 12s 6d"
+    },
+    {
+     "id": "suit-17",
+     "stage": "filed",
+     "track": [
+      "filed",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": "심리 · 청구 쪽 80 · 방어 쪽 80. 지금 판결하면 방어 쪽이 이깁니다 · 남은 증거와 후원을 다 더하면 넘을 수 있습니다",
+     "costs": "앞으로 들 비용: 심리 £1 5s · 점유 집행 시도마다 12s 6d"
+    },
+    {
+     "id": "suit-14",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-12",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-11",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-9",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-5",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-4",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-2",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    },
+    {
+     "id": "suit-1",
+     "stage": "closed",
+     "track": [
+      "filed",
+      "evidence",
+      "patronage",
+      "hearing",
+      "judged",
+      "enforcing",
+      "closed"
+     ],
+     "hearing": null,
+     "costs": null
+    }
+   ],
+   "threats": [],
+   "past": [
+    "둘째 이웃 영주가 힘으로 성직자 추천권에 들어왔다 — 영주가 점유를 잃었다. 점유 침탈 소송을 낼 수 있다 · 1344년 가을 1일"
+   ],
+   "claims": [],
+   "primaries": 0,
+   "smallestText": 12,
+   "smallestButton": 44,
+   "natives": 0,
+   "engine": {
+    "tick": 178000,
+    "suits": [
+     {
+      "id": "suit-16",
+      "stage": "evidence",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": null
+     },
+     {
+      "id": "suit-17",
+      "stage": "filed",
+      "defenceEvidence": [],
+      "defencePatron": null,
+      "hold": null,
+      "settled": null,
+      "fast": true
+     }
+    ],
+    "threats": []
+   }
+  },
+  {
+   "name": "m1-moment-lost",
+   "file": "m1-moment-lost.jpg",
+   "card": null,
+   "chips": [
+    "소송이 제기되었다 — 카드 열기"
+   ]
+  },
+  {
+   "name": "k1-contested-ended",
+   "file": "k1-contested-ended.jpg",
+   "card": {
+    "title": "상속 다툼",
+    "lines": [
+     "로버트 드 케스트베일이 유언을 근거로 드 케스트베일 영지를 차지했습니다. 소송에서 이겨 점유를 집행하면 영지가 영주에게 옵니다.",
+     "영주의 소송: 끝남 · 판결: 영주가 졌습니다 · 1308년 여름"
+    ]
+   },
+   "chips": [
+    "상속 다툼 — 카드 열기"
+   ]
+  }
+ ],
+ "failures": [
+  "m1-moment-lost: no chip titled 이웃이 점유를 가져갔다 among [\"소송이 제기되었다 — 카드 열기\"]",
+  "m1-moment-lost: no .event-card[data-story='lord_moment']",
+  "m1-moment-lost: null"
+ ]
+}

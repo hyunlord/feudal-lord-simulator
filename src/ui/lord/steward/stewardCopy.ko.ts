@@ -59,7 +59,7 @@ export const STEWARD_COPY = {
 
   // --- the standing-policy screen -------------------------------------------------------------------------------------
   screenTitle: "상시 방침",
-  screenIntro: "작은 일은 처음부터 청지기가 이 방침대로 답합니다. '영주에게'로 둔 종류만 영주의 카드로 옵니다. 돈이 큰 청원은 방침과 상관없이 영주에게 옵니다.",
+  screenIntro: "작은 일은 처음부터 청지기가 이 방침대로 답합니다. '영주에게'로 둔 종류만 영주의 카드로 옵니다. 돈이 큰 청원은 방침과 상관없이 영주에게 옵니다. 지속 세율 변경은 영주에게 옵니다. 시장 좌판세처럼 계속 걷는 세율을 바꾸는 답이 있는 일은 청지기가 답하지 않습니다.",
   closed: "영주 모드에서만 정할 수 있습니다",
   kindRow: (setting: string, handled: number) => handled === 0 ? `지금: ${setting}` : `지금: ${setting} · 올해 청지기가 ${handled}건`,
   choose: (title: string, setting: string) => `${title}: ${setting}`,

@@ -94,6 +94,31 @@ export function threadLines(state: GameState, rows: readonly TraceRow[]): Thread
   };
 }
 
+const PREPARED = "crisis_prepared";
+/** SUIT-THREAD (Astra lordplay2 ④): a decision whose rows only prepared the town for a crisis (the engine's
+ * `crisis_prepared`; the factions' minds aside): its head says "○○년 결정이 남긴 대비", not "때문에". */
+export const preparedOnly = (rows: readonly Pick<TraceRow, "key">[]): boolean =>
+  rows.some(row => row.key === PREPARED) && rows.every(row => row.key === PREPARED || row.key === "relation");
+
+/** A decision's head: "○○년 당신의 결정 때문에" (or the steward's, a silence's), "○○년 결정이 남긴 대비" when it only prepared. */
+export const traceTitle = (year: number, by: DecisionBy, prepared: boolean): string =>
+  prepared ? RESULTS_COPY.trace.prepared(year) : RESULTS_COPY.trace.title(year, by);
+
+/**
+ * SUIT-THREAD (the user's wording): the bad harvest's news, "그때 이 결정이 남긴 대비 — …" for each decision the engine
+ * wrote as having prepared the town when the dearth came (its `crisis.arrived` record's `because[].relation`).
+ */
+export function preparedThen(state: GameState, eventId: string): readonly string[] {
+  if (!lordMode(state)) return [];
+  const records = state.history?.records ?? [];
+  const arrived = records.find(entry => entry.template === "crisis.arrived" && entry.params?.eventId === eventId);
+  const index = recordIndex(state);
+  return (arrived?.because ?? []).filter(entry => entry.relation === "preparedness").flatMap(entry => {
+    const decision = index.get(entry.decisionId);
+    return decision === undefined ? [] : [RESULTS_COPY.trace.preparedThen(decisionAbout(state, decision))];
+  });
+}
+
 export type TraceGroup = Readonly<{ decisionId: string; decisionTick: number; by: DecisionBy; rows: readonly TraceRow[] }>;
 
 /** The rows grouped by the decision behind them, in the order their first rows came. */
@@ -135,7 +160,8 @@ export const traceNews = perState((state: GameState): readonly TraceNews[] => {
     const record = index.get(group.decisionId)!;
     const lines = threadLines(state, group.rows);
     return { decisionId: group.decisionId, decisionTick: group.decisionTick,
-      title: RESULTS_COPY.trace.chipTitle(yearOfTick(state, group.decisionTick), group.by, decisionSubjectWords(state, record)),
+      title: preparedOnly(group.rows) ? RESULTS_COPY.trace.preparedChip(yearOfTick(state, group.decisionTick), decisionSubjectWords(state, record))
+        : RESULTS_COPY.trace.chipTitle(yearOfTick(state, group.decisionTick), group.by, decisionSubjectWords(state, record)),
       line: RESULTS_COPY.trace.dated(chronicleDate(state, group.decisionTick), decisionAbout(state, record)), facts: [...lines.lines, ...lines.feelings] };
   });
 });

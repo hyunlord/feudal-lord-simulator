@@ -44,7 +44,7 @@
 
 /* Timed terms and claims: plain rows. */
 .app-shell .lord-ledger-terms, .app-shell .lord-ledger-claims, .app-shell .lord-ledger-suits { display: grid; gap: 8px; }
-.app-shell .lord-ledger-term, .app-shell .lord-ledger-claim, .app-shell .lord-ledger-suit {
+.app-shell .lord-ledger-term, .app-shell .lord-ledger-claim, .app-shell .lord-ledger-suit, .app-shell .lord-ledger-threat {
   display: grid; gap: 2px; padding: 6px 8px; background-color: var(--palette-vellum); border: 1px solid var(--palette-parchment-dark);
 }
 .app-shell .lord-ledger-claim { grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 8px; }
@@ -63,3 +63,7 @@
 .app-shell .lord-ledger-option-name { font-size: 13px; min-width: 10em; }
 .app-shell .lord-ledger-option-note { font-size: 12px; color: var(--palette-ink-muted); }
 .app-shell .lord-ledger-costs { color: var(--palette-ink-muted); }
+
+/* SUIT-THREAD (DTR-23): the lord's defence in a house's suit against him, under its track; the forcible entries forewarned
+   are suit-like rows of their own. */
+.app-shell .lord-ledger-defence { display: grid; gap: 4px; margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--palette-parchment-dark); }

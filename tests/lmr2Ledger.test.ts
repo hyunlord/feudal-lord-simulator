@@ -172,7 +172,7 @@ test("estates read in Korean (GENTRY_NAMES_KO), never the engine's Latin name", 
 });
 
 test("no engine rule is copied: the ledger reads no cost, weight or threshold from the configs", () => {
-  for (const file of ["src/ui/lord/ledger/ledgerModel.ts", "src/ui/lord/ledger/LedgerPanel.tsx", "src/ui/lord/ledger/ledgerCopy.ko.ts"]) {
+  for (const file of readdirSync("src/ui/lord/ledger").filter(name => /\.tsx?$/.test(name)).map(name => `src/ui/lord/ledger/${name}`)) {
     const text = readFileSync(file, "utf8");
     assert.doesNotMatch(text, /estateConfig|marriageConfig|negotiationConfig|EVIDENCE_COST|EVIDENCE_WEIGHT|SUIT_STAGE_COST|PATRON_MIN_RELATION|ENFORCEMENT_BASE|PROMISE_PAYMENT_TICKS/, file);
   }
@@ -187,7 +187,7 @@ test("geometry rows: on lord2 states, through the lord screen's own open steps",
   }
 });
 
-test("lord2 states (LMR2_STATES): promises kept, broken and open; the contested suit; the neighbour's suit with no command", t => {
+test("lord2 states (LMR2_STATES): promises kept, broken and open; the contested suit; the neighbour's suit with the lord's defence only", t => {
   const found = states("LMR2_STATES");
   if (found.length === 0) { t.skip("LMR2_STATES not set: the lord2 states are on the DGX (~/fls-lmr2-states)"); return; }
   const by = Object.fromEntries(found.map(entry => [entry.name, entry.state]));
@@ -206,10 +206,13 @@ test("lord2 states (LMR2_STATES): promises kept, broken and open; the contested 
   for (const row of neighbour) {
     assert.equal(row.evidence, null); assert.equal(row.patron, null); assert.equal(row.enforce?.button ?? null, null);
     assert.equal(row.neighbour, true);
+    assert.equal(row.defence !== null, row.stage !== "closed", `${row.id}: the lord's defence while the suit stands (SUIT-THREAD)`);
   }
   const page = html(by["neighbour-suit"]!);
   const neighbourPart = page.slice(page.indexOf('data-section="neighbour-suits"'));
-  assert.doesNotMatch(neighbourPart, /<button/, "no command on a suit against the lord");
+  // SUIT-THREAD (DTR-23): the lord's own moves only — evidence, a patron, the concord, the hold; never the house's.
+  assert.doesNotMatch(neighbourPart, /data-enforce=|data-file=|lord-ledger-bring" data-bring="[^"]*"[^>]*data-suit/, "no plaintiff's command on a suit against the lord");
+  assert.match(neighbourPart, /data-concord="pay"/);
 });
 
 test("played-on states (LMR2_LEDGER_STATES): a promise due within the season, due today; the suit at each stage", t => {

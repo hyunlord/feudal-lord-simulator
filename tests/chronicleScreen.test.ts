@@ -165,11 +165,13 @@ test("CHRON-1 biography: the portrait of their age with how it matches, the life
   // UI-7b: the small circle is the mark's slot, not a family member's (a commoner household: neither arms nor mark).
   assert.deepEqual([view.arms, view.mark], [null, null]);
   assert.ok(view.relations.some(relation => relation.id === spouse.id && relation.line.startsWith("배우자 ")));
-  // A child sees the head as a parent, not the house's roles.
+  // A child sees the head as a parent, not the house's roles; SUIT-THREAD: its father and mother as the engine knows them.
   const child = state.persons!.people.find(member => member.householdId === head.householdId && member.role === "child")!;
   const childView = biographyView(state, child.id)!;
   assert.deepEqual([childView.arms, childView.mark], [null, null]);
-  assert.deepEqual(childView.relations.filter(relation => relation.id === head.id || relation.id === spouse.id).map(relation => relation.line.split(" ")[0]), ["부모", "부모"]);
+  const parentWord = (id: string) => id === child.fatherId ? "아버지" : id === child.motherId ? "어머니" : "부모";
+  assert.deepEqual(childView.relations.filter(relation => relation.id === head.id || relation.id === spouse.id).map(relation => relation.line.split(" ")[0]).sort(),
+    [parentWord(head.id), parentWord(spouse.id)].sort());
   assert.ok(childView.relations.some(relation => relation.line.startsWith("형제자매 ")));
   assert.deepEqual(view.records.map(entry => entry.sentence), ["45살에 굶주림 끝에 죽었다", "가구의 집이 불탔다"]);
   assert.equal(biographyView(state, "p-999999"), null);

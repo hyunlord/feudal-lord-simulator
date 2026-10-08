@@ -34,7 +34,9 @@ export function decisionThread(state: GameState, record: HistoryRecord): Decisio
   const because = (record.because ?? []).flatMap((entry, at): ThreadLink[] => {
     const decision = index.get(entry.decisionId);
     if (decision === undefined) return [];
-    const heading = RESULTS_COPY.trace.because(yearOfTick(state, decision.tick), decisionBy(decision), entry.part === true);
+    const year = yearOfTick(state, decision.tick);
+    // SUIT-THREAD (lordplay2 ④): a decision that prepared for the crisis is named as what it left, not as its cause.
+    const heading = entry.key === "crisis_prepared" ? RESULTS_COPY.trace.prepared(year) : RESULTS_COPY.trace.because(year, decisionBy(decision), entry.part === true);
     return [{ key: `because-${at}`, line: RESULTS_COPY.trace.prefixed(heading, decisionAbout(state, decision)), recordId: decision.id, tick: decision.tick }];
   });
   const traced = record.kind === "decision" && traceOf(state).decisions.some(decision => decision.id === record.id);

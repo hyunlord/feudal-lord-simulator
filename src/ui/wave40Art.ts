@@ -43,3 +43,13 @@ export function wave40RecordArt(record: Pick<HistoryRecord, "template" | "params
   if (record.template === "estate.possession_enforced") return record.params?.succeeded === 1 ? "moment_possession_taken" : "moment_possession_refused";
   return TEMPLATE_ART[record.template] ?? null;
 }
+
+/**
+ * Astra lordplay2 ② (the engine's enforcement records name the plaintiff): whose enforcement a possession moment is — the
+ * lord's own, or a house's against him (its picture the same; its title and advice say what the lord lost or kept).
+ * Older records carry no plaintiff: they are the lord's.
+ */
+export function wave40RecordSide(record: Pick<HistoryRecord, "template" | "params">): "lord" | "against" {
+  const { plaintiff, defendant } = record.params ?? {};
+  return record.template === "estate.possession_enforced" && typeof plaintiff === "string" && plaintiff !== "" && plaintiff !== "lord" && defendant === "lord" ? "against" : "lord";
+}

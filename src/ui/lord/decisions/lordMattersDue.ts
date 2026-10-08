@@ -1,31 +1,48 @@
 import type { GameState } from "../../../engine/engine.types";
-import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead } from "./decisionCardsModel";
+import { lordMattersDue, type LordMatterDue as EngineMatter } from "../../../engine/lordDue";
+import { diplomacyOf } from "../../../engine/negotiation";
+import { auditDecisionHead, offMapPetitionHead } from "./decisionCardsModel";
 
 // PLAY-2 (Astra's second lord-mode play, friction 8: the will's chip was pushed out by newer ones and the will lapsed
-// unanswered): the house's matters that wait for the lord's answer with a deadline — the father's will (or the contested
-// inheritance), a Michaelmas audit's finding, an off-map estate's petition — each by its chip's id. The chips keep these
-// until answered (useStoryPresentation `storyChips`); each chip's [결정하기] opens its card.
-// ADAPTER: this reads what the engine exposes today (marriageDecisionDue, pendingAudits, the off-map petitions, through
-// the decision cards' heads). The engine's SUIT-THREAD brings `lordMattersDue` (the will's deadline among them): swap
-// this function's body for it then, keeping its shape; no deadline rule is computed here (`dueTick` is null until then).
-
-export type LordMatterDue = Readonly<{ id: string; kind: "will_change" | "contested" | "audit" | "estate_petition"; title: string; dueTick: number | null }>;
+// unanswered): the house's matters that wait for the lord's answer, each by its chip's id. The chips keep these until
+// answered or past (useStoryPresentation `storyChips`). SUIT-THREAD: the matters with a deadline are the engine's
+// (`lordMattersDue`: the father's will with its `dueTick`, the contested inheritance, a suit against the lord with its
+// next stage's tick, a forcible entry forewarned); no deadline rule is computed here. A Michaelmas audit's finding and
+// an off-map estate's petition, which the engine keeps in their own lists, stay among them as before (by the decision
+// cards' heads).
 
 /** The chip id of each matter (lordStoryBeats builds its chips with these). */
 export const LORD_MATTER_CHIP = {
   marriage: (kind: string, claimId: string) => `marriage-decision:${kind}:${claimId}`,
   audit: (auditId: string) => `audit:${auditId}`,
   petition: (petitionId: string) => `estate-petition:${petitionId}`,
+  suit: (suitId: string) => `suit-defence:${suitId}`,
+  entry: (threatId: string) => `entry-threat:${threatId}`,
 } as const;
 
-/** The matters due now (the swap point for the engine's `lordMattersDue`). */
-export function lordMattersDueNow(state: GameState): readonly LordMatterDue[] {
-  const matters: LordMatterDue[] = [];
-  const marriage = marriageDecisionHead(state);
-  if (marriage !== null) matters.push({ id: LORD_MATTER_CHIP.marriage(marriage.kind, marriage.claimId), kind: marriage.kind, title: marriage.title, dueTick: null });
+/** A matter's chip id: the will and the contested inheritance by the marriage's claim (the engine names its negotiation). */
+function chipOf(state: GameState, matter: EngineMatter): string | null {
+  switch (matter.kind) {
+    case "will_change": case "contested": {
+      const plan = diplomacyOf(state).marriage;
+      return plan === undefined || plan.negotiationId !== matter.id ? null : LORD_MATTER_CHIP.marriage(matter.kind, plan.claimId);
+    }
+    case "suit_defence": return LORD_MATTER_CHIP.suit(matter.id);
+    case "entry_threat": return LORD_MATTER_CHIP.entry(matter.id);
+  }
+}
+
+/** The chips that stay until answered: the engine's matters due, then the audit's and the off-map petition's. */
+export function lordMatterChipIds(state: GameState): ReadonlySet<string> {
+  const ids = new Set(lordMattersDue(state).flatMap(matter => { const id = chipOf(state, matter); return id === null ? [] : [id]; }));
   const audit = auditDecisionHead(state);
-  if (audit !== null) matters.push({ id: LORD_MATTER_CHIP.audit(audit.auditId), kind: "audit", title: audit.title, dueTick: null });
+  if (audit !== null) ids.add(LORD_MATTER_CHIP.audit(audit.auditId));
   const petition = offMapPetitionHead(state);
-  if (petition !== null) matters.push({ id: LORD_MATTER_CHIP.petition(petition.petitionId), kind: "estate_petition", title: petition.title, dueTick: null });
-  return matters;
+  if (petition !== null) ids.add(LORD_MATTER_CHIP.petition(petition.petitionId));
+  return ids;
+}
+
+/** The engine's matter of a kind with this id (the will's deadline, a suit's next stage, a threat's coming), or null. */
+export function lordMatter(state: GameState, kind: EngineMatter["kind"], id: string): EngineMatter | null {
+  return lordMattersDue(state).find(matter => matter.kind === kind && matter.id === id) ?? null;
 }

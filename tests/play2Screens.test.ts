@@ -12,12 +12,13 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { HOME_ESTATE_ID } from "../src/content/estateConfig";
+import { WEAK_POINTS } from "../src/content/historyCopy.ko";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { V4_COPY } from "../src/content/registry/v4Copy.generated";
 import { preparedness } from "../src/engine/crisisReads";
 import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
-import { suitHearing } from "../src/engine/estateSuits";
+import { suitFilingOutlook } from "../src/engine/estateSuits";
 import type { HistoryRecord } from "../src/engine/history.types";
 import { treasuryBalance, postLedgerEntries } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
@@ -30,7 +31,6 @@ import { famineAfterFacts } from "../src/ui/lord/advice/famineAfter";
 import { FAMINE_AFTER_COPY } from "../src/ui/lord/advice/famineAfterCopy.ko";
 import { lordLevers, townStatus } from "../src/ui/lord/advice/lordAdvice";
 import { chronicleFilterFocus, clearChronicleFocus, focusChronicleYears } from "../src/ui/lord/chronicleFocus";
-import { claimOutlook } from "../src/ui/lord/ledger/claimOutlook";
 import { LORD_LEDGER_COPY } from "../src/ui/lord/ledger/ledgerCopy.ko";
 import { ledgerView } from "../src/ui/lord/ledger/ledgerModel";
 import { HOME_PETITION_COPY } from "../src/ui/lordCardsCopy.ko";
@@ -46,7 +46,7 @@ import { lordWallGuidance } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { DECISION_CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
 import { familyPeople } from "../src/ui/persons/familyNews";
-import { LORD_MATTER_CHIP, lordMattersDueNow } from "../src/ui/lord/decisions/lordMattersDue";
+import { LORD_MATTER_CHIP, lordMatterChipIds } from "../src/ui/lord/decisions/lordMattersDue";
 
 const LATIN = /[A-Za-z]{2,}/;
 const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 3 })!;
@@ -55,29 +55,31 @@ const withTreasury = (state: GameState, coin: number): GameState => {
   return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
 };
 
-test("PLAY-2 소송 걸기: the button says the treasury the filing takes, and the hearing's two sides for the suit filed now — the game's own command tried on the state", () => {
+test("PLAY-2 / SUIT-THREAD 소송 걸기: the button says the filing's cost (the engine's suitFilingOutlook, said even when refused) and the hearing it would open — who wins judged now and whether the claim can still pass", () => {
   const claim = estatesOf(lord).claims.find(entry => entry.claimant === LORD && entry.status === "open")!;
   const after = gameReducer(lord, { type: "file_suit", claimId: claim.id });
   assert.notEqual(after, lord, "the claim can be filed at the start");
-  const suit = estatesOf(after).suits.find(entry => entry.claimId === claim.id)!;
-  const outlook = claimOutlook(lord, claim.id)!;
-  assert.equal(outlook.cost, treasuryBalance(lord) - treasuryBalance(after));
-  assert.ok(outlook.cost > 0);
-  assert.deepEqual(outlook.sides, suitHearing(after, suit.id));
+  const outlook = suitFilingOutlook(lord, claim.id);
+  assert.equal(outlook.refusal, null);
+  assert.equal(outlook.cost, treasuryBalance(lord) - treasuryBalance(after), "the cost is what the filing takes");
+  assert.ok(outlook.cost > 0 && outlook.hearing !== null);
   const row = ledgerView(lord, null)!.claims.find(entry => entry.id === claim.id)!;
   assert.equal(row.cost, moneyShort(outlook.cost));
-  assert.equal(row.hearing, LORD_LEDGER_COPY.hearingIfFiled(outlook.sides!.plaintiff, outlook.sides!.defence));
-  // The user's rule (2026-10-08): which side is larger now, read off the two numbers; who wins is not worded.
-  assert.match(row.hearing!, outlook.sides!.defence > outlook.sides!.plaintiff ? /지금은 방어 쪽이 더 큽니다\. 증거나 후원을 더해야 합니다$/ : /지금은 (청구 쪽이 더 큽니다|두 쪽이 같습니다)/);
-  assert.doesNotMatch(row.hearing!, /이깁|집니다|유리|불리/);
-  assert.match(LORD_LEDGER_COPY.hearing(60, 50), /청구 쪽이 더 큽니다$/);
-  assert.match(LORD_LEDGER_COPY.hearing(50, 50), /두 쪽이 같습니다/);
-  assert.equal(LORD_LEDGER_COPY.fileSuitCost(row.cost!), `소송 걸기 · ${row.cost}`);
-  // The treasury short: the engine refuses, and the screen says the refusal, no cost it was not given.
+  const { plaintiff, defence, verdictNow, reachable } = outlook.hearing!;
+  assert.equal(row.hearing, LORD_LEDGER_COPY.hearingIfFiled(LORD_LEDGER_COPY.hearing(plaintiff, defence, verdictNow, reachable)));
+  // The user's words (2026-10-09): the verdict now, and the claim's reach with all it may yet add.
+  assert.equal(LORD_LEDGER_COPY.hearing(45, 80, "defendant", false), "청구 쪽 45 · 방어 쪽 80. 지금 판결하면 방어 쪽이 이깁니다 · 남은 증거와 후원을 다 더해도 넘기 어렵습니다");
+  assert.equal(LORD_LEDGER_COPY.hearing(45, 80, "defendant", true), "청구 쪽 45 · 방어 쪽 80. 지금 판결하면 방어 쪽이 이깁니다 · 남은 증거와 후원을 다 더하면 넘을 수 있습니다");
+  assert.equal(LORD_LEDGER_COPY.hearing(90, 80, "plaintiff", true), "청구 쪽 90 · 방어 쪽 80. 지금 판결하면 청구 쪽이 이깁니다");
+  assert.match(row.hearing!, verdictNow === "plaintiff" ? /청구 쪽이 이깁니다$/ : reachable ? /넘을 수 있습니다$/ : /넘기 어렵습니다$/);
+  assert.equal(LORD_LEDGER_COPY.fileSuitCost(row.cost), `소송 걸기 · ${row.cost}`);
+  // The treasury short: the engine refuses, and the button still says what the filing would take (DTR-22).
   const poor = withTreasury(lord, 0);
-  assert.equal(claimOutlook(poor, claim.id), null);
+  const refused = suitFilingOutlook(poor, claim.id);
+  assert.equal(refused.refusal, "treasury");
   const shut = ledgerView(poor, null)!.claims.find(entry => entry.id === claim.id)!;
-  assert.deepEqual([shut.refusal, shut.cost, shut.hearing], [LORD_LEDGER_COPY.refusals.treasury, null, null]);
+  assert.deepEqual([shut.refusal, shut.cost], [LORD_LEDGER_COPY.refusals.treasury, moneyShort(refused.cost)]);
+  assert.ok(refused.cost > 0);
 });
 
 const losses = { burntHouses: 0, departures: 0, harvestLost: 0 };
@@ -94,12 +96,12 @@ test("PLAY-2 기근 대응 뒤: once answered, the famine's card says the bottle
   const [left, status, next] = famineAfterFacts(state);
   assert.deepEqual(beat.facts.slice(1), [left, status, next]);
   assert.equal(status, townStatus(state, { kind: "building", building: "market" }), "what the town is doing about it (the report's 대기 상태)");
-  assert.equal(left, FAMINE_AFTER_COPY.left(FAMINE_AFTER_COPY.points.no_market()));
+  assert.equal(left, FAMINE_AFTER_COPY.left(WEAK_POINTS.no_market!));
   assert.equal(next, FAMINE_AFTER_COPY.next(lordLevers(state, { kind: "building", building: "market" })[0]!));
   assert.match(beat.advice, /시장/, "the [조언] is the lord's advice on the market");
   // No granary: that comes first (the engine's order), with the granary's lever.
   const bare = { ...state, buildings: state.buildings.filter(building => building.kind !== "granary") };
-  assert.ok(famineAfterFacts(bare)[0]!.startsWith(FAMINE_AFTER_COPY.left(FAMINE_AFTER_COPY.points.no_granary())), famineAfterFacts(bare)[0]);
+  assert.ok(famineAfterFacts(bare)[0]!.startsWith(FAMINE_AFTER_COPY.left(WEAK_POINTS.no_granary!)), famineAfterFacts(bare)[0]);
   assert.equal(famineAfterFacts(bare).at(-1), FAMINE_AFTER_COPY.next(lordLevers(bare, { kind: "building", building: "granary" })[0]!));
   for (const line of beat.facts) assert.doesNotMatch(line, LATIN);
   // Nothing left: what the engine checked, with its numbers; no lever.
@@ -190,8 +192,8 @@ test("PLAY-2 friction 8: a house decision with a deadline stays among the chips 
   assert.ok(!storyChips(entries, current, 10_000, 500, () => false).some(entry => entry.id === will.id), "not due (the adapter's list): put away as closed");
   current.delete(will.id); due.delete(will.id);
   assert.ok(!storyChips(entries, current, 10_000, 500, () => false, due).some(entry => entry.id === will.id), "answered: gone at once");
-  // The adapter's ids are the chips' (lordStoryBeats), read from the decision cards' heads (the swap point for lordMattersDue).
-  assert.deepEqual(lordMattersDueNow(lord), []);
+  // The chips' ids (lordStoryBeats); SUIT-THREAD: the engine's lordMattersDue and the cards' heads (tests/suitRestScreens.test.ts).
+  assert.deepEqual([...lordMatterChipIds(lord)], []);
   assert.equal(LORD_MATTER_CHIP.marriage("will_change", "c1"), will.id);
-  assert.ok(DECISION_CARDS_COPY.willDeadline.length > 0);
+  assert.ok(DECISION_CARDS_COPY.willDeadline(null).length > 0);
 });

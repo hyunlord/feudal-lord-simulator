@@ -19,3 +19,13 @@ export const LORD_MOMENT_COPY: Readonly<Record<Wave40ImageId, Readonly<{ title: 
   moment_child_lord_guardian: { title: "어린 영주의 후견", advice: "영주가 스물한 살이 될 때까지 후견인이 영지를 돌본다." },
   moment_end_of_wardship: { title: "후견이 끝났다", advice: "영주가 성년이 되어 장부와 열쇠를 넘겨받았다." },
 };
+
+/** Astra lordplay2 ②: a house's enforcement against the lord (wave40RecordSide `against`) — what he lost, or kept. */
+const AGAINST_LORD: Readonly<Partial<Record<Wave40ImageId, Readonly<{ title: string; advice: string }>>>> = {
+  moment_possession_taken: { title: "이웃이 점유를 가져갔다", advice: "판결대로 땅이 그 가문에게 넘어갔다. 이제 권원과 점유가 모두 그쪽에 있다." },
+  moment_possession_refused: { title: "영주가 버텼다", advice: "판결은 그 가문 쪽으로 났지만 점유는 아직 영주에게 있다. 버티는 힘은 시도할 때마다 줄어든다. 약속·소송 장부에서 사람을 들여 버티거나 합의할 수 있다." },
+};
+
+/** A moment's title and advice by whose it is (the lord's own, or a house's against him). */
+export const lordMomentWords = (art: Wave40ImageId, side: "lord" | "against"): Readonly<{ title: string; advice: string }> =>
+  (side === "against" ? AGAINST_LORD[art] : undefined) ?? LORD_MOMENT_COPY[art];

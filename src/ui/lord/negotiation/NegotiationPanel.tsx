@@ -5,6 +5,7 @@ import { Button } from "../../kit";
 import { lordPortraitStyle } from "../screen/lordPortrait";
 import type { LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
 import { useUiParts, type UI_PART_ART } from "../uiPartArt";
+import { ContractDue } from "./ContractDue";
 import { DIVIDER_WIDTH, NEGOTIATION_ART, NEGOTIATION_ART_IDS, scaleStyle, SEAL_WIDTH } from "./negotiationArt";
 import { NEGOTIATION_COPY as COPY } from "./negotiationCopy.ko";
 import {
@@ -224,7 +225,8 @@ function CounterScreen({ view, parts, dispatch }: { readonly view: CounterView; 
   );
 }
 
-function ContractScreen({ view, parts, onOpen }: { readonly view: TimelineView; readonly parts: Parts; readonly onOpen: LordPanelProps["onOpen"] }): ReactElement {
+function ContractScreen({ state, view, parts, onOpen, onDecide }: { readonly state: GameState; readonly view: TimelineView; readonly parts: Parts;
+  readonly onOpen: LordPanelProps["onOpen"]; readonly onDecide: LordPanelProps["onDecide"] }): ReactElement {
   const rows = (side: "ours" | "theirs") => view.rows.filter(row => row.side === side).map(row => <Row key={row.kind} parts={parts} row={row} />);
   return (
     <>
@@ -238,20 +240,14 @@ function ContractScreen({ view, parts, onOpen }: { readonly view: TimelineView; 
         </ol>
         {view.details.length === 0 ? null : <ul className="lord-neg-details">{view.details.map(line => <li key={line}>{line}</li>)}</ul>}
         {view.outcome === null ? null : <p className="lord-neg-outcome" data-outcome={view.stage}>{view.outcome}</p>}
-        {view.dueText === null ? null : <p className="lord-neg-due" data-due={view.due ?? ""} role="status">{view.dueText}</p>}
-        {view.suitFocus === null ? null : (
-          <div className="lord-neg-actions">
-            <Button type="button" className="lord-neg-open-suit" data-open-suit={view.suitFocus} aria-label={COPY.openSuitLabel}
-              onPress={() => onOpen("ledger", view.suitFocus ?? undefined)}>{COPY.openSuit}</Button>
-          </div>
-        )}
+        <ContractDue state={state} view={view} onOpen={onOpen} onDecide={onDecide} />
       </section>
       <Treaty parts={parts} heading={COPY.contractTitle} seal={view.seal} ours={rows("ours")} theirs={rows("theirs")} />
     </>
   );
 }
 
-export function NegotiationPanel({ state, dispatch, onOpen }: LordPanelProps): ReactElement {
+export function NegotiationPanel({ state, dispatch, onOpen, onDecide }: LordPanelProps): ReactElement {
   const [draft, setDraftState] = useState<Draft>(EMPTY_DRAFT);
   const parts = useUiParts(NEGOTIATION_ART_IDS);
   const view = useMemo(() => negotiationScreen(state, draft), [state, draft]);
@@ -261,7 +257,7 @@ export function NegotiationPanel({ state, dispatch, onOpen }: LordPanelProps): R
       <header className="lord-neg-head"><h3>{COPY.heading}</h3><p className="lord-neg-houses">{view.houses}</p></header>
       {view.phase === "draft" ? <DraftScreen view={view} parts={parts} dispatch={dispatch} setDraft={setDraft} />
         : view.phase === "countered" ? <CounterScreen view={view} parts={parts} dispatch={dispatch} />
-        : <ContractScreen view={view} parts={parts} onOpen={onOpen} />}
+        : <ContractScreen state={state} view={view} parts={parts} onOpen={onOpen} onDecide={onDecide} />}
     </div>
   );
 }

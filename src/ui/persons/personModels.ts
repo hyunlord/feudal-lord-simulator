@@ -97,8 +97,18 @@ export function lordHouseholdRows(state: GameState): readonly PersonRow[] {
   const family = (state.persons?.people ?? []).filter(person => inTown(person) && person.tags.includes(LORD_FAMILY_TAG) && person.tags.includes(houseTag))
     .sort((a, b) => (LORD_FAMILY_ORDER[a.role] ?? 9) - (LORD_FAMILY_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear || a.id.localeCompare(b.id));
   const steward = stewardPerson(state);
-  return [...family.map(person => ({ ...personRow(state, person, states), line: PERSONS_COPY.lordFamilyLine(person.role, person.sex, PERSONS_COPY.age(ageOf(person, year))) })),
+  return [...family.map(person => ({ ...personRow(state, person, states), line: PERSONS_COPY.lordFamilyLine(person.role, person.sex, PERSONS_COPY.age(ageOf(person, year)), lordKinOf(state, person)) })),
     ...(steward === null ? [] : [personRow(state, steward, states)])];
+}
+/** SUIT-THREAD (lordplay2 ⑥): the engine's `lord-kin:<relation>` tag of a kinsman of the lord's house (null: none). */
+const kinTag = (person: Person | undefined): string | null => person?.tags.find(tag => tag.startsWith("lord-kin:"))?.slice("lord-kin:".length) ?? null;
+/** A kinsman's relation, or a kinsman's bride by the marriage's groom (`<his relation>_wife`). */
+function lordKinOf(state: GameState, person: Person): string | null {
+  const own = kinTag(person);
+  const plan = state.diplomacy?.marriage;
+  if (own !== null || plan === undefined || plan.brideId !== person.id) return own;
+  const groom = kinTag(state.persons?.people.find(entry => entry.id === plan.groomId));
+  return groom === null ? null : `${groom}_wife`;
 }
 const LORD_FAMILY_ORDER: Readonly<Record<string, number>> = { head: 0, spouse: 1, kin: 2, child: 3 };
 
