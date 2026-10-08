@@ -3,7 +3,7 @@ import type { GameState } from "../../../engine/engine.types";
 import { famineShortHouses } from "../../../engine/eventSchedule";
 import { famineStatus } from "../../../engine/politics";
 import { lordMode } from "../../../engine/townAgency";
-import { lordLevers, type TownNeed } from "./lordAdvice";
+import { lordLevers, townStatus, type TownNeed } from "./lordAdvice";
 import { FAMINE_AFTER_COPY as COPY } from "./famineAfterCopy.ko";
 
 // PLAY-2 (Astra's second lord-mode play, 2026-10-08: after answering the famine "I did not know what was still wrong or
@@ -44,7 +44,7 @@ export function famineNeed(state: GameState): TownNeed | null {
   return answered(state) ? needOf(preparedness(state)) : null;
 }
 
-/** The famine card's lines once answered: the bottleneck left, then (lord mode) the next lever; [] before the answer. */
+/** The famine card's lines once answered: the bottleneck left, then (lord mode) what the town is doing and the next lever; [] before. */
 export function famineAfterFacts(state: GameState): readonly string[] {
   if (!answered(state)) return [];
   const now = preparedness(state);
@@ -53,6 +53,9 @@ export function famineAfterFacts(state: GameState): readonly string[] {
   const points = [...(shut > 0 ? [COPY.priceShut(shut)] : []), ...now.weakPoints.map(point => pointWords(now, point))];
   const left = points.length === 0 ? COPY.none(now.granaries, now.markets, now.foodDays) : COPY.left(points.join(COPY.joiner));
   const need = lordMode(state) ? needOf(now) : null;
-  const lever = need === null ? undefined : lordLevers(state, need)[0];
-  return lever === undefined ? [left] : [left, COPY.next(lever)];
+  if (need === null) return [left];
+  // The report's "대기 상태": what the town is doing about it now (lordAdvice's townStatus), then the lever.
+  const status = townStatus(state, need);
+  const lever = lordLevers(state, need)[0];
+  return [left, ...(status === null ? [] : [status]), ...(lever === undefined ? [] : [COPY.next(lever)])];
 }

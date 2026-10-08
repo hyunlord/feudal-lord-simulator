@@ -9,6 +9,7 @@
 //  - year-chronicle: 1300's year card (deccard2 year-loaded) → [연대기에서 보기]: the chronicle on 1300 only;
 //  - chronicle-titles: the chronicle's decisions (play2 chronicle-cards) — a card answer's line names the event and
 //    the answer (the lines the states script expects);
+//  - lord-wall, family-moment, will-pinned: the report's frictions 10, 9 and 8 (the lead's additions);
 //  - time-cluster: the speed seals at 1×, 5× and 10× (a crop) and the time cluster's box on this tree and on the base
 //    commit (BASE_URL), at 1280 × 800 and the tablet (1180 × 820, touch).
 // Each: its smallest text (≥ 12 px), its box inside the view, no title=. results.json beside them.
@@ -242,6 +243,86 @@ if (wanted('time-cluster')) {
   row.sameBox = same;
   const marks = row.marks ?? {};
   report('time-cluster', row, same !== false && marks['1']?.mark === '×5·10' && marks['5']?.on === '×5' && marks['10']?.on === '10' && marks['1']?.smallest >= 12);
+}
+
+// 7. Friction 10 (lord mode): the goal drawer's palisade guidance — the town's line and request, the lord's lever.
+if (wanted('lord-wall')) {
+  const state = sceneAt(flags.lord2, 'offer-countered');
+  if (state === null) report('lord-wall', { card: null, missing: true }, false);
+  else {
+    const { context, page } = await open(state);
+    watch(page, 'lord-wall');
+    await click(page, '.goal-drawer-toggle'); await page.waitForTimeout(600);
+    await click(page, '.settlement-progress > details > summary'); await page.waitForTimeout(600);
+    const shown = await waitFor(page, '.era-console', 10_000);
+    const row = { state: 'lmr2 offer-countered', shown, card: shown ? await measure(page, '.era-console') : null };
+    if (shown) { await page.locator('.era-console').first().scrollIntoViewIfNeeded(); row.bytes = await shoot(page, 'lord-wall'); bytes += row.bytes; }
+    const text = row.card?.text ?? '';
+    report('lord-wall', row, text.includes('마을이 잡아 영주에게 청합니다') && !text.includes('직접 그어 주세요'));
+    await context.close();
+  }
+}
+
+// 8. Friction 9: a marriage's or a birth's moment names its people; its [연대기에서 보기] opens the record with a
+// biography button for each, and one opens that biography.
+if (wanted('family-moment')) {
+  const name = ['first_child', 'bride_arrival', 'marriage_sealing'].find(entry => sceneAt(flags.moments, entry) !== null);
+  const state = name === undefined ? null : sceneAt(flags.moments, name);
+  if (state === null) report('family-moment', { card: null, missing: true }, false);
+  else {
+    const { context, page } = await open(state, { query: '&story-delay=0' });
+    watch(page, 'family-moment');
+    const chip = ".event-chip[data-story='lord_moment']";
+    const shown = await waitFor(page, chip, 60_000);
+    const row = { state: `moments ${name}`, chip: shown, card: null };
+    if (shown) {
+      await click(page, chip);
+      await waitFor(page, ".event-card[data-story='lord_moment']", 10_000);
+      row.card = await measure(page, ".event-card[data-story='lord_moment']");
+      row.bytes = await shoot(page, 'family-moment'); bytes += row.bytes;
+      row.toChronicle = await click(page, ".event-card[data-story='lord_moment'] .event-card-chronicle");
+      row.links = row.toChronicle && await waitFor(page, '.chronicle-detail [data-family]', 20_000)
+        ? await page.evaluate(() => [...document.querySelectorAll('.chronicle-detail [data-family]')].map(el => `${el.getAttribute('data-family')}:${el.textContent}`)) : [];
+      if (row.links.length > 0) {
+        await page.waitForTimeout(600);
+        row.detailBytes = await shoot(page, 'family-chronicle'); bytes += row.detailBytes;
+        await click(page, '.chronicle-detail [data-family]');
+        row.biography = await waitFor(page, '.chronicle-biography', 10_000);
+      }
+    }
+    report('family-moment', row, shown && (row.card?.text ?? '').match(/(신랑|신부|아이|어머니|아버지) /) !== null && (row.links ?? []).length > 0 && row.biography === true);
+    await context.close();
+  }
+}
+
+// 9. Friction 8: the will's chip stays among the chips after its card is closed (until answered).
+if (wanted('will-pinned')) {
+  const state = sceneAt(flags.lord2, 'will-change');
+  if (state === null) report('will-pinned', { card: null, missing: true }, false);
+  else {
+    const { context, page } = await open(state, { query: '&story-delay=0' });
+    watch(page, 'will-pinned');
+    // The will's card may open by itself: put it off ([나중에]) first.
+    await page.waitForTimeout(2_000);
+    if (await visible(page, '.story-modal-later')) { await click(page, '.story-modal-later'); await page.waitForTimeout(600); }
+    const chip = ".event-chip[data-story='lord_decision']";
+    const shown = await waitFor(page, chip, 30_000);
+    const row = { state: 'lmr2 will-change', chip: shown, card: null };
+    if (shown) {
+      await click(page, chip);
+      await waitFor(page, ".event-card[data-story='lord_decision']", 10_000);
+      row.card = await measure(page, ".event-card[data-story='lord_decision']");
+      row.bytes = await shoot(page, 'will-chip'); bytes += row.bytes;
+      // [닫기] (the card's last button) closes the card; the chip stays.
+      await page.locator(".event-card[data-story='lord_decision'] .event-card-actions button").last().click();
+      await page.waitForTimeout(800);
+      row.cardAfter = await visible(page, ".event-card[data-story='lord_decision']");
+      row.chipAfter = await visible(page, chip);
+      row.afterBytes = await shoot(page, 'will-chip-kept'); bytes += row.afterBytes;
+    }
+    report('will-pinned', row, shown && row.cardAfter === false && row.chipAfter === true);
+    await context.close();
+  }
 }
 
 await browser.close();

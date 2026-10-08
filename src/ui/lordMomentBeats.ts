@@ -4,6 +4,8 @@ import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
 import { recordSentence } from "./legacy/chapterRecords";
 import { LORD_MOMENT_COPY } from "./lordMomentCopy.ko";
+import { familyLine, familyPeople } from "./persons/familyNews";
+import { FAMILY_NEWS_COPY } from "./persons/familyNewsCopy.ko";
 import { wave40RecordArt, type Wave40ImageId } from "./wave40Art";
 
 // EVENT-ART (Wave 40): the lord's moments as story beats (lord mode only) — the marriage's stages, the inheritance, the suit
@@ -43,8 +45,11 @@ export function lordMoments(state: Pick<GameState, "tick" | "history">): readonl
 
 export function lordMomentBeats(state: GameState, seat: { readonly tx: number; readonly ty: number } | null): readonly StoryBeat[] {
   if (!lordMode(state)) return [];
-  return lordMoments(state).map(({ record, art }) => ({
-    id: `lord-moment:${record.id}`, kind: "lord_moment", illustration: art, tile: AT_SEAT.has(art) ? seat : null, decision: null,
-    title: LORD_MOMENT_COPY[art].title, line: recordSentence(state, record), facts: [], advice: LORD_MOMENT_COPY[art].advice,
-  }));
+  return lordMoments(state).map(({ record, art }) => {
+    // PLAY-2 (friction 9): a marriage's or a birth's moment names its people, and opens its record (their biographies).
+    const people = familyLine(familyPeople(state, record));
+    return { id: `lord-moment:${record.id}`, kind: "lord_moment", illustration: art, tile: AT_SEAT.has(art) ? seat : null, decision: null,
+      title: LORD_MOMENT_COPY[art].title, line: recordSentence(state, record), facts: people === null ? [] : [people], advice: LORD_MOMENT_COPY[art].advice,
+      ...(people === null ? {} : { chronicle: { recordId: record.id, tick: record.tick, label: FAMILY_NEWS_COPY.openLabel(LORD_MOMENT_COPY[art].title) } }) };
+  });
 }

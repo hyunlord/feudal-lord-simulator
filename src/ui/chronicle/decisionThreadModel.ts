@@ -4,6 +4,7 @@ import type { GameState } from "../../engine/engine.types";
 import type { HistoryRecord } from "../../engine/history.types";
 import { lordMode } from "../../engine/townAgency";
 import { recordSentence } from "../legacy/chapterRecords";
+import { withFamily } from "../persons/familyNews";
 import { decisionAbout, threadLines } from "../results/decisionThread";
 import { RESULTS_COPY } from "../results/resultsCopy.ko";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
@@ -64,6 +65,8 @@ const CARD_TEMPLATES: ReadonlySet<string> = new Set(["decision.card", "decision.
  */
 export function chronicleRecordCard(state: GameState, item: ChronicleItem): RecordCard {
   const card = recordCard(state, item);
-  if (item.bundle !== null || !CARD_TEMPLATES.has(item.record.template)) return card;
+  if (item.bundle !== null) return card;
+  // PLAY-2 (friction 9): a birth, a marriage or a death names its people (the child and the parents, the couple).
+  if (!CARD_TEMPLATES.has(item.record.template)) return { ...card, sentence: withFamily(state, item.record, card.sentence, card.personId) };
   return { ...card, sentence: becauseLine(state, item.record, decisionAbout(state, item.record)) };
 }

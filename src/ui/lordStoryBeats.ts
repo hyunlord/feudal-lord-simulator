@@ -63,12 +63,13 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `lord-request:${request.key}`, kind: "lord_request", illustration: requestArt(request.kind), tile: seatTile(state),
       decision: "lord_request", title: request.title, line: request.demand, facts: request.more === "" ? [] : [request.more], advice: LORD_CARDS_COPY.requestAdvice });
   }
-  // LM-R2: the lord's decision cards. The will's chip wears the will's Wave 40 moment and stands for it (one chip).
+  // LM-R2: the lord's decision cards. The will's chip wears the will's Wave 40 moment and stands for it (one chip). PLAY-2:
+  // these stay among the chips until answered (useStoryPresentation); the will's says its deadline.
   const marriage = marriageDecisionHead(state);
   if (marriage !== null) {
     beats.push({ id: `marriage-decision:${marriage.kind}:${marriage.claimId}`, kind: "lord_decision",
       illustration: marriage.kind === "will_change" ? WILL_MOMENT : null, tile: null, decision: "marriage_decision",
-      title: marriage.title, line: marriage.line, facts: marriage.kind === "contested" ? [marriage.suit] : [], advice: marriage.kind === "contested" ? DECISION_CARDS_COPY.contestOpen : DECISION_CARDS_COPY.willAdvice });
+      title: marriage.title, line: marriage.line, facts: marriage.kind === "contested" ? [marriage.suit] : [DECISION_CARDS_COPY.willDeadline], advice: marriage.kind === "contested" ? DECISION_CARDS_COPY.contestOpen : DECISION_CARDS_COPY.willAdvice });
   }
   const audit = auditDecisionHead(state);
   if (audit !== null) {

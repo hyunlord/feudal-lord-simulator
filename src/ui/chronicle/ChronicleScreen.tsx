@@ -22,6 +22,7 @@ import { FACTION_PAGE, FactionPage } from "./FactionPage";
 import { FactionTab } from "./FactionTab";
 import { FamilyTree } from "./FamilyTree";
 import { FAMILY_TREE_COPY } from "./familyTreeCopy.ko";
+import { FamilyLinks } from "./FamilyLinks";
 import { factionPageView, factionRows, worldLines } from "./factionTabModel";
 import { tugOfWarView } from "./factionInfluenceModel";
 import type { FactionId } from "../../content/factionConfig";
@@ -81,8 +82,7 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
             onPress={() => onCompare()} variant="secondary"><UiIcon sheet="layer" cell="zone" />{COPY.mapCompare}</Button>}
           {card.place === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.lookAtLabel(card.date)}
             onPress={() => { if (card.place !== null) onLookAt(card.place); }} variant="secondary"><UiIcon sheet="action" cell="look" />{COPY.lookAt}</Button>}
-          {card.personId === null || card.personName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.personLabelFor(card.personName)}
-            onPress={() => { if (card.personId !== null) onPerson(card.personId); }} variant="secondary"><UiIcon sheet="resource" cell="population" />{COPY.person}</Button>}
+          <FamilyLinks state={state} record={item.record} card={card} onPerson={onPerson} />
           {card.factionId === null || card.factionName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.factionLabelFor(card.factionName)}
             onPress={() => { if (card.factionId !== null) onFaction(card.factionId); }} variant="secondary"><UiIcon sheet="cause" cell="rights" />{COPY.faction}</Button>}
         </div>

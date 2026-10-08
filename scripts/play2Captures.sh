@@ -11,4 +11,4 @@ states=.remote/play2-states
 node_modules/.bin/tsx scripts/play2States.ts "$states" 2>&1 | tee .remote/play2-states.log
 mkdir -p "$out" && cp "$states/play2-states.json" "$out/states.json" 2>/dev/null
 bash scripts/remote/with-base-build.sh "$base_sha" -- "node_modules/.bin/tsx scripts/play2Captures.mjs '$out' --url \"\$URL\" --base \"\$BASE_URL\" --states '$states' \
-  --lord2 '${LMR2_STATES:-$HOME/fls-lmr2-states}' --deccard2 '${DECCARD2_STATES:-$HOME/fls-deccard2-results-states}' --ui5 '${UI5_STATES:-$HOME/fls-ui5-states-v22}' $extra 2>&1 | tee .remote/play2-captures.log; exit \${PIPESTATUS[0]}"
+  --lord2 '${LMR2_STATES:-$HOME/fls-lmr2-states}' --deccard2 '${DECCARD2_STATES:-$HOME/fls-deccard2-results-states}' --ui5 '${UI5_STATES:-$HOME/fls-ui5-states-v22}' --moments '${WAVE40_MOMENT_STATES:-$HOME/fls-wave40-moment-states}' $extra 2>&1 | tee .remote/play2-captures.log; exit \${PIPESTATUS[0]}"

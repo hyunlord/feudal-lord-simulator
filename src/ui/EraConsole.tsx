@@ -26,6 +26,7 @@ import { cachedExpansionPreview, expansionLines, pendingPastureWarning } from ".
 import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 import { Button } from "./kit";
 import { ERA_CONSOLE_COPY } from "./eraConsoleCopy.ko";
+import { lordWallGuidance } from "./lord/advice/lordWall";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -89,6 +90,7 @@ export function buildEraConsoleModel(input: {
     ? proposalSummaryForState(input.state, palisadeFootprintsForState(input.state))
     : null;
   const firstUnmet = requirements.find((requirement) => !requirement.met) ?? null;
+  const lordWall = lordWallGuidance(input.state, proposal === null || proposal.ok ? null : palisadeFailureLabel(proposal.reason));
   const proposalVisible =
     input.state.era === "hamlet" && (requirements.some((requirement) => requirement.met) || input.draft !== null);
   const targetEra = input.state.era === "hamlet" ? "palisade" : "stone_town";
@@ -123,7 +125,8 @@ export function buildEraConsoleModel(input: {
       reason: actionReason({ firstUnmet, state: input.state, draft: input.draft }),
       targetEra,
     },
-    proposal: {
+    // PLAY-2 (lord mode): the town's line and its request, the lord's lever; drawing it himself only when the town found none.
+    proposal: lordWall !== null ? { visible: true, label: lordWall.line, failure: lordWall.next, recommendEnabled: input.state.era === 'hamlet' && firstUnmet === null } : {
       visible: proposalVisible,
       label: proposal === null ? "" : proposal.ok ? proposal.label : WALL_COPY.recommendationFailed,
       failure: proposal === null || proposal.ok ? null : palisadeFailureLabel(proposal.reason),

@@ -67,6 +67,25 @@ export function yearCardDue(previous: Readonly<{ year: number; tick: number }> |
   return loaded && state.tick % YEAR_TICKS < YEAR_TICKS / 4 && (state.seen?.marks.length ?? 0) > 0 ? last : null;
 }
 
+/**
+ * The chips shown now, at most MAX_CHIPS: each beat seen `delayMs` ago, not put away, still current or within its minute
+ * after. DEC-CARD (A3): a house change's chip is never pushed out by newer chips (at 10× a season's chips come fast).
+ * PLAY-2 (friction 8): a house decision with a deadline (the will, the contested inheritance, an audit, an off-map
+ * estate's petition — `lord_decision`) stays among the chips until it is answered: closing its card does not put it away,
+ * newer chips do not push it out, and it goes the moment it is answered (no lingering).
+ */
+export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean }>[],
+  current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean): readonly StoryBeat[] {
+  const unanswered = (beat: StoryBeat) => beat.kind === "lord_decision" && current.has(beat.id);
+  const shown = entries
+    .filter(entry => (!entry.dismissed || unanswered(entry.beat)) && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs
+      && (current.has(entry.beat.id) || (entry.beat.kind !== "lord_decision" && nowMs - entry.lastSeenMs < LINGER_MS)))
+    .map(entry => entry.beat);
+  const pinned = shown.filter(beat => beat.kind === "house_change" || unanswered(beat));
+  const rest = shown.filter(beat => beat.kind !== "house_change" && !unanswered(beat));
+  return [...pinned, ...rest.slice(rest.length - Math.max(0, MAX_CHIPS - pinned.length))].slice(0, MAX_CHIPS);
+}
+
 export function useStoryPresentation(input: {
   readonly state: GameState; readonly nowMs: number; readonly blocked: boolean; readonly topModal: UiModal | null;
   readonly pushModal: (modal: UiModal) => void; readonly pause: () => void;
@@ -119,13 +138,7 @@ export function useStoryPresentation(input: {
     if (changed) setRevision(revision => revision + 1);
   });
   const current = new Set(beats.map(beat => beat.id));
-  const shown = [...seenRef.current.values()]
-    .filter(entry => !entry.dismissed && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs && (current.has(entry.beat.id) || nowMs - entry.lastSeenMs < LINGER_MS))
-    .map(entry => entry.beat);
-  // DEC-CARD (A3): a house change's chip is never pushed out by newer chips (at 10× a season's chips come fast).
-  const pinned = shown.filter(beat => beat.kind === "house_change");
-  const rest = shown.filter(beat => beat.kind !== "house_change");
-  const visible = [...pinned, ...rest.slice(rest.length - Math.max(0, MAX_CHIPS - pinned.length))].slice(0, MAX_CHIPS);
+  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead);
   const visibleKey = visible.map(beat => beat.id).join("|");
   // A new chip: stop time if the setting asks for it.
   useEffect(() => {
