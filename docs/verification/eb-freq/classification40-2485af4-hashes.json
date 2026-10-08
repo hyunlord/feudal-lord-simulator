@@ -1,0 +1,22 @@
+{
+  "rawSha256": "313f9abe17764f4792a9b8df56ee562062ebfc1de9d17b4ca882c37236ead196",
+  "gzipSha256": "30be226a2e6f8fbe0bfe65a49f234a126ed1d837761c24bbc8c272786c48211c",
+  "reportSha256": "fce11e4f90d3ce0438ed29159621f0effffce3dffd75430fd61123e362135230",
+  "counts": {
+    "exactHistoricalIds": 40,
+    "observedUnion": 11,
+    "unobservedUnion": 29,
+    "categories": {
+      "narrowcondition": 25,
+      "missingproducer": 0,
+      "era": 2,
+      "cooldown-conflict": 0,
+      "adapterbug": 0,
+      "unclassified": 13
+    },
+    "unclassifiedUnobserved": [
+      "ck_evt_033",
+      "ck_evt_147"
+    ]
+  }
+}

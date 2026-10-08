@@ -33,3 +33,19 @@ Additional lifecycle defect found independently and also identified by parent: i
 `stopOwnedServer:153–166` returns for an already-exited or spawn-failed child, waits for exit after SIGTERM, escalates SIGKILL at3s and rejects at6s, clearing timers/listener on settlement. Startup catch awaits this helper and preserves startup+cleanup failures (`:188–190`). Main catches browser-close failure independently, still stops Vite, and writes the manifest in nested finally; cleanup errors force invalid evidence and exit1 (`:239–245`). No further blocking finding in these paths.
 
 Prior reference-generation review still applies. Actual browser clock behavior, visible Korean report layout, four canonical presentation comparisons and operational shutdown remain unexecuted in this review. The intended result is one-tick presentation equivalence plus four actual report rows, not raw-store identity or whole-game UI acceptance. Parent owns repository lint/runtime checks. No process, simulation, browser or test was launched by this reviewer in this final review.
+
+## Mandatory server launcher integration review
+
+Reviewed SHA256 `61debae4c0a92aeebcd69bc2ba0da58aeecba416cbc74e4fe7e227b05f99c3be` after parent replaced raw spawn with `spawnServer` from `scripts/serverProcess.ts`, as required by AGENTS.md160. The shared launcher installs process exit/SIGINT/SIGTERM/SIGHUP hooks and puts the Linux server in its own process group. It still returns the same Vite child, so PID/cwd/socket-inode provenance checks remain correct.
+
+**Actionable remaining lifecycle issue:** local `stopOwnedServer` sends both TERM and forced KILL via `server.kill`, targeting only the leader. `spawnServer` removes that child from its running set on leader exit; its later exit hook therefore cannot clean up surviving descendants. A forced leader kill can leave a child in the detached server process group. Change the owned helper's signal target to that owned process group (`process.kill(-server.pid, signal)` on this Linux-only path), preserving bounded wait/escalation and accurate failures. No change to shared serverProcess.ts is required. This is a cleanup integration finding, not a source/tick-evidence defect; prior canonical input/clock findings remain unchanged. No server or test was run.
+
+## Final process-group cleanup review
+
+**PASS WITH LIMITS restored; no remaining blocking source finding.** Reviewed helper SHA256 `8fd69d915e4f51e53624a4cfb217ddc03a75efef8f3c54d562cfde8ed9411e01` and cleanup-test SHA256 `4046fa4699b11f7004987e3b6d67f6ff5d5993961f48695b2476e6c56cc99ef3`.
+
+`stopOwnedServer` now sends TERM/KILL to the owned detached group (`-server.pid`), sends a final group KILL when the leader exits, and also clears a surviving group when the leader was already exited. Only ESRCH is ignored; permission or other failures remain errors and reach failed cleanup evidence. Existing bounded3s escalation/6s deadline and startup/main cleanup wiring remain intact. This resolves the raw-spawn→spawnServer integration issue without changing the shared launcher or engine.
+
+Read all four meaningful regression tests: normal leader exit with descendant cleanup; already-exited leader;3s forced whole-group escalation under fake timers; harmless missing-group versus rejected permission failure. Tests mock process.kill and create no real processes/ticks. Parent reported all4 tests and repository lint passing; this reviewer inspected source only and did not rerun them. The6s no-exit timeout branch is source-inspected rather than directly covered by these four tests.
+
+Prior source provenance, expected-input/output binding and presentation-only proof limitations still apply. Actual DGX browser/clock/rendering and operational process exit remain pending runtime evidence, not inferred from this source PASS.

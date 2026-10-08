@@ -1,6 +1,6 @@
 // Run with tsx on the DGX; owns one localhost Vite process, never runs a replay.
 import { createHash } from 'node:crypto';
-import { execFileSync, spawn } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync, openSync, closeSync, realpathSync, readlinkSync, readdirSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +12,7 @@ import { loadChromium } from './renderCommitProbe.mjs';
 import { routeSceneState, sceneStateRefusal } from './sceneInjection.mjs';
 import { presentationDifference } from './engineBVisibleCapture.mjs';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
+import { spawnServer } from './serverProcess.ts';
 const SOURCE = '2485af40046793f1856829fa1161dc4431942aa7';
 const TARGETS = [
   [126999, 'ck_evt_058', 'remit', 'registry:ck_evt_058:petition.charterFee|ck_evt_058@126000:126'],
@@ -150,18 +151,22 @@ async function inspect(browser, item, output, url) {
   }
   return row;
 }
-async function stopOwnedServer(server) {
-  if (!server.pid || server.exitCode !== null || server.signalCode !== null) return;
+export async function stopOwnedServer(server) {
+  if (!server.pid) return;
+  const signalGroup = signal => {
+    try { process.kill(-server.pid, signal); } catch (error) { if (error?.code !== 'ESRCH') throw error; }
+  };
+  if (server.exitCode !== null || server.signalCode !== null) { signalGroup('SIGKILL'); return; }
   await new Promise((resolveStop, rejectStop) => {
     const finish = error => {
       clearTimeout(force); clearTimeout(deadline); server.off('exit', exited);
       if (error) rejectStop(error); else resolveStop();
     };
-    const exited = () => finish();
-    const force = setTimeout(() => { try { server.kill('SIGKILL'); } catch (error) { finish(error); } }, 3000);
+    const exited = () => { try { signalGroup('SIGKILL'); finish(); } catch (error) { finish(error); } };
+    const force = setTimeout(() => { try { signalGroup('SIGKILL'); } catch (error) { finish(error); } }, 3000);
     const deadline = setTimeout(() => finish(new Error(`Owned Vite PID ${server.pid} did not exit after SIGKILL`)), 6000);
     server.once('exit', exited);
-    try { server.kill('SIGTERM'); } catch (error) { finish(error); }
+    try { signalGroup('SIGTERM'); } catch (error) { finish(error); }
   });
 }
 async function startOwnedServer(url, output) {
@@ -169,7 +174,7 @@ async function startOwnedServer(url, output) {
   check(address.protocol === 'http:' && address.hostname === '127.0.0.1' && address.port && address.pathname === '/' && !address.search && !address.hash && !address.username && !address.password, 'Owned localhost URL with explicit port required');
   const port = Number(address.port), cwd = realpathSync(process.cwd());
   const log = openSync(join(output, 'vite.log'), 'wx');
-  const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], { cwd, stdio: ['ignore', log, log] });
+  const server = spawnServer(process.execPath, ['node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], { cwd, stdio: ['ignore', log, log] });
   closeSync(log);
   let spawnError; server.on('error', error => { spawnError = error; });
   try {

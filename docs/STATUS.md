@@ -969,3 +969,5 @@ Engine B [56개·163선택지의 세 판 대조](verification/eb-weight/coverage
 Engine B 실제 계절 보고 검증 도구를 준비했다. 검증된 원본 직전 저장·별도 한 틱 출력·자체 Vite 소스를 고정하고 정상 속도 조작으로 정확히 한 틱 뒤 실제 청지기 행을 확인한다. [계약과 한계](verification/eb-weight/season-report-capture-contract.md). 아직 실행 전이며 표시 상태 동일성과 내부 원시 상태 관측을 구분한다. 가드레일의 샌드박스3개 해시는 기준과 일치했으나 캠페인 비교는 진행 중이다.
 
 Engine B 화면 미검증010·051·059의 추가 진단: 네 제시 모두 무효 처리되어 성공 답변이 없었다. 세 청구는 앞선 동일 tick 소송 접수,059는 앞선 영지 위임이 재바인딩을 막기에 충분하며 명령 직전 상태 재현은 아니다. 전체 무효5건에도 선택 history card가 남고 자체 trace는 없는 기록 불일치를 [엔진에 요청](requests/engine-B-weight-trace.md)했다.053의 정확한 실패 조건은 미확정이다.
+
+Engine B 계절 검증 서버를 RR12 공용 spawnServer 경로와 프로세스 그룹 정리로 보완했다. 가짜 시계 회귀4시험·저장소 린트·독립 검토 통과이며 실제 서버/브라우저 검증은 아직 전이다. 기존 미관측40개 [분류표](verification/eb-freq/classification40-2485af4.md)는 전제·선택지 병목25·시대 제외2를 구분하고13개 원인 미확정을 유지한다.
