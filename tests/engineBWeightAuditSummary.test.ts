@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { annualStatistics, summarizeWeightAudit } from '../scripts/engineBWeightAuditSummary';
+import { annualStatistics, summarizeWeightAudit, weightAuditOccurrencesInRange } from '../scripts/engineBWeightAuditSummary';
 import { TRACE_LIVE_TICKS } from '../src/engine/decisionTrace';
 import type { TracedDecision } from '../src/engine/decisionTrace.types';
+import type { RegistryOccurrence } from '../src/engine/registry.types';
 import type { HistoryRecord } from '../src/engine/history.types';
 
 const decision: TracedDecision = { id: 'h-1', tick: 0, by: 'lord', kind: 'registry', source: 'registry:ck_evt_001:yes', weights: ['rights'], targets: [] };
@@ -36,4 +37,26 @@ test('steward coverage requires exact source ID and report family membership', (
   const input = { startYear: 1300, years: 1, endTick: 1, decisions: [steward], history: [own] };
   assert.equal(summarizeWeightAudit({ ...input, reportKeys: ['petition:occ-1'] }).steward.inReport, 0);
   assert.equal(summarizeWeightAudit({ ...input, reportKeys: ['registry:occ-1'] }).steward.inReport, 1);
+});
+
+test('end-boundary decisions are excluded while endpoint consequences for prior decisions remain', () => {
+  const endpoint = TRACE_LIVE_TICKS;
+  const boundaryLord = { ...decision, id: 'h-end-lord', tick: endpoint };
+  const boundarySteward: TracedDecision = { ...decision, id: 'h-end-steward', tick: endpoint, by: 'steward', weights: [] };
+  const summary = summarizeWeightAudit({ startYear: 1300, years: 3, endTick: endpoint,
+    decisions: [decision, boundaryLord, boundarySteward], history: [record('h-end-consequence', endpoint)], reportKeys: [] });
+  assert.deepEqual(summary.decisions.map(row => row.id), [decision.id]);
+  assert.equal(summary.wholeGame.total, 1);
+  assert.equal(summary.steward.counted, 0);
+  assert.equal(summary.trace.matureLord.counted, 1);
+  assert.equal(summary.trace.matureLord.withFutureConsequence, 1);
+  assert.equal(summary.decisions[0]?.firstConsequence?.tick, endpoint);
+});
+
+test('support occurrences use the same exclusive end boundary as decision denominators', () => {
+  const occurrence: RegistryOccurrence = { id: 'inside', entryId: 'ck_evt_058', boundId: '', offeredTick: 3999,
+    deadline: 5000, status: 'answered', receipt: { draw: 0, chancePermille: 1000, conditions: [] } };
+  const rows = weightAuditOccurrencesInRange([occurrence, { ...occurrence, id: 'boundary', offeredTick: 4000 },
+    { ...occurrence, id: 'before', offeredTick: -1 }], 4000);
+  assert.deepEqual(rows.map(row => row.id), ['inside']);
 });

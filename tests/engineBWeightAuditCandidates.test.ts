@@ -41,3 +41,11 @@ test('invalid diagnostic counters are rejected instead of silently corrupting to
   assert.throws(() => collector.observe({ ...sample, missingBindings: '{"suit":"2"}' }), CandidateAuditInputError);
   assert.equal(collector.snapshot().observations, 0);
 });
+
+test('candidate evaluation range includes start and excludes the final boundary', () => {
+  const collector = createCandidateAuditCollector(4000);
+  for (const tick of [-1, 0, 3999, 4000, 4001]) collector.observe({ ...sample, tick });
+  assert.equal(collector.snapshot().observations, 2);
+  assert.equal(collector.snapshot().groups[0]?.first.tick, 0);
+  assert.equal(collector.snapshot().groups[0]?.last.tick, 3999);
+});

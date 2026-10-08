@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { BALANCE } from '../src/content/balanceConfig';
 import { LORD_SLICE_SCENARIO_ID } from '../src/content/lordSliceConfig';
 import { lordBotCommands } from '../src/engine/lordBot';
 import { registerRegistryCandidateObserver, registryCandidateObserverFailures } from '../src/engine/registryCandidateObservation';
@@ -13,7 +14,7 @@ import { gameReducer } from '../src/state/gameStore';
 import { newGameState } from '../src/state/newGame';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
 import { createWeightAuditCollector } from './engineBWeightAuditCollector';
-import { annualStatistics, ENGINE_B_PRIOR_BATCH_IDS, summarizeWeightAudit } from './engineBWeightAuditSummary';
+import { annualStatistics, ENGINE_B_PRIOR_BATCH_IDS, summarizeWeightAudit, weightAuditOccurrencesInRange } from './engineBWeightAuditSummary';
 
 export class WeightAuditInputError extends Error {
   constructor(message: string) { super(message); this.name = 'WeightAuditInputError'; }
@@ -24,7 +25,8 @@ export function engineBWeightAuditRun(seed: number, years: number) {
   }
   refuseHeavyOnMac('EB-WEIGHT long simulation', { remote: 'scripts/remote/run.sh EB-WEIGHT -- npx tsx scripts/engineBWeightAuditRun.ts 1 125 output.json' });
   if (registryCandidateObserverFailures() !== 0) throw new WeightAuditInputError('Candidate observer already has failures');
-  const candidates = createCandidateAuditCollector();
+  const endTickExclusive = years * BALANCE.TICKS_PER_YEAR;
+  const candidates = createCandidateAuditCollector(endTickExclusive);
   const unregister = registerRegistryCandidateObserver(candidates.observe);
   try {
     let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed });
@@ -51,12 +53,13 @@ export function engineBWeightAuditRun(seed: number, years: number) {
     const summary = summarizeWeightAudit({ ...archive, startYear, years, endTick: state.tick });
     const yearOf = (tick: number) => stateCalendar({ ...state, tick }).year;
     const enabledIds = registryV4Support().filter(entry => entry.runs).map(entry => entry.id);
-    const observedIds = [...new Set(archive.occurrences.map(occurrence => occurrence.entryId))].sort();
+    const inRangeOccurrences = weightAuditOccurrencesInRange(archive.occurrences, endTickExclusive);
+    const observedIds = [...new Set(inRangeOccurrences.map(occurrence => occurrence.entryId))].sort();
     const annualArrivals = Array.from({ length: years }, (_, offset) => {
       const year = startYear + offset;
       const presented = archive.presentations.filter(item => yearOf(item.firstObservedTick) === year);
       const ids = new Set(presented.filter(item => item.kind === 'registry').map(item => item.key.slice('registry:'.length)));
-      const weightedRegistry = archive.occurrences.filter(item => ids.has(item.id) && (item.weights?.length ?? 0) > 0);
+      const weightedRegistry = inRangeOccurrences.filter(item => ids.has(item.id) && (item.weights?.length ?? 0) > 0);
       const due = archive.lordDueArrivals.filter(item => yearOf(item.firstObservedTick) === year);
       return { year, wholeGameQueueItems: presented.length, registryHeavyOffers: weightedRegistry.length,
         lordDueItems: due.length, lordDueKinds: due.map(item => item.kind),
@@ -67,8 +70,8 @@ export function engineBWeightAuditRun(seed: number, years: number) {
       candidateObservation: { ...candidates.snapshot(), observerFailures: registryCandidateObserverFailures() },
       arrivalLimits: 'Whole-game queue arrival collector does not classify non-registry item weights; P-T1 uses resolved/lapsed trace metric separately.',
       registryHeavyArrivalDensity: annualStatistics(annualArrivals.map(row => row.registryHeavyOffers)),
-      support: { priorBatchB11Ids: [...ENGINE_B_PRIOR_BATCH_IDS], enabledIds, observedIds, enabledNotObserved: enabledIds.filter(id => !observedIds.includes(id)),
-        perEntry: enabledIds.map(id => ({ id, occurrences: archive.occurrences.filter(item => item.entryId === id).length,
+      support: { offeredTickRange: { fromInclusive: 0, toExclusive: endTickExclusive }, boundaryOccurrenceCount: archive.occurrences.length - inRangeOccurrences.length, priorBatchB11Ids: [...ENGINE_B_PRIOR_BATCH_IDS], enabledIds, observedIds, enabledNotObserved: enabledIds.filter(id => !observedIds.includes(id)),
+        perEntry: enabledIds.map(id => ({ id, occurrences: inRangeOccurrences.filter(item => item.entryId === id).length,
           decisions: summary.decisions.filter(item => item.source.startsWith(`registry:${id}:`)).map(item => item.id) })) },
       ...archive };
   } finally { unregister(); }

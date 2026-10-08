@@ -2,6 +2,7 @@ import { BALANCE } from '../src/content/balanceConfig';
 import { cameHeavyToLord } from '../src/engine/decisionLayer';
 import { TRACE_LIVE_TICKS } from '../src/engine/decisionTrace';
 import type { TracedDecision } from '../src/engine/decisionTrace.types';
+import type { RegistryOccurrence } from '../src/engine/registry.types';
 import type { HistoryRecord } from '../src/engine/history.types';
 import { calendar } from '../src/engine/scenarioState';
 
@@ -17,6 +18,10 @@ export interface WeightAuditEvidence {
   readonly decisions: readonly TracedDecision[];
   readonly history: readonly HistoryRecord[];
   readonly reportKeys: readonly string[];
+}
+
+export function weightAuditOccurrencesInRange(occurrences: readonly RegistryOccurrence[], endTickExclusive: number) {
+  return occurrences.filter(occurrence => occurrence.offeredTick >= 0 && occurrence.offeredTick < endTickExclusive);
 }
 
 export function annualStatistics(counts: readonly number[]) {
@@ -38,7 +43,9 @@ export function stewardReportKey(decision: TracedDecision, record: HistoryRecord
 export function summarizeWeightAudit(input: WeightAuditEvidence) {
   const date = (tick: number) => calendar(tick, input.startYear);
   const history = new Map(input.history.map(record => [record.id, record]));
-  const decisions = [...new Map(input.decisions.map(decision => [decision.id, decision])).values()];
+  const allDecisions = new Map(input.decisions.map(decision => [decision.id, decision]));
+  const endTickExclusive = input.years * BALANCE.TICKS_PER_YEAR;
+  const decisions = [...allDecisions.values()].filter(decision => decision.tick >= 0 && decision.tick < endTickExclusive);
   const reportKeys = new Set(input.reportKeys);
   const after = new Map<string, HistoryRecord[]>();
   for (const record of history.values()) {
@@ -50,7 +57,7 @@ export function summarizeWeightAudit(input: WeightAuditEvidence) {
   }
   const rows = decisions.map(decision => {
     const future = (after.get(decision.id) ?? []).filter(record => record.tick > decision.tick
-      && record.tick <= decision.tick + TRACE_LIVE_TICKS && record.kind !== 'decision')
+      && record.tick <= decision.tick + TRACE_LIVE_TICKS && record.tick <= input.endTick && record.kind !== 'decision')
       .sort((a, b) => a.tick - b.tick || a.id.localeCompare(b.id));
     const first = future[0];
     const reportKey = stewardReportKey(decision, history.get(decision.id));
@@ -61,7 +68,7 @@ export function summarizeWeightAudit(input: WeightAuditEvidence) {
         params: first.params ?? {}, seasonsAfter: Math.ceil((first.tick - decision.tick) / (BALANCE.TICKS_PER_YEAR / 4)),
         mainBecause: first.because?.[0] ?? null },
       consequences: future.map(record => ({ id: record.id, tick: record.tick, key: record.because?.find(cause => cause.decisionId === decision.id)?.key ?? null,
-        mainDecisionId: record.because?.[0]?.decisionId ?? null, mainDecisionKnown: decisions.some(candidate => candidate.id === record.because?.[0]?.decisionId),
+        mainDecisionId: record.because?.[0]?.decisionId ?? null, mainDecisionKnown: allDecisions.has(record.because?.[0]?.decisionId ?? ''),
         sharedCause: record.because?.some(cause => cause.part === true) === true, thisDecisionIsMain: record.because?.[0]?.decisionId === decision.id,
         uniqueCauseIds: new Set(record.because?.map(cause => cause.decisionId)).size === record.because?.length })),
       reportKey, inStewardReport: decision.by === 'steward' && reportKey !== null && reportKeys.has(reportKey) };

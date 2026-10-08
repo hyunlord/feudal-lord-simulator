@@ -31,11 +31,12 @@ function bindingCounts(json: string): Readonly<Record<string, number>> {
 }
 
 /** Bounded by catalog IDs × gate kinds; only two raw representatives per group survive. */
-export function createCandidateAuditCollector() {
+export function createCandidateAuditCollector(endTickExclusive = Infinity) {
   const totals = new Map<string, CandidateGateTotals>();
   let observations = 0;
   return {
     observe(record: RegistryCandidateObservation): void {
+      if (record.tick < 0 || record.tick >= endTickExclusive) return;
       const key = `${record.entryId}:${record.gate}`;
       const old = totals.get(key);
       const missing = new Map(Object.entries(old?.missingBindings ?? {}));
