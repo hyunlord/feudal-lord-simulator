@@ -201,7 +201,6 @@ function Rules({ state, view, command }: { readonly state: GameState; readonly v
     <div className="lord-estates-choices">
       <Toggle className="lord-estates-rule" data-rule="rights" checked={rules.rights} label={COPY.ruleRights} onChange={on => command(rulesCommand(state, { rights: on }))} />
       <Toggle className="lord-estates-rule" data-rule="marriage" checked={rules.marriage} label={COPY.ruleMarriage} onChange={on => command(rulesCommand(state, { marriage: on }))} />
-      <Toggle className="lord-estates-rule" data-rule="recurring" checked={rules.recurring} label={COPY.ruleRecurring} onChange={on => command(rulesCommand(state, { recurring: on }))} />
     </div>
   </section>;
 }

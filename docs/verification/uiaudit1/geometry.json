@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42",
- "commit": "0129e42655ef8506c0f1a386b96f748d93b39aa5",
+ "run": "engineB-batch1-geometry-73d41b7",
+ "commit": "73d41b715febbd7e08b74db8e721eee9331b49f7",
  "dirty": false,
- "inputs": 2422,
- "inputHash": "f5c6075b4abfd5aac9e3724d94f99d68ef03fafaff13d099f9e6c49032786ade",
- "measuredAt": "2026-10-08T00:05:15.413Z",
- "report": "docs/verification/uiaudit1/geometry/astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42/geometry.json",
+ "inputs": 2463,
+ "inputHash": "07710392011c44a1784247ef8e615a64535d0ccad84abbf6db4535df139f93ea",
+ "measuredAt": "2026-10-08T02:32:53.933Z",
+ "report": "docs/verification/uiaudit1/geometry/engineB-batch1-geometry-73d41b7/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,9 +24,9 @@
    "extreme"
   ]
  },
- "rows": 4,
- "conditions": 80,
- "measured": 80,
+ "rows": 2,
+ "conditions": 40,
+ "measured": 40,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
@@ -53,22 +53,12 @@
   "fixed": 0
  },
  "bySurface": {
-  "hud.status-pill": {
+  "modal.lord.registry": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "hud.time-cluster": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "hud.action-dock": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "map.selection.house": {
+  "modal.lord.registry-hold": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}

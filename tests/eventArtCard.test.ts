@@ -42,6 +42,7 @@ import { REGISTRY_CARD_COPY } from "../src/ui/registryCardCopy.ko";
 import { openRegistryCards, registryOfferView } from "../src/ui/registryCardModel";
 import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
 import { afterAnswer } from "../src/ui/decisionCard/remembers";
+import { answerOutlook } from "../src/state/decisionOutlook";
 import { storyArtStyle } from "../src/ui/storyArt";
 
 const SEASON = 1_000;
@@ -213,9 +214,11 @@ test("DEC-CARD: the offer's card says what is happening, what is at stake, until
     for (const choice of card.choices) {
       const shown = view.choices.find(entry => entry.id === choice.id)!;
       if (!shown.enabled) { assert.equal(choice.refusal, shown.line, `${id} ${choice.id}: shut with why`); continue; }
-      const after = afterAnswer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: choice.id });
-      assert.ok(after !== null, `${id} ${choice.id}: the engine takes it`);
-      const outcome = lordOutcome(state, after);
+      const command = { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: choice.id } as const;
+      const after = afterAnswer(state, command);
+      const outlook = answerOutlook(state, command);
+      assert.ok(after !== null && outlook !== null, `${id} ${choice.id}: the engine takes it`);
+      const outcome = lordOutcome(state, after, outlook);
       assert.equal(choice.now[0], shown.line, "the canon's tradeoff first");
       assert.deepEqual(choice.now.slice(1), outcome.now, `${id} ${choice.id}: the run's own lines`);
       assert.deepEqual(choice.remembers, outcome.remembers);

@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 
 import { platformServices } from "../../platform/platform";
 import { zoneEditHistory } from "../../render/zoneEditHistory";
@@ -9,12 +9,16 @@ import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import { UiIcon } from "../UiIcon";
 import { ZONE_TOOLBAR_COPY, zoneLegend } from "./zoneToolbarCopy.ko";
 import { Button } from "../kit";
+import { HUD_ART, HudArt, ZONE_SIZE_ART } from "./hudArt";
 
 // UX-3R2 zone panel (UX3R 5절): left of the map while the zone layer is open — the four kind chips, the tools (brush,
 // polygon, eraser, undo, redo, size) and the paintable-land legend, in one narrow panel (the area budget of the zone
 // state: chips in a drawer below as well as a toolbar went over 8 % at 1280 × 800, US-D11). The brush and the polygon
 // paint the last kind chosen. Undo and redo go through the intent bus (the map's zone handler holds the history).
 const KIND_CHIPS = ["burgage", "arable", "pasture", "orchard"] as const;
+// INSTALL-18: the tools wear Wave 18's pictures in the icon box they had (24 px, drawn at 0.75 by hudShell.css); the
+// current icons and drawn marks stay until a picture has loaded, and when one fails.
+const toolIcon = (id: string, fallback: ReactNode) => <HudArt id={id} width={24} className="ui-icon" fallback={fallback} />;
 
 export function ZoneToolbar({ tool, lastKind, canUndo, eraserOpen, kindOpen, pulse, onPick, onRadius, hidden = false }: {
   readonly tool: ZoneBrushTool | null;
@@ -49,22 +53,22 @@ export function ZoneToolbar({ tool, lastKind, canUndo, eraserOpen, kindOpen, pul
       <div className="zone-toolbar-tools" role="group" aria-label={ZONE_TOOLBAR_COPY.toolsLabel}>
       <Button type="button" className="zone-toolbar-button" data-zone-mode="brush" aria-pressed={painting && tool?.polygon !== true}
         aria-disabled={kind === null} onPress={() => { if (kind !== null) onPick(kind, false); }} variant="toggle">
-        <UiIcon sheet="layer" cell="zone" />{ZONE_TOOLBAR_COPY.brush}</Button>
+        {toolIcon(HUD_ART.brush, <UiIcon sheet="layer" cell="zone" />)}{ZONE_TOOLBAR_COPY.brush}</Button>
       <Button type="button" className="zone-toolbar-button" data-zone-mode="polygon" aria-pressed={painting && tool?.polygon === true}
         aria-disabled={kind === null} onPress={() => { if (kind !== null) onPick(kind, true); }} variant="toggle">
-        <span className="zone-toolbar-polygon" aria-hidden="true" />{ZONE_TOOLBAR_COPY.polygon}</Button>
+        {toolIcon(HUD_ART.polygon, <span className="zone-toolbar-polygon" aria-hidden="true" />)}{ZONE_TOOLBAR_COPY.polygon}</Button>
       <Button type="button" className="zone-toolbar-button" data-zone-mode="erase" aria-pressed={tool?.target === "erase"} aria-disabled={!eraserOpen}
         onPress={() => { if (eraserOpen) onPick("erase", tool?.polygon === true); }} variant="toggle">
-        <UiIcon sheet="prediction" cell="block" />{ZONE_TOOLBAR_COPY.eraser}</Button>
+        {toolIcon(HUD_ART.erase, <UiIcon sheet="prediction" cell="block" />)}{ZONE_TOOLBAR_COPY.eraser}</Button>
       <Button type="button" className="zone-toolbar-button" data-zone-mode="undo" aria-label={ZONE_TOOLBAR_COPY.undoLabel} aria-disabled={!canUndo || tool === null}
         onPress={() => { if (canUndo && tool !== null) platformServices().input.emit({ kind: "undo" }); }} variant="toggle">
-        <UiIcon sheet="action" cell="up" />{ZONE_TOOLBAR_COPY.undo}</Button>
+        {toolIcon(HUD_ART.undo, <UiIcon sheet="action" cell="up" />)}{ZONE_TOOLBAR_COPY.undo}</Button>
       <Button type="button" className="zone-toolbar-button" data-zone-mode="redo" aria-label={ZONE_TOOLBAR_COPY.redoLabel} aria-disabled={!canRedo || tool === null}
         onPress={() => { if (canRedo && tool !== null) platformServices().input.emit({ kind: "redo" }); }} variant="toggle">
-        <UiIcon sheet="action" cell="up" className="zone-toolbar-redo-icon" />{ZONE_TOOLBAR_COPY.redo}</Button>
+        {toolIcon(HUD_ART.redo, <UiIcon sheet="action" cell="up" className="zone-toolbar-redo-icon" />)}{ZONE_TOOLBAR_COPY.redo}</Button>
       <Button type="button" className="zone-toolbar-button" data-zone-mode="size" aria-label={ZONE_TOOLBAR_COPY.sizeLabel(radius)}
         aria-disabled={tool === null || tool.polygon} onPress={() => { if (tool !== null && !tool.polygon) onRadius(nextRadius); }} variant="toggle">
-        <span className="zone-toolbar-size" aria-hidden="true" data-size={radius} />{ZONE_TOOLBAR_COPY.size(radius)}</Button>
+        <ZoneSizeMark radius={radius} />{ZONE_TOOLBAR_COPY.size(radius)}</Button>
       </div>
       {tool === null ? <p className="zone-land-legend" data-frame="flat">{ZONE_TOOLBAR_COPY.pickKind}</p>
         : tool.target === "erase" ? <p className="zone-land-legend" data-frame="flat">{ZONE_TOOLBAR_COPY.eraserHint}</p> : <ZoneLandLegend kind={tool.target} />}
@@ -72,14 +76,24 @@ export function ZoneToolbar({ tool, lastKind, canUndo, eraserOpen, kindOpen, pul
   );
 }
 
-/** The paintable-land legend for the armed kind: three swatches matching the map overlay (barred also hatched). */
+/** The brush size's mark: Wave 18's stamp for the size (hudArt ZONE_SIZE_ART) inside the old 18 px box, else the dot. */
+function ZoneSizeMark({ radius }: { readonly radius: number }) {
+  const dot = <span className="zone-toolbar-size" aria-hidden="true" data-size={radius} />;
+  const art = ZONE_SIZE_ART[radius as 1 | 2 | 3];
+  if (art === undefined) return dot;
+  return <span className="zone-toolbar-size-box" aria-hidden="true" data-size={radius}><HudArt id={art[0]} width={art[1]} className="zone-toolbar-size-art" fallback={dot} /></span>;
+}
+
+/** The paintable-land legend for the armed kind: three swatches matching the map overlay (barred also hatched;
+ * INSTALL-18: Wave 18's no-painting mark once it has loaded, in the swatch's 18 × 14 place). */
 export function ZoneLandLegend({ kind }: { readonly kind: ZoneKind }) {
   const legend = zoneLegend(kind);
   return (
     <p className="zone-land-legend" data-frame="flat" aria-label={ZONE_TOOLBAR_COPY.legendLabel}>
       <span className="zone-land-item"><span className="zone-land-swatch zone-land-swatch--good" aria-hidden="true" />{legend.good}</span>
       {legend.fair === "" ? null : <span className="zone-land-item"><span className="zone-land-swatch zone-land-swatch--fair" aria-hidden="true" />{legend.fair}</span>}
-      <span className="zone-land-item"><span className="zone-land-swatch zone-land-swatch--barred" aria-hidden="true" />{legend.barred}</span>
+      <span className="zone-land-item"><HudArt id={HUD_ART.barred} width={14} className="zone-land-swatch-art"
+        fallback={<span className="zone-land-swatch zone-land-swatch--barred" aria-hidden="true" />} />{legend.barred}</span>
     </p>
   );
 }

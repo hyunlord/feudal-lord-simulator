@@ -19,13 +19,17 @@ import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
 import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
 import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
+import { STEWARD_SURFACES } from "./lord/steward/surfaces";
+import { RESULTS_SURFACES } from "./results/surfaces";
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
  * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice;
  * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments;
  * LM-R2 `lord2`: scripts/lmr2States.ts, ~/fls-lmr2-states — the lord's marriage, estates, promises and suits played to their states). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2";
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments" | "lord2"
+  // DEC-CARD-2: scripts/deccard2ResultsStates.ts (the result thread).
+  | "deccard2";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -413,6 +417,10 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { click: ".chronicle-tabs:not(.chronicle-person-tabs) .chronicle-tab:nth-child(2)" }, { pause: 900 }],
     // The world strip is a sideways scroller by design (overflow-x auto, focusable, its focus ring).
     scrollParts: [".chronicle-world-strip"], siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
+  // INSTALL-18: Wave 14's faction panel around the list (a css nine-slice frame), its heading in the frame's title band.
+  { id: "modal.history.factions-panel", extends: "modal.history.factions", root: ".chronicle-factions-panel", frame: "css",
+    scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET }, open: [], frameSlots: [".chronicle-factions-heading"],
+    siblingsNoOverlap: [".chronicle-factions-row"], data: "the nine factions' rows in Wave 14's faction panel, the kind icons beside four names" },
   { id: "modal.history.faction-page", extends: "modal.history.factions", root: ".chronicle-faction", frame: "painting", painting: FACTION_PAGE_ART,
     frameSlots: [".chronicle-faction-band"], scrollParts: [".chronicle-faction-box > ul", ".chronicle-faction-pressure-body"],
     scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
@@ -448,38 +456,32 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "dev.ui-kit.number", extends: "dev.ui-kit", root: "[data-states='number']", frame: "flat", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
     data: "the kit NumberField's states in the gallery" },
   // LM-R1 petitions: the lord's cards in lord mode (src/ui/hud/LordCards.tsx) on scripts/lmr1PetitionStates.ts's states — a
-  // home estate's petition with its Wave 44 picture (opens by itself), one without a picture, a minor lord's court line,
-  // the steward's precedents and the town's request (from their chips).
+  // home estate's petition with its Wave 44 picture (opens by itself), one without a picture, a minor lord's court line
+  // and the town's request (from its chip). DEC-CARD-2: the precedent card is gone (DTR-1; the season card's steward).
   // The picture is not a required element: the content check proves paint by text and controls changing between its two
   // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
-  { id: "modal.lord.home-petition", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01) in the DEC-CARD layout: the situation, the stake, each answer now / later / who remembers" },
-  { id: "modal.lord.home-petition.no-art", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition.no-art", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
-  { id: "modal.lord.home-petition.guardian", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition.guardian", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
-  { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
-    scene: petitionScene("petitions", "precedent", 1500), open: [{ story: ".lord-card[data-precedent]" }, { pause: 600 }], data: "the steward's answers by precedent (Wave 44 13)" },
   { id: "modal.lord.request", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }],
     data: "the town's request (a proclamation waiting) in the DEC-CARD layout: the grant's now (the works it opens) and later (the actual's day)" },
   // DEC-CARD (Astra A3): a change in the lord's house as one card before the petitions (src/ui/results/ResultCards.tsx), on
-  // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the lord dead (1304),
-  // the neighbour's estate inherited through the wife (its title, possession and the debts promised with it).
+  // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the neighbour's estate
+  // inherited through the wife (its title, possession and the debts promised with it). DEC-CARD-2: the lord's death is
+  // src/ui/results/surfaces.ts's row, on the engine's succession.
   { id: "modal.house-change.wardship", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='wardship_begun']",
     scene: petitionScene("petitions", "home-boundary_dispute", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
     data: "a minor lord's wardship begun (Wave 40 13): who, the guardian, no right changed, his card as the next act — before the boundary dispute's card" },
-  { id: "modal.house-change.lord-died", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='lord_died']",
-    scene: petitionScene("petitions", "home-pannage", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
-    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".results-card-continue"],
-    data: "the lord's death (no picture): his name and age, who leads the house now" },
   { id: "modal.house-change.inherited", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='inherited']",
     scene: petitionScene("moments", "inheritance_fealty", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
@@ -529,7 +531,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.status-pill.lord", root: ".status-pill", frame: "css", scene: LORD_TOWN, open: [], requires: [".status-pill-town"],
     data: "the lord's slice: date, population, food, coin and the way back to town" },
   { id: "slot.ledger.stock-lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
-    scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", ".treasury-estates-list > li", ".treasury-estates-note"],
+    scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", "[data-treasury-settled]", ".treasury-estates-list > li", ".treasury-estates-note"],
     data: "the lord's slice stock tab: the treasury by estate under the treasury line, then the stocks" },
   // Lord mode's command pins in the build drawer's place, on the receipt's lord-mode state (scripts/lmr1LordStates.ts).
   { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: LORD_TOWN, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
@@ -538,6 +540,10 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...SCREEN_SURFACES, ...NEGOTIATION_SURFACES, ...LEDGER_SURFACES, ...ESTATES_SURFACES, ...REGION_SURFACES,
   // LM-R2: the lord's decision cards (src/ui/lord/decisions/surfaces.ts).
   ...DECISION_SURFACES,
+  // DEC-CARD-2: the standing policies and the season card's steward section (src/ui/lord/steward/surfaces.ts).
+  ...STEWARD_SURFACES,
+  // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
+  ...RESULTS_SURFACES,
 ];
 
 /**

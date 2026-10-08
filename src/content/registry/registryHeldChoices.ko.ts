@@ -24,6 +24,9 @@ export const V4_HELD_CHOICES: readonly HeldChoice[] = [
   { entry: "ck_evt_138", choice: "b", reason: SUBSIDY_ONLY },
   { entry: "ck_evt_138", choice: "c", reason: SUBSIDY_ONLY },
   { entry: "ck_evt_144", choice: "a", reason: SUBSIDY_ONLY },
+  { entry: "ck_evt_083", choice: "b", reason: SUBSIDY_ONLY },
+  { entry: "ck_evt_090", choice: "b", reason: SUBSIDY_ONLY },
+  { entry: "ck_evt_092", choice: "c", reason: POLICY_ONLY },
 ];
 
 /** The words of an event held whole because too few choices were left. */

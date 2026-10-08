@@ -8,7 +8,14 @@
 
 ### Engine B — LM-E9c 계약 요청 전달 (2026-10-06)
 - [x] `engine-B-read-bundles.md`, `engine-B-7.md`, `engine-B-remaining.md`, `engine-B-EVA-AUTO.md` 요청서 전달. 런타임 구현과 장기 관문은 미완료. 본선 문서 커밋은 이 항목을 추가한 커밋이다.
-- [ ] Engine B 구현 게시: DGX 분포·가드레일·최종 변경 시험 및 사건 그림 총량 관문 대기.
+
+### Engine B — LM-E9c 첫5건 (2026-10-08)
+- [x] 061·077·083·090·092: 실제 맥락과 DEC-TRACE 무게, v4.2 보류38건 유지. 구현4f80b042·수정1faa9c9c(게시 커밋은 이 기록을 포함한 커밋).
+- [x] DGX20년 seed1·2·3: 9/12/11건, 신규083 한 번. 소스73d41b71·원격 해시·보고서 재현. 최종125년은 별도 미완료.
+- [x] Mac EVA-AUTO50/50 캡처·출처·설치 장부73d41b71.
+- [ ] 정확한 최종 트리 test:changed·check:merge 게시 관문.
+- [ ] 본선 게시 해시와 정적 활성 수·자연 발생 수를 구분해 보고.
+- [ ] Engine B 구현 게시: 나머지 묶음·최종125년·가드레일·최종 게시 관문 미완료. 폐기된10MB 그림 총량 제한을 대기 사유로 쓰지 않음.
 
 ### A1. 완료·검증됨
 | 작업 | 본선 커밋 | 비고 |
@@ -102,7 +109,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 **NAT-3 날씨·계절** — [ ] 세계 좌표 비(움직이는 비 띠·튐·젖은 땅·웅덩이)·낙엽 쌓임(Wave 39) · [ ] 계절이 대상마다 천천히(나무 위상·첫서리·눈 쌓임/녹음) · [ ] **봄 Wave 43**(LU-D1 해소) · 관문: 움직이는 캡처
 **PERF-R** — [ ] 텔레메트리 훅 요청서 · [ ] NAT-2 쪽 최대 프레임 큼 · [ ] 목책 래스터 캐시 8.6→32MB
 **LM-R2** — [x] 협상 화면·약속 장부·영지 포트폴리오(위임·주의력·감사·분기 요약)·소송 트랙·혼인 진행 · [x] Wave 35·Wave 40 사건 삽화·영주 화면 시안(담비 없는 L3, 세계 보이는 패널, 12px 하한)·영주 부품 40(지역 지도) — 본선 `3ea84578`(Wave 40 순간은 EVENT-ART에서; 이웃 18·atlas는 LM-E10, "봤음"은 v50 뒤 후속)
-**DEC-CARD**(사용자 최우선 2026-10-06) — [x] 무거운 결정 카드(지금·나중·기억하는 이) · [x] 실제 칩·연말 카드 · [x] 가문 카드(A3) · [x] 조언·카메라·지난번 이후·금고 영지별(A1·A2·A4·A5) — 본선 `5e28d992` · [ ] 2단계(청지기 철 보고·상시 방침·"결정 때문에" 소식 — DEC-TRACE·GP7-ENGINE 뒤)
+**DEC-CARD**(사용자 최우선 2026-10-06) — [x] 무거운 결정 카드(지금·나중·기억하는 이) · [x] 실제 칩·연말 카드 · [x] 가문 카드(A3) · [x] 조언·카메라·지난번 이후·금고 영지별(A1·A2·A4·A5) — 본선 `5e28d992` · [x] 2단계(청지기 철 보고·상시 방침·"결정 때문에" 소식·엔진 전망) — 본선 `a858f692`
 **EVA-AUTO**(사용자 2026-10-06) — [x] 켜진 사건마다 자동 캡처 뒤 출처·`installed_by`(`npm run eventart:auto`) · [x] 숫자 대신 관계 시험 · [x] 모드가 사건을 더해도 렌더 코드 없음 — 본선 `97779d29`
 **LM-R3** — [ ] 수직 조각 시작(lordSliceStart·시작 버튼)·pauseReasons·lordSliceOutcome · [ ] 시작 화면 이름·문장 고르기(결정 HOUSE-1, 기본 드 해버럴) · [ ] **튜토리얼 대본**(`docs/design/tutorial-lord-mode-20261002/`, 청지기 목소리, 새 지역 지도) · [ ] **제목·로고 Charter & Kin / 인장과 가문**(타이틀·창 제목·로딩·아이콘, `phase11PublishedUi` 시험에 게임 이름 허용) · [ ] 모드 전환(영주 기본·샌드박스 선택)
 **샌드박스 UX(G-LM 뒤)** — 성벽-시장 경로 경고·성문 강조, 목책 그리기 안내, 배치 학습
@@ -141,6 +148,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - [x] **RENDER-B 출범 관문** — 본선 `90d9b586`, exact clean clone4820/4820·build PASS·보호된 push0.
 - [x] **RENDER-B-W37** — 기존 사용16행 installed_by 적용, 원본/PNG/provenance 변경0. LM-R1 12·fisher/shepherd4 공란 보존. 커밋 `bc29f6b2`의 실제 after4 PASS·RGBA 차이0·A/A4·오류0. [보고서](../verification/wave37-reconcile/REPORT.md). 게시 완료: 최종 본선 be576dbe clean clone4,886/4,886·merge·보호 push·원격 exact HEAD PASS.
 - [ ] 설치 1단계: 영주 모드 수직 조각용 그림(`docs/ops/install-plan-20261003` ORDER 1절) — 데이터 커밋 + 실제 장면 캡처
+  - [x] wave18-hud·wave14-ui — 렌더 A INSTALL-18(사용자 결정 IN18-D1): Wave 18 33/41·Wave 14 5/16, 나머지는 INBOX_LEDGER에 까닭(인장·특허장은 엔진 인장 필드 뒤) — 본선 `55da7988`
 - [ ] 설치 2단계: NAT-5·NAT-3 자연스러움(ORDER 2절)
 - [ ] 설치 3단계: 나머지 기존 기능 연결과 새 기능(ORDER 3절)
 - [ ] **사람 키 통일**(FND-3): 등록 높이17.6/.55는 작업 가지38be7e4a에 통합했으며 [A1 실제 여름 2개 장면](../verification/height-a1/REPORT.md)과 역사적 겨울16/여름4 증거를 분리 보존한다. 통합 BEFORE에도 같은 높이가 있어 이번 2쌍 동일성은 외형 보존만 입증한다. 맨발 실측·가려진 접촉·[문23](../requests/render-human-scale-art-request.md)·[신체/군중/운구12](../requests/render-human-registration-request.md)는 미완료다. 현재 기하2,202조건 실패0·소스 동일 확인, 최종 클론·게시 대기.

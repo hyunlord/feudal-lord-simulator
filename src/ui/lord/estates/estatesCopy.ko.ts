@@ -85,7 +85,6 @@ export const ESTATES_COPY = {
   plus: "+",
   ruleRights: "권리가 바뀌는 일",
   ruleMarriage: "혼인에 관한 일",
-  ruleRecurring: "전에 답한 종류도 다시",
   /** SW-6 audit. */
   auditHeading: "미가엘 축일 감사",
   auditModes: { accounts: "장부 감사", visit: "현지 방문" } as const,

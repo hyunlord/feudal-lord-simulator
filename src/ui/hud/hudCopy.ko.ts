@@ -42,6 +42,8 @@ export const HUD_COPY = {
   crisis: "위기",
   pauseTitle: "일시 정지",
   pauseResume: "계속",
+  /** INSTALL-18: the H key (input/mouseKeyboardTranslator.ts PANEL_KEYS) hides and shows the HUD. */
+  hudHideShortcut: "H: HUD 숨기기",
   close: "닫기",
   closeMark: "×",
   /** A crisis icon names its warning and cause (no hover tooltip). */

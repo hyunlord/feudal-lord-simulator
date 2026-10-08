@@ -1,0 +1,62 @@
+{
+ "trace-season": {
+  "seed": 3,
+  "tick": 200,
+  "year": 1300,
+  "season": 0,
+  "decision": "h-000004",
+  "title": "1300년 당신의 결정 때문에: 소송을 걸었다",
+  "line": "1300년 봄 — 소송을 걸었다",
+  "facts": [
+   "드 코르벨 가문(이웃 영주): 못마땅해합니다 (관계 −5)"
+  ]
+ },
+ "trace-later": {
+  "seed": 3,
+  "tick": 2200,
+  "year": 1300,
+  "season": 2,
+  "decision": "h-000004",
+  "title": "1300년 당신의 결정 때문에: 소송을 걸었다",
+  "line": "1300년 봄 — 소송을 걸었다",
+  "facts": [
+   "소송이 증거 단계로 넘어갔다"
+  ]
+ },
+ "year-eve": {
+  "seed": 3,
+  "tick": 3960,
+  "year": 1300,
+  "season": 3,
+  "reviewYear": 1300,
+  "decisions": 2,
+  "steward": 1,
+  "threads": 3
+ },
+ "year-loaded": {
+  "seed": 3,
+  "tick": 4001,
+  "year": 1301,
+  "season": 0,
+  "reviewYear": 1300,
+  "injected": "one screen mark (a house card read)"
+ },
+ "succession": {
+  "seed": 1,
+  "tick": 17002,
+  "year": 1304,
+  "season": 1,
+  "record": "h-000901",
+  "recordTick": 17001,
+  "params": {
+   "deceasedId": "m-000001",
+   "deadAge": 49,
+   "died": 1,
+   "cause": "age",
+   "heirId": "m-000003",
+   "heirAge": 16,
+   "kin": "daughter"
+  },
+  "injected": null
+ }
+}

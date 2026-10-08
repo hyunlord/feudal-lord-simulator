@@ -9,14 +9,17 @@ import { courtLine } from "../../lordCardsModel";
 import { perState } from "../../perState";
 import { DECISION_COPY } from "../../decisionCopy.ko";
 import type { DecisionCardView, DecisionChoiceView } from "../decisionCardTypes";
-import { afterAnswer, remembersOf } from "../remembers";
+import { outlookLater, outlookOf, outlookTreasury } from "../outlook";
+import { afterAnswer, remembersFor } from "../remembers";
 import { FAMINE_CARD_COPY as COPY } from "./famineCardCopy.ko";
 
 // DEC-CARD, the Great Famine (FC-2): who suffers (the households the price shuts out, `famineShortHouses`), what is at
-// stake (the stores' days, the lived-in homes, the treasury, the famine's end), and each answer run on the state
-// (`afterAnswer`): its forecast two seasons on and the people that may leave by then (the decision record the engine
-// writes, HL-3), when its actual is written, and who remembers it (its faction records). What each answer does every
-// season while the famine lasts is FC-2's (the shares in FAMINE_RESPONSE_CONFIG). Once per state (`perState`).
+// stake (the stores' days, the lived-in homes, the treasury, the famine's end), and each answer from the engine's outlook
+// (DEC-CARD-2, DC-D7 `answerOutlook`; null = shut): the treasury now and, in lord mode, what it sets going and who
+// remembers it. The outlook gives no forecast and, outside lord mode, only the treasury, so the dry run (`afterAnswer`)
+// gives its forecast two seasons on and the people that may leave by then (the decision record the engine writes,
+// HL-3), when its actual is written, and (outside lord mode) who remembers it (its faction records). What each answer
+// does every season while the famine lasts is FC-2's (the shares in FAMINE_RESPONSE_CONFIG). Once per state (`perState`).
 
 const label = (state: GameState, tick: number) => calendarLabel({ ...state, tick });
 
@@ -31,6 +34,8 @@ const EACH_SEASON: Readonly<Record<FamineResponseChoice, string>> = {
   laissez_faire: COPY.eachSeason.laissez_faire, speculation: COPY.eachSeason.speculation,
 };
 
+const money = (pennies: number) => pennies > 0 ? COPY.treasuryIn(pennies) : pennies < 0 ? COPY.treasuryOut(-pennies) : COPY.treasurySame;
+
 export type FamineCardView = Readonly<{ card: DecisionCardView; eventId: string }>;
 
 export const famineCard = perState((state: GameState): FamineCardView | null => {
@@ -41,8 +46,9 @@ export const famineCard = perState((state: GameState): FamineCardView | null => 
   const known = new Set((state.history?.records ?? []).map(record => record.id));
   const choices = FAMINE_RESPONSE_CHOICES.filter(choice => status.choices.includes(choice)).map((choice): DecisionChoiceView => {
     const option = { choice, label: DECISION_COPY.famine[choice].label };
-    const after = afterAnswer(state, { type: "famine_response", choice });
-    if (after === null) return { id: option.choice, label: option.label, now: [], later: [], remembers: [], refusal: COPY.refused };
+    const outlook = outlookOf(state, { type: "famine_response", choice });
+    const after = outlook === null ? null : afterAnswer(state, { type: "famine_response", choice });
+    if (outlook === null || after === null) return { id: option.choice, label: option.label, now: [], later: [], remembers: [], refusal: COPY.refused };
     const decision = (after.history?.records ?? []).find(record => !known.has(record.id) && record.kind === "decision")?.decision;
     const predicted = decision?.predicted;
     const later = [EACH_SEASON[option.choice]];
@@ -51,7 +57,8 @@ export const famineCard = perState((state: GameState): FamineCardView | null => 
       later.push(predicted.population < state.population ? COPY.leaving(state.population - predicted.population) : COPY.nobodyLeaves);
     }
     if (decision?.actualDueTick !== undefined) later.push(COPY.actualDue(label(state, decision.actualDueTick)));
-    return { id: option.choice, label: option.label, now: [NOW[option.choice]()], later, remembers: remembersOf(state, after), refusal: null };
+    return { id: option.choice, label: option.label, now: [NOW[option.choice](), money(outlookTreasury(outlook))], later: [...later, ...outlookLater(state, outlook)],
+      remembers: remembersFor(state, outlook, after), refusal: null };
   });
   return {
     eventId: status.eventId,

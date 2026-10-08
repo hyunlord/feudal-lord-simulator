@@ -1,3 +1,4 @@
+- **Engine B 첫5건 게시 준비**: 구현4f80b042·목수 수정1faa9c9c·그림73d41b71, 정적 활성45→50·HOLD38 유지. DGX20년 seed셋9/12/11건, 새083만1건 관측; Mac EVA50/50·기하40조건 실패0. 최종 변경 시험·병합 검사·본선 게시 대기. [근거](verification/lm-e9c-batch1/README.md).
 <!-- RB-PURVEYOR geometry: astra-PURVEYOR-geometry-029a112, 80 conditions, 0 failures; final test/push receipts in delivery ZIP. -->
 - **RB-PURVEYOR 왕실 구매 담당자5장**: 제품 `f012955c`. 실제 구매 영수증과 창고 도로 접근으로 잠깐 표시하고, 원본 장부4방향·8프레임 손 연결을 공용 합성기에 보존했다. 자연 봄 및 명시적 계절 QA의 줌1/.6 전후를 확인했다. 엔진 인물·재고·저장은 그대로다. [보고서](verification/purveyor/README.md).
 - **RB-HEIGHT-L0D 작은 우진각 집5장**: 제품 `8c49302b`. L0 d 완성 본체와 새집·풍화·눈·판자층을 기존 선택 계약에 연결했다. 준비 저장 전후18쌍과 실제 보행자 비교, 대상 해빙 alpha0.44804를 확인했다. 문짝 대리 측정·fresh 목재 겹침은 한계로 남겼다. 누적14/23종,9종 후속. [보고서](verification/height-l0d/README.md).
@@ -16,7 +17,7 @@
 - **RB-HERDS 정적 목축군 4장**: 양 a·b·소·돼지 원본 시트 4장을 기존 소품에 연결했다(`001a4873`, `ed483f09`). 최초 양 a 6쌍과 확장 24쌍에서 저장·상태·카메라·소품이 같고 실제 그림 소비를 확인했다. 관련 시험 102개·타입·린트 통과. 보이는 몸통 수는 달라지지만 엔진 가축 수·이동은 바꾸지 않았다. 작은 크기·선명한 윤곽·가림·0.6줌 판독 한계는 [보고서](verification/herds/README.md)에 남겼다.
 - **RB-HANDCART 설치 1장 확인**: 제품 `62e4a720`, 실제 운반자의 네 방향·두 자세에 손수레를 연결했다. 같은 저장 전후 16쌍·기하 80조건 실패 0을 확인했다. NE 손 접점 가림·남성 손 잔차 3.43 세계 px·작은 줌 판독 한계는 유지한다. 최종 시험·게시 영수증은 전달 ZIP에 기록한다. [보고서](verification/handcart/README.md).
 - **RB-ERA-SIGNS 크기 가드 복구**: 간판·시대별 본체·겹그림 그리기를 `buildingAppearance.ts`로 그대로 분리했다. `drawBuildings.ts` 164줄(순수 156), 새 모듈 136줄(순수 124). 두 파일 모두 기존 250줄 가드를 적용하며 그림·순서·좌표·입력은 바꾸지 않았다.
-- **Engine B LM-E9c 요청 전달**: 저장 확장 슬롯·실제 사실 생산·렌더 EVA-AUTO 총량 계약 요청4건을 `docs/requests/engine-B-*.md`에 게시한다. 구현 ae26ab28은 별도 작업 가지이며 분포·해시·게시 관문은 미완료다.
+- **Engine B LM-E9c 소규모 게시 진행**: DEC-TRACE 본선 위에서 첫5건(061·077·083·090·092)을 분리했다. 27건 무게 표와 보류38건 유지를 확인하며, 각 묶음20년 판·Mac EVA-AUTO·변경 시험·병합 검사를 거친다. 125년 판은 마지막 한 번으로 변경(사용자2026-10-08). 현재 첫 묶음 게시 관문 진행 중이며 실제 게시 여부는 [검증 기록](verification/lm-e9c-batch1/README.md)에 남긴다.
 - **RB-WORLD-FIRE 화재 연출3장 설치**: `74fe1398`·`ee3f0249` 물동이 무리 여름·겨울2장과 불길1장을 실제 화재·급수에 연결했다. 같은 저장 전후10쌍에서 계절·급수·진화 분기를 확인했고 지붕 뒤 가림을 고쳤다. 기하80조건 실패0·집중32시험을 확인했고, 프레임 캐시는 큐 병합을 분리해 기존250줄 가드를 유지했다. 최종 게시 시험 영수증은 보고ZIP에 남긴다. [보고서](verification/world-fire/README.md).
 - **RB-LANDMARK-DATA 준비 완료**: `1b68f4dd` 랜드마크 44장·계절 22쌍을 원본 해시·피벗·발판과 함께 정리했다. 설치 0장. 현재 영주관 3×3을 반영했고 성장 단계·확장 터·다리/문 통행 연결은 [엔진 요청서](requests/landmark-growth/README.md)에 남겼다.
 - **RB-ERA-SIGNS 완료**: 본선 포함 구현 `f749fecc`. 간판 8장을 네 L2 집 본체에 직업·시대별로 붙였다. DGX 변경 시험 1,478개·기하 80조건 실패 0, 실제 전후 18쌍 확인. 문양은 작아 독립 직업 판독 단서로 보지 않는다. [보고서](verification/era-signs/README.md).
@@ -76,6 +77,12 @@
 - **증거 폴더 3 MB 검사(EVIDENCE-SIZE) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 본선 푸시의 `check:merge`가 바뀐 `docs/verification/<작업>/` 폴더가 3 MB(2^20 단위)를 넘으면 거부한다(결정 RR10). 재플레이 캡처·`uiaudit1/geometry/`·`perf-trend/`는 세지 않고, 이미 넘은 asset-audit·ui9b는 기준선 크기까지다.
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
+
+- **DEC-CARD-2 결과의 실·청지기 철 보고·상시 방침·엔진 전망 — 완료, 본선 병합**(Claude Code, 렌더 A, 본선 `a858f692`): [보고서](verification/deccard2/REPORT.md), 결정 DC-D7~D16.
+  - 영주 모드: "○○년 당신의 결정 때문에" 소식 칩과 연대기의 실(엔진 `traceInRange`·`because`; 청지기의 처리·답하지 않음은 따로 말함), 연말 카드는 엔진 `yearReview`(가문의 일 먼저, 봤음은 저장 너머), 가문 카드는 엔진의 승계 기록. 철 카드에 "청지기가 처리한 일"(한 건씩 들여다보고 그 종류의 방침으로), 영주 화면에 상시 방침(관습대로·가볍게·엄하게·영주에게, 선례 길은 지움), 금고 영지별은 `treasuryBreakdown`. 모든 결정 카드의 지금·나중에·기억하는 이가 엔진 `answerOutlook`에서(주지 않는 줄은 엔진 리듀서 시험 실행, 엔진 요청으로 넘김). 칙허 받은 촌락은 장터가 잠김 없이. 기하 70줄 1,400칸 실패 0(render-DC2-geometry-a858f69). 사용자 재플레이 차례.
+
+- **INSTALL-18 Wave 18 HUD + Wave 14 남은 UI — 완료, 본선 병합**(Claude Code, 렌더 A, 본선 `55da7988`): [보고서](verification/in18/REPORT.md), 결정 IN18-D1~D7(모두 사용자).
+  - 렌더 B의 그림 계약 장치로 Wave 18 33장(상태 칸·행동 칸·막힌 까닭 여섯·구역 도구 여덟·위기 여섯·잠금·깜박임 고리·태블릿 확인·지도 무늬 넷)과 Wave 14 5장(세력 판·세력 아이콘 넷). 배치 칸은 흑백에서 모양으로 갈린다 — 놓을 수 있는 칸 실선, 막힌 칸 굵은 점선 + 칸 폭 60%의 ✕(사용자 흑백 판정 통과). 청지기 단추는 얼굴, HUD 숨기기는 H 키 + 일시 정지 메뉴 한 줄. 도시 인장·특허장은 엔진 인장 필드 뒤. 흑백 판정 통과(실선 / 굵은 점선 + ✕) · 기하 39줄 622칸 실패 0(render-IN18-geometry-bfcb1fc).
 
 - **사건 201–215 그림 붙음**(Claude Code, 렌더 A, 사용자 지시 2026-10-07): INBOX-4b가 받은 v4.1 새 사건 그림 15장. 그림 받기(`scripts/eventArtIntake.ts`)가 `assets-inbox/event-art/`의 모든 묶음(제 `records/ASSETS.csv`가 있는 것)을 읽게 되어 다음 묶음도 코드 없이 들어온다(목록 200 → 215). `npm run eventart:auto`로 켜진 사건 그림 86/86이 진짜 카드에 그려짐(`render-EVA201-capture`), 출처 줄·장부 표시 15. 쓰기는 다른 레인이 쓴 줄(LF 파일 안의 CRLF 다섯 줄)을 바이트 그대로 둔다. 이제 그림 없는 켜진 사건은 없다.
 - **EVA-AUTO 사건 그림이 엔진을 따라가게 — 완료, 본선 병합**(Claude Code, 렌더 A, 본선 `97779d29`): [보고서](verification/evaauto/REPORT.md), 결정 EVA-D5~D7.

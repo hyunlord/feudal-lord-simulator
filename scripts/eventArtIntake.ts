@@ -79,7 +79,8 @@ export function generation(picture: Picture): { version: string; tool: string; p
     // The round that selected these bytes: its ASSETS.csv row with this id and SHA, and that version's prompt file.
     const rounds = readdirSync(path.join(ROOT, FINAL200, "records")).filter(name => /^r\d\d$/.test(name)).sort().reverse();
     for (const round of rounds) {
-      const assets = `${FINAL200}/records/${round}/ASSETS.csv`;
+      const direct = `${FINAL200}/records/${round}/ASSETS.csv`;
+      const assets = existsSync(path.join(ROOT, direct)) ? direct : `${FINAL200}/records/${round}/records/assets.csv`;
       if (!existsSync(path.join(ROOT, assets))) continue;
       const row = table(assets).find(entry => entry.event_id === picture.id && entry.sha256 === picture.sha256);
       if (row === undefined) continue;
@@ -90,6 +91,23 @@ export function generation(picture: Picture): { version: string; tool: string; p
       if (!existsSync(path.join(ROOT, prompt))) {
         if (version === "existing_reuse") continue;
         throw new Error(`${picture.id}: ${round} selected ${row.selected_version} but ${prompt} is missing`);
+      }
+      if (round === "r01" || round === "r02") {
+        const records = `${FINAL200}/records/${round}/records`;
+        const provenance: Record<string, unknown> = JSON.parse(text(`${records}/provenance.json`));
+        const number = picture.id.slice("ck_evt_".length);
+        const archived: string[] = [];
+        for (const name of readdirSync(path.join(ROOT, records)).sort()) {
+          if (!/^(?:.*prompts.*|rework-plan-v2|final\d+)\.json$/.test(name)) continue;
+          const record: Record<string, unknown> = JSON.parse(text(`${records}/${name}`));
+          const value = name === `final${number}.json` ? record.prompt : record[number];
+          if (typeof value === "string") archived.push(`[archived round prompt: ${records}/${name}]\n${value}`);
+        }
+        return { version: round, tool: typeof provenance.tool === "string" ? provenance.tool : "not recorded",
+          prompt: [text(prompt), ...archived].join("\n\n"),
+          references: typeof provenance.reference === "string" ? provenance.reference : "not recorded",
+          edits: `${String(provenance.postprocess ?? provenance.processing ?? "not recorded")}; selected JPEG SHA matches ${assets}; `
+            + `${archived.length} additional archived round prompt(s) preserved verbatim, not asserted to be an exact selected edit chain` };
       }
       if (row.selected_version === undefined) {
         // r03/r04: the generation prompt, then every other prompt the round kept for this picture (redraws and edits),

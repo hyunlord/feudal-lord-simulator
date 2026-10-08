@@ -19,7 +19,8 @@ import type { LedgerEntry } from "../src/ledger/ledger.types";
 import { advanceTick } from "../src/engine/tick";
 import { createMemoryPlatformServices } from "../src/platform/memoryPlatform";
 import { setPlatformServicesForTest } from "../src/platform/platform";
-import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
+import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
+import { moneyFullDelta } from "../src/ui/money.ko";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import type { StoryBeat, StoryKind } from "../src/ui/eventStory";
@@ -37,7 +38,8 @@ import { townSeatTile } from "../src/ui/lord/camera/townSeat";
 import { cameraKey, readCameraTile, viewCentreTile } from "../src/ui/lord/camera/useLordCamera";
 import { sinceLastAnswer } from "../src/ui/lord/since/sinceLastModel";
 import { TreasuryByEstate } from "../src/ui/lord/treasury/TreasuryByEstate";
-import { entryEstate, treasuryByEstate } from "../src/ui/lord/treasury/treasuryModel";
+import { treasuryByEstate } from "../src/ui/lord/treasury/treasuryModel";
+import { treasuryBreakdown } from "../src/engine/treasuryReads";
 import { SettlementPanel } from "../src/ui/SettlementPanel";
 import { SETTLEMENT_PANEL_COPY } from "../src/ui/settlementPanelCopy.ko";
 import { SCENARIO_COPY } from "../src/content/scenario/scenarioCopy.ko";
@@ -186,24 +188,32 @@ test("A4: a dues card says what came of the last dues answer — the rate, the s
   assert.equal(sinceLastAnswer(campaign, dues, "open"), null);
 });
 
-test("A5: the treasury by estate — an estate's own lines, the town's as the home estate's, the four questions", () => {
-  assert.equal(entryEstate({ sourceRefs: [{ type: "building", id: "house-1" }] }), HOME_ESTATE_ID);
-  assert.equal(entryEstate({ sourceRefs: [{ type: "actor", id: "estate:estate-b" }, { type: "claim", id: "p" }] }), "estate-b");
+test("A5 (DEC-CARD-2): the treasury by estate on the engine's treasuryBreakdown — its estates, its kinds, settled and roll-ups", () => {
   const t = lord.tick;
   const state = withEntries(lord, [
     entry(11, t - 5, "estate_income", 100, [{ type: "actor", id: "estate:estate-b" }, { type: "actor", id: "person:s" }]),
     entry(12, t - 4, "marriage_portion", 60, [{ type: "actor", id: "house:x" }]),
     entry(13, t - 3, "project_subsidy", -20, [{ type: "actor", id: "merchants" }]),
+    entry(14, t - 2, "stall_fee", 30, [{ type: "building", id: "market-test" }]),
   ]);
   const view = treasuryByEstate(state)!;
+  const breakdown = treasuryBreakdown(state, Math.max(0, t - LEDGER_PERIOD_TICKS + 1), t + 1);
   assert.equal(view.estates[0]!.estateId, HOME_ESTATE_ID, "the home estate first");
+  assert.equal(view.estates.at(-1)!.estateId, "lord", "the lord's own affairs last");
   const other = view.estates.find(row => row.estateId === "estate-b")!;
-  assert.deepEqual(other.groups.map(group => group.line), ["지대·영지 수입 +8s 4d"]);
+  assert.deepEqual(other.groups.map(group => group.line), ["지대·세금·사용료 +8s 4d"]);
   const home = view.estates[0]!;
-  assert.ok(home.groups.some(group => group.group === "contracts" && group.line === "계약·약속 +5s"));
-  assert.ok(home.groups.some(group => group.group === "spending" && group.parts.some(part => part.startsWith("사업 장려금 −1s 8d"))));
+  assert.ok(home.groups.some(group => group.group === "rents_dues"), "a building's line is the home estate's (the engine's rule)");
+  const own = view.estates.at(-1)!;
+  assert.ok(own.groups.some(group => group.group === "marriage" && group.line === "혼인 +5s"));
+  assert.ok(own.groups.some(group => group.group === "building" && group.line === "건설 −1s 8d"));
+  // Every row is the engine's: the same estates, kinds and nets.
+  for (const row of breakdown.rows) assert.equal(view.estates.find(estate => estate.estateId === row.estate)!.groups.find(group => group.group === row.kind)!.amount, row.income - row.expense);
+  assert.equal(view.net, `금고 증감 ${moneyFullDelta(breakdown.net)}`);
+  assert.equal(view.settled, breakdown.settled ? "이 기간에 도시 정산이 있었습니다" : "이 기간에는 아직 도시 정산이 없었습니다");
+  assert.equal(view.unattributed === null, breakdown.unattributed === 0);
   const markup = renderToStaticMarkup(createElement(TreasuryByEstate, { state }));
-  assert.ok(markup.includes('data-estate="estate-b"') && markup.includes("영지별 금고 출납"));
+  assert.ok(markup.includes('data-estate="estate-b"') && markup.includes("영지별 금고 출납") && markup.includes("data-treasury-settled"));
   assert.equal(treasuryByEstate(campaign), null);
   assert.equal(renderToStaticMarkup(createElement(TreasuryByEstate, { state: campaign })), "");
 });

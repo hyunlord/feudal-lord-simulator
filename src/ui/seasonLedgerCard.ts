@@ -18,6 +18,7 @@ import { townAleView } from "./townAleModel";
 import { townCloth } from "../engine/cloth";
 import { townClothView } from "./townClothModel";
 import { lordSeasonHint } from "./lord/advice/lordAdvice";
+import { seasonStewardView, type StewardSeasonView } from "./lord/steward/seasonStewardModel";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -47,6 +48,8 @@ export type SeasonLedgerCardModel = Readonly<{
   clothLine: string | null;
   /** C5 (CL-8, CL-5): the closed season's cloth money (ulnage + fulling_toll) from townClothView. */
   clothLines: readonly string[];
+  /** DEC-CARD-2 (lord mode): "청지기가 처리한 일" — the steward's season (`stewardReport` over the closed season). */
+  steward?: StewardSeasonView | undefined;
 }>;
 
 /** INSTALL-3: the goods of the ale chain (barley, malt, ale), in catalog order. */
@@ -135,6 +138,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     amount: Math.floor(clothData.goods[resource as keyof typeof clothData.goods] ?? 0),
   }));
   const clothHeld = cloth.some(item => item.amount > 0);
+  const steward = isWorld(state) ? seasonStewardView(state, ledger.startTick) : null;
   return {
     key: `${ledger.year}:${ledger.season}`,
     title: SEASON_LEDGER_COPY.title(year, ledger.season),
@@ -154,6 +158,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     cloth: cloth.filter(item => item.amount > 0),
     clothLine: clothHeld ? SEASON_LEDGER_COPY.heldNow(cloth.filter(item => item.amount > 0).map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
     clothLines: clothView === null || clothView.closedSeason === null ? [] : [clothView.closedSeason],
+    ...(steward === null ? {} : { steward }),
   };
 }
 
