@@ -22,6 +22,9 @@ import type { LedgerEntry } from "../ledger/ledger.types";
 import type { ConsequenceKey, TracedDecision, TracedDecisionKind, TraceState } from "./decisionTrace.types";
 import { CRISIS_RESERVE_DAYS } from "../content/crisisConfig";
 import { FAMINE_FLOWS, PETITION_FLOWS, TARGET_FLOWS } from "../content/decisionFlowConfig";
+import { weighOffer } from "./decisionLayer";
+import { registryChapterPetitionDef } from "./registryChapterPetitions";
+import type { PetitionRecord } from "./politics.types";
 import { preparedness } from "./crisisReads";
 import { stateCalendar } from "./scenarioState";
 import { FACTION_OF_ACTOR } from "./townAgency";
@@ -163,6 +166,12 @@ function joinMatter(state: GameState, kind: TracedDecisionKind, targets: readonl
   return null;
 }
 
+function chapterRegistryOccurrence(state: GameState, petition: PetitionRecord) {
+  if (registryChapterPetitionDef(petition.defId) === undefined) return undefined;
+  return state.registry?.occurrences.find(occurrence => occurrence.source === "v4"
+    && occurrence.entryId === petition.defId && occurrence.bound?.chapterPetition === petition.id);
+}
+
 /**
  * DEC-TRACE §2: a command of the lord's that changed the state, kept as a decision with what it touched. Its source is
  * the same key the factions' memories carry for it (`registry:<entry>:<choice>`, `manor_petition:<kind>:<answer>`,
@@ -191,6 +200,8 @@ export function traceCommand(before: GameState, after: GameState, action: Action
   } else if (action.type === "petition_response") {
     const petition = after.politics?.petitions.find(entry => entry.id === action.petitionId);
     source = `petition:${petition?.defId ?? "?"}:${String(action.response)}`;
+    const occurrence = petition === undefined ? undefined : chapterRegistryOccurrence(before, petition);
+    if (occurrence !== undefined) weights = [...(weighOffer(before, occurrence)?.weights ?? occurrence.weights ?? [])];
   } else if (action.type === "famine_response") {
     source = `famine:${String(action.choice)}`;
   } else if (action.type === "answer_audit") {
@@ -259,6 +270,8 @@ function tickDecisions(before: GameState, after: GameState): GameState {
   for (const petition of after.politics?.petitions ?? []) {
     const old = petitions.get(petition.id);
     if (petition.response !== "expired" || old === undefined || old.response === "expired") continue;
+    // The matching registry occurrence owns this matter, including an earlier hold followed by petition expiry.
+    if (chapterRegistryOccurrence(after, petition) !== undefined) continue;
     next = tickDecision(next, { tick: after.tick, by: "lord", kind: "chapter_petition", lapsed: true, source: `petition:${petition.defId}:expired`,
       weights: ["crisis"], targets: changedTargets(before, after) }, { subjectId: petition.id, chosen: "lapsed", alternatives: [...(petition.options ?? [])] });
   }

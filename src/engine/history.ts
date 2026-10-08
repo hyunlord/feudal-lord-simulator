@@ -1,3 +1,4 @@
+import { registryChapterPetitionDef } from "./registryChapterPetitions";
 /**
  * F0-C2 history ledger v0 (spec docs/design/history-ledger.md HL-1…HL-10). Append-only: records are only added; the
  * later writes are a decision's `actual` (HL-3) and the folding of old everyday records (HL-10). Nothing here changes
@@ -210,7 +211,7 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
     const chosen = String(command.response) as PetitionResponse;
     // FAIL-3 (FL-6): the petition's own terms (a restoration costs the treasury its fee).
     const defId = before.politics?.petitions.find(petition => petition.id === command.petitionId)?.defId;
-    const def = PETITION_DEFS.find(entry => entry.id === defId) ?? PETITION_DEFS[0]!;
+    const def = PETITION_DEFS.find(entry => entry.id === defId) ?? registryChapterPetitionDef(defId ?? "") ?? PETITION_DEFS[0]!;
     const outcome = def.outcomes[chosen];
     // F2-A (WR-2…WR-8): a war decision's sums follow the town (the war's own forecast).
     const treasury = def.trigger === "war" ? warDecisionForecast(before, def.id, chosen)
@@ -256,7 +257,10 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)]
     : kind === "stewardship" ? stewardshipDrafts(before, reduced) : kind === "registry" ? [...registryDrafts(before, reduced), ...stewardshipDrafts(before, reduced), ...estateDrafts(before, reduced),
       // LM-E9b (ER-16): a v4 answer may also offer a marriage, keep a promise or set the town's terms.
-      ...diplomacyDrafts(before, reduced), ...agencyDrafts(before, reduced)] : [];
+      ...diplomacyDrafts(before, reduced), ...agencyDrafts(before, reduced),
+      ...(reduced.politics?.petitions.some(petition => registryChapterPetitionDef(petition.defId) !== undefined
+        && petition.response !== undefined && before.politics?.petitions.find(old => old.id === petition.id)?.response === undefined)
+        ? factionDrafts(before, reduced) : [])] : [];
   // DEC-TRACE §3 (A6): the minds the lord's own command costs or wins (the big kinds' come with their decision below).
   if (!BIG_DECISION_KINDS.includes(kind)) lines.push(...decisionRelationDrafts(before, reduced, command));
   // FIX-14: a command's own lines may move factions (an estate petition answered, a steward punished): applied with them.

@@ -67,7 +67,7 @@ test('future arrival and automatically settled petitions are excluded; arrival a
   assert.deepEqual(collector.snapshot().filter(row => row.kind === 'estate_petition').map(row => row.key), ['estate_petition:delayed']);
 });
 
-test('zero enabled registry options and independently exposed petitions remain observable', () => {
+test('zero enabled registry options remain observable without duplicate chapter petition surfaces', () => {
   const base = fixture();
   assert.ok(base.politics);
   const occurrence = { id: 'zero-options', entryId: 'missing-definition', boundId: '', offeredTick: base.tick, deadline: base.tick + 100,
@@ -77,9 +77,7 @@ test('zero enabled registry options and independently exposed petitions remain o
   assert.deepEqual(offerChoices(state, occurrence), []);
   const collector = createRegistryPresentationCollector();
   collector.observe(state);
-  // Chapter lifecycle adapters are not installed in this release; upstream still exposes these petitions.
-  assert.deepEqual(collector.snapshot().filter(row => row.kind === 'petition').map(row => row.key).sort(),
-    ['ck_evt_057', 'ck_evt_058'].map(id => `petition:${id}@${base.tick}`));
+  assert.deepEqual(collector.snapshot().filter(row => row.kind === 'petition'), []);
   assert.equal(collector.snapshot().filter(row => row.key === 'registry:zero-options').length, 1);
 });
 
