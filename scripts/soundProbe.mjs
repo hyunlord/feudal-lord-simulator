@@ -5,6 +5,7 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/soundProbe.mjs <out.json> [--url ...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/soundProbe.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/soundProbe.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { writeFile } from 'node:fs/promises';
 
 const [out] = process.argv.slice(2);
@@ -16,7 +17,7 @@ const page = await (await browser.newContext({ viewport: { width: 1280, height: 
 await page.routeWebSocket('**', socket => socket.close());
 await page.goto(`${url}?phase10-proof=1`);
 await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
+await startFromWelcome(page, "core:campaign_market_town");
 await page.waitForTimeout(1_000);
 const engine = () => page.evaluate(async () => { const m = await import('/src/audio/audioEngine.ts'); return { played: m.playedSounds().map(entry => entry.id), loops: m.activeLoops(), settings: m.audioSettings() }; });
 for (let press = 0; press < 30; press += 1) {

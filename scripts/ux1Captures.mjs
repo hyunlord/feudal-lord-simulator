@@ -4,6 +4,7 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/ux1Captures.mjs <outDir> --base <url> [--url ...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/ux1Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ux1Captures.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -21,7 +22,7 @@ const open = async (base, { width = 1280, height = 800, tutorialOff = false } = 
   await page.routeWebSocket('**', socket => socket.close());
   await page.goto(`${base}?phase10-proof=1`);
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-  await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
+  await startFromWelcome(page, "core:campaign_market_town");
   await page.waitForTimeout(1_500);
   return { context, page };
 };

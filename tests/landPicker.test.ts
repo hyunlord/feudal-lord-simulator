@@ -26,6 +26,7 @@ import { LAND_PICKER_COPY } from "../src/ui/landPickerCopy.ko";
 import { LAND_PREVIEW_SCALE, PREVIEW_LIMIT, cachedLandPreview, landPreviewCacheSize, landPreviewPixels } from "../src/ui/landPreview";
 import { numberFieldDigits } from "../src/ui/kit";
 import { WelcomeParchment } from "../src/ui/screens/WelcomeScreen";
+import { DEFAULT_HOUSE_CHOICE } from "../src/ui/houseChoice";
 
 const channels = (hex: string) => [1, 3, 5].map(at => Number.parseInt(hex.slice(at, at + 2), 16)).join(",");
 const pixelAt = (pixels: { width: number; data: Uint8ClampedArray }, tx: number, ty: number) => {
@@ -107,18 +108,20 @@ test("a start sends nothing for the campaign on the riverside's map 1, and the l
   assert.equal(isDefaultLand({ archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 2 }), false);
   assert.equal(isDefaultLand({ archetypeId: FEN_ARCHETYPE_ID, seed: 1 }), false);
   assert.equal(landStartCommand(DEFAULT_SCENARIO_ID, riverside, false), null);
-  assert.deepEqual(landStartCommand(SANDBOX_SCENARIO_ID, riverside, false), { type: "start_new_game", scenarioId: SANDBOX_SCENARIO_ID });
-  assert.deepEqual(landStartCommand(DEFAULT_SCENARIO_ID, riverside, true), { type: "start_new_game", scenarioId: DEFAULT_SCENARIO_ID });
+  // LM-R3: every command also carries the mode and the house (the default one here; tests/houseChoice.test.ts).
+  const start = { type: "start_new_game", mode: "sandbox", house: DEFAULT_HOUSE_CHOICE } as const;
+  assert.deepEqual(landStartCommand(SANDBOX_SCENARIO_ID, riverside, false), { ...start, scenarioId: SANDBOX_SCENARIO_ID });
+  assert.deepEqual(landStartCommand(DEFAULT_SCENARIO_ID, riverside, true), { ...start, scenarioId: DEFAULT_SCENARIO_ID });
   const choices: readonly LandChoice[] = [
     { archetypeId: FEN_ARCHETYPE_ID, seed: 3 }, { archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 482_913 }, { archetypeId: MAP_ARCHETYPE_IDS[2]!, seed: 999_999 },
   ];
   for (const choice of choices) for (const [scenarioId, overSave] of [[DEFAULT_SCENARIO_ID, false], [DEFAULT_SCENARIO_ID, true], [SANDBOX_SCENARIO_ID, false]] as const) {
     const command = landStartCommand(scenarioId, choice, overSave);
-    assert.deepEqual(command, { type: "start_new_game", scenarioId, archetypeId: choice.archetypeId, seed: choice.seed });
+    assert.deepEqual(command, { ...start, scenarioId, archetypeId: choice.archetypeId, seed: choice.seed });
     const next = gameReducer(DEFAULT_GAME_STATE, command!);
     assert.equal(next.seed, choice.seed, `${choice.archetypeId} ${choice.seed}`);
     assert.equal(next.scenarioId, scenarioId);
-    assert.equal(next.agency, undefined, "the welcome never passes `mode`");
+    assert.equal(next.agency, undefined, "the campaign and the sandbox are not lord mode");
     if (choice.archetypeId !== RIVERSIDE_ARCHETYPE_ID) assert.equal(next.archetypeId, choice.archetypeId);
   }
 });
@@ -159,7 +162,7 @@ test("the riverside preview shows its river, its fords, the village's roads and 
   assert.equal(tile(road), channels(RAMPS.earth[4]));
 });
 
-test("the welcome offers the five lands above the mode buttons; the mode buttons are unchanged", () => {
+test("the welcome offers the five lands above the mode buttons (LM-R3: lord mode, then the sandbox)", () => {
   const markup = welcome({ archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 482_913 });
   const lands = [...markup.matchAll(/<button class="welcome-land[^"]*"[^>]*>/g)].map(match => match[0]);
   assert.equal(lands.length, 5);
@@ -171,8 +174,9 @@ test("the welcome offers the five lands above the mode buttons; the mode buttons
     assert.ok(markup.includes(land.name));
     assert.ok(markup.includes(land.description));
   }
-  assert.deepEqual([...markup.matchAll(/data-scenario="([^"]+)"/g)].map(match => match[1]), [LORD_SLICE_SCENARIO_ID, DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID]);
-  assert.match(markup, /목표형으로 시작/);
+  // LM-R3 (the user 2026-10-08): the campaign is the sandbox's "목표와 함께" option (tests/houseChoice.test.ts).
+  assert.deepEqual([...markup.matchAll(/data-scenario="([^"]+)"/g)].map(match => match[1]), [LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID]);
+  assert.match(markup, /샌드박스로 시작/);
   assert.match(markup, /class="welcome-parchment welcome-parchment--lands"/);
   // NAT-4: the number is the kit field (digits, six at most, numeric keypad) beside "무작위"; no −/+ any more.
   const fields = markup.match(/<input[^>]*>/g) ?? [];
@@ -183,7 +187,7 @@ test("the welcome offers the five lands above the mode buttons; the mode buttons
   assert.doesNotMatch(field, /aria-invalid/);
   assert.match(markup, new RegExp(`<button class="welcome-seed-random[^"]*"[^>]*>${LAND_PICKER_COPY.random}</button>`));
   assert.doesNotMatch(markup, /welcome-seed-step|welcome-seed-value|welcome-seed-problem/);
-  assert.ok(modeButtons(markup).length === 3 && modeButtons(markup).every(button => !button.includes("aria-disabled")));
+  assert.ok(modeButtons(markup).length === 2 && modeButtons(markup).every(button => !button.includes("aria-disabled")));
 });
 
 test("a number that cannot start shows why under the field and turns the mode buttons off", () => {
@@ -196,7 +200,7 @@ test("a number that cannot start shows why under the field and turns the mode bu
     assert.ok(described !== undefined, problem);
     assert.ok(markup.includes(`<p id="${described}" class="welcome-seed-problem" role="status">${LAND_PICKER_COPY.problems[problem]}</p>`), problem);
     // aria-disabled, not disabled: an enabled, isolated button never lets the press fall through to the dismiss layer.
-    assert.ok(modeButtons(markup).length === 3 && modeButtons(markup).every(button => button.includes('aria-disabled="true"') && !/\sdisabled=""/.test(button)), problem);
+    assert.ok(modeButtons(markup).length === 2 && modeButtons(markup).every(button => button.includes('aria-disabled="true"') && !/\sdisabled=""/.test(button)), problem);
   }
 });
 
@@ -209,7 +213,7 @@ test("without a query the welcome's first number is drawn at random and has a ga
 test("LM-R1 (Astra B01): the start screen's lord mode starts the lord's slice on the chosen number, the riverside land", () => {
   assert.match(welcome(), new RegExp(SCENARIO_COPY.modeButtons.lord_slice));
   const command = landStartCommand(LORD_SLICE_SCENARIO_ID, { archetypeId: FEN_ARCHETYPE_ID, seed: 4242 }, false);
-  assert.deepEqual(command, { type: "start_new_game", scenarioId: LORD_SLICE_SCENARIO_ID, seed: 4242 });
+  assert.deepEqual(command, { type: "start_new_game", scenarioId: LORD_SLICE_SCENARIO_ID, mode: "lord", house: DEFAULT_HOUSE_CHOICE, seed: 4242 });
   const state = gameReducer(DEFAULT_GAME_STATE, command!);
   assert.equal(state.scenarioId, LORD_SLICE_SCENARIO_ID);
   assert.equal(state.seed, 4242);

@@ -1,0 +1,30 @@
+/* LM-R3: the welcome's logo, the sandbox's "목표와 함께" switch and the house choice step (HouseChoice.tsx). Like the rest
+   of the parchment, only the buttons take the pointer. */
+.app-shell .welcome-parchment h2.welcome-logo { display: flex; justify-content: center; line-height: 0; }
+.app-shell .welcome-modes [data-mode="sandbox"] { display: grid; justify-items: center; align-content: start; }
+.app-shell .welcome-parchment .welcome-goal-switch { pointer-events: auto; }
+
+.app-shell .welcome-house { display: grid; gap: 8px; }
+.app-shell .welcome-house .ui-btn { pointer-events: auto; }
+.app-shell .welcome-house-body { display: grid; grid-template-columns: minmax(0, 1fr) 264px; gap: 16px; align-items: start; }
+.app-shell .welcome-house-names { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.app-shell .welcome-parchment .welcome-house-name { display: grid; justify-items: center; align-content: center; gap: 1px; min-height: 48px; padding: 4px; text-align: center; }
+.app-shell .welcome-house-name-ko { font-size: var(--text-13); font-weight: 700; line-height: 1.2; word-break: keep-all; }
+.app-shell .welcome-parchment .welcome-house-name-latin,
+.app-shell .welcome-parchment .welcome-house-chosen-name small { font-size: var(--text-12); font-weight: 400; line-height: 1.2; }
+.app-shell .welcome-house-arms { display: grid; justify-items: center; gap: 6px; }
+.app-shell .welcome-house-chosen { display: grid; justify-items: center; gap: 4px; }
+.app-shell .welcome-parchment .welcome-house-chosen-name { font-size: var(--text-14); font-weight: 700; }
+.app-shell .welcome-house-candidates { display: grid; grid-template-columns: repeat(4, 56px); gap: 6px; }
+.app-shell .welcome-parchment .welcome-house-candidate { display: grid; place-items: center; width: 56px; height: 56px; padding: 4px; }
+.app-shell .welcome-parchment .welcome-house-more { min-height: 44px; padding: 4px 12px; font-size: var(--text-14); }
+.app-shell .welcome-house-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.app-shell .welcome-parchment .welcome-house-actions .save-control-button { min-width: 160px; text-align: center; }
+/* The chosen name and arms: a seal-red ring outside the frame too, as the picked land (uiConsole.css). */
+:root .app-shell .welcome-parchment :is(.welcome-house-name, .welcome-house-candidate).ui-btn.ui-btn[aria-pressed="true"]:not(.ui-btn--tab) {
+  box-shadow: 0 0 0 2px var(--seal-red), inset 0 0 0 2px var(--seal-red);
+}
+@media (max-width: 700px) {
+  .app-shell .welcome-house-body { grid-template-columns: minmax(0, 1fr); }
+  .app-shell .welcome-house-names { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
