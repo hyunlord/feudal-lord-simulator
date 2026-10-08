@@ -45,6 +45,9 @@ export const DECISION_CARDS_COPY = {
   contestLine: (estate: string, rival: string) => `${rival}${josa(rival, "이", "가")} 유언을 근거로 ${estate}${josa(estate, "을", "를")} 차지했습니다. 소송에서 이겨 점유를 집행하면 영지가 영주에게 옵니다.`,
   contestSuit: (stage: string) => `영주의 소송: ${stage}`,
   contestNoSuit: "아직 소송을 내지 않았습니다",
+  /** Astra lordplay2 ③: the suit on the claim ended — its verdict (null: closed without one) and its date. */
+  contestEnded: (verdict: string | null, date: string) => `영주의 소송: 끝남${verdict === null ? "" : ` · ${verdict}`} · ${date}`,
+  contestVerdict: { plaintiff: "판결: 영주가 이겼습니다", defendant: "판결: 영주가 졌습니다" } as const,
   contestOpen: "소송 보기",
   rivalUnknown: "다른 상속인",
   suitStage: { filed: "제기됨", evidence: "증거 모으는 중", patronage: "후원 구하는 중", hearing: "심리 중", judged: "판결 남", enforcing: "점유 집행 중", closed: "끝남" } as Readonly<Record<string, string>>,

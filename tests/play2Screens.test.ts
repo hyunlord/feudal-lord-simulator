@@ -17,7 +17,7 @@ import { V4_COPY } from "../src/content/registry/v4Copy.generated";
 import { preparedness } from "../src/engine/crisisReads";
 import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
-import { suitHearing } from "../src/engine/estateSuits";
+import { suitFilingOutlook } from "../src/engine/estateSuits";
 import type { HistoryRecord } from "../src/engine/history.types";
 import { treasuryBalance, postLedgerEntries } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
@@ -30,7 +30,6 @@ import { famineAfterFacts } from "../src/ui/lord/advice/famineAfter";
 import { FAMINE_AFTER_COPY } from "../src/ui/lord/advice/famineAfterCopy.ko";
 import { lordLevers, townStatus } from "../src/ui/lord/advice/lordAdvice";
 import { chronicleFilterFocus, clearChronicleFocus, focusChronicleYears } from "../src/ui/lord/chronicleFocus";
-import { claimOutlook } from "../src/ui/lord/ledger/claimOutlook";
 import { LORD_LEDGER_COPY } from "../src/ui/lord/ledger/ledgerCopy.ko";
 import { ledgerView } from "../src/ui/lord/ledger/ledgerModel";
 import { HOME_PETITION_COPY } from "../src/ui/lordCardsCopy.ko";
@@ -55,29 +54,31 @@ const withTreasury = (state: GameState, coin: number): GameState => {
   return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
 };
 
-test("PLAY-2 소송 걸기: the button says the treasury the filing takes, and the hearing's two sides for the suit filed now — the game's own command tried on the state", () => {
+test("PLAY-2 / SUIT-THREAD 소송 걸기: the button says the filing's cost (the engine's suitFilingOutlook, said even when refused) and the hearing it would open — who wins judged now and whether the claim can still pass", () => {
   const claim = estatesOf(lord).claims.find(entry => entry.claimant === LORD && entry.status === "open")!;
   const after = gameReducer(lord, { type: "file_suit", claimId: claim.id });
   assert.notEqual(after, lord, "the claim can be filed at the start");
-  const suit = estatesOf(after).suits.find(entry => entry.claimId === claim.id)!;
-  const outlook = claimOutlook(lord, claim.id)!;
-  assert.equal(outlook.cost, treasuryBalance(lord) - treasuryBalance(after));
-  assert.ok(outlook.cost > 0);
-  assert.deepEqual(outlook.sides, suitHearing(after, suit.id));
+  const outlook = suitFilingOutlook(lord, claim.id);
+  assert.equal(outlook.refusal, null);
+  assert.equal(outlook.cost, treasuryBalance(lord) - treasuryBalance(after), "the cost is what the filing takes");
+  assert.ok(outlook.cost > 0 && outlook.hearing !== null);
   const row = ledgerView(lord, null)!.claims.find(entry => entry.id === claim.id)!;
   assert.equal(row.cost, moneyShort(outlook.cost));
-  assert.equal(row.hearing, LORD_LEDGER_COPY.hearingIfFiled(outlook.sides!.plaintiff, outlook.sides!.defence));
-  // The user's rule (2026-10-08): which side is larger now, read off the two numbers; who wins is not worded.
-  assert.match(row.hearing!, outlook.sides!.defence > outlook.sides!.plaintiff ? /지금은 방어 쪽이 더 큽니다\. 증거나 후원을 더해야 합니다$/ : /지금은 (청구 쪽이 더 큽니다|두 쪽이 같습니다)/);
-  assert.doesNotMatch(row.hearing!, /이깁|집니다|유리|불리/);
-  assert.match(LORD_LEDGER_COPY.hearing(60, 50), /청구 쪽이 더 큽니다$/);
-  assert.match(LORD_LEDGER_COPY.hearing(50, 50), /두 쪽이 같습니다/);
-  assert.equal(LORD_LEDGER_COPY.fileSuitCost(row.cost!), `소송 걸기 · ${row.cost}`);
-  // The treasury short: the engine refuses, and the screen says the refusal, no cost it was not given.
+  const { plaintiff, defence, verdictNow, reachable } = outlook.hearing!;
+  assert.equal(row.hearing, LORD_LEDGER_COPY.hearingIfFiled(LORD_LEDGER_COPY.hearing(plaintiff, defence, verdictNow, reachable)));
+  // The user's words (2026-10-09): the verdict now, and the claim's reach with all it may yet add.
+  assert.equal(LORD_LEDGER_COPY.hearing(45, 80, "defendant", false), "청구 쪽 45 · 방어 쪽 80. 지금 판결하면 방어 쪽이 이깁니다 · 남은 증거와 후원을 다 더해도 넘기 어렵습니다");
+  assert.equal(LORD_LEDGER_COPY.hearing(45, 80, "defendant", true), "청구 쪽 45 · 방어 쪽 80. 지금 판결하면 방어 쪽이 이깁니다 · 남은 증거와 후원을 다 더하면 넘을 수 있습니다");
+  assert.equal(LORD_LEDGER_COPY.hearing(90, 80, "plaintiff", true), "청구 쪽 90 · 방어 쪽 80. 지금 판결하면 청구 쪽이 이깁니다");
+  assert.match(row.hearing!, verdictNow === "plaintiff" ? /청구 쪽이 이깁니다$/ : reachable ? /넘을 수 있습니다$/ : /넘기 어렵습니다$/);
+  assert.equal(LORD_LEDGER_COPY.fileSuitCost(row.cost), `소송 걸기 · ${row.cost}`);
+  // The treasury short: the engine refuses, and the button still says what the filing would take (DTR-22).
   const poor = withTreasury(lord, 0);
-  assert.equal(claimOutlook(poor, claim.id), null);
+  const refused = suitFilingOutlook(poor, claim.id);
+  assert.equal(refused.refusal, "treasury");
   const shut = ledgerView(poor, null)!.claims.find(entry => entry.id === claim.id)!;
-  assert.deepEqual([shut.refusal, shut.cost, shut.hearing], [LORD_LEDGER_COPY.refusals.treasury, null, null]);
+  assert.deepEqual([shut.refusal, shut.cost], [LORD_LEDGER_COPY.refusals.treasury, moneyShort(refused.cost)]);
+  assert.ok(refused.cost > 0);
 });
 
 const losses = { burntHouses: 0, departures: 0, harvestLost: 0 };

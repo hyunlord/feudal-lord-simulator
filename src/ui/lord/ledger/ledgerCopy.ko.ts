@@ -11,13 +11,18 @@ import type { RegistryTerm } from "../../../engine/registry.types";
 /** The ledger's four promise states (`due`: open, its deadline within a season). */
 export type PromiseState = "open" | "due" | "kept" | "broken";
 
+const josa = (word: string, withFinal: string, without: string) => { const code = word.charCodeAt(word.length - 1) - 0xac00; return code >= 0 && code <= 11171 && code % 28 !== 0 ? withFinal : without; };
+
 /**
- * PLAY-2 (the user, 2026-10-08, docs/requests/engine-play2-reads.md): the hearing compares the two sides, so the line says
- * which is larger now — read off the engine's two numbers, nothing else (who wins a tie is not said); it takes the
- * engine's `verdictNow` once that comes.
+ * SUIT-THREAD (the user, 2026-10-09; the engine's `suitHearing`: `verdictNow`, `reachable`): the hearing judged now and
+ * whether the claim's side can still pass the defence with all it may yet add. The claim side's words when the lord sues;
+ * when he is sued, the plaintiff's (a house), and what the defence row lets him do.
  */
-const sidesNow = (plaintiff: number, defence: number): string => plaintiff > defence ? "지금은 청구 쪽이 더 큽니다"
-  : plaintiff < defence ? "지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다" : "지금은 두 쪽이 같습니다. 증거나 후원을 더해야 앞섭니다";
+const VERDICT_NOW = { plaintiff: "지금 판결하면 청구 쪽이 이깁니다", defendant: "지금 판결하면 방어 쪽이 이깁니다" } as const;
+const REACHABLE = { true: "남은 증거와 후원을 다 더하면 넘을 수 있습니다", false: "남은 증거와 후원을 다 더해도 넘기 어렵습니다" } as const;
+const REACHABLE_AGAINST = { true: "원고가 남은 증거와 후원을 다 더하면 넘을 수 있습니다", false: "원고가 남은 증거와 후원을 다 더해도 넘기 어렵습니다" } as const;
+type Verdict = keyof typeof VERDICT_NOW;
+const judged = (verdict: Verdict, tail: string) => `${VERDICT_NOW[verdict]} · ${tail}`;
 
 export const LORD_LEDGER_COPY = {
   closed: "영주 모드에서만 열립니다",
@@ -62,13 +67,13 @@ export const LORD_LEDGER_COPY = {
   noClaims: "아직 소송으로 가져갈 청구가 없습니다.",
   noSuits: "진행 중이거나 끝난 소송이 없습니다.",
   claimLine: (basis: string, strength: number) => `근거 ${basis} · 힘 ${strength}`,
-  fileSuit: "소송 걸기",
-  fileSuitLabel: (what: string) => `소송 걸기: ${what}`,
-  /** PLAY-2: the button with the treasury the filing takes now (the game's own command tried on the state). */
+  /** The button with the treasury the filing takes (`suitFilingOutlook.cost`, said even when the filing is refused). */
   fileSuitCost: (money: string) => `소송 걸기 · ${money}`,
   fileSuitCostLabel: (what: string, money: string) => `소송 걸기: ${what} · 비용 ${money}`,
-  /** PLAY-2: the hearing's two sides for the suit filed now (the engine's suitHearing) and which is larger (sidesNow). */
-  hearingIfFiled: (plaintiff: number, defence: number) => `지금 걸면 심리에서 청구 쪽 ${plaintiff} · 방어 쪽 ${defence}. ${sidesNow(plaintiff, defence)}`,
+  /** DTR-23: a claim of fresh dispossession (`claim.novel`) and its suit's track (filed, then the hearing). */
+  novelLine: "점유 침탈 소송 · 접수 다음 철에 바로 심리로 갑니다",
+  /** The hearing the filing would open (`suitFilingOutlook.hearing`). */
+  hearingIfFiled: (hearing: string) => `지금 걸면 심리에서 ${hearing}`,
   refusals: {
     no_claim: "청구가 없습니다", not_open: "이미 다룬 청구입니다", own_title: "이미 권원을 가진 쪽입니다", treasury: "금고가 모자랍니다",
   } satisfies Record<SuitRefusal, string>,
@@ -83,8 +88,10 @@ export const LORD_LEDGER_COPY = {
   evidenceHeading: "증거",
   evidence: { charter: "특허장", deed: "양도 증서", court_roll: "법정 기록", witnesses: "증인", possession_years: "점유 햇수" } satisfies Record<Evidence["kind"], string>,
   evidenceGiven: (weight: number) => `냄 · 무게 ${weight}`,
+  /** suitActions / suitDefenceActions: a kind's cost to the treasury and its weight in the hearing. */
+  evidenceNote: (money: string | null, weight: number) => money === null ? `무게 ${weight}` : `${money} · 무게 ${weight}`,
   evidenceBring: "내기",
-  evidenceLabel: (kind: string) => `증거 내기: ${kind}`,
+  evidenceLabel: (kind: string, note: string) => `증거 내기: ${kind} · ${note}`,
   patronHeading: "후원자",
   patronChosen: (name: string, support: number) => `${name} · 지지 ${support}`,
   patronNone: "후원해 줄 세력이 없습니다",
@@ -92,19 +99,38 @@ export const LORD_LEDGER_COPY = {
   patronSeek: "후원 청하기",
   patronLabel: (name: string) => `후원 청하기: ${name}`,
   hearingHeading: "심리",
-  hearing: (plaintiff: number, defence: number) => `청구 쪽 ${plaintiff} · 방어 쪽 ${defence}. ${sidesNow(plaintiff, defence)}`,
-  hearingNeighbour: (plaintiff: number, defence: number) => `원고 쪽 ${plaintiff} · 영주 쪽 ${defence}`,
+  /** The lord's claim or suit: the two sides, the verdict now and whether his side can still pass (the user's words). */
+  hearing: (plaintiff: number, defence: number, verdict: Verdict, reachable: boolean) =>
+    `청구 쪽 ${plaintiff} · 방어 쪽 ${defence}. ${verdict === "plaintiff" ? VERDICT_NOW.plaintiff : judged(verdict, REACHABLE[`${reachable}`])}`,
+  /** A house's suit against the lord: its side's reach, or (the house ahead) what his defence row can still do. */
+  hearingAgainst: (plaintiff: number, defence: number, verdict: Verdict, reachable: boolean, defenceOpen: boolean) =>
+    `청구 쪽(원고) ${plaintiff} · 방어 쪽(영주) ${defence}. ${verdict === "plaintiff"
+      ? judged(verdict, defenceOpen ? "증거와 후원으로 방어 쪽을 올리거나 합의할 수 있습니다" : "합의로 끝낼 수 있습니다")
+      : judged(verdict, REACHABLE_AGAINST[`${reachable}`])}`,
   verdict: { plaintiff: "판결: 원고가 이겼습니다", defendant: "판결: 원고가 졌습니다" } as const,
+  /** Astra lordplay2 ② (the engine's records name both sides): a house's suit against the lord, judged. */
+  verdictAgainst: {
+    plaintiff: (house: string) => `판결: ${house}${josa(house, "이", "가")} 이겼습니다 — 영주가 권원을 잃었습니다(점유는 따로)`,
+    defendant: (house: string) => `판결: ${house}${josa(house, "이", "가")} 졌습니다 — 영주가 지켰습니다`,
+  } as const,
+  /** DTR-23: a suit ended by a final concord (the engine's sentence when its record is found, with the date). */
+  concordEnded: { pay: "합의로 끝났습니다: 영주가 돈을 주고 지켰습니다", yield: "합의로 끝났습니다: 영주가 땅을 내주었습니다" } as const,
+  dated: (line: string, date: string) => `${line} · ${date}`,
+  /** suitActions.stageCosts: what each stage still ahead takes from the treasury (enforcing: each attempt). */
+  stageCosts: (parts: string) => `앞으로 들 비용: ${parts}`,
+  stageCost: (stage: string, money: string) => `${stage} ${money}`,
+  stageCostEach: (stage: string, money: string) => `${stage} 시도마다 ${money}`,
   enforceHeading: "점유 집행",
   hold: (hold: number) => `점유자가 버티는 힘 ${hold}`,
   patronForce: (support: number) => `후원자의 지지 ${support}`,
   attempts: (count: number) => `집행 ${count}번`,
   enforced: "점유를 넘겨받았습니다",
+  /** Astra lordplay2 ②: in a house's suit against the lord the house took it. */
+  enforcedBy: (house: string) => `${house}${josa(house, "이", "가")} 점유를 가져갔습니다`,
   enforce: "점유 집행하기",
   enforceLabel: (what: string) => `점유 집행하기: ${what}`,
   neighbourHeading: "영주를 상대로 한 소송",
   noNeighbour: "영주를 상대로 걸린 소송이 없습니다.",
-  neighbourNote: "영주가 막을 명령은 없습니다. 진행만 보입니다.",
   wholeEstate: "영지 전체",
   pieces: {
     land_rent: "토지 지대", manor_court: "장원 법정", mill: "방앗간 사용료", market: "시장 좌판세", tolls: "통행세", fishery: "어업권",

@@ -13,6 +13,7 @@ import type { EstatePetition } from "../../../engine/stewardship.types";
 import { lordMode } from "../../../engine/townAgency";
 import type { GameAction } from "../../../state/gameStore.types";
 import type { DecisionCardView, DecisionChoiceView } from "../../decisionCard/decisionCardTypes";
+import { dateWord } from "../../decisionCard/answerWords";
 import { lordAnswer } from "../../decisionCard/families/lordOutcome";
 import { LORD_OUTCOME_COPY as OUTCOME } from "../../decisionCard/families/lordOutcomeCopy.ko";
 import { calendarDays } from "../../gameTimeCopy.ko";
@@ -83,9 +84,14 @@ export function marriageDecisionHead(state: GameState): MarriageDecisionHead | n
   if (due === null || plan === undefined) return null;
   const estate = estateName(state, plan.estateId);
   if (due === "will_change") return { kind: due, claimId: plan.claimId, estate, title: COPY.willTitle, line: COPY.willLine(estate), suit: "", focus: plan.claimId };
-  const suit = estatesOf(state).suits.find(entry => entry.claimId === plan.claimId && entry.plaintiff === LORD && entry.stage !== "closed");
+  const suits = estatesOf(state).suits.filter(entry => entry.claimId === plan.claimId && entry.plaintiff === LORD);
+  const suit = suits.find(entry => entry.stage !== "closed");
+  // Astra lordplay2 ③: a suit that ended is not "no suit" — its verdict and the day it closed (the newest).
+  const ended = suit !== undefined ? undefined : suits.filter(entry => entry.stage === "closed").sort((a, b) => b.stageSince - a.stageSince)[0];
+  const suitLine = suit !== undefined ? COPY.contestSuit(COPY.suitStage[suit.stage] ?? suit.stage)
+    : ended === undefined ? COPY.contestNoSuit : COPY.contestEnded(ended.verdict === undefined ? null : COPY.contestVerdict[ended.verdict], dateWord(state, ended.stageSince));
   return { kind: due, claimId: plan.claimId, estate, title: COPY.contestTitle, line: COPY.contestLine(estate, holderName(state, plan.rival)),
-    suit: suit === undefined ? COPY.contestNoSuit : COPY.contestSuit(COPY.suitStage[suit.stage] ?? suit.stage), focus: suit?.id ?? plan.claimId };
+    suit: suitLine, focus: suit?.id ?? ended?.id ?? plan.claimId };
 }
 
 /** A claim's strength by its id, or null. */
