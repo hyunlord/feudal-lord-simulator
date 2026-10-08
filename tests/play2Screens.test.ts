@@ -37,7 +37,6 @@ import { HOME_PETITION_COPY } from "../src/ui/lordCardsCopy.ko";
 import { moneyShort } from "../src/ui/money.ko";
 import { evaluateEraRequirements } from "../src/engine/era";
 import { personDisplayName } from "../src/engine/persons";
-import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { FamilyLinks } from "../src/ui/chronicle/FamilyLinks";
 import { buildEraConsoleModel } from "../src/ui/EraConsole";
@@ -47,6 +46,7 @@ import { lordWallGuidance } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { DECISION_CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
 import { familyPeople } from "../src/ui/persons/familyNews";
+import { LORD_MATTER_CHIP, lordMattersDueNow } from "../src/ui/lord/decisions/lordMattersDue";
 
 const LATIN = /[A-Za-z]{2,}/;
 const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 3 })!;
@@ -172,9 +172,9 @@ test("PLAY-2 friction 9: a birth names the child and both parents, each with a b
   const markup = renderToStaticMarkup(createElement(FamilyLinks, { state: town, record: born, card, onPerson: () => undefined }));
   for (const role of ["child", "mother", "father"]) assert.match(markup, new RegExp(`data-family="${role}"`));
   assert.match(markup, new RegExp(`aria-label="어머니 ${personDisplayName(mother)}의 전기 보기"`));
-  // The marriage's first child: the bride's child born that year, its father.
+  // The marriage's first child: the record names only the bride, so only she is named (no child guessed).
   const firstChild = familyPeople(town, { template: "marriage.child_born", params: { bride: mother.id }, tick: town.tick });
-  assert.deepEqual(firstChild.map(person => person.role), child.birthYear === stateCalendar(town).year ? ["child", "mother", "father"] : ["mother"]);
+  assert.deepEqual(firstChild.map(person => [person.role, person.personId]), [["mother", mother.id]]);
 });
 
 test("PLAY-2 friction 8: a house decision with a deadline stays among the chips until answered — not put away, not pushed out, gone once answered", () => {
@@ -183,10 +183,15 @@ test("PLAY-2 friction 8: a house decision with a deadline stays among the chips 
   const others = ["a", "b", "c", "d"].map(id => beat(id, "fire"));
   const entries = [{ beat: will, firstSeenMs: 0, lastSeenMs: 9_000, dismissed: true }, ...others.map((entry, index) => ({ beat: entry, firstSeenMs: 1_000 + index, lastSeenMs: 9_000, dismissed: false }))];
   const current = new Set([will.id, ...others.map(entry => entry.id)]);
-  const shown = storyChips(entries, current, 10_000, 500, () => false);
+  const due = new Set([will.id]);
+  const shown = storyChips(entries, current, 10_000, 500, () => false, due);
   assert.equal(shown[0]!.id, will.id, "first, though its card was closed and four chips came after it");
   assert.equal(shown.length, 3);
-  current.delete(will.id);
-  assert.ok(!storyChips(entries, current, 10_000, 500, () => false).some(entry => entry.id === will.id), "answered: gone at once");
+  assert.ok(!storyChips(entries, current, 10_000, 500, () => false).some(entry => entry.id === will.id), "not due (the adapter's list): put away as closed");
+  current.delete(will.id); due.delete(will.id);
+  assert.ok(!storyChips(entries, current, 10_000, 500, () => false, due).some(entry => entry.id === will.id), "answered: gone at once");
+  // The adapter's ids are the chips' (lordStoryBeats), read from the decision cards' heads (the swap point for lordMattersDue).
+  assert.deepEqual(lordMattersDueNow(lord), []);
+  assert.equal(LORD_MATTER_CHIP.marriage("will_change", "c1"), will.id);
   assert.ok(DECISION_CARDS_COPY.willDeadline.length > 0);
 });

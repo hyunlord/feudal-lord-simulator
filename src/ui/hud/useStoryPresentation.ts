@@ -14,6 +14,7 @@ import { latestChapterEnd } from "../chronicleModel";
 import { openHomePetitions } from "../lordCardsModel";
 import { openRegistryCards } from "../registryCardModel";
 import { houseChangeView } from "../results/houseChange";
+import { lordMattersDueNow } from "../lord/decisions/lordMattersDue";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -70,13 +71,13 @@ export function yearCardDue(previous: Readonly<{ year: number; tick: number }> |
 /**
  * The chips shown now, at most MAX_CHIPS: each beat seen `delayMs` ago, not put away, still current or within its minute
  * after. DEC-CARD (A3): a house change's chip is never pushed out by newer chips (at 10× a season's chips come fast).
- * PLAY-2 (friction 8): a house decision with a deadline (the will, the contested inheritance, an audit, an off-map
- * estate's petition — `lord_decision`) stays among the chips until it is answered: closing its card does not put it away,
- * newer chips do not push it out, and it goes the moment it is answered (no lingering).
+ * PLAY-2 (friction 8): a house matter due with a deadline (`due`: lordMattersDueNow's chip ids — the will, the contested
+ * inheritance, an audit, an off-map estate's petition) stays among the chips until it is answered: closing its card does
+ * not put it away, newer chips do not push it out, and it goes the moment it is answered (no lingering).
  */
 export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean }>[],
-  current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean): readonly StoryBeat[] {
-  const unanswered = (beat: StoryBeat) => beat.kind === "lord_decision" && current.has(beat.id);
+  current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean, due: ReadonlySet<string> = new Set()): readonly StoryBeat[] {
+  const unanswered = (beat: StoryBeat) => due.has(beat.id) && current.has(beat.id);
   const shown = entries
     .filter(entry => (!entry.dismissed || unanswered(entry.beat)) && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs
       && (current.has(entry.beat.id) || (entry.beat.kind !== "lord_decision" && nowMs - entry.lastSeenMs < LINGER_MS)))
@@ -138,7 +139,7 @@ export function useStoryPresentation(input: {
     if (changed) setRevision(revision => revision + 1);
   });
   const current = new Set(beats.map(beat => beat.id));
-  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead);
+  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead, new Set(lordMattersDueNow(state).map(matter => matter.id)));
   const visibleKey = visible.map(beat => beat.id).join("|");
   // A new chip: stop time if the setting asks for it.
   useEffect(() => {

@@ -3,16 +3,15 @@ import { estatePerson } from "../../engine/estates";
 import type { HistoryRecord } from "../../engine/history.types";
 import { personById, personDisplayName } from "../../engine/persons";
 import type { Person } from "../../engine/persons.types";
-import { calendar, scenarioOf } from "../../engine/scenarioState";
 import { FAMILY_NEWS_COPY as COPY } from "./familyNewsCopy.ko";
 
 // PLAY-2 (Astra's second lord-mode play, friction 9: "a first child" with no name, the parents told differently from
 // screen to screen): the people a birth, a marriage or a death names — read from the record itself (its subject and its
 // params: `person.born`'s mother and father, `marriage.contracted`'s groom and bride, `marriage.child_born`'s bride),
 // each by the person's own display name, and whether a biography can open on them (a person of the town, alive or past).
-// `marriage.child_born` names only the bride: its child is the town's person whose mother she is, born in the record's
-// year (the youngest, when more were) — a lookup, not a rule. Nothing is inferred beyond what the records and the persons
-// give (a parent the engine records wrongly is shown as recorded: engine request, docs/requests/engine-play2-reads.md).
+// `marriage.child_born` names only the bride, so only she is named (the child's id is an engine request; the engine's
+// SUIT-THREAD brings the parents on biographies). Nothing is inferred beyond what the records give (a parent the engine
+// records wrongly is shown as recorded).
 
 export type FamilyRole = "child" | "mother" | "father" | "groom" | "bride" | "spouse" | "deceased";
 export type FamilyPerson = Readonly<{ role: FamilyRole; personId: string; name: string;
@@ -44,14 +43,8 @@ export function familyPeople(state: GameState, record: FamilyRecord): readonly F
     case "marriage.contracted": parts.push(["groom", idOf(params.groom)], ["bride", idOf(params.bride)]); break;
     case "marriage.bride_arrived": parts.push(["bride", idOf(params.bride)]); break;
     case "marriage.brother_in_law_born": parts.push(["child", idOf(params.brotherInLaw)]); break;
-    case "marriage.child_born": {
-      const bride = idOf(params.bride);
-      const year = calendar(record.tick, scenarioOf(state).startYear).year;
-      const child = bride === null ? undefined : [...(state.persons?.people ?? []), ...(state.persons?.past ?? [])]
-        .filter(person => person.motherId === bride && person.birthYear === year).sort((a, b) => b.id.localeCompare(a.id))[0];
-      parts.push(["child", child?.id ?? null], ["mother", bride], ["father", child?.fatherId ?? null]);
-      break;
-    }
+    // The record names only the bride (no child id yet: engine request) — the child is not guessed.
+    case "marriage.child_born": parts.push(["mother", idOf(params.bride)]); break;
   }
   return parts.flatMap(([role, id]): FamilyPerson[] => {
     if (id === null) return [];

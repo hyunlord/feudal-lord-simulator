@@ -4,6 +4,7 @@ import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
 import { DECISION_CARDS_COPY } from "./lord/decisions/decisionCardsCopy.ko";
 import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead } from "./lord/decisions/decisionCardsModel";
+import { LORD_MATTER_CHIP } from "./lord/decisions/lordMattersDue";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
 import { homePetitionView, lordRequestView, type LordRequestView } from "./lordCardsModel";
 import { lordMomentBeats } from "./lordMomentBeats";
@@ -64,21 +65,21 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
       decision: "lord_request", title: request.title, line: request.demand, facts: request.more === "" ? [] : [request.more], advice: LORD_CARDS_COPY.requestAdvice });
   }
   // LM-R2: the lord's decision cards. The will's chip wears the will's Wave 40 moment and stands for it (one chip). PLAY-2:
-  // these stay among the chips until answered (useStoryPresentation); the will's says its deadline.
+  // these stay among the chips until answered (lordMattersDue, useStoryPresentation); the will's says its deadline.
   const marriage = marriageDecisionHead(state);
   if (marriage !== null) {
-    beats.push({ id: `marriage-decision:${marriage.kind}:${marriage.claimId}`, kind: "lord_decision",
+    beats.push({ id: LORD_MATTER_CHIP.marriage(marriage.kind, marriage.claimId), kind: "lord_decision",
       illustration: marriage.kind === "will_change" ? WILL_MOMENT : null, tile: null, decision: "marriage_decision",
       title: marriage.title, line: marriage.line, facts: marriage.kind === "contested" ? [marriage.suit] : [DECISION_CARDS_COPY.willDeadline], advice: marriage.kind === "contested" ? DECISION_CARDS_COPY.contestOpen : DECISION_CARDS_COPY.willAdvice });
   }
   const audit = auditDecisionHead(state);
   if (audit !== null) {
-    beats.push({ id: `audit:${audit.auditId}`, kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
+    beats.push({ id: LORD_MATTER_CHIP.audit(audit.auditId), kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
       title: audit.title, line: audit.line, facts: [audit.kicker, audit.waits], advice: DECISION_CARDS_COPY.auditAdvice });
   }
   const offMap = offMapPetitionHead(state);
   if (offMap !== null) {
-    beats.push({ id: `estate-petition:${offMap.petitionId}`, kind: "lord_decision", illustration: null, tile: null, decision: "estate_petition_offmap",
+    beats.push({ id: LORD_MATTER_CHIP.petition(offMap.petitionId), kind: "lord_decision", illustration: null, tile: null, decision: "estate_petition_offmap",
       title: offMap.title, line: offMap.line, facts: offMap.why === "" ? [offMap.waits] : [offMap.waits, offMap.why], advice: DECISION_CARDS_COPY.petitionAdvice });
   }
   // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record. DEC-CARD (A3): a house change's moments
