@@ -1,0 +1,149 @@
+{
+ "found": {
+  "slice-eve": {
+   "seed": 3,
+   "tick": 79960,
+   "year": 1319,
+   "season": 3,
+   "endTick": 80000
+  },
+  "slice-end": {
+   "seed": 3,
+   "tick": 80000,
+   "year": 1320,
+   "season": 0,
+   "reason": "years",
+   "endTick": 80000,
+   "summary": {
+    "year": 1320,
+    "population": 484,
+    "houses": 24,
+    "treasury": 9969,
+    "estatesHeld": [
+     "estate-home",
+     "estate-neighbour-3"
+    ],
+    "secondEstateYear": 1316,
+    "projects": 145,
+    "projectsByLord": 22,
+    "decisions": {
+     "decision.card": 57,
+     "decision.market_dues": 2,
+     "decision.steward": 64,
+     "decision.petition_response": 1,
+     "decision.estate_policy": 3,
+     "decision.famine_response": 1,
+     "decision.project_subsidy": 1
+    },
+    "promises": {
+     "kept": 4,
+     "broken": 0,
+     "open": 0
+    },
+    "marriage": "inherited"
+   }
+  }
+ },
+ "years": [
+  {
+   "year": 1300,
+   "ms": 1736,
+   "population": 56
+  },
+  {
+   "year": 1301,
+   "ms": 5036,
+   "population": 64
+  },
+  {
+   "year": 1302,
+   "ms": 9835,
+   "population": 111
+  },
+  {
+   "year": 1303,
+   "ms": 3108,
+   "population": 100
+  },
+  {
+   "year": 1304,
+   "ms": 6308,
+   "population": 157
+  },
+  {
+   "year": 1305,
+   "ms": 2967,
+   "population": 177
+  },
+  {
+   "year": 1306,
+   "ms": 3980,
+   "population": 199
+  },
+  {
+   "year": 1307,
+   "ms": 4460,
+   "population": 233
+  },
+  {
+   "year": 1308,
+   "ms": 8206,
+   "population": 295
+  },
+  {
+   "year": 1309,
+   "ms": 14264,
+   "population": 343
+  },
+  {
+   "year": 1310,
+   "ms": 6563,
+   "population": 380
+  },
+  {
+   "year": 1311,
+   "ms": 10811,
+   "population": 403
+  },
+  {
+   "year": 1312,
+   "ms": 12960,
+   "population": 440
+  },
+  {
+   "year": 1313,
+   "ms": 7674,
+   "population": 454
+  },
+  {
+   "year": 1314,
+   "ms": 9002,
+   "population": 466
+  },
+  {
+   "year": 1315,
+   "ms": 27189,
+   "population": 474
+  },
+  {
+   "year": 1316,
+   "ms": 39493,
+   "population": 488
+  },
+  {
+   "year": 1317,
+   "ms": 13035,
+   "population": 466
+  },
+  {
+   "year": 1318,
+   "ms": 6186,
+   "population": 469
+  },
+  {
+   "year": 1319,
+   "ms": 5868,
+   "population": 484
+  }
+ ]
+}
