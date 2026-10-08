@@ -191,7 +191,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [], data: "seed 1 stone town: date, population, food, coin" },
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
-  { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], data: "the speed seals and the settings button" },
+  { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], requires: [".speed-seal-mark .speed-seal-step"],
+    data: "the speed seals (PLAY-2: the fast seal's mark ×5·10) and the settings button" },
   // QA-035: on a short screen the popover scrolls inside (it stops above the dock); the HUD it would meet hides while open.
   { id: "hud.settings-popover", root: ".command-popover", frame: "css", scene: TOWN, open: [{ click: ".settings-disclosure > summary" }, { pause: 500 }], scroll: "y",
     requires: [".save-controls .ui-btn"], data: "autoplay, tutorial, audio, save and render switches" },
@@ -346,6 +347,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.famine", ...DECISION_CARD, root: ".story-modal.petition-card.decision-card.famine-decision", frameSlots: [],
     scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
     open: [{ story: ".famine-decision" }, { pause: 800 }], data: "chapter 1's famine decision (DEC-CARD: four answers, the steward beside the stake)" },
+  // PLAY-2: the famine answered on screen (방관) — its card's line, until when and the bottleneck left (famineAfter).
+  { id: "hud.event-card.famine-answered", root: ".event-card[data-story='famine']", frame: "css",
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
+    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" },
+      { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
   { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
   { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
   { id: "modal.petition.ch4-reorg", ...DECISION_CARD, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },

@@ -29,6 +29,11 @@ export const RESULTS_SURFACES: readonly SurfaceRow[] = [
     open: [{ wait: ".results-card.year-review", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-part h3", ".results-card-part li", ".year-review-group-head", ".results-card-chronicle", ".results-card-continue"],
     data: "1300's card on the engine's yearReview after a load (unseen): the lord's decisions, the steward's, what followed by decision, the town" },
+  // PLAY-2: the year card's [연대기에서 보기] — the chronicle on that year only.
+  { id: "modal.history.year", root: ".chronicle-screen[data-from-year]", frame: "flat", scene: scene("year-loaded", OPENS_ITSELF),
+    open: [{ wait: ".results-card.year-review", timeout: 90_000 }, { pause: 600 }, { click: ".results-card.year-review .results-card-chronicle" },
+      { wait: ".chronicle-screen[data-from-year]", timeout: 30_000 }, { pause: 900 }], scrollParts: [".chronicle-list", ".chronicle-detail"],
+    requires: [".chronicle-filters", ".chronicle-card", ".chronicle-count"], data: "1300's year card to the chronicle: the records of 1300 only (both year selects on it)" },
   // Replaces the phase-1 row on the petitions set's pannage state (its death came before DEC-TRACE: no succession record).
   { id: "modal.house-change.lord-died", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='lord_died']", scene: scene("succession", OPENS_ITSELF),
     open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
