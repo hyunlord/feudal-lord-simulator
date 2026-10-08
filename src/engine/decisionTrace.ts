@@ -34,8 +34,8 @@ import { POSSESSION_RENT_DETAIL } from "./possessionRent";
 const YEAR = BALANCE.TICKS_PER_YEAR;
 /** A decision's targets stay live this long (the user's gate: a consequence within three years). */
 export const TRACE_LIVE_TICKS = 3 * YEAR;
-/** P-T6: what the thread keeps of its decisions (their records stay in the history). */
-const TRACE_KEPT_TICKS = 10 * YEAR;
+/** P-T6: what the thread keeps of its small decisions (their records stay in the history); the big it keeps to the end. */
+export const TRACE_KEPT_TICKS = 10 * YEAR;
 /** A faction's memory is tied to a decision of the same words within this many ticks (the history writes it a tick on). */
 const MEMORY_LINK_TICKS = 4;
 /** An off-map estate's mood counts as moved when it crosses a band this wide. */
@@ -545,12 +545,23 @@ function crises(before: GameState, after: GameState, state: GameState): GameStat
 
 const scenarioYear = (state: GameState, tick: number) => stateCalendar({ ...state, tick }).year;
 
-/** P-T6: the thread keeps ten years of decisions and acts (their records stay in the history). */
+/**
+ * TRACE-KEEP (A5, the user's ruling 2026-10-09): a big decision — the lord's, with a weight that made it his (P-D5),
+ * answered and not let lapse — stays in the thread to the end, with what followed it and who remembers it; the slice's
+ * end page reads 1300–1308 in its twentieth year. The small (the steward's, the lord's own settings, the silences) are
+ * kept ten years (P-T6), then only their history records and the year's count remain.
+ */
+export function isBigDecision(decision: Pick<TracedDecision, "by" | "weights" | "lapsed">): boolean {
+  return decision.by === "lord" && decision.lapsed !== true && decision.weights.length > 0;
+}
+
+/** P-T6: the thread keeps ten years of small decisions and acts (their records stay in the history), the big for good. */
 function prune(state: GameState): GameState {
   const trace = traceOf(state);
   const from = state.tick - TRACE_KEPT_TICKS;
-  if ((trace.decisions[0]?.tick ?? Infinity) >= from && (trace.acts[0]?.tick ?? Infinity) >= from) return state;
-  return { ...state, trace: { decisions: trace.decisions.filter(entry => (entry.lastTick ?? entry.tick) >= from), acts: trace.acts.filter(entry => entry.tick >= from) } };
+  const stale = (entry: TracedDecision) => (entry.lastTick ?? entry.tick) < from && !isBigDecision(entry);
+  if (!trace.decisions.some(stale) && (trace.acts[0]?.tick ?? Infinity) >= from) return state;
+  return { ...state, trace: { decisions: trace.decisions.filter(entry => !stale(entry)), acts: trace.acts.filter(entry => entry.tick >= from) } };
 }
 
 /** DEC-TRACE §2: the tick's thread — the steward's answers and the silences, the factions' memories tied, the consequences. Lord mode only. */

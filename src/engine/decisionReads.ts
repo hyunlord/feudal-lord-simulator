@@ -100,7 +100,12 @@ export function yearReview(state: GameState, year: number): {
   readonly house: readonly { readonly recordId: string; readonly tick: number; readonly template: string; readonly params: Readonly<Record<string, string | number>> }[];
   readonly decisions: readonly YearDecision[]; readonly consequences: readonly TraceRow[];
   /** DTR-15 (the user's instruction): what the community built because its builder refused — late and dearer, with or without a decision behind it. */
-  readonly communityBuilt: readonly { readonly recordId: string; readonly tick: number; readonly params: Readonly<Record<string, string | number>>; readonly decisionIds: readonly string[] }[] } {
+  readonly communityBuilt: readonly { readonly recordId: string; readonly tick: number; readonly params: Readonly<Record<string, string | number>>; readonly decisionIds: readonly string[] }[];
+  /**
+   * TRACE-KEEP (A5): the year's small decisions the thread no longer keeps (older than ten years) — counted, not listed:
+   * the lord's own settings, the steward's answers, the silences. The big stay in `decisions` to the end.
+   */
+  readonly summarised: { readonly lord: number; readonly steward: number; readonly lapsed: number } } {
   const from = (year - scenarioOf(state).startYear) * YEAR;
   const to = from + YEAR;
   const traced = new Map(traceOf(state).decisions.map(decision => [decision.id, decision] as const));
@@ -115,7 +120,14 @@ export function yearReview(state: GameState, year: number): {
     .map(record => ({ recordId: record.id, tick: record.tick, template: record.template, params: record.params ?? {} }));
   const communityBuilt = (state.history?.records ?? []).filter(record => record.tick >= from && record.tick < to && record.template === "consequence" && record.params?.key === "community_built")
     .map(record => ({ recordId: record.id, tick: record.tick, params: record.params ?? {}, decisionIds: (record.because ?? []).map(entry => entry.decisionId) }));
-  return { house, decisions, consequences: traceInRange(state, from, to), communityBuilt };
+  const summarised = { lord: 0, steward: 0, lapsed: 0 };
+  for (const record of state.history?.records ?? []) {
+    if (record.kind !== "decision" || record.tick < from || record.tick >= to || traced.has(record.id)) continue;
+    if (record.template === "decision.lapsed") summarised.lapsed += 1;
+    else if (record.template === "decision.steward") summarised.steward += 1;
+    else summarised.lord += 1;
+  }
+  return { house, decisions, consequences: traceInRange(state, from, to), communityBuilt, summarised };
 }
 
 /** What one setting does to a kind of small matter (the steward's answer, the treasury, the factions). */
