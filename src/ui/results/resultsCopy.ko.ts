@@ -43,6 +43,8 @@ export const RESULTS_COPY = {
    * lord's own answer says "당신의 결정"; the steward's answer and a silence say what they were (P-C2). */
   trace: {
     title: (year: number, by: "lord" | "steward" | "lapsed") => `${year}년 ${BY_WORDS[by]} 때문에`,
+    /** The chip's title: which decision ("1300년 당신의 결정 때문에: 시장 부담"), so two of one year read apart. */
+    chipTitle: (year: number, by: "lord" | "steward" | "lapsed", subject: string) => `${year}년 ${BY_WORDS[by]} 때문에: ${subject}`,
     /** The record's line after the decision behind it ("1300년 당신의 결정 때문에 — …"); `part`: one cause among others. */
     because: (year: number, by: "lord" | "steward" | "lapsed", part: boolean) => part ? `${year}년 ${BY_WORDS[by]}도 한몫해` : `${year}년 ${BY_WORDS[by]} 때문에`,
     prefixed: (because: string, sentence: string) => `${because} — ${sentence}`,

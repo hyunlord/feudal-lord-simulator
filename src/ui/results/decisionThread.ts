@@ -50,6 +50,10 @@ function decisionSubject(state: GameState, record: HistoryRecord, chosen: string
   return { subject: recordSentence(state, record), answer: "" };
 }
 
+/** What a decision answered, in words (its subject alone, for a chip's title). */
+export const decisionSubjectWords = (state: GameState, record: HistoryRecord): string =>
+  decisionSubject(state, record, record.decision?.chosen ?? String(record.params?.chosen ?? "")).subject;
+
 /** What a decision was about and how it was answered: "장원 청원 '공동 목초지': 들어준다", the steward's "… — 청지기가
  * 관습대로 처리했다 (들어줌)", a silence's "… — 답하지 않은 채 기한이 지났다". */
 export function decisionAbout(state: GameState, record: HistoryRecord): string {
@@ -130,7 +134,8 @@ export const traceNews = perState((state: GameState): readonly TraceNews[] => {
   return traceGroups(state, rows).filter(group => !onlyMinds(group)).map(group => {
     const record = index.get(group.decisionId)!;
     const lines = threadLines(state, group.rows);
-    return { decisionId: group.decisionId, decisionTick: group.decisionTick, title: RESULTS_COPY.trace.title(yearOfTick(state, group.decisionTick), group.by),
+    return { decisionId: group.decisionId, decisionTick: group.decisionTick,
+      title: RESULTS_COPY.trace.chipTitle(yearOfTick(state, group.decisionTick), group.by, decisionSubjectWords(state, record)),
       line: RESULTS_COPY.trace.dated(chronicleDate(state, group.decisionTick), decisionAbout(state, record)), facts: [...lines.lines, ...lines.feelings] };
   });
 });

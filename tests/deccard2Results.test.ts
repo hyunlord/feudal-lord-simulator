@@ -56,8 +56,9 @@ test("DEC-CARD-2 news: one chip per decision whose consequences landed this seas
   const news = traceNews(season);
   assert.deepEqual(news.map(entry => entry.decisionId).sort(), [dues.id, suit.id].sort(), "the season's two decisions with consequences");
   const duesNews = news.find(entry => entry.decisionId === dues.id)!;
-  assert.equal(duesNews.title, RESULTS_COPY.trace.title(1300, "lord"));
-  assert.equal(duesNews.title, "1300년 당신의 결정 때문에");
+  assert.equal(duesNews.title, RESULTS_COPY.trace.chipTitle(1300, "lord", "시장 부담"));
+  assert.ok(duesNews.title.startsWith("1300년 당신의 결정 때문에"), duesNews.title);
+  assert.notEqual(news.find(entry => entry.decisionId === suit.id)!.title, duesNews.title, "two of one year read apart");
   const rows = traceInRange(season, 0, season.tick + 1).filter(row => row.decisionId === dues.id);
   // Each consequence is its record's own sentence (a share among other causes said so); the relation rows are feelings.
   for (const row of rows.filter(entry => entry.key !== "relation")) {
@@ -114,6 +115,8 @@ test("DEC-CARD-2 chronicle: a record that followed from a decision says so and l
 test("DEC-CARD-2 chronicle: the card's, the steward's and a lapse's decisions are named (DECISION_KIND_NAMES), with who answered", () => {
   const suit = byTemplate(town, "decision.card", "lawsuit");
   assert.ok(decisionCompare(town, suit)!.heading.endsWith("· 소송"), decisionCompare(town, suit)!.heading);
+  assert.equal(decisionCompare(town, suit)!.chosen, recordSentence(town, suit), "a command that chose only itself, by the ledger's sentence");
+  assert.equal(recordCard(town, { key: suit.id, tick: suit.tick, record: suit, bundle: null }).numbers, null, "no forecast: no numbers line");
   const steward = byTemplate(town, "decision.steward");
   const view = decisionCompare(town, steward)!;
   assert.ok(view.heading.endsWith("· 장원 청원 · 청지기의 처리"), view.heading);

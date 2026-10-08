@@ -18,7 +18,7 @@ export const RESULTS_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.trace", root: ".event-card[data-story='decision_trace']", frame: "css", scene: scene("trace-season", 0),
     open: [{ wait: CHIP, timeout: 90_000 }, { click: CHIP }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-chronicle"],
-    data: "the season's news of the lord's decision (the market dues set): the sawmill's project (one cause among others), the merchant houses' minds, the way to the chronicle" },
+    data: "the season's news of the lord's decision (the suit filed on the first tick): its year and subject, the neighbour's mind, the way to the chronicle" },
   { id: "modal.history.thread-decision", root: ".chronicle-thread[data-thread='decision']", frame: "flat", scene: scene("trace-later", 0),
     open: [...TO_CHRONICLE], requires: [".chronicle-thread-part h4", ".chronicle-thread-link", ".chronicle-thread-minds li"],
     data: "the suit filed in 1300, opened from its later chip: what followed (its turns) and who remembers it" },

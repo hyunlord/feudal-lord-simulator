@@ -450,6 +450,8 @@ const label = (key: string) => HISTORY_CHOICE_LABELS[key] ?? key;
 const param = (record: HistoryRecord, key: string) => { const value = record.params?.[key]; return typeof value === "number" ? value : null; };
 
 function recordNumbers(record: HistoryRecord, bundle: readonly HistoryRecord[] | null): string | null {
+  // DEC-CARD-2: a card's, the steward's or a lapse's decision forecasts nothing (its numbers line would read "예측" alone).
+  if (record.decision !== undefined && Object.keys(record.decision.predicted).length === 0) return null;
   if (record.decision !== undefined) {
     return CHRONICLE_SCREEN_COPY.outcome(CHRONICLE_SCREEN_COPY.metrics(record.decision.predicted),
       record.decision.actual === undefined ? null : CHRONICLE_SCREEN_COPY.metrics(record.decision.actual));
@@ -516,8 +518,9 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
   // LM-R1: the lord's conditions are named by the lord tab's own words, not the engine's keys.
   // DEC-CARD-2: a card's, the steward's or a lapse's answer in words — an event's by its own choices, a petition's granted or refused.
   const entryId = state.registry?.occurrences.find(entry => entry.id === record.params?.subjectId)?.entryId;
+  // A card's command that chose nothing but itself (a suit filed, a marriage proposed) by the ledger's sentence.
   const choiceLabel = (key: string) => lordChoiceLabel(kind, key) ?? (entryId === undefined ? undefined : V4_COPY[entryId]?.choices[key]?.label)
-    ?? CHRONICLE_SCREEN_COPY.cardChoices[key] ?? label(key);
+    ?? CHRONICLE_SCREEN_COPY.cardChoices[key] ?? (key === record.params?.command ? recordSentence(state, record) : label(key));
   const rows = Object.entries(decision.predicted).map(([key, predicted]): DecisionRow => {
     const actual = decision.actual?.[key];
     if (actual === undefined) return { key, predicted: CHRONICLE_SCREEN_COPY.predictedValue(key, predicted), actual: null, delta: null, deltaLabel: null };
