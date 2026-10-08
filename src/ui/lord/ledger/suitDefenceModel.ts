@@ -92,8 +92,8 @@ function threatRow(state: GameState, threat: EntryThreat, records: readonly Hist
   const record = records.find(entry => entry.template === "estate.entry_threatened" && entry.params?.threat === threat.id);
   const guarded = threat.guarded === true;
   return {
-    id: threat.id, title: COPY.threatTitle(house, what), house, what, guarded,
-    when: COPY.threatWhen(dateLabel(state, threat.tick), dateLabel(state, threat.due), calendarArrivalLabel(state.tick, threat.due, scenarioOf(state).startYear)),
+    id: threat.id, title: what, house, what, guarded,
+    when: COPY.threatWhen(house, dateLabel(state, threat.tick), dateLabel(state, threat.due), calendarArrivalLabel(state.tick, threat.due, scenarioOf(state).startYear)),
     sentence: record === undefined ? null : recordSentence(state, record),
     guard: guarded ? null : { cost: moneyShort(costs.guard), button: shut(would(state, { type: "guard_possession", threatId: threat.id })) },
     appease: { cost: moneyShort(costs.appease), button: shut(would(state, { type: "appease_neighbour", threatId: threat.id })) },

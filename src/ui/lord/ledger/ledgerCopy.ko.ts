@@ -11,7 +11,12 @@ import type { RegistryTerm } from "../../../engine/registry.types";
 /** The ledger's four promise states (`due`: open, its deadline within a season). */
 export type PromiseState = "open" | "due" | "kept" | "broken";
 
-const josa = (word: string, withFinal: string, without: string) => { const code = word.charCodeAt(word.length - 1) - 0xac00; return code >= 0 && code <= 11171 && code % 28 !== 0 ? withFinal : without; };
+/** The particle after a word's last syllable ("드 이브르쿠르 가문(이웃 영주)" → after 주; a trailing bracket is not read). */
+const josa = (word: string, withFinal: string, without: string) => {
+  const syllable = [...word].reverse().find(char => char >= "가" && char <= "힣");
+  const code = syllable === undefined ? -1 : syllable.charCodeAt(0) - 0xac00;
+  return code >= 0 && code % 28 !== 0 ? withFinal : without;
+};
 
 /**
  * SUIT-THREAD (the user, 2026-10-09; the engine's `suitHearing`: `verdictNow`, `reachable`): the hearing judged now and

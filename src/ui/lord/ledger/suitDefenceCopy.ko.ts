@@ -35,8 +35,7 @@ export const SUIT_DEFENCE_COPY = {
   } satisfies Record<Refusal<"hold">, string>,
   // DTR-23 (S3): a forcible entry forewarned.
   threatsHeading: "강제 점거 예고",
-  threatTitle: (house: string, what: string) => `${house} · ${what}`,
-  threatWhen: (date: string, due: string, when: string) => `예고 ${date} · 올 때 ${due} · ${when}`,
+  threatWhen: (house: string, date: string, due: string, when: string) => `상대 ${house} · 예고 ${date} · 올 때 ${due}(${when})`,
   guarded: "지킬 사람을 들였습니다",
   guard: (money: string) => `지킬 사람 들이기 · ${money}`,
   guardLabel: (what: string, money: string) => `지킬 사람 들이기: ${what} · ${money}`,

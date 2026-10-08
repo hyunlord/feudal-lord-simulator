@@ -11,8 +11,10 @@
 //  - neighbour-took: a house's enforcement that took the possession from the lord (`estate.possession_enforced`, §4);
 //  - suit-settled: a suit against the lord ended by a final concord.
 // Beside them suit-ledger-states.json (each: the path, the tick, the year and what it holds) and a yearly line of the
-// neighbours' relations on stderr (a forcible entry needs a house at −60 or below).
+// neighbours' relations on stderr (a forcible entry needs a house at −60 or below). The ledger's geometry rows and
+// captures read them from the lord2 folder as suit-<name>.json (src/ui/lord/ledger/surfaces.ts):
 //   tsx scripts/suitLedgerStates.ts <lord2-dir> <out-dir> [years=40]
+//   for f in <out-dir>/*.json; do cp "$f" <lord2-dir>/suit-$(basename "$f" | sed 's/^suit-//'); done
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("영주 모드 소송 방어·강제 점거 경로(scripts/suitLedgerStates.ts)", { remote: "scripts/remote/run.sh render-SUIT-states-<sha7> -- node_modules/.bin/tsx scripts/suitLedgerStates.ts ~/fls-lmr2-states <디렉터리>", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
