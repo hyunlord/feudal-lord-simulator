@@ -7,8 +7,10 @@
 //    opens by itself after the load, then its decisions part scrolled into view;
 //  - end-record: a decision's [연대기에서 이 결정 보기] — the chronicle on that record; closing it comes back to the page;
 //  - end-reopen: [계속 다스리기], then the pause menu's [영주의 스무 해 돌아보기] opens it again;
-//  - end-live: `slice-eve` (40 ticks before the end) run at 1×: the turn's cards first (the season's ledger, 1319's year
-//    card), then the end page by itself.
+//  - end-live: `slice-eve` (40 ticks before the end) run at 1×: the end page alone, by itself (the user's ruling: it takes
+//    the end season's card's and 1319's year card's place); end-live-year-card / end-live-season-card: its two links, and
+//    back; end-live-after: [계속 다스리기], then ten seconds of the town with nothing popping (1319's card marked seen).
+//    `--only live` runs this part alone (results-live.json).
 // results.json beside them.
 //   scripts/remote/run.sh render-LMR3-slice-captures-<sha7> --light -- bash scripts/sliceEndsCaptures.sh
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
@@ -58,7 +60,9 @@ const ok = card => card !== null && card.smallestText >= 12 && card.smallestTarg
 const report = (name, row, extra = true) => { row.pass = extra && (row.card === undefined || ok(row.card)); rows[name] = row; console.log(`${row.pass ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(row)}`); };
 const scrollTo = (page, selector) => page.evaluate(sel => { const target = document.querySelector(sel); const scroll = target?.closest('.chapter-page-scroll'); if (target && scroll) scroll.scrollTop = target.offsetTop - scroll.offsetTop - 8; }, selector);
 
-for (const view of VIEWS) {
+// --only live: the live end alone (the user's ruling's capture).
+const liveOnly = flags.only === 'live';
+for (const view of liveOnly ? [] : VIEWS) {
   // The opening page: a new game from the welcome.
   {
     const context = await browser.newContext({ viewport: { width: view.width, height: view.height }, hasTouch: view.touch });
@@ -130,28 +134,66 @@ for (const view of VIEWS) {
   }
 }
 
-// The end coming live: 40 ticks before it at 1×.
+// The end coming live: 40 ticks before it at 1×. The user's ruling (2026-10-09): the end page alone — the end season's card
+// and 1319's year card do not open by themselves; both are the page's links, and after [계속 다스리기] 1319's card does not pop.
 {
   const state = scene('slice-eve');
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: true, initScript: INIT, width: 1280, height: 800,
     query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
   page.on('pageerror', error => errors.push(`live: ${String(error).slice(0, 300)}`));
-  // The turn's cards come first (the season's ledger, 1319's year card), each put away; then the end page by itself.
+  const YEAR_CARD = '.results-card.year-review';
+  const SEASON_CARD = '.season-ledger-card';
   const row = { order: [], end: false };
   for (let waited = 0; waited < 180_000 && !row.end; waited += 500) {
-    for (const [name, card, button] of [['season', '.season-ledger-card', '.season-ledger-resume'], ['year', '.results-card.year-review', '.results-card-continue']]) {
-      if (await visible(page, card)) { row.order.push(name); await page.waitForTimeout(800); await page.locator(`${card} ${button} >> visible=true`).first().click(); await page.waitForTimeout(300); }
-    }
+    for (const [name, card] of [['season', SEASON_CARD], ['year', YEAR_CARD]]) if (await visible(page, card) && !row.order.includes(name)) row.order.push(name);
     row.end = await visible(page, END);
     if (!row.end) await page.waitForTimeout(500);
   }
-  if (row.end) { row.order.push('end'); await page.waitForTimeout(800); row.bytes = await shoot(page, 'end-live'); }
-  report('end-live', row, row.end && row.order.includes('year') && row.order.indexOf('year') < row.order.indexOf('end'));
+  if (row.end) {
+    row.order.push('end');
+    await page.waitForTimeout(800);
+    row.card = await measure(page, END);
+    row.lastYear = await page.locator(`${END} .slice-last-year`).getAttribute('data-year').catch(() => null);
+    row.bytes = await shoot(page, 'end-live');
+  }
+  report('end-live', row, row.end && row.order.length === 1 && row.lastYear === '1319');
+  if (row.end) {
+    // The year card from its link, and back.
+    await page.locator(`${END} .slice-year-card`).click();
+    const year = { opened: await waitFor(page, YEAR_CARD, 10_000) };
+    if (year.opened) {
+      await page.waitForTimeout(700);
+      year.title = await page.locator(`${YEAR_CARD} h2`).first().textContent();
+      year.bytes = await shoot(page, 'end-live-year-card');
+      await page.locator(`${YEAR_CARD} .results-card-continue`).click(); await page.waitForTimeout(500);
+    }
+    year.back = await visible(page, END);
+    report('end-live-year-card', year, year.opened && (year.title ?? '').startsWith('1319년') && year.back);
+    // The season card from its link, and back.
+    await page.locator(`${END} .slice-season-card`).click();
+    const season = { opened: await waitFor(page, SEASON_CARD, 10_000) };
+    if (season.opened) {
+      await page.waitForTimeout(900);
+      season.title = await page.locator(`${SEASON_CARD} h2`).first().textContent();
+      season.bytes = await shoot(page, 'end-live-season-card');
+      await page.locator(`${SEASON_CARD} .season-ledger-resume`).click(); await page.waitForTimeout(500);
+    }
+    season.back = await visible(page, END);
+    report('end-live-season-card', season, season.opened && season.back);
+    // [계속 다스리기]: the town runs on at 1×, and 1319's card (marked seen as the page opened) does not pop.
+    await page.locator(`${END} .slice-continue`).click();
+    const after = { popped: [] };
+    for (let waited = 0; waited < 10_000; waited += 500) {
+      for (const [name, card] of [['season', SEASON_CARD], ['year', YEAR_CARD], ['end', END]]) if (await visible(page, card) && !after.popped.includes(name)) after.popped.push(name);
+      await page.waitForTimeout(500);
+    }
+    report('end-live-after', after, after.popped.length === 0);
+  }
   await context.close();
 }
 
 await browser.close();
 const pass = Object.values(rows).every(row => row.pass) && errors.length === 0 && largest <= MAX_BYTES;
-writeFileSync(join(out, 'results.json'), JSON.stringify({ pass, rows, bytes, largest, errors }, null, 1));
+writeFileSync(join(out, liveOnly ? 'results-live.json' : 'results.json'), JSON.stringify({ pass, rows, bytes, largest, errors }, null, 1));
 console.log(`${pass ? 'PASS' : 'FAIL'}: ${Object.keys(rows).length} rows, ${bytes} bytes (largest ${largest}), ${errors.length} page errors`);
 process.exit(pass ? 0 : 1);

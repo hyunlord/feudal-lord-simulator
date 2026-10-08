@@ -589,11 +589,24 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.slice-end", root: ".chronicle-page.slice-page[data-slice='end']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
     scrollParts: [".chapter-page-scroll"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ wait: ".slice-page[data-slice='end']", timeout: 90_000 }, { pause: 800 }],
-    requires: ["h2", ".slice-why p", ".chronicle-maps", ".slice-decisions li", ".slice-record", ".slice-remembers li", ".slice-year-lines li", ".slice-chronicle", ".slice-continue"],
-    data: "the slice's end in 1320 (seed 3, twenty years): why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year" },
+    requires: ["h2", ".slice-last-year li", ".slice-year-card", ".slice-season-card", ".slice-why p", ".chronicle-maps", ".slice-decisions li", ".slice-record",
+      ".slice-remembers li", ".slice-year-lines li", ".slice-chronicle", ".slice-continue"],
+    data: "the slice's end in 1320 (seed 3, twenty years): the last year 1319 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year" },
   { id: "modal.slice-end.record", extends: "modal.slice-end", root: ".chronicle-screen", frame: "flat", scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-decisions .slice-record" }, { wait: ".chronicle-screen", timeout: 30_000 }, { pause: 900 }], scrollParts: [".chronicle-list", ".chronicle-detail"],
     requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision opened in the chronicle on its record (closing it comes back to the page)" },
+  // The user's ruling (2026-10-09): the end page takes the live end's cards' place and links to them.
+  { id: "modal.slice-end.year-card", extends: "modal.slice-end", root: ".story-modal.petition-card.results-card.year-review", frame: "layer", frameLayer: ".petition-frame",
+    contentSlot: ".petition-body", scrollParts: [".petition-body"], siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
+    scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
+    open: [{ click: ".slice-last-year .slice-year-card" }, { wait: ".results-card.year-review", timeout: 30_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-part h3", ".results-card-chronicle", ".results-card-continue"], data: "1319's year card opened from the end page's link (the engine's yearReview)" },
+  { id: "modal.slice-end.season-card", extends: "modal.slice-end", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
+    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
+    open: [{ click: ".slice-last-year .slice-season-card" }, { wait: ".season-ledger-card", timeout: 30_000 }, { pause: 900 }],
+    // Its content scrolls in its own region, as the lord-mode season card's row (modal.season-ledger.steward) declares.
+    requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
+    data: "1319 winter's season card opened from the end page's link (it does not open by itself at the end)" },
 ];
 
 /**

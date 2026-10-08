@@ -66,9 +66,35 @@ export function SliceStartPage({ view, onBegin }: { readonly view: SliceStartVie
   );
 }
 
-export function SliceEndPage({ state, view, onContinue, onChronicle, onRecord }: {
+function LastYear({ view, onYearCard, onSeasonCard }: {
+  readonly view: SliceEndView; readonly onYearCard: () => void; readonly onSeasonCard: () => void;
+}): ReactElement {
+  const copy = SLICE_COPY.end;
+  const { last } = view;
+  return (
+    <section className="slice-part slice-last-year" data-year={last.year}>
+      <h3>{last.heading}</h3>
+      {last.empty !== null ? <p>{last.empty}</p> : <>
+        {last.house.length === 0 ? null : <><h4>{copy.lastHouse}</h4><Lines lines={last.house} /></>}
+        <h4>{copy.lastDecisions}</h4>
+        {last.decisions.length === 0 ? <p className="slice-note">{copy.lastNoDecision}</p> : <Lines lines={last.decisions} />}
+        {last.changed.length === 0 ? null : <><h4>{copy.lastChanged}</h4>
+          {last.changed.map(group => <div key={group.key} className="slice-last-group"><p className="slice-note">{group.heading}</p><Lines lines={group.lines} /></div>)}
+          {last.more === null ? null : <p className="slice-note">{last.more}</p>}</>}
+      </>}
+      <div className="slice-links">
+        <Button type="button" className="slice-year-card" variant="secondary" size="sm" onPress={() => onYearCard()}>{copy.yearCard(last.year)}</Button>
+        {view.seasonCard ? <Button type="button" className="slice-season-card" variant="secondary" size="sm" onPress={() => onSeasonCard()}>{copy.seasonCard}</Button> : null}
+      </div>
+    </section>
+  );
+}
+
+export function SliceEndPage({ state, view, onContinue, onChronicle, onRecord, onYearCard, onSeasonCard }: {
   readonly state: GameState; readonly view: SliceEndView; readonly onContinue: () => void; readonly onChronicle: () => void;
   readonly onRecord: (recordId: string, tick: number) => void;
+  /** The user's ruling: the last year's card and the end season's card, opened over the page (closing them comes back). */
+  readonly onYearCard: () => void; readonly onSeasonCard: () => void;
 }): ReactElement {
   const copy = SLICE_COPY.end;
   return (
@@ -79,6 +105,7 @@ export function SliceEndPage({ state, view, onContinue, onChronicle, onRecord }:
       </>}>
       <p className="slice-kicker">{copy.kicker}</p>
       <h2>{view.title}</h2>
+      <LastYear view={view} onYearCard={onYearCard} onSeasonCard={onSeasonCard} />
       <section className="slice-part slice-why"><h3>{copy.why}</h3><p>{view.why}</p></section>
       <section className="slice-part slice-then-now">
         <h3>{copy.thenNow}</h3>

@@ -8,8 +8,10 @@
 // A test is picked when it changed itself, when it imports a changed file directly or through other files (static
 // import / export from / import() / require, relative paths in src, tests, scripts, tools), or when its text names a
 // changed non-code file by its path (or by its bare name when no other tracked file has it). A change to
-// package-lock.json, tsconfig.json or the dependencies in package.json picks every test.
-// On the Mac at most MAC_LIMIT tests run; more fail (exit 3) with the runner command to use instead.
+// package-lock.json, tsconfig.json or the dependencies in package.json picks every test. A change in src/ also picks
+// the tests that walk src/'s folders instead of importing (sourceScanTests.mjs, decision RR24).
+// On the Mac at most MAC_LIMIT tests run (the source scans, ~11 s together, not counted); more fail (exit 3) with the
+// runner command to use instead.
 // The record: {tree, head, base, picked, pass, fail, passed, where, at} in .remote-runs/test-changed/<tree>.json, or
 // .remote/test-changed.json in a DGX run (run.sh brings it back under .remote-runs/<run>/). <tree> is the tree of the
 // content that was tested (what `git add -A` would commit now, built in a copy of the index). check:merge looks for
@@ -19,12 +21,14 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync,
 import { tmpdir } from "node:os";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { SOURCE_SCAN_GUARD, SOURCE_SCAN_TESTS } from "./sourceScanTests.mjs";
 
 export const TRUNK = "codex/phase15-organic-ground";
 const CODE = new Set([".ts", ".tsx", ".mts", ".mjs", ".js", ".cjs"]);
 const SCAN = ["src", "tests", "scripts", "tools"];
 const ALL_TRIGGERS = new Set(["package.json", "package-lock.json", "tsconfig.json"]);
 export const MAC_LIMIT = 30;
+export const SOURCE_SCAN_WHY = "walks src/ (decision RR24)";
 const IMPORT = /(?:import|export)\s[^'"`;]*?from\s*["']([^"']+)["']|import\s*\(\s*["']([^"']+)["']\s*\)|import\s+["']([^"']+)["']|require\(\s*["']([^"']+)["']\s*\)/g;
 const isTest = (f) => f.startsWith("tests/") && /\.test\.(ts|tsx|mts|mjs|js)$/.test(f);
 
@@ -112,6 +116,10 @@ export function pickTests({ root, base, head }) {
       for (const t of tests) if (!picked.has(t) && (text.get(t).includes(f) || (byName && text.get(t).includes(name)))) picked.set(t, `names ${f}`);
     }
   }
+  const testChanged = [...changed].find(f => isTest(f) && f !== SOURCE_SCAN_GUARD);
+  if (testChanged && !picked.has(SOURCE_SCAN_GUARD) && existsSync(join(root, SOURCE_SCAN_GUARD))) picked.set(SOURCE_SCAN_GUARD, `${SOURCE_SCAN_WHY}: the list's guard; ${testChanged} changed`);
+  const srcChanged = [...changed].find(f => f.startsWith("src/"));
+  if (srcChanged) for (const t of SOURCE_SCAN_TESTS) if (!picked.has(t) && existsSync(join(root, t))) picked.set(t, `${SOURCE_SCAN_WHY}; ${srcChanged} changed`);
   return { changed, picked, total: tests.length };
 }
 
@@ -151,8 +159,9 @@ async function main() {
   console.log(`changed: ${changed.size} file(s) since ${base.slice(0, 8)}; tests picked: ${list.length} of ${total} — running them`);
   for (const t of list) console.log(`  ${t}  (${picked.get(t)})`);
   const mac = process.platform === "darwin" && !process.env.FLS_ALLOW_LOCAL;
-  if (mac && list.length > MAC_LIMIT) {
-    console.error(`${list.length} tests is more than the Mac runs (${MAC_LIMIT}); run them on the runner:\n  scripts/remote/run.sh <label> --light -- npm run -s test:changed`);
+  const counted = list.filter(t => !picked.get(t).startsWith(SOURCE_SCAN_WHY)).length;
+  if (mac && counted > MAC_LIMIT) {
+    console.error(`${counted} tests (besides the source scans) is more than the Mac runs (${MAC_LIMIT}); run them on the runner:\n  scripts/remote/run.sh <label> --light -- npm run -s test:changed`);
     process.exit(3);
   }
   const tree = testedTree(ROOT);

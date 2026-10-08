@@ -1,3 +1,4 @@
+import { BALANCE } from "../../content/balanceConfig";
 import { factionDisplayName } from "../../content/factionCopy.ko";
 import { decisionRemembers, traceInRange, yearReview } from "../../engine/decisionReads";
 import type { GameState } from "../../engine/engine.types";
@@ -14,7 +15,9 @@ import { NEGOTIATION_COPY } from "../lord/negotiation/negotiationCopy.ko";
 import { moneyFull } from "../money.ko";
 import { perState } from "../perState";
 import { decisionAbout, decisionSubjectWords, onlyMinds, threadLines, traceGroups } from "../results/decisionThread";
+import { lordYearReview } from "../results/lordYearReview";
 import { RESULTS_COPY } from "../results/resultsCopy.ko";
+import type { YearReviewView } from "../results/yearReview";
 import { SLICE_COPY } from "./sliceCopy.ko";
 
 // LM-R3 phase 2a: the slice's end — "이 도시가 내 결정의 결과인가" (docs/design/lord-slice.md LS-5, DEC-TRACE §2–§4). From
@@ -29,9 +32,15 @@ import { SLICE_COPY } from "./sliceCopy.ko";
 // - the years at a glance: a line a year — the year's house news (`yearReview`), its decision lines (the ledger's, as
 //   the outcome counts them: `yearReview` reads only the decisions the thread still keeps), what followed that year
 //   (`yearReview`'s rows) and the year's last season population (the chronicle's season line).
+// The user's ruling (2026-10-09): at the top, the last year as its year card shows it (`lordYearReview`) — the house's
+// news, the lord's decisions and what followed — with the year card and the end season's card as links (the page takes
+// their place at the live end).
 // Once per state.
 
 const SHAPED_MAX = 6;
+/** The last year's groups of what followed shown on the page (its card holds them all). */
+const LAST_GROUPS = 3;
+const SEASON = BALANCE.TICKS_PER_YEAR / 4;
 const LINES_MAX = 4;
 const REMEMBERS_MAX = 5;
 
@@ -46,7 +55,18 @@ export type SliceEndView = Readonly<{
   shaped: readonly SliceShapedDecision[];
   remembers: readonly string[];
   years: readonly Readonly<{ year: number; line: string }>[];
+  /** The user's ruling (2026-10-09): the last year first, as its year card shows it (the card itself is a link). */
+  last: Readonly<{ year: number; heading: string; house: readonly string[]; decisions: readonly string[];
+    changed: readonly Readonly<{ key: string; heading: string; lines: readonly string[] }>[]; more: string | null; empty: string | null }>;
+  /** The season card of the end's season can be opened (it is still the last season closed). */
+  seasonCard: boolean;
 }>;
+
+/** The last year's card (the engine's yearReview, as the year card shows it), once per state: the end page's link opens it. */
+export const sliceYearCard = perState((state: GameState): YearReviewView | null => {
+  const outcome = lordSliceOutcome(state);
+  return outcome === null || !outcome.ended ? null : lordYearReview(state, yearOfTick(state, outcome.endTick - 1));
+});
 
 const capped = (lines: readonly string[]): readonly string[] =>
   lines.length <= LINES_MAX ? lines : [...lines.slice(0, LINES_MAX - 1), RESULTS_COPY.year.more(lines.length - LINES_MAX + 1)];
@@ -136,5 +156,14 @@ export const sliceEndView = perState((state: GameState): SliceEndView | null => 
     ];
     years.push({ year, line: copy.yearLine(year, parts) });
   }
-  return { title: copy.title, why, fromYear: startYear, toYear: lastYear, then, now, shaped, remembers, years };
+  const card = sliceYearCard(state)!;
+  const last = {
+    year: lastYear, heading: copy.lastYear(lastYear), house: card.house,
+    decisions: card.decisions.map(entry => entry.outcome === "" ? entry.line : copy.withOutcome(entry.line, entry.outcome)),
+    changed: card.threads.slice(0, LAST_GROUPS).map(group => ({ key: group.key, heading: group.heading, lines: capped(group.lines) })),
+    more: card.threads.length > LAST_GROUPS ? copy.lastMore(card.threads.length - LAST_GROUPS) : null, empty: card.empty,
+  };
+  const closed = state.seasons?.history.at(-1)?.endTick ?? null;
+  const seasonCard = closed !== null && closed <= outcome.endTick && closed > outcome.endTick - SEASON;
+  return { title: copy.title, why, fromYear: startYear, toYear: lastYear, then, now, shaped, remembers, years, last, seasonCard };
 });

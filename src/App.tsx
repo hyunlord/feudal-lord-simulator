@@ -43,7 +43,7 @@ import { releaseControlFocus } from "./input/domInputBindings";
 import { stateCalendar } from "./engine/scenarioState";
 import { TITLE_COPY } from "./ui/titleCopy.ko";
 import { showStartHint as setStartHint, useStartHint } from "./ui/startHintStore";
-import { requestSliceStart } from "./ui/slice/sliceDue";
+import { requestSliceStart, sliceEndOwnsTurn } from "./ui/slice/sliceDue";
 import { wave8Url } from "./ui/wave8Art";
 import { seasonJustClosed } from "./ui/seasonLedgerCard";
 import { seasonLedgerChoice, setSeasonLedgerAuto, type SeasonLedgerChoice } from "./ui/seasonLedgerPreference";
@@ -296,6 +296,9 @@ export function App() {
   const lastClosedEnd = state.seasons?.history.at(-1)?.endTick ?? null;
   const priorClosedEnd = state.seasons?.history.at(-2)?.endTick ?? null;
   const lastClosedEndRef = useRef(lastClosedEnd);
+  // LM-R3: whether the lord slice's end page is due as the season closes (read in the close's effect, not a dependency).
+  const sliceEndRef = useRef(false);
+  sliceEndRef.current = sliceEndOwnsTurn(state);
   // UX-0b: the card waits until the pointer has been still for LEDGER_PRESS_GRACE_MS (the cold start audit's presses at
   // a season's close landed on the card's backdrop four times and were lost).
   useEffect(() => bindPressClock(), []);
@@ -303,6 +306,8 @@ export function App() {
     const previous = lastClosedEndRef.current;
     lastClosedEndRef.current = lastClosedEnd;
     if (!seasonJustClosed(previous, lastClosedEnd, priorClosedEnd) || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
+    // LM-R3 (the user's ruling): the season that closes at the lord slice's end is its end page's link, not a card of its own.
+    if (sliceEndRef.current) return;
     if (ledgerChoice === "notice") { setLedgerNotices(count => count + 1); return; }
     const first = ledgerChoice === "unset";
     const open = () => {
