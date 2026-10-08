@@ -1,0 +1,56 @@
+{
+  "head": "cb14e11b92659733c65c1691757c07beef3a21a8",
+  "scope": "Read-only common registry and LM-R2 UI-part format review; no UI visual replay",
+  "findings": [],
+  "tests": {
+    "command": "node_modules/.bin/tsx --test tests/lmr2UiParts.test.ts tests/artRegistry.test.ts tests/artContractSchema.test.ts",
+    "location": "Mac",
+    "passed": 86,
+    "failed": 0,
+    "skipped": 0,
+    "log": "/tmp/astra-renderB-contract-review-cb14e11b.tap",
+    "sha256": "448046147eb69fc295f5a4ad8a2db9a6a0bdfc10310a7d0fe95aeb13e574c7f7"
+  },
+  "observations": [
+    "Both UI kinds use schema validation and common registry semantic validation before publishing snapshots.",
+    "ui-frame slice/content inset must leave a centre; ui-image derivative dimensions, aspect and kind are checked.",
+    "ArtRegistryStore.replace constructs before assignment, preserving previous snapshot on failure.",
+    "packId is optional for legacy core ownership; this is not proof of full save-pack selection."
+  ],
+  "files": [
+    {
+      "path": "src/render/art/artRegistry.ts",
+      "sha256": "5c5b16d5a5fe8fb6bcea84f9f3f4022f0d2055a59210a3079d1590754b5b2b7d"
+    },
+    {
+      "path": "src/render/art/artRegistryValidation.ts",
+      "sha256": "63e4cdde51aa019d2aed5a96002b82ba20854497931cff2a0033e3e2a05ee7aa"
+    },
+    {
+      "path": "src/render/art/uiPartValidation.ts",
+      "sha256": "1f4dda239a7024e7913fa3f799d6018c62bca115b3c7f6987eb8142e57825860"
+    },
+    {
+      "path": "src/render/art/artContract.ts",
+      "sha256": "05eaca073750a7f653dcd135f9900e8ec12f72c439a69a17c1a4ce97471ad63d"
+    },
+    {
+      "path": "src/render/art/artContract.schema.json",
+      "sha256": "4f9ec2ca5d9f90f937401115660005b4f34d99348e45a25e5586391f06aec727"
+    },
+    {
+      "path": "tests/lmr2UiParts.test.ts",
+      "sha256": "6ed7c5d4f820eed727798850371a7d5605d021313688ff019b91e180205f5894"
+    },
+    {
+      "path": "tests/artRegistry.test.ts",
+      "sha256": "31fbfa9a107c75fa5ccdbf2b8db3a8428a3f159d105e2c990e1e2a10bc38ccaf"
+    },
+    {
+      "path": "tests/artContractSchema.test.ts",
+      "sha256": "09d3cb3391cc8126a0b1feaafa281963d3d69c5a8566f34cc7392f764d3e6f65"
+    }
+  ],
+  "repoChanges": false,
+  "graftTokensSaved": 13006
+}

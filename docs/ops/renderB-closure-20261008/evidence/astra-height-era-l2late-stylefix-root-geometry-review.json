@@ -1,0 +1,60 @@
+{
+  "run": "astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42",
+  "commit": "0129e42655ef8506c0f1a386b96f748d93b39aa5",
+  "dirty": false,
+  "inputs": 2422,
+  "inputHash": "f5c6075b4abfd5aac9e3724d94f99d68ef03fafaff13d099f9e6c49032786ade",
+  "axes": {
+    "viewports": [
+      "1280x800",
+      "1920x1080",
+      "tablet-1180x820",
+      "1024x768",
+      "1280x720"
+    ],
+    "copies": [
+      "normal",
+      "long"
+    ],
+    "numbers": [
+      "normal",
+      "extreme"
+    ]
+  },
+  "totals": {
+    "rows": 4,
+    "conditions": 80,
+    "measured": 80,
+    "failures": 0,
+    "unopened": 0,
+    "unreachable": [],
+    "warnings": 0,
+    "byCheck": {
+      "outside": 0,
+      "overflow": 0,
+      "border": 0,
+      "portrait": 0,
+      "overlap": 0,
+      "empty": 0,
+      "controls": 0,
+      "content": 0,
+      "hud": 0,
+      "ornament": 0
+    }
+  },
+  "pageErrors": [],
+  "unregisteredFramed": [],
+  "durationS": 281,
+  "verifiedConditions": 80,
+  "source": "docs/verification/uiaudit1/geometry/astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42/geometry.json",
+  "sha256": "d5441e25d7b68938cf1871e0e2a4241f341670bb4c64bde3249eb60c76bb2201",
+  "evidenceCommit": "2a98bf2b",
+  "evidenceOnlyChanges": [
+    "docs/verification/height-era-l2late/README.md",
+    "docs/verification/height-era-l2late/static-verification.json",
+    "docs/verification/uiaudit1/geometry.json",
+    "docs/verification/uiaudit1/geometry/astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42/geometry.json",
+    "docs/verification/uiaudit1/geometry/astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42/geometry.md"
+  ],
+  "scope": "4 rows across viewport/copy/number combinations; no strict native building projection assertion"
+}
