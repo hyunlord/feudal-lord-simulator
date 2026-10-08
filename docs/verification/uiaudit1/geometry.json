@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-SUIT-geometry-388e09e",
- "commit": "388e09e5d9f11ce3e4c0c32bf820aaea9a174b4b",
+ "run": "render-SUIT-ledger-geometry-aa8eff5-aa8eff5",
+ "commit": "aa8eff5cbc80aa4de044c8cb55c009dfb5cd5593",
  "dirty": false,
- "inputs": 2505,
- "inputHash": "084767db8c43971c2a2586bcec264532e83c3015dde91d671e699cb6da41ea05",
- "measuredAt": "2026-10-08T16:53:41.802Z",
- "report": "docs/verification/uiaudit1/geometry/engine-SUIT-geometry-388e09e/geometry.json",
+ "inputs": 2509,
+ "inputHash": "3a9e83ad3f54f41f26ab0d04d70d74007538522b93e58dbfa179b267986b9e45",
+ "measuredAt": "2026-10-08T19:14:31.799Z",
+ "report": "docs/verification/uiaudit1/geometry/render-SUIT-ledger-geometry-aa8eff5-aa8eff5/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -30,7 +30,7 @@
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 80,
+ "warnings": 2,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -43,7 +43,7 @@
   "hud": 0,
   "ornament": 0
  },
- "unregisteredFramed": 0,
+ "unregisteredFramed": 2,
  "baseline": {
   "entries": 0,
   "counted": 0,
@@ -53,37 +53,37 @@
   "fixed": 0
  },
  "bySurface": {
-  "modal.year-review": {
+  "lord.ledger.promises": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.records": {
+  "lord.ledger.empty": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.record-card": {
+  "lord.ledger.suit": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.decision": {
+  "lord.ledger.neighbour": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.factions": {
+  "lord.ledger.defence-enforcing": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.faction-page": {
+  "lord.ledger.entry-threat": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.chronicle-book": {
+  "lord.ledger.entry-forced": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
