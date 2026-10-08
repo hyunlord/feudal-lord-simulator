@@ -84,6 +84,8 @@ test('town offers pin causal sites, revalidate before answering, and remain stew
     const weighed = weighOffer(state, { id: 'offer:' + id, entryId: id, source: 'v4', boundId: '', bound: fixed,
       offeredTick: state.tick, deadline: state.tick + 1000, status: 'offered', receipt: { draw: 0, chancePermille: 1000, conditions: [] } });
     assert.ok(weighed && weighed.choices.length >= 2);
-    assert.deepEqual(weighed.weights, [], id + ' is routine stewardship');
+    // LP2-E ⑤ (the user's instruction 2026-10-08, P-D5): a lasting change of the stall dues is the lord's; ck_evt_092's
+    // answers here all change it, so it comes to him (rights). The others keep a steward's answer.
+    assert.deepEqual(weighed.weights, id === 'ck_evt_092' ? ['rights'] : [], id + (id === 'ck_evt_092' ? ' is the lord\'s (a lasting dues change)' : ' is routine stewardship'));
   }
 });

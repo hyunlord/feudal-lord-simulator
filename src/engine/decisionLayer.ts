@@ -6,7 +6,7 @@
  * the state (P-D4: the engine's own values, not a guess).
  */
 import {
-  COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STANDING_SETTING, LORD_INITIATIVES, type DecisionWeight, type StandingSetting,
+  COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STANDING_SETTING, LASTING_RATE_COMMANDS, LORD_INITIATIVES, type DecisionWeight, type StandingSetting,
 } from "../content/stewardPolicyConfig";
 import { ENGINE_B_COMMAND_WEIGHT_OVERRIDES } from "../content/registry/engineBDecisionLayers.ko";
 import { BALANCE } from "../content/balanceConfig";
@@ -93,7 +93,10 @@ export function weighOffer(state: GameState, occurrence: RegistryOccurrence): { 
     if (senderDelta < 0 && relation + senderDelta <= DECISION_WEIGHT_BALANCE.ruptureRelation) weights.add("faction_rupture");
     choices.push({ id, commands: choice.commands.map(command => command.type), spend, ...(paid > 0 ? { paid } : {}), senderDelta, weights: [...weights].sort() });
   }
-  const weights = [...new Set(choices.flatMap(choice => choice.weights))].sort();
+  // LP2-E ⑤: every answer that does something changes a lasting rate — the lord's (the steward may not set it).
+  const acting = choices.filter(choice => choice.commands.length > 0);
+  const lastingOnly = acting.length > 0 && acting.every(choice => choice.commands.some(command => LASTING_RATE_COMMANDS.includes(command)));
+  const weights = [...new Set([...choices.flatMap(choice => choice.weights), ...(lastingOnly ? ["rights" as const] : [])])].sort();
   return { weights, choices };
 }
 
@@ -104,10 +107,12 @@ export function weighOffer(state: GameState, occurrence: RegistryOccurrence): { 
  * Ties go to the canon's order. Null for "bring it to me".
  */
 export function stewardPick(setting: StandingSetting, choices: readonly ChoiceWeighing[], treasury = Infinity): string | null {
-  if (setting === "lord" || choices.length === 0) return null;
-  const payable = choices.filter(choice => (choice.paid ?? 0) <= treasury);
+  // LP2-E ⑤: never a lasting rate's change (the lord's to set).
+  const allowed = choices.filter(choice => !choice.commands.some(command => LASTING_RATE_COMMANDS.includes(command)));
+  if (setting === "lord" || allowed.length === 0) return null;
+  const payable = allowed.filter(choice => (choice.paid ?? 0) <= treasury);
   const acting = payable.filter(choice => choice.commands.length > 0);
-  const pool = acting.length > 0 ? acting : payable.length > 0 ? payable : choices;
+  const pool = acting.length > 0 ? acting : payable.length > 0 ? payable : allowed;
   const order = (pick: (left: ChoiceWeighing, right: ChoiceWeighing) => number) => [...pool].sort((left, right) => pick(left, right) || pool.indexOf(left) - pool.indexOf(right))[0]!.id;
   if (setting === "lenient") return order((left, right) => right.spend - left.spend);
   if (setting === "strict") return order((left, right) => left.spend - right.spend);
