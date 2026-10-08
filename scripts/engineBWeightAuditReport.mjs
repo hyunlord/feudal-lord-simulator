@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { summarizeRegistryAnswers } from './engineBRegistryAnswerAudit.mjs';
 
 const END = 500000;
 const FIRST_YEAR = 1300;
@@ -159,6 +160,7 @@ export function aggregateWeightAudits(runs, inventory) {
   const annual = ordered.flatMap(run => run.summary.annual.map(row => ({ seed: run.seed, ...row })));
   const lord = decisions.filter(row => row.by === 'lord');
   const steward = decisions.filter(row => row.by === 'steward');
+  const registryAnswers = ordered.map(run => ({ seed: run.seed, ...summarizeRegistryAnswers(run) }));
   return { schemaVersion: 1, ...context, seeds: [1, 2, 3], range: { startYear: FIRST_YEAR, endYearExclusive: 1425, endTickExclusive: END },
     annualMeaning: '375 seed-years pooled; resolved/lapsed trace matters, not all command responses or classified whole-game arrivals',
     pooled: { wholeGame: statistics(annual.map(row => row.wholeGameHeavyResolved)), registry: statistics(annual.map(row => row.registryHeavyResolved)),
@@ -168,10 +170,14 @@ export function aggregateWeightAudits(runs, inventory) {
       stewardReport: { denominator: steward.length, witnessed: steward.filter(row => row.inStewardReport).length,
         fraction: steward.length === 0 ? null : steward.filter(row => row.inStewardReport).length / steward.length } },
     perSeed: ordered.map(perSeedMetrics),
+    registryAnswers: { unit: 'unique_registry_occurrence_with_exact_answer_history_join',
+      annualWeightedLordAnswers: statistics(registryAnswers.flatMap(run => run.annual.map(row => row.weightedLordAnswers))),
+      perSeed: registryAnswers },
     annual, perEntry, unobservedIds: perEntry.filter(row => row.occurrences === 0).map(row => row.id),
     historical40: { sourceRevision: inventory.historicalSourceRevision, ids: inventory.entries.map(row => row.id),
       entries: inventory.entries.map(row => ({ historical: row, current: perEntry.find(entry => entry.id === row.id) })) },
     limits: ['Legacy home-cycle registry definitions do not generate registry offers in this new-game harness; unknown registry source IDs are rejected rather than silently dropped.',
+      'Existing perEntry, perSeed and pooled trace metrics count root matters. registryAnswers separately counts exact occurrence answers, including answers merged into older roots.',
       'Answered-lord consequence denominators exclude lapsed decisions; heavy annual counts retain lapsed decisions separately from coverage.',
       'Ordered first because attribution is not independent causal validity or proof of rendered visibility.',
       'Accepted evaluation counts lack per-attempt identity; subtraction from offers is a diagnostic difference, not an exact accepted-but-unoffered count.',

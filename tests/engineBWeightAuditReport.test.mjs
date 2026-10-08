@@ -6,7 +6,7 @@ const ids = Array.from({ length: 56 }, (_, index) => `ck_evt_${String(index + 1)
 function fixtures() {
   return [1, 2, 3].map(seed => ({ schemaVersion: 1, seed, years: 125, startYear: 1300, endYearExclusive: 1425, endTick: 500000,
     provenance: { sourceRevision: 'a'.repeat(40), dirtyPaths: '' },
-    support: { enabledIds: ids, observedIds: [] }, occurrences: [], presentations: [],
+    support: { enabledIds: ids, observedIds: [] }, occurrences: [], presentations: [], history: [], decisions: [],
     observation: { firstTick: 0, lastTick: 500000, maxGap: 1, reversals: 0, observations: 500001, cadence: 'initial_and_every_command_attempt_and_tick' },
     candidateObservation: { observerFailures: 0, observations: 0, groups: [] },
     summary: { decisions: [], annual: Array.from({ length: 125 }, (_, offset) => ({ year: 1300 + offset,
@@ -24,6 +24,7 @@ test('offline report retains all silent years, supported IDs, and exact historic
   assert.equal(report.unobservedIds.length, 56);
   assert.equal(report.perEntry[0].suggestedClassification.category, 'era_outside_window');
   assert.equal(report.perEntry[0].exactAcceptedButUnofferedCount, null);
+  assert.equal(report.registryAnswers.annualWeightedLordAnswers.zeroYears, 375);
 });
 
 test('cross-revision, dirty, partial, failed observer, duplicate seeds and endpoint decisions are rejected', () => {
@@ -103,4 +104,28 @@ test('lapsed heavy matters remain in annual density but do not inflate answered 
   assert.equal(report.perSeed[0].trace.lapsedLordCount, 1);
   assert.equal(report.perEntry[0].matureAnsweredRegistryLord.denominator, 0);
   assert.equal(report.perEntry[0].lapsed, 1);
+});
+
+test('actual occurrence answers are additive and never replace retained root-matter totals', () => {
+  const runs = fixtures();
+  const run = runs[0];
+  run.support.observedIds = [ids[0]];
+  run.occurrences = [1, 2].map(index => ({ id: `offer-${index}`, entryId: ids[0], offeredTick: index,
+    settledTick: index, status: 'answered', choiceId: 'yes', weights: ['rights'] }));
+  run.history = run.occurrences.map(row => ({ id: `answer-${row.id}`, tick: row.settledTick, kind: 'decision',
+    template: 'decision.card', params: { subjectId: row.id, command: 'answer_registry_offer', decisionKind: 'registry', chosen: 'yes' } }));
+  run.summary.decisions = [{ id: run.history[0].id, tick: 1, year: 1300, kind: 'registry', source: `registry:${ids[0]}:yes`,
+    by: 'lord', weights: ['rights'], heavyToLord: true, priorBatchB11: false, mature: true,
+    futureConsequenceCount: 0, consequences: [], firstConsequence: null }];
+  run.decisions = [run.summary.decisions[0]];
+  run.summary.annual[0].wholeGameHeavyResolved = 1;
+  run.summary.annual[0].registryHeavyResolved = 1;
+  const report = aggregateWeightAudits(runs, inventory);
+  assert.equal(report.pooled.registry.total, 1);
+  assert.equal(report.perEntry[0].lord, 1);
+  assert.equal(report.registryAnswers.annualWeightedLordAnswers.total, 2);
+  assert.equal(report.registryAnswers.perSeed[0].coverage.matureLord.counted, 2);
+  assert.equal(report.registryAnswers.perSeed[0].coverage.matureLord.directWithFuture, 0);
+  delete run.history;
+  assert.throws(() => aggregateWeightAudits(runs, inventory), /Missing history array/);
 });
