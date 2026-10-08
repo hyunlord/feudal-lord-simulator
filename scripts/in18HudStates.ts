@@ -1,0 +1,128 @@
+// INSTALL-18 (Wave 18 HUD) capture states, from the save fixtures (fixtures/saves/v<schema>, read through the codec):
+//  - crisis-a: zone-undo (its five sites wait for workers: "공사 일꾼 없음") at tick 40 (rows show from tick 20), one house
+//    on fire (events.burning) and another getting ready to leave (leavingSinceTick) — fire / household_leaving /
+//    construction_blocked;
+//  - crisis-b: money-arrears (its own unpaid upkeep, in its arrears queue) with one storehouse holding more than it can
+//    (inventory over storageCapacity) — upkeep_unpaid / storage_full; crisis-c: population-176 as saved (food_shortage);
+//  - lord: the lord's slice (core:lord_slice) after 40 ticks, for the dock's 명령 (lord mode);
+//  - placement scenes: for each placement reason the HUD pictures, the first (fixture, kind, tile) whose placement
+//    preview (render/interactions placementPreview, the game's own verdict) marks that reason, nearest the town's
+//    starting house — written to scenes.json with the fixture file to load.
+// The crisis states are edited fixtures (capture input only); each one's rows are checked here with alertStackRows.
+//   tsx scripts/in18HudStates.ts <out-dir>
+import { mkdirSync, writeFileSync, copyFileSync } from "node:fs";
+import { join } from "node:path";
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../src/content/buildingConfig";
+import type { GameState } from "../src/engine/engine.types";
+import { advanceTick } from "../src/engine/tick";
+import { lordMode } from "../src/engine/townAgency";
+import { placementPreview } from "../src/render/interactions";
+import type { TileMark, TileMarkReason } from "../src/render/placementTileMarks";
+import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
+import { newGameState } from "../src/state/newGame";
+import { alertStackRows, type AlertCrisis } from "../src/ui/alertStackModel";
+import { buildCategory } from "../src/ui/buildMenuPresentation";
+import { loadSaveFile } from "./loadSaveFile";
+
+const outArg = process.argv[2];
+if (outArg === undefined) throw new Error("usage: tsx scripts/in18HudStates.ts <out-dir>");
+const out: string = outArg;
+mkdirSync(out, { recursive: true });
+const FIXTURES = `fixtures/saves/v${SAVE_SCHEMA_VERSION}`;
+const load = (name: string): GameState => loadSaveFile(join(FIXTURES, `${name}.save.json`));
+const crises = (state: GameState): readonly (AlertCrisis | null)[] => alertStackRows(state).map(row => row.crisis);
+const about: Record<string, unknown> = {};
+const EMPTY_EVENTS: NonNullable<GameState["events"]> = { records: [], burning: [] };
+
+function write(name: string, state: GameState, want: readonly AlertCrisis[] | null): void {
+  if (want !== null) {
+    const got = crises(state);
+    if (want.some(kind => !got.includes(kind))) throw new Error(`${name}: rows ${JSON.stringify(alertStackRows(state).map(row => [row.title, row.crisis]))}, want ${want.join(", ")}`);
+    about[name] = alertStackRows(state).map(row => ({ title: row.title, severity: row.severity, crisis: row.crisis, first: row.targetIds[0] }));
+  }
+  writeFileSync(join(out, `${name}.json`), JSON.stringify(state));
+}
+
+{
+  const base = load("zone-undo");
+  const houses = base.houses.filter(house => house.abandonedTick === undefined);
+  const [burning, leaving] = houses;
+  if (burning === undefined || leaving === undefined) throw new Error("zone-undo: two houses needed");
+  const state: GameState = {
+    ...base, tick: 40,
+    events: { ...(base.events ?? EMPTY_EVENTS), burning: [{ buildingId: burning.buildingId, eventId: "in18-capture-fire", ignitedTick: 30, outTick: 400, doused: false }] },
+    houses: base.houses.map(house => house.buildingId === leaving.buildingId ? { ...house, leavingSinceTick: 30 } : house),
+  };
+  write("crisis-a", state, ["fire", "household_leaving", "construction_blocked"]);
+}
+{
+  // The unpaid upkeep is the fixture's own (its arrears queue holds it); only the storehouse is overfilled.
+  const base = load("money-arrears");
+  const store = base.buildings.find(building => (building.kind === "storehouse" || building.kind === "granary") && building.upkeepUnpaid !== true);
+  if (store === undefined) throw new Error("money-arrears: a paid storehouse or granary needed");
+  const capacity = BUILDING_CONFIG_BY_KIND[store.kind].storageCapacity;
+  const state: GameState = { ...base, buildings: base.buildings.map(building => building.id === store.id
+    ? { ...building, inventory: { ...building.inventory, [store.kind === "granary" ? "wheat" : "timber"]: capacity + 12 } } : building) };
+  write("crisis-b", state, ["upkeep_unpaid", "storage_full"]);
+  // The bread-short houses of population-176 as saved.
+  write("crisis-c", load("population-176"), ["food_shortage"]);
+}
+{
+  let state = newGameState({ scenarioId: "core:lord_slice" })!;
+  while (state.tick < 40) state = advanceTick(state);
+  if (!lordMode(state)) throw new Error("lord slice is not in lord mode");
+  write("lord", state, null);
+}
+
+// Placement scenes: the reasons with a Wave 18 picture, and `road` (keeps its P0 icon: a road lies on the tile).
+const WANT: readonly TileMarkReason[] = ["building", "water", "wall", "needs_road", "materials", "zone", "road"];
+const SEARCH: readonly { readonly fixture: string; readonly kinds: readonly BuildingKind[] }[] = [
+  { fixture: "population-176", kinds: ["storehouse", "house", "well", "market"] },
+  { fixture: "zoned-opening", kinds: ["house", "wheat_farm", "farmstead"] },
+  { fixture: "timber-shortage", kinds: ["storehouse", "market", "house"] },
+  { fixture: "palisade-construction", kinds: ["house", "storehouse", "market"] },
+  { fixture: "chapter-two-town", kinds: ["house", "storehouse", "market", "well"] },
+];
+const scenes: { reason: TileMarkReason | "mixed" | "ok"; fixture: string; kind: BuildingKind; name: string; category: string; tile: { tx: number; ty: number } }[] = [];
+for (const reason of WANT) {
+  let found = null as (typeof scenes)[number] | null;
+  for (const { fixture, kinds } of SEARCH) {
+    const state = load(fixture);
+    const home = state.buildings.find(building => building.kind === "house") ?? state.buildings[0]!;
+    let best: { d: number; kind: BuildingKind; tile: { tx: number; ty: number } } | null = null;
+    for (const kind of kinds) for (let dy = -14; dy <= 14; dy += 1) for (let dx = -14; dx <= 14; dx += 1) {
+      const tile = { tx: home.tx + dx, ty: home.ty + dy };
+      const marks = placementPreview(state, kind, tile, null).marks ?? [];
+      if (!marks.some(mark => mark.icon && mark.reason === reason)) continue;
+      const d = Math.abs(dx) + Math.abs(dy);
+      if (best === null || d < best.d) best = { d, kind, tile };
+    }
+    if (best !== null) { found = { reason, fixture, kind: best.kind, name: BUILDING_CONFIG_BY_KIND[best.kind].name, category: buildCategory(best.kind), tile: best.tile }; break; }
+  }
+  if (found === null) { about[`scene-${reason}`] = "not found in the searched fixtures"; continue; }
+  scenes.push(found);
+}
+// Grey-scale judgement (fine vs blocked by shape alone): in one view, a storehouse ghost with fine and blocked footprint
+// tiles side by side ("mixed"), and a ghost that is fine everywhere ("ok"), in population-176 near the starting house.
+{
+  const fixture = "population-176";
+  const state = load(fixture);
+  const home = state.buildings.find(building => building.kind === "house") ?? state.buildings[0]!;
+  for (const [label, test] of [
+    ["mixed", (marks: readonly TileMark[]) => marks.some(mark => !mark.ring && mark.ok) && marks.some(mark => !mark.ring && !mark.ok && mark.reason === "building")],
+    ["ok", (marks: readonly TileMark[]) => marks.filter(mark => !mark.ring).length > 0 && marks.every(mark => mark.ring || mark.ok)],
+  ] as const) {
+    let best: { d: number; tile: { tx: number; ty: number } } | null = null;
+    for (let dy = -10; dy <= 10; dy += 1) for (let dx = -10; dx <= 10; dx += 1) {
+      const tile = { tx: home.tx + dx, ty: home.ty + dy };
+      if (!test(placementPreview(state, "storehouse", tile, null).marks ?? [])) continue;
+      const d = Math.abs(dx) + Math.abs(dy);
+      if (best === null || d < best.d) best = { d, tile };
+    }
+    if (best === null) { about[`scene-${label}`] = "not found"; continue; }
+    scenes.push({ reason: label, fixture, kind: "storehouse", name: BUILDING_CONFIG_BY_KIND.storehouse.name, category: buildCategory("storehouse"), tile: best.tile });
+  }
+}
+for (const fixture of new Set(scenes.map(scene => scene.fixture))) copyFileSync(join(FIXTURES, `${fixture}.save.json`), join(out, `${fixture}.save.json`));
+writeFileSync(join(out, "scenes.json"), JSON.stringify({ scenes, about }, null, 1) + "\n");
+console.log(JSON.stringify({ scenes, about }, null, 1));

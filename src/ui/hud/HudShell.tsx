@@ -48,6 +48,7 @@ import { legacyLedgerView } from "./legacyLedgerModel";
 import { LEGACY_LEDGER_COPY } from "./legacyLedgerCopy.ko";
 import { REORG_LEDGER_COPY } from "./reorgLedgerCopy.ko";
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "../chronicle/factionInfluenceCopy.ko";
+import { CRISIS_ART, HUD_ART, HudArt, useHudPulseRing } from "./hudArt";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -74,17 +75,17 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onIns
       </Button>
       {stripOpen ? <SeasonStripPanel state={state} food={{ days: model.foodDays, untilTick: model.foodUntilTick }} onClose={() => setStripOpen(false)} /> : null}
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onPress={() => onOpenPopulation()} variant="surface">
-        <UiIcon sheet="resource" cell="population" />{HUD_COPY.population(model.population)}
+        <HudArt id={HUD_ART.population} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="population" />} />{HUD_COPY.population(model.population)}
       </Button>
       <Button type="button" className="status-pill-cell" aria-label={FOOD_BREAKDOWN_COPY.pillLabel(foodLabel, model.starving)} data-food-days={model.foodDays ?? ""}
         aria-expanded={foodOpen} onPress={() => { setStripOpen(false); setFoodOpen(open => !open); }}
         data-short={(model.foodDays !== null && model.foodDays < 14) || model.starving > 0 ? "true" : undefined} variant="surface">
-        <UiIcon sheet="resource" cell="bread" />{foodLabel}
+        <HudArt id={HUD_ART.food} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="bread" />} />{foodLabel}
         {model.starving > 0 ? <span className="status-pill-starving" data-starving={model.starving}>{FOOD_BREAKDOWN_COPY.pillStarving(model.starving)}</span> : null}
       </Button>
       {foodOpen ? <FoodBreakdownPanel state={state} onInspect={onInspect} onOpenLedger={onOpenLedger} onClose={() => setFoodOpen(false)} /> : null}
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} onPress={() => onOpenLedger()} variant="surface">
-        <UiIcon sheet="resource" cell="coin" />{HUD_COPY.money(model.coin)}
+        <HudArt id={HUD_ART.money} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="coin" />} />{HUD_COPY.money(model.coin)}
       </Button>
       {/* DEC-CARD A2: lord mode's way back to the town's seat, in the pill (no new HUD surface). */}
       {lordMode(state) ? <TownSeatButton state={state} /> : null}
@@ -98,6 +99,10 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
   readonly pulse: TutorialController["pulse"]; readonly hidden?: boolean;
 }) {
   const [note, setNote] = useState<string | null>(null);
+  // INSTALL-18: the HUD is mounted with the layer switch, so the tutorial pulse's ring loads (and takes over) from here.
+  useHudPulseRing();
+  const lock = (extra?: string) => <HudArt id={HUD_ART.lock} width={24} className={extra === undefined ? "ui-icon" : `ui-icon ${extra}`}
+    fallback={extra === undefined ? <UiIcon sheet="lock" cell="locked" /> : <UiIcon sheet="lock" cell="locked" className={extra} />} />;
   return (
     <div className="layer-switch" role="group" aria-label={TUTORIAL_COPY.layerGroup} hidden={hidden}>
       {(["direct", "zone", "direction"] as const).map(item => {
@@ -113,11 +118,11 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
               }
               setNote(null); onChange(item);
             }} variant="toggle">
-            <UiIcon sheet="layer" cell={item} />{TUTORIAL_COPY.layers[item]}{open ? null : <UiIcon sheet="lock" cell="locked" className="control-layer-lock" />}
+            <UiIcon sheet="layer" cell={item} />{TUTORIAL_COPY.layers[item]}{open ? null : lock("control-layer-lock")}
           </Button>
         );
       })}
-      {note === null ? null : <p className="layer-switch-note" data-frame="tooltip" role="status"><UiIcon sheet="lock" cell="locked" />{note}</p>}
+      {note === null ? null : <p className="layer-switch-note" data-frame="tooltip" role="status">{lock()}{note}</p>}
     </div>
   );
 }
@@ -154,10 +159,13 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
       {undo.enabled ? <Button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
         onPress={() => undo.onUndo()} variant="secondary"><UiIcon sheet="action" cell="up" />{HUD_COPY.undo}</Button> : null}
       <Button type="button" className="action-dock-button" aria-expanded={buildOpen} data-dock="build" onPress={() => onBuild()} variant="secondary">
-        <UiIcon sheet="category" cell={commands ? "public" : "living"} size={32} />{commands ? COMMAND_PINS_COPY.dock : HUD_COPY.build}
+        {/* INSTALL-18: the ruler and chisel mean building — lord mode's 명령 (command pins) keeps its own icon. */}
+        {commands ? <UiIcon sheet="category" cell="public" size={32} />
+          : <HudArt id={HUD_ART.build} width={32} className="ui-icon" fallback={<UiIcon sheet="category" cell="living" size={32} />} />}
+        {commands ? COMMAND_PINS_COPY.dock : HUD_COPY.build}
       </Button>
       <Button type="button" className="action-dock-button" aria-expanded={ledgerOpen} data-dock="ledger" onPress={() => onLedger()} variant="secondary">
-        <UiIcon sheet="action" cell="log" size={32} />{HUD_COPY.ledger}
+        <HudArt id={HUD_ART.ledger} width={32} className="ui-icon" fallback={<UiIcon sheet="action" cell="log" size={32} />} />{HUD_COPY.ledger}
       </Button>
       <Button type="button" className="action-dock-button" data-dock="steward" aria-expanded={stewardOpen || speaking} data-speaking={speaking ? "true" : undefined}
         aria-label={stewardName === null ? undefined : PERSONS_COPY.steward(stewardName)}
@@ -189,12 +197,18 @@ export function CrisisIcons({ rows: all, onInspect, lead = null }: { readonly ro
       {rows.map(row => (
         <Button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
           onPress={() => { const first = row.targetIds[0]; if (first === undefined) return; platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); }} variant="icon">
-          {/* UI-3: the Wave 8 alert bells (threat = immediate, bad = caution). */}
-          <span className="crisis-bell" aria-hidden="true" style={wave8ImageStyle(row.severity === "immediate" ? "icon_alert_bell_threat" : "icon_alert_bell_bad", 32)} />
+          {/* UI-3: the Wave 8 alert bells (threat = immediate, bad = caution); INSTALL-18: a row of a kind Wave 18 drew shows
+              that picture at 36 px in the same button (the immediate outline stays). */}
+          {crisisIcon(row)}
         </Button>
       ))}
     </section>
   );
+}
+
+function crisisIcon(row: ReturnType<typeof alertStackRows>[number]): ReactNode {
+  const bell = <span className="crisis-bell" aria-hidden="true" style={wave8ImageStyle(row.severity === "immediate" ? "icon_alert_bell_threat" : "icon_alert_bell_bad", 32)} />;
+  return row.crisis === null ? bell : <HudArt id={CRISIS_ART[row.crisis]} width={36} className="crisis-bell" fallback={bell} />;
 }
 
 export type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map" | "lord";
@@ -361,6 +375,8 @@ export function PauseMenu({ onResume, settings }: { readonly onResume: () => voi
         <h2>{HUD_COPY.pauseTitle}</h2>
         <Button type="button" className="pause-menu-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{HUD_COPY.pauseResume}</Button>
         <div className="pause-menu-settings">{settings}</div>
+        {/* INSTALL-18 (user decision 2026-10-07): the HUD has no hide button; the H key's line says it is there. */}
+        <p className="pause-menu-shortcut">{HUD_COPY.hudHideShortcut}</p>
       </section>
     </div>
   );

@@ -2,7 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingC
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import { placementSpendableResource } from "../world/placement";
-import { blockingReasons, type TileMark } from "../render/placementTileMarks";
+import { blockingReasons, type TileMark, type TileMarkReason } from "../render/placementTileMarks";
 import { resourceName } from "../content/resourceCatalog.ko";
 import { MARKET_ROAD_REACH } from "../engine/marketService";
 import type { HouseMarketDistance } from "./marketReachModel";
@@ -18,6 +18,8 @@ export type PlacementChip = {
   readonly title: string;
   readonly ledger: readonly { readonly text: string; readonly short: boolean }[];
   readonly reason: string | null;
+  /** INSTALL-18: the mark reason behind `reason` (its picture in the chip), null for a road's engine label or none. */
+  readonly reasonKind: TileMarkReason | null;
   readonly reach: string | null;
   /** UI-3: what the building does to the ledger each period (rent, upkeep, labour), null when all are zero. */
   readonly period: string | null;
@@ -65,7 +67,7 @@ export function placementChipModel(state: GameState, input: ChipInput): Placemen
     ...(input.ledger.upkeepPerPeriod > 0 ? [PLACEMENT_CHIP_COPY.upkeep(input.ledger.upkeepPerPeriod)] : []),
     ...(input.ledger.labourDemand > 0 ? [PLACEMENT_CHIP_COPY.labour(input.ledger.labourDemand)] : []),
   ];
-  return { title: PLACEMENT_CHIP_COPY.title(name, costLabel), ledger, reason,
+  return { title: PLACEMENT_CHIP_COPY.title(name, costLabel), ledger, reason, reasonKind: first?.reason ?? null,
     reach: input.reachHouses === null ? null
       : input.tool === "market" ? PLACEMENT_CHIP_COPY.reachRoad(input.reachHouses, MARKET_ROAD_REACH) : PLACEMENT_CHIP_COPY.reach(input.reachHouses),
     period: parts.length === 0 ? null : PLACEMENT_CHIP_COPY.period(parts),

@@ -1,5 +1,5 @@
 import { FACTION_AFFAIR_LINES, FACTION_KIND_NAMES, FACTION_LEADER_LINES, factionDisplayName, WORLD_EVENT_LINES } from "../../content/factionCopy.ko";
-import type { FactionId } from "../../content/factionConfig";
+import type { FactionId, FactionKind } from "../../content/factionConfig";
 import type { GameState } from "../../engine/engine.types";
 import type { FactionTimelineEntry, FactionView } from "../../engine/faction.types";
 import { factionChronicle, factionsList, worldTimeline } from "../../engine/factions";
@@ -26,8 +26,9 @@ import { revoltPressureSection, type RevoltPressureSection } from "./factionInfl
 
 /** `ornament` (INSTALL-23 ④): the leader's state ornament (`personStates.ts`; a town person as the commons' reeve wears theirs). */
 export type FactionLeaderView = Readonly<{ id: string; name: string; role: string; line: string; portraitId: string; ornament?: PersonStateId | null }>;
+/** `kindId` (INSTALL-18): the engine's faction kind, for the kind's icon (factionArt.ts). */
 export type FactionRow = Readonly<{
-  id: FactionId; name: string; kind: string; emblem: EmblemSpec; emblemLabel: string; leader: FactionLeaderView | null;
+  id: FactionId; name: string; kind: string; kindId: FactionKind; emblem: EmblemSpec; emblemLabel: string; leader: FactionLeaderView | null;
   relation: number; relationX: number; relationText: string; demands: number; promises: number; memory: number; label: string;
   /** UI-9: RG-4 influence 0–100, or null for factions without one or before chapter 4. */
   influence: number | null;
@@ -37,7 +38,7 @@ export type { RevoltPressureSection };
 export type FactionRecordLink = Readonly<{ recordId: string; tick: number; date: string; line: string }>;
 export type FactionLine = Readonly<{ key: string; date: string; line: string }>;
 export type FactionPageView = Readonly<{
-  id: FactionId; name: string; kind: string; emblem: EmblemSpec; emblemLabel: string; leader: FactionLeaderView | null;
+  id: FactionId; name: string; kind: string; kindId: FactionKind; emblem: EmblemSpec; emblemLabel: string; leader: FactionLeaderView | null;
   relation: number; relationX: number; relationText: string;
   demands: readonly FactionLine[]; promises: readonly FactionLine[]; memory: readonly FactionRecordLink[]; timeline: readonly FactionLine[];
   /** UI-9: RG-8 revolt pressure section shown on the commons page from chapter 4 (null for other factions or before ch4). */
@@ -83,7 +84,7 @@ export function factionRows(state: GameState): readonly FactionRow[] {
     const relationText = COPY.relationText(relationBand(relation), relation);
     // UI-9: RG-4 influence — only town, merchant_house_1 and merchant_house_2 have values; others are null.
     const influence = factionInfluence(state, faction.id);
-    return { id: faction.id, name, kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel, leader,
+    return { id: faction.id, name, kind: FACTION_KIND_NAMES[faction.kind] ?? "", kindId: faction.kind, emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel, leader,
       relation, relationX: relationX(relation), relationText, demands: faction.demands.length, promises: faction.promises.length, memory: faction.memory.length,
       label: COPY.factionRowLabel(name, leader === null ? COPY.noLeader : leaderName(leader), relationText, faction.demands.length), influence };
   });
@@ -114,7 +115,7 @@ export function factionPageView(state: GameState, id: FactionId): FactionPageVie
   // UI-9: RG-8 revolt pressure shown on the commons faction page from chapter 4.
   const revoltPressure = faction.id === "commons" ? revoltPressureSection(state) : null;
   return {
-    id: faction.id, name: nameOf(faction), kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel,
+    id: faction.id, name: nameOf(faction), kind: FACTION_KIND_NAMES[faction.kind] ?? "", kindId: faction.kind, emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel,
     leader: leaderView(state, faction), relation, relationX: relationX(relation), relationText: COPY.relationText(relationBand(relation), relation),
     demands: faction.demands.map(demand => ({ key: demand.petitionId, date: chronicleDate(state, demand.arrivedTick),
       line: COPY.demand(DEMAND_NAMES[demand.defId] ?? COPY.demandsHeading, chronicleDate(state, demand.arrivedTick)) })),

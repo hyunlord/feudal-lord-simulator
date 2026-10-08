@@ -18,7 +18,7 @@
  * versions + format + quality (0.3 s a picture measured on the Mac, a hit is a file read).
  */
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { deflateSync, inflateSync } from "node:zlib";
 import { decodeJpeg, JPEG_DECODER_VERSION } from "./jpegDecode";
@@ -390,7 +390,9 @@ export function buildKeyartDerivative(item: KeyartDerivative, root = ROOT): Buff
   const image = item.format === "jpeg-reencoded" ? decodeJpeg(source) : decodePng(source);
   const out = item.format === "jpeg" || item.format === "jpeg-reencoded" ? encodeJpeg(image, JPEG_QUALITY) : item.format === "png-half" ? encodePng(halfSize(image))
     : encodeJpeg(item.format === "portrait" ? image : resizeArea(image, PORTRAIT_SMALL, PORTRAIT_SMALL), PORTRAIT_QUALITY);
-  try { mkdirSync(cacheDir, { recursive: true }); writeFileSync(cached, out); } catch { /* a read-only tree still builds */ }
+  // Written whole, then renamed into place: test files run in parallel (and DGX runs share node_modules), so another
+  // process may find the name while this one is writing — it must never read half a file (EVA-AUTO flake, ck_evt_053).
+  try { mkdirSync(cacheDir, { recursive: true }); const part = `${cached}.${process.pid}.part`; writeFileSync(part, out); renameSync(part, cached); } catch { /* a read-only tree still builds */ }
   return out;
 }
 

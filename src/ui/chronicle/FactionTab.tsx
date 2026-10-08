@@ -4,11 +4,14 @@ import { Button } from "../kit";
 import { portraitStyle } from "../portraitArt";
 import { personPortraitStateClass, personStateOrnamentStyle } from "../persons/personStates";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
+import { useUiParts } from "../lord/uiPartArt";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import type { FactionRow, WorldLine } from "./factionTabModel";
 // UI-9: tug-of-war strip (RG-4) and influence bars on faction rows.
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "./factionInfluenceCopy.ko";
 import type { TugOfWarView } from "./factionInfluenceModel";
+// INSTALL-18: Wave 14's faction panel around the list (its heading in the panel's title band) and the kind icons.
+import { FACTION_ART_PARTS, FACTION_PANEL_FRAME, factionKindIcon } from "./factionArt";
 
 // CHRON-2 faction tab (UI-6 first pass): the nine factions, one row each (a kit button: Enter, Space or a press opens
 // the faction's page) — the arms, the name and kind, the leader's portrait and name, the relation on the Wave 19 scale
@@ -61,20 +64,27 @@ export function FactionTab({ rows, world, tug = null, onOpen }: {
   // The strip opens on this year's end (the newest events); earlier years are a scroll (or the arrow keys) to the left.
   const strip = useRef<HTMLOListElement>(null);
   useEffect(() => { if (strip.current !== null) strip.current.scrollLeft = strip.current.scrollWidth; }, [world.length]);
+  const art = useUiParts(FACTION_ART_PARTS);
+  const panel = art.frame(FACTION_PANEL_FRAME);
   return (
     <div className="chronicle-factions">
       {/* UI-9: RG-4 tug-of-war strip above the list, chapter 4 only. */}
       {tug !== null && tug !== undefined ? <TugOfWarStrip tug={tug} /> : null}
       {rows.length === 0 ? <p className="chronicle-empty">{COPY.noFactions}</p> : (
+        <section className={`chronicle-factions-panel${panel === null ? "" : " chronicle-factions-panel--art"}`} data-frame={panel?.dataFrame} style={panel?.style}
+          aria-labelledby="chronicle-factions-heading">
+        <h3 id="chronicle-factions-heading" className="chronicle-factions-heading">{COPY.factionsHeading}</h3>
         <ul className="chronicle-factions-list" aria-label={COPY.factionsLabel}>
           {rows.map(row => {
             const face = row.leader === null ? null : portraitStyle(row.leader.portraitId, FACE);
+            const icon = factionKindIcon(art, row.kindId, 24);
             return (
               <li key={row.id}>
                 <Button type="button" className="chronicle-factions-row" data-faction={row.id} data-relation={row.relation} data-memory={row.memory} aria-label={row.label}
                   onPress={() => onOpen(row.id)} variant="secondary">
                   <span className="chronicle-factions-emblem" aria-hidden="true"><EmblemImage emblem={row.emblem} size={EMBLEM} label="" /></span>
-                  <span className="chronicle-factions-name"><strong>{row.name}</strong>{row.kind === row.name ? null : <span>{row.kind}</span>}</span>
+                  <span className="chronicle-factions-name"><strong>
+                    {icon === null ? null : <span className="chronicle-factions-kind-icon" data-kind={row.kindId} aria-hidden="true" style={icon} />}{row.name}</strong>{row.kind === row.name ? null : <span>{row.kind}</span>}</span>
                   <span className="chronicle-factions-leader">
                     {face === null ? <span className="chronicle-factions-face chronicle-factions-face--none" aria-hidden="true" />
                       : <span className="chronicle-factions-face-frame" aria-hidden="true">
@@ -102,7 +112,8 @@ export function FactionTab({ rows, world, tug = null, onOpen }: {
               </li>
             );
           })}
-        </ul>)}
+        </ul>
+        </section>)}
       <section className="chronicle-world" aria-label={COPY.worldLabel}>
         <h3>{COPY.worldHeading}</h3>
         {world.length === 0 ? <p className="chronicle-world-empty">{COPY.worldEmpty}</p> : (
