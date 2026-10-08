@@ -12,7 +12,7 @@ const OPEN = openLordScreen("petitions");
 export const STEWARD_SURFACES: readonly SurfaceRow[] = [
   { id: "lord.standing", ...HOST, scene: lord2Scene("attention-overloaded"), open: OPEN,
     requires: [".lord-standing h3", ".lord-standing-family", ".lord-standing-open", ".lord-standing-all-toggle"], siblingsNoOverlap: [".lord-standing-open"],
-    data: "the standing policies: the manor's twelve petitions (with 모든 장원 청원을 영주에게), the off-map estates' six, the senders' five, each with its setting" },
+    data: "the standing policies: the manor's twelve petitions (with the all-to-the-lord switch, rules.recurring), the off-map estates' six, the senders' five, each with its setting" },
   { id: "lord.standing.kind", ...HOST, scene: lord2Scene("attention-overloaded"), open: [...OPEN, { click: "[data-kind='heriot'] .lord-standing-open" }, { pause: 400 }],
     requires: [".lord-standing-detail", ".lord-standing-set", ".lord-standing-does li"], siblingsNoOverlap: [".lord-standing-set"],
     data: "the heriot opened: the four settings (all secondary, the one in force pressed) and what each would do, this year's count" },
