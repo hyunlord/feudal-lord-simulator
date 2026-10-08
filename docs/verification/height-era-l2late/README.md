@@ -33,3 +33,7 @@ I0003 후기 L2 한 계열에 본체·눈·판자·strained·neglected·vacant·
 전후 page error 0, 네트워크 실패 16건은 별도 result 기록에 보존한다. 모두 telemetry ERR_ABORTED이며 자산 로드 실패는 아니다.
 
 판정 실행: `astra-HEIGHT-ERA-L2LATE-before02-cb14e11-cb14e11`, `astra-HEIGHT-ERA-L2LATE-stylefix-after-972939a-972939a`. 변경 입력 기하와 정확 최종 트리 변경 시험·게시 SHA는 최종 영수증에 보존한다. 전체 ZIP은 원본 JPEG를 포함하며 world PNG는 해시와 로컬/DGX kept 실행에 보존한다.
+
+최종 합류 기준은 RAIN 본선 b9ccf0c5이며 병합 커밋0129e426에서 그 변경을 보존했다. 그림 비교는 cb14e11b→972939a0의 같은 준비 저장22쌍이고, 이후 이 집7장·선택자·피벗·상태층 제품은 바뀌지 않았다. 이를 RAIN 병합 뒤 전체 화면을 다시 찍은 증거로 부르지 않는다. 최신 본선의 기존44묶음·29눈마스크 및 기존 장부 행은 I0003 installed_by 한 셀 외에 동일함을 다시 검증했다. 최종 합류 입력의 새 기하와 정확한 최종 트리 변경 시험은 별도 영수증으로 남긴다.
+
+최종 변경 입력 기하 `astra-HEIGHT-ERA-L2LATE-geometry02-0129e42-0129e42`: 4행×20조건=80측정, 실패0·미열림0. 구 feb1250 기하는 화풍 실패 후보의 실행이라 취소했고 통과로 세지 않는다.
