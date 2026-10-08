@@ -15,6 +15,9 @@ import { POSSESSION_RENT } from "../src/content/possessionConfig";
 import { TITLE_RECOVERY_STRENGTH } from "../src/content/neighbourRulesConfig";
 import { raiseClaim } from "../src/engine/estates";
 import { advanceNeighbourRules } from "../src/engine/neighbourRules";
+import { fileSuit, suitStageCost } from "../src/engine/estateSuits";
+import { SUIT_STAGE_COST, SUIT_STAKE_PERMILLE } from "../src/content/estateConfig";
+import { treasuryBalance } from "../src/ledger/ledger";
 import { advanceTick } from "../src/engine/tick";
 import { newGameState } from "../src/state/newGame";
 
@@ -106,4 +109,33 @@ test("DTR-21 (P-L3): the house that keeps a possessed piece's title claims its p
   assert.ok(claim !== undefined, "the title holder claims it back within twenty years");
   assert.equal(claim!.strength, TITLE_RECOVERY_STRENGTH);
   assert.ok(estatesOf(next).suits.some(suit => suit.claimId === claim!.id && suit.defendant === LORD), "and sues the lord");
+});
+
+test("DTR-21: in lord mode a suit's stage costs a share of the stake's year (never under its fee); held against a judgment, a possession pays the lord nothing", () => {
+  const base = run(lordGame(), 10);
+  const { state, estateId, pieceId, value } = possessing(base);
+  for (const stage of ["filed", "hearing", "enforcing"] as const) {
+    assert.equal(suitStageCost(state, { estateId, pieceId }, stage), Math.max(SUIT_STAGE_COST[stage] ?? 0, Math.round(value * (SUIT_STAKE_PERMILLE[stage] ?? 0) / 1000)), stage);
+  }
+  const { agency: _agency, ...sandbox } = state;
+  assert.equal(suitStageCost(sandbox as GameState, { estateId, pieceId }, "hearing"), SUIT_STAGE_COST.hearing, "elsewhere the fee");
+  // The old house won its title back while the lord holds on: the tenants owe it, not him.
+  const estates = estatesOf(state);
+  const held: GameState = { ...state, estates: { ...estates, estates: estates.estates.map(entry => entry.id !== estateId ? entry
+    : { ...entry, pieces: entry.pieces.map(piece => piece.id === pieceId ? { ...piece, titleHolder: entry.titleHolder, loss: "held_against_judgment" as const } : piece) }) } };
+  const line = possessionRentLines(held).find(entry => entry.pieceId === pieceId)!;
+  assert.deepEqual([line.net, line.withheld], [0, line.gross]);
+});
+
+test("DTR-21: sued, the lord pays his defence at the filing (what the treasury holds of it)", () => {
+  const base = run(lordGame(), 10);
+  const { state, estateId, pieceId } = possessing(base);
+  const holder = estatesOf(state).estates.find(entry => entry.id === estateId)!.titleHolder;
+  const claimed = raiseClaim(state, { claimant: holder, estateId, pieceId, basis: "inheritance" });
+  const claim = estatesOf(claimed).claims.find(entry => entry.claimant === holder && entry.pieceId === pieceId)!;
+  const filed = fileSuit(claimed, claim.id);
+  const suit = estatesOf(filed).suits.find(entry => entry.claimId === claim.id)!;
+  assert.equal(suit.defendant, LORD);
+  const defence = (filed.ledger?.entries ?? []).filter(entry => entry.category === "lawsuit" && entry.sourceRefs.some(ref => String(ref.detail).includes(":defence:filed")));
+  assert.equal(defence.reduce((sum, entry) => sum - entry.amount, 0), Math.min(suitStageCost(claimed, suit, "filed"), Math.max(0, treasuryBalance(claimed))));
 });

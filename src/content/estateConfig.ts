@@ -101,3 +101,12 @@ export const JUDGMENT_HOLD_PERMILLE = 750;
 export const ENFORCEMENT_BASE = 40;
 /** ES-7: each failed enforcement weakens the hold this much (the possessor's men tire, the sheriff comes again). */
 export const ENFORCEMENT_WEAR = 20;
+/**
+ * DTR-21 (the user's judgement 2026-10-08, A6; Paston's suits ate years of income): in lord mode a stage costs the
+ * larger of its fee (`SUIT_STAGE_COST`) and this share of the stake's year's worth (the piece's, or the estate's) —
+ * and the lord pays the filing and hearing as a defendant too. Game estimates.
+ */
+export const SUIT_STAKE_PERMILLE: Readonly<Partial<Record<SuitStage, number>>> = { filed: 100, hearing: 300, enforcing: 150 };
+/** DTR-21: a possession the lord took lately holds weakly against the old house's enforcement — this, and this a year more. */
+export const FRESH_HOLD_BASE = 30;
+export const FRESH_HOLD_PER_YEAR = 5;

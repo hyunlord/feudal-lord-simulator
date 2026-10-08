@@ -8,7 +8,7 @@
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import {
   DEFENCE_POSSESSION_PERMILLE, DEFENCE_TITLE_PERMILLE, ENFORCEMENT_BASE, ENFORCEMENT_WEAR, EVIDENCE_COST, EVIDENCE_WEIGHT,
-  JUDGMENT_HOLD_PERMILLE, PATRON_MIN_RELATION, PATRON_SUPPORT_MAX, SUIT_STAGE_COST,
+  FRESH_HOLD_BASE, FRESH_HOLD_PER_YEAR, JUDGMENT_HOLD_PERMILLE, PATRON_MIN_RELATION, PATRON_SUPPORT_MAX, SUIT_STAGE_COST, SUIT_STAKE_PERMILLE,
 } from "../content/estateConfig";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
@@ -36,8 +36,34 @@ function possessorOf(found: { readonly estate: Estate; readonly piece?: RightPie
   return found.piece?.possessor ?? found.estate.possessor;
 }
 
-/** The lord pays a stage's cost from the treasury (a ledger line); another plaintiff's costs are its own. */
-function pay(state: GameState, suit: Suit, amount: number, stage: string): GameState | null {
+/** DTR-21: what a suit's stake is worth a year — the piece's (a ruling's scope its share), or the off-map estate's. */
+function stakeYear(state: GameState, suit: Pick<Suit, "estateId" | "pieceId">): number {
+  const found = target(estatesOf(state), suit.estateId, suit.pieceId);
+  if (found === null) return 0;
+  if (found.piece !== undefined) return found.piece.scope === undefined ? found.piece.annualValue : Math.round(found.piece.annualValue * found.piece.scope.sharePermille / 1000);
+  return found.estate.offMap ? found.estate.annualValue : 0;
+}
+
+/** DTR-21 API: a stage's cost — its fee, or in lord mode the stake's share if larger. */
+export function suitStageCost(state: GameState, suit: Pick<Suit, "estateId" | "pieceId">, stage: SuitStage): number {
+  const fee = SUIT_STAGE_COST[stage] ?? 0;
+  if (state.agency === undefined) return fee;
+  return Math.max(fee, Math.round(stakeYear(state, suit) * (SUIT_STAKE_PERMILLE[stage] ?? 0) / 1000));
+}
+
+/**
+ * The lord pays a stage's cost from the treasury (a ledger line); another plaintiff's costs are its own. DTR-21: as a
+ * defendant the lord pays his defence (`defence`), what the treasury holds of it — he cannot refuse to be sued.
+ */
+function pay(state: GameState, suit: Suit, amount: number, stage: string, defence = false): GameState | null {
+  if (defence) {
+    if (suit.defendant !== LORD || state.agency === undefined) return state;
+    const owed = Math.min(amount, Math.max(0, treasuryBalance(state)));
+    if (owed <= 0) return state;
+    const posted = postLedgerEntries(state, [{ account: "cash", category: "lawsuit", amount: -owed,
+      sourceRefs: [{ type: "claim", id: suit.claimId, detail: `${suit.id}:defence:${stage}` }] }]);
+    return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+  }
   if (amount <= 0 || suit.plaintiff !== LORD) return state;
   if (treasuryBalance(state) < amount) return null;
   const posted = postLedgerEntries(state, [{ account: "cash", category: "lawsuit", amount: -amount,
@@ -65,7 +91,7 @@ export function fileSuitRefusal(state: GameState, claimId: string): SuitRefusal 
   if (found === null) return "no_claim";
   // DTR-21: a title holder out of possession sues the possessor; one who holds both has nothing to sue for.
   if (titleOf(found) === claim.claimant && possessorOf(found) === claim.claimant) return "own_title";
-  if (claim.claimant === LORD && treasuryBalance(state) < (SUIT_STAGE_COST.filed ?? 0)) return "treasury";
+  if (claim.claimant === LORD && treasuryBalance(state) < suitStageCost(state, { estateId: claim.estateId, ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }) }, "filed")) return "treasury";
   return null;
 }
 
@@ -77,10 +103,12 @@ export function fileSuit(state: GameState, claimId: string): GameState {
   const found = target(estates, claim.estateId, claim.pieceId)!;
   const defendant = titleOf(found) === claim.claimant ? possessorOf(found) : titleOf(found);
   const suit: Suit = { id: `suit-${estates.nextSuit}`, claimId, plaintiff: claim.claimant, defendant, estateId: claim.estateId,
-    ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: "filed", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: SUIT_STAGE_COST.filed ?? 0 };
-  const paid = pay(state, suit, SUIT_STAGE_COST.filed ?? 0, "filed");
+    ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: "filed", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: 0 };
+  const fee = suitStageCost(state, suit, "filed");
+  const charged = pay(state, suit, fee, "filed");
+  const paid = charged === null ? null : pay(charged, suit, fee, "filed", true);
   if (paid === null) return state;
-  return { ...paid, estates: { ...estates, suits: [...estates.suits, suit], nextSuit: estates.nextSuit + 1,
+  return { ...paid, estates: { ...estates, suits: [...estates.suits, { ...suit, costs: suit.plaintiff === LORD ? fee : 0 }], nextSuit: estates.nextSuit + 1,
     claims: estates.claims.map(entry => entry.id === claimId ? { ...entry, status: "suing" as const } : entry) } };
 }
 
@@ -136,15 +164,20 @@ function judge(state: GameState, suit: Suit): GameState {
     next = { ...next, estates: { ...moved, estates: moved.estates.map(entry => entry.id === estate.id ? changed : entry) } };
   }
   const holding = won && possessorOf(found) !== suit.plaintiff;
+  // DTR-21: a possession the lord took lately holds weakly (in lord mode) — its years firm it.
+  const held = Math.floor(found.estate.possessionStrength * JUDGMENT_HOLD_PERMILLE / 1000);
+  const since = found.piece?.possessedSince ?? 0;
+  const fresh = state.agency !== undefined && possessorOf(found) === LORD && found.estate.offMap
+    ? Math.min(held, FRESH_HOLD_BASE + Math.floor((state.tick - since) / (4 * SEASON)) * FRESH_HOLD_PER_YEAR) : held;
   return withSuit(next, { ...suit, verdict: won ? "plaintiff" : "defendant", stage: holding ? "enforcing" : "closed", stageSince: state.tick,
-    ...(holding ? { hold: Math.floor(found.estate.possessionStrength * JUDGMENT_HOLD_PERMILLE / 1000) } : {}) });
+    ...(holding ? { hold: fresh } : {}) });
 }
 
 /** ES-7: one attempt to put the judgment's loser out — the plaintiff's force against the possessor's hold. */
 export function enforcePossession(state: GameState, suitId: string): GameState {
   const suit = estatesOf(state).suits.find(entry => entry.id === suitId);
   if (suit === undefined || suit.stage !== "enforcing") return state;
-  const cost = SUIT_STAGE_COST.enforcing ?? 0;
+  const cost = suitStageCost(state, suit, "enforcing");
   const paid = pay(state, suit, cost, `enforcing:${suit.enforcements + 1}`);
   if (paid === null) return state;
   const hold = suit.hold ?? 0;
@@ -193,7 +226,7 @@ export function suitActions(state: GameState, suitId: string): SuitActions | nul
   });
   const patrons = (state.factions?.factions ?? []).map(faction => ({ factionId: faction.id, support: Math.min(PATRON_SUPPORT_MAX, Math.max(0, faction.relation)),
     refusal: suit.stage !== "patronage" ? "stage" as const : suit.patron !== undefined ? "chosen" as const : faction.relation < PATRON_MIN_RELATION ? "relation" as const : null }));
-  const enforceCost = SUIT_STAGE_COST.enforcing ?? 0;
+  const enforceCost = suitStageCost(state, suit, "enforcing");
   const enforce = suit.stage === "closed" ? null : { cost: enforceCost, force: ENFORCEMENT_BASE + suit.patronSupport, hold: suit.hold ?? 0,
     refusal: suit.stage !== "enforcing" ? "stage" as const : enforceCost > 0 && treasury < enforceCost ? "treasury" as const : null };
   const nextStageTick = NEXT_STAGE[suit.stage] === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON;
@@ -211,8 +244,10 @@ export function advanceSuits(state: GameState): GameState {
     const stage = NEXT_STAGE[suit.stage];
     if (stage === undefined || state.tick - suit.stageSince < SEASON) continue;
     if (stage === "judged") { next = judge(next, suit); continue; }
-    const cost = SUIT_STAGE_COST[stage] ?? 0;
-    const paid = pay(next, suit, cost, stage);
+    const cost = suitStageCost(next, suit, stage);
+    const charged = pay(next, suit, cost, stage);
+    // DTR-21: the lord as defendant pays his side of the hearing.
+    const paid = charged === null ? null : stage === "hearing" ? pay(charged, suit, cost, stage, true) : charged;
     if (paid === null) continue;
     next = withSuit(paid, { ...suit, stage, stageSince: state.tick, costs: suit.costs + cost });
   }

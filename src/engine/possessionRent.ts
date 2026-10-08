@@ -39,9 +39,11 @@ export function possessionRentLines(state: GameState): readonly PossessionRentLi
   const lines: PossessionRentLine[] = [];
   for (const estate of estates.estates) {
     if (!estate.offMap || (estate.titleHolder === LORD && estate.possessor === LORD)) continue;
-    const take = (pieceId: string, year: number, claimPiece?: string) => {
+    const take = (pieceId: string, year: number, claimPiece?: string, againstJudgment = false) => {
       const gross = Math.round(year / 4);
       if (gross <= 0) return;
+      // DTR-21: held against a judgment, the tenants owe its title holder — nothing comes to the lord.
+      if (againstJudgment) { lines.push({ estateId: estate.id, pieceId, gross, withheld: gross, keeper: 0, net: 0, contested: true }); return; }
       // Disputed: a claim or suit of another's on it (or the whole estate) stands open.
       const contested = estates.claims.some(claim => claim.claimant !== LORD && claim.estateId === estate.id
         && (claim.pieceId === undefined || claim.pieceId === claimPiece) && (claim.status === "open" || claim.status === "suing"));
@@ -50,7 +52,7 @@ export function possessionRentLines(state: GameState): readonly PossessionRentLi
       lines.push({ estateId: estate.id, pieceId, gross, withheld, keeper, net: gross - withheld - keeper, contested });
     };
     if (estate.possessor === LORD) take(estate.id, estate.annualValue);
-    else for (const piece of estate.pieces) if (piece.possessor === LORD) take(piece.id, scoped(piece), piece.id);
+    else for (const piece of estate.pieces) if (piece.possessor === LORD) take(piece.id, scoped(piece), piece.id, piece.titleHolder !== LORD && piece.loss === "held_against_judgment");
   }
   return lines;
 }
