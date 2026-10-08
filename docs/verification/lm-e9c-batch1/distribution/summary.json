@@ -1,0 +1,835 @@
+{
+  "execution": "engineB-batch1-20y-final-73d41b7",
+  "location": "DGX",
+  "exitCode": 0,
+  "commandSeconds": 865.2,
+  "remoteHashesMatched": true,
+  "reportsReproducedByteForByte": true,
+  "rows": [
+    {
+      "seed": 1,
+      "sourceRevision": "73d41b715febbd7e08b74db8e721eee9331b49f7",
+      "range": {
+        "startYear": 1300,
+        "endYearExclusive": 1320,
+        "source": "run"
+      },
+      "occurrences": {
+        "total": 9,
+        "distinctEntryIds": [
+          "ck_evt_005",
+          "ck_evt_009",
+          "ck_evt_038",
+          "ck_evt_053",
+          "ck_evt_201",
+          "ck_evt_211"
+        ],
+        "unknownEntryIds": [],
+        "categories": [
+          {
+            "category": "교회",
+            "count": 1
+          },
+          {
+            "category": "이웃 가문",
+            "count": 1
+          },
+          {
+            "category": "도시",
+            "count": 3
+          },
+          {
+            "category": "세력",
+            "count": 3
+          },
+          {
+            "category": "가문 내부",
+            "count": 1
+          }
+        ],
+        "statuses": [
+          {
+            "status": "invalid",
+            "count": 2
+          },
+          {
+            "status": "answered",
+            "count": 7
+          }
+        ],
+        "eras": [
+          {
+            "startYear": 1300,
+            "endYearExclusive": 1315,
+            "count": 7
+          },
+          {
+            "startYear": 1315,
+            "endYearExclusive": 1320,
+            "count": 2
+          }
+        ]
+      },
+      "boundary": {
+        "before": {
+          "total": 0,
+          "distinctEntryIds": [],
+          "unknownEntryIds": [],
+          "categories": [],
+          "statuses": []
+        },
+        "after": {
+          "total": 0,
+          "distinctEntryIds": [],
+          "unknownEntryIds": [],
+          "categories": [],
+          "statuses": []
+        }
+      },
+      "retention": {
+        "status": "complete",
+        "statusHistory": "latest_observed",
+        "observedRows": 9,
+        "declaredOffers": 9
+      },
+      "enabledCount": 50,
+      "newBatchOccurrences": [],
+      "gp7": {
+        "status": "measured_not_adjudicated",
+        "coverage": {
+          "status": "complete",
+          "firstTick": 0,
+          "lastTick": 80000,
+          "observations": 80034,
+          "maxGap": 1,
+          "timeReversals": 0
+        },
+        "annual": [
+          {
+            "year": 1300,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1301,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1302,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1303,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1304,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1305,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1306,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1307,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 5,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1308,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1309,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1310,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1311,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1312,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1313,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1314,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1315,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1316,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1317,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 0,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1318,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1319,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "sourceRevision": "73d41b715febbd7e08b74db8e721eee9331b49f7",
+      "range": {
+        "startYear": 1300,
+        "endYearExclusive": 1320,
+        "source": "run"
+      },
+      "occurrences": {
+        "total": 12,
+        "distinctEntryIds": [
+          "ck_evt_009",
+          "ck_evt_032",
+          "ck_evt_038",
+          "ck_evt_042",
+          "ck_evt_053",
+          "ck_evt_140",
+          "ck_evt_201",
+          "ck_evt_209",
+          "ck_evt_211"
+        ],
+        "unknownEntryIds": [],
+        "categories": [
+          {
+            "category": "가문 내부",
+            "count": 1
+          },
+          {
+            "category": "교회",
+            "count": 1
+          },
+          {
+            "category": "이웃 가문",
+            "count": 5
+          },
+          {
+            "category": "세력",
+            "count": 1
+          },
+          {
+            "category": "도시",
+            "count": 4
+          }
+        ],
+        "statuses": [
+          {
+            "status": "invalid",
+            "count": 4
+          },
+          {
+            "status": "answered",
+            "count": 8
+          }
+        ],
+        "eras": [
+          {
+            "startYear": 1300,
+            "endYearExclusive": 1315,
+            "count": 11
+          },
+          {
+            "startYear": 1315,
+            "endYearExclusive": 1320,
+            "count": 1
+          }
+        ]
+      },
+      "boundary": {
+        "before": {
+          "total": 0,
+          "distinctEntryIds": [],
+          "unknownEntryIds": [],
+          "categories": [],
+          "statuses": []
+        },
+        "after": {
+          "total": 1,
+          "distinctEntryIds": [
+            "ck_evt_201"
+          ],
+          "unknownEntryIds": [],
+          "categories": [
+            {
+              "category": "도시",
+              "count": 1
+            }
+          ],
+          "statuses": [
+            {
+              "status": "answered",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "retention": {
+        "status": "complete",
+        "statusHistory": "latest_observed",
+        "observedRows": 13,
+        "declaredOffers": 13
+      },
+      "enabledCount": 50,
+      "newBatchOccurrences": [],
+      "gp7": {
+        "status": "measured_not_adjudicated",
+        "coverage": {
+          "status": "complete",
+          "firstTick": 0,
+          "lastTick": 80000,
+          "observations": 80077,
+          "maxGap": 1,
+          "timeReversals": 0
+        },
+        "annual": [
+          {
+            "year": 1300,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1301,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1302,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1303,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1304,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1305,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1306,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1307,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1308,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1309,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1310,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1311,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1312,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1313,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1314,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1315,
+            "resolvedHeavyToLord": 2,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 7,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1316,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1317,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1318,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1319,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "sourceRevision": "73d41b715febbd7e08b74db8e721eee9331b49f7",
+      "range": {
+        "startYear": 1300,
+        "endYearExclusive": 1320,
+        "source": "run"
+      },
+      "occurrences": {
+        "total": 11,
+        "distinctEntryIds": [
+          "ck_evt_005",
+          "ck_evt_009",
+          "ck_evt_032",
+          "ck_evt_033",
+          "ck_evt_038",
+          "ck_evt_042",
+          "ck_evt_083",
+          "ck_evt_132",
+          "ck_evt_209",
+          "ck_evt_211"
+        ],
+        "unknownEntryIds": [],
+        "categories": [
+          {
+            "category": "교회",
+            "count": 2
+          },
+          {
+            "category": "이웃 가문",
+            "count": 4
+          },
+          {
+            "category": "도시",
+            "count": 4
+          },
+          {
+            "category": "세력",
+            "count": 1
+          }
+        ],
+        "statuses": [
+          {
+            "status": "invalid",
+            "count": 3
+          },
+          {
+            "status": "answered",
+            "count": 8
+          }
+        ],
+        "eras": [
+          {
+            "startYear": 1300,
+            "endYearExclusive": 1315,
+            "count": 8
+          },
+          {
+            "startYear": 1315,
+            "endYearExclusive": 1320,
+            "count": 3
+          }
+        ]
+      },
+      "boundary": {
+        "before": {
+          "total": 0,
+          "distinctEntryIds": [],
+          "unknownEntryIds": [],
+          "categories": [],
+          "statuses": []
+        },
+        "after": {
+          "total": 1,
+          "distinctEntryIds": [
+            "ck_evt_209"
+          ],
+          "unknownEntryIds": [],
+          "categories": [
+            {
+              "category": "도시",
+              "count": 1
+            }
+          ],
+          "statuses": [
+            {
+              "status": "offered",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "retention": {
+        "status": "complete",
+        "statusHistory": "latest_observed",
+        "observedRows": 12,
+        "declaredOffers": 12
+      },
+      "enabledCount": 50,
+      "newBatchOccurrences": [
+        {
+          "id": "registry:ck_evt_083:mt.market_supply|construction-site-000023|[\"p-000226\"]|{\"duesPermille\":1100,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000023\",\"timberNeeded\":216,\"siteIds\":[\"construction-site-000049\",\"palisade-000029-segment-002\",\"palisade-000029-segment-003\",\"palisade-000029-segment-004\",\"palisade-000029-segment-005\",\"palisade-000029-segment-006\",\"palisade-000029-segment-007\"]}:73",
+          "source": "v4",
+          "offeredTick": 73000,
+          "settledTick": 73009,
+          "entry": "ck_evt_083",
+          "year": 1318,
+          "status": "answered",
+          "choice": "c",
+          "bound": "{\"subjectKey\":\"construction-site-000023\",\"partyIds\":[\"p-000226\"],\"materialBefore\":{\"duesPermille\":1100,\"timberOrder\":0,\"market\":0},\"triggerEvidence\":{\"marketId\":\"construction-site-000023\",\"timberNeeded\":216,\"siteIds\":[\"construction-site-000049\",\"palisade-000029-segment-002\",\"palisade-000029-segment-003\",\"palisade-000029-segment-004\",\"palisade-000029-segment-005\",\"palisade-000029-segment-006\",\"palisade-000029-segment-007\"]}}"
+        }
+      ],
+      "gp7": {
+        "status": "measured_not_adjudicated",
+        "coverage": {
+          "status": "complete",
+          "firstTick": 0,
+          "lastTick": 80000,
+          "observations": 80049,
+          "maxGap": 1,
+          "timeReversals": 0
+        },
+        "annual": [
+          {
+            "year": 1300,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1301,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1302,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1303,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1304,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1305,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1306,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1307,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1308,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1309,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1310,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1311,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1312,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1313,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 2,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1314,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 1,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1315,
+            "resolvedHeavyToLord": 1,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1316,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 1,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1317,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 0,
+            "stewardDecisions": 3,
+            "quietByResolvedTrace": true
+          },
+          {
+            "year": 1318,
+            "resolvedHeavyToLord": 2,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 4,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": false
+          },
+          {
+            "year": 1319,
+            "resolvedHeavyToLord": 0,
+            "lapsedHeavyToLord": 0,
+            "lordDecisions": 2,
+            "stewardDecisions": 4,
+            "quietByResolvedTrace": true
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -26,9 +26,14 @@
   "ck_evt_051",
   "ck_evt_052",
   "ck_evt_053",
+  "ck_evt_057",
+  "ck_evt_058",
   "ck_evt_059",
   "ck_evt_061",
+  "ck_evt_075",
+  "ck_evt_076",
   "ck_evt_077",
+  "ck_evt_080",
   "ck_evt_083",
   "ck_evt_090",
   "ck_evt_092",
@@ -42,6 +47,7 @@
   "ck_evt_140",
   "ck_evt_143",
   "ck_evt_144",
+  "ck_evt_147",
   "ck_evt_150",
   "ck_evt_157",
   "ck_evt_163",
@@ -78,9 +84,14 @@
   "ck_evt_051",
   "ck_evt_052",
   "ck_evt_053",
+  "ck_evt_057",
+  "ck_evt_058",
   "ck_evt_059",
   "ck_evt_061",
+  "ck_evt_075",
+  "ck_evt_076",
   "ck_evt_077",
+  "ck_evt_080",
   "ck_evt_083",
   "ck_evt_090",
   "ck_evt_092",
@@ -94,6 +105,7 @@
   "ck_evt_140",
   "ck_evt_143",
   "ck_evt_144",
+  "ck_evt_147",
   "ck_evt_150",
   "ck_evt_157",
   "ck_evt_163",
@@ -107,8 +119,8 @@
  ],
  "shots": [
   "shot-ck_evt_002.jpg",
-  "shot-ck_evt_035.jpg",
-  "shot-ck_evt_131.jpg",
+  "shot-ck_evt_038.jpg",
+  "shot-ck_evt_130.jpg",
   "shot-ck_evt_211.jpg"
  ],
  "pictures": {
@@ -496,6 +508,38 @@
    ],
    "luminance": 60.7
   },
+  "ck_evt_057": {
+   "derivativeSha": "2155d372cbf6706729d301b6e51f580685aa2cfc3eb0a91894d25d06e6a3c21b",
+   "derivativeBytes": 124795,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 60
+  },
+  "ck_evt_058": {
+   "derivativeSha": "85b516e44202978dc4fb38a7491a4e5cb995ad3a8e4e71d1ab955abb533323ec",
+   "derivativeBytes": 109726,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 48.1
+  },
   "ck_evt_059": {
    "derivativeSha": "ee2e2aa25e245c5254450d50492e3ada3a0993ae3bd8bce185f1f29ab6b3f7f3",
    "derivativeBytes": 126955,
@@ -528,6 +572,38 @@
    ],
    "luminance": 54.4
   },
+  "ck_evt_075": {
+   "derivativeSha": "aec50305d4a7ddc53db18bd09e0882d86f889649a9346b67dd5af5e98d29318c",
+   "derivativeBytes": 121428,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 56.4
+  },
+  "ck_evt_076": {
+   "derivativeSha": "e1f36e30f0f594b69427a459e33c34c03f70c1e37242fca12a80aeb369d6ab71",
+   "derivativeBytes": 104298,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 43.4
+  },
   "ck_evt_077": {
    "derivativeSha": "f83215127133fd72b2ea615b90b1e8da593cb24972e732d3e5435359099cf762",
    "derivativeBytes": 121772,
@@ -543,6 +619,22 @@
     169
    ],
    "luminance": 58.6
+  },
+  "ck_evt_080": {
+   "derivativeSha": "13fe42cf9fc37fe436097b17643c2567bb6d2c4331b27c3325e633966596195e",
+   "derivativeBytes": 152210,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 46.8
   },
   "ck_evt_083": {
    "derivativeSha": "25d06ac20e79b627dbb4efca8dfee8e5c30d5c73d8ea7df293ed97359d8007a3",
@@ -751,6 +843,22 @@
     169
    ],
    "luminance": 43.8
+  },
+  "ck_evt_147": {
+   "derivativeSha": "596f57d5db460cf9a751020183605df848a4cead14e43c978a3c7cb027baff43",
+   "derivativeBytes": 132929,
+   "bound": false,
+   "ok": true,
+   "why": null,
+   "natural": [
+    960,
+    540
+   ],
+   "box": [
+    300,
+    169
+   ],
+   "luminance": 51.3
   },
   "ck_evt_150": {
    "derivativeSha": "3efb4426b7fe39d37df9c2dbdc9258824a06544c2a8034d1b6ee298ecf47d6a3",
