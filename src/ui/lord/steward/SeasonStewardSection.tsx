@@ -22,7 +22,7 @@ export function SeasonStewardSection({ view, onPolicy }: {
       {view.items.length === 0 ? null : <ul className="season-steward-items">
         {view.items.map(item => (
           <li key={item.id} data-steward-item={item.id} data-kind={item.kind ?? undefined}>
-            <Disclosure className="season-steward-item" summaryClassName="season-steward-summary" variant="surface" summary={item.summary}>
+            <Disclosure className="season-steward-item" summaryClassName="season-steward-summary" variant="secondary" summary={item.summary}>
               <dl className="season-steward-detail">
                 <dt>{COPY.whatHeading}</dt><dd>{item.where}</dd><dd>{item.what}</dd>
                 <dt>{COPY.policyHeading}</dt><dd>{item.policy}</dd>

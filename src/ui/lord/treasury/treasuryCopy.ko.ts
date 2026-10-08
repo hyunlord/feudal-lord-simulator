@@ -16,7 +16,6 @@ export const TREASURY_COPY = {
   group: (name: string, amount: number) => `${name} ${moneyFullDelta(amount)}`,
   came: (amount: number) => `들어옴 ${moneyFull(amount)}`,
   went: (amount: number) => `나감 ${moneyFull(amount)}`,
-  entries: (count: number) => `장부 ${count}줄`,
   /** The lines that name no estate, building or right (a marriage portion, a faction's gift, the crown's levy…). */
   lordRow: "영주 자신의 일",
   /** Whether the town's money was settled in the window (it settles every 2,400 ticks). */

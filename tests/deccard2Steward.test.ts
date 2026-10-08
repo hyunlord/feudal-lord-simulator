@@ -73,7 +73,7 @@ test("each handled matter opens a drill-in with the way to its kind's policy (on
   const props = { model, onResume: noop, onHint: noop, auto: false, onAutoChange: noop };
   const withWay = renderToStaticMarkup(createElement(SeasonLedgerCard, { ...props, onPolicy: noop }));
   assert.ok(withWay.includes(STEWARD_COPY.heading));
-  assert.match(withWay, /<details class="season-steward-item ui-disclosure"><summary class="season-steward-summary ui-btn ui-btn--surface/);
+  assert.match(withWay, /<details class="season-steward-item ui-disclosure"><summary class="season-steward-summary ui-btn ui-btn--secondary/);
   assert.match(withWay, new RegExp(`data-steward-policy="${model.steward!.items[0]!.kind}"`));
   assert.equal((withWay.match(/ui-btn--primary/g) ?? []).length, 1, "the card keeps its one primary (계속)");
   assert.doesNotMatch(renderToStaticMarkup(createElement(SeasonLedgerCard, props)), /data-steward-policy=/);

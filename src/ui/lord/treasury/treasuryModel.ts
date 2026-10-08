@@ -41,7 +41,7 @@ function groupRows(lines: readonly TreasuryLine[]): readonly TreasuryGroupRow[] 
     if (line === undefined) return [];
     const amount = line.income - line.expense;
     const parts = line.income > 0 && line.expense > 0 ? [COPY.came(line.income), COPY.went(line.expense)] : [];
-    return [{ group: kind, amount, line: COPY.group(COPY.kinds[kind], amount), parts: [...parts, COPY.entries(line.entries)] }];
+    return [{ group: kind, amount, line: COPY.group(COPY.kinds[kind], amount), parts }];
   });
 }
 

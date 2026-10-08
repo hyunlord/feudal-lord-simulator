@@ -54,7 +54,7 @@ export function StandingPolicyPanel({ state, dispatch, focus }: LordPanelProps):
           <ul className="lord-standing-kinds">
             {family.kinds.map(row => (
               <li key={row.kind} className="lord-standing-kind" data-kind={row.kind}>
-                <Button type="button" className="lord-standing-open" variant="surface" aria-expanded={open === row.kind}
+                <Button type="button" className="lord-standing-open" variant="secondary" aria-expanded={open === row.kind}
                   onPress={() => setOpen(open === row.kind ? null : row.kind)}>
                   <span className="lord-standing-title">{row.title}</span><span className="lord-standing-current">{row.row}</span>
                 </Button>
