@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-DUESREL-geo-dff9e97",
- "commit": "dff9e970fc327e2692af616c5c7fb7691a14a35f",
+ "run": "engine-DUESREL-geo2-2e03a80",
+ "commit": "2e03a806bce7e5e334baa72bb3f5e320914e02c0",
  "dirty": false,
  "inputs": 2481,
- "inputHash": "3c0e50fd0d78b3627b564c5b4440cb227d46ec1cdf2eb5eafd6c739cdef26e00",
- "measuredAt": "2026-10-08T05:46:03.062Z",
- "report": "docs/verification/uiaudit1/geometry/engine-DUESREL-geo-dff9e97/geometry.json",
+ "inputHash": "b1ee8fd9515964d11e22ea202085946db0b1864e92db62873cdc4bc43bfc4cf0",
+ "measuredAt": "2026-10-08T06:09:50.625Z",
+ "report": "docs/verification/uiaudit1/geometry/engine-DUESREL-geo2-2e03a80/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,13 +24,13 @@
    "extreme"
   ]
  },
- "rows": 7,
- "conditions": 140,
- "measured": 140,
+ "rows": 17,
+ "conditions": 340,
+ "measured": 340,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 80,
+ "warnings": 142,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -84,6 +84,56 @@
    "byCheck": {}
   },
   "modal.chronicle-book": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.no-art": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.guardian": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.request": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry-hold": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.will-change": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.contested": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.audit": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.offmap-petition": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
