@@ -21,8 +21,6 @@ import { advanceTick } from "../src/engine/tick";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { answerOutlook } from "../src/state/decisionOutlook";
 import { gameReducer } from "../src/state/gameStore";
-import { lordBotCommands } from "../src/engine/lordBot";
-import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
 import { newGameState } from "../src/state/newGame";
 
 const lordGame = (): GameState => newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
@@ -68,11 +66,14 @@ test("§2 a command of the lord's is a decision whose id is its history record; 
   assert.equal(decision.by, "lord");
   const record = state.history!.records.find(entry => entry.id === decision.id)!;
   assert.equal(record.kind, "decision", "the id is the decision's own history record");
-  assert.ok(decision.targets.includes("dues") && decision.targets.includes("faction:merchant_house_1"), decision.targets.join(","));
-  // A2: the merchants remember it (−10 for +200‰), both houses.
+  assert.ok(decision.targets.includes("dues"), decision.targets.join(","));
+  // DUES-REL (DTR-18): the command itself moves no mind; at the season's turn the fee standing 200‰ over the custom sours
+  // both houses by 2, the record naming this decision — the merchants remember it.
+  assert.deepEqual(decisionRemembers(state, decision.id), []);
+  state = run(state, 1_000 - state.tick);
   const remembers = decisionRemembers(state, decision.id);
-  assert.deepEqual(remembers.map(entry => [entry.actor, entry.delta]).sort(), [["merchant_house_1", -10], ["merchant_house_2", -10]]);
-  assert.ok(traceInRange(state, before.tick, state.tick + 1).some(row => row.decisionId === decision.id && row.key === "relation"));
+  assert.deepEqual(remembers.map(entry => [entry.actor, entry.delta]).sort(), [["merchant_house_1", -2], ["merchant_house_2", -2]]);
+  assert.ok(traceInRange(state, before.tick, state.tick + 1).some(row => row.decisionId === decision.id && row.key === "dues_held"));
   assert.ok(yearReview(state, 1300).decisions.some(entry => entry.decisionId === decision.id && entry.kind === "dues"));
 });
 
@@ -129,22 +130,13 @@ test("§6 DTR-13: a lord-mode hamlet's market keeps the timber its market-town p
   assert.equal(hamletTimberKeep(sandbox as GameState), 0);
 });
 
-test("DTR-17: the bot keeps the stall fee the lord agreed with the merchants (a registry answer) for ten years", () => {
-  // The bot's own moves come the tick after a week's turn.
-  const state = run(lordGame(), AGENCY_WEEK_TICKS + 1);
-  const off: GameState = { ...state, agency: { ...state.agency!, duesPermille: 950 } };
-  const dues = (at: GameState) => lordBotCommands(at).filter(entry => entry.command.type === "set_market_dues").length;
-  assert.equal(dues(off), 1, "the bot's schedule otherwise");
-  const agreed: GameState = { ...off, trace: { acts: [], decisions: [{ id: "h-1", tick: off.tick - 10, by: "lord", kind: "registry", source: "registry:ck_evt_211:a",
-    weights: ["faction_rupture"], targets: ["dues", "faction:merchant_house_1"] }] } };
-  assert.equal(dues(agreed), 0, "the agreed fee kept");
-});
-
 test("§2 answerOutlook runs the answer on a copy: now (the treasury, the minds it moves), later, and who remembers — the state untouched", () => {
   const state = run(lordGame(), 50);
   const outlook = answerOutlook(state, { type: "set_market_dues", permille: 800 })!;
-  assert.ok(outlook.remembers.some(entry => entry.actor === "merchant_house_1" && entry.delta === 10));
+  // DUES-REL (DTR-18): the fee moves no mind now; while it stands 200‰ under the custom the houses warm 2 a season.
+  assert.deepEqual(outlook.remembers, []);
   assert.ok(outlook.later.some(entry => entry.key === "stall_dues" && entry.amount === 800));
+  assert.ok(outlook.later.some(entry => entry.key === "dues_mind" && entry.perSeason === 2 && entry.amount === 1000));
   assert.equal(traceOf(state).decisions.length, 0, "nothing decided on the state itself");
 });
 
@@ -152,9 +144,9 @@ test("§3 a faction past +30 that a decision moved acts small once a year; past 
   let state = run(lordGame(), 50);
   state = gameReducer(state, { type: "set_market_dues", permille: 1200 });
   const decision = traceOf(state).decisions.at(-1)!;
-  // The merchants' mind past −30 by that decision (its memory carries the decision's id).
+  // The merchants' mind past −30 by that decision (its memory carries the decision's id: the fee as it stood, DUES-REL).
   const factions = state.factions!.factions.map(faction => faction.id !== "merchant_house_1" ? faction
-    : { ...faction, relation: -35, memory: faction.memory.map(memory => memory.decisionId === decision.id ? { ...memory, delta: -35 } : memory) });
+    : { ...faction, relation: -35, memory: [...faction.memory, { recordId: "h-test", tick: state.tick, delta: -35, reason: "dues_held:1200:1000", decisionId: decision.id }] });
   state = { ...state, factions: { ...state.factions!, factions } };
   const season = Math.ceil((state.tick + 1) / 1000) * 1000;
   const acted = advanceFactionActs({ ...state, tick: season });

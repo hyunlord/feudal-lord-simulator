@@ -12,6 +12,7 @@ import { counterOffer, debtInstalmentCap, debtInstalmentYears, diplomacyOf, eval
 import { gameReducer } from "../src/state/gameStore";
 import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
 import { afterAnswer } from "../src/ui/decisionCard/remembers";
+import { answerOutlook } from "../src/state/decisionOutlook";
 import { newGameState } from "../src/state/newGame";
 import { NEGOTIATION_COPY as COPY } from "../src/ui/lord/negotiation/negotiationCopy.ko";
 import { SCALE_CELL } from "../src/ui/lord/negotiation/negotiationArt";
@@ -147,8 +148,8 @@ test("DEC-CARD: each answer to the counter shows its now / later / who remembers
   assert.equal(view.silence, COPY.counterSilence);
   assert.deepEqual(view.outlook.map(answer => answer.id), ["accept", "refuse"]);
   for (const answer of view.outlook) {
-    const after = afterAnswer(sent, { type: "answer_counter", negotiationId: negotiation.id, accept: answer.id === "accept" })!;
-    const outcome = lordOutcome(sent, after);
+    const command = { type: "answer_counter", negotiationId: negotiation.id, accept: answer.id === "accept" } as const;
+    const outcome = lordOutcome(sent, afterAnswer(sent, command)!, answerOutlook(sent, command)!);
     assert.deepEqual(answer.now, outcome.now, answer.id);
     assert.deepEqual(answer.later, outcome.later, answer.id);
     assert.deepEqual(answer.remembers, outcome.remembers.map(entry => `${entry.who}: ${entry.how}`), answer.id);

@@ -27,6 +27,7 @@ import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4Ena
 import { heavyLoad, stewardPick, standingSetting, weighOffer } from "./decisionLayer";
 import { DECISION_WEIGHT_BALANCE, type DecisionWeight } from "../content/stewardPolicyConfig";
 import { DECISION_RELATION } from "../content/decisionRelationConfig";
+import { agreeDues } from "./duesMind";
 
 const SEASON = 1_000;
 const YEAR = 4_000;
@@ -512,8 +513,10 @@ function answerV4Offer(state: GameState, occurrence: RegistryOccurrence, choiceI
     const held = applyHold(state, entry, bound);
     return held === null ? state : settleOccurrence(held.state, occurrence.id, { status: "answered", choiceId, hold: held.hold });
   }
-  const applied = runCommands(state, choice.commands, { state, bound, vars: {} });
-  if (applied === null) return state;
+  const ran = runCommands(state, choice.commands, { state, bound, vars: {} });
+  if (ran === null) return state;
+  // DUES-REL (DTR-18): a fee set at the table is agreed with the sender for ten years.
+  const applied = agreeDues(state, ran, v4SenderFaction(entry.id) ?? "merchant_house_1", occurrence.id);
   const side = sideTaken(state, occurrence, choiceId);
   return settleOccurrence(applied, occurrence.id, { status: "answered", choiceId, ...(side === null ? {} : { side }) });
 }

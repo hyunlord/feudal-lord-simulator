@@ -1,3 +1,4 @@
+import { breakDuesAgreement } from "../engine/duesMind";
 import { setFarmsteadCrop } from "../engine/ale";
 import { orderTimber } from "../engine/timberTrade";
 import { startDrainage } from "../engine/drainage";
@@ -147,7 +148,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return state === action.previousState ? action.nextState : state;
     case "set_estate_policy": return setEstatePolicy(state, action.policy);
     case "set_project_subsidy": return setProjectSubsidy(state, action.kind, action.amount);
-    case "set_market_dues": return setMarketDues(state, action.permille);
+    // DUES-REL (DTR-18): above an agreement in force, the lord's own fee breaks it.
+    case "set_market_dues": { const next = setMarketDues(state, action.permille); return next === state ? state : breakDuesAgreement(next, action.permille); }
     // LM-E2 (ES-7): the lord's own claims only (a neighbour's suit against the lord is filed by the engine).
     case "file_suit": return estatesOf(state).claims.find(claim => claim.id === action.claimId)?.claimant === LORD ? fileSuit(state, action.claimId) : state;
     case "add_suit_evidence": return lordSuit(state, action.suitId) ? addSuitEvidence(state, action.suitId, action.evidence) : state;

@@ -1,6 +1,7 @@
 /**
  * LM-R1 (petitions): the home estate's petitions as the lord's cards (lord mode only) with Astra's Wave 44 pictures
- * (spec docs/ops/install-plan-20261003/SPECS/wave44.md), the steward's precedents, the town's requests and the court line.
+ * (spec docs/ops/install-plan-20261003/SPECS/wave44.md), the town's requests and the court line (DEC-CARD-2: the steward's
+ * precedent card is gone — DEC-TRACE DTR-1; tests/deccard2Steward.test.ts has his season and his standing policies).
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -22,7 +23,12 @@ import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { decisionModal, storyBeats } from "../src/ui/eventStory";
 import { HOME_PETITION_COPY } from "../src/ui/lordCardsCopy.ko";
-import { courtLine, homePetitionView, lordRequestView, openHomePetitions, precedentView } from "../src/ui/lordCardsModel";
+import { courtLine, homePetitionView, lordRequestView, openHomePetitions, parties } from "../src/ui/lordCardsModel";
+import { factionDisplayName } from "../src/content/factionCopy.ko";
+import { standingPolicies } from "../src/engine/decisionReads";
+import { HOME_PETITION_CARD_COPY } from "../src/ui/decisionCard/families/homePetitionCopy.ko";
+import { outlookTreasury } from "../src/ui/decisionCard/outlook";
+import { moneyShort } from "../src/ui/money.ko";
 import { lordBeats } from "../src/ui/lordStoryBeats";
 import { HOME_PETITION_ART, PRECEDENT_ART } from "../src/ui/wave44Art";
 import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
@@ -34,6 +40,7 @@ import { DecisionCard } from "../src/ui/decisionCard/DecisionCard";
 import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
 import { lordRequestCard } from "../src/ui/decisionCard/families/lordRequestCard";
 import { afterAnswer } from "../src/ui/decisionCard/remembers";
+import { answerOutlook } from "../src/state/decisionOutlook";
 import { LordRequestModal } from "../src/ui/hud/LordCards";
 import { buildingFootprint } from "../src/geometry/buildingFootprint";
 import { homePetitionCard } from "../src/ui/decisionCard/families/homePetitionCard";
@@ -106,20 +113,25 @@ test("Wave 44: the ten matching kinds have their own picture; the pannage and th
 
 test("a home petition's card: its picture, the engine's numbers per answer, and the answer through answer_estate_petition", () => {
   const view = homePetitionView(firstPetition)!;
+  const card = homePetitionCard(firstPetition)!;
   const petition = open(firstPetition);
   assert.equal(view.petitionId, petition.id);
   assert.equal(view.kind, petition.kind);
   assert.equal(view.art, HOME_PETITION_ART[petition.kind as HomePetitionKind]);
   assert.match(view.court, /^1301년 봄 · 국왕 에드워드 1세 · 영주 .+\(\d+살\)$/);
-  for (const option of view.options) {
-    const after = gameReducer(firstPetition, { type: "answer_estate_petition", petitionId: petition.id, grant: option.grant });
-    assert.equal(stewardshipOf(after).petitions.find(entry => entry.id === petition.id)?.status, option.grant ? "granted" : "refused");
-    assert.equal(treasuryBalance(after) - treasuryBalance(firstPetition), option.treasury, `${option.label}: the treasury`);
-    // The factions move through the ledger (history.ts) by the same table the card shows.
-    for (const move of option.relations) {
-      const was = firstPetition.factions!.factions.find(entry => entry.id === move.factionId)!.relation;
-      const now = after.factions!.factions.find(entry => entry.id === move.factionId)!.relation;
-      assert.equal(now - was, move.delta, `${option.label}: ${move.factionId}`);
+  for (const choice of card.choices) {
+    const grant = choice.id === "grant";
+    const after = gameReducer(firstPetition, { type: "answer_estate_petition", petitionId: petition.id, grant });
+    assert.equal(stewardshipOf(after).petitions.find(entry => entry.id === petition.id)?.status, grant ? "granted" : "refused");
+    // DEC-CARD-2: the card reads the engine's outlook; what it says is what the answer does to the treasury and the factions.
+    const moved = treasuryBalance(after) - treasuryBalance(firstPetition);
+    assert.equal(/그대로/.test(choice.now[0]!), moved === 0, `${choice.label}: the treasury (${moved})`);
+    if (moved !== 0) assert.ok(choice.now[0]!.includes(moneyShort(Math.abs(moved))), `${choice.label}: ${choice.now[0]}`);
+    const relation = (state: GameState, id: string) => state.factions!.factions.find(entry => entry.id === id)!.relation;
+    for (const faction of firstPetition.factions!.factions) {
+      const delta = relation(after, faction.id) - relation(firstPetition, faction.id);
+      const said = choice.remembers.find(entry => entry.who === factionDisplayName(faction.id, faction.name));
+      assert.equal(said?.delta ?? 0, delta, `${choice.label}: ${faction.id}`);
     }
     assert.equal(homePetitionView(after), null, "answered: no card");
   }
@@ -133,19 +145,22 @@ test("each of the ten matching kinds and the two without a picture: title, pictu
     assert.equal(view.title, HOME_PETITION_COPY[kind].title);
     assert.equal(view.art, HOME_PETITION_ART[kind]);
     const def = HOME_PETITION_KINDS[kind];
-    assert.deepEqual(view.options.map(option => option.treasury), [def.grant.income * def.amount[1], def.refuse.income * def.amount[1]]);
-    const [grant, refuse] = view.options;
-    assert.notEqual(grant.label, refuse.label);
-    assert.ok(grant.line.length > 0 && refuse.line.length > 0);
+    const treasury = (grant: boolean) => outlookTreasury(answerOutlook(state, { type: "answer_estate_petition", petitionId: view.petitionId, grant })!);
+    assert.deepEqual([treasury(true), treasury(false)], [def.grant.income * def.amount[1], def.refuse.income * def.amount[1]]);
+    const [grant, refuse] = homePetitionCard(state)!.choices;
+    assert.notEqual(grant!.label, refuse!.label);
+    assert.ok(grant!.now.length > 0 && refuse!.now.length > 0);
     // The chip: the same picture, or none.
     const beat = lordBeats(state).find(entry => entry.kind === "home_petition")!;
     assert.equal(beat.illustration, view.art);
     assert.equal(decisionModal(beat.decision!), "estate_petition");
   }
   // The boundary names the neighbour house the petition sets against (its relation moves too).
-  const boundary = homePetitionView(asKind(firstPetition, "boundary_dispute"))!;
-  assert.deepEqual(boundary.options[0].relations.map(move => [move.factionId, move.delta]), [["commons", 5], ["neighbour_1", -5]]);
-  assert.match(boundary.demand, /가문\(이웃 영주\) 쪽 농부/);
+  const boundary = asKind(firstPetition, "boundary_dispute");
+  const grant = homePetitionCard(boundary)!.choices[0]!;
+  const name = (id: string) => factionDisplayName(id, boundary.factions!.factions.find(entry => entry.id === id)!.name);
+  assert.deepEqual(new Map(grant.remembers.map(entry => [entry.who, entry.delta])), new Map([[name("commons"), 5], [name("neighbour_1"), -5]]));
+  assert.match(homePetitionView(boundary)!.demand, /가문\(이웃 영주\) 쪽 농부/);
 });
 
 test("lord mode only: the sandbox and the campaign have no home petition card, no lord beat", () => {
@@ -155,39 +170,31 @@ test("lord mode only: the sandbox and the campaign have no home petition card, n
     assert.equal(openHomePetitions(state).length, 0, scenarioId);
     assert.equal(homePetitionView(state), null);
     assert.equal(lordRequestView(state), null);
-    assert.equal(precedentView(state), null);
     assert.deepEqual(lordBeats(state), []);
-    assert.ok(!storyBeats(state).some(beat => beat.kind === "home_petition" || beat.kind === "lord_request" || beat.kind === "home_precedent"));
+    assert.ok(!storyBeats(state).some(beat => beat.kind === "home_petition" || beat.kind === "lord_request"));
   }
 });
 
-test("the steward's precedent: only decidedBy steward and precedent records, the Wave 44 precedent picture, the recurring rule", () => {
+test("DTR-1: the card and its chip say the kind's standing policy and that the steward answers it so from now on", () => {
   const petition = open(firstPetition);
-  const stewardship = stewardshipOf(firstPetition);
-  // The next season, with last season's petition answered by the steward by precedent (as homePetitionSeason writes it).
-  const byPrecedent: EstatePetition = { ...petition, kind: "boundary_dispute", party: "neighbour_2", status: "granted", decidedBy: "steward", precedent: true };
-  const later = { ...firstPetition, tick: firstPetition.tick + SEASON, stewardship: { ...stewardship, petitions: stewardship.petitions.map(entry => entry.id === petition.id ? byPrecedent : entry) } };
-  const view = precedentView(later)!;
-  assert.equal(view.art, "by_precedent");
-  assert.deepEqual(view.items, ["경계 다툼: 우리 소작인 편을 든다"]);
-  assert.equal(view.recurring, false);
-  assert.equal(lordBeats(later).find(beat => beat.kind === "home_precedent")?.illustration, "by_precedent");
-  // A lord's answer is no precedent.
-  const lords = { ...later, stewardship: { ...later.stewardship, petitions: later.stewardship.petitions.map(entry => entry.id === petition.id ? { ...byPrecedent, decidedBy: "lord" as const, precedent: undefined } : entry) } };
-  assert.equal(precedentView(lords as GameState), null);
-  // The switch is the engine's exception rule.
-  const recurring = gameReducer(later, { type: "set_exception_rules", rules: { ...stewardship.rules, recurring: true } });
-  assert.equal(precedentView(recurring)!.recurring, true);
-  assert.equal(homePetitionView(gameReducer(firstPetition, { type: "set_exception_rules", rules: { ...stewardship.rules, recurring: true } }))!.recurring, true);
-});
-
-test("the card says what the steward will do: a hint before a precedent, the settled answer when the rule still brings it", () => {
-  assert.match(homePetitionView(firstPetition)!.precedent!, /두 번 이어서/);
-  const petition = open(firstPetition);
-  const stewardship = stewardshipOf(firstPetition);
-  const answered = (n: number): EstatePetition => ({ ...petition, id: `earlier-${n}`, tick: petition.tick - (n + 1) * SEASON, status: "refused", decidedBy: "lord" });
-  const settled = { ...firstPetition, stewardship: { ...stewardship, rules: { ...stewardship.rules, recurring: true }, petitions: [answered(1), answered(0), ...stewardship.petitions] } };
-  assert.equal(homePetitionView(settled)!.precedent, `선례가 있습니다: ${HOME_PETITION_COPY[petition.kind as HomePetitionKind].refuse({ party: "", firstHouse: "", secondHouse: "", bishop: "" })}. 다시 올리는 규칙이 켜져 있어 영주에게 왔습니다`);
+  const view = homePetitionView(firstPetition)!;
+  // Every kind is set to 영주에게 here: it keeps coming to the lord.
+  assert.equal(view.standing, HOME_PETITION_CARD_COPY.standingLord);
+  assert.equal(lordBeats(firstPetition).find(beat => beat.kind === "home_petition")!.advice, view.standing);
+  for (const choice of homePetitionCard(firstPetition)!.choices) assert.equal(choice.later[0], view.standing, choice.id);
+  assert.doesNotMatch(view.standing, /두 번 이어서|선례/);
+  // Set back to 관습대로 and brought by the rule that brings them all: the custom's answer is the engine's (`standingPolicies`).
+  const customary = gameReducer(firstPetition, { type: "set_standing_policy", kind: petition.kind, setting: "customary" });
+  const stewardship = stewardshipOf(customary);
+  const recurring = { ...customary, stewardship: { ...stewardship, rules: { ...stewardship.rules, recurring: true } } };
+  const granted = standingPolicies(recurring).find(entry => entry.kind === petition.kind)!.answers.customary.granted;
+  const copy = HOME_PETITION_COPY[petition.kind as HomePetitionKind];
+  const answer = granted === true ? copy.grant(parties(recurring, petition)) : copy.refuse(parties(recurring, petition));
+  assert.equal(homePetitionView(recurring)!.standing, HOME_PETITION_CARD_COPY.standing("관습대로", "recurring", answer));
+  assert.match(homePetitionView(recurring)!.standing, /"관습대로".*모두 올리라는 규칙.*청지기가 그 방침대로/);
+  // A large sum brought it (escalated "amount"): it says so.
+  const large = { ...recurring, stewardship: { ...recurring.stewardship, petitions: recurring.stewardship.petitions.map(entry => entry.id === petition.id ? { ...entry, escalated: "amount" as const } : entry) } };
+  assert.match(homePetitionView(large)!.standing, /큰 돈이 걸려/);
 });
 
 test("the town's request: a proclamation waiting is a card whose answer is the command the lord bot would send", () => {
@@ -216,7 +223,7 @@ test("DEC-CARD: the town's request is the heavy card — the request's words, it
     const after = afterAnswer(state, view.command!);
     assert.equal(grant!.refusal === null, after !== null, `${request.kind}: shut exactly when the engine refuses it`);
     if (after !== null) {
-      const outcome = lordOutcome(state, after);
+      const outcome = lordOutcome(state, after, answerOutlook(state, view.command!)!);
       assert.deepEqual([grant!.now, grant!.later, grant!.remembers], [outcome.now, outcome.later, outcome.remembers], request.kind);
     }
     const markup = renderToStaticMarkup(createElement(LordRequestModal, { view, card, onGrant: () => undefined, onLater: () => undefined }));
@@ -228,7 +235,8 @@ test("DEC-CARD: the town's request is the heavy card — the request's words, it
     assert.doesNotMatch(markup, /ui-btn--primary/);
   }
   const timber = { ...firstPetition, agency: { ...firstPetition.agency!, requests: [{ kind: "order_timber", amount: 40 }] } } as GameState;
-  assert.ok(lordRequestCard(timber)!.choices[0]!.now.includes("시장 상인에게 목재 40개를 주문해 둡니다."), "the order the command leaves");
+  // DEC-CARD-2: the order the command leaves is the outlook's later key (timber_order).
+  assert.ok(lordRequestCard(timber)!.choices[0]!.later.includes("시장 상인에게 목재 40단을 주문해 둡니다. 상인이 가져오는 대로 들어옵니다."), "the order the command leaves");
 });
 
 test("MANOR-1: the lord's chips look at the manor's middle tile, not its top-left one", () => {
@@ -307,7 +315,7 @@ test("DEC-CARD: the home petition's card says what is happening, what is at stak
     const moved = treasuryBalance(after) - treasuryBalance(firstPetition);
     assert.equal(choice.now.length, 1, "the treasury's line, in words");
     assert.equal(/그대로/.test(choice.now[0]!), moved === 0, `${choice.id}: ${choice.now[0]} (${moved})`);
-    assert.ok(choice.later.length > 0, "what follows (the precedent rule)");
+    assert.ok(choice.later.length > 0, "what follows (the kind's standing policy)");
     assert.ok(choice.remembers.every(entry => entry.who.length > 0 && entry.how.length > 0 && entry.delta !== 0));
   }
   const markup = renderToStaticMarkup(createElement(DecisionCard, { view: card, onChoose: () => undefined, onLater: () => undefined }));

@@ -13,8 +13,7 @@ import { ageOf, currentYear } from "../../../engine/persons";
 import { calendar, scenarioOf } from "../../../engine/scenarioState";
 import { lordMode } from "../../../engine/townAgency";
 import { treasuryBalance } from "../../../ledger/ledger";
-import { lordOutcome } from "../../decisionCard/families/lordOutcome";
-import { afterAnswer } from "../../decisionCard/remembers";
+import { lordAnswer } from "../../decisionCard/families/lordOutcome";
 import { moneyFull } from "../../money.ko";
 import { lordPersonRow, type LordPersonRow } from "../screen/lordPortrait";
 import { NEGOTIATION_COPY as COPY } from "./negotiationCopy.ko";
@@ -281,13 +280,12 @@ export function counterRows(negotiation: Negotiation): readonly CounterRow[] {
 
 export function counterView(state: GameState, negotiation: Negotiation): CounterView {
   const left = negotiation.deadline - state.tick;
-  // The engine's own command, run on the state (gameReducer, so the faction records it writes are in it too): a refused
-  // answer returns the same state (no reason is exposed yet); a taken one is put in words by lordOutcome.
-  const run = (accept: boolean) => afterAnswer(state, { type: "answer_counter", negotiationId: negotiation.id, accept });
+  // The engine's outlook for its own command and the dry run for the rest (DEC-CARD-2 `lordAnswer`): a refused answer
+  // is null (no reason is exposed yet); a taken one is put in words by lordOutcome.
+  const run = (accept: boolean) => lordAnswer(state, { type: "answer_counter", negotiationId: negotiation.id, accept });
   const [accepted, refused] = [run(true), run(false)];
-  const outlook = ([["accept", accepted], ["refuse", refused]] as const).flatMap(([id, after]): CounterOutlook[] => {
-    if (after === null) return [];
-    const outcome = lordOutcome(state, after);
+  const outlook = ([["accept", accepted], ["refuse", refused]] as const).flatMap(([id, outcome]): CounterOutlook[] => {
+    if (outcome === null) return [];
     return [{ id, label: id === "accept" ? COPY.accept : COPY.refuse, now: outcome.now, later: outcome.later,
       remembers: outcome.remembers.map(entry => `${entry.who}: ${entry.how}`) }];
   });

@@ -3,7 +3,6 @@ import type { GameState } from "../../engine/engine.types";
 import type { HistoryRecord } from "../../engine/history.types";
 import { lordHouse, lordshipOf } from "../../engine/lordshipState";
 import { ageOf, currentYear, manorLord, personById, personDisplayName } from "../../engine/persons";
-import { MANOR_HOUSEHOLD } from "../../engine/persons.types";
 import { lordMode } from "../../engine/townAgency";
 import { recordSentence } from "../legacy/chapterRecords";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
@@ -14,10 +13,12 @@ import { RESULTS_COPY } from "./resultsCopy.ko";
 
 // DEC-CARD (Astra A3): a change in the lord's house comes before ordinary petitions, as ONE card — the lord's death, a new
 // house, the heir seated, an estate inherited, a wardship begun or ended. Read from the ledger the engine already writes
-// (the person's death, lordshipDrafts' house and wardship lines, legacyDrafts' heir, diplomacyDrafts' inheritance) for
+// (DEC-CARD-2: the engine's succession, `house.succession`; lordshipDrafts' house and wardship lines, legacyDrafts' heir,
+// diplomacyDrafts' inheritance) for
 // the season after it, as the lord's moments are (lordMomentBeats); the records of one tick are one event, with what the
 // same tick wrote about the rights and estates (titles, possessions, a decline, a stewardship begun) and the promises it
-// brought. Who leads the house now is the engine's own reading (`manorLord`, the wardship's guardian). Lord mode only.
+// brought. Who leads the house now is the succession's heir (else the engine's `manorLord`), with the wardship's guardian.
+// Read once: the card's seen mark is the engine's (`storySeen("house:<id>")`, useStoryPresentation). Lord mode only.
 // Its Wave 40 moments (the inheritance, the wardship) are this card's picture, not chips of their own (lordStoryBeats).
 
 const SEASON = BALANCE.TICKS_PER_YEAR / 4;
@@ -35,12 +36,11 @@ const RIGHTS: ReadonlySet<string> = new Set(["estate.title_changed", "estate.pos
 /** The same tick's lines on who died with it (an inheritance's old lord). */
 const CONTEXT: ReadonlySet<string> = new Set(["marriage.father_died", "estate.person_died"]);
 
-/** The lord's own death: a head of the manor household of the lord's house (the household the rules read the lord from). */
-function lordDied(state: GameState, record: HistoryRecord): boolean {
-  if (record.template !== "person.died" || record.subject.type !== "person") return false;
-  const person = state.persons?.past.find(entry => entry.id === record.subject.id);
-  return person !== undefined && person.householdId === MANOR_HOUSEHOLD && person.role === "head" && person.tags.some(tag => tag.startsWith("lord-house:"));
-}
+/** DEC-CARD-2: the engine's succession (DEC-TRACE §6, `house.succession`): the lord who died and the heir who took the
+ * house at that tick, in one record — the lord's death when he died, else the heir seated. */
+const SUCCESSION = "house.succession";
+const houseKind = (record: HistoryRecord): HouseChangeKind | undefined =>
+  record.template === SUCCESSION ? (Number(record.params?.died) === 1 ? "lord_died" : "heir_seated") : HOUSE_TEMPLATES[record.template];
 
 export type HouseChange = Readonly<{
   /** The first house record's id: the event's key (`house:<id>`), never announced twice. */
@@ -61,7 +61,7 @@ export const houseChanges = perState((state: GameState): readonly HouseChange[] 
   for (let index = records.length - 1; index >= 0; index -= 1) {
     const record = records[index]!;
     if (state.tick - record.tick >= SEASON) break;
-    const kind = HOUSE_TEMPLATES[record.template] ?? (lordDied(state, record) ? "lord_died" : undefined);
+    const kind = houseKind(record);
     if (kind !== undefined) {
       const entry = house.get(record.tick) ?? { kinds: new Set<HouseChangeKind>(), records: [] };
       entry.kinds.add(kind); entry.records.unshift(record);
@@ -115,13 +115,12 @@ function viewOf(state: GameState, change: HouseChange): HouseChangeView {
   const happened = [
     ...change.related.filter(record => CONTEXT.has(record.template) && (record.template !== "estate.person_died" || record.params?.role === "head"))
       .map(record => recordSentence(state, record)),
-    ...change.records.map(record => {
-      if (record.template !== "person.died") return recordSentence(state, record);
-      const person = personById(state, record.subject.id);
-      return person === undefined ? recordSentence(state, record) : copy.lordDied(personDisplayName(person), ageOf(person, person.deathYear ?? year));
-    }),
+    ...change.records.map(record => recordSentence(state, record)),
   ];
-  const lord = state.persons === undefined ? undefined : manorLord(state.persons.people, lordHouse(state).order, year);
+  // The heir the succession names (the engine's own reading at that tick), else who leads the manor now.
+  const succession = change.records.find(record => record.template === SUCCESSION);
+  const named = succession === undefined ? undefined : personById(state, String(succession.params?.heirId ?? ""));
+  const lord = named ?? (state.persons === undefined ? undefined : manorLord(state.persons.people, lordHouse(state).order, year));
   const wardship = lordshipOf(state).wardship;
   const guardian = wardship === undefined ? null : wardship.guardianId === null ? copy.guardianOverlord
     : (() => { const person = personById(state, wardship.guardianId); return person === undefined ? copy.guardianOverlord : copy.guardian(personDisplayName(person)); })();

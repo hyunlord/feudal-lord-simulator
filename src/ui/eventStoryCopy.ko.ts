@@ -12,6 +12,8 @@ export const EVENT_STORY_COPY = {
   lookAt: "위치로",
   advice: "조언",
   close: "닫기",
+  /** DEC-CARD-2: a decision's news opens the decision in the chronicle. */
+  chronicle: "연대기에서 보기",
   decide: "결정하기",
   region: "사건",
   /** The steward's one line on a forecast (rumour = heard of it, sign = seen it coming). */

@@ -7,7 +7,14 @@ const METRIC_NAMES: Readonly<Record<string, string>> = { population: "인구", t
 const DECISION_KIND_NAMES: Readonly<Record<string, string>> = {
   famine_response: "대기근 대응", petition_response: "상인 청원", market_town: "시장도시 선포", stone_town: "석벽 선포", rebuild: "재건",
   wall_expand: "목책 넓히기",
+  // DEC-CARD request §6.2: the lord-mode settings recorded as big decisions.
+  estate_policy: "영지 방침", project_subsidy: "장려금", market_dues: "시장 부담", drainage: "배수 공사",
+  // DEC-TRACE §1: a card's answer (`decision.card`, by the command's kind) and the steward's or a lapse's (by the matter's kind).
+  lawsuit: "소송", marriage: "혼인", stewardship: "청지기와 영지", registry: "사건", operation: "목재 주문",
+  manor_petition: "장원 청원", estate_petition: "영지 청원", chapter_petition: "청원",
 };
+/** DEC-TRACE §1: who answered — the steward by the lord's standing policy, or a silence that let it lapse. */
+const DECISION_BY_NAMES: Readonly<Record<string, string>> = { "decision.steward": "청지기의 처리", "decision.lapsed": "답하지 않음" };
 const BUNDLE_NAMES: Readonly<Record<string, string>> = {
   build: "공사", road: "길", zone: "구역", house: "집 합치기·헐기", cancel: "공사 거둠", operation: "가동 바꿈", wall_priority: "성벽 우선",
 };
@@ -102,11 +109,22 @@ export const CHRONICLE_SCREEN_COPY = {
   pickHint: "기록 카드를 누르면 그때 지도와 결정의 앞뒤가 여기 나옵니다",
   // Decision record.
   decisionRecord: "결정 기록",
-  decisionHeading: (date: string, kind: string) => `${date} · ${DECISION_KIND_NAMES[kind] ?? kind}`,
+  decisionHeading: (date: string, kind: string, template = "") =>
+    `${date} · ${DECISION_KIND_NAMES[kind] ?? kind}${DECISION_BY_NAMES[template] === undefined ? "" : ` · ${DECISION_BY_NAMES[template]}`}`,
+  // DEC-CARD-2: the thread — the decision a record followed from, what followed a decision, who remembers it.
+  threadLabel: "결정의 앞뒤",
+  becauseHeading: "이 일이 따라 나온 결정",
+  followedHeading: "그 뒤에 일어난 일",
+  followedNone: "아직 이 결정 뒤에 적힌 일이 없습니다",
+  followedMore: (count: number) => `그 밖에 ${count}건 더`,
+  remembersHeading: "기억하는 이",
+  threadOpenLabel: (line: string) => `${line} — 그 기록 보기`,
   chosenHeading: "고른 길",
   alternativesHeading: "다른 길",
   compareHeading: "예측과 실제",
   noAlternatives: "다른 길이 없었습니다",
+  /** DEC-TRACE §1: a card's, the steward's or a lapse's answer to a petition. */
+  cardChoices: { granted: "들어줌", refused: "물리침", lapsed: "답하지 않음" } as Readonly<Record<string, string>>,
   // UI-AUDIT-1: the forecast against the outcome keeps every penny (moneyFull), so a few pence apart still read apart.
   predictedValue: (key: string, value: number) => `${METRIC_NAMES[key] ?? key} ${key === "treasury" ? moneyFull(value) : value}`,
   actualValue: (key: string, value: number) => `${key === "treasury" ? moneyFull(value) : value}`,

@@ -19,6 +19,18 @@ function Part({ heading, children }: { readonly heading: string; readonly childr
 
 const List = ({ lines }: { readonly lines: readonly string[] }): ReactElement => <ul>{lines.map(line => <li key={line}>{line}</li>)}</ul>;
 
+function Decisions({ entries }: { readonly entries: YearReviewView["decisions"] }): ReactElement {
+  return <ul className="year-review-decisions">{entries.map(decision => <li key={decision.id} data-record={decision.id}>
+    <span className="year-review-decision">{decision.line}</span>
+    {decision.outcome === "" ? null : <span className="year-review-outcome">{decision.outcome}</span>}
+  </li>)}</ul>;
+}
+
+function Groups({ groups }: { readonly groups: YearReviewView["relations"] }): ReactElement {
+  return <>{groups.map(group => <div key={group.key} className="year-review-group" data-reason={group.key}>
+    <p className="year-review-group-head">{group.heading}</p><List lines={group.lines} /></div>)}</>;
+}
+
 function Frame({ className, label, data, children }: {
   readonly className: string; readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: ReactNode;
 }): ReactElement {
@@ -36,22 +48,19 @@ export function YearReviewCard({ view, onContinue, onChronicle }: {
   readonly view: YearReviewView; readonly onContinue: () => void; readonly onChronicle: () => void;
 }): ReactElement {
   return (
-    <Frame className="year-review" label={view.title} data={{ "data-year-review": String(view.year) }}>
+    <Frame className="year-review" label={view.title} data={{ "data-year-review": String(view.year), "data-year-source": view.lord ? "engine" : "v1" }}>
       <h2>{view.title}</h2>
       {view.empty !== null ? <p className="results-card-empty">{view.empty}</p> : <>
-        <Part heading={COPY.year.decisions}>
-          {view.decisions.length === 0 ? <p className="results-card-none">{COPY.year.noDecision}</p>
-            : <ul className="year-review-decisions">{view.decisions.map(decision => <li key={decision.id} data-record={decision.id}>
-              <span className="year-review-decision">{decision.line}</span>
-              {decision.outcome === "" ? null : <span className="year-review-outcome">{decision.outcome}</span>}
-            </li>)}</ul>}
+        {view.house.length === 0 ? null : <Part heading={COPY.year.house}><List lines={view.house} /></Part>}
+        <Part heading={view.lord ? COPY.year.lordDecisions : COPY.year.decisions}>
+          {view.decisions.length === 0 ? <p className="results-card-none">{COPY.year.noDecision}</p> : <Decisions entries={view.decisions} />}
         </Part>
+        {view.steward.length === 0 ? null : <Part heading={COPY.year.stewardDecisions}><Decisions entries={view.steward} /></Part>}
         {view.answers.length === 0 ? null : <Part heading={COPY.year.answers}><List lines={view.answers} /></Part>}
-        {view.relations.length === 0 ? null : <Part heading={COPY.year.relations}>
-          {view.relations.map(group => <div key={group.key} className="year-review-group" data-reason={group.key}>
-            <p className="year-review-group-head">{group.heading}</p><List lines={group.lines} /></div>)}
-        </Part>}
+        {view.relations.length === 0 ? null : <Part heading={COPY.year.relations}><Groups groups={view.relations} /></Part>}
+        {view.threads.length === 0 ? null : <Part heading={COPY.year.threads}><Groups groups={view.threads} /></Part>}
         {view.receipts.length === 0 ? null : <Part heading={COPY.year.receipts}><List lines={view.receipts} /></Part>}
+        {view.community.length === 0 ? null : <Part heading={COPY.year.community}><List lines={view.community} /></Part>}
         {view.town.length === 0 ? null : <Part heading={COPY.year.town}><List lines={view.town} /></Part>}
       </>}
       <div className="results-card-actions">

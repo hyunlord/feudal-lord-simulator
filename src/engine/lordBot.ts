@@ -8,12 +8,12 @@
  */
 import type { BuildingKind } from "../content/buildingConfig";
 import { WILL_FAVOUR_PENNIES } from "../content/diplomacyConfig";
-import { BALANCE } from "../content/balanceConfig";
 import { treasuryBalance } from "../ledger/ledger";
 import type { GameAction } from "../state/gameStore.types";
 import { autoplayActionToGameAction } from "./autoplayActions";
 import { chapterDecisionAction } from "./autoplayEvents";
 import type { GameState } from "./engine.types";
+import { activeDuesAgreement } from "./duesMind";
 import { estatesOf, LORD } from "./estates";
 import { lordBotMarriageCommands, marriageDecisionDue } from "./marriage";
 import { diplomacyOf } from "./negotiation";
@@ -51,9 +51,6 @@ export function lordBotPolicy(year: number): EstatePolicy {
 const SUBSIDIES: readonly { readonly from: number; readonly kind: BuildingKind; readonly amount: number }[] = [
   { from: 1300, kind: "granary", amount: 40 }, { from: 1306, kind: "market", amount: 60 }, { from: 1312, kind: "church", amount: 60 },
 ];
-/** DTR-17: how long the bot keeps a stall fee the lord agreed with the merchants (ten years, the thread's memory). */
-const AGREED_DUES_TICKS = 10 * BALANCE.TICKS_PER_YEAR;
-
 export function lordBotDues(year: number): number {
   return year < 1310 ? 800 : 1100;
 }
@@ -165,12 +162,10 @@ function townMoves(state: GameState): LordBotCommand[] {
   if (!agency.subsidies.some(entry => entry.kind === subsidy.kind) && subsidyRefusal(state, subsidy.kind, subsidy.amount) === null) {
     moves.push({ kind: "subsidy", command: { type: "set_project_subsidy", kind: subsidy.kind, amount: subsidy.amount } });
   }
-  // DTR-17: the stall fee the lord agreed with the merchants (a registry answer that set it) is kept for ten years — the
-  // bot's schedule no longer undoes it the next week (each undoing cost the merchants' mind −5: −65 by 1340 in seed 1).
+  // DTR-17, DUES-REL: the stall fee the lord agreed with the merchants (a registry answer) is kept while the agreement
+  // binds — the bot's schedule neither undoes nor breaks it.
   const dues = lordBotDues(year);
-  const agreed = (state.trace?.decisions ?? []).some(decision => decision.targets.includes("dues") && decision.source.startsWith("registry:")
-    && state.tick - decision.tick < AGREED_DUES_TICKS);
-  if (!agreed && agency.duesPermille !== dues) moves.push({ kind: "dues", command: { type: "set_market_dues", permille: dues } });
+  if (activeDuesAgreement(state) === null && agency.duesPermille !== dues) moves.push({ kind: "dues", command: { type: "set_market_dues", permille: dues } });
   const request = lordRequests(state)[0];
   const granted = request === undefined ? null : autoplayActionToGameAction(request, state);
   if (granted !== null) moves.push({ kind: "town_request", command: granted });

@@ -8,7 +8,7 @@ export const LORD_SCREEN_COPY = {
   close: "영주 집무 닫기",
   labels: {
     character: "인물", dynasty: "가문", region: "지역", estates: "영지", council: "평의회",
-    marriage: "혼인", ledger: "약속·소송", petitions: "청원", military: "무력",
+    marriage: "혼인", ledger: "약속·소송", petitions: "상시 방침", military: "무력",
   } satisfies Record<LordScreenId, string>,
   /** Why a menu item is shut: its screen is not built yet, or the game has no rules for it. */
   soon: "준비 중",

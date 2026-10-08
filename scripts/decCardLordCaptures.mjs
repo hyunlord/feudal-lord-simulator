@@ -1,6 +1,6 @@
 // DEC-CARD (renderer A, lord cards): the lord-mode decision cards in the heavy layout, in the browser on real states —
-// the town's request (~/fls-lmr1-petition-states request), the registry offer and its hold (~/fls-lord-states
-// registry-offer, registry-offer-hold), the father's will, the contested inheritance, the audit and the off-map petition
+// the home petition (~/fls-lmr1-petition-states home-boundary_dispute; DEC-CARD-2), the town's request (the same
+// folder's request), the registry offer and its hold (~/fls-lord-states registry-offer, registry-offer-hold), the father's will, the contested inheritance, the audit and the off-map petition
 // (~/fls-lmr2-states), and the negotiation counter's answers on the lord screen (lord2 offer-countered). Each card is
 // reached as a player reaches it (by itself, or its chip and [결정하기]), shot at 1280 × 800 (JPEG), and checked: the
 // headings (무슨 일인가, 걸린 것, and per answer 지금 / 나중에 / 기억하는 이), no text under 12 px, inside the view, and no
@@ -70,7 +70,16 @@ async function reach(page, card, story) {
 }
 
 const HEADS = ['지금', '나중에', '기억하는 이'];
+/** DEC-CARD-2: an empty part is left out (the card's rule since DEC-CARD results), so each open answer shows 지금 (every
+ * open answer has at least its treasury line) and 나중에 / 기억하는 이 at most once; a shut answer shows none. */
+const partsShown = shown => {
+  const open = shown.choices.filter(choice => choice.refused === null || choice.refused === 'false').length;
+  const count = head => shown.heads.filter(text => text === head).length;
+  return shown.choices.length >= 1 && open >= 1 && count('지금') === open && count('나중에') <= open && count('기억하는 이') <= open;
+};
 const CARDS = [
+  // DEC-CARD-2: the home petition (its answers from the engine's outlook, the kind's standing policy in 나중에).
+  { name: 'home-petition', dir: flags.petitions, state: 'home-boundary_dispute', card: '.decision-card.lord-card[data-home-petition]', story: 'home_petition', delay: 1500 },
   { name: 'request', dir: flags.petitions, state: 'request', card: '.decision-card.lord-card[data-lord-request]', story: 'lord_request', delay: 1500 },
   { name: 'registry', dir: flags.lord, state: 'registry-offer', card: '.decision-card.lord-card[data-registry-offer]', story: 'registry_event', delay: 3000 },
   { name: 'registry-hold', dir: flags.lord, state: 'registry-offer-hold', card: '.decision-card.lord-card[data-registry-offer]', story: 'registry_event', delay: 3000 },
@@ -87,7 +96,7 @@ for (const entry of CARDS) {
   const size = opened ? await shoot(page, `card-${entry.name}`) : 0;
   const answers = entry.answers !== false;
   const ok = opened && shown !== null && shown.situation !== null && shown.stake !== null && shown.smallestText >= 12 && shown.box.inside && shown.titles === 0
-    && shown.primaries === (entry.primaries ?? 0) && (!answers || (shown.choices.length >= 1 && HEADS.every(head => shown.heads.filter(text => text === head).length === shown.choices.length)));
+    && shown.primaries === (entry.primaries ?? 0) && (!answers || partsShown(shown));
   rows[entry.name] = { opened, ...shown, bytes: size, ok };
   console.log(`${ok ? 'ok ' : 'BAD'} ${entry.name}: ${JSON.stringify({ opened, choices: shown?.choices.map(choice => choice.id), smallestText: shown?.smallestText, box: shown?.box, primaries: shown?.primaries, bytes: size })}`);
   await context.close();
@@ -103,7 +112,7 @@ for (const entry of CARDS) {
   if (opened) await page.locator('.lord-neg-outlook').first().scrollIntoViewIfNeeded();
   const shown = opened ? await facts(page, panel) : null;
   const size = opened ? await shoot(page, 'counter') : 0;
-  const ok = opened && shown !== null && shown.choices.length === 2 && HEADS.every(head => shown.heads.filter(text => text === head).length === 2) && shown.smallestText >= 12 && shown.primaries === 0;
+  const ok = opened && shown !== null && shown.choices.length === 2 && partsShown(shown) && shown.smallestText >= 12 && shown.primaries === 0;
   rows.counter = { opened, ...shown, bytes: size, ok };
   console.log(`${ok ? 'ok ' : 'BAD'} counter: ${JSON.stringify({ opened, choices: shown?.choices.map(choice => choice.id), smallestText: shown?.smallestText, bytes: size })}`);
   await context.close();

@@ -4,7 +4,6 @@
 //    pannage and the chancel — no other picture), both answers through answer_estate_petition (the card answered
 //    once per answer, each from the scene's own state: status, decidedBy lord, the treasury by the card's number);
 //  - boundary_dispute also at the tablet (1180 × 820, touch) and at DPR 2;
-//  - the steward's precedent card from its chip (Wave 44 13), the exception switch `recurring` → the engine's rule;
 //  - the town's request card from its chip (a proclamation waiting) and its answer's command;
 //  - the guardian case: a minor lord's court line on the card;
 //  - lord mode only: the campaign's ui5 merchant town has no lord chip.
@@ -111,21 +110,7 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
   console.log(`${opened && shown?.box.inside ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(shown?.box)} answers ${JSON.stringify(shown?.answers.map(answer => answer.height))} smallest ${shown?.smallestText}`);
   await context.close();
 }
-// 3. The steward's precedent and the exception switch.
-{
-  const { context, page } = await open(scene(flags.states, 'precedent'));
-  const opened = await fromChip(page, 'home_precedent', '.lord-card[data-precedent]');
-  const shown = await card(page);
-  const items = await page.locator('.lord-card-precedents li').allTextContents();
-  const size = opened ? await shoot(page, 'precedent') : 0; bytes += size;
-  const before = (await proof(page)).rules;
-  if (opened) { await page.locator('.lord-card-recurring').first().click(); await page.waitForTimeout(500); }
-  const after = (await proof(page)).rules;
-  rows.precedent = { opened, card: shown, items, bytes: size, recurringBefore: before?.recurring ?? null, recurringAfter: after?.recurring ?? null,
-    pressed: await page.locator('.lord-card-recurring').first().getAttribute('aria-pressed').catch(() => null) };
-  console.log(`${opened && shown?.art === 'by_precedent' && Array.isArray(shown?.loaded) && after?.recurring === true ? 'ok ' : 'BAD'} precedent: ${JSON.stringify(items)} ${shown?.src} recurring ${before?.recurring} → ${after?.recurring}`);
-  await context.close();
-}
+// 3. (DEC-CARD-2: the steward's precedent card is gone — DEC-TRACE DTR-1; his season is the season card's "청지기가 처리한 일".)
 // 4. The town's request.
 {
   const state = scene(flags.states, 'request');
@@ -162,7 +147,7 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
 }
 await browser.close();
 const ok = KINDS.every(kind => rows[`home-${kind}`].opened && rows[`home-${kind}`].pictureOk && rows[`home-${kind}`].answersOk)
-  && rows.precedent.opened && rows.precedent.card?.art === 'by_precedent' && rows.precedent.recurringAfter === true && rows.request.opened && rows.guardian.opened && rows.campaign.lordChips + rows.campaign.lordCards === 0;
+  && rows.request.opened && rows.guardian.opened && rows.campaign.lordChips + rows.campaign.lordCards === 0;
 writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, rows }, null, 1) + '\n');
 console.log(JSON.stringify({ ok, bytes }));
 if (!ok) process.exitCode = 1;
