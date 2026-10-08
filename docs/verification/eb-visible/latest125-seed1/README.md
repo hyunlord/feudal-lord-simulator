@@ -9,3 +9,5 @@ All13 consequence cases show the exact forward result link and cause backlink:00
 18 cases opened a generic trace chip;11 selected the expected decision and7 did not (005-consequence,092-answer,032-answer/consequence,042-answer/consequence,031-consequence). Generic chip presence is not an event-specific visibility pass. Year-review modal absent31/31 on paused reload, not a real year transition. Independent visual review of10new screenshots retains REVISE: Korean word breaks and blank prediction/actual columns. See visual-review.md. 130/031 show multi-year result timing, not proof of a change within a few seasons.
 
 Image-diff of13answer/consequence decision-screen pairs:1280×800 and alpha intact throughout, differing pixels24.04–41.81%. These are different actual states and navigation positions, not a same-state approved fidelity baseline. See image-diff.json.
+
+Follow-up: [targeted old-history recapture](../old-history/README.md) resolves both navigation misses and narrows038presentation mismatch to /seen. Original31case artifacts remain unchanged.
