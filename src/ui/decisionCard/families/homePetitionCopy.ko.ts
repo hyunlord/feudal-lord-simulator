@@ -39,6 +39,6 @@ export const HOME_PETITION_CARD_COPY = {
   standingLord: "이 청원의 상시 방침은 \"영주에게\"라서, 이런 청원은 앞으로도 영주에게 옵니다.",
   standing: (setting: string, why: "large" | "recurring" | null, answer: string | null) =>
     `이 청원의 상시 방침은 "${setting}"입니다. ${why === "large" ? "이번에는 큰 돈이 걸려 영주에게 왔습니다. " : why === "recurring" ? "이번에는 장원 청원을 모두 올리라는 규칙이 켜져 있어 영주에게 왔습니다. " : ""}`
-    + `앞으로 이런 청원은 청지기가 그 방침대로${answer === null ? "" : `("${answer}")`} 답합니다. "영주에게"로 두면 영주에게 옵니다.`,
+    + `앞으로 이런 청원은 청지기가 그 방침대로${answer === null ? "" : `("${answer}")`} 답합니다. 영주 화면의 상시 방침에서 "영주에게"로 두면 영주에게 옵니다.`,
   refused: "지금은 이 답을 할 수 없습니다.",
 } as const;
