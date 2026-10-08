@@ -29,8 +29,9 @@ test("every start the welcome offers shows the loading screen; the flag is not A
   const app = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(app, /useState\(false\);\s*\n\s*useEffect\(\(\) => \{\s*\n\s*if \(!chapterLoading\)/, "no App-local loading flag");
   assert.match(app, /const chapterLoading = useChapterLoading\(\);/);
-  assert.match(app, /onNewGame=\{\(scenarioId, land\) => \{ showChapterLoading\(CHAPTER_LOADING_MS\); startNewGameOverSave/);
-  assert.match(app, /onChooseMode=\{\(scenarioId, land\) => \{ showChapterLoading\(CHAPTER_LOADING_MS\); startScenarioWithoutSave/);
+  // LM-R3: the welcome's starts carry the chosen house (LR3-D2); the loading screen still comes first, then the start with it.
+  assert.match(app, /onNewGame=\{\(scenarioId, land, house\) => \{ showChapterLoading\(CHAPTER_LOADING_MS\); startNewGameOverSave\(scenarioId, land, house\)/);
+  assert.match(app, /onChooseMode=\{\(scenarioId, land, house\) => \{ showChapterLoading\(CHAPTER_LOADING_MS\); startScenarioWithoutSave\(scenarioId, land, house\)/);
   // A click anywhere that starts a new map (not today's map 1) shows it too.
   assert.match(app, /!isDefaultLand\(land\)\) \{ showChapterLoading\(CHAPTER_LOADING_MS\); startScenarioWithoutSave/);
 });
