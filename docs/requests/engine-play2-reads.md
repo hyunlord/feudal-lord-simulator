@@ -2,6 +2,8 @@
 
 Astra 영주 모드 두 번째 플레이([docs/qa/lordplay2-20261008](../qa/lordplay2-20261008/TOP10_FRICTION.md))의 화면 몫(PLAY-2)은 엔진이 주는 것만으로 만들었다. 화면이 규칙을 베끼지 않으려고 비워 둔 자리를 엔진에 요청한다. 렌더는 엔진 파일을 고치지 않는다. 저장 변화는 없다(모두 읽기 모델).
 
+> 이 요청서는 엔진의 SUIT-THREAD가 같은 소송 부분을 고치는 중이라 먼저 올린다(사용자 2026-10-08). 아래에 적은 렌더 쪽 파일(`claimOutlook.ts`·`famineAfter.ts` 등)은 렌더 A의 PLAY-2 가지에 있고 곧 본선에 들어온다. 1절의 판정 규칙에 대해: 심리가 두 힘을 비교하는 것이 맞다면 화면은 큰 쪽을 읽어 "지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다" 같은 한 줄을 붙인다(사용자) — `verdictNow`가 오면 그 값으로 바꾼다.
+
 ## 1. 소송 제기의 비용과 심리 전망 (TOP10 4)
 지금 화면은 `file_suit`를 지금 상태에 시험 실행해(`src/ui/lord/ledger/claimOutlook.ts`) 금고에서 빠지는 돈과 새 소송의 `suitHearing` 두 숫자를 보인다. 비어 있는 것:
 - **거절된 제기의 비용**: `fileSuitRefusal`이 `"treasury"`이면 시험 실행이 거절돼 비용을 모른다. 화면은 "금고가 모자랍니다"만 말한다. 요청: `suitFilingOutlook(state, claimId)` → `{ cost: number; refusal: SuitRefusal | null; hearing: { plaintiff: number; defence: number } | null }` (거절이어도 `cost`).
