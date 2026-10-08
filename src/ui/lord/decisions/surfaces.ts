@@ -24,7 +24,7 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   // SUIT-THREAD: the deadline is the engine's (lordMattersDue, as a season); the chip's button opens the 혼인 page.
   { id: "hud.event-card.will-kept", root: `.event-card[data-chip-id^='${WILL_CHIP}']`, frame: "css", scene: decisionScene("will-change"),
     open: [{ wait: `.event-chip[data-chip-id^='${WILL_CHIP}']`, timeout: 90_000 }, { click: `.event-chip[data-chip-id^='${WILL_CHIP}']` }, { pause: 600 }], scroll: "y",
-    requires: ["h2", ".event-card-facts li", ".event-card-decide"], data: "the father's new will as its chip's card: the engine's deadline as a season, the button to the 혼인 page" },
+    requires: ["h2", ".event-card-facts li", ".event-card-decide"], data: "the father's new will as its chip's card: the engine's deadline as a season, the button to the lord screen's marriage page" },
   // SUIT-THREAD: the will's card, reached as a player does — its chip, the 혼인 page, that page's [결정하기].
   { id: "modal.lord.will-change", ...CARD, root: card("will_change"), scene: decisionScene("will-change"),
     open: [{ wait: `.event-chip[data-chip-id^='${WILL_CHIP}']`, timeout: 90_000 }, { click: `.event-chip[data-chip-id^='${WILL_CHIP}']` }, { pause: 600 },
@@ -36,12 +36,12 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   // filing, the stage, when it moves on, the way to it on 약속·소송; kept until answered.
   { id: "hud.event-card.suit-defence", root: ".event-card[data-chip-id^='suit-defence:']", frame: "css", scene: decisionScene("neighbour-suit"),
     open: [{ wait: ".event-chip[data-chip-id^='suit-defence:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='suit-defence:']" }, { pause: 600 }], scroll: "y",
-    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a neighbour house's suit against the lord: its filing, its stage and next season, [소송 보기]" },
+    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a neighbour house's suit against the lord: its filing, its stage and next season, the button to the suit in the ledger" },
   // A forcible entry forewarned (lordMattersDue) as its chip's card, on suit-ledger's state played on from neighbour-suit
   // (scripts/suitLedgerStates.ts, kept in the lord2 folder as suit-entry-threat.json).
   { id: "hud.event-card.entry-threat", root: ".event-card[data-chip-id^='entry-threat:']", frame: "css", scene: decisionScene("suit-entry-threat"),
     open: [{ wait: ".event-chip[data-chip-id^='entry-threat:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='entry-threat:']" }, { pause: 600 }], scroll: "y",
-    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a house's forcible entry forewarned: the engine's warning, the season it comes, [예고 보기]" },
+    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a house's forcible entry forewarned: the engine's warning, the season it comes, the button to the warning in the ledger" },
   { id: "modal.lord.contested", ...CARD, root: card("contested"), scene: decisionScene("contested"),
     open: [{ story: card("contested") }, { pause: 600 }],
     requires: [...HEAVY, ".lord-decision-open", ".story-modal-later"],

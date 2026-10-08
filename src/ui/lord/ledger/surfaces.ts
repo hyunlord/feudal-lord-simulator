@@ -31,5 +31,5 @@ export const LEDGER_SURFACES: readonly SurfaceRow[] = [
     data: "a forcible entry forewarned by a house past −60 (1344): the guard and the gift at the engine's costs, the engine's sentence" },
   { id: "lord.ledger.entry-forced", ...HOST, scene: lord2Scene("suit-entry-forced"), open: OPEN,
     requires: [".lord-ledger-claim[data-novel]", ".lord-ledger-file[data-cost]", "[data-block='past-entries']"], siblingsNoOverlap: [".lord-ledger-claim"],
-    data: "the house came in by force: the lord's novel claim (점유 침탈 소송) with its filing cost and hearing, the entry in the engine's words" },
+    data: "the house came in by force: the lord's novel claim (a suit for the possession taken by force) with its filing cost and hearing, the entry in the engine's words" },
 ];
