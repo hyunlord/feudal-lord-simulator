@@ -26,9 +26,9 @@ import { decodeSave } from "../src/save/saveCodec";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Box = { x: number; y: number; width: number; height: number };
-type Locator = { first: () => Locator; count: () => Promise<number>; click: () => Promise<void>; tap: () => Promise<void>; boundingBox: () => Promise<Box | null>;
+type Locator = { first: () => Locator; count: () => Promise<number>; click: (options?: object) => Promise<void>; tap: () => Promise<void>; boundingBox: () => Promise<Box | null>;
   waitFor: (options: object) => Promise<void>; evaluate: (f: (node: Element) => void) => Promise<void> };
-type Page = { locator: (selector: string) => Locator; waitForTimeout: (ms: number) => Promise<void>; screenshot: (options: object) => Promise<Buffer>;
+type Page = { keyboard: { press: (key: string) => Promise<void> }; locator: (selector: string) => Locator; waitForTimeout: (ms: number) => Promise<void>; screenshot: (options: object) => Promise<Buffer>;
   evaluate: <T, A = undefined>(f: (arg: A) => T | Promise<T>, arg?: A) => Promise<T>; viewportSize: () => { width: number; height: number } };
 type Opened = { context: { close: () => Promise<void> }; page: Page };
 
@@ -196,13 +196,19 @@ await view("t3-entry-forced", load("suit-entry-forced"), "[data-section='suits']
   expect("t4-novel-filed", suit !== undefined && game.suits.some(entry => entry.fast === true), JSON.stringify({ suits: after.suits, game: game.suits }));
 });
 // The moment's card (its chip comes once the story delay passes) and the contested card: not the ledger.
-for (const [name, state, story, root] of [["m1-moment-lost", load("suit-neighbour-took"), "lord_moment", ".event-card[data-story='lord_moment']"],
-  ["k1-contested-ended", astra(), "lord_decision", ".event-card[data-story='lord_decision']"]] as const) {
+// Its chip by its title (other moments' and matters' chips wait beside it); a modal over the scene is put away first.
+for (const [name, state, story, title, root] of [["m1-moment-lost", load("suit-neighbour-took"), "lord_moment", "이웃이 점유를 가져갔다", ".event-card[data-story='lord_moment']"],
+  ["k1-contested-ended", astra(), "lord_decision", "상속 다툼", ".event-card[data-story='lord_decision']"]] as const) {
   if (state === null) { failures.push(`${name}: no state`); continue; }
   const opened = await open(state, { ledger: false, delay: 0 });
-  const chip = `.event-chip[data-story='${story}']`;
+  const chip = `.event-chip[data-story='${story}'][aria-label^='${title}']`;
   const found = await opened.page.locator(chip).first().waitFor({ timeout: 90_000 }).then(() => true).catch(() => false);
-  if (found) await opened.press(chip);
+  for (let i = 0; i < 3 && await opened.page.locator(".story-modal-backdrop").count() > 0; i += 1) {
+    if (await opened.page.locator(".story-modal-later").count() > 0) await opened.page.locator(".story-modal-later").first().click({ timeout: 5_000 }).catch(() => undefined);
+    else await opened.page.keyboard.press("Escape");
+    await opened.page.waitForTimeout(500);
+  }
+  if (found) { await opened.page.locator(chip).first().click({ force: true }); await opened.page.waitForTimeout(600); }
   const card = await opened.page.evaluate(selector => {
     const node = document.querySelector(selector);
     return node === null ? null : { title: node.querySelector("h2")?.textContent ?? null, lines: [...node.querySelectorAll("p, li")].map(entry => entry.textContent) };
