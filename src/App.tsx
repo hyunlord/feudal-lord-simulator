@@ -11,6 +11,7 @@ import {
 } from "react";
 
 import { CauseLegend } from "./ui/CauseLegend";
+import { GameLogo } from "./ui/brand/GameLogo";
 import { KO_UI } from "./content/locale.ko";
 import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
@@ -640,6 +641,8 @@ export function App() {
         onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView}
         {...(lord ? { onOpenLord: (screen: LordScreenId, focus: string) => openLord(screen, focus) } : {})} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
+        {/* LM-R3: the game's logo on its own vellum strip, above the chapter. */}
+        <div className="chapter-loading-logo"><GameLogo tone="on-light" width={320} /></div>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
         onDismiss={dismissWelcome}

@@ -1,6 +1,6 @@
 import { MONEY_LABEL } from "./moneyCopy.ko";
 export const KO_UI = {
-  appName: "봉건 영주 시뮬레이터",
+  appName: "인장과 가문",
   informationRail: "영지 안내",
   courtConsole: "영주 명령대",
   openingGuidance: "시작 안내",

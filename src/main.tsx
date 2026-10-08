@@ -42,8 +42,11 @@ import "./styles/uiSkin.css";
 import "./styles/uiKit.css";
 // LM-R1: the Wave 38 control pictures, loaded once; a failure swaps the P0 pictures back (src/ui/wave38Art.ts).
 import { preloadWave38Art } from "./ui/wave38Art";
+import { BRAND_COPY } from "./ui/brand/brandCopy.ko";
 
 preloadWave38Art();
+// LM-R3 (TITLE-1): the window title; index.html carries the same (scripts/brandArt.ts writes it from the copy).
+document.title = BRAND_COPY.windowTitle;
 
 const rootElement = document.getElementById("root");
 

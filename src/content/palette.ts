@@ -54,6 +54,17 @@ export const SEMANTIC_PALETTE = {
   snow: RAMPS.plaster[5],
 } as const satisfies Readonly<Record<string, PaletteColor>>;
 
+// LM-R3: the game logo's and seal's own colours (docs/design/brand/DESIGN.md, identity v1). They are brand, not UI
+// palette: only src/ui/brand draws with them (the kit's outlined SVGs, scripts/brandArt.ts); screens keep to the above.
+export const BRAND_COLOURS = {
+  wax: "#934631",
+  waxShadow: "#693726",
+  waxFace: "#AB5B3D",
+  rim: "#D9B875",
+  oak: "#493522",
+  parchment: "#F7E8CD",
+} as const;
+
 export type PaletteName = keyof typeof PALETTE;
 export type RampName = keyof typeof RAMPS;
 export type PaletteColor = (typeof CANONICAL_PALETTE)[number];

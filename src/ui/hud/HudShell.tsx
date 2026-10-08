@@ -49,6 +49,7 @@ import { LEGACY_LEDGER_COPY } from "./legacyLedgerCopy.ko";
 import { REORG_LEDGER_COPY } from "./reorgLedgerCopy.ko";
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "../chronicle/factionInfluenceCopy.ko";
 import { CRISIS_ART, HUD_ART, HudArt, useHudPulseRing } from "./hudArt";
+import { SealMark } from "../brand/SealMark";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -372,7 +373,7 @@ export function PauseMenu({ onResume, settings }: { readonly onResume: () => voi
   return (
     <div className="pause-menu-backdrop" role="presentation">
       <section className="pause-menu" data-frame="modal" role="dialog" aria-modal="true" aria-label={HUD_COPY.pauseTitle}>
-        <h2>{HUD_COPY.pauseTitle}</h2>
+        <h2><SealMark size={24} />{HUD_COPY.pauseTitle}</h2>
         <Button type="button" className="pause-menu-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{HUD_COPY.pauseResume}</Button>
         <div className="pause-menu-settings">{settings}</div>
         {/* INSTALL-18 (user decision 2026-10-07): the HUD has no hide button; the H key's line says it is there. */}
