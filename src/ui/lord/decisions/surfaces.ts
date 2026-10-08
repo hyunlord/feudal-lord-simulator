@@ -35,6 +35,11 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.suit-defence", root: ".event-card[data-chip-id^='suit-defence:']", frame: "css", scene: decisionScene("neighbour-suit"),
     open: [{ wait: ".event-chip[data-chip-id^='suit-defence:']", timeout: 90_000 }, { click: ".event-chip[data-chip-id^='suit-defence:']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a neighbour house's suit against the lord: its filing, its stage and next season, [소송 보기]" },
+  // A forcible entry forewarned (lordMattersDue) as its chip's card, on suit-ledger's state played on from neighbour-suit
+  // (scripts/suitLedgerStates.ts, kept in the lord2 folder as suit-entry-threat.json).
+  { id: "hud.event-card.entry-threat", root: ".event-card[data-chip-id^='entry-threat:']", frame: "css", scene: decisionScene("suit-entry-threat"),
+    open: [{ wait: ".event-chip[data-chip-id^='entry-threat:']", timeout: 90_000 }, { click: ".event-chip[data-chip-id^='entry-threat:']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a house's forcible entry forewarned: the engine's warning, the season it comes, [예고 보기]" },
   { id: "modal.lord.contested", ...CARD, root: card("contested"), scene: decisionScene("contested"),
     open: [{ story: card("contested") }, { pause: 600 }],
     requires: [...HEAVY, ".lord-decision-open", ".story-modal-later"],

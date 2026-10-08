@@ -4,6 +4,7 @@
 //    screen's 혼인 page (the deadline, [결정하기]) → the will's card (its deadline line);
 //  - will-lapsed: the 혼인 page after the will's deadline passed unanswered ("기한이 지나 그대로 두었다");
 //  - suit-chip → suit-ledger: a neighbour's suit against the lord as its chip → [소송 보기] opens 약속·소송 on it;
+//  - entry-chip → entry-ledger: a forcible entry forewarned (suit-ledger's lord2 suit-entry-threat) the same way;
 //  - kin-household → kin-biography: Astra's 1306 save — the rights register's 영주의 가솔 ("영주의 사촌의 아들"), the
 //    child's biography (its father and mother);
 //  - standing: the 상시 방침 screen's note on the lasting tax rates;
@@ -107,6 +108,25 @@ const missing = name => report(name, { card: null, missing: true }, false);
       const focused = await waitFor(page, `${LORD_SCREEN} [data-focused='true']`, 20_000); await page.waitForTimeout(600);
       await capture(page, 'suit-ledger', LORD_SCREEN, () => focused);
     } else missing('suit-chip');
+    await context.close();
+  }
+}
+
+// 3b. A forcible entry forewarned (suit-ledger's state, scripts/suitLedgerStates.ts): its chip, then 약속·소송 on it.
+{
+  const state = sceneAt(flags.lord2, 'suit-entry-threat');
+  if (state === null) missing('entry-chip');
+  else {
+    const { context, page } = await open(state, { query: '&story-delay=3000' });
+    watch(page, 'entry');
+    const chip = ".event-chip[data-chip-id^='entry-threat:']";
+    if (await waitFor(page, chip, 90_000)) {
+      await click(page, chip); await page.waitForTimeout(600);
+      await capture(page, 'entry-chip', ".event-card[data-chip-id^='entry-threat:']", text => SEASON.test(text) && text.includes('예고 보기'));
+      await click(page, ".event-card[data-chip-id^='entry-threat:'] .event-card-decide");
+      const shown = await waitFor(page, LORD_SCREEN, 20_000); await page.waitForTimeout(800);
+      await capture(page, 'entry-ledger', LORD_SCREEN, () => shown);
+    } else missing('entry-chip');
     await context.close();
   }
 }
