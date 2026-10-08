@@ -120,3 +120,45 @@ for(const [id,choiceId] of [['ck_evt_061','b'],['ck_evt_077','a'],['ck_evt_130',
 }
 JS
 ```
+
+## 단일 seed 1 대조군의 실제 후속 연결 공백 — 2026-10-09
+
+근거는 [보관 원자료](../verification/eb-weight/control-de3d9e2/seed-1.json.gz)와 [출처 기록](../verification/eb-weight/control-de3d9e2/provenance.json)이다. sourceRevision은 `de3d9e224636c5e69bc18e2ea7ccb7d7bd97c69d`, dirtyPaths는 비어 있다. 압축 해제 JSON SHA256은 `ad340b87763c4a44975b536fd2786df5b343e6d128581e1bb42bef174a9c9a69`, gzip SHA256은 `b64c4f698a9893f8a9e331ee0ef992da9a77b21b5c04c8f69ab0125575d47266`이며 둘 다 다시 계산했다. 이는 TRACE-KEEP 이전 seed 1 하나의 1300~1424년 대조군(끝 tick 500000)이다. 최신 소스의 seeds 1/2/3 검증 결과가 아니다.
+
+아래 9개 결정은 각각 `decision.tick < history.tick <= decision.tick + 12000`(3년)에서 해당 decisionId를 because에 담은 기록이 0개임을 원자료로 재계산했다. 이 지표는 실제 효과가 없다는 뜻이 아니다. 현재 `src/engine/decisionTrace.ts:36`의 인과 선택 범위는 여전히 3년이며, TRACE-KEEP의 큰 결정 영구 보존·작은 결정 10년 보존(:38·:548)은 이 선택 정책을 바꾸지 않는다.
+
+### 038: 성공한 집행 뒤의 오래된 선택지라는 판정은 철회
+
+`h-002358@36037`은 `ck_evt_038:defer`, target `suit:suit-2`이며 occurrence에 `claim-2` 약화 5가 기록되어 있다. 직전 같은 tick의 `h-002356`은 `enforce_possession` **시도** 기록이다. 성공 기록으로 읽을 수 없다. 같은 소송의 추가 시도가 `h-002497@38455`, `h-002503@38533`에 실제 존재하며, `h-002561@39000`의 suit_rent 187은 h-002356을 원인으로 가리킨다. 최종 합쳐진 h-002356 trace의 `lastTick=38533`과 rent target도 tick 36037 당시 성공을 증명하지 않는다. 원자료에는 그 순간의 전체 소송 상태가 없어 최초 시도의 성공/실패를 직접 복원하지 못한다.
+
+소스 `src/engine/estateSuits.ts:242`는 집행 저항을 넘지 못하면 enforcing 단계에 남고, 성공한 경우에만 closed로 바꾼다. `src/engine/registry.ts:505`는 답변 시 현재 상태로 다시 bind하고, `registryV4.ts:302`, :359에서 조건·선택 가능성을 검사한다. canonical `docs/design/content-drafts-20261002/v4.2/registry-v4.2.json:5222`의 038은 집행 대기 조건을 가지며 defer의 빈 commands는 `registryV4.ts:185`의 hold 처리로 이어진다.
+
+별도 제한 fixture 대조(기존 `fixtures/saves/v49/chapter-two-town.save.json`, enforcing 소송의 저항만 100/0으로 구성; 자연 실행 재현 아님)에서는 실제 enforcePossession 후 저항 100은 enforcing/enforced=false, 재바인딩 가능, defer answered·약화 5였다. 저항 0은 closed/enforced=true, 바인딩 null·가능 선택 없음, defer invalid·hold 없음이었다. 따라서 성공 후 선택지를 무효화하는 어댑터 동작은 확인됐고, 이 자료로 stale binding 수정은 정당화되지 않는다. 콘텐츠/엔진 담당에는 **판결 뒤 claim 약화가 이후 소송에 어떤 효과와 읽을 수 있는 연결을 남겨야 하는지** 확인을 요청한다.
+
+### 140: 감사는 발생했지만 해당 결정이 원인 목록에 없다
+
+`ck_evt_140:b`인 `h-007606@117001`의 target은 `estate:estate-neighbour-3`다. 다음 세 감사가 같은 target에서 실제 발생했다.
+
+| 감사 ID@tick | 관측 결과 | 실제 because decisionId 4개 |
+| --- | --- | --- |
+| h-007676@118320 | revealed 0, clean | h-006655, h-006890, h-006941, h-007020 |
+| h-007909@122320 | revealed 0, clean | h-006655, h-006890, h-007216, h-007405 |
+| h-008117@126320 | revealed 92, pending | h-006655, h-006890, h-007461, h-007600 |
+
+모두 h-007606보다 앞선 결정 4개를 가리키며 h-007606은 빠졌다. `src/engine/decisionTrace.ts:339`는 살아 있는 target 결정을 기존 순서로 고르고, :344의 becauseOf는 앞 4개만 남긴다(`BECAUSE_MAX`, :44). 이는 오래된 원인으로 목록이 차는 설명과 일치하지만, 원인 선택을 바꾼 대조 실행으로 확정한 원인은 아니다. 엔진 담당에는 감사 효과를 유지하면서 이 결정이 누락되는 선택·병합 경로와 원인 상한을 검증하도록 요청한다. ‘감사가 없었다’, ‘선택이 무효과였다’로 분류하지 않는다.
+
+### 092/211: 늦은 7개 결정의 후속 dues 기록 자체가 보관 자료에 없다
+
+| 선택 | 결정 ID@tick |
+| --- | --- |
+| ck_evt_092:a | h-022834@350065 |
+| ck_evt_211:a | h-024261@373075 |
+| ck_evt_211:c | h-024777@382045 |
+| ck_evt_211:b | h-026011@401077 |
+| ck_evt_211:b | h-027319@420031 |
+| ck_evt_092:a | h-027390@421045 |
+| ck_evt_211:b | h-028626@440077 |
+
+각 3년 창에는 해당 결정의 because 연결뿐 아니라 `params.target === 'dues'`인 history가 어느 원인으로도 없다. 보관 history의 마지막 dues 결과는 `h-020166@309600`(stall_fee income 23, expense 0, because h-020165)이다. 원자료는 전체 ledger·매 tick 전체 상태를 보관하지 않았으므로 **이후 수수료가 없었다거나 방침이 무효과였다는 증거는 아니다**. `src/engine/decisionTrace.ts:466` 이후 수입 추적은 살아 있는 각 결정을 순회하므로 ‘새 답변이 이전 원인을 덮었다’만으로 설명해서도 안 된다. 엔진 담당에는 해당 구간 ledger와 dues 결과 생성 조건을 함께 남기는 제한 재현을 요청한다. 3년 이후 지속 방침의 연결 정책도 별도 판단 사항이다.
+
+이 인계는 위 단일 대조군의 실제 연결 공백을 기록한다. 코어·canonical 변경이나 소식 등급 전환을 포함하지 않으며, 권리·지속 세율 결정의 무게를 낮출 근거로 사용하지 않는다.
