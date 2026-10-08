@@ -206,7 +206,8 @@ test("Wave 40: one story beat per history record — its id the record's, the sa
       const house = houseRecordIds(state);
       assert.deepEqual(story.map(beat => beat.id).filter(id => id.startsWith("lord-moment:")),
         beats.filter(beat => (!willDue || beat.illustration !== "moment_attempted_will_change") && !house.has(beat.id.slice("lord-moment:".length))).map(beat => beat.id));
-      if (willDue) assert.equal(story.find(beat => beat.decision === "marriage_decision")?.illustration, "moment_attempted_will_change");
+      // SUIT-THREAD: the will's chip opens the lord screen's 혼인 page (no modal of its own).
+      if (willDue) assert.equal(story.find(beat => beat.kind === "lord_decision" && beat.screen?.screen === "marriage")?.illustration, "moment_attempted_will_change");
       for (const beat of beats.filter(entry => house.has(entry.id.slice("lord-moment:".length)))) {
         assert.ok(story.some(entry => entry.kind === "house_change" && entry.illustration === beat.illustration), `${beat.id}: its house card's chip wears it`);
       }

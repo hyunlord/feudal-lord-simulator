@@ -503,6 +503,9 @@
 .ledger-rights-house-name { font-weight: 700; }
 /* UI-7: the lord's household under the house (the person list's chips, not the register's bulleted lines). */
 .app-shell .ledger-rights .ledger-rights-household .person-list { margin: 0; padding: 0; }
+/* SUIT-THREAD: a kinsman's line ("영주의 사촌의 아내 · 25살") wraps in the register's narrow page; a chip of four lines
+   keeps its text off the button art's rim (2 px left the name on the frame, docs/verification/suit/suit-rest). */
+.app-shell .ledger-rights .ledger-rights-household .person-chip { padding-block: 6px; }
 .app-shell .ledger-rights h4 { margin: 6px 0 2px; font-size: 13px; }
 .app-shell .ledger-rights .ledger-rights-list { display: grid; gap: 4px; padding: 0; list-style: none; }
 .ledger-rights-list li { display: grid; grid-template-columns: 32px 1fr; grid-template-rows: auto auto; column-gap: 8px; align-items: center; }

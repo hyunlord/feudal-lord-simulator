@@ -4,6 +4,7 @@ import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { GameState } from "../../../engine/engine.types";
 import { estatesOf, LORD } from "../../../engine/estates";
 import { faction } from "../../../engine/factions";
+import { lordMattersDue } from "../../../engine/lordDue";
 import { marriageDecisionDue } from "../../../engine/marriage";
 import { diplomacyOf } from "../../../engine/negotiation";
 import { personDisplayName } from "../../../engine/persons";
@@ -98,6 +99,13 @@ export function marriageDecisionHead(state: GameState): MarriageDecisionHead | n
 const claimStrength = (state: GameState, claimId: string | undefined) =>
   claimId === undefined ? null : estatesOf(state).claims.find(claim => claim.id === claimId)?.strength ?? null;
 
+/** SUIT-THREAD: the will's deadline as the engine sets it (`lordMattersDue` dueTick), as its season; null: none given. */
+function willDueDate(state: GameState): string | null {
+  const plan = diplomacyOf(state).marriage;
+  const due = lordMattersDue(state).find(matter => matter.kind === "will_change" && matter.id === plan?.negotiationId)?.dueTick ?? null;
+  return due === null ? null : dateWord(state, due);
+}
+
 /** The father's will to answer, or the inheritance contested (its suit), as the lord's card shows it; null: neither. */
 export const marriageDecisionView = perState((state: GameState): MarriageDecisionView | null => {
   const head = marriageDecisionHead(state);
@@ -112,7 +120,7 @@ export const marriageDecisionView = perState((state: GameState): MarriageDecisio
   const choice = (id: "favour" | "support_promise" | "let_it_be", label: string, later: readonly string[] = []) =>
     answer(state, id, label, { type: "answer_will_change", choice: id }, id === "favour" ? COPY.refusedTreasury : COPY.refusedNow, { later });
   return { kind: "will_change", estate, card: { ...base, from: COPY.willFrom(estate), situation: COPY.willSituation(estate),
-    stake: COPY.willStake(estate, claimStrength(state, head.claimId) ?? 0), deadline: COPY.willDeadline,
+    stake: COPY.willStake(estate, claimStrength(state, head.claimId) ?? 0), deadline: COPY.willDeadline(willDueDate(state)),
     choices: [choice("favour", COPY.willFavour), choice("support_promise", COPY.willSupport), choice("let_it_be", COPY.willLetBe, [COPY.willLetBeLater])] } };
 });
 

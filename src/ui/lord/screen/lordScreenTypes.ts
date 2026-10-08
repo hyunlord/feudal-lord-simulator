@@ -19,8 +19,9 @@ export type LordPanelProps = {
   readonly onDecide?: (modal: LordDecisionModal) => void;
 };
 
-/** The decision cards a lord screen can open: an audit's finding, a home estate's petition, an off-map estate's petition. */
-export type LordDecisionModal = "audit_decision" | "estate_petition" | "estate_petition_offmap";
+/** The decision cards a lord screen can open: an audit's finding, a home estate's petition, an off-map estate's petition;
+ * SUIT-THREAD: the father's new will (the 혼인 page, where the will's chip opens). */
+export type LordDecisionModal = "audit_decision" | "estate_petition" | "estate_petition_offmap" | "marriage_decision";
 
 /** Whether the item opens: null, or the reason it is shut (player copy from a *.ko.ts), read from the game each render. */
 export type LordNavGate = (state: GameState) => string | null;
