@@ -8,6 +8,7 @@ import type { BuildingKind } from "../content/buildingConfig";
 import { HOLD_CLAIM_WEAKEN, HOLD_RELATION_DELTA } from "../content/registry/registryHoldConfig";
 import { V4_SENDER_FACTION } from "../content/registry/registryHoldCopy.ko";
 import { V4_COPY } from "../content/registry/v4Copy.generated";
+import { handlesPetitionContext } from "../content/registry/petitionContextConfig";
 import { V4_BLOCKED_ENTRIES, V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
 import { V4_HELD_ENTRIES } from "../content/registry/v4Holds.generated";
 import { TOO_FEW_CHOICES_LEFT, V4_HELD_CHOICES } from "../content/registry/registryHeldChoices.ko";
@@ -19,6 +20,8 @@ import { diplomacyOf } from "./negotiation";
 import { famineResponse, respondToPetition } from "./politics";
 import { hashSeed } from "./prng";
 import { evaluate, expressionProblem, holds, MISSING, type Scope } from "./registryDsl";
+import { readContextSnapshot } from "./registryContextSnapshot";
+import { petitionContext } from "./registryPetitionContext";
 import { stateCalendar } from "./scenarioState";
 import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
@@ -295,6 +298,9 @@ function candidates(binding: V4Binding, scope: Scope): readonly unknown[] {
  * Bindings needed only by some choices (`requiredForChoices`) are bound afterwards, first match, and may stay missing.
  */
 export function bindEntry(state: GameState, entry: V4Entry, fixed?: Readonly<Record<string, string>>): Readonly<Record<string, unknown>> | null {
+  const contextualEntry = handlesPetitionContext(entry.id);
+  const savedContext = fixed === undefined || !contextualEntry ? undefined : readContextSnapshot(fixed.authoredContext);
+  if (savedContext === null) return null;
   const order = bindingOrder(entry);
   const entryLevel = order.filter(name => entry.bindings[name]!.requiredForChoices === undefined);
   const choiceLevel = order.filter(name => entry.bindings[name]!.requiredForChoices !== undefined);
@@ -302,7 +308,13 @@ export function bindEntry(state: GameState, entry: V4Entry, fixed?: Readonly<Rec
   const assign = (index: number, bound: Readonly<Record<string, unknown>>): Readonly<Record<string, unknown>> | null => {
     if (index === entryLevel.length) {
       tries += 1;
-      return holds(entry.conditions, { state, bound, vars: {} }) ? bound : null;
+      let contextual = bound;
+      if (contextualEntry) {
+        const authoredContext = petitionContext(state, entry.id, bound, savedContext);
+        if (authoredContext === null) return null;
+        contextual = { ...bound, authoredContext };
+      }
+      return holds(entry.conditions, { state, bound: contextual, vars: {} }) ? contextual : null;
     }
     const name = entryLevel[index]!;
     for (const item of candidates(entry.bindings[name]!, { state, bound, vars: {} })) {
