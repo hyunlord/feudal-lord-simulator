@@ -23,7 +23,7 @@ import { DECISION_RELATION, NEIGHBOUR_FACTION_BY_ESTATE, POLICY_RELATION, SUBSID
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
 import { PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
 import { homePetitionFactions } from "../content/stewardPolicyConfig";
-import { HOME_ESTATE_ID } from "../content/estateConfig";
+import { HOME_ESTATE_ID, SUIT_DEFENCE } from "../content/estateConfig";
 import type { HomePetitionKind } from "./stewardship.types";
 import { estatesOf } from "./estates";
 import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
@@ -100,6 +100,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   // LM-E1 (TA-6): each condition the lord sets is a decision with a ledger id; the town's receipts point at it.
   set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
   file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
+  add_defence_evidence: "lawsuit", seek_defence_patron: "lawsuit", settle_suit: "lawsuit", hold_possession: "lawsuit", guard_possession: "lawsuit", appease_neighbour: "lawsuit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
   set_estate_oversight: "stewardship", set_exception_rules: "stewardship", set_standing_policy: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
   answer_registry_offer: "registry",
@@ -134,10 +135,10 @@ const registryV4Choices = (entryId: string): readonly string[] => V4_CHOICES.get
 
 function cardChoice(before: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): { readonly subjectId: string; readonly chosen: string; readonly alternatives: readonly string[] } {
   const field = (...names: string[]) => names.map(name => command[name]).find(value => value !== undefined);
-  const subjectId = String(field("occurrenceId", "petitionId", "auditId", "negotiationId", "promiseId", "suitId", "claimId", "estateId", "kind") ?? command.type);
+  const subjectId = String(field("occurrenceId", "petitionId", "auditId", "negotiationId", "promiseId", "suitId", "threatId", "claimId", "estateId", "kind") ?? command.type);
   const grant = command.grant === undefined ? undefined : command.grant === true ? "granted" : "refused";
   const accept = command.accept === undefined ? undefined : command.accept === true ? "accepted" : "declined";
-  const chosen = String(field("choiceId", "response", "choice", "setting", "mode", "evidence", "amount") ?? grant ?? accept ?? command.type);
+  const chosen = String(field("choiceId", "response", "choice", "setting", "mode", "evidence", "terms", "amount") ?? grant ?? accept ?? command.type);
   const occurrence = command.type === "answer_registry_offer" ? before.registry?.occurrences.find(entry => entry.id === command.occurrenceId) : undefined;
   const alternatives = occurrence?.source === "v4" ? (registryV4Choices(occurrence.entryId)) : grant !== undefined ? ["granted", "refused"] : [];
   return { subjectId, chosen, alternatives: alternatives.filter(entry => entry !== chosen) };
@@ -344,6 +345,18 @@ function decisionRelationDrafts(before: GameState, after: GameState, command: { 
     if (faction === undefined) return [];
     const delta = command.type === "file_suit" ? -DECISION_RELATION.suitFiled : -DECISION_RELATION.enforcement;
     return relationDraft(after, faction, delta, `${command.type}:${command.type === "file_suit" ? String(command.claimId) : suit!.id}`);
+  }
+  // DTR-23: the house that sues the lord, or threatens his piece, minds how he answers it.
+  if (command.type === "settle_suit" || command.type === "hold_possession") {
+    const suit = (after.estates?.suits ?? []).find(entry => entry.id === command.suitId);
+    if (suit === undefined) return [];
+    const delta = command.type === "hold_possession" ? -DECISION_RELATION.heldAgainst : suit.settled === "yield" ? DECISION_RELATION.concordYielded : DECISION_RELATION.concordPaid;
+    return relationDraft(after, suit.plaintiff, delta, `${command.type}:${suit.id}`);
+  }
+  if (command.type === "guard_possession" || command.type === "appease_neighbour") {
+    const threat = (before.estates?.threats ?? []).find(entry => entry.id === command.threatId);
+    if (threat === undefined) return [];
+    return relationDraft(after, threat.house, command.type === "guard_possession" ? -DECISION_RELATION.guarded : SUIT_DEFENCE.appeaseRelation, `${command.type}:${threat.id}`);
   }
   if (command.type === "set_estate_policy" && after.agency.policy !== before.agency.policy) {
     return Object.entries(POLICY_RELATION[after.agency.policy]).flatMap(([factionId, delta]) => relationDraft(after, factionId, delta, `set_estate_policy:${after.agency!.policy}`));
@@ -1185,10 +1198,28 @@ function estateDrafts(before: GameState, after: GameState): Draft[] {
   for (const suit of now.suits) {
     const old = was.suits.find(entry => entry.id === suit.id);
     if (old === undefined) { line("estate.suit_filed", { suit: suit.id, claim: suit.claimId, plaintiff: suit.plaintiff, defendant: suit.defendant, piece: suit.pieceId ?? "" }); continue; }
-    if (old.stage !== suit.stage && suit.verdict !== undefined && old.verdict === undefined) line("estate.suit_judged", { suit: suit.id, verdict: suit.verdict, piece: suit.pieceId ?? "" });
-    else if (old.stage !== suit.stage && suit.stage !== "closed") line("estate.suit_stage", { suit: suit.id, stage: suit.stage });
-    if (suit.enforcements > old.enforcements) line("estate.possession_enforced", { suit: suit.id, attempt: suit.enforcements, succeeded: suit.enforced === true ? 1 : 0, piece: suit.pieceId ?? "" });
+    // Astra lordplay2 ②: the judgment and the enforcement name the sides (who won, who lost).
+    const sides = { plaintiff: suit.plaintiff, defendant: suit.defendant };
+    if (old.stage !== suit.stage && suit.verdict !== undefined && old.verdict === undefined) line("estate.suit_judged", { suit: suit.id, verdict: suit.verdict, piece: suit.pieceId ?? "", ...sides });
+    else if (suit.settled !== undefined && old.settled === undefined) {
+      const concord = (after.ledger?.entries ?? []).filter(entry => entry.category === "lawsuit" && entry.sourceRefs.some(ref => ref.detail === `${suit.id}:concord`));
+      line("estate.suit_settled", { suit: suit.id, terms: suit.settled, piece: suit.pieceId ?? "", amount: concord.reduce((sum, entry) => sum - entry.amount, 0), ...sides });
+    } else if (old.stage !== suit.stage && suit.stage !== "closed") line("estate.suit_stage", { suit: suit.id, stage: suit.stage });
+    if (suit.enforcements > old.enforcements) line("estate.possession_enforced", { suit: suit.id, attempt: suit.enforcements, succeeded: suit.enforced === true ? 1 : 0, piece: suit.pieceId ?? "", ...sides });
+    if (suit.heldTick !== undefined && suit.heldTick !== old.heldTick) line("estate.possession_held", { suit: suit.id, hold: suit.hold ?? 0, piece: suit.pieceId ?? "", ...sides });
     if (suit.patron !== undefined && old.patron === undefined) line("estate.suit_patron", { suit: suit.id, patron: suit.patron, support: suit.patronSupport });
+  }
+  // DTR-23: a forcible entry forewarned, and how it ended — held off by the lord's men, called off for a gift, or come.
+  const threats = new Map((now.threats ?? []).map(threat => [threat.id, threat] as const));
+  for (const threat of now.threats ?? []) if (!(was.threats ?? []).some(entry => entry.id === threat.id)) {
+    line("estate.entry_threatened", { threat: threat.id, house: threat.house, estate: threat.estateId, piece: threat.pieceId });
+  }
+  for (const threat of was.threats ?? []) {
+    if (threats.has(threat.id)) continue;
+    const params = { threat: threat.id, house: threat.house, estate: threat.estateId, piece: threat.pieceId };
+    if (after.tick < threat.due) line("estate.entry_called_off", params);
+    else if (threat.guarded === true) line("estate.entry_repelled", params);
+    else if (now.estates.find(estate => estate.id === threat.estateId)?.pieces.find(piece => piece.id === threat.pieceId)?.possessor === threat.house) line("estate.entry_forced", params);
   }
   // FIX-13 (ES-11): a person off the map who died this year (a neighbour house's, a steward or candidate).
   for (const person of now.people) {

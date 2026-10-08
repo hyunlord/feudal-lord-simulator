@@ -34,6 +34,8 @@ export interface HistoryBecause {
   readonly decisionId: string;
   readonly key: string;
   readonly part?: true;
+  /** Astra lordplay2 ④ (PLAY-2): the decision prepared for it (a dearth's arrival) rather than caused it (absent: a cause). */
+  readonly relation?: "preparedness";
 }
 
 export type HistoryParams = Readonly<Record<string, number | string>>;

@@ -5,7 +5,7 @@
  * the history with the decisions behind them (`decisionTrace.ts`); this reads them, and the forecast's coming crises.
  */
 import { BALANCE } from "../content/balanceConfig";
-import { DAYS_PER_SEASON_FOR_CRISIS } from "../content/crisisConfig";
+import { DAYS_PER_SEASON_FOR_CRISIS, WEAK_POINT_PROJECT } from "../content/crisisConfig";
 import { foodReserveTicks } from "../population/foodReserve";
 import type { GameState } from "./engine.types";
 import { eventForecast } from "./eventSchedule";
@@ -22,6 +22,8 @@ export interface Preparedness {
   readonly policy: string | null;
   /** The weak points left: no granary, food under a season, households already short, no market to buy grain at. */
   readonly weakPoints: readonly ("no_granary" | "food_under_a_season" | "households_short" | "no_market")[];
+  /** PLAY-2: each weak point with the town project that answers it (null: none — households already short). */
+  readonly levers: readonly { readonly point: Preparedness["weakPoints"][number]; readonly project: string | null }[];
 }
 
 export function preparedness(state: GameState): Preparedness {
@@ -35,7 +37,8 @@ export function preparedness(state: GameState): Preparedness {
   if (foodDays !== null && foodDays < DAYS_PER_SEASON_FOR_CRISIS) weakPoints.push("food_under_a_season");
   if (shortHouseholds > 0) weakPoints.push("households_short");
   if (markets === 0) weakPoints.push("no_market");
-  return { foodDays, granaries, markets, shortHouseholds, population: state.population, policy: state.agency?.policy ?? null, weakPoints };
+  return { foodDays, granaries, markets, shortHouseholds, population: state.population, policy: state.agency?.policy ?? null, weakPoints,
+    levers: weakPoints.map(point => ({ point, project: WEAK_POINT_PROJECT[point] })) };
 }
 
 /**

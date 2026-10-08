@@ -22,6 +22,7 @@ import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import { largeSumLine, standingSetting } from "./decisionLayer";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
+import { possessionRentSeason } from "./possessionRent";
 import type { Estate } from "./estates.types";
 import { hairWords, populationTraits } from "./heredity";
 import { lordshipOf } from "./lordshipState";
@@ -400,6 +401,8 @@ export function advanceStewardship(state: GameState): GameState {
     next = ensureOversight(next);
     if (next.stewardship !== undefined) next = replaceDeadStewards(next);
     for (const estate of heldOffMapEstates(next)) next = estateSeason(next, estate);
+    // SUIT-THREAD (DTR-20): what the lord possesses without holding the estate whole yields him its rent.
+    next = possessionRentSeason(next);
   }
   if (michaelmasDay && next.stewardship !== undefined) next = michaelmas(next);
   if (next.stewardship !== undefined) next = lapseAudits(next);

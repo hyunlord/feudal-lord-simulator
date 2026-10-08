@@ -145,7 +145,8 @@ test("ES-7 a suit lost: no evidence, no patron — the defence holds the title, 
   assert.deepEqual([suit.verdict, suit.stage], ["defendant", "closed"]);
   assert.equal(estatesOf(state).claims[0]!.status, "lost");
   assert.equal(piece(state, "estate-neighbour-1", FISHERY).titleHolder, "neighbour_1");
-  assert.deepEqual(suitHearing(state, "suit-1"), { plaintiff: 45, defence: 80 });
+  // PLAY-2: the hearing says who leads and, closed, that nothing more can be added.
+  assert.deepEqual(suitHearing(state, "suit-1"), { plaintiff: 45, defence: 80, verdictNow: "defendant", reachable: false });
 });
 
 test("ES-7 a judgment moves the title only: the neighbour keeps the fishery until the possession is enforced", () => {

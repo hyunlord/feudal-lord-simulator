@@ -12,6 +12,14 @@ export const NW08_CONTESTED_SUCCESSION_PERMILLE = 250;
  */
 export const RECOVERY_CLAIM_PERMILLE = 100;
 /**
+ * DTR-21 (the user's judgement 2026-10-08, P-L3): a fresh taking is fought — within `RECENT_TAKING_YEARS` of the lord's
+ * possession a piece's old house claims it back this often a year (after, `RECOVERY_CLAIM_PERMILLE`); a house that keeps
+ * the piece's title while the lord only possesses it claims too, with a strong claim (it holds the title). Game estimates.
+ */
+export const RECENT_RECOVERY_PERMILLE = 250;
+export const RECENT_TAKING_YEARS = 10;
+export const TITLE_RECOVERY_STRENGTH = 70;
+/**
  * ER-21 (Paston): the house brings its old papers to the suit — each of these with this chance, permille (seed draw).
  * Without them its claim (inheritance 60) never passes the lord's defence (title 60 + hold 20); with a charter, or a deed
  * and witnesses, it does — about half its suits. Game estimate.

@@ -79,8 +79,17 @@ export const DECISION_WEIGHT_BALANCE = {
  * settings) are not matters that came to him; their keys (`TracedDecision.source`) start with these.
  */
 export const LORD_INITIATIVES = ["file_suit", "add_suit_evidence", "seek_suit_patron", "enforce_possession", "propose_marriage", "keep_promise",
+  "add_defence_evidence", "seek_defence_patron", "settle_suit", "hold_possession", "guard_possession", "appease_neighbour",
   "set_estate_oversight", "set_audit_mode", "set_exception_rules", "set_estate_policy", "set_project_subsidy", "set_market_dues", "order_timber",
   "set_standing_policy"] as const;
+
+/**
+ * Astra lordplay2 ⑤ (P-D5): a lasting change of a rate the lord's rights yield for years (the stall dues) is never the
+ * steward's to set in passing (a merchant house's first share, 1306: the steward lowered every stall's dues). He answers
+ * with another choice when the matter has one; a matter whose every answer that does something changes the rate comes
+ * to the lord (a weight of rights).
+ */
+export const LASTING_RATE_COMMANDS: readonly string[] = ["set_market_dues"];
 
 /** The weight a registry command carries by itself (the rest weigh by their sums, or nothing). */
 export const COMMAND_WEIGHT: Readonly<Record<string, DecisionWeight>> = {
@@ -91,6 +100,13 @@ export const COMMAND_WEIGHT: Readonly<Record<string, DecisionWeight>> = {
   file_suit: "rights",
   add_suit_evidence: "rights",
   enforce_possession: "land",
+  // DTR-23: the lord's defence of what he holds.
+  add_defence_evidence: "rights",
+  seek_defence_patron: "rights",
+  settle_suit: "land",
+  hold_possession: "land",
+  guard_possession: "land",
+  appease_neighbour: "land",
   // Who governs an estate and who is answerable for it is the land's matter (a steward does not judge his own audit).
   set_estate_oversight: "land",
   set_audit_mode: "land",

@@ -34,7 +34,7 @@ test("§1 a large sum is a tenth of the estate's year of income, a pound at leas
 });
 
 test("§1 the steward's pick by the standing policy: lightly the most given, strictly the least, as custom the least change; he holds only when nothing else is open", () => {
-  const choice = (id: string, spend: number, commands = ["set_market_dues"]): ChoiceWeighing => ({ id, commands, spend, senderDelta: 0, weights: [] });
+  const choice = (id: string, spend: number, commands = ["set_project_subsidy"]): ChoiceWeighing => ({ id, commands, spend, senderDelta: 0, weights: [] });
   const choices = [choice("a", 40), choice("b", -20), choice("c", 5), choice("hold", 0, [])];
   assert.equal(stewardPick("lenient", choices), "a");
   assert.equal(stewardPick("strict", choices), "b");
@@ -45,6 +45,10 @@ test("§1 the steward's pick by the standing policy: lightly the most given, str
   const paying = [{ ...choice("a", 40), paid: 40 }, choice("c", 5), choice("hold", 0, [])];
   assert.equal(stewardPick("lenient", paying, 30), "c");
   assert.equal(stewardPick("lenient", paying, 40), "a");
+  // LP2-E ⑤ (P-D5): never a lasting change of the stall dues — another answer, or (none) the lord's.
+  const dues = [choice("a", 40, ["set_market_dues"]), choice("c", 5), choice("hold", 0, [])];
+  assert.equal(stewardPick("lenient", dues), "c");
+  assert.equal(stewardPick("lenient", [choice("a", 40, ["set_market_dues"])]), null);
 });
 
 test("§1 v4.2 applied: the held events never run, and no running event offers a choice that only sets a subsidy or the policy", () => {

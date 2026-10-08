@@ -107,6 +107,8 @@ export interface MarriagePlan {
   readonly brotherInLawId?: string;
   /** The will-change attempt's answer, and the rival it named when it stood. */
   readonly willAnswer?: "favour" | "support_promise" | "let_it_be";
+  /** Astra lordplay2 ⑦: the will's answer came by its time running out (the lord did not answer). */
+  readonly willLapsed?: true;
   readonly rival?: HolderId;
   /** FIX-13 (NG-5b): the jointure's piece (the bride holds it for her life if the groom dies first), once settled. */
   readonly jointurePieceId?: string;

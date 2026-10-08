@@ -6,6 +6,7 @@
  * the town agency. Each command carries its kind (the slice's decision density counts them); `asked` marks a decision
  * that came to the lord (an answer), against one he took of himself.
  */
+import { entryDefenceCosts, entryThreats, suitDefenceActions } from "./suitDefence";
 import type { BuildingKind } from "../content/buildingConfig";
 import { WILL_FAVOUR_PENNIES } from "../content/diplomacyConfig";
 import { treasuryBalance } from "../ledger/ledger";
@@ -107,6 +108,36 @@ function suitMoves(state: GameState): LordBotCommand[] {
       for (const evidence of ["deed", "witnesses", "charter"] as const) moves.push({ kind: "suit", command: { type: "add_suit_evidence", suitId: suit.id, evidence } });
     } else if (suit.stage === "patronage" && suit.patron === undefined) moves.push({ kind: "suit", command: { type: "seek_suit_patron", suitId: suit.id, factionId: "bishop" } });
     else if (suit.stage === "enforcing") moves.push({ kind: "suit", command: { type: "enforce_possession", suitId: suit.id } });
+  }
+  return [...moves, ...defenceMoves(state)];
+}
+
+/**
+ * DTR-23: the lord sued defends — his papers while evidence is gathered, the bishop as patron, a concord when the
+ * hearing goes against him and its price is a quarter of the treasury or less, men to hold a possession a judgment went
+ * against while that costs a quarter of it or less; a forcible entry forewarned is guarded, else (dearer) appeased.
+ */
+function defenceMoves(state: GameState): LordBotCommand[] {
+  const moves: LordBotCommand[] = [];
+  const treasury = treasuryBalance(state);
+  for (const suit of estatesOf(state).suits) {
+    const actions = suitDefenceActions(state, suit.id);
+    if (actions === null) continue;
+    for (const evidence of actions.evidence) if (evidence.refusal === null && ["deed", "witnesses", "court_roll"].includes(evidence.kind)) {
+      moves.push({ kind: "suit", command: { type: "add_defence_evidence", suitId: suit.id, evidence: evidence.kind } });
+    }
+    const bishop = actions.patrons.find(patron => patron.factionId === "bishop");
+    if (bishop?.refusal === null) moves.push({ kind: "suit", command: { type: "seek_defence_patron", suitId: suit.id, factionId: "bishop" } });
+    const losing = actions.hearing !== null && actions.hearing.plaintiff > actions.hearing.defence;
+    if ((losing || suit.stage === "enforcing") && actions.concord.refusal === null && actions.concord.price * 4 <= treasury) {
+      moves.push({ kind: "suit", command: { type: "settle_suit", suitId: suit.id, terms: "pay" } });
+    } else if (actions.hold.refusal === null && actions.hold.cost * 4 <= treasury) moves.push({ kind: "suit", command: { type: "hold_possession", suitId: suit.id } });
+  }
+  for (const threat of entryThreats(state)) {
+    if (threat.guarded === true) continue;
+    const costs = entryDefenceCosts(state, threat);
+    if (costs.guard <= treasury) moves.push({ kind: "suit", command: { type: "guard_possession", threatId: threat.id } });
+    else if (costs.appease <= treasury) moves.push({ kind: "suit", command: { type: "appease_neighbour", threatId: threat.id } });
   }
   return moves;
 }

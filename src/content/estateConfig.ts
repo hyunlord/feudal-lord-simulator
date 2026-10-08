@@ -101,3 +101,42 @@ export const JUDGMENT_HOLD_PERMILLE = 750;
 export const ENFORCEMENT_BASE = 40;
 /** ES-7: each failed enforcement weakens the hold this much (the possessor's men tire, the sheriff comes again). */
 export const ENFORCEMENT_WEAR = 20;
+/**
+ * DTR-21 (the user's judgement 2026-10-08, A6; Paston's suits ate years of income): in lord mode a stage costs the
+ * larger of its fee (`SUIT_STAGE_COST`) and this share of the stake's year's worth (the piece's, or the estate's) —
+ * and the lord pays the filing and hearing as a defendant too. Game estimates.
+ */
+// DTR-22: the writ stays its fee (the filing): a stake-scaled filing (160d on the opening's fishery) shut the slice's
+// first suit to its 60d treasury; the counsel at the hearing and the sheriff's process carry the stake.
+export const SUIT_STAKE_PERMILLE: Readonly<Partial<Record<SuitStage, number>>> = { hearing: 300, enforcing: 150 };
+/** DTR-21: a possession the lord took lately holds weakly against the old house's enforcement — this, and this a year more. */
+export const FRESH_HOLD_BASE = 30;
+export const FRESH_HOLD_PER_YEAR = 5;
+
+/**
+ * DTR-23 (the user's decision 2026-10-08: the lord sued must have ways to defend; Astra lordplay2 friction 1). Game
+ * estimates, scaled to the stake's year like the stage costs (DTR-21).
+ * - A final concord (finalis concordia — the fine levied in the king's court that ended a dispute for good): the lord
+ *   pays the plaintiff `concordPermille` of the stake's year times the plaintiff's share of the hearing's two sides
+ *   (after a judgment against him, the whole) — doubled with a house past −60 — or yields the piece. It ends the
+ *   house's remembered right (DTR-22).
+ * - Holding on against a judgment: a season of men, `holdPermille` of the stake's year, adds `holdBoost` to the hold
+ *   (at most `holdCap`), once a year.
+ * - A forcible entry forewarned: men to guard the piece for the season (`guardPermille`), or a gift to the house
+ *   (`appeasePermille`, its relation +`appeaseRelation`). Entered, the lord has a novel disseisin: a claim of
+ *   `novelStrength` whose suit goes from its filing straight to the hearing.
+ */
+export const SUIT_DEFENCE = {
+  concordPermille: 1500,
+  concordHostileAt: -60,
+  concordHostileFactor: 2,
+  holdPermille: 150,
+  holdBoost: 25,
+  holdCap: 100,
+  guardPermille: 250,
+  appeasePermille: 200,
+  appeaseRelation: 15,
+  novelStrength: 80,
+  /** The least a concord, a season's guard or a gift costs (pennies). */
+  floor: 60,
+} as const;
