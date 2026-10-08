@@ -42,7 +42,7 @@ test("the charter card says the town may raise a market only when the answer rea
   const campaign = petitionStates().get("market_charter")!;
   assert.ok(has(campaign).every(([, said]) => !said));
   // The same petition in a lord-mode hamlet: each granting answer opens the market, refusing does not.
-  const lord = { ...campaign, agency: lordGame().agency };
+  const lord = { ...campaign, agency: lordGame().agency! };
   assert.equal(isBuildingOpen(lord, "market"), false);
   for (const [id, said] of has(lord)) assert.equal(said, id !== "refuse", id);
 });
