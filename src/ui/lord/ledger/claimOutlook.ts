@@ -8,8 +8,8 @@ import { gameReducer } from "../../../state/gameStore";
 // what filing a claim would do, read off the game's own command tried on the current state (the button's `file_suit`;
 // a refused command hands back the same state) — the treasury it takes and the hearing's two sides the engine gives for
 // the new suit (`suitHearing`). No cost or weight is read from estateConfig and no rule of the hearing is copied (P-D4):
-// a refused filing (the treasury short) says nothing of its cost, and who wins the hearing is not worded
-// (docs/requests/engine-play2-reads.md).
+// a refused filing (the treasury short) says nothing of its cost; the line says which side is larger now (the user's
+// rule, ledgerCopy `sidesNow`), not who wins (docs/requests/engine-play2-reads.md).
 
 export type ClaimOutlook = Readonly<{
   /** The pennies filing takes from the treasury now. */

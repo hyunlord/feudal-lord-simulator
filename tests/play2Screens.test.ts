@@ -67,7 +67,11 @@ test("PLAY-2 소송 걸기: the button says the treasury the filing takes, and t
   const row = ledgerView(lord, null)!.claims.find(entry => entry.id === claim.id)!;
   assert.equal(row.cost, moneyShort(outlook.cost));
   assert.equal(row.hearing, LORD_LEDGER_COPY.hearingIfFiled(outlook.sides!.plaintiff, outlook.sides!.defence));
-  assert.doesNotMatch(row.hearing!, /이깁|집니다|유리|불리/, "who would win is not worded (the engine gives no verdict now)");
+  // The user's rule (2026-10-08): which side is larger now, read off the two numbers; who wins is not worded.
+  assert.match(row.hearing!, outlook.sides!.defence > outlook.sides!.plaintiff ? /지금은 방어 쪽이 더 큽니다\. 증거나 후원을 더해야 합니다$/ : /지금은 (청구 쪽이 더 큽니다|두 쪽이 같습니다)/);
+  assert.doesNotMatch(row.hearing!, /이깁|집니다|유리|불리/);
+  assert.match(LORD_LEDGER_COPY.hearing(60, 50), /청구 쪽이 더 큽니다$/);
+  assert.match(LORD_LEDGER_COPY.hearing(50, 50), /두 쪽이 같습니다/);
   assert.equal(LORD_LEDGER_COPY.fileSuitCost(row.cost!), `소송 걸기 · ${row.cost}`);
   // The treasury short: the engine refuses, and the screen says the refusal, no cost it was not given.
   const poor = withTreasury(lord, 0);
