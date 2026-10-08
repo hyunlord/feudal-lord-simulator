@@ -203,23 +203,34 @@ for (const [name, state, story, title, root] of [["m1-moment-lost", load("suit-n
   const opened = await open(state, { ledger: false, delay: 0 });
   const chips = `.event-chip[data-story='${story}']`;
   await opened.page.locator(chips).first().waitFor({ timeout: 90_000 }).catch(() => undefined);
+  await opened.page.waitForTimeout(1500);
+  // The moment may already be up on its own (its card over the scene, story-delay 0): then it is the one shown.
+  const up = await opened.page.evaluate(wanted => {
+    const node = [...document.querySelectorAll("h2")].find(entry => entry.textContent === wanted)?.closest(".story-modal, .event-card") ?? null;
+    if (node !== null) node.setAttribute("data-capture", "card");
+    return node !== null;
+  }, title);
   const labels = await opened.page.evaluate(selector => [...document.querySelectorAll(selector)].map(node => node.getAttribute("aria-label")), chips);
-  for (let i = 0; i < 3 && await opened.page.locator(".story-modal-backdrop").count() > 0; i += 1) {
-    if (await opened.page.locator(".story-modal-later").count() > 0) await opened.page.locator(".story-modal-later").first().click({ timeout: 5_000 }).catch(() => undefined);
-    else await opened.page.keyboard.press("Escape");
-    await opened.page.waitForTimeout(500);
+  if (!up) {
+    for (let i = 0; i < 3 && await opened.page.locator(".story-modal-backdrop").count() > 0; i += 1) {
+      if (await opened.page.locator(".story-modal-later").count() > 0) await opened.page.locator(".story-modal-later").first().click({ timeout: 5_000 }).catch(() => undefined);
+      else await opened.page.keyboard.press("Escape");
+      await opened.page.waitForTimeout(500);
+    }
+    const index = labels.findIndex(label => label?.startsWith(title) === true);
+    if (index >= 0) { await opened.page.locator(chips).nth(index).click({ force: true }); await opened.page.waitForTimeout(600); }
+    else failures.push(`${name}: no chip titled ${title} among ${JSON.stringify(labels)}`);
   }
-  const index = labels.findIndex(label => label?.startsWith(title) === true);
-  if (index >= 0) { await opened.page.locator(chips).nth(index).click({ force: true }); await opened.page.waitForTimeout(600); }
-  else failures.push(`${name}: no chip titled ${title} among ${JSON.stringify(labels)}`);
+  const shown = up ? "[data-capture='card']" : root;
   const card = await opened.page.evaluate(selector => {
     const node = document.querySelector(selector);
     return node === null ? null : { title: node.querySelector("h2")?.textContent ?? null, lines: [...node.querySelectorAll("p, li")].map(entry => entry.textContent) };
-  }, root);
-  expect(name, card !== null, `no ${root}`);
+  }, shown);
+  expect(name, card !== null, `no ${shown}`);
   if (name === "m1-moment-lost") expect(name, card?.title === "이웃이 점유를 가져갔다", JSON.stringify(card));
   if (name === "k1-contested-ended") expect(name, card?.lines.some(line => /영주의 소송: 끝남 · 판결: 영주가 졌습니다/.test(line ?? "")) === true, JSON.stringify(card));
-  rows.push({ name, file: card === null ? null : await shot(opened.page, name, null, 1, root), card });
+  // A card not found: the whole view as it stood, to see what was up instead.
+  rows.push({ name, file: await shot(opened.page, name, null, 1, card === null ? "body" : shown), card, chips: labels });
   await opened.context.close();
 }
 
