@@ -959,3 +959,5 @@ Engine B seed3의1349년 중대 root5건과 성숙 등록 후속 공백14건을 
 Engine B [실제 답변 재현 도구](verification/eb-weight/answer-replay-contract.md)를 구현·제한 검증했다. 실제 전후 입력 보존, 중복 거부, 원본 관측 시점/전체 상태/기존 수집기 비교와 등록 답변 전수 결합을 검사하며27시험·타입·lint 통과다. 독립 소스 검토에서 차단 결함 없음. 실제 DGX 재현과 계절 보고 화면은 아직 검증 전이다.
 
 Engine B 공식 기하 재측정19행·380조건이 완료됐다(exit0,1356.1초). 측정 위반0·미개방0이지만 미등록 프레임4개가 남아 기하 병합 관문은 미해결이다. [실제 출력](verification/uiaudit1/geometry/EB-geometry-039b387f2-4e028b4/geometry.md)으로 summary만 갱신했으며 예외·기준선은 그대로다.
+
+Engine B 미제시29 중 시대 제외2개 외27개의 [조건·생산 경로 감사](verification/eb-freq/README.md)를 추가했다.033의 수락 후 미선정,147의 창 안 pace/draw 차단,061/077의 봇 방침과 사정 조건 불일치,029의 단일 실행 선택을 구분했다. 새 어댑터 결함이나 생산자 부재는 입증되지 않았으며 조건을 완화하지 않았다.
