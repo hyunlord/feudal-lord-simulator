@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-LMR3-slice-geometry-8c169d5",
- "commit": "8c169d59a20ee05f292c10ea832ef1257a2a22a3",
+ "run": "engine-SUIT-geometry-86e95f2",
+ "commit": "86e95f239a01f44e49583bd12696d7e909a76f3a",
  "dirty": false,
  "inputs": 2505,
- "inputHash": "0c464390d6b6aab4fe03cec91ebdae1c174a9baa235e74bdbda367f4cfb2c74b",
- "measuredAt": "2026-10-08T15:50:59.653Z",
- "report": "docs/verification/uiaudit1/geometry/render-LMR3-slice-geometry-8c169d5/geometry.json",
+ "inputHash": "f6ef3c86578c572cee91e6b2a03b1e0d73384a075e3a02527913e3e316022d09",
+ "measuredAt": "2026-10-08T16:19:59.336Z",
+ "report": "docs/verification/uiaudit1/geometry/engine-SUIT-geometry-86e95f2/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,13 +24,13 @@
    "extreme"
   ]
  },
- "rows": 3,
- "conditions": 50,
- "measured": 50,
+ "rows": 7,
+ "conditions": 140,
+ "measured": 140,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 19,
+ "warnings": 80,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -53,17 +53,37 @@
   "fixed": 0
  },
  "bySurface": {
-  "modal.slice-start": {
+  "modal.year-review": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.slice-end": {
+  "modal.history.records": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.slice-end.record": {
+  "modal.history.record-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.decision": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.factions": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.faction-page": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chronicle-book": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
