@@ -15,6 +15,11 @@ export const DECISION_RELATION = {
   /** The defendant's house, when the lord sues it or enforces a judgment on it. */
   suitFiled: 5,
   enforcement: 5,
+  /** DTR-23: the plaintiff house, when the lord settles with it (paid off, or yielded), holds on against it, or guards against its men. */
+  concordPaid: 5,
+  concordYielded: 10,
+  heldAgainst: 5,
+  guarded: 2,
 } as const;
 
 /** The neighbour factions by their estates (the third neighbour's house is no faction: its mind is the diplomacy's). */

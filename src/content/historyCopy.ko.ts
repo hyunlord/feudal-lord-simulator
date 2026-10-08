@@ -158,6 +158,8 @@ const CARD_COMMAND: Readonly<Record<string, string>> = {
   seek_suit_patron: "소송 후원자를 찾았다", enforce_possession: "판결대로 점유를 집행하려 했다", propose_marriage: "혼인을 청했다", answer_counter: "혼인 역제안에 답했다",
   keep_promise: "약속을 지켰다", answer_will_change: "유언 변경에 답했다", set_estate_oversight: "영지 감독을 정했다", set_exception_rules: "청지기 예외를 정했다",
   set_standing_policy: "청지기의 상시 방침을 정했다", set_audit_mode: "감사 방식을 정했다", answer_audit: "감사 결과에 답했다", order_timber: "목재 주문을 정했다",
+  add_defence_evidence: "걸려 온 소송에 증거를 냈다", seek_defence_patron: "걸려 온 소송에 후원자를 찾았다", settle_suit: "소송을 합의로 끝냈다",
+  hold_possession: "판결에 맞서 점유를 지키려 사람을 들였다", guard_possession: "땅을 지킬 사람을 들였다", appease_neighbour: "이웃 가문에 선물을 보내 달랬다",
 };
 /** DEC-TRACE §1: the standing policies' words. */
 const STANDING_WORDS: Readonly<Record<string, string>> = { customary: "관습대로", lenient: "가볍게", strict: "엄하게", lord: "영주에게" };
@@ -213,12 +215,15 @@ const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {
 
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "house.succession": params => `${n(params, "died") === 1 ? `영주 ${s(params, "deceased")}${josa(s(params, "deceased"), "이", "가")} ${n(params, "deadAge")}살에 죽고, ` : ""}${KIN_WORDS[s(params, "kin")] ?? "친족"} ${s(params, "heir")}(${n(params, "heirAge")}살)이 가문을 이었다`,
-  "crisis.arrived": params => `흉년이 닥쳤다 — 쌓인 식량 ${n(params, "foodDays") < 0 ? "알 수 없음" : `${n(params, "foodDays")}일분`}, 곡창 ${n(params, "granaries")}채${s(params, "weakPoints") === "" ? "" : `; 약점: ${s(params, "weakPoints").split(",").map(point => WEAK_POINTS[point] ?? point).join(", ")}`}`,
+  // Astra lordplay2 ④: the weather is no decision's doing — under a decision that prepared for it, the line says what that
+  // decision had left ready when it came (`prepared`), not that it brought it.
+  "crisis.arrived": params => `${n(params, "prepared") === 1 ? "흉년이 닥쳤을 때 이 결정이 남긴 대비" : "흉년이 닥쳤다 — 그때 대비"}: 쌓인 식량 ${n(params, "foodDays") < 0 ? "알 수 없음" : `${n(params, "foodDays")}일분`}, 곡창 ${n(params, "granaries")}채${s(params, "weakPoints") === "" ? "" : `; 약점: ${s(params, "weakPoints").split(",").map(point => WEAK_POINTS[point] ?? point).join(", ")}`}`,
   "decision.card": params => CARD_COMMAND[s(params, "command")] ?? "영주가 결정했다",
   "decision.steward": params => `청지기가 ${STANDING_WORDS[s(params, "policy")] ?? STANDING_WORDS.customary} 처리했다`,
   "decision.lapsed": () => "답하지 않은 채 기한이 지났다",
   consequence: params => CONSEQUENCE_WORDS[s(params, "key")]?.(params) ?? s(params, "key"),
-  "faction.act": params => `${factionDisplayName(s(params, "faction"), s(params, "name"))}: ${FACTION_ACT_WORDS[s(params, "act")] ?? s(params, "act")}`,
+  // DTR-23: the neighbours' large grudge is first a forcible entry forewarned (its detail names the threat).
+  "faction.act": params => `${factionDisplayName(s(params, "faction"), s(params, "name"))}: ${s(params, "threat") !== "" ? "영주가 쥔 땅에 힘으로 들어오려 사람을 모았다" : FACTION_ACT_WORDS[s(params, "act")] ?? s(params, "act")}`,
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
   "decision.petition_response": params => {
@@ -388,8 +393,45 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "estate.suit_filed": params => `${holderWord(s(params, "plaintiff"))}${josa(holderWord(s(params, "plaintiff")), "이", "가")} ${holderWord(s(params, "defendant"))}${josa(holderWord(s(params, "defendant")), "을", "를")} 상대로 ${pieceWord(s(params, "piece"), "")} 소송을 냈다`,
   "estate.suit_stage": params => `소송이 ${SUIT_STAGE_KO[s(params, "stage")] ?? s(params, "stage")} 단계로 넘어갔다`,
   "estate.suit_patron": params => `${holderWord(s(params, "patron"))}${josa(holderWord(s(params, "patron")), "이", "가")} 소송의 후원자가 되었다`,
-  "estate.suit_judged": params => s(params, "verdict") === "plaintiff" ? `판결이 났다: ${pieceWord(s(params, "piece"), "")}의 권원이 원고에게 넘어갔다(점유는 따로)` : `판결이 났다: 원고가 졌다`,
-  "estate.possession_enforced": params => n(params, "succeeded") === 1 ? `판결대로 ${pieceWord(s(params, "piece"), "")}의 점유를 넘겨받았다(${n(params, "attempt")}번째)` : `점유자가 버텼다: ${pieceWord(s(params, "piece"), "")} 점유 집행이 막혔다(${n(params, "attempt")}번째)`,
+  // Astra lordplay2 ②: who won and who lost — the lord's own suit, or a house's against him (older records: the lord's).
+  "estate.suit_judged": params => {
+    const piece = pieceWord(s(params, "piece"), "");
+    const plaintiff = s(params, "plaintiff");
+    if (plaintiff === "" || plaintiff === "lord") return s(params, "verdict") === "plaintiff" ? `판결이 났다: 영주가 이겼다 — ${piece}의 권원이 영주에게 넘어왔다(점유는 따로)` : "판결이 났다: 영주가 졌다";
+    const house = holderWord(plaintiff);
+    return s(params, "verdict") === "plaintiff" ? `판결이 났다: ${house}${josa(house, "이", "가")} 이겼다 — 영주가 ${piece}의 권원을 잃었다(점유는 따로)`
+      : `판결이 났다: ${house}${josa(house, "이", "가")} 졌다 — 영주가 ${piece}${josa(piece, "을", "를")} 지켰다`;
+  },
+  "estate.possession_enforced": params => {
+    const piece = pieceWord(s(params, "piece"), "");
+    const plaintiff = s(params, "plaintiff");
+    const nth = `(${n(params, "attempt")}번째)`;
+    if (plaintiff === "" || plaintiff === "lord") return n(params, "succeeded") === 1 ? `판결대로 영주가 ${piece}의 점유를 넘겨받았다${nth}` : `점유자가 버텼다: 영주의 ${piece} 점유 집행이 막혔다${nth}`;
+    const house = holderWord(plaintiff);
+    return n(params, "succeeded") === 1 ? `${house}${josa(house, "이", "가")} 판결대로 영주에게서 ${piece}의 점유를 가져갔다 — 영주가 잃었다${nth}`
+      : `영주가 버텼다: ${house}의 ${piece} 점유 집행을 막았다${nth}`;
+  },
+  // DTR-23: a final concord, the lord's hold, a forcible entry forewarned and how it ended.
+  "estate.suit_settled": params => {
+    const piece = pieceWord(s(params, "piece"), "");
+    const house = holderWord(s(params, "plaintiff"));
+    return s(params, "terms") === "pay" ? `합의로 끝났다: 영주가 ${house}에게 ${moneyWords(n(params, "amount"))}${josa(moneyWords(n(params, "amount")), "을", "를")} 주고 ${piece}${josa(piece, "을", "를")} 지켰다`
+      : `합의로 끝났다: 영주가 ${piece}${josa(piece, "을", "를")} ${house}에게 내주었다`;
+  },
+  "estate.possession_held": params => `영주가 사람을 들여 ${holderWord(s(params, "plaintiff"))}에게 맞서 ${pieceWord(s(params, "piece"), "")} 점유를 지킨다 — 버티는 힘 ${n(params, "hold")}`,
+  "estate.entry_threatened": params => {
+    const house = holderWord(s(params, "house"));
+    return `${house}${josa(house, "이", "가")} 사람을 모은다: 다음 철에 ${pieceWord(s(params, "piece"), "")}에 힘으로 들어오려 한다 — 지킬 사람을 들이거나 선물로 달랠 수 있다`;
+  },
+  "estate.entry_repelled": params => `${holderWord(s(params, "house"))}의 사람들이 왔으나 지키던 사람들에 막혀 ${pieceWord(s(params, "piece"), "")}에 들지 못했다`,
+  "estate.entry_called_off": params => {
+    const house = holderWord(s(params, "house"));
+    return `${house}${josa(house, "이", "가")} 선물을 받고 사람들을 물렸다`;
+  },
+  "estate.entry_forced": params => {
+    const house = holderWord(s(params, "house"));
+    return `${house}${josa(house, "이", "가")} 힘으로 ${pieceWord(s(params, "piece"), "")}에 들어왔다 — 영주가 점유를 잃었다. 점유 침탈 소송을 낼 수 있다`;
+  },
   "estate.title_changed": params => `${pieceWord(s(params, "piece"), s(params, "estate"))}의 권원이 ${holderWord(s(params, "from"))}에게서 ${holderWord(s(params, "to"))}에게 넘어갔다`,
   "estate.possession_changed": params => `${pieceWord(s(params, "piece"), s(params, "estate"))}의 점유가 ${holderWord(s(params, "from"))}에게서 ${holderWord(s(params, "to"))}에게 넘어갔다`,
   // LM-E1b (TA-6 ②): a subsidy refused — the subsidies together would pass a quarter of the treasury.

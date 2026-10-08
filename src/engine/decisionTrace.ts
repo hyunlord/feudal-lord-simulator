@@ -139,6 +139,7 @@ type Action = { readonly type: string } & Readonly<Record<string, unknown>>;
 const COMMAND_KIND: Readonly<Record<string, TracedDecisionKind>> = {
   answer_registry_offer: "registry", answer_estate_petition: "estate_petition", petition_response: "chapter_petition", famine_response: "famine",
   file_suit: "suit", add_suit_evidence: "suit", seek_suit_patron: "suit", enforce_possession: "suit",
+  add_defence_evidence: "suit", seek_defence_patron: "suit", settle_suit: "suit", hold_possession: "suit", guard_possession: "suit", appease_neighbour: "suit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
   set_estate_oversight: "oversight", set_audit_mode: "oversight", set_exception_rules: "oversight", answer_audit: "audit",
   set_estate_policy: "policy", set_project_subsidy: "subsidy", set_market_dues: "dues", order_timber: "timber", set_standing_policy: "standing_policy",
@@ -275,6 +276,12 @@ function tickDecisions(before: GameState, after: GameState): GameState {
     if (chapterRegistryOccurrence(after, petition) !== undefined) continue;
     next = tickDecision(next, { tick: after.tick, by: "lord", kind: "chapter_petition", lapsed: true, source: `petition:${petition.defId}:expired`,
       weights: ["crisis"], targets: changedTargets(before, after) }, { subjectId: petition.id, chosen: "lapsed", alternatives: [...(petition.options ?? [])] });
+  }
+  // Astra lordplay2 ⑦: the will's answer left to its time — a silence, not the lord's "let it be".
+  const plan = after.diplomacy?.marriage;
+  if (plan?.willLapsed === true && before.diplomacy?.marriage?.willLapsed !== true) {
+    next = tickDecision(next, { tick: after.tick, by: "lord", kind: "marriage", lapsed: true, source: "answer_will_change:lapsed", weights: ["inheritance"],
+      targets: [`negotiation:${plan.negotiationId}`] }, { subjectId: plan.negotiationId, chosen: "lapsed", alternatives: ["favour", "support_promise", "let_it_be"] });
   }
   return next;
 }
@@ -501,7 +508,7 @@ function crises(before: GameState, after: GameState, state: GameState): GameStat
       const prepared = traceOf(next).decisions.filter(decision => next.tick - decision.tick <= 2 * YEAR && decision.targets.some(target => PREPARES.test(target))).map(decision => decision.id);
       next = appendHistoryRecords(next, [{ tick: next.tick, kind: "event", template: "crisis.arrived", subject: TOWN, severity: 2,
         params: { eventId: record.id, foodDays: prep.foodDays ?? -1, granaries: prep.granaries, markets: prep.markets, shortHouseholds: prep.shortHouseholds,
-          weakPoints: prep.weakPoints.join(","), policy: prep.policy ?? "" },
+          weakPoints: prep.weakPoints.join(","), policy: prep.policy ?? "", ...(prepared.length === 0 ? {} : { prepared: 1 }) },
         ...(prepared.length === 0 ? {} : { because: becauseOf(prepared, "crisis_prepared", true) }) }]);
     } else if (old.endTick === undefined && record.endTick !== undefined) {
       const arrived = next.history?.records.find(entry => entry.template === "crisis.arrived" && entry.params?.eventId === record.id);

@@ -14,13 +14,14 @@ import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
 import type { Claim, Estate, EstatesState, Evidence, RightPiece, Suit, SuitStage } from "./estates.types";
+import { advanceEntryThreats } from "./suitDefence";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 
 /** ES-7: why a suit command was refused (the screens say it; the state is unchanged). */
 export type SuitRefusal = "no_claim" | "not_open" | "own_title" | "treasury";
 
-function target(estates: EstatesState, estateId: string, pieceId: string | undefined): { readonly estate: Estate; readonly piece?: RightPiece } | null {
+export function suitTarget(estates: EstatesState, estateId: string, pieceId: string | undefined): { readonly estate: Estate; readonly piece?: RightPiece } | null {
   const estate = estates.estates.find(entry => entry.id === estateId);
   if (estate === undefined) return null;
   if (pieceId === undefined) return { estate };
@@ -37,8 +38,8 @@ function possessorOf(found: { readonly estate: Estate; readonly piece?: RightPie
 }
 
 /** DTR-21: what a suit's stake is worth a year — the piece's (a ruling's scope its share), or the off-map estate's. */
-function stakeYear(state: GameState, suit: Pick<Suit, "estateId" | "pieceId">): number {
-  const found = target(estatesOf(state), suit.estateId, suit.pieceId);
+export function stakeYear(state: GameState, suit: Pick<Suit, "estateId" | "pieceId">): number {
+  const found = suitTarget(estatesOf(state), suit.estateId, suit.pieceId);
   if (found === null) return 0;
   if (found.piece !== undefined) return found.piece.scope === undefined ? found.piece.annualValue : Math.round(found.piece.annualValue * found.piece.scope.sharePermille / 1000);
   return found.estate.offMap ? found.estate.annualValue : 0;
@@ -71,12 +72,12 @@ function pay(state: GameState, suit: Suit, amount: number, stage: string, defenc
   return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
 }
 
-function withSuit(state: GameState, suit: Suit): GameState {
+export function withSuit(state: GameState, suit: Suit): GameState {
   const estates = estatesOf(state);
   return { ...state, estates: { ...estates, suits: estates.suits.map(entry => entry.id === suit.id ? suit : entry) } };
 }
 
-function withClaim(state: GameState, claim: Claim): GameState {
+export function withClaim(state: GameState, claim: Claim): GameState {
   const estates = estatesOf(state);
   return { ...state, estates: { ...estates, claims: estates.claims.map(entry => entry.id === claim.id ? claim : entry) } };
 }
@@ -87,7 +88,7 @@ export function fileSuitRefusal(state: GameState, claimId: string): SuitRefusal 
   const claim = estates.claims.find(entry => entry.id === claimId);
   if (claim === undefined) return "no_claim";
   if (claim.status !== "open") return "not_open";
-  const found = target(estates, claim.estateId, claim.pieceId);
+  const found = suitTarget(estates, claim.estateId, claim.pieceId);
   if (found === null) return "no_claim";
   // DTR-21: a title holder out of possession sues the possessor; one who holds both has nothing to sue for.
   if (titleOf(found) === claim.claimant && possessorOf(found) === claim.claimant) return "own_title";
@@ -100,10 +101,11 @@ export function fileSuit(state: GameState, claimId: string): GameState {
   if (fileSuitRefusal(state, claimId) !== null) return state;
   const estates = estatesOf(state);
   const claim = estates.claims.find(entry => entry.id === claimId)!;
-  const found = target(estates, claim.estateId, claim.pieceId)!;
+  const found = suitTarget(estates, claim.estateId, claim.pieceId)!;
   const defendant = titleOf(found) === claim.claimant ? possessorOf(found) : titleOf(found);
   const suit: Suit = { id: `suit-${estates.nextSuit}`, claimId, plaintiff: claim.claimant, defendant, estateId: claim.estateId,
-    ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: "filed", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: 0 };
+    ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: "filed", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: 0,
+    ...(claim.novel === true ? { fast: true as const } : {}) };
   const fee = suitStageCost(state, suit, "filed");
   const charged = pay(state, suit, fee, "filed");
   const paid = charged === null ? null : pay(charged, suit, fee, "filed", true);
@@ -139,12 +141,25 @@ export function suitHearing(state: GameState, suitId: string): { readonly plaint
   const estates = estatesOf(state);
   const suit = estates.suits.find(entry => entry.id === suitId);
   const claim = estates.claims.find(entry => entry.id === suit?.claimId);
-  const found = suit === undefined ? null : target(estates, suit.estateId, suit.pieceId);
+  const found = suit === undefined ? null : suitTarget(estates, suit.estateId, suit.pieceId);
   if (suit === undefined || claim === undefined || found === null) return null;
   const plaintiff = claim.strength + claim.evidence.reduce((sum, entry) => sum + entry.weight, 0) + suit.patronSupport;
+  // DTR-23: the lord sued brings his own evidence and patron.
   const defence = Math.floor(found.estate.titleStrength * DEFENCE_TITLE_PERMILLE / 1000)
-    + Math.floor(found.estate.possessionStrength * DEFENCE_POSSESSION_PERMILLE / 1000);
+    + Math.floor(found.estate.possessionStrength * DEFENCE_POSSESSION_PERMILLE / 1000)
+    + (suit.defenceEvidence ?? []).reduce((sum, entry) => sum + entry.weight, 0) + (suit.defenceSupport ?? 0);
   return { plaintiff, defence };
+}
+
+/**
+ * DTR-22 (S1): a title the lord wins from a house leaves that house a remembered right (`former`); a house that wins its
+ * own back ends it. Another's judgment between houses leaves none of the lord's concern.
+ */
+function remembered<T extends { readonly former?: string }>(held: T, from: string, to: string): T {
+  if (to === LORD && from !== LORD) return { ...held, former: from };
+  if (held.former === undefined || held.former !== to) return held;
+  const { former: _former, ...rest } = held;
+  return rest as T;
 }
 
 /** ES-7: the judgment — for the plaintiff the title moves to it, and only the title (the possessor stays). */
@@ -153,14 +168,14 @@ function judge(state: GameState, suit: Suit): GameState {
   const won = hearing.plaintiff > hearing.defence;
   const estates = estatesOf(state);
   const claim = estates.claims.find(entry => entry.id === suit.claimId)!;
-  const found = target(estates, suit.estateId, suit.pieceId)!;
+  const found = suitTarget(estates, suit.estateId, suit.pieceId)!;
   let next = withClaim(state, { ...claim, status: won ? "won" : "lost" });
   if (won) {
     const moved = estatesOf(next);
     const estate = found.estate;
-    const changed: Estate = found.piece === undefined ? { ...estate, titleHolder: suit.plaintiff }
+    const changed: Estate = found.piece === undefined ? remembered({ ...estate, titleHolder: suit.plaintiff }, estate.titleHolder, suit.plaintiff)
       : { ...estate, pieces: estate.pieces.map(piece => piece.id === found.piece!.id
-        ? { ...piece, titleHolder: suit.plaintiff, ...(piece.possessor === suit.plaintiff ? {} : { loss: "held_against_judgment" as const }) } : piece) };
+        ? remembered({ ...piece, titleHolder: suit.plaintiff, ...(piece.possessor === suit.plaintiff ? {} : { loss: "held_against_judgment" as const }) }, piece.titleHolder, suit.plaintiff) : piece) };
     next = { ...next, estates: { ...moved, estates: moved.estates.map(entry => entry.id === estate.id ? changed : entry) } };
   }
   const holding = won && possessorOf(found) !== suit.plaintiff;
@@ -229,19 +244,23 @@ export function suitActions(state: GameState, suitId: string): SuitActions | nul
   const enforceCost = suitStageCost(state, suit, "enforcing");
   const enforce = suit.stage === "closed" ? null : { cost: enforceCost, force: ENFORCEMENT_BASE + suit.patronSupport, hold: suit.hold ?? 0,
     refusal: suit.stage !== "enforcing" ? "stage" as const : enforceCost > 0 && treasury < enforceCost ? "treasury" as const : null };
-  const nextStageTick = NEXT_STAGE[suit.stage] === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON;
+  const nextStageTick = nextSuitStage(suit) === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON;
   return { evidence, patrons, enforce, nextStageTick };
 }
 
 /** ES-7: the stage after each; a stage lasts one season at least, and the hearing waits for its fee. */
 const NEXT_STAGE: Readonly<Partial<Record<SuitStage, SuitStage>>> = { filed: "evidence", evidence: "patronage", patronage: "hearing", hearing: "judged" };
+/** DTR-23: a novel disseisin's track — its filing, then the hearing. */
+const FAST_NEXT_STAGE: Readonly<Partial<Record<SuitStage, SuitStage>>> = { filed: "hearing", hearing: "judged" };
+/** The stage after this suit's own (a novel disseisin's is shorter). */
+export const nextSuitStage = (suit: Pick<Suit, "stage" | "fast">): SuitStage | undefined => (suit.fast === true ? FAST_NEXT_STAGE : NEXT_STAGE)[suit.stage];
 
 /** ES-7: the suits' season, at each season's first tick (nothing with no stored estates or no suit going). */
 export function advanceSuits(state: GameState): GameState {
   if (state.estates === undefined || state.tick <= 0 || state.tick % SEASON !== 0) return state;
-  let next = state;
-  for (const suit of state.estates.suits) {
-    const stage = NEXT_STAGE[suit.stage];
+  let next = advanceEntryThreats(state);
+  for (const suit of estatesOf(next).suits) {
+    const stage = nextSuitStage(suit);
     if (stage === undefined || state.tick - suit.stageSince < SEASON) continue;
     if (stage === "judged") { next = judge(next, suit); continue; }
     const cost = suitStageCost(next, suit, stage);

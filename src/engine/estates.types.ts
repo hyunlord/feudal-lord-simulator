@@ -38,6 +38,11 @@ export interface RightPiece {
   readonly remainder?: HolderId;
   /** LM-E9 (ER-8, NE08): a ruling's scope on the piece — its share of the year's worth (permille), when and by which suit. */
   readonly scope?: { readonly sharePermille: number; readonly ruledTick: number; readonly suitId: string };
+  /**
+   * DTR-22 (S1, P-L3): the house a judgment took the title from — it keeps a remembered right and claims it back (its
+   * heir at once on a succession) until a final concord or its own judgment ends it.
+   */
+  readonly former?: HolderId;
 }
 
 /** ES-1: what an estate owes each year (pennies). */
@@ -69,6 +74,8 @@ export interface Estate {
   /** ES-8: an estate off the map (a neighbour's), with its house and family. */
   readonly offMap: boolean;
   readonly house?: { readonly name: string; readonly lordId: string; readonly familyIds: readonly string[]; readonly rank: "gentry" | "knight" | "baron" };
+  /** DTR-22 (S1): the house a judgment took the whole estate's title from (as `RightPiece.former`). */
+  readonly former?: HolderId;
 }
 
 /** ES-5: what a claim rests on. */
@@ -93,6 +100,8 @@ export interface Claim {
   readonly evidence: readonly Evidence[];
   readonly since: number;
   readonly status: "open" | "suing" | "won" | "lost" | "lapsed";
+  /** DTR-23: a claim of fresh dispossession (novel disseisin, a forcible entry) — its suit skips evidence and patronage. */
+  readonly novel?: true;
 }
 
 /** ES-7: the suit's track — filed, evidence, patronage, hearing, judgment; possession is enforced apart. */
@@ -118,6 +127,30 @@ export interface Suit {
   readonly enforced?: boolean;
   /** Pennies the plaintiff has spent on it. */
   readonly costs: number;
+  /** DTR-23: the lord as defendant — the evidence he brought, the patron he won over and its support. */
+  readonly defenceEvidence?: readonly Evidence[];
+  readonly defencePatron?: string;
+  readonly defenceSupport?: number;
+  /** DTR-23: ended by a final concord — the lord paid the plaintiff off, or yielded the piece. */
+  readonly settled?: "pay" | "yield";
+  /** DTR-23: the tick the lord last put men in to hold the possession against the plaintiff's enforcement. */
+  readonly heldTick?: number;
+  /** DTR-23: a novel disseisin's suit (filed, then the hearing). */
+  readonly fast?: true;
+}
+
+/**
+ * DTR-23 (S3, the ±60 large act, P-W2): a hostile house gathers men to enter a piece the lord possesses of its estate —
+ * forewarned a season ahead; the lord may guard it or appease the house, else the house enters at the season's turn.
+ */
+export interface EntryThreat {
+  readonly id: string;
+  readonly house: HolderId;
+  readonly estateId: string;
+  readonly pieceId: string;
+  readonly tick: number;
+  readonly due: number;
+  readonly guarded?: true;
 }
 
 /** ES-1: the estates state — absent while the portfolio is the opening one (ES-9: no state until something differs). */
@@ -129,4 +162,6 @@ export interface EstatesState {
   readonly nextSuit: number;
   /** ES-8: the neighbour families not among the factions' people (the third neighbour's house). */
   readonly people: readonly Person[];
+  /** DTR-23: forcible entries forewarned (absent: none ever). */
+  readonly threats?: readonly EntryThreat[];
 }

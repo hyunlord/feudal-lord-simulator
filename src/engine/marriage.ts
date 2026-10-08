@@ -374,7 +374,11 @@ function firstChild(state: GameState, plan: MarriagePlan): GameState {
   const sex = hashSeed(state.seed, "marriage-child", ordinal) % 2 === 0 ? "male" as const : "female" as const;
   const traits = populationTraits(state.seed, "lord-child", ordinal);
   const order = lordshipOf(state).house.order;
-  const draft = { id, sex, classBand: "gentry" as const, build: traits.buildBias, occupation: "", tags: ["lord-family", `lord-house:${order}`], role: "child" as const, traits };
+  // Astra lordplay2 ⑥: the couple's child is the lord's child only when the lord is the groom; the child of his son or
+  // kinsman is kin of the house (its parents are its father and mother, not the lord and his wife).
+  const kin = groom === undefined || groom.role === "head" ? null : groom.role === "child" ? "grandchild" : `${groom.tags.find(tag => tag.startsWith("lord-kin:"))?.slice("lord-kin:".length) ?? "kin"}_child`;
+  const draft = { id, sex, classBand: "gentry" as const, build: traits.buildBias, occupation: "",
+    tags: ["lord-family", `lord-house:${order}`, ...(kin === null ? [] : [`lord-kin:${kin}`])], role: kin === null ? "child" as const : "kin" as const, traits };
   const child: Person = { ...draft, givenName: weightedName(sex === "male" ? MALE_GIVEN_NAMES : FEMALE_GIVEN_NAMES, hashSeed(state.seed, "lord-child", ordinal)),
     ...(groom?.surname === undefined ? {} : { surname: groom.surname }), birthYear: currentYear(state), householdId: MANOR_HOUSEHOLD, hair: hairWords(traits),
     alive: true, lineageId: groom?.lineageId ?? `lin:${id}`, motherId: plan.brideId, fatherId: plan.groomId,
@@ -515,13 +519,22 @@ function advanceMarriage(state: GameState): GameState {
     const tried = plan.brotherInLawId === undefined && hashSeed(state.seed, "marriage-will", plan.contractedTick) % 1000 < WILL_CHANGE_PERMILLE;
     return withPlan(state, { ...plan, ...(tried ? { stage: "will_change" as const } : {}), events: { ...ev, will_change: tried ? state.tick : -1 } });
   }
-  if (plan.stage === "will_change" && plan.willAnswer === undefined && since >= t.willChange + t.willAnswer) return answerWillChange(state, "let_it_be");
+  // Astra lordplay2 ⑦: unanswered by its time, the new will stands — marked as lapsed (the lord did not choose it).
+  if (plan.stage === "will_change" && plan.willAnswer === undefined && since >= t.willChange + t.willAnswer) {
+    const lapsed = answerWillChange(state, "let_it_be");
+    const after = diplomacyOf(lapsed).marriage;
+    return after === undefined ? lapsed : withPlan(lapsed, { ...after, willLapsed: true });
+  }
 
   if (plan.stage === "contested") {
     const estate = estatesOf(state).estates.find(entry => entry.id === MARRIAGE_ESTATE_ID);
     if (estate !== undefined && estate.titleHolder === LORD && estate.possessor === LORD) {
       return withPlan(deferredDebtDue(estateTo(state, MARRIAGE_ESTATE_ID, LORD), plan), { ...plan, stage: "inherited" });
     }
+    // Astra lordplay2 ③: the inheritance's suit lost (the claim cannot be sued on again) — the estate is lost, not
+    // still waiting for a suit ("아직 소송을 내지 않았습니다" after the judgment).
+    const claim = estatesOf(state).claims.find(entry => entry.id === plan.claimId);
+    if (claim !== undefined && (claim.status === "lost" || claim.status === "lapsed")) return withPlan(state, { ...plan, stage: "lost" });
   }
   return state;
 }

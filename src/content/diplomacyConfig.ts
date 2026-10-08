@@ -87,7 +87,8 @@ export const BOT_OFFER_TREASURY = 300;
 
 /** NG-8: the middle events after the contract (ticks from it) and their chances (permille, from the seed). */
 export const MARRIAGE_TIMES = {
-  brideArrives: 1000, childBorn: 4000, brotherInLaw: 6000, fatherIll: 12_000, willChange: 14_000, willAnswer: 1000, fatherDies: 18_000,
+  // Astra lordplay2 ⑦: the will's answer waits two seasons (one was lost among the season's news).
+  brideArrives: 1000, childBorn: 4000, brotherInLaw: 6000, fatherIll: 12_000, willChange: 14_000, willAnswer: 2000, fatherDies: 18_000,
 } as const;
 export const BROTHER_IN_LAW_PERMILLE = 300;
 export const WILL_CHANGE_PERMILLE = 500;
