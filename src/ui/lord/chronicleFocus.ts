@@ -16,6 +16,11 @@ export function openChronicleRecord(recordId: string, tick: number): void {
   platformServices().input.emit({ kind: "panel", panel: "chronicle" }, { target: "control" });
 }
 
+/** LM-R3 (the slice's end page): the chronicle opens on this record when the caller opens the chronicle modal over its page. */
+export function focusChronicleRecord(recordId: string, tick: number): void {
+  pending = { recordId, tick };
+}
+
 /** The record a receipt asked the chronicle to open on (null when none was asked). */
 export function chronicleFocus(): { readonly recordId: string; readonly tick: number } | null {
   return pending;

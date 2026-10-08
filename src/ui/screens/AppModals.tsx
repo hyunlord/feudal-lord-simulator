@@ -24,7 +24,12 @@ import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
 import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
-import { focusChronicleYears } from "../lord/chronicleFocus";
+import { focusChronicleRecord, focusChronicleYears } from "../lord/chronicleFocus";
+import { SliceEndPage, SliceStartPage } from "../slice/SlicePages";
+import { SLICE_COPY } from "../slice/sliceCopy.ko";
+import { sliceEnded } from "../slice/sliceDue";
+import { sliceEndView } from "../slice/sliceEndModel";
+import { sliceStartView } from "../slice/sliceStartModel";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { houseChangeView } from "../results/houseChange";
 import { HouseChangeCard, YearReviewCard } from "../results/ResultCards";
@@ -103,9 +108,14 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   // mode, A3) the season's change in the lord's house.
   const yearView = top === "year_review" ? yearCard(state) : null;
   const house = top === "house_change" ? houseChangeView(state) : null;
+  // LM-R3: the lord slice's opening page and its end (reopened from the chronicle and the pause menu once it has ended).
+  const sliceStart = top === "slice_start" ? sliceStartView(state) : null;
+  const sliceEnd = top === "slice_end" ? sliceEndView(state) : null;
+  const sliceOver = (top === "history" || top === "pause_menu") && sliceEnded(state);
   const lordGone = (top === "estate_petition" && homeView === null) || (top === "lord_request" && request === null)
     || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)
-    || (top === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null);
+    || (top === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null)
+    || (top === "slice_start" && sliceStart === null) || (top === "slice_end" && sliceEnd === null);
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
   const famineGone = famineView === null; const petitionGone = petitionView === null;
@@ -142,6 +152,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: offMap.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
     {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
       onChronicle={() => { focusChronicleYears(yearView.year, yearView.year); sendUi({ type: "push_modal", modal: "history" }); }} />}
+    {sliceStart === null ? null : <SliceStartPage view={sliceStart} onBegin={() => sendUi({ type: "pop_modal" })} />}
+    {sliceEnd === null ? null : <SliceEndPage state={state} view={sliceEnd} onContinue={() => sendUi({ type: "pop_modal" })}
+      onChronicle={() => { focusChronicleYears(sliceEnd.fromYear, sliceEnd.toYear); sendUi({ type: "push_modal", modal: "history" }); }}
+      onRecord={(recordId, tick) => { focusChronicleRecord(recordId, tick); sendUi({ type: "push_modal", modal: "history" }); }} />}
     {house === null ? null : <HouseChangeCard view={house} onContinue={() => sendUi({ type: "pop_modal" })}
       onNext={next => { sendUi({ type: "pop_modal" }); if (next.kind === "screen") onOpenLord?.(next.screen, next.focus); else onPerson(next.personId); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
@@ -156,7 +170,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onBiography={id => { onChroniclePerson(id); sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "history" }); }} /> : null}
     {top === "history" ? <ChronicleScreen state={state} initialPersonId={chroniclePersonId} onClose={() => { onChroniclePerson(null); sendUi({ type: "pop_modal" }); }}
       onBook={() => sendUi({ type: "push_modal", modal: "chronicle_book" })}
-      onEnding={endingWritten ? () => sendUi({ type: "push_modal", modal: "legacy_ending" }) : null}
+      onEnding={endingWritten ? () => sendUi({ type: "push_modal", modal: "legacy_ending" }) : sliceOver ? () => sendUi({ type: "push_modal", modal: "slice_end" }) : null}
+      {...(sliceOver && !endingWritten ? { endingLabel: SLICE_COPY.end.reopen } : {})}
       onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
     {top === "chapter_preview" ? (() => {
       // UI-8: the preview's chapter is always the one after the latest chapter end.
@@ -170,7 +185,9 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     })() : null}
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
       settings={<><Button type="button" className="pause-menu-book" onPress={() => sendUi({ type: "push_modal", modal: "chronicle_book" })}
-        variant="secondary"><UiIcon sheet="action" cell="log" />{LEGACY_SCREEN_COPY.book.open}</Button><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
+        variant="secondary"><UiIcon sheet="action" cell="log" />{LEGACY_SCREEN_COPY.book.open}</Button>
+        {sliceOver ? <Button type="button" className="pause-menu-slice-end" onPress={() => sendUi({ type: "push_modal", modal: "slice_end" })}
+          variant="secondary"><UiIcon sheet="action" cell="open" />{SLICE_COPY.end.reopen}</Button> : null}<TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
         <PresentationToggle preference="eventPause" /><PresentationToggle preference="weatherFx" /><PresentationToggle preference="rainOverlay" />
         <PresentationToggle preference="developerInfo" /><PresentationToggle preference="qaOverlay" />
         <Button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}

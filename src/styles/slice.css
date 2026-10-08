@@ -1,0 +1,26 @@
+/* LM-R3 phase 2a: the lord slice's opening page and its end (src/ui/slice/SlicePages.tsx) — the chapter page's frame
+   (hudShell.css .chronicle-page, .chapter-page-main): the lines scroll, the footer holds the buttons. Text 13–15 px,
+   nothing under 12; buttons 44 px (48 on touch). */
+.slice-page .chapter-page-scroll { gap: 8px; padding-right: 4px; }
+.slice-page h4 { margin: 0; font-size: 13px; }
+.slice-kicker { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--palette-ink-light); }
+.slice-part { display: grid; gap: 4px; min-width: 0; align-content: start; }
+.slice-part p, .slice-question { margin: 0; font-size: 14px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+.slice-lines { display: grid; gap: 3px; margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.slice-lines li { min-width: 0; }
+.slice-note { font-size: 12px; color: var(--palette-ink-light); }
+.slice-start-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; }
+.slice-start-heading { display: grid; gap: 2px; min-width: 0; }
+.slice-you { font-weight: 700; }
+.slice-neighbours li { display: grid; gap: 1px; }
+.slice-then-now .chronicle-columns { gap: 12px; }
+.slice-then-now .chronicle-maps { justify-items: start; }
+.slice-decisions { display: grid; gap: 8px; margin: 0; padding-left: 20px; }
+.slice-decisions > li { display: grid; gap: 3px; min-width: 0; font-size: 13px; }
+.slice-decision-head { display: grid; gap: 1px; }
+.slice-decision-head strong { font-size: 14px; }
+.slice-page .slice-record { justify-self: start; min-height: 44px; font-size: 13px; }
+.slice-year-lines { padding-left: 0; list-style: none; }
+.slice-question { font-weight: 700; padding-top: 4px; border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
+@media (pointer: coarse) { .slice-page .slice-record { min-height: 48px; } }
+@media (max-width: 720px) { .slice-page .chronicle-columns { grid-template-columns: minmax(0, 1fr); } }
