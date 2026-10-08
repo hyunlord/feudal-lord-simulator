@@ -27,7 +27,7 @@ import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "../
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { houseChangeView } from "../results/houseChange";
 import { HouseChangeCard, YearReviewCard } from "../results/ResultCards";
-import { lastYearReview } from "../results/yearReview";
+import { yearCard } from "../results/lordYearReview";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
 import { LegacyEndingScreen } from "../legacy/LegacyEndingScreen";
@@ -98,8 +98,9 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const marriage = top === "marriage_decision" ? marriageDecisionView(state) : null;
   const audit = top === "audit_decision" ? auditDecisionView(state) : null;
   const offMap = top === "estate_petition_offmap" ? offMapPetitionView(state) : null;
-  // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"); (lord mode, A3) the season's change in the lord's house.
-  const yearView = top === "year_review" ? lastYearReview(state) : null;
+  // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"; DEC-CARD-2: the engine's yearReview in lord mode); (lord
+  // mode, A3) the season's change in the lord's house.
+  const yearView = top === "year_review" ? yearCard(state) : null;
   const house = top === "house_change" ? houseChangeView(state) : null;
   const lordGone = (top === "estate_petition" && homeView === null) || (top === "lord_request" && request === null)
     || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)

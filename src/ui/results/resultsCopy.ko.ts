@@ -21,6 +21,9 @@ export const DECISION_SUBJECTS: Readonly<Record<string, string>> = {
 /** The home estate's petition answers as the faction records name them (`manor_petition:<kind>:<status>`). */
 const MANOR_STATUS: Readonly<Record<string, string>> = { granted: "들어줌", refused: "기각함", lapsed: "답하지 않아 기각으로 침" };
 
+/** DEC-CARD-2: who decided, in the thread's words (only the lord's own answer is "당신의 결정"). */
+const BY_WORDS: Readonly<Record<"lord" | "steward" | "lapsed", string>> = { lord: "당신의 결정", steward: "청지기의 처리", lapsed: "답하지 않은 일" };
+
 /** The faction reasons that name an answer the lord gave (P-C2: only those say "이 결정 때문에"). */
 const ANSWER_PREFIXES: ReadonlySet<string> = new Set(["petition", "famine", "manor_petition", "registry", "steward_punished"]);
 /** An answer's reason that is the lord's silence (an expired political petition, a lapsed home petition). */
@@ -36,8 +39,38 @@ export const RESULTS_COPY = {
     /** One metric against its forecast ("금고: 예측보다 £1 많음"). */
     fact: (metric: string, delta: string) => `${metric}: ${delta}`,
   },
+  /** DEC-CARD-2: "○○년 당신의 결정 때문에" — what followed a decision (the engine's thread, `traceInRange`). Only the
+   * lord's own answer says "당신의 결정"; the steward's answer and a silence say what they were (P-C2). */
+  trace: {
+    title: (year: number, by: "lord" | "steward" | "lapsed") => `${year}년 ${BY_WORDS[by]} 때문에`,
+    /** The chip's title: which decision ("1300년 당신의 결정 때문에: 시장 부담"), so two of one year read apart. */
+    chipTitle: (year: number, by: "lord" | "steward" | "lapsed", subject: string) => `${year}년 ${BY_WORDS[by]} 때문에: ${subject}`,
+    /** The record's line after the decision behind it ("1300년 당신의 결정 때문에 — …"); `part`: one cause among others. */
+    because: (year: number, by: "lord" | "steward" | "lapsed", part: boolean) => part ? `${year}년 ${BY_WORDS[by]}도 한몫해` : `${year}년 ${BY_WORDS[by]} 때문에`,
+    prefixed: (because: string, sentence: string) => `${because} — ${sentence}`,
+    part: (sentence: string) => `${sentence} (여러 까닭 가운데 하나)`,
+    /** What the decision was about and its answer ("장원 청원 '공동 목초지': 들어준다"). */
+    about: (subject: string, answer: string | null) => answer === null || answer === "" ? subject : `${subject}: ${answer}`,
+    /** The steward's answer or a silence: the subject and the engine's own sentence ("… — 청지기가 관습대로 처리했다 (들어줌)"). */
+    aboutBy: (subject: string, sentence: string, answer: string | null) => `${subject} — ${sentence}${answer === null ? "" : ` (${answer})`}`,
+    dated: (date: string, line: string) => `${date} — ${line}`,
+    manor: (title: string) => `장원 청원 '${title}'`,
+    estate: (title: string) => `영지 청원 '${title}'`,
+    answers: { granted: "들어준다", refused: "물리친다", lapsed: "답하지 않았다" } as Readonly<Record<string, string>>,
+    stewardAnswers: { granted: "들어줌", refused: "물리침" } as Readonly<Record<string, string>>,
+    feeling: (faction: string, feels: string) => `${faction}: ${feels}`,
+    advice: "연대기에서 그 결정과, 그 뒤에 일어난 일을 모두 볼 수 있습니다. 여러 까닭 가운데 하나였던 일은 그렇게 적혀 있습니다.",
+    openLabel: (title: string) => `${title} — 연대기에서 그 결정 보기`,
+  },
   year: {
     title: (year: number) => `${year}년 — 올해 당신의 결정이 바꾼 것`,
+    /** DEC-CARD-2 (lord mode, the engine's yearReview). */
+    house: "가문의 일",
+    lordDecisions: "영주가 정한 일",
+    stewardDecisions: "청지기가 처리한 일",
+    threads: "결정 뒤에 일어난 일",
+    community: "공동체가 대신 지은 것",
+    stewardMinds: "청지기의 처리 때문에 — 세력의 마음",
     decisions: "큰 결정과 그 결과",
     answers: "영주가 답한 일",
     relations: "세력의 마음",
@@ -71,7 +104,6 @@ export const RESULTS_COPY = {
     rights: "바뀐 권리와 영지",
     promises: "따라온 약속",
     next: "다음에 할 일",
-    lordDied: (name: string, age: number) => `${name} 영주가 ${age}세로 세상을 떠났습니다.`,
     lordNow: (name: string, age: number) => `${name}(${age}세)`,
     guardian: (name: string) => `후견인 ${name}`,
     guardianOverlord: "상위 영주가 후견합니다",

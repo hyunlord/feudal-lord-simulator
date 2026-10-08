@@ -23,6 +23,7 @@ import { petitionPresentation } from "./petitionPresentation";
 import type { StoryIllustration } from "./storyArt";
 import { houseBeats, lordBeats } from "./lordStoryBeats";
 import { actualNews } from "./results/actualNews";
+import { traceNews } from "./results/decisionThread";
 import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { UiModal } from "./stateMachine/uiStateMachine";
 
@@ -53,7 +54,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // LM-R2 (lord mode): the lord's decision cards — the father's will, the contested inheritance, an audit, an off-map petition.
   | "lord_decision"
   // DEC-CARD: a big decision's actual written (every mode); (lord mode, Astra A3) a change in the lord's house.
-  | "decision_actual" | "house_change";
+  | "decision_actual" | "house_change"
+  // DEC-CARD-2 (lord mode): "○○년 당신의 결정 때문에" — what followed a decision this season (results/decisionThread.ts).
+  | "decision_trace";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -74,6 +77,8 @@ export type StoryBeat = Readonly<{
     | "house_change" | null;
   /** The chip's button when the card it opens is no decision (absent: [결정하기]). */
   openLabel?: string;
+  /** DEC-CARD-2: the chronicle record the card's [연대기에서 보기] opens on (the decision a consequence followed from). */
+  chronicle?: Readonly<{ recordId: string; tick: number; label: string }>;
 }>;
 
 /** The modal a decision beat's [결정하기] opens. */
@@ -106,7 +111,9 @@ const arableTile = (state: GameState) => {
 
 export function storyBeats(state: GameState): readonly StoryBeat[] {
   // DEC-CARD (Astra A3): a change in the lord's house first — before any petition of the same tick.
-  const beats: StoryBeat[] = [...houseBeats(state)];
+  // DEC-CARD-2: then what followed the lord's decisions this season — first in the list, so the season's newer chips
+  // (a petition, an offer) push them out of the three shown before anything else.
+  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state)];
   const copy = EVENT_STORY_COPY;
   const records = state.events?.records ?? [];
   const burning = state.events?.burning ?? [];
@@ -212,6 +219,18 @@ function decisionArt(kind: string, defId: string): StoryIllustration | null {
 function actualBeats(state: GameState): readonly StoryBeat[] {
   return actualNews(state).map(news => ({ id: `actual:${news.recordId}`, kind: "decision_actual", illustration: decisionArt(news.kind, news.defId), tile: null,
     decision: null, title: RESULTS_COPY.actual.title, line: news.line, facts: news.facts, advice: RESULTS_COPY.actual.advice }));
+}
+
+/**
+ * DEC-CARD-2 (lord mode): one chip per decision whose consequences landed this season — "1300년 당신의 결정 때문에", the
+ * decision's subject and answer, each consequence in the engine's sentence and the factions' moves in feeling words. Its
+ * card opens the decision in the chronicle (`trace:<decision id>:<season>`: a later season's consequences are new news).
+ */
+function traceBeats(state: GameState): readonly StoryBeat[] {
+  const season = Math.floor(state.tick / SEASON);
+  return traceNews(state).map(news => ({ id: `trace:${news.decisionId}:${season}`, kind: "decision_trace", illustration: null, tile: null, decision: null,
+    title: news.title, line: news.line, facts: news.facts, advice: RESULTS_COPY.trace.advice,
+    chronicle: { recordId: news.decisionId, tick: news.decisionTick, label: RESULTS_COPY.trace.openLabel(news.title) } }));
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */
