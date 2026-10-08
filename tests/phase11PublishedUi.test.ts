@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { advanceTick } from "../src/engine/tick";
@@ -17,6 +17,12 @@ const PRODUCTION_UI_FILES = [
   "src/ui/OverlayControls.tsx",
   "src/ui/SpeedControls.tsx",
   "src/ui/eraCeremonyModel.tsx",
+  // LM-R3: the game's logo and seal.
+  "src/ui/brand/GameLogo.tsx",
+  "src/ui/brand/SealMark.tsx",
+  "src/ui/brand/brandSvg.ts",
+  "src/ui/brand/brandArt.generated.ts",
+  "src/ui/brand/brandCopy.ko.ts",
 ] as const;
 
 test("published asset URLs retain the Vite repository base", () => {
@@ -85,6 +91,24 @@ test("production UI contains no known English user-facing literals outside the K
       assert.equal(source.includes(literal), false, `${file} contains ${literal}`);
     }
   }
+});
+
+// LM-R3 (TITLE-1, the dispatch ledger's allowance): the game is 인장과 가문 / Charter & Kin. The English name is allowed
+// only where the logo's label and the window title need it (src/ui/brand/brandCopy.ko.ts); the old names are gone.
+test("the game's name: 인장과 가문, and Charter & Kin only in the logo's label and the window title", async () => {
+  const { KO_UI } = await import("../src/content/locale.ko");
+  const { BRAND_COPY } = await import("../src/ui/brand/brandCopy.ko");
+  assert.equal(KO_UI.appName, "인장과 가문");
+  assert.equal(BRAND_COPY.logoLabel, "인장과 가문 (Charter & Kin)");
+  const sources = (await readdir(new URL("../src", import.meta.url), { recursive: true }))
+    .filter((file) => /\.(ts|tsx)$/.test(file)).map((file) => `src/${file}`);
+  const withEnglishName: string[] = [];
+  for (const file of sources) {
+    const source = await readFile(new URL(`../${file}`, import.meta.url), "utf8");
+    assert.equal(/Feudal Lord Simulator|봉건 영주 시뮬레이터/.test(source), false, `${file} keeps the old name`);
+    if (source.includes("Charter & Kin")) withEnglishName.push(file);
+  }
+  assert.deepEqual(withEnglishName, ["src/ui/brand/brandCopy.ko.ts"]);
 });
 
 test("desktop ledger lays primary and secondary facts across columns instead of clipping rows", async () => {

@@ -1,9 +1,10 @@
 // UI-3 title screen (the welcome), mode choice and the chapter loading screen.
 export const TITLE_COPY = {
-  heading: "영지에 오신 것을 환영합니다",
   // LR1-D7 (user 2026-10-05): the welcome says nothing a mode would contradict; building is the sandbox's, said after it.
   howTo: "땅을 고르고, 어떻게 다스릴지 고르세요.",
   camera: "마우스 휠로 확대, 드래그로 이동합니다.",
+  /** LM-R3: the sandbox's option to play today's goal campaign (the switch's name; its state is TUTORIAL_COPY's 켬 / 끔). */
+  sandboxGoal: "목표와 함께",
   /** After the sandbox starts (the build guidance the welcome no longer gives). */
   sandboxHint: "오른쪽 아래 [건설]에서 건물을 고르고, 지도를 눌러 지으세요.",
   /** After lord mode starts: the slice's goal (LORD_SLICE_GOAL_YEARS), which the welcome's two lines leave out. */

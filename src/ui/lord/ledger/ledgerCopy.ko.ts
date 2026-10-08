@@ -11,6 +11,14 @@ import type { RegistryTerm } from "../../../engine/registry.types";
 /** The ledger's four promise states (`due`: open, its deadline within a season). */
 export type PromiseState = "open" | "due" | "kept" | "broken";
 
+/**
+ * PLAY-2 (the user, 2026-10-08, docs/requests/engine-play2-reads.md): the hearing compares the two sides, so the line says
+ * which is larger now — read off the engine's two numbers, nothing else (who wins a tie is not said); it takes the
+ * engine's `verdictNow` once that comes.
+ */
+const sidesNow = (plaintiff: number, defence: number): string => plaintiff > defence ? "지금은 청구 쪽이 더 큽니다"
+  : plaintiff < defence ? "지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다" : "지금은 두 쪽이 같습니다. 증거나 후원을 더해야 앞섭니다";
+
 export const LORD_LEDGER_COPY = {
   closed: "영주 모드에서만 열립니다",
   regionLabel: "약속과 소송",
@@ -56,6 +64,11 @@ export const LORD_LEDGER_COPY = {
   claimLine: (basis: string, strength: number) => `근거 ${basis} · 힘 ${strength}`,
   fileSuit: "소송 걸기",
   fileSuitLabel: (what: string) => `소송 걸기: ${what}`,
+  /** PLAY-2: the button with the treasury the filing takes now (the game's own command tried on the state). */
+  fileSuitCost: (money: string) => `소송 걸기 · ${money}`,
+  fileSuitCostLabel: (what: string, money: string) => `소송 걸기: ${what} · 비용 ${money}`,
+  /** PLAY-2: the hearing's two sides for the suit filed now (the engine's suitHearing) and which is larger (sidesNow). */
+  hearingIfFiled: (plaintiff: number, defence: number) => `지금 걸면 심리에서 청구 쪽 ${plaintiff} · 방어 쪽 ${defence}. ${sidesNow(plaintiff, defence)}`,
   refusals: {
     no_claim: "청구가 없습니다", not_open: "이미 다룬 청구입니다", own_title: "이미 권원을 가진 쪽입니다", treasury: "금고가 모자랍니다",
   } satisfies Record<SuitRefusal, string>,
@@ -79,7 +92,7 @@ export const LORD_LEDGER_COPY = {
   patronSeek: "후원 청하기",
   patronLabel: (name: string) => `후원 청하기: ${name}`,
   hearingHeading: "심리",
-  hearing: (plaintiff: number, defence: number) => `청구 쪽 ${plaintiff} · 방어 쪽 ${defence}`,
+  hearing: (plaintiff: number, defence: number) => `청구 쪽 ${plaintiff} · 방어 쪽 ${defence}. ${sidesNow(plaintiff, defence)}`,
   hearingNeighbour: (plaintiff: number, defence: number) => `원고 쪽 ${plaintiff} · 영주 쪽 ${defence}`,
   verdict: { plaintiff: "판결: 원고가 이겼습니다", defendant: "판결: 원고가 졌습니다" } as const,
   enforceHeading: "점유 집행",

@@ -16,6 +16,10 @@ const HEAVY = ["h2", ".decision-card-court", ".decision-card-situation", ".decis
 const ANSWERS = [".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"] as const;
 
 export const DECISION_SURFACES: readonly SurfaceRow[] = [
+  // PLAY-2 (friction 8): the will's chip card — its deadline; the chip stays until answered (useStoryPresentation storyChips).
+  { id: "hud.event-card.will-kept", root: ".event-card[data-story='lord_decision']", frame: "css", scene: decisionScene("will-change"),
+    open: [{ wait: ".event-chip[data-story='lord_decision']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_decision']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-facts li", ".event-card-decide"], data: "the father's new will as its chip's card: the deadline, the decide button to its card" },
   { id: "modal.lord.will-change", ...CARD, root: card("will_change"), scene: decisionScene("will-change"),
     open: [{ story: card("will_change") }, { pause: 600 }],
     requires: [...HEAVY, ...ANSWERS],

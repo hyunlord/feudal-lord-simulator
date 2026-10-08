@@ -33,6 +33,8 @@ import "./styles/lordRegion.css";
 import "./styles/lordAdvice.css";
 // DEC-CARD-2: the steward's season report and the standing policies.
 import "./styles/lordSteward.css";
+// LM-R3: the welcome's logo and mode options, the house choice.
+import "./styles/welcomeHouse.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.
 import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";
@@ -42,8 +44,11 @@ import "./styles/uiSkin.css";
 import "./styles/uiKit.css";
 // LM-R1: the Wave 38 control pictures, loaded once; a failure swaps the P0 pictures back (src/ui/wave38Art.ts).
 import { preloadWave38Art } from "./ui/wave38Art";
+import { BRAND_COPY } from "./ui/brand/brandCopy.ko";
 
 preloadWave38Art();
+// LM-R3 (TITLE-1): the window title; index.html carries the same (scripts/brandArt.ts writes it from the copy).
+document.title = BRAND_COPY.windowTitle;
 
 const rootElement = document.getElementById("root");
 

@@ -53,7 +53,7 @@ export const INSPECTOR_COPY = {
     fillGranary: "방앗간과 밀밭을 확인하세요 — 곡창에 빵이 들어와야 합니다",
     connectGranary: "곡창과 이 집을 도로로 이어 주세요",
     granaryNear: "이 집 가까이에 곡창을 지으세요",
-    awaitDelivery: "배급꾼가 올 때까지 기다리세요",
+    awaitDelivery: "배급꾼이 올 때까지 기다리세요",
     wall: "성벽을 완성해 이 집을 감싸세요",
     connectRoad: "도로를 이어 이 건물을 길에 붙이세요",
     produceInput: { wheat: "밀밭·헛간을 늘려 밀을 확보하세요", logs: "벌목소를 늘려 통나무를 확보하세요",

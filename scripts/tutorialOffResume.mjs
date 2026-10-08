@@ -4,6 +4,7 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/tutorialOffResume.mjs <out.json> [--url ...] [--presses 11]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/tutorialOffResume.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/tutorialOffResume.mjs …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { writeFile } from 'node:fs/promises';
 
 const [out] = process.argv.slice(2);
@@ -27,7 +28,7 @@ const snapshot = () => page.evaluate(() => ({
   tick: window.__FEUDAL_PHASE10_PROOF__.state().tick,
 }));
 await page.goto(`${url}?phase10-proof=1`); await ready();
-await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click(); await page.waitForTimeout(800);
+await startFromWelcome(page, "core:campaign_market_town"); await page.waitForTimeout(800);
 for (let i = 0; i < presses; i += 1) { await page.locator('[data-tutorial-cta]').first().click(); await page.waitForTimeout(600); }
 await page.waitForTimeout(1_600);
 const beforeSave = await snapshot();

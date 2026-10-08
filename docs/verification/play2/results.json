@@ -1,0 +1,515 @@
+{
+ "rows": {
+  "ledger-claims-by-state": {
+   "claims": {
+    "offer-countered": [
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     }
+    ],
+    "promises": [
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     }
+    ],
+    "contested": [
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     },
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 55 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     }
+    ],
+    "marriage-contracted": [
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     },
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 50 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     }
+    ],
+    "will-change": [
+     {
+      "button": "소송 걸기",
+      "cost": false,
+      "disabled": true,
+      "hearing": null,
+      "refusal": "금고가 모자랍니다"
+     },
+     {
+      "button": "소송 걸기",
+      "cost": false,
+      "disabled": true,
+      "hearing": null,
+      "refusal": "금고가 모자랍니다"
+     },
+     {
+      "button": "소송 걸기",
+      "cost": false,
+      "disabled": true,
+      "hearing": null,
+      "refusal": "금고가 모자랍니다"
+     }
+    ],
+    "inherited": [
+     {
+      "button": "소송 걸기 · 5s",
+      "cost": true,
+      "disabled": false,
+      "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+      "refusal": null
+     }
+    ],
+    "neighbour-suit": []
+   },
+   "pass": true
+  },
+  "famine-lord": {
+   "state": "famine-answered",
+   "chip": true,
+   "card": {
+    "text": "대기근\n\n영주의 대응 — 구휼\n\n끝날 때: 3년 뒤 여름쯤\n남은 병목이 없습니다 — 곡창 3곳 · 장터 1곳 · 식량 259일치\n위치로\n조언\n닫기",
+    "buttons": [
+     "위치로",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 184,
+     "width": 360,
+     "height": 393,
+     "right": 1272,
+     "bottom": 577,
+     "inside": true
+    }
+   },
+   "bytes": 131501,
+   "advice": "가난한 가구가 빵을 살 수 없게 됩니다 — 구휼은 금고를, 방관은 사람을 잃습니다",
+   "adviceBytes": 132506,
+   "expected": [
+    "남은 병목이 없습니다 — 곡창 3곳 · 장터 1곳 · 식량 259일치"
+   ],
+   "pass": true
+  },
+  "famine-campaign": {
+   "state": "ui5 famine-arrival",
+   "modal": true,
+   "card": {
+    "text": "대기근\n\n영주의 대응 — 방관\n\n끝날 때: 4년 뒤 여름쯤\n남은 병목: 빵 값 때문에 빵을 살 수 없는 집 6곳 · 이미 굶는 집 6곳\n위치로\n조언\n닫기",
+    "buttons": [
+     "위치로",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 184,
+     "width": 360,
+     "height": 412,
+     "right": 1272,
+     "bottom": 596,
+     "inside": true
+    }
+   },
+   "chose": true,
+   "modalAfter": false,
+   "chip": true,
+   "bytes": 119212,
+   "pass": true
+  },
+  "year-chronicle": {
+   "state": "deccard2 year-loaded",
+   "opened": true,
+   "card": {
+    "text": "연대기\n기록\n세력\n지금 1301년 봄\n결정\n시대\n사건\n이정표\n인물\n연대기 책\n닫기\n계절 보기\n1300 포화\n1315 기근과 취약\n아직 오지 않음\n1337 전쟁 동원\n아직 오지 않음\n1348 역병 뒤의 일손 부족\n아직 오지 않음\n1380 재편과 전문화\n아직 오지 않음\n제1장\n결정\n사건\n시대\n이정표\n인물\n결산\n관계\n중요도\n이정표·큰 결정 이상\n부터\n1300\n까지\n1300\n인물\n모든 인물\n기록 31건\n1300년 겨울\n가구들이 구역 공사를 시작했다\n위치로\n그때 지도\n1300년 겨울\n소송 후원자를 찾았다\n그때 지도\n1300년 겨울\n주교가 소송의 후원자가 되었다\n그때 지도\n1300년 겨울\n1300년 당신의 결정 때문에 — 소송이 후원 단계로 넘어갔다\n그때 지도\n1300년 겨울\n소송이 후원 단계로 넘어갔다\n그때 지도\n1300년 가을\n가구들이 구역 공사를 시작했다\n위치로\n그때 지도\n1300년 가을\n1300년 당신의 결정 때문에 — 소송이 증거 단계로 넘어갔다\n그때 지도\n1300년 겨울\n\n가구들이 구역 공사를 시작했다\n\n그때 지도 · 1301년 봄\n풀밭\n숲\n물\n바위\n길\n집\n시설\n경작지\n지금과 나란히\n위치로",
+    "buttons": [
+     "기록",
+     "세력",
+     "연대기 책",
+     "닫기",
+     "",
+     "계절 보기",
+     "결정",
+     "사건",
+     "시대",
+     "이정표",
+     "인물",
+     "결산"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 0,
+     "top": 0,
+     "width": 1280,
+     "height": 800,
+     "right": 1280,
+     "bottom": 800,
+     "inside": true
+    }
+   },
+   "year": "1300",
+   "chronicle": true,
+   "from": "1300",
+   "to": "1300",
+   "records": "31",
+   "dates": [
+    "1300년 겨울",
+    "1300년 겨울",
+    "1300년 겨울",
+    "1300년 겨울",
+    "1300년 겨울",
+    "1300년 가을",
+    "1300년 가을"
+   ],
+   "bytes": 81077,
+   "backToCard": true,
+   "pass": true
+  },
+  "chronicle-titles": {
+   "state": "chronicle-cards",
+   "shown": true,
+   "card": {
+    "text": "1303년 겨울\n교회 궤짝에 맡긴 증서: 보관한 증서를 증거로 낸다\n그때 지도\n1303년 겨울\n소송에 증거를 냈다\n그때 지도\n1303년 겨울\n장원 청원 '사망 부과금(헤리엇)' — 청지기가 관습대로 처리했다 (물리침)\n그때 지도\n1303년 가을\n소송을 걸었다\n그때 지도\n1302년 겨울\n장원 청원 '교회 성단 수리' — 청지기가 관습대로 처리했다 (물리침)\n그때 지도\n1302년 가을\n장원 청원 '시장 좌판 다툼' — 청지기가 관습대로 처리했다 (물리침)\n그때 지도\n1302년 여름\n장원 청원 '이주민 정착 허가' — 청지기가 관습대로 처리했다 (들어줌)\n그때 지도",
+    "buttons": [
+     "1303년 겨울교회 궤짝에 맡긴 증서: 보관한 증서를 증거로 낸다",
+     "그때 지도",
+     "1303년 겨울소송에 증거를 냈다",
+     "그때 지도",
+     "1303년 겨울장원 청원 '사망 부과금(헤리엇)' — 청지기가 관습대로 처리했다 (물리침)",
+     "그때 지도",
+     "1303년 가을소송을 걸었다",
+     "그때 지도",
+     "1302년 겨울장원 청원 '교회 성단 수리' — 청지기가 관습대로 처리했다 (물리침)",
+     "그때 지도",
+     "1302년 가을장원 청원 '시장 좌판 다툼' — 청지기가 관습대로 처리했다 (물리침)",
+     "그때 지도"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 16,
+     "top": 231,
+     "width": 720,
+     "height": 557,
+     "right": 736,
+     "bottom": 788,
+     "inside": true
+    }
+   },
+   "lines": [
+    "교회 궤짝에 맡긴 증서: 보관한 증서를 증거로 낸다",
+    "소송에 증거를 냈다",
+    "장원 청원 '사망 부과금(헤리엇)' — 청지기가 관습대로 처리했다 (물리침)",
+    "소송을 걸었다",
+    "장원 청원 '교회 성단 수리' — 청지기가 관습대로 처리했다 (물리침)",
+    "장원 청원 '시장 좌판 다툼' — 청지기가 관습대로 처리했다 (물리침)",
+    "장원 청원 '이주민 정착 허가' — 청지기가 관습대로 처리했다 (들어줌)"
+   ],
+   "matched": [
+    "교회 궤짝에 맡긴 증서: 보관한 증서를 증거로 낸다",
+    "장원 청원 '사망 부과금(헤리엇)' — 청지기가 관습대로 처리했다 (물리침)",
+    "장원 청원 '교회 성단 수리' — 청지기가 관습대로 처리했다 (물리침)",
+    "장원 청원 '시장 좌판 다툼' — 청지기가 관습대로 처리했다 (물리침)",
+    "장원 청원 '이주민 정착 허가' — 청지기가 관습대로 처리했다 (들어줌)"
+   ],
+   "bytes": 82253,
+   "pass": true
+  },
+  "time-cluster": {
+   "card": {
+    "text": "×5\n·\n10\n설정",
+    "buttons": [
+     "",
+     "",
+     "",
+     "×5·10",
+     "자동 발전",
+     "튜토리얼 끔",
+     "소리 켬",
+     "곡선 지면",
+     "해상도 배율",
+     "색약 모드",
+     "지금 저장"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 1024,
+     "top": 8,
+     "width": 248,
+     "height": 64,
+     "right": 1272,
+     "bottom": 72,
+     "inside": true
+    }
+   },
+   "marks": {
+    "1": {
+     "mark": "×5·10",
+     "on": null,
+     "label": "5배속",
+     "smallest": 12,
+     "seal": {
+      "width": 44,
+      "height": 44
+     }
+    },
+    "5": {
+     "mark": "×5·10",
+     "on": "×5",
+     "label": "5배속 · 누르면 10배속",
+     "smallest": 12,
+     "seal": {
+      "width": 44,
+      "height": 44
+     }
+    },
+    "10": {
+     "mark": "×5·10",
+     "on": "10",
+     "label": "10배속 · 누르면 5배속",
+     "smallest": 12,
+     "seal": {
+      "width": 44,
+      "height": 44
+     }
+    }
+   },
+   "boxes": {
+    "this 1280x800": {
+     "left": 1024,
+     "top": 8,
+     "width": 248,
+     "height": 64,
+     "right": 1272,
+     "bottom": 72,
+     "inside": true
+    },
+    "marks": {
+     "1": {
+      "mark": "×5·10",
+      "on": null,
+      "label": "5배속",
+      "smallest": 12,
+      "seal": {
+       "width": 44,
+       "height": 44
+      }
+     },
+     "5": {
+      "mark": "×5·10",
+      "on": "×5",
+      "label": "5배속 · 누르면 10배속",
+      "smallest": 12,
+      "seal": {
+       "width": 44,
+       "height": 44
+      }
+     },
+     "10": {
+      "mark": "×5·10",
+      "on": "10",
+      "label": "10배속 · 누르면 5배속",
+      "smallest": 12,
+      "seal": {
+       "width": 44,
+       "height": 44
+      }
+     }
+    },
+    "this tablet-1180x820": {
+     "left": 908,
+     "top": 8,
+     "width": 264,
+     "height": 68,
+     "right": 1172,
+     "bottom": 76,
+     "inside": true
+    },
+    "base 1280x800": {
+     "left": 1024,
+     "top": 8,
+     "width": 248,
+     "height": 64,
+     "right": 1272,
+     "bottom": 72,
+     "inside": true
+    },
+    "base tablet-1180x820": {
+     "left": 908,
+     "top": 8,
+     "width": 264,
+     "height": 68,
+     "right": 1172,
+     "bottom": 76,
+     "inside": true
+    }
+   },
+   "sameBox": true,
+   "pass": true
+  },
+  "lord-wall": {
+   "state": "lmr2 offer-countered",
+   "shown": true,
+   "card": {
+    "text": "목책 둘레는 마을이 잡아 영주에게 청합니다. 선포 조건이 차면 청이 옵니다 — 아직 인구 12/60\n명령 › 장려 구역: 필지를 칠해 두면 마을이 그 안에 짓습니다",
+    "buttons": [],
+    "smallestText": 16,
+    "titles": 0,
+    "box": {
+     "left": 978,
+     "top": 246,
+     "width": 248,
+     "height": 120,
+     "right": 1226,
+     "bottom": 366,
+     "inside": true
+    }
+   },
+   "lines": [
+    "목책 둘레는 마을이 잡아 영주에게 청합니다. 선포 조건이 차면 청이 옵니다 — 아직 인구 12/60",
+    "명령 › 장려 구역: 필지를 칠해 두면 마을이 그 안에 짓습니다"
+   ],
+   "bytes": 149947,
+   "pass": true
+  },
+  "ledger-claim": {
+   "state": "offer-countered",
+   "claim": [
+    {
+     "button": "소송 걸기 · 5s",
+     "cost": true,
+     "disabled": false,
+     "hearing": "지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다",
+     "refusal": null
+    }
+   ],
+   "card": {
+    "text": "드 이브르쿠르 영지 · 어업권\n\n근거 하사 · 힘 45\n\n지금 걸면 심리에서 청구 쪽 45 · 방어 쪽 80. 지금은 방어 쪽이 더 큽니다. 증거나 후원을 더해야 합니다\n\n소송 걸기 · 5s",
+    "buttons": [
+     "소송 걸기 · 5s"
+    ],
+    "smallestText": 12,
+    "titles": 0,
+    "box": {
+     "left": 667,
+     "top": 439,
+     "width": 594,
+     "height": 84,
+     "right": 1261,
+     "bottom": 523,
+     "inside": true
+    }
+   },
+   "button": {
+    "text": "소송 걸기 · 5s",
+    "buttons": [],
+    "smallestText": null,
+    "titles": 0,
+    "box": {
+     "left": 1125,
+     "top": 459,
+     "width": 127,
+     "height": 44,
+     "right": 1252,
+     "bottom": 503,
+     "inside": true
+    }
+   },
+   "bytes": 115001,
+   "pass": true
+  },
+  "family-moment": {
+   "state": "moments first_child",
+   "chip": true,
+   "card": {
+    "text": "첫아이가 태어났다\n\n부부의 첫아이가 태어났다\n\n어머니 앨리스 드 케스트베일\n위치로\n연대기에서 보기\n조언\n닫기",
+    "buttons": [
+     "위치로",
+     "연대기에서 보기",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 176,
+     "width": 360,
+     "height": 319,
+     "right": 1272,
+     "bottom": 495,
+     "inside": true
+    }
+   },
+   "bytes": 150388,
+   "toChronicle": true,
+   "links": [
+    "mother:어머니 앨리스 드 케스트베일"
+   ],
+   "detailBytes": 83107,
+   "biography": true,
+   "pass": true
+  },
+  "will-pinned": {
+   "state": "lmr2 will-change",
+   "chip": true,
+   "card": {
+    "text": "늙은 영주의 새 유언\n\n드 헤로넬 영지의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 한 철 안에 답하지 않으면 새 유언이 그대로 섭니다.\n\n한 철 안에 답해야 합니다. 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.\n결정하기\n조언\n닫기",
+    "buttons": [
+     "결정하기",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 176,
+     "width": 360,
+     "height": 377,
+     "right": 1272,
+     "bottom": 553,
+     "inside": true
+    }
+   },
+   "bytes": 94303,
+   "cardAfter": false,
+   "chipAfter": true,
+   "afterBytes": 92128,
+   "pass": true
+  }
+ },
+ "bytes": 419926,
+ "errors": []
+}

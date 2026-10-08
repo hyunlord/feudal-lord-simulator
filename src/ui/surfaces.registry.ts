@@ -191,7 +191,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [], data: "seed 1 stone town: date, population, food, coin" },
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
-  { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], data: "the speed seals and the settings button" },
+  { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], requires: [".speed-seal-mark .speed-seal-step"],
+    data: "the speed seals (PLAY-2: the fast seal's mark ×5·10) and the settings button" },
   // QA-035: on a short screen the popover scrolls inside (it stops above the dock); the HUD it would meet hides while open.
   { id: "hud.settings-popover", root: ".command-popover", frame: "css", scene: TOWN, open: [{ click: ".settings-disclosure > summary" }, { pause: 500 }], scroll: "y",
     requires: [".save-controls .ui-btn"], data: "autoplay, tutorial, audio, save and render switches" },
@@ -216,6 +217,16 @@ export const SURFACES: readonly SurfaceRow[] = [
     scene: { kind: "state", set: "moments", name: "lawsuit_filed", tile: "house", zoom: 1.1, query: "&story-delay=0" },
     open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "the lord's suit filed: its Wave 40 picture and the ledger's sentence" },
+  // PLAY-2 (friction 9): the first child's moment names the child and the parents; its record opens with their biographies.
+  { id: "hud.event-card.family-moment", root: ".event-card[data-story='lord_moment']", frame: "css",
+    scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-facts li", ".event-card-chronicle"], data: "the first child: the ledger's sentence, the child and the parents named, the way to the chronicle" },
+  { id: "modal.history.family-links", root: ".chronicle-screen", frame: "flat", scrollParts: [".chronicle-list", ".chronicle-detail"],
+    scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 },
+      { click: ".event-card[data-story='lord_moment'] .event-card-chronicle" }, { wait: ".chronicle-detail [data-family]", timeout: 30_000 }, { pause: 900 }],
+    requires: [".chronicle-detail [data-family]"], data: "the first child's record in the chronicle (as modal.history.records: the detail scrolls): a biography button for each person its record names" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
     data: "the tutorial's first goal card" },
   { id: "hud.goal-help", extends: "hud.goal-chips", root: ".goal-card-help > p", frame: "css", scene: { kind: "new-game" }, numbers: false,
@@ -271,6 +282,11 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.goals.settlement", extends: "slot.goals", root: ".settlement-progress", frame: "flat", scene: TOWN,
     open: [{ click: ".settlement-progress > details > summary" }, { pause: 500 }], data: "the settlement's progress, opened" },
   { id: "slot.goals.era-console", extends: "slot.goals.settlement", root: ".era-console", frame: "flat", scene: TOWN, open: [], data: "the stone town's era console" },
+  // PLAY-2 (friction 10): lord mode's palisade guidance — the town's line and request, the lord's lever (lordWall).
+  { id: "slot.goals.era-console.lord", root: ".era-console", frame: "flat",
+    scene: { kind: "state", set: "lord2", name: "offer-countered", tile: "house", zoom: 1.1, query: QUIET },
+    open: [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }],
+    requires: [".era-requirements", ".era-proposal"], data: "the hamlet's era console in lord mode: the conditions, the town's line and its request, the lord's lever" },
   { id: "slot.population", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: TOWN,
     open: [{ click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { pause: 600 }], scroll: "y", data: "the town's population events" },
   { id: "slot.population.panel", extends: "slot.population", root: ".population-event-panel", frame: "flat", scene: TOWN, open: [], data: "the population log inside the slot" },
@@ -346,6 +362,15 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.famine", ...DECISION_CARD, root: ".story-modal.petition-card.decision-card.famine-decision", frameSlots: [],
     scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
     open: [{ story: ".famine-decision" }, { pause: 800 }], data: "chapter 1's famine decision (DEC-CARD: four answers, the steward beside the stake)" },
+  // PLAY-2: the famine answered on screen (방관) — its card's line, until when and the bottleneck left (famineAfter).
+  { id: "hud.event-card.famine-answered", root: ".event-card[data-story='famine']", frame: "css",
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
+    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer, then paused
+    // again (Space) so nothing else comes up, and any card that did is put away before the chip.
+    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" }, { key: "Digit1" }, { pause: 1500 },
+      { key: "Space" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" },
+      { wait: ".event-card[data-story='famine']", timeout: 10_000 }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
   { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
   { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
   { id: "modal.petition.ch4-reorg", ...DECISION_CARD, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },
@@ -369,7 +394,9 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.chapter-preview.goals", extends: "modal.chapter-preview", root: ".chapter-preview-goals", frame: "flat", scene: chapterScene("ui5", "chapter-end"), open: [],
     data: "chapter 2's goals on the preview" },
   { id: "modal.chapter-loading", root: ".chapter-loading", frame: "flat", scene: { kind: "title" }, numbers: false,
-    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-scenario='core:campaign_market_town']" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
+    // LM-R3: the campaign is the sandbox's "목표와 함께" option, and a mode press opens the house choice first.
+    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-sandbox-goal]" }, { click: ".welcome-parchment [data-scenario='core:campaign_market_town']" },
+      { click: ".welcome-parchment [data-house-start]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
   { id: "modal.person-card", extends: "map.selection.house", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART, scene: TOWN_CLOSE,
     frameSlots: [".person-card-emblem-cover"],
     portraitRing: { cx: 59.5, cy: 83.5, r: 43, inner: 33.5, face: ".person-card-portrait .person-portrait-layer", ornament: ".person-card-portrait .person-state-ornament" },
@@ -443,7 +470,11 @@ export const SURFACES: readonly SurfaceRow[] = [
 
   // --- Screens outside the town.
   { id: "screen.welcome", root: ".welcome-parchment", frame: "css", scene: { kind: "title" }, numbers: false, open: [{ pause: 800 }],
-    data: "a fresh profile's title parchment and mode buttons" },
+    data: "a fresh profile's title parchment: the logo, the lands, lord mode and the sandbox (its goal option)" },
+  // LM-R3 (HOUSE-1): the house choice after a mode press — the twenty names, the arms, the start.
+  { id: "screen.welcome.house", root: ".welcome-house", frame: "css", scene: { kind: "title" }, numbers: false,
+    open: [{ click: ".welcome-parchment [data-scenario='core:lord_slice']" }, { wait: ".welcome-house" }, { pause: 800 }],
+    data: "the welcome's house choice (lord mode, de Haverel by default)" },
   { id: "dev.ui-kit", root: ".ui-kit-gallery-frame", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [{ pause: 800 }],
     data: "the kit gallery's first frame" },
   { id: "dev.ui-kit.section", extends: "dev.ui-kit", root: ".ui-kit-gallery-section", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],

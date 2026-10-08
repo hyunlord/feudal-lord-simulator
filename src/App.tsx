@@ -11,6 +11,7 @@ import {
 } from "react";
 
 import { CauseLegend } from "./ui/CauseLegend";
+import { GameLogo } from "./ui/brand/GameLogo";
 import { KO_UI } from "./content/locale.ko";
 import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
@@ -103,6 +104,7 @@ import { LordScreen } from "./ui/lord/screen/LordScreen";
 import type { LordScreenId } from "./ui/lord/screen/lordScreenTypes";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
+import { DEFAULT_HOUSE_CHOICE, type HouseChoice } from "./ui/houseChoice";
 import { showChapterLoading, useChapterLoading } from "./ui/chapterLoadingStore";
 import { menAwayLine } from "./ui/lordshipModel";
 
@@ -467,19 +469,20 @@ export function App() {
   // LR1-D7: what the welcome no longer says, once the mode is chosen — the sandbox's build guidance, lord mode's goal.
   const showStartHint = (scenarioId: string) => setStartHint(scenarioId === SANDBOX_SCENARIO_ID ? TITLE_COPY.sandboxHint
     : scenarioId === LORD_SLICE_SCENARIO_ID ? TITLE_COPY.lordGoal(LORD_SLICE_GOAL_YEARS.min, LORD_SLICE_GOAL_YEARS.max) : null);
-  const startNewGameOverSave = (scenarioId: string, land: LandChoice) => {
+  // LM-R3: a start takes the house chosen on the welcome (HOUSE-1, MNR-3), the default house when none was.
+  const startNewGameOverSave = (scenarioId: string, land: LandChoice, house: HouseChoice) => {
     showStartHint(scenarioId);
     writeWelcomeDismissed();
     setWelcomeVisible(false);
-    dispatch(landStartCommand(scenarioId, land, true) ?? { type: "start_new_game", scenarioId });
+    dispatch(landStartCommand(scenarioId, land, true, house) ?? { type: "start_new_game", scenarioId });
     saveSystem.startNewGame();
     tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, null);
   };
-  const startScenarioWithoutSave = (scenarioId: string, land: LandChoice) => {
+  const startScenarioWithoutSave = (scenarioId: string, land: LandChoice, house: HouseChoice = DEFAULT_HOUSE_CHOICE) => {
     showStartHint(scenarioId);
     writeWelcomeDismissed();
     setWelcomeVisible(false);
-    const command = landStartCommand(scenarioId, land, false);
+    const command = landStartCommand(scenarioId, land, false, house);
     if (command !== null) dispatch(command);
     tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, command === null ? state : null);
   };
@@ -640,14 +643,16 @@ export function App() {
         onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView}
         {...(lord ? { onOpenLord: (screen: LordScreenId, focus: string) => openLord(screen, focus) } : {})} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
+        {/* LM-R3: the game's logo on its own vellum strip, above the chapter. */}
+        <div className="chapter-loading-logo"><GameLogo tone="on-light" width={320} /></div>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
         onDismiss={dismissWelcome}
         continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
-        onNewGame={(scenarioId, land) => { showChapterLoading(CHAPTER_LOADING_MS); startNewGameOverSave(scenarioId, land); }}
-        onChooseMode={(scenarioId, land) => { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(scenarioId, land); }}
+        onNewGame={(scenarioId, land, house) => { showChapterLoading(CHAPTER_LOADING_MS); startNewGameOverSave(scenarioId, land, house); }}
+        onChooseMode={(scenarioId, land, house) => { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(scenarioId, land, house); }}
         tutorialEnabled={welcomeTutorial}
         onTutorialChange={setWelcomeTutorial}
       /> : null}

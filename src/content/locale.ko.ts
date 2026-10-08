@@ -1,6 +1,6 @@
 import { MONEY_LABEL } from "./moneyCopy.ko";
 export const KO_UI = {
-  appName: "봉건 영주 시뮬레이터",
+  appName: "인장과 가문",
   informationRail: "영지 안내",
   courtConsole: "영주 명령대",
   openingGuidance: "시작 안내",
@@ -32,7 +32,9 @@ export const KO_UI = {
     // current fast speed and what a press does; from a slower speed it is the 5x seal ("5배속", as before).
     tenfold: "10배속",
     fastLabel: (current: 5 | 10 | null) => current === null ? "5배속" : current === 5 ? "5배속 · 누르면 10배속" : "10배속 · 누르면 5배속",
-    fastMark: (speed: 5 | 10) => `×${speed}`,
+    /** PLAY-2: the fast seal's mark "×5·10" — the first speed with its sign, the second after the dot. */
+    fastStep: (speed: 5 | 10, first: boolean) => first ? `×${speed}` : `${speed}`,
+    fastStepJoin: "·",
   },
   ceremony: {
     palisade: "목책마을 시대 선포식", dismissPalisade: "목책마을 선포식 닫기",

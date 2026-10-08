@@ -142,9 +142,12 @@ test("NAT-4 the fast seal's cycle: from pause, 1x or 3x to 5x; then 5x ↔ 10x; 
   for (const speed of [0, 1, 3] as const) assert.equal(sealPress(fastSeal, speed), 5, `from ${speed}`);
   assert.equal(sealPress(fastSeal, 5), 10);
   assert.equal(sealPress(fastSeal, 10), 5);
-  assert.deepEqual(sealView(fastSeal, 1), { label: "5배속", pressed: false, mark: "×5" });
-  assert.deepEqual(sealView(fastSeal, 5), { label: "5배속 · 누르면 10배속", pressed: true, mark: "×5" });
-  assert.deepEqual(sealView(fastSeal, 10), { label: "10배속 · 누르면 5배속", pressed: true, mark: "×10" });
+  // PLAY-2: the mark holds both fast speeds ("×5·10"), the current one on (the names unchanged: scripts press "5배속").
+  const steps = (five: boolean, ten: boolean) => [{ speed: 5, text: "×5", on: five }, { speed: 10, text: "10", on: ten }];
+  assert.deepEqual(sealView(fastSeal, 1), { label: "5배속", pressed: false, steps: steps(false, false) });
+  assert.deepEqual(sealView(fastSeal, 5), { label: "5배속 · 누르면 10배속", pressed: true, steps: steps(true, false) });
+  assert.deepEqual(sealView(fastSeal, 10), { label: "10배속 · 누르면 5배속", pressed: true, steps: steps(false, true) });
+  assert.equal(sealView(SPEED_SEALS[1]!, 1).steps, null, "only the fast seal has a mark");
   for (const speed of [0, 1, 3, 5, 10] as const) {
     assert.equal(SPEED_SEALS.filter(seal => sealView(seal, speed).pressed).length, 1, `one seal pressed at ${speed}`);
     assert.doesNotMatch(sealView(fastSeal, speed).label, LATIN);

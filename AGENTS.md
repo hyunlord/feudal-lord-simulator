@@ -107,7 +107,7 @@
   - 그림 계약과 카탈로그: `src/render/*Manifest*`·`*.generated.ts`, ASSET-ARCH-1이 만드는 계약 파일. UI 그림(초상·사건 삽화·지역 지도)의 계약 데이터와 파일도 여기다.
   - 런타임 그림 `public/assets/**`, 설치 대장 `docs/provenance/assets.csv`, 설치·카탈로그 스크립트(`scripts/install*`·`scripts/*AssetManifest*`·`scripts/*Provenance*`·`scripts/provenanceLedger*`·`scripts/*WorldAssets*`).
 - **렌더 A(화면·입력)**
-  - `src/ui/**`·`src/styles/**`·`src/input/**`·`src/App.tsx`·`src/main.tsx`.
+  - `src/ui/**`·`src/styles/**`·`src/input/**`·`src/App.tsx`·`src/main.tsx`·`index.html`(창 제목·파비콘·설명, 사용자 판정 2026-10-08 — LM-R3, 결정 LR3-D4).
   - `src/render/`의 캔버스 입력·런타임 연결(`canvas*Runtime*`·`canvas*Resolution*`·`canvas*Handler*`·`camera*`)과 React 부품(`*.tsx`, 예: `BuildingInspector`)·문구(`*.ko.ts`).
   - 그림을 보여 주는 화면(초상 틀·삽화 카드·지역 지도 화면)은 렌더 A, 그 그림의 계약·파일은 렌더 B다.
   - 배치 표시 `src/render/placementTileOverlay.ts`·`src/render/placementPredictionOverlay.ts`: 지도 위에 그리는 입력·UI 피드백(가능·막힘 무늬, 막힌 까닭 아이콘, 봉사 범위 가장자리)이라 렌더 A(사용자 판정 2026-10-07, INSTALL-18 — 결정 IN18-D4).

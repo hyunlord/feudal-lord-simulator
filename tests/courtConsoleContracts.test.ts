@@ -121,11 +121,11 @@ test("UX-3: the actual app keeps one build drawer (closed at start) and only the
   assert.match(markup, /<nav class="status-pill" aria-label="마을 상태" data-frame="tooltip">/);
   assert.match(markup, /aria-label="일시 정지"/);
   assert.match(markup, /aria-label="5배속"/);
-  // NAT-4: four seals, the last one fast seal for 5x and 10x (paused: it names 5x and wears the ×5 mark).
+  // NAT-4: four seals, the last one fast seal for 5x and 10x (paused: it names 5x; PLAY-2: its mark holds ×5·10, neither on).
   assert.equal(markup.match(/class="speed-seal[ "]/g)?.length, 4);
   const fast = markup.match(/<button[^>]*data-seal="fast"[^>]*>[\s\S]*?<\/button>/)?.[0] ?? "";
   assert.match(fast, /aria-label="5배속"/);
-  assert.match(fast, /<span class="speed-seal-mark" aria-hidden="true">×5<\/span>/);
+  assert.match(fast, /<span class="speed-seal-mark" aria-hidden="true"><span class="speed-seal-step" data-step="5">×5<\/span><span class="speed-seal-join">·<\/span><span class="speed-seal-step" data-step="10">10<\/span><\/span>/);
   assert.match(markup, /class="layer-switch"/);
   assert.match(markup, /<nav class="action-dock" aria-label="행동">/);
   // Gone from the default screen: the resource bar, the console recesses and the minimap (the ledger's map tab).
@@ -312,6 +312,6 @@ test("the browser shell declares a request-free favicon for clean fresh-load QA"
   // Given / When
   const html = await readFile(INDEX_HTML, "utf8");
 
-  // Then
-  assert.match(html, /<link rel="icon" href="data:," \/>/);
+  // Then: LM-R3 — the seal is the favicon, still inline (a data URI, no request; tests/brandArt.test.ts checks it is the kit's).
+  assert.match(html, /<link rel="icon" type="image\/svg\+xml" href="data:image\/svg\+xml,[^"]+" \/>/);
 });

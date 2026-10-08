@@ -36,7 +36,8 @@ export function EventCards({ beats, onDismiss, onDecide, notice = null }: {
       </div>
       {open === null ? null : (
         // NAT-1: key={open.id} resets the expand state when the player switches to a different card.
-        <EventCardDetail key={open.id} open={open} onDismiss={onDismiss} onDecide={onDecide} />
+        // PLAY-2: [닫기] closes the card; a house decision's chip stays until answered (useStoryPresentation).
+        <EventCardDetail key={open.id} open={open} onDismiss={id => { setOpenId(null); onDismiss(id); }} onDecide={onDecide} />
       )}
     </section>
   );

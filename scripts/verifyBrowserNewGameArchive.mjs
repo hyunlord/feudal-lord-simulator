@@ -52,6 +52,9 @@ async function main() {
     report.noticeButtons = await page.evaluate(`[...document.querySelectorAll(".welcome-save button")].map(b => ({ text: b.textContent, height: b.getBoundingClientRect().height, width: b.getBoundingClientRect().width }))`);
     report.noticeShot = await page.screenshot(`${PREFIX}-1-confirm.jpg`);
     await page.click(byText("button", "시작"));
+    // LM-R3: a mode press opens the house choice; its start begins the game (the default house).
+    await page.waitFor(`document.querySelector(".welcome-house") !== null`);
+    await page.click(`document.querySelector("[data-house-start]")`);
     await page.waitFor(`document.querySelector(".welcome-parchment") === null`);
     await sleep(1_000);
     report.previousAfterStart = await page.evaluate(readSlot("previous"));

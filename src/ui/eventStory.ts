@@ -9,6 +9,7 @@ import { stateCalendar } from "../engine/scenarioState";
 import { wetSummer } from "../render/wetSummer";
 import { beaconSpot, raidQuaySpot } from "../render/warWorldProps";
 import { EVENT_STORY_COPY } from "./eventStoryCopy.ko";
+import { famineAfterFacts } from "./lord/advice/famineAfter";
 import { lordForecastLine, withLordAdvice } from "./lord/advice/lordBeatAdvice";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { reorganisationOf } from "../engine/reorganisation";
@@ -152,7 +153,7 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
   if (famine !== null && (famine.stage === "arrival" || famine.stage === "recovery")) {
     beats.push({ id: `famine:${famine.eventId}`, kind: "famine", illustration: "decision_famine_intro", tile: arableTile(state),
       decision: famine.choices.length > 0 ? "famine" : null, title: copy.famine.title, line: famine.response === null ? copy.famine.lineOpen : copy.famine.lineAnswered(famine.response),
-      advice: copy.famine.advice, facts: [copy.famine.until(famine.endTick, state)] });
+      advice: copy.famine.advice, facts: [copy.famine.until(famine.endTick, state), ...famineAfterFacts(state)] });
   }
   // The first winter (the calendar's first winter season).
   const calendar = stateCalendar(state);

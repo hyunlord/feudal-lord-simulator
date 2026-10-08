@@ -70,7 +70,7 @@
    through and started the game). NAT-4: the switch button only, not its row, so the viewport's centre (where scripts
    click to dismiss) lands on the dismiss layer again. */
 .app-shell .welcome-parchment .tutorial-toggle .tutorial-switch { pointer-events: auto; }
-.app-shell .welcome-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); /* LM-R1: + lord mode */ gap: 8px; margin-top: 4px; pointer-events: auto; }
+.app-shell .welcome-modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); /* LM-R3: lord mode, the sandbox (its goal option inside) */ gap: 8px; margin-top: 4px; pointer-events: auto; }
 .app-shell .welcome-modes .save-control-button { min-height: 44px; text-align: center; }
 /* LAND-UI (LU-D7): the land choice above the mode buttons. With it the parchment is wider (five lands in a row) and
    sits lower (bottom-centre still): the emblem stays clear above it, and the land buttons sit below the viewport's

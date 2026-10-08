@@ -13,6 +13,7 @@
 //   node scripts/lmr1ButtonCaptures.mjs <url> <raw-dir> <json> [--label after|before] [--only gallery] [--views 1280-dpr1,...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/lmr1ButtonCaptures.mjs)", { remote: "scripts/remote/run.sh render-LMR1-buttons-<sha7> -- bash scripts/lmr1ButtonCaptures.sh …", entry: import.meta.url });
+import { startFromWelcome } from "./welcomeStart.mjs";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadChromium } from "./renderCommitProbe.mjs";
@@ -198,7 +199,7 @@ async function game() {
   const welcome = await page.locator(".welcome-modes .ui-btn").evaluateAll(elements => elements.map(element => ({ text: element.textContent, color: getComputedStyle(element).color,
     art: getComputedStyle(element).borderImageSource.replace(/.*\/assets\//, "").replace(/"\)$/, ""), h: element.getBoundingClientRect().height }))).catch(() => []);
   // LR1-D7: a player starts by a mode button only (no click-anywhere start) — the campaign, as the old dismissal did.
-  if (await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').count()) await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
+  if (await page.locator('.welcome-parchment [data-sandbox-goal]').count()) await startFromWelcome(page, "core:campaign_market_town");
   await page.keyboard.press("Escape"); await page.waitForTimeout(800);
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
   // The build drawer as the geometry audit opens it (surfaces.registry.ts hud.build-drawer: the dock's build button).

@@ -162,10 +162,12 @@ export function LedgerPanel({ state, dispatch, focus }: LordPanelProps): ReactEl
         {view.claims.length === 0 ? <p className="lord-ledger-empty" data-empty="claims">{COPY.noClaims}</p>
           : <ul className="lord-ledger-claims">{view.claims.map(claim => <li key={claim.id} className="lord-ledger-claim" data-claim={claim.id}
             data-focused={claim.focused ? "true" : undefined} aria-current={claim.focused ? "true" : undefined}>
-            <div className="lord-ledger-claim-body"><p className="lord-ledger-suit-title">{claim.what}</p><p className="lord-ledger-line">{claim.line}</p></div>
+            <div className="lord-ledger-claim-body"><p className="lord-ledger-suit-title">{claim.what}</p><p className="lord-ledger-line">{claim.line}</p>
+              {claim.hearing === null ? null : <p className="lord-ledger-line lord-ledger-claim-hearing" data-claim-hearing="true">{claim.hearing}</p>}</div>
             <div className="lord-ledger-action">
-              <Button type="button" className="lord-ledger-file" data-file={claim.id} variant="secondary" size="md" disabled={claim.refusal !== null}
-                aria-label={COPY.fileSuitLabel(claim.what)} onPress={() => { if (claim.refusal === null) fileSuit(claim.id); }}>{COPY.fileSuit}</Button>
+              <Button type="button" className="lord-ledger-file" data-file={claim.id} data-cost={claim.cost === null ? undefined : "true"} variant="secondary" size="md"
+                disabled={claim.refusal !== null} aria-label={claim.cost === null ? COPY.fileSuitLabel(claim.what) : COPY.fileSuitCostLabel(claim.what, claim.cost)}
+                onPress={() => { if (claim.refusal === null) fileSuit(claim.id); }}>{claim.cost === null ? COPY.fileSuit : COPY.fileSuitCost(claim.cost)}</Button>
               {claim.refusal === null ? null : <span className="lord-ledger-shut" role="status" data-refusal="true">{claim.refusal}</span>}
             </div>
           </li>)}</ul>}
