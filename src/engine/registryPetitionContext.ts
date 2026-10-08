@@ -1,3 +1,4 @@
+import { parishContext } from './registryParishContext';
 import { woodlandPetitionContext } from './registryWoodlandPetitionContext';
 import { pasturePetitionContext } from './registryPasturePetitionContext';
 import { marketRoadPetitionContext } from './registryMarketRoadPetitionContext';
@@ -12,6 +13,7 @@ export { handlesPetitionContext } from '../content/registry/petitionContextConfi
 export function petitionContext(state: GameState, entryId: string, bound: Readonly<Record<string, unknown>>, fixed?: Readonly<Record<string, unknown>>): Readonly<Record<string, unknown>> | null {
   const strategy = PETITION_CONTEXT_STRATEGIES[entryId];
   if (state.agency === undefined || strategy === undefined) return null;
+  if (strategy === 'parish') return parishContext(state, fixed);
   if (strategy === 'home_woodland') return woodlandPetitionContext(state, bound, fixed);
   if (strategy === 'home_pasture') return pasturePetitionContext(state, bound, fixed);
   if (strategy === 'home_market_road') return marketRoadPetitionContext(state, bound, fixed);

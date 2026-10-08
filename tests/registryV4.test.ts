@@ -39,10 +39,10 @@ test("ER-13, ER-18 the canon v4 + v4.1 loads: 215 entries, each running or block
   const support = registryV4Support();
   assert.equal(support.length, 215);
   assert.ok(support.every(entry => entry.runs ? entry.reason === null : entry.reason !== null), "a blocked entry says why");
-  assert.equal(support.filter(entry => entry.reason?.startsWith("unsupported filter") === true).length, 97, "the canon's own blocks (R5)");
-  // DEC-TRACE (the user's decision 2026-10-06): the v4.2 audit's 38 held, and 3 more held whole when their indirect
-  // choices were held (102, 123, 138) — 45 of the 86 that ran before stay on; the first Engine B batch adds five.
-  assert.equal(support.filter(entry => entry.reason?.startsWith("held") === true).length, 41, "the held events, each with its reason");
+  assert.equal(support.filter(entry => entry.reason?.startsWith("unsupported filter") === true).length, 90, "the canon's own blocks (R5)");
+  // DEC-TRACE: HOLD38, three earlier whole-event holds, and five newly installed held adapters.
+  // The cumulative Engine B rollout still adds only eleven independently runnable entries.
+  assert.equal(support.filter(entry => entry.reason?.startsWith("held") === true).length, 46, "the held events, each with its reason");
   assert.equal(support.filter(entry => entry.runs).length, 56);
   for (const entry of support.filter(item => item.runs)) {
     assert.ok(V4_COPY[entry.id] !== undefined, `${entry.id} has its words`);

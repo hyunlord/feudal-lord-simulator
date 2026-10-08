@@ -48,7 +48,7 @@ test('first-batch contexts remain configured and require agency', () => {
     assert.equal(handlesPetitionContext('ck_evt_' + id), true);
     assert.equal(petitionContext(state, 'ck_evt_' + id, {}), null);
   }
-  assert.equal(handlesPetitionContext('ck_evt_062'), false);
+  assert.equal(handlesPetitionContext('ck_evt_087'), false);
 });
 
 test('town offers pin causal sites, revalidate before answering, and remain steward work', async () => {
