@@ -38,6 +38,8 @@ test('actual own-tick counts preserve silent years, scope categories and B11 wit
   assert.equal(r.pooled.whole.total, 4); assert.equal(r.pooled.whole.countedYears, 375);
   assert.equal(r.pooled.whole.zeroYears, 373); assert.equal(r.perSeed[0].annual[0].whole, 1);
   assert.equal(r.perSeed[0].annual[1].whole, 3); assert.equal(r.pooled.registry.total, 3); assert.equal(r.pooled.priorB11.total, 2);
+  assert.deepEqual(r.perSeed[0].unclassifiedByCommand, { confirm_market_town: 1 });
+  assert.deepEqual(r.perSeed[0].excludedByReason, { '(unspecified)': 1 });
   assert.equal(r.categories.unclassified, 1); assert.equal(r.categories.excluded, 1);
 });
 

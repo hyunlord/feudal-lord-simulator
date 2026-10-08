@@ -22,6 +22,11 @@ function parse(bytes, label) {
   requireValid(value !== null && typeof value === 'object' && !Array.isArray(value), `${label} object required`);
   return value;
 }
+function counts(rows, key) {
+  const result = {};
+  for (const row of rows) { const value = row[key] ?? '(unspecified)'; result[value] = (result[value] ?? 0) + 1; }
+  return Object.fromEntries(Object.entries(result).sort(([a], [b]) => a.localeCompare(b)));
+}
 function metrics(values) {
   const sorted = [...values].sort((a, b) => a - b);
   const middle = Math.floor(sorted.length / 2);
@@ -106,6 +111,8 @@ export function aggregateAnswerReplays(inputs) {
       rawSha256: manifest.raw.sha256, checkpointManifestSha256: manifest.manifestSha256, contextSha256: manifest.contextSha256,
       commandStreamSha256: manifest.commandStreamSha256, commandCount: manifest.commandCount },
     categories: Object.fromEntries(CATEGORIES.map(status => [status, rows.filter(row => row.status === status).length])),
+    unclassifiedByCommand: counts(rows.filter(row => row.status === 'unclassified'), 'command'),
+    excludedByReason: counts(rows.filter(row => row.status === 'excluded'), 'reason'),
     annual, metrics: Object.fromEntries(SCOPES.map(scope => [scope, metrics(annual.map(row => row[scope]))])) };
   });
   const annual = perSeed.flatMap(row => row.annual);
