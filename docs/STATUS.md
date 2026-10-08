@@ -1,4 +1,4 @@
-- **Engine B 첫5건 게시 준비**: 구현4f80b042·목수 수정1faa9c9c·그림73d41b71, 정적 활성45→50·HOLD38 유지. DGX20년 seed셋9/12/11건, 새083만1건 관측; Mac EVA50/50·기하40조건 실패0. 최종 변경 시험·병합 검사·본선 게시 대기. [근거](verification/lm-e9c-batch1/README.md).
+- **Engine B 첫5건 게시 완료**: 본선 `b399b03c`(2026-10-08 12:24 KST 확인), 정적 활성45→50·HOLD38 유지. DGX20년 seed셋9/12/11건, 새083만1건(lord/large_sum) 관측. Mac EVA50/50·기하40조건 실패0·DGX 변경시험4,383통과/11건너뜀/실패0, Mac check:merge 통과. [근거](verification/lm-e9c-batch1/README.md).
 <!-- RB-PURVEYOR geometry: astra-PURVEYOR-geometry-029a112, 80 conditions, 0 failures; final test/push receipts in delivery ZIP. -->
 - **RB-PURVEYOR 왕실 구매 담당자5장**: 제품 `f012955c`. 실제 구매 영수증과 창고 도로 접근으로 잠깐 표시하고, 원본 장부4방향·8프레임 손 연결을 공용 합성기에 보존했다. 자연 봄 및 명시적 계절 QA의 줌1/.6 전후를 확인했다. 엔진 인물·재고·저장은 그대로다. [보고서](verification/purveyor/README.md).
 - **RB-HEIGHT-L0D 작은 우진각 집5장**: 제품 `8c49302b`. L0 d 완성 본체와 새집·풍화·눈·판자층을 기존 선택 계약에 연결했다. 준비 저장 전후18쌍과 실제 보행자 비교, 대상 해빙 alpha0.44804를 확인했다. 문짝 대리 측정·fresh 목재 겹침은 한계로 남겼다. 누적14/23종,9종 후속. [보고서](verification/height-l0d/README.md).
