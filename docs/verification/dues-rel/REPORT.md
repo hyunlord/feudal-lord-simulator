@@ -54,13 +54,13 @@
 - 관련 시험(Mac): duesMind 4/4, granaryRules 3/3, decisionTrace 15/15, townAgency 16/16, registry 9/9, registryV4 8/8, factions 10/10, stewardship 10/10, trades 8/8, stuckStock 11/11, lordSlice 4/4, deccardAstra 8/8, deccardResults 8/8, saveSchemaFingerprint 2/2, saveFixtures 530/530. typecheck 통과.
 - 저장 v53: 이행 v52→v53은 판 번호만, 고정 저장 `fixtures/saves/v53` 14개와 지문 `src/save/schemaFingerprint.v53.json`(결정 DTR-18에 이유).
 - 바뀐 줄 기하 감사(DGX, 관문 줄): 바뀐 문구(`factionCopy.ko.ts`의 세력 기억 사유)가 보이는 7줄 140칸 실패 0(`engine-DUESREL-geo-dff9e97`).
-- `test:changed`(DGX, 관문 줄): 마지막 커밋에서 돌린 판이 올리기 기록이다(`engine-DUESREL-changed-…`).
+- `test:changed`(DGX, 관문 줄): 첫 판(`engine-DUESREL-changed-c59abf7`) 4,492/4,504, 실패 1 — 렌더 시험이 새 전망 키 `dues_mind`의 카드 문구를 요구(위 "렌더가 넘겨받을 것"). 문구를 넣은 뒤 영주 카드 줄을 더해 기하를 다시 재고, 마지막 커밋에서 다시 돌린 판이 올리기 기록이다(`engine-DUESREL-changed2-…`).
 
 ## 다음 후보(사용자 지시 2026-10-08, 로드맵에 넣음)
 - **GROW-BLOCK**: 자율 성장이 모자람과 막힘을 구별 — seed 3이 창고 규칙에 막힌 목재를 부족으로 읽고 벌목장 23·제재소 10채를 지었다(`engine-DUESREL-125y2-5c45dff`). 막힘일 땐 생산 시설을 늘리지 않고 막힌 원인을 영수증에(P-C3).
 - **SUIT-THREAD**: 판결 집행 뒤 점유와 지대가 누구에게 가는지를 "○○년 판결 때문에"로.
 - 창고: seed 2는 1424년 13채(본선 최대 13). 쌓인 목재 871 — GROW-BLOCK과 함께 다시 본다.
-- **렌더가 넘겨받을 것**: 전망 줄 키 `dues_mind`·`agreement_broken`, 세력 기억 사유 `dues_held:<좌판세>:<기준>`·`agreement_broken:<해>`(문구는 `factionCopy.ko.ts`).
+- **렌더가 넘겨받을 것**: 전망 줄 키 `dues_mind`의 카드 문구를 엔진이 예외로 넣었다(`src/ui/decisionCard/outlook.ts` 한 줄·`outlookCopy.ko.ts` 문구, 렌더 시험 "every later key … has its words"가 요구 — 렌더 파일을 엔진이 예외로 갱신, 렌더가 인계). `agreement_broken`(지금 줄), 세력 기억 사유 `dues_held:<좌판세>:<기준>`·`agreement_broken:<해>`(문구는 `factionCopy.ko.ts`).
 
 ## 실행 위치
 - DGX: 125년·20년 판(`engine-DUESREL-125y3-e2e3bab`, 앞선 판 `engine-DUESREL-125y2-5c45dff`; 멈춘 판 `engine-DUESREL-125y-a79532c`), 가드레일(`engine-DUESREL-guard-a79532c`).

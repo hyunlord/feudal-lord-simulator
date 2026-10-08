@@ -65,6 +65,8 @@ const LATER: Readonly<Record<string, (state: GameState, rows: readonly OutlookLa
   suit_stage: (_state, rows) => rows.map(row => COPY.suitStage(COPY.suitStages[row.actor ?? ""] ?? COPY.suitStageUnknown)),
   timber_order: (_state, rows) => [COPY.timber(rows.at(-1)?.amount ?? 0)],
   stall_dues: (_state, rows) => [COPY.dues(Math.round((rows.at(-1)?.amount ?? 1000) / 10))],
+  // DUES-REL (DTR-18): the merchant houses' turn each season while the fee stands so, against its reference (렌더 파일을 엔진이 예외로 갱신 — 렌더가 인계).
+  dues_mind: (_state, rows) => [COPY.duesMind(rows.at(-1)?.perSeason ?? 0, Math.round((rows.at(-1)?.amount ?? 1000) / 10))],
   faction_mind: (state, rows) => [COPY.factionMind(COPY.list([...new Set(rows.map(row => factionWord(state, row.actor ?? "")))]))],
 };
 

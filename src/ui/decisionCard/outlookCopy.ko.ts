@@ -38,6 +38,10 @@ export const OUTLOOK_COPY = {
   timber: (amount: number) => amount > 0 ? `시장 상인에게 목재 ${amount}단을 주문해 둡니다. 상인이 가져오는 대로 들어옵니다.` : "목재 주문을 거둡니다.",
   /** stall_dues: the market's stall dues from now on, in percent of the usual (permille in the engine). */
   dues: (percent: number) => `앞으로 장날마다 좌판세를 평소의 ${percent}%로 걷습니다.`,
+  /** dues_mind (DUES-REL): the merchant houses' turn each season while the fee stands above or below its reference (the agreed or usual rate, in percent). */
+  duesMind: (perSeason: number, reference: number) => perSeason < 0
+    ? `좌판세가 기준(평소의 ${reference}%)보다 높아, 이대로면 철마다 두 상인 가문의 마음이 ${-perSeason}씩 식습니다.`
+    : `좌판세가 기준(평소의 ${reference}%)보다 낮아, 이대로면 철마다 두 상인 가문의 마음이 ${perSeason}씩 풀립니다.`,
   /** faction_mind: the factions whose later acts the chronicle ties to this decision. */
   factionMind: (names: string) => `${subject(names)} 나중에 이 일로 움직이면, 연대기에 이 결정 때문이라고 적힙니다.`,
   /** A list of names in a line ("상인 무리, 평민"). */
