@@ -1,0 +1,1268 @@
+{
+  "scope": "Original 111 IDs; current local cumulative support, not publication or natural-occurrence proof",
+  "sourceRevision": "198d5e9df136b76e712069b763031f09f22382ce",
+  "baselineInventoryRevision": "3d0259542b35421769f2e0e9335fa54e4e7ea487",
+  "counts": {
+    "requires_world_fact_contract": 5,
+    "variant_api_not_consumed_by_ui": 5,
+    "adapter_present_choices_held": 11,
+    "independent_adapter": 11,
+    "requires_legal_procedure_module_contract": 10,
+    "requires_durable_domain_module_contract": 57,
+    "requires_fact_producer_or_module_contract": 12
+  },
+  "all215IndependentlyDrawable": 56,
+  "holdRecommendations": {
+    "count": 38,
+    "allDisabled": true
+  },
+  "sourceRequests": [
+    "docs/requests/engine-B-dec-trace-followup.md",
+    "docs/requests/engine-B-remaining.md",
+    "docs/requests/engine-B-read-bundles.md",
+    "docs/requests/engine-B-7.md"
+  ],
+  "entries": [
+    {
+      "id": "ck_evt_001",
+      "title": "쟁기 길 끝의 풀밭",
+      "bundle": 5,
+      "disposition": "requires_world_fact_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: pasture_market_route_overlap",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "목초지와 장날 통행의 실제 겹침",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_023",
+      "title": "먼 장원의 기울어진 헛간",
+      "bundle": 5,
+      "disposition": "requires_world_fact_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: offmap_agricultural_building_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "실제 선택 영지의 농업 토지 성격과 거주민 연결. 헛간 피해 자체는 정본의 가공 서술이므로 저장 피해 필드를 요구하지 않음",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_026",
+      "title": "이웃 영지에서 가져온 살림",
+      "bundle": 5,
+      "disposition": "requires_world_fact_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: household_origin_neighbour",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "이주 가구의 출발 이웃 영지",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_041",
+      "title": "숲의 돼지와 가을 납부금",
+      "bundle": 5,
+      "disposition": "variant_api_not_consumed_by_ui",
+      "independentlyDrawable": false,
+      "currentReason": "a variant of an existing occurrence's words (ER-13), not drawn",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_044",
+      "title": "길가의 새 말뚝",
+      "bundle": 5,
+      "disposition": "requires_world_fact_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: adjacent_estate_road_geometry",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "이웃 영지와 분쟁 길의 인접 기하",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_048",
+      "title": "소의 수보다 앞서는 관습",
+      "bundle": 5,
+      "disposition": "variant_api_not_consumed_by_ui",
+      "independentlyDrawable": false,
+      "currentReason": "a variant of an existing occurrence's words (ER-13), not drawn",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_050",
+      "title": "교구의 살림을 먼저 봐 주십시오",
+      "bundle": 5,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": null,
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_054",
+      "title": "늦은 건초, 늦은 지대",
+      "bundle": 5,
+      "disposition": "requires_world_fact_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: offmap_arable_pasture_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "실제 선택 영지의 경작지·목초지 토지 이용. 젖은 건초 보고 자체는 가공 서술",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_056",
+      "title": "장날 수레가 빠지는 길",
+      "bundle": 5,
+      "disposition": "variant_api_not_consumed_by_ui",
+      "independentlyDrawable": false,
+      "currentReason": "a variant of an existing occurrence's words (ER-13), not drawn",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_057",
+      "title": "교회 가까운 장터의 새 조건",
+      "bundle": 6,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": null,
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_058",
+      "title": "상인들이 청한 일회 납부 협의",
+      "bundle": 6,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": null,
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_061",
+      "title": "법정 날마다 빈 영주의 자리",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_062",
+      "title": "숲의 나무와 작업장의 들보",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_063",
+      "title": "소환을 듣지 못한 사람",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_063.authored_context, NE_SR01_MT03",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단.; 핵심법정/계약효과미구현",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_064",
+      "title": "빌려 간 쟁기가 돌아오지 않는다",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_064.authored_context, NE_SR01_MT04",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "쟁기 대여·소유자·차용자·반환 기한",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_065",
+      "title": "거둘 밭과 담을 곳",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_066",
+      "title": "가축 우리에서 풀려난 소",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_066.authored_context, NE_SR01_MT06",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "가축 소유·풀려남·피해·책임·배상",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_067",
+      "title": "둘이 나누던 일을 한 사람에게",
+      "bundle": 1,
+      "disposition": "variant_api_not_consumed_by_ui",
+      "independentlyDrawable": false,
+      "currentReason": "a variant of an existing occurrence's words (ER-13), not drawn",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_068",
+      "title": "지출 약정은 그대로 남아 있다",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_069",
+      "title": "지붕용 가지를 장에 내다 팔다",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_069.authored_context, NE_SR01_MT09",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "수선용 채취 허락과 별도 판매 허락",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_070",
+      "title": "약속한 날의 다른 일꾼",
+      "bundle": 11,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_070.authored_context, NE_SR01_MT10, ck_evt_070.history_window",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "노동 계약·대리 일꾼·이행·보수",
+      "editorialBlockers": [
+        "ck_evt_070.history_window"
+      ]
+    },
+    {
+      "id": "ck_evt_071",
+      "title": "직영지의 한 해를 미리 사겠다는 사람",
+      "bundle": 11,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_071.authored_context, NE_SR01_MT11",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "직영지 임대 기간·정액 지대·수확 위험",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_072",
+      "title": "한 필지에 세 개의 부엌",
+      "bundle": 11,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_072.authored_context, NE_SR01_MT12",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "필지 분할·가구별 점유·임대 의무",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_073",
+      "title": "장부에는 길, 밭에는 이랑",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_073.authored_context, NE_SR01_MT13",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "통행권 장부와 실제 경작 점유",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_074",
+      "title": "갈대 묶음에 붙은 새 요구",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_074.authored_context, NE_SR01_MT14",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "갈대 채취권·용도·추가 요구",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_075",
+      "title": "글자보다 오래 남은 발길",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_076",
+      "title": "두 장원에 같은 감사 철",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_077",
+      "title": "작은 청원이 큰 권리를 건드리다",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_078",
+      "title": "장날 돈과 농민의 납부일",
+      "bundle": 1,
+      "disposition": "variant_api_not_consumed_by_ui",
+      "independentlyDrawable": false,
+      "currentReason": "a variant of an existing occurrence's words (ER-13), not drawn",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_079",
+      "title": "이웃이 주문한 지붕 기와",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_079.authored_context, NE_SR01_MT19",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "이웃 기와 주문·납품 계약·기한",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_080",
+      "title": "먼 시장의 목재 주문을 줄일 때",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_081",
+      "title": "남의 인장으로 남긴 약속",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_081.authored_context, NE_SR01_MT21",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단.; 핵심법정/계약효과미구현",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_082",
+      "title": "먼저 찾아온 보증인",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_082.authored_context, NE_SR01_MT22",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "채무·보증인·선행 청구·면책",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_083",
+      "title": "목재가 도착할 장터",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_084",
+      "title": "같은 빚이 다른 두 줄로",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_084.authored_context, NE_SR01_MT24",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "같은 채무의 중복 사본·이행액 대조",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_085",
+      "title": "빵으로 갈 곡물과 마실 물",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_086",
+      "title": "짐값 대신 잡아 둔 보따리",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_086.authored_context, NE_SR01_MT26",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "운반료 채무·억류 물건·반환 조건",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_087",
+      "title": "문 닫은 점포 곁의 새 장사",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_088",
+      "title": "에일용 맥아와 제분할 곡물",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_089",
+      "title": "같은 도랑을 찾는 두 작업장",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_089.authored_context, NE_SR01_MT29, ck_evt_089.history_window",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "작업장별 물길 이용·오염·조정 의무",
+      "editorialBlockers": [
+        "ck_evt_089.history_window"
+      ]
+    },
+    {
+      "id": "ck_evt_090",
+      "title": "점포를 고칠 목재의 몫",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_091",
+      "title": "빚 대신 내민 물건의 값",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_091.authored_context, NE_SR01_MT31",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "채무 대신 내민 현물의 가치·상계",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_092",
+      "title": "큰 부담을 거두는 작은 시장",
+      "bundle": 1,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_093",
+      "title": "새로 온 장인의 같은 좌판세",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_094",
+      "title": "작업장 아래의 다른 주인",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_094.authored_context, NE_SR01_MT34",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "층층 작업장 임대·각 권리자·의무",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_095",
+      "title": "장터가 쓰지 못한 공고 자금",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_096",
+      "title": "계절 끝에 돌아온 빌린 베틀",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_096.authored_context, NE_SR01_MT36, ck_evt_096.history_window",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "베틀 대여·반환·손상·수선 의무",
+      "editorialBlockers": [
+        "ck_evt_096.history_window"
+      ]
+    },
+    {
+      "id": "ck_evt_097",
+      "title": "런던까지 이어진 외상 장부",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_097.authored_context, NE_SR01_MT37",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "지역간 외상 거래·채권자·관할·기한",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_098",
+      "title": "새 다리 곁의 오래된 여울",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_098.authored_context, NE_SR01_MT38",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "다리/여울별 통행권·관습·이전",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_099",
+      "title": "이름 없이 적힌 재단사",
+      "bundle": 14,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: ck_evt_099.authored_context, NE_SR01_MT39",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "명부 항목·실명·증언·정정 절차",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_100",
+      "title": "물건이 먼저 닿는 도시",
+      "bundle": 1,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_103",
+      "title": "미사 뒤의 맹세",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN01",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "사건 핵심에 지역 소환·출석·경계 답사 절차 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_104",
+      "title": "두 성직록 사이의 편지",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN02",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "성직자 추천권·성직록 교환 절차",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_106",
+      "title": "남은 나무를 팔겠다는 청",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN03",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "용도 제한 채취권과 별도 매매 허락",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_107",
+      "title": "한 해에 두 사람의 장부",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN04",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "교구/장원 회계 인계와 독립 확인",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_109",
+      "title": "소환장은 누구에게 갔는가",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN01",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "사건 핵심에 지역 소환·출석·경계 답사 절차 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_110",
+      "title": "수확을 받을 것인가, 정한 지대를 받을 것인가",
+      "bundle": 11,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN05",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "직영과 임대의 수입·노동 의무 교환",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_112",
+      "title": "지붕 위로 갈 타일, 수레에 실릴 타일",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN06",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "물자 납품 계약·수량·재협상",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_114",
+      "title": "종자로 남긴 자루",
+      "bundle": 4,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN07",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "사건 핵심에 종자 비축·현물 구휼·씨앗 대여 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_116",
+      "title": "장원의 열쇠와 성직자의 이름",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN02",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "추천권 행사·성직록 후보·수락",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_118",
+      "title": "다리 몫의 지대",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN08",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "목적 제한 기부 재산과 수입 지출",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_119",
+      "title": "유언에 적힌 덮개",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN09",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "유증 동산·인도·대체·청구",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_120",
+      "title": "같은 손에 모인 두 장부",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN04",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "겹친 회계 업무·인계·독립 확인",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_121",
+      "title": "서명 옆에 설 사람",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN10",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "일반 채무 보증과 면책 문서",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_122",
+      "title": "울타리 안의 수선 길",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN11",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "일시 수선 통행과 가축 피해 중재",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_125",
+      "title": "반쪽 다리의 값",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN12",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "공동 다리 수선·분담 약정·이행",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_126",
+      "title": "같은 빚을 적은 두 장",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN10",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "동일 채무의 두 사본과 유효성",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_129",
+      "title": "가축을 먼저 돌려보내자는 청",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN11",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "가축 억류·반환과 피해 정산",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_134",
+      "title": "다투는 동안의 지대",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN13",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "사건 핵심에 분쟁 수입 예치와 중립 결산 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_135",
+      "title": "법정에서 이름을 빌려 줄 사람",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN15",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "사건 핵심에 권원 소송의 재판 외 중재 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_137",
+      "title": "나무를 벨 권리, 땅을 남길 의무",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: new_effect_CN14",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "생존권자의 벌채 범위와 동의",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_142",
+      "title": "두 사람이 지켜야 할 인장",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN01",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "문서의 이중 승인·인장 보관 주체 상태가 없어 요청의 완전 해결은 새 효과가 필요하다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_146",
+      "title": "숲의 몫을 값으로 바꾸자는 말",
+      "bundle": 9,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN02",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "수선용 이용권과 판매권을 구분한 실제 분쟁",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_147",
+      "title": "먼저 떠난 관리의 후임 추천",
+      "bundle": 3,
+      "disposition": "independent_adapter",
+      "independentlyDrawable": true,
+      "currentReason": null,
+      "request": null,
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_148",
+      "title": "빈 작업장에 붙은 두 이름",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN04",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "빈 작업장이 실제 역병 사망 가구와 연결되는 맥락이 필요하다. 길드 존재와 별개로 자동 발병 판정 금지.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_151",
+      "title": "이주 장인을 막을 문서인가",
+      "bundle": 14,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN05",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "이주 장인의 가입 거부와 신분 문서 요구",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_152",
+      "title": "농사도 짓는 가죽 장인",
+      "bundle": 14,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN06",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "동일 가구의 두 생업과 농지 임차권",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_153",
+      "title": "돈을 보탰으니 권리도 달라는 말",
+      "bundle": 12,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN07",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "특정 다리 기부와 특정 권리 분쟁의 연결",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_154",
+      "title": "장터 밖 신용의 주인",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN08",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "가구간 채무와 권리 소송의 실제 연결",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_158",
+      "title": "왕실 장부에 이름이 없는 사람",
+      "bundle": 14,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN09",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "왕실 명부 누락·개인 식별·본인 진술·정정",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_159",
+      "title": "공동체 돈은 빚인가 선물인가",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN10",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "공동체 차입의 채권자·잔액·상환 추적",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_166",
+      "title": "급류가 잦아들 때까지",
+      "bundle": 15,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN11",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "급류와 다리 통행/수선 위험 및 역사 적용",
+      "editorialBlockers": [
+        "NE_SR01_FN11: historical application within combined filter"
+      ]
+    },
+    {
+      "id": "ck_evt_167",
+      "title": "결산하지 못한 사람의 서랍",
+      "bundle": 3,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN12",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "사망한 관리의 잔여 회계와 새 현직을 연결하는 승계 맥락이 필요하다. 현재 현직 alive 조건을 반드시 지킨다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_168",
+      "title": "빈손으로 돌아온 수확 일꾼",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN13",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "현재 일손 부족이 역병 사망과 연결되는 검증된 사건 맥락이 필요하다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_169",
+      "title": "병 소문과 닫지 않은 장터",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN14",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "항구 소문·현지 미도래는 기존 상태로 입증. 기존1348 장 사건과 중복되는 문안 변주 분류·연결 확정 필요",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_170",
+      "title": "일손 적은 해의 두 창고",
+      "bundle": 2,
+      "disposition": "adapter_present_choices_held",
+      "independentlyDrawable": false,
+      "currentReason": "held (DEC-TRACE): 선택지를 끄고 나니 두 개 미만이 남았다",
+      "request": null,
+      "remainingContract": null,
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_172",
+      "title": "씨앗까지 먹을 수는 없다는 말",
+      "bundle": 4,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN16",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "종자와 식용 곡물의 분리 재고가 없다. 주민의 실제 종자 부족을 확정하는 사건은 보류.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_175",
+      "title": "배가 뜨지 않는다는 전갈",
+      "bundle": 15,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN17",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "목재 주문과 연결된 선박·항행 지연",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_176",
+      "title": "값을 못 받는 흉작 뒤",
+      "bundle": 4,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN18",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "실제 영지 흉작과 수입 변화의 인과 연결이 필요하다. 임의 가구 파산을 생성하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_177",
+      "title": "기한은 남았는데 일꾼이 없다",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN19",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "실제 질병 휴업과 수선 기한은 현행 인물 상태·약속에 직접 대응하지 않는다. 기한 연장 명령은 발명하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_178",
+      "title": "또다시 들려온 병 소식",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_FN20",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "원거리 질병 보고의 같은 지역·재발 맥락을 저장할 상태가 필요하다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_181",
+      "title": "후견 중인 장원의 새는 지붕",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI01_context, NE_SR01_KI01_later_practice",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "미성년자·후견·별도 재산·수선 필요",
+      "editorialBlockers": [
+        "NE_SR01_KI01_later_practice"
+      ]
+    },
+    {
+      "id": "ck_evt_182",
+      "title": "돌려줄 쟁기와 가축",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI02_context, NE_SR01_KI02_later_practice",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "후견 종료와 초기/현재 재산 대조",
+      "editorialBlockers": [
+        "NE_SR01_KI02_later_practice"
+      ]
+    },
+    {
+      "id": "ck_evt_183",
+      "title": "재혼을 서두르지 않겠다는 과부",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI03_context, NE_SR01_KI03_later_practice",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "성인 과부 의사·재혼 추진·거처 약정",
+      "editorialBlockers": [
+        "NE_SR01_KI03_later_practice"
+      ]
+    },
+    {
+      "id": "ck_evt_184",
+      "title": "형제의 빚에 우리 인장을",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI04_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "친족 채무·채권자·만기·관할·보증 재산",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_185",
+      "title": "성년 친족의 혼담을 알릴 일",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI05_context, NE_SR01_KI05_later_practice",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "성년 친족·후견 종료·혼담 고지·자유 동의",
+      "editorialBlockers": [
+        "NE_SR01_KI05_later_practice"
+      ]
+    },
+    {
+      "id": "ck_evt_186",
+      "title": "서로 다른 채무 사본",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI06_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "가족 채무 두 사본·기한 불일치·관할",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_187",
+      "title": "두 집이 맡겠다는 아이",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI07_context, NE_SR01_KI07_later_practice",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "부모 사망·미성년자·친족 수용·재산 후견",
+      "editorialBlockers": [
+        "NE_SR01_KI07_later_practice"
+      ]
+    },
+    {
+      "id": "ck_evt_188",
+      "title": "죽은 친족의 채무 청구",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI08_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "사망자 별도 유산·집행 권한·미확인 청구",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_189",
+      "title": "어머니 몫의 지대 영수증",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI09_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "수입 수익자·지급 이력·이의·영수증",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_190",
+      "title": "형제 둘의 한 방앗간",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI10_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "공동 수익자·지분·수선 의무·분배 분쟁",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_191",
+      "title": "영주관의 돌을 둘러싼 형제 다툼",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI11_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "실제 수선 의뢰·견적·친족 추가 요구·재원",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_192",
+      "title": "혼례 옷의 두 몫",
+      "bundle": 13,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI12_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "혼인 준비·가족별 현물 기여·별도 비용",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_193",
+      "title": "아픈 친족의 귀가",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI13_context",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_194",
+      "title": "회복을 빌며 남긴 약속",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI14_context",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_195",
+      "title": "몸값을 댄 친족의 잃어버린 증서",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI15_context, NE_SR01_KI15_source_date",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다.; 편년은after1440(?)와1435년또는이전견해가충돌한다. FA05로1450이전근거는보강했지만정확연도와사건맥락은미확정이며핵심효과차단은유지한다.",
+      "editorialBlockers": [
+        "NE_SR01_KI15_source_date"
+      ]
+    },
+    {
+      "id": "ck_evt_196",
+      "title": "가족을 위한 사제의 숙소",
+      "bundle": 10,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI16_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "추도 약정·사제 수락·가족 거처와 입주권",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_197",
+      "title": "가족 몫을 담보로 내놓자는 부탁",
+      "bundle": 8,
+      "disposition": "requires_durable_domain_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI17_context",
+      "request": "docs/requests/engine-B-remaining.md",
+      "remainingContract": "성인 가족 자금 요청·현 권원·장래 기대·채권자",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_198",
+      "title": "같은 편지를 두 번 쓰는 서기",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI18_context",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_199",
+      "title": "병문안과 집안의 빈자리",
+      "bundle": 2,
+      "disposition": "requires_fact_producer_or_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI19_context",
+      "request": "docs/requests/engine-B-read-bundles.md",
+      "remainingContract": "실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다.",
+      "editorialBlockers": []
+    },
+    {
+      "id": "ck_evt_200",
+      "title": "가문 문서 상자의 두 열쇠",
+      "bundle": 7,
+      "disposition": "requires_legal_procedure_module_contract",
+      "independentlyDrawable": false,
+      "currentReason": "unsupported filter: NE_SR01_KI20_context",
+      "request": "docs/requests/engine-B-7.md",
+      "remainingContract": "실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다.",
+      "editorialBlockers": []
+    }
+  ]
+}
