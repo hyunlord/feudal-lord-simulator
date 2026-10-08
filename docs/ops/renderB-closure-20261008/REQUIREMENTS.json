@@ -1,0 +1,331 @@
+{
+  "reviewedProduct": "2a98bf2bf32dc38818011478bf4573dcc960a903",
+  "publishedTrunk": "2a98bf2bf32dc38818011478bf4573dcc960a903",
+  "requirements": [
+    {
+      "id": "ARCH1",
+      "request": "계약/어댑터와 기존36장 픽셀 보존·신규32장 데이터 설치",
+      "status": "fulfilled-bounded",
+      "commit": "90d9b586",
+      "artifact": "docs/verification/asset-architecture/REPORT.md",
+      "artifactSha256": "d1269de2ea2aef8a9e60ff8d41f8b5009c702e97f1776357bc632288ed457029",
+      "proven": "36장 이관, 32장 데이터 설치. 계약 종류와 실제 앱 소비의 완성은 구분한다.",
+      "remaining": "10종 전부의 화면 소비 완성을 뜻하지 않음."
+    },
+    {
+      "id": "UI",
+      "request": "UI 부품 계약 검토와 B 데이터 인계",
+      "status": "fulfilled-handoff",
+      "commit": "4151d15f",
+      "artifact": "docs/requests/ui-contract-handoff.md",
+      "artifactSha256": "d1fb6d20df3d5019487818390dc73e909cf318356837d6a903463066f39628af",
+      "proven": "260행 데이터 인계 정본; 425중 101행은 준비 인계 상태. UI-A 설치를 B 완료분으로 계산하지 않음.",
+      "remaining": ""
+    },
+    {
+      "id": "PHASE2",
+      "request": "2단계 게시",
+      "status": "fulfilled-bounded",
+      "commit": "6fd89016",
+      "artifact": "docs/verification/renderb-phase2/REPORT.md",
+      "artifactSha256": "d6bdf181b336ebd820d985da304318ece89437ad789a4af673dbca2fa95300de",
+      "proven": "14장 신규 및 후속 지역 봄4장; 기존 구름2장 이관은 신규 수 제외.",
+      "remaining": ""
+    },
+    {
+      "id": "HEIGHT",
+      "request": "17.6px 사람 키 및 문 높이·연출 무리 크기",
+      "status": "fulfilled-with-disclosed-registration-limits",
+      "commit": "0001d876e5246699365ef8de4ed1e274278cb0f6",
+      "artifact": "docs/verification/height-era2/README.md",
+      "artifactSha256": "229fc1b9922f9fa417a4af0517bc873b6562b9d2ef6157b49af27883b9a4bae2",
+      "proven": "23/23 original door families published; 107 correctionPNG, Wave2 actual92pairs/31of33 runtime observed; twoL0strained entries data-only",
+      "remaining": "Original23 families published; manual projection/footprint and small-zoom limits disclosed. LateL2 I0003 additionally published2a98bf2b.",
+      "currentEvidence": "/tmp/astra-renderB-open-requirements-cb14e11b.json"
+    },
+    {
+      "id": "TRADE",
+      "request": "직업 세계 연결72장 우선·미해결56장 이유",
+      "status": "fulfilled-with-accepted-deferral",
+      "commit": "461dd5e1",
+      "artifact": "docs/verification/rb-trade/REPORT.md",
+      "artifactSha256": "9fb9b66b091b28512600b0e00b885dcdea018552cfe370274ccd5b15fd0d5ebb",
+      "proven": "72장 원본/전달 SHA와 소비 연결, 대표 실제 장면.",
+      "remaining": "56장은 DEFERRED_56.md 이유별 보류. 모든72장이 화면에 개별 노출됐다는 증거 아님."
+    },
+    {
+      "id": "NAT3",
+      "request": "세계 좌표 비·움직이는 비 띠·쌓이는 낙엽",
+      "status": "fulfilled-with-visual-limitation",
+      "commit": "fbdb5cdd",
+      "artifact": "docs/verification/nat3/REPORT.md",
+      "artifactSha256": "34384bd6a8138a8590922cc889e195de3a7a9a8a1a240a94a4954fad0b7da401",
+      "proven": "50장 설치, 세계 좌표 날씨/낙엽. 기존3장은 신규 제외.",
+      "remaining": "Rain density region movement observed on grass; broad whole-town instant salience weak. Not physical cell-local rainfall accumulation.",
+      "currentCommit": "b9ccf0c5488841b59662b0c3d8658333949c8951",
+      "currentEvidence": "/tmp/astra-rain-band-root-final-archive-review.json"
+    },
+    {
+      "id": "SEASONS",
+      "request": "대상별 계절·첫서리·눈·봄",
+      "status": "fulfilled-bounded",
+      "commit": "8f463a20",
+      "artifact": "docs/verification/seasons/REPORT.md",
+      "artifactSha256": "717f0eb4d4b49528d0023221a536411e4e5825e3e2d516804d5edf5039c75911",
+      "proven": "6장 설치와 개별 위상. 한겨울 시점 문제는 후속 correction으로 닫음.",
+      "remaining": ""
+    },
+    {
+      "id": "BOUNDARIES",
+      "request": "늦가을·초겨울·한겨울·초봄과 움직이는 캡처",
+      "status": "fulfilled-bounded",
+      "commit": "c125606a",
+      "artifact": "docs/verification/season-boundaries/README.md",
+      "artifactSha256": "43a6b4e3a02033cb9f5ccfe65ac14607258a117566a321aaf8a2f768d5a1a44d",
+      "proven": "20쌍, 730나무36지붕130서리 분포, 한겨울 활엽수 앙상/대상지붕 덮임. 214프레임·6영상.",
+      "remaining": "시간 압축 표본이며 물리적인 눈 적설·국소 습윤 시뮬레이션 주장 안 함."
+    },
+    {
+      "id": "SPRING",
+      "request": "봄 세계 설치",
+      "status": "fulfilled-bounded",
+      "commit": "caae11c3",
+      "artifact": "docs/verification/spring/README.md",
+      "artifactSha256": "d016a31cb06d93a9022a255b82304ed01a05b7963324c99740122a58bd2ce6f4",
+      "proven": "8PNG·7역할. 계절 선택이며 새 번식/홍수 엔진 아님.",
+      "remaining": ""
+    },
+    {
+      "id": "LANDMARKS",
+      "request": "성장 조건 전 랜드마크 데이터만 준비",
+      "status": "fulfilled-accepted-data-only",
+      "commit": "9a48931d",
+      "artifact": "docs/verification/landmark-data/README.md",
+      "artifactSha256": "0b7e723ef77ff958ed9eb3f2bce5c65fa470809aa06221c5103c4eb217879a4c",
+      "proven": "44장/22계절쌍/7가족 데이터. 활성 규칙 없음, 런타임 설치0.",
+      "remaining": "엔진 성장 사실 전까지 설치 보류는 명시적으로 수락된 범위."
+    },
+    {
+      "id": "ERA",
+      "request": "시대 집과 간판·크기 가드 수정",
+      "status": "fulfilled-bounded",
+      "commit": "12e3f570",
+      "artifact": "docs/verification/era-signs/README.md",
+      "artifactSha256": "ac67fe6e9db259900e968fa4c1cb013265d893f7f58150499eb2f75fa7987651",
+      "proven": "ARCH1 시대집32장과 간판8장. f749fecc 250줄 가드 실패는 8936a469 모듈 분리로 수정.",
+      "remaining": "I0003 replaced by published7PNG with22paired actual views; I0004/I0005 remain uninstalled original inventory items, not counted as installed."
+    },
+    {
+      "id": "FIRE",
+      "request": "FIRE 설치",
+      "status": "fulfilled-bounded",
+      "commit": "56aae1a6",
+      "artifact": "docs/verification/world-fire/README.md",
+      "artifactSha256": "fb92fa7d27af4ba1c64fa8717d479e37477ca613ab03d4828162dcedbd0426d4",
+      "proven": "3장 화재 사실 연출",
+      "remaining": ""
+    },
+    {
+      "id": "CART",
+      "request": "CART 설치",
+      "status": "fulfilled-bounded",
+      "commit": "f9f4f2cf",
+      "artifact": "docs/verification/handcart/README.md",
+      "artifactSha256": "8a0cce45903a5066bd894cd0383c25e5ccc63e67dfef229eb7e769c8b7abaa89",
+      "proven": "1장/16쌍; 손 접점3.43px 잔차 및 NE가림",
+      "remaining": ""
+    },
+    {
+      "id": "HERDS",
+      "request": "HERDS 설치",
+      "status": "fulfilled-bounded",
+      "commit": "ff8f3512",
+      "artifact": "docs/verification/herds/README.md",
+      "artifactSha256": "85ba98e35dd880a115978fb9f47e83d23d1b3101e6f81f65e98cdd0c50b9efe4",
+      "proven": "4장/30쌍 정적 무리; AI·경제수량 불변,0.6개체수 판독 불가",
+      "remaining": ""
+    },
+    {
+      "id": "LOGS",
+      "request": "LOGS 설치",
+      "status": "fulfilled-bounded",
+      "commit": "7de6dce4",
+      "artifact": "docs/verification/log-stockpiles/README.md",
+      "artifactSha256": "3108261fe248c40cfd0d4a74e5afca758db191a35df480720fadf8a35eb9f690",
+      "proven": "4장/18쌍 및 무재고 음성3뷰",
+      "remaining": ""
+    },
+    {
+      "id": "FENCE",
+      "request": "FENCE 설치",
+      "status": "fulfilled-bounded",
+      "commit": "be74a63c",
+      "artifact": "docs/verification/collapsed-fence/README.md",
+      "artifactSha256": "8950e5032f47152fd55c43f45faee116871fe99a8ec5b9a420811577abca464a",
+      "proven": "2장/6쌍; 준비된1600상태, 자연 발생 증거 아님",
+      "remaining": ""
+    },
+    {
+      "id": "WASH",
+      "request": "WASH 설치",
+      "status": "fulfilled-bounded",
+      "commit": "abcbf898",
+      "artifact": "docs/verification/pasture-wash/README.md",
+      "artifactSha256": "ec125189603890eaa02acad01e7b004fc68366f8b247e3d27d4c6b5469f2a529",
+      "proven": "1장/6쌍; 준비된1601/2상태, 자연1380/82은 음성",
+      "remaining": ""
+    },
+    {
+      "id": "WALKER20",
+      "request": "등록된 사람4+소지품16 공통계약",
+      "status": "fulfilled-bounded",
+      "commit": "1a02c93a",
+      "artifact": "docs/verification/walker-pilot2/README.md",
+      "artifactSha256": "f1d31ab3c3ac8b3768e79e37bb25247c51c4e9ea869f13b97f8d083ec0c96181",
+      "proven": "20장 원본 ID/바이트/소비 직접 대조. 실제4쌍·20소스 witness;17.6높이·발/손 접점.",
+      "remaining": "전체 방향 무가림·전체장면 픽셀동일 주장 아님."
+    },
+    {
+      "id": "WET2",
+      "request": "젖는 땅·눈 없는 비 동영상",
+      "status": "fulfilled-with-visual-limitation",
+      "commit": "dbf60273",
+      "artifact": "docs/verification/wet-paths/README.md",
+      "artifactSha256": "7250b80affb319abc24cd2045b37509309ab641dccaf36d4f16cde2a974d38bb",
+      "proven": "2여름PNG, 379프레임 같은 저장/줌1,.6·눈0. 비 streak 이동/습윤0→1.",
+      "remaining": "Winter2 not installed because current wetness model winter0; telemetry failures retained. Rain visibility followup publishedb9ccf0c5; local causal soil-water simulation not claimed."
+    },
+    {
+      "id": "UNLOCK",
+      "request": "잠근 복사 입력 종료 후 u+w 복원",
+      "status": "fulfilled-bounded",
+      "commit": "caae11c3",
+      "artifact": "docs/verification/geometry-unlock/README.md",
+      "artifactSha256": "2f85612d78c1b6c9603ebc7f695279e6e19f4b54866d1a2493c5cfc217b10ba8",
+      "proven": "finally 성공/실패 복원, Mac/DGX3시험; 원본·symlink 대상 불변.",
+      "remaining": "SIGKILL/전원종료 제외."
+    },
+    {
+      "id": "STOREHOUSE",
+      "request": "창고 겨울 눈3장 연결 확인",
+      "status": "fulfilled-existing-installation",
+      "commit": "NAT-5 RUN02/N4D3 historical installation",
+      "artifact": "docs/verification/renderb-installation-recount/source-provenance.json",
+      "artifactSha256": "67da43fb9ad53515a63db40dc37b7a74e8f856de40697f793c4dcbb1090d71e0",
+      "proven": "기존3장 storehouseSnowManifest.generated.ts → storehouseSnowArt.ts → buildingOverlays.ts 연결 및 동일 원본 SHA. 새 설치 수로 중복 계산하지 않음.",
+      "remaining": ""
+    },
+    {
+      "id": "PACK-ID",
+      "request": "본편 core 팩과 UI 부품 계약 보존",
+      "status": "fulfilled-bounded",
+      "commit": "1a02c93a",
+      "artifact": "docs/verification/walker-pilot2/README.md",
+      "artifactSha256": "f1d31ab3c3ac8b3768e79e37bb25247c51c4e9ea869f13b97f8d083ec0c96181",
+      "proven": "공통 계약·선택기 packId, core/non-core 검증. UI 종류 합집합 보존. 새 배경 문구를 화면 코드에 추가한 작업 아님.",
+      "remaining": ""
+    },
+    {
+      "id": "BLEND",
+      "request": "3종 전환 마스크 성능/결정론 실험",
+      "status": "completed-experiment-failed-performance-not-shipped",
+      "commit": "759de92d (experiment evidence; not trunk feature)",
+      "artifact": "/tmp/astra-RB-BLEND-performance-20261007-759de92d.zip",
+      "proven": "19,046,956B;3324개 distinct 최악 p95 892.8ms. 실측267개 shared1.4ms/distinct21.1ms.534결정론·캐시해제0. 실험 측정 완료.",
+      "remaining": "기본OFF/do-not-ship. 성능 실패를 성공 기능으로 세지 않으며 승인된 실험에 새 성능 달성 의무를 만들지 않음.",
+      "artifactSha256": "a572a5ebffa88af7eb71b08ac38f5a408c50cb27810a8acf9f2b9221cbd6978f",
+      "authoritativeMember": "README.md",
+      "authoritativeMemberSha256": "0df1ab9724a4e1c22fa1282d15185e45d256d499e25b32d5079ba9c96a726aae"
+    },
+    {
+      "id": "MUSTER",
+      "request": "징집 뒤 실제 집결 장면1장",
+      "status": "fulfilled-bounded",
+      "commit": "41761f0c",
+      "artifact": "docs/verification/muster-field/README.md",
+      "proven": "I0313/N0144 one original PNG installed. Eight same-state/tick/camera pairs; four positive views, pending/expired zero draw. Normal accepted levy, existing war.conscripts facts.",
+      "remaining": "Decorative empty clearing only; winter hidden; 250-tick presentation window. Does not install military actors or close other war assets.",
+      "artifactSha256": "a2c68c0cb63380c7f3a011c98a329c8d6284945a5fc66bfdd2c10f8d47eb4732"
+    },
+    {
+      "id": "BRANCH-CLEANUP",
+      "request": "옛 원격 cloud-core/height-a1 가지 정리",
+      "status": "fulfilled-fresh-remote-check",
+      "commit": null,
+      "artifact": "/Users/rexxa/fls-astra-renderB/.omo/drafts/spring-world-resume.md",
+      "proven": "git ls-remote --heads origin astra/renderB-cloud-core astra/renderB-height-a1 returned no refs on2026-10-07.",
+      "remaining": "",
+      "artifactSha256": "bfa59478d9eaf297a3321701c6ea2be51aa9355d631cc59101dae61293b93f10"
+    },
+    {
+      "id": "HEIGHT-CROWD",
+      "request": "Presentation crowd adult scale",
+      "status": "fulfilled-bounded",
+      "commit": "116e9d42",
+      "artifact": "docs/verification/height-crowd/README.md",
+      "proven": "One existing crowd image; median43 sourcepx becomes17.6worldpx. Three controlled same-build pairs at1/.6/3.",
+      "remaining": "One natural summer scene; manual source measurement ±2px; not every season/location/occlusion.",
+      "artifactSha256": "ace11a0cff4bbb84b81f68e93c0311ba340c34b3bf820112c886450218628710"
+    },
+    {
+      "id": "HEIGHT-FUNERAL",
+      "request": "Funeral bearer/bier scale and registration",
+      "status": "fulfilled-with-visual-limitation",
+      "commit": "b78ffca4",
+      "artifact": "docs/verification/height-funeral/README.md",
+      "proven": "Existing three source images; published registration and object occlusion.18 comparison pairs including four departure pairs.",
+      "remaining": "Only naturalNW proof; rear supports visible, front hands roof-occluded. Four-hands visibility and other directions not runtime-proven; nominal zero residual has2.60worldpx manual uncertainty.",
+      "artifactSha256": "17ced25d38e2aa51b91213abed63204fa88f1a0fafc32b14d5c36a98cdc814dd"
+    }
+  ],
+  "rootEvidence": [
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-pairs-review.json",
+      "sha256": "73362be62f1f5e821a5734f30989169b9a51e60e5e030997bb9f859edf4b491e"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-draw-review.json",
+      "sha256": "62a9ebdcdc25c71c7e9caad51daf6d3c824e536022377ae20d1d88466dd0e3c4"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-provenance-review.json",
+      "sha256": "69d5dd69af0b63fd5702e57dc4c9b4dcc4093a7dd84412353014477dcb9573ad"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-geometry-review.json",
+      "sha256": "0c5f4de2439abb57532a3ddb4fb33358804319e79c5f2c0a85508a08bfe13e40"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-final-ledger-review.json",
+      "sha256": "58f0aa30b958563771281d1812e69571ddbfa6cdcb153b35b983e800001929dd"
+    },
+    {
+      "path": "/tmp/astra-renderB-legacy-alias-physical-check-2a98bf2b.json",
+      "sha256": "94173c174041d1a49a1cc4cfc90480a07ad9aad26197759bbe0f5b98c6a3f969"
+    },
+    {
+      "path": "/tmp/astra-renderB-l2late-pending-accounting-0129e426.json",
+      "sha256": "ba201fcbd836cc4ae7cbca440c86519e863fdb5d8c824b3040f67fcb809b368e"
+    },
+    {
+      "path": "/tmp/astra-rain-band-root-published-tests-review.json",
+      "sha256": "8211ae701f3fca1dad904adad2f3a7ca0bba4dbf916e9febf249d34950b5591c"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-final-tests-review.json",
+      "sha256": "6c6da6a44bf19f98dba886d1488bbbb0089c3b5ff0125d4d78c091fb2a011d37"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-stylefix-root-final-archive-review.json",
+      "sha256": "dbd3125d13e184a43262ce288229c9cd6759a2e74dafa7191bb794b747d90395"
+    },
+    {
+      "path": "/tmp/astra-renderB-accounting-2a98bf2b.json",
+      "sha256": "725b91b8d89680d6ce28c73d4fd86cedcc53c69ff61c34cba5092aced889bce7"
+    }
+  ],
+  "outstanding": [],
+  "complete": true,
+  "scope": "Requirement coverage with bounded evidence. Does not claim every744 source installed or every image visible in natural gameplay. Retains explicit user-approved trade56/landmark44-data/UI-A/BLENDfailedOFF boundaries.",
+  "completionBasis": "Original goal stop condition: Render B world families across phases1-3 implemented with bounded runtime evidence and majority of original installation inventory linked/replaced. Does not claim all744 installed. User-approved engine/UI deferrals remain explicitly outside this closure."
+}
