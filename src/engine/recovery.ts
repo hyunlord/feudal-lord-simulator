@@ -11,16 +11,23 @@ import type { IntakeRules } from "../economy/storage";
 import { houseBuiltLevel } from "../population/houseCondition";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
+import type { Era } from "../content/eraConfig";
 
 /** RC-1: the recovery rules are lord mode's. */
 export function recoveryActive(state: Pick<GameState, "agency">): boolean {
   return state.agency !== undefined;
 }
 
-/** RC-6: lord mode's intake rules (the caps' lines); none elsewhere. */
-export const LORD_INTAKE_RULES: IntakeRules = { caps: LORD_INTAKE_CAPS };
-export function lordIntakeRules(state: Pick<GameState, "agency">): IntakeRules | undefined {
-  return recoveryActive(state) ? LORD_INTAKE_RULES : undefined;
+/** RC-6: lord mode's intake rules (the caps' lines); none elsewhere. DTR-19: a line holds from its era on. */
+export const LORD_INTAKE_RULES: IntakeRules = { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined) };
+const ERA_ORDER: Readonly<Record<Era, number>> = { hamlet: 0, palisade: 1, stone_town: 2 };
+const RULES_BY_ERA: Readonly<Record<Era, IntakeRules>> = {
+  hamlet: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 0) },
+  palisade: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 1) },
+  stone_town: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 2) },
+};
+export function lordIntakeRules(state: Pick<GameState, "agency"> & Partial<Pick<GameState, "era">>): IntakeRules | undefined {
+  return recoveryActive(state) ? RULES_BY_ERA[state.era ?? "hamlet"] : undefined;
 }
 
 /** RC-4: the labour shortage, permille — the job slots left unfilled over the slots the town's buildings need. */

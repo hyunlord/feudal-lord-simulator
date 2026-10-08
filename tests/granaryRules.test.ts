@@ -30,6 +30,27 @@ test("RC-6 in lord mode barley fills at most 40 % of a granary; the sandbox keep
   assert.ok(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "bread", free, LORD_INTAKE_RULES) > 0, "bread keeps its room");
 });
 
+test("DTR-19 from the palisade on, timber and logs together fill at most half a storehouse, stone_raw keeps its own half; the hamlet keeps the store whole", () => {
+  const town = load();
+  const store = { ...town.buildings.find(building => building.kind === "storehouse")!, inventory: {}, reserved: {}, stockReserved: {} };
+  const room = BUILDING_CONFIG_BY_KIND.storehouse.storageCapacity;
+  const share = (resource: string) => Math.floor(room * LORD_INTAKE_CAPS.find(line => line.store === "storehouse" && line.resource === resource)!.permille / 1000);
+  const rules = (era: "hamlet" | "palisade" | "stone_town") => lordIntakeRules({ agency: initialAgency(), era });
+  const space = (inventory: Record<string, number>, resource: "timber" | "logs" | "stone_raw" | "stone", era: "hamlet" | "palisade" | "stone_town") => {
+    const filled = { ...store, inventory };
+    return storageIntakeSpace(filled, resource, availableSpace(filled, BUILDING_CONFIG_BY_KIND.storehouse), rules(era));
+  };
+  assert.equal(share("timber") + share("logs"), room / 2, "wood together half");
+  assert.equal(space({ timber: share("timber") }, "timber", "palisade"), 0, "timber at its share");
+  assert.equal(space({ logs: share("logs") }, "logs", "stone_town"), 0, "logs at theirs");
+  const wood = { timber: share("timber"), logs: share("logs") };
+  assert.ok(space(wood, "stone_raw", "palisade") >= room / 2 - 1, "the quarry's stone keeps its room with the wood full");
+  assert.ok(space(wood, "stone", "palisade") > 0);
+  assert.ok(space({ timber: share("timber") }, "timber", "hamlet") > 0, "in the hamlet the charter's timber has the whole store");
+  assert.equal(space({ timber: share("timber") }, "timber", "palisade"), 0);
+  assert.ok(storageIntakeSpace({ ...store, inventory: { timber: share("timber") } }, "timber", 100, lordIntakeRules({})) > 0, "the sandbox keeps the store's own room");
+});
+
 test("RC-5 the carters' spare loads bring barn wheat to the neediest mill or granary, from the nearest barn", () => {
   const town = { ...load(), agency: initialAgency() };
   const barn = town.buildings.find(building => building.kind === "farmstead")!;

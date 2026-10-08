@@ -9,7 +9,7 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingC
 import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
-  COMMUNITY_FALLBACK, LOAN_NEED, STORAGE_HOARD, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
+  COMMUNITY_FALLBACK, LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
   START_SCORE, STARTS_PER_WEEK, TEMPERAMENT_SPREAD, CHOICE_SPAN, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
   WALK_REUSE_IDLE_WEEKS, WALK_REUSE_TICKS,
 } from "../content/townAgencyConfig";
@@ -143,11 +143,7 @@ export interface Proposal {
   readonly fallback?: { readonly builder: ActorKind; readonly since: number };
 }
 
-/** DTR-15, STORE-1: the town's bar for a storage need — a hoard in the stores is no want of room (`STORAGE_HOARD`). */
-function storageWanted(state: GameState): boolean {
-  return (["timber", "logs", "stone"] as const).every(resource => state.buildings.reduce((sum, building) => sum + (building.inventory?.[resource] ?? 0), 0)
-    < STORAGE_HOARD);
-}
+
 
 /** LM-E5 (LG-2) API: an actor's temperament, from the game seed (the same seed, the same temperaments). */
 export function actorTemperament(state: Pick<GameState, "seed">, kind: ActorKind): Temperament {
@@ -343,8 +339,6 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
   const centre = townCentre(state);
   const propose = (action: AdvisorAction, planner: string, rank: number | null) => {
     if (!isTownAction(action)) return;
-    // STORE-1: no storehouse for a hoard, whoever would build it.
-    if (planner === "storage" && action.kind === "place_building" && action.building === "storehouse" && !storageWanted(state)) return;
     const site = siteOf(state, action);
     const key = `${whatOf(action)}@${site.tx},${site.ty}`;
     if (seen.has(key)) return;

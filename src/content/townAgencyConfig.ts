@@ -58,13 +58,7 @@ export const START_SCORE = 40;
  * the premium from the lord's treasury as far as it holds, the rest from the community's purse.
  */
 export const COMMUNITY_FALLBACK = { waitTicks: 4_000, premiumPermille: 500 } as const;
-/**
- * DTR-15, STORE-1 (the user's instruction 2026-10-08): the town's own bar for a storage need — stores holding this much of
- * one material (timber, logs, stone) are a hoard, not a want of room, and no one builds a storehouse for it. Full stores
- * are what stops the camps and the sawmills; each storehouse built for a hoard let them cut on (125-year runs: 11–20
- * storehouses round 1,000–1,800 timber and 700 logs; trunk 9–13). The usual stock is 340–500.
- */
-export const STORAGE_HOARD = 800;
+
 /**
  * LM-E5 (LG-2): an actor chooses by chance, not always the best: a choice's weight is exp((score − best) / spread),
  * the spread its temperament's (a cautious actor mostly takes the best, a bold one often the next). The draw is the

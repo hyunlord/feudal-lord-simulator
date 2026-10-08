@@ -1,6 +1,7 @@
 import { LABOUR_BALANCE, PRESSURE_BALANCE } from "./balanceConfig";
 import type { BuildingKind } from "./buildingConfig";
 import type { StorableResourceType } from "./resourceConfig";
+import type { Era } from "./eraConfig";
 
 /**
  * RECOVER-1 (spec docs/design/recovery.md RC-2..RC-4): lord mode's recovery — vacant houses and the labour shortage
@@ -28,8 +29,21 @@ export interface IntakeCap {
   readonly resource: StorableResourceType;
   /** The resource may fill at most this share of the store, permille. */
   readonly permille: number;
+  /** DTR-19: the line holds from this era on (absent: always). */
+  readonly fromEra?: Era;
 }
-export const LORD_INTAKE_CAPS: readonly IntakeCap[] = [{ store: "granary", resource: "barley", permille: 400 }];
+/**
+ * DTR-19 (STORE-1, the user's instruction 2026-10-08): from the palisade on, timber and logs together fill at most half
+ * a storehouse (35 % and 15 %) and stone_raw its own half — one material no longer takes the stores, stone keeps its
+ * room, and the wood beyond waits at the camps and sawmills, where the carters sell what lies above the town's reserve
+ * (TR-7 b). In the hamlet the charter's timber (250, DTR-13) needs the stores whole.
+ */
+export const LORD_INTAKE_CAPS: readonly IntakeCap[] = [
+  { store: "granary", resource: "barley", permille: 400 },
+  { store: "storehouse", resource: "timber", permille: 350, fromEra: "palisade" },
+  { store: "storehouse", resource: "logs", permille: 150, fromEra: "palisade" },
+  { store: "storehouse", resource: "stone_raw", permille: 500, fromEra: "palisade" },
+];
 
 /**
  * RECOVER-1 (RC-5, B2; data, not code): in lord mode the short side pulls. Each chain names a converter, its input,
