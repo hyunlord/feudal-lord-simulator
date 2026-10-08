@@ -13,12 +13,20 @@
 
 `layers.json`은 현재 `registryV4Support()`의 `runs=true` 집합과 정확히 같다. 각 ID마다 지원되는 선택과 실제 명령 인수, 기본 무게와 Engine B 예외, 지속세율 여부, 잠재 trace 대상, because 생산 경로, 처음 관측 가능한 조건과 남은 증거 공백을 담는다. 지원되지 않는 선택도 이유와 함께 별도로 보존한다. 명령 인수의 binding은 실제 세계 대상을 읽는 식이며 아직 실행해서 얻은 대상 ID가 아니다.
 
+## TRACE-KEEP 통합 후 15년 장면 확인
+
+`engineB-checkpoint15-2485af4`는 깨끗한 `2485af400` 소스로 DGX에서 종료0(명령81.1초, 관측78.11초)이다. 0~60000틱·최대 간격1·역행0·관측 오류0을 확인했다. `checkpoint15/`에 원자료 gzip, 저장10개, manifest와 독립 해시/공식 decodeSave 검사 결과를 보존한다. 005·092·211·201의 첫 응답/후속 인과 장면4쌍, 038 응답1개와 마지막 상태1개다. 결과 장면의 실제 tick이 history tick과 일치한다. 이것은15년 장면 보존 검증이며125년 seed셋·화면 판정을 대신하지 않는다.
+
+특히 최신 소스의 실제 038 응답 상태(`038-state.json`)는 tick36037에서 `suit-2.stage=enforcing`, `enforcements=1`, `enforced=false`, `hold=55`다. 최초 집행이 성공한 뒤 선택지가 남았다는 해석은 이 자연 관측에서도 성립하지 않는다. 판결을 받은 claim은 won/strength50이며, 이 유예 응답의3년 내 후속 연결은 관측되지 않았다.
+
+최신125년 seed1→2→3은 같은 `2485af400` 소스의 `engineB-weight125-kept-clean-2485af4`에서 직렬 실행한다. 출력은 `.remote/eb-weight-kept`에 두어 다음 seed의 소스 청결 검사에 생성물이 섞이지 않게 한다. 앞선 `engineB-weight125-kept-2485af4` 시도는 가져온15년 출력 폴더 때문에 청결 검사에서2.5초 만에 종료1했고 측정 자료로 채택하지 않는다.
+
 ## 실제 장면 보존
 
 최신 측정은 선택적 네 번째 인수에 장면 저장 폴더를 준다. 원격 DGX에서만 장기 실행한다.
 
 ```sh
-npx tsx scripts/engineBWeightAuditRun.ts 1 125 output/eb-weight/seed-1.json output/eb-weight/checkpoints/seed-1
+npx tsx scripts/engineBWeightAuditRun.ts 1 125 .remote/eb-weight/seed-1.json .remote/eb-weight/checkpoints/seed-1
 ```
 
 관측기는 지원 ID별 첫 영주 응답 직후의 실제 상태와 그 결정에 연결된 첫 후속 인과의 실제 상태를 한 쌍까지 남긴다. 같은 틱 영수증·만료 답변·원래 3년 창 밖 결과는 짝으로 채택하지 않는다. 공식 저장 인코더의 결과를 gzip으로 보관하며 manifest에 소스 SHA, 실제 관측 tick, 결정·history ID, 파일·저장 바이트 해시와 관측 기간 부족 여부를 기록한다. 마지막 실제 상태도 별도로 남긴다. 저장 장면은 화면 검증에 쓸 입력이며, 파일이 있다는 것만으로 화면 표시나 이해 가능성을 검증한 것은 아니다.

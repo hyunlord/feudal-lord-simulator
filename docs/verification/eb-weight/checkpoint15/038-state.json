@@ -1,0 +1,54 @@
+{
+  "source": "2485af40046793f1856829fa1161dc4431942aa7",
+  "checkpoint": {
+    "file": "ck_evt_038-answer-h-002358.save.json.gz",
+    "fileSha256": "f8e89756b3b94bf8b44d21d5ada507f19cfaba20a6cee16bc74244a1a45de115",
+    "encodedSaveSha256": "e9921dfe98c0e19931cedd138641f012e7b496dcc9f0d52ecd0fe5ff468cb73a",
+    "observedTick": 36037,
+    "bytes": 103995
+  },
+  "tick": 36037,
+  "suit": {
+    "id": "suit-2",
+    "claimId": "claim-2",
+    "plaintiff": "lord",
+    "defendant": "estate:estate-neighbour-3",
+    "estateId": "estate-neighbour-3",
+    "pieceId": "estate-neighbour-3:advowson",
+    "stage": "enforcing",
+    "stageSince": 33000,
+    "patronSupport": 0,
+    "enforcements": 1,
+    "costs": 604,
+    "verdict": "plaintiff",
+    "hold": 55,
+    "enforced": false
+  },
+  "claim": {
+    "id": "claim-2",
+    "claimant": "lord",
+    "estateId": "estate-neighbour-3",
+    "pieceId": "estate-neighbour-3:advowson",
+    "basis": "purchase_deed",
+    "strength": 50,
+    "evidence": [
+      {
+        "kind": "deed",
+        "weight": 15,
+        "tick": 12091
+      },
+      {
+        "kind": "witnesses",
+        "weight": 8,
+        "tick": 12091
+      },
+      {
+        "kind": "charter",
+        "weight": 20,
+        "tick": 12091
+      }
+    ],
+    "since": 12000,
+    "status": "won"
+  }
+}
