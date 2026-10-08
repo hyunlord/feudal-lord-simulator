@@ -1,12 +1,14 @@
 // LM-R3 phase 2a evidence (the lord slice's opening page and its end) in the browser, on the DGX: JPEGs at 1280 × 800 and on
 // the tablet (1180 × 820, touch), each with the page's smallest text (≥ 12 px), its smallest target (≥ 44 px), its box
 // inside the view, its primaries (one) and `title=` attributes (none):
-//  - start-<view>: a new lord-slice game from the welcome (de Haverel) — its opening page, then [다스리기 시작]: not again;
+//  - start-<view>: a new lord-slice game from the welcome (de Haverel) — no page while it stands at tick 0, its opening page
+//    once time starts (the first tick), then [다스리기 시작]: not again;
 //  - end-<view> / end-shaped-<view>: scripts/sliceEndsStates.ts's `slice-end` (seed 3 at 1320's first tick) — the end page
 //    opens by itself after the load, then its decisions part scrolled into view;
 //  - end-record: a decision's [연대기에서 이 결정 보기] — the chronicle on that record; closing it comes back to the page;
 //  - end-reopen: [계속 다스리기], then the pause menu's [영주의 스무 해 돌아보기] opens it again;
-//  - end-live: `slice-eve` (40 ticks before the end) run at 1×: 1319's year card first, then the end page by itself.
+//  - end-live: `slice-eve` (40 ticks before the end) run at 1×: the turn's cards first (the season's ledger, 1319's year
+//    card), then the end page by itself.
 // results.json beside them.
 //   scripts/remote/run.sh render-LMR3-slice-captures-<sha7> --light -- bash scripts/sliceEndsCaptures.sh
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
@@ -68,16 +70,20 @@ for (const view of VIEWS) {
     await page.locator('.welcome-parchment').waitFor({ timeout: 90_000 });
     await page.waitForTimeout(1_200);
     await startFromWelcome(page, 'core:lord_slice');
+    // A new game stands at its tick 0 until time starts; the page opens at the first tick (the factions are seated then).
+    await page.waitForTimeout(2_000);
+    const beforeTime = await visible(page, START);
+    await page.locator('.speed-seal[data-seal="normal"]').click();
     const opened = await waitFor(page, START, 30_000);
     await page.waitForTimeout(1_500);
-    const row = { view: view.name, opened, card: opened ? await measure(page, START) : null };
+    const row = { view: view.name, beforeTime, opened, card: opened ? await measure(page, START) : null };
     if (opened) row.bytes = await shoot(page, `start-${view.name}`);
     if (opened) {
       await page.locator(`${START} .slice-begin`).click();
       await page.waitForTimeout(4_000);
       row.again = await visible(page, START);
     }
-    report(`start-${view.name}`, row, opened && row.again === false && (row.card?.text ?? '').includes('드 해버럴'));
+    report(`start-${view.name}`, row, !beforeTime && opened && row.again === false && (row.card?.text ?? '').includes('드 해버럴'));
     await context.close();
   }
   // The end page after a load.
@@ -130,17 +136,17 @@ for (const view of VIEWS) {
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: true, initScript: INIT, width: 1280, height: 800,
     query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
   page.on('pageerror', error => errors.push(`live: ${String(error).slice(0, 300)}`));
-  const row = { yearCard: false, end: false };
-  for (let waited = 0; waited < 120_000 && !row.end; waited += 500) {
-    if (!row.yearCard && await visible(page, '.results-card.year-review')) {
-      row.yearCard = true; row.endWithYearCard = await visible(page, END);
-      await page.waitForTimeout(800); await page.locator('.results-card.year-review .results-card-continue').click();
+  // The turn's cards come first (the season's ledger, 1319's year card), each put away; then the end page by itself.
+  const row = { order: [], end: false };
+  for (let waited = 0; waited < 180_000 && !row.end; waited += 500) {
+    for (const [name, card, button] of [['season', '.season-ledger-card', '.season-ledger-resume'], ['year', '.results-card.year-review', '.results-card-continue']]) {
+      if (await visible(page, card)) { row.order.push(name); await page.waitForTimeout(800); await page.locator(`${card} ${button} >> visible=true`).first().click(); await page.waitForTimeout(300); }
     }
     row.end = await visible(page, END);
     if (!row.end) await page.waitForTimeout(500);
   }
-  if (row.end) { await page.waitForTimeout(800); row.bytes = await shoot(page, 'end-live'); }
-  report('end-live', row, row.end && row.yearCard && row.endWithYearCard === false);
+  if (row.end) { row.order.push('end'); await page.waitForTimeout(800); row.bytes = await shoot(page, 'end-live'); }
+  report('end-live', row, row.end && row.order.includes('year') && row.order.indexOf('year') < row.order.indexOf('end'));
   await context.close();
 }
 

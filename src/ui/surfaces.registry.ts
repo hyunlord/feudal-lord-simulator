@@ -577,12 +577,13 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...STEWARD_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
-  // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step) and its end (scripts/sliceEndsStates.ts:
-  // the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card opens after the load — the end page does).
+  // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
+  // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
+  // opens after the load — the end page does, after the story's delay).
   { id: "modal.slice-start", root: ".chronicle-page.slice-page[data-slice='start']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
     scrollParts: [".chapter-page-scroll"], scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario='core:lord_slice']" }, { wait: ".welcome-house" }, { click: ".welcome-parchment [data-house-start]" },
-      { wait: ".slice-page[data-slice='start']", timeout: 30_000 }, { pause: 1_200 }],
+      { pause: 1_500 }, { click: ".speed-seal[data-seal='normal']" }, { wait: ".slice-page[data-slice='start']", timeout: 30_000 }, { pause: 1_200 }],
     requires: ["h2", ".slice-you", ".slice-neighbours li", ".slice-factions li", ".slice-rules li", ".slice-begin"],
     data: "a new lord-slice game's opening page (de Haverel): the house and its arms, the home estate, the town, the neighbours, the five factions, the slice's years" },
   { id: "modal.slice-end", root: ".chronicle-page.slice-page[data-slice='end']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",

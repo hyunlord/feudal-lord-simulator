@@ -4,7 +4,7 @@ import { lordSlice, lordSliceOutcome } from "../../engine/lordSlice";
 import { storySeen } from "../../engine/storySeen";
 
 // LM-R3 phase 2a: when the lord slice's two pages open (docs/design/lord-slice.md LS-1, LS-5).
-// - The opening page: once, as a lord-slice game the welcome's house step started begins — within its first season and
+// - The opening page: once, as a lord-slice game the welcome's house step started begins (its first tick) — within its first season and
 //   not marked seen (`slice-start`). The request is the start's (the welcome sends start_new_game, which remounts the app,
 //   so it is kept outside React as the start hint is); a load or a harness's state is no start and opens no page.
 // - The end: once, when `lordSliceOutcome(state).ended` turns true — within the end's season and not marked opened
@@ -29,8 +29,9 @@ export function takeSliceStart(): void {
 }
 
 /**
- * The opening page is due: a slice game the welcome just started, from its first tick (the factions and the neighbour
- * houses are set then — at tick 0 the estates still carry the opening's names) to the end of its first season, not seen.
+ * The opening page is due: a slice game the welcome just started, from its first tick to the end of its first season,
+ * not seen. A new game stands at tick 0 until the player starts time; the first tick seats the factions and the
+ * neighbour houses (at tick 0 the estates still carry the opening's names), so the page waits for it.
  */
 export function sliceStartDue(state: GameState, requested = startRequested): boolean {
   return requested && lordSlice(state) && state.tick >= 1 && state.tick < SEASON && storySeen(state, SLICE_START_ID) === null;
