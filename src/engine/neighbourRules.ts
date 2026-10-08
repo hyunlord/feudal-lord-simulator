@@ -5,7 +5,8 @@
  * one back and sues (the Paston rule: the more the lord wins, the more he must keep), enforcing a judgment it won once a
  * year. Nothing runs without `state.agency`.
  */
-import { NW07_CLAIM_SURFACES_PERMILLE, NW08_CONTESTED_SUCCESSION_PERMILLE, RECOVERY_CLAIM_PERMILLE, RECOVERY_EVIDENCE, RECOVERY_EVIDENCE_PERMILLE } from "../content/neighbourRulesConfig";
+import { NW07_CLAIM_SURFACES_PERMILLE, NW08_CONTESTED_SUCCESSION_PERMILLE, RECOVERY_CLAIM_PERMILLE, RECOVERY_EVIDENCE, RECOVERY_EVIDENCE_PERMILLE,
+  RECENT_RECOVERY_PERMILLE, RECENT_TAKING_YEARS, TITLE_RECOVERY_STRENGTH } from "../content/neighbourRulesConfig";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD, raiseClaim } from "./estates";
 import { addSuitEvidence, enforcePossession, fileSuit } from "./estateSuits";
@@ -41,13 +42,22 @@ export function advanceNeighbourRules(state: GameState): GameState {
     next = raiseClaim(next, { claimant: LORD, estateId: estate.id, pieceId: piece.id, basis: "purchase_deed" });
   }
   // Paston: a house claims back a piece the lord holds of its estate, and sues at once (the lord the defendant).
+  // DTR-21 (P-L3): a piece the lord only possesses by a judgment, its title still the house's, first — the title holder
+  // claims its possession back, more often and stronger.
   for (const estate of estatesOf(next).estates) {
     if (!estate.offMap || estate.titleHolder === LORD) continue;
-    const taken = estate.pieces.filter(piece => piece.titleHolder === LORD);
+    const possessed = estate.pieces.filter(piece => piece.possessor === LORD && piece.titleHolder === estate.titleHolder);
+    const titled = estate.pieces.filter(piece => piece.titleHolder === LORD);
+    const recent = titled.filter(piece => piece.possessor === LORD && state.tick - piece.possessedSince < RECENT_TAKING_YEARS * YEAR);
     const suing = estatesOf(next).claims.some(claim => claim.claimant === estate.titleHolder && claim.estateId === estate.id && (claim.status === "open" || claim.status === "suing"));
-    if (taken.length === 0 || suing || hashSeed(state.seed, `recovery:${estate.id}`, year) % 1000 >= RECOVERY_CLAIM_PERMILLE) continue;
+    const draw = hashSeed(state.seed, `recovery:${estate.id}`, year) % 1000;
+    const byTitle = possessed.length > 0 && draw < RECENT_RECOVERY_PERMILLE;
+    const byRecent = !byTitle && recent.length > 0 && draw < RECENT_RECOVERY_PERMILLE;
+    const byPaston = titled.length > 0 && draw < RECOVERY_CLAIM_PERMILLE;
+    if (suing || (!byTitle && !byRecent && !byPaston)) continue;
+    const taken = byTitle ? possessed : byRecent ? recent : titled;
     const piece = taken[hashSeed(state.seed, `recovery-piece:${estate.id}`, year) % taken.length]!;
-    next = raiseClaim(next, { claimant: estate.titleHolder, estateId: estate.id, pieceId: piece.id, basis: "inheritance" });
+    next = raiseClaim(next, { claimant: estate.titleHolder, estateId: estate.id, pieceId: piece.id, basis: "inheritance", ...(byTitle ? { strength: TITLE_RECOVERY_STRENGTH } : {}) });
     const claim = estatesOf(next).claims.find(entry => entry.claimant === estate.titleHolder && entry.estateId === estate.id && entry.pieceId === piece.id && entry.status === "open");
     if (claim === undefined) continue;
     next = fileSuit(next, claim.id);

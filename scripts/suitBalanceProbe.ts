@@ -9,7 +9,7 @@ import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
 import { lordBotCommands } from "../src/engine/lordBot";
-import { POSSESSION_RENT_DETAIL } from "../src/engine/possessionRent";
+import { POSSESSION_RENT_DETAIL, possessionRentLines } from "../src/engine/possessionRent";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { treasuryBalance } from "../src/ledger/ledger";
@@ -18,19 +18,23 @@ import { newGameState } from "../src/state/newGame";
 
 interface YearRow {
   year: number; suitsFiled: number; enforced: number; enforceFailed: number; claimsAgainst: number; suitsAgainst: number; lost: number;
-  suitCost: number; rent: number; treasury: number; possessed: number; neighbours: Record<string, number>;
+  suitCost: number; rent: number; withheld: number; keeper: number; contestedSeasons: number; treasury: number; possessed: number; neighbours: Record<string, number>;
 }
 
 export function suitBalanceProbe(seed: number, years = 125) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
   const rows: YearRow[] = [];
-  const blank = (year: number): YearRow => ({ year, suitsFiled: 0, enforced: 0, enforceFailed: 0, claimsAgainst: 0, suitsAgainst: 0, lost: 0, suitCost: 0, rent: 0, treasury: 0, possessed: 0, neighbours: {} });
+  const blank = (year: number): YearRow => ({ year, suitsFiled: 0, enforced: 0, enforceFailed: 0, claimsAgainst: 0, suitsAgainst: 0, lost: 0, suitCost: 0, rent: 0, withheld: 0, keeper: 0, contestedSeasons: 0, treasury: 0, possessed: 0, neighbours: {} });
   let row = blank(start);
   while (stateCalendar(state).year < start + years) {
     // The commands' own lines (a suit's filing and its costs) count with the tick's.
     const before = state;
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
+    // DTR-21: what the season's rent holds back and the keeper takes (the same lines the season posts).
+    if (state.tick > 0 && (state.tick + 1) % 1_000 === 0) for (const line of possessionRentLines({ ...state, tick: state.tick + 1 })) {
+      row.withheld += line.withheld; row.keeper += line.keeper; if (line.contested) row.contestedSeasons += 1;
+    }
     state = advanceTick(state);
     for (const after of [state]) {
       const was = new Map(estatesOf(before).suits.map(suit => [suit.id, suit] as const));
@@ -60,7 +64,7 @@ export function suitBalanceProbe(seed: number, years = 125) {
   }
   const sum = (key: keyof YearRow) => rows.reduce((total, entry) => total + Number(entry[key]), 0);
   return { seed, years, totals: { suitsFiled: sum("suitsFiled"), enforced: sum("enforced"), enforceFailed: sum("enforceFailed"), claimsAgainst: sum("claimsAgainst"),
-    suitsAgainst: sum("suitsAgainst"), lost: sum("lost"), suitCost: sum("suitCost"), rent: sum("rent") }, rows };
+    suitsAgainst: sum("suitsAgainst"), lost: sum("lost"), suitCost: sum("suitCost"), rent: sum("rent"), withheld: sum("withheld"), keeper: sum("keeper"), contestedSeasons: sum("contestedSeasons") }, rows };
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

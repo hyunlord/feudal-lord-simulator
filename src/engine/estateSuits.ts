@@ -63,7 +63,8 @@ export function fileSuitRefusal(state: GameState, claimId: string): SuitRefusal 
   if (claim.status !== "open") return "not_open";
   const found = target(estates, claim.estateId, claim.pieceId);
   if (found === null) return "no_claim";
-  if (titleOf(found) === claim.claimant) return "own_title";
+  // DTR-21: a title holder out of possession sues the possessor; one who holds both has nothing to sue for.
+  if (titleOf(found) === claim.claimant && possessorOf(found) === claim.claimant) return "own_title";
   if (claim.claimant === LORD && treasuryBalance(state) < (SUIT_STAGE_COST.filed ?? 0)) return "treasury";
   return null;
 }
@@ -74,7 +75,8 @@ export function fileSuit(state: GameState, claimId: string): GameState {
   const estates = estatesOf(state);
   const claim = estates.claims.find(entry => entry.id === claimId)!;
   const found = target(estates, claim.estateId, claim.pieceId)!;
-  const suit: Suit = { id: `suit-${estates.nextSuit}`, claimId, plaintiff: claim.claimant, defendant: titleOf(found), estateId: claim.estateId,
+  const defendant = titleOf(found) === claim.claimant ? possessorOf(found) : titleOf(found);
+  const suit: Suit = { id: `suit-${estates.nextSuit}`, claimId, plaintiff: claim.claimant, defendant, estateId: claim.estateId,
     ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: "filed", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: SUIT_STAGE_COST.filed ?? 0 };
   const paid = pay(state, suit, SUIT_STAGE_COST.filed ?? 0, "filed");
   if (paid === null) return state;

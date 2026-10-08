@@ -10,7 +10,11 @@ import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { advanceTrace, changedTargets, traceOf } from "../src/engine/decisionTrace";
 import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
-import { POSSESSION_RENT_DETAIL, possessionRentSeason } from "../src/engine/possessionRent";
+import { POSSESSION_RENT_DETAIL, possessionRentLines, possessionRentSeason } from "../src/engine/possessionRent";
+import { POSSESSION_RENT } from "../src/content/possessionConfig";
+import { TITLE_RECOVERY_STRENGTH } from "../src/content/neighbourRulesConfig";
+import { raiseClaim } from "../src/engine/estates";
+import { advanceNeighbourRules } from "../src/engine/neighbourRules";
 import { advanceTick } from "../src/engine/tick";
 import { newGameState } from "../src/state/newGame";
 
@@ -33,10 +37,14 @@ test("DTR-20: a piece the lord possesses of an estate he does not hold whole yie
   const base = run(lordGame(), 10);
   const whole = possessing(base);
   const after = possessionRentSeason(whole.state);
-  assert.equal(rents(after, whole.pieceId).reduce((sum, entry) => sum + entry.amount, 0), Math.round(whole.value / 4));
+  // DTR-21: the keeper's share comes off (10 %).
+  const quarter = Math.round(whole.value / 4);
+  const net = quarter - Math.round(quarter * POSSESSION_RENT.keeperPermille / 1000);
+  assert.equal(rents(after, whole.pieceId).reduce((sum, entry) => sum + entry.amount, 0), net);
   assert.equal(rents(possessionRentSeason(base), whole.pieceId).length, 0, "not his: no rent");
   const part = possessing(base, 500);
-  assert.equal(rents(possessionRentSeason(part.state), part.pieceId)[0]!.amount, Math.round(part.value / 4));
+  const partQuarter = Math.round(part.value / 4);
+  assert.equal(rents(possessionRentSeason(part.state), part.pieceId)[0]!.amount, partQuarter - Math.round(partQuarter * POSSESSION_RENT.keeperPermille / 1000));
   const { agency: _agency, ...sandbox } = whole.state;
   assert.equal(possessionRentSeason(sandbox as GameState), sandbox, "lord mode only");
   // The season's step runs it (the stewardship's season, the tick a season starts).
@@ -67,4 +75,35 @@ test("DTR-20: a judgment enforced leaves the possession's rent as its target; th
   const again = advanceTrace(traced, possessionRentSeason({ ...traced, tick: traced.tick + 1 }));
   assert.equal(again.history!.records.filter(entry => entry.params?.key === "suit_rent").length, 1);
   assert.equal(traceOf(again).decisions.length, 1);
+});
+
+test("DTR-21: while the title holder disputes the possession the tenants hold back half; the keeper's share is halved while the lord oversees an estate himself", () => {
+  const base = run(lordGame(), 10);
+  const { state, estateId, pieceId, value } = possessing(base);
+  const quarter = Math.round(value / 4);
+  const holder = estatesOf(state).estates.find(entry => entry.id === estateId)!.titleHolder;
+  const disputed = raiseClaim(state, { claimant: holder, estateId, pieceId, basis: "inheritance" });
+  const line = possessionRentLines(disputed).find(entry => entry.pieceId === pieceId)!;
+  assert.equal(line.contested, true);
+  assert.equal(line.withheld, Math.round(quarter * POSSESSION_RENT.contestedWithheldPermille / 1000));
+  assert.equal(line.net, quarter - line.withheld - line.keeper);
+  const direct: GameState = { ...state, stewardship: { ...(state.stewardship ?? { oversight: [] }) as NonNullable<GameState["stewardship"]>,
+    oversight: [{ estateId: "x", mode: "direct", stewardId: "", auditMode: "visit", tenants: 0, merchants: 0, undetected: 0 } as never] } };
+  assert.equal(possessionRentLines(direct).find(entry => entry.pieceId === pieceId)!.keeper, Math.round(quarter * POSSESSION_RENT.keeperDirectPermille / 1000));
+});
+
+test("DTR-21 (P-L3): the house that keeps a possessed piece's title claims its possession back and sues — a strong claim", () => {
+  const base = run(lordGame(), 10);
+  const { state, estateId, pieceId } = possessing(base);
+  const holder = estatesOf(state).estates.find(entry => entry.id === estateId)!.titleHolder;
+  // Over the years' turns the title holder claims it (a quarter's chance a year, by the seed).
+  let next = state;
+  let claim: ReturnType<typeof estatesOf>["claims"][number] | undefined;
+  for (let year = 1; year <= 20 && claim === undefined; year += 1) {
+    next = advanceNeighbourRules({ ...next, tick: year * 4_000 });
+    claim = estatesOf(next).claims.find(entry => entry.claimant === holder && entry.pieceId === pieceId);
+  }
+  assert.ok(claim !== undefined, "the title holder claims it back within twenty years");
+  assert.equal(claim!.strength, TITLE_RECOVERY_STRENGTH);
+  assert.ok(estatesOf(next).suits.some(suit => suit.claimId === claim!.id && suit.defendant === LORD), "and sues the lord");
 });
