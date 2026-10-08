@@ -1,6 +1,6 @@
 [
   {
-    "name": "after-maintained-z1",
+    "name": "stylefix-maintained-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -12,10 +12,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 29,
+    "renderCycles": 35,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -39,7 +39,7 @@
     ]
   },
   {
-    "name": "after-maintained-z0.6",
+    "name": "stylefix-maintained-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -51,10 +51,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 21,
+    "renderCycles": 23,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -78,7 +78,7 @@
     ]
   },
   {
-    "name": "after-strained-z1",
+    "name": "stylefix-strained-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -90,10 +90,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 29,
+    "renderCycles": 26,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -115,7 +115,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-strained-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-strained-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -139,7 +139,7 @@
     ]
   },
   {
-    "name": "after-strained-z0.6",
+    "name": "stylefix-strained-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -154,7 +154,7 @@
     "renderCycles": 22,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -176,7 +176,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-strained-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-strained-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -200,129 +200,7 @@
     ]
   },
   {
-    "name": "after-neglected-z1",
-    "buildingId": "construction-site-000021",
-    "tile": [
-      50,
-      39
-    ],
-    "worldRect": [
-      316.6571594202899,
-      1334.8633754363693,
-      68.23698550724637,
-      121.53156542896436
-    ],
-    "renderCycles": 28,
-    "draws": [
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-neglected-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      }
-    ]
-  },
-  {
-    "name": "after-neglected-z0.6",
-    "buildingId": "construction-site-000021",
-    "tile": [
-      50,
-      39
-    ],
-    "worldRect": [
-      316.6571594202899,
-      1334.8633754363693,
-      68.23698550724637,
-      121.53156542896436
-    ],
-    "renderCycles": 23,
-    "draws": [
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-neglected-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      }
-    ]
-  },
-  {
-    "name": "after-vacant-z1",
+    "name": "stylefix-neglected-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -337,7 +215,7 @@
     "renderCycles": 27,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -359,7 +237,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-neglected-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -383,7 +261,7 @@
     ]
   },
   {
-    "name": "after-vacant-z0.6",
+    "name": "stylefix-neglected-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -398,7 +276,7 @@
     "renderCycles": 23,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -420,7 +298,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-neglected-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -444,7 +322,7 @@
     ]
   },
   {
-    "name": "after-abandoned-z1",
+    "name": "stylefix-vacant-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -456,10 +334,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 32,
+    "renderCycles": 27,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -481,29 +359,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -527,7 +383,7 @@
     ]
   },
   {
-    "name": "after-abandoned-z0.6",
+    "name": "stylefix-vacant-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -542,7 +398,7 @@
     "renderCycles": 24,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -564,29 +420,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -610,7 +444,173 @@
     ]
   },
   {
-    "name": "after-plague-abandoned-z1",
+    "name": "stylefix-abandoned-z1",
+    "buildingId": "construction-site-000021",
+    "tile": [
+      50,
+      39
+    ],
+    "worldRect": [
+      316.6571594202899,
+      1334.8633754363693,
+      68.23698550724637,
+      121.53156542896436
+    ],
+    "renderCycles": 33,
+    "draws": [
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      }
+    ]
+  },
+  {
+    "name": "stylefix-abandoned-z0.6",
+    "buildingId": "construction-site-000021",
+    "tile": [
+      50,
+      39
+    ],
+    "worldRect": [
+      316.6571594202899,
+      1334.8633754363693,
+      68.23698550724637,
+      121.53156542896436
+    ],
+    "renderCycles": 25,
+    "draws": [
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      }
+    ]
+  },
+  {
+    "name": "stylefix-plague-abandoned-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -625,7 +625,7 @@
     "renderCycles": 27,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -647,7 +647,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -669,7 +669,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-plague-shut-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-plague-shut-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -693,7 +693,7 @@
     ]
   },
   {
-    "name": "after-plague-abandoned-z0.6",
+    "name": "stylefix-plague-abandoned-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -708,7 +708,7 @@
     "renderCycles": 23,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -730,7 +730,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -752,7 +752,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-plague-shut-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-plague-shut-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -776,68 +776,7 @@
     ]
   },
   {
-    "name": "after-winter-z1",
-    "buildingId": "construction-site-000021",
-    "tile": [
-      50,
-      39
-    ],
-    "worldRect": [
-      316.6571594202899,
-      1334.8633754363693,
-      68.23698550724637,
-      121.53156542896436
-    ],
-    "renderCycles": 16,
-    "draws": [
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      }
-    ]
-  },
-  {
-    "name": "after-winter-z0.6",
+    "name": "stylefix-winter-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -852,7 +791,7 @@
     "renderCycles": 17,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -865,16 +804,16 @@
           121.53156542896436
         ],
         "transform": [
-          0.6000000238418579,
+          1,
           0,
           0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
+          1,
+          288,
+          -1024
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -887,18 +826,18 @@
           121.53156542896436
         ],
         "transform": [
-          0.6000000238418579,
+          1,
           0,
           0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
+          1,
+          288,
+          -1024
         ]
       }
     ]
   },
   {
-    "name": "after-winter-abandoned-z1",
+    "name": "stylefix-winter-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -910,10 +849,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 15,
+    "renderCycles": 17,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -926,16 +865,16 @@
           121.53156542896436
         ],
         "transform": [
-          1,
+          0.6000000238418579,
           0,
           0,
-          1,
-          288,
-          -1024
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -948,62 +887,18 @@
           121.53156542896436
         ],
         "transform": [
-          1,
+          0.6000000238418579,
           0,
           0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
         ]
       }
     ]
   },
   {
-    "name": "after-winter-abandoned-z0.6",
+    "name": "stylefix-winter-abandoned-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -1015,115 +910,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 18,
+    "renderCycles": 17,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      }
-    ]
-  },
-  {
-    "name": "after-melt-z1",
-    "buildingId": "construction-site-000021",
-    "tile": [
-      50,
-      39
-    ],
-    "worldRect": [
-      316.6571594202899,
-      1334.8633754363693,
-      68.23698550724637,
-      121.53156542896436
-    ],
-    "renderCycles": 21,
-    "draws": [
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -1145,8 +935,52 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
-        "alpha": 0.4698990248609062,
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "alpha": 1,
         "args": [
           0,
           0,
@@ -1169,173 +1003,7 @@
     ]
   },
   {
-    "name": "after-melt-z0.6",
-    "buildingId": "construction-site-000021",
-    "tile": [
-      50,
-      39
-    ],
-    "worldRect": [
-      316.6571594202899,
-      1334.8633754363693,
-      68.23698550724637,
-      121.53156542896436
-    ],
-    "renderCycles": 15,
-    "draws": [
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
-        "alpha": 0.4698990248609062,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          0.6000000238418579,
-          0,
-          0,
-          0.6000000238418579,
-          428.79998779296875,
-          -454.3999938964844
-        ]
-      }
-    ]
-  },
-  {
-    "name": "after-melt-abandoned-z1",
-    "buildingId": "construction-site-000021",
-    "tile": [
-      50,
-      39
-    ],
-    "worldRect": [
-      316.6571594202899,
-      1334.8633754363693,
-      68.23698550724637,
-      121.53156542896436
-    ],
-    "renderCycles": 18,
-    "draws": [
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
-        "alpha": 1,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      },
-      {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
-        "alpha": 0.4698990248609062,
-        "args": [
-          0,
-          0,
-          69,
-          122,
-          316.6571594202899,
-          1334.8633754363693,
-          68.23698550724637,
-          121.53156542896436
-        ],
-        "transform": [
-          1,
-          0,
-          0,
-          1,
-          288,
-          -1024
-        ]
-      }
-    ]
-  },
-  {
-    "name": "after-melt-abandoned-z0.6",
+    "name": "stylefix-winter-abandoned-z0.6",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -1350,7 +1018,7 @@
     "renderCycles": 14,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -1372,7 +1040,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -1394,7 +1062,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -1416,7 +1084,129 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      }
+    ]
+  },
+  {
+    "name": "stylefix-melt-z1",
+    "buildingId": "construction-site-000021",
+    "tile": [
+      50,
+      39
+    ],
+    "worldRect": [
+      316.6571594202899,
+      1334.8633754363693,
+      68.23698550724637,
+      121.53156542896436
+    ],
+    "renderCycles": 13,
+    "draws": [
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "alpha": 0.4698990248609062,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      }
+    ]
+  },
+  {
+    "name": "stylefix-melt-z0.6",
+    "buildingId": "construction-site-000021",
+    "tile": [
+      50,
+      39
+    ],
+    "worldRect": [
+      316.6571594202899,
+      1334.8633754363693,
+      68.23698550724637,
+      121.53156542896436
+    ],
+    "renderCycles": 15,
+    "draws": [
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
         "alpha": 0.4698990248609062,
         "args": [
           0,
@@ -1440,7 +1230,7 @@
     ]
   },
   {
-    "name": "after-maintained-z3",
+    "name": "stylefix-melt-abandoned-z1",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -1452,10 +1242,220 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 23,
+    "renderCycles": 18,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "alpha": 0.4698990248609062,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -1024
+        ]
+      }
+    ]
+  },
+  {
+    "name": "stylefix-melt-abandoned-z0.6",
+    "buildingId": "construction-site-000021",
+    "tile": [
+      50,
+      39
+    ],
+    "worldRect": [
+      316.6571594202899,
+      1334.8633754363693,
+      68.23698550724637,
+      121.53156542896436
+    ],
+    "renderCycles": 11,
+    "draws": [
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+        "alpha": 1,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "alpha": 0.4698990248609062,
+        "args": [
+          0,
+          0,
+          69,
+          122,
+          316.6571594202899,
+          1334.8633754363693,
+          68.23698550724637,
+          121.53156542896436
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -454.3999938964844
+        ]
+      }
+    ]
+  },
+  {
+    "name": "stylefix-maintained-z3",
+    "buildingId": "construction-site-000021",
+    "tile": [
+      50,
+      39
+    ],
+    "worldRect": [
+      316.6571594202899,
+      1334.8633754363693,
+      68.23698550724637,
+      121.53156542896436
+    ],
+    "renderCycles": 29,
+    "draws": [
+      {
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -1479,7 +1479,7 @@
     ]
   },
   {
-    "name": "after-winter-z3",
+    "name": "stylefix-winter-z3",
     "buildingId": "construction-site-000021",
     "tile": [
       50,
@@ -1491,10 +1491,10 @@
       68.23698550724637,
       121.53156542896436
     ],
-    "renderCycles": 15,
+    "renderCycles": 17,
     "draws": [
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-body-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-body-v2.png",
         "alpha": 1,
         "args": [
           0,
@@ -1516,7 +1516,7 @@
         ]
       },
       {
-        "src": "http://127.0.0.1:4302/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+        "src": "http://127.0.0.1:4306/assets/height-era-l2late/house_l2_1420-snow-v2.png",
         "alpha": 1,
         "args": [
           0,

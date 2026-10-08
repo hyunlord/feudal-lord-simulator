@@ -1,0 +1,31 @@
+{
+  "attempt": "body01",
+  "tool": "builtin image_gen__imagegen",
+  "transparent_background": true,
+  "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/body01.txt",
+  "prompt_sha256": "09ce1cffbade08bc339ae02c7e3f405a4e6571e47e44c13b4c8efcafc4897831",
+  "referenced_image_paths": [
+    "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-body.png",
+    "/tmp/astra-height-era-l2late-install/public/assets/buildings/historical-houses/house_l2-v2.png",
+    "/tmp/astra-height-era-l2late-install/output/rb-height-era-l2late-before-3/before-maintained-z3.png"
+  ],
+  "referenceInputs": [
+    {
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-body.png",
+      "sha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92",
+      "role": "strict geometry only"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-install/public/assets/buildings/historical-houses/house_l2-v2.png",
+      "sha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+      "role": "original game material and painting style"
+    },
+    {
+      "path": "/tmp/astra-height-era-l2late-install/output/rb-height-era-l2late-before-3/before-maintained-z3.png",
+      "sha256": "241f5ff3c4e7943fdfa9367cc1db9fc488229a949def99bc2fe46c9f8fd19d37",
+      "role": "surrounding game houses style context"
+    }
+  ],
+  "verification_note": "Paths are exact ordered arguments from executed body01 tool call; SHA calculated from the same preserved files at provenance completion. No final PNG changed.",
+  "original_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a117bb-bd92-7182-bdef-88fa3dfe6a60/exec-a9e02a0f-e7a7-4c91-b1fa-a397565e37fe.png"
+}

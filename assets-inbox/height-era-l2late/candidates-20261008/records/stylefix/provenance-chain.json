@@ -35,8 +35,25 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "bf2499aeb9b2f8b86f7d4d991ef1df55fe9d6068adf3b7f3547ca4ad9be49d48",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-body.png",
+        "sha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92"
+      },
+      {
+        "path": "/tmp/astra-height-era-l2late-install/public/assets/buildings/historical-houses/house_l2-v2.png",
+        "sha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e"
+      },
+      {
+        "path": "/tmp/astra-height-era-l2late-install/output/rb-height-era-l2late-before-3/before-maintained-z3.png",
+        "sha256": "241f5ff3c4e7943fdfa9367cc1db9fc488229a949def99bc2fe46c9f8fd19d37"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   },
   {
     "role": "snow",
@@ -74,8 +91,21 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "ac73ab58f87a8dde86cba69b8c509b7119fd274fa2c5c84c4d08c8d20a2b29b5",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/snow01.png",
+        "sha256": "d5a836eb8f154083b1f097e57facc002049295b16683e79ada79e1182644e5da"
+      },
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   },
   {
     "role": "boarded",
@@ -113,8 +143,17 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "f539fbbf05fc4e83140bd8fb6a075f2d5016a8f8e200ab124ef0bd4f5968a442",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   },
   {
     "role": "strained",
@@ -152,8 +191,17 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "6e7e3c460e3bf4d2e65777cb41f64b34b207762293171d465ff018095f1ce43f",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   },
   {
     "role": "neglected",
@@ -191,8 +239,17 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "bf2499aeb9b2f8b86f7d4d991ef1df55fe9d6068adf3b7f3547ca4ad9be49d48",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   },
   {
     "role": "vacant",
@@ -230,8 +287,17 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "08f9795e1874de75d73afabbaf8d9ddcbc65346a096838ee29c16ba60896764e",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   },
   {
     "role": "plague-shut",
@@ -269,7 +335,16 @@
       "scale": 0.4980801861842801,
       "filter": "ffmpeg swscale lanczos; whole-layer only"
     },
-    "runtimeVerified": false,
-    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately"
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "08f9795e1874de75d73afabbaf8d9ddcbc65346a096838ee29c16ba60896764e",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
   }
 ]
