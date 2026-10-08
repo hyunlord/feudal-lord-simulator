@@ -413,6 +413,10 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { click: ".chronicle-tabs:not(.chronicle-person-tabs) .chronicle-tab:nth-child(2)" }, { pause: 900 }],
     // The world strip is a sideways scroller by design (overflow-x auto, focusable, its focus ring).
     scrollParts: [".chronicle-world-strip"], siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
+  // INSTALL-18: Wave 14's faction panel around the list (a css nine-slice frame), its heading in the frame's title band.
+  { id: "modal.history.factions-panel", extends: "modal.history.factions", root: ".chronicle-factions-panel", frame: "css",
+    scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET }, open: [], frameSlots: [".chronicle-factions-heading"],
+    siblingsNoOverlap: [".chronicle-factions-row"], data: "the nine factions' rows in Wave 14's faction panel, the kind icons beside four names" },
   { id: "modal.history.faction-page", extends: "modal.history.factions", root: ".chronicle-faction", frame: "painting", painting: FACTION_PAGE_ART,
     frameSlots: [".chronicle-faction-band"], scrollParts: [".chronicle-faction-box > ul", ".chronicle-faction-pressure-body"],
     scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },

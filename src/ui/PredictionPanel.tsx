@@ -6,6 +6,8 @@ import type { PlacementChip } from './placementChip';
 import { PLACEMENT_CHIP_COPY } from './placementChipCopy.ko';
 import { ResourceGlyph } from './ResourceArtwork';
 import { resourceName } from '../content/resourceCatalog.ko';
+import { HUD_REASON_ART } from '../render/hudCanvasArt';
+import { HudArt } from './hud/hudArt';
 
 /** UX-2: the painted prediction icons (speech bubble · check · warning diamond · cross). */
 const LINE_SYMBOLS = { info: { icon: 'pending', label: '안내' }, ok: { icon: 'ok', label: '충족' },
@@ -17,6 +19,13 @@ export type PredictionPresentation = {
   /** UX-3 S-53: placement shows this three-line chip instead of the full forecast list. */
   readonly chip?: PlacementChip;
 };
+
+/** INSTALL-18: the chip's reason wears the reason's Wave 18 picture (24 px) when it has one and it has loaded; else the cross. */
+function ReasonIcon({ kind }: { readonly kind: PlacementChip['reasonKind'] }) {
+  const cross = <UiIcon sheet="prediction" cell="block" label={LINE_SYMBOLS.block.label} />;
+  const art = kind === null ? undefined : HUD_REASON_ART[kind];
+  return art === undefined ? cross : <HudArt id={art} width={24} className="ui-icon" label={LINE_SYMBOLS.block.label} fallback={cross} />;
+}
 
 /** Facility-independent presentation; callers own prediction semantics. */
 export function PredictionPanel({ lines, position, chip }: PredictionPresentation) {
@@ -41,7 +50,7 @@ export function PredictionPanel({ lines, position, chip }: PredictionPresentatio
     style={{ left: `clamp(8px, ${position.x}px, calc(100% - 256px))`, top: `clamp(60px, ${position.y}px, calc(100% - ${height + 12}px))` }}>
     <p className="placement-chip-title">{chip.title}</p>
     {chip.ledger.map(line => <p key={line.text} className="placement-chip-ledger" data-short={line.short ? 'true' : undefined}>{line.text}</p>)}
-    {chip.reason === null ? null : <p className="placement-chip-reason"><UiIcon sheet="prediction" cell="block" label={LINE_SYMBOLS.block.label} />{chip.reason}</p>}
+    {chip.reason === null ? null : <p className="placement-chip-reason"><ReasonIcon kind={chip.reasonKind} />{chip.reason}</p>}
     {chip.reach === null ? null : <p className="placement-chip-reach">{chip.reach}</p>}
     {chip.market === null ? null : <p className="placement-chip-market" data-far={chip.market.far ? 'true' : undefined}>
       {chip.market.far ? <UiIcon sheet="prediction" cell="warn" label={LINE_SYMBOLS.warn.label} /> : null}{chip.market.text}</p>}

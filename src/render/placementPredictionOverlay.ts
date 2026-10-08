@@ -5,10 +5,16 @@ import { PALETTE, SEMANTIC_PALETTE } from '../content/palette';
 import { applyPaletteStroke, withAlpha, type PaletteStrokeContext } from './style';
 import { TILE_H, TILE_W, tileToScreen } from './iso';
 import type { TileCoordinate } from '../world/grid';
+import { drawServiceEdge } from './hudCanvasArt';
 
 type PredictionDrawingContext = PaletteStrokeContext & Pick<CanvasRenderingContext2D,
   'save' | 'restore' | 'beginPath' | 'closePath' | 'ellipse' | 'moveTo' | 'lineTo' |
   'fillStyle' | 'fill' | 'stroke' | 'setLineDash'>;
+
+/** A full canvas context (the renderer's), not a drawing stub that only strokes and fills. */
+function canBlit(context: PredictionDrawingContext): context is PredictionDrawingContext & Parameters<typeof drawServiceEdge>[0] {
+  return typeof (context as Partial<CanvasRenderingContext2D>).drawImage === 'function';
+}
 
 export function drawPlacementPrediction(context: PredictionDrawingContext, state: GameState,
   prediction: PlacementPrediction, zoom: number): void {
@@ -24,6 +30,8 @@ export function drawPlacementPrediction(context: PredictionDrawingContext, state
     context.lineWidth = 3 / zoom;
     context.stroke();
     context.setLineDash([]);
+    // INSTALL-18: Wave 18's dashed edge along the range's boundary, over the gold line (which stays when it is not loaded).
+    if (canBlit(context)) drawServiceEdge(context, center.sx, center.sy, radius * TILE_W / Math.SQRT2, radius * TILE_H / Math.SQRT2, zoom);
   }
   if (prediction.reachTiles !== undefined) drawReachTiles(context, prediction.reachTiles, zoom);
   drawHomeOutlines(context, state, prediction.houseIds, zoom);
