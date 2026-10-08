@@ -39,11 +39,13 @@ export function suspect(value: number | null, comparisonRuns: readonly number[])
 
 type AbRow = { key: string; verdict: string; diff?: number; band?: number; se?: number; n?: number; bandRule?: string };
 /**
- * A perf:ab record's verdict for one metric ("나빠짐" | "좋아짐" | "소음 안"), or null when it has no such row. Judged
- * again with the 95 % t band: records written before RR7's correction kept a ±2 SE band (their se is band / 2).
+ * A perf:ab record's verdict for one metric ("나빠짐" | "좋아짐" | "소음 안"), or null when it has no such row or fewer
+ * than two pairs. Judged again with the 95 % t band: records written before RR7's correction kept a ±2 SE band (their
+ * se is band / 2).
  */
 export function abVerdict(record: { table?: readonly AbRow[] } | null | undefined, key: string): string | null {
   const row = record?.table?.find(entry => entry.key === key); if (row === undefined) return null;
+  if (row.n !== undefined && row.n < 2) return null;   // under two pairs (one side never ran): no A-B yet
   if (row.diff === undefined || row.band === undefined || row.n === undefined) return row.verdict;
   const se = row.se ?? (row.bandRule === "t95" ? row.band / t95(row.n - 1) : row.band / 2); const band = t95(row.n - 1) * se;
   return row.diff - band > 0 ? "나빠짐" : row.diff + band < 0 ? "좋아짐" : "소음 안";

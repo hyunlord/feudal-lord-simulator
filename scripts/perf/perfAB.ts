@@ -53,7 +53,8 @@ export function paired(a: readonly number[], b: readonly number[]) {
   const sd = n > 1 ? Math.sqrt(diffs.reduce((sum, value) => sum + (value - mean) ** 2, 0) / (n - 1)) : 0;
   const se = n > 1 ? sd / Math.sqrt(n) : Number.POSITIVE_INFINITY; const band = n > 1 ? t95(n - 1) * se : Number.POSITIVE_INFINITY;
   const meanA = a.reduce((sum, value) => sum + value, 0) / Math.max(1, a.length); const meanB = b.reduce((sum, value) => sum + value, 0) / Math.max(1, b.length);
-  const verdict = mean - band > 0 ? "나빠짐" : mean + band < 0 ? "좋아짐" : "소음 안";
+  // Fewer than two pairs (a side that never ran) is no comparison, never "소음 안".
+  const verdict = n < 2 ? "짝 부족" : mean - band > 0 ? "나빠짐" : mean + band < 0 ? "좋아짐" : "소음 안";
   return { meanA, meanB, diff: mean, se, band, bandRule: "t95", percent: meanA === 0 ? null : (mean / meanA) * 100, worseRounds: diffs.filter(value => value > 0).length, n, verdict };
 }
 
