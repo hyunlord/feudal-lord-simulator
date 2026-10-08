@@ -1,20 +1,30 @@
-// LM-R3 stub (lmr3-start's branch only): the props of lmr3-brand's GameLogo, which replaces this file at merge. It draws
-// the game's name as text in the kit's serif so the welcome's layout can be measured until the outlined logo lands.
-import { KO_UI } from "../../content/locale.ko";
+import { useId, useMemo } from "react";
+import { LOGO_ART, type BrandTone } from "./brandArt.generated";
+import { BRAND_COPY } from "./brandCopy.ko";
+import { brandIdPrefix, brandNodes } from "./brandSvg";
 
+export type GameLogoLanguage = "ko" | "en";
+export type GameLogoLayout = "horizontal" | "vertical";
 export type GameLogoProps = {
-  readonly language?: "ko" | "en";
-  readonly layout?: "horizontal" | "vertical";
-  readonly tone: "on-light" | "on-dark";
-  /** The logo's width in px (the height follows the kit's aspect: horizontal 1200×280, vertical 720×640). */
+  readonly language?: GameLogoLanguage;
+  readonly layout?: GameLogoLayout;
+  /** on-light: oak lettering for a light ground; on-dark: parchment lettering for a dark one. */
+  readonly tone: BrandTone;
+  /** The drawn width in CSS px; the height follows the kit's proportions (horizontal 1200×280, vertical 720×640). */
   readonly width: number;
-  readonly className?: string | undefined;
+  readonly className?: string;
 };
 
-export function GameLogo({ layout = "horizontal", width, className }: GameLogoProps) {
-  const height = Math.round(layout === "horizontal" ? width * 280 / 1200 : width * 640 / 720);
-  return <span className={className} role="img" aria-label={KO_UI.appName}
-    style={{ display: "inline-grid", placeItems: "center", width, height, fontFamily: "var(--ui-font-serif)", fontSize: Math.min(Math.round(height * 0.6), Math.floor(width / (KO_UI.appName.length + 1))), whiteSpace: "nowrap" }}>
-    <span aria-hidden="true">{KO_UI.appName}</span>
-  </span>;
+/** LM-R3 (TITLE-1): the game's logo — the wax seal and the Korean or English wordmark — from the kit's outlined SVGs. */
+export function GameLogo({ language = "ko", layout = "horizontal", tone, width, className }: GameLogoProps) {
+  const art = LOGO_ART[`${language}-${layout}`];
+  const prefix = brandIdPrefix(useId());
+  const children = useMemo(() => brandNodes(art.body, tone, prefix), [art, tone, prefix]);
+  return (
+    <svg className={className === undefined ? "game-logo" : `game-logo ${className}`} viewBox={`0 0 ${art.width} ${art.height}`}
+      width={width} height={Math.round(width * art.height / art.width * 100) / 100} role="img" aria-label={BRAND_COPY.logoLabel}
+      focusable="false" data-logo={`${language}-${layout}-${tone}`}>
+      {children}
+    </svg>
+  );
 }

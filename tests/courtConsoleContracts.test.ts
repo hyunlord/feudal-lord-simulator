@@ -312,6 +312,6 @@ test("the browser shell declares a request-free favicon for clean fresh-load QA"
   // Given / When
   const html = await readFile(INDEX_HTML, "utf8");
 
-  // Then
-  assert.match(html, /<link rel="icon" href="data:," \/>/);
+  // Then: LM-R3 — the seal is the favicon, still inline (a data URI, no request; tests/brandArt.test.ts checks it is the kit's).
+  assert.match(html, /<link rel="icon" type="image\/svg\+xml" href="data:image\/svg\+xml,[^"]+" \/>/);
 });
