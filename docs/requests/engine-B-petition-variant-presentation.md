@@ -15,3 +15,9 @@
 - 준비 상태의 화면 검증과 자연 플레이 노출 횟수를 구분해 기록.
 
 근거 시험은 `tests/registryWoodlandPetition.test.ts`, `tests/registryPasturePetition.test.ts`, `tests/registryMarketRoadPetition.test.ts`. 현재 시험은 읽기와 원래 동작 보존을 증명하며 화면 소비자나 플레이어 노출을 증명하지 않는다.
+
+## 세 번째 묶음의 감독권 비교 두 가지
+
+`registryVariantFor(state, occurrence)`는 실제 등록기 발생을 받아 031·059에는067(능력·충성),019에는078(상인·농민 친화)의 제목·본문을 제공한다. `occurrence`의 원래 고정 바인딩을 재검사하며 더 우수한 새 후보로 바꾸지 않는다. 응답 주체·대상·마감·선택·비용·효과와 DEC-TRACE의 `land` 무게는 원래 발생의 것이다.
+
+두 함수 합계 다섯 변형은 모두 읽기 API이며 독립 사건이나 추가 카드가 아니다. 실제 소비자는 렌더 A 인계 사항이다. `tests/registryVariants.test.ts`는 저장 왕복·원래 응답 결과·포함 기한·인물 소실/교체·고정 후보 보존을 검증한다. 화면에서는 이 두 등록기 변형과 위 세 홈 청원 변형을 각각 맞는 발생 종류에서만 소비해야 한다.
