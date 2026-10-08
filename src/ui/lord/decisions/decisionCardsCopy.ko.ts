@@ -33,7 +33,7 @@ export const DECISION_CARDS_COPY = {
   estate: (house: string | null) => house === null ? "이웃 영지" : `${house} 영지`,
   // The father's will (NG-8).
   willTitle: "늙은 영주의 새 유언",
-  willLine: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 답하지 않으면 기한에 새 유언이 그대로 섭니다.`,
+  willLine: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다.`,
   willFavour: "호의를 보낸다",
   willSupport: "지원을 약속한다",
   willLetBe: "그대로 둔다",

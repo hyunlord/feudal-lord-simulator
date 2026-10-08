@@ -54,6 +54,8 @@ const OPEN_LORD = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[data-lo
 const LORD_SCREEN = '.slot-panel.lord-screen';
 const SEASON = /\d{4}년 (봄|여름|가을|겨울)/;
 const missing = name => report(name, { card: null, missing: true }, false);
+/** A petition the state holds opens its card by itself after the world (the same delay): put it off, as a player would. */
+const putOff = async page => { if (await waitFor(page, '.story-modal', 6_000)) { await click(page, '.story-modal-later'); await page.waitForTimeout(500); } };
 
 // 1. The will: its chip, the 혼인 page it opens, the will's card from there.
 {
@@ -102,6 +104,7 @@ const missing = name => report(name, { card: null, missing: true }, false);
     watch(page, 'suit');
     const chip = ".event-chip[data-chip-id^='suit-defence:']";
     if (await waitFor(page, chip, 90_000)) {
+      await putOff(page);
       await click(page, chip); await page.waitForTimeout(600);
       await capture(page, 'suit-chip', ".event-card[data-chip-id^='suit-defence:']", text => text.includes('영주를 상대로') && text.includes('소송 보기'));
       await click(page, ".event-card[data-chip-id^='suit-defence:'] .event-card-decide");
@@ -121,6 +124,7 @@ const missing = name => report(name, { card: null, missing: true }, false);
     watch(page, 'entry');
     const chip = ".event-chip[data-chip-id^='entry-threat:']";
     if (await waitFor(page, chip, 90_000)) {
+      await putOff(page);
       await click(page, chip); await page.waitForTimeout(600);
       await capture(page, 'entry-chip', ".event-card[data-chip-id^='entry-threat:']", text => SEASON.test(text) && text.includes('예고 보기'));
       await click(page, ".event-card[data-chip-id^='entry-threat:'] .event-card-decide");
@@ -142,7 +146,7 @@ const missing = name => report(name, { card: null, missing: true }, false);
     await click(page, "[data-dock='ledger']"); await click(page, "[data-ledger-tab='rights']"); await page.waitForTimeout(700);
     await click(page, '.ledger-rights-household .person-list-toggle'); await page.waitForTimeout(400);
     await page.locator(`.ledger-rights-household [data-person='${child}']`).first().scrollIntoViewIfNeeded().catch(() => undefined);
-    await capture(page, 'kin-household', '.ledger-rights', text => /영주의 사촌의 (아들|딸)/.test(text) && text.includes('영주의 사촌의 아내'));
+    await capture(page, 'kin-household', '.ledger-rights-household', text => /영주의 사촌의 (아들|딸)/.test(text) && text.includes('영주의 사촌의 아내'));
     if (await click(page, `.ledger-rights-household [data-person='${child}']`)) {
       await waitFor(page, '.person-card', 10_000); await click(page, '.person-card .person-card-action');
       await waitFor(page, '.chronicle-biography', 20_000); await page.waitForTimeout(1_200);

@@ -3,6 +3,8 @@ import type { SceneRef, SurfaceRow } from "../../surfaces.registry";
 // LM-R2: the lord's decision cards' ui-geometry rows, on the lord2 states (scripts/lmr2States.ts). Each card is reached
 // as a player does: its chip, then [결정하기] (the audit's `story` step plays the chips in turn).
 
+/** A petition the scene's state holds opens its card by itself after the world (the same delay): it is put off first. */
+const PUT_OFF = [{ wait: ".story-modal", timeout: 6_000, optional: true }, { dismiss: [".story-modal-later"] }, { pause: 400 }] as const;
 /** The will's chip id's head (LORD_MATTER_CHIP.marriage). */
 const WILL_CHIP = "marriage-decision:will_change:";
 /** A lord2 state with the story's world-first delay short enough for the chip to come. */
@@ -33,12 +35,12 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   // SUIT-THREAD: a suit against the lord (the engine's lordMattersDue) as its chip's card — the engine's sentence of the
   // filing, the stage, when it moves on, the way to it on 약속·소송; kept until answered.
   { id: "hud.event-card.suit-defence", root: ".event-card[data-chip-id^='suit-defence:']", frame: "css", scene: decisionScene("neighbour-suit"),
-    open: [{ wait: ".event-chip[data-chip-id^='suit-defence:']", timeout: 90_000 }, { click: ".event-chip[data-chip-id^='suit-defence:']" }, { pause: 600 }], scroll: "y",
+    open: [{ wait: ".event-chip[data-chip-id^='suit-defence:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='suit-defence:']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a neighbour house's suit against the lord: its filing, its stage and next season, [소송 보기]" },
   // A forcible entry forewarned (lordMattersDue) as its chip's card, on suit-ledger's state played on from neighbour-suit
   // (scripts/suitLedgerStates.ts, kept in the lord2 folder as suit-entry-threat.json).
   { id: "hud.event-card.entry-threat", root: ".event-card[data-chip-id^='entry-threat:']", frame: "css", scene: decisionScene("suit-entry-threat"),
-    open: [{ wait: ".event-chip[data-chip-id^='entry-threat:']", timeout: 90_000 }, { click: ".event-chip[data-chip-id^='entry-threat:']" }, { pause: 600 }], scroll: "y",
+    open: [{ wait: ".event-chip[data-chip-id^='entry-threat:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='entry-threat:']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a house's forcible entry forewarned: the engine's warning, the season it comes, [예고 보기]" },
   { id: "modal.lord.contested", ...CARD, root: card("contested"), scene: decisionScene("contested"),
     open: [{ story: card("contested") }, { pause: 600 }],
