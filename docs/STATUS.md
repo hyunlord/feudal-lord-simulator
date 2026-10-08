@@ -991,3 +991,5 @@ Engine B [과거 관측 집계기](verification/eb-freq/historical-observations.
 Engine B [가드레일](verification/eb-weight/guardrail-016ab02e/README.md) 종료0: 샌드박스3해시·캠페인3쌍 전체 상태 바이트 동일. 두 번째 실행은 생략한다. 실제 전체 답변 재현을 clean59d42d0에서 DGX 직렬 실행으로 시작했으며 결과는 대기 중이다. 공용 시험·기하 관문 및 실제 계절 UI는 미완료다.
 
 Engine B [과거 재현 산출물 검증기](verification/eb-freq/historical-replay-artifacts.md)는 외부 manifest 해시와12개 파일 해시, 전체 결과·보고서·NDJSON/gzip·40행 집계를 대조한다. 합성9시험·lint 통과. 파일 일관성만 검증하며 실제 실행·원인 적용은 미완료다.
+
+Engine B 검증 진입 문서의 오래된 seed1 진행 설명을 과거 기록으로 표시하고, 완료된 세 판·가드레일·56건 범위와 실행 중인 실제 답변 재현으로 연결했다. 전수 가시성과 공용 관문 미완료는 유지한다.
