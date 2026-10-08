@@ -27,5 +27,5 @@ export const HOME_PETITION_ART: Readonly<Record<HomePetitionKind, Wave44ImageId 
   pannage: null, chancel_repair: null,
 };
 
-/** The steward's answer by precedent (decidedBy steward and precedent: never an open petition's picture). */
+/** The steward at his work (once the precedent card's; DEC-CARD-2: it heads the standing-policy screen — never an open petition's picture). */
 export const PRECEDENT_ART: Wave44ImageId = "by_precedent";

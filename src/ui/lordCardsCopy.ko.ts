@@ -2,8 +2,8 @@ import { KING_NAMES_KO } from "../content/personNames.ko";
 import type { HomePetitionKind } from "../engine/stewardship.types";
 import { moneyJosa, moneyObject, moneyShort } from "./money.ko";
 
-// LM-R1 (petitions) the lord's cards in lord mode: the home estate's petitions (FIX-14 SW-11, one per kind), the steward's
-// answers by precedent (SW-12), the town's requests (TA-7) and the court line (the king, the lord, the guardian). The
+// LM-R1 (petitions) the lord's cards in lord mode: the home estate's petitions (FIX-14 SW-11, one per kind), the town's
+// requests (TA-7) and the court line (the king, the lord, the guardian). The
 // words follow docs/design/glossary.md: 청지기, 후견인, 사망 부과금(헤리엇), 혼인 부담금(머쳇), 입주금, 마을 대표;
 // answer buttons are the lord's act ("~한다"), the petitioners' and the steward's lines "~합니다".
 
@@ -88,17 +88,6 @@ export const LORD_CARDS_COPY = {
   homeFrom: "장원의 청원",
   /** How long the petition waits for an answer (it lapses as refused after). */
   waits: (days: number) => `답을 기다림 · ${days}일 남음`,
-  /** ER-6: the lord's same answer twice running makes the kind a precedent; the steward answers it after that. */
-  precedentHint: "같은 답을 두 번 이어서 하면, 다음부터는 청지기가 선례대로 답합니다",
-  precedentSettled: (answer: string) => `선례가 있습니다: ${answer}. 다시 올리는 규칙이 켜져 있어 영주에게 왔습니다`,
-  /** The lord's exception rule `recurring`. */
-  recurring: "선례가 있어도 다시 올린다",
-  recurringOn: "켜짐", recurringOff: "꺼짐",
-  /** The steward's season list (precedentReport). */
-  precedentTitle: "청지기가 선례대로 처리한 것",
-  precedentLine: "지난 철에 같은 청원이 왔고, 청지기가 영주의 지난 답대로 처리했습니다.",
-  precedentItem: (title: string, answer: string) => `${title}: ${answer}`,
-  precedentClose: "알았다",
   /** The court line on every lord card: the season, the king (kingAt), the lord (old from the engine's age) and a guardian. */
   court: (year: number, season: string, kingName: string, lord: string | null) =>
     `${year}년 ${season} · 국왕 ${KING_NAMES_KO[kingName] ?? kingName}${lord === null ? "" : ` · ${lord}`}`,

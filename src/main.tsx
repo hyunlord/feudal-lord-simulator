@@ -31,6 +31,8 @@ import "./styles/lordEstates.css";
 import "./styles/lordRegion.css";
 // DEC-CARD (Astra's lord-mode play): the way back to town, the treasury by estate, a recurring card's "since last time".
 import "./styles/lordAdvice.css";
+// DEC-CARD-2: the steward's season report and the standing policies.
+import "./styles/lordSteward.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.
 import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";
