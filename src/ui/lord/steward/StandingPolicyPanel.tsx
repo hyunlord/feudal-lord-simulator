@@ -17,14 +17,14 @@ export const policyGate: LordNavGate = state => lordMode(state) ? null : COPY.cl
 
 const ART_WIDTH = 320;
 
-function KindDetail({ row, dispatch }: { readonly row: PolicyKindRow; readonly dispatch: LordPanelProps["dispatch"] }) {
+function KindDetail({ row, command }: { readonly row: PolicyKindRow; readonly command: LordPanelProps["dispatch"] }) {
   return (
     <div className="lord-standing-detail" data-standing-detail={row.kind}>
       <ul className="lord-standing-options">
         {row.options.map(option => (
           <li key={option.setting} className="lord-standing-choice" data-setting={option.setting} data-current={option.current ? "true" : undefined}>
             <Button type="button" className="lord-standing-set" variant="secondary" size="md" aria-pressed={option.current}
-              aria-label={COPY.choose(row.title, option.label)} onPress={() => { if (!option.current) dispatch(option.command); }}>{option.label}</Button>
+              aria-label={COPY.choose(row.title, option.label)} onPress={() => { if (!option.current) command(option.command); }}>{option.label}</Button>
             <ul className="lord-standing-does">{option.does.map(line => <li key={line}>{line}</li>)}</ul>
           </li>))}
       </ul>
@@ -35,6 +35,8 @@ function KindDetail({ row, dispatch }: { readonly row: PolicyKindRow; readonly d
 
 export function StandingPolicyPanel({ state, dispatch, focus }: LordPanelProps): ReactElement | null {
   const view = standingPolicyScreen(state);
+  // A press names the command, the game dispatches it (B9 input boundary R4), as the other lord screens do.
+  const command = (action: Parameters<LordPanelProps["dispatch"]>[0]) => dispatch(action);
   const [open, setOpen] = useState<string | null>(focus);
   useEffect(() => { if (focus !== null) setOpen(focus); }, [focus]);
   if (view === null) return null;
@@ -48,7 +50,7 @@ export function StandingPolicyPanel({ state, dispatch, focus }: LordPanelProps):
           <h4>{family.heading}</h4>
           <p className="lord-standing-line">{family.line}</p>
           {family.family === "manor" ? <div className="lord-standing-all">
-            <Toggle className="lord-standing-all-toggle" data-rule="recurring" checked={view.allToLord} label={COPY.allToLord} onChange={() => dispatch(view.allToLordCommand)} />
+            <Toggle className="lord-standing-all-toggle" data-rule="recurring" checked={view.allToLord} label={COPY.allToLord} onChange={() => command(view.allToLordCommand)} />
             {view.allToLord ? <p className="lord-standing-line">{COPY.allToLordOn}</p> : null}
           </div> : null}
           <ul className="lord-standing-kinds">
@@ -58,7 +60,7 @@ export function StandingPolicyPanel({ state, dispatch, focus }: LordPanelProps):
                   onPress={() => setOpen(open === row.kind ? null : row.kind)}>
                   <span className="lord-standing-title">{row.title}</span><span className="lord-standing-current">{row.row}</span>
                 </Button>
-                {open === row.kind ? <KindDetail row={row} dispatch={dispatch} /> : null}
+                {open === row.kind ? <KindDetail row={row} command={command} /> : null}
               </li>))}
           </ul>
         </section>))}
