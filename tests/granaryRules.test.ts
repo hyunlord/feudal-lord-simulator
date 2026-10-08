@@ -49,6 +49,13 @@ test("DTR-19 from the palisade on, timber and logs together fill at most half a 
   assert.ok(space({ timber: share("timber") }, "timber", "hamlet") > 0, "in the hamlet the charter's timber has the whole store");
   assert.equal(space({ timber: share("timber") }, "timber", "palisade"), 0);
   assert.ok(storageIntakeSpace({ ...store, inventory: { timber: share("timber") } }, "timber", 100, lordIntakeRules({})) > 0, "the sandbox keeps the store's own room");
+  // A wall waiting on timber: the wood's lines wait (its reserve and deliveries need the stores whole); stone_raw's stays.
+  const walling = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v53/palisade-construction.save.json"))).envelope.state as GameState;
+  const sites = walling.constructionSites.filter(site => site.kind === "palisade_segment");
+  assert.ok(sites.length > 0);
+  const waiting = lordIntakeRules({ agency: initialAgency(), era: "palisade", constructionSites: sites });
+  assert.equal(waiting!.caps!.some(line => line.resource === "timber" || line.resource === "logs"), false);
+  assert.equal(waiting!.caps!.some(line => line.resource === "stone_raw"), true);
 });
 
 test("RC-5 the carters' spare loads bring barn wheat to the neediest mill or granary, from the nearest barn", () => {

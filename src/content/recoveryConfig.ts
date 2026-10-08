@@ -36,7 +36,8 @@ export interface IntakeCap {
  * DTR-19 (STORE-1, the user's instruction 2026-10-08): from the palisade on, timber and logs together fill at most half
  * a storehouse (35 % and 15 %) and stone_raw its own half — one material no longer takes the stores, stone keeps its
  * room, and the wood beyond waits at the camps and sawmills, where the carters sell what lies above the town's reserve
- * (TR-7 b). In the hamlet the charter's timber (250, DTR-13) needs the stores whole.
+ * (TR-7 b). In the hamlet the charter's timber (250, DTR-13) needs the stores whole, and so does a wall waiting on timber
+ * (its reserve and deliveries; seed 3 held its palisade at 1/19 for sixteen years under the wood's lines).
  */
 export const LORD_INTAKE_CAPS: readonly IntakeCap[] = [
   { store: "granary", resource: "barley", permille: 400 },

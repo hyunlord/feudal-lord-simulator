@@ -12,6 +12,7 @@ import { houseBuiltLevel } from "../population/houseCondition";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import type { Era } from "../content/eraConfig";
+import { constructionDeliveryNeed, isWallConstructionSite } from "../economy/construction";
 
 /** RC-1: the recovery rules are lord mode's. */
 export function recoveryActive(state: Pick<GameState, "agency">): boolean {
@@ -26,8 +27,18 @@ const RULES_BY_ERA: Readonly<Record<Era, IntakeRules>> = {
   palisade: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 1) },
   stone_town: { caps: LORD_INTAKE_CAPS.filter(line => line.fromEra === undefined || ERA_ORDER[line.fromEra] <= 2) },
 };
-export function lordIntakeRules(state: Pick<GameState, "agency"> & Partial<Pick<GameState, "era">>): IntakeRules | undefined {
-  return recoveryActive(state) ? RULES_BY_ERA[state.era ?? "hamlet"] : undefined;
+/** DTR-19: the wood's lines wait while a wall waits on timber (its reserve and deliveries need the stores whole). */
+const WOOD: ReadonlySet<string> = new Set(["timber", "logs"]);
+const WALL_BUILDING_RULES: Readonly<Record<Era, IntakeRules>> = {
+  hamlet: { caps: RULES_BY_ERA.hamlet.caps!.filter(line => line.fromEra === undefined || !WOOD.has(line.resource)) },
+  palisade: { caps: RULES_BY_ERA.palisade.caps!.filter(line => line.fromEra === undefined || !WOOD.has(line.resource)) },
+  stone_town: { caps: RULES_BY_ERA.stone_town.caps!.filter(line => line.fromEra === undefined || !WOOD.has(line.resource)) },
+};
+export function lordIntakeRules(state: Pick<GameState, "agency"> & Partial<Pick<GameState, "era" | "constructionSites">>): IntakeRules | undefined {
+  if (!recoveryActive(state)) return undefined;
+  const era = state.era ?? "hamlet";
+  const wallWaits = (state.constructionSites ?? []).some(site => isWallConstructionSite(site) && (constructionDeliveryNeed(site).timber ?? 0) > 0);
+  return wallWaits ? WALL_BUILDING_RULES[era] : RULES_BY_ERA[era];
 }
 
 /** RC-4: the labour shortage, permille — the job slots left unfilled over the slots the town's buildings need. */
