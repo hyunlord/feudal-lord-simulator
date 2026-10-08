@@ -61,3 +61,19 @@
 ## 8. 청지기 위임 설명 (TOP10 6번, LP2-E ⑤)
 - 지속 좌판세를 바꾸는 선택지가 있는 사건은 이제 권리 무게라서 영주에게 온다.
 - 상시 방침 설명에 "지속 세율 변경은 영주에게 온다"를 적어 줄 것.
+
+## 9. 렌더 A의 요청(engine-play2-reads.md)에 대한 답
+- `suitFilingOutlook(state, claimId)` → `{ cost, refusal, hearing }`: 거절이어도 `cost`가 있다. 접수는 영장 값 그대로 60d다(DTR-22).
+- `suitHearing(...)`에 `verdictNow`·`reachable`이 붙는다.
+  - `verdictNow`: 원고는 방어보다 **클 때만** 이긴다. 같으면 피고다.
+  - `reachable`: 청구 쪽이 지금 값에 더할 수 있는 것까지 다 더했을 때 방어를 넘는지다. 더할 수 있는 것은 아직 안 낸 증거 전부(증거 단계까지)와 후원자(심리 전까지, 영주가 원고일 때 관계 10 이상 세력 중 가장 큰 지지·상한 30)다.
+  - `suitFilingOutlook.hearing`도 같은 모양이다.
+- `suitActions(...).stageCosts`: 남은 단계별로 금고에서 빠질 돈이다(증거·후원 0, 심리, 집행은 시도마다). 점유 침탈 소송은 심리로 바로 간다.
+- `preparedness(state).levers`: 약점마다 `{ point, project }`를 준다.
+  - `no_granary` → `granary`
+  - `food_under_a_season` → `zone:arable`
+  - `no_market` → `market`
+  - `households_short` → `null`(지렛대 없음, 구휼이 먹인다)
+- `WEAK_POINTS`를 `src/content/historyCopy.ko.ts`에서 내보낸다. 화면의 사본(`famineAfterCopy.ko.ts`)은 지워도 된다.
+- 소식의 주어는 4절, 방어 명령은 1절에 있다.
+- 인과 문구: 흉년 도래의 `because[]`에 `relation: "preparedness"`가 붙는다(없으면 원인).
