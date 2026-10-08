@@ -12,6 +12,6 @@ fls_serve .remote/vite.log --config scripts/remote/viteNoWatch.config.ts --host 
 url="http://127.0.0.1:$port/"
 for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done
 curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }
-mkdir -p "$out" && cp "$lord2/suit-ledger-states.json" "$out/states.json" 2>/dev/null
+mkdir -p "$out" && cp "${SUIT_LEDGER_STATES:-$HOME/fls-suit-ledger-states}/suit-ledger-states.json" "$out/states.json" 2>/dev/null
 node_modules/.bin/tsx scripts/suitLedgerCaptures.ts "$out" --url "$url" --lord2 "$lord2" 2>&1 | tee .remote/suit-ledger-captures.log
 exit "${PIPESTATUS[0]}"
