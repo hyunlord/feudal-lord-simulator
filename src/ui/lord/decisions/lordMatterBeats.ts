@@ -12,7 +12,9 @@ import { LORD_MATTERS_COPY as COPY } from "./lordMattersCopy.ko";
 // (`lordMattersDue`): a suit against him and a forcible entry forewarned, one chip each, kept until answered or past
 // (useStoryPresentation). Each chip's line is the engine's own sentence of the filing or the warning (its history record),
 // its facts the stage and the engine's tick it moves on (as a season); its button opens the 약속·소송 page on the suit or
-// the threat (`screen`), where the lord answers it. The father's will is the decision cards' chip (lordStoryBeats).
+// the threat (`screen`), where the lord answers it. No picture: with one the suit's card ran under the steward's line at
+// 1280 × 720 (the filing's moment, which the suit's chip stands for, has it). The father's will is the decision cards'
+// chip (lordStoryBeats).
 
 /** The engine's sentence of a record of this template naming this id in this parameter, else the fallback. */
 function sentenceOf(state: GameState, template: string, key: string, id: string, fallback: string): string {
@@ -32,7 +34,7 @@ export function lordMatterBeats(state: GameState): readonly StoryBeat[] {
     if (matter.kind === "suit_defence") {
       const suit = estatesOf(state).suits.find(entry => entry.id === matter.id);
       if (suit === undefined) continue;
-      beats.push({ id: LORD_MATTER_CHIP.suit(suit.id), kind: "lord_decision", illustration: "moment_lawsuit_filed", tile: null, decision: null,
+      beats.push({ id: LORD_MATTER_CHIP.suit(suit.id), kind: "lord_decision", illustration: null, tile: null, decision: null,
         screen: { screen: "ledger", focus: suit.id }, openLabel: COPY.suitOpen,
         title: COPY.suitTitle, line: sentenceOf(state, "estate.suit_filed", "suit", suit.id, COPY.suitLine),
         facts: [COPY.suitStage(SUIT_STAGE_WORDS[suit.stage] ?? suit.stage), when === null ? COPY.suitWaits : COPY.suitNext(when)], advice: COPY.suitAdvice });
