@@ -292,3 +292,17 @@ test("PLAY-2: each weak point after a dearth names the town project that answers
   if ("households_short" in project) assert.equal(project.households_short, null);
   assert.equal(WEAK_POINTS.no_market, "곡식을 살 장터 없음");
 });
+
+test("DTR-23 / LP2-E ⑤: a concord the lord paid is followed by the kept piece's rent; an answer on the stall dues by the dues as they come", async () => {
+  const { advanceTrace } = await import("../src/engine/decisionTrace");
+  const { possessionRentSeason } = await import("../src/engine/possessionRent");
+  const { state: owned, estateId, pieceId } = taken(funded(lordGame(), 50_000));
+  const { state, suitId } = sued(owned, estateId, pieceId);
+  const paid = gameReducer(state, { type: "settle_suit", suitId, terms: "pay" });
+  const decision = paid.trace!.decisions.at(-1)!;
+  assert.ok(decision.targets.includes(`rent:${estateId}|${pieceId}|concord`));
+  const traced = advanceTrace(paid, possessionRentSeason({ ...paid, tick: paid.tick + 1 }));
+  const record = traced.history!.records.find(entry => entry.template === "consequence" && entry.params?.key === "suit_rent")!;
+  assert.equal(record.because?.[0]?.decisionId, decision.id);
+  assert.match(HISTORY_TEMPLATES.consequence!(record.params!), /^\d+년 합의로 지킨 땅에서 지대 .+ 들어왔다$/);
+});
