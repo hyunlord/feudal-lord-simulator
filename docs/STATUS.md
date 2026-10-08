@@ -983,3 +983,5 @@ Engine B 로드맵 작업 요약을 완료된 세 판 증거에 맞췄다. 전�
 Engine B [과거 판 JSON 비교기](verification/eb-freq/historical-projection-comparator.md)를 준비했다. 원래 압축/원문 해시를 고정하고 전체 객체를 비교하며, 일치해도 원인 적용·전체 상태·원래 런타임 검증은 false로 유지한다. Mac 오프라인11시험·lint 통과. 과거 판 재현은 실행 전이며 실행 중인 가드레일과 답변 재현·계절 UI 순서는 유지한다.
 
 Engine B [과거 등록기 계측 생성기](verification/eb-freq/historical-instrumentation.md)를 준비했다. 후보 탈락·가중 선택·외부 예산·영주/청지기 처리 경로에 삽입문만 더하고 제거 시 원본 바이트를 복원한다. Mac10시험·별도 원본56ee1d9 전체 타입 검사·lint·독립 검토 통과. 실제 과거 재현은 미실행이며, 결합된 바인딩 원인과 선택지 개수는 미관측으로 남긴다.
+
+Engine B [과거 기준 묶음 검증기](verification/eb-freq/historical-reference.md)는 run·report·context 해시 연결과 지원56·관측16·부재40의 정확한 집합을 대조한다. 오프라인 관련19시험·lint 통과. 이는 보관 자료 검증이며 실제 재현·부재 원인 적용·전체 상태 검증은 미완료다.
