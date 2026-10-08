@@ -14,7 +14,7 @@ export type GameLogoProps = {
 export function GameLogo({ layout, width, className }: GameLogoProps) {
   const height = Math.round(layout === "horizontal" ? width * 280 / 1200 : width * 640 / 720);
   return <span className={className} role="img" aria-label={KO_UI.appName}
-    style={{ display: "inline-grid", placeItems: "center", width, height, fontFamily: "var(--ui-font-serif)", fontSize: Math.round(height * 0.5) }}>
+    style={{ display: "inline-grid", placeItems: "center", width, height, fontFamily: "var(--ui-font-serif)", fontSize: Math.min(Math.round(height * 0.6), Math.floor(width / (KO_UI.appName.length + 1))), whiteSpace: "nowrap" }}>
     <span aria-hidden="true">{KO_UI.appName}</span>
   </span>;
 }

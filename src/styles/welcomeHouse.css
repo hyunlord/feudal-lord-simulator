@@ -2,7 +2,6 @@
    of the parchment, only the buttons take the pointer. */
 .app-shell .welcome-parchment h2.welcome-logo { display: flex; justify-content: center; line-height: 0; }
 .app-shell .welcome-modes [data-mode="sandbox"] { display: grid; justify-items: center; align-content: start; }
-.app-shell .welcome-modes [data-mode="sandbox"] > .save-control-button { justify-self: stretch; }
 .app-shell .welcome-parchment .welcome-goal-switch { pointer-events: auto; }
 
 .app-shell .welcome-house { display: grid; gap: 8px; }
@@ -20,7 +19,7 @@
 .app-shell .welcome-parchment .welcome-house-candidate { display: grid; place-items: center; width: 56px; height: 56px; padding: 4px; }
 .app-shell .welcome-parchment .welcome-house-more { min-height: 44px; padding: 4px 12px; font-size: var(--text-14); }
 .app-shell .welcome-house-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-.app-shell .welcome-house-actions .save-control-button { min-width: 160px; text-align: center; }
+.app-shell .welcome-parchment .welcome-house-actions .save-control-button { min-width: 160px; text-align: center; }
 /* The chosen name and arms: a seal-red ring outside the frame too, as the picked land (uiConsole.css). */
 :root .app-shell .welcome-parchment :is(.welcome-house-name, .welcome-house-candidate).ui-btn.ui-btn[aria-pressed="true"]:not(.ui-btn--tab) {
   box-shadow: 0 0 0 2px var(--seal-red), inset 0 0 0 2px var(--seal-red);

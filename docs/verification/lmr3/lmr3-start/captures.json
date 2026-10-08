@@ -1,0 +1,406 @@
+{
+ "url": "http://127.0.0.1:4302/",
+ "views": [
+  {
+   "viewport": "1280x800",
+   "step": "welcome",
+   "shot": "welcome-1280x800.jpg",
+   "parchment": [
+    200,
+    254,
+    880,
+    530
+   ],
+   "inside": true,
+   "scrolls": false,
+   "smallestText": {
+    "size": 12,
+    "text": "강 하나와 풀밭. 경작·목축·목재가 고르고,"
+   },
+   "smallestTarget": {
+    "w": 94,
+    "h": 44,
+    "text": "튜토리얼 켬"
+   },
+   "primaries": [
+    "영주 모드로 시작"
+   ],
+   "logo": [
+    217,
+    271,
+    846,
+    62
+   ],
+   "emblem": [
+    552,
+    64,
+    176,
+    176
+   ],
+   "modes": [
+    {
+     "id": "core:lord_slice",
+     "box": [
+      414,
+      678,
+      128,
+      44
+     ],
+     "text": "영주 모드로 시작"
+    },
+    {
+     "id": "core:sandbox",
+     "box": [
+      644,
+      657,
+      316,
+      44
+     ],
+     "text": "샌드박스로 시작"
+    }
+   ],
+   "house": null,
+   "centre": "div.welcome-dismiss-layer.title-screen"
+  },
+  {
+   "viewport": "1280x800",
+   "step": "house",
+   "shot": "house-1280x800.jpg",
+   "parchment": [
+    200,
+    375,
+    880,
+    409
+   ],
+   "inside": true,
+   "scrolls": false,
+   "smallestText": {
+    "size": 12,
+    "text": "de Haverel"
+   },
+   "smallestTarget": {
+    "w": 108,
+    "h": 44,
+    "text": "드 해버럴de Haverel"
+   },
+   "primaries": [
+    "이 가문으로 시작"
+   ],
+   "logo": null,
+   "emblem": [
+    552,
+    64,
+    176,
+    176
+   ],
+   "modes": [],
+   "house": {
+    "name": "de Haverel",
+    "arms": "haverel",
+    "names": 20,
+    "candidates": [
+     "haverel",
+     "haverel-2",
+     "haverel-3",
+     "haverel-4"
+    ],
+    "composed": 5
+   },
+   "centre": "div.welcome-dismiss-layer.title-screen"
+  },
+  {
+   "viewport": "tablet-1180x820",
+   "step": "welcome",
+   "shot": "welcome-tablet-1180x820.jpg",
+   "parchment": [
+    150,
+    270,
+    880,
+    534
+   ],
+   "inside": true,
+   "scrolls": false,
+   "smallestText": {
+    "size": 12,
+    "text": "강 하나와 풀밭. 경작·목축·목재가 고르고,"
+   },
+   "smallestTarget": {
+    "w": 94,
+    "h": 44,
+    "text": "튜토리얼 켬"
+   },
+   "primaries": [
+    "영주 모드로 시작"
+   ],
+   "logo": [
+    167,
+    287,
+    846,
+    62
+   ],
+   "emblem": [
+    502,
+    66,
+    176,
+    176
+   ],
+   "modes": [
+    {
+     "id": "core:lord_slice",
+     "box": [
+      364,
+      698,
+      128,
+      44
+     ],
+     "text": "영주 모드로 시작"
+    },
+    {
+     "id": "core:sandbox",
+     "box": [
+      594,
+      677,
+      316,
+      44
+     ],
+     "text": "샌드박스로 시작"
+    }
+   ],
+   "house": null,
+   "centre": "div.welcome-dismiss-layer.title-screen"
+  },
+  {
+   "viewport": "tablet-1180x820",
+   "step": "house",
+   "shot": "house-tablet-1180x820.jpg",
+   "parchment": [
+    150,
+    395,
+    880,
+    408
+   ],
+   "inside": true,
+   "scrolls": false,
+   "smallestText": {
+    "size": 12,
+    "text": "de Haverel"
+   },
+   "smallestTarget": {
+    "w": 108,
+    "h": 44,
+    "text": "드 해버럴de Haverel"
+   },
+   "primaries": [
+    "이 가문으로 시작"
+   ],
+   "logo": null,
+   "emblem": [
+    502,
+    66,
+    176,
+    176
+   ],
+   "modes": [],
+   "house": {
+    "name": "de Haverel",
+    "arms": "haverel",
+    "names": 20,
+    "candidates": [
+     "haverel",
+     "haverel-2",
+     "haverel-3",
+     "haverel-4"
+    ],
+    "composed": 5
+   },
+   "centre": "div.welcome-dismiss-layer.title-screen"
+  },
+  {
+   "viewport": "1280x720",
+   "step": "welcome",
+   "shot": null,
+   "parchment": [
+    200,
+    176,
+    880,
+    530
+   ],
+   "inside": true,
+   "scrolls": false,
+   "smallestText": {
+    "size": 12,
+    "text": "강 하나와 풀밭. 경작·목축·목재가 고르고,"
+   },
+   "smallestTarget": {
+    "w": 94,
+    "h": 44,
+    "text": "튜토리얼 켬"
+   },
+   "primaries": [
+    "영주 모드로 시작"
+   ],
+   "logo": [
+    217,
+    193,
+    846,
+    62
+   ],
+   "emblem": [
+    552,
+    58,
+    176,
+    176
+   ],
+   "modes": [
+    {
+     "id": "core:lord_slice",
+     "box": [
+      414,
+      600,
+      128,
+      44
+     ],
+     "text": "영주 모드로 시작"
+    },
+    {
+     "id": "core:sandbox",
+     "box": [
+      644,
+      579,
+      316,
+      44
+     ],
+     "text": "샌드박스로 시작"
+    }
+   ],
+   "house": null,
+   "centre": "div.welcome-dismiss-layer.title-screen"
+  },
+  {
+   "viewport": "1280x720",
+   "step": "house",
+   "shot": null,
+   "parchment": [
+    200,
+    297,
+    880,
+    409
+   ],
+   "inside": true,
+   "scrolls": false,
+   "smallestText": {
+    "size": 12,
+    "text": "de Haverel"
+   },
+   "smallestTarget": {
+    "w": 108,
+    "h": 44,
+    "text": "드 해버럴de Haverel"
+   },
+   "primaries": [
+    "이 가문으로 시작"
+   ],
+   "logo": null,
+   "emblem": [
+    552,
+    58,
+    176,
+    176
+   ],
+   "modes": [],
+   "house": {
+    "name": "de Haverel",
+    "arms": "haverel",
+    "names": 20,
+    "candidates": [
+     "haverel",
+     "haverel-2",
+     "haverel-3",
+     "haverel-4"
+    ],
+    "composed": 5
+   },
+   "centre": "div.welcome-dismiss-layer.title-screen"
+  }
+ ],
+ "flows": {
+  "goalSwitch": {
+   "before": "core:sandbox",
+   "on": "core:campaign_market_town",
+   "checked": "true",
+   "welcome": true,
+   "off": "core:sandbox"
+  },
+  "defaultHouse": {
+   "name": "de Haverel",
+   "arms": "haverel",
+   "candidates": [
+    "haverel",
+    "haverel-2",
+    "haverel-3",
+    "haverel-4"
+   ]
+  },
+  "pickedName": {
+   "name": "de Ravenholt",
+   "arms": "ravenholt",
+   "candidates": [
+    "ravenholt",
+    "ravenholt-2",
+    "ravenholt-3",
+    "ravenholt-4"
+   ]
+  },
+  "moreArms": {
+   "name": "de Ravenholt",
+   "arms": "ravenholt",
+   "candidates": [
+    "ravenholt-5",
+    "ravenholt-6",
+    "ravenholt-7",
+    "ravenholt-8"
+   ]
+  },
+  "pickedArms": {
+   "name": "de Ravenholt",
+   "arms": "ravenholt-7",
+   "candidates": [
+    "ravenholt-5",
+    "ravenholt-6",
+    "ravenholt-7",
+    "ravenholt-8"
+   ]
+  },
+  "backKeepsWelcome": {
+   "modes": true,
+   "house": 0
+  },
+  "houseKeptAfterBack": {
+   "name": "de Ravenholt",
+   "arms": "ravenholt-7",
+   "candidates": [
+    "ravenholt",
+    "ravenholt-2",
+    "ravenholt-3",
+    "ravenholt-4"
+   ]
+  },
+  "started": {
+   "scenarioId": "core:lord_slice",
+   "lord": true,
+   "house": {
+    "order": 1,
+    "name": "de Ravenholt",
+    "arms": "ravenholt-7",
+    "heraldrySeed": 1283848097,
+    "since": 0
+   }
+  },
+  "campaignHelper": {
+   "scenarioId": "core:campaign_market_town",
+   "lord": false,
+   "house": "(default)"
+  }
+ },
+ "errors": []
+}
