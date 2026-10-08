@@ -23,7 +23,7 @@ const DEFINITIONS: readonly (PetitionDef & { readonly registryChoices: Readonly<
     } },
 ];
 
-/** Final v4 calendar (1300–1450) supersedes the earlier R05 definition window. Isolated lookup; these definitions must never enter the calendar scheduler. */
+/** Final v4 calendar (1300–1450) supersedes the earlier R05 definition period. Isolated lookup; these definitions must never enter the calendar scheduler. */
 export function registryChapterPetitionDef(id: string): PetitionDef | undefined {
   return DEFINITIONS.find(def => def.id === id);
 }
