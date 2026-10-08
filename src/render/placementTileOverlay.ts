@@ -18,7 +18,9 @@ import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./s
 // tile a thick dashed one and a big ✕ across its middle (code, not a picture), so the two part without colour or pattern.
 const HATCH_SPACING_PX = 6;
 const DASH_PX = [7, 5] as const;
-const CROSS_HALF = 0.32; // the ✕'s half-span as a share of the tile's half-width / half-height
+// The ✕ spans 60 % of the tile's width (user 2026-10-08: zoom 1 is the usual view), its arms parallel to the tile's
+// edges (rise 1 : 2, the ground's slant); each arm reaches past the 20 px reason icon, so its four ends show around it.
+const CROSS_SPAN = 0.6;
 const ICON_PX = 20;
 
 const REASON_ICON: Readonly<Record<TileMarkReason, readonly [UiIconSheet, string]>> = {
@@ -76,16 +78,16 @@ function dashedOutline(context: CanvasRenderingContext2D, zoom: number, width: n
 /** A big ✕ across the tile's middle, light rim under ink. */
 function cross(context: CanvasRenderingContext2D, tx: number, ty: number, zoom: number): void {
   const centre = tileToScreen(tx, ty);
-  const dx = (TILE_W / 2) * CROSS_HALF; const dy = (TILE_H / 2) * CROSS_HALF * 2;
+  const dx = (TILE_W * CROSS_SPAN) / 2; const dy = dx / 2;
   context.beginPath();
   context.moveTo(centre.sx - dx, centre.sy - dy); context.lineTo(centre.sx + dx, centre.sy + dy);
   context.moveTo(centre.sx + dx, centre.sy - dy); context.lineTo(centre.sx - dx, centre.sy + dy);
   context.lineCap = "round";
   applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
-  context.lineWidth = 6 / zoom;
+  context.lineWidth = 7 / zoom;
   context.stroke();
   applyPaletteStroke(context, PALETTE.ink, zoom);
-  context.lineWidth = 3 / zoom;
+  context.lineWidth = 4 / zoom;
   context.stroke();
 }
 
