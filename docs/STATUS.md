@@ -955,3 +955,5 @@ Engine B [125년 세 판 원본 통합](verification/eb-weight/kept-2485af4/thre
 Engine B [기존 미관측40의 세 판 관측](verification/eb-freq/three-seed-2485af4.md)은 합집합11·공통4·모두 미제시29다. seed3에서059가 추가 관측됐다. 최초 탈락 단계 실측과 시대 제외080/174는 확인했지만 외부 예산·수락 후 선택·엔진 사실 부재의 전수 원인 귀속은 미완료다.
 
 Engine B seed3의1349년 중대 root5건과 성숙 등록 후속 공백14건을 [엔진에 기록 인계](requests/engine-B-weight-trace.md)했다. 오래된083의800설정에 뒤의1100유지 영수증이 연결되는 실제 기록을 보존했으며, 최신 무게 없는 세율 결정의 보존 만료 설명은 경계 재현 전 소스 기반 추론으로 구분했다.
+
+Engine B [실제 답변 재현 도구](verification/eb-weight/answer-replay-contract.md)를 구현·제한 검증했다. 실제 전후 입력 보존, 중복 거부, 원본 관측 시점/전체 상태/기존 수집기 비교와 등록 답변 전수 결합을 검사하며27시험·타입·lint 통과다. 독립 소스 검토에서 차단 결함 없음. 실제 DGX 재현과 계절 보고 화면은 아직 검증 전이다.
