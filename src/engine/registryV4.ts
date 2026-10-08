@@ -1,3 +1,4 @@
+import { createRegistryBindingDiagnostic, hasRegistryCandidateObserver, publishRegistryCandidateObservations, type RegistryBindingDiagnostic, type RegistryCandidateGate, type RegistryCandidateObservation } from "./registryCandidateObservation";
 import { prepareRegistryChapterPetition, registryChapterPetitionContext, registryChapterPetitionDef } from "./registryChapterPetitions";
 /**
  * LM-E9b (spec docs/design/registry.md ER-13…ER-18): the content canon v4 in the registry — its entries loaded and
@@ -298,11 +299,17 @@ function candidates(binding: V4Binding, scope: Scope): readonly unknown[] {
  * the entry's conditions hold (not the first item of each binding alone). `fixed` keeps the identities an offer bound.
  * Bindings needed only by some choices (`requiredForChoices`) are bound afterwards, first match, and may stay missing.
  */
-export function bindEntry(state: GameState, entry: V4Entry, fixed?: Readonly<Record<string, string>>): Readonly<Record<string, unknown>> | null {
-  if (registryChapterPetitionDef(entry.id) !== undefined && !registryChapterPetitionContext(state, entry.id)) return null;
+export function bindEntry(state: GameState, entry: V4Entry, fixed?: Readonly<Record<string, string>>, diagnostic?: RegistryBindingDiagnostic): Readonly<Record<string, unknown>> | null {
+  if (registryChapterPetitionDef(entry.id) !== undefined && !registryChapterPetitionContext(state, entry.id)) {
+    if (diagnostic !== undefined) diagnostic.contextFailures += 1;
+    return null;
+  }
   const contextualEntry = handlesPetitionContext(entry.id);
   const savedContext = fixed === undefined || !contextualEntry ? undefined : readContextSnapshot(fixed.authoredContext);
-  if (savedContext === null) return null;
+  if (savedContext === null) {
+    if (diagnostic !== undefined) diagnostic.contextFailures += 1;
+    return null;
+  }
   const order = bindingOrder(entry);
   const entryLevel = order.filter(name => entry.bindings[name]!.requiredForChoices === undefined);
   const choiceLevel = order.filter(name => entry.bindings[name]!.requiredForChoices !== undefined);
@@ -310,20 +317,32 @@ export function bindEntry(state: GameState, entry: V4Entry, fixed?: Readonly<Rec
   const assign = (index: number, bound: Readonly<Record<string, unknown>>): Readonly<Record<string, unknown>> | null => {
     if (index === entryLevel.length) {
       tries += 1;
+      if (diagnostic !== undefined) diagnostic.combinations += 1;
       let contextual = bound;
       if (contextualEntry) {
         const authoredContext = petitionContext(state, entry.id, bound, savedContext);
-        if (authoredContext === null) return null;
+        if (authoredContext === null) {
+          if (diagnostic !== undefined) diagnostic.contextFailures += 1;
+          return null;
+        }
         contextual = { ...bound, authoredContext };
       }
-      return holds(entry.conditions, { state, bound: contextual, vars: {} }) ? contextual : null;
+      const matched = holds(entry.conditions, { state, bound: contextual, vars: {} });
+      if (!matched && diagnostic !== undefined) diagnostic.conditionFailures += 1;
+      return matched ? contextual : null;
     }
     const name = entryLevel[index]!;
+    let matchedTarget = false;
     for (const item of candidates(entry.bindings[name]!, { state, bound, vars: {} })) {
       if (fixed?.[name] !== undefined && itemIdentity(item) !== fixed[name]) continue;
+      matchedTarget = true;
       const found = assign(index + 1, { ...bound, [name]: item });
-      if (found !== null || tries >= MAX_COMBINATIONS) return found;
+      if (found !== null || tries >= MAX_COMBINATIONS) {
+        if (found === null && diagnostic !== undefined) diagnostic.truncated = true;
+        return found;
+      }
     }
+    if (!matchedTarget && diagnostic !== undefined) diagnostic.missingBindings[name] = (diagnostic.missingBindings[name] ?? 0) + 1;
     return null;
   };
   const bound = assign(0, {});
@@ -403,30 +422,43 @@ export function v4Candidates(state: GameState, past: readonly V4Past[]): readonl
   const { year, season } = stateCalendar(state);
   const index = Math.floor(state.tick / SEASON);
   const thisYear = past.filter(occurrence => Math.floor(occurrence.offeredTick / YEAR) === Math.floor(state.tick / YEAR));
-  // ER-22: one-shot entries come this season only under the pace's draw.
   const oneShotsOpen = hashSeed(state.seed, "registry-pace", index) % 1000 < oneShotPacePermille(state, past);
   const out: V4Candidate[] = [];
+  const observations: RegistryCandidateObservation[] | undefined = hasRegistryCandidateObserver() ? [] : undefined;
   for (const entry of ENTRIES) {
     if (SUPPORT.get(entry.id)?.runs !== true) continue;
-    if (year < entry.calendar.yearMinInclusive || year > entry.calendar.yearMaxInclusive || !entry.calendar.seasonIndices.includes(season)) continue;
+    const diagnostic = observations === undefined ? undefined : createRegistryBindingDiagnostic();
+    const record = (gate: RegistryCandidateGate, enabledChoices?: number) => {
+      if (observations === undefined || diagnostic === undefined) return;
+      observations.push({ tick: state.tick, entryId: entry.id, gate, combinations: diagnostic.combinations,
+        contextFailures: diagnostic.contextFailures, conditionFailures: diagnostic.conditionFailures,
+        truncated: diagnostic.truncated, missingBindings: JSON.stringify(diagnostic.missingBindings),
+        ...(enabledChoices === undefined ? {} : { enabledChoices }) });
+    };
+    if (year < entry.calendar.yearMinInclusive || year > entry.calendar.yearMaxInclusive) { record("year"); continue; }
+    if (!entry.calendar.seasonIndices.includes(season)) { record("season"); continue; }
     const own = past.filter(occurrence => occurrence.entryId === entry.id);
-    if (entry.recurrence.mode === "once_per_campaign" && (own.length > 0 || !oneShotsOpen)) continue;
-    if (own.filter(occurrence => thisYear.includes(occurrence)).length >= entry.frequency.maxPerYear) continue;
+    if (entry.recurrence.mode === "once_per_campaign" && own.length > 0) { record("once_used"); continue; }
+    if (entry.recurrence.mode === "once_per_campaign" && !oneShotsOpen) { record("pace"); continue; }
+    if (own.filter(occurrence => thisYear.includes(occurrence)).length >= entry.frequency.maxPerYear) { record("annual_cap"); continue; }
     const last = own.at(-1);
     const gap = Math.max(entry.frequency.minGapSeasons, entry.recurrence.cooldownSeasonsMinimum ?? 0);
-    if (last !== undefined && index - Math.floor(last.offeredTick / SEASON) < gap) continue;
+    if (last !== undefined && index - Math.floor(last.offeredTick / SEASON) < gap) { record("cooldown"); continue; }
     const draw = hashSeed(state.seed, `registry-v4:${entry.id}`, index) % 1000;
-    if (draw >= entry.frequency.chancePermille) continue;
+    if (draw >= entry.frequency.chancePermille) { record("draw"); continue; }
     const candidateState = registryChapterPetitionDef(entry.id) === undefined ? state : prepareRegistryChapterPetition(state, entry.id);
-    if (candidateState === null) continue;
-    const bound = bindEntry(candidateState, entry);
-    if (bound === null) continue;
+    if (candidateState === null) { record("chapter_preparation"); continue; }
+    const bound = bindEntry(candidateState, entry, undefined, diagnostic);
+    if (bound === null) { record("binding"); continue; }
     const key = dedupKey(entry, bound);
     const context = contextKey(entry, bound);
-    if (past.some(occurrence => occurrence.status === "offered" && occurrence.key === key)) continue;
-    if (entry.recurrence.mode === "new_context_only" && own.some(occurrence => occurrence.context === context)) continue;
-    if (v4EnabledChoices(candidateState, entry, bound).length < entry.minimumEnabledConsequentialChoices) continue;
+    if (past.some(occurrence => occurrence.status === "offered" && occurrence.key === key)) { record("dedup"); continue; }
+    if (entry.recurrence.mode === "new_context_only" && own.some(occurrence => occurrence.context === context)) { record("new_context"); continue; }
+    const enabledChoices = v4EnabledChoices(candidateState, entry, bound).length;
+    if (enabledChoices < entry.minimumEnabledConsequentialChoices) { record("enabled_choices", enabledChoices); continue; }
     out.push({ entry, bound, draw, key, context });
+    record("accepted", enabledChoices);
   }
+  if (observations !== undefined) publishRegistryCandidateObservations(observations);
   return out;
 }

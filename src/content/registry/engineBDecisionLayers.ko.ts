@@ -29,7 +29,7 @@ export const ENGINE_B_DECISION_LAYERS: Readonly<Record<string, EngineBDecisionWe
   ck_evt_087: { weight: 'steward', layer: null, reason: '일반 좌판 부담·시장 24d 지원·성장 방침을 조정하며 새 권리나 세력 결렬을 만들지 않는다.' },
   ck_evt_088: { weight: 'steward', layer: null, reason: '맥아·제분 사업지원 총 24d를 배분하는 생산 운영 방침이다.' },
   ck_evt_090: { weight: 'steward', layer: null, reason: '목재 6~12단위 주문과 제재소 12~24d 지원이며 특정 점포 수선·재산권 이동을 결정하지 않는다.' },
-  ck_evt_092: { weight: 'steward', layer: null, reason: '일반 시장 부담과 성장 우선순위 변경이며 영구 특허 양보가 아니다.' },
+  ck_evt_092: { weight: 'lord', layer: 'rights', reason: '지원되는 행동 선택이 모두 지속 좌판세를 바꾸므로 영주가 정한다. 청지기가 상시 방침으로 세율을 바꾸지 않는다(LP2-E).' },
   ck_evt_093: { weight: 'steward', layer: null, reason: '시장 전체 부담이나 20d 사업지원을 정하며 새 장인만의 특권·면세권을 만들지 않는다.' },
   ck_evt_095: { weight: 'steward', layer: null, reason: '시장 공고 철회·축소 또는 창고 24d 지원이며 확정 채무·여러 해 계약을 파기하지 않는다.' },
   ck_evt_100: { weight: 'steward', layer: null, reason: '창고·시장 32d 지원 또는 목재 16단위 조달로 물류 기반의 운영 지원을 배분한다.' },

@@ -25,13 +25,16 @@ test('decision weights never include the v4.2 held recommendations', () => {
 
 test('rights and land choices remain lord decisions while routine money stays steward work', () => {
   // Given: decisions whose consequences differ despite all mentioning money or management.
-  const lordIds = ['057', '061', '067', '075', '076', '077', '078', '147'].map(id => `ck_evt_${id}`);
+  const lordIds = ['057', '061', '067', '075', '076', '077', '078', '092', '147'].map(id => `ck_evt_${id}`);
   // When: their editorial classifications are read.
   const actual = Object.entries(ENGINE_B_DECISION_LAYERS).filter(([, value]) => value.weight === 'lord').map(([id]) => id);
   // Then: titles or small payments do not promote routine work.
   assert.deepEqual(actual.sort(), lordIds.sort());
+  assert.equal(actual.length, 9);
+  assert.equal(Object.values(ENGINE_B_DECISION_LAYERS).filter(value => value.weight === 'steward').length, 18);
   assert.equal(ENGINE_B_DECISION_LAYERS['ck_evt_057']?.layer, 'rights');
   assert.equal(ENGINE_B_DECISION_LAYERS['ck_evt_075']?.layer, 'rights');
+  assert.equal(ENGINE_B_DECISION_LAYERS['ck_evt_092']?.layer, 'rights');
   for (const value of Object.values(ENGINE_B_DECISION_LAYERS)) {
     assert.match(value.reason, /[가-힣]/u);
     assert.equal(value.layer === null, value.weight === 'steward');

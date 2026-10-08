@@ -51,7 +51,7 @@ test('first-batch contexts remain configured and require agency', () => {
   assert.equal(handlesPetitionContext('ck_evt_099'), false);
 });
 
-test('town offers pin causal sites, revalidate before answering, and remain steward work', async () => {
+test('town offers pin causal sites, revalidate before answering, and distinguish routine work from lasting dues rights', async () => {
   const { bindEntry, boundIdentities, v4Entry, v4EnabledChoices } = await import('../src/engine/registryV4');
   const { weighOffer } = await import('../src/engine/decisionLayer');
   const base = town();
