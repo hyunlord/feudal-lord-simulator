@@ -49,3 +49,9 @@ Reviewed SHA256 `61debae4c0a92aeebcd69bc2ba0da58aeecba416cbc74e4fe7e227b05f99c3b
 Read all four meaningful regression tests: normal leader exit with descendant cleanup; already-exited leader;3s forced whole-group escalation under fake timers; harmless missing-group versus rejected permission failure. Tests mock process.kill and create no real processes/ticks. Parent reported all4 tests and repository lint passing; this reviewer inspected source only and did not rerun them. The6s no-exit timeout branch is source-inspected rather than directly covered by these four tests.
 
 Prior source provenance, expected-input/output binding and presentation-only proof limitations still apply. Actual DGX browser/clock/rendering and operational process exit remain pending runtime evidence, not inferred from this source PASS.
+
+## DGX Playwright metadata preflight correction
+
+The runner imports `scripts/remote/playwright-chrome-shim.mjs` and supplies `FLS_PLAYWRIGHT_CORE`; the shim directory has no package.json. The prior sibling-package lookup reproduced ENOENT. Only the canonical standard shim now follows the backing-core path. Direct core entries require index.mjs and playwright-core identity; an explicit matching version is mandatory. Captured provenance records module/core/package paths and hashes. Shim loading and Chromium channel mapping are unchanged.
+
+Five metadata regressions plus four lifecycle regressions passed with `tsx --test`; repository ESLint passed for the changed harness and new test. These checks use temporary metadata fixtures and mocked lifecycle events, not a browser or real process cleanup. Actual season UI verification remains pending after the existing guardrail and verified answer replay.

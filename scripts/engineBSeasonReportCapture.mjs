@@ -28,6 +28,22 @@ const proof = page => page.evaluate(() => JSON.stringify(window.__FEUDAL_PHASE10
 const PAUSE = '.speed-seal[data-seal="pause"]';
 const NORMAL = '.speed-seal[data-seal="normal"]';
 const CARD = '.season-ledger-card[role="dialog"][data-frame="season-ledger"]';
+export function playwrightProvenance(env = process.env) {
+  check(env.PLAYWRIGHT_MODULE?.startsWith('/'), 'Absolute PLAYWRIGHT_MODULE required');
+  const modulePath = realpathSync(env.PLAYWRIGHT_MODULE);
+  const standardShim = realpathSync(fileURLToPath(new URL('./remote/playwright-chrome-shim.mjs', import.meta.url)));
+  const coreInput = modulePath === standardShim ? env.FLS_PLAYWRIGHT_CORE : env.PLAYWRIGHT_MODULE;
+  check(coreInput?.startsWith('/'), 'Absolute backing core path required');
+  const corePath = realpathSync(coreInput);
+  check(basename(corePath) === 'index.mjs', 'Expected playwright-core/index.mjs, not an arbitrary shim');
+  const packagePath = join(dirname(corePath), 'package.json'), packageBytes = readFileSync(packagePath);
+  const pkg = JSON.parse(packageBytes);
+  check(pkg.name === 'playwright-core', 'Expected playwright-core package');
+  check(typeof env.EB_PLAYWRIGHT_VERSION === 'string' && env.EB_PLAYWRIGHT_VERSION.length > 0
+    && pkg.version === env.EB_PLAYWRIGHT_VERSION, 'Explicit Playwright version pin required');
+  return { version: pkg.version, modulePath, corePath, packagePath,
+    moduleSha256: sha(readFileSync(modulePath)), coreSha256: sha(readFileSync(corePath)), packageSha256: sha(packageBytes) };
+}
 export function readPrecloses(directory, expectedSha) {
   const bytes = readFileSync(join(directory, 'manifest.json'));
   const validity = JSON.parse(readFileSync(join(directory, 'validity.json'), 'utf8'));
@@ -222,13 +238,11 @@ async function main() {
       item.expectedOutput = { state, rawSha256: sha(raw) };
     }
   }
-  check(process.env.PLAYWRIGHT_MODULE?.startsWith('/'), 'Absolute PLAYWRIGHT_MODULE required');
-  const playwrightPackage = JSON.parse(readFileSync(join(dirname(process.env.PLAYWRIGHT_MODULE), 'package.json'), 'utf8'));
-  check(playwrightPackage.version === process.env.EB_PLAYWRIGHT_VERSION, 'Explicit Playwright version pin required');
+  const playwright = playwrightProvenance();
   mkdirSync(output);
   const evidence = { valid: false, scope: 'Single UI tick and actual report presentation; not raw store identity or whole UI acceptance',
     serverProvenance: null, sourceRevision: SOURCE, browserRevision, changedUiFiles: changes, replayManifestSha256: expectedManifestSha,
-    playwrightVersion: playwrightPackage.version, expectedTickOutputsManifestSha256: process.env.EB_EXPECTED_TICK_OUTPUTS_SHA256 ?? null, viewport: { width: 1280, height: 800, dpr: 1 }, cases: [] };
+    playwrightVersion: playwright.version, playwright, expectedTickOutputsManifestSha256: process.env.EB_EXPECTED_TICK_OUTPUTS_SHA256 ?? null, viewport: { width: 1280, height: 800, dpr: 1 }, cases: [] };
   let browser, owned;
   try {
     owned = await startOwnedServer(url, output); evidence.serverProvenance = owned.provenance;
