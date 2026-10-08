@@ -7,7 +7,7 @@
 - `engineB-weight-smoke-4b45924`: DGX 1년 시험 exit0, 4.5초. 0–4000틱 관측 간격 최대1·역행0, 후보 판정224건, 청지기 보고2/2. `smoke-1.json.gz`와 `smoke-provenance.json`에 원본 해시를 보존했다. 장기 관문 대체 자료가 아니다.
 - `engineB-weight125-7ee76b9`: 종료 연도의 첫 틱이 전체 분모에 섞이는 검토 지적 때문에 자체 실행만 중단했다. 결과를 채택하지 않는다.
 - `de3d9e224`: 결정·제시·후보 판정은 `[0,500000)`으로 제한하고, 이전 결정의 결과 확인에는 끝점 history를 보존하도록 수정했다. 경계 회귀 포함12시험과 독립 재검토 통과.
-- `engineB-weight125-fixed-de3d9e2`: 수정 소스로 seed1→2→3을 한 실험에서 직렬 실행 중이다. 완료 전 수치·통과를 주장하지 않는다.
+- `engineB-weight125-fixed-de3d9e2`: seed1은125년·1303.956초로 완료했다. 이후 본선 TRACE-KEEP 통합으로 남은 구 소스 실행을 종료했다. `control-de3d9e2/`에 원본 gzip·해시·관측 완전성을 보존한다. 단일 seed 비교 자료이며 최종 seed셋 관문이 아니다. 최신 소스와 실제 화면 검증용 저장 장면을 함께 기록하는 실행으로 교체한다.
 
 실행 원본은 `engineBWeightAuditRun.ts`, 세 원본의 동일 소스·구간·56 ID·관측 완전성을 검증하는 합산기는 `engineBWeightAuditReport.mjs`다. 연간 분모는 실제 `cameHeavyToLord` trace 사안이며 모든 명령 횟수나 전체 화면 도착 횟수와 구분한다. 후보 판정 기록은 실제 v4 평가를 관측하지만 외부 등록기 예산으로 평가 자체가 생략된 철까지 설명하지 않는다.
 
