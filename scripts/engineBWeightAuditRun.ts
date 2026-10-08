@@ -13,13 +13,14 @@ import { advanceTick } from '../src/engine/tick';
 import { gameReducer } from '../src/state/gameStore';
 import { newGameState } from '../src/state/newGame';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
+import { createRegistryCheckpointObserver } from './engineBWeightAuditCheckpoints';
 import { createWeightAuditCollector } from './engineBWeightAuditCollector';
 import { annualStatistics, ENGINE_B_PRIOR_BATCH_IDS, summarizeWeightAudit, weightAuditOccurrencesInRange } from './engineBWeightAuditSummary';
 
 export class WeightAuditInputError extends Error {
   constructor(message: string) { super(message); this.name = 'WeightAuditInputError'; }
 }
-export function engineBWeightAuditRun(seed: number, years: number) {
+export function engineBWeightAuditRun(seed: number, years: number, checkpointDirectory?: string) {
   if (!Number.isSafeInteger(seed) || seed < 0 || !Number.isSafeInteger(years) || years < 1) {
     throw new WeightAuditInputError('seed must be a nonnegative integer; years must be a positive integer');
   }
@@ -33,8 +34,13 @@ export function engineBWeightAuditRun(seed: number, years: number) {
     if (state === null) throw new WeightAuditInputError(`Cannot create seed ${seed}`);
     const startYear = stateCalendar(state).year;
     const collector = createWeightAuditCollector();
+    const checkpoints = checkpointDirectory === undefined ? undefined : createRegistryCheckpointObserver({ directory: checkpointDirectory,
+      sourceRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+      dirtyPaths: execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim(),
+      enabledIds: registryV4Support().filter(entry => entry.runs).map(entry => entry.id), endTickExclusive });
     const started = Date.now();
     collector.observe(state);
+    checkpoints?.observe(state);
     let commands = 0;
     while (stateCalendar(state).year < startYear + years) {
       for (const { command } of lordBotCommands(state)) {
@@ -42,9 +48,11 @@ export function engineBWeightAuditRun(seed: number, years: number) {
         if (next !== state) commands += 1;
         state = next;
         collector.observe(state);
+        checkpoints?.observe(state);
       }
       state = advanceTick(state);
       collector.observe(state);
+      checkpoints?.observe(state);
     }
     if (registryCandidateObserverFailures() !== 0) throw new WeightAuditInputError('Candidate observer failed during audit');
     const archive = collector.snapshot();
@@ -66,6 +74,7 @@ export function engineBWeightAuditRun(seed: number, years: number) {
         combinedQueueItems: presented.length + due.filter(item => item.kind !== 'will_change').length };
     });
     return { schemaVersion: 1, seed, years, startYear, endYearExclusive: startYear + years, endTick: state.tick,
+      checkpointManifest: checkpoints?.finish(state) ?? null,
       seconds: (Date.now() - started) / 1000, commands, summary, annualArrivals,
       candidateObservation: { ...candidates.snapshot(), observerFailures: registryCandidateObserverFailures() },
       arrivalLimits: 'Whole-game queue arrival collector does not classify non-registry item weights; P-T1 uses resolved/lapsed trace metric separately.',
@@ -78,10 +87,10 @@ export function engineBWeightAuditRun(seed: number, years: number) {
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const [seed = '1', years = '125', output, extra] = process.argv.slice(2);
-  if (extra !== undefined) throw new WeightAuditInputError('usage: engineBWeightAuditRun.ts [seed] [years] [output.json]');
+  const [seed = '1', years = '125', output, checkpointDirectory, extra] = process.argv.slice(2);
+  if (extra !== undefined) throw new WeightAuditInputError('usage: engineBWeightAuditRun.ts [seed] [years] [output.json] [checkpoint-directory]');
   const provenance = { sourceRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
     dirtyPaths: execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim(), node: process.version };
-  const result = `${JSON.stringify({ provenance, ...engineBWeightAuditRun(Number(seed), Number(years)) }, null, 2)}\n`;
+  const result = `${JSON.stringify({ provenance, ...engineBWeightAuditRun(Number(seed), Number(years), checkpointDirectory) }, null, 2)}\n`;
   if (output === undefined) process.stdout.write(result); else writeFileSync(output, result);
 }
