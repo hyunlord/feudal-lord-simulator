@@ -1,0 +1,224 @@
+{
+  "id": "I0003-height-era-l2late",
+  "candidate_only": true,
+  "runtime_verified": false,
+  "assets": [
+    {
+      "role": "body",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-body.png",
+      "sha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/body07.png",
+      "raw_sha256": "ac75f74f2cbaca360f29ddc170e235ae268658cdb342af2eaf195f2cb6f65fc2",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/body07.txt",
+      "prompt_sha256": "9ba8f5aff8dd60bb9c09ddfa5c3f02260dc52753bf6889c1d1bd81c9349ed07c",
+      "raw_size": [
+        1015,
+        1549
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        133,
+        203
+      ],
+      "whole_translation": [
+        4,
+        41
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    },
+    {
+      "role": "snow",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-snow.png",
+      "sha256": "def07f2356b7d74b5dc9ac15b8e49ac573a3d2c1ea08e5b976e1fdf57dd8e26c",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/snow01.png",
+      "raw_sha256": "e76e3de9cf165405f619a6d2c2b2d487262bdd108df854756c4a28876b7c7117",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/snow01.txt",
+      "prompt_sha256": "0d6b59815406b26e3cf46c1a72ddccffaf40f2d06b5ace9eaeb95d5f0e34d6a7",
+      "raw_size": [
+        970,
+        1622
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        121,
+        202
+      ],
+      "whole_translation": [
+        4,
+        20
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    },
+    {
+      "role": "boarded",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-boarded.png",
+      "sha256": "248867db3ba5fef382e5d59da3d06eb19d701e4dfab90d61debde3d7c337429d",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/boarded01.png",
+      "raw_sha256": "ec67d05feeb4cfd54c61271c59634b1f46243c9bac73a974be5e6ea23a5f91dd",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/boarded01.txt",
+      "prompt_sha256": "682bcfd983b08415476c444ec2607305065fb508d8d94cc1ff848de3708fabe8",
+      "raw_size": [
+        970,
+        1622
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        96,
+        160
+      ],
+      "whole_translation": [
+        9,
+        61
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    },
+    {
+      "role": "strained",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-strained.png",
+      "sha256": "53919b271c27eb03f7d026f5c604823814b0c3a9b0f4bdf98b57f92b9cd7469a",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/strained01.png",
+      "raw_sha256": "cc15891956bf5c46face6186d581c3bf992f13d11c8c957e0a3d316a8b6e89b3",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/strained01.txt",
+      "prompt_sha256": "2ff6c9e365241dcde1948a6cbcf2f2eb1ec1129367658662df95e61cddb72319",
+      "raw_size": [
+        970,
+        1622
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        137,
+        229
+      ],
+      "whole_translation": [
+        0,
+        15
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    },
+    {
+      "role": "neglected",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-neglected.png",
+      "sha256": "8aa6cc9d2905f6c4f41c735716dac6a8441b80fa4eba53e96466a46f0ee05edb",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/neglected01.png",
+      "raw_sha256": "d787e177f3a24aa69623cee078be68317159f1f4047486e20bd75d3024b65146",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/neglected01.txt",
+      "prompt_sha256": "49e808efa2f76cc4aee938b0215fcf64e03d1480f8b34fa84ea858634e209353",
+      "raw_size": [
+        970,
+        1622
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        137,
+        229
+      ],
+      "whole_translation": [
+        0,
+        15
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    },
+    {
+      "role": "vacant",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-vacant.png",
+      "sha256": "0cd81943aa878d88bcb9d6f9c242fbc72169dc7c981687a480a94322b4717226",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/vacant02.png",
+      "raw_sha256": "5200770b4b6e2a42df8d7399583c98435142083d745b87f48dad798dc3998a33",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/vacant02.txt",
+      "prompt_sha256": "b8c26d3f6bbe38b98bfcf992e4a43060ce8318971d18ce1c389f9512fc7f7604",
+      "raw_size": [
+        970,
+        1622
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        137,
+        229
+      ],
+      "whole_translation": [
+        0,
+        0
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    },
+    {
+      "role": "plague-shut",
+      "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-plague-shut.png",
+      "sha256": "47348a8ae1e8cac511780529eab9c2bd042b62acaf6e0dfc6d541d5bdd880522",
+      "raw": "/tmp/astra-height-era-l2late-candidates-20261008/raw/plague-shut01.png",
+      "raw_sha256": "78e4b3c1d46d948c342cfc846bd42a7e21548570c49afd6683e73374db47e186",
+      "prompt": "/tmp/astra-height-era-l2late-candidates-20261008/prompts/plague-shut01.txt",
+      "prompt_sha256": "95deeeccbd020b83fd59b48e231df35491ccce95644a9ec16e69143004d0525f",
+      "raw_size": [
+        970,
+        1621
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "whole_resize": [
+        137,
+        229
+      ],
+      "whole_translation": [
+        0,
+        15
+      ],
+      "registration": "One uniform Lanczos reduction with integer dimensions then whole padding/translation only. No cropping. See world invariance proof."
+    }
+  ]
+}

@@ -571,7 +571,9 @@ function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void 
     }
     return;
   }
-  if (!yearStart) return;
+  // DEC-TRACE §6 (the user's decision 2026-10-06): in lord mode the heir takes the house the day the lord dies (no
+  // interregnum to the year's turn, when the eldest adult showed as lord); elsewhere at the year's turn, as before.
+  if (!yearStart && state.agency === undefined) return;
   let members = family();
   if (members.length === 0) return;
   // A lord who died: his eldest son of 14+ (else the eldest child) takes the house; the widow stays as kin.
@@ -605,6 +607,7 @@ function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void 
     }
     members = family();
   }
+  if (!yearStart) return;
   const head = members.find(person => person.role === "head")!;
   // The heir stays; his brothers and sisters of 18 leave the manor.
   const heir = members.filter(person => person.role === "child" && (person.fatherId === head.id || person.motherId === head.id))
@@ -1006,6 +1009,8 @@ export function advancePersons(state: GameState): GameState {
     }
   }
 
+  // DEC-TRACE §6: in lord mode a lord dead today is succeeded today.
+  if (deathDay && !seasonStart && state.agency !== undefined && state.persons !== undefined) keepLordFamily(town, state, false);
   // PS-4 offices.
   appointSteward(town);
   if (seasonStart || state.persons === undefined) {

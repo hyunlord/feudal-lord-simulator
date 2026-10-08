@@ -1,0 +1,83 @@
+[
+  {
+    "role": "body",
+    "source": "/tmp/astra-height-l0c-install/public/assets/buildings/historical-houses/house_l1-v2.png",
+    "copy": "originals/body-house_l1-v2.png",
+    "sha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "snow",
+    "source": "/tmp/astra-height-l0c-install/public/assets/wave7/season/roof_snow_l1-v2.png",
+    "copy": "originals/snow-roof_snow_l1-v2.png",
+    "sha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "boarded",
+    "source": "/tmp/astra-height-l0c-install/public/assets/wave7/overlay/boarded_l1-v2.png",
+    "copy": "originals/boarded-boarded_l1-v2.png",
+    "sha256": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "strained",
+    "source": "/tmp/astra-height-l0c-install/public/assets/phase16-house-condition/house_l1-strained-v1.png",
+    "copy": "originals/strained-house_l1-strained-v1.png",
+    "sha256": "355a0b2e97aa7bf28dd4b133f0f6a91cf74800c29d4b9213ada4d50ebb1e017a",
+    "canvas": [
+      178,
+      178
+    ]
+  },
+  {
+    "role": "neglected",
+    "source": "/tmp/astra-height-l0c-install/public/assets/phase16-house-condition/house_l1-neglected-v1.png",
+    "copy": "originals/neglected-house_l1-neglected-v1.png",
+    "sha256": "14f3daeaa4c8552cb5a75d54b6ee6b9327896ce359d4f2df917b499711161a71",
+    "canvas": [
+      178,
+      178
+    ]
+  },
+  {
+    "role": "vacant",
+    "source": "/tmp/astra-height-l0c-install/public/assets/phase16-house-condition/house_l1-vacant-v1.png",
+    "copy": "originals/vacant-house_l1-vacant-v1.png",
+    "sha256": "e39a26224b24aecc7a69886fbca24a56430b4ebcc0bbd6ae5904e579fa37ebba",
+    "canvas": [
+      178,
+      178
+    ]
+  },
+  {
+    "role": "plague-shut",
+    "source": "/tmp/astra-height-l0c-install/public/assets/wave9/event/plague_shut_l1-v1.png",
+    "copy": "originals/plague-shut-plague_shut_l1-v1.png",
+    "sha256": "9b142f8864ce724c14aedfac3cb359e4fd289ed4880de57bd7cb900dbe71f9ef",
+    "canvas": [
+      139,
+      139
+    ]
+  },
+  {
+    "role": "body-detail-only",
+    "source": "/tmp/astra-height-l0c-install/docs/asset-evidence/runtime-sources/buildings/historical-houses/house_l1-v2.png",
+    "copy": "originals/body-archive1254.png",
+    "sha256": "58d9f6e465f4e34e6f5b1ecf6bcbdc5953f8f76f166a42ec4ca567f2e1cff6a4",
+    "canvas": [
+      1254,
+      1254
+    ],
+    "warning": "Not identical runtime registration/content; never used as runtime footprint authority."
+  }
+]

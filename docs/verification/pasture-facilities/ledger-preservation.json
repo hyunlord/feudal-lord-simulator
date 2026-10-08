@@ -1,0 +1,23 @@
+{
+  "baseline": "db41ab97",
+  "beforeSHA256": "ab15d64bb10e466276a1798775f3813a8b3260ab371957b942e0159d98d039ba",
+  "afterSHA256": "2cacfdfc2b237c2e4af088aa05f2a373a5abaaa863063ecb8c1805bfe45fcd6a",
+  "onlyInstalledCellsChanged": true,
+  "unchangedRowOrder": true,
+  "CRLF": 6244,
+  "changes": [
+    {
+      "line": 4549,
+      "before": "wave3,wave3/candidates-20260926/assets/pasture/shearing_pen-v1.png,e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058,confirmed,,Wave 3 \ud655\uc815,\r\n",
+      "after": "wave3,wave3/candidates-20260926/assets/pasture/shearing_pen-v1.png,e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058,confirmed,,Wave 3 \ud655\uc815,RB-PASTURE-FACILITIES 41d857b2\r\n",
+      "column": "installed_by"
+    },
+    {
+      "line": 4550,
+      "before": "wave3,wave3/candidates-20260926/assets/pasture/sheepfold-v1.png,254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824,confirmed,,Wave 3 \ud655\uc815,\r\n",
+      "after": "wave3,wave3/candidates-20260926/assets/pasture/sheepfold-v1.png,254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824,confirmed,,Wave 3 \ud655\uc815,RB-PASTURE-FACILITIES 41d857b2\r\n",
+      "column": "installed_by"
+    }
+  ],
+  "correctedDraftError": "Initial unpublished edit used replaced_by column; independent field audit caught it, restored from baseline and updated header-located installed_by only."
+}

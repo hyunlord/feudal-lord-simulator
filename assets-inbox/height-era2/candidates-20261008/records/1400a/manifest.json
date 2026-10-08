@@ -1,0 +1,188 @@
+{
+  "status": "candidate-art-only; not installed or runtime validated",
+  "canvas": [
+    153,
+    153
+  ],
+  "pivot": [
+    77.35406698564593,
+    139.57894736842104
+  ],
+  "scale": 0.49957049486461247,
+  "footprint": [
+    1,
+    1
+  ],
+  "assets": [
+    {
+      "variant": "a",
+      "kind": "body",
+      "path": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_a-body.png",
+      "sha256": "821de11ffb0fc4c8183e8e5b18f753df1b823b07762f3902441ef1389accf84f",
+      "raw": "/tmp/astra-height-era2-1400-20261008/raw/body-a-01.png",
+      "rawSha256": "e05f314ef93dbd900eaf9a1337b7f1a9823b62daf577ce53c725907acf392993",
+      "prompt": "/tmp/astra-height-era2-1400-20261008/prompts/body-a-01.txt",
+      "promptSha256": "0799665fb4c2dee7ff83108f0e30b2d585f93160266caca139985336d4fff409",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "transform": {
+        "resize": [
+          153,
+          153
+        ],
+        "filter": "Pillow LANCZOS once",
+        "wholeTranslation": [
+          0,
+          0
+        ],
+        "perPartEdits": false
+      }
+    },
+    {
+      "variant": "a",
+      "kind": "snow",
+      "path": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_a-snow.png",
+      "sha256": "a146989117c41b8b4581294cea317e01ab231fc01782104b632fc917f48a7d5a",
+      "raw": "/tmp/astra-height-era2-1400-20261008/raw/snow-a-01.png",
+      "rawSha256": "0535ed0c6b829f68d52efb5f6861ec983dc0be529d53745f47c6e793865adb5c",
+      "prompt": "/tmp/astra-height-era2-1400-20261008/prompts/snow-a-01.txt",
+      "promptSha256": "43d3bd6fb765b404d8221f31e83df5e22dd0dbee7868c5cda40b2ceac08c8eb6",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "transform": {
+        "resize": [
+          153,
+          153
+        ],
+        "filter": "Pillow LANCZOS once",
+        "wholeTranslation": [
+          0,
+          -3
+        ],
+        "perPartEdits": false
+      }
+    },
+    {
+      "variant": "a",
+      "kind": "boarded",
+      "path": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_a-boarded.png",
+      "sha256": "a04a221dd4f32bcfdff047ed567122385e2c7e958c6a255e4fa2ba181bccbf9e",
+      "raw": "/tmp/astra-height-era2-1400-20261008/raw/board-a-01.png",
+      "rawSha256": "dd86f37fcfc5d4e7c0de2531eb8af4ee0025816192d8299f0b7a313d9fa8d080",
+      "prompt": "/tmp/astra-height-era2-1400-20261008/prompts/board-a-01.txt",
+      "promptSha256": "69845f5b9852d996170a74a1e79c1418bace0be61bdb16dce860de470a416b21",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "transform": {
+        "resize": [
+          153,
+          153
+        ],
+        "filter": "Pillow LANCZOS once",
+        "wholeTranslation": [
+          0,
+          0
+        ],
+        "perPartEdits": false
+      }
+    },
+    {
+      "variant": "b",
+      "kind": "body",
+      "path": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_b-body.png",
+      "sha256": "e0953cfce3288fe3ba00ac775036addf4f406a18e1a3378647c64f81aa9c1898",
+      "raw": "/tmp/astra-height-era2-1400-20261008/raw/body-b-01.png",
+      "rawSha256": "24a6924a6d91132112508e344f9154b99010ad261592b177947e04d688f1e3bb",
+      "prompt": "/tmp/astra-height-era2-1400-20261008/prompts/body-b-01.txt",
+      "promptSha256": "4507c8bf45817eb3b69b867aee6e0067359ba3432091a28c3ccf4cd9f4ba1322",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "transform": {
+        "resize": [
+          153,
+          153
+        ],
+        "filter": "Pillow LANCZOS once",
+        "wholeTranslation": [
+          0,
+          0
+        ],
+        "perPartEdits": false
+      }
+    },
+    {
+      "variant": "b",
+      "kind": "snow",
+      "path": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_b-snow.png",
+      "sha256": "074be616d44bb9fd91db839f321703962bdc943ce28b3a14cf34eee7ea173fec",
+      "raw": "/tmp/astra-height-era2-1400-20261008/raw/snow-b-01.png",
+      "rawSha256": "8ee1a2bc894d599eff3283130760162080087d9b100a52eacccffa1e5d50bcf3",
+      "prompt": "/tmp/astra-height-era2-1400-20261008/prompts/snow-b-01.txt",
+      "promptSha256": "034b0ffca704c6b609b5d154cfbf9075c5c3317316caae7bb6a4f12a7ea557a9",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "transform": {
+        "resize": [
+          153,
+          153
+        ],
+        "filter": "Pillow LANCZOS once",
+        "wholeTranslation": [
+          0,
+          0
+        ],
+        "perPartEdits": false
+      }
+    },
+    {
+      "variant": "b",
+      "kind": "boarded",
+      "path": "/tmp/astra-height-era2-1400-20261008/assets/house_l0_1400_b-boarded.png",
+      "sha256": "95043eeeb77826cb3784c7575e546d793cb5a0125fccffff92f270ef1b337a44",
+      "raw": "/tmp/astra-height-era2-1400-20261008/raw/board-b-01.png",
+      "rawSha256": "eecca3ef7d64a5ee62c060a4beb7b5855864c8d8230edec28f86e663b289c437",
+      "prompt": "/tmp/astra-height-era2-1400-20261008/prompts/board-b-01.txt",
+      "promptSha256": "fb4287183881525bc8b70dd1d63e0811e78b3fcc79aaf8b9f1f9709eb8aee36f",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "transform": {
+        "resize": [
+          153,
+          153
+        ],
+        "filter": "Pillow LANCZOS once",
+        "wholeTranslation": [
+          0,
+          0
+        ],
+        "perPartEdits": false
+      }
+    }
+  ],
+  "references": [
+    {
+      "path": "/tmp/astra-height-era2-candidates-20261008/house_l0_1350_a-body-candidate.png",
+      "sha256": "d92e046f84df490072f986f468596103461f74c30154ce2273efd0a8513a015c"
+    },
+    {
+      "path": "/tmp/astra-height-era1/public/assets/wave20/houses/house_l0_1400_a-v1.png",
+      "sha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00"
+    },
+    {
+      "path": "/tmp/astra-height-era1/public/assets/wave20/houses/house_l0_1400_b-v1.png",
+      "sha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d"
+    }
+  ]
+}

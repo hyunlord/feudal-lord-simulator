@@ -1,0 +1,119 @@
+{
+  "tool": "builtin imagegen",
+  "transparentBackground": true,
+  "model": "not returned",
+  "seed": "not returned",
+  "generations": [
+    {
+      "id": "body-01",
+      "raw": "raw/body-01.png",
+      "prompt": "prompts/body-01.txt",
+      "references": [
+        "originals/reference8x.png",
+        "originals/historic-door-geometry-native.png"
+      ],
+      "selected": false
+    },
+    {
+      "id": "body-02",
+      "raw": "raw/body-02.png",
+      "prompt": "prompts/body-02.txt",
+      "references": [
+        "raw/body-01.png"
+      ],
+      "selected": false
+    },
+    {
+      "id": "body-03",
+      "raw": "raw/body-03.png",
+      "prompt": "prompts/body-03.txt",
+      "references": [
+        "originals/historic-door-geometry-raw.png",
+        "originals/reference8x.png"
+      ],
+      "selected": false
+    },
+    {
+      "id": "body-04",
+      "raw": "raw/body-04.png",
+      "prompt": "prompts/body-04.txt",
+      "references": [
+        "raw/body-03.png"
+      ],
+      "selected": false
+    },
+    {
+      "id": "body-05",
+      "raw": "raw/body-05.png",
+      "prompt": "prompts/body-05.txt",
+      "references": [
+        "raw/body-04.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "snow-01",
+      "raw": "raw/snow-01.png",
+      "prompt": "prompts/snow-01.txt",
+      "references": [
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": false
+    },
+    {
+      "id": "boarded-01",
+      "raw": "raw/boarded-01.png",
+      "prompt": "prompts/boarded-01.txt",
+      "references": [
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "strained-01",
+      "raw": "raw/strained-01.png",
+      "prompt": "prompts/strained-01.txt",
+      "references": [
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "neglected-01",
+      "raw": "raw/neglected-01.png",
+      "prompt": "prompts/neglected-01.txt",
+      "references": [
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "vacant-01",
+      "raw": "raw/vacant-01.png",
+      "prompt": "prompts/vacant-01.txt",
+      "references": [
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "plague-shut-01",
+      "raw": "raw/plague-shut-01.png",
+      "prompt": "prompts/plague-shut-01.txt",
+      "references": [
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "snow-02",
+      "raw": "raw/snow-02.png",
+      "prompt": "prompts/snow-02.txt",
+      "references": [
+        "registered/snow-adjusted.png",
+        "registered/body-05-reference8x.png"
+      ],
+      "selected": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+✔ 후기 L2 targets only the existing default body after 1400 (1.254583ms)
+✔ 후기 L2 keeps distinct strained data (0.068458ms)
+✔ 후기 L2 keeps distinct neglected data (0.038667ms)
+✔ 후기 L2 keeps distinct vacant data (0.044583ms)
+✔ ordinary and plague boards require abandoned facts and remain distinct from conditions (0.107542ms)
+✔ all seven approved files have matching pixels, hashes and complete-body registration (18.315167ms)
+✔ 후기 L2 does not override paired lots, other levels or ineligible body facts (0.135625ms)
+✔ parses docs/provenance/assets.csv and reports zero missing rows (1537.951709ms)
+✔ reports zero hash mismatches against the current tree (841.313042ms)
+✔ reports zero rows pointing at non-existent files (891.009291ms)
+✔ enumerates every runtime asset the CSV expects to cover (850.19525ms)
+✔ keeps retired rows off the runtime: each lives outside public/ and is no runtime asset any more (783.509833ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5502.004167

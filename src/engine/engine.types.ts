@@ -211,4 +211,6 @@ export interface GameState {
   readonly history?: import("./history.types").HistoryState;
   /** PERSON-0 persons: the named people of the town, the dead and those who left (save v16, spec PS-1…PS-9). */
   readonly persons?: import("./persons.types").PersonState;
+  /** DEC-TRACE (save v52): the lord's decisions, what they touched and what followed (lord mode; absent until the first). */
+  readonly trace?: import("./decisionTrace.types").TraceState;
 }

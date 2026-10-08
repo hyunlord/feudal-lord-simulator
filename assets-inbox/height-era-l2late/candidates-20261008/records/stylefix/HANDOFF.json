@@ -1,0 +1,161 @@
+{
+  "status": "body-only style regression candidate; not installed; runtime style/occlusion unverified",
+  "canvas": [
+    137,
+    244
+  ],
+  "scale": 0.4980801861842801,
+  "pivot": [
+    70.95813397129186,
+    211.08373205741626
+  ],
+  "registration": {
+    "raw": [
+      939,
+      1674
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      0
+    ],
+    "filter": "ffmpeg swscale lanczos",
+    "rounding": "244/1674 uniform intended; width136.866 rounds137; no warp or part edits",
+    "command": "ffmpeg -v error -y -i raw/body01.png -vf 'scale=137:244:flags=lanczos,setsar=1' assets/body01.png",
+    "offcanvas_pixels_lost": 0,
+    "raw_edge_nonzero_alpha": 78,
+    "registered_edge_nonzero_alpha": 0,
+    "note": "raw edge alpha is below8; reduction rounds some faint alpha away; raw preserved, no threshold cleanup"
+  },
+  "door": {
+    "method": "closed wooden leaf proxy, not verified open aperture; hand-estimated soft edges",
+    "height": 44,
+    "width": 22,
+    "height_endpoints": [
+      [
+        65,
+        158
+      ],
+      [
+        65,
+        202
+      ]
+    ],
+    "width_endpoints": [
+      [
+        55,
+        175
+      ],
+      [
+        77,
+        175
+      ]
+    ],
+    "manual_length_uncertainty": 2,
+    "world_height": 21.915528192108326,
+    "world_width": 10.957764096054163,
+    "height_interval": [
+      20.919367819739765,
+      22.911688564476886
+    ],
+    "width_interval": [
+      9.961603723685602,
+      11.953924468422723
+    ],
+    "assessment": "central values within target; upper width interval exceeds11.44, not all-bounds pass; outer jamb excluded"
+  },
+  "ground": {
+    "method": "manual visible foundation meeting ground; point uncertainty +/-2native",
+    "reference": "prior body07, not original137square",
+    "points": [
+      {
+        "name": "left",
+        "body07": [
+          20,
+          180
+        ],
+        "candidate": [
+          17,
+          183
+        ],
+        "residual": 4.242640687119285
+      },
+      {
+        "name": "front",
+        "body07": [
+          83,
+          212
+        ],
+        "candidate": [
+          83,
+          218
+        ],
+        "residual": 6.0
+      },
+      {
+        "name": "right",
+        "body07": [
+          116,
+          192
+        ],
+        "candidate": [
+          120,
+          197
+        ],
+        "residual": 6.4031242374328485
+      }
+    ],
+    "note": "whole footprint not exact; candidate front extends6native lower. No corrective per-part edit."
+  },
+  "alpha_bbox": {
+    "positive": [
+      6,
+      31,
+      133,
+      239
+    ],
+    "gte8": [
+      8,
+      48,
+      129,
+      222
+    ],
+    "gte32": [
+      8,
+      48,
+      128,
+      222
+    ]
+  },
+  "style_observations": [
+    "flat cream replaced by broad mottled lime texture",
+    "orange regular grid replaced by muted varied terracotta tiles",
+    "black outline replaced largely by dark oak/material planes",
+    "tile sizes appear larger than reference and require scene review"
+  ],
+  "files": {
+    "body": {
+      "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+      "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+    },
+    "raw": {
+      "path": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/body01.png",
+      "sha256": "294d4643fe9de02ee139129ea7348c86ab8e1158d62d7c08d5cce8d639433aed"
+    },
+    "prompt": {
+      "path": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/body01.txt",
+      "sha256": "09ce1cffbade08bc339ae02c7e3f405a4e6571e47e44c13b4c8efcafc4897831"
+    }
+  },
+  "proofs": {
+    "native": "proofs/native-comparison.png",
+    "world": "proofs/world-z1-comparison.png",
+    "world_note": "68x122 approximation to137x244 at0.498080 scale; static side-by-side only, no scene renderer/occlusion evidence",
+    "large": "proofs/body01-large.png",
+    "door": "proofs/door-grid.png"
+  },
+  "next": "Install agent uses this unchanged body01 in official light two-view capture; six states not generated pending actual normal-zoom style comparison."
+}

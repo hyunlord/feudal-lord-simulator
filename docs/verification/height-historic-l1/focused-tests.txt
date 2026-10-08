@@ -1,0 +1,34 @@
+✔ real condition facts select maintained without changing the state (5.665541ms)
+✔ real condition facts select strained without changing the state (5.034375ms)
+✔ real condition facts select neglected-level without changing the state (4.154459ms)
+✔ real condition facts select before-neglect without changing the state (3.908708ms)
+✔ real condition facts select neglected-time without changing the state (5.152583ms)
+✔ real condition facts select vacant without changing the state (2.617958ms)
+✔ real condition facts select abandoned without changing the state (2.505375ms)
+✔ plague boarding requires abandoned status and a currently empty recorded house (2.155458ms)
+✔ condition, plague boards and snow are atomic and keep order zero/ten/twenty (1.972875ms)
+✔ authored condition family with a missing matching rule retains the whole legacy painting (1.869625ms)
+✔ bodies without authored condition layers keep their existing selection (1.457667ms)
+✔ plague-specific missing rule cannot silently reuse ordinary boards (2.201083ms)
+✔ spring melt retains its snow alpha beside the condition then removes only snow (2.07975ms)
+✔ condition extensions do not take over burning or burnt houses (1.9275ms)
+✔ new selectors validate scalar types instead of accepting arbitrary engine fields (4.098792ms)
+✔ historic L1 targets only the existing default body before 1350 (1.599833ms)
+✔ historic L1 keeps distinct strained data (0.084541ms)
+✔ historic L1 keeps distinct neglected data (0.04075ms)
+✔ historic L1 keeps distinct vacant data (0.039ms)
+✔ ordinary and plague boards require abandoned facts and remain distinct from conditions (0.108875ms)
+✔ all seven approved files have matching pixels, hashes and complete-body registration (13.808459ms)
+✔ L0 e replacement follows only its existing legacy pick before the era boundary (1.262875ms)
+✔ L0 e fresh stays bound to its own complete registered body (0.103417ms)
+✔ L0 e weathered stays bound to its own complete registered body (0.066ms)
+✔ L0 e boarded stays bound to its own complete registered body (0.059083ms)
+✔ L0 e snow stays bound to its own complete registered body (0.048334ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 834.040083

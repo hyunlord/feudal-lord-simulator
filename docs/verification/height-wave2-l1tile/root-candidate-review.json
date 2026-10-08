@@ -1,0 +1,43 @@
+{
+  "selectedAssets": [
+    {
+      "role": "body",
+      "sha256": "5f556aa20c60d2bdd6303b4fc7630bf4af926cdd42b65940d624cef7752a7073"
+    },
+    {
+      "role": "snow",
+      "sha256": "449eff01d529b3ea776b620ca92c997cf04165a6a22fe5f1559162c374075f14"
+    },
+    {
+      "role": "boarded",
+      "sha256": "4032ad7242aba3d6de6f1ab76041f55dbde53a9643483b7401c145467e3fc808"
+    },
+    {
+      "role": "strained",
+      "sha256": "fae4cae5c0d0d60bfc513e3ab2c9016228c5ab3e0f465d5e9504393267285116"
+    },
+    {
+      "role": "neglected",
+      "sha256": "7274981ed61bc1c892a40eb98a548e6e4cc475b9faa02d162b2dca452ba4dc43"
+    },
+    {
+      "role": "vacant",
+      "sha256": "9a0ac671bd6e40d0829f4e43490ece10be1b937d025a4badc33dbffb427f38a7"
+    },
+    {
+      "role": "plague-shut",
+      "sha256": "10c12fd2597fc900c27ac350ac29856ee0b97a28b47041cb80fce457a819e6fa"
+    }
+  ],
+  "zip": "/tmp/astra-height-wave2-l1tile-candidates-20261008.zip",
+  "zipSHA256": "3585a23bf50a13008cda27ee2c10b078e5bfea55068dd60a5769543d97089847",
+  "payloadsVerified": 78,
+  "crc_freshExtraction_allSHA_exactSet": true,
+  "visualProof": "proofs/winter-state-combinations.png directly viewed; layer geometry stays on roof and openings in this static view",
+  "runtimeVerified": false,
+  "limitations": [
+    "Ground residual left1.40184world\u00b1.83334 manual",
+    "Strict2:1 projection notpassed",
+    "Snow candidate revised since first preview; final snowSHA recorded above"
+  ]
+}

@@ -1,0 +1,4307 @@
+{
+  "pairs": [
+    {
+      "group": 0,
+      "id": "summer-fresh",
+      "name": "after-summer-fresh-z1",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-fresh-z1.jpg",
+          "sha256": "0dd4c9d559636b2d83d60849c589a20ba6a9956107883d484cbd75cfa53d6d52"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-fresh-z1.png",
+          "sha256": "69d4f1d2076ccee8a2104a1c61cc2edbd6e56d3e3e3b3c22d9a8a1c1c232ee67"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-fresh-z1.jpg",
+          "sha256": "deff92a6d645f5cdcea0b1ec6719fb01b6b1c99499ac906d037a55b2cb210e58"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-fresh-z1.png",
+          "sha256": "e5ae604b53f15b94a217c150d698151b5ba45e64c3beda32240746b141014fb0"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+      "saveSHA256": "72fb4d492bae38f8aaecb866578bb148c200696be67189f060d9c0c57dc4a0c0",
+      "stateSHA256": "4331cc9973a4aa266b3003e9037ab83e63ae6188c933b3d0a0245e5c3c184dc5",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_fresh.png",
+        "height-l0d/house_l0_d-v2_weathered.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_fresh.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_weathered.png": [
+          1
+        ]
+      },
+      "walkerCount": 4
+    },
+    {
+      "group": 0,
+      "id": "summer-fresh",
+      "name": "after-summer-fresh-z0.6",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-fresh-z0.6.jpg",
+          "sha256": "ae27602217e9df735cefa80bc6f0546bf7f8c4c9dd5a0c2eda6cbfa77e9f0f01"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-fresh-z0.6.png",
+          "sha256": "3cf50649cc9d9afadc19fd76160555d232a480c0b9c6e32da4d7ab7eb6c10a6e"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-fresh-z0.6.jpg",
+          "sha256": "e2ff38895dd3d167e2c4c024d3e2eae9dcc0e0192ce74aa70f2fb6ea6f483249"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-fresh-z0.6.png",
+          "sha256": "47e267fccedfe691fee52836f635de49529f507bc3fa727b56d32a50062f0733"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+      "saveSHA256": "72fb4d492bae38f8aaecb866578bb148c200696be67189f060d9c0c57dc4a0c0",
+      "stateSHA256": "4331cc9973a4aa266b3003e9037ab83e63ae6188c933b3d0a0245e5c3c184dc5",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_fresh.png",
+        "height-l0d/house_l0_d-v2_weathered.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_fresh.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_weathered.png": [
+          1
+        ]
+      },
+      "walkerCount": 4
+    },
+    {
+      "group": 0,
+      "id": "summer-fresh",
+      "name": "after-summer-fresh-z3",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-fresh-z3.jpg",
+          "sha256": "c60a2485a45a85191c7ad83f398c23b51c8641e9506ce24636ab076f2a4230e8"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-fresh-z3.png",
+          "sha256": "fe96e8a19fdcfe2939a66dee127632d8da249a5f7d882cfad3bf74edaa323988"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-fresh-z3.jpg",
+          "sha256": "18fb6b0a0f723928cf05f3758de2504c552a7f5046408c8b6df24c5107d11d7c"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-fresh-z3.png",
+          "sha256": "443985777ad01d26dd19c9ec979a6af0c75a43ff084446321aea2de900c023f2"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+      "saveSHA256": "72fb4d492bae38f8aaecb866578bb148c200696be67189f060d9c0c57dc4a0c0",
+      "stateSHA256": "4331cc9973a4aa266b3003e9037ab83e63ae6188c933b3d0a0245e5c3c184dc5",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_fresh.png",
+        "height-l0d/house_l0_d-v2_weathered.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_fresh.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_weathered.png": [
+          1
+        ]
+      },
+      "walkerCount": 4
+    },
+    {
+      "group": 0,
+      "id": "summer-weathered",
+      "name": "after-summer-weathered-z1",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-weathered-z1.jpg",
+          "sha256": "c6ee6098bb236a69a9910e509799319151f133620df397388a2a274e978a8dc2"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-weathered-z1.png",
+          "sha256": "d78e044f81be22798ec2c51f4f418678eb925c49c95b70d25bdebd023704a6e6"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-weathered-z1.jpg",
+          "sha256": "ffe597abb65fe7c1177c7897db7434742fb1d175ecc14a2080180e258c4187a9"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-weathered-z1.png",
+          "sha256": "e4cb81b96fcf48069dc15373f927fc08cc7d6fd16740ed48226b427398fa6168"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        47,
+        42
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000004",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000022].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000022].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000023].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000023].builtLevel",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "a3adabadecc0aa88204a45a52205385b4959dd7c508439664b730eac69b04cf1",
+      "saveSHA256": "3d6875e55f436a021b6bec23ea1e192fe5bdcecf44dd79eb3bae303cf6b4ffae",
+      "stateSHA256": "779fed26e98361b0ba3b17c41b31f9eb2463ebcc8017aa8c88c967bf5462509a",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_fresh.png",
+        "height-l0d/house_l0_d-v2_weathered.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_fresh.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_weathered.png": [
+          1
+        ]
+      },
+      "walkerCount": 6
+    },
+    {
+      "group": 0,
+      "id": "summer-weathered",
+      "name": "after-summer-weathered-z0.6",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-weathered-z0.6.jpg",
+          "sha256": "fa40a9ba419f1d019e587ba59516bd98fcec7cce8068c701e4ca7993fc97dfde"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-weathered-z0.6.png",
+          "sha256": "170a1fbdeec28d797e00ffcb04c1b888365d8acc31e46d91be1e9b3dd3828ec9"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-weathered-z0.6.jpg",
+          "sha256": "9597ffc9f13fde50ef5a48dbc077e038511b03e9cd52a06400c4549b64b4a12a"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-weathered-z0.6.png",
+          "sha256": "aad0cd48c04a92c77b519650f85b481ebee58a9106cba20e94113bad6ce3ad65"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        47,
+        42
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000004",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000022].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000022].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000023].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000023].builtLevel",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "a3adabadecc0aa88204a45a52205385b4959dd7c508439664b730eac69b04cf1",
+      "saveSHA256": "3d6875e55f436a021b6bec23ea1e192fe5bdcecf44dd79eb3bae303cf6b4ffae",
+      "stateSHA256": "779fed26e98361b0ba3b17c41b31f9eb2463ebcc8017aa8c88c967bf5462509a",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_fresh.png",
+        "height-l0d/house_l0_d-v2_weathered.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_fresh.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_weathered.png": [
+          1
+        ]
+      },
+      "walkerCount": 6
+    },
+    {
+      "group": 0,
+      "id": "summer-weathered",
+      "name": "after-summer-weathered-z3",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-weathered-z3.jpg",
+          "sha256": "bdff2395d1fcc9aeec0fda413372211260c27eeb01d1d125778cf521897bc09e"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-summer-weathered-z3.png",
+          "sha256": "0d75fd5ee3aa5826470400f41f1c55fce1e640d48c11f306fe95452e33a15c99"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-weathered-z3.jpg",
+          "sha256": "10ed1ebeaf6d863abbe758e9094ffdaa01db248925ccdde64da7147f7d116bc5"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-summer-weathered-z3.png",
+          "sha256": "34979c8c2bc1892128a4c83e3e0109b51049365f53b2d2dbc947de9857160b02"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        47,
+        42
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000004",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000022].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000022].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000023].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000023].builtLevel",
+          "before": 1,
+          "after": 0
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "a3adabadecc0aa88204a45a52205385b4959dd7c508439664b730eac69b04cf1",
+      "saveSHA256": "3d6875e55f436a021b6bec23ea1e192fe5bdcecf44dd79eb3bae303cf6b4ffae",
+      "stateSHA256": "779fed26e98361b0ba3b17c41b31f9eb2463ebcc8017aa8c88c967bf5462509a",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_fresh.png",
+        "height-l0d/house_l0_d-v2_weathered.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_fresh.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_weathered.png": [
+          1
+        ]
+      },
+      "walkerCount": 6
+    },
+    {
+      "group": 0,
+      "id": "winter",
+      "name": "after-winter-z1",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-winter-z1.jpg",
+          "sha256": "c965be6240eb7b4785b342bd4022389ab6f0cd52270426b99a4e63ac2f7d1a77"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-winter-z1.png",
+          "sha256": "889da06172d51465542b3e0be906d064b6aeca1400036c31cea7ecd7bfbb58dc"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-winter-z1.jpg",
+          "sha256": "3b9cd40d3f92967c7ce7eef0ca4898a6f3f4bd34a41255608628d095fea4c082"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-winter-z1.png",
+          "sha256": "7e99c3391659e95fcd8265f487db70d199177e89f8e0ee1b450275373e6006a7"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "d587fe7850a4a2c0e376f393af7257c9b1a4e28445675b8a478bbe57b08339ad",
+      "stateSHA256": "3f937c7b8e6eeb0b13a64c7eee460e43e7f33e440256842e31f606871452d97e",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          1
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 0,
+      "id": "winter",
+      "name": "after-winter-z0.6",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-winter-z0.6.jpg",
+          "sha256": "880e39c7cb4141f0553d54a8d0a37fac75fae80fee292151a6fe7cc0d23ff057"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-winter-z0.6.png",
+          "sha256": "239e52fea10d67f2d46fac3f4c277c187c4051d82e7213e276ef3947241a162e"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-winter-z0.6.jpg",
+          "sha256": "60e2a3f93a3df208131f321650d46f5b05761a1bde36ae25de442c659c6a9589"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-winter-z0.6.png",
+          "sha256": "5fd3c1f0b2d2dc3da8f8ef0f0a70f99486c50e6f3da2ac1411e0ab44b5c563a2"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "d587fe7850a4a2c0e376f393af7257c9b1a4e28445675b8a478bbe57b08339ad",
+      "stateSHA256": "3f937c7b8e6eeb0b13a64c7eee460e43e7f33e440256842e31f606871452d97e",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          1
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 0,
+      "id": "winter",
+      "name": "after-winter-z3",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-0/before-winter-z3.jpg",
+          "sha256": "a3a09559f76f40d481d57e8b9b239de00cb8f3c512e5103d370f15e89588c5f2"
+        },
+        {
+          "file": "output/rb-height-l0d-before-0/before-winter-z3.png",
+          "sha256": "0d82a2c603a529692fe0961d9a3b57907972a5cf0c17213b34c8665d95a71cdb"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-winter-z3.jpg",
+          "sha256": "3a09c29e1a2fa673f4a0f85eb85658d4aa8eb670afd86538f3d5489ef7532061"
+        },
+        {
+          "file": "output/rb-height-l0d-after-0/after-winter-z3.png",
+          "sha256": "e194f57f56a61872c0bf614ddff5346b521ea2742f3ec3b503253741130edbf7"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "d587fe7850a4a2c0e376f393af7257c9b1a4e28445675b8a478bbe57b08339ad",
+      "stateSHA256": "3f937c7b8e6eeb0b13a64c7eee460e43e7f33e440256842e31f606871452d97e",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          1
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "winter-boarded",
+      "name": "after-winter-boarded-z1",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-winter-boarded-z1.jpg",
+          "sha256": "662c4a7ae8450d994552b2b6679e714caf9ed589a245fed93b36a20423c349fd"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-winter-boarded-z1.png",
+          "sha256": "32397381939288a8885c38c3a35407e866f308a82a0b4b6f4c19455e133e82c7"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-winter-boarded-z1.jpg",
+          "sha256": "4aa89479fd9b49a5347ac9664770cc316f588bed808c60a81424cd660cb3c1b7"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-winter-boarded-z1.png",
+          "sha256": "2ea258a0c0affafa3f06d78d73c2c844cd91f94c1a660fe67c389deed215eb57"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        },
+        {
+          "path": "houses[construction-site-000013].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 4210263972
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 4210263972
+          }
+        },
+        {
+          "path": "houses[construction-site-000013].abandonedTick",
+          "before": null,
+          "after": 11500
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "8889a122d860fec2cdd6804f5141a1cffe74a9beabb1afe1a310d171abadefee",
+      "stateSHA256": "9a487417dccc05eafbcee88e6a384c5bd800073f650812a410fe5886aafba472",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_boarded.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_boarded.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          1
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "winter-boarded",
+      "name": "after-winter-boarded-z0.6",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-winter-boarded-z0.6.jpg",
+          "sha256": "1cab08a722580e9f814b8e8ef6006ad6e41ff4677eadce3bae413e82ee4428cb"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-winter-boarded-z0.6.png",
+          "sha256": "959c9f725270968900f784a70200cb7eba589974851d0aad499693ca45af9aa0"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-winter-boarded-z0.6.jpg",
+          "sha256": "ef6457e922c2634c1a8c77ad6862f79778fd06918065cfc2c45edfa37dce6f2b"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-winter-boarded-z0.6.png",
+          "sha256": "0179d325ae33e6b6239ccaa56739636fd9d8c0a24de31ba4bcac0a677a2e799e"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        },
+        {
+          "path": "houses[construction-site-000013].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 4210263972
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 4210263972
+          }
+        },
+        {
+          "path": "houses[construction-site-000013].abandonedTick",
+          "before": null,
+          "after": 11500
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "8889a122d860fec2cdd6804f5141a1cffe74a9beabb1afe1a310d171abadefee",
+      "stateSHA256": "9a487417dccc05eafbcee88e6a384c5bd800073f650812a410fe5886aafba472",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_boarded.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_boarded.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          1
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "winter-boarded",
+      "name": "after-winter-boarded-z3",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-winter-boarded-z3.jpg",
+          "sha256": "0dd4f2520eb920ccc12246ccc1f51e35b6b923da61f0c8e1737d1bd0de1af1ec"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-winter-boarded-z3.png",
+          "sha256": "399ce729ad1e1495581b601a3f2a2be7cfb1a826a471b8e016c027dcf13d65db"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-winter-boarded-z3.jpg",
+          "sha256": "fed38f7f4fc08751d9cbeaf29dc2664138328d3c4f52b57eaab915c433f8cb48"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-winter-boarded-z3.png",
+          "sha256": "b66ae7ac1de53b3123cd3a611ca248a3b78e0cfb01053257e291bdaf3c2c2d5e"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        },
+        {
+          "path": "houses[construction-site-000013].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 4210263972
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 4210263972
+          }
+        },
+        {
+          "path": "houses[construction-site-000013].abandonedTick",
+          "before": null,
+          "after": 11500
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "8889a122d860fec2cdd6804f5141a1cffe74a9beabb1afe1a310d171abadefee",
+      "stateSHA256": "9a487417dccc05eafbcee88e6a384c5bd800073f650812a410fe5886aafba472",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_boarded.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_boarded.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          1
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "melt",
+      "name": "after-melt-z1",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-z1.jpg",
+          "sha256": "6a6846b8c08de2c74ee58fb0be084d714036f22ccf8e14b207ce17f18950541f"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-z1.png",
+          "sha256": "5210eb1bffe63ee99c5b3518262c9934bf30ba6da98c65e6a6808ef1059efa42"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-z1.jpg",
+          "sha256": "938709584f7a2fd8956b6eb30df2765a4e528b6beb97c7fe392a1d714f93a4aa"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-z1.png",
+          "sha256": "10fcdaeac27f14146907468e5f8507f8401ff08fe6643739de9fb92bb1dd8ea0"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 12150
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "f3b802e79b05aa8d7cdcbb745df6b562f7dcf4b7d44d764975d59fa51b052aa0",
+      "stateSHA256": "19e6fcb816248530bdb4be5f3d90f20810f6e480fc0ca994e0f1ebbf21e52ddd",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          0.4414831498177436,
+          0.44804013054224023,
+          0.46523888878579245
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "melt",
+      "name": "after-melt-z0.6",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-z0.6.jpg",
+          "sha256": "c5c364fe8548203ec69d922e34c6c5f3b75b0feb1f1d611dc3d77db16024568e"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-z0.6.png",
+          "sha256": "04ab3d508b0f5693492ce5e6cccfdc60ef03fc8c4cd69d03d0484e989d53e86e"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-z0.6.jpg",
+          "sha256": "e8a5a2373e2e0655cf4e7c0651be3335e909afc163289bc7f478943a627b44c2"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-z0.6.png",
+          "sha256": "f3a8e26cee69150607696aa241c63089c2a7a0a0ffea4aa8e93c5e3e33e43b79"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 12150
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "f3b802e79b05aa8d7cdcbb745df6b562f7dcf4b7d44d764975d59fa51b052aa0",
+      "stateSHA256": "19e6fcb816248530bdb4be5f3d90f20810f6e480fc0ca994e0f1ebbf21e52ddd",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          0.4414831498177436,
+          0.44804013054224023,
+          0.46523888878579245
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "melt",
+      "name": "after-melt-z3",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-z3.jpg",
+          "sha256": "c301266e304adc68139360af75bd5878b02a857376ca0f8c304ea5f206dfb05a"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-z3.png",
+          "sha256": "70fa6463560dca04c09396dbf1580ba769f85327ed37a3b6d4343bfddbede701"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-z3.jpg",
+          "sha256": "7be413721f548d32f5e3e403ffe4c26d0820d9f9955784c843c3706c2851ca96"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-z3.png",
+          "sha256": "636e56db39fff21238eda7b371f3eb596d17b8707d23fa3ce6248ac59c8b2a51"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 12150
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "f3b802e79b05aa8d7cdcbb745df6b562f7dcf4b7d44d764975d59fa51b052aa0",
+      "stateSHA256": "19e6fcb816248530bdb4be5f3d90f20810f6e480fc0ca994e0f1ebbf21e52ddd",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          0.4414831498177436,
+          0.44804013054224023,
+          0.46523888878579245
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "melt-boarded",
+      "name": "after-melt-boarded-z1",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-boarded-z1.jpg",
+          "sha256": "ffd20ad465545dad96af84b804b7aca60e7fb93083e4a4b5dc48f54453d46a62"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-boarded-z1.png",
+          "sha256": "584d5604606f3dc7d27ae1fa7cf1a57f0397d2f50f988080d098f75992c95e4a"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-boarded-z1.jpg",
+          "sha256": "89a6ee47137250d78646cd8d8d22137dfdee5f994822f5bead7ae9982961f90f"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-boarded-z1.png",
+          "sha256": "7ac4af23ec3c5e1437c367dc131ae3cf4fd6d277b8675f27f435a03dccbccae7"
+        }
+      ],
+      "zoom": 1,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 12150
+        },
+        {
+          "path": "houses[construction-site-000013].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 4210263972
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 4210263972
+          }
+        },
+        {
+          "path": "houses[construction-site-000013].abandonedTick",
+          "before": null,
+          "after": 12150
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "8abd4ac8934c41ba9622a8d5cc0e95cd4396fef2fd55b080d7e48cd3ba3e1853",
+      "stateSHA256": "6b65760951cc380bd12b616a3ce3acf7701f6cb68b2aa180e8d485ff815fb3e0",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_boarded.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_boarded.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          0.4414831498177436,
+          0.44804013054224023,
+          0.46523888878579245
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "melt-boarded",
+      "name": "after-melt-boarded-z0.6",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-boarded-z0.6.jpg",
+          "sha256": "baaac512dc797e0a7250b6a564903334536bba622460f49fc892a73c8f6c6900"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-boarded-z0.6.png",
+          "sha256": "a1bf161301e0efddccfbf597cff6f9e2d145d00ac2a453bab8a1bc682033aea0"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-boarded-z0.6.jpg",
+          "sha256": "a050e2aa971b36f17de3be913e279fe406124a5fd5be912eb6307c860c544cc8"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-boarded-z0.6.png",
+          "sha256": "c9ac026f9ad331b48af11c800f3584e2de04a3313b5caf4922f37f7336d079e7"
+        }
+      ],
+      "zoom": 0.6,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 12150
+        },
+        {
+          "path": "houses[construction-site-000013].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 4210263972
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 4210263972
+          }
+        },
+        {
+          "path": "houses[construction-site-000013].abandonedTick",
+          "before": null,
+          "after": 12150
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "8abd4ac8934c41ba9622a8d5cc0e95cd4396fef2fd55b080d7e48cd3ba3e1853",
+      "stateSHA256": "6b65760951cc380bd12b616a3ce3acf7701f6cb68b2aa180e8d485ff815fb3e0",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_boarded.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_boarded.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          0.4414831498177436,
+          0.44804013054224023,
+          0.46523888878579245
+        ]
+      },
+      "walkerCount": 11
+    },
+    {
+      "group": 1,
+      "id": "melt-boarded",
+      "name": "after-melt-boarded-z3",
+      "classification": "Prepared paused QA: existing town households level/builtLevel zero; optional tick/vacancy edits explicitly listed; original real walkers preserved",
+      "baseline": "Original 0001d876 product before installation",
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "seed": true,
+        "tile": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true,
+        "allDrawTransformSets": true
+      },
+      "images": [
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-boarded-z3.jpg",
+          "sha256": "518a5f4138bad6ffe91a8084131153fb9c2de9077f937d6ae3588c931144e95e"
+        },
+        {
+          "file": "output/rb-height-l0d-before-1/before-melt-boarded-z3.png",
+          "sha256": "8142b9117ac1836988af18b4c288a2b3a02c0910e067d0b5b85b016a5f5ddbcf"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-boarded-z3.jpg",
+          "sha256": "7beda14c99f14bdd228d4c47f45e742f1383462b3b97b6ae5d4b7cd89e58bbe0"
+        },
+        {
+          "file": "output/rb-height-l0d-after-1/after-melt-boarded-z3.png",
+          "sha256": "a8216b75ac5eb569f0559c678b786fd2d9ae9a2112ea4adf25e72befa34366a3"
+        }
+      ],
+      "zoom": 3,
+      "tile": [
+        48,
+        38
+      ],
+      "nowMs": 4000,
+      "buildingId": "construction-site-000013",
+      "body": "house_l0_d",
+      "fields": [
+        {
+          "path": "houses[house-46-40-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-40-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-44-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[house-46-42-0].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000004].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].level",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000007].builtLevel",
+          "before": 2,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000008].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000011].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000012].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000018].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].level",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000019].builtLevel",
+          "before": 1,
+          "after": 0
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 12150
+        },
+        {
+          "path": "houses[construction-site-000013].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000013].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 4210263972
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 4210263972
+          }
+        },
+        {
+          "path": "houses[construction-site-000013].abandonedTick",
+          "before": null,
+          "after": 12150
+        }
+      ],
+      "seed": 1,
+      "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+      "saveSHA256": "8abd4ac8934c41ba9622a8d5cc0e95cd4396fef2fd55b080d7e48cd3ba3e1853",
+      "stateSHA256": "6b65760951cc380bd12b616a3ce3acf7701f6cb68b2aa180e8d485ff815fb3e0",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "sources": [
+        "height-l0d/house_l0_d-v2.png",
+        "height-l0d/house_l0_d-v2_boarded.png",
+        "height-l0d/house_l0_d-v2_snow.png"
+      ],
+      "observedAlpha": {
+        "height-l0d/house_l0_d-v2.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_boarded.png": [
+          1
+        ],
+        "height-l0d/house_l0_d-v2_snow.png": [
+          0.4414831498177436,
+          0.44804013054224023,
+          0.46523888878579245
+        ]
+      },
+      "walkerCount": 11
+    }
+  ],
+  "runs": [
+    {
+      "group": 0,
+      "stage": "before",
+      "head": "0001d876e5246699365ef8de4ed1e274278cb0f6",
+      "startedAt": "2026-10-07T19:41:59.398Z",
+      "finishedAt": "2026-10-07T19:43:12.650Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-summer-fresh-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "3bcf9abd2f7d65ae118bfbfadbca393464870cc2605d3ff82989d5cd6f5a85df"
+    },
+    {
+      "group": 0,
+      "stage": "after",
+      "head": "8c49302b0c9de8011012f884498e4f2fca5274e8",
+      "startedAt": "2026-10-07T19:46:16.657Z",
+      "finishedAt": "2026-10-07T19:47:35.247Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-summer-fresh-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "resultSHA256": "508d6707efd1b5ad2ea337a50e3dc123bb6f01d3f33196db7a3318713d1d8f8f"
+    },
+    {
+      "group": 1,
+      "stage": "before",
+      "head": "0001d876e5246699365ef8de4ed1e274278cb0f6",
+      "startedAt": "2026-10-07T19:43:13.796Z",
+      "finishedAt": "2026-10-07T19:44:28.595Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "0e947ce970a05828fc7712f216219e6de25bed7c3585a2a2e0eb659c168f1610"
+    },
+    {
+      "group": 1,
+      "stage": "after",
+      "head": "8c49302b0c9de8011012f884498e4f2fca5274e8",
+      "startedAt": "2026-10-07T19:47:36.411Z",
+      "finishedAt": "2026-10-07T19:48:55.850Z",
+      "errors": [],
+      "networkFailures": [],
+      "resultSHA256": "fa7c85e70788b7b5bfa01581a9eceba6da5659c8f6a63e99ee223130bd37ea2c"
+    }
+  ],
+  "scope": "Prepared town L0 d QA with disclosed house-level, tick, and vacancy edits; no natural growth claim. Identical state, camera, clock, and actors before/after."
+}

@@ -1,0 +1,60 @@
+{
+  "base": "f689e467",
+  "sources": [
+    {
+      "family": "l0garden",
+      "base": "265681f3",
+      "head": "8d597709eb4d5016e3721fc7dac204f4023189ee",
+      "bundle": "height-wave2-l0garden"
+    },
+    {
+      "family": "l0pen",
+      "base": "b9199fcb",
+      "head": "fdff3371f2de367947236e8a4cb0a1de8872c3ea",
+      "bundle": "height-wave2-l0pen"
+    },
+    {
+      "family": "l1artisan",
+      "base": "b09d4e9d",
+      "head": "adb17c502c15dae73ec1bc96970be92c740a4c0e",
+      "bundle": "height-wave2-l1artisan"
+    },
+    {
+      "family": "l1garden",
+      "base": "9fa367bc",
+      "head": "2275be79a0865bba82c61cd1ccc58a4ff69cc981",
+      "bundle": "height-wave2-l1garden"
+    },
+    {
+      "family": "l1tile",
+      "base": "ac7dd295",
+      "head": "b05e6ff9736e529d05f090d3a582b88bfc28c2da",
+      "bundle": "height-wave2-l1tile"
+    }
+  ],
+  "PNG": 33,
+  "newRows": 47,
+  "existingCells": [
+    {
+      "file": "wave2/house_l0_garden-v1.png",
+      "before": "wave2,wave2/house_l0_garden-v1.png,c320744da6a2b850b0c078c36f2357166840a3d43e2a028acb8e31b28ec8348a,confirmed,,설치됨 · 설치 확인: public/assets/buildings/variants-wave2/house_l0_garden-v1.png,V1\r\n",
+      "after": "wave2,wave2/house_l0_garden-v1.png,c320744da6a2b850b0c078c36f2357166840a3d43e2a028acb8e31b28ec8348a,confirmed,,설치됨 · 설치 확인: public/assets/buildings/variants-wave2/house_l0_garden-v1.png,V1; RB-HEIGHT-WAVE2-L0GARDEN\r\n",
+      "column": "installed_by"
+    },
+    {
+      "file": "wave2/house_l0_pen-v1.png",
+      "before": "wave2,wave2/house_l0_pen-v1.png,22551b82a740af2ab8c06d966992c6d052fc1ab04dcfa7eecf4b7d509e48d7ca,confirmed,,설치됨 · 설치 확인: public/assets/buildings/variants-wave2/house_l0_pen-v1.png,V1\r\n",
+      "after": "wave2,wave2/house_l0_pen-v1.png,22551b82a740af2ab8c06d966992c6d052fc1ab04dcfa7eecf4b7d509e48d7ca,confirmed,,설치됨 · 설치 확인: public/assets/buildings/variants-wave2/house_l0_pen-v1.png,V1; RB-HEIGHT-WAVE2-L0PEN\r\n",
+      "column": "installed_by"
+    },
+    {
+      "file": "wave2/house_l1_garden-v1.png",
+      "before": "wave2,wave2/house_l1_garden-v1.png,bb2ef7a7c0849de21f4d6ca1fd602b52f979dae2101dfb7613ede2df29f8a809,confirmed,,설치됨 · 설치 확인: public/assets/buildings/variants-wave2/house_l1_garden-v1.png,V1\r\n",
+      "after": "wave2,wave2/house_l1_garden-v1.png,bb2ef7a7c0849de21f4d6ca1fd602b52f979dae2101dfb7613ede2df29f8a809,confirmed,,설치됨 · 설치 확인: public/assets/buildings/variants-wave2/house_l1_garden-v1.png,V1; RB-HEIGHT-WAVE2-L1GARDEN\r\n",
+      "column": "installed_by"
+    }
+  ],
+  "allOtherLedgerBytesExact": true,
+  "CRLF": true,
+  "priorBundlesExact": true
+}

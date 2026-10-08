@@ -1,0 +1,65 @@
+{
+  "pairs": 18,
+  "positiveRuntimeImages": [
+    "height-l0f/house_l0_f-v2.png",
+    "height-l0f/house_l0_f-v2_boarded.png",
+    "height-l0f/house_l0_f-v2_fresh.png",
+    "height-l0f/house_l0_f-v2_snow.png",
+    "height-l0f/house_l0_f-v2_weathered.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "before-summer-fresh-z1",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-fresh-z0.6",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-fresh-z3",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-weathered-z1",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-weathered-z0.6",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-z1",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-winter-boarded-z0.6",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-z1",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-boarded-z0.6",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-melt-boarded-z3",
+      "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": "Ridge34native upward; ground residual max2.236native; groundspan3px wider; closed doorleaf proxy not effective opening certification; initial tick12000 corrected before capture; no natural growth claim.",
+  "observations": "See README for actual close and play-zoom inspection."
+}

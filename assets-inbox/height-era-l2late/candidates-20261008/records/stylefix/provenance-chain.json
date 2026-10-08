@@ -1,0 +1,350 @@
+[
+  {
+    "role": "body",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-body-v2.png",
+    "runtimeSHA256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-body-v2.png",
+    "nativeSHA256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/body01.png",
+    "rawSHA256": "294d4643fe9de02ee139129ea7348c86ab8e1158d62d7c08d5cce8d639433aed",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/body01.txt",
+    "promptRecordSHA256": "09ce1cffbade08bc339ae02c7e3f405a4e6571e47e44c13b4c8efcafc4897831",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        939,
+        1674
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "bf2499aeb9b2f8b86f7d4d991ef1df55fe9d6068adf3b7f3547ca4ad9be49d48",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-candidates-20261008/assets/house_l2_1420-body.png",
+        "sha256": "a163707f0bdba34899473bf3b13a29fc009ea62ba62a790c738dbffb34db3f92"
+      },
+      {
+        "path": "/tmp/astra-height-era-l2late-install/public/assets/buildings/historical-houses/house_l2-v2.png",
+        "sha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e"
+      },
+      {
+        "path": "/tmp/astra-height-era-l2late-install/output/rb-height-era-l2late-before-3/before-maintained-z3.png",
+        "sha256": "241f5ff3c4e7943fdfa9367cc1db9fc488229a949def99bc2fe46c9f8fd19d37"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  },
+  {
+    "role": "snow",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-snow-v2.png",
+    "runtimeSHA256": "0d4b42e1357f41208366b7e2f460252bce7a88247fa1b21ca5ee5b9f9c8ee04a",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-snow-v2.png",
+    "nativeSHA256": "0d4b42e1357f41208366b7e2f460252bce7a88247fa1b21ca5ee5b9f9c8ee04a",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/snow02.png",
+    "rawSHA256": "a49492cb84f981e37993bb79c5b45c8b9445202a014321040f9f64b9021d3b65",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/snow02.txt",
+    "promptRecordSHA256": "374ee114ce3cc977ca356267853c3f696eff22878a05cbb9ce745e069822258e",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        940,
+        1673
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        -4
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "ac73ab58f87a8dde86cba69b8c509b7119fd274fa2c5c84c4d08c8d20a2b29b5",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/snow01.png",
+        "sha256": "d5a836eb8f154083b1f097e57facc002049295b16683e79ada79e1182644e5da"
+      },
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  },
+  {
+    "role": "boarded",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-boarded-v2.png",
+    "runtimeSHA256": "d39dc10d079c7d539274681c77e248e5d710fb1aa19c25a0772d0f66694c4529",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-boarded-v2.png",
+    "nativeSHA256": "d39dc10d079c7d539274681c77e248e5d710fb1aa19c25a0772d0f66694c4529",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/boarded01.png",
+    "rawSHA256": "be85ea4a4ead0505c2f23281d9abd8844bdefc7334cc0cf331ea95f237cae652",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/boarded01.txt",
+    "promptRecordSHA256": "9e1de615b0c49b499dbe09706350a140fadf395c1a17d9215214d85dd7a7ac65",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        940,
+        1673
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        12
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "f539fbbf05fc4e83140bd8fb6a075f2d5016a8f8e200ab124ef0bd4f5968a442",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  },
+  {
+    "role": "strained",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-strained-v2.png",
+    "runtimeSHA256": "1c14c3244e2b10a4131721928b8ec558c4a20d4eccb171b0654a38005dfb4773",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-strained-v2.png",
+    "nativeSHA256": "1c14c3244e2b10a4131721928b8ec558c4a20d4eccb171b0654a38005dfb4773",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/strained01.png",
+    "rawSHA256": "b3d77ef22c9e336b1c1b7b848149702d69a4466f4ce179a88d4fdfc9e3f53809",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/strained01.txt",
+    "promptRecordSHA256": "6144fcc931c5a3857e4f90ccc10b188661c84cf72ef247f772312f49c38dac80",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        940,
+        1674
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        6
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "6e7e3c460e3bf4d2e65777cb41f64b34b207762293171d465ff018095f1ce43f",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  },
+  {
+    "role": "neglected",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-neglected-v2.png",
+    "runtimeSHA256": "89e1efec1667a62ce00cff9bf9c49e6498cd3a618fc45bac87733b5a71a051b6",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-neglected-v2.png",
+    "nativeSHA256": "89e1efec1667a62ce00cff9bf9c49e6498cd3a618fc45bac87733b5a71a051b6",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/neglected01.png",
+    "rawSHA256": "d16da93cb38c66e756908b4d80d3de4bc80b27ead78b9362addbc6fb7c6c436d",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/neglected01.txt",
+    "promptRecordSHA256": "431b44c11e66844b3e1c41ecac380c10499dab21ae9b17924ea557376e642cf4",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        939,
+        1674
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "bf2499aeb9b2f8b86f7d4d991ef1df55fe9d6068adf3b7f3547ca4ad9be49d48",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  },
+  {
+    "role": "vacant",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-vacant-v2.png",
+    "runtimeSHA256": "99eb453e737556324c4fc963e9e13237975e48610df2ca0c3e363a8b0d28df3a",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-vacant-v2.png",
+    "nativeSHA256": "99eb453e737556324c4fc963e9e13237975e48610df2ca0c3e363a8b0d28df3a",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/vacant01.png",
+    "rawSHA256": "f03d5a509b413bc5cc063dc465b705985eb4ff4799d77f4b37f9ecd740a731e3",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/vacant01.txt",
+    "promptRecordSHA256": "22bc0f1569b8a4c69aa33a83c02656bae748dd08214bcd990648bb5ae79778cb",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        940,
+        1674
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "08f9795e1874de75d73afabbaf8d9ddcbc65346a096838ee29c16ba60896764e",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  },
+  {
+    "role": "plague-shut",
+    "runtime": "public/assets/height-era-l2late/house_l2_1420-plague-shut-v2.png",
+    "runtimeSHA256": "22088a97cb3d6a4bf70259bf92a7cf319e2bfb12d8898cb68173605a60b34950",
+    "native": "assets-inbox/height-era-l2late/candidates-20261008/approved-native/house_l2_1420-plague-shut-v2.png",
+    "nativeSHA256": "22088a97cb3d6a4bf70259bf92a7cf319e2bfb12d8898cb68173605a60b34950",
+    "selectedRaw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/plague-shut02.png",
+    "rawSHA256": "87ab11f796896286db27b6651ea537edd2ff92fbaec89e94c6150f4a54bca8a5",
+    "promptRecord": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/prompts/plague-shut02.txt",
+    "promptRecordSHA256": "45f0d2f719928b69c5bda019bcfe9400f5f0c8d5f2f3f31ebe3a51bf253e4ae6",
+    "manifest": "assets-inbox/height-era-l2late/candidates-20261008/records/stylefix/manifest.json",
+    "manifestSHA256": "18821ea16b50e57e70b8af52cf01961946831cffff8d7955a3a5af35faac9123",
+    "registration": {
+      "raw_size": [
+        940,
+        1674
+      ],
+      "resize": [
+        137,
+        244
+      ],
+      "canvas": [
+        137,
+        244
+      ],
+      "translation": [
+        0,
+        0
+      ],
+      "pivot": [
+        70.95813397129186,
+        211.08373205741626
+      ],
+      "scale": 0.4980801861842801,
+      "filter": "ffmpeg swscale lanczos; whole-layer only"
+    },
+    "runtimeVerified": true,
+    "historicalFailedCandidate": "feb12507; FAIL_STYLE preserved separately",
+    "registrationSHA256": "08f9795e1874de75d73afabbaf8d9ddcbc65346a096838ee29c16ba60896764e",
+    "registrationHashEncoding": "UTF-8 JSON, sorted keys, compact separators",
+    "referenceInputs": [
+      {
+        "path": "/tmp/astra-height-era-l2late-stylefix-20261008/assets/body01.png",
+        "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24"
+      }
+    ],
+    "runtimeEvidence": "docs/verification/height-era-l2late/target-draws.json; stylefix22 paired views"
+  }
+]

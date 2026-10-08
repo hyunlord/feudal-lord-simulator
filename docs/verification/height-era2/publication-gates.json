@@ -1,0 +1,83 @@
+{
+  "newRuntimePNGCount": 12,
+  "geometry": {
+    "schema": 1,
+    "run": "astra-HEIGHT-ERA2-geometry-e1d3ca9",
+    "commit": "e1d3ca993b3c2692bad04fed1bcc32095068dd5e",
+    "dirty": false,
+    "inputs": 2347,
+    "inputHash": "29598ebd61b395accf3365fa1aa6ade7dacd00f773e32afb8dd9367b6e594a62",
+    "measuredAt": "2026-10-07T19:20:39.603Z",
+    "report": "docs/verification/uiaudit1/geometry/astra-HEIGHT-ERA2-geometry-e1d3ca9/geometry.json",
+    "axes": {
+      "viewports": [
+        "1280x800",
+        "1920x1080",
+        "tablet-1180x820",
+        "1024x768",
+        "1280x720"
+      ],
+      "copies": [
+        "normal",
+        "long"
+      ],
+      "numbers": [
+        "normal",
+        "extreme"
+      ]
+    },
+    "rows": 4,
+    "conditions": 80,
+    "measured": 80,
+    "failures": 0,
+    "unopened": 0,
+    "unreachable": [],
+    "warnings": 0,
+    "byCheck": {
+      "outside": 0,
+      "overflow": 0,
+      "border": 0,
+      "portrait": 0,
+      "overlap": 0,
+      "empty": 0,
+      "controls": 0,
+      "content": 0,
+      "hud": 0,
+      "ornament": 0
+    },
+    "unregisteredFramed": 0,
+    "baseline": {
+      "entries": 0,
+      "counted": 0,
+      "excepted": 0,
+      "exceptions": 0,
+      "added": 0,
+      "fixed": 0
+    },
+    "bySurface": {
+      "hud.status-pill": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "hud.time-cluster": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "hud.action-dock": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      },
+      "map.selection.house": {
+        "failures": 0,
+        "unopened": 0,
+        "byCheck": {}
+      }
+    },
+    "failureKeys": []
+  },
+  "sameStatePairs": 30,
+  "finalChecks": "Exact final tree test:changed and check:merge after receipt; immutable final logs/trunkSHA in ZIP."
+}

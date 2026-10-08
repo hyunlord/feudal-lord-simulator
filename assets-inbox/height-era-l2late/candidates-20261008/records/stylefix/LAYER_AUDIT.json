@@ -1,0 +1,314 @@
+[
+  {
+    "role": "body",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-body.png",
+    "sha256": "4b372666561791d50f395885c51cea0c4e10b3803067cb30069a3e13b87f0e24",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/body01.png",
+    "raw_sha256": "294d4643fe9de02ee139129ea7348c86ab8e1158d62d7c08d5cce8d639433aed",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/body01.txt",
+    "prompt_sha256": "09ce1cffbade08bc339ae02c7e3f405a4e6571e47e44c13b4c8efcafc4897831",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      939,
+      1674
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      0
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      6,
+      31,
+      133,
+      239
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 78,
+    "outside_body_alpha32": 0,
+    "registration_offcanvas_alpha_nonzero": 0
+  },
+  {
+    "role": "snow",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-snow.png",
+    "sha256": "0d4b42e1357f41208366b7e2f460252bce7a88247fa1b21ca5ee5b9f9c8ee04a",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/snow02.png",
+    "raw_sha256": "a49492cb84f981e37993bb79c5b45c8b9445202a014321040f9f64b9021d3b65",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/snow02.txt",
+    "prompt_sha256": "374ee114ce3cc977ca356267853c3f696eff22878a05cbb9ce745e069822258e",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      940,
+      1673
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      -4
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      7,
+      47,
+      125,
+      129
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 0,
+    "outside_body_alpha32": 8,
+    "registration_offcanvas_alpha_nonzero": 0,
+    "roof_roi": {
+      "polygon": [
+        [
+          35,
+          49
+        ],
+        [
+          111,
+          91
+        ],
+        [
+          82,
+          124
+        ],
+        [
+          9,
+          86
+        ]
+      ],
+      "manual_boundary_uncertainty_native": 2,
+      "pixels": 3783,
+      "weighted_percent": 60.62208124063795,
+      "binary_alpha32_percent": 70.05022468939994,
+      "outside_roi_alpha32": 196
+    }
+  },
+  {
+    "role": "boarded",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-boarded.png",
+    "sha256": "d39dc10d079c7d539274681c77e248e5d710fb1aa19c25a0772d0f66694c4529",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/boarded01.png",
+    "raw_sha256": "be85ea4a4ead0505c2f23281d9abd8844bdefc7334cc0cf331ea95f237cae652",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/boarded01.txt",
+    "prompt_sha256": "9e1de615b0c49b499dbe09706350a140fadf395c1a17d9215214d85dd7a7ac65",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      940,
+      1673
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      12
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      19,
+      139,
+      113,
+      211
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 0,
+    "outside_body_alpha32": 0,
+    "registration_offcanvas_alpha_nonzero": 0
+  },
+  {
+    "role": "strained",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-strained.png",
+    "sha256": "1c14c3244e2b10a4131721928b8ec558c4a20d4eccb171b0654a38005dfb4773",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/strained01.png",
+    "raw_sha256": "b3d77ef22c9e336b1c1b7b848149702d69a4466f4ce179a88d4fdfc9e3f53809",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/strained01.txt",
+    "prompt_sha256": "6144fcc931c5a3857e4f90ccc10b188661c84cf72ef247f772312f49c38dac80",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      940,
+      1674
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      6
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      90,
+      174,
+      111,
+      199
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 0,
+    "outside_body_alpha32": 0,
+    "registration_offcanvas_alpha_nonzero": 0
+  },
+  {
+    "role": "neglected",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-neglected.png",
+    "sha256": "89e1efec1667a62ce00cff9bf9c49e6498cd3a618fc45bac87733b5a71a051b6",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/neglected01.png",
+    "raw_sha256": "d16da93cb38c66e756908b4d80d3de4bc80b27ead78b9362addbc6fb7c6c436d",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/neglected01.txt",
+    "prompt_sha256": "431b44c11e66844b3e1c41ecac380c10499dab21ae9b17924ea557376e642cf4",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      939,
+      1674
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      0
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      33,
+      57,
+      126,
+      206
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 0,
+    "outside_body_alpha32": 0,
+    "registration_offcanvas_alpha_nonzero": 0
+  },
+  {
+    "role": "vacant",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-vacant.png",
+    "sha256": "99eb453e737556324c4fc963e9e13237975e48610df2ca0c3e363a8b0d28df3a",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/vacant01.png",
+    "raw_sha256": "f03d5a509b413bc5cc063dc465b705985eb4ff4799d77f4b37f9ecd740a731e3",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/vacant01.txt",
+    "prompt_sha256": "22bc0f1569b8a4c69aa33a83c02656bae748dd08214bcd990648bb5ae79778cb",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      940,
+      1674
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      0
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      23,
+      77,
+      111,
+      200
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 0,
+    "outside_body_alpha32": 0,
+    "registration_offcanvas_alpha_nonzero": 0
+  },
+  {
+    "role": "plague-shut",
+    "path": "/tmp/astra-height-era-l2late-stylefix-20261008/final/house_l2_1420-plague-shut.png",
+    "sha256": "22088a97cb3d6a4bf70259bf92a7cf319e2bfb12d8898cb68173605a60b34950",
+    "raw": "/tmp/astra-height-era-l2late-stylefix-20261008/raw/plague-shut02.png",
+    "raw_sha256": "87ab11f796896286db27b6651ea537edd2ff92fbaec89e94c6150f4a54bca8a5",
+    "prompt": "/tmp/astra-height-era-l2late-stylefix-20261008/prompts/plague-shut02.txt",
+    "prompt_sha256": "45f0d2f719928b69c5bda019bcfe9400f5f0c8d5f2f3f31ebe3a51bf253e4ae6",
+    "canvas": [
+      137,
+      244
+    ],
+    "pivot": [
+      70.95813397129186,
+      211.08373205741626
+    ],
+    "scale": 0.4980801861842801,
+    "raw_size": [
+      940,
+      1674
+    ],
+    "resize": [
+      137,
+      244
+    ],
+    "translation": [
+      0,
+      0
+    ],
+    "filter": "ffmpeg swscale lanczos; whole-layer only",
+    "alpha_bbox": [
+      21,
+      139,
+      115,
+      207
+    ],
+    "edge_alpha_nonzero": 0,
+    "raw_edge_alpha_nonzero": 0,
+    "outside_body_alpha32": 0,
+    "registration_offcanvas_alpha_nonzero": 0
+  }
+]

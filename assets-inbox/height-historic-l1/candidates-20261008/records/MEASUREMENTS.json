@@ -1,0 +1,128 @@
+{
+  "manualSourceDoorLeafEndpointsExcludingFrame": {
+    "left": [
+      405,
+      790
+    ],
+    "right": [
+      570,
+      878
+    ],
+    "bottomLeft": [
+      405,
+      1218
+    ],
+    "bottomRight": [
+      570,
+      1307
+    ]
+  },
+  "nativeDoorHeightsLeftRight": [
+    44.512,
+    44.616
+  ],
+  "nativeDoorWidthProjected": 17.16,
+  "worldDoorHeights": [
+    22.194650301536985,
+    22.246506961120016
+  ],
+  "worldDoorWidth": 8.556348831200006,
+  "humanWorldHeight": 17.6,
+  "heightHumanRatio": [
+    1.2610596762236923,
+    1.2640060773363644
+  ],
+  "widthHumanRatio": 0.4861561835909094,
+  "manualNativeUncertainty": 1.2,
+  "bodyGroundOriginalNative": [
+    [
+      20,
+      90
+    ],
+    [
+      85,
+      123
+    ],
+    [
+      121,
+      104
+    ]
+  ],
+  "bodyGroundRawSelected": [
+    [
+      64,
+      1094
+    ],
+    [
+      697,
+      1413
+    ],
+    [
+      1038,
+      1235
+    ]
+  ],
+  "bodyGroundRegistered": [
+    [
+      19.656,
+      125.776
+    ],
+    [
+      85.488,
+      158.952
+    ],
+    [
+      120.952,
+      140.44
+    ]
+  ],
+  "originalTopPadding": 36,
+  "groundManualNativeUncertainty": 1.5,
+  "roofRidgeNative": [
+    [
+      42,
+      15
+    ],
+    [
+      110,
+      57
+    ]
+  ],
+  "snow": {
+    "maskPolygon": [
+      [
+        16,
+        57
+      ],
+      [
+        42,
+        15
+      ],
+      [
+        110,
+        57
+      ],
+      [
+        123,
+        82
+      ],
+      [
+        111,
+        74
+      ],
+      [
+        85,
+        102
+      ]
+    ],
+    "maskOnlyForMeasurementNeverUsedToModifyAsset": true,
+    "maskAreaPixels": 4515,
+    "manualMaskUncertaintyNativePixels": 2,
+    "weightedCoveragePercent": 65.86506850802337,
+    "binaryAlphaOver32CoveragePercent": 68.70431893687707,
+    "binaryAlphaAtLeast128CoveragePercent": 66.51162790697674,
+    "outsideMaskPixelsAlphaOver32": 118,
+    "outsideMaskAlphaWeightedPixels": 106.66666666666667,
+    "maxOutsideMaskChebyshevDistanceNative": 4
+  }
+}

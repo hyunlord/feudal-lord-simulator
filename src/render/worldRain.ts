@@ -10,7 +10,7 @@ export function drawWorldRain(context: CanvasRenderingContext2D, state: GameStat
   if (family === null) return false;
   const seconds = calendarProgress(state).seconds;
   for (const particle of worldRainParticles({ seed: state.seed, seconds, intensity }, view)) {
-    const ready = NATURE_ART.select(family, 'rain', 'all', particle.variant);
+    const ready = NATURE_ART.select(family, 'rain', particle.preferStrong ? 'strong' : 'faint', particle.variant);
     if (ready !== null) NATURE_ART.draw(context, ready, particle.x, particle.y, zoom, particle.strength, seconds);
   }
   return true;

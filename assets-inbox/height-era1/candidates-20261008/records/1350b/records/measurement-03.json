@@ -1,0 +1,79 @@
+{
+  "attempt": 3,
+  "method": "Root-authorized method change: complete-image edit of successful 1350a body04 geometry with original1350b identity reference. No parts collage.",
+  "references": [
+    "/tmp/astra-height-era-candidates-20261008/body-04-registered.png",
+    "/tmp/astra-height-era-1350b-20261008/reference-padded36.png"
+  ],
+  "door": {
+    "leaf_same_x_endpoints": [
+      [
+        60,
+        100
+      ],
+      [
+        60,
+        146
+      ]
+    ],
+    "nominal_native_height": 46,
+    "nominal_projected_width": 20,
+    "height_uncertainty": 2,
+    "width_uncertainty": 2,
+    "frame_excluded": true,
+    "hidden_aperture_measured": false
+  },
+  "ground": {
+    "reference_b_top36": [
+      [
+        22,
+        127
+      ],
+      [
+        87,
+        158
+      ],
+      [
+        121,
+        141
+      ]
+    ],
+    "candidate": [
+      [
+        20,
+        130
+      ],
+      [
+        85,
+        163
+      ],
+      [
+        125,
+        142
+      ]
+    ],
+    "delta": [
+      [
+        -2,
+        3
+      ],
+      [
+        -2,
+        5
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "uncertainty_native": 2
+  },
+  "windows": {
+    "left_front": true,
+    "short_right_shutter": true
+  },
+  "status": "Parent static visual review pending; door nominal near target, footprint residual remains. No overlays or installation.",
+  "model": null,
+  "seed": null,
+  "registration_failure": "Initial node strip-types invocation failed module resolution without producing native output; rerun existing tsx loader succeeded."
+}

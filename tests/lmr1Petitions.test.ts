@@ -59,6 +59,8 @@ function jpegSize(bytes: Buffer): readonly [number, number] {
 /** Lord slice seed 1 run to its first home petition (1301 spring, the first winter's petition). */
 const firstPetition: GameState = (() => {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
+  // DEC-TRACE §1 (GP-7): home petitions are the steward's by default; the lord keeps every kind here so the card comes.
+  for (const kind of Object.keys(HOME_PETITION_KINDS)) state = gameReducer(state, { type: "set_standing_policy", kind, setting: "lord" });
   while (openHomePetitions(state).length === 0) state = advanceTick(state);
   return state;
 })();

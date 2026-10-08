@@ -1,0 +1,49 @@
+{
+  "afterCommit": "972939a02550898acae866d5b68edc236dccb3c0",
+  "pairs": 22,
+  "identityFields": [
+    "sourceSHA256",
+    "saveSHA256",
+    "stateSHA256",
+    "buildingId",
+    "tile",
+    "tick",
+    "seed",
+    "condition",
+    "visualState",
+    "plagueVacant",
+    "fields",
+    "zoom",
+    "nowMs",
+    "camera",
+    "walkers"
+  ],
+  "verifiedImageHashes": 88,
+  "failures": [],
+  "pageErrors": {
+    "before": 0,
+    "after": 0
+  },
+  "networkFailures": {
+    "before": 4,
+    "after": 12
+  },
+  "visualReview": {
+    "viewsOpened": [
+      "stylefix-winter-z3",
+      "stylefix-maintained-z1",
+      "stylefix-plague-abandoned-z1",
+      "stylefix-winter-abandoned-z0.6",
+      "stylefix-melt-abandoned-z1"
+    ],
+    "verdict": "PASS_WITH_LIMITS",
+    "notes": [
+      "Roof snow follows roof and leaves tile gaps; fixed house keeps hand-painted material improvement at actual scene scale",
+      "Foreground workshop occludes part of lower front, retained intentionally",
+      "Plague bars subtle at zoom1; pixel-perfect aperture matching not claimed",
+      "Original footprint residual9.06/9.22/5native remains; same pivot is not zero footprint error",
+      "At0.6 snow remains visible, fine status details small and partially covered by selection ring"
+    ]
+  },
+  "scope": "Explicitly prepared same saves, not natural growth or illness gameplay; telemetry ERR_ABORTED retained"
+}

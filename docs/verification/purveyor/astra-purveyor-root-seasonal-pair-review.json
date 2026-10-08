@@ -1,0 +1,106 @@
+{
+  "classification": "Prepared QA summer/winter, not natural purchase occurrence",
+  "pairs": [
+    {
+      "before": "before-summer-z1",
+      "after": "after-summer-z1",
+      "fieldsEqual": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "nowMs": true,
+        "camera": true
+      },
+      "stateSHA256": "c1672843feae96cc8f28620bec226b20e1303db9f13bdf0c07db0f49d624992a",
+      "pixelDiffBBox": [
+        638,
+        382,
+        648,
+        400
+      ],
+      "pixelDiffSize": [
+        10,
+        18
+      ]
+    },
+    {
+      "before": "before-summer-z0.6",
+      "after": "after-summer-z0.6",
+      "fieldsEqual": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "nowMs": true,
+        "camera": true
+      },
+      "stateSHA256": "c1672843feae96cc8f28620bec226b20e1303db9f13bdf0c07db0f49d624992a",
+      "pixelDiffBBox": [
+        639,
+        389,
+        645,
+        400
+      ],
+      "pixelDiffSize": [
+        6,
+        11
+      ]
+    },
+    {
+      "before": "before-winter-z1",
+      "after": "after-winter-z1",
+      "fieldsEqual": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "nowMs": true,
+        "camera": true
+      },
+      "stateSHA256": "27c194513a0a19b28f936433dc08e43f956128bc08ef945db2ad6f6741a74e55",
+      "pixelDiffBBox": [
+        638,
+        382,
+        648,
+        400
+      ],
+      "pixelDiffSize": [
+        10,
+        18
+      ]
+    },
+    {
+      "before": "before-winter-z0.6",
+      "after": "after-winter-z0.6",
+      "fieldsEqual": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "nowMs": true,
+        "camera": true
+      },
+      "stateSHA256": "27c194513a0a19b28f936433dc08e43f956128bc08ef945db2ad6f6741a74e55",
+      "pixelDiffBBox": [
+        639,
+        389,
+        645,
+        400
+      ],
+      "pixelDiffSize": [
+        6,
+        11
+      ]
+    }
+  ],
+  "errors": {
+    "before": [],
+    "after": []
+  },
+  "networkFailures": {
+    "before": [],
+    "after": []
+  },
+  "visualReview": "Directly viewed full summer and winter zoom1, winter zoom0.6. Winter has bare deciduous trees and snow-covered roofs; purveyor remains road-grounded behind foreground roof. Tiny scale does not establish ledger detail. No new seasonal clothing art."
+}

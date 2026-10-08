@@ -1,0 +1,25 @@
+{
+  "pairs": 18,
+  "positiveRuntimeImages": [
+    "height-l0d/house_l0_d-v2.png",
+    "height-l0d/house_l0_d-v2_boarded.png",
+    "height-l0d/house_l0_d-v2_fresh.png",
+    "height-l0d/house_l0_d-v2_snow.png",
+    "height-l0d/house_l0_d-v2_weathered.png"
+  ],
+  "pageErrors": [],
+  "networkFailures": [
+    {
+      "view": "before-summer-fresh-z1",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-summer-fresh-z1",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limitations": "Fresh white spot overlaps timber; closed doorleaf proxy not effective opening certification; initial tick12000 corrected before capture; no natural growth claim.",
+  "observations": "See README for actual close and play-zoom inspection."
+}

@@ -1,0 +1,224 @@
+{
+  "views": 22,
+  "cycles": 483,
+  "distinctRoles": [
+    "height-era-l2late/house_l2_1420-body-v2",
+    "height-era-l2late/house_l2_1420-strained-v2",
+    "height-era-l2late/house_l2_1420-neglected-v2",
+    "height-era-l2late/house_l2_1420-vacant-v2",
+    "height-era-l2late/house_l2_1420-boarded-v2",
+    "height-era-l2late/house_l2_1420-plague-shut-v2",
+    "height-era-l2late/house_l2_1420-snow-v2"
+  ],
+  "failures": [],
+  "results": [
+    {
+      "view": "stylefix-maintained-z1",
+      "targetDraws": 35,
+      "renderCycles": 35,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2"
+      ]
+    },
+    {
+      "view": "stylefix-maintained-z0.6",
+      "targetDraws": 23,
+      "renderCycles": 23,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2"
+      ]
+    },
+    {
+      "view": "stylefix-strained-z1",
+      "targetDraws": 52,
+      "renderCycles": 26,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-strained-v2"
+      ]
+    },
+    {
+      "view": "stylefix-strained-z0.6",
+      "targetDraws": 44,
+      "renderCycles": 22,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-strained-v2"
+      ]
+    },
+    {
+      "view": "stylefix-neglected-z1",
+      "targetDraws": 54,
+      "renderCycles": 27,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-neglected-v2"
+      ]
+    },
+    {
+      "view": "stylefix-neglected-z0.6",
+      "targetDraws": 46,
+      "renderCycles": 23,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-neglected-v2"
+      ]
+    },
+    {
+      "view": "stylefix-vacant-z1",
+      "targetDraws": 54,
+      "renderCycles": 27,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2"
+      ]
+    },
+    {
+      "view": "stylefix-vacant-z0.6",
+      "targetDraws": 48,
+      "renderCycles": 24,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2"
+      ]
+    },
+    {
+      "view": "stylefix-abandoned-z1",
+      "targetDraws": 99,
+      "renderCycles": 33,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-boarded-v2"
+      ]
+    },
+    {
+      "view": "stylefix-abandoned-z0.6",
+      "targetDraws": 75,
+      "renderCycles": 25,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-boarded-v2"
+      ]
+    },
+    {
+      "view": "stylefix-plague-abandoned-z1",
+      "targetDraws": 81,
+      "renderCycles": 27,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-plague-shut-v2"
+      ]
+    },
+    {
+      "view": "stylefix-plague-abandoned-z0.6",
+      "targetDraws": 69,
+      "renderCycles": 23,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-plague-shut-v2"
+      ]
+    },
+    {
+      "view": "stylefix-winter-z1",
+      "targetDraws": 34,
+      "renderCycles": 17,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-winter-z0.6",
+      "targetDraws": 34,
+      "renderCycles": 17,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-winter-abandoned-z1",
+      "targetDraws": 68,
+      "renderCycles": 17,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-boarded-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-winter-abandoned-z0.6",
+      "targetDraws": 56,
+      "renderCycles": 14,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-boarded-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-melt-z1",
+      "targetDraws": 26,
+      "renderCycles": 13,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-melt-z0.6",
+      "targetDraws": 30,
+      "renderCycles": 15,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-melt-abandoned-z1",
+      "targetDraws": 72,
+      "renderCycles": 18,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-boarded-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-melt-abandoned-z0.6",
+      "targetDraws": 44,
+      "renderCycles": 11,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-vacant-v2",
+        "height-era-l2late/house_l2_1420-boarded-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    },
+    {
+      "view": "stylefix-maintained-z3",
+      "targetDraws": 29,
+      "renderCycles": 29,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2"
+      ]
+    },
+    {
+      "view": "stylefix-winter-z3",
+      "targetDraws": 34,
+      "renderCycles": 17,
+      "order": [
+        "height-era-l2late/house_l2_1420-body-v2",
+        "height-era-l2late/house_l2_1420-snow-v2"
+      ]
+    }
+  ],
+  "limits": "Target draw receipt and actual draw traces checked; subpixel projection not a zero residual art claim. Native visual review separately recorded."
+}

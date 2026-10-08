@@ -1,0 +1,166 @@
+{
+  "task": "HEIGHT-ERA1 L1 1400 A/B",
+  "count": 6,
+  "entries": [
+    {
+      "id": "house_l1_1400_a_body",
+      "file": "assets/house_l1_1400_a_body-height-era1.png",
+      "sha256": "e721efc7234032f3ab7baea7e46d62967d4089c9d83d6d08ed58d1637680237e",
+      "sourceCandidate": "body-a-04-registered.png",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "registrationTranslation": [
+        -1,
+        -1
+      ],
+      "status": "candidate, uninstalled; static parent visual inspected",
+      "alphaMode": "RGBA"
+    },
+    {
+      "id": "house_l1_1400_a_boards",
+      "file": "assets/house_l1_1400_a_boards-height-era1.png",
+      "sha256": "cc7fd8f353f92fe97ce4cf8bc0f259e35107d0407b2fc9f4bfc99be34ae78e26",
+      "sourceCandidate": "boards-a-native.png",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "registrationTranslation": [
+        0,
+        0
+      ],
+      "status": "candidate, uninstalled; static parent visual inspected",
+      "alphaMode": "RGBA"
+    },
+    {
+      "id": "house_l1_1400_a_snow",
+      "file": "assets/house_l1_1400_a_snow-height-era1.png",
+      "sha256": "085b96d4ac39874107d48da7edf98cd82e578eb0dccbf333cb5affd978e79c5e",
+      "sourceCandidate": "snow-a-02-native.png",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "registrationTranslation": [
+        0,
+        0
+      ],
+      "status": "candidate, uninstalled; static parent visual inspected",
+      "alphaMode": "RGBA"
+    },
+    {
+      "id": "house_l1_1400_b_body",
+      "file": "assets/house_l1_1400_b_body-height-era1.png",
+      "sha256": "99b151740f6fa920417dda498ed321738f5ad4b9c27844088a90461358939d4c",
+      "sourceCandidate": "body-b-03-registered.png",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "registrationTranslation": [
+        -1,
+        -1
+      ],
+      "status": "candidate, uninstalled; static parent visual inspected",
+      "alphaMode": "RGBA"
+    },
+    {
+      "id": "house_l1_1400_b_boards",
+      "file": "assets/house_l1_1400_b_boards-height-era1.png",
+      "sha256": "139f32a817737d1dde0c7543f542dba9a2efa0fc634d2febfefcfc7a5c2b89d6",
+      "sourceCandidate": "boards-b-native.png",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "registrationTranslation": [
+        0,
+        0
+      ],
+      "status": "candidate, uninstalled; static parent visual inspected",
+      "alphaMode": "RGBA"
+    },
+    {
+      "id": "house_l1_1400_b_snow",
+      "file": "assets/house_l1_1400_b_snow-height-era1.png",
+      "sha256": "93fec6b743b9653c2e6aa6ddd8dd04458fec1900813c11b76e933c3e908dda4a",
+      "sourceCandidate": "snow-b-native.png",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "scale": 0.4986217267599071,
+      "footprint": [
+        1,
+        1
+      ],
+      "registrationTranslation": [
+        0,
+        0
+      ],
+      "status": "candidate, uninstalled; static parent visual inspected",
+      "alphaMode": "RGBA"
+    }
+  ],
+  "bodyGenerationCount": 7,
+  "bodyFailures": 5,
+  "totalGenerationCount": 12,
+  "noModelOrSeedReturned": true,
+  "notValidated": [
+    "actual game scene",
+    "runtime occlusion",
+    "world footprint collision"
+  ],
+  "snowClipped": false
+}

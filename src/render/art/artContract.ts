@@ -28,6 +28,7 @@ export type WalkerBodyFrame = {
   readonly direction: WalkerArtDirection; readonly gaitFrame: 0 | 1;
   readonly foot: ArtPoint; readonly figureHeight: number;
   readonly hands: { readonly left: ArtPoint; readonly right: ArtPoint };
+  readonly heldAttachment?: { readonly propId: string; readonly grip: ArtPoint; readonly restoreHandSize: 3 };
   readonly cloakRegistration?: ArtPoint & { readonly scale: number };
 };
 /** The existing composer reads four columns and two gait rows in 74px cell coordinates. */
@@ -102,6 +103,8 @@ export type FarmGroundPropEntry = EntryBase & {
 export type FacilityGroundPropEntry = EntryBase & {
   readonly kind: 'ground-prop'; readonly placement: 'facility-ground';
   readonly buildingKinds: readonly string[]; readonly geometry: ArtGeometry;
+  /** All-season owned pasture, sharing reservations after water facilities. Stock is a real farm inventory key. */
+  readonly pastureYard?: { readonly group: string; readonly priority: number; readonly positiveStock?: string };
 };
 export type GroundPropEntry = FacilityGroundPropEntry | StockPileEntry | FarmGroundPropEntry | SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
 export type WalkerCargoEntry = EntryBase & {

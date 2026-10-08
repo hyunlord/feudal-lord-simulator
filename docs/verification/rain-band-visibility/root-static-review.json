@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "path": "/tmp/astra-rain-band-visibility/output/rain-band/z0.6-key1.png",
+      "sha256": "ce6675cfcd670ea45b01fe98766bb2b641de9a39425abba5d1f9bec6ce005dd0"
+    },
+    {
+      "path": "/tmp/astra-rain-band-visibility/output/rain-band/z0.6-key3.png",
+      "sha256": "a7bc68eb123fa700582748045b3839ad51c367e6b553d0e379da201c082d6164"
+    },
+    {
+      "path": "/tmp/astra-rain-band-visibility/output/rain-band/z0.6-key5.png",
+      "sha256": "1e1564b62b709027664739e105be832fe9c51e30d301ae418298d29d1591a11f"
+    },
+    {
+      "path": "/tmp/astra-rain-band-visibility/output/rain-band/z0.6-band-sequence.png",
+      "sha256": "9e6e6538d0b5cc85fa9acab75aad2b0a40c1748fff851e90390e91484f52c0be"
+    }
+  ],
+  "review": "Original zoom0.6 keyframes1/3/5 inspected. Individual bright rain particles visible, no white curtain; broad moving band over town not confidently established by these static frames. Dark off-map background makes particles more conspicuous. Full video not watched by root.",
+  "sequenceObservation": "Native unenhanced zoom0.6 grass sequence also inspected: bright-particle density concentration shifts from left/center-left in first row toward center in second and right in third. This supports spatial rain-band movement on grass, but town is partly outside crop and immediate whole-scene salience is weak. Does not establish full-video perception or opaque heavy-rain appearance."
+}

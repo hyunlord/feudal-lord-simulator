@@ -3,11 +3,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
-import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
+import { AGENCY_WEEK_TICKS, builderOfKind, COMMUNITY_FALLBACK } from "../src/content/townAgencyConfig";
+import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
-import { advanceTownAgency, initialAgency, lordRequests, subsidyRefusal, townProposals, whyHere } from "../src/engine/townAgency";
-import { townSiteRefusal } from "../src/engine/autoplay";
+import { advanceTownAgency, initialAgency, LORD_MODE_POLICY, lordRequests, subsidyRefusal, townProposals, whyHere } from "../src/engine/townAgency";
+import { autoplayBuildAction, townSiteRefusal } from "../src/engine/autoplay";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
@@ -72,6 +73,35 @@ test("TA-3 TA-4 a proposal's score is the sum of its named reasons; the needs co
     assert.ok(proposal.planner.length > 0);
   }
   assert.ok(proposals.some(proposal => proposal.reasons.some(reason => reason.name === "need")));
+});
+
+test("DTR-15 a needed building its builder refuses (a grudge among its reasons) waits a year, then falls to the community at a premium; a hoard is not a want of room", () => {
+  const week = toWeek(lordTown(), 1);
+  // The merchants at odds with the lord and the dues at their highest: the storehouse's reasons fall under the start.
+  const sour: GameState = { ...week, agency: { ...week.agency!, duesPermille: 2_000 },
+    factions: { ...week.factions!, factions: week.factions!.factions.map(faction => faction.id.startsWith("merchant") ? { ...faction, relation: -100 } : faction) } };
+  const action = autoplayBuildAction(sour, "storehouse");
+  assert.equal(action.kind, "place_building", "a storehouse site");
+  const proposal = (state: GameState) => townProposals(state, LORD_MODE_POLICY, [{ planner: "storage", rank: 2, action }]).find(entry => entry.what === "storehouse")!;
+  assert.equal(builderOfKind("storehouse"), "merchants");
+  assert.equal(proposal(week).actor, "merchants", "taken up by its builder while the merchants are willing");
+  assert.equal(proposal(week).refusedBy, undefined);
+  const refused = proposal(sour);
+  assert.deepEqual([refused.actor, refused.refusedBy, refused.fallback], ["merchants", "merchants", undefined], "refused: it waits");
+  const waited: GameState = { ...sour, agency: { ...sour.agency!, refusedNeeds: [{ what: "storehouse", builder: "merchants", since: sour.tick - COMMUNITY_FALLBACK.waitTicks }] } };
+  const fallen = proposal(waited);
+  assert.equal(fallen.actor, "community", `after a year the community builds it (${JSON.stringify(fallen.reasons)})`);
+  assert.deepEqual(fallen.fallback, { builder: "merchants", since: sour.tick - COMMUNITY_FALLBACK.waitTicks });
+  assert.ok(!fallen.reasons.some(reason => reason.name === "dues"), "the community's own reasons");
+  // The community's own bar: stores holding a hoard of timber are no want of room.
+  const store = waited.buildings.find(building => building.kind === "storehouse")!;
+  const hoard: GameState = { ...waited, buildings: waited.buildings.map(building => building === store
+    ? { ...building, inventory: { ...building.inventory, timber: COMMUNITY_FALLBACK.storageHoard } } : building) };
+  assert.equal(proposal(hoard).fallback, undefined);
+  assert.equal(proposal(hoard).refusedBy, undefined);
+  // The news line (the year's review reads the same record).
+  assert.match(HISTORY_TEMPLATES.consequence!({ key: "community_built", builder: "merchants", what: "storehouse", delay: 5_000, premium: 60, treasury: 60 }),
+    /상인 가문이 거절해 공동체가 대신 지었다 — .+, 1년 1철 늦게, 금고 /);
 });
 
 test("TA-5 every project started leaves a receipt and a ledger line; whyHere finds a construction site's receipt", () => {

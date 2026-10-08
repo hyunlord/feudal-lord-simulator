@@ -1,0 +1,26 @@
+✔ pool positions stay exact when pasture yards share the allocation pass (160.8825ms)
+✔ positive stock selects the pen; no stock selects one empty fold per farm (30.609084ms)
+✔ yard remains in winter while water pools retain their winter exclusion (0.960417ms)
+✔ facility pictures reserve one another and all existing farm pictures (1.349292ms)
+✔ missing descriptors, absent pasture and incompatible farms stay empty (0.466458ms)
+✔ dry pasture supports the yard without inventing a wash pool (26.82375ms)
+✔ legacy pool keeps its published anchor and identity (23.349292ms)
+✔ full-canvas support keeps all sixteen inverse-projected cells (1.303417ms)
+✔ completed normal-command farm has a safe deterministic non-economic pool (161.271166ms)
+✔ missing image and removed farms never leave a stale pool (49.632875ms)
+✔ winter has no invented seasonal image and spring restores stable placement (3.186625ms)
+✔ all roads or water across pasture eliminate every candidate without changing other props (105.128208ms)
+✔ selected pool canvas overlaps none of the existing reserved pictures (27.252541ms)
+✔ a new occupied support cell invalidates the old anchor (46.275417ms)
+✔ no tended pasture means no farm decoration (19.89925ms)
+✔ wash image loads lazily once; decode readiness releases placement (0.647416ms)
+✔ missing and malformed images leave empty fallback (0.105ms)
+✔ facility contract coexists with all existing catalog kinds and rejects absent building facts (204.951541ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1032.768208

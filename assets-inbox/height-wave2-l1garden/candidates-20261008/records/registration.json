@@ -1,0 +1,75 @@
+{
+  "raw_size": [
+    1118,
+    1407
+  ],
+  "raw_alpha16_bbox": [
+    61,
+    103,
+    1116,
+    1334
+  ],
+  "uniform_scale": 0.10710900473933649,
+  "rounded_resize": [
+    120,
+    151
+  ],
+  "translation": [
+    8,
+    19
+  ],
+  "final_size": [
+    139,
+    175
+  ],
+  "padding_up": 36,
+  "runtime_scale": 0.498621726759907,
+  "runtime_pivot": [
+    71.66148325358851,
+    161.92025518341308
+  ],
+  "policy": "one uniform whole-image downsample + translation only; no piece assembly, mask clipping, nonuniform warp, silhouette restoration",
+  "layers": {
+    "snow": {
+      "raw_size": [
+        1118,
+        1407
+      ],
+      "resize": [
+        87,
+        109
+      ],
+      "translation": [
+        17,
+        21
+      ],
+      "final_size": [
+        139,
+        175
+      ],
+      "policy": "one whole raw uniform downsample with integer rounding+translation, no mask/color-key/alpha adjustment; fit regenerated snow back to roof/eave"
+    },
+    "neglected": {
+      "resize": [
+        120,
+        151
+      ],
+      "translation": [
+        6,
+        20
+      ],
+      "reason": "whole-layer uniform registration; no alpha clip"
+    }
+  },
+  "retained_snow_v2": {
+    "resize": [
+      108,
+      136
+    ],
+    "translation": [
+      11,
+      21
+    ],
+    "reason": "whole-layer uniform registration; no alpha clip"
+  }
+}

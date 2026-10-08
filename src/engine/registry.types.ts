@@ -1,3 +1,5 @@
+import type { DecisionWeight, StandingSetting } from "../content/stewardPolicyConfig";
+
 /** LM-E9 (spec docs/design/registry.md ER-3·ER-4·ER-7·ER-9·ER-12, save v47): the registry's state in lord mode. */
 
 /** ER-3/ER-4: one occurrence of an entry — offered, then answered, lapsed, or invalidated. */
@@ -23,6 +25,13 @@ export interface RegistryOccurrence {
   readonly context?: string;
   /** ER-19 (R3): an answered hold's cost — the claim weakened, or the sender faction's relation moved (the history moves it). */
   readonly hold?: { readonly claimId?: string; readonly weakened?: number; readonly faction?: string; readonly delta?: number; readonly deadline?: string };
+  /** DEC-TRACE §1 (save v52): the weights that brought it to the lord (P-D5); empty when it was the steward's. */
+  readonly weights?: readonly DecisionWeight[];
+  /** DEC-TRACE §1 (save v52): the steward answered it by the lord's standing policy for its sender. */
+  readonly decidedBy?: "steward";
+  readonly policy?: StandingSetting;
+  /** DEC-TRACE §3 (save v52): the sender's mind on the side taken — the most given of the choices pleases it, the least displeases it. */
+  readonly side?: { readonly faction: string; readonly delta: number };
 }
 
 /** ER-7 (NE03): a remission or an instalment plan with its term. */

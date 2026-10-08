@@ -1,0 +1,365 @@
+{
+  "task": "RB-HEIGHT-WAVE2-L1ARTISAN",
+  "status": "candidate-art-only; NOT installed or runtime validated",
+  "prepBase": "c76127f470818973378db51975bbda4f111452b0",
+  "readCheckoutLatestAtHandoff": "7251069277abbd8a48dbaab91479f1eaeb5b95a8",
+  "assets": [
+    {
+      "role": "body",
+      "file": "HANDOFF7/house_l1_artisan-body-v2.png",
+      "sha256": "c67c775712ccca9f84acc6a9b199d7b0f871437615342f744f5b6d0d5de04816",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/body-05.png",
+      "rawSHA256": "6370fbf53fe1c0806860551c907ce1097086656dcf26d9d57a4a3358b8958737",
+      "rawCanvas": [
+        1059,
+        1485
+      ],
+      "registration": {
+        "uniformScale": 0.108,
+        "translation": [
+          9.5,
+          8
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        13,
+        17,
+        122,
+        162
+      ],
+      "nativeBoundaryAlphaSum": 0
+    },
+    {
+      "role": "snow",
+      "file": "HANDOFF7/house_l1_artisan-snow-v2.png",
+      "sha256": "280f94a0b1cfa20df7147fb43e8f43f52ed56dbe7cb19413e1019708deb8d6d1",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/snow-02.png",
+      "rawSHA256": "a51789362e5fc72a23ad0ab1e3c4ab466385868a0fa71454b9d9943714fbc79b",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 20,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        7,
+        16,
+        117,
+        112
+      ],
+      "nativeBoundaryAlphaSum": 0
+    },
+    {
+      "role": "boarded",
+      "file": "HANDOFF7/house_l1_artisan-boarded-v2.png",
+      "sha256": "1f6b29d7a89e232aee58a690a80a7731fb2cfa191dfec2f9827d38dbfe25cd82",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/boarded-01.png",
+      "rawSHA256": "7ec1bad2b401e961d5cd166886e01b2f2780ad243a9d2e638adc937065813b80",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        58,
+        65,
+        117,
+        156
+      ],
+      "nativeBoundaryAlphaSum": 0
+    },
+    {
+      "role": "strained",
+      "file": "HANDOFF7/house_l1_artisan-strained-v2.png",
+      "sha256": "d6e957016726489736c5c1a3b9db7102069cb224615f78f74d07d99872a6f092",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/strained-01.png",
+      "rawSHA256": "df24cba1a0813f7ea29f91ce9f6c2fe0d7a55323fec5465bb1e96c689de7e4b9",
+      "rawCanvas": [
+        1117,
+        1408
+      ],
+      "registration": {
+        "uniformScale": 0.12444046553267682,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        79,
+        127,
+        83,
+        147
+      ],
+      "nativeBoundaryAlphaSum": 0
+    },
+    {
+      "role": "neglected",
+      "file": "HANDOFF7/house_l1_artisan-neglected-v2.png",
+      "sha256": "ef27b29473e5daf8660981c1a2db591f47878d53fac0b9bf28930950d4f5f50d",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/neglected-01.png",
+      "rawSHA256": "e2cf292cc3a5b8ebf86adbf46db0f6681b02aa4ab6c8ca999bc00bd35429d2c0",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        40,
+        23,
+        89,
+        137
+      ],
+      "nativeBoundaryAlphaSum": 0
+    },
+    {
+      "role": "vacant",
+      "file": "HANDOFF7/house_l1_artisan-vacant-v2.png",
+      "sha256": "e9718e31837142dbfcf132d1cf2accc8a405208c6eb91e2c78e3c16f300894a9",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/vacant-01.png",
+      "rawSHA256": "6dd26ec43ae96a10a57ed8ffb3b292c28de8b8b1f3c133341590f15e61db9dfc",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.12432915921288014,
+        "translation": [
+          0,
+          0
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 33,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        72,
+        67,
+        110,
+        156
+      ],
+      "nativeBoundaryAlphaSum": 0
+    },
+    {
+      "role": "plague-shut",
+      "file": "HANDOFF7/house_l1_artisan-plague-shut-v2.png",
+      "sha256": "6cd036db1acdc28d2b31374bea62abc4f76b25bcd9b5a2d803a0c0c4af744f1f",
+      "canvas": [
+        139,
+        175
+      ],
+      "pivot": [
+        71.66148325358851,
+        161.92025518341308
+      ],
+      "worldScale": 0.498621726759907,
+      "footprint": [
+        1,
+        1
+      ],
+      "raw": "raw/plague-shut-01.png",
+      "rawSHA256": "3706d84cd2396917f52aa0b293213537788079de00769a26ec0d10dc13d7b908",
+      "rawCanvas": [
+        1118,
+        1407
+      ],
+      "registration": {
+        "uniformScale": 0.06838103756708408,
+        "translation": [
+          46.35,
+          55.35
+        ],
+        "method": "whole-canvas uniform inverse affine BICUBIC only",
+        "rawAlphaNonzeroOutsideFinalCanvas": 0,
+        "rawAlphaWeightedPixelsOutsideFinalCanvas": 0.0
+      },
+      "rawBoundaryAlphaPixels": {
+        ">0": 0,
+        ">32": 0,
+        ">=128": 0
+      },
+      "nativeAlphaBBox": [
+        96,
+        112,
+        111,
+        135
+      ],
+      "nativeBoundaryAlphaSum": 0
+    }
+  ],
+  "generations": {
+    "total": 12,
+    "body": 5,
+    "layers": 7,
+    "selectedBody": "body-05",
+    "selectedSnow": "snow-02",
+    "rejectedBodies": [
+      "body-01",
+      "body-02",
+      "body-03",
+      "body-04"
+    ],
+    "rejectedLayer": "snow-01 weighted57.09% after registration",
+    "rejectedRegistration": "plague-shut original too large; entire layer uniform.55 registration",
+    "model": "builtin imagegen; exact model and seed not returned"
+  },
+  "conditionInsetNotApplied": {
+    "scale": 0.95,
+    "dx1254": 45.1,
+    "dy1254": 54.1,
+    "dx_native": 4.999122807017544,
+    "dy_native": 5.9967304625199365,
+    "note": "condition only; not body scale and not snow/boards/plague registration"
+  },
+  "forbiddenOperationsUsed": [],
+  "preservedUniqueFeatures": [
+    "long thatched gable",
+    "left work awning and bench",
+    "front door right of workstation",
+    "right gable shutter"
+  ],
+  "legacyFallbackOutsideScope": [
+    "fire_roof",
+    "burnt"
+  ]
+}

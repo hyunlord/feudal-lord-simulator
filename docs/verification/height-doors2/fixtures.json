@@ -1,0 +1,313 @@
+[
+  {
+    "id": "c-fresh",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-013000.save.json",
+    "sourceSHA256": "a3adabadecc0aa88204a45a52205385b4959dd7c508439664b730eac69b04cf1",
+    "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+    "tick": 13000,
+    "buildingId": "construction-site-000023",
+    "tile": [
+      49,
+      46
+    ],
+    "body": "house_l1_c",
+    "ageLayer": "fresh",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "e-fresh",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-009000.save.json",
+    "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+    "saveSHA256": "f534afed90af707ff18d786194af3f05d6019e0a3a611e9f946030f95e0bdf75",
+    "tick": 9000,
+    "buildingId": "construction-site-000014",
+    "tile": [
+      47,
+      36
+    ],
+    "body": "house_l1_e",
+    "ageLayer": "fresh",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "f-fresh",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-009000.save.json",
+    "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+    "saveSHA256": "f534afed90af707ff18d786194af3f05d6019e0a3a611e9f946030f95e0bdf75",
+    "tick": 9000,
+    "buildingId": "construction-site-000010",
+    "tile": [
+      48,
+      42
+    ],
+    "body": "house_l1_f",
+    "ageLayer": "fresh",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "c-weathered",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-009000.save.json",
+    "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+    "saveSHA256": "f534afed90af707ff18d786194af3f05d6019e0a3a611e9f946030f95e0bdf75",
+    "tick": 9000,
+    "buildingId": "construction-site-000006",
+    "tile": [
+      43,
+      42
+    ],
+    "body": "house_l1_c",
+    "ageLayer": "weathered",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "e-weathered",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-013000.save.json",
+    "sourceSHA256": "a3adabadecc0aa88204a45a52205385b4959dd7c508439664b730eac69b04cf1",
+    "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+    "tick": 13000,
+    "buildingId": "construction-site-000019",
+    "tile": [
+      48,
+      44
+    ],
+    "body": "house_l1_e",
+    "ageLayer": "weathered",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "f-weathered",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-009000.save.json",
+    "sourceSHA256": "c13df18b8adb1ad2e6513f2473062e4fce43988c12b0832e44da74603f730d93",
+    "saveSHA256": "f534afed90af707ff18d786194af3f05d6019e0a3a611e9f946030f95e0bdf75",
+    "tick": 9000,
+    "buildingId": "construction-site-000007",
+    "tile": [
+      48,
+      39
+    ],
+    "body": "house_l1_f",
+    "ageLayer": "weathered",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "c-winter",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-011000.save.json",
+    "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+    "saveSHA256": "e551689032d8c9b43c81b4ca1d57d6c337521d6d22327a6abfd40a9420c73c6c",
+    "tick": 11000,
+    "buildingId": "construction-site-000006",
+    "tile": [
+      43,
+      42
+    ],
+    "body": "house_l1_c",
+    "ageLayer": null,
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "e-winter",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-011000.save.json",
+    "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+    "saveSHA256": "e551689032d8c9b43c81b4ca1d57d6c337521d6d22327a6abfd40a9420c73c6c",
+    "tick": 11000,
+    "buildingId": "construction-site-000014",
+    "tile": [
+      47,
+      36
+    ],
+    "body": "house_l1_e",
+    "ageLayer": null,
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "f-winter",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-011000.save.json",
+    "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+    "saveSHA256": "e551689032d8c9b43c81b4ca1d57d6c337521d6d22327a6abfd40a9420c73c6c",
+    "tick": 11000,
+    "buildingId": "construction-site-000010",
+    "tile": [
+      48,
+      42
+    ],
+    "body": "house_l1_f",
+    "ageLayer": null,
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical codec migration only",
+    "limits": "No new state field edits or simulation advances"
+  },
+  {
+    "id": "c-boarded-snow",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-011000.save.json",
+    "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+    "saveSHA256": "0e01f39209f2478e9bf79a765567b5b7bbbf850be97682f2b2d0627649df88fd",
+    "tick": 11500,
+    "buildingId": "construction-site-000006",
+    "tile": [
+      43,
+      42
+    ],
+    "body": "house_l1_c",
+    "ageLayer": null,
+    "fields": [
+      {
+        "path": "houses[construction-site-000006].residents",
+        "before": 8,
+        "after": 0
+      },
+      {
+        "path": "houses[construction-site-000006].members",
+        "before": {
+          "adults": 4,
+          "children": 4,
+          "seed": 1215620722
+        },
+        "after": {
+          "adults": 0,
+          "children": 0,
+          "seed": 1215620722
+        }
+      },
+      {
+        "path": "houses[construction-site-000006].abandonedTick",
+        "before": null,
+        "after": 11000
+      },
+      {
+        "path": "tick",
+        "before": 11000,
+        "after": 11500
+      }
+    ],
+    "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+    "limits": "No calendar simulation, household reconciliation or natural abandonment claim; renderer attachment only",
+    "expectedRoofSnowAlpha": 1
+  },
+  {
+    "id": "e-boarded-snow",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-011000.save.json",
+    "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+    "saveSHA256": "f565b5d94a999996045da7f10f739f5b54a4ddc4d2464f40b5e0846d317d46b5",
+    "tick": 11500,
+    "buildingId": "construction-site-000014",
+    "tile": [
+      47,
+      36
+    ],
+    "body": "house_l1_e",
+    "ageLayer": null,
+    "fields": [
+      {
+        "path": "houses[construction-site-000014].residents",
+        "before": 8,
+        "after": 0
+      },
+      {
+        "path": "houses[construction-site-000014].members",
+        "before": {
+          "adults": 4,
+          "children": 4,
+          "seed": 537016425
+        },
+        "after": {
+          "adults": 0,
+          "children": 0,
+          "seed": 537016425
+        }
+      },
+      {
+        "path": "houses[construction-site-000014].abandonedTick",
+        "before": null,
+        "after": 11000
+      },
+      {
+        "path": "tick",
+        "before": 11000,
+        "after": 11500
+      }
+    ],
+    "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+    "limits": "No calendar simulation, household reconciliation or natural abandonment claim; renderer attachment only",
+    "expectedRoofSnowAlpha": 1
+  },
+  {
+    "id": "f-boarded-snow",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-011000.save.json",
+    "sourceSHA256": "e2cd42d5718aaa60767d59c539314574ea122cbd8c4862e4e95aac1903c18825",
+    "saveSHA256": "b81c5989eff0ffb8fc4a8de9f43101b9fb8bc6bc4fff754dcc67031edb7866d3",
+    "tick": 11500,
+    "buildingId": "construction-site-000010",
+    "tile": [
+      48,
+      42
+    ],
+    "body": "house_l1_f",
+    "ageLayer": null,
+    "fields": [
+      {
+        "path": "houses[construction-site-000010].residents",
+        "before": 0,
+        "after": 0
+      },
+      {
+        "path": "houses[construction-site-000010].members",
+        "before": {
+          "adults": 0,
+          "children": 0,
+          "seed": 489941067
+        },
+        "after": {
+          "adults": 0,
+          "children": 0,
+          "seed": 489941067
+        }
+      },
+      {
+        "path": "houses[construction-site-000010].abandonedTick",
+        "before": 10000,
+        "after": 11000
+      },
+      {
+        "path": "tick",
+        "before": 11000,
+        "after": 11500
+      }
+    ],
+    "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+    "limits": "No calendar simulation, household reconciliation or natural abandonment claim; renderer attachment only",
+    "expectedRoofSnowAlpha": 1
+  },
+  {
+    "id": "f-clear",
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/trade72-capture/states/tick-013000.save.json",
+    "sourceSHA256": "a3adabadecc0aa88204a45a52205385b4959dd7c508439664b730eac69b04cf1",
+    "saveSHA256": "e8179bde42407c33a0fd65f6ce56bff3c0275cfc5200878b2fc663f21ff38bf7",
+    "tick": 13000,
+    "buildingId": "construction-site-000012",
+    "tile": [
+      50,
+      42
+    ],
+    "body": "house_l1_f",
+    "ageLayer": "weathered",
+    "fields": [],
+    "classification": "Existing normal progression snapshot; canonical migration only",
+    "limits": "Supplemental visibility sample; before is same-build f contract disabled, not original commit"
+  }
+]

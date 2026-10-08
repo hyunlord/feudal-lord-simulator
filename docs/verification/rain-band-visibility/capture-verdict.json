@@ -1,0 +1,105 @@
+{
+  "run": "astra-RAIN-BAND-visible3-a666482",
+  "base": "a666482cfad68a49ab66b5472e5500e7863053df",
+  "productCommitted": false,
+  "newImages": 0,
+  "ledgerChanged": false,
+  "visualVerdict": "limited-visible-moving-density; not high-salience-whole-town pass",
+  "inspection": "Actual native PNG keyframes and four native cropped video frames; not a claim of full motion-video playback review. Both encoded videos supplied.",
+  "strongSpriteDiagnostics": [
+    {
+      "file": "public/assets/wave39/rain/rain_streak_10px_1px_strong-v1.png",
+      "sha256": "5950d862acb01245813337a48c604e796a78056719935410b0e0051e7f16c4c7",
+      "alphaBBox": [
+        6,
+        7,
+        11,
+        15
+      ],
+      "maxAlpha": 175,
+      "opaqueEquivalentAreaNative": 3.019607843137255,
+      "opaqueEquivalentAreaZoom06BeforeDrawAlpha": 1.0870588235294116,
+      "heightZoom06": 4.8
+    },
+    {
+      "file": "public/assets/wave39/rain/rain_streak_10px_2px_strong-v1.png",
+      "sha256": "6a17c76101e30fc2b70065babf6e5aa2c90dc08f127069053e7dde38a64aaf2a",
+      "alphaBBox": [
+        4,
+        7,
+        11,
+        17
+      ],
+      "maxAlpha": 175,
+      "opaqueEquivalentAreaNative": 4.247058823529412,
+      "opaqueEquivalentAreaZoom06BeforeDrawAlpha": 1.5289411764705882,
+      "heightZoom06": 6.0
+    },
+    {
+      "file": "public/assets/wave39/rain/rain_streak_4px_1px_strong-v1.png",
+      "sha256": "9f24161d1e03f65e3f4d63353b4f0b07d8499df0246b7527e7045f3135b4304b",
+      "alphaBBox": [
+        7,
+        10,
+        8,
+        14
+      ],
+      "maxAlpha": 175,
+      "opaqueEquivalentAreaNative": 1.7607843137254902,
+      "opaqueEquivalentAreaZoom06BeforeDrawAlpha": 0.6338823529411765,
+      "heightZoom06": 2.4
+    },
+    {
+      "file": "public/assets/wave39/rain/rain_streak_4px_2px_strong-v1.png",
+      "sha256": "bc9f20aeffa72871057bea6f4efa449d77376e9c9c3a3f8218e012546581792b",
+      "alphaBBox": [
+        7,
+        10,
+        9,
+        13
+      ],
+      "maxAlpha": 175,
+      "opaqueEquivalentAreaNative": 2.615686274509804,
+      "opaqueEquivalentAreaZoom06BeforeDrawAlpha": 0.9416470588235294,
+      "heightZoom06": 1.7999999999999998
+    },
+    {
+      "file": "public/assets/wave39/rain/rain_streak_7px_1px_strong-v1.png",
+      "sha256": "8c7330fd3a382cf4c427518139945420b329c65364053fb9790ddbcc2544a86d",
+      "alphaBBox": [
+        6,
+        8,
+        9,
+        14
+      ],
+      "maxAlpha": 175,
+      "opaqueEquivalentAreaNative": 1.3411764705882352,
+      "opaqueEquivalentAreaZoom06BeforeDrawAlpha": 0.48282352941176465,
+      "heightZoom06": 3.5999999999999996
+    },
+    {
+      "file": "public/assets/wave39/rain/rain_streak_7px_2px_strong-v1.png",
+      "sha256": "cebef731c71bc1172c20ff2e973cf422144a9251d0a4c9dc8c75a0bba2598ae1",
+      "alphaBBox": [
+        6,
+        8,
+        10,
+        15
+      ],
+      "maxAlpha": 175,
+      "opaqueEquivalentAreaNative": 2.1098039215686275,
+      "opaqueEquivalentAreaZoom06BeforeDrawAlpha": 0.7595294117647059,
+      "heightZoom06": 4.2
+    }
+  ],
+  "productSHA256": {
+    "src/render/worldRainModel.ts": "976be30430f4ae63f5a14232f6d3d7ee529f2ebad6186f4dffc87ca92ce30624",
+    "src/render/worldRain.ts": "0694efac97cfc08924a80e1e998153c60ee9bf8cc4cf057673a4d8a369317449",
+    "src/render/art/catalog.json": "92d3511aa3de70cbe6c2400863c6d13a799c8e80ed9fde5d7a92f3d041706046",
+    "tests/nat3World.test.ts": "b4cda80468476680421993be7a01065921722c2d63a8e8d39957de4597821f50",
+    "tests/natureArt.test.ts": "99c57457fdc823f96f4d59731258cf0c1f0c7e091a7e0f2cd069007c0777995f"
+  },
+  "networkLimit": "7 telemetry/sample ERR_ABORTED; browser report.errors empty; do not label entire network clean",
+  "port4302": "closed after capture, ss returned header only",
+  "versionNotes": "v3 captured before test-title wording-only correction; render inputs identical. v1/v2 preserved."
+}

@@ -30,7 +30,9 @@ test('rain family remains legacy-owned until every decoded image is ready', asyn
   const last = images[11]; assert.ok(last); last.onload?.call(last, new Event('load'));
   await Promise.resolve();
   const ready = facade.resolve('rain'); assert.ok(ready); assert.equal(ready.length, 12);
-  assert.equal(new Set(Array.from({ length: 12 }, (_, seed) => facade.select(ready, 'rain', 'all', seed)?.entry.id)).size, 12);
+  const selected = ['faint', 'strong'].flatMap(group => Array.from({ length: 6 }, (_, seed) => facade.select(ready, 'rain', group, seed)?.entry.id));
+  assert.equal(new Set(selected).size, 12);
+  assert.ok(selected.every(id => id !== undefined));
 });
 test('accumulation grows monotonically at live tree edges and disappears by late winter', () => {
   const state = c25BoardState(); const trees = liveDeciduousTrees(state); assert.ok(trees.length > 0);
@@ -55,4 +57,15 @@ test('consecutive scheduled wet seasons keep their boundary wetness', async () =
   assert.equal(weatherAt(state, 17000).kind, 'wet');
   assert.equal(modeledWetness({ ...state, tick: 16999 }), 1);
   assert.equal(modeledWetness({ ...state, tick: 17000 }), 1);
+});
+
+test('rain visibility reuses the authored strong group through the contract selector', () => {
+  const strongRule = bundle.rules.find(rule => rule.id === 'nature-rain-strong'); assert.ok(strongRule);
+  assert.equal(strongRule.variants.length, 6);
+  const allowed = new Set(strongRule.variants.map(variant => variant.assetId));
+  for (let seed = 0; seed < 24; seed += 1) {
+    const selected = registry.select('weather-particle', 'nature-rain', { role: 'rain', group: 'strong' }, seed);
+    assert.ok(selected && allowed.has(selected.id));
+    assert.equal(selected.image.width, 16); assert.equal(selected.image.height, 24);
+  }
 });

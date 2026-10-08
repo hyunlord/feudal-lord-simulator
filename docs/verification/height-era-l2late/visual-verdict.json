@@ -1,0 +1,97 @@
+{
+  "staticNativeViewed": 7,
+  "pairedScenes": 22,
+  "runtimePositiveRoles": 7,
+  "sourceIdentity": "I0003",
+  "pageErrors": 0,
+  "networkFailures": [
+    {
+      "view": "before-maintained-z1",
+      "url": "http://127.0.0.1:4311/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-strained-z1",
+      "url": "http://127.0.0.1:4311/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-neglected-z1",
+      "url": "http://127.0.0.1:4311/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-maintained-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-maintained-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-strained-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-strained-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-neglected-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-neglected-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-vacant-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-vacant-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "before-abandoned-z0.6",
+      "url": "http://127.0.0.1:4311/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-abandoned-z1",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-winter-abandoned-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-melt-z0.6",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "stylefix-maintained-z3",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "limits": [
+    "closed door leaf proxy, not open aperture",
+    "closed-leaf width uncertainty exceeds target; original-ground residual9.06/9.22/5native remains",
+    "raised roof occludes more of rear building",
+    "foreground workshop occludes lower door",
+    "minor condition details not reliable at normal or low zoom"
+  ],
+  "status": "new seven-role integration verified; prior seven-role candidate FAIL_STYLE and canceled geometry preserved separately"
+}

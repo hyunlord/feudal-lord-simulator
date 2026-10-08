@@ -1,0 +1,114 @@
+{
+  "source": ".omo/height-doors2/art/e/body-05.png",
+  "sourceSHA256": "da4cb90529b48823df240a619f6ba29af5ff6bdcc32026573c4f30de466cca4b",
+  "runtimeSHA256": "1835827b947fee136ddc05572a5b2237d78b7783e4e7b337d20b978e9c7a02c0",
+  "originalSize": [
+    1254,
+    1254
+  ],
+  "wholeImageSize": [
+    139,
+    139
+  ],
+  "translationBeforePadding": [
+    0,
+    -9
+  ],
+  "topPadding": 16,
+  "scaleXY": [
+    0.11084529505582137,
+    0.11084529505582137
+  ],
+  "canvas": [
+    139,
+    155
+  ],
+  "pivot": [
+    71.66148325358851,
+    141.92025518341308
+  ],
+  "worldPxPerNativePx": 0.4986217267599071,
+  "clippedOpaque": 0,
+  "status": "registered static candidate; runtime scene not yet tested",
+  "measurement": {
+    "method": "manual visible inner leaf endpoints on native8x grid, excluding jamb/lintel/step",
+    "door": {
+      "heightEndpoints": [
+        [
+          58,
+          83
+        ],
+        [
+          58,
+          125
+        ]
+      ],
+      "widthEndpoints": [
+        [
+          48,
+          101
+        ],
+        [
+          67,
+          101
+        ]
+      ],
+      "heightNative": 42,
+      "projectedWidthNative": 19,
+      "endpointUncertaintyNative": 1,
+      "heightWorld": 20.942112523916098,
+      "projectedWidthWorld": 9.473812808438236
+    },
+    "ground": {
+      "originalPoints": [
+        [
+          20,
+          92
+        ],
+        [
+          84,
+          124
+        ],
+        [
+          123,
+          105
+        ]
+      ],
+      "candidatePoints": [
+        [
+          20,
+          107
+        ],
+        [
+          84,
+          141
+        ],
+        [
+          123,
+          120
+        ]
+      ],
+      "worldAlignedCandidatePoints": [
+        [
+          20,
+          91
+        ],
+        [
+          84,
+          125
+        ],
+        [
+          123,
+          104
+        ]
+      ],
+      "pointUncertaintyNative": 2,
+      "limitations": "Stylized outside foundation contact landmarks; small native point residuals are reported, not asserted as exact pixel identity or strict 2:1 projection."
+    },
+    "roofRidge": [
+      84,
+      34
+    ],
+    "identity": "Original roof type and facade identity retained; shallower thatch slopes remain pitched. Full-house runtime comparison pending."
+  }
+}

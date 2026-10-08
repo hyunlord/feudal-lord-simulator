@@ -1,0 +1,54 @@
+{
+  "pairCount": 30,
+  "positiveRuntimeImages": [
+    "height-era1/house_l1_1350_a-boarded-v2.png",
+    "height-era1/house_l1_1350_a-body-v2.png",
+    "height-era1/house_l1_1350_a-snow-v2.png",
+    "height-era1/house_l1_1350_b-boarded-v2.png",
+    "height-era1/house_l1_1350_b-body-v2.png",
+    "height-era1/house_l1_1350_b-snow-v2.png",
+    "height-era1/house_l1_1400_a-boarded-v2.png",
+    "height-era1/house_l1_1400_a-body-v2.png",
+    "height-era1/house_l1_1400_a-snow-v2.png",
+    "height-era1/house_l1_1400_b-boarded-v2.png",
+    "height-era1/house_l1_1400_b-body-v2.png",
+    "height-era1/house_l1_1400_b-snow-v2.png"
+  ],
+  "pageErrors": 0,
+  "networkFailures": [
+    {
+      "view": "before-town-1350-normal-town-clock-QA-z1",
+      "url": "http://127.0.0.1:4303/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "after-town-1350-normal-town-clock-QA-z1",
+      "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "visualSamples": [
+    "after-town-1350-normal-town-clock-QA-z3",
+    "after-town-1400-normal-town-clock-QA-z1",
+    "after-town-1350-normal-town-clock-QA-z0.6",
+    "after-1350-winter-prepared-1350-l1-b-empty-1-z3",
+    "after-1400-winter-prepared-1400-l1-b-empty-0-z3",
+    "after-1350-melt-prepared-1350-l1-a-empty-0-z3",
+    "after-1400-melt-gallery-z0.6"
+  ],
+  "observations": [
+    "Tall door in town beside unchanged adult, roof smoke follows raised ridge in viewed sample.",
+    "Boards cover intended openings; winter snow on roof and spring translucency visible.",
+    "1350b/1400b eave protrusion retained; no body duplicate in layer.",
+    "Ground/garden position retained; taller one-storey houses remain below neighboring two-storey roof peaks in viewed town.",
+    "At0.6 silhouette change readable; individual aperture or hands not claimed."
+  ],
+  "limits": [
+    "Prepared gallery and paused tick-only town QA, not natural era evolution.",
+    "Existing icons, screen HUD and foreground occlusion remain.",
+    "Manual source measurements +/-2native; no strict2:1 certification."
+  ],
+  "captureRun": "astra-HEIGHT-ERA1-after12-fd2786b-fd2786b",
+  "captureSeconds": 253.4,
+  "captureClassification": "Official --light:30 screenshots serially in one browser/page at a time, fixed state, no engineadvance or performance load. Four bounded groups;253.4s measured."
+}

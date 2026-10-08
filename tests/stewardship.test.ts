@@ -82,12 +82,14 @@ test("SW-3 a delegated estate goes by its steward's disposition: his rates, his 
   const rows = (["merchant", "peasant", "greedy"] as const).map(disposition => {
     const run = advance(delegate(held(), disposition), 4_000);
     const own = stewardshipOf(run);
-    const decided = own.petitions.filter(petition => petition.decidedBy === "steward");
-    assert.ok(decided.length >= 3, `${disposition}: ${decided.length}`);
+    // DEC-TRACE §1: the home petitions are the steward's too now (by the lord's standing policy); this is the estate's.
+    // A large sum (a tenth of the estate's year of income, a pound at least) goes to the lord.
+    const decided = own.petitions.filter(petition => petition.decidedBy === "steward" && petition.estateId !== "estate-home");
+    assert.ok(decided.length >= 2, `${disposition}: ${decided.length}`);
     const summary = own.summaries.at(-1)!;
     assert.deepEqual([summary.rentPermille, summary.duesPermille], [DISPOSITION_RATES[disposition].rent, DISPOSITION_RATES[disposition].dues]);
     const lines = ledgerLines(run, held().tick).filter(entry => entry.template === "stewardship.steward_decided");
-    assert.ok(lines.length >= 3 && lines.every(entry => entry.line.startsWith("청지기 ")), lines.map(entry => entry.line).join(" / "));
+    assert.ok(lines.length === decided.filter(petition => petition.tick >= held().tick).length && lines.every(entry => entry.line.startsWith("청지기 ")), lines.map(entry => entry.line).join(" / "));
     return { disposition, income: own.summaries.reduce((sum, entry) => sum + entry.income, 0), tenants: own.oversight[0]!.tenants, merchants: own.oversight[0]!.merchants,
       answers: decided.map(petition => `${petition.kind}:${petition.status}`).join(",") };
   });

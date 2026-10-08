@@ -1,0 +1,3742 @@
+{
+  "pairs": [
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-fresh",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-c-fresh-z1.jpg",
+          "sha256": "a5e4ad1060d3562d14036761de2410abd786d737e7fa8bcfa21c31873e54a9eb"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-c-fresh-z1.png",
+          "sha256": "9e5ef9debeb6965adf5ca434e014ec808cce23389189d1149642101ba654540d"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-c-fresh-z1.jpg",
+          "sha256": "30f92dbfbcc23dc8a78a45248afc4f6ebc4ed1e04a6ff9a8aa2c46d36abcff79"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-c-fresh-z1.png",
+          "sha256": "09734870ba512cf81b5d5b4d17c34debcc539d3be0f8db32ef26c4a6bcf9fd4b"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 544,
+        "panY": -1120
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          60.268027477919524,
+          1465.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          544,
+          -1120
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-fresh",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-c-fresh-z0.6.jpg",
+          "sha256": "74b8b720fa168f4ed861ef84e9cc5f6fdff6815d600cd1003ead281a21b818c0"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-c-fresh-z0.6.png",
+          "sha256": "d1ea34539e43713023be5d7c0f7a4285383a57097fa3b9791639d8380a903803"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-c-fresh-z0.6.jpg",
+          "sha256": "5733636fc6669ed354f09b5fda38f249e1bb9ad3bd7d3ab4df83618666d5ce02"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-c-fresh-z0.6.png",
+          "sha256": "65b82e91c79a71531263dfcf85687e7902228783c690a19db844f01d4e86cf5b"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 582.4,
+        "panY": -512.0
+      },
+      "targetGroundScreen": [
+        640.0000267028809,
+        409.60003662109375
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          60.268027477919524,
+          1465.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          582.4000244140625,
+          -512
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-fresh",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-c-fresh-z3.jpg",
+          "sha256": "60d271c77f4a22b9069a5e39662c7ab70cc81c12b3a17701979d70590f4fea01"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-c-fresh-z3.png",
+          "sha256": "80a13a2b47fa108fa83934bb46d2a126cb9b89719b550ac23a1d90a96a41b153"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-c-fresh-z3.jpg",
+          "sha256": "a6702ff468b2112b492274c88c3ac05659328c5c086576e3e7fed46060d319ab"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-c-fresh-z3.png",
+          "sha256": "7dbd740fe8f6b828636d810f62c2fd426466b7ebd3dbb9014434beacc7e7627e"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 352,
+        "panY": -4160
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          60.268027477919524,
+          1465.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          352,
+          -4160
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-fresh",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-e-fresh-z1.jpg",
+          "sha256": "89cbe1c6f75644ded622b7bfbba53093e63805b8dc6839ed8283038bdb5c554e"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-e-fresh-z1.png",
+          "sha256": "5ad3660b2335932a51656bcd210dd06b8f3f0c411d2bce8f70bd7643be993228"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-e-fresh-z1.jpg",
+          "sha256": "2ed90d26d3d1620138600f757ab78b93a5c33932071e9f581f728ffd77aee73e"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-e-fresh-z1.png",
+          "sha256": "7e2f83e73145c95fa059787f204108d3f13d9a9f61bff4bd21a31e95cdb3e12b"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 288,
+        "panY": -928
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -928
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-fresh",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-e-fresh-z0.6.jpg",
+          "sha256": "edfd3b2116102cda94272c1001d69d831ef91a8562d6ab5d010b933a81ff009c"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-e-fresh-z0.6.png",
+          "sha256": "d40e0893898df9eb33893fe0fbe36187ba1b034ee4e88de62ccfe5896701c76b"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-e-fresh-z0.6.jpg",
+          "sha256": "75b7ab7720f5f43ff73142acaf093c529f6c8510f495f248940d6d73cf7e8bbd"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-e-fresh-z0.6.png",
+          "sha256": "3719dba9a32e67a8c3417345123ac92e1ea123f22b73eb50a825e196f0995422"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 428.8,
+        "panY": -396.79999999999995
+      },
+      "targetGroundScreen": [
+        639.9999961853027,
+        409.6000442504883
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -396.79998779296875
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-fresh",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-e-fresh-z3.jpg",
+          "sha256": "e0c0153c818bc315dc45f8436e5d1ec21920d1273db84e58e1ed051e879fb56f"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-e-fresh-z3.png",
+          "sha256": "a22286c83afc84c892b42adb010d40bbfc047b0225a29798001f7adc82f04925"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-e-fresh-z3.jpg",
+          "sha256": "9e6de93dce67537ff4748ee792f514c0431558b058b8d4a0d71f42f9f65134a5"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-e-fresh-z3.png",
+          "sha256": "9e33ab1e020ffb8f01e90d9f5a64f39b030a197c90f5b3ee6d9f8fa4dc57e3d5"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": -416,
+        "panY": -3584
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -416,
+          -3584
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-fresh",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-f-fresh-z1.jpg",
+          "sha256": "a5df3ce52bea78172a6b0f6c09a6fad9a3c8c6d0997c8b2b7e5eb9d981c1259d"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-f-fresh-z1.png",
+          "sha256": "5e96d230d1da0825e4de3ba3b0fd74e9ed5a8a2a45389a3b600c3d6a3dd139cd"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-f-fresh-z1.jpg",
+          "sha256": "68bfcb8b8bea7196ae8cf5b8f5cb5b8672003c1a60ca1aa2f5157ece1a597a6f"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-f-fresh-z1.png",
+          "sha256": "2ae7ad1f124f380d6ff00247c1f24cf078db01d07397eff688a4d145b156ae09"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 448,
+        "panY": -1040
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          448,
+          -1040
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-fresh",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-f-fresh-z0.6.jpg",
+          "sha256": "d2f16d38b95ab55a3472646983466b3351a9ffd453accf1f41b44f28ddf6770b"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-f-fresh-z0.6.png",
+          "sha256": "c122aa881841679f207ce9b11660f531243ae4de9a839251755aff2f15c9388f"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-f-fresh-z0.6.jpg",
+          "sha256": "750bab5bf9c8ebd68ae076e5a1875136e61508260a42518a2a5b3573d12da594"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-f-fresh-z0.6.png",
+          "sha256": "0ab51b0bfec20d7e452dfd287cb7cf30947350ca163bfdbefaab3d990f1a7ba1"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 524.8,
+        "panY": -464.0
+      },
+      "targetGroundScreen": [
+        639.9999923706055,
+        409.6000347137451
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          524.7999877929688,
+          -464
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 0,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-fresh",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-0/before-f-fresh-z3.jpg",
+          "sha256": "6c0731c3daaa61b1055c1f1bc9942802b64da4f65e5e60e6cf2cf718d4ba847d"
+        },
+        {
+          "file": "output/rb-height-doors2-before-0/before-f-fresh-z3.png",
+          "sha256": "7906a441bfb4ad4cbc8fba2aec3acbd798ced305071ecd3726fe61bc2ead8332"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-f-fresh-z3.jpg",
+          "sha256": "cb05cb456bc9e8c40c0d2c9946a96ea6ecb95f5afd256bb7a619eba7db4f9aed"
+        },
+        {
+          "file": "output/rb-height-doors2-after-0/after-f-fresh-z3.png",
+          "sha256": "2fa262cdf3a346a3c97ecf573d41a3352ecae8be2c2fb1fcc4d47a4a066eda17"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 64,
+        "panY": -3920
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_fresh.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_fresh.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3920
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-weathered",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-c-weathered-z1.jpg",
+          "sha256": "aa6c2a0dc20e341ef7e4e50ed870c59c8222da3e1c24279970e234fc0be465cd"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-c-weathered-z1.png",
+          "sha256": "2ae1e6f8d68ef4e052beffed12460f1d59b2a889e16e412f0644f8d1e2882012"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-c-weathered-z1.jpg",
+          "sha256": "7543a07f9b7246fb427a1f05d9af38a29b1299e66672a3853bb049c8c3c08f09"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-c-weathered-z1.png",
+          "sha256": "c710ccba157f14d7727a80170fef582b035174df575dee77371190b44687dc1e"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 608,
+        "panY": -960
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          608,
+          -960
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-weathered",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-c-weathered-z0.6.jpg",
+          "sha256": "4fb94b638f3576b9b91b72fe00e6ba0c952c370bb4ea29adabb9163fba12ddbd"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-c-weathered-z0.6.png",
+          "sha256": "141c283df61a28637163e5c3731d9efebe30e820ccd669fcfedf54392aad02ba"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-c-weathered-z0.6.jpg",
+          "sha256": "22b4dad3336645fa42da6ce2e3e23cdb0f16060e1d0f6f4fd1dfb18edebfacf2"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-c-weathered-z0.6.png",
+          "sha256": "e7cb7ea22fff5879fd72c48e58aa7d51aa9e6bdfa0c1c00fa33c54a5073242d4"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 620.8,
+        "panY": -416.0
+      },
+      "targetGroundScreen": [
+        639.9999885559082,
+        409.6000328063965
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          620.7999877929688,
+          -416
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-weathered",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-c-weathered-z3.jpg",
+          "sha256": "880a30ba37f684a35f3233ddd6982cf34ead30567ba6dd8f6cee26a3dd6d12cd"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-c-weathered-z3.png",
+          "sha256": "7f1de889e85648ab91f0cbf127150faf984672792fb99a07e1ac9d13c0c447dc"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-c-weathered-z3.jpg",
+          "sha256": "8774085bb14b4d30a79492abee53ce5c2c2e02ef5993cebd16c12fe6b50ad7f4"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-c-weathered-z3.png",
+          "sha256": "510cce589972cf7ca3ab7d3eea9baea8d05d62c60ed656bf4a75a79bdc272788"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 544,
+        "panY": -3680
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          544,
+          -3680
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-weathered",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-e-weathered-z1.jpg",
+          "sha256": "a094b7a4f756a95941ba94efc190f3536261040b2aa87ee0fd00a9eaf83bd26b"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-e-weathered-z1.png",
+          "sha256": "1bfa408a701fb5b43cf8e0322f9696f6bf3e5d50bb24da32edf54e8b7110774a"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-e-weathered-z1.jpg",
+          "sha256": "ac8bf291dfffac84b97ad3d629b51402510dc388e11c7700411aef6adfb9e6cd"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-e-weathered-z1.png",
+          "sha256": "9cfe92901f5ae6df26f6cd856ad4e374a8505ea0fc38f65238f1c4fbf343567e"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 512,
+        "panY": -1072
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          92.26802747791953,
+          1417.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          512,
+          -1072
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-weathered",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-e-weathered-z0.6.jpg",
+          "sha256": "67fa7a49aac20d0b682f7bb840dceae5df83cc2bf500d5080672715f76813aaa"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-e-weathered-z0.6.png",
+          "sha256": "92e8f78bae28e83fc103af156d819730d2cb1678551bb5d4582f1a000c257bcf"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-e-weathered-z0.6.jpg",
+          "sha256": "2b3feee76c4c6e42dbf98102769a6236d26bd028c7b9cdd3eb52672f1b14ee9e"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-e-weathered-z0.6.png",
+          "sha256": "983581e1ba274af1899b6d8da3eb82670d3ac84bb8b572b2c8740968a74527e3"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 563.2,
+        "panY": -483.19999999999993
+      },
+      "targetGroundScreen": [
+        640.0000152587891,
+        409.6000232696533
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          92.26802747791953,
+          1417.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          563.2000122070312,
+          -483.20001220703125
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-weathered",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-e-weathered-z3.jpg",
+          "sha256": "3260f4c14c173e515595691e621923cb46b23ece943fe3ae63fbc644a1452dcb"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-e-weathered-z3.png",
+          "sha256": "d15b16be17b5dd009463892f1770d99f335545a1d583e969965e00e1d2d033ac"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-e-weathered-z3.jpg",
+          "sha256": "d001790ee3f0509522e348c3b2aa02502ef6edda45ae2b81f4e151199cb563c2"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-e-weathered-z3.png",
+          "sha256": "a966a0517947bbc3d098674f3cec02e3195c7ad55208df418325c8d8dcdf4f33"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 256,
+        "panY": -4016
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          92.26802747791953,
+          1417.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          256,
+          -4016
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-weathered",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-f-weathered-z1.jpg",
+          "sha256": "c0f20264773611f8d459780bc66955c64c84a8dcfa0002b0a3dc6c887743181b"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-f-weathered-z1.png",
+          "sha256": "fd891a344dfa84fa8072f34122ad443e0e2cfbcb5ffb9fd83247efb9bcd2db8d"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-f-weathered-z1.jpg",
+          "sha256": "4fa5bb9ea74ad7481db8952d004980424668c074db2bf4be044958081ec092f6"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-f-weathered-z1.png",
+          "sha256": "3129ecf247d204189930452ee7a639eeff4d566d309226095ffea86f7528deb4"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 352,
+        "panY": -992
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          252.26802747791953,
+          1337.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          352,
+          -992
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-weathered",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-f-weathered-z0.6.jpg",
+          "sha256": "12fc9bdc15468f022c9eea761162c5bda1fbe40d8e4cfbcb296f5586a3970c66"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-f-weathered-z0.6.png",
+          "sha256": "e70ea452c02b6c9242f8334a4cb25a177c12c718f712b45bcf5fe0edb602b99f"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-f-weathered-z0.6.jpg",
+          "sha256": "abc3dcc9f8ef51d1e154845039930e78f008067ec4e4238828537e211f1629ea"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-f-weathered-z0.6.png",
+          "sha256": "681843189a6f45193f7a538a5a8a53bd2318d4905b2e301cd2ad90acf4655965"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 467.20000000000005,
+        "panY": -435.19999999999993
+      },
+      "targetGroundScreen": [
+        640.0000190734863,
+        409.6000213623047
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          252.26802747791953,
+          1337.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          467.20001220703125,
+          -435.20001220703125
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 1,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-weathered",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-1/before-f-weathered-z3.jpg",
+          "sha256": "b828f5d7a712c07adf977d45f50249c2472ee7209d949d87111fbd5517e42c81"
+        },
+        {
+          "file": "output/rb-height-doors2-before-1/before-f-weathered-z3.png",
+          "sha256": "ad5f7c61f9febe53243d1fba2395b3c32589f2eb19f10f19b8c6e21248f5be4c"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-f-weathered-z3.jpg",
+          "sha256": "07644334c3b1d5d598ac27f3d6298db3137d13eb3b05b31a58f90cbff483006f"
+        },
+        {
+          "file": "output/rb-height-doors2-after-1/after-f-weathered-z3.png",
+          "sha256": "d4585e42181e978e81a83963a3d9a1ee42c0c084cde075af5066659adf8b73f9"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": -224,
+        "panY": -3776
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_weathered.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          252.26802747791953,
+          1337.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -224,
+          -3776
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-winter",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-c-winter-z1.jpg",
+          "sha256": "2a5a21f59d0929ed380335bc1947b0151a7f4d5a3177370a43b0914949954db0"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-c-winter-z1.png",
+          "sha256": "e64db13eab3de4e60cc708f99c0b2e5a9525ef1d82a89612353b9c4b17a418b1"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-c-winter-z1.jpg",
+          "sha256": "912e14325e8bfc4e49d7e3616b6734f55e024caa821fa8262b3820aaa8f668af"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-c-winter-z1.png",
+          "sha256": "3aeb7f54b25432a19e4ce9a63e8ca76326f1292778a70c72b30137f84f18c850"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 608,
+        "panY": -960
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          608,
+          -960
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-winter",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-c-winter-z0.6.jpg",
+          "sha256": "fea4d39b8ed44d98c5640568ebf090183a264789a027181a56960fea5831e361"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-c-winter-z0.6.png",
+          "sha256": "b6b384196cdf29b78704ad69e50555eb8100bb6e51066dfbda7dce73b8c6d154"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-c-winter-z0.6.jpg",
+          "sha256": "305ef36a7345611a5b9be12d8534c0289c045234df1eddc07c1464888f65235c"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-c-winter-z0.6.png",
+          "sha256": "962952a62d9cea083633e25e7efa4b7881642340820c1fd10f075b9d5f26a143"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 620.8,
+        "panY": -416.0
+      },
+      "targetGroundScreen": [
+        639.9999885559082,
+        409.6000328063965
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          620.7999877929688,
+          -416
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "c-winter",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-c-winter-z3.jpg",
+          "sha256": "b725e1a176a6a5227f0aaf08fd8252be2e4916eeadb011cbc8af173cf606d247"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-c-winter-z3.png",
+          "sha256": "97fc53de919daad44b40eb725d3f914a636cada74c797672a72e76aecf9569eb"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-c-winter-z3.jpg",
+          "sha256": "dcd7bb1e71fd738cc67512fbb19d05d7640cc564f2d3a4a82be990236d31fb60"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-c-winter-z3.png",
+          "sha256": "e20e1b6987738a2c7381d1b7f39b2f71ffad867d42f40b7724e7040677e5205d"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 544,
+        "panY": -3680
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": null,
+        "height-doors2/house_l1_c-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          544,
+          -3680
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-winter",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-e-winter-z1.jpg",
+          "sha256": "75f56a97f6d314eb0e00b8b667760efa482c3a6229c28ea5410b7da8bd2fa20f"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-e-winter-z1.png",
+          "sha256": "dab1c875769284d125edb9b40969c14481dd495596f5827d23d19ad6102053c9"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-e-winter-z1.jpg",
+          "sha256": "e98be4ca44fabce411428bf8ca5ba9634720ff3bec78e98611c098809f9d5c2c"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-e-winter-z1.png",
+          "sha256": "fe70dceda736bc31121918c04a23a10a579e3437deccf25ba4c49513cfa9deae"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 288,
+        "panY": -928
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -928
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-winter",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-e-winter-z0.6.jpg",
+          "sha256": "b573552a1d8b22ca6a9251ebd720eb2a7c4acf89e5b0eea2e03adb38586c100d"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-e-winter-z0.6.png",
+          "sha256": "f6b08ee004f1bf324773fb027e93a1e2e2ae14d9ec4ab57291883deee9467b39"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-e-winter-z0.6.jpg",
+          "sha256": "ce315c91dcd04ec411311d1b2931aa9febdc4cce0fcb933aab6c2884764505b1"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-e-winter-z0.6.png",
+          "sha256": "5d98e0ae08ede940e04dc7fd9afc31c9fccb1bdc881c0492fdd131232ff03977"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 428.8,
+        "panY": -396.79999999999995
+      },
+      "targetGroundScreen": [
+        639.9999961853027,
+        409.6000442504883
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -396.79998779296875
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "e-winter",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-e-winter-z3.jpg",
+          "sha256": "a80f0f47b3f7a91f06cc024c744b120a2e39b2d62bb40ae0656bb640707e3bd9"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-e-winter-z3.png",
+          "sha256": "5a5981592097f6d68fa502beeca43b55422d91b837404656c75adca9425e92dd"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-e-winter-z3.jpg",
+          "sha256": "60d61e857e0bda91f7cab550aa814cd034b1180095098caa2a9c421652d003b4"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-e-winter-z3.png",
+          "sha256": "55bfee2ec620b29a031af8f1dcdbd10a7ae0fdad60567d10f14a8d0a6f591344"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": -416,
+        "panY": -3584
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": null,
+        "height-doors2/house_l1_e-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -416,
+          -3584
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-winter",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-f-winter-z1.jpg",
+          "sha256": "8d2c36f4421240913c21cc125ed5cb2ee7ce1842fce1eb2c81511c224ab1e99a"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-f-winter-z1.png",
+          "sha256": "cef705f0acdf92964cb9f930f2f524945ae44d97a21a81bb2db5c1c3af76eb99"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-f-winter-z1.jpg",
+          "sha256": "8b0249c1930b2bb98b25db019102fd071a2184158601dc18e6c80fcb5f8c482f"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-f-winter-z1.png",
+          "sha256": "3428abefbbe5055359ae5a7ac474bde259faabe4e583e61abbda5f9d2116aa11"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 448,
+        "panY": -1040
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_boarded.png",
+        "height-doors2/house_l1_f-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_boarded.png": null,
+        "height-doors2/house_l1_f-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          448,
+          -1040
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-winter",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-f-winter-z0.6.jpg",
+          "sha256": "115c007d0830777afa64a19006fcb79b3ee655fd4c23c5e566f7590bfa203e60"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-f-winter-z0.6.png",
+          "sha256": "db59e06bb700b89facffb85bca650f8eeaf44e5ff42e427a52ea4082fcce3bf4"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-f-winter-z0.6.jpg",
+          "sha256": "e20a65bdc983330dad1cea4b8f18ce1eb52aad6c96c30a36e774b776881b1c87"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-f-winter-z0.6.png",
+          "sha256": "0b5a5713b80a28f6635fdf7f35414d00df31a8cbdce57adbcd62cc32d4f50362"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 524.8,
+        "panY": -464.0
+      },
+      "targetGroundScreen": [
+        639.9999923706055,
+        409.6000347137451
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_boarded.png",
+        "height-doors2/house_l1_f-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_boarded.png": null,
+        "height-doors2/house_l1_f-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          524.7999877929688,
+          -464
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 2,
+      "baselineKind": "Original pre-installation build",
+      "id": "f-winter",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical codec migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-2/before-f-winter-z3.jpg",
+          "sha256": "d9a00d95aabd3da28da1e851ad8f2f0d742328052de5a25dc37f3bdc117dfcaa"
+        },
+        {
+          "file": "output/rb-height-doors2-before-2/before-f-winter-z3.png",
+          "sha256": "a354b0c1e47650308506772dbba2d4851f257cc37f0106c2c6d06c5d7cef8f1a"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-f-winter-z3.jpg",
+          "sha256": "a2009eeca5dac639cf530098d463ee0df657990a7d5cf49f6d3ce6d9c38214bb"
+        },
+        {
+          "file": "output/rb-height-doors2-after-2/after-f-winter-z3.png",
+          "sha256": "35114a370e3c858b01dc90e284cf2f286e2e6a45171c10630d8cd06e9e64ef58"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 64,
+        "panY": -3920
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_boarded.png",
+        "height-doors2/house_l1_f-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": null,
+        "height-doors2/house_l1_f-v2_boarded.png": null,
+        "height-doors2/house_l1_f-v2_snow.png": null
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3920
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "c-boarded-snow",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000006].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 1215620722
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 1215620722
+          }
+        },
+        {
+          "path": "houses[construction-site-000006].abandonedTick",
+          "before": null,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-c-boarded-snow-z1.jpg",
+          "sha256": "0a66a5fbb7829f977d401e6ed40422cb3fd4b43a70961ddbc9536d80d75ca99f"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-c-boarded-snow-z1.png",
+          "sha256": "18701e381f7fcc69620cf6fd2287d262f14e5fa432bc1681ad08742c3b38d761"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-c-boarded-snow-z1.jpg",
+          "sha256": "64ab6256f138ba4e34e1febfb1c0797d05f09e565abfa6524bd0b8f95ab344e1"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-c-boarded-snow-z1.png",
+          "sha256": "cb653c56a5abe55dc465fd11bcd717d54909ae24b5fc55605164f1b46cd30d1f"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 608,
+        "panY": -960
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_boarded.png",
+        "height-doors2/house_l1_c-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": 1,
+        "height-doors2/house_l1_c-v2_boarded.png": 1,
+        "height-doors2/house_l1_c-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          608,
+          -960
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "c-boarded-snow",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000006].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 1215620722
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 1215620722
+          }
+        },
+        {
+          "path": "houses[construction-site-000006].abandonedTick",
+          "before": null,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-c-boarded-snow-z0.6.jpg",
+          "sha256": "8f828ea07c9dc235aed54658502001f93ccc915363a333706e3428f729aa7dc8"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-c-boarded-snow-z0.6.png",
+          "sha256": "37195ccecf066de5da70d4ec38e548185c7a22eff80a21cb5aeb9bed812beb5b"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-c-boarded-snow-z0.6.jpg",
+          "sha256": "bdda481c68fd390f4fa69fd5262dc4c73ae37a2a31601509851a33ac12852d9e"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-c-boarded-snow-z0.6.png",
+          "sha256": "738c48b886ea09b38b283e3143305baf8ea214d51c10f3bae0d65bfa509a11c2"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 620.8,
+        "panY": -416.0
+      },
+      "targetGroundScreen": [
+        639.9999885559082,
+        409.6000328063965
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_boarded.png",
+        "height-doors2/house_l1_c-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": 1,
+        "height-doors2/house_l1_c-v2_boarded.png": 1,
+        "height-doors2/house_l1_c-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          620.7999877929688,
+          -416
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "c-boarded-snow",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000006].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000006].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 1215620722
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 1215620722
+          }
+        },
+        {
+          "path": "houses[construction-site-000006].abandonedTick",
+          "before": null,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-c-boarded-snow-z3.jpg",
+          "sha256": "81d1253c2e104ce9aac455912e1ce630ae134e81d18b58abad7bd642ef05219d"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-c-boarded-snow-z3.png",
+          "sha256": "98943064caa78cac95aa6b3a7dcfa8546b9dc354d8894fd7c67defc6805397b2"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-c-boarded-snow-z3.jpg",
+          "sha256": "92a1c8afabfad0cb4a60d741bae0c09834151a23c46df1a2eb0aebafbc3b3889"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-c-boarded-snow-z3.png",
+          "sha256": "1a06fcfa2809eca897e75f90544dc81ec07b0987bb19be41f389aa40c65f1e03"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 544,
+        "panY": -3680
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_c-v2.png",
+        "height-doors2/house_l1_c-v2_boarded.png",
+        "height-doors2/house_l1_c-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_c-v2.png": 1,
+        "height-doors2/house_l1_c-v2_boarded.png": 1,
+        "height-doors2/house_l1_c-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_c-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          -3.7319725220804756,
+          1305.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          544,
+          -3680
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "e-boarded-snow",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000014].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 537016425
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 537016425
+          }
+        },
+        {
+          "path": "houses[construction-site-000014].abandonedTick",
+          "before": null,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-e-boarded-snow-z1.jpg",
+          "sha256": "27a8416f47f92871990339d678cbd138639a47ac4363e4a157f5c3d304795c90"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-e-boarded-snow-z1.png",
+          "sha256": "5ef568fa78a814690805e0ad1e8fd9f8f2a7b803d11bafb344f3350fa079a881"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-e-boarded-snow-z1.jpg",
+          "sha256": "5e17ebeddcc40af9a3fe702784b8fee1bfeb41668e2eaf499935c424c733b969"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-e-boarded-snow-z1.png",
+          "sha256": "4e548e289cb2bdea938c84e91e9887a10cf06ac743a4a54f2d6fa4d50758d56b"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 288,
+        "panY": -928
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_boarded.png",
+        "height-doors2/house_l1_e-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": 1,
+        "height-doors2/house_l1_e-v2_boarded.png": 1,
+        "height-doors2/house_l1_e-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          288,
+          -928
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "e-boarded-snow",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000014].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 537016425
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 537016425
+          }
+        },
+        {
+          "path": "houses[construction-site-000014].abandonedTick",
+          "before": null,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-e-boarded-snow-z0.6.jpg",
+          "sha256": "540656223f1aceb2e1ad658a821d3bf02953b0b61fc13a31961d0685d144c8a1"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-e-boarded-snow-z0.6.png",
+          "sha256": "d71409bfc9f127df7691d9543c8e2b75b6c5e3bbf519a53d9d7dcfa83b5ef327"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-e-boarded-snow-z0.6.jpg",
+          "sha256": "01de4fae0a2a2c2a9cb1df854da3ea2c5181be07885aa6b49f5813df42b53716"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-e-boarded-snow-z0.6.png",
+          "sha256": "80d41eae4968f4fe4467bd40aac91e9febf64165fbec8306311b2e2bd41691e9"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 428.8,
+        "panY": -396.79999999999995
+      },
+      "targetGroundScreen": [
+        639.9999961853027,
+        409.6000442504883
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_boarded.png",
+        "height-doors2/house_l1_e-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": 1,
+        "height-doors2/house_l1_e-v2_boarded.png": 1,
+        "height-doors2/house_l1_e-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          428.79998779296875,
+          -396.79998779296875
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "e-boarded-snow",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000014].residents",
+          "before": 8,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000014].members",
+          "before": {
+            "adults": 4,
+            "children": 4,
+            "seed": 537016425
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 537016425
+          }
+        },
+        {
+          "path": "houses[construction-site-000014].abandonedTick",
+          "before": null,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-e-boarded-snow-z3.jpg",
+          "sha256": "470fe6573f5bae430d71f52c68995ae27e033ab6560395dc781046cf2024091a"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-e-boarded-snow-z3.png",
+          "sha256": "7f6b1bbbb65ee05e7b62472e1db457ed506aa3c233ddc795d5fe09ca0dd24106"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-e-boarded-snow-z3.jpg",
+          "sha256": "4728df2f3f016c5acbb18f2ab3ed3026611d9dd67d070fd95e61c3dbf2f3f95b"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-e-boarded-snow-z3.png",
+          "sha256": "60b56245665239db98da6d40360defa997de718e609d9bdcaa6be677bbff7dd9"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": -416,
+        "panY": -3584
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_e-v2.png",
+        "height-doors2/house_l1_e-v2_boarded.png",
+        "height-doors2/house_l1_e-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_e-v2.png": 1,
+        "height-doors2/house_l1_e-v2_boarded.png": 1,
+        "height-doors2/house_l1_e-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_e-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          316.26802747791953,
+          1273.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -416,
+          -3584
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "f-boarded-snow",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000010].residents",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].members",
+          "before": {
+            "adults": 0,
+            "children": 0,
+            "seed": 489941067
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 489941067
+          }
+        },
+        {
+          "path": "houses[construction-site-000010].abandonedTick",
+          "before": 10000,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-f-boarded-snow-z1.jpg",
+          "sha256": "c5e25dd8f57bd5cb3f78e456e6cf5a98699f503c586880cdfccd309d0c02026a"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-f-boarded-snow-z1.png",
+          "sha256": "404e362a45578acb5604a9c79d57b2f0536664052ad6dc7338b377568e2d6fea"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-f-boarded-snow-z1.jpg",
+          "sha256": "80f98c7234489c2eac6b9fad2d8835a058d32eef7c76e439aa885ba14bc980d2"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-f-boarded-snow-z1.png",
+          "sha256": "f9a153b191cac430a14b7fdad3813c43d7da3ddfef3844e771e478d7ff4b4dee"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 448,
+        "panY": -1040
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_boarded.png",
+        "height-doors2/house_l1_f-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": 1,
+        "height-doors2/house_l1_f-v2_boarded.png": 1,
+        "height-doors2/house_l1_f-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          448,
+          -1040
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "f-boarded-snow",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000010].residents",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].members",
+          "before": {
+            "adults": 0,
+            "children": 0,
+            "seed": 489941067
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 489941067
+          }
+        },
+        {
+          "path": "houses[construction-site-000010].abandonedTick",
+          "before": 10000,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-f-boarded-snow-z0.6.jpg",
+          "sha256": "2b8aa737d642543680b79f2390a467a2361caa6471b8ef71d2bcda3a3a2db4a8"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-f-boarded-snow-z0.6.png",
+          "sha256": "12cc4070369d9fb87ec550a6f792389136938ba2a65af3d41c652bb75fac838a"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-f-boarded-snow-z0.6.jpg",
+          "sha256": "866cde5b5448cc6e11b55d12db38d63d07d37a8f540e1a52985273ada67f7f15"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-f-boarded-snow-z0.6.png",
+          "sha256": "8329a32713eabc5f9ce607f8d3980b8cbe28c70b840ff3e982e71f03ca9c75a4"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 524.8,
+        "panY": -464.0
+      },
+      "targetGroundScreen": [
+        639.9999923706055,
+        409.6000347137451
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_boarded.png",
+        "height-doors2/house_l1_f-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": 1,
+        "height-doors2/house_l1_f-v2_boarded.png": 1,
+        "height-doors2/house_l1_f-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          524.7999877929688,
+          -464
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 3,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "f-boarded-snow",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Prepared paused midwinter vacancy QA copy; tick and household vacancy fields disclosed",
+      "fields": [
+        {
+          "path": "houses[construction-site-000010].residents",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "path": "houses[construction-site-000010].members",
+          "before": {
+            "adults": 0,
+            "children": 0,
+            "seed": 489941067
+          },
+          "after": {
+            "adults": 0,
+            "children": 0,
+            "seed": 489941067
+          }
+        },
+        {
+          "path": "houses[construction-site-000010].abandonedTick",
+          "before": 10000,
+          "after": 11000
+        },
+        {
+          "path": "tick",
+          "before": 11000,
+          "after": 11500
+        }
+      ],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-f-boarded-snow-z3.jpg",
+          "sha256": "82dcaf38f7c6d3c3aa3cb4496550e916384b5f734f5ccc08482348425160cd33"
+        },
+        {
+          "file": "output/rb-height-doors2-before-mid-3/before-mid-f-boarded-snow-z3.png",
+          "sha256": "60270f44e26196b1c02ba7bc02841636576e352f0651d1c53dd6351cdb8d3821"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-f-boarded-snow-z3.jpg",
+          "sha256": "3b8bf2949d5b41bf1166f3728fde283bd993a915356f23c09b2c2fd6baf8e297"
+        },
+        {
+          "file": "output/rb-height-doors2-after-3/after-f-boarded-snow-z3.png",
+          "sha256": "9a7db1a5d5ba762e5b866956d74881af02ec3e18a5f7f1fe97b4e7db3d163d65"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": 64,
+        "panY": -3920
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_boarded.png",
+        "height-doors2/house_l1_f-v2_snow.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": 1,
+        "height-doors2/house_l1_f-v2_boarded.png": 1,
+        "height-doors2/house_l1_f-v2_snow.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          156.26802747791953,
+          1385.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3920
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 4,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "f-clear",
+      "zoom": 1,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-extra-4/before-extra-f-clear-z1.jpg",
+          "sha256": "0a4808e0d10bee2c4acc1274c68d8eaaae6b8830d3d8023b1068f99cfef8fd8a"
+        },
+        {
+          "file": "output/rb-height-doors2-before-extra-4/before-extra-f-clear-z1.png",
+          "sha256": "8c66d568cad4ca3bd5d55101d397464f0a1a73c3cc8215b74e1c84d5fc999395"
+        },
+        {
+          "file": "output/rb-height-doors2-after-extra-4/after-extra-f-clear-z1.jpg",
+          "sha256": "47346474b5bf9261c4976040dcc07fa3642eae4affa3ee0ddc764bbbeaa608e0"
+        },
+        {
+          "file": "output/rb-height-doors2-after-extra-4/after-extra-f-clear-z1.png",
+          "sha256": "017c1686d2a4c76ca4181af4358e39a0874daf4097198132c3cb38766492dde1"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 1,
+        "panX": 384,
+        "panY": -1072
+      },
+      "targetGroundScreen": [
+        640.0,
+        416.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": 1,
+        "height-doors2/house_l1_f-v2_weathered.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          220.26802747791953,
+          1417.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          1,
+          0,
+          0,
+          1,
+          384,
+          -1072
+        ]
+      },
+      "screenPxPerNative": 0.4986217267599071,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 4,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "f-clear",
+      "zoom": 0.6,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-extra-4/before-extra-f-clear-z0.6.jpg",
+          "sha256": "7a482bbd569e2fabf7601de86b2972ea1e82f0f6a2296c97ef3e4195438c7d74"
+        },
+        {
+          "file": "output/rb-height-doors2-before-extra-4/before-extra-f-clear-z0.6.png",
+          "sha256": "7a97dfe69f2fd614cc54629010534ed22340cc03b1dc0ebe9d81a75767026f16"
+        },
+        {
+          "file": "output/rb-height-doors2-after-extra-4/after-extra-f-clear-z0.6.jpg",
+          "sha256": "1227a7e78c67e04e9b60d4a3f87caae2f24fdbb2c08d2355a109adb0fc91219b"
+        },
+        {
+          "file": "output/rb-height-doors2-after-extra-4/after-extra-f-clear-z0.6.png",
+          "sha256": "151fd464b896b4e2e377a6b77ff00d5c9755f9c0605f134e77b5778c14abeb83"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 0.6,
+        "panX": 486.4,
+        "panY": -483.19999999999993
+      },
+      "targetGroundScreen": [
+        640.0,
+        409.6000232696533
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": 1,
+        "height-doors2/house_l1_f-v2_weathered.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          70,
+          77.99999999999999,
+          220.26802747791953,
+          1417.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          0.6000000238418579,
+          0,
+          0,
+          0.6000000238418579,
+          486.3999938964844,
+          -483.20001220703125
+        ]
+      },
+      "screenPxPerNative": 0.2991730479440126,
+      "worldPxPerNative": 0.4986217465733544,
+      "adultCanonicalWorldHeight": 17.6
+    },
+    {
+      "group": 4,
+      "baselineKind": "Same-build new body selection disabled for these variants",
+      "id": "f-clear",
+      "zoom": 3,
+      "same": {
+        "id": true,
+        "sourceSHA256": true,
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "buildingId": true,
+        "tile": true,
+        "body": true,
+        "ageLayer": true,
+        "fields": true,
+        "zoom": true,
+        "nowMs": true,
+        "camera": true,
+        "walkers": true
+      },
+      "classification": "Existing normal progression snapshot; canonical migration only",
+      "fields": [],
+      "images": [
+        {
+          "file": "output/rb-height-doors2-before-extra-4/before-extra-f-clear-z3.jpg",
+          "sha256": "56e11c3c78f9dc22799c93d3990bf07c0dcf36ab4c2d2e9225aaf856781e986a"
+        },
+        {
+          "file": "output/rb-height-doors2-before-extra-4/before-extra-f-clear-z3.png",
+          "sha256": "10035ec4dcd61fd0860c4fca73f3bdf7358b9b8eb49c37fe28833cf4b8be5f6a"
+        },
+        {
+          "file": "output/rb-height-doors2-after-extra-4/after-extra-f-clear-z3.jpg",
+          "sha256": "ee94c85ef2f3dff224f603906167a70c440e4bdf8e08344a2fa2d7514d93dfff"
+        },
+        {
+          "file": "output/rb-height-doors2-after-extra-4/after-extra-f-clear-z3.png",
+          "sha256": "6bab9e380e4f0a74d69ff9e5a7744b90ed2bc992d58ece845a76f5662496c25a"
+        }
+      ],
+      "injectedCamera": {
+        "zoom": 3,
+        "panX": -128,
+        "panY": -4016
+      },
+      "targetGroundScreen": [
+        640.0,
+        448.0
+      ],
+      "targetSources": [
+        "height-doors2/house_l1_f-v2.png",
+        "height-doors2/house_l1_f-v2_weathered.png"
+      ],
+      "targetObservedAlpha": {
+        "height-doors2/house_l1_f-v2.png": 1,
+        "height-doors2/house_l1_f-v2_weathered.png": 1
+      },
+      "bodyDraw": {
+        "src": "http://127.0.0.1:4304/assets/height-doors2/house_l1_f-v2.png",
+        "args": [
+          0,
+          0,
+          139,
+          155,
+          220.26802747791953,
+          1417.2354772982399,
+          69.30842001962709,
+          77.28636764778561
+        ],
+        "globalAlpha": 1,
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          -128,
+          -4016
+        ]
+      },
+      "screenPxPerNative": 1.4958651802797214,
+      "worldPxPerNative": 0.4986217267599071,
+      "adultCanonicalWorldHeight": 17.6
+    }
+  ],
+  "runs": [
+    {
+      "stage": "before",
+      "group": 0,
+      "head": "3438885b242823dbe482f40fc6b2af00021b7fe2",
+      "startedAt": "2026-10-07T14:42:03.938Z",
+      "finishedAt": "2026-10-07T14:44:55.352Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-c-fresh-z1",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-e-fresh-z0.6",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-f-fresh-z0.6",
+          "url": "http://127.0.0.1:4309/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "fullRecordSHA256": "1069adfc4f03faaf90f05bfce192610d1d74994c586aaa0986b48988b9bd2d37"
+    },
+    {
+      "stage": "after",
+      "group": 0,
+      "head": "79d6f2ac38338193185f5c9809ff84be584e8cc2",
+      "startedAt": "2026-10-07T15:04:05.091Z",
+      "finishedAt": "2026-10-07T15:07:03.044Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-c-fresh-z0.6",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-e-fresh-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "fullRecordSHA256": "edaef2055dae62292221a31464b0ba6d2a284c0681e3102351718dd7b629ed8c"
+    },
+    {
+      "stage": "before",
+      "group": 1,
+      "head": "32b6a5d280738c9c638cfb8a6f4541bfe36f38b2",
+      "startedAt": "2026-10-07T14:46:52.774Z",
+      "finishedAt": "2026-10-07T14:49:36.850Z",
+      "errors": [],
+      "networkFailures": [],
+      "fullRecordSHA256": "648602bbda89ef087712ca75b9936b59b089be800ea40e0c5903c308b378600b"
+    },
+    {
+      "stage": "after",
+      "group": 1,
+      "head": "9cc80953ec100c7d13a52ff345c40857831e78ae",
+      "startedAt": "2026-10-07T15:08:42.465Z",
+      "finishedAt": "2026-10-07T15:11:51.698Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-e-weathered-z0.6",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-f-weathered-z0.6",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "fullRecordSHA256": "2671bae7442dc384d0e891f7a519644aff44553d478d35f16b8a51b9edaaf886"
+    },
+    {
+      "stage": "before",
+      "group": 2,
+      "head": "32b6a5d280738c9c638cfb8a6f4541bfe36f38b2",
+      "startedAt": "2026-10-07T14:55:26.668Z",
+      "finishedAt": "2026-10-07T14:57:23.066Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "before-c-winter-z1",
+          "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-e-winter-z1",
+          "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-e-winter-z3",
+          "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "before-f-winter-z0.6",
+          "url": "http://127.0.0.1:4307/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "fullRecordSHA256": "e0bb7f080a5c56a347bd6eebe1bffe119cca68e49c9713671c165920f3e0bfda"
+    },
+    {
+      "stage": "after",
+      "group": 2,
+      "head": "9cc80953ec100c7d13a52ff345c40857831e78ae",
+      "startedAt": "2026-10-07T15:15:30.367Z",
+      "finishedAt": "2026-10-07T15:18:27.760Z",
+      "errors": [],
+      "networkFailures": [],
+      "fullRecordSHA256": "09b36667143594ca89802d86010ea64d0a71c0b423eabda59c6b8f020198ce19"
+    },
+    {
+      "stage": "before",
+      "group": 3,
+      "head": "9cc80953ec100c7d13a52ff345c40857831e78ae",
+      "startedAt": "2026-10-07T15:22:20.749Z",
+      "finishedAt": "2026-10-07T15:25:10.452Z",
+      "errors": [],
+      "networkFailures": [],
+      "fullRecordSHA256": "f6cd7ec089569b940db2b73e284f32d9551ee3cb5723444c9c46fa8a3115e490"
+    },
+    {
+      "stage": "after",
+      "group": 3,
+      "head": "9cc80953ec100c7d13a52ff345c40857831e78ae",
+      "startedAt": "2026-10-07T15:25:10.658Z",
+      "finishedAt": "2026-10-07T15:27:19.464Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-c-boarded-snow-z3",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-e-boarded-snow-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-e-boarded-snow-z0.6",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-e-boarded-snow-z3",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-f-boarded-snow-z1",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-f-boarded-snow-z0.6",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "view": "after-f-boarded-snow-z3",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "fullRecordSHA256": "a025943b870288ba0da12cd2966cce061352173a0f51c56da1a291a1cb409394"
+    },
+    {
+      "stage": "before",
+      "group": 4,
+      "head": "9cc80953ec100c7d13a52ff345c40857831e78ae",
+      "startedAt": "2026-10-07T15:29:43.568Z",
+      "finishedAt": "2026-10-07T15:30:32.849Z",
+      "errors": [],
+      "networkFailures": [],
+      "fullRecordSHA256": "02d505d20a595c72a01d38c9dfdcbe7a11c47329897639e433f9a9b8ceefa60d"
+    },
+    {
+      "stage": "after",
+      "group": 4,
+      "head": "9cc80953ec100c7d13a52ff345c40857831e78ae",
+      "startedAt": "2026-10-07T15:30:32.985Z",
+      "finishedAt": "2026-10-07T15:31:15.783Z",
+      "errors": [],
+      "networkFailures": [
+        {
+          "view": "after-extra-f-clear-z3",
+          "url": "http://127.0.0.1:4304/@fls-telemetry/sample",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "fullRecordSHA256": "8ca1db1ede930a20d7473f41281db739d1b6f5e83a6a1abdd70ce7fb6504cd60"
+    }
+  ],
+  "scope": "Actual paused renderer; natural snapshots and disclosed vacancy QA copies. Unchanged camera injection and target ground are distinct from source contact-pixel residuals."
+}

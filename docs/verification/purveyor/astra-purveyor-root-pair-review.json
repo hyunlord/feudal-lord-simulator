@@ -1,0 +1,41 @@
+{
+  "scope": "Natural spring purveyor before/after only; not summer/winter evidence",
+  "pairs": [
+    {
+      "zoom": 1,
+      "matches": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "nowMs": true,
+        "camera": true
+      },
+      "stateSHA256": "a3b22b9a14c19ce4b0132a1c0d1f1beac3324113b76b95124f486f36792ece39"
+    },
+    {
+      "zoom": 0.6,
+      "matches": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "nowMs": true,
+        "camera": true
+      },
+      "stateSHA256": "a3b22b9a14c19ce4b0132a1c0d1f1beac3324113b76b95124f486f36792ece39"
+    }
+  ],
+  "beforeErrors": [],
+  "afterErrors": [],
+  "beforeNetworkFailures": [],
+  "afterNetworkFailures": [],
+  "visualReview": "Inspected enlarged before/after PNG crops. Figure stands on road behind foreground granary roof with plausible depth occlusion. Ledger detail at zoom 0.6 not established by crop.",
+  "remaining": "Prepared summer/winter matched captures requested; final-tree gates and ledger byte audit pending.",
+  "directionDiagnosticReview": {
+    "path": "/tmp/astra-purveyor-install/output/rb-purveyor-after/after-natural-z1-8frames.png",
+    "sha256": "e5064757b8a0a5b33231386ba13aacf11230deb9b54cbed9f00ce290c3d92e55",
+    "observed": "Directly viewed 4 directions x 2 frames with enlarged/native/small rows. Book remains connected at the extended hand in enlarged frames, including NW. Native row retains silhouette; smallest row does not resolve book detail.",
+    "scope": "Diagnostic composition, not proof of natural gait movement; runtime episode uses gait frame 0."
+  }
+}

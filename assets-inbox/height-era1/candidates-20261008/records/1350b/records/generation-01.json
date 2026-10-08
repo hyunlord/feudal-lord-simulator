@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen.imagegen builtin",
+  "model": null,
+  "seed": null,
+  "notReturned": [
+    "model name",
+    "seed"
+  ],
+  "originalOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a1110d-2b2c-7090-9489-b645c6ae92ce/exec-a3f56c64-c0b1-4bcc-b181-5c10efb091d4.png",
+  "copiedRawSHA256": "9ed42329d354aaa25c2dfc941ab0d9903577beaa51baa9afafff1b37b8bb6994",
+  "editReference": "/tmp/astra-height-era-1350b-20261008/reference-padded.png",
+  "exactPrompt": "Edit target: the attached padded sprite is the game's Wave20 L1 1350b house. Produce ONE finished complete house painting, transparent RGBA, same canvas aspect 139:155. This is a careful architectural redraw, not a collage. Preserve the exact existing ground contact polygon and horizontal house width from this reference: leave every bottom foundation corner and the original wooden threshold in exactly the same canvas position. DO NOT spread the walls outward, broaden the footprint, increase roof width, or scale down the entire house. Only grow the vertical wall height upward into the extra empty space; raise the thatched roof as needed. Preserve its identity: golden layered thatch hipped/gabled cottage roof, warm pale plaster, medium brown oak frame, low irregular stone footing, small shuttered window on the LEFT-facing broad facade and CLOSED OAK DOOR on the RIGHT-facing narrow facade. Keep door on that right facade, no extra doors, no chimney, no new props. Orthographic 2:1 isometric ground directions ±26.565 degrees, verticals perfectly vertical, light from upper left, painted strategy-game sprite, no black cartoon outline. The critical correction is the entrance: at the final 139x155 canvas the INSIDE closed door leaf, excluding frame and threshold, MUST measure 45 pixels vertically at the same x and 20 pixels horizontally projected at mid-height. The old door is only about 20 pixels tall; make a truly tall adult-size opening by making the walls TALLER, never by enlarging the ground floor. A useful absolute specification: door height 29.0% of total canvas height, projected door width 14.4% of total canvas width; this must be the wooden leaf itself, not the posts. Keep the bottom of the door and existing ground corners fixed, move its lintel upward. The whole roof may rise but stay within the canvas. Do not add markings, measurements, a grid, text, border, shadows outside the sprite, or a background. All unpainted pixels transparent. Return the full finished summer house, not only the door.",
+  "transparentBackground": true,
+  "notes": "First prompt wrongly described the original entrance as right short-facade; corrected in attempt2. Both finished house attempts retained."
+}

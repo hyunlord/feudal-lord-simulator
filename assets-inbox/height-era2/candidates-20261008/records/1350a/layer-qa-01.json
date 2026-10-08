@@ -1,0 +1,53 @@
+{
+  "roofPolygonNative": [
+    [
+      21,
+      49
+    ],
+    [
+      57,
+      15
+    ],
+    [
+      102,
+      40
+    ],
+    [
+      134,
+      71
+    ],
+    [
+      91,
+      86
+    ],
+    [
+      21,
+      54
+    ]
+  ],
+  "ROIUncertaintyNative": 2,
+  "layers": {
+    "snow": {
+      "alphaWeightedRoofCoverage": 0.7137226763463098,
+      "binaryGT32RoofCoverage": 0.7888065056206649,
+      "outsideBodyGT32": 15,
+      "boundsAlphaGT32": [
+        20,
+        15,
+        135,
+        89
+      ]
+    },
+    "boarded": {
+      "alphaWeightedRoofCoverage": 1.0317449151389807e-05,
+      "binaryGT32RoofCoverage": 0.0,
+      "outsideBodyGT32": 0,
+      "boundsAlphaGT32": [
+        32,
+        62,
+        79,
+        125
+      ]
+    }
+  }
+}

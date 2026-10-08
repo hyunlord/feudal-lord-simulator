@@ -1,0 +1,53 @@
+{
+  "raw": [
+    1118,
+    1407
+  ],
+  "native": [
+    139,
+    175
+  ],
+  "oneResize": true,
+  "wholePainting": true,
+  "translation": [
+    -1,
+    -3
+  ],
+  "pivot": [
+    71.66148325358851,
+    161.92025518341308
+  ],
+  "worldScale": 0.4986217267599071,
+  "model": null,
+  "seed": null,
+  "note": "One raw-to-native resize followed by whole-image integer translation; no additional scaling/warp.",
+  "ground_after": [
+    [
+      19,
+      127
+    ],
+    [
+      84,
+      160
+    ],
+    [
+      124,
+      139
+    ]
+  ],
+  "ground_delta": [
+    [
+      -3,
+      0
+    ],
+    [
+      -3,
+      2
+    ],
+    [
+      3,
+      -2
+    ]
+  ],
+  "ground_uncertainty": 2
+}
