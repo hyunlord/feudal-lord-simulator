@@ -945,3 +945,5 @@ Engine B 최신 통합 화면1866075의31사례 재검증: 오류0, 대상30/30 
 Engine B 빈도 실측을 두 완료 판으로 확장했다. 원래 미관측40개 중10개가 제시됐고30개는 두 판 모두 미제시다. 각 ID의 최초 탈락 관문·바인딩 증거를 보존했으며 수락됐지만 미제시인 후보를 조건 실패로 합치지 않았다. [두 판 빈도 표](verification/eb-freq/two-seed-2485af4.md). seed3 종합과 부재 원인 확정은 남아 있다. 현재039b387f2 병합검사는 린트·타입·용량 통과, 기하 입력 갱신 및 최신 변경시험 기록 부족으로 실패했다.
 
 Engine B 명령 없는 선택18후보를 정적으로 점검했다.17지원 선택에 보류 경로가 있으며 사건 전체를 소식으로 내릴 근거는 미입증이다.024 keep·035 wait의 town−2 비용 문구 누락과011 기한 보존 의미를 [콘텐츠에 검토 요청](requests/engine-B-choice-meaning.md)했다. 전체 실제 답변 수는 일부 영지 청원 응답의 당시 무게가 원본에 없어 root 수로 대체할 수 없으며, [누락 증거](verification/eb-weight/whole-answer-accounting.md)에 따라 후속 계측 경로를 확인 중이다.
+
+Engine B는 기존17행+등록기2행을 보존한 공식 기하 재측정을 DGX gate 작업 EB-geometry-039b387f2-4e028b4로 실행 중이다. 기존 프레임4개의 독립 root 누락은 [렌더/REMOTE에 인계](requests/engine-B-geometry-roots.md)했으며 예외나 기준선을 수정하지 않았다.
