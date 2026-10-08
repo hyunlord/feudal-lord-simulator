@@ -38,3 +38,7 @@ Mac 공식 `npm run eventart:auto`, 실행 `engineB-batch2-EVA-7315129`: 활성5
 DGX `engineB-batch2-20y-1f9da18`, 소스 `1f9da18f7957de840321aae24493d287ddf10ea2`, 명령903.4초·exit0. 1300년 이상1320년 미만, seed1/2/3의 발생은10/12/12건, 응답8/8/9건, 무효2/4/3건이다. 이번 새 여섯 건 중058만 seed1의1308년과seed3의1319년에 발생해 모두`remit`로 응답했다. 나머지 다섯 건은 이 구간에서 관측되지 않았다. 147·080은 연도 창 밖이다.
 
 `distribution/`의 원본7개는 DGX 보존본과 SHA-256이 일치하며, 세 보고서는 기존 보고기로 다시 생성해 바이트가 일치했다. GP7은`measured_not_adjudicated`이며 빈 해 해소나 사람 플레이의 재미 통과를 뜻하지 않는다. 이 결과 뒤 본선에 DUES-REL·STORE-1이 들어왔으므로 최신 경제판의 자연 결과로 대체 표기하지 않는다.
+
+## 최신 본선 병합 뒤 준비 상태 검증
+
+`adc12b58`에 본선e35c547c까지 합쳤다. 공식 Mac `npm run eventart:auto`의 DGX 캡처`eventart-auto-adc12b5`는56/56 그림·exit0(명령261.8초), Mac 장부 적용 후 관련7/7시험 통과. 결과386814ef에 반영했다. 준비 상태 기하`engineB-batch2-geometry-adc12b5`는2줄40조건·실패0·미개방0·exit0(266.8초)이다. 최신 경제판의 자연20년 실행은 별도이며 이 그림·기하 검증으로 대신하지 않는다.
