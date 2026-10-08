@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { readCanon } from "./registryCanon";
+import { withPetitionContextAdapter } from "./registryContextAdapters";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const V4 = resolve(ROOT, "docs/design/content-drafts-20261002/v4");
@@ -37,7 +38,7 @@ interface CanonEvent { readonly id: string; readonly title: string; readonly bod
 
 // v4 with its delta releases merged by id (v4.1: 011 replaced, 201–215 added — events and registry together).
 const canon = readCanon<CanonEvent, CanonEntry>();
-const registry = canon.registry;
+const registry = { ...canon.registry, entries: canon.registry.entries.map(withPetitionContextAdapter) };
 const events = canon.events;
 
 const live = registry.entries.filter(entry => entry.unsupportedFilters.length === 0).map(entry => strip(entry));

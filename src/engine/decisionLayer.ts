@@ -8,6 +8,7 @@
 import {
   COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STANDING_SETTING, LORD_INITIATIVES, type DecisionWeight, type StandingSetting,
 } from "../content/stewardPolicyConfig";
+import { ENGINE_B_COMMAND_WEIGHT_OVERRIDES } from "../content/registry/engineBDecisionLayers.ko";
 import { BALANCE } from "../content/balanceConfig";
 import { TIMBER_TRADE_BALANCE } from "../content/timberTradeConfig";
 import type { GameState } from "./engine.types";
@@ -74,8 +75,9 @@ export function weighOffer(state: GameState, occurrence: RegistryOccurrence): { 
     const choice = entry.choices.find(candidate => candidate.id === id)!;
     const weights = new Set<DecisionWeight>();
     for (const command of choice.commands) {
-      const weight = COMMAND_WEIGHT[command.type];
-      if (weight !== undefined) weights.add(weight);
+      const override = ENGINE_B_COMMAND_WEIGHT_OVERRIDES[entry.id]?.[command.type];
+      const weight = override === undefined ? COMMAND_WEIGHT[command.type] : override;
+      if (weight !== undefined && weight !== null) weights.add(weight);
     }
     let spend = 0;
     let paid = 0;
