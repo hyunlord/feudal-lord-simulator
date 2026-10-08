@@ -16907,7 +16907,7 @@
         "id": "wave39:rain_streak_10px_1px_faint-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "faint",
         "image": {
           "url": "assets/wave39/rain/rain_streak_10px_1px_faint-v1.png",
           "width": 16,
@@ -16948,7 +16948,7 @@
         "id": "wave39:rain_streak_10px_1px_strong-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "strong",
         "image": {
           "url": "assets/wave39/rain/rain_streak_10px_1px_strong-v1.png",
           "width": 16,
@@ -16989,7 +16989,7 @@
         "id": "wave39:rain_streak_10px_2px_faint-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "faint",
         "image": {
           "url": "assets/wave39/rain/rain_streak_10px_2px_faint-v1.png",
           "width": 16,
@@ -17030,7 +17030,7 @@
         "id": "wave39:rain_streak_10px_2px_strong-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "strong",
         "image": {
           "url": "assets/wave39/rain/rain_streak_10px_2px_strong-v1.png",
           "width": 16,
@@ -17071,7 +17071,7 @@
         "id": "wave39:rain_streak_4px_1px_faint-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "faint",
         "image": {
           "url": "assets/wave39/rain/rain_streak_4px_1px_faint-v1.png",
           "width": 16,
@@ -17112,7 +17112,7 @@
         "id": "wave39:rain_streak_4px_1px_strong-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "strong",
         "image": {
           "url": "assets/wave39/rain/rain_streak_4px_1px_strong-v1.png",
           "width": 16,
@@ -17153,7 +17153,7 @@
         "id": "wave39:rain_streak_4px_2px_faint-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "faint",
         "image": {
           "url": "assets/wave39/rain/rain_streak_4px_2px_faint-v1.png",
           "width": 16,
@@ -17194,7 +17194,7 @@
         "id": "wave39:rain_streak_4px_2px_strong-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "strong",
         "image": {
           "url": "assets/wave39/rain/rain_streak_4px_2px_strong-v1.png",
           "width": 16,
@@ -17235,7 +17235,7 @@
         "id": "wave39:rain_streak_7px_1px_faint-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "faint",
         "image": {
           "url": "assets/wave39/rain/rain_streak_7px_1px_faint-v1.png",
           "width": 16,
@@ -17276,7 +17276,7 @@
         "id": "wave39:rain_streak_7px_1px_strong-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "strong",
         "image": {
           "url": "assets/wave39/rain/rain_streak_7px_1px_strong-v1.png",
           "width": 16,
@@ -17317,7 +17317,7 @@
         "id": "wave39:rain_streak_7px_2px_faint-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "faint",
         "image": {
           "url": "assets/wave39/rain/rain_streak_7px_2px_faint-v1.png",
           "width": 16,
@@ -17358,7 +17358,7 @@
         "id": "wave39:rain_streak_7px_2px_strong-v1",
         "kind": "weather-particle",
         "role": "rain",
-        "group": "all",
+        "group": "strong",
         "image": {
           "url": "assets/wave39/rain/rain_streak_7px_2px_strong-v1.png",
           "width": 16,
@@ -17869,7 +17869,7 @@
         "fallback": "none"
       },
       {
-        "id": "nature-rain-all",
+        "id": "nature-rain-faint",
         "kind": "weather-particle",
         "slot": "nature-rain",
         "priority": 0,
@@ -17882,7 +17882,7 @@
           {
             "op": "eq",
             "field": "group",
-            "value": "all"
+            "value": "faint"
           }
         ],
         "variants": [
@@ -17891,15 +17891,7 @@
             "weight": 1
           },
           {
-            "assetId": "wave39:rain_streak_10px_1px_strong-v1",
-            "weight": 1
-          },
-          {
             "assetId": "wave39:rain_streak_10px_2px_faint-v1",
-            "weight": 1
-          },
-          {
-            "assetId": "wave39:rain_streak_10px_2px_strong-v1",
             "weight": 1
           },
           {
@@ -17907,15 +17899,7 @@
             "weight": 1
           },
           {
-            "assetId": "wave39:rain_streak_4px_1px_strong-v1",
-            "weight": 1
-          },
-          {
             "assetId": "wave39:rain_streak_4px_2px_faint-v1",
-            "weight": 1
-          },
-          {
-            "assetId": "wave39:rain_streak_4px_2px_strong-v1",
             "weight": 1
           },
           {
@@ -17923,15 +17907,7 @@
             "weight": 1
           },
           {
-            "assetId": "wave39:rain_streak_7px_1px_strong-v1",
-            "weight": 1
-          },
-          {
             "assetId": "wave39:rain_streak_7px_2px_faint-v1",
-            "weight": 1
-          },
-          {
-            "assetId": "wave39:rain_streak_7px_2px_strong-v1",
             "weight": 1
           }
         ],
@@ -17982,6 +17958,51 @@
         "variants": [
           {
             "assetId": "wave39:rain_wet_mask_soil-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-rain-strong",
+        "kind": "weather-particle",
+        "slot": "nature-rain",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "rain"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "strong"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_streak_10px_1px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_10px_2px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_4px_1px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_4px_2px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_7px_1px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_7px_2px_strong-v1",
             "weight": 1
           }
         ],
