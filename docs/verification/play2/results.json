@@ -403,68 +403,6 @@
    "bytes": 149947,
    "pass": true
   },
-  "family-moment": {
-   "state": "moments first_child",
-   "chip": true,
-   "card": {
-    "text": "첫아이가 태어났다\n\n부부의 첫아이가 태어났다\n\n아이 스티븐 드 포콩발 · 어머니 앨리스 드 케스트베일 · 아버지 리처드 드 포콩발\n위치로\n연대기에서 보기\n조언\n닫기",
-    "buttons": [
-     "위치로",
-     "연대기에서 보기",
-     "조언",
-     "닫기"
-    ],
-    "smallestText": 13,
-    "titles": 0,
-    "box": {
-     "left": 912,
-     "top": 176,
-     "width": 360,
-     "height": 338,
-     "right": 1272,
-     "bottom": 514,
-     "inside": true
-    }
-   },
-   "bytes": 150343,
-   "toChronicle": true,
-   "links": [
-    "child:아이 스티븐 드 포콩발",
-    "mother:어머니 앨리스 드 케스트베일",
-    "father:아버지 리처드 드 포콩발"
-   ],
-   "detailBytes": 88409,
-   "biography": true,
-   "pass": true
-  },
-  "will-pinned": {
-   "state": "lmr2 will-change",
-   "chip": true,
-   "card": {
-    "text": "늙은 영주의 새 유언\n\n드 헤로넬 영지의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 한 철 안에 답하지 않으면 새 유언이 그대로 섭니다.\n\n한 철 안에 답해야 합니다. 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.\n결정하기\n조언\n닫기",
-    "buttons": [
-     "결정하기",
-     "조언",
-     "닫기"
-    ],
-    "smallestText": 13,
-    "titles": 0,
-    "box": {
-     "left": 912,
-     "top": 176,
-     "width": 360,
-     "height": 377,
-     "right": 1272,
-     "bottom": 553,
-     "inside": true
-    }
-   },
-   "bytes": 94280,
-   "cardAfter": false,
-   "chipAfter": true,
-   "afterBytes": 93850,
-   "pass": true
-  },
   "ledger-claim": {
    "state": "offer-countered",
    "claim": [
@@ -510,8 +448,68 @@
    },
    "bytes": 115001,
    "pass": true
+  },
+  "family-moment": {
+   "state": "moments first_child",
+   "chip": true,
+   "card": {
+    "text": "첫아이가 태어났다\n\n부부의 첫아이가 태어났다\n\n어머니 앨리스 드 케스트베일\n위치로\n연대기에서 보기\n조언\n닫기",
+    "buttons": [
+     "위치로",
+     "연대기에서 보기",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 176,
+     "width": 360,
+     "height": 319,
+     "right": 1272,
+     "bottom": 495,
+     "inside": true
+    }
+   },
+   "bytes": 150388,
+   "toChronicle": true,
+   "links": [
+    "mother:어머니 앨리스 드 케스트베일"
+   ],
+   "detailBytes": 83107,
+   "biography": true,
+   "pass": true
+  },
+  "will-pinned": {
+   "state": "lmr2 will-change",
+   "chip": true,
+   "card": {
+    "text": "늙은 영주의 새 유언\n\n드 헤로넬 영지의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 한 철 안에 답하지 않으면 새 유언이 그대로 섭니다.\n\n한 철 안에 답해야 합니다. 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.\n결정하기\n조언\n닫기",
+    "buttons": [
+     "결정하기",
+     "조언",
+     "닫기"
+    ],
+    "smallestText": 13,
+    "titles": 0,
+    "box": {
+     "left": 912,
+     "top": 176,
+     "width": 360,
+     "height": 377,
+     "right": 1272,
+     "bottom": 553,
+     "inside": true
+    }
+   },
+   "bytes": 94303,
+   "cardAfter": false,
+   "chipAfter": true,
+   "afterBytes": 92128,
+   "pass": true
   }
  },
- "bytes": 115001,
+ "bytes": 419926,
  "errors": []
 }
