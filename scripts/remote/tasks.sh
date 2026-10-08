@@ -171,7 +171,7 @@ ui-geometry)
     "$states6/wool_payment.json" "$states6/decline.json" "$states6/chapter2-end.json" "$states8/chapter3-end.json" \
     "$states9/reorg.alehouse_boom.json" "$states9/chapter4-end.json" "$states9/borough_charter.json" "$states9/rumour-chased.json" "$states9/reorg.wage_competition.json" \
     "$states10/chapter5-end.json" "$states10/borough_autonomy.json" "$extra/heir_choice.json" "$lands/fen_drainage-summer.json" \
-    "$petitions/home-boundary_dispute.json" "$petitions/precedent.json" "$petitions/request.json" "$petitions/guardian.json" "$lord/lord-receipts.json" \
+    "$petitions/home-boundary_dispute.json" "$petitions/request.json" "$petitions/guardian.json" "$lord/lord-receipts.json" \
     "$lord/registry-offer.json" "$lord/registry-offer-hold.json" "$moments/lawsuit_filed.json" \
     "$lord2/offer-countered.json" "$lord2/marriage-contracted.json" "$lord2/will-change.json" "$lord2/contested.json" "$lord2/inherited.json" \
     "$lord2/audit-pending.json" "$lord2/attention-overloaded.json" "$lord2/promises.json" "$lord2/neighbour-suit.json" \
