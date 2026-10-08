@@ -1027,6 +1027,9 @@ button {
   overflow-wrap: anywhere;
 }
 
+/* PLAY-2: the proposal's line and its second line (the failure, or lord mode's lever) on lines of their own (they ran together). */
+.era-proposal > span { display: block; }
+
 /* contrast-audit selector=".era-proposal" fg="--palette-ink" bg="--palette-vellum" size="13" role="warning" */
 .era-proposal,
 .era-draft-status,

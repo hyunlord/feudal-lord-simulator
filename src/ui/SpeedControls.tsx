@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { BALANCE } from "../content/balanceConfig";
 import { KO_UI } from "../content/locale.ko";
@@ -96,7 +96,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
   return (
     <div className="speed-control-stack">
       <div className="speed-seals" role="group" aria-label={KO_UI.speeds.ariaLabel}>
-        {/* UX-2: the painted time icons (pause · play · two and three chevrons); NAT-4: one fast seal for 5x and 10x (speedSeals.ts). */}
+        {/* UX-2: the painted time icons (pause · play · two and three chevrons); NAT-4: one fast seal for 5x and 10x (speedSeals.ts; PLAY-2: its mark shows both). */}
         {SPEED_SEALS.map((seal) => {
           const view = sealView(seal, speed);
           return (
@@ -110,7 +110,9 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
               onPress={() => onChange(sealPress(seal, speed))}
              variant="icon">
               <UiIcon sheet="time" cell={seal.icon} size={32} />
-              {view.mark === null ? null : <span className="speed-seal-mark" aria-hidden="true">{view.mark}</span>}
+              {view.steps === null ? null : <span className="speed-seal-mark" aria-hidden="true">
+                {view.steps.map((step, index) => <Fragment key={step.speed}>{index === 0 ? null : <span className="speed-seal-join">{KO_UI.speeds.fastStepJoin}</span>}
+                  <span className="speed-seal-step" data-step={step.speed} data-on={step.on ? "true" : undefined}>{step.text}</span></Fragment>)}</span>}
             </Button>
           );
         })}

@@ -9,19 +9,20 @@ import { ChronicleTimeline } from "./ChronicleTimeline";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import {
   biographyView, CHRONICLE_KINDS, chronicleDate, factionNameOf, chronicleItems, chroniclePeople, chronicleYears, decisionCompare, DEFAULT_CHRONICLE_FILTER,
-  itemIndexAt, recordCard, seasonWindow, timelineChapters, timelineMarkers, timelineSegments, timelineTickAt,
+  itemIndexAt, seasonWindow, timelineChapters, timelineMarkers, timelineSegments, timelineTickAt,
   type ChronicleFilter, type ChronicleItem, type ChronicleKind, type TimelineMarkerKind,
   yearOfTick,
 } from "./chronicleScreenModel";
 import { DECISION_FRAME, DecisionCompareFrame } from "./DecisionCompareFrame";
 import { DecisionThread } from "./DecisionThread";
-import { decisionThread } from "./decisionThreadModel";
+import { chronicleRecordCard, decisionThread } from "./decisionThreadModel";
 import { CARD_ROW, RecordCardView } from "./RecordCardView";
 import { SnapshotMapView } from "./SnapshotMapView";
 import { FACTION_PAGE, FactionPage } from "./FactionPage";
 import { FactionTab } from "./FactionTab";
 import { FamilyTree } from "./FamilyTree";
 import { FAMILY_TREE_COPY } from "./familyTreeCopy.ko";
+import { FamilyLinks } from "./FamilyLinks";
 import { factionPageView, factionRows, worldLines } from "./factionTabModel";
 import { tugOfWarView } from "./factionInfluenceModel";
 import type { FactionId } from "../../content/factionConfig";
@@ -29,7 +30,7 @@ import { INTENT_ORDER } from "../../input/intentBus";
 import { platformServices } from "../../platform/platform";
 import { Button, Select, Tabs } from "../kit";
 import { LEGACY_SCREEN_COPY } from "../legacy/legacyScreenCopy.ko";
-import { chronicleFocus, clearChronicleFocus } from "../lord/chronicleFocus";
+import { chronicleFilterFocus, chronicleFocus, clearChronicleFocus } from "../lord/chronicleFocus";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): a full-screen modal over the town (the state machine's
 // `history` modal: time stops while it is up). The timeline on top, the filters, the record cards (a virtual list:
@@ -55,7 +56,7 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
   /** DEC-CARD-2: a thread line opens its record (the decision behind, a consequence). */
   readonly onRecord: (recordId: string, tick: number) => void;
 }) {
-  const card = recordCard(state, item);
+  const card = chronicleRecordCard(state, item);
   const decision = decisionCompare(state, item.record);
   // DEC-CARD-2 (lord mode): the record's thread. Memo (key: the record and the ledger, the factions' memories, the thread):
   // the list's scroll re-renders the screen, and the thread reads the whole span (time stands still while it is up).
@@ -81,8 +82,7 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
             onPress={() => onCompare()} variant="secondary"><UiIcon sheet="layer" cell="zone" />{COPY.mapCompare}</Button>}
           {card.place === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.lookAtLabel(card.date)}
             onPress={() => { if (card.place !== null) onLookAt(card.place); }} variant="secondary"><UiIcon sheet="action" cell="look" />{COPY.lookAt}</Button>}
-          {card.personId === null || card.personName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.personLabelFor(card.personName)}
-            onPress={() => { if (card.personId !== null) onPerson(card.personId); }} variant="secondary"><UiIcon sheet="resource" cell="population" />{COPY.person}</Button>}
+          <FamilyLinks state={state} record={item.record} card={card} onPerson={onPerson} />
           {card.factionId === null || card.factionName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.factionLabelFor(card.factionName)}
             onPress={() => { if (card.factionId !== null) onFaction(card.factionId); }} variant="secondary"><UiIcon sheet="cause" cell="rights" />{COPY.faction}</Button>}
         </div>
@@ -101,7 +101,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
 }) {
   // LM-R1: opened from a receipt's decision ribbon, on that decision's record.
   const [focus] = useState(chronicleFocus);
-  const [filter, setFilter] = useState<ChronicleFilter>(DEFAULT_CHRONICLE_FILTER);
+  const [filter, setFilter] = useState<ChronicleFilter>(() => chronicleFilterFocus(DEFAULT_CHRONICLE_FILTER)); // PLAY-2: a year card's years
   const [selected, setSelected] = useState<string | null>(focus?.recordId ?? null);
   const [pickedTick, setPickedTick] = useState(focus?.tick ?? state.tick);
   const [zoomed, setZoomed] = useState(false);
@@ -243,7 +243,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
 
   return (
     <div className="chronicle-screen" role="dialog" aria-modal="true" aria-label={COPY.title} data-chronicle="open" data-records={items.length}
-      data-view={view}>
+      data-view={view} data-from-year={filter.fromYear ?? undefined} data-to-year={filter.toYear ?? undefined}>
       <header className="chronicle-header">
         <h2>{COPY.title}</h2>
         <Tabs label={COPY.viewsLabel} className="chronicle-tabs" tabClassName="chronicle-tab" selected={personId === null ? tab : "records"}
@@ -325,7 +325,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
             {items.length === 0 ? <p className="chronicle-empty">{COPY.empty}</p> : (
               <div className="chronicle-list-space" role="list" aria-label={COPY.count(items.length)} style={{ height: items.length * CARD_ROW + LIST_PAD * 2 }}>
                 {visible.map((item, offset) => (
-                  <RecordCardView key={item.key} card={recordCard(state, item)} selected={first + offset === selectedIndex} position={first + offset + 1} total={items.length}
+                  <RecordCardView key={item.key} card={chronicleRecordCard(state, item)} selected={first + offset === selectedIndex} position={first + offset + 1} total={items.length}
                     style={{ top: LIST_PAD + (first + offset) * CARD_ROW }}
                     onSelect={id => { setSelected(id); setPickedTick(item.tick); setDetailView("record"); }}
                     onLookAt={tile => onLookAt(tile)}

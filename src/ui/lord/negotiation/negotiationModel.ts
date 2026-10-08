@@ -15,6 +15,7 @@ import { lordMode } from "../../../engine/townAgency";
 import { treasuryBalance } from "../../../ledger/ledger";
 import { lordAnswer } from "../../decisionCard/families/lordOutcome";
 import { moneyFull } from "../../money.ko";
+import { withFamily } from "../../persons/familyNews";
 import { lordPersonRow, type LordPersonRow } from "../screen/lordPortrait";
 import { NEGOTIATION_COPY as COPY } from "./negotiationCopy.ko";
 
@@ -313,7 +314,8 @@ export function timelineView(state: GameState, plan: MarriagePlan): TimelineView
   for (const key of EVENT_ORDER) {
     const tick = plan.events[key];
     // −1: the seed drew no such event (no brother-in-law, no new will).
-    if (tick !== undefined && tick >= 0) events.push({ key, tick, date: dateOf(state, tick), text: COPY.events[key] });
+    if (tick !== undefined && tick >= 0) events.push({ key, tick, date: dateOf(state, tick), text: key === "child_born" // PLAY-2: the child and its parents named
+      ? withFamily(state, { template: "marriage.child_born", params: { bride: plan.brideId }, tick }, COPY.events[key]) : COPY.events[key] });
   }
   events.sort((a, b) => a.tick - b.tick);
   const details = [
