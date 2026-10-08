@@ -1,3 +1,4 @@
+import { expireRegistryChapterPetitions, prepareRegistryChapterPetition, registryChapterPetitionDeadline, registryChapterPetitionDef } from "./registryChapterPetitions";
 /**
  * LM-E9 (spec docs/design/registry.md ER-1…ER-12): the registry — petitions, events and annual rules as data, offered
  * in lord mode in a stable order (conditions → the seed's draw → conflicts → atomic update → receipt), answered through
@@ -413,11 +414,15 @@ function offerV4Season(state: GameState): GameState {
   let pick = hashSeed(state.seed, "registry-selection", index) % total;
   const chosen = candidates.find(candidate => { if (pick < candidate.entry.frequency.weight) return true; pick -= candidate.entry.frequency.weight; return false; });
   if (chosen === undefined) return state;
+  const selected = registryChapterPetitionDef(chosen.entry.id) === undefined ? state : prepareRegistryChapterPetition(state, chosen.entry.id);
+  if (selected === null) return state;
+  const petition = selected.politics?.petitions.find(record => record.defId === chosen.entry.id && record.response === undefined);
+  const deadline = petition === undefined ? state.tick + REGISTRY_ANSWER_TICKS : registryChapterPetitionDeadline(selected, petition);
   const bound = boundIdentities(chosen.bound);
   const offer: RegistryOccurrence = { id: `registry:${chosen.entry.id}:${chosen.key}:${index}`, entryId: chosen.entry.id, boundId: Object.values(bound)[0] ?? "",
-    offeredTick: state.tick, deadline: state.tick + REGISTRY_ANSWER_TICKS, status: "offered",
+    offeredTick: state.tick, deadline, status: "offered",
     receipt: { draw: chosen.draw, chancePermille: chosen.entry.frequency.chancePermille, conditions: [] }, source: "v4", bound, key: chosen.key, context: chosen.context };
-  return layerOffer({ ...state, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } }, offer, state);
+  return layerOffer({ ...selected, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } }, offer, state);
 }
 
 /**
@@ -465,8 +470,9 @@ function offerSeason(state: GameState): GameState {
 
 /** LM-E9: the registry's step (lord mode only) — at a season's start: terms at the year's turn, lapses, the season's offer. */
 export function advanceRegistry(state: GameState): GameState {
-  if (state.agency === undefined || state.tick <= 0 || state.tick % SEASON !== 0) return state;
-  let next = state;
+  if (state.agency === undefined || state.tick <= 0) return state;
+  let next = expireRegistryChapterPetitions(state);
+  if (state.tick % SEASON !== 0) return next;
   if (state.tick % YEAR === 0) next = settleTerms(next);
   next = lapseOffers(next);
   next = offerSeason(next);
@@ -520,6 +526,8 @@ function answerV4Offer(state: GameState, occurrence: RegistryOccurrence, choiceI
  * pleases the sender, the least given displeases it, one between moves nothing (null when no faction or no difference).
  */
 function sideTaken(state: GameState, occurrence: RegistryOccurrence, choiceId: string): { readonly faction: string; readonly delta: number } | null {
+  // Chapter responses already carry their authored faction effects, regardless of the answer surface.
+  if (registryChapterPetitionDef(occurrence.entryId) !== undefined) return null;
   const faction = v4SenderFaction(occurrence.entryId);
   if (state.agency === undefined || faction === undefined) return null;
   const acting = (weighOffer(state, occurrence)?.choices ?? []).filter(choice => choice.commands.length > 0);

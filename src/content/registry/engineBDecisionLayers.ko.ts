@@ -39,6 +39,8 @@ export const ENGINE_B_DECISION_LAYERS: Readonly<Record<string, EngineBDecisionWe
 
 /** Per-command exceptions only. Null removes a static weight; measured sums and rupture still apply. */
 export const ENGINE_B_COMMAND_WEIGHT_OVERRIDES: Readonly<Record<string, Readonly<Record<string, DecisionWeight | null>>>> = {
+  ck_evt_057: { petition_response: 'rights' },
+  ck_evt_058: { petition_response: null },
   ck_evt_061: { set_exception_rules: 'rights' },
   ck_evt_077: { set_exception_rules: 'rights' },
 };

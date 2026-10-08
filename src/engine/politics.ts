@@ -1,3 +1,4 @@
+import { canAnswerRegistryChapterPetition, registryChapterPetitionDef, settleAnsweredRegistryChapterPetition } from "./registryChapterPetitions";
 /**
  * F0-C1 chapter 1's decisions and end (spec docs/design/flow-chapter-one.md FC-2…FC-5). Runs every tick after the
  * events (a no-op between the ladder's 50-tick samples):
@@ -162,12 +163,12 @@ export function petitionSeason(state: Pick<GameState, "seed" | "scenarioId">, de
 }
 
 function petitionDef(record: PetitionRecord): PetitionDef | undefined {
-  return PETITION_DEFS.find(def => def.id === record.defId);
+  return PETITION_DEFS.find(def => def.id === record.defId) ?? registryChapterPetitionDef(record.defId);
 }
 
-/** FC-3 API: the petitions waiting for an answer. */
+/** FC-3 API: chapter-card petitions waiting for an answer; registry-owned petitions use their registry card. */
 export function openPetitions(state: GameState): readonly PetitionRecord[] {
-  return (state.politics?.petitions ?? []).filter(petition => petition.response === undefined);
+  return (state.politics?.petitions ?? []).filter(petition => petition.response === undefined && registryChapterPetitionDef(petition.defId) === undefined);
 }
 
 /** FC-3 action `petition_response`: the lord answers an open petition. */
@@ -176,6 +177,7 @@ export function respondToPetition(state: GameState, petitionId: string, response
   const petition = politics.petitions.find(entry => entry.id === petitionId && entry.response === undefined);
   const def = petition === undefined ? undefined : petitionDef(petition);
   if (petition === undefined || def === undefined) return state;
+  if (registryChapterPetitionDef(def.id) !== undefined && !canAnswerRegistryChapterPetition(state, petition, response)) return state;
   const outcome = def.outcomes[response];
   const decision: DecisionRecord = { kind: "petition_response", tick: state.tick, petitionId, choice: response };
   // F3-A: a card offers only its answers. F5-A (LG-3): a petition whose answers depend on the town, only its own.
@@ -213,7 +215,7 @@ export function respondToPetition(state: GameState, petitionId: string, response
       sourceRefs: [{ type: "right", id: outcome.right ?? def.id, detail: `petition:${petition.id}` }, { type: "actor", id: def.petitioner }] }]);
     next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };
   }
-  return {
+  return settleAnsweredRegistryChapterPetition({
     ...next,
     politics: {
       ...politics,
@@ -223,7 +225,7 @@ export function respondToPetition(state: GameState, petitionId: string, response
         petitionId: petition.id, stallFeePermille: outcome.stallFeePermille }],
       decisions: [...politics.decisions, decision],
     },
-  };
+  }, petition.id);
 }
 
 /** FC-3/FC-4: the stall fee under the granted rights, permille of the usual fee (the lowest right applies). */

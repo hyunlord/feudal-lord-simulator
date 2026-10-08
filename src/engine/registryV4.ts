@@ -1,3 +1,4 @@
+import { prepareRegistryChapterPetition, registryChapterPetitionContext, registryChapterPetitionDef } from "./registryChapterPetitions";
 /**
  * LM-E9b (spec docs/design/registry.md ER-13…ER-18): the content canon v4 in the registry — its entries loaded and
  * checked (what runs, what is blocked and why), their targets bound (the first combination for which the entry's
@@ -298,6 +299,7 @@ function candidates(binding: V4Binding, scope: Scope): readonly unknown[] {
  * Bindings needed only by some choices (`requiredForChoices`) are bound afterwards, first match, and may stay missing.
  */
 export function bindEntry(state: GameState, entry: V4Entry, fixed?: Readonly<Record<string, string>>): Readonly<Record<string, unknown>> | null {
+  if (registryChapterPetitionDef(entry.id) !== undefined && !registryChapterPetitionContext(state, entry.id)) return null;
   const contextualEntry = handlesPetitionContext(entry.id);
   const savedContext = fixed === undefined || !contextualEntry ? undefined : readContextSnapshot(fixed.authoredContext);
   if (savedContext === null) return null;
@@ -415,13 +417,15 @@ export function v4Candidates(state: GameState, past: readonly V4Past[]): readonl
     if (last !== undefined && index - Math.floor(last.offeredTick / SEASON) < gap) continue;
     const draw = hashSeed(state.seed, `registry-v4:${entry.id}`, index) % 1000;
     if (draw >= entry.frequency.chancePermille) continue;
-    const bound = bindEntry(state, entry);
+    const candidateState = registryChapterPetitionDef(entry.id) === undefined ? state : prepareRegistryChapterPetition(state, entry.id);
+    if (candidateState === null) continue;
+    const bound = bindEntry(candidateState, entry);
     if (bound === null) continue;
     const key = dedupKey(entry, bound);
     const context = contextKey(entry, bound);
     if (past.some(occurrence => occurrence.status === "offered" && occurrence.key === key)) continue;
     if (entry.recurrence.mode === "new_context_only" && own.some(occurrence => occurrence.context === context)) continue;
-    if (v4EnabledChoices(state, entry, bound).length < entry.minimumEnabledConsequentialChoices) continue;
+    if (v4EnabledChoices(candidateState, entry, bound).length < entry.minimumEnabledConsequentialChoices) continue;
     out.push({ entry, bound, draw, key, context });
   }
   return out;

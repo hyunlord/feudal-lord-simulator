@@ -42,13 +42,13 @@ test('fixed contexts retain observations while rejecting substituted parties, su
   assert.deepEqual(petitionContext({ ...changed, persons: { people: [earlier, person], past: [], nextOrdinal: 3 } }, 'ck_evt_092', {}, offered), offered, 'an earlier new candidate does not replace the bound party');
 });
 
-test('only the first five contexts are configured and all require agency', () => {
+test('first-batch contexts remain configured and require agency', () => {
   const { agency: _agency, ...state } = town();
   for (const id of ['061', '077', '083', '090', '092']) {
     assert.equal(handlesPetitionContext('ck_evt_' + id), true);
     assert.equal(petitionContext(state, 'ck_evt_' + id, {}), null);
   }
-  assert.equal(handlesPetitionContext('ck_evt_062'), false);
+  assert.equal(handlesPetitionContext('ck_evt_099'), false);
 });
 
 test('town offers pin causal sites, revalidate before answering, and remain steward work', async () => {
