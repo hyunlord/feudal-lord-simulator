@@ -222,11 +222,11 @@ export const SURFACES: readonly SurfaceRow[] = [
     scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
     open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-facts li", ".event-card-chronicle"], data: "the first child: the ledger's sentence, the child and the parents named, the way to the chronicle" },
-  { id: "modal.history.family-links", root: ".chronicle-detail", frame: "flat",
+  { id: "modal.history.family-links", root: ".chronicle-screen", frame: "flat", scrollParts: [".chronicle-list", ".chronicle-detail"],
     scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
     open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 },
       { click: ".event-card[data-story='lord_moment'] .event-card-chronicle" }, { wait: ".chronicle-detail [data-family]", timeout: 30_000 }, { pause: 900 }],
-    requires: ["[data-family]"], data: "the first child's record in the chronicle: a biography button for the child and each parent" },
+    requires: [".chronicle-detail [data-family]"], data: "the first child's record in the chronicle (as modal.history.records: the detail scrolls): a biography button for each person its record names" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
     data: "the tutorial's first goal card" },
   { id: "hud.goal-help", extends: "hud.goal-chips", root: ".goal-card-help > p", frame: "css", scene: { kind: "new-game" }, numbers: false,
@@ -365,9 +365,11 @@ export const SURFACES: readonly SurfaceRow[] = [
   // PLAY-2: the famine answered on screen (방관) — its card's line, until when and the bottleneck left (famineAfter).
   { id: "hud.event-card.famine-answered", root: ".event-card[data-story='famine']", frame: "css",
     scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer.
-    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" }, { key: "Digit1" }, { pause: 3000 },
-      { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" }, { pause: 600 }], scroll: "y",
+    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer, then paused
+    // again (Space) so nothing else comes up, and any card that did is put away before the chip.
+    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" }, { key: "Digit1" }, { pause: 1500 },
+      { key: "Space" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" },
+      { wait: ".event-card[data-story='famine']", timeout: 10_000 }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
   { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
   { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },

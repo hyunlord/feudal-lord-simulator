@@ -34,7 +34,7 @@
 .chronicle-era-label:not([data-entered]) { opacity: 0.6; }
 .chronicle-era-ahead { display: block; font-size: 12px; }
 .chronicle-chapter-bar { position: absolute; top: 18px; height: 16px; overflow: hidden; padding: 0 4px; box-sizing: border-box; font-size: 12px; line-height: 16px;
-  white-space: nowrap; background: color-mix(in srgb, var(--palette-gold) 45%, transparent); border-left: 2px solid var(--palette-ink); }
+  white-space: nowrap; text-overflow: ellipsis; background: color-mix(in srgb, var(--palette-gold) 45%, transparent); border-left: 2px solid var(--palette-ink); }
 .chronicle-seasons { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px; align-items: stretch; }
 .chronicle-season-shift { min-height: 44px; padding: 0 10px; }
 .chronicle-season-cells { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 2px; margin: 0; padding: 0; list-style: none; }
