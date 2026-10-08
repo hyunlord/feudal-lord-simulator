@@ -1,0 +1,43 @@
+# Engine B → 렌더: EB-WEIGHT 결과 가시성 인계
+
+상태: 소스 소비 경로 확인·화면 검증 미실시. EB-WEIGHT(c)의 사건별 실제 변화가 어느 철에 보이는지 확인하기 위한 인계다. 엔진 기록·읽기 모델·화면 소비·실제 캡처를 같은 완료 증거로 세지 않는다. UI 변경이나 브라우저 실행은 하지 않았다.
+
+## 실제 소비 경로
+
+| 표면 | 소스 위치 | 표시 조건·한계 |
+|---|---|---|
+| 현재 철 결과 소식 | `src/ui/results/decisionThread.ts:129` → `src/ui/eventStory.ts:230` | 영주 모드, 현재 철에 도착한 trace 결과, 남아 있는 원인 결정 기록. 청지기 관계 변화만인 묶음은 철 보고로 보낸다. 소식은 원인 결정의 연대기로 연결한다. |
+| 소식 노출 | `src/ui/hud/useStoryPresentation.ts:79` | world-first 지연 뒤, 미해제, 현재 소식 또는 끝난 뒤60초 이내. 최대3개이며 가문·기한 있는 미해결 결정이 우선한다. 결과 기록이 있어도 해당 칩이 화면에 남는다는 보장은 없다. |
+| 연대기 원인/결과 링크 | `src/ui/chronicle/decisionThreadModel.ts:31` | 원인 결정이 history index에 있어야 링크를 만든다. 결과 대상도 남아 있어야 하며 뒤따른 결과는12개 뒤 나머지 개수로 접는다. |
+| 주된 원인 문장 | `src/ui/chronicle/chronicleScreenModel.ts:499` | 첫 `because` 항목을 사용한다. 첫 원인이 없으면 일반 문장만 남고 다른 원인으로 대체하지 않는다. |
+| 영주 연말 결산 | `src/ui/results/lordYearReview.ts:27` → `src/ui/screens/AppModals.tsx:110`·`:154` | 엔진 yearReview를 읽고 year_review 모달에서 표시한다. 개별 절은8줄까지이며 나머지는 개수로 표시한다. |
+| 청지기 철 보고 | `src/ui/lord/steward/seasonStewardModel.ts:80` → `src/ui/lord/steward/SeasonStewardSection.tsx:10` | 닫힌 철 구간의 stewardReport를 사용한다. 개별 상세는 펼쳐야 보인다. 등록 사건의 구간 기준은 settledTick이 아닌 offeredTick이다(`src/engine/decisionReads.ts:203`). |
+
+### 작성된 결과 문장과 실제 효과
+
+`seasonStewardModel.ts:60`의 사건 상세 결과는 `V4_COPY`의 선택 `chronicle` 문장과 occurrence의 side 관계다. 이것은 실제 trace 결과를 재검증해 만든 문장이 아니다. 따라서 청지기 보고 포함률·문장 렌더링만으로 실제 건설·수입·관계·권리 변화가 보였다고 판정할 수 없다. 각 사건의 실제 효과 기록/대상과 화면 표시를 별도로 대조해야 한다.
+
+`src/engine/decisionReads.ts:53`의 traceInRange는 원인 기록이 없어도 decisionTick=null인 행을 반환할 수 있다. UI의 `decisionThread.ts:108`은 원인 없는 묶음을, 같은 파일`:91`은 대상 결과 기록이 없는 문장을 건너뛴다. 연대기도 원인/대상 없는 링크를 숨긴다. 현재 sourceMissing 전용 표시가 없으므로 trace 행 개수는 사용자가 따라갈 수 있는 링크 개수가 아니다.
+
+## 처음 보이는 철은 조건부다
+
+- **실제 효과**: 사건 응답 시각이 아니라 효과 생산자가 상태를 바꾸고 결과를 기록한 시각을 기준으로 한다. 이번 경로 감사로 모든 사건에 공통인 고정 지연을 주장하지 않는다.
+- **결과 소식**: 효과가 기록된 철에 source/target 기록이 남고 지연·우선순위·3칩 제한을 통과해야 보인다. 다른 결정 때문에 밀리거나 사용자가 열지 않을 수 있다.
+- **청지기 보고**: 해당 offeredTick이 속한 철이 닫힌 뒤 보고가 가능하다. `src/ui/seasonLedgerCard.ts:106`은 최신 닫힌 철만 읽는다. `src/App.tsx:308`은 처음만 자동으로 열고 기본을 알림으로 바꾸며, 이후 자동 표시는 사용자 설정이 필요하다. 누적 알림을 열었다고 이전 모든 철의 상세를 본 것은 아니다.
+- **연말 결산·조용한 해**: `lordYearReview.ts:53`은 조용한 해에도 season ledger의 인구·돈 변화를 남긴다. `useStoryPresentation.ts:49`는 정확한 경계 tick을 밟지 않아도 연속된 해 전환을 감지한다. 같은 파일`:177–212`에서 다른 모달 뒤에 결산을 연다. 모달은 `src/ui/stateMachine/useUiStateMachine.ts:11`에 따라 시간을 멈춘다. 이 소스 경로는10배속에서 사용자가 변화의 뜻을 알아봤다는 플레이 증거가 아니다.
+- **불러오기**: `useStoryPresentation.ts:63`은 새해 첫 철·미열람 결산·기존 UI seen mark가 있는 게임에서만 직전 해 결산을 자동 제시한다. 봇 원본 상태에는 보통 그 표시가 없으므로 준비 상태 주입과 실제 플레이 저장을 구분한다.
+
+## 기존 DGX 장면 검증 경로 — 이번에 실행하지 않음
+
+결과 소식·연대기 왕복·10배속 연말 결산의 기존 묶음:
+
+```sh
+scripts/remote/run.sh render-EB-visible-<sha7> --light -- \
+  bash scripts/deccard2ResultsCaptures.sh <output-directory>
+```
+
+- `scripts/deccard2ResultsStates.ts`: trace-season·trace-later·year-eve·year-loaded 등 준비 상태를 만든다. seen mark와 승계 대체 상태의 주입 여부를 기록한다.
+- `scripts/deccard2ResultsCaptures.mjs:111`: year-eve에서10배속 전환, 선행 모달 처리, 결산 캡처와 다시 뜨지 않음을 검사한다. 기존 상태를 쓰려면 같은 스크립트의 `--states <directory>`·`--url <DGX-server>` 경로를 사용한다.
+- `scripts/deccard2StewardCaptures.sh`: 청지기 철 보고/상세/상시 방침 화면. 내부 브라우저 스크립트는 방침 변경도 실행하므로 순수 읽기 캡처보다 범위가 넓다.
+
+기존 묶음은 일반 표면 검사다. EB56개 각각의 결과나 조용한 해를 모두 포함하지 않는다. 다음 증거에는 사건 ID·선택·실제 효과 기록 ID·원인 링크·효과가 난 철·화면을 처음 연 철·속도·뷰포트·숨김/접힘 여부를 함께 남겨야 한다. 실제 세계 변화와 보고 문장이 일치하는지, 원인이 사라진 결과가 어떻게 보이는지, 조용한 해에도 변화와 다음 행동을 읽을 수 있는지 렌더/플레이 검증으로 확인한다.

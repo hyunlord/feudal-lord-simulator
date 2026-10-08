@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import holds from '../docs/design/content-drafts-20261002/v4.2/HOLD_RECOMMENDATIONS.json';
 import { ENGINE_B_COMMAND_WEIGHT_OVERRIDES, ENGINE_B_DECISION_LAYERS } from '../src/content/registry/engineBDecisionLayers.ko';
 import { COMMAND_WEIGHT, LASTING_RATE_COMMANDS } from '../src/content/stewardPolicyConfig';
@@ -98,8 +99,14 @@ assert.equal(counts.preliminaryConditional, 13);
 assert.equal(counts.editorialLord, 9);
 assert.equal(counts.editorialSteward, 18);
 assert.deepEqual(events.map(event => event.id).sort(), executable.map(event => event.id).sort());
-const artifact = { schemaVersion: 1, status: 'static_inventory_runtime_pending', sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  sourceNote: 'Includes the uncommitted LP2-E correction to ck_evt_092 editorial label. No runtime semantic changes.',
+const sourcePaths = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z', 'src'], { encoding: 'utf8' })
+  .split('\0').filter(Boolean);
+const sourceFiles = [...new Set([...sourcePaths, 'scripts/engineBLayerInventory.ts',
+  'docs/design/content-drafts-20261002/v4.2/HOLD_RECOMMENDATIONS.json'])].sort()
+  .map(path => ({ path, sha256: createHash('sha256').update(readFileSync(path)).digest('hex') }));
+const artifact = { schemaVersion: 2, status: 'static_inventory_runtime_pending', sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+  sourceNote: 'sourceCommit is the generation checkout HEAD, not a claim that its tree equals the working sources. sourceFiles hashes the actual working bytes, including edits and untracked source files.',
+  sourceScope: 'Conservative dependency superset: all src files, the generator and HOLD recommendations. HEAD-only or documentation-only changes do not invalidate an unchanged source inventory.', sourceFiles,
   generator: 'scripts/engineBLayerInventory.ts', counts,
   invariants: { exactExecutableSet: true, missing: [], extra: [], hold38Disabled: true },
   classificationSources: ['src/engine/registryV4.ts:215,236', 'src/engine/decisionLayer.ts:66,77,92,96,109', 'src/engine/registry.ts:434'],
@@ -110,7 +117,10 @@ const artifact = { schemaVersion: 1, status: 'static_inventory_runtime_pending',
 const destination = 'docs/verification/eb-weight/layers.json';
 const serialized = JSON.stringify(artifact, null, 2) + '\n';
 if (process.argv.includes('--check')) {
-  assert.equal(readFileSync(destination, 'utf8'), serialized);
+  const recorded: unknown = JSON.parse(readFileSync(destination, 'utf8'));
+  assert.ok(typeof recorded === 'object' && recorded !== null && 'sourceCommit' in recorded
+    && typeof recorded.sourceCommit === 'string' && /^[a-f0-9]{40}$/.test(recorded.sourceCommit));
+  assert.deepEqual(recorded, { ...artifact, sourceCommit: recorded.sourceCommit });
 } else {
   mkdirSync('docs/verification/eb-weight', { recursive: true });
   writeFileSync(destination, serialized);
