@@ -14,3 +14,7 @@
 본선e5abc0e64와 B의 기하 입력 차이는 engineBDecisionLayers.ko.ts 하나다. 저장된5c7df267 결과 이후에는 본선의 surfaces.ts 설명 변경3개도 해시에 포함된다. 별도 summary 경로를 사용하는 공식 DGX gate 실행 EB-geometry-039b387f2-4e028b4에서 기존17행과 등록기2행을 함께 재측정하고 있다.2행만 남겨 이전 실패 범위를 누락하지 않는다.
 
 실행 exit0만으로 통과하지 않는다. 실제 unregisteredFramed·입력 해시·행 범위와 병합 검사를 확인한 뒤 갱신한다. 최신 변경시험451파일의 정확한 통과 기록 및 별도 source-scan 분류 문제도 독립적으로 남는다.
+
+### 완료된 실제 재측정
+
+EB-geometry-039b387f2-4e028b4는1356.1초·exit0으로 끝났다. clean4e028b474 소스의 입력 해시5ad5b96d4e84ec901baa30a6d032b4797ceab80ae5b8d339918649f30c92f898로19행·380조건 전부 측정, failures0·unopened0·warnings37·unregisteredFramed4다. [상세 결과](../verification/uiaudit1/geometry/EB-geometry-039b387f2-4e028b4/geometry.md)와 현재 summary를 실제 출력으로 갱신했다. 입력 노후화는 해소됐지만 위4개 root는 그대로이며 병합 관문 미해결이다. 기준선·예외·관문 코드는 바꾸지 않았다.

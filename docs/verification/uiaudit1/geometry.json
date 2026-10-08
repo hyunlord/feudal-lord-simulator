@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-SUIT-lead-geometry-5c7df26-5c7df26",
- "commit": "5c7df267f217d3d220a1a859e86d46f899da59d0",
+ "run": "EB-geometry-039b387f2-4e028b4",
+ "commit": "4e028b474b49f20aa9e0788cd438dc94973a9ac8",
  "dirty": false,
  "inputs": 2512,
- "inputHash": "70528b04ce8d3735ac92e37867b7bbc1d8bbdb498981c6da910b9b7ee3d8ed25",
- "measuredAt": "2026-10-08T19:54:03.293Z",
- "report": "docs/verification/uiaudit1/geometry/render-SUIT-lead-geometry-5c7df26-5c7df26/geometry.json",
+ "inputHash": "5ad5b96d4e84ec901baa30a6d032b4797ceab80ae5b8d339918649f30c92f898",
+ "measuredAt": "2026-10-08T20:53:50.698Z",
+ "report": "docs/verification/uiaudit1/geometry/EB-geometry-039b387f2-4e028b4/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,9 +24,9 @@
    "extreme"
   ]
  },
- "rows": 17,
- "conditions": 340,
- "measured": 340,
+ "rows": 19,
+ "conditions": 380,
+ "measured": 380,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
@@ -64,6 +64,16 @@
    "byCheck": {}
   },
   "modal.history.biography": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry-hold": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
