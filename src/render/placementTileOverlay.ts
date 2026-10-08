@@ -14,7 +14,11 @@ import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./s
 // INSTALL-18: Wave 18's patterns lie over the fills, one per tile (fine = dots; blocked by what is on the tile = the 45°
 // hatch; a whole-building reason = the cross-hatch), and six reasons draw their Wave 18 picture; until a picture loads
 // (or when it fails) the code hatch and the P0 icon stay.
+// INSTALL-18 grey check (user 2026-10-08): the outline itself says it — a placeable tile has a solid outline, a blocked
+// tile a thick dashed one and a big ✕ across its middle (code, not a picture), so the two part without colour or pattern.
 const HATCH_SPACING_PX = 6;
+const DASH_PX = [7, 5] as const;
+const CROSS_HALF = 0.32; // the ✕'s half-span as a share of the tile's half-width / half-height
 const ICON_PX = 20;
 
 const REASON_ICON: Readonly<Record<TileMarkReason, readonly [UiIconSheet, string]>> = {
@@ -57,6 +61,34 @@ function hatch(context: CanvasRenderingContext2D, tx: number, ty: number, zoom: 
   context.restore();
 }
 
+/** A thick dashed outline on the current path: a light rim under an ink dash (screen pixels kept at any zoom). */
+function dashedOutline(context: CanvasRenderingContext2D, zoom: number, width: number): void {
+  context.setLineDash?.(DASH_PX.map(px => px / zoom));
+  applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
+  context.lineWidth = (width + 2) / zoom;
+  context.stroke();
+  applyPaletteStroke(context, PALETTE.ink, zoom);
+  context.lineWidth = width / zoom;
+  context.stroke();
+  context.setLineDash?.([]);
+}
+
+/** A big ✕ across the tile's middle, light rim under ink. */
+function cross(context: CanvasRenderingContext2D, tx: number, ty: number, zoom: number): void {
+  const centre = tileToScreen(tx, ty);
+  const dx = (TILE_W / 2) * CROSS_HALF; const dy = (TILE_H / 2) * CROSS_HALF * 2;
+  context.beginPath();
+  context.moveTo(centre.sx - dx, centre.sy - dy); context.lineTo(centre.sx + dx, centre.sy + dy);
+  context.moveTo(centre.sx + dx, centre.sy - dy); context.lineTo(centre.sx - dx, centre.sy + dy);
+  context.lineCap = "round";
+  applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
+  context.lineWidth = 6 / zoom;
+  context.stroke();
+  applyPaletteStroke(context, PALETTE.ink, zoom);
+  context.lineWidth = 3 / zoom;
+  context.stroke();
+}
+
 export function drawMarkTile(context: CanvasRenderingContext2D, mark: TileMark, zoom: number): void {
   const centre = tileToScreen(mark.tx, mark.ty);
   context.save();
@@ -65,9 +97,11 @@ export function drawMarkTile(context: CanvasRenderingContext2D, mark: TileMark, 
     if (mark.contact === true) { context.fillStyle = withAlpha(placementFineColour(), 0.3); context.fill(); }
     if (!mark.ok && !drawTilePattern(context, HUD_PATTERN_ART.hatch, centre.sx, centre.sy, 0.35)) hatch(context, mark.tx, mark.ty, zoom, 0.35);
     traceDiamond(context, mark.tx, mark.ty);
-    context.globalAlpha *= mark.ok ? 0.35 : 0.8;
-    applyPaletteStroke(context, mark.ok ? PALETTE.ink : PALETTE.vermilion, zoom);
-    context.stroke();
+    if (mark.ok) {
+      context.globalAlpha *= 0.35;
+      applyPaletteStroke(context, PALETTE.ink, zoom);
+      context.stroke();
+    } else dashedOutline(context, zoom, 2);
     context.restore();
     return;
   }
@@ -76,12 +110,17 @@ export function drawMarkTile(context: CanvasRenderingContext2D, mark: TileMark, 
   const pattern = mark.ok ? HUD_PATTERN_ART.ok : mark.reason === null || TILE_REASONS.has(mark.reason) ? HUD_PATTERN_ART.hatch : HUD_PATTERN_ART.cross;
   if (!drawTilePattern(context, pattern, centre.sx, centre.sy) && !mark.ok) hatch(context, mark.tx, mark.ty, zoom, 0.75);
   traceDiamond(context, mark.tx, mark.ty);
-  // A light rim reads on grass and forest alike; the ink outline sits inside it.
-  applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
-  context.lineWidth = 3 / zoom;
-  context.stroke();
-  applyInkOutline(context, zoom);
-  context.stroke();
+  if (mark.ok) {
+    // A light rim reads on grass and forest alike; the ink outline sits inside it — solid: this tile takes the building.
+    applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
+    context.lineWidth = 3 / zoom;
+    context.stroke();
+    applyInkOutline(context, zoom);
+    context.stroke();
+  } else {
+    dashedOutline(context, zoom, 3);
+    cross(context, mark.tx, mark.ty, zoom);
+  }
   context.restore();
   if (mark.icon && mark.reason !== null) {
     const [sheet, cell] = REASON_ICON[mark.reason];
