@@ -75,7 +75,7 @@ test("TA-3 TA-4 a proposal's score is the sum of its named reasons; the needs co
   assert.ok(proposals.some(proposal => proposal.reasons.some(reason => reason.name === "need")));
 });
 
-test("DTR-15 a needed building its builder refuses (a grudge among its reasons) waits a year, then falls to the community at a premium; a hoard is not a want of room", () => {
+test("DTR-15 a needed building its builder refuses (a grudge among its reasons) waits a year, then falls to the community at a premium", () => {
   const week = toWeek(lordTown(), 1);
   // The merchants at odds with the lord and the dues at their highest: the storehouse's reasons fall under the start.
   const sour: GameState = { ...week, agency: { ...week.agency!, duesPermille: 2_000 },
@@ -93,12 +93,6 @@ test("DTR-15 a needed building its builder refuses (a grudge among its reasons) 
   assert.equal(fallen.actor, "community", `after a year the community builds it (${JSON.stringify(fallen.reasons)})`);
   assert.deepEqual(fallen.fallback, { builder: "merchants", since: sour.tick - COMMUNITY_FALLBACK.waitTicks });
   assert.ok(!fallen.reasons.some(reason => reason.name === "dues"), "the community's own reasons");
-  // The community's own bar: stores holding a hoard of timber are no want of room.
-  const store = waited.buildings.find(building => building.kind === "storehouse")!;
-  const hoard: GameState = { ...waited, buildings: waited.buildings.map(building => building === store
-    ? { ...building, inventory: { ...building.inventory, timber: COMMUNITY_FALLBACK.storageHoard } } : building) };
-  assert.equal(proposal(hoard).fallback, undefined);
-  assert.equal(proposal(hoard).refusedBy, undefined);
   // The news line (the year's review reads the same record).
   assert.match(HISTORY_TEMPLATES.consequence!({ key: "community_built", builder: "merchants", what: "storehouse", delay: 5_000, premium: 60, treasury: 60 }),
     /상인 가문이 거절해 공동체가 대신 지었다 — .+, 1년 1철 늦게, 금고 /);

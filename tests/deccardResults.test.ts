@@ -147,17 +147,23 @@ const appended = (state: GameState, records: readonly Line[]): GameState => ({
     subject: { type: "town" as const, id: "town" }, ...record }) as HistoryRecord)] },
 });
 
-test("DEC-CARD results (A3): the lord's death names him, his age and who leads the house now (the engine's manorLord)", () => {
+test("DEC-CARD results (A3, DEC-CARD-2): the lord's death is the engine's succession — its own sentence, and the heir it names leads the house now", () => {
   const lord = manorLord(town.persons!.people, lordshipOf(town).house.order, 1301)!;
+  const heir = town.persons!.people.find(person => person.id !== lord.id && person.alive)!;
   const dead = { ...lord, alive: false, deathYear: 1301 };
   const after = appended({ ...town, persons: { ...town.persons!, people: town.persons!.people.filter(person => person.id !== lord.id), past: [...town.persons!.past, dead] } },
-    [{ kind: "person", template: "person.died", params: { cause: "age", age: 20 }, subject: { type: "person", id: lord.id } }]);
+    [{ kind: "person", template: "house.succession", subject: { type: "person", id: heir.id }, actors: [{ type: "person", id: lord.id }],
+      params: { deceasedId: lord.id, deadAge: 20, died: 1, cause: "age", heirId: heir.id, heirAge: 1301 - heir.birthYear, kin: "kin" } }]);
   const view = houseChangeView(after)!;
   assert.equal(view.kind, "lord_died");
   assert.equal(view.title, RESULTS_COPY.house.titles.lord_died);
-  assert.deepEqual(view.happened, [RESULTS_COPY.house.lordDied(personDisplayName(lord), 20)]);
-  const next = manorLord(after.persons!.people, lordshipOf(after).house.order, 1301);
-  assert.equal(view.heirId, next?.id ?? null);
+  const record = after.history!.records.at(-1)!;
+  assert.deepEqual(view.happened, [recordSentence(after, record)]);
+  assert.ok(view.happened[0]!.includes(personDisplayName(lord)) && view.happened[0]!.includes(personDisplayName(heir)), view.happened[0]);
+  assert.equal(view.heirId, heir.id);
+  assert.ok(view.heir.startsWith(RESULTS_COPY.house.lordNow(personDisplayName(heir), 1301 - heir.birthYear)), view.heir);
+  const seated = appended(town, [{ ...record, params: { ...record.params!, died: 0 } }]);
+  assert.equal(houseChangeView(seated)!.kind, "heir_seated", "a succession without a death seats the heir");
 });
 
 test("DEC-CARD results (A3): an inheritance shows the estate that changed hands (the ledger's own lines) and opens the estates screen on it", () => {

@@ -143,12 +143,7 @@ export interface Proposal {
   readonly fallback?: { readonly builder: ActorKind; readonly since: number };
 }
 
-/** DTR-15: the community's own bar — a storage need with a hoard in the stores is not its want of room. */
-function communityWants(state: GameState, planner: string): boolean {
-  if (planner !== "storage") return true;
-  return (["timber", "logs", "stone"] as const).every(resource => state.buildings.reduce((sum, building) => sum + (building.inventory?.[resource] ?? 0), 0)
-    < COMMUNITY_FALLBACK.storageHoard);
-}
+
 
 /** LM-E5 (LG-2) API: an actor's temperament, from the game seed (the same seed, the same temperaments). */
 export function actorTemperament(state: Pick<GameState, "seed">, kind: ActorKind): Temperament {
@@ -356,7 +351,7 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
     // town's need is not left for good (125-year runs: a needed storehouse at 31 points, the quarry behind it, never built).
     let refusedBy: ActorKind | undefined;
     let fallback: { readonly builder: ActorKind; readonly since: number } | undefined;
-    if (rank !== null && action.kind === "place_building" && actor !== "community" && scoreOf(scored.reasons) < START_SCORE && communityWants(state, planner)) {
+    if (rank !== null && action.kind === "place_building" && actor !== "community" && scoreOf(scored.reasons) < START_SCORE) {
       refusedBy = actor;
       const since = agency.refusedNeeds?.find(entry => entry.what === whatOf(action))?.since;
       const community = reasonsOf(state, agency, action, "community", rank, stuckWheat, stuckRoads);

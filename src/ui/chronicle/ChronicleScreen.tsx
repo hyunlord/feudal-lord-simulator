@@ -14,6 +14,8 @@ import {
   yearOfTick,
 } from "./chronicleScreenModel";
 import { DECISION_FRAME, DecisionCompareFrame } from "./DecisionCompareFrame";
+import { DecisionThread } from "./DecisionThread";
+import { decisionThread } from "./decisionThreadModel";
 import { CARD_ROW, RecordCardView } from "./RecordCardView";
 import { SnapshotMapView } from "./SnapshotMapView";
 import { FACTION_PAGE, FactionPage } from "./FactionPage";
@@ -46,13 +48,19 @@ const DECISION_SCALE = 0.96;
 type Tile = { readonly tx: number; readonly ty: number };
 
 /** The picked record: a decision's record (or, on [그때 지도], its map), any other record's map as it was. */
-function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLookAt, onPerson, onFaction }: {
+function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLookAt, onPerson, onFaction, onRecord }: {
   readonly state: GameState; readonly item: ChronicleItem; readonly view: "record" | "map"; readonly compare: boolean;
   readonly onView: (view: "record" | "map") => void; readonly onCompare: () => void;
   readonly onLookAt: (tile: Tile) => void; readonly onPerson: (personId: string) => void; readonly onFaction: (factionId: string) => void;
+  /** DEC-CARD-2: a thread line opens its record (the decision behind, a consequence). */
+  readonly onRecord: (recordId: string, tick: number) => void;
 }) {
   const card = recordCard(state, item);
   const decision = decisionCompare(state, item.record);
+  // DEC-CARD-2 (lord mode): the record's thread. Memo (key: the record and the ledger, the factions' memories, the thread):
+  // the list's scroll re-renders the screen, and the thread reads the whole span (time stands still while it is up).
+  // why: the thread reads only these parts of the state
+  const thread = useMemo(() => decisionThread(state, item.record), [item.record, state.history, state.factions, state.trace]); // eslint-disable-line react-hooks/exhaustive-deps
   const showMap = decision === null || view === "map";
   return (
     <div className="chronicle-detail-body" data-detail={card.id} data-kind={card.kind} data-view={showMap ? "map" : "record"}>
@@ -61,6 +69,7 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
       {card.numbers === null ? null : <p className="chronicle-detail-numbers">{card.numbers}</p>}
       {card.folded ? <p className="chronicle-detail-note">{COPY.rollupNote}</p> : null}
       {showMap ? null : <DecisionCompareFrame view={decision} scale={DECISION_SCALE} />}
+      {thread === null || (showMap && decision !== null) ? null : <DecisionThread view={thread} onOpen={onRecord} />}
       <div className="chronicle-detail-map">
         {showMap ? <SnapshotMapView state={state} snapshot={card.snapshot} compare={compare} compact={false} /> : null}
         <div className="chronicle-detail-actions">
@@ -188,6 +197,12 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     const from = factionId;
     setTab("records"); setFactionId(null); setReturnFaction(from);
     setFilter({ ...DEFAULT_CHRONICLE_FILTER, severity: 0, factionId: from });
+    setSelected(recordId); setPickedTick(tick); setZoomTick(tick); setDetailView("record");
+  };
+  /** DEC-CARD-2: a thread line's record — every record shown (so it is in the list), with it picked. */
+  const openThreadRecord = (recordId: string, tick: number) => {
+    setTab("records"); setFactionId(null); setReturnFaction(null);
+    setFilter({ ...DEFAULT_CHRONICLE_FILTER, severity: 0 }); setCompare(false);
     setSelected(recordId); setPickedTick(tick); setZoomTick(tick); setDetailView("record");
   };
   const backToFaction = () => { if (returnFaction === null) return; setTab("factions"); setFactionId(returnFaction); setReturnFaction(null); };
@@ -323,7 +338,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
             {selectedItem === undefined ? <p className="chronicle-hint">{COPY.pickHint}</p>
               : <ChronicleDetail state={state} item={selectedItem} view={detailView} compare={compare} onView={view => setDetailView(view)}
                 onCompare={() => setCompare(value => !value)}
-                onLookAt={tile => onLookAt(tile)} onPerson={id => openPerson(id)} onFaction={id => openFaction(id)} />}
+                onLookAt={tile => onLookAt(tile)} onPerson={id => openPerson(id)} onFaction={id => openFaction(id)} onRecord={openThreadRecord} />}
           </aside>
         </div>
       </>}

@@ -47,10 +47,12 @@ export type AnswerWords = Readonly<{ now: readonly string[]; later: readonly str
 const say = (now: readonly string[], later: readonly string[] = []): AnswerWords => ({ now, later });
 
 export const PETITION_ANSWER_COPY = {
-  market_charter: (response: PetitionResponse, stallPermille: number | null) => response === "refuse"
+  /** `opensMarket`: the answer opens the market to the town before its era (the engine's isBuildingOpen, DTR-8). */
+  market_charter: (response: PetitionResponse, stallPermille: number | null, opensMarket: boolean) => response === "refuse"
     ? say(["시장권을 주지 않습니다. 장은 영주의 관리 아래 그대로 열립니다."])
     : say([`상인들에게 시장권을 줍니다. ${stallPermille === null || stallPermille === 1000 ? "좌판세는 그대로입니다." : `좌판세는 평소의 ${percent(stallPermille)}가 됩니다.`}`,
-      ...(response === "accept_with_price" ? ["그 대신 인가료를 받습니다."] : [])]),
+      ...(response === "accept_with_price" ? ["그 대신 인가료를 받습니다."] : [])],
+      opensMarket ? ["칙허를 내리면 마을이 장터를 세울 수 있게 됩니다. 세울지는 마을이 정합니다."] : []),
   restore_right: {
     accept: say(["권리를 되삽니다. 영주의 칭호도 곧바로 돌아옵니다."]),
     haggled: (returns: string) => say(["값을 깎아 권리를 되삽니다."], [`칭호는 ${returns}에 돌아옵니다.`]),

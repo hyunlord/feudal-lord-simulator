@@ -5,14 +5,17 @@ import { wave8FrameLayerStyle } from "../wave8Art";
 import { seasonSceneStyle } from "../wave19Art";
 import { Button } from "../kit";
 import { ResourceGlyph } from "../ResourceArtwork";
+import { SeasonStewardSection } from "../lord/steward/SeasonStewardSection";
 
 // UI-3 season ledger card (S-28, a modal: time stops while it is up). The Wave 8 scroll: three scenes (the season's
 // biggest changes, UI-4b: Wave 19 icons chosen from the history ledger) in its header slots, their names under the
 // title (no hover-only meaning), then the numbers, what happened and the next objective.
 const SCENE_ICON_PX = 30;
 
-export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange, first = false }: {
+export function SeasonLedgerCard({ model, onResume, onHint, onPolicy, auto, onAutoChange, first = false }: {
   readonly model: SeasonLedgerCardModel; readonly onResume: () => void; readonly onHint: () => void;
+  /** DEC-CARD-2 (lord mode): a steward's matter's [이 종류의 방침을 정한다] — the lord screen's standing policies on its kind. */
+  readonly onPolicy?: ((kind: string) => void) | undefined;
   readonly auto: boolean; readonly onAutoChange: (auto: boolean) => void;
   /** LM-R1 (playtest #7): the first card that opened by itself — it asks how later seasons come (the toggle's place). */
   readonly first?: boolean;
@@ -45,6 +48,7 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange, 
                 <ResourceGlyph resource={item.resource} size={16} />{SEASON_LEDGER_COPY.held(item.name, item.amount)}</span>)}</p>}
             {model.clothLines.map(line => <p key={line} className="season-ledger-line season-ledger-cloth-money">{line}</p>)}
             <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
+            {model.steward === undefined ? null : <SeasonStewardSection view={model.steward} onPolicy={onPolicy} />}
             {model.hint === null ? null : <Button type="button" className="season-ledger-hint" onPress={() => onHint()} variant="secondary">
               <UiIcon sheet="action" cell="open" />{model.hint.text}</Button>}
           </div>

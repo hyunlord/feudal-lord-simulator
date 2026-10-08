@@ -1,0 +1,37 @@
+/* DEC-CARD-2 (lord mode only): the season card's "청지기가 처리한 일" (src/ui/lord/steward/SeasonStewardSection.tsx) and
+   the lord screen's 상시 방침 (StandingPolicyPanel.tsx). Text ≥ 12 px (tests/lmr2LordScreen.test.ts reads every lord*.css);
+   every press a kit button ≥ 44 px (48 on touch). */
+.season-steward { display: grid; gap: 3px; margin: 6px 0 4px; padding-top: 6px; border-top: 1px solid var(--palette-parchment-dark); }
+.season-steward h3 { margin: 0; font-size: 14px; line-height: 1.3; }
+.season-steward h4 { margin: 4px 0 0; font-size: 13px; line-height: 1.3; }
+.season-steward-line { margin: 0; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.season-steward-items, .season-steward-brought { display: grid; gap: 4px; margin: 2px 0; padding: 0; list-style: none; }
+.season-steward-brought { padding-left: 18px; list-style: disc; font-size: 13px; line-height: 1.45; }
+.season-steward-summary { display: flex; align-items: center; min-height: 44px; padding: 4px 8px; font-size: 13px; line-height: 1.35; text-align: left; cursor: pointer; }
+.season-steward-detail { display: grid; gap: 1px; margin: 4px 0; padding: 0 8px; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.season-steward-detail dt { margin-top: 3px; font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); }
+.season-steward-detail dd { margin: 0; }
+.season-steward-policy { justify-self: start; min-height: 44px; margin: 2px 8px 6px; font-size: 13px; }
+
+.app-shell .lord-standing { display: grid; gap: 6px; color: var(--palette-ink); }
+.app-shell .lord-standing h3 { margin: 0; font-size: 15px; line-height: 1.3; }
+.app-shell .lord-standing h4 { margin: 4px 0 0; font-size: 14px; line-height: 1.3; }
+.app-shell .lord-standing-art { max-width: 100%; border-radius: 2px; background-color: var(--palette-vellum); }
+.app-shell .lord-standing-line { margin: 0; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-standing-family { display: grid; gap: 4px; padding-top: 6px; border-top: 1px solid var(--palette-parchment-dark); }
+.app-shell .lord-standing-all { display: grid; gap: 2px; }
+.app-shell .lord-standing-all-toggle { min-height: 44px; justify-self: start; font-size: 13px; }
+.app-shell .lord-standing-kinds, .app-shell .lord-standing-options, .app-shell .lord-standing-does { margin: 0; padding: 0; list-style: none; }
+.app-shell .lord-standing-kinds { display: grid; gap: 4px; }
+.app-shell .lord-standing-open { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; width: 100%; min-height: 44px; padding: 4px 8px; text-align: left; }
+.app-shell .lord-standing-title { font-size: 13px; font-weight: 700; line-height: 1.35; }
+.app-shell .lord-standing-current { font-size: 12px; line-height: 1.35; color: var(--palette-ink-muted); }
+.app-shell .lord-standing-detail { display: grid; gap: 6px; padding: 6px 4px 8px 8px; }
+.app-shell .lord-standing-options { display: grid; gap: 6px; }
+.app-shell .lord-standing-choice { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 8px; align-items: start; }
+.app-shell .lord-standing-set { min-height: 44px; font-size: 13px; }
+.app-shell .lord-standing-does { display: grid; gap: 1px; font-size: 12px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+@media (pointer: coarse) {
+  /* !important: the 44 px touch floor (uiBoundaries.css) is !important, so a 48 px tablet target must be too (the kit's own rule). */
+  .season-steward-summary, .season-steward-policy, .app-shell .lord-standing-open, .app-shell .lord-standing-set, .app-shell .lord-standing-all-toggle { min-height: 48px !important; }
+}

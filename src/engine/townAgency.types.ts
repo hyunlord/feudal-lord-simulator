@@ -134,6 +134,18 @@ export interface AgencyState {
   readonly lastWalk?: AgencyWalk;
   /** DTR-15 (save v52): the needs their builders refuse, while they do (absent when none). */
   readonly refusedNeeds?: readonly RefusedNeed[];
+  /** DUES-REL (save v53): the stall fee agreed at a registry answer (absent when none was). */
+  readonly duesAgreement?: DuesAgreement;
+}
+
+/** DUES-REL: a stall fee agreed with a faction at a registry answer — its rate, when, with whom, the answer; when broken. */
+export interface DuesAgreement {
+  readonly permille: number;
+  readonly tick: number;
+  readonly faction: string;
+  readonly occurrenceId: string;
+  /** The tick the lord raised the fee above it himself (the agreement ends). */
+  readonly brokenTick?: number;
 }
 
 /** TA-13: a week's walk kept for the next weeks while nothing changes — its needs, proposals and requests. */

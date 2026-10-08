@@ -1,43 +1,41 @@
-import { PETITION_DEFS, type PetitionDef, type PetitionResponse } from "../../../content/chapterConfig";
+import { isBuildingOpen } from "../../../world/placement";
+import { PETITION_DEFS, type PetitionResponse } from "../../../content/chapterConfig";
 import { LEGACY_AXIS_COPY } from "../../../content/legacyCopy.ko";
 import { LEGACY_BALANCE, LEGACY_BY_RESPONSE } from "../../../content/legacyConfig";
 import { LORDSHIP_BALANCE } from "../../../content/lordshipConfig";
 import { PLAGUE_BALANCE } from "../../../content/plagueConfig";
 import { MARKET_TOLLS_RIGHT_ID, REORGANISATION_BALANCE as RG } from "../../../content/reorganisationConfig";
-import { WAR_BALANCE } from "../../../content/warConfig";
 import type { GameState } from "../../../engine/engine.types";
-import { SEASON_TICKS } from "../../../engine/eventSchedule";
-import { factionChanges } from "../../../engine/factions";
 import type { HistoryDecision } from "../../../engine/history.types";
-import { answerLegacyPetition, legacyOf, legacyScores } from "../../../engine/legacy";
+import { legacyOf, legacyScores } from "../../../engine/legacy";
 import { lordshipOf } from "../../../engine/lordshipState";
-import { answerPlaguePetition } from "../../../engine/plague";
 import { openPetitions } from "../../../engine/politics";
 import type { PetitionRecord } from "../../../engine/politics.types";
 import { woolInKindSplit } from "../../../engine/pastureWool";
-import { answerReorganisationPetition, revoltPressure } from "../../../engine/reorganisation";
+import { revoltPressure } from "../../../engine/reorganisation";
 import { calendarLabel } from "../../../engine/scenarioState";
-import { answerWarPetition, marketExpansionPermille, murageTollPermille, warTaxPermille, woolInKindPerSeason, woolLevyAmount } from "../../../engine/war";
+import { marketExpansionPermille, murageTollPermille, warTaxPermille, woolInKindPerSeason, woolLevyAmount } from "../../../engine/war";
 import { treasuryBalance } from "../../../ledger/ledger";
-import { factionDisplayName } from "../../../content/factionCopy.ko";
 import { petitionDecisionView } from "../../decisionModels";
 import type { HeirCandidateView } from "../../heirCandidateModel";
 import { courtLine } from "../../lordCardsModel";
 import { PETITION_COPY } from "../../petitionCopy.ko";
 import { isPetitionDefId, type PetitionDefId, type PetitionFrom } from "../../petitionPresentation";
 import { perState } from "../../perState";
-import { DECISION_CARD_COPY } from "../decisionCardCopy.ko";
 import type { DecisionCardView, DecisionChoiceView } from "../decisionCardTypes";
-import { afterAnswer, remembersOf } from "../remembers";
+import { outlookLater, outlookOf, outlookTreasury, type AnswerOutlook } from "../outlook";
+import { afterAnswer, remembersFor } from "../remembers";
 import { PETITION_ANSWER_COPY as ANSWER, PETITION_CARD_COPY as COPY, PETITION_STAKE, type AnswerWords } from "./petitionCardCopy.ko";
+import { deadlineLine } from "./petitionSilence";
 
 // DEC-CARD, every political petition (chapter 1's charter and the right's buy-back, the war's five, the plague's four,
-// chapter 4's four, chapter 5's four and the interlude's two). Each answer is run on the state (`afterAnswer`: the
-// reducer is pure and records the decision, so the answer's faction records are who remembers it, P-D4) and the card
-// says what the state after it shows: the treasury, the people, the merchants' gauge, the Crown's favour, the
-// instalments and the men away, the legacy's scores, the revolt's pressure (chapter 3's answers carry into chapter 4's),
-// the engine's two-season forecast and when its actual is written. Silence is run the same way: the family's own answer
-// to `expired` (as the engine runs it at the deadline), compared with each answer the card offers.
+// chapter 4's four, chapter 5's four and the interlude's two). DEC-CARD-2 (DC-D7): each answer reads the engine's outlook
+// (`answerOutlook`; null = shut): the treasury, the war tax's seasons and (lord mode) what else it sets going and who
+// remembers it. Outside lord mode the outlook gives only the treasury, so who remembers is the dry run's faction records
+// (`afterAnswer`; P-D4). The dry run gives what the outlook lacks, everywhere: the people, the merchants' gauge, the
+// Crown's favour, the instalments and the men away, the legacy's scores, the revolt's pressure (chapter 3's answers carry
+// into chapter 4's), the war tax's rate, the engine's two-season forecast and when its actual is written. Silence is run
+// the same way: the family's own answer to `expired` (as the engine runs it at the deadline), compared with each answer.
 // Once per state (`perState`): only the card that is up reads it; the chips read `petitionPresentation`.
 
 export type PetitionCardView = Readonly<{
@@ -53,7 +51,8 @@ function answerWords(defId: PetitionDefId, state: GameState, after: GameState, p
   heir: HeirCandidateView | undefined): AnswerWords {
   switch (defId) {
     case "market_charter":
-      return ANSWER.market_charter(response, after.politics?.rights.find(right => right.petitionId === petition.id)?.stallFeePermille ?? null);
+      return ANSWER.market_charter(response, after.politics?.rights.find(right => right.petitionId === petition.id)?.stallFeePermille ?? null,
+        !isBuildingOpen(state, "market") && isBuildingOpen(after, "market"));
     case "restore_right": {
       const decline = lordshipOf(after).decline;
       if (response === "refuse") return ANSWER.restore_right.refuse(label(state, decline?.petitionFrom ?? state.tick));
@@ -126,10 +125,10 @@ function decisionOf(before: GameState, after: GameState): HistoryDecision | null
   return (after.history?.records ?? []).find(record => !known.has(record.id) && record.kind === "decision")?.decision ?? null;
 }
 
-/** What every answer may add, read off the state after it: the treasury, the people, the gauge, the favour, the scores. */
-function nowLines(state: GameState, after: GameState): string[] {
+/** What every answer may add: the treasury (the outlook's), then off the state after it the people, the gauge, the favour, the scores. */
+function nowLines(state: GameState, after: GameState, outlook: AnswerOutlook): string[] {
   const lines: string[] = [];
-  const moved = treasuryBalance(after) - treasuryBalance(state);
+  const moved = outlookTreasury(outlook);
   lines.push(moved > 0 ? COPY.treasuryIn(moved) : moved < 0 ? COPY.treasuryOut(-moved) : COPY.treasurySame);
   const people = after.population - state.population;
   if (people !== 0) lines.push(people > 0 ? COPY.peopleIn(people) : COPY.peopleOut(-people));
@@ -145,8 +144,8 @@ function nowLines(state: GameState, after: GameState): string[] {
   return lines;
 }
 
-/** What follows: the instalments, the men away, the war tax, the revolt's pressure, the forecast and its actual's date. */
-function laterLines(state: GameState, after: GameState): string[] {
+/** What follows: the instalments, the men away, the war tax, the revolt's pressure, the outlook's later keys, the forecast and its actual's date. */
+function laterLines(state: GameState, after: GameState, outlook: AnswerOutlook): string[] {
   const lines: string[] = [];
   const war = state.war, next = after.war;
   if (next !== undefined) {
@@ -154,7 +153,9 @@ function laterLines(state: GameState, after: GameState): string[] {
     if (next.conscripts !== undefined && war?.conscripts === undefined) {
       lines.push(COPY.conscripts(next.conscripts.men, label(state, next.conscripts.returnTick), next.conscripts.lostHouseIds.length));
     }
-    if ((next.taxSeasonsLeft ?? 0) > (war?.taxSeasonsLeft ?? 0)) lines.push(COPY.warTax(next.taxSeasonsLeft ?? 0, warTaxPermille(after)));
+    // The war tax's seasons are the outlook's (lord mode); outside it, the dry run's. Its rate is the dry run's.
+    const traced = outlook.later.some(row => row.key === "war_tax");
+    if (!traced && (next.taxSeasonsLeft ?? 0) > (war?.taxSeasonsLeft ?? 0)) lines.push(COPY.warTax(next.taxSeasonsLeft ?? 0, warTaxPermille(after)));
   }
   if (state.plague !== undefined || state.reorganisation !== undefined) {
     // RG-8: the pressure's causes before and after; a chapter-3 answer is carried into chapter 4's (no reorganisation yet).
@@ -165,62 +166,12 @@ function laterLines(state: GameState, after: GameState): string[] {
       if (delta !== 0) lines.push(COPY.pressure(COPY.pressureCause[id] ?? id, delta, state.reorganisation === undefined));
     }
   }
+  lines.push(...outlookLater(state, outlook, { war_tax: rows => [COPY.warTax(rows.at(-1)?.perSeason ?? 0, warTaxPermille(after))] }));
   const decision = decisionOf(state, after);
   const forecast = decision?.predicted.treasury;
   if (forecast !== undefined) lines.push(COPY.forecast(forecast, treasuryBalance(state)));
   if (decision?.actualDueTick !== undefined) lines.push(COPY.actualDue(label(state, decision.actualDueTick)));
   return lines;
-}
-
-/**
- * Silence as the engine runs it at the deadline: the family's own answer to `expired`, the petition marked so (the
- * calendar's petitions only take the gauge's expiry). A buy-back offer has no deadline (null).
- */
-function expiredState(state: GameState, petition: PetitionRecord, def: PetitionDef): GameState | null {
-  const trigger = def.trigger ?? "calendar";
-  if (trigger === "decline_recovered") return null;
-  const answered = trigger === "war" ? answerWarPetition(state, petition, "expired") : trigger === "plague" ? answerPlaguePetition(state, petition, "expired")
-    : trigger === "reorganisation" ? answerReorganisationPetition(state, petition, "expired") : trigger === "legacy" ? answerLegacyPetition(state, petition, "expired") : state;
-  const politics = answered.politics;
-  if (politics === undefined) return null;
-  const gauge = trigger === "calendar" ? Math.max(0, Math.min(100, politics.merchantGauge + def.expiredGauge)) : politics.merchantGauge;
-  return { ...answered, politics: { ...politics, merchantGauge: gauge,
-    petitions: politics.petitions.map(entry => entry.id === petition.id ? { ...entry, response: "expired" as const, respondedTick: state.tick } : entry) } };
-}
-
-/** The last tick an answer is taken: the end of the def's last year (the calendar's), else a season after it came. */
-function lastAnswerTick(petition: PetitionRecord, def: PetitionDef): number | null {
-  const trigger = def.trigger ?? "calendar";
-  if (trigger === "decline_recovered" || trigger === "calendar") return null;
-  const seasons = trigger === "war" ? WAR_BALANCE.answerSeasons : 1;
-  return Math.ceil((petition.arrivedTick + seasons * SEASON_TICKS) / SEASON_TICKS) * SEASON_TICKS - 1;
-}
-
-const movesKey = (moves: ReadonlyMap<string, number>) => [...moves].filter(([, delta]) => delta !== 0).sort(([a], [b]) => a.localeCompare(b)).map(([id, delta]) => `${id}:${delta}`).join(",");
-
-function deadlineLine(state: GameState, petition: PetitionRecord, def: PetitionDef,
-  answers: readonly Readonly<{ label: string; after: GameState | null }>[]): string {
-  const expired = expiredState(state, petition, def);
-  if (expired === null) return COPY.noDeadline;
-  const last = lastAnswerTick(petition, def);
-  const until = last === null ? COPY.untilYearEnd(def.toYear) : COPY.until(label(state, last));
-  const silent = new Map<string, number>();
-  for (const change of factionChanges(state, expired)) silent.set(change.factionId, (silent.get(change.factionId) ?? 0) + change.delta);
-  const money = treasuryBalance(expired) - treasuryBalance(state);
-  const same = answers.find(answer => {
-    if (answer.after === null || treasuryBalance(answer.after) - treasuryBalance(state) !== money) return false;
-    const moves = new Map<string, number>();
-    for (const change of factionChanges(state, answer.after)) moves.set(change.factionId, (moves.get(change.factionId) ?? 0) + change.delta);
-    return movesKey(moves) === movesKey(silent);
-  });
-  if (same !== undefined && silent.size > 0) return `${until} ${COPY.silenceSame(same.label)}`;
-  const who = [...silent].filter(([, delta]) => delta !== 0).map(([id, delta]) => {
-    const view = expired.factions?.factions.find(entry => entry.id === id);
-    return COPY.silenceWho(factionDisplayName(id, view?.name ?? id), DECISION_CARD_COPY.feels(delta));
-  });
-  const gauge = { from: state.politics?.merchantGauge ?? 50, to: expired.politics?.merchantGauge ?? 50 };
-  const lines = [who.length === 0 ? COPY.silenceNothing : COPY.silenceMoves(who.join(", ")), ...(gauge.to === gauge.from ? [] : [COPY.gauge(gauge.from, gauge.to)])];
-  return `${until} ${lines.join(" ")}`;
 }
 
 export const petitionCard = perState((state: GameState): PetitionCardView | null => {
@@ -230,12 +181,16 @@ export const petitionCard = perState((state: GameState): PetitionCardView | null
   const def = PETITION_DEFS.find(entry => entry.id === petition.defId);
   const { presentation } = view;
   const defId = isPetitionDefId(petition.defId) ? petition.defId : null;
-  const answers = view.options.map(option => ({ option, after: afterAnswer(state, { type: "petition_response", petitionId: petition.id, response: option.choice }) }));
-  const choices = answers.map(({ option, after }): DecisionChoiceView => {
-    if (after === null) return { id: option.choice, label: option.label, now: [], later: [], remembers: [], refusal: COPY.refused };
+  const answers = view.options.map(option => {
+    const command = { type: "petition_response", petitionId: petition.id, response: option.choice } as const;
+    const outlook = outlookOf(state, command);
+    return { option, outlook, after: outlook === null ? null : afterAnswer(state, command) };
+  });
+  const choices = answers.map(({ option, outlook, after }): DecisionChoiceView => {
+    if (outlook === null || after === null) return { id: option.choice, label: option.label, now: [], later: [], remembers: [], refusal: COPY.refused };
     const words = defId === null ? { now: [], later: [] } : answerWords(defId, state, after, petition, option.choice, option.heir);
-    return { id: option.choice, label: option.label, now: [...words.now, ...nowLines(state, after)], later: [...words.later, ...laterLines(state, after)],
-      remembers: remembersOf(state, after), refusal: null };
+    return { id: option.choice, label: option.label, now: [...words.now, ...nowLines(state, after, outlook)],
+      later: [...words.later, ...laterLines(state, after, outlook)], remembers: remembersFor(state, outlook, after), refusal: null };
   });
   const from = presentation.from;
   const behalf = PETITION_COPY.onBehalf[presentation.defId];

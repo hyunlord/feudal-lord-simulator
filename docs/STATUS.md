@@ -1,4 +1,4 @@
-- **Engine B 첫5건 게시 준비**: 구현4f80b042·목수 수정1faa9c9c·그림73d41b71, 정적 활성45→50·HOLD38 유지. DGX20년 seed셋9/12/11건, 새083만1건 관측; Mac EVA50/50·기하40조건 실패0. 최종 변경 시험·병합 검사·본선 게시 대기. [근거](verification/lm-e9c-batch1/README.md).
+- **Engine B 첫5건 게시 완료**: 본선 `b399b03c`(2026-10-08 12:24 KST 확인), 정적 활성45→50·HOLD38 유지. DGX20년 seed셋9/12/11건, 새083만1건(lord/large_sum) 관측. Mac EVA50/50·기하40조건 실패0·DGX 변경시험4,383통과/11건너뜀/실패0, Mac check:merge 통과. [근거](verification/lm-e9c-batch1/README.md).
 <!-- RB-PURVEYOR geometry: astra-PURVEYOR-geometry-029a112, 80 conditions, 0 failures; final test/push receipts in delivery ZIP. -->
 - **RB-PURVEYOR 왕실 구매 담당자5장**: 제품 `f012955c`. 실제 구매 영수증과 창고 도로 접근으로 잠깐 표시하고, 원본 장부4방향·8프레임 손 연결을 공용 합성기에 보존했다. 자연 봄 및 명시적 계절 QA의 줌1/.6 전후를 확인했다. 엔진 인물·재고·저장은 그대로다. [보고서](verification/purveyor/README.md).
 - **RB-HEIGHT-L0D 작은 우진각 집5장**: 제품 `8c49302b`. L0 d 완성 본체와 새집·풍화·눈·판자층을 기존 선택 계약에 연결했다. 준비 저장 전후18쌍과 실제 보행자 비교, 대상 해빙 alpha0.44804를 확인했다. 문짝 대리 측정·fresh 목재 겹침은 한계로 남겼다. 누적14/23종,9종 후속. [보고서](verification/height-l0d/README.md).
@@ -39,6 +39,7 @@
 
 ## 현재 단계
 
+- **좌판세와 상인 마음(DUES-REL)·창고 물자별 상한(STORE-1) — 완료, 본선 병합**(Claude Code, 엔진 세션): 좌판세 명령은 마음을 움직이지 않고, 철마다 기준(합의 또는 관습)보다 높으면 조금씩 식고 낮으면 조금씩 풀린다. 등록기 답으로 정한 좌판세는 10년 합의, 영주가 스스로 어기면 한 번 크게("○○년 합의를 어겨서"). 창고는 한 물자가 독차지하지 않게 나무 절반·원석 절반(목책 뒤, 성벽 공사 중 예외), 넘치는 나무는 수레꾼이 판다. 125년 판 세 seed 채석장 1329~1333·교회 1334~1336, 창고 7·13·8, 가드레일 불변. 저장 v53. [보고서](verification/dues-rel/REPORT.md). 다음: LONGRUN-1 → LANDMARK-GROW → EXT-2, 후보 GROW-BLOCK·SUIT-THREAD.
 - **결정의 실(DEC-TRACE)·결정의 무게(GP7-ENGINE) — 완료, 본선 병합**(Claude Code, 엔진 세션): 작은 일은 청지기가 상시 방침(관습대로/가볍게/엄하게)으로 처리하고 영주에게는 무거운 결정만 온다. 결정마다 이후 결과(소송·사업·돈의 흐름·세력 행동·위기)에 원인이 달리고, 한 해 결산·청지기 철 보고·금고 내역 읽기 모델이 있다. 125년 판 결과 87 %·한 해 최대 3·흑사병 뒤 회복 109·96·90 %, 가드레일 불변. 길에서 고친 것: 청지기가 금고에 없는 돈을 쓰지 않음, 등을 돌린 세력의 필요 사업은 공동체가 늦게·비싸게, 봇이 합의한 좌판세를 지킴(DTR-11~17). [보고서](verification/dec-trace/REPORT.md). 다음: LONGRUN-1, EXT-2, DUES-REL.
 - **inbox 장부의 모양 검사(LEDGER-FORM) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션): `INBOX_LEDGER.csv`의 모든 행 CRLF·`file` 열 바이트 순서를 `check:merge`가 확인한다 — 장부를 바꾸는 푸시는 어긋나면 거부(`FORM`), 그 밖에는 경고. 고치기 `node scripts/checks/inboxLedger.mjs --fix-form`(결정 RR11). 본선 장부는 지금 LF 80줄·순서 어긋남 15곳(렌더 B 설치 커밋들) — INBOX가 정리 중.
 - **DGX 칸 관리자(SLOT-KEEPER) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션): 줄의 규칙(관문 먼저·마지막 칸은 관문 몫, 세션마다 실험 하나)을 실행이 가져온 `heavySlots.sh`가 아니라 DGX의 칸 관리자가 지킨다 — 두 줄 맨 앞의 울타리 표와 고른 실행 하나에 여는 문(결정 RR23). 2026-10-07 엔진 B의 RR20 전 판 실험 셋이 세 칸을 다 잡은 일 때문.
@@ -76,6 +77,9 @@
 - **증거 폴더 3 MB 검사(EVIDENCE-SIZE) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 본선 푸시의 `check:merge`가 바뀐 `docs/verification/<작업>/` 폴더가 3 MB(2^20 단위)를 넘으면 거부한다(결정 RR10). 재플레이 캡처·`uiaudit1/geometry/`·`perf-trend/`는 세지 않고, 이미 넘은 asset-audit·ui9b는 기준선 크기까지다.
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
+
+- **DEC-CARD-2 결과의 실·청지기 철 보고·상시 방침·엔진 전망 — 완료, 본선 병합**(Claude Code, 렌더 A, 본선 `a858f692`): [보고서](verification/deccard2/REPORT.md), 결정 DC-D7~D16.
+  - 영주 모드: "○○년 당신의 결정 때문에" 소식 칩과 연대기의 실(엔진 `traceInRange`·`because`; 청지기의 처리·답하지 않음은 따로 말함), 연말 카드는 엔진 `yearReview`(가문의 일 먼저, 봤음은 저장 너머), 가문 카드는 엔진의 승계 기록. 철 카드에 "청지기가 처리한 일"(한 건씩 들여다보고 그 종류의 방침으로), 영주 화면에 상시 방침(관습대로·가볍게·엄하게·영주에게, 선례 길은 지움), 금고 영지별은 `treasuryBreakdown`. 모든 결정 카드의 지금·나중에·기억하는 이가 엔진 `answerOutlook`에서(주지 않는 줄은 엔진 리듀서 시험 실행, 엔진 요청으로 넘김). 칙허 받은 촌락은 장터가 잠김 없이. 기하 70줄 1,400칸 실패 0(render-DC2-geometry-a858f69). 사용자 재플레이 차례.
 
 - **INSTALL-18 Wave 18 HUD + Wave 14 남은 UI — 완료, 본선 병합**(Claude Code, 렌더 A, 본선 `55da7988`): [보고서](verification/in18/REPORT.md), 결정 IN18-D1~D7(모두 사용자).
   - 렌더 B의 그림 계약 장치로 Wave 18 33장(상태 칸·행동 칸·막힌 까닭 여섯·구역 도구 여덟·위기 여섯·잠금·깜박임 고리·태블릿 확인·지도 무늬 넷)과 Wave 14 5장(세력 판·세력 아이콘 넷). 배치 칸은 흑백에서 모양으로 갈린다 — 놓을 수 있는 칸 실선, 막힌 칸 굵은 점선 + 칸 폭 60%의 ✕(사용자 흑백 판정 통과). 청지기 단추는 얼굴, HUD 숨기기는 H 키 + 일시 정지 메뉴 한 줄. 도시 인장·특허장은 엔진 인장 필드 뒤. 흑백 판정 통과(실선 / 굵은 점선 + ✕) · 기하 39줄 622칸 실패 0(render-IN18-geometry-bfcb1fc).

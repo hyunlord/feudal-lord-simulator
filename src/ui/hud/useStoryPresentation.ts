@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
+import { BALANCE } from "../../content/balanceConfig";
 import type { GameState } from "../../engine/engine.types";
 import type { ChapterEnd } from "../../engine/politics.types";
 import { famineStatus, openPetitions } from "../../engine/politics";
-import { stateCalendar } from "../../engine/scenarioState";
+import { scenarioOf, stateCalendar } from "../../engine/scenarioState";
+import { storySeen } from "../../engine/storySeen";
+import { useGameApi } from "../../state/gameStore";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
 import type { UiModal } from "../stateMachine/uiStateMachine";
@@ -38,11 +41,30 @@ export function chapterPageDue(state: GameState): ChapterEnd | null {
 /**
  * DEC-CARD: the year whose card is due when the hook sees `year` after `previous` — the year just ended, at the first
  * tick of the next one the hook sees (10× samples every ~25 ticks, so no turn is missed; a jump of seasons within the
- * turn still counts). A load is no turn: the tick going back, or more than one year at once, only sets the new baseline
- * (the seen mark is in memory until the engine's lands, request engine-deccard-gp7 §5, so a load must not show it again).
+ * turn still counts). A load is no turn: the tick going back, or more than one year at once (yearCardDue).
  */
 export function yearTurned(previous: Readonly<{ year: number; tick: number }> | null, year: number, tick: number): number | null {
   return previous === null || tick < previous.tick || year !== previous.year + 1 ? null : previous.year;
+}
+
+const YEAR_TICKS = BALANCE.TICKS_PER_YEAR;
+/** DEC-CARD-2: the year card's seen mark (the engine's `storySeen`, kept in the save). */
+export const yearCardId = (year: number) => `year-review:${year}`;
+
+/**
+ * DEC-CARD-2 (DC-D3's follow-up): the year whose card is due — the year just ended, unless its card was opened (the
+ * engine's seen mark, so a load does not show it again). On a live turn (yearTurned) it is due at once. After a load (or
+ * the first sight) it is due only in the new year's first season, as a chapter's page is, and only in a game the screen
+ * has played — one whose save holds the screen's marks (the bot and the harnesses never mark, so a harness's state
+ * opens no card by itself).
+ */
+export function yearCardDue(previous: Readonly<{ year: number; tick: number }> | null, state: GameState): number | null {
+  const { year } = stateCalendar(state);
+  const last = year - 1;
+  if (last < scenarioOf(state).startYear || storySeen(state, yearCardId(last))?.opened === true) return null;
+  if (yearTurned(previous, year, state.tick) !== null) return last;
+  const loaded = previous === null || state.tick < previous.tick || year > previous.year + 1;
+  return loaded && state.tick % YEAR_TICKS < YEAR_TICKS / 4 && (state.seen?.marks.length ?? 0) > 0 ? last : null;
 }
 
 export function useStoryPresentation(input: {
@@ -52,6 +74,9 @@ export function useStoryPresentation(input: {
   readonly markChapterSeen: (chapter: number) => void;
 }) {
   const { state, nowMs, blocked, topModal, pushModal, pause, markChapterSeen } = input;
+  // DEC-CARD-2: the year's card and the house card are marked read in the save (`mark_story_seen`), as they open.
+  const { dispatch } = useGameApi();
+  const markOpened = (id: string) => dispatch({ type: "mark_story_seen", id, how: "opened" });
   const seenRef = useRef(new Map<string, Seen>());
   const openedRef = useRef(new Set<string>());
   const announcedRef = useRef(new Set<string>());
@@ -66,8 +91,10 @@ export function useStoryPresentation(input: {
   // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
   const end = chapterPageDue(state);
   const year = stateCalendar(state).year;
-  // DEC-CARD (A3): the season's latest change in the lord's house (lord mode); its card opens before any petition.
+  // DEC-CARD (A3): the season's latest change in the lord's house (lord mode); its card opens before any petition. DEC-CARD-2:
+  // read once — its seen mark is the engine's (`house:<record id>`), so after a load it neither opens again nor keeps its chip.
   const house = houseChangeView(state);
+  const houseRead = (id: string) => storySeen(state, id)?.opened === true;
   // why: every render on purpose: it records what the model shows now and re-renders only when a beat is new
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -84,15 +111,16 @@ export function useStoryPresentation(input: {
     if (chapterKey !== null && !openedRef.current.has(chapterKey) && !chapterSeenRef.current.has(chapterKey)) {
       chapterSeenRef.current.set(chapterKey, now); changed = true;
     }
-    // DEC-CARD: a year turned under the hook's eyes (not behind the welcome screen): its card is due `delayMs` on.
-    const turned = blocked ? null : yearTurned(yearRef.current, year, state.tick);
-    yearRef.current = { year, tick: state.tick };
+    // DEC-CARD: a year turned under the hook's eyes (not behind the welcome screen), or (DEC-CARD-2) an unseen one after a
+    // load: its card is due `delayMs` on.
+    const turned = blocked ? null : yearCardDue(yearRef.current, state);
+    if (!blocked) yearRef.current = { year, tick: state.tick };
     if (turned !== null && !yearShownRef.current.has(turned)) { yearDueRef.current = { year: turned, sinceMs: now }; changed = true; }
     if (changed) setRevision(revision => revision + 1);
   });
   const current = new Set(beats.map(beat => beat.id));
   const shown = [...seenRef.current.values()]
-    .filter(entry => !entry.dismissed && nowMs - entry.firstSeenMs >= delayMs && (current.has(entry.beat.id) || nowMs - entry.lastSeenMs < LINGER_MS))
+    .filter(entry => !entry.dismissed && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs && (current.has(entry.beat.id) || nowMs - entry.lastSeenMs < LINGER_MS))
     .map(entry => entry.beat);
   // DEC-CARD (A3): a house change's chip is never pushed out by newer chips (at 10× a season's chips come fast).
   const pinned = shown.filter(beat => beat.kind === "house_change");
@@ -113,19 +141,21 @@ export function useStoryPresentation(input: {
   // EVENT-ART (lord mode): a registry offer (an event entry) opens its card once, after the world, the same way.
   const offer = openRegistryCards(state)[0]?.occurrence;
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
-  // DEC-CARD (A3): the house card read (opened by itself or from its chip) — in memory until the engine's seen record
-  // (request engine-lmr2-seen-and-reads §1): it does not open again, and its chip goes.
+  // DEC-CARD (A3): the house card read (opened by itself or from its chip): it does not open again, and its chip goes.
+  // DEC-CARD-2: and the save keeps it (the engine's seen mark `house:<id>`, request engine-lmr2-seen-and-reads §1).
   useEffect(() => {
     if (topModal !== "house_change" || house === null) return;
     openedRef.current.add(`house:${house.id}`);
+    if (!houseRead(`house:${house.id}`)) markOpened(`house:${house.id}`);
     const entry = seenRef.current.get(`house:${house.id}`);
     if (entry !== undefined && !entry.dismissed) { entry.dismissed = true; setRevision(revision => revision + 1); }
-  }, [topModal, house]);
+  // why: keyed by the card up and the house change; the mark reads the state and dispatches (both stable in meaning)
+  }, [topModal, house]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (blocked || topModal !== null) return;
     // DEC-CARD (A3): a change in the lord's house before any petition of the same tick.
-    if (house !== null && !openedRef.current.has(`house:${house.id}`) && ready(`house:${house.id}`)) {
-      openedRef.current.add(`house:${house.id}`); pushModal("house_change"); return;
+    if (house !== null && !openedRef.current.has(`house:${house.id}`) && !houseRead(`house:${house.id}`) && ready(`house:${house.id}`)) {
+      openedRef.current.add(`house:${house.id}`); pushModal("house_change"); markOpened(`house:${house.id}`); return;
     }
     if (famine !== null && famine.choices.length > 0 && !openedRef.current.has(famine.eventId) && ready(`famine:${famine.eventId}`)) {
       openedRef.current.add(famine.eventId); pushModal("decision"); return;
@@ -146,7 +176,9 @@ export function useStoryPresentation(input: {
     if (end !== null && chapterKey !== null && since !== undefined && nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); markChapterSeen(end.chapter); return; }
     // DEC-CARD: the year's card, last (after the year's decisions and pages): once per year, a modal (time stops once).
     const due = yearDueRef.current;
-    if (due !== null && nowMs - due.sinceMs >= delayMs) { yearDueRef.current = null; yearShownRef.current.add(due.year); pushModal("year_review"); }
+    if (due !== null && nowMs - due.sinceMs >= delayMs) {
+      yearDueRef.current = null; yearShownRef.current.add(due.year); pushModal("year_review"); markOpened(yearCardId(due.year));
+    }
   });
   // CODE-1c: no presentation clock for the story — one timer wakes this hook when the next chip is due (its delay out),
   // a lingering chip goes, or a chapter end's chronicle may open. App's 100 ms clock stops when nothing else needs it.
