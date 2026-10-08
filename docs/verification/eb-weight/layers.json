@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "static_inventory_runtime_pending",
-  "sourceCommit": "d281483c4e0447036c5ccf062a244fb1208bb3cf",
+  "sourceCommit": "6292c595c26e60af48b15058ac7b54522603a0b0",
   "sourceNote": "sourceCommit is the generation checkout HEAD, not a claim that its tree equals the working sources. sourceFiles hashes the actual working bytes, including edits and untracked source files.",
   "sourceScope": "Conservative dependency superset: all src files, the generator and HOLD recommendations. HEAD-only or documentation-only changes do not invalidate an unchanged source inventory.",
   "sourceFiles": [
@@ -15,7 +15,7 @@
     },
     {
       "path": "src/App.tsx",
-      "sha256": "7e3137ac356efad5f2decd7d96ac324d429bc5084fdbc50a2e58ebb5c19eab35"
+      "sha256": "98740f94af79e4cbcd66068f1504b870518b3f45fcbab7a496a8bd6a8cc398a0"
     },
     {
       "path": "src/agents/carterTravelCost.ts",
@@ -3759,7 +3759,7 @@
     },
     {
       "path": "src/styles/hudShell.css",
-      "sha256": "7af2c8aa6c3fbffa40cb898d444e083a61e940ce4a8262630ec9dfa33b3c594b"
+      "sha256": "55bf90df9da6f3ab22f34af0978feac85ee90781b24e6bfe0f8974c39ca42e9c"
     },
     {
       "path": "src/styles/inspector.css",
@@ -3787,7 +3787,7 @@
     },
     {
       "path": "src/styles/lordLedger.css",
-      "sha256": "e94c57cd8c71ea7d501b3e5c41415bf5c36af6e7a3655af38f1f67836e20b197"
+      "sha256": "55ce7b1b929ac18e322a3089c302e103617a1305cbc012557694d93551d68098"
     },
     {
       "path": "src/styles/lordMode.css",
@@ -4119,15 +4119,15 @@
     },
     {
       "path": "src/ui/chronicle/chronicleScreenCopy.ko.ts",
-      "sha256": "662d134d75fd4a6d82c9d9bf66f97f49e8be58e5c0907232cdccff21470c83c5"
+      "sha256": "68265293fdbfcbb7e6df1ccec1473ac0741c6e2d761456926aff331ff22d7f95"
     },
     {
       "path": "src/ui/chronicle/chronicleScreenModel.ts",
-      "sha256": "8e6979b9696ad06162718c54dfb04c9d2bb1c53fdf27b6e631ce113a50d1c4ad"
+      "sha256": "098ef80717dd47b42b78dc3b8b30639a40d0abb64bc6831163036a4cf190a93c"
     },
     {
       "path": "src/ui/chronicle/decisionThreadModel.ts",
-      "sha256": "107b49a1f05d24b0acd9ddb04362cfcfe0d384fb09c24354fa1f3b497505d32f"
+      "sha256": "e186f31e53da1a04f3076f52ffb070151f7610963c57af8af20563d77d958f11"
     },
     {
       "path": "src/ui/chronicle/factionArt.ts",
@@ -4347,7 +4347,7 @@
     },
     {
       "path": "src/ui/eventStory.ts",
-      "sha256": "ea13b6a311de342a8c9af396282b3d413ead9a22aef0e68b5b92dd78c8a815b7"
+      "sha256": "3633b03b36cd2eb9e10def997b659588bf0c61eb9d4d12ef773822f65d02fff8"
     },
     {
       "path": "src/ui/eventStoryCopy.ko.ts",
@@ -4435,7 +4435,7 @@
     },
     {
       "path": "src/ui/hud/EventCards.tsx",
-      "sha256": "a9edb1e654826c865c658ca9cfbb6a6aecd77e24de62608a16b3217e8c09dffe"
+      "sha256": "963c52971c630beaecdf23b27a239b0347c9870032d20cefeb200f9c4c045183"
     },
     {
       "path": "src/ui/hud/FoodBreakdown.tsx",
@@ -4559,7 +4559,7 @@
     },
     {
       "path": "src/ui/hud/useStoryPresentation.ts",
-      "sha256": "35f1e3012d05794118440e40f40fb9eb5babd6b1df552c9a82c937284375ac71"
+      "sha256": "8a2f7cedd7d7aa14c416d965b7a8db88d879d8650ee3f2158b2f1f104f2c09d6"
     },
     {
       "path": "src/ui/hud/wageLedgerCopy.ko.ts",
@@ -4683,11 +4683,11 @@
     },
     {
       "path": "src/ui/lord/advice/famineAfter.ts",
-      "sha256": "57cd25a12090f142f878318ff5857b2a96d306897abd7b84569391c0100c6f45"
+      "sha256": "945de0ed4f272d3e0a5776447cea0036fe7aa7059e785298fedd0c05b85b5c4f"
     },
     {
       "path": "src/ui/lord/advice/famineAfterCopy.ko.ts",
-      "sha256": "7278396445613c563e7bba9e2b3f207dcac34633c12331f72e0a2e95753f591a"
+      "sha256": "42f95359b349e767b7f1939627b1c703d4a91f49f0b461cb815171612587fa81"
     },
     {
       "path": "src/ui/lord/advice/lordAdvice.ts",
@@ -4739,19 +4739,27 @@
     },
     {
       "path": "src/ui/lord/decisions/decisionCardsCopy.ko.ts",
-      "sha256": "30ecd84b37048eb234aa6d312f9edf5e4e7e807ff7f6e3576e9c6e3c050232e5"
+      "sha256": "3e93419678bcf8369be178c4f18f35088355143a719516393458f09e5a75886e"
     },
     {
       "path": "src/ui/lord/decisions/decisionCardsModel.ts",
-      "sha256": "c81e32f97a2dd3913b3afd33af0e2578ba439b1b66397e7e7c8b5146c1fabf3e"
+      "sha256": "d37a39e4b0154dc634dc965be4d336728387a06a92458f5fb82c086a2a5d0771"
+    },
+    {
+      "path": "src/ui/lord/decisions/lordMatterBeats.ts",
+      "sha256": "91e261a8c9de8a7a3bd54254b87cc19a63b0fef567e87e5deb438699a5bfcfec"
+    },
+    {
+      "path": "src/ui/lord/decisions/lordMattersCopy.ko.ts",
+      "sha256": "3e8868a97987faf7859631e1d0af90271854a762dcf00e2c2383ecbe86947bad"
     },
     {
       "path": "src/ui/lord/decisions/lordMattersDue.ts",
-      "sha256": "8f17e2bb9327d9a2ae96bb5db6ee346203fe0b1e2cfb3c90a9d09f53506ed237"
+      "sha256": "57b3ead7460bad8fdaa472f3a31ec80f22d8a3d84dfe2e8653c95508472c6ce0"
     },
     {
       "path": "src/ui/lord/decisions/surfaces.ts",
-      "sha256": "f60581e0809718cffb662c4f411b63d92aa6a63438b0166f622ce555cc826ca7"
+      "sha256": "28732b44b685047a7131285e8ce8d27e4758a4aaac67adee4e64dabe70a4993b"
     },
     {
       "path": "src/ui/lord/estates/PortfolioPanel.tsx",
@@ -4779,27 +4787,47 @@
     },
     {
       "path": "src/ui/lord/ledger/LedgerPanel.tsx",
-      "sha256": "57a28b0482cc8f13cc3decd202cdfea6a34228163febde0a811a1bcfd5f4e0fb"
+      "sha256": "0063b348b7063714ea54e97be56a3411b0efbaf2bbb2b2376c2a01ab2543ff61"
     },
     {
-      "path": "src/ui/lord/ledger/claimOutlook.ts",
-      "sha256": "f1814ac22486141e4aeb5b6f804d6325915c24b08f85e4f6d1e51f38f9abd0a3"
+      "path": "src/ui/lord/ledger/SuitItems.tsx",
+      "sha256": "c115e1c3b4e8e18cbc24446d803ff5cb800809f225070c0bf637cb4eada21b99"
     },
     {
       "path": "src/ui/lord/ledger/ledgerCopy.ko.ts",
-      "sha256": "e59345e42129c20c390cb80a57506524f3b180f72b5c5aeb1e1dac0eb755acdb"
+      "sha256": "429797d7da0913989de0295b27f59aaa44f0aaac957b9d2f9268360c0b2ba776"
     },
     {
       "path": "src/ui/lord/ledger/ledgerModel.ts",
-      "sha256": "bca3cc4035e97deed4ee8fca4eedf2673f6a3fb223283a3b419a21323477ec53"
+      "sha256": "4afdb6c069d54a5953b85b64a1f8e727410543201e892ca5298314d0fef66bbf"
+    },
+    {
+      "path": "src/ui/lord/ledger/ledgerWords.ts",
+      "sha256": "50ec7195adaf68dfa1153b8043255d3716bd618151e53fcd3095bb246c10f0a0"
+    },
+    {
+      "path": "src/ui/lord/ledger/suitDefenceCopy.ko.ts",
+      "sha256": "0c82935bc2b2a2f326b31ddebc42b65012403a4f092c9ed7af3088664deeeb5d"
+    },
+    {
+      "path": "src/ui/lord/ledger/suitDefenceModel.ts",
+      "sha256": "97490508b50a2d2dd7e81085a0215c3ba0f92e57fc6c38c229f158b25100591e"
+    },
+    {
+      "path": "src/ui/lord/ledger/suitsModel.ts",
+      "sha256": "825fa2e42c2fd550e417002c5b66718062b4fd2cd9dd271eb96f010af8c9d6bc"
     },
     {
       "path": "src/ui/lord/ledger/surfaces.ts",
-      "sha256": "a93659548dcfbff1028c149cd8f7719af118abdfe9fb9e79c7d6753e8013da84"
+      "sha256": "25d32d0c8c05b241508606e42f6e9783487524039eb0053162320aa7be99b3e1"
+    },
+    {
+      "path": "src/ui/lord/negotiation/ContractDue.tsx",
+      "sha256": "842a393af5ad5d657021f697377a93496edd4e0aaa7e061b09b27162ea7dbcf1"
     },
     {
       "path": "src/ui/lord/negotiation/NegotiationPanel.tsx",
-      "sha256": "649788812df85bcb46ce1ebe8729cf5be7675bce21a1e09924592b12e89940eb"
+      "sha256": "619ff9c240718e36d9c41b460f18cfb7f6d217d64aceb1171ab2e0ddf7659b7b"
     },
     {
       "path": "src/ui/lord/negotiation/negotiationArt.ts",
@@ -4807,15 +4835,15 @@
     },
     {
       "path": "src/ui/lord/negotiation/negotiationCopy.ko.ts",
-      "sha256": "99e3582e78bd8a2624db6af512712c07732efd3dc49bddf14558299d633434e6"
+      "sha256": "82202eda2efd187d2dd65960695be02fa260e302a361fe4f8741d993321776a0"
     },
     {
       "path": "src/ui/lord/negotiation/negotiationModel.ts",
-      "sha256": "8fd651b928c72440be4dc4086e1d69a6b02d82b19bf3db030c4b71d7e1e4ba2d"
+      "sha256": "a779667588ed90c7f6d8c80324d58143cc05468426967cceddb36fdb183b8acf"
     },
     {
       "path": "src/ui/lord/negotiation/surfaces.ts",
-      "sha256": "221115eef3ae7fc429c94c67cfcfa94cae827f8a65c4b2de0f39114403f5a580"
+      "sha256": "a073aa5283cf5c4cca8887347dc7f4b5f32f62e6ef886c806e1a4401641b1473"
     },
     {
       "path": "src/ui/lord/policyCopy.ko.ts",
@@ -4863,7 +4891,7 @@
     },
     {
       "path": "src/ui/lord/screen/DecideButton.tsx",
-      "sha256": "067861d13ae62caa6de6adcec1ed2feacc4b2e0d4ae6ee718869a26148b0e2ac"
+      "sha256": "23c72008809b1dc285b5b627ca3db7b9a7bf43de9c0291366627770f2e785c91"
     },
     {
       "path": "src/ui/lord/screen/LordScreen.tsx",
@@ -4879,7 +4907,7 @@
     },
     {
       "path": "src/ui/lord/screen/lordScreenTypes.ts",
-      "sha256": "2e9d389448bcb8a935772e5947056352a3ced5340aba328856c0deea855b2081"
+      "sha256": "bff6d998da689c55b79ce446289b6c968982b321522038e59f651c4085b8dcdc"
     },
     {
       "path": "src/ui/lord/screen/surfaces.ts",
@@ -4915,7 +4943,7 @@
     },
     {
       "path": "src/ui/lord/steward/stewardCopy.ko.ts",
-      "sha256": "a2bcace22442222ad74d5303d324f313ed28d4a2e80b085d84eb4bb319c432a9"
+      "sha256": "d0688ffba438f8e8e69fbb893ba4bdd3687515b8ca0b3f5b7a07ac99d2497cae"
     },
     {
       "path": "src/ui/lord/steward/stewardWords.ts",
@@ -4951,15 +4979,15 @@
     },
     {
       "path": "src/ui/lordMomentBeats.ts",
-      "sha256": "2bfd5811a4decb46206a81879de2f2e7ec2ad9373957243ca22fc9eba03ef32c"
+      "sha256": "294286a29ab9044d694f9e2850705fd4025a7975cf665965665c3dcc4ac9335d"
     },
     {
       "path": "src/ui/lordMomentCopy.ko.ts",
-      "sha256": "6e40ad9927865032b93fe4ca4178f1b5e18e636ae1255bd3c04b4d4d0563057c"
+      "sha256": "dc874032fb7d2685b7aeeb9ec61b763e315d24c868cfbfa931bd37beadd3aef0"
     },
     {
       "path": "src/ui/lordStoryBeats.ts",
-      "sha256": "f7157e643b6335c5c0252760f135d2ec806e4d53e04b6883d58726915c4cda72"
+      "sha256": "7a613bbac34c0b049ee06a0eb8608e652236676cd49a888e11e619ff65a8c513"
     },
     {
       "path": "src/ui/lordshipCopy.ko.ts",
@@ -5055,7 +5083,7 @@
     },
     {
       "path": "src/ui/persons/personModels.ts",
-      "sha256": "f852637be992bd61525412cacf5161d1ad83c0f60f871a6d3614766af92a2eed"
+      "sha256": "989d91b99bba055b6b3a124fa23565310092c973eda93fbc8db072726d379487"
     },
     {
       "path": "src/ui/persons/personStateCopy.ko.ts",
@@ -5071,7 +5099,7 @@
     },
     {
       "path": "src/ui/persons/personsCopy.ko.ts",
-      "sha256": "1b391682ad0b91d8d70e9d3d3e75bda409922185fc903e0a06acf6c717500cdb"
+      "sha256": "6ddd3645be53789eb56526035b0922410d57bb1ea7f8d889d410e08ce6447da4"
     },
     {
       "path": "src/ui/persons/resemblance.ts",
@@ -5195,7 +5223,7 @@
     },
     {
       "path": "src/ui/results/decisionThread.ts",
-      "sha256": "4ba3037ddbc1fc36878bf129e62061789fdae207d15169bf0db0665a94af30cf"
+      "sha256": "81f495fc70e442f245b4d93ddd7ca2fa5ee4d440725a00adc1c250cbfb563e73"
     },
     {
       "path": "src/ui/results/houseChange.ts",
@@ -5203,11 +5231,11 @@
     },
     {
       "path": "src/ui/results/lordYearReview.ts",
-      "sha256": "dfac66b49f1324db8584b75547de464348bf250e09b78eb624da4e2065a3a0f5"
+      "sha256": "d43b27945461609ab9d7fb960f3119801a354358354ee476ddf1b676930f2815"
     },
     {
       "path": "src/ui/results/resultsCopy.ko.ts",
-      "sha256": "8889af03fdf4373bf2cbdb834fd44bff57aad490b9485af1a8b574650e1a0026"
+      "sha256": "f7ae50fdb0a7206fed0186416ca049a36c2741207073171b2672b0f928bd390d"
     },
     {
       "path": "src/ui/results/surfaces.ts",
@@ -5295,7 +5323,7 @@
     },
     {
       "path": "src/ui/slice/sliceEndModel.ts",
-      "sha256": "abfb5172702457ba7a25505b0444c7a9baf63bde67bd1d385dacbd8bbabe89a0"
+      "sha256": "15ff374885d87b185ec2bc5acdcb9d6fd03dc143ee4cbdc708a236c04395b42d"
     },
     {
       "path": "src/ui/slice/sliceStartModel.ts",
@@ -5523,7 +5551,7 @@
     },
     {
       "path": "src/ui/wave40Art.ts",
-      "sha256": "75a2778893b7b7db7a01ad71029bdd6c7f9ac378f7fa761330c79f4dd6b04831"
+      "sha256": "5713ce235be773d9183eb23c734b5fe6db09873012bde03d0a7587cde863dbf4"
     },
     {
       "path": "src/ui/wave40ArtManifest.generated.ts",
