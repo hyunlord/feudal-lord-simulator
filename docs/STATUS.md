@@ -993,3 +993,5 @@ Engine B [가드레일](verification/eb-weight/guardrail-016ab02e/README.md) 종
 Engine B [과거 재현 산출물 검증기](verification/eb-freq/historical-replay-artifacts.md)는 외부 manifest 해시와12개 파일 해시, 전체 결과·보고서·NDJSON/gzip·40행 집계를 대조한다. 합성9시험·lint 통과. 파일 일관성만 검증하며 실제 실행·원인 적용은 미완료다.
 
 Engine B 검증 진입 문서의 오래된 seed1 진행 설명을 과거 기록으로 표시하고, 완료된 세 판·가드레일·56건 범위와 실행 중인 실제 답변 재현으로 연결했다. 전수 가시성과 공용 관문 미완료는 유지한다.
+
+Engine B56건 범위표에서010·051·059를 성공 답변의 UI 누락이 아닌 무효 시도만 관측된 사건으로 구분했다. 원자료 상태·성공 답변0을 확인하고 생성기·JSON·문서·해시를 함께 재생성했다. 기존 세 판 계수와 UI 증거는 동일하며 전수 화면 검증 완료를 뜻하지 않는다.
