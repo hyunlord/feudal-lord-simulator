@@ -137,6 +137,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - [x] **RENDER-B 출범 관문** — 본선 `90d9b586`, exact clean clone4820/4820·build PASS·보호된 push0.
 - [x] **RENDER-B-W37** — 기존 사용16행 installed_by 적용, 원본/PNG/provenance 변경0. LM-R1 12·fisher/shepherd4 공란 보존. 커밋 `bc29f6b2`의 실제 after4 PASS·RGBA 차이0·A/A4·오류0. [보고서](../verification/wave37-reconcile/REPORT.md). 게시 완료: 최종 본선 be576dbe clean clone4,886/4,886·merge·보호 push·원격 exact HEAD PASS.
 - [ ] 설치 1단계: 영주 모드 수직 조각용 그림(`docs/ops/install-plan-20261003` ORDER 1절) — 데이터 커밋 + 실제 장면 캡처
+  - [x] wave18-hud·wave14-ui — 렌더 A INSTALL-18(사용자 결정 IN18-D1): Wave 18 33/41·Wave 14 5/16, 나머지는 INBOX_LEDGER에 까닭(인장·특허장은 엔진 인장 필드 뒤) — 본선 `55da7988`
 - [ ] 설치 2단계: NAT-5·NAT-3 자연스러움(ORDER 2절)
 - [ ] 설치 3단계: 나머지 기존 기능 연결과 새 기능(ORDER 3절)
 - [ ] **사람 키 통일**(FND-3): 등록 높이17.6/.55는 작업 가지38be7e4a에 통합했으며 [A1 실제 여름 2개 장면](../verification/height-a1/REPORT.md)과 역사적 겨울16/여름4 증거를 분리 보존한다. 통합 BEFORE에도 같은 높이가 있어 이번 2쌍 동일성은 외형 보존만 입증한다. 맨발 실측·가려진 접촉·[문23](../requests/render-human-scale-art-request.md)·[신체/군중/운구12](../requests/render-human-registration-request.md)는 미완료다. 현재 기하2,202조건 실패0·소스 동일 확인, 최종 클론·게시 대기.
