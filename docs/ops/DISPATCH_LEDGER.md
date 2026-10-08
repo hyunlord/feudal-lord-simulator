@@ -95,6 +95,7 @@
 - [ ] **LANDMARK-GROW** 랜드마크가 자라는 때를 엔진 사실로(사용자 지시 2026-10-08)
 - [ ] **GROW-BLOCK** 자율 성장이 모자람과 막힘을 구별(사용자 지시 2026-10-08)
 - [x] **SUIT-THREAD** (본선 `c7f107a6`) 판결 집행의 결과를 결과의 실로 + 소송 균형·피고 방어·강제 점거·Astra 둘째 플레이 엔진 몫(사용자 지시 2026-10-08·09)
+- [x] **TRACE-KEEP** (본선 `4deafcb3`) 큰 결정의 실과 기억은 끝까지(A5, 사용자 판정 2026-10-09)
 - [ ] **MONEY-SINK** 금고가 늘 빠듯하게(MS-1~4, 설계 승인 2026-10-08) + NW08 고침 — GROW-BLOCK 다음
 
 **확장성 EXT**(결정 EXT-D1~D3, [extensibility.md](../design/extensibility.md); RECOVER-1·LM-R2 마무리 뒤 LM-E9c와 번갈아, 순서대로):
