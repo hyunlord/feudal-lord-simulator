@@ -83,6 +83,11 @@ test("PLAY-2 기근 대응 뒤: once answered, the famine's card says the bottle
   assert.ok(famineAfterFacts(bare)[0]!.startsWith(FAMINE_AFTER_COPY.left(FAMINE_AFTER_COPY.points.no_granary())), famineAfterFacts(bare)[0]);
   assert.equal(famineAfterFacts(bare)[1], FAMINE_AFTER_COPY.next(lordLevers(bare, { kind: "building", building: "granary" })[0]!));
   for (const line of beat.facts) assert.doesNotMatch(line, LATIN);
+  // Nothing left: what the engine checked, with its numbers; no lever.
+  const stocked = { ...state, buildings: [...state.buildings, { ...state.buildings.find(building => building.kind === "granary")!, id: "test-market", kind: "market" }] } as GameState;
+  const checked = preparedness(stocked);
+  assert.deepEqual(checked.weakPoints, [], "a market added: nothing left");
+  assert.deepEqual(famineAfterFacts(stocked), [FAMINE_AFTER_COPY.none(checked.granaries, checked.markets, checked.foodDays)]);
   // Outside lord mode the bottleneck alone (the sandbox's lord builds; its advice stays).
   const { agency: _agency, ...sandbox } = state;
   assert.deepEqual(famineAfterFacts(sandbox as GameState), [left]);

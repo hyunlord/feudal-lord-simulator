@@ -1,0 +1,67 @@
+{
+ "chronicle-cards": {
+  "seed": 3,
+  "tick": 15100,
+  "year": 1303,
+  "season": 3,
+  "lines": [
+   {
+    "id": "h-000048",
+    "template": "decision.steward",
+    "line": "장원 청원 '공유지 방목' — 청지기가 관습대로 처리했다 (들어줌)"
+   },
+   {
+    "id": "h-000136",
+    "template": "decision.steward",
+    "line": "장원 청원 '미성년 상속자 후견' — 청지기가 관습대로 처리했다 (물리침)"
+   },
+   {
+    "id": "h-000149",
+    "template": "decision.steward",
+    "line": "장원 청원 '혼인 부담금(머쳇)' — 청지기가 관습대로 처리했다 (들어줌)"
+   },
+   {
+    "id": "h-000211",
+    "template": "decision.steward",
+    "line": "장원 청원 '에일 검정' — 청지기가 관습대로 처리했다 (물리침)"
+   },
+   {
+    "id": "h-000266",
+    "template": "decision.steward",
+    "line": "장원 청원 '이주민 정착 허가' — 청지기가 관습대로 처리했다 (들어줌)"
+   },
+   {
+    "id": "h-000290",
+    "template": "decision.steward",
+    "line": "장원 청원 '시장 좌판 다툼' — 청지기가 관습대로 처리했다 (물리침)"
+   },
+   {
+    "id": "h-000323",
+    "template": "decision.steward",
+    "line": "장원 청원 '교회 성단 수리' — 청지기가 관습대로 처리했다 (물리침)"
+   },
+   {
+    "id": "h-000507",
+    "template": "decision.steward",
+    "line": "장원 청원 '사망 부과금(헤리엇)' — 청지기가 관습대로 처리했다 (물리침)"
+   },
+   {
+    "id": "h-000513",
+    "template": "decision.card",
+    "line": "교회 궤짝에 맡긴 증서: 보관한 증서를 증거로 낸다"
+   }
+  ]
+ },
+ "famine-answered": {
+  "seed": 3,
+  "tick": 60061,
+  "year": 1315,
+  "season": 0,
+  "response": "relief",
+  "stage": "arrival",
+  "weakPoints": [],
+  "facts": [
+   "남은 병목이 없습니다"
+  ]
+ }
+}

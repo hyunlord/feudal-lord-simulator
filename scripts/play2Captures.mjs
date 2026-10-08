@@ -50,12 +50,17 @@ const measure = (page, selector) => page.evaluate(sel => {
 const shoot = async (page, name, clip) => { const path = join(out, `${name}.jpg`); await page.screenshot({ path, type: 'jpeg', quality: QUALITY, ...(clip ? { clip } : {}) }); return statSync(path).size; };
 const ok = row => row.card !== null && row.card !== undefined && (row.card.smallestText ?? 12) >= 12 && row.card.box.inside && row.card.titles === 0;
 const rows = {}; let bytes = 0; const errors = [];
+const resultsPath = join(out, 'results.json');
+if (only !== null && existsSync(resultsPath)) Object.assign(rows, JSON.parse(readFileSync(resultsPath, 'utf8')).rows);
 const report = (name, row, extra = true) => { row.pass = ok(row) && extra; rows[name] = row; console.log(`${row.pass ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(row)}`); };
 const watch = (page, name) => page.on('pageerror', error => errors.push(`${name}: ${String(error).slice(0, 300)}`));
+/** `--only a,b`: run only these captures (a rerun of some keeps the others' files). */
+const only = flags.only === undefined ? null : new Set(flags.only.split(','));
+const wanted = name => only === null || only.has(name);
 const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[data-lord-open]", "[data-lord-nav='ledger']"];
 
 // 1. The lord's claim: the file-suit button with its cost and the hearing's two sides (every lmr2 state read).
-{
+if (wanted('ledger-claim')) {
   const claims = {};
   for (const name of ['offer-countered', 'promises', 'contested', 'marriage-contracted', 'will-change', 'inherited', 'neighbour-suit']) {
     const state = sceneAt(flags.lord2, name);
@@ -83,7 +88,7 @@ const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[
 }
 
 // 2. The famine answered by the lord bot: its chip's card (the bottleneck left, the next lever), then its [조언].
-{
+if (wanted('famine-lord')) {
   const state = sceneAt(flags.states, 'famine-answered');
   if (state === null) report('famine-lord', { card: null, missing: true }, false);
   else {
@@ -102,13 +107,16 @@ const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[
       row.advice = await page.locator('.event-card-advice').first().textContent().catch(() => null);
       row.adviceBytes = await shoot(page, 'famine-lord-advice'); bytes += row.adviceBytes;
     }
-    report('famine-lord', row, shown && (row.card?.text ?? '').includes('남은 병목') && (row.card?.text ?? '').includes('다음에 바꿀 조건'));
+    // The lines the states script read off the state (famineAfterFacts): the bottleneck left, and the lever when there is one.
+    const expected = (() => { try { return JSON.parse(readFileSync(join(flags.states, 'play2-states.json'), 'utf8'))['famine-answered']?.facts ?? []; } catch { return []; } })();
+    row.expected = expected;
+    report('famine-lord', row, shown && expected.length > 0 && expected.every(line => (row.card?.text ?? '').includes(line)));
     await context.close();
   }
 }
 
 // 3. Chapter 1's famine (campaign) answered on screen: the card's bottleneck line (the geometry row's path).
-{
+if (wanted('famine-campaign')) {
   const state = sceneAt(flags.ui5, 'famine-arrival');
   if (state === null) report('famine-campaign', { card: null, missing: true }, false);
   else {
@@ -118,7 +126,12 @@ const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[
     if (!modal && await click(page, ".event-chip[data-story='famine']")) { await click(page, '.event-card-decide'); modal = await waitFor(page, '.famine-decision', 10_000); }
     const row = { state: 'ui5 famine-arrival', modal, card: null };
     if (modal) {
-      await click(page, ".famine-decision [data-choose='laissez_faire']");
+      row.chose = await click(page, ".famine-decision [data-choose='laissez_faire']");
+      await page.waitForTimeout(600);
+      row.modalAfter = await visible(page, '.famine-decision');
+      // The scene starts paused: the story beats are sampled as the town runs, so the answered card shows once time
+      // moves (a player's game resumes as the card closes) — a moment at 1×.
+      await page.keyboard.press('Digit1'); await page.waitForTimeout(3_000);
       row.chip = await waitFor(page, ".event-chip[data-story='famine']", 30_000);
       if (row.chip) {
         await click(page, ".event-chip[data-story='famine']");
@@ -133,7 +146,7 @@ const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[
 }
 
 // 4. 1300's year card → [연대기에서 보기]: the chronicle on that year only.
-{
+if (wanted('year-chronicle')) {
   const state = sceneAt(flags.deccard2, 'year-loaded');
   if (state === null) report('year-chronicle', { card: null, missing: true }, false);
   else {
@@ -163,7 +176,7 @@ const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[
 }
 
 // 5. The chronicle's decisions: a card answer's line names the event and the answer.
-{
+if (wanted('chronicle-titles')) {
   const state = sceneAt(flags.states, 'chronicle-cards');
   const expected = (() => { try { return JSON.parse(readFileSync(join(flags.states, 'play2-states.json'), 'utf8'))['chronicle-cards']?.lines ?? []; } catch { return []; } })();
   if (state === null) report('chronicle-titles', { card: null, missing: true }, false);
@@ -192,7 +205,7 @@ const OPEN_LORD_LEDGER = ["[data-dock='ledger']", "[data-ledger-tab='lord']", "[
 }
 
 // 6. The time cluster: the fast seal's mark at 1×, 5×, 10× (a crop), and its box here and on the base commit.
-{
+if (wanted('time-cluster')) {
   const state = sceneAt(flags.ui5, 'merchant-town');
   const boxes = {};
   for (const [label, at] of [['this', url], ...(base === null ? [] : [['base', base]])]) {

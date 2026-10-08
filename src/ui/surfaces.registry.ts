@@ -350,7 +350,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   // PLAY-2: the famine answered on screen (방관) — its card's line, until when and the bottleneck left (famineAfter).
   { id: "hud.event-card.famine-answered", root: ".event-card[data-story='famine']", frame: "css",
     scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" },
+    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer.
+    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" }, { key: "Digit1" }, { pause: 3000 },
       { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
   { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },

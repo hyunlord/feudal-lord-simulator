@@ -9,7 +9,11 @@ type WeakPoint = Preparedness["weakPoints"][number];
 export const FAMINE_AFTER_COPY = {
   /** The weak points left, joined. */
   left: (points: string) => `남은 병목: ${points}`,
-  none: "남은 병목이 없습니다",
+  /** Nothing left: what the engine checked, with its numbers (not "all is well": the famine may still cost people). */
+  none: (granaries: number, markets: number, days: number | null) =>
+    `남은 병목이 없습니다 — 곡창 ${granaries}곳 · 장터 ${markets}곳${days === null ? "" : ` · 식량 ${days}일치`}`,
+  /** The famine's own: the poorest households the price shuts out (the famine card's situation, after the answer). */
+  priceShut: (count: number) => `빵 값 때문에 빵을 살 수 없는 집 ${count}곳`,
   points: {
     no_granary: () => "곡창 없음",
     food_under_a_season: (days: number | null) => days === null ? "식량이 한 철도 안 됨" : `식량이 한 철도 안 됨(${days}일치)`,
