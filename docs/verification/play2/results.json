@@ -138,7 +138,7 @@
    "state": "famine-answered",
    "chip": true,
    "card": {
-    "text": "대기근\n\n영주의 대응 — 구휼\n\n끝날 때: 3년 뒤 여름쯤\n남은 병목이 없습니다\n위치로\n조언\n닫기",
+    "text": "대기근\n\n영주의 대응 — 구휼\n\n끝날 때: 3년 뒤 여름쯤\n남은 병목이 없습니다 — 곡창 3곳 · 장터 1곳 · 식량 259일치\n위치로\n조언\n닫기",
     "buttons": [
      "위치로",
      "조언",
@@ -156,18 +156,20 @@
      "inside": true
     }
    },
-   "bytes": 130897,
+   "bytes": 131385,
    "advice": "가난한 가구가 빵을 살 수 없게 됩니다 — 구휼은 금고를, 방관은 사람을 잃습니다",
-   "adviceBytes": 131926,
-   "pass": false
+   "adviceBytes": 133410,
+   "expected": [
+    "남은 병목이 없습니다 — 곡창 3곳 · 장터 1곳 · 식량 259일치"
+   ],
+   "pass": true
   },
   "famine-campaign": {
    "state": "ui5 famine-arrival",
    "modal": true,
    "card": {
-    "text": "대기근\n\n수확이 반으로 줄고 값이 세 배가 되었습니다. 영주의 대응을 기다립니다\n\n끝날 때: 4년 뒤 여름쯤\n결정하기\n위치로\n조언\n닫기",
+    "text": "대기근\n\n영주의 대응 — 방관\n\n끝날 때: 4년 뒤 여름쯤\n남은 병목: 빵 값 때문에 빵을 살 수 없는 집 6곳 · 이미 굶는 집 6곳\n위치로\n조언\n닫기",
     "buttons": [
-     "결정하기",
      "위치로",
      "조언",
      "닫기"
@@ -178,15 +180,17 @@
      "left": 912,
      "top": 184,
      "width": 360,
-     "height": 393,
+     "height": 412,
      "right": 1272,
-     "bottom": 577,
+     "bottom": 596,
      "inside": true
     }
    },
+   "chose": true,
+   "modalAfter": false,
    "chip": true,
-   "bytes": 125488,
-   "pass": false
+   "bytes": 119212,
+   "pass": true
   },
   "year-chronicle": {
    "state": "deccard2 year-loaded",
@@ -421,6 +425,6 @@
    "pass": true
   }
  },
- "bytes": 678575,
+ "bytes": 384007,
  "errors": []
 }
