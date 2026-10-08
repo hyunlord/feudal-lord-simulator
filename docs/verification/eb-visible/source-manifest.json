@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "dirtyPaths": "",
+  "endTickExclusive": 60000,
+  "lastObservedTick": 60000,
+  "pairs": [
+    {
+      "entryId": "ck_evt_038",
+      "decisionId": "h-002358",
+      "decisionTick": 36037,
+      "source": "registry:ck_evt_038:defer",
+      "answer": {
+        "file": "ck_evt_038-answer-h-002358.save.json.gz",
+        "fileSha256": "f8e89756b3b94bf8b44d21d5ada507f19cfaba20a6cee16bc74244a1a45de115",
+        "encodedSaveSha256": "e9921dfe98c0e19931cedd138641f012e7b496dcc9f0d52ecd0fe5ff468cb73a",
+        "observedTick": 36037,
+        "bytes": 103995
+      },
+      "status": "mature_without_observed_future_link"
+    },
+    {
+      "entryId": "ck_evt_005",
+      "decisionId": "h-002653",
+      "decisionTick": 40015,
+      "source": "registry:ck_evt_005:c",
+      "answer": {
+        "file": "ck_evt_005-answer-h-002653.save.json.gz",
+        "fileSha256": "07d7d9853cb32465312f887d73f8bf937cb8a22151856cdbd66e719be6640fc9",
+        "encodedSaveSha256": "4cffb77912df4711991b83c1e0d1fbab16c603b86a69275c02f0de7273940c32",
+        "observedTick": 40015,
+        "bytes": 108418
+      },
+      "consequence": {
+        "file": "ck_evt_005-consequence-h-002666.save.json.gz",
+        "fileSha256": "58505e18bd8b4243aa5f7977f87032c4ddb1e5cf0bfa614579d91e6c27cf6f5e",
+        "encodedSaveSha256": "ffa86e2becdcba25d3d52cd715388d1aa11d3b4d3ffc3e364117d8f7ef03c667",
+        "observedTick": 40800,
+        "bytes": 110005,
+        "historyId": "h-002666",
+        "historyTick": 40800,
+        "because": [
+          {
+            "decisionId": "h-002653",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_092",
+      "decisionId": "h-002727",
+      "decisionTick": 41029,
+      "source": "registry:ck_evt_092:b",
+      "answer": {
+        "file": "ck_evt_092-answer-h-002727.save.json.gz",
+        "fileSha256": "f7ead1418456955a43b0890e039eaaee50627c0016f43db1d79b56ff2020a41c",
+        "encodedSaveSha256": "5978c341672ed7ae3ebf781a851d8efcbbc59424cd99cae2ec42cbdc5357238f",
+        "observedTick": 41029,
+        "bytes": 110746
+      },
+      "consequence": {
+        "file": "ck_evt_092-consequence-h-002853.save.json.gz",
+        "fileSha256": "16246719023051b5f0bd0f01079a817a9f1562e3afa58586f134938487d96e39",
+        "encodedSaveSha256": "697aff13a635bd4083f6ddedd64b4c9a6b72ef411bcd8246bc57d4a993cec6a1",
+        "observedTick": 43200,
+        "bytes": 112463,
+        "historyId": "h-002853",
+        "historyTick": 43200,
+        "because": [
+          {
+            "decisionId": "h-002727",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_211",
+      "decisionId": "h-002970",
+      "decisionTick": 45007,
+      "source": "registry:ck_evt_211:a",
+      "answer": {
+        "file": "ck_evt_211-answer-h-002970.save.json.gz",
+        "fileSha256": "07368bf2c807169ea8cac924498d7dd78ff4173da06d6b576a7d09f343a855ce",
+        "encodedSaveSha256": "8b0336857add3e8166dc8c71cd81964669a89ce1e830a766c75f7841875293bb",
+        "observedTick": 45007,
+        "bytes": 111877
+      },
+      "consequence": {
+        "file": "ck_evt_211-consequence-h-002987.save.json.gz",
+        "fileSha256": "35267b5029368811556ed7d06c0e0542cc1a76965c259c0d761b8411918f8e04",
+        "encodedSaveSha256": "87f24f20c2ea5f77567b72e564ec7dd774feb7659d2bd4e64ad7d5386aeb9e5e",
+        "observedTick": 45600,
+        "bytes": 114251,
+        "historyId": "h-002987",
+        "historyTick": 45600,
+        "because": [
+          {
+            "decisionId": "h-002970",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_201",
+      "decisionId": "h-003870",
+      "decisionTick": 59047,
+      "source": "registry:ck_evt_201:b",
+      "answer": {
+        "file": "ck_evt_201-answer-h-003870.save.json.gz",
+        "fileSha256": "12fee670dad03062cb80f2d75cc942f6b16339897c6abecb276ae812d028d0f6",
+        "encodedSaveSha256": "c357f85d45f437e19879f24902abcf0a29b4491fa5f568fa06cb3f9630601923",
+        "observedTick": 59047,
+        "bytes": 125951
+      },
+      "consequence": {
+        "file": "ck_evt_201-consequence-h-003918.save.json.gz",
+        "fileSha256": "5a9dc0f4e2d4b0145d0e1863f8240e38c232ae97f16c49d918ad209b657b064b",
+        "encodedSaveSha256": "5efd43f56dd5f9a55557c8938a03c2f1877f00a08ffc85dc229646ba22fe284b",
+        "observedTick": 60000,
+        "bytes": 127660,
+        "historyId": "h-003918",
+        "historyTick": 60000,
+        "because": [
+          {
+            "decisionId": "h-003870",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    }
+  ],
+  "enabledWithoutAnsweredCheckpoint": [
+    "ck_evt_002",
+    "ck_evt_009",
+    "ck_evt_010",
+    "ck_evt_011",
+    "ck_evt_013",
+    "ck_evt_015",
+    "ck_evt_018",
+    "ck_evt_019",
+    "ck_evt_024",
+    "ck_evt_025",
+    "ck_evt_029",
+    "ck_evt_031",
+    "ck_evt_032",
+    "ck_evt_033",
+    "ck_evt_034",
+    "ck_evt_035",
+    "ck_evt_037",
+    "ck_evt_042",
+    "ck_evt_046",
+    "ck_evt_051",
+    "ck_evt_052",
+    "ck_evt_053",
+    "ck_evt_057",
+    "ck_evt_058",
+    "ck_evt_059",
+    "ck_evt_061",
+    "ck_evt_075",
+    "ck_evt_076",
+    "ck_evt_077",
+    "ck_evt_080",
+    "ck_evt_083",
+    "ck_evt_090",
+    "ck_evt_124",
+    "ck_evt_128",
+    "ck_evt_130",
+    "ck_evt_131",
+    "ck_evt_132",
+    "ck_evt_133",
+    "ck_evt_139",
+    "ck_evt_140",
+    "ck_evt_143",
+    "ck_evt_144",
+    "ck_evt_147",
+    "ck_evt_150",
+    "ck_evt_157",
+    "ck_evt_163",
+    "ck_evt_165",
+    "ck_evt_174",
+    "ck_evt_204",
+    "ck_evt_206",
+    "ck_evt_209"
+  ],
+  "finalSave": {
+    "file": "final.save.json.gz",
+    "fileSha256": "be0b3048cece656ad30b21b029244e7934aeb00a4df064fec26f57f83d4b98df",
+    "encodedSaveSha256": "c8bc8fbc577fe9efbf6ed4c07082f3a7065f0f474fd4bc0122f9e929bba1c8aa",
+    "observedTick": 60000,
+    "bytes": 127660
+  },
+  "limits": [
+    "States are actual post-command/tick observations, not browser visibility proof.",
+    "Only the first answered lord registry decision per enabled entry and its first linked later history record within three years are captured."
+  ]
+}

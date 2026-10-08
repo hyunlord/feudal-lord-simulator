@@ -1,0 +1,1324 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "be2c05f3bb555697bc6c750290c6abe2f151c754",
+  "dirtyPaths": "",
+  "checkpointSourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "checkpointDirectory": "/home/hyunlord/fls-runs/render-EB-visible-smoke-be2c05f/docs/verification/eb-weight/checkpoint15/saves",
+  "manifestSha256": "20afdb37bf07735499d25fc5c59a82c527097b06267b3ec17e4a7553a426cd9e",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "run": false,
+  "cases": [
+    {
+      "name": "ck_evt_005-answer",
+      "checkpoint": {
+        "file": "ck_evt_005-answer-h-002653.save.json.gz",
+        "fileSha256": "07d7d9853cb32465312f887d73f8bf937cb8a22151856cdbd66e719be6640fc9",
+        "encodedSaveSha256": "4cffb77912df4711991b83c1e0d1fbab16c603b86a69275c02f0de7273940c32",
+        "observedTick": 40015,
+        "bytes": 108418
+      },
+      "pair": {
+        "entryId": "ck_evt_005",
+        "decisionId": "h-002653",
+        "decisionTick": 40015,
+        "source": "registry:ck_evt_005:c",
+        "answer": {
+          "file": "ck_evt_005-answer-h-002653.save.json.gz",
+          "fileSha256": "07d7d9853cb32465312f887d73f8bf937cb8a22151856cdbd66e719be6640fc9",
+          "encodedSaveSha256": "4cffb77912df4711991b83c1e0d1fbab16c603b86a69275c02f0de7273940c32",
+          "observedTick": 40015,
+          "bytes": 108418
+        },
+        "consequence": {
+          "file": "ck_evt_005-consequence-h-002666.save.json.gz",
+          "fileSha256": "58505e18bd8b4243aa5f7977f87032c4ddb1e5cf0bfa614579d91e6c27cf6f5e",
+          "encodedSaveSha256": "ffa86e2becdcba25d3d52cd715388d1aa11d3b4d3ffc3e364117d8f7ef03c667",
+          "observedTick": 40800,
+          "bytes": 110005,
+          "historyId": "h-002666",
+          "historyTick": 40800,
+          "because": [
+            {
+              "decisionId": "h-002653",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        "Escape (close event card/pause)",
+        "KeyC (manual history)",
+        ".chronicle-card[data-record=\"h-002653\"] .chronicle-card-body"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1310년 봄\n인구 463\n식량 160일\n14s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n소송이 제기되었다\n목표 기록\n명령\n장부\n청지기",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-answer-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_005-answer-year.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 봄\n\n빈 좌판 곁의 세금 장부: 기존 세율을 지키며 다음 거래를 지켜본다\n\n고른 길\n기존 세율을 지키며 다음 거래를 지켜본다\n다른 길\n시장 좌판세 배율을 750‰로 낮춘다\n시장 좌판세 배율을 1250‰로 높인다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n기억하는 이\n제퍼슨 상인 가문: 조금 서운해합니다 (관계 −2)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-answer-decision.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 40015,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": false,
+      "chipAfterOverlayDismissal": false,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": false,
+      "finalTick": 40015,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_005-consequence",
+      "checkpoint": {
+        "file": "ck_evt_005-consequence-h-002666.save.json.gz",
+        "fileSha256": "58505e18bd8b4243aa5f7977f87032c4ddb1e5cf0bfa614579d91e6c27cf6f5e",
+        "encodedSaveSha256": "ffa86e2becdcba25d3d52cd715388d1aa11d3b4d3ffc3e364117d8f7ef03c667",
+        "observedTick": 40800,
+        "bytes": 110005,
+        "historyId": "h-002666",
+        "historyTick": 40800,
+        "because": [
+          {
+            "decisionId": "h-002653",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "pair": {
+        "entryId": "ck_evt_005",
+        "decisionId": "h-002653",
+        "decisionTick": 40015,
+        "source": "registry:ck_evt_005:c",
+        "answer": {
+          "file": "ck_evt_005-answer-h-002653.save.json.gz",
+          "fileSha256": "07d7d9853cb32465312f887d73f8bf937cb8a22151856cdbd66e719be6640fc9",
+          "encodedSaveSha256": "4cffb77912df4711991b83c1e0d1fbab16c603b86a69275c02f0de7273940c32",
+          "observedTick": 40015,
+          "bytes": 108418
+        },
+        "consequence": {
+          "file": "ck_evt_005-consequence-h-002666.save.json.gz",
+          "fileSha256": "58505e18bd8b4243aa5f7977f87032c4ddb1e5cf0bfa614579d91e6c27cf6f5e",
+          "encodedSaveSha256": "ffa86e2becdcba25d3d52cd715388d1aa11d3b4d3ffc3e364117d8f7ef03c667",
+          "observedTick": 40800,
+          "bytes": 110005,
+          "historyId": "h-002666",
+          "historyTick": 40800,
+          "because": [
+            {
+              "decisionId": "h-002653",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        ".event-chip[data-story=\"decision_trace\"]",
+        ".event-card[data-story=\"decision_trace\"] .event-card-chronicle",
+        ".chronicle-card[data-record=\"h-002653\"] .chronicle-card-body",
+        ".chronicle-thread[data-thread=\"decision\"] .chronicle-thread-link[data-record=\"h-002666\"]",
+        ".chronicle-thread[data-thread=\"because\"] .chronicle-thread-link[data-record=\"h-002653\"]"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1310년 봄\n인구 470\n식량 144일\n18s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n1310년 당신의 결정 때문에: 시장 부담\n소송이 제기되었다\n유언을 고치려 한다\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-consequence-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_005-consequence-year.png"
+        },
+        {
+          "selector": ".event-card[data-story=\"decision_trace\"]",
+          "shown": true,
+          "panel": {
+            "text": "1310년 당신의 결정 때문에: 시장 부담\n\n1310년 봄 — 시장 부담: 좌판세 평소의 110%\n\n그 뒤 첫 좌판세 1s 8d가 들어왔다 (여러 까닭 가운데 하나)\n연대기에서 보기\n조언\n닫기",
+            "box": {
+              "x": 912,
+              "y": 272,
+              "width": 360,
+              "height": 145.5,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-consequence-chip.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 봄\n\n시장 부담을 평소의 110%로 정했다\n\n예측 금고 14s\n\n고른 길\n좌판세 평소의 110%\n다른 길\n좌판세 평소의 80%\n예측과 실제\n금고 14s\n\n실제는 1310년 가을에 적힙니다\n\n그 뒤에 일어난 일\n1310년 봄 — 그 뒤 첫 좌판세 1s 8d가 들어왔다 (여러 까닭 가운데 하나)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-consequence-chip-history.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 봄\n\n빈 좌판 곁의 세금 장부: 기존 세율을 지키며 다음 거래를 지켜본다\n\n고른 길\n기존 세율을 지키며 다음 거래를 지켜본다\n다른 길\n시장 좌판세 배율을 750‰로 낮춘다\n시장 좌판세 배율을 1250‰로 높인다\n예측과 실제\n그 뒤에 일어난 일\n1310년 봄 — 그 뒤 첫 좌판세 1s 8d가 들어왔다 (여러 까닭 가운데 하나)\n기억하는 이\n제퍼슨 상인 가문: 조금 서운해합니다 (관계 −2)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-consequence-decision.png"
+        },
+        {
+          "selector": ".chronicle-thread[data-thread=\"because\"]",
+          "shown": true,
+          "panel": {
+            "text": "이 일이 따라 나온 결정\n1310년 당신의 결정도 한몫해 — 빈 좌판 곁의 세금 장부: 기존 세율을 지키며 다음 거래를 지켜본다",
+            "box": {
+              "x": 758.484375,
+              "y": 286.25,
+              "width": 497.515625,
+              "height": 72.09375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_005-consequence-because.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 40800,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": true,
+      "chipAfterOverlayDismissal": true,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": true,
+      "exactCauseBackLinkShown": true,
+      "finalTick": 40800,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_092-answer",
+      "checkpoint": {
+        "file": "ck_evt_092-answer-h-002727.save.json.gz",
+        "fileSha256": "f7ead1418456955a43b0890e039eaaee50627c0016f43db1d79b56ff2020a41c",
+        "encodedSaveSha256": "5978c341672ed7ae3ebf781a851d8efcbbc59424cd99cae2ec42cbdc5357238f",
+        "observedTick": 41029,
+        "bytes": 110746
+      },
+      "pair": {
+        "entryId": "ck_evt_092",
+        "decisionId": "h-002727",
+        "decisionTick": 41029,
+        "source": "registry:ck_evt_092:b",
+        "answer": {
+          "file": "ck_evt_092-answer-h-002727.save.json.gz",
+          "fileSha256": "f7ead1418456955a43b0890e039eaaee50627c0016f43db1d79b56ff2020a41c",
+          "encodedSaveSha256": "5978c341672ed7ae3ebf781a851d8efcbbc59424cd99cae2ec42cbdc5357238f",
+          "observedTick": 41029,
+          "bytes": 110746
+        },
+        "consequence": {
+          "file": "ck_evt_092-consequence-h-002853.save.json.gz",
+          "fileSha256": "16246719023051b5f0bd0f01079a817a9f1562e3afa58586f134938487d96e39",
+          "encodedSaveSha256": "697aff13a635bd4083f6ddedd64b4c9a6b72ef411bcd8246bc57d4a993cec6a1",
+          "observedTick": 43200,
+          "bytes": 112463,
+          "historyId": "h-002853",
+          "historyTick": 43200,
+          "because": [
+            {
+              "decisionId": "h-002727",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        ".event-chip[data-story=\"decision_trace\"]",
+        ".event-card[data-story=\"decision_trace\"] .event-card-chronicle",
+        ".chronicle-card[data-record=\"h-002727\"] .chronicle-card-body"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1310년 여름\n인구 471\n식량 154일\n£1 5s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n1310년 당신의 결정 때문에: 걸려 온 소송에 증거를 냈다\n유언을 고치려 한다\n증거를 대조한다\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-answer-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_092-answer-year.png"
+        },
+        {
+          "selector": ".event-card[data-story=\"decision_trace\"]",
+          "shown": true,
+          "panel": {
+            "text": "1310년 당신의 결정 때문에: 걸려 온 소송에 증거를 냈다\n\n1310년 봄 — 걸려 온 소송에 증거를 냈다\n\n더 보기\n소송이 증거 단계로 넘어갔다\n연대기에서 보기\n조언\n닫기",
+            "box": {
+              "x": 912,
+              "y": 272,
+              "width": 360,
+              "height": 195.5,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-answer-chip.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 봄\n\n걸려 온 소송에 증거를 냈다\n\n고른 길\ndeed\n다른 길\n\n다른 길이 없었습니다\n\n예측과 실제\n그 뒤에 일어난 일\n1310년 여름 — 소송이 증거 단계로 넘어갔다\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-answer-chip-history.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 여름\n\n큰 부담을 거두는 작은 시장: 좌판 부담을 650‰로 낮춘다\n\n고른 길\n좌판 부담을 650‰로 낮춘다\n다른 길\n좌판 부담을 기존율 1000‰로 되돌린다\n높은 부담을 두고 성장 방침을 택한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-answer-decision.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 41029,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": true,
+      "chipAfterOverlayDismissal": true,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": false,
+      "finalTick": 41029,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_092-consequence",
+      "checkpoint": {
+        "file": "ck_evt_092-consequence-h-002853.save.json.gz",
+        "fileSha256": "16246719023051b5f0bd0f01079a817a9f1562e3afa58586f134938487d96e39",
+        "encodedSaveSha256": "697aff13a635bd4083f6ddedd64b4c9a6b72ef411bcd8246bc57d4a993cec6a1",
+        "observedTick": 43200,
+        "bytes": 112463,
+        "historyId": "h-002853",
+        "historyTick": 43200,
+        "because": [
+          {
+            "decisionId": "h-002727",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "pair": {
+        "entryId": "ck_evt_092",
+        "decisionId": "h-002727",
+        "decisionTick": 41029,
+        "source": "registry:ck_evt_092:b",
+        "answer": {
+          "file": "ck_evt_092-answer-h-002727.save.json.gz",
+          "fileSha256": "f7ead1418456955a43b0890e039eaaee50627c0016f43db1d79b56ff2020a41c",
+          "encodedSaveSha256": "5978c341672ed7ae3ebf781a851d8efcbbc59424cd99cae2ec42cbdc5357238f",
+          "observedTick": 41029,
+          "bytes": 110746
+        },
+        "consequence": {
+          "file": "ck_evt_092-consequence-h-002853.save.json.gz",
+          "fileSha256": "16246719023051b5f0bd0f01079a817a9f1562e3afa58586f134938487d96e39",
+          "encodedSaveSha256": "697aff13a635bd4083f6ddedd64b4c9a6b72ef411bcd8246bc57d4a993cec6a1",
+          "observedTick": 43200,
+          "bytes": 112463,
+          "historyId": "h-002853",
+          "historyTick": 43200,
+          "because": [
+            {
+              "decisionId": "h-002727",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        ".event-chip[data-story=\"decision_trace\"]",
+        ".event-card[data-story=\"decision_trace\"] .event-card-chronicle",
+        ".chronicle-card[data-record=\"h-002727\"] .chronicle-card-body",
+        ".chronicle-thread[data-thread=\"decision\"] .chronicle-thread-link[data-record=\"h-002853\"]",
+        ".chronicle-thread[data-thread=\"because\"] .chronicle-thread-link[data-record=\"h-002727\"]"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1310년 겨울\n인구 488\n식량 153일\n£1 13s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n성채 곁 헛간에 밀 803 묶임\n운반꾼 부족\n1310년 당신의 결정 때문에: 큰 부담을 거두는 작은 시장\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-consequence-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_092-consequence-year.png"
+        },
+        {
+          "selector": ".event-card[data-story=\"decision_trace\"]",
+          "shown": true,
+          "panel": {
+            "text": "1310년 당신의 결정 때문에: 큰 부담을 거두는 작은 시장\n\n1310년 여름 — 큰 부담을 거두는 작은 시장: 좌판 부담을 650‰로 낮춘다\n\n더 보기\n그 뒤 첫 좌판세 1s가 들어왔다 (여러 까닭 가운데 하나)\n연대기에서 보기\n조언\n닫기",
+            "box": {
+              "x": 912,
+              "y": 176,
+              "width": 360,
+              "height": 215,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-consequence-chip.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 여름\n\n큰 부담을 거두는 작은 시장: 좌판 부담을 650‰로 낮춘다\n\n고른 길\n좌판 부담을 650‰로 낮춘다\n다른 길\n좌판 부담을 기존율 1000‰로 되돌린다\n높은 부담을 두고 성장 방침을 택한다\n예측과 실제\n그 뒤에 일어난 일\n1310년 겨울 — 그 뒤 첫 좌판세 1s가 들어왔다 (여러 까닭 가운데 하나)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-consequence-chip-history.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1310년 여름\n\n큰 부담을 거두는 작은 시장: 좌판 부담을 650‰로 낮춘다\n\n고른 길\n좌판 부담을 650‰로 낮춘다\n다른 길\n좌판 부담을 기존율 1000‰로 되돌린다\n높은 부담을 두고 성장 방침을 택한다\n예측과 실제\n그 뒤에 일어난 일\n1310년 겨울 — 그 뒤 첫 좌판세 1s가 들어왔다 (여러 까닭 가운데 하나)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-consequence-decision.png"
+        },
+        {
+          "selector": ".chronicle-thread[data-thread=\"because\"]",
+          "shown": true,
+          "panel": {
+            "text": "이 일이 따라 나온 결정\n1310년 당신의 결정도 한몫해 — 큰 부담을 거두는 작은 시장: 좌판 부담을 650‰로 낮춘다",
+            "box": {
+              "x": 758.484375,
+              "y": 286.25,
+              "width": 497.515625,
+              "height": 72.09375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_092-consequence-because.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 43200,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": true,
+      "chipAfterOverlayDismissal": true,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": true,
+      "exactCauseBackLinkShown": true,
+      "finalTick": 43200,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_211-answer",
+      "checkpoint": {
+        "file": "ck_evt_211-answer-h-002970.save.json.gz",
+        "fileSha256": "07368bf2c807169ea8cac924498d7dd78ff4173da06d6b576a7d09f343a855ce",
+        "encodedSaveSha256": "8b0336857add3e8166dc8c71cd81964669a89ce1e830a766c75f7841875293bb",
+        "observedTick": 45007,
+        "bytes": 111877
+      },
+      "pair": {
+        "entryId": "ck_evt_211",
+        "decisionId": "h-002970",
+        "decisionTick": 45007,
+        "source": "registry:ck_evt_211:a",
+        "answer": {
+          "file": "ck_evt_211-answer-h-002970.save.json.gz",
+          "fileSha256": "07368bf2c807169ea8cac924498d7dd78ff4173da06d6b576a7d09f343a855ce",
+          "encodedSaveSha256": "8b0336857add3e8166dc8c71cd81964669a89ce1e830a766c75f7841875293bb",
+          "observedTick": 45007,
+          "bytes": 111877
+        },
+        "consequence": {
+          "file": "ck_evt_211-consequence-h-002987.save.json.gz",
+          "fileSha256": "35267b5029368811556ed7d06c0e0542cc1a76965c259c0d761b8411918f8e04",
+          "encodedSaveSha256": "87f24f20c2ea5f77567b72e564ec7dd774feb7659d2bd4e64ad7d5386aeb9e5e",
+          "observedTick": 45600,
+          "bytes": 114251,
+          "historyId": "h-002987",
+          "historyTick": 45600,
+          "because": [
+            {
+              "decisionId": "h-002970",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        ".event-chip[data-story=\"decision_trace\"]",
+        ".event-card[data-story=\"decision_trace\"] .event-card-chronicle",
+        ".chronicle-card[data-record=\"h-002970\"] .chronicle-card-body"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1311년 여름\n인구 498\n식량 148일\n£1 4s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n1311년 당신의 결정 때문에: 상인 가문 대표와 처음 정할 몫\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-answer-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_211-answer-year.png"
+        },
+        {
+          "selector": ".event-card[data-story=\"decision_trace\"]",
+          "shown": true,
+          "panel": {
+            "text": "1311년 당신의 결정 때문에: 상인 가문 대표와 처음 정할 몫\n\n1311년 여름 — 상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n\n더 보기\n제퍼슨 상인 가문: 고마워합니다 (관계 +6)\n연대기에서 보기\n조언\n닫기",
+            "box": {
+              "x": 912,
+              "y": 176,
+              "width": 360,
+              "height": 215,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-answer-chip.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1311년 여름\n\n상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n\n고른 길\n모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n다른 길\n모든 좌판에서 더 거두어 세입 조건을 높인다\n현행을 지키고 대표의 불만을 감수한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n기억하는 이\n제퍼슨 상인 가문: 고마워합니다 (관계 +6)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-answer-chip-history.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1311년 여름\n\n상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n\n고른 길\n모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n다른 길\n모든 좌판에서 더 거두어 세입 조건을 높인다\n현행을 지키고 대표의 불만을 감수한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n기억하는 이\n제퍼슨 상인 가문: 고마워합니다 (관계 +6)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-answer-decision.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 45007,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": true,
+      "chipAfterOverlayDismissal": true,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": false,
+      "finalTick": 45007,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_211-consequence",
+      "checkpoint": {
+        "file": "ck_evt_211-consequence-h-002987.save.json.gz",
+        "fileSha256": "35267b5029368811556ed7d06c0e0542cc1a76965c259c0d761b8411918f8e04",
+        "encodedSaveSha256": "87f24f20c2ea5f77567b72e564ec7dd774feb7659d2bd4e64ad7d5386aeb9e5e",
+        "observedTick": 45600,
+        "bytes": 114251,
+        "historyId": "h-002987",
+        "historyTick": 45600,
+        "because": [
+          {
+            "decisionId": "h-002970",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "pair": {
+        "entryId": "ck_evt_211",
+        "decisionId": "h-002970",
+        "decisionTick": 45007,
+        "source": "registry:ck_evt_211:a",
+        "answer": {
+          "file": "ck_evt_211-answer-h-002970.save.json.gz",
+          "fileSha256": "07368bf2c807169ea8cac924498d7dd78ff4173da06d6b576a7d09f343a855ce",
+          "encodedSaveSha256": "8b0336857add3e8166dc8c71cd81964669a89ce1e830a766c75f7841875293bb",
+          "observedTick": 45007,
+          "bytes": 111877
+        },
+        "consequence": {
+          "file": "ck_evt_211-consequence-h-002987.save.json.gz",
+          "fileSha256": "35267b5029368811556ed7d06c0e0542cc1a76965c259c0d761b8411918f8e04",
+          "encodedSaveSha256": "87f24f20c2ea5f77567b72e564ec7dd774feb7659d2bd4e64ad7d5386aeb9e5e",
+          "observedTick": 45600,
+          "bytes": 114251,
+          "historyId": "h-002987",
+          "historyTick": 45600,
+          "because": [
+            {
+              "decisionId": "h-002970",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        ".event-chip[data-story=\"decision_trace\"]",
+        ".event-card[data-story=\"decision_trace\"] .event-card-chronicle",
+        ".chronicle-card[data-record=\"h-002970\"] .chronicle-card-body",
+        ".chronicle-thread[data-thread=\"decision\"] .chronicle-thread-link[data-record=\"h-002987\"]",
+        ".chronicle-thread[data-thread=\"because\"] .chronicle-thread-link[data-record=\"h-002970\"]"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1311년 여름\n인구 509\n식량 146일\n£1 19s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n1311년 당신의 결정 때문에: 상인 가문 대표와 처음 정할 몫\n목표 기록\n되돌리기\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-consequence-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_211-consequence-year.png"
+        },
+        {
+          "selector": ".event-card[data-story=\"decision_trace\"]",
+          "shown": true,
+          "panel": {
+            "text": "1311년 당신의 결정 때문에: 상인 가문 대표와 처음 정할 몫\n\n1311년 여름 — 상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n\n더 보기\n그 뒤 첫 좌판세 10d가 들어왔다 (여러 까닭 가운데 하나)\n제퍼슨 상인 가문: 고마워합니다 (관계 +6)\n연대기에서 보기\n조언\n닫기",
+            "box": {
+              "x": 912,
+              "y": 176,
+              "width": 360,
+              "height": 234,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-consequence-chip.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1311년 여름\n\n상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n\n고른 길\n모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n다른 길\n모든 좌판에서 더 거두어 세입 조건을 높인다\n현행을 지키고 대표의 불만을 감수한다\n예측과 실제\n그 뒤에 일어난 일\n1311년 여름 — 그 뒤 첫 좌판세 10d가 들어왔다 (여러 까닭 가운데 하나)\n기억하는 이\n제퍼슨 상인 가문: 고마워합니다 (관계 +6)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-consequence-chip-history.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1311년 여름\n\n상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n\n고른 길\n모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n다른 길\n모든 좌판에서 더 거두어 세입 조건을 높인다\n현행을 지키고 대표의 불만을 감수한다\n예측과 실제\n그 뒤에 일어난 일\n1311년 여름 — 그 뒤 첫 좌판세 10d가 들어왔다 (여러 까닭 가운데 하나)\n기억하는 이\n제퍼슨 상인 가문: 고마워합니다 (관계 +6)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-consequence-decision.png"
+        },
+        {
+          "selector": ".chronicle-thread[data-thread=\"because\"]",
+          "shown": true,
+          "panel": {
+            "text": "이 일이 따라 나온 결정\n1311년 당신의 결정도 한몫해 — 상인 가문 대표와 처음 정할 몫: 모든 좌판의 부담을 낮추고 세입 몫을 양보한다",
+            "box": {
+              "x": 758.484375,
+              "y": 286.25,
+              "width": 497.515625,
+              "height": 72.09375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_211-consequence-because.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 45600,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": true,
+      "chipAfterOverlayDismissal": true,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": true,
+      "exactCauseBackLinkShown": true,
+      "finalTick": 45600,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_201-answer",
+      "checkpoint": {
+        "file": "ck_evt_201-answer-h-003870.save.json.gz",
+        "fileSha256": "12fee670dad03062cb80f2d75cc942f6b16339897c6abecb276ae812d028d0f6",
+        "encodedSaveSha256": "c357f85d45f437e19879f24902abcf0a29b4491fa5f568fa06cb3f9630601923",
+        "observedTick": 59047,
+        "bytes": 125951
+      },
+      "pair": {
+        "entryId": "ck_evt_201",
+        "decisionId": "h-003870",
+        "decisionTick": 59047,
+        "source": "registry:ck_evt_201:b",
+        "answer": {
+          "file": "ck_evt_201-answer-h-003870.save.json.gz",
+          "fileSha256": "12fee670dad03062cb80f2d75cc942f6b16339897c6abecb276ae812d028d0f6",
+          "encodedSaveSha256": "c357f85d45f437e19879f24902abcf0a29b4491fa5f568fa06cb3f9630601923",
+          "observedTick": 59047,
+          "bytes": 125951
+        },
+        "consequence": {
+          "file": "ck_evt_201-consequence-h-003918.save.json.gz",
+          "fileSha256": "5a9dc0f4e2d4b0145d0e1863f8240e38c232ae97f16c49d918ad209b657b064b",
+          "encodedSaveSha256": "5efd43f56dd5f9a55557c8938a03c2f1877f00a08ffc85dc229646ba22fe284b",
+          "observedTick": 60000,
+          "bytes": 127660,
+          "historyId": "h-003918",
+          "historyTick": 60000,
+          "because": [
+            {
+              "decisionId": "h-003870",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        "Escape (close event card/pause)",
+        "KeyC (manual history)",
+        ".chronicle-card[data-record=\"h-003870\"] .chronicle-card-body"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1314년 겨울\n인구 528\n식량 286일\n£35 6s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n남서쪽 헛간에 밀 838 묶임\n운반꾼 부족\n외 2곳\n대기근의 조짐\n목표 기록\n명령\n장부\n청지기\n\n큰 기근의 조짐이 보입니다. 곡창을 상인 가문이 짓습니다. 마을의 사업 후보에 곡창은 아직 없습니다. 명령 › 방향: '안정' 방침을 두면 곡창에 점수 +25",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_201-answer-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_201-answer-year.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1314년 겨울\n\n이번 철 좌판의 몫: 모든 좌판에서 더 거두어 세입 조건을 높인다\n\n고른 길\n모든 좌판에서 더 거두어 세입 조건을 높인다\n다른 길\n모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n현행을 지키고 대표의 불만을 감수한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n기억하는 이\n도시 공동체: 못마땅해합니다 (관계 −6)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_201-answer-decision.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 59047,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": false,
+      "chipAfterOverlayDismissal": false,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": false,
+      "finalTick": 59047,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_201-consequence",
+      "checkpoint": {
+        "file": "ck_evt_201-consequence-h-003918.save.json.gz",
+        "fileSha256": "5a9dc0f4e2d4b0145d0e1863f8240e38c232ae97f16c49d918ad209b657b064b",
+        "encodedSaveSha256": "5efd43f56dd5f9a55557c8938a03c2f1877f00a08ffc85dc229646ba22fe284b",
+        "observedTick": 60000,
+        "bytes": 127660,
+        "historyId": "h-003918",
+        "historyTick": 60000,
+        "because": [
+          {
+            "decisionId": "h-003870",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "pair": {
+        "entryId": "ck_evt_201",
+        "decisionId": "h-003870",
+        "decisionTick": 59047,
+        "source": "registry:ck_evt_201:b",
+        "answer": {
+          "file": "ck_evt_201-answer-h-003870.save.json.gz",
+          "fileSha256": "12fee670dad03062cb80f2d75cc942f6b16339897c6abecb276ae812d028d0f6",
+          "encodedSaveSha256": "c357f85d45f437e19879f24902abcf0a29b4491fa5f568fa06cb3f9630601923",
+          "observedTick": 59047,
+          "bytes": 125951
+        },
+        "consequence": {
+          "file": "ck_evt_201-consequence-h-003918.save.json.gz",
+          "fileSha256": "5a9dc0f4e2d4b0145d0e1863f8240e38c232ae97f16c49d918ad209b657b064b",
+          "encodedSaveSha256": "5efd43f56dd5f9a55557c8938a03c2f1877f00a08ffc85dc229646ba22fe284b",
+          "observedTick": 60000,
+          "bytes": 127660,
+          "historyId": "h-003918",
+          "historyTick": 60000,
+          "because": [
+            {
+              "decisionId": "h-003870",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        },
+        "status": "paired"
+      },
+      "actions": [
+        "Escape (close event card/pause)",
+        "KeyC (manual history)",
+        ".chronicle-card[data-record=\"h-003870\"] .chronicle-card-body",
+        ".chronicle-thread[data-thread=\"decision\"] .chronicle-thread-link[data-record=\"h-003918\"]",
+        ".chronicle-thread[data-thread=\"because\"] .chronicle-thread-link[data-record=\"h-003870\"]"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1315년 봄\n인구 528\n식량 284일\n굶주림 6\n£39 16s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n대기근\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_201-consequence-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_201-consequence-year.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1314년 겨울\n\n이번 철 좌판의 몫: 모든 좌판에서 더 거두어 세입 조건을 높인다\n\n고른 길\n모든 좌판에서 더 거두어 세입 조건을 높인다\n다른 길\n모든 좌판의 부담을 낮추고 세입 몫을 양보한다\n현행을 지키고 대표의 불만을 감수한다\n예측과 실제\n그 뒤에 일어난 일\n1315년 봄 — 그 뒤 첫 좌판세 10d가 들어왔다 (여러 까닭 가운데 하나)\n기억하는 이\n도시 공동체: 못마땅해합니다 (관계 −6)\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_201-consequence-decision.png"
+        },
+        {
+          "selector": ".chronicle-thread[data-thread=\"because\"]",
+          "shown": true,
+          "panel": {
+            "text": "이 일이 따라 나온 결정\n1314년 당신의 결정도 한몫해 — 이번 철 좌판의 몫: 모든 좌판에서 더 거두어 세입 조건을 높인다",
+            "box": {
+              "x": 758.484375,
+              "y": 286.25,
+              "width": 497.515625,
+              "height": 72.09375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_201-consequence-because.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 60000,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": false,
+      "chipAfterOverlayDismissal": false,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": true,
+      "exactCauseBackLinkShown": true,
+      "finalTick": 60000,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_038-answer",
+      "checkpoint": {
+        "file": "ck_evt_038-answer-h-002358.save.json.gz",
+        "fileSha256": "f8e89756b3b94bf8b44d21d5ada507f19cfaba20a6cee16bc74244a1a45de115",
+        "encodedSaveSha256": "e9921dfe98c0e19931cedd138641f012e7b496dcc9f0d52ecd0fe5ff468cb73a",
+        "observedTick": 36037,
+        "bytes": 103995
+      },
+      "pair": {
+        "entryId": "ck_evt_038",
+        "decisionId": "h-002358",
+        "decisionTick": 36037,
+        "source": "registry:ck_evt_038:defer",
+        "answer": {
+          "file": "ck_evt_038-answer-h-002358.save.json.gz",
+          "fileSha256": "f8e89756b3b94bf8b44d21d5ada507f19cfaba20a6cee16bc74244a1a45de115",
+          "encodedSaveSha256": "e9921dfe98c0e19931cedd138641f012e7b496dcc9f0d52ecd0fe5ff468cb73a",
+          "observedTick": 36037,
+          "bytes": 103995
+        },
+        "status": "mature_without_observed_future_link"
+      },
+      "actions": [
+        "Escape (close event card/pause)",
+        "KeyC (manual history)",
+        ".chronicle-card[data-record=\"h-002358\"] .chronicle-card-body"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1309년 봄\n인구 404\n식량 162일\n11s 3d\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n점유자가 버텼다\n목표 기록\n명령\n장부\n청지기\n\n영주님, 시장 이용 불가: 시장 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_038-answer-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_038-answer-year.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1309년 봄\n\n판결 뒤에도 닫힌 문: 집행을 미룬다\n\n고른 길\n집행을 미룬다\n다른 길\n80d를 내고 점유 집행을 시도한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_038-answer-decision.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 36037,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": false,
+      "chipAfterOverlayDismissal": false,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": false,
+      "finalTick": 36037,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "ck_evt_038-final-no-pair",
+      "checkpoint": {
+        "file": "final.save.json.gz",
+        "fileSha256": "be0b3048cece656ad30b21b029244e7934aeb00a4df064fec26f57f83d4b98df",
+        "encodedSaveSha256": "c8bc8fbc577fe9efbf6ed4c07082f3a7065f0f474fd4bc0122f9e929bba1c8aa",
+        "observedTick": 60000,
+        "bytes": 127660
+      },
+      "pair": {
+        "entryId": "ck_evt_038",
+        "decisionId": "h-002358",
+        "decisionTick": 36037,
+        "source": "registry:ck_evt_038:defer",
+        "answer": {
+          "file": "ck_evt_038-answer-h-002358.save.json.gz",
+          "fileSha256": "f8e89756b3b94bf8b44d21d5ada507f19cfaba20a6cee16bc74244a1a45de115",
+          "encodedSaveSha256": "e9921dfe98c0e19931cedd138641f012e7b496dcc9f0d52ecd0fe5ff468cb73a",
+          "observedTick": 36037,
+          "bytes": 103995
+        },
+        "status": "mature_without_observed_future_link"
+      },
+      "actions": [
+        "Escape (close event card/pause)",
+        "KeyC (manual history)",
+        ".chronicle-card[data-record=\"h-002358\"] .chronicle-card-body"
+      ],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1315년 봄\n인구 528\n식량 284일\n굶주림 6\n£39 16s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n대기근\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_038-final-no-pair-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "ck_evt_038-final-no-pair-year.png"
+        },
+        {
+          "selector": ".chronicle-detail",
+          "shown": true,
+          "panel": {
+            "text": "1309년 봄\n\n판결 뒤에도 닫힌 문: 집행을 미룬다\n\n고른 길\n집행을 미룬다\n다른 길\n80d를 내고 점유 집행을 시도한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n그때 지도",
+            "box": {
+              "x": 748.484375,
+              "y": 230.65625,
+              "width": 515.515625,
+              "height": 557.34375,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "ck_evt_038-final-no-pair-decision.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 60000,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": false,
+      "chipAfterOverlayDismissal": false,
+      "historyOpened": true,
+      "decisionLocated": true,
+      "exactConsequenceLinkShown": false,
+      "finalTick": 60000,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    },
+    {
+      "name": "final-year-review",
+      "checkpoint": {
+        "file": "final.save.json.gz",
+        "fileSha256": "be0b3048cece656ad30b21b029244e7934aeb00a4df064fec26f57f83d4b98df",
+        "encodedSaveSha256": "c8bc8fbc577fe9efbf6ed4c07082f3a7065f0f474fd4bc0122f9e929bba1c8aa",
+        "observedTick": 60000,
+        "bytes": 127660
+      },
+      "pair": null,
+      "actions": [],
+      "panels": [
+        {
+          "selector": "body",
+          "shown": true,
+          "panel": {
+            "text": "인장과 가문\n1315년 봄\n인구 528\n식량 284일\n굶주림 6\n£39 16s\n내 도시로\n일시 정지 중 · Space\n×5\n·\n10\n설정\n대기근\n목표 기록\n명령\n장부\n청지기\n\n영주님, 교회 이용 불가: 교회 없음",
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1280,
+              "height": 800,
+              "inside": true
+            },
+            "recordId": null
+          },
+          "screenshot": "final-year-review-initial.png"
+        },
+        {
+          "selector": ".results-card.year-review",
+          "shown": false,
+          "panel": null,
+          "screenshot": "final-year-review-year.png"
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "openScene dismisses welcome/Escape and sets camera; tutorial disabled outside GameState.",
+        "History navigation is manual. No first-season automatic visibility claim. No simulation resumed."
+      ],
+      "loadedTick": 60000,
+      "initialStateExact": false,
+      "initialHistoryTraceExact": true,
+      "automaticYearReview": false,
+      "chipInitiallyShown": false,
+      "finalTick": 60000,
+      "tickUnchanged": true,
+      "finalHistoryTraceExact": true
+    }
+  ]
+}
