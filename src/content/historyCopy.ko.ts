@@ -187,6 +187,8 @@ const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
     return `${builder}${josa(builder, "이", "가")} 거절해 공동체가 대신 지었다 — ${buildingWord(s(params, "what"))}, ${late} 늦게, `
       + (treasury > 0 ? `금고 ${moneyWords(treasury)}` : `공동체 웃돈 ${moneyWords(n(params, "premium"))}`);
   },
+  // SUIT-THREAD (DTR-20): a judgment's possession, its first rent.
+  suit_rent: params => `${n(params, "year")}년 판결로 점유한 땅에서 첫 지대 ${moneyWords(n(params, "income"))}${josa(moneyWords(n(params, "income")), "이", "가")} 들어왔다`,
   payment_flow: params => {
     const line = LEDGER_CATEGORY_LABELS[s(params, "category") as keyof typeof LEDGER_CATEGORY_LABELS] ?? s(params, "category");
     const out = n(params, "expense") > n(params, "income");

@@ -25,6 +25,7 @@ import { FAMINE_FLOWS, PETITION_FLOWS, TARGET_FLOWS } from "../content/decisionF
 import { preparedness } from "./crisisReads";
 import { stateCalendar } from "./scenarioState";
 import { FACTION_OF_ACTOR } from "./townAgency";
+import { POSSESSION_RENT_DETAIL } from "./possessionRent";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
 /** A decision's targets stay live this long (the user's gate: a consequence within three years). */
@@ -62,8 +63,8 @@ export function changedTargets(before: GameState, after: GameState): string[] {
   for (const suit of after.estates?.suits ?? []) {
     if (suits.get(suit.id) === suit) continue;
     targets.add(`suit:${suit.id}`);
-    // DTR-11: a judgment enforced — the estate's next yield to the lord carries it (the piece now his).
-    if (suit.enforced === true && suits.get(suit.id)?.enforced !== true) targets.add(`flow:estate_income@${suit.estateId}`);
+    // DTR-11, SUIT-THREAD (DTR-20): a judgment enforced — the possession's first rent to the lord carries it.
+    if (suit.enforced === true && suits.get(suit.id)?.enforced !== true) targets.add(`rent:${suit.estateId}|${suit.pieceId ?? suit.estateId}`);
   }
   const claims = new Map((before.estates?.claims ?? []).map(claim => [claim.id, claim] as const));
   for (const claim of after.estates?.claims ?? []) {
@@ -329,8 +330,13 @@ function onTarget(state: GameState, key: ConsequenceKey, target: string, detail:
 }
 
 /** The ledger lines a target's later postings fall in (a right's piece, a setting's, a chapter answer's), or null. */
-function flowOf(target: string): { readonly key: "right_income" | "payment_flow"; readonly categories: readonly string[]; readonly estate?: string } | null {
+function flowOf(target: string): { readonly key: "right_income" | "payment_flow" | "suit_rent"; readonly categories: readonly string[]; readonly estate?: string; readonly piece?: string } | null {
   if (target.startsWith("right:")) return { key: "right_income", categories: PIECE_INCOME_CATEGORIES[GRANT_PIECE[target.slice("right:".length)]!] ?? [] };
+  // SUIT-THREAD (DTR-20): `rent:<estate>|<piece>` — the possession's rent (`possessionRent.ts`; a piece's id holds a colon).
+  if (target.startsWith("rent:")) {
+    const [estate, piece] = target.slice("rent:".length).split("|");
+    return { key: "suit_rent", categories: ["estate_income"], estate: estate!, piece: piece ?? estate! };
+  }
   if (target.startsWith("flow:")) {
     // `flow:<category>@<estate>`: that estate's own postings only (its season's yield, not a petition's).
     const [category, estate] = target.slice("flow:".length).split("@");
@@ -344,6 +350,7 @@ function flowOf(target: string): { readonly key: "right_income" | "payment_flow"
 function inFlow(entry: LedgerEntry, flow: NonNullable<ReturnType<typeof flowOf>>): boolean {
   if (!flow.categories.includes(entry.category)) return false;
   if (flow.key === "right_income") return entry.account === "cash" && entry.amount > 0;
+  if (flow.key === "suit_rent") return entry.amount > 0 && entry.sourceRefs.some(ref => ref.type === "right" && ref.id === flow.piece && ref.detail === POSSESSION_RENT_DETAIL);
   if (flow.estate !== undefined) return entry.sourceRefs.some(ref => ref.type === "actor" && ref.id === `estate:${flow.estate}`)
     && !entry.sourceRefs.some(ref => ref.type === "claim");
   return true;
@@ -439,8 +446,10 @@ function consequences(before: GameState, after: GameState): GameState {
         if (amounts.length === 0 || followed(next, decision, flow.key, target)) continue;
         const income = amounts.filter(entry => entry.amount > 0).reduce((sum, entry) => sum + entry.amount, 0);
         const expense = -amounts.filter(entry => entry.amount < 0).reduce((sum, entry) => sum + entry.amount, 0);
-        next = writeConsequence(next, flow.key, target, [decision.id], true,
-          flow.key === "right_income" ? { income } : { category: amounts[0]!.category, income, expense });
+        // SUIT-THREAD: the rent names its judgment's year ("○○년 판결로").
+        next = writeConsequence(next, flow.key, target, [decision.id], flow.key !== "suit_rent",
+          flow.key === "right_income" ? { income } : flow.key === "suit_rent" ? { income, year: scenarioYear(next, decision.tick), estate: flow.estate! }
+            : { category: amounts[0]!.category, income, expense });
       }
     }
   }
