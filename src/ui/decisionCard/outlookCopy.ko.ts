@@ -4,9 +4,11 @@ import { moneyShort } from "../money.ko";
 // keys of what it sets going later. Every key is data; the card says each in a sentence. Words follow
 // docs/design/glossary.md: the lord's acts "~한다", the card's lines "~합니다".
 
-/** The particle after a Korean word: the first form after a final consonant (받침), the second after a vowel. */
+/** The particle after a Korean word: the first form after a final consonant (받침), the second after a vowel. A name's
+ * closing gloss does not count ("드 코르벨 가문(이웃 영주)이": the particle follows 가문). */
 const josa = (word: string, withFinal: string, without: string) => {
-  const code = word.charCodeAt(word.length - 1) - 0xac00;
+  const bare = word.replace(/\([^()]*\)$/, "");
+  const code = bare.charCodeAt(bare.length - 1) - 0xac00;
   return code >= 0 && code <= 11171 && code % 28 !== 0 ? withFinal : without;
 };
 const subject = (word: string) => `${word}${josa(word, "이", "가")}`;
@@ -26,7 +28,7 @@ export const OUTLOOK_COPY = {
   subsidy: (building: string, amount: number) => `앞으로 ${object(building)} 지으면 한 건에 ${moneyShort(amount)}의 장려금이 금고에서 나갑니다.`,
   subsidyGone: (building: string) => `앞으로 ${building} 장려금은 나가지 않습니다.`,
   /** suit_stage: the stage the suit stands at after the answer. */
-  suitStage: (stage: string) => `소송은 이제 ${stage}입니다.`,
+  suitStage: (stage: string) => `답한 뒤 소송은 ${stage}입니다.`,
   suitStages: {
     filed: "소장을 낸 단계", evidence: "증거를 모으는 단계", patronage: "후원을 구하는 단계", hearing: "심리하는 단계", judged: "판결이 난 단계",
     enforcing: "점유를 집행할 단계", closed: "끝난 상태",

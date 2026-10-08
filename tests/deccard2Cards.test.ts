@@ -76,7 +76,7 @@ test("the later keys in words: deadlines as dates, the war tax's seasons, the du
   assert.match(lines[2]!, /3계절/);
   assert.equal(lines[3], OUTLOOK_COPY.subsidy("우물", 240));
   assert.equal(lines[4], OUTLOOK_COPY.subsidyGone("우물"));
-  assert.equal(lines[5], "소송은 이제 심리하는 단계입니다.");
+  assert.equal(lines[5], "답한 뒤 소송은 심리하는 단계입니다.");
   assert.match(lines[6]!, /목재 40단/);
   assert.match(lines[7]!, /평소의 80%/);
   assert.equal(lines[8], OUTLOOK_COPY.factionMind(`${commons}, ${factionName(state, "bishop")}`));
