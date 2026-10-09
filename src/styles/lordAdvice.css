@@ -18,3 +18,13 @@
 .app-shell .since-last h3 { margin: 0; font-size: 13px; line-height: 1.35; }
 .app-shell .since-last ul { margin: 0; padding: 0 0 0 16px; }
 .app-shell .since-last li { font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+
+/* GROW-BLOCK: the era console's palisade plan in lord mode (src/ui/lord/advice/WallPlan.tsx), opened by its primary. */
+.wall-plan { display: grid; gap: 6px; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--palette-parchment-dark); color: var(--palette-ink); }
+.wall-plan p, .wall-plan h4 { margin: 0; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.wall-plan h4 { font-weight: 600; }
+.wall-plan-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.wall-plan-list > li { display: grid; gap: 2px; padding: 6px 8px; background-color: var(--palette-parchment); font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.wall-plan-list > li > span { font-size: 12px; color: var(--palette-ink-muted); }
+.wall-plan-failure { display: grid; gap: 4px; }
+.wall-plan .wall-plan-go { justify-self: start; min-height: 44px; display: inline-flex; align-items: center; gap: 4px; }
