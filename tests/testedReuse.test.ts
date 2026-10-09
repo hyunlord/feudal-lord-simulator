@@ -199,6 +199,17 @@ test("a newer failure on the same inputs outweighs an older pass; a failure on c
   } finally { s.done(); }
 });
 
+test("a newer failure of other content with no overlap blocks too: its inputs were the same as the older pass's", () => {
+  const s = story(docsOnly);
+  try {
+    // A failing run of the branch's content before the merge (the gate's content), newer than the gate's pass.
+    s.record("later-fail", ["tests/engine.test.ts"], { passed: false, tree: s.git("rev-parse", "HEAD^1^{tree}") });
+    const result = s.check();
+    assert.ok(uncovered(result).includes("tests/engine.test.ts"), formatTestedChanges(result));
+    assert.match(formatTestedChanges(result), /tests\/engine\.test\.ts — FAILED on the same inputs \(content [0-9a-f]{8}/);
+  } finally { s.done(); }
+});
+
 test("a record of content this checkout lacks, or with no measured inputs, never covers a test", () => {
   const s = story(docsOnly);
   try {
@@ -299,4 +310,40 @@ test("a .js specifier resolved to .ts: a real .js added beside it loads nothing 
     const gone = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
     assert.ok(gone.overlaps?.get("tests/j.test.ts")?.files.includes("src/j.ts"), formatTestedChanges(gone));
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+/** A small throwaway repository with one measured test and its passing record; `move` changes the trunk, the branch merges it. */
+function single(testText: string, setup: Record<string, string>, move: (git: (...args: string[]) => string, write: Write) => void) {
+  const dir = tempDir("fls-single-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"name":"story","type":"module"}\n');
+  for (const [path, text] of Object.entries(setup)) write(path, text);
+  write("tests/one.test.ts", testText);
+  git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
+  git("checkout", "-qb", "branch"); write("tests/one.test.ts", `${testText}// the branch\n`); git("commit", "-qam", "branch: the test");
+  const { ran, inputs } = measure(dir, ["tests/one.test.ts"]);
+  assert.equal(ran.status, 0, ran.stdout + ran.stderr);
+  write(".remote-runs/gate/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/one.test.ts"], where: "gate", at: "2026-10-09T01:00:00Z", inputs }));
+  git("checkout", "-q", "trunk"); move(git, write); git("add", "-A"); git("commit", "-qm", "trunk moves");
+  const base = git("rev-parse", "HEAD"); git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
+  return { result: checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") }), done: () => rmSync(dir, { recursive: true, force: true }) };
+}
+
+test("a rename onto a path the test looked for and missed: the test runs again (renames are a delete and an add)", () => {
+  const s = single('import { test } from "node:test";\nimport { existsSync } from "node:fs";\ntest("optional", () => { existsSync("fixtures/optional.json"); });\n',
+    { "fixtures/other.json": '{"other":1}\n' }, git => git("mv", "fixtures/other.json", "fixtures/optional.json"));
+  try {
+    assert.ok(s.result.uncovered?.includes("tests/one.test.ts"), formatTestedChanges(s.result));
+    assert.ok(s.result.overlaps?.get("tests/one.test.ts")?.files.includes("fixtures/optional.json"), JSON.stringify(s.result.overlaps?.get("tests/one.test.ts")));
+  } finally { s.done(); }
+});
+
+test("a test that reads outside the repository is not measurable: it is never reused, the output says what it read", () => {
+  const s = single('import { test } from "node:test";\nimport { readFileSync } from "node:fs";\ntest("outside", () => { readFileSync("/etc/hosts", "utf8"); });\n',
+    {}, (_git, write) => write("docs/notes.md", "moved\n"));
+  try {
+    assert.ok(s.result.uncovered?.includes("tests/one.test.ts"), formatTestedChanges(s.result));
+    assert.match(formatTestedChanges(s.result), /tests\/one\.test\.ts — never reused: not measurable: reads outside the repository: \/etc\/hosts/);
+  } finally { s.done(); }
 });
