@@ -1,11 +1,12 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 import { isDeepStrictEqual } from 'node:util';
 import { verifyOutcomeReplay, outcomeSha256, requireOutcome } from './engineBOutcomeArchive.mjs';
 import { scoreOutcomeGate } from './engineBOutcomeGate.mjs';
 
-export const RESIDUAL_SOURCE_FILES = ['src/engine/history.ts', 'src/engine/estateSuits.ts', 'src/engine/decisionTraceAnswerReceipts.ts'];
+export const RESIDUAL_SOURCE_FILES = ['src/engine/history.ts', 'src/engine/estateSuits.ts', 'src/engine/stewardship.ts', 'src/engine/decisionTraceAnswerReceipts.ts'];
 // The reviewed diff only adds card presentation params; both BIG decision branches are unchanged.
 export const PHASE_HISTORY_SOURCES = [
   { revision: '64a16b5a6c1d91024415039db89bb88412528e15', sha256: 'f1872051959a546188109683e61a317d27c41ed8ea73443a5fe6e8b3c5452215' },
@@ -41,6 +42,63 @@ function observedEnforcement(run, answer, compatible) {
     source: ['src/engine/history.ts:1209', 'src/engine/estateSuits.ts:240-265', 'src/engine/decisionTraceAnswerReceipts.ts:47-62'] };
 }
 
+function verifiedContexts(run, bytes) {
+  if (bytes === undefined) return null;
+  requireOutcome(bytes instanceof Uint8Array && outcomeSha256(bytes) === run.manifest.contextSha256, 'context hash mismatch');
+  const rows = parse(gunzipSync(bytes));
+  requireOutcome(Array.isArray(rows) && rows.length === run.manifest.commandCount, 'context array/count invalid');
+  const byOrdinal = new Map();
+  for (const row of rows) {
+    requireOutcome(row && Number.isSafeInteger(row.ordinal) && row.ordinal >= 1 && row.ordinal <= rows.length
+      && !byOrdinal.has(row.ordinal) && Number.isSafeInteger(row.tick) && row.tick >= 0
+      && row.command && typeof row.command.type === 'string' && typeof row.stateChanged === 'boolean'
+      && typeof row.agencyPresent === 'boolean' && row.context && typeof row.context === 'object', 'context shape/ordinal invalid');
+    byOrdinal.set(row.ordinal, row);
+  }
+  return byOrdinal;
+}
+
+function observedSettlement(run, answer, compatible, contexts) {
+  if (!compatible || !['answer_estate_petition', 'answer_counter'].includes(answer.command)) return null;
+  const decision = run.history.get(answer.historyId), target = decision.params?.subjectId, chosen = decision.params?.chosen;
+  if (decision.params?.command !== answer.command || typeof target !== 'string' || !target) return null;
+  let template, matchesTarget, contextEvidence = [];
+  if (answer.command === 'answer_counter') {
+    if (!['accepted', 'declined'].includes(chosen) || answer.source !== `answer_counter:${target}`) return null;
+    template = chosen === 'accepted' ? 'negotiation.accepted' : 'negotiation.withdrawn';
+    matchesTarget = record => record.params?.negotiation === target;
+  } else {
+    const context = contexts?.get(answer.ordinal), before = context?.context.estateBefore, after = context?.context.estateAfter;
+    if (!context || context.tick !== answer.tick || context.command.type !== answer.command || context.command.petitionId !== target
+      || typeof context.command.grant !== 'boolean' || !context.stateChanged || !context.agencyPresent
+      || !isDeepStrictEqual(context.history, decision) || !Number.isSafeInteger(context.beforeHistoryLength)
+      || context.beforeHistoryLength < 0 || !Number.isSafeInteger(context.afterHistoryLength) || context.afterHistoryLength <= context.beforeHistoryLength
+      || !before || !after || before.id !== target || after.id !== target || before.status !== 'open'
+      || after.status !== (context.command.grant ? 'granted' : 'refused') || chosen !== after.status || after.decidedBy !== 'lord'
+      || typeof after.estateId !== 'string' || !after.estateId || after.estateId !== before.estateId || after.kind !== before.kind
+      || !Number.isSafeInteger(after.amount) || after.amount <= 0 || after.amount !== before.amount
+      || !Number.isSafeInteger(before.tick) || before.tick > answer.tick || before.tick < 0
+      || !Number.isSafeInteger(before.deadline) || before.deadline < answer.tick
+      || !['repair:granted', 'rent_relief:granted', 'charter_request:refused'].includes(`${after.kind}:${after.status}`)
+      || answer.source !== `estate_petition:${after.estateId}:${after.kind}:${after.status}`) return null;
+    template = 'stewardship.lord_decided';
+    matchesTarget = record => record.params?.kind === after.kind && record.params?.granted === (context.command.grant ? 1 : 0);
+    contextEvidence = [{ contextOrdinal: context.ordinal, path: ['command'], value: context.command },
+      { contextOrdinal: context.ordinal, path: ['context', 'estateBefore'], value: before },
+      { contextOrdinal: context.ordinal, path: ['context', 'estateAfter'], value: after }];
+  }
+  const matches = [...run.history.values()].filter(record => record.id !== answer.historyId && record.kind === 'event'
+    && record.tick === answer.tick && record.template === template && matchesTarget(record)
+    && record.because?.some(cause => cause.decisionId === answer.historyId && cause.key === 'decision_effect'));
+  if (matches.length !== 1) return null;
+  const record = matches[0];
+  return { category: 'immediate-only-observed', reason: answer.command === 'answer_counter' ? 'negotiation_status_settled' : 'estate_petition_status_settled',
+    evidence: [{ recordId: decision.id, path: ['params'], value: decision.params }, ...contextEvidence,
+      { recordId: record.id, path: ['params'], value: record.params }, { recordId: record.id, path: ['because'], value: record.because }],
+    source: answer.command === 'answer_counter' ? ['src/engine/history.ts:1143-1151', 'src/engine/decisionTraceAnswerReceipts.ts:47-59']
+      : ['src/engine/stewardship.ts:471-499', 'src/engine/history.ts:1104-1105', 'src/engine/decisionTraceAnswerReceipts.ts:47-59'] };
+}
+
 /** Offline only: revalidate all archives and recompute the unchanged scorer before annotating residuals. */
 export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, inputs }) {
   const config = parse(configBytes), contract = parse(contractBytes), score = parse(scoreBytes);
@@ -56,7 +114,7 @@ export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, in
       && pins[0].rawSha256 === outcomeSha256(input.rawBytes), 'external replay pin mismatch');
     const run = verifyOutcomeReplay(input);
     requireOutcome(run.raw.seed === seed, 'requested seed mismatch');
-    return run;
+    return { ...run, contexts: verifiedContexts(run, input.contextBytes), contextSha256: input.contextBytes === undefined ? null : outcomeSha256(input.contextBytes) };
   });
   const recomputed = scoreOutcomeGate(runs, contract, { horizonTicks: config.horizonTicks, ticksPerSeason: config.ticksPerSeason });
   Object.assign(recomputed, { configSha256: outcomeSha256(configBytes), contractSha256: outcomeSha256(contractBytes), scorerHashes: scorerHashes() });
@@ -67,13 +125,13 @@ export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, in
     const phaseSource = PHASE_HISTORY_SOURCES.find(row => row.sha256 === pins.get('src/engine/history.ts'));
     const compatible = sources.every(row => pins.get(row.path) === row.sha256);
     for (const answer of score.answers.filter(row => row.seed === run.raw.seed && row.status !== 'direct')) {
-      const observed = answer.mature ? observedEnforcement(run, answer, compatible) : null;
+      const observed = answer.mature ? observedEnforcement(run, answer, compatible) ?? observedSettlement(run, answer, compatible, run.contexts) : null;
       residuals.push({ seed: run.raw.seed, historyId: answer.historyId, ordinal: answer.ordinal, tick: answer.tick, command: answer.command,
         observedFutureReceipts: answer.directReceipts, category: answer.mature ? 'unexplained' : 'insufficient-observation',
         reason: answer.mature ? (compatible ? 'no_supported_retained_domain_proof' : 'matcher_source_mismatch') : 'three_year_window_not_complete',
         evidence: [{ recordId: answer.historyId, path: ['tick'], value: answer.tick }, { rawPath: ['endTick'], value: run.raw.endTick }],
         source: ['scripts/engineBOutcomeGate.mjs:115-144'], ...observed,
-        provenance: { ...run.pins, matcherSourceCompatible: compatible, matcherSourceFiles: sources } });
+        provenance: { ...run.pins, contextSha256: run.contextSha256, matcherSourceCompatible: compatible, matcherSourceFiles: sources } });
     }
     for (const answer of run.classification.unclassified) {
       const kind = { confirm_palisade_proclamation: 'market_town', confirm_stone_town_proclamation: 'stone_town' }[answer.command];
@@ -105,7 +163,7 @@ export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, in
     provenance: { configSha256: outcomeSha256(configBytes), contractSha256: outcomeSha256(contractBytes), inputs: runs.map(run => run.pins),
       toolSha256: outcomeSha256(readFileSync(fileURLToPath(import.meta.url))) },
     limitations: ['Annotations never change the original scorer, denominator, pass flag or receipt sets.',
-      'Only direct enforce_possession commands have an immediate/false-predicate matcher; registry and all other unsupported outcomes remain unexplained.',
+      'Immediate matchers cover enforcement, counters and three pinned-context estate settlements only; audit/registry and other unsupported outcomes remain unexplained. Estate settlement does not prove completed repairs or actual relation/treasury deltas.',
       'A failed enforcement observes failure at that attempt, not proof that all later eligibility conditions stayed false.',
       'Supplemental phase_big is history-based classification, not reconstructed answer-time weights; same-tick results do not count as future receipts.',
       'No missing receipt proves an unmet condition. This audit proves neither rendered visibility nor complete causality nor gameplay acceptance.'] };
@@ -117,7 +175,8 @@ export function runTlinkResiduals(configPath, scorePath, outputPath) {
     && typeof config.contractFile === 'string', 'config paths/seeds missing');
   const inputs = config.seeds.map(seed => {
     const directory = join(resolve(base, config.replayDirectory), `seed-${seed}`);
-    return { format: config.replayFormat, rawBytes: readFileSync(join(resolve(base, config.rawDirectory), `seed-${seed}.json`)),
+    const contextFile = ['original-contexts.json.gz', 'answer-contexts.json.gz'].map(name => join(directory, name)).find(path => existsSync(path));
+    return { ...(contextFile ? { contextBytes: readFileSync(contextFile) } : {}), format: config.replayFormat, rawBytes: readFileSync(join(resolve(base, config.rawDirectory), `seed-${seed}.json`)),
       manifestBytes: readFileSync(join(directory, 'manifest.json')), validityBytes: readFileSync(join(directory, 'validity.json')),
       classificationBytes: readFileSync(join(directory, 'answer-classification.json')) };
   });

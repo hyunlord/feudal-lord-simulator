@@ -66,8 +66,8 @@
 | 실행 | 소스 | 역할 | 상태 |
 | --- | --- | --- | --- |
 | `engineB-tlink-baseline125-cf3fa94` | `cf3fa941659ecb78396eed3780f88024a2bde0dd` 제품은64a와 동일 | seed1–3,125년,수집+재생 | 진행 중 |
-| `engineB-tlink-prototype125-f527d68` | `f527d6856a21ddf5943fd8094bc24a06f54ade97` | 같은 도구·seed·기간,세 seed는 한 공식 작업 안에서 병렬 | 구 소스 대기 실행 취소, 보존 규칙 수정 뒤 재등록 |
-| `engineB-tlink-paired-guardrail-93245c4` | 기준64a와 제품 고정점 | seed1–3,최대500000틱·24필지 일반 성장 전후 | 구 소스 대기 실행 취소, 보존 규칙 수정 뒤 재등록 |
+| `engineB-tlink-prototype125-f527d68` | `f527d6856a21ddf5943fd8094bc24a06f54ade97` | 같은 도구·seed·기간,세 seed는 한 공식 작업 안에서 병렬 | 구 소스 대기 실행 취소; 새 실행 아래 등록 |
+| `engineB-tlink-paired-guardrail-93245c4` | 기준64a와 제품 고정점 | seed1–3,최대500000틱·24필지 일반 성장 전후 | 구 소스 대기 실행 취소; 새 실행 아래 등록 |
 | `engineB-tlink-changed-f527d68` | 고정점 | 변경 영향612시험 파일 | 관문 실행 중 |
 
 일반 가드레일 업로드의 dirty1은 그때 작업하던 브라우저 검증기뿐이며 제품 소스는 같다. 가드레일 결과가 생기면 실제 해시와 판정 범위를 별도 기록한다. 기준판 지연은 짧은 CPU 표본에서 기존 palisade 후보 검증·자동 건설 탐색이 지배했으며 수집기는 계속 진행했다. 관측기 비용이나 교착으로 단정하지 않는다.
@@ -86,7 +86,7 @@ history는 일부 게임 코드가 읽으므로 기록 전체 제외 투영만�
 
 `readDecisionLedgerEvidence(record, answerId)`는 기존 결산 기록 안의 거래 근거를 답별·대상별로 읽는다. 잘못된 JSON·거래·범위·because·중복을 거부한다. 기록에는 agency 모드가 없으므로 양끝을 포함한 범위 검사는 거래 당시 소유권이나 정확한 결산 cadence의 재실행 증명이 아니다.
 
-`engineBTlinkResiduals.mjs`는 원본 archive 핀을 재검증하고 기존 scorer 결과를 다시 계산해 일치할 때만 부가 판정을 만든다. 원래 분모·직접 링크·pass를 바꾸지 않는다. 증거가 부족한 성숙 답은 `unexplained`로 남긴다. 현재 직접 명령 `enforce_possession`만 같은 답의 실제 집행 기록으로 즉시 성공/해당 시도 실패를 판정한다. 한 시도의 실패를3년 전체의 조건 미충족으로 바꾸지 않는다. 기존 미분류 phase 명령은 실제 BIG 결정 기록·소스 핀으로 별도 집계하며, 이 보완 집계도 원래 관문 통과를 대신하지 않는다.
+`engineBTlinkResiduals.mjs`는 원본 archive 핀을 재검증하고 기존 scorer 결과를 다시 계산해 일치할 때만 부가 판정을 만든다. 원래 분모·직접 링크·pass를 바꾸지 않는다. 증거가 부족한 성숙 답은 `unexplained`로 남긴다. 직접 명령 `enforce_possession`은 같은 답의 실제 집행 기록으로 즉시 성공/해당 시도 실패를 판정한다. 영지 수선 허가·지대 구제·특허 거절은 manifest 해시로 검증한 답 당시 context와 정확한 청원 ID 전이, 같은 답의 실제 처리 기록을 함께 확인할 때만 즉시 처리로 판정한다. 혼인 역제안은 실제 negotiation ID와 처리 기록을 확인한다. 즉시 청원 처리는 공사 완성이나 실제 관계·금액 변화의 증명이 아니다. 한 시도의 실패를3년 전체의 조건 미충족으로 바꾸지 않는다. 기존 미분류 phase 명령은 실제 BIG 결정 기록·소스 핀으로 별도 집계하며, 이 보완 집계도 원래 관문 통과를 대신하지 않는다.
 
 기준판 화면과 동일한 실제 클릭 비교는 [기준 증거](../verification/eb-tlink-browser-baseline/README.md)에 있다. 기준판은041·067의 카드 변형 제목을 연대기에 잃었고 시제품은 보존했다. 기준판의067 하단 선택지는 정상 스크롤34px 뒤 실제 클릭되었다. 빈 예측 열·단어 줄갈림·초기 부분 잘림은 기존 화면에서도 확인되며 이번 변경의 전체 UX 승인으로 해석하지 않는다.
 
@@ -101,3 +101,5 @@ history는 일부 게임 코드가 읽으므로 기록 전체 제외 투영만�
 `decisionTrace.ts`의 estate_mood 탐지는 새 영지 요약을 기존 전역 길이 뒤의 slice로 찾는다. 영지별 보관 목록을 재작성해 길이가 같으면 실제 새 요약을 놓친다. `history.ts`는 객체 정체성 비교로 새 요약을 이미 기록한다. 단순 slice 수정 뒤 새 consequence를 추가하면 기록 ordinal이 달라져 규칙 입력 ID까지 바뀔 수 있으므로 이번 시제품에서 그렇게 고치지 않는다.
 
 올바른 후속 수정은 이미 생성된 stewardship.season에 연결하고, 답 당시 실제 tenants/merchants 변화·차원·clamp를 보관해 그 차원에 기여한 답만 고르는 것이다. 현재 trace.answers의 estate 대상만으로 모든 같은 영지 답을 연결하지 않는다. 포화 상태의 무효과 거절을 나중의 무관한 관계 변화 원인으로 만드는 것은 결함이다. 이 항목은 미구현이며 직접 연결률을 올린 것으로 세지 않는다.
+
+2026-10-10 새 제품 고정점은 `fae9ce38be52858e29d2e7111c7437b23cf5fdac`이다. 이 깨끗한 소스로 `engineB-tlink-prototype125-fae9ce3`와 `engineB-tlink-paired-guardrail-fae9ce3`를 공식 experiment 줄에 다시 등록했다. 오프라인 잔여 답 판독기의 후속 수정은 제품·생산기·기존 scorer를 바꾸지 않는다.
