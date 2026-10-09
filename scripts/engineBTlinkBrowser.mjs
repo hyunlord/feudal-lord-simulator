@@ -38,19 +38,30 @@ const result = { functionalPass: false, source: execFileSync('git', ['rev-parse'
 const INIT = `globalThis.__name = globalThis.__name || (target => target); localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] }));`;
 const visible = async (page, selector) => await page.locator(`${selector}:visible`).count() > 0;
 const observed = page => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state());
-async function dismissOther(page) {
-  for (const selector of ['.story-modal-later', '.results-card-continue']) {
-    if (await visible(page, selector)) { await page.locator(`${selector}:visible`).first().click(); return true; }
+async function dismissOther(page, actions = []) {
+  for (const selector of ['.story-modal-later', '.results-card-continue', '.season-ledger-resume', '.chronicle-close']) {
+    if (await visible(page, selector)) { actions.push({ action: 'dismiss', selector, dialogs: await dialogs(page) }); await page.locator(`${selector}:visible`).first().click(); return true; }
   }
   return false;
 }
-async function cardUp(page, selector) {
+const dialogs = page => page.locator('[role="dialog"]:visible').evaluateAll(nodes => nodes.map(node => ({ className: node.className, label: node.getAttribute('aria-label'), text: node.innerText.slice(0, 600) })));
+async function cardUp(page, selector, chipId, actions) {
+  const chip = `.event-chip[data-chip-id=${JSON.stringify(chipId)}]`;
+  const detail = `.event-card[data-chip-id=${JSON.stringify(chipId)}] .event-card-decide`;
   for (let attempt = 0; attempt < 60; attempt++) {
     if (await visible(page, selector)) return;
-    await dismissOther(page);
+    if (!await dismissOther(page, actions) && (await dialogs(page)).length === 0) {
+      if (await visible(page, detail)) {
+        actions.push({ action: 'open-decision', chipId });
+        await page.locator(`${detail}:visible`).click();
+      } else if (await visible(page, chip)) {
+        actions.push({ action: 'open-chip', chipId });
+        await page.locator(`${chip}:visible`).click();
+      }
+    }
     await page.waitForTimeout(500);
   }
-  throw new Error(`Target card not visible: ${selector}`);
+  throw new Error(`Target card not visible: ${selector}; dialogs=${JSON.stringify(await dialogs(page))}`);
 }
 async function screenshot(page, name) {
   const bytes = await page.screenshot({ type: 'png' });
@@ -99,7 +110,8 @@ try {
     page.on('pageerror', error => result.errors.push(`${name}: ${String(error)}`));
     try {
       const selector = isHome ? '.story-modal.lord-card[data-home-petition]' : '.story-modal.lord-card[data-registry-offer]';
-      await cardUp(page, selector);
+      row.admission = [];
+      await cardUp(page, selector, `${isHome ? 'home-petition' : 'registry'}:${subjectId}`, row.admission);
       const card = page.locator(`${selector}:visible`).first();
       assert.equal(await card.getAttribute('data-subject'), subjectId);
       row.shownTitle = await card.locator('h2,h3').first().innerText();
@@ -131,6 +143,13 @@ try {
       row.uncompressedSaveSHA256 = sha(saved.bytes);
       row.chronicle = await chronicle(page, own.id, view.title, name);
       row.pass = true;
+    } catch (error) {
+      row.failureDialogs = await dialogs(page);
+      row.failureText = (await page.locator('body').innerText()).slice(0, 6000);
+      row.failureScreenshot = await screenshot(page, `${name}-failure.png`);
+      const failureState = await observed(page);
+      row.failureView = isHome ? homePetitionView(failureState) : registryOfferView(failureState);
+      throw error;
     } finally { await context.close(); }
   }
   result.functionalPass = result.rows.length === 2 && result.rows.every(row => row.pass) && result.errors.length === 0;
