@@ -5,6 +5,8 @@
 //  - running-<view> / stopped-<view>: `pause-due` run at 1×: time runs (the tick moves), the engine names a reason (a
 //    great person's death) and the game stops by itself — the tick stands still, the notice says why; then [계속]: the
 //    notice goes and time runs again;
+//    The stops fall on a season's turn: a fresh profile's first season card opens too (season-<view>); closed by its
+//    [계속], time stays stopped under the notice (the stop is the reason's, not the card's).
 //  - suit-stopped / suit-link: `pause-due-suit` run until a suit is judged: the notice's [소송 보기] opens the ledger
 //    screen on that suit;
 //  - opt-out: `pause-due` with `?auto-pause=off` (the harnesses' query) runs past the stop's tick without stopping.
@@ -55,6 +57,16 @@ const report = (name, row, extra = true) => { row.pass = extra && (row.card === 
 const open = (name, view, query = QUIET) => { const state = scene(name); return openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT,
   width: view.width, height: view.height, hasTouch: view.touch, query, loadTimeout: 90_000, zoom: 1.1 }); };
 const start = page => page.locator('.speed-seal[data-seal="normal"]').click();
+/** The notice or the first season card, whichever shows; the card (shot as `name`) is closed by its [계속]. */
+const seasonFirst = async (page, name) => {
+  await waitFor(page, `${NOTICE}, .season-ledger-card`, 90_000);
+  await page.waitForTimeout(1_200);
+  if (await page.locator('.season-ledger-card >> visible=true').count() === 0) return null;
+  const bytes = name === null ? 0 : await shoot(page, name);
+  const at = await tick(page);
+  await page.locator('.season-ledger-resume').first().click();
+  return { bytes, at };
+};
 /** The tick now and after `ms` (time stands still: the same). */
 const still = async (page, ms) => { const before = await tick(page); await page.waitForTimeout(ms); return { before, after: await tick(page) }; };
 
@@ -67,7 +79,9 @@ for (const view of VIEWS) {
   const running = { touch: view.touch, loaded, now: await tick(page), notice: await page.locator(NOTICE).count() };
   running.bytes = await shoot(page, `running-${view.name}`);
   report(`running-${view.name}`, running, running.now !== null && running.now > loaded && running.notice === 0);
-  const stopped = { touch: view.touch, shown: await waitFor(page, NOTICE, 90_000) };
+  // The stop falls on a season's turn: a fresh profile's first season card opens too; closed, time stays stopped.
+  const season = await seasonFirst(page, `season-${view.name}`);
+  const stopped = { touch: view.touch, season, shown: await waitFor(page, NOTICE, 30_000) };
   await page.waitForTimeout(600);
   stopped.card = await measure(page);
   stopped.time = await still(page, 2_000);
@@ -85,7 +99,8 @@ for (const view of VIEWS) {
   const { context, page } = await open('pause-due-suit', view);
   page.on('pageerror', error => errors.push(`suit: ${String(error).slice(0, 300)}`));
   await start(page);
-  const stopped = { shown: await waitFor(page, NOTICE, 90_000) };
+  const season = await seasonFirst(page, null);
+  const stopped = { season, shown: await waitFor(page, NOTICE, 30_000) };
   await page.waitForTimeout(600);
   stopped.card = await measure(page);
   stopped.bytes = await shoot(page, 'suit-stopped');

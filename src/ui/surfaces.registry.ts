@@ -190,7 +190,9 @@ const RECEIPT = { frame: "layer", frameLayer: ".lord-receipt-frame", contentSlot
 
 /** LM-R3 (lord slice LS-2): a state a few ticks before an auto-pause, run at 1x until the notice shows. */
 const PAUSE_DUE = (name: string): SceneRef => ({ kind: "state", set: "slice", name, tile: "house", zoom: 1.1, query: "&story-delay=600000", run: true });
-const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice", timeout: 90_000 }, { pause: 600 }];
+// The stops fall on a season's turn: a fresh profile's first season card opens over the notice; closed, time stays stopped.
+const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice, .season-ledger-card", timeout: 90_000 }, { pause: 1_200 },
+  { dismiss: [".season-ledger-resume"] }, { wait: ".auto-pause-notice", timeout: 30_000 }, { pause: 600 }];
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
