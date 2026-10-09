@@ -63,8 +63,8 @@ function abandonedLines(state: GameState): readonly string[] {
   });
 }
 
-function planView(state: GameState): LordWallPlanView | null {
-  const plan = charterWallPlan(state);
+/** The view of an engine plan on its state (the tests give it the engine's read of a state they build). */
+export function wallPlanView(state: GameState, plan: CharterWallPlan | null): LordWallPlanView | null {
   if (plan === null || plan.stage === "past") return null;
   const unmet = plan.requirements.filter(requirement => !requirement.met);
   const conditions = plan.stage !== "waiting" ? [] : unmet.map(requirement => {
@@ -93,4 +93,4 @@ function planView(state: GameState): LordWallPlanView | null {
 }
 
 /** The palisade plan as the lord's era console shows it; null outside lord mode or past the hamlet. Once per state. */
-export const lordWallPlan: (state: GameState) => LordWallPlanView | null = perState(planView);
+export const lordWallPlan: (state: GameState) => LordWallPlanView | null = perState(state => wallPlanView(state, charterWallPlan(state)));

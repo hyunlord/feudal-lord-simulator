@@ -255,11 +255,11 @@ if (wanted('lord-wall')) {
     watch(page, 'lord-wall');
     await click(page, '.goal-drawer-toggle'); await page.waitForTimeout(600);
     await click(page, '.settlement-progress > details > summary'); await page.waitForTimeout(600);
-    const shown = await waitFor(page, '.era-console .era-proposal', 10_000);
-    // The console scrolls inside its slot: the guidance (.era-proposal) brought into view is what is measured.
-    if (shown) { await page.locator('.era-console .era-proposal').first().scrollIntoViewIfNeeded(); await page.waitForTimeout(300); }
-    const row = { state: 'lmr2 offer-countered', shown, card: shown ? await measure(page, '.era-console .era-proposal') : null };
-    if (shown) { row.lines = await page.evaluate(() => [...document.querySelectorAll('.era-console .era-proposal > span')].map(el => el.textContent)); row.bytes = await shoot(page, 'lord-wall'); bytes += row.bytes; }
+    // GROW-BLOCK since: lord mode's guidance is the plan's line under the console's primary (.era-action-reason).
+    const shown = await waitFor(page, '.era-console .era-action-reason', 10_000);
+    if (shown) { await page.locator('.era-console .era-action-reason').first().scrollIntoViewIfNeeded(); await page.waitForTimeout(300); }
+    const row = { state: 'lmr2 offer-countered', shown, card: shown ? await measure(page, '.era-console .era-action-reason') : null };
+    if (shown) { row.bytes = await shoot(page, 'lord-wall'); bytes += row.bytes; }
     const text = row.card?.text ?? '';
     report('lord-wall', row, text.includes('마을이 잡아 영주에게 청합니다') && !text.includes('직접 그어 주세요'));
     await context.close();

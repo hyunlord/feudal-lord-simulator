@@ -38,10 +38,10 @@ const url = flag('url') ?? 'http://127.0.0.1:5173/';
 // The flag each state set's folder comes by (`lands`: scripts/landStates.ts's states, LAND-UI; `petitions` and `lord`: LM-R1;
 // `moments`: scripts/wave40MomentStates.ts's, EVENT-ART; `lord2`: scripts/lmr2States.ts's, LM-R2; `deccard2`: scripts/deccard2ResultsStates.ts's, DEC-CARD-2;
 // `slice`: scripts/sliceEndsStates.ts's, LM-R3 — the lord slice played to its end; `variants`: scripts/variantStates.ts's,
-// the ER-13 wording variants' cards).
+// the ER-13 wording variants' cards; `growplan`: scripts/growPlanStates.ts's, GROW-BLOCK — the palisade plan's stages).
 const STATE_FLAGS = { ui5: 'states5', ui6: 'states6', ui8: 'states8', ui9: 'states9', ui10: 'states10', 'ui10-extra': 'extra', lands: 'states-lands',
   petitions: 'states-petitions', lord: 'states-lord', moments: 'states-moments', lord2: 'states-lord2', deccard2: 'states-deccard2',
-  slice: 'states-slice', variants: 'states-variants' };
+  slice: 'states-slice', variants: 'states-variants', growplan: 'states-growplan' };
 const STATE_DIRS = Object.fromEntries(Object.entries(STATE_FLAGS).map(([set, name]) => [set, flag(name)]));
 const viewports = list('viewports', Object.keys(VIEWPORTS));
 const copies = list('copy', ['normal', 'long']);
