@@ -368,10 +368,10 @@ await browser.close();
 // --- Totals, the report, the committed summary.
 const git = args => { try { return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
 const inputs = geometryInputs('HEAD');
-// RR26: any UI input of the measured tree that is not HEAD's committed blob (pictures compared by content, LFS-safe;
-// untracked files count) makes the run dirty: its hash is of committed blobs.
+// RR26: any uncommitted change off the safe list (pictures compared by content, LFS-safe; untracked files count) makes
+// the run dirty: the gate judges it by its commit.
 const dirtyPaths = uiInputsDirty();
-const dirty = process.env.DIRTY === '1' || dirtyPaths.length > 0;
+const dirty = dirtyPaths.length > 0;   // run.sh's DIRTY=1 counts any edit, docs too; this counts what is off the safe list (RR26)
 if (dirtyPaths.length > 0) console.log(`dirty UI inputs (${dirtyPaths.length}): ${dirtyPaths.slice(0, 8).join(', ')}${dirtyPaths.length > 8 ? ' …' : ''}`);
 const totals = { rows: Object.keys(results).length, conditions: 0, measured: 0, failures: 0, unopened: 0, unreachable: [], warnings: 0, byCheck: Object.fromEntries(CHECKS.map(check => [check, 0])) };
 const bySurface = {};

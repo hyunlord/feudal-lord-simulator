@@ -1,131 +1,156 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { createHash } from "node:crypto";
-import { checkUiGeometry, defaultSummaryPath, formatUiGeometryResult, geometryInputHash, geometryInputs, uiInputsDirty, withoutComments } from "../scripts/checks/uiGeometry.mjs";
+import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { checkUiGeometry, defaultSummaryPath, formatUiGeometryResult, isSafePath, uiInputsDirty, withoutComments } from "../scripts/checks/uiGeometry.mjs";
 
-// RR26 (user ruling 2026-10-09, step (c)): a changed-rows audit run that a push names (UI-Geometry-Run trailer) counts
-// in place of the stale shared result when no UI input changed since it was measured. Each case is made to overlap or to
-// break the result on purpose (RR22). The story: the trunk, a branch that changes a panel's component and style, the
-// branch's changed-rows run committed with the trailer, then the trunk moves and the branch merges it.
+// RR26 (user ruling 2026-10-09, after four reviews found inputs the import closure missed): a geometry result counts on
+// a newer commit only when every file changed since it was measured is on the small safe list — docs/**, *.md outside
+// src/ public/ assets-inbox/, tests/** that nothing of the UI or the audit imports; any other change, known or not, needs
+// a new audit. The shared result counts only as a full audit; a changed-rows run counts through its own report and a
+// UI-Geometry-Run trailer. Each case is made to break the rule on purpose (RR22). The story: the trunk, a branch that
+// changes a panel's component and style, the branch's changed-rows run committed with the trailer, then the trunk moves
+// and the branch merges it.
 const RUN = "render-TEST-geometry-1";
 const ROW = "modal.panel";
 const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 
-type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; inputHash?: string; runName?: string; commit?: string | null; unregistered?: number;
-  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "trunk0" | "outside" };
+type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; runName?: string; commit?: string | null; unregistered?: number;
+  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "outside" };
+type Story = { trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
+  shared?: "stale" | "current-failing" | "partial" | "none"; exceptions?: object[]; rowIds?: string[] };
 
-function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFailure = null, sharedPartial = false, exceptions = [], rowIds = [ROW] }: {
-  trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
-  sharedFailure?: string | null;   // a current shared result (of the head's inputs) with this failure key
-  sharedPartial?: boolean;         // a shared result of the head's inputs written by a changed-rows run (not a full audit)
-  exceptions?: object[];           // the committed geometry exceptions
-  rowIds?: string[];               // the rows the branch's run measures
-}) {
-  const dir = mkdtempSync(join(tmpdir(), "fls-rowrun-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+function story({ trunkMove, report = {}, baseline = [], trailer = true, shared = "stale", exceptions = [], rowIds = [ROW] }: Story) {
+  const dir = tempDir("fls-rowrun-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
   const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
-  write("scripts/uiGeometryAudit.mjs", "// the audit\n");
-  // The UI's import graph (RR26 (가)): main.tsx → App.tsx → components → a helper → the data at the chain's end.
+  write("scripts/uiGeometryAudit.mjs", 'import { GEOMETRY_ROWS } from "../tests/fixtures/geometryRows.ts";\n// the audit\n');
+  write("tests/fixtures/geometryRows.ts", "export const GEOMETRY_ROWS = 1;\n");   // a test file the audit imports: not safe
+  write("tests/other.test.ts", "export {};\n");                                 // a test nothing imports: safe
   write("src/main.tsx", 'import { App } from "./App.tsx";\nexport const main = App;\n');
-  // A comment with a quote inside an import (the regex once lost such imports, review 4): ./engine/used.ts must be reached.
-  write("src/App.tsx", 'import { Panel } from "./ui/Panel.tsx";\nimport { Ledger } from "./ui/Ledger.tsx";\nimport { Build } from "./ui/Build.tsx";\nimport { PORTRAITS } from "./ui/Portraits.tsx";\nimport {\n  used, // the engine\'s one value\n} from "./engine/used.ts";\nexport const App = [Panel, Ledger, Build, PORTRAITS, used];\n');
-  write("src/ui/Ledger.tsx", 'import { LEDGER_COPY } from "../ledger/ledgerCopy.ko.ts";\nexport const Ledger = LEDGER_COPY;\n');
-  write("src/ledger/ledgerCopy.ko.ts", 'export const LEDGER_COPY = "장부";\n');
-  write("src/ui/Build.tsx", 'import { BUILDINGS } from "../content/buildingConfig.ts";\nexport const Build = BUILDINGS;\n');
-  write("src/content/buildingConfig.ts", 'export const BUILDINGS = { mill: { name: "방앗간" } };\n');
-  write("src/ui/helpers/format.ts", 'import table from "../../data/deep/table.json";\nexport const fmt = table.unit;\n');
-  write("src/data/deep/table.json", '{"unit":"단"}\n');
-  write("src/engine/used.ts", "export const used = 1;\n");
-  write("src/ui/Panel.tsx", 'import { fmt } from "./helpers/format.ts";\nexport const Panel = () => fmt;\n');
+  write("src/App.tsx", 'import { Panel } from "./ui/Panel.tsx";\nexport const App = [Panel];\n');
+  write("src/ui/Panel.tsx", "export const Panel = () => null;\n");
   write("src/ui/Other.tsx", "export const Other = () => null;\n");
   write("src/styles/panel.css", ".panel { padding: 8px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
   write("src/styles/global.css", ":root { --gap: 8px; }\n");
   write("src/content/panelCopy.ko.ts", 'export const PANEL = "판";\n');
-  write("public/assets/frame.png", "png\n");
   write("src/engine/core.ts", "export const core = 1;\n");
+  write("public/assets/frame.png", "png\n");
   write("docs/notes.md", "x\n");
   write("docs/verification/uiaudit1/geometry-baseline.json", JSON.stringify({ entries: baseline }));
   write("docs/verification/uiaudit1/geometry-exceptions.json", JSON.stringify({ exceptions }));
-  // What the dev server and the audit load besides the UI (RR26 review 4): the config's plugin, the audit's own helper,
-  // the packages, and pictures a UI file names under assets-inbox (a dev-server plugin serves them).
-  write("vite.config.ts", 'import { fonts } from "./scripts/fontsPlugin.ts";\nexport default { plugins: [fonts] };\n');
-  write("scripts/fontsPlugin.ts", 'export const fonts = { name: "fonts", keep: /\\.woff2$/ };\n');
-  write("scripts/uiGeometryPaint.ts", "export const HIDE_CSS = 'x';\n");
-  write("scripts/uiGeometryAudit.mjs", 'import { HIDE_CSS } from "./uiGeometryPaint.ts";\n// the audit\n');
-  write("package-lock.json", '{"packages":{"node_modules/@fontsource/noto-sans-kr":{"version":"5.0.0"}}}\n');
-  write("src/ui/Portraits.tsx", 'export const PORTRAITS = "assets-inbox/portraits/pool1";\n');
-  write("assets-inbox/portraits/pool1/p1.png", "p1\n");
-  write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-old", full: true, inputHash: "stale", failureKeys: [], unopened: 0 }));   // the shared result: a full audit of older inputs
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   const trunk0 = git("rev-parse", "HEAD");
+  // The shared result: a full audit of the trunk as it was (stale once the branch changes the panel).
+  const sharedAt = (commit: string, extra: object = {}) => write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-old", full: true, commit, dirty: false, failureKeys: [], unopened: 0, ...extra }));
+  if (shared !== "none") { sharedAt(trunk0); git("add", "-A"); git("commit", "-qm", "the shared result"); }
   git("checkout", "-qb", "branch");
-  write("src/ui/Panel.tsx", 'import { fmt } from "./helpers/format.ts";\nexport const Panel = () => fmt + "panel";\n'); write("src/styles/panel.css", ".panel { padding: 12px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
+  write("src/ui/Panel.tsx", "export const Panel = () => 'panel';\n"); write("src/styles/panel.css", ".panel { padding: 12px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
   git("commit", "-qam", "branch: the panel");
   const measured = git("rev-parse", "HEAD");
   const measuredRows = (ids: readonly string[]) => Object.fromEntries(ids.map(id => [id, { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) }]));
   const rows = report.rowsNull ? { [ROW]: null } : report.noRows ? {} : measuredRows(rowIds);
   write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: report.runName ?? RUN,
     // "outside": a commit with the measured content but outside the history (as after an amend or a rebase).
-    commit: report.commitOf === "trunk0" ? trunk0 : report.commitOf === "outside" ? git("commit-tree", `${measured}^{tree}`, "-m", "amended away")
-      : report.commit === undefined ? measured : report.commit ?? undefined,
-    axesNarrowed: report.axesNarrowed === null ? undefined : report.axesNarrowed ?? false, dirty: report.dirty ?? false, inputHash: report.inputHash ?? geometryInputHash(geometryInputs(measured, dir)), totals: { unopened: report.unopened ?? 0 },
+    commit: report.commitOf === "outside" ? git("commit-tree", `${measured}^{tree}`, "-m", "amended away") : report.commit === undefined ? measured : report.commit ?? undefined,
+    axesNarrowed: report.axesNarrowed === null ? undefined : report.axesNarrowed ?? false, dirty: report.dirty ?? false, totals: { unopened: report.unopened ?? 0 },
     unregisteredFramed: Array.from({ length: report.unregistered ?? 0 }, (_, i) => ({ root: `.stray-${i}`, seenIn: [ROW] })), rows }));
-  if (sharedFailure !== null) write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-now", full: true, inputHash: geometryInputHash(geometryInputs(measured, dir)), failureKeys: [sharedFailure], unopened: 0 }));
-  if (sharedPartial) write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "rows-only", full: false, rows: 1, inputHash: geometryInputHash(geometryInputs(measured, dir)), failureKeys: [], unopened: 0 }));
+  if (shared === "current-failing") sharedAt(measured, { run: "full-now", failureKeys: ["other.row|1280x800/normal/normal|overflow|.x"] });
+  if (shared === "partial") sharedAt(measured, { run: "rows-only", full: false, rows: 1 });
   git("add", "-A"); git("commit", "-qm", `branch: the changed rows' geometry${trailer ? `\n\nUI-Geometry-Run: ${RUN}` : ""}`);
   git("checkout", "-q", "trunk"); trunkMove(write); git("add", "-A"); git("commit", "-qm", "trunk moves", "--allow-empty");
   const trunk = git("rev-parse", "HEAD");
   git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
   const check = () => checkUiGeometry({ base: trunk, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
   const run = (name: string, ids: readonly string[] = rowIds) => {   // a new changed-rows run on the branch's current content, with its trailer
-    const commit = git("rev-parse", "HEAD");
-    write(`docs/verification/uiaudit1/geometry/${name}/geometry.json`, JSON.stringify({ run: name, commit, axesNarrowed: false, dirty: false,
-      inputHash: geometryInputHash(geometryInputs(commit, dir)), totals: { unopened: 0 }, unregisteredFramed: [], rows: measuredRows(ids) }));
+    write(`docs/verification/uiaudit1/geometry/${name}/geometry.json`, JSON.stringify({ run: name, commit: git("rev-parse", "HEAD"), axesNarrowed: false, dirty: false,
+      totals: { unopened: 0 }, unregisteredFramed: [], rows: measuredRows(ids) }));
     git("add", "-A"); git("commit", "-qm", `a new changed-rows run\n\nUI-Geometry-Run: ${name}`);
   };
-  return { dir, git, write, check, run, measured, done: () => rmSync(dir, { recursive: true, force: true }) };
+  return { dir, git, write, check, run, done: () => rmSync(dir, { recursive: true, force: true }) };
 }
 
-const engineOnly = (write: (path: string, text: string) => void) => { write("src/engine/core.ts", "export const core = 2;\n"); write("docs/notes.md", "y\n"); };
-
-test("no UI input moved: the trunk changed the engine and a document — the changed rows' run counts, the output says why", () => {
-  const s = story({ trunkMove: engineOnly });
-  try {
-    const result = s.check();
-    assert.equal(result.ok, true, result.reasons.join("\n"));
-    assert.match(formatUiGeometryResult(result), /changed rows accepted \(decision RR26\)\n  run render-TEST-geometry-1 \(commit [0-9a-f]{8}\): 1 row\(s\), 2 cell\(s\), no new failure; no UI input changed since it was measured \(\d+ file\(s\) changed since, none a UI input\)/);
-  } finally { s.done(); }
-});
+const refused = (result: ReturnType<typeof checkUiGeometry>, pattern: RegExp) => assert.ok(!result.ok && result.reasons.some(reason => pattern.test(reason)), result.reasons.join("\n"));
+const escape = (text: string) => text.replace(/[./*+?()[\]]/g, "\\$&");
 
 for (const [what, path, text] of [
-  ["a CSS rule file the row uses (another rule of it)", "src/styles/panel.css", ".panel { padding: 8px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 4px; }\n"],
-  ["a global style", "src/styles/global.css", ":root { --gap: 10px; }\n"],
-  ["another component", "src/ui/Other.tsx", "export const Other = () => 'other';\n"],
-  ["the copy (*.ko.ts)", "src/content/panelCopy.ko.ts", 'export const PANEL = "판자";\n'],
-  ["a picture", "public/assets/frame.png", "png2\n"],
+  ["a document under docs/", "docs/notes.md", "moved\n"],
+  ["a .md at the root", "README.md", "# readme\n"],
+  ["a .md under scripts/", "scripts/NOTES.md", "notes\n"],
+  ["a test nothing imports", "tests/other.test.ts", "export const changed = 1;\n"],
 ] as const) {
-  test(`UI input moved: the trunk changed ${what} — the run does not count, the output names ${path}`, () => {
+  test(`safe: the trunk changed ${what} (${path}) — the changed rows' run counts, the output says the changes were safe`, () => {
     const s = story({ trunkMove: write => write(path, text) });
     try {
       const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => reason.includes(`1 UI input file(s) changed since it was measured`) && reason.includes(path)), result.reasons.join("\n"));
+      assert.equal(result.ok, true, result.reasons.join("\n"));
+      assert.match(formatUiGeometryResult(result), /changed rows accepted \(decision RR26\)\n {2}run render-TEST-geometry-1 \(commit [0-9a-f]{8}\): 1 row\(s\), 2 cell\(s\), no new failure; \d+ file\(s\) changed since it was measured, all on the safe list/);
     } finally { s.done(); }
   });
 }
 
+for (const [what, path, text] of [
+  ["a CSS rule file the row uses (another rule of it)", "src/styles/panel.css", ".panel { padding: 8px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 4px; }\n"],
+  ["a global style", "src/styles/global.css", ":root { --gap: 10px; }\n"],
+  ["a component nothing imports", "src/ui/Other.tsx", "export const Other = () => 'other';\n"],
+  ["the copy (*.ko.ts)", "src/content/panelCopy.ko.ts", 'export const PANEL = "판자";\n'],
+  ["a picture", "public/assets/frame.png", "png2\n"],
+  ["an engine file the UI does not import", "src/engine/core.ts", "export const core = 2;\n"],
+  ["a .md inside src/", "src/ui/notes.md", "notes\n"],
+  ["a .md inside public/", "public/readme.md", "notes\n"],
+  ["a .md inside assets-inbox/", "assets-inbox/wave1/notes.md", "notes\n"],
+  ["a save fixture", "fixtures/saves/v1/a.save.json", "{}\n"],
+  ["a seed", "seeds/s.json", "{}\n"],
+  ["a perf record", "perf/p.json", "{}\n"],
+  ["a script", "scripts/fontsPlugin.ts", "export const fonts = 1;\n"],
+  ["the lock file", "package-lock.json", '{"packages":{}}\n'],
+  ["a test the audit imports", "tests/fixtures/geometryRows.ts", "export const GEOMETRY_ROWS = 2;\n"],
+  ["a file of a folder no rule names", "tools/x.cfg", "x\n"],
+] as const) {
+  test(`off the safe list: the trunk changed ${what} — the run does not count, the output names ${path}`, () => {
+    const s = story({ trunkMove: write => write(path, text) });
+    try { refused(s.check(), new RegExp(`run render-TEST-geometry-1: 1 file\\(s\\) off the safe list changed since it was measured at [0-9a-f]{8} \\(\\d+ of them reach the UI or the audit by import\\): ${escape(path)} — audit again`)); }
+    finally { s.done(); }
+  });
+}
+
+test("the report counts the unsafe changes that reach the UI or the audit by import (report only)", () => {
+  const s = story({ trunkMove: write => write("src/App.tsx", 'import { Panel } from "./ui/Panel.tsx";\nexport const App = [Panel, 1];\n') });
+  try { refused(s.check(), /\(1 of them reach the UI or the audit by import\): src\/App\.tsx/); } finally { s.done(); }
+  const t = story({ trunkMove: write => write("src/engine/core.ts", "export const core = 9;\n") });
+  try { refused(t.check(), /\(0 of them reach the UI or the audit by import\): src\/engine\/core\.ts/); } finally { t.done(); }
+});
+
 test("the branch's own UI edit after the run: the run does not count", () => {
-  const s = story({ trunkMove: engineOnly });
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n") });
   try {
     s.write("src/ui/Panel.tsx", "export const Panel = () => 'panel!';\n"); s.git("commit", "-qam", "branch: one more panel edit");
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => reason.includes("src/ui/Panel.tsx")));
+    refused(s.check(), /off the safe list changed since it was measured at [0-9a-f]{8} \(\d+ of them [^)]*\): src\/ui\/Panel\.tsx/);
   } finally { s.done(); }
+});
+
+test("a range of safe files alone needs no audit at all", () => {
+  const dir = tempDir("fls-safe-range-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  try {
+    write("scripts/uiGeometryAudit.mjs", "// the audit\n"); write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("docs/a.md", "a\n");
+    write("docs/verification/uiaudit1/geometry-baseline.json", '{"entries":[]}'); write("docs/verification/uiaudit1/geometry-exceptions.json", '{"exceptions":[]}');
+    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c"); const base = git("rev-parse", "HEAD");
+    write("docs/a.md", "b\n"); write("tests/x.test.ts", "export {};\n"); git("add", "-A"); git("commit", "-qm", "docs and a test");
+    const result = checkUiGeometry({ base, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(result), /only files on the safe list changed \(2\): no audit needed \(RR26\)/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("the safe list: docs/**, .md outside src/ public/ assets-inbox/, tests nothing imports — and nothing else", () => {
+  const imported = new Set(["tests/fixtures/geometryRows.ts"]);
+  for (const path of ["docs/x.json", "docs/a/b.png", "README.md", "scripts/a.md", "tests/x.test.ts"]) assert.ok(isSafePath(path, imported), path);
+  for (const path of ["src/a.md", "public/a.md", "assets-inbox/a.md", "tests/fixtures/geometryRows.ts", "fixtures/a.json", "seeds/a", "perf/a", "scripts/a.ts", "package.json", "index.html", "tsconfig.json", "x"]) assert.ok(!isSafePath(path, imported), path);
 });
 
 test("a broken result does not count: measured dirty, a condition not opened, a new failure, a baseline entry fixed", () => {
@@ -135,191 +160,37 @@ test("a broken result does not count: measured dirty, a condition not opened, a 
     [{ keys: ["overflow|.panel-body"] }, [], /2 new failure\(s\), in no baseline entry or exception/],   // one per condition
     [{}, [`${ROW}|${CONDITIONS[0]}|overflow|.panel-body`], /1 baseline entr\(ies\) of its rows fixed, drop them/],
   ] as const) {
-    const s = story({ trunkMove: engineOnly, report, baseline: [...baseline] });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
-    } finally { s.done(); }
+    const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), report, baseline: [...baseline] });
+    try { refused(s.check(), expected); } finally { s.done(); }
   }
 });
 
-test("a failure already in the baseline is no new failure: the run counts", () => {
-  const s = story({ trunkMove: engineOnly, report: { keys: ["overflow|.panel-body"] }, baseline: [`${ROW}|${CONDITIONS[0]}|overflow|.panel-body`, `${ROW}|${CONDITIONS[1]}|overflow|.panel-body`] });
+test("a failure already in the baseline is no new failure, and another row's baseline entries are not this run's to fix", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), report: { keys: ["overflow|.panel-body"] }, baseline: CONDITIONS.map(c => `${ROW}|${c}|overflow|.panel-body`) });
   try { assert.equal(s.check().ok, true); } finally { s.done(); }
+  const t = story({ trunkMove: write => write("docs/notes.md", "moved\n"), baseline: ["other.row|1280x800/normal/normal|overflow|.x"] });
+  try { assert.equal(t.check().ok, true); } finally { t.done(); }
 });
 
-test("without the trailer the stale shared result still fails, as before", () => {
-  const s = story({ trunkMove: engineOnly, trailer: false });
-  try {
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => reason.startsWith("the UI inputs changed since the result")));
-  } finally { s.done(); }
+test("an exception covers a row run's failure as it covers the shared result's", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), report: { keys: ["overflow|.panel-body"] }, exceptions: [{ row: ROW, check: "overflow", match: ".panel-body", reason: "a known long title" }] });
+  try { assert.equal(s.check().ok, true, s.check().reasons.join("\n")); } finally { s.done(); }
 });
 
-test("a trailer naming a run with no committed report does not count", () => {
-  const s = story({ trunkMove: engineOnly });
-  try {
-    s.git("commit", "-q", "--allow-empty", "-m", "another run\n\nUI-Geometry-Run: render-TEST-missing");
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => reason.includes("render-TEST-missing") && reason.includes("commit the run's report")));
-  } finally { s.done(); }
+test("without the trailer the stale shared result fails, naming what changed off the safe list since it", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), trailer: false });
+  try { refused(s.check(), /^the shared result \(run full-old\): 2 file\(s\) off the safe list changed since it was measured at [0-9a-f]{8} .*src\/styles\/panel\.css, src\/ui\/Panel\.tsx — audit again: refresh it/); } finally { s.done(); }
 });
 
-// Cases from the independent review (RR22).
-test("a current shared result with its own new failure is not set aside by a trailer (it is not stale)", () => {
-  const s = story({ trunkMove: engineOnly, sharedFailure: "other.row|1280x800/normal/normal|overflow|.x" });
-  try {
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => /1 new failure\(s\), in no baseline entry or exception/.test(reason)), result.reasons.join("\n"));
-  } finally { s.done(); }
+test("a current shared result with its own new failure is not set aside by a trailer", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared: "current-failing" });
+  try { refused(s.check(), /1 new failure\(s\), in no baseline entry or exception/); } finally { s.done(); }
 });
-
-test("a run that is not what the trailer names, or has no measured commit, does not count", () => {
-  for (const [report, expected] of [
-    [{ runName: "render-SOMETHING-ELSE" }, /its report names another run \(render-SOMETHING-ELSE\)/],
-    [{ commit: null }, /its report has no measured commit/],
-  ] as const) {
-    const s = story({ trunkMove: engineOnly, report });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
-    } finally { s.done(); }
-  }
-});
-
-test("a run with a framed root outside the registry, or with no row measured, does not count", () => {
-  for (const [report, expected] of [
-    [{ unregistered: 1 }, /1 framed root\(s\) on screen that no registry row measures/],
-    [{ noRows: true }, /no row was measured/],
-  ] as const) {
-    const s = story({ trunkMove: engineOnly, report });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
-    } finally { s.done(); }
-  }
-});
-
-test("another row's baseline entries are not this run's to fix: the run counts", () => {
-  const s = story({ trunkMove: engineOnly, baseline: ["other.row|1280x800/normal/normal|overflow|.x"] });
-  try { assert.equal(s.check().ok, true); } finally { s.done(); }
-});
-
-test("the measured tree is dirty when a UI input is not its committed blob: an edit, a new file, a picture; an LFS picture compares by content", () => {
-  const dir = mkdtempSync(join(tmpdir(), "fls-dirty-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
-  const write = (path: string, text: string | Buffer) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
-  try {
-    const picture = Buffer.from("real picture bytes");
-    const oid = createHash("sha256").update(picture).digest("hex");
-    write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("public/assets/plain.png", "plain\n");
-    write("public/assets/lfs.png", `version https://git-lfs.github.com/spec/v1\noid sha256:${oid}\nsize ${picture.length}\n`);   // committed as a pointer
-    write("src/engine/core.ts", "export const core = 1;\n");
-    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
-    write("public/assets/lfs.png", picture);   // the run folder holds the real content (no git-lfs there)
-    assert.deepEqual(uiInputsDirty(dir), [], "an LFS picture whose content matches its pointer is clean");
-    write("src/engine/core.ts", "export const core = 2;\n");
-    assert.deepEqual(uiInputsDirty(dir), [], "the engine is not a UI input");
-    write("public/assets/lfs.png", Buffer.from("another picture"));
-    assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"]);
-    write("public/assets/lfs.png", picture); write("public/assets/plain.png", "changed\n");
-    assert.deepEqual(uiInputsDirty(dir), ["public/assets/plain.png"]);
-    write("public/assets/plain.png", "plain\n"); write("src/ui/New.tsx", "export const New = 1;\n");
-    assert.deepEqual(uiInputsDirty(dir), ["src/ui/New.tsx"], "an untracked UI file");
-    rmSync(join(dir, "src/ui/New.tsx")); write("src/ui/Panel.tsx", "export const Panel = 2;\n");
-    assert.deepEqual(uiInputsDirty(dir), ["src/ui/Panel.tsx"]);
-  } finally { rmSync(dir, { recursive: true, force: true }); }
-});
-
-// Cases from the second independent review (RR22).
-test("a run narrowed by --viewports, --copy or --numbers, or one that does not say, does not count", () => {
-  for (const [report, expected] of [
-    [{ axesNarrowed: true }, /narrowed by --viewports, --copy or --numbers/],
-    [{ axesNarrowed: null }, /does not say it measured every condition/],
-  ] as const) {
-    const s = story({ trunkMove: engineOnly, report });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
-    } finally { s.done(); }
-  }
-});
-
-test("the remedy works: a stale run is superseded by a newer named run of the same rows", () => {
-  const s = story({ trunkMove: write => write("src/styles/global.css", ":root { --gap: 10px; }\n") });
-  try {
-    assert.equal(s.check().ok, false, "the first run is stale: a UI input moved");
-    s.run("render-TEST-geometry-2");
-    const result = s.check();
-    assert.equal(result.ok, true, result.reasons.join("\n"));
-    assert.match(formatUiGeometryResult(result), /run render-TEST-geometry-1: superseded — a newer named run measured its rows \(modal\.panel\) again/);
-  } finally { s.done(); }
-});
-
-test("a report whose hash is not its commit's, or with a broken row, does not count (and does not crash)", () => {
-  for (const [report, expected] of [
-    [{ commitOf: "trunk0" }, /its hash is not its measured commit's/],
-    [{ rowsNull: true }, /no row was measured/],
-  ] as const) {
-    const s = story({ trunkMove: engineOnly, report });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => expected.test(reason)), result.reasons.join("\n"));
-    } finally { s.done(); }
-  }
-});
-
-test("dirty counts only UI inputs, and an LFS pointer left as text is no picture", () => {
-  const dir = mkdtempSync(join(tmpdir(), "fls-dirty2-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
-  const write = (path: string, text: string | Buffer) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
-  try {
-    const picture = Buffer.from("real picture bytes"); const oid = createHash("sha256").update(picture).digest("hex");
-    const pointer = `version https://git-lfs.github.com/spec/v1\noid sha256:${oid}\nsize ${picture.length}\n`;
-    write("src/render/draw.ts", "export const draw = 1;\n"); write("public/assets/lfs.png", pointer);
-    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
-    write("src/render/draw.ts", "export const draw = 2;\n"); write("src/content/new.ts", "export const n = 1;\n");   // not UI inputs
-    assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"], "the pointer text in place of the picture");
-    write("public/assets/lfs.png", picture);
-    assert.deepEqual(uiInputsDirty(dir), []);
-  } finally { rmSync(dir, { recursive: true, force: true }); }
-});
-
-// RR26 with the user's ruling of 2026-10-09: the UI inputs are the roots plus everything src/main.tsx reaches by import
-// (copy files outside src/content, data at the end of an import chain, the engine the UI imports), the shared result
-// counts only as a full audit, paths with Korean letters or spaces stay in, and a trailer with no report gives way.
-for (const [what, path, text] of [
-  ["a copy file outside the old roots (ledgerCopy.ko.ts)", "src/ledger/ledgerCopy.ko.ts", 'export const LEDGER_COPY = "영주의 장부";\n'],
-  ["a building name in buildingConfig.ts", "src/content/buildingConfig.ts", 'export const BUILDINGS = { mill: { name: "물레방앗간" } };\n'],
-  ["the file at the end of an import chain (main → App → Panel → format → table.json)", "src/data/deep/table.json", '{"unit":"단위"}\n'],
-  ["an engine file the UI imports", "src/engine/used.ts", "export const used = 2;\n"],
-] as const) {
-  test(`UI input moved: the trunk changed ${what} — the run does not count, the output names ${path}`, () => {
-    const s = story({ trunkMove: write => write(path, text) });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => reason.includes("1 UI input file(s) changed since it was measured") && reason.includes(path)), result.reasons.join("\n"));
-    } finally { s.done(); }
-  });
-}
 
 test("a shared result written by a changed-rows run is no full audit: it does not count, the named run does", () => {
-  const s = story({ trunkMove: engineOnly, sharedPartial: true, trailer: false });
-  try {
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => /the shared result \(run rows-only, 1 row\(s\)\) is not a full audit/.test(reason)), result.reasons.join("\n"));
-  } finally { s.done(); }
-  const t = story({ trunkMove: engineOnly, sharedPartial: true });
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared: "partial", trailer: false });
+  try { refused(s.check(), /the shared result \(run rows-only, 1 row\(s\)\) is not a full audit/); } finally { s.done(); }
+  const t = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared: "partial" });
   try { assert.equal(t.check().ok, true, "with the trailer the run's own report decides"); } finally { t.done(); }
 });
 
@@ -329,29 +200,36 @@ test("only a full audit writes the shared result by default", () => {
   assert.equal(defaultSummaryPath({ explicit: "out/x.json", full: false }), "out/x.json");
 });
 
-test("a path with Korean letters and spaces stays a UI input: in the hash, in dirty, in the evidence", () => {
-  const s = story({ trunkMove: write => write("src/ui/한글 패널.tsx", "export const k = 2;\n") });
-  try {
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => reason.includes("src/ui/한글 패널.tsx")), result.reasons.join("\n"));
-  } finally { s.done(); }
-  const dir = mkdtempSync(join(tmpdir(), "fls-quoted-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
-  try {
-    mkdirSync(join(dir, "src/ui"), { recursive: true }); writeFileSync(join(dir, "src/ui/한글 패널.tsx"), "export const k = 1;\n");
-    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
-    assert.ok(geometryInputs("HEAD", dir).some(line => line.endsWith(" src/ui/한글 패널.tsx")));
-    writeFileSync(join(dir, "src/ui/한글 패널.tsx"), "export const k = 2;\n");
-    assert.deepEqual(uiInputsDirty(dir), ["src/ui/한글 패널.tsx"]);
-  } finally { rmSync(dir, { recursive: true, force: true }); }
+test("a run that is not what the trailer names, has no measured commit, or names one not here or not in the pushed history, does not count", () => {
+  for (const [report, expected] of [
+    [{ runName: "render-SOMETHING-ELSE" }, /its report names another run \(render-SOMETHING-ELSE\)/],
+    [{ commit: null }, /its report has no measured commit/],
+    [{ commit: "0123456789abcdef0123456789abcdef01234567" }, /its measured commit 01234567 is not here/],
+    [{ commitOf: "outside" }, /is not in the pushed history \(amended or rebased away\)/],
+  ] as const) {
+    const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), report });
+    try { refused(s.check(), expected); } finally { s.done(); }
+  }
 });
 
-test("a trailer with no report counts for nothing and gives way to a newer named run", () => {
-  const s = story({ trunkMove: engineOnly });
+test("a run with a framed root outside the registry, with no row measured, with a broken row, or narrowed (or not saying) does not count", () => {
+  for (const [report, expected] of [
+    [{ unregistered: 1 }, /1 framed root\(s\) on screen that no registry row measures/],
+    [{ noRows: true }, /no row was measured/],
+    [{ rowsNull: true }, /no row was measured/],
+    [{ axesNarrowed: true }, /narrowed by --viewports, --copy or --numbers/],
+    [{ axesNarrowed: null }, /does not say it measured every condition/],
+  ] as const) {
+    const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), report });
+    try { refused(s.check(), expected); } finally { s.done(); }
+  }
+});
+
+test("a trailer naming a run with no committed report does not count, and gives way to a newer named run", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n") });
   try {
     s.git("commit", "-q", "--allow-empty", "-m", "a run never committed\n\nUI-Geometry-Run: render-TEST-never");
-    assert.equal(s.check().ok, false, "the empty trailer is newer than the valid run: it is not superseded");
+    refused(s.check(), /render-TEST-never.*commit the run's report/);
     s.run("render-TEST-geometry-2");
     const result = s.check();
     assert.equal(result.ok, true, result.reasons.join("\n"));
@@ -359,79 +237,53 @@ test("a trailer with no report counts for nothing and gives way to a newer named
   } finally { s.done(); }
 });
 
-test("a report whose measured commit is not in the repository does not count", () => {
-  const s = story({ trunkMove: engineOnly, report: { commit: "0123456789abcdef0123456789abcdef01234567" } });
+test("the remedy works: a stale run is superseded by a newer named run of the same rows — but not by one that measured only some of them", () => {
+  const s = story({ trunkMove: write => write("src/styles/global.css", ":root { --gap: 10px; }\n") });
   try {
+    refused(s.check(), /src\/styles\/global\.css/);
+    s.run("render-TEST-geometry-2");
     const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => /its measured commit 01234567 is not here to check its hash/.test(reason)), result.reasons.join("\n"));
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(result), /run render-TEST-geometry-1: superseded — a newer named run measured its rows \(modal\.panel\) again/);
   } finally { s.done(); }
+  const t = story({ trunkMove: write => write("src/styles/global.css", ":root { --gap: 10px; }\n"), rowIds: ["row.A", "row.B"] });
+  try { t.run("render-TEST-geometry-2", ["row.A"]); refused(t.check(), /render-TEST-geometry-1: 1 file\(s\) off the safe list .*src\/styles\/global\.css/); } finally { t.done(); }
 });
 
-// Cases from the fourth independent review (RR22): what the dev server and the audit load besides the UI.
-for (const [what, path, text] of [
-  ["a plugin vite.config.ts imports (the fonts it keeps)", "scripts/fontsPlugin.ts", 'export const fonts = { name: "fonts", keep: /\\.ttf$/ };\n'],
-  ["the lock file (a font package's version)", "package-lock.json", '{"packages":{"node_modules/@fontsource/noto-sans-kr":{"version":"5.1.0"}}}\n'],
-  ["a picture under an assets-inbox path a UI file names", "assets-inbox/portraits/pool1/p1.png", "p1-redrawn\n"],
-  ["a helper the audit imports (its paint pass)", "scripts/uiGeometryPaint.ts", "export const HIDE_CSS = 'y';\n"],
-  ["an import behind a comment with a quote (the engine value App.tsx imports)", "src/engine/used.ts", "export const used = 3;\n"],
-] as const) {
-  test(`UI input moved: the trunk changed ${what} — the run does not count, the output names ${path}`, () => {
-    const s = story({ trunkMove: write => write(path, text) });
-    try {
-      const result = s.check();
-      assert.equal(result.ok, false);
-      assert.ok(result.reasons.some(reason => reason.includes("UI input file(s) changed since it was measured") && reason.includes(path)), result.reasons.join("\n"));
-    } finally { s.done(); }
-  });
-}
-
-test("comments go, strings and regular expressions stay: an import behind a quoted comment is found", () => {
+test("comments go, strings and regular expressions stay (the closure kept for the report)", () => {
   assert.equal(withoutComments('import {\n a, // the panel\'s helper\n} from "./a.ts";'), 'import {\n a, \n} from "./a.ts";');
   assert.equal(withoutComments('const s = "// kept"; const r = /\\/\\//g; /* gone */ x'), 'const s = "// kept"; const r = /\\/\\//g;   x');
 });
 
-test("a measured commit that is not in the pushed history (amended away) does not count", () => {
-  const s = story({ trunkMove: engineOnly, report: { commitOf: "outside" } });
+test("dirty: every uncommitted change off the safe list (edited, untracked, staged, renamed, deleted), not one on it; an LFS picture by content", () => {
+  const dir = tempDir("fls-dirty-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write = (path: string, text: string | Buffer) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   try {
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => /is not in the pushed history/.test(reason)), result.reasons.join("\n"));
-  } finally { s.done(); }
-});
-
-test("dirty sees what is staged but not committed (a new file, a rename), a deleted picture, and an input outside the roots", () => {
-  const dir = mkdtempSync(join(tmpdir(), "fls-dirty3-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
-  const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
-  try {
-    write("src/main.tsx", 'import { used } from "./engine/used.ts";\nexport const main = used;\n'); write("src/engine/used.ts", "export const used = 1;\n");
-    write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("public/assets/a.png", "a\n");
+    const picture = Buffer.from("real picture bytes"); const oid = createHash("sha256").update(picture).digest("hex");
+    const pointer = `version https://git-lfs.github.com/spec/v1\noid sha256:${oid}\nsize ${picture.length}\n`;
+    write("scripts/uiGeometryAudit.mjs", 'import { R } from "../tests/fixtures/rows.ts";\n'); write("tests/fixtures/rows.ts", "export const R = 1;\n");
+    write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("src/engine/core.ts", "export const core = 1;\n"); write("public/assets/a.png", "a\n");
+    write("public/assets/lfs.png", pointer); write("assets-inbox/w/lfs.png", pointer); write("docs/a.md", "a\n"); write("tests/x.test.ts", "export {};\n");
+    write("src/ui/한글 패널.tsx", "export const k = 1;\n");
     git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
-    write("src/ui/New.tsx", "export const New = 1;\n"); git("add", "src/ui/New.tsx");
-    assert.deepEqual(uiInputsDirty(dir), ["src/ui/New.tsx"], "a staged new file");
-    git("reset", "-q"); rmSync(join(dir, "src/ui/New.tsx"));
+    write("public/assets/lfs.png", picture); write("assets-inbox/w/lfs.png", picture);   // a run folder holds the pictures, not the pointers
+    assert.deepEqual(uiInputsDirty(dir), [], "LFS pictures whose content matches their pointers are clean, wherever they are");
+    write("docs/a.md", "b\n"); write("tests/x.test.ts", "export const y = 1;\n"); write("docs/new.md", "n\n");
+    assert.deepEqual(uiInputsDirty(dir), [], "changes on the safe list are not dirty");
+    write("src/engine/core.ts", "export const core = 2;\n"); write("src/ui/New.tsx", "export const New = 1;\n"); write("tests/fixtures/rows.ts", "export const R = 2;\n");
+    write("src/ui/한글 패널.tsx", "export const k = 2;\n"); write("tools/x.cfg", "x\n");
+    assert.deepEqual(uiInputsDirty(dir), ["src/engine/core.ts", "src/ui/New.tsx", "src/ui/한글 패널.tsx", "tests/fixtures/rows.ts", "tools/x.cfg"]);
+    git("checkout", "-q", "--", "src", "tests"); rmSync(join(dir, "src/ui/New.tsx")); rmSync(join(dir, "tools"), { recursive: true });
+    write("src/ui/Staged.tsx", "export const S = 1;\n"); git("add", "src/ui/Staged.tsx");
+    assert.deepEqual(uiInputsDirty(dir), ["src/ui/Staged.tsx"], "a staged new file");
+    git("rm", "-q", "--cached", "src/ui/Staged.tsx"); rmSync(join(dir, "src/ui/Staged.tsx"));
     git("mv", "src/ui/Panel.tsx", "src/ui/Panel2.tsx");
-    assert.ok(uiInputsDirty(dir).includes("src/ui/Panel.tsx"), "a staged rename: its old path");
+    assert.deepEqual(uiInputsDirty(dir), ["src/ui/Panel.tsx", "src/ui/Panel2.tsx"], "a staged rename: both paths");
     git("mv", "src/ui/Panel2.tsx", "src/ui/Panel.tsx");
     rmSync(join(dir, "public/assets/a.png"));
     assert.deepEqual(uiInputsDirty(dir), ["public/assets/a.png"], "a deleted picture");
-    write("public/assets/a.png", "a\n"); write("src/engine/used.ts", "export const used = 2;\n");
-    assert.deepEqual(uiInputsDirty(dir), ["src/engine/used.ts"], "an input outside the roots, reached from src/main.tsx");
+    write("public/assets/a.png", "a\n"); write("public/assets/lfs.png", pointer);
+    assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"], "the pointer text in place of the picture");
   } finally { rmSync(dir, { recursive: true, force: true }); }
-});
-
-test("a run superseded only when a newer run measured all its rows: one row re-measured after a style change is not enough", () => {
-  const s = story({ trunkMove: write => write("src/styles/global.css", ":root { --gap: 10px; }\n"), rowIds: ["row.A", "row.B"] });
-  try {
-    s.run("render-TEST-geometry-2", ["row.A"]);
-    const result = s.check();
-    assert.equal(result.ok, false);
-    assert.ok(result.reasons.some(reason => reason.includes("render-TEST-geometry-1") && reason.includes("src/styles/global.css")), result.reasons.join("\n"));
-  } finally { s.done(); }
-});
-
-test("an exception covers a row run's failure as it covers the shared result's", () => {
-  const s = story({ trunkMove: engineOnly, report: { keys: ["overflow|.panel-body"] }, exceptions: [{ row: ROW, check: "overflow", match: ".panel-body", reason: "a known long title" }] });
-  try { assert.equal(s.check().ok, true, s.check().reasons.join("\n")); } finally { s.done(); }
 });
