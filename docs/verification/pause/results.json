@@ -1,0 +1,1122 @@
+{
+ "run": "render-PAUSE-measure-f001a2a-f001a2a",
+ "rule": "stops counted as the screen does: a season with any new reason from pauseReasons or lordMattersDue stops once; the player goes on at once (later reasons that season join without a stop); lord bot, lord slice, 20 years per seed",
+ "target": "about 1-4 stops a year",
+ "seeds": [
+  {
+   "seed": 1,
+   "yearsPlayed": 20,
+   "sliceEndTick": 72000,
+   "sliceEndYear": 1318,
+   "sliceYears": 18,
+   "stops": 17,
+   "reasonsTotal": 22,
+   "perYearInSlice": {
+    "median": 1,
+    "max": 4
+   },
+   "perYearAll20": {
+    "median": 1,
+    "max": 4
+   },
+   "byReason": {
+    "major_death": 6,
+    "inheritance": 2,
+    "counter_offer": 1,
+    "judgment": 3,
+    "matter:suit_defence": 4,
+    "matter:will_change": 1,
+    "estate_gained": 1,
+    "rights_petition": 3,
+    "estate_crisis": 1
+   },
+   "byTemplate": {
+    "faction.leader_succeeded": 4,
+    "lord.wardship_begun": 1,
+    "negotiation.countered": 1,
+    "estate.suit_judged": 3,
+    "lordMattersDue.suit_defence": 4,
+    "lordMattersDue.will_change": 1,
+    "estate.person_died": 1,
+    "estate.title_changed": 1,
+    "marriage.father_died": 1,
+    "marriage.inherited": 1,
+    "stewardship.escalated": 3,
+    "event.arrived": 1
+   },
+   "perYear": [
+    {
+     "year": 1300,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1301,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1302,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1303,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1304,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1305,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "inheritance": 1
+     }
+    },
+    {
+     "year": 1306,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 1,
+      "counter_offer": 1
+     }
+    },
+    {
+     "year": 1307,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1308,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1309,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1310,
+     "stops": 4,
+     "inSlice": true,
+     "reasons": {
+      "matter:suit_defence": 4,
+      "matter:will_change": 1
+     }
+    },
+    {
+     "year": 1311,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 2
+     }
+    },
+    {
+     "year": 1312,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1313,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 3,
+      "estate_gained": 1,
+      "inheritance": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1314,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1315,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "estate_crisis": 1
+     }
+    },
+    {
+     "year": 1316,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1317,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1318,
+     "stops": 0,
+     "inSlice": false,
+     "reasons": {}
+    },
+    {
+     "year": 1319,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 1
+     }
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "yearsPlayed": 20,
+   "sliceEndTick": 61094,
+   "sliceEndYear": 1315,
+   "sliceYears": 15,
+   "stops": 21,
+   "reasonsTotal": 25,
+   "perYearInSlice": {
+    "median": 0,
+    "max": 4
+   },
+   "perYearAll20": {
+    "median": 1,
+    "max": 4
+   },
+   "byReason": {
+    "major_death": 4,
+    "judgment": 4,
+    "counter_offer": 1,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "rights_petition": 7,
+    "matter:suit_defence": 6,
+    "estate_crisis": 1
+   },
+   "byTemplate": {
+    "estate.person_died": 1,
+    "estate.suit_judged": 4,
+    "faction.leader_succeeded": 2,
+    "negotiation.countered": 1,
+    "estate.title_changed": 1,
+    "marriage.father_died": 1,
+    "marriage.inherited": 1,
+    "stewardship.escalated": 7,
+    "lordMattersDue.suit_defence": 6,
+    "event.arrived": 1
+   },
+   "perYear": [
+    {
+     "year": 1300,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1301,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1302,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1303,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1304,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1305,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1306,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1,
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1307,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1308,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1309,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1310,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "counter_offer": 1,
+      "estate_gained": 1,
+      "major_death": 1,
+      "inheritance": 1
+     }
+    },
+    {
+     "year": 1311,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 2,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1312,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1313,
+     "stops": 4,
+     "inSlice": true,
+     "reasons": {
+      "matter:suit_defence": 4
+     }
+    },
+    {
+     "year": 1314,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1315,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "estate_crisis": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1316,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1317,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 1,
+      "matter:suit_defence": 1
+     }
+    },
+    {
+     "year": 1318,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 2
+     }
+    },
+    {
+     "year": 1319,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 1
+     }
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "yearsPlayed": 20,
+   "sliceEndTick": 68000,
+   "sliceEndYear": 1317,
+   "sliceYears": 17,
+   "stops": 15,
+   "reasonsTotal": 19,
+   "perYearInSlice": {
+    "median": 0,
+    "max": 2
+   },
+   "perYearAll20": {
+    "median": 0.5,
+    "max": 2
+   },
+   "byReason": {
+    "major_death": 3,
+    "inheritance": 2,
+    "counter_offer": 1,
+    "judgment": 3,
+    "estate_gained": 1,
+    "matter:suit_defence": 2,
+    "estate_crisis": 1,
+    "rights_petition": 6
+   },
+   "byTemplate": {
+    "faction.leader_succeeded": 1,
+    "lord.wardship_begun": 1,
+    "negotiation.countered": 1,
+    "estate.suit_judged": 3,
+    "estate.person_died": 1,
+    "estate.title_changed": 1,
+    "marriage.father_died": 1,
+    "marriage.inherited": 1,
+    "lordMattersDue.suit_defence": 2,
+    "event.arrived": 1,
+    "stewardship.escalated": 6
+   },
+   "perYear": [
+    {
+     "year": 1300,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1301,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1302,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1303,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1304,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1305,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "inheritance": 1
+     }
+    },
+    {
+     "year": 1306,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1307,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "counter_offer": 1
+     }
+    },
+    {
+     "year": 1308,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1309,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1310,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1311,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1312,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 2,
+      "estate_gained": 1,
+      "inheritance": 1,
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1313,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "matter:suit_defence": 1,
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1314,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1315,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "estate_crisis": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1316,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "rights_petition": 1,
+      "matter:suit_defence": 1
+     }
+    },
+    {
+     "year": 1317,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 2
+     }
+    },
+    {
+     "year": 1318,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 2
+     }
+    },
+    {
+     "year": 1319,
+     "stops": 0,
+     "inSlice": false,
+     "reasons": {}
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "yearsPlayed": 20,
+   "sliceEndTick": 44000,
+   "sliceEndYear": 1311,
+   "sliceYears": 11,
+   "stops": 25,
+   "reasonsTotal": 37,
+   "perYearInSlice": {
+    "median": 1,
+    "max": 2
+   },
+   "perYearAll20": {
+    "median": 1,
+    "max": 4
+   },
+   "byReason": {
+    "counter_offer": 1,
+    "major_death": 4,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "judgment": 8,
+    "rights_petition": 8,
+    "matter:suit_defence": 13,
+    "estate_crisis": 1
+   },
+   "byTemplate": {
+    "negotiation.countered": 1,
+    "estate.person_died": 1,
+    "estate.title_changed": 1,
+    "marriage.father_died": 1,
+    "marriage.inherited": 1,
+    "estate.suit_judged": 8,
+    "stewardship.escalated": 8,
+    "faction.leader_succeeded": 1,
+    "lordMattersDue.suit_defence": 13,
+    "event.arrived": 1,
+    "stewardship.steward_died": 1
+   },
+   "perYear": [
+    {
+     "year": 1300,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1301,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1302,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1303,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1304,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "counter_offer": 1
+     }
+    },
+    {
+     "year": 1305,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1306,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 2,
+      "estate_gained": 1,
+      "inheritance": 1,
+      "judgment": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1307,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1308,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "rights_petition": 2,
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1309,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1310,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1311,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1312,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1313,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1314,
+     "stops": 4,
+     "inSlice": false,
+     "reasons": {
+      "matter:suit_defence": 4
+     }
+    },
+    {
+     "year": 1315,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "estate_crisis": 1,
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1316,
+     "stops": 1,
+     "inSlice": false,
+     "reasons": {
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1317,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "matter:suit_defence": 1,
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1318,
+     "stops": 0,
+     "inSlice": false,
+     "reasons": {}
+    },
+    {
+     "year": 1319,
+     "stops": 4,
+     "inSlice": false,
+     "reasons": {
+      "matter:suit_defence": 8
+     }
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "yearsPlayed": 20,
+   "sliceEndTick": 72000,
+   "sliceEndYear": 1318,
+   "sliceYears": 18,
+   "stops": 23,
+   "reasonsTotal": 33,
+   "perYearInSlice": {
+    "median": 0.5,
+    "max": 4
+   },
+   "perYearAll20": {
+    "median": 1,
+    "max": 4
+   },
+   "byReason": {
+    "counter_offer": 1,
+    "judgment": 6,
+    "matter:will_change": 1,
+    "major_death": 3,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "rights_petition": 8,
+    "estate_crisis": 1,
+    "matter:suit_defence": 11
+   },
+   "byTemplate": {
+    "negotiation.countered": 1,
+    "estate.suit_judged": 6,
+    "lordMattersDue.will_change": 1,
+    "estate.person_died": 1,
+    "estate.title_changed": 1,
+    "marriage.father_died": 1,
+    "marriage.inherited": 1,
+    "stewardship.escalated": 8,
+    "event.arrived": 1,
+    "lordMattersDue.suit_defence": 11,
+    "faction.leader_succeeded": 1
+   },
+   "perYear": [
+    {
+     "year": 1300,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1301,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1302,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1303,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1304,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1305,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1306,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "counter_offer": 1
+     }
+    },
+    {
+     "year": 1307,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1308,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1309,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1310,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "matter:will_change": 1
+     }
+    },
+    {
+     "year": 1311,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1
+     }
+    },
+    {
+     "year": 1312,
+     "stops": 0,
+     "inSlice": true,
+     "reasons": {}
+    },
+    {
+     "year": 1313,
+     "stops": 2,
+     "inSlice": true,
+     "reasons": {
+      "major_death": 2,
+      "estate_gained": 1,
+      "inheritance": 1,
+      "judgment": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1314,
+     "stops": 1,
+     "inSlice": true,
+     "reasons": {
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1315,
+     "stops": 4,
+     "inSlice": true,
+     "reasons": {
+      "estate_crisis": 1,
+      "matter:suit_defence": 4,
+      "judgment": 1,
+      "rights_petition": 1
+     }
+    },
+    {
+     "year": 1316,
+     "stops": 3,
+     "inSlice": true,
+     "reasons": {
+      "judgment": 1,
+      "matter:suit_defence": 1,
+      "rights_petition": 2,
+      "major_death": 1
+     }
+    },
+    {
+     "year": 1317,
+     "stops": 4,
+     "inSlice": true,
+     "reasons": {
+      "matter:suit_defence": 4
+     }
+    },
+    {
+     "year": 1318,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "judgment": 1,
+      "rights_petition": 2
+     }
+    },
+    {
+     "year": 1319,
+     "stops": 2,
+     "inSlice": false,
+     "reasons": {
+      "matter:suit_defence": 1,
+      "rights_petition": 1
+     }
+    }
+   ]
+  }
+ ],
+ "perYearAllSeeds": {
+  "years": 100,
+  "median": 1,
+  "max": 4,
+  "histogram": {
+   "0": 42,
+   "1": 31,
+   "2": 20,
+   "3": 1,
+   "4": 6
+  }
+ },
+ "busy": [
+  {
+   "seed": 1,
+   "year": 1310,
+   "stops": 4,
+   "inSlice": true,
+   "reasons": {
+    "matter:suit_defence": 4,
+    "matter:will_change": 1
+   }
+  },
+  {
+   "seed": 1,
+   "year": 1313,
+   "stops": 2,
+   "inSlice": true,
+   "reasons": {
+    "major_death": 3,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "rights_petition": 1
+   }
+  },
+  {
+   "seed": 2,
+   "year": 1313,
+   "stops": 4,
+   "inSlice": true,
+   "reasons": {
+    "matter:suit_defence": 4
+   }
+  },
+  {
+   "seed": 3,
+   "year": 1312,
+   "stops": 2,
+   "inSlice": true,
+   "reasons": {
+    "major_death": 2,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "judgment": 1
+   }
+  },
+  {
+   "seed": 4,
+   "year": 1306,
+   "stops": 2,
+   "inSlice": true,
+   "reasons": {
+    "major_death": 2,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "judgment": 1,
+    "rights_petition": 1
+   }
+  },
+  {
+   "seed": 4,
+   "year": 1314,
+   "stops": 4,
+   "inSlice": false,
+   "reasons": {
+    "matter:suit_defence": 4
+   }
+  },
+  {
+   "seed": 4,
+   "year": 1319,
+   "stops": 4,
+   "inSlice": false,
+   "reasons": {
+    "matter:suit_defence": 8
+   }
+  },
+  {
+   "seed": 5,
+   "year": 1313,
+   "stops": 2,
+   "inSlice": true,
+   "reasons": {
+    "major_death": 2,
+    "estate_gained": 1,
+    "inheritance": 1,
+    "judgment": 1,
+    "rights_petition": 1
+   }
+  },
+  {
+   "seed": 5,
+   "year": 1315,
+   "stops": 4,
+   "inSlice": true,
+   "reasons": {
+    "estate_crisis": 1,
+    "matter:suit_defence": 4,
+    "judgment": 1,
+    "rights_petition": 1
+   }
+  },
+  {
+   "seed": 5,
+   "year": 1316,
+   "stops": 3,
+   "inSlice": true,
+   "reasons": {
+    "judgment": 1,
+    "matter:suit_defence": 1,
+    "rights_petition": 2,
+    "major_death": 1
+   }
+  },
+  {
+   "seed": 5,
+   "year": 1317,
+   "stops": 4,
+   "inSlice": true,
+   "reasons": {
+    "matter:suit_defence": 4
+   }
+  }
+ ],
+ "byTemplateAllSeeds": {
+  "lordMattersDue.suit_defence": 36,
+  "stewardship.escalated": 32,
+  "estate.suit_judged": 24,
+  "faction.leader_succeeded": 9,
+  "negotiation.countered": 5,
+  "estate.person_died": 5,
+  "estate.title_changed": 5,
+  "marriage.father_died": 5,
+  "marriage.inherited": 5,
+  "event.arrived": 5,
+  "lord.wardship_begun": 2,
+  "lordMattersDue.will_change": 2,
+  "stewardship.steward_died": 1
+ }
+}
