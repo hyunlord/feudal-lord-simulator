@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { createLiveReceiptEvidence } from '../scripts/engineBLiveSpeedCapture.mjs';
+import { createLiveReceiptEvidence, shouldDismissInformationalSeasonLedger } from '../scripts/engineBLiveSpeedCapture.mjs';
 const receipt = (id, tick, decisionId = 'h-answer') => ({ id, tick, kind: 'event', because: [{ decisionId }] });
 test('only new strictly later exact-answer receipts within the bound qualify', () => {
   const evidence = createLiveReceiptEvidence('h-answer', 100, 3000, ['old']);
@@ -21,4 +21,12 @@ test('observations fail closed on tick reversal or overshoot', () => {
   evidence.observe(200, [], []);
   assert.throws(() => evidence.observe(199, [], []), /tick/);
   assert.throws(() => evidence.observe(3101, [], []), /tick/);
+});
+
+
+test('informational season ledger continuation is based on ledger identity, not stale pause seal', () => {
+  const panel = { className: 'season-ledger-card', season: '1310:0', continueCount: 1, continueAvailable: true };
+  assert.equal(shouldDismissInformationalSeasonLedger({ paused: false, panels: [panel] }), true);
+  assert.equal(shouldDismissInformationalSeasonLedger({ paused: true, panels: [{ ...panel, className: 'substantive-dialog' }] }), false);
+  assert.equal(shouldDismissInformationalSeasonLedger({ paused: true, panels: [] }), false);
 });

@@ -39,6 +39,9 @@ export function createLiveReceiptEvidence(answerId, answerTick, span, initialIds
       lastTick }),
   };
 }
+export function shouldDismissInformationalSeasonLedger(observation) {
+  return isInformationalSeasonLedger(observation?.panels);
+}
 async function press(page, selector, evidence) {
   const control = typeof selector === 'string' ? page.locator(selector) : selector;
   check(await control.count() === 1 && await control.isVisible() && await control.isEnabled(), `Unavailable unique control: ${selector}`);
@@ -170,7 +173,7 @@ async function capture(browser, item, out, url, evidence) {
       if (accumulator.snapshot().automaticVisible || evidence.threadEvidence.automaticThreadVisible) {
         evidence.stop = accumulator.snapshot().automaticVisible ? 'automatic_exact_receipt_visible' : 'automatic_trace_thread_indicator_visible'; break;
       }
-      if (observation.paused && isInformationalSeasonLedger(observation.panels)) {
+      if (shouldDismissInformationalSeasonLedger(observation)) {
         const label = `information-${evidence.informationalContinues.length + 1}`;
         const beforeContinue = await fullSnapshot(page, out, `${label}-before`);
         await press(page, '.season-ledger-card button.season-ledger-resume', evidence);

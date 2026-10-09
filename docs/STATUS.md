@@ -1031,3 +1031,5 @@ Engine B 증거 정합성 갱신:56건 표에 실제 계절 행4/10을 반영하
 Engine B [10배속 실제 저장 검증 도구](verification/eb-weight/live-speed-preflight.md)를 준비했다.005 답변에서 최대 세 철, 자동 결과 ID 노출과 정지 후 원인 왕복을 별도 판정한다. 관련15시험·lint 통과이며 실제 실행은 역사 재현 종료 뒤다. 전체 가시성 완료로 세지 않는다.
 
 Engine B 진단 전용: c5d2b35 제품 소스는 유지하고 trace 알림/안내 결산 관측 도구만 보완했다. 집중19시험 및 독립 검토 통과. 실제 DGX 후속 검증 전이며 이 가지는 본선 게시용이 아니다.
+
+Engine B isolated live diagnostic: recognize a unique available informational season ledger even when the pause seal is false. Preserve full-state hash and tick invariance around the normal Continue handler and reject substantive/ambiguous dialogs. Eight focused tests passed on the matching tool change; DGX runtime follow-up pending. Product remains c5d2b35, not current trunk.
