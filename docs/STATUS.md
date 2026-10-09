@@ -1060,3 +1060,5 @@ Engine B 10배속 관측 보완: 같은 시점의 정본 trace 멤버와 실제 
 Engine B 10배속 보완 실험 engineB-live-thread-a51965f를 공식 DGX 줄에 제출했다. clean a51965fa5는 c5d2b35 제품 소스/의존성 diff0이며 관측 도구만 다르다. 14:00 KST 실험 슬롯 대기, 통합 기하는 별도 관문에서 계속 실행 중이다. 실제 성공 판정은 아직 없다. [관측 범위](verification/eb-weight/live-speed-preflight.md).
 
 Engine B 완료 관측 후속: 본선d76e90e92의 감사 게시 뒤, DGX live-thread-a51965f의 exit1을 별도 보존했다. 새 수입 결과 생성은 확인했으나 정보성 결산의 paused=false 인식 불일치로 자동 표시/수동 추적은 미검증이다. 기존 통합 기하61행1220조건은 실패0으로 별도 게시돼 있다. 문구 변형5종의 답변 당시 표시 ID 보존은 저장 소유 엔진에 요청했고 MOD-SLOT 검토는 MONEY-SINK 뒤다. 문구 수정과147 판별은 별도 진행하며 이 보고의 게시를 막지 않는다.
+
+Engine B EB-FREQ147 판별 완료: 역사 원본과 byte동일한 순수 해시를 실제 실행해1348–1355의32계절 모두 draw≥150(최소167)을 확인했다. 실제28pace·2chance·2budget 기록과 미방문 gate 산술을 구분한다. 역사40은 조건34·가중 경쟁4·시대2이며 원인 귀속 미정을 최종 결론으로 남기지 않는다. 충분한 차단 이유가 확인되어 대기 중56년 재현은 실행 전 취소했고, 조건·팩트는 바꾸지 않았다. [실행 재현](verification/eb-freq/147-chance-window.md).
