@@ -255,6 +255,7 @@ export function traceCommand(before: GameState, after: GameState, action: Action
     const prior = before.stewardship?.oversight.find(row => row.estateId === oversight.estateId);
     if (prior?.auditMode !== oversight.auditMode) ownTargets.push(`audit_mode:${oversight.estateId}`);
     if (prior?.mode !== oversight.mode || prior?.stewardId !== oversight.stewardId) ownTargets.push(`oversight:${oversight.estateId}`);
+    if (prior?.mode !== oversight.mode) ownTargets.push(`oversight_mode:${oversight.estateId}`);
   }
   return linkImmediateAnswerReceipts(before, retainAnswer(before, linked, { ...answer, targets: ownTargets }, root?.id ?? id), id);
 }

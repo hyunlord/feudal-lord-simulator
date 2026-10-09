@@ -5,6 +5,8 @@ import { hashSeed } from '../src/engine/prng';
 import { PRESSURE_BALANCE } from '../src/content/balanceConfig';
 import { MICHAELMAS_IN_YEAR } from '../src/content/stewardshipConfig';
 import { gameReducer } from '../src/state/gameStore';
+import { advanceHistory } from '../src/engine/history';
+import { linkRuleAnswerReceipts } from '../src/engine/decisionTraceAnswerReceipts';
 import { advanceTrace } from '../src/engine/decisionTrace';
 import { answer, contribution, delegated, enforcing, linked, transition } from './helpers/engineBTlinkFixtures';
 
@@ -97,6 +99,11 @@ test('ck_evt_140:b fifth direct-oversight answer and current audit mode jointly 
   assert.equal(summary?.mode, 'direct');
   const petition = season.actual.stewardship?.petitions.find(row => row.estateId === 'delegated-estate' && row.tick === season.actual.tick);
   assert.equal(petition?.escalated, 'direct');
+  const routing = linked(season.after, result.ownId, 'petition_routed');
+  assert.equal(routing.length, 1);
+  assert.equal(routing[0]?.template, 'stewardship.brought');
+  assert.equal(routing[0]?.params?.tracePetition, petition?.id);
+  assert.equal(routing[0]?.params?.traceEstate, 'delegated-estate');
   assert.deepEqual(season.actual.stewardship?.rules, rules);
   assert.equal(season.actual.stewardship?.audits.length, 0);
   assert.equal(linked(season.after, result.ownId, 'audit').length, 0);
@@ -115,4 +122,104 @@ test('ck_evt_140:b fifth direct-oversight answer and current audit mode jointly 
   for (const id of priorIds.slice(0, 3)) assert.equal(linked(audited.after, id, 'audit').length, 0);
   const repeated = advanceTrace(audited.after, audited.after);
   assert.deepEqual(repeated.history?.records.map(row => row.id), audited.after.history?.records.map(row => row.id));
+});
+
+test('140:b routing annotates existing records only and repeated matching never duplicates causes', () => {
+  const result = answer(delegated(), 'ck_evt_140', 'b');
+  const before = { ...result.after, tick: 2000 };
+  const actual = advanceStewardship(before);
+  const recorded = advanceHistory(before, actual);
+  const annotated = linkRuleAnswerReceipts(before, recorded);
+  assert.equal(linked(annotated, result.ownId, 'petition_routed').length, 1);
+  assert.equal(annotated.history?.nextOrdinal, recorded.history?.nextOrdinal);
+  assert.deepEqual(annotated.history?.records.map(row => row.id), recorded.history?.records.map(row => row.id));
+  const { history: oldHistory, ...oldState } = recorded;
+  const { history: newHistory, ...newState } = annotated;
+  assert.ok(oldHistory && newHistory);
+  assert.deepEqual(newState, oldState);
+  assert.deepEqual(linkRuleAnswerReceipts(before, annotated), annotated);
+  assert.deepEqual(advanceTrace(annotated, annotated), annotated);
+});
+
+for (const sameTick of [false, true]) {
+  test(`140:b replaced oversight uses only the latest owner; same-tick=${sameTick}`, () => {
+    const result = answer(delegated(), 'ck_evt_140', 'b');
+    const delegatedAgain = gameReducer({ ...result.after, tick: 1500 }, { type: 'set_estate_oversight', estateId: 'delegated-estate', mode: 'steward' });
+    const current = gameReducer({ ...delegatedAgain, tick: sameTick ? 2000 : 1999 }, { type: 'set_estate_oversight', estateId: 'delegated-estate', mode: 'direct' });
+    const owner = current.trace?.answers?.at(-1);
+    assert.ok(owner);
+    const next = transition(current, 2000, advanceStewardship);
+    assert.equal(linked(next.after, result.ownId, 'petition_routed').length, 0);
+    assert.equal(linked(next.after, owner.id, 'petition_routed').length, sameTick ? 0 : 1);
+  });
+}
+
+for (const sameHouse of [false, true]) {
+  test(`140:b never borrows another estate record; duplicate house name=${sameHouse}`, () => {
+    const result = answer(delegated(), 'ck_evt_140', 'b');
+    const estate = result.after.estates?.estates[0];
+    const person = result.after.estates?.people[0];
+    const stewardship = result.after.stewardship;
+    const record = stewardship?.stewards[0], oversight = stewardship?.oversight[0];
+    assert.ok(estate && person && stewardship && record && oversight && result.after.estates);
+    const second = { ...estate, id: 'other-estate', name: sameHouse ? estate.name : 'different house' };
+    const state = { ...result.after, estates: { ...result.after.estates, estates: [estate, second],
+      people: [...result.after.estates.people, { ...person, id: 'other-steward' }] }, stewardship: { ...stewardship,
+      stewards: [...stewardship.stewards, { ...record, estateId: second.id, personId: 'other-steward' }],
+      oversight: [...stewardship.oversight, { ...oversight, estateId: second.id, stewardId: 'other-steward' }] } };
+    const before = { ...state, tick: 2000 }, actual = advanceStewardship(before);
+    const recorded = advanceHistory(before, actual);
+    const brought = recorded.history?.records.filter(row => row.tick === 2000 && row.template === 'stewardship.brought');
+    assert.equal(brought?.length, 2);
+    const annotated = linkRuleAnswerReceipts(before, recorded);
+    const links = linked(annotated, result.ownId, 'petition_routed');
+    assert.equal(links.length, sameHouse ? 0 : 1);
+    assert.ok(links.every(row => row.params?.traceEstate === estate.id && row.params?.house === estate.name));
+    if (sameHouse) {
+      assert.ok(recorded.history && brought?.[0]);
+      const oneRecord = { ...recorded, history: { ...recorded.history, records: recorded.history.records.filter(row => row.id !== brought[0]?.id) } };
+      assert.equal(linked(linkRuleAnswerReceipts(before, oneRecord), result.ownId, 'petition_routed').length, 0,
+        'one retained record matching two fresh petitions is still ambiguous');
+    }
+  });
+}
+
+for (const choice of ['replace', 'punish'] as const) {
+  test(`140:b mode ownership survives actual audit ${choice} without stealing routing`, () => {
+    const base = delegated(), stewardship = base.stewardship, estates = base.estates;
+    const serving = stewardship?.stewards[0], person = estates?.people[0];
+    assert.ok(stewardship && estates && serving && person);
+    const prepared = { ...base, estates: { ...estates, people: [...estates.people, { ...person, id: 'successor' }] },
+      stewardship: { ...stewardship, stewards: [{ ...serving, errors: 1 },
+        { ...serving, personId: 'successor', status: 'candidate' as const }] } };
+    const result = answer(prepared, 'ck_evt_140', 'b');
+    const audited = transition(result.after, MICHAELMAS_IN_YEAR, advanceStewardship);
+    const audit = audited.after.stewardship?.audits.at(-1);
+    assert.equal(audit?.status, 'pending');
+    assert.ok(audit);
+    const changed = gameReducer({ ...audited.after, tick: MICHAELMAS_IN_YEAR + 1 },
+      { type: 'answer_audit', auditId: audit.id, choice, replacementId: 'successor' });
+    assert.equal(changed.stewardship?.oversight[0]?.mode, 'direct');
+    assert.equal(changed.stewardship?.oversight[0]?.stewardId, 'successor');
+    assert.equal(changed.stewardship?.audits.at(-1)?.status, choice === 'replace' ? 'replaced' : 'punished');
+    const replacement = changed.trace?.answers?.at(-1);
+    assert.ok(replacement && replacement.id !== result.ownId);
+    const next = transition(changed, 3 * PRESSURE_BALANCE.seasonTicks, advanceStewardship);
+    assert.equal(linked(next.after, result.ownId, 'petition_routed').length, 1);
+    assert.equal(linked(next.after, replacement.id, 'petition_routed').length, 0);
+    assert.ok(replacement.targets.includes('oversight:delegated-estate'));
+    assert.ok(!replacement.targets.includes('oversight_mode:delegated-estate'));
+    assert.ok(contribution(changed, result.ownId).targets.includes('oversight_mode:delegated-estate'));
+  });
+}
+
+test('140:b legacy broad oversight evidence does not backfill missing mode ownership', () => {
+  const result = answer(delegated(), 'ck_evt_140', 'b');
+  assert.ok(result.after.trace?.answers);
+  const strip = (row: ReturnType<typeof contribution>) => ({ ...row, targets: row.targets.filter(target => !target.startsWith('oversight_mode:')) });
+  const legacy = { ...result.after, trace: { ...result.after.trace,
+    answers: result.after.trace.answers.map(strip) } };
+  const next = transition(legacy, 2000, advanceStewardship);
+  assert.equal(next.actual.stewardship?.petitions.at(-1)?.escalated, 'direct');
+  assert.equal(linked(next.after, result.ownId, 'petition_routed').length, 0);
 });

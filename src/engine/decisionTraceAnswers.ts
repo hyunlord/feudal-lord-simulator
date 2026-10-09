@@ -4,7 +4,7 @@ import type { GameState } from './engine.types';
 import type { TracedAnswerContribution, TracedDecision, TraceState } from './decisionTrace.types';
 
 const LIVE = 3 * BALANCE.TICKS_PER_YEAR;
-const exclusive = (target: string) => ['dues', 'timber', 'rules', 'policy', 'war_tax'].includes(target) || target.startsWith('subsidy:') || target.startsWith('rules:') || target.startsWith('audit_mode:') || target.startsWith('oversight:');
+const exclusive = (target: string) => ['dues', 'timber', 'rules', 'policy', 'war_tax'].includes(target) || target.startsWith('subsidy:') || target.startsWith('rules:') || target.startsWith('audit_mode:') || target.startsWith('oversight:') || target.startsWith('oversight_mode:');
 
 /** Legacy roots remain usable, but never substitute for a recorded answer membership. */
 export function answerContributions(trace: TraceState): readonly TracedDecision[] {

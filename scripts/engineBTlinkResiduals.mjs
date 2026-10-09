@@ -39,7 +39,7 @@ function observedEnforcement(run, answer, compatible) {
       { recordId: record.id, path: ['params', 'suit'], value: target },
       { recordId: record.id, path: ['params', 'succeeded'], value: record.params.succeeded },
       { recordId: record.id, path: ['because'], value: record.because }],
-    source: ['src/engine/history.ts:1209', 'src/engine/estateSuits.ts:240-265', 'src/engine/decisionTraceAnswerReceipts.ts:47-62'] };
+    source: ['src/engine/history.ts:1209', 'src/engine/estateSuits.ts:240-265', 'src/engine/decisionTraceAnswerReceipts.ts:62-75'] };
 }
 
 function verifiedContexts(run, bytes) {
@@ -95,8 +95,8 @@ function observedSettlement(run, answer, compatible, contexts) {
   return { category: 'immediate-only-observed', reason: answer.command === 'answer_counter' ? 'negotiation_status_settled' : 'estate_petition_status_settled',
     evidence: [{ recordId: decision.id, path: ['params'], value: decision.params }, ...contextEvidence,
       { recordId: record.id, path: ['params'], value: record.params }, { recordId: record.id, path: ['because'], value: record.because }],
-    source: answer.command === 'answer_counter' ? ['src/engine/history.ts:1143-1151', 'src/engine/decisionTraceAnswerReceipts.ts:47-59']
-      : ['src/engine/stewardship.ts:471-499', 'src/engine/history.ts:1104-1105', 'src/engine/decisionTraceAnswerReceipts.ts:47-59'] };
+    source: answer.command === 'answer_counter' ? ['src/engine/history.ts:1143-1151', 'src/engine/decisionTraceAnswerReceipts.ts:62-75']
+      : ['src/engine/stewardship.ts:471-499', 'src/engine/history.ts:1104-1105', 'src/engine/decisionTraceAnswerReceipts.ts:62-75'] };
 }
 
 /** Offline only: revalidate all archives and recompute the unchanged scorer before annotating residuals. */
