@@ -92,4 +92,10 @@ seed 1~10을 60년(1300–1360) 돌렸다. 이 판은 GB-12 생산 능력판 코
 - 요청서 4절의 답은 최종이다. 같은 요청서에 적었다.
 
 ## 필수 조건
-- (DGX 실행 이름과 결과는 푸시 직전에 채운다.)
+- **바뀐 파일에 걸린 시험**: 4,656/4,669 통과(604개 파일, 나머지는 건너뜀) — DGX `engine-GROW-tested-08dac10`.
+  - 첫 실행 `engine-GROW-tested-b230119`은 FX13-5 하나가 실패했다. GB-8 이전의 기대("제재소가 돌면 주문하지 않음")였고, 시험을 GB-8 규칙에 맞췄다.
+- **기하(바뀐 줄)**: 19줄 380칸, 실패 0, 못 연 조건 0 — DGX `engine-GROW-geometry-fb77ba5`(RR26 trailer).
+- **typecheck**: 통과 — Mac.
+- **check:merge**: 통과 — Mac(푸시 훅).
+- **가드레일**: 위 표 — DGX `engine-GROW-guard-d531df5`·`engine-GROW-guard-420d61a`, 진단 `engine-GROW-bisect-399e3f6`·`engine-GROW-bisect-6f71b2f`.
+- **125년 판**: DGX `engine-GROW-125y-420d61a`·`engine-GROW-125y-f19d9d7`·`engine-GROW-125y-4da633a`.
