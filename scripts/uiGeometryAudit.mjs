@@ -22,7 +22,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { compareBaseline, geometryInputHash, geometryInputs, uiInputsDirty, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
+import { compareBaseline, defaultSummaryPath, geometryInputHash, geometryInputs, uiInputsDirty, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
 import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded, surfaceFontsLoaded } from './uiGeometryMeasure.ts';
@@ -48,8 +48,12 @@ const numberModes = list('numbers', ['normal', 'extreme']);
 const jobs = Number(flag('jobs') ?? 4);
 const shotLimit = Number(flag('shots') ?? 40);
 const SHOT_BYTES = 2 * 1024 * 1024;
-const summaryPath = flag('summary') ?? UI_GEOMETRY_SUMMARY;
 const only = flag('only')?.split(',').filter(Boolean) ?? null;
+// RR26: a run narrowed by --viewports, --copy or --numbers did not measure every condition of its rows.
+const axesNarrowed = ['viewports', 'copy', 'numbers'].some(name => flag(name) !== undefined);
+// Only a full audit (every row, every condition) writes the shared result; a changed-rows run is read from its own report.
+const fullAudit = only === null && !axesNarrowed;
+const summaryPath = defaultSummaryPath({ explicit: flag('summary'), full: fullAudit });
 mkdirSync(join(out, 'shots'), { recursive: true });
 
 // tsx wraps named functions with __name (keepNames); the page has no such helper.
@@ -399,9 +403,7 @@ const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entrie
 const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
 const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
 const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
-// RR26: a run narrowed by --viewports, --copy or --numbers did not measure every condition of its rows.
-const axesNarrowed = ['viewports', 'copy', 'numbers'].some(name => flag(name) !== undefined);
-const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, axesNarrowed, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
+const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, axesNarrowed, full: fullAudit, only, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, retried, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
@@ -427,7 +429,7 @@ writeFileSync(join(out, 'geometry.md'), `${md.join('\n')}\n`);
 
 if (summaryPath !== 'none') {
   mkdirSync(dirname(summaryPath), { recursive: true });
-  const summary = { schema: 1, run, commit: report.commit, dirty, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
+  const summary = { schema: 1, run, commit: report.commit, dirty, full: fullAudit, axesNarrowed, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
     axes: report.axes, rows: totals.rows, conditions: totals.conditions, measured: totals.measured, failures: totals.failures, unopened: totals.unopened,
     unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
     baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },

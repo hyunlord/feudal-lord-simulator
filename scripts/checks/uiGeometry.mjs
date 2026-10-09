@@ -30,7 +30,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { hostname } from 'node:os';
-import { join } from 'node:path';
+import { join, posix } from 'node:path';
 import { git, isMain, resolveRange } from './gitRange.mjs';
 
 export const UI_GEOMETRY_SUMMARY = 'docs/verification/uiaudit1/geometry.json';
@@ -49,17 +49,63 @@ export const UI_GEOMETRY_SCRIPTS = Object.freeze(UI_INPUT_ROOTS.map(item => item
 // shrink.
 export const UI_GEOMETRY_GATE = 'enforce';
 
-/** The UI inputs at `rev`: one line per counted file (`<blob> <path>`), from git objects. */
-export function geometryInputs(rev, cwd = process.cwd()) {
-  const out = git(['ls-tree', '-r', '--full-tree', rev, '--', ...UI_INPUT_ROOTS.map(item => item.root)], cwd);
-  const lines = [];
-  for (const row of out.split('\n')) {
-    const tab = row.indexOf('\t'); if (tab < 0) continue;
-    const [, , blob] = row.slice(0, tab).split(' '); const path = row.slice(tab + 1);
-    const input = UI_INPUT_ROOTS.find(item => path === item.root || path.startsWith(`${item.root}/`));
-    if (input !== undefined && (input.only === null || input.only.test(path))) lines.push(`${blob} ${path}`);
+/** The entry the UI is built from: every file it reaches by import is a UI input too (user ruling 2026-10-09, RR26 (가)). */
+export const UI_ENTRY = 'src/main.tsx';
+const IMPORT = /(?:import|export)\s[^'"`;]*?from\s*["']([^"']+)["']|import\s*\(\s*["']([^"']+)["']\s*\)|import\s+["']([^"']+)["']|@import\s+(?:url\()?["']([^"']+)["']/g;
+const CODE = /\.(ts|tsx|mts|mjs|js|jsx|css)$/;
+const CANDIDATES = ['', '.ts', '.tsx', '.mts', '.mjs', '.js', '.jsx', '.json', '/index.ts', '/index.tsx', '/index.js'];
+
+/** Every file of <rev> (path -> blob id), paths unquoted (-z: Korean letters and spaces stay as they are). */
+export function treeFiles(rev, cwd = process.cwd()) {
+  const out = execFileSync('git', ['ls-tree', '-r', '-z', '--full-tree', rev], { cwd, maxBuffer: 2 ** 30, stdio: ['ignore', 'pipe', 'ignore'] }).toString('utf8');
+  const files = new Map();
+  for (const row of out.split('\0')) { const tab = row.indexOf('\t'); if (tab < 0) continue; const [, type, blob] = row.slice(0, tab).split(' '); if (type === 'blob') files.set(row.slice(tab + 1), blob); }
+  return files;
+}
+
+/** The contents of `blobs` (one `git cat-file --batch`): id -> Buffer. */
+function readBlobs(blobs, cwd) {
+  const out = new Map(); if (blobs.length === 0) return out;
+  const batch = execFileSync('git', ['cat-file', '--batch'], { cwd, input: `${blobs.join('\n')}\n`, maxBuffer: 2 ** 31 - 1 });
+  let at = 0;
+  while (at < batch.length) {
+    const end = batch.indexOf(0x0a, at); const [id, , size] = batch.subarray(at, end).toString().split(' ');
+    out.set(id, batch.subarray(end + 1, end + 1 + Number(size))); at = end + 1 + Number(size) + 1;
   }
-  return lines.sort();
+  return out;
+}
+
+/** The files of <rev> that UI_ENTRY reaches by relative imports (static, dynamic, side effect, CSS @import), itself included. */
+export function uiImportClosure(rev, cwd = process.cwd(), files = treeFiles(rev, cwd)) {
+  const reached = new Set(); let layer = files.has(UI_ENTRY) ? [UI_ENTRY] : [];
+  while (layer.length > 0) {
+    for (const path of layer) reached.add(path);
+    const texts = readBlobs(layer.filter(path => CODE.test(path)).map(path => files.get(path)), cwd);
+    const next = new Set();
+    for (const path of layer) {
+      if (!CODE.test(path)) continue;
+      for (const m of (texts.get(files.get(path))?.toString('utf8') ?? '').matchAll(IMPORT)) {
+        const spec = m[1] ?? m[2] ?? m[3] ?? m[4];
+        if (!spec?.startsWith('.')) continue;
+        const raw = posix.normalize(posix.join(posix.dirname(path), spec.split('?')[0]));
+        const stem = raw.replace(/\.(js|mjs|jsx)$/, '');
+        const hit = [...CANDIDATES.map(ext => raw + ext), ...CANDIDATES.map(ext => stem + ext)].find(candidate => files.has(candidate));
+        if (hit !== undefined && !reached.has(hit)) next.add(hit);
+      }
+    }
+    layer = [...next];
+  }
+  return reached;
+}
+
+/** Whether `path` is a UI input by the roots (the closure adds the rest). */
+const underRoots = path => UI_INPUT_ROOTS.some(item => (path === item.root || path.startsWith(`${item.root}/`)) && (item.only === null || item.only.test(path)));
+
+/** The UI inputs at `rev`: one line per counted file (`<blob> <path>`), from git objects — the roots and every file UI_ENTRY reaches by import. */
+export function geometryInputs(rev, cwd = process.cwd()) {
+  const files = treeFiles(rev, cwd);
+  const closure = uiImportClosure(rev, cwd, files);
+  return [...files].filter(([path]) => underRoots(path) || closure.has(path)).map(([path, blob]) => `${blob} ${path}`).sort();
 }
 
 /**
@@ -71,17 +117,22 @@ export function geometryInputs(rev, cwd = process.cwd()) {
 export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
   const roots = UI_INPUT_ROOTS.map(item => item.root);
   const quiet = args => { try { return execFileSync('git', args, { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return ''; } };
-  const lines = text => text.split('\n').map(line => line.trim()).filter(Boolean);
-  const dirty = new Set(lines(quiet(['ls-files', '--others', '--exclude-standard', '--', ...roots])));
-  for (const line of quiet(['status', '--porcelain', '--untracked-files=no', '--', ...roots.filter(root => root !== 'public/assets')]).split('\n')) if (line.length > 3) dirty.add(line.slice(3));
-  const assets = lines(quiet(['ls-tree', '-r', '--full-tree', rev, '--', 'public/assets'])).map(row => { const tab = row.indexOf('\t'); return { blob: row.slice(0, tab).split(' ')[2], path: row.slice(tab + 1) }; });
-  // Every committed blob in one `git cat-file --batch` ("<id> blob <size>\n<content>\n" each).
-  const batch = assets.length === 0 ? Buffer.alloc(0) : execFileSync('git', ['cat-file', '--batch'], { cwd, input: `${assets.map(entry => entry.blob).join('\n')}\n`, maxBuffer: 2 ** 31 - 1 });
-  const blobs = new Map(); let at = 0;
-  while (at < batch.length) {
-    const end = batch.indexOf(0x0a, at); const [id, , size] = batch.subarray(at, end).toString().split(' ');
-    blobs.set(id, batch.subarray(end + 1, end + 1 + Number(size))); at = end + 1 + Number(size) + 1;
+  const files = treeFiles(rev, cwd);
+  const inputs = new Set(geometryInputs(rev, cwd).map(line => line.slice(line.indexOf(' ') + 1)));
+  const dirty = new Set();
+  // Untracked files not ignored, under the roots (a new module elsewhere matters only through a changed input that
+  // imports it, which is dirty itself).
+  for (const path of quiet(['ls-files', '-z', '--others', '--exclude-standard']).split('\0')) if (path !== '' && underRoots(path)) dirty.add(path);
+  // Tracked changes of inputs (pictures below, compared by content). -z: "XY path", a rename or copy then its old path.
+  const status = quiet(['status', '--porcelain', '-z', '--untracked-files=no']).split('\0');
+  for (let k = 0; k < status.length; k++) {
+    const entry = status[k]; if (entry.length < 4) continue;
+    const path = entry.slice(3);
+    if (/[RC]/.test(entry.slice(0, 2))) { const old = status[++k]; if (inputs.has(old)) dirty.add(old); }
+    if (inputs.has(path) && !path.startsWith('public/assets/')) dirty.add(path);
   }
+  const assets = [...files].filter(([path]) => path.startsWith('public/assets/')).map(([path, blob]) => ({ path, blob }));
+  const blobs = readBlobs(assets.map(entry => entry.blob), cwd);
   for (const { blob, path } of assets) {
     const file = join(cwd, path);
     if (!existsSync(file)) { dirty.add(path); continue; }
@@ -93,8 +144,7 @@ export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
       : createHash('sha1').update(`blob ${content.length}\0`).update(content).digest('hex') === blob;
     if (!same) dirty.add(path);
   }
-  const isInput = path => UI_INPUT_ROOTS.some(item => (path === item.root || path.startsWith(`${item.root}/`)) && (item.only === null || item.only.test(path)));
-  return [...dirty].filter(isInput).sort();
+  return [...dirty].sort();
 }
 
 export function geometryInputHash(inputs) {
@@ -137,6 +187,11 @@ const readJson = (rev, path, cwd) => {
 const sample = list => list.slice(0, 5).map(item => `    ${typeof item === 'string' ? item : exceptionId(item)}`);
 
 export const UI_GEOMETRY_RUNS = 'docs/verification/uiaudit1/geometry';
+
+/** Where an audit writes the shared result: only a full audit does, unless --summary names a path (RR26). */
+export function defaultSummaryPath({ explicit, full }) {
+  return explicit ?? (full ? UI_GEOMETRY_SUMMARY : 'none');
+}
 
 /** The UI-Geometry-Run trailers of base..head: the changed-rows audit runs a push names (RR26). */
 export function rowRunsInRange(base, head, cwd = process.cwd()) {
@@ -225,7 +280,9 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   const exceptions = readJson(head, UI_GEOMETRY_EXCEPTIONS, cwd)?.exceptions ?? [];
   const reasons = [];
   let comparison = null;
+  const sharedFull = summary !== null && summary.full === true;
   if (!unchanged && summary === null) reasons.push(`no ${UI_GEOMETRY_SUMMARY} at ${head.slice(0, 8)}`);
+  else if (!unchanged && !sharedFull) reasons.push(`the shared result (run ${summary.run ?? '?'}, ${summary.rows ?? '?'} row(s)) is not a full audit: a changed-rows run counts only through its own report and a UI-Geometry-Run trailer (RR26)`);
   else if (!unchanged) {
     if (summary.inputHash !== hash) reasons.push(`the UI inputs changed since the result (measured at ${String(summary.commit ?? '?').slice(0, 8)}): refresh it — npm run remote:ui-geometry, commit docs/verification/uiaudit1/geometry.json (and npm run ui-geometry:baseline if something was fixed)`);
     if (summary.dirty) reasons.push('the result was measured from a tree with uncommitted changes');
@@ -243,7 +300,7 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   // RR26: a stale or missing shared result (not a current one with its own failures) gives way to the changed-rows runs
   // the range names, when every one holds.
   let rowRuns = null;
-  if (!unchanged && reasons.length > 0 && (summary === null || summary.inputHash !== hash)) {
+  if (!unchanged && reasons.length > 0 && (!sharedFull || summary.inputHash !== hash)) {
     const runs = rowRunsInRange(base, head, cwd);
     if (runs.length > 0) {
       // Newest first: a run whose rows a newer named run measured again is superseded (the remedy for a stale run is a
@@ -253,6 +310,8 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
         const entry = checkRowRun({ run, head, hash, baseline: baselineFile?.entries ?? [], exceptions, cwd });
         const rows = entry.rows ?? [];
         if (rows.length > 0 && rows.every(row => covered.has(row))) { rowRuns.push({ ...entry, ok: true, superseded: true, reasons: [] }); continue; }
+        // A named run with no report or no measured row counts for nothing; a newer valid named run supersedes it.
+        if (rows.length === 0 && rowRuns.some(newer => newer.ok && !newer.superseded)) { rowRuns.push({ ...entry, rows: [], ok: true, superseded: true, reasons: [] }); continue; }
         for (const row of rows) covered.add(row);
         rowRuns.push(entry);
       }
@@ -308,7 +367,7 @@ export function formatUiGeometryResult(result) {
     : ` — ${result.comparison.failures} failure(s): ${result.comparison.baseline} in the baseline, ${result.comparison.excepted} under ${result.comparison.exceptions} exception(s)`;
   if (result.ok && result.unchanged) return `ui-geometry: no UI inputs changed${tag}`;
   if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
-    ? `  run ${entry.run}: superseded — a newer named run measured its rows (${entry.rows.join(', ')}) again`
+    ? `  run ${entry.run}: superseded — ${entry.rows.length > 0 ? `a newer named run measured its rows (${entry.rows.join(', ')}) again` : 'it has no report or no measured row, and a newer named run holds'}`
     : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; no UI input changed since it was measured${entry.moved === null ? '' : ` (${entry.moved} file(s) changed since, none a UI input)`} — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
   if (result.ok) return `ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`;
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
