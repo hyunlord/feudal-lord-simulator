@@ -1,3 +1,4 @@
+import { traceEstateRelationCommand, linkEstateRelationSeason } from './decisionTraceEstateRelations';
 import { linkAnswerLedgerReceipts } from './decisionTraceAnswerLedger';
 import { linkRuleAnswerReceipts, linkImmediateAnswerReceipts } from './decisionTraceAnswerReceipts';
 /**
@@ -185,6 +186,10 @@ function chapterRegistryOccurrence(state: GameState, petition: PetitionRecord) {
  * changes are tied to it. Its id is its history record's (`recordDecision` wrote it).
  */
 export function traceCommand(before: GameState, after: GameState, action: Action): GameState {
+  return traceEstateRelationCommand(before, traceCommandResult(before, after, action), action);
+}
+
+function traceCommandResult(before: GameState, after: GameState, action: Action): GameState {
   if (after === before || after.agency === undefined) return after;
   const kind = COMMAND_KIND[action.type];
   if (kind === undefined) return after;
@@ -380,7 +385,7 @@ export function writeConsequence(state: GameState, key: ConsequenceKey, target: 
 function onTarget(state: GameState, key: ConsequenceKey, target: string, detail: Readonly<Record<string, string | number>>, partial = false): GameState {
   const trace = traceOf(state);
   if (liveDecisionsOn(trace, target, state.tick).length === 0) return state;
-  const contributions = key === "audit"
+  const contributions = key === "estate_mood" ? [] : key === "audit"
     ? [...answerContributionsOn(trace, `audit_mode:${target.slice("estate:".length)}`, state.tick),
       ...answerContributionsOn(trace, `oversight:${target.slice("estate:".length)}`, state.tick),
       ...liveDecisionsOn(trace, target, state.tick).filter(root => !trace.answers?.some(answer => answer.id === root.id))]
@@ -610,6 +615,7 @@ export function advanceTrace(before: GameState, after: GameState): GameState {
   next = consequences(before, next);
   next = linkAnswerFactionReceipts(before, next);
   next = linkRuleAnswerReceipts(before, next);
+  next = linkEstateRelationSeason(before, next);
   next = linkAnswerLedgerReceipts(before, next, (target, entry) => {
     const flow = flowOf(target);
     return flow !== null && inFlow(entry, flow) ? flow.key : null;

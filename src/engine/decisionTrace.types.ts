@@ -48,7 +48,20 @@ export interface FactionAct {
   readonly relation: number;
 }
 
+export interface EstateRelationEvidence {
+  readonly estateId: string;
+  readonly dimension: "tenants" | "merchants";
+  readonly before: number;
+  readonly after: number;
+  readonly intended: number;
+  readonly actual: number;
+  readonly expected: number;
+  readonly firstSeasonTick: number;
+  readonly status: "pending" | "consumed" | "invalidated";
+}
+
 export interface TracedAnswerContribution extends TracedDecision {
+  readonly estateRelationEvidence?: readonly EstateRelationEvidence[];
   readonly threadId: string;
   readonly memoryEvidence: readonly { readonly factionId: string; readonly recordId: string; readonly tick: number; readonly delta: number; readonly reason: string }[];
 }

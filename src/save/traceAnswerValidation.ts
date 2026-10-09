@@ -1,3 +1,4 @@
+import { PRESSURE_BALANCE } from '../content/balanceConfig';
 import { DECISION_WEIGHTS, STANDING_SETTINGS } from '../content/stewardPolicyConfig';
 import type { TracedDecisionKind } from '../engine/decisionTrace.types';
 
@@ -32,6 +33,32 @@ export function traceAnswerProblem(state: Readonly<Record<string, unknown>>): st
     if (answer.also !== undefined && !strings(answer.also)) return `${at}.also must be unique nonempty strings`;
     if (answer.lastTick !== undefined && (!tick(answer.lastTick, end) || answer.lastTick < answer.tick)) return `${at}.lastTick is invalid`;
     if (answer.lapsed !== undefined && answer.lapsed !== true) return `${at}.lapsed must be true when present`;
+    if (Object.hasOwn(answer, 'estateRelationEvidence')) {
+      if (!Array.isArray(answer.estateRelationEvidence) || answer.estateRelationEvidence.length > 2) return `${at}.estateRelationEvidence must be a bounded array`;
+      if (answer.kind !== 'estate_petition') return `${at}.estateRelationEvidence requires a supported answer`;
+      const dimensions = new Set<string>();
+      for (const proof of answer.estateRelationEvidence) {
+        if (!object(proof) || !text(proof.estateId) || !known(['tenants', 'merchants'], proof.dimension)
+          || !known(['pending', 'consumed', 'invalidated'], proof.status)) return `${at}.estateRelationEvidence identity/status is invalid`;
+        for (const field of ['before', 'after', 'expected']) {
+          if (typeof proof[field] !== 'number' || !Number.isSafeInteger(proof[field]) || proof[field] < -100 || proof[field] > 100)
+            return `${at}.estateRelationEvidence relation is invalid`;
+        }
+        if (typeof proof.before !== 'number' || typeof proof.after !== 'number' || typeof proof.intended !== 'number'
+          || !Number.isSafeInteger(proof.intended) || proof.intended === 0 || Math.abs(proof.intended) > 200
+          || proof.actual !== proof.after - proof.before) return `${at}.estateRelationEvidence delta is invalid`;
+        if (proof.firstSeasonTick !== (Math.floor(answer.tick / PRESSURE_BALANCE.seasonTicks) + 1) * PRESSURE_BALANCE.seasonTicks)
+          return `${at}.estateRelationEvidence first season is invalid`;
+        if (proof.status !== 'invalidated' && (proof.actual === 0 || proof.actual !== proof.intended || proof.after <= -100 || proof.after >= 100))
+          return `${at}.estateRelationEvidence cannot preserve a clamped or zero contribution`;
+        if (proof.status === 'pending' && (typeof proof.expected !== 'number' || proof.expected <= -100 || proof.expected >= 100 || end >= Number(proof.firstSeasonTick)))
+          return `${at}.estateRelationEvidence pending chain is invalid`;
+        if (proof.status === 'consumed' && end < Number(proof.firstSeasonTick)) return `${at}.estateRelationEvidence consumed too early`;
+        const key = `${proof.estateId}:${String(proof.dimension)}`;
+        if (dimensions.has(key)) return `${at}.estateRelationEvidence repeats a dimension`;
+        dimensions.add(key);
+      }
+    }
     if (!Array.isArray(answer.memoryEvidence)) return `${at}.memoryEvidence must be an array`;
     const memories = new Set<string>();
     for (const memory of answer.memoryEvidence) {

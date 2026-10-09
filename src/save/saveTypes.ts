@@ -2,8 +2,8 @@ import type { Era } from "../content/eraConfig";
 import type { SaveProblemKey } from "../content/saveCopy.ko";
 import type { GameState } from "../engine/engine.types";
 
-// EB-TLINK provisional; GROW also owns v55. Engine integration must renumber/combine before adoption.
-export const SAVE_SCHEMA_VERSION = 55;
+// EB-TLINK provisional v55→v56 chain; engine integration owns final numbering alongside GROW.
+export const SAVE_SCHEMA_VERSION = 56;
 /** Envelope scenario id written by v0→v1 before scenarios existed; v4→v5 replaces it with the state scenario. */
 export const DEFAULT_SCENARIO_ID = "default";
 

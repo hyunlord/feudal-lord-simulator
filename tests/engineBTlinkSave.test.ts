@@ -25,7 +25,7 @@ test('v54 migration preserves unknown membership without deriving answers from a
 });
 test('actual command own-answer state roundtrips without changes', () => {
   const state = answered();
-  assert.equal(SAVE_SCHEMA_VERSION, 55, 'isolated provisional number; engine integration must renumber the GROW collision');
+  assert.equal(SAVE_SCHEMA_VERSION, 56, 'isolated provisional number; engine integration must renumber the GROW collision');
   assert.deepEqual(reload(state), state);
 });
 test('old saves and pruned roots do not require invented answer membership', () => {

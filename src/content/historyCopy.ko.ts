@@ -19,6 +19,17 @@ const s = (params: P, key: string): string => String(params[key] ?? "");
 
 /** LM-E4: an off-map estate by its house's name, an estate petition's subject, an exception's rule. */
 const estateWord = (house: string) => `${SURNAMES_KO[house] ?? house} 영지`;
+function estateRelationTraceWords(params: P): string {
+  if (typeof params.traceEstate !== "string" || params.traceEstate.length === 0) return "";
+  const parts: string[] = [];
+  for (const [dimension, group] of [["Tenants", "소작인"], ["Merchants", "상인"]] as const) {
+    const contribution = params[`trace${dimension}Contribution`], current = params[`traceRelation${dimension}`];
+    if (typeof contribution !== "number" || !Number.isSafeInteger(contribution) || contribution === 0
+      || typeof current !== "number" || !Number.isSafeInteger(current) || current <= -100 || current >= 100) continue;
+    parts.push(`${group}들과 ${contribution > 0 ? "가까워진" : "멀어진"}`);
+  }
+  return parts.length === 0 ? "" : ` — 앞선 답으로 ${parts.join(" · ")} 영향이 이번 철에도 남았다`;
+}
 const ESTATE_PETITION_KO: Readonly<Record<string, string>> = { rent_relief: "소작인의 지대 감면 청원", market_dues: "상인의 장세 인하 청원", repair: "제방·헛간 수리 청원",
   common_dispute: "공유지 다툼", charter_request: "상인의 특허 청원", marriage_licence: "소작인 딸의 혼인 허가",
   // FIX-14 (SW-11): the home estate's petitions.
@@ -315,7 +326,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
     // FIX-14 (SW-12): with recurring kinds brought up again (no precedent).
     const again = n(params, "recurring") === 1 ? " — 선례가 있어도 다시 올린다" : "";
     return parts.length === 0 ? `예외를 거뒀다: 청지기가 모두 정한다${again}` : `예외를 정했다: ${parts.join("·")}${josa(parts.at(-1)!, "은", "는")} 영주에게${again}`; },
-  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}`,
+  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}${estateRelationTraceWords(params)}`,
   // FIX-14 (SW-11, SW-12): the home estate's petitions to the lord himself, and the steward's precedent.
   "manor.petition": params => `장원에서 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "이", "가")} 영주에게 왔다${n(params, "amount") > 0 ? ` — ${moneyWords(n(params, "amount"))}` : ""}`,
   "registry.offered": params => `${registryTitle(s(params, "entry"))}`,
