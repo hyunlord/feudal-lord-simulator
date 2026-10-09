@@ -111,7 +111,8 @@ function consider(tick: number, reasons: readonly PauseReason[]) {
 
 const first: Record<string, Stop> = {};
 for (const stop of stops) first[stop.reason] ??= stop;
-writeFileSync(join(out, "pause-states.json"), JSON.stringify({ found, first, stops, ms: Date.now() - started }, null, 1));
+if (years > 0) writeFileSync(join(out, "pause-states.json"), JSON.stringify({ found, first, stops, ms: Date.now() - started }, null, 1));
 process.stderr.write(`${stops.length} stops in ${years} years (${Object.keys(first).join(", ")}), ${Date.now() - started} ms\n`);
-const missing = ["pause-due", "pause-due-suit"].filter(name => found[name] === undefined);
+// years 0: the checks alone.
+const missing = years === 0 ? [] : ["pause-due", "pause-due-suit"].filter(name => found[name] === undefined);
 if (missing.length > 0) { process.stderr.write(`missing: ${missing.join(", ")}\n`); process.exit(1); }

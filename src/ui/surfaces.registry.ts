@@ -21,7 +21,6 @@ import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
 import { STEWARD_SURFACES } from "./lord/steward/surfaces";
 import { RESULTS_SURFACES } from "./results/surfaces";
-import { AUTO_PAUSE_SURFACES } from "./hud/surfaces";
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
@@ -188,6 +187,10 @@ const LORD_TOWN = { kind: "state", set: "lord", name: "lord-receipts", focus: { 
 const LORD_PICK: OpenStep = { map: { building: ["farmstead"] }, action: "click" };
 const RECEIPT = { frame: "layer", frameLayer: ".lord-receipt-frame", contentSlot: ".lord-receipt-body",
   frameSlots: [".lord-receipt-window", ".lord-receipt-foot", ".lord-receipt-close"], scrollParts: [".lord-receipt-body"] } as const;
+
+/** LM-R3 (lord slice LS-2): a state a few ticks before an auto-pause, run at 1x until the notice shows. */
+const PAUSE_DUE = (name: string): SceneRef => ({ kind: "state", set: "slice", name, tile: "house", zoom: 1.1, query: "&story-delay=600000", run: true });
+const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice", timeout: 90_000 }, { pause: 600 }];
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
@@ -578,8 +581,16 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...STEWARD_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
-  // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice (src/ui/hud/surfaces.ts).
-  ...AUTO_PAUSE_SURFACES,
+  // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice. Its states are in the `slice` set (scripts/autoPauseStates.ts:
+  // the lord bot's seed 3 a few ticks before a stop); the scene runs time from there and the game stops by itself, the
+  // story quiet (no chip or card opens over the notice).
+  { id: "hud.auto-pause", root: ".auto-pause-notice", frame: "css", scene: PAUSE_DUE("pause-due"), open: PAUSE_OPEN, scroll: "y",
+    requires: [".auto-pause-title", ".auto-pause-word", ".auto-pause-sentence", ".auto-pause-resume"],
+    data: "time run in the lord slice until the engine names a reason (the first, a great person's death): why it stopped, the ledger's line and the way on" },
+  { id: "hud.auto-pause.link", root: ".auto-pause-notice", frame: "css", scene: PAUSE_DUE("pause-due-suit"), open: PAUSE_OPEN, scroll: "y",
+    requires: [".auto-pause-title", ".auto-pause-word", ".auto-pause-sentence", ".auto-pause-link", ".auto-pause-resume"],
+    siblingsNoOverlap: [".auto-pause-link", ".auto-pause-resume"],
+    data: "time run until a suit is judged: the judgment's line with the way to its suit on the ledger screen beside the way on" },
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
   // opens after the load — the end page does, after the story's delay).

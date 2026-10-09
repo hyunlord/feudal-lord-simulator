@@ -138,8 +138,9 @@ for (const view of liveOnly ? [] : VIEWS) {
 // and 1319's year card do not open by themselves; both are the page's links, and after [계속 다스리기] 1319's card does not pop.
 {
   const state = scene('slice-eve');
+  // LM-R3 pauseReasons: time runs on through the end's tick (a rights petition arrives on it; the auto-pause would stop it).
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: true, initScript: INIT, width: 1280, height: 800,
-    query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
+    query: '&story-delay=1500&auto-pause=off', loadTimeout: 90_000, zoom: 1.1 });
   page.on('pageerror', error => errors.push(`live: ${String(error).slice(0, 300)}`));
   const YEAR_CARD = '.results-card.year-review';
   const SEASON_CARD = '.season-ledger-card';
