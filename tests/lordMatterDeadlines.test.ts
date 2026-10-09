@@ -2,14 +2,13 @@
  * PLAY-2 §4 (renderer A's request docs/requests/engine-play2-reads.md §4, friction 8; the engine's GROW-BLOCK
  * `lordMattersDue`): a Michaelmas audit's finding and an off-map estate's petition brought to the lord are among the
  * engine's matters due, with their deadlines. The screen takes them from that list only (no additions of its own, no
- * duplicate chips, the same chip ids), says the deadline as a season on their chips (as the will's), and the lord-mode
- * auto-pause stops for them with a line and the way to their card — on a lord-mode town holding an off-map estate under
+ * duplicate chips, the same chip ids) and says the deadline as a season on their chips (as the will's); the lord-mode
+ * auto-pause does not stop for them as matters due (the user's ruling 2026-10-09: their own events stop it already) — on
+ * a lord-mode town holding an off-map estate under
  * a greedy steward (as tests/stewardship.test.ts), played through its first Michaelmas and two seasons on.
  */
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createElement } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
 import type { GameState } from "../src/engine/engine.types";
@@ -22,14 +21,12 @@ import { initialAgency } from "../src/engine/townAgency";
 import { gameReducer } from "../src/state/gameStore";
 import { dateWord } from "../src/ui/decisionCard/answerWords";
 import { storyBeats } from "../src/ui/eventStory";
-import { AutoPauseNotice } from "../src/ui/hud/AutoPauseNotice";
 import { AUTO_PAUSE_COPY } from "../src/ui/hud/autoPauseCopy.ko";
 import { autoPauseLines } from "../src/ui/hud/autoPauseLines";
 import { autoPauseMemory, autoPauseStep, type AutoPauseItem, type AutoPauseMemory } from "../src/ui/hud/autoPauseModel";
 import { auditDecisionHead, offMapPetitionHead } from "../src/ui/lord/decisions/decisionCardsModel";
 import { LORD_MATTERS_COPY } from "../src/ui/lord/decisions/lordMattersCopy.ko";
 import { LORD_MATTER_CHIP, lordMatterChipIds } from "../src/ui/lord/decisions/lordMattersDue";
-import { INITIAL_UI_STATE } from "../src/ui/stateMachine/uiStateMachine";
 
 const ESTATE = MARRIAGE_ESTATE_ID;
 type Stop = { readonly before: GameState; readonly after: GameState; readonly items: readonly AutoPauseItem[] };
@@ -62,7 +59,6 @@ const played = (() => {
 })();
 
 const chipOf = (matter: LordMatterDue) => matter.kind === "audit" ? LORD_MATTER_CHIP.audit(matter.id) : LORD_MATTER_CHIP.petition(matter.id);
-const matterStops = (kind: LordMatterDue["kind"]) => played.stops.flatMap(stop => stop.items.flatMap(item => item.kind === "matter" && item.matter.kind === kind ? [{ stop, item }] : []));
 
 test("the audit and the off-map petition come from the engine's list only: the same chip ids, no chip twice, the card's one each", () => {
   const audited = played.states.find(state => lordMattersDue(state).some(matter => matter.kind === "audit"));
@@ -111,46 +107,16 @@ test("their chips say the engine's deadline as a season, as the will's (no days 
   assert.ok(audits > 0 && petitions > 0, `${audits} audit chips, ${petitions} petition chips`);
 });
 
-test("the auto-pause stops for a new audit and a new off-map petition: its word, its card's line and deadline, the way to its card", () => {
-  const audit = matterStops("audit")[0];
-  assert.ok(audit !== undefined, "the audit stopped time");
-  const petition = matterStops("estate_petition").find(entry => offMapPetitionHead(entry.stop.after)?.petitionId === entry.item.matter.id);
-  assert.ok(petition !== undefined, "an off-map petition the card shows stopped time");
-  for (const [{ stop, item }, head, modal, label] of [
-    [audit, auditDecisionHead(audit.stop.after)!.line, "audit_decision", AUTO_PAUSE_COPY.links.audit],
-    [petition, offMapPetitionHead(petition.stop.after)!.line, "estate_petition_offmap", AUTO_PAUSE_COPY.links.petition],
-  ] as const) {
-    if (item.kind !== "matter") continue;
-    const line = autoPauseLines(stop.after, [item])[0]!;
-    assert.equal(line.word, AUTO_PAUSE_COPY.matters[item.matter.kind]);
-    assert.equal(line.sentence, AUTO_PAUSE_COPY.matterSentence(head, dateWord(stop.after, item.matter.dueTick!)));
-    assert.deepEqual(line.link, { kind: "modal", modal });
-    assert.equal(line.linkLabel, label);
-    assert.ok(!autoPauseMemory(stop.before).matters.has(item.key), "new in that batch");
-    const markup = renderToStaticMarkup(createElement(AutoPauseNotice, { state: stop.after, hold: { season: "s", items: [item], shown: [item], mode: "stopped" },
-      paused: true, ui: INITIAL_UI_STATE, onLord: () => {}, onModal: () => {}, onDismiss: () => {} }));
-    assert.equal(markup.match(/ui-btn--primary/g)?.length ?? 0, 1);
-    assert.ok(markup.includes(label) && markup.includes(line.word));
-  }
-  // A petition behind the one the card shows: its line, no link (its card would open the other).
-  const behind = matterStops("estate_petition").find(entry => offMapPetitionHead(entry.stop.after)?.petitionId !== entry.item.matter.id);
-  if (behind !== undefined && behind.item.kind === "matter") {
-    const line = autoPauseLines(behind.stop.after, [behind.item])[0]!;
-    assert.notEqual(line.sentence, "");
-    assert.equal(line.link, null);
-  }
-});
-
-test("a petition a steward brought for a right stops once, as its rights petition's line (no second line for the matter)", () => {
+test("the user's ruling: an audit or an off-map petition never stops the auto-pause as a matter due — its own event stops it (a steward's petition for a right)", () => {
+  assert.ok(played.states.some(state => lordMattersDue(state).some(matter => matter.kind === "audit")), "an audit waited");
+  assert.ok(played.states.some(state => lordMattersDue(state).some(matter => matter.kind === "estate_petition")), "a petition waited");
+  for (const stop of played.stops) for (const item of stop.items) assert.ok(item.kind === "event" || (item.matter.kind !== "audit" && item.matter.kind !== "estate_petition"), item.key);
+  // The petition a steward brought for a right still stops time, by its own ledger line.
   const raised = played.stops.find(stop => stop.items.some(item => item.kind === "event" && item.event.template === "stewardship.escalated"));
   assert.ok(raised !== undefined, "the steward brought a right to the lord");
-  const petitions = stewardshipOf(raised.after).petitions.filter(petition => petition.escalated === "rights" && petition.tick > raised.before.tick);
-  assert.ok(petitions.length > 0);
-  for (const petition of petitions) {
-    assert.ok(lordMattersDue(raised.after).some(matter => matter.kind === "estate_petition" && matter.id === petition.id), "the engine lists it");
-    assert.ok(!raised.items.some(item => item.kind === "matter" && item.matter.id === petition.id), petition.id);
-    assert.ok(!played.stops.some(stop => stop.items.some(item => item.kind === "matter" && item.matter.id === petition.id)), "nor later");
-  }
   const line = autoPauseLines(raised.after, raised.items.filter(item => item.kind === "event"))[0]!;
   assert.equal(line.word, AUTO_PAUSE_COPY.reasons.rights_petition);
+  assert.deepEqual(line.link, { kind: "modal", modal: "estate_petition_offmap" });
+  // Their words, should a notice ever name them (the engine's, GROW-BLOCK).
+  assert.deepEqual([AUTO_PAUSE_COPY.matters.audit, AUTO_PAUSE_COPY.matters.estate_petition], ["미카엘마스 감사", "영지 청원"]);
 });

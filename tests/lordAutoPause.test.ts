@@ -233,7 +233,7 @@ const pairs = process.env.AUTO_PAUSE_PAIRS;
 test("every reason's first stop in the bot's twenty years (AUTO_PAUSE_PAIRS)", { skip: pairs === undefined || !existsSync(pairs) ? "AUTO_PAUSE_PAIRS not set" : false }, () => {
   const read = (name: string) => JSON.parse(readFileSync(join(pairs!, name), "utf8")) as GameState;
   const seen: string[] = [];
-  const names = [...PAUSE_REASONS, ...(["will_change", "contested", "suit_defence", "entry_threat", "audit", "estate_petition"] as const).map(kind => `matter-${kind}`)];
+  const names = [...PAUSE_REASONS, ...(["will_change", "contested", "suit_defence", "entry_threat"] as const).map(kind => `matter-${kind}`)];
   for (const name of names) {
     if (!existsSync(join(pairs!, `${name}.json`))) continue;
     seen.push(name);
@@ -248,9 +248,8 @@ test("every reason's first stop in the bot's twenty years (AUTO_PAUSE_PAIRS)", {
     const item = items[0]!;
     if (item.kind === "matter") {
       assert.equal(line.word, AUTO_PAUSE_COPY.matters[item.matter.kind]);
-      const want = { will_change: "lord", contested: "modal", suit_defence: "lord", entry_threat: "lord", audit: "modal", estate_petition: "modal" }[item.matter.kind];
-      // PLAY-2 §4: an audit or an off-map petition links its card only when the card shows it (the first of its kind).
-      if (line.link !== null || (item.matter.kind !== "audit" && item.matter.kind !== "estate_petition")) assert.equal(line.link?.kind, want, name);
+      const want = { will_change: "lord", contested: "modal", suit_defence: "lord", entry_threat: "lord", audit: "lord", estate_petition: "lord" }[item.matter.kind];
+      assert.equal(line.link?.kind, want, name);
       if (item.matter.kind === "suit_defence" || item.matter.kind === "entry_threat") assert.deepEqual(line.link, { kind: "lord", screen: "ledger", focus: item.matter.id });
     } else {
       const reason = item.event.reason;

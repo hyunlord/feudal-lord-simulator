@@ -7,7 +7,7 @@ import { PETITION_SUBJECTS } from "../../content/historyCopy.ko";
 import { dateWord } from "../decisionCard/answerWords";
 import { recordSentence } from "../legacy/chapterRecords";
 import { homePetitionView } from "../lordCardsModel";
-import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
+import { marriageDecisionHead, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
 import { lordMatterBeats } from "../lord/decisions/lordMatterBeats";
 import { LORD_MATTER_CHIP } from "../lord/decisions/lordMattersDue";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
@@ -76,8 +76,7 @@ function eventLink(state: GameState, event: PauseEvent, params: Readonly<Record<
   }
 }
 
-/** A matter due: its chip's line (the engine's sentence of the filing or the warning; the will's and the contest's head;
- * the audit's finding and the off-map petition's ask, linked to their card only when the card shows this one, as its chip). */
+/** A matter due: its chip's line (the engine's sentence of the filing or the warning; the will's and the contest's head). */
 function matterLine(state: GameState, key: string, matter: LordMatterDue): AutoPauseLine {
   const word = AUTO_PAUSE_COPY.matters[matter.kind];
   const when = matter.dueTick === null ? null : dateWord(state, matter.dueTick);
@@ -86,15 +85,6 @@ function matterLine(state: GameState, key: string, matter: LordMatterDue): AutoP
     const head = marriageDecisionHead(state);
     const link: AutoPauseLink = matter.kind === "will_change" ? { kind: "lord", screen: "marriage", focus: null } : { kind: "modal", modal: "marriage_decision" };
     return { key, word, sentence: join(head?.line ?? ""), link, linkLabel: matter.kind === "will_change" ? LINKS.marriage : LINKS.contested };
-  }
-  if (matter.kind === "audit") {
-    const shown = auditDecisionHead(state)?.auditId === matter.id;
-    return { key, word, sentence: join(auditDecisionHead(state, matter.id)?.line ?? ""), link: shown ? { kind: "modal", modal: "audit_decision" } : null, linkLabel: shown ? LINKS.audit : null };
-  }
-  if (matter.kind === "estate_petition") {
-    const shown = offMapPetitionHead(state)?.petitionId === matter.id;
-    return { key, word, sentence: join(offMapPetitionHead(state, matter.id)?.line ?? ""), link: shown ? { kind: "modal", modal: "estate_petition_offmap" } : null,
-      linkLabel: shown ? LINKS.petition : null };
   }
   const chip = matter.kind === "suit_defence" ? LORD_MATTER_CHIP.suit(matter.id) : LORD_MATTER_CHIP.entry(matter.id);
   const line = lordMatterBeats(state).find(beat => beat.id === chip)?.line ?? "";
