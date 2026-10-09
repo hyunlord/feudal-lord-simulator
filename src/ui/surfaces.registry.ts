@@ -13,6 +13,7 @@
 // rect, measured on the PNG); `flat` — no art frame (a plain fill with a CSS rule).
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
+import { DECISION_CARD_SURFACES } from "./decisionCard/surfaces";
 import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
@@ -31,7 +32,9 @@ export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "
   // DEC-CARD-2: scripts/deccard2ResultsStates.ts (the result thread).
   | "deccard2"
   // LM-R3: scripts/sliceEndsStates.ts (the lord slice played by the lord bot to its end, ~/fls-slice-end-states).
-  | "slice";
+  | "slice"
+  // ER-13: scripts/variantStates.ts (the wording variants' cards, ~/fls-variant-states).
+  | "variants";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -577,6 +580,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...STEWARD_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
+  // ER-13: the home petition's and the registry offer's cards in the canon's variant words (src/ui/decisionCard/surfaces.ts).
+  ...DECISION_CARD_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
   // opens after the load — the end page does, after the story's delay).
