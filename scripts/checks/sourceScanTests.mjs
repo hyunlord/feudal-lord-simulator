@@ -39,6 +39,7 @@ export const NOT_SOURCE_SCAN = {
   "tests/manorHouse.test.ts": "walks fixtures/saves; imports src",
   "tests/saveFixtures.test.ts": "walks fixtures/saves; imports src",
   "tests/sceneStateGuard.test.ts": "walks scripts/",
+  "tests/suitLedger.test.ts": "walks $SUIT_LEDGER_STATES (DGX states); imports src",
   "tests/sourceScanTests.test.ts": "this list's own guard: walks tests/ (picked whenever a test file changes)",
 };
 

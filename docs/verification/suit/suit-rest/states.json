@@ -1,0 +1,52 @@
+{
+ "will-lapsed": {
+  "tick": 16080,
+  "year": 1304,
+  "season": 0,
+  "from": "lmr2 will-change",
+  "willAnswer": "let_it_be"
+ },
+ "astra-1306": {
+  "tick": 24079,
+  "year": 1306,
+  "season": 0,
+  "child": "m-000006",
+  "tags": [
+   "lord-family",
+   "lord-house:1",
+   "lord-kin:cousin_child"
+  ]
+ },
+ "prepared-arrival": {
+  "tick": 17000,
+  "year": 1304,
+  "season": 1,
+  "seed": 1,
+  "eventId": "dearth_rehearsal@17",
+  "defId": "dearth_rehearsal",
+  "because": [
+   {
+    "decisionId": "h-000880",
+    "key": "crisis_prepared",
+    "part": true,
+    "relation": "preparedness"
+   }
+  ]
+ },
+ "prepared-dearth": {
+  "tick": 17000,
+  "year": 1304,
+  "season": 1,
+  "seed": 1,
+  "eventId": "dearth_rehearsal@17",
+  "defId": "dearth_rehearsal",
+  "because": [
+   {
+    "decisionId": "h-000880",
+    "key": "crisis_prepared",
+    "part": true,
+    "relation": "preparedness"
+   }
+  ]
+ }
+}

@@ -14,7 +14,7 @@ import { estateCards } from "../lord/estates/estatesModel";
 import { NEGOTIATION_COPY } from "../lord/negotiation/negotiationCopy.ko";
 import { moneyFull } from "../money.ko";
 import { perState } from "../perState";
-import { decisionAbout, decisionSubjectWords, onlyMinds, threadLines, traceGroups } from "../results/decisionThread";
+import { decisionAbout, decisionSubjectWords, onlyMinds, preparedOnly, threadLines, traceGroups, traceTitle } from "../results/decisionThread";
 import { lordYearReview } from "../results/lordYearReview";
 import { RESULTS_COPY } from "../results/resultsCopy.ko";
 import type { YearReviewView } from "../results/yearReview";
@@ -112,11 +112,12 @@ export const sliceEndView = perState((state: GameState): SliceEndView | null => 
   // What followed the decisions over the slice, by the decision behind it, the most first.
   const groups = traceGroups(state, traceInRange(state, 0, outcome.endTick));
   const ranked = groups.filter(group => !onlyMinds(group)).sort((left, right) => right.rows.length - left.rows.length || left.decisionTick - right.decisionTick);
-  const titled = (decisionId: string, tick: number) => RESULTS_COPY.trace.title(yearOfTick(state, tick), decisionBy(index.get(decisionId)!));
+  // SUIT-THREAD (§6): a decision that only prepared the town heads "○○년 결정이 남긴 대비", not "때문에".
+  const titled = (group: (typeof ranked)[number]) => traceTitle(yearOfTick(state, group.decisionTick), group.by, preparedOnly(group.rows));
   const shaped = ranked.slice(0, SHAPED_MAX).map(group => {
     const lines = threadLines(state, group.rows);
     return { id: group.decisionId, tick: group.decisionTick, followed: copy.followed(group.rows.length),
-      heading: RESULTS_COPY.trace.prefixed(titled(group.decisionId, group.decisionTick), decisionAbout(state, index.get(group.decisionId)!)),
+      heading: RESULTS_COPY.trace.prefixed(titled(group), decisionAbout(state, index.get(group.decisionId)!)),
       lines: capped([...lines.lines, ...lines.feelings]) };
   });
   // Who remembers: each decision's memories within the slice, summed per faction.

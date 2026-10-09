@@ -27,7 +27,7 @@ export function EventCards({ beats, onDismiss, onDecide, notice = null }: {
     <section className="event-cards" aria-label={EVENT_STORY_COPY.region}>
       <div className="event-chips">
         {beats.map(beat => (
-          <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} aria-expanded={openId === beat.id}
+          <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} data-chip-id={beat.id} aria-expanded={openId === beat.id}
             aria-label={EVENT_STORY_COPY.chipLabel(beat.title)} onPress={() => setOpenId(current => current === beat.id ? null : beat.id)} variant="secondary">
             {beat.illustration === null ? null : <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />}{beat.title}
           </Button>
@@ -37,7 +37,9 @@ export function EventCards({ beats, onDismiss, onDecide, notice = null }: {
       {open === null ? null : (
         // NAT-1: key={open.id} resets the expand state when the player switches to a different card.
         // PLAY-2: [닫기] closes the card; a house decision's chip stays until answered (useStoryPresentation).
-        <EventCardDetail key={open.id} open={open} onDismiss={id => { setOpenId(null); onDismiss(id); }} onDecide={onDecide} />
+        // SUIT-THREAD: a chip that opens a lord screen page folds its card (the page takes the panel slot).
+        <EventCardDetail key={open.id} open={open} onDismiss={id => { setOpenId(null); onDismiss(id); }}
+          onDecide={beat => { if (beat.screen !== undefined) setOpenId(null); onDecide(beat); }} />
       )}
     </section>
   );
@@ -65,7 +67,7 @@ export function EventCardDetail({ open, onDismiss, onDecide }: {
     return () => observer.disconnect();
   }, [lineExpanded, open.title, open.line]);
   return (
-    <article className="event-card" data-frame="light" data-story={open.kind}>
+    <article className="event-card" data-frame="light" data-story={open.kind} data-chip-id={open.id}>
       {open.illustration === null ? null : <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />}
       {/* NAT-1: one line (ellipsis); "더 보기" shows it whole with the body (no hover-only title tooltip). */}
       <h2 ref={titleRef} className={lineExpanded ? "event-card-title--whole" : undefined}>{open.title}</h2>
@@ -79,7 +81,7 @@ export function EventCardDetail({ open, onDismiss, onDecide }: {
       {open.facts.length === 0 ? null : <ul className="event-card-facts">{open.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>}
       {adviceId === open.id ? <p className="event-card-advice" role="status">{open.advice}</p> : null}
       <div className="event-card-actions">
-        {open.decision !== null ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
+        {open.decision !== null || open.screen !== undefined ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
         {open.tile === null ? null : <Button type="button" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: open.tile! }); }} variant="secondary"><UiIcon sheet="action" cell="look" />{EVENT_STORY_COPY.lookAt}</Button>}
         {/* DEC-CARD-2: what followed a decision opens that decision in the chronicle. */}
         {open.chronicle === undefined ? null : <Button type="button" className="event-card-chronicle" aria-label={open.chronicle.label}
