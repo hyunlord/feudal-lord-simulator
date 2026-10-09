@@ -2,13 +2,14 @@ import type { GameState } from "../../engine/engine.types";
 import { pauseReasons, type PauseEvent } from "../../engine/autoPause";
 import { lordMattersDue, type LordMatterDue } from "../../engine/lordDue";
 import { stateCalendar } from "../../engine/scenarioState";
+import { stewardshipOf } from "../../engine/stewardship";
 import { lordMode } from "../../engine/townAgency";
 
 // LM-R3 (lord slice LS-2, lord-mode design 3.5; the user's ruling 2026-10-09): the screen's half of the auto-pause. It
 // stops only for what the engine names — a big event (`pauseReasons`: a counter, a great person's death, an inheritance,
 // a judgment, a rights petition put to the lord, an estate's crisis, an estate gained or lost) or a new matter that waits
 // for the lord's answer by a time (`lordMattersDue`: the father's will, a contested inheritance, a suit against him at
-// its next stage, a forcible entry forewarned). Nothing else: no weight rule of the screen's own (P-T1, P-T3). Here is
+// its next stage, a forcible entry forewarned; PLAY-2 §4: an audit's finding, an off-map estate's petition). Nothing else: no weight rule of the screen's own (P-T1, P-T3). Here is
 // which pairs of states are a turn of the game (a tick batch or a command) and how a season's reasons stop once. A load,
 // a new game or the tick going back is no turn: the baseline moves on and nothing stops.
 
@@ -52,10 +53,14 @@ export function autoPauseStep(memory: AutoPauseMemory, state: GameState, previou
   if (!playedOn(memory.baseline, state, previous)) return { memory: autoPauseMemory(state), fresh: [], reset: true };
   if (!lordMode(state)) return { memory: autoPauseMemory(state), fresh: [] };
   const events: AutoPauseItem[] = pauseReasons(memory.baseline, state).map(event => ({ kind: "event", key: pauseEventKey(event), event }));
-  // A contested inheritance comes with its own ledger line (an inheritance event): one line for the one matter.
+  // A contested inheritance comes with its own ledger line (an inheritance event): one line for the one matter. So does
+  // an off-map petition a steward brought for a right, in the batch it came (its rights petition's line).
   const contested = events.some(item => item.kind === "event" && item.event.template === "marriage.contested");
+  const raised = events.some(item => item.kind === "event" && item.event.template === "stewardship.escalated")
+    ? new Set(stewardshipOf(state).petitions.filter(petition => petition.escalated === "rights" && petition.tick > memory.baseline.tick).map(petition => petition.id)) : new Set<string>();
   const due = lordMattersDue(state);
-  const matters: AutoPauseItem[] = due.filter(matter => !memory.matters.has(matterKey(matter)) && !(contested && matter.kind === "contested"))
+  const matters: AutoPauseItem[] = due.filter(matter => !memory.matters.has(matterKey(matter)) && !(contested && matter.kind === "contested")
+    && !(matter.kind === "estate_petition" && raised.has(matter.id)))
     .map(matter => ({ kind: "matter", key: matterKey(matter), matter }));
   const fresh = [...events, ...matters].filter(item => !memory.seen.has(item.key));
   const next = { baseline: state, matters: new Set(due.map(matterKey)), seen: fresh.length === 0 ? memory.seen : new Set([...memory.seen, ...fresh.map(item => item.key)]) };

@@ -126,10 +126,10 @@ export const marriageDecisionView = perState((state: GameState): MarriageDecisio
 
 export type AuditDecisionHead = Readonly<{ auditId: string; estateId: string; kicker: string; title: string; line: string; waits: string }>;
 
-/** The first audit that found something and waits for the lord, as its chip says it (no dry run); null: none. */
-export function auditDecisionHead(state: GameState): AuditDecisionHead | null {
+/** The first audit that found something and waits for the lord (or this one), as its chip says it (no dry run); null: none. */
+export function auditDecisionHead(state: GameState, auditId?: string): AuditDecisionHead | null {
   if (!lordMode(state)) return null;
-  const audit = pendingAudits(state)[0];
+  const audit = auditId === undefined ? pendingAudits(state)[0] : pendingAudits(state).find(entry => entry.id === auditId);
   if (audit === undefined) return null;
   const steward = personOf(state, audit.stewardId);
   return {
@@ -166,9 +166,9 @@ export function openOffMapPetitions(state: GameState): readonly EstatePetition[]
 export type OffMapPetitionHead = Readonly<{ petitionId: string; estateId: string; kind: EstatePetition["kind"]; kicker: string; title: string;
   line: string; why: string; waits: string }>;
 
-/** The first off-map estate's petition waiting for the lord, as its chip says it (no dry run); null: none. */
-export function offMapPetitionHead(state: GameState): OffMapPetitionHead | null {
-  const petition = openOffMapPetitions(state)[0];
+/** The first off-map estate's petition waiting for the lord (or this one), as its chip says it (no dry run); null: none. */
+export function offMapPetitionHead(state: GameState, petitionId?: string): OffMapPetitionHead | null {
+  const petition = petitionId === undefined ? openOffMapPetitions(state)[0] : openOffMapPetitions(state).find(entry => entry.id === petitionId);
   if (petition === undefined) return null;
   const copy = OFFMAP_PETITION_COPY[petition.kind as keyof typeof OFFMAP_PETITION_COPY];
   const estate = estateName(state, petition.estateId);

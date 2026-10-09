@@ -28,6 +28,8 @@ export const AUTO_PAUSE_COPY = {
     contested: "상속 다툼",
     suit_defence: "영주를 상대로 한 소송",
     entry_threat: "강제 점거 예고",
+    audit: "감사에서 드러난 것",
+    estate_petition: "바깥 영지의 청원",
   } satisfies Readonly<Record<LordMatterDue["kind"], string>>,
   /** Its chip's line, and when it is decided without him (a season word; null: it waits). */
   matterSentence: (line: string, when: string | null) => when === null ? line : `${line} ${when}까지 답해야 합니다.`,
@@ -42,5 +44,6 @@ export const AUTO_PAUSE_COPY = {
     estate: "영지 보기",
     house: "가문 소식 보기",
     petition: "청원 보기",
+    audit: "감사 보기",
   },
 } as const;
