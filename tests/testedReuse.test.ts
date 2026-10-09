@@ -25,6 +25,9 @@ const TESTS = ["tests/appText.test.ts", "tests/doorSigns.test.ts", "tests/engine
   "tests/shadow.test.ts", "tests/spawn.test.ts"];
 // Every story test also imports src/shared.ts, which the branch changes: all of them are picked by the push.
 const T = 'import { test } from "node:test";\nimport "../src/shared.ts";\n';
+/** The repository's module resolution (tsconfig.json), so a throwaway repository resolves imports as the real one does, and
+ * tsx looks no further up for one (under .tmp/ it would read the outer repository's: a read outside the throwaway one). */
+const TSCONFIG = JSON.stringify({ compilerOptions: { module: "ESNext", moduleResolution: "Bundler", resolveJsonModule: true, jsx: "react-jsx" } });
 type Write = (path: string, text: string) => void;
 type Move = (write: Write, remove: (path: string) => void, git: (...args: string[]) => string) => void;
 
@@ -44,7 +47,7 @@ function story(trunkMove: Move) {
   const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   const remove = (path: string) => unlinkSync(join(dir, path));
-  write(".gitignore", "/.remote-runs/\n");   // as in the repository: the records are never content
+  write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG);   // as in the repository: the records are never content
   write("package.json", '{"type":"module","scripts":{}}\n'); write("package-lock.json", "{}\n"); write("docs/notes.md", "x\n");
   write("src/engine/core.ts", "export const core = 1;\n");
   write("src/engine/data.ts", "export const data = 1;\n");
@@ -213,7 +216,7 @@ test("a range picks a test by what it was measured to read, though no import or 
   const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   try {
-    write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"type":"module"}\n');
+    write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"type":"module"}\n');
     write("fixtures/saves/v47/a.save.json", '{"a":1}\n');
     write("tests/doorSigns.test.ts", `import { test } from "node:test";\nimport { readFileSync } from "node:fs";\ntest("fixture", () => { for (const name of ["a"]) JSON.parse(readFileSync(\`fixtures/saves/v47/\${name}.save.json\`, "utf8")); });\n`);
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
@@ -242,7 +245,7 @@ for (const [form, files, specifier, added, touched] of [
     const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
     const testFile = `import { test } from "node:test";\nimport { which } from "${specifier}";\ntest("shadow", () => { if (!which) throw new Error(); });\n`;
     try {
-      write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"name":"story","type":"module","exports":{"./feature":"./src/feature-a.ts"}}\n');
+      write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"name":"story","type":"module","exports":{"./feature":"./src/feature-a.ts"}}\n');
       for (const [path, text] of Object.entries(files)) write(path, text);
       write("tests/shadow.test.ts", testFile);
       git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
@@ -280,7 +283,7 @@ test("a .js specifier resolved to .ts: a real .js added beside it loads nothing 
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   const testFile = 'import { test } from "node:test";\nimport { which } from "../src/j.js";\ntest("which", () => { console.log(`WHICH=${which}`); });\n';
   try {
-    write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"name":"story","type":"module"}\n'); write("src/j.ts", 'export const which = "ts";\n');
+    write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"name":"story","type":"module"}\n'); write("src/j.ts", 'export const which = "ts";\n');
     write("tests/j.test.ts", testFile);
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
     git("checkout", "-qb", "branch"); write("tests/j.test.ts", `${testFile}// the branch\n`); git("commit", "-qam", "branch: the test");

@@ -12,10 +12,13 @@ import { fileURLToPath } from "node:url";
 /** Files whose change touches every test: what node_modules holds (its reads are not recorded) and the compiler setup. */
 export const EVERY_TEST = Object.freeze(["package.json", "package-lock.json", "tsconfig.json"]);
 const TEMP = [...new Set([tmpdir(), "/tmp", "/private/tmp", "/var/folders", "/private/var/folders"].map(path => resolve(path)))];
+/** The recorder's own folder: it measures and changes no result, so its files are no test's input. */
+const RECORDER = realpathSync(fileURLToPath(new URL(".", import.meta.url))).replace(/[\\/]$/, "");
 
 /** Where an absolute path stands: inside the repository (its relative path), a dependency or temporary file (null), or outside. */
 const CASELESS = process.platform === "darwin" || process.platform === "win32";   // the file systems compare names without case
 function place(root, absolute) {
+  if (absolute === RECORDER || absolute.startsWith(RECORDER + sep)) return { ignore: true };
   if (CASELESS && absolute.toLowerCase().startsWith(root.toLowerCase()) && [sep, undefined].includes(absolute[root.length])) absolute = root + absolute.slice(root.length);
   const rel = relative(root, absolute);
   if (rel === "" || (!rel.startsWith("..") && !isAbsolute(rel))) return rel.split(sep).includes("node_modules") ? { ignore: true } : { rel: rel.split(sep).join("/") };
