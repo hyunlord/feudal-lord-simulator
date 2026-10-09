@@ -12,10 +12,14 @@ const CARD = {
 } as const;
 /**
  * The card as a player reaches it (REMOTE, infra-RR26-full-7af6f5e: variant-056 timed out in every condition — its chip up,
- * the card shut): it opens by itself once, on the story's delay; if it has not, the chip, its card's [결정하기], the card.
+ * the card shut — another offer's card had opened over its chip): it opens by itself once, on the story's delay; another
+ * card open first is put off; if it has still not opened, the chip, its card's [결정하기], the card.
  * Nothing puts a card off on the way (the audit's `story` step does, when the wanted card is still opening).
  */
 const fromChip = (card: string, story: string) => [{ wait: card, timeout: 8_000, optional: true },
+  // Another card that opened first (056's state: the market dues offer over the petition's chip) is put off, once; the
+  // wanted one may then open by itself.
+  { dismiss: [`.story-modal:not(${card}) .story-modal-later`] }, { wait: card, timeout: 4_000, optional: true },
   { repeat: `.event-chip[data-story='${story}']`, until: `${card}, .event-card[data-story='${story}']`, max: 3 },
   { click: `.event-card[data-story='${story}'] .event-card-decide`, optional: true }, { wait: card, timeout: 30_000 }, { pause: 600 }] as const;
 const HOME = { ...CARD, root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"],
