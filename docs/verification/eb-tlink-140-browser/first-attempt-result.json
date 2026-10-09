@@ -1,0 +1,109 @@
+{
+  "pass": false,
+  "source": "ce4ea9af6454ad557a7df6ad385a45b7e1ec0232",
+  "dirty": " M docs/requests/engine-B-tlink.md\n?? docs/verification/eb-tlink-gates/\n",
+  "driver": {
+    "path": "driver.mjs",
+    "bytes": 6381,
+    "sha256": "6bc2b4254509b94b7aee503411622ae4650ef11571008ea163714037b7072aad"
+  },
+  "errors": [
+    "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('.chronicle-screen') to be visible\n\n    at /home/hyunlord/fls-runs/engineB-tlink-140-browser-ce4ea9a/.remote/tlink-140-browser.mjs:37:76"
+  ],
+  "limits": [
+    "Prepared actual reducer answer and one actual advanceStewardship seasonal transition; synthetic seasonal boundary, not natural 125-year evidence."
+  ],
+  "ownId": "h-000011",
+  "resultId": "h-000015",
+  "answerTick": 1004,
+  "resultTick": 2000,
+  "priorIds": [
+    "h-000002",
+    "h-000004",
+    "h-000006",
+    "h-000008"
+  ],
+  "ownRecord": {
+    "tick": 1004,
+    "kind": "decision",
+    "template": "decision.card",
+    "severity": 1,
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "params": {
+      "decisionKind": "registry",
+      "command": "answer_registry_offer",
+      "subjectId": "answer:ck_evt_140:1004",
+      "chosen": "b"
+    },
+    "decision": {
+      "chosen": "b",
+      "alternatives": [
+        "a",
+        "c"
+      ],
+      "predicted": {}
+    },
+    "id": "h-000011"
+  },
+  "receipt": {
+    "tick": 2000,
+    "kind": "event",
+    "template": "stewardship.brought",
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "severity": 0,
+    "params": {
+      "house": "home",
+      "kind": "repair",
+      "late": 0,
+      "amount": 8,
+      "tracePetition": "estate-petition-2",
+      "traceEstate": "delegated-estate"
+    },
+    "id": "h-000015",
+    "because": [
+      {
+        "decisionId": "h-000011",
+        "key": "petition_routed",
+        "part": true
+      }
+    ]
+  },
+  "petition": {
+    "id": "estate-petition-2",
+    "estateId": "delegated-estate",
+    "kind": "repair",
+    "group": "tenants",
+    "amount": 8,
+    "rights": false,
+    "marriage": false,
+    "tick": 2000,
+    "deadline": 3000,
+    "status": "open",
+    "escalated": "direct"
+  },
+  "ordinals": {
+    "before": 12,
+    "recorded": 28,
+    "annotated": 28,
+    "final": 29
+  },
+  "save": {
+    "path": "prepared.save.json.gz",
+    "bytes": 56907,
+    "sha256": "6c7352b141a56790944479a1667209883812f386c9288f6416c0641a9b1fa2b0"
+  },
+  "saveSHA256": "bd6bbf343aedf72f58998f67c34c5d39c6a5c2d56e33ca7a448df1659ca3be86",
+  "dismissed": [],
+  "failureText": "인장과 가문\n1300년 가을\n인구 528\n식량 284일\n£12\n내 도시로\n×5\n·\n10\n설정\n북쪽 벌목소에 통나무 20 묶임\n받을 곳 가득 · 창고 100/100\n외 5곳\n수리 청원\n시장권\n시장도시\n2장\n0/2\n목표 기록\n되돌리기\n명령\n장부\n청지기\n제1장 연대기 · 1300–1319\n이 장에 일어난 일\n1300년 여름\nhome 영지의 미카엘마스 감사: 영주가 직접 찾아간다\n1300년 여름\n감사 방식을 정했다\n1300년 여름\nhome 영지의 미카엘마스 감사: 장부로 받는다\n1300년 여름\n감사 방식을 정했다\n1300년 여름\nhome 영지의 미카엘마스 감사: 영주가 직접 찾아간다\n1300년 여름\n감사 방식을 정했다\n1300년 여름\nhome 영지의 미카엘마스 감사: 장부로 받는다\n1300년 여름\n감사 방식을 정했다\n영주의 결정\n1316년 가을 · 대기근 대응: 구휼\n다른 길: 가격 통제, 방관, 투기\n예측 인구 528 · 금고 £10 16s / 실제 인구 528 · 금고 £10 16s\n1306년 여름 · 상인 청원: 수락\n다른 길: 가격을 붙여 수락, 거절\n예측 금고 £1 17s · 상인 게이지 65 / 실제 금고 £2 7s · 상인 게이지 65\n1316년 여름 · 시장도시 선포: 선포\n다른 길: 미룸\n예측 인구 528 · 필지 24 / 실제 인구 528 · 필지 24\n1302년 여름 · 재건: 다시 짓기\n다른 길: 그대로 둠\n예측 인구 125 / 실제 인구 124\n숫자로 본 장\n인구 처음 12 · 끝 528 · 가장 많을 때 528\n집 24채 · 불탄 집 1 · 떠난 가구 1\n잃은 수확 밀 2731 · 금고 £12 4s\n대기근(1316년) 도래 당시 인구 528명 · 끝날 때 528명\n제2장으로\n계속 (샌드박스)\n전체 연대기 보기",
+  "failureScreenshot": {
+    "path": "failure.png",
+    "bytes": 884890,
+    "sha256": "d78130d560d3bc109438eca384a7eb0f761efffe582770f5e58247390efcacff"
+  }
+}

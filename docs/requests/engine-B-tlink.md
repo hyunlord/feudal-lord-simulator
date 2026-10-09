@@ -2,7 +2,7 @@
 
 ## 현재 상태와 고정점
 
-**구현·준비 화면 검증은 완료했고, 새125년 측정·규칙 해시·최신 변경 영향 시험·기하는 결과 대기 중이다. 전체 관문 통과나 본선 병합 승인이 아니다.**
+**구현·준비 화면 검증·최신 변경 영향 시험은 완료했다. 새125년 측정·규칙 해시·기하는 결과 대기 중이다. 전체 관문 통과나 본선 병합 승인이 아니다.**
 
 | 구분 | 고정점 / 범위 |
 | --- | --- |
@@ -53,7 +53,7 @@
 | `engineB-tlink-baseline125-cf3fa94` — seed1–3 각125년 수집+재생 | `cf3fa941659ecb78396eed3780f88024a2bde0dd`, 제품은64a와 동일 | **pending** — 직접/성숙·잔여 범주·원본 해시 미확정 |
 | `engineB-tlink-prototype125-0b04cd0` — 같은 seed·기간·도구 | `0b04cd0becc4d73059fbfcf372395c8672d1a381` | **pending** — 연결≥80% 판정 안 함 |
 | `engineB-tlink-paired-guardrail-0b04cd0` — seed1–3, 최대500000틱·24필지 일반 성장 전후 | 기준64a / 측정 엔진0b04 | **pending** — 전후 해시 일치 주장 안 함 |
-| `engineB-tlink-changed-0b04cd0` — 최신 변경 영향 시험 | 구현0b04 | **pending** — 구 실패 수정만으로 전체 통과 주장 안 함 |
+| `engineB-tlink-changed-0b04cd0` — 최신 변경 영향 시험 | 구현0b04 | **PASS** — 616파일·4755시험:4742통과·실패0·skip13, exit0 |
 | `engineB-tlink-geometry-0b04cd0` — 최신 변경 화면 기하 | 구현0b04 | **pending** — 준비 브라우저 증거와 별개 |
 
 결과 인계에는 각 실행의 실제 sourceRevision·입력/출력 해시, seed별 원래 직접/성숙 분모와 관측부족, 부가 잔여 범주, 보충 phase 분모를 함께 고정해야 한다. 현재 표에는 아직 없는 수치나 해시를 채우지 않는다. 완료된 기준판seed1의 부분 결과는245건 중71/238=29.83%, 관측 부족7·미연결167이며 수집/재생이 일치했다. 이는 아직3seed 합계나 시제품 전후 비교가 아니다.
@@ -64,7 +64,7 @@
 
 시제품 저장은 **잠정v55**다. 구 버전에 없는 답 멤버십은 비워 두며 새 답의 소속·기억 근거를 검증하고 왕복한다. 준비 저장은 자연 플레이가 아닌 실제 reducer 실행으로 만들었다. 표준v55 fixture13개는 공식 `buildSaveFixtures.ts --from-version 54`로 만들었고, v54 원본과 이행 후 게임 상태의 동일성을 확인했다.
 
-GROW-BLOCK도v55를 사용한다. 최신 읽기 전용 확인 머리는 `08dac106bda2ce1dfc0fd7ed97115f23e8fc39a0`이며, 서로 다른 common repository에서 확인한 겹침이므로 병합 시 다시 검사해야 한다. 엔진은 시제품v55를 덮어쓰지 말고 GROW 이행과 합친 뒤 최종 판 번호를 지정하고 표준 fixture를 재생성한다.
+GROW-BLOCK도v55를 사용한다. 최신 읽기 전용 확인 머리는 `a77081448e1f0e77ee54d43d333047c9cc518196`이다. 이전08dac 이후 변경은 GROW 보고서와 `scripts/growBlockProbe.ts`뿐이라 아래 겹침 목록은 같다.  서로 다른 common repository에서 확인한 겹침이므로 병합 시 다시 검사해야 한다. 엔진은 시제품v55를 덮어쓰지 말고 GROW 이행과 합친 뒤 최종 판 번호를 지정하고 표준 fixture를 재생성한다.
 
 | 파일 | 보존할 GROW 변경 / TLINK 접점 |
 | --- | --- |
@@ -86,11 +86,15 @@ GROW-BLOCK도v55를 사용한다. 최신 읽기 전용 확인 머리는 `08dac10
 
 ## 완료된 검증
 
+- 최신0b04 `test:changed`:616파일·4755시험 중4742통과·실패0·skip13, exit0. [원본 시험 기록과 해시](../verification/eb-tlink-gates/changed-result.json). 원격 소스와 다른 후속 문서는 안전 변경이며 최종 `check:merge`가 적용 범위를 다시 검사한다.
+
 - 지정10사건은 실제 reducer와 실제 stewardship·금전 정산·목재 거래를 거친 기존13시험에 routing 경계8개를 더한21시험 통과다. 별도 history 불변3시험을 합친 최신 집중 회귀는24/24, typecheck·scoped ESLint·독립 검토도 통과했다. 038 성공/실패, 209 취소/보류를 분리했다. 140:a는 현재 다섯째 감사 방식 답을 연결하고 교체된 네 답을 제외한다. 140:b는 다섯째 직접 감독 답과 현재 감사 방식인 넷째 답을 함께 연결하고 폐기된 세 답을 제외한다.
 - TLINK·문구 변형 집중 시험98/98, 후속 종료 화면 관련9시험·typecheck가 통과했다. 잔여 답/typed ledger 판독기 독립 검토에서 구체적 차단 결함은 발견되지 않았다. 이는 위 최신 changed·geometry·장기 관문의 결과가 아니다.
 - 표시 ID 실제 화면: `engineB-tlink-browser-admission-f527d68-93245c4`,1280×800. 041=`h-001370`,067=`h-001713`의 실제 클릭, 자기 답/변형 ID, codec 왕복, 연대기 제목 일치. 067은 칩→결정하기로 열었다. 제품은f527과 같고 당시 검증기만 수정 상태였다. [docs/verification/eb-tlink-browser/result.json](../verification/eb-tlink-browser/result.json).
 - 기준판 실제 클릭 비교: `engineB-tlink-baseline-browser-scroll-cf3fa94`. 기준 연대기는041·067 변형 제목을 잃고 시제품은 보존했다. 067은34px 정상 스크롤 뒤 하단 버튼을 클릭했다. [docs/verification/eb-tlink-browser-baseline/result.json](../verification/eb-tlink-browser-baseline/result.json).
 - **UIend 실제 브라우저 완료:** `engineB-tlink-slice-browser-retry-7a4c6ae`, 깨끗한7a4·1280×800. 같은 root에 묶인 실제 reducer 답 `h-000002`·`h-000004`가 둘 다 보이고, 정상 연대기 이동·두 번째 기록 클릭·저장 왕복 동일·tick20000 유지·오류0·exit0을 확인했다. 준비 종료 fixture이며 자연125년 판은 아니다. 같은 tick 처리는 화면 결과 묶음에 포함되지만 미래 직접 분자에는 불포함이다. [docs/verification/eb-tlink-slice-browser/result.json](../verification/eb-tlink-slice-browser/result.json), [이미지·실행 driver·준비 저장](../verification/eb-tlink-slice-browser/README.md).
+
+- **140 실제 미래 링크 화면 완료:** `engineB-tlink-140-browser-admission-ce4ea9a`, 제품0b04. 답 `h-000011`(tick1004) → 실제 다음 철 청원 기록 `h-000015`(tick2000) → 원인 답 복귀를 정상 클릭으로 확인했다. 주석 전후 ordinal28 유지·저장 왕복·tick 불변·오류0·exit0. 준비 계절 경계이며 자연125년 증거가 아니다. [원본 결과·이미지·driver·첫 진입 실패](../verification/eb-tlink-140-browser/README.md).
 
 ## 이전 실패·수정·취소 이력
 
@@ -100,11 +104,11 @@ GROW-BLOCK도v55를 사용한다. 최신 읽기 전용 확인 머리는 `08dac10
 | 지정 사건 기준판 RED | [11실패·1통과 기록](../verification/eb-tlink/specified10-baseline-red.txt). 046취소만 통과. 이후140시험을 더 엄격하게 수정했으므로 최종 시험과 같은 바이트의 RED라고 하지 않음 |
 | `engineB-tlink-baseline-guardrail-cf3fa94` | 실험을 관문으로 잘못 등록해 직접 종료. 통과 증거에서 제외 |
 | `engineB-tlink-prototype125-f527d68`, `engineB-tlink-paired-guardrail-93245c4` | 구 소스 대기 작업만 취소하고 fae9 실행으로 교체. baseline125 실행은 유지. 옛 가드레일 업로드 dirty1은 브라우저 검증기였으며 제품 소스는 같았음 |
-| `engineB-tlink-changed-f527d68` | 612파일·4704시험:4678통과·13실패·13건 건너뜀. 12실패는 표준v55 fixture 누락:13개 이행 후 관련8파일33시험 통과. 나머지 sliceEnds는 작은 답 미정리:fae9 보존 수정 후 기존6시험 통과. 추가 root-only 종료 조회도 수정했으나 7a4 전체 changed가 진행 중이며,0b04 관문은 별도로 등록 |
+| `engineB-tlink-changed-f527d68` | 612파일·4704시험:4678통과·13실패·13건 건너뜀. 12실패는 표준v55 fixture 누락:13개 이행 후 관련8파일33시험 통과. 나머지 sliceEnds는 작은 답 미정리:fae9 보존 수정 후 기존6시험 통과. 추가 root-only 종료 조회도 수정했으나 7a4 전체 changed는616파일·4747시험 중4734통과·실패0·skip13(exit0)이며,0b04 관문은 별도로 등록 |
 | 이전eba2 기하 | 종료 화면 수정으로 최신 근거가 아니어서 직접 취소. 7a4도 후속 코어 수정으로 교체 |
 | 067 자동 개방 대기 실패 | 정상 칩 진입으로 검증기를 고쳤다. 제품 자동 개방 결함으로 단정하지 않음 |
 | `engineB-tlink-slice-browser-7a4c6ae` | 셸 인용 문제로 driver 이전 exit126. 통과 근거에서 제외하고 retry 실행의 exit0만 사용 |
-| fae9 prototype125·pairedguardrail / 7a4 geometry | 직접 감독 누락 교정 전 대기 작업을 직접 종료(exit255)하고0b04로 교체. 장기 측정 결과는 없으며 baseline125와 이미 실행 중인7a4 changed는 유지 |
-| GROW 겹침 확인 | 2026-10-10 02:47 KST `065e15640771703d7b25dcde22460bfc2dcb5ff7`, 후속 `b230119c9e3fea4c68d43f5c011afdb9585612c3`, 최신 `08dac106bda2ce1dfc0fd7ed97115f23e8fc39a0`. 병합 때 재확인 |
+| fae9 prototype125·pairedguardrail / 7a4 geometry | 직접 감독 누락 교정 전 대기 작업을 직접 종료(exit255)하고0b04로 교체. 장기 측정 결과는 없으며 baseline125와 이미 실행 중이던7a4 changed는 유지했고 후자는 exit0으로 종료 |
+| GROW 겹침 확인 | 2026-10-10 02:47 KST `065e15640771703d7b25dcde22460bfc2dcb5ff7`, 후속 `b230119c9e3fea4c68d43f5c011afdb9585612c3`, 후속 `08dac106bda2ce1dfc0fd7ed97115f23e8fc39a0`, 최신 `a77081448e1f0e77ee54d43d333047c9cc518196`. 병합 때 재확인 |
 
 기준판 지연은 당시 짧은 CPU 표본에서 기존 palisade 후보 검증·자동 건설 탐색이 지배했고 수집기는 진행 중이었다. 이 표본을 관측기 비용·교착 판정이나 최종 실행 결과로 사용하지 않는다.
