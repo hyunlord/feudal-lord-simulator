@@ -16,6 +16,9 @@ export const ESTATES_SURFACES: readonly SurfaceRow[] = [
   { id: "lord.estates.home", ...HOST, scene: lord2Scene("inherited"), open: OPEN, requires: [...CARD, ".lord-estates-rules", ".lord-estates-petitions"],
     siblingsNoOverlap: [".lord-estates-pick"],
     data: "the estates screen on the home estate: the totals, the attention, the four estates to choose, the home card with its pieces and grants, the exceptions, the petitions" },
+  // The estate's card (the record frame) as a framed root of its own, on the home estate's page.
+  { id: "lord.estates.card", extends: "lord.estates.home", root: ".lord-estates-card", frame: "css", scene: lord2Scene("inherited"), open: [],
+    requires: [".lord-estates-pieces"], data: "the home estate's card in its record frame: its pieces and grants within the frame" },
   { id: "lord.estates.delegated", ...HOST, scene: lord2Scene("inherited"), open: NEIGHBOUR_3,
     requires: [...CARD, ".lord-estates-oversight", ".lord-estates-keeper", ".lord-estates-appoint", ".lord-estates-audit-mode"], siblingsNoOverlap: [".lord-estates-appoint"],
     data: "the inherited estate given to the greedy steward: its card with the overlay, the steward and the two other candidates, the audit by visit, its first season" },

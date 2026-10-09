@@ -25,6 +25,8 @@ export const NEGOTIATION_SURFACES: readonly SurfaceRow[] = [
     requires: [".lord-neg-row"], data: "the drawn treaty sheet on the counter's page: its clause rows within it" },
   { id: "lord.negotiation.row", extends: "lord.negotiation.counter", root: ".lord-neg-row", frame: "flat", scene: lord2Scene("offer-countered"), open: [],
     data: "one drawn clause row of the treaty: its words within the row" },
+  { id: "lord.negotiation.reason", extends: "lord.negotiation.counter", root: ".lord-neg-reason", frame: "flat", scene: lord2Scene("offer-countered"), open: [],
+    data: "one drawn reason of the counterpart's tier: its words within it" },
   { id: "lord.negotiation.will-change", ...HOST, scene: lord2Scene("will-change"), open: OPEN,
     requires: [".lord-neg-timeline", ".lord-neg-events li", ".lord-neg-due", ".lord-decide[data-decide='marriage_decision']", ".lord-neg-treaty"],
     data: "the marriage's progress with the will change due: the events as they fell, the deferred debt, the engine's deadline as a season and the decide button to the will's card (SUIT-THREAD: where the will's chip opens), the contract's clauses under a stamped seal" },
