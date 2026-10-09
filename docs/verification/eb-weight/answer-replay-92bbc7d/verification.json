@@ -1,0 +1,1004 @@
+{
+  "run": "engineB-answer-json-92bbc7d-92bbc7d",
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "toolRevision": "92bbc7d94b0388259ac8e498e1755195765b0670",
+  "exitCode": 0,
+  "timing": "SYNC_S=73.7\nPREPARE_S=7.4\nWAIT_S=2.0\nCOMMAND_S=5064.4\nNM_CACHE=hit\nPORT=4302\n",
+  "annualAnswerReportSha256": "428725fcb089658a50d89521b7654524ba62424cd053bfe60f797254c26beeb3",
+  "localArchive": "/tmp/engineB-answer-json-92bbc7d/.remote-runs/engineB-answer-json-92bbc7d-92bbc7d",
+  "remoteArchive": "/home/hyunlord/fls-runs/_kept/engineB-answer-json-92bbc7d-92bbc7d/.remote/eb-answer-replay",
+  "overallValidity": {
+    "status": "verified",
+    "browserEligible": true,
+    "outcomes": [
+      {
+        "seed": 1,
+        "valid": true,
+        "browserEligible": true,
+        "manifestSha256": "71f4d346b18376878f56816063723cffe883b48a9e09fb6b7f1ee3e55be0b6ac"
+      },
+      {
+        "seed": 2,
+        "valid": true,
+        "browserEligible": true,
+        "manifestSha256": "f8257db21fb8127ecd70d1581cf5931708617c6e1786c1f8166f6f00ecdac034"
+      },
+      {
+        "seed": 3,
+        "valid": true,
+        "browserEligible": true,
+        "manifestSha256": "d6c6229a1dcd234aa672f08d27ed4b8682802415c4a653dc2e668100105bac48"
+      }
+    ]
+  },
+  "seeds": [
+    {
+      "seed": 1,
+      "manifestSha256": "71f4d346b18376878f56816063723cffe883b48a9e09fb6b7f1ee3e55be0b6ac",
+      "source": {
+        "platform": "linux",
+        "node": "v24.21.0",
+        "revision": "2485af40046793f1856829fa1161dc4431942aa7",
+        "status": "?? scripts/engineBAnswerEvidence.ts\n?? scripts/engineBAnswerReplay.ts",
+        "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+        "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+      },
+      "toolHashes": {
+        "engineBAnswerReplay.ts": "68cfa55a43950b40965ca642898ec2f0837ceed6e075fb9da16c95e37b6018ba",
+        "engineBAnswerEvidence.ts": "3b0fa0721319d9a323e33d3bb76fad73a5d0e5825593d336263314903a4ed706",
+        "engineBWeightAuditRun.ts": "730a83ceda735b07b08fd2555a4fee83e1ff41392fd60ed269bcf1c5c4469c09"
+      },
+      "checkpoints": [
+        {
+          "entryId": "ck_evt_038",
+          "phase": "answer",
+          "file": "ck_evt_038-answer-h-002358.save.json.gz",
+          "tick": 36037,
+          "identity": "h-002358",
+          "stateSha": "91158a60086ad05d48b9b545d43e248367da5fa3e2a66f3447ea7cbe45a5073f",
+          "checksum": "cyrb53:145cd224632c03",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_005",
+          "phase": "answer",
+          "file": "ck_evt_005-answer-h-002653.save.json.gz",
+          "tick": 40015,
+          "identity": "h-002653",
+          "stateSha": "cd9c7739e3b33def020e895fd304e2a4316a939d76c00d96eaf5fcd2cfa46ed4",
+          "checksum": "cyrb53:1f975f601af9f1",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_005",
+          "phase": "consequence",
+          "file": "ck_evt_005-consequence-h-002666.save.json.gz",
+          "tick": 40800,
+          "identity": "h-002666",
+          "stateSha": "96cb2f3b873a10183705a986a1162a3e729412f4e4adcc182a618daf6082db9f",
+          "checksum": "cyrb53:179b97ab072604",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_092",
+          "phase": "answer",
+          "file": "ck_evt_092-answer-h-002727.save.json.gz",
+          "tick": 41029,
+          "identity": "h-002727",
+          "stateSha": "47291204d09b57a3923eba82e295616baf89e725f71e5351e5c39d8d854cdadf",
+          "checksum": "cyrb53:07dd990a37c9f9",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_092",
+          "phase": "consequence",
+          "file": "ck_evt_092-consequence-h-002853.save.json.gz",
+          "tick": 43200,
+          "identity": "h-002853",
+          "stateSha": "84c1169f8eb9e7ee33ea39e7f6a9028e2d3f51f1bd30820c2c548252c239e664",
+          "checksum": "cyrb53:1558026c7868e7",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_211",
+          "phase": "answer",
+          "file": "ck_evt_211-answer-h-002970.save.json.gz",
+          "tick": 45007,
+          "identity": "h-002970",
+          "stateSha": "8fc4cb5185b216f2bf37c88eab9f22b714efa9d32ef8e524e9bd317f81dd5920",
+          "checksum": "cyrb53:12e59f46e4ebce",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_211",
+          "phase": "consequence",
+          "file": "ck_evt_211-consequence-h-002987.save.json.gz",
+          "tick": 45600,
+          "identity": "h-002987",
+          "stateSha": "ab5b9642d40008aa65faae301b939bed287e31b89478b0acf3335ed3b757917e",
+          "checksum": "cyrb53:120f81c70d333a",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_201",
+          "phase": "answer",
+          "file": "ck_evt_201-answer-h-003870.save.json.gz",
+          "tick": 59047,
+          "identity": "h-003870",
+          "stateSha": "233e72e2784181353d2ad01b6c9a2f8f0283a5efae8b9aafc9566ebab46a2ce9",
+          "checksum": "cyrb53:007bdaf90dc54c",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_201",
+          "phase": "consequence",
+          "file": "ck_evt_201-consequence-h-003918.save.json.gz",
+          "tick": 60000,
+          "identity": "h-003918",
+          "stateSha": "ae5a310469aa4934f4015395207c984243a37fe99277a0889a770d0c59dec383",
+          "checksum": "cyrb53:15da46008ddb37",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_053",
+          "phase": "answer",
+          "file": "ck_evt_053-answer-h-005003.save.json.gz",
+          "tick": 77065,
+          "identity": "h-005003",
+          "stateSha": "4e7cdf22463b8ae45909537781793dbccc9ec0a9786fe5e2afb7bc68250e36a3",
+          "checksum": "cyrb53:1d4231a68a9dac",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_053",
+          "phase": "consequence",
+          "file": "ck_evt_053-consequence-h-005065.save.json.gz",
+          "tick": 78000,
+          "identity": "h-005065",
+          "stateSha": "5da6be91b8e2f4e9e7de487c3a97dcdc5547c5891f6a7089afe34385e2a67ea8",
+          "checksum": "cyrb53:1191b0c927d9ae",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_009",
+          "phase": "answer",
+          "file": "ck_evt_009-answer-h-006591.save.json.gz",
+          "tick": 101011,
+          "identity": "h-006591",
+          "stateSha": "98a5d7eeff6948cc56d4af3ae8ba0cbb9cd451b879ee08a1908058f1bb67f609",
+          "checksum": "cyrb53:09b3f58d20bef4",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_009",
+          "phase": "consequence",
+          "file": "ck_evt_009-consequence-h-006647.save.json.gz",
+          "tick": 102000,
+          "identity": "h-006647",
+          "stateSha": "75e87201860a7ede0658f54f6f4a27a533d7c22103b53be4b94c883d4f1e4f13",
+          "checksum": "cyrb53:0504bc54ab3373",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_140",
+          "phase": "answer",
+          "file": "ck_evt_140-answer-h-007606.save.json.gz",
+          "tick": 117001,
+          "identity": "h-007606",
+          "stateSha": "968167667040eb646bdef9e6eede814a73b8ed77c9d78f707dea14237958cd0b",
+          "checksum": "cyrb53:0a651cc4f3e982",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_032",
+          "phase": "answer",
+          "file": "ck_evt_032-answer-h-008835.save.json.gz",
+          "tick": 137047,
+          "identity": "h-008835",
+          "stateSha": "83b742a1e417a27cb7700cfacdd2f52745dfeebddda964ad2ec170659eaf6ac0",
+          "checksum": "cyrb53:068fc4021d9e24",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_032",
+          "phase": "consequence",
+          "file": "ck_evt_032-consequence-h-008896.save.json.gz",
+          "tick": 138000,
+          "identity": "h-008896",
+          "stateSha": "44350868c1ef7593c845001b3f4053934227b5f844f14aae004a4d5a205a05c2",
+          "checksum": "cyrb53:0173f879ff08a1",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_130",
+          "phase": "answer",
+          "file": "ck_evt_130-answer-h-009583.save.json.gz",
+          "tick": 148045,
+          "identity": "h-009583",
+          "stateSha": "3ac41ce1ccfffde375cd5427ea5cf078c29748a8e8b444385f244e6249eeaf20",
+          "checksum": "cyrb53:0a6eca81f6a6b3",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_130",
+          "phase": "consequence",
+          "file": "ck_evt_130-consequence-h-010333.save.json.gz",
+          "tick": 158320,
+          "identity": "h-010333",
+          "stateSha": "74f4315187f89d224fb59c1cc2fa1942d62fffdeb5d4a298923a0fd025c37d8c",
+          "checksum": "cyrb53:08337baae4f938",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_042",
+          "phase": "answer",
+          "file": "ck_evt_042-answer-h-009947.save.json.gz",
+          "tick": 153037,
+          "identity": "h-009947",
+          "stateSha": "3aeab6901575d2ccc47f0d6924c07e1b10c4ba28b0c3fcf276360ebdbdc09ddb",
+          "checksum": "cyrb53:108144b8320aef",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_042",
+          "phase": "consequence",
+          "file": "ck_evt_042-consequence-h-009952.save.json.gz",
+          "tick": 153600,
+          "identity": "h-009952",
+          "stateSha": "935994eee109addd9447d456f1683e82d6f3e61046d281e637c3ce7944f8488a",
+          "checksum": "cyrb53:0c915f37998496",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_031",
+          "phase": "answer",
+          "file": "ck_evt_031-answer-h-018191.save.json.gz",
+          "tick": 278071,
+          "identity": "h-018191",
+          "stateSha": "d4b302609fc629d0b0939b9a7eb88dc30ceea592d8665728c31afdc1dd3d9da5",
+          "checksum": "cyrb53:1550f56c49bf07",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_031",
+          "phase": "consequence",
+          "file": "ck_evt_031-consequence-h-018721.save.json.gz",
+          "tick": 286320,
+          "identity": "h-018721",
+          "stateSha": "446c19ad40e43eecd054f95bd33003419a7048e6f1d812d98bf4601b9df2891c",
+          "checksum": "cyrb53:17c755bb25d085",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_024",
+          "phase": "answer",
+          "file": "ck_evt_024-answer-h-019919.save.json.gz",
+          "tick": 305059,
+          "identity": "h-019919",
+          "stateSha": "8cb6809612f0f16e17d0d6407f786818c267ad1a99febce515d43b6191de5bba",
+          "checksum": "cyrb53:0832a9ac80f3b3",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_024",
+          "phase": "consequence",
+          "file": "ck_evt_024-consequence-h-020028.save.json.gz",
+          "tick": 307200,
+          "identity": "h-020028",
+          "stateSha": "892b6aa46f38dd48376ce8783b55d4c54a3a50031f6d0fd7a6b0bff4536eb303",
+          "checksum": "cyrb53:1f5cf4efed4cc8",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_206",
+          "phase": "answer",
+          "file": "ck_evt_206-answer-h-020520.save.json.gz",
+          "tick": 314029,
+          "identity": "h-020520",
+          "stateSha": "a26c0c025b5760e86433113e8576921a6dc9b77e4f1578aa5c2addfc4c9468f8",
+          "checksum": "cyrb53:1477220da8a442",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_206",
+          "phase": "consequence",
+          "file": "ck_evt_206-consequence-h-020521.save.json.gz",
+          "tick": 314080,
+          "identity": "h-020521",
+          "stateSha": "cfc0612df036fdb367822ead3e321b28695fca5bbdc264542ff2177fa3f0fcb5",
+          "checksum": "cyrb53:14d72ea1aafef1",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_165",
+          "phase": "answer",
+          "file": "ck_evt_165-answer-h-032652.save.json.gz",
+          "tick": 499045,
+          "identity": "h-032652",
+          "stateSha": "1cd226e91a3fe47997f94a5b439964a8f688b7d5b4fc69f65c21224375de60e8",
+          "checksum": "cyrb53:090b9a7d315856",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_165",
+          "phase": "consequence",
+          "file": "ck_evt_165-consequence-h-032653.save.json.gz",
+          "tick": 499120,
+          "identity": "h-032653",
+          "stateSha": "d1c7166d3d68811cc57d5702cc773cb1630408a64ae348401fad5cfd16082c14",
+          "checksum": "cyrb53:0cce113fc11f34",
+          "hit": true
+        }
+      ],
+      "finalComparison": {
+        "expectedSha256": "fea6f05e6c4a6a006be4ac8366c9d51c97843af28e8a66b2a1b8dd19cb1d254e",
+        "actualSha256": "fea6f05e6c4a6a006be4ac8366c9d51c97843af28e8a66b2a1b8dd19cb1d254e",
+        "expectedChecksum": "cyrb53:1197768d827295",
+        "actualChecksum": "cyrb53:1197768d827295"
+      },
+      "contextSha256": "755cf52337bc79ff209e8b32f6004371f913a3e52ba9f3ad3e4821a78de5c812",
+      "commandStreamSha256": "49cfc6d90c0cd65b03a4a6906bbebcbc2f36cc3a6cb736736385be7e45372a7c",
+      "commandCount": 2117,
+      "registryAnswerSetVerified": 45,
+      "valid": true,
+      "browserEligible": true
+    },
+    {
+      "seed": 2,
+      "manifestSha256": "f8257db21fb8127ecd70d1581cf5931708617c6e1786c1f8166f6f00ecdac034",
+      "source": {
+        "platform": "linux",
+        "node": "v24.21.0",
+        "revision": "2485af40046793f1856829fa1161dc4431942aa7",
+        "status": "?? scripts/engineBAnswerEvidence.ts\n?? scripts/engineBAnswerReplay.ts",
+        "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+        "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+      },
+      "toolHashes": {
+        "engineBAnswerReplay.ts": "68cfa55a43950b40965ca642898ec2f0837ceed6e075fb9da16c95e37b6018ba",
+        "engineBAnswerEvidence.ts": "3b0fa0721319d9a323e33d3bb76fad73a5d0e5825593d336263314903a4ed706",
+        "engineBWeightAuditRun.ts": "730a83ceda735b07b08fd2555a4fee83e1ff41392fd60ed269bcf1c5c4469c09"
+      },
+      "checkpoints": [
+        {
+          "entryId": "ck_evt_009",
+          "phase": "answer",
+          "file": "ck_evt_009-answer-h-000381.save.json.gz",
+          "tick": 9049,
+          "identity": "h-000381",
+          "stateSha": "9b5c043d0b32fc1babcfc256a7f20ca74ab57730770846c4845662d631b81207",
+          "checksum": "cyrb53:15c17cfab5774c",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_009",
+          "phase": "consequence",
+          "file": "ck_evt_009-consequence-h-000474.save.json.gz",
+          "tick": 10000,
+          "identity": "h-000474",
+          "stateSha": "ae7fe2b9c1e4b40ccf0cad0b6ef66eb6241f9118267a136f84d2cf31a96cfe3a",
+          "checksum": "cyrb53:1b34af09c70c89",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_211",
+          "phase": "answer",
+          "file": "ck_evt_211-answer-h-002496.save.json.gz",
+          "tick": 33073,
+          "identity": "h-002496",
+          "stateSha": "df500ec63434a022202164ceed2eee4e701f16e870d8d30d478bca1da5cb393a",
+          "checksum": "cyrb53:0f11173fee4e01",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_211",
+          "phase": "consequence",
+          "file": "ck_evt_211-consequence-h-002538.save.json.gz",
+          "tick": 33600,
+          "identity": "h-002538",
+          "stateSha": "55df0c337671f6338f0679dd9d17e6479e271d1462f41091d49d85249b7e21d1",
+          "checksum": "cyrb53:1e5aefb58dd0c4",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_005",
+          "phase": "answer",
+          "file": "ck_evt_005-answer-h-002615.save.json.gz",
+          "tick": 34009,
+          "identity": "h-002615",
+          "stateSha": "2b8ea06b49c4e6bfe4889d962516b73b20916c12aa68c13b0cc86f4fb6615fb5",
+          "checksum": "cyrb53:12ff24ce0b1d17",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_005",
+          "phase": "consequence",
+          "file": "ck_evt_005-consequence-h-002813.save.json.gz",
+          "tick": 36000,
+          "identity": "h-002813",
+          "stateSha": "7166ef1fb9f9a589747ee760eaf5532f329d2dd5c8d02c8c3fcc5999d7627f3a",
+          "checksum": "cyrb53:00eae734f886e9",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_092",
+          "phase": "answer",
+          "file": "ck_evt_092-answer-h-002817.save.json.gz",
+          "tick": 36037,
+          "identity": "h-002817",
+          "stateSha": "898f3fb8e556d5098f601c0379ecbface001d0f7cad57054f25c003da86e7caf",
+          "checksum": "cyrb53:13f2054d7ef6ea",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_092",
+          "phase": "consequence",
+          "file": "ck_evt_092-consequence-h-002999.save.json.gz",
+          "tick": 38400,
+          "identity": "h-002999",
+          "stateSha": "5b8fc5efe367b1158c21c4e7610fe80a0694bd75b194784dc3846de0769b4c28",
+          "checksum": "cyrb53:0da3a962393bc2",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_042",
+          "phase": "answer",
+          "file": "ck_evt_042-answer-h-002984.save.json.gz",
+          "tick": 38065,
+          "identity": "h-002984",
+          "stateSha": "187bb2b57bec40058b7b2dff3f15e8b379aa6586ff911b4289faeb8b9031b85b",
+          "checksum": "cyrb53:1845b520cce527",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_042",
+          "phase": "consequence",
+          "file": "ck_evt_042-consequence-h-003000.save.json.gz",
+          "tick": 38400,
+          "identity": "h-003000",
+          "stateSha": "5b8fc5efe367b1158c21c4e7610fe80a0694bd75b194784dc3846de0769b4c28",
+          "checksum": "cyrb53:0da3a962393bc2",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_201",
+          "phase": "answer",
+          "file": "ck_evt_201-answer-h-003145.save.json.gz",
+          "tick": 40015,
+          "identity": "h-003145",
+          "stateSha": "4161a82b63b6eeb006b7be1a9fd525baa1ce3e62ecdce58a9f8df0e868b0bdc7",
+          "checksum": "cyrb53:03882aec56be90",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_201",
+          "phase": "consequence",
+          "file": "ck_evt_201-consequence-h-003190.save.json.gz",
+          "tick": 40800,
+          "identity": "h-003190",
+          "stateSha": "43d8e642393a9efd04c327c9dbaa50008f367c10e7c8b1988f913000a5042f99",
+          "checksum": "cyrb53:0e7ec8f0ec3d83",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_032",
+          "phase": "answer",
+          "file": "ck_evt_032-answer-h-003241.save.json.gz",
+          "tick": 41029,
+          "identity": "h-003241",
+          "stateSha": "928f209c3000591a8198bae02e67154786cbff4b07e7c83d2acd69eb97ff5dcc",
+          "checksum": "cyrb53:0a1154d18041dd",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_032",
+          "phase": "consequence",
+          "file": "ck_evt_032-consequence-h-003336.save.json.gz",
+          "tick": 42000,
+          "identity": "h-003336",
+          "stateSha": "39cfba78f6cc76b52ce21aaad555e6ff06872096a848658e22b09566bc37934a",
+          "checksum": "cyrb53:14078d21da08c1",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_083",
+          "phase": "answer",
+          "file": "ck_evt_083-answer-h-004078.save.json.gz",
+          "tick": 51013,
+          "identity": "h-004078",
+          "stateSha": "c29615616ba89117e01e87983b22cf8a0e610416f09a2af97f4e68662b061186",
+          "checksum": "cyrb53:0f3649e059d0d8",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_083",
+          "phase": "consequence",
+          "file": "ck_evt_083-consequence-h-004152.save.json.gz",
+          "tick": 52800,
+          "identity": "h-004152",
+          "stateSha": "e93aa6a11217341e2d8d9acfe2be8be6798377ca5276901127912d9a9fc573a3",
+          "checksum": "cyrb53:0f76430b222775",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_130",
+          "phase": "answer",
+          "file": "ck_evt_130-answer-h-005112.save.json.gz",
+          "tick": 67003,
+          "identity": "h-005112",
+          "stateSha": "2acfd99317fff1fd91ff0164983df8a216bbf504e9ae4c632d0dc732a06c08f7",
+          "checksum": "cyrb53:14d005680bceea",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_130",
+          "phase": "consequence",
+          "file": "ck_evt_130-consequence-h-005543.save.json.gz",
+          "tick": 74320,
+          "identity": "h-005543",
+          "stateSha": "2da54c53257ecef061188e23c6262bd42b01d2af1ea60559da4599709d790096",
+          "checksum": "cyrb53:127d7ea5883458",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_053",
+          "phase": "answer",
+          "file": "ck_evt_053-answer-h-006245.save.json.gz",
+          "tick": 85021,
+          "identity": "h-006245",
+          "stateSha": "57b7abe5306bde29482af3b22363dd777fef5e152cf66f57185e22ae04fc728a",
+          "checksum": "cyrb53:0e99b7c6b1c7f1",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_053",
+          "phase": "consequence",
+          "file": "ck_evt_053-consequence-h-006304.save.json.gz",
+          "tick": 86000,
+          "identity": "h-006304",
+          "stateSha": "823f0b503c87e8672ac1767024129736236ad69133387894c4273d1133e24828",
+          "checksum": "cyrb53:11cb9e655511f4",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_046",
+          "phase": "answer",
+          "file": "ck_evt_046-answer-h-007126.save.json.gz",
+          "tick": 98047,
+          "identity": "h-007126",
+          "stateSha": "6fe92ee4c007b5733f1c7ab7f5f65eea9e5aeb48238be0ed5380a7d599c989d5",
+          "checksum": "cyrb53:00693b228af099",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_209",
+          "phase": "answer",
+          "file": "ck_evt_209-answer-h-007455.save.json.gz",
+          "tick": 103039,
+          "identity": "h-007455",
+          "stateSha": "10432f9f559e21799a678f4a6a61f1a4cc2c43278ba4456c213bcde619ecc54a",
+          "checksum": "cyrb53:0de858643b463e",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_140",
+          "phase": "answer",
+          "file": "ck_evt_140-answer-h-015428.save.json.gz",
+          "tick": 222067,
+          "identity": "h-015428",
+          "stateSha": "75dda29d47fec10f2c721cdcdb57af73742a72b6db3965a2dbafe7641fdba239",
+          "checksum": "cyrb53:02dda70470153a",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_140",
+          "phase": "consequence",
+          "file": "ck_evt_140-consequence-h-015881.save.json.gz",
+          "tick": 230320,
+          "identity": "h-015881",
+          "stateSha": "e88df32b3f3df2fb64b8d507d8bcad4914dfffd4ee49dd236e0ab8713ad8bfb8",
+          "checksum": "cyrb53:1c47e3d21bad3e",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_206",
+          "phase": "answer",
+          "file": "ck_evt_206-answer-h-019502.save.json.gz",
+          "tick": 286027,
+          "identity": "h-019502",
+          "stateSha": "05cfd92aa5e44e4d85882b56d157d824f5ecc56427e621abea71ccaebcd0e54f",
+          "checksum": "cyrb53:1de3911d1dd551",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_206",
+          "phase": "consequence",
+          "file": "ck_evt_206-consequence-h-019504.save.json.gz",
+          "tick": 286080,
+          "identity": "h-019504",
+          "stateSha": "d238d6a35aa930775f3a3693d1956c341e0ee5a85f2aa0d50d766d193d6fe755",
+          "checksum": "cyrb53:08d0f6e0e46dcc",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_204",
+          "phase": "answer",
+          "file": "ck_evt_204-answer-h-023122.save.json.gz",
+          "tick": 326041,
+          "identity": "h-023122",
+          "stateSha": "515bd47dbb2f01b902c4608ce6d6542756e36a8aef7c86dad23e6456b4b7ad1c",
+          "checksum": "cyrb53:181ff3b5c086f4",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_204",
+          "phase": "consequence",
+          "file": "ck_evt_204-consequence-h-023125.save.json.gz",
+          "tick": 326400,
+          "identity": "h-023125",
+          "stateSha": "0cfe5298813d4468359ad468e1146d13092bbded004217e08d414d0f278bc967",
+          "checksum": "cyrb53:1c283cb66fa237",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_165",
+          "phase": "answer",
+          "file": "ck_evt_165-answer-h-026606.save.json.gz",
+          "tick": 366055,
+          "identity": "h-026606",
+          "stateSha": "a337e8cad57d546215b671bd3787719ed047b17fc8b609b5e146095d7ab2fd1b",
+          "checksum": "cyrb53:0a328819cf99a1",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_165",
+          "phase": "consequence",
+          "file": "ck_evt_165-consequence-h-026607.save.json.gz",
+          "tick": 366080,
+          "identity": "h-026607",
+          "stateSha": "59aa95ebb437b3b830cad2fadd95e6b621ecf6c7d54330a5cf4d6bf231e3d815",
+          "checksum": "cyrb53:1051f42c27bf67",
+          "hit": true
+        }
+      ],
+      "finalComparison": {
+        "expectedSha256": "d197847a60a2328226d74f5ba6a8ec5e04f06250ff2ab57ab6a2d8b8eb1fe671",
+        "actualSha256": "d197847a60a2328226d74f5ba6a8ec5e04f06250ff2ab57ab6a2d8b8eb1fe671",
+        "expectedChecksum": "cyrb53:037041ecdbfdd2",
+        "actualChecksum": "cyrb53:037041ecdbfdd2"
+      },
+      "contextSha256": "6b9bf22b4a7a1d13be946e03759671ae81648a391e0dc613462b5934e2270001",
+      "commandStreamSha256": "ec2a3b5a0bfaaf1b2969042a26baa84122f2a28df0f46a86c84fad4a41d9b7ce",
+      "commandCount": 2114,
+      "registryAnswerSetVerified": 75,
+      "valid": true,
+      "browserEligible": true
+    },
+    {
+      "seed": 3,
+      "manifestSha256": "d6c6229a1dcd234aa672f08d27ed4b8682802415c4a653dc2e668100105bac48",
+      "source": {
+        "platform": "linux",
+        "node": "v24.21.0",
+        "revision": "2485af40046793f1856829fa1161dc4431942aa7",
+        "status": "?? scripts/engineBAnswerEvidence.ts\n?? scripts/engineBAnswerReplay.ts",
+        "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+        "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+      },
+      "toolHashes": {
+        "engineBAnswerReplay.ts": "68cfa55a43950b40965ca642898ec2f0837ceed6e075fb9da16c95e37b6018ba",
+        "engineBAnswerEvidence.ts": "3b0fa0721319d9a323e33d3bb76fad73a5d0e5825593d336263314903a4ed706",
+        "engineBWeightAuditRun.ts": "730a83ceda735b07b08fd2555a4fee83e1ff41392fd60ed269bcf1c5c4469c09"
+      },
+      "checkpoints": [
+        {
+          "entryId": "ck_evt_042",
+          "phase": "answer",
+          "file": "ck_evt_042-answer-h-001136.save.json.gz",
+          "tick": 29017,
+          "identity": "h-001136",
+          "stateSha": "bd330df1e5a02fc5c5e46de997dcd7f185b291da6e1b73ddec140fe00c4ced1a",
+          "checksum": "cyrb53:16cc84f9d57f00",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_042",
+          "phase": "consequence",
+          "file": "ck_evt_042-consequence-h-001258.save.json.gz",
+          "tick": 31200,
+          "identity": "h-001258",
+          "stateSha": "03d1937767d067c4d8fb7212951f51cdedbdce4d3a5dd60106e4fc2fb960a36b",
+          "checksum": "cyrb53:169100b7fe09f3",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_211",
+          "phase": "answer",
+          "file": "ck_evt_211-answer-h-001193.save.json.gz",
+          "tick": 30031,
+          "identity": "h-001193",
+          "stateSha": "183e75eb06d419904cc797b1d3ff706c57359ed1eafd302de2e13fefe8fdb927",
+          "checksum": "cyrb53:0414999ef8f70a",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_211",
+          "phase": "consequence",
+          "file": "ck_evt_211-consequence-h-001259.save.json.gz",
+          "tick": 31200,
+          "identity": "h-001259",
+          "stateSha": "03d1937767d067c4d8fb7212951f51cdedbdce4d3a5dd60106e4fc2fb960a36b",
+          "checksum": "cyrb53:169100b7fe09f3",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_092",
+          "phase": "answer",
+          "file": "ck_evt_092-answer-h-001317.save.json.gz",
+          "tick": 32059,
+          "identity": "h-001317",
+          "stateSha": "9a8acb06e65a467a91eee8fe7bcbe9ad10081083461ffb385ef9310f6ff727f9",
+          "checksum": "cyrb53:153a1e416e3509",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_092",
+          "phase": "consequence",
+          "file": "ck_evt_092-consequence-h-001379.save.json.gz",
+          "tick": 33600,
+          "identity": "h-001379",
+          "stateSha": "0fc60c14d6a4548c36fe53a21b66a5627e5b791b72a5d9c5c6a21a9029bce241",
+          "checksum": "cyrb53:1403bd4dcfb546",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_209",
+          "phase": "answer",
+          "file": "ck_evt_209-answer-h-001950.save.json.gz",
+          "tick": 44149,
+          "identity": "h-001950",
+          "stateSha": "a7d2fa6303262f446554af7479c9b1567fe128d9112e77c64877dcc3f10ecdb7",
+          "checksum": "cyrb53:0887fe39be7ada",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_032",
+          "phase": "answer",
+          "file": "ck_evt_032-answer-h-002188.save.json.gz",
+          "tick": 49063,
+          "identity": "h-002188",
+          "stateSha": "5bd40a6d2c0871eb10c1a05613e61c698b0aac257cf88aed88982f3077603103",
+          "checksum": "cyrb53:0ab33e6debb889",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_032",
+          "phase": "consequence",
+          "file": "ck_evt_032-consequence-h-002242.save.json.gz",
+          "tick": 50000,
+          "identity": "h-002242",
+          "stateSha": "a2f98df7949420dea77b3311b0933b9a4af9c710900739d92b6061ef5d47d81d",
+          "checksum": "cyrb53:080b5d10ec5443",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_083",
+          "phase": "answer",
+          "file": "ck_evt_083-answer-h-003391.save.json.gz",
+          "tick": 73009,
+          "identity": "h-003391",
+          "stateSha": "5c6074786f4402b328503898273d2b4866316dc44d25a1b1620ed6d6ce69b919",
+          "checksum": "cyrb53:1c5b17e449c922",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_083",
+          "phase": "consequence",
+          "file": "ck_evt_083-consequence-h-003392.save.json.gz",
+          "tick": 73040,
+          "identity": "h-003392",
+          "stateSha": "eaf80e4a9036e8f2a4c41dc65e4c8545e76b0ef94e5057d635e94286de14a15d",
+          "checksum": "cyrb53:0c100a4deb349d",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_005",
+          "phase": "answer",
+          "file": "ck_evt_005-answer-h-003605.save.json.gz",
+          "tick": 77065,
+          "identity": "h-003605",
+          "stateSha": "df2094abdcb70c420fdc4a3473020ddb38af38688b83614c0383affaad7348b8",
+          "checksum": "cyrb53:0cfc9e5d7e83c5",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_005",
+          "phase": "consequence",
+          "file": "ck_evt_005-consequence-h-003702.save.json.gz",
+          "tick": 79200,
+          "identity": "h-003702",
+          "stateSha": "114be31370295da0709d2b6bbf9efe26598b2fd687d9bf2c77e9e5ebea0983b9",
+          "checksum": "cyrb53:0ed1a357c4f17a",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_130",
+          "phase": "answer",
+          "file": "ck_evt_130-answer-h-003699.save.json.gz",
+          "tick": 79015,
+          "identity": "h-003699",
+          "stateSha": "509aa4e6fd8ac5bbe7f7506c2a1e96b3a10aec8078fd042436ac82056980d388",
+          "checksum": "cyrb53:196f665abde343",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_130",
+          "phase": "consequence",
+          "file": "ck_evt_130-consequence-h-004261.save.json.gz",
+          "tick": 90320,
+          "identity": "h-004261",
+          "stateSha": "f8d474fdbc007a025cb0a1e4bfefa036bf7b39337160639c4a5ea2cf96b71672",
+          "checksum": "cyrb53:0605b9e0e06fbd",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_201",
+          "phase": "answer",
+          "file": "ck_evt_201-answer-h-004307.save.json.gz",
+          "tick": 91027,
+          "identity": "h-004307",
+          "stateSha": "3b5a4b731fb1c29aef97511e5dcfa2a37956e352cca7639602b75b0bfa4f5b1e",
+          "checksum": "cyrb53:02eee89e014e25",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_201",
+          "phase": "consequence",
+          "file": "ck_evt_201-consequence-h-004309.save.json.gz",
+          "tick": 91200,
+          "identity": "h-004309",
+          "stateSha": "396ebffdbd99f16f43fba11b402c14a240968198d56a1fe607b8767e51139131",
+          "checksum": "cyrb53:06f437984e7e32",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_140",
+          "phase": "answer",
+          "file": "ck_evt_140-answer-h-004364.save.json.gz",
+          "tick": 92041,
+          "identity": "h-004364",
+          "stateSha": "2b0df93c7bded21c327bcd8470c6d29caef5674ba616e58811373138e28bf1ee",
+          "checksum": "cyrb53:1f8e68487b77f3",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_140",
+          "phase": "consequence",
+          "file": "ck_evt_140-consequence-h-004814.save.json.gz",
+          "tick": 102320,
+          "identity": "h-004814",
+          "stateSha": "c394c4dfdb44120e0eabedd7222335e0e0d2b3657859c12b4d7abd14897e6193",
+          "checksum": "cyrb53:1fdbf78e60a3cc",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_053",
+          "phase": "answer",
+          "file": "ck_evt_053-answer-h-006565.save.json.gz",
+          "tick": 141025,
+          "identity": "h-006565",
+          "stateSha": "f45ba90d101c52a951db32016d6bae81c821e9943dc979b782d788b8d3e49704",
+          "checksum": "cyrb53:09fbf202af78e9",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_053",
+          "phase": "consequence",
+          "file": "ck_evt_053-consequence-h-006607.save.json.gz",
+          "tick": 142000,
+          "identity": "h-006607",
+          "stateSha": "0d12d181fd463fc23b48e12b174bc0495008d8d3521e04e4a3a821c542e3437e",
+          "checksum": "cyrb53:0b7edbbf0b0bc4",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_206",
+          "phase": "answer",
+          "file": "ck_evt_206-answer-h-007743.save.json.gz",
+          "tick": 165049,
+          "identity": "h-007743",
+          "stateSha": "90e5f946cd249361444b876e14edd70a73ff87aa29d0a9d3ee098fc8fea1b45f",
+          "checksum": "cyrb53:0bb8c63a4a0597",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_206",
+          "phase": "consequence",
+          "file": "ck_evt_206-consequence-h-007746.save.json.gz",
+          "tick": 165120,
+          "identity": "h-007746",
+          "stateSha": "b9e984601253a9f6ba49bf2ba7eba2ea1cbdbb632e5adfc8e3f2ad7b8dcb150f",
+          "checksum": "cyrb53:15dd6ff90bdc72",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_009",
+          "phase": "answer",
+          "file": "ck_evt_009-answer-h-008180.save.json.gz",
+          "tick": 173005,
+          "identity": "h-008180",
+          "stateSha": "a56ccbfaaace66fd9c4c99982100e0ad9003935314b8764650e295af4ad1f04f",
+          "checksum": "cyrb53:19b398efd5670f",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_009",
+          "phase": "consequence",
+          "file": "ck_evt_009-consequence-h-008234.save.json.gz",
+          "tick": 174000,
+          "identity": "h-008234",
+          "stateSha": "59013827c6132bd662c192e78d7b97025beba25d61dd0658a658e29d4b45b193",
+          "checksum": "cyrb53:06f07d95643c46",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_031",
+          "phase": "answer",
+          "file": "ck_evt_031-answer-h-013352.save.json.gz",
+          "tick": 275029,
+          "identity": "h-013352",
+          "stateSha": "53597ed8d8776b132071306e838d0808ae194c6c2a359a9e30e829af81658284",
+          "checksum": "cyrb53:0faff0ec1b7a7d",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_031",
+          "phase": "consequence",
+          "file": "ck_evt_031-consequence-h-013761.save.json.gz",
+          "tick": 282320,
+          "identity": "h-013761",
+          "stateSha": "eeaa71e81b58a7f9e0027b5b1a39218eb7678bbde460b90a3f36c3df62af3872",
+          "checksum": "cyrb53:0db74d1ea599e5",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_165",
+          "phase": "answer",
+          "file": "ck_evt_165-answer-h-021152.save.json.gz",
+          "tick": 427051,
+          "identity": "h-021152",
+          "stateSha": "cce82f9be297febfa5daca3bbc5e447add5d08cc319484c9a212a8a6a2878eb4",
+          "checksum": "cyrb53:06c16303f23ad7",
+          "hit": true
+        },
+        {
+          "entryId": "ck_evt_165",
+          "phase": "consequence",
+          "file": "ck_evt_165-consequence-h-021153.save.json.gz",
+          "tick": 427120,
+          "identity": "h-021153",
+          "stateSha": "c4768f14b9e6fd1333670f38a27253d59cfc23db3fee6d2bc1e763a9828b6114",
+          "checksum": "cyrb53:0745153f680a87",
+          "hit": true
+        }
+      ],
+      "finalComparison": {
+        "expectedSha256": "8cc25bb86068099ce46f88089db9109b2cf57ce0f55352796230d8f50a61dae5",
+        "actualSha256": "8cc25bb86068099ce46f88089db9109b2cf57ce0f55352796230d8f50a61dae5",
+        "expectedChecksum": "cyrb53:18c9e60780c166",
+        "actualChecksum": "cyrb53:18c9e60780c166"
+      },
+      "contextSha256": "96852cef56ce624c6bb88674a3a3a130fc6960719d06c4c73cb035ce1436cad9",
+      "commandStreamSha256": "87dac4d40ff59b9775ea9773863fbff8045975ecf52cc1b57c02ba43368e9b0a",
+      "commandCount": 1849,
+      "registryAnswerSetVerified": 78,
+      "valid": true,
+      "browserEligible": true
+    }
+  ],
+  "limitations": [
+    "Full manifest classification/context/command streams remain in retained run archive; compact evidence here pins their hashes.",
+    "Whole heavy-answer counts exclude two commands absent from pinned trace taxonomy; see README sensitivity.",
+    "Replay parity does not establish UI visibility, main-cause correctness, or historical40 causal applicability."
+  ]
+}
