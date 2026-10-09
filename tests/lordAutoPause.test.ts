@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 import { createElement } from "react";
@@ -233,7 +233,7 @@ const pairs = process.env.AUTO_PAUSE_PAIRS;
 test("every reason's first stop in the bot's twenty years (AUTO_PAUSE_PAIRS)", { skip: pairs === undefined || !existsSync(pairs) ? "AUTO_PAUSE_PAIRS not set" : false }, () => {
   const read = (name: string) => JSON.parse(readFileSync(join(pairs!, name), "utf8")) as GameState;
   const seen: string[] = [];
-  const names = [...PAUSE_REASONS, ...readdirSync(pairs!).filter(file => /^matter-[a-z_]+\.json$/.test(file)).map(file => file.slice(0, -".json".length))];
+  const names = [...PAUSE_REASONS, ...(["will_change", "contested", "suit_defence", "entry_threat"] as const).map(kind => `matter-${kind}`)];
   for (const name of names) {
     if (!existsSync(join(pairs!, `${name}.json`))) continue;
     seen.push(name);
