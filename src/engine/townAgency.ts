@@ -5,6 +5,8 @@
  * reasons, and start the best they can pay for. Every start leaves a receipt: who, what, where, its five largest
  * reasons and the lord's decisions behind them. With no `state.agency` (sandbox, campaign) nothing here runs.
  */
+import { CHARTER_RING } from "../content/charterRingConfig";
+import { takeCharterSearchReport } from "./autoplayEra";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
@@ -520,6 +522,11 @@ function chanceOrder(state: GameState, proposals: readonly Proposal[]): readonly
   return order;
 }
 
+/** GB-1: when a failed charter search is tried again — a season after it, doubled at each failure in a row (at most eight). */
+export function charterRetryTick(failure: { readonly tick: number; readonly attempts: number }): number {
+  return failure.tick + CHARTER_RING.retryTicks * Math.min(CHARTER_RING.retryMaxFactor, 2 ** Math.max(0, failure.attempts - 1));
+}
+
 export function advanceTownAgency(state: GameState): GameState {
   const agency = state.agency;
   if (agency === undefined || state.tick <= 0 || state.tick % AGENCY_WEEK_TICKS !== 0) return state;
@@ -549,15 +556,27 @@ export function advanceTownAgency(state: GameState): GameState {
     && (last.fundThreshold === null || treasuryBalance(week) < last.fundThreshold) ? last : undefined;
   let needs: readonly PlanningNeed[];
   let tried: string | undefined;
+  // GB-1 (GROW-BLOCK, the user's ruling 2026-10-09): a failed search is kept with its reason, and tried again a season
+  // on even on the same layout (a full town's layout never changes — seed 1 stood at 528 for a hundred years), its
+  // wider ring starting elsewhere each attempt (`autoplayEra.ts`).
+  let failure = agency.charterWallFailure;
   if (reused !== undefined) {
     needs = reused.needs;
     tried = reused.charterWallTried;
   } else {
     const searching = charterSearchRuns(week);
     const layout = searching ? needsLayoutKey(week) : undefined;
-    const skipEra = layout !== undefined && agency.charterWallTried === layout;
+    // A search that failed before its reason was kept (a save from before GB-1) is tried again at once.
+    const retry = failure === undefined || week.tick >= charterRetryTick(failure);
+    const skipEra = layout !== undefined && agency.charterWallTried === layout && !retry;
+    takeCharterSearchReport();
     needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? ["era"] : []);
-    tried = searching && (skipEra || !needs.some(need => need.action.kind === "proclaim_era")) ? layout : undefined;
+    const found = needs.some(need => need.action.kind === "proclaim_era");
+    const report = takeCharterSearchReport();
+    tried = searching && (skipEra || !found) ? layout : undefined;
+    if (searching && !skipEra && !found) {
+      failure = { tick: week.tick, reason: report?.reason ?? failure?.reason ?? "other", homes: report?.homes ?? failure?.homes ?? [], attempts: (failure?.attempts ?? 0) + 1 };
+    } else if (found || week.era !== "hamlet") failure = undefined;
   }
   // FIX-14 (decision FX13-5, the user's (가)): the charter's timber the town's own stores cannot reach — the town orders
   // it from the market's traders itself (FIX-10's standing order); it is not the lord's to grant.
@@ -616,7 +635,7 @@ export function advanceTownAgency(state: GameState): GameState {
   const kept = [...agency.receipts, ...receipts];
   const trimmed = kept.length <= RECEIPTS_KEPT ? kept
     : kept.filter((receipt, index) => receipt.what !== "road" || index >= kept.length - RECEIPTS_KEPT).slice(-RECEIPTS_KEPT);
-  const { charterWallTried: _tried, lastWalk: _walk, ...kept2 } = next.agency!;
+  const { charterWallTried: _tried, lastWalk: _walk, charterWallFailure: _failure, ...kept2 } = next.agency!;
   // TA-13: the walk is kept only while it starts nothing (a reused one keeps its own tick, key and threshold).
   const treasury = treasuryBalance(week);
   const short = proposals.filter(proposal => proposal.subsidy > treasury).map(proposal => proposal.subsidy);
@@ -633,6 +652,7 @@ export function advanceTownAgency(state: GameState): GameState {
   }).filter((entry, index, all) => all.findIndex(other => other.what === entry.what) === index);
   const { refusedNeeds: _refused, ...kept3 } = kept2;
   return { ...next, agency: { ...kept3, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }),
+    ...(failure === undefined ? {} : { charterWallFailure: failure }),
     ...(lastWalk === undefined ? {} : { lastWalk }), ...(refusedNeeds.length === 0 ? {} : { refusedNeeds }) } };
 }
 

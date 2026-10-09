@@ -125,6 +125,11 @@ export interface AgencyState {
   /** TA-7, TA-11: what the town asks of its lord this week (absent before the first week, and on v36 saves). */
   readonly requests?: readonly LordRequest[];
   /** TA-11: the layout (`needsLayoutKey`) on which the charter's wall search last found no wall (absent otherwise). */
+  /**
+   * GB-1 (GROW-BLOCK): the charter wall search's last failure — when, why (`CharterWallFailureReason`), the homes a wall
+   * would have cut from their service space, and how many searches failed in a row (the next starts elsewhere).
+   */
+  readonly charterWallFailure?: { readonly tick: number; readonly reason: CharterWallFailureReason; readonly homes: readonly string[]; readonly attempts: number };
   readonly charterWallTried?: string;
   /** TA-12: the tick the town first stood ready for its market charter (absent when it is not waiting). */
   readonly charterSince?: number;
@@ -164,3 +169,6 @@ export interface AgencyWalk {
   /** The weeks in a row that started nothing, this one included (a walk is reused only after WALK_REUSE_IDLE_WEEKS). */
   readonly idleWeeks: number;
 }
+
+/** GB-1: why the charter wall was not found — water, the map's edge, the buildings, the homes' service space, the proclamation's rules, the lots, the route, or else. */
+export type CharterWallFailureReason = "water" | "edge" | "buildings" | "service_space" | "rules" | "lots" | "route" | "other";

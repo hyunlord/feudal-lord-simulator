@@ -500,7 +500,11 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
       if (person.role === "child" && person.birthYear === year) personRecord(person, "person.born", 0, {
         ...(person.motherId === undefined ? {} : { motherId: person.motherId }), ...(person.fatherId === undefined ? {} : { fatherId: person.fatherId }),
         nameFrom: person.nameFrom ?? "common", ...(person.godparentId === undefined ? {} : { godparentId: person.godparentId }) });
-      else if (person.role === "spouse") personRecord(person, "person.married", 0);
+      // PLAY-2 (renderer A, engine-play2-reads.md §4): the marriage names the one married (the household's head).
+      else if (person.role === "spouse") {
+        const head = after.persons.people.find(other => other.householdId === person.householdId && other.role === "head" && other.id !== person.id);
+        personRecord(person, "person.married", 0, head === undefined ? undefined : { spouseId: head.id });
+      }
       else if (person.role === "kin") personRecord(person, "person.arrived", 0);
       else if (person.role === "steward") personRecord(person, "person.steward", 1);
       continue;
@@ -519,7 +523,12 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
   const gone = after.persons.past.slice(before.persons.past.length);
   for (const person of gone) {
     if (!was.has(person.id) || now.has(person.id)) continue;
-    if (!person.alive) personRecord(person, "person.died", 1, { cause: person.deathCause ?? "age", age: (person.deathYear ?? year) - person.birthYear });
+    // PLAY-2 §4: a death names the spouse left (the head's spouse, or the spouse's head, of the household it left).
+    const partner = person.role === "head" || person.role === "spouse"
+      ? before.persons.people.find(other => other.householdId === person.householdId && other.id !== person.id && other.role === (person.role === "head" ? "spouse" : "head"))
+      : undefined;
+    if (!person.alive) personRecord(person, "person.died", 1, { cause: person.deathCause ?? "age", age: (person.deathYear ?? year) - person.birthYear,
+      ...(partner === undefined ? {} : { spouseId: partner.id }) });
     else personRecord(person, "person.left_town", 0);
   }
   // DEC-TRACE §6 (the user's decision 2026-10-06): in lord mode the house's change of head is a big event — the lord
@@ -1171,7 +1180,10 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
     if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);
     for (const [event, tick] of Object.entries(plan.events)) {
       if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
-      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "" }, event === "father_died" ? 3 : 2);
+      // PLAY-2 §4: the first child's record names the child and its father (the groom).
+      const child = event === "child_born" ? [...(after.persons?.people ?? [])].reverse().find(person => person.motherId === plan.brideId && person.fatherId === plan.groomId) : undefined;
+      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "", ...(child === undefined ? {} : { child: child.id, father: plan.groomId }) },
+        event === "father_died" ? 3 : 2);
     }
     if (was?.marriage?.stage !== plan.stage && (plan.stage === "inherited" || plan.stage === "lost" || plan.stage === "contested")) {
       line(`marriage.${plan.stage}`, { estate: plan.estateId, rival: plan.rival ?? "" }, 3);
