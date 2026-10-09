@@ -15,6 +15,11 @@ export const LORD_WALL_COPY = {
     asked: "마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다",
     failed: "마을이 지난번에 목책 둘레를 찾지 못했습니다",
   },
+  /** searching / asked: what happens next, inside the opened plan. */
+  detail: {
+    searching: "마을은 주마다 할 일을 정하면서 목책 둘레를 찾습니다. 찾으면 영주에게 시장도시 선포를 청합니다",
+    asked: (chip: string) => `청은 사건 칩 줄의 '${chip}' 칩에 있습니다. 칩을 눌러 들어주면 마을이 목책 공사를 시작합니다`,
+  },
   // --- waiting: each unmet condition and the project that meets it ---
   conditionsLabel: "아직 차지 않은 선포 조건",
   /** A condition and how far it is ("인구 12/20": the era console's own current/target). */

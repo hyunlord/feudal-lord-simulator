@@ -7,6 +7,7 @@ import { scenarioOf } from "../../../engine/scenarioState";
 import type { TileCoordinate } from "../../../world/grid";
 import { calendarArrivalLabel } from "../../calendarArrival";
 import { ERA_CONSOLE_COPY } from "../../eraConsoleCopy.ko";
+import { LORD_CARDS_COPY } from "../../lordCardsCopy.ko";
 import { perState } from "../../perState";
 import { lordLeverPlaces, needOfProject, whoBuilds, type LordLever } from "./lordAdvice";
 import { LORD_WALL_COPY as COPY } from "./lordWallCopy.ko";
@@ -19,7 +20,7 @@ import { LORD_WALL_COPY as COPY } from "./lordWallCopy.ko";
 // decides a stage or a project: the engine's are quoted (P-D4). Per stage:
 //  - waiting: each unmet condition, who builds its project and the lord's first lever, with the way to where he sets it;
 //  - sites: the sites holding the search, how long each has stood, and the sites the town gave up lately;
-//  - searching / asked: the town's turn / its request (answered on its own chip, as before);
+//  - searching / asked: the town's turn (its week's walk) / its request (answered on its own chip, as before);
 //  - failed: why, the homes a wall would cut off (and the way to look at one), the attempts, when it searches again.
 // Drawing the line by hand is the sandbox's (the console keeps no drawing button in lord mode). Null outside lord mode
 // or past the hamlet (the console's normal state).
@@ -30,6 +31,8 @@ export type LordWallPlanView = Readonly<{
   stage: Exclude<CharterWallPlan["stage"], "past">;
   /** Where the plan stands: the line under the console's primary. */
   line: string;
+  /** searching / asked: what happens next (the opened plan's own line); null in the other stages. */
+  detail: string | null;
   conditions: readonly WallPlanCondition[];
   sites: readonly string[];
   abandoned: readonly string[];
@@ -78,6 +81,7 @@ export function wallPlanView(state: GameState, plan: CharterWallPlan | null): Lo
   return {
     stage: plan.stage,
     line: plan.stage === "waiting" ? COPY.stage.waiting(unmet.length) : plan.stage === "sites" ? COPY.stage.sites(plan.sites.length) : COPY.stage[plan.stage],
+    detail: plan.stage === "searching" ? COPY.detail.searching : plan.stage === "asked" ? COPY.detail.asked(LORD_CARDS_COPY.request.proclaim_era.title) : null,
     conditions,
     sites: plan.sites.map(site => COPY.site(kindName(site.kind), siteAge(state, site.since))),
     abandoned: plan.stage === "sites" ? abandonedLines(state) : [],

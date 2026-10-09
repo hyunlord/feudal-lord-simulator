@@ -29,6 +29,7 @@ import type { CharterWallFailureReason } from "../src/engine/townAgency.types";
 import { newGameState } from "../src/state/newGame";
 import { stripComments } from "../scripts/checks/surfaceRegistry.mjs";
 import { calendarArrivalLabel } from "../src/ui/calendarArrival";
+import { LORD_CARDS_COPY } from "../src/ui/lordCardsCopy.ko";
 import { buildEraConsoleModel, EraConsole } from "../src/ui/EraConsole";
 import { lordLeverPlaces, needOfProject, whoBuilds } from "../src/ui/lord/advice/lordAdvice";
 import { lordWallPlan, wallPlanView, type LordWallPlanView } from "../src/ui/lord/advice/lordWall";
@@ -134,9 +135,14 @@ test("GROW-BLOCK plan, failed: why in plain words for each of the engine's eight
 
 test("GROW-BLOCK plan, searching and asked: the town's turn, its request answered on its own chip; past the hamlet nothing", () => {
   const state = lordGame();
-  assert.equal(wallPlanView(state, asStage(state, "searching"))!.line, COPY.stage.searching);
+  const searching = wallPlanView(state, asStage(state, "searching"))!;
+  assert.deepEqual([searching.line, searching.detail], [COPY.stage.searching, COPY.detail.searching]);
   const asked = wallPlanView(state, asStage(state, "asked"))!;
   assert.deepEqual([asked.line, asked.conditions, asked.ringAllowed], [COPY.stage.asked, [], false]);
+  assert.equal(asked.detail, COPY.detail.asked(LORD_CARDS_COPY.request.proclaim_era.title), "the chip as its card names it");
+  // The opened plan is never empty: each stage shows something of its own (the geometry audit's content check).
+  for (const plan of [searching, asked]) assert.match(planHtml(plan), /class="wall-plan-detail">[^<]+</);
+  assert.equal(wallPlanView(state, asStage(state, "waiting"))!.detail, null);
   assert.equal(wallPlanView(state, asStage(state, "past")), null);
   assert.equal(lordWallPlan({ ...state, era: "palisade" }), null);
 });

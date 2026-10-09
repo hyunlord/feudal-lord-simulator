@@ -28,3 +28,4 @@
 .wall-plan-list > li > span { font-size: 12px; color: var(--palette-ink-muted); }
 .wall-plan-failure { display: grid; gap: 4px; }
 .wall-plan .wall-plan-go { justify-self: start; min-height: 44px; display: inline-flex; align-items: center; gap: 4px; }
+.wall-plan .wall-plan-detail { padding: 6px 8px; background-color: var(--palette-parchment); }

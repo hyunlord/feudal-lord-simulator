@@ -26,6 +26,7 @@ export function WallPlan({ plan, commands }: { readonly plan: LordWallPlanView; 
   const lookAt = commands.onLookAt;
   return (
     <section id="wall-plan" className="wall-plan" aria-label={COPY.plan} data-wall-plan-stage={plan.stage}>
+      {plan.detail === null ? null : <p className="wall-plan-detail">{plan.detail}</p>}
       {plan.conditions.length === 0 ? null : <ul className="wall-plan-list" aria-label={COPY.conditionsLabel}>
         {plan.conditions.map(condition => {
           const place = condition.lever?.place ?? null;
