@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "baseRevision": "64a16b5a6c1d91024415039db89bb88412528e15",
-  "implementationRevision": "7a4c6ae7e208dc8ad4b5678651713e84a34377dd",
-  "scope": "Engine measurement revision is engineMeasurementRevision; later implementation changes are offline residual audit, slice-end reader and migrated fixtures. Subsequent evidence/document edits excluded.",
+  "implementationRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+  "scope": "Full base-to-implementation inventory. Measurement engine includes direct-oversight routing and exclusive mode ownership. Subsequent evidence/document edits excluded.",
   "files": [
     "docs/decisions/README.md",
     "docs/requests/engine-B-tlink.md",
@@ -27,6 +27,13 @@
     "docs/verification/eb-tlink-browser/registry-067-chronicle.png",
     "docs/verification/eb-tlink-browser/result.json",
     "docs/verification/eb-tlink-browser/states.json",
+    "docs/verification/eb-tlink-slice-browser/README.md",
+    "docs/verification/eb-tlink-slice-browser/executed-driver.mjs",
+    "docs/verification/eb-tlink-slice-browser/own-answer-chronicle.png",
+    "docs/verification/eb-tlink-slice-browser/prepared-ended.save.json.gz",
+    "docs/verification/eb-tlink-slice-browser/result.json",
+    "docs/verification/eb-tlink-slice-browser/slice-initial.png",
+    "docs/verification/eb-tlink-slice-browser/slice-own-answers.png",
     "docs/verification/eb-tlink/changed-files.json",
     "docs/verification/eb-tlink/parity-method.md",
     "docs/verification/eb-tlink/specified10-baseline-red.txt",
@@ -92,5 +99,5 @@
     "tests/petitionVariantWords.test.ts",
     "tests/sliceEnds.test.ts"
   ],
-  "engineMeasurementRevision": "fae9ce38be52858e29d2e7111c7437b23cf5fdac"
+  "engineMeasurementRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381"
 }

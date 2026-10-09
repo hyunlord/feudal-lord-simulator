@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+  "node": "v25.8.2",
+  "platform": "darwin",
+  "workingTreeBeforeArchive": [
+    "docs/requests/engine-B-tlink.md",
+    "docs/verification/eb-tlink/changed-files.json"
+  ],
+  "productDiffFromHead": [],
+  "command": "node --import tsx .omo/evidence/tlink-charter-saturation.mjs",
+  "exitCode": 0,
+  "artifactSha256": {
+    "tlink-charter-saturation.json": "6634b22c28f21112f57c70877a46bf4b871674c864c496f4654ad8164f6f1927",
+    "tlink-charter-saturation.mjs": "b1f76d42316ecfb14e6f1a2e10845b69a04f2bece980491160eefaf619a655f7"
+  },
+  "scope": "Prepared saturation boundary, two actual reducer answers and one actual stewardship-season transition after each. Not natural-play or 125-year proof."
+}
