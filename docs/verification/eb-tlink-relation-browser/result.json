@@ -1,0 +1,129 @@
+{
+  "pass": true,
+  "source": "864f1ea06851f0508109f34ab355e4843bb16ff4",
+  "dirty": "",
+  "driver": {
+    "path": "driver.mjs",
+    "bytes": 7665,
+    "sha256": "374aa8d08a95fd45bb03c50c8f0e3876692c5c0135ab548c5d2fa2bdcc2e9585"
+  },
+  "errors": [],
+  "limits": [
+    "Prepared consumed fixture from actual reducers and seasonal advance; no natural 125-year or income-causality claim."
+  ],
+  "fixture": {
+    "path": "fixtures/saves/v56/eb-tlink-estate-relation-consumed.save.json",
+    "bytes": 1025046,
+    "sha256": "8d09ef0265b0f823cbae40bb5222701d33397da6a1e04d44213abf24b802cf3c"
+  },
+  "ownId": "h-000002",
+  "resultId": "h-000003",
+  "answerTick": 1000,
+  "resultTick": 2000,
+  "ownRecord": {
+    "tick": 1000,
+    "kind": "decision",
+    "template": "decision.card",
+    "severity": 1,
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "params": {
+      "decisionKind": "stewardship",
+      "command": "answer_estate_petition",
+      "subjectId": "relation-proof",
+      "chosen": "granted"
+    },
+    "decision": {
+      "chosen": "granted",
+      "alternatives": [
+        "refused"
+      ],
+      "predicted": {}
+    },
+    "id": "h-000002"
+  },
+  "receipt": {
+    "tick": 2000,
+    "kind": "event",
+    "template": "stewardship.season",
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "severity": 0,
+    "params": {
+      "house": "home",
+      "reported": 24,
+      "mode": "direct",
+      "overloaded": 0,
+      "traceEstate": "delegated-estate",
+      "traceRelationTenants": 4,
+      "traceRelationMerchants": 0,
+      "traceTenantsContribution": 4,
+      "traceMerchantsContribution": 0
+    },
+    "id": "h-000003",
+    "because": [
+      {
+        "decisionId": "h-000002",
+        "key": "estate_mood",
+        "part": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "estateId": "delegated-estate",
+      "dimension": "tenants",
+      "before": 0,
+      "after": 4,
+      "intended": 4,
+      "actual": 4,
+      "expected": 4,
+      "firstSeasonTick": 2000,
+      "status": "consumed"
+    }
+  ],
+  "historyNextOrdinal": 20,
+  "saveRoundtrip": true,
+  "save": {
+    "path": "prepared.save.json.gz",
+    "bytes": 56636,
+    "sha256": "519227a78807dcee6f670645e20c8b390ac9dfe00330fb727ec98a557b93a83c"
+  },
+  "saveSHA256": "8d09ef0265b0f823cbae40bb5222701d33397da6a1e04d44213abf24b802cf3c",
+  "dismissed": [],
+  "chronicleAdmission": "chapter full chronicle button",
+  "ownText": "1300년 여름\n\n영지 청원 '수리 청원': 수리 비용을 댄다\n\n고른 길\n들어줌\n다른 길\n물리침\n예측과 실제\n그 뒤에 일어난 일\n1300년 여름 — 영주가 home 영지의 제방·헛간 수리 청원을 허락했다 (여러 까닭 가운데 하나)\n1300년 가을 — home 영지의 한 철 — 장부상 수입 2s — 앞선 답으로 소작인들과 가까워진 영향이 이번 철에도 남았다 (여러 까닭 가운데 하나)",
+  "followText": "1300년 가을 — home 영지의 한 철 — 장부상 수입 2s — 앞선 답으로 소작인들과 가까워진 영향이 이번 철에도 남았다 (여러 까닭 가운데 하나)",
+  "answerScreenshot": {
+    "path": "answer-followed.png",
+    "bytes": 606064,
+    "sha256": "959e8dfa517aaf20dc34be3954e9515819226e1e86960501f9d0d4c9bb562bc2"
+  },
+  "resultText": "1300년 가을\n\n1300년 당신의 결정도 한몫해 — home 영지의 한 철 — 장부상 수입 2s — 앞선 답으로 소작인들과 가까워진 영향이 이번 철에도 남았다\n\n이 일이 따라 나온 결정\n1300년 당신의 결정도 한몫해 — 영지 청원 '수리 청원': 수리 비용을 댄다\n\n이 무렵의 지도는 남아 있지 않습니다",
+  "becauseText": "1300년 당신의 결정도 한몫해 — 영지 청원 '수리 청원': 수리 비용을 댄다",
+  "resultScreenshot": {
+    "path": "petition-because.png",
+    "bytes": 470906,
+    "sha256": "af0783290c912b9462f652dadd969380b5482ff8e1872a09d65e6a8f982564bb"
+  },
+  "returnedOwnId": "h-000002",
+  "narrowAnswerText": "1300년 여름\n\n영지 청원 '수리 청원': 수리 비용을 댄다\n\n고른 길\n들어줌\n다른 길\n물리침\n예측과 실제\n그 뒤에 일어난 일\n1300년 여름 — 영주가 home 영지의 제방·헛간 수리 청원을 허락했다 (여러 까닭 가운데 하나)\n1300년 가을 — home 영지의 한 철 — 장부상 수입 2s — 앞선 답으로 소작인들과 가까워진 영향이 이번 철에도 남았다 (여러 까닭 가운데 하나)",
+  "narrowAnswerScreenshot": {
+    "path": "answer-followed-390.png",
+    "bytes": 194409,
+    "sha256": "9c65243787ea4e4dddae86d7e0afbb783489653f348f4695bb1ba9d8f4b48a3a"
+  },
+  "narrowResultText": "1300년 가을\n\n1300년 당신의 결정도 한몫해 — home 영지의 한 철 — 장부상 수입 2s — 앞선 답으로 소작인들과 가까워진 영향이 이번 철에도 남았다\n\n이 일이 따라 나온 결정\n1300년 당신의 결정도 한몫해 — 영지 청원 '수리 청원': 수리 비용을 댄다\n\n이 무렵의 지도는 남아 있지 않습니다",
+  "narrowResultScreenshot": {
+    "path": "season-because-390.png",
+    "bytes": 101683,
+    "sha256": "f00c0d6a3f7e7394fa013fa3b55a64abb5e8ded83707f29e14018121d6c67f29"
+  },
+  "narrowReturnedOwnId": "h-000002",
+  "tickUnchanged": true,
+  "historyOrdinalUnchanged": true
+}

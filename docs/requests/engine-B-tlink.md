@@ -2,17 +2,17 @@
 
 ## 현재 상태와 고정점
 
-**구현·준비 화면 검증과 제품0b04의 변경 영향 시험은 완료했다. 기하27행·540조건도 실패0·미개방0으로 완료했다. 후속 문서·증거를 읽는 시험의 적용 범위는 최종 `check:merge`와 `test:changed` 기록으로 재확인한다. 새 기준판125년 측정은 완료했고 시제품125년 측정·전후 규칙 해시는 결과 대기 중이다. 전체 관문 통과나 본선 병합 승인이 아니다.**
+**최신 제품864f1ea는 실제 기존 계절 보고에 한정된 관계 기여 증거와 잠정v56을 추가했다. 집중121시험·타입검사·범위 lint·독립 검토는 통과했다. 최신 제품의 브라우저 기능 검증은 통과했고,125년 측정·native 전후 해시·변경 영향 시험·기하는 pending이다.390px 화면의 우측 잘림은 별도 미해결로 보존했다. 0b04 수집 잠정값204/816=25%를 최신 제품이나 공식 replay 판정으로 사용하지 않는다. 전체 관문 통과나 본선 병합 승인이 아니다.**
 
 | 구분 | 고정점 / 범위 |
 | --- | --- |
-| 최신 구현 | `0b04cd0becc4d73059fbfcf372395c8672d1a381` |
-| 새125년 측정에 고정한 엔진 | `0b04cd0becc4d73059fbfcf372395c8672d1a381` |
+| 최신 구현 | `864f1ea06851f0508109f34ab355e4843bb16ff4` |
+| 이전125년 수집·재생 소스 | `0b04cd0becc4d73059fbfcf372395c8672d1a381` — 최신 관계 구현 전 |
 | 구현 전 기준 | `64a16b5a6c1d91024415039db89bb88412528e15` |
 | 격리 가지 | `codex/engine-b-tlink` — 본선 미병합 |
 | 전체 변경 파일 | [docs/verification/eb-tlink/changed-files.json](../verification/eb-tlink/changed-files.json) |
 
-현재 측정 소스는0b04다. fae9→7a4의 엔진 바이트는 같았지만, 이후 독립 검토가 직접 감독 청원의 빠진 원인과 집사 교체의 원인 탈취를 찾아0b04에서 고쳤다. 구 fae9 측정 대기 작업은 실행 전에 종료했으며 그 소스를 새 결과에 적지 않는다. 위 JSON은 기준64a→0b04의 전체 변경 파일을 보존한다.
+0b04는 직접 감독 청원의 빠진 원인과 집사 교체의 원인 탈취를 고친 이전 측정 소스다. 최신864f1ea는 관계 기여 연결을 추가한 별도 제품이므로 이전 결과를 승계하지 않는다. 위 변경 파일 JSON은 기준64a→864f1ea의 전체 변경 목록이다. 구 fae9 측정과0b04 native 대기 작업은 실행 전에 취소했으며 통과 근거에서 제외한다.
 
 목표는 성공한 각 답변의 소속·실제 선택 대상·공존 원인·관측 상태·표시 문구 ID를 보존하는 것이다. 승인 관문은 성숙한 무거운 답의 **정확한 자기 ID 미래 연결≥80%**, 남은 답의 실제 증거에 따른 설명, 규칙 해시 불변, 지정10사건 회귀다. 관련 원칙은 P-C3·P-D5·P-T1·A4·A5다.
 
@@ -24,6 +24,7 @@
 - 직접 감독이 청원을 영주에게 올렸을 때 기존 `stewardship.brought`에만 `petition_routed`를 붙인다. 방식이 실제로 바뀐 답의 `oversight_mode:<estateId>`를 쓰므로 집사 교체/감사 처벌이 원인을 가져가지 않는다. 기록과 청원의 양방향 유일 대응을 확인하고 동명 영지의 모호한 연결·같은 tick·구 broad-only 근거는 추정하지 않는다.
 - 실제 결과의 `because`에는 해당 효과에 기여한 답만 남긴다. 현재 설정 소유권·교체·취소·후속 재주문을 구분하고, 원인 수가 다섯 이상이어도 실제 기여를 조용히 잘라내지 않는다. faction 기억의 기존 ID·관계와 기록 할당 순서는 유지한다. 연결률을 올리기 위한 새 결과 기록은 만들지 않는다.
 - 기존 `ledger.season`은 보존된 실제 후속 현금 거래와 거래 당시 소유권을 확인한 뒤 `traceLedgerEvidence`를 보관한다. 같은 tick의 명령 비용은 후속 수입 근거가 아니다. `readDecisionLedgerEvidence(record, answerId)`는 답별·대상별 근거를 읽고 잘못된 JSON·거래·범위·because·중복을 거부한다. 기록에 agency 모드가 없으므로 양끝 포함 범위 검사는 거래 당시 소유권이나 정확한 결산 cadence의 재실행 증명이 아니다.
+- `decisionTraceEstateRelations.ts`는 실제 영지 청원 답의 tenants/merchants 변화와 기대값을 optional 증거로 저장한다. 0 변화·포화·반대 방향 변화·알 수 없는 writer·감독/집사 변경·끊긴 값·모호한 기록은 미래 기여로 추정하지 않는다. 첫 다음 실제 철의 요약과 기존 `stewardship.season`이 유일하게 대응할 때만 `estate_mood`와 현재 관계/보존 기여량을 덧붙이고 증거를 consumed로 바꾼다. 새 기록·지연 확인용 영수증을 만들지 않는다. 이는 제한된 기여 보존 증명이며 모든 장기 관계·경제 효과의 반사실 검증은 아니다.
 - 실제 카드 클릭 명령의 원본 ID·`displayEntryId`를 답변 이력에 저장한다. 구 저장이나 봇에 없는 표시 정보는 모른다고 유지한다. 종료 화면은 root와 own answers를 함께 읽어 같은 묶음의 별개 무거운 답도 표시한다.
 - 작은 own answer는 기존 TRACE-KEEP와 같이10년 뒤 정리하고 무거운 답은 보존한다. 무거운 root가 남아 있어도 작은 답의 만료는 별도로 검사한다.
 
@@ -44,27 +45,30 @@
 
 기존 미분류 phase 명령은 실제 BIG 결정 기록과 명시적으로 검토한 소스 핀으로 별도 집계한다. 이 보충 분모·상태·임계치 결과는 원래 관문을 덮어쓰지 않는다. 승인 기대표의15개 원본 소스 핀 중 시제품과 다른 것은 `decisionTrace.ts`와 `history.ts`다. 따라서 원본 scorer의 strict contract audit에는 source mismatch가 남는다. 통과를 위해 기대표 핀을 임의 갱신하지 않았으며 엔진이 변경 의미를 검토한 뒤 재고정해야 한다.
 
-## 측정 표 — 기준판 완료, 시제품·전후 비교 진행
+## 측정 표 — 이전 수집 잠정값과 최신 제품 대기
 
-기존 승인125년 자료의 **292/816=35.78%**는 과거 관측값이다. 새 기준판도 같은 수치를 재현했지만, 별도 실행의 원본과 소스 핀을 아래에 보존한다. 시제품과의 비교 결과는 아직 없다.
+기존 승인125년 자료의 **292/816=35.78%**는 과거 관측값이다. 새 기준판도 같은 수치를 재현했지만, 별도 실행의 원본과 소스 핀을 아래에 보존한다. 0b04 수집 잠정 집계는204/816=25%다. seed1=52/238, seed2=70/275, seed3=82/303이며 미성숙20·성숙 미연결612·미분류2다. 공식 archive/scorer 판정은 replay 완료 후 고정한다. 기록 시점 부모 확인은 seed1·3 replay 완료, seed2 진행 중이며 여기서 원격 상태를 재조회하지 않았다.
 
 | 실행 / 측정 | 실제 소스 | 결과 상태 |
 | --- | --- | --- |
 | `engineB-tlink-baseline125-cf3fa94` — seed1–3 각125년 수집+재생 | `cf3fa941659ecb78396eed3780f88024a2bde0dd`, 제품은64a와 동일 | **완료·기준 미달** — 292/816=35.7843%, 관측 부족20·미연결524, 수집/재생3판 일치·exit0 |
-| `engineB-tlink-prototype125-0b04cd0` — 같은 seed·기간·도구 | `0b04cd0becc4d73059fbfcf372395c8672d1a381` | **실행 중** — seed1~3 수집 시작, 연결≥80% 판정 안 함 |
-| `engineB-tlink-paired-guardrail-0b04cd0` — seed1–3, 최대500000틱·24필지 일반 성장 전후 | 기준64a / 측정 엔진0b04 | **pending** — 전후 해시 일치 주장 안 함 |
-| `engineB-tlink-changed-0b04cd0` — 최신 변경 영향 시험 | 구현0b04 | **PASS** — 616파일·4755시험:4742통과·실패0·skip13, exit0 |
-| `engineB-tlink-geometry-0b04cd0` — 최신 변경 화면 기하 | 구현0b04 | **PASS** — 27행·540조건, 실패0·미개방0, exit0 |
+| `engineB-tlink-prototype125-0b04cd0` — 같은 seed·기간·도구 | `0b04cd0becc4d73059fbfcf372395c8672d1a381` | **수집 잠정204/816=25%** — 세 판 공식 replay 인수 미완료, 최신 관계 제품 결과 아님 |
+| `engineB-tlink-paired-guardrail-0b04cd0` — seed1–3, 최대500000틱·24필지 일반 성장 전후 | 기준64a / 측정 엔진0b04 | **실행 전 취소** — 대기 작업 종료, 해시/통과 증거 없음 |
+| `engineB-tlink-changed-0b04cd0` — 이전 제품 변경 영향 시험 | 구현0b04 | **PASS** — 616파일·4755시험:4742통과·실패0·skip13, exit0 |
+| `engineB-tlink-geometry-0b04cd0` — 이전 제품 화면 기하 | 구현0b04 | **PASS** — 27행·540조건, 실패0·미개방0, exit0 |
 
-결과 인계에는 각 실행의 실제 sourceRevision·입력/출력 해시, seed별 원래 직접/성숙 분모와 관측부족, 부가 잔여 범주, 보충 phase 분모를 함께 고정해야 한다. 기준판은 seed1=71/238, seed2=114/275, seed3=107/303이며 전체836답 중816답이 관측 충분하다. 원래 scorer는80% 미달과 미분류 선포2건을 그대로 남겨 exit1이다. 보충 분류는 두 실제 BIG 기록을 확인했지만 원래 점수를 덮어쓰지 않았다. [세 판 원본·재계산·해시·측정 커밋 bundle](../verification/eb-tlink-outcomes/README.md)을 보존했다. 아직 없는 시제품 수치나 전후 해시를 채우지 않는다.
+| `engineB-tlink-relation-browser-864f1ea` | `864f1ea06851f0508109f34ab355e4843bb16ff4` | 기능 PASS·exit0 — 자기 답→다음 철→원인 답, 두 화면 크기·저장 왕복·틱/ordinal 불변.390px 우측 잘림은 화면 인수 미달 |
+| `engineB-tlink-relation125-864f1ea`, `engineB-tlink-native-latest-864f1ea`, `engineB-tlink-relation-changed-864f1ea`, `engineB-tlink-relation-geometry-864f1ea` | `864f1ea06851f0508109f34ab355e4843bb16ff4` | **pending** — 결과 수치/해시 일치 추정 안 함 |
+
+결과 인계에는 각 실행의 실제 sourceRevision·입력/출력 해시, seed별 원래 직접/성숙 분모와 관측부족, 부가 잔여 범주, 보충 phase 분모를 함께 고정해야 한다. 기준판은 seed1=71/238, seed2=114/275, seed3=107/303이며 전체836답 중816답이 관측 충분하다. 원래 scorer는80% 미달과 미분류 선포2건을 그대로 남겨 exit1이다. 보충 분류는 두 실제 BIG 기록을 확인했지만 원래 점수를 덮어쓰지 않았다. [세 판 원본·재계산·해시·측정 커밋 bundle](../verification/eb-tlink-outcomes/README.md)을 보존했다. 0b04 잠정 집계는 기존 정확한 own-ID 미래창·분모를 그대로 사용한다. 같은 tick 종결이나 관계 포화0을 미래 성과/조건 미충족으로 바꾸지 않는다. 아직 없는 최신 제품 수치나 전후 해시를 채우지 않는다.
 
 [규칙 비교 방법](../verification/eb-tlink/parity-method.md)은 `history`, `trace.decisions`, `trace.answers`만 투영에서 제외한다. `trace.acts`, faction 기억의 실제 record/decision ID·관계, ledger 금액·모든 참조와 나머지 필드는 해시에 포함한다. 각 명령·각 철·최종 상태·명령 스트림을 대조하며 모든 tick 상태의 동등성을 증명하지 않는다. 일반 성장 가드레일의 전체 상태 해시는 별도 전후 비교다.
 
 ## 저장과 GROW-BLOCK 병합 겹침
 
-시제품 저장은 **잠정v55**다. 구 버전에 없는 답 멤버십은 비워 두며 새 답의 소속·기억 근거를 검증하고 왕복한다. 준비 저장은 자연 플레이가 아닌 실제 reducer 실행으로 만들었다. 표준v55 fixture13개는 공식 `buildSaveFixtures.ts --from-version 54`로 만들었고, v54 원본과 이행 후 게임 상태의 동일성을 확인했다.
+시제품 저장은 **잠정v56**이다. v54→v55의 own-answer 도입에 이어 `src/save/migrations/v55ToV56.ts`는 버전만 올리고 구 답의 관계 증거를 역으로 만들지 않는다. optional `estateRelationEvidence`의 shape·값·상태를 검증하며 pending/consumed 준비 상태까지 `src/save/schemaFingerprint.v56.json`에 포함했다. [표준13개와 관계 준비 저장2개](../../fixtures/saves/v56/README.md), [표준13개 fixture manifest](../../fixtures/saves/v56/manifest.json)를 보존했다. 표준13개는 공식 `buildSaveFixtures.ts --from-version 55`로 이행하여 전체 decoded state·재인코딩을 확인했다. 관계2개는 실제 reducer/계절 경로를 거친 준비 fixture이며 자연125년 증거가 아니다. 기존v55 fixture는 보존했다.
 
-GROW-BLOCK도v55를 사용한다. 최신 읽기 전용 확인 머리는 `a77081448e1f0e77ee54d43d333047c9cc518196`이다. 이전08dac 이후 변경은 GROW 보고서와 `scripts/growBlockProbe.ts`뿐이라 아래 겹침 목록은 같다.  서로 다른 common repository에서 확인한 겹침이므로 병합 시 다시 검사해야 한다. 엔진은 시제품v55를 덮어쓰지 말고 GROW 이행과 합친 뒤 최종 판 번호를 지정하고 표준 fixture를 재생성한다.
+GROW-BLOCK은 여전히v55다. 2026-10-10 읽기 전용 재확인 경로는 `/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-grow`, HEAD는 `a77081448e1f0e77ee54d43d333047c9cc518196`으로 이전 확인과 같다. tracked 변경은 없고 미추적 `output/grow2s/`, `output/grow2w/`, `scripts/tmp/`가 있어 전체 clean이라고 하지 않는다. 서로 다른 common repository의 관측이며 병합 때 다시 검사해야 한다. 엔진은 GROWv55와 TLINKv55→v56 이행을 통합한 뒤 최종 번호·fingerprint·표준 fixture를 재생성해야 한다. TLINK가v56으로 올랐다고v55 경로 충돌이 사라진 것은 아니다.
 
 | 파일 | 보존할 GROW 변경 / TLINK 접점 |
 | --- | --- |
@@ -79,18 +83,20 @@ GROW-BLOCK도v55를 사용한다. 최신 읽기 전용 확인 머리는 `a770814
 
 ## 엔진이 검토할 결함과 한계
 
-1. **영지 mood 결과 누락 — 미수정.** `decisionTrace.ts`는 새 요약을 기존 전역 길이 뒤 `slice`로 찾는다. 영지별 보관 목록을 재작성해 길이가 같으면 실제 새 요약을 놓친다. `history.ts`는 객체 정체성으로 새 요약을 이미 기록한다. 단순 수정으로 consequence를 추가하면 ordinal과 규칙 입력 ID까지 바뀔 수 있어 이번 시제품에서 그렇게 고치지 않았다. 후속 수정은 기존 `stewardship.season`에 연결하고 답 당시 tenants/merchants의 실제 변화·차원·clamp를 보존해 기여한 답만 골라야 한다. 같은 estate 대상만으로 모든 답을 연결하면 안 된다.
+1. **영지 mood의 제한된 교정 — 최신 실행 검증 대기.** 기존 `decisionTrace.ts`의 전역 길이 기반 요약 탐색이 같은 길이의 새 요약을 놓치는 경로와 별개로864f1ea는 객체 정체성으로 실제 새 요약을 찾고 기존 계절 기록에만 연결한다. 답 당시 실제 관계 변화와 첫 다음 철까지 끊기지 않은 기여만 허용한다. 같은 estate의 모든 답·clamp0·알 수 없는 변화는 연결하지 않는다. 집중 회귀 통과는 자연125년 적용률·전체 규칙 해시·실제 화면 인수를 대신하지 않는다.
 2. **무효과 heavy 답의 경계 사례.** 준비 seed17에서 상인 관계를−100으로 설정한 뒤 실제 계절 함수가 만든 charter_request를 두 번 거절했다. tick2000 `h-000016`·tick6000 `h-000020`은 rights heavy지만 관계−100→−100, 규칙·경제 변화0이었다. 청원 처리 상태를 맞춘 대조군과 다음 한 철 stewardship 전이도 차이0·해당 답 미래 링크0이었다. 모든 heavy 답에 후속 효과가 있다는 가정의 반례지만 자연125년 빈도·모든 미래·80% 미달을 미리 증명하지 않으며 분모 축소 근거도 아니다. 측정 엔진0b04에서 다시 실행한 [도구·결과·출처](../verification/eb-tlink-boundary/README.md)를 보존했다. 제품 diff는 없었고 인계 문서2개만 수정 중이었다.
 3. **history 제외 투영의 한계.** 일부 게임 코드가 history를 읽는다. 추가 회귀는083·140·061 답 뒤 표시 ID·즉시 연결을 제거한 상태와 원래 상태를 각각4tick 전진시켜 규칙 투영과 ordinal 일치를 확인했다. faction.relation의 because는 게임 입력이므로 제거하지 않았다. 이12tick은 모든 계절 경계나 전체125년 해시의 대체 증거가 아니다.
 4. **기존 화면 문제.** 빈 ‘예측과 실제’ 열·일부 한글 단어 갈림·067 하단의 초기 부분 잘림은 기준판에서도 확인했다. 정상 스크롤로 선택지는 드러난다. 표시 ID·종료 화면 수정의 검증을 전체 UX·반응형·자연 장기 결과 가시성 승인으로 확대하지 않는다.
 
-## 완료된 검증
+## 완료된 검증 — 소스별 범위
+
+- 최신864f1ea: 집중121시험·타입검사·범위 ESLint·독립 검토 통과. 아래0b04/7a4 원격 증거는 해당 이전 소스에만 적용하며 최신 제품의 changed·geometry는 pending이다. 관계 브라우저는 기능 검증을 통과했고 좁은 화면의 우측 잘림을 별도 기록했다. [실행 결과·원본 driver·4개 화면](../verification/eb-tlink-relation-browser/README.md).
 
 - 기하 `engineB-tlink-geometry-0b04cd0`:27행·540조건, 실패0·미개방0·exit0. 056의 최초 진입 시간 초과6조건은 정규1차 재시도에서 전부 통과했다. 예외 추가나 제품/driver 수정은 없었다. [전체 측정표](../verification/uiaudit1/geometry/engineB-tlink-geometry-0b04cd0/geometry.md). 빈 공간 경고96건과 준비 상태의 한계는 남는다.
 
-- 최신0b04 `test:changed`:616파일·4755시험 중4742통과·실패0·skip13, exit0. [원본 시험 기록과 해시](../verification/eb-tlink-gates/changed-result.json). 원격 소스와 다른 후속 문서는 기하 관문의 안전 변경이다. 354474 인계 트리에서 `check:merge`가597시험을 재사용하고 저장소를 읽는19시험을 다시 요구한 것을 확인했다. 최종 기하 결과와 문서를 고정한 뒤 실행한 시험 기록이 게시 시점의 검증 근거다.
+- 이전0b04 `test:changed`:616파일·4755시험 중4742통과·실패0·skip13, exit0. [원본 시험 기록과 해시](../verification/eb-tlink-gates/changed-result.json). 원격 소스와 다른 후속 문서는 기하 관문의 안전 변경이다. 354474 인계 트리에서 `check:merge`가597시험을 재사용하고 저장소를 읽는19시험을 다시 요구한 것을 확인했다. 최종 기하 결과와 문서를 고정한 뒤 실행한 시험 기록이 게시 시점의 검증 근거다.
 
-- 지정10사건은 실제 reducer와 실제 stewardship·금전 정산·목재 거래를 거친 기존13시험에 routing 경계8개를 더한21시험 통과다. 별도 history 불변3시험을 합친 최신 집중 회귀는24/24, typecheck·scoped ESLint·독립 검토도 통과했다. 038 성공/실패, 209 취소/보류를 분리했다. 140:a는 현재 다섯째 감사 방식 답을 연결하고 교체된 네 답을 제외한다. 140:b는 다섯째 직접 감독 답과 현재 감사 방식인 넷째 답을 함께 연결하고 폐기된 세 답을 제외한다.
+- 지정10사건은 실제 reducer와 실제 stewardship·금전 정산·목재 거래를 거친 기존13시험에 routing 경계8개를 더한21시험 통과다. 별도 history 불변3시험을 합친 당시0b04 집중 회귀는24/24, typecheck·scoped ESLint·독립 검토도 통과했다. 038 성공/실패, 209 취소/보류를 분리했다. 140:a는 현재 다섯째 감사 방식 답을 연결하고 교체된 네 답을 제외한다. 140:b는 다섯째 직접 감독 답과 현재 감사 방식인 넷째 답을 함께 연결하고 폐기된 세 답을 제외한다.
 - TLINK·문구 변형 집중 시험98/98, 후속 종료 화면 관련9시험·typecheck가 통과했다. 잔여 답/typed ledger 판독기 독립 검토에서 구체적 차단 결함은 발견되지 않았다. 이는 위 최신 changed·geometry·장기 관문의 결과가 아니다.
 - 표시 ID 실제 화면: `engineB-tlink-browser-admission-f527d68-93245c4`,1280×800. 041=`h-001370`,067=`h-001713`의 실제 클릭, 자기 답/변형 ID, codec 왕복, 연대기 제목 일치. 067은 칩→결정하기로 열었다. 제품은f527과 같고 당시 검증기만 수정 상태였다. [docs/verification/eb-tlink-browser/result.json](../verification/eb-tlink-browser/result.json).
 - 기준판 실제 클릭 비교: `engineB-tlink-baseline-browser-scroll-cf3fa94`. 기준 연대기는041·067 변형 제목을 잃고 시제품은 보존했다. 067은34px 정상 스크롤 뒤 하단 버튼을 클릭했다. [docs/verification/eb-tlink-browser-baseline/result.json](../verification/eb-tlink-browser-baseline/result.json).
