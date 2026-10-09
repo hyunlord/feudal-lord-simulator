@@ -7,6 +7,9 @@ export declare const UI_INPUT_ROOTS: readonly { readonly root: string; readonly 
 export declare const UI_GEOMETRY_SCRIPTS: readonly string[];
 export declare const UI_GEOMETRY_GATE: "warn" | "enforce";
 export declare const UI_ENTRY: string;
+export declare const CLOSURE_ENTRIES: readonly string[];
+export declare const UI_INPUT_FILES: readonly string[];
+export declare function withoutComments(text: string): string;
 export declare const UI_GEOMETRY_RUNS: string;
 export declare function treeFiles(rev: string, cwd?: string): Map<string, string>;
 export declare function uiImportClosure(rev: string, cwd?: string, files?: Map<string, string>): Set<string>;

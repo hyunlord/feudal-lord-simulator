@@ -51,8 +51,45 @@ export const UI_GEOMETRY_GATE = 'enforce';
 
 /** The entry the UI is built from: every file it reaches by import is a UI input too (user ruling 2026-10-09, RR26 (가)). */
 export const UI_ENTRY = 'src/main.tsx';
-const IMPORT = /(?:import|export)\s[^'"`;]*?from\s*["']([^"']+)["']|import\s*\(\s*["']([^"']+)["']\s*\)|import\s+["']([^"']+)["']|@import\s+(?:url\()?["']([^"']+)["']/g;
-const CODE = /\.(ts|tsx|mts|mjs|js|jsx|css)$/;
+/**
+ * Where the import closure starts: the UI's entry, the dev server's config (its plugins serve fonts and pictures) and the
+ * audit's own scripts (what measures is an input too, RR26 review 4).
+ */
+export const CLOSURE_ENTRIES = Object.freeze([UI_ENTRY, 'vite.config.ts', 'scripts/uiGeometryAudit.mjs', 'scripts/uiGeometryMeasure.ts', 'scripts/uiGeometryScene.ts',
+  'scripts/renderCommitProbe.mjs', 'scripts/sceneInjection.mjs', 'scripts/remote/viteNoWatch.config.ts']);
+/** Inputs whatever the closure says: the packages the UI and the dev server load (fonts, React, Vite) are pinned here. */
+export const UI_INPUT_FILES = Object.freeze(['package.json', 'package-lock.json']);
+const IMPORT = /(?:import|export)\s[^'"`;]*?from\s*["']([^"']+)["']|import\s*\(\s*["']([^"']+)["']\s*\)|import\s+["']([^"']+)["']|require\s*\(\s*["']([^"']+)["']\s*\)|new\s+URL\s*\(\s*["']([^"']+)["']\s*,\s*import\.meta\.url/g;
+const CSS_REF = /@import\s+(?:url\(\s*)?["']?([^"')\s;]+)|url\(\s*["']?([^"')\s]+)["']?\s*\)/g;
+/**
+ * An import the closure cannot follow, in the UI's own code (src/): then every file under that file's folder counts. The
+ * audit's scripts compute imports only for tools outside the repository (Playwright, sharp): those are not followed.
+ */
+const UNFOLLOWED = /import\.meta\.glob|import\s*\(\s*`|import\s*\(\s*[^"'`\s)]|require\s*\(\s*[^"'`\s)]/;
+const INBOX = /assets-inbox\/[A-Za-z0-9_.\-/]+/g;
+const CODE = /\.(ts|tsx|mts|cts|mjs|cjs|js|jsx|css)$/;
+
+/** Source text without comments (strings, template literals and regular expressions kept), so a quote in a comment hides no import. */
+export function withoutComments(text) {
+  let out = ''; let i = 0; const n = text.length; let last = '';   // last significant character, to tell a regex from a division
+  while (i < n) {
+    const c = text[i]; const d = text[i + 1];
+    if (c === '/' && d === '/') { while (i < n && text[i] !== '\n') i++; continue; }
+    if (c === '/' && d === '*') { i += 2; while (i < n && !(text[i] === '*' && text[i + 1] === '/')) i++; i += 2; out += ' '; continue; }
+    if (c === '"' || c === "'" || c === '`') {
+      const start = i; i++;
+      while (i < n && text[i] !== c) { if (text[i] === '\\') i++; i++; }
+      i++; out += text.slice(start, i); last = c; continue;
+    }
+    if (c === '/' && (last === '' || /[(,=:[!&|?{};+\-*%<>~^]/.test(last))) {   // a regular expression literal
+      const start = i; i++; let inClass = false;
+      while (i < n && text[i] !== '\n' && (text[i] !== '/' || inClass)) { if (text[i] === '\\') i++; else if (text[i] === '[') inClass = true; else if (text[i] === ']') inClass = false; i++; }
+      i++; out += text.slice(start, i); last = '/'; continue;
+    }
+    out += c; if (!/\s/.test(c)) last = c; i++;
+  }
+  return out;
+}
 const CANDIDATES = ['', '.ts', '.tsx', '.mts', '.mjs', '.js', '.jsx', '.json', '/index.ts', '/index.tsx', '/index.js'];
 
 /** Every file of <rev> (path -> blob id), paths unquoted (-z: Korean letters and spaces stay as they are). */
@@ -75,23 +112,38 @@ function readBlobs(blobs, cwd) {
   return out;
 }
 
-/** The files of <rev> that UI_ENTRY reaches by relative imports (static, dynamic, side effect, CSS @import), itself included. */
+/**
+ * The files of <rev> the closure entries reach: relative imports (static, dynamic, side effect, require, new URL(…,
+ * import.meta.url)), CSS @import and url(), and every file under an assets-inbox path a reached file names (the dev
+ * server's plugins serve those pictures). A reached file of src/ with an import the closure cannot follow
+ * (import.meta.glob, a computed import or require) brings in every file under its folder.
+ */
 export function uiImportClosure(rev, cwd = process.cwd(), files = treeFiles(rev, cwd)) {
-  const reached = new Set(); let layer = files.has(UI_ENTRY) ? [UI_ENTRY] : [];
+  const reached = new Set(); let layer = CLOSURE_ENTRIES.filter(path => files.has(path));
+  const all = [...files.keys()];
+  const under = prefix => all.filter(path => path === prefix || path.startsWith(`${prefix}/`));
   while (layer.length > 0) {
     for (const path of layer) reached.add(path);
     const texts = readBlobs(layer.filter(path => CODE.test(path)).map(path => files.get(path)), cwd);
     const next = new Set();
+    const take = path => { if (files.has(path) && !reached.has(path)) next.add(path); };
+    const resolveFrom = (path, spec) => {
+      if (!spec.startsWith('.')) return;
+      const raw = posix.normalize(posix.join(posix.dirname(path), spec.split(/[?#]/)[0]));
+      const stem = raw.replace(/\.(js|mjs|jsx)$/, '');
+      const hit = [...CANDIDATES.map(ext => raw + ext), ...CANDIDATES.map(ext => stem + ext)].find(candidate => files.has(candidate));
+      if (hit !== undefined) take(hit);
+    };
     for (const path of layer) {
       if (!CODE.test(path)) continue;
-      for (const m of (texts.get(files.get(path))?.toString('utf8') ?? '').matchAll(IMPORT)) {
-        const spec = m[1] ?? m[2] ?? m[3] ?? m[4];
-        if (!spec?.startsWith('.')) continue;
-        const raw = posix.normalize(posix.join(posix.dirname(path), spec.split('?')[0]));
-        const stem = raw.replace(/\.(js|mjs|jsx)$/, '');
-        const hit = [...CANDIDATES.map(ext => raw + ext), ...CANDIDATES.map(ext => stem + ext)].find(candidate => files.has(candidate));
-        if (hit !== undefined && !reached.has(hit)) next.add(hit);
+      const raw = texts.get(files.get(path))?.toString('utf8') ?? '';
+      const text = path.endsWith('.css') ? raw.replace(/\/\*[\s\S]*?\*\//g, ' ') : withoutComments(raw);
+      if (path.endsWith('.css')) { for (const m of text.matchAll(CSS_REF)) resolveFrom(path, m[1] ?? m[2]); }
+      else {
+        for (const m of text.matchAll(IMPORT)) resolveFrom(path, m[1] ?? m[2] ?? m[3] ?? m[4] ?? m[5]);
+        if (path.startsWith('src/') && UNFOLLOWED.test(text)) for (const other of under(posix.dirname(path))) take(other);
       }
+      for (const m of raw.matchAll(INBOX)) for (const other of under(m[0].replace(/[/.]+$/, ''))) take(other);
     }
     layer = [...next];
   }
@@ -105,7 +157,7 @@ const underRoots = path => UI_INPUT_ROOTS.some(item => (path === item.root || pa
 export function geometryInputs(rev, cwd = process.cwd()) {
   const files = treeFiles(rev, cwd);
   const closure = uiImportClosure(rev, cwd, files);
-  return [...files].filter(([path]) => underRoots(path) || closure.has(path)).map(([path, blob]) => `${blob} ${path}`).sort();
+  return [...files].filter(([path]) => underRoots(path) || closure.has(path) || UI_INPUT_FILES.includes(path)).map(([path, blob]) => `${blob} ${path}`).sort();
 }
 
 /**
@@ -130,6 +182,8 @@ export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
     const path = entry.slice(3);
     if (/[RC]/.test(entry.slice(0, 2))) { const old = status[++k]; if (inputs.has(old)) dirty.add(old); }
     if (inputs.has(path) && !path.startsWith('public/assets/')) dirty.add(path);
+    // A file added to the index but not committed (it may be what a committed input imports): dirty when it could be an input.
+    else if (/A/.test(entry.slice(0, 2)) && (underRoots(path) || path.startsWith('src/') || path.startsWith('scripts/') || path.startsWith('assets-inbox/'))) dirty.add(path);
   }
   const assets = [...files].filter(([path]) => path.startsWith('public/assets/')).map(([path, blob]) => ({ path, blob }));
   const blobs = readBlobs(assets.map(entry => entry.blob), cwd);
@@ -234,7 +288,9 @@ export function checkRowRun({ run, head, hash, baseline, exceptions, cwd = proce
   if (commit === '') reasons.push(`run ${run}: its report has no measured commit`);
   else {
     let atCommit = null; try { atCommit = geometryInputHash(geometryInputs(commit, cwd)); } catch { /* not here */ }
+    let ancestor = false; try { execFileSync('git', ['merge-base', '--is-ancestor', commit, head], { cwd, stdio: 'ignore' }); ancestor = true; } catch { /* not in the pushed history */ }
     if (atCommit === null) reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not here to check its hash`);
+    else if (!ancestor) reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not in the pushed history (amended or rebased away): audit again`);
     else if (atCommit !== report.inputHash) reasons.push(`run ${run}: its hash is not its measured commit's (${commit.slice(0, 8)})`);
   }
   if (report.axesNarrowed !== false) reasons.push(`run ${run}: ${report.axesNarrowed === true ? 'narrowed by --viewports, --copy or --numbers' : 'its report does not say it measured every condition (an audit from before RR26)'}: audit the rows in every condition`);

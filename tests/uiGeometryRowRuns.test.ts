@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { createHash } from "node:crypto";
-import { checkUiGeometry, defaultSummaryPath, formatUiGeometryResult, geometryInputHash, geometryInputs, uiInputsDirty } from "../scripts/checks/uiGeometry.mjs";
+import { checkUiGeometry, defaultSummaryPath, formatUiGeometryResult, geometryInputHash, geometryInputs, uiInputsDirty, withoutComments } from "../scripts/checks/uiGeometry.mjs";
 
 // RR26 (user ruling 2026-10-09, step (c)): a changed-rows audit run that a push names (UI-Geometry-Run trailer) counts
 // in place of the stale shared result when no UI input changed since it was measured. Each case is made to overlap or to
@@ -16,12 +16,14 @@ const ROW = "modal.panel";
 const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 
 type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; inputHash?: string; runName?: string; commit?: string | null; unregistered?: number;
-  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "trunk0" };
+  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "trunk0" | "outside" };
 
-function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFailure = null, sharedPartial = false }: {
+function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFailure = null, sharedPartial = false, exceptions = [], rowIds = [ROW] }: {
   trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
   sharedFailure?: string | null;   // a current shared result (of the head's inputs) with this failure key
   sharedPartial?: boolean;         // a shared result of the head's inputs written by a changed-rows run (not a full audit)
+  exceptions?: object[];           // the committed geometry exceptions
+  rowIds?: string[];               // the rows the branch's run measures
 }) {
   const dir = mkdtempSync(join(tmpdir(), "fls-rowrun-"));
   const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
@@ -29,7 +31,8 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFa
   write("scripts/uiGeometryAudit.mjs", "// the audit\n");
   // The UI's import graph (RR26 (가)): main.tsx → App.tsx → components → a helper → the data at the chain's end.
   write("src/main.tsx", 'import { App } from "./App.tsx";\nexport const main = App;\n');
-  write("src/App.tsx", 'import { Panel } from "./ui/Panel.tsx";\nimport { Ledger } from "./ui/Ledger.tsx";\nimport { Build } from "./ui/Build.tsx";\nimport { used } from "./engine/used.ts";\nexport const App = [Panel, Ledger, Build, used];\n');
+  // A comment with a quote inside an import (the regex once lost such imports, review 4): ./engine/used.ts must be reached.
+  write("src/App.tsx", 'import { Panel } from "./ui/Panel.tsx";\nimport { Ledger } from "./ui/Ledger.tsx";\nimport { Build } from "./ui/Build.tsx";\nimport { PORTRAITS } from "./ui/Portraits.tsx";\nimport {\n  used, // the engine\'s one value\n} from "./engine/used.ts";\nexport const App = [Panel, Ledger, Build, PORTRAITS, used];\n');
   write("src/ui/Ledger.tsx", 'import { LEDGER_COPY } from "../ledger/ledgerCopy.ko.ts";\nexport const Ledger = LEDGER_COPY;\n');
   write("src/ledger/ledgerCopy.ko.ts", 'export const LEDGER_COPY = "장부";\n');
   write("src/ui/Build.tsx", 'import { BUILDINGS } from "../content/buildingConfig.ts";\nexport const Build = BUILDINGS;\n');
@@ -46,7 +49,16 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFa
   write("src/engine/core.ts", "export const core = 1;\n");
   write("docs/notes.md", "x\n");
   write("docs/verification/uiaudit1/geometry-baseline.json", JSON.stringify({ entries: baseline }));
-  write("docs/verification/uiaudit1/geometry-exceptions.json", JSON.stringify({ exceptions: [] }));
+  write("docs/verification/uiaudit1/geometry-exceptions.json", JSON.stringify({ exceptions }));
+  // What the dev server and the audit load besides the UI (RR26 review 4): the config's plugin, the audit's own helper,
+  // the packages, and pictures a UI file names under assets-inbox (a dev-server plugin serves them).
+  write("vite.config.ts", 'import { fonts } from "./scripts/fontsPlugin.ts";\nexport default { plugins: [fonts] };\n');
+  write("scripts/fontsPlugin.ts", 'export const fonts = { name: "fonts", keep: /\\.woff2$/ };\n');
+  write("scripts/uiGeometryPaint.ts", "export const HIDE_CSS = 'x';\n");
+  write("scripts/uiGeometryAudit.mjs", 'import { HIDE_CSS } from "./uiGeometryPaint.ts";\n// the audit\n');
+  write("package-lock.json", '{"packages":{"node_modules/@fontsource/noto-sans-kr":{"version":"5.0.0"}}}\n');
+  write("src/ui/Portraits.tsx", 'export const PORTRAITS = "assets-inbox/portraits/pool1";\n');
+  write("assets-inbox/portraits/pool1/p1.png", "p1\n");
   write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-old", full: true, inputHash: "stale", failureKeys: [], unopened: 0 }));   // the shared result: a full audit of older inputs
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   const trunk0 = git("rev-parse", "HEAD");
@@ -54,9 +66,12 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFa
   write("src/ui/Panel.tsx", 'import { fmt } from "./helpers/format.ts";\nexport const Panel = () => fmt + "panel";\n'); write("src/styles/panel.css", ".panel { padding: 12px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
   git("commit", "-qam", "branch: the panel");
   const measured = git("rev-parse", "HEAD");
-  const rows = report.rowsNull ? { [ROW]: null } : report.noRows ? {} : { [ROW]: { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) } };
+  const measuredRows = (ids: readonly string[]) => Object.fromEntries(ids.map(id => [id, { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) }]));
+  const rows = report.rowsNull ? { [ROW]: null } : report.noRows ? {} : measuredRows(rowIds);
   write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: report.runName ?? RUN,
-    commit: report.commitOf === "trunk0" ? trunk0 : report.commit === undefined ? measured : report.commit ?? undefined,
+    // "outside": a commit with the measured content but outside the history (as after an amend or a rebase).
+    commit: report.commitOf === "trunk0" ? trunk0 : report.commitOf === "outside" ? git("commit-tree", `${measured}^{tree}`, "-m", "amended away")
+      : report.commit === undefined ? measured : report.commit ?? undefined,
     axesNarrowed: report.axesNarrowed === null ? undefined : report.axesNarrowed ?? false, dirty: report.dirty ?? false, inputHash: report.inputHash ?? geometryInputHash(geometryInputs(measured, dir)), totals: { unopened: report.unopened ?? 0 },
     unregisteredFramed: Array.from({ length: report.unregistered ?? 0 }, (_, i) => ({ root: `.stray-${i}`, seenIn: [ROW] })), rows }));
   if (sharedFailure !== null) write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-now", full: true, inputHash: geometryInputHash(geometryInputs(measured, dir)), failureKeys: [sharedFailure], unopened: 0 }));
@@ -66,13 +81,13 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, sharedFa
   const trunk = git("rev-parse", "HEAD");
   git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
   const check = () => checkUiGeometry({ base: trunk, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
-  const run = (name: string) => {   // a new changed-rows run of the same row on the branch's current content, with its trailer
+  const run = (name: string, ids: readonly string[] = rowIds) => {   // a new changed-rows run on the branch's current content, with its trailer
     const commit = git("rev-parse", "HEAD");
     write(`docs/verification/uiaudit1/geometry/${name}/geometry.json`, JSON.stringify({ run: name, commit, axesNarrowed: false, dirty: false,
-      inputHash: geometryInputHash(geometryInputs(commit, dir)), totals: { unopened: 0 }, unregisteredFramed: [], rows }));
+      inputHash: geometryInputHash(geometryInputs(commit, dir)), totals: { unopened: 0 }, unregisteredFramed: [], rows: measuredRows(ids) }));
     git("add", "-A"); git("commit", "-qm", `a new changed-rows run\n\nUI-Geometry-Run: ${name}`);
   };
-  return { git, write, check, run, done: () => rmSync(dir, { recursive: true, force: true }) };
+  return { dir, git, write, check, run, measured, done: () => rmSync(dir, { recursive: true, force: true }) };
 }
 
 const engineOnly = (write: (path: string, text: string) => void) => { write("src/engine/core.ts", "export const core = 2;\n"); write("docs/notes.md", "y\n"); };
@@ -351,4 +366,72 @@ test("a report whose measured commit is not in the repository does not count", (
     assert.equal(result.ok, false);
     assert.ok(result.reasons.some(reason => /its measured commit 01234567 is not here to check its hash/.test(reason)), result.reasons.join("\n"));
   } finally { s.done(); }
+});
+
+// Cases from the fourth independent review (RR22): what the dev server and the audit load besides the UI.
+for (const [what, path, text] of [
+  ["a plugin vite.config.ts imports (the fonts it keeps)", "scripts/fontsPlugin.ts", 'export const fonts = { name: "fonts", keep: /\\.ttf$/ };\n'],
+  ["the lock file (a font package's version)", "package-lock.json", '{"packages":{"node_modules/@fontsource/noto-sans-kr":{"version":"5.1.0"}}}\n'],
+  ["a picture under an assets-inbox path a UI file names", "assets-inbox/portraits/pool1/p1.png", "p1-redrawn\n"],
+  ["a helper the audit imports (its paint pass)", "scripts/uiGeometryPaint.ts", "export const HIDE_CSS = 'y';\n"],
+  ["an import behind a comment with a quote (the engine value App.tsx imports)", "src/engine/used.ts", "export const used = 3;\n"],
+] as const) {
+  test(`UI input moved: the trunk changed ${what} — the run does not count, the output names ${path}`, () => {
+    const s = story({ trunkMove: write => write(path, text) });
+    try {
+      const result = s.check();
+      assert.equal(result.ok, false);
+      assert.ok(result.reasons.some(reason => reason.includes("UI input file(s) changed since it was measured") && reason.includes(path)), result.reasons.join("\n"));
+    } finally { s.done(); }
+  });
+}
+
+test("comments go, strings and regular expressions stay: an import behind a quoted comment is found", () => {
+  assert.equal(withoutComments('import {\n a, // the panel\'s helper\n} from "./a.ts";'), 'import {\n a, \n} from "./a.ts";');
+  assert.equal(withoutComments('const s = "// kept"; const r = /\\/\\//g; /* gone */ x'), 'const s = "// kept"; const r = /\\/\\//g;   x');
+});
+
+test("a measured commit that is not in the pushed history (amended away) does not count", () => {
+  const s = story({ trunkMove: engineOnly, report: { commitOf: "outside" } });
+  try {
+    const result = s.check();
+    assert.equal(result.ok, false);
+    assert.ok(result.reasons.some(reason => /is not in the pushed history/.test(reason)), result.reasons.join("\n"));
+  } finally { s.done(); }
+});
+
+test("dirty sees what is staged but not committed (a new file, a rename), a deleted picture, and an input outside the roots", () => {
+  const dir = mkdtempSync(join(tmpdir(), "fls-dirty3-"));
+  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  try {
+    write("src/main.tsx", 'import { used } from "./engine/used.ts";\nexport const main = used;\n'); write("src/engine/used.ts", "export const used = 1;\n");
+    write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("public/assets/a.png", "a\n");
+    git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
+    write("src/ui/New.tsx", "export const New = 1;\n"); git("add", "src/ui/New.tsx");
+    assert.deepEqual(uiInputsDirty(dir), ["src/ui/New.tsx"], "a staged new file");
+    git("reset", "-q"); rmSync(join(dir, "src/ui/New.tsx"));
+    git("mv", "src/ui/Panel.tsx", "src/ui/Panel2.tsx");
+    assert.ok(uiInputsDirty(dir).includes("src/ui/Panel.tsx"), "a staged rename: its old path");
+    git("mv", "src/ui/Panel2.tsx", "src/ui/Panel.tsx");
+    rmSync(join(dir, "public/assets/a.png"));
+    assert.deepEqual(uiInputsDirty(dir), ["public/assets/a.png"], "a deleted picture");
+    write("public/assets/a.png", "a\n"); write("src/engine/used.ts", "export const used = 2;\n");
+    assert.deepEqual(uiInputsDirty(dir), ["src/engine/used.ts"], "an input outside the roots, reached from src/main.tsx");
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("a run superseded only when a newer run measured all its rows: one row re-measured after a style change is not enough", () => {
+  const s = story({ trunkMove: write => write("src/styles/global.css", ":root { --gap: 10px; }\n"), rowIds: ["row.A", "row.B"] });
+  try {
+    s.run("render-TEST-geometry-2", ["row.A"]);
+    const result = s.check();
+    assert.equal(result.ok, false);
+    assert.ok(result.reasons.some(reason => reason.includes("render-TEST-geometry-1") && reason.includes("src/styles/global.css")), result.reasons.join("\n"));
+  } finally { s.done(); }
+});
+
+test("an exception covers a row run's failure as it covers the shared result's", () => {
+  const s = story({ trunkMove: engineOnly, report: { keys: ["overflow|.panel-body"] }, exceptions: [{ row: ROW, check: "overflow", match: ".panel-body", reason: "a known long title" }] });
+  try { assert.equal(s.check().ok, true, s.check().reasons.join("\n")); } finally { s.done(); }
 });
