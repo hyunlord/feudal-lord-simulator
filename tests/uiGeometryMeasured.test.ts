@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { gitIn, tempDir } from "./helpers/tempRepo";
@@ -21,7 +21,7 @@ const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 // app imports dynamically, the audit's own script; a path the resolver looked for and missed (src/ui/Panel.ts).
 const READ = ["index.html", "src/main.tsx", "src/ui/Panel.tsx", "src/styles/panel.css", "public/assets/frame.png", "src/lazy/Lazy.tsx", "scripts/uiGeometryAudit.mjs"];
 type Inputs = { files?: string[]; dirs?: string[]; lists?: string[]; missing?: string[]; untraceable?: string[] };
-type Declared = { states?: Record<string, string>; chromium?: string; viteDeps?: { hash: string; browserHash: string } };
+type Declared = { states?: Record<string, string>; chromium?: string; playwright?: string; lock?: string; system?: Record<string, string>; viteDeps?: { hash: string; browserHash: string } };
 type Measure = { inputs?: Inputs; declared?: Declared; tamper?: "hash" | "uncommitted" | "kind"; none?: boolean };
 
 /** Write a run's report (and its measured inputs) and, for a full audit, the shared summary. */
@@ -196,4 +196,54 @@ test("a changed-rows run is judged by its own measured inputs: a file it did not
     s.write("src/styles/panel.css", ".panel { padding: 1px; }\n"); s.commit("branch: the panel's CSS");
     refused(s.check(), /run rows-1: 1 file\(s\) the audit read changed since it was measured at [0-9a-f]{8} \(measured inputs\): src\/styles\/panel\.css — audit again/);
   } finally { s.done(); }
+});
+
+test("a file added where Vite would now resolve an import first counts though no missing path was recorded (it resolves natively)", () => {
+  for (const [path, counts] of [["src/ui/Panel.ts", true], ["src/main.js", true], ["src/lazy/Lazy.ts", true], ["src/lazy.ts", false], ["src/ui/Panel/index.ts", false], ["src/ui/Other.tsx", false]] as const) {
+    const s = story({ measure: { inputs: { missing: [] } } });
+    try {
+      s.write(path, "export const x = 1;\n"); s.commit(`branch: ${path}`);
+      const result = s.check();
+      if (counts) refused(result, new RegExp(`the audit read changed since it was measured at [0-9a-f]{8} \\(measured inputs\\): ${escape(path)}`));
+      else assert.equal(result.ok, true, `${path}: ${result.reasons.join("\n")}`);
+    } finally { s.done(); }
+  }
+});
+
+test("declared inputs are compared even when nothing the audit read changed (a state builder alone, with a named run on new states)", () => {
+  const s = story();
+  try {
+    s.write("scripts/states.ts", "// a state builder\n"); s.commit("branch: a state builder");
+    writeRun(s.write, { run: "rows-1", commit: s.git("rev-parse", "HEAD"), rows: { "hud.panel": "ui5" }, full: false, measure: { declared: { states: { ui5: "ui5-a", lord2: "lord2-b" } } } });
+    s.git("add", "-A"); s.git("commit", "-qm", "branch: the changed rows' geometry\n\nUI-Geometry-Run: rows-1");
+    refused(s.check(), /run rows-1: the state folder\(s\) lord2 changed since the shared result \(run full-1\)/);
+  } finally { s.done(); }
+});
+
+test("every declared input is compared, and one recorded on one side only counts as changed: the lock, the system files, Playwright", () => {
+  for (const [declared, named] of [[{ lock: "lock-b" }, /the lock file changed since the shared result/], [{ system: { "/proc/version": "k2" } }, /the system identity files changed since the shared result/],
+    [{ playwright: "1.62.1" }, /playwright changed since the shared result/], [{ viteDeps: { hash: "deps-a", browserHash: "b-b" } }, /Vite's dependency cache changed/]] as const) {
+    const s = story();
+    try { refused(withRun(s, { "hud.panel": "ui5" }, declared as Declared), named); } finally { s.done(); }
+  }
+});
+
+test("a named run that measured every row may carry another browser; a refused run adds no declared reason of its own", () => {
+  const s = story();
+  try { const result = withRun(s, SHARED_ROWS, { chromium: "141.0" }); assert.equal(result.ok, true, result.reasons.join("\n")); } finally { s.done(); }
+  const t = story();
+  try {
+    t.write("src/ui/Panel.tsx", "export const Panel = 2;\n"); t.commit("branch: the panel");
+    writeRun(t.write, { run: "rows-1", commit: t.git("rev-parse", "HEAD"), rows: { "hud.panel": "ui5" }, full: false, measure: { declared: { states: { ui5: "ui5-a", lord2: "lord2-b" } } } });
+    t.write(`${RUNS}/rows-1/geometry.json`, JSON.stringify({ ...JSON.parse(readFileSync(join(t.dir, RUNS, "rows-1/geometry.json"), "utf8")), dirty: true }));
+    t.git("add", "-A"); t.git("commit", "-qm", "branch: a dirty run\n\nUI-Geometry-Run: rows-1");
+    const result = t.check();
+    refused(result, /run rows-1: measured from a tree with uncommitted changes/);
+    assert.ok(!result.reasons.some(reason => /state folder/.test(reason)), result.reasons.join("\n"));
+  } finally { t.done(); }
+});
+
+test("no retry line when the range brings no new shared result", () => {
+  const s = story({ retries: { "hud.panel": 2 } });
+  try { s.write("docs/notes.md", "x\n"); s.commit("branch: a document"); assert.doesNotMatch(formatUiGeometryResult(s.check()), /retries in run/); } finally { s.done(); }
 });

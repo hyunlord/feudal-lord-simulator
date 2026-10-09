@@ -119,13 +119,20 @@ export function treeChanges(cwd, from, to) {
  * is a file read); an added or removed path under it does — exactly when `namesChanged(folder)` says the folder's entries
  * differ (the caller compares the two trees), else every add or delete below it (the conservative default).
  */
-export function inputOverlap(inputs, changes, { namesChanged = null } = {}) {
+export function inputOverlap(inputs, changes, { namesChanged = null, shadows = false } = {}) {
   const files = new Set(inputs.files);
+  // `shadows` (the geometry audit, RR26 (a′)): Vite 8 resolves imports natively, so the paths it tried are not recorded.
+  // A new file can only change a resolution by sharing a module's stem (another extension: Panel.ts beside Panel.tsx,
+  // a.js beside a.ts) or by standing where a module's folder index stood (m.ts beside m/index.ts): such an added file
+  // counts as read.
+  const stem = path => path.replace(/\.[^./]+$/, "");
+  const stems = shadows ? new Set(inputs.files.map(stem)) : new Set();
+  const shadow = ({ status, path }) => shadows && status !== "M" && status !== "D" && (stems.has(stem(path)) || stems.has(`${stem(path)}/index`));
   const under = (path, dir) => dir === "" || path === dir || path.startsWith(`${dir}/`);
   const walked = path => inputs.dirs.some(dir => under(path, dir));
   const looked = path => inputs.missing.some(miss => path === miss || path.startsWith(`${miss}/`) || path.startsWith(`${miss}.`));
   const renamedEntries = new Map();   // folder -> whether its entries changed (asked once)
   const entriesChanged = dir => { if (!renamedEntries.has(dir)) renamedEntries.set(dir, namesChanged === null ? true : namesChanged(dir)); return renamedEntries.get(dir); };
   const listed = ({ status, path }) => status !== "M" && (inputs.lists ?? []).some(dir => under(path, dir) && path !== dir && entriesChanged(dir));
-  return changes.filter(change => touchesEvery(change.path) || files.has(change.path) || looked(change.path) || walked(change.path) || listed(change)).map(change => change.path).sort();
+  return changes.filter(change => touchesEvery(change.path) || files.has(change.path) || looked(change.path) || walked(change.path) || listed(change) || shadow(change)).map(change => change.path).sort();
 }

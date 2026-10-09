@@ -20,7 +20,7 @@ export declare function unsafeChanges(from: string, to: string, cwd?: string, ca
 export type MeasuredInputs = { readonly status: "ok"; readonly inputs: { files: string[]; dirs: string[]; lists?: string[]; missing: string[]; untraceable: string[] }; readonly declared: Declared | null }
   | { readonly status: "none" | "broken" | "untraceable"; readonly why: string; readonly declared?: Declared | null };
 export type Declared = { readonly states?: Readonly<Record<string, string>>; readonly lock?: string | null; readonly viteDeps?: { readonly hash: string | null; readonly browserHash: string | null } | null;
-  readonly chromium?: string | null; readonly playwright?: string | null };
+  readonly chromium?: string | null; readonly playwright?: string | null; readonly system?: Readonly<Record<string, string | null>> };
 export declare function measuredInputs(result: unknown, head: string, cwd?: string): MeasuredInputs;
 export declare function staleChanges(from: string, to: string, cwd?: string, cache?: Map<string, unknown>, measured?: MeasuredInputs | null): {
   readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null; readonly how: string };

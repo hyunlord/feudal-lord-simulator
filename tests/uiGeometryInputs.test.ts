@@ -52,7 +52,6 @@ test("both roles recorded: their reads join, nothing untraceable; a role missing
     assert.deepEqual(auditInputs({ root: t.dir, traceDir: t.trace }).inputs.untraceable, ["no record of the dev server"]);
     t.run("vite", READ);
     assert.match(auditInputs({ root: t.dir, traceDir: t.trace }).inputs.untraceable.join(), /dev server: the files its config was bundled from were not recorded/);
-    writeFileSync(join(t.trace, `${process.pid}.config`), `${join(t.dir, "scripts/remote/viteNoWatch.config.ts")}\n${join(t.dir, "src/b.ts")}\n`);   // a config record of some process
   } finally { t.done(); }
 });
 
@@ -124,18 +123,79 @@ test("declared: a read in a declared folder or file (as given or through a link)
   try {
     const states = join(s.outside, "states"); mkdirSync(states); writeFileSync(join(states, "a.json"), '{"a":1}');
     const real = join(s.outside, "os-release.real"); writeFileSync(real, "ID=x\n"); const link = join(s.outside, "os-release"); symlinkSync(real, link);
-    // A read truly outside (not in a temporary folder, which the collector leaves out): a folder in the home directory.
-    const away = mkdtempSync(join(homedir(), ".fls-roles-test-")); const other = join(away, "other.txt"); writeFileSync(other, "o\n");
     bothRoles(s, "", `import { readFileSync } from "node:fs"; readFileSync(${JSON.stringify(join(states, "a.json"))}); readFileSync(${JSON.stringify(link)});`);
     const declared = [states, link];
     const clean = auditInputs({ root: s.dir, traceDir: s.trace, declared });
     assert.deepEqual(clean.inputs.untraceable, [], clean.inputs.untraceable.join("; "));
     assert.equal(declaredInputs({ root: s.dir, states: { ui5: states }, declaredPaths: clean.declaredPaths, chromium: "151" }).states.ui5, folderHash(states));
-    s.run("audit", `import { readFileSync } from "node:fs"; readFileSync(${JSON.stringify(other)});`);
-    try { assert.ok(auditInputs({ root: s.dir, traceDir: s.trace, declared }).inputs.untraceable.some(reason => reason.includes("other.txt"))); }
+    // A read truly outside (not in a temporary folder, which the collector leaves out): a folder in the home directory,
+    // made right before its own try so a failing assertion leaves nothing behind.
+    const away = mkdtempSync(join(homedir(), ".fls-roles-test-"));
+    try {
+      const other = join(away, "other.txt"); writeFileSync(other, "o\n");
+      s.run("audit", `import { readFileSync } from "node:fs"; readFileSync(${JSON.stringify(other)});`);
+      assert.ok(auditInputs({ root: s.dir, traceDir: s.trace, declared }).inputs.untraceable.some(reason => reason.includes("other.txt"))); }
     finally { rmSync(away, { recursive: true, force: true }); }
     const before = folderHash(states);
     writeFileSync(join(states, "a.json"), '{"a":2}');
     assert.notEqual(folderHash(states), before, "a state changed: its folder hash changes");
+  } finally { s.done(); }
+});
+
+test("the audit's own records (its result, failure shots, the baseline and exceptions) are no input; import.meta.glob makes the measurement untraceable", () => {
+  const s = setup();
+  try {
+    s.write("docs/verification/uiaudit1/geometry-baseline.json", "{}\n"); s.write("docs/verification/uiaudit1/geometry/run-1/shots/x.jpg", "jpg");
+    bothRoles(s, "", 'import { readFileSync, statSync } from "node:fs"; readFileSync("docs/verification/uiaudit1/geometry-baseline.json"); statSync("docs/verification/uiaudit1/geometry/run-1/shots/x.jpg");');
+    const { inputs } = auditInputs({ root: s.dir, traceDir: s.trace });
+    assert.deepEqual(inputs.files.filter(path => path.startsWith("docs/")), [], inputs.files.join(" "));
+    assert.deepEqual(inputs.untraceable, []);
+    s.write("src/g.ts", 'export const all = import.meta.glob("./parts/*.ts");\n');
+    s.run("vite", 'import { readFileSync } from "node:fs"; readFileSync("src/g.ts");');
+    assert.ok(auditInputs({ root: s.dir, traceDir: s.trace }).inputs.untraceable.some(reason => /src\/g\.ts uses import\.meta\.glob/.test(reason)));
+  } finally { s.done(); }
+});
+
+test("followed only as named: a node child under another role, and a named port on a host that is not loopback, are untraceable", () => {
+  const cases: [string, string, Record<string, string>, RegExp][] = [
+    ["a node child carrying the recorder under another role", 'import { execFileSync } from "node:child_process"; execFileSync(process.execPath, ["-e", "1"], { env: { ...process.env, FLS_TRACE_ROLE: "other" } });', {}, /audit: child process: node/],
+    ["a node child writing to another trace folder", 'import { execFileSync } from "node:child_process"; execFileSync(process.execPath, ["-e", "1"], { env: { ...process.env, FLS_TRACE_DIR: "/nowhere" } });', {}, /audit: child process: node/],
+    ["the named port on another host", 'import net from "node:net"; await new Promise(done => net.connect({ host: "example.invalid", port: 4300 }).on("error", done).on("close", done));', { FLS_TRACE_LOOPBACK: "4300" }, /audit: network: example\.invalid:4300/],
+  ];
+  for (const [what, code, extra, expected] of cases) {
+    const s = setup();
+    try {
+      bothRoles(s, "", code, extra);
+      const { untraceable } = auditInputs({ root: s.dir, traceDir: s.trace }).inputs;
+      assert.ok(untraceable.some(reason => expected.test(reason)), `${what}: ${untraceable.join("; ")}`);
+    } finally { s.done(); }
+  }
+});
+
+test("a role's record is written while it runs: a process killed outright still leaves what it read", () => {
+  const s = setup();
+  try {
+    s.run("vite", 'import { readFileSync } from "node:fs"; readFileSync("scripts/remote/viteNoWatch.config.ts");');
+    // No exit handler runs under SIGKILL: only the record written every second remains.
+    const { NODE_TEST_CONTEXT: _runner, ...outer } = process.env;
+    const killed = spawnSync(process.execPath, ["--input-type=module", "-e", 'import { readFileSync } from "node:fs"; readFileSync("src/b.ts"); setTimeout(() => process.kill(process.pid, "SIGKILL"), 1500);'],
+      { cwd: s.dir, env: { ...outer, FLS_TRACE_DIR: s.trace, FLS_TRACE_ROLE: "audit", NODE_OPTIONS: `--import=${TRACER}` }, encoding: "utf8" });
+    assert.equal(killed.signal, "SIGKILL");
+    assert.ok(auditInputs({ root: s.dir, traceDir: s.trace }).inputs.files.includes("src/b.ts"));
+  } finally { s.done(); }
+});
+
+test("declared values: only the state sets the audit read are hashed; the system files it read are hashed by content", () => {
+  const s = setup();
+  try {
+    const read = join(s.outside, "ui5"); const unread = join(s.outside, "ui6"); mkdirSync(read); mkdirSync(unread);
+    writeFileSync(join(read, "a.json"), "{}"); writeFileSync(join(unread, "b.json"), "{}");
+    const system = join(s.outside, "version"); writeFileSync(system, "kernel 1\n"); const unreadSystem = join(s.outside, "ldd"); writeFileSync(unreadSystem, "ldd\n");
+    bothRoles(s, "", `import { readFileSync } from "node:fs"; readFileSync(${JSON.stringify(join(read, "a.json"))}); readFileSync(${JSON.stringify(system)});`);
+    const { declaredPaths } = auditInputs({ root: s.dir, traceDir: s.trace, declared: [read, unread, system, unreadSystem] });
+    const values = declaredInputs({ root: s.dir, states: { ui5: read, ui6: unread }, declaredPaths, system: [system, unreadSystem] });
+    assert.deepEqual(Object.keys(values.states), ["ui5"]);
+    assert.deepEqual(Object.keys(values.system), [system]);
+    assert.match(String(values.system[system]), /^[0-9a-f]{64}$/);
   } finally { s.done(); }
 });

@@ -213,7 +213,7 @@ ui-geometry)
     node scripts/uiGeometryInputs.mjs "$out" "$trace" --state ui5="$states5" --state ui6="$states6" --state ui8="$states8" --state ui9="$states9" \
       --state ui10="$states10" --state ui10-extra="$extra" --state lands="$lands" --state petitions="$petitions" --state lord="$lord" --state moments="$moments" \
       --state lord2="$lord2" --state deccard2="$deccard2" --state slice="$slice" --state variants="$variants" --declared "$HOME/.cache/ms-playwright" \
-      --declared /proc/version --declared /usr/bin/ldd --declared /etc/os-release \
+      --system /proc/version --system /usr/bin/ldd --system /etc/os-release \
       2>&1 | tee -a "$OUT/ui-geometry/audit.log" || rc=1
   fi
   tail -n 4 "$OUT/ui-geometry/audit.log" | tee "$OUT/summary.txt"

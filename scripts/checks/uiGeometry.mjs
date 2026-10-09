@@ -284,7 +284,7 @@ export function staleChanges(from, to, cwd = process.cwd(), cache = new Map(), m
     // A folder listed one level counts when its entries differ between the two trees (a missing folder has none).
     const names = rev => dir => { try { return git(['ls-tree', '--name-only', `${rev}:${dir}`], cwd); } catch { return null; } };
     const namesChanged = dir => names(from)(dir) !== names(to)(dir);
-    return { changed: changes.length, unsafe: inputOverlap(measured.inputs, changes, { namesChanged }), reaching: null, how: 'measured' };
+    return { changed: changes.length, unsafe: inputOverlap(measured.inputs, changes, { namesChanged, shadows: true }), reaching: null, how: 'measured' };
   }
   return { ...unsafeChanges(from, to, cwd, cache), how: measured === null ? 'no measured inputs' : measured.why };
 }
@@ -430,8 +430,10 @@ export function declaredReasons({ shared, sharedDeclared, sharedRows, runs, head
       const stale = sharedRows.filter(([row, entry]) => sets.includes(entry?.scene) && !covered.has(row)).map(([row]) => row);
       if (stale.length > 0) reasons.push(`run ${run}: the state folder(s) ${sets.join(', ')} changed since the shared result (run ${shared.run ?? '?'}) — ${stale.length} row(s) it measured on them are not measured again: ${stale.slice(0, 6).join(', ')}${stale.length > 6 ? ' …' : ''} — audit them (or a full audit)`);
     }
-    const tools = ['chromium', 'playwright'].filter(key => declared[key] && sharedDeclared[key] && declared[key] !== sharedDeclared[key]);
-    if (declared.viteDeps?.hash && sharedDeclared.viteDeps?.hash && declared.viteDeps.hash !== sharedDeclared.viteDeps.hash) tools.push('Vite\'s dependency cache');
+    // Every other declared input, compared as recorded: a value on one side only counts as a change (fails closed).
+    const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+    const tools = [['chromium', 'chromium'], ['playwright', 'playwright'], ['lock', 'the lock file'], ['system', 'the system identity files']].filter(([key]) => !same(declared[key], sharedDeclared[key])).map(([, name]) => name);
+    if (!same(declared.viteDeps?.hash, sharedDeclared.viteDeps?.hash) || !same(declared.viteDeps?.browserHash, sharedDeclared.viteDeps?.browserHash)) tools.push('Vite\'s dependency cache');
     const all = sharedRows.map(([row]) => row).filter(row => !covered.has(row));
     if (tools.length > 0 && all.length > 0) reasons.push(`run ${run}: ${tools.join(', ')} changed since the shared result (run ${shared.run ?? '?'}): every row is stale — a full audit`);
   }
@@ -519,7 +521,7 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   // RR26 measured: the declared inputs (the scene state folders, the browser, Vite's dependency cache) are bound by value.
   // A named run whose state folder differs from the shared result's leaves the shared result's rows on that set stale
   // unless the named runs measured them again; a different browser or dependency cache leaves every row stale.
-  if (!unchanged && sharedMeasured?.declared) {
+  if (sharedMeasured?.declared) {
     const runs = rowRuns ?? rowRunsInRange(base, head, cwd).map(run => ({ run }));
     const sharedReport = typeof summary.report === 'string' ? readJson(head, summary.report, cwd) : null;
     const sharedRows = Object.entries(sharedReport?.rows ?? {});

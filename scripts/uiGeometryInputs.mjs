@@ -1,7 +1,7 @@
 // RR26 measured (a′, user ruling 2026-10-10): what a geometry audit read, bound to its result. scripts/remote/tasks.sh
 // ui-geometry runs the dev server and the audit under the RR25 recorder (scripts/checks/testInputs/traceReads.mjs, roles
 // `vite` and `audit`), stops the server, then runs this:
-//   node scripts/uiGeometryInputs.mjs <out> <trace dir> [--state <set>=<dir> …] [--declared <dir> …]
+//   node scripts/uiGeometryInputs.mjs <out> <trace dir> [--state <set>=<dir> …] [--declared <dir> …] [--system <file> …]
 // It writes <out>/inputs.json — the files, folders and missing paths the two processes read in the repository (the same
 // form as a test's record, { files, dirs, missing, untraceable }), what could not be followed, and the declared inputs
 // that are bound by value instead of measured: the scene state folders the audit read (a hash of each set's folder),
@@ -17,6 +17,8 @@ import { collectTestInputs, packInputs } from './checks/testInputs/testInputs.mj
 import { UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
 
 export const INPUTS_FILE = 'inputs.json';
+/** The audit's own records (results, failure shots, the baseline and exceptions): what it writes or compares after measuring, never what it measures. */
+export const AUDIT_RECORDS = 'docs/verification/uiaudit1/';
 export const DEV_SERVER_CONFIG = 'scripts/remote/viteNoWatch.config.ts';
 
 const sha256 = data => createHash('sha256').update(data).digest('hex');
@@ -43,13 +45,16 @@ export function auditInputs({ root, traceDir, declared = [] }) {
     for (const reason of inputs.untraceable) merged.untraceable.add(`${name === 'vite' ? 'dev server' : 'audit'}: ${reason}`);
   }
   if (roles.vite !== undefined && !roles.vite.files.includes(DEV_SERVER_CONFIG)) merged.untraceable.add(`dev server: the files its config was bundled from were not recorded (${DEV_SERVER_CONFIG})`);
+  for (const key of ['files', 'dirs', 'lists', 'missing']) for (const path of [...merged[key]]) if (path.startsWith(AUDIT_RECORDS)) merged[key].delete(path);
+  // import.meta.glob is expanded by Vite natively: the folders it lists are not recorded.
+  for (const path of merged.files) if (/\.(m?[jt]sx?)$/.test(path) && path.startsWith('src/')) { let text = ''; try { text = readFileSync(join(root, path), 'utf8'); } catch { continue; } if (text.includes('import.meta.glob')) merged.untraceable.add(`dev server: ${path} uses import.meta.glob (Vite lists its folders natively)`); }
   const inputs = Object.fromEntries(['files', 'dirs', 'lists', 'missing', 'untraceable'].map(key => [key, [...merged[key]].sort()]));
   return { inputs, declaredPaths: [...merged.declared].sort(),
     roles: Object.fromEntries(Object.entries(roles).map(([name, role]) => [name, role === undefined ? null : { files: role.files.length, dirs: role.dirs.length, lists: role.lists?.length ?? 0, missing: role.missing.length, children: role.children ?? [] }])) };
 }
 
 /** The declared inputs: what the audit read outside the repository, bound by value. */
-export function declaredInputs({ root, states, declaredPaths, chromium }) {
+export function declaredInputs({ root, states, declaredPaths, chromium, system = [] }) {
   const real = dir => { try { return realpathSync(dir); } catch { return dir; } };
   const under = (path, dir) => path === dir || path.startsWith(`${dir}/`);
   const read = Object.entries(states).filter(([, dir]) => declaredPaths.some(path => under(path, dir) || under(path, real(dir))));
@@ -57,22 +62,26 @@ export function declaredInputs({ root, states, declaredPaths, chromium }) {
   const viteDeps = join(root, 'node_modules/.vite/deps/_metadata.json');
   let deps = null; try { const meta = JSON.parse(readFileSync(viteDeps, 'utf8')); deps = { hash: meta.hash ?? null, browserHash: meta.browserHash ?? null }; } catch { /* no cache */ }
   let playwright = null; try { playwright = JSON.parse(readFileSync(join(dirname(process.env.FLS_PLAYWRIGHT_CORE ?? ''), 'package.json'), 'utf8')).version ?? null; } catch { /* not known */ }
+  // The system identity files read (they pick native binaries), by content.
+  const systemRead = system.filter(path => declaredPaths.some(read => read === path || read === real(path))).sort();
+  const systemHashes = Object.fromEntries(systemRead.map(path => { try { return [path, sha256(readFileSync(path))]; } catch { return [path, null]; } }));
   return { states: Object.fromEntries(read.map(([set, dir]) => [set, folderHash(dir)]).sort(([a], [b]) => a.localeCompare(b))),
-    lock: file('package-lock.json'), viteDeps: deps, chromium: chromium ?? null, playwright };
+    lock: file('package-lock.json'), viteDeps: deps, chromium: chromium ?? null, playwright, system: systemHashes };
 }
 
 if (isMain(import.meta.url)) {
   const [out, traceDir, ...rest] = process.argv.slice(2);
   if (!out || !traceDir) { console.error('usage: node scripts/uiGeometryInputs.mjs <out> <trace dir> [--state <set>=<dir> …] [--declared <dir> …]'); process.exit(2); }
-  const states = {}; const declared = [];
+  const states = {}; const declared = []; const system = [];
   for (let k = 0; k < rest.length; k += 2) {
     if (rest[k] === '--state') { const [set, dir] = rest[k + 1].split('='); states[set] = dir; declared.push(dir); }
     else if (rest[k] === '--declared') declared.push(rest[k + 1]);
+    else if (rest[k] === '--system') { declared.push(rest[k + 1]); system.push(rest[k + 1]); }
   }
   const root = process.cwd();
   const report = JSON.parse(readFileSync(join(out, 'geometry.json'), 'utf8'));
   const measured = auditInputs({ root, traceDir, declared });
-  const declaredValues = declaredInputs({ root, states, declaredPaths: measured.declaredPaths, chromium: report.browser?.chromium });
+  const declaredValues = declaredInputs({ root, states, declaredPaths: measured.declaredPaths, chromium: report.browser?.chromium, system });
   const body = `${JSON.stringify({ schema: 1, kind: 'ui-geometry-inputs', run: report.run, commit: report.commit, roles: measured.roles, declared: declaredValues,
     inputs: packInputs(new Map([['audit', measured.inputs]])) })}\n`;
   writeFileSync(join(out, INPUTS_FILE), body);

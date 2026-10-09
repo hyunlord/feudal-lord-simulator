@@ -24,7 +24,9 @@ test("the dev server's reads, measured: what the page loads is in, what it does 
   const trace = join(dir, ".trace"); mkdirSync(trace);
   const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   write("index.html", '<!doctype html><html><body><div id="app"></div><script type="module" src="/src/main.ts"></script></body></html>\n');
-  write("src/main.ts", 'import "./style.css";\nimport { a } from "./a";\ndocument.getElementById("app")!.textContent = String(a);\nimport("./lazy.ts").then(m => { document.body.dataset.lazy = m.lazy; });\nconst optional = "./optional.ts"; try { await import(/* @vite-ignore */ optional); } catch { /* none yet */ }\n');
+  // Imports written as people write them: without an extension (./a, ./ui/Panel → Panel.tsx) and a folder (./m → m/index.ts).
+  write("src/main.ts", 'import "./style.css";\nimport { a } from "./a";\nimport { Panel } from "./ui/Panel";\nimport { m } from "./m";\ndocument.getElementById("app")!.textContent = String(a) + Panel + m;\nimport("./lazy.ts").then(l => { document.body.dataset.lazy = l.lazy; });\nconst optional = "./optional.ts"; try { await import(/* @vite-ignore */ optional); } catch { /* none yet */ }\n');
+  write("src/ui/Panel.tsx", 'export const Panel = "a short panel";\n'); write("src/m/index.ts", 'export const m = "m";\n');
   write("src/a.ts", "export const a = 1;\n"); write("src/lazy.ts", 'export const lazy = "yes";\n'); write("src/unused.ts", "export const u = 1;\n");
   write("src/style.css", "body { background: url('/pic.png'); }\n#app { background: url('./img.png'); }\n");
   write("public/pic.png", "PNG1"); write("src/img.png", "PNG2");
@@ -71,5 +73,11 @@ test("the dev server's reads, measured: what the page loads is in, what it does 
     assert.ok(touched(["M", "src/main.ts"], ["A", "src/new.ts"]).includes("src/main.ts"), "a file changed to import a new one");
     assert.deepEqual(touched(["A", "src/optional.ts"]), ["src/optional.ts"], "a file added where an import looked and found nothing");
     assert.deepEqual(touched(["M", "plugins/cfgPlugin.ts"]), ["plugins/cfgPlugin.ts"], "a file the config was bundled from (read natively by Rolldown, written out by the config)");
+    // Vite 8 resolves imports natively: the paths it tried are not recorded. A file added where it would now resolve first
+    // shares a module's stem or stands for its folder index — the gate counts it (shadows), as here.
+    const shadowed = (path: string) => inputOverlap(measured, [{ status: "A", path }], { shadows: true, namesChanged: () => false });
+    for (const path of ["src/ui/Panel.ts", "src/a.js", "src/m.ts"]) assert.deepEqual(shadowed(path), [path], `${path} would be resolved first: it counts as read`);
+    assert.deepEqual(shadowed("src/other.ts"), [], "a file no import could resolve to");
+    assert.deepEqual(shadowed("src/ui/Panel/index.ts"), [], "a folder index where a file already resolves (the file wins)");
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

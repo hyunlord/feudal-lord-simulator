@@ -7,6 +7,7 @@ export declare function auditInputs(options: { root: string; traceDir: string; d
   inputs: TestInputs & { lists: string[] }; declaredPaths: string[];
   roles: Record<string, { files: number; dirs: number; lists: number; missing: number; children: string[] } | null>;
 };
-export declare function declaredInputs(options: { root: string; states: Record<string, string>; declaredPaths: readonly string[]; chromium?: string | null }): {
-  states: Record<string, string>; lock: string | null; viteDeps: { hash: string | null; browserHash: string | null } | null; chromium: string | null; playwright: string | null;
+export declare const AUDIT_RECORDS: string;
+export declare function declaredInputs(options: { root: string; states: Record<string, string>; declaredPaths: readonly string[]; chromium?: string | null; system?: readonly string[] }): {
+  states: Record<string, string>; lock: string | null; viteDeps: { hash: string | null; browserHash: string | null } | null; chromium: string | null; playwright: string | null; system: Record<string, string | null>;
 };
