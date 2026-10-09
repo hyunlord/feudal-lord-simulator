@@ -4,11 +4,11 @@
 // dress — the standing policy 영주에게 (`set_standing_policy`, DTR-1), a choice the player has — so they come to him:
 //  - `home-041`, `home-048`, `home-056`: the first tick a pannage / common-pasture / road petition is the one the lord is
 //    shown (`openHomePetitions(state)[0]`) with its variant's words (`estatePetitionVariantFor`), before he acts. None by
-//    the slice's twenty years → prepared: the play's last state on to a tick of the variant's seasons with nothing
+//    the slice's twenty years (or its end) → prepared: the slice's middle year on to a tick of the variant's seasons with nothing
 //    waiting, one petition of the kind placed as the engine raises one (homePetitionSeason's shape, the kind's least sum),
 //    for 048 the town's smallest field zone made a pasture if it has none — `prepared` in states.json; a variant that
 //    holds neither way fails the script.
-//  - `registry-067`, `registry-078`: prepared. A tick of the same play with nothing waiting, the lord holding the first
+//  - `registry-067`, `registry-078`: prepared. A tick of the same play (from its middle year) with nothing waiting, the lord holding the first
 //    neighbour estate (title and possession) under a serving steward with two candidates, as tests/registryVariants.test.ts
 //    makes them (the able, merchant-minded; the loyal, peasant-minded); for 019 the estates kept direct, and all three
 //    neighbours held so the lord's attention is over its capacity. The offer 031 / 019 is made as offerV4Season makes a
@@ -28,6 +28,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { estatesOf } from "../src/engine/estates";
 import { seasonIndexOf } from "../src/engine/eventSchedule";
 import { lordBotCommands } from "../src/engine/lordBot";
+import { lordSliceOutcome } from "../src/engine/lordSlice";
 import { REGISTRY_ANSWER_TICKS, registryOf } from "../src/engine/registry";
 import type { RegistryOccurrence } from "../src/engine/registry.types";
 import { holds } from "../src/engine/registryDsl";
@@ -66,10 +67,12 @@ function play(land: string | undefined, kinds: readonly HomePetitionKind[]) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: SEED, ...(land === undefined ? {} : { archetypeId: land }) });
   if (state === null) throw new Error(`no game on ${land ?? "the slice's land"}`);
   for (const kind of kinds) state = gameReducer(state, { type: "set_standing_policy", kind, setting: "lord" });
-  const endYear = stateCalendar(state).year + YEARS;
+  const startYear = stateCalendar(state).year;
   const natural = new Map<HomePetitionKind, Shown>();
   const first = new Map<HomePetitionKind, Shown>();
-  while (stateCalendar(state).year < endYear && natural.size < kinds.length) {
+  let middle: GameState | null = null;
+  while (stateCalendar(state).year < startYear + YEARS && lordSliceOutcome(state)?.ended !== true && natural.size < kinds.length) {
+    if (middle === null && stateCalendar(state).year >= startYear + YEARS / 2) middle = state;
     const shown = openHomePetitions(state)[0];
     if (shown !== undefined && kinds.includes(shown.kind)) {
       if (!first.has(shown.kind)) first.set(shown.kind, { state, petitionId: shown.id });
@@ -77,7 +80,8 @@ function play(land: string | undefined, kinds: readonly HomePetitionKind[]) {
     }
     state = step(state);
   }
-  return { natural, first, last: state };
+  // The prepared states start from the slice's middle year, well before its end page.
+  return { natural, first, last: middle ?? state };
 }
 
 /** 048's words read a pasture: the town's smallest field zone made one (its cells and strokes as drawn). */
@@ -162,7 +166,7 @@ homeState("common_pasture", slice, "the slice's land");
 homeState("road_bridge", slice, "the slice's land");
 const forest = play("core:forest_edge", ["pannage"]);
 homeState("pannage", forest, "core:forest_edge");
-// The registry's states: the slice's last state played on to a tick with nothing waiting for the lord.
+// The registry's states: the slice's middle year played on to a tick with nothing waiting for the lord.
 let quiet = slice.last;
 for (let guard = 0; guard < 4_000 && (openHomePetitions(quiet).length > 0 || openRegistryCards(quiet).length > 0); guard += 1) quiet = step(quiet);
 registryState(quiet, "ck_evt_031", "ck_evt_067");

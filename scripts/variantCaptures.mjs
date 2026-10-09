@@ -3,7 +3,8 @@
 // as they open by themselves after the world (any other card put off first, as a player would); then, at 1280 × 800, a
 // home and a registry card put off ([나중에]) and their chip's card — the same words. Each: the variant's title and body
 // on it (the engine's read, `estatePetitionVariantFor` / `registryVariantFor`, on the same state), the answers it
-// offers, the smallest text (≥ 12 px), its box inside the view, one primary, no `title=`. JPEG, results.json beside them.
+// offers, the smallest text (≥ 12 px), its box inside the view, no primary on the card until an answer is picked (as
+// scripts/decCardLordCaptures.mjs) and one on the chip's card, no `title=`. JPEG, captures.json beside them.
 //   scripts/remote/run.sh render-VARIANTS-captures-<sha7> --light -- bash scripts/variantCaptures.sh
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/variantCaptures.mjs)", { remote: "scripts/remote/run.sh render-VARIANTS-captures-<sha7> --light -- bash scripts/variantCaptures.sh", entry: import.meta.url });
@@ -78,7 +79,7 @@ for (const { name, card, chip, chipCard } of SCENES) {
     const shown = putOff === null ? null : await measure(page, card);
     const row = { state: name, view, variant: words?.variantEntryId ?? null, putOff, card: shown };
     row.words = shown !== null && words !== null && shown.title === words.title && shown.text.includes(words.body);
-    row.pass = row.words && shown.smallestText >= 12 && shown.box.inside && shown.primary === 1 && shown.titles === 0 && shown.choices >= 2;
+    row.pass = row.words && shown.smallestText >= 12 && shown.box.inside && shown.primary === 0 && shown.titles === 0 && shown.choices >= 2;
     if (shown !== null) { row.bytes = await shoot(page, `${name}-${view}`); bytes += row.bytes; }
     rows[`${name}-${view}`] = row;
     console.log(`${row.pass ? 'ok ' : 'BAD'} ${name} ${view}: ${JSON.stringify({ ...row, card: shown === null ? null : { ...shown, text: shown.text.slice(0, 200) } })}`);
@@ -89,7 +90,7 @@ for (const { name, card, chip, chipCard } of SCENES) {
       const opened = chipShown ? await measure(page, chipCard) : null;
       const chipRow = { state: name, view, variant: row.variant, chip: chipShown, card: opened };
       chipRow.words = opened !== null && words !== null && opened.title === words.title && opened.text.includes(words.body);
-      chipRow.pass = chipRow.words && opened.smallestText >= 12 && opened.box.inside && opened.titles === 0;
+      chipRow.pass = chipRow.words && opened.smallestText >= 12 && opened.box.inside && opened.primary === 1 && opened.titles === 0;
       if (opened !== null) { chipRow.bytes = await shoot(page, `${name}-chip`); bytes += chipRow.bytes; }
       rows[`${name}-chip`] = chipRow;
       console.log(`${chipRow.pass ? 'ok ' : 'BAD'} ${name} chip: ${JSON.stringify({ ...chipRow, card: opened === null ? null : { ...opened, text: opened.text.slice(0, 200) } })}`);
