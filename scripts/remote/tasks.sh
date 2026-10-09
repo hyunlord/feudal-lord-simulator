@@ -180,7 +180,7 @@ ui-geometry)
     "$lord2/audit-pending.json" "$lord2/attention-overloaded.json" "$lord2/promises.json" "$lord2/neighbour-suit.json" \
     "$deccard2/trace-season.json" "$deccard2/trace-later.json" "$deccard2/year-eve.json" "$deccard2/year-loaded.json" "$deccard2/succession.json" \
     "$slice/slice-end.json" "$variants/home-041.json" "$variants/home-048.json" "$variants/home-056.json" "$variants/registry-067.json" "$variants/registry-078.json" \
-    "$growplan/plan-waiting.json" "$growplan/plan-sites.json" "$growplan/plan-failed.json"; do
+    "$growplan/plan-waiting.json" "$growplan/plan-sites.json" "$growplan/plan-searching.json" "$growplan/plan-asked.json" "$growplan/plan-failed.json"; do
     [ -f "$f" ] || missing="$missing $f"
   done
   if [ -n "$missing" ]; then
