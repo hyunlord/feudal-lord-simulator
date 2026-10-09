@@ -1,0 +1,195 @@
+{
+  "run": "engineB-tlink-baseline125-cf3fa94",
+  "sourceRevision": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+  "productRevision": "64a16b5a6c1d91024415039db89bb88412528e15",
+  "producerExitCode": 0,
+  "scorerExitCode": 1,
+  "commandSeconds": 13416.9,
+  "scope": "Baseline only. Not prototype acceptance or paired rule parity.",
+  "cohort": {
+    "sourceRevision": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+    "source": {
+      "revision": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+      "platform": "linux",
+      "node": "v24.21.0",
+      "status": "",
+      "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+      "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+    },
+    "toolHashes": {
+      "engineBOutcomeProduce.ts": "081e731e32a6c14946529063a949c96dd12c4ad41ce4c35a6e5545266e289ae2",
+      "engineBOutcomeEvidence.ts": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875",
+      "engineBOutcomeCollect.ts": "11008111ef7a0c0001c30b128aac402db52cdfe27a0dcf9f6d4b4d8c66b16766",
+      "engineBOutcomeTaxonomy.ts": "5d778cd40caae2dcf0c07163a7f9a5a046fac98cc1683feda9779fe2b745c1a5",
+      "engineBOutcomeArchive.mjs": "769c44c017183d5a162d6926e21f837b64c1d7f4385f2e03bddd00d7e2a9d718",
+      "registryDecisionOccurrences.ts": "e81a40bbde91cae90e49788d515634bad0936313ae655d7aeea630bd5ce3ae63",
+      "engineBTlinkParity.ts": "88077edd542e891869d20a63746ce45e575cb80d174047e43e82e18aa982ba45"
+    }
+  },
+  "seeds": [
+    {
+      "seed": 1,
+      "heavyAnswers": 245,
+      "matureAnswers": 238,
+      "direct": 71,
+      "ratio": 0.29831932773109243,
+      "insufficientObservation": 7,
+      "unlinked": 167,
+      "commands": 2117,
+      "replayVerified": true,
+      "finalRuleHash": "8f311a89f84334a0d32be684a2c77a7a58dbb11fd360d0ae2ad768f3c5618d6b",
+      "rollingRuleHash": "9cc97cfa3fad4a860b797d8294f27d62d65ef16fe5130f8e4cfaad2ce0b0b473",
+      "checkpoints": 2619
+    },
+    {
+      "seed": 2,
+      "heavyAnswers": 282,
+      "matureAnswers": 275,
+      "direct": 114,
+      "ratio": 0.41454545454545455,
+      "insufficientObservation": 7,
+      "unlinked": 161,
+      "commands": 2114,
+      "replayVerified": true,
+      "finalRuleHash": "c05852f24891621569aacf7d8d5cc8da5940db7ae34b747633fe8bd120887e28",
+      "rollingRuleHash": "6de86362c1b71eb92ec5e8953b4d4e7f51595e95dd6d7ab5781cd5c035aeea73",
+      "checkpoints": 2616
+    },
+    {
+      "seed": 3,
+      "heavyAnswers": 309,
+      "matureAnswers": 303,
+      "direct": 107,
+      "ratio": 0.35313531353135313,
+      "insufficientObservation": 6,
+      "unlinked": 196,
+      "commands": 1849,
+      "replayVerified": true,
+      "finalRuleHash": "40467d005c315907d99ddb5fbc53bcb4cfcde243b953ceca4e40ed87ef080145",
+      "rollingRuleHash": "4299cf1adc263a4c317efbc50162b14390c248f71ab58335152e209b919560ed",
+      "checkpoints": 2351
+    }
+  ],
+  "counts": {
+    "direct": 292,
+    "conditional": 0,
+    "insufficient-observation": 20,
+    "unlinked": 524
+  },
+  "primaryMetric": {
+    "numerator": 292,
+    "denominator": 816,
+    "ratio": 0.35784313725490197,
+    "threshold": 0.8,
+    "thresholdMet": false
+  },
+  "originalPass": false,
+  "unclassifiedCommands": 2,
+  "supplementalPhaseAnswers": {
+    "phaseAnswers": [
+      {
+        "seed": 2,
+        "historyId": "h-006167",
+        "tick": 84163,
+        "command": "confirm_palisade_proclamation",
+        "classification": "phase_big",
+        "mature": true,
+        "futureReceipts": [],
+        "status": "unlinked",
+        "evidence": {
+          "recordId": "h-006167",
+          "kind": "decision",
+          "template": "decision.market_town",
+          "decisionKind": "market_town"
+        },
+        "source": [
+          "src/engine/history.ts:89-97",
+          "src/engine/history.ts:289-314"
+        ],
+        "provenance": {
+          "seed": 2,
+          "sourceRevision": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+          "replayFormat": "outcome-replay-v1",
+          "node": "v24.21.0",
+          "dependencyLockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+          "rawSha256": "ee4e373f98629f1f1a4afc5f16795620a8d9c2b4a6f6206c9064c4d9a527a6df",
+          "replayManifestSha256": "86c5386e769b23a28a23f2f18e20db7d116f9ed6a9e0063219a72e20d9e9db2f",
+          "validitySha256": "e89de5eef289c129ec64a63298073cf6dc604f72bcc972b74e1342dab07e3af7",
+          "classificationSha256": "7dbd0443097b1523cfdb823a438144b4db1af2b16458c1b54b330830fbf3a8e6",
+          "matcherSourceFiles": [
+            {
+              "path": "src/engine/history.ts",
+              "revision": "64a16b5a6c1d91024415039db89bb88412528e15",
+              "sha256": "f1872051959a546188109683e61a317d27c41ed8ea73443a5fe6e8b3c5452215"
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "historyId": "h-028971",
+        "tick": 393043,
+        "command": "confirm_stone_town_proclamation",
+        "classification": "phase_big",
+        "mature": true,
+        "futureReceipts": [],
+        "status": "unlinked",
+        "evidence": {
+          "recordId": "h-028971",
+          "kind": "decision",
+          "template": "decision.stone_town",
+          "decisionKind": "stone_town"
+        },
+        "source": [
+          "src/engine/history.ts:89-97",
+          "src/engine/history.ts:289-314"
+        ],
+        "provenance": {
+          "seed": 2,
+          "sourceRevision": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+          "replayFormat": "outcome-replay-v1",
+          "node": "v24.21.0",
+          "dependencyLockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+          "rawSha256": "ee4e373f98629f1f1a4afc5f16795620a8d9c2b4a6f6206c9064c4d9a527a6df",
+          "replayManifestSha256": "86c5386e769b23a28a23f2f18e20db7d116f9ed6a9e0063219a72e20d9e9db2f",
+          "validitySha256": "e89de5eef289c129ec64a63298073cf6dc604f72bcc972b74e1342dab07e3af7",
+          "classificationSha256": "7dbd0443097b1523cfdb823a438144b4db1af2b16458c1b54b330830fbf3a8e6",
+          "matcherSourceFiles": [
+            {
+              "path": "src/engine/history.ts",
+              "revision": "64a16b5a6c1d91024415039db89bb88412528e15",
+              "sha256": "f1872051959a546188109683e61a317d27c41ed8ea73443a5fe6e8b3c5452215"
+            }
+          ]
+        }
+      }
+    ],
+    "unresolvedUnclassified": [],
+    "expandedHeavyRatio": {
+      "numerator": 292,
+      "denominator": 818,
+      "ratio": 0.3569682151589242,
+      "threshold": 0.8,
+      "thresholdMet": false
+    },
+    "allUnclassifiedResolved": true,
+    "originalUnclassifiedCount": 2
+  },
+  "reports": {
+    "baseline-score.json": {
+      "path": "baseline-score.json.gz",
+      "rawSha256": "9f920fd4958d6f846fd0a363ca227940ab4e21a77862d5d7f43cd1744a648e97",
+      "gzipSha256": "339bc8e2861f50a61abb8ee7c2471eba4c3ef3b63ee0072947c9524b932e6ed8",
+      "rawBytes": 734935,
+      "gzipBytes": 34335
+    },
+    "baseline-residuals.json": {
+      "path": "baseline-residuals.json.gz",
+      "rawSha256": "e80eb362f5a640debdf874a5c68c27bcb7bf8b9664d1c6767fca96e6961cb6a7",
+      "gzipSha256": "cb0438c73d8cc6faa06bfb49a964db1372357f2db11644dd24cd8d50b26b1137",
+      "rawBytes": 1161012,
+      "gzipBytes": 21794
+    }
+  },
+  "baselineBundleSha256": "2ca57dd1f2d934016195cb2d1fafb2f44963c5834cf76ef277acbca98b16b49d"
+}
