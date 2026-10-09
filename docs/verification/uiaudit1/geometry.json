@@ -1,12 +1,14 @@
 {
  "schema": 1,
- "run": "render-LEAD-season-geometry-db1b1b1-db1b1b1",
- "commit": "db1b1b1eef51d9b786842c6a0e0bb4bdcfebb4b9",
+ "run": "infra-RR26-full-7af6f5e",
+ "commit": "7af6f5e7cd47ac3b4d74b2bc989b1fe138b47b91",
  "dirty": false,
- "inputs": 2519,
- "inputHash": "1fc64862c2d344aa660d1052a7bf944389821195cbf71afdfd590874bc084e4a",
- "measuredAt": "2026-10-09T03:46:26.644Z",
- "report": "docs/verification/uiaudit1/geometry/render-LEAD-season-geometry-db1b1b1-db1b1b1/geometry.json",
+ "full": true,
+ "axesNarrowed": false,
+ "inputs": 6152,
+ "inputHash": "a7045c732676fec226e3b27531dd24061803c0773f4692b9b37f60cc6a2a0261",
+ "measuredAt": "2026-10-09T04:47:43.109Z",
+ "report": "docs/verification/uiaudit1/geometry/infra-RR26-full-7af6f5e/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,13 +26,18 @@
    "extreme"
   ]
  },
- "rows": 3,
- "conditions": 60,
- "measured": 60,
+ "rows": 191,
+ "conditions": 3562,
+ "measured": 3562,
  "failures": 0,
  "unopened": 0,
- "unreachable": [],
- "warnings": 0,
+ "unreachable": [
+  "hud.goal-help",
+  "hud.unlock-banner",
+  "hud.era-ceremony",
+  "hud.build-details"
+ ],
+ "warnings": 878,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -53,12 +60,932 @@
   "fixed": 0
  },
  "bySurface": {
+  "hud.status-pill": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.season-strip-panel": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.time-cluster": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.settings-popover": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.layer-switch": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.layer-switch-note": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.action-dock": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.steward-bubble": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.crisis-icons": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.stuck-goods": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-chips": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.lord-moment": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.family-moment": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.family-links": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.goal-chips": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.pause-veil": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.completion-toast": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.cause-legend": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.zone-toolbar": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.zone-land-legend": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.placement-confirm": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.prediction-chip": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.hover-tooltip": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.build-drawer": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.build-drawer.fen": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.prediction-chip.drain": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.build-pinned": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.qa-overlay": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.drawer": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.status": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.settlement": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.population": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.population.panel": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.population.records": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.inspector": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.inspector.body": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.stock": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.steward": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.steward-bubble.ledger": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.steward-concern": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.alerts": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.view": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.map": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.map-overview": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.rights": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.rights-decline": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.wage": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.reorg": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.legacy": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.house": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.walker": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.site": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.farmstead": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.store": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.pause": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.season-ledger": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
+  "modal.year-review": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.famine": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.famine-answered": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch1": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch2-war": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch4-reorg": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-legacy": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.heir": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch3-plague": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch4-guild": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-royal-tax": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-legacy-choice": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.interlude-guild": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.interlude-church": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-page.ch1": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-page.ch2": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-page.ch3": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-page.ch4": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-page.ch5": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-preview": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-preview.goals": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-loading": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.person-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.records": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.record-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.snapshot-map": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.snapshot-figure": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.select-list": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.decision": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.biography": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.person-card.king": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.biography.king": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.family-tree": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.tree-banner": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.tree-generation": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.tree-node": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.factions": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.factions-panel": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.faction-page": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.legacy-ending": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chronicle-book": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chronicle-book.chapter": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chronicle-book.family": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chronicle-book.factions": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chronicle-book.legacy": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "screen.welcome": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "screen.welcome.house": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "dev.ui-kit": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "dev.ui-kit.section": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "dev.ui-kit.dark": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "dev.ui-kit.tooltip": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "dev.ui-kit.number": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.no-art": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.guardian": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.request": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.house-change.wardship": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.house-change.inherited": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry-hold": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.lord-farmstead": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt-old": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt-none": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt-inspector": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord-refusal": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.food-breakdown": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.status-pill.lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.stock-lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.command-pins": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.screen": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord-open": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.draft": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.counter": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.treaty": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.row": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.reason": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.will-change": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.contested": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.promises": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.book": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.track": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.empty": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.suit": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.neighbour": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.defence-enforcing": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.entry-threat": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.entry-forced": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.estates.home": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.estates.card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.estates.delegated": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.estates.overloaded": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.estates.audit-pending": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord-policy-subsidy": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.region": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.region.zoomed": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.will-kept": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.will-change": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.suit-defence": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.entry-threat": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.contested": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.audit": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.offmap-petition": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.standing": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.standing.kind": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.season-ledger.steward": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.trace": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.thread-decision": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.thread-because": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.year-review.lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.year": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.house-change.lord-died": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.auto-pause": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.auto-pause.link": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.variant-041": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.variant-048": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.variant-056": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry.variant-067": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry.variant-078": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.home-petition-variant": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.registry-variant": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.slice-start": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.slice-end": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.slice-end.record": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.slice-end.year-card": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
