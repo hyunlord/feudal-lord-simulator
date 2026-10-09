@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "computation": "Independent pinned advanceTick exactly once per verified preclose; no browser/no lordBot",
+  "seed": 1,
+  "replayManifestSha256": "71f4d346b18376878f56816063723cffe883b48a9e09fb6b7f1ee3e55be0b6ac",
+  "annualAnswerReportSha256": "428725fcb089658a50d89521b7654524ba62424cd053bfe60f797254c26beeb3",
+  "outputs": [
+    {
+      "entryId": "ck_evt_058",
+      "tick": 127000,
+      "file": "ck_evt_058-expected-127000.json",
+      "fileSha256": "d192a86b8ff41f8f74b63f8b9a9cea4f2e37dafa97ab942807356254b279dd19",
+      "occurrenceId": "registry:ck_evt_058:petition.charterFee|ck_evt_058@126000:126",
+      "inputFileSha256": "4b71ac273c1bf3cc4cd4ae64b953fd88d44e31bf727a3b68079d91ccb2209e5e",
+      "inputStateSha256": "960db73c56f83c2b3559157f488c2c8caf24caaaff8373efbbc9f0915a92c190"
+    },
+    {
+      "entryId": "ck_evt_034",
+      "tick": 172000,
+      "file": "ck_evt_034-expected-172000.json",
+      "fileSha256": "02b45eea34b259e37553f58e79a613d5380d4e77a6ea611ee081f3a57fbc2247",
+      "occurrenceId": "registry:ck_evt_034:steward.precedent|:171",
+      "inputFileSha256": "6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d",
+      "inputStateSha256": "abcf5fc595d6ac3d9b17d4db8334c1829504d0248412b978f9f2706b77f3217b"
+    },
+    {
+      "entryId": "ck_evt_144",
+      "tick": 416000,
+      "file": "ck_evt_144-expected-416000.json",
+      "fileSha256": "5d1c51ffd8487061f168c54bd78c14a52523c67d6d953f8ec29e233020b3cb48",
+      "occurrenceId": "registry:ck_evt_144:ck_evt_144|:415",
+      "inputFileSha256": "fa8cb60fc5dd8603d4c0815f5b19b846540988d9b38441431b02c767c20bad4f",
+      "inputStateSha256": "2b78d29695a3c8bc5a2545a11d4a5d414ed535a317aadf2815687d9179c67958"
+    },
+    {
+      "entryId": "ck_evt_163",
+      "tick": 451000,
+      "file": "ck_evt_163-expected-451000.json",
+      "fileSha256": "53a770b535a53c2d374ee0a07e4f9f1ab9db418c308af5730e1e220cd7a2a68e",
+      "occurrenceId": "registry:ck_evt_163:ck_evt_163|:450",
+      "inputFileSha256": "ff419760d923be57065626d1c5cebc81c166acbcb7d209e8be94f4239c1e27a3",
+      "inputStateSha256": "972a8f3f6c30cec2874ac34d04827e9e90368e4192c94f0103adae487ecc88a0"
+    }
+  ]
+}

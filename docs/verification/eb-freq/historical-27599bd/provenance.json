@@ -1,0 +1,354 @@
+{
+  "status": "projection_verified_exact40_gate_report_reviewed",
+  "applicabilityAllowed": false,
+  "run": "engineB-historical-null-27599bd",
+  "externalManifestSha256": "91bdcf3dd03e9e9d36b2bb06d138c90d29e386877ac9830ea47f0604363b2cfc",
+  "sourceRevision": "56ee1d9d8259f89e6122153cedd82e783a74f5c7",
+  "toolRevision": "27599bd5ace470476a8ee0be727535b34a0373a5",
+  "replayRuntime": "v24.21.0",
+  "seed": 1,
+  "years": 125,
+  "local_kept": "/tmp/engineB-historical-null-27599bd/.remote-runs/engineB-historical-null-27599bd",
+  "remote_kept": "/home/hyunlord/fls-runs/_kept/engineB-historical-null-27599bd/.remote",
+  "exitCode": 0,
+  "timingEnv": "SYNC_S=22.7\nPREPARE_S=3.5\nWAIT_S=2.0\nCOMMAND_S=1970.2\nNM_CACHE=hit\nPORT=4304\n",
+  "observerSummary": {
+    "rows": 63748,
+    "callbackInvocations": 63748,
+    "writeFailures": 0,
+    "observerFailures": 0,
+    "firstErrors": []
+  },
+  "terminalCheck": {
+    "evidenceSource": "Parent independently checked; not repeated by archival executor",
+    "activeState": "inactive",
+    "subState": "dead",
+    "processesWithRunCwd": 0
+  },
+  "parentArtifactVerification": "Parent source/projection verification preserved in parent-check.json.gz; classification recomputation in classification-parent-check.json.gz. Separate independent review is attributed below.",
+  "archivalChecks": {
+    "manifestExternalPin": true,
+    "all12ManifestArtifactHashes": true,
+    "ndjsonRows": 63748,
+    "gzipRawEquivalent": true,
+    "replayRunBytesIdenticalOriginal": true,
+    "savedReportSummaryEqualsOriginal": true
+  },
+  "artifacts": {
+    "changed-files.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "eb-historical-56ee1d9/candidate-observation.ndjson": {
+      "bytes": 23056334,
+      "sha256": "07f2353660f7dd008dd6af8d1d1ed41971b5c0ead9cefb7280b7caca5f0d4fe1"
+    },
+    "eb-historical-56ee1d9/candidate-observation.ndjson.gz": {
+      "bytes": 993283,
+      "sha256": "6166cd188519a4c0d89041b1656673c569794c8d2c004c819cdf49d37b943c52"
+    },
+    "eb-historical-56ee1d9/historical-typecheck.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "eb-historical-56ee1d9/instrumentation-manifest.json": {
+      "bytes": 651,
+      "sha256": "513170a9c890d86a7f4f491b759e30bed8ae9fcc75a9e2a744c44ae47d0a439a"
+    },
+    "eb-historical-56ee1d9/observation-counts.json": {
+      "bytes": 18975,
+      "sha256": "dbdb04826b95a02f9e57016a94781960c7eefbcb318664e4799aa83442b12500"
+    },
+    "eb-historical-56ee1d9/observer-source.ts.txt": {
+      "bytes": 1248,
+      "sha256": "b83ef40a50232a167cc998b7f86e2cf755f0ba1affe97d6a7663bbe6221ee6d5"
+    },
+    "eb-historical-56ee1d9/observer-summary.json": {
+      "bytes": 120,
+      "sha256": "36040007dbf895eb772ec7c03100055849e0a902d83c7123f395844e669252bb"
+    },
+    "eb-historical-56ee1d9/priority-prerequisites.json": {
+      "bytes": 1837,
+      "sha256": "7c01c0e2de089ecb40c90c635b6a8168a8d7bb970c80d47d096d4ce2048d4d6f"
+    },
+    "eb-historical-56ee1d9/projection-parity.json": {
+      "bytes": 708,
+      "sha256": "86f99f96d8a3eb4e757011df725d24ba4d5586611f06bf8fbd3b986703339d00"
+    },
+    "eb-historical-56ee1d9/reference-validation.json": {
+      "bytes": 2982,
+      "sha256": "070ad56a4cd46d5ff5e3d22f1e4b513e5aa12761d5b57fef467a1e2e41a1162e"
+    },
+    "eb-historical-56ee1d9/registry.ts.instrumented.txt": {
+      "bytes": 44456,
+      "sha256": "4d5fc314d64455e169616c4a3421fe42ec5a35b57345259b4b1bba4609a85aba"
+    },
+    "eb-historical-56ee1d9/registryV4.ts.instrumented.txt": {
+      "bytes": 36850,
+      "sha256": "cf576c63a302c60ba7bff3d184132533ce409903d6969b5dd80cc021f9072e1f"
+    },
+    "eb-historical-56ee1d9/replay-distribution-summary.json": {
+      "bytes": 1776330,
+      "sha256": "89c96831dd62bc20b72ae6ea226f4c488b78015810204221ee69d1fe7282beac"
+    },
+    "eb-historical-56ee1d9/replay-manifest.json": {
+      "bytes": 1785,
+      "sha256": "91bdcf3dd03e9e9d36b2bb06d138c90d29e386877ac9830ea47f0604363b2cfc"
+    },
+    "eb-historical-56ee1d9/replay-run.json": {
+      "bytes": 1467139,
+      "sha256": "95d34c0a79b51856386c4cfc443ddb1a224a3d9408d928ca33b105b67ffb3d52"
+    },
+    "eb-historical-56ee1d9/report-parity.json": {
+      "bytes": 179,
+      "sha256": "c6b32a6c880c6ac7faff9b130faee0f9215abae84be6c67e129b6e97e18825a2"
+    },
+    "eb-historical-56ee1d9/tool-hashes.json": {
+      "bytes": 517,
+      "sha256": "206b4facf19d30bcd0dc145bdc6df358768b7fa8d810f9385a9e33c35ab02ef4"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalInstrumentation.mjs": {
+      "bytes": 12360,
+      "sha256": "2ffa1ac8f7cd7341490aefc92096c04cc5a67007751627a977b1ccbe2a9472b2"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalObservations.mjs": {
+      "bytes": 5550,
+      "sha256": "04e510098dade2c830f06d4fc46d9a9e0e4f595b601f0e90aa84996dbd2ce7f4"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalProjection.mjs": {
+      "bytes": 3460,
+      "sha256": "3f0cd9e0ae47ec698f7d518821656557ff29cfe2fccab0fedb0fbc528dd7b1ef"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalReference.mjs": {
+      "bytes": 5060,
+      "sha256": "7a307e38a979b33ee293dfe9337825e6328c06047aad7bd5567f76ba2c5ff74e"
+    },
+    "eb-historical-56ee1d9/validity.json": {
+      "bytes": 75,
+      "sha256": "6aa6c0846f468934b4c475059639d8c27809fe027ed9069a52ac56a6b683015c"
+    },
+    "exit-code": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "keep": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "pid": {
+      "bytes": 8,
+      "sha256": "bf51c9d0ed81cf7700b801a32176d8c1136cae0e7b6557e72d63f43f30711069"
+    },
+    "run.log": {
+      "bytes": 19138,
+      "sha256": "6de92e335400b8088a1e0ca0dbfaabdaa45207758bafd32917659ff761ef5dd4"
+    },
+    "start-marker": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "timing.env": {
+      "bytes": 77,
+      "sha256": "d34e7762ee6a94b84a1ddbe9dd1649e387a32311d80e9d971c09af78f3c7b0f0"
+    },
+    "unit": {
+      "bytes": 51,
+      "sha256": "bd07a8a0e6d3d819f58259998b34ed4bdd13ef413d684ed44cb56c8d83e71b15"
+    }
+  },
+  "copiedTools": {
+    "eb-historical-56ee1d9/tools/engineBHistoricalInstrumentation.mjs": {
+      "bytes": 12360,
+      "sha256": "2ffa1ac8f7cd7341490aefc92096c04cc5a67007751627a977b1ccbe2a9472b2"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalObservations.mjs": {
+      "bytes": 5550,
+      "sha256": "04e510098dade2c830f06d4fc46d9a9e0e4f595b601f0e90aa84996dbd2ce7f4"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalProjection.mjs": {
+      "bytes": 3460,
+      "sha256": "3f0cd9e0ae47ec698f7d518821656557ff29cfe2fccab0fedb0fbc528dd7b1ef"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalReference.mjs": {
+      "bytes": 5060,
+      "sha256": "7a307e38a979b33ee293dfe9337825e6328c06047aad7bd5567f76ba2c5ff74e"
+    }
+  },
+  "instrumentationArtifacts": {
+    "eb-historical-56ee1d9/instrumentation-manifest.json": {
+      "bytes": 651,
+      "sha256": "513170a9c890d86a7f4f491b759e30bed8ae9fcc75a9e2a744c44ae47d0a439a"
+    },
+    "eb-historical-56ee1d9/observer-source.ts.txt": {
+      "bytes": 1248,
+      "sha256": "b83ef40a50232a167cc998b7f86e2cf755f0ba1affe97d6a7663bbe6221ee6d5"
+    },
+    "eb-historical-56ee1d9/registry.ts.instrumented.txt": {
+      "bytes": 44456,
+      "sha256": "4d5fc314d64455e169616c4a3421fe42ec5a35b57345259b4b1bba4609a85aba"
+    },
+    "eb-historical-56ee1d9/registryV4.ts.instrumented.txt": {
+      "bytes": 36850,
+      "sha256": "cf576c63a302c60ba7bff3d184132533ce409903d6969b5dd80cc021f9072e1f"
+    }
+  },
+  "archives": [
+    {
+      "file": "replay-manifest.json.gz",
+      "bytes": 960,
+      "sha256": "0e3f46c4df2a9883ff9b16cef10413a46e09bba60e6bf9c4101394e3054c4ada",
+      "originalBytes": 1785,
+      "originalSha256": "91bdcf3dd03e9e9d36b2bb06d138c90d29e386877ac9830ea47f0604363b2cfc"
+    },
+    {
+      "file": "observer-summary.json.gz",
+      "bytes": 103,
+      "sha256": "3de0bc2f5f2766be7f86eee64e4d0220b07babb2c19491c73af3c34738eadfeb",
+      "originalBytes": 120,
+      "originalSha256": "36040007dbf895eb772ec7c03100055849e0a902d83c7123f395844e669252bb"
+    },
+    {
+      "file": "projection-parity.json.gz",
+      "bytes": 392,
+      "sha256": "184ad4e1c6e74a0bc7e30259a278fdcf26491fe978663096e1df67ac86324a32",
+      "originalBytes": 708,
+      "originalSha256": "86f99f96d8a3eb4e757011df725d24ba4d5586611f06bf8fbd3b986703339d00"
+    },
+    {
+      "file": "report-parity.json.gz",
+      "bytes": 162,
+      "sha256": "1b2fa8027756bd6e67bf1ac163b51950005a64ba253efd5cd7ad45e75e768c83",
+      "originalBytes": 179,
+      "originalSha256": "c6b32a6c880c6ac7faff9b130faee0f9215abae84be6c67e129b6e97e18825a2"
+    },
+    {
+      "file": "instrumentation-manifest.json.gz",
+      "bytes": 394,
+      "sha256": "78dc83637599d200ed8604d5be90eaef68936907a37c9b410244f98b4670bd53",
+      "originalBytes": 651,
+      "originalSha256": "513170a9c890d86a7f4f491b759e30bed8ae9fcc75a9e2a744c44ae47d0a439a"
+    },
+    {
+      "file": "tool-hashes.json.gz",
+      "bytes": 327,
+      "sha256": "f716b355261f32fd0e30109db944ac4ccf9e7e8618b0bd9495f1a0082f92c85d",
+      "originalBytes": 517,
+      "originalSha256": "206b4facf19d30bcd0dc145bdc6df358768b7fa8d810f9385a9e33c35ab02ef4"
+    },
+    {
+      "file": "reference-validation.json.gz",
+      "bytes": 764,
+      "sha256": "4e94eff5a0d694b76ecdf7557ef7c8b7189b362c019933ed82d195e26da408d7",
+      "originalBytes": 2982,
+      "originalSha256": "070ad56a4cd46d5ff5e3d22f1e4b513e5aa12761d5b57fef467a1e2e41a1162e"
+    },
+    {
+      "file": "validity.json.gz",
+      "bytes": 91,
+      "sha256": "95e451fc631c0c1550be40f63468939930eef21d2fe41018618a7e2732c5a62f",
+      "originalBytes": 75,
+      "originalSha256": "6aa6c0846f468934b4c475059639d8c27809fe027ed9069a52ac56a6b683015c"
+    },
+    {
+      "file": "priority-prerequisites.json.gz",
+      "bytes": 682,
+      "sha256": "e3c4241b9b2757289175b566b6a654374bd1d12d828854150f88c29d195f8ec6",
+      "originalBytes": 1837,
+      "originalSha256": "7c01c0e2de089ecb40c90c635b6a8168a8d7bb970c80d47d096d4ce2048d4d6f"
+    },
+    {
+      "file": "observation-counts.json.gz",
+      "bytes": 1261,
+      "sha256": "da9c4aa5fa43e6f3554a7545018e705a024dff5f5574ff3dcd1370522f9de56e",
+      "originalBytes": 18975,
+      "originalSha256": "dbdb04826b95a02f9e57016a94781960c7eefbcb318664e4799aa83442b12500"
+    },
+    {
+      "file": "parent-check.json.gz",
+      "bytes": 423,
+      "sha256": "6d9b7495b3b68467918f435f9dba5127b2f62ae6421e528408b7fe7294e8fb5f",
+      "originalBytes": 706,
+      "originalSha256": "9072402b568ef79816798c963413a26ed9a03afd79200bbc5970ea4d14752e7d"
+    }
+  ],
+  "limits": [
+    "Event 147 requested-category assignment and hidden subpredicate causes remain unresolved.",
+    "No full-state or per-tick identity proof.",
+    "Original runtime provenance not verified.",
+    "No complete original hidden-cause claim.",
+    "Wrapper is untracked in the tool commit; actual command is retained in run.log. Independent source/projection review is not causal classification review."
+  ],
+  "parentCheck": {
+    "source": ".omo/evidence/historical-27599bd-parent-check.json",
+    "sha256": "9072402b568ef79816798c963413a26ed9a03afd79200bbc5970ea4d14752e7d",
+    "evidenceScope": "Parent external verification, not repeated in full by archival executor"
+  },
+  "independentReview": {
+    "reviewer": "scope_review",
+    "evidenceSource": "Parent relayed independent review PASS",
+    "verified": [
+      "all 12 manifest artifact hashes",
+      "four copied tools match tool commit",
+      "actual instrumentation regeneration and strip to historical source",
+      "whole original run bytes/hash",
+      "saved report summary",
+      "63748 rows and zero observer/write errors",
+      "run.log embedded wrapper matches current ignored wrapper except final newline"
+    ],
+    "notIndependentlyChecked": [
+      "remote unit/process termination over SSH"
+    ],
+    "wrapperProvenanceLimit": "Wrapper itself is not tracked in the tool commit; complete actual command is preserved in retained run.log.",
+    "classificationReviewed": false
+  },
+  "classificationStatus": "gate_and_selection_report_reviewed; one requested-category assignment unresolved",
+  "derivedArtifacts": {
+    "classification.json.gz": {
+      "source": ".omo/evidence/historical-27599bd-classification.json",
+      "originalBytes": 880745,
+      "originalSha256": "fc3c9316ac4aebe333b5a96e7dd91166bdc3e99e265e694168bc347c62253f58",
+      "compressedBytes": 49340,
+      "compressedSha256": "e48f0927f45f9a47833d27bd87399f44ea1aa11fcb6add8b8758052b2069a89b"
+    },
+    "classification-packets.json.gz": {
+      "source": ".omo/evidence/historical-27599bd-packets.json",
+      "originalBytes": 537199,
+      "originalSha256": "538ce0bf00b090a8b7d807d9264816c3f8b9cc17aea7cb862de1b2e9d447197a",
+      "compressedBytes": 25777,
+      "compressedSha256": "b4cc4ef90efe1768a4c76c674addff2f20519ec6d606d4873b21863cf3db664d"
+    },
+    "classification-packets.mjs.gz": {
+      "source": ".omo/evidence/historical-classification-packets.mjs",
+      "originalBytes": 6248,
+      "originalSha256": "0d8866a52fd5dbb33e436a331bf127ef029614abcf9f7df8cf891a5d629c5d4e",
+      "compressedBytes": 2484,
+      "compressedSha256": "a9b4991f35fe7356d226cd4ea6d3277b29d61fd7895df31561a884a7dc820827"
+    },
+    "classification-parent-check.json.gz": {
+      "source": ".omo/evidence/historical-27599bd-classification-parent-check.json",
+      "originalBytes": 469,
+      "originalSha256": "ab9b2fe71f2098ad3a063766f5c85e59c082bc5057ad7dc9461b880ad16650ae",
+      "compressedBytes": 317,
+      "compressedSha256": "ab657d3d16c53274cfa2004c5eceb066541531ff4a5d74dacfee5ad787a6735d"
+    }
+  },
+  "classificationIndependentReview": {
+    "reviewer": "scope_review",
+    "evidenceSource": "Parent relayed independent review message, 2026-10-09",
+    "blockingFindings": [],
+    "verified": [
+      "classification and packet hashes",
+      "exact40 IDs and counts",
+      "five weighted-selection intervals and winning candidates",
+      "147 two outer-budget witnesses and pace/chance counts",
+      "ten historical source hashes and all forty historical specifications"
+    ],
+    "warning": "Keep single_slot_weighted_competition_not_literal_cooldown subtype with cooldown-conflict category. Category alone can imply a literal cooldown/dedup rejection.",
+    "unresolved": [
+      "147 requested-category assignment",
+      "binding/context subpredicate causes",
+      "full-state/per-tick/original-runtime identity",
+      "overall EB-FREQ completion"
+    ]
+  }
+}

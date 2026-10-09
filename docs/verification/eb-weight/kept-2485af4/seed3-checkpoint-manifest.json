@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "dirtyPaths": "",
+  "endTickExclusive": 500000,
+  "lastObservedTick": 500000,
+  "pairs": [
+    {
+      "entryId": "ck_evt_042",
+      "decisionId": "h-001136",
+      "decisionTick": 29017,
+      "source": "registry:ck_evt_042:firm",
+      "answer": {
+        "file": "ck_evt_042-answer-h-001136.save.json.gz",
+        "fileSha256": "4bb7a22958351213724540e9dd9d9845143a9d11c4ff67531b59e9b92da48b76",
+        "encodedSaveSha256": "dced6d6c0a20101c3da31a7c7986368e7f61ede2464f7f2ac412d58f0ae86130",
+        "observedTick": 29017,
+        "bytes": 78433
+      },
+      "consequence": {
+        "file": "ck_evt_042-consequence-h-001258.save.json.gz",
+        "fileSha256": "8eea55a06bf3e47ae7e8d1df99e21999dfd563337df2e3bffda6a5c280a80274",
+        "encodedSaveSha256": "5dc6e27bada07d040dd3a82f9fb620f3b755c73b3fee0c8ae372d952bb99b115",
+        "observedTick": 31200,
+        "bytes": 82817,
+        "historyId": "h-001258",
+        "historyTick": 31200,
+        "because": [
+          {
+            "decisionId": "h-001136",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_211",
+      "decisionId": "h-001193",
+      "decisionTick": 30031,
+      "source": "registry:ck_evt_211:a",
+      "answer": {
+        "file": "ck_evt_211-answer-h-001193.save.json.gz",
+        "fileSha256": "004226d87938f51c463a975464eb3b925097906f50793e754acb4f0cf16e7f43",
+        "encodedSaveSha256": "3434206380f390f7053e18e5cd7daded73b5268ed96bfcf57d64ed1afcd5b51e",
+        "observedTick": 30031,
+        "bytes": 80133
+      },
+      "consequence": {
+        "file": "ck_evt_211-consequence-h-001259.save.json.gz",
+        "fileSha256": "1dfe1dd1c39cf5ac20b073ad60c81aa1526564a82a31fd0f5db2772ef2375003",
+        "encodedSaveSha256": "94bd34869ac1e6960cab10f27b27c402c4450fcc2430c8750c7f0e7469eac171",
+        "observedTick": 31200,
+        "bytes": 82817,
+        "historyId": "h-001259",
+        "historyTick": 31200,
+        "because": [
+          {
+            "decisionId": "h-001193",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_092",
+      "decisionId": "h-001317",
+      "decisionTick": 32059,
+      "source": "registry:ck_evt_092:b",
+      "answer": {
+        "file": "ck_evt_092-answer-h-001317.save.json.gz",
+        "fileSha256": "54c045ac8df8b865f0c669bf36c98a2853a3036bc0d6255773b05cadd7f0546f",
+        "encodedSaveSha256": "45a7b126ba5c74ae14dad4fbc763306f08524b119ddfe9a8e10e32a5a50ecc18",
+        "observedTick": 32059,
+        "bytes": 82866
+      },
+      "consequence": {
+        "file": "ck_evt_092-consequence-h-001379.save.json.gz",
+        "fileSha256": "b32c06bef7eaa6068f4d804a198f3d9cdf5bb6444a5d75eb211c92515a797297",
+        "encodedSaveSha256": "9e8cec5c6c9f27910960b9915a82538011086f6be593db38fe5e3447bd6da431",
+        "observedTick": 33600,
+        "bytes": 87672,
+        "historyId": "h-001379",
+        "historyTick": 33600,
+        "because": [
+          {
+            "decisionId": "h-001317",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_209",
+      "decisionId": "h-001950",
+      "decisionTick": 44149,
+      "source": "registry:ck_evt_209:d",
+      "answer": {
+        "file": "ck_evt_209-answer-h-001950.save.json.gz",
+        "fileSha256": "85774149303f8496cb9c1d492bb6fede608c27dbb2b2d57cf536c154c7b7b489",
+        "encodedSaveSha256": "a7e57b176f188d1fdb01f96149ea5b5d38600bb3739585a6fe0606497f620ce5",
+        "observedTick": 44149,
+        "bytes": 95414
+      },
+      "status": "mature_without_observed_future_link"
+    },
+    {
+      "entryId": "ck_evt_032",
+      "decisionId": "h-002188",
+      "decisionTick": 49063,
+      "source": "registry:ck_evt_032:defer",
+      "answer": {
+        "file": "ck_evt_032-answer-h-002188.save.json.gz",
+        "fileSha256": "2e16a933d0d8ac4a84cdad2d77a8e9d063bc4a87ed4b72a57786cdba8830321b",
+        "encodedSaveSha256": "f052fb1e6c50f0c509709bbf7006d411e8e6fc3d01df9fbccfb4362a0ba96fa5",
+        "observedTick": 49063,
+        "bytes": 100121
+      },
+      "consequence": {
+        "file": "ck_evt_032-consequence-h-002242.save.json.gz",
+        "fileSha256": "f3e638ab3722fa30b729ac14ccf4307fe7efcceca596327e6d483d283c57aafe",
+        "encodedSaveSha256": "fc5f06831646cac166df18c6cd227e98c9a5bff1da9c1db6f4534c4ac7254064",
+        "observedTick": 50000,
+        "bytes": 103283,
+        "historyId": "h-002242",
+        "historyTick": 50000,
+        "because": [
+          {
+            "decisionId": "h-002118",
+            "key": "suit_turned"
+          },
+          {
+            "decisionId": "h-002188",
+            "key": "suit_turned",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_083",
+      "decisionId": "h-003391",
+      "decisionTick": 73009,
+      "source": "registry:ck_evt_083:a",
+      "answer": {
+        "file": "ck_evt_083-answer-h-003391.save.json.gz",
+        "fileSha256": "e27c5fd06c42d0c93a2cf517114afdc1b8beaa0bacbcbf7e536b913711b17712",
+        "encodedSaveSha256": "62143156337e9b70e61aa366c3618441702700d7cdfb3d54b56e3e00fafe79dd",
+        "observedTick": 73009,
+        "bytes": 116246
+      },
+      "consequence": {
+        "file": "ck_evt_083-consequence-h-003392.save.json.gz",
+        "fileSha256": "02cef52c930338f0dc698a47d5aa73044e17d3c9819bd7cee40d79661e3f34c6",
+        "encodedSaveSha256": "bf40047a8cb51d66c78178b7580ed0f3c9cdb6e18a682bb94e1c0d20f9f8147f",
+        "observedTick": 73040,
+        "bytes": 116639,
+        "historyId": "h-003392",
+        "historyTick": 73040,
+        "because": [
+          {
+            "decisionId": "h-003391",
+            "key": "goods_delivered"
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_005",
+      "decisionId": "h-003605",
+      "decisionTick": 77065,
+      "source": "registry:ck_evt_005:a",
+      "answer": {
+        "file": "ck_evt_005-answer-h-003605.save.json.gz",
+        "fileSha256": "ff46bc79efd6f91441d142a4dec804ed35896761ad81860899483583a070e6a8",
+        "encodedSaveSha256": "d5e6d89e0fc0c48131d0a1e6bf294321b62580b638a09d0ab9a5000e74c9ca7b",
+        "observedTick": 77065,
+        "bytes": 116145
+      },
+      "consequence": {
+        "file": "ck_evt_005-consequence-h-003702.save.json.gz",
+        "fileSha256": "e1660f858ff313ac6922080dfd9ccfdf2c4ff2ba88fc7874415c4e6d2e4c1ad1",
+        "encodedSaveSha256": "809f76f9acf1fd9e952f96e264f794c781b8c8ba476cab54a8cfe8ac909ff1c4",
+        "observedTick": 79200,
+        "bytes": 118092,
+        "historyId": "h-003702",
+        "historyTick": 79200,
+        "because": [
+          {
+            "decisionId": "h-003605",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_130",
+      "decisionId": "h-003699",
+      "decisionTick": 79015,
+      "source": "registry:ck_evt_130:b",
+      "answer": {
+        "file": "ck_evt_130-answer-h-003699.save.json.gz",
+        "fileSha256": "05a9e4c5c7520e14b87e5badc6102cf32e1fb26e93905322db037b0f14accb50",
+        "encodedSaveSha256": "0029e45c43b8f1270c30ce519315cd04391429f9b04a3853577ef0589299811e",
+        "observedTick": 79015,
+        "bytes": 117747
+      },
+      "consequence": {
+        "file": "ck_evt_130-consequence-h-004261.save.json.gz",
+        "fileSha256": "8e586754f59dd4bac2cf1736fcf2cfa00a11c0b4e3dd006688f3c34f225e2bcf",
+        "encodedSaveSha256": "dca81ad8d1cfecd954605f3ddf5303d85e913baeaa4c4ff4773237bddefe7d82",
+        "observedTick": 90320,
+        "bytes": 123047,
+        "historyId": "h-004261",
+        "historyTick": 90320,
+        "because": [
+          {
+            "decisionId": "h-003388",
+            "key": "audit"
+          },
+          {
+            "decisionId": "h-003699",
+            "key": "audit",
+            "part": true
+          },
+          {
+            "decisionId": "h-003701",
+            "key": "audit",
+            "part": true
+          },
+          {
+            "decisionId": "h-003755",
+            "key": "audit",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_201",
+      "decisionId": "h-004307",
+      "decisionTick": 91027,
+      "source": "registry:ck_evt_201:c",
+      "answer": {
+        "file": "ck_evt_201-answer-h-004307.save.json.gz",
+        "fileSha256": "431b03142fa50ad8ae0892090546aa41377f30a7fd9c582bc51fa4e648e0badf",
+        "encodedSaveSha256": "965d04c856bf3a07da1f8c1ea69ff1027a8b660b17c3f8c4f8c3dff25b535257",
+        "observedTick": 91027,
+        "bytes": 122981
+      },
+      "consequence": {
+        "file": "ck_evt_201-consequence-h-004309.save.json.gz",
+        "fileSha256": "056caabbb4b556569ece49465da0791e03550b7fd570fe4905745621aaedda1b",
+        "encodedSaveSha256": "9ce55b15d2112df3bdbe3eae3f2365b2fc04022f1318c7ee3595e0cbaa7636e6",
+        "observedTick": 91200,
+        "bytes": 123356,
+        "historyId": "h-004309",
+        "historyTick": 91200,
+        "because": [
+          {
+            "decisionId": "h-004307",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_140",
+      "decisionId": "h-004364",
+      "decisionTick": 92041,
+      "source": "registry:ck_evt_140:b",
+      "answer": {
+        "file": "ck_evt_140-answer-h-004364.save.json.gz",
+        "fileSha256": "6d420e19cb789051729819821a5380391d4c1e3baa362ce3d016e0f55c5d329d",
+        "encodedSaveSha256": "bde260c225d4b05419e3827a2643bd95f9a9a7d62f347df3bd702f6ede1ca09e",
+        "observedTick": 92041,
+        "bytes": 122614
+      },
+      "consequence": {
+        "file": "ck_evt_140-consequence-h-004814.save.json.gz",
+        "fileSha256": "755a3d7625786fd860b1aa610835c67ef01c9901ef22fddf4d44a3cc99ec6199",
+        "encodedSaveSha256": "76a469b80f6a3bf7bd7c16fcf7bdbcec541d379f444d5be227a81d8c3162a188",
+        "observedTick": 102320,
+        "bytes": 128668,
+        "historyId": "h-004814",
+        "historyTick": 102320,
+        "because": [
+          {
+            "decisionId": "h-003388",
+            "key": "audit"
+          },
+          {
+            "decisionId": "h-004364",
+            "key": "audit",
+            "part": true
+          },
+          {
+            "decisionId": "h-004369",
+            "key": "audit",
+            "part": true
+          },
+          {
+            "decisionId": "h-004404",
+            "key": "audit",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_053",
+      "decisionId": "h-006565",
+      "decisionTick": 141025,
+      "source": "registry:ck_evt_053:roll",
+      "answer": {
+        "file": "ck_evt_053-answer-h-006565.save.json.gz",
+        "fileSha256": "15b0434b36c2d9378c47bf8111dcfe7fcdda02da8442b9fc4b1a873e295381ee",
+        "encodedSaveSha256": "7aafa3d729e78f27c68dc3c07f8068dce4e799eddf3c33f00826f61ebeb228f7",
+        "observedTick": 141025,
+        "bytes": 138373
+      },
+      "consequence": {
+        "file": "ck_evt_053-consequence-h-006607.save.json.gz",
+        "fileSha256": "dbb5ed38d0e85083251c8566e7bae32f5bac253ef876bb91e8a038bb4da681f0",
+        "encodedSaveSha256": "53e4cab806df676b34d37709b961e31ae6f3847e38edf5db5cec55f5f7ff2cc3",
+        "observedTick": 142000,
+        "bytes": 138806,
+        "historyId": "h-006607",
+        "historyTick": 142000,
+        "because": [
+          {
+            "decisionId": "h-006512",
+            "key": "suit_turned"
+          },
+          {
+            "decisionId": "h-006565",
+            "key": "suit_turned",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_206",
+      "decisionId": "h-007743",
+      "decisionTick": 165049,
+      "source": "registry:ck_evt_206:b",
+      "answer": {
+        "file": "ck_evt_206-answer-h-007743.save.json.gz",
+        "fileSha256": "9d6dc52a8f6e5ca9afac851470728786d112a6aedf24616f688666bc46ba9937",
+        "encodedSaveSha256": "f833c3337dfd57a0049c274cb4ce63970f71b205ffb5583bf79592e0f8310f17",
+        "observedTick": 165049,
+        "bytes": 153706
+      },
+      "consequence": {
+        "file": "ck_evt_206-consequence-h-007746.save.json.gz",
+        "fileSha256": "12315756884b87b425fc167fbe28db95da834911338d6b8fcc916795d2a93415",
+        "encodedSaveSha256": "b100d26de0672a6b27f103a21a34aaac00e17b138b91aa087687d2e3253e2b48",
+        "observedTick": 165120,
+        "bytes": 154189,
+        "historyId": "h-007746",
+        "historyTick": 165120,
+        "because": [
+          {
+            "decisionId": "h-007743",
+            "key": "goods_delivered"
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_009",
+      "decisionId": "h-008180",
+      "decisionTick": 173005,
+      "source": "registry:ck_evt_009:defer",
+      "answer": {
+        "file": "ck_evt_009-answer-h-008180.save.json.gz",
+        "fileSha256": "f525b3d9c1778f98338150b07ee5790d71ba01a0e7263a46a1065cd1dfc70ed2",
+        "encodedSaveSha256": "2b9113f8881fd8a15d91fe91e6c3fa27c4062c446c37c610f4fc744e53a02723",
+        "observedTick": 173005,
+        "bytes": 158514
+      },
+      "consequence": {
+        "file": "ck_evt_009-consequence-h-008234.save.json.gz",
+        "fileSha256": "8df710b14bd8893cdf6e3cd8e46493d2f12e5a053b7de2e06423ade729d04bc2",
+        "encodedSaveSha256": "a6965ecc2d6710a8ac88499e525c7c0b8b797dfed9a06cee3db9c29739effa28",
+        "observedTick": 174000,
+        "bytes": 160039,
+        "historyId": "h-008234",
+        "historyTick": 174000,
+        "because": [
+          {
+            "decisionId": "h-008114",
+            "key": "suit_turned"
+          },
+          {
+            "decisionId": "h-008180",
+            "key": "suit_turned",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_031",
+      "decisionId": "h-013352",
+      "decisionTick": 275029,
+      "source": "registry:ck_evt_031:able",
+      "answer": {
+        "file": "ck_evt_031-answer-h-013352.save.json.gz",
+        "fileSha256": "4392e17ede785ad276ebaee9682a941883f4bc8206bbf1451b20ed991bb15caa",
+        "encodedSaveSha256": "aac4b037f5bf46c7e6310aefa0de8fc8190ec16d7188f128b97ef9369f2ddf38",
+        "observedTick": 275029,
+        "bytes": 218421
+      },
+      "consequence": {
+        "file": "ck_evt_031-consequence-h-013761.save.json.gz",
+        "fileSha256": "e23d910bf06328e79b62ac5059ffc639373b50d1ce8639b5919c6f4f09548863",
+        "encodedSaveSha256": "b4b1d962ec44f21eb195e1a0ae127c8d628ab0f110af54e12e268a33d9169c3b",
+        "observedTick": 282320,
+        "bytes": 221399,
+        "historyId": "h-013761",
+        "historyTick": 282320,
+        "because": [
+          {
+            "decisionId": "h-013172",
+            "key": "audit"
+          },
+          {
+            "decisionId": "h-013230",
+            "key": "audit",
+            "part": true
+          },
+          {
+            "decisionId": "h-013302",
+            "key": "audit",
+            "part": true
+          },
+          {
+            "decisionId": "h-013352",
+            "key": "audit",
+            "part": true
+          }
+        ]
+      },
+      "status": "paired"
+    },
+    {
+      "entryId": "ck_evt_165",
+      "decisionId": "h-021152",
+      "decisionTick": 427051,
+      "source": "registry:ck_evt_165:a",
+      "answer": {
+        "file": "ck_evt_165-answer-h-021152.save.json.gz",
+        "fileSha256": "211fb2f6dd4ec30504558a39a6f95c351694e25762349739dcfd78acbd128568",
+        "encodedSaveSha256": "5dac5d9b179f79d11944bf46a16614a652f12ec7d1e7e2378afa7a8209121ec5",
+        "observedTick": 427051,
+        "bytes": 285668
+      },
+      "consequence": {
+        "file": "ck_evt_165-consequence-h-021153.save.json.gz",
+        "fileSha256": "9e8de733ace67b371cbcc5a134eb35de84a18d3c1b2886b08caae0821fde8cd4",
+        "encodedSaveSha256": "cb45cf54ccad4adb7956677d3a0b46579bf72971f8f2ea6d10b74b316cf5c61b",
+        "observedTick": 427120,
+        "bytes": 285064,
+        "historyId": "h-021153",
+        "historyTick": 427120,
+        "because": [
+          {
+            "decisionId": "h-021152",
+            "key": "goods_delivered"
+          }
+        ]
+      },
+      "status": "paired"
+    }
+  ],
+  "enabledWithoutAnsweredCheckpoint": [
+    "ck_evt_002",
+    "ck_evt_010",
+    "ck_evt_011",
+    "ck_evt_013",
+    "ck_evt_015",
+    "ck_evt_018",
+    "ck_evt_019",
+    "ck_evt_024",
+    "ck_evt_025",
+    "ck_evt_029",
+    "ck_evt_033",
+    "ck_evt_034",
+    "ck_evt_035",
+    "ck_evt_037",
+    "ck_evt_038",
+    "ck_evt_046",
+    "ck_evt_051",
+    "ck_evt_052",
+    "ck_evt_057",
+    "ck_evt_058",
+    "ck_evt_059",
+    "ck_evt_061",
+    "ck_evt_075",
+    "ck_evt_076",
+    "ck_evt_077",
+    "ck_evt_080",
+    "ck_evt_090",
+    "ck_evt_124",
+    "ck_evt_128",
+    "ck_evt_131",
+    "ck_evt_132",
+    "ck_evt_133",
+    "ck_evt_139",
+    "ck_evt_143",
+    "ck_evt_144",
+    "ck_evt_147",
+    "ck_evt_150",
+    "ck_evt_157",
+    "ck_evt_163",
+    "ck_evt_174",
+    "ck_evt_204"
+  ],
+  "finalSave": {
+    "file": "final.save.json.gz",
+    "fileSha256": "348aaafba63f6dfde295cf8cff3e65c711576309909a452c287fe211caefe054",
+    "encodedSaveSha256": "4544a240594421c1882f5c72c5e5cce6dac8298a7ab46329e509b5a22791a452",
+    "observedTick": 500000,
+    "bytes": 315153
+  },
+  "limits": [
+    "States are actual post-command/tick observations, not browser visibility proof.",
+    "Only the first answered lord registry decision per enabled entry and its first linked later history record within three years are captured."
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "runLabel": "render-EB-visible-smoke-be2c05f",
+  "execution": "DGX",
+  "captureSourceRevision": "be2c05f3bb555697bc6c750290c6abe2f151c754",
+  "checkpointSourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "originalDirectory": "~/fls-runs/render-EB-visible-smoke-be2c05f/.remote/eb-visible",
+  "originals": [
+    {
+      "name": "ck_evt_005-answer-decision.png",
+      "bytes": 624819,
+      "sha256": "bc399a35329bea491ed915023ea7eec9bdce93bf960fb7868047c13699452b85"
+    },
+    {
+      "name": "ck_evt_005-answer-initial.png",
+      "bytes": 2041068,
+      "sha256": "1de09c0ba07a5ccc708083fe88ae6298a67b0b9d5e396a80614c85efd133e78f"
+    },
+    {
+      "name": "ck_evt_005-answer-year.png",
+      "bytes": 2043473,
+      "sha256": "839d240085702335e8e49a3fe6f71fddb7be3657cac4e4010db48365c6d7ca3a"
+    },
+    {
+      "name": "ck_evt_005-consequence-because.png",
+      "bytes": 543049,
+      "sha256": "4dfdb9c3d4dd7a7aac6c8ea82f7265a090bd9055d31767a6c0f84aff987bff60"
+    },
+    {
+      "name": "ck_evt_005-consequence-chip-history.png",
+      "bytes": 620230,
+      "sha256": "a1bcd18657165bd7825a57fc020288d9c878d8b0c450200f22bdf0efa080700b"
+    },
+    {
+      "name": "ck_evt_005-consequence-chip.png",
+      "bytes": 1932530,
+      "sha256": "9306eed67b59af7396d00885574f717a15622278bf118f43fee3d089307454e7"
+    },
+    {
+      "name": "ck_evt_005-consequence-decision.png",
+      "bytes": 616294,
+      "sha256": "df27c88c60615403b045a835a95a12e5c3491f7bcb0428b6052f12f2333edf0b"
+    },
+    {
+      "name": "ck_evt_005-consequence-initial.png",
+      "bytes": 1989476,
+      "sha256": "df5c983e0c3ac0c6b8a61ad2eea2f4a600af934f151adb579903a818255701c0"
+    },
+    {
+      "name": "ck_evt_005-consequence-year.png",
+      "bytes": 1988155,
+      "sha256": "b1d76482523167b53536b33602537db123fcf31174e193d8879b92692c1904bf"
+    },
+    {
+      "name": "ck_evt_038-answer-decision.png",
+      "bytes": 620666,
+      "sha256": "c538d947ededf72a449aba9516fc71286bc99987740a8437b1f80c86b380da07"
+    },
+    {
+      "name": "ck_evt_038-answer-initial.png",
+      "bytes": 2007132,
+      "sha256": "2d9ff5a447fa762dd112d392ad859f8af704d2e598ce23c78df2c9a566011216"
+    },
+    {
+      "name": "ck_evt_038-answer-year.png",
+      "bytes": 2006366,
+      "sha256": "2f8137150c003b77688a236c5d2b2be857b791e0b34cb5fd65a1affa48ca9da8"
+    },
+    {
+      "name": "ck_evt_038-final-no-pair-decision.png",
+      "bytes": 606678,
+      "sha256": "89de84d029189397d9304ed25a4767811e5265ee9bbb2eb2e10f1d5c989e821d"
+    },
+    {
+      "name": "ck_evt_038-final-no-pair-initial.png",
+      "bytes": 1975554,
+      "sha256": "8aa0b34084b15047a1afb12d886f5f5d54dc883a10ce2938fd53fb5ed2963d3a"
+    },
+    {
+      "name": "ck_evt_038-final-no-pair-year.png",
+      "bytes": 1975628,
+      "sha256": "2570ea3b2bb11d7a8db3c2fc85437f5fc07253b0c44646dcb4084ce8d469760c"
+    },
+    {
+      "name": "ck_evt_092-answer-chip-history.png",
+      "bytes": 600248,
+      "sha256": "43fb3b56875f48632eb502b6ab0ba5bdb014db48f80dc5c0c121fc08bef5281e"
+    },
+    {
+      "name": "ck_evt_092-answer-chip.png",
+      "bytes": 1783204,
+      "sha256": "46bafd7ee7f935515c96b193ce6b9891ba4f311fb6eaad5559ed22b5d528144d"
+    },
+    {
+      "name": "ck_evt_092-answer-decision.png",
+      "bytes": 593746,
+      "sha256": "682716ae48ec6692b157e2c73ff668327317527384eeece09312ff9df1aa2633"
+    },
+    {
+      "name": "ck_evt_092-answer-initial.png",
+      "bytes": 1876205,
+      "sha256": "2380953a3b68a59233c49ead9592c4f48d960378a0835add2f86002faa761246"
+    },
+    {
+      "name": "ck_evt_092-answer-year.png",
+      "bytes": 1874888,
+      "sha256": "e0fbedeec9503a03cfc54f963d5c72ff3a532a64f3046d8cb6a62eb5af450c71"
+    },
+    {
+      "name": "ck_evt_092-consequence-because.png",
+      "bytes": 531256,
+      "sha256": "996c62792fad510f1ed5fa1b6a474ebe5781b1d0c5d383883336e3e4893c6da0"
+    },
+    {
+      "name": "ck_evt_092-consequence-chip-history.png",
+      "bytes": 612014,
+      "sha256": "36b8acb1016c19321dee8770cde8914507d824ec89eaf4b8d6c105513e97c7f6"
+    },
+    {
+      "name": "ck_evt_092-consequence-chip.png",
+      "bytes": 1694054,
+      "sha256": "0527baa425e5e805015cd033527b4d677fbfa2ec7f4b617ce66b488934e9c670"
+    },
+    {
+      "name": "ck_evt_092-consequence-decision.png",
+      "bytes": 606444,
+      "sha256": "d0f1ddccb028fb652e8c4397c88b4ca4f08ac9fb5d42a6d7735723085a15401a"
+    },
+    {
+      "name": "ck_evt_092-consequence-initial.png",
+      "bytes": 1783448,
+      "sha256": "c0d511d0df6da5c434f124ef5d23a7a38200bd22302967e761228a1612e372f6"
+    },
+    {
+      "name": "ck_evt_092-consequence-year.png",
+      "bytes": 1781359,
+      "sha256": "52db0b39724d54081ab4331667183fca6a053218892e3f656fa66e73b44b3d9c"
+    },
+    {
+      "name": "ck_evt_201-answer-decision.png",
+      "bytes": 618607,
+      "sha256": "996e0bce48e7909698f75c719a304c6ecc86b291652598aa1cb9ef70057d37dd"
+    },
+    {
+      "name": "ck_evt_201-answer-initial.png",
+      "bytes": 1735957,
+      "sha256": "daf91dc8edc69ff0bf4aa957e0b06fe28ce579de454e7d29c7296d67bc9d93f5"
+    },
+    {
+      "name": "ck_evt_201-answer-year.png",
+      "bytes": 1736520,
+      "sha256": "b52c16dd86a4cec4893721057444594d8beac803709ed946de70e0ac304adaaa"
+    },
+    {
+      "name": "ck_evt_201-consequence-because.png",
+      "bytes": 556648,
+      "sha256": "fbd61275e6e0fc934762997c8f91d4ed85e715a6de01e2b2703ba17f48133cfd"
+    },
+    {
+      "name": "ck_evt_201-consequence-decision.png",
+      "bytes": 613118,
+      "sha256": "f5b4202bdb1ca96e1f76f2f9eb25a3b7b1bf10d3b9ca80252161ea341898e574"
+    },
+    {
+      "name": "ck_evt_201-consequence-initial.png",
+      "bytes": 1975533,
+      "sha256": "9c486146ef33fb123d0118ab57fc1c7b15dca5ad690d636fd59b24688ebb4adb"
+    },
+    {
+      "name": "ck_evt_201-consequence-year.png",
+      "bytes": 1975740,
+      "sha256": "89de37fd9072aa402184196b8bc9e2583e11f64bea1e6618df56cfeb537a2d5c"
+    },
+    {
+      "name": "ck_evt_211-answer-chip-history.png",
+      "bytes": 613382,
+      "sha256": "6a55e94015b823f4a52e69505fe82a6bebc830bee3cf88e5fa07c1a1c80676d6"
+    },
+    {
+      "name": "ck_evt_211-answer-chip.png",
+      "bytes": 1799840,
+      "sha256": "a33bb27ef2876c45f97c73b3146911ac507234178b078d8f6178d5d60ea99e56"
+    },
+    {
+      "name": "ck_evt_211-answer-decision.png",
+      "bytes": 612754,
+      "sha256": "b52fd221e20d793fbbdc1e187c2e01e20791180334273bb95bc3357377f6dfec"
+    },
+    {
+      "name": "ck_evt_211-answer-initial.png",
+      "bytes": 1880619,
+      "sha256": "0f295f4163cc4462134837b2e4fe2110e7236c0f5d2f8bc90a91e040e03c147d"
+    },
+    {
+      "name": "ck_evt_211-answer-year.png",
+      "bytes": 1879871,
+      "sha256": "03b392632de58c105619afb28adbf3216fcb638ce048aa6e26d40ac954db7f7e"
+    },
+    {
+      "name": "ck_evt_211-consequence-because.png",
+      "bytes": 535183,
+      "sha256": "b6026315e757d7d8b42167cd420d19f9be0178e5348c434faf1092fe91dcfe3f"
+    },
+    {
+      "name": "ck_evt_211-consequence-chip-history.png",
+      "bytes": 636009,
+      "sha256": "6b9bf1ee4f3d200cafbd6711b4b842c422e1b88abf94c893953e983d198fb1ac"
+    },
+    {
+      "name": "ck_evt_211-consequence-chip.png",
+      "bytes": 1785498,
+      "sha256": "f5731f059485c02ebb680fcfe821ac2f06d915d37dba90266e51030b74252d59"
+    },
+    {
+      "name": "ck_evt_211-consequence-decision.png",
+      "bytes": 618951,
+      "sha256": "ff94336185436ac630a734af81279d472854ed38fe60a88f3c5c12428235c5c5"
+    },
+    {
+      "name": "ck_evt_211-consequence-initial.png",
+      "bytes": 1872423,
+      "sha256": "6eaaef27e36a1b159f0f9c74afebf83aff7f5911e96643a861bfbed30964f42f"
+    },
+    {
+      "name": "ck_evt_211-consequence-year.png",
+      "bytes": 1870951,
+      "sha256": "dc8996b204f4df7a63514f87290b9658bd629bdf464d1fa22cc13da6d21b4fd1"
+    },
+    {
+      "name": "final-year-review-initial.png",
+      "bytes": 1975524,
+      "sha256": "bafc5eea2adc8aa1ae8263a76c956e6988075046c45f8e4ee9dec641b2c6599c"
+    },
+    {
+      "name": "final-year-review-year.png",
+      "bytes": 1975715,
+      "sha256": "a64b5f0d6f4dad3e427f3ee12d605d3a42afec33ef83a7477c4f808a72b31ad4"
+    },
+    {
+      "name": "results.json",
+      "bytes": 54785,
+      "sha256": "8ff033c559540c3daa082cda62437ee1df34d0907c72321a62be6f004f37d62e"
+    },
+    {
+      "name": "source-manifest.json",
+      "bytes": 6428,
+      "sha256": "20afdb37bf07735499d25fc5c59a82c527097b06267b3ec17e4a7553a426cd9e"
+    }
+  ],
+  "selectedJpegs": [
+    {
+      "name": "ck_evt_005-consequence-because.jpg",
+      "sourcePng": "ck_evt_005-consequence-because.png",
+      "sha256": "fb6551cd6a89af6c6871e5ec8d9d77fb411a403d50221e1007070da806dbb9bb",
+      "conversion": "Mac sips JPEG quality85, original dimensions retained"
+    },
+    {
+      "name": "ck_evt_092-consequence-decision.jpg",
+      "sourcePng": "ck_evt_092-consequence-decision.png",
+      "sha256": "7a0691ca735223847f83a160c93a6a76aaa59b6e74776c99cb74c61e48a6d0b9",
+      "conversion": "Mac sips JPEG quality85, original dimensions retained"
+    },
+    {
+      "name": "ck_evt_211-consequence-decision.jpg",
+      "sourcePng": "ck_evt_211-consequence-decision.png",
+      "sha256": "eeb79a771655049617edc4b544e3e6855b905f07fc801985ff752a0b2a8015db",
+      "conversion": "Mac sips JPEG quality85, original dimensions retained"
+    },
+    {
+      "name": "ck_evt_201-consequence-because.jpg",
+      "sourcePng": "ck_evt_201-consequence-because.png",
+      "sha256": "3d0f8cc97cefcaf57fcfe4c790812d5ca3788b08465065540828527d7e90aeaf",
+      "conversion": "Mac sips JPEG quality85, original dimensions retained"
+    },
+    {
+      "name": "ck_evt_038-final-no-pair-decision.jpg",
+      "sourcePng": "ck_evt_038-final-no-pair-decision.png",
+      "sha256": "cd2493087dbb7b294a512d6e90aa09c4bcd379072ef0d76cc060c8cdeb186e46",
+      "conversion": "Mac sips JPEG quality85, original dimensions retained"
+    },
+    {
+      "name": "final-year-review-initial.jpg",
+      "sourcePng": "final-year-review-initial.png",
+      "sha256": "55bbfa74ac57af5057136aab0e06e1c966d4e377ec7890a19e3133648912cd2b",
+      "conversion": "Mac sips JPEG quality85, original dimensions retained"
+    }
+  ]
+}

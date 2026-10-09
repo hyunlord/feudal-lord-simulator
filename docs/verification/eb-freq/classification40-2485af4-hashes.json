@@ -1,0 +1,29 @@
+{
+  "rawSha256": "c819edb0d5b848346b6d520882e29c5a72db2c9d44131b6e7eedb7a897df76c1",
+  "gzipSha256": "898a369b7bd5b36549ac920b3e4c323e0a93b6d9d0ade8b092035566c100098f",
+  "reportSha256": "dd2553e3b48e1096a7d9a3b831bb1ce5009cf4b734a09cb9b35f8d5d89bc1b31",
+  "counts": {
+    "exactHistoricalIds": 40,
+    "observedUnion": 11,
+    "unobservedUnion": 29,
+    "categories": {
+      "narrowcondition": 25,
+      "missingproducer": 0,
+      "era": 2,
+      "cooldown-conflict": 1,
+      "adapterbug": 0,
+      "unclassified": 12
+    },
+    "unclassifiedUnobserved": [
+      "ck_evt_147"
+    ]
+  },
+  "selection033Proof": {
+    "rawSha256": "7725d719fd683f73ce68c288eab8dda3fffd2024f930bc8e7f828cf925aa07ef",
+    "gzipSha256": "e1da8645682ccd6164619f2a52f2319463c36241502eaef9655eb5d953124a6c",
+    "reportSha256": "a375c44f09d6d711110f7cdc4b1fcda083a8c7afe46fd12a9dd54c202abcac2a",
+    "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+    "scope": "seed2 tick1000 accepted033 single-slot weighted competition; not original historical attribution",
+    "pureHashVerified": true
+  }
+}

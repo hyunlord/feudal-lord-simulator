@@ -1,0 +1,58 @@
+{
+  "run": "engineB-answer-replay-59d42d0-59d42d0",
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "exitCode": 1,
+  "commandSeconds": 1100.7,
+  "valid": false,
+  "browserEligible": false,
+  "error": "Error: Original collector mismatch: history",
+  "seed": 1,
+  "checkpointHits": 28,
+  "finalComparison": {
+    "expectedSha256": "fea6f05e6c4a6a006be4ac8366c9d51c97843af28e8a66b2a1b8dd19cb1d254e",
+    "actualSha256": "fea6f05e6c4a6a006be4ac8366c9d51c97843af28e8a66b2a1b8dd19cb1d254e",
+    "expectedChecksum": "cyrb53:1197768d827295",
+    "actualChecksum": "cyrb53:1197768d827295"
+  },
+  "serializedProjectionEqual": [
+    "lordDueArrivals",
+    "decisions",
+    "history",
+    "reportKeys",
+    "reportLines",
+    "occurrences",
+    "presentations",
+    "observation"
+  ],
+  "sha256": {
+    "raw": "3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd",
+    "auditGzip": "564d7737fef492bfd37bf0dea56a6c3cd0f1e0231ae6c101cc76c087b202fb3f",
+    "manifest": "95e6c157844843200992846f6d27b35fa2ccff8d38e9414032eb1e915d698bd1"
+  },
+  "receipt": {
+    "tick": 40800,
+    "kind": "event",
+    "template": "consequence",
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "severity": 1,
+    "params": {
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee",
+      "income": 20,
+      "expense": 0
+    },
+    "because": [
+      {
+        "decisionId": "h-002653",
+        "key": "payment_flow",
+        "part": true
+      }
+    ],
+    "id": "h-002666"
+  },
+  "runtimeRerunVerified": false
+}

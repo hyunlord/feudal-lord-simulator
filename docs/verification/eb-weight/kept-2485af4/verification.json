@@ -1,0 +1,853 @@
+{
+  "status": "single_seed_preliminary_not_final_three_seed_gate",
+  "newInputSha256": "3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd",
+  "new": {
+    "source": {
+      "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+      "dirtyPaths": "",
+      "node": "v24.21.0"
+    },
+    "checks": {
+      "period": true,
+      "clean": true,
+      "complete": true,
+      "candidateFailures": 0,
+      "support56": true,
+      "summaryMismatches": []
+    },
+    "observation": {
+      "observations": 502118,
+      "firstTick": 0,
+      "lastTick": 500000,
+      "maxGap": 1,
+      "reversals": 0,
+      "cadence": "initial_and_every_command_attempt_and_tick",
+      "retention": "runner_owned_id_maps_before_engine_retention"
+    },
+    "density": {
+      "whole": {
+        "total": 91,
+        "median": 1,
+        "maximum": 4,
+        "zeroYears": 62,
+        "aboveFourYears": 0
+      },
+      "registry": {
+        "total": 38,
+        "median": 0,
+        "maximum": 2,
+        "zeroYears": 91,
+        "aboveFourYears": 0
+      },
+      "b11": {
+        "total": 4,
+        "median": 0,
+        "maximum": 1,
+        "zeroYears": 121,
+        "aboveFourYears": 0
+      }
+    },
+    "matureAnsweredLord": {
+      "denominator": 156,
+      "linked": 132,
+      "fraction": 0.8461538461538461,
+      "missing": [
+        {
+          "id": "h-001385",
+          "tick": 24025,
+          "source": "set_project_subsidy:granary",
+          "targets": [
+            "faction:town",
+            "subsidy:granary"
+          ]
+        },
+        {
+          "id": "h-002358",
+          "tick": 36037,
+          "source": "registry:ck_evt_038:defer",
+          "targets": [
+            "suit:suit-2"
+          ]
+        },
+        {
+          "id": "h-002663",
+          "tick": 40561,
+          "source": "answer_will_change",
+          "targets": []
+        },
+        {
+          "id": "h-003185",
+          "tick": 48049,
+          "source": "set_project_subsidy:market",
+          "targets": [
+            "faction:merchant_house_1",
+            "subsidy:market"
+          ]
+        },
+        {
+          "id": "h-003187",
+          "tick": 48049,
+          "source": "set_project_subsidy:church",
+          "targets": [
+            "faction:bishop",
+            "subsidy:church"
+          ]
+        },
+        {
+          "id": "h-003468",
+          "tick": 52027,
+          "source": "keep_promise:promise-7",
+          "targets": [
+            "negotiation:negotiation-1",
+            "promise:promise-10",
+            "promise:promise-11",
+            "promise:promise-7",
+            "promise:promise-8",
+            "promise:promise-9"
+          ]
+        },
+        {
+          "id": "h-004696",
+          "tick": 72073,
+          "source": "set_estate_policy:revenue",
+          "targets": [
+            "faction:commons",
+            "faction:merchant_house_1",
+            "policy"
+          ]
+        },
+        {
+          "id": "h-005075",
+          "tick": 78001,
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-007606",
+          "tick": 117001,
+          "source": "registry:ck_evt_140:b",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-007608",
+          "tick": 117079,
+          "source": "set_estate_oversight:estate-neighbour-3",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-009588",
+          "tick": 148123,
+          "source": "set_audit_mode:estate-neighbour-3",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-009651",
+          "tick": 149000,
+          "source": "petition:wool_payment:accept_with_price",
+          "targets": [
+            "faction:crown"
+          ]
+        },
+        {
+          "id": "h-009869",
+          "tick": 152000,
+          "source": "petition:levy_response:accept_with_price",
+          "targets": [
+            "faction:crown"
+          ]
+        },
+        {
+          "id": "h-010318",
+          "tick": 158000,
+          "source": "petition:refugee_admission:refuse",
+          "targets": [
+            "faction:bishop"
+          ]
+        },
+        {
+          "id": "h-011261",
+          "tick": 171055,
+          "source": "set_exception_rules",
+          "targets": []
+        },
+        {
+          "id": "h-012858",
+          "tick": 194000,
+          "source": "petition:vacant_priest:accept",
+          "targets": [
+            "faction:bishop"
+          ]
+        },
+        {
+          "id": "h-022834",
+          "tick": 350065,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024261",
+          "tick": 373075,
+          "source": "registry:ck_evt_211:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024777",
+          "tick": 382045,
+          "source": "registry:ck_evt_211:c",
+          "targets": [
+            "dues",
+            "faction:merchant_house_1"
+          ]
+        },
+        {
+          "id": "h-026011",
+          "tick": 401077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-026320",
+          "tick": 406069,
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-027319",
+          "tick": 420031,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027390",
+          "tick": 421045,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-028626",
+          "tick": 440077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        }
+      ]
+    },
+    "censoredAnsweredLord": {
+      "denominator": 5,
+      "linked": 3,
+      "fraction": 0.6,
+      "missing": [
+        {
+          "id": "h-032273",
+          "tick": 493039,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-032342",
+          "tick": 494365,
+          "source": "audit:tolerate:audit-111",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        }
+      ]
+    },
+    "matureAnsweredRegistry": {
+      "denominator": 35,
+      "linked": 26,
+      "fraction": 0.7428571428571429,
+      "missing": [
+        {
+          "id": "h-002358",
+          "tick": 36037,
+          "source": "registry:ck_evt_038:defer",
+          "targets": [
+            "suit:suit-2"
+          ]
+        },
+        {
+          "id": "h-007606",
+          "tick": 117001,
+          "source": "registry:ck_evt_140:b",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-022834",
+          "tick": 350065,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024261",
+          "tick": 373075,
+          "source": "registry:ck_evt_211:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024777",
+          "tick": 382045,
+          "source": "registry:ck_evt_211:c",
+          "targets": [
+            "dues",
+            "faction:merchant_house_1"
+          ]
+        },
+        {
+          "id": "h-026011",
+          "tick": 401077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027319",
+          "tick": 420031,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027390",
+          "tick": 421045,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-028626",
+          "tick": 440077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        }
+      ]
+    },
+    "matureAnsweredB11": {
+      "denominator": 3,
+      "linked": 1,
+      "fraction": 0.3333333333333333,
+      "missing": [
+        {
+          "id": "h-022834",
+          "tick": 350065,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027390",
+          "tick": 421045,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        }
+      ]
+    },
+    "steward": {
+      "denominator": 641,
+      "witnessed": 641
+    }
+  },
+  "control": {
+    "source": {
+      "sourceRevision": "de3d9e224636c5e69bc18e2ea7ccb7d7bd97c69d",
+      "dirtyPaths": "",
+      "node": "v24.21.0"
+    },
+    "checks": {
+      "period": true,
+      "clean": true,
+      "complete": true,
+      "candidateFailures": 0,
+      "support56": true,
+      "summaryMismatches": []
+    },
+    "observation": {
+      "observations": 502118,
+      "firstTick": 0,
+      "lastTick": 500000,
+      "maxGap": 1,
+      "reversals": 0,
+      "cadence": "initial_and_every_command_attempt_and_tick",
+      "retention": "runner_owned_id_maps_before_engine_retention"
+    },
+    "density": {
+      "whole": {
+        "total": 91,
+        "median": 1,
+        "maximum": 4,
+        "zeroYears": 62,
+        "aboveFourYears": 0
+      },
+      "registry": {
+        "total": 38,
+        "median": 0,
+        "maximum": 2,
+        "zeroYears": 91,
+        "aboveFourYears": 0
+      },
+      "b11": {
+        "total": 4,
+        "median": 0,
+        "maximum": 1,
+        "zeroYears": 121,
+        "aboveFourYears": 0
+      }
+    },
+    "matureAnsweredLord": {
+      "denominator": 156,
+      "linked": 132,
+      "fraction": 0.8461538461538461,
+      "missing": [
+        {
+          "id": "h-001385",
+          "tick": 24025,
+          "source": "set_project_subsidy:granary",
+          "targets": [
+            "faction:town",
+            "subsidy:granary"
+          ]
+        },
+        {
+          "id": "h-002358",
+          "tick": 36037,
+          "source": "registry:ck_evt_038:defer",
+          "targets": [
+            "suit:suit-2"
+          ]
+        },
+        {
+          "id": "h-002663",
+          "tick": 40561,
+          "source": "answer_will_change",
+          "targets": []
+        },
+        {
+          "id": "h-003185",
+          "tick": 48049,
+          "source": "set_project_subsidy:market",
+          "targets": [
+            "faction:merchant_house_1",
+            "subsidy:market"
+          ]
+        },
+        {
+          "id": "h-003187",
+          "tick": 48049,
+          "source": "set_project_subsidy:church",
+          "targets": [
+            "faction:bishop",
+            "subsidy:church"
+          ]
+        },
+        {
+          "id": "h-003468",
+          "tick": 52027,
+          "source": "keep_promise:promise-7",
+          "targets": [
+            "negotiation:negotiation-1",
+            "promise:promise-10",
+            "promise:promise-11",
+            "promise:promise-7",
+            "promise:promise-8",
+            "promise:promise-9"
+          ]
+        },
+        {
+          "id": "h-004696",
+          "tick": 72073,
+          "source": "set_estate_policy:revenue",
+          "targets": [
+            "faction:commons",
+            "faction:merchant_house_1",
+            "policy"
+          ]
+        },
+        {
+          "id": "h-005075",
+          "tick": 78001,
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-007606",
+          "tick": 117001,
+          "source": "registry:ck_evt_140:b",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-007608",
+          "tick": 117079,
+          "source": "set_estate_oversight:estate-neighbour-3",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-009588",
+          "tick": 148123,
+          "source": "set_audit_mode:estate-neighbour-3",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-009651",
+          "tick": 149000,
+          "source": "petition:wool_payment:accept_with_price",
+          "targets": [
+            "faction:crown"
+          ]
+        },
+        {
+          "id": "h-009869",
+          "tick": 152000,
+          "source": "petition:levy_response:accept_with_price",
+          "targets": [
+            "faction:crown"
+          ]
+        },
+        {
+          "id": "h-010318",
+          "tick": 158000,
+          "source": "petition:refugee_admission:refuse",
+          "targets": [
+            "faction:bishop"
+          ]
+        },
+        {
+          "id": "h-011261",
+          "tick": 171055,
+          "source": "set_exception_rules",
+          "targets": []
+        },
+        {
+          "id": "h-012858",
+          "tick": 194000,
+          "source": "petition:vacant_priest:accept",
+          "targets": [
+            "faction:bishop"
+          ]
+        },
+        {
+          "id": "h-022834",
+          "tick": 350065,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024261",
+          "tick": 373075,
+          "source": "registry:ck_evt_211:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024777",
+          "tick": 382045,
+          "source": "registry:ck_evt_211:c",
+          "targets": [
+            "dues",
+            "faction:merchant_house_1"
+          ]
+        },
+        {
+          "id": "h-026011",
+          "tick": 401077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-026320",
+          "tick": 406069,
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-027319",
+          "tick": 420031,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027390",
+          "tick": 421045,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-028626",
+          "tick": 440077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        }
+      ]
+    },
+    "censoredAnsweredLord": {
+      "denominator": 5,
+      "linked": 3,
+      "fraction": 0.6,
+      "missing": [
+        {
+          "id": "h-032273",
+          "tick": 493039,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-032342",
+          "tick": 494365,
+          "source": "audit:tolerate:audit-111",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        }
+      ]
+    },
+    "matureAnsweredRegistry": {
+      "denominator": 35,
+      "linked": 26,
+      "fraction": 0.7428571428571429,
+      "missing": [
+        {
+          "id": "h-002358",
+          "tick": 36037,
+          "source": "registry:ck_evt_038:defer",
+          "targets": [
+            "suit:suit-2"
+          ]
+        },
+        {
+          "id": "h-007606",
+          "tick": 117001,
+          "source": "registry:ck_evt_140:b",
+          "targets": [
+            "estate:estate-neighbour-3"
+          ]
+        },
+        {
+          "id": "h-022834",
+          "tick": 350065,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024261",
+          "tick": 373075,
+          "source": "registry:ck_evt_211:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-024777",
+          "tick": 382045,
+          "source": "registry:ck_evt_211:c",
+          "targets": [
+            "dues",
+            "faction:merchant_house_1"
+          ]
+        },
+        {
+          "id": "h-026011",
+          "tick": 401077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027319",
+          "tick": 420031,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027390",
+          "tick": 421045,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-028626",
+          "tick": 440077,
+          "source": "registry:ck_evt_211:b",
+          "targets": [
+            "dues"
+          ]
+        }
+      ]
+    },
+    "matureAnsweredB11": {
+      "denominator": 3,
+      "linked": 1,
+      "fraction": 0.3333333333333333,
+      "missing": [
+        {
+          "id": "h-022834",
+          "tick": 350065,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        },
+        {
+          "id": "h-027390",
+          "tick": 421045,
+          "source": "registry:ck_evt_092:a",
+          "targets": [
+            "dues"
+          ]
+        }
+      ]
+    },
+    "steward": {
+      "denominator": 641,
+      "witnessed": 641
+    }
+  },
+  "ninePriorRegistryGaps": [
+    {
+      "oldId": "h-002358",
+      "tick": 36037,
+      "source": "registry:ck_evt_038:defer",
+      "currentId": "h-002358",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-007606",
+      "tick": 117001,
+      "source": "registry:ck_evt_140:b",
+      "currentId": "h-007606",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-022834",
+      "tick": 350065,
+      "source": "registry:ck_evt_092:a",
+      "currentId": "h-022834",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-024261",
+      "tick": 373075,
+      "source": "registry:ck_evt_211:a",
+      "currentId": "h-024261",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-024777",
+      "tick": 382045,
+      "source": "registry:ck_evt_211:c",
+      "currentId": "h-024777",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-026011",
+      "tick": 401077,
+      "source": "registry:ck_evt_211:b",
+      "currentId": "h-026011",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-027319",
+      "tick": 420031,
+      "source": "registry:ck_evt_211:b",
+      "currentId": "h-027319",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-027390",
+      "tick": 421045,
+      "source": "registry:ck_evt_092:a",
+      "currentId": "h-027390",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    },
+    {
+      "oldId": "h-028626",
+      "tick": 440077,
+      "source": "registry:ck_evt_211:b",
+      "currentId": "h-028626",
+      "currentMature": true,
+      "currentFutureCount": 0,
+      "firstFuture": null
+    }
+  ]
+}
