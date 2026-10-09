@@ -92,6 +92,46 @@
       "gzipSha256": "4ffc1161d268f24ff2c17c9e7b480be9d8f8403d04f9841bf5612724d6955f8e",
       "rawBytes": 2952,
       "gzipBytes": 1713
+    },
+    {
+      "file": "tlink-audit-loyalty-three-seed.mjs.gz",
+      "rawSha256": "60b6b5bb0c3221f4235d455ad032e7c790a2655e11b7683e6c139bdbeed101fc",
+      "gzipSha256": "19c38316e2be44b5f6ee7af1675c8695030e42c879a78a78a5a4ec1e38ffa5d1",
+      "rawBytes": 6565,
+      "gzipBytes": 2440,
+      "scope": "0b04 three-seed source-derived loyalty fold; not future effect proof"
+    },
+    {
+      "file": "tlink-audit-loyalty-three-seed.json.gz",
+      "rawSha256": "737ed553956820591053dacfcf5be371df716c888f1091d1b3dd87a918c5c9c4",
+      "gzipSha256": "05b5bd2092437d0d105a5621822953676cb5a425417be939daa0c1e3f99942d4",
+      "rawBytes": 179256,
+      "gzipBytes": 11667,
+      "scope": "0b04 three-seed source-derived loyalty fold; not future effect proof"
+    },
+    {
+      "file": "tlink-mixed-command-proof.md.gz",
+      "rawSha256": "3ebebabae16a1f672823f1e7d69dd983535f9c52a7e774c29c674c9fdb04c774",
+      "gzipSha256": "daea31d313f52fd596657786deda36a870667d00c43106cc199402e17409ce56",
+      "rawBytes": 5084,
+      "gzipBytes": 2161,
+      "scope": "9ad source-only proof sketch; not 0b04 runtime or implemented mixed-command rule"
+    },
+    {
+      "file": "tlink-hold-cost-audit.mjs.gz",
+      "rawSha256": "44f324ed8c4e81b1a8ce2a01304fd8c55fbe73677899d986c346cb8549677adc",
+      "gzipSha256": "1e2b59441dd4fcb117b1bf82805a2a172836aa7bc5de57ee713329b3a2d6ff58",
+      "rawBytes": 12874,
+      "gzipBytes": 4098,
+      "scope": "0b04 source-derived hold costs; not9ad score or new future causal links"
+    },
+    {
+      "file": "tlink-hold-cost-audit.json.gz",
+      "rawSha256": "8a470755a64ac44ccfe7fda56e7810a367e2e6cca9fb5b42b02bbe9be70838c5",
+      "gzipSha256": "d703c6029a073e827cc97813ebe67ed2b07c4a177ce1781df8763d62f0eb0db0",
+      "rawBytes": 142980,
+      "gzipBytes": 9223,
+      "scope": "0b04 source-derived hold costs; not9ad score or new future causal links"
     }
   ],
   "immediateOwnReceiptInventory": {
@@ -133,5 +173,223 @@
     ],
     "sourcePins": "Per-row canonical selector and SHA in archived result; generator reads git show pinned0b04 canonical bytes.",
     "review": "scope_review independently reported no blockers to parent; record inventory only, no new source/gameplay claims or metric changes."
+  },
+  "threeSeedLoyaltyFold": {
+    "sourceRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+    "sourceFiles": [
+      {
+        "path": "src/engine/stewardship.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "0ee5cbc4f8024c035915cae2f74a40e5db3eccaeab21ec13ecfc061ecf0bcff4"
+      },
+      {
+        "path": "src/content/stewardshipConfig.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "aa01e8e7a7929122d75cd26fadce98459d86ff2893eec57a64ea8a03533e5949"
+      },
+      {
+        "path": "src/content/seedHash.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "e1bf3a265ac9353b1f92b24103d3be673adca59866ec0aca9cb08d5af4074daa"
+      },
+      {
+        "path": "src/engine/prng.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "a8369bcdba0c6f6d55e47db0d93ae43c3305ed2153aa18c10aa253934300e180"
+      }
+    ],
+    "inputs": [
+      {
+        "path": ".omo/evidence/prototype-0b04-config.json",
+        "sha256": "75461da4e8994220186ffe3d7adcab5e6b5ee05351698639ba61b4c399fc76ce"
+      },
+      {
+        "path": ".omo/evidence/prototype-0b04-residuals.json",
+        "sha256": "eec3edde2ad17915f333911726685fcc766125e4365ec9ac746884a0cd93657a"
+      },
+      {
+        "path": ".omo/evidence/prototype-0b04-score.json",
+        "sha256": "75244beeff28eba62c880f64374f3d0b14ac738d7603ebeedf7e6a5e9bf07de3"
+      }
+    ],
+    "total": {
+      "stewardsMatched": 42,
+      "explicit": 95,
+      "residual": 94,
+      "positive": 27,
+      "zero": 67
+    },
+    "candidateUpperBound": 27,
+    "futureEffectProven": 0,
+    "reproduce": "node --import tsx .omo/evidence/tlink-audit-loyalty-three-seed.mjs",
+    "outputSafety": "Generator uses wx at fixed .omo/evidence/tlink-audit-loyalty-three-seed.json. Use separate source-pinned checkout with this output absent; never remove/overwrite original evidence. Restore required original input bytes/paths first.",
+    "review": "scope_review independent review reported no blocking findings; not a future effect or denominator reclassification proof."
+  },
+  "mixedCommandProof": {
+    "file": "tlink-mixed-command-proof.md.gz",
+    "sourceRevision": "9ad9253468592e7cba144946081d2fbced36adca",
+    "evidenceStage": "source-only proof sketch, no implementation or runtime measurement",
+    "limits": "Stored alongside0b04 diagnostics for handoff convenience only. Does not describe0b04 runtime and does not prove3seed coverage or80% feasibility. Source file pins retained in original note."
+  },
+  "holdCostAudit": {
+    "sourceRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+    "summary": {
+      "allCommandsEmptyHolds": 60,
+      "claim": 17,
+      "relation": 43,
+      "relationNonzero": 43,
+      "relationNoActualDelta": 0,
+      "claimActualDeltaUnknown": 17,
+      "factionFinalChecks": 27,
+      "officialUnexplainedIntersection": 47,
+      "preJudgmentClaimCandidates": 7,
+      "postJudgmentClaimCosts": 10,
+      "relationWithNegativeAct": 2,
+      "relationWithNegativeActButMissingOwnLink": 0
+    },
+    "chain": {
+      "configSha256": "75461da4e8994220186ffe3d7adcab5e6b5ee05351698639ba61b4c399fc76ce",
+      "scoreSha256": "75244beeff28eba62c880f64374f3d0b14ac738d7603ebeedf7e6a5e9bf07de3",
+      "residualSha256": "eec3edde2ad17915f333911726685fcc766125e4365ec9ac746884a0cd93657a",
+      "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+      "verified": true
+    },
+    "sourcePins": [
+      {
+        "path": "src/content/factionConfig.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "a26bb9298e44d3380d5a222cea053d31945088f5e7a14957657ec0829aa267a1",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/content/registry/v4Entries.generated.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "b061ec371bd1ba66825f1075314354a3f954d488d5ab4e4694873955eb8fd4dc",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/content/registry/registryHoldConfig.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "6fb96da7c51afd1deffc0769582aa7ff4becb46f3b6d80cf60346420a8fdca43",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/content/registry/v4Copy.generated.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "4465a4d07987ab3bb8b4a46bae5f702698d4bb10a188b16bfc1e06ece3beb69d",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/content/registry/v4Holds.generated.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "7fa9dae59b737a9e6266fab5883af3102077a9ae40cf7e1d7f4dd48794e12b3a",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/registryV4.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "a2f9b9fc60e0281d5bce348d644da012a2c51f533f94f17f1170d64d939481bf",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/registry.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "6e39a0ca4ccee233ac450ca680660eeab29c920d9ca8e50c60956a4ea83a2e6d",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/history.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "133037b55d3c0c0c9f9147f0799053a47d0de7c07a5ddc8a28c8971172087429",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/factions.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "66bf718a318d1cd965e49a806ca8b2f13a3a61669eb8cf4630b0a9e23c40bf36",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/factionActs.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "cecdd41fcf042ca7c2f1ccdcd1a2a8dddd38e7255afc9742dded0bd01580e489",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/content/factionActConfig.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "3b397435cbe04b1bf1d880c8325be4ba3721be57805cbc350a7672368567e30c",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/estateSuits.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "79ae19be3060a587241a80e0d966ad38a83a47f9aa2fdc8bee7d751df3c04779",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/marriage.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "7edb589a3e061c7c36a6df6a3beb4ebacf46b518070f2432df199b4e25d185b5",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/memoryFold.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "bb2a07c17d77b856ef8ffb3446daf7797254581c8f6590e643375e1c9e691a72",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/decisionTraceAnswers.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "201ca8f090c78634ecbd4b63e614939bf33022cebc8dfc9ddcddf4982a0530d2",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "scripts/engineBOutcomeEvidence.ts",
+        "revision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+        "sha256": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875",
+        "currentBytesEqual": true
+      }
+    ],
+    "archiveChecks": [
+      {
+        "seed": 1,
+        "manifestSha256": "99b0eb6a4450d988f8d09fb9db33b872d5441bca8eb31028163dd5be12dd32e9",
+        "rawSha256": "d582bc5a5254b9ad635c54a103304b47071b21b743a4ae77726a58a86cc4514b",
+        "contextSha256": "fcbaaea620523118bfdb74e82ca2bdacbc0078213aaba3007be35f16e35fafa3",
+        "uncompressedFinalStateSha256": "61181e3f5687285a7e2eff6f2657d67b155b7eeb3ee00a0ffd4aeb23bad87555",
+        "valid": true,
+        "replayVerified": true
+      },
+      {
+        "seed": 2,
+        "manifestSha256": "35fe84fe97f03ba164d69b742887c5da7e4a0491ae0e7a014ae201c5803a7629",
+        "rawSha256": "165c3fecaf1f007163caf317024002ddebd28de077d7f5ad6bf206e9ebf46814",
+        "contextSha256": "5997f3321cf94a458caba555fc84e89a93aed0243ea71662da7bde38a3950efb",
+        "uncompressedFinalStateSha256": "b3c704039b253a5c70e308a035fbbb7829088b40794c35714d3fb9218689d405",
+        "valid": true,
+        "replayVerified": true
+      },
+      {
+        "seed": 3,
+        "manifestSha256": "628980f15beafb1863043a789a243f861535fb5ee4011336ff4285b692fc2c6d",
+        "rawSha256": "9415fc443e0ed21e6e4d251356a3832f9f661912f28b602c2127eb6902911de8",
+        "contextSha256": "e026285c5e89c82257fedc383fd0082615db16cb31c3d7d5374c47f763303812",
+        "uncompressedFinalStateSha256": "bb3054f402646bf2acd55e15d8720fe7c3b04b97d782129fa47a9bc5f319250d",
+        "valid": true,
+        "replayVerified": true
+      }
+    ],
+    "reproduce": "node .omo/evidence/tlink-hold-cost-audit.mjs",
+    "outputSafety": "Generator overwrites its fixed ignored JSON output. Restore script and pinned original input paths only in separate checkout; never run against preserved original output. currentHead provenance may differ in later reproduction.",
+    "limits": [
+      "60 total holds is not the official 47 unexplained subset.",
+      "All 43 faction costs are -2 after clamp; no new future outcome is inferred.",
+      "Two old 211 hold links to dues_held are not legitimate evidence that hold changed dues.",
+      "Final trace.acts is retained-window only; act lookup uses the raw collected history instead.",
+      "No current official-run score or denominator changed. No engine tick or replay executed."
+    ],
+    "futureNewLinksProven": 0
   }
 }

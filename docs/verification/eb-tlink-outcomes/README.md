@@ -77,3 +77,17 @@ scorer exit1은 예상되는 실제 기준 미달이다. 각 명령을 따로 �
 ### 즉시 처리 기록의 추가 목록 — 잔여 판정 유지
 
 [즉시 own-ID 목록·재현 핀](prototype-0b04/diagnostics/archive.json)에 `tlink-immediate-own-receipts.{mjs,json,md}.gz` 원본3개를 추가했다. 공식 unexplained179건 중101건에 같은 tick의 정확한 자기 ID 비결정 기록이 있다(감사94·감독3·감사 방식3·실패한038 집행1). 나머지78건에는 그 기록이 없다. 179건 중 정본 `commands:[]` 선택은47건이며005:c 1건을 포함한다. 이는 기록/명령 목록이며 재분류가 아니다. **공식 immediate-only433·unexplained179·관측 부족20과 미래204/816 점수는 그대로다.** 특히 감사 기록에는 auditId/estateId가 없다는 제한을 유지하며 실제 충성도 변화나 미래 효과를 추정하지 않는다. scope_review는 차단 결함 없음을 보고했으나 이 목록을 새로운 효과 증명으로 확대하지 않는다. 별도 checkout에 원래 config/score/residual 및 script 경로를 복원한 뒤 `node .omo/evidence/tlink-immediate-own-receipts.mjs`로 재현한다. 입력·source selector·압축 전후 SHA는 보존된 JSON/해시 목록에 있다.
+
+
+### 세 판 감사 충성도 fold와 별도9ad 명령 기여 검토
+
+`prototype-0b04/diagnostics/`에 `tlink-audit-loyalty-three-seed.{mjs,json}.gz`와 `tlink-mixed-command-proof.md.gz`의 원본 바이트를 추가했다. [압축 전후 SHA·소스·입력·재현 정보](prototype-0b04/diagnostics/archive.json)를 보존했다. 세 판 감사 잔여94건은 source-derived 충성도 증가27·증가0인67로 나뉘며42명 최종값이 맞았다. **27은 후보 상한이고 실제 미래 효과 입증은0건**이다. 공식 점수·성숙 분모·잔여 범주를 변경하지 않는다. 독립 scope_review는 차단 결함 없음을 보고했다. 스크립트는 고정 출력에 wx를 사용하므로 별도 checkout에 필요한 원본 입력을 복원하고 출력 JSON이 없는 상태에서 `node --import tsx .omo/evidence/tlink-audit-loyalty-three-seed.mjs`로 재현한다. 보존된 원본을 지우거나 덮어쓰지 않는다.
+
+mixed-command 문서는 **9ad 소스의 증명 초안**이며0b04 실행 증거·새 구현·실측 연결률이 아니다. 반대 부호의 후속 명령에 대한 제한적 기여 보존 가능성을 논하지만 아직 적용하거나 성과로 세지 않는다. 같은 진단 폴더에 둔 이유는 인계 편의이며 각 source pin과 범위를 구분했다. 검토 중인 hold-cost 자료는 이번 보관에 포함하지 않았다.
+
+
+### 강화된 hold-cost 감사 —0b04 범위
+
+`tlink-hold-cost-audit.{mjs,json}.gz`를 [진단 해시 목록](prototype-0b04/diagnostics/archive.json)에 추가했다. 정식 config/score/residual 연결 및 세 판 manifest/raw/context/final-state 핀3/3을 검증하고 faction ID를 포함한 키로 판독한 **0b04 source-derived 결과**다. 전체 commands[] hold60건은 claim17·관계43이며, 공식 unexplained 교집합47건은 판결 후038 claim10·관계37이다. 관계43건은 실제 clamp 적용 후 각각−2였고 faction 최종값27/27이 맞았다. Claim17건의 실제 강도 변화는 미확인이다. 미래 링크47건을 추가로 입증한 것이 아니며 기존 점수·잔여 분류를 바꾸지 않는다. 이 자료는 최신9ad 실측 점수가 아니다.
+
+강화 전 결과는 분석 근거로 추가하지 않았다. 고정 원본 script SHA `44f324ed8c4e81b1a8ce2a01304fd8c55fbe73677899d986c346cb8549677adc`, JSON SHA `8a470755a64ac44ccfe7fda56e7810a367e2e6cca9fb5b42b02bbe9be70838c5`와 source/input 핀을 보존했다. 별도 checkout에 원래 입력 경로를 복원하고 `node .omo/evidence/tlink-hold-cost-audit.mjs`로 재현한다. 생성기는 고정 JSON 출력을 덮어쓰므로 보존 원본 위치에서 실행하지 않는다. `currentHead`는 작성 시점 provenance이며 다른 checkout에서는 해당 메타데이터가 달라질 수 있다.
