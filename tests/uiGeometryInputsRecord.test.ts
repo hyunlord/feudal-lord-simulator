@@ -52,7 +52,10 @@ test("the dev server's reads, measured: what the page loads is in, what it does 
   } finally { try { process.kill(-vite.pid!, "SIGTERM"); } catch { /* gone */ } }
   await new Promise(done => setTimeout(done, 500));
   try {
-    const { inputs } = auditInputs({ root: dir, traceDir: trace });
+    // Declared as scripts/remote/tasks.sh declares them (the system files that pick native binaries), and the outer
+    // checkout's package.json, which Vite reads looking upward for a workspace root because this project sits inside it
+    // (the real audit's parent, ~/fls-runs, has none).
+    const { inputs } = auditInputs({ root: dir, traceDir: trace, declared: ["/proc/version", "/usr/bin/ldd", "/etc/os-release", join(REPO, "package.json")] });
     const files = new Set(inputs.files);
     for (const path of ["index.html", "src/main.ts", "src/a.ts", "src/style.css", "src/lazy.ts", "public/pic.png", "src/img.png", "vite.config.ts", "plugins/cfgPlugin.ts", "scripts/remote/viteNoWatch.config.ts"]) assert.ok(files.has(path), `${path} is read (${inputs.files.join(" ")})\n${log.slice(-600)}`);
     assert.ok(!files.has("src/unused.ts"), "a module nothing imports is not read");
