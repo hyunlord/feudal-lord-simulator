@@ -183,7 +183,9 @@ test("geometry rows: on lord2 states, through the lord screen's own open steps",
   for (const row of LEDGER_SURFACES) {
     assert.ok(row.id.startsWith("lord.ledger"), row.id);
     assert.equal(row.scene.kind === "state" ? row.scene.set : null, "lord2", row.id);
-    assert.ok(row.open.some(step => "click" in step && step.click === "[data-lord-nav='ledger']"), row.id);
+    // FRM-D1: a drawn part's row opens on the page its host row opens (extends it), the host clicking the way in.
+    const host = row.extends === undefined ? row : LEDGER_SURFACES.find(other => other.id === row.extends);
+    assert.ok(host !== undefined && host.open.some(step => "click" in step && step.click === "[data-lord-nav='ledger']"), row.id);
   }
 });
 

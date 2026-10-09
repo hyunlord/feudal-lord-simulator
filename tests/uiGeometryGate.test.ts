@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { checkUiGeometry, compareBaseline, gateMode, geometryInputs, overridesInRange, splitKey, UI_INPUT_ROOTS } from "../scripts/checks/uiGeometry.mjs";
+import { checkUiGeometry, compareBaseline, gateMode, geometryInputs, overridesInRange, splitKey } from "../scripts/checks/uiGeometry.mjs";
 import { failureKey } from "../scripts/uiGeometryMeasure";
 
 // UI-AUDIT-1: the geometry gate's baseline (scripts/checks/uiGeometry.mjs): new failures fail, fixed ones must be
@@ -39,14 +39,14 @@ test("Given the gate When no override is set Then it enforces (the user's decisi
   assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "warn" }), "warn");
 });
 
-test("Given the UI inputs When listed from git Then they hold the UI, styles, copy and audit, and none of the engine", () => {
+test("Given the UI inputs When listed from git Then they hold the UI, styles, copy, audit and everything src/main.tsx imports (RR26 (가)), and no test or document", () => {
   const inputs = geometryInputs("HEAD", new URL("../", import.meta.url).pathname);
   const paths = inputs.map(line => line.slice(line.indexOf(" ") + 1));
   assert.ok(paths.includes("src/ui/surfaces.registry.ts") && paths.includes("scripts/uiGeometryAudit.mjs") && paths.includes("vite.config.ts"));
   assert.ok(paths.some(path => path.endsWith(".ko.ts") && path.startsWith("src/content/")));
-  assert.deepEqual(paths.filter(path => /^src\/(engine|sim|ledger|state)\//.test(path) || (path.startsWith("src/content/") && !path.endsWith(".ko.ts"))
-    || (path.startsWith("src/render/") && !path.endsWith(".tsx"))), []);
-  assert.ok(UI_INPUT_ROOTS.every(item => !item.root.startsWith("src/engine")));
+  // The copy and data the UI renders, wherever they live, and the engine it imports (user ruling 2026-10-09).
+  for (const path of ["src/ledger/ledgerCopy.ko.ts", "src/content/buildingConfig.ts", "src/zones/zoneCopy.ko.ts", "src/engine/tick.ts"]) assert.ok(paths.includes(path), path);
+  assert.deepEqual(paths.filter(path => /^(tests|docs|fixtures)\//.test(path)), []);
 });
 
 test("Given a failing result When the warn override has no reason, or a reason the head commit does not record Then it is refused", () => {

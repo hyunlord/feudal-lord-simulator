@@ -1,0 +1,387 @@
+{
+ "note": "ER-13 wording variants on the screens. prepared = scripts/variantStates.ts states (the screen checks); natural = scripts/variantExposureRun.ts lord-bot play of the lord slice (counts of petitions/offers actually shown as the first waiting item, before the lord acts).",
+ "prepared": {
+  "home-048": {
+   "variant": "ck_evt_048",
+   "year": 1310,
+   "season": 0,
+   "prepared": "the petition placed (a pasture made of the smallest field zone if none)",
+   "captures": {
+    "home-048-1280x800": true,
+    "home-048-tablet": true
+   }
+  },
+  "home-056": {
+   "variant": "ck_evt_056",
+   "year": 1308,
+   "season": 0,
+   "prepared": false,
+   "captures": {
+    "home-056-1280x800": true,
+    "home-056-tablet": true
+   }
+  },
+  "home-041": {
+   "variant": "ck_evt_041",
+   "year": 1304,
+   "season": 2,
+   "prepared": false,
+   "captures": {
+    "home-041-1280x800": true,
+    "home-041-chip": true,
+    "home-041-tablet": true
+   }
+  },
+  "registry-067": {
+   "variant": "ck_evt_067",
+   "year": 1310,
+   "season": 0,
+   "prepared": "the first neighbour estate held under a steward with two candidates",
+   "captures": {
+    "registry-067-1280x800": true,
+    "registry-067-chip": true,
+    "registry-067-tablet": true
+   }
+  },
+  "registry-078": {
+   "variant": "ck_evt_078",
+   "year": 1310,
+   "season": 0,
+   "prepared": "the three neighbour estates held direct, a steward and two candidates on the first",
+   "captures": {
+    "registry-078-1280x800": true,
+    "registry-078-tablet": true
+   }
+  }
+ },
+ "natural": {
+  "runs": [
+   {
+    "run": "forest-s1-keeps",
+    "seed": 1,
+    "land": "core:forest_edge",
+    "lordKeepsHomeKinds": true,
+    "years": "1300-1320",
+    "endedAt": 80000,
+    "shownHomePetitions": 11,
+    "shownRegistryOffers": 6,
+    "byVariant": {
+     "ck_evt_041": 1,
+     "ck_evt_048": 0,
+     "ck_evt_056": 1,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 613
+   },
+   {
+    "run": "forest-s1",
+    "seed": 1,
+    "land": "core:forest_edge",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1318",
+    "endedAt": 72000,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 5,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 479
+   },
+   {
+    "run": "forest-s2-keeps",
+    "seed": 2,
+    "land": "core:forest_edge",
+    "lordKeepsHomeKinds": true,
+    "years": "1300-1311",
+    "endedAt": 47522,
+    "shownHomePetitions": 6,
+    "shownRegistryOffers": 8,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 1,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 128
+   },
+   {
+    "run": "forest-s2",
+    "seed": 2,
+    "land": "core:forest_edge",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1313",
+    "endedAt": 54698,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 9,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 159
+   },
+   {
+    "run": "forest-s3-keeps",
+    "seed": 3,
+    "land": "core:forest_edge",
+    "lordKeepsHomeKinds": true,
+    "years": "1300-1317",
+    "endedAt": 68000,
+    "shownHomePetitions": 10,
+    "shownRegistryOffers": 6,
+    "byVariant": {
+     "ck_evt_041": 3,
+     "ck_evt_048": 0,
+     "ck_evt_056": 1,
+     "ck_evt_067": 1,
+     "ck_evt_078": 0
+    },
+    "seconds": 220
+   },
+   {
+    "run": "forest-s3",
+    "seed": 3,
+    "land": "core:forest_edge",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1317",
+    "endedAt": 68000,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 9,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 1,
+     "ck_evt_078": 0
+    },
+    "seconds": 495
+   },
+   {
+    "run": "slice-s1-keeps",
+    "seed": 1,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": true,
+    "years": "1300-1318",
+    "endedAt": 72000,
+    "shownHomePetitions": 9,
+    "shownRegistryOffers": 10,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 1,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 376
+   },
+   {
+    "run": "slice-s1",
+    "seed": 1,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1318",
+    "endedAt": 72000,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 6,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 788
+   },
+   {
+    "run": "slice-s2-keeps",
+    "seed": 2,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": true,
+    "years": "1300-1310",
+    "endedAt": 42686,
+    "shownHomePetitions": 6,
+    "shownRegistryOffers": 6,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 109
+   },
+   {
+    "run": "slice-s2",
+    "seed": 2,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1315",
+    "endedAt": 61094,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 11,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 228
+   },
+   {
+    "run": "slice-s3-keeps",
+    "seed": 3,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": true,
+    "years": "1300-1317",
+    "endedAt": 68000,
+    "shownHomePetitions": 10,
+    "shownRegistryOffers": 8,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 2,
+     "ck_evt_067": 1,
+     "ck_evt_078": 0
+    },
+    "seconds": 248
+   },
+   {
+    "run": "slice-s3",
+    "seed": 3,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1317",
+    "endedAt": 68000,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 7,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 1,
+     "ck_evt_078": 0
+    },
+    "seconds": 245
+   },
+   {
+    "run": "slice-s4",
+    "seed": 4,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1311",
+    "endedAt": 44000,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 6,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 184
+   },
+   {
+    "run": "slice-s5",
+    "seed": 5,
+    "land": "core:open_field",
+    "lordKeepsHomeKinds": false,
+    "years": "1300-1318",
+    "endedAt": 72000,
+    "shownHomePetitions": 0,
+    "shownRegistryOffers": 11,
+    "byVariant": {
+     "ck_evt_041": 0,
+     "ck_evt_048": 0,
+     "ck_evt_056": 0,
+     "ck_evt_067": 0,
+     "ck_evt_078": 0
+    },
+    "seconds": 233
+   }
+  ],
+  "botDefault": {
+   "ck_evt_041": {
+    "sourceItemsShown": 0,
+    "shownWithVariant": 0,
+    "runsWithVariant": []
+   },
+   "ck_evt_048": {
+    "sourceItemsShown": 0,
+    "shownWithVariant": 0,
+    "runsWithVariant": []
+   },
+   "ck_evt_056": {
+    "sourceItemsShown": 0,
+    "shownWithVariant": 0,
+    "runsWithVariant": []
+   },
+   "ck_evt_067": {
+    "sourceItemsShown": 2,
+    "shownWithVariant": 2,
+    "runsWithVariant": [
+     "forest-s3",
+     "slice-s3"
+    ]
+   },
+   "ck_evt_078": {
+    "sourceItemsShown": 0,
+    "shownWithVariant": 0,
+    "runsWithVariant": []
+   }
+  },
+  "lordKeepsHomeKinds": {
+   "ck_evt_041": {
+    "sourceItemsShown": 19,
+    "shownWithVariant": 4,
+    "runsWithVariant": [
+     "forest-s1-keeps",
+     "forest-s3-keeps"
+    ]
+   },
+   "ck_evt_048": {
+    "sourceItemsShown": 17,
+    "shownWithVariant": 0,
+    "runsWithVariant": []
+   },
+   "ck_evt_056": {
+    "sourceItemsShown": 16,
+    "shownWithVariant": 6,
+    "runsWithVariant": [
+     "forest-s1-keeps",
+     "forest-s2-keeps",
+     "forest-s3-keeps",
+     "slice-s1-keeps",
+     "slice-s3-keeps"
+    ]
+   },
+   "ck_evt_067": {
+    "sourceItemsShown": 2,
+    "shownWithVariant": 2,
+    "runsWithVariant": [
+     "forest-s3-keeps",
+     "slice-s3-keeps"
+    ]
+   },
+   "ck_evt_078": {
+    "sourceItemsShown": 0,
+    "shownWithVariant": 0,
+    "runsWithVariant": []
+   }
+  }
+ },
+ "captures": {
+  "pass": true,
+  "bytes": 1093169,
+  "errors": []
+ }
+}

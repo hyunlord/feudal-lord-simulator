@@ -13,6 +13,7 @@
 // rect, measured on the PNG); `flat` — no art frame (a plain fill with a CSS rule).
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
+import { DECISION_CARD_SURFACES } from "./decisionCard/surfaces";
 import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
@@ -31,7 +32,9 @@ export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "
   // DEC-CARD-2: scripts/deccard2ResultsStates.ts (the result thread).
   | "deccard2"
   // LM-R3: scripts/sliceEndsStates.ts (the lord slice played by the lord bot to its end, ~/fls-slice-end-states).
-  | "slice";
+  | "slice"
+  // ER-13: scripts/variantStates.ts (the wording variants' cards, ~/fls-variant-states).
+  | "variants";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -187,6 +190,12 @@ const LORD_TOWN = { kind: "state", set: "lord", name: "lord-receipts", focus: { 
 const LORD_PICK: OpenStep = { map: { building: ["farmstead"] }, action: "click" };
 const RECEIPT = { frame: "layer", frameLayer: ".lord-receipt-frame", contentSlot: ".lord-receipt-body",
   frameSlots: [".lord-receipt-window", ".lord-receipt-foot", ".lord-receipt-close"], scrollParts: [".lord-receipt-body"] } as const;
+
+/** LM-R3 (lord slice LS-2): a state a few ticks before an auto-pause, run at 1x until the notice shows. */
+const PAUSE_DUE = (name: string): SceneRef => ({ kind: "state", set: "slice", name, tile: "house", zoom: 1.1, query: "&story-delay=600000", run: true });
+// The stops fall on a season's turn: a fresh profile's first season card opens over the notice; closed, time stays stopped.
+const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice, .season-ledger-card", timeout: 90_000 }, { pause: 1_200 },
+  { dismiss: [".season-ledger-resume"] }, { wait: ".auto-pause-notice", timeout: 30_000 }, { pause: 600 }];
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
@@ -577,9 +586,22 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...STEWARD_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
+  // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice. Its states are in the `slice` set (scripts/autoPauseStates.ts:
+  // the lord bot's seed 3 a few ticks before a stop); the scene runs time from there and the game stops by itself, the
+  // story quiet (no chip or card opens over the notice).
+  { id: "hud.auto-pause", root: ".auto-pause-notice", frame: "css", scene: PAUSE_DUE("pause-due"), open: PAUSE_OPEN, scroll: "y",
+    requires: [".auto-pause-title", ".auto-pause-word", ".auto-pause-sentence", ".auto-pause-resume"],
+    data: "time run in the lord slice until the engine names a reason (the first, a great person's death): why it stopped, the ledger's line and the way on" },
+  { id: "hud.auto-pause.link", root: ".auto-pause-notice", frame: "css", scene: PAUSE_DUE("pause-due-suit"), open: PAUSE_OPEN, scroll: "y",
+    requires: [".auto-pause-title", ".auto-pause-word", ".auto-pause-sentence", ".auto-pause-link", ".auto-pause-resume"],
+    siblingsNoOverlap: [".auto-pause-link", ".auto-pause-resume"],
+    data: "time run until a suit is judged: the judgment's line with the way to its suit on the ledger screen beside the way on" },
+  // ER-13: the home petition's and the registry offer's cards in the canon's variant words (src/ui/decisionCard/surfaces.ts).
+  ...DECISION_CARD_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
-  // opens after the load — the end page does, after the story's delay).
+  // opens after the load — the end page does, after the story's delay). TRACE-KEEP: the state played on the engine that keeps
+  // the big decisions in the thread to the end (DTR-24), so the page's years list 1300–1308's too.
   { id: "modal.slice-start", root: ".chronicle-page.slice-page[data-slice='start']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
     scrollParts: [".chapter-page-scroll"], scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario='core:lord_slice']" }, { wait: ".welcome-house" }, { click: ".welcome-parchment [data-house-start]" },
@@ -590,23 +612,23 @@ export const SURFACES: readonly SurfaceRow[] = [
     scrollParts: [".chapter-page-scroll"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ wait: ".slice-page[data-slice='end']", timeout: 90_000 }, { pause: 800 }],
     requires: ["h2", ".slice-last-year li", ".slice-year-card", ".slice-season-card", ".slice-why p", ".chronicle-maps", ".slice-decisions li", ".slice-record",
-      ".slice-remembers li", ".slice-year-lines li", ".slice-chronicle", ".slice-continue"],
-    data: "the slice's end in 1320 (seed 3, twenty years): the last year 1319 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year" },
+      ".slice-remembers li", ".slice-year-lines li", ".slice-year-big li", ".slice-year-small", ".slice-small-total", ".slice-chronicle", ".slice-continue"],
+    data: "the slice's end in 1317 (seed 3, five years after the second estate of 1312; ~/fls-slice-end-states rebuilt on the TRACE-KEEP engine): the last year 1316 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year with its big decisions from the thread (1300-1308 too) and what followed each, and its small matters counted in one line" },
   { id: "modal.slice-end.record", extends: "modal.slice-end", root: ".chronicle-screen", frame: "flat", scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-decisions .slice-record" }, { wait: ".chronicle-screen", timeout: 30_000 }, { pause: 900 }], scrollParts: [".chronicle-list", ".chronicle-detail"],
-    requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision opened in the chronicle on its record (closing it comes back to the page)" },
+    requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision (1300's market dues, 67 rows followed) opened in the chronicle on its record (closing it comes back to the page)" },
   // The user's ruling (2026-10-09): the end page takes the live end's cards' place and links to them.
   { id: "modal.slice-end.year-card", extends: "modal.slice-end", root: ".story-modal.petition-card.results-card.year-review", frame: "layer", frameLayer: ".petition-frame",
     contentSlot: ".petition-body", scrollParts: [".petition-body"], siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
     scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-last-year .slice-year-card" }, { wait: ".results-card.year-review", timeout: 30_000 }, { pause: 600 }],
-    requires: ["h2", ".results-card-part h3", ".results-card-chronicle", ".results-card-continue"], data: "1319's year card opened from the end page's link (the engine's yearReview)" },
+    requires: ["h2", ".results-card-part h3", ".results-card-chronicle", ".results-card-continue"], data: "1316's year card (the last year; the slice ends in 1317 spring by its second estate) opened from the end page's link (the engine's yearReview)" },
   { id: "modal.slice-end.season-card", extends: "modal.slice-end", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-last-year .slice-season-card" }, { wait: ".season-ledger-card", timeout: 30_000 }, { pause: 900 }],
     // Its content scrolls in its own region, as the lord-mode season card's row (modal.season-ledger.steward) declares.
     requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
-    data: "1319 winter's season card opened from the end page's link (it does not open by itself at the end)" },
+    data: "1316 winter's season card (the last closed before the end in 1317 spring) opened from the end page's link (it does not open by itself at the end)" },
 ];
 
 /**

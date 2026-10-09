@@ -16,9 +16,11 @@
 //                                                    budgeted category (distBudget.config.json) within budget
 //  8. surfaces    scripts/checks/surfaceRegistry.mjs every dialog root, framed class name and border-image rule is in
 //                                                    src/ui/surfaces.registry.ts (UI-AUDIT-1)
-//  9. ui-geometry scripts/checks/uiGeometry.mjs      the committed DGX geometry result is of <head>'s inputs, opened
-//                                                    every surface, and has no failure outside its baseline and
-//                                                    exceptions, which only shrink (UI-AUDIT-1)
+//  9. ui-geometry scripts/checks/uiGeometry.mjs      the committed DGX geometry result (a full audit, or the changed
+//                                                    rows' runs a UI-Geometry-Run trailer names) has only safe-list
+//                                                    changes since it was measured, opened every surface, and has no
+//                                                    failure outside its baseline and exceptions, which only shrink
+//                                                    (UI-AUDIT-1, RR26)
 // 10. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
 // 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds

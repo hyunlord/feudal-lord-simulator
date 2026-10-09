@@ -1,0 +1,74 @@
+{
+ "seed": 3,
+ "archetypeId": "core:forest_edge",
+ "lordKeepsHomeKinds": false,
+ "startYear": 1300,
+ "finalYear": 1317,
+ "tick": 68000,
+ "endedAt": 68000,
+ "shownItems": 9,
+ "shownHomePetitions": 0,
+ "shownRegistryOffers": 9,
+ "bySource": {
+  "pannage": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "common_pasture": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "road_bridge": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "ck_evt_031": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "ck_evt_059": {
+   "shown": 1,
+   "withVariant": 1,
+   "variantEveryTickShown": 1
+  },
+  "ck_evt_019": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  }
+ },
+ "byVariant": {
+  "ck_evt_041": 0,
+  "ck_evt_048": 0,
+  "ck_evt_056": 0,
+  "ck_evt_067": 1,
+  "ck_evt_078": 0
+ },
+ "saved": {
+  "ck_evt_067": {
+   "tick": 48000,
+   "year": 1312,
+   "season": 0,
+   "id": "registry:ck_evt_059:estate_oversight|:48",
+   "source": "ck_evt_059",
+   "file": "ck_evt_067-forest_edge-s3.json"
+  }
+ },
+ "variantItems": [
+  {
+   "id": "registry:ck_evt_059:estate_oversight|:48",
+   "surface": "registry_offer",
+   "source": "ck_evt_059",
+   "firstTick": 48000,
+   "firstYear": 1312,
+   "ticks": 50,
+   "variantTicks": 50,
+   "variant": "ck_evt_067"
+  }
+ ],
+ "seconds": 495
+}

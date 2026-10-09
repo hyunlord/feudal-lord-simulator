@@ -98,6 +98,8 @@ import { EventCards } from "./ui/hud/EventCards";
 import { decisionModal } from "./ui/eventStory";
 import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
+import { useLordAutoPause } from "./ui/hud/useLordAutoPause";
+import { AutoPauseNotice } from "./ui/hud/AutoPauseNotice";
 import { guidanceSampleKey } from "./ui/hud/guidanceSample";
 import { AppModals } from "./ui/screens/AppModals";
 import { LordScreen } from "./ui/lord/screen/LordScreen";
@@ -155,6 +157,8 @@ export function App() {
   const [chroniclePersonId, setChroniclePersonId] = useState<string | null>(null);
   // UX-3: which UI is on screen is one state (ui/stateMachine: one panel slot, Esc one step, modals push / pop).
   const { ui, uiRef, setUi, sendUi } = useUiStateMachine(store);
+  // LM-R3 (lord slice LS-2): lord mode stops time by itself when the engine names a reason (after the modal's speed).
+  const autoPause = useLordAutoPause(store, topModal(ui) !== null);
   // QA-025: the chapter preview opened from the card's "목표 보기" (not after a chapter page) until it closes.
   const [chapterGoalsView, setChapterGoalsView] = useState(false);
   useEffect(() => { if (topModal(ui) !== "chapter_preview") setChapterGoalsView(false); }, [ui]);
@@ -329,7 +333,7 @@ export function App() {
   // UI-4: the town's story beats (fire, wet summer, famine, petition, chapter end): chips after the world, decisions
   // and the chronicle as modals (useStoryPresentation).
   const story = useStoryPresentation({ state, nowMs: presentationNowMs, blocked: welcomeVisible, topModal: topModal(ui),
-    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0),
+    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: autoPause.chipPause,
     markChapterSeen: chapter => dispatch({ type: "mark_chapter_page_seen", chapter }) });
   const stewardOfTown = stewardPerson(state);
   const steward = stewardOfTown === null ? null : personRow(state, stewardOfTown);
@@ -539,6 +543,7 @@ export function App() {
         {/* NAT-2: the QA info overlay (settings → developer, key `): nothing mounted while it is off. */}
         <QaOverlay store={store} />
         <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
+        <AutoPauseNotice state={state} hold={autoPause.hold} paused={speed === 0 && !welcomeVisible} ui={ui} onLord={openLord} onModal={modal => sendUi({ type: "push_modal", modal })} onDismiss={autoPause.dismiss} />
         <div className="hud-time-cluster" data-frame="strip-top" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
