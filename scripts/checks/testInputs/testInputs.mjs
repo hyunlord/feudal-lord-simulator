@@ -61,13 +61,14 @@ export function collectTestInputs({ root: given, traceDir, coverageDir = null, d
     const modules = lines("modules");
     const inputs = { files: new Set(), dirs: new Set(), lists: new Set(), missing: new Set(), untraceable: new Set(record.untraceable ?? []), declared: new Set(), children: new Set(record.children ?? []) };
     const add = (into, absolute, outsideIsUntraceable) => {
+      // Declared outside the repository: bound by value, whatever folder it is in (a temporary one too).
+      if (isDeclared(absolute) && place(root, absolute).rel === undefined) { if (into !== inputs.missing) inputs.declared.add(absolute); return; }
       const where = place(root, absolute);
       if (where.rel !== undefined) {
         into.add(where.rel);
         // Read through a symbolic link: its target is read too.
         if (into !== inputs.missing) { let real = absolute; try { real = realpathSync(absolute); } catch { /* gone or missing */ } if (real !== absolute) add(into, real, outsideIsUntraceable); }
-      } else if (where.outside !== undefined && isDeclared(where.outside)) { if (into !== inputs.missing) inputs.declared.add(where.outside); }
-      else if (where.outside !== undefined && outsideIsUntraceable) inputs.untraceable.add(`reads outside the repository: ${where.outside}`);
+      } else if (where.outside !== undefined && outsideIsUntraceable) inputs.untraceable.add(`reads outside the repository: ${where.outside}`);
     };
     for (const path of [...record.files, ...modules, ...lines("config"), ...(scripts.get(pid) ?? [])]) add(inputs.files, at(path), true);
     for (const path of record.dirs) add(inputs.dirs, at(path), true);

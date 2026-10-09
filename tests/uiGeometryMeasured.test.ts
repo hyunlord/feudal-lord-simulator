@@ -27,7 +27,8 @@ type Measure = { inputs?: Inputs; declared?: Declared; tamper?: "hash" | "uncomm
 /** Write a run's report (and its measured inputs) and, for a full audit, the shared summary. */
 function writeRun(write: (path: string, text: string) => void, { run, commit, rows, full, measure = {}, retries }: { run: string; commit: string; rows: Record<string, string>; full: boolean; measure?: Measure; retries?: Record<string, number> | undefined }) {
   const file = `${RUNS}/${run}/inputs.json`;
-  const inputs = { files: measure.inputs?.files ?? READ, dirs: measure.inputs?.dirs ?? [], lists: measure.inputs?.lists ?? [], missing: measure.inputs?.missing ?? ["src/ui/Panel.ts"], untraceable: measure.inputs?.untraceable ?? [] };
+  // Missing: a path tried with an extension (src/ui/Panel.ts beside Panel.tsx) and one an import named without one (src/ui/Widget).
+  const inputs = { files: measure.inputs?.files ?? READ, dirs: measure.inputs?.dirs ?? [], lists: measure.inputs?.lists ?? [], missing: measure.inputs?.missing ?? ["src/ui/Panel.ts", "src/ui/Widget"], untraceable: measure.inputs?.untraceable ?? [] };
   const declared = { states: { ui5: "ui5-a", lord2: "lord2-a" }, chromium: "140.0", viteDeps: { hash: "deps-a", browserHash: "b-a" }, ...measure.declared };
   const body = `${JSON.stringify({ schema: 1, kind: measure.tamper === "kind" ? "other" : "ui-geometry-inputs", run, commit, declared, inputs: packInputs(new Map([["audit", inputs]])) })}\n`;
   if (measure.tamper !== "uncommitted" && !measure.none) write(file, body);
@@ -83,6 +84,7 @@ for (const [what, change, named] of [
   ["the module the app imports dynamically", (s: ReturnType<typeof story>) => s.write("src/lazy/Lazy.tsx", "export const Lazy = 2;\n"), "src/lazy/Lazy.tsx"],
   ["a panel changed to import a new file", (s: ReturnType<typeof story>) => { s.write("src/ui/New.tsx", "export const New = 1;\n"); s.write("src/ui/Panel.tsx", 'import { New } from "./New";\n'); }, "src/ui/Panel.tsx"],
   ["a new file where the resolver looked and found nothing (it now shadows Panel.tsx)", (s: ReturnType<typeof story>) => s.write("src/ui/Panel.ts", "export const Panel = 0;\n"), "src/ui/Panel.ts"],
+  ["a module added where an import written without an extension looked (src/ui/Widget, now src/ui/Widget.tsx)", (s: ReturnType<typeof story>) => s.write("src/ui/Widget.tsx", "export const Widget = 1;\n"), "src/ui/Widget.tsx"],
   ["the lock file", (s: ReturnType<typeof story>) => s.write("package-lock.json", '{"lockfileVersion":3}\n'), "package-lock.json"],
   ["a package.json in a folder", (s: ReturnType<typeof story>) => s.write("src/ui/package.json", '{"type":"module"}\n'), "src/ui/package.json"],
   ["the audit's own script", (s: ReturnType<typeof story>) => s.write("scripts/uiGeometryAudit.mjs", "// changed\n"), "scripts/uiGeometryAudit.mjs"],
@@ -180,5 +182,18 @@ test("the retries: the rate and the rows retried again since the shared result b
     const text = formatUiGeometryResult(s.check());
     assert.match(text, /retries in run full-2: 2 condition\(s\) needed another attempt of 6 \(33\.3 %\), 3 first-attempt timeout\(s\), 1 failed three times, 1 tree\(s\) re-run — hud\.panel, lord\.card/);
     assert.match(text, /retried again \(also in full-1\): hud\.panel — a wait condition to fix/);
+  } finally { s.done(); }
+});
+
+test("a changed-rows run is judged by its own measured inputs: a file it did not read changed after it keeps it; one it read does not", () => {
+  const s = story();
+  try {
+    assert.equal(withRun(s, { "hud.panel": "ui5", "lord.card": "lord2", "modal.other": "ui6" }, {}).ok, true);
+    s.write("src/unused.ts", "changed after the run\n"); s.commit("branch: a file no page loads");
+    const kept = s.check();
+    assert.equal(kept.ok, true, kept.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(kept), /run rows-1 \(commit [0-9a-f]{8}\): 3 row\(s\), 6 cell\(s\), no new failure; 3 file\(s\) changed since it was measured, none the audit read \(measured inputs\)/);
+    s.write("src/styles/panel.css", ".panel { padding: 1px; }\n"); s.commit("branch: the panel's CSS");
+    refused(s.check(), /run rows-1: 1 file\(s\) the audit read changed since it was measured at [0-9a-f]{8} \(measured inputs\): src\/styles\/panel\.css — audit again/);
   } finally { s.done(); }
 });
