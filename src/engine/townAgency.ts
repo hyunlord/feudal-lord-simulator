@@ -5,6 +5,11 @@
  * reasons, and start the best they can pay for. Every start leaves a receipt: who, what, where, its five largest
  * reasons and the lord's decisions behind them. With no `state.agency` (sandbox, campaign) nothing here runs.
  */
+import { CHARTER_RING } from "../content/charterRingConfig";
+import { holdsCharterSearch } from "./palisadeFootprints";
+import { cancelConstruction } from "./constructionCancellation";
+import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
+import { takeCharterSearchReport } from "./autoplayEra";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
@@ -24,6 +29,7 @@ import { preservesAutoplayServiceSpace, resetAutoplayServiceSearch } from "./aut
 import { keepsInteriorHouseSites } from "./autoplayInteriorPlots";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import { autoplayCanPlace } from "./autoplayZones";
+import type { AbandonedSite } from "./townAgency.types";
 import type { AdvisorAction } from "./autoplayBotRecovery";
 import { granaryCoverageTargetIds } from "./autoplayFoodCoverage";
 import { recordMaterialPlacement } from "./autoplayMaterialLifecycle";
@@ -355,7 +361,10 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
       refusedBy = actor;
       const since = agency.refusedNeeds?.find(entry => entry.what === whatOf(action))?.since;
       const community = reasonsOf(state, agency, action, "community", rank, stuckWheat, stuckRoads);
-      if (since !== undefined && state.tick - since >= COMMUNITY_FALLBACK.waitTicks && scoreOf(community.reasons) > scoreOf(scored.reasons)) {
+      // GB-7 (GROW-BLOCK): what the town needs to pass to its next era (the era planner's, last in the plan's order and so
+      // the least need) falls to the community after the wait whatever its own score — seed 2's quarry, refused by the
+      // households at 38–39 against the start's 40, kept the town at 528 for twenty-five years (no stone, no church).
+      if (since !== undefined && state.tick - since >= COMMUNITY_FALLBACK.waitTicks && (scoreOf(community.reasons) > scoreOf(scored.reasons) || planner === "era")) {
         fallback = { builder: actor, since };
         refusedBy = undefined;
         actor = "community";
@@ -499,7 +508,7 @@ export function walkKey(state: GameState): string {
  * site open (the bot's era step then projects walls and their service space, the costliest step of the walk).
  */
 function charterSearchRuns(state: GameState): boolean {
-  return canProclaimPalisadeEra(state) && state.population >= CHARTER_POPULATION && !state.constructionSites.some(isBuildingConstructionSite);
+  return canProclaimPalisadeEra(state) && state.population >= CHARTER_POPULATION && !state.constructionSites.some(site => holdsCharterSearch(state, site));
 }
 
 /** TA-2…TA-5: one week of the town agency, at the week's first tick (nothing outside lord mode). */
@@ -508,7 +517,8 @@ function charterSearchRuns(state: GameState): boolean {
  * among those left, each proposal weighted by its own actor's temperament — with each one's chance when drawn.
  */
 function chanceOrder(state: GameState, proposals: readonly Proposal[]): readonly { readonly proposal: Proposal; readonly chance: ChoiceChance }[] {
-  const left = proposals.filter(proposal => proposal.score >= START_SCORE);
+  // GB-7: a need the community took up after its builder's refusal starts whatever its score (it waited a year already).
+  const left = proposals.filter(proposal => proposal.score >= START_SCORE || (proposal.fallback !== undefined && proposal.planner === "era"));
   const order: { proposal: Proposal; chance: ChoiceChance }[] = [];
   while (left.length > 0) {
     const temperaments = left.map(proposal => actorTemperament(state, proposal.actor));
@@ -520,9 +530,38 @@ function chanceOrder(state: GameState, proposals: readonly Proposal[]): readonly
   return order;
 }
 
-export function advanceTownAgency(state: GameState): GameState {
-  const agency = state.agency;
-  if (agency === undefined || state.tick <= 0 || state.tick % AGENCY_WEEK_TICKS !== 0) return state;
+/** GB-1: when a failed charter search is tried again — a season after it, doubled at each failure in a row (at most eight). */
+export function charterRetryTick(failure: { readonly tick: number; readonly attempts: number }): number {
+  return failure.tick + CHARTER_RING.retryTicks * Math.min(CHARTER_RING.retryMaxFactor, 2 ** Math.max(0, failure.attempts - 1));
+}
+
+/**
+ * GB-4 (GROW-BLOCK, the user's ruling 2026-10-09): the town gives up a building site no road has reached for a year with
+ * nothing delivered and no work done — it held every later search that waits for the open sites (the charter's wall
+ * among them). The giving-up is kept with its cause (P-C3: the blockage, not a shortage).
+ */
+function abandonUnreachedSites(state: GameState): GameState {
+  // GB-4: untouched a year (nothing delivered, no work) — a road it never had, a material that never came, or hands.
+  const stuck = state.constructionSites.filter(isBuildingConstructionSite).filter(site => site.kind !== "keep" && site.builderTicks === 0
+    && Object.values(site.delivered).every(amount => (amount ?? 0) === 0) && state.tick - site.startedTick >= CHARTER_RING.abandonTicks);
+  if (stuck.length === 0 || state.agency === undefined) return state;
+  let next = state;
+  for (const site of stuck) {
+    const routes = createSimulationRoutePorts(next);
+    next = cancelConstruction({ state: next, siteId: site.id, inventory: createDeliveryInventoryPort(), routes: routes.delivery }).state;
+  }
+  const reasonOf = (stall: string): AbandonedSite["reason"] => stall === "no_route" ? "road"
+    : stall === "no_material_source" || stall === "awaiting_materials" || stall === "reserve_held" ? "material" : "work";
+  const abandonedSites = [...(next.agency!.abandonedSites ?? []), ...stuck.map(site => ({ id: site.id, kind: site.kind, tx: site.tx, ty: site.ty, tick: state.tick,
+    since: site.startedTick, reason: reasonOf(site.stall) }))]
+    .slice(-CHARTER_RING.abandonedKept);
+  return { ...next, agency: { ...next.agency!, abandonedSites } };
+}
+
+export function advanceTownAgency(input: GameState): GameState {
+  if (input.agency === undefined || input.tick <= 0 || input.tick % AGENCY_WEEK_TICKS !== 0) return input;
+  const state = abandonUnreachedSites(input);
+  const agency = state.agency!;
   const actors: AgencyActor[] = agency.actors.map(actor => ({ ...actor, funds: actor.funds + weeklySavings(state, actor.kind) }));
   // TA-12: a hamlet ready for its market charter holds new buildings until its sites are done, so the bot's era step
   // (which proclaims only with no building site open) can ask the lord; at most `CHARTER_HOLD_WEEKS`, then it builds on.
@@ -549,15 +588,27 @@ export function advanceTownAgency(state: GameState): GameState {
     && (last.fundThreshold === null || treasuryBalance(week) < last.fundThreshold) ? last : undefined;
   let needs: readonly PlanningNeed[];
   let tried: string | undefined;
+  // GB-1 (GROW-BLOCK, the user's ruling 2026-10-09): a failed search is kept with its reason, and tried again a season
+  // on even on the same layout (a full town's layout never changes — seed 1 stood at 528 for a hundred years), its
+  // wider ring starting elsewhere each attempt (`autoplayEra.ts`).
+  let failure = agency.charterWallFailure;
   if (reused !== undefined) {
     needs = reused.needs;
     tried = reused.charterWallTried;
   } else {
     const searching = charterSearchRuns(week);
     const layout = searching ? needsLayoutKey(week) : undefined;
-    const skipEra = layout !== undefined && agency.charterWallTried === layout;
+    // A search that failed before its reason was kept (a save from before GB-1) is tried again at once.
+    const retry = failure === undefined || week.tick >= charterRetryTick(failure);
+    const skipEra = layout !== undefined && agency.charterWallTried === layout && !retry;
+    takeCharterSearchReport();
     needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? ["era"] : []);
-    tried = searching && (skipEra || !needs.some(need => need.action.kind === "proclaim_era")) ? layout : undefined;
+    const found = needs.some(need => need.action.kind === "proclaim_era");
+    const report = takeCharterSearchReport();
+    tried = searching && (skipEra || !found) ? layout : undefined;
+    if (searching && !skipEra && !found) {
+      failure = { tick: week.tick, reason: report?.reason ?? failure?.reason ?? "other", homes: report?.homes ?? failure?.homes ?? [], attempts: (failure?.attempts ?? 0) + 1 };
+    } else if (found || week.era !== "hamlet") failure = undefined;
   }
   // FIX-14 (decision FX13-5, the user's (가)): the charter's timber the town's own stores cannot reach — the town orders
   // it from the market's traders itself (FIX-10's standing order); it is not the lord's to grant.
@@ -616,7 +667,7 @@ export function advanceTownAgency(state: GameState): GameState {
   const kept = [...agency.receipts, ...receipts];
   const trimmed = kept.length <= RECEIPTS_KEPT ? kept
     : kept.filter((receipt, index) => receipt.what !== "road" || index >= kept.length - RECEIPTS_KEPT).slice(-RECEIPTS_KEPT);
-  const { charterWallTried: _tried, lastWalk: _walk, ...kept2 } = next.agency!;
+  const { charterWallTried: _tried, lastWalk: _walk, charterWallFailure: _failure, ...kept2 } = next.agency!;
   // TA-13: the walk is kept only while it starts nothing (a reused one keeps its own tick, key and threshold).
   const treasury = treasuryBalance(week);
   const short = proposals.filter(proposal => proposal.subsidy > treasury).map(proposal => proposal.subsidy);
@@ -633,6 +684,7 @@ export function advanceTownAgency(state: GameState): GameState {
   }).filter((entry, index, all) => all.findIndex(other => other.what === entry.what) === index);
   const { refusedNeeds: _refused, ...kept3 } = kept2;
   return { ...next, agency: { ...kept3, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }),
+    ...(failure === undefined ? {} : { charterWallFailure: failure }),
     ...(lastWalk === undefined ? {} : { lastWalk }), ...(refusedNeeds.length === 0 ? {} : { refusedNeeds }) } };
 }
 

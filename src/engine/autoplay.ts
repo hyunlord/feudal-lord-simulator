@@ -1,3 +1,4 @@
+import { constructionSiteReachable } from "./siteReach";
 import { wallConstructionPriority } from "./constructionReserve";
 import { MONEY_BALANCE } from "../content/balanceConfig";
 import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
@@ -196,6 +197,8 @@ export function townSiteRefusal(state: GameState, kind: BuildingKind, coordinate
   if (check === "accepts") return "route";
   if (check !== null) return check;
   if (!keepsInteriorHouseSites(state, { kind: "place_building", building: kind, tx: coordinate.tx, ty: coordinate.ty }, policy.maxHousingLots)) return "house_sites";
+  // GB-5: the town's own site choice too — never where the materials cannot come.
+  if (!constructionSiteReachable(state, kind, coordinate)) return "route";
   return null;
 }
 
@@ -418,7 +421,10 @@ function plannerPlan(state: GameState, policy: AutoplayPolicy, diagnostic?: Food
   const upkeepHeld = careful && arrearsPeriods(state) >= LORDSHIP_BALANCE.botArrearsPeriods;
   const homesHeld = careful && (derelictPermille(state) ?? 0) >= LORDSHIP_BALANCE.botDerelictPermille;
   const keepsDebts = (action: AutoplayAction): boolean => !upkeepHeld || action.kind !== "place_building" || !(action.building in MONEY_BALANCE.upkeep);
-  const accepts = (action: AutoplayAction) => keepsSites(action) && keepsDebts(action);
+  // GB-5 (GROW-BLOCK): no building site where its materials cannot come — no route now and no road the construction
+  // search could lay (the service-space rule included).
+  const reaches = (action: AutoplayAction): boolean => action.kind !== "place_building" || constructionSiteReachable(state, action.building, { tx: action.tx, ty: action.ty });
+  const accepts = (action: AutoplayAction) => keepsSites(action) && keepsDebts(action) && reaches(action);
   // F0-A (FP-6): the autumn winter-reserve check, before the ordinary food step; the naive variant has none.
   const winterReserve = (current: GameState): AutoplayAction => policy.naiveReserve === true ? NONE : winterReserveAction(current, buildAction);
   // F0-B (EV-7): the unprepared variant digs no wells.
@@ -440,6 +446,9 @@ function plannerPlan(state: GameState, policy: AutoplayPolicy, diagnostic?: Food
       step("services", () => serviceDecision(state), true), step("market_gap", () => marketGap(state)), step("water", () => water(state)),
       step("material_recovery", () => materialRecoveryAction(state)),
       step("housing", (): AutoplayAction => homesHeld ? NONE : housingAction(state, policy)),
+      // GB-9 (GROW-BLOCK): a stone town's wall too small for the lots still wanted is widened as a palisade's is (seed 3
+      // kept 18 houses from 1373 to 1425 inside its 28-tile ring).
+      step("wall_expansion", () => autoplayWallExpansionAction(state, policy.maxHousingLots)),
     ] };
   }
   // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the

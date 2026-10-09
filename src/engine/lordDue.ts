@@ -5,6 +5,7 @@
  * this; the steward's petitions and the registry's offers keep their own lists).
  */
 import { MARRIAGE_TIMES } from "../content/diplomacyConfig";
+import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
@@ -14,7 +15,7 @@ import { marriageDecisionDue } from "./marriage";
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 
 export interface LordMatterDue {
-  readonly kind: "will_change" | "contested" | "suit_defence" | "entry_threat";
+  readonly kind: "will_change" | "contested" | "suit_defence" | "entry_threat" | "audit" | "estate_petition";
   /** The negotiation, suit or threat. */
   readonly id: string;
   /** The tick it is decided without him (the will stands, the suit moves on, the men come); null: it waits. */
@@ -35,5 +36,11 @@ export function lordMattersDue(state: GameState): readonly LordMatterDue[] {
     due.push({ kind: "suit_defence", id: suit.id, dueTick: nextSuitStage(suit) === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON });
   }
   for (const threat of state.estates?.threats ?? []) if (threat.guarded !== true) due.push({ kind: "entry_threat", id: threat.id, dueTick: threat.due });
+  // PLAY-2 §4 (renderer A): an audit's finding to answer, and an estate's petition brought to the lord, by their deadlines.
+  for (const audit of state.stewardship?.audits ?? []) if (audit.status === "pending") due.push({ kind: "audit", id: audit.id, dueTick: audit.deadline });
+  for (const petition of state.stewardship?.petitions ?? []) {
+    if (petition.status !== "open" || petition.estateId === HOME_ESTATE_ID || petition.escalated === undefined || (petition.reachesLord ?? petition.tick) > state.tick) continue;
+    due.push({ kind: "estate_petition", id: petition.id, dueTick: petition.deadline });
+  }
   return due.sort((a, b) => (a.dueTick ?? Infinity) - (b.dueTick ?? Infinity) || a.id.localeCompare(b.id));
 }
