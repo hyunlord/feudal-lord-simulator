@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "measurement": "offline rescore of actual historical DGX 125-year archives",
+  "executionLocation": "Mac",
+  "exitCode": 1,
+  "expectedProductFailure": true,
+  "historicalRun": "engineB-answer-json-92bbc7d-92bbc7d",
+  "reportGzipSha256": "03f97c2fe1d107a9af7cb5f88677fc9e9dd53f009c0a7ac7f494a71999485ea9",
+  "reportUncompressedSha256": "d1a3ed5f38248cff722fe69fd646d3ef2c8c9b7f76c7e49a5ae8da56168a2513",
+  "counts": {
+    "direct": 292,
+    "conditional": 0,
+    "insufficient-observation": 20,
+    "unlinked": 524
+  },
+  "legacyDirectRatio": {
+    "numerator": 292,
+    "denominator": 816,
+    "ratio": 0.35784313725490197,
+    "threshold": 0.8,
+    "thresholdMet": false
+  },
+  "coverage": {
+    "classifiedHeavyAnswers": 836,
+    "matureAnswers": 816,
+    "unclassifiedCommands": 2,
+    "unclassified": [
+      {
+        "seed": 2,
+        "ordinal": 786,
+        "tick": 84163,
+        "command": "confirm_palisade_proclamation",
+        "historyId": "h-006167",
+        "status": "unclassified",
+        "reason": "history_command_outside_pinned_trace_taxonomy",
+        "source": null,
+        "kind": null,
+        "weights": null,
+        "cameHeavyToLord": null
+      },
+      {
+        "seed": 2,
+        "ordinal": 1986,
+        "tick": 393043,
+        "command": "confirm_stone_town_proclamation",
+        "historyId": "h-028971",
+        "status": "unclassified",
+        "reason": "history_command_outside_pinned_trace_taxonomy",
+        "source": null,
+        "kind": null,
+        "weights": null,
+        "cameHeavyToLord": null
+      }
+    ],
+    "answersWithConditionalExpectations": 180,
+    "unlinkedWithConditionalExpectations": 32,
+    "contractCoveredAnswers": 198
+  },
+  "inputs": [
+    {
+      "seed": 1,
+      "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+      "replayFormat": "answer-replay-v1",
+      "node": "v24.21.0",
+      "dependencyLockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+      "rawSha256": "3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd",
+      "replayManifestSha256": "71f4d346b18376878f56816063723cffe883b48a9e09fb6b7f1ee3e55be0b6ac",
+      "validitySha256": "2cc4e612dc336976508343d9bf0470d5957b68087ba836964a2d056d5425124c",
+      "classificationSha256": "9b93a294d23210ef5735c33311f57a690fc590a4bb2a8a1e4665b07d571b5493",
+      "contractSourceCompatible": false
+    },
+    {
+      "seed": 2,
+      "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+      "replayFormat": "answer-replay-v1",
+      "node": "v24.21.0",
+      "dependencyLockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+      "rawSha256": "9e3737c46b4825564510f1748f36d0abef4376824cf34bf57237d89ba50663be",
+      "replayManifestSha256": "f8257db21fb8127ecd70d1581cf5931708617c6e1786c1f8166f6f00ecdac034",
+      "validitySha256": "787845aaf780e1b306837d85a655046f15db8da995271d5a9037d93e319f45a7",
+      "classificationSha256": "67f5dd3d492f15de05e0f019f07f35a965cd349de68e825d3a989eb930c5da4a",
+      "contractSourceCompatible": false
+    },
+    {
+      "seed": 3,
+      "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+      "replayFormat": "answer-replay-v1",
+      "node": "v24.21.0",
+      "dependencyLockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+      "rawSha256": "2973df33958f226900d1dcc219c890f4635488b725e88316bbfc7932fc28eb99",
+      "replayManifestSha256": "d6c6229a1dcd234aa672f08d27ed4b8682802415c4a653dc2e668100105bac48",
+      "validitySha256": "28330a5e56bb4a7f0d02b209a4c37ac18b6ef95580dbc1dbf11b56e65c989d4b",
+      "classificationSha256": "1fc4ccec25c904a7896e97db30bba3a5741a1d79a186cc9fb3a2f0df3ef10a7e",
+      "contractSourceCompatible": false
+    }
+  ],
+  "scorerHashes": {
+    "engineBOutcomeArchive.mjs": "769c44c017183d5a162d6926e21f837b64c1d7f4385f2e03bddd00d7e2a9d718",
+    "engineBOutcomeGate.mjs": "4b6f7e51dfbcd7847765318f86f9324ed4c1f3dd6d3f32d45329eb894c800726",
+    "engineBOutcomeRun.mjs": "c1e851ba8f6d2aee82f715f0a22957a902688bddb9a18ed2b8aa242c63273ac0"
+  },
+  "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+  "configTemplateNote": "Paths must be replaced with externally retained raw and replay directories; template byte hash differs from actual invocation. Input pins and scorer hashes retain exact evidence."
+}

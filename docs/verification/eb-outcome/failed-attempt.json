@@ -1,0 +1,47 @@
+{
+  "tree": "a5738589c755a719294d439c1ba179265f3fe3d0",
+  "head": "c8824ef929e26417d4e395a5ace025bffde90129",
+  "base": "ef8351a6b",
+  "tests": 3668,
+  "pass": 3651,
+  "fail": 4,
+  "passed": false,
+  "where": "DGX engineB-outcome-tests-c8824ef",
+  "at": "2026-10-09T15:25:44.346Z",
+  "schemaVersion": 1,
+  "run": "engineB-outcome-tests-c8824ef",
+  "runtimeDirtyPaths": 1,
+  "launchDirtyPaths": 0,
+  "result": "failed; never accepted as a passing publication record",
+  "failures": [
+    {
+      "test": "registry verification rejects an answered lord occurrence without any command/history row",
+      "cause": "Regression test arrived during initial rsync but matching Archive helper had not; remote preflight records one path differing from c8824ef92. Fixed source and tests are committed together at f62c61b."
+    },
+    {
+      "test": "registry verification rejects duplicate occurrence attribution and mismatched settlement",
+      "cause": "Same rsync source/test race; final rerun uses frozen clean commit."
+    },
+    {
+      "test": "engineBOutcomeGateEvidence.test.ts",
+      "cause": "Taxonomy imported tools/eslint-local TypeScript, absent from ordinary root installation."
+    },
+    {
+      "test": "resourceCatalogExtensibility.test.ts",
+      "cause": "Temporary clone typecheck cannot resolve tools/eslint-local TypeScript; fixed by Node-only literal reader at9c51f45ca."
+    }
+  ],
+  "repairValidation": {
+    "focusedTests": 57,
+    "focusedPass": 57,
+    "isolatedCatalogAndEvidenceTests": 12,
+    "isolatedCopyNestedTests": 122,
+    "independentReadOnlyReview": "PASS"
+  },
+  "rawSha256": {
+    "test-changed.json": "a460b6f7043508ce15f001ffc284da40a14fd9ce203a2d681c3c64485d292224",
+    "run.log": "ec7bf726ca4a20d203731e8c593e762eb23f2bf63f6691031eb0b7cbc0d27e54",
+    "timing.env": "ba0d0a9f22e60f63fcf874bf522b7f565825acb44fa5a03932e4a4ecc17dbd44",
+    "exit-code": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  }
+}

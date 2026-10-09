@@ -6,11 +6,20 @@
 ---
 ## A. 엔진 세션
 
+### Engine B — EB-OUTCOME / 조건34 후속 (2026-10-09)
+
+- [x] 기대 결과 데이터56사건·163선택·323효과, 지정 사건별 대상/조건/표시 기한/주된 결정 연결: [JSON](../design/engine-B-outcomes.json). 실제 표시 완료와 구별.
+- [x] 독립125년 관문 CLI 및 현재 소스 생산기: 기존 실제 원자료292/816 재현, direct292/conditional0/관측부족20/unlinked524; 80% 제품 관문 미달 보존. [운영 계약](../verification/eb-outcome/gate-usage.md).
+- [x] 조건34 실제 정본 변환 대조34/34,075의 원문보다 좁은 관리인 제한 수정·회귀19/19(Mac),[상세](../verification/eb-freq/condition-review.md). 역사B476 원인 소급 확정 없음.
+- [x] 정상 영주048 생산 공백·078 원사건 경로 [엔진 요청](../requests/engine-B-freq-facts.md). 슬롯은 MONEY-SINK 뒤 검토·본선 채택 뒤135→7→9.
+- [x] 최신 본선9ec8110a7 통합2024df1cc에서 DGX 변경 시험446파일3686통과·0실패·13skip,1년117명령 재현/짧은125년 입력 거부,기하2행40조건 실패0. [실행 원본 해시](../verification/eb-outcome/changed-tests.json). 최종 게시 커밋은 이 완료 장부를 포함하며 보호 푸시가 정확한 최종 트리 test:changed/check:merge를 요구한다. 제품35.78% 미달과 엔진 후속을 완료로 바꾸지 않는다.
+
+
 ### Engine B — EB-WEIGHT / EB-FREQ / MOD-SLOT (2026-10-09 감사 게시·소유 레인 인계)
 
 사용자 후속 지시: 렌더 중단 중앙값1·최대4를 P-T1 범위로 수용한다. 감사·측정·요청 인계 완료와 코어 구현·전수 가시성 완료를 구분하며, 후자는 완료 감사 게시를 막지 않는다. [통합 요청](../requests/engine-B-weight.md).
 
-- [x] EB-WEIGHT 감사·측정·인계: 활성56 정적 층위·원본125년 세 seed·동일 궤적 실제 답변 재현을 검증했다. 전체 답변836(보충838), 중앙값2·최대6·0인 해46/375·초과26년(보충27년)은 렌더 중단 계수와 다른 분모이며 코어 유입 개선 자료다. 성숙 자기 답변 ID 후속 전체292/816·등록148/192, UI23사건·15쌍·계절 청지기 seed1 네 행4/10을 구분한다. 전수 because/주원인·자연10배속 가시성·답변 당시 변주 ID 보존은 [소유 엔진 요청](../requests/engine-B-weight.md)으로 남는다. c5d2b35와 후속a51965f는 실제 종료1을 보존했고, 정보성 결산 관측을 보완한engineB-live-ledger-8bd902b는 공식 실험 줄 대기다. 성공으로 세지 않는다. [판정표](../verification/eb-weight/requirement-disposition.md).
+- [x] EB-WEIGHT 감사·측정·인계: 활성56 정적 층위·원본125년 세 seed·동일 궤적 실제 답변 재현을 검증했다. 전체 답변836(보충838), 중앙값2·최대6·0인 해46/375·초과26년(보충27년)은 렌더 중단 계수와 다른 분모이며 코어 유입 개선 자료다. 성숙 자기 답변 ID 후속 전체292/816·등록148/192, UI23사건·15쌍·계절 청지기 seed1 네 행4/10을 구분한다. 전수 because/주원인·자연10배속 가시성·답변 당시 변주 ID 보존은 [소유 엔진 요청](../requests/engine-B-weight.md)으로 남는다. c5d2b35와 후속a51965f는 실제 종료1을 보존했고, 정보성 결산 관측을 보완한engineB-live-ledger-8bd902b도 종료1이다. 41000 계속 뒤41151 새 결정 카드에서 멈췄으며 [종료 기록](../verification/eb-visible/live-ledger-8bd902b.md)을 보존한다. 성공으로 세지 않는다. [판정표](../verification/eb-weight/requirement-disposition.md).
 - [x] EB-FREQ 역사40개 판정: 원래56ee1d9 seed1/125년 재현 종료0·전체 반환 JSON/보고서 요약 일치·관측63,748건 오류0. 최종 유력 분류는 **조건34·가중 경쟁4·시대2**다.147의 실제pace28·chance2·budget2와 별도로 원본32계절 모두draw≥150인 [순수 확률 검증](../verification/eb-freq/147-chance-window.md)을 실제 실행해 충분한 차단 이유를 확인했다.147을 귀속 미정으로 남기지 않으며 대기 중 장기 probe는 실행 전 취소했다. 전체 상태/매 틱 동일성과 하류 바인딩 적격성은 별도 미증명이다.
 - [x] MOD-SLOT 제안·격리135 인계: [저장 계약](../design/module-state-contract.md)·[엔진 요청](../requests/engine-B-mod-slot.md), 격리 시제품938f2f492의 실제 소송/수입·저장·기금 시험29/29, 독립30/30·타입·lint·빌드 통과. 공식 채택은 MONEY-SINK 뒤 검토하며 본선 코어/저장 편입·135 활성화는 미실행이다.
 - [x] 완료 감사 게시: 본선d76e90e92·후속1ba20a1be·bff5c9360의 실제 test:changed/check:merge·보호 푸시·원격 조상 확인 완료. clean016ab02e 가드레일의 샌드박스3해시·캠페인3쌍 동일, 통합716기하61행1220조건 실패0 근거를 유지한다. 별도 진단 도구 묶음의 sourceScan 분류 요청은 감사 문서 전체 게시를 다시 동결하지 않는다. 문구 교정의 별도 기하·변경 시험·게시 관문은 [문구 보고](../verification/eb-wording/README.md)에서 관리한다.
