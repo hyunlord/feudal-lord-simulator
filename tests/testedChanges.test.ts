@@ -64,9 +64,10 @@ test("check:merge's tested step: a passing record of exactly the pushed content 
     assert.equal(ok.ok, true); assert.match(formatTestedChanges(ok), /1 picked test file\(s\) passed on this content\n  1 on this content — 1\/1 at DGX x/);
 
     writeFileSync(join(dir, "src/b.ts"), "export const b = 4;\n"); git("commit", "-qam", "changed after the run");
-    // A record of other content counts only for tests that read none of the difference (RR25): a.test.ts imports b.ts.
     const later = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
     assert.equal(later.ok, false, "the test reads the file that changed after the run");
-    assert.match(formatTestedChanges(later), /tests\/a\.test\.ts — reads src\/b\.ts \(changed since /);
+    // RR25, measured: a record of other content counts only by the inputs measured while its tests ran; these have none,
+    // and the failed one, which cannot be compared either, blocks.
+    assert.match(formatTestedChanges(later), /tests\/a\.test\.ts — FAILED on content it cannot be compared with/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

@@ -35,6 +35,7 @@ export const FOLDER_WALKS = {
   "tests/sourceScanTests.test.ts": ["tests/"],                            // this map's own guard: a new walker is a new test
   "tests/suitLedger.test.ts": [],                                       // walks $SUIT_LEDGER_STATES (DGX states, outside the repository) only
   "tests/surfacesRegistry.test.ts": SRC,                                  // framed UI candidates (scripts/checks/surfaceRegistry.mjs)
+  "tests/testedReuse.test.ts": [],                                      // its readdir calls are in the throwaway repositories it builds
   "tests/touchTargets.test.ts": ["src/styles/", "src/ui/", "src/render/", "src/App.tsx"],
   "tests/uiArtSkin.test.ts": ["src/ui/", "src/styles/", "public/"],       // and that the pictures its CSS names exist
   "tests/uiAuditMoney.test.ts": ["src/ui/", "src/render/"],

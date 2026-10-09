@@ -23,12 +23,13 @@
 // content that was tested (what `git add -A` would commit now, built in a copy of the index). check:merge looks for
 // a passing record of the pushed head's tree that covers the tests its range picks (scripts/checks/mergeChecks.mjs).
 import { execFileSync, spawnSync } from "node:child_process";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { gitIn, pickTests, SOURCE_SCAN_WHY } from "./pickTests.mjs";
-import { coverageLines, newestFirst, overlapLines, reuseEvidence, testCoverage, testedRecords } from "./testedChanges.mjs";
+import { coverageLines, measuredPicks, newestFirst, overlapLines, reuseEvidence, testCoverage, testedRecords } from "./testedChanges.mjs";
+import { collectTestInputs, packInputs } from "./testInputs/testInputs.mjs";
 
 export { pickTests, SOURCE_SCAN_WHY };
 
@@ -74,22 +75,24 @@ async function main() {
   const base = opt("--base") ?? trunkMergeBase(ROOT);
   if (!base) { console.error("no trunk ref to compare with; pass --base <commit>"); process.exit(2); }
   const { changed, picked, total } = pickTests({ root: ROOT, base });
+  const tree = testedTree(ROOT);
+  const carried = join(ROOT, ".remote-in/tested-records.json");
+  const extra = process.env.FLS_REMOTE && existsSync(carried) ? JSON.parse(readFileSync(carried, "utf8")) : [];
+  const records = [...testedRecords(ROOT), ...extra].sort(newestFirst);
+  // RR25 (measured): a test whose recorded inputs the change touches is picked too, whatever its imports say.
+  for (const [test, files] of measuredPicks({ work: ROOT, base, head: tree, records })) if (!picked.has(test) && existsSync(join(ROOT, test))) picked.set(test, `reads ${files[0]} (measured)`);
   const list = [...picked.keys()].sort();
   if (args.includes("--list")) {
     console.log(`changed: ${changed.size} file(s) since ${base.slice(0, 8)}; tests picked: ${list.length} of ${total} (listed only, not run)`);
     for (const t of list) console.log(`  ${t}  (${picked.get(t)})`);
     process.exit(0);
   }
-  const tree = testedTree(ROOT);
   let run = list; let reused = [];
   if (!args.includes("--all") && list.length > 0) {
-    const carried = join(ROOT, ".remote-in/tested-records.json");
-    const extra = process.env.FLS_REMOTE && existsSync(carried) ? JSON.parse(readFileSync(carried, "utf8")) : [];
-    const records = [...testedRecords(ROOT), ...extra].sort(newestFirst);
     const coverage = testCoverage({ top: ROOT, work: ROOT, required: list, headTree: tree, records });
     run = coverage.uncovered; reused = reuseEvidence(coverage.covered);
     if (coverage.covered.size > 0) console.log([`reused (decision RR25): ${coverage.covered.size} of ${list.length}`, ...coverageLines(coverage.covered)].join("\n"));
-    if (coverage.covered.size > 0 && run.length > 0) console.log([`to run (${run.length}):`, ...overlapLines(run, coverage.overlaps, 40, coverage.failed)].join("\n"));
+    if (coverage.covered.size > 0 && run.length > 0) console.log([`to run (${run.length}):`, ...overlapLines(run, coverage.overlaps, 40, coverage.failed, coverage.unmeasured)].join("\n"));
   }
   console.log(`changed: ${changed.size} file(s) since ${base.slice(0, 8)}; tests picked: ${list.length} of ${total} — running ${run.length}`);
   for (const t of run) console.log(`  ${t}  (${picked.get(t)})`);
@@ -109,17 +112,28 @@ async function main() {
     console.log(`test:changed: nothing to run — every picked test is covered; the reuse evidence is in ${file.slice(ROOT.length + 1)}`);
     process.exit(0);
   }
-  {
-    const r = spawnSync(join(ROOT, "node_modules/.bin/tsx"), ["--test", ...run], { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 30 });
+  // RR25 (measured): every test process records what it reads (traceReads.mjs), V8 lists the scripts it compiled.
+  const trace = mkdtempSync(join(tmpdir(), "fls-test-inputs-")); const traceDir = join(trace, "reads"); const coverageDir = join(trace, "v8");
+  mkdirSync(traceDir); mkdirSync(coverageDir);
+  let inputs = null;
+  try {
+    const tracer = join(ROOT, "scripts/checks/testInputs/traceReads.mjs");
+    const { NODE_TEST_CONTEXT: _runner, ...outer } = process.env;   // run from a test runner, the inner runner must not act as its child
+    const env = { ...outer, FLS_TRACE_DIR: traceDir, NODE_V8_COVERAGE: coverageDir, NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --import=${pathToFileURL(tracer).href}`.trim() };
+    const r = spawnSync(join(ROOT, "node_modules/.bin/tsx"), ["--test", ...run], { cwd: ROOT, encoding: "utf8", maxBuffer: 1 << 30, env });
     process.stdout.write(r.stdout ?? ""); process.stderr.write(r.stderr ?? "");
     rc = r.status ?? 1; counts = summary(r.stdout ?? "");
-  }
+    const measured = collectTestInputs({ root: ROOT, traceDir, coverageDir });
+    inputs = packInputs(new Map([...measured].filter(([test]) => run.includes(test))));
+    const without = run.filter(test => !measured.has(test));
+    if (without.length > 0) console.log(`test inputs: ${without.length} test file(s) left no record (never reused): ${without.slice(0, 5).join(", ")}${without.length > 5 ? " …" : ""}`);
+  } finally { rmSync(trace, { recursive: true, force: true }); }
   const record = {
-    tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: run, ...counts, passed: rc === 0, where, at: new Date().toISOString(), reused,
+    tree, head: gitIn(ROOT)("rev-parse", "HEAD"), base, picked: run, ...counts, passed: rc === 0, where, at: new Date().toISOString(), reused, inputs,
   };
   const file = process.env.FLS_REMOTE ? join(ROOT, ".remote/test-changed.json") : join(ROOT, ".remote-runs/test-changed", `${tree}.${Date.now()}.json`);   // one file per run: a later run never overwrites
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, JSON.stringify(record, null, 1));
+  writeFileSync(file, JSON.stringify(record));
   console.log(`test:changed ${record.passed ? "passed" : "FAILED"}: ${counts.pass}/${counts.tests} in ${run.length} file(s), tree ${tree.slice(0, 12)} (${record.where}) — recorded for check:merge`);
   process.exit(rc);
 }
