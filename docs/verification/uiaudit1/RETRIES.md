@@ -10,8 +10,10 @@
 |---|---|---|---|---|---|---|---|
 | infra-RR26-full-7af6f5e | 7af6f5e7 | 3,562 | 48 | 22 | 22 | 0 | `modal.lord.home-petition.variant-056` 60(20개 조건 모두 세 번 실패, 재시도 라운드에서만 측정), `hud.event-card.famine-answered` 10(간헐) |
 | infra-RR25-full-59bd71c | 59bd71c2 | 3,562 | 20 | 6 | 6 | 0 | `modal.lord.home-petition.variant-056` 26(6개 조건 세 번 실패) |
+| render-GROWUI-v056b-geometry-c4c22b3 (바뀐 줄만: variant-056) | c4c22b36 | 20 | 0 | 0 | 0 | 0 | 없음 — 고친 뒤 20개 조건 모두 첫 라운드에서 열림 |
 
 ## 지켜볼 것
 
-- `modal.lord.home-petition.variant-056`은 두 감사 연속 재시도에 걸렸다 — 대기 조건 문제로 본다. 첫 시도 스냅샷은 청원 칩이 떠 있고 시간이 멈췄는데 카드가 안 열린 상태(`geometry/infra-RR26-full-7af6f5e/shots/x-modal.lord.home-petition.variant-056--*.jpg`). 렌더 A에 넘김(칩을 누른 뒤 카드가 열렸는지 확인하고 다시 누르거나 대기 조건을 고침).
+- `modal.lord.home-petition.variant-056`은 두 전체 감사 연속 재시도에 걸렸다 — 대기 조건 문제였다. **원인은 장면 쪽**(렌더 A, c4c22b36): `openScene`은 상태를 불러온 뒤 Esc를 한 번 누르는데, 바쁜 DGX에서는 불러오기가 장면의 `story-delay=3000`(3초)보다 길어 카드가 먼저 떠 있었고, 그 Esc가 카드를 치워 칩까지 사라졌다(그 뒤 칩 경로는 영영 실패). 재시도 라운드는 페이지가 절반이라 제때 불러와 열렸다. 고침(줄 쪽만, 판정 그대로): `story-delay=8000`, 첫 대기 20초, 먼저 뜬 다른 카드(056 상태의 시장 세금 제안)는 한 번 "나중에". 고친 뒤 그 줄만 잰 실행에서 첫 라운드 재시도 0. 전체 감사에서의 확인은 다음 전체 감사에서 이 표에 적는다.
+- **같은 꼴을 찾는 기준**: 상태를 불러와 시간이 흐르는 장면에서 카드가 스스로 뜨는 지연(`story-delay`)이 불러오기·준비보다 짧으면, 준비 단계의 Esc·닫기가 그 카드를 먼저 치운다. 증상은 칩·화면은 그대로인데 카드 대기만 시간 초과, 재시도 라운드(가벼운 부하)에서만 열림. `hud.event-card.famine-answered`의 간헐도 짧은 `story-delay` 장면이라 같은 까닭일 수 있다(렌더 A 의견) — 다음 전체 감사에서 본다.
 - 지금은 손으로 감사 로그(DGX `_kept/<run>/.remote/ui-geometry/audit.log`)에서 센다. 다음 감사 변경((a), 줄별 측정 입력)에서 보고서가 조건별 시도 횟수와 재시도 트리를 직접 적고, 관문 출력이 재시도 비율과 연속으로 걸린 줄을 보이게 한다.
