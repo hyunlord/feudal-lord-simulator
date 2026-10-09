@@ -24,6 +24,29 @@ function uniqueMap(rows, name) {
   return map;
 }
 
+/** Exact successful lord occurrence set, independently joined to command history and classification. */
+export function verifyRegistryAnswerSet(raw, classification) {
+  const history = uniqueMap(raw.history, 'registry history');
+  const occurrences = uniqueMap(raw.occurrences, 'registry occurrences');
+  const expected = new Set();
+  for (const occurrence of occurrences.values()) {
+    if (occurrence.status !== 'answered' || occurrence.decidedBy === 'steward') continue;
+    requireOutcome(occurrence.decidedBy === undefined && integer(occurrence.settledTick), 'registry lord occurrence settlement invalid');
+    if (occurrence.settledTick < raw.endTick) expected.add(occurrence.id);
+  }
+  const actual = new Set();
+  for (const row of classification.rows.filter(value => value.status === 'classified' && value.command === 'answer_registry_offer')) {
+    const decision = history.get(row.historyId), occurrence = occurrences.get(decision?.params?.subjectId);
+    requireOutcome(decision?.kind === 'decision' && decision.params?.command === row.command && decision.tick === row.tick
+      && occurrence && expected.has(occurrence.id) && !actual.has(occurrence.id)
+      && occurrence.settledTick === row.tick && decision.params.chosen === occurrence.choiceId
+      && row.source === `registry:${occurrence.entryId}:${occurrence.choiceId}`, 'registry occurrence/history/classification mismatch');
+    actual.add(occurrence.id);
+  }
+  requireOutcome(actual.size === expected.size && [...expected].every(id => actual.has(id)), 'registry answered lord occurrence omitted');
+  return actual.size;
+}
+
 /** Verifies existing replay/archive bytes, without executing an engine or trusting cached aggregate counts. */
 export function verifyOutcomeReplay(input) {
   requireOutcome(['answer-replay-v1', 'outcome-replay-v1'].includes(input.format), 'explicit replay format required');
@@ -97,7 +120,7 @@ export function verifyOutcomeReplay(input) {
       requireOutcome(ids.has(record.id), 'raw command decision omitted from classification');
   }
   for (const status of statuses) requireOutcome(isDeepStrictEqual(classification[status], classification.rows.filter(row => row.status === status)), `classification ${status} inconsistent`);
-  requireOutcome(manifest.registryAnswerSetVerified === classification.rows.filter(row => row.status === 'classified' && row.command === 'answer_registry_offer').length, 'registry answer verification mismatch');
+  requireOutcome(manifest.registryAnswerSetVerified === verifyRegistryAnswerSet(raw, classification), 'registry answer verification mismatch');
   return { raw, manifest, classification, history, roots, occurrences, pins: { seed: raw.seed, sourceRevision, replayFormat: input.format, node: manifest.source.node, dependencyLockSha256: manifest.source.lock,
     rawSha256: outcomeSha256(input.rawBytes), replayManifestSha256: outcomeSha256(input.manifestBytes),
     validitySha256: outcomeSha256(input.validityBytes), classificationSha256: outcomeSha256(input.classificationBytes) } };

@@ -168,3 +168,22 @@ test('short probes, absent runtime provenance, unknown protocol and duplicate co
   const run = verifyOutcomeReplay(repack(fixture()));
   assert.throws(() => scoreOutcomeGate([run, run], contract(), { horizonTicks: 12000, ticksPerSeason: 1000 }), /duplicate seed/);
 });
+
+test('registry verification rejects an answered lord occurrence without any command/history row', () => {
+  const value = fixture();
+  value.raw.occurrences.push({ ...value.raw.occurrences[0], id: 'missing-lord-answer', settledTick: 123 });
+  assert.throws(() => score(value), /registry.*occurrence|occurrence.*registry/);
+});
+test('registry verification rejects duplicate occurrence attribution and mismatched settlement', () => {
+  const duplicate = fixture(); duplicate.raw.history.find(row => row.id === 'a1').params.subjectId = 'offer1';
+  assert.throws(() => verifyOutcomeReplay(repack(duplicate)), /registry/);
+  const mismatch = fixture(); mismatch.raw.occurrences[0].settledTick += 1;
+  assert.throws(() => verifyOutcomeReplay(repack(mismatch)), /registry/);
+});
+test('registry occurrence equality excludes steward, invalid, lapsed and endpoint rows', () => {
+  const value = fixture(); const occurrence = value.raw.occurrences[0];
+  value.raw.occurrences.push({ ...occurrence, id: 'steward', decidedBy: 'steward' },
+    { ...occurrence, id: 'invalid', status: 'invalid' }, { ...occurrence, id: 'lapsed', status: 'lapsed' },
+    { ...occurrence, id: 'endpoint', settledTick: value.raw.endTick });
+  assert.equal(score(value).legacyDirectRatio.denominator, 5);
+});

@@ -12,6 +12,7 @@ import { stateCalendar } from '../src/engine/scenarioState';
 import { advanceTick } from '../src/engine/tick';
 import { gameReducer } from '../src/state/gameStore';
 import { newGameState } from '../src/state/newGame';
+import { verifyRegistryAnswerSet } from './engineBOutcomeArchive.mjs';
 import { createOutcomeArchive } from './engineBOutcomeCollect';
 import { classifyAnswerEvidence, createAnswerEvidenceCollector, OUTCOME_COMMAND_KIND } from './engineBOutcomeEvidence';
 import { verifyOutcomeTaxonomy } from './engineBOutcomeTaxonomy';
@@ -27,7 +28,7 @@ function preflight() {
   const sourceRevision = git('rev-parse', 'HEAD');
   const traceSourceSha256 = verifyOutcomeTaxonomy(readFileSync(join(root, 'src/engine/decisionTrace.ts'), 'utf8'), OUTCOME_COMMAND_KIND);
   const lock = sha(readFileSync(join(root, 'package-lock.json')));
-  const toolHashes = Object.fromEntries(['engineBOutcomeProduce.ts', 'engineBOutcomeEvidence.ts', 'engineBOutcomeCollect.ts', 'engineBOutcomeTaxonomy.ts', 'registryDecisionOccurrences.ts']
+  const toolHashes = Object.fromEntries(['engineBOutcomeProduce.ts', 'engineBOutcomeEvidence.ts', 'engineBOutcomeCollect.ts', 'engineBOutcomeTaxonomy.ts', 'engineBOutcomeArchive.mjs', 'registryDecisionOccurrences.ts']
     .map(name => [name, sha(readFileSync(join(root, 'scripts', name)))]));
   const sourceFiles = git('ls-files', 'src').split('\n').filter(Boolean).map(path => ({ path, sha256: sha(readFileSync(join(root, path))) }));
   return { sourceRevision, sourceFiles, traceSourceSha256, toolHashes, source: { revision: sourceRevision, platform: process.platform, node: process.version,
@@ -64,8 +65,9 @@ function collect(seed: number, years: number, phase: string, provenance: { reado
   assert.deepEqual([snapshot.observation.firstTick, snapshot.observation.lastTick, snapshot.observation.maxGap, snapshot.observation.reversals], [0, endTick, 1, 0]);
   const raw = { schemaVersion: 1, seed, years, startYear, endYearExclusive: startYear + years, endTick,
     provenance: { sourceRevision: provenance.sourceRevision, dirtyPaths: '', node: process.version, sourceFiles: provenance.sourceFiles }, ...snapshot };
+  const registryAnswerSetVerified = verifyRegistryAnswerSet(raw, classification);
   const finalBytes = json(state), contextBytes = gzipSync(json(contexts));
-  return { raw, classification, commandCount, commandStreamSha256: stream.digest('hex'), finalBytes, contextBytes };
+  return { raw, classification, registryAnswerSetVerified, commandCount, commandStreamSha256: stream.digest('hex'), finalBytes, contextBytes };
 }
 
 /** Two ordinary LordBot runs, with passive per-command/per-tick evidence and complete retained-archive equality. */
@@ -99,7 +101,7 @@ export function produceOutcomeReplay(seed: number, outputRoot: string, years = 1
       commandCount: replay.commandCount, commandStreamSha256: replay.commandStreamSha256, contextSha256: sha(replay.contextBytes),
       checkpoints: [], final: { phase: 'final', tick: replay.raw.endTick, hit: true, stateSha, file: 'final-state.json.gz' },
       finalComparison: { expectedSha256: stateSha, actualSha256: sha(replay.finalBytes), expectedChecksum: `sha256:${stateSha}`, actualChecksum: `sha256:${sha(replay.finalBytes)}` },
-      registryAnswerSetVerified: replay.classification.classified.filter(row => row.command === 'answer_registry_offer').length,
+      registryAnswerSetVerified: replay.registryAnswerSetVerified,
       verification: { archive: 'entire JSON archive equality', commands: 'entire attempted command stream SHA', contexts: 'entire compressed context SHA',
         final: 'full final state JSON bytes', intermediateFullStatesCompared: 0, browserEvidence: false } };
     const manifestBytes = json(manifest); writeFileSync(join(directory, 'manifest.json'), manifestBytes, { flag: 'wx' });
