@@ -446,6 +446,9 @@ function plannerPlan(state: GameState, policy: AutoplayPolicy, diagnostic?: Food
       step("services", () => serviceDecision(state), true), step("market_gap", () => marketGap(state)), step("water", () => water(state)),
       step("material_recovery", () => materialRecoveryAction(state)),
       step("housing", (): AutoplayAction => homesHeld ? NONE : housingAction(state, policy)),
+      // GB-9 (GROW-BLOCK): a stone town's wall too small for the lots still wanted is widened as a palisade's is (seed 3
+      // kept 18 houses from 1373 to 1425 inside its 28-tile ring).
+      step("wall_expansion", () => autoplayWallExpansionAction(state, policy.maxHousingLots)),
     ] };
   }
   // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the

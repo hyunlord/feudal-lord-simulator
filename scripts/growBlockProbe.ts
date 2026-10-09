@@ -23,7 +23,8 @@ function row(state: GameState, year: number) {
   for (const building of state.buildings) kinds[building.kind] = (kinds[building.kind] ?? 0) + 1;
   let timber = 0; let logs = 0;
   for (const building of state.buildings) {
-    const stock = (building as { readonly stock?: Readonly<Record<string, number>> }).stock ?? {};
+    const held = building as { readonly stock?: Readonly<Record<string, number>>; readonly inventory?: Readonly<Record<string, number>> };
+    const stock = held.inventory ?? held.stock ?? {};
     timber += stock.timber ?? 0; logs += stock.logs ?? 0;
   }
   const harvests = state.forestHarvests ?? [];

@@ -78,13 +78,18 @@ export function botTimberOrder(state: GameState): number | null {
  * FIX-14 (TT-5, decision FX13-5 (가)): the market charter waits on timber the town cannot reach (its sawmills made none in
  * the last window: the receivers full) — TT-4b's shortfall and reserve, delivered at the trade point (a hamlet's storehouse).
  */
+/** GB-8: the charter orders timber when its shortfall is more than this many windows of the town's own timber. */
+const CHARTER_TIMBER_SLOW_WINDOWS = 4;
+
 export function charterTimberOrder(state: GameState, timberNeeded: number): number | null {
   if ((state.timberOrder ?? 0) > 0 || timberTradePoint(state) === null) return null;
   const production = state.timberProductionWindow;
-  if (production === undefined || production.produced > 0 || state.tick - production.startTick < 2399
-    || !state.buildings.some(building => building.kind === "sawmill")) return null;
+  if (production === undefined || state.tick - production.startTick < 2399 || !state.buildings.some(building => building.kind === "sawmill")) return null;
   const shortfall = timberNeeded - placementSpendableResource(state, "timber");
   if (shortfall <= 0) return null;
+  // GB-8 (GROW-BLOCK): stopped (FIX-14), or so slow the charter would wait more than four windows (two years and more)
+  // — seed 1's town gathered its 250 at fifteen a year, thirteen years at 528.
+  if (production.produced > 0 && shortfall <= production.produced * CHARTER_TIMBER_SLOW_WINDOWS) return null;
   // FIX-15 (TT-5): without a market, the carted price and the hamlet's largest order.
   const carted = timberTradeMarket(state) === null;
   const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / (carted ? TIMBER_TRADE_BALANCE.hamletPrice : TIMBER_TRADE_BALANCE.price));

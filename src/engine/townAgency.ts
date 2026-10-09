@@ -361,7 +361,10 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
       refusedBy = actor;
       const since = agency.refusedNeeds?.find(entry => entry.what === whatOf(action))?.since;
       const community = reasonsOf(state, agency, action, "community", rank, stuckWheat, stuckRoads);
-      if (since !== undefined && state.tick - since >= COMMUNITY_FALLBACK.waitTicks && scoreOf(community.reasons) > scoreOf(scored.reasons)) {
+      // GB-7 (GROW-BLOCK): what the town needs to pass to its next era (the era planner's, last in the plan's order and so
+      // the least need) falls to the community after the wait whatever its own score — seed 2's quarry, refused by the
+      // households at 38–39 against the start's 40, kept the town at 528 for twenty-five years (no stone, no church).
+      if (since !== undefined && state.tick - since >= COMMUNITY_FALLBACK.waitTicks && (scoreOf(community.reasons) > scoreOf(scored.reasons) || planner === "era")) {
         fallback = { builder: actor, since };
         refusedBy = undefined;
         actor = "community";
@@ -514,7 +517,8 @@ function charterSearchRuns(state: GameState): boolean {
  * among those left, each proposal weighted by its own actor's temperament — with each one's chance when drawn.
  */
 function chanceOrder(state: GameState, proposals: readonly Proposal[]): readonly { readonly proposal: Proposal; readonly chance: ChoiceChance }[] {
-  const left = proposals.filter(proposal => proposal.score >= START_SCORE);
+  // GB-7: a need the community took up after its builder's refusal starts whatever its score (it waited a year already).
+  const left = proposals.filter(proposal => proposal.score >= START_SCORE || (proposal.fallback !== undefined && proposal.planner === "era"));
   const order: { proposal: Proposal; chance: ChoiceChance }[] = [];
   while (left.length > 0) {
     const temperaments = left.map(proposal => actorTemperament(state, proposal.actor));
