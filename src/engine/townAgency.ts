@@ -6,6 +6,8 @@
  * reasons and the lord's decisions behind them. With no `state.agency` (sandbox, campaign) nothing here runs.
  */
 import { CHARTER_RING } from "../content/charterRingConfig";
+import { cancelConstruction } from "./constructionCancellation";
+import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
 import { takeCharterSearchReport } from "./autoplayEra";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import {
@@ -527,9 +529,29 @@ export function charterRetryTick(failure: { readonly tick: number; readonly atte
   return failure.tick + CHARTER_RING.retryTicks * Math.min(CHARTER_RING.retryMaxFactor, 2 ** Math.max(0, failure.attempts - 1));
 }
 
-export function advanceTownAgency(state: GameState): GameState {
-  const agency = state.agency;
-  if (agency === undefined || state.tick <= 0 || state.tick % AGENCY_WEEK_TICKS !== 0) return state;
+/**
+ * GB-4 (GROW-BLOCK, the user's ruling 2026-10-09): the town gives up a building site no road has reached for a year with
+ * nothing delivered and no work done — it held every later search that waits for the open sites (the charter's wall
+ * among them). The giving-up is kept with its cause (P-C3: the blockage, not a shortage).
+ */
+function abandonUnreachedSites(state: GameState): GameState {
+  const stuck = state.constructionSites.filter(isBuildingConstructionSite).filter(site => site.stall === "no_route" && site.builderTicks === 0
+    && Object.values(site.delivered).every(amount => (amount ?? 0) === 0) && state.tick - site.startedTick >= CHARTER_RING.abandonTicks);
+  if (stuck.length === 0 || state.agency === undefined) return state;
+  let next = state;
+  for (const site of stuck) {
+    const routes = createSimulationRoutePorts(next);
+    next = cancelConstruction({ state: next, siteId: site.id, inventory: createDeliveryInventoryPort(), routes: routes.delivery }).state;
+  }
+  const abandonedSites = [...(next.agency!.abandonedSites ?? []), ...stuck.map(site => ({ id: site.id, kind: site.kind, tick: state.tick, since: site.startedTick, reason: "no_route" as const }))]
+    .slice(-CHARTER_RING.abandonedKept);
+  return { ...next, agency: { ...next.agency!, abandonedSites } };
+}
+
+export function advanceTownAgency(input: GameState): GameState {
+  if (input.agency === undefined || input.tick <= 0 || input.tick % AGENCY_WEEK_TICKS !== 0) return input;
+  const state = abandonUnreachedSites(input);
+  const agency = state.agency!;
   const actors: AgencyActor[] = agency.actors.map(actor => ({ ...actor, funds: actor.funds + weeklySavings(state, actor.kind) }));
   // TA-12: a hamlet ready for its market charter holds new buildings until its sites are done, so the bot's era step
   // (which proclaims only with no building site open) can ask the lord; at most `CHARTER_HOLD_WEEKS`, then it builds on.

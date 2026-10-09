@@ -438,6 +438,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   // LM-E1b (TA-6 ②): a subsidy refused — the subsidies together would pass a quarter of the treasury.
   "agency.subsidy_refused": params => `${buildingWord(s(params, "kind"))} 장려금 ${moneyWords(n(params, "amount"))}${moneyWordsJosa(moneyWords(n(params, "amount")), "은", "는")} 걸지 못했다: 장려금 합계 ${moneyWords(n(params, "total"))}${moneyWordsJosa(moneyWords(n(params, "total")), "이", "가")} 금고의 4분의 1(${moneyWords(n(params, "limit"))})을 넘는다`,
   // FIX-14 (FX13-5): the town buys the timber its market charter waits on.
+  // GB-4: the town gave a site up — its cause, not a shortage (P-C3).
+  "agency.site_abandoned": params => `도시가 ${projectWord(s(params, "what"))} 공사를 접었다 — ${n(params, "years")}년 동안 길이 닿지 않았다`,
   "agency.timber_ordered": params => `도시가 시장 칙허에 모자란 목재 ${n(params, "amount")}을 상인에게 주문했다`,
   "agency.project_started": params => `${ACTOR_KO[s(params, "actor")] ?? s(params, "actor")}${josa(ACTOR_KO[s(params, "actor")] ?? "", "이", "가")} ${projectWord(s(params, "what"))} 공사를 시작했다`,
   "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,

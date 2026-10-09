@@ -129,6 +129,8 @@ export interface AgencyState {
    * GB-1 (GROW-BLOCK): the charter wall search's last failure — when, why (`CharterWallFailureReason`), the homes a wall
    * would have cut from their service space, and how many searches failed in a row (the next starts elsewhere).
    */
+  /** GB-4: the building sites the town gave up (no road reached them a year), the last few — kind, when, since when, why. */
+  readonly abandonedSites?: readonly { readonly id: string; readonly kind: string; readonly tick: number; readonly since: number; readonly reason: "no_route" }[];
   readonly charterWallFailure?: { readonly tick: number; readonly reason: CharterWallFailureReason; readonly homes: readonly string[]; readonly attempts: number };
   readonly charterWallTried?: string;
   /** TA-12: the tick the town first stood ready for its market charter (absent when it is not waiting). */

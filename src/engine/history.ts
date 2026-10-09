@@ -1267,7 +1267,11 @@ function agencyDrafts(before: GameState, after: GameState): Draft[] {
   // FIX-14 (FX13-5): the town ordered its charter's timber from the traders in the tick (a lord's order is a command).
   const ordered: Draft[] = after.agency !== undefined && (after.timberOrder ?? 0) > (before.timberOrder ?? 0)
     ? [{ tick: after.tick, kind: "event", template: "agency.timber_ordered", subject: TOWN, severity: 1, params: { amount: after.timberOrder ?? 0 } }] : [];
-  return [...ordered, ...receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
+  // GB-4: a site the town gave up (no road reached it), with its cause.
+  const wasAbandoned = new Set((before.agency?.abandonedSites ?? []).map(entry => entry.id));
+  const abandoned: Draft[] = (after.agency?.abandonedSites ?? []).filter(entry => !wasAbandoned.has(entry.id)).map(entry => ({ tick: after.tick, kind: "event" as const,
+    template: "agency.site_abandoned", subject: TOWN, severity: 1 as const, params: { site: entry.id, what: entry.kind, reason: entry.reason, years: Math.floor((entry.tick - entry.since) / 4_000) } }));
+  return [...ordered, ...abandoned, ...receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
     tick: after.tick, kind: "event" as const, template: "agency.project_started", subject: TOWN, severity: 1 as const,
     place: { tx: receipt.tx, ty: receipt.ty, ...(receipt.siteId === null ? {} : { buildingId: receipt.siteId }) },
     params: { receipt: receipt.id, actor: receipt.actor, what: receipt.what, planner: receipt.planner, score: receipt.score,

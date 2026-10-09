@@ -15,6 +15,13 @@ export const CHARTER_RING = {
    */
   retryTicks: 1_000,
   retryMaxFactor: 8,
+  /**
+   * GB-4: a building site no road reaches, untouched this long (a year), is given up by the town — seed 3's well, laid
+   * out at the map's corner thirty tiles from the town, stood six years and held the charter search (it waits for the
+   * open sites). The last `abandonedKept` are kept for the receipts and the plan.
+   */
+  abandonTicks: 4_000,
+  abandonedKept: 8,
 } as const;
 
 /**
