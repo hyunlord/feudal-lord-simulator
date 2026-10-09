@@ -259,7 +259,7 @@ const STAGES = [
 // A task without stage: a done one stays in the folded record of the old phases below; an open one falls into a stage by its old phase.
 const STAGE_OF_PHASE = {LM:1, C:3, E:3, F0:3, F1:3, P:4};
 const TASKS = [
-  {id:"EB-WEIGHT-FREQ", phase:"C", stage:3, track:"엔진", title:"활성56 결정 층위와 미관측40 원인 검증", status:"wip", gate:"DGX125년 seed셋 · 실제 trace/계절 보고 · 해시 · 변경시험 · 병합 검사", deps:["LM-E9c"], note:"본선e5abc0e 통합, 작업 기준2485af4의 DGX125년 seed셋 완료. 전체 중대 root 연간 중앙값1/최대5/0인 해145/375로 P-T1 미통과; 실제 전체 답변 수는 동일 소스 재현 대기. 등록 영주 답변198·성숙 직접 연결148/192, 청지기 모델1820/1820은 실제 계절 화면 검증과 구분.56사건/163선택지 중26사건/44선택지 관측, UI23사건·왕복15쌍. 빈 비교·CJK·주원인 공백은 인계, 전수 가시성 미완료. 원래 미관측40은 현재 판 기준 병목25·시대2·경쟁1·미확정12; 과거 원인으로 소급하지 않음. 샌드박스3해시·캠페인3쌍 전체 상태 바이트 동일, 가드레일 종료0. 실제 전체 답변 재현 진행 중. 실제 변경시험 sourceScan 실패1·기하 미등록 프레임4 유지, 게시 전. MOD-SLOT135 격리 시제품938f2f492·계약 인계, 본선 채택 미실행."},
+  {id:"EB-WEIGHT-FREQ", phase:"C", stage:3, track:"엔진", title:"활성56 결정 층위와 미관측40 원인 검증", status:"wip", gate:"DGX125년 seed셋 · 실제 trace/계절 보고 · 해시 · 변경시험 · 병합 검사", deps:["LM-E9c"], note:"본선e5abc0e 통합, 작업 기준2485af4의 DGX125년 seed셋 완료. 전체 중대 root 연간 중앙값1/최대5/0인 해145/375로 P-T1 미통과; 실제 답변 재현90개 상태 비교 일치, 연간 중앙값2/최대6/0인 해46/375·4건 초과26년(미분류 선언2건 포함 시27년). 등록 영주 답변198·성숙 직접 연결148/192, 청지기 모델1820/1820은 실제 계절 화면 검증과 구분.56사건/163선택지 중26사건/44선택지 관측, UI23사건·왕복15쌍. 빈 비교·CJK·주원인 공백은 인계, 전수 가시성 미완료. 원래 미관측40은 현재 판 기준 병목25·시대2·경쟁1·미확정12; 과거 원인으로 소급하지 않음. 샌드박스3해시·캠페인3쌍 전체 상태 바이트 동일, 가드레일 종료0. 실제 전체 답변 재현 종료0, 계절 보고 UI 검증 중. 실제 변경시험 sourceScan 실패1·기하 미등록 프레임4 유지, 게시 전. MOD-SLOT135 격리 시제품938f2f492·계약 인계, 본선 채택 미실행."},
   {id:"RB-PURVEYOR", phase:"C", stage:3, track:"렌더", title:"실제 왕실 구매 뒤 창고에 장부 담당자 표시", status:"done", gate:"같은 저장 계절·줌6쌍 · 변경 시험 · 기하 · 병합 검사", deps:["RB-WALKER-PILOT2"], note:"제품 f012955c 원본 몸체1장·장부4방향 설치. 자연 봄과 명시적 여름·겨울 QA 전후6쌍, 신규 엔진 인물 없음. 정지 자세와 줌.6 장부 판독 한계 유지. 최종 관문·게시 영수증은 전달 ZIP."},
   {id:"RB-WORLD-FIRE", phase:"C", stage:3, track:"렌더", title:"집 화재와 급수 사실을 불길·물동이 무리로 표시", status:"done", gate:"같은 저장 전후 · 변경 시험 · 병합 검사 · 기하", deps:["ASSET-ARCH-1"], note:"74fe1398 + ee3f0249 여름·겨울 무리2장·불길1장 설치. 같은 저장10쌍·기하80조건 실패0. cf0ffec7 큐 분리로250줄 가드 유지"},
   {id:"RB-HANDCART", phase:"C", stage:3, track:"렌더", title:"손수레 1장을 실제 운반자의 보행에 연결", status:"done", gate:"같은 저장 전후 · 변경 시험 · 기하 · 병합 검사", deps:["ASSET-ARCH-1"], note:"62e4a720 손수레1장·실제16쌍·기하80조건실패0. NE 접점 미판정·남성 손 잔차3.43px, 최종 시험·게시 영수증은 전달 ZIP"},
@@ -528,5 +528,6 @@ for(const p of PHASES){
 root.appendChild(past);
 </script>
 <p>Engine B 답변 재현59d42d0은 seed1의28개 중간 저장과 최종 상태가 같았지만 메모리의 expense:-0과 JSON의0 비교 오류로 종료1했다. 저장된8개 수집 항목은 원본과 동일하다. JSON 표현 비교로 고치고 회귀 포함25시험·lint를 통과했다. 기존 실패 실행은 유효화하지 않으며 수정 도구의 DGX 전체 재현은 미완료다.</p>
+<p>Engine B 실제 답변 재현92bbc7d가 종료0했다.87개 중간 체크포인트와3개 최종 상태가 일치했다. 전체 답변 연간 중앙값2·최대6·0인 해46/375·4건 초과26년이며, 미분류 선언2건 포함 보충 계산은838건·초과27년이다. 등록 사건198건·최대2건. P-T1 미충족, 실제 계절 보고 UI와 전수 가시성·공용 관문은 계속 검증 중이다. <a href="verification/eb-weight/answer-replay-92bbc7d/README.md">증거</a>.</p>
 </body>
 </html>
