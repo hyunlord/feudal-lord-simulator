@@ -103,3 +103,17 @@ history는 일부 게임 코드가 읽으므로 기록 전체 제외 투영만�
 올바른 후속 수정은 이미 생성된 stewardship.season에 연결하고, 답 당시 실제 tenants/merchants 변화·차원·clamp를 보관해 그 차원에 기여한 답만 고르는 것이다. 현재 trace.answers의 estate 대상만으로 모든 같은 영지 답을 연결하지 않는다. 포화 상태의 무효과 거절을 나중의 무관한 관계 변화 원인으로 만드는 것은 결함이다. 이 항목은 미구현이며 직접 연결률을 올린 것으로 세지 않는다.
 
 2026-10-10 새 제품 고정점은 `fae9ce38be52858e29d2e7111c7437b23cf5fdac`이다. 이 깨끗한 소스로 `engineB-tlink-prototype125-fae9ce3`와 `engineB-tlink-paired-guardrail-fae9ce3`를 공식 experiment 줄에 다시 등록했다. 오프라인 잔여 답 판독기의 후속 수정은 제품·생산기·기존 scorer를 바꾸지 않는다.
+
+### 바꾼 파일 목록
+
+기준64a→구현 `eba2bbcb2`의 전체 파일 목록은 [changed-files.json](../verification/eb-tlink/changed-files.json)에 고정했다. 제품 소스는fae9ce38b이며 이후 변경은 오프라인 판독기와 인계 문서다. 주요 접점은 decisionTrace·decisionTraceAnswers/AnswerLedger/AnswerReceipts/Evidence, history·decisionReads, 표시 ID를 전달하는 gameStore 명령·card model·AppModals·decisionThread, 잠정v55 codec·migration·검증기다. 생산기에는 선택적 수동 관측기를 연결했으며 봇 명령이나 tick 순서를 바꾸지 않는다.
+
+현재 고정점의 TLINK·문구 변형 집중 시험은98/98 통과했다. 잔여 답 판독기·typed ledger 판독기에 대한 후속 독립 검토에서도 구체적인 차단 결함은 발견되지 않았다. 이는 장기 연결률·가드레일 통과를 대신하지 않는다.
+
+승인 기대표의 원본15개 소스 핀 중 시제품과 다른 것은 `decisionTrace.ts`와 `history.ts` 두 개다. 따라서 원본 scorer의 strict contract audit에는 source mismatch가 남는다. 원래 미래 직접 연결률은 별도 계산으로 유지되고, 근거 있는 잔여 답 분류는 별도 판독기가 담당한다. 원본 기대표의 핀을 통과시키려고 임의 갱신하지 않았으며 엔진 검토 때 변경 의미를 확인하고 재고정해야 한다.
+
+### 변경 영향 시험에서 찾은 호환 결함과 수정
+
+첫 `engineB-tlink-changed-f527d68` 실행은612파일·4704시험 중4678통과·13실패(13건 건너뜀)였다.12실패는 잠정v55 표준 fixture 누락이며, 공식 `buildSaveFixtures.ts --from-version 54`로13개 fixture와 manifest를 이행해 관련8파일33시험을 다시 통과했다. v54 원본과 모든 이행 후 게임 상태가 동일함을 확인했다.
+
+나머지 sliceEnds 실패는 옛 소스의 작은 own answer 미정리에서 비롯했고 fae9의 보존 수정으로 기존6시험이 통과했다. 추가 점검에서 종료 화면 자체도 root만 조회하여 별개의 무거운 답을 누락할 수 있음을 찾았다. 실제 두 답 `h-000002`·`h-000004`가 같은 root에 묶인 준비 상태에서 수정 전에는 앞 답만 보이고, root와own answers를 함께 읽은 뒤에는 둘 다 보인다. 관련9시험·typecheck가 통과했다. 규칙·생산기·측정 scorer는 바꾸지 않았으며 이 화면의 추가 브라우저 검증과 최신 기하·변경 시험을 이어간다.

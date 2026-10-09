@@ -1,11 +1,16 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { LORD_SLICE_SCENARIO_ID } from '../src/content/lordSliceConfig';
+import { advanceTrace, isBigDecision } from '../src/engine/decisionTrace';
+import { estatesOf } from '../src/engine/estates';
+import { lordSliceEndTick } from '../src/engine/lordSlice';
+import { sliceEndView } from '../src/ui/slice/sliceEndModel';
 import { V4_COPY } from '../src/content/registry/v4Copy.generated';
 import { decisionRemembers, traceInRange, yearReview } from '../src/engine/decisionReads';
 import { stateCalendar } from '../src/engine/scenarioState';
 import { gameReducer } from '../src/state/gameStore';
 import { decisionAbout, decisionSubjectWords } from '../src/ui/results/decisionThread';
-import { delegated } from './helpers/engineBTlinkFixtures';
+import { delegated, town } from './helpers/engineBTlinkFixtures';
 
 test('each merged successful answer remains in the year review and owns its own live memories', () => {
   const base = delegated();
@@ -19,6 +24,16 @@ test('each merged successful answer remains in the year review and owns its own 
   const answers = after.trace?.answers ?? [];
   assert.equal(answers.length, 2);
   assert.equal(answers[0]?.threadId, answers[1]?.threadId);
+  assert.ok(answers.every(isBigDecision), 'both real answers are heavy');
+  assert.ok(after.estates);
+  const slice = { ...after, scenarioId: LORD_SLICE_SCENARIO_ID, estates: { ...after.estates,
+    estates: [...estatesOf(town()).estates, ...after.estates.estates] } };
+  const ended = advanceTrace(slice, { ...slice, tick: lordSliceEndTick(slice) });
+  assert.deepEqual(ended.trace?.answers?.map(answer => answer.id), answers.map(answer => answer.id), 'both answers survive retention');
+  const endView = sliceEndView(ended);
+  assert.ok(endView, 'the lord slice has ended');
+  assert.deepEqual(endView.years.flatMap(year => year.big.map(decision => decision.id)), answers.map(answer => answer.id),
+    'the end screen lists both heavy answers even though their thread root is shared');
   const review = yearReview(after, stateCalendar(after).year);
   assert.deepEqual(review.decisions.map(row => row.decisionId), answers.map(row => row.id));
   for (const answer of answers) {

@@ -145,7 +145,8 @@ export const sliceEndView = perState((state: GameState): SliceEndView | null => 
   const remembers = memories.slice(0, REMEMBERS_MAX).map(memory => copy.remembersLine(factionName(memory.actor), DECISION_CARD_COPY.feels(memory.delta),
     RESULTS_COPY.trace.chipTitle(yearOfTick(state, memory.group.decisionTick), memory.group.by, decisionSubjectWords(state, index.get(memory.group.decisionId)!))));
   // A line a year: the big decisions as the thread keeps them, the small counted (TRACE-KEEP).
-  const kept = new Map(traceOf(state).decisions.map(decision => [decision.id, decision] as const));
+  const trace = traceOf(state);
+  const kept = new Map([...trace.decisions, ...(trace.answers ?? [])].map(decision => [decision.id, decision] as const));
   const followedBy = new Map(groups.map(group => [group.decisionId, group] as const));
   const population = new Map<number, number>();
   // A season's line belongs to its own year (the winter's close is written at the next year's first tick).
