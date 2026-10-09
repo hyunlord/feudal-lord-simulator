@@ -14,6 +14,8 @@ export const LORD_WALL_COPY = {
     searching: "선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다",
     asked: "마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다",
     failed: "마을이 지난번에 목책 둘레를 찾지 못했습니다",
+    /** past: the market town proclaimed — one quiet line in the console (no primary; the later eras' console is its own). */
+    past: "마을의 목책 계획은 시장도시 선포로 끝났습니다",
   },
   /** searching / asked: what happens next, inside the opened plan. */
   detail: {

@@ -26,7 +26,7 @@ import { cachedExpansionPreview, expansionLines, pendingPastureWarning } from ".
 import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 import { Button } from "./kit";
 import { ERA_CONSOLE_COPY } from "./eraConsoleCopy.ko";
-import { lordWallPlan, type LordWallPlanView } from "./lord/advice/lordWall";
+import { lordWallPlan, lordWallPlanDone, type LordWallPlanView } from "./lord/advice/lordWall";
 import { LORD_WALL_COPY } from "./lord/advice/lordWallCopy.ko";
 import { WallPlan, type WallPlanCommands } from "./lord/advice/WallPlan";
 
@@ -72,6 +72,8 @@ export type EraConsoleModel = {
   };
   /** GROW-BLOCK (lord mode, the hamlet): the town's palisade plan — the console's primary opens it; null otherwise. */
   readonly lordPlan: LordWallPlanView | null;
+  /** GROW-BLOCK §4: the plan's `past` stage, one quiet line (null otherwise). */
+  readonly lordPlanDone: string | null;
 };
 
 const PROCLAMATION_TOOLTIPS = {
@@ -162,6 +164,7 @@ export function buildEraConsoleModel(input: {
       pending: pendingPastureWarning(input.state)?.line ?? null,
     },
     lordPlan,
+    lordPlanDone: lordWallPlanDone(input.state),
   };
 }
 
@@ -300,6 +303,7 @@ export function EraConsole({
       <small ref={actionReasonRef} id="era-action-reason" className="era-action-reason">
         {model.action.reason ?? (model.draft.editing ? WALL_COPY.proclamationNotice : WALL_COPY.startHint)}
       </small>
+      {model.lordPlanDone === null ? null : <small className="era-action-reason era-plan-done">{model.lordPlanDone}</small>}
       {model.lordPlan !== null && planOpen ? <WallPlan plan={model.lordPlan} commands={planCommands} /> : null}
     </section>
   );

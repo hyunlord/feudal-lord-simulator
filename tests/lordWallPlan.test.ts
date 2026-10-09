@@ -22,6 +22,7 @@ import { isBuildingConstructionSite } from "../src/economy/construction";
 import { charterWallPlan, type CharterWallPlan } from "../src/engine/charterPlan";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceHistory } from "../src/engine/history";
+import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
 import { scenarioOf } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { advanceTownAgency } from "../src/engine/townAgency";
@@ -32,7 +33,7 @@ import { calendarArrivalLabel } from "../src/ui/calendarArrival";
 import { LORD_CARDS_COPY } from "../src/ui/lordCardsCopy.ko";
 import { buildEraConsoleModel, EraConsole } from "../src/ui/EraConsole";
 import { lordLeverPlaces, needOfProject, whoBuilds } from "../src/ui/lord/advice/lordAdvice";
-import { lordWallPlan, wallPlanView, type LordWallPlanView } from "../src/ui/lord/advice/lordWall";
+import { lordWallPlan, lordWallPlanDone, wallPlanView, type LordWallPlanView } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY as COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { WallPlan } from "../src/ui/lord/advice/WallPlan";
 import { WALL_DRAFT_COPY } from "../src/ui/wallDraftCopy.ko";
@@ -101,6 +102,11 @@ test("GROW-BLOCK plan, sites: the sites holding the search with how long each ha
     COPY.site(BUILDING_CONFIG_BY_KIND.chapel.name, COPY.ageUnknown)]);
   assert.equal(plan.abandoned.length, 1);
   assert.match(plan.abandoned[0]!, /공사를 접었다 — 1년 동안 길이 닿지 않았다$/, "the engine's record sentence");
+  // §4: the town's given-up sites show in every stage of the plan, not only while it waits on sites.
+  for (const stage of ["waiting", "searching", "asked", "failed"] as const) assert.deepEqual(wallPlanView(after, asStage(after, stage))!.abandoned, plan.abandoned, stage);
+  // The record's three causes, as the engine says them (road · material · work).
+  const sentence = (reason: string) => HISTORY_TEMPLATES["agency.site_abandoned"]!({ site: "s", what: "well", reason, years: 2 });
+  assert.deepEqual(["road", "material", "work"].map(reason => sentence(reason).split(" — ")[1]), ["2년 동안 길이 닿지 않았다", "2년 동안 자재가 오지 않았다", "2년 동안 일할 사람이 없었다"]);
   assert.deepEqual([plan.conditions, plan.failure, plan.ringAllowed], [[], null, false]);
   const html = planHtml(plan);
   assert.match(html, /data-wall-plan-site="2"/);
@@ -145,6 +151,14 @@ test("GROW-BLOCK plan, searching and asked: the town's turn, its request answere
   assert.equal(wallPlanView(state, asStage(state, "waiting"))!.detail, null);
   assert.equal(wallPlanView(state, asStage(state, "past")), null);
   assert.equal(lordWallPlan({ ...state, era: "palisade" }), null);
+  // §4's sixth stage: past the hamlet the console says the plan is done in one quiet line (no primary of its own).
+  const past = { ...state, era: "palisade" as const };
+  assert.equal(lordWallPlanDone(past), COPY.stage.past);
+  assert.match(consoleHtml(past), new RegExp(`class="era-action-reason era-plan-done">${COPY.stage.past}<`));
+  assert.equal(lordWallPlanDone(state), null);
+  // Every one of the engine's six stages has its words, and each of the eight reasons a readable why (none blank).
+  for (const stage of ["waiting", "sites", "searching", "asked", "failed", "past"] as const) assert.ok(stage in COPY.stage && COPY.stage[stage] !== "", stage);
+  for (const reason of ["water", "edge", "buildings", "service_space", "rules", "lots", "route", "other"] as const) assert.ok(COPY.reasons[reason].length > 4, reason);
 });
 
 test("GROW-BLOCK plan: no engine rule copied — the screen reads the stage, the projects and the retry from charterWallPlan", () => {

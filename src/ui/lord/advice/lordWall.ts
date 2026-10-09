@@ -84,7 +84,8 @@ export function wallPlanView(state: GameState, plan: CharterWallPlan | null): Lo
     detail: plan.stage === "searching" ? COPY.detail.searching : plan.stage === "asked" ? COPY.detail.asked(LORD_CARDS_COPY.request.proclaim_era.title) : null,
     conditions,
     sites: plan.sites.map(site => COPY.site(kindName(site.kind), siteAge(state, site.since))),
-    abandoned: plan.stage === "sites" ? abandonedLines(state) : [],
+    // GB-4: the sites the town gave up, in every stage of the plan (a condition's own building may be among them).
+    abandoned: abandonedLines(state),
     failure: failed === null ? null : {
       why: COPY.reasons[failed.reason],
       homes: failed.homes.length === 0 ? null : COPY.homes(failed.homes.length),
@@ -95,6 +96,9 @@ export function wallPlanView(state: GameState, plan: CharterWallPlan | null): Lo
     ringAllowed: plan.stage === "failed",
   };
 }
+
+/** GROW-BLOCK §4: the plan's sixth stage, `past` — the console's one quiet line once the market town is proclaimed. */
+export const lordWallPlanDone: (state: GameState) => string | null = perState(state => charterWallPlan(state)?.stage === "past" ? COPY.stage.past : null);
 
 /** The palisade plan as the lord's era console shows it; null outside lord mode or past the hamlet. Once per state. */
 export const lordWallPlan: (state: GameState) => LordWallPlanView | null = perState(state => wallPlanView(state, charterWallPlan(state)));
