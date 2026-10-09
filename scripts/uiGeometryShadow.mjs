@@ -178,7 +178,8 @@ if (isMain(import.meta.url)) {
   const args = process.argv.slice(2); const flag = name => { const at = args.indexOf(name); return at === -1 ? null : args[at + 1]; };
   const cwd = git(['rev-parse', '--show-toplevel']).trim();
   const trunk = flag('--trunk') ?? 'origin/codex/phase15-organic-ground';
-  const since = flag('--since') ?? shadowStart(trunk, cwd);
+  const given = flag('--since');
+  const since = given !== null ? execFileSync('git', ['rev-parse', given], { cwd, encoding: 'utf8' }).trim() : shadowStart(trunk, cwd);
   if (since === null) { console.error(`uiGeometryShadow: ${SHADOW_MODULE} is not on ${trunk}'s first-parent line yet (--since <rev>)`); process.exit(2); }
   const records = flag('--records') !== null ? loadRecords(flag('--records')) : fetchDgxRecords();
   const out = flag('--out') ?? join(cwd, SHADOW_FILE);
