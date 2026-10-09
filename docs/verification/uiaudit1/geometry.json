@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-SLICEOLD-geometry-d429d73-d429d73",
- "commit": "d429d73c243d8a192c96ceb0a87f849b329161b2",
+ "run": "render-SLICEOLD-cards-geometry-eca04c8-eca04c8",
+ "commit": "eca04c8013b27b0d3c098dd62e9dbbf6242a56ca",
  "dirty": false,
  "inputs": 2512,
- "inputHash": "9641efe0cd5f5dd8d20d3de00b9f76588517a2fcc584a4cb8fb76da0f4a02ead",
- "measuredAt": "2026-10-09T00:41:30.485Z",
- "report": "docs/verification/uiaudit1/geometry/render-SLICEOLD-geometry-d429d73-d429d73/geometry.json",
+ "inputHash": "d04996d8a956bb5aa7ef294a41c5aabcbcd32d3a7c7652f6375dc83b6ec1f062",
+ "measuredAt": "2026-10-09T01:05:27.995Z",
+ "report": "docs/verification/uiaudit1/geometry/render-SLICEOLD-cards-geometry-eca04c8-eca04c8/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -30,7 +30,7 @@
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 14,
+ "warnings": 10,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -53,12 +53,12 @@
   "fixed": 0
  },
  "bySurface": {
-  "modal.slice-end": {
+  "modal.slice-end.year-card": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.slice-end.record": {
+  "modal.slice-end.season-card": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
