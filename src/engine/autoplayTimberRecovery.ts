@@ -30,6 +30,9 @@ export function recordTimberExpansionShortage(state: GameState): GameState {
 
 /** S8-F1: a full shortage window permits one affordable, staffed chain addition.
  * A pending addition restarts observation; existing food/service facility caps stay unchanged. */
+/** GB-10: a wall's timber is met over this many production windows. */
+const WALL_TIMBER_WINDOWS = 4;
+
 export function timberExpansionKind(state: GameState): TimberKind | null {
   const observation = state.timberProductionWindow;
   const since = observation?.expansionShortageSinceTick;
@@ -39,7 +42,12 @@ export function timberExpansionKind(state: GameState): TimberKind | null {
       && (site.kind === 'logging_camp' || site.kind === 'sawmill'))) return null;
   const wallNeed = state.constructionSites.filter(isWallConstructionSite)
     .reduce((sum, site) => sum + (constructionDeliveryNeed(site).timber ?? 0), 0);
-  if (wallNeed === 0 || wallNeed <= (observation?.produced ?? 0)) return null;
+  // GB-10 (GROW-BLOCK, P-C3): a wall's timber is a one-off need — met over four windows, not one (seed 1 went from one
+  // camp to eight about 1320 and kept 880 timber and 490 logs idle in its stores ever after); and timber the town already
+  // holds (reserved or in transit) is a blockage to clear, not a shortage to cut more for (logs still want milling).
+  if (wallNeed === 0 || wallNeed <= (observation?.produced ?? 0) * WALL_TIMBER_WINDOWS) return null;
+  const heldTimber = state.buildings.reduce((sum, building) => sum + (building.inventory.timber ?? 0), 0);
+  if (heldTimber >= wallNeed) return null;
   const sourceLogs = state.buildings.filter(building => building.kind === STORAGE_KIND_BY_RESOURCE.logs)
     .reduce((sum, building) => sum + availableStock(building, 'logs'), 0);
   const inputPerOutput = BUILDING_CONFIG_BY_KIND.sawmill.production?.inputPerOutput ?? 0;
