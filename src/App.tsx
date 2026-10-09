@@ -543,7 +543,7 @@ export function App() {
         {/* NAT-2: the QA info overlay (settings → developer, key `): nothing mounted while it is off. */}
         <QaOverlay store={store} />
         <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
-        <AutoPauseNotice state={state} events={autoPause.events} paused={speed === 0 && !welcomeVisible} ui={ui} onLord={openLord} onModal={modal => sendUi({ type: "push_modal", modal })} />
+        <AutoPauseNotice state={state} hold={autoPause.hold} paused={speed === 0 && !welcomeVisible} ui={ui} onLord={openLord} onModal={modal => sendUi({ type: "push_modal", modal })} onDismiss={autoPause.dismiss} />
         <div className="hud-time-cluster" data-frame="strip-top" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
