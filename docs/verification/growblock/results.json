@@ -21,7 +21,7 @@
      "inside": true
     }
    },
-   "bytes": 155076,
+   "bytes": 155232,
    "pass": true
   },
   "console-closed-tablet": {
@@ -45,7 +45,7 @@
      "inside": true
     }
    },
-   "bytes": 145838,
+   "bytes": 145922,
    "pass": true
   },
   "plan-waiting-1280x800": {
@@ -81,7 +81,7 @@
      "inside": true
     }
    },
-   "bytes": 141718,
+   "bytes": 142307,
    "pass": true
   },
   "plan-waiting-tablet": {
@@ -117,7 +117,7 @@
      "inside": true
     }
    },
-   "bytes": 133909,
+   "bytes": 133212,
    "pass": true
   },
   "plan-sites-1280x800": {
@@ -141,7 +141,7 @@
      "inside": true
     }
    },
-   "bytes": 126045,
+   "bytes": 126355,
    "pass": true
   },
   "plan-sites-tablet": {
@@ -165,16 +165,16 @@
      "inside": true
     }
    },
-   "bytes": 118582,
+   "bytes": 118274,
    "pass": true
   },
   "plan-searching-1280x800": {
    "state": "plan-searching",
    "card": {
     "stage": "searching",
-    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다\n\n마을은 주마다 할 일을 정하면서 목책 둘레를 찾습니다. 찾으면 영주에게 시장도시 선포를 청합니다",
     "primaries": 1,
-    "smallestText": 16,
+    "smallestText": 13,
     "buttons": [
      {
       "text": "마을의 목책 계획",
@@ -189,16 +189,16 @@
      "inside": true
     }
    },
-   "bytes": 124618,
+   "bytes": 125872,
    "pass": true
   },
   "plan-searching-tablet": {
    "state": "plan-searching",
    "card": {
     "stage": "searching",
-    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다\n\n마을은 주마다 할 일을 정하면서 목책 둘레를 찾습니다. 찾으면 영주에게 시장도시 선포를 청합니다",
     "primaries": 1,
-    "smallestText": 16,
+    "smallestText": 13,
     "buttons": [
      {
       "text": "마을의 목책 계획",
@@ -213,16 +213,16 @@
      "inside": true
     }
    },
-   "bytes": 117921,
+   "bytes": 120085,
    "pass": true
   },
   "plan-asked-1280x800": {
    "state": "plan-asked",
    "card": {
     "stage": "asked",
-    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n253/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n253/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다\n\n청은 사건 칩 줄의 '시장도시 선포를 기다립니다' 칩에 있습니다. 칩을 눌러 들어주면 마을이 목책 공사를 시작합니다",
     "primaries": 1,
-    "smallestText": 16,
+    "smallestText": 13,
     "buttons": [
      {
       "text": "마을의 목책 계획",
@@ -237,16 +237,16 @@
      "inside": true
     }
    },
-   "bytes": 125788,
+   "bytes": 127293,
    "pass": true
   },
   "plan-asked-tablet": {
    "state": "plan-asked",
    "card": {
     "stage": "asked",
-    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n253/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n253/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다\n\n청은 사건 칩 줄의 '시장도시 선포를 기다립니다' 칩에 있습니다. 칩을 눌러 들어주면 마을이 목책 공사를 시작합니다",
     "primaries": 1,
-    "smallestText": 16,
+    "smallestText": 13,
     "buttons": [
      {
       "text": "마을의 목책 계획",
@@ -261,7 +261,7 @@
      "inside": true
     }
    },
-   "bytes": 118268,
+   "bytes": 121480,
    "pass": true
   },
   "plan-failed-1280x800": {
@@ -289,7 +289,7 @@
      "inside": true
     }
    },
-   "bytes": 126851,
+   "bytes": 126558,
    "pass": true
   },
   "plan-failed-tablet": {
@@ -317,10 +317,10 @@
      "inside": true
     }
    },
-   "bytes": 120533,
+   "bytes": 119670,
    "pass": true
   }
  },
- "bytes": 1555147,
+ "bytes": 1562260,
  "errors": []
 }
