@@ -5,7 +5,8 @@
 // V8's own script list, NODE_V8_COVERAGE); dirs: listed or copied folders; missing: paths looked for and absent (a test
 // that checked a file that did not exist must run again when it appears); untraceable: why the record cannot be trusted
 // (a child process, the network, a worker thread) — such a test is never reused. Only processes the test runner started
-// for a test file (NODE_TEST_CONTEXT) write a record. Paths are as the test passed them; testInputs.mjs resolves them.
+// for a test file (NODE_TEST_CONTEXT) write a record. A relative path is made absolute against the working folder at
+// the time of the call (a test may chdir); a module or file that failed to resolve is recorded as missing too.
 import childProcess from "node:child_process";
 import fs from "node:fs";
 import fsp from "node:fs/promises";
@@ -13,6 +14,7 @@ import http from "node:http";
 import https from "node:https";
 import Module, { register, syncBuiltinESMExports } from "node:module";
 import net from "node:net";
+import { dirname, isAbsolute, resolve as resolvePath } from "node:path";
 import workerThreads from "node:worker_threads";
 
 const out = process.env.FLS_TRACE_DIR;
@@ -21,39 +23,47 @@ const testFile = process.env.NODE_TEST_CONTEXT ? process.argv.slice(1).reverse()
 if (out && testFile) {
   const files = new Set(), dirs = new Set(), missing = new Set(), untraceable = new Set();
   const cwd = process.cwd();
-  const pathOf = value => typeof value === "string" ? value : value instanceof URL ? (value.protocol === "file:" ? decodeURIComponent(value.pathname) : null)
+  const rawPath = value => typeof value === "string" ? value : value instanceof URL ? (value.protocol === "file:" ? decodeURIComponent(value.pathname) : null)
     : Buffer.isBuffer(value) ? value.toString() : null;
+  const pathOf = value => { const path = rawPath(value); return path === null || isAbsolute(path) ? path : resolvePath(process.cwd(), path); };
+  // A wrapped function keeps its own properties (fs.realpathSync.native and fs.realpath.native, wrapped as well).
+  const keep = (traced, original, wrap) => { for (const key of Object.keys(original)) traced[key] = original[key]; if (typeof original.native === "function") traced.native = wrap(original.native); return traced; };
   const absent = (path, error) => { if (path !== null && (error?.code === "ENOENT" || error?.code === "ENOTDIR")) missing.add(path); };
   const syncReader = (target, name, into) => {
     const original = target[name]; if (typeof original !== "function") return;
-    target[name] = function traced(...args) {
+    const wrap = fn => function traced(...args) {
       const path = pathOf(args[0]);
       try {
-        const result = original.apply(this, args);
+        const result = fn.apply(this, args);
         if (path !== null) { if (name === "existsSync" && result === false) missing.add(path); else into.add(path); }
         return result;
       } catch (error) { absent(path, error); throw error; }
     };
+    target[name] = keep(wrap(original), original, wrap);
   };
   const asyncReader = (target, name, into) => {
     const original = target[name]; if (typeof original !== "function") return;
-    target[name] = function traced(...args) {
+    const wrap = fn => function traced(...args) {
       const path = pathOf(args[0]);
       const callback = typeof args.at(-1) === "function" ? args.length - 1 : -1;
       if (callback >= 0) {
         const done = args[callback];
         args[callback] = function (error, ...rest) { if (path !== null) { if (error) absent(path, error); else into.add(path); } return done.call(this, error, ...rest); };
-        return original.apply(this, args);
+        return fn.apply(this, args);
       }
-      const result = original.apply(this, args);
+      let result;
+      try { result = fn.apply(this, args); } catch (error) { absent(path, error); throw error; }
       if (result && typeof result.then === "function") return result.then(value => { if (path !== null) into.add(path); return value; }, error => { absent(path, error); throw error; });
       if (path !== null) into.add(path);
       return result;
     };
+    target[name] = keep(wrap(original), original, wrap);
   };
-  for (const name of ["readFileSync", "statSync", "lstatSync", "existsSync", "openSync", "accessSync", "realpathSync", "createReadStream", "readlinkSync"]) syncReader(fs, name, files);
+  // The first argument is what is read: a copy's source too (a test may copy a fixture to a temporary file and read that).
+  for (const name of ["readFileSync", "statSync", "lstatSync", "existsSync", "openSync", "accessSync", "realpathSync", "createReadStream", "readlinkSync", "copyFileSync"]) syncReader(fs, name, files);
   for (const name of ["readdirSync", "opendirSync", "cpSync", "globSync"]) syncReader(fs, name, dirs);
-  for (const name of ["readFile", "stat", "lstat", "open", "access", "realpath", "readlink"]) { asyncReader(fs, name, files); asyncReader(fsp, name, files); }
+  for (const name of ["readFile", "stat", "lstat", "open", "access", "realpath", "readlink", "copyFile"]) { asyncReader(fs, name, files); asyncReader(fsp, name, files); }
+  asyncReader(fs, "openAsBlob", files);
   for (const name of ["readdir", "opendir", "cp", "glob"]) { asyncReader(fs, name, dirs); asyncReader(fsp, name, dirs); }
   // What cannot be followed: another process, the network, another thread.
   const mark = (target, names, why) => { for (const name of names) { const original = target[name]; if (typeof original !== "function") continue; target[name] = function marked(...args) { untraceable.add(why); return original.apply(this, args); }; } };
@@ -77,7 +87,17 @@ if (out && testFile) {
   syncBuiltinESMExports();
   // CommonJS (and tsx's compiled imports): every resolved module file.
   const resolveFilename = Module._resolveFilename;
-  Module._resolveFilename = function traced(...args) { const resolved = resolveFilename.apply(this, args); if (typeof resolved === "string" && resolved.startsWith("/")) files.add(resolved); return resolved; };
+  Module._resolveFilename = function traced(request, parent, ...rest) {
+    try {
+      const resolved = resolveFilename.call(this, request, parent, ...rest);
+      if (typeof resolved === "string" && resolved.startsWith("/")) files.add(resolved);
+      return resolved;
+    } catch (error) {
+      // A relative require that found nothing: the path it looked for (with any extension or as a folder, testInputs.mjs).
+      if (typeof request === "string" && /^\.{1,2}\//.test(request) && typeof parent?.filename === "string") missing.add(resolvePath(dirname(parent.filename), request));
+      throw error;
+    }
+  };
   // ES modules through the loader chain.
   register(new URL("./traceHooks.mjs", import.meta.url), { data: { out, pid: process.pid } });
   process.on("exit", () => {

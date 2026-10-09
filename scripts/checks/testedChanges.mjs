@@ -92,7 +92,7 @@ export function measuredPicks({ work, base, head, records }) {
     for (const test of Object.keys(record.inputs?.tests ?? {})) {
       if (seen.has(test)) continue; seen.add(test);
       const inputs = unpackInputs(record.inputs, test);
-      if (inputs === null || inputs.untraceable.length > 0) continue;
+      if (inputs === null) continue;   // a test not measurable is still picked by what it was seen to read (more picks only)
       const touched = inputOverlap(inputs, changes);
       if (touched.length > 0) picks.set(test, touched);
     }

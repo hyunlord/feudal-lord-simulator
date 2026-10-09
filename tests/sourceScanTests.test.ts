@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
-import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pickTests, SOURCE_SCAN_WHY } from "../scripts/checks/changedTests.mjs";
 import { FOLDER_WALKS } from "../scripts/checks/sourceScanTests.mjs";
 
@@ -22,7 +22,7 @@ test("the folder map is whole: every test that walks or copies folders is in it,
 
 test("a src/ change picks the source scans that exist; a change outside src/ does not", () => {
   const dir = tempDir("fls-scan-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   try {
     for (const d of ["src/engine", "tests", "docs"]) mkdirSync(join(dir, d), { recursive: true });
     writeFileSync(join(dir, "src/engine/petitions.ts"), "/** the earlier definition period. */\nexport const p = 1;\n");

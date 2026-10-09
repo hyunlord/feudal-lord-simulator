@@ -11,6 +11,8 @@ import { fileURLToPath } from "node:url";
 
 /** Files whose change touches every test: what node_modules holds (its reads are not recorded) and the compiler setup. */
 export const EVERY_TEST = Object.freeze(["package.json", "package-lock.json", "tsconfig.json"]);
+/** A package.json or tsconfig.json in any folder: Node and tsx read them for a module's type and paths, unrecorded. */
+const touchesEvery = path => EVERY_TEST.includes(path) || /(^|\/)(package|tsconfig)\.json$/.test(path);
 const TEMP = [...new Set([tmpdir(), "/tmp", "/private/tmp", "/var/folders", "/private/var/folders"].map(path => resolve(path)))];
 /** The recorder's own folder: it measures and changes no result, so its files are no test's input. */
 const RECORDER = realpathSync(fileURLToPath(new URL(".", import.meta.url))).replace(/[\\/]$/, "");
@@ -48,16 +50,20 @@ export function collectTestInputs({ root: given, traceDir, coverageDir = null })
     let record; try { record = JSON.parse(readFileSync(join(traceDir, name), "utf8")); } catch { continue; }
     const pid = String(record.pid);
     const at = path => resolve(record.cwd ?? root, path);
-    const modules = existsSync(join(traceDir, `${pid}.modules`)) ? readFileSync(join(traceDir, `${pid}.modules`), "utf8").split("\n").filter(Boolean) : [];
+    const lines = kind => existsSync(join(traceDir, `${pid}.${kind}`)) ? readFileSync(join(traceDir, `${pid}.${kind}`), "utf8").split("\n").filter(Boolean) : [];
+    const modules = lines("modules");
     const inputs = { files: new Set(), dirs: new Set(), missing: new Set(), untraceable: new Set(record.untraceable ?? []) };
     const add = (into, absolute, outsideIsUntraceable) => {
       const where = place(root, absolute);
-      if (where.rel !== undefined) into.add(where.rel);
-      else if (where.outside !== undefined && outsideIsUntraceable) inputs.untraceable.add(`reads outside the repository: ${where.outside}`);
+      if (where.rel !== undefined) {
+        into.add(where.rel);
+        // Read through a symbolic link: its target is read too.
+        if (into !== inputs.missing) { let real = absolute; try { real = realpathSync(absolute); } catch { /* gone or missing */ } if (real !== absolute) add(into, real, outsideIsUntraceable); }
+      } else if (where.outside !== undefined && outsideIsUntraceable) inputs.untraceable.add(`reads outside the repository: ${where.outside}`);
     };
     for (const path of [...record.files, ...modules, ...(scripts.get(pid) ?? [])]) add(inputs.files, at(path), true);
     for (const path of record.dirs) add(inputs.dirs, at(path), true);
-    for (const path of record.missing) add(inputs.missing, at(path), false);   // a parent folder's missing tsconfig is no input
+    for (const path of [...record.missing, ...lines("missing")]) add(inputs.missing, at(path), false);   // a parent folder's missing tsconfig is no input
     const test = place(root, at(record.test)).rel; if (test === undefined) continue;
     const before = byTest.get(test);
     if (before === undefined) byTest.set(test, inputs);
@@ -94,12 +100,14 @@ export function treeChanges(cwd, from, to) {
 }
 
 /**
- * The changed paths that touch these inputs: a file read or a path looked for (now changed, added or deleted), anything
- * under a folder listed, or a file every test depends on. A module added where an import used to resolve elsewhere
- * (src/m.ts beside src/m/index.ts) is a path the resolver looked for and missed: it is in `missing`.
+ * The changed paths that touch these inputs: a file read (now changed, added or deleted), anything under a folder listed,
+ * a package.json or tsconfig.json anywhere, or a path looked for and missed — that path itself, anything under it (a
+ * folder that did not exist) or it with an extension (an import written without one). A module added where an import
+ * used to resolve elsewhere (src/m.ts beside src/m/index.ts) is a path the resolver looked for and missed.
  */
 export function inputOverlap(inputs, changes) {
-  const files = new Set(inputs.files); const missing = new Set(inputs.missing);
+  const files = new Set(inputs.files);
   const under = path => inputs.dirs.some(dir => dir === "" || path === dir || path.startsWith(`${dir}/`));
-  return changes.filter(({ path }) => EVERY_TEST.includes(path) || files.has(path) || missing.has(path) || under(path)).map(change => change.path).sort();
+  const looked = path => inputs.missing.some(miss => path === miss || path.startsWith(`${miss}/`) || path.startsWith(`${miss}.`));
+  return changes.filter(({ path }) => touchesEvery(path) || files.has(path) || looked(path) || under(path)).map(change => change.path).sort();
 }

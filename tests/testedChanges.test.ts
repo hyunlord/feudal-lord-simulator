@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
-import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pickTests, testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/testedChanges.mjs";
 
@@ -12,7 +12,7 @@ import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/teste
 // another test, and a document no test names.
 function repo() {
   const dir = tempDir("fls-tested-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   for (const d of ["src", "tests", "docs", "fixtures"]) mkdirSync(join(dir, d));
   writeFileSync(join(dir, "src/b.ts"), "export const b = 1;\n");
   writeFileSync(join(dir, "src/a.ts"), 'import { b } from "./b.ts";\nexport const a = b + 1;\n');

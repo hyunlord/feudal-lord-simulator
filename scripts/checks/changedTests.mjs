@@ -23,11 +23,12 @@
 // content that was tested (what `git add -A` would commit now, built in a copy of the index). check:merge looks for
 // a passing record of the pushed head's tree that covers the tests its range picks (scripts/checks/mergeChecks.mjs).
 import { execFileSync, spawnSync } from "node:child_process";
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { basename, dirname, extname, join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { gitIn, pickTests, SOURCE_SCAN_WHY } from "./pickTests.mjs";
+import { SOURCE_SCAN_TESTS } from "./sourceScanTests.mjs";
 import { coverageLines, measuredPicks, newestFirst, overlapLines, reuseEvidence, testCoverage, testedRecords } from "./testedChanges.mjs";
 import { collectTestInputs, packInputs } from "./testInputs/testInputs.mjs";
 
@@ -97,7 +98,8 @@ async function main() {
   console.log(`changed: ${changed.size} file(s) since ${base.slice(0, 8)}; tests picked: ${list.length} of ${total} — running ${run.length}`);
   for (const t of run) console.log(`  ${t}  (${picked.get(t)})`);
   const mac = process.platform === "darwin" && !process.env.FLS_ALLOW_LOCAL;
-  const counted = run.filter(t => !picked.get(t).startsWith(SOURCE_SCAN_WHY)).length;
+  // Only RR24's src walkers (~11 s together) stay outside the limit, not every folder walker (some copy the tree and run tsc).
+  const counted = run.filter(t => !(picked.get(t).startsWith(SOURCE_SCAN_WHY) && SOURCE_SCAN_TESTS.includes(t))).length;
   if (mac && counted > MAC_LIMIT) {
     console.error(`${counted} tests (besides the source scans) is more than the Mac runs (${MAC_LIMIT}); run them on the runner:\n  scripts/remote/run.sh <label> --light -- npm run -s test:changed`);
     process.exit(3);

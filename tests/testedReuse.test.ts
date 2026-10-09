@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { test } from "node:test";
-import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pathToFileURL } from "node:url";
 import { testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges, reuseEvidence } from "../scripts/checks/testedChanges.mjs";
@@ -44,7 +44,11 @@ function measure(dir: string, tests: readonly string[]) {
 
 function story(trunkMove: Move) {
   const dir = tempDir("fls-reuse-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  try { return storyIn(dir, trunkMove); } catch (error) { rmSync(dir, { recursive: true, force: true }); throw error; }   // a failed setup leaves no repository behind
+}
+
+function storyIn(dir: string, trunkMove: Move) {
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   const remove = (path: string) => unlinkSync(join(dir, path));
   write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG);   // as in the repository: the records are never content
@@ -224,7 +228,7 @@ test("a record of content this checkout lacks, or with no measured inputs, never
 test("a range picks a test by what it was measured to read, though no import or listed folder names the file", () => {
   // The branch changes only the fixture doorSigns reads by a built path: the static pick misses it, the measured pick does not.
   const dir = tempDir("fls-mpick-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   try {
     write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"type":"module"}\n');
@@ -252,7 +256,7 @@ for (const [form, files, specifier, added, touched] of [
 ] as const) {
   test(`a shadowed import, ${form}: the test runs again, the output names ${touched}`, () => {
     const dir = tempDir("fls-shadow-");
-    const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+    const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
     const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
     const testFile = `import { test } from "node:test";\nimport { which } from "${specifier}";\ntest("shadow", () => { if (!which) throw new Error(); });\n`;
     try {
@@ -290,7 +294,7 @@ test("a record whose measured inputs are broken or of another schema never cover
 
 test("a .js specifier resolved to .ts: a real .js added beside it loads nothing new (tsx keeps the .ts), so the result stands; deleting the .ts reruns", () => {
   const dir = tempDir("fls-shadow-js-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   const testFile = 'import { test } from "node:test";\nimport { which } from "../src/j.js";\ntest("which", () => { console.log(`WHICH=${which}`); });\n';
   try {
@@ -313,19 +317,25 @@ test("a .js specifier resolved to .ts: a real .js added beside it loads nothing 
 });
 
 /** A small throwaway repository with one measured test and its passing record; `move` changes the trunk, the branch merges it. */
-function single(testText: string, setup: Record<string, string>, move: (git: (...args: string[]) => string, write: Write) => void) {
+type SingleMove = (git: (...args: string[]) => string, write: Write, dir: string) => void;
+function single(testText: string, setup: Record<string, string>, move: SingleMove) {
   const dir = tempDir("fls-single-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  try { return singleIn(dir, testText, setup, move); } catch (error) { rmSync(dir, { recursive: true, force: true }); throw error; }
+}
+
+function singleIn(dir: string, testText: string, setup: Record<string, string>, move: SingleMove) {
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"name":"story","type":"module"}\n');
-  for (const [path, text] of Object.entries(setup)) write(path, text);
+  // "symlink:<target>" makes a tracked symbolic link.
+  for (const [path, text] of Object.entries(setup)) if (text.startsWith("symlink:")) { mkdirSync(dirname(join(dir, path)), { recursive: true }); symlinkSync(text.slice(8), join(dir, path)); } else write(path, text);
   write("tests/one.test.ts", testText);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   git("checkout", "-qb", "branch"); write("tests/one.test.ts", `${testText}// the branch\n`); git("commit", "-qam", "branch: the test");
   const { ran, inputs } = measure(dir, ["tests/one.test.ts"]);
   assert.equal(ran.status, 0, ran.stdout + ran.stderr);
   write(".remote-runs/gate/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/one.test.ts"], where: "gate", at: "2026-10-09T01:00:00Z", inputs }));
-  git("checkout", "-q", "trunk"); move(git, write); git("add", "-A"); git("commit", "-qm", "trunk moves");
+  git("checkout", "-q", "trunk"); move(git, write, dir); git("add", "-A"); git("commit", "-qm", "trunk moves");
   const base = git("rev-parse", "HEAD"); git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
   return { result: checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") }), done: () => rmSync(dir, { recursive: true, force: true }) };
 }
@@ -346,4 +356,75 @@ test("a test that reads outside the repository is not measurable: it is never re
     assert.ok(s.result.uncovered?.includes("tests/one.test.ts"), formatTestedChanges(s.result));
     assert.match(formatTestedChanges(s.result), /tests\/one\.test\.ts — never reused: not measurable: reads outside the repository: \/etc\/hosts/);
   } finally { s.done(); }
+});
+
+// Reads the recorder must see (RR25 review: each was a false reuse or a broken test before). In each, the trunk changes
+// or adds the one thing the test depends on; the test must run again (or, when it cannot be followed, never be reused).
+const H = 'import { test } from "node:test";\n';
+for (const [what, testText, setup, move, touched] of [
+  ["a folder looked for and missing, a file added under it", `${H}import { existsSync } from "node:fs";\ntest("t", () => { existsSync("fixtures/extra"); });\n`, {},
+    ((_g, w) => w("fixtures/extra/x.json", "{}\n")) as SingleMove, "fixtures/extra/x.json"],
+  ["a file read and missing (ENOENT caught), then added", `${H}import { readFileSync } from "node:fs";\ntest("t", () => { try { readFileSync("fixtures/opt.json"); } catch { /* optional */ } });\n`, {},
+    ((_g, w) => w("fixtures/opt.json", "{}\n")) as SingleMove, "fixtures/opt.json"],
+  ["a dynamic import that failed (caught), then the module added", `${H}test("t", async () => { try { await import("../src/plugin.ts"); } catch { /* none yet */ } });\n`, {},
+    ((_g, w) => w("src/plugin.ts", "export const p = 1;\n")) as SingleMove, "src/plugin.ts"],
+  ["an extensionless dynamic import that failed, then the module added", `${H}test("t", async () => { try { await import("../src/plugin"); } catch { /* none yet */ } });\n`, {},
+    ((_g, w) => w("src/plugin.ts", "export const p = 1;\n")) as SingleMove, "src/plugin.ts"],
+  ["a require that failed (caught), then the module added", `${H}import { createRequire } from "node:module";\ntest("t", () => { try { createRequire(import.meta.url)("../src/legacy.cjs"); } catch { /* none yet */ } });\n`, {},
+    ((_g, w) => w("src/legacy.cjs", "module.exports = 1;\n")) as SingleMove, "src/legacy.cjs"],
+  ["a fixture copied to a temporary file and read there", `${H}import { copyFileSync, readFileSync, mkdtempSync } from "node:fs";\nimport { tmpdir } from "node:os";\nimport { join } from "node:path";\ntest("t", () => { const to = join(mkdtempSync(join(tmpdir(), "c-")), "a.json"); copyFileSync("fixtures/a.json", to); JSON.parse(readFileSync(to, "utf8")); });\n`,
+    { "fixtures/a.json": '{"a":1}\n' }, ((_g, w) => w("fixtures/a.json", '{"a":2}\n')) as SingleMove, "fixtures/a.json"],
+  ["a file read by a relative path after chdir", `${H}import { readFileSync } from "node:fs";\ntest("t", () => { const back = process.cwd(); process.chdir("fixtures"); try { readFileSync("a.json"); } finally { process.chdir(back); } });\n`,
+    { "fixtures/a.json": '{"a":1}\n' }, ((_g, w) => w("fixtures/a.json", '{"a":2}\n')) as SingleMove, "fixtures/a.json"],
+  ["a file read through a symbolic link, its target changed", `${H}import { readFileSync } from "node:fs";\ntest("t", () => { readFileSync("fixtures/link.json"); });\n`,
+    { "fixtures/a.json": '{"a":1}\n', "fixtures/link.json": "symlink:a.json" }, ((_g, w) => w("fixtures/a.json", '{"a":2}\n')) as SingleMove, "fixtures/a.json"],
+  ["a package.json added in a folder of a module it imports", `${H}import { s } from "../src/sub/s.ts";\ntest("t", () => { if (!s) throw new Error(); });\n`,
+    { "src/sub/s.ts": "export const s = 1;\n" }, ((_g, w) => w("src/sub/package.json", '{"type":"module"}\n')) as SingleMove, "src/sub/package.json"],
+] as const) {
+  test(`the recorder sees ${what}: the test runs again, the output names ${touched}`, () => {
+    const s = single(testText, setup, move);
+    try {
+      assert.ok(s.result.uncovered?.includes("tests/one.test.ts"), formatTestedChanges(s.result));
+      assert.ok(s.result.overlaps?.get("tests/one.test.ts")?.files.includes(touched), JSON.stringify(s.result.overlaps?.get("tests/one.test.ts")));
+    } finally { s.done(); }
+  });
+}
+
+for (const [what, testText, why] of [
+  ["the network (http)", `${H}import http from "node:http";\ntest("t", async () => { await new Promise(done => http.get("http://127.0.0.1:9/", () => done(null)).on("error", () => done(null))); });\n`, "network"],
+  ["the network (a socket to a port)", `${H}import net from "node:net";\ntest("t", async () => { await new Promise(done => net.connect({ host: "127.0.0.1", port: 9 }).on("error", () => done(null)).on("connect", () => done(null))); });\n`, "network"],
+  ["a worker thread", `${H}import { Worker } from "node:worker_threads";\ntest("t", async () => { const w = new Worker("1", { eval: true }); await new Promise(done => w.on("exit", done)); });\n`, "worker thread"],
+] as const) {
+  test(`a test that uses ${what} is not measurable: it is never reused, the output says why`, () => {
+    const s = single(testText, {}, (_g, w) => w("docs/notes.md", "moved\n"));
+    try {
+      assert.ok(s.result.uncovered?.includes("tests/one.test.ts"), formatTestedChanges(s.result));
+      assert.match(formatTestedChanges(s.result), new RegExp(`tests/one\\.test\\.ts — never reused: not measurable: [^\\n]*${why}`));
+    } finally { s.done(); }
+  });
+}
+
+test("the recorder keeps what it wraps whole: fs.realpathSync.native and fs.realpath.native still work under it", () => {
+  const s = single(`${H}import fs from "node:fs";\ntest("t", async () => { if (typeof fs.realpathSync.native(".") !== "string") throw new Error("sync"); await new Promise((done, fail) => fs.realpath.native(".", e => e ? fail(e) : done(null))); });\n`,
+    {}, (_g, w) => w("docs/notes.md", "moved\n"));
+  try { assert.equal(s.result.ok, true, formatTestedChanges(s.result)); } finally { s.done(); }   // single() asserts the measured run passed
+});
+
+test("a range picks a test that is not measurable by what it was seen to read (more picks only)", () => {
+  const dir = tempDir("fls-mpick-u-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
+  const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  try {
+    write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"type":"module"}\n');
+    write("fixtures/saves/v47/a.save.json", '{"a":1}\n');
+    write("tests/spawnFixture.test.ts", `${H}import { execFileSync } from "node:child_process";\nimport { readFileSync } from "node:fs";\ntest("t", () => { execFileSync("git", ["--version"]); for (const n of ["a"]) JSON.parse(readFileSync(\`fixtures/saves/v47/\${n}.save.json\`, "utf8")); });\n`);
+    git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
+    const { inputs } = measure(dir, ["tests/spawnFixture.test.ts"]);
+    write(".remote-runs/full/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/spawnFixture.test.ts"], where: "full", at: "2026-10-09T01:00:00Z", inputs }));
+    const base = git("rev-parse", "HEAD");
+    write("fixtures/saves/v47/a.save.json", '{"a":2}\n'); git("commit", "-qam", "branch: the fixture");
+    const result = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
+    assert.deepEqual(result.required, ["tests/spawnFixture.test.ts"]);
+    assert.equal(result.ok, false);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
 });

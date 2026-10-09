@@ -3,7 +3,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
-import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
 
 // The trunk's bundled clone names the first bad commit (scripts/remote/tasks.sh trunk-bisect, run by trunkClone.sh):
 // a throwaway repository whose fourth commit breaks a check, with a merge in the range as the trunk has.
@@ -12,7 +12,7 @@ const hasBash = spawnSync("bash", ["-c", "true"]).status === 0;
 
 test("trunk-bisect names the first commit where the check fails, across a merge", { skip: !hasBash && "needs bash" }, () => {
   const dir = tempDir("fls-bisect-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, "-c", "user.name=tester", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, "-c", "user.name=tester", ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   const commit = (message: string) => { git("add", "-A"); git("commit", "-qm", message); return git("rev-parse", "HEAD"); };
   try {
     git("init", "-q", "-b", "trunk");
@@ -37,7 +37,7 @@ const owner = resolve(import.meta.dirname, "../scripts/remote/commitOwner.sh");
 
 test("the clone notice's owner comes from the commit's prefix and closing lines, a merge by its branch tip", { skip: !hasBash && "needs bash" }, () => {
   const dir = tempDir("fls-owner-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, "-c", "user.name=tester", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, "-c", "user.name=tester", ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   let n = 0;
   const commit = (message: string) => { writeFileSync(join(dir, "f.txt"), `${n++}\n`); git("add", "-A"); git("commit", "-qm", message); return git("rev-parse", "HEAD"); };
   const ownerOf = (sha: string) => execFileSync("bash", [owner, sha], { cwd: dir, encoding: "utf8" }).trim();
