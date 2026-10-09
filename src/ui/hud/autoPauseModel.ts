@@ -55,7 +55,9 @@ export function autoPauseStep(memory: AutoPauseMemory, state: GameState, previou
   // A contested inheritance comes with its own ledger line (an inheritance event): one line for the one matter.
   const contested = events.some(item => item.kind === "event" && item.event.template === "marriage.contested");
   const due = lordMattersDue(state);
-  const matters: AutoPauseItem[] = due.filter(matter => !memory.matters.has(matterKey(matter)) && !(contested && matter.kind === "contested"))
+  // GROW-BLOCK (engine exception — render to take over): an audit's and an escalated petition's own events stop already.
+  const matters: AutoPauseItem[] = due.filter(matter => matter.kind !== "audit" && matter.kind !== "estate_petition")
+    .filter(matter => !memory.matters.has(matterKey(matter)) && !(contested && matter.kind === "contested"))
     .map(matter => ({ kind: "matter", key: matterKey(matter), matter }));
   const fresh = [...events, ...matters].filter(item => !memory.seen.has(item.key));
   const next = { baseline: state, matters: new Set(due.map(matterKey)), seen: fresh.length === 0 ? memory.seen : new Set([...memory.seen, ...fresh.map(item => item.key)]) };

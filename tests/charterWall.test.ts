@@ -102,6 +102,6 @@ test("GB-12: in lord mode the timber the waiting wall wants is judged against wh
   const built = { ...state, buildings: [...state.buildings, ...[1, 2, 3].map(n => ({ ...camp, id: `${camp.id}-new${n}` })), { ...mill, id: `${mill.id}-new` }] };
   assert.equal(timberCapacityPerWindow(built.buildings), 96);
   assert.equal(timberDemandExpansionKind(built), "logging_camp", "the sandbox's rule (BT6) is unchanged");
-  assert.equal(timberDemandExpansionKind({ ...built, agency: lordGame().agency }), null, "the lord's town waits for its new facilities to work");
-  assert.equal(timberDemandExpansionKind({ ...state, agency: lordGame().agency }), "logging_camp", "one camp and one sawmill are still short");
+  assert.equal(timberDemandExpansionKind({ ...built, agency: lordGame().agency! }), null, "the lord's town waits for its new facilities to work");
+  assert.equal(timberDemandExpansionKind({ ...state, agency: lordGame().agency! }), "logging_camp", "one camp and one sawmill are still short");
 });
