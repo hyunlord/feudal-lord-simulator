@@ -50,6 +50,7 @@ export function charterStallProbe(seed: number, years: number, outDir: string) {
   const yearsLog: Record<string, unknown>[] = [];
   let stalled: { year: number; inspection: ReturnType<typeof inspectCharterCandidates> } | null = null;
   let lastYear = start;
+  let waitingYears = 0;
   while (stateCalendar(state).year < start + years) {
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
@@ -60,6 +61,17 @@ export function charterStallProbe(seed: number, years: number, outDir: string) {
     const tried = state.agency?.charterWallTried !== undefined;
     yearsLog.push({ year, population: state.population, houses: state.houses.length, era: state.era, ready, tried, palisade: state.palisade?.polygon?.length ?? 0,
       sites: state.constructionSites.length });
+    // A site open for three years with every requirement met (the search waits on it) is a stall too.
+    const waiting = ready && !tried && state.era === "hamlet" && state.constructionSites.length > 0;
+    waitingYears = waiting ? waitingYears + 1 : 0;
+    if (stalled === null && waitingYears >= 3) {
+      mkdirSync(outDir, { recursive: true });
+      const now = new Date().toISOString();
+      writeFileSync(`${outDir}/wait-seed${seed}-${year}.save.json`, encodeSave({ state, createdAt: now, savedAt: now }).bytes);
+      stalled = { year, inspection: { candidates: 0, refusedProjection: 0, serviceSpace: 0, notRoomy: 0, routeAccess: 0, acceptable: 0, rows: [] },
+        sites: state.constructionSites.map(site => ({ id: site.id, kind: "kind" in site ? site.kind : "road", since: (site as { startedTick?: number }).startedTick ?? null,
+          delivered: (site as { delivered?: unknown }).delivered ?? null, needs: (site as { required?: unknown }).required ?? null })) } as never;
+    }
     if (stalled === null && ready && tried && state.era === "hamlet") {
       mkdirSync(outDir, { recursive: true });
       const now = new Date().toISOString();
