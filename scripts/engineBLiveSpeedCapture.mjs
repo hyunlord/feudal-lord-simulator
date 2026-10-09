@@ -10,6 +10,7 @@ import { assertAutoplayDisabled, playwrightProvenance, stopOwnedServer, startOwn
 import { loadChromium } from './renderCommitProbe.mjs';
 import { routeSceneState, sceneStateRefusal } from './sceneInjection.mjs';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
+import { createTraceThreadEvidence, isInformationalSeasonLedger } from './engineBLiveThreadEvidence.mjs';
 const SOURCE = '2485af40046793f1856829fa1161dc4431942aa7';
 const MANIFEST = 'e4615d5a01c18d7b6adba9f3eec12c570f0ab14041266e947305674c04e2b93d';
 const ANSWER = 'h-002653', START = 40015, LIMIT = START + 3000;
@@ -64,8 +65,14 @@ async function sample(page) {
     const chips = [...document.querySelectorAll('.event-chip[data-chip-id], .event-card[data-chip-id]')].filter(exposed)
       .map(el => ({ chipId: el.getAttribute('data-chip-id'), text: el.textContent, tag: el.tagName }));
     const presentations = chips.filter(row => row.chipId.startsWith('lord-moment:h-')).map(row => ({ ...row, recordId: row.chipId.slice('lord-moment:'.length), origin: 'automatic' }));
-    const panels = [...document.querySelectorAll('[role="dialog"]')].filter(el => { const b = el.getBoundingClientRect(), style = getComputedStyle(el); return b.width > 0 && b.height > 0 && style.visibility !== 'hidden' && style.display !== 'none'; }).map(el => ({ className: el.className, text: el.textContent?.slice(0, 1000) }));
+    const panels = [...document.querySelectorAll('[role="dialog"]')].filter(el => { const b = el.getBoundingClientRect(), style = getComputedStyle(el); return b.width > 0 && b.height > 0 && style.visibility !== 'hidden' && style.display !== 'none'; }).map(el => {
+      const controls = [...el.querySelectorAll('button.season-ledger-resume')];
+      return { className: el.className, text: el.textContent?.slice(0, 1000), season: el.getAttribute('data-season'),
+        continueCount: controls.length, continueAvailable: controls.length === 1 && !controls[0].disabled && exposed(controls[0]) };
+    });
+    const reads = window.__EB_LIVE_READ_MODELS__, from = state.tick - state.tick % reads.seasonLength;
     return { tick: state.tick, records, chips, presentations, panels,
+      traceRows: reads.traceInRange(state, from, state.tick + 1), traceNews: reads.traceNews(state),
       paused: document.querySelector('.speed-seal[data-seal="pause"]')?.getAttribute('aria-pressed') === 'true',
       ten: document.querySelector('.speed-seal[data-seal="fast"] [data-step="10"]')?.getAttribute('data-on') === 'true' };
   });
@@ -119,6 +126,12 @@ async function capture(browser, item, out, url, evidence) {
     await page.goto(`${url}?phase10-proof=1`, { timeout: 90000 });
     await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90000 }), refused]);
     initialized = true;
+    const seasonLength = await page.evaluate(async () => {
+      const [reads, news, config] = await Promise.all([import('/src/engine/decisionReads.ts'), import('/src/ui/results/decisionThread.ts'), import('/src/content/balanceConfig.ts')]);
+      window.__EB_LIVE_READ_MODELS__ = { traceInRange: reads.traceInRange, traceNews: news.traceNews, seasonLength: config.BALANCE.TICKS_PER_YEAR / 4 };
+      return window.__EB_LIVE_READ_MODELS__.seasonLength;
+    });
+    const threads = createTraceThreadEvidence(ANSWER, START, seasonLength);
     const initial = await fullSnapshot(page, out, 'initial');
     evidence.initialDifference = presentationDifference(withResidentWalkers(item.checkpoint.state), initial.state);
     check(initial.sha256 === sha(JSON.stringify(withResidentWalkers(item.checkpoint.state))), 'Initial presentation mismatch');
@@ -131,6 +144,7 @@ async function capture(browser, item, out, url, evidence) {
     check(before.sha256 === initial.sha256, 'Pre-input presentation drift');
     await page.evaluate(() => { window.__EB_LIVE_HISTORY_IDS__ = new Set((window.__FEUDAL_PHASE10_PROOF__.state().history?.records ?? []).map(row => row.id)); });
     const readiness = await sample(page); evidence.readiness = readiness;
+    threads.observe(readiness, []);
     if (readiness.panels.length) { evidence.stop = 'pre_input_blocking_dialog'; return; }
     const fast = '.speed-seal[data-seal="fast"]';
     await press(page, fast, evidence);
@@ -144,6 +158,8 @@ async function capture(browser, item, out, url, evidence) {
       evidence.frames.push({ frame, tick: observation.tick, paused: observation.paused, ten: observation.ten });
       check(observation.tick >= priorTick && observation.tick <= LIMIT, 'Tick reversal/overshoot');
       accumulator.observe(observation.tick, observation.records, observation.presentations);
+      threads.observe(observation, accumulator.snapshot().receipts);
+      evidence.threadEvidence = threads.snapshot();
       evidence.newHistory.push(...observation.records);
       const signature = JSON.stringify([observation.paused, observation.panels, observation.chips]);
       if (signature !== lastSignature) {
@@ -151,7 +167,22 @@ async function capture(browser, item, out, url, evidence) {
         await fullSnapshot(page, out, `transition-${evidence.transitions.length}`); lastSignature = signature;
       }
       if (observation.ten && observation.tick > priorTick) evidence.progressAtTen = true;
-      if (accumulator.snapshot().automaticVisible) { evidence.stop = 'automatic_exact_receipt_visible'; break; }
+      if (accumulator.snapshot().automaticVisible || evidence.threadEvidence.automaticThreadVisible) {
+        evidence.stop = accumulator.snapshot().automaticVisible ? 'automatic_exact_receipt_visible' : 'automatic_trace_thread_indicator_visible'; break;
+      }
+      if (observation.paused && isInformationalSeasonLedger(observation.panels)) {
+        const label = `information-${evidence.informationalContinues.length + 1}`;
+        const beforeContinue = await fullSnapshot(page, out, `${label}-before`);
+        await press(page, '.season-ledger-card button.season-ledger-resume', evidence);
+        const afterContinue = await fullSnapshot(page, out, `${label}-after`);
+        check(beforeContinue.sha256 === afterContinue.sha256 && afterContinue.state.tick === observation.tick, 'Informational Continue changed presentation state');
+        check((await sample(page)).panels.length === 0, 'Another dialog after informational Continue');
+        for (let attempt = 0; attempt < 2 && !await page.locator(`${fast} [data-step="10"]`).getAttribute('data-on').then(value => value === 'true'); attempt += 1) await press(page, fast, evidence);
+        const resumed = await sample(page);
+        check(resumed.ten && !resumed.paused && resumed.tick === observation.tick, 'Informational resume failed or advanced time');
+        evidence.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season, beforeSha256: beforeContinue.sha256, afterSha256: afterContinue.sha256 });
+        priorTick = observation.tick; continue;
+      }
       if (observation.panels.length || observation.paused) { evidence.stop = 'intervention_required_unknown_or_substantive_blocker'; break; }
       check(observation.ten, '10x no longer selected');
       if (observation.tick > priorTick) evidence.progressAtTen = true;
@@ -160,8 +191,9 @@ async function capture(browser, item, out, url, evidence) {
     }
     evidence.stop ??= 'frame_or_wall_time_bound';
     if (await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed') !== 'true') await press(page, '.speed-seal[data-seal="pause"]', evidence);
-    if (accumulator.snapshot().automaticVisible) {
-      try { await manualTrace(page, out, evidence, accumulator.snapshot().automaticPresentations[0].recordId, accumulator.snapshot().lastTick); }
+    const automaticTarget = accumulator.snapshot().automaticPresentations[0]?.recordId ?? evidence.threadEvidence?.threadPresentations[0]?.receiptId;
+    if (automaticTarget !== undefined) {
+      try { await manualTrace(page, out, evidence, automaticTarget, accumulator.snapshot().lastTick); }
       catch (error) { evidence.manualDiscovery ??= { attempted: true, verified: false }; evidence.manualDiscovery.error = String(error); }
     }
     evidence.final = await fullSnapshot(page, out, 'final'); delete evidence.final.state;
@@ -190,17 +222,20 @@ async function main() {
   const playwright = playwrightProvenance(); mkdirSync(out);
   const evidence = { valid: false, sourceRevision: SOURCE, browserRevision: revision, manifestSha256: MANIFEST, input: item.checkpoint.record,
     playwright, changedUiFiles: changes, rawInputStateSha256: sha(JSON.stringify(item.checkpoint.state)),
-    expectedPresentationSha256: sha(JSON.stringify(withResidentWalkers(item.checkpoint.state))), manualDiscovery: { attempted: false, verified: false }, actions: [], frames: [], transitions: [], newHistory: [], errors: [], cleanupErrors: [],
+    expectedPresentationSha256: sha(JSON.stringify(withResidentWalkers(item.checkpoint.state))), manualDiscovery: { attempted: false, verified: false }, informationalContinues: [], actions: [], frames: [], transitions: [], newHistory: [], errors: [], cleanupErrors: [],
     limits: ['New no-bot continuation, not original replay parity.', 'Proof exposes presentation, not raw browser store.',
-      'Automatic identity accepts only existing lord-moment:<historyId> chips/cards; unsupported presentation identities remain unverified.',
-      'Manual navigation only follows accepted automatic identity evidence; unknown blockers stop without answering.', 'Synthetic DOM control input; no native pointer or real-time performance claim.'] };
+      'Direct receipt identity and canonical trace-thread indication are separate; a thread chip does not prove visible receipt text.',
+      'Manual navigation follows accepted automatic identity or exact canonical thread membership; only informational season reports may be dismissed, without state changes.',
+      'Informational acknowledgements interrupt the continuation; unknown or substantive blockers stop without answering.', 'Synthetic DOM control input; no native pointer or real-time performance claim.'] };
   let owned, browser;
   try {
     owned = await startOwnedServer(url, out); evidence.server = owned.provenance;
     browser = await (await loadChromium()).launch({ headless: true, channel: 'chrome' });
     await capture(browser, item, out, url, evidence);
     check(git('rev-parse', 'HEAD') === revision && git('status', '--porcelain') === '' && owned.server.exitCode === null, 'Source/server changed');
-    evidence.valid = evidence.tenSelected === true && evidence.progressAtTen === true && evidence.receiptEvidence.automaticVisible && evidence.manualDiscovery?.verified === true && evidence.errors.length === 0;
+    evidence.valid = evidence.tenSelected === true && evidence.progressAtTen === true
+      && (evidence.receiptEvidence.automaticVisible || evidence.threadEvidence?.automaticThreadVisible === true)
+      && evidence.manualDiscovery?.verified === true && evidence.errors.length === 0;
     if (!evidence.valid) process.exitCode = 1;
   } catch (error) { evidence.error = String(error); process.exitCode = 1; }
   finally {
