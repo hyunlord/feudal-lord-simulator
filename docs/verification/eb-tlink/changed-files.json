@@ -1,9 +1,8 @@
 {
   "schemaVersion": 1,
   "baseRevision": "64a16b5a6c1d91024415039db89bb88412528e15",
-  "implementationRevision": "eba2bbcb2e94d6076fe0e874512851b10fc8ebfe",
-  "productRevision": "fae9ce38be52858e29d2e7111c7437b23cf5fdac",
-  "scope": "Files changed from approved base through implementation revision; subsequent measurement evidence and handoff edits are excluded.",
+  "implementationRevision": "7a4c6ae7e208dc8ad4b5678651713e84a34377dd",
+  "scope": "Engine measurement revision is engineMeasurementRevision; later implementation changes are offline residual audit, slice-end reader and migrated fixtures. Subsequent evidence/document edits excluded.",
   "files": [
     "docs/decisions/README.md",
     "docs/requests/engine-B-tlink.md",
@@ -28,10 +27,26 @@
     "docs/verification/eb-tlink-browser/registry-067-chronicle.png",
     "docs/verification/eb-tlink-browser/result.json",
     "docs/verification/eb-tlink-browser/states.json",
+    "docs/verification/eb-tlink/changed-files.json",
     "docs/verification/eb-tlink/parity-method.md",
     "docs/verification/eb-tlink/specified10-baseline-red.txt",
     "fixtures/saves/v55/EB-TLINK-README.md",
+    "fixtures/saves/v55/README.md",
+    "fixtures/saves/v55/chapter-five-town.save.json",
+    "fixtures/saves/v55/chapter-four-town.save.json",
+    "fixtures/saves/v55/chapter-three-town.save.json",
+    "fixtures/saves/v55/chapter-two-town.save.json",
     "fixtures/saves/v55/eb-tlink-own-answer.save.json",
+    "fixtures/saves/v55/four-farms.save.json",
+    "fixtures/saves/v55/ledger-rollup.save.json",
+    "fixtures/saves/v55/manifest.json",
+    "fixtures/saves/v55/money-arrears.save.json",
+    "fixtures/saves/v55/new-game.save.json",
+    "fixtures/saves/v55/palisade-construction.save.json",
+    "fixtures/saves/v55/population-176.save.json",
+    "fixtures/saves/v55/timber-shortage.save.json",
+    "fixtures/saves/v55/zone-undo.save.json",
+    "fixtures/saves/v55/zoned-opening.save.json",
     "scripts/engineBOutcomeProduce.ts",
     "scripts/engineBTlinkBrowser.mjs",
     "scripts/engineBTlinkCompare.mjs",
@@ -58,6 +73,7 @@
     "src/ui/registryCardModel.ts",
     "src/ui/results/decisionThread.ts",
     "src/ui/screens/AppModals.tsx",
+    "src/ui/slice/sliceEndModel.ts",
     "tests/engineBTlinkCore.test.ts",
     "tests/engineBTlinkCoreLedger.test.ts",
     "tests/engineBTlinkCoreMemory.test.ts",
@@ -73,6 +89,8 @@
     "tests/engineBTlinkSpecifiedEstate.test.ts",
     "tests/engineBTlinkSpecifiedTown.test.ts",
     "tests/helpers/engineBTlinkFixtures.ts",
-    "tests/petitionVariantWords.test.ts"
-  ]
+    "tests/petitionVariantWords.test.ts",
+    "tests/sliceEnds.test.ts"
+  ],
+  "engineMeasurementRevision": "fae9ce38be52858e29d2e7111c7437b23cf5fdac"
 }
