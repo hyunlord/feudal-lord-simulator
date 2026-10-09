@@ -21,6 +21,7 @@ import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
 import { STEWARD_SURFACES } from "./lord/steward/surfaces";
 import { RESULTS_SURFACES } from "./results/surfaces";
+import { AUTO_PAUSE_SURFACES } from "./hud/surfaces";
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
@@ -577,6 +578,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...STEWARD_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
+  // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice (src/ui/hud/surfaces.ts).
+  ...AUTO_PAUSE_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
   // opens after the load — the end page does, after the story's delay).

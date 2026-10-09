@@ -1,0 +1,31 @@
+/* LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice — under the pause badge (80 px + its 44 px + a gap), between
+   the goal rail on the left (340 px) and the event chips on the right, so it covers neither. */
+/* contrast-audit selector=".auto-pause-notice" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.app-shell .auto-pause-notice {
+  position: absolute;
+  top: 132px;
+  left: 50%;
+  z-index: 4;
+  display: grid;
+  gap: 8px;
+  width: clamp(280px, calc(100% - 720px), 400px);
+  max-height: calc(100% - 300px);
+  overflow-y: auto;
+  color: var(--ink);
+  background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent;
+  border-image: var(--frame-light-art);
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+@media (max-width: 760px) { .app-shell .auto-pause-notice { top: 180px; } }
+.app-shell .auto-pause-title { margin: 0; font-family: var(--ui-font-serif); font-size: 15px; font-weight: 600; line-height: 1.35; }
+.app-shell .auto-pause-lines { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.app-shell .auto-pause-line { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; justify-content: space-between; }
+.app-shell .auto-pause-text { display: grid; flex: 1 1 180px; gap: 2px; min-width: 0; font-size: 13px; line-height: 1.4; }
+.app-shell .auto-pause-word { font-weight: 700; }
+.app-shell .auto-pause-sentence { overflow-wrap: anywhere; }
+.app-shell .auto-pause-more { margin: 0; font-size: 12px; color: var(--ink-soft); }
+.app-shell .auto-pause-link { min-height: 44px; font-size: 13px; }
+.app-shell .auto-pause-resume { justify-self: end; min-width: 96px; min-height: 44px; font-size: 14px; }
+@media (pointer: coarse) { .app-shell :is(.auto-pause-link, .auto-pause-resume) { min-height: 48px; } }
