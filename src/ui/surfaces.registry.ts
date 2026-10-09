@@ -592,10 +592,10 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ wait: ".slice-page[data-slice='end']", timeout: 90_000 }, { pause: 800 }],
     requires: ["h2", ".slice-last-year li", ".slice-year-card", ".slice-season-card", ".slice-why p", ".chronicle-maps", ".slice-decisions li", ".slice-record",
       ".slice-remembers li", ".slice-year-lines li", ".slice-year-big li", ".slice-year-small", ".slice-small-total", ".slice-chronicle", ".slice-continue"],
-    data: "the slice's end in 1320 (seed 3, twenty years): the last year 1319 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year with its big decisions from the thread (1300-1308 too) and what followed each, and its small matters counted in one line" },
+    data: "the slice's end in 1317 (seed 3, five years after the second estate of 1312; ~/fls-slice-end-states rebuilt on the TRACE-KEEP engine): the last year 1316 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year with its big decisions from the thread (1300-1308 too) and what followed each, and its small matters counted in one line" },
   { id: "modal.slice-end.record", extends: "modal.slice-end", root: ".chronicle-screen", frame: "flat", scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-decisions .slice-record" }, { wait: ".chronicle-screen", timeout: 30_000 }, { pause: 900 }], scrollParts: [".chronicle-list", ".chronicle-detail"],
-    requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision opened in the chronicle on its record (closing it comes back to the page)" },
+    requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision (1300's market dues, 67 rows followed) opened in the chronicle on its record (closing it comes back to the page)" },
   // The user's ruling (2026-10-09): the end page takes the live end's cards' place and links to them.
   { id: "modal.slice-end.year-card", extends: "modal.slice-end", root: ".story-modal.petition-card.results-card.year-review", frame: "layer", frameLayer: ".petition-frame",
     contentSlot: ".petition-body", scrollParts: [".petition-body"], siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
