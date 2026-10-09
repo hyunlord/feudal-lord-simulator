@@ -192,7 +192,7 @@ export async function stopOwnedServer(server) {
     try { signalGroup('SIGTERM'); } catch (error) { finish(error); }
   });
 }
-async function startOwnedServer(url, output) {
+export async function startOwnedServer(url, output) {
   const address = new URL(url);
   check(address.protocol === 'http:' && address.hostname === '127.0.0.1' && address.port && address.pathname === '/' && !address.search && !address.hash && !address.username && !address.password, 'Owned localhost URL with explicit port required');
   const port = Number(address.port), cwd = realpathSync(process.cwd());
