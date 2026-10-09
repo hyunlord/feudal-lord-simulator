@@ -22,7 +22,7 @@ const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 const READ = ["index.html", "src/main.tsx", "src/ui/Panel.tsx", "src/styles/panel.css", "public/assets/frame.png", "src/lazy/Lazy.tsx", "scripts/uiGeometryAudit.mjs"];
 type Inputs = { files?: string[]; dirs?: string[]; lists?: string[]; missing?: string[]; untraceable?: string[] };
 type Declared = { states?: Record<string, string>; chromium?: string; playwright?: string; lock?: string; system?: Record<string, string>; viteDeps?: { hash: string; browserHash: string } };
-type Measure = { inputs?: Inputs; declared?: Declared; tamper?: "hash" | "uncommitted" | "kind"; none?: boolean };
+type Measure = { inputs?: Inputs; declared?: Declared; tamper?: "hash" | "uncommitted" | "kind" | "other-run"; none?: boolean };
 
 /** Write a run's report (and its measured inputs) and, for a full audit, the shared summary. */
 function writeRun(write: (path: string, text: string) => void, { run, commit, rows, full, measure = {}, retries }: { run: string; commit: string; rows: Record<string, string>; full: boolean; measure?: Measure; retries?: Record<string, number> | undefined }) {
@@ -30,7 +30,7 @@ function writeRun(write: (path: string, text: string) => void, { run, commit, ro
   // Missing: a path tried with an extension (src/ui/Panel.ts beside Panel.tsx) and one an import named without one (src/ui/Widget).
   const inputs = { files: measure.inputs?.files ?? READ, dirs: measure.inputs?.dirs ?? [], lists: measure.inputs?.lists ?? [], missing: measure.inputs?.missing ?? ["src/ui/Panel.ts", "src/ui/Widget"], untraceable: measure.inputs?.untraceable ?? [] };
   const declared = { states: { ui5: "ui5-a", lord2: "lord2-a" }, chromium: "140.0", viteDeps: { hash: "deps-a", browserHash: "b-a" }, ...measure.declared };
-  const body = `${JSON.stringify({ schema: 1, kind: measure.tamper === "kind" ? "other" : "ui-geometry-inputs", run, commit, declared, inputs: packInputs(new Map([["audit", inputs]])) })}\n`;
+  const body = `${JSON.stringify({ schema: 1, kind: measure.tamper === "kind" ? "other" : "ui-geometry-inputs", run: measure.tamper === "other-run" ? "another-run" : run, commit, declared, inputs: packInputs(new Map([["audit", inputs]])) })}\n`;
   if (measure.tamper !== "uncommitted" && !measure.none) write(file, body);
   const link = measure.none ? undefined : { file, sha256: measure.tamper === "hash" ? "0".repeat(64) : createHash("sha256").update(body).digest("hex"), files: inputs.files.length, untraceable: inputs.untraceable, declared };
   const reportRows = Object.fromEntries(Object.entries(rows).map(([row, scene]) => [row, { scene, conditions: Object.fromEntries(CONDITIONS.map(c => [c, { status: "measured", keys: [] }])) }]));
@@ -130,6 +130,7 @@ for (const [what, measure, why] of [
   ["measured inputs not committed", { tamper: "uncommitted" }, /judged by the safe list: its measured inputs \(.*inputs\.json\) are not committed/],
   ["measured inputs that do not match their hash", { tamper: "hash" }, /judged by the safe list: its measured inputs \(.*\) do not match their hash/],
   ["measured inputs of another kind", { tamper: "kind" }, /judged by the safe list: its measured inputs \(.*\) are of another kind or schema/],
+  ["measured inputs of another run", { tamper: "other-run" }, /judged by the safe list: its measured inputs \(.*\) are of another run or commit \(another-run at/],
   ["an audit that did what the recorder cannot follow", { inputs: { untraceable: ["dev server: child process: esbuild"] } }, /judged by the safe list: not measurable: dev server: child process: esbuild/],
 ] as const) {
   test(`${what}: the safe list judges — a src file no page loads now needs an audit, and the output says why`, () => {
@@ -246,4 +247,42 @@ test("a named run that measured every row may carry another browser; a refused r
 test("no retry line when the range brings no new shared result", () => {
   const s = story({ retries: { "hud.panel": 2 } });
   try { s.write("docs/notes.md", "x\n"); s.commit("branch: a document"); assert.doesNotMatch(formatUiGeometryResult(s.check()), /retries in run/); } finally { s.done(); }
+});
+
+test("a file that became read after the shared result (a new import, accepted through a changed-rows run) is not judged by its old measured set", () => {
+  const s = story();
+  try {
+    // Push X: main.tsx imports a new module; its changed-rows run measured it (and everything else), with the trailer.
+    s.write("src/ui/New.tsx", "export const New = 'v1';\n"); s.write("src/main.tsx", 'import { New } from "./ui/New";\n'); s.commit("X: a new module");
+    writeRun(s.write, { run: "rows-x", commit: s.git("rev-parse", "HEAD"), rows: SHARED_ROWS, full: false, measure: { inputs: { files: [...READ, "src/ui/New.tsx"] } } });
+    s.git("add", "-A"); s.git("commit", "-qm", "X: its rows' geometry\n\nUI-Geometry-Run: rows-x");
+    const afterX = s.git("rev-parse", "HEAD");
+    const check = () => checkUiGeometry({ base: afterX, head: s.git("rev-parse", "HEAD"), cwd: s.dir, mode: "enforce", env: {} });
+    // Push Y: only the new module changes — the screen changes, though the shared result's measured set never read it.
+    s.write("src/ui/New.tsx", "export const New = 'a much longer text';\n"); s.commit("Y: the new module");
+    const result = check();
+    assert.equal(result.unchanged, false, "the range is not judged by a measured set that predates the new import");
+    refused(result, /^the shared result \(run full-1\): \d+ file\(s\) .* changed since it was measured at [0-9a-f]{8} .*src\/main\.tsx/);
+    // A document after X still needs no audit (the safe list); a check script now needs one until the next full audit.
+    s.git("reset", "-q", "--hard", afterX); s.write("docs/notes.md", "x\n"); s.commit("Y: a document");
+    assert.equal(check().ok, true, check().reasons.join("\n"));
+  } finally { s.done(); }
+});
+
+test("a relative CSS url() to a picture not there yet: the page records it at the root, Vite would find it beside the stylesheet — the added picture counts", () => {
+  const s = story({ measure: { inputs: { missing: ["img/bg.png"] } } });
+  try {
+    s.write("src/styles/img/bg.png", "png\n"); s.commit("branch: the picture");
+    refused(s.check(), /the audit read changed since it was measured at [0-9a-f]{8} \(measured inputs\): src\/styles\/img\/bg\.png/);
+  } finally { s.done(); }
+});
+
+test("a named run with no measured inputs cannot be compared with the shared result's declared inputs: every row it did not measure is stale", () => {
+  const s = story();
+  try {
+    s.write("src/ui/Panel.tsx", "export const Panel = 2;\n"); s.commit("branch: the panel");
+    writeRun(s.write, { run: "rows-1", commit: s.git("rev-parse", "HEAD"), rows: { "hud.panel": "ui5" }, full: false, measure: { none: true } });
+    s.git("add", "-A"); s.git("commit", "-qm", "branch: an unmeasured run\n\nUI-Geometry-Run: rows-1");
+    refused(s.check(), /run rows-1: no declared inputs to compare with the shared result's \(run full-1; it has no measured inputs\): every row it did not measure is stale — a full audit/);
+  } finally { s.done(); }
 });

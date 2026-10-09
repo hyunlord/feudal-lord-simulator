@@ -83,7 +83,8 @@ if (out && (testFile || role)) {
   // symbols too (util.promisify.custom: promisify(execFile) resolves to { stdout, stderr } as without the recorder).
   const keepAll = (traced, original) => { for (const key of [...Object.getOwnPropertyNames(original), ...Object.getOwnPropertySymbols(original)]) { if (!["length", "name", "prototype", "arguments", "caller"].includes(key)) { try { Object.defineProperty(traced, key, Object.getOwnPropertyDescriptor(original, key)); } catch { /* fixed */ } } } return traced; };
   // A child process: its program's name, allowed when FLS_TRACE_CHILDREN names it (recorded as a child either way).
-  const program = (name, args) => { const command = name === "fork" ? "node" : String(args[0] ?? ""); const first = name === "exec" || name === "execSync" ? command.trim().split(/\s+/)[0] : command; return first.split(/[\\/]/).pop() ?? first; };
+  // A shell command line that joins, pipes or substitutes runs more than its first word: it is no allowed program.
+  const program = (name, args) => { const command = name === "fork" ? "node" : String(args[0] ?? ""); if ((name === "exec" || name === "execSync") && /[;&|`$<>()\n]/.test(command)) return "a shell command line"; const first = name === "exec" || name === "execSync" ? command.trim().split(/\s+/)[0] : command; return first.split(/[\\/]/).pop() ?? first; };
   // Under a role, a node child that inherits the recorder (NODE_OPTIONS with this file, the same trace folder and role)
   // writes its own record under the role: it is followed (tsx runs the audit in such a child). A test's child writes none.
   const followed = (name, args, child) => {

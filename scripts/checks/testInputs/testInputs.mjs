@@ -130,7 +130,9 @@ export function inputOverlap(inputs, changes, { namesChanged = null, shadows = f
   const shadow = ({ status, path }) => shadows && status !== "M" && status !== "D" && (stems.has(stem(path)) || stems.has(`${stem(path)}/index`));
   const under = (path, dir) => dir === "" || path === dir || path.startsWith(`${dir}/`);
   const walked = path => inputs.dirs.some(dir => under(path, dir));
-  const looked = path => inputs.missing.some(miss => path === miss || path.startsWith(`${miss}/`) || path.startsWith(`${miss}.`));
+  // With `shadows`, a path looked for and missed also counts at the end of a longer one: the browser resolves a relative
+  // CSS url() against the page (img/bg.png missing at the root), Vite natively against the stylesheet (src/img/bg.png).
+  const looked = path => inputs.missing.some(miss => path === miss || path.startsWith(`${miss}/`) || path.startsWith(`${miss}.`) || (shadows && miss !== "" && path.endsWith(`/${miss}`)));
   const renamedEntries = new Map();   // folder -> whether its entries changed (asked once)
   const entriesChanged = dir => { if (!renamedEntries.has(dir)) renamedEntries.set(dir, namesChanged === null ? true : namesChanged(dir)); return renamedEntries.get(dir); };
   const listed = ({ status, path }) => status !== "M" && (inputs.lists ?? []).some(dir => under(path, dir) && path !== dir && entriesChanged(dir));

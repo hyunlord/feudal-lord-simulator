@@ -269,6 +269,7 @@ export function measuredInputs(result, head, cwd = process.cwd()) {
   if (body?.kind !== 'ui-geometry-inputs' || body.schema !== 1) return { status: 'broken', why: `its measured inputs (${link.file}) are of another kind or schema` };
   const inputs = unpackInputs(body.inputs, 'audit');
   if (inputs === null) return { status: 'broken', why: `its measured inputs (${link.file}) hold no audit record` };
+  if (body.run !== result.run || body.commit !== result.commit) return { status: 'broken', why: `its measured inputs (${link.file}) are of another run or commit (${body.run ?? '?'} at ${String(body.commit ?? '?').slice(0, 8)})` };
   if (inputs.untraceable.length > 0) return { status: 'untraceable', why: `not measurable: ${inputs.untraceable.slice(0, 3).join('; ')}`, declared: body.declared ?? null };
   return { status: 'ok', inputs, declared: body.declared ?? null };
 }
@@ -422,9 +423,16 @@ export function declaredReasons({ shared, sharedDeclared, sharedRows, runs, head
     if (report === null || (entry.ok === false)) continue;
     for (const row of Object.keys(report.rows ?? {})) covered.add(row);
     const measured = measuredInputs(report, head, cwd);
-    if (measured.declared) reports.push({ run: entry.run, declared: measured.declared });
+    // A named run without declared values (no measured inputs) cannot be compared: it counts as changed (fails closed).
+    reports.push({ run: entry.run, declared: measured.declared ?? null });
   }
-  for (const { run, declared } of reports) {
+  for (const { run, declared: given } of reports) {
+    if (given === null) {
+      const all = sharedRows.map(([row]) => row).filter(row => !covered.has(row));
+      if (all.length > 0) reasons.push(`run ${run}: no declared inputs to compare with the shared result's (run ${shared.run ?? '?'}; it has no measured inputs): every row it did not measure is stale — a full audit`);
+      continue;
+    }
+    const declared = given;
     const sets = Object.keys(declared.states ?? {}).filter(set => typeof sharedDeclared.states?.[set] === 'string' && sharedDeclared.states[set] !== declared.states[set]);
     if (sets.length > 0) {
       const stale = sharedRows.filter(([row, entry]) => sets.includes(entry?.scene) && !covered.has(row)).map(([row]) => row);
@@ -460,9 +468,15 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   const summary = readJson(head, UI_GEOMETRY_SUMMARY, cwd);
   // RR26 measured: the shared full audit's measured inputs judge what moves the screen; without them, the safe list.
   const sharedMeasured = summary !== null && summary.full === true ? measuredInputs(summary, head, cwd) : null;
-  // A range that changes nothing the audit reads (or, unmeasured, only safe files) cannot move the screen: only the
-  // lists' shrink rules apply.
-  const rangeChanges = base === null ? null : staleChanges(base, head, cwd, cache, sharedMeasured);
+  // A range that changes only safe files, or nothing the audit read, cannot move the screen: only the lists' shrink
+  // rules apply. The measured set describes what was read at the shared result's commit C; a file that became read
+  // after C (a new import, accepted through a changed-rows run) is not in it. So the measured judgement of the range
+  // holds only while the shared result is still fresh at <base> (nothing it read changed in C..base); else the safe list.
+  const sharedCommit = /^[0-9a-f]{40}$/.test(String(summary?.commit ?? '')) ? summary.commit : '';
+  const freshAtBase = base !== null && sharedMeasured?.status === 'ok' && sharedCommit !== '' && measuredAt(sharedCommit, base, cwd) === 'ok'
+    && staleChanges(sharedCommit, base, cwd, cache, sharedMeasured).unsafe.length === 0;
+  const rangeChanges = base === null ? null : staleChanges(base, head, cwd, cache, freshAtBase ? sharedMeasured
+    : sharedMeasured?.status === 'ok' ? { status: 'stale', why: `the shared result's measured inputs are of ${sharedCommit.slice(0, 8)}, and what it read changed before ${base.slice(0, 8)}` } : sharedMeasured);
   const unchanged = rangeChanges !== null && rangeChanges.unsafe.length === 0;
   const baselineFile = readJson(head, UI_GEOMETRY_BASELINE, cwd);
   const exceptions = readJson(head, UI_GEOMETRY_EXCEPTIONS, cwd)?.exceptions ?? [];

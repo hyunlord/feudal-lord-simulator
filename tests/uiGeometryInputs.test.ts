@@ -74,6 +74,7 @@ test("children: an allowed program is no untraceable read; another is; a node ch
     ["git, not allowed", 'import { execFileSync } from "node:child_process"; execFileSync("git", ["--version"]);', {}, /audit: child process: git/],
     ["a node child that inherits the recorder", 'import { execFileSync } from "node:child_process"; execFileSync(process.execPath, ["-e", "1"]);', {}, null],
     ["a node child started without it", 'import { execFileSync } from "node:child_process"; execFileSync(process.execPath, ["-e", "1"], { env: { PATH: process.env.PATH } });', {}, /audit: child process: node/],
+    ["a shell command line led by an allowed program", 'import { execSync } from "node:child_process"; execSync("git --version && cat src/a.ts");', { FLS_TRACE_CHILDREN: "git" }, /audit: child process: a shell command line/],
   ];
   for (const [what, code, extra, expected] of cases) {
     const s = setup();
@@ -96,6 +97,7 @@ test("the network: a loopback port FLS_TRACE_LOOPBACK names (the traced dev serv
       ["another loopback port", connect("9"), { FLS_TRACE_LOOPBACK: port }, /audit: network: 127\.0\.0\.1:9/],
       ["a fetch of the named port", `await fetch("http://127.0.0.1:${port}/").catch(() => {});`, { FLS_TRACE_LOOPBACK: port }, null],
       ["no port named", connect(port), {}, new RegExp(`audit: network: 127\\.0\\.0\\.1:${port}`)],
+      ["a fetch of a port not named", `await fetch("http://127.0.0.1:9/").catch(() => {});`, { FLS_TRACE_LOOPBACK: port }, /audit: network: 127\.0\.0\.1:9/],
     ] as const) {
       const s = setup();
       try {
@@ -110,9 +112,11 @@ test("the network: a loopback port FLS_TRACE_LOOPBACK names (the traced dev serv
 test("a file opened to write or append is no read; one opened to read is", () => {
   const t = setup();
   try {
-    bothRoles(t, `import fs from "node:fs"; fs.appendFileSync(${JSON.stringify(join(t.outside, "log.jsonl"))}, "x\\n"); fs.closeSync(fs.openSync("src/w.ts", "w")); fs.closeSync(fs.openSync("src/b.ts", "r")); await fs.promises.appendFile(${JSON.stringify(join(t.outside, "log2.jsonl"))}, "y\\n");`);
+    t.write("src/rp.ts", "rp\n"); t.write("src/ap.ts", "ap\n");
+    bothRoles(t, `import fs from "node:fs"; fs.closeSync(fs.openSync("src/rp.ts", "r+")); fs.closeSync(fs.openSync("src/ap.ts", "a+")); fs.appendFileSync(${JSON.stringify(join(t.outside, "log.jsonl"))}, "x\\n"); fs.closeSync(fs.openSync("src/w.ts", "w")); fs.closeSync(fs.openSync("src/b.ts", "r")); await fs.promises.appendFile(${JSON.stringify(join(t.outside, "log2.jsonl"))}, "y\\n");`);
     const { inputs } = auditInputs({ root: t.dir, traceDir: t.trace });
     assert.ok(inputs.files.includes("src/b.ts"), "opened to read");
+    assert.ok(inputs.files.includes("src/rp.ts") && inputs.files.includes("src/ap.ts"), "opened to read and write (r+, a+): read");
     assert.ok(!inputs.files.includes("src/w.ts"), "opened to write");
     assert.deepEqual(inputs.untraceable.filter(reason => /log/.test(reason)), [], "an appended log outside the repository is no read outside it");
   } finally { t.done(); }
@@ -197,5 +201,22 @@ test("declared values: only the state sets the audit read are hashed; the system
     assert.deepEqual(Object.keys(values.states), ["ui5"]);
     assert.deepEqual(Object.keys(values.system), [system]);
     assert.match(String(values.system[system]), /^[0-9a-f]{64}$/);
+  } finally { s.done(); }
+});
+
+test("declared values are computed from what the run used: the lock file, Vite's dependency cache, Playwright and Chromium", () => {
+  const s = setup();
+  try {
+    s.write("package-lock.json", '{"lockfileVersion":3}\n');
+    s.write("node_modules/.vite/deps/_metadata.json", '{"hash":"h-1","browserHash":"b-1"}');
+    const core = join(s.outside, "playwright-core"); mkdirSync(core); writeFileSync(join(core, "package.json"), '{"version":"1.62.1"}'); writeFileSync(join(core, "index.mjs"), "");
+    const before = process.env.FLS_PLAYWRIGHT_CORE; process.env.FLS_PLAYWRIGHT_CORE = join(core, "index.mjs");
+    try {
+      const values = declaredInputs({ root: s.dir, states: {}, declaredPaths: [], chromium: "151.0" });
+      assert.match(String(values.lock), /^[0-9a-f]{64}$/);
+      assert.deepEqual(values.viteDeps, { hash: "h-1", browserHash: "b-1" });
+      assert.equal(values.playwright, "1.62.1");
+      assert.equal(values.chromium, "151.0");
+    } finally { if (before === undefined) delete process.env.FLS_PLAYWRIGHT_CORE; else process.env.FLS_PLAYWRIGHT_CORE = before; }
   } finally { s.done(); }
 });
