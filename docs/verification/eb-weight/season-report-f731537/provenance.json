@@ -1,0 +1,111 @@
+{
+  "run": "engineB-season-exact-f731537",
+  "manifestSha256": "da05f34a858c7e26a7f513f59a9ea9949e8ce2d8aab7c3af70237ab32c1f9a59",
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "browserRevision": "f73153713c09d6ea9adf0e9676ca26e8c90dbccd",
+  "localDirectory": "/tmp/engineB-season-exact-f731537/.remote-runs/engineB-season-exact-f731537/eb-season-report",
+  "remoteDirectory": "/home/hyunlord/fls-runs/engineB-season-exact-f731537/.remote/eb-season-report",
+  "artifacts": {
+    "ck_evt_034-evidence.json": {
+      "bytes": 9158,
+      "sha256": "615543a4b871fd75331ef8f57b3eda76129949f4ff356b86bdfb62f62dcf2695"
+    },
+    "ck_evt_034-immediate-presentation.json": {
+      "bytes": 5037762,
+      "sha256": "f9586004dfcb350065119d3d975cd7b421e01bdeac9f7eeb75c66544b04ef5b3"
+    },
+    "ck_evt_034-row.png": {
+      "bytes": 50117,
+      "sha256": "f9409c4551b00b6bd5b9516528fb2b1d0ca4e01434d42a6a84bf50f3591db470"
+    },
+    "ck_evt_034-viewport.png": {
+      "bytes": 1496786,
+      "sha256": "f4e30331ae6402cbf87a3d9a6edbe932da58d856cdc1556afb6429a74e4cf410"
+    },
+    "ck_evt_058-evidence.json": {
+      "bytes": 8998,
+      "sha256": "300aac693fb217fa1a308e170f56f0741e139d1a75410f02849a0c0fdf011af1"
+    },
+    "ck_evt_058-immediate-presentation.json": {
+      "bytes": 4335613,
+      "sha256": "fbbc53bab183a9ffbedd30cb40c84d6b2af4a0325c4c34764a1bd88fd411e4e6"
+    },
+    "ck_evt_058-row.png": {
+      "bytes": 39347,
+      "sha256": "1e3c1f31e58814ee3a514b8848baa89a5900b7cc1d979acb7fcd5b827c5ae579"
+    },
+    "ck_evt_058-viewport.png": {
+      "bytes": 1396744,
+      "sha256": "7f773f2a92e667cc1bfa4bb20f3d78b45a127e9df45e468ee390f8650840aed5"
+    },
+    "ck_evt_144-evidence.json": {
+      "bytes": 8931,
+      "sha256": "275f6584dece40ccdfe530577886138541e4a685c854b274a6955fdba4f83d86"
+    },
+    "ck_evt_144-immediate-presentation.json": {
+      "bytes": 8018078,
+      "sha256": "59772fbbf8aa0d084f1ce7caecbd30da4f366e5cff39d0fafe2d536ef03960da"
+    },
+    "ck_evt_144-row.png": {
+      "bytes": 39616,
+      "sha256": "c98a1f5c35fd16bfa18fed4ca9b0ebcaace412978fc9b726c718c9f9a5256aa9"
+    },
+    "ck_evt_144-viewport.png": {
+      "bytes": 1506114,
+      "sha256": "70e26ca0af7b90bc2860ce8383103b8b459a0123947a3647179a3a3d4db51ec8"
+    },
+    "ck_evt_163-evidence.json": {
+      "bytes": 8957,
+      "sha256": "de787796a657ee687165cde70e96403831736b614b4ef1c9691a38e17b96669c"
+    },
+    "ck_evt_163-immediate-presentation.json": {
+      "bytes": 8340102,
+      "sha256": "ea95b748d763963b75eabeb15096cb03d8c5d91cf150b6b1c3fe298ca4133505"
+    },
+    "ck_evt_163-row.png": {
+      "bytes": 44660,
+      "sha256": "9c96693c36145632513230f503bcd872b12a367e87d82f212010a0b8440d93f5"
+    },
+    "ck_evt_163-viewport.png": {
+      "bytes": 1408630,
+      "sha256": "03115f81dd1c20734b1b236149ea0e9457b672cb3b369f3d5bcd1ac001fc45f1"
+    },
+    "manifest.json": {
+      "bytes": 45990,
+      "sha256": "da05f34a858c7e26a7f513f59a9ea9949e8ce2d8aab7c3af70237ab32c1f9a59"
+    },
+    "vite.log": {
+      "bytes": 218169,
+      "sha256": "8a0a71a16e1631df66832d03b055fc1d8eee1b987a01314475ddfdb02c6b5b51"
+    }
+  },
+  "terminal": {
+    "exitCode": 0,
+    "activeState": "inactive",
+    "subState": "dead",
+    "vitePid": 1344325,
+    "processAbsent": true,
+    "port": 4300,
+    "listenerAbsent": true,
+    "checkedAt": "2026-10-09T02:15:02.848079+00:00"
+  },
+  "independentAudit": {
+    "fourCasesRecomputed": true,
+    "projection": "withResidentWalkers",
+    "rawBrowserStoreObservable": false,
+    "simulationRerun": false
+  },
+  "visual": {
+    "inspectedPngs": 8,
+    "targetSummaryVisible": 4,
+    "entireExpandedRowVisible": false,
+    "limitations": [
+      "034 and 163 lower result is outside the captured scroll viewport",
+      "058 policy button partially clipped",
+      "Korean text wraps within narrow card; no whole-UI readability approval",
+      "058 report says lord although occurrence decidedBy is steward"
+    ],
+    "independentReview": "LIMITED PASS: all four target rows present; full viewport readability not established; no missing Korean glyphs observed"
+  },
+  "scope": "Four seed1 cases only; not all ten registry steward occurrences, all56 entries, or live 10x play"
+}
