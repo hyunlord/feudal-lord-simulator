@@ -9,3 +9,5 @@ The checkpoint test imports source modules normally and calls readdirSync only o
 Requested REMOTE disposition under RR22/RR24: independently inspect this test and decide its correct classification in scripts/checks/sourceScanTests.mjs. Candidate NOT_SOURCE_SCAN reason: “walks its generated temporary checkpoint directory; imports src”. This is a proposal, not a manually installed exception. Verify the existing deliberately missing source-scan case still fails and ordinary source changes still select all genuine source scans; record REMOTE review before publication. Engine B will rerun actual test:changed/check:merge after the approved change is integrated. No publication while this gate is red.
 
 2026-10-09: 본선8096b3585 통합 뒤 집중54시험은50통과·3건너뜀·1실패였다. 유일 실패는 같은 checkpoint 시험의 미분류이며 기존 요청은 해소되지 않았다. 관문 목록은 수정하지 않았다.
+
+2026-10-09 사용자 후속 지시: 위 미분류 시험을 포함하는 코드 묶음은 승인된 분류와 실제 재검증이 필요하다. 완료된 감사 문서만 별도로 test:changed/check:merge를 통과한 게시까지 막는 조건은 아니다. 문서 묶음d76e90e92는 두 관문을 통과해 본선 게시됐다.
