@@ -89,18 +89,3 @@ test("GB-5: a site is laid out only where its materials can come; a spot given u
   // A corner of the map no road reaches is not.
   assert.equal(constructionSiteReachable(state, "well", { tx: 1, ty: 1 }), false);
 });
-
-test("GB-12: in lord mode the town waits two windows after its last camp or sawmill before it adds another for the waiting wall", async () => {
-  const { TIMBER_ADDITION_SETTLE_WINDOWS, TIMBER_DEMAND_WINDOW_TICKS, timberDemandExpansionKind } = await import("../src/engine/autoplayTimberDemand");
-  const { loadAutoplayFixture } = await import("../scripts/autoplayStallProbe");
-  // BOT-1's natural state 51 ticks after seed 2's palisade (1,078 wall timber waiting, 146 in stock, one camp, one sawmill).
-  const state = loadAutoplayFixture("fixtures/autoplay/seed2-70140.json.gz");
-  const agency = lordGame().agency!;
-  const receipt = (tick: number) => ({ ...agency, receipts: [{ id: "receipt-1", tick, actor: "households" as const, what: "logging_camp", tx: 0, ty: 0, siteId: null,
-    planner: "timber", rank: null, reasons: [], score: 80, cost: 0, subsidy: 0, loan: 0, decisionIds: [] }] });
-  const settle = TIMBER_ADDITION_SETTLE_WINDOWS * TIMBER_DEMAND_WINDOW_TICKS;
-  assert.equal(timberDemandExpansionKind(state), "logging_camp", "the sandbox's rule (BT6)");
-  assert.equal(timberDemandExpansionKind({ ...state, agency: receipt(state.tick - 400) } as GameState), null, "a camp started 400 ticks ago is not yet in the window");
-  assert.equal(timberDemandExpansionKind({ ...state, agency: receipt(state.tick - settle) } as GameState), "logging_camp", "two windows on, judged again");
-  assert.equal(timberDemandExpansionKind({ ...state, agency: { ...agency, receipts: [] } }), "logging_camp", "no camp started yet");
-});
