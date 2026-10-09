@@ -13,7 +13,7 @@
 // the input hash scripts/checks/uiGeometry.mjs compares, the failure count).
 // Needs the dev server (?pseudo-long=1 is a dev-server transform): on the DGX, npm run remote:ui-geometry.
 //   PLAYWRIGHT_MODULE=... node_modules/.bin/tsx scripts/uiGeometryAudit.mjs <out> --url <dev server> --states5 <dir> --states6 <dir>
-//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-petitions <dir>] [--states-lord <dir>] [--states-moments <dir>] [--states-lord2 <dir>] [--states-deccard2 <dir>] [--states-slice <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
+//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-petitions <dir>] [--states-lord <dir>] [--states-moments <dir>] [--states-lord2 <dir>] [--states-deccard2 <dir>] [--states-slice <dir>] [--states-variants <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
 //     [--numbers normal,extreme] [--jobs 4] [--shots 40] [--summary <path>|none]
 // Exit 1 when any condition fails or cannot be opened.
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
@@ -37,10 +37,11 @@ if (out === undefined || out.startsWith('--')) { console.error('usage: uiGeometr
 const url = flag('url') ?? 'http://127.0.0.1:5173/';
 // The flag each state set's folder comes by (`lands`: scripts/landStates.ts's states, LAND-UI; `petitions` and `lord`: LM-R1;
 // `moments`: scripts/wave40MomentStates.ts's, EVENT-ART; `lord2`: scripts/lmr2States.ts's, LM-R2; `deccard2`: scripts/deccard2ResultsStates.ts's, DEC-CARD-2;
-// `slice`: scripts/sliceEndsStates.ts's, LM-R3 — the lord slice played to its end).
+// `slice`: scripts/sliceEndsStates.ts's, LM-R3 — the lord slice played to its end; `variants`: scripts/variantStates.ts's,
+// the ER-13 wording variants' cards).
 const STATE_FLAGS = { ui5: 'states5', ui6: 'states6', ui8: 'states8', ui9: 'states9', ui10: 'states10', 'ui10-extra': 'extra', lands: 'states-lands',
   petitions: 'states-petitions', lord: 'states-lord', moments: 'states-moments', lord2: 'states-lord2', deccard2: 'states-deccard2',
-  slice: 'states-slice' };
+  slice: 'states-slice', variants: 'states-variants' };
 const STATE_DIRS = Object.fromEntries(Object.entries(STATE_FLAGS).map(([set, name]) => [set, flag(name)]));
 const viewports = list('viewports', Object.keys(VIEWPORTS));
 const copies = list('copy', ['normal', 'long']);

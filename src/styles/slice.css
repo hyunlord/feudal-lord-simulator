@@ -23,7 +23,11 @@
 .slice-last-year { padding: 6px 0 8px; border-bottom: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .slice-last-group { display: grid; gap: 1px; }
 .slice-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.slice-year-lines { padding-left: 0; list-style: none; }
+.slice-year-lines { padding-left: 0; list-style: none; gap: 6px; }
+/* TRACE-KEEP: under a year's line its big decisions (what followed each) and its small matters counted. */
+.slice-year-lines > li, .slice-year-big > li { display: grid; gap: 2px; min-width: 0; }
+.slice-year-big { padding-left: 16px; }
+.slice-year-followed { padding-left: 14px; font-size: 12px; }
 .slice-question { font-weight: 700; padding-top: 4px; border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 @media (pointer: coarse) { .slice-page :is(.slice-record, .slice-year-card, .slice-season-card) { min-height: 48px; } }
 @media (max-width: 720px) { .slice-page .chronicle-columns { grid-template-columns: minmax(0, 1fr); } }

@@ -37,6 +37,8 @@ import "./styles/lordAdvice.css";
 import "./styles/lordSteward.css";
 // LM-R3: the welcome's logo and mode options, the house choice.
 import "./styles/welcomeHouse.css";
+// LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice.
+import "./styles/autoPause.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.
 import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";

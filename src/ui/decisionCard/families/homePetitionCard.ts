@@ -1,7 +1,7 @@
 import type { GameState } from "../../../engine/engine.types";
 import { calendarDays } from "../../gameTimeCopy.ko";
 import { HOME_PETITION_COPY } from "../../lordCardsCopy.ko";
-import { courtLine, homeStanding, openHomePetitions, parties } from "../../lordCardsModel";
+import { courtLine, homePetitionView, homeStanding, openHomePetitions, parties } from "../../lordCardsModel";
 import { perState } from "../../perState";
 import { HOME_PETITION_ART } from "../../wave44Art";
 import type { DecisionCardView, DecisionChoiceView } from "../decisionCardTypes";
@@ -19,7 +19,9 @@ const money = (pennies: number): string => pennies > 0 ? COPY.treasuryIn(pennies
 
 export const homePetitionCard = perState((state: GameState): DecisionCardView | null => {
   const petition = openHomePetitions(state)[0];
-  if (petition === undefined) return null;
+  // The petition's title and words as its chip shows them (ER-13: the canon's variant words when the engine finds them so).
+  const head = homePetitionView(state);
+  if (petition === undefined || head === null) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
   const named = parties(state, petition);
   const standing = homeStanding(state, petition);
@@ -32,8 +34,8 @@ export const homePetitionCard = perState((state: GameState): DecisionCardView | 
       remembers: outlookRemembers(state, outlook), refusal: null };
   };
   return {
-    family: "home_petition", subjectId: petition.id, title: copy.title, court: courtLine(state), from: COPY.from,
-    situation: copy.demand(petition.amount, named), stake: HOME_PETITION_STAKE[petition.kind](petition.amount, named),
+    family: "home_petition", subjectId: petition.id, title: head.title, court: courtLine(state), from: COPY.from,
+    situation: head.demand, stake: HOME_PETITION_STAKE[petition.kind](petition.amount, named),
     deadline: COPY.deadline(calendarDays(petition.deadline - state.tick)), illustration: HOME_PETITION_ART[petition.kind],
     choices: [choice(true), choice(false)],
   };

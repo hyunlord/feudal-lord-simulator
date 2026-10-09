@@ -1,0 +1,164 @@
+{
+ "pass": true,
+ "rows": {
+  "running-1280x800": {
+   "touch": false,
+   "loaded": 16971,
+   "now": 16980,
+   "notice": 0,
+   "bytes": 113481,
+   "pass": true
+  },
+  "stopped-1280x800": {
+   "touch": false,
+   "season": {
+    "bytes": 90497,
+    "at": 17001
+   },
+   "shown": true,
+   "card": {
+    "text": "영주가 볼 일이 생겨 시간을 멈췄습니다\n\n주요 인물의 죽음\n피어슨 상인 가문의 앨런 롤린슨이 세상을 떠나 존 피어슨이 무리를 이끈다\n계속",
+    "reasons": "major_death",
+    "primary": [
+     "계속"
+    ],
+    "links": [],
+    "smallestText": 13,
+    "smallestTarget": 44,
+    "titles": 0,
+    "box": {
+     "left": 440,
+     "top": 132,
+     "right": 840,
+     "bottom": 289,
+     "inside": true
+    }
+   },
+   "time": {
+    "before": 17001,
+    "after": 17001
+   },
+   "bytes": 88066,
+   "pass": true
+  },
+  "resumed-1280x800": {
+   "notice": 0,
+   "time": {
+    "before": 17014,
+    "after": 17025
+   },
+   "pass": true
+  },
+  "running-tablet": {
+   "touch": true,
+   "loaded": 16971,
+   "now": 16981,
+   "notice": 0,
+   "bytes": 110121,
+   "pass": true
+  },
+  "stopped-tablet": {
+   "touch": true,
+   "season": {
+    "bytes": 89127,
+    "at": 17001
+   },
+   "shown": true,
+   "card": {
+    "text": "영주가 볼 일이 생겨 시간을 멈췄습니다\n\n주요 인물의 죽음\n피어슨 상인 가문의 앨런 롤린슨이 세상을 떠나 존 피어슨이 무리를 이끈다\n계속",
+    "reasons": "major_death",
+    "primary": [
+     "계속"
+    ],
+    "links": [],
+    "smallestText": 13,
+    "smallestTarget": 48,
+    "titles": 0,
+    "box": {
+     "left": 390,
+     "top": 132,
+     "right": 790,
+     "bottom": 293,
+     "inside": true
+    }
+   },
+   "time": {
+    "before": 17001,
+    "after": 17001
+   },
+   "bytes": 85210,
+   "pass": true
+  },
+  "resumed-tablet": {
+   "notice": 0,
+   "time": {
+    "before": 17014,
+    "after": 17025
+   },
+   "pass": true
+  },
+  "suit-stopped": {
+   "season": {
+    "bytes": 0,
+    "at": 42000
+   },
+   "shown": true,
+   "card": {
+    "text": "영주가 볼 일이 생겨 시간을 멈췄습니다\n\n판결\n판결이 났다: 영주가 이겼다 — 방앗간 사용료의 권원이 영주에게 넘어왔다(점유는 따로)\n소송 보기\n계속",
+    "reasons": "judgment",
+    "primary": [
+     "계속"
+    ],
+    "links": [
+     "소송 보기"
+    ],
+    "smallestText": 13,
+    "smallestTarget": 44,
+    "titles": 0,
+    "box": {
+     "left": 440,
+     "top": 132,
+     "right": 840,
+     "bottom": 289,
+     "inside": true
+    }
+   },
+   "bytes": 88641,
+   "pass": true
+  },
+  "suit-link": {
+   "opened": true,
+   "notice": 0,
+   "focused": "영주 집무\n×\n인물\n준비 중\n가문\n준비 중\n지역\n영지\n평의회\n준비 중\n혼인\n약속·소송\n상시 방침\n무력\n규칙 없음\n약속 장부\n금고 3s\n지킬 약속\n\n상속 기대권 불침해\n\n진행 중\n\n영주가 받을 약속 · 지킬 쪽 드 손넬 가문\n\n기한 1311년 겨울 9일 · 내년 겨울 초쯤\n\n증인 올드민스터 주교, 브랙무어 백작\n\n어기면 신뢰 −15 · 관계 −20\n\n상대의 약속입니다\n\n지난 약속\n\n채무 인수\n4s 7d\n\n지킴\n\n영주가 지킬 약속 · 받는 쪽 드 손넬 가문\n\n지킴 · 1307년 겨울 19일\n\n빚 나눠 갚기 5/5번째 몫\n\n증인 올드민스터 주교, 브랙무어 백작\n\n채무 인수\n4s 7d\n\n지킴\n\n영주가 지킬 약속 · 받는 쪽 드 손넬 가문\n\n지킴 · 1307년 가을 3일\n\n빚 나눠 갚기 4/5번째 몫\n\n증인 올드민스",
+   "time": {
+    "before": 42000,
+    "after": 42000
+   },
+   "bytes": 101162,
+   "pass": true
+  },
+  "opt-out": {
+   "stopTick": 17001,
+   "now": 17027,
+   "notice": 0,
+   "pass": true
+  },
+  "settings": {
+   "opened": true,
+   "before": "true",
+   "bytes": 96269,
+   "after": "false",
+   "label": "영주가 답할 큰일에 저절로 멈추기: 끔",
+   "pass": true
+  },
+  "setting-off": {
+   "stopTick": 17001,
+   "now": 17024,
+   "notice": 0,
+   "pass": true
+  }
+ },
+ "bytes": 862574,
+ "largest": 113481,
+ "errors": []
+}
