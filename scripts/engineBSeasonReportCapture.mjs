@@ -76,7 +76,7 @@ export function readPrecloses(directory, expectedSha) {
   });
 }
 export async function assertAutoplayDisabled(page) {
-  const control = page.locator('.autoplay-control > button');
+  const control = page.locator('.autoplay-control > button').filter({ hasText: /^\s*자동 발전\s*$/ });
   check(await control.count() === 1, 'Autoplay control must be unique');
   check((await control.textContent())?.trim() === '자동 발전', 'Autoplay control label mismatch');
   check(await control.getAttribute('aria-pressed') === 'false', 'Autoplay unexpectedly enabled');
