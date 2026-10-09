@@ -4,7 +4,7 @@
 # here only when missing).
 #   scripts/remote/run.sh render-PAUSE-captures-<sha7> --light -- bash scripts/autoPauseCaptures.sh [out]
 set -u
-out=${1:-docs/verification/lmr3/pause}
+out=${1:-docs/verification/pause}
 states=${SLICE_STATES:-$HOME/fls-slice-end-states}
 . scripts/remote/devServers.sh
 if [ ! -f "$states/pause-due.json" ] || [ ! -f "$states/pause-due-suit.json" ]; then

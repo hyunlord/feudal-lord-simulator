@@ -9,8 +9,10 @@
 //    [계속], time stays stopped under the notice (the stop is the reason's, not the card's).
 //  - suit-stopped / suit-link: `pause-due-suit` run until a suit is judged: the notice's [소송 보기] opens the ledger
 //    screen on that suit;
-//  - opt-out: `pause-due` with `?auto-pause=off` (the harnesses' query) runs past the stop's tick without stopping.
-// results.json beside them.
+//  - opt-out: `pause-due` with `?auto-pause=off` (the harnesses' query) runs past the stop's tick without stopping;
+//  - settings-1280x800 / setting-off: the player's switch in the settings (on by default) turned off — the same run goes
+//    past the stop.
+// captures.json beside them (results.json in the folder is the per-year measure, scripts/autoPauseStates.ts).
 //   scripts/remote/run.sh render-PAUSE-captures-<sha7> --light -- bash scripts/autoPauseCaptures.sh
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/autoPauseCaptures.mjs)", { remote: "scripts/remote/run.sh render-PAUSE-captures-<sha7> --light -- bash scripts/autoPauseCaptures.sh", entry: import.meta.url });
@@ -115,23 +117,46 @@ for (const view of VIEWS) {
   await context.close();
 }
 
-{
-  const { context, page } = await open('pause-due', VIEWS[0], `${QUIET}&auto-pause=off`);
-  const stop = scene('pause-due').tick + 30;
-  await start(page);
-  const run = { stopTick: stop };
-  // The first season card (the season's turn before the stop) stops time as a modal does; its [계속] goes on.
+/** Run past the first stop's tick (closing the first season card that opens on the turn before it): no notice. */
+const runsPast = async (page, stop) => {
   for (let waited = 0; waited < 30_000 && ((await tick(page)) ?? 0) <= stop + 20; waited += 500) {
     if (await page.locator('.season-ledger-resume >> visible=true').count() > 0) await page.locator('.season-ledger-resume').first().click();
     await page.waitForTimeout(500);
   }
-  run.now = await tick(page); run.notice = await page.locator(NOTICE).count();
-  report('opt-out', run, run.now > stop + 20 && run.notice === 0);
+  return { stopTick: stop, now: await tick(page), notice: await page.locator(NOTICE).count() };
+};
+
+{
+  const { context, page } = await open('pause-due', VIEWS[0], `${QUIET}&auto-pause=off`);
+  await start(page);
+  const run = await runsPast(page, scene('pause-due').tick + 30);
+  report('opt-out', run, run.now > run.stopTick + 20 && run.notice === 0);
+  await context.close();
+}
+
+// The player's switch (the settings, on by default): turned off there, the game runs past the stop; the chips still come.
+{
+  const { context, page } = await open('pause-due', VIEWS[0]);
+  await page.keyboard.press('Escape');
+  const menu = { opened: await waitFor(page, '.pause-menu', 10_000) };
+  const toggle = page.locator('.pause-menu [data-preference="lordAutoPause"]');
+  menu.before = await toggle.getAttribute('aria-pressed');
+  await toggle.scrollIntoViewIfNeeded();
+  menu.bytes = await shoot(page, 'settings-1280x800');
+  await toggle.click();
+  menu.after = await toggle.getAttribute('aria-pressed');
+  menu.label = (await toggle.textContent())?.trim() ?? null;
+  report('settings', menu, menu.opened && menu.before === 'true' && menu.after === 'false');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(400);
+  await start(page);
+  const run = await runsPast(page, scene('pause-due').tick + 30);
+  report('setting-off', run, run.now > run.stopTick + 20 && run.notice === 0);
   await context.close();
 }
 
 await browser.close();
 const pass = Object.values(rows).every(row => row.pass) && errors.length === 0 && largest <= MAX_BYTES;
-writeFileSync(join(out, 'results.json'), JSON.stringify({ pass, rows, bytes, largest, errors }, null, 1));
+writeFileSync(join(out, 'captures.json'), JSON.stringify({ pass, rows, bytes, largest, errors }, null, 1));
 console.log(`${pass ? 'PASS' : 'FAIL'}: ${Object.keys(rows).length} rows, ${bytes} bytes (largest ${largest}), ${errors.length} page errors`);
 process.exit(pass ? 0 : 1);
