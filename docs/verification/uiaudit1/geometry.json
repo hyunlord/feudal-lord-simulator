@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-FRAMES-geometry2-d213642-d213642",
- "commit": "d213642fababc7099b6146d14245c9716cd12c73",
+ "run": "render-LEAD-season-geometry-db1b1b1-db1b1b1",
+ "commit": "db1b1b1eef51d9b786842c6a0e0bb4bdcfebb4b9",
  "dirty": false,
- "inputs": 2512,
- "inputHash": "a159e1fab713dac741acd23006e0170b575ff52915ea629f8c57c6d3876fb705",
- "measuredAt": "2026-10-09T00:40:02.367Z",
- "report": "docs/verification/uiaudit1/geometry/render-FRAMES-geometry2-d213642-d213642/geometry.json",
+ "inputs": 2519,
+ "inputHash": "1fc64862c2d344aa660d1052a7bf944389821195cbf71afdfd590874bc084e4a",
+ "measuredAt": "2026-10-09T03:46:26.644Z",
+ "report": "docs/verification/uiaudit1/geometry/render-LEAD-season-geometry-db1b1b1-db1b1b1/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,13 +24,13 @@
    "extreme"
   ]
  },
- "rows": 40,
- "conditions": 800,
- "measured": 800,
+ "rows": 3,
+ "conditions": 60,
+ "measured": 60,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 91,
+ "warnings": 0,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -53,202 +53,17 @@
   "fixed": 0
  },
  "bySurface": {
-  "modal.lord.home-petition": {
+  "modal.season-ledger": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.lord.home-petition.no-art": {
+  "modal.season-ledger.steward": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.lord.home-petition.guardian": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.request": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.registry": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.registry-hold": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.receipt": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.receipt-old": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.receipt-none": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.receipt-inspector": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.screen": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.draft": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.counter": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.treaty": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.row": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.reason": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.will-change": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.negotiation.contested": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.promises": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.book": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.track": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.empty": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.suit": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.neighbour": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.defence-enforcing": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.entry-threat": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.ledger.entry-forced": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.estates.home": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.estates.card": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.estates.delegated": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.estates.overloaded": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.estates.audit-pending": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.region": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.region.zoomed": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.will-change": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.contested": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.audit": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.offmap-petition": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.standing": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.standing.kind": {
+  "modal.slice-end.season-card": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
