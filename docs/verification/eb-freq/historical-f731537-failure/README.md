@@ -1,0 +1,18 @@
+# Historical56 replay — failed run, instrumentation defect diagnosed
+
+Actual DGX run `engineB-historical56-f731537-f731537` exited **1** after2099.2s command time (prepare19.8s, wait2.0s). Original source56ee1d9d8259f89e6122153cedd82e783a74f5c7; tool f73153713c09d6ea9adf0e9676ca26e8c90dbccd. Parent independently checked inactive/dead scope and absence of the old-source Z7JJbA engine process. This archive records that check; archival work did not repeat remote execution.
+
+The complete `registryDecisionRun` JSON is byte-identical to the pinned original: SHA256 `95d34c0a79b51856386c4cfc443ddb1a224a3d9408d928ca33b105b67ffb3d52`. This narrow projection success does **not** make the run valid.
+
+- Observer summary:63272 written rows,63272 callback invocations,0 write failures, **476 observer failures**. Actual NDJSON line count and gzip/raw equivalence were checked offline. No retained write errors does not negate producer/observer failures.
+- Failure stage: `projection-and-report-comparison`; terminating assertion is `476 !== 0`.
+- Saved report parity is **false**. Its error shows in-memory `expense:-0` versus archived JSON `expense:0`. Parent and independent review compared the complete saved summary with the original summary and found exact equality at the JSON boundary. The next wrapper compares the saved JSON artifact. This archive neither repairs nor overrides the failed run's result.
+- `validity.json` says failed/valid:false/applicabilityAllowed:false. No successful `replay-manifest.json` was produced.
+
+Nine small original JSON records are preserved byte-for-byte inside deterministic gzip archives: failure, observer, projection/report parity, instrumentation, tool hashes, reference validation, validity and priority prerequisites. `provenance.json` records hashes and sizes of **all30 actual files** in the retained run folder, including four copied tools, instrumented source, raw/gzip observations, replay output, distribution summary, partial counts, logs and runner metadata. The full retained output totals27305842bytes; large observations and projections are not copied here. Exact local and remote roots are in provenance.
+
+**No historical40 classification is authorized from this incomplete observer stream.** Partial observation-counts are hashed for diagnosis only. Original hidden causes, full-state equality, per-tick identity and original runtime remain unproved. Keep this failed run immutable; later fixes and any newly authorized execution require separate evidence.
+
+Root cause: the original131-entry metadata includes copy variant149 without `chancePermille`. The support-rejection tap passed `undefined`, which the strict scalar observer rejected before invoking the writer. The stream contains the other130 entry IDs, and the476 original candidate passes account for476 missing149 records. A pure regression reproduced476 failures with the original metadata and unchanged candidate function; recording absent chance as `null` yields476 records and0 failures. All131 original metadata records were additionally checked for scalar compatibility. The observer validator, gameplay conditions and source-stripping checks remain unchanged. Parent11 focused tests and lint pass; a new complete DGX run is still required.
+
+Verification: all nine compressed archives decompress to their recorded original hashes; raw replay matches original hash;63272 raw lines; streamed gzip/raw SHA equality; every retained file hashed. `SHA256SUMS` covers this archive's README, provenance and gzip files. No simulation, browser or source changes were made by archival work.

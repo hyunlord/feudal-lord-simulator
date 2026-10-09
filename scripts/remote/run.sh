@@ -187,7 +187,11 @@ COPY_DEST=""; [ -n "$PREV" ] && COPY_DEST="--copy-dest=../$PREV"
 
 echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy $CLASS line}) -> $HOST"
 rsync -a --checksum $COPY_DEST -e "ssh $SSH_OPTS" --files-from="$TMP/files.txt" "$REPO/" "$HOST:$RROOT/$RUN/"
-rsync -a -e "ssh $SSH_OPTS" "$TMP/meta.env" "$TMP/in-files.txt" $( [ -f "$TMP/head.bundle" ] && echo "$TMP/head.bundle" ) "$HOST:$RROOT/$RUN/.remote-in/"
+# RR25: this checkout's test:changed records (failures too: a newer failure on the same inputs blocks an older pass)
+# travel with the run, so a DGX test:changed reuses what they cover.
+node --input-type=module -e "import { testedRecords } from './scripts/checks/testedChanges.mjs'; console.log(JSON.stringify(testedRecords('.').slice(0, 60)))" \
+  > "$TMP/tested-records.json" 2> /dev/null || echo '[]' > "$TMP/tested-records.json"
+rsync -a -e "ssh $SSH_OPTS" "$TMP/meta.env" "$TMP/in-files.txt" "$TMP/tested-records.json" $( [ -f "$TMP/head.bundle" ] && echo "$TMP/head.bundle" ) "$HOST:$RROOT/$RUN/.remote-in/"
 SYNC_S=$(since "$T0")
 echo "SYNC_S=$SYNC_S" > "$TMP/sync.env"; rsync -a -e "ssh $SSH_OPTS" "$TMP/sync.env" "$HOST:$RROOT/$RUN/.remote-in/"
 

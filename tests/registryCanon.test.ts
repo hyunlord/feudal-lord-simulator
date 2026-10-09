@@ -50,7 +50,9 @@ test("ER-13, ER-19 v4.1-senders: 008 → the church, 024·035 → the town commu
   const senders = read("v4.1-senders/events-v4.1.json") as (Item & { readonly sender: { readonly faction: string } })[];
   // DEC-TRACE: the senders' release is applied last and to the sender alone — v4.2's words stay (024 and 035 are v4.2's).
   for (const event of senders) {
-    const words = v42Events().find(entry => entry.id === event.id) ?? event;
+    const words = v42Events().find(entry => entry.id === event.id)
+      ?? (read("v4.1/events-v4.1.json") as Item[]).find(entry => entry.id === event.id)
+      ?? (read("v4/events-v4.json") as Item[]).find(entry => entry.id === event.id);
     assert.deepEqual(canon.events.filter(entry => entry.id === event.id), [{ ...words, sender: event.sender }], `${event.id} once, its latest words with the senders' sender`);
   }
   assert.deepEqual(Object.fromEntries(["ck_evt_008", "ck_evt_024", "ck_evt_035"].map(id => [id, holdCost(v4Entry(id)!)])),

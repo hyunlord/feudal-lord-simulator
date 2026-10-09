@@ -1,47 +1,52 @@
-// The tests that read src/ by walking its folders, not by importing a file (decision RR24, 2026-10-09). The import graph
-// of test:changed (changedTests.mjs) never reaches them, so a change in src/ picks every one of them: an engine comment
+// The tests that read a folder by walking it, not by importing a file (decisions RR24, RR25). The import graph of
+// test:changed never reaches what they walk, so a change under any of a test's folders picks it: an engine comment
 // matching phase3Architecture's DOM pattern (5ce62b92, EB-LME9c-2) and drawBuildings.ts over renderSourceGuards' size
-// limit (f749fecc) both reached the trunk unpicked. Together they run in about 11 s on the Mac.
-// tests/sourceScanTests.test.ts keeps the list whole: a test that calls readdir and names a src path is either here or
-// in NOT_SOURCE_SCAN with the reason.
-export const SOURCE_SCAN_TESTS = [
-  "tests/buildingCatalog.test.ts",        // no per-building table outside the catalog
-  "tests/economyHarness.test.ts",         // src/engine
-  "tests/frameTokens.test.ts",            // src/styles, src/ui, src/render
-  "tests/hoverOnlyInfo.test.ts",          // src/ui, src/render
-  "tests/inventedNames.test.ts",
-  "tests/ledger.test.ts",
-  "tests/lmr2Ledger.test.ts",             // who imports src/ui/lord/ledger
-  "tests/lmr2LordPortraits.test.ts",      // src/ui/lord
-  "tests/lmr2LordScreen.test.ts",         // src/styles, src/ui/lord
-  "tests/lmr2Negotiation.test.ts",        // src/ui/lord/negotiation
-  "tests/palette.test.ts",
-  "tests/phase11PublishedUi.test.ts",
-  "tests/phase3Architecture.test.ts",     // module boundaries; no React/DOM/Canvas in the pure folders
-  "tests/phase4bArtifacts.test.ts",       // src/render
-  "tests/pixelFacts.test.ts",             // getImageData readers
-  "tests/qa025PauseHolds.test.ts",        // who sets the speed
-  "tests/renderSourceGuards.test.ts",     // render file sizes and patterns
-  "tests/resourceCatalog.test.ts",        // no per-good table outside the catalog
-  "tests/saveStorageRoute.test.ts",       // storage only through src/save
-  "tests/surfacesRegistry.test.ts",       // framed UI candidates (scripts/checks/surfaceRegistry.mjs)
-  "tests/touchTargets.test.ts",           // src/styles, src/ui
-  "tests/uiArtSkin.test.ts",              // src/ui, src/ui/tutorial
-  "tests/uiAuditMoney.test.ts",           // src/ui, src/render
-  "tests/wheatFarmRetired.test.ts",       // src/render
-];
-
-// Tests that call readdir and name a src path but walk no src folder: the reason each is left out.
-export const NOT_SOURCE_SCAN = {
-  "tests/buildingCatalogExtensibility.test.ts": "copies the tree and type-checks it; check:merge type-checks every push",
-  "tests/resourceCatalogExtensibility.test.ts": "copies the tree and type-checks it; check:merge type-checks every push",
-  "tests/engineFrameBudget.test.ts": "walks fixtures/ (town saves); imports src",
-  "tests/manorHouse.test.ts": "walks fixtures/saves; imports src",
-  "tests/saveFixtures.test.ts": "walks fixtures/saves; imports src",
-  "tests/sceneStateGuard.test.ts": "walks scripts/",
-  "tests/suitLedger.test.ts": "walks $SUIT_LEDGER_STATES (DGX states); imports src",
-  "tests/sourceScanTests.test.ts": "this list's own guard: walks tests/ (picked whenever a test file changes)",
+// limit (f749fecc) both reached the trunk unpicked, and RR25's second review reused saveFixtures.test over a changed save
+// fixture (it then failed). A folder ends in "/"; a single file is named as it is.
+// tests/sourceScanTests.test.ts keeps the map whole: a test that walks or copies folders (readdir, opendir, globSync,
+// cpSync) is here, and every folder named exists.
+const SRC = ["src/"];
+export const FOLDER_WALKS = {
+  "tests/buildingCatalog.test.ts": SRC,                                   // no per-building table outside the catalog
+  "tests/buildingCatalogExtensibility.test.ts": ["src/", "scripts/", "tests/", "tsconfig.json", "vite.config.ts"],   // copies them, runs tsc
+  "tests/economyHarness.test.ts": ["src/engine/"],
+  "tests/engineFrameBudget.test.ts": ["fixtures/saves/v32/"],
+  "tests/frameTokens.test.ts": ["src/styles/", "src/ui/", "src/render/", "src/App.tsx"],
+  "tests/hoverOnlyInfo.test.ts": ["src/ui/", "src/render/", "src/App.tsx"],
+  "tests/inventedNames.test.ts": SRC,
+  "tests/ledger.test.ts": SRC,
+  "tests/lmr2Ledger.test.ts": SRC,                                        // who imports src/ui/lord/ledger
+  "tests/lmr2LordPortraits.test.ts": ["src/ui/lord/"],
+  "tests/lmr2LordScreen.test.ts": ["src/styles/", "src/ui/lord/"],
+  "tests/lmr2Negotiation.test.ts": ["src/ui/lord/negotiation/"],
+  "tests/manorHouse.test.ts": ["fixtures/saves/v49/"],
+  "tests/palette.test.ts": SRC,
+  "tests/phase11PublishedUi.test.ts": SRC,
+  "tests/phase3Architecture.test.ts": SRC,                                // module boundaries; no React/DOM/Canvas in the pure folders
+  "tests/phase4bArtifacts.test.ts": ["docs/asset-evidence/legacy-candidates/candidates_v2/", "src/render/"],
+  "tests/pixelFacts.test.ts": SRC,                                        // getImageData readers
+  "tests/qa025PauseHolds.test.ts": SRC,                                   // who sets the speed
+  "tests/renderSourceGuards.test.ts": SRC,                                // render file sizes and patterns
+  "tests/resourceCatalog.test.ts": ["src/", "scripts/", "tests/"],        // no per-good table outside the catalog
+  "tests/resourceCatalogExtensibility.test.ts": ["src/", "scripts/", "tests/", "tsconfig.json", "vite.config.ts"],   // copies them, runs tsc
+  "tests/saveFixtures.test.ts": ["fixtures/saves/"],
+  "tests/saveStorageRoute.test.ts": SRC,                                  // storage only through src/save
+  "tests/sceneStateGuard.test.ts": ["scripts/"],
+  "tests/sourceScanTests.test.ts": ["tests/"],                            // this map's own guard: a new walker is a new test
+  "tests/suitLedger.test.ts": [],                                       // walks $SUIT_LEDGER_STATES (DGX states, outside the repository) only
+  "tests/surfacesRegistry.test.ts": SRC,                                  // framed UI candidates (scripts/checks/surfaceRegistry.mjs)
+  "tests/testedReuse.test.ts": [],                                      // its readdir calls are in the throwaway repositories it builds
+  "tests/touchTargets.test.ts": ["src/styles/", "src/ui/", "src/render/", "src/App.tsx"],
+  "tests/uiArtSkin.test.ts": ["src/ui/", "src/styles/", "public/"],       // and that the pictures its CSS names exist
+  "tests/uiAuditMoney.test.ts": ["src/ui/", "src/render/"],
+  "tests/wheatFarmRetired.test.ts": ["public/assets/", "src/render/", "fixtures/saves/"],
 };
 
-/** The guard that keeps the list whole, picked by any changed test file (a new walker is a new test). */
+/** The tests that walk src/ (RR24's list): every test with a folder under src/. */
+export const SOURCE_SCAN_TESTS = Object.keys(FOLDER_WALKS).filter(test => FOLDER_WALKS[test].some(folder => folder.startsWith("src/")));
+
+/** Whether `file` is under one of `folders` (a folder ends in "/"; a single file matches itself). */
+export const underFolders = (file, folders) => folders.some(folder => folder.endsWith("/") ? file.startsWith(folder) : file === folder);
+
+/** The guard that keeps the map whole, picked by any changed test file (a new walker is a new test). */
 export const SOURCE_SCAN_GUARD = "tests/sourceScanTests.test.ts";

@@ -1180,9 +1180,13 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
     if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);
     for (const [event, tick] of Object.entries(plan.events)) {
       if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
-      // PLAY-2 §4: the first child's record names the child and its father (the groom).
-      const child = event === "child_born" ? [...(after.persons?.people ?? [])].reverse().find(person => person.motherId === plan.brideId && person.fatherId === plan.groomId) : undefined;
-      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "", ...(child === undefined ? {} : { child: child.id, father: plan.groomId }) },
+      // PLAY-2 §4: the first child's record names the child and its father (the groom); the brother-in-law's, him and his.
+      const people = after.persons?.people ?? [];
+      const child = event === "child_born" ? [...people].reverse().find(person => person.motherId === plan.brideId && person.fatherId === plan.groomId)
+        : event === "brother_in_law_born" ? people.find(person => person.id === plan.brotherInLawId) : undefined;
+      const father = event === "child_born" ? plan.groomId : child?.fatherId;
+      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "", ...(child === undefined ? {} : { child: child.id }),
+        ...(child === undefined || father === undefined ? {} : { father }) },
         event === "father_died" ? 3 : 2);
     }
     if (was?.marriage?.stage !== plan.stage && (plan.stage === "inherited" || plan.stage === "lost" || plan.stage === "contested")) {

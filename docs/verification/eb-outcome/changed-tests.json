@@ -1,0 +1,25 @@
+{
+  "tree": "2e9811ecc868a1f9a156a6df93191aa2399019aa",
+  "head": "2024df1cc0821a2e0c6753e5f8f6bce1da66608f",
+  "base": "9ec8110a7",
+  "tests": 3699,
+  "pass": 3686,
+  "fail": 0,
+  "passed": true,
+  "where": "DGX engineB-outcome-portable-tests-2024df1",
+  "at": "2026-10-09T16:07:02.739Z",
+  "schemaVersion": 1,
+  "run": "engineB-outcome-portable-tests-2024df1",
+  "pickedFiles": 446,
+  "skip": 13,
+  "dirtyPaths": 0,
+  "exitCode": 0,
+  "timing": "SYNC_S=241.5\nPREPARE_S=17.0\nWAIT_S=0.0\nCOMMAND_S=1872.5\nNM_CACHE=hit\nPORT=4309\n",
+  "rawSha256": {
+    "test-changed.json": "9624c56a3e1cfd90283b384829693607dc8c004daafb83242e4b93470a52c48b",
+    "run.log": "2714ea1d32530d23670d7ac9239686136ced4c908ff5e98b638e143812478617",
+    "timing.env": "7db12e80d04e1bc19944e2e9e80d0a00bb3ab2b56a45e5ccf48be1dcacac3ad8",
+    "exit-code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "limits": "Changed-file regression; not a new 125-year outcome simulation or human UI acceptance."
+}

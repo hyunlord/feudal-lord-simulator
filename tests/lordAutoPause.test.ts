@@ -248,7 +248,7 @@ test("every reason's first stop in the bot's twenty years (AUTO_PAUSE_PAIRS)", {
     const item = items[0]!;
     if (item.kind === "matter") {
       assert.equal(line.word, AUTO_PAUSE_COPY.matters[item.matter.kind]);
-      const want = { will_change: "lord", contested: "modal", suit_defence: "lord", entry_threat: "lord" }[item.matter.kind];
+      const want = { will_change: "lord", contested: "modal", suit_defence: "lord", entry_threat: "lord", audit: "lord", estate_petition: "lord" }[item.matter.kind];
       assert.equal(line.link?.kind, want, name);
       if (item.matter.kind === "suit_defence" || item.matter.kind === "entry_threat") assert.deepEqual(line.link, { kind: "lord", screen: "ledger", focus: item.matter.id });
     } else {
