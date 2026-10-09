@@ -8,9 +8,13 @@
 //  - end-record: a decision's [연대기에서 이 결정 보기] — the chronicle on that record; closing it comes back to the page;
 //  - end-reopen: [계속 다스리기], then the pause menu's [영주의 스무 해 돌아보기] opens it again;
 //  - end-live: `slice-eve` (40 ticks before the end) run at 1×: the end page alone, by itself (the user's ruling: it takes
-//    the end season's card's and 1319's year card's place); end-live-year-card / end-live-season-card: its two links, and
-//    back; end-live-after: [계속 다스리기], then ten seconds of the town with nothing popping (1319's card marked seen).
+//    the end season's card's and the last year's card's place — the engine's last year, `sliceLastYear` of `slice-end`);
+//    end-live-year-card / end-live-season-card: its two links, and back; end-live-after: [계속 다스리기], then ten seconds
+//    of the town with nothing popping (the last year's card marked seen).
 //    `--only live` runs this part alone (results-live.json).
+//  - `--only years` (TRACE-KEEP, DTR-24) alone (results-years.json): end-years-<view> — `slice-end`'s page scrolled to its
+//    years, the slice's small matters in one line and 1300's big decisions with what followed; end-years-late-1280x800 —
+//    the years from 1309 on.
 // results.json beside them.
 //   scripts/remote/run.sh render-LMR3-slice-captures-<sha7> --light -- bash scripts/sliceEndsCaptures.sh
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
@@ -19,6 +23,7 @@ import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { startFromWelcome } from './welcomeStart.mjs';
+import { sliceLastYear } from '../src/ui/slice/sliceDue.ts';
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -62,7 +67,38 @@ const scrollTo = (page, selector) => page.evaluate(sel => { const target = docum
 
 // --only live: the live end alone (the user's ruling's capture).
 const liveOnly = flags.only === 'live';
-for (const view of liveOnly ? [] : VIEWS) {
+const yearsOnly = flags.only === 'years';
+// --only years: the end page's years, read from the engine's thread (TRACE-KEEP).
+for (const view of yearsOnly ? VIEWS : []) {
+  const state = scene('slice-end');
+  const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: view.width, height: view.height,
+    hasTouch: view.touch, query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
+  page.on('pageerror', error => errors.push(`years ${view.name}: ${String(error).slice(0, 300)}`));
+  const opened = await waitFor(page, END, 30_000);
+  const row = { view: view.name, opened };
+  if (opened) {
+    await page.waitForTimeout(1_200);
+    await scrollTo(page, `${END} .slice-years`);
+    await page.waitForTimeout(400);
+    row.card = await measure(page, END);
+    // 1300–1308's big decisions (each with what followed) and the years' small lines, as the page lists them.
+    row.early = await page.evaluate(sel => [...document.querySelectorAll(`${sel} .slice-year-lines > li`)].filter(li => Number(li.dataset.year) <= 1308)
+      .map(li => ({ year: Number(li.dataset.year), big: li.querySelectorAll('.slice-year-big > li').length, followed: li.querySelectorAll('.slice-year-followed li').length,
+        small: li.querySelector('.slice-year-small')?.textContent ?? null })), END);
+    row.total = await page.locator(`${END} .slice-small-total`).first().textContent().catch(() => null);
+    row.bytes = await shoot(page, `end-years-${view.name}`);
+    if (view.name === '1280x800') {
+      await scrollTo(page, `${END} .slice-year-lines > li[data-year="1309"]`);
+      await page.waitForTimeout(400);
+      row.lateBytes = await shoot(page, 'end-years-late-1280x800');
+    }
+  }
+  const early = row.early ?? [];
+  report(`end-years-${view.name}`, row, opened && early.reduce((sum, entry) => sum + entry.big, 0) > 0
+    && !(row.total ?? '').match(/(^|\D)0건/) && early.every(entry => entry.small === null || !/(^|\D)0건/.test(entry.small)));
+  await context.close();
+}
+for (const view of liveOnly || yearsOnly ? [] : VIEWS) {
   // The opening page: a new game from the welcome.
   {
     const context = await browser.newContext({ viewport: { width: view.width, height: view.height }, hasTouch: view.touch });
@@ -135,8 +171,10 @@ for (const view of liveOnly ? [] : VIEWS) {
 }
 
 // The end coming live: 40 ticks before it at 1×. The user's ruling (2026-10-09): the end page alone — the end season's card
-// and 1319's year card do not open by themselves; both are the page's links, and after [계속 다스리기] 1319's card does not pop.
-{
+// and the last year's card do not open by themselves; both are the page's links, and after [계속 다스리기] that card does not
+// pop. The last year is the engine's (the slice's end state), not a fixed one.
+if (!yearsOnly) {
+  const lastYear = String(sliceLastYear(scene('slice-end')));
   const state = scene('slice-eve');
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: true, initScript: INIT, width: 1280, height: 800,
     query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
@@ -156,7 +194,7 @@ for (const view of liveOnly ? [] : VIEWS) {
     row.lastYear = await page.locator(`${END} .slice-last-year`).getAttribute('data-year').catch(() => null);
     row.bytes = await shoot(page, 'end-live');
   }
-  report('end-live', row, row.end && row.order.length === 1 && row.lastYear === '1319');
+  report('end-live', row, row.end && row.order.length === 1 && row.lastYear === lastYear);
   if (row.end) {
     // The year card from its link, and back.
     await page.locator(`${END} .slice-year-card`).click();
@@ -168,7 +206,7 @@ for (const view of liveOnly ? [] : VIEWS) {
       await page.locator(`${YEAR_CARD} .results-card-continue`).click(); await page.waitForTimeout(500);
     }
     year.back = await visible(page, END);
-    report('end-live-year-card', year, year.opened && (year.title ?? '').startsWith('1319년') && year.back);
+    report('end-live-year-card', year, year.opened && (year.title ?? '').startsWith(`${lastYear}년`) && year.back);
     // The season card from its link, and back.
     await page.locator(`${END} .slice-season-card`).click();
     const season = { opened: await waitFor(page, SEASON_CARD, 10_000) };
@@ -180,7 +218,7 @@ for (const view of liveOnly ? [] : VIEWS) {
     }
     season.back = await visible(page, END);
     report('end-live-season-card', season, season.opened && season.back);
-    // [계속 다스리기]: the town runs on at 1×, and 1319's card (marked seen as the page opened) does not pop.
+    // [계속 다스리기]: the town runs on at 1×, and the last year's card (marked seen as the page opened) does not pop.
     await page.locator(`${END} .slice-continue`).click();
     const after = { popped: [] };
     for (let waited = 0; waited < 10_000; waited += 500) {
@@ -194,6 +232,6 @@ for (const view of liveOnly ? [] : VIEWS) {
 
 await browser.close();
 const pass = Object.values(rows).every(row => row.pass) && errors.length === 0 && largest <= MAX_BYTES;
-writeFileSync(join(out, liveOnly ? 'results-live.json' : 'results.json'), JSON.stringify({ pass, rows, bytes, largest, errors }, null, 1));
+writeFileSync(join(out, liveOnly ? 'results-live.json' : yearsOnly ? 'results-years.json' : 'results.json'), JSON.stringify({ pass, rows, bytes, largest, errors }, null, 1));
 console.log(`${pass ? 'PASS' : 'FAIL'}: ${Object.keys(rows).length} rows, ${bytes} bytes (largest ${largest}), ${errors.length} page errors`);
 process.exit(pass ? 0 : 1);
