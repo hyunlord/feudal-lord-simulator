@@ -2,7 +2,9 @@
  * LM-R3 phase 2a: the lord slice's opening page and its end ("이 도시가 내 결정의 결과인가") — both from the engine's reads
  * (`lordSliceStart`, `lordSliceOutcome`, `traceInRange`, `decisionRemembers`, `yearReview`). The lord slice seed 3 as the
  * lord bot plays it (its first tick files a suit and sets the market dues) to 1301's first tick; the end is that history
- * with the clock moved to the slice's end tick (a 20-year bot run is the DGX's: scripts/sliceEndsStates.ts).
+ * with the clock moved to the slice's end tick (a 20-year bot run is the DGX's: scripts/sliceEndsStates.ts). TRACE-KEEP
+ * (DTR-24): the same history with the twentieth year's turn of the thread (`advanceTrace` at the end tick drops the small
+ * decisions older than ten years and keeps the big), so 1300 reads as the twentieth year's end page reads it.
  */
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -11,7 +13,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { GENTRY_NAMES_KO } from "../src/content/gentryNames";
 import { LORD_SLICE_FACTIONS, LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
-import { traceInRange } from "../src/engine/decisionReads";
+import { traceInRange, yearReview } from "../src/engine/decisionReads";
+import { advanceTrace, isBigDecision, traceOf } from "../src/engine/decisionTrace";
 import type { GameState } from "../src/engine/engine.types";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { lordSliceEndTick, lordSliceOutcome, lordSliceStart } from "../src/engine/lordSlice";
@@ -21,6 +24,7 @@ import { advanceTick } from "../src/engine/tick";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
+import { yearOfTick } from "../src/ui/chronicle/chronicleScreenModel";
 import { decisionBy, recordIndex } from "../src/ui/chronicle/historyIndex";
 import { moneyFull } from "../src/ui/money.ko";
 import { onlyMinds, traceGroups } from "../src/ui/results/decisionThread";
@@ -120,22 +124,26 @@ test("slice end: the decisions ranked by what followed them in the engine's thre
 });
 
 test("slice end (the user's ruling): the page takes the live end's cards' place — the last year's card and the end season's card stay shut, are its links, and the year card is marked seen as it opens", () => {
-  assert.equal(sliceLastYear(ended), 1319);
-  assert.equal(sliceEndOwnsTurn(ended, 1319), true, "1319's card is the page's");
-  assert.equal(sliceEndOwnsTurn(ended, 1318), false);
+  // The engine's last year of the slice (the year of the tick before its end), not a fixed one.
+  const lastYear = yearOfTick(ended, lordSliceOutcome(ended)!.endTick - 1);
+  const start = lordSliceStart(ended);
+  assert.equal(lastYear, start.startYear + start.end.years - 1, "this history's slice runs its years (no second estate)");
+  assert.equal(sliceLastYear(ended), lastYear);
+  assert.equal(sliceEndOwnsTurn(ended, lastYear), true, "the last year's card is the page's");
+  assert.equal(sliceEndOwnsTurn(ended, lastYear - 1), false);
   assert.equal(sliceEndOwnsTurn(ended), true, "the season closing at the end: no card of its own");
   assert.equal(sliceEndOwnsTurn(town), false);
   assert.equal(sliceEndOwnsTurn(markStorySeen(ended, SLICE_END_ID, "opened")), false, "once opened, the turn's cards are the game's again");
-  // The marks the page writes: its own and 1319's card — after them neither the page nor that card is due (a live turn or a load).
-  assert.deepEqual(sliceEndMarkIds(ended, yearCardId), [SLICE_END_ID, yearCardId(1319)]);
+  // The marks the page writes: its own and the last year's card — after them neither the page nor that card is due (a live turn or a load).
+  assert.deepEqual(sliceEndMarkIds(ended, yearCardId), [SLICE_END_ID, yearCardId(lastYear)]);
   const marked = sliceEndMarkIds(ended, yearCardId).reduce((state, id) => markStorySeen(state, id, "opened"), ended);
   assert.equal(sliceEndDue(roundTrip(marked)), false);
-  assert.equal(yearCardDue({ year: 1319, tick: ended.tick - 1 }, marked), null, "the year card never pops later");
-  assert.equal(yearCardDue({ year: 1319, tick: ended.tick - 1 }, ended), 1319, "unmarked, the hook would have shown it");
+  assert.equal(yearCardDue({ year: lastYear, tick: ended.tick - 1 }, marked), null, "the year card never pops later");
+  assert.equal(yearCardDue({ year: lastYear, tick: ended.tick - 1 }, ended), lastYear, "unmarked, the hook would have shown it");
   // At the top: the last year as its card shows it, and the two links.
   const view = sliceEndView(ended)!;
-  const card = lordYearReview(ended, 1319);
-  assert.equal(view.last.heading, SLICE_COPY.end.lastYear(1319));
+  const card = lordYearReview(ended, lastYear);
+  assert.equal(view.last.heading, SLICE_COPY.end.lastYear(lastYear));
   assert.deepEqual(view.last.house, card.house);
   assert.deepEqual(view.last.changed.map(group => group.heading), card.threads.slice(0, 3).map(group => group.heading));
   assert.deepEqual(sliceYearCard(ended), card);
@@ -149,4 +157,49 @@ test("slice end (the user's ruling): the page takes the live end's cards' place 
   assert.match(markup, /slice-year-card/);
   assert.match(markup, /slice-season-card/);
   assert.equal(primaries(markup), 1, "the links are secondary");
+});
+
+test("slice end (TRACE-KEEP, DTR-24): in the twentieth year each year's big decisions come from the engine's thread with what followed; its small matters are one line by who handled them; zeros unsaid", () => {
+  const endTick = lordSliceEndTick(town);
+  const at20 = advanceTrace(town, { ...town, tick: endTick });
+  const kept = new Map(traceOf(at20).decisions.map(decision => [decision.id, decision] as const));
+  assert.ok(kept.size < traceOf(town).decisions.length, "the twentieth year's turn dropped 1300's small decisions from the thread");
+  assert.ok(Object.values(yearReview(at20, 1300).summarised).some(count => count > 0), "the engine counts them instead");
+  const view = sliceEndView(at20)!;
+  const index = recordIndex(at20);
+  const rows = traceInRange(at20, 0, endTick);
+  for (const entry of view.years) {
+    const review = yearReview(at20, entry.year);
+    const big = review.decisions.filter(decision => isBigDecision(kept.get(decision.decisionId)!));
+    assert.deepEqual(entry.big.map(decision => decision.id), big.map(decision => decision.decisionId), `${entry.year}: the thread's big decisions`);
+    for (const decision of entry.big) {
+      const followed = rows.filter(row => row.decisionId === decision.id).length;
+      assert.equal(decision.followed, followed === 0 ? SLICE_COPY.end.noFollowed : SLICE_COPY.end.followed(followed));
+      assert.equal(decision.lines.length > 0, followed > 0, "what followed, from the thread's rows");
+    }
+    // Nothing the engine does not give: the year's small are its traced small decisions and `summarised`, by who handled them.
+    const small = { ...review.summarised };
+    for (const decision of review.decisions) if (!big.includes(decision)) small[decisionBy(index.get(decision.decisionId)!)] += 1;
+    const counted = small.lord + small.steward + small.lapsed;
+    assert.equal(entry.small, counted === 0 ? null : SLICE_COPY.end.small(small.lord, small.steward, small.lapsed));
+    const records = (at20.history?.records ?? []).filter(record => record.kind === "decision" && yearOfTick(at20, record.tick) === entry.year).length;
+    assert.equal(big.length + counted, records, `${entry.year}: every decision record of the year, listed or counted`);
+  }
+  const first = view.years[0]!;
+  assert.equal(first.year, 1300);
+  assert.ok(first.big.length > 0 && first.big.every(decision => decision.lines.length > 0), "1300's big decision with what followed");
+  assert.notEqual(first.small, null);
+  assert.ok(view.years.some(entry => entry.small === null), "a year without small matters has no line");
+  assert.equal(SLICE_COPY.end.small(0, 3, 0), "작은 일 3건은 청지기가 처리");
+  assert.equal(SLICE_COPY.end.small(2, 0, 1), "작은 일 2건은 영주가 정함 · 답하지 않은 일 1건은 그대로 둠");
+  const total = view.years.reduce((sum, entry) => sum + entry.big.length, 0);
+  const markup = renderToStaticMarkup(createElement(SliceEndPage, { state: at20, view, onContinue: () => {}, onChronicle: () => {}, onRecord: () => {},
+    onYearCard: () => {}, onSeasonCard: () => {} }));
+  assert.equal(markup.match(/<ul class="slice-lines slice-year-big">/g)?.length, view.years.filter(entry => entry.big.length > 0).length);
+  assert.equal([...markup.matchAll(/slice-year-big">(.*?)<\/ul>/g)].reduce((sum, match) => sum + (match[1]!.match(/data-record=/g)?.length ?? 0), 0), total);
+  const smalls = [...markup.matchAll(/slice-year-small">([^<]*)</g)].map(match => match[1]!);
+  assert.equal(smalls.length, view.years.filter(entry => entry.small !== null).length);
+  assert.ok(smalls.every(line => !/(^|\D)0건/.test(line)), "no zero said");
+  assert.match(markup, /slice-small-total/);
+  assert.equal(primaries(markup), 1);
 });

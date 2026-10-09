@@ -1,0 +1,134 @@
+{
+ "found": {
+  "slice-eve": {
+   "seed": 3,
+   "tick": 67960,
+   "year": 1316,
+   "season": 3,
+   "endTick": 68000
+  },
+  "slice-end": {
+   "seed": 3,
+   "tick": 68000,
+   "year": 1317,
+   "season": 0,
+   "reason": "second_estate",
+   "endTick": 68000,
+   "summary": {
+    "year": 1317,
+    "population": 374,
+    "houses": 17,
+    "treasury": 18114,
+    "estatesHeld": [
+     "estate-home",
+     "estate-neighbour-3"
+    ],
+    "secondEstateYear": 1312,
+    "projects": 107,
+    "projectsByLord": 15,
+    "decisions": {
+     "decision.card": 57,
+     "decision.market_dues": 1,
+     "decision.steward": 55,
+     "decision.project_subsidy": 5,
+     "decision.petition_response": 1,
+     "decision.estate_policy": 2,
+     "decision.famine_response": 1
+    },
+    "promises": {
+     "kept": 10,
+     "broken": 0,
+     "open": 0
+    },
+    "marriage": "inherited"
+   }
+  }
+ },
+ "years": [
+  {
+   "year": 1300,
+   "ms": 1829,
+   "population": 56
+  },
+  {
+   "year": 1301,
+   "ms": 5207,
+   "population": 64
+  },
+  {
+   "year": 1302,
+   "ms": 10110,
+   "population": 111
+  },
+  {
+   "year": 1303,
+   "ms": 3148,
+   "population": 100
+  },
+  {
+   "year": 1304,
+   "ms": 6432,
+   "population": 157
+  },
+  {
+   "year": 1305,
+   "ms": 3883,
+   "population": 177
+  },
+  {
+   "year": 1306,
+   "ms": 3078,
+   "population": 202
+  },
+  {
+   "year": 1307,
+   "ms": 4521,
+   "population": 243
+  },
+  {
+   "year": 1308,
+   "ms": 4720,
+   "population": 298
+  },
+  {
+   "year": 1309,
+   "ms": 8572,
+   "population": 320
+  },
+  {
+   "year": 1310,
+   "ms": 13821,
+   "population": 323
+  },
+  {
+   "year": 1311,
+   "ms": 8859,
+   "population": 334
+  },
+  {
+   "year": 1312,
+   "ms": 17670,
+   "population": 341
+  },
+  {
+   "year": 1313,
+   "ms": 11284,
+   "population": 342
+  },
+  {
+   "year": 1314,
+   "ms": 9846,
+   "population": 358
+  },
+  {
+   "year": 1315,
+   "ms": 16466,
+   "population": 374
+  },
+  {
+   "year": 1316,
+   "ms": 10339,
+   "population": 374
+  }
+ ]
+}

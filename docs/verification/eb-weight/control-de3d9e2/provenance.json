@@ -1,0 +1,27 @@
+{
+  "status": "single_seed_pre_TRACE_KEEP_control_not_final_batch",
+  "source": {
+    "sourceRevision": "de3d9e224636c5e69bc18e2ea7ccb7d7bd97c69d",
+    "dirtyPaths": "",
+    "node": "v24.21.0"
+  },
+  "rawSha256": "ad340b87763c4a44975b536fd2786df5b343e6d128581e1bb42bef174a9c9a69",
+  "gzipSha256": "b64c4f698a9893f8a9e331ee0ef992da9a77b21b5c04c8f69ab0125575d47266",
+  "rawBytes": 2654233,
+  "gzipBytes": 112132,
+  "seed": 1,
+  "years": 125,
+  "endTick": 500000,
+  "observation": {
+    "observations": 502118,
+    "firstTick": 0,
+    "lastTick": 500000,
+    "maxGap": 1,
+    "reversals": 0,
+    "cadence": "initial_and_every_command_attempt_and_tick",
+    "retention": "runner_owned_id_maps_before_engine_retention"
+  },
+  "observerFailures": 0,
+  "run": "engineB-weight125-fixed-de3d9e2",
+  "stopReason": "After seed1, trunk TRACE-KEEP changed retained state and yearReview. Remaining old-source seeds stopped; latest-source run with actual-state checkpoints required."
+}

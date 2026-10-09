@@ -19,6 +19,14 @@ export const NEGOTIATION_SURFACES: readonly SurfaceRow[] = [
     requires: [".lord-neg-treaty", ".lord-neg-row[data-mark='changed']", ".lord-neg-reason", ".lord-neg-outlook-answer .decision-card-part", ".lord-neg-accept", ".lord-neg-refuse"],
     siblingsNoOverlap: [".lord-neg-answers .ui-btn", ".lord-neg-outlook-answer"],
     data: "the counterpart's counter waiting a season: the clauses with the one it added marked, its tier and reasons, the deadline and what silence means, each answer's now / later / who remembers (DEC-CARD), accept and refuse as equal choices" },
+  // The treaty's drawn parts (Wave 35: the treaty sheet, its clause rows) as framed roots of their own, on the counter's
+  // page (they are painted backgrounds: `flat`).
+  { id: "lord.negotiation.treaty", extends: "lord.negotiation.counter", root: ".lord-neg-treaty", frame: "flat", scene: lord2Scene("offer-countered"), open: [],
+    requires: [".lord-neg-row"], data: "the drawn treaty sheet on the counter's page: its clause rows within it" },
+  { id: "lord.negotiation.row", extends: "lord.negotiation.counter", root: ".lord-neg-row", frame: "flat", scene: lord2Scene("offer-countered"), open: [],
+    data: "one drawn clause row of the treaty: its words within the row" },
+  { id: "lord.negotiation.reason", extends: "lord.negotiation.counter", root: ".lord-neg-reason", frame: "flat", scene: lord2Scene("offer-countered"), open: [],
+    data: "one drawn reason of the counterpart's tier: its words within it" },
   { id: "lord.negotiation.will-change", ...HOST, scene: lord2Scene("will-change"), open: OPEN,
     requires: [".lord-neg-timeline", ".lord-neg-events li", ".lord-neg-due", ".lord-decide[data-decide='marriage_decision']", ".lord-neg-treaty"],
     data: "the marriage's progress with the will change due: the events as they fell, the deferred debt, the engine's deadline as a season and the decide button to the will's card (SUIT-THREAD: where the will's chip opens), the contract's clauses under a stamped seal" },

@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "captureRun": "render-EB-seed2-visible-14c4849",
+  "sourceRevision": "14c4849d4e0cc2efde48abdfa99edb4f44e94910",
+  "dirtyPaths": "",
+  "checkpointSourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "checkpointDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-2",
+  "checkpointManifestSha256": "766a84d5db46f5a91777f885f11c0a249b3e84aec3169635216201efb1b3553e",
+  "seed": 2,
+  "localArtifactDirectory": ".remote-runs/render-EB-seed2-visible-14c4849/eb-visible-seed2",
+  "remoteArtifactDirectory": "/home/hyunlord/fls-runs/render-EB-seed2-visible-14c4849/.remote/eb-visible-seed2",
+  "remoteExitCode": 0,
+  "timingSeconds": {
+    "sync": 23.7,
+    "prepare": 7.3,
+    "wait": 0.0,
+    "command": 120.4
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "simulationResumed": false,
+  "visualReviewStatus": "Parent reviewed four selected PNGs: REVISE; see visual-review.md",
+  "artifactCount": 42,
+  "artifactBytes": 50077964,
+  "pngCount": 40,
+  "files": [
+    {
+      "file": "ck_evt_046-answer-chip-history.png",
+      "bytes": 645284,
+      "sha256": "aed8a82d269c9d04336410830ed31038a176642f9dddbc0ace8ce7daced217e7"
+    },
+    {
+      "file": "ck_evt_046-answer-chip.png",
+      "bytes": 1476726,
+      "sha256": "c993b21200dccd78be065493a37910e68c4051947c36b1d211b80b2595523cea"
+    },
+    {
+      "file": "ck_evt_046-answer-decision.png",
+      "bytes": 601890,
+      "sha256": "0b43ec2d8e3f1b507a1d556e6e45e3b00dc7f58653bc9deef7e807c02cae87c9"
+    },
+    {
+      "file": "ck_evt_046-answer-initial.png",
+      "bytes": 1515477,
+      "sha256": "b9653cb1cf6aa53ea6b65464ec2fe8ff16a9f6da94273942663f68fc44319258"
+    },
+    {
+      "file": "ck_evt_046-answer-year.png",
+      "bytes": 1514407,
+      "sha256": "e994e9be16c8ed11ff5d2990b7d59c2ed51608e07b16d6b18526e1735d7a7672"
+    },
+    {
+      "file": "ck_evt_046-final-no-pair-chip-history.png",
+      "bytes": 625619,
+      "sha256": "a2af7067bb47d8d08b5a2027f656ad668db96983f51400c60f492d513c6093c4"
+    },
+    {
+      "file": "ck_evt_046-final-no-pair-chip.png",
+      "bytes": 1882864,
+      "sha256": "3ad8515c02fee0c8747ee5bd0e60644305348606412dad47b46bcf7bc1bcd1cc"
+    },
+    {
+      "file": "ck_evt_046-final-no-pair-decision.png",
+      "bytes": 598742,
+      "sha256": "bc9c60545dfc5c474a61dd6c8ff503f2671a609a470b7f411a585cc463e06877"
+    },
+    {
+      "file": "ck_evt_046-final-no-pair-initial.png",
+      "bytes": 1994982,
+      "sha256": "13ee03f5263b2a4f5ef0be6eb657c1b1469fd1a52edcd21d0632dfe8d1ce1c85"
+    },
+    {
+      "file": "ck_evt_046-final-no-pair-year.png",
+      "bytes": 1995382,
+      "sha256": "adf8c787f02878c23796113ccf0cff937095f2fa3397f5fc0edb02601208de29"
+    },
+    {
+      "file": "ck_evt_083-answer-decision.png",
+      "bytes": 616018,
+      "sha256": "6f877b9192cecf5ce343769e28b32534d177c8377ad519fb261abfb06f4aa402"
+    },
+    {
+      "file": "ck_evt_083-answer-initial.png",
+      "bytes": 1658032,
+      "sha256": "993e7705d0c63aa91a06cf39fec4b7541159beed114cfab3c97879bc79fd55e5"
+    },
+    {
+      "file": "ck_evt_083-answer-year.png",
+      "bytes": 1674119,
+      "sha256": "096a6319235e2e1b99c1575c91a37341894a34f9e73287378f33b3db41dc5fec"
+    },
+    {
+      "file": "ck_evt_083-consequence-because.png",
+      "bytes": 550873,
+      "sha256": "d9457246c3c58782016fb752abf44caa98a71e58b149c1b50858f56e65e1e6d1"
+    },
+    {
+      "file": "ck_evt_083-consequence-chip-history.png",
+      "bytes": 625673,
+      "sha256": "16f5bc78b5d8902f2441d7a2de87a7ec13a3f90b35b44de94c6abe9b44bd1264"
+    },
+    {
+      "file": "ck_evt_083-consequence-chip.png",
+      "bytes": 1886582,
+      "sha256": "00c569847bf1294f1062bc6621f64a6b7c2de29779cb581c8948b2a1370d8257"
+    },
+    {
+      "file": "ck_evt_083-consequence-decision.png",
+      "bytes": 593824,
+      "sha256": "30d0cd2450d732d6f1255ad07df43d06a2416821a04c4c30d394f9ceb786fe6e"
+    },
+    {
+      "file": "ck_evt_083-consequence-initial.png",
+      "bytes": 1966392,
+      "sha256": "3b5ff2b6a6dcd37f2728dcc4f1c3cc4dcc957226a0985172141f88b56ac05082"
+    },
+    {
+      "file": "ck_evt_083-consequence-year.png",
+      "bytes": 1968761,
+      "sha256": "e0ab63dba529c545da4bae6464a51a60d979842051735de7558d5a182f99cf72"
+    },
+    {
+      "file": "ck_evt_204-answer-chip-history.png",
+      "bytes": 622050,
+      "sha256": "25a19d178d9bdda50a0fdb8a072c01f423e8713084b48d9be1d4007020b97601"
+    },
+    {
+      "file": "ck_evt_204-answer-chip.png",
+      "bytes": 1508015,
+      "sha256": "ac2b0f5335d81bae922e2b6e43aae54f17723cf98e8dd45e78fa5af4b8fb3151"
+    },
+    {
+      "file": "ck_evt_204-answer-decision.png",
+      "bytes": 618230,
+      "sha256": "3f6e25c51b05850c57b517a29888e0cd254b66ac853693a99e3abe50a275022a"
+    },
+    {
+      "file": "ck_evt_204-answer-initial.png",
+      "bytes": 1634661,
+      "sha256": "5995394d99a0cfeca6baf9679093afe89274ac9df1287b3c5a312d67a8dc8417"
+    },
+    {
+      "file": "ck_evt_204-answer-year.png",
+      "bytes": 1634832,
+      "sha256": "7efb4d649256930eaa5e7bd2244927c4beb00b5ac1dedfd99f9ea024e39b6292"
+    },
+    {
+      "file": "ck_evt_204-consequence-because.png",
+      "bytes": 581943,
+      "sha256": "a652ada2282827111221cc38624d7b6eb42fffcfead9a521402672e0db992887"
+    },
+    {
+      "file": "ck_evt_204-consequence-chip-history.png",
+      "bytes": 618151,
+      "sha256": "91c0f21bcc099f98ea76c5d049392f4472a47ef82329ecc16ad7a86528ab9d8c"
+    },
+    {
+      "file": "ck_evt_204-consequence-chip.png",
+      "bytes": 1528874,
+      "sha256": "3e3f08f6888dd6d3673b2c9bb047b1e1db0c17f4abbc55542969735dc19c8119"
+    },
+    {
+      "file": "ck_evt_204-consequence-decision.png",
+      "bytes": 631223,
+      "sha256": "8befbd9ed953ba3f358ddbdc74e1ff583fed99d798a50fbdab4557f5fa69bff2"
+    },
+    {
+      "file": "ck_evt_204-consequence-initial.png",
+      "bytes": 1643024,
+      "sha256": "a28c6a4ca1a6fe79ff4ac6e26639af12e20d16b3e7b4afc47f563692359c927f"
+    },
+    {
+      "file": "ck_evt_204-consequence-year.png",
+      "bytes": 1642231,
+      "sha256": "d75fb495a77dc31c1b62b085952d6ee9e06e0ce83230b8ad88f5b84d29980119"
+    },
+    {
+      "file": "ck_evt_209-answer-chip-history.png",
+      "bytes": 629805,
+      "sha256": "b31c825b13a61d89695a39f4b8d2e2719b862afc4642b3a6105c31f3c643e18f"
+    },
+    {
+      "file": "ck_evt_209-answer-chip.png",
+      "bytes": 1472556,
+      "sha256": "9ac2a59a39614ee14ac89cca5aa3618eac047a16bbe449939446bc039b9899e2"
+    },
+    {
+      "file": "ck_evt_209-answer-decision.png",
+      "bytes": 621881,
+      "sha256": "36a6e2c009b194ad7bb9b00853478b66254e2165c85183fb66267421ffd0c1c8"
+    },
+    {
+      "file": "ck_evt_209-answer-initial.png",
+      "bytes": 1562010,
+      "sha256": "3eda1b51836387115cebb9f23714dd3b40e43cc283f7045af4daaf8411d8ba93"
+    },
+    {
+      "file": "ck_evt_209-answer-year.png",
+      "bytes": 1561759,
+      "sha256": "ef9f451fb11f58834b7696c2eef12afaadcde8ae7b3cb5230c900bca574d39d0"
+    },
+    {
+      "file": "ck_evt_209-final-no-pair-chip-history.png",
+      "bytes": 625619,
+      "sha256": "a2af7067bb47d8d08b5a2027f656ad668db96983f51400c60f492d513c6093c4"
+    },
+    {
+      "file": "ck_evt_209-final-no-pair-chip.png",
+      "bytes": 1882050,
+      "sha256": "d940ef2b00c0f27181122fc79e87b820ba3567d042237b8759369e58c4ee322e"
+    },
+    {
+      "file": "ck_evt_209-final-no-pair-decision.png",
+      "bytes": 605123,
+      "sha256": "f97d25c6f30b870f21e1e3494fa7fa063c394e122ce27ede9d404f0238b2fdf4"
+    },
+    {
+      "file": "ck_evt_209-final-no-pair-initial.png",
+      "bytes": 1994985,
+      "sha256": "616f7ece3d5ab03f72509d8b00c9577a2098b804b52d5a401619d85c5ae31b71"
+    },
+    {
+      "file": "ck_evt_209-final-no-pair-year.png",
+      "bytes": 1996010,
+      "sha256": "0f08a8ef9c70240a0eb199e66fe2631966e810e3f05a7d99540411c3afe2b5a8"
+    },
+    {
+      "file": "results.json",
+      "bytes": 53090,
+      "sha256": "2f08d387648f5110970017a9f7c2218f4d46053e15cc2ccc46cf6a1a3400cffb"
+    },
+    {
+      "file": "source-manifest.json",
+      "bytes": 18195,
+      "sha256": "766a84d5db46f5a91777f885f11c0a249b3e84aec3169635216201efb1b3553e"
+    }
+  ],
+  "archivedCopies": [
+    {
+      "file": "results.json.gz",
+      "bytes": 5763,
+      "sha256": "b397792697cae858e2991149e62b53b09bd6554c49e88cc836b17ccaba76715e",
+      "decodedFile": "results.json",
+      "decodedBytes": 53090,
+      "decodedSha256": "2f08d387648f5110970017a9f7c2218f4d46053e15cc2ccc46cf6a1a3400cffb"
+    },
+    {
+      "file": "source-manifest.json.gz",
+      "bytes": 4504,
+      "sha256": "b095147a967c86690ee8f2679240db2c6649ebf8e986689d1f0773d69a0d86a6",
+      "decodedFile": "source-manifest.json",
+      "decodedBytes": 18195,
+      "decodedSha256": "766a84d5db46f5a91777f885f11c0a249b3e84aec3169635216201efb1b3553e"
+    }
+  ]
+}

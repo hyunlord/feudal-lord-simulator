@@ -1,0 +1,166 @@
+{
+  "status": "failed_acceptance_test",
+  "valid": false,
+  "externalManifestSha256": "e75759db493d051747e44aa662fffb6f5711fbbf3f323b43afd21eb70b1a5572",
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "browserRevision": "c5d2b35341dfb9c1a496d3f7bda532bf7e2d4fb8",
+  "local_kept": "/tmp/engineB-live-speed-c5d2b35/.remote-runs/engineB-live-speed-c5d2b35",
+  "remote_kept": "/home/hyunlord/fls-runs/engineB-live-speed-c5d2b35/.remote",
+  "outputSubdirectory": "eb-live-speed",
+  "exitCode": 1,
+  "timingEnv": "SYNC_S=26.2\nPREPARE_S=13.0\nWAIT_S=4171.3\nCOMMAND_S=33.3\nNM_CACHE=hit\nPORT=4304\n",
+  "observed": {
+    "frames": 616,
+    "tenSelected": true,
+    "progressAtTen": true,
+    "receiptEvidence": {
+      "receipts": [
+        {
+          "id": "h-002663",
+          "tick": 40800,
+          "because": [
+            {
+              "decisionId": "h-002653",
+              "key": "payment_flow",
+              "part": true
+            }
+          ]
+        }
+      ],
+      "automaticPresentations": [],
+      "automaticVisible": false,
+      "lastTick": 41000
+    },
+    "manualDiscovery": {
+      "attempted": false,
+      "verified": false
+    },
+    "stop": "intervention_required_unknown_or_substantive_blocker",
+    "errors": [],
+    "cleanupErrors": []
+  },
+  "parentChecks": {
+    "evidenceSource": "Parent report, not repeated by archival executor",
+    "unitActiveState": "inactive",
+    "unitSubState": "dead",
+    "matchingRunCwdProcesses": 0,
+    "port4304Listening": false,
+    "visualReview": [
+      "before-input.png",
+      "transition-2.png",
+      "final.png"
+    ],
+    "visualFindings": "Season panel visible; target trace chip preexists at 40015 and is absent by 40690.",
+    "originalArtifactHashesVerified": 22,
+    "frameOrderAndTenProgressVerified": true
+  },
+  "independentIdentityReview": "Completed against pinned c5d2b35: first season-ledger informational modal only closes via onResume; payment_flow lacks lord-moment art; trace:<decisionId>:<season> is the supported notification identity. Initial target chip cannot prove later receipt. Target chip absent40690 through41000. No renderer-absence proof.",
+  "limits": [
+    "New no-bot continuation, not original replay parity.",
+    "Proof exposes presentation, not raw browser store.",
+    "Automatic identity accepts only existing lord-moment:<historyId> chips/cards; unsupported presentation identities remain unverified.",
+    "Manual navigation only follows accepted automatic identity evidence; unknown blockers stop without answering.",
+    "Synthetic DOM control input; no native pointer or real-time performance claim.",
+    "Failed acceptance does not prove renderer absence.",
+    "No successful visibility or full-goal claim."
+  ],
+  "artifacts": {
+    "changed-files.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "eb-live-speed/before-input.json": {
+      "bytes": 1714005,
+      "sha256": "fffdcf6fdfa55e84cd9cc0ffcfdb18d6b63a9a1f77a1e53499b175dc78d4e264"
+    },
+    "eb-live-speed/before-input.png": {
+      "bytes": 1980877,
+      "sha256": "f6c6090be16cd47e9757d27ce4fc998ca3c7416fa4dce3dc50823b0081129922"
+    },
+    "eb-live-speed/final.json": {
+      "bytes": 1737559,
+      "sha256": "e02395561f63484e597288a9869dc02c6dc66919c34aa989eb2480537b622c11"
+    },
+    "eb-live-speed/final.png": {
+      "bytes": 1604406,
+      "sha256": "be5cccfeb1a1e3c93ce55191d09f5c3e19cee7bb3965c18285b80457252ff9c9"
+    },
+    "eb-live-speed/initial.json": {
+      "bytes": 1714005,
+      "sha256": "fffdcf6fdfa55e84cd9cc0ffcfdb18d6b63a9a1f77a1e53499b175dc78d4e264"
+    },
+    "eb-live-speed/initial.png": {
+      "bytes": 971828,
+      "sha256": "3b4853145368fc0699af752206a5c94139a0083883356e6ed11c3737f38b1822"
+    },
+    "eb-live-speed/manifest.json": {
+      "bytes": 46053,
+      "sha256": "e75759db493d051747e44aa662fffb6f5711fbbf3f323b43afd21eb70b1a5572"
+    },
+    "eb-live-speed/transition-1.json": {
+      "bytes": 1715006,
+      "sha256": "c0a3ecfe24b2f31f78aaab90ef254e204c38a0ddcdf378fad95d90042b2c4a75"
+    },
+    "eb-live-speed/transition-1.png": {
+      "bytes": 2001892,
+      "sha256": "31d69134097483887720d072190a838024e527b0d8f823eb20c0a8d478034403"
+    },
+    "eb-live-speed/transition-2.json": {
+      "bytes": 1721428,
+      "sha256": "3dc902d117cb4d93c00a161c8a057ff3549391e7158d5b81dd8e8cc26d13ecf2"
+    },
+    "eb-live-speed/transition-2.png": {
+      "bytes": 2001756,
+      "sha256": "8d20830d687e1f6bb4e517ed05ed0b6352d6bc1c2db9b1d5eec67351aecd8ff3"
+    },
+    "eb-live-speed/transition-3.json": {
+      "bytes": 1737559,
+      "sha256": "e02395561f63484e597288a9869dc02c6dc66919c34aa989eb2480537b622c11"
+    },
+    "eb-live-speed/transition-3.png": {
+      "bytes": 1604406,
+      "sha256": "be5cccfeb1a1e3c93ce55191d09f5c3e19cee7bb3965c18285b80457252ff9c9"
+    },
+    "eb-live-speed/vite.log": {
+      "bytes": 218102,
+      "sha256": "fe86d9427fe91dc70795d32c333dfdb1d1756ec8adfd4d88971e469c9a9f2d52"
+    },
+    "exit-code": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "keep": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "pid": {
+      "bytes": 8,
+      "sha256": "e2d6b26f42a4eece00d048941e899591e8a6c024686932a1955e36d3238e8283"
+    },
+    "run.log": {
+      "bytes": 17946,
+      "sha256": "2e38f49c366fc60a09c855bf5f045ef6f9b181a28cbdf8efe6123e81fd6e6ef2"
+    },
+    "start-marker": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "timing.env": {
+      "bytes": 79,
+      "sha256": "4f59af1ac71f5b6a028e1dea82275b40eef70398f86488fac3d2c18387aef0a7"
+    },
+    "unit": {
+      "bytes": 46,
+      "sha256": "d6bfbe19801372cb56bf6477842e74eba484d6834942cdb7136e347e43bf0246"
+    }
+  },
+  "archives": [
+    {
+      "file": "manifest.json.gz",
+      "bytes": 6980,
+      "sha256": "07a348b7814836cdfa75745acf23305bab574aefe5304e925c9daa22a87476a2",
+      "originalBytes": 46053,
+      "originalSha256": "e75759db493d051747e44aa662fffb6f5711fbbf3f323b43afd21eb70b1a5572"
+    }
+  ]
+}

@@ -130,7 +130,15 @@ export function SliceEndPage({ state, view, onContinue, onChronicle, onRecord, o
       </section>
       <section className="slice-part slice-years">
         <h3>{copy.years20}</h3>
-        <ol className="slice-lines slice-year-lines">{view.years.map(entry => <li key={entry.year} data-year={entry.year}>{entry.line}</li>)}</ol>
+        {view.smallTotal === null ? null : <p className="slice-note slice-small-total">{view.smallTotal}</p>}
+        <ol className="slice-lines slice-year-lines">{view.years.map(entry => <li key={entry.year} data-year={entry.year}>
+          <span>{entry.line}</span>
+          {entry.big.length === 0 ? null : <ul className="slice-lines slice-year-big">{entry.big.map(decision => <li key={decision.id} data-record={decision.id}>
+            <span>{decision.line} <span className="slice-note">{decision.followed}</span></span>
+            {decision.lines.length === 0 ? null : <Lines lines={decision.lines} className="slice-year-followed" />}
+          </li>)}</ul>}
+          {entry.small === null ? null : <span className="slice-note slice-year-small">{entry.small}</span>}
+        </li>)}</ol>
       </section>
       <p className="slice-question">{copy.question}</p>
     </Page>

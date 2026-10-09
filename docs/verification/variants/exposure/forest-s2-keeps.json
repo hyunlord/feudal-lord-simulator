@@ -1,0 +1,74 @@
+{
+ "seed": 2,
+ "archetypeId": "core:forest_edge",
+ "lordKeepsHomeKinds": true,
+ "startYear": 1300,
+ "finalYear": 1311,
+ "tick": 47522,
+ "endedAt": 47522,
+ "shownItems": 14,
+ "shownHomePetitions": 6,
+ "shownRegistryOffers": 8,
+ "bySource": {
+  "pannage": {
+   "shown": 2,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "common_pasture": {
+   "shown": 2,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "road_bridge": {
+   "shown": 2,
+   "withVariant": 1,
+   "variantEveryTickShown": 1
+  },
+  "ck_evt_031": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "ck_evt_059": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "ck_evt_019": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  }
+ },
+ "byVariant": {
+  "ck_evt_041": 0,
+  "ck_evt_048": 0,
+  "ck_evt_056": 1,
+  "ck_evt_067": 0,
+  "ck_evt_078": 0
+ },
+ "saved": {
+  "ck_evt_056": {
+   "tick": 35000,
+   "year": 1308,
+   "season": 3,
+   "id": "estate-petition-26",
+   "source": "road_bridge",
+   "file": "ck_evt_056-forest_edge-s2-keeps.json"
+  }
+ },
+ "variantItems": [
+  {
+   "id": "estate-petition-26",
+   "surface": "home_petition",
+   "source": "road_bridge",
+   "firstTick": 35000,
+   "firstYear": 1308,
+   "ticks": 24,
+   "variantTicks": 24,
+   "variant": "ck_evt_056"
+  }
+ ],
+ "seconds": 128
+}

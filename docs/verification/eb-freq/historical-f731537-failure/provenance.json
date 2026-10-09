@@ -1,0 +1,228 @@
+{
+  "status": "failed_diagnosis_ongoing",
+  "valid": false,
+  "applicabilityAllowed": false,
+  "run": "engineB-historical56-f731537-f731537",
+  "sourceRevision": "56ee1d9d8259f89e6122153cedd82e783a74f5c7",
+  "toolRevision": "f73153713c09d6ea9adf0e9676ca26e8c90dbccd",
+  "localDirectory": "/tmp/engineB-season-exact-f731537/.remote-runs/engineB-historical56-f731537-f731537",
+  "remoteDirectory": "/home/hyunlord/fls-runs/engineB-historical56-f731537-f731537/.remote",
+  "timingEnv": "SYNC_S=24.6\nPREPARE_S=19.8\nWAIT_S=2.0\nCOMMAND_S=2099.2\nNM_CACHE=hit\nPORT=4304\n",
+  "exitCode": 1,
+  "observerSummary": {
+    "rows": 63272,
+    "callbackInvocations": 63272,
+    "writeFailures": 0,
+    "observerFailures": 476,
+    "firstErrors": []
+  },
+  "projectionMatched": true,
+  "replayRunSha256": "95d34c0a79b51856386c4cfc443ddb1a224a3d9408d928ca33b105b67ffb3d52",
+  "reportMatched": false,
+  "diagnosis": "Report error displays in-memory -0 versus archived JSON 0; observer failure cause under investigation. Neither is resolved by this archive.",
+  "replayManifestPresent": false,
+  "terminalCheck": {
+    "source": "Parent independently checked; not rerun by archival executor",
+    "activeState": "inactive",
+    "subState": "dead",
+    "oldSourceProcessAbsent": "Z7JJbA"
+  },
+  "archives": [
+    {
+      "file": "failure.json.gz",
+      "bytes": 328,
+      "sha256": "d5b7655746b2ea12c4c479da8c85a33ac56625b75d4ab69553b3bc1de5515791",
+      "originalBytes": 517,
+      "originalSha256": "e3caf6c110795e22139c0277f79cd84f82e016b6ca88894dcbe0402d643d6389"
+    },
+    {
+      "file": "observer-summary.json.gz",
+      "bytes": 108,
+      "sha256": "82a8de4205784fa4bd31e465e50b02dfad607e978d36af9e9617439c0548a96c",
+      "originalBytes": 122,
+      "originalSha256": "096dc5cd539cabc9e6a4a435fb3d098dc9062753cd8abb23d9bc21cf5e4a1558"
+    },
+    {
+      "file": "projection-parity.json.gz",
+      "bytes": 392,
+      "sha256": "184ad4e1c6e74a0bc7e30259a278fdcf26491fe978663096e1df67ac86324a32",
+      "originalBytes": 708,
+      "originalSha256": "86f99f96d8a3eb4e757011df725d24ba4d5586611f06bf8fbd3b986703339d00"
+    },
+    {
+      "file": "report-parity.json.gz",
+      "bytes": 557,
+      "sha256": "e7f4ba0db04b0e2e6d570be3131fee00a511932c5e5b6e3a013afb2fb77676e5",
+      "originalBytes": 7802,
+      "originalSha256": "be3f4951ae1119161cd28f798d82e56a823f49d9fef4043275eb7cc38cf7069c"
+    },
+    {
+      "file": "instrumentation-manifest.json.gz",
+      "bytes": 392,
+      "sha256": "a10eab742e1e2c012009a70b7845f4b81bcf4e73333ee8d20b1612ef6800a13c",
+      "originalBytes": 651,
+      "originalSha256": "57fb83eafd27d5c7138a1ad47c6d72da74bcfe75c331c322fc50e76f2f4bc7b5"
+    },
+    {
+      "file": "tool-hashes.json.gz",
+      "bytes": 326,
+      "sha256": "5a59f694ba5e26108b48918454aebb1039cee6c2c3f0304c4b028844e2c5806f",
+      "originalBytes": 517,
+      "originalSha256": "b12a711254dceb4410f5ffa7b9a765e51546a8ea13860c67070510d78b3fcd4a"
+    },
+    {
+      "file": "reference-validation.json.gz",
+      "bytes": 764,
+      "sha256": "4e94eff5a0d694b76ecdf7557ef7c8b7189b362c019933ed82d195e26da408d7",
+      "originalBytes": 2982,
+      "originalSha256": "070ad56a4cd46d5ff5e3d22f1e4b513e5aa12761d5b57fef467a1e2e41a1162e"
+    },
+    {
+      "file": "validity.json.gz",
+      "bytes": 88,
+      "sha256": "f9f1231b7feb80ae3da9cc00c33aa1a2907473b3bf1245dc9381e35e91e387de",
+      "originalBytes": 76,
+      "originalSha256": "fe9b599cff9d46a6d5f62682808a56d0fadf3ede088b0b6cedd098d7bc21f373"
+    },
+    {
+      "file": "priority-prerequisites.json.gz",
+      "bytes": 634,
+      "sha256": "b692ec07f11cb1a56382ecf89ed163c6f7768781da59803bf9ddebf698da4d20",
+      "originalBytes": 1657,
+      "originalSha256": "01ad84bd37f5aa1f43ba077f770eaff4e7f7a3b99a27642e3e6004512f484f72"
+    }
+  ],
+  "artifacts": {
+    "changed-files.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "eb-historical-56ee1d9/candidate-observation.ndjson": {
+      "bytes": 22910309,
+      "sha256": "563e4209b58c758f936ce9f1163a7638e5f0c70bb5b76970c9e377c741b5f121"
+    },
+    "eb-historical-56ee1d9/candidate-observation.ndjson.gz": {
+      "bytes": 988468,
+      "sha256": "e4fff62c6e74e5d3479c11fec550c1cd9a65ef8ff2bf4383e5681530f0b3d121"
+    },
+    "eb-historical-56ee1d9/failure.json": {
+      "bytes": 517,
+      "sha256": "e3caf6c110795e22139c0277f79cd84f82e016b6ca88894dcbe0402d643d6389"
+    },
+    "eb-historical-56ee1d9/historical-typecheck.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "eb-historical-56ee1d9/instrumentation-manifest.json": {
+      "bytes": 651,
+      "sha256": "57fb83eafd27d5c7138a1ad47c6d72da74bcfe75c331c322fc50e76f2f4bc7b5"
+    },
+    "eb-historical-56ee1d9/observation-counts.json": {
+      "bytes": 18975,
+      "sha256": "278678690e2a095ce236416618b1feb5b9e99e7b9e074555c4352e6544ab4f6d"
+    },
+    "eb-historical-56ee1d9/observer-source.ts.txt": {
+      "bytes": 1248,
+      "sha256": "b83ef40a50232a167cc998b7f86e2cf755f0ba1affe97d6a7663bbe6221ee6d5"
+    },
+    "eb-historical-56ee1d9/observer-summary.json": {
+      "bytes": 122,
+      "sha256": "096dc5cd539cabc9e6a4a435fb3d098dc9062753cd8abb23d9bc21cf5e4a1558"
+    },
+    "eb-historical-56ee1d9/priority-prerequisites.json": {
+      "bytes": 1657,
+      "sha256": "01ad84bd37f5aa1f43ba077f770eaff4e7f7a3b99a27642e3e6004512f484f72"
+    },
+    "eb-historical-56ee1d9/projection-parity.json": {
+      "bytes": 708,
+      "sha256": "86f99f96d8a3eb4e757011df725d24ba4d5586611f06bf8fbd3b986703339d00"
+    },
+    "eb-historical-56ee1d9/reference-validation.json": {
+      "bytes": 2982,
+      "sha256": "070ad56a4cd46d5ff5e3d22f1e4b513e5aa12761d5b57fef467a1e2e41a1162e"
+    },
+    "eb-historical-56ee1d9/registry.ts.instrumented.txt": {
+      "bytes": 44456,
+      "sha256": "4d5fc314d64455e169616c4a3421fe42ec5a35b57345259b4b1bba4609a85aba"
+    },
+    "eb-historical-56ee1d9/registryV4.ts.instrumented.txt": {
+      "bytes": 36762,
+      "sha256": "9cf033c637eb9441f689e7c20824eebbc2d0c20d1df5f381c31a5129139bc83a"
+    },
+    "eb-historical-56ee1d9/replay-distribution-summary.json": {
+      "bytes": 1776330,
+      "sha256": "89c96831dd62bc20b72ae6ea226f4c488b78015810204221ee69d1fe7282beac"
+    },
+    "eb-historical-56ee1d9/replay-run.json": {
+      "bytes": 1467139,
+      "sha256": "95d34c0a79b51856386c4cfc443ddb1a224a3d9408d928ca33b105b67ffb3d52"
+    },
+    "eb-historical-56ee1d9/report-parity.json": {
+      "bytes": 7802,
+      "sha256": "be3f4951ae1119161cd28f798d82e56a823f49d9fef4043275eb7cc38cf7069c"
+    },
+    "eb-historical-56ee1d9/tool-hashes.json": {
+      "bytes": 517,
+      "sha256": "b12a711254dceb4410f5ffa7b9a765e51546a8ea13860c67070510d78b3fcd4a"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalInstrumentation.mjs": {
+      "bytes": 12352,
+      "sha256": "d97647ded4071a029e81416362603b747931c216e74a8e8d62517430b97224ff"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalObservations.mjs": {
+      "bytes": 5550,
+      "sha256": "04e510098dade2c830f06d4fc46d9a9e0e4f595b601f0e90aa84996dbd2ce7f4"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalProjection.mjs": {
+      "bytes": 3460,
+      "sha256": "3f0cd9e0ae47ec698f7d518821656557ff29cfe2fccab0fedb0fbc528dd7b1ef"
+    },
+    "eb-historical-56ee1d9/tools/engineBHistoricalReference.mjs": {
+      "bytes": 5060,
+      "sha256": "7a307e38a979b33ee293dfe9337825e6328c06047aad7bd5567f76ba2c5ff74e"
+    },
+    "eb-historical-56ee1d9/validity.json": {
+      "bytes": 76,
+      "sha256": "fe9b599cff9d46a6d5f62682808a56d0fadf3ede088b0b6cedd098d7bc21f373"
+    },
+    "exit-code": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "keep": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "pid": {
+      "bytes": 8,
+      "sha256": "d306a4a1663413dd1c3903e7e4b22d9f387bddae873d561ef78d08c8b05031a6"
+    },
+    "run.log": {
+      "bytes": 20557,
+      "sha256": "a3378e5ed1ebb5ba171e01c333302952190ea5e9193057c27cc3d7ebab702e7a"
+    },
+    "start-marker": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "timing.env": {
+      "bytes": 78,
+      "sha256": "d47b85307f0c9c151f7d7e05966c213c7d0451705108d1d81d560bd8e456347c"
+    },
+    "unit": {
+      "bytes": 56,
+      "sha256": "6e1753a822ef2231396cb846b207139f5e9c24427a26e4e0b6af33b4240697f4"
+    }
+  },
+  "checks": {
+    "allActualFilesHashed": true,
+    "ndjsonLines": 63272,
+    "gzipDecompressedMatchesRaw": true,
+    "replayRawHashEqualsOriginal": true
+  },
+  "limits": [
+    "Failed run is never retrovalidated.",
+    "No historical40 classification from incomplete observer records.",
+    "Full-state/per-tick/original-runtime identity not established."
+  ]
+}

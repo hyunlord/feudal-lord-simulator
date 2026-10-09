@@ -12,6 +12,7 @@ import type { EmblemSpec } from "./heraldry/EmblemImage";
 import { lordHouseArms } from "./persons/personModels";
 import { ageOf, manorLord, personById, personDisplayName } from "../engine/persons";
 import { stateCalendar } from "../engine/scenarioState";
+import { estatePetitionVariantFor } from "../engine/registryVariants";
 import { lordEstatePetitions, stewardshipOf } from "../engine/stewardship";
 import type { EstatePetition, HomePetitionKind } from "../engine/stewardship.types";
 import { lordMode, lordRequests } from "../engine/townAgency";
@@ -97,9 +98,12 @@ export const homePetitionView = perState((state: GameState): HomePetitionView | 
   const petition = openHomePetitions(state)[0];
   if (petition === undefined) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
+  // ER-13 (engine B): the canon's words for this very petition (041 · 048 · 056) when the engine finds them so — words only;
+  // the petition, its answers, costs, deadline and picture stay its own (the card reads its title and words here).
+  const variant = estatePetitionVariantFor(state, petition.id);
   return {
-    petitionId: petition.id, kind: petition.kind, art: HOME_PETITION_ART[petition.kind], title: copy.title,
-    demand: copy.demand(petition.amount, parties(state, petition)), court: courtLine(state),
+    petitionId: petition.id, kind: petition.kind, art: HOME_PETITION_ART[petition.kind], title: variant?.title ?? copy.title,
+    demand: variant?.body ?? copy.demand(petition.amount, parties(state, petition)), court: courtLine(state),
     waits: LORD_CARDS_COPY.waits(calendarDays(petition.deadline - state.tick)),
     standing: homeStanding(state, petition),
     // LM-R3: the roundel's label reads the house in Korean (the chosen house's name is the engine's Latin one).

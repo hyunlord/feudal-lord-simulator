@@ -109,7 +109,8 @@ const CARD = '.event-card[data-story="decision_trace"]';
 // 5. The year's card over 1300's turn (live), then [계속]: not again.
 {
   const state = scene('year-eve');
-  const { context, page } = await open(state, { run: true });
+  // LM-R3 pauseReasons: time runs on to the year's turn (the lord-mode auto-pause would stop it for a deadline or an event).
+  const { context, page } = await open(state, { run: true, query: '&story-delay=1500&auto-pause=off' });
   page.on('pageerror', error => errors.push(`year: ${String(error).slice(0, 300)}`));
   await page.keyboard.press('Digit0');
   const selector = '.results-card.year-review';

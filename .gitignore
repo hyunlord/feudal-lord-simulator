@@ -28,3 +28,5 @@ coverage/
 tools/vision-check/.venv/
 tools/vision-check/**/__pycache__/
 tools/vision-check/.pytest_cache/
+# Throwaway repositories of the gate tests (tests/helpers/tempRepo.ts)
+/.tmp/

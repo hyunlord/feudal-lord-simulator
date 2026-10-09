@@ -13,7 +13,7 @@
 // the input hash scripts/checks/uiGeometry.mjs compares, the failure count).
 // Needs the dev server (?pseudo-long=1 is a dev-server transform): on the DGX, npm run remote:ui-geometry.
 //   PLAYWRIGHT_MODULE=... node_modules/.bin/tsx scripts/uiGeometryAudit.mjs <out> --url <dev server> --states5 <dir> --states6 <dir>
-//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-petitions <dir>] [--states-lord <dir>] [--states-moments <dir>] [--states-lord2 <dir>] [--states-deccard2 <dir>] [--states-slice <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
+//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-petitions <dir>] [--states-lord <dir>] [--states-moments <dir>] [--states-lord2 <dir>] [--states-deccard2 <dir>] [--states-slice <dir>] [--states-variants <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
 //     [--numbers normal,extreme] [--jobs 4] [--shots 40] [--summary <path>|none]
 // Exit 1 when any condition fails or cannot be opened.
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
@@ -22,7 +22,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
+import { compareBaseline, defaultSummaryPath, geometryInputHash, geometryInputs, uiInputsDirty, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
 import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded, surfaceFontsLoaded } from './uiGeometryMeasure.ts';
@@ -37,10 +37,11 @@ if (out === undefined || out.startsWith('--')) { console.error('usage: uiGeometr
 const url = flag('url') ?? 'http://127.0.0.1:5173/';
 // The flag each state set's folder comes by (`lands`: scripts/landStates.ts's states, LAND-UI; `petitions` and `lord`: LM-R1;
 // `moments`: scripts/wave40MomentStates.ts's, EVENT-ART; `lord2`: scripts/lmr2States.ts's, LM-R2; `deccard2`: scripts/deccard2ResultsStates.ts's, DEC-CARD-2;
-// `slice`: scripts/sliceEndsStates.ts's, LM-R3 — the lord slice played to its end).
+// `slice`: scripts/sliceEndsStates.ts's, LM-R3 — the lord slice played to its end; `variants`: scripts/variantStates.ts's,
+// the ER-13 wording variants' cards).
 const STATE_FLAGS = { ui5: 'states5', ui6: 'states6', ui8: 'states8', ui9: 'states9', ui10: 'states10', 'ui10-extra': 'extra', lands: 'states-lands',
   petitions: 'states-petitions', lord: 'states-lord', moments: 'states-moments', lord2: 'states-lord2', deccard2: 'states-deccard2',
-  slice: 'states-slice' };
+  slice: 'states-slice', variants: 'states-variants' };
 const STATE_DIRS = Object.fromEntries(Object.entries(STATE_FLAGS).map(([set, name]) => [set, flag(name)]));
 const viewports = list('viewports', Object.keys(VIEWPORTS));
 const copies = list('copy', ['normal', 'long']);
@@ -48,8 +49,12 @@ const numberModes = list('numbers', ['normal', 'extreme']);
 const jobs = Number(flag('jobs') ?? 4);
 const shotLimit = Number(flag('shots') ?? 40);
 const SHOT_BYTES = 2 * 1024 * 1024;
-const summaryPath = flag('summary') ?? UI_GEOMETRY_SUMMARY;
 const only = flag('only')?.split(',').filter(Boolean) ?? null;
+// RR26: a run narrowed by --viewports, --copy or --numbers did not measure every condition of its rows.
+const axesNarrowed = ['viewports', 'copy', 'numbers'].some(name => flag(name) !== undefined);
+// Only a full audit (every row, every condition) writes the shared result; a changed-rows run is read from its own report.
+const fullAudit = only === null && !axesNarrowed;
+const summaryPath = defaultSummaryPath({ explicit: flag('summary'), full: fullAudit });
 mkdirSync(join(out, 'shots'), { recursive: true });
 
 // tsx wraps named functions with __name (keepNames); the page has no such helper.
@@ -364,8 +369,11 @@ await browser.close();
 // --- Totals, the report, the committed summary.
 const git = args => { try { return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
 const inputs = geometryInputs('HEAD');
-// public/assets is left out of the status check: its LFS files can show as changed where git-lfs is missing.
-const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', ...UI_INPUT_ROOTS.map(item => item.root).filter(root => root !== 'public/assets')]) !== '';
+// RR26: any uncommitted change off the safe list (pictures compared by content, LFS-safe; untracked files count) makes
+// the run dirty: the gate judges it by its commit.
+const dirtyPaths = uiInputsDirty();
+const dirty = dirtyPaths.length > 0;   // run.sh's DIRTY=1 counts any edit, docs too; this counts what is off the safe list (RR26)
+if (dirtyPaths.length > 0) console.log(`dirty UI inputs (${dirtyPaths.length}): ${dirtyPaths.slice(0, 8).join(', ')}${dirtyPaths.length > 8 ? ' …' : ''}`);
 const totals = { rows: Object.keys(results).length, conditions: 0, measured: 0, failures: 0, unopened: 0, unreachable: [], warnings: 0, byCheck: Object.fromEntries(CHECKS.map(check => [check, 0])) };
 const bySurface = {};
 const kindNotes = [];
@@ -396,7 +404,7 @@ const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entrie
 const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
 const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
 const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
-const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
+const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, axesNarrowed, full: fullAudit, only, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, retried, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
@@ -422,7 +430,7 @@ writeFileSync(join(out, 'geometry.md'), `${md.join('\n')}\n`);
 
 if (summaryPath !== 'none') {
   mkdirSync(dirname(summaryPath), { recursive: true });
-  const summary = { schema: 1, run, commit: report.commit, dirty, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
+  const summary = { schema: 1, run, commit: report.commit, dirty, full: fullAudit, axesNarrowed, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
     axes: report.axes, rows: totals.rows, conditions: totals.conditions, measured: totals.measured, failures: totals.failures, unopened: totals.unopened,
     unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
     baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },
