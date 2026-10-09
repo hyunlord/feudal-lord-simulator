@@ -1,0 +1,81 @@
+{
+ "waiting": {
+  "seed": 2,
+  "tick": 1,
+  "year": 1300,
+  "season": 0,
+  "best": true,
+  "prepared": null,
+  "unmet": [
+   "population",
+   "chapel",
+   "timber"
+  ],
+  "sites": [],
+  "failure": null,
+  "abandoned": 0
+ },
+ "searching": {
+  "seed": 2,
+  "tick": 54913,
+  "year": 1313,
+  "season": 2,
+  "best": true,
+  "prepared": null,
+  "unmet": [],
+  "sites": [],
+  "failure": null,
+  "abandoned": 0
+ },
+ "asked": {
+  "seed": 2,
+  "tick": 55224,
+  "year": 1313,
+  "season": 3,
+  "best": true,
+  "prepared": null,
+  "unmet": [],
+  "sites": [],
+  "failure": null,
+  "abandoned": 0
+ },
+ "sites": {
+  "seed": 2,
+  "tick": 54990,
+  "year": 1313,
+  "season": 2,
+  "best": true,
+  "prepared": "two sites laid out on the natural searching state; the town's week gave the roadless one up",
+  "unmet": [],
+  "sites": [
+   {
+    "id": "construction-site-000046",
+    "kind": "granary",
+    "since": 49990
+   }
+  ],
+  "failure": null,
+  "abandoned": 1
+ },
+ "failed": {
+  "seed": 2,
+  "tick": 54913,
+  "year": 1313,
+  "season": 2,
+  "best": true,
+  "prepared": "the engine's failure shape on the natural searching state: service space, two outermost houses, second failure",
+  "unmet": [],
+  "sites": [],
+  "failure": {
+   "tick": 54313,
+   "reason": "service_space",
+   "homes": [
+    "construction-site-000033",
+    "construction-site-000039"
+   ],
+   "attempts": 2,
+   "retryTick": 56313
+  },
+  "abandoned": 0
+ }
+}

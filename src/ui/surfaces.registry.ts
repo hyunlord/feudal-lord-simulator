@@ -34,7 +34,9 @@ export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "
   // LM-R3: scripts/sliceEndsStates.ts (the lord slice played by the lord bot to its end, ~/fls-slice-end-states).
   | "slice"
   // ER-13: scripts/variantStates.ts (the wording variants' cards, ~/fls-variant-states).
-  | "variants";
+  | "variants"
+  // GROW-BLOCK: scripts/growPlanStates.ts (the palisade plan's stages from the bot's play, ~/fls-growplan-states).
+  | "growplan";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -142,6 +144,11 @@ const TOWN = { kind: "state", set: "ui5", name: "merchant-town", tile: "house", 
 const TOWN_CLOSE = { ...TOWN, zoom: 1.6 } as const;
 const townAt = (focus: MapTarget) => ({ ...TOWN_CLOSE, focus }) as const;
 const QUIET = "&story-delay=600000";
+/** The goal slot's settlement progress opened (the era console inside it). */
+const ERA_CONSOLE_OPEN: readonly OpenStep[] = [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }];
+/** GROW-BLOCK: the era console's palisade plan opened by its primary (lord mode). */
+const WALL_PLAN_OPEN: readonly OpenStep[] = [...ERA_CONSOLE_OPEN, { click: "[data-wall-plan='open']" }, { pause: 500 }];
+const growPlanScene = (name: string): SceneRef => ({ kind: "state", set: "growplan", name, tile: "house", zoom: 1.1, query: QUIET });
 const DISMISS: OpenStep = { dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"] };
 const LEDGER: OpenStep = { click: "[data-dock='ledger']" };
 const CHRONICLE: readonly OpenStep[] = [LEDGER, { click: ".ledger-tab--chronicle" }, { wait: ".chronicle-screen" }, { pause: 900 }];
@@ -293,11 +300,22 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.goals.settlement", extends: "slot.goals", root: ".settlement-progress", frame: "flat", scene: TOWN,
     open: [{ click: ".settlement-progress > details > summary" }, { pause: 500 }], data: "the settlement's progress, opened" },
   { id: "slot.goals.era-console", extends: "slot.goals.settlement", root: ".era-console", frame: "flat", scene: TOWN, open: [], data: "the stone town's era console" },
-  // PLAY-2 (friction 10): lord mode's palisade guidance — the town's line and request, the lord's lever (lordWall).
+  // PLAY-2 (friction 10), GROW-BLOCK since: lord mode's era console — its one primary the town's palisade plan (lordWall).
   { id: "slot.goals.era-console.lord", root: ".era-console", frame: "flat",
     scene: { kind: "state", set: "lord2", name: "offer-countered", tile: "house", zoom: 1.1, query: QUIET },
-    open: [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }],
-    requires: [".era-requirements", ".era-proposal"], data: "the hamlet's era console in lord mode: the conditions, the town's line and its request, the lord's lever" },
+    open: ERA_CONSOLE_OPEN,
+    requires: [".era-requirements", "[data-wall-plan='open']", ".era-action-reason"], data: "the hamlet's era console in lord mode: the conditions, the plan's primary and where it stands" },
+  // GROW-BLOCK: the plan opened, on the bot's states of each stage (`growplan`: scripts/growPlanStates.ts, ~/fls-growplan-states).
+  { id: "slot.goals.era-console.lord.plan-waiting", root: ".era-console", frame: "flat", scene: growPlanScene("plan-waiting"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", "[data-wall-plan-condition]", "[data-wall-plan-go]"], data: "the plan waiting on a condition: each unmet one, who builds its project, the lord's lever and its way" },
+  { id: "slot.goals.era-console.lord.plan-sites", root: ".era-console", frame: "flat", scene: growPlanScene("plan-sites"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", "[data-wall-plan-site]"], data: "the plan waiting on open building sites: each with its age, and the sites the town gave up" },
+  { id: "slot.goals.era-console.lord.plan-searching", root: ".era-console", frame: "flat", scene: growPlanScene("plan-searching"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", ".era-action-reason"], data: "the plan with every condition met and no site open: the town's turn to find the wall" },
+  { id: "slot.goals.era-console.lord.plan-asked", root: ".era-console", frame: "flat", scene: growPlanScene("plan-asked"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", ".era-action-reason"], data: "the plan with the town's request waiting: answered on its own chip" },
+  { id: "slot.goals.era-console.lord.plan-failed", root: ".era-console", frame: "flat", scene: growPlanScene("plan-failed"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", "[data-wall-plan-failure]"], data: "the plan after a failed search: why, the homes cut off, the attempts and the next search" },
   { id: "slot.population", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: TOWN,
     open: [{ click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { pause: 600 }], scroll: "y", data: "the town's population events" },
   { id: "slot.population.panel", extends: "slot.population", root: ".population-event-panel", frame: "flat", scene: TOWN, open: [], data: "the population log inside the slot" },

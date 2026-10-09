@@ -1,38 +1,100 @@
+import { BALANCE } from "../../../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../../content/buildingConfig";
+import { charterWallPlan, type CharterWallPlan } from "../../../engine/charterPlan";
 import type { GameState } from "../../../engine/engine.types";
-import { evaluateEraRequirements } from "../../../engine/era";
-import { lordMode, lordRequests } from "../../../engine/townAgency";
-import { lordLevers, type TownNeed } from "./lordAdvice";
+import { history } from "../../../engine/history";
+import { scenarioOf } from "../../../engine/scenarioState";
+import type { TileCoordinate } from "../../../world/grid";
+import { calendarArrivalLabel } from "../../calendarArrival";
+import { ERA_CONSOLE_COPY } from "../../eraConsoleCopy.ko";
+import { LORD_CARDS_COPY } from "../../lordCardsCopy.ko";
+import { perState } from "../../perState";
+import { lordLeverPlaces, needOfProject, whoBuilds, type LordLever } from "./lordAdvice";
 import { LORD_WALL_COPY as COPY } from "./lordWallCopy.ko";
 
-// PLAY-2 (Astra's second lord-mode play, friction 10: the goal drawer said "추천 경로를 만들지 못했습니다 · 직접 그어
-// 주세요" beside "영주는 방침과 장려금으로 그 순서를 움직입니다"): in lord mode the palisade's line is the town's — its
-// charter search finds one and asks the lord to proclaim (`lordRequests`: proclaim_era, TA-7/TA-11) — so the era
-// console says where the market charter stands, read from the town agency's own state:
-//  - the town's request is waiting: answer it (its chip);
-//  - a condition is unmet: the request comes once it is met; the lord's first lever for it (lordAdvice) — the houses for
-//    the population, the building for a building's count; a stock (the timber) has no project of its own here;
-//  - all met and the town's last search found no line (`charterWallTried`): only then does the lord draw it himself, and
-//    the guidance says so (with the recommendation's own failure when it gives one);
-//  - all met otherwise: the town's turn to find it.
-// The engine still takes the lord's own drawing (`confirm_palisade_proclamation` is not shut in lord mode); the console
-// keeps its button. Null outside lord mode or past the hamlet.
+// GROW-BLOCK (the user's ruling 2026-10-09; PLAY-2 friction 10 before it): in lord mode the palisade's line is the
+// town's — its charter search finds one and asks the lord to proclaim (`lordRequests`: proclaim_era, TA-7/TA-11) — so
+// the era console's one primary is "마을의 목책 계획": where the plan stands and what holds it, all read from the
+// engine's `charterWallPlan` (its stage, each condition with the project that meets it, the sites the search waits on,
+// the last failure) and the town's own records (the sites it gave up: `agency.site_abandoned`'s sentence). Nothing here
+// decides a stage or a project: the engine's are quoted (P-D4). Per stage:
+//  - waiting: each unmet condition, who builds its project and the lord's first lever, with the way to where he sets it;
+//  - sites: the sites holding the search, how long each has stood, and the sites the town gave up lately;
+//  - searching / asked: the town's turn (its week's walk) / its request (answered on its own chip, as before);
+//  - failed: why, the homes a wall would cut off (and the way to look at one), the attempts, when it searches again.
+// Drawing the line by hand is the sandbox's (the console keeps no drawing button in lord mode). Null outside lord mode
+// or past the hamlet (the console's normal state).
 
-export type LordWallGuidance = Readonly<{ line: string; next: string | null }>;
+export type WallPlanCondition = Readonly<{ key: string; progress: string; project: string; lever: LordLever | null }>;
 
-function needOf(key: string): TownNeed | null {
-  if (key === "population") return { kind: "houses" };
-  return key in BUILDING_CONFIG_BY_KIND ? { kind: "building", building: key as BuildingKind } : null;
+export type LordWallPlanView = Readonly<{
+  stage: Exclude<CharterWallPlan["stage"], "past">;
+  /** Where the plan stands: the line under the console's primary. */
+  line: string;
+  /** searching / asked: what happens next (the opened plan's own line); null in the other stages. */
+  detail: string | null;
+  conditions: readonly WallPlanCondition[];
+  sites: readonly string[];
+  abandoned: readonly string[];
+  failure: Readonly<{ why: string; homes: string | null; homeTile: TileCoordinate | null; attempts: string; retry: string }> | null;
+  /**
+   * The seam for "성벽 둘레 지정" (the lord's own ring for the town's search): shown only while the search failed. The
+   * engine has no lord command for it yet — its request §4 brings one; the console's button drops in on this flag then.
+   */
+  ringAllowed: boolean;
+}>;
+
+/** The town's last few given-up sites, newest first, as its records say them. */
+const ABANDONED_SHOWN = 3;
+
+function siteAge(state: GameState, since: number | null): string {
+  if (since === null) return COPY.ageUnknown;
+  const age = Math.max(0, state.tick - since);
+  const years = Math.floor(age / BALANCE.TICKS_PER_YEAR);
+  return COPY.age(years, Math.floor((age - years * BALANCE.TICKS_PER_YEAR) * 4 / BALANCE.TICKS_PER_YEAR));
 }
 
-export function lordWallGuidance(state: GameState, failure: string | null): LordWallGuidance | null {
-  if (!lordMode(state) || state.era !== "hamlet") return null;
-  if (lordRequests(state).some(action => action.kind === "proclaim_era")) return { line: COPY.asked, next: null };
-  const unmet = evaluateEraRequirements(state).find(requirement => !requirement.met);
-  if (unmet !== undefined) {
-    const need = needOf(unmet.key);
-    return { line: COPY.waiting(unmet.label, unmet.current, unmet.target), next: need === null ? null : lordLevers(state, need)[0] ?? null };
-  }
-  if (state.agency?.charterWallTried !== undefined) return { line: COPY.notFound, next: COPY.drawWhy(failure) };
-  return { line: COPY.searching, next: null };
+const kindName = (kind: string): string => kind in BUILDING_CONFIG_BY_KIND ? BUILDING_CONFIG_BY_KIND[kind as BuildingKind].name : kind;
+
+function abandonedLines(state: GameState): readonly string[] {
+  const kept = [...(state.agency?.abandonedSites ?? [])].sort((left, right) => right.tick - left.tick).slice(0, ABANDONED_SHOWN);
+  if (kept.length === 0) return [];
+  const records = history.query(state, { kinds: ["event"], range: { from: kept.at(-1)!.tick } }).filter(record => record.template === "agency.site_abandoned");
+  return kept.flatMap(site => {
+    const record = records.find(entry => entry.params?.site === site.id);
+    return record === undefined ? [] : [history.summary(record, state)];
+  });
 }
+
+/** The view of an engine plan on its state (the tests give it the engine's read of a state they build). */
+export function wallPlanView(state: GameState, plan: CharterWallPlan | null): LordWallPlanView | null {
+  if (plan === null || plan.stage === "past") return null;
+  const unmet = plan.requirements.filter(requirement => !requirement.met);
+  const conditions = plan.stage !== "waiting" ? [] : unmet.map(requirement => {
+    const need = needOfProject(requirement.project);
+    const builder = requirement.project !== null && requirement.project in BUILDING_CONFIG_BY_KIND ? whoBuilds(requirement.project as BuildingKind) : null;
+    return { key: requirement.key, progress: COPY.progress(requirement.label, ERA_CONSOLE_COPY.requirementProgress(requirement.key, requirement.current, requirement.target)),
+      project: builder ?? COPY.noProject, lever: need === null ? null : lordLeverPlaces(state, need)[0] ?? null };
+  });
+  const failed = plan.stage === "failed" ? plan.failure : null;
+  const home = failed === null ? undefined : state.buildings.find(building => failed.homes.includes(building.id));
+  return {
+    stage: plan.stage,
+    line: plan.stage === "waiting" ? COPY.stage.waiting(unmet.length) : plan.stage === "sites" ? COPY.stage.sites(plan.sites.length) : COPY.stage[plan.stage],
+    detail: plan.stage === "searching" ? COPY.detail.searching : plan.stage === "asked" ? COPY.detail.asked(LORD_CARDS_COPY.request.proclaim_era.title) : null,
+    conditions,
+    sites: plan.sites.map(site => COPY.site(kindName(site.kind), siteAge(state, site.since))),
+    abandoned: plan.stage === "sites" ? abandonedLines(state) : [],
+    failure: failed === null ? null : {
+      why: COPY.reasons[failed.reason],
+      homes: failed.homes.length === 0 ? null : COPY.homes(failed.homes.length),
+      homeTile: home === undefined ? null : { tx: home.tx, ty: home.ty },
+      attempts: COPY.attempts(failed.attempts),
+      retry: COPY.retry(calendarArrivalLabel(state.tick, failed.retryTick, scenarioOf(state).startYear)),
+    },
+    ringAllowed: plan.stage === "failed",
+  };
+}
+
+/** The palisade plan as the lord's era console shows it; null outside lord mode or past the hamlet. Once per state. */
+export const lordWallPlan: (state: GameState) => LordWallPlanView | null = perState(state => wallPlanView(state, charterWallPlan(state)));
