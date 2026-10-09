@@ -132,9 +132,12 @@ test("QA-025 the drawers and the panel slot (build, ledger, inspector, populatio
 // menu's details, the goal card fold, the person views, the kit Select, the event cards, the steward bubble): none may
 // set the speed. Only these files may: the input intents (Space, the speed seals, the pad), the store, the modal pause,
 // App (the seals' handler, the story's event pause) and the tutorial's 시작하기 (inputIntent.ts: the intents' type).
+// LM-R3 pauseReasons: the lord-mode auto-pause only ever stops time (setSpeed(0): a paused game stays paused, no extra
+// pause autosave) and its notice's [계속] is the pause toggle's intent, as Space is.
 const SPEED_SETTERS = new Set([
   "src/App.tsx", "src/input/inputIntent.ts", "src/input/useAppIntents.ts", "src/input/mouseKeyboardTranslator.ts", "src/input/gamepadTranslator.ts",
   "src/state/gameStore.ts", "src/ui/stateMachine/useUiStateMachine.ts", "src/ui/tutorial/useTutorialController.ts",
+  "src/ui/hud/useLordAutoPause.ts", "src/ui/hud/AutoPauseNotice.tsx",
 ]);
 const SETS_SPEED = /kind: "speed"|kind: "pauseToggle"|\bsetSpeed\(|\.setSpeed\(/;
 
@@ -153,7 +156,11 @@ test("QA-025 source guard: no popover, drawer or screen sets the speed; the file
   const tutorial = readFileSync("src/ui/tutorial/useTutorialController.ts", "utf8");
   assert.equal(tutorial.match(/kind: "speed"/g)?.length, 1);
   assert.match(tutorial, /if \(decided\.resume\) resume\(\);/);
-  // App: the seals (a speed the player chose), the story's event pause (pauses only), nothing else.
+  // App: the seals (a speed the player chose), nothing else; the story's event pause is the auto-pause's `chipPause`.
   const app = readFileSync("src/App.tsx", "utf8");
-  assert.deepEqual(app.match(/kind: "speed"|setSpeed\([^)]*\)/g), ["setSpeed(0)", 'kind: "speed"']);
+  assert.deepEqual(app.match(/kind: "speed"|setSpeed\([^)]*\)/g), ['kind: "speed"']);
+  assert.match(app, /pause: autoPause\.chipPause/);
+  // LM-R3 pauseReasons: the auto-pause (and the story's event pause through it) only stops time; its notice resumes by the toggle.
+  assert.deepEqual([...new Set(readFileSync("src/ui/hud/useLordAutoPause.ts", "utf8").match(/setSpeed\([^)]*\)/g))], ["setSpeed(0)"]);
+  assert.deepEqual(readFileSync("src/ui/hud/AutoPauseNotice.tsx", "utf8").match(/kind: "speed"|kind: "pauseToggle"|setSpeed\([^)]*\)/g), ['kind: "pauseToggle"']);
 });

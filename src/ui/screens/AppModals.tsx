@@ -190,7 +190,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
         variant="secondary"><UiIcon sheet="action" cell="log" />{LEGACY_SCREEN_COPY.book.open}</Button>
         {sliceOver ? <Button type="button" className="pause-menu-slice-end" onPress={() => sendUi({ type: "push_modal", modal: "slice_end" })}
           variant="secondary"><UiIcon sheet="action" cell="open" />{SLICE_COPY.end.reopen}</Button> : null}<TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
-        <PresentationToggle preference="eventPause" /><PresentationToggle preference="weatherFx" /><PresentationToggle preference="rainOverlay" />
+        <PresentationToggle preference="eventPause" /><PresentationToggle preference="lordAutoPause" /><PresentationToggle preference="weatherFx" /><PresentationToggle preference="rainOverlay" />
         <PresentationToggle preference="developerInfo" /><PresentationToggle preference="qaOverlay" />
         <Button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
           onPress={() => onLedgerAuto(!ledgerAuto)} variant="toggle">{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button></>} /> : null}

@@ -176,8 +176,9 @@ for (const view of liveOnly || yearsOnly ? [] : VIEWS) {
 if (!yearsOnly) {
   const lastYear = String(sliceLastYear(scene('slice-end')));
   const state = scene('slice-eve');
+  // LM-R3 pauseReasons: time runs on through the end's tick (a rights petition arrives on it; the auto-pause would stop it).
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: true, initScript: INIT, width: 1280, height: 800,
-    query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
+    query: '&story-delay=1500&auto-pause=off', loadTimeout: 90_000, zoom: 1.1 });
   page.on('pageerror', error => errors.push(`live: ${String(error).slice(0, 300)}`));
   const YEAR_CARD = '.results-card.year-review';
   const SEASON_CARD = '.season-ledger-card';
