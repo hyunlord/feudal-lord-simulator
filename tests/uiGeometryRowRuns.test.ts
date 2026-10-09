@@ -20,7 +20,7 @@ const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; runName?: string; commit?: string | null; unregistered?: number;
   noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "outside"; omit?: "dirty" | "totals" | "unregisteredFramed"; errorCondition?: boolean };
 type Story = { trunkMove: (write: (path: string, text: string) => void, remove: (path: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
-  shared?: "stale" | "current-failing" | "partial" | "no-full" | "unsaid" | "orphan" | "no-commit" | "none"; exceptions?: object[]; rowIds?: string[] };
+  shared?: "stale" | "current-failing" | "partial" | "no-full" | "unsaid" | "current-broken" | "orphan" | "no-commit" | "none"; exceptions?: object[]; rowIds?: string[] };
 
 function story({ trunkMove, report = {}, baseline = [], trailer = true, shared = "stale", exceptions = [], rowIds = [ROW] }: Story) {
   const dir = tempDir("fls-rowrun-");
@@ -65,6 +65,7 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, shared =
   if (shared === "current-failing") sharedAt(measured, { run: "full-now", failureKeys: ["other.row|1280x800/normal/normal|overflow|.x"] });
   if (shared === "partial") sharedAt(measured, { run: "rows-only", full: false, rows: 1 });
   if (shared === "no-full") sharedAt(measured, { run: "before-rr26", full: undefined, rows: 17 });   // as the trunk's result before RR26
+  if (shared === "current-broken") sharedAt(measured, { run: "full-now", dirty: true, unopened: 1, unregisteredFramed: 2 });
   if (shared === "unsaid") sharedAt(measured, { run: "full-now", dirty: undefined, unopened: undefined, unregisteredFramed: undefined });
   git("add", "-A"); git("commit", "-qm", `branch: the changed rows' geometry${trailer ? `\n\nUI-Geometry-Run: ${RUN}` : ""}`);
   git("checkout", "-q", "trunk"); trunkMove(write, path => rmSync(join(dir, path))); git("add", "-A"); git("commit", "-qm", "trunk moves", "--allow-empty");
@@ -230,6 +231,14 @@ test("a shared result that does not say it is a full audit (as before RR26), or 
     const result = t.check();
     for (const pattern of [/does not say whether the tree was clean/, /does not count the surface conditions not opened/, /does not count the framed roots no registry row measures/]) refused(result, pattern);
   } finally { t.done(); }
+});
+
+test("a current full shared result measured dirty, with a condition not opened or a framed root off the registry, does not count", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared: "current-broken" });
+  try {
+    const result = s.check();
+    for (const pattern of [/^the result was measured from a tree with uncommitted changes$/, /^1 surface condition\(s\) could not be opened$/, /^2 framed root\(s\) \(data-frame\) on screen that no registry row measures$/]) refused(result, pattern);
+  } finally { s.done(); }
 });
 
 test("only a full audit writes the shared result by default", () => {
