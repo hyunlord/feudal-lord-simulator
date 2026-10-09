@@ -579,7 +579,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...RESULTS_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
-  // opens after the load — the end page does, after the story's delay).
+  // opens after the load — the end page does, after the story's delay). TRACE-KEEP: the state played on the engine that keeps
+  // the big decisions in the thread to the end (DTR-24), so the page's years list 1300–1308's too.
   { id: "modal.slice-start", root: ".chronicle-page.slice-page[data-slice='start']", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
     scrollParts: [".chapter-page-scroll"], scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario='core:lord_slice']" }, { wait: ".welcome-house" }, { click: ".welcome-parchment [data-house-start]" },
@@ -590,8 +591,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     scrollParts: [".chapter-page-scroll"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ wait: ".slice-page[data-slice='end']", timeout: 90_000 }, { pause: 800 }],
     requires: ["h2", ".slice-last-year li", ".slice-year-card", ".slice-season-card", ".slice-why p", ".chronicle-maps", ".slice-decisions li", ".slice-record",
-      ".slice-remembers li", ".slice-year-lines li", ".slice-chronicle", ".slice-continue"],
-    data: "the slice's end in 1320 (seed 3, twenty years): the last year 1319 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year" },
+      ".slice-remembers li", ".slice-year-lines li", ".slice-year-big li", ".slice-year-small", ".slice-small-total", ".slice-chronicle", ".slice-continue"],
+    data: "the slice's end in 1320 (seed 3, twenty years): the last year 1319 at the top with its two cards as links, why and when, then and now with the maps, the decisions ranked by what followed, who remembers, a line a year with its big decisions from the thread (1300-1308 too) and what followed each, and its small matters counted in one line" },
   { id: "modal.slice-end.record", extends: "modal.slice-end", root: ".chronicle-screen", frame: "flat", scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-decisions .slice-record" }, { wait: ".chronicle-screen", timeout: 30_000 }, { pause: 900 }], scrollParts: [".chronicle-list", ".chronicle-detail"],
     requires: [".chronicle-filters", ".chronicle-card"], data: "the end page's first decision opened in the chronicle on its record (closing it comes back to the page)" },

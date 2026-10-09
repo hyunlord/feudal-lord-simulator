@@ -67,9 +67,14 @@ export const SLICE_COPY = {
     years20: "해마다 한 줄",
     yearLine: (year: number, parts: readonly string[]) => `${year}년 — ${parts.join(" · ")}`,
     yearHouse: (line: string) => `가문: ${line}`,
-    /** The year's decision lines in the ledger, by who decided (DC-D14). */
-    yearDecisions: (lord: number, steward: number, lapsed: number) =>
-      [`영주의 결정 ${lord}건`, ...(steward === 0 ? [] : [`청지기의 처리 ${steward}건`]), ...(lapsed === 0 ? [] : [`답하지 않은 일 ${lapsed}건`])].join(", "),
+    /** TRACE-KEEP (DTR-24): the year's big decisions, the lord's weighed and answered, kept with what followed to the end. */
+    yearBig: (count: number) => `큰 결정 ${count}건`,
+    noFollowed: "뒤따른 일은 기록되지 않았습니다",
+    /** The small matters counted by who handled them (DC-D14: the steward's handling and the unanswered said as such); a zero is not said. */
+    small: (lord: number, steward: number, lapsed: number) =>
+      [...(lord === 0 ? [] : [`작은 일 ${lord}건은 영주가 정함`]), ...(steward === 0 ? [] : [`작은 일 ${steward}건은 청지기가 처리`]),
+        ...(lapsed === 0 ? [] : [`답하지 않은 일 ${lapsed}건은 그대로 둠`])].join(" · "),
+    smallSlice: (from: number, to: number, line: string) => `${from}~${to}년 동안: ${line}`,
     yearFollowed: (count: number) => `뒤따른 일 ${count}건`,
     yearQuiet: "결정이 없던 해",
     yearPopulation: (population: number) => `연말 사람 ${population}명`,
