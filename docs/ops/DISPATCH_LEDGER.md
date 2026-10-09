@@ -12,7 +12,7 @@
 - [x] 독립125년 관문 CLI 및 현재 소스 생산기: 기존 실제 원자료292/816 재현, direct292/conditional0/관측부족20/unlinked524; 80% 제품 관문 미달 보존. [운영 계약](../verification/eb-outcome/gate-usage.md).
 - [x] 조건34 실제 정본 변환 대조34/34,075의 원문보다 좁은 관리인 제한 수정·회귀19/19(Mac),[상세](../verification/eb-freq/condition-review.md). 역사B476 원인 소급 확정 없음.
 - [x] 정상 영주048 생산 공백·078 원사건 경로 [엔진 요청](../requests/engine-B-freq-facts.md). 슬롯은 MONEY-SINK 뒤 검토·본선 채택 뒤135→7→9.
-- [ ] 깨끗한 최신 본선 통합 뒤 DGX 짧은 생산기 실행·변경 시험·병합 검사·보호 게시 및 본선 해시 기록.
+- [x] 최신 본선9ec8110a7 통합2024df1cc에서 DGX 변경 시험446파일3686통과·0실패·13skip,1년117명령 재현/짧은125년 입력 거부,기하2행40조건 실패0. [실행 원본 해시](../verification/eb-outcome/changed-tests.json). 최종 게시 커밋은 이 완료 장부를 포함하며 보호 푸시가 정확한 최종 트리 test:changed/check:merge를 요구한다. 제품35.78% 미달과 엔진 후속을 완료로 바꾸지 않는다.
 
 
 ### Engine B — EB-WEIGHT / EB-FREQ / MOD-SLOT (2026-10-09 감사 게시·소유 레인 인계)
