@@ -25,3 +25,25 @@ Astra 영주 모드 두 번째 플레이([docs/qa/lordplay2-20261008](../qa/lord
 - **목책(마찰 10)**: 마을이 특허 성벽 둘레를 찾지 못한 까닭(`charterWallFailure`) — 지금 화면은 제 추천의 실패 까닭을 붙인다. 시대 선포 조건 키(인구·곡창·예배당·목재 …)마다 그 조건을 채우는 사업 키 — 화면이 제 짝을 지운다.
 - **가족 소식(마찰 9)**: `marriage.child_born`·`marriage.brother_in_law_born`의 params에 `child`·`father`, `person.died`·`person.married`에 `spouseId` — 지금 화면은 기록이 주는 사람만 이름한다(첫아이의 이름은 비움). 화면 사이 부모 불일치(캡처 070/127) 확인.
 - **가문의 일(마찰 8)**: 유언·상속 다툼·감사·지도 밖 청원의 답할 기한 틱 — SUIT-THREAD의 `lordMattersDue`가 이를 주면 화면의 어댑터(`src/ui/lord/decisions/lordMattersDue.ts` `lordMattersDueNow`)를 바꾼다.
+
+### 4절 엔진 답(GROW-BLOCK, 2026-10-10) — 최종
+- **목책**: `charterWallPlan(state)`(`src/engine/charterPlan.ts`)
+  - `stage`: `past`·`waiting`·`sites`·`searching`·`asked`·`failed`.
+  - `requirements[]`: `key`·`label`·`current`·`target`·`met`·`project`. `project`는 조건을 채우는 사업 키, `ERA_REQUIREMENT_PROJECT`다(인구 → `house`, 곡창 → `granary`, 예배당 → `chapel`, 목재 → `logging_camp`, 시장 → `market`, 석공 → `masonry`, 돌 → `quarry`, 돈 → 없음).
+  - `sites[]`(`sites` 단계일 때): `id`·`kind`·`since`.
+  - `failure`: `tick`·`reason`·`homes`·`attempts`·`retryTick`. `reason`은 `water`·`edge`·`buildings`·`service_space`·`rules`·`lots`·`route`·`other`, `homes`는 서비스 공간을 잃는 집이다.
+  - 상태 원본은 `agency.charterWallFailure`이고, 영주 모드만이다.
+- **접은 공사장**:
+  - `agency.abandonedSites[]`: `id`·`kind`·`tx`·`ty`·`tick`·`since`·`reason`. `reason`은 `road`·`material`·`work`다.
+  - 역사 줄 `agency.site_abandoned`의 params는 `site`·`what`·`reason`·`years`다.
+- **가족 소식**:
+  - `marriage.child_born`과 `marriage.brother_in_law_born`의 params에 `child`·`father`가 있다. 첫아이의 아버지는 신랑, 처남의 아버지는 그의 기록된 아버지다.
+  - `person.married`에 `spouseId`(가장)가 있다.
+  - `person.died`에 `spouseId`(남은 배우자)가 있다.
+- **가문의 일**: `lordMattersDue(state)`에 `kind: "audit"`과 `kind: "estate_petition"`이 더해졌다.
+  - `audit`: 미카엘마스 감사, 답할 기한은 감사의 기한이다.
+  - `estate_petition`: 영주에게 올라온 지도 밖 청원이다.
+  - 엔진이 예외로 고친 렌더 파일(인계):
+    - `lordMattersDue.ts`의 칩 두 줄.
+    - 자동 정지의 낱말 두 개. 둘은 자기 사건으로 이미 멈추므로 자동 정지 목록에서 뺐다(`autoPauseModel.ts`).
+
