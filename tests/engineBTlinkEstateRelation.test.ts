@@ -32,13 +32,28 @@ function direct() {
   return { ...state, stewardship: { ...state.stewardship, oversight: state.stewardship.oversight.map(row => ({ ...row, mode: 'direct' as const })) } };
 }
 
-test('actual repair relation contributes to the existing next season without allocating history', () => {
-  const { after, own } = settled(petition(direct(), 'repair'), 'repair');
-  const season = transition(after, 2000, advanceStewardship);
-  const receipts = linked(season.after, own.id, 'estate_mood');
+test('opposing seasonal rates retain the actual marginal repair contribution without new history', () => {
+  const base = delegated();
+  assert.ok(base.stewardship);
+  const state = { ...base, stewardship: { ...base.stewardship,
+    rules: { rights: true, marriage: true, amountAtLeast: 0 },
+    stewards: base.stewardship.stewards.map(row => ({ ...row, disposition: 'greedy' as const })) } };
+  const { after, own } = settled(petition(state, 'repair'), 'repair');
+  const before = { ...after, tick: 2000 };
+  const actual = advanceStewardship(before);
+  const counterfactual = advanceStewardship(mood(before, 0));
+  assert.equal(after.stewardship?.oversight[0]?.tenants, 4);
+  assert.equal(actual.stewardship?.oversight[0]?.tenants, -2);
+  assert.equal(counterfactual.stewardship?.oversight[0]?.tenants, -6);
+  const recorded = advanceHistory(before, actual); assert.ok(recorded.trace);
+  const traced = advanceTrace(before, recorded);
+  const receipts = linked(traced, own.id, 'estate_mood');
   assert.equal(receipts.length, 1);
   assert.equal(receipts[0]?.template, 'stewardship.season');
-  assert.equal(receipts[0]?.params?.traceEstate, 'delegated-estate');
+  assert.equal(receipts[0]?.params?.traceTenantsContribution, 4);
+  assert.equal(receipts[0]?.params?.traceRelationTenants, -2);
+  assert.ok(recorded.history?.records.some(row => row.id === receipts[0]?.id));
+  assert.equal(traced.history?.nextOrdinal, advanceTrace(before, { ...recorded, trace: { ...recorded.trace, answers: [] } }).history?.nextOrdinal);
 });
 
 function mood(state: GameState, tenants: number, merchants = 0): GameState {
@@ -241,4 +256,15 @@ test('v56 pending and consumed fixtures roundtrip with every relation proof fiel
   for (const field of ['traceEstate', 'traceRelationTenants', 'traceRelationMerchants', 'traceTenantsContribution', 'traceMerchantsContribution']) {
     assert.ok(fingerprint.includes(`$.history.records[].params.${field}:`), field);
   }
+});
+
+test('interior actual season still rejects a clamped marginal counterfactual', () => {
+  const base = mood(delegated(), -97); assert.ok(base.stewardship);
+  const state = { ...base, stewardship: { ...base.stewardship, rules: { rights: true, marriage: true, amountAtLeast: 0 },
+    stewards: base.stewardship.stewards.map(row => ({ ...row, disposition: 'greedy' as const })) } };
+  const result = settled(petition(state, 'a'), 'a');
+  const next = transition(result.after, 2000, advanceStewardship);
+  assert.equal(next.actual.stewardship?.oversight[0]?.tenants, -99);
+  assert.equal(advanceStewardship(mood({ ...result.after, tick: 2000 }, -97)).stewardship?.oversight[0]?.tenants, -100);
+  assert.equal(linked(next.after, result.own.id, 'estate_mood').length, 0);
 });

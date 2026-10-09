@@ -97,11 +97,11 @@ export function linkEstateRelationSeason(before: GameState, after: GameState): G
       }
       changed = true;
       const summary = summaries[0];
-      const movement = current[row.dimension] - old[row.dimension];
+      // Seasonal relation increments are independent and clamped once; retain only an unclamped marginal delta.
       const valid = summaries.length === 1 && summary && summary.tick === after.tick && after.tick === row.firstSeasonTick
         && old.stewardId === current.stewardId && old.mode === current.mode
         && answer.tick < after.tick && summary[row.dimension] === current[row.dimension] && interior(current[row.dimension])
-        && (movement === 0 || Math.sign(movement) === Math.sign(row.actual));
+        && interior(current[row.dimension] - row.actual);
       const candidates = valid ? records.filter(record => matches(after, summary, record)) : [];
       const record = candidates[0];
       const unique = record && candidates.length === 1 && fresh.filter(item => matches(after, item, record)).length === 1;
