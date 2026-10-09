@@ -375,12 +375,15 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ story: ".famine-decision" }, { pause: 800 }], data: "chapter 1's famine decision (DEC-CARD: four answers, the steward beside the stake)" },
   // PLAY-2: the famine answered on screen (방관) — its card's line, until when and the bottleneck left (famineAfter).
   { id: "hud.event-card.famine-answered", root: ".event-card[data-story='famine']", frame: "css",
-    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer, then paused
-    // again (Space) so nothing else comes up, and any card that did is put away before the chip.
-    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" }, { key: "Digit1" }, { pause: 1500 },
-      { key: "Space" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" },
-      { wait: ".event-card[data-story='famine']", timeout: 10_000 }, { pause: 600 }], scroll: "y",
+    // The story's delay outlasts the scene's setup (openScene's Escape put a card already up away for good on a busy DGX:
+    // REMOTE, infra-RR26-full-7af6f5e — this row opened only in the retry round, now and then).
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=8000" },
+    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer (the speed seals;
+    // Digit1 is an overlay key, and Space started the town again), paused, any card that came up put away, then the chip.
+    open: [{ wait: ".famine-decision", timeout: 20_000, optional: true }, { story: ".famine-decision" }, { pause: 800 },
+      { click: ".famine-decision [data-choose='laissez_faire']" }, { click: ".speed-seal[data-seal='normal']" }, { pause: 1500 },
+      { click: ".speed-seal[data-seal='pause']" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 },
+      { repeat: ".event-chip[data-story='famine']", until: ".event-card[data-story='famine']", max: 2 }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
   { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
   { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
