@@ -138,7 +138,11 @@ export const NEGOTIATION_COPY = {
     lost: "이웃 영지는 그의 아들에게 갔다. 상속 기대는 사라졌다.",
     contested: "새 유언대로 경쟁자가 영지를 차지했다. 소송에서 이기면 영지가 우리 것이 된다.",
   },
-  willDue: "유언 변경에 답할 때입니다. 한 계절 안에 답하지 않으면 그대로 둔 것으로 칩니다.",
+  /** SUIT-THREAD: the will's deadline is the engine's (`lordMattersDue` dueTick), as its season. */
+  willDue: (date: string) => `유언 변경에 답할 때입니다. ${date}까지 답하지 않으면 그대로 둔 것으로 칩니다.`,
+  willDueOpen: "유언 변경에 답할 때입니다. 답하지 않으면 기한이 지나 그대로 둔 것으로 칩니다.",
+  /** The engine's `willLapsed`: the deadline passed unanswered. */
+  willLapsed: "기한이 지나 그대로 두었다",
   contestedDue: "이 다툼에는 따로 내릴 명령이 없습니다. 소송으로 다툽니다.",
   openSuit: "소송 보기",
   openSuitLabel: "약속·소송 화면에서 이 영지의 소송 보기",

@@ -3,10 +3,10 @@ import type { HistoryRecord } from "../engine/history.types";
 import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
 import { recordSentence } from "./legacy/chapterRecords";
-import { LORD_MOMENT_COPY } from "./lordMomentCopy.ko";
+import { lordMomentWords } from "./lordMomentCopy.ko";
 import { familyLine, familyPeople } from "./persons/familyNews";
 import { FAMILY_NEWS_COPY } from "./persons/familyNewsCopy.ko";
-import { wave40RecordArt, type Wave40ImageId } from "./wave40Art";
+import { wave40RecordArt, wave40RecordSide, type Wave40ImageId } from "./wave40Art";
 
 // EVENT-ART (Wave 40): the lord's moments as story beats (lord mode only) — the marriage's stages, the inheritance, the suit
 // and its possession, the wardship — read from the ledger the engine already writes. One beat per history record, its id
@@ -48,8 +48,12 @@ export function lordMomentBeats(state: GameState, seat: { readonly tx: number; r
   return lordMoments(state).map(({ record, art }) => {
     // PLAY-2 (friction 9): a marriage's or a birth's moment names its people, and opens its record (their biographies).
     const people = familyLine(familyPeople(state, record));
+    // Astra lordplay2 ②: a house's enforcement against the lord is his loss (or his hold), not "점유를 넘겨받았다".
+    const side = wave40RecordSide(record);
+    const words = lordMomentWords(art, side);
     return { id: `lord-moment:${record.id}`, kind: "lord_moment", illustration: art, tile: AT_SEAT.has(art) ? seat : null, decision: null,
-      title: LORD_MOMENT_COPY[art].title, line: recordSentence(state, record), facts: people === null ? [] : [people], advice: LORD_MOMENT_COPY[art].advice,
-      ...(people === null ? {} : { chronicle: { recordId: record.id, tick: record.tick, label: FAMILY_NEWS_COPY.openLabel(LORD_MOMENT_COPY[art].title) } }) };
+      title: words.title, line: recordSentence(state, record), facts: people === null ? [] : [people], advice: words.advice,
+      ...(side === "against" && art === "moment_possession_taken" ? { lasting: true } : {}),
+      ...(people === null ? {} : { chronicle: { recordId: record.id, tick: record.tick, label: FAMILY_NEWS_COPY.openLabel(words.title) } }) };
   });
 }

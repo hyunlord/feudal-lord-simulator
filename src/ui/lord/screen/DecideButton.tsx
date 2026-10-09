@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import type { GameState } from "../../../engine/engine.types";
 import { Button } from "../../kit";
 import { homePetitionView } from "../../lordCardsModel";
-import { auditDecisionHead, offMapPetitionHead } from "../decisions/decisionCardsModel";
+import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead } from "../decisions/decisionCardsModel";
 import { LORD_SCREEN_COPY as COPY } from "./lordScreenCopy.ko";
 import type { LordDecisionModal } from "./lordScreenTypes";
 
@@ -13,6 +13,8 @@ import type { LordDecisionModal } from "./lordScreenTypes";
 export function decidingId(state: GameState, modal: LordDecisionModal): string | null {
   if (modal === "audit_decision") return auditDecisionHead(state)?.auditId ?? null;
   if (modal === "estate_petition") return homePetitionView(state)?.petitionId ?? null;
+  // SUIT-THREAD: the will's card by the marriage's claim (the contested inheritance is answered by its suit, not here).
+  if (modal === "marriage_decision") { const head = marriageDecisionHead(state); return head?.kind === "will_change" ? head.claimId : null; }
   return offMapPetitionHead(state)?.petitionId ?? null;
 }
 

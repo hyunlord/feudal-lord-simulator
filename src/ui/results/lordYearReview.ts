@@ -8,7 +8,7 @@ import { chronicleDate, yearOfTick } from "../chronicle/chronicleScreenModel";
 import { recordIndex } from "../chronicle/historyIndex";
 import { perState } from "../perState";
 import { metricsLine } from "./actualNews";
-import { decisionAbout, onlyMinds, threadLines, traceGroups } from "./decisionThread";
+import { decisionAbout, onlyMinds, preparedOnly, threadLines, traceGroups, traceTitle } from "./decisionThread";
 import { RESULTS_COPY } from "./resultsCopy.ko";
 import { lastYearReview, yearTown, type YearReviewDecision, type YearReviewGroup, type YearReviewView } from "./yearReview";
 
@@ -46,7 +46,7 @@ export function lordYearReview(state: GameState, year: number): YearReviewView {
     const lines = threadLines(state, group.rows);
     const all = [...lines.lines, ...lines.feelings];
     if (record === undefined || all.length === 0) return [];
-    return [{ key: group.decisionId, heading: RESULTS_COPY.trace.prefixed(RESULTS_COPY.trace.title(yearOfTick(state, group.decisionTick), group.by), decisionAbout(state, record)),
+    return [{ key: group.decisionId, heading: RESULTS_COPY.trace.prefixed(traceTitle(yearOfTick(state, group.decisionTick), group.by, preparedOnly(group.rows)), decisionAbout(state, record)),
       lines: capped(all) }];
   });
   const minds = threadLines(state, groups.filter(onlyMinds).flatMap(group => group.rows)).feelings;

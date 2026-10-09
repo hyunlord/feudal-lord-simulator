@@ -36,6 +36,8 @@ const RELATIVES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   steward: { head: "영주", spouse: "영주의 배우자", child: "영주의 자녀", kin: "영주의 친척" },
 };
 const relative = (me: string, them: string) => RELATIVES[me]?.[them] ?? ROLES[them] ?? them;
+/** SUIT-THREAD (lordplay2 ⑥): the engine's parents and children (`persons.parents`), as the birth news names them, and the marriage's couple. */
+const KINSHIP: Readonly<Record<"father" | "mother" | "child" | "spouse", string>> = { father: "아버지", mother: "어머니", child: "자녀", spouse: "배우자" };
 /** UI-7: with the young stages (a baby, a toddler: PERSON-1a LN-6). */
 const PORTRAIT_STAGES: Readonly<Record<string, string>> = { pool: "", baby: "아기", infant: "아기", toddler: "유아", child: "아이", young: "청년", mature: "장년", old: "노년" };
 const signed = (value: number) => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "0";
@@ -150,7 +152,9 @@ export const CHRONICLE_SCREEN_COPY = {
   lifeHeading: "생애",
   lifeEmpty: "아직 남긴 기록이 없습니다",
   relationsHeading: "관계",
-  relation: (me: string, them: string, name: string) => `${relative(me, them)} ${name}`,
+  /** `kin`: the engine's parent or child; `manor`: the lord's household, whose head is the lord (a kinsman's "영주"). */
+  relation: (me: string, them: string, name: string, kin: "father" | "mother" | "child" | "spouse" | null = null, manor = false) =>
+    `${kin !== null ? KINSHIP[kin] : relative(manor && me === "kin" ? "steward" : me, them)} ${name}`,
   survivors: "남은 식구",
   employment: (office: string) => `맡은 일: ${office}`,
   manager: (building: string) => `${building} 관리`,

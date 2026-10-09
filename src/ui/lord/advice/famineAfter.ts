@@ -1,3 +1,5 @@
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../../content/buildingConfig";
+import { WEAK_POINTS } from "../../../content/historyCopy.ko";
 import { preparedness, type Preparedness } from "../../../engine/crisisReads";
 import type { GameState } from "../../../engine/engine.types";
 import { famineShortHouses } from "../../../engine/eventSchedule";
@@ -11,32 +13,36 @@ import { FAMINE_AFTER_COPY as COPY } from "./famineAfterCopy.ko";
 // households its price still shuts out (`famineShortHouses`, the famine card's own count) and the engine's preparedness
 // (`preparedness`, the same as `crisisReview(state).now`: its weak points and their numbers); none left says what was
 // checked, with its numbers — and, in lord mode, the next condition the lord can set: the lord's first lever
-// (lordAdvice: a waiting request, a zone, the policy, a subsidy) for the first weak point, in the engine's order, that a
-// town project answers. Which project answers
-// which weak point is the screen's reading of the point's own words (no granary → a granary, no market → a market, the
-// stores under a season → the fields); the engine names no lever per weak point (docs/requests/engine-play2-reads.md).
-// Households already short, and those the price shuts out, have no project of their own here. Read on every sampled state while the famine lasts
-// (storyBeats): `preparedness` counts the buildings and the short households, `lordLevers` reads the policy weights.
+// (lordAdvice: a waiting request, a zone, the policy, a subsidy) for the first weak point, in the engine's order, that
+// has a town project. SUIT-THREAD: which project answers which weak point is the engine's (`preparedness().levers`, a
+// building kind or `zone:<kind>`); households already short have none (relief feeds them), and those the price shuts out
+// have no project here either. Read on every sampled state while the famine lasts (storyBeats): `preparedness` counts
+// the buildings and the short households, `lordLevers` reads the policy weights.
 
 type WeakPoint = Preparedness["weakPoints"][number];
 
-const NEED: Readonly<Partial<Record<WeakPoint, TownNeed>>> = {
-  no_granary: { kind: "building", building: "granary" }, no_market: { kind: "building", building: "market" }, food_under_a_season: { kind: "arable" },
-};
+/** The engine's project for a weak point as the lord's advice reads a need: `zone:arable` the fields, else a building. */
+function needOfProject(project: string | null): TownNeed | null {
+  if (project === null) return null;
+  if (project === "zone:arable") return { kind: "arable" };
+  return project in BUILDING_CONFIG_BY_KIND ? { kind: "building", building: project as BuildingKind } : null;
+}
 
 const answered = (state: GameState): boolean => (famineStatus(state)?.response ?? null) !== null;
 
+/** A weak point in the chronicle's own words (the engine's WEAK_POINTS), with the engine's number where it has one. */
 function pointWords(now: Preparedness, point: WeakPoint): string {
+  const words = WEAK_POINTS[point] ?? point;
   switch (point) {
-    case "food_under_a_season": return COPY.points.food_under_a_season(now.foodDays);
-    case "households_short": return COPY.points.households_short(now.shortHouseholds);
-    default: return COPY.points[point]();
+    case "food_under_a_season": return now.foodDays === null ? words : COPY.withDays(words, now.foodDays);
+    case "households_short": return COPY.withCount(words, now.shortHouseholds);
+    default: return words;
   }
 }
 
 function needOf(now: Preparedness): TownNeed | null {
-  const point = now.weakPoints.find(entry => NEED[entry] !== undefined);
-  return point === undefined ? null : NEED[point]!;
+  for (const lever of now.levers) { const need = needOfProject(lever.project); if (need !== null) return need; }
+  return null;
 }
 
 /** The town need behind the first weak point a project answers (null: the famine not answered, or no such point). */

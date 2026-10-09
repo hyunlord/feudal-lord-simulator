@@ -5,6 +5,7 @@ import { GROOM_RELATION_KO } from "../../../content/historyCopy.ko";
 import type { Acceptance, AcceptanceReasonName, AcceptanceTier, MarriagePlan, MarriageStage, Negotiation, Term, TermKind } from "../../../engine/diplomacy.types";
 import type { GameState } from "../../../engine/engine.types";
 import { estatePerson, estatesOf, LORD } from "../../../engine/estates";
+import { lordMattersDue } from "../../../engine/lordDue";
 import { lordshipOf } from "../../../engine/lordshipState";
 import { marriageCandidates, marriageDecisionDue, marriageGrooms, marriageRefusal, MARRIAGE_ESTATE_ID, type MarriageRefusal } from "../../../engine/marriage";
 import { counterpartEstate, debtInstalmentCap, debtInstalmentYears, diplomacyOf, evaluateOffer, jointurePiece, materialCeiling } from "../../../engine/negotiation";
@@ -307,6 +308,12 @@ function nameOf(state: GameState, id: string | undefined): string | null {
   return person === undefined ? null : lordPersonRow(state, person).name;
 }
 
+/** SUIT-THREAD: the will's deadline as the engine sets it (`lordMattersDue` dueTick), as its season. */
+function willDueText(state: GameState, plan: MarriagePlan): string {
+  const due = lordMattersDue(state).find(matter => matter.kind === "will_change" && matter.id === plan.negotiationId)?.dueTick ?? null;
+  return due === null ? COPY.willDueOpen : COPY.willDue(dateOf(state, due));
+}
+
 export function timelineView(state: GameState, plan: MarriagePlan): TimelineView {
   const negotiation = diplomacyOf(state).negotiations.find(entry => entry.id === plan.negotiationId);
   const contracted = negotiation === undefined ? [] : negotiation.counter?.terms ?? negotiation.terms;
@@ -320,7 +327,8 @@ export function timelineView(state: GameState, plan: MarriagePlan): TimelineView
   events.sort((a, b) => a.tick - b.tick);
   const details = [
     plan.brotherInLawId === undefined ? null : COPY.brotherInLaw(nameOf(state, plan.brotherInLawId) ?? COPY.rivalFallback),
-    plan.willAnswer === undefined ? null : COPY.willAnswer(COPY.willAnswers[plan.willAnswer]),
+    // SUIT-THREAD: an answer the deadline gave (the engine's `willLapsed`) says so, not that the lord chose it.
+    plan.willAnswer === undefined ? null : COPY.willAnswer(plan.willLapsed === true ? COPY.willLapsed : COPY.willAnswers[plan.willAnswer]),
     plan.rival === undefined ? null : COPY.rival(nameOf(state, plan.rival) ?? COPY.rivalFallback),
     plan.jointurePieceId === undefined ? null : COPY.jointure(pieceWord(plan.jointurePieceId), plan.jointureSettled === true),
     plan.deferredDebt === undefined ? null : COPY.deferred(money(plan.deferredDebt), plan.stage === "inherited"),
@@ -331,7 +339,7 @@ export function timelineView(state: GameState, plan: MarriagePlan): TimelineView
   return { phase: "contract", houses: houses(state), stage: plan.stage, stageWord: COPY.stages[plan.stage],
     couple: COPY.couple(nameOf(state, plan.groomId) ?? COPY.ourHouse, nameOf(state, plan.brideId) ?? COPY.theirHouseFallback),
     contracted: COPY.contractedOn(dateOf(state, plan.contractedTick)), rows: contracted.map(treatyRow), events, details, outcome,
-    due, dueText: due === "will_change" ? COPY.willDue : due === "contested" ? COPY.contestedDue : null,
+    due, dueText: due === "will_change" ? willDueText(state, plan) : due === "contested" ? COPY.contestedDue : null,
     suitFocus: plan.stage === "contested" ? suit?.id ?? plan.claimId : null,
     last: plan.stage === "contracted" ? lastAnswer(negotiation) : null, seal: "stamped" };
 }

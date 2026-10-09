@@ -4,14 +4,14 @@ import { Button } from "../../kit";
 import type { LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
 import { useUiParts } from "../uiPartArt";
 import { LORD_LEDGER_COPY as COPY } from "./ledgerCopy.ko";
-import { ledgerView, PROMISE_MARK, type PromiseRow, type Shut, type SuitRow } from "./ledgerModel";
-import type { GameAction } from "../../../state/gameStore.types";
+import { ledgerView, PROMISE_MARK, type PromiseRow } from "./ledgerModel";
+import { ClaimItem, ShutLine, SuitItem, ThreatsSection } from "./SuitItems";
 
 // LM-R2 (ledger area): the lord screen's 약속·소송 — the promise ledger (an open book: the promises to keep on the left
 // page, the kept and broken on the right, the spine between them 24 px wide), the registry's timed terms, and the suit
-// track (the lord's claims with the engine's filing refusal, his suits stage by stage with evidence, patron, hearing and
-// enforcement, and the neighbours' suits against him, shown only). Every press is the game's own command; a press the
-// game would refuse now is shut (ledgerModel `would`). The Wave 35 parts (wave35-promises, litigation_track) are drawn
+// track (the lord's claims with the engine's filing outlook, his suits stage by stage with evidence, patron, hearing and
+// enforcement, the houses' suits against him with his defence, and the forcible entries forewarned — SuitItems.tsx).
+// Every press is the game's own command; a press the game would refuse now is shut (the engine's reason, or `would`). The Wave 35 parts (wave35-promises, litigation_track) are drawn
 // once loaded; until then, or when one fails, the kit's light frame and the text labels stand (uiPartArt).
 
 export const LEDGER_PARTS = {
@@ -26,10 +26,6 @@ export const ledgerGate: LordNavGate = state => lordMode(state) ? null : COPY.cl
 type Parts = ReturnType<typeof useUiParts>;
 const Icon = ({ style, className }: { readonly style: CSSProperties | null; readonly className: string }) =>
   style === null ? null : <span className={className} aria-hidden="true" style={style} />;
-
-function ShutLine({ shut }: { readonly shut: Shut }) {
-  return shut.reason === null ? null : <span className="lord-ledger-shut" role="status">{shut.reason}</span>;
-}
 
 function PromiseItem({ row, parts, onKeep }: { readonly row: PromiseRow; readonly parts: Parts; readonly onKeep: (id: string) => void }) {
   return (
@@ -52,63 +48,6 @@ function PromiseItem({ row, parts, onKeep }: { readonly row: PromiseRow; readonl
           <ShutLine shut={row.keep} />
         </div>}
       </div>
-    </li>
-  );
-}
-
-function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly parts: Parts; readonly dispatch: LordPanelProps["dispatch"] }) {
-  // The lord's commands as the other lord screens send them: a press names the command, the game dispatches it (B9 R4).
-  const command = (action: GameAction) => dispatch(action);
-  const track = parts.frame(LEDGER_PARTS.track);
-  const evidence = row.evidence ?? [];
-  const bringable = evidence.some(entry => entry.bring?.enabled === true);
-  return (
-    <li className="lord-ledger-suit" data-suit={row.id} data-claim={row.claimId} data-stage={row.stage} data-neighbour={row.neighbour ? "true" : undefined}
-      data-focused={row.focused ? "true" : undefined} aria-current={row.focused ? "true" : undefined}>
-      <p className="lord-ledger-suit-title">{row.what}</p>
-      <p className="lord-ledger-line">{COPY.pair(row.party, row.since)}</p>
-      <ol className="lord-ledger-track" aria-label={COPY.track} data-frame={track?.dataFrame ?? "light"} style={track?.style}>
-        {row.track.map(step => <li key={step.stage} className="lord-ledger-step" data-step={step.stage} data-at={step.at}
-          aria-current={step.at === "now" ? "step" : undefined}>{step.label}</li>)}
-      </ol>
-      {row.hearing === null ? null : <p className="lord-ledger-line" data-hearing="true">{COPY.pair(COPY.hearingHeading, row.hearing)}</p>}
-      {row.verdict === null ? null : <p className="lord-ledger-line" data-verdict="true">{row.verdict}</p>}
-      {row.evidence === null ? null : <div className="lord-ledger-block" data-block="evidence">
-        <h5>{COPY.evidenceHeading}</h5>
-        <ul className="lord-ledger-options">
-          {evidence.filter(entry => entry.given !== null || bringable).map(entry => <li key={entry.kind} data-evidence={entry.kind}>
-            <span className="lord-ledger-option-name">{entry.label}</span>
-            {entry.given !== null ? <span className="lord-ledger-option-note" data-given="true">{entry.given}</span>
-              : <Button type="button" className="lord-ledger-bring" data-bring={entry.kind} variant="secondary" size="md" disabled={entry.bring?.enabled !== true}
-                aria-label={COPY.evidenceLabel(entry.label)} onPress={() => { if (entry.bring?.enabled === true) command({ type: "add_suit_evidence", suitId: row.id, evidence: entry.kind }); }}>
-                {COPY.evidenceBring}</Button>}
-          </li>)}
-        </ul>
-        {bringable ? null : <span className="lord-ledger-shut" role="status">{COPY.keepShut}</span>}
-      </div>}
-      {row.patron === null ? null : <div className="lord-ledger-block" data-block="patron">
-        <h5>{COPY.patronHeading}</h5>
-        {row.patron.chosen !== null ? <p className="lord-ledger-line" data-patron="chosen">{row.patron.chosen}</p>
-          : row.patron.options.length === 0 ? <p className="lord-ledger-line" data-patron="none">{COPY.patronNone}</p>
-          : <ul className="lord-ledger-options">
-            {row.patron.options.map(option => <li key={option.factionId} data-patron={option.factionId}>
-              <span className="lord-ledger-option-name">{option.name}</span><span className="lord-ledger-option-note">{option.relation}</span>
-              <Button type="button" className="lord-ledger-patron" data-seek={option.factionId} variant="secondary" size="md" aria-label={COPY.patronLabel(option.name)}
-                onPress={() => command({ type: "seek_suit_patron", suitId: row.id, factionId: option.factionId })}>{COPY.patronSeek}</Button>
-            </li>)}
-          </ul>}
-      </div>}
-      {row.enforce === null ? null : <div className="lord-ledger-block" data-block="enforce">
-        <h5>{COPY.enforceHeading}</h5>
-        {row.enforce.lines.map(line => <p key={line} className="lord-ledger-line">{line}</p>)}
-        {row.enforce.button === null ? null : <div className="lord-ledger-action">
-          <Button type="button" className="lord-ledger-enforce" data-enforce={row.id} variant="secondary" size="md" disabled={!row.enforce.button.enabled}
-            aria-label={COPY.enforceLabel(row.what)} onPress={() => { if (row.enforce?.button?.enabled === true) command({ type: "enforce_possession", suitId: row.id }); }}>
-            {COPY.enforce}</Button>
-          <ShutLine shut={row.enforce.button} />
-        </div>}
-      </div>}
-      <p className="lord-ledger-line lord-ledger-costs">{row.costs}</p>
     </li>
   );
 }
@@ -160,27 +99,16 @@ export function LedgerPanel({ state, dispatch, focus }: LordPanelProps): ReactEl
         <h3>{COPY.suitsHeading}</h3>
         <h4>{COPY.claimsHeading}</h4>
         {view.claims.length === 0 ? <p className="lord-ledger-empty" data-empty="claims">{COPY.noClaims}</p>
-          : <ul className="lord-ledger-claims">{view.claims.map(claim => <li key={claim.id} className="lord-ledger-claim" data-claim={claim.id}
-            data-focused={claim.focused ? "true" : undefined} aria-current={claim.focused ? "true" : undefined}>
-            <div className="lord-ledger-claim-body"><p className="lord-ledger-suit-title">{claim.what}</p><p className="lord-ledger-line">{claim.line}</p>
-              {claim.hearing === null ? null : <p className="lord-ledger-line lord-ledger-claim-hearing" data-claim-hearing="true">{claim.hearing}</p>}</div>
-            <div className="lord-ledger-action">
-              <Button type="button" className="lord-ledger-file" data-file={claim.id} data-cost={claim.cost === null ? undefined : "true"} variant="secondary" size="md"
-                disabled={claim.refusal !== null} aria-label={claim.cost === null ? COPY.fileSuitLabel(claim.what) : COPY.fileSuitCostLabel(claim.what, claim.cost)}
-                onPress={() => { if (claim.refusal === null) fileSuit(claim.id); }}>{claim.cost === null ? COPY.fileSuit : COPY.fileSuitCost(claim.cost)}</Button>
-              {claim.refusal === null ? null : <span className="lord-ledger-shut" role="status" data-refusal="true">{claim.refusal}</span>}
-            </div>
-          </li>)}</ul>}
+          : <ul className="lord-ledger-claims">{view.claims.map(claim => <ClaimItem key={claim.id} claim={claim} onFile={fileSuit} />)}</ul>}
         {view.suits.length === 0 ? <p className="lord-ledger-empty" data-empty="suits">{COPY.noSuits}</p>
-          : <ul className="lord-ledger-suits">{view.suits.map(row => <SuitItem key={row.id} row={row} parts={parts} dispatch={dispatch} />)}</ul>}
+          : <ul className="lord-ledger-suits">{view.suits.map(row => <SuitItem key={row.id} row={row} parts={parts} track={LEDGER_PARTS.track} dispatch={dispatch} />)}</ul>}
       </section>
       <section className="lord-ledger-section" data-section="neighbour-suits">
         <h3>{COPY.neighbourHeading}</h3>
-        {view.neighbourSuits.length === 0 ? <p className="lord-ledger-empty" data-empty="neighbour-suits">{COPY.noNeighbour}</p> : <>
-          <p className="lord-ledger-line">{COPY.neighbourNote}</p>
-          <ul className="lord-ledger-suits">{view.neighbourSuits.map(row => <SuitItem key={row.id} row={row} parts={parts} dispatch={dispatch} />)}</ul>
-        </>}
+        {view.neighbourSuits.length === 0 ? <p className="lord-ledger-empty" data-empty="neighbour-suits">{COPY.noNeighbour}</p>
+          : <ul className="lord-ledger-suits">{view.neighbourSuits.map(row => <SuitItem key={row.id} row={row} parts={parts} track={LEDGER_PARTS.track} dispatch={dispatch} />)}</ul>}
       </section>
+      {view.threats === null ? null : <ThreatsSection view={view.threats} dispatch={dispatch} />}
     </section>
   );
 }

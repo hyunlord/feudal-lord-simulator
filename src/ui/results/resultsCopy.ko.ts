@@ -47,6 +47,12 @@ export const RESULTS_COPY = {
     chipTitle: (year: number, by: "lord" | "steward" | "lapsed", subject: string) => `${year}년 ${BY_WORDS[by]} 때문에: ${subject}`,
     /** The record's line after the decision behind it ("1300년 당신의 결정 때문에 — …"); `part`: one cause among others. */
     because: (year: number, by: "lord" | "steward" | "lapsed", part: boolean) => part ? `${year}년 ${BY_WORDS[by]}도 한몫해` : `${year}년 ${BY_WORDS[by]} 때문에`,
+    /** SUIT-THREAD (Astra lordplay2 ④): a decision that left the town ready for a crisis rather than caused it (the
+     * engine's `because[].key === "crisis_prepared"`): the head says what it left, not "때문에". */
+    prepared: (year: number) => `${year}년 결정이 남긴 대비`,
+    preparedChip: (year: number, subject: string) => `${year}년 결정이 남긴 대비: ${subject}`,
+    /** The bad harvest's news: each decision that left the town ready when it came (`because[].relation === "preparedness"`). */
+    preparedThen: (about: string) => `그때 이 결정이 남긴 대비 — ${about}`,
     prefixed: (because: string, sentence: string) => `${because} — ${sentence}`,
     part: (sentence: string) => `${sentence} (여러 까닭 가운데 하나)`,
     /** What the decision was about and its answer ("장원 청원 '공동 목초지': 들어준다"). */

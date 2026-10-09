@@ -4,6 +4,7 @@ import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { GameState } from "../../../engine/engine.types";
 import { estatesOf, LORD } from "../../../engine/estates";
 import { faction } from "../../../engine/factions";
+import { lordMattersDue } from "../../../engine/lordDue";
 import { marriageDecisionDue } from "../../../engine/marriage";
 import { diplomacyOf } from "../../../engine/negotiation";
 import { personDisplayName } from "../../../engine/persons";
@@ -13,6 +14,7 @@ import type { EstatePetition } from "../../../engine/stewardship.types";
 import { lordMode } from "../../../engine/townAgency";
 import type { GameAction } from "../../../state/gameStore.types";
 import type { DecisionCardView, DecisionChoiceView } from "../../decisionCard/decisionCardTypes";
+import { dateWord } from "../../decisionCard/answerWords";
 import { lordAnswer } from "../../decisionCard/families/lordOutcome";
 import { LORD_OUTCOME_COPY as OUTCOME } from "../../decisionCard/families/lordOutcomeCopy.ko";
 import { calendarDays } from "../../gameTimeCopy.ko";
@@ -83,14 +85,26 @@ export function marriageDecisionHead(state: GameState): MarriageDecisionHead | n
   if (due === null || plan === undefined) return null;
   const estate = estateName(state, plan.estateId);
   if (due === "will_change") return { kind: due, claimId: plan.claimId, estate, title: COPY.willTitle, line: COPY.willLine(estate), suit: "", focus: plan.claimId };
-  const suit = estatesOf(state).suits.find(entry => entry.claimId === plan.claimId && entry.plaintiff === LORD && entry.stage !== "closed");
+  const suits = estatesOf(state).suits.filter(entry => entry.claimId === plan.claimId && entry.plaintiff === LORD);
+  const suit = suits.find(entry => entry.stage !== "closed");
+  // Astra lordplay2 ③: a suit that ended is not "no suit" — its verdict and the day it closed (the newest).
+  const ended = suit !== undefined ? undefined : suits.filter(entry => entry.stage === "closed").sort((a, b) => b.stageSince - a.stageSince)[0];
+  const suitLine = suit !== undefined ? COPY.contestSuit(COPY.suitStage[suit.stage] ?? suit.stage)
+    : ended === undefined ? COPY.contestNoSuit : COPY.contestEnded(ended.verdict === undefined ? null : COPY.contestVerdict[ended.verdict], dateWord(state, ended.stageSince));
   return { kind: due, claimId: plan.claimId, estate, title: COPY.contestTitle, line: COPY.contestLine(estate, holderName(state, plan.rival)),
-    suit: suit === undefined ? COPY.contestNoSuit : COPY.contestSuit(COPY.suitStage[suit.stage] ?? suit.stage), focus: suit?.id ?? plan.claimId };
+    suit: suitLine, focus: suit?.id ?? ended?.id ?? plan.claimId };
 }
 
 /** A claim's strength by its id, or null. */
 const claimStrength = (state: GameState, claimId: string | undefined) =>
   claimId === undefined ? null : estatesOf(state).claims.find(claim => claim.id === claimId)?.strength ?? null;
+
+/** SUIT-THREAD: the will's deadline as the engine sets it (`lordMattersDue` dueTick), as its season; null: none given. */
+function willDueDate(state: GameState): string | null {
+  const plan = diplomacyOf(state).marriage;
+  const due = lordMattersDue(state).find(matter => matter.kind === "will_change" && matter.id === plan?.negotiationId)?.dueTick ?? null;
+  return due === null ? null : dateWord(state, due);
+}
 
 /** The father's will to answer, or the inheritance contested (its suit), as the lord's card shows it; null: neither. */
 export const marriageDecisionView = perState((state: GameState): MarriageDecisionView | null => {
@@ -106,7 +120,7 @@ export const marriageDecisionView = perState((state: GameState): MarriageDecisio
   const choice = (id: "favour" | "support_promise" | "let_it_be", label: string, later: readonly string[] = []) =>
     answer(state, id, label, { type: "answer_will_change", choice: id }, id === "favour" ? COPY.refusedTreasury : COPY.refusedNow, { later });
   return { kind: "will_change", estate, card: { ...base, from: COPY.willFrom(estate), situation: COPY.willSituation(estate),
-    stake: COPY.willStake(estate, claimStrength(state, head.claimId) ?? 0), deadline: COPY.willDeadline,
+    stake: COPY.willStake(estate, claimStrength(state, head.claimId) ?? 0), deadline: COPY.willDeadline(willDueDate(state)),
     choices: [choice("favour", COPY.willFavour), choice("support_promise", COPY.willSupport), choice("let_it_be", COPY.willLetBe, [COPY.willLetBeLater])] } };
 });
 

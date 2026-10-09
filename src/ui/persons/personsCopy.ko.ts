@@ -16,6 +16,18 @@ const LORD_FAMILY: Readonly<Record<string, Readonly<Record<"female" | "male", st
   head: { male: "영주", female: "영주" }, spouse: { female: "영주 부인", male: "영주의 부군" }, child: { male: "영주의 아들", female: "영주의 딸" },
   kin: { female: "영주의 친족", male: "영주의 친족" },
 };
+/** SUIT-THREAD (lordplay2 ⑥, TOP10 9): a kinsman by the engine's `lord-kin:<relation>` tag; a child of a kinsman's
+ * marriage is `<his relation>_child` ("영주의 사촌의 아들"), of the lord's son's `grandchild`; his bride `<his relation>_wife`. */
+const LORD_KIN: Readonly<Record<string, string>> = { son: "아들", brother: "동생", nephew: "조카", cousin: "사촌", kin: "친족" };
+const CHILD_WORD: Readonly<Record<"female" | "male", string>> = { male: "아들", female: "딸" };
+const GRANDCHILD: Readonly<Record<"female" | "male", string>> = { male: "손자", female: "손녀" };
+function lordKinWord(kin: string | null, sex: "female" | "male"): string | null {
+  if (kin === null) return null;
+  if (kin === "grandchild") return `영주의 ${GRANDCHILD[sex]}`;
+  if (kin.endsWith("_child")) { const parent = LORD_KIN[kin.slice(0, -"_child".length)]; return parent === undefined ? null : `영주의 ${parent}의 ${CHILD_WORD[sex]}`; }
+  if (kin.endsWith("_wife")) { const husband = LORD_KIN[kin.slice(0, -"_wife".length)]; return husband === undefined ? null : `영주의 ${husband}의 아내`; }
+  return LORD_KIN[kin] === undefined ? null : `영주의 ${LORD_KIN[kin]}`;
+}
 /** UI-7: the young stages (PERSON-1a LN-6: a baby 0–2, a toddler 3–5 — their faces from the common pool or the lineage set). */
 const STAGES: Readonly<Record<string, string>> = { pool: "", baby: "아기", infant: "아기", toddler: "유아", child: "아이", young: "청년", mature: "장년", old: "노년" };
 const finalOf = (word: string) => { const last = word.charCodeAt(word.length - 1); return last >= 0xac00 && last <= 0xd7a3 ? (last - 0xac00) % 28 : 0; };
@@ -36,7 +48,9 @@ export const PERSONS_COPY = {
   manorCountrySeat: (year: number) => `영주의 집안 · ${year}년부터 시골 장원`,
   /** UI-7: the rights register's house page — the lord's family and the steward. */
   lordHouseholdHeading: "영주의 가솔",
-  lordFamilyLine: (role: string, sex: "female" | "male", age: string) => `${LORD_FAMILY[role]?.[sex] ?? ROLES[role] ?? role} · ${age}`,
+  /** `kin`: the engine's `lord-kin:` relation (null: none — the lord, his wife and children by their manor role). */
+  lordFamilyLine: (role: string, sex: "female" | "male", age: string, kin: string | null = null) =>
+    `${lordKinWord(kin, sex) ?? LORD_FAMILY[role]?.[sex] ?? ROLES[role] ?? role} · ${age}`,
   membersHeading: "식구",
   membersEmpty: "사는 사람이 없습니다",
   membersAll: (count: number) => `식구 ${count}명 모두 보기`,
