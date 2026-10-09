@@ -38,10 +38,12 @@ if (out && (testFile || role)) {
   // whole (recursive, glob, a copy): `dirs`. The rest of the record: files read, paths looked for and missed.
   const listing = args => (args.slice(1).some(arg => arg !== null && typeof arg === "object" && arg.recursive === true) ? dirs : lists);
   const setOf = (into, args) => (typeof into === "function" ? into(args) : into);
+  // A file opened to write or append is no read (the telemetry plugin appends to its own log): open's flags say which.
+  const writesOnly = (name, args) => /^open(Sync)?$/.test(name) && typeof args[1] === "string" && /^[wa]/.test(args[1]) && !args[1].includes("+");
   const syncReader = (target, name, into) => {
     const original = target[name]; if (typeof original !== "function") return;
     const wrap = fn => function traced(...args) {
-      const path = pathOf(args[0]);
+      const path = writesOnly(name, args) ? null : pathOf(args[0]);
       try {
         const result = fn.apply(this, args);
         // existsSync false, or a stat with { throwIfNoEntry: false } that found nothing: a path looked for and missed.
@@ -54,7 +56,7 @@ if (out && (testFile || role)) {
   const asyncReader = (target, name, into) => {
     const original = target[name]; if (typeof original !== "function") return;
     const wrap = fn => function traced(...args) {
-      const path = pathOf(args[0]);
+      const path = writesOnly(name, args) ? null : pathOf(args[0]);
       const callback = typeof args.at(-1) === "function" ? args.length - 1 : -1;
       if (callback >= 0) {
         const done = args[callback];
@@ -95,18 +97,34 @@ if (out && (testFile || role)) {
     const original = childProcess[name]; if (typeof original !== "function") continue;
     childProcess[name] = keepAll(function marked(...args) { const child = program(name, args); children.add(child); if (!allowedChildren.has(child) && !followed(name, args, child)) untraceable.add(role === undefined ? "child process" : `child process: ${child}`); return original.apply(this, args); }, original);
   }
-  // A socket path (tsx talks to its parent through one) is no network; a host or port is.
+  // The network: a host and port. Under a role, a connection to the loopback ports FLS_TRACE_LOOPBACK names (the traced
+  // dev server, which records what it serves) is followed; anything else cannot be. A socket path is no network (tsx
+  // talks to its parent through one).
+  const loopbackPorts = new Set((process.env.FLS_TRACE_LOOPBACK ?? "").split(",").map(port => port.trim()).filter(Boolean));
+  const network = (host, port) => {
+    const target = `${host ?? "localhost"}:${port ?? "?"}`;
+    if (role !== undefined && /^(127\.0\.0\.1|localhost|::1|\[::1\])$/.test(String(host ?? "localhost")) && loopbackPorts.has(String(port))) { children.add(`loopback:${port}`); return; }
+    untraceable.add(role === undefined ? "network" : `network: ${target}`);
+  };
+  const urlTarget = value => { try { const url = new URL(String(value?.url ?? value)); return [url.hostname, url.port || (url.protocol === "https:" ? "443" : "80")]; } catch { return [undefined, undefined]; } };
   for (const name of ["connect", "createConnection"]) {
     const original = net[name]; if (typeof original !== "function") continue;
-    net[name] = function marked(...args) {
-      const [first] = args;
+    net[name] = keepAll(function marked(...args) {
+      const [first, second] = args;
       const ipc = typeof first === "string" ? !/^\d+$/.test(first) : first !== null && typeof first === "object" && typeof first.path === "string";
-      if (!ipc) untraceable.add("network");
+      if (!ipc) { if (first !== null && typeof first === "object") network(first.host, first.port); else network(typeof second === "string" ? second : undefined, first); }
       return original.apply(this, args);
-    };
+    }, original);
   }
-  mark(http, ["request", "get"], "network"); mark(https, ["request", "get"], "network");
-  if (typeof globalThis.fetch === "function") { const original = globalThis.fetch; globalThis.fetch = function marked(...args) { untraceable.add("network"); return original.apply(this, args); }; }
+  for (const target of [http, https]) for (const name of ["request", "get"]) {
+    const original = target[name]; if (typeof original !== "function") continue;
+    target[name] = keepAll(function marked(...args) {
+      const [first] = args;
+      if (typeof first === "string" || first instanceof URL) network(...urlTarget(first)); else network(first?.hostname ?? first?.host, first?.port ?? (target === https ? 443 : 80));
+      return original.apply(this, args);
+    }, original);
+  }
+  if (typeof globalThis.fetch === "function") { const original = globalThis.fetch; globalThis.fetch = function marked(...args) { network(...urlTarget(args[0])); return original.apply(this, args); }; }
   const Worker = workerThreads.Worker;
   // esbuild's own service thread (tsx compiles the TypeScript with it) reads nothing of the repository; any other is a thread we cannot follow.
   const esbuild = /[\\/]node_modules[\\/]esbuild[\\/]lib[\\/]main\.js$/;
