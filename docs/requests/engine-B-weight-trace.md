@@ -185,7 +185,7 @@ seed3 성숙 등록 root14건의 엄격한3년 후속이 없다(관계 hold8, �
 
 [원자료 진단](../verification/eb-weight/invalid-attempts/report.md), [정확한 occurrence·동일 tick 명령·history·trace](../verification/eb-weight/invalid-attempts/evidence.json.gz), [SHA·출처](../verification/eb-weight/invalid-attempts/provenance.json). 전체 invalid는 seed1 1건(051), seed2 2건(053·010), seed3 2건(059·010)이다. 010·051·059의 합계4회 제시는 모두 invalid이며 성공한 답변은0이다. 따라서 이 세 ID를 **성공 답변의 UI 캡처 누락**으로 분류하지 않는다. 다만 무효 시도에도 `decision.card` history가 남으므로 기록 자체가 없다고 해석해서도 안 된다.
 
-010·051의 세 사례는 동일 tick에서 해당 bound claim의 `file_suit` 기록이 registry 답변 시도보다 먼저 있다. `estateSuits.ts:100`은 claim을 open에서 suing으로 바꾸므로 open 청구를 요구하는 재바인딩을 막기에 충분하다. 059도 같은 영지에 대한 `set_estate_oversight(steward)` h-002125가 시도 h-002131보다 먼저 있어 direct 조건과 충돌한다. `lordBot.ts:60`은 한 상태에서 명령 목록을 만들고 소송·청지기 명령 뒤에 registry 답변을 넣으며, 실행기는 이를 순서대로 적용한다. 이는 **실제 선행 명령 기록과 소스로 확인한 충분한 차단 조건**이다. 명령 직전 상태를 재현하거나 최초 실패 predicate를 직접 관측한 것은 아니며, 어댑터 바인딩 결함을 입증하지 않는다. 053의 정확한 실패 조건은 미확정이다.
+010·051의 세 사례는 동일 tick에서 해당 bound claim의 `file_suit` 기록이 registry 답변 시도보다 먼저 있다. `estateSuits.ts:100`은 claim을 open에서 suing으로 바꾸므로 open 청구를 요구하는 재바인딩을 막기에 충분하다. 059도 같은 영지에 대한 `set_estate_oversight(steward)` h-002125가 시도 h-002131보다 먼저 있어 direct 조건과 충돌한다. `lordBot.ts:60`은 한 상태에서 명령 목록을 만들고 소송·청지기 명령 뒤에 registry 답변을 넣으며, 실행기는 이를 순서대로 적용한다. 이는 **실제 선행 명령 기록과 소스로 확인한 충분한 차단 조건**이다. 명령 직전 상태를 재현하거나 최초 실패 predicate를 직접 관측한 것은 아니며, 어댑터 바인딩 결함을 입증하지 않는다. 053의 정확한 재검사 실패는 아래 원본 장부 후속 확인으로 해결했다.
 
 별도 엔진 검토점: invalid5건 모두 시도 선택지를 담은 history card가 있으나 자체 answer trace와 이를 가리키는 후속 because는0이다. `history.ts:255,278`의 `recordDecision`은 invalid 상태 변경도 변경된 상태로 받아 card를 쓰지만, `decisionTrace.ts:193`의 `traceCommand`는 answered가 아니면 trace를 만들지 않는다. 무효 시도를 성공한 결정처럼 기록하지 않는 history 계약 검토가 필요하다. B는 코어·UI를 수정하지 않았고, 이 관찰을 새 재현이나 실제 화면 검증으로 확대하지 않는다.
 
@@ -207,3 +207,13 @@ seed2에서 상태 변경·영주 agency가 관측된 선언2건은 trace kind/w
 ### 실제 계절 보고 네 사례와 표시 제한
 
 [실제 DGX 증거](../verification/eb-weight/season-report-f731537/README.md):058·034·144·163은 기존 정상 속도 조작으로 닫힌 철에 진입했고 해당 청지기 보고 행4/4가 나타났다. 독립 한 틱 출력과 presentation이 일치했다. 청지기 보고 자체 누락은 이 네 사례에서 재현되지 않았다.034·163 하단 결과는 캡처 밖이고058 결과의 행위자가 영주로 쓰인다. 렌더/콘텐츠의 전체 내용 접근성·행위자 문구 검토가 필요하다. 전수10회 보고·56건 because/가시성 완료로 확대하지 않는다.
+
+
+### 053 후속 확인: 같은 배치 지출 뒤1d
+
+[원본 보존 장부](../verification/eb-weight/invalid-attempts/053-retained-ledger.json.gz)는 seed2의9049 저장에서1015까지 모든 현금5행과 빈 rollups를 확인한다. 시작60−접수60+영지수입55−증서30−증인24=1d. claim1에는 증서·증인만 있고 court_roll은 없으므로, 이미 가진 증서 경로와20d가 필요한 재판기록 경로가 모두 실패한다. h-000049 registry.invalid가 앞선 증거 구매와 attempted roll h-000050 사이에 있다. 어댑터 실행 전 재바인딩 실패이며 own adapterbug는 입증되지 않았다. 새 시뮬레이션 없이 원본 보존 자료로 해결했다. 무효 시도 decision.card와 성공 trace의 기록 불일치 인계는 그대로 남는다.
+
+
+### 전체 무거운 답변의 자체 ID 연결과 합쳐진 root
+
+[836답변 전수 파일 대조](../verification/eb-weight/answer-replay-92bbc7d/README.md): 충분한3년 창816건 중 자체 답변 ID 직접 연결292건(35.78%), 관측 기간 부족20건 중 발견5건이다. 자체 root 성숙337건 중292건, 별도 root가 없는 성숙479건 중0건이다. 후자의469건에는 source/also·시각 범위로 맞는 유일한 root 후보의 답변 후 후속이 있으나 정식 멤버십/개별 답변 원인 증명은 아니다. 반복 답변의 실제 소속과 개별 결과를 연결하는 엔진 읽기 계약 요청을 유지한다. 직접 연결 부재를 게임 효과 부재로 바꾸지 않는다.

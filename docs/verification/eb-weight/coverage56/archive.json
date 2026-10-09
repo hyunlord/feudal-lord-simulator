@@ -1,23 +1,23 @@
 {
-  "description": "Actual original three-seed observations plus two paused browser archives; generator uses original local evidence paths and is retained as provenance, not a self-contained fresh replay.",
+  "description": "Original three-seed observations and paused UI preserved; adds four verified seed1 seasonal witnesses. Generator requires retained local evidence paths; not a self-contained replay.",
   "files": [
     {
       "file": "three-seed-2485af4.mjs.gz",
-      "bytes": 6317,
-      "sha256": "2fa9a62a2b58cf9bb9ed67f9c984360192e879b33ab92484ec8cec4d390ed90e",
-      "originalSha256": "1b2080a782e89fe4a124001a5d362daf247ff5ceff9d2132f9fb7b1f0d2fd25a"
+      "bytes": 8145,
+      "sha256": "55f17ff77c59e78f18b89007628bf61ef27dda62c77396dc1662ca755eccef5a",
+      "originalSha256": "a751fa2bb06e4ef06c6258a1d8d3dec08c8ca7d38ee0a898914f010fa97c6555"
     },
     {
       "file": "three-seed-2485af4.json.gz",
-      "bytes": 89669,
-      "sha256": "ba4c0dc815205ffea27eca9b78da7a73eeb8bddb18070f63fd7a1d05fdd56212",
-      "originalSha256": "1fc316c9467dca608b987d4a989284eb8cebf55ee9b1262daa2b4712fd95e61a"
+      "bytes": 95650,
+      "sha256": "65267a7d46e52cd0b22385625bffed6beae31e4837168db69c6ee954fac757cb",
+      "originalSha256": "22c9e148d03bdf5468ec36027fbaacc27b4b37d134d4342258717ade9f5d66da"
     },
     {
       "file": "three-seed-2485af4.md",
-      "bytes": 22622,
-      "sha256": "8146a6b71ccebb5fd232f9d5052e1295e0d06f6bce00cfd7850e6c388ce32d31",
-      "originalSha256": "8146a6b71ccebb5fd232f9d5052e1295e0d06f6bce00cfd7850e6c388ce32d31"
+      "bytes": 23632,
+      "sha256": "402e164f33a43ba005b387eb6501fffe17419cfdda99f88dc9c8982c39c0175d",
+      "originalSha256": "402e164f33a43ba005b387eb6501fffe17419cfdda99f88dc9c8982c39c0175d"
     }
   ]
 }
