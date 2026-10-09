@@ -46,6 +46,16 @@ function rowDelta(record: HistoryRecord): number | null {
   return null;
 }
 
+function rememberedAnswers(state: GameState) {
+  const owners = new Map<string, string>();
+  for (const answer of state.trace?.answers ?? []) for (const memory of answer.memoryEvidence)
+    owners.set(JSON.stringify([memory.factionId, memory.recordId, memory.tick, memory.reason]), answer.id);
+  return (state.factions?.factions ?? []).flatMap(faction => faction.memory.flatMap(memory => {
+    const decisionId = owners.get(JSON.stringify([faction.id, memory.recordId, memory.tick, memory.reason])) ?? memory.decisionId;
+    return decisionId === undefined ? [] : [{ actor: faction.id, delta: memory.delta, tick: memory.tick, recordId: memory.recordId, decisionId }];
+  }));
+}
+
 /**
  * DEC-TRACE §2 API (`traceInRange`): what followed decisions in [from, to) — the history's records with the decisions
  * behind them, and the factions' minds the decisions moved at once (their memories) — in time order.
@@ -61,20 +71,17 @@ export function traceInRange(state: GameState, fromTick: number, toTick: number)
         decisionId: because.decisionId, decisionTick: records.get(because.decisionId)?.tick ?? null });
     }
   }
-  for (const faction of state.factions?.factions ?? []) {
-    for (const memory of faction.memory) {
-      if (memory.decisionId === undefined || memory.tick < fromTick || memory.tick >= toTick) continue;
-      rows.push({ recordId: memory.recordId, tick: memory.tick, key: "relation", actor: faction.id, delta: memory.delta, part: false,
-        decisionId: memory.decisionId, decisionTick: records.get(memory.decisionId)?.tick ?? null });
-    }
+  for (const memory of rememberedAnswers(state)) {
+    if (memory.tick < fromTick || memory.tick >= toTick) continue;
+    rows.push({ ...memory, key: "relation", part: false, decisionTick: records.get(memory.decisionId)?.tick ?? null });
   }
   return rows.sort((left, right) => left.tick - right.tick || (left.recordId < right.recordId ? -1 : 1));
 }
 
 /** DEC-TRACE §2 API (`decisionRemembers`): who remembers a decision — the factions whose minds it moved, and by how much. */
 export function decisionRemembers(state: GameState, decisionId: string): readonly { readonly actor: string; readonly delta: number; readonly tick: number; readonly recordId: string }[] {
-  return (state.factions?.factions ?? []).flatMap(faction => faction.memory.filter(memory => memory.decisionId === decisionId)
-    .map(memory => ({ actor: faction.id, delta: memory.delta, tick: memory.tick, recordId: memory.recordId })));
+  return rememberedAnswers(state).filter(memory => memory.decisionId === decisionId)
+    .map(({ actor, delta, tick, recordId }) => ({ actor, delta, tick, recordId }));
 }
 
 export interface YearDecision {
@@ -108,7 +115,8 @@ export function yearReview(state: GameState, year: number): {
   readonly summarised: { readonly lord: number; readonly steward: number; readonly lapsed: number } } {
   const from = (year - scenarioOf(state).startYear) * YEAR;
   const to = from + YEAR;
-  const traced = new Map(traceOf(state).decisions.map(decision => [decision.id, decision] as const));
+  const trace = traceOf(state);
+  const traced = new Map([...trace.decisions, ...(trace.answers ?? [])].map(decision => [decision.id, decision] as const));
   const decisions = (state.history?.records ?? []).filter(record => record.kind === "decision" && record.tick >= from && record.tick < to && traced.has(record.id))
     .map(record => {
       const decision = traced.get(record.id)!;

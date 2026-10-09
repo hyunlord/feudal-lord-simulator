@@ -1,3 +1,5 @@
+import { linkAnswerLedgerReceipts } from './decisionTraceAnswerLedger';
+import { linkRuleAnswerReceipts, linkImmediateAnswerReceipts } from './decisionTraceAnswerReceipts';
 /**
  * DEC-TRACE §2 (docs/design/dec-trace.md, A4·A5·A6, P-C1·P-C2·P-C3): the thread of consequence, lord mode only.
  *
@@ -9,6 +11,7 @@
  *   decisions behind it in `because` — the main one first, `part` when it had other causes or other decisions a share.
  * The thread never changes the simulation; the faction acts (`factionActs.ts`) read the memories' decisions.
  */
+import { answerContributions, answerContributionsOn, retainAnswer, linkAnswerFactionReceipts } from './decisionTraceAnswers';
 import { v4Entry } from "./registryV4";
 import { MARKET_CHARTER_PETITION_ID } from "../content/chapterConfig";
 import { BALANCE } from "../content/balanceConfig";
@@ -40,8 +43,6 @@ export const TRACE_KEPT_TICKS = 10 * YEAR;
 const MEMORY_LINK_TICKS = 4;
 /** An off-map estate's mood counts as moved when it crosses a band this wide. */
 const ESTATE_MOOD_BAND = 20;
-/** At most this many decisions named behind one record (the render request's four). */
-const BECAUSE_MAX = 4;
 /** The kinds of building a chapter petition's acceptance opens (its consequence is the town's project of that kind). */
 const PETITION_OPENS: Readonly<Record<string, readonly string[]>> = { [MARKET_CHARTER_PETITION_ID]: ["market"] };
 const TOWN: ActorRef = { type: "town", id: "town" };
@@ -132,8 +133,8 @@ function addDecision(state: GameState, decision: TracedDecision): GameState {
 /** The decision record the command just wrote in the history (`recordDecision`). */
 function newHistoryDecision(before: GameState, after: GameState): string | undefined {
   const records = after.history?.records ?? [];
-  const known = before.history?.records.length ?? 0;
-  for (let index = records.length - 1; index >= known; index -= 1) if (records[index]!.kind === "decision") return records[index]!.id;
+  const known = new Set(before.history?.records.map(record => record.id));
+  for (let index = records.length - 1; index >= 0; index -= 1) if (records[index]!.kind === "decision" && !known.has(records[index]!.id)) return records[index]!.id;
   return undefined;
 }
 
@@ -231,10 +232,31 @@ export function traceCommand(before: GameState, after: GameState, action: Action
   }
   // One matter, one decision: a command that carries on a matter the lord decided within the thread's years (the same
   // suit's evidence or enforcement, the same marriage's promises kept, an estate's oversight set up at once) joins it.
+  const answer: TracedDecision = { id, tick: after.tick, by: "lord", kind: decisionKind, source, weights, targets: [...new Set(targets)].sort() };
   const joined = joinMatter(after, decisionKind, targets, source);
-  if (joined !== null) return linkMemories(before, joined);
-  // The command's own relation records were applied with it (`recordDecision`): tie them to the decision now.
-  return linkMemories(before, addDecision(after, { id, tick: after.tick, by: "lord", kind: decisionKind, source, weights, targets: [...new Set(targets)].sort() }));
+  const rooted = joined ?? addDecision(after, answer);
+  const root = joined?.trace?.decisions.find(decision => decision !== after.trace?.decisions.find(old => old.id === decision.id));
+  const linked = linkMemories(before, rooted);
+  const ownTargets = [...answer.targets];
+  if (action.type === "answer_registry_offer") {
+    const occurrence = after.registry?.occurrences.find(row => row.id === action.occurrenceId);
+    const selected = occurrence?.source === "v4" ? v4Entry(occurrence.entryId)?.choices.find(choice => choice.id === action.choiceId) : undefined;
+    if (before.agency?.duesPermille === after.agency?.duesPermille && !selected?.commands.some(command => command.type === "set_market_dues")) {
+      const phantom = ownTargets.indexOf("dues");
+      if (phantom >= 0) ownTargets.splice(phantom, 1);
+    }
+  }
+  if (JSON.stringify(before.stewardship?.rules) !== JSON.stringify(after.stewardship?.rules)) {
+    ownTargets.push("rules");
+    for (const field of ["rights", "marriage", "amountAtLeast", "recurring"] as const)
+      if (before.stewardship?.rules[field] !== after.stewardship?.rules[field]) ownTargets.push(`rules:${field}`);
+  }
+  for (const oversight of after.stewardship?.oversight ?? []) {
+    const prior = before.stewardship?.oversight.find(row => row.estateId === oversight.estateId);
+    if (prior?.auditMode !== oversight.auditMode) ownTargets.push(`audit_mode:${oversight.estateId}`);
+    if (prior?.mode !== oversight.mode || prior?.stewardId !== oversight.stewardId) ownTargets.push(`oversight:${oversight.estateId}`);
+  }
+  return linkImmediateAnswerReceipts(before, retainAnswer(before, linked, { ...answer, targets: ownTargets }, root?.id ?? id), id);
 }
 
 /** A decision taken inside the tick (the steward's, or a silence): its own record, then its thread. */
@@ -342,21 +364,28 @@ export function liveDecisionsOn(trace: TraceState, target: string, tick: number)
 
 /** The decisions behind a record: the main one first; `part` on all when it had other causes, else on all but the main. */
 export function becauseOf(causes: readonly string[], key: ConsequenceKey, partial: boolean): HistoryBecause[] {
-  return causes.slice(0, BECAUSE_MAX).map((decisionId, index) => ({ decisionId, key, ...(partial || index > 0 ? { part: true as const } : {}) }));
+  return [...new Set(causes)].map((decisionId, index) => ({ decisionId, key, ...(partial || index > 0 ? { part: true as const } : {}) }));
 }
 
 /** A consequence written in the history with the decisions behind it (nothing when there are none). */
 export function writeConsequence(state: GameState, key: ConsequenceKey, target: string, causes: readonly string[], partial: boolean,
-  detail: Readonly<Record<string, string | number>>, subject: ActorRef = TOWN): GameState {
-  if (causes.length === 0) return state;
+  detail: Readonly<Record<string, string | number>>, subject: ActorRef = TOWN, preserveAllocation = false): GameState {
+  if (causes.length === 0 && !preserveAllocation) return state;
   const draft: HistoryDraft = { tick: state.tick, kind: "event", template: "consequence", subject, severity: 1,
     params: { key, target, ...detail }, because: becauseOf(causes, key, partial) };
   return appendHistoryRecords(state, [draft]);
 }
 
 function onTarget(state: GameState, key: ConsequenceKey, target: string, detail: Readonly<Record<string, string | number>>, partial = false): GameState {
-  const causes = liveDecisionsOn(traceOf(state), target, state.tick).map(decision => decision.id);
-  return writeConsequence(state, key, target, causes, partial, detail);
+  const trace = traceOf(state);
+  if (liveDecisionsOn(trace, target, state.tick).length === 0) return state;
+  const contributions = key === "audit"
+    ? [...answerContributionsOn(trace, `audit_mode:${target.slice("estate:".length)}`, state.tick),
+      ...answerContributionsOn(trace, `oversight:${target.slice("estate:".length)}`, state.tick),
+      ...liveDecisionsOn(trace, target, state.tick).filter(root => !trace.answers?.some(answer => answer.id === root.id))]
+    : answerContributionsOn(trace, target, state.tick);
+  const causes = contributions.map(decision => decision.id);
+  return writeConsequence(state, key, target, causes, partial, detail, TOWN, true);
 }
 
 /** The ledger lines a target's later postings fall in (a right's piece, a setting's, a chapter answer's), or null. */
@@ -393,7 +422,7 @@ function followed(state: GameState, decision: TracedDecision, key: ConsequenceKe
     const record = records[index]!;
     if (record.tick < decision.tick) return false;
     if (record.template === "consequence" && record.params?.key === key && record.params?.target === target
-      && record.because?.some(entry => entry.decisionId === decision.id) === true) return true;
+      && (record.params?.traceThread === decision.id || record.because?.some(entry => entry.decisionId === decision.id) === true)) return true;
   }
   return false;
 }
@@ -447,10 +476,11 @@ function consequences(before: GameState, after: GameState): GameState {
     if (receipts.has(receipt.id)) continue;
     const live = traceOf(next).decisions.filter(decision => next.tick - (decision.lastTick ?? decision.tick) <= TRACE_LIVE_TICKS
       && ((receipt.subsidy > 0 && decision.targets.includes(`subsidy:${receipt.what}`)) || decision.targets.includes(`build:${receipt.what}`) || receipt.decisionIds.includes(decision.id)));
-    const named = live.filter(decision => decision.targets.includes(`subsidy:${receipt.what}`) || decision.targets.includes(`build:${receipt.what}`));
-    const causes = [...named, ...live.filter(decision => !named.includes(decision))].map(decision => decision.id);
-    // P-C2: a project the actor chose by its reasons — the lord's conditions were a share of them, never all.
-    next = writeConsequence(next, "project_started", `build:${receipt.what}`, causes, true, { what: receipt.what, actor: receipt.actor, subsidy: receipt.subsidy, receipt: receipt.id });
+    const actual = answerContributions(traceOf(next)).filter(decision => next.tick - decision.tick <= TRACE_LIVE_TICKS
+      && ((receipt.subsidy > 0 && answerContributionsOn(traceOf(next), `subsidy:${receipt.what}`, next.tick).some(answer => answer.id === decision.id))
+        || decision.targets.includes(`build:${receipt.what}`) || receipt.decisionIds.includes(decision.id)));
+    if (live.length > 0) next = writeConsequence(next, "project_started", `build:${receipt.what}`, actual.map(answer => answer.id), true,
+      { what: receipt.what, actor: receipt.actor, subsidy: receipt.subsidy, receipt: receipt.id }, TOWN, true);
     // DTR-15 (the user's instruction): a need its builder refused, built by the community after the wait and at a premium —
     // behind it the decisions that turned the builder's mind (live on its faction); written even when none did (A4).
     if (receipt.fallback !== undefined) {
@@ -467,25 +497,30 @@ function consequences(before: GameState, after: GameState): GameState {
   const fresh = after.ledger === before.ledger || after.ledger === undefined ? 0 : after.ledger.nextEntryOrdinal - (before.ledger?.nextEntryOrdinal ?? 1);
   const posted = fresh <= 0 ? [] : after.ledger!.entries.slice(-fresh).filter(entry => entry.amount !== 0);
   if (posted.length > 0) {
+    const owners = new Map<string, ReadonlySet<string>>();
     for (const decision of traceOf(next).decisions) {
       if (next.tick - (decision.lastTick ?? decision.tick) > TRACE_LIVE_TICKS) continue;
       for (const target of decision.targets) {
         const flow = flowOf(target);
         if (flow === null) continue;
+        if (!owners.has(target)) owners.set(target, new Set(answerContributionsOn(traceOf(next), target, next.tick).map(answer => answer.id)));
         const amounts = posted.filter(entry => inFlow(entry, flow));
         if (amounts.length === 0 || followed(next, decision, flow.key, target)) continue;
         const income = amounts.filter(entry => entry.amount > 0).reduce((sum, entry) => sum + entry.amount, 0);
         const expense = -amounts.filter(entry => entry.amount < 0).reduce((sum, entry) => sum + entry.amount, 0);
         // SUIT-THREAD: the rent names its judgment's year ("○○년 판결로").
-        next = writeConsequence(next, flow.key, target, [decision.id], flow.key !== "suit_rent",
-          flow.key === "right_income" ? { income } : flow.key === "suit_rent" ? { income, year: scenarioYear(next, decision.tick), estate: flow.estate!, ...(flow.concord === true ? { concord: 1 } : {}) }
-            : { category: amounts[0]!.category, income, expense });
+        const causes = answerContributions(traceOf(next)).filter(answer => owners.get(target)?.has(answer.id)
+          && (answer.id === decision.id || traceOf(next).answers?.some(member => member.id === answer.id && member.threadId === decision.id))).map(answer => answer.id);
+        next = writeConsequence(next, flow.key, target, causes, flow.key !== "suit_rent",
+          flow.key === "right_income" ? { income, traceThread: decision.id } : flow.key === "suit_rent" ? { income, traceThread: decision.id, year: scenarioYear(next, decision.tick), estate: flow.estate!, ...(flow.concord === true ? { concord: 1 } : {}) }
+            : { category: amounts[0]!.category, income, expense, traceThread: decision.id }, TOWN, true);
       }
     }
   }
   if ((after.timberOrder ?? 0) < (before.timberOrder ?? 0)) {
     const latest = liveDecisionsOn(traceOf(next), "timber", next.tick).at(-1);
-    if (latest !== undefined) next = writeConsequence(next, "goods_delivered", "timber", [latest.id], false, { brought: (before.timberOrder ?? 0) - (after.timberOrder ?? 0) });
+    const owner = answerContributionsOn(traceOf(next), "timber", next.tick).at(-1);
+    if (latest !== undefined) next = writeConsequence(next, "goods_delivered", "timber", owner === undefined ? [] : [owner.id], false, { brought: (before.timberOrder ?? 0) - (after.timberOrder ?? 0) }, TOWN, true);
   }
   next = crises(before, after, next);
   // Households gone this tick for a decision's reason: the refused guild's weavers, the war tax's flight.
@@ -561,7 +596,7 @@ function prune(state: GameState): GameState {
   const from = state.tick - TRACE_KEPT_TICKS;
   const stale = (entry: TracedDecision) => (entry.lastTick ?? entry.tick) < from && !isBigDecision(entry);
   if (!trace.decisions.some(stale) && (trace.acts[0]?.tick ?? Infinity) >= from) return state;
-  return { ...state, trace: { decisions: trace.decisions.filter(entry => !stale(entry)), acts: trace.acts.filter(entry => entry.tick >= from) } };
+  return { ...state, trace: { ...trace, decisions: trace.decisions.filter(entry => !stale(entry)), acts: trace.acts.filter(entry => entry.tick >= from) } };
 }
 
 /** DEC-TRACE §2: the tick's thread — the steward's answers and the silences, the factions' memories tied, the consequences. Lord mode only. */
@@ -570,5 +605,11 @@ export function advanceTrace(before: GameState, after: GameState): GameState {
   let next = tickDecisions(before, after);
   next = linkMemories(before, next);
   next = consequences(before, next);
+  next = linkAnswerFactionReceipts(before, next);
+  next = linkRuleAnswerReceipts(before, next);
+  next = linkAnswerLedgerReceipts(before, next, (target, entry) => {
+    const flow = flowOf(target);
+    return flow !== null && inFlow(entry, flow) ? flow.key : null;
+  });
   return after.tick % YEAR === 0 ? prune(next) : next;
 }

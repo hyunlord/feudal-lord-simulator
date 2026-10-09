@@ -33,7 +33,7 @@ export interface TracedDecision {
 }
 
 /** What followed (the key the screens word, `HistoryBecause.key`). */
-export const CONSEQUENCE_KEYS = ["faction_act", "households_left", "households_arrived", "suit_turned", "marriage_turned", "promise_made", "promise_kept",
+export const CONSEQUENCE_KEYS = ["decision_effect", "petition_routed", "faction_act", "households_left", "households_arrived", "suit_turned", "marriage_turned", "promise_made", "promise_kept",
   "promise_broken", "project_started", "goods_delivered", "audit", "estate_mood", "right_income", "payment_flow", "community_built", "dues_held", "agreement_broken", "suit_rent", "crisis_prepared", "crisis_outcome"] as const;
 export type ConsequenceKey = (typeof CONSEQUENCE_KEYS)[number];
 
@@ -48,7 +48,13 @@ export interface FactionAct {
   readonly relation: number;
 }
 
+export interface TracedAnswerContribution extends TracedDecision {
+  readonly threadId: string;
+  readonly memoryEvidence: readonly { readonly factionId: string; readonly recordId: string; readonly tick: number; readonly delta: number; readonly reason: string }[];
+}
+
 export interface TraceState {
+  readonly answers?: readonly TracedAnswerContribution[];
   readonly decisions: readonly TracedDecision[];
   readonly acts: readonly FactionAct[];
 }

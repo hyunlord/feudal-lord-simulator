@@ -89,14 +89,15 @@ for (const { variant, petitionId, kind, build } of HOME) {
     const chip = homeChip(state, petitionId);
     assert.equal(chip?.title, title);
     assert.equal(chip?.line, body);
-    // Shut, the same state shows the kind's own words — and every other field of the card, the frame and the chip is the same.
+    // Shut, only the displayed words and their provenance change; the card, frame and chip keep their behavior.
     const plain = shut(variant, state, open => ({ view: homePetitionView(open), card: homePetitionCard(open), chip: homeChip(open, petitionId) }));
     const copy = HOME_PETITION_COPY[kind];
     assert.equal(plain.view?.title, copy.title);
     assert.equal(plain.view?.demand, copy.demand(state.stewardship!.petitions[0]!.amount, parties(state, state.stewardship!.petitions[0]!)));
     assert.equal(plain.card?.situation, plain.view?.demand);
     assert.deepEqual({ ...card, title: null, situation: null }, { ...plain.card, title: null, situation: null });
-    assert.deepEqual({ ...view, title: null, demand: null }, { ...plain.view, title: null, demand: null });
+    assert.deepEqual([view.displayEntryId, plain.view?.displayEntryId], [variant, `home:${kind}`]);
+    assert.deepEqual({ ...view, title: null, demand: null, displayEntryId: null }, { ...plain.view, title: null, demand: null, displayEntryId: null });
     assert.deepEqual({ ...chip, title: null, line: null }, { ...plain.chip, title: null, line: null });
     assert.deepEqual(card.choices.map(choice => [choice.id, choice.label]), [["grant", copy.grant(parties(state, {}))], ["refuse", copy.refuse(parties(state, {}))]]);
   });
@@ -200,8 +201,9 @@ for (const [source, variant] of [["ck_evt_031", "ck_evt_067"], ["ck_evt_059", "c
     assert.deepEqual(openRegistryCards(state).map(card => card.entry.id), [source]);
     const plain = shut(variant, state, open => ({ view: registryOfferView(open), chip: offerChip(open, occurrence.id) }));
     assert.deepEqual([plain.view?.title, plain.view?.body], [V4_COPY[source]?.title, V4_COPY[source]?.body]);
+    assert.deepEqual([view.displayEntryId, plain.view?.displayEntryId], [variant, source]);
     const strip = (offer: typeof view | null | undefined) => offer === null || offer === undefined ? null
-      : { ...offer, title: null, body: null, card: { ...offer.card, title: null, situation: null } };
+      : { ...offer, title: null, body: null, displayEntryId: null, card: { ...offer.card, title: null, situation: null } };
     assert.deepEqual(strip(view), strip(plain.view));
     assert.deepEqual({ ...chip, title: null, line: null }, { ...plain.chip, title: null, line: null });
   });

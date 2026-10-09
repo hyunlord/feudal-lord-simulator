@@ -4,6 +4,7 @@ import { factionDisplayName } from "../../content/factionCopy.ko";
 import { HISTORY_CHOICE_LABELS, PETITION_SUBJECTS } from "../../content/historyCopy.ko";
 import { V4_COPY } from "../../content/registry/v4Copy.generated";
 import { traceInRange, type TraceRow } from "../../engine/decisionReads";
+import { decisionPresentation } from "../../engine/decisionPresentation";
 import type { GameState } from "../../engine/engine.types";
 import type { HistoryRecord } from "../../engine/history.types";
 import type { EstatePetitionKind, HomePetitionKind } from "../../engine/stewardship.types";
@@ -30,6 +31,16 @@ const SEASON = BALANCE.TICKS_PER_YEAR / 4;
 /** What a decision answered, in words (the petition, the event, the setting), and the answer's own words when it has them. */
 function decisionSubject(state: GameState, record: HistoryRecord, chosen: string): { readonly subject: string; readonly answer: string | null } {
   const copy = RESULTS_COPY.trace;
+  const presentation = decisionPresentation(record);
+  if (presentation !== null) {
+    const shown = V4_COPY[presentation.displayEntryId];
+    if (presentation.sourceEntryId.startsWith("home:")) {
+      const kind = presentation.sourceEntryId.slice(5) as HomePetitionKind;
+      return { subject: copy.manor(shown?.title ?? HOME_PETITION_COPY[kind]?.title ?? kind), answer: null };
+    }
+    const original = V4_COPY[presentation.sourceEntryId];
+    return { subject: shown?.title ?? original?.title ?? recordSentence(state, record), answer: original?.choices[chosen]?.label ?? null };
+  }
   const subjectId = String(record.params?.subjectId ?? "");
   const petition = state.stewardship?.petitions.find(entry => entry.id === subjectId);
   if (petition !== undefined) {
