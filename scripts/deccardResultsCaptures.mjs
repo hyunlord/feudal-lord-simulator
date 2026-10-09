@@ -96,7 +96,7 @@ for (const [name, dir, file, kind] of [['house-wardship', flags.petitions, 'home
 // 5–6. The year's card over a year's turn: the season's card closed, any card put off, until the year's card shows.
 for (const [name, dir, file] of [['year-lord', flags.results, 'year-eve'], ['year-campaign', flags.states5, 'aging-eve']]) {
   const state = scene(dir, file);
-  const { context, page } = await open(state, { run: true, query: '&story-delay=1500' });
+  const { context, page } = await open(state, { run: true, query: '&story-delay=1500&auto-pause=off' }); // LM-R3: time runs on to the year's turn
   await page.keyboard.press('Digit0');
   const selector = '.results-card.year-review';
   let opened = false; const putOff = [];

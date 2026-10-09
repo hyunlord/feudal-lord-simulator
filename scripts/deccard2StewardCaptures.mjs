@@ -44,7 +44,8 @@ const standingOf = (page, kind) => page.evaluate(key => window.__FEUDAL_PHASE10_
 
 // 1–3. The season card's steward section, its drill-in, the way to the kind's policy, the screen.
 {
-  const { context, page } = await open({ run: true });
+  // LM-R3 pauseReasons: time runs on to the season's close (the lord-mode auto-pause would stop it).
+  const { context, page } = await open({ run: true, query: '&story-delay=600000&auto-pause=off' });
   page.on('pageerror', error => errors.push(String(error).slice(0, 300)));
   await page.keyboard.press('Digit3');
   const opened = await page.locator('.season-ledger-card .season-steward >> visible=true').first().waitFor({ timeout: 120_000 }).then(() => true, () => false);
