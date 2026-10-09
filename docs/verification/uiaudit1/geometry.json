@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-SUIT-lead-geometry-5c7df26-5c7df26",
- "commit": "5c7df267f217d3d220a1a859e86d46f899da59d0",
+ "run": "render-VARIANTS-geometry-4324ed6-4324ed6",
+ "commit": "4324ed6e7579b06ff8d093b12ec75e1274ee4564",
  "dirty": false,
- "inputs": 2512,
- "inputHash": "70528b04ce8d3735ac92e37867b7bbc1d8bbdb498981c6da910b9b7ee3d8ed25",
- "measuredAt": "2026-10-08T19:54:03.293Z",
- "report": "docs/verification/uiaudit1/geometry/render-SUIT-lead-geometry-5c7df26-5c7df26/geometry.json",
+ "inputs": 2513,
+ "inputHash": "545c511283e3bfad0170980de8d17d066a85b9817d47995cd8d5524e5c6a426c",
+ "measuredAt": "2026-10-09T01:43:50.031Z",
+ "report": "docs/verification/uiaudit1/geometry/render-VARIANTS-geometry-4324ed6-4324ed6/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,13 +24,13 @@
    "extreme"
   ]
  },
- "rows": 17,
- "conditions": 340,
- "measured": 340,
+ "rows": 12,
+ "conditions": 240,
+ "measured": 240,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
- "warnings": 37,
+ "warnings": 20,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -43,7 +43,7 @@
   "hud": 0,
   "ornament": 0
  },
- "unregisteredFramed": 4,
+ "unregisteredFramed": 0,
  "baseline": {
   "entries": 0,
   "counted": 0,
@@ -53,87 +53,62 @@
   "fixed": 0
  },
  "bySurface": {
-  "slot.ledger.rights": {
+  "modal.lord.home-petition": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "slot.ledger.rights-decline": {
+  "modal.lord.home-petition.no-art": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.biography": {
+  "modal.lord.home-petition.guardian": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.negotiation.will-change": {
+  "modal.lord.registry": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.promises": {
+  "modal.lord.registry-hold": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.empty": {
+  "modal.lord.home-petition.variant-041": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.suit": {
+  "modal.lord.home-petition.variant-048": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.neighbour": {
+  "modal.lord.home-petition.variant-056": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.defence-enforcing": {
+  "modal.lord.registry.variant-067": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.entry-threat": {
+  "modal.lord.registry.variant-078": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "lord.ledger.entry-forced": {
+  "hud.event-card.home-petition-variant": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "hud.event-card.will-kept": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.lord.will-change": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "hud.event-card.suit-defence": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "hud.event-card.entry-threat": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "lord.standing": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
-  "modal.slice-end": {
+  "hud.event-card.registry-variant": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
