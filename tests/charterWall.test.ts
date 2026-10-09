@@ -89,3 +89,19 @@ test("GB-5: a site is laid out only where its materials can come; a spot given u
   // A corner of the map no road reaches is not.
   assert.equal(constructionSiteReachable(state, "well", { tx: 1, ty: 1 }), false);
 });
+
+test("GB-12: in lord mode the timber the waiting wall wants is judged against what the built camps and sawmills make, not the last window alone", async () => {
+  const { timberCapacityPerWindow, timberDemandExpansionKind } = await import("../src/engine/autoplayTimberDemand");
+  const { loadAutoplayFixture } = await import("../scripts/autoplayStallProbe");
+  // BOT-1's natural state 51 ticks after seed 2's palisade (1,078 wall timber waiting, 146 in stock, one camp, one sawmill).
+  const state = loadAutoplayFixture("fixtures/autoplay/seed2-70140.json.gz");
+  const camp = state.buildings.find(building => building.kind === "logging_camp")!;
+  const mill = state.buildings.find(building => building.kind === "sawmill")!;
+  assert.equal(timberCapacityPerWindow([camp, mill]), 24, "a camp cuts a log every 50 ticks, a sawmill makes a timber of two");
+  // Four camps and two sawmills just built: the last window has not seen them yet.
+  const built = { ...state, buildings: [...state.buildings, ...[1, 2, 3].map(n => ({ ...camp, id: `${camp.id}-new${n}` })), { ...mill, id: `${mill.id}-new` }] };
+  assert.equal(timberCapacityPerWindow(built.buildings), 96);
+  assert.equal(timberDemandExpansionKind(built), "logging_camp", "the sandbox's rule (BT6) is unchanged");
+  assert.equal(timberDemandExpansionKind({ ...built, agency: lordGame().agency }), null, "the lord's town waits for its new facilities to work");
+  assert.equal(timberDemandExpansionKind({ ...state, agency: lordGame().agency }), "logging_camp", "one camp and one sawmill are still short");
+});

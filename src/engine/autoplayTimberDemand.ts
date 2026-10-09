@@ -42,11 +42,28 @@ function bottleneck(buildings: readonly Building[]): TimberKind {
   return cut < sawn ? 'logging_camp' : 'sawmill';
 }
 
+/** Timber per window the built camps and sawmills make at their rates (the short side of cutting and sawing). */
+export function timberCapacityPerWindow(buildings: readonly Building[]): number {
+  const camp = BUILDING_CONFIG_BY_KIND.logging_camp.production;
+  const mill = BUILDING_CONFIG_BY_KIND.sawmill.production;
+  if (camp === null || mill === null || mill.inputPerOutput <= 0) return 0;
+  const cut = buildings.filter(building => building.kind === 'logging_camp').length / camp.ticksPerOutput;
+  const sawn = buildings.filter(building => building.kind === 'sawmill').length * mill.inputPerOutput / mill.ticksPerOutput;
+  return Math.min(cut, sawn) / mill.inputPerOutput * TIMBER_DEMAND_WINDOW_TICKS;
+}
+
 export function timberDemandExpansionKind(state: GameState): TimberKind | null {
   if (state.constructionSites.some(site => isBuildingConstructionSite(site) && (site.kind === 'logging_camp' || site.kind === 'sawmill'))) return null;
-  const made = timberMadePerWindow(state);
-  if (made === null) return null;
-  const need = waitingTimberNeed(state);
+  const measured = timberMadePerWindow(state);
+  if (measured === null) return null;
+  // GB-12 (GROW-BLOCK, lord mode): a facility just built makes nothing in the last window yet, so the measured output
+  // lags a window behind every addition — seed 1's charter wall (722 timber against 23 a window) added a camp or sawmill
+  // every 400–600 ticks, one to eight camps and two to five sawmills in two years, 564 trees felled in 1319 and 860
+  // timber idle in the stores ever after. The town judges against what its built facilities make at their rates as
+  // well, and the timber it holds already counts against the need (P-C3: a stock is not a shortage).
+  const lord = state.agency !== undefined;
+  const made = lord ? Math.max(measured, timberCapacityPerWindow(state.buildings)) : measured;
+  const need = waitingTimberNeed(state) - (lord ? placementSpendableResource(state, 'timber') : 0);
   if (need <= made * (TIMBER_DEMAND_HORIZON_TICKS / TIMBER_DEMAND_WINDOW_TICKS)) return null;
   const kind = bottleneck(state.buildings);
   const config = BUILDING_CONFIG_BY_KIND[kind];
