@@ -12,7 +12,7 @@
 // bot's towns of seeds 2–6 went from waiting straight to searching — the charter holds new buildings — and found their
 // wall at the first search):
 //  - sites: two building sites laid out as the engine lays one (createConstructionSite on tiles canPlaceBuilding takes,
-//    the kinds the town builds), one standing a year and a season, the other no road reached for a year; then the
+//    the kinds the town builds), one standing a year and a season (its materials in), the other no road reached for a year; then the
 //    town's own week (advanceTownAgency, advanceHistory) gives the second up (GB-4) with its record — as the engine's
 //    tests make it;
 //  - failed: the town's failure as the engine keeps it (`agency.charterWallFailure`: the homes' service space, two of
@@ -96,16 +96,16 @@ function preparedSites(seed: number, start: GameState): void {
   const stuck = spots(start, "well", false).reverse()[0];
   if (open === undefined || stuck === undefined) { process.stderr.write("prepared sites: no free tile\n"); return; }
   let ordinal = start.nextConstructionOrdinal;
-  // Getting on (half its work and materials in), so it holds the search (GB-6) as a town's own site would.
+  // Getting on (its materials in, half its work done), so it holds the search (GB-6) as a town's own site would; a
+  // material still owed would come off the charter's spendable timber (placementSpendableResource) and undo the conditions.
   const laid = createConstructionSite({ ordinal: ordinal++, kind: "granary", tx: open.tx, ty: open.ty, startedTick: week - 5_000 });
-  const half = Object.fromEntries(Object.entries(laid.required).map(([resource, amount]) => [resource, Math.floor(Number(amount) / 2)]));
-  const standing = { ...laid, delivered: half, builderTicks: Math.floor(laid.requiredBuilderTicks / 2), stall: "none" as const };
+  const standing = { ...laid, delivered: laid.required, builderTicks: Math.floor(laid.requiredBuilderTicks / 2), stall: "none" as const };
   const given = { ...createConstructionSite({ ordinal: ordinal++, kind: "well", tx: stuck.tx, ty: stuck.ty, startedTick: week - CHARTER_RING.abandonTicks - 10 }),
     stall: "no_route" as const };
   const before: GameState = { ...start, tick: week, nextConstructionOrdinal: ordinal, constructionSites: [...start.constructionSites, standing, given] };
   const after = advanceHistory(before, advanceTownAgency(before));
   const plan = charterWallPlan(after)!;
-  if (plan.stage !== "sites") { process.stderr.write(`prepared sites: the engine reads ${plan.stage}\n`); return; }
+  if (plan.stage !== "sites") { process.stderr.write(`prepared sites: the engine reads ${plan.stage} (unmet: ${plan.requirements.filter(entry => !entry.met).map(entry => entry.key).join(",")})\n`); return; }
   save(seed, "sites", after, plan, "two sites laid out on the natural searching state; the town's week gave the roadless one up");
 }
 
