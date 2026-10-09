@@ -1,10 +1,9 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { gitIn, tempDir } from "./helpers/tempRepo";
 import { checkUiGeometry, defaultSummaryPath, formatUiGeometryResult, isSafePath, uiInputsDirty, withoutComments } from "../scripts/checks/uiGeometry.mjs";
 
 // RR26 (user ruling 2026-10-09, after four reviews found inputs the import closure missed): a geometry result counts on
@@ -20,12 +19,12 @@ const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 
 type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; runName?: string; commit?: string | null; unregistered?: number;
   noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "outside" };
-type Story = { trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
+type Story = { trunkMove: (write: (path: string, text: string) => void, remove: (path: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
   shared?: "stale" | "current-failing" | "partial" | "orphan" | "no-commit" | "none"; exceptions?: object[]; rowIds?: string[] };
 
 function story({ trunkMove, report = {}, baseline = [], trailer = true, shared = "stale", exceptions = [], rowIds = [ROW] }: Story) {
   const dir = tempDir("fls-rowrun-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = gitIn(dir);
   const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   write("scripts/uiGeometryAudit.mjs", 'import { GEOMETRY_ROWS } from "../tests/fixtures/geometryRows.ts";\n// the audit\n');
   write("tests/fixtures/geometryRows.ts", "export const GEOMETRY_ROWS = 1;\n");   // a test file the audit imports: not safe
@@ -63,7 +62,7 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, shared =
   if (shared === "current-failing") sharedAt(measured, { run: "full-now", failureKeys: ["other.row|1280x800/normal/normal|overflow|.x"] });
   if (shared === "partial") sharedAt(measured, { run: "rows-only", full: false, rows: 1 });
   git("add", "-A"); git("commit", "-qm", `branch: the changed rows' geometry${trailer ? `\n\nUI-Geometry-Run: ${RUN}` : ""}`);
-  git("checkout", "-q", "trunk"); trunkMove(write); git("add", "-A"); git("commit", "-qm", "trunk moves", "--allow-empty");
+  git("checkout", "-q", "trunk"); trunkMove(write, path => rmSync(join(dir, path))); git("add", "-A"); git("commit", "-qm", "trunk moves", "--allow-empty");
   const trunk = git("rev-parse", "HEAD");
   git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
   const check = () => checkUiGeometry({ base: trunk, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
@@ -126,6 +125,21 @@ test("the report counts the unsafe changes that reach the UI or the audit by imp
   try { refused(t.check(), /\(0 of them reach the UI or the audit by import\): src\/engine\/core\.ts/); } finally { t.done(); }
 });
 
+test("a UI file moved into docs/ is a change off the safe list where it was (renames are a delete and an add)", () => {
+  const s = story({ trunkMove: (write, remove) => { write("docs/Other.tsx", "export const Other = () => null;\n"); remove("src/ui/Other.tsx"); } });
+  try { refused(s.check(), /run render-TEST-geometry-1: 1 file\(s\) off the safe list changed .*: src\/ui\/Other\.tsx — audit again/); } finally { s.done(); }
+});
+
+test("when the import closure cannot be read, no test is safe (it fails closed)", () => {
+  const s = story({ trunkMove: write => write("tests/other.test.ts", "export const changed = 1;\n") });
+  try {
+    // A blob the closure reads is gone: the closure cannot say which tests the audit imports.
+    const blob = s.git("rev-parse", "HEAD:src/main.tsx");
+    rmSync(join(s.dir, ".git/objects", blob.slice(0, 2), blob.slice(2)));
+    refused(s.check(), /1 file\(s\) off the safe list changed since it was measured at [0-9a-f]{8} \(the import closure could not be read\): tests\/other\.test\.ts — audit again/);
+  } finally { s.done(); }
+});
+
 test("the branch's own UI edit after the run: the run does not count", () => {
   const s = story({ trunkMove: write => write("docs/notes.md", "moved\n") });
   try {
@@ -136,7 +150,7 @@ test("the branch's own UI edit after the run: the run does not count", () => {
 
 test("a range of safe files alone needs no audit at all", () => {
   const dir = tempDir("fls-safe-range-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = gitIn(dir);
   const write = (path: string, text: string) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   try {
     write("scripts/uiGeometryAudit.mjs", "// the audit\n"); write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("docs/a.md", "a\n");
@@ -153,6 +167,9 @@ test("the safe list: docs/**, .md outside src/ public/ assets-inbox/, tests noth
   const imported = new Set(["tests/fixtures/geometryRows.ts"]);
   for (const path of ["docs/x.json", "docs/a/b.png", "README.md", "scripts/a.md", "tests/x.test.ts"]) assert.ok(isSafePath(path, imported), path);
   for (const path of ["src/a.md", "public/a.md", "assets-inbox/a.md", "tests/fixtures/geometryRows.ts", "fixtures/a.json", "seeds/a", "perf/a", "scripts/a.ts", "package.json", "index.html", "tsconfig.json", "x"]) assert.ok(!isSafePath(path, imported), path);
+  // Lookalikes: a docs/ or tests/ folder inside src/, a name with .md inside it.
+  for (const path of ["src/docs/x.ts", "src/tests/x.ts", "scripts/a.md.ts", "public/docs/a.png", "src/ui/README.md.tsx"]) assert.ok(!isSafePath(path, imported), path);
+  assert.ok(!isSafePath("tests/x.test.ts", null), "no closure: no test is safe");
 });
 
 test("a broken result does not count: measured dirty, a condition not opened, a new failure, a baseline entry fixed", () => {
@@ -259,7 +276,7 @@ test("comments go, strings and regular expressions stay (the closure kept for th
 
 test("dirty: every uncommitted change off the safe list (edited, untracked, staged, renamed, deleted), not one on it; an LFS picture by content", () => {
   const dir = tempDir("fls-dirty-");
-  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const git = gitIn(dir);
   const write = (path: string, text: string | Buffer) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   try {
     const picture = Buffer.from("real picture bytes"); const oid = createHash("sha256").update(picture).digest("hex");
@@ -287,6 +304,8 @@ test("dirty: every uncommitted change off the safe list (edited, untracked, stag
     assert.deepEqual(uiInputsDirty(dir), ["public/assets/a.png"], "a deleted picture");
     write("public/assets/a.png", "a\n"); write("public/assets/lfs.png", pointer);
     assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"], "the pointer text in place of the picture");
+    write("public/assets/lfs.png", picture); write("assets-inbox/w/lfs.png", pointer);
+    assert.deepEqual(uiInputsDirty(dir), ["assets-inbox/w/lfs.png"], "the pointer text in place of a picture under assets-inbox/");
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 

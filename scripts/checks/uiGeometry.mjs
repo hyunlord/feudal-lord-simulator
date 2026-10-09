@@ -2,7 +2,7 @@
 // scripts/uiGeometryAudit.mjs) writes its report with the commit it measured and every failure's key (row |
 // viewport/copy/numbers | check | element path — stable across runs, no px). RR26 (user ruling 2026-10-09): a result
 // counts on a newer commit only when every file changed since its measured commit (an ancestor of <head>) is on the
-// small safe list (SAFE_RULES: docs/**, *.md outside src/ public/ assets-inbox/, tests/** nothing of the UI or the
+// small safe list (isSafePath: docs/**, *.md outside src/ public/ assets-inbox/, tests/** nothing of the UI or the
 // audit imports); any other change, known or not, needs a new audit. A range that changes only safe files passes; only
 // the lists' shrink rules are checked then. The shared result (docs/verification/uiaudit1/geometry.json) counts only
 // when it is a full audit (`full: true`; a changed-rows or narrowed run never writes it). Otherwise the step fails when:
@@ -60,11 +60,11 @@ export const UI_GEOMETRY_GATE = 'enforce';
  * A path to add needs a case and its reason on the decision line (seeds/, fixtures/, perf/ and the like stay off: the
  * game or the audit can read them).
  */
-export const SAFE_RULES = Object.freeze(['docs/**', '*.md outside src/, public/ and assets-inbox/', 'tests/** not imported by the UI or the audit']);
+/** Whether a changed path is on the safe list; `importedTests` null (the closure could not be read) makes no test safe. */
 export function isSafePath(path, importedTests = new Set()) {
   if (path.startsWith('docs/')) return true;
   if (path.endsWith('.md') && !/^(src|public|assets-inbox)\//.test(path)) return true;
-  return path.startsWith('tests/') && !importedTests.has(path);
+  return path.startsWith('tests/') && importedTests !== null && !importedTests.has(path);
 }
 
 /** The entry the UI is built from: every file it reaches by import is a UI input too (user ruling 2026-10-09, RR26 (가)). */
@@ -124,7 +124,9 @@ function readBlobs(blobs, cwd) {
   const batch = execFileSync('git', ['cat-file', '--batch'], { cwd, input: `${blobs.join('\n')}\n`, maxBuffer: 2 ** 31 - 1 });
   let at = 0;
   while (at < batch.length) {
-    const end = batch.indexOf(0x0a, at); const [id, , size] = batch.subarray(at, end).toString().split(' ');
+    const end = batch.indexOf(0x0a, at); const [id, type, size] = batch.subarray(at, end).toString().split(' ');
+    // A blob that cannot be read fails the caller (no closure cut short, no picture left unchecked).
+    if (type === 'missing' || !/^\d+$/.test(size ?? '')) throw new Error(`git cat-file: cannot read ${id}`);
     out.set(id, batch.subarray(end + 1, end + 1 + Number(size))); at = end + 1 + Number(size) + 1;
   }
   return out;
@@ -233,16 +235,17 @@ export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
 export function unsafeChanges(from, to, cwd = process.cwd(), cache = new Map()) {
   const key = `${from}..${to}`; if (cache.has(key)) return cache.get(key);
   const changed = execFileSync('git', ['diff', '--name-only', '--no-renames', '-z', from, to], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0').filter(Boolean);
-  let closure = new Set(); try { if (!cache.has(`closure:${to}`)) cache.set(`closure:${to}`, uiImportClosure(to, cwd)); closure = cache.get(`closure:${to}`); } catch { /* report only */ }
-  const tests = new Set([...closure].filter(path => path.startsWith('tests/')));
+  // The closure only names the tests the UI or the audit imports; when it cannot be read, no test is safe (fails closed).
+  let closure = null; try { if (!cache.has(`closure:${to}`)) cache.set(`closure:${to}`, uiImportClosure(to, cwd)); closure = cache.get(`closure:${to}`); } catch { /* closure stays null */ }
+  const tests = closure === null ? null : new Set([...closure].filter(path => path.startsWith('tests/')));
   const unsafe = changed.filter(path => !isSafePath(path, tests));
-  const result = { changed: changed.length, unsafe, reaching: unsafe.filter(path => closure.has(path)).length };
+  const result = { changed: changed.length, unsafe, reaching: closure === null ? null : unsafe.filter(path => closure.has(path)).length };
   cache.set(key, result);
   return result;
 }
 
 /** The reason line for unsafe changes since a measurement. */
-const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length} file(s) off the safe list changed since it was measured at ${commit.slice(0, 8)} (${changes.reaching} of them reach the UI or the audit by import): ${changes.unsafe.slice(0, 6).join(', ')}${changes.unsafe.length > 6 ? ` … ${changes.unsafe.length - 6} more` : ''} — audit again`;
+const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length} file(s) off the safe list changed since it was measured at ${commit.slice(0, 8)} (${changes.reaching === null ? 'the import closure could not be read' : `${changes.reaching} of them reach the UI or the audit by import`}): ${changes.unsafe.slice(0, 6).join(', ')}${changes.unsafe.length > 6 ? ` … ${changes.unsafe.length - 6} more` : ''} — audit again`;
 
 /** Whether `commit` is a commit here and an ancestor of `head`: 'ok' | 'missing' | 'not-ancestor'. */
 function measuredAt(commit, head, cwd) {
@@ -316,15 +319,6 @@ export function reportFailures(report) {
     }
   }
   return { keys: keys.sort(), measured };
-}
-
-/** The UI input files that differ between two commits (added, removed or changed), or null when `from` is not here. */
-export function changedUiInputs(from, to, cwd = process.cwd()) {
-  let before; try { before = geometryInputs(from, cwd); } catch { return null; }
-  const after = geometryInputs(to, cwd);
-  const blobs = lines => new Map(lines.map(line => { const space = line.indexOf(' '); return [line.slice(space + 1), line.slice(0, space)]; }));
-  const a = blobs(before); const b = blobs(after);
-  return [...new Set([...a.keys(), ...b.keys()])].filter(path => a.get(path) !== b.get(path)).sort();
 }
 
 /** One changed-rows run against <head> (RR26): ok, the reasons it is not, and the evidence. */
@@ -475,7 +469,7 @@ export function formatUiGeometryResult(result) {
   if (result.ok && result.unchanged) return `ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`;
   if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
     ? `  run ${entry.run}: superseded — ${entry.rows.length > 0 ? `a newer named run measured its rows (${entry.rows.join(', ')}) again` : 'it has no report or no measured row, and a newer named run holds'}`
-    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved === null ? 'measured at the head' : `${entry.moved} file(s) changed since it was measured, all on the safe list`} — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
+    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
   if (result.ok) return `ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`;
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);

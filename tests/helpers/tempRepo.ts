@@ -16,7 +16,13 @@ export function tempDir(prefix: string): string {
   return mkdtempSync(join(TEMP_ROOT, prefix));
 }
 
-/** Git in `dir` with QUIET_GIT; returns trimmed stdout. */
+/**
+ * The environment for a throwaway repository's git: it never looks above .tmp/, so a test whose repository lost its .git
+ * cannot reach the real checkout around it.
+ */
+export const QUIET_ENV = { ...process.env, GIT_CEILING_DIRECTORIES: TEMP_ROOT };
+
+/** Git in `dir` with QUIET_GIT and QUIET_ENV; returns trimmed stdout. */
 export function gitIn(dir: string): (...args: string[]) => string {
-  return (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  return (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
 }
