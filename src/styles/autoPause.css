@@ -28,4 +28,4 @@
 .app-shell .auto-pause-more { margin: 0; font-size: 12px; color: var(--ink-soft); }
 .app-shell .auto-pause-link { min-height: 44px; font-size: 13px; }
 .app-shell .auto-pause-resume { justify-self: end; min-width: 96px; min-height: 44px; font-size: 14px; }
-@media (pointer: coarse) { .app-shell :is(.auto-pause-link, .auto-pause-resume) { min-height: 48px; } }
+/* Both are sized kit buttons: 48 px on a touch screen (uiKit.css). */

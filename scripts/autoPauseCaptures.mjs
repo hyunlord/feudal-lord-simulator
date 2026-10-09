@@ -55,7 +55,7 @@ const shoot = async (page, name) => { const path = join(out, `${name}.jpg`); awa
 const ok = (card, touch) => card !== null && card.smallestText >= 12 && card.smallestTarget >= (touch ? 48 : 44) && card.box.inside && card.primary.length === 1 && card.titles === 0;
 const report = (name, row, extra = true) => { row.pass = extra && (row.card === undefined || ok(row.card, row.touch === true)); rows[name] = row; console.log(`${row.pass ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(row)}`); };
 const open = (name, view, query = QUIET) => { const state = scene(name); return openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT,
-  width: view.width, height: view.height, hasTouch: view.touch, query, loadTimeout: 90_000, zoom: 1.1 }); };
+  width: view.width, height: view.height, hasTouch: view.touch, isMobile: view.touch, query, loadTimeout: 90_000, zoom: 1.1 }); };
 const start = page => page.locator('.speed-seal[data-seal="normal"]').click();
 /** The notice or the first season card, whichever shows; the card (shot as `name`) is closed by its [계속]. */
 const seasonFirst = async (page, name) => {
@@ -120,7 +120,11 @@ for (const view of VIEWS) {
   const stop = scene('pause-due').tick + 30;
   await start(page);
   const run = { stopTick: stop };
-  for (let waited = 0; waited < 30_000 && ((await tick(page)) ?? 0) <= stop + 20; waited += 500) await page.waitForTimeout(500);
+  // The first season card (the season's turn before the stop) stops time as a modal does; its [계속] goes on.
+  for (let waited = 0; waited < 30_000 && ((await tick(page)) ?? 0) <= stop + 20; waited += 500) {
+    if (await page.locator('.season-ledger-resume >> visible=true').count() > 0) await page.locator('.season-ledger-resume').first().click();
+    await page.waitForTimeout(500);
+  }
   run.now = await tick(page); run.notice = await page.locator(NOTICE).count();
   report('opt-out', run, run.now > stop + 20 && run.notice === 0);
   await context.close();

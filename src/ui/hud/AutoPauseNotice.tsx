@@ -38,13 +38,13 @@ export function AutoPauseNotice({ state, events, paused, ui, onLord, onModal }: 
           <li key={line.key} className="auto-pause-line">
             <span className="auto-pause-text"><span className="auto-pause-word">{line.word}</span>{line.sentence === "" ? null : <span className="auto-pause-sentence">{line.sentence}</span>}</span>
             {line.link === null || line.linkLabel === null ? null : (
-              <Button type="button" className="auto-pause-link" variant="secondary" size="sm" onPress={() => { if (line.link !== null) follow(line.link); }}>{line.linkLabel}</Button>
+              <Button type="button" className="auto-pause-link" variant="secondary" size="md" onPress={() => { if (line.link !== null) follow(line.link); }}>{line.linkLabel}</Button>
             )}
           </li>
         ))}
       </ul>
       {more > 0 ? <p className="auto-pause-more">{AUTO_PAUSE_COPY.more(more)}</p> : null}
-      <Button type="button" className="auto-pause-resume" variant="primary" onPress={() => { platformServices().input.emit({ kind: "pauseToggle" }); }}>{AUTO_PAUSE_COPY.resume}</Button>
+      <Button type="button" className="auto-pause-resume" variant="primary" size="md" onPress={() => { platformServices().input.emit({ kind: "pauseToggle" }); }}>{AUTO_PAUSE_COPY.resume}</Button>
     </section>
   );
 }
