@@ -1,0 +1,15 @@
+# EB-TLINK 변경 영향 시험 — 소스별 기록
+
+최신 보관은 `engineB-tlink-final-changed-9ad9253`, clean source `9ad9253468592e7cba144946081d2fbced36adca`, 전체 tree `f36378c83325d6b411f5ae7f6445135e8af19379`다. 기록 tree를 해당 commit의 실제 Git tree와 대조했다. 공식 실행 exit0, command1947.2초다.
+
+| 범위 | 결과 |
+|---|---|
+| 선택 파일 | 619 |
+| 실제 실행 | 553파일·4425시험:4412통과·0실패·13skip |
+| 재사용 | 66파일 — 기존0b04 측정 입력과 이후 변경 파일의 겹침 없음(RR25) |
+
+[결과·출처](changed-result-9ad9253.json), [원본 전체 기록 gzip](test-changed-9ad9253.json.gz)을 보존했다. 원본의 picked·reused·inputs를 생략하지 않았다. 실행553과 재사용66은 중복 없이619개이며,4425는 **실행 시험 수**다. 재사용 시험 수를 더한 전체 개별 시험 수로 바꾸지 않는다. 각 재사용 파일·기존 tree/commit/run·시각·changedSince90·판정 이유는 원본과 결과 JSON에 있다. runtime은 Node24.21.0/aarch64, lock 기반 cache pin은 실행 로그에서 확인했다.
+
+기존 [0b04 결과](changed-result.json)와 [원본](test-changed-0b04cd0.json.gz)은 그대로 유지했다. 이번 기록은9ad 전체 tree에 적용되며 후속 문서·증거 변경이 저장소 읽기 시험에 영향을 주는지는 최종 `check:merge`/`test:changed`에서 다시 판정해야 한다. **기하·125년 연결률·native 해시·전체 목표 완료를 증명하지 않는다.**
+
+원본은 `.remote-runs/engineB-tlink-final-changed-9ad9253/` 및 공식 kept 실행에 보존한다. 재수집 명령은 `scripts/remote/run.sh --fetch engineB-tlink-final-changed-9ad9253`이며 여기서는 원격 작업을 수행하지 않았다. 압축 전후 SHA는 결과 JSON, 보관 파일 SHA는 `SHA256SUMS`에 있다. gzip 복원 byte 일치·source/tree·실행/재사용 집합·종료 코드·로그 시험 합계를 검사했다.
