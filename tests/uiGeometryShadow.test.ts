@@ -121,6 +121,11 @@ test("no usable measured inputs at the base: a′ falls back to the safe list �
     assert.deepEqual([judgement.rr26, judgement.aprime, judgement.direction], ["needed", "fallback", null]);
     assert.match(formatShadow(judgement), /RR26: 감사 필요 \/ a′: 안전 목록 대체 — no measured inputs/);
   } finally { s.done(); }
+  const t = story();
+  try {
+    // Without a base (check:merge on a head alone) the range is not known: a′ falls back, and says why.
+    assert.deepEqual(measuredRange({ base: null, head: t.head(), cwd: t.dir }), { status: "none", why: "no base: the range is not known", shared: null });
+  } finally { t.done(); }
 });
 
 test("a′ judges the push against the shared result it found (at the base), not the new full audit the push brings", () => {
