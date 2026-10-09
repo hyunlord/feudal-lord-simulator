@@ -30,9 +30,15 @@ function place(root, absolute) {
 
 /**
  * The measured inputs of every test file that ran with traceReads.mjs: test (relative path) -> inputs. V8's script list
- * (NODE_V8_COVERAGE) and the loader thread's modules join the main record by process id.
+ * (NODE_V8_COVERAGE) and the loader thread's modules join the main record by process id. A process recorded under a role
+ * (FLS_TRACE_ROLE: the geometry audit's dev server and the audit, RR26 measured) is keyed `role:<name>` and keeps the
+ * programs it started (`children`); its <pid>.config lists the files a bundled config read natively (Vite's
+ * configFileDependencies). Reads under a `declared` folder outside the repository (the scene states, the browser) are
+ * kept as `declared` paths, not as a read outside the repository: what they hold is bound to the result by its hashes.
  */
-export function collectTestInputs({ root: given, traceDir, coverageDir = null }) {
+export function collectTestInputs({ root: given, traceDir, coverageDir = null, declared: declaredDirs = [] }) {
+  const declaredRoots = declaredDirs.map(dir => { try { return realpathSync(dir); } catch { return resolve(dir); } });
+  const isDeclared = absolute => declaredRoots.some(dir => absolute === dir || absolute.startsWith(dir + sep));
   const root = realpathSync(given);   // processes record real paths (/tmp is /private/tmp on macOS)
   const byTest = new Map();
   if (!existsSync(traceDir)) return byTest;
@@ -52,24 +58,27 @@ export function collectTestInputs({ root: given, traceDir, coverageDir = null })
     const at = path => resolve(record.cwd ?? root, path);
     const lines = kind => existsSync(join(traceDir, `${pid}.${kind}`)) ? readFileSync(join(traceDir, `${pid}.${kind}`), "utf8").split("\n").filter(Boolean) : [];
     const modules = lines("modules");
-    const inputs = { files: new Set(), dirs: new Set(), missing: new Set(), untraceable: new Set(record.untraceable ?? []) };
+    const inputs = { files: new Set(), dirs: new Set(), lists: new Set(), missing: new Set(), untraceable: new Set(record.untraceable ?? []), declared: new Set(), children: new Set(record.children ?? []) };
     const add = (into, absolute, outsideIsUntraceable) => {
       const where = place(root, absolute);
       if (where.rel !== undefined) {
         into.add(where.rel);
         // Read through a symbolic link: its target is read too.
         if (into !== inputs.missing) { let real = absolute; try { real = realpathSync(absolute); } catch { /* gone or missing */ } if (real !== absolute) add(into, real, outsideIsUntraceable); }
-      } else if (where.outside !== undefined && outsideIsUntraceable) inputs.untraceable.add(`reads outside the repository: ${where.outside}`);
+      } else if (where.outside !== undefined && isDeclared(where.outside)) { if (into !== inputs.missing) inputs.declared.add(where.outside); }
+      else if (where.outside !== undefined && outsideIsUntraceable) inputs.untraceable.add(`reads outside the repository: ${where.outside}`);
     };
-    for (const path of [...record.files, ...modules, ...(scripts.get(pid) ?? [])]) add(inputs.files, at(path), true);
+    for (const path of [...record.files, ...modules, ...lines("config"), ...(scripts.get(pid) ?? [])]) add(inputs.files, at(path), true);
     for (const path of record.dirs) add(inputs.dirs, at(path), true);
+    for (const path of record.lists ?? []) add(inputs.lists, at(path), true);
     for (const path of [...record.missing, ...lines("missing")]) add(inputs.missing, at(path), false);   // a parent folder's missing tsconfig is no input
-    const test = place(root, at(record.test)).rel; if (test === undefined) continue;
+    const test = typeof record.role === "string" ? `role:${record.role}` : place(root, at(record.test)).rel; if (test === undefined) continue;
     const before = byTest.get(test);
     if (before === undefined) byTest.set(test, inputs);
     else for (const key of Object.keys(inputs)) for (const value of inputs[key]) before[key].add(value);   // a test file run twice: both runs
   }
-  return new Map([...byTest].map(([test, inputs]) => [test, Object.fromEntries(Object.entries(inputs).map(([key, values]) => [key, [...values].sort()]))]));
+  // `lists`, `declared` and `children` only where there are any (a record from before keeps its four lists).
+  return new Map([...byTest].map(([test, inputs]) => [test, Object.fromEntries(Object.entries(inputs).filter(([key, values]) => !["lists", "declared", "children"].includes(key) || values.size > 0).map(([key, values]) => [key, [...values].sort()]))]));
 }
 
 /** A compact form for a record: one path table, per test the indexes. */
@@ -77,7 +86,7 @@ export function packInputs(byTest) {
   const paths = []; const index = new Map();
   const id = path => { if (!index.has(path)) { index.set(path, paths.length); paths.push(path); } return index.get(path); };
   const tests = {};
-  for (const [test, inputs] of byTest) tests[test] = { f: inputs.files.map(id), d: inputs.dirs.map(id), m: inputs.missing.map(id), u: inputs.untraceable };
+  for (const [test, inputs] of byTest) tests[test] = { f: inputs.files.map(id), d: inputs.dirs.map(id), ...(inputs.lists?.length ? { l: inputs.lists.map(id) } : {}), m: inputs.missing.map(id), u: inputs.untraceable };
   return { schema: 1, paths, tests };
 }
 
@@ -86,9 +95,9 @@ export function unpackInputs(packed, test) {
   // A record whose inputs are missing, of another schema or broken counts as unmeasured: its test always runs again.
   if (packed?.schema !== 1 || !Array.isArray(packed.paths) || packed.tests === null || typeof packed.tests !== "object") return null;
   const entry = packed.tests[test];
-  if (entry === undefined || entry === null || typeof entry !== "object" || ![entry.f, entry.d, entry.m].every(list => list === undefined || Array.isArray(list))) return null;
+  if (entry === undefined || entry === null || typeof entry !== "object" || ![entry.f, entry.d, entry.l, entry.m].every(list => list === undefined || Array.isArray(list))) return null;
   const at = indexes => (indexes ?? []).map(index => packed.paths[index]).filter(path => typeof path === "string");
-  return { files: at(entry.f), dirs: at(entry.d), missing: at(entry.m), untraceable: entry.u ?? [] };
+  return { files: at(entry.f), dirs: at(entry.d), lists: at(entry.l), missing: at(entry.m), untraceable: entry.u ?? [] };
 }
 
 /** The changes between two trees or commits: [{ status: "A" | "M" | "D" | …, path }], renames as a delete and an add. */
@@ -100,14 +109,21 @@ export function treeChanges(cwd, from, to) {
 }
 
 /**
- * The changed paths that touch these inputs: a file read (now changed, added or deleted), anything under a folder listed,
- * a package.json or tsconfig.json anywhere, or a path looked for and missed — that path itself, anything under it (a
- * folder that did not exist) or it with an extension (an import written without one). A module added where an import
- * used to resolve elsewhere (src/m.ts beside src/m/index.ts) is a path the resolver looked for and missed.
+ * The changed paths that touch these inputs: a file read (now changed, added or deleted), anything under a folder walked
+ * whole, a package.json or tsconfig.json anywhere, or a path looked for and missed — that path itself, anything under it
+ * (a folder that did not exist) or it with an extension (an import written without one). A module added where an import
+ * used to resolve elsewhere (src/m.ts beside src/m/index.ts) is a path the resolver looked for and missed. A folder
+ * listed one level (`lists`) shows only which entries exist: a changed file in it touches nothing (its content, if read,
+ * is a file read); an added or removed path under it does — exactly when `namesChanged(folder)` says the folder's entries
+ * differ (the caller compares the two trees), else every add or delete below it (the conservative default).
  */
-export function inputOverlap(inputs, changes) {
+export function inputOverlap(inputs, changes, { namesChanged = null } = {}) {
   const files = new Set(inputs.files);
-  const under = path => inputs.dirs.some(dir => dir === "" || path === dir || path.startsWith(`${dir}/`));
+  const under = (path, dir) => dir === "" || path === dir || path.startsWith(`${dir}/`);
+  const walked = path => inputs.dirs.some(dir => under(path, dir));
   const looked = path => inputs.missing.some(miss => path === miss || path.startsWith(`${miss}/`) || path.startsWith(`${miss}.`));
-  return changes.filter(({ path }) => touchesEvery(path) || files.has(path) || looked(path) || under(path)).map(change => change.path).sort();
+  const renamedEntries = new Map();   // folder -> whether its entries changed (asked once)
+  const entriesChanged = dir => { if (!renamedEntries.has(dir)) renamedEntries.set(dir, namesChanged === null ? true : namesChanged(dir)); return renamedEntries.get(dir); };
+  const listed = ({ status, path }) => status !== "M" && (inputs.lists ?? []).some(dir => under(path, dir) && path !== dir && entriesChanged(dir));
+  return changes.filter(change => touchesEvery(change.path) || files.has(change.path) || looked(change.path) || walked(change.path) || listed(change)).map(change => change.path).sort();
 }

@@ -187,16 +187,32 @@ ui-geometry)
   fi
   # No file watching (scripts/remote/viteNoWatch.config.ts): the audit needs the dev transforms, not hot reload, and a
   # watched run folder takes thousands of the DGX's shared inotify watches. The server goes with the task on any exit.
+  # RR26 measured (a′): the server and the audit run under the RR25 recorder (roles vite and audit); after the audit the
+  # server stops and scripts/uiGeometryInputs.mjs binds what both read, and the declared inputs, to the result. Their
+  # allowed children read nothing of the repository for them: git (vite.config's version line; the audit's commit and
+  # dirty check) and the browser (Chromium reads only what the server serves, which the server records).
   . scripts/remote/devServers.sh
-  fls_serve "$OUT/ui-geometry/vite.log" --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort
+  trace="$OUT/ui-geometry/trace"; rm -rf "$trace"; mkdir -p "$trace"
+  tracer="--import=file://$PWD/scripts/checks/testInputs/traceReads.mjs"
+  browser_name=$(basename "${FLS_CHROMIUM_PATH:-chrome}")
+  FLS_TRACE_DIR="$trace" FLS_TRACE_ROLE=vite FLS_TRACE_CHILDREN=git NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }$tracer" \
+    fls_serve "$OUT/ui-geometry/vite.log" --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort
   url="http://127.0.0.1:$FLS_REMOTE_PORT/"
   for _ in $(seq 1 60); do curl -sf "$url" > /dev/null && break; sleep 1; done
   curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; cat "$OUT/ui-geometry/vite.log"; exit 1; }
   out=docs/verification/uiaudit1/geometry/$FLS_REMOTE_RUN
-  node_modules/.bin/tsx scripts/uiGeometryAudit.mjs "$out" --url "$url" --states5 "$states5" --states6 "$states6" --states8 "$states8" \
+  FLS_TRACE_DIR="$trace" FLS_TRACE_ROLE=audit FLS_TRACE_CHILDREN="git,$browser_name,chrome,chromium,headless_shell,chrome-headless-shell" NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }$tracer" \
+    node_modules/.bin/tsx scripts/uiGeometryAudit.mjs "$out" --url "$url" --states5 "$states5" --states6 "$states6" --states8 "$states8" \
     --states9 "$states9" --states10 "$states10" --extra "$extra" --states-lands "$lands" --states-petitions "$petitions" --states-lord "$lord" --states-moments "$moments" --states-lord2 "$lord2" --states-deccard2 "$deccard2" --states-slice "$slice" --states-variants "$variants" "$@" > "$OUT/ui-geometry/audit.log" 2>&1
   rc=$?
-  tail -n 3 "$OUT/ui-geometry/audit.log" | tee "$OUT/summary.txt"
+  sleep 2; fls_stop_servers   # the server writes its record every second; it is idle once the audit ends
+  if [ -f "$out/geometry.json" ]; then
+    node scripts/uiGeometryInputs.mjs "$out" "$trace" --state ui5="$states5" --state ui6="$states6" --state ui8="$states8" --state ui9="$states9" \
+      --state ui10="$states10" --state ui10-extra="$extra" --state lands="$lands" --state petitions="$petitions" --state lord="$lord" --state moments="$moments" \
+      --state lord2="$lord2" --state deccard2="$deccard2" --state slice="$slice" --state variants="$variants" --declared "$HOME/.cache/ms-playwright" \
+      2>&1 | tee -a "$OUT/ui-geometry/audit.log" || rc=1
+  fi
+  tail -n 4 "$OUT/ui-geometry/audit.log" | tee "$OUT/summary.txt"
   [ -f "$out/geometry.md" ] && sed -n '1,4p' "$out/geometry.md" | tee -a "$OUT/summary.txt"
   exit $rc
   ;;

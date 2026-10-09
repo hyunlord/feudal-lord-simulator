@@ -35,6 +35,7 @@ import { appendFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'n
 import { hostname } from 'node:os';
 import { join, posix } from 'node:path';
 import { git, isMain, resolveRange } from './gitRange.mjs';
+import { inputOverlap, treeChanges, unpackInputs } from './testInputs/testInputs.mjs';
 
 export const UI_GEOMETRY_SUMMARY = 'docs/verification/uiaudit1/geometry.json';
 export const UI_GEOMETRY_BASELINE = 'docs/verification/uiaudit1/geometry-baseline.json';
@@ -243,8 +244,50 @@ export function unsafeChanges(from, to, cwd = process.cwd(), cache = new Map()) 
   return result;
 }
 
-/** The reason line for unsafe changes since a measurement. */
-const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length} file(s) off the safe list changed since it was measured at ${commit.slice(0, 8)} (${changes.reaching === null ? 'the import closure could not be read' : `${changes.reaching} of them reach the UI or the audit by import`}): ${changes.unsafe.slice(0, 6).join(', ')}${changes.unsafe.length > 6 ? ` … ${changes.unsafe.length - 6} more` : ''} — audit again`;
+/** The reason line for stale changes since a measurement (measured inputs, or the safe list and why). */
+const unsafeLine = (what, commit, changes) => {
+  const list = `${changes.unsafe.slice(0, 6).join(', ')}${changes.unsafe.length > 6 ? ` … ${changes.unsafe.length - 6} more` : ''}`;
+  if (changes.how === 'measured') return `${what}: ${changes.unsafe.length} file(s) the audit read changed since it was measured at ${commit.slice(0, 8)} (measured inputs): ${list} — audit again`;
+  return `${what}: ${changes.unsafe.length} file(s) off the safe list changed since it was measured at ${commit.slice(0, 8)} (${changes.reaching === null ? 'the import closure could not be read' : `${changes.reaching} of them reach the UI or the audit by import`}): ${list} — audit again`;
+};
+/** The note under a stale line judged by the safe list: why there were no measured inputs to judge by. */
+const safeListNote = changes => changes.how === 'measured' ? [] : [`    judged by the safe list: ${changes.how}`];
+
+/**
+ * RR26 measured (a′, user ruling 2026-10-10): what an audit read, linked from its result (`measuredInputs`, written by
+ * scripts/uiGeometryInputs.mjs): { status: 'ok', inputs, declared } — or 'none' / 'broken' (no link, the file not
+ * committed at <head>, its hash or form wrong) or 'untraceable' (the dev server or the audit did what the recorder cannot
+ * follow), each with `why`. Only 'ok' is used; the others fall back to the safe list.
+ */
+export function measuredInputs(result, head, cwd = process.cwd()) {
+  const link = result?.measuredInputs;
+  if (link === undefined || link === null) return { status: 'none', why: 'no measured inputs' };
+  if (typeof link !== 'object' || typeof link.file !== 'string' || !/^[0-9a-f]{64}$/.test(String(link.sha256 ?? ''))) return { status: 'broken', why: 'its measured inputs are not linked whole' };
+  let text; try { text = execFileSync('git', ['show', `${head}:${link.file}`], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return { status: 'broken', why: `its measured inputs (${link.file}) are not committed` }; }
+  if (createHash('sha256').update(text).digest('hex') !== link.sha256) return { status: 'broken', why: `its measured inputs (${link.file}) do not match their hash` };
+  let body; try { body = JSON.parse(text); } catch { return { status: 'broken', why: `its measured inputs (${link.file}) are not JSON` }; }
+  if (body?.kind !== 'ui-geometry-inputs' || body.schema !== 1) return { status: 'broken', why: `its measured inputs (${link.file}) are of another kind or schema` };
+  const inputs = unpackInputs(body.inputs, 'audit');
+  if (inputs === null) return { status: 'broken', why: `its measured inputs (${link.file}) hold no audit record` };
+  if (inputs.untraceable.length > 0) return { status: 'untraceable', why: `not measurable: ${inputs.untraceable.slice(0, 3).join('; ')}`, declared: body.declared ?? null };
+  return { status: 'ok', inputs, declared: body.declared ?? null };
+}
+
+/**
+ * The changes from `from` to `to` that make a result stale: with measured inputs, the files the audit read (or folders
+ * it listed, paths it looked for, a package.json or tsconfig.json anywhere, the lock file) that changed — `how:
+ * 'measured'`; without, the changes off the safe list — `how` says why the safe list judged.
+ */
+export function staleChanges(from, to, cwd = process.cwd(), cache = new Map(), measured = null) {
+  if (measured?.status === 'ok') {
+    const changes = treeChanges(cwd, from, to);
+    // A folder listed one level counts when its entries differ between the two trees (a missing folder has none).
+    const names = rev => dir => { try { return git(['ls-tree', '--name-only', `${rev}:${dir}`], cwd); } catch { return null; } };
+    const namesChanged = dir => names(from)(dir) !== names(to)(dir);
+    return { changed: changes.length, unsafe: inputOverlap(measured.inputs, changes, { namesChanged }), reaching: null, how: 'measured' };
+  }
+  return { ...unsafeChanges(from, to, cwd, cache), how: measured === null ? 'no measured inputs' : measured.why };
+}
 
 /** Whether `commit` is a commit here and an ancestor of `head`: 'ok' | 'missing' | 'not-ancestor'. */
 function measuredAt(commit, head, cwd) {
@@ -339,7 +382,7 @@ export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd
     const at = measuredAt(commit, head, cwd);
     if (at === 'missing') reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not here`);
     else if (at === 'not-ancestor') reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not in the pushed history (amended or rebased away): audit again`);
-    else { changes = unsafeChanges(commit, head, cwd, cache); if (changes.unsafe.length > 0) reasons.push(unsafeLine(`run ${run}`, commit, changes)); }
+    else { changes = staleChanges(commit, head, cwd, cache, measuredInputs(report, head, cwd)); if (changes.unsafe.length > 0) reasons.push(unsafeLine(`run ${run}`, commit, changes), ...safeListNote(changes)); }
   }
   if (report.axesNarrowed !== false) reasons.push(`run ${run}: ${report.axesNarrowed === true ? 'narrowed by --viewports, --copy or --numbers' : 'its report does not say it measured every condition (an audit from before RR26)'}: audit the rows in every condition`);
   // A report that leaves out what it must say fails (the audit always writes these fields).
@@ -357,7 +400,7 @@ export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd
   if (comparison.fixed.length > 0) reasons.push(`run ${run}: ${comparison.fixed.length} baseline entr(ies) of its rows fixed, drop them (npm run ui-geometry:baseline):`, ...sample(comparison.fixed));
   const moved = changes === null ? null : changes.changed;
   const cells = [...measured.values()].reduce((sum, set) => sum + set.size, 0);
-  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved };
+  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved, how: changes?.how ?? null };
 }
 
 /** The UI-Geometry-Override trailers of base..head (the head alone without a base): [{ commit, reason }]. */
@@ -370,13 +413,55 @@ export function overridesInRange(base, head, cwd = process.cwd()) {
   });
 }
 
+/** The reasons a named run's declared inputs leave the shared result's rows stale (see checkUiGeometry). */
+export function declaredReasons({ shared, sharedDeclared, sharedRows, runs, head, cwd = process.cwd() }) {
+  const reasons = [];
+  const covered = new Set(); const reports = [];
+  for (const entry of runs) {
+    const report = readJson(head, `${UI_GEOMETRY_RUNS}/${entry.run}/geometry.json`, cwd);
+    if (report === null || (entry.ok === false)) continue;
+    for (const row of Object.keys(report.rows ?? {})) covered.add(row);
+    const measured = measuredInputs(report, head, cwd);
+    if (measured.declared) reports.push({ run: entry.run, declared: measured.declared });
+  }
+  for (const { run, declared } of reports) {
+    const sets = Object.keys(declared.states ?? {}).filter(set => typeof sharedDeclared.states?.[set] === 'string' && sharedDeclared.states[set] !== declared.states[set]);
+    if (sets.length > 0) {
+      const stale = sharedRows.filter(([row, entry]) => sets.includes(entry?.scene) && !covered.has(row)).map(([row]) => row);
+      if (stale.length > 0) reasons.push(`run ${run}: the state folder(s) ${sets.join(', ')} changed since the shared result (run ${shared.run ?? '?'}) — ${stale.length} row(s) it measured on them are not measured again: ${stale.slice(0, 6).join(', ')}${stale.length > 6 ? ' …' : ''} — audit them (or a full audit)`);
+    }
+    const tools = ['chromium', 'playwright'].filter(key => declared[key] && sharedDeclared[key] && declared[key] !== sharedDeclared[key]);
+    if (declared.viteDeps?.hash && sharedDeclared.viteDeps?.hash && declared.viteDeps.hash !== sharedDeclared.viteDeps.hash) tools.push('Vite\'s dependency cache');
+    const all = sharedRows.map(([row]) => row).filter(row => !covered.has(row));
+    if (tools.length > 0 && all.length > 0) reasons.push(`run ${run}: ${tools.join(', ')} changed since the shared result (run ${shared.run ?? '?'}): every row is stale — a full audit`);
+  }
+  return reasons;
+}
+
+/** The shared result's retries, and the rows retried in it and in the shared result before it (user order 2026-10-09). */
+export function retryNotes(summary, head, cwd = process.cwd()) {
+  const retries = summary?.retries;
+  if (retries === undefined || retries === null || typeof retries !== 'object') return null;
+  let again = []; let previousRun = null;
+  try {
+    const commits = git(['log', '--format=%H', '-n', '2', head, '--', UI_GEOMETRY_SUMMARY], cwd).split('\n').filter(Boolean);
+    const previous = commits.length > 1 ? readJson(commits[1], UI_GEOMETRY_SUMMARY, cwd) : null;
+    if (previous?.retries?.rows && previous.run !== summary.run) { previousRun = previous.run ?? null; again = Object.keys(retries.rows ?? {}).filter(row => row in previous.retries.rows).sort(); }
+  } catch { /* no history */ }
+  return { run: summary.run ?? null, timeouts: retries.timeouts ?? 0, failedThrice: retries.failedThrice ?? 0, cellsRetried: retries.cellsRetried ?? 0,
+    treesRetried: retries.treesRetried ?? 0, conditions: summary.conditions ?? null, rows: Object.keys(retries.rows ?? {}).sort(), again, previousRun };
+}
+
 export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode = gateMode(), env = process.env }) {
   try { execFileSync('git', ['cat-file', '-e', `${head}:scripts/uiGeometryAudit.mjs`], { cwd, stdio: 'ignore' }); } catch { return { skipped: true, mode, ok: true, pass: true, reasons: [] }; }
   const cache = new Map();
-  // A range that changes only files on the safe list cannot move the screen: only the lists' shrink rules apply.
-  const rangeChanges = base === null ? null : unsafeChanges(base, head, cwd, cache);
-  const unchanged = rangeChanges !== null && rangeChanges.unsafe.length === 0;
   const summary = readJson(head, UI_GEOMETRY_SUMMARY, cwd);
+  // RR26 measured: the shared full audit's measured inputs judge what moves the screen; without them, the safe list.
+  const sharedMeasured = summary !== null && summary.full === true ? measuredInputs(summary, head, cwd) : null;
+  // A range that changes nothing the audit reads (or, unmeasured, only safe files) cannot move the screen: only the
+  // lists' shrink rules apply.
+  const rangeChanges = base === null ? null : staleChanges(base, head, cwd, cache, sharedMeasured);
+  const unchanged = rangeChanges !== null && rangeChanges.unsafe.length === 0;
   const baselineFile = readJson(head, UI_GEOMETRY_BASELINE, cwd);
   const exceptions = readJson(head, UI_GEOMETRY_EXCEPTIONS, cwd)?.exceptions ?? [];
   const reasons = [];
@@ -390,8 +475,8 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     const at = commit === '' ? 'missing' : measuredAt(commit, head, cwd);
     if (at !== 'ok') { sharedStale = true; reasons.push(`the shared result (run ${summary.run ?? '?'}): its measured commit ${commit.slice(0, 8) || '(none)'} is ${at === 'missing' ? 'not here' : 'not in the pushed history'}: refresh it — npm run remote:ui-geometry`); }
     else {
-      const changes = unsafeChanges(commit, head, cwd, cache);
-      if (changes.unsafe.length > 0) { sharedStale = true; reasons.push(`${unsafeLine(`the shared result (run ${summary.run ?? '?'})`, commit, changes)}: refresh it — npm run remote:ui-geometry, commit docs/verification/uiaudit1/geometry.json (and npm run ui-geometry:baseline if something was fixed)`); }
+      const changes = staleChanges(commit, head, cwd, cache, sharedMeasured);
+      if (changes.unsafe.length > 0) { sharedStale = true; reasons.push(`${unsafeLine(`the shared result (run ${summary.run ?? '?'})`, commit, changes)}: refresh it — npm run remote:ui-geometry, commit docs/verification/uiaudit1/geometry.json (and npm run ui-geometry:baseline if something was fixed)`, ...safeListNote(changes)); }
     }
   }
   if (!unchanged && sharedFull) {
@@ -431,6 +516,15 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
       for (const entry of rowRuns) reasons.push(...entry.reasons);
     }
   }
+  // RR26 measured: the declared inputs (the scene state folders, the browser, Vite's dependency cache) are bound by value.
+  // A named run whose state folder differs from the shared result's leaves the shared result's rows on that set stale
+  // unless the named runs measured them again; a different browser or dependency cache leaves every row stale.
+  if (!unchanged && sharedMeasured?.declared) {
+    const runs = rowRuns ?? rowRunsInRange(base, head, cwd).map(run => ({ run }));
+    const sharedReport = typeof summary.report === 'string' ? readJson(head, summary.report, cwd) : null;
+    const sharedRows = Object.entries(sharedReport?.rows ?? {});
+    for (const reason of declaredReasons({ shared: summary, sharedDeclared: sharedMeasured.declared, sharedRows, runs, head, cwd })) reasons.push(reason);
+  }
   // Only shrink: what base..head adds.
   if (base !== null && baselineFile !== null) {
     const before = readJson(base, UI_GEOMETRY_BASELINE, cwd);
@@ -455,7 +549,10 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     else override = { reason };
   }
   const pass = ok || (mode === 'warn' && env.FLS_UI_GEOMETRY_GATE !== 'warn') || override?.reason !== undefined;
-  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns };
+  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns,
+    measured: sharedMeasured === null ? null : { status: sharedMeasured.status, why: sharedMeasured.why ?? null },
+    // The retries of a shared result this range brings (a new audit): its rate and the rows it retried again.
+    retries: summary !== null && (base === null || readJson(base, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run) ? retryNotes(summary, head, cwd) : null };
 }
 
 /** An accepted override: the line a report must carry, also appended (time, host, commit, reason) to .remote-runs/local-heavy.log. */
@@ -472,19 +569,30 @@ export function formatOverrideCount(base, head, cwd = process.cwd()) {
   return [`ui-geometry: warn overrides in this range: ${overrides.length}`, ...overrides.map(item => `  ${item.commit.slice(0, 8)} ${item.reason}`)].join('\n');
 }
 
+/** The retry lines (user order 2026-10-09): the rate, and the rows retried again since the shared result before. */
+function retryLines(retries) {
+  if (retries === null || retries === undefined) return [];
+  const rate = retries.conditions ? ` of ${retries.conditions} (${(100 * retries.cellsRetried / retries.conditions).toFixed(1)} %)` : '';
+  const lines = [`ui-geometry: retries in run ${retries.run}: ${retries.cellsRetried} condition(s) needed another attempt${rate}, ${retries.timeouts} first-attempt timeout(s), ${retries.failedThrice} failed three times, ${retries.treesRetried} tree(s) re-run${retries.rows.length > 0 ? ` — ${retries.rows.slice(0, 6).join(', ')}${retries.rows.length > 6 ? ' …' : ''}` : ''}`];
+  if (retries.again.length > 0) lines.push(`ui-geometry: retried again (also in ${retries.previousRun}): ${retries.again.join(', ')} — a wait condition to fix (docs/verification/uiaudit1/RETRIES.md)`);
+  return lines;
+}
+
 export function formatUiGeometryResult(result) {
   if (result.skipped) return 'ui-geometry: skipped (no geometry audit at this commit)';
   const tag = result.override?.reason !== undefined ? ` (overridden: ${result.override.reason})` : result.mode === 'warn' && result.pass ? ' (report only: UI_GEOMETRY_GATE = warn)' : '';
   const counts = result.comparison === null || result.comparison === undefined ? ''
     : ` — ${result.comparison.failures} failure(s): ${result.comparison.baseline} in the baseline, ${result.comparison.excepted} under ${result.comparison.exceptions} exception(s)`;
-  if (result.ok && result.unchanged) return `ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`;
+  if (result.ok && result.unchanged) return [result.rangeChanges.how === 'measured'
+    ? `ui-geometry: nothing the audit read changed (${result.rangeChanges.changed} file(s), measured inputs of the shared result): no audit needed (RR26 measured)${tag}`
+    : `ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`, ...retryLines(result.retries)].join('\n');
   if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
     ? `  run ${entry.run}: superseded — ${entry.rows.length > 0 ? `a newer named run measured its rows (${entry.rows.join(', ')}) again` : 'it has no report or no measured row, and a newer named run holds'}`
-    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
-  if (result.ok) return `ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`;
+    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, ${entry.how === 'measured' ? 'none the audit read (measured inputs)' : 'all on the safe list'} — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`), ...retryLines(result.retries)].join('\n');
+  if (result.ok) return [`ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`, ...retryLines(result.retries)].join('\n');
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);
-  return lines.join('\n');
+  return [...lines, ...retryLines(result.retries)].join('\n');
 }
 
 if (isMain(import.meta.url)) {
