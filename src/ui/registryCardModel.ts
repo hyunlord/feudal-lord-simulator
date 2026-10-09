@@ -13,6 +13,7 @@ import { offerChoices, openRegistryOffers } from "../engine/registry";
 import type { RegistryOccurrence } from "../engine/registry.types";
 import { holds, type Scope } from "../engine/registryDsl";
 import { bindEntry, holdCost, registryV4Support, v4Entry, type HoldCost, type V4Choice, type V4Entry } from "../engine/registryV4";
+import { registryVariantFor } from "../engine/registryVariants";
 import { stateCalendar } from "../engine/scenarioState";
 import { lordMode } from "../engine/townAgency";
 import { eventArtFor, type EventArtId } from "./eventArt";
@@ -175,19 +176,24 @@ const sender = (state: GameState, entryId: string) => REGISTRY_CARD_COPY.from(..
 
 export type RegistryHeadline = Pick<RegistryOfferView, "occurrenceId" | "entryId" | "art" | "title" | "body" | "waits">;
 
-/** An offer's picture, words and deadline (the story chip's; nothing is bound or tried). */
+/** An offer's picture, words and deadline (the story chip's; no answer is tried). ER-13 (engine B): the canon's variant words
+ * for this very offer (067 for 031 · 059, 078 for 019) when the engine finds them so — words only; its choices, targets,
+ * costs, deadline and picture (by its own entry) stay the offer's. */
 function headline(state: GameState, { occurrence, entry }: RegistryCard): RegistryHeadline {
   const copy = V4_COPY[entry.id];
+  const variant = registryVariantFor(state, occurrence);
   const end = stateCalendar({ ...state, tick: occurrence.deadline });
-  return { occurrenceId: occurrence.id, entryId: entry.id, art: eventArtFor(entry.id), title: copy?.title ?? REGISTRY_CARD_COPY.title, body: copy?.body ?? "",
+  return { occurrenceId: occurrence.id, entryId: entry.id, art: eventArtFor(entry.id), title: variant?.title ?? copy?.title ?? REGISTRY_CARD_COPY.title,
+    body: variant?.body ?? copy?.body ?? "",
     waits: REGISTRY_CARD_COPY.waits(calendarDays(occurrence.deadline - state.tick), end.year, SCENARIO_COPY.seasons[end.season] ?? "") };
 }
 
-/** The first registry offer waiting for the lord, for its story chip, or null. */
-export function registryHeadline(state: GameState): RegistryHeadline | null {
+/** The first registry offer waiting for the lord, for its story chip, or null. Once per state (`perState`): the chips read it
+ * on every render, and its variant words bind the offer's fixed targets. */
+export const registryHeadline = perState((state: GameState): RegistryHeadline | null => {
   const card = openRegistryCards(state)[0];
   return card === undefined ? null : headline(state, card);
-}
+});
 
 /** One offer as its card shows it: each answer the engine would carry out is run on the state (`answer_registry_offer`). */
 export function registryCardView(state: GameState, card: RegistryCard): RegistryOfferView {
