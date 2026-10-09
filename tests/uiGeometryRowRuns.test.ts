@@ -21,7 +21,7 @@ const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; runName?: string; commit?: string | null; unregistered?: number;
   noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "outside" };
 type Story = { trunkMove: (write: (path: string, text: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
-  shared?: "stale" | "current-failing" | "partial" | "none"; exceptions?: object[]; rowIds?: string[] };
+  shared?: "stale" | "current-failing" | "partial" | "orphan" | "no-commit" | "none"; exceptions?: object[]; rowIds?: string[] };
 
 function story({ trunkMove, report = {}, baseline = [], trailer = true, shared = "stale", exceptions = [], rowIds = [ROW] }: Story) {
   const dir = tempDir("fls-rowrun-");
@@ -46,7 +46,9 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, shared =
   const trunk0 = git("rev-parse", "HEAD");
   // The shared result: a full audit of the trunk as it was (stale once the branch changes the panel).
   const sharedAt = (commit: string, extra: object = {}) => write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-old", full: true, commit, dirty: false, failureKeys: [], unopened: 0, ...extra }));
-  if (shared !== "none") { sharedAt(trunk0); git("add", "-A"); git("commit", "-qm", "the shared result"); }
+  // "orphan": measured at a commit outside the history (an amend or a rebase); "no-commit": a result without its commit.
+  const sharedCommit = shared === "orphan" ? git("commit-tree", `${trunk0}^{tree}`, "-m", "amended away") : shared === "no-commit" ? "" : trunk0;
+  if (shared !== "none") { sharedAt(sharedCommit); git("add", "-A"); git("commit", "-qm", "the shared result"); }
   git("checkout", "-qb", "branch");
   write("src/ui/Panel.tsx", "export const Panel = () => 'panel';\n"); write("src/styles/panel.css", ".panel { padding: 12px; }\n.spacer {}\n.spacer2 {}\n.panel-title { margin: 0; }\n");
   git("commit", "-qam", "branch: the panel");
@@ -286,4 +288,14 @@ test("dirty: every uncommitted change off the safe list (edited, untracked, stag
     write("public/assets/a.png", "a\n"); write("public/assets/lfs.png", pointer);
     assert.deepEqual(uiInputsDirty(dir), ["public/assets/lfs.png"], "the pointer text in place of the picture");
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("a full shared result measured at a commit outside the history, or with none, does not count", () => {
+  for (const [shared, expected] of [
+    ["orphan", /^the shared result \(run full-old\): its measured commit [0-9a-f]{8} is not in the pushed history: refresh it/],
+    ["no-commit", /^the shared result \(run full-old\): its measured commit \(none\) is not here: refresh it/],
+  ] as const) {
+    const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared, trailer: false });
+    try { refused(s.check(), expected); } finally { s.done(); }
+  }
 });
