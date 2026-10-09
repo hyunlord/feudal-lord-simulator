@@ -7,8 +7,10 @@
  */
 import type { BuildingKind } from "../content/buildingConfig";
 import type { TileCoordinate } from "../world/grid";
-import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
+import { autoplayConstructionSources } from "./autoplayConstructionSources";
 import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
+import { buildingRoadAccessTiles } from "./routing";
+import { labelRoadComponents } from "../world/roadGraph";
 import type { GameState } from "./engine.types";
 
 /** GB-4/GB-5: a spot the town gave up for want of material or hands is not taken again for a year (a road's want is the reach check itself). */
@@ -17,7 +19,13 @@ const ABANDONED_SPOT_TICKS = 4_000;
 export function constructionSiteReachable(state: GameState, kind: BuildingKind, coordinate: TileCoordinate): boolean {
   if ((state.agency?.abandonedSites ?? []).some(entry => entry.kind === kind && entry.tx === coordinate.tx && entry.ty === coordinate.ty
     && entry.reason !== "road" && state.tick - entry.tick < ABANDONED_SPOT_TICKS)) return false;
-  const candidate = { id: "reach-probe", kind, tx: coordinate.tx, ty: coordinate.ty, workers: 0 } as Parameters<typeof hasConnectedConstructionRoute>[1];
-  if (hasConnectedConstructionRoute(state, candidate)) return true;
+  const candidate = { id: "reach-probe", kind, tx: coordinate.tx, ty: coordinate.ty, workers: 0 } as Parameters<typeof plannedBuildingRoadAction>[1];
+  // The common case, cheaply: a road beside it on the network a store stands on (the labels are cached per map).
+  const labels = labelRoadComponents(state);
+  const access = buildingRoadAccessTiles(state, candidate);
+  if (access.length > 0) {
+    const stores = new Set(autoplayConstructionSources(state).flatMap(building => buildingRoadAccessTiles(state, building)).map(tile => labels.get(`${tile.tx},${tile.ty}`)));
+    if (stores.size === 0 || access.some(tile => stores.has(labels.get(`${tile.tx},${tile.ty}`)))) return true;
+  }
   return plannedBuildingRoadAction(state, candidate).kind === "place_road";
 }

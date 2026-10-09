@@ -30,7 +30,7 @@ export function growWhyProbe(seed: number, years = 70) {
       needs: (walk?.needs ?? []).map(need => `${need.planner}:${need.action.kind}${need.action.kind === "place_building" ? `:${need.action.building}` : ""}`),
       proposals: (walk?.proposals ?? []).map(proposal => `${proposal.what}:${proposal.score}${proposal.refusedBy === undefined ? "" : `:refused:${proposal.refusedBy}`}`).slice(0, 12),
       refused: (state.agency?.refusedNeeds ?? []).map(entry => `${entry.what}:${entry.builder}:${entry.since}`),
-      sites: state.constructionSites.map(site => "kind" in site ? `${site.kind}:${site.stall}` : `wall:${site.stall}`).slice(0, 10),
+      sites: state.constructionSites.map(site => `${"kind" in site ? site.kind : "wall"}:${site.stall}`).slice(0, 10),
       kinds: Object.fromEntries(["quarry", "masonry", "church", "chapel", "market", "storehouse"].map(kind => [kind, state.buildings.filter(building => building.kind === kind).length])) });
   }
   return { seed, years, rows };
