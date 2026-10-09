@@ -75,8 +75,15 @@ export function readPrecloses(directory, expectedSha) {
     return { tick, entry, choice, id, record, state, text };
   });
 }
+export async function assertAutoplayDisabled(page) {
+  const control = page.locator('.autoplay-control > button');
+  check(await control.count() === 1, 'Autoplay control must be unique');
+  check((await control.textContent())?.trim() === '자동 발전', 'Autoplay control label mismatch');
+  check(await control.getAttribute('aria-pressed') === 'false', 'Autoplay unexpectedly enabled');
+}
 async function press(page, selector, actions) {
-  const control = page.locator(selector).first();
+  const control = page.locator(selector);
+  check(await control.count() === 1, `Control must be unique: ${selector}`);
   check(await control.isVisible() && await control.isEnabled(), `Control unavailable: ${selector}`);
   check(await control.evaluate(el => { const b = el.getBoundingClientRect(); const top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2); return top !== null && (el.contains(top) || top.contains(el)); }), `Control covered: ${selector}`);
   await control.dispatchEvent('click'); actions.push({ input: 'synthetic DOM click through existing handler', selector });
@@ -108,7 +115,7 @@ async function inspect(browser, item, output, url) {
     row.initialPreference = await page.evaluate(() => localStorage.getItem('feudal.seasonLedgerAuto'));
     if (await page.locator('.welcome-dismiss-layer').isVisible()) await press(page, '.welcome-dismiss-layer', row.actions);
     check(await page.locator(PAUSE).getAttribute('aria-pressed') === 'true', 'Initial UI not paused');
-    check(await page.locator('.autoplay-toggle').getAttribute('aria-pressed') === 'false', 'Autoplay unexpectedly enabled');
+    await assertAutoplayDisabled(page);
     await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1000));
     for (let index = 0; index < 2; index += 1) { await page.clock.runFor(16); row.clock.push({ phase: 'paused-init', ms: 16 }); }
     const before = await snapshot(page, row, 'exact-before-normal-input', withResidentWalkers(item.state));
