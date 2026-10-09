@@ -30,7 +30,12 @@ export function estatePetitionContext(state: GameState, strategy: string, bound:
     const claim = estates.claims.find(item => item.id === suit?.claimId && item.id === boundId(bound, 'claim') && item.claimant === LORD && item.basis === 'old_possession');
     const representative = [...(state.persons?.people ?? [])].sort((a, b) => codepoint(a.id, b.id))
       .find(person => person.alive && person.leftYear === undefined && (fixed === undefined || fixed.partyIds.includes(person.id)) && person.householdId === 'manor'
-        && person.role === 'steward' && stateCalendar(state).year - person.birthYear >= 16);
+        && person.role === 'steward' && stateCalendar(state).year - person.birthYear >= 16)
+      ?? [...estates.people].sort((a, b) => codepoint(a.id, b.id)).find(person => alive(person.id) && person.occupation === 'steward'
+        && (fixed === undefined || fixed.partyIds.includes(person.id))
+        && stewardship.stewards.some(record => record.personId === person.id && record.status === 'serving'
+          && held.some(owned => owned.id === record.estateId)
+          && stewardship.oversight.some(item => item.estateId === record.estateId && item.stewardId === record.personId)));
     if (suit === undefined || claim === undefined || representative === undefined) return null;
     return snapshot(suit.id, [representative.id], { evidence: claim.evidence.map(item => ({ ...item })) }, { claimId: claim.id, basis: claim.basis, since: claim.since });
   }

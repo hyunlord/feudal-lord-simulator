@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "run": "engineB-outcome-portable-probe-2024df1",
+  "executionLocation": "DGX",
+  "sourceRevision": "2024df1cc0821a2e0c6753e5f8f6bce1da66608f",
+  "source": {
+    "revision": "2024df1cc0821a2e0c6753e5f8f6bce1da66608f",
+    "platform": "linux",
+    "node": "v24.21.0",
+    "status": "",
+    "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+    "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+  },
+  "seed": 1,
+  "years": 1,
+  "commandCount": 117,
+  "classifiedHeavyAnswers": 0,
+  "registryAnswerSetVerified": 0,
+  "replayVerified": true,
+  "finalComparison": {
+    "expectedSha256": "cc665a3ac7eefa196d79dd3c3a4e6e645ac37735746347a0c773a729b4803b97",
+    "actualSha256": "cc665a3ac7eefa196d79dd3c3a4e6e645ac37735746347a0c773a729b4803b97",
+    "expectedChecksum": "sha256:cc665a3ac7eefa196d79dd3c3a4e6e645ac37735746347a0c773a729b4803b97",
+    "actualChecksum": "sha256:cc665a3ac7eefa196d79dd3c3a4e6e645ac37735746347a0c773a729b4803b97"
+  },
+  "verification": {
+    "archive": "entire JSON archive equality",
+    "commands": "entire attempted command stream SHA",
+    "contexts": "entire compressed context SHA",
+    "final": "full final state JSON bytes",
+    "intermediateFullStatesCompared": 0,
+    "browserEvidence": false
+  },
+  "short125GateRejection": "125-year interval invalid",
+  "exitCode": 0,
+  "timing": "SYNC_S=36.5\nPREPARE_S=22.7\nWAIT_S=0.1\nCOMMAND_S=17.1\nNM_CACHE=hit\nPORT=4303\n",
+  "toolHashes": {
+    "engineBOutcomeProduce.ts": "ecfd48823fdffb057db1fab8dda6397617c3a9dfdf1a38a0d7fec39f21fd6fd6",
+    "engineBOutcomeEvidence.ts": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875",
+    "engineBOutcomeCollect.ts": "11008111ef7a0c0001c30b128aac402db52cdfe27a0dcf9f6d4b4d8c66b16766",
+    "engineBOutcomeTaxonomy.ts": "5d778cd40caae2dcf0c07163a7f9a5a046fac98cc1683feda9779fe2b745c1a5",
+    "engineBOutcomeArchive.mjs": "769c44c017183d5a162d6926e21f837b64c1d7f4385f2e03bddd00d7e2a9d718",
+    "registryDecisionOccurrences.ts": "e81a40bbde91cae90e49788d515634bad0936313ae655d7aeea630bd5ce3ae63"
+  },
+  "fileSha256": {
+    "eb-outcome-probe/seed-1/manifest.json": "23684b4d62aef582de2ff93e514030ee9d365616a7fa8b7e3d11789fd3e74861",
+    "eb-outcome-probe/seed-1/validity.json": "f161ecbc606d7bb1070f351c19081bbb20813b4f6e01351c1e907d3d4beb0559",
+    "eb-outcome-probe/seed-1/answer-classification.json": "e0fa56a7f48baa58de15c04e25f0c0e960e6ec7a8ae57f45c2259de1597963b3",
+    "eb-outcome-probe/seed-1/pins.json": "603c2f72f0fde73fd748222af12d0de9ec1de9f543cfca9a4efca6b0cd758ddc",
+    "eb-outcome-probe/seed-1/original-final-state.json.gz": "5f660a136dbbb020c16944623576f78fbb918689bf796ed184e20b6af2877209",
+    "eb-outcome-probe/seed-1/final-state.json.gz": "5f660a136dbbb020c16944623576f78fbb918689bf796ed184e20b6af2877209",
+    "eb-outcome-probe/seed-1.json": "e28c66156f184bafd469d7b6f2a3fc6f3972ca6be9424123c555855f3d6b5c95",
+    "short-rejection.log": "1b76db529fbf2dc31d61120bd144e13f9c48ac8f22dbf10f85dfa119238b71c0",
+    "run.log": "1e3a78c29b2f53bcfc3d1eddacafb126e7be76078556c619807cb7d654cb1dca",
+    "timing.env": "937ef4b87ea474fa727c066b86f91babda837574be2040cf06d2760685f04de7"
+  },
+  "limitations": [
+    "One-year seed1 smoke test, not125-year completion",
+    "117 commands but zero heavy/registry answers in this short run; nonempty joins covered by unit regressions and historical836-answer archive",
+    "Two passively observed runs agree; no uninstrumented baseline or intermediate full-state equality proof",
+    "Source and full raw evidence retained under official kept run and local .remote-runs"
+  ],
+  "dependencyInstallation": "root package-lock only; no tools/eslint install in probe command"
+}

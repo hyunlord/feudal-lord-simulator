@@ -1,0 +1,1258 @@
+[
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_003",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "수선 청원 거절: 금고 이동 없음, 영지 연가치 20‰ 감소.",
+  "after": "수선 청원 거절: 금고 이동 없음, 영지 연가치 2% 감소."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_004",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "우물 사업 장려금40d 공고. 지급은 사업 채택 때.",
+  "after": "우물 사업 장려금 40d 공고. 지급은 사업 채택 때."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_004",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "곡창 사업 장려금40d 공고. 지급은 사업 채택 때.",
+  "after": "곡창 사업 장려금 40d 공고. 지급은 사업 채택 때."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_004",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "우물20d·곡창20d 장려금 공고. 즉시 지출 없음.",
+  "after": "우물 20d·곡창 20d 장려금 공고. 즉시 지출 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_008",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "예배당 사업 장려금50d 공고. 지급은 채택 때.",
+  "after": "예배당 사업 장려금 50d 공고. 지급은 채택 때."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_008",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "예배당 장려금20d 공고. 지급은 실제 사업 채택 때.",
+  "after": "예배당 장려금 20d 공고. 지급은 실제 사업 채택 때."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_013",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "감사 결과 회계 담당자 교체. 회수액0d, 연줄 세력 징벌 변화 없음.",
+  "after": "감사 결과 회계 담당자 교체. 회수액 0d, 연줄 세력 징벌 변화 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_014",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "양모 부담: 기본 요구 Ld의 1250‰를 네 철 분납. 왕실 관계 +5(한도 적용), 응답 기억 기록.",
+  "after": "양모 부담: 기본 요구 Ld의 1.25배를 네 철 분납. 왕실 관계 +5(한도 적용), 응답 기억 기록."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_016",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "대기근 식량 가격 상한을 기본의 1500‰로 정했다. 주민 세력 +5, 주교 +0(관계 한도 적용).",
+  "after": "대기근 식량 가격 상한을 기본의 1.5배로 정했다. 주민 세력 +5, 주교 +0(관계 한도 적용)."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_018",
+  "choiceId": "c",
+  "field": "label",
+  "before": "현금60d와 연30d의 두 해 약속을 함께 제안한다",
+  "after": "현금 60d와 연 30d의 두 해 약속을 함께 제안한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_018",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "혼인 조건 제안: 현금60d·연금30d씩2년. 계약 전 지급 없음.",
+  "after": "혼인 조건 제안: 현금 60d·연금 30d씩 2년. 계약 전 지급 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_019",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "상인 친화 청지기 위임. 영지 지대1000‰·시장부담800‰ 적용.",
+  "after": "상인 친화 청지기 위임. 영지 지대 기존율·시장 부담 기본의 5분의 4 적용."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_021",
+  "choiceId": "relieve",
+  "field": "ledger",
+  "before": "사망 부과금 감면 승인; 징수0d, 농민 공동체 관계+5.",
+  "after": "사망 부과금 감면 승인; 징수 0d, 농민 공동체 관계+5."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_022",
+  "choiceId": "monastery",
+  "field": "ledger",
+  "before": "수도원 사제 청원60d 지급·도착일 기록; 주교 관계+10.",
+  "after": "수도원 사제 청원 60d 지급·도착일 기록; 주교 관계+10."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_022",
+  "choiceId": "clerk",
+  "field": "tradeoff",
+  "before": "당장 지출 없이 공석 표시를 해소하지만 주교와의 관계15를 잃는다.",
+  "after": "당장 지출 없이 공석 표시를 해소하지만 주교와의 관계 15를 잃는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_023",
+  "choiceId": "refuse",
+  "field": "ledger",
+  "before": "수선 거절; 해당 영지 연가치 20‰ 감소와 소작인 호의 −6 기록.",
+  "after": "수선 거절; 해당 영지 연가치 2% 감소와 소작인 호의 −6 기록."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_025",
+  "choiceId": "tolerate",
+  "field": "ledger",
+  "before": "감사 묵인; 회수 없음, 청지기 충성도 최대10 상승.",
+  "after": "감사 묵인; 회수 없음, 청지기 충성도 최대 10 상승."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_026",
+  "choiceId": "refuse",
+  "field": "ledger",
+  "before": "정착 청원 거절; 수입0d, 도시 관계−3.",
+  "after": "정착 청원 거절; 수입 0d, 도시 관계−3."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_027",
+  "choiceId": "supply",
+  "field": "ledger",
+  "before": "목재8단 주문; 방침 유지, 시장일 실제 구매분만 지급.",
+  "after": "목재 8단 주문; 방침 유지, 시장일 실제 구매분만 지급."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_028",
+  "choiceId": "granary_promise",
+  "field": "ledger",
+  "before": "곡창 사업 장려금32d 설정; 실제 채택 때만 지급.",
+  "after": "곡창 사업 장려금 32d 설정; 실제 채택 때만 지급."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_029",
+  "choiceId": "visit",
+  "field": "tradeoff",
+  "before": "더 잘 들여다볼 수 있으나 방문 뒤 한 해 동안 직접 처리할 여력이 줄어든다. 방문 감사 설정은 계속 유지된다. 장부 감사로 돌리지 않으면 다음 미카엘마스마다 방문 시점이 갱신되어 업무 여력 감소가 이어진다. 방문의 실제 추가 관리 용량 감소는 최소 용량1과 기존 방문 이력에 따라0~1이다.",
+  "after": "더 잘 들여다볼 수 있으나 방문 뒤 한 해 동안 직접 처리할 여력이 줄어든다. 방문 감사 설정은 계속 유지된다. 장부 감사로 돌리지 않으면 다음 미카엘마스마다 방문 시점이 갱신되어 업무 여력 감소가 이어진다. 방문의 실제 추가 관리 용량 감소는 최소 용량 1과 기존 방문 이력에 따라 0~1이다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_029",
+  "choiceId": "replace_accounts",
+  "field": "ledger",
+  "before": "담당 교체 확인 뒤 장부 감사 설정. 전임자 누적 kept/errors가0인 때만; 즉시 회수액0d.",
+  "after": "담당 교체 확인 뒤 장부 감사 설정. 전임자 누적 kept/errors가 0인 때만; 즉시 회수액 0d."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_030",
+  "choiceId": "divide",
+  "field": "ledger",
+  "before": "축융 방앗간16d·곡물 방앗간16d 장려금 설정; 각 성공한 약속과 실제 채택 지급을 따로 기록.",
+  "after": "축융 방앗간 16d·곡물 방앗간 16d 장려금 설정; 각 성공한 약속과 실제 채택 지급을 따로 기록."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_030",
+  "choiceId": "divide",
+  "field": "tradeoff",
+  "before": "총약속32d는 같지만 각 사업이 받는 점수는 32d 한 곳 집중보다 작다. 두 곳 모두 채택 문턱에 못 미칠 수 있으며 같은 시각 완공을 약속하지 않는다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다.",
+  "after": "총약속 32d는 같지만 각 사업이 받는 점수는 32d 한 곳 집중보다 작다. 두 곳 모두 채택 문턱에 못 미칠 수 있으며 같은 시각 완공을 약속하지 않는다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_036",
+  "choiceId": "refuse",
+  "field": "ledger",
+  "before": "제분 의무 청원 거절; 지출0d, 농민 공동체−5.",
+  "after": "제분 의무 청원 거절; 지출 0d, 농민 공동체−5."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_040",
+  "choiceId": "direct",
+  "field": "tradeoff",
+  "before": "더 큰 영주 몫과 왕실 관계를 얻지만 주민 관계를 잃고1381년의 기존 반발 압력을 높인다.",
+  "after": "더 큰 영주 몫과 왕실 관계를 얻지만 주민 관계를 잃고 1381년의 기존 반발 압력을 높인다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_049",
+  "choiceId": "weave",
+  "field": "label",
+  "before": "직조 작업장에 장려금32d를 내건다",
+  "after": "직조 작업장에 장려금 32d를 내건다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_049",
+  "choiceId": "full",
+  "field": "label",
+  "before": "축융 시설에 장려금32d를 내건다",
+  "after": "축융 시설에 장려금 32d를 내건다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_049",
+  "choiceId": "share",
+  "field": "ledger",
+  "before": "직조공 집·축융소 장려금 각16d 설정; 실제 채택분만 지출.",
+  "after": "직조공 집·축융소 장려금 각 16d 설정; 실제 채택분만 지출."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_049",
+  "choiceId": "share",
+  "field": "tradeoff",
+  "before": "한 업종의 유인을 크게 높이는 대신 두 업종에 작은 약속을 건다. 각 종류의 사업이 채택될 때마다 지급할 수 있어 설정 합계32d는 평생 지출 상한이 아니며, 철회하기 전까지 후속 지출 위험을 진다.",
+  "after": "한 업종의 유인을 크게 높이는 대신 두 업종에 작은 약속을 건다. 각 종류의 사업이 채택될 때마다 지급할 수 있어 설정 합계 32d는 평생 지출 상한이 아니며, 철회하기 전까지 후속 지출 위험을 진다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_057",
+  "choiceId": "light",
+  "field": "ledger",
+  "before": "상인 관리 시장 특허 승인; 정치 권리 배율750‰·영주 좌판세 설정 유지·일회 납부금 없음.",
+  "after": "상인 관리 시장 특허 승인; 정치 권리 배율 기본의 4분의 3·영주 좌판세 설정 유지·일회 납부금 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_057",
+  "choiceId": "fee",
+  "field": "ledger",
+  "before": "시장 특허 납부금80d 수입; 현재 정치 권리 최저배율과 영주 설정 좌판세 유지.",
+  "after": "시장 특허 납부금 80d 수입; 현재 정치 권리 최저배율과 영주 설정 좌판세 유지."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_058",
+  "choiceId": "collect",
+  "field": "ledger",
+  "before": "일회 합의 납부금50d 수입.",
+  "after": "일회 합의 납부금 50d 수입."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_078",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "지대 기존율·시장부담800‰ 성향을 택해 시장 수입 기회 일부를 포기한다.",
+  "after": "지대 기존율·시장 부담 기본의 5분의 4 성향을 택해 시장 수입 기회 일부를 포기한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_078",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "지대850‰·시장부담기존율 성향을 택해 지대 수입 기회 일부를 포기한다.",
+  "after": "지대 기본의 85%·시장 부담 기존율 성향을 택해 지대 수입 기회 일부를 포기한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_078",
+  "choiceId": "c",
+  "field": "tradeoff",
+  "before": "지대·시장부담 기존율을 유지하지만 감독 용량을 차지한다.",
+  "after": "지대·시장 부담 기존율을 유지하지만 감독 용량을 차지한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_083",
+  "choiceId": "c",
+  "field": "chronicle",
+  "before": "영주는 좌판 부담을 800‰로 낮춘다고 정했다.",
+  "after": "영주는 좌판 부담을 기본의 5분의 4로 낮춘다고 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_083",
+  "choiceId": "c",
+  "field": "label",
+  "before": "좌판 부담을 800‰로 낮춘다",
+  "after": "좌판 부담을 기본의 5분의 4로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_083",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "목재가 도착할 장터: 좌판 부담을 800‰로 낮춘다.",
+  "after": "목재가 도착할 장터: 좌판 부담을 기본의 5분의 4로 낮춘다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_087",
+  "choiceId": "a",
+  "field": "chronicle",
+  "before": "영주는 좌판 부담을 650‰로 낮춘다고 정했다.",
+  "after": "영주는 좌판 부담을 기본의 3분의 2쯤으로 낮춘다고 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_087",
+  "choiceId": "a",
+  "field": "label",
+  "before": "좌판 부담을 650‰로 낮춘다",
+  "after": "좌판 부담을 기본의 3분의 2쯤으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_087",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "문 닫은 점포 곁의 새 장사: 좌판 부담을 650‰로 낮춘다.",
+  "after": "문 닫은 점포 곁의 새 장사: 좌판 부담을 기본의 3분의 2쯤으로 낮춘다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_092",
+  "choiceId": "a",
+  "field": "chronicle",
+  "before": "영주는 좌판 부담을 기존율 1000‰로 되돌린다고 정했다.",
+  "after": "영주는 좌판 부담을 기존율로 되돌린다고 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_092",
+  "choiceId": "a",
+  "field": "label",
+  "before": "좌판 부담을 기존율 1000‰로 되돌린다",
+  "after": "좌판 부담을 기존율로 되돌린다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_092",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "큰 부담을 거두는 작은 시장: 좌판 부담을 기존율 1000‰로 되돌린다.",
+  "after": "큰 부담을 거두는 작은 시장: 좌판 부담을 기존율로 되돌린다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_092",
+  "choiceId": "b",
+  "field": "chronicle",
+  "before": "영주는 좌판 부담을 650‰로 낮춘다고 정했다.",
+  "after": "영주는 좌판 부담을 기본의 3분의 2쯤으로 낮춘다고 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_092",
+  "choiceId": "b",
+  "field": "label",
+  "before": "좌판 부담을 650‰로 낮춘다",
+  "after": "좌판 부담을 기본의 3분의 2쯤으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_092",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "큰 부담을 거두는 작은 시장: 좌판 부담을 650‰로 낮춘다.",
+  "after": "큰 부담을 거두는 작은 시장: 좌판 부담을 기본의 3분의 2쯤으로 낮춘다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_093",
+  "choiceId": "a",
+  "field": "chronicle",
+  "before": "영주는 시장 전체 부담을 750‰로 낮춘다고 정했다.",
+  "after": "영주는 시장 전체 부담을 기본의 4분의 3으로 낮춘다고 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_093",
+  "choiceId": "a",
+  "field": "label",
+  "before": "시장 전체 부담을 750‰로 낮춘다",
+  "after": "시장 전체 부담을 기본의 4분의 3으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_093",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "새로 온 장인의 같은 좌판세: 시장 전체 부담을 750‰로 낮춘다.",
+  "after": "새로 온 장인의 같은 좌판세: 시장 전체 부담을 기본의 4분의 3으로 낮춘다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_113",
+  "choiceId": "c",
+  "field": "chronicle",
+  "before": "양모를 재는 날의 마당 건에서 영주는 시장 부담을 850‰로 조정한다 쪽을 택했다.",
+  "after": "양모를 재는 날의 마당 건에서 영주는 시장 부담을 기본의 85%로 조정한다 쪽을 택했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_113",
+  "choiceId": "c",
+  "field": "label",
+  "before": "시장 부담을 850‰로 조정한다",
+  "after": "시장 부담을 기본의 85%로 조정한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_113",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "시장 부담을 850‰로 설정 — 엔진이 성공한 실제 변화만 기록한다.",
+  "after": "시장 부담을 기본의 85%로 설정 — 엔진이 성공한 실제 변화만 기록한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_115",
+  "choiceId": "a",
+  "field": "chronicle",
+  "before": "품삯만으로 남지 않는 사람들 건에서 영주는 시장 부담을 750‰로 낮춘다 쪽을 택했다.",
+  "after": "품삯만으로 남지 않는 사람들 건에서 영주는 시장 부담을 기본의 4분의 3으로 낮춘다 쪽을 택했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_115",
+  "choiceId": "a",
+  "field": "label",
+  "before": "시장 부담을 750‰로 낮춘다",
+  "after": "시장 부담을 기본의 4분의 3으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_115",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "시장 부담을 750‰로 설정 — 엔진이 성공한 실제 변화만 기록한다.",
+  "after": "시장 부담을 기본의 4분의 3으로 설정 — 엔진이 성공한 실제 변화만 기록한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_127",
+  "choiceId": "c",
+  "field": "chronicle",
+  "before": "일하러 오는 것과 이사 오는 것 건에서 영주는 시장 부담을 800‰로 조정한다 쪽을 택했다.",
+  "after": "일하러 오는 것과 이사 오는 것 건에서 영주는 시장 부담을 기본의 5분의 4로 조정한다 쪽을 택했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_127",
+  "choiceId": "c",
+  "field": "label",
+  "before": "시장 부담을 800‰로 조정한다",
+  "after": "시장 부담을 기본의 5분의 4로 조정한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_127",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "시장 부담을 800‰로 설정 — 엔진이 성공한 실제 변화만 기록한다.",
+  "after": "시장 부담을 기본의 5분의 4로 설정 — 엔진이 성공한 실제 변화만 기록한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_136",
+  "choiceId": "b",
+  "field": "chronicle",
+  "before": "다리를 고치는 동안 올 손님 건에서 영주는 시장 부담을 900‰로 조정한다 쪽을 택했다.",
+  "after": "다리를 고치는 동안 올 손님 건에서 영주는 시장 부담을 기본의 90%로 조정한다 쪽을 택했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_136",
+  "choiceId": "b",
+  "field": "label",
+  "before": "시장 부담을 900‰로 조정한다",
+  "after": "시장 부담을 기본의 90%로 조정한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_136",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "시장 부담을 900‰로 설정 — 엔진이 성공한 실제 변화만 기록한다.",
+  "after": "시장 부담을 기본의 90%로 설정 — 엔진이 성공한 실제 변화만 기록한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_141",
+  "choiceId": "c",
+  "field": "label",
+  "before": "새 약속 대신 시장 부담을 800‰로 낮춘다",
+  "after": "새 약속 대신 시장 부담을 기본의 5분의 4로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_151",
+  "choiceId": "a",
+  "field": "label",
+  "before": "특정 장인 대신 시장 부담을 800‰로 낮춘다",
+  "after": "특정 장인 대신 시장 부담을 기본의 5분의 4로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_152",
+  "choiceId": "b",
+  "field": "label",
+  "before": "시장 부담을 850‰로 낮춘다",
+  "after": "시장 부담을 기본의 85%로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_154",
+  "choiceId": "a",
+  "field": "label",
+  "before": "시장 부담을 750‰로 낮춰 거래 여력을 넓힌다",
+  "after": "시장 부담을 기본의 4분의 3으로 낮춰 거래 여력을 넓힌다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_158",
+  "choiceId": "a",
+  "field": "label",
+  "before": "일반 시장 부담을 900‰로 낮춘다",
+  "after": "일반 시장 부담을 기본의 90%로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_159",
+  "choiceId": "b",
+  "field": "label",
+  "before": "시장 부담을 1100‰로 높여 영주 여력을 쌓는다",
+  "after": "시장 부담을 기본의 110%로 높여 영주 여력을 쌓는다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_164",
+  "choiceId": "c",
+  "field": "label",
+  "before": "시장 부담을 850‰로 낮춘다",
+  "after": "시장 부담을 기본의 85%로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_169",
+  "choiceId": "b",
+  "field": "label",
+  "before": "시장 부담을 900‰로 낮춰 거래 여력을 남긴다",
+  "after": "시장 부담을 기본의 90%로 낮춰 거래 여력을 남긴다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_178",
+  "choiceId": "b",
+  "field": "label",
+  "before": "시장 부담을 850‰로 낮춘다",
+  "after": "시장 부담을 기본의 85%로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4/events-v4.json",
+  "entryId": "ck_evt_179",
+  "choiceId": "c",
+  "field": "label",
+  "before": "부담을 1150‰로 높여 금고를 받친다",
+  "after": "부담을 기본의 115%로 높여 금고를 받친다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_005",
+  "choiceId": "a",
+  "field": "label",
+  "before": "시장 좌판세 배율을 750‰로 낮춘다",
+  "after": "시장 좌판세를 기본의 4분의 3으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_005",
+  "choiceId": "a",
+  "field": "ledger",
+  "before": "시장 좌판세를 기본의 750‰로 정했다.",
+  "after": "시장 좌판세를 기본의 4분의 3으로 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_005",
+  "choiceId": "b",
+  "field": "label",
+  "before": "시장 좌판세 배율을 1250‰로 높인다",
+  "after": "시장 좌판세를 기본의 1.25배로 높인다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_005",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "시장 좌판세를 기본의 1250‰로 정했다.",
+  "after": "시장 좌판세를 기본의 1.25배로 정했다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_005",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 현재 금고와 설정을 지키지만 답을 미룬 대가로 첫째 상인 가문의 관계가2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다.",
+  "after": "결정을 미뤘다. 현재 금고와 설정을 지키지만 답을 미룬 대가로 첫째 상인 가문의 관계가 2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_005",
+  "choiceId": "c",
+  "field": "tradeoff",
+  "before": "현재 금고와 설정을 지키지만 답을 미룬 대가로 첫째 상인 가문의 관계가2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다.",
+  "after": "현재 금고와 설정을 지키지만 답을 미룬 대가로 첫째 상인 가문의 관계가 2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_009",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "해당 청구권에 특허장 증거와 가중치20을 더하지만 후속 심리에 쓸 금고가40d 줄어든다. 판결과 점유는 아직 바뀌지 않는다.",
+  "after": "해당 청구권에 특허장 증거와 가중치 20을 더하지만 후속 심리에 쓸 금고가 40d 줄어든다. 판결과 점유는 아직 바뀌지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_009",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "재산 증거와 가중치15를 더한다. 특허장보다10d를 남기지만 이번 제출의 증거 무게도 작다.",
+  "after": "재산 증거와 가중치 15를 더한다. 특허장보다 10d를 남기지만 이번 제출의 증거 무게도 작다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_009",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "법정 장부 증거 비용20d, 청구 증거 가중치+10.",
+  "after": "법정 장부 증거 비용 20d, 청구 증거 가중치+10."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_009",
+  "choiceId": "c",
+  "field": "tradeoff",
+  "before": "등본 증거와 가중치10을 더하며 현금을 가장 많이 남긴다. 그만큼 이번에 보태는 증거는 약하다.",
+  "after": "등본 증거와 가중치 10을 더하며 현금을 가장 많이 남긴다. 그만큼 이번에 보태는 증거는 약하다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_009",
+  "choiceId": "defer",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_009",
+  "choiceId": "defer",
+  "field": "tradeoff",
+  "before": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_010",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "청구권이 소송 중으로 바뀌고 심리 절차를 시작한다. 뒤의 심리120d와 집행 시도80d는 별도이며, 지금 강둑이나 수입을 얻는 것은 아니다.",
+  "after": "청구권이 소송 중으로 바뀌고 심리 절차를 시작한다. 뒤의 심리 120d와 집행 시도 80d는 별도이며, 지금 강둑이나 수입을 얻는 것은 아니다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_010",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 접수비60d를 남기지만 답을 미룬 대가로 해당 청구 강도가5 낮아진다(최저0). 소송은 열리지 않고 이웃의 점유가 계속된다. 청구권 자체를 포기하지는 않는다.",
+  "after": "결정을 미뤘다. 접수비 60d를 남기지만 답을 미룬 대가로 해당 청구 강도가 5 낮아진다(최저 0). 소송은 열리지 않고 이웃의 점유가 계속된다. 청구권 자체를 포기하지는 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_010",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "접수비60d를 남기지만 답을 미룬 대가로 해당 청구 강도가5 낮아진다(최저0). 소송은 열리지 않고 이웃의 점유가 계속된다. 청구권 자체를 포기하지는 않는다.",
+  "after": "접수비 60d를 남기지만 답을 미룬 대가로 해당 청구 강도가 5 낮아진다(최저 0). 소송은 열리지 않고 이웃의 점유가 계속된다. 청구권 자체를 포기하지는 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_010",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "어업권 소송 접수60d와 특허장 사본40d 지출. 후속 절차 미완료.",
+  "after": "어업권 소송 접수 60d와 특허장 사본 40d 지출. 후속 절차 미완료."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_010",
+  "choiceId": "c",
+  "field": "tradeoff",
+  "before": "접수와 동시에 특허장 증거를 더해 주장을 받친다. 접수만 할 때보다40d를 더 쓰므로 후속 심리·집행에 남길 돈이 줄며 승소는 보장되지 않는다.",
+  "after": "접수와 동시에 특허장 증거를 더해 주장을 받친다. 접수만 할 때보다 40d를 더 쓰므로 후속 심리·집행에 남길 돈이 줄며 승소는 보장되지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_015",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "주문 잔량을10단으로 바꿔 이후 장날의 목재 매입을 기다린다. 입고된 만큼 돈을 쓰므로 다른 지출의 여지가 줄며 공사가 바로 끝나지는 않는다. 시장 입고는 단당18d로 전량180d, 장터 없는 촌락의 창고 운반은 단당27d로 전량270d를 나누어 낸다.",
+  "after": "주문 잔량을 10단으로 바꿔 이후 장날의 목재 매입을 기다린다. 입고된 만큼 돈을 쓰므로 다른 지출의 여지가 줄며 공사가 바로 끝나지는 않는다. 시장 입고는 단당 18d로 전량 180d, 장터 없는 촌락의 창고 운반은 단당 27d로 전량 270d를 나누어 낸다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_015",
+  "choiceId": "b",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 현재 금고와 설정을 지키지만 답을 미룬 대가로 도시 공동체의 관계가2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다.",
+  "after": "결정을 미뤘다. 현재 금고와 설정을 지키지만 답을 미룬 대가로 도시 공동체의 관계가 2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_015",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "현재 금고와 설정을 지키지만 답을 미룬 대가로 도시 공동체의 관계가2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다.",
+  "after": "현재 금고와 설정을 지키지만 답을 미룬 대가로 도시 공동체의 관계가 2 낮아진다. 기존 사업·거래의 시간은 계속 흐르며 자동 재심은 예약하지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_015",
+  "choiceId": "c",
+  "field": "ledger",
+  "before": "목재4단 주문. 납품시 단당18d, 전량시72d.",
+  "after": "목재 4단 주문. 납품시 단당 18d, 전량시 72d."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_015",
+  "choiceId": "c",
+  "field": "tradeoff",
+  "before": "주문 잔량을4단으로 바꿔 큰 주문보다 후속 지출을 줄인다. 확보할 목재도 적으며 부족분을 자동 추가 주문하지 않는다. 시장 입고는 단당18d로 전량72d, 장터 없는 촌락의 창고 운반은 단당27d로 전량108d를 나누어 낸다.",
+  "after": "주문 잔량을 4단으로 바꿔 큰 주문보다 후속 지출을 줄인다. 확보할 목재도 적으며 부족분을 자동 추가 주문하지 않는다. 시장 입고는 단당 18d로 전량 72d, 장터 없는 촌락의 창고 운반은 단당 27d로 전량 108d를 나누어 낸다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_024",
+  "choiceId": "lower",
+  "field": "label",
+  "before": "도시 전체 시장 좌판세 배율을750‰로 낮춘다",
+  "after": "도시 전체 시장 좌판세를 기본의 4분의 3으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_024",
+  "choiceId": "lower",
+  "field": "ledger",
+  "before": "시장 좌판세를 기본의 750‰로 설정; 실제 수입은 이후 징수에 반영.",
+  "after": "시장 좌판세를 기본의 4분의 3으로 설정; 실제 수입은 이후 징수에 반영."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_024",
+  "choiceId": "market_promise",
+  "field": "label",
+  "before": "세율은 두고 시장 사업 장려금24d를 건다",
+  "after": "세율은 두고 시장 사업 장려금 24d를 건다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_024",
+  "choiceId": "market_promise",
+  "field": "ledger",
+  "before": "현재 좌판세 유지; 시장 사업 장려금24d 설정. 지출은 실제 채택 때만.",
+  "after": "현재 좌판세 유지; 시장 사업 장려금 24d 설정. 지출은 실제 채택 때만."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_024",
+  "choiceId": "market_promise",
+  "field": "tradeoff",
+  "before": "현재 세입 조건을 지키는 대신 채택되는 시장 사업마다 최대24d의 지급 부담을 진다. 사업이 채택되지 않으면 노점도 늘지 않으며 철회 전까지 설정은 남는다.",
+  "after": "현재 세입 조건을 지키는 대신 채택되는 시장 사업마다 최대 24d의 지급 부담을 진다. 사업이 채택되지 않으면 노점도 늘지 않으며 철회 전까지 설정은 남는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "charter",
+  "field": "ledger",
+  "before": "소송 특허장 증거 비용40d; 가중치20 추가.",
+  "after": "소송 특허장 증거 비용 40d; 가중치 20 추가."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "charter",
+  "field": "tradeoff",
+  "before": "해당 청구권에 가중치20의 문서 증거를 더한다. 법정 기록만 낼 때보다20d를 더 써 후속 비용의 여지가 줄어든다.",
+  "after": "해당 청구권에 가중치 20의 문서 증거를 더한다. 법정 기록만 낼 때보다 20d를 더 써 후속 비용의 여지가 줄어든다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "roll",
+  "field": "ledger",
+  "before": "소송 법정 기록 비용20d; 가중치10 추가.",
+  "after": "소송 법정 기록 비용 20d; 가중치 10 추가."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "roll",
+  "field": "tradeoff",
+  "before": "가중치10의 증거를 더하며 금고를 아낀다. 특허장보다 이번에 보태는 증거의 힘은 작다.",
+  "after": "가중치 10의 증거를 더하며 금고를 아낀다. 특허장보다 이번에 보태는 증거의 힘은 작다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "both",
+  "field": "ledger",
+  "before": "특허장40d와 법정 기록20d를 순차 제출; 모두 성공 시총60d·가중치30.",
+  "after": "특허장 40d와 법정 기록 20d를 순차 제출; 모두 성공 시총 60d·가중치 30."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "both",
+  "field": "tradeoff",
+  "before": "증거 가중치30을 보태지만60d를 써 후속 심리비에 남길 돈이 줄어든다. 각각 한 번뿐이며 승소나 점유 이전을 보장하지 않는다.",
+  "after": "증거 가중치 30을 보태지만 60d를 써 후속 심리비에 남길 돈이 줄어든다. 각각 한 번뿐이며 승소나 점유 이전을 보장하지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "defer",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_032",
+  "choiceId": "defer",
+  "field": "tradeoff",
+  "before": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_033",
+  "choiceId": "deed",
+  "field": "ledger",
+  "before": "증서 증거 비용30d 지출; 소송 증거 가중치15 추가.",
+  "after": "증서 증거 비용 30d 지출; 소송 증거 가중치 15 추가."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_033",
+  "choiceId": "witnesses",
+  "field": "ledger",
+  "before": "증인 증거 비용24d 지출; 소송 증거 가중치8 추가.",
+  "after": "증인 증거 비용 24d 지출; 소송 증거 가중치 8 추가."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_033",
+  "choiceId": "both",
+  "field": "ledger",
+  "before": "증서30d·증인24d 순차 제출; 모두 성공 시54d·가중치23.",
+  "after": "증서 30d·증인 24d 순차 제출; 모두 성공 시 54d·가중치 23."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_033",
+  "choiceId": "both",
+  "field": "tradeoff",
+  "before": "가중치23을 얻으려54d를 쓴다. 문서를 혼자 내는 것보다24d가 더 들고, 실제 판정은 상대 증거·점유력까지 따른다.",
+  "after": "가중치 23을 얻으려 54d를 쓴다. 문서를 혼자 내는 것보다 24d가 더 들고, 실제 판정은 상대 증거·점유력까지 따른다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_033",
+  "choiceId": "defer",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_033",
+  "choiceId": "defer",
+  "field": "tradeoff",
+  "before": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "larger",
+  "field": "label",
+  "before": "목재 주문 잔량을12단으로 정한다",
+  "after": "목재 주문 잔량을 12단으로 정한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "larger",
+  "field": "ledger",
+  "before": "목재12단 주문; 현금은 시장일 실제 매입량×18d만 지출.",
+  "after": "목재 12단 주문; 현금은 시장일 실제 매입량×18d만 지출."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "larger",
+  "field": "tradeoff",
+  "before": "큰 주문으로 더 많은 목재 입고를 기다리는 대신 입고 때마다 금고를 쓴다. 지불할 돈과 거래 장소가 있어야 들어오며 특정 집이 자동 수선되지는 않는다. 시장 입고는 단당18d로 전량216d, 장터 없는 촌락의 창고 운반은 단당27d로 전량324d를 나누어 낸다.",
+  "after": "큰 주문으로 더 많은 목재 입고를 기다리는 대신 입고 때마다 금고를 쓴다. 지불할 돈과 거래 장소가 있어야 들어오며 특정 집이 자동 수선되지는 않는다. 시장 입고는 단당 18d로 전량 216d, 장터 없는 촌락의 창고 운반은 단당 27d로 전량 324d를 나누어 낸다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "smaller",
+  "field": "label",
+  "before": "목재 주문 잔량을4단으로 정한다",
+  "after": "목재 주문 잔량을 4단으로 정한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "smaller",
+  "field": "ledger",
+  "before": "목재4단 주문; 지급은 시장일마다 실제 매입분만.",
+  "after": "목재 4단 주문; 지급은 시장일마다 실제 매입분만."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "smaller",
+  "field": "tradeoff",
+  "before": "후속 지출을 줄이는 대신 들여올 목재도 적다. 남은 공사 필요량이 크면 자재 부족이 이어질 수 있다. 시장 입고는 단당18d로 전량72d, 장터 없는 촌락의 창고 운반은 단당27d로 전량108d를 나누어 낸다.",
+  "after": "후속 지출을 줄이는 대신 들여올 목재도 적다. 남은 공사 필요량이 크면 자재 부족이 이어질 수 있다. 시장 입고는 단당 18d로 전량 72d, 장터 없는 촌락의 창고 운반은 단당 27d로 전량 108d를 나누어 낸다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_035",
+  "choiceId": "wait",
+  "field": "ledger",
+  "before": "주문0 유지; 신규 구매 약속 없음.",
+  "after": "주문 0 유지; 신규 구매 약속 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_038",
+  "choiceId": "enforce",
+  "field": "ledger",
+  "before": "점유 집행비80d; 성공 여부와 남은 저항값을 실제 결과로 기록.",
+  "after": "점유 집행비 80d; 성공 여부와 남은 저항값을 실제 결과로 기록."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_038",
+  "choiceId": "enforce",
+  "field": "tradeoff",
+  "before": "성공하면 해당 권리 조각의 점유자가 바뀐다. 실패해도80d는 쓰며 상대의 점유 저항을 낮춰 다음 시도에 길을 남긴다. 한 번의 성공은 보장되지 않는다.",
+  "after": "성공하면 해당 권리 조각의 점유자가 바뀐다. 실패해도 80d는 쓰며 상대의 점유 저항을 낮춰 다음 시도에 길을 남긴다. 한 번의 성공은 보장되지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_038",
+  "choiceId": "defer",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 지금 집행비80d를 남기지만 해당 청구 강도가5 낮아진다(최저0). 이미 얻은 판결을 취소하거나 점유를 가져오는 효과는 없고 이웃의 점유가 계속된다. 나중 집행 시도에도80d가 필요하다.",
+  "after": "결정을 미뤘다. 지금 집행비 80d를 남기지만 해당 청구 강도가 5 낮아진다(최저 0). 이미 얻은 판결을 취소하거나 점유를 가져오는 효과는 없고 이웃의 점유가 계속된다. 나중 집행 시도에도 80d가 필요하다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_038",
+  "choiceId": "defer",
+  "field": "tradeoff",
+  "before": "지금 집행비80d를 남기지만 해당 청구 강도가5 낮아진다(최저0). 이미 얻은 판결을 취소하거나 점유를 가져오는 효과는 없고 이웃의 점유가 계속된다. 나중 집행 시도에도80d가 필요하다.",
+  "after": "지금 집행비 80d를 남기지만 해당 청구 강도가 5 낮아진다(최저 0). 이미 얻은 판결을 취소하거나 점유를 가져오는 효과는 없고 이웃의 점유가 계속된다. 나중 집행 시도에도 80d가 필요하다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "light",
+  "field": "label",
+  "before": "시장 좌판세 배율을650‰로 낮춘다",
+  "after": "시장 좌판세를 기본의 3분의 2쯤으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "light",
+  "field": "ledger",
+  "before": "시장 좌판세 배율을 650‰로 정했다; 즉시 현금 이동 없음.",
+  "after": "시장 좌판세를 기본의 3분의 2쯤으로 정했다; 즉시 현금 이동 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "firm",
+  "field": "label",
+  "before": "시장 좌판세 배율을1250‰로 높인다",
+  "after": "시장 좌판세를 기본의 1.25배로 높인다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "firm",
+  "field": "ledger",
+  "before": "시장 좌판세 배율을 1250‰로 정했다; 즉시 현금 이동 없음.",
+  "after": "시장 좌판세를 기본의 1.25배로 정했다; 즉시 현금 이동 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "encourage",
+  "field": "label",
+  "before": "좌판세는 두고 시장 사업 장려금32d를 건다",
+  "after": "좌판세는 두고 시장 사업 장려금 32d를 건다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "encourage",
+  "field": "ledger",
+  "before": "시장 사업 장려금32d 설정; 현재 좌판세 배율 유지.",
+  "after": "시장 사업 장려금 32d 설정; 현재 좌판세 배율 유지."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_042",
+  "choiceId": "encourage",
+  "field": "tradeoff",
+  "before": "좌판세 배율1000‰를 유지하면서 시장 사업에 장려금을 건다. 사업이 채택될 때마다 금고에서 지급할 수 있으며, 채택되지 않으면 지출도 확장도 없다.",
+  "after": "좌판세 기존율을 유지하면서 시장 사업에 장려금을 건다. 사업이 채택될 때마다 금고에서 지급할 수 있으며, 채택되지 않으면 지출도 확장도 없다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_046",
+  "choiceId": "trim",
+  "field": "ledger",
+  "before": "목재 미입고 주문을4단으로 축소; 기지출 환불 없음.",
+  "after": "목재 미입고 주문을 4단으로 축소; 기지출 환불 없음."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_046",
+  "choiceId": "trim",
+  "field": "tradeoff",
+  "before": "향후 지출을 줄이면서 소량의 추가 목재는 남긴다. 이후 자재 필요가 커지면 다시 주문해야 한다. 시장 입고는 단당18d로 전량72d, 장터 없는 촌락의 창고 운반은 단당27d로 전량108d를 나누어 낸다.",
+  "after": "향후 지출을 줄이면서 소량의 추가 목재는 남긴다. 이후 자재 필요가 커지면 다시 주문해야 한다. 시장 입고는 단당 18d로 전량 72d, 장터 없는 촌락의 창고 운반은 단당 27d로 전량 108d를 나누어 낸다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_046",
+  "choiceId": "cancel",
+  "field": "tradeoff",
+  "before": "미입고 주문을0으로 바꿔 앞으로의 매입 대금을 막지만 추가 목재도 들어오지 않는다. 이미 지불한 돈이나 입고된 목재는 돌려받거나 잃지 않는다. 시장은 단당18d, 장터 없는 촌락의 운반은 단당27d의 후속 지출을 피한다.",
+  "after": "미입고 주문을 0으로 바꿔 앞으로의 매입 대금을 막지만 추가 목재도 들어오지 않는다. 이미 지불한 돈이나 입고된 목재는 돌려받거나 잃지 않는다. 시장은 단당 18d, 장터 없는 촌락의 운반은 단당 27d의 후속 지출을 피한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_051",
+  "choiceId": "file",
+  "field": "tradeoff",
+  "before": "해당 청구권을 소송 중으로 바꾸고 절차를 시작한다. 뒤에 심리120d와 집행 시도80d가 들 수 있으며 어업 수입이 즉시 넘어오지는 않는다.",
+  "after": "해당 청구권을 소송 중으로 바꾸고 절차를 시작한다. 뒤에 심리 120d와 집행 시도 80d가 들 수 있으며 어업 수입이 즉시 넘어오지는 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_051",
+  "choiceId": "leave",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 접수비60d를 남기지만 답을 미룬 대가로 해당 청구 강도가5 낮아진다(최저0). 아직 소송은 시작하지 않으며 상대의 점유는 그대로다.",
+  "after": "결정을 미뤘다. 접수비 60d를 남기지만 답을 미룬 대가로 해당 청구 강도가 5 낮아진다(최저 0). 아직 소송은 시작하지 않으며 상대의 점유는 그대로다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_051",
+  "choiceId": "leave",
+  "field": "tradeoff",
+  "before": "접수비60d를 남기지만 답을 미룬 대가로 해당 청구 강도가5 낮아진다(최저0). 아직 소송은 시작하지 않으며 상대의 점유는 그대로다.",
+  "after": "접수비 60d를 남기지만 답을 미룬 대가로 해당 청구 강도가 5 낮아진다(최저 0). 아직 소송은 시작하지 않으며 상대의 점유는 그대로다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_051",
+  "choiceId": "file_with_deed",
+  "field": "ledger",
+  "before": "어업 청구권 접수60d 및 성공한 증서 제출30d를 각각 기록.",
+  "after": "어업 청구권 접수 60d 및 성공한 증서 제출 30d를 각각 기록."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_051",
+  "choiceId": "file_with_deed",
+  "field": "tradeoff",
+  "before": "소송과 재산 증거를 함께 갖춘다. 접수만 할 때보다30d를 더 써 후속 비용에 남길 돈이 줄며 승소와 점유 이전은 아직 따로 해결해야 한다.",
+  "after": "소송과 재산 증거를 함께 갖춘다. 접수만 할 때보다 30d를 더 써 후속 비용에 남길 돈이 줄며 승소와 점유 이전은 아직 따로 해결해야 한다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "deed",
+  "field": "ledger",
+  "before": "재산 증서 증거 준비비30d 지출.",
+  "after": "재산 증서 증거 준비비 30d 지출."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "deed",
+  "field": "tradeoff",
+  "before": "해당 청구권에 가중치15의 증거를 더한다. 법정 기록만 내는 안보다10d를 더 쓰지만 증거의 무게도 크다.",
+  "after": "해당 청구권에 가중치 15의 증거를 더한다. 법정 기록만 내는 안보다 10d를 더 쓰지만 증거의 무게도 크다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "roll",
+  "field": "ledger",
+  "before": "법정 기록 증거 준비비20d 지출.",
+  "after": "법정 기록 증거 준비비 20d 지출."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "roll",
+  "field": "tradeoff",
+  "before": "가중치10의 증거를 더하며 지금 현금을 남긴다. 증서보다 제출의 무게가 작고 나중 심리 결과는 아직 정해지지 않는다.",
+  "after": "가중치 10의 증거를 더하며 지금 현금을 남긴다. 증서보다 제출의 무게가 작고 나중 심리 결과는 아직 정해지지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "both",
+  "field": "ledger",
+  "before": "성공한 증서30d·법정 기록20d 제출을 각각 기록.",
+  "after": "성공한 증서 30d·법정 기록 20d 제출을 각각 기록."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "both",
+  "field": "tradeoff",
+  "before": "금고50d를 들여 두 자료의 가중치25를 얻는다. 싼 법정 기록만 내거나 증서만 내는 길보다 재정 부담이 커지며 승소는 여전히 보장되지 않는다.",
+  "after": "금고 50d를 들여 두 자료의 가중치 25를 얻는다. 싼 법정 기록만 내거나 증서만 내는 길보다 재정 부담이 커지며 승소는 여전히 보장되지 않는다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "defer",
+  "field": "ledger",
+  "before": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "결정을 미뤘다. 당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_053",
+  "choiceId": "defer",
+  "field": "tradeoff",
+  "before": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가5 낮아진다(최저0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다.",
+  "after": "당장 준비·집행 비용을 남기지만 이 선택으로 해당 청구 강도가 5 낮아진다(최저 0). 기존 소송의 시간과 단계는 계속 흐르며 증거·집행 기회를 놓칠 수 있다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_144",
+  "choiceId": "c",
+  "field": "label",
+  "before": "도시 전체 시장 부담을 750‰로 낮춘다",
+  "after": "도시 전체 시장 부담을 기본의 4분의 3으로 낮춘다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_150",
+  "choiceId": "c",
+  "field": "label",
+  "before": "증언과 별개로 시장 부담을 900‰로 조정한다",
+  "after": "증언과 별개로 시장 부담을 기본의 90%로 조정한다"
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_150",
+  "choiceId": "c",
+  "field": "tradeoff",
+  "before": "도시 전체 시장 부담을 900‰로 내려 앞으로의 영주 수입을 양보합니다. 이 소송에는 증거를 보태지 않으므로 권리 주장을 강화하는 선택은 미룹니다.",
+  "after": "도시 전체 시장 부담을 기본의 90%로 내려 앞으로의 영주 수입을 양보합니다. 이 소송에는 증거를 보태지 않으므로 권리 주장을 강화하는 선택은 미룹니다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_201",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+  "after": "도시 전체 좌판세를 기본 좌판세의 최대 10%만큼 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_201",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+  "after": "도시 전체 좌판세를 기본 좌판세의 최대 10%만큼 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_204",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+  "after": "도시 전체 좌판세를 기본 좌판세의 최대 10%만큼 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_204",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+  "after": "도시 전체 좌판세를 기본 좌판세의 최대 10%만큼 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_211",
+  "choiceId": "a",
+  "field": "tradeoff",
+  "before": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+  "after": "도시 전체 좌판세를 기본 좌판세의 최대 10%만큼 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다."
+ },
+ {
+  "file": "docs/design/content-drafts-20261002/v4.2/events-v4.2.json",
+  "entryId": "ck_evt_211",
+  "choiceId": "b",
+  "field": "tradeoff",
+  "before": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+  "after": "도시 전체 좌판세를 기본 좌판세의 최대 10%만큼 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다."
+ }
+]

@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
+import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pickTests, testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/testedChanges.mjs";
 
@@ -11,8 +11,8 @@ import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/teste
 // pushed content that covers them. A throwaway repository: src/b.ts <- src/a.ts <- tests/a.test.ts, a data file named by
 // another test, and a document no test names.
 function repo() {
-  const dir = mkdtempSync(join(tmpdir(), "fls-tested-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const dir = tempDir("fls-tested-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   for (const d of ["src", "tests", "docs", "fixtures"]) mkdirSync(join(dir, d));
   writeFileSync(join(dir, "src/b.ts"), "export const b = 1;\n");
   writeFileSync(join(dir, "src/a.ts"), 'import { b } from "./b.ts";\nexport const a = b + 1;\n');
@@ -54,16 +54,20 @@ test("check:merge's tested step: a passing record of exactly the pushed content 
     const head = git("rev-parse", "HEAD");
     assert.equal(tree, git("rev-parse", "HEAD^{tree}"));
     const none = checkTestedChanges({ top: dir, work: dir, base, head });
-    assert.equal(none.ok, false); assert.match(formatTestedChanges(none), /no test:changed record of this exact content/);
+    assert.equal(none.ok, false); assert.match(formatTestedChanges(none), /tests\/a\.test\.ts — no passing record ran it/);
 
     const write = (name: string, record: object) => { mkdirSync(join(dir, ".remote-runs", name), { recursive: true }); writeFileSync(join(dir, ".remote-runs", name, "test-changed.json"), JSON.stringify(record)); };
     write("failed-run", { tree, passed: false, picked: ["tests/a.test.ts"], tests: 1, pass: 0, at: "1" });
     assert.match(formatTestedChanges(checkTestedChanges({ top: dir, work: dir, base, head })), /FAILED/);
     write("dgx-run", { tree, passed: true, picked: ["tests/a.test.ts"], tests: 1, pass: 1, where: "DGX x", at: "2" });
     const ok = checkTestedChanges({ top: dir, work: dir, base, head });
-    assert.equal(ok.ok, true); assert.match(formatTestedChanges(ok), /1 picked test file\(s\) passed on this content — 1\/1 at DGX x/);
+    assert.equal(ok.ok, true); assert.match(formatTestedChanges(ok), /1 picked test file\(s\) passed on this content\n  1 on this content — 1\/1 at DGX x/);
 
     writeFileSync(join(dir, "src/b.ts"), "export const b = 4;\n"); git("commit", "-qam", "changed after the run");
-    assert.equal(checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") }).ok, false, "a record of other content does not count");
+    const later = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
+    assert.equal(later.ok, false, "the test reads the file that changed after the run");
+    // RR25, measured: a record of other content counts only by the inputs measured while its tests ran; these have none,
+    // and the failed one, which cannot be compared either, blocks.
+    assert.match(formatTestedChanges(later), /tests\/a\.test\.ts — FAILED on content it cannot be compared with/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
