@@ -71,6 +71,67 @@
       "gzipSha256": "c1ef125c877234eabdfc47ac723c1106d30d0889f82faab1a81bba4f657b0975",
       "rawBytes": 9372,
       "gzipBytes": 4705
+    },
+    {
+      "file": "tlink-immediate-own-receipts.mjs.gz",
+      "rawSha256": "449993df8f6295e608dfff9343ae7f57e951467be88593ec0984feec022c3667",
+      "gzipSha256": "057b05b3a1f1e7e8ac74b11220a023528f42912bc92c674ddc74d09975c8c6a2",
+      "rawBytes": 5764,
+      "gzipBytes": 2231
+    },
+    {
+      "file": "tlink-immediate-own-receipts.json.gz",
+      "rawSha256": "498e59a5f6146e9b30f2b6af01eb3878a06a03d7ef2b98ee4537bb81aa5b9316",
+      "gzipSha256": "b2f9f77e96c859a36ef33ea2eef35985617b03144acb15969105c4f9708fb69f",
+      "rawBytes": 438398,
+      "gzipBytes": 16622
+    },
+    {
+      "file": "tlink-immediate-own-receipts.md.gz",
+      "rawSha256": "684d7b55eb63aeaacddcfa032fb992e9bb65195256243a5a6a1597363c235aed",
+      "gzipSha256": "4ffc1161d268f24ff2c17c9e7b480be9d8f8403d04f9841bf5612724d6955f8e",
+      "rawBytes": 2952,
+      "gzipBytes": 1713
     }
-  ]
+  ],
+  "immediateOwnReceiptInventory": {
+    "status": "offline_evidence_inventory_not_reclassification",
+    "sourceRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+    "command": "node .omo/evidence/tlink-immediate-own-receipts.mjs",
+    "restore": "Restore exact original compressed config, score and residuals to .omo/evidence/prototype-0b04-{config,score,residuals}.json and original raw/context/manifest paths from kept run; restore script at its original .omo/evidence path in separate checkout. Do not substitute relocated config.",
+    "inputs": [
+      {
+        "path": ".omo/evidence/prototype-0b04-score.json",
+        "sha256": "75244beeff28eba62c880f64374f3d0b14ac738d7603ebeedf7e6a5e9bf07de3"
+      },
+      {
+        "path": ".omo/evidence/prototype-0b04-residuals.json",
+        "sha256": "eec3edde2ad17915f333911726685fcc766125e4365ec9ac746884a0cd93657a"
+      },
+      {
+        "path": ".omo/evidence/prototype-0b04-config.json",
+        "sha256": "75461da4e8994220186ffe3d7adcab5e6b5ee05351698639ba61b4c399fc76ce"
+      },
+      {
+        "seed": 1,
+        "rawSha256": "d582bc5a5254b9ad635c54a103304b47071b21b743a4ae77726a58a86cc4514b",
+        "manifestSha256": "99b0eb6a4450d988f8d09fb9db33b872d5441bca8eb31028163dd5be12dd32e9",
+        "contextsSha256": "fcbaaea620523118bfdb74e82ca2bdacbc0078213aaba3007be35f16e35fafa3"
+      },
+      {
+        "seed": 2,
+        "rawSha256": "165c3fecaf1f007163caf317024002ddebd28de077d7f5ad6bf206e9ebf46814",
+        "manifestSha256": "35fe84fe97f03ba164d69b742887c5da7e4a0491ae0e7a014ae201c5803a7629",
+        "contextsSha256": "5997f3321cf94a458caba555fc84e89a93aed0243ea71662da7bde38a3950efb"
+      },
+      {
+        "seed": 3,
+        "rawSha256": "9415fc443e0ed21e6e4d251356a3832f9f661912f28b602c2127eb6902911de8",
+        "manifestSha256": "628980f15beafb1863043a789a243f861535fb5ee4011336ff4285b692fc2c6d",
+        "contextsSha256": "e026285c5e89c82257fedc383fd0082615db16cb31c3d7d5374c47f763303812"
+      }
+    ],
+    "sourcePins": "Per-row canonical selector and SHA in archived result; generator reads git show pinned0b04 canonical bytes.",
+    "review": "scope_review independently reported no blockers to parent; record inventory only, no new source/gameplay claims or metric changes."
+  }
 }

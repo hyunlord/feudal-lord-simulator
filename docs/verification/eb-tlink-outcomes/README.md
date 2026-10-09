@@ -72,3 +72,8 @@ node scripts/engineBTlinkCompare.mjs .remote-runs/engineB-tlink-baseline125-cf3f
 ```
 
 scorer exit1은 예상되는 실제 기준 미달이다. 각 명령을 따로 실행하여 잔여 분석을 이어간다. source/도구 hash가 맞는 checkout과 비어 있는 출력 경로를 사용한다. diagnostics는 별도 checkout의 원래 `.omo/evidence` 상대 위치에 풀고 보존된 인계문의 offline 명령을 사용한다. JSON에 남은 작성 머신 절대 경로는 provenance이며 실행 경로 계약으로 강제하지 않는다. 대형 원본·전체 state·이미지는 복제하지 않았다. 최종 보관 크기는 3MB 미만이며 gzip 복원·SHA·모든 링크를 검증했다.
+
+
+### 즉시 처리 기록의 추가 목록 — 잔여 판정 유지
+
+[즉시 own-ID 목록·재현 핀](prototype-0b04/diagnostics/archive.json)에 `tlink-immediate-own-receipts.{mjs,json,md}.gz` 원본3개를 추가했다. 공식 unexplained179건 중101건에 같은 tick의 정확한 자기 ID 비결정 기록이 있다(감사94·감독3·감사 방식3·실패한038 집행1). 나머지78건에는 그 기록이 없다. 179건 중 정본 `commands:[]` 선택은47건이며005:c 1건을 포함한다. 이는 기록/명령 목록이며 재분류가 아니다. **공식 immediate-only433·unexplained179·관측 부족20과 미래204/816 점수는 그대로다.** 특히 감사 기록에는 auditId/estateId가 없다는 제한을 유지하며 실제 충성도 변화나 미래 효과를 추정하지 않는다. scope_review는 차단 결함 없음을 보고했으나 이 목록을 새로운 효과 증명으로 확대하지 않는다. 별도 checkout에 원래 config/score/residual 및 script 경로를 복원한 뒤 `node .omo/evidence/tlink-immediate-own-receipts.mjs`로 재현한다. 입력·source selector·압축 전후 SHA는 보존된 JSON/해시 목록에 있다.

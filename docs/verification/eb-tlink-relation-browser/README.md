@@ -2,7 +2,7 @@
 
 Functional navigation PASS; narrow-screen visual acceptance NEEDS_WORK.
 
-Official kept run `engineB-tlink-relation-browser-864f1ea` used clean source `864f1ea06851f0508109f34ab355e4843bb16ff4`. `result.json` reports `pass: true`, no browser errors, exact save roundtrip, unchanged tick 2000 and history nextOrdinal 20.
+Official kept run `engineB-tlink-relation-browser-9ad9253` used clean source `9ad9253468592e7cba144946081d2fbced36adca`. The remote command exited 0 in 33.6 seconds. `result.json` reports `pass: true`, no browser errors, exact save roundtrip, unchanged tick 2000 and history nextOrdinal 20.
 
 The prepared consumed fixture contains actual estate-petition answer `h-000002` at tick 1000 and existing `stewardship.season` record `h-000003` at tick 2000. Its `estate_mood` cause names that answer with `part: true`; tenant influence +4 is consumed at the first real seasonal observation. The visible copy says the earlier answer's closer relationship with tenants remains this season. It does not establish that the answer caused the reported cash income.
 
@@ -18,3 +18,7 @@ This is a prepared regression fixture with a synthetic seasonal boundary, not na
 - Input: `fixtures/saves/v56/eb-tlink-estate-relation-consumed.save.json`, 1,025,046 bytes; SHA256 `8d09ef0265b0f823cbae40bb5222701d33397da6a1e04d44213abf24b802cf3c`.
 - Archived gzip expands to those exact input bytes; no normalization. Compressed SHA256: `519227a78807dcee6f670645e20c8b390ac9dfe00330fb727ec98a557b93a83c`.
 - Every artifact size/hash recorded in `result.json` was independently checked before copying. The driver is gzip-packed without changing its original bytes (including its trailing blank line); expand it to the logical `driver.mjs` path named by the original result. `SHA256SUMS` covers every retained file except itself.
+
+## Previous run retained
+
+`result-864f1ea.json.gz` preserves the exact earlier result bytes (decoded SHA256 `9cc3c2c1b44cb55505b497eabc8f12bcb0873a3431f49a6f0ad5acf33586f480`) from clean source `864f1ea06851f0508109f34ab355e4843bb16ff4`, official kept run `engineB-tlink-relation-browser-864f1ea`. Its four PNGs are superseded here by the latest captures; original artifacts remain in the kept official run. This is provenance retention, not an additional independent natural-play sample.
