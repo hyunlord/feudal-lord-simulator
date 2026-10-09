@@ -1,0 +1,92 @@
+{
+ "seed": 1,
+ "archetypeId": "core:forest_edge",
+ "lordKeepsHomeKinds": true,
+ "startYear": 1300,
+ "finalYear": 1320,
+ "tick": 80000,
+ "endedAt": 80000,
+ "shownItems": 17,
+ "shownHomePetitions": 11,
+ "shownRegistryOffers": 6,
+ "bySource": {
+  "pannage": {
+   "shown": 4,
+   "withVariant": 1,
+   "variantEveryTickShown": 1
+  },
+  "common_pasture": {
+   "shown": 4,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "road_bridge": {
+   "shown": 3,
+   "withVariant": 1,
+   "variantEveryTickShown": 1
+  },
+  "ck_evt_031": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "ck_evt_059": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  },
+  "ck_evt_019": {
+   "shown": 0,
+   "withVariant": 0,
+   "variantEveryTickShown": 0
+  }
+ },
+ "byVariant": {
+  "ck_evt_041": 1,
+  "ck_evt_048": 0,
+  "ck_evt_056": 1,
+  "ck_evt_067": 0,
+  "ck_evt_078": 0
+ },
+ "saved": {
+  "ck_evt_041": {
+   "tick": 6000,
+   "year": 1301,
+   "season": 2,
+   "id": "estate-petition-3",
+   "source": "pannage",
+   "file": "ck_evt_041-forest_edge-s1-keeps.json"
+  },
+  "ck_evt_056": {
+   "tick": 49000,
+   "year": 1312,
+   "season": 1,
+   "id": "estate-petition-29",
+   "source": "road_bridge",
+   "file": "ck_evt_056-forest_edge-s1-keeps.json"
+  }
+ },
+ "variantItems": [
+  {
+   "id": "estate-petition-3",
+   "surface": "home_petition",
+   "source": "pannage",
+   "firstTick": 6000,
+   "firstYear": 1301,
+   "ticks": 8,
+   "variantTicks": 8,
+   "variant": "ck_evt_041"
+  },
+  {
+   "id": "estate-petition-29",
+   "surface": "home_petition",
+   "source": "road_bridge",
+   "firstTick": 49000,
+   "firstYear": 1312,
+   "ticks": 64,
+   "variantTicks": 64,
+   "variant": "ck_evt_056"
+  }
+ ],
+ "seconds": 613
+}
