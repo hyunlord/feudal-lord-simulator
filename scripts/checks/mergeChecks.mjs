@@ -20,7 +20,8 @@
 //                                                    rows' runs a UI-Geometry-Run trailer names) has only safe-list
 //                                                    changes since it was measured, opened every surface, and has no
 //                                                    failure outside its baseline and exceptions, which only shrink
-//                                                    (UI-AUDIT-1, RR26)
+//                                                    (UI-AUDIT-1, RR26); beside it, recorded only, the measured
+//                                                    judgement a′ (uiGeometryMeasured.mjs shadowStep, RR26 shadow)
 // 10. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
 // 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds
@@ -45,6 +46,7 @@ import { checkInboxLedger, formatLedgerResult, ledgerOk } from './inboxLedger.mj
 import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
 import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegistry.mjs';
 import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
+import { shadowStep } from './uiGeometryMeasured.mjs';
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 import { checkDecisionIds, formatDecisionIdResult } from './decisionIds.mjs';
 import { checkEvidenceSize, formatEvidenceResult } from './evidenceSize.mjs';
@@ -80,6 +82,8 @@ const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
 const geometry = checkUiGeometry({ base, head });
 report('ui-geometry', geometry.pass, formatUiGeometryResult(geometry));
+// RR26 shadow (user rulings 2026-10-10): a′'s judgement beside the gate's, recorded only — never the verdict.
+console.log(shadowStep({ base, head, gate: geometry, cwd: top }).text);
 const geometryOverride = logWarnOverride(geometry, { top, head }); if (geometryOverride !== null) console.error(geometryOverride);
 console.log(formatOverrideCount(base, head));
 

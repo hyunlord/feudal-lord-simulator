@@ -204,19 +204,29 @@ test("declared values: only the state sets the audit read are hashed; the system
   } finally { s.done(); }
 });
 
-test("declared values are computed from what the run used: the lock file, Vite's dependency cache, Playwright and Chromium", () => {
-  const s = setup();
+test("declared values are computed from what the run used: the lock file, Vite's dependency cache, Playwright, Chromium, node and the install", () => {
+  const s = setup(); const t = setup();
   try {
-    s.write("package-lock.json", '{"lockfileVersion":3}\n');
-    s.write("node_modules/.vite/deps/_metadata.json", '{"hash":"h-1","browserHash":"b-1"}');
+    // Two run folders (the DGX makes one per run): Vite's own hashes cover the folder's absolute path and differ; the
+    // declared value (its lock file hash, the pre-bundled dependencies by id and path in the folder) does not.
+    const meta = (root: string, hash: string) => JSON.stringify({ hash, browserHash: `b-${hash}`, lockfileHash: "lock-1", optimized: { react: { src: join(root, "node_modules/react/index.js"), file: "react.js" } } });
+    for (const [run, hash] of [[s, "h-1"], [t, "h-2"]] as const) {
+      run.write("package-lock.json", '{"lockfileVersion":3}\n'); run.write("node_modules/.vite/deps/_metadata.json", meta(run.dir, hash));
+      run.write("node_modules/.fls-nm-key", "abc-node24.21.0-aarch64\n"); run.write("node_modules/.package-lock.json", "{}\n");
+    }
     const core = join(s.outside, "playwright-core"); mkdirSync(core); writeFileSync(join(core, "package.json"), '{"version":"1.62.1"}'); writeFileSync(join(core, "index.mjs"), "");
     const before = process.env.FLS_PLAYWRIGHT_CORE; process.env.FLS_PLAYWRIGHT_CORE = join(core, "index.mjs");
     try {
       const values = declaredInputs({ root: s.dir, states: {}, declaredPaths: [], chromium: "151.0" });
       assert.match(String(values.lock), /^[0-9a-f]{64}$/);
-      assert.deepEqual(values.viteDeps, { hash: "h-1", browserHash: "b-1" });
+      assert.equal(values.viteDeps?.lockfileHash, "lock-1"); assert.match(String(values.viteDeps?.optimized), /^[0-9a-f]{64}$/);
+      assert.deepEqual(declaredInputs({ root: t.dir, states: {}, declaredPaths: [] }).viteDeps, values.viteDeps, "another run folder, the same dependencies: the same value");
+      t.write("node_modules/.vite/deps/_metadata.json", JSON.stringify({ ...JSON.parse(meta(t.dir, "h-2")), optimized: {} }));
+      assert.notDeepEqual(declaredInputs({ root: t.dir, states: {}, declaredPaths: [] }).viteDeps, values.viteDeps, "other pre-bundled dependencies: another value");
       assert.equal(values.playwright, "1.62.1");
       assert.equal(values.chromium, "151.0");
+      assert.equal(values.node, process.version);
+      assert.equal(values.nodeModules?.key, "abc-node24.21.0-aarch64"); assert.match(String(values.nodeModules?.inode), /^\d+$/);
     } finally { if (before === undefined) delete process.env.FLS_PLAYWRIGHT_CORE; else process.env.FLS_PLAYWRIGHT_CORE = before; }
-  } finally { s.done(); }
+  } finally { s.done(); t.done(); }
 });

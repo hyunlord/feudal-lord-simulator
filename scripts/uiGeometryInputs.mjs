@@ -6,15 +6,19 @@
 // form as a test's record, { files, dirs, missing, untraceable }), what could not be followed, and the declared inputs
 // that are bound by value instead of measured: the scene state folders the audit read (a hash of each set's folder),
 // the lock file, Vite's dependency cache, the Chromium and Playwright it ran — and adds `measuredInputs` (the file, its
-// sha256, the counts, untraceable, declared) to <out>/geometry.json and to the shared summary this run wrote.
+// sha256, the counts, untraceable, declared) to <out>/geometry.json and to the shared summary this run wrote. The same
+// declared values are read on the DGX before a push (scripts/uiGeometryFingerprint.mjs) for the shadow judgement.
 // A record missing for either process, or a dev server whose config files were not written (viteNoWatch.config.ts's
 // plugin), is untraceable: the gate then judges the result by the safe list.
 import { createHash } from 'node:crypto';
-import { existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { isMain } from './checks/gitRange.mjs';
 import { collectTestInputs, packInputs } from './checks/testInputs/testInputs.mjs';
 import { UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
+import { folderHash } from './uiGeometryFingerprint.mjs';
+
+export { folderHash };
 
 export const INPUTS_FILE = 'inputs.json';
 /** The audit's own records (results, failure shots, the baseline and exceptions): what it writes or compares after measuring, never what it measures. */
@@ -22,17 +26,6 @@ export const AUDIT_RECORDS = 'docs/verification/uiaudit1/';
 export const DEV_SERVER_CONFIG = 'scripts/remote/viteNoWatch.config.ts';
 
 const sha256 = data => createHash('sha256').update(data).digest('hex');
-
-/** A folder's content as one hash: every file under it, by relative path and content, in order. */
-export function folderHash(dir) {
-  const files = [];
-  const walk = sub => { for (const entry of readdirSync(join(dir, sub), { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
-    const rel = sub === '' ? entry.name : `${sub}/${entry.name}`;
-    if (entry.isDirectory()) walk(rel); else if (entry.isFile()) files.push(`${rel}\0${sha256(readFileSync(join(dir, rel)))}`);
-  } };
-  walk('');
-  return sha256(files.join('\n'));
-}
 
 /** The measured inputs of one audit from its trace folder: { inputs, untraceable, roles, declaredPaths }. */
 export function auditInputs({ root, traceDir, declared = [] }) {
@@ -59,14 +52,19 @@ export function declaredInputs({ root, states, declaredPaths, chromium, system =
   const under = (path, dir) => path === dir || path.startsWith(`${dir}/`);
   const read = Object.entries(states).filter(([, dir]) => declaredPaths.some(path => under(path, dir) || under(path, real(dir))));
   const file = path => existsSync(join(root, path)) ? sha256(readFileSync(join(root, path))) : null;
+  // Vite's own hash and browserHash cover config.root, the run folder's absolute path: they differ on every run. Bound
+  // instead: its lock file hash and the pre-bundled dependencies by id and path in the folder.
   const viteDeps = join(root, 'node_modules/.vite/deps/_metadata.json');
-  let deps = null; try { const meta = JSON.parse(readFileSync(viteDeps, 'utf8')); deps = { hash: meta.hash ?? null, browserHash: meta.browserHash ?? null }; } catch { /* no cache */ }
+  let deps = null; try { const meta = JSON.parse(readFileSync(viteDeps, 'utf8')); deps = { lockfileHash: meta.lockfileHash ?? null,
+    optimized: sha256(Object.entries(meta.optimized ?? {}).map(([id, info]) => `${id}\0${relative(root, info?.src ?? '')}`).sort().join('\n')) }; } catch { /* no cache */ }
+  // The install: node_modules is a hard-linked copy of the DGX's cache for its key (scripts/remote/remote-exec.sh).
+  let nodeModules = null; try { nodeModules = { key: readFileSync(join(root, 'node_modules/.fls-nm-key'), 'utf8').trim(), inode: String(statSync(join(root, 'node_modules/.package-lock.json')).ino) }; } catch { /* not a DGX run */ }
   let playwright = null; try { playwright = JSON.parse(readFileSync(join(dirname(process.env.FLS_PLAYWRIGHT_CORE ?? ''), 'package.json'), 'utf8')).version ?? null; } catch { /* not known */ }
   // The system identity files read (they pick native binaries), by content.
   const systemRead = system.filter(path => declaredPaths.some(read => read === path || read === real(path))).sort();
   const systemHashes = Object.fromEntries(systemRead.map(path => { try { return [path, sha256(readFileSync(path))]; } catch { return [path, null]; } }));
   return { states: Object.fromEntries(read.map(([set, dir]) => [set, folderHash(dir)]).sort(([a], [b]) => a.localeCompare(b))),
-    lock: file('package-lock.json'), viteDeps: deps, chromium: chromium ?? null, playwright, system: systemHashes };
+    lock: file('package-lock.json'), viteDeps: deps, chromium: chromium ?? null, playwright, node: process.version, nodeModules, system: systemHashes };
 }
 
 if (isMain(import.meta.url)) {

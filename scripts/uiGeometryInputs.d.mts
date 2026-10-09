@@ -9,5 +9,6 @@ export declare function auditInputs(options: { root: string; traceDir: string; d
 };
 export declare const AUDIT_RECORDS: string;
 export declare function declaredInputs(options: { root: string; states: Record<string, string>; declaredPaths: readonly string[]; chromium?: string | null; system?: readonly string[] }): {
-  states: Record<string, string>; lock: string | null; viteDeps: { hash: string | null; browserHash: string | null } | null; chromium: string | null; playwright: string | null; system: Record<string, string | null>;
+  states: Record<string, string>; lock: string | null; viteDeps: { lockfileHash: string | null; optimized: string } | null; chromium: string | null; playwright: string | null;
+  node: string; nodeModules: { key: string; inode: string } | null; system: Record<string, string | null>;
 };
