@@ -35,3 +35,27 @@ test("GB-3: the palisade plan says where the charter stands — each condition w
   const { agency: _agency, ...sandbox } = state;
   assert.equal(charterWallPlan(sandbox as GameState), null);
 });
+
+test("GB-4: a building site no road has reached for a year, nothing delivered and no work done, is given up with its cause; a younger one stays", async () => {
+  const { AGENCY_WEEK_TICKS } = await import("../src/content/townAgencyConfig");
+  const { isBuildingConstructionSite } = await import("../src/economy/construction");
+  const { HISTORY_TEMPLATES } = await import("../src/content/historyCopy.ko");
+  const { advanceTownAgency } = await import("../src/engine/townAgency");
+  const { advanceHistory } = await import("../src/engine/history");
+  let state = lordGame();
+  for (let tick = 0; tick < 400 && !state.constructionSites.some(isBuildingConstructionSite); tick += 1) state = advanceTick(state);
+  const site = state.constructionSites.find(isBuildingConstructionSite)!;
+  assert.ok(site !== undefined, "the opening lays a site out");
+  // The town's week itself (the construction's own step would find this site's road again and lift its stall).
+  const week = (Math.floor(state.tick / AGENCY_WEEK_TICKS) + 1) * AGENCY_WEEK_TICKS;
+  const stuck = (age: number): GameState => ({ ...state, tick: week, constructionSites: state.constructionSites.map(entry => entry.id !== site.id ? entry
+    : { ...entry, stall: "no_route" as const, builderTicks: 0, delivered: {}, startedTick: week - age }) });
+  const before = stuck(CHARTER_RING.abandonTicks + 10);
+  const old = advanceTownAgency(before);
+  assert.equal(old.constructionSites.some(entry => entry.id === site.id), false, "given up");
+  assert.deepEqual(old.agency!.abandonedSites!.map(entry => [entry.id, entry.reason]), [[site.id, "no_route"]]);
+  const record = advanceHistory(before, old).history!.records.find(entry => entry.template === "agency.site_abandoned")!;
+  assert.match(HISTORY_TEMPLATES["agency.site_abandoned"]!(record.params!), /공사를 접었다 — 1년 동안 길이 닿지 않았다$/);
+  const young = advanceTownAgency(stuck(CHARTER_RING.abandonTicks - 1_000));
+  assert.ok(young.constructionSites.some(entry => entry.id === site.id), "not yet a year");
+});

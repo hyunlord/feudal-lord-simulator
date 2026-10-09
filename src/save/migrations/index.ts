@@ -49,6 +49,7 @@ import { migrateV50ToV51 } from './v50ToV51';
 import { migrateV51ToV52 } from './v51ToV52';
 import { migrateV52ToV53 } from './v52ToV53';
 import { migrateV53ToV54 } from './v53ToV54';
+import { migrateV54ToV55 } from './v54ToV55';
 import { SAVE_SCHEMA_VERSION } from "../saveTypes";
 import { migrateV0ToV1 } from "./v0ToV1";
 import { migrateV2ToV3 } from "./v2ToV3";
@@ -116,6 +117,7 @@ export const SAVE_MIGRATIONS: readonly SaveMigration[] = [
   { from: 51, to: 52, migrate: migrateV51ToV52 },
   { from: 52, to: 53, migrate: migrateV52ToV53 },
   { from: 53, to: 54, migrate: migrateV53ToV54 },
+  { from: 54, to: 55, migrate: migrateV54ToV55 },
 ];
 
 export class SaveMigrationError extends Error {}
