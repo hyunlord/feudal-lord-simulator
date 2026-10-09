@@ -396,12 +396,8 @@
 .app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }
 
 /* UI-4 event chips and card (not modal): under the crisis bells, top right. */
-/* PLAY-2 §4: the column (its padding box) ends above the action dock, at the steward bubble's clearance — a long card
-   (the first child's three names in long copy) scrolls inside instead of covering the dock's buttons; the chips keep
-   their size. */
-.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap)); right: 0; z-index: 5; display: flex;
-  flex-direction: column; align-items: flex-end; gap: 6px; max-height: calc(100% - var(--hud-right-top) - var(--hud-target) - 6px - var(--frame-gap) - 64px - var(--hud-edge)); }
-.app-shell .event-chips { display: grid; flex-shrink: 0; justify-items: end; gap: 4px; }
+.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap)); right: 0; z-index: 5; display: grid; justify-items: end; gap: 6px; }
+.app-shell .event-chips { display: grid; justify-items: end; gap: 4px; }
 .app-shell .event-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 4px; font-size: 13px; font-weight: 600; }
 /* NAT-2 (QA-013): an open panel slot (goal log, population, inspector: 340 px; the ledger: the wide token) holds the top
    right, so the crisis icons and the event chips step left of it — the goal log covered "인두세 징수", its name and its

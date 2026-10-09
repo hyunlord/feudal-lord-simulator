@@ -81,11 +81,13 @@ test("the marriage's first child: the child, the bride and the groom named, as t
   assert.deepEqual(roles(town, record), [["child", child], ["mother", parents.mother!.id], ["father", parents.father!.id]]);
   assert.equal(parents.father!.id, String(record.params!.father));
   assert.equal(parents.mother!.id, String(record.params!.bride));
-  // The lord's moment (its chip's card) and the marriage's timeline name all three.
+  // The lord's moment (its chip's card) names all three by their given names, the marriage's timeline by their whole names.
+  const people = familyPeople(town, record);
   const beat = lordMomentBeats(town, null).find(entry => entry.id === `lord-moment:${record.id}`)!;
-  assert.equal(beat.facts[0], `아이 ${name(child)} · 어머니 ${name(parents.mother!.id)} · 아버지 ${name(parents.father!.id)}`);
+  assert.equal(beat.facts[0], `아이 ${people[0]!.given} · 어머니 ${people[1]!.given} · 아버지 ${people[2]!.given}`);
+  assert.ok(people.every(person => person.given !== "" && name(person.personId).includes(person.given)));
   const timeline = timelineView(town, town.diplomacy!.marriage!).events.find(event => event.key === "child_born")!;
-  assert.ok(timeline.text.endsWith(beat.facts[0]!), timeline.text);
+  assert.ok(timeline.text.endsWith(`아이 ${name(child)} · 어머니 ${name(parents.mother!.id)} · 아버지 ${name(parents.father!.id)}`), timeline.text);
   // The biography's parents are the same two.
   const lines = biographyView(town, child)!.relations.map(relation => relation.line);
   assert.ok(lines.includes(`아버지 ${name(parents.father!.id)}`) && lines.includes(`어머니 ${name(parents.mother!.id)}`), lines.join(" | "));

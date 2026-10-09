@@ -1,3 +1,4 @@
+import { GIVEN_NAMES_KO } from "../../content/personNames.ko";
 import type { GameState } from "../../engine/engine.types";
 import { estatePerson } from "../../engine/estates";
 import type { HistoryRecord } from "../../engine/history.types";
@@ -15,6 +16,8 @@ import { FAMILY_NEWS_COPY as COPY } from "./familyNewsCopy.ko";
 
 export type FamilyRole = "child" | "mother" | "father" | "groom" | "bride" | "spouse" | "deceased";
 export type FamilyPerson = Readonly<{ role: FamilyRole; personId: string; name: string;
+  /** The given name alone, read in Korean (a lord's moment's chip: the whole names are in its record's chronicle). */
+  given: string;
   /** A biography opens on this person (a town person, not a neighbour's house only). */
   biography: boolean }>;
 
@@ -52,7 +55,8 @@ export function familyPeople(state: GameState, record: FamilyRecord): readonly F
     if (id === null) return [];
     const town = townPerson(state, id);
     const person = town ?? otherPerson(state, id);
-    return person === undefined ? [] : [{ role, personId: person.id, name: personDisplayName(person), biography: town !== undefined }];
+    return person === undefined ? [] : [{ role, personId: person.id, name: personDisplayName(person), given: GIVEN_NAMES_KO[person.givenName] ?? person.givenName,
+      biography: town !== undefined }];
   });
 }
 
@@ -65,10 +69,11 @@ function couple(state: GameState, one: string | null, other: string): [FamilyRol
   return parts[0]![0] === "bride" && parts[1]![0] === "groom" ? [parts[1]!, parts[0]!] : parts;
 }
 
-/** The people in one line ("아이 니컬러스 · 어머니 앨리스 · 아버지 윌리엄"), leaving out `except` (the card's own person). */
-export function familyLine(people: readonly FamilyPerson[], except: string | null = null): string | null {
+/** The people in one line ("아이 니컬러스 드 해버럴 · 어머니 …"), leaving out `except` (the card's own person); `given`: by
+ * their given names ("아이 니컬러스 · 어머니 애그니스 · 아버지 애덤"). */
+export function familyLine(people: readonly FamilyPerson[], except: string | null = null, given = false): string | null {
   const shown = people.filter(person => person.personId !== except);
-  return shown.length === 0 ? null : shown.map(person => COPY.named(COPY.roles[person.role], person.name)).join(COPY.joiner);
+  return shown.length === 0 ? null : shown.map(person => COPY.named(COPY.roles[person.role], given ? person.given : person.name)).join(COPY.joiner);
 }
 
 /** A record's sentence with the people it names after it (unchanged when it names nobody beyond `except`). */
