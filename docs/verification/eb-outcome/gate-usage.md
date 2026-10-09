@@ -6,14 +6,13 @@
 
 ## 운영 경로
 
-새 생산기는 이 저장소의 `engineBOutcomeProduce.ts`와 함께 게시되는 수집기·분류기만 사용한다. 옛 작업 트리의 미게시 answer-replay 도구는 필요하지 않다. 기본125년이며 임의의 양의 seed를 받는다. 현재 깨끗한 커밋·Node·lock·생산기 해시·제품 소스 파일 해시를 기록하고, 현재 `decisionTrace.COMMAND_KIND`와 분류기의 정적 사본이 AST 기준으로 같은지 실행 전에 검사한다. 특정 과거 revision을 하드코딩하지 않는다. AST 파서는 저장소의 기존 `tools/eslint` TypeScript를 사용하므로 해당 lockfile 설치가 필요하다.
+새 생산기는 이 저장소의 `engineBOutcomeProduce.ts`와 함께 게시되는 수집기·분류기만 사용한다. 옛 작업 트리의 미게시 answer-replay 도구는 필요하지 않다. 기본125년이며 임의의 양의 seed를 받는다. 현재 깨끗한 커밋·Node·lock·생산기 해시·제품 소스 파일 해시를 기록하고, 현재 `decisionTrace.COMMAND_KIND`와 분류기의 정적 사본이 제한된 상수 사전 문법으로 같은지 실행 전에 검사한다. 특정 과거 revision을 하드코딩하지 않는다. 검사기는 Node 내장 모듈만 사용한다. 주석·표현식·계산 키·중복·문자열 속 가짜 선언 등 지원하지 않는 문법은 거부한다. 별도 parser 설치는 필요 없다.
 
 공식 DGX 실행기에서만 장기 수집한다. **아래는 향후 운영 명령이며 이 문서 작성 중 새125년 실행은 하지 않았다.** 커밋을 마친 깨끗한 트리에서 유일한 label/output을 쓴다.
 
 ```sh
 scripts/remote/run.sh EB-OUTCOME-125 --heavy --experiment --keep -- bash -lc '
   set -euo pipefail
-  npm --prefix tools/eslint ci --no-audit --no-fund --loglevel=error
   for seed in 1 2 3; do
     npx tsx scripts/engineBOutcomeProduce.ts "$seed" .remote/eb-outcome
   done

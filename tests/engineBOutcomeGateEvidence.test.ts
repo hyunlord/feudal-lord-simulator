@@ -164,3 +164,21 @@ test('archive keeps answers across ID-reusing rollups and updates real decision 
   assert.deepEqual(collector.snapshot().history[0]?.params, { actual: 2 });
   assert.equal(collector.snapshot().observation.maxGap, 1);
 });
+
+test('taxonomy literal reader rejects comments, expressions, duplicate declarations and hidden anchors', () => {
+  const declaration = 'const COMMAND_KIND: Readonly<Record<string, TracedDecisionKind>> = ';
+  const expected = { answer_registry_offer: 'registry' };
+  const valid = `${declaration}{ answer_registry_offer: "registry", };`;
+  assert.match(verifyOutcomeTaxonomy(valid, expected), /^[a-f0-9]{64}$/);
+  for (const source of [
+    `${declaration}{ answer_registry_offer: "registry", /* hidden */ };`,
+    `${declaration}{ answer_registry_offer: "registry", answer_registry_offer: "registry" };`,
+    `${declaration}{ ["answer_registry_offer"]: "registry" };`,
+    `${declaration}{ ...other };`,
+    `${declaration}{ answer_registry_offer: pick() };`,
+    `${declaration}{ answer_registry_offer: "registry" + "" };`,
+    `${declaration}{ answer_registry_offer: "reg\\u0069stry" };`,
+    `${valid}\n${valid}`, `/*\n${valid}\n*/`, `const text = \`\n${valid}\n\`;`,
+    'const text = `outer ${`\n' + valid + '\n`}`;',
+  ]) assert.throws(() => verifyOutcomeTaxonomy(source, expected), source);
+});

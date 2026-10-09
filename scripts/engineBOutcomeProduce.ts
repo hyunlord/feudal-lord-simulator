@@ -32,7 +32,7 @@ function preflight() {
     .map(name => [name, sha(readFileSync(join(root, 'scripts', name)))]));
   const sourceFiles = git('ls-files', 'src').split('\n').filter(Boolean).map(path => ({ path, sha256: sha(readFileSync(join(root, path))) }));
   return { sourceRevision, sourceFiles, traceSourceSha256, toolHashes, source: { revision: sourceRevision, platform: process.platform, node: process.version,
-    status: '', lock, expectedLock: lock, parserLockSha256: sha(readFileSync(join(root, 'tools/eslint/package-lock.json'))) } };
+    status: '', lock, expectedLock: lock } };
 }
 function collect(seed: number, years: number, phase: string, provenance: { readonly sourceRevision: string; readonly sourceFiles: readonly { readonly path: string; readonly sha256: string }[] }, directory: string) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed });
