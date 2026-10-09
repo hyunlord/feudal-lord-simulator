@@ -4,6 +4,7 @@ import { mkdirSync, mkdtempSync, rmSync, unlinkSync, writeFileSync } from "node:
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { test } from "node:test";
+import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pathToFileURL } from "node:url";
 import { testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges, reuseEvidence } from "../scripts/checks/testedChanges.mjs";
@@ -39,8 +40,8 @@ function measure(dir: string, tests: readonly string[]) {
 }
 
 function story(trunkMove: Move) {
-  const dir = mkdtempSync(join(tmpdir(), "fls-reuse-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const dir = tempDir("fls-reuse-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   const remove = (path: string) => unlinkSync(join(dir, path));
   write(".gitignore", "/.remote-runs/\n");   // as in the repository: the records are never content
@@ -208,8 +209,8 @@ test("a record of content this checkout lacks, or with no measured inputs, never
 
 test("a range picks a test by what it was measured to read, though no import or listed folder names the file", () => {
   // The branch changes only the fixture doorSigns reads by a built path: the static pick misses it, the measured pick does not.
-  const dir = mkdtempSync(join(tmpdir(), "fls-mpick-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const dir = tempDir("fls-mpick-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
   const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
   try {
     write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"type":"module"}\n');
@@ -223,5 +224,76 @@ test("a range picks a test by what it was measured to read, though no import or 
     const result = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
     assert.deepEqual(result.required, ["tests/doorSigns.test.ts"]);
     assert.equal(result.ok, false, "its old pass was of the old fixture");
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+// Shadowed imports (RR25 measured, user ruling 2026-10-09): a module added where an import used to resolve elsewhere is a
+// path the resolver looked for and missed, so the test runs again. One case per form: an extensionless relative import, an
+// index file and a package's own exports; a .js specifier resolved to .ts follows below (tsx keeps the .ts).
+for (const [form, files, specifier, added, touched] of [
+  ["an extensionless relative import (.tsx, then a .ts beside it)", { "src/e.tsx": 'export const which = "tsx";\n' }, "../src/e", ["src/e.ts", 'export const which = "ts";\n'], "src/e.ts"],
+  ["an index file (src/m/index.ts, then src/m.ts)", { "src/m/index.ts": 'export const which = "index";\n' }, "../src/m", ["src/m.ts", 'export const which = "file";\n'], "src/m.ts"],
+  ["the package's own exports (package.json)", { "src/feature-a.ts": 'export const which = "a";\n', "src/feature-b.ts": 'export const which = "b";\n' }, "story/feature",
+    ["package.json", '{"name":"story","type":"module","exports":{"./feature":"./src/feature-b.ts"}}\n'], "package.json"],
+] as const) {
+  test(`a shadowed import, ${form}: the test runs again, the output names ${touched}`, () => {
+    const dir = tempDir("fls-shadow-");
+    const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+    const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+    const testFile = `import { test } from "node:test";\nimport { which } from "${specifier}";\ntest("shadow", () => { if (!which) throw new Error(); });\n`;
+    try {
+      write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"name":"story","type":"module","exports":{"./feature":"./src/feature-a.ts"}}\n');
+      for (const [path, text] of Object.entries(files)) write(path, text);
+      write("tests/shadow.test.ts", testFile);
+      git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
+      git("checkout", "-qb", "branch"); write("tests/shadow.test.ts", `${testFile}// the branch\n`); git("commit", "-qam", "branch: the test");
+      const { ran, inputs } = measure(dir, ["tests/shadow.test.ts"]);
+      assert.equal(ran.status, 0, ran.stdout + ran.stderr);
+      write(".remote-runs/gate/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/shadow.test.ts"], where: "gate", at: "2026-10-09T01:00:00Z", inputs }));
+      git("checkout", "-q", "trunk"); write(added[0], added[1]); git("add", "-A"); git("commit", "-qm", "trunk adds a shadow");
+      const base = git("rev-parse", "HEAD"); git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
+      const result = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
+      assert.ok(result.uncovered?.includes("tests/shadow.test.ts"), formatTestedChanges(result));
+      assert.ok(result.overlaps?.get("tests/shadow.test.ts")?.files.includes(touched), JSON.stringify(result.overlaps?.get("tests/shadow.test.ts")));
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  });
+}
+
+test("a record whose measured inputs are broken or of another schema never covers a test: it runs again", () => {
+  const s = story(docsOnly);
+  try {
+    rmSync(join(s.dir, ".remote-runs/gate"), { recursive: true });
+    const tree = s.git("rev-parse", "HEAD~1^{tree}");   // the branch before the merge: the gate's content
+    s.write(".remote-runs/broken/test-changed.json", JSON.stringify({ tree, passed: true, picked: TESTS, where: "broken", at: "2026-10-09T09:00:00Z",
+      inputs: { schema: 1, paths: "not a list", tests: { "tests/engine.test.ts": { f: [0] } } } }));
+    s.write(".remote-runs/other-schema/test-changed.json", JSON.stringify({ tree, passed: true, picked: TESTS, where: "other-schema", at: "2026-10-09T09:01:00Z",
+      inputs: { schema: 2, paths: [], tests: { "tests/appText.test.ts": { f: [], d: [], m: [], u: [] } } } }));
+    const text = formatTestedChanges(s.check());
+    assert.match(text, /tests\/engine\.test\.ts — never reused: its record has no measured inputs for it/);
+    assert.match(text, /tests\/appText\.test\.ts — never reused: its record has no measured inputs for it/);
+  } finally { s.done(); }
+});
+
+test("a .js specifier resolved to .ts: a real .js added beside it loads nothing new (tsx keeps the .ts), so the result stands; deleting the .ts reruns", () => {
+  const dir = tempDir("fls-shadow-js-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const write: Write = (path, text) => { mkdirSync(dirname(join(dir, path)), { recursive: true }); writeFileSync(join(dir, path), text); };
+  const testFile = 'import { test } from "node:test";\nimport { which } from "../src/j.js";\ntest("which", () => { console.log(`WHICH=${which}`); });\n';
+  try {
+    write(".gitignore", "/.remote-runs/\n"); write("package.json", '{"name":"story","type":"module"}\n'); write("src/j.ts", 'export const which = "ts";\n');
+    write("tests/j.test.ts", testFile);
+    git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
+    git("checkout", "-qb", "branch"); write("tests/j.test.ts", `${testFile}// the branch\n`); git("commit", "-qam", "branch: the test");
+    const { ran, inputs } = measure(dir, ["tests/j.test.ts"]);
+    assert.match(ran.stdout, /WHICH=ts/);
+    write(".remote-runs/gate/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/j.test.ts"], where: "gate", at: "2026-10-09T01:00:00Z", inputs }));
+    git("checkout", "-q", "trunk"); write("src/j.js", 'export const which = "js";\n'); git("add", "-A"); git("commit", "-qm", "trunk adds j.js");
+    const base = git("rev-parse", "HEAD"); git("checkout", "-q", "branch"); git("merge", "-q", "--no-edit", "trunk");
+    const kept = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
+    assert.equal(kept.ok, true, formatTestedChanges(kept));
+    assert.match(measure(dir, ["tests/j.test.ts"]).ran.stdout, /WHICH=ts/, "the merged content still loads the .ts: reusing was right");
+    git("rm", "-q", "src/j.ts"); git("commit", "-qm", "the .ts goes");
+    const gone = checkTestedChanges({ top: dir, work: dir, base, head: git("rev-parse", "HEAD") });
+    assert.ok(gone.overlaps?.get("tests/j.test.ts")?.files.includes("src/j.ts"), formatTestedChanges(gone));
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

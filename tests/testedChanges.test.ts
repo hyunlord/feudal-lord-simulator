@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
+import { QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pickTests, testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/testedChanges.mjs";
 
@@ -11,8 +11,8 @@ import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/teste
 // pushed content that covers them. A throwaway repository: src/b.ts <- src/a.ts <- tests/a.test.ts, a data file named by
 // another test, and a document no test names.
 function repo() {
-  const dir = mkdtempSync(join(tmpdir(), "fls-tested-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const dir = tempDir("fls-tested-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8" }).trim();
   for (const d of ["src", "tests", "docs", "fixtures"]) mkdirSync(join(dir, d));
   writeFileSync(join(dir, "src/b.ts"), "export const b = 1;\n");
   writeFileSync(join(dir, "src/a.ts"), 'import { b } from "./b.ts";\nexport const a = b + 1;\n');

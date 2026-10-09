@@ -74,7 +74,10 @@ export function packInputs(byTest) {
 
 /** One test's inputs from a packed form, or null when it holds none for that test. */
 export function unpackInputs(packed, test) {
-  const entry = packed?.tests?.[test]; if (entry === undefined || !Array.isArray(packed.paths)) return null;
+  // A record whose inputs are missing, of another schema or broken counts as unmeasured: its test always runs again.
+  if (packed?.schema !== 1 || !Array.isArray(packed.paths) || packed.tests === null || typeof packed.tests !== "object") return null;
+  const entry = packed.tests[test];
+  if (entry === undefined || entry === null || typeof entry !== "object" || ![entry.f, entry.d, entry.m].every(list => list === undefined || Array.isArray(list))) return null;
   const at = indexes => (indexes ?? []).map(index => packed.paths[index]).filter(path => typeof path === "string");
   return { files: at(entry.f), dirs: at(entry.d), missing: at(entry.m), untraceable: entry.u ?? [] };
 }
