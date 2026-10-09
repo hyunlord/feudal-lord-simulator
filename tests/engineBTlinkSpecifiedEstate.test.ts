@@ -68,3 +68,51 @@ test('ck_evt_140 fifth audit-mode answer owns the actual audit without supersede
   const repeated = advanceTrace(audited.after, audited.after);
   assert.equal(linked(repeated, result.ownId, 'audit').length, records.length);
 });
+
+test('ck_evt_140:b fifth direct-oversight answer and current audit mode jointly own the real next audit', () => {
+  let state = delegated();
+  const priorIds: string[] = [];
+  for (let index = 0; index < 4; index += 1) {
+    state = gameReducer({ ...state, tick: 1000 + index }, { type: 'set_audit_mode', estateId: 'delegated-estate', mode: index % 2 === 0 ? 'visit' : 'accounts' });
+    const id = state.trace?.answers?.at(-1)?.id;
+    assert.ok(id);
+    priorIds.push(id);
+  }
+  const rules = state.stewardship?.rules;
+  const result = answer({ ...state, tick: 1004 }, 'ck_evt_140', 'b');
+  assert.equal(new Set([...priorIds, result.ownId]).size, 5);
+  assert.equal(result.after.trace?.answers?.at(-1)?.id, result.ownId);
+  assert.equal(result.after.stewardship?.oversight[0]?.mode, 'direct');
+  assert.equal(result.after.stewardship?.oversight[0]?.auditMode, 'accounts');
+  assert.deepEqual(result.after.stewardship?.rules, rules);
+  assert.ok(contribution(result.after, result.ownId).targets.includes('oversight:delegated-estate'));
+  assert.ok(!contribution(result.after, result.ownId).targets.includes('audit_mode:delegated-estate'));
+  const immediate = linked(result.after, result.ownId, 'decision_effect');
+  assert.ok(immediate.some(row => row.template === 'stewardship.oversight'));
+  assert.equal(result.after.history?.records.filter(row => row.id === result.ownId).length, 1);
+  assert.equal(linked(result.after, result.ownId, 'audit').length, 0);
+
+  const season = transition(result.after, 2 * PRESSURE_BALANCE.seasonTicks, advanceStewardship);
+  const summary = season.actual.stewardship?.summaries.find(row => row.estateId === 'delegated-estate' && row.tick === season.actual.tick);
+  assert.equal(summary?.mode, 'direct');
+  const petition = season.actual.stewardship?.petitions.find(row => row.estateId === 'delegated-estate' && row.tick === season.actual.tick);
+  assert.equal(petition?.escalated, 'direct');
+  assert.deepEqual(season.actual.stewardship?.rules, rules);
+  assert.equal(season.actual.stewardship?.audits.length, 0);
+  assert.equal(linked(season.after, result.ownId, 'audit').length, 0);
+
+  const audited = transition(season.after, MICHAELMAS_IN_YEAR, advanceStewardship);
+  const audit = audited.actual.stewardship?.audits.find(row => row.estateId === 'delegated-estate');
+  assert.ok(audit);
+  assert.equal(audit.tick, MICHAELMAS_IN_YEAR);
+  assert.equal(audit.mode, 'accounts');
+  assert.equal(audited.actual.stewardship?.nextAudit, (season.after.stewardship?.nextAudit ?? 0) + 1);
+  const receipts = linked(audited.after, result.ownId, 'audit');
+  assert.equal(receipts.length, 1);
+  assert.equal(receipts[0]?.params?.target, 'estate:delegated-estate');
+  const causeIds = receipts[0]?.because?.filter(cause => cause.key === 'audit').map(cause => cause.decisionId).sort();
+  assert.deepEqual(causeIds, [priorIds[3], result.ownId].sort());
+  for (const id of priorIds.slice(0, 3)) assert.equal(linked(audited.after, id, 'audit').length, 0);
+  const repeated = advanceTrace(audited.after, audited.after);
+  assert.deepEqual(repeated.history?.records.map(row => row.id), audited.after.history?.records.map(row => row.id));
+});

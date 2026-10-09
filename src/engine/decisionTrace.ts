@@ -595,8 +595,10 @@ function prune(state: GameState): GameState {
   const trace = traceOf(state);
   const from = state.tick - TRACE_KEPT_TICKS;
   const stale = (entry: TracedDecision) => (entry.lastTick ?? entry.tick) < from && !isBigDecision(entry);
-  if (!trace.decisions.some(stale) && (trace.acts[0]?.tick ?? Infinity) >= from) return state;
-  return { ...state, trace: { ...trace, decisions: trace.decisions.filter(entry => !stale(entry)), acts: trace.acts.filter(entry => entry.tick >= from) } };
+  if (!trace.decisions.some(stale) && !trace.answers?.some(stale) && (trace.acts[0]?.tick ?? Infinity) >= from) return state;
+  return { ...state, trace: { ...trace, decisions: trace.decisions.filter(entry => !stale(entry)),
+    ...(trace.answers === undefined ? {} : { answers: trace.answers.filter(entry => !stale(entry)) }),
+    acts: trace.acts.filter(entry => entry.tick >= from) } };
 }
 
 /** DEC-TRACE §2: the tick's thread — the steward's answers and the silences, the factions' memories tied, the consequences. Lord mode only. */

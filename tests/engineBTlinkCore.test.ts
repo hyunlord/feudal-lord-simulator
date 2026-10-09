@@ -8,11 +8,26 @@ import { initialAgency } from '../src/engine/townAgency';
 import { decodeSave } from '../src/save/saveCodec';
 import { gameReducer } from '../src/state/gameStore';
 import { postLedgerEntries } from '../src/ledger/ledger';
+import { BALANCE } from '../src/content/balanceConfig';
 
 function base(): GameState {
   const state = decodeSave(new Uint8Array(readFileSync('fixtures/saves/v49/chapter-two-town.save.json'))).envelope.state;
   return { ...state, tick: 100, agency: initialAgency(), stewardship: stewardshipOf(state), trace: { decisions: [], acts: [] } };
 }
+test('small own answers expire after ten years even when their retained thread is heavy', () => {
+  const state = base();
+  const root = { id: 'heavy-thread', tick: 100, by: 'lord' as const, kind: 'oversight' as const,
+    source: 'set_estate_oversight', weights: ['rights' as const], targets: [] };
+  const old = { ...root, id: 'small-answer', weights: [], threadId: root.id, memoryEvidence: [] };
+  const heavy = { ...root, threadId: root.id, memoryEvidence: [] };
+  const recent = { ...old, id: 'recent-answer', tick: 10 * BALANCE.TICKS_PER_YEAR };
+  const before = { ...state, tick: 11 * BALANCE.TICKS_PER_YEAR,
+    trace: { decisions: [root], acts: [], answers: [old, heavy, recent] } };
+  const after = advanceTrace(before, before);
+  assert.deepEqual(after.trace?.answers?.map(row => row.id), [root.id, recent.id]);
+  assert.deepEqual(after.trace?.decisions, before.trace.decisions);
+  assert.deepEqual(after.history, before.history);
+});
 test('given successive dues settings, only the current answer owns the next actual fee', () => {
   const first = gameReducer(base(), { type: 'set_market_dues', permille: 1200 });
   const second = gameReducer({ ...first, tick: 101 }, { type: 'set_market_dues', permille: 650 });
