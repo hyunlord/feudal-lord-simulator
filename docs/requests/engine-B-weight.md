@@ -36,8 +36,12 @@
 
 ## 별도 인계의 상태
 
+문구 변형 기록 요청: 렌더 A는 041·048·056·067·078 다섯 변형을 카드·칩에서 소비한다. 답변 확정 때 **실제로 표시한 변형 ID**를 원본 사건/선택 ID와 함께 보존하고, 연대기는 그 ID로 같은 문구를 읽게 해 달라. 재열람 시 현재 상태로 변형을 다시 고르지 않는다. 변형이 없던 답변·구 저장은 기본 문구를 유지한다. 저장 필드명·이행은 엔진 소유 계약으로 정하며 B가 GameState/저장 스키마를 선행 변경하지 않는다. 048·078의 자연 경로 미노출은 [EB-FREQ 추가 목록](../verification/eb-freq/most-likely-causes.md)에 별도로 기록했다.
+
 RR22/REMOTE 요청: `tests/engineBWeightAuditCheckpoints.test.ts`의 `readdirSync`는 `mkdtempSync`로 만든 임시 checkpoint 출력 디렉터리만 검사하고 src를 순회하지 않으므로, “walks its generated temporary checkpoint directory; imports src” 분류 사유를 독립 검토해 달라([정확한 요청](engine-B-checkpoint-test-scan.md)); 공용 관문 예외를 B가 직접 추가하지 않는다.
 
 [MOD-SLOT 제안·실증 인계](engine-B-mod-slot.md)와 [계약 후보](../design/module-state-contract.md)는 **이미 전달 완료**했다. 격리 prototype commit `938f2f492a4cef74833913ac6e8758932112dd72`의 실제 함수 시험을 포함하며 공식 채택/본선 병합만 별도 결정이다. 제안 생성 대기 항목으로 다시 세지 않는다.
+
+엔진 검토 순서는 사용자 지시대로 MONEY-SINK 뒤다. 그 순서를 B의 감사·게시 중단 조건으로 쓰지 않는다.
 
 이 요청서는 소스 읽기와 기존 증거 재검산으로 작성했다. 새 장기 실행·화면 검증·코어 수정은 하지 않았다. 중단 예산 수용과 감사 게시를 유지하면서 코어 인과/중복/도착 조정 요구를 후속 소유 작업으로 남긴다.
