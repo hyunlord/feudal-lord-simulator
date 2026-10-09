@@ -4,7 +4,6 @@ export declare const UI_GEOMETRY_SUMMARY: string;
 export declare const UI_GEOMETRY_BASELINE: string;
 export declare const UI_GEOMETRY_EXCEPTIONS: string;
 export declare const UI_INPUT_ROOTS: readonly { readonly root: string; readonly only: RegExp | null }[];
-export declare const UI_GEOMETRY_SCRIPTS: readonly string[];
 export declare const UI_GEOMETRY_GATE: "warn" | "enforce";
 export declare const UI_ENTRY: string;
 export declare const CLOSURE_ENTRIES: readonly string[];
@@ -39,7 +38,8 @@ export declare function formatOverrideCount(base: string | null, head: string, c
 export declare function checkUiGeometry(options: { readonly base?: string | null; readonly head: string; readonly cwd?: string; readonly mode?: "warn" | "enforce";
   readonly env?: Readonly<Record<string, string | undefined>> }): {
   readonly skipped: boolean; readonly mode: "warn" | "enforce"; readonly ok: boolean; readonly pass: boolean; readonly reasons: readonly string[];
-  readonly summary?: unknown; readonly hash?: string; readonly override?: { readonly reason?: string; readonly refused?: string } | null;
+  readonly summary?: unknown; readonly comparison?: unknown; readonly unchanged?: boolean;
+  readonly rangeChanges?: { readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null } | null; readonly override?: { readonly reason?: string; readonly refused?: string } | null;
   readonly rowRuns?: readonly RowRun[] | null;
 };
 export declare function formatUiGeometryResult(result: object): string;

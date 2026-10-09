@@ -18,9 +18,9 @@ const ROW = "modal.panel";
 const CONDITIONS = ["1280x800/normal/normal", "390x844/normal/normal"];
 
 type Report = { dirty?: boolean; unopened?: number; keys?: readonly string[]; runName?: string; commit?: string | null; unregistered?: number;
-  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "outside" };
+  noRows?: boolean; axesNarrowed?: boolean | null; rowsNull?: boolean; commitOf?: "outside"; omit?: "dirty" | "totals" | "unregisteredFramed"; errorCondition?: boolean };
 type Story = { trunkMove: (write: (path: string, text: string) => void, remove: (path: string) => void) => void; report?: Report; baseline?: string[]; trailer?: boolean;
-  shared?: "stale" | "current-failing" | "partial" | "orphan" | "no-commit" | "none"; exceptions?: object[]; rowIds?: string[] };
+  shared?: "stale" | "current-failing" | "partial" | "no-full" | "unsaid" | "orphan" | "no-commit" | "none"; exceptions?: object[]; rowIds?: string[] };
 
 function story({ trunkMove, report = {}, baseline = [], trailer = true, shared = "stale", exceptions = [], rowIds = [ROW] }: Story) {
   const dir = tempDir("fls-rowrun-");
@@ -44,7 +44,7 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, shared =
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   const trunk0 = git("rev-parse", "HEAD");
   // The shared result: a full audit of the trunk as it was (stale once the branch changes the panel).
-  const sharedAt = (commit: string, extra: object = {}) => write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-old", full: true, commit, dirty: false, failureKeys: [], unopened: 0, ...extra }));
+  const sharedAt = (commit: string, extra: object = {}) => write("docs/verification/uiaudit1/geometry.json", JSON.stringify({ run: "full-old", full: true, commit, dirty: false, failureKeys: [], unopened: 0, unregisteredFramed: 0, ...extra }));
   // "orphan": measured at a commit outside the history (an amend or a rebase); "no-commit": a result without its commit.
   const sharedCommit = shared === "orphan" ? git("commit-tree", `${trunk0}^{tree}`, "-m", "amended away") : shared === "no-commit" ? "" : trunk0;
   if (shared !== "none") { sharedAt(sharedCommit); git("add", "-A"); git("commit", "-qm", "the shared result"); }
@@ -53,14 +53,19 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, shared =
   git("commit", "-qam", "branch: the panel");
   const measured = git("rev-parse", "HEAD");
   const measuredRows = (ids: readonly string[]) => Object.fromEntries(ids.map(id => [id, { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys: report.keys ?? [] }])) }]));
-  const rows = report.rowsNull ? { [ROW]: null } : report.noRows ? {} : measuredRows(rowIds);
+  const rows: Record<string, unknown> = report.rowsNull ? { [ROW]: null } : report.noRows ? {} : measuredRows(rowIds);
+  // A condition that errored while the report's own count says every condition opened.
+  if (report.errorCondition) rows[ROW] = { conditions: { [CONDITIONS[0]!]: { status: "measured", keys: [] }, [CONDITIONS[1]!]: { status: "error", error: "timeout" } } };
   write(`docs/verification/uiaudit1/geometry/${RUN}/geometry.json`, JSON.stringify({ run: report.runName ?? RUN,
     // "outside": a commit with the measured content but outside the history (as after an amend or a rebase).
     commit: report.commitOf === "outside" ? git("commit-tree", `${measured}^{tree}`, "-m", "amended away") : report.commit === undefined ? measured : report.commit ?? undefined,
     axesNarrowed: report.axesNarrowed === null ? undefined : report.axesNarrowed ?? false, dirty: report.dirty ?? false, totals: { unopened: report.unopened ?? 0 },
-    unregisteredFramed: Array.from({ length: report.unregistered ?? 0 }, (_, i) => ({ root: `.stray-${i}`, seenIn: [ROW] })), rows }));
+    unregisteredFramed: Array.from({ length: report.unregistered ?? 0 }, (_, i) => ({ root: `.stray-${i}`, seenIn: [ROW] })), rows,
+    ...(report.omit === undefined ? {} : { [report.omit]: undefined }) }));
   if (shared === "current-failing") sharedAt(measured, { run: "full-now", failureKeys: ["other.row|1280x800/normal/normal|overflow|.x"] });
   if (shared === "partial") sharedAt(measured, { run: "rows-only", full: false, rows: 1 });
+  if (shared === "no-full") sharedAt(measured, { run: "before-rr26", full: undefined, rows: 17 });   // as the trunk's result before RR26
+  if (shared === "unsaid") sharedAt(measured, { run: "full-now", dirty: undefined, unopened: undefined, unregisteredFramed: undefined });
   git("add", "-A"); git("commit", "-qm", `branch: the changed rows' geometry${trailer ? `\n\nUI-Geometry-Run: ${RUN}` : ""}`);
   git("checkout", "-q", "trunk"); trunkMove(write, path => rmSync(join(dir, path))); git("add", "-A"); git("commit", "-qm", "trunk moves", "--allow-empty");
   const trunk = git("rev-parse", "HEAD");
@@ -160,6 +165,10 @@ test("a range of safe files alone needs no audit at all", () => {
     const result = checkUiGeometry({ base, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
     assert.equal(result.ok, true, result.reasons.join("\n"));
     assert.match(formatUiGeometryResult(result), /only files on the safe list changed \(2\): no audit needed \(RR26\)/);
+    write("src/ui/Panel.tsx", "export const Panel = 2;\n"); git("add", "-A"); git("commit", "-qm", "one UI file");
+    const one = checkUiGeometry({ base, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
+    assert.equal(one.ok, false, "a single file off the safe list needs an audit");
+    assert.equal(one.unchanged, false);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
@@ -168,7 +177,7 @@ test("the safe list: docs/**, .md outside src/ public/ assets-inbox/, tests noth
   for (const path of ["docs/x.json", "docs/a/b.png", "README.md", "scripts/a.md", "tests/x.test.ts"]) assert.ok(isSafePath(path, imported), path);
   for (const path of ["src/a.md", "public/a.md", "assets-inbox/a.md", "tests/fixtures/geometryRows.ts", "fixtures/a.json", "seeds/a", "perf/a", "scripts/a.ts", "package.json", "index.html", "tsconfig.json", "x"]) assert.ok(!isSafePath(path, imported), path);
   // Lookalikes: a docs/ or tests/ folder inside src/, a name with .md inside it.
-  for (const path of ["src/docs/x.ts", "src/tests/x.ts", "scripts/a.md.ts", "public/docs/a.png", "src/ui/README.md.tsx"]) assert.ok(!isSafePath(path, imported), path);
+  for (const path of ["src/docs/x.ts", "src/tests/x.ts", "scripts/a.md.ts", "public/docs/a.png", "src/ui/README.md.tsx", "docs.ts", "docsite/a.ts", "tests.config.ts", "testsuite/a.ts"]) assert.ok(!isSafePath(path, imported), path);
   assert.ok(!isSafePath("tests/x.test.ts", null), "no closure: no test is safe");
 });
 
@@ -213,6 +222,16 @@ test("a shared result written by a changed-rows run is no full audit: it does no
   try { assert.equal(t.check().ok, true, "with the trailer the run's own report decides"); } finally { t.done(); }
 });
 
+test("a shared result that does not say it is a full audit (as before RR26), or leaves out what it must say, does not count", () => {
+  const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared: "no-full", trailer: false });
+  try { refused(s.check(), /the shared result \(run before-rr26, 17 row\(s\)\) is not a full audit/); } finally { s.done(); }
+  const t = story({ trunkMove: write => write("docs/notes.md", "moved\n"), shared: "unsaid" });
+  try {
+    const result = t.check();
+    for (const pattern of [/does not say whether the tree was clean/, /does not count the surface conditions not opened/, /does not count the framed roots no registry row measures/]) refused(result, pattern);
+  } finally { t.done(); }
+});
+
 test("only a full audit writes the shared result by default", () => {
   assert.equal(defaultSummaryPath({ explicit: undefined, full: true }), "docs/verification/uiaudit1/geometry.json");
   assert.equal(defaultSummaryPath({ explicit: undefined, full: false }), "none");
@@ -231,13 +250,17 @@ test("a run that is not what the trailer names, has no measured commit, or names
   }
 });
 
-test("a run with a framed root outside the registry, with no row measured, with a broken row, or narrowed (or not saying) does not count", () => {
+test("a run with a framed root outside the registry, with no row measured, with a broken row, narrowed, or leaving out what it must say, does not count", () => {
   for (const [report, expected] of [
     [{ unregistered: 1 }, /1 framed root\(s\) on screen that no registry row measures/],
     [{ noRows: true }, /no row was measured/],
     [{ rowsNull: true }, /no row was measured/],
     [{ axesNarrowed: true }, /narrowed by --viewports, --copy or --numbers/],
     [{ axesNarrowed: null }, /does not say it measured every condition/],
+    [{ omit: "dirty" }, /its report does not say whether the tree was clean/],
+    [{ omit: "totals" }, /its report does not count the surface conditions not opened/],
+    [{ omit: "unregisteredFramed" }, /its report does not list the framed roots no registry row measures/],
+    [{ errorCondition: true }, /1 surface condition\(s\) could not be opened/],
   ] as const) {
     const s = story({ trunkMove: write => write("docs/notes.md", "moved\n"), report });
     try { refused(s.check(), expected); } finally { s.done(); }

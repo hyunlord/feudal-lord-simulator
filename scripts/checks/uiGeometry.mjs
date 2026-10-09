@@ -5,7 +5,8 @@
 // small safe list (isSafePath: docs/**, *.md outside src/ public/ assets-inbox/, tests/** nothing of the UI or the
 // audit imports); any other change, known or not, needs a new audit. A range that changes only safe files passes; only
 // the lists' shrink rules are checked then. The shared result (docs/verification/uiaudit1/geometry.json) counts only
-// when it is a full audit (`full: true`; a changed-rows or narrowed run never writes it). Otherwise the step fails when:
+// when it is a full audit (`full: true`; a changed-rows or narrowed run does not write it unless --summary names it, and
+// then says `full: false`). A result that leaves out what it must say (dirty, opened conditions, framed roots) fails. Otherwise the step fails when:
 //  - the result is missing, not a full audit, measured at a commit not in the pushed history, measured from a tree with
 //    uncommitted changes off the safe list, or followed by changes off the safe list;
 //  - a surface condition could not be opened, or a framed root (data-frame) on screen is in no registry row;
@@ -45,8 +46,6 @@ export const UI_INPUT_ROOTS = Object.freeze([
   ['scripts/uiGeometryAudit.mjs', null], ['scripts/uiGeometryMeasure.ts', null], ['scripts/uiGeometryScene.ts', null],
   ['scripts/renderCommitProbe.mjs', null], ['scripts/sceneInjection.mjs', null], ['scripts/remote/viteNoWatch.config.ts', null],
 ].map(([root, only]) => Object.freeze({ root, only })));
-/** The audit scripts among them (their uncommitted changes make a result dirty). */
-export const UI_GEOMETRY_SCRIPTS = Object.freeze(UI_INPUT_ROOTS.map(item => item.root).filter(root => root.startsWith('scripts/')));
 // UI-AUDIT-1 (the user's decision): enforcing on the baseline — no new failure, the baseline and the exceptions only
 // shrink.
 export const UI_GEOMETRY_GATE = 'enforce';
@@ -306,6 +305,12 @@ export function rowRunsInRange(base, head, cwd = process.cwd()) {
   return [...new Set(out.split('\x02').flatMap(row => row.split('\x01')).map(value => value.trim()).filter(Boolean))];
 }
 
+/** The conditions of a run report that were neither measured nor unreachable by design (error, not found, …). */
+function reportNotOpened(report) {
+  const rows = report?.rows !== null && typeof report?.rows === 'object' ? report.rows : {};
+  return Object.values(rows).reduce((sum, entry) => sum + Object.values(entry?.conditions ?? {}).filter(record => record?.status !== 'measured' && record?.status !== 'unreachable').length, 0);
+}
+
 /** A run report's failure keys (row | condition | check | path), its measured rows and their conditions. */
 export function reportFailures(report) {
   const keys = []; const measured = new Map();
@@ -337,9 +342,13 @@ export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd
     else { changes = unsafeChanges(commit, head, cwd, cache); if (changes.unsafe.length > 0) reasons.push(unsafeLine(`run ${run}`, commit, changes)); }
   }
   if (report.axesNarrowed !== false) reasons.push(`run ${run}: ${report.axesNarrowed === true ? 'narrowed by --viewports, --copy or --numbers' : 'its report does not say it measured every condition (an audit from before RR26)'}: audit the rows in every condition`);
-  if (report.dirty) reasons.push(`run ${run}: measured from a tree with uncommitted changes`);
-  if ((report.totals?.unopened ?? 0) !== 0) reasons.push(`run ${run}: ${report.totals.unopened} surface condition(s) could not be opened`);
-  if ((report.unregisteredFramed?.length ?? 0) !== 0) reasons.push(`run ${run}: ${report.unregisteredFramed.length} framed root(s) on screen that no registry row measures`);
+  // A report that leaves out what it must say fails (the audit always writes these fields).
+  if (report.dirty !== false) reasons.push(`run ${run}: ${report.dirty === true ? 'measured from a tree with uncommitted changes' : 'its report does not say whether the tree was clean'}`);
+  const notOpened = reportNotOpened(report);
+  if (typeof report.totals?.unopened !== 'number') reasons.push(`run ${run}: its report does not count the surface conditions not opened`);
+  else if (Math.max(report.totals.unopened, notOpened) !== 0) reasons.push(`run ${run}: ${Math.max(report.totals.unopened, notOpened)} surface condition(s) could not be opened`);
+  if (!Array.isArray(report.unregisteredFramed)) reasons.push(`run ${run}: its report does not list the framed roots no registry row measures`);
+  else if (report.unregisteredFramed.length !== 0) reasons.push(`run ${run}: ${report.unregisteredFramed.length} framed root(s) on screen that no registry row measures`);
   const { keys, measured } = reportFailures(report);
   if (measured.size === 0) reasons.push(`run ${run}: no row was measured`);
   const ofRun = key => { const { row, condition } = splitKey(key); return measured.get(row)?.has(condition) === true; };
@@ -386,9 +395,11 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     }
   }
   if (!unchanged && sharedFull) {
-    if (summary.dirty) reasons.push('the result was measured from a tree with uncommitted changes');
-    if (summary.unopened !== 0) reasons.push(`${summary.unopened} surface condition(s) could not be opened`);
-    if ((summary.unregisteredFramed ?? 0) !== 0) reasons.push(`${summary.unregisteredFramed} framed root(s) (data-frame) on screen that no registry row measures`);
+    if (summary.dirty !== false) reasons.push(summary.dirty === true ? 'the result was measured from a tree with uncommitted changes' : 'the result does not say whether the tree was clean');
+    if (typeof summary.unopened !== 'number') reasons.push('the result does not count the surface conditions not opened');
+    else if (summary.unopened !== 0) reasons.push(`${summary.unopened} surface condition(s) could not be opened`);
+    if (typeof summary.unregisteredFramed !== 'number') reasons.push('the result does not count the framed roots no registry row measures');
+    else if (summary.unregisteredFramed !== 0) reasons.push(`${summary.unregisteredFramed} framed root(s) (data-frame) on screen that no registry row measures`);
     if (!Array.isArray(summary.failureKeys)) reasons.push('the result has no failure keys (an audit from before the baseline): run the audit again');
     else {
       if (baselineFile === null) reasons.push(`no ${UI_GEOMETRY_BASELINE}: npm run ui-geometry:baseline -- --reason "…"`);
