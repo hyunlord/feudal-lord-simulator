@@ -41,7 +41,11 @@ mkdirSync(out, { recursive: true });
 // The harnesses' states first (quick): each played as the browser plays it.
 const checked = checks.map(check => {
   const at = check.lastIndexOf(":"); const file = check.slice(0, at); const ticks = Number(check.slice(at + 1));
-  const stop = browserStop(JSON.parse(readFileSync(file, "utf8")) as GameState, ticks);
+  // A saved envelope holds its state; anything else that is no game state (an index) is skipped.
+  const read = JSON.parse(readFileSync(file, "utf8")) as { readonly state?: GameState; readonly buildings?: unknown };
+  const game = Array.isArray(read.buildings) ? read as GameState : Array.isArray(read.state?.buildings) ? read.state! : null;
+  if (game === null) { process.stderr.write(`check ${file}: not a game state\n`); return { file, ticks, stop: null, skipped: true }; }
+  const stop = browserStop(game, ticks);
   process.stderr.write(`check ${file} over ${ticks} ticks: ${stop === null ? "runs on" : `stops at ${stop.tick} for ${stop.reasons.join(", ")}`}\n`);
   return { file, ticks, stop };
 });
