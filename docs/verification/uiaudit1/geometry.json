@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-PAUSE-geometry-fabdff3-fabdff3",
- "commit": "fabdff3533108c3c3a8a239e16324a5083fb3bcf",
+ "run": "render-PAUSE-geometry-6a603cc-6a603cc",
+ "commit": "6a603cc38d46dbadcdc4de90314d6b77baf4b472",
  "dirty": false,
- "inputs": 2517,
- "inputHash": "0d1e4bcb14552bcb6648c8f64c6f2aac22457aa613830e70c19f5033ffe85d67",
- "measuredAt": "2026-10-09T01:12:21.173Z",
- "report": "docs/verification/uiaudit1/geometry/render-PAUSE-geometry-fabdff3-fabdff3/geometry.json",
+ "inputs": 2518,
+ "inputHash": "ad7ecf5b8cb7714be249c084013adfea9caa629b1b17239a26c83a5112a251e7",
+ "measuredAt": "2026-10-09T01:58:48.642Z",
+ "report": "docs/verification/uiaudit1/geometry/render-PAUSE-geometry-6a603cc-6a603cc/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,9 +24,9 @@
    "extreme"
   ]
  },
- "rows": 2,
- "conditions": 40,
- "measured": 40,
+ "rows": 3,
+ "conditions": 60,
+ "measured": 60,
  "failures": 0,
  "unopened": 0,
  "unreachable": [],
@@ -53,6 +53,11 @@
   "fixed": 0
  },
  "bySurface": {
+  "modal.pause": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "hud.auto-pause": {
    "failures": 0,
    "unopened": 0,

@@ -6,14 +6,14 @@
    "loaded": 16971,
    "now": 16980,
    "notice": 0,
-   "bytes": 113502,
+   "bytes": 113481,
    "pass": true
   },
   "stopped-1280x800": {
    "touch": false,
    "season": {
-    "bytes": 90251,
-    "at": 17000
+    "bytes": 90497,
+    "at": 17001
    },
    "shown": true,
    "card": {
@@ -38,13 +38,13 @@
     "before": 17001,
     "after": 17001
    },
-   "bytes": 88061,
+   "bytes": 88066,
    "pass": true
   },
   "resumed-1280x800": {
    "notice": 0,
    "time": {
-    "before": 17015,
+    "before": 17014,
     "after": 17025
    },
    "pass": true
@@ -52,16 +52,16 @@
   "running-tablet": {
    "touch": true,
    "loaded": 16971,
-   "now": 16980,
+   "now": 16981,
    "notice": 0,
-   "bytes": 111896,
+   "bytes": 110121,
    "pass": true
   },
   "stopped-tablet": {
    "touch": true,
    "season": {
-    "bytes": 88572,
-    "at": 17000
+    "bytes": 89127,
+    "at": 17001
    },
    "shown": true,
    "card": {
@@ -86,14 +86,14 @@
     "before": 17001,
     "after": 17001
    },
-   "bytes": 85041,
+   "bytes": 85210,
    "pass": true
   },
   "resumed-tablet": {
    "notice": 0,
    "time": {
     "before": 17014,
-    "after": 17024
+    "after": 17025
    },
    "pass": true
   },
@@ -123,7 +123,7 @@
      "inside": true
     }
    },
-   "bytes": 88504,
+   "bytes": 88641,
    "pass": true
   },
   "suit-link": {
@@ -134,17 +134,31 @@
     "before": 42000,
     "after": 42000
    },
-   "bytes": 101167,
+   "bytes": 101162,
    "pass": true
   },
   "opt-out": {
    "stopTick": 17001,
-   "now": 17023,
+   "now": 17027,
+   "notice": 0,
+   "pass": true
+  },
+  "settings": {
+   "opened": true,
+   "before": "true",
+   "bytes": 96269,
+   "after": "false",
+   "label": "영주가 답할 큰일에 저절로 멈추기: 끔",
+   "pass": true
+  },
+  "setting-off": {
+   "stopTick": 17001,
+   "now": 17024,
    "notice": 0,
    "pass": true
   }
  },
- "bytes": 766994,
- "largest": 113502,
+ "bytes": 862574,
+ "largest": 113481,
  "errors": []
 }
