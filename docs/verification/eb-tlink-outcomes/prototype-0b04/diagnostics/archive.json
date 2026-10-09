@@ -1,0 +1,76 @@
+{
+  "scope": "Historical provisional diagnostics; official completed 0b04 score independently confirms same25%. No automatic causal classification or complete-domain noop proof.",
+  "reproduce": "Restore raw scripts/results at .omo/evidence in isolated source-pinned checkout, then follow original handoff commands. Absolute paths in original results are provenance, not portable lookup requirements.",
+  "files": [
+    {
+      "file": "tlink-three-seed-provisional-links.ts.gz",
+      "rawSha256": "4c66702780279f4883292b90cc960ec37ffd17ae4312ce86dec22310b9bf1a80",
+      "gzipSha256": "dd2f63285003698432b3febe2e73f7b7eaf9744d4f79d2dafda0cab91e51c68a",
+      "rawBytes": 3986,
+      "gzipBytes": 1495
+    },
+    {
+      "file": "tlink-three-seed-provisional-links.json.gz",
+      "rawSha256": "fbb9bd15411227c84ecb104a4758af3fd04a191bf162deba7cb447fc1ff72fdf",
+      "gzipSha256": "fe8c7ae3b03114991e77aefb4084eec20119e778a407a66ae1cd2e3118ca0d1b",
+      "rawBytes": 504942,
+      "gzipBytes": 27250
+    },
+    {
+      "file": "tlink-seed1-provisional-links.ts.gz",
+      "rawSha256": "a6e04a82e31ddce04054d43530dfa54cf84393b9c444e3c545ddd90c4eeb0cfb",
+      "gzipSha256": "4cb9632afd0b6115c499acc81225e319ed4ba50085377b9f76fd940429c5cb8b",
+      "rawBytes": 3003,
+      "gzipBytes": 1150
+    },
+    {
+      "file": "tlink-seed1-provisional-links.json.gz",
+      "rawSha256": "8911b31d08d148d29f3e6bde5324c20251412ee1da58632042e324317d2bead2",
+      "gzipSha256": "887c6367e33082777c9db51cf268a4656c15635df70955f6b2c5a5ba82dcfb67",
+      "rawBytes": 150240,
+      "gzipBytes": 8883
+    },
+    {
+      "file": "tlink-audit-loyalty-reconstruction.mjs.gz",
+      "rawSha256": "dade41f4a44ce256ba6bf6ae4f59be421471da91466d3b2ca21d82b4abbfbcff",
+      "gzipSha256": "90273cd2049915509a516ef2401f0f4e0366cf1bbcb31241640d0aabbb9662a9",
+      "rawBytes": 7984,
+      "gzipBytes": 3029
+    },
+    {
+      "file": "tlink-audit-loyalty-reconstruction.json.gz",
+      "rawSha256": "cd460716af81f22572d7c27140c32306c01d9a7c38ddfb2472f509495aff2a74",
+      "gzipSha256": "dd9d471ae6cba2909e071f3adb5e328938fa4dc5ede3d5e8e6ca65577657dc81",
+      "rawBytes": 56801,
+      "gzipBytes": 5068
+    },
+    {
+      "file": "tlink-charter-fold-feasibility.py.gz",
+      "rawSha256": "869d958a0be50d1fd84f3341044965396f4e7fb9ea6fdc85bbcaebeb06c2b8ef",
+      "gzipSha256": "3232a697054403be61145898ff8240f65deb3e336459edec75cbf7b195d8838b",
+      "rawBytes": 6524,
+      "gzipBytes": 2545
+    },
+    {
+      "file": "tlink-charter-fold-feasibility.json.gz",
+      "rawSha256": "827d420af4dbf3de9f3e7ed001f9be460ef782b7b87ee0832d98e47a6c6b5ba0",
+      "gzipSha256": "3a68c15fe5e3f2168949caf3011ee51cda190b8b97879d528b858574600cf1f2",
+      "rawBytes": 19194,
+      "gzipBytes": 2711
+    },
+    {
+      "file": "tlink-charter-fold-feasibility.md.gz",
+      "rawSha256": "c91bd505ffdeac7fa4ab4a68b8c2f532c228c6267dfb6485261a0e6454bf42e7",
+      "gzipSha256": "b7faadd40e27dd6b961313636c20408239b45ddecbde735d7a13885d4baa1618",
+      "rawBytes": 4800,
+      "gzipBytes": 2298
+    },
+    {
+      "file": "tlink-0b04-diagnosis-handoff.md.gz",
+      "rawSha256": "df1e1f8a0bd2edcb885da4d5949bee7eef63d7c0c4a09af47ab8b2a78713f845",
+      "gzipSha256": "c1ef125c877234eabdfc47ac723c1106d30d0889f82faab1a81bba4f657b0975",
+      "rawBytes": 9372,
+      "gzipBytes": 4705
+    }
+  ]
+}

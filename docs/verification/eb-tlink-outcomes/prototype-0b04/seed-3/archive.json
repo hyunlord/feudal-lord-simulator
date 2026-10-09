@@ -1,0 +1,85 @@
+{
+  "seed": 3,
+  "sourceRevision": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+  "archive": "evidence.tar.gz",
+  "archiveBytes": 1622396,
+  "archiveSha256": "fbf83c31e3d9212659ac82b42d1c74a2e1593e291fd2e7c4234accbe34b9a3de",
+  "members": [
+    {
+      "path": "seed-3.json",
+      "bytes": 1365485,
+      "sha256": "9415fc443e0ed21e6e4d251356a3832f9f661912f28b602c2127eb6902911de8"
+    },
+    {
+      "path": "seed-3/answer-classification.json",
+      "bytes": 771887,
+      "sha256": "66e23a817f7e2fc256891f16b5f9f214fdd4ffd2e851c9dce3399a0539085809"
+    },
+    {
+      "path": "seed-3/answer-contexts.json.gz",
+      "bytes": 54100,
+      "sha256": "e026285c5e89c82257fedc383fd0082615db16cb31c3d7d5374c47f763303812"
+    },
+    {
+      "path": "seed-3/collect-parity.json",
+      "bytes": 302449,
+      "sha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3"
+    },
+    {
+      "path": "seed-3/collect-rule-state.json.gz",
+      "bytes": 161889,
+      "sha256": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e"
+    },
+    {
+      "path": "seed-3/final-state.json.gz",
+      "bytes": 344576,
+      "sha256": "1678ca18dbff1a4206f7a5819a844df3d5ff5a9c900ec503205440f722f190b8"
+    },
+    {
+      "path": "seed-3/manifest.json",
+      "bytes": 1117939,
+      "sha256": "628980f15beafb1863043a789a243f861535fb5ee4011336ff4285b692fc2c6d"
+    },
+    {
+      "path": "seed-3/original-contexts.json.gz",
+      "bytes": 54100,
+      "sha256": "e026285c5e89c82257fedc383fd0082615db16cb31c3d7d5374c47f763303812"
+    },
+    {
+      "path": "seed-3/original-final-state.json.gz",
+      "bytes": 344576,
+      "sha256": "1678ca18dbff1a4206f7a5819a844df3d5ff5a9c900ec503205440f722f190b8"
+    },
+    {
+      "path": "seed-3/pins.json",
+      "bytes": 229,
+      "sha256": "1557740547b03905f78ca27dd52c6f10b23f3b5a35b76c5485c8263ab0918463"
+    },
+    {
+      "path": "seed-3/preflight.json",
+      "bytes": 172761,
+      "sha256": "975a37df0dca2d963b8dd193f4637262126c3d81c9f827ebb158f81b78c0a536"
+    },
+    {
+      "path": "seed-3/progress.json",
+      "bytes": 79,
+      "sha256": "e50d60ed3db6c2c6fbe8bd71bcddb32370a6a57bfc60cf97da96311c5f6b4b66"
+    },
+    {
+      "path": "seed-3/replay-parity.json",
+      "bytes": 302449,
+      "sha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3"
+    },
+    {
+      "path": "seed-3/replay-rule-state.json.gz",
+      "bytes": 161889,
+      "sha256": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e"
+    },
+    {
+      "path": "seed-3/validity.json",
+      "bytes": 123,
+      "sha256": "abff2b55b2620a4117e9f6db4df80b86167df71215d86759ea7431efc4d6dc79"
+    }
+  ],
+  "verified": "Every member re-read from gzip/tar and matched to original bytes; no data filtering."
+}
