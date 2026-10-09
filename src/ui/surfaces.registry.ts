@@ -601,13 +601,13 @@ export const SURFACES: readonly SurfaceRow[] = [
     contentSlot: ".petition-body", scrollParts: [".petition-body"], siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
     scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-last-year .slice-year-card" }, { wait: ".results-card.year-review", timeout: 30_000 }, { pause: 600 }],
-    requires: ["h2", ".results-card-part h3", ".results-card-chronicle", ".results-card-continue"], data: "1319's year card opened from the end page's link (the engine's yearReview)" },
+    requires: ["h2", ".results-card-part h3", ".results-card-chronicle", ".results-card-continue"], data: "1316's year card (the last year; the slice ends in 1317 spring by its second estate) opened from the end page's link (the engine's yearReview)" },
   { id: "modal.slice-end.season-card", extends: "modal.slice-end", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "slice", name: "slice-end", tile: "house", zoom: 1.1, query: CHAPTER_DELAY },
     open: [{ click: ".slice-last-year .slice-season-card" }, { wait: ".season-ledger-card", timeout: 30_000 }, { pause: 900 }],
     // Its content scrolls in its own region, as the lord-mode season card's row (modal.season-ledger.steward) declares.
     requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
-    data: "1319 winter's season card opened from the end page's link (it does not open by itself at the end)" },
+    data: "1316 winter's season card (the last closed before the end in 1317 spring) opened from the end page's link (it does not open by itself at the end)" },
 ];
 
 /**

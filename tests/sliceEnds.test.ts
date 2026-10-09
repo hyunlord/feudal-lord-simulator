@@ -124,22 +124,26 @@ test("slice end: the decisions ranked by what followed them in the engine's thre
 });
 
 test("slice end (the user's ruling): the page takes the live end's cards' place — the last year's card and the end season's card stay shut, are its links, and the year card is marked seen as it opens", () => {
-  assert.equal(sliceLastYear(ended), 1319);
-  assert.equal(sliceEndOwnsTurn(ended, 1319), true, "1319's card is the page's");
-  assert.equal(sliceEndOwnsTurn(ended, 1318), false);
+  // The engine's last year of the slice (the year of the tick before its end), not a fixed one.
+  const lastYear = yearOfTick(ended, lordSliceOutcome(ended)!.endTick - 1);
+  const start = lordSliceStart(ended);
+  assert.equal(lastYear, start.startYear + start.end.years - 1, "this history's slice runs its years (no second estate)");
+  assert.equal(sliceLastYear(ended), lastYear);
+  assert.equal(sliceEndOwnsTurn(ended, lastYear), true, "the last year's card is the page's");
+  assert.equal(sliceEndOwnsTurn(ended, lastYear - 1), false);
   assert.equal(sliceEndOwnsTurn(ended), true, "the season closing at the end: no card of its own");
   assert.equal(sliceEndOwnsTurn(town), false);
   assert.equal(sliceEndOwnsTurn(markStorySeen(ended, SLICE_END_ID, "opened")), false, "once opened, the turn's cards are the game's again");
-  // The marks the page writes: its own and 1319's card — after them neither the page nor that card is due (a live turn or a load).
-  assert.deepEqual(sliceEndMarkIds(ended, yearCardId), [SLICE_END_ID, yearCardId(1319)]);
+  // The marks the page writes: its own and the last year's card — after them neither the page nor that card is due (a live turn or a load).
+  assert.deepEqual(sliceEndMarkIds(ended, yearCardId), [SLICE_END_ID, yearCardId(lastYear)]);
   const marked = sliceEndMarkIds(ended, yearCardId).reduce((state, id) => markStorySeen(state, id, "opened"), ended);
   assert.equal(sliceEndDue(roundTrip(marked)), false);
-  assert.equal(yearCardDue({ year: 1319, tick: ended.tick - 1 }, marked), null, "the year card never pops later");
-  assert.equal(yearCardDue({ year: 1319, tick: ended.tick - 1 }, ended), 1319, "unmarked, the hook would have shown it");
+  assert.equal(yearCardDue({ year: lastYear, tick: ended.tick - 1 }, marked), null, "the year card never pops later");
+  assert.equal(yearCardDue({ year: lastYear, tick: ended.tick - 1 }, ended), lastYear, "unmarked, the hook would have shown it");
   // At the top: the last year as its card shows it, and the two links.
   const view = sliceEndView(ended)!;
-  const card = lordYearReview(ended, 1319);
-  assert.equal(view.last.heading, SLICE_COPY.end.lastYear(1319));
+  const card = lordYearReview(ended, lastYear);
+  assert.equal(view.last.heading, SLICE_COPY.end.lastYear(lastYear));
   assert.deepEqual(view.last.house, card.house);
   assert.deepEqual(view.last.changed.map(group => group.heading), card.threads.slice(0, 3).map(group => group.heading));
   assert.deepEqual(sliceYearCard(ended), card);

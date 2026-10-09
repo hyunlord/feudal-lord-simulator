@@ -8,8 +8,9 @@
 //  - end-record: a decision's [연대기에서 이 결정 보기] — the chronicle on that record; closing it comes back to the page;
 //  - end-reopen: [계속 다스리기], then the pause menu's [영주의 스무 해 돌아보기] opens it again;
 //  - end-live: `slice-eve` (40 ticks before the end) run at 1×: the end page alone, by itself (the user's ruling: it takes
-//    the end season's card's and 1319's year card's place); end-live-year-card / end-live-season-card: its two links, and
-//    back; end-live-after: [계속 다스리기], then ten seconds of the town with nothing popping (1319's card marked seen).
+//    the end season's card's and the last year's card's place — the engine's last year, `sliceLastYear` of `slice-end`);
+//    end-live-year-card / end-live-season-card: its two links, and back; end-live-after: [계속 다스리기], then ten seconds
+//    of the town with nothing popping (the last year's card marked seen).
 //    `--only live` runs this part alone (results-live.json).
 //  - `--only years` (TRACE-KEEP, DTR-24) alone (results-years.json): end-years-<view> — `slice-end`'s page scrolled to its
 //    years, the slice's small matters in one line and 1300's big decisions with what followed; end-years-late-1280x800 —
@@ -22,6 +23,7 @@ import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { startFromWelcome } from './welcomeStart.mjs';
+import { sliceLastYear } from '../src/ui/slice/sliceDue.ts';
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -169,8 +171,10 @@ for (const view of liveOnly || yearsOnly ? [] : VIEWS) {
 }
 
 // The end coming live: 40 ticks before it at 1×. The user's ruling (2026-10-09): the end page alone — the end season's card
-// and 1319's year card do not open by themselves; both are the page's links, and after [계속 다스리기] 1319's card does not pop.
+// and the last year's card do not open by themselves; both are the page's links, and after [계속 다스리기] that card does not
+// pop. The last year is the engine's (the slice's end state), not a fixed one.
 if (!yearsOnly) {
+  const lastYear = String(sliceLastYear(scene('slice-end')));
   const state = scene('slice-eve');
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: true, initScript: INIT, width: 1280, height: 800,
     query: '&story-delay=1500', loadTimeout: 90_000, zoom: 1.1 });
@@ -190,7 +194,7 @@ if (!yearsOnly) {
     row.lastYear = await page.locator(`${END} .slice-last-year`).getAttribute('data-year').catch(() => null);
     row.bytes = await shoot(page, 'end-live');
   }
-  report('end-live', row, row.end && row.order.length === 1 && row.lastYear === '1319');
+  report('end-live', row, row.end && row.order.length === 1 && row.lastYear === lastYear);
   if (row.end) {
     // The year card from its link, and back.
     await page.locator(`${END} .slice-year-card`).click();
@@ -202,7 +206,7 @@ if (!yearsOnly) {
       await page.locator(`${YEAR_CARD} .results-card-continue`).click(); await page.waitForTimeout(500);
     }
     year.back = await visible(page, END);
-    report('end-live-year-card', year, year.opened && (year.title ?? '').startsWith('1319년') && year.back);
+    report('end-live-year-card', year, year.opened && (year.title ?? '').startsWith(`${lastYear}년`) && year.back);
     // The season card from its link, and back.
     await page.locator(`${END} .slice-season-card`).click();
     const season = { opened: await waitFor(page, SEASON_CARD, 10_000) };
@@ -214,7 +218,7 @@ if (!yearsOnly) {
     }
     season.back = await visible(page, END);
     report('end-live-season-card', season, season.opened && season.back);
-    // [계속 다스리기]: the town runs on at 1×, and 1319's card (marked seen as the page opened) does not pop.
+    // [계속 다스리기]: the town runs on at 1×, and the last year's card (marked seen as the page opened) does not pop.
     await page.locator(`${END} .slice-continue`).click();
     const after = { popped: [] };
     for (let waited = 0; waited < 10_000; waited += 500) {
