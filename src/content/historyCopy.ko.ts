@@ -203,6 +203,9 @@ const CRISIS_REASONS: Readonly<Record<string, string>> = { stores: "곡식을 �
 /** The weak points' words (PLAY-2: shared with the screens — one word for one thing). */
 export const WEAK_POINTS: Readonly<Record<string, string>> = { no_granary: "곡창 없음", food_under_a_season: "식량이 한 철도 안 됨", households_short: "이미 굶는 집", no_market: "곡식을 살 장터 없음" };
 
+/** GB-4: why the town gave a site up (its old records say `no_route`). */
+const ABANDON_WORDS: Readonly<Record<string, string>> = { road: "길이 닿지 않았다", no_route: "길이 닿지 않았다", material: "자재가 오지 않았다", work: "일할 사람이 없었다" };
+
 /** DEC-TRACE §3: a faction's act. */
 const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {
   merchant_invest: "좌판과 거래에 돈을 더 들였다", merchant_settle: "상인 가구들이 들어왔다", merchant_withdraw: "좌판에서 돈을 거두었다", merchant_leave: "상인 가구들이 떠났다",
@@ -439,7 +442,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "agency.subsidy_refused": params => `${buildingWord(s(params, "kind"))} 장려금 ${moneyWords(n(params, "amount"))}${moneyWordsJosa(moneyWords(n(params, "amount")), "은", "는")} 걸지 못했다: 장려금 합계 ${moneyWords(n(params, "total"))}${moneyWordsJosa(moneyWords(n(params, "total")), "이", "가")} 금고의 4분의 1(${moneyWords(n(params, "limit"))})을 넘는다`,
   // FIX-14 (FX13-5): the town buys the timber its market charter waits on.
   // GB-4: the town gave a site up — its cause, not a shortage (P-C3).
-  "agency.site_abandoned": params => `도시가 ${projectWord(s(params, "what"))} 공사를 접었다 — ${n(params, "years")}년 동안 길이 닿지 않았다`,
+  "agency.site_abandoned": params => `도시가 ${projectWord(s(params, "what"))} 공사를 접었다 — ${n(params, "years")}년 동안 ${ABANDON_WORDS[s(params, "reason")] ?? ABANDON_WORDS.road}`,
   "agency.timber_ordered": params => `도시가 시장 칙허에 모자란 목재 ${n(params, "amount")}을 상인에게 주문했다`,
   "agency.project_started": params => `${ACTOR_KO[s(params, "actor")] ?? s(params, "actor")}${josa(ACTOR_KO[s(params, "actor")] ?? "", "이", "가")} ${projectWord(s(params, "what"))} 공사를 시작했다`,
   "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,

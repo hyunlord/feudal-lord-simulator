@@ -6,6 +6,7 @@
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
+import { isBuildingConstructionSite } from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 import { treeStage } from "../src/engine/land";
 import { lordBotCommands } from "../src/engine/lordBot";
@@ -36,13 +37,26 @@ function row(state: GameState, year: number) {
 export function growBlockProbe(seed: number, years = 125) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: ReturnType<typeof row>[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number })[] = [];
   let lastYear = start;
+  // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
+  const seenSites = new Set<string>();
+  const seenAbandoned = new Set<string>();
+  const abandonedSpots: { kind: string; tx: number; ty: number }[] = [];
+  let abandonedBy: Record<string, number> = {};
+  let replaced = 0;
   while (stateCalendar(state).year < start + years) {
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
+    for (const entry of state.agency?.abandonedSites ?? []) if (!seenAbandoned.has(entry.id)) {
+      seenAbandoned.add(entry.id); abandonedSpots.push(entry); abandonedBy[entry.reason] = (abandonedBy[entry.reason] ?? 0) + 1;
+    }
+    for (const site of state.constructionSites) if (!seenSites.has(site.id)) {
+      seenSites.add(site.id);
+      if (isBuildingConstructionSite(site) && abandonedSpots.some(spot => spot.kind === site.kind && spot.tx === site.tx && spot.ty === site.ty)) replaced += 1;
+    }
     const year = stateCalendar(state).year;
-    if (year !== lastYear) { lastYear = year; rows.push(row(state, year)); }
+    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced }); abandonedBy = {}; replaced = 0; }
   }
   const stalls: { from: number; to: number; population: number; palisade: number }[] = [];
   let runStart = 0;
@@ -54,7 +68,8 @@ export function growBlockProbe(seed: number, years = 125) {
     runStart = index;
   }
   return { seed, years, maxPopulation: Math.max(...rows.map(entry => entry.population)), firstPalisade: rows.find(entry => entry.palisade > 0)?.year ?? null,
-    stalls, peakStumps: Math.max(...rows.map(entry => entry.stumps)), rows };
+    stalls, peakStumps: Math.max(...rows.map(entry => entry.stumps)), abandoned: rows.reduce((sum, entry) => sum + Object.values(entry.abandonedBy).reduce((a, b) => a + b, 0), 0),
+    replaced: rows.reduce((sum, entry) => sum + entry.replaced, 0), rows };
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -130,7 +130,7 @@ export interface AgencyState {
    * would have cut from their service space, and how many searches failed in a row (the next starts elsewhere).
    */
   /** GB-4: the building sites the town gave up (no road reached them a year), the last few — kind, when, since when, why. */
-  readonly abandonedSites?: readonly { readonly id: string; readonly kind: string; readonly tick: number; readonly since: number; readonly reason: "no_route" }[];
+  readonly abandonedSites?: readonly AbandonedSite[];
   readonly charterWallFailure?: { readonly tick: number; readonly reason: CharterWallFailureReason; readonly homes: readonly string[]; readonly attempts: number };
   readonly charterWallTried?: string;
   /** TA-12: the tick the town first stood ready for its market charter (absent when it is not waiting). */
@@ -174,3 +174,17 @@ export interface AgencyWalk {
 
 /** GB-1: why the charter wall was not found — water, the map's edge, the buildings, the homes' service space, the proclamation's rules, the lots, the route, or else. */
 export type CharterWallFailureReason = "water" | "edge" | "buildings" | "service_space" | "rules" | "lots" | "route" | "other";
+
+/**
+ * GB-4: a building site the town gave up — where, what, when, since when, and why: no road reached it (`road`), no
+ * material came (`material`), or no one worked it (`work`).
+ */
+export interface AbandonedSite {
+  readonly id: string;
+  readonly kind: string;
+  readonly tx: number;
+  readonly ty: number;
+  readonly tick: number;
+  readonly since: number;
+  readonly reason: "road" | "material" | "work";
+}

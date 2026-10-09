@@ -6,6 +6,7 @@
  * reasons and the lord's decisions behind them. With no `state.agency` (sandbox, campaign) nothing here runs.
  */
 import { CHARTER_RING } from "../content/charterRingConfig";
+import { holdsCharterSearch } from "./palisadeFootprints";
 import { cancelConstruction } from "./constructionCancellation";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
 import { takeCharterSearchReport } from "./autoplayEra";
@@ -28,6 +29,7 @@ import { preservesAutoplayServiceSpace, resetAutoplayServiceSearch } from "./aut
 import { keepsInteriorHouseSites } from "./autoplayInteriorPlots";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import { autoplayCanPlace } from "./autoplayZones";
+import type { AbandonedSite } from "./townAgency.types";
 import type { AdvisorAction } from "./autoplayBotRecovery";
 import { granaryCoverageTargetIds } from "./autoplayFoodCoverage";
 import { recordMaterialPlacement } from "./autoplayMaterialLifecycle";
@@ -503,7 +505,7 @@ export function walkKey(state: GameState): string {
  * site open (the bot's era step then projects walls and their service space, the costliest step of the walk).
  */
 function charterSearchRuns(state: GameState): boolean {
-  return canProclaimPalisadeEra(state) && state.population >= CHARTER_POPULATION && !state.constructionSites.some(isBuildingConstructionSite);
+  return canProclaimPalisadeEra(state) && state.population >= CHARTER_POPULATION && !state.constructionSites.some(site => holdsCharterSearch(state, site));
 }
 
 /** TA-2…TA-5: one week of the town agency, at the week's first tick (nothing outside lord mode). */
@@ -535,7 +537,8 @@ export function charterRetryTick(failure: { readonly tick: number; readonly atte
  * among them). The giving-up is kept with its cause (P-C3: the blockage, not a shortage).
  */
 function abandonUnreachedSites(state: GameState): GameState {
-  const stuck = state.constructionSites.filter(isBuildingConstructionSite).filter(site => site.stall === "no_route" && site.builderTicks === 0
+  // GB-4: untouched a year (nothing delivered, no work) — a road it never had, a material that never came, or hands.
+  const stuck = state.constructionSites.filter(isBuildingConstructionSite).filter(site => site.kind !== "keep" && site.builderTicks === 0
     && Object.values(site.delivered).every(amount => (amount ?? 0) === 0) && state.tick - site.startedTick >= CHARTER_RING.abandonTicks);
   if (stuck.length === 0 || state.agency === undefined) return state;
   let next = state;
@@ -543,7 +546,10 @@ function abandonUnreachedSites(state: GameState): GameState {
     const routes = createSimulationRoutePorts(next);
     next = cancelConstruction({ state: next, siteId: site.id, inventory: createDeliveryInventoryPort(), routes: routes.delivery }).state;
   }
-  const abandonedSites = [...(next.agency!.abandonedSites ?? []), ...stuck.map(site => ({ id: site.id, kind: site.kind, tick: state.tick, since: site.startedTick, reason: "no_route" as const }))]
+  const reasonOf = (stall: string): AbandonedSite["reason"] => stall === "no_route" ? "road"
+    : stall === "no_material_source" || stall === "awaiting_materials" || stall === "reserve_held" ? "material" : "work";
+  const abandonedSites = [...(next.agency!.abandonedSites ?? []), ...stuck.map(site => ({ id: site.id, kind: site.kind, tx: site.tx, ty: site.ty, tick: state.tick,
+    since: site.startedTick, reason: reasonOf(site.stall) }))]
     .slice(-CHARTER_RING.abandonedKept);
   return { ...next, agency: { ...next.agency!, abandonedSites } };
 }

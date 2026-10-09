@@ -53,9 +53,39 @@ test("GB-4: a building site no road has reached for a year, nothing delivered an
   const before = stuck(CHARTER_RING.abandonTicks + 10);
   const old = advanceTownAgency(before);
   assert.equal(old.constructionSites.some(entry => entry.id === site.id), false, "given up");
-  assert.deepEqual(old.agency!.abandonedSites!.map(entry => [entry.id, entry.reason]), [[site.id, "no_route"]]);
+  assert.deepEqual(old.agency!.abandonedSites!.map(entry => [entry.id, entry.reason, entry.tx, entry.ty]), [[site.id, "road", site.tx, site.ty]]);
   const record = advanceHistory(before, old).history!.records.find(entry => entry.template === "agency.site_abandoned")!;
   assert.match(HISTORY_TEMPLATES["agency.site_abandoned"]!(record.params!), /공사를 접었다 — 1년 동안 길이 닿지 않았다$/);
   const young = advanceTownAgency(stuck(CHARTER_RING.abandonTicks - 1_000));
   assert.ok(young.constructionSites.some(entry => entry.id === site.id), "not yet a year");
+});
+
+test("GB-6: only a core site getting on holds the charter's search — a stuck one, one untouched a season, or one outside the core does not", async () => {
+  const { holdsCharterSearch } = await import("../src/engine/palisadeFootprints");
+  const { isBuildingConstructionSite } = await import("../src/economy/construction");
+  let state = lordGame();
+  for (let tick = 0; tick < 400 && !state.constructionSites.some(isBuildingConstructionSite); tick += 1) state = advanceTick(state);
+  const site = state.constructionSites.find(isBuildingConstructionSite)!;
+  const as = (fields: Record<string, unknown>) => ({ ...site, ...fields }) as typeof site;
+  const fresh = as({ kind: "well", stall: "awaiting_materials", startedTick: state.tick, builderTicks: 0, delivered: {} });
+  assert.equal(holdsCharterSearch(state, fresh), true, "a core site just laid out");
+  assert.equal(holdsCharterSearch(state, as({ kind: "well", stall: "no_route" })), false, "no road");
+  assert.equal(holdsCharterSearch(state, as({ kind: "well", stall: "no_material_source" })), false, "no source");
+  assert.equal(holdsCharterSearch({ tick: state.tick + 1_000 }, fresh), false, "untouched a season");
+  assert.equal(holdsCharterSearch(state, as({ kind: "logging_camp", stall: "awaiting_materials", startedTick: state.tick })), false, "the wall has no business with it");
+});
+
+test("GB-5: a site is laid out only where its materials can come; a spot given up for want of material or hands is not taken again within a year", async () => {
+  const { constructionSiteReachable } = await import("../src/engine/siteReach");
+  const state = lordGame();
+  // A tile beside a road of the town's network.
+  const road = state.tiles.find(tile => tile.hasRoad)!;
+  const besides = [{ tx: road.tx, ty: road.ty + 1 }, { tx: road.tx + 1, ty: road.ty }, { tx: road.tx, ty: road.ty - 1 }, { tx: road.tx - 1, ty: road.ty }];
+  const spot = besides.find(tile => constructionSiteReachable(state, "well", tile));
+  assert.ok(spot !== undefined, "a well beside the network's road is reachable");
+  const given: GameState = { ...state, agency: { ...state.agency!, abandonedSites: [{ id: "site-x", kind: "well", tx: spot!.tx, ty: spot!.ty, tick: state.tick, since: 0, reason: "material" }] } };
+  assert.equal(constructionSiteReachable(given, "well", spot!), false, "not again within a year");
+  assert.equal(constructionSiteReachable({ ...given, tick: state.tick + 4_000 }, "well", spot!), true, "a year on, if it reaches");
+  // A corner of the map no road reaches is not.
+  assert.equal(constructionSiteReachable(state, "well", { tx: 1, ty: 1 }), false);
 });

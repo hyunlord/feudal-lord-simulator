@@ -18,7 +18,7 @@ import { cellInsideWall } from '../zones/zoneEdits';
 import { previewPalisadeRouteAccess } from './palisadeRouteAccess';
 import { charterTimberOrder } from './timberTrade';
 import { stretchedWallCandidates, wallRoom } from './autoplayWallRoom';
-import { palisadeFootprintsForState } from './palisadeFootprints';
+import { holdsCharterSearch, palisadeFootprintsForState } from './palisadeFootprints';
 import { computePalisadeProposal, type PalisadePath, type PalisadeProposalResult } from '../world/palisadeGeometry';
 import { findAutoplayServiceWitness } from './autoplayServiceSpaceWitness';
 import { serviceSpaceBuildings } from './autoplayServiceSpaceRoutes';
@@ -192,8 +192,10 @@ export function stoneProjectAction(state: GameState, buildAction: (state: GameSt
  * stretched toward open land are tried before the old fallback.
  */
 export function autoplayEraAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction, targetLots = Infinity): AutoplayAction {
-  if (state.population < 60 || state.constructionSites.some(isBuildingConstructionSite)) return NONE;
   const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met);
+  // GB-6: met, only the core's sites getting on hold the charter's search; unmet, any open site still waits (the bot
+  // lays one requirement's building at a time).
+  if (state.population < 60 || state.constructionSites.some(site => unmet.length === 0 ? holdsCharterSearch(state, site) : isBuildingConstructionSite(site))) return NONE;
   if (unmet.length === 0) {
     if (state.era === 'hamlet') {
       const remaining = Number.isFinite(targetLots) ? targetLots - housingLotCount(state) : 0;
