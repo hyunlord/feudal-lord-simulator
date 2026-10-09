@@ -12,6 +12,12 @@ export const LEDGER_SURFACES: readonly SurfaceRow[] = [
   { id: "lord.ledger.promises", ...HOST, scene: lord2Scene("promises"), open: OPEN,
     requires: [".lord-ledger-book", ".lord-ledger-promise", ".lord-ledger-keep", ".lord-ledger-claim"], siblingsNoOverlap: [".lord-ledger-promise"],
     data: "the promise ledger with kept, broken and open debt instalments (the lord keeps them from the treasury), the lord's open claim" },
+  // The ledger's two drawn parts (Wave 35: the book, the suit's track) as framed roots of their own, on the pages their
+  // host rows open (they are painted backgrounds: `flat`).
+  { id: "lord.ledger.book", extends: "lord.ledger.promises", root: ".lord-ledger-book", frame: "flat", scene: lord2Scene("promises"), open: [],
+    requires: [".lord-ledger-promise"], data: "the promise book's drawn page inside the ledger: the promises' lines within it" },
+  { id: "lord.ledger.track", extends: "lord.ledger.suit", root: ".lord-ledger-track", frame: "flat", scene: lord2Scene("contested"), open: [],
+    requires: [".lord-ledger-step"], data: "the suit's drawn stage track inside the ledger: the stages within it" },
   { id: "lord.ledger.empty", ...HOST, scene: lord2Scene("offer-countered"), open: OPEN,
     requires: [".lord-ledger-book", ".lord-ledger-empty", ".lord-ledger-claim", ".lord-ledger-file[data-cost]", ".lord-ledger-claim-hearing"],
     data: "no promise yet (the marriage only offered): the empty ledger's lines, no timed terms, the lord's claim with its filing button (PLAY-2: its cost, the hearing's sides)" },
