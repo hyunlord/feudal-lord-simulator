@@ -37,7 +37,8 @@ function place(root, absolute) {
  * kept as `declared` paths, not as a read outside the repository: what they hold is bound to the result by its hashes.
  */
 export function collectTestInputs({ root: given, traceDir, coverageDir = null, declared: declaredDirs = [] }) {
-  const declaredRoots = declaredDirs.map(dir => { try { return realpathSync(dir); } catch { return resolve(dir); } });
+  // A declared path as given and as its real path (/etc/os-release is a link to /usr/lib/os-release).
+  const declaredRoots = declaredDirs.flatMap(dir => { const given = resolve(dir); try { return [given, realpathSync(dir)]; } catch { return [given]; } });
   const isDeclared = absolute => declaredRoots.some(dir => absolute === dir || absolute.startsWith(dir + sep));
   const root = realpathSync(given);   // processes record real paths (/tmp is /private/tmp on macOS)
   const byTest = new Map();
