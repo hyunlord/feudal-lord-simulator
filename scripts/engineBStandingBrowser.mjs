@@ -115,6 +115,7 @@ try {
         return { panel: box(panel), content: box(content), nav: box(nav), viewport: innerWidth };
       });
       assert.ok(row.policyLayout.content.clientWidth > 0, 'Policy content collapsed behind fixed navigation');
+      assert.ok(row.policyLayout.content.scrollWidth <= row.policyLayout.content.clientWidth + 1, 'Policy content overflows horizontally inside its pane');
       assert.ok(row.policyLayout.panel.x >= 0 && row.policyLayout.panel.x + row.policyLayout.panel.width <= row.policyLayout.viewport,
         'Lord panel escaped viewport');
       const policy = page.locator(`.lord-standing-kind[data-kind="${fixture.key}"]`);
@@ -124,6 +125,20 @@ try {
       assert.ok((await policy.innerText()).includes(expected.row));
       assert.equal(await policy.locator('.lord-standing-set').count(), 1, 'Only withdrawal is available');
       row.active = await capture(page, policy.locator('.lord-standing-set'), `${width}-policy-active`);
+      row.active.lines = await policy.evaluate(node => {
+        const pane = node.closest('.lord-screen-content');
+        const paneBox = pane.getBoundingClientRect();
+        return [...node.querySelectorAll('.lord-standing-current, .lord-standing-set, .lord-standing-does, .lord-standing-detail > .lord-standing-line')].map(element => {
+          const box = element.getBoundingClientRect();
+          return { text: element.textContent, left: box.left, right: box.right, paneLeft: paneBox.left, paneRight: paneBox.right,
+            clientWidth: element.clientWidth, scrollWidth: element.scrollWidth, wordBreak: getComputedStyle(element).wordBreak };
+        });
+      });
+      for (const line of row.active.lines) {
+        assert.ok(line.left >= line.paneLeft - 1 && line.right <= line.paneRight + 1, `Policy line clipped by pane: ${line.text}`);
+        assert.ok(line.scrollWidth <= line.clientWidth + 1, `Policy line text overflows: ${line.text}`);
+      }
+      assert.equal(await policy.locator('.lord-standing-set').evaluate(button => getComputedStyle(button).wordBreak), 'keep-all');
       const before = await observed(page);
       await policy.locator('.lord-standing-set').click();
       await page.waitForFunction(key => window.__FEUDAL_PHASE10_PROOF__.state().stewardship?.standing?.[key] === 'lord', fixture.key);

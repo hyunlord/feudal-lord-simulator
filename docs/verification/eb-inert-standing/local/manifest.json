@@ -1,0 +1,62 @@
+{
+  "sourceRevision": "239c8239880d063752d2713fad8902c3e8724c09",
+  "focusedTests": {
+    "files": 18,
+    "passed": 182
+  },
+  "limitations": [
+    "Local focused verification only; no 375 seed-year or non-lord verdict.",
+    "Pre-fix red/green and b467 check:merge logs preserve their own earlier source context.",
+    "check:merge failed on geometry evidence and unexecuted selected tests; not claimed as integration acceptance."
+  ],
+  "files": [
+    {
+      "file": "local/239c823-unit.log.gz",
+      "original": "/tmp/eb-standing-239c823-unit.log",
+      "rawSha256": "21970ad5d367badfa7c125cfb4c0097570d4cf0d7b6fd92cf9c9be3aca8f086a",
+      "sha256": "664de43c91aadeff95b572e91ec1f70b3e3da95c9d8947e771e1c6013c17ed67"
+    },
+    {
+      "file": "local/revised-tsc.log.gz",
+      "original": "/tmp/eb-standing-revised-tsc.log",
+      "rawSha256": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff",
+      "sha256": "15d0d44dcc44dcea0f98566ffd16ea9866930b363eb07239c016c43ebb4c4548"
+    },
+    {
+      "file": "local/superseded-red.log.gz",
+      "original": "/tmp/eb-standing-superseded-red.log",
+      "rawSha256": "50a923e4a0f2adc4347b81c644bead68e533cc97ecf4426a80cd94e695520e77",
+      "sha256": "5d815a14b8cf19b156e2868051cd09b8839ddf90c0ea875ca848c97275a4b776"
+    },
+    {
+      "file": "local/save-red.log.gz",
+      "original": "/tmp/eb-standing-save-red.log",
+      "rawSha256": "bbbcf64dd502d5948a566fb2b5af618281e44114dd825d504dec807397ab59e7",
+      "sha256": "49a8fd1469eb171a925fddde4d73e4a40714c7f67c4419a25551d98657dc8d23"
+    },
+    {
+      "file": "local/save-green.log.gz",
+      "original": "/tmp/eb-standing-save-green.log",
+      "rawSha256": "1c26396899afa256a79bf9c176044b6167c790244fdb21713d932b169deb2667",
+      "sha256": "77bc8d36f77518e8347b98956fe937e5cb473b1e5b0ddbbd6814ed7f6f4edeb4"
+    },
+    {
+      "file": "local/unrecovered-red.log.gz",
+      "original": "/tmp/eb-standing-unrecovered-red.log",
+      "rawSha256": "4afb04a7e5a98a236e05ddc625c0cfd4bf6be26923b6451923c586d97d318d93",
+      "sha256": "f3a7d53fb256ee3f1234f0f3d818201985a3ec39525cb1dbb04c1927f582f7a5"
+    },
+    {
+      "file": "local/unrecovered-green.log.gz",
+      "original": "/tmp/eb-standing-unrecovered-green.log",
+      "rawSha256": "eb67edf79714da31fe7b1b4e1ce6f31f28d14fe5e500be0293ebd803aed9c38d",
+      "sha256": "0d1d4ed8fb800a4991fbae53fe1d515dfd982d9ef59d32b5d463b786045203cc"
+    },
+    {
+      "file": "local/frozen-merge.log.gz",
+      "original": "/tmp/eb-standing-frozen-merge.log",
+      "rawSha256": "4c67a06f6e5859e77eff560db44d6b54f92e96d000505298d8e67ec08209da06",
+      "sha256": "071b0bc3c39739f4da25a0153bc99f733d31be6ac62def7c87f64580a0689950"
+    }
+  ]
+}

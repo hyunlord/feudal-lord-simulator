@@ -28,9 +28,18 @@
 .app-shell .lord-standing-current { font-size: 12px; line-height: 1.35; color: var(--palette-ink-muted); }
 .app-shell .lord-standing-detail { display: grid; gap: 6px; padding: 6px 4px 8px 8px; }
 .app-shell .lord-standing-options { display: grid; gap: 6px; }
-.app-shell .lord-standing-choice { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 8px; align-items: start; }
-.app-shell .lord-standing-set { min-height: 44px; font-size: 13px; }
+.app-shell .lord-standing-choice { display: grid; grid-template-columns: minmax(104px, max-content) minmax(0, 1fr); gap: 8px; align-items: start; }
+.app-shell .lord-standing-set { min-height: 44px; font-size: 13px; word-break: keep-all; overflow-wrap: normal; }
 .app-shell .lord-standing-does { display: grid; gap: 1px; font-size: 12px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+/* The header art has an intrinsic 320px width. Constrain each nested grid track to its available content width so
+   the picture cannot enlarge policy rows beyond the independently scrolling lord-screen content pane. */
+.app-shell :is(.lord-standing, .lord-standing-family, .lord-standing-kinds, .lord-standing-detail, .lord-standing-options) {
+  grid-template-columns: minmax(0, 1fr); min-width: 0;
+}
+.app-shell :is(.lord-standing-title, .lord-standing-current) { min-width: 0; max-width: 100%; word-break: keep-all; overflow-wrap: anywhere; }
+@media (max-width: 719px) {
+  .app-shell .lord-standing-choice { grid-template-columns: minmax(0, 1fr); }
+}
 @media (pointer: coarse) {
   /* !important: the 44 px touch floor (uiBoundaries.css) is !important, so a 48 px tablet target must be too (the kit's own rule). */
   .season-steward-summary, .season-steward-policy, .app-shell .lord-standing-open, .app-shell .lord-standing-set, .app-shell .lord-standing-all-toggle { min-height: 48px !important; }
