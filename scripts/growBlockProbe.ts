@@ -4,7 +4,8 @@
 // or more with the population and the wall both unchanged below the lord mode's full town (24 lots at level 4, 768), and
 // whether the walled town's house sites had all run out under its fields through it (GROW-BLOCK-2's count).
 //   tsx scripts/growBlockProbe.ts <seed> [years] [saveDir] > out.json   (saveDir: saves a season and five years after the
-//   market charter, and at the end — seed<n>-charter-season-<year>, seed<n>-charter-5y-<year>, seed<n>-final-<year>)
+//   market charter, and at the end — seed<n>-charter-season-<year>, seed<n>-charter-5y-<year>, seed<n>-final-<year>;
+//   [saveYears], comma-separated: also at the first tick of each — seed<n>-year-<year>)
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -92,7 +93,7 @@ function writeState(dir: string, name: string, state: GameState) {
   writeFileSync(`${dir}/${name}.save.json`, encodeSave({ state, createdAt: now, savedAt: now }).bytes);
 }
 
-export function growBlockProbe(seed: number, years = 125, saveDir?: string) {
+export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
   const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number })[] = [];
@@ -105,13 +106,16 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string) {
   let replaced = 0;
   let charterTick: number | null = null;
   const saved = new Set<string>();
-  const saveOnce = (name: string) => { if (saveDir !== undefined && !saved.has(name)) { saved.add(name); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
+  const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
+    if (saveDir !== undefined && !saved.has(key)) { saved.add(key); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
   while (stateCalendar(state).year < start + years) {
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
     if (charterTick === null && state.era !== "hamlet") charterTick = state.tick;
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.season) saveOnce("charter-season");
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.years) saveOnce("charter-5y");
+    // The years asked for (a stall's middle, for engine B's handoff): the first tick of each.
+    if (saveYears.has(stateCalendar(state).year)) saveOnce(`year`);
     for (const entry of state.agency?.abandonedSites ?? []) if (!seenAbandoned.has(entry.id)) {
       seenAbandoned.add(entry.id); abandonedSpots.push(entry); abandonedBy[entry.reason] = (abandonedBy[entry.reason] ?? 0) + 1;
     }
@@ -143,6 +147,7 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string) {
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const [seed = "1", years = "125", saveDir] = process.argv.slice(2);
-  process.stdout.write(`${JSON.stringify(growBlockProbe(Number(seed), Number(years), saveDir))}\n`);
+  const [seed = "1", years = "125", saveDir, saveYears = ""] = process.argv.slice(2);
+  const asked = new Set(saveYears.split(",").filter(entry => entry !== "").map(Number));
+  process.stdout.write(`${JSON.stringify(growBlockProbe(Number(seed), Number(years), saveDir, asked))}\n`);
 }
