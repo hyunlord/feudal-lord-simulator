@@ -1,7 +1,7 @@
 // Shared git helpers for the merge checks (REVIEW-1). Everything reads git objects, never the working tree, so a
 // check judges exactly the commits being merged or pushed.
 import { execFileSync } from 'node:child_process';
-import { gitPaths } from '../gitPaths.mjs';
+import { gitPaths, gitText } from '../gitPaths.mjs';
 
 export const TRUNK = 'codex/phase15-organic-ground';
 
@@ -32,13 +32,13 @@ export function changedFiles(base, head, cwd) {
     .reduce((rows, field, index, all) => index % 2 === 0 ? [...rows, { status: field, path: all[index + 1] }] : rows, []);
 }
 
-/** Lines added base..head in the given paths, as { path, text }. */
+/** Lines added base..head in the given paths, as { path, text } (the +++ header ends in a tab when the name has a space). */
 export function addedLines(base, head, paths, cwd) {
   if (paths.length === 0) return [];
-  const out = git(['diff', '--no-renames', '--unified=0', base, head, '--', ...paths], cwd);
+  const out = gitText(['diff', '--no-renames', '--unified=0', base, head, '--', ...paths], { cwd });
   const rows = []; let path = null;
   for (const line of out.split('\n')) {
-    if (line.startsWith('+++ ')) path = line === '+++ /dev/null' ? null : line.slice(6);
+    if (line.startsWith('+++ ')) path = line === '+++ /dev/null' ? null : line.slice(6).replace(/\t$/, '');
     else if (line.startsWith('+') && path !== null) rows.push({ path, text: line.slice(1) });
   }
   return rows;
@@ -48,7 +48,7 @@ export function addedLines(base, head, paths, cwd) {
 export function lineChanges(base, head, paths, cwd) {
   const map = new Map();
   if (paths.length === 0) return map;
-  const out = git(['diff', '--no-renames', '--unified=0', base, head, '--', ...paths], cwd);
+  const out = gitText(['diff', '--no-renames', '--unified=0', base, head, '--', ...paths], { cwd });
   let path = null;
   for (const line of out.split('\n')) {
     if (line.startsWith('diff --git ')) path = line.split(' b/').pop();

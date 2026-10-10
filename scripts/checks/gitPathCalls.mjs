@@ -4,7 +4,10 @@
 // names git).
 //   JavaScript/TypeScript: such an argument written as a string literal must sit on a line that calls gitPaths(,
 //     gitPathsOut( or gitText( — keep the call on one line; and a git command line in a string that is run (execSync,
-//     spawn, sh -c) is refused outright. Messages that tell a person to run `git diff --stat` are no call.
+//     spawn, sh -c) is refused outright. Messages that tell a person to run `git diff --stat` are no call. A git call
+//     whose argument list runs on past its line (`execFileSync('git', [` at the line's end) is refused too: the scan
+//     reads lines. Not seen: arguments held in a variable (`const sub = 'ls-files'`) — review RR27 MINOR-4.
+//   A patch read for its +++ / diff --git headers (gitRange.mjs addedLines, lineChanges) goes through gitText by hand.
 //   Shell (and hooks, units): a git command line that lists paths carries -c core.quotePath=false or -z itself — a shell
 //     script the DGX timers load alone (nightlyGeometry.sh, trunkClone.sh) cannot source a helper beside it.
 import { execFileSync } from 'node:child_process';
@@ -13,10 +16,11 @@ import { join } from 'node:path';
 
 const LISTING = ['ls-files', 'ls-tree', 'diff-tree', 'whatchanged', '--name-only', '--name-status', '--numstat', '--stat', '--raw', '--porcelain', '--porcelain=v1', '--porcelain=v2'];
 const LITERAL = new RegExp(`(['"\`])(${LISTING.map(word => word.replace(/[-=]/g, '\\$&')).join('|')})\\1`);
-const STATUS = /(['"`])status\1/;
+const STATUS = /(['"`])(status|grep)\1/;   // generic words: listing only on a line that names git
+const OPEN_CALL = /(\b(exec|execSync|execFile|execFileSync|spawn|spawnSync)\(\s*(['"`])git\3\s*,\s*\[|\b(git|gitPaths|gitPathsOut|gitText)\(\s*\[)\s*$/;
 const RUNS = /\b(exec|execSync|execFile|execFileSync|spawn|spawnSync)\(|\b(sh|bash) -c\b/;
 const HELPER_CALL = /\b(gitPaths|gitPathsOut|gitText)\(/;
-const COMMAND = /\bgit\s+(?:(?:-C\s+\S+|-c\s+\S+|--git-dir[= ]\S+|--work-tree[= ]\S+)\s+)*(ls-files|ls-tree|diff-tree|whatchanged|status|(?:diff|log|show)\b[^\n|;&]*--(?:name-only|name-status|numstat|stat|raw)\b)/;
+const COMMAND = /\bgit\s+(?:(?:-C\s+\S+|-c\s+\S+|--git-dir[= ]\S+|--work-tree[= ]\S+)\s+)*(ls-files|ls-tree|diff-tree|whatchanged|status|grep|(?:diff|log|show)\b[^\n|;&]*--(?:name-only|name-status|numstat|stat|raw)\b)/;
 const SAFE_SHELL = /core\.quotePath=false|\s-z\b/;   // tested on the git command itself, from `git` on (`[ -z "$(git …)" ]` is no -z)
 const JS = /\.(mjs|cjs|js|ts|mts|cts|tsx)$/;
 
@@ -31,6 +35,7 @@ export function unsafeGitPathCalls(files) {
       if (code.startsWith('//') || code.startsWith('*') || code.startsWith('/*') || code.startsWith('#')) return;
       const at = { path, line: index + 1, text: line.trim().slice(0, 160) };
       if (js) {
+        if (OPEN_CALL.test(line)) { found.push({ ...at, why: 'a git call whose arguments run past the line — keep it on one line' }); return; }
         const listing = LITERAL.test(line) || (STATUS.test(line) && /\bgit\b/.test(line));
         if (listing && !HELPER_CALL.test(line)) found.push({ ...at, why: 'listing argument outside gitPaths/gitPathsOut/gitText' });
         else if (RUNS.test(line) && COMMAND.test(line)) found.push({ ...at, why: 'git listing command in a string — call gitPaths with an argument list' });

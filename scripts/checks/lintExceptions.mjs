@@ -7,6 +7,7 @@
 // line text, so moving such a line keeps it known and editing it makes it new). Entries of the list that no longer
 // occur are reported so the list can shrink; they do not fail the check.
 import { readFileSync, writeFileSync } from 'node:fs';
+import { gitText } from '../gitPaths.mjs';
 import { git, isMain, resolveRange } from './gitRange.mjs';
 
 // `as any` only as a cast (followed by the end of an expression), not English such as "as soon as any road".
@@ -21,7 +22,7 @@ export function findExceptions(head, cwd = process.cwd()) {
   let out = '';
   try {
     // git grep's ERE has no portable \b; the coarse pattern here is re-checked with EXCEPTION below.
-    out = git(['grep', '-n', '-I', '-E', 'eslint-disable|@ts-ignore|@ts-expect-error|as any', head, '--', ...CODE, ...IGNORED], cwd);
+    out = gitText(['grep', '-n', '-I', '-E', 'eslint-disable|@ts-ignore|@ts-expect-error|as any', head, '--', ...CODE, ...IGNORED], { cwd });
   } catch (error) { if (error.status !== 1) throw error; }            // 1 = no match
   const hits = [];
   const files = new Map();
