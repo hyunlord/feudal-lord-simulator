@@ -120,7 +120,12 @@ for (const name of SMALL) {
   await context.close();
 }
 await browser.close();
-const ok = Object.values(rows).every(row => row.ok) && bytes <= 600 * 1024;
+// The pictures' budget is per picture (each card's view at quality 50 ≤ 120 KB), so it grows with the cards measured: the
+// first budget (600 KB in all) was set for six cards and the run has eight since the chapter interlude came in — at
+// quality 50 each is 95–106 KB, and a lower quality blurs the cards' text the pictures are for (user 2026-10-10).
+const PICTURE_MAX = 120 * 1024;
+const pictures = Object.values(rows).filter(row => typeof row.bytes === 'number' && row.bytes > 0);
+const ok = Object.values(rows).every(row => row.ok) && pictures.every(row => row.bytes <= PICTURE_MAX) && bytes <= pictures.length * PICTURE_MAX;
 writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, rows }, null, 1) + '\n');
 console.log(JSON.stringify({ ok, bytes }));
 if (!ok) process.exitCode = 1;
