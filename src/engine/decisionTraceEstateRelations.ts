@@ -1,9 +1,10 @@
 import { PRESSURE_BALANCE } from '../content/balanceConfig';
+import { AUDIT_ANSWER_TICKS, MICHAELMAS_IN_YEAR } from '../content/stewardshipConfig';
 import { HOME_ESTATE_ID } from '../content/estateConfig';
 import type { GameState } from './engine.types';
 import type { EstateRelationEvidence } from './decisionTrace.types';
 import { estatesOf } from './estates';
-import { estatePetitionEffect } from './stewardship';
+import { estatePetitionEffect, heldOffMapEstates } from './stewardship';
 import type { HistoryRecord } from './history.types';
 import type { QuarterSummary } from './stewardship.types';
 
@@ -70,6 +71,37 @@ function matches(state: GameState, summary: QuarterSummary, record: HistoryRecor
     && record.params.overloaded === (summary.overloaded ? 1 : 0);
 }
 
+/** Michaelmas resets audited counters and reconstructs oversight without changing its relationship values. */
+function auditOnlyContinuity(before: GameState, after: GameState, estateId: string): boolean {
+  const previous = before.stewardship, next = after.stewardship;
+  if (!previous || !next || after.tick % (4 * season) !== MICHAELMAS_IN_YEAR
+    || previous.rules !== next.rules || previous.standing !== next.standing || previous.nextPetition !== next.nextPetition
+    || previous.petitions !== next.petitions || previous.summaries !== next.summaries
+    || !previous.audits.every((known, index) => next.audits[index] === known)) return false;
+  const held = new Set(heldOffMapEstates(before).map(estate => estate.id));
+  const audited = previous.oversight.filter(row => held.has(row.estateId));
+  const audits = next.audits.slice(previous.audits.length);
+  if (!audited.some(row => row.estateId === estateId) || audits.length !== audited.length
+    || next.nextAudit !== previous.nextAudit + audits.length
+    || next.visitTick !== (audits.some(audit => audit.mode === 'visit') ? after.tick : previous.visitTick)) return false;
+  return audited.every((old, index) => {
+    const current = oversight(after, old.estateId), audit = audits[index];
+    const prior = previous.stewards.find(row => row.personId === old.stewardId && row.estateId === old.estateId);
+    const steward = next.stewards.find(row => row.personId === old.stewardId && row.estateId === old.estateId);
+    return current && audit && prior && steward && old.stewardId === current.stewardId && old.mode === current.mode
+      && old.auditMode === current.auditMode && old.since === current.since
+      && old.tenants === current.tenants && old.merchants === current.merchants
+      && audit.id === `audit-${previous.nextAudit + index}` && audit.estateId === old.estateId && audit.tick === after.tick
+      && audit.stewardId === old.stewardId && audit.mode === old.auditMode && audit.deadline === after.tick + AUDIT_ANSWER_TICKS
+      && audit.revealedErrors === prior.errors && [0, prior.kept].includes(audit.revealedKept)
+      && audit.hidden === prior.kept - audit.revealedKept && current.undetected === old.undetected + audit.hidden
+      && audit.status === (audit.revealedKept + prior.errors > 0 ? 'pending' : 'clean')
+      && steward.kept === 0 && steward.errors === 0 && prior.ability === steward.ability && prior.loyalty === steward.loyalty
+      && prior.disposition === steward.disposition && prior.connection === steward.connection
+      && prior.since === steward.since && prior.status === steward.status;
+  });
+}
+
 /** Observe the first actual season, never allocate a replacement or infer missing legacy proof. */
 export function linkEstateRelationSeason(before: GameState, after: GameState): GameState {
   if (before.stewardship === after.stewardship || !after.trace?.answers) return after;
@@ -89,7 +121,7 @@ export function linkEstateRelationSeason(before: GameState, after: GameState): G
         return { ...row, status: 'invalidated' as const };
       }
       if (!summaries.length) {
-        if (after.tick >= row.firstSeasonTick || old !== current) {
+        if (after.tick >= row.firstSeasonTick || (old !== current && !auditOnlyContinuity(before, after, row.estateId))) {
           changed = true;
           return { ...row, status: 'invalidated' as const };
         }

@@ -268,3 +268,77 @@ test('interior actual season still rejects a clamped marginal counterfactual', (
   assert.equal(advanceStewardship(mood({ ...result.after, tick: 2000 }, -97)).stewardship?.oversight[0]?.tenants, -100);
   assert.equal(linked(next.after, result.own.id, 'estate_mood').length, 0);
 });
+
+function pendingBeforeAudit() {
+  const base = mood({ ...delegated(), seed: 3, tick: 2011 }, 74, -32);
+  assert.ok(base.stewardship);
+  const prepared = { ...base, stewardship: { ...base.stewardship,
+    rules: { rights: true, marriage: true, amountAtLeast: 0 },
+    stewards: base.stewardship.stewards.map(row => ({ ...row, ability: 36, kept: 45, errors: 93 })) } };
+  return settled(petition(prepared, 'audit-charter', 'charter_request'), 'audit-charter', false);
+}
+
+test('actual Michaelmas audit preserves pending merchant influence until its real next season', () => {
+  const result = pendingBeforeAudit();
+  const audit = transition(result.after, 2320, advanceStewardship);
+  assert.notEqual(audit.actual.stewardship?.oversight[0], result.after.stewardship?.oversight[0]);
+  assert.equal(audit.actual.stewardship?.oversight[0]?.merchants, -40);
+  assert.equal(audit.actual.stewardship?.stewards[0]?.kept, 0);
+  assert.equal(audit.actual.stewardship?.stewards[0]?.errors, 0);
+  assert.equal(audit.actual.stewardship?.summaries.length, 0);
+  assert.ok(audit.after.history?.records.some(row => row.template === 'stewardship.audit_found'));
+  assert.equal(audit.after.trace?.answers?.find(row => row.id === result.own.id)?.estateRelationEvidence?.[0]?.status, 'pending');
+  const season = transition(audit.after, 3000, advanceStewardship);
+  const receipts = linked(season.after, result.own.id, 'estate_mood');
+  assert.equal(receipts.length, 1);
+  assert.equal(receipts[0]?.template, 'stewardship.season');
+  assert.equal(receipts[0]?.params?.traceMerchantsContribution, -8);
+  assert.equal(receipts[0]?.tick, 3000);
+  const recorded = advanceHistory(season.before, season.actual);
+  assert.ok(recorded.history?.records.some(row => row.id === receipts[0]?.id), 'annotates an existing season record');
+  assert.ok(recorded.trace?.answers);
+  const withoutProof = { ...recorded, trace: { ...recorded.trace, answers: recorded.trace.answers.map(
+    ({ estateRelationEvidence: _proof, ...answer }) => answer) } };
+  const baseline = advanceTrace(season.before, withoutProof);
+  assert.deepEqual(season.after.history?.records.map(row => row.id), baseline.history?.records.map(row => row.id));
+  assert.equal(season.after.history?.nextOrdinal, baseline.history?.nextOrdinal);
+  assert.deepEqual(canonicalTlinkRuleState(season.after), canonicalTlinkRuleState(baseline));
+});
+
+for (const mutation of ['unknown_clone', 'steward', 'mode', 'auditMode', 'mood', 'standing', 'nextPetition', 'nextAudit', 'visitTick', 'auditId', 'auditShape'] as const) {
+  test(`audit continuity rejects ${mutation} instead of accepting an unknown writer`, () => {
+    const result = pendingBeforeAudit(), before = { ...result.after, tick: 2320 };
+    const actual = mutation === 'unknown_clone' ? before : advanceStewardship(before);
+    assert.ok(actual.stewardship);
+    const changed = { ...actual, stewardship: { ...actual.stewardship,
+      ...(mutation === 'standing' ? { standing: {} } : {}),
+      ...(mutation === 'nextPetition' ? { nextPetition: actual.stewardship.nextPetition + 1 } : {}),
+      ...(mutation === 'nextAudit' ? { nextAudit: actual.stewardship.nextAudit + 1 } : {}),
+      ...(mutation === 'visitTick' ? { visitTick: before.tick } : {}),
+      ...(mutation === 'auditId' ? { audits: actual.stewardship.audits.map(row => ({ ...row, id: 'unknown' })) } : {}),
+      ...(mutation === 'auditShape' ? { audits: actual.stewardship.audits.map(row => ({ ...row, revealedErrors: 0 })) } : {}),
+      oversight: actual.stewardship.oversight.map(row => ({ ...row,
+        ...(mutation === 'steward' ? { stewardId: 'unknown' } : {}),
+        ...(mutation === 'mode' ? { mode: 'direct' as const } : {}),
+        ...(mutation === 'auditMode' ? { auditMode: 'visit' as const } : {}),
+        ...(mutation === 'mood' ? { merchants: row.merchants + 1 } : {}) })) } };
+    const traced = advanceTrace(before, advanceHistory(before, changed));
+    assert.equal(traced.trace?.answers?.find(row => row.id === result.own.id)?.estateRelationEvidence?.[0]?.status, 'invalidated');
+  });
+}
+
+
+test('another estate actual visit audit may advance the global visit tick', () => {
+  const result = pendingBeforeAudit(), base = result.after;
+  assert.ok(base.estates && base.stewardship);
+  const estate = base.estates.estates[0], steward = base.stewardship.stewards[0], oversight = base.stewardship.oversight[0];
+  assert.ok(estate && steward && oversight);
+  const prepared = { ...base, estates: { ...base.estates, estates: [...base.estates.estates, { ...estate, id: 'other-estate' }] },
+    stewardship: { ...base.stewardship,
+      stewards: [...base.stewardship.stewards, { ...steward, personId: 'other-steward', estateId: 'other-estate' }],
+      oversight: [...base.stewardship.oversight, { ...oversight, estateId: 'other-estate', stewardId: 'other-steward', auditMode: 'visit' as const }] } };
+  const audit = transition(prepared, 2320, advanceStewardship);
+  assert.equal(audit.actual.stewardship?.visitTick, 2320);
+  assert.equal(audit.actual.stewardship?.nextAudit, prepared.stewardship.nextAudit + 2);
+  assert.equal(audit.after.trace?.answers?.find(row => row.id === result.own.id)?.estateRelationEvidence?.[0]?.status, 'pending');
+});
