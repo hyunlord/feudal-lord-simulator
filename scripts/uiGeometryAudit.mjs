@@ -91,7 +91,11 @@ function loadState(set, name) {
 // --- Scenes and steps.
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const browserVersion = browser.version();   // a declared input of the result (RR26 measured)
 const pageErrors = [];
+// RR26 measured (a′): what the audit retried, so a rising rate and a row that keeps needing it show (user order 2026-10-09):
+// per row × condition the attempts beyond the first; the conditions that failed all three; the trees the retry rounds ran.
+const retries = { timeouts: 0, failedThrice: 0, attempts: new Map(), trees: [] };
 
 async function loadScene(scene, condition) {
   const viewport = VIEWPORTS[condition.viewport];
@@ -189,7 +193,9 @@ const conditionsOf = row => {
 };
 const results = {};
 const ruleDiff = [];   // FLS_GEOMETRY_RULE_DIFF=1: the text-clip failures the rule before LR2-D5 and this one disagree on
-for (const row of SURFACES) if (selected(row)) results[row.id] = { frame: row.frame, root: row.root, data: row.data, ...(row.unreachable ? { unreachable: row.unreachable } : {}), conditions: {} };
+// `scene`: the state set the row's scene loads (or its kind), so the gate knows which rows a changed state folder touches.
+const sceneOf = row => { const scene = chainOf(row)[0].scene; return scene.kind === 'state' ? scene.set : scene.kind; };
+for (const row of SURFACES) if (selected(row)) results[row.id] = { frame: row.frame, root: row.root, data: row.data, scene: sceneOf(row), ...(row.unreachable ? { unreachable: row.unreachable } : {}), conditions: {} };
 const shots = { count: 0, bytes: 0, rows: new Set() };
 const specOf = row => ({ root: row.root, frame: row.frame, gap: FRAME_GAP_PX, frameLayer: row.frameLayer, contentSlot: row.contentSlot, frameSlots: row.frameSlots,
   scroll: row.scroll, scrollParts: row.scrollParts, painting: row.painting, portraitRing: row.portraitRing, siblingsNoOverlap: row.siblingsNoOverlap, expect: row.expect,
@@ -319,6 +325,7 @@ async function runTree(rootRow, condition) {
         done = true;
       } catch (error) {
         const retry = attempt < 3 && String(error).includes('Timeout');
+        { const key = `${row.id}|${condition.id}`; if (retry) { retries.timeouts += 1; retries.attempts.set(key, (retries.attempts.get(key) ?? 0) + 1); } else if (String(error).includes('Timeout')) retries.failedThrice += 1; }
         console.log(`${row.id} ${condition.id}: ${retry ? `attempt ${attempt} timed out, again` : 'FAILED'} ${String(error).split('\n')[0].slice(0, 200)}`);
         if (!retry) console.log(String(error).split('\n').slice(1, 14).map(line => `    ${line.slice(0, 200)}`).join('\n'));
         // The screen the step gave up on (once per row, in the capture budget).
@@ -361,6 +368,7 @@ for (let round = 1; round <= 2; round += 1) {
   const again = trees.filter(([root, condition]) => SURFACES.some(row => chainOf(row)[0] === root && results[row.id]?.conditions[condition.id]?.status === 'error'));
   if (again.length === 0) break;
   retried.push(again.length);
+  for (const [root, condition] of again) retries.trees.push({ round, root: root.id, condition: condition.id });
   console.log(`retry round ${round}: ${again.length} tree(s) with a condition not opened`);
   await drain(again, Math.ceil(jobs / 2));
 }
@@ -398,6 +406,12 @@ for (const [id, row] of Object.entries(results)) {
   bySurface[id] = surface;
 }
 const run = process.env.RUN ?? `local-${new Date(started).toISOString().replace(/[:.]/g, '-')}`;
+// The retries in numbers: first-attempt timeouts, conditions failed three times, the trees retried, and per row the
+// conditions that needed more than one attempt (the gate prints the rate and the rows retried again in the next audit).
+const retryRows = {};
+for (const key of retries.attempts.keys()) { const row = key.split('|')[0]; retryRows[row] = (retryRows[row] ?? 0) + 1; }
+const retrySummary = { timeouts: retries.timeouts, failedThrice: retries.failedThrice, cellsRetried: retries.attempts.size, treesRetried: retries.trees.length,
+  rows: Object.fromEntries(Object.entries(retryRows).sort()), trees: retries.trees };
 // Every failure's key (the gate's baseline compares them) and the numbers against the committed baseline and exceptions.
 const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entries(row.conditions)
   .flatMap(([condition, record]) => (record.keys ?? []).map(key => `${id}|${condition}|${key}`))).sort();
@@ -406,7 +420,8 @@ const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMET
 const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
 const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, axesNarrowed, full: fullAudit, only, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, retried, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
-  kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
+  kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results,
+  retries: retrySummary, browser: { chromium: browserVersion } };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
 if (process.env.FLS_GEOMETRY_RULE_DIFF === '1') writeFileSync(join(out, 'rule-diff.json'), `${JSON.stringify(ruleDiff, null, 1)}\n`);
 
@@ -435,7 +450,8 @@ if (summaryPath !== 'none') {
     unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
     baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },
     bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])),
-    failureKeys };
+    failureKeys, retries: { timeouts: retrySummary.timeouts, failedThrice: retrySummary.failedThrice, cellsRetried: retrySummary.cellsRetried, treesRetried: retrySummary.treesRetried, rows: retrySummary.rows },
+    browser: report.browser };
   writeFileSync(summaryPath, `${JSON.stringify(summary, null, 1)}\n`);
 }
 console.log(JSON.stringify({ run, measured: totals.measured, failures: totals.failures, unopened: totals.unopened, byCheck: totals.byCheck, shots: shots.count }));

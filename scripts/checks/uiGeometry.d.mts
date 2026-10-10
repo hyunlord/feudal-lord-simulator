@@ -17,6 +17,13 @@ export declare function isSafePath(path: string, importedTests?: ReadonlySet<str
 export declare function importedTests(rev: string, cwd?: string, files?: Map<string, string>): Set<string>;
 export declare function unsafeChanges(from: string, to: string, cwd?: string, cache?: Map<string, unknown>): {
   readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null };
+export type RetryNotes = { readonly run: string | null; readonly timeouts: number; readonly failedThrice: number; readonly cellsRetried: number; readonly treesRetried: number;
+  readonly conditions: number | null; readonly rows: readonly string[]; readonly again: readonly string[]; readonly previousRun: string | null };
+export declare function retryNotes(summary: unknown, head: string, cwd?: string): RetryNotes | null;
+export declare function retryLines(retries: RetryNotes | null | undefined): string[];
+export declare function measuredAt(commit: string, head: string, cwd: string): "ok" | "missing" | "not-ancestor";
+export declare function readJson(rev: string, path: string, cwd: string): any;
+export declare function reportNotOpened(report: unknown): number;
 export declare function uiInputsDirty(cwd?: string, rev?: string): string[];
 export declare function defaultSummaryPath(options: { readonly explicit: string | undefined; readonly full: boolean }): string;
 export declare function rowRunsInRange(base: string | null, head: string, cwd?: string): string[];
@@ -40,6 +47,6 @@ export declare function checkUiGeometry(options: { readonly base?: string | null
   readonly skipped: boolean; readonly mode: "warn" | "enforce"; readonly ok: boolean; readonly pass: boolean; readonly reasons: readonly string[];
   readonly summary?: unknown; readonly comparison?: unknown; readonly unchanged?: boolean;
   readonly rangeChanges?: { readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null } | null; readonly override?: { readonly reason?: string; readonly refused?: string } | null;
-  readonly rowRuns?: readonly RowRun[] | null;
+  readonly rowRuns?: readonly RowRun[] | null; readonly retries?: RetryNotes | null;
 };
 export declare function formatUiGeometryResult(result: object): string;

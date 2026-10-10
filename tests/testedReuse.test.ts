@@ -428,3 +428,12 @@ test("a range picks a test that is not measurable by what it was seen to read (m
     assert.equal(result.ok, false);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+test("a folder listed one level: a file changed in it that the test did not read keeps the result; an entry added reruns it", () => {
+  const testText = `${H}import { readdirSync, readFileSync } from "node:fs";\ntest("t", () => { for (const name of readdirSync("fixtures/saves")) if (name === "a.json") readFileSync(\`fixtures/saves/\${name}\`); });\n`;
+  const setup = { "fixtures/saves/a.json": '{"a":1}\n', "fixtures/saves/b.json": '{"b":1}\n' };
+  const kept = single(testText, setup, (_g, w) => w("fixtures/saves/b.json", '{"b":2}\n'));
+  try { assert.equal(kept.result.ok, true, formatTestedChanges(kept.result)); } finally { kept.done(); }
+  const added = single(testText, setup, (_g, w) => w("fixtures/saves/c.json", '{"c":1}\n'));
+  try { assert.ok(added.result.overlaps?.get("tests/one.test.ts")?.files.includes("fixtures/saves/c.json"), formatTestedChanges(added.result)); } finally { added.done(); }
+});
