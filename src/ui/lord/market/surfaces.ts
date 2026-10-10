@@ -57,7 +57,7 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
     scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", ".treasury-estates-list > li"],
     data: "the market town's stock tab: the treasury by estate, then the stocks" },
   { id: "modal.season-ledger.market", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
-    frameSlots: [".season-ledger-scenes"], scene: { ...PROCLAIMED, query: "&story-delay=600000&auto-pause=off", run: true },
+    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "market", name: "market-proclaimed", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off", run: true },
     open: [{ key: "Digit3" }, { wait: ".season-ledger-card", timeout: 120_000 }, { pause: 900 }],
     requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
     data: "the market town's first season close after the proclamation (lord mode: the steward's section)" },
