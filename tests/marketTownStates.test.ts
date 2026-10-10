@@ -52,6 +52,16 @@ test("MARKET-TOWN states (MARKET_STATES): past the hamlet, the plan past, the co
     const html = consoleHtml(state);
     assert.match(html, new RegExp(`class="era-action-reason era-plan-done">${COPY.stage.past}<`), name);
     assert.ok(!html.includes("data-wall-plan=\"open\""), name);
+    // The user's ruling (2026-10-11): in lord mode the wall is not drawn by hand after the proclamation either — no
+    // "목책 넓히기" and no irreversible drawing notice; the same state without lord mode (the sandbox) keeps both.
+    const model = buildEraConsoleModel({ state, draft: null });
+    assert.deepEqual([model.expansion.available, model.irreversibleNotice], [false, null], name);
+    const withExpansion = renderToStaticMarkup(createElement(EraConsole, { model, onBeginProposal: noop, onConfirmProposal: noop, onCancelProposal: noop, onBeginExpansion: noop }));
+    assert.ok(!withExpansion.includes('data-action="begin-expansion"'), name);
+    const { agency: _agency, ...withoutAgency } = state;
+    const sandbox = buildEraConsoleModel({ state: withoutAgency as GameState, draft: null });
+    assert.equal(sandbox.expansion.available, true, `${name}: the sandbox keeps its drawing`);
+    assert.notEqual(sandbox.irreversibleNotice, null, `${name}: the sandbox keeps its notice`);
   }
   const eve = JSON.parse(readFileSync(join(statesDir, "market-season-eve.json"), "utf8")) as GameState;
   assert.equal(SEASON - (eve.tick % SEASON), 40, "the eve is 40 ticks before a season's close");

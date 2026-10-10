@@ -10,6 +10,7 @@ import { recentIncome } from "../ledger/ledgerView";
 import { LEDGER_CATEGORY_LABELS } from "../ledger/ledgerCopy.ko";
 import { stoneProjectPredictionLines } from "./moneyPrediction";
 import { reserveDeadlock } from "../engine/reserveDeadlock";
+import { lordMode } from "../engine/townAgency";
 import { canAdvanceConstructionWork } from "../economy/construction";
 import type { WallConstructionPriority } from "../engine/constructionReserve";
 import type { Era } from "../content/eraConfig";
@@ -153,11 +154,13 @@ export function buildEraConsoleModel(input: {
     diagnostic: deadlock === null ? null : CONSTRUCTION_DEADLOCK_COPY.cause(
       deadlock.blockedResource, deadlock.used, deadlock.capacity),
     reserveDeadlock: deadlock !== null,
-    irreversibleNotice: input.state.palisade === null
+    // The user's ruling (2026-10-10, GROW-BLOCK; 2026-10-11 after the proclamation too): drawing the wall by hand is the
+    // sandbox's — in lord mode the lord decides the wall, he does not draw it (its widening will come as the town's request).
+    irreversibleNotice: input.state.palisade === null || lordMode(input.state)
       ? null
       : A_TRIPLE_PRIME_WALL_COPY.proclamationNotice,
     expansion: {
-      available: input.state.palisade !== null && input.draft === null,
+      available: input.state.palisade !== null && input.draft === null && !lordMode(input.state),
       editing: expansionPreview !== null,
       ok: expansionPreview?.ok === true,
       lines: expansionPreview === null ? [] : expansionLines(input.state, expansionPreview),
