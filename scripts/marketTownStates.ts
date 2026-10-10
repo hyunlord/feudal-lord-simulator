@@ -3,6 +3,7 @@
 // plays it — nothing injected — seed by seed until a town leaves the hamlet (`state.era` past "hamlet", the engine's
 // `charterWallPlan(state).stage === "past"`), then on (the slice's own end does not stop the bot):
 //  - `market-proclaimed`: one season after the proclamation;
+//  - `market-season-eve`: 40 ticks before the first season's close after that (run over it, the season card opens);
 //  - `market-years`: four years after it.
 // Beside them states.json (each: seed, tick, year, season, era, population, what holds — the lord's matters due, the
 // slice's outcome, the estates held, the marriage) and each year's milliseconds.
@@ -25,9 +26,11 @@ import { newGameState } from "../src/state/newGame";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
 const SEASON = YEAR / 4;
-/** Each state, ticks after the proclamation. */
-const AFTER = { "market-proclaimed": SEASON, "market-years": 4 * YEAR } as const;
+const EVE_TICKS = 40;
+/** Each state, ticks after the proclamation; the eve also EVE_TICKS before a season's close. */
+const AFTER = { "market-proclaimed": SEASON, "market-season-eve": SEASON, "market-years": 4 * YEAR } as const;
 type Name = keyof typeof AFTER;
+const due = (name: Name, tick: number, proclaimed: number) => tick >= proclaimed + AFTER[name] && (name !== "market-season-eve" || SEASON - (tick % SEASON) === EVE_TICKS);
 
 const out = process.argv[2];
 if (out === undefined) throw new Error("usage: tsx scripts/marketTownStates.ts <out-dir> [seeds] [years]");
@@ -72,12 +75,12 @@ for (const seed of seeds) {
       process.stderr.write(`seed ${seed}: proclaimed at tick ${state.tick} (${date.year}), era ${state.era}, plan ${charterWallPlan(state)?.stage}\n`);
     }
     if (proclaimed === null) continue;
-    for (const name of Object.keys(AFTER) as Name[]) if (found[name] === undefined && state.tick >= proclaimed.tick + AFTER[name]) save(name, seed, state, proclaimed);
+    for (const name of Object.keys(AFTER) as Name[]) if (found[name] === undefined && due(name, state.tick, proclaimed.tick)) save(name, seed, state, proclaimed);
   }
   process.stderr.write(`seed ${seed} ran to ${stateCalendar(state).year} (tick ${state.tick}, ${state.era}) — ${Math.round((Date.now() - started) / 1000)} s\n`);
   if ((Object.keys(AFTER) as Name[]).every(name => found[name] !== undefined)) break;
 }
 writeFileSync(join(out, "states.json"), JSON.stringify({ found, years: timings }, null, 1));
 const missing = (Object.keys(AFTER) as Name[]).filter(name => found[name] === undefined);
-process.stderr.write(missing.length === 0 ? "both states found\n" : `not reached: ${missing.join(", ")}\n`);
+process.stderr.write(missing.length === 0 ? "every state found\n" : `not reached: ${missing.join(", ")}\n`);
 if (missing.length > 0) process.exitCode = 1;

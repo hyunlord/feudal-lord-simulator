@@ -3,7 +3,7 @@ import { OPEN_LORD, openLordScreen } from "../screen/surfaces";
 
 // MARKET-TOWN: the lord's screens after the market charter's proclamation, on the `market` states
 // (scripts/marketTownStates.ts, DGX ~/fls-market-states: the lord bot's slice one season after the proclamation,
-// `market-proclaimed`, and four years after it, `market-years`). Rows as the hamlet's in each area's file, on these states.
+// `market-proclaimed`, 40 ticks before that season's close, `market-season-eve`, and four years after it, `market-years`). Rows as the hamlet's in each area's file, on these states.
 
 /** A market state, the camera on the town's first house, the story quiet (no chip or card opens over the panel). */
 const marketScene = (name: "market-proclaimed" | "market-years", query = "&story-delay=600000"): SceneRef => ({ kind: "state", set: "market", name, tile: "house", zoom: 1.1, query });
@@ -74,10 +74,10 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
   { id: "slot.ledger.stock-lord.market", root: ".slot-panel.ledger-drawer", frame: "css", scene: YEARS, open: [{ click: "[data-dock='ledger']" }, { pause: 600 }], scroll: "y",
     scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", ".treasury-estates-list > li"],
     data: "the market town's stock tab: the treasury by estate, then the stocks" },
+  // The season's close (lord mode: the steward's section), on the eve state (40 ticks before it) run at 1×.
   { id: "modal.season-ledger.market", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
-    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "market", name: "market-proclaimed", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off", run: true },
-    // 10× (Digit0; Digit1–4 are the overlays): at 1× the extreme numbers' town did not reach the season's close in 120 s.
-    open: [{ key: "Digit0" }, { wait: ".season-ledger-card", timeout: 120_000 }, { pause: 900 }],
+    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "market", name: "market-season-eve", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off", run: true },
+    open: [{ wait: ".season-ledger-card", timeout: 90_000 }, { pause: 900 }],
     requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
-    data: "the market town's first season close after the proclamation (lord mode: the steward's section)" },
+    data: "the market town's first season close after the proclamation (1317's autumn; lord mode: the steward's section)" },
 ];

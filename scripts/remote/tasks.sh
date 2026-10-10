@@ -182,7 +182,7 @@ ui-geometry)
     "$deccard2/trace-season.json" "$deccard2/trace-later.json" "$deccard2/year-eve.json" "$deccard2/year-loaded.json" "$deccard2/succession.json" \
     "$slice/slice-end.json" "$variants/home-041.json" "$variants/home-048.json" "$variants/home-056.json" "$variants/registry-067.json" "$variants/registry-078.json" \
     "$growplan/plan-waiting.json" "$growplan/plan-sites.json" "$growplan/plan-searching.json" "$growplan/plan-asked.json" "$growplan/plan-failed.json" \
-    "$market/market-proclaimed.json" "$market/market-years.json"; do
+    "$market/market-proclaimed.json" "$market/market-season-eve.json" "$market/market-years.json"; do
     [ -f "$f" ] || missing="$missing $f"
   done
   if [ -n "$missing" ]; then
