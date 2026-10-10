@@ -41,7 +41,7 @@ const proof = page => page.evaluate(() => {
 const card = page => page.evaluate(async () => {
   const root = document.querySelector('.lord-card');
   if (root === null) return null;
-  const art = root.querySelector('.lord-card-art, .story-modal-art');
+  const art = root.querySelector('.lord-card-art, .story-modal-art, .decision-card-art');
   const background = art === null ? null : getComputedStyle(art).backgroundImage;
   const src = background === null ? null : background.match(/url\("?([^")]+)"?\)/)?.[1] ?? null;
   const loaded = src === null ? null : await new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done('error'); image.src = src; });
@@ -58,7 +58,8 @@ const card = page => page.evaluate(async () => {
 });
 const shoot = async (page, name) => { const path = join(out, `${name}.jpg`); await page.locator('.lord-card').first().screenshot({ path, type: 'jpeg', quality: QUALITY }); return statSync(path).size; };
 const open = (state, options = {}) => openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
-  query: '&story-delay=3000', loadTimeout: 90_000, zoom: 1.1, ...options });
+  // GEO-D1: the story's delay outlasts the scene's own setup (at 3 s openScene's Escape could put the card off for good).
+  query: '&story-delay=8000', loadTimeout: 90_000, zoom: 1.1, ...options });
 /** The card, a political petition that opened first put off (it opens before a home petition, as for a player). */
 const waitCard = async (page, selector) => {
   for (let waited = 0; waited < 30_000; waited += 500) {
