@@ -27,7 +27,9 @@
 // words), and the head commit carrying the same reason as a `UI-Geometry-Override: <reason>` trailer (the record every
 // worktree sees; the refusal prints the `git commit --amend --trailer` command). The override also prints the line a
 // report must carry and appends it to .remote-runs/local-heavy.log. check:merge states how many commits in the range
-// carry the trailer ("ui-geometry: warn overrides in this range: N").
+// carry the trailer ("ui-geometry: warn overrides in this range: N"). RR26 shadow (user rulings 2026-10-10): check:merge
+// also computes what the measured judgement (a′, scripts/checks/uiGeometryMeasured.mjs) would decide and records it
+// beside this verdict; it never changes it.
 //   node scripts/checks/uiGeometry.mjs [--base <rev>] [--head <rev>]
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -247,7 +249,7 @@ export function unsafeChanges(from, to, cwd = process.cwd(), cache = new Map()) 
 const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length} file(s) off the safe list changed since it was measured at ${commit.slice(0, 8)} (${changes.reaching === null ? 'the import closure could not be read' : `${changes.reaching} of them reach the UI or the audit by import`}): ${changes.unsafe.slice(0, 6).join(', ')}${changes.unsafe.length > 6 ? ` … ${changes.unsafe.length - 6} more` : ''} — audit again`;
 
 /** Whether `commit` is a commit here and an ancestor of `head`: 'ok' | 'missing' | 'not-ancestor'. */
-function measuredAt(commit, head, cwd) {
+export function measuredAt(commit, head, cwd) {
   try { execFileSync('git', ['cat-file', '-e', `${commit}^{commit}`], { cwd, stdio: 'ignore' }); } catch { return 'missing'; }
   try { execFileSync('git', ['merge-base', '--is-ancestor', commit, head], { cwd, stdio: 'ignore' }); return 'ok'; } catch { return 'not-ancestor'; }
 }
@@ -263,7 +265,7 @@ export function gateMode(env = process.env) {
 
 /** A failure key's parts: row | condition | check | path. */
 export const splitKey = key => { const [row, condition, check, ...path] = key.split('|'); return { row, condition, check, path: path.join('|') }; };
-const exceptionId = entry => `${entry.row}|${entry.check}|${entry.match}`;
+export const exceptionId = entry => `${entry.row}|${entry.check}|${entry.match}`;
 
 /**
  * Pure: a run's failure keys against the baseline and the exceptions. An exception covers every condition of its row
@@ -286,10 +288,10 @@ export function compareBaseline({ keys, baseline = [], exceptions = [] }) {
   };
 }
 
-const readJson = (rev, path, cwd) => {
+export const readJson = (rev, path, cwd) => {
   try { return JSON.parse(execFileSync('git', ['show', `${rev}:${path}`], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] })); } catch { return null; }
 };
-const sample = list => list.slice(0, 5).map(item => `    ${typeof item === 'string' ? item : exceptionId(item)}`);
+export const sample = list => list.slice(0, 5).map(item => `    ${typeof item === 'string' ? item : exceptionId(item)}`);
 
 export const UI_GEOMETRY_RUNS = 'docs/verification/uiaudit1/geometry';
 
@@ -306,7 +308,7 @@ export function rowRunsInRange(base, head, cwd = process.cwd()) {
 }
 
 /** The conditions of a run report that were neither measured nor unreachable by design (error, not found, …). */
-function reportNotOpened(report) {
+export function reportNotOpened(report) {
   const rows = report?.rows !== null && typeof report?.rows === 'object' ? report.rows : {};
   return Object.values(rows).reduce((sum, entry) => sum + Object.values(entry?.conditions ?? {}).filter(record => record?.status !== 'measured' && record?.status !== 'unreachable').length, 0);
 }
@@ -368,6 +370,20 @@ export function overridesInRange(base, head, cwd = process.cwd()) {
     const [commit, values = ''] = row.split('\x00');
     return values.split('\x01').map(value => value.trim()).filter(Boolean).map(reason => ({ commit, reason }));
   });
+}
+
+/** The shared result's retries, and the rows retried in it and in the shared result before it (user order 2026-10-09). */
+export function retryNotes(summary, head, cwd = process.cwd()) {
+  const retries = summary?.retries;
+  if (retries === undefined || retries === null || typeof retries !== 'object') return null;
+  let again = []; let previousRun = null;
+  try {
+    const commits = git(['log', '--format=%H', '-n', '2', head, '--', UI_GEOMETRY_SUMMARY], cwd).split('\n').filter(Boolean);
+    const previous = commits.length > 1 ? readJson(commits[1], UI_GEOMETRY_SUMMARY, cwd) : null;
+    if (previous?.retries?.rows && previous.run !== summary.run) { previousRun = previous.run ?? null; again = Object.keys(retries.rows ?? {}).filter(row => row in previous.retries.rows).sort(); }
+  } catch { /* no history */ }
+  return { run: summary.run ?? null, timeouts: retries.timeouts ?? 0, failedThrice: retries.failedThrice ?? 0, cellsRetried: retries.cellsRetried ?? 0,
+    treesRetried: retries.treesRetried ?? 0, conditions: summary.conditions ?? null, rows: Object.keys(retries.rows ?? {}).sort(), again, previousRun };
 }
 
 export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode = gateMode(), env = process.env }) {
@@ -455,7 +471,9 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     else override = { reason };
   }
   const pass = ok || (mode === 'warn' && env.FLS_UI_GEOMETRY_GATE !== 'warn') || override?.reason !== undefined;
-  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns };
+  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns,
+    // The retries of a shared result this range brings (a new audit): its rate and the rows it retried again.
+    retries: summary !== null && (base === null || readJson(base, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run) ? retryNotes(summary, head, cwd) : null };
 }
 
 /** An accepted override: the line a report must carry, also appended (time, host, commit, reason) to .remote-runs/local-heavy.log. */
@@ -472,19 +490,28 @@ export function formatOverrideCount(base, head, cwd = process.cwd()) {
   return [`ui-geometry: warn overrides in this range: ${overrides.length}`, ...overrides.map(item => `  ${item.commit.slice(0, 8)} ${item.reason}`)].join('\n');
 }
 
+/** The retry lines (user order 2026-10-09): the rate, and the rows retried again since the shared result before. */
+export function retryLines(retries) {
+  if (retries === null || retries === undefined) return [];
+  const rate = retries.conditions ? ` of ${retries.conditions} (${(100 * retries.cellsRetried / retries.conditions).toFixed(1)} %)` : '';
+  const lines = [`ui-geometry: retries in run ${retries.run}: ${retries.cellsRetried} condition(s) needed another attempt${rate}, ${retries.timeouts} first-attempt timeout(s), ${retries.failedThrice} failed three times, ${retries.treesRetried} tree(s) re-run${retries.rows.length > 0 ? ` — ${retries.rows.slice(0, 6).join(', ')}${retries.rows.length > 6 ? ' …' : ''}` : ''}`];
+  if (retries.again.length > 0) lines.push(`ui-geometry: retried again (also in ${retries.previousRun}): ${retries.again.join(', ')} — a wait condition to fix (docs/verification/uiaudit1/RETRIES.md)`);
+  return lines;
+}
+
 export function formatUiGeometryResult(result) {
   if (result.skipped) return 'ui-geometry: skipped (no geometry audit at this commit)';
   const tag = result.override?.reason !== undefined ? ` (overridden: ${result.override.reason})` : result.mode === 'warn' && result.pass ? ' (report only: UI_GEOMETRY_GATE = warn)' : '';
   const counts = result.comparison === null || result.comparison === undefined ? ''
     : ` — ${result.comparison.failures} failure(s): ${result.comparison.baseline} in the baseline, ${result.comparison.excepted} under ${result.comparison.exceptions} exception(s)`;
-  if (result.ok && result.unchanged) return `ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`;
+  if (result.ok && result.unchanged) return [`ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`, ...retryLines(result.retries)].join('\n');
   if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
     ? `  run ${entry.run}: superseded — ${entry.rows.length > 0 ? `a newer named run measured its rows (${entry.rows.join(', ')}) again` : 'it has no report or no measured row, and a newer named run holds'}`
-    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`)].join('\n');
-  if (result.ok) return `ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`;
+    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`), ...retryLines(result.retries)].join('\n');
+  if (result.ok) return [`ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`, ...retryLines(result.retries)].join('\n');
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);
-  return lines.join('\n');
+  return [...lines, ...retryLines(result.retries)].join('\n');
 }
 
 if (isMain(import.meta.url)) {
