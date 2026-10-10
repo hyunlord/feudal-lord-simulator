@@ -1,0 +1,24 @@
+== engineB-inert-rescore2-2e28807  unit=fls-run-engineB-inert-rescore2-2e28807-1791644570  host=aitopatom-d6bb  commit=2e2880786c04c772f9c4746520450ad35aca6923  dirty=0  branch=codex/engine-b-inert
+== limits: nice 10  memory.max 51539607552  cpu.max 1200000 100000
+== git: HEAD 2e2880786, 0 path(s) differ from HEAD
+== node_modules: hit (26dc99ffc28b42fb-node24.21.0-aarch64)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-11 00:03:02: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-why-26e53ed (experiment of engine)
+     slot 2: free
+     slot 3: render-LMR1REQ-geometry2-906c9ac-906c9ac (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-why-439ee50 — engine has an experiment running (one at a time)
+   nobody goes now: no session may start an experiment now
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== heavy slot 2/3 (experiment line, let in by the DGX slot keeper)
+== port 4302  chromium /home/hyunlord/.cache/ms-playwright/chromium-1234/chrome-linux/chrome  node v24.21.0 (/home/hyunlord/fls-runs/_tools/node/bin/node)
+== command: bash -c set\ -euo\ pipefail\;\ retained=\"\$HOME/fls-runs/_kept/engineB-inert-125-72c77f6/.remote/eb-inert-125\"\;\ test\ -d\ \"\$retained/original\"\;\ mkdir\ -p\ .remote/eb-inert-rescore\;\ ln\ -s\ \"\$retained/original\"\ .remote/eb-inert-rescore/original\;\ ln\ -s\ \"\$retained/capture\"\ .remote/eb-inert-rescore/capture\;\ exec\ node\ --max-old-space-size=12288\ scripts/engineBInertRun.mjs\ --score\ .remote/eb-inert-rescore\ docs/design/engine-B-outcomes.json\ docs/verification/eb-tlink-four-categories/official-71bc336/report.json.gz\ 5519e0d87775f5c48dd3629f36b676cdc49d7e4c35b32a1f5f4459bc03d14d33 
+== prepare 13.3s (node_modules hit), slot wait 2.1s
+
+
+== exit 1 after 168.7s
+remote-exec: kept results in _kept/engineB-inert-rescore2-2e28807 (release: run.sh --release engineB-inert-rescore2-2e28807)
+== disk: 829 GB free (after engineB-inert-rescore2-2e28807, normal)
+== disk: 829 GB free after cleaning (after engineB-inert-rescore2-2e28807)
