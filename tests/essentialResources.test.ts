@@ -13,6 +13,7 @@ import { guaranteeEssentialResourceTerrain } from "../src/world/essentialResourc
 import { buildWorldGrid, cleanupTerrainRegions, generateTerrainTile } from "../src/world/terrain";
 import { createGrowthInitialState } from "../scripts/phase19GrowthRunControl";
 import { InvalidGrowthOpeningError, selectGrowthOpening } from "../scripts/phase21OpeningTranslation";
+import { stampOpening } from "../src/state/growthOpening";
 
 const QUARRY_DEFINITION = BUILDING_CONFIG_BY_KIND.quarry;
 
@@ -151,7 +152,8 @@ test("broader generated openings have geological quarry access before building o
 
 test("seed 465 opening granary blocks quarry access despite a valid geological resource", () => {
   const grid = buildWorldGrid({ width: 64, height: 64, seed: 465 });
-  const state = selectGrowthOpening(grid, 465).state;
+  // The opening at its pre-GROW-BLOCK-2a place (2, 11): the nearest legal one then, before the wall ring's edge margin.
+  const state = stampOpening(grid, 465, { tx: 2, ty: 11 });
   const granary = state.buildings.find((building) => building.kind === "granary");
   assert.ok(granary);
   const cleared: GameState = {

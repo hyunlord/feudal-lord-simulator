@@ -32,3 +32,11 @@ export const CHARTER_RING = {
 export const ERA_REQUIREMENT_PROJECT: Readonly<Record<EraRequirementKey, string | null>> = {
   population: "house", granary: "granary", chapel: "chapel", timber: "logging_camp", market: "market", masonry: "masonry", stone: "quarry", coin: null,
 };
+
+/**
+ * GROW-BLOCK-2a ②: the opening village keeps this many tiles between its footprint and the map's edge, so the town that
+ * grows round it has room for a wall ring. The three seeds of ten that stalled 10+ years opened 3–6 tiles from an edge
+ * (seeds 3, 5, 9; the others 13–16, the riverside default 13): seed 9's town reached x 63 of 64 and no wall fitted.
+ * 12 keeps the default opening (13) where it is.
+ */
+export const OPENING_EDGE_MARGIN = 12;

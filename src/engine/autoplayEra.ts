@@ -251,6 +251,10 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
         const wide = widerRing(state, state.agency.charterWallFailure?.attempts ?? 0, remaining, targetLots);
         if (wide !== null) return { kind: 'proclaim_era', candidatePath: wide };
         lastCharterReport = charterReport(state, proposal, refusals, firstServiceRefusal, inspected.size);
+        // GROW-BLOCK-2a ①: no wall found is a failed search, kept with its reason — never a request without a wall. The
+        // lord's bot cannot proclaim one (it searches the same rules), so seed 9 asked thirty years with no failure on
+        // record and never searched again (engine-GROW2-remeasure-588d28d: 528 from 1317 to the end).
+        return NONE;
       }
       if (proposal.reason === 'rejected_candidate') return NONE;
     }

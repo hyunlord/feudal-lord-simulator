@@ -89,3 +89,38 @@ test("GB-5: a site is laid out only where its materials can come; a spot given u
   // A corner of the map no road reaches is not.
   assert.equal(constructionSiteReachable(state, "well", { tx: 1, ty: 1 }), false);
 });
+
+test("GROW-BLOCK-2a ①: a charter search that finds no wall is a failed search with its reason — never a request without a wall (seed 9, 1319)", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { readFileSync } = await import("node:fs");
+  const { decodeSave } = await import("../src/save/saveCodec");
+  const { autoplayEraAction, takeCharterSearchReport } = await import("../src/engine/autoplayEra");
+  const { lordRequests } = await import("../src/engine/townAgency");
+  // A natural lord-bot state (seed 9 at 1319 before GROW-BLOCK-2a): every condition met, 24 houses, and the mills,
+  // farmsteads and granaries round the houses leave no wall line clear (engine-GROW2-remeasure-588d28d: 528 to the end).
+  const saved = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed9-1319.save.json.gz")))).envelope.state as GameState;
+  takeCharterSearchReport();
+  assert.equal(autoplayEraAction(saved, () => ({ kind: "none" }) as never).kind, "none");
+  assert.equal(takeCharterSearchReport()?.reason, "buildings");
+  // The town's weeks (a full town may reuse a week's walk, TA-13): within 1,200 ticks the failure is on record.
+  let week = saved;
+  for (let tick = 0; tick < 1_200 && week.agency!.charterWallFailure === undefined; tick += 1) week = advanceTick(week);
+  assert.equal(week.agency!.charterWallFailure?.reason, "buildings");
+  assert.equal(week.agency!.charterWallFailure?.attempts, 1);
+  assert.equal(lordRequests(week).some(action => action.kind === "proclaim_era"), false, "no request without a wall");
+  assert.equal(charterWallPlan(week)!.stage, "failed");
+});
+
+test("GROW-BLOCK-2a ②: the opening village keeps a wall ring's room from the map's edge where the map has such a place", async () => {
+  const { OPENING_EDGE_MARGIN } = await import("../src/content/charterRingConfig");
+  const { newGameState } = await import("../src/state/newGame");
+  const gap = (seed: number) => {
+    const state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed })!;
+    const village = state.buildings.filter(building => building.kind !== "manor_house");
+    return Math.min(...village.map(building => Math.min(building.tx, building.ty, state.width - 1 - building.tx, state.height - 1 - building.ty)));
+  };
+  // Seed 9 opened 5 tiles from the east edge and its town reached x 63 of 64; seed 5 6 tiles from the north.
+  assert.ok(gap(9) >= OPENING_EDGE_MARGIN - 2, `seed 9: ${gap(9)}`);
+  assert.ok(gap(5) >= OPENING_EDGE_MARGIN - 2, `seed 5: ${gap(5)}`);
+  assert.equal(gap(1), 13, "the riverside default stays where it is");
+});
