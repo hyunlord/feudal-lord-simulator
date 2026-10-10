@@ -18,6 +18,63 @@ import { cellInsideWall } from '../zones/zoneEdits';
 import { previewPalisadeRouteAccess } from './palisadeRouteAccess';
 import { charterTimberOrder } from './timberTrade';
 import { stretchedWallCandidates, wallRoom } from './autoplayWallRoom';
+import { holdsCharterSearch, palisadeFootprintsForState } from './palisadeFootprints';
+import { computePalisadeProposal, type PalisadePath, type PalisadeProposalResult } from '../world/palisadeGeometry';
+import { findAutoplayServiceWitness } from './autoplayServiceSpaceWitness';
+import { serviceSpaceBuildings } from './autoplayServiceSpaceRoutes';
+import { CHARTER_RING } from '../content/charterRingConfig';
+import type { CharterWallFailureReason } from './townAgency.types';
+
+/**
+ * GROW-BLOCK (GB-1, the user's ruling 2026-10-09): why the last charter wall search found no wall — the town agency
+ * reads it right after its walk (lord mode) and keeps it as the charter's failure (`AgencyState.charterWallFailure`).
+ */
+export interface CharterSearchReport { readonly reason: CharterWallFailureReason; readonly homes: readonly string[]; readonly candidates: number }
+let lastCharterReport: CharterSearchReport | null = null;
+export function takeCharterSearchReport(): CharterSearchReport | null {
+  const report = lastCharterReport;
+  lastCharterReport = null;
+  return report;
+}
+
+const GEOMETRY_REASON: Readonly<Partial<Record<string, CharterWallFailureReason>>> = {
+  water_crossing: 'water', out_of_bounds: 'edge', building_clearance: 'buildings', insufficient_enclosure: 'buildings',
+  collinear_footprints: 'buildings', self_intersection: 'buildings', open_polygon: 'buildings', empty_perimeter: 'buildings', no_footprints: 'buildings',
+};
+
+/** The homes a wall would cut from the service space they rely on (a market's or church's pad, its road). */
+function homesLosingService(state: GameState, path: PalisadePath): readonly string[] {
+  const projected = confirmPalisadeProclamation(state, path);
+  if (projected === state) return [];
+  return serviceSpaceBuildings(state).filter(home => home.kind === 'house' && findAutoplayServiceWitness(state, home) !== null)
+    .filter(home => { const after = projected.buildings.find(building => building.id === home.id); return after === undefined || findAutoplayServiceWitness(projected, after) === null; })
+    .map(home => home.id);
+}
+
+/**
+ * GB-1 (lord mode): when the hulls of the town's living core find no wall, a wider ring round every building — its
+ * margin rotated by the attempt (a season's retry starts elsewhere) — each checked as the bot checks any wall (the
+ * proclamation's rules, the service space, the lots, the route access), within its own small budget.
+ */
+function widerRing(state: GameState, attempt: number, remaining: number, targetLots: number): PalisadePath | null {
+  const margins = CHARTER_RING.wideMargins.map((_, index, all) => all[(index + attempt) % all.length]!);
+  const anchors = palisadeFootprintsForState(state);
+  let inspected = 0;
+  for (const margin of margins) {
+    const result = computePalisadeProposal(state, anchors, path => {
+      if (inspected >= CHARTER_RING.wideInspections || !spendAutoplaySearch(4)) return false;
+      inspected += 1;
+      if (remaining > 0 && !wallRoom(state, path, remaining).roomy) return false;
+      const projected = confirmPalisadeProclamation(state, path);
+      if (projected === state || !preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected)) return false;
+      if (remaining > 0 && wallInteriorCells(projected) < targetLots * LABOUR_BALANCE.wallCellsPerLot) return false;
+      const access = previewPalisadeRouteAccess(state, path);
+      return access.unreachableSiteIds.length === 0 && access.unavailableSiteIds.length === 0;
+    }, [margin]);
+    if (result.ok) return result.path;
+  }
+  return null;
+}
 
 const NONE = { kind: 'none' } as const;
 function hasBuiltOrPlannedBuilding(state: GameState, kind: BuildingKind): boolean {
@@ -135,8 +192,10 @@ export function stoneProjectAction(state: GameState, buildAction: (state: GameSt
  * stretched toward open land are tried before the old fallback.
  */
 export function autoplayEraAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction, targetLots = Infinity): AutoplayAction {
-  if (state.population < 60 || state.constructionSites.some(isBuildingConstructionSite)) return NONE;
   const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met);
+  // GB-6: met, only the core's sites getting on hold the charter's search; unmet, any open site still waits (the bot
+  // lays one requirement's building at a time).
+  if (state.population < 60 || state.constructionSites.some(site => unmet.length === 0 ? holdsCharterSearch(state, site) : isBuildingConstructionSite(site))) return NONE;
   if (unmet.length === 0) {
     if (state.era === 'hamlet') {
       const remaining = Number.isFinite(targetLots) ? targetLots - housingLotCount(state) : 0;
@@ -144,6 +203,9 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
       const roomFor = (path: Parameters<typeof confirmPalisadeProclamation>[1]) => remaining <= 0 || wallRoom(state, path, remaining).roomy;
       // Each candidate wall is projected and checked for service space once, and reused by both passes below.
       const inspected = new Map<string, { readonly allowed: boolean; readonly roomy: boolean }>();
+      // GB-1: why the walls inspected were refused (the first refused one's path kept for the homes it would cut off).
+      const refusals = { rules: 0, service: 0, lots: 0 };
+      let firstServiceRefusal: PalisadePath | null = null;
       const inspect = (path: Parameters<typeof confirmPalisadeProclamation>[1]) => {
         const key = JSON.stringify(path);
         const cached = inspected.get(key);
@@ -155,6 +217,9 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
         const roomy = remaining <= 0
           || (wallInteriorCells(projected) >= targetLots * LABOUR_BALANCE.wallCellsPerLot && wallRoom(state, path, remaining).roomy);
         const result = { allowed, roomy };
+        if (projected === state) refusals.rules += 1;
+        else if (!allowed) { refusals.service += 1; firstServiceRefusal ??= path; }
+        else if (!roomy) refusals.lots += 1;
         inspected.set(key, result);
         return result;
       };
@@ -181,6 +246,12 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
       }
       const proposal = computeReachablePalisadeProposalForState(state, path => inspect(path)?.allowed === true, 8, markAutoplaySearchLimit);
       if (proposal.ok) return { kind: 'proclaim_era', candidatePath: proposal.path };
+      // GB-1 (lord mode only — the sandbox bot keeps its rule and its guardrail): a wider ring before giving up, and why.
+      if (state.agency !== undefined) {
+        const wide = widerRing(state, state.agency.charterWallFailure?.attempts ?? 0, remaining, targetLots);
+        if (wide !== null) return { kind: 'proclaim_era', candidatePath: wide };
+        lastCharterReport = charterReport(state, proposal, refusals, firstServiceRefusal, inspected.size);
+      }
       if (proposal.reason === 'rejected_candidate') return NONE;
     }
     return { kind: 'proclaim_era' };
@@ -210,4 +281,16 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
     }
   }
   return NONE;
+}
+
+/** GB-1: the search's failure as the town keeps it — the commonest refusal among the walls inspected, or the geometry's. */
+function charterReport(state: GameState, proposal: PalisadeProposalResult, refusals: { readonly rules: number; readonly service: number; readonly lots: number },
+  firstServiceRefusal: PalisadePath | null, candidates: number): CharterSearchReport {
+  if (proposal.ok) return { reason: 'other', homes: [], candidates };
+  if (proposal.reason !== 'rejected_candidate') return { reason: GEOMETRY_REASON[proposal.reason] ?? 'other', homes: [], candidates };
+  const top = Math.max(refusals.rules, refusals.service, refusals.lots);
+  if (top > 0 && refusals.service === top) return { reason: 'service_space', homes: firstServiceRefusal === null ? [] : homesLosingService(state, firstServiceRefusal), candidates };
+  if (top > 0 && refusals.lots === top) return { reason: 'lots', homes: [], candidates };
+  if (top > 0) return { reason: 'rules', homes: [], candidates };
+  return { reason: 'route', homes: [], candidates };
 }

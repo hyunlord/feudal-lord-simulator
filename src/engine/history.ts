@@ -500,7 +500,11 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
       if (person.role === "child" && person.birthYear === year) personRecord(person, "person.born", 0, {
         ...(person.motherId === undefined ? {} : { motherId: person.motherId }), ...(person.fatherId === undefined ? {} : { fatherId: person.fatherId }),
         nameFrom: person.nameFrom ?? "common", ...(person.godparentId === undefined ? {} : { godparentId: person.godparentId }) });
-      else if (person.role === "spouse") personRecord(person, "person.married", 0);
+      // PLAY-2 (renderer A, engine-play2-reads.md §4): the marriage names the one married (the household's head).
+      else if (person.role === "spouse") {
+        const head = after.persons.people.find(other => other.householdId === person.householdId && other.role === "head" && other.id !== person.id);
+        personRecord(person, "person.married", 0, head === undefined ? undefined : { spouseId: head.id });
+      }
       else if (person.role === "kin") personRecord(person, "person.arrived", 0);
       else if (person.role === "steward") personRecord(person, "person.steward", 1);
       continue;
@@ -519,7 +523,12 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
   const gone = after.persons.past.slice(before.persons.past.length);
   for (const person of gone) {
     if (!was.has(person.id) || now.has(person.id)) continue;
-    if (!person.alive) personRecord(person, "person.died", 1, { cause: person.deathCause ?? "age", age: (person.deathYear ?? year) - person.birthYear });
+    // PLAY-2 §4: a death names the spouse left (the head's spouse, or the spouse's head, of the household it left).
+    const partner = person.role === "head" || person.role === "spouse"
+      ? before.persons.people.find(other => other.householdId === person.householdId && other.id !== person.id && other.role === (person.role === "head" ? "spouse" : "head"))
+      : undefined;
+    if (!person.alive) personRecord(person, "person.died", 1, { cause: person.deathCause ?? "age", age: (person.deathYear ?? year) - person.birthYear,
+      ...(partner === undefined ? {} : { spouseId: partner.id }) });
     else personRecord(person, "person.left_town", 0);
   }
   // DEC-TRACE §6 (the user's decision 2026-10-06): in lord mode the house's change of head is a big event — the lord
@@ -1171,7 +1180,14 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
     if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);
     for (const [event, tick] of Object.entries(plan.events)) {
       if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
-      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "" }, event === "father_died" ? 3 : 2);
+      // PLAY-2 §4: the first child's record names the child and its father (the groom); the brother-in-law's, him and his.
+      const people = after.persons?.people ?? [];
+      const child = event === "child_born" ? [...people].reverse().find(person => person.motherId === plan.brideId && person.fatherId === plan.groomId)
+        : event === "brother_in_law_born" ? people.find(person => person.id === plan.brotherInLawId) : undefined;
+      const father = event === "child_born" ? plan.groomId : child?.fatherId;
+      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "", ...(child === undefined ? {} : { child: child.id }),
+        ...(child === undefined || father === undefined ? {} : { father }) },
+        event === "father_died" ? 3 : 2);
     }
     if (was?.marriage?.stage !== plan.stage && (plan.stage === "inherited" || plan.stage === "lost" || plan.stage === "contested")) {
       line(`marriage.${plan.stage}`, { estate: plan.estateId, rival: plan.rival ?? "" }, 3);
@@ -1255,7 +1271,11 @@ function agencyDrafts(before: GameState, after: GameState): Draft[] {
   // FIX-14 (FX13-5): the town ordered its charter's timber from the traders in the tick (a lord's order is a command).
   const ordered: Draft[] = after.agency !== undefined && (after.timberOrder ?? 0) > (before.timberOrder ?? 0)
     ? [{ tick: after.tick, kind: "event", template: "agency.timber_ordered", subject: TOWN, severity: 1, params: { amount: after.timberOrder ?? 0 } }] : [];
-  return [...ordered, ...receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
+  // GB-4: a site the town gave up (no road reached it), with its cause.
+  const wasAbandoned = new Set((before.agency?.abandonedSites ?? []).map(entry => entry.id));
+  const abandoned: Draft[] = (after.agency?.abandonedSites ?? []).filter(entry => !wasAbandoned.has(entry.id)).map(entry => ({ tick: after.tick, kind: "event" as const,
+    template: "agency.site_abandoned", subject: TOWN, severity: 1 as const, params: { site: entry.id, what: entry.kind, reason: entry.reason, years: Math.floor((entry.tick - entry.since) / 4_000) } }));
+  return [...ordered, ...abandoned, ...receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
     tick: after.tick, kind: "event" as const, template: "agency.project_started", subject: TOWN, severity: 1 as const,
     place: { tx: receipt.tx, ty: receipt.ty, ...(receipt.siteId === null ? {} : { buildingId: receipt.siteId }) },
     params: { receipt: receipt.id, actor: receipt.actor, what: receipt.what, planner: receipt.planner, score: receipt.score,

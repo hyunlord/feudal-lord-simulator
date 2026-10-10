@@ -125,6 +125,13 @@ export interface AgencyState {
   /** TA-7, TA-11: what the town asks of its lord this week (absent before the first week, and on v36 saves). */
   readonly requests?: readonly LordRequest[];
   /** TA-11: the layout (`needsLayoutKey`) on which the charter's wall search last found no wall (absent otherwise). */
+  /**
+   * GB-1 (GROW-BLOCK): the charter wall search's last failure — when, why (`CharterWallFailureReason`), the homes a wall
+   * would have cut from their service space, and how many searches failed in a row (the next starts elsewhere).
+   */
+  /** GB-4: the building sites the town gave up (no road reached them a year), the last few — kind, when, since when, why. */
+  readonly abandonedSites?: readonly AbandonedSite[];
+  readonly charterWallFailure?: { readonly tick: number; readonly reason: CharterWallFailureReason; readonly homes: readonly string[]; readonly attempts: number };
   readonly charterWallTried?: string;
   /** TA-12: the tick the town first stood ready for its market charter (absent when it is not waiting). */
   readonly charterSince?: number;
@@ -163,4 +170,21 @@ export interface AgencyWalk {
   readonly charterWallTried?: string;
   /** The weeks in a row that started nothing, this one included (a walk is reused only after WALK_REUSE_IDLE_WEEKS). */
   readonly idleWeeks: number;
+}
+
+/** GB-1: why the charter wall was not found — water, the map's edge, the buildings, the homes' service space, the proclamation's rules, the lots, the route, or else. */
+export type CharterWallFailureReason = "water" | "edge" | "buildings" | "service_space" | "rules" | "lots" | "route" | "other";
+
+/**
+ * GB-4: a building site the town gave up — where, what, when, since when, and why: no road reached it (`road`), no
+ * material came (`material`), or no one worked it (`work`).
+ */
+export interface AbandonedSite {
+  readonly id: string;
+  readonly kind: string;
+  readonly tx: number;
+  readonly ty: number;
+  readonly tick: number;
+  readonly since: number;
+  readonly reason: "road" | "material" | "work";
 }

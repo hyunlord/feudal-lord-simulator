@@ -29,6 +29,9 @@ function chipOf(state: GameState, matter: EngineMatter): string | null {
     }
     case "suit_defence": return LORD_MATTER_CHIP.suit(matter.id);
     case "entry_threat": return LORD_MATTER_CHIP.entry(matter.id);
+    // GROW-BLOCK (engine, an exception in a render file — the renderer takes it over): the engine's list now has these.
+    case "audit": return LORD_MATTER_CHIP.audit(matter.id);
+    case "estate_petition": return LORD_MATTER_CHIP.petition(matter.id);
   }
 }
 

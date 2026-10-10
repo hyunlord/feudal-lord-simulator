@@ -14,7 +14,9 @@ function shortageWithLogs(logs: readonly number[], store: { readonly logs: numbe
   return { ...base, tick: 5000, idleWorkers: 20, treasuryTimber: 50,
     buildings: [...base.buildings.map(b => b.kind === 'storehouse'
       ? { ...b, inventory: { logs: store.logs }, stockReserved: { logs: store.reserved } } : b), ...sawmills],
-    timberProductionWindow: { startTick: 2601, throughTick: 5000, produced: 12, productionTicks: [], expansionShortageSinceTick: 2500 },
+    // GB-10: a wall's need is met over four windows — the window made too little for that (the choice between camp and
+    // sawmill is what these pin).
+    timberProductionWindow: { startTick: 2601, throughTick: 5000, produced: 1, productionTicks: [], expansionShortageSinceTick: 2500 },
     constructionSites: [createPalisadeConstructionSite({ id: 'test-wall', wallId: 'test', segmentIndex: 0, order: 0, gateDistance: 0,
       path: [{ x: 5, y: 5 }, { x: 9, y: 5 }], startedTick: 1000 })] };
 }
@@ -65,7 +67,9 @@ test('R-T14 sustained wall demand expands milling when existing stores hold unus
     workers: BUILDING_CONFIG_BY_KIND.sawmill.workersRequired, inventory: {} };
   const state = { ...base, tick: 5000, idleWorkers: 20, treasuryTimber: 50,
     buildings: [...base.buildings.map(b => b.kind === 'storehouse' ? { ...b, inventory: { logs: 80 } } : b), sawmill],
-    timberProductionWindow: { startTick: 2601, throughTick: 5000, produced: 12, productionTicks: [], expansionShortageSinceTick: 2500 },
+    // GB-10: a wall's need is met over four windows — the window made too little for that (the choice between camp and
+    // sawmill is what these pin).
+    timberProductionWindow: { startTick: 2601, throughTick: 5000, produced: 1, productionTicks: [], expansionShortageSinceTick: 2500 },
     constructionSites: [createPalisadeConstructionSite({ id:'test-wall', wallId:'test', segmentIndex:0, order:0, gateDistance:0, path:[{x:5,y:5},{x:9,y:5}], startedTick:1000 })] };
   // When the bot evaluates the actual material bottleneck.
   const kind = timberExpansionKind(state);

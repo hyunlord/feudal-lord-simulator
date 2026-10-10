@@ -22,6 +22,21 @@ const LIVING_CORE_KINDS = new Set<BuildingKind>([
 export function isPalisadeCoreBuildingKind(kind: BuildingKind): boolean {
   return LIVING_CORE_KINDS.has(kind);
 }
+
+/**
+ * GB-6 (GROW-BLOCK, the user's ruling 2026-10-09): the open sites the charter's wall search waits for — a site of the
+ * core the wall must enclose that is getting on. A stuck one (no route, no source, or nothing delivered and no work in a
+ * season) or one the wall has no business with (a farm, a camp, a mill outside the core) holds nothing: that gate held
+ * seed 3's whole town a hundred years for one boxed-in well. The sandbox bot and the lord's town wait the same.
+ */
+export function holdsCharterSearch(state: Pick<GameState, "tick">, site: GameState["constructionSites"][number]): boolean {
+  if (!isBuildingConstructionSite(site) || !LIVING_CORE_KINDS.has(site.kind)) return false;
+  if (site.stall === "no_route" || site.stall === "no_material_source") return false;
+  const untouched = site.builderTicks === 0 && Object.values(site.delivered).every(amount => (amount ?? 0) === 0);
+  return !(untouched && state.tick - site.startedTick >= CHARTER_SITE_STUCK_TICKS);
+}
+/** GB-6: a site untouched this long (a season) no longer holds the charter's search. */
+const CHARTER_SITE_STUCK_TICKS = 1_000;
 const ROAD_STEPS = [
   { tx: -1, ty: 0 }, { tx: 1, ty: 0 }, { tx: 0, ty: -1 }, { tx: 0, ty: 1 },
 ] as const;
