@@ -127,8 +127,10 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
 // 4. The town's request.
 {
   const state = scene(flags.states, 'request');
-  const { context, page } = await open(state);
-  const opened = await fromChip(page, 'lord_request', '.lord-card[data-lord-request]');
+  // The request has no chip once put off (openScene's Escape on a slow load would put it off for good): its story's
+  // delay outlasts the load (20 s, as the house card's rows do) and the card is waited for past it.
+  const { context, page } = await open(state, { query: '&story-delay=20000' });
+  const opened = await waitCard(page, '.lord-card[data-lord-request]', 45_000) || await fromChip(page, 'lord_request', '.lord-card[data-lord-request]');
   const shown = await card(page);
   const size = opened ? await shoot(page, 'request') : 0; bytes += size;
   const before = await proof(page);
