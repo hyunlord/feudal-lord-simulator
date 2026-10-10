@@ -1,6 +1,6 @@
 # EB-TLINK: 125년 원본과 재계산
 
-기준판과 **0b04 시제품의 공식125년 수집·재생은 완료**했다. 0b04 점수는 **204/816=25%, pass=false**로 기준판292/816=35.7843%보다 낮다. 세 판 명령 스트림·checkpoint·최종 규칙 투영은 일치하지만 전체 최종 상태 해시는 모두 다르다. 최신 관계 제품 `9ad9253468592e7cba144946081d2fbced36adca`의125년·native는 별도 진행 중이며 이 결과를 승계하지 않는다. 최신 geometry는27행·540조건·실패0·미개방0으로 통과했다. 최신 changed는553파일·4425시험 중4412통과·실패0·skip13,66파일 결과 재사용으로 끝났다. 최신 브라우저의 양방향 이동·저장 검증은 통과했지만390px 오른쪽 잘림은 NEEDS_WORK다([실제 화면 근거](../eb-tlink-relation-browser/README.md)).
+기준판·0b04·최신9ad의 **공식125년 수집·재생은 모두 완료**했다. 최신 `9ad9253468592e7cba144946081d2fbced36adca`는 **301/816=36.8873%, pass=false**다. 기준판292/816=35.7843%, 이전0b04는204/816=25%이며 원래 scorer·분모·미래창을 유지했다. 최신 세 판의 기준판 대비 명령 스트림·checkpoint·최종 규칙 투영은 일치하지만 원시 전체 최종 상태 해시는 모두 다르다. 별도 native는 실행 중, 무효화 probe는 대기 중이며80% 관문이나 전체 인수 통과를 주장하지 않는다. 최신 geometry는27행·540조건·실패0·미개방0으로 통과했다. 최신 changed는553파일·4425시험 중4412통과·실패0·skip13,66파일 결과 재사용으로 끝났다. 최신 브라우저의 양방향 이동·저장 검증은 통과했지만390px 오른쪽 잘림은 NEEDS_WORK다([실제 화면 근거](../eb-tlink-relation-browser/README.md)).
 
 공식 실행 `engineB-tlink-baseline125-cf3fa94`가 seed1·2·3 각각125년(500000틱)을 수집하고 같은 명령을 재생했다. 세 판 모두 재생 일치, 실행 exit0, 명령 시간13416.9초다. 실제 소스는 `cf3fa941659ecb78396eed3780f88024a2bde0dd`, 제품 코드는 승인 기준 `64a16b5a6c1d91024415039db89bb88412528e15`와 같다. 측정 계측만 별도 커밋했다.
 
@@ -93,9 +93,9 @@ mixed-command 문서는 **9ad 소스의 증명 초안**이며0b04 실행 증거�
 강화 전 결과는 분석 근거로 추가하지 않았다. 고정 원본 script SHA `44f324ed8c4e81b1a8ce2a01304fd8c55fbe73677899d986c346cb8549677adc`, JSON SHA `8a470755a64ac44ccfe7fda56e7810a367e2e6cca9fb5b42b02bbe9be70838c5`와 source/input 핀을 보존했다. 별도 checkout에 원래 입력 경로를 복원하고 `node .omo/evidence/tlink-hold-cost-audit.mjs`로 재현한다. 생성기는 고정 JSON 출력을 덮어쓰므로 보존 원본 위치에서 실행하지 않는다. `currentHead`는 작성 시점 provenance이며 다른 checkout에서는 해당 메타데이터가 달라질 수 있다.
 
 
-### 최신9ad 수집 잠정 snapshot — 공식 판정 전
+### 보존된9ad 수집 잠정 snapshot — 공식 완료 이전 기록
 
-[별도9ad snapshot·입력/소스/재현 핀](collection-9ad9253/archive.json)에 원본 TS/JSON 두 파일을 gzip으로 보존했다. `engineB-tlink-final125-9ad9253`, source `9ad9253468592e7cba144946081d2fbced36adca`의 **수집 시점 잠정값은301/816=36.8873%**(seed1 98/238·seed2 93/275·seed3 110/303)이며 관측 부족20·미연결515·미분류2다. 캡처 시점 replay는 진행 중으로, 종료 코드·정식 scorer·관문 통과를 주장하지 않는다. 앞의0b04 공식 결과와 별도이며 기존 원본/index를 덮어쓰지 않았다.
+[별도9ad snapshot·입력/소스/재현 핀](collection-9ad9253/archive.json)에 원본 TS/JSON 두 파일을 gzip으로 보존했다. `engineB-tlink-final125-9ad9253`, source `9ad9253468592e7cba144946081d2fbced36adca`의 **수집 시점 잠정값은301/816=36.8873%**(seed1 98/238·seed2 93/275·seed3 110/303)이며 관측 부족20·미연결515·미분류2다. 캡처 시점 replay는 진행 중이었다. 원본을 소급 변경하지 않으며, 아래 공식 완료 결과에서도301/816이 같았음을 별도로 기록한다. 이 snapshot 자체는 종료 코드·정식 scorer·관문 통과 증거가 아니다. 앞의0b04 공식 결과와 별도이며 기존 원본/index를 덮어쓰지 않았다.
 
 원본 JSON SHA는 `e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8`이다. 별도9ad checkout에 해시가 맞는 raw/context·baseline 비교 입력과 script를 원래 상대 경로로 복원하고 `node --import tsx .omo/evidence/tlink-9ad-three-seed-provisional-links.ts`로 재현한다. 생성기는 wx이므로 고정 출력 JSON이 없는 새 위치에서만 실행한다. 이번 보관에서는 스크립트를 재실행하지 않았다. 전체 그룹은3MB 미만이며 압축 전후 해시를 검증했다.
 
@@ -105,3 +105,27 @@ mixed-command 문서는 **9ad 소스의 증명 초안**이며0b04 실행 증거�
 [collection-9ad9253 인덱스](collection-9ad9253/archive.json)에 `tlink-9ad-estate-residual-audit.{mjs,json}.gz` 원문을 추가했다. 잠정301/816에서 성숙 미연결 estate 답336건은 관계 변화0인213·부분 clamp4·답변 후 경계 도달3·나중 무효화116으로 나뉜다. 이는 증거 상태 판독이며 **명령 전체 무효과를 뜻하지 않는다.** 나중116건의 최초 무효화 분기는 보존되지 않았고, expected가 내부값인62건은 조사 우선순위일 뿐 입증된 누락 링크62건이 아니다. 이 집합에서 첫 철 이전 반대 부호의 알려진 같은 차원 명령은0건이므로 mixed-command 증명으로 연결률 증가를 주장하지 않는다.
 
 source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-audit.mjs`는 인덱스에 있다. 별도 checkout에 입력을 복원해야 하며 고정 출력을 덮어쓰는 생성기를 보존 원본에서 실행하지 않는다. 원본 script SHA는 `b37d57273efb1ed95a7af1b64146dc4c1d6d5b58acaf023159146dc63a36f6ee`, JSON SHA는 `7bab64d3349a719a7bc9588245b9e3643c6c346dbc9d4ebe5d828e448f2b7af2`다. 독립 검토에서 차단 결함은 없었지만 공식 재생·scorer 인수 결과가 아니다. 별도 `engineB-tlink-invalidation-probe-9ad9253`는 인계 시점 제출·대기 중이며 실행/결과를 주장하거나 probe 자료를 보관하지 않았다.
+
+
+## 공식 최종9ad 결과 —80% 기준 미달
+
+`engineB-tlink-final125-9ad9253`, source `9ad9253468592e7cba144946081d2fbced36adca`: seed1–3 각125년(1300→1425,500000tick)의 수집·재생3판이 모두 검증되었다. producer exit0, command4974.3초다. [summary](final-9ad-summary.json)에 Node `v24.21.0`·Linux·clean 소스·lock·producer 도구·manifest 핀을 보존했다. 실행 성공은 점수 승인과 다르다.
+
+| seed | 무거운 답 | 성숙 | 미래 자기 ID 연결 | 관측 부족 | 미연결 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | 245 | 238 | 98 | 7 | 140 |
+| 2 | 282 | 275 | 93 | 7 | 182 |
+| 3 | 309 | 303 | 110 | 6 | 193 |
+| 합계 | 836 | 816 | **301 (36.8873%)** | 20 | 515 |
+
+[원래 점수](final-9ad-score.json.gz)는 pass=false·conditional0·미분류 선포2건을 그대로 남긴다. [잔여 판독](final-9ad-residuals.json.gz)은 직접301을 뺀535건을 즉시 결과만 관측336·설명 미완179·관측 부족20·조건 미충족 관측0으로 보존한다. 보충 phase 분류는 실제 BIG 미연결2건을 더한301/818이며 원래 분모816을 덮어쓰지 않는다. 즉시 처리를 미래 분자로 세거나 영수증 부재를 거짓 조건으로 만들지 않았다.
+
+[기준판과 전후 비교](final-9ad-parity.json.gz)는 세 판 commandStreamEqual/parityEqual/finalProjectionEqual=true, fullFinalHashEqual=false다. 이는 명령·철 경계·최종의 관측 지점별 규칙 투영이며 모든 tick 또는 전체 상태의 동등성 증명이 아니다. 원시 전체 해시 차이와 인과 ID를 정규화하지 않았다. 별도 native는 실행 중이고 무효화 probe는 대기 중이다.
+
+원래 기대표의 source pin과 최신 제품이 달라 세 판 모두 contractSourceCompatible=false이며 strict 직접0/816이다. 핀을 통과 목적으로 다시 맞추지 않았다.301/816은 정확한 자기 ID의 미래 because 연결률로, 대상·조건·주원인의 충분성·화면 표시까지 입증하는 수치가 아니다.
+
+- `final-9ad-{config,score,residuals,parity}.json.gz`: 실제 입력/출력 JSON 바이트의 정확한 gzip 보관. 압축 전후 SHA는 [summary](final-9ad-summary.json)와 [SHA256SUMS](final-9ad-SHA256SUMS)에 있다.
+- [휴대 가능한 config](final-9ad-config.json)는 경로를 재배치했으므로 configSha256 및 이를 포함한 재계산 JSON byte hash가 원본과 달라진다. 원본 byte 재현에는 압축된 config를 원래 `.omo/evidence/final-9ad-config.json` 경로에 복원한다.
+- [seed1](final-9ad/seed-1/archive.json)·[seed2](final-9ad/seed-2/archive.json)·[seed3](final-9ad/seed-3/archive.json) 인덱스는 전체 원본 구성원의 크기·해시를 보존한다. 원본은 `.remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final` 및 공식 kept 실행에 남긴다. `scripts/remote/run.sh --fetch engineB-tlink-final125-9ad9253` 후 인덱스로 대조할 수 있다. 대형 raw/tar를 Git에 복사하지 않았다.
+
+이 공식 묶음10파일은112211bytes다. 앞의 수집 snapshot·estate 진단은 작성 당시의 제한과 원본 바이트를 유지하며 공식 완료를 이유로 인과 증명의 범위를 넓히지 않는다.

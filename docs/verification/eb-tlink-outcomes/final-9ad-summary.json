@@ -1,0 +1,204 @@
+{
+  "run": "engineB-tlink-final125-9ad9253",
+  "sourceRevision": "9ad9253468592e7cba144946081d2fbced36adca",
+  "producerExitCode": 0,
+  "commandSeconds": 4974.3,
+  "executionReceipts": {
+    "exit-code": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "timing.env": {
+      "sha256": "34381845fcc7e74fbae32348b5282d8e7f9b917a2716a65043a3b5922c82c3be"
+    },
+    "run.log": {
+      "sha256": "cf2c78ceaa53062894d8289d8b21605817924efd832f02193cff4ff3a96aa8ef"
+    }
+  },
+  "scorerPass": false,
+  "counts": {
+    "direct": 301,
+    "conditional": 0,
+    "insufficient-observation": 20,
+    "unlinked": 515
+  },
+  "legacyDirectRatio": {
+    "numerator": 301,
+    "denominator": 816,
+    "ratio": 0.36887254901960786,
+    "threshold": 0.8,
+    "thresholdMet": false
+  },
+  "residualConservation": {
+    "allOriginalAnswers": 836,
+    "originalDirect": 301,
+    "residuals": 535,
+    "byCategory": {
+      "insufficient-observation": 20,
+      "immediate-only-observed": 336,
+      "conditional-unmet-observed": 0,
+      "unexplained": 179
+    }
+  },
+  "pairedRuleProjectionPassed": true,
+  "producerRawFinalAllEqual": false,
+  "reports": {
+    "config": {
+      "path": "final-9ad-config.json.gz",
+      "rawSha256": "a38f3e6d8e820d9d3814fc37b4d6071f13ecb63e678db6f5391cd8b3d14b22bd",
+      "gzipSha256": "fb45d7f1b1dac2d12cca19bd037f0bf856faf638b955dd905959da90ca4ee8dd",
+      "rawBytes": 1124,
+      "gzipBytes": 575
+    },
+    "score": {
+      "path": "final-9ad-score.json.gz",
+      "rawSha256": "393150034d875b2ea1b7360a5eaf26840d43f296605918b07d388f83e97f44a0",
+      "gzipSha256": "0a20d528919b1c09cee15857d0a6ac3bf6910a1f332cd8f6ed143cdc7d6cdd11",
+      "rawBytes": 928043,
+      "gzipBytes": 46061
+    },
+    "residuals": {
+      "path": "final-9ad-residuals.json.gz",
+      "rawSha256": "a5ae985a9bc6e6e47952cfa899ff02f16873fb151ac48609189047792bcea2bf",
+      "gzipSha256": "39f2b3a4cb55f8b79e27284fd06f0859fc77767a93ca3daff9aa4848f9c416e7",
+      "rawBytes": 1841959,
+      "gzipBytes": 45009
+    },
+    "parity": {
+      "path": "final-9ad-parity.json.gz",
+      "rawSha256": "8e4ec5c2ace2a62bcbeb4ad072686719341a9bbf9aaddf96b7dd1a25f776f9f0",
+      "gzipSha256": "01a8ae19a54cf9897205f8d3443210f9d84a4c71f1a81b2e7617a8a93fe00b08",
+      "rawBytes": 2177,
+      "gzipBytes": 711
+    }
+  },
+  "seeds": [
+    {
+      "seed": 1,
+      "manifestSha256": "7bd25bacde5efd5c2a7b714e708630fc209dc73ac360b49893290b1c42c3ef7d",
+      "source": {
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "platform": "linux",
+        "node": "v24.21.0",
+        "status": "",
+        "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+        "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+      },
+      "toolHashes": {
+        "engineBOutcomeProduce.ts": "081e731e32a6c14946529063a949c96dd12c4ad41ce4c35a6e5545266e289ae2",
+        "engineBOutcomeEvidence.ts": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875",
+        "engineBOutcomeCollect.ts": "11008111ef7a0c0001c30b128aac402db52cdfe27a0dcf9f6d4b4d8c66b16766",
+        "engineBOutcomeTaxonomy.ts": "5d778cd40caae2dcf0c07163a7f9a5a046fac98cc1683feda9779fe2b745c1a5",
+        "engineBOutcomeArchive.mjs": "769c44c017183d5a162d6926e21f837b64c1d7f4385f2e03bddd00d7e2a9d718",
+        "registryDecisionOccurrences.ts": "e81a40bbde91cae90e49788d515634bad0936313ae655d7aeea630bd5ce3ae63",
+        "engineBTlinkParity.ts": "88077edd542e891869d20a63746ce45e575cb80d174047e43e82e18aa982ba45"
+      },
+      "commandCount": 2117,
+      "replayVerified": true,
+      "final": {
+        "phase": "final",
+        "tick": 500000,
+        "hit": true,
+        "stateSha": "d5e90b57bf4ead2feeaa6f85472454b61eed4f65a827abb9b651147ce4954f51",
+        "file": "final-state.json.gz"
+      },
+      "tlinkParity": {
+        "enabled": true,
+        "everyTickStateParity": false,
+        "artifacts": {
+          "collect-parity.json": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147",
+          "replay-parity.json": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147",
+          "collect-rule-state.json.gz": "ee7f0938d8bbb907b86a35c4f995aaf7b3c1abf2996d9b26935770214965bd21",
+          "replay-rule-state.json.gz": "ee7f0938d8bbb907b86a35c4f995aaf7b3c1abf2996d9b26935770214965bd21"
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "manifestSha256": "685f1884441ed32405da4d9ed1babe6a729d0ebb411919767605314b1ece9acf",
+      "source": {
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "platform": "linux",
+        "node": "v24.21.0",
+        "status": "",
+        "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+        "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+      },
+      "toolHashes": {
+        "engineBOutcomeProduce.ts": "081e731e32a6c14946529063a949c96dd12c4ad41ce4c35a6e5545266e289ae2",
+        "engineBOutcomeEvidence.ts": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875",
+        "engineBOutcomeCollect.ts": "11008111ef7a0c0001c30b128aac402db52cdfe27a0dcf9f6d4b4d8c66b16766",
+        "engineBOutcomeTaxonomy.ts": "5d778cd40caae2dcf0c07163a7f9a5a046fac98cc1683feda9779fe2b745c1a5",
+        "engineBOutcomeArchive.mjs": "769c44c017183d5a162d6926e21f837b64c1d7f4385f2e03bddd00d7e2a9d718",
+        "registryDecisionOccurrences.ts": "e81a40bbde91cae90e49788d515634bad0936313ae655d7aeea630bd5ce3ae63",
+        "engineBTlinkParity.ts": "88077edd542e891869d20a63746ce45e575cb80d174047e43e82e18aa982ba45"
+      },
+      "commandCount": 2114,
+      "replayVerified": true,
+      "final": {
+        "phase": "final",
+        "tick": 500000,
+        "hit": true,
+        "stateSha": "617fb2aab617961bca11f79f6805715b178d2c4c6a6ddbd5a4cd718122f46542",
+        "file": "final-state.json.gz"
+      },
+      "tlinkParity": {
+        "enabled": true,
+        "everyTickStateParity": false,
+        "artifacts": {
+          "collect-parity.json": "174cafc6412357656695679dfd8b422cda9c28955c58aaadae6673e2779123bb",
+          "replay-parity.json": "174cafc6412357656695679dfd8b422cda9c28955c58aaadae6673e2779123bb",
+          "collect-rule-state.json.gz": "2c2d1491d9c2fec42734d76328a66381d66b39c0080e97901384b43c25b30af5",
+          "replay-rule-state.json.gz": "2c2d1491d9c2fec42734d76328a66381d66b39c0080e97901384b43c25b30af5"
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "manifestSha256": "ea9e8d489801cd46c9609f94da3bea5ed64ef62f179c4ec36932ef8be3dc9792",
+      "source": {
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "platform": "linux",
+        "node": "v24.21.0",
+        "status": "",
+        "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+        "expectedLock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+      },
+      "toolHashes": {
+        "engineBOutcomeProduce.ts": "081e731e32a6c14946529063a949c96dd12c4ad41ce4c35a6e5545266e289ae2",
+        "engineBOutcomeEvidence.ts": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875",
+        "engineBOutcomeCollect.ts": "11008111ef7a0c0001c30b128aac402db52cdfe27a0dcf9f6d4b4d8c66b16766",
+        "engineBOutcomeTaxonomy.ts": "5d778cd40caae2dcf0c07163a7f9a5a046fac98cc1683feda9779fe2b745c1a5",
+        "engineBOutcomeArchive.mjs": "769c44c017183d5a162d6926e21f837b64c1d7f4385f2e03bddd00d7e2a9d718",
+        "registryDecisionOccurrences.ts": "e81a40bbde91cae90e49788d515634bad0936313ae655d7aeea630bd5ce3ae63",
+        "engineBTlinkParity.ts": "88077edd542e891869d20a63746ce45e575cb80d174047e43e82e18aa982ba45"
+      },
+      "commandCount": 1849,
+      "replayVerified": true,
+      "final": {
+        "phase": "final",
+        "tick": 500000,
+        "hit": true,
+        "stateSha": "64cec9c344a72323526298a875c6a1ffdc917e81c6b616f651e463969e8edd5f",
+        "file": "final-state.json.gz"
+      },
+      "tlinkParity": {
+        "enabled": true,
+        "everyTickStateParity": false,
+        "artifacts": {
+          "collect-parity.json": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3",
+          "replay-parity.json": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3",
+          "collect-rule-state.json.gz": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e",
+          "replay-rule-state.json.gz": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e"
+        }
+      }
+    }
+  ],
+  "portableConfigNote": "Original exact config archived gzip; relocated config changes configSHA and score byte hash.",
+  "limits": [
+    "Sampled state parity only; no every-tick state equality.",
+    "Native guardrail evidence must be verified separately.",
+    "Full-state hash differences are diagnostic and are not excused or normalized.",
+    "No causal IDs are normalized.",
+    "No native guardrail, browser, or overall acceptance claim."
+  ]
+}
