@@ -8,6 +8,7 @@
 
 | 감사(실행) | 측정 커밋 | 칸 | 첫 시도 시간 초과 | 세 번 실패 | 재시도 트리 | 최종 못 연 조건 | 걸린 줄(시간 초과·실패 줄 수) |
 |---|---|---|---|---|---|---|---|
+| infra-RR26S-full-42df9d6 (RR26 그림자, 측정 입력 포함) | 42df9d67 | 3,662 | 4 | 0 | 0 | 0 | `modal.chapter-page.ch3` 2, `modal.lord.home-petition.variant-056` 2 — 모두 두 번째 시도에 열림, 재시도 라운드 없음(감사가 직접 센 `retries`) |
 | infra-RR26-full-7af6f5e | 7af6f5e7 | 3,562 | 48 | 22 | 22 | 0 | `modal.lord.home-petition.variant-056` 60(20개 조건 모두 세 번 실패, 재시도 라운드에서만 측정), `hud.event-card.famine-answered` 10(간헐) |
 | infra-RR25-full-59bd71c | 59bd71c2 | 3,562 | 20 | 6 | 6 | 0 | `modal.lord.home-petition.variant-056` 26(6개 조건 세 번 실패) |
 | render-GROWUI-v056b-geometry-c4c22b3 (바뀐 줄만: variant-056) | c4c22b36 | 20 | 0 | 0 | 0 | 0 | 없음 — 고친 뒤 20개 조건 모두 첫 라운드에서 열림 |
