@@ -42,6 +42,15 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.entry-threat", root: ".event-card[data-chip-id^='entry-threat:']", frame: "css", scene: decisionScene("suit-entry-threat"),
     open: [{ wait: ".event-chip[data-chip-id^='entry-threat:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='entry-threat:']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a house's forcible entry forewarned: the engine's warning, the season it comes, the button to the warning in the ledger" },
+  // PLAY-2 §4: a Michaelmas audit's finding and an off-map estate's petition (the engine's lordMattersDue) as their chips'
+  // cards — the engine's deadline as a season, as the will's; [결정하기] opens the decision card; kept until answered.
+  { id: "hud.event-card.audit-kept", root: ".event-card[data-chip-id^='audit:']", frame: "css", scene: decisionScene("audit-pending"),
+    open: [{ wait: ".event-chip[data-chip-id^='audit:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='audit:']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "an audit's finding as its chip's card: what it found, the engine's deadline as a season, the button to the card" },
+  { id: "hud.event-card.offmap-kept", root: ".event-card[data-chip-id^='estate-petition:']", frame: "css", scene: decisionScene("inherited"),
+    open: [{ wait: ".event-chip[data-chip-id^='estate-petition:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='estate-petition:']" }, { pause: 600 }],
+    scroll: "y", requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"],
+    data: "an off-map estate's petition as its chip's card: the ask, the engine's deadline as a season, why it came to the lord, the button to the card" },
   { id: "modal.lord.contested", ...CARD, root: card("contested"), scene: decisionScene("contested"),
     open: [{ story: card("contested") }, { pause: 600 }],
     requires: [...HEAVY, ".lord-decision-open", ".story-modal-later"],

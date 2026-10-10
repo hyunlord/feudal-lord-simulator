@@ -47,7 +47,9 @@ export function lordMomentBeats(state: GameState, seat: { readonly tx: number; r
   if (!lordMode(state)) return [];
   return lordMoments(state).map(({ record, art }) => {
     // PLAY-2 (friction 9): a marriage's or a birth's moment names its people, and opens its record (their biographies).
-    const people = familyLine(familyPeople(state, record));
+    // PLAY-2 §4: by their given names — the first child's three whole names in long copy ran its card under the action
+    // dock (render-GROWKIN-geometry-01d0023); the whole names are in the record's chronicle, a press away.
+    const people = familyLine(familyPeople(state, record), null, true);
     // Astra lordplay2 ②: a house's enforcement against the lord is his loss (or his hold), not "점유를 넘겨받았다".
     const side = wave40RecordSide(record);
     const words = lordMomentWords(art, side);
