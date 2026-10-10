@@ -2,7 +2,7 @@
 
 최신 제품 `23d12264289538de5f6ef3ef3f36aa9257b10aba`의 공식125년 수집·재생 세 판이 완료됐다. **334/816 = 40.9313725%, pass=false**로80% 기준에 미달했다. 기준판292/816,0b04의204/816,9ad의301/816은 각 소스의 이전 결과로 보존한다. 원래 scorer·분모·미래창은 바꾸지 않았다.
 
-23d는 기준판과 세 판의 명령열·관측 지점별 규칙 투영·최종 투영이 일치하지만 원시 전체 최종 상태 해시는 모두 다르다. 별도23d native는 RUNNING이며 아직 결과가 없다. 이전9ad native의 전체 해시 일치는 그 실행에 한정된다. 감사 무효화 진단과23d 교정 경로 재생은 완료했다. 최신 changed는401파일 실행·218파일 재사용,3451통과·실패0·skip13이고 geometry는27행·540조건을 통과했다. 관계 브라우저 기능 검증도 통과했지만390px 우측 잘림은 NEEDS_WORK다([화면 근거](../eb-tlink-relation-browser/README.md)).
+23d는 기준판과 세 판의 명령열·관측 지점별 규칙 투영·최종 투영이 일치하지만 원시 전체 최종 상태 해시는 모두 다르다. 별도23d native는 세 seed 원시 전체 최종 해시 일치·exit0으로 완료했다. 24필지·최대500000tick의 조기 종료 실행 범위다. 이전9ad native의 전체 해시 일치는 그 실행에 한정된다. 감사 무효화 진단과23d 교정 경로 재생은 완료했다. 최신 changed는401파일 실행·218파일 재사용,3451통과·실패0·skip13이고 geometry는27행·540조건을 통과했다. 관계 브라우저 기능 검증도 통과했지만390px 우측 잘림은 NEEDS_WORK다([화면 근거](../eb-tlink-relation-browser/README.md)).
 
 공식 실행 `engineB-tlink-baseline125-cf3fa94`가 seed1·2·3 각각125년(500000틱)을 수집하고 같은 명령을 재생했다. 세 판 모두 재생 일치, 실행 exit0, 명령 시간13416.9초다. 실제 소스는 `cf3fa941659ecb78396eed3780f88024a2bde0dd`, 제품 코드는 승인 기준 `64a16b5a6c1d91024415039db89bb88412528e15`와 같다. 측정 계측만 별도 커밋했다.
 
@@ -153,7 +153,7 @@ source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-
 
 [점수](final-23d-score.json.gz)는 conditional0·기존 미분류2건을 유지한다. [잔여 판독](final-23d-residuals.json.gz)의502건은 즉시 결과만 관측303·설명 미완179·관측 부족20·조건 미충족 관측0이다. 보충 phase334/818은 원래 분모816을 대체하지 않는다. source pin 불일치가 남아 strict audit는0/816이며, 기대표 핀을 임의로 갱신하거나 영수증 부재를 거짓 조건으로 바꾸지 않았다.
 
-[전후 비교](final-23d-parity.json.gz)는 세 판 commandStreamEqual/parityEqual/finalProjectionEqual=true, fullFinalHashEqual=false다. 관측 지점별 투영의 일치이며 모든 tick·전체 상태·별도 native 통과를 뜻하지 않는다. 별도23d native는 현재 RUNNING으로 결과가 없다. 이전9ad native PASS는23d에 승계하지 않는다.
+[전후 비교](final-23d-parity.json.gz)는 세 판 commandStreamEqual/parityEqual/finalProjectionEqual=true, fullFinalHashEqual=false다. 관측 지점별 투영의 일치이며 모든 tick·전체 상태·별도 native 통과를 뜻하지 않는다. 별도23d native는 아래 독립 실행에서 완료했다. 이전9ad native PASS를 승계한 판정이 아니다.
 
 ### 원본 보관과 오프라인 재계산
 
@@ -170,3 +170,10 @@ node scripts/engineBTlinkCompare.mjs .remote-runs/engineB-tlink-baseline125-cf3f
 ```
 
 각 명령은 개별 실행한다. scorer의 exit1은 실제80% 미달 결과이므로 `&&`나 `set -e`로 후속 잔여 판독을 생략하지 않는다. 비교에는 기존 baseline 원본도 필요하다. 이 재계산은 오프라인 판독이며 새 시뮬레이션을 시작하지 않는다. 과거 수집 잠정 자료와9ad 공식 자료는 원본 바이트와 당시 범위를 유지한다.
+
+
+## 최신23d native 완료 — 별도 실행 범위
+
+`engineB-tlink-native-latest-23d1226`의 [안내](../eb-tlink-native-23d/README.md), [manifest](../eb-tlink-native-23d/manifest.json), [원시 비교](../eb-tlink-native-23d/comparison.json)를 보존했다. 기준64a/제품23d의 **세 seed 전체 원시 최종 상태 SHA 일치·exit0·1529.5초**다. 보관은26파일449765bytes이며, 기록 제외 투영만의 일치를 전체 원시 해시 일치로 바꿔 말한 결과가 아니다.
+
+범위는24필지·최대500000tick·seed1–3이다. 모두 target-scale-stable로372667·281540·299186tick에 조기 종료했다. 표준5seed·1200000tick 관문이나 모든 tick 상태 일치는 증명하지 않는다.125년 답변 수집/재생과 다른 harness이므로 그 측정의 원시 전체 해시 불일치와 **334/816 FAIL**은 유지한다. 미래 기록만 세는 방식은 기존 도구의 집계 기준이며 사용자가 직접 지정한 시간 범위라는 뜻이 아니다.
