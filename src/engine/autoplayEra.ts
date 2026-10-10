@@ -18,8 +18,8 @@ import { cellInsideWall } from '../zones/zoneEdits';
 import { previewPalisadeRouteAccess } from './palisadeRouteAccess';
 import { charterTimberOrder } from './timberTrade';
 import { stretchedWallCandidates, wallRoom } from './autoplayWallRoom';
-import { holdsCharterSearch, palisadeFootprintsForState } from './palisadeFootprints';
-import { computePalisadeProposal, type PalisadePath, type PalisadeProposalResult } from '../world/palisadeGeometry';
+import { holdsCharterSearch, palisadeCoreFootprintsForState, palisadeFootprintsForState } from './palisadeFootprints';
+import { computePalisadeProposal, validatePalisadeCandidate, type PalisadePath, type PalisadeProposalResult } from '../world/palisadeGeometry';
 import { findAutoplayServiceWitness } from './autoplayServiceSpaceWitness';
 import { serviceSpaceBuildings } from './autoplayServiceSpaceRoutes';
 import { CHARTER_RING } from '../content/charterRingConfig';
@@ -31,6 +31,14 @@ import type { CharterWallFailureReason } from './townAgency.types';
  */
 export interface CharterSearchReport { readonly reason: CharterWallFailureReason; readonly homes: readonly string[]; readonly candidates: number }
 let lastCharterReport: CharterSearchReport | null = null;
+/** GROW-BLOCK-2a ①: what the lord's bot does with a request without a wall (`eraGameAction`): the nearest reachable wall, if valid and the proclamation takes it. */
+function lordBotCanProclaim(state: GameState): boolean {
+  const proposal = computeReachablePalisadeProposalForState(state);
+  if (!proposal.ok) return false;
+  const validation = validatePalisadeCandidate(state, proposal.path, palisadeFootprintsForState(state), palisadeCoreFootprintsForState(state), 1, { waterReach: true });
+  return validation.ok && confirmPalisadeProclamation(state, validation.candidate.path) !== state;
+}
+
 export function takeCharterSearchReport(): CharterSearchReport | null {
   const report = lastCharterReport;
   lastCharterReport = null;
@@ -251,9 +259,12 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
         const wide = widerRing(state, state.agency.charterWallFailure?.attempts ?? 0, remaining, targetLots);
         if (wide !== null) return { kind: 'proclaim_era', candidatePath: wide };
         lastCharterReport = charterReport(state, proposal, refusals, firstServiceRefusal, inspected.size);
-        // GROW-BLOCK-2a ①: no wall found is a failed search, kept with its reason — never a request without a wall. The
-        // lord's bot cannot proclaim one (it searches the same rules), so seed 9 asked thirty years with no failure on
-        // record and never searched again (engine-GROW2-remeasure-588d28d: 528 from 1317 to the end).
+        // GROW-BLOCK-2a ①: no wall found is a failed search, kept with its reason — never a request the lord's bot cannot
+        // answer (seed 9 asked thirty years with no failure on record and never searched again, engine-GROW2-remeasure-
+        // 588d28d). But the bot's own proclamation takes the nearest reachable wall the rules accept, without the town's
+        // service-space and room tests: when that wall exists the request stands (seed 20 got its wall so in 1316 on the
+        // trunk, and stalled from 1314 to the end without it, engine-GROW2a-growth-50fbcbe).
+        if (lordBotCanProclaim(state)) return { kind: 'proclaim_era' };
         return NONE;
       }
       if (proposal.reason === 'rejected_candidate') return NONE;
