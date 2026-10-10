@@ -8,7 +8,7 @@
 // slice's outcome, the estates held, the marriage) and each year's milliseconds.
 //   tsx scripts/marketTownStates.ts <out-dir> [seeds=1,2] [years=40]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
-refuseHeavyOnMac("영주 조각 봇 판(scripts/marketTownStates.ts)", { remote: "scripts/remote/run.sh render-MARKET-states-<sha7> --heavy --keep -- node_modules/.bin/tsx scripts/marketTownStates.ts $HOME/fls-market-states", entry: import.meta.url });
+refuseHeavyOnMac("영주 조각 봇 판(scripts/marketTownStates.ts)", { remote: "scripts/remote/run.sh render-MARKET-states-<sha7> --heavy --keep -- bash -c 'node_modules/.bin/tsx scripts/marketTownStates.ts \"$HOME/fls-market-states\"'", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { BALANCE } from "../src/content/balanceConfig";

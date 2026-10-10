@@ -17,6 +17,7 @@ import { DECISION_CARD_SURFACES } from "./decisionCard/surfaces";
 import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
+import { MARKET_SURFACES } from "./lord/market/surfaces";
 import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
 import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
@@ -36,7 +37,9 @@ export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "
   // ER-13: scripts/variantStates.ts (the wording variants' cards, ~/fls-variant-states).
   | "variants"
   // GROW-BLOCK: scripts/growPlanStates.ts (the palisade plan's stages from the bot's play, ~/fls-growplan-states).
-  | "growplan";
+  | "growplan"
+  // MARKET-TOWN: scripts/marketTownStates.ts (the lord's town after the market charter's proclamation, ~/fls-market-states).
+  | "market";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -605,6 +608,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...DECISION_SURFACES,
   // DEC-CARD-2: the standing policies and the season card's steward section (src/ui/lord/steward/surfaces.ts).
   ...STEWARD_SURFACES,
+  // MARKET-TOWN: the lord's screens after the market charter's proclamation (src/ui/lord/market/surfaces.ts, the `market` set).
+  ...MARKET_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
   // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice. Its states are in the `slice` set (scripts/autoPauseStates.ts:
