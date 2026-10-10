@@ -15,6 +15,7 @@ import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
+import { outlookOf, outlookTreasury } from '../src/ui/decisionCard/outlook.ts';
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -61,8 +62,8 @@ const open = (state, options = {}) => openScene(browser, { state, tile: seatTile
   // GEO-D1: the story's delay outlasts the scene's own setup (at 3 s openScene's Escape could put the card off for good).
   query: '&story-delay=8000', loadTimeout: 90_000, zoom: 1.1, ...options });
 /** The card, a political petition that opened first put off (it opens before a home petition, as for a player). */
-const waitCard = async (page, selector) => {
-  for (let waited = 0; waited < 30_000; waited += 500) {
+const waitCard = async (page, selector, timeout = 30_000) => {
+  for (let waited = 0; waited < timeout; waited += 500) {
     if (await page.locator(`${selector} >> visible=true`).count() > 0) return true;
     const political = page.locator('.petition-card:not(.lord-card) .story-modal-later >> visible=true');
     if (await political.count() > 0) await political.first().click();
@@ -71,12 +72,15 @@ const waitCard = async (page, selector) => {
   return false;
 };
 const fromChip = async (page, story, selector) => {
+  // The card may open by itself once the story's delay is past (as for a player); else its chip and [결정하기].
+  if (await waitCard(page, selector, 12_000)) return true;
   const chip = page.locator(`.event-chip[data-story="${story}"]`).first();
   if (!(await chip.waitFor({ state: 'visible', timeout: 30_000 }).then(() => true, () => false))) return false;
   await chip.click(); await page.locator('.event-card .event-card-decide').first().click();
   return waitCard(page, selector);
 };
 
+const shownMoney = (state, petitionId, grant) => { const outlook = outlookOf(state, { type: 'answer_estate_petition', petitionId, grant }); return outlook === null ? null : outlookTreasury(outlook); };
 const rows = {}; let bytes = 0;
 // 1. Each home petition kind: the card by itself, both answers.
 for (const kind of KINDS) {
@@ -95,7 +99,8 @@ for (const kind of KINDS) {
     const answered = after.petitions.find(p => p.id === petition.id);
     const shown = row.card?.answers.find(answer => answer.grant === String(grant));
     row.answers[grant ? 'grant' : 'refuse'] = { status: answered?.status ?? null, decidedBy: answered?.decidedBy ?? null, treasury: after.treasury - before.treasury,
-      shownTreasury: shown === undefined ? null : Number(shown.treasury), receipt, closed: (await page.locator('.lord-card').count()) === 0 };
+      // DEC-CARD-2: the card's treasury line is the engine's outlook for the answer (the heavy card's markup carries no number).
+      shownTreasury: shown === undefined ? null : shownMoney(state, petition.id, grant), receipt, closed: (await page.locator('.lord-card').count()) === 0 };
     await context.close();
   }
   row.pictureOk = ART[kind] ? row.card?.art !== null && Array.isArray(row.card?.loaded) && row.card.loaded[0] === 960 : row.card?.art === null && row.card?.src === null;
