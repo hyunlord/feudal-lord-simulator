@@ -5,7 +5,7 @@ import { platformServices } from "../../platform/platform";
 import { PlacementPaletteToggle } from "../../render/PlacementPaletteToggle";
 import { presentedState } from "../../render/presentation/presentedState";
 import { PresentationToggle } from "../../render/PresentationToggle";
-import { useGameApi, useGameUiSelector } from "../../state/gameStore";
+import { useGameUiSelector } from "../../state/gameStore";
 import { AudioControls } from "../AudioControls";
 import type { BuildCategory } from "../buildMenuPresentation";
 import { ChronicleScreen } from "../chronicle/ChronicleScreen";
@@ -84,7 +84,6 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   /** LM-R2 (lord mode): open the lord screen host on a screen and an engine id (the contested inheritance's suit). */
   readonly onOpenLord?: (screen: LordScreenId, focus: string) => void;
 }) {
-  const { dispatch } = useGameApi();
   const top = topModal(ui);
   // RECEIPTS: an answered card turns over to its receipt in the same modal; while it is up no card is shown under it.
   const receipts = useAnswerReceipt();
@@ -148,10 +147,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onResume={() => sendUi({ type: "pop_modal" })}
       onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) onMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
     {famineView === null ? null : <FamineDecisionModal view={famineView} onLater={() => sendUi({ type: "pop_modal" })} steward={steward} onPerson={onPerson}
-      onChoose={choice => { dispatch({ type: "famine_response", choice }); sendUi({ type: "pop_modal" }); }} />}
+      onChoose={choice => answered("decision", { type: "famine_response", choice }, famineView.card, choice)} />}
     {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })} onPerson={onPerson}
       petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
-      onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
+      onRespond={response => answered("petition", { type: "petition_response", petitionId: petitionView.petitionId, response }, petitionView.card, response)} />}
     {homeView === null || homeCard === null ? null : <DecisionCard view={homeCard} className="lord-card" crest={{ arms: homeView.arms, label: homeView.armsLabel }}
       data={{ "data-home-petition": homeView.kind, "data-petition": homeView.petitionId }}
       onLater={() => sendUi({ type: "pop_modal" })}

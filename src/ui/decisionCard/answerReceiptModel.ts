@@ -15,13 +15,15 @@ import { estateWord, onWhat } from "./families/lordOutcome";
 import { LORD_OUTCOME_WORDS as WORDS } from "./families/lordOutcomeCopy.ko";
 import { ANSWER_RECEIPT_COPY as COPY } from "./answerReceiptCopy.ko";
 import type { DecisionCardView } from "./decisionCardTypes";
+import { politicalReceiptRows } from "./politicalReceiptRows";
 
 // RECEIPTS (user 2026-10-10, "결과가 티가 안 난다"): what an answer changed, at once and with its numbers — read off the
 // store's state just before the answer and just after it (the engine's own reducer ran it; nothing here decides what an
 // answer does, P-D4). One row per thing that moved: the treasury, each faction's and house's relation, an estate's
 // goodwill, who manages it and how it is audited, a steward's loyalty and place, the steward's rules, the town's
 // conditions (policy, dues, subsidies, timber, the wall), claims and suits, possession, an estate's value and a ruling's
-// share, promises, registry terms and a marriage offer sent. The card's own "later" lines for the chosen answer follow
+// share, promises, registry terms and a marriage offer sent; RECEIPTS-2: what the famine's and the political petitions'
+// answers move (politicalReceiptRows.ts). The card's own "later" lines for the chosen answer follow
 // it (what the answer set going). The view holds only words: no state is kept once it is made (LEAK-1).
 
 export type ReceiptRow = Readonly<{ key: string; what: string; change: string }>;
@@ -211,7 +213,7 @@ export function receiptRows(before: GameState, after: GameState): readonly Recei
     return old === undefined || old.stewardId === entry.stewardId ? [] : [old.stewardId, entry.stewardId];
   }));
   return [...treasuryRows(before, after), ...relationRows(before, after), ...oversight, ...stewardRows(before, after, said), ...ruleRows(before, after),
-    ...conditionRows(before, after), ...estateRows(before, after), ...wordRows(before, after)];
+    ...conditionRows(before, after), ...estateRows(before, after), ...wordRows(before, after), ...politicalReceiptRows(before, after)];
 }
 
 /** The answer's receipt: the card's title and the answer, the rows, and the later lines the card showed for it. */
