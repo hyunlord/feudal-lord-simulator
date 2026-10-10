@@ -1,0 +1,48 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { decodeSave } from '../../../../src/save/saveCodec.ts';
+import { computePalisadeProposalForState, palisadeFootprintsForState, palisadeCoreFootprintsForState } from '../../../../src/engine/palisadeFootprints.ts';
+import { confirmPalisadeProclamation, projectPalisadeProclamation } from '../../../../src/engine/palisade.ts';
+import { previewPalisadeRouteAccess } from '../../../../src/engine/palisadeRouteAccess.ts';
+import { evaluateEraRequirements } from '../../../../src/engine/era.ts';
+import { diagnosePalisadeDraft, computePalisadeProposal, validatePalisadeCandidate, palisadePathEnclosesFootprints, palisadePerimeterSteps } from '../../../../src/world/palisadeGeometry.ts';
+import { buildingRoadAccessTiles } from '../../../../src/engine/routing.ts';
+import { canTraverseRoadBoundary } from '../../../../src/world/bridges.ts';
+import { getTile } from '../../../../src/world/grid.ts';
+import { existingRoadComponent } from '../../../../src/world/roadGraph.ts';
+const input = process.argv[2] ?? 'fixtures/charter/seed9-1319.save.json.gz';
+const bytes = readFileSync(input);
+const state = decodeSave(gunzipSync(bytes)).envelope.state;
+const hash = value => createHash('sha256').update(value).digest('hex');
+const before = JSON.stringify(state);
+const all = palisadeFootprintsForState(state), core = palisadeCoreFootprintsForState(state);
+const key = tile => `${tile.tx},${tile.ty}`;
+const source = state.buildings.find(b => b.kind === 'storehouse');
+const reach = s => new Set(existingRoadComponent(s, buildingRoadAccessTiles(s, source)).map(key));
+const baseline = reach(state);
+const rows = [];
+const inspect = (path, origin = "production-accepted") => {
+ const projected = projectPalisadeProclamation(state, path), confirmed = confirmPalisadeProclamation(state, path);
+ const access = previewPalisadeRouteAccess(state, path);
+ const completed = projected.palisade === null ? null : {...projected, palisade:{...projected.palisade, segments:projected.palisade.segments.map(s=>({...s,completed:true}))}};
+ const after = completed === null ? null : reach(completed);
+ const blockedRoadEdges = completed === null ? null : state.tiles.filter(t=>t.hasRoad&&t.buildingId===null).flatMap(t=>[{tx:t.tx+1,ty:t.ty},{tx:t.tx,ty:t.ty+1}].filter(n=>getTile(state,n)?.hasRoad&&getTile(state,n)?.buildingId===null&&canTraverseRoadBoundary(state,t,n)&&!canTraverseRoadBoundary(completed,t,n)).map(n=>[key(t),key(n)]));
+ rows.push({origin,blockedRoadEdges,path, vertices:path.length, perimeterSteps:palisadePerimeterSteps(path), validation:validatePalisadeCandidate(state,path,all,core,1,{waterReach:true}), excludedCore:core.filter(f=>!palisadePathEnclosesFootprints(path,[f])).map(f=>f.id), projected:projected!==state, confirmed:confirmed!==state, gates:access.gates, unreachableSiteIds:access.unreachableSiteIds, unavailableSiteIds:access.unavailableSiteIds, buildings:state.buildings.map(b=>({id:b.id,kind:b.kind,tx:b.tx,ty:b.ty,beforePorts:buildingRoadAccessTiles(state,b),afterPorts:completed===null?null:buildingRoadAccessTiles(completed,b),connectedBefore:buildingRoadAccessTiles(state,b).some(p=>baseline.has(key(p))),connectedAfter:after===null?null:buildingRoadAccessTiles(completed,b).some(p=>after.has(key(p)))}))});
+ return false;
+};
+const result = computePalisadeProposalForState(state, inspect);
+const acceptedCandidateCount = rows.length;
+if (!result.ok && result.attemptedPath) inspect(result.attemptedPath,"production-rejected-attempt");
+const diagnosis = !result.ok && result.attemptedPath ? diagnosePalisadeDraft(state,result.attemptedPath,all,core,1,{waterReach:true}) : null;
+const raw = [];
+for (const [name, anchors] of [["core",core],["all",all]]) for (const margin of [1,2,3]) {
+ const proposed = computePalisadeProposal(state,anchors,undefined,[margin],true);
+ raw.push({name,margin,...proposed});
+ if(proposed.ok) inspect(proposed.path,`raw-${name}-margin-${margin}`);
+}
+if(before!==JSON.stringify(state)) throw Error('probe mutated input');
+const output={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),runtime:process.version,input,inputSha256:hash(bytes),stateSha256:hash(before),stateUnchanged:true,tick:state.tick,era:state.era,population:state.population,requirements:evaluateEraRequirements(state),coreCount:core.length,allCount:all.length,acceptedCandidateCount,diagnosis,raw,result,rows};
+writeFileSync('docs/verification/eb-grow/palisade/seed9.json',JSON.stringify(output,null,2)+'\n');
+console.log(JSON.stringify({...output,rows:rows.map(({buildings,validation,...r})=>({...r,validation:validation.ok?'ok':validation.reason,lostBuildings:buildings.filter(b=>b.connectedBefore&&b.connectedAfter===false).map(b=>b.id),disconnectedBefore:buildings.filter(b=>!b.connectedBefore).map(b=>b.id)}))}));
