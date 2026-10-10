@@ -40,22 +40,41 @@ type SiteView = { readonly kind: string; readonly required: Partial<Record<Resou
  * its building cost in stock and takes at most half of the rest — or when its site still needs timber — then the
  * palisade takes at most half of the stock (the site is served first anyway, construction sites before walls).
  */
+/** GROW-BLOCK-2a ③: the building that makes the material a charter building waits for (the church's stone: the quarry). */
+export const CHARTER_MATERIAL_SOURCE_KIND = "quarry";
+
 export function charterTimberWait(
   buildings: readonly { readonly kind: string }[],
   sites: readonly SiteView[],
-  timberCost: (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => number,
+  timberCost: (kind: string) => number,
   otherMaterialsHeld: (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => boolean = () => true,
 ): CharterTimberWait {
   const next = CHARTER_TIMBER_KINDS.find(kind => !buildings.some(building => building.kind === kind));
   if (next === undefined) return NO_CHARTER_WAIT;
-  const site = sites.find(candidate => candidate.kind === next);
-  // GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material (the church's stone before
-  // the quarry) holds no timber back — the wall's timber waited years for it (engine-GROW2a-wall-98667ca: seed 8's
-  // palisade at 671 timber from 1311 to 1316, the town's stock 17–69 under the church's 100).
-  if (site === undefined && !otherMaterialsHeld(next)) return NO_CHARTER_WAIT;
-  if (site === undefined) return { keep: timberCost(next), wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE };
-  const need = (site.required.timber ?? 0) - (site.delivered.timber ?? 0) - (site.reserved.timber ?? 0);
-  return need > 0 ? { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE } : NO_CHARTER_WAIT;
+  const waitFor = (kind: string): CharterTimberWait => {
+    const site = sites.find(candidate => candidate.kind === kind);
+    if (site === undefined) return { keep: timberCost(kind), wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE };
+    const need = (site.required.timber ?? 0) - (site.delivered.timber ?? 0) - (site.reserved.timber ?? 0);
+    return need > 0 ? { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE } : NO_CHARTER_WAIT;
+  };
+  // GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material (the church's stone) holds
+  // no timber of its own back — the wall's timber waited years for it (engine-GROW2a-wall-98667ca: seed 8's palisade at
+  // 671 timber from 1311 to 1316, the stock 17–69 under the church's 100) — but the building that makes that material
+  // (the quarry) does, until it stands: seed 1's quarry waited for the whole wall, its church five years more
+  // (engine-GROW2a-measure-b155099, 528 from 1318 to 1329).
+  if (!sites.some(candidate => candidate.kind === next) && !otherMaterialsHeld(next)) {
+    return buildings.some(building => building.kind === CHARTER_MATERIAL_SOURCE_KIND) ? NO_CHARTER_WAIT : waitFor(CHARTER_MATERIAL_SOURCE_KIND);
+  }
+  return waitFor(next);
+}
+
+/**
+ * GROW-BLOCK-2a ⑥: with a sawmill's window of logs in the stores, the palisade leaves a sawmill's timber too — seed 5's
+ * one sawmill faced 231 logs with 1–4 timber in stock for ten years, the wall taking each sawn plank before a second
+ * sawmill's 30 could gather (engine-GROW2a-measure-b155099).
+ */
+export function withSawmillKeep(wait: CharterTimberWait, sawmillTimber: number): CharterTimberWait {
+  return { keep: Math.max(wait.keep, sawmillTimber), wallSharePermille: wait.wallSharePermille };
 }
 
 /**
@@ -63,7 +82,7 @@ export function charterTimberWait(
  * part of the town's allowance, `share × (stock − keep)`, spread over the sources by their stock.
  */
 function charterLimited(wait: CharterTimberWait, available: number, townStock: number): number {
-  if (wait.wallSharePermille >= 1_000 || townStock <= 0) return available;
+  if ((wait.wallSharePermille >= 1_000 && wait.keep <= 0) || townStock <= 0) return available;
   const allowance = Math.floor(Math.max(0, townStock - wait.keep) * wait.wallSharePermille / 1_000);
   return Math.min(available, Math.floor(available * allowance / townStock));
 }

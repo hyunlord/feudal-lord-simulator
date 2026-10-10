@@ -3,6 +3,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
   CHARTER_TIMBER_KINDS,
+  withSawmillKeep,
   charterTimberWait,
   wallDeliveryAvailable,
   type CharterTimberWait,
@@ -183,6 +184,10 @@ function treasuryCandidate(params: {
 }
 
 /** FIX-16: whether the next charter building waits for timber, and the town's timber (buildings and treasury). */
+/** One sawmill's logs for a window (2 logs a timber every 35 ticks), as the bot's `logBacklog`. */
+const SAWMILL_WINDOW_LOGS = (() => { const mill = BUILDING_CONFIG_BY_KIND.sawmill.production;
+  return mill === null ? 0 : Math.round(mill.inputPerOutput * 2_400 / mill.ticksPerOutput); })();
+
 export function charterTimberContext(params: {
   readonly buildings: readonly Building[];
   readonly constructionSites: readonly ConstructionSite[];
@@ -192,8 +197,12 @@ export function charterTimberContext(params: {
   const held = (resource: ResourceType) => params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, resource), 0);
   const otherMaterialsHeld = (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => Object.entries(BUILDING_CONFIG_BY_KIND[kind].buildCost)
     .every(([resource, amount]) => resource === "timber" || held(resource as ResourceType) >= Number(amount ?? 0));
-  const wait = charterTimberWait(params.buildings, params.constructionSites, kind => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0, otherMaterialsHeld);
-  if (wait.wallSharePermille >= 1_000) return { wait, townStock: 0 };
+  const timberCost = (kind: string) => BUILDING_CONFIG_BY_KIND[kind as keyof typeof BUILDING_CONFIG_BY_KIND]?.buildCost.timber ?? 0;
+  const charter = charterTimberWait(params.buildings, params.constructionSites, timberCost, otherMaterialsHeld);
+  // GROW-BLOCK-2a ⑥: logs backing up — the palisade leaves a sawmill's timber (no sawmill site already waiting).
+  const backlog = held("logs") >= SAWMILL_WINDOW_LOGS && !params.constructionSites.some(site => "kind" in site && site.kind === "sawmill");
+  const wait = backlog ? withSawmillKeep(charter, timberCost("sawmill")) : charter;
+  if (wait.wallSharePermille >= 1_000 && wait.keep <= 0) return { wait, townStock: 0 };
   const townStock = params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, "timber"), 0) + Math.max(0, params.treasuryTimber);
   return { wait, townStock };
 }
