@@ -418,11 +418,12 @@
 .app-shell .event-card-advice { padding: 6px 8px; background-color: var(--palette-parchment); }
 .app-shell .event-card-facts { margin: 0; padding-left: 18px; font-size: 13px; }
 .app-shell .event-card-art { border: 1px solid var(--palette-ink); }
-/* PLAY-2 §4: on a short view a family moment's picture (Wave 40, 296 × 167) is cropped to 136 px (cover, centred) so the
-   card with its people named ends above the action dock (render-GROWKIN-geometry-2548cfd: 1280 × 720, long copy, long
-   names ran 19.5 px under it); !important over the picture's own inline height. */
-@media (max-height: 760px) {
-  .app-shell .event-card[data-story='lord_moment']:has(.event-card-facts) .event-card-art { height: 136px !important; }
+/* PLAY-2 §4: on a short view a family moment's picture (Wave 40, 296 × 167) is cropped to a 96 px band (cover, centred)
+   so the card with its people named ends above the steward's line and the action dock (render-GROWKIN-geometry-2548cfd:
+   1280 × 720 long names ran 19.5 px under the dock; -d31ed02: 1024 × 768 12.3 px over the steward's line); !important
+   over the picture's own inline height. */
+@media (max-height: 800px) {
+  .app-shell .event-card[data-story='lord_moment']:has(.event-card-facts) .event-card-art { height: 96px !important; }
 }
 .app-shell .event-card-actions { display: flex; flex-wrap: wrap; gap: 4px; }
 .app-shell .event-card-actions button { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; font-size: 13px; }
