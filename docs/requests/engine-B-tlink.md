@@ -123,6 +123,8 @@ GROW-BLOCK은 여전히v55다. 2026-10-10 읽기 전용 재확인 경로는 `/Us
 
 최초 확인 때 GROW 추가 변경에 `decisionTrace.ts`, `decisionTrace.types.ts`, `history.types.ts`, registry 계열은 없었지만 의미상 독립이나 최신 무충돌을 보증하지 않는다. 당시 핵심 엔진 커밋은77c6420f1·253683af9·566ce1f22·697b35b57이었다.
 
+추가 읽기 전용 확인(2026-10-10): 같은 krill-grow의 HEAD는 `98667ca8702ebf4af7f8385915f231d6c2f82e20`, 저장은 `SAVE_SCHEMA_VERSION = 55`다. tracked 변경은 없고 미추적 `scripts/tmp/`가 남아 있다. a7708144 이후 변경은 `scripts/wallTimberProbe.ts`, `src/content/charterRingConfig.ts`, `src/engine/autoplayEra.ts`, `src/engine/timberTrade.ts`, `src/state/growthOpening.ts`이며 TLINK의 제품 변경 파일과 새 직접 교집합은 없다. 다만 `timberTrade.ts:91`의 느린 목재 주문을 영주 모드로 제한하는 규칙 변경은 새 즉시 효과 판독기의 소스 핀과 다르다. 통합판은 핀을 단순 교체해 기존127건/네 분류 측정을 재사용하면 안 되며, 변경 의미 검토 후 통합 소스로 다시 측정해야 한다. 이 확인은 위 저장 이행·기존 충돌 목록을 해소했다는 뜻이 아니다.
+
 ## 엔진이 검토할 결함과 한계
 
 1. **영지 mood의 제한된 교정.** 이전 9ad의 공식 점수는 36.8873%로 미달이다. 9ad native와 무효화 probe는 완료했고, 최신 23d는 교정한 단일 경로를 확인했다. 23d의 공식 125년 점수도 334/816으로 미달했다. 기존 `decisionTrace.ts`의 전역 길이 기반 요약 탐색이 같은 길이의 새 요약을 놓치는 경로와 별개로864f1ea는 객체 정체성으로 실제 새 요약을 찾고 기존 계절 기록에만 연결한다. 답 당시 실제 관계 변화와 첫 다음 철까지 끊기지 않은 기여만 허용한다. 같은 estate의 모든 답·clamp0·알 수 없는 변화는 연결하지 않는다. 864의 부호 제한은9ad에서 실제값과 자기 기여를 뺀 값의 strict interior 검사로 교정했다. 집중 회귀 통과는 자연125년 적용률·전체 규칙 해시·실제 화면 인수를 대신하지 않는다.
