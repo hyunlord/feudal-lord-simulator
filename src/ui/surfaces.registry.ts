@@ -423,7 +423,11 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.petition.interlude-church", ...DECISION_CARD, scene: petitionScene("ui10", "church_rebuilding", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's church rebuilding" },
   { id: "modal.chapter-page.ch1", ...CHAPTER_PAGE, scene: chapterScene("ui5", "chapter-end"), data: "chapter 1's end page" },
   { id: "modal.chapter-page.ch2", ...CHAPTER_PAGE, scene: chapterScene("ui6", "chapter2-end"), data: "chapter 2's end page" },
-  { id: "modal.chapter-page.ch3", ...CHAPTER_PAGE, scene: chapterScene("ui8", "chapter3-end"), data: "chapter 3's end page" },
+  // Chapter 3's town is the campaign's biggest of these states (1,234 people): on a busy DGX its load ran past the 20 s
+  // story delay, the page was up before openScene's Escape and Escape put it away for good (REMOTE: infra-RR26C-rows-ed67968,
+  // seven conditions through the retry round). Its delay outlasts that load (decision GEO-D1).
+  { id: "modal.chapter-page.ch3", ...CHAPTER_PAGE, scene: { ...chapterScene("ui8", "chapter3-end"), query: "&story-delay=45000" },
+    open: [{ wait: ".chronicle-page", timeout: 150_000 }, { pause: 800 }], data: "chapter 3's end page" },
   { id: "modal.chapter-page.ch4", ...CHAPTER_PAGE, scene: chapterScene("ui9", "chapter4-end"), data: "chapter 4's end page" },
   { id: "modal.chapter-page.ch5", ...CHAPTER_PAGE, scene: chapterScene("ui10", "chapter5-end"), data: "chapter 5's end page (the campaign's)" },
   { id: "modal.chapter-preview", extends: "modal.chapter-page.ch1", root: ".chapter-preview", frame: "flat", scene: chapterScene("ui5", "chapter-end"),
