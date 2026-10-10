@@ -77,7 +77,8 @@ const waitCard = async (page, selector, timeout = 30_000) => {
 const fromChip = async (page, story, selector) => {
   // The card may open by itself once the story's delay is past (as for a player); else its chip and [결정하기].
   if (await waitCard(page, selector, 12_000)) return true;
-  const chip = page.locator(`.event-chip[data-story="${story}"]`).first();
+  // A lord's matter put off waits under the lord's moment chip (LM-R2) when it has no chip of its own.
+  const chip = page.locator(`.event-chip[data-story="${story}"], .event-chip[data-story="lord_moment"]`).first();
   if (!(await chip.waitFor({ state: 'visible', timeout: 30_000 }).then(() => true, () => false))) return false;
   await chip.click(); await page.locator('.event-card .event-card-decide').first().click({ timeout: 10_000 }).catch(() => undefined);
   return waitCard(page, selector);
