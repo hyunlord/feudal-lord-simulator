@@ -18,6 +18,9 @@ import { autoplayCanPlace } from "../src/engine/autoplayZones";
 import { treeStage } from "../src/engine/land";
 import { constructionDeliveryNeed } from "../src/economy/construction";
 import { evaluateEraRequirements } from "../src/engine/era";
+import { annualWheatNeed } from "../src/engine/autoplayArable";
+import { expectedAnnualWheat } from "../src/zones/arableOutlook";
+import { housingLotCount } from "../src/population/housing";
 import { houseRequirementRows } from "./autoplayStallProbe";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
@@ -67,6 +70,15 @@ function waiting(state: GameState) {
   return { unmet, belowL4: below.length, lacks, sites };
 }
 
+/** GROW-BLOCK-2a (the user's check 2026-10-11): the town's effective wheat a cell and the need a lot — does the 9.6-cell cap feed a lot? */
+function wheat(state: GameState) {
+  const arable = zonesOf(state).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0);
+  const lots = housingLotCount(state);
+  const expected = expectedAnnualWheat(state);
+  const need = annualWheatNeed(state);
+  return { arable, lots, expected, need, perCell: arable > 0 ? Math.round(expected / arable * 10) / 10 : null, needPerLot: lots > 0 ? Math.round(need / lots) : null };
+}
+
 function row(state: GameState, year: number) {
   const kinds: Record<string, number> = {};
   for (const building of state.buildings) kinds[building.kind] = (kinds[building.kind] ?? 0) + 1;
@@ -81,7 +93,7 @@ function row(state: GameState, year: number) {
     buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
-    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state) };
+    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state) };
 }
 
 /** Renderer A's state bundle and the next Astra play (2026-10-10): saves a season after the market charter, some years on, and at the end. */
