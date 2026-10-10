@@ -1,0 +1,36 @@
+{
+  "sourceRevision": "13d4429e4b479278456ac177223dd42d0eba98f7",
+  "verdict": "PASS",
+  "functionalRun": "engineB-standing6-browser-13d4429",
+  "passes": [
+    {
+      "reviewer": "standing_final_review",
+      "scope": "Design-system and functional integrity",
+      "verdict": "PASS",
+      "screenshotsOpened": 12,
+      "findings": []
+    },
+    {
+      "reviewer": "standing_trace_discovery",
+      "scope": "Visual fidelity and Korean word boundaries",
+      "verdict": "PASS",
+      "screenshotsOpened": 15,
+      "findings": []
+    }
+  ],
+  "verified": [
+    "Existing live React components and shared buttons/styles are reused.",
+    "Actual seasonal loss -10d is shown in report and ledger, without counting it twice.",
+    "Normal policy withdrawal changes standing to lord and removes withdrawal action.",
+    "Policy cost and withdrawal text fit widths 375/768/1280.",
+    "Automatic audit report preserves 보고했습니다 as a complete word."
+  ],
+  "diagnosticDiffs": {
+    "policy": "30 hotspots represent intended policy-column reflow; old clipped image is not an approved baseline.",
+    "report": "Word-boundary repair is visible; map background differences also contribute to total diff, so similarity is not a verdict."
+  },
+  "limitations": [
+    "Prepared-save Chrome desktop emulation, not natural eligibility, long-run gameplay, physical touch hardware or keyboard accessibility.",
+    "Existing 375px map HUD clipping is outside this changed policy/report/ledger scope."
+  ]
+}

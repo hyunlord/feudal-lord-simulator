@@ -1,0 +1,144 @@
+{
+  "runId": "engineB-standing6-browser-13d4429",
+  "sourceRevision": "13d4429e4b479278456ac177223dd42d0eba98f7",
+  "ruleRevision": "239c8239880d063752d2713fad8902c3e8724c09",
+  "functionalPass": true,
+  "limits": [
+    "Prepared save created by actual reducer/season/audit handlers, not natural-play eligibility or 125-year evidence.",
+    "Image diffs compare known defects with repaired layout; the references are not approved targets and similarity is not a pass threshold.",
+    "Raw result retains its pending visualReview field; separate review.json records subsequent independent reviews.",
+    "Existing 375px map HUD clipping remains outside the changed standing-policy/report/ledger surfaces."
+  ],
+  "files": [
+    {
+      "file": "768-season-loss.jpg",
+      "bytes": 123919,
+      "sha256": "4af77ffe716f0e850ae1d3ebdb3cce383cf67e431277b26e0aeb58a0c229f058"
+    },
+    {
+      "file": "768-policy-active.jpg",
+      "bytes": 123030,
+      "sha256": "e4b13f9fadb5c38b6d0c5de8912db8c12cf8a93de3189cdbc2d139a9573cab18"
+    },
+    {
+      "file": "375-policy-active.jpg",
+      "bytes": 65628,
+      "sha256": "bc05ff5c558ab2e62ac13428c08fcecd868204b3d90fa77e2382cdffa70d7c91"
+    },
+    {
+      "file": "result.json",
+      "bytes": 18091,
+      "sha256": "1bff8d30228f89ddc289f3dcc8fd5cfb6808f7b73e67911f13ecbbddabd655ca"
+    },
+    {
+      "file": "375-report.jpg",
+      "bytes": 60952,
+      "sha256": "03fd8f0e965f65854587331ba31d8915d5053d40dd0c863bb8d3c9e571081224"
+    },
+    {
+      "file": "768-report.jpg",
+      "bytes": 123764,
+      "sha256": "87a8237559df9e57250e76b93f8a9ed9dca289916f29136d1e2957dd4931bbbe"
+    },
+    {
+      "file": "375-ledger-loss.jpg",
+      "bytes": 59208,
+      "sha256": "8516f2c8fce7af09e8a686010843bb8b206dc26f425801b737bb15154c8d2353"
+    },
+    {
+      "file": "1280-ledger-loss.jpg",
+      "bytes": 202060,
+      "sha256": "0795889268281793840f31c69b4a5ac5de5b95c5799596b0ebce1d11a75cc907"
+    },
+    {
+      "file": "standing.save.json.gz",
+      "bytes": 58225,
+      "sha256": "efc1a1b48cdba78abce95b0bd17fde3fcccf1eff34e06d8f7fb349525af22e16"
+    },
+    {
+      "file": "1280-report.jpg",
+      "bytes": 208963,
+      "sha256": "d743b56bae099096ad793ae250033f61afbbcbb84cfa62573cf0d34ee577272e"
+    },
+    {
+      "file": "375-policy-revoked.jpg",
+      "bytes": 62990,
+      "sha256": "b421a1cd8861ec6722f5b306c60107542ff06c9382ff494a0216d087f70df098"
+    },
+    {
+      "file": "375-season-loss.jpg",
+      "bytes": 59359,
+      "sha256": "ee3bae73cbc3356d6bb77ea3400fdf7375f6b29e5a4a56d4ff750d6548ac651f"
+    },
+    {
+      "file": "1280-season-loss.jpg",
+      "bytes": 208925,
+      "sha256": "9618e09e0c9eb58f8221c58eaae97cad97ff7224309895d33a573f6fa83d5a6b"
+    },
+    {
+      "file": "768-ledger-loss.jpg",
+      "bytes": 112012,
+      "sha256": "c2ab060ac00f2e5a686f9abb305f3bd16e1f7fa83ef8ab25dc83082aaf4d9d27"
+    },
+    {
+      "file": "1280-policy-active.jpg",
+      "bytes": 185648,
+      "sha256": "1d2f80c317a1e3799d260bfc8674680772d6ac5732a23ca243211d908815e9f2"
+    },
+    {
+      "file": "768-policy-revoked.jpg",
+      "bytes": 119781,
+      "sha256": "8bedffd43785d54bb6510738b81842a6347e880b0c6fba13ad60b2887c39e905"
+    },
+    {
+      "file": "1280-policy-revoked.jpg",
+      "bytes": 183671,
+      "sha256": "4b6983bf212154f323428201f791ad3051daab847572fd391b6401eeece9fafd"
+    },
+    {
+      "file": "official/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "official/timing.env",
+      "bytes": 76,
+      "sha256": "15574b983ae5d87b66f65bc0da1dafe73b5c7eaa8c90e4fb2015844c3dfe3549"
+    },
+    {
+      "file": "official/run.log.gz",
+      "bytes": 802,
+      "sha256": "66f2e1ffeca138b2020f3bc1a5e2182973ace438a702ece34869b8e083cb273d"
+    },
+    {
+      "file": "reference/375-policy-clipped.jpg",
+      "bytes": 60763,
+      "sha256": "3622b1dc144df95fa43e5c54b4721f527d40bc66db2cd2742aa10ccdfb79688b"
+    },
+    {
+      "file": "reference/375-report-split-word.jpg",
+      "bytes": 60848,
+      "sha256": "c85b519fd25c6d7529712b8ecc4f4bf8ff68c7e012d426ea18f628138caad26a"
+    },
+    {
+      "file": "diagnostic/375-diff.json",
+      "bytes": 4809,
+      "sha256": "f67fca243963c6bb6bbf65bfe3bc2c2e906cbe175311fa21954adea6e8fed64b"
+    },
+    {
+      "file": "diagnostic/375-report-diff.json",
+      "bytes": 6674,
+      "sha256": "c3c4c365579c1555616f2380b7aa0c477049f626549d8301bc3f9c56e2af175e"
+    },
+    {
+      "file": "review.json",
+      "bytes": 1507,
+      "sha256": "c8dc3da806deaca0cf3bc9e7e94cf6dcdf4b7acc16042b54074b16c316186967"
+    },
+    {
+      "file": "README.md",
+      "bytes": 856,
+      "sha256": "484910d1b1150ff5f6995e34f6b2112574c6d8d66caf3c9ed3c5aa28711f093b"
+    }
+  ]
+}
