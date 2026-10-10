@@ -1,0 +1,3021 @@
+{
+  "schemaVersion": 1,
+  "policy": "2026-10-11 user: pooled seed-years; median/max, total, years above four must all not increase",
+  "calculationLocation": "Mac, retained DGX measurements only; no new simulation",
+  "inputs": {
+    "baseline": {
+      "file": "docs/verification/eb-tlink-four-categories/official-71bc336/report.json.gz",
+      "sha256": "5519e0d87775f5c48dd3629f36b676cdc49d7e4c35b32a1f5f4459bc03d14d33"
+    },
+    "current": {
+      "file": "docs/verification/eb-inert/official-125/categories.json.gz",
+      "sha256": "a7777c936d51c60b531a34570563f4556eeeed79fbc6f092c8c8e934fd27c34c"
+    },
+    "comparison": {
+      "file": "docs/verification/eb-inert/official-125/comparison.json",
+      "sha256": "6863bca53bda60d22b8ac957bc8f296d67e24590728d1062264592bdeb7d5c9d"
+    }
+  },
+  "definition": {
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "yearsPerSeed": 125,
+    "startYear": 1300,
+    "ticksPerYear": 4000,
+    "pooledSamples": 375,
+    "annualCount": "All classified heavy answers including censored end-window answers; zero-answer years included; each seed-year is one sample, not a sum across three towns in one calendar year."
+  },
+  "before": {
+    "seedYears": 375,
+    "median": 2,
+    "maximum": 6,
+    "total": 836,
+    "yearsAboveFour": 26
+  },
+  "after": {
+    "seedYears": 375,
+    "median": 2,
+    "maximum": 6,
+    "total": 864,
+    "yearsAboveFour": 27
+  },
+  "checks": {
+    "annualMedianAndMaximum": true,
+    "totalHeavyAnswers": false,
+    "yearsAboveFour": false
+  },
+  "pass": false,
+  "bySeed": [
+    {
+      "seed": 1,
+      "before": {
+        "seed": 1,
+        "seedYears": 125,
+        "median": 2,
+        "maximum": 5,
+        "total": 245,
+        "yearsAboveFour": 8,
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          3,
+          1,
+          0,
+          1,
+          5,
+          3,
+          3,
+          3,
+          1,
+          4,
+          5,
+          3,
+          2,
+          5,
+          0,
+          2,
+          4,
+          2,
+          4,
+          2,
+          1,
+          2,
+          3,
+          1,
+          2,
+          2,
+          5,
+          4,
+          5,
+          4,
+          4,
+          1,
+          2,
+          5,
+          3,
+          1,
+          2,
+          5,
+          3,
+          3,
+          3,
+          1,
+          3,
+          0,
+          3,
+          2,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          5,
+          0,
+          1,
+          1,
+          1,
+          2,
+          4,
+          3,
+          3,
+          3,
+          2,
+          2,
+          3,
+          3,
+          2,
+          2,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          2,
+          2,
+          1,
+          2,
+          0,
+          0,
+          1,
+          1,
+          2,
+          4,
+          2,
+          2,
+          2,
+          4,
+          2,
+          2,
+          2,
+          1,
+          3,
+          2,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          3,
+          0,
+          2,
+          0,
+          0,
+          2,
+          0,
+          3,
+          4
+        ]
+      },
+      "after": {
+        "seed": 1,
+        "seedYears": 125,
+        "median": 2,
+        "maximum": 6,
+        "total": 280,
+        "yearsAboveFour": 10,
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          3,
+          1,
+          0,
+          1,
+          5,
+          3,
+          3,
+          3,
+          1,
+          4,
+          5,
+          3,
+          3,
+          5,
+          1,
+          3,
+          4,
+          3,
+          4,
+          3,
+          2,
+          2,
+          3,
+          1,
+          3,
+          2,
+          5,
+          4,
+          6,
+          4,
+          5,
+          2,
+          3,
+          5,
+          3,
+          1,
+          2,
+          5,
+          4,
+          4,
+          3,
+          1,
+          3,
+          0,
+          3,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          5,
+          0,
+          2,
+          0,
+          1,
+          1,
+          4,
+          2,
+          2,
+          1,
+          2,
+          2,
+          3,
+          3,
+          1,
+          3,
+          3,
+          1,
+          1,
+          1,
+          2,
+          1,
+          3,
+          1,
+          3,
+          3,
+          3,
+          2,
+          3,
+          1,
+          1,
+          2,
+          2,
+          3,
+          5,
+          2,
+          3,
+          2,
+          4,
+          2,
+          2,
+          2,
+          1,
+          3,
+          3,
+          2,
+          3,
+          2,
+          3,
+          3,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "seed": 2,
+      "before": {
+        "seed": 2,
+        "seedYears": 125,
+        "median": 2,
+        "maximum": 6,
+        "total": 282,
+        "yearsAboveFour": 7,
+        "counts": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          2,
+          3,
+          5,
+          2,
+          1,
+          1,
+          2,
+          4,
+          2,
+          3,
+          2,
+          4,
+          4,
+          3,
+          3,
+          3,
+          1,
+          2,
+          2,
+          2,
+          2,
+          3,
+          4,
+          2,
+          2,
+          4,
+          3,
+          2,
+          6,
+          4,
+          5,
+          3,
+          1,
+          3,
+          3,
+          4,
+          1,
+          3,
+          2,
+          5,
+          5,
+          1,
+          3,
+          3,
+          3,
+          1,
+          4,
+          2,
+          1,
+          1,
+          3,
+          2,
+          3,
+          3,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          4,
+          2,
+          3,
+          2,
+          1,
+          3,
+          3,
+          5,
+          2,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          4,
+          2,
+          2,
+          1,
+          3,
+          0,
+          1,
+          2,
+          3,
+          2,
+          3,
+          2,
+          2,
+          1,
+          2,
+          1,
+          4,
+          2,
+          1,
+          5,
+          3,
+          3,
+          1,
+          1,
+          1,
+          3,
+          3,
+          2,
+          2,
+          0,
+          1,
+          4,
+          3,
+          2,
+          1,
+          2,
+          3,
+          1,
+          3,
+          1,
+          3
+        ]
+      },
+      "after": {
+        "seed": 2,
+        "seedYears": 125,
+        "median": 2,
+        "maximum": 6,
+        "total": 262,
+        "yearsAboveFour": 4,
+        "counts": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          2,
+          3,
+          5,
+          2,
+          1,
+          2,
+          2,
+          4,
+          1,
+          1,
+          1,
+          4,
+          4,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          6,
+          4,
+          4,
+          2,
+          2,
+          3,
+          1,
+          2,
+          1,
+          4,
+          2,
+          3,
+          5,
+          2,
+          3,
+          2,
+          3,
+          2,
+          2,
+          0,
+          2,
+          2,
+          3,
+          1,
+          2,
+          3,
+          2,
+          3,
+          1,
+          2,
+          2,
+          1,
+          3,
+          2,
+          3,
+          2,
+          1,
+          3,
+          2,
+          3,
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          2,
+          1,
+          1,
+          3,
+          1,
+          1,
+          2,
+          3,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          3,
+          1,
+          2,
+          5,
+          2,
+          2,
+          0,
+          1,
+          0,
+          2,
+          3,
+          2,
+          2,
+          0,
+          2,
+          4,
+          3,
+          3,
+          2,
+          3,
+          4,
+          1,
+          4,
+          2,
+          4
+        ]
+      }
+    },
+    {
+      "seed": 3,
+      "before": {
+        "seed": 3,
+        "seedYears": 125,
+        "median": 3,
+        "maximum": 6,
+        "total": 309,
+        "yearsAboveFour": 11,
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          1,
+          0,
+          0,
+          1,
+          3,
+          3,
+          1,
+          3,
+          3,
+          3,
+          5,
+          3,
+          4,
+          2,
+          3,
+          4,
+          4,
+          3,
+          3,
+          0,
+          5,
+          3,
+          3,
+          4,
+          2,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5,
+          4,
+          2,
+          2,
+          4,
+          3,
+          4,
+          2,
+          4,
+          2,
+          4,
+          5,
+          1,
+          4,
+          4,
+          3,
+          4,
+          4,
+          3,
+          4,
+          2,
+          0,
+          0,
+          1,
+          3,
+          5,
+          4,
+          2,
+          0,
+          2,
+          4,
+          3,
+          3,
+          5,
+          1,
+          3,
+          3,
+          4,
+          2,
+          2,
+          2,
+          1,
+          0,
+          3,
+          3,
+          3,
+          6,
+          3,
+          2,
+          3,
+          3,
+          0,
+          2,
+          5,
+          1,
+          1,
+          4,
+          2,
+          2,
+          1,
+          2,
+          0,
+          2,
+          2,
+          3,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2,
+          5,
+          1,
+          3,
+          2,
+          6,
+          5,
+          3,
+          3,
+          2,
+          3,
+          1,
+          1,
+          1,
+          4,
+          1,
+          1
+        ]
+      },
+      "after": {
+        "seed": 3,
+        "seedYears": 125,
+        "median": 3,
+        "maximum": 5,
+        "total": 322,
+        "yearsAboveFour": 13,
+        "counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          1,
+          0,
+          0,
+          1,
+          3,
+          3,
+          1,
+          3,
+          3,
+          4,
+          5,
+          4,
+          5,
+          2,
+          4,
+          3,
+          5,
+          2,
+          3,
+          1,
+          5,
+          3,
+          3,
+          4,
+          2,
+          3,
+          2,
+          3,
+          2,
+          3,
+          5,
+          3,
+          2,
+          2,
+          2,
+          3,
+          5,
+          3,
+          3,
+          3,
+          4,
+          5,
+          2,
+          4,
+          3,
+          4,
+          3,
+          4,
+          2,
+          3,
+          3,
+          1,
+          1,
+          2,
+          3,
+          3,
+          4,
+          2,
+          1,
+          3,
+          3,
+          3,
+          2,
+          5,
+          1,
+          4,
+          4,
+          4,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          3,
+          2,
+          4,
+          5,
+          2,
+          3,
+          1,
+          1,
+          4,
+          5,
+          1,
+          2,
+          5,
+          2,
+          3,
+          2,
+          3,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2,
+          3,
+          3,
+          4,
+          3,
+          5,
+          3,
+          2,
+          2,
+          5,
+          4,
+          3,
+          2,
+          2,
+          1,
+          1,
+          1,
+          0,
+          3,
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "bySource": [
+    {
+      "source": "audit:tolerate",
+      "before": 95,
+      "after": 235,
+      "delta": 140
+    },
+    {
+      "source": "registry:ck_evt_092:a",
+      "before": 6,
+      "after": 8,
+      "delta": 2
+    },
+    {
+      "source": "registry:ck_evt_024:keep",
+      "before": 0,
+      "after": 1,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_042:firm",
+      "before": 2,
+      "after": 3,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_083:c",
+      "before": 4,
+      "after": 5,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_092:b",
+      "before": 5,
+      "after": 6,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_140:c",
+      "before": 0,
+      "after": 1,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_209:b",
+      "before": 10,
+      "after": 11,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_209:d",
+      "before": 10,
+      "after": 11,
+      "delta": 1
+    },
+    {
+      "source": "registry:ck_evt_211:b",
+      "before": 9,
+      "after": 10,
+      "delta": 1
+    },
+    {
+      "source": "answer_counter",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "answer_will_change",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "famine:relief",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:borough_autonomy:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:borough_charter:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:cash_rent:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:church_rebuilding:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:cloth_or_grain:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:guild_charter:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:guild_dispute:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:heir_choice:accept",
+      "before": 2,
+      "after": 2,
+      "delta": 0
+    },
+    {
+      "source": "petition:heir_choice:refuse",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "petition:land_redistribution:accept_with_price",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:levy_response:accept_with_price",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:market_charter:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:refugee_admission:refuse",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:royal_tax:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:tax_collection:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:vacant_priest:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:wages:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:wall_or_market:refuse",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:war_funding:accept",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "petition:wool_payment:accept_with_price",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_005:a",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_005:b",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_005:c",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_009:c",
+      "before": 8,
+      "after": 8,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_009:defer",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_031:able",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_031:loyal",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_032:defer",
+      "before": 4,
+      "after": 4,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_032:roll",
+      "before": 5,
+      "after": 5,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_038:defer",
+      "before": 10,
+      "after": 10,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_038:enforce",
+      "before": 8,
+      "after": 8,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_046:cancel",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_053:roll",
+      "before": 4,
+      "after": 4,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_130:b",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_130:c",
+      "before": 2,
+      "after": 2,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_140:b",
+      "before": 2,
+      "after": 2,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_201:b",
+      "before": 10,
+      "after": 10,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_201:c",
+      "before": 10,
+      "after": 10,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_204:a",
+      "before": 5,
+      "after": 5,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_204:b",
+      "before": 4,
+      "after": 4,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_204:c",
+      "before": 7,
+      "after": 7,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_206:a",
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_206:b",
+      "before": 2,
+      "after": 2,
+      "delta": 0
+    },
+    {
+      "source": "registry:ck_evt_206:d",
+      "before": 1,
+      "after": 1,
+      "delta": 0
+    },
+    {
+      "source": "audit:punish",
+      "before": 27,
+      "after": 26,
+      "delta": -1
+    },
+    {
+      "source": "registry:ck_evt_024:lower",
+      "before": 1,
+      "after": 0,
+      "delta": -1
+    },
+    {
+      "source": "registry:ck_evt_042:light",
+      "before": 1,
+      "after": 0,
+      "delta": -1
+    },
+    {
+      "source": "registry:ck_evt_140:a",
+      "before": 1,
+      "after": 0,
+      "delta": -1
+    },
+    {
+      "source": "registry:ck_evt_165:a",
+      "before": 3,
+      "after": 2,
+      "delta": -1
+    },
+    {
+      "source": "registry:ck_evt_201:a",
+      "before": 10,
+      "after": 9,
+      "delta": -1
+    },
+    {
+      "source": "registry:ck_evt_209:a",
+      "before": 9,
+      "after": 8,
+      "delta": -1
+    },
+    {
+      "source": "estate_petition:estate-neighbour-3:repair:granted",
+      "before": 164,
+      "after": 162,
+      "delta": -2
+    },
+    {
+      "source": "registry:ck_evt_083:a",
+      "before": 5,
+      "after": 3,
+      "delta": -2
+    },
+    {
+      "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+      "before": 52,
+      "after": 49,
+      "delta": -3
+    },
+    {
+      "source": "registry:ck_evt_211:a",
+      "before": 13,
+      "after": 10,
+      "delta": -3
+    },
+    {
+      "source": "registry:ck_evt_211:c",
+      "before": 14,
+      "after": 11,
+      "delta": -3
+    },
+    {
+      "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+      "before": 236,
+      "after": 134,
+      "delta": -102
+    }
+  ],
+  "yearsAboveFour": {
+    "before": [
+      {
+        "seed": 1,
+        "year": 1314,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003711",
+            "tick": 56005,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-003714",
+            "tick": 56005,
+            "source": "registry:ck_evt_211:a"
+          },
+          {
+            "historyId": "h-003827",
+            "tick": 58345,
+            "source": "audit:tolerate:audit-2"
+          },
+          {
+            "historyId": "h-003867",
+            "tick": 59047,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-003870",
+            "tick": 59047,
+            "source": "registry:ck_evt_201:b"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1320,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-005229",
+            "tick": 80029,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005296",
+            "tick": 81043,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005298",
+            "tick": 81043,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-005363",
+            "tick": 82057,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005367",
+            "tick": 82369,
+            "source": "audit:tolerate:audit-8"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1323,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-006105",
+            "tick": 93055,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-006108",
+            "tick": 93055,
+            "source": "registry:ck_evt_201:b"
+          },
+          {
+            "historyId": "h-006175",
+            "tick": 94069,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-006179",
+            "tick": 94381,
+            "source": "audit:tolerate:audit-11"
+          },
+          {
+            "historyId": "h-006227",
+            "tick": 95005,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1336,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-009349",
+            "tick": 145003,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-009351",
+            "tick": 145003,
+            "source": "registry:ck_evt_009:c"
+          },
+          {
+            "historyId": "h-009405",
+            "tick": 146017,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-009409",
+            "tick": 146329,
+            "source": "audit:tolerate:audit-24"
+          },
+          {
+            "historyId": "h-009482",
+            "tick": 147031,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1338,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-009869",
+            "tick": 152000,
+            "source": "petition:levy_response:accept_with_price"
+          },
+          {
+            "historyId": "h-009944",
+            "tick": 153037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-009947",
+            "tick": 153037,
+            "source": "registry:ck_evt_042:light"
+          },
+          {
+            "historyId": "h-010009",
+            "tick": 154000,
+            "source": "petition:war_funding:accept"
+          },
+          {
+            "historyId": "h-010020",
+            "tick": 154363,
+            "source": "audit:tolerate:audit-26"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1343,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-011358",
+            "tick": 172069,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-011429",
+            "tick": 173005,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-011431",
+            "tick": 173005,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-011510",
+            "tick": 174019,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-011520",
+            "tick": 174331,
+            "source": "audit:tolerate:audit-31"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1347,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-012525",
+            "tick": 189073,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-012527",
+            "tick": 189073,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-012582",
+            "tick": 190009,
+            "source": "registry:ck_evt_211:c"
+          },
+          {
+            "historyId": "h-012588",
+            "tick": 190321,
+            "source": "steward_punished:audit-35"
+          },
+          {
+            "historyId": "h-012640",
+            "tick": 191023,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1362,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-016191",
+            "tick": 248041,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016389",
+            "tick": 250069,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016393",
+            "tick": 250381,
+            "source": "audit:tolerate:audit-50"
+          },
+          {
+            "historyId": "h-016451",
+            "tick": 251005,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016454",
+            "tick": 251005,
+            "source": "registry:ck_evt_201:a"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1311,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003509",
+            "tick": 44071,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-003603",
+            "tick": 45007,
+            "source": "registry:ck_evt_038:enforce"
+          },
+          {
+            "historyId": "h-003681",
+            "tick": 46021,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-003693",
+            "tick": 46333,
+            "source": "steward_punished:audit-2"
+          },
+          {
+            "historyId": "h-003764",
+            "tick": 47035,
+            "source": "registry:ck_evt_201:a"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1337,
+        "count": 6,
+        "answers": [
+          {
+            "historyId": "h-010525",
+            "tick": 148045,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-010586",
+            "tick": 149000,
+            "source": "petition:wool_payment:accept_with_price"
+          },
+          {
+            "historyId": "h-010589",
+            "tick": 149059,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-010655",
+            "tick": 150073,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-010659",
+            "tick": 150385,
+            "source": "audit:tolerate:audit-28"
+          },
+          {
+            "historyId": "h-010712",
+            "tick": 151009,
+            "source": "registry:ck_evt_211:c"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1339,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-011056",
+            "tick": 156001,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-011059",
+            "tick": 156001,
+            "source": "registry:ck_evt_211:c"
+          },
+          {
+            "historyId": "h-011191",
+            "tick": 158000,
+            "source": "petition:refugee_admission:refuse"
+          },
+          {
+            "historyId": "h-011205",
+            "tick": 158341,
+            "source": "audit:tolerate:audit-30"
+          },
+          {
+            "historyId": "h-011271",
+            "tick": 159000,
+            "source": "petition:wall_or_market:refuse"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1348,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-013493",
+            "tick": 192037,
+            "source": "registry:ck_evt_201:c"
+          },
+          {
+            "historyId": "h-013617",
+            "tick": 194000,
+            "source": "petition:vacant_priest:accept"
+          },
+          {
+            "historyId": "h-013671",
+            "tick": 194065,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-013675",
+            "tick": 194377,
+            "source": "audit:tolerate:audit-39"
+          },
+          {
+            "historyId": "h-013816",
+            "tick": 195001,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1349,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-013871",
+            "tick": 196000,
+            "source": "petition:wages:accept"
+          },
+          {
+            "historyId": "h-013951",
+            "tick": 196015,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-014069",
+            "tick": 198000,
+            "source": "petition:land_redistribution:accept_with_price"
+          },
+          {
+            "historyId": "h-014083",
+            "tick": 198043,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-014086",
+            "tick": 198043,
+            "source": "registry:ck_evt_211:c"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1376,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-021312",
+            "tick": 304045,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-021391",
+            "tick": 305059,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-021471",
+            "tick": 306073,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-021475",
+            "tick": 306385,
+            "source": "audit:tolerate:audit-67"
+          },
+          {
+            "historyId": "h-021559",
+            "tick": 307009,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1403,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-030722",
+            "tick": 412075,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-030798",
+            "tick": 413011,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-030883",
+            "tick": 414000,
+            "source": "petition:borough_autonomy:accept"
+          },
+          {
+            "historyId": "h-030890",
+            "tick": 414025,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-030894",
+            "tick": 414337,
+            "source": "audit:tolerate:audit-94"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1318,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003343",
+            "tick": 72073,
+            "source": "registry:ck_evt_209:d"
+          },
+          {
+            "historyId": "h-003388",
+            "tick": 73009,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-003391",
+            "tick": 73009,
+            "source": "registry:ck_evt_083:a"
+          },
+          {
+            "historyId": "h-003451",
+            "tick": 74335,
+            "source": "audit:tolerate:audit-7"
+          },
+          {
+            "historyId": "h-003505",
+            "tick": 75037,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1328,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-005252",
+            "tick": 112009,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005256",
+            "tick": 112009,
+            "source": "registry:ck_evt_209:a"
+          },
+          {
+            "historyId": "h-005299",
+            "tick": 113023,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005337",
+            "tick": 114037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005379",
+            "tick": 115051,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1338,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-007123",
+            "tick": 152000,
+            "source": "petition:levy_response:accept_with_price"
+          },
+          {
+            "historyId": "h-007134",
+            "tick": 152023,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-007171",
+            "tick": 153037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-007202",
+            "tick": 154000,
+            "source": "petition:war_funding:accept"
+          },
+          {
+            "historyId": "h-007209",
+            "tick": 154051,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1349,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-009433",
+            "tick": 196000,
+            "source": "petition:wages:accept"
+          },
+          {
+            "historyId": "h-009492",
+            "tick": 196015,
+            "source": "registry:ck_evt_211:a"
+          },
+          {
+            "historyId": "h-009585",
+            "tick": 198000,
+            "source": "petition:land_redistribution:accept_with_price"
+          },
+          {
+            "historyId": "h-009598",
+            "tick": 198355,
+            "source": "audit:tolerate:audit-38"
+          },
+          {
+            "historyId": "h-009628",
+            "tick": 199057,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1363,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-012139",
+            "tick": 252019,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-012184",
+            "tick": 253033,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-012234",
+            "tick": 254047,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-012242",
+            "tick": 254359,
+            "source": "audit:tolerate:audit-52"
+          },
+          {
+            "historyId": "h-012300",
+            "tick": 255061,
+            "source": "registry:ck_evt_209:b"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1371,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-013868",
+            "tick": 284077,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-013871",
+            "tick": 284077,
+            "source": "registry:ck_evt_201:b"
+          },
+          {
+            "historyId": "h-013915",
+            "tick": 285013,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-013961",
+            "tick": 286027,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-013965",
+            "tick": 286339,
+            "source": "audit:tolerate:audit-60"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1384,
+        "count": 6,
+        "answers": [
+          {
+            "historyId": "h-016687",
+            "tick": 337039,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-016689",
+            "tick": 337039,
+            "source": "registry:ck_evt_211:b"
+          },
+          {
+            "historyId": "h-016729",
+            "tick": 338000,
+            "source": "petition:royal_tax:accept"
+          },
+          {
+            "historyId": "h-016740",
+            "tick": 338053,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-016784",
+            "tick": 339067,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-016788",
+            "tick": 339067,
+            "source": "registry:ck_evt_209:a"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1391,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-017945",
+            "tick": 364027,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-018008",
+            "tick": 365041,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-018064",
+            "tick": 366055,
+            "source": "registry:ck_evt_206:a"
+          },
+          {
+            "historyId": "h-018124",
+            "tick": 367069,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-018126",
+            "tick": 367069,
+            "source": "registry:ck_evt_083:c"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1409,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-021652",
+            "tick": 436021,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-021709",
+            "tick": 437035,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-021765",
+            "tick": 438361,
+            "source": "audit:tolerate:audit-98"
+          },
+          {
+            "historyId": "h-021826",
+            "tick": 439063,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-021829",
+            "tick": 439063,
+            "source": "registry:ck_evt_209:d"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1413,
+        "count": 6,
+        "answers": [
+          {
+            "historyId": "h-022497",
+            "tick": 452011,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-022500",
+            "tick": 452011,
+            "source": "registry:ck_evt_209:d"
+          },
+          {
+            "historyId": "h-022565",
+            "tick": 453025,
+            "source": "registry:ck_evt_211:c"
+          },
+          {
+            "historyId": "h-022623",
+            "tick": 454039,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-022629",
+            "tick": 454351,
+            "source": "steward_punished:audit-102"
+          },
+          {
+            "historyId": "h-022679",
+            "tick": 455053,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1414,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-022735",
+            "tick": 456067,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-022793",
+            "tick": 457003,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-022847",
+            "tick": 458017,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-022849",
+            "tick": 458017,
+            "source": "registry:ck_evt_083:c"
+          },
+          {
+            "historyId": "h-022894",
+            "tick": 459031,
+            "source": "registry:ck_evt_209:a"
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "seed": 1,
+        "year": 1314,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003711",
+            "tick": 56005,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-003714",
+            "tick": 56005,
+            "source": "registry:ck_evt_211:a"
+          },
+          {
+            "historyId": "h-003827",
+            "tick": 58345,
+            "source": "audit:tolerate:audit-2"
+          },
+          {
+            "historyId": "h-003867",
+            "tick": 59047,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-003870",
+            "tick": 59047,
+            "source": "registry:ck_evt_201:b"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1320,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-005229",
+            "tick": 80029,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005296",
+            "tick": 81043,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005298",
+            "tick": 81043,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-005363",
+            "tick": 82057,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005367",
+            "tick": 82369,
+            "source": "audit:tolerate:audit-8"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1323,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-006107",
+            "tick": 93055,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-006110",
+            "tick": 93055,
+            "source": "registry:ck_evt_201:b"
+          },
+          {
+            "historyId": "h-006177",
+            "tick": 94069,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-006181",
+            "tick": 94381,
+            "source": "audit:tolerate:audit-11"
+          },
+          {
+            "historyId": "h-006229",
+            "tick": 95005,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1336,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-009363",
+            "tick": 145003,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-009365",
+            "tick": 145003,
+            "source": "registry:ck_evt_009:c"
+          },
+          {
+            "historyId": "h-009419",
+            "tick": 146017,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-009423",
+            "tick": 146329,
+            "source": "audit:tolerate:audit-24"
+          },
+          {
+            "historyId": "h-009496",
+            "tick": 147031,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1338,
+        "count": 6,
+        "answers": [
+          {
+            "historyId": "h-009884",
+            "tick": 152000,
+            "source": "petition:levy_response:accept_with_price"
+          },
+          {
+            "historyId": "h-009892",
+            "tick": 152023,
+            "source": "registry:ck_evt_042:firm"
+          },
+          {
+            "historyId": "h-009960",
+            "tick": 153037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-009962",
+            "tick": 153037,
+            "source": "registry:ck_evt_092:a"
+          },
+          {
+            "historyId": "h-010025",
+            "tick": 154000,
+            "source": "petition:war_funding:accept"
+          },
+          {
+            "historyId": "h-010036",
+            "tick": 154363,
+            "source": "audit:tolerate:audit-26"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1340,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-010481",
+            "tick": 160057,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-010484",
+            "tick": 160057,
+            "source": "registry:ck_evt_201:b"
+          },
+          {
+            "historyId": "h-010534",
+            "tick": 161071,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-010610",
+            "tick": 162397,
+            "source": "audit:tolerate:audit-28"
+          },
+          {
+            "historyId": "h-010677",
+            "tick": 163021,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1343,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-011380",
+            "tick": 172069,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-011451",
+            "tick": 173005,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-011453",
+            "tick": 173005,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-011532",
+            "tick": 174019,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-011542",
+            "tick": 174331,
+            "source": "audit:tolerate:audit-31"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1347,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-012547",
+            "tick": 189073,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-012549",
+            "tick": 189073,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-012604",
+            "tick": 190009,
+            "source": "registry:ck_evt_211:c"
+          },
+          {
+            "historyId": "h-012610",
+            "tick": 190321,
+            "source": "steward_punished:audit-35"
+          },
+          {
+            "historyId": "h-012662",
+            "tick": 191023,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1362,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-016226",
+            "tick": 248041,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016424",
+            "tick": 250069,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016428",
+            "tick": 250381,
+            "source": "audit:tolerate:audit-50"
+          },
+          {
+            "historyId": "h-016486",
+            "tick": 251005,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016489",
+            "tick": 251005,
+            "source": "registry:ck_evt_201:a"
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "year": 1396,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-024975",
+            "tick": 384000,
+            "source": "petition:church_rebuilding:accept"
+          },
+          {
+            "historyId": "h-024985",
+            "tick": 384073,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-025069",
+            "tick": 385009,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-025128",
+            "tick": 386335,
+            "source": "audit:tolerate:audit-84"
+          },
+          {
+            "historyId": "h-025180",
+            "tick": 387037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1311,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003509",
+            "tick": 44071,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-003603",
+            "tick": 45007,
+            "source": "registry:ck_evt_038:enforce"
+          },
+          {
+            "historyId": "h-003681",
+            "tick": 46021,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-003693",
+            "tick": 46333,
+            "source": "steward_punished:audit-2"
+          },
+          {
+            "historyId": "h-003764",
+            "tick": 47035,
+            "source": "registry:ck_evt_201:a"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1337,
+        "count": 6,
+        "answers": [
+          {
+            "historyId": "h-010496",
+            "tick": 148045,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-010557",
+            "tick": 149000,
+            "source": "petition:wool_payment:accept_with_price"
+          },
+          {
+            "historyId": "h-010560",
+            "tick": 149059,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-010626",
+            "tick": 150073,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-010630",
+            "tick": 150385,
+            "source": "audit:tolerate:audit-28"
+          },
+          {
+            "historyId": "h-010683",
+            "tick": 151009,
+            "source": "registry:ck_evt_211:c"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1349,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-013831",
+            "tick": 196000,
+            "source": "petition:wages:accept"
+          },
+          {
+            "historyId": "h-013911",
+            "tick": 196015,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-013994",
+            "tick": 197029,
+            "source": "registry:ck_evt_211:b"
+          },
+          {
+            "historyId": "h-014032",
+            "tick": 198000,
+            "source": "petition:land_redistribution:accept_with_price"
+          },
+          {
+            "historyId": "h-014046",
+            "tick": 198043,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "year": 1403,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-030619",
+            "tick": 412075,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-030788",
+            "tick": 414000,
+            "source": "petition:borough_autonomy:accept"
+          },
+          {
+            "historyId": "h-030795",
+            "tick": 414025,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-030798",
+            "tick": 414025,
+            "source": "registry:ck_evt_211:b"
+          },
+          {
+            "historyId": "h-030802",
+            "tick": 414337,
+            "source": "audit:tolerate:audit-94"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1318,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003345",
+            "tick": 72073,
+            "source": "registry:ck_evt_209:d"
+          },
+          {
+            "historyId": "h-003390",
+            "tick": 73009,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-003393",
+            "tick": 73009,
+            "source": "registry:ck_evt_083:a"
+          },
+          {
+            "historyId": "h-003453",
+            "tick": 74335,
+            "source": "audit:tolerate:audit-7"
+          },
+          {
+            "historyId": "h-003507",
+            "tick": 75037,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1320,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-003767",
+            "tick": 80029,
+            "source": "registry:ck_evt_209:a"
+          },
+          {
+            "historyId": "h-003816",
+            "tick": 81043,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-003855",
+            "tick": 82057,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-003859",
+            "tick": 82369,
+            "source": "audit:tolerate:audit-9"
+          },
+          {
+            "historyId": "h-003892",
+            "tick": 83071,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1324,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-004561",
+            "tick": 96019,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-004605",
+            "tick": 97033,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-004609",
+            "tick": 97033,
+            "source": "registry:ck_evt_038:enforce"
+          },
+          {
+            "historyId": "h-004655",
+            "tick": 98359,
+            "source": "audit:tolerate:audit-13"
+          },
+          {
+            "historyId": "h-004696",
+            "tick": 99061,
+            "source": "registry:ck_evt_209:b"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1328,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-005259",
+            "tick": 112009,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005263",
+            "tick": 112009,
+            "source": "registry:ck_evt_209:a"
+          },
+          {
+            "historyId": "h-005306",
+            "tick": 113023,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005344",
+            "tick": 114037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-005348",
+            "tick": 114349,
+            "source": "audit:tolerate:audit-17"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1338,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-007128",
+            "tick": 152000,
+            "source": "petition:levy_response:accept_with_price"
+          },
+          {
+            "historyId": "h-007139",
+            "tick": 152023,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-007176",
+            "tick": 153037,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-007207",
+            "tick": 154000,
+            "source": "petition:war_funding:accept"
+          },
+          {
+            "historyId": "h-007214",
+            "tick": 154051,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1344,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-008413",
+            "tick": 177061,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-008415",
+            "tick": 177061,
+            "source": "registry:ck_evt_038:defer"
+          },
+          {
+            "historyId": "h-008471",
+            "tick": 178075,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-008474",
+            "tick": 178075,
+            "source": "registry:ck_evt_201:a"
+          },
+          {
+            "historyId": "h-008478",
+            "tick": 178387,
+            "source": "audit:tolerate:audit-33"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1349,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-009429",
+            "tick": 196000,
+            "source": "petition:wages:accept"
+          },
+          {
+            "historyId": "h-009488",
+            "tick": 196015,
+            "source": "registry:ck_evt_211:a"
+          },
+          {
+            "historyId": "h-009581",
+            "tick": 198000,
+            "source": "petition:land_redistribution:accept_with_price"
+          },
+          {
+            "historyId": "h-009594",
+            "tick": 198355,
+            "source": "audit:tolerate:audit-38"
+          },
+          {
+            "historyId": "h-009624",
+            "tick": 199057,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1371,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-013934",
+            "tick": 284077,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-013937",
+            "tick": 284077,
+            "source": "registry:ck_evt_201:b"
+          },
+          {
+            "historyId": "h-013980",
+            "tick": 285013,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-014029",
+            "tick": 286027,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-014033",
+            "tick": 286339,
+            "source": "audit:tolerate:audit-60"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1385,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-016848",
+            "tick": 341017,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016901",
+            "tick": 342031,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-016906",
+            "tick": 342343,
+            "source": "audit:tolerate:audit-74"
+          },
+          {
+            "historyId": "h-016955",
+            "tick": 343045,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-016957",
+            "tick": 343045,
+            "source": "registry:ck_evt_092:b"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1391,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-017935",
+            "tick": 364027,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-017998",
+            "tick": 365041,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-018051",
+            "tick": 366055,
+            "source": "registry:ck_evt_206:a"
+          },
+          {
+            "historyId": "h-018060",
+            "tick": 366367,
+            "source": "audit:tolerate:audit-80"
+          },
+          {
+            "historyId": "h-018100",
+            "tick": 367069,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1394,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-018516",
+            "tick": 376000,
+            "source": "petition:guild_dispute:accept"
+          },
+          {
+            "historyId": "h-018532",
+            "tick": 376039,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-018620",
+            "tick": 378067,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-018624",
+            "tick": 378379,
+            "source": "audit:tolerate:audit-83"
+          },
+          {
+            "historyId": "h-018677",
+            "tick": 379003,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1409,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-021570",
+            "tick": 436021,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-021622",
+            "tick": 437035,
+            "source": "estate_petition:estate-neighbour-3:rent_relief:granted"
+          },
+          {
+            "historyId": "h-021673",
+            "tick": 438361,
+            "source": "audit:tolerate:audit-98"
+          },
+          {
+            "historyId": "h-021726",
+            "tick": 439063,
+            "source": "estate_petition:estate-neighbour-3:repair:granted"
+          },
+          {
+            "historyId": "h-021729",
+            "tick": 439063,
+            "source": "registry:ck_evt_209:d"
+          }
+        ]
+      },
+      {
+        "seed": 3,
+        "year": 1413,
+        "count": 5,
+        "answers": [
+          {
+            "historyId": "h-022342",
+            "tick": 452011,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-022345",
+            "tick": 452011,
+            "source": "registry:ck_evt_209:d"
+          },
+          {
+            "historyId": "h-022445",
+            "tick": 454039,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          },
+          {
+            "historyId": "h-022451",
+            "tick": 454351,
+            "source": "steward_punished:audit-102"
+          },
+          {
+            "historyId": "h-022495",
+            "tick": 455053,
+            "source": "estate_petition:estate-neighbour-3:charter_request:refused"
+          }
+        ]
+      }
+    ]
+  }
+}
