@@ -70,6 +70,9 @@ const waitCard = async (page, selector, timeout = 30_000) => {
     // Another lord card, the season's card or a result card that came first is put off or closed, as a player does.
     const other = page.locator(`.lord-card:not(${selector}) .story-modal-later, .season-ledger-resume, .results-card-continue >> visible=true`);
     if (await other.count() > 0) await other.first().click();
+    // A story card that asks nothing (the lord's moment) is closed, or the beats behind it never come (as the audit's story step).
+    const told = page.locator('.event-card:not(:has(.event-card-decide)) .event-card-actions > button:last-child >> visible=true');
+    if (await told.count() > 0) await told.first().click();
     await page.waitForTimeout(500);
   }
   return false;
