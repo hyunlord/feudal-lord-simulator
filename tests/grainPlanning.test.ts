@@ -76,3 +76,19 @@ test("GP-2 ripe wheat left in the field because the barns were full counts as gr
   assert.equal(nextHarvestRecord(counted, 0, 40)!.lost, 40, "winter's loss is added to the counted year");
   assert.equal(nextHarvestRecord({ ...world, harvestRecord: { year: 3, wheat: 0, lost: 0, past: [] } }, 0, 40)!.lost, 0, "a year with no harvest keeps no loss");
 });
+
+test("GROW-BLOCK-2a: the arable land stops at the guardrail's 9.6 cells a lot, however short the margin's headroom says it is", async () => {
+  const { ARABLE_CELLS_PER_LOT_MAX } = await import("../src/engine/autoplayArable");
+  const { loadAutoplayFixture } = await import("../scripts/autoplayStallProbe");
+  const { housingLotCount } = await import("../src/population/housing");
+  const { zonesOf } = await import("../src/zones/zoneEdits");
+  const state = loadAutoplayFixture("fixtures/autoplay/seed2-1200000.json.gz");
+  const lots = housingLotCount(state);
+  const cells = zonesOf(state).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0);
+  assert.ok(cells < ARABLE_CELLS_PER_LOT_MAX * lots, `${cells} cells, ${lots} lots`);
+  // A margin no harvest can meet: short while under the cap, not once the land reaches it.
+  assert.equal(arableSupplyShort(state, 1_000_000), true);
+  const capped = { ...state, houses: state.houses.slice(0, Math.floor(cells / ARABLE_CELLS_PER_LOT_MAX)) };
+  assert.ok(housingLotCount(capped) * ARABLE_CELLS_PER_LOT_MAX <= cells);
+  assert.equal(arableSupplyShort(capped, 1_000_000), false);
+});
