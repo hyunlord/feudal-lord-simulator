@@ -11,6 +11,13 @@ import { diplomacyOf } from "../src/engine/negotiation";
 import { pendingAudits, stewardshipOf } from "../src/engine/stewardship";
 import type { AuditRecord, EstatePetition, StewardRecord } from "../src/engine/stewardship.types";
 import { initialAgency } from "../src/engine/townAgency";
+import { MERCHANT_GAUGE_START, type PetitionResponse } from "../src/content/chapterConfig";
+import { lordshipOf } from "../src/engine/lordshipState";
+import { initialPolitics } from "../src/engine/politics";
+import { famineCard } from "../src/ui/decisionCard/families/famineCard";
+import { petitionCard } from "../src/ui/decisionCard/families/petitionCard";
+import type { PetitionDefId } from "../src/ui/petitionPresentation";
+import { famineState, petitionStates } from "./helpers/deccardCampaignStates";
 import { decodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
 import type { GameAction } from "../src/state/gameStore.types";
@@ -100,6 +107,57 @@ function expectedChanges(before: GameState, after: GameState): readonly Expected
     if (!(before.diplomacy?.negotiations ?? []).some(item => item.id === offer.id)) out.push({ key: `offer:${offer.id}` });
   }
   for (const term of after.registry?.terms ?? []) if (!(before.registry?.terms ?? []).some(item => item.id === term.id)) out.push({ key: `term:${term.id}` });
+  out.push(...politicalChanges(before, after));
+  return out;
+}
+
+/** RECEIPTS-2: what the famine's and the political petitions' answers move (the test's own walk, as above). */
+function politicalChanges(before: GameState, after: GameState): readonly Expected[] {
+  const out: Expected[] = [];
+  if (after.population !== before.population) out.push({ key: "population", change: points(after.population - before.population, before.population, after.population) });
+  const lived = (state: GameState) => state.houses.filter(house => house.residents > 0).length;
+  if (lived(after) !== lived(before)) out.push({ key: "houses", change: points(lived(after) - lived(before), lived(before), lived(after)) });
+  const gauge = (state: GameState) => state.politics?.merchantGauge ?? MERCHANT_GAUGE_START;
+  if (gauge(after) !== gauge(before)) out.push({ key: "gauge", change: points(gauge(after) - gauge(before), gauge(before), gauge(after)) });
+  const rights = (state: GameState) => new Set((state.politics?.rights ?? []).map(right => right.id));
+  for (const id of rights(after)) if (!rights(before).has(id)) out.push({ key: `right:${id}` });
+  for (const id of rights(before)) if (!rights(after).has(id)) out.push({ key: `right:${id}` });
+  const [lordWas, lordNow] = [lordshipOf(before), lordshipOf(after)];
+  if (lordWas.titleDemoted !== lordNow.titleDemoted) out.push({ key: "title" });
+  if (lordNow.titleReturnsTick !== undefined && lordNow.titleReturnsTick !== lordWas.titleReturnsTick) out.push({ key: "title:returns" });
+  if ((lordWas.decline === null) !== (lordNow.decline === null)) out.push({ key: "decline" });
+  if (lordNow.decline === null && lordWas.decline?.lost != null) out.push({ key: `right-back:${lordWas.decline.lost}` });
+  if (lordNow.decline?.petitionFrom !== undefined && lordNow.decline.petitionFrom !== lordWas.decline?.petitionFrom) out.push({ key: "decline:again" });
+  const [warWas, warNow] = [before.war, after.war];
+  if (warNow !== undefined) {
+    if (warWas !== undefined && warWas.favour !== warNow.favour) out.push({ key: "favour" });
+    if (warNow.conscripts !== undefined && warNow.conscripts !== warWas?.conscripts) out.push({ key: "conscripts" });
+    for (const [index, due] of warNow.instalments.slice(warWas?.instalments.length ?? 0).entries()) out.push({ key: `instalment:${due.category}:${index}` });
+    if ((warNow.taxSeasonsLeft ?? 0) > (warWas?.taxSeasonsLeft ?? 0)) out.push({ key: "war-tax" });
+    if (warNow.wall !== undefined && warNow.wall !== warWas?.wall) out.push({ key: "war-wall" });
+  }
+  if (after.plague?.curacy?.by !== undefined && after.plague.curacy.by !== before.plague?.curacy?.by) out.push({ key: "curacy" });
+  if ((after.reorganisation?.guild ?? null) !== null && (before.reorganisation?.guild ?? null) === null) out.push({ key: "guild" });
+  const [was, now] = [before.legacy, after.legacy];
+  if (now !== undefined) {
+    for (const key of ["royalSubsidy", "endowment", "feeFarm"] as const) {
+      const [from, to] = [was?.[key] ?? 0, now[key]];
+      if (from !== to) out.push({ key: `legacy:${key}`, change: `${moneyDelta(to - from)} (${moneyShort(from)} → ${moneyShort(to)})` });
+    }
+    if ((was?.backlash ?? 0) !== now.backlash) out.push({ key: "legacy:backlash", change: points(now.backlash - (was?.backlash ?? 0), was?.backlash ?? 0, now.backlash) });
+    if (now.naveRebuilt === true && was?.naveRebuilt !== true) out.push({ key: "legacy:nave" });
+    if (now.legacy !== undefined && now.legacy !== was?.legacy) out.push({ key: "legacy:legacy" });
+    if (now.mayorId !== undefined && now.mayorId !== was?.mayorId) out.push({ key: "legacy:mayor" });
+    if (now.heir !== undefined && now.heir.personId !== was?.heir?.personId) out.push({ key: "legacy:heir" });
+    if (now.family !== undefined && now.family !== was?.family) out.push({ key: "legacy:family" });
+  }
+  const [peopleWas, peopleNow] = [before.persons?.people ?? [], after.persons?.people ?? []];
+  const [ids, still] = [new Set(peopleWas.map(entry => entry.id)), new Set(peopleNow.map(entry => entry.id))];
+  if (peopleWas.some(entry => !still.has(entry.id))) out.push({ key: "people:left" });
+  if (peopleNow.some(entry => !ids.has(entry.id))) out.push({ key: "people:joined" });
+  // A family member's place or mark moved (the old head to kin, a candidate into the family): the heir's row says it.
+  const role = new Map(peopleWas.map(entry => [entry.id, `${entry.role}|${(entry.tags ?? []).join(",")}`] as const));
+  if (peopleNow.some(entry => role.has(entry.id) && role.get(entry.id) !== `${entry.role}|${(entry.tags ?? []).join(",")}`)) out.push({ key: "legacy:heir" });
   return out;
 }
 
@@ -111,10 +169,18 @@ function expectedChanges(before: GameState, after: GameState): readonly Expected
 const BOOKKEEPING = [/^\.(history|trace|ledger|tick|rngState|lastCommand|commandLog)\b/, /\.memory\b/, /\.timeline\b/, /^\.registry\.occurrences/, /^\.registry\.(seasonDraws|seen|draws)/,
   /^\.stewardship\.(petitions|audits)\[[^\]]+\]\.(status|decidedBy|policy)$/, /^\.stewardship\.audits\[/, /\.since$/, /\.settledTick$/, /^\.stewardship\.stewards\[[^\]]+\]\.status$/,
   /^\.agency\.duesAgreement\.(tick|occurrenceId)$/, /^\.diplomacy\.marriage\./, /^\.estates\.people\[/, /^\.constructionSites\[/, /^\.palisade$/, /^\.wallConstructionReserve$/,
-  /^\.eraProclaimedTick$/, /^\.next[A-Z]\w*$/, /^\.stewardship\.next/, /^\.estates\.next/, /^\.diplomacy\.next/, /^\.registry\.next/, /^\.agency\.next/];
+  /^\.eraProclaimedTick$/, /^\.next[A-Z]\w*$/, /^\.stewardship\.next/, /^\.estates\.next/, /^\.diplomacy\.next/, /^\.registry\.next/, /^\.agency\.next/,
+  // RECEIPTS-2: the famine's and the petition's own answer (the receipt's title says it), the chronicle's decision records,
+  // a house's abandoned mark (its residents are read), the persons' biographies of those who left (the row names them).
+  /^\.events\.records\[[^\]]+\]\.response$/, /^\.politics\.petitions\[[^\]]+\]\.(response|respondedTick)$/, /^\.politics\.decisions\[/,
+  /^\.(war|plague|reorganisation|legacy)\.answers\./, /^\.houses\[[^\]]+\]\.abandonedTick$/, /^\.persons\.past\[/];
 const WATCHED = [/^\.treasuryCoin$/, /^\.factions\.factions\[[^\]]+\]\.relation$/, /^\.diplomacy\.relations\./, /^\.stewardship\.oversight\[[^\]]+\]\.(tenants|merchants|mode|stewardId|auditMode)$/,
   /^\.stewardship\.stewards\[[^\]]+\]\.loyalty$/, /^\.stewardship\.rules\./, /^\.agency\.(policy|duesPermille|subsidies|duesAgreement\.(permille|faction))/, /^\.timberOrder$/,
-  /^\.wallConstructionPriority$/, /^\.era$/, /^\.estates\.(claims|suits|estates)\[/, /^\.diplomacy\.(promises|negotiations)\[/, /^\.registry\.terms\[/];
+  /^\.wallConstructionPriority$/, /^\.era$/, /^\.estates\.(claims|suits|estates)\[/, /^\.diplomacy\.(promises|negotiations)\[/, /^\.registry\.terms\[/,
+  /^\.population$/, /^\.houses\[[^\]]+\]\.residents$/, /^\.politics\.merchantGauge$/, /^\.politics\.rights\[[^\]]+\]$/,
+  /^\.lordship\.(titleDemoted|titleReturnsTick|decline(\.petitionFrom)?)$/, /^\.war\.(favour|conscripts|taxSeasonsLeft|wall)$/, /^\.war\.instalments\[[^\]]+\]$/,
+  /^\.plague\.curacy\.(filledTick|by)$/, /^\.reorganisation\.guild$/, /^\.legacy\.(royalSubsidy|endowment|feeFarm|backlash|naveRebuilt|legacy|mayorId|heir|family)$/,
+  /^\.persons\.people\[[^\]]+\](\.(role|tags)\b.*)?$/];
 
 function changedLeaves(a: unknown, b: unknown, path: string, out: string[]) {
   if (a === b) return;
@@ -150,7 +216,8 @@ function checkAnswer(label: string, before: GameState, command: GameAction, card
   }
   const leaves: string[] = [];
   // A part the state did not hold yet is walked as the engine reads it (its `…Of` default), so only what moved shows.
-  const filled = (state: GameState): GameState => ({ ...state, estates: estatesOf(state), diplomacy: diplomacyOf(state) });
+  const filled = (state: GameState): GameState => ({ ...state, estates: estatesOf(state), diplomacy: diplomacyOf(state),
+    politics: state.politics ?? initialPolitics(state), lordship: lordshipOf(state) });
   changedLeaves(filled(before), filled(after), "", leaves);
   const unread = leaves.filter(path => !BOOKKEEPING.some(rule => rule.test(path)) && !WATCHED.some(rule => rule.test(path)));
   assert.deepEqual(unread, [], `${label}: changed but neither on the receipt nor bookkeeping`);
@@ -235,6 +302,48 @@ test("the receipt's own rows for the town's conditions, from a plain before and 
   assert.match(dues.change, /100%.*115%/);
 });
 
+// RECEIPTS-2 (user 2026-10-10): the famine's and every political petition's answers, on the campaign's own states (the
+// famine arriving, each petition kind's card open — tests/helpers/deccardCampaignStates).
+function famineAndPetitionAnswers(name: string, state: GameState, seen: Set<string>) {
+  const famine = famineCard(state);
+  if (famine !== null) for (const choice of famine.card.choices.filter(entry => entry.refusal === null)) {
+    checkAnswer(`${name} famine ${choice.id}`, state, { type: "famine_response", choice: choice.id as "relief" }, famine.card, choice.id);
+    seen.add(`famine:${choice.id}`);
+  }
+  const petition = petitionCard(state);
+  if (petition !== null) for (const choice of petition.card.choices.filter(entry => entry.refusal === null)) {
+    checkAnswer(`${name} petition ${petition.defId} ${choice.id}`, state, { type: "petition_response", petitionId: petition.petitionId, response: choice.id as "accept" },
+      petition.card, choice.id);
+    seen.add(`petition:${petition.defId}:${choice.id}`);
+  }
+}
+
+test("the famine's four answers and every political petition's: the receipt says each real change with its number", () => {
+  const seen = new Set<string>();
+  famineAndPetitionAnswers("famine", famineState(), seen);
+  for (const [defId, state] of petitionStates()) famineAndPetitionAnswers(defId, state, seen);
+  for (const choice of ["relief", "price_control", "laissez_faire", "speculation"]) assert.ok(seen.has(`famine:${choice}`), `famine ${choice}`);
+  for (const defId of petitionStates().keys()) assert.ok([...seen].some(key => key.startsWith(`petition:${defId}:`)), `${defId} answered`);
+});
+
+test("the political rows read as the card's own words: a right granted, the decline bought back, the war's men, the heir", () => {
+  const states = petitionStates();
+  const rows = (defId: PetitionDefId, response: PetitionResponse) => {
+    const state = states.get(defId)!;
+    const card = petitionCard(state)!;
+    return answerReceipt(state, gameReducer(state, { type: "petition_response", petitionId: card.petitionId, response }), answerMeta(card.card, response)).rows;
+  };
+  const charter = rows("market_charter", "accept");
+  assert.ok(charter.some(row => row.key === "right:market_charter" && /좌판세/.test(row.change)), "the charter's right and its stall fee");
+  assert.ok(charter.some(row => row.key === "gauge"), "the merchants' gauge");
+  const restore = rows("restore_right", "accept");
+  for (const key of ["treasury", "title", "decline"]) assert.ok(restore.some(row => row.key === key), `the right bought back: ${key}`);
+  const levy = rows("levy_response", "accept");
+  assert.ok(levy.some(row => row.key === "conscripts" && /명/.test(row.change)), "the men levied and when they come back");
+  const heir = rows("heir_choice", "accept");
+  assert.ok(heir.some(row => row.key === "legacy:heir" && row.change.includes("→")), "who heads the family, from whom to whom");
+});
+
 // --- the real lord-slice states (the DGX folders), every target decision and answer ------------------------------------
 
 /** The states each folder holds (scripts/lmr2States.ts, lmr1PetitionStates.ts, lmr1LordStates.ts + eventArtStates.ts, variantStates.ts). */
@@ -245,7 +354,14 @@ const FOLDERS: Readonly<Record<string, readonly string[]>> = {
     "home-mill_suit", "home-newcomer", "home-pannage", "home-road_bridge", "home-stall_dispute", "home-wardship", "precedent", "request"],
   LORD_STATES: ["lord-receipts", "lord-receipts-old", "registry-offer", "registry-offer-hold"],
   VARIANT_STATES: ["home-041", "home-048", "home-056", "registry-067", "registry-078"],
+  // RECEIPTS-2: the campaign's famine and petition states the geometry rows open (scripts/ui{5,6,8,9,10}States.ts).
+  UI5_STATES: ["famine-arrival", "petition-open"],
+  UI6_STATES: ["levy_response", "refugee_admission", "wall_or_market", "war_funding", "wool_payment"],
+  UI8_STATES: ["cash_rent", "land_redistribution", "vacant_priest", "wages"],
+  UI9_STATES: ["borough_charter", "cloth_or_grain", "guild_charter", "tax_collection"],
+  UI10_STATES: ["borough_autonomy", "church_rebuilding", "guild_dispute", "heir_choice", "legacy_choice", "royal_tax", "extra/heir_choice"],
 };
+const CAMPAIGN = ["UI5_STATES", "UI6_STATES", "UI8_STATES", "UI9_STATES", "UI10_STATES"];
 
 function realStates(): readonly { name: string; state: GameState }[] {
   return Object.entries(FOLDERS).flatMap(([env, names]) => {
@@ -256,8 +372,23 @@ function realStates(): readonly { name: string; state: GameState }[] {
   });
 }
 
+test("on the campaign's real states: the famine's every answer and every political petition's", t => {
+  const states = realStates().filter(entry => CAMPAIGN.some(env => entry.name.startsWith(`${env}/`)));
+  if (states.length === 0) { t.skip("no campaign state folder given (UI5_STATES, UI6_STATES, UI8_STATES, UI9_STATES, UI10_STATES)"); return; }
+  const seen = new Set<string>();
+  for (const { name, state } of states) famineAndPetitionAnswers(name, state, seen);
+  if (states.some(entry => entry.name.startsWith("UI5_STATES/"))) {
+    for (const choice of ["relief", "price_control", "laissez_faire", "speculation"]) assert.ok(seen.has(`famine:${choice}`), `famine ${choice}`);
+  }
+  for (const { name, state } of states) {
+    const petition = petitionCard(state);
+    if (petition !== null) for (const choice of petition.card.choices.filter(entry => entry.refusal === null)) assert.ok(seen.has(`petition:${petition.defId}:${choice.id}`), `${name} ${choice.id}`);
+  }
+  assert.ok([...seen].filter(key => key.startsWith("petition:")).length >= 20, `the petitions' answers: ${[...seen].join(", ")}`);
+});
+
 test("on the real lord-slice states: home and off-map petitions, audits, registry offers, the will and the town's request", t => {
-  const states = realStates();
+  const states = realStates().filter(entry => !CAMPAIGN.some(env => entry.name.startsWith(`${env}/`)));
   if (states.length === 0) { t.skip("no state folder given (LMR2_STATES, LMR1_PETITION_STATES, LORD_STATES, VARIANT_STATES)"); return; }
   const seen = new Set<string>();
   for (const { name, state } of states) {

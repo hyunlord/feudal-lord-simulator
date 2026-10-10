@@ -13,7 +13,9 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/lmr1PetitionCaptures.mjs)", { remote: "scripts/remote/run.sh render-LMR1-petitions-<sha7> -- bash scripts/lmr1PetitionCaptures.sh", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
+import { outlookOf, outlookTreasury } from '../src/ui/decisionCard/outlook.ts';
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -40,7 +42,7 @@ const proof = page => page.evaluate(() => {
 const card = page => page.evaluate(async () => {
   const root = document.querySelector('.lord-card');
   if (root === null) return null;
-  const art = root.querySelector('.lord-card-art, .story-modal-art');
+  const art = root.querySelector('.lord-card-art, .story-modal-art, .decision-card-art');
   const background = art === null ? null : getComputedStyle(art).backgroundImage;
   const src = background === null ? null : background.match(/url\("?([^")]+)"?\)/)?.[1] ?? null;
   const loaded = src === null ? null : await new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done('error'); image.src = src; });
@@ -57,24 +59,34 @@ const card = page => page.evaluate(async () => {
 });
 const shoot = async (page, name) => { const path = join(out, `${name}.jpg`); await page.locator('.lord-card').first().screenshot({ path, type: 'jpeg', quality: QUALITY }); return statSync(path).size; };
 const open = (state, options = {}) => openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
-  query: '&story-delay=3000', loadTimeout: 90_000, zoom: 1.1, ...options });
+  // GEO-D1: the story's delay outlasts the scene's own setup (at 3 s openScene's Escape could put the card off for good).
+  query: '&story-delay=8000', loadTimeout: 90_000, zoom: 1.1, ...options });
 /** The card, a political petition that opened first put off (it opens before a home petition, as for a player). */
-const waitCard = async (page, selector) => {
-  for (let waited = 0; waited < 30_000; waited += 500) {
+const waitCard = async (page, selector, timeout = 30_000) => {
+  for (let waited = 0; waited < timeout; waited += 500) {
     if (await page.locator(`${selector} >> visible=true`).count() > 0) return true;
     const political = page.locator('.petition-card:not(.lord-card) .story-modal-later >> visible=true');
     if (await political.count() > 0) await political.first().click();
+    // Another lord card, the season's card or a result card that came first is put off or closed, as a player does.
+    const other = page.locator(`.lord-card:not(${selector}) .story-modal-later, .season-ledger-resume, .results-card-continue >> visible=true`);
+    if (await other.count() > 0) await other.first().click();
+    // A story card that asks nothing (the lord's moment) is closed, or the beats behind it never come (as the audit's story step).
+    const told = page.locator('.event-card:not(:has(.event-card-decide)) .event-card-actions > button:last-child >> visible=true');
+    if (await told.count() > 0) await told.first().click();
     await page.waitForTimeout(500);
   }
   return false;
 };
 const fromChip = async (page, story, selector) => {
+  // The card may open by itself once the story's delay is past (as for a player); else its chip and [결정하기].
+  if (await waitCard(page, selector, 12_000)) return true;
   const chip = page.locator(`.event-chip[data-story="${story}"]`).first();
   if (!(await chip.waitFor({ state: 'visible', timeout: 30_000 }).then(() => true, () => false))) return false;
-  await chip.click(); await page.locator('.event-card .event-card-decide').first().click();
+  await chip.click(); await page.locator('.event-card .event-card-decide').first().click({ timeout: 10_000 }).catch(() => undefined);
   return waitCard(page, selector);
 };
 
+const shownMoney = (state, petitionId, grant) => { const outlook = outlookOf(state, { type: 'answer_estate_petition', petitionId, grant }); return outlook === null ? null : outlookTreasury(outlook); };
 const rows = {}; let bytes = 0;
 // 1. Each home petition kind: the card by itself, both answers.
 for (const kind of KINDS) {
@@ -83,20 +95,26 @@ for (const kind of KINDS) {
   const row = { petition: petition.id, answers: {} };
   for (const grant of [true, false]) {
     const { context, page } = await open(state);
-    row.opened = await waitCard(page, `.lord-card[data-home-petition="${kind}"]`);
+    // A card put off by a slow load (or after a story card) is reached through its chip, as a player does.
+    const selector = `.lord-card[data-home-petition="${kind}"]`;
+    row.opened = await waitCard(page, selector) || await fromChip(page, 'home_petition', selector);
+    if (!row.opened) { row.answers[grant ? 'grant' : 'refuse'] = { status: null }; await context.close(); continue; }
     if (grant) { row.card = await card(page); row.bytes = await shoot(page, `home-${kind}`); bytes += row.bytes; }
     const before = await proof(page);
     await page.locator(`.lord-card .petition-option[data-grant="${grant}"], .lord-card [data-choose="${grant ? 'grant' : 'refuse'}"]`).first().click(); await page.waitForTimeout(600);
+    // RECEIPTS: the answered card turns over to its receipt; [확인] closes it.
+    const receipt = await closeAnswerReceipt(page);
     const after = await proof(page);
     const answered = after.petitions.find(p => p.id === petition.id);
     const shown = row.card?.answers.find(answer => answer.grant === String(grant));
     row.answers[grant ? 'grant' : 'refuse'] = { status: answered?.status ?? null, decidedBy: answered?.decidedBy ?? null, treasury: after.treasury - before.treasury,
-      shownTreasury: shown === undefined ? null : Number(shown.treasury), closed: (await page.locator('.lord-card').count()) === 0 };
+      // DEC-CARD-2: the card's treasury line is the engine's outlook for the answer (the heavy card's markup carries no number).
+      shownTreasury: shown === undefined ? null : shownMoney(state, petition.id, grant), receipt, closed: (await page.locator('.lord-card').count()) === 0 };
     await context.close();
   }
   row.pictureOk = ART[kind] ? row.card?.art !== null && Array.isArray(row.card?.loaded) && row.card.loaded[0] === 960 : row.card?.art === null && row.card?.src === null;
   row.answersOk = ['grant', 'refuse'].every(key => row.answers[key].status === (key === 'grant' ? 'granted' : 'refused') && row.answers[key].decidedBy === 'lord'
-    && row.answers[key].treasury === row.answers[key].shownTreasury && row.answers[key].closed);
+    && row.answers[key].treasury === row.answers[key].shownTreasury && row.answers[key].receipt && row.answers[key].closed);
   rows[`home-${kind}`] = row;
   console.log(`${row.opened && row.pictureOk && row.answersOk ? 'ok ' : 'BAD'} home-${kind}: art ${row.card?.art} ${JSON.stringify(row.card?.loaded)} · ${JSON.stringify(row.answers)}`);
 }
@@ -114,15 +132,22 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
 // 4. The town's request.
 {
   const state = scene(flags.states, 'request');
-  const { context, page } = await open(state);
-  const opened = await fromChip(page, 'lord_request', '.lord-card[data-lord-request]');
+  // The request has no chip once put off (openScene's Escape on a slow load would put it off for good): its story's
+  // delay outlasts the load (20 s, as the house card's rows do) and the card is waited for past it.
+  const { context, page } = await open(state, { query: '&story-delay=20000' });
+  const opened = await waitCard(page, '.lord-card[data-lord-request]', 45_000) || await fromChip(page, 'lord_request', '.lord-card[data-lord-request]');
   const shown = await card(page);
   const size = opened ? await shoot(page, 'request') : 0; bytes += size;
   const before = await proof(page);
-  if (opened) { await page.locator('.lord-card .petition-option[data-grant="true"]').first().click(); await page.waitForTimeout(800); }
+  // DEC-CARD: the request's grant is the heavy card's [data-choose]; RECEIPTS: its receipt closed with [확인].
+  if (opened) { await page.locator('.lord-card .petition-option[data-grant="true"], .lord-card [data-choose="grant"]').first().click(); await page.waitForTimeout(800); }
+  const receipt = opened && await closeAnswerReceipt(page);
   const after = await proof(page);
-  rows.request = { opened, card: shown, bytes: size, before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
-  console.log(`${opened ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}`);
+  rows.request = { opened, card: shown, bytes: size, receipt, before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
+  if (!opened) await page.screenshot({ path: join(out, 'debug-request.jpg'), type: 'jpeg', quality: 30 });
+  console.log(`${opened && receipt ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}, receipt ${receipt}`
+    + (opened ? '' : ` modals ${JSON.stringify(await page.locator('.story-modal, .season-ledger-card, [role=dialog]').evaluateAll(nodes => nodes.map(node => node.className)))}`
+      + ` chips ${JSON.stringify(await page.locator('.event-chip').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-story'))))}`));
   await context.close();
 }
 // 5. The guardian case.
