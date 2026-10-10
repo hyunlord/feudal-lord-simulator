@@ -20,3 +20,5 @@
 
 
 기존 9ad 기하 실행 `engineB-tlink-final-geometry-9ad9253`도 깨끗한9ad에서 통과했다. [공식 보고서](../uiaudit1/geometry/engineB-tlink-final-geometry-9ad9253/geometry.json): 기존27행·같은5화면×2문구×2수치의540조건, 실패0·미개방0·경고96, command3293.9초.056 초기 미개방3조건은 공식 재시도에서 통과했으며 원래3개 캡처를 보존했다. 축을 좁히지 않았고 예외를 추가하지 않았다. 이 축에390px는 없으므로 별도 관계 브라우저의 오른쪽 잘림을 해결했다는 뜻은 아니다.
+
+최신23d 기하는 `engineB-tlink-audit-geometry-23d1226`, clean source23d1226에서 command3488.1초·exit0으로 완료했다. [공식 결과](../uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/geometry.json): 같은27행·5화면×2문구×2수치의540조건, 실패0·미개방0·경고96이다. 원래 캡처3개를 보존했다. 390px는 이 감사 축에 없으므로 별도 수동 브라우저의 오른쪽 잘림은 미해결이다.
