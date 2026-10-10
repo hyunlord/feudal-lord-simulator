@@ -37,3 +37,5 @@ node scripts/engineBTlinkOutcomeCategoriesRun.mjs CONFIG SCORE OBSERVER_ROOT EXP
 관측기는 모든 원래 명령·답 ID, 전체 수집 parity, 최종 원시 상태 해시를 대조하고 답 직전/직후 상태와 전체 차분을 기록한다. loader는 원래 답 직후 command checkpoint에도 대조한다. 원래 자료에 답 직전 checkpoint가 없는 경우 그 값은 **새 공식 관측기의 측정**이며, 옛 자료가 독립적으로 보관한 값이라고 주장하지 않는다. 게시할 때 공식 실행 영수증과 seed manifest 해시를 함께 보존한다. 원시 중간 상태 hash 필드는 원시 바이트가 별도 보존되지 않아 형식만 확인하며, 보존한 canonical 상태와 차분은 직접 재계산한다.
 
 관측 실행 `engineB-tlink-immediate-3ecee4b`은 슬롯을 받아 seed1–3을 재생 중이다. 여기에는 네 분류의 실제 통과 수치를 아직 싣지 않는다. 기존 확정 코어 무효과127건은 [엔진 요청서](../../requests/engine-B-inert.md), 감사94건의 처리 증거는 [별도 보관](../eb-tlink-audit-settlement/README.md)에 있다.
+
+중간 원본의 seed1 `h-002358` / 038 `defer`는 답 직후 `estates.claims[1].strength`가55→50으로 바뀌었다. 판독기는 같은 주장 ID가 유일하게 같은 위치에 남아 있을 때 이 수치 변화를 권리 효과로 읽는다. `registryV4.ts:191`의 실제 변경과 `estateSuits.ts:179`의 심리 소비 경로를 소스 해시로 고정했다. 대상 교체·중복 ID·동일 값은 효과로 세지 않으며, 이 보완만으로 모든 효과가0이라는 증명을 만들지 않는다. 관련25시험 통과는 도구 검증이며, 미완료 관측을 전체 판의 점수로 사용하는 근거가 아니다.

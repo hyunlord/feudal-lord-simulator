@@ -1,6 +1,8 @@
 import { isDeepStrictEqual } from 'node:util';
 
 export const TLINK_REVIEWED_EFFECT_SOURCES = [
+  { path: 'src/engine/registryV4.ts', sha256: 'a2f9b9fc60e0281d5bce348d644da012a2c51f533f94f17f1170d64d939481bf' },
+  { path: 'src/engine/estateSuits.ts', sha256: '79ae19be3060a587241a80e0d966ad38a83a47f9aa2fdc8bee7d751df3c04779' },
   { path: 'src/content/stewardshipConfig.ts', sha256: 'aa01e8e7a7929122d75cd26fadce98459d86ff2893eec57a64ea8a03533e5949' },
   { path: 'src/engine/estates.ts', sha256: 'd592e9373961ed2b23780c83376dc00b78cea69b6c411732ea476629677e1c2e' },
   { path: 'src/ledger/ledger.ts', sha256: 'e2bfed958ef4dcf195527d03a29f0cb4093a63c4382e19c944ba7b2251064304' },
@@ -40,6 +42,8 @@ function scalarKind(row, path) {
   if (path.length === 1 && path[0] === 'timberOrder' && (old === undefined || numeric(old)) && (current === undefined || numeric(current))
     && (numeric(old) || numeric(current)) && (old ?? 0) !== (current ?? 0)) return 'command-state';
   if (path.length === 1 && path[0] === 'treasuryCoin' && numeric(old) && numeric(current)) return 'money';
+  if (path.length === 4 && prefix(path, ['estates', 'claims']) && path[3] === 'strength'
+    && stableItem(row, path.slice(0, 3), 'id') && numeric(old) && numeric(current)) return 'rights';
   if (path.length === 4 && prefix(path, ['factions', 'factions']) && path[3] === 'relation'
     && stableItem(row, path.slice(0, 3), 'id') && numeric(old) && numeric(current)) return 'relation';
   if (path.length === 4 && prefix(path, ['stewardship', 'oversight']) && ['tenants', 'merchants'].includes(path[3])

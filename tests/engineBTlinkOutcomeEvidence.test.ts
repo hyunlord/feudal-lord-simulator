@@ -103,11 +103,26 @@ test('absent and explicit zero timber orders have the same gameplay value', () =
 });
 test('changed transitive source pins invalidate semantic reuse even when direct handler pins match', () => {
   const item = fixture('audit');
-  for (const path of ['src/content/stewardshipConfig.ts', 'src/engine/estates.ts', 'src/ledger/ledger.ts']) {
+  for (const path of ['src/content/stewardshipConfig.ts', 'src/engine/estates.ts', 'src/ledger/ledger.ts', 'src/engine/registryV4.ts', 'src/engine/estateSuits.ts']) {
     const sourceFiles = TLINK_REVIEWED_EFFECT_SOURCES.map((pin: { path: string; sha256: string }) => pin.path === path ? { ...pin, sha256: '0'.repeat(64) } : pin);
     const result = buildTlinkOutcomeEvidence({ provenance: { sourceFiles, originalScoreSha256: '1'.repeat(64) }, rows: [{ ...item, seed: 1, historyId: 'answer', ordinal: 1, tick: 10, source: 'source', deltaPaths: [] }] });
     assert.equal(result.rows[0].proofComplete, false, path);
     assert.deepEqual(result.rows[0].effects, [], path);
     assert.equal(result.rows[0].unsupportedReason, 'reviewed_source_pin_mismatch', path);
+  }
+});
+
+test('actual strength of the same claim is a rights effect, while replacement and duplicate identities stay unknown', () => {
+  const command = { type: 'answer_registry_offer', choiceId: 'defer' };
+  const before = { estates: { claims: [{ id: 'claim-2', strength: 55 }] } };
+  const after = { estates: { claims: [{ id: 'claim-2', strength: 50 }] } };
+  const proof = mapped({ command, before, after });
+  assert.equal(changes(proof).length, 1);
+  assert.equal(changes(proof)[0].kind, 'rights');
+  assert.deepEqual(changes(proof)[0].path, ['estates', 'claims', '0', 'strength']);
+  assert.equal(proof.proofComplete, false);
+  assert.equal(changes(mapped({ command, before, after: before })).length, 0);
+  for (const claims of [[{ id: 'other', strength: 50 }], [{ id: 'claim-2', strength: 50 }, { id: 'claim-2', strength: 55 }]]) {
+    assert.equal(changes(mapped({ command, before, after: { estates: { claims } } })).length, 0);
   }
 });

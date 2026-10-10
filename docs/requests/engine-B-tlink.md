@@ -207,6 +207,6 @@ GROW-BLOCK은 여전히v55다. 2026-10-10 읽기 전용 재확인 경로는 `/Us
 
 ### RR22 — 새 분류 도구의 원격 검토 요청
 
-RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engineBTlinkOutcomeCategoriesRun.mjs`, `scripts/engineBTlinkOutcomeEvidence.mjs`, `scripts/engineBTlinkResiduals.mjs`를 비화면 오프라인 측정 도구로 분류하고 의미 판정 시험에 연결해 달라. 069f8bd의 check:merge는 네 파일 모두 UI/감사 import 도달0으로 확인하면서도 RR26 안전 목록 밖이라는 이유로 기존 기하 증거를 거부했다. REMOTE가 독립적인 실패 사례 시험과 분류 규칙을 검토할 대상이며, 이 가지는 안전 목록이나 selector를 직접 바꾸지 않는다. 현재 규칙을 만족시키기 위해 같은22 selector·27행·540조건 기하 감사 `engineB-tlink-categories-geometry-069f8bd`를 공식 관문 줄에 제출했다.
+RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engineBTlinkOutcomeCategoriesRun.mjs`, `scripts/engineBTlinkOutcomeEvidence.mjs`, `scripts/engineBTlinkResiduals.mjs`를 비화면 오프라인 측정 도구로 분류하고 의미 판정 시험에 연결해 달라. 069f8bd의 check:merge는 네 파일 모두 UI/감사 import 도달0으로 확인하면서도 RR26 안전 목록 밖이라는 이유로 기존 기하 증거를 거부했다. REMOTE가 독립적인 실패 사례 시험과 분류 규칙을 검토할 대상이며, 이 가지는 안전 목록이나 selector를 직접 바꾸지 않는다. 같은22 selector·27행·540조건 기하 감사 `engineB-tlink-categories-geometry-069f8bd`는 관문 줄에서 대기하던 중 권리 주장 강도 판독 보완으로 대상 판이 바뀌어 실행 전에 취소했다. 최종 도구 판에서 다시 제출하며, 취소한 실행은 통과 증거로 쓰지 않는다.
 
 새 도구의 [입력·종료 코드·분류 경계·관측 소스 계약](../verification/eb-tlink-four-categories/README.md)을 보존한다. 실제 즉시 변화는 별도 관측기로 읽으며, 처리 기록이나 미검증 미래 기대를 무효과/성공으로 바꾸지 않는다.
