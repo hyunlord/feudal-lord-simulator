@@ -47,6 +47,7 @@
 | 구현 전 기준 | `64a16b5a6c1d91024415039db89bb88412528e15` |
 | 격리 가지 | `codex/engine-b-tlink` — 본선 미병합 |
 | 기준64a→23d 변경 파일 목록 | [고정 제품 전체 변경](../verification/eb-tlink/changed-files-23d.json) |
+| 23d→53b 후속 도구·시험·문서·기하 준비 행 | [후속 전체 변경 목록](../verification/eb-tlink/changed-files-revised.json) — 실제 게임/화면 동작 코드는 유지 |
 | 이전64a→9ad 변경 파일 목록 | [docs/verification/eb-tlink/changed-files.json](../verification/eb-tlink/changed-files.json) |
 
 0b04는 직접 감독 청원의 빠진 원인과 집사 교체의 원인 탈취를 고친 이전 측정 소스다. 864f1ea는 관계 기여를 추가했고, 9ad는 계절 부호 제한을 교정했다. 최신 23d는 감사 정리 중 증거 연속성을 교정했으므로 이전 제품의 결과를 그대로 승계하지 않는다. 변경 파일 목록은 기준64a→23d 고정 제품과 이전64a→9ad를 각각 보존한다. 23d 이후의 문서·증거 커밋은 고정 제품 목록에 포함하지 않는다. 구 fae9 측정과0b04 native 대기 작업은 실행 전에 취소했으며 통과 근거에서 제외한다.
