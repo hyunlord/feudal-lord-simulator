@@ -1104,6 +1104,8 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
       line("stewardship.escalated", { stewardId, kind: petition.kind, rule: petition.escalated, amount: petition.amount });
     } else if (old === undefined && petition.escalated === "direct") {
       line("stewardship.brought", { house: house(petition.estateId), kind: petition.kind, late: petition.reachesLord === undefined ? 0 : 1, amount: petition.amount }, 0);
+    } else if (old !== undefined && old.status === "open" && petition.decidedBy === "steward") {
+      line("stewardship.steward_decided", { stewardId, kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
     } else if (old !== undefined && old.status === "open" && petition.status !== "open") {
       line(petition.status === "lapsed" ? "stewardship.lapsed" : "stewardship.lord_decided", { house: house(petition.estateId), kind: petition.kind, granted: petition.status === "granted" ? 1 : 0 });
     }

@@ -34,7 +34,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/history.ts",
-    "sha256": "07700e106c81c6001358e046f52a7d51fcde7a7985b80e5da2f487e60d4bf44d"
+    "sha256": "8fdb4158b9ecb8f364d077115203da12b623f0475b99cda96d8c8ae5c4b69f3a"
   },
   {
     "path": "src/engine/decisionTrace.ts",

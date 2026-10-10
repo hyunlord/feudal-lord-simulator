@@ -133,5 +133,7 @@ test('suppressed backlog becomes a steward report instead of blaming the lord fo
   const backlog = stewardshipOf(next).petitions.find(row => row.id === 'charter-backlog');
   assert.equal(backlog?.status, 'refused');
   assert.equal(backlog?.decidedBy, 'steward');
+  assert.ok(next.history?.records.some(row => row.tick === 3000 && row.template === 'stewardship.steward_decided' && row.params?.kind === 'charter_request'));
+  assert.equal(next.history?.records.some(row => row.tick === 3000 && row.template === 'stewardship.lord_decided' && row.params?.kind === 'charter_request'), false);
   assert.equal(next.history?.records.some(row => row.template === 'decision.lapsed' && row.params?.subjectId === 'charter-backlog'), false);
 });
