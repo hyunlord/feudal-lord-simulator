@@ -499,3 +499,17 @@ test("an accepted changed-rows run lists the overrides the trunk took since it, 
     assert.match(formatUiGeometryResult(result), new RegExp(`run pushing-rows: overrides the trunk took since, recorded — an override covers nothing: [^\\n]*${short(docs)} \\(docs pushed through the override, a reason\\)`));
   } finally { s.done(); }
 });
+
+test("an evil merge is a change of the file: a run that measured the same content on another branch, without that merge, does not cover it", () => {
+  const s = story();
+  try {
+    s.git("checkout", "-q", "trunk"); const fork = s.git("rev-parse", "HEAD");
+    // A side branch changes the card; the trunk's merge of it also writes Panel as Y itself (no evidence for that).
+    s.git("checkout", "-qb", "side"); s.write("src/ui/Card.tsx", "// side's card\n"); const s1 = s.commit("side: the card"); s.rowRun("side-rows", s1);
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-commit", "side"); s.write("src/ui/Panel.tsx", "// Y\n"); s.git("add", "-A"); s.git("commit", "-qm", "merge side, Panel written in the merge");
+    // Another branch writes Panel as Y too, with a valid run of it, and comes in after (a clean merge: Panel unchanged).
+    s.git("checkout", "-qb", "y", fork); s.write("src/ui/Panel.tsx", "// Y\n"); const y1 = s.commit("y: Panel Y"); s.rowRun("y-rows", y1);
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-edit", "y");
+    refused(s.check(), /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
