@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 import { createElement } from "react";
@@ -22,6 +22,11 @@ import { lordRequestView, openHomePetitions } from "../src/ui/lordCardsModel";
 import { moneyDelta, moneyShort } from "../src/ui/money.ko";
 import { registryOfferView } from "../src/ui/registryCardModel";
 import type { DecisionCardView } from "../src/ui/decisionCard/decisionCardTypes";
+import { dateWord } from "../src/ui/decisionCard/answerWords";
+import { lordMattersDue } from "../src/engine/lordDue";
+import { lordMatterBeats } from "../src/ui/lord/decisions/lordMatterBeats";
+import { LORD_MATTERS_COPY } from "../src/ui/lord/decisions/lordMattersCopy.ko";
+import { DECISION_CARDS_COPY as CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
 
 // RECEIPTS (user 2026-10-10, "결과가 티가 안 난다"): once the lord answers a heavy decision its card turns over to the
 // answer's receipt, and every real change of the answer shows there at once with its number. Here each target decision
@@ -232,15 +237,22 @@ test("the receipt's own rows for the town's conditions, from a plain before and 
 
 // --- the real lord-slice states (the DGX folders), every target decision and answer ------------------------------------
 
-const FOLDERS = ["LMR2_STATES", "LMR1_PETITION_STATES", "LORD_STATES", "VARIANT_STATES"] as const;
+/** The states each folder holds (scripts/lmr2States.ts, lmr1PetitionStates.ts, lmr1LordStates.ts + eventArtStates.ts, variantStates.ts). */
+const FOLDERS: Readonly<Record<string, readonly string[]>> = {
+  LMR2_STATES: ["attention-overloaded", "audit-pending", "contested", "inherited", "marriage-contracted", "neighbour-suit", "offer-countered", "promises",
+    "suit-defence-enforcing", "suit-defence-patronage", "suit-entry-forced", "suit-entry-threat", "suit-neighbour-took", "will-change"],
+  LMR1_PETITION_STATES: ["guardian", "home-ale_fines", "home-boundary_dispute", "home-chancel_repair", "home-common_pasture", "home-heriot", "home-merchet",
+    "home-mill_suit", "home-newcomer", "home-pannage", "home-road_bridge", "home-stall_dispute", "home-wardship", "precedent", "request"],
+  LORD_STATES: ["lord-receipts", "lord-receipts-old", "registry-offer", "registry-offer-hold"],
+  VARIANT_STATES: ["home-041", "home-048", "home-056", "registry-067", "registry-078"],
+};
 
 function realStates(): readonly { name: string; state: GameState }[] {
-  return FOLDERS.flatMap(env => {
+  return Object.entries(FOLDERS).flatMap(([env, names]) => {
     const dir = process.env[env];
-    if (dir === undefined || !existsSync(dir)) return [];
-    return readdirSync(dir).filter(file => file.endsWith(".json") && !/^(moments|states|lord2)/.test(file) && !file.includes("lme9"))
-      .map(file => ({ name: `${env}/${file}`, state: JSON.parse(readFileSync(join(dir, file), "utf8")) as GameState }))
-      .filter(entry => typeof entry.state.tick === "number");
+    if (dir === undefined) return [];
+    return names.map(name => join(dir, `${name}.json`)).filter(file => existsSync(file))
+      .map(file => ({ name: `${env}/${file.slice(dir.length + 1)}`, state: JSON.parse(readFileSync(file, "utf8")) as GameState }));
   });
 }
 
@@ -285,4 +297,44 @@ test("on the real lord-slice states: home and off-map petitions, audits, registr
   for (const key of ["home:grant", "home:refuse", "offmap:grant", "offmap:refuse", "audit:punish", "audit:tolerate"]) {
     if (states.some(entry => entry.name.startsWith("LMR2_STATES")) || !key.startsWith("offmap") && !key.startsWith("audit")) assert.ok(seen.has(key), key);
   }
+});
+
+// RECEIPTS (user 2026-10-10): a card whose chip gives the engine's deadline as a season says the same season (the will, the
+// audit's finding, the off-map estate's petition: lordMattersDue's dueTick); the home petition and the registry offer say
+// days on both, so they agree already.
+test("on the real states, the will's, the audit's and the off-map petition's cards say their chip's season", t => {
+  const states = realStates().filter(entry => entry.name.startsWith("LMR2_STATES"));
+  if (states.length === 0) { t.skip("LMR2_STATES not given"); return; }
+  let compared = 0;
+  for (const { name, state } of states) {
+    const beats = lordMatterBeats(state);
+    const due = (kind: string, id: string | undefined) => {
+      const tick = lordMattersDue(state).find(matter => matter.kind === kind && matter.id === id)?.dueTick ?? null;
+      return tick === null ? null : dateWord(state, tick);
+    };
+    const audit = auditDecisionView(state);
+    if (audit !== null) {
+      const date = due("audit", audit.auditId);
+      assert.ok(date !== null, `${name}: the audit has the engine's deadline`);
+      assert.ok(beats.find(beat => beat.decision === "audit_decision")!.facts.includes(LORD_MATTERS_COPY.auditDue(date)), `${name}: the chip's season`);
+      assert.equal(audit.card.deadline, CARDS_COPY.auditDeadline(date, 0), `${name}: the card's season`);
+      assert.ok(audit.card.deadline!.startsWith(`${date}까지`));
+      compared += 1;
+    }
+    const offMap = offMapPetitionView(state);
+    if (offMap !== null) {
+      const date = due("estate_petition", offMap.petitionId);
+      assert.ok(date !== null, `${name}: the petition has the engine's deadline`);
+      assert.ok(beats.find(beat => beat.decision === "estate_petition_offmap")!.facts.includes(LORD_MATTERS_COPY.petitionDue(date)), `${name}: the chip's season`);
+      assert.ok(offMap.card.deadline!.startsWith(`${date}까지`), `${name}: the card's season`);
+      compared += 1;
+    }
+    const will = marriageDecisionView(state);
+    if (will !== null && will.kind === "will_change") {
+      const date = due("will_change", diplomacyOf(state).marriage?.negotiationId);
+      assert.ok(date !== null && will.card.deadline!.startsWith(`${date}까지`), `${name}: the will's card's season`);
+      compared += 1;
+    }
+  }
+  assert.ok(compared >= 3, `the will, the audit and the off-map petition compared (${compared})`);
 });
