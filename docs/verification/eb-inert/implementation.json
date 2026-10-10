@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "task": "EB-INERT",
+  "branch": "codex/engine-b-inert",
+  "sourceRevision": "72c77f6157ac91f21d9fde73cf262702d0f787a0",
+  "baseRevision": "db750c16486a283e7f320ceaca70504589a00f93",
+  "files": [
+    "docs/design/stewardship.md",
+    "docs/requests/engine-B-inert.md",
+    "docs/requests/engine-B-tlink.md",
+    "docs/requests/render-A-inert.md",
+    "fixtures/saves/v57/README.md",
+    "fixtures/saves/v57/chapter-five-town.save.json",
+    "fixtures/saves/v57/chapter-four-town.save.json",
+    "fixtures/saves/v57/chapter-three-town.save.json",
+    "fixtures/saves/v57/chapter-two-town.save.json",
+    "fixtures/saves/v57/eb-inert-pressure.save.json",
+    "fixtures/saves/v57/four-farms.save.json",
+    "fixtures/saves/v57/ledger-rollup.save.json",
+    "fixtures/saves/v57/manifest.json",
+    "fixtures/saves/v57/money-arrears.save.json",
+    "fixtures/saves/v57/new-game.save.json",
+    "fixtures/saves/v57/palisade-construction.save.json",
+    "fixtures/saves/v57/population-176.save.json",
+    "fixtures/saves/v57/prepare-eb-inert.ts",
+    "fixtures/saves/v57/timber-shortage.save.json",
+    "fixtures/saves/v57/zone-undo.save.json",
+    "fixtures/saves/v57/zoned-opening.save.json",
+    "scripts/engineBInertCapture.mjs",
+    "scripts/engineBInertMeasurement.mjs",
+    "scripts/engineBInertReviewedSources.mjs",
+    "scripts/engineBInertRun.mjs",
+    "scripts/engineBOutcomeProduce.ts",
+    "scripts/engineBTlinkOutcomeCategoriesRun.mjs",
+    "scripts/engineBTlinkOutcomeEvidence.mjs",
+    "scripts/engineBTlinkResiduals.mjs",
+    "scripts/saveSchemaFingerprint.ts",
+    "src/content/historyCopy.ko.ts",
+    "src/content/stewardshipConsequencesConfig.ts",
+    "src/engine/decisionTrace.ts",
+    "src/engine/decisionTraceEstateRelations.ts",
+    "src/engine/decisionTraceStewardshipLosses.ts",
+    "src/engine/history.ts",
+    "src/engine/stewardship.ts",
+    "src/engine/stewardship.types.ts",
+    "src/engine/stewardshipConsequences.ts",
+    "src/save/migrations/index.ts",
+    "src/save/migrations/v56ToV57.ts",
+    "src/save/saveCodec.ts",
+    "src/save/saveTypes.ts",
+    "src/save/schemaFingerprint.v57.json",
+    "src/save/stewardshipConsequencesValidation.ts",
+    "tests/engineBInertCapture.test.ts",
+    "tests/engineBInertMeasurement.test.ts",
+    "tests/engineBTlinkOutcomeCategoriesRun.test.ts",
+    "tests/engineBTlinkOutcomeEvidence.test.ts",
+    "tests/engineBTlinkResiduals.test.ts",
+    "tests/engineBTlinkSave.test.ts",
+    "tests/stewardshipConsequences.test.ts",
+    "tests/stewardshipConsequencesSave.test.ts",
+    "tests/stewardshipConsequencesTrace.test.ts"
+  ],
+  "checks": {
+    "execution": "Mac; no FLS_ALLOW_LOCAL override",
+    "focused": {
+      "tests": 238,
+      "pass": 238,
+      "fail": 0,
+      "skip": 0
+    },
+    "designatedTenEvents": {
+      "tests": 22,
+      "pass": 22,
+      "includedInFocused": true
+    },
+    "additionalReadmodelSave": {
+      "tests": 28,
+      "pass": 21,
+      "fail": 0,
+      "skip": 7
+    },
+    "typecheck": "pass",
+    "changedSourceLint": "pass",
+    "saveFingerprint": "pass (unchanged shape after report correction)",
+    "build": {
+      "execution": "DGX",
+      "run": "engineB-inert-build-72c77f6",
+      "exitCode": 0,
+      "commandSeconds": 56.9,
+      "warnings": [
+        "existing native config import-extension warnings",
+        "chunk-size warning",
+        "keyart derivative plugin timing"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "file": "final-all.log.gz",
+      "sha256": "6fc9b77d5e69380bed42656486cdd08fc93d152b6521df2a03677d5594c38fab",
+      "rawSha256": "80ebe107ac17d68bd8040d67eb29bf93edb4a22a9a3f2975f66f9a6dfa80d795"
+    },
+    {
+      "file": "ten.log.gz",
+      "sha256": "551c5a74c0dc2b7d71f6dfb2359814df39dd9d28c7805a4b9da93e37b459f8d7",
+      "rawSha256": "adb929cd56a753d6e9070cf36051e7c7f8316ab23da2607878dff8826f07e143"
+    },
+    {
+      "file": "readmodel-save.log.gz",
+      "sha256": "e157782506eea16abb308b09a661375513522e980423f226db78e82e797d4292",
+      "rawSha256": "f46820949158f333139b7e03c74786aa6c7467fd07d56cd33f0d0619b67c4aa1"
+    },
+    {
+      "file": "types-history.log.gz",
+      "sha256": "15d0d44dcc44dcea0f98566ffd16ea9866930b363eb07239c016c43ebb4c4548",
+      "rawSha256": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff"
+    },
+    {
+      "file": "final-lint.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "backlog-lapse-red.log.gz",
+      "sha256": "7f0fa22b3715815e54d457a36794858c0c88dc93eb8539c8053f157a5af270b6",
+      "rawSha256": "7a1a0d17e8e87e37ae0ad077e35aa844e1431a0596bbf7a1ae3a021ab677331a"
+    },
+    {
+      "file": "backlog-lapse-green.log.gz",
+      "sha256": "be065a18a565460b4df144f6d6ba5ec1beb755622620dff5f7ad2cd0847d7a9d",
+      "rawSha256": "5ce525781a64b4e5a308c73988fdb809644d1c1556a8b5673d0fb426907d30fb"
+    },
+    {
+      "file": "backlog-history-red.log.gz",
+      "sha256": "03d1760534a8a9d0d15f2657812c1c34349f3bc13dfd7a92f34adbcec32486a1",
+      "rawSha256": "28452d839948393f7d46d1615fb9d03df1df9d22b117a9b194301f9ed6c1a9d4"
+    },
+    {
+      "file": "backlog-history-green.log.gz",
+      "sha256": "865d42407bd6455a68635e2cc959ddb8871046bc3879156de2b9f261a808cf58",
+      "rawSha256": "88ba88d4efeafcafb0f16ad101997049b9e32ed9c667dc1e92655de3ff2b7fdc"
+    },
+    {
+      "file": "build-run.log.gz",
+      "sha256": "baeba8e35d26bff5e527905a35b95330e3d576ac9192ad5e3710731972292408",
+      "rawSha256": "7c3933ada75cfcdd16d6d5161333e1fbb14fb0db7cfe5ee0ec3dd0c741227050"
+    },
+    {
+      "file": "build-timing.env.gz",
+      "sha256": "1661db0923edaec8caf19bf72e9e91d42fa7628858b962ea5655d53331069f65",
+      "rawSha256": "c0f1d4d68835403f5f671639ef9130b0d7a2bfea7653f92e9be24fb9f338a17a"
+    },
+    {
+      "file": "build-exit-code.gz",
+      "sha256": "89ed3b723e0e40d8957a2df55fcb04d57b6d95fa665c5fe67b098df7f29694ae",
+      "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "remote": {
+    "cohort": "engineB-inert-125-72c77f6",
+    "native": "engineB-inert-native-72c77f6",
+    "build": "engineB-inert-build-72c77f6",
+    "status": "submitted; results not yet adjudicated"
+  },
+  "cancelled": [
+    "engineB-inert-125-4034d1f (local transfer stopped before remote execution)",
+    "engineB-inert-125-2a081eb (stopped while queued)",
+    "engineB-inert-native-2a081eb (stopped while queued)"
+  ]
+}
