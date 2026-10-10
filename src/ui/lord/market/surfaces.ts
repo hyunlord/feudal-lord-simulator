@@ -14,8 +14,9 @@ const ERA_CONSOLE_OPEN: readonly OpenStep[] = [{ click: ".goal-drawer-toggle" },
 const HOST = { root: ".slot-panel.lord-screen", frame: "css", scrollParts: [".lord-screen-nav", ".lord-screen-content"] } as const;
 /** market-years with the story's chips coming after a delay that outlasts the scene's setup (GEO-D1). */
 const CHIPS_YEARS = marketScene("market-years", "&story-delay=8000");
-/** The chips come (a first wait past the delay), a card that opened by itself put off. */
-const CHIPS_COME: readonly OpenStep[] = [{ wait: ".event-chip", timeout: 90_000 }, { wait: ".story-modal", timeout: 20_000, optional: true }, { dismiss: [".story-modal-later"] }];
+/** The chips come (a first wait past the delay); a card or a chapter's page that opened by itself is put off (kept for later). */
+const CHIPS_COME: readonly OpenStep[] = [{ wait: ".event-chip", timeout: 90_000 }, { wait: ".story-modal, .chronicle-page", timeout: 20_000, optional: true },
+  { dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later"] }];
 const chipCard = (head: string): readonly OpenStep[] => [{ wait: `.event-chip[data-chip-id^='${head}']`, timeout: 90_000 }, ...CHIPS_COME.slice(1), { pause: 400 },
   { click: `.event-chip[data-chip-id^='${head}']` }, { pause: 600 }];
 const LEDGER_LORD: readonly OpenStep[] = [{ click: "[data-dock='ledger']" }, { click: "[data-ledger-tab='lord']" }, { pause: 500 }];
@@ -53,6 +54,11 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
     data: "four years after the proclamation, a house's suit against the lord as its chip's card: its filing, its stage and next season, the button to the ledger" },
   { id: "hud.event-card.lord-moment.market", root: ".event-card[data-chip-id^='lord-moment:']", frame: "css", scene: CHIPS_YEARS, open: chipCard("lord-moment:"), scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "four years after the proclamation, the lord's latest moment as its chip's card: the ledger's sentence" },
+  // Chapter 1 (1300–1317) ends a season after the proclamation: its page opens by itself (the delay outlasts the page load).
+  { id: "modal.chapter-page.market", root: ".chronicle-page:not(.legacy-ending):not(.legacy-book)", frame: "layer", frameLayer: ".chronicle-frame",
+    contentSlot: ".chapter-page-body", scrollParts: [".chapter-page-scroll"], scene: marketScene("market-proclaimed", "&story-delay=20000"),
+    open: [{ wait: ".chronicle-page", timeout: 90_000 }, { pause: 800 }], requires: ["h2", ".chronicle-keep"],
+    data: "chapter 1's page in the lord's slice, a season after the market charter's proclamation: 1300–1317 as the chronicle keeps it" },
   { id: "hud.event-card.famine.market", root: ".event-card[data-chip-id^='famine:']", frame: "css", scene: marketScene("market-proclaimed", "&story-delay=8000"),
     open: chipCard("famine:"), scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"],
     data: "a season after the proclamation, the great famine's chip (1315–17, the bot's answer given) as its card: its line, until when" },
