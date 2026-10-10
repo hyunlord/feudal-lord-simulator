@@ -154,6 +154,9 @@ const ERA_CONSOLE_OPEN: readonly OpenStep[] = [{ click: ".goal-drawer-toggle" },
 const WALL_PLAN_OPEN: readonly OpenStep[] = [...ERA_CONSOLE_OPEN, { click: "[data-wall-plan='open']" }, { pause: 500 }];
 const growPlanScene = (name: string): SceneRef => ({ kind: "state", set: "growplan", name, tile: "house", zoom: 1.1, query: QUIET });
 const DISMISS: OpenStep = { dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"] };
+/** A card the story opened at once (story-delay 0: the first child's state opens a registry offer) is put off before a chip
+ * under it is pressed — the scene setup no longer presses Esc over it (openScene: Esc only for the welcome or a pause menu). */
+const PUT_OFF_FIRST: readonly OpenStep[] = [{ pause: 600 }, DISMISS, { pause: 400 }, DISMISS, { pause: 400 }];
 const LEDGER: OpenStep = { click: "[data-dock='ledger']" };
 const CHRONICLE: readonly OpenStep[] = [LEDGER, { click: ".ledger-tab--chronicle" }, { wait: ".chronicle-screen" }, { pause: 900 }];
 const petitionScene = (set: StateSet, name: string, delay: number) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: `&story-delay=${delay}` }) as const;
@@ -242,11 +245,11 @@ export const SURFACES: readonly SurfaceRow[] = [
   // PLAY-2 (friction 9): the first child's moment names the child and the parents; its record opens with their biographies.
   { id: "hud.event-card.family-moment", root: ".event-card[data-story='lord_moment']", frame: "css",
     scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
-    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, ...PUT_OFF_FIRST, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-facts li", ".event-card-chronicle"], data: "the first child: the ledger's sentence, the child and the parents named, the way to the chronicle" },
   { id: "modal.history.family-links", root: ".chronicle-screen", frame: "flat", scrollParts: [".chronicle-list", ".chronicle-detail"],
     scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
-    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 },
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, ...PUT_OFF_FIRST, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 },
       { click: ".event-card[data-story='lord_moment'] .event-card-chronicle" }, { wait: ".chronicle-detail [data-family]", timeout: 30_000 }, { pause: 900 }],
     requires: [".chronicle-detail [data-family]"], data: "the first child's record in the chronicle (as modal.history.records: the detail scrolls): a biography button for each person its record names" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
