@@ -64,11 +64,16 @@ wait_run() { # prints the exit code, or "no-slot" / "too-long"
 }
 
 # The audit reads the pictures: pull the LFS files first (the shared store under _cache/lfs), then audit the clean tree.
-run=$(launch nightly-GEOMETRY "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && bash scripts/remote/tasks.sh ui-geometry")
+# The date in the name: a night tried again never takes the folder of an earlier night's kept run.
+run=$(launch "nightly-GEOMETRY-$(date +%m%d)" "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && bash scripts/remote/tasks.sh ui-geometry")
 log "nightly geometry ${head:0:8}: $run started"
 rc=$(wait_run "$run")
-[ "$rc" = 0 ] && echo "$head" > "$ST/last-audited"   # a failed or skipped night is tried again
+# The audit exits 1 on any failure, even one in the baseline: the night is done when it left a full result with its
+# measured inputs (the gate judges the failures against the baseline when it is committed). Else it is tried again.
+out=$BASE/$run/docs/verification/uiaudit1/geometry/$run
+if [ -f "$out/geometry.json" ] && [ -f "$out/inputs.json" ]; then state=OK; echo "$head" > "$ST/last-audited"
+elif [ "$rc" = no-slot ]; then state=SKIPPED; else state=FAILED; fi
 summary=$(grep -m1 'measured' "$BASE/$run/.remote/summary.txt" 2> /dev/null | cut -c1-200)
-printf '%s %s %s %s | %s\n' "$(case "$rc" in 0) echo OK ;; no-slot) echo SKIPPED ;; *) echo FAILED ;; esac)" "${head:0:8}" "$(date '+%F %T')" "$run" "${summary:-exit $rc}" > "$ST/status"
+printf '%s %s %s %s | audit exit %s | %s\n' "$state" "${head:0:8}" "$(date '+%F %T')" "$run" "$rc" "${summary:-no summary}" > "$ST/status"
 log "$(cat "$ST/status")"
-[ "$rc" = 0 ]
+[ "$state" != FAILED ]   # a skipped night is no failure of the unit
