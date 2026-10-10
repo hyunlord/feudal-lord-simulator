@@ -1,6 +1,6 @@
 # EB-TLINK: 125년 원본과 재계산
 
-기준판·0b04·최신9ad의 **공식125년 수집·재생은 모두 완료**했다. 최신 `9ad9253468592e7cba144946081d2fbced36adca`는 **301/816=36.8873%, pass=false**다. 기준판292/816=35.7843%, 이전0b04는204/816=25%이며 원래 scorer·분모·미래창을 유지했다. 최신 세 판의 기준판 대비 명령 스트림·checkpoint·최종 규칙 투영은 일치하지만 원시 전체 최종 상태 해시는 모두 다르다. 별도 native는 실행 중, 무효화 probe는 대기 중이며80% 관문이나 전체 인수 통과를 주장하지 않는다. 최신 geometry는27행·540조건·실패0·미개방0으로 통과했다. 최신 changed는553파일·4425시험 중4412통과·실패0·skip13,66파일 결과 재사용으로 끝났다. 최신 브라우저의 양방향 이동·저장 검증은 통과했지만390px 오른쪽 잘림은 NEEDS_WORK다([실제 화면 근거](../eb-tlink-relation-browser/README.md)).
+기준판·0b04·최신9ad의 **공식125년 수집·재생은 모두 완료**했다. 최신 `9ad9253468592e7cba144946081d2fbced36adca`는 **301/816=36.8873%, pass=false**다. 기준판292/816=35.7843%, 이전0b04는204/816=25%이며 원래 scorer·분모·미래창을 유지했다. 최신 세 판의 기준판 대비 명령 스트림·checkpoint·최종 규칙 투영은 일치하지만 원시 전체 최종 상태 해시는 모두 다르다. 별도 native는 세 seed 원시 전체 최종 해시 일치로 완료했다. 무효화 probe는 사전 검사 실패 후 재시도 실행 중이며80% 관문이나 전체 인수 통과를 주장하지 않는다. 최신 geometry는27행·540조건·실패0·미개방0으로 통과했다. 최신 changed는553파일·4425시험 중4412통과·실패0·skip13,66파일 결과 재사용으로 끝났다. 최신 브라우저의 양방향 이동·저장 검증은 통과했지만390px 오른쪽 잘림은 NEEDS_WORK다([실제 화면 근거](../eb-tlink-relation-browser/README.md)).
 
 공식 실행 `engineB-tlink-baseline125-cf3fa94`가 seed1·2·3 각각125년(500000틱)을 수집하고 같은 명령을 재생했다. 세 판 모두 재생 일치, 실행 exit0, 명령 시간13416.9초다. 실제 소스는 `cf3fa941659ecb78396eed3780f88024a2bde0dd`, 제품 코드는 승인 기준 `64a16b5a6c1d91024415039db89bb88412528e15`와 같다. 측정 계측만 별도 커밋했다.
 
@@ -104,7 +104,7 @@ mixed-command 문서는 **9ad 소스의 증명 초안**이며0b04 실행 증거�
 
 [collection-9ad9253 인덱스](collection-9ad9253/archive.json)에 `tlink-9ad-estate-residual-audit.{mjs,json}.gz` 원문을 추가했다. 잠정301/816에서 성숙 미연결 estate 답336건은 관계 변화0인213·부분 clamp4·답변 후 경계 도달3·나중 무효화116으로 나뉜다. 이는 증거 상태 판독이며 **명령 전체 무효과를 뜻하지 않는다.** 나중116건의 최초 무효화 분기는 보존되지 않았고, expected가 내부값인62건은 조사 우선순위일 뿐 입증된 누락 링크62건이 아니다. 이 집합에서 첫 철 이전 반대 부호의 알려진 같은 차원 명령은0건이므로 mixed-command 증명으로 연결률 증가를 주장하지 않는다.
 
-source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-audit.mjs`는 인덱스에 있다. 별도 checkout에 입력을 복원해야 하며 고정 출력을 덮어쓰는 생성기를 보존 원본에서 실행하지 않는다. 원본 script SHA는 `b37d57273efb1ed95a7af1b64146dc4c1d6d5b58acaf023159146dc63a36f6ee`, JSON SHA는 `7bab64d3349a719a7bc9588245b9e3643c6c346dbc9d4ebe5d828e448f2b7af2`다. 독립 검토에서 차단 결함은 없었지만 공식 재생·scorer 인수 결과가 아니다. 별도 `engineB-tlink-invalidation-probe-9ad9253`는 인계 시점 제출·대기 중이며 실행/결과를 주장하거나 probe 자료를 보관하지 않았다.
+source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-audit.mjs`는 인덱스에 있다. 별도 checkout에 입력을 복원해야 하며 고정 출력을 덮어쓰는 생성기를 보존 원본에서 실행하지 않는다. 원본 script SHA는 `b37d57273efb1ed95a7af1b64146dc4c1d6d5b58acaf023159146dc63a36f6ee`, JSON SHA는 `7bab64d3349a719a7bc9588245b9e3643c6c346dbc9d4ebe5d828e448f2b7af2`다. 독립 검토에서 차단 결함은 없었지만 공식 재생·scorer 인수 결과가 아니다. 별도 `engineB-tlink-invalidation-probe-9ad9253`는 자체 미추적 runtime script를 사전 검사에서 거부하여2.4초에 실패했다. 시뮬레이션 결과는 없다. 제품9ad는 그대로이며 정확한 자기 script 경로만 허용하는 `engineB-tlink-invalidation-retry-9ad9253`을 재시도 실행 중이다. 결과나 추가 연결을 주장하지 않는다.
 
 
 ## 공식 최종9ad 결과 —80% 기준 미달
@@ -120,7 +120,7 @@ source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-
 
 [원래 점수](final-9ad-score.json.gz)는 pass=false·conditional0·미분류 선포2건을 그대로 남긴다. [잔여 판독](final-9ad-residuals.json.gz)은 직접301을 뺀535건을 즉시 결과만 관측336·설명 미완179·관측 부족20·조건 미충족 관측0으로 보존한다. 보충 phase 분류는 실제 BIG 미연결2건을 더한301/818이며 원래 분모816을 덮어쓰지 않는다. 즉시 처리를 미래 분자로 세거나 영수증 부재를 거짓 조건으로 만들지 않았다.
 
-[기준판과 전후 비교](final-9ad-parity.json.gz)는 세 판 commandStreamEqual/parityEqual/finalProjectionEqual=true, fullFinalHashEqual=false다. 이는 명령·철 경계·최종의 관측 지점별 규칙 투영이며 모든 tick 또는 전체 상태의 동등성 증명이 아니다. 원시 전체 해시 차이와 인과 ID를 정규화하지 않았다. 별도 native는 실행 중이고 무효화 probe는 대기 중이다.
+[기준판과 전후 비교](final-9ad-parity.json.gz)는 세 판 commandStreamEqual/parityEqual/finalProjectionEqual=true, fullFinalHashEqual=false다. 이는 명령·철 경계·최종의 관측 지점별 규칙 투영이며 모든 tick 또는 전체 상태의 동등성 증명이 아니다. 원시 전체 해시 차이와 인과 ID를 정규화하지 않았다. 별도 native는 아래 범위에서 통과했으며 무효화 probe는 사전 검사 실패 후 재시도 실행 중이다.
 
 원래 기대표의 source pin과 최신 제품이 달라 세 판 모두 contractSourceCompatible=false이며 strict 직접0/816이다. 핀을 통과 목적으로 다시 맞추지 않았다.301/816은 정확한 자기 ID의 미래 because 연결률로, 대상·조건·주원인의 충분성·화면 표시까지 입증하는 수치가 아니다.
 
@@ -129,3 +129,10 @@ source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-
 - [seed1](final-9ad/seed-1/archive.json)·[seed2](final-9ad/seed-2/archive.json)·[seed3](final-9ad/seed-3/archive.json) 인덱스는 전체 원본 구성원의 크기·해시를 보존한다. 원본은 `.remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final` 및 공식 kept 실행에 남긴다. `scripts/remote/run.sh --fetch engineB-tlink-final125-9ad9253` 후 인덱스로 대조할 수 있다. 대형 raw/tar를 Git에 복사하지 않았다.
 
 이 공식 묶음10파일은112211bytes다. 앞의 수집 snapshot·estate 진단은 작성 당시의 제한과 원본 바이트를 유지하며 공식 완료를 이유로 인과 증명의 범위를 넓히지 않는다.
+
+
+## 별도 native 완료 —125년 답변 측정과 구분
+
+[실행·재현 안내](../eb-tlink-native/README.md), [manifest·전체 원본 해시](../eb-tlink-native/manifest.json), [원시 비교](../eb-tlink-native/comparison.json)를 보존했다. `engineB-tlink-native-latest-9ad9253`은 기준 `64a16b5a6c1d91024415039db89bb88412528e15`와 제품 `9ad9253468592e7cba144946081d2fbced36adca`를 비교하여 **세 seed 원시 전체 최종 상태 SHA 모두 일치·exit0·command1531.2초**였다. 기록 제외 투영만의 일치를 전체 해시 일치로 바꿔 말한 결과가 아니다.
+
+범위는24필지·최대500000tick·seed1–3이다. 각 seed는 target-scale-stable로372667·281540·299186tick에 조기 종료했다. 표준5seed·1200000tick 관문이나 모든 tick 동등성 증명은 아니다. compact 보관은26파일449684bytes이며 전체 상태 원본은 외부 보존 경로와 manifest 해시로 확인한다. 이 일반 성장 실행과125년 답변 수집/재생은 다른 harness다. 따라서 앞의125년 원시 전체 최종 해시3판 불일치,301/816 기준 미달,설명 미완179건은 그대로 남는다.
