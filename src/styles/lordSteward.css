@@ -7,7 +7,7 @@
 .season-steward-line { margin: 0; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
 .season-steward-items, .season-steward-brought { display: grid; gap: 4px; margin: 2px 0; padding: 0; list-style: none; }
 .season-steward-brought { padding-left: 18px; list-style: disc; font-size: 13px; line-height: 1.45; }
-.season-steward-summary { display: flex; align-items: center; min-height: 44px; padding: 4px 8px; font-size: 13px; line-height: 1.35; text-align: left; cursor: pointer; }
+.season-steward-summary { display: flex; align-items: center; min-height: 44px; padding: 4px 8px; font-size: 13px; line-height: 1.35; text-align: left; cursor: pointer; word-break: keep-all; overflow-wrap: anywhere; }
 .season-steward-detail { display: grid; gap: 1px; margin: 4px 0; padding: 0 8px; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
 .season-steward-detail dt { margin-top: 3px; font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); }
 .season-steward-detail dd { margin: 0; }

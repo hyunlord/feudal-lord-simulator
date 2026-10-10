@@ -88,6 +88,8 @@ try {
       assert.ok(await report.locator(`[data-steward-item="${fixture.auditId}"]`).count() === 1, 'Automatic audit report missing');
       row.report = await capture(first.page, report.locator(`[data-steward-item="${fixture.auditId}"]`), `${width}-report`);
       row.report.text = reportText;
+      row.report.wordBreak = await report.locator(`[data-steward-item="${fixture.auditId}"] .season-steward-summary`).evaluate(node => getComputedStyle(node).wordBreak);
+      assert.equal(row.report.wordBreak, 'keep-all', 'Automatic audit report must preserve Korean word boundaries');
       row.loss = await capture(first.page, report.locator('.season-steward-line').filter({ hasText: '눈감아 준 오류로 이번 철 수입' }).first(), `${width}-season-loss`);
     } catch (error) {
       row.reportFailure = artifact(`${width}-report-failure.jpg`, await first.page.screenshot({ type: 'jpeg', quality: 75 }));
