@@ -4,40 +4,16 @@
   "branch": "codex/engine-b-tlink",
   "source": [
     {
+      "path": "scripts/saveSchemaFingerprint.ts",
+      "sha256": "7fd4e5d9eb3dfe88e06cecb8d23b8481cb1ce967510cc1cc02a2d0d5e602de91"
+    },
+    {
       "path": "src/engine/answerEffectCapture.ts",
-      "sha256": "826fb41bd43e67f6ca5e8e90174826a1fbdbe7a9e428b71e522cdce9c3853551"
+      "sha256": "54c6a7ca04edda972763c042dbe5b881f6aac164141e9c0314fccf70432751be"
     },
     {
       "path": "src/engine/answerEffects.types.ts",
       "sha256": "fd8ce8edcf5332ec8252227448513f474346c6794819537f2bd959b77d008dde"
-    },
-    {
-      "path": "src/save/answerEffectsValidation.ts",
-      "sha256": "be09574e9262743c05e850d7093d32663199fc202d382e88ab38627579831226"
-    },
-    {
-      "path": "src/save/migrations/v56ToV57.ts",
-      "sha256": "52dd277e957bbbe53eb97aeca3dd48eacec7a90532c8c98ff9bf4e59fcc5192d"
-    },
-    {
-      "path": "src/save/schemaFingerprint.v57.json",
-      "sha256": "942b243bcefd634450198240ea47d8425df205c1fc270ce757d0447cf489d899"
-    },
-    {
-      "path": "tests/answerEffects.test.ts",
-      "sha256": "8c84d7336fde0d4e8ac4e7c12f3ae1bab2ed349fab679e767fd33c59505a3208"
-    },
-    {
-      "path": "tests/answerEffectsReplay.test.ts",
-      "sha256": "6830360febf2bb5bd10f542e4630539774e06ab46809a2aeb6c41fa7c5371611"
-    },
-    {
-      "path": "tests/helpers/answerEffectOracle.ts",
-      "sha256": "dca6d6a909b60968ad791efae6e9b755e1201d9b44bd4c30209d16fa7935968b"
-    },
-    {
-      "path": "scripts/saveSchemaFingerprint.ts",
-      "sha256": "7fd4e5d9eb3dfe88e06cecb8d23b8481cb1ce967510cc1cc02a2d0d5e602de91"
     },
     {
       "path": "src/engine/decisionTrace.ts",
@@ -52,34 +28,66 @@
       "sha256": "3cd3f36dd85e4a8066458556a741ae5da710e35f25f12faf38d6e36922a87b87"
     },
     {
+      "path": "src/save/answerEffectsValidation.ts",
+      "sha256": "be09574e9262743c05e850d7093d32663199fc202d382e88ab38627579831226"
+    },
+    {
       "path": "src/save/migrations/index.ts",
       "sha256": "037b96ac9cdfaa5c8ca2942c51a28626d1ce0a6ed72ddc426cfeb8405e338d7c"
+    },
+    {
+      "path": "src/save/migrations/v56ToV57.ts",
+      "sha256": "52dd277e957bbbe53eb97aeca3dd48eacec7a90532c8c98ff9bf4e59fcc5192d"
     },
     {
       "path": "src/save/saveTypes.ts",
       "sha256": "c81548d7de300db03cd1f33df3f6ba5f39c001509a06303a9a82b2fa402f4b56"
     },
     {
+      "path": "src/save/schemaFingerprint.v57.json",
+      "sha256": "942b243bcefd634450198240ea47d8425df205c1fc270ce757d0447cf489d899"
+    },
+    {
       "path": "src/save/traceAnswerValidation.ts",
       "sha256": "519d1b2f343f205368bcf4647c84a7215849fedb75268a6f30b7eedff5e0e7a2"
     },
     {
+      "path": "tests/answerEffects.test.ts",
+      "sha256": "8a89c2683abac32edea6e29e06dae68299c884ffae28d137b0188a877dea0a6a"
+    },
+    {
+      "path": "tests/answerEffectsReplay.test.ts",
+      "sha256": "6830360febf2bb5bd10f542e4630539774e06ab46809a2aeb6c41fa7c5371611"
+    },
+    {
       "path": "tests/engineBTlinkSave.test.ts",
       "sha256": "54a4bea3a9fe15bf44a67b081261a1ca87bf273259882b9fb97b9f7ad372e308"
+    },
+    {
+      "path": "tests/helpers/answerEffectOracle.ts",
+      "sha256": "64f0e8db604841d94837e39db40508b92b786cd9f60e05422ae135d0fe47341a"
     }
   ],
   "artifacts": [
     {
       "path": "docs/verification/eb-answer-effects/README.md",
-      "sha256": "7dc498090f19ef4a4a342b51f83bc9c43c7217764a60694c5d52c71e5f3b0b28"
+      "sha256": "4396f5209511ac3425a29969b4f9ecf2cd20c6c00c7068bdd552ee764416318a"
     },
     {
       "path": "docs/verification/eb-answer-effects/build-fixture.ts",
       "sha256": "b3afac3b23003d8d51a14cc42c2dc7e39ba613d06fd38a5656a94e5aaf32633a"
     },
     {
+      "path": "docs/verification/eb-answer-effects/fixture-consumers.log.gz",
+      "sha256": "5ad8db1b5a9e87a514b2c6b39e726a86e98388845ba8206cff8957e1822b3294"
+    },
+    {
       "path": "docs/verification/eb-answer-effects/fixture-provenance.json",
       "sha256": "090985c935d1fcd9d6d8be9a853c40063b9761e177ddb52aa68b2bcb2cd76df1"
+    },
+    {
+      "path": "docs/verification/eb-answer-effects/fixture-state-equality.json",
+      "sha256": "f38013ee37688a3ec597cb20c49577083c6fefdece1d32b9975b88678f743793"
     },
     {
       "path": "docs/verification/eb-answer-effects/fixtures.tar.xz",
@@ -87,25 +95,25 @@
     },
     {
       "path": "docs/verification/eb-answer-effects/focused.log.gz",
-      "sha256": "715211558fc38e7f7dadde3510486f763bb97a8b12b54e0c4253e25a6731bfb1"
+      "sha256": "4df0d38c9b561bb80c021ddfb027bad46b0f3bf830674c02e68183235c35cfbb"
     },
     {
       "path": "docs/verification/eb-answer-effects/paired.log.gz",
-      "sha256": "54b8c404cfab5b0f5bee93c8dc594c9d6a47a4ce28ea1a59a135d07423649eb5"
+      "sha256": "72804b8587114d4efd930ca60d556bad15f077f939bf0115ce9fa1c8c732c12d"
     },
     {
       "path": "docs/verification/eb-answer-effects/replay.json.gz",
-      "sha256": "3a59bb7297a0cb512ff7558ef72ef30d822d9549054476a5eee9bf13272d1f45"
+      "sha256": "d70f2c6aa0668b84b9bd706404cb70c4b633766781bce57599b4bd9cc452354f"
     },
     {
       "path": "docs/verification/eb-answer-effects/test-changed-mac-limit.log.gz",
-      "sha256": "fdbd90db1303c3b96982eabe8fb69f5a24f406e600dcd7c8abbd51ac8853bd65"
+      "sha256": "7da620d49077057ff28406ce953a4e4f21b38d521320ca931413e5ad2a4a0726"
     }
   ],
   "verification": {
     "where": "Mac",
     "focused": {
-      "pass": 163,
+      "pass": 164,
       "fail": 0,
       "skip": 0
     },
@@ -120,11 +128,85 @@
     "changedSourceEslint": "pass",
     "testChanged": "Mac limit: 482 > 30; not run",
     "screenAcceptance": "not performed",
-    "longRun": "not performed for this source"
+    "longRun": "not performed for this source",
+    "fixtureConsumers": {
+      "pass": 54,
+      "fail": 0,
+      "skip": 0,
+      "overlapsFocused": true
+    },
+    "standardFixtureStateEqualities": 13
   },
   "save": {
     "provisionalVersion": 57,
     "oldEffects": "absent, not inferred",
     "collision": "EB-INERT v57; engine assigns final version"
-  }
+  },
+  "runtimeCommit": "82012446cce47a09386708159f577d9977194d29",
+  "fixtureHashes": [
+    {
+      "path": "fixtures/saves/v57/README.md",
+      "sha256": "82b9fb42e217d1d708f3da5a0ee9ff3c0feb55465f61a77aca3f2d4c50e048dc"
+    },
+    {
+      "path": "fixtures/saves/v57/chapter-five-town.save.json",
+      "sha256": "0816fef953a947a3dc6f35d16502fc9fbebfb2a58c7331306c0be91a8d2aff53"
+    },
+    {
+      "path": "fixtures/saves/v57/chapter-four-town.save.json",
+      "sha256": "f92fd8e7b66d8b9d4b21deef2e4c52f9537bfd628654c8a6029257c45c2c158a"
+    },
+    {
+      "path": "fixtures/saves/v57/chapter-three-town.save.json",
+      "sha256": "f60dde87b0c184daa282a00ef7379af804e11870f7e0ffa7f7c25403e051f68b"
+    },
+    {
+      "path": "fixtures/saves/v57/chapter-two-town.save.json",
+      "sha256": "53e220c54d3e22945ed150a329d2a34d040bd153a00a42c66598eecf6968cb50"
+    },
+    {
+      "path": "fixtures/saves/v57/eb-answer-effects.save.json",
+      "sha256": "00f3be4904bb42225bfeec8c53d60212337c30d071afca9d3da8c5b4987737f8"
+    },
+    {
+      "path": "fixtures/saves/v57/four-farms.save.json",
+      "sha256": "b81463a88dc56f8a2061303e71a55388aafdf7e412424a0d1a4646cd8dea8fa5"
+    },
+    {
+      "path": "fixtures/saves/v57/ledger-rollup.save.json",
+      "sha256": "5f0e092bc54c6c8bb905c7f2feb645760ac31ef379555d0db8eab1e9ede5824c"
+    },
+    {
+      "path": "fixtures/saves/v57/manifest.json",
+      "sha256": "dfe281161985f3e3969761d210dee555547966a6ba690ba0b2c3ffaa05f600cc"
+    },
+    {
+      "path": "fixtures/saves/v57/money-arrears.save.json",
+      "sha256": "a9e3d960a1d404553caac32294668eddfdad75ad63c82ba252a48871f1b9714c"
+    },
+    {
+      "path": "fixtures/saves/v57/new-game.save.json",
+      "sha256": "57a4ee9030512572f9bd431caa8355742558a1448b31c705198134433b9b7e4d"
+    },
+    {
+      "path": "fixtures/saves/v57/palisade-construction.save.json",
+      "sha256": "e421307cfb9b88e4d1b454ac945c7d9834a007763ed4b340550c545059b87d2e"
+    },
+    {
+      "path": "fixtures/saves/v57/population-176.save.json",
+      "sha256": "bdd83cb2765f387b9685be543637ff17b1c07a6fe02abba0671d75365e1abaee"
+    },
+    {
+      "path": "fixtures/saves/v57/timber-shortage.save.json",
+      "sha256": "3480babe15fe8b98b756d6eb0ab9223da6326e7b88b9c05d16ba413936a6cb5d"
+    },
+    {
+      "path": "fixtures/saves/v57/zone-undo.save.json",
+      "sha256": "fbbe390f7db8ba9f5afdc50ee27557f5c9a252271495abc5d80d637709ca357b"
+    },
+    {
+      "path": "fixtures/saves/v57/zoned-opening.save.json",
+      "sha256": "3d5211b3189372e026fc8f4093f25f30f782b8c0524d670a7e25622d8152e049"
+    }
+  ]
 }

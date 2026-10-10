@@ -233,9 +233,11 @@ RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engine
 `answerEffects(state, answerId)`를 `src/engine/decisionTraceAnswers.ts`에 추가했다. `retainAnswer`가 답의 실제 전이에서 스칼라 before/after/presence/delta를 저장하며 읽기는 저장된 값만 반환한다. [렌더 계약](render-A-answer-effects.md), [시험·재현 증거](../verification/eb-answer-effects/README.md).
 
 - 렌더74답과 역제안2답의 실제 전후값 누락0. 감사 회수·혼인 단계·적용 역제안 조항은 별도 명시 시험.
-- 76답의 기준db750c164 대 시제품 trace 밖 모든 상태 완전 일치. 기존 10지정 사건 시험도 포함한 focused163/163, 별도76답 replay1/1, 타입·변경src린트 통과(Mac).
+- 76답의 기준db750c164 대 시제품 trace 밖 모든 상태 완전 일치. 기존 10지정 사건 시험도 포함한 focused164/164, 별도76답 replay1/1, 타입·변경src린트 통과(Mac).
 - 시장도시/석조도시 선포·벽 우선순위에는 기존 history decision이 있으나 trace 답이 없었다. 새 기록·규칙을 만들지 않고 기존 ID에 `kind='command'` 답의 효과만 붙인다. 이 분기는 root decision이나 faction memory를 추가하지 않는다.
 - provisional57 + v56ToV57 neutral migration. INERT57/GROW와 충돌하므로 엔진이 최종번호를 정한다. 이전 effects 없는 답은 undefined, 측정된 무변화는 []다.
 - 이 새 소스를 과거125년/TRACE-LINK 점수의 측정 소스로 부르지 않는다. scorer source pins를 새 값으로 바꿔 과거 점수를 재사용하지 않았다. 본선 병합·전체 관문은 아직 아니다. `test:changed`는 추가482파일로 Mac 한도30을 넘겨 미실행, 기하/전체회귀 관문을 통과라고 주장하지 않는다.
 
 RR22 정정: 위의 측정 도구 안전 목록 요청은 사용자의 후속 지시로 철회됐다. 안전 목록은 넓히지 않으며 REMOTE 그림자 측정(a′)에 맡긴다.
+
+EB-ANSWER-EFFECTS 최종 측정 소스 `82012446cce47a09386708159f577d9977194d29`. 표준fixture13개 v56→v57은 기존 생성기의 재인코딩 경로로 보존했고 이전/이후 state 완전동등, 소비8파일54/54를 별도확인했다. `decisionTrace.ts`, `decisionTrace.types.ts`, `decisionTraceAnswers.ts`, 저장 migration/index/version/fingerprint는 EB-INERT/GROW와 겹칠 수 있으므로 엔진이 양쪽을 함께 검토한다.

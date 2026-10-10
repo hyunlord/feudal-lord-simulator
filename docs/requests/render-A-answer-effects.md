@@ -38,3 +38,5 @@ answerEffects(state, answerId): readonly AnswerEffect[] | undefined
 ## 증거
 
 [재현과 실행 증거](../verification/eb-answer-effects/README.md): 렌더 A `299cffec123d869f629bd8c6e9537bd5be9d46e4`의 74답 선택 경로를 그대로 재생했고, 역제안2답을 추가했다.76답 모두 독립 상태 차이의 이전·이후·차이를 대조했다. 같은76답을 기준db750c164와 짝지어 trace 밖 전체 상태가 완전히 같음을 확인했다. 이는 fixture reducer 시험이며 새 자연125년 판 또는 화면 수용 시험이 아니다.
+
+측정한 소스는 `82012446cce47a09386708159f577d9977194d29`다. 기근 대응의 실제 철별 지시는 command 항목으로 포함하지만 중복 정치 결정 원장/연대기 자료는 효과 항목으로 반복하지 않는다.
