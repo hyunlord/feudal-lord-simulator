@@ -17,7 +17,7 @@
 
 새 감사 matcher 이후 기존 잔여 주석은 즉시 처리 관측397·설명 미완85·관측 부족20이다. **이는 legacy residual annotation이며 새 네 범주의 점수가 아니다.** 추가 감사94건은 정확한 감사 처리 상태의 근거이지 실제 충성도 변화까지 입증한 결과가 아니므로 자동으로 (a)에 더하지 않는다.
 
-실제 답 직전/직후 관측 실험 `engineB-tlink-immediate-3ecee4b`은 공식 실행기에 제출되어 실험 슬롯을 기다리고 있다(실행 중·완료로 세지 않음). 제품 소스23d와 실행 소스3ecee4b를 분리하고 깨끗한 격리 checkout을 사용한다. 실행 영수증 없이 RUNNING이나 완료를 주장하지 않으며, 새 점수는 관측 증거와 분류 검증 뒤 확정한다. core 특허 거절의 성숙 inert127건은 [엔진 인계](engine-B-inert.md) 대상이다. registry-v4 inert 감사는 계속 조사 중이다.
+실제 답 직전/직후 관측 실험 `engineB-tlink-immediate-3ecee4b`은 공식 실행기에 제출된 뒤 슬롯을 받아 seed1–3 재생 중이다(완료로 세지 않음). 제품 소스23d와 실행 소스3ecee4b를 분리하고 깨끗한 격리 checkout을 사용한다. 실행 영수증 없이 RUNNING이나 완료를 주장하지 않으며, 새 점수는 관측 증거와 분류 검증 뒤 확정한다. core 특허 거절의 성숙 inert127건은 [엔진 인계](engine-B-inert.md) 대상이다. registry-v4 inert 감사는 계속 조사 중이다.
 
 감사 때 카운터를 정리하면서 관계 증거까지 버리던 결함을 `d36d1de4c`에서 고쳤고, 23d1226에 고정했다. 원래 seed3의 명령 492개와 관측 지점 556개를 재생하여 답 `h-002840`이 기존 계절 기록 `h-002880`에 연결되는 것을 확인했다. 관계/문구 36시험·타입검사·독립 검토도 통과했다. 저장 v56 shape와 게임 규칙은 바꾸지 않았다.
 
@@ -207,6 +207,6 @@ GROW-BLOCK은 여전히v55다. 2026-10-10 읽기 전용 재확인 경로는 `/Us
 
 ### RR22 — 새 분류 도구의 원격 검토 요청
 
-사용자 수정 기준을 구현하는 `scripts/engineBTlinkOutcomeCategories.mjs`·의미 판독기 `scripts/engineBTlinkOutcomeEvidence.mjs`·입력 검증/실행기 `scripts/engineBTlinkOutcomeCategoriesRun.mjs`를 REMOTE 검토의 semantic gate에 어떻게 연결할지 검토해 달라. 기존 화면 selector와 기하 축은 변경하지 않는다. 이는 새 도구의 검증 매핑 요청이며, 현재 감사 문서 게시를 막는 조건으로 취급하지 않는다.
+RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engineBTlinkOutcomeCategoriesRun.mjs`, `scripts/engineBTlinkOutcomeEvidence.mjs`, `scripts/engineBTlinkResiduals.mjs`를 비화면 오프라인 측정 도구로 분류하고 의미 판정 시험에 연결해 달라. 069f8bd의 check:merge는 네 파일 모두 UI/감사 import 도달0으로 확인하면서도 RR26 안전 목록 밖이라는 이유로 기존 기하 증거를 거부했다. REMOTE가 독립적인 실패 사례 시험과 분류 규칙을 검토할 대상이며, 이 가지는 안전 목록이나 selector를 직접 바꾸지 않는다. 현재 규칙을 만족시키기 위해 같은22 selector·27행·540조건 기하 감사 `engineB-tlink-categories-geometry-069f8bd`를 공식 관문 줄에 제출했다.
 
 새 도구의 [입력·종료 코드·분류 경계·관측 소스 계약](../verification/eb-tlink-four-categories/README.md)을 보존한다. 실제 즉시 변화는 별도 관측기로 읽으며, 처리 기록이나 미검증 미래 기대를 무효과/성공으로 바꾸지 않는다.
