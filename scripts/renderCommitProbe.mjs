@@ -88,8 +88,11 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   await page.goto(`${baseUrl}?phase10-proof=1${query}`, { timeout: loadTimeout });
   await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: Math.max(60_000, loadTimeout) }), refused]);
   if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
-  await page.keyboard.press('Escape');
-  // UX-3 S-31: Esc on the idle screen opens the pause menu; a scene starts without it.
+  // Esc only for what it is meant for: the welcome if the click left it up, and the pause menu if one is open (UX-3 S-31:
+  // Esc on the idle screen opens it). An unconditional Esc put away a card the story had already opened when the load ran
+  // past the scene's story delay on a busy DGX — the card and its chip gone for good (variant-056, famine-answered,
+  // chapter 3's page: their first rounds timed out, measured only in the retry round). A card the story opened stays.
+  if (await page.locator('.welcome-dismiss-layer').count()) await page.keyboard.press('Escape');
   if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');
   if (run) await page.getByRole('button', { name: '1배속', exact: true }).click();
   await page.waitForTimeout(1_500);
