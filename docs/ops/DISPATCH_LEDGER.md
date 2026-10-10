@@ -6,6 +6,24 @@
 ---
 ## A. 엔진 세션
 
+### Engine B — EB-OUTCOME / 조건34 후속 (2026-10-09)
+
+- [x] 기대 결과 데이터56사건·163선택·323효과, 지정 사건별 대상/조건/표시 기한/주된 결정 연결: [JSON](../design/engine-B-outcomes.json). 실제 표시 완료와 구별.
+- [x] 독립125년 관문 CLI 및 현재 소스 생산기: 기존 실제 원자료292/816 재현, direct292/conditional0/관측부족20/unlinked524; 80% 제품 관문 미달 보존. [운영 계약](../verification/eb-outcome/gate-usage.md).
+- [x] 조건34 실제 정본 변환 대조34/34,075의 원문보다 좁은 관리인 제한 수정·회귀19/19(Mac),[상세](../verification/eb-freq/condition-review.md). 역사B476 원인 소급 확정 없음.
+- [x] 정상 영주048 생산 공백·078 원사건 경로 [엔진 요청](../requests/engine-B-freq-facts.md). 슬롯은 MONEY-SINK 뒤 검토·본선 채택 뒤135→7→9.
+- [x] 최신 본선9ec8110a7 통합2024df1cc에서 DGX 변경 시험446파일3686통과·0실패·13skip,1년117명령 재현/짧은125년 입력 거부,기하2행40조건 실패0. [실행 원본 해시](../verification/eb-outcome/changed-tests.json). 최종 게시 커밋은 이 완료 장부를 포함하며 보호 푸시가 정확한 최종 트리 test:changed/check:merge를 요구한다. 제품35.78% 미달과 엔진 후속을 완료로 바꾸지 않는다.
+
+
+### Engine B — EB-WEIGHT / EB-FREQ / MOD-SLOT (2026-10-09 감사 게시·소유 레인 인계)
+
+사용자 후속 지시: 렌더 중단 중앙값1·최대4를 P-T1 범위로 수용한다. 감사·측정·요청 인계 완료와 코어 구현·전수 가시성 완료를 구분하며, 후자는 완료 감사 게시를 막지 않는다. [통합 요청](../requests/engine-B-weight.md).
+
+- [x] EB-WEIGHT 감사·측정·인계: 활성56 정적 층위·원본125년 세 seed·동일 궤적 실제 답변 재현을 검증했다. 전체 답변836(보충838), 중앙값2·최대6·0인 해46/375·초과26년(보충27년)은 렌더 중단 계수와 다른 분모이며 코어 유입 개선 자료다. 성숙 자기 답변 ID 후속 전체292/816·등록148/192, UI23사건·15쌍·계절 청지기 seed1 네 행4/10을 구분한다. 전수 because/주원인·자연10배속 가시성·답변 당시 변주 ID 보존은 [소유 엔진 요청](../requests/engine-B-weight.md)으로 남는다. c5d2b35와 후속a51965f는 실제 종료1을 보존했고, 정보성 결산 관측을 보완한engineB-live-ledger-8bd902b도 종료1이다. 41000 계속 뒤41151 새 결정 카드에서 멈췄으며 [종료 기록](../verification/eb-visible/live-ledger-8bd902b.md)을 보존한다. 성공으로 세지 않는다. [판정표](../verification/eb-weight/requirement-disposition.md).
+- [x] EB-FREQ 역사40개 판정: 원래56ee1d9 seed1/125년 재현 종료0·전체 반환 JSON/보고서 요약 일치·관측63,748건 오류0. 최종 유력 분류는 **조건34·가중 경쟁4·시대2**다.147의 실제pace28·chance2·budget2와 별도로 원본32계절 모두draw≥150인 [순수 확률 검증](../verification/eb-freq/147-chance-window.md)을 실제 실행해 충분한 차단 이유를 확인했다.147을 귀속 미정으로 남기지 않으며 대기 중 장기 probe는 실행 전 취소했다. 전체 상태/매 틱 동일성과 하류 바인딩 적격성은 별도 미증명이다.
+- [x] MOD-SLOT 제안·격리135 인계: [저장 계약](../design/module-state-contract.md)·[엔진 요청](../requests/engine-B-mod-slot.md), 격리 시제품938f2f492의 실제 소송/수입·저장·기금 시험29/29, 독립30/30·타입·lint·빌드 통과. 공식 채택은 MONEY-SINK 뒤 검토하며 본선 코어/저장 편입·135 활성화는 미실행이다.
+- [x] 완료 감사 게시: 본선d76e90e92·후속1ba20a1be·bff5c9360의 실제 test:changed/check:merge·보호 푸시·원격 조상 확인 완료. clean016ab02e 가드레일의 샌드박스3해시·캠페인3쌍 동일, 통합716기하61행1220조건 실패0 근거를 유지한다. 별도 진단 도구 묶음의 sourceScan 분류 요청은 감사 문서 전체 게시를 다시 동결하지 않는다. 문구 교정의 별도 기하·변경 시험·게시 관문은 [문구 보고](../verification/eb-wording/README.md)에서 관리한다.
+
 ### Engine B — LM-E9c 계약 요청 전달 (2026-10-06)
 - [x] `engine-B-read-bundles.md`, `engine-B-7.md`, `engine-B-remaining.md`, `engine-B-EVA-AUTO.md` 요청서 전달. 런타임 구현과 장기 관문은 미완료. 본선 문서 커밋은 이 항목을 추가한 커밋이다.
 
@@ -93,7 +111,9 @@
 - [x] **DUES-REL** (본선 `e2e3bab1`) 좌판세와 상인 관계를 명령이 아니라 상태로 + STORE-1 창고 물자별 상한(사용자 지시 2026-10-08)
 - [ ] **LONGRUN-1** 긴 판에서 쌓이는 것 접기(사용자 판정 2026-10-07)
 - [ ] **LANDMARK-GROW** 랜드마크가 자라는 때를 엔진 사실로(사용자 지시 2026-10-08)
-- [ ] **GROW-BLOCK** 자율 성장이 모자람과 막힘을 구별(사용자 지시 2026-10-08)
+- [x] **GROW-BLOCK** (본선 `fb77ba51`) 자율 성장이 모자람과 막힘을 구별 + 목책 탐색 교착(사용자 지시 2026-10-08·09·10)
+- [ ] **GROW-BLOCK-2** 성벽 안 밭이 집터를 내줌·BT6 목재·가드레일 seed 1(사용자 지시 2026-10-09·10)
+- [ ] **TRACE-LINK** 개별 답변 → 결과 → 다음 행동(사용자 지시 2026-10-10, 요청 engine-B-weight.md)
 - [x] **SUIT-THREAD** (본선 `c7f107a6`) 판결 집행의 결과를 결과의 실로 + 소송 균형·피고 방어·강제 점거·Astra 둘째 플레이 엔진 몫(사용자 지시 2026-10-08·09)
 - [x] **TRACE-KEEP** (본선 `4deafcb3`) 큰 결정의 실과 기억은 끝까지(A5, 사용자 판정 2026-10-09)
 - [ ] **MONEY-SINK** 금고가 늘 빠듯하게(MS-1~4, 설계 승인 2026-10-08) + NW08 고침 — GROW-BLOCK 다음
@@ -139,6 +159,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 **LM-R3** — [x] 수직 조각 시작(lordSliceStart·여는 쪽)·lordSliceOutcome(끝 쪽) — LM-R3 2단계(가), 결정 LR3-D5·D6 · [x] pauseReasons — 자동 정지(사용자 판정: 기한 있는 영주의 일·큰 사건만, 한 철 한 번, 설정 기본 켬), 결정 LR3-D9 · [x] 끝 쪽의 옛 해(TRACE-KEEP, LR3-D8) · [x] 시작 화면 이름·문장 고르기(결정 HOUSE-1, 기본 드 해버럴) — 본선 `406deca3` · [ ] **튜토리얼 대본**(`docs/design/tutorial-lord-mode-20261002/`, 청지기 목소리, 새 지역 지도) · [x] **제목·로고 Charter & Kin / 인장과 가문**(타이틀·창 제목·로딩·아이콘, `phase11PublishedUi` 시험에 게임 이름 허용) — 본선 `406deca3` · [x] 모드 전환(영주 기본·샌드박스 선택) — 본선 `406deca3`
 **SUIT-THREAD 화면**(사용자 지시 2026-10-09, 요청 render-suit-defence-lordplay2.md) — [x] 방어 줄(1절)·강제 점거(2절)·미응답 목록과 유언 칩 → 혼인(3절)·득실의 주어(4절)·패소 뒤 상속 카드(5절)·대비 문구(6절)·전기의 부모(7절)·지속 세율(8절)·엔진 읽기(9절), 결정 SUIT-D1~D6 · 엔진에 남은 것 넷(보고서) · 다음 **GROW-BLOCK 화면**("마을의 목책 계획", 요청 4절 뒤)
 **틀 등록·문구 변형**(사용자 지시 2026-10-09) — [x] 등록 안 된 틀 여섯(결정 FRM-D1) · [x] 엔진 B 문구 변형 041·048·056·067·078의 화면 소비자(VAR-D1·D2) · 다음 **GROW-BLOCK 화면**(요청 4절 뒤)
+**GROW-BLOCK 화면**(사용자 판정 2026-10-09) — [x] 영주 모드 시대 칸 "마을의 목책 계획"(GBU-D1·D2) · [x] 감사 줄 variant-056·famine-answered(GEO-D1) · [ ] 가족 소식 child·father·spouseId·가솔 일(grow-kin, 따로) · [ ] 성벽 둘레 지정(엔진 명령 뒤) · [ ] 선포 뒤 영주 모드 상태 묶음 "시장도시"(다음 푸시의 첫 일)
 **샌드박스 UX(G-LM 뒤)** — 성벽-시장 경로 경고·성문 강조, 목책 그리기 안내, 배치 학습
 
 ---
@@ -183,6 +204,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 ---
 ## C. REMOTE·문서 세션
 ### 보냄 — 대기
+- [ ] Engine B 체크포인트 시험의 임시 출력 폴더 순회 분류: [RR22/RR24 검토 요청](../requests/engine-B-checkpoint-test-scan.md). 변경 시험3621통과·11건너뜀·1실패. 공용 예외 목록 미수정, REMOTE 검토 미완료. 대상은 별도 진단 도구/시험 묶음이며 이미 게시된 감사 문서 전체의 동결 조건이 아니다.
 - [x] TRADEMARK 항목에 사전 조사 경로·남은 것(영국·전문가) 기록 — 본선 `eb701f8b`
 - [x] `AGENTS.md`·CHARTER·CLAUDE.md에 **"문구는 glossary.md 따름"** 규칙(INBOX가 glossary 넣은 뒤) — 본선 `eb701f8b`
 - [x] "증거 폴더 3MB 넘으면 병합 실패" 검사(렌더 NAT-4가 넘김, 결정 RR10) — 본선 `73c80c8b`

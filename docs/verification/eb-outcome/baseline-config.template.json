@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "replayDirectory": "INPUTS/answer-replay",
+  "rawDirectory": "INPUTS/raw",
+  "contractFile": "../../design/engine-B-outcomes.json",
+  "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+  "horizonTicks": 12000,
+  "ticksPerSeason": 1000,
+  "replayPins": [
+    {
+      "seed": 1,
+      "manifestSha256": "71f4d346b18376878f56816063723cffe883b48a9e09fb6b7f1ee3e55be0b6ac",
+      "rawSha256": "3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd"
+    },
+    {
+      "seed": 2,
+      "manifestSha256": "f8257db21fb8127ecd70d1581cf5931708617c6e1786c1f8166f6f00ecdac034",
+      "rawSha256": "9e3737c46b4825564510f1748f36d0abef4376824cf34bf57237d89ba50663be"
+    },
+    {
+      "seed": 3,
+      "manifestSha256": "d6c6229a1dcd234aa672f08d27ed4b8682802415c4a653dc2e668100105bac48",
+      "rawSha256": "2973df33958f226900d1dcc219c890f4635488b725e88316bbfc7932fc28eb99"
+    }
+  ],
+  "replayFormat": "answer-replay-v1"
+}

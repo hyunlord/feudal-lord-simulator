@@ -1,0 +1,96 @@
+{
+  "source": "2485af40046793f1856829fa1161dc4431942aa7",
+  "seconds": 78.11,
+  "observation": {
+    "observations": 60563,
+    "firstTick": 0,
+    "lastTick": 60000,
+    "maxGap": 1,
+    "reversals": 0,
+    "cadence": "initial_and_every_command_attempt_and_tick",
+    "retention": "runner_owned_id_maps_before_engine_retention"
+  },
+  "pairs": [
+    {
+      "entryId": "ck_evt_038",
+      "decisionTick": 36037,
+      "status": "mature_without_observed_future_link"
+    },
+    {
+      "entryId": "ck_evt_005",
+      "decisionTick": 40015,
+      "status": "paired",
+      "resultTick": 40800
+    },
+    {
+      "entryId": "ck_evt_092",
+      "decisionTick": 41029,
+      "status": "paired",
+      "resultTick": 43200
+    },
+    {
+      "entryId": "ck_evt_211",
+      "decisionTick": 45007,
+      "status": "paired",
+      "resultTick": 45600
+    },
+    {
+      "entryId": "ck_evt_201",
+      "decisionTick": 59047,
+      "status": "paired",
+      "resultTick": 60000
+    }
+  ],
+  "saves": [
+    {
+      "file": "ck_evt_038-answer-h-002358.save.json.gz",
+      "tick": 36037,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_005-answer-h-002653.save.json.gz",
+      "tick": 40015,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_005-consequence-h-002666.save.json.gz",
+      "tick": 40800,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_092-answer-h-002727.save.json.gz",
+      "tick": 41029,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_092-consequence-h-002853.save.json.gz",
+      "tick": 43200,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_211-answer-h-002970.save.json.gz",
+      "tick": 45007,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_211-consequence-h-002987.save.json.gz",
+      "tick": 45600,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_201-answer-h-003870.save.json.gz",
+      "tick": 59047,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "ck_evt_201-consequence-h-003918.save.json.gz",
+      "tick": 60000,
+      "status": "decoded_hashes_match"
+    },
+    {
+      "file": "final.save.json.gz",
+      "tick": 60000,
+      "status": "decoded_hashes_match"
+    }
+  ]
+}

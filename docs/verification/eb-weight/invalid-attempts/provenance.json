@@ -1,0 +1,58 @@
+{
+  "status": "archived_read_only_findings_not_deep_replay",
+  "sourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "reviewRevision": "d096d339bb18ef638aed97ac721ee6833cf175dc",
+  "rawSources": [
+    {
+      "seed": 1,
+      "path": ".omo/evidence/weight125-kept-partial/seed-1.json",
+      "sha256": "3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd"
+    },
+    {
+      "seed": 2,
+      "path": ".omo/evidence/weight125-kept-partial/seed-2.json",
+      "sha256": "9e3737c46b4825564510f1748f36d0abef4376824cf34bf57237d89ba50663be"
+    },
+    {
+      "seed": 3,
+      "path": ".omo/evidence/weight125-kept-partial/seed-3.json",
+      "sha256": "2973df33958f226900d1dcc219c890f4635488b725e88316bbfc7932fc28eb99"
+    }
+  ],
+  "files": {
+    "report.md": {
+      "sha256": "e50260a270ee3c044d9cc4fc5ca87766b9a432b9613a49721bb93053a63e0b91",
+      "bytes": 6150
+    },
+    "evidence.json.gz": {
+      "sha256": "0ffa12edb3e51d8664c919f156e4b38801e6c5bd01e878af17dc316e2e18ac2a",
+      "bytes": 4000,
+      "uncompressedSha256": "127315de458e80f55adb02ef49fa71a5ac7e92a55788c29df67c2f53be52adae",
+      "uncompressedBytes": 42803
+    },
+    "053-retained-ledger.json.gz": {
+      "sha256": "bb658ba009f142aa9b7a06339394dc32fce2db791c9c78a5332ef395961ba015",
+      "bytes": 2337,
+      "uncompressedSha256": "be79d5ed083fafbd0197f70e6896313222acb4a795d51d9e9fb53a7c004c7ee8",
+      "uncompressedBytes": 10383
+    }
+  },
+  "counts": {
+    "allInvalidOccurrences": 5,
+    "requestedInvalidOnlyOccurrences": 4,
+    "requestedInvalidOnlyIds": [
+      "ck_evt_010",
+      "ck_evt_051",
+      "ck_evt_059"
+    ],
+    "successfulAnswersForRequestedIds": 0,
+    "invalidAttemptHistoryCards": 5,
+    "invalidAttemptOwnTraces": 0
+  },
+  "limits": [
+    "No new simulation, command replay, browser capture or pre-command state reconstruction.",
+    "Same-tick predecessor command records plus source give sufficient blockers for010/051/059, not exact first-failed-predicate replay.",
+    "053 entry predicate failure established from retained unrolled cash prefix and claim evidence; no new replay.",
+    "History card for an invalid attempted answer is distinct from successful answered occurrence and canonical decision trace."
+  ]
+}

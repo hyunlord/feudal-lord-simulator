@@ -2,7 +2,7 @@ import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { stageForEra } from "../engine/scenarioState";
 import { LABOUR_COPY } from "./labourCopy.ko";
 import { isWallConstructionSite } from "../domain/palisadeConstructionSchedule";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements, stoneWallProjectAvailable } from "../engine/era";
 import { LEDGER_COPY } from "../ledger/ledgerCopy.ko";
@@ -26,7 +26,9 @@ import { cachedExpansionPreview, expansionLines, pendingPastureWarning } from ".
 import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 import { Button } from "./kit";
 import { ERA_CONSOLE_COPY } from "./eraConsoleCopy.ko";
-import { lordWallGuidance } from "./lord/advice/lordWall";
+import { lordWallPlan, lordWallPlanDone, type LordWallPlanView } from "./lord/advice/lordWall";
+import { LORD_WALL_COPY } from "./lord/advice/lordWallCopy.ko";
+import { WallPlan, type WallPlanCommands } from "./lord/advice/WallPlan";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -68,6 +70,10 @@ export type EraConsoleModel = {
     readonly lines: readonly PredictionLine[];
     readonly pending: string | null;
   };
+  /** GROW-BLOCK (lord mode, the hamlet): the town's palisade plan — the console's primary opens it; null otherwise. */
+  readonly lordPlan: LordWallPlanView | null;
+  /** GROW-BLOCK §4: the plan's `past` stage, one quiet line (null otherwise). */
+  readonly lordPlanDone: string | null;
 };
 
 const PROCLAMATION_TOOLTIPS = {
@@ -86,11 +92,12 @@ export function buildEraConsoleModel(input: {
   const requirements = evaluateEraRequirements(input.state);
   const expanding = input.draft?.purpose === 'expand';
   const expansionPreview = expanding && input.draft !== null ? cachedExpansionPreview(input.state, input.draft.candidate?.path ?? input.draft.path) : null;
-  const proposal = input.state.era === "hamlet"
+  // GROW-BLOCK: in lord mode the town finds the wall (charterWallPlan); the hand-drawn proposal is the sandbox's.
+  const lordPlan = lordWallPlan(input.state);
+  const proposal = input.state.era === "hamlet" && lordPlan === null
     ? proposalSummaryForState(input.state, palisadeFootprintsForState(input.state))
     : null;
   const firstUnmet = requirements.find((requirement) => !requirement.met) ?? null;
-  const lordWall = lordWallGuidance(input.state, proposal === null || proposal.ok ? null : palisadeFailureLabel(proposal.reason));
   const proposalVisible =
     input.state.era === "hamlet" && (requirements.some((requirement) => requirement.met) || input.draft !== null);
   const targetEra = input.state.era === "hamlet" ? "palisade" : "stone_town";
@@ -116,7 +123,7 @@ export function buildEraConsoleModel(input: {
     requirements,
     tooltip: input.state.era === "hamlet" ? PROCLAMATION_TOOLTIPS.hamlet
       : LABOUR_COPY.assigned(input.state.constructionSites.filter(isWallConstructionSite).reduce((sum, site) => sum + site.assignedBuilders, 0)),
-    action: expansionPreview !== null ? {
+    action: lordPlan !== null ? { enabled: true, label: LORD_WALL_COPY.plan, reason: lordPlan.line, targetEra } : expansionPreview !== null ? {
       enabled: expansionPreview.ok, label: WALL_EXPANSION_COPY.confirm, targetEra,
       reason: expansionPreview.ok ? null : WALL_EXPANSION_COPY.failure[expansionPreview.reason],
     } : {
@@ -125,12 +132,11 @@ export function buildEraConsoleModel(input: {
       reason: actionReason({ firstUnmet, state: input.state, draft: input.draft }),
       targetEra,
     },
-    // PLAY-2 (lord mode): the town's line and its request, the lord's lever; drawing it himself only when the town found none.
-    proposal: lordWall !== null ? { visible: true, label: lordWall.line, failure: lordWall.next, recommendEnabled: input.state.era === 'hamlet' && firstUnmet === null } : {
-      visible: proposalVisible,
+    proposal: {
+      visible: proposalVisible && lordPlan === null,
       label: proposal === null ? "" : proposal.ok ? proposal.label : WALL_COPY.recommendationFailed,
       failure: proposal === null || proposal.ok ? null : palisadeFailureLabel(proposal.reason),
-      recommendEnabled: input.state.era === 'hamlet' && firstUnmet === null,
+      recommendEnabled: input.state.era === 'hamlet' && firstUnmet === null && lordPlan === null,
     },
     predictionLines: draftLines,
     coinHint,
@@ -157,6 +163,8 @@ export function buildEraConsoleModel(input: {
       lines: expansionPreview === null ? [] : expansionLines(input.state, expansionPreview),
       pending: pendingPastureWarning(input.state)?.line ?? null,
     },
+    lordPlan,
+    lordPlanDone: lordWallPlanDone(input.state),
   };
 }
 
@@ -172,6 +180,7 @@ export function EraConsole({
   onConfirmExpansion,
   priority = 'balanced',
   onPriorityChange,
+  planCommands = {},
 }: {
   readonly model: EraConsoleModel;
   readonly onBeginProposal: () => void;
@@ -185,12 +194,15 @@ export function EraConsole({
   readonly onConfirmExpansion?: () => void;
   readonly priority?: WallConstructionPriority;
   readonly onPriorityChange?: (priority: WallConstructionPriority) => void;
+  /** GROW-BLOCK (lord mode): the palisade plan's ways to the lord's levers and the map. */
+  readonly planCommands?: WallPlanCommands;
 }) {
   const actionReasonRef = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
     if (model.draft.editing) actionReasonRef.current?.scrollIntoView({ block: 'nearest' });
   }, [model.draft.editing, model.draft.selectedRunLabel, model.draft.failure]);
-  const actionHandler = model.expansion.editing ? onConfirmExpansion
+  const [planOpen, setPlanOpen] = useState(false);
+  const actionHandler = model.lordPlan !== null ? () => setPlanOpen(open => !open) : model.expansion.editing ? onConfirmExpansion
     : model.action.targetEra === "stone_town" ? onProclaimStoneTown
     : model.draft.editing ? onConfirmProposal : onBeginDraw;
   return (
@@ -267,6 +279,9 @@ export function EraConsole({
           disabled={!model.action.enabled}
           onPress={() => actionHandler?.()}
           aria-describedby="era-action-reason"
+          aria-expanded={model.lordPlan === null ? undefined : planOpen}
+          aria-controls={model.lordPlan === null || !planOpen ? undefined : "wall-plan"}
+          data-wall-plan={model.lordPlan === null ? undefined : "open"}
          variant="primary">
           {model.action.label}
         </Button>
@@ -288,6 +303,8 @@ export function EraConsole({
       <small ref={actionReasonRef} id="era-action-reason" className="era-action-reason">
         {model.action.reason ?? (model.draft.editing ? WALL_COPY.proclamationNotice : WALL_COPY.startHint)}
       </small>
+      {model.lordPlanDone === null ? null : <small className="era-action-reason era-plan-done">{model.lordPlanDone}</small>}
+      {model.lordPlan !== null && planOpen ? <WallPlan plan={model.lordPlan} commands={planCommands} /> : null}
     </section>
   );
 }

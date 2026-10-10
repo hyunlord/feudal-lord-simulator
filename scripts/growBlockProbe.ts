@@ -1,22 +1,43 @@
 // GROW-BLOCK gate (the user's ruling 2026-10-09): the lord's slice played by the lord-mode bot for 125 years; each year
 // the town's size and wall, and the woods (stumps standing, trees felled that year, the wood in store, the camps and
 // sawmills). The summary: the highest population (the gate: past 528), the first palisade, and every stall — ten years
-// or more with the population and the wall both unchanged below the lord mode's full town (24 lots at level 4, 768).
+// or more with the population and the wall both unchanged below the lord mode's full town (24 lots at level 4, 768), and
+// whether the walled town's house sites had all run out under its fields through it (GROW-BLOCK-2's count).
 //   tsx scripts/growBlockProbe.ts <seed> [years] > out.json
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { isBuildingConstructionSite } from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
+import { interiorHouseSites } from "../src/engine/autoplayInteriorPlots";
+import { autoplayCanPlace } from "../src/engine/autoplayZones";
 import { treeStage } from "../src/engine/land";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
+import { LORD_MODE_POLICY } from "../src/engine/townAgency";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
+import { zonesOf } from "../src/zones/zoneEdits";
 
 const YEAR = 4_000;
 const FULL_TOWN = 768;
+
+/** GROW-BLOCK-2: the house sites inside the wall — how many, how many on a field (arable zone), how many the bot can build. */
+function interior(state: GameState) {
+  if (state.palisade === null || state.palisade === undefined) return null;
+  const sites = interiorHouseSites(state);
+  const { width, height } = BUILDING_CONFIG_BY_KIND.house;
+  const fields = new Set(zonesOf(state).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership));
+  const onField = (tx: number, ty: number) => {
+    for (let dy = 0; dy < height; dy += 1) for (let dx = 0; dx < width; dx += 1) if (fields.has((ty + dy) * state.width + tx + dx)) return true;
+    return false;
+  };
+  const placeable = sites.filter(site => autoplayCanPlace(state, "house", site.tx, site.ty, "later"));
+  return { sites: sites.length, onFields: sites.filter(site => onField(site.tx, site.ty)).length, placeable: placeable.length,
+    placeableOffField: placeable.filter(site => !onField(site.tx, site.ty)).length, lotsNeeded: Math.max(0, LORD_MODE_POLICY.maxHousingLots - state.houses.length) };
+}
 
 function row(state: GameState, year: number) {
   const kinds: Record<string, number> = {};
@@ -32,7 +53,7 @@ function row(state: GameState, year: number) {
     buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
-    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0 };
+    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state) };
 }
 
 export function growBlockProbe(seed: number, years = 125) {
@@ -59,13 +80,18 @@ export function growBlockProbe(seed: number, years = 125) {
     const year = stateCalendar(state).year;
     if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced }); abandonedBy = {}; replaced = 0; }
   }
-  const stalls: { from: number; to: number; population: number; palisade: number }[] = [];
+  const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
   let runStart = 0;
   for (let index = 1; index <= rows.length; index += 1) {
     const same = index < rows.length && rows[index]!.population === rows[runStart]!.population && rows[index]!.palisade === rows[runStart]!.palisade;
     if (same) continue;
     const first = rows[runStart]!, last = rows[index - 1]!;
-    if (last.year - first.year >= 10 && first.population < FULL_TOWN) stalls.push({ from: first.year, to: last.year, population: first.population, palisade: first.palisade });
+    // GROW-BLOCK-2: a stall is the fields' when, all through it, house sites inside the wall lie on fields and those off
+    // the fields the bot can build are fewer than the lots still to build.
+    const run = rows.slice(runStart, index);
+    const fieldBound = run.every(entry => entry.interior !== null && entry.interior.onFields > 0 && entry.interior.placeableOffField < entry.interior.lotsNeeded);
+    if (last.year - first.year >= 10 && first.population < FULL_TOWN) stalls.push({ from: first.year, to: last.year, population: first.population, palisade: first.palisade, fieldBound,
+      interior: last.interior });
     runStart = index;
   }
   return { seed, years, maxPopulation: Math.max(...rows.map(entry => entry.population)), firstPalisade: rows.find(entry => entry.palisade > 0)?.year ?? null,

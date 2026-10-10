@@ -574,6 +574,7 @@ export function App() {
                 onProclaimStoneTown={proclaimStoneTown}
                 onBeginExpansion={beginPalisadeExpansion}
                 onConfirmExpansion={confirmPalisadeExpansion}
+                planCommands={{ onConditions: openConditions, onZones: () => setLayer("zone"), onLookAt: tile => platformServices().input.emit({ kind: "lookAt", tile }) }}
               />
             } />
           </GoalDrawer>

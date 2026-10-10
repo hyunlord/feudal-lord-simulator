@@ -1,27 +1,28 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
+import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
 import { pickTests, SOURCE_SCAN_WHY } from "../scripts/checks/changedTests.mjs";
-import { NOT_SOURCE_SCAN, SOURCE_SCAN_TESTS } from "../scripts/checks/sourceScanTests.mjs";
+import { FOLDER_WALKS } from "../scripts/checks/sourceScanTests.mjs";
 
-// RR24: the tests that walk src/'s folders are picked by any src/ change (the import graph never reaches them).
+// RR24, RR25: a test that walks a folder is picked by any change under it (the import graph never reaches what it walks).
 const ROOT = new URL("..", import.meta.url).pathname;
 
-test("the source-scan list is whole: a test that calls readdir and names a src path is listed or left out with a reason", () => {
-  for (const file of [...SOURCE_SCAN_TESTS, ...Object.keys(NOT_SOURCE_SCAN)]) assert.ok(existsSync(join(ROOT, file)), `${file} is gone: take it off the list`);
-  assert.deepEqual(SOURCE_SCAN_TESTS.filter(file => file in NOT_SOURCE_SCAN), [], "a test on both lists");
+test("the folder map is whole: every test that walks or copies folders is in it, and every folder it names exists", () => {
+  for (const [file, folders] of Object.entries(FOLDER_WALKS)) {
+    assert.ok(existsSync(join(ROOT, file)), `${file} is gone: take it off the map`);
+    for (const folder of folders) assert.ok(existsSync(join(ROOT, folder)), `${file}: ${folder} does not exist`);
+  }
   const walkers = readdirSync(join(ROOT, "tests")).filter(name => /\.test\.(ts|tsx|mts|mjs|js)$/.test(name)).map(name => `tests/${name}`)
-    .filter(file => { const text = readFileSync(join(ROOT, file), "utf8"); return /readdir/.test(text) && /["'`](?:\.\.\/)?src(?:\/[^"'`]*)?["'`]/.test(text); });
-  const unlisted = walkers.filter(file => !SOURCE_SCAN_TESTS.includes(file) && !(file in NOT_SOURCE_SCAN));
-  assert.deepEqual(unlisted, [], "add each to SOURCE_SCAN_TESTS, or to NOT_SOURCE_SCAN with the reason (scripts/checks/sourceScanTests.mjs)");
+    .filter(file => /\b(readdir|readdirSync|opendir|opendirSync|globSync|cpSync)\b/.test(readFileSync(join(ROOT, file), "utf8")));
+  assert.deepEqual(walkers.filter(file => !(file in FOLDER_WALKS)), [], "add each to FOLDER_WALKS with the folders it walks (scripts/checks/sourceScanTests.mjs)");
 });
 
 test("a src/ change picks the source scans that exist; a change outside src/ does not", () => {
-  const dir = mkdtempSync(join(tmpdir(), "fls-scan-"));
-  const git = (...args: string[]) => execFileSync("git", ["-c", "user.email=t@t", "-c", "user.name=t", ...args], { cwd: dir, encoding: "utf8" }).trim();
+  const dir = tempDir("fls-scan-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   try {
     for (const d of ["src/engine", "tests", "docs"]) mkdirSync(join(dir, d), { recursive: true });
     writeFileSync(join(dir, "src/engine/petitions.ts"), "/** the earlier definition period. */\nexport const p = 1;\n");
