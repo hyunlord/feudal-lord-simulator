@@ -192,7 +192,14 @@ export function traceCommand(before: GameState, after: GameState, action: Action
 function traceCommandResult(before: GameState, after: GameState, action: Action): GameState {
   if (after === before || after.agency === undefined) return after;
   const kind = COMMAND_KIND[action.type];
-  if (kind === undefined) return after;
+  if (kind === undefined) {
+    if (!['confirm_palisade_proclamation', 'confirm_stone_town_proclamation', 'set_wall_construction_priority'].includes(action.type)) return after;
+    const id = newHistoryDecision(before, after);
+    if (id === undefined) return after;
+    // Existing town-request decision receipt, recorded without adding a new simulation root or faction memory.
+    return retainAnswer(before, after, { id, tick: after.tick, by: 'lord', kind: 'command', source: action.type,
+      weights: [], targets: changedTargets(before, after) }, id);
+  }
   let source = `${action.type}`;
   let weights: DecisionWeight[] = COMMAND_WEIGHT[action.type] === undefined ? [] : [COMMAND_WEIGHT[action.type]!];
   let decisionKind: TracedDecisionKind = kind;

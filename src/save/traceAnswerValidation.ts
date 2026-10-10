@@ -1,10 +1,11 @@
+import { answerEffectsProblem } from './answerEffectsValidation';
 import { PRESSURE_BALANCE } from '../content/balanceConfig';
 import { DECISION_WEIGHTS, STANDING_SETTINGS } from '../content/stewardPolicyConfig';
 import type { TracedDecisionKind } from '../engine/decisionTrace.types';
 
 const KINDS = { registry: true, manor_petition: true, estate_petition: true, chapter_petition: true, famine: true,
   suit: true, marriage: true, oversight: true, audit: true, policy: true, subsidy: true, dues: true, timber: true,
-  standing_policy: true } satisfies Record<TracedDecisionKind, true>;
+  standing_policy: true, command: true } satisfies Record<TracedDecisionKind, true>;
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const text = (value: unknown): value is string => typeof value === 'string' && value.length > 0;
 const tick = (value: unknown, end: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= end;
@@ -58,6 +59,10 @@ export function traceAnswerProblem(state: Readonly<Record<string, unknown>>): st
         if (dimensions.has(key)) return `${at}.estateRelationEvidence repeats a dimension`;
         dimensions.add(key);
       }
+    }
+    if (Object.hasOwn(answer, 'effects')) {
+      const problem = answerEffectsProblem(answer.effects);
+      if (problem) return `${at}.${problem}`;
     }
     if (!Array.isArray(answer.memoryEvidence)) return `${at}.memoryEvidence must be an array`;
     const memories = new Set<string>();

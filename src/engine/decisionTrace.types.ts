@@ -9,7 +9,7 @@ import type { DecisionWeight, StandingSetting } from "../content/stewardPolicyCo
 
 /** What a decision answered or set. */
 export type TracedDecisionKind = "registry" | "manor_petition" | "estate_petition" | "chapter_petition" | "famine" | "suit" | "marriage"
-  | "oversight" | "audit" | "policy" | "subsidy" | "dues" | "timber" | "standing_policy";
+  | "oversight" | "audit" | "policy" | "subsidy" | "dues" | "timber" | "standing_policy" | "command";
 
 export interface TracedDecision {
   /** The decision's own history record id (`h-000001`): the card's answer, the steward's, or the silence that let it lapse. */
@@ -61,6 +61,8 @@ export interface EstateRelationEvidence {
 }
 
 export interface TracedAnswerContribution extends TracedDecision {
+  /** Absent for old unrecorded answers; [] means recorded with no semantic change. */
+  readonly effects?: readonly import("./answerEffects.types").AnswerEffect[];
   readonly estateRelationEvidence?: readonly EstateRelationEvidence[];
   readonly threadId: string;
   readonly memoryEvidence: readonly { readonly factionId: string; readonly recordId: string; readonly tick: number; readonly delta: number; readonly reason: string }[];

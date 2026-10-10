@@ -1,3 +1,5 @@
+import { captureAnswerEffects } from './answerEffectCapture';
+import type { AnswerEffect } from './answerEffects.types';
 import { BALANCE } from '../content/balanceConfig';
 import type { HistoryBecause } from './history.types';
 import type { GameState } from './engine.types';
@@ -29,7 +31,7 @@ export function retainAnswer(before: GameState, after: GameState, answer: Traced
   }
   const targets = [...new Set([...answer.targets, ...evidence.map(memory => `faction:${memory.factionId}`)])].sort();
   const trace = after.trace ?? { decisions: [], acts: [] };
-  return { ...after, trace: { ...trace, answers: [...(trace.answers ?? []), { ...answer, targets, threadId, memoryEvidence: evidence }] } };
+  return { ...after, trace: { ...trace, answers: [...(trace.answers ?? []), { ...answer, targets, threadId, memoryEvidence: evidence, effects: captureAnswerEffects(before, after) }] } };
 }
 
 /** Faction acts still execute using original root memories. Only their completed history receipt gains exact contributors. */
@@ -67,4 +69,9 @@ export function linkAnswerFactionReceipts(before: GameState, after: GameState): 
     return { ...record, because };
   });
   return changed ? { ...after, history: { ...after.history, records } } : after;
+}
+
+/** Answer-time evidence only. Unknown/legacy answers return undefined, not an invented zero effect. */
+export function answerEffects(state: Pick<GameState, "trace">, answerId: string): readonly AnswerEffect[] | undefined {
+  return state.trace?.answers?.find(answer => answer.id === answerId)?.effects;
 }

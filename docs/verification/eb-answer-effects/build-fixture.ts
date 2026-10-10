@@ -1,0 +1,11 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { decodeSave, encodeSave } from '../../../src/save/saveCodec';
+import { gameReducer } from '../../../src/state/gameStore';
+import { initialAgency } from '../../../src/engine/townAgency';
+const original = decodeSave(new Uint8Array(readFileSync('fixtures/saves/v49/chapter-two-town.save.json'))).envelope.state;
+const before = { ...original, agency: initialAgency(), trace: { decisions: [], acts: [] } };
+const after = gameReducer(before, { type: 'set_market_dues', permille: 1200 });
+const policy = gameReducer(after, { type: 'set_estate_policy', policy: 'revenue' });
+const state = gameReducer(policy, { type: 'set_exception_rules', rules: { rights: false, marriage: false, amountAtLeast: null } });
+const result = encodeSave({ state, createdAt: '2026-10-10T00:00:00Z', savedAt: '2026-10-10T00:00:00Z' });
+writeFileSync('fixtures/saves/v57/eb-answer-effects.save.json', result.bytes);

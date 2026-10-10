@@ -17,6 +17,7 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 export const FINGERPRINT_PATH = resolve(ROOT, `src/save/schemaFingerprint.v${SAVE_SCHEMA_VERSION}.json`);
 export const FINGERPRINT_FIXTURES = [
+  "fixtures/saves/v57/eb-answer-effects.save.json",
   "fixtures/saves/v55/eb-tlink-own-answer.save.json",
   "fixtures/saves/v1/new-game.save.json",
   "fixtures/saves/v1/population-176.save.json",
