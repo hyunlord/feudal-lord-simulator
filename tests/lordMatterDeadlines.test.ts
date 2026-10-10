@@ -8,6 +8,8 @@
  * a greedy steward (as tests/stewardship.test.ts), played through its first Michaelmas and two seasons on.
  */
 import assert from "node:assert/strict";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import test from "node:test";
 
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
@@ -80,6 +82,39 @@ test("the audit and the off-map petition come from the engine's list only: the s
     if (audit !== null && petition !== null) both += 1;
   }
   assert.ok(both > 0, "an audit and a petition waited together");
+});
+
+/** The adapter as trunk had it before (decision SUIT-D5): the engine's matters, then the audit's and the off-map petition's heads. */
+function trunkChipIds(state: GameState): ReadonlySet<string> {
+  const ids = new Set([...lordMatterChipIds(state)].filter(id => !id.startsWith("audit:") && !id.startsWith("estate-petition:")));
+  for (const matter of lordMattersDue(state)) if (matter.kind === "audit" || matter.kind === "estate_petition") ids.add(chipOf(matter));
+  const audit = auditDecisionHead(state); const petition = offMapPetitionHead(state);
+  if (audit !== null) ids.add(LORD_MATTER_CHIP.audit(audit.auditId));
+  if (petition !== null) ids.add(LORD_MATTER_CHIP.petition(petition.petitionId));
+  return ids;
+}
+
+/** The lord2 states (scripts/lmr2States.ts on the DGX; LMR2_STATES=<dir>) that hold an audit or an off-map petition. */
+function lord2(name: string): GameState | null {
+  const dir = process.env.LMR2_STATES;
+  const file = dir === undefined ? "" : join(dir, `${name}.json`);
+  return dir === undefined || !existsSync(file) ? null : JSON.parse(readFileSync(file, "utf8")) as GameState;
+}
+
+test("SUIT-D5 superseded, nothing lost: the chip ids are the old adapter's (the engine's and the cards' heads, deduped), and the deadlines the engine's dueTick", () => {
+  const states = [...played.states, ...["audit-pending", "inherited"].flatMap(name => { const state = lord2(name); return state === null ? [] : [state]; })];
+  let compared = 0;
+  for (const state of states) {
+    assert.deepEqual([...lordMatterChipIds(state)].sort(), [...trunkChipIds(state)].sort(), `tick ${state.tick}`);
+    for (const beat of storyBeats(state).filter(entry => entry.id.startsWith("audit:") || entry.id.startsWith("estate-petition:"))) {
+      const matter = lordMattersDue(state).find(entry => chipOf(entry) === beat.id)!;
+      assert.ok(matter.dueTick !== null);
+      const due = matter.kind === "audit" ? LORD_MATTERS_COPY.auditDue(dateWord(state, matter.dueTick)) : LORD_MATTERS_COPY.petitionDue(dateWord(state, matter.dueTick));
+      assert.ok(beat.facts.includes(due), `${beat.id}: ${beat.facts.join(" | ")}`);
+      compared += 1;
+    }
+  }
+  assert.ok(compared > 0, "chips compared");
 });
 
 test("their chips say the engine's deadline as a season, as the will's (no days counted)", () => {
