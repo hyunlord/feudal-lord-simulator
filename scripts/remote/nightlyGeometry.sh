@@ -34,7 +34,7 @@ launch() { # <label> <sha> <command ...>
   exec 8> "$BASE/_locks/$run.lock"; flock 8
   rm -rf "$dir"; mkdir -p "$dir/.remote-in"
   git -C "$MIRROR" archive "$sha" | tar -x -C "$dir"
-  git -C "$MIRROR" ls-tree -r --name-only "$sha" > "$dir/.remote-in/in-files.txt"
+  git -C "$MIRROR" -c core.quotePath=false ls-tree -r --name-only "$sha" > "$dir/.remote-in/in-files.txt"   # names as they are (run.sh too): a quoted Korean name is no file here, and remote-exec.sh deletes it as stale
   { printf 'RUN=%q\nLABEL=%q\nSHORT_SHA=%q\nFULL_SHA=%q\nDIRTY=0\nSLOT=heavy\nBRANCH=%q\nMAC_HOST=dgx-timer\nKEEP_RUN=1\nRUN_CLASS=experiment\n' \
       "$run" "$label" "${sha:0:7}" "$sha" "$TRUNK"
     printf 'CMD=%q\n' "$(printf '%q ' "$@")"; } > "$dir/.remote-in/meta.env"
