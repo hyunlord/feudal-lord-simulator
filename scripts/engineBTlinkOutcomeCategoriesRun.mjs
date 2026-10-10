@@ -49,7 +49,7 @@ export function loadTlinkCategoryInputs(configPath, scorePath, replayRoot, expec
   finally { rmSync(temporary, { recursive: true, force: true }); }
   requireProof(isDeepStrictEqual(originalScore, recomputedScore), 'score differs from authenticated original archives');
   const base = dirname(resolve(configPath)), originalRoot = resolve(base, config.replayDirectory);
-  const seedDirectories = readdirSync(replayRoot, { withFileTypes: true }).filter(entry => entry.name.startsWith('seed-')).map(entry => entry.name).sort();
+  const seedDirectories = readdirSync(replayRoot, { withFileTypes: true }).filter(entry => entry.isDirectory() && entry.name.startsWith('seed-')).map(entry => entry.name).sort();
   requireProof(isDeepStrictEqual(seedDirectories, config.seeds.map(seed => `seed-${seed}`).sort()), 'observer seed set mismatch');
   const rows = [], unclassified = [], manifests = [];
   let cohort;

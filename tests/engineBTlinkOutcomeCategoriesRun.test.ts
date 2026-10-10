@@ -71,6 +71,16 @@ test('rejects tampered compressed artifact, duplicate rows and missing rows', ()
   }
 });
 
+test('accepts official seed sidecars while rejecting an unexpected seed directory', () => {
+  const f = fixture(); try {
+    writeFileSync(join(f.args.replayRoot, 'seed-1.exit-code'), '0\n');
+    writeFileSync(join(f.args.replayRoot, 'seed-1.log'), 'completed\n');
+    assert.equal(f.load().rows.length, 1);
+    mkdirSync(join(f.args.replayRoot, 'seed-2'));
+    assert.throws(f.load, /observer seed set mismatch/);
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
 test('rejects rehashed omitted delta, state drift and traversal', () => {
   for (const variant of ['delta', 'state', 'checkpoint', 'traversal']) {
     const f = fixture(); try {
