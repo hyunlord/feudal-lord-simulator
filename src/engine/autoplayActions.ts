@@ -15,7 +15,7 @@ function assertNever(value: never): never {
   throw new Error(`Unhandled autoplay action: ${JSON.stringify(value)}`);
 }
 
-function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameAction | null {
+function eraGameAction(state: GameState, candidatePath?: PalisadePath, ruled = false): GameAction | null {
   // WALL-2 (AR-12): with a wall standing, a candidate path widens it.
   if (state.palisade !== null && candidatePath !== undefined) return { type: "expand_palisade", candidatePath };
   if (state.era === "stone_town") return null;
@@ -27,7 +27,7 @@ function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameActi
   if (!proposal.ok) return null;
   // FIX-15 (WP-1): the proposal may take the water as its bound.
   const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1, { waterReach: true });
-  if (candidatePath !== undefined && validation.ok) {
+  if (candidatePath !== undefined && validation.ok && !ruled) {
     const projected = confirmPalisadeProclamation(state, validation.candidate.path);
     if (projected === state || !preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected)) return null;
   }
@@ -60,7 +60,7 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
     case "place_road":
       return { type: "place_road_line", start: action.from, destination: action.to };
     case "proclaim_era":
-      return state === undefined ? null : eraGameAction(state, action.candidatePath);
+      return state === undefined ? null : eraGameAction(state, action.candidatePath, action.ruled === true);
     case "set_wall_construction_priority":
       return { type: "set_wall_construction_priority", priority: action.priority };
     case "paint_zone":

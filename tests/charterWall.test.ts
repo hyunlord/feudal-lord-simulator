@@ -139,3 +139,27 @@ test("GROW-BLOCK-2a ⑥: a camp only while the sawmills keep up — none with a 
   const camps = { ...stores(0), buildings: [...stores(0).buildings, ...Array.from({ length: CAMPS_PER_SAWMILL_MAX }, (_, n) => ({ ...camp, id: `${camp.id}-more${n}` }))] };
   assert.equal(campAllowed(camps), false, "three camps to one sawmill");
 });
+
+test("GROW-BLOCK-2a ①: the town's request carries the wall the proclamation rules take — the player's command and the lord's bot raise the same wall (seed 20, 1316)", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { readFileSync } = await import("node:fs");
+  const { decodeSave } = await import("../src/save/saveCodec");
+  const { lordRequests } = await import("../src/engine/townAgency");
+  const { lordBotCommands } = await import("../src/engine/lordBot");
+  const { gameReducer } = await import("../src/state/gameStore");
+  // The town's own search found no wall (its service-space and room tests); the nearest reachable wall the proclamation
+  // takes stands — on the trunk the bot raised it from a request with no wall in 1316 (engine-GROW2a-growth-50fbcbe).
+  const state = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed20-1316-asked.save.json.gz")))).envelope.state as GameState;
+  const request = lordRequests(state).find(action => action.kind === "proclaim_era");
+  assert.ok(request !== undefined && request.kind === "proclaim_era" && request.candidatePath !== undefined && request.ruled === true, "the request carries its wall");
+  assert.equal(charterWallPlan(state)!.stage, "asked");
+  // The player: the proclamation command with the requested wall.
+  const player = gameReducer(state, { type: "confirm_palisade_proclamation", candidatePath: request.candidatePath });
+  assert.equal(player.era, "palisade");
+  assert.ok(player.palisade !== null);
+  // The lord's bot (it answers on the week's first tick): the same command for the same wall.
+  const { AGENCY_WEEK_TICKS } = await import("../src/content/townAgencyConfig");
+  const botTick = { ...state, tick: Math.ceil(state.tick / AGENCY_WEEK_TICKS) * AGENCY_WEEK_TICKS + 1 };
+  const granted = lordBotCommands(botTick).find(move => move.kind === "town_request");
+  assert.deepEqual(granted?.command, { type: "confirm_palisade_proclamation", candidatePath: request.candidatePath });
+});
