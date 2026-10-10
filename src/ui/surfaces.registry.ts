@@ -14,6 +14,7 @@
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
 import { DECISION_CARD_SURFACES } from "./decisionCard/surfaces";
+import { RECEIPT_SURFACES } from "./decisionCard/receiptSurfaces";
 import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
@@ -619,6 +620,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "time run until a suit is judged: the judgment's line with the way to its suit on the ledger screen beside the way on" },
   // ER-13: the home petition's and the registry offer's cards in the canon's variant words (src/ui/decisionCard/surfaces.ts).
   ...DECISION_CARD_SURFACES,
+  // RECEIPTS: the answer's receipt — each heavy card answered on its real state (src/ui/decisionCard/receiptSurfaces.ts).
+  ...RECEIPT_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
   // opens after the load — the end page does, after the story's delay). TRACE-KEEP: the state played on the engine that keeps
