@@ -2,13 +2,19 @@
 # RECEIPTS on the DGX: a few heavy answers in the browser on the real states, the card before and its receipt after, at
 # 1280 × 800 and the tablet's 1180 × 820 (scripts/receiptsCaptures.mjs) — the petition states ($PETITION_STATES,
 # ~/fls-lmr1-petition-states), the lord states ($LORD_STATES, ~/fls-lord-states), the lord2 states ($LMR2_STATES, ~/fls-lmr2-states).
-#   scripts/remote/run.sh render-RECEIPTS-captures --light -- bash scripts/receiptsCaptures.sh [out]
+# RECEIPTS-2 (`campaign`): the famine and chapter 5's autonomy on the campaign's states ($UI5_STATES, $UI10_STATES).
+#   scripts/remote/run.sh render-RECEIPTS-captures --light -- bash scripts/receiptsCaptures.sh [out] [lord|campaign]
 set -u
 out=${1:-docs/verification/receipts}
+set_=${2:-lord}
 petitions=${PETITION_STATES:-$HOME/fls-lmr1-petition-states}
 lord=${LORD_STATES:-$HOME/fls-lord-states}
 lord2=${LMR2_STATES:-$HOME/fls-lmr2-states}
-for file in "$petitions/home-boundary_dispute.json" "$lord/registry-offer-hold.json" "$lord2/audit-pending.json" "$lord2/inherited.json"; do
+states5=${UI5_STATES:-$HOME/fls-ui5-states-v22}
+states10=${UI10_STATES:-$HOME/fls-ui10-states}
+needed=("$petitions/home-boundary_dispute.json" "$lord/registry-offer-hold.json" "$lord2/audit-pending.json" "$lord2/inherited.json")
+[ "$set_" = campaign ] && needed=("$states5/famine-arrival.json" "$states10/borough_autonomy.json")
+for file in "${needed[@]}"; do
   [ -f "$file" ] || { echo "missing state $file"; exit 1; }
 done
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
@@ -18,5 +24,6 @@ url="http://127.0.0.1:$port/"
 for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done
 curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }
 mkdir -p "$out"
-node_modules/.bin/tsx scripts/receiptsCaptures.mjs "$out" --url "$url" --lord "$lord" --petitions "$petitions" --lord2 "$lord2" 2>&1 | tee .remote/receipts-captures.log
+node_modules/.bin/tsx scripts/receiptsCaptures.mjs "$out" --url "$url" --lord "$lord" --petitions "$petitions" --lord2 "$lord2" \
+  --set "$set_" --states5 "$states5" --states10 "$states10" 2>&1 | tee .remote/receipts-captures.log
 exit "${PIPESTATUS[0]}"

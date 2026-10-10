@@ -3,8 +3,10 @@
 // home-boundary_dispute), the audit's finding punished (~/fls-lmr2-states audit-pending), the off-map petition refused
 // (inherited) and the registry offer's court roll paid for (~/fls-lord-states registry-offer-hold). Each is shot before
 // and after at 1280 × 800 and 1180 × 820 (JPEG) and checked: the receipt has rows, no text under 12 px, inside the view,
-// one primary (its close), no title attribute; closing it closes the modal.
-//   scripts/remote/run.sh render-RECEIPTS-captures --light -- bash scripts/receiptsCaptures.sh [out]
+// one primary (its close), no title attribute; closing it closes the modal. RECEIPTS-2 (`--set campaign`): the campaign's
+// famine answered with relief (~/fls-ui5-states-v22 famine-arrival) and chapter 5's autonomy sealed (~/fls-ui10-states
+// borough_autonomy, the longest receipt).
+//   scripts/remote/run.sh render-RECEIPTS-captures --light -- bash scripts/receiptsCaptures.sh [out] [lord|campaign]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/receiptsCaptures.mjs)", { remote: "scripts/remote/run.sh render-RECEIPTS-captures --light -- bash scripts/receiptsCaptures.sh", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
@@ -75,8 +77,12 @@ const ANSWERS = [
   { name: 'offmap-refuse', dir: flags.lord2, state: 'inherited', card: ".decision-card.lord-card[data-lord-decision='estate_petition_offmap']", story: 'lord_decision', choice: 'refuse' },
   { name: 'registry-roll', dir: flags.lord, state: 'registry-offer-hold', card: '.decision-card.lord-card[data-registry-offer]', story: 'registry_event', choice: 'roll' },
 ];
+const CAMPAIGN = [
+  { name: 'famine-relief', dir: flags.states5, state: 'famine-arrival', card: '.decision-card.famine-decision', story: 'famine', choice: 'relief' },
+  { name: 'petition-autonomy', dir: flags.states10, state: 'borough_autonomy', card: ".decision-card.petition-decision[data-def='borough_autonomy']", story: 'petition', choice: 'accept' },
+];
 const rows = {};
-for (const entry of ANSWERS) for (const view of VIEWS) {
+for (const entry of flags.set === 'campaign' ? CAMPAIGN : ANSWERS) for (const view of VIEWS) {
   const state = scene(entry.dir, entry.state);
   const { context, page } = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: view.width, height: view.height,
     query: '&story-delay=8000', loadTimeout: 90_000, zoom: 1.1 });
