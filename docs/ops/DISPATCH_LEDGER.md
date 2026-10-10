@@ -6,6 +6,11 @@
 ---
 ## A. 엔진 세션
 
+### Engine B — core inert127건 엔진 인계 완료 (2026-10-10)
+
+- [x] 제품23d의 실제125년 세 seed에서 core `charter_request / refuse` 성숙127건(17/61/49), 관측창 미완료6건(2/0/4)의 포화 관계0과 처리 전후 청원 근거를 보존했다. 처리 상태만 실질 효과로 세지 않으며, 전체 GameState 불변을 주장하지 않는다. [엔진 수정 요청](../requests/engine-B-inert.md) · [원본/재현/해시](../verification/eb-tlink-inert/README.md).
+- core 생성·선택 효과 수정은 엔진 소유다. registry-v4 감사와 새 네 범주 점수는 이 완료 인계의 범위가 아니며, 기존334/816을 변경하거나 최종 목표 달성을 주장하지 않는다. 이 문서 가지는 TLINK 도구·제품 변경 없이 인계 자료만 게시한다.
+
 ### Engine B — EB-OUTCOME / 조건34 후속 (2026-10-09)
 
 - [x] 기대 결과 데이터56사건·163선택·323효과, 지정 사건별 대상/조건/표시 기한/주된 결정 연결: [JSON](../design/engine-B-outcomes.json). 실제 표시 완료와 구별.
