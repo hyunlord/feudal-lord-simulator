@@ -32,10 +32,10 @@
 
 최신 검증 상태는 다음과 같다.
 
-- **고정 제품23d의 이전 검증 완료:** 125년 수집·재생 세 판과 공식 집계, 감사 교정 경로 재생, 관계 브라우저 기능 검증(36.5초·exit0, 저장/기록 번호 불변·오류0), changed 검사(401파일 실행·218파일 재사용, 3464시험 중3451통과·실패0·skip13). 당시 `engineB-tlink-audit-geometry-23d1226`의27행·540조건·실패0·미개방0은 이전 제품 검증이며, 아래 새 도구 판의 진행 중 기하를 대신하지 않는다.
+- **고정 제품23d의 이전 검증 완료:** 125년 수집·재생 세 판과 공식 집계, 감사 교정 경로 재생, 관계 브라우저 기능 검증(36.5초·exit0, 저장/기록 번호 불변·오류0), changed 검사(401파일 실행·218파일 재사용, 3464시험 중3451통과·실패0·skip13). 당시 `engineB-tlink-audit-geometry-23d1226`의27행·540조건·실패0·미개방0은 이전 제품 검증이며, 아래 최종53b 기하와 구별한다.
 - **별도 native 완료:** 기준64a/제품23d의 세 seed 원시 전체 최종 상태 해시가 모두 일치했다. exit0·1529.5초이며, 24필지·최대500000tick의 조기 종료 실행 범위다.
 - **남은 한계:** 390px 화면의 우측 잘림. 이전 9ad의 native 세 seed 원시 전체 최종 해시 일치는 그 제품과 실행 범위에만 적용한다.
-- **새 분류 도구 검증:** 공식 변경 시험`engineB-tlink-sidecar-tests-71bc336`167/167·exit0·79.2초(DGX), 지정10사건22시험·타입·lint 통과(Mac). 독립 검토와 실제836답 CLI 인증을 완료했다. 즉시 변화 관측 이후 게임 실행 코드는23d와 동일하며 저장 변경도 없다. 056 기하 준비 행만 기존20초 개방/90초 대기 방식으로 교정했다. [공식 타이밍 비교와 원본](../verification/eb-tlink-056-entry/README.md). 같은27행·540조건의 후속 기하 결과를 게시 전에 덧붙인다.
+- **새 분류 도구 검증:** 공식 변경 시험`engineB-tlink-sidecar-tests-71bc336`167/167·exit0·79.2초(DGX), 지정10사건22시험·타입·lint 통과(Mac). 독립 검토와 실제836답 CLI 인증을 완료했다. 즉시 변화 관측 이후 게임 실행 코드는23d와 동일하며 저장 변경도 없다. 056 기하 준비 행만 기존20초 개방/90초 대기 방식으로 교정했다. [공식 타이밍 비교와 원본](../verification/eb-tlink-056-entry/README.md). 최종 `engineB-tlink-056-entry-geometry-53b4700`은 같은27행·540조건 모두 측정, 실패0·미개방0·재시도0·경고96, exit0·3336.0초다. [원본 보고서](../verification/uiaudit1/geometry/engineB-tlink-056-entry-geometry-53b4700/geometry.json)와 [실행 영수증](../verification/eb-tlink-gates/geometry-53b4700-archive.json)을 보존했다. 같은53b 변경 시험은255통과·실패0·skip3이다. 최종 문서 트리는 게시 직전 `test:changed`와 `check:merge`로 확인한다.
 
 감사 교정은 실제 Michaelmas의 감사 배열 순서·ID·카운터·감독 관계·집사·전역 방문 시각이 모두 맞을 때만 pending을 유지한다. 같은 값의 임의 객체 교체는 허용하지 않는다. 현재 writer의 상태 전이로 연속성을 확인하며, 감사 이력 자체를 원인 영수증으로 쓰지 않는다. 실제 다음 철의 유일한 기존 `stewardship.season`만 답에 연결한다. 62320 감사 → 63000 결과의 검증 범위와 원본은 아래에 보존했다.
 
@@ -220,7 +220,7 @@ GROW-BLOCK은 여전히v55다. 2026-10-10 읽기 전용 재확인 경로는 `/Us
 
 ### RR22 — 새 분류 도구의 원격 검토 요청
 
-RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engineBTlinkOutcomeCategoriesRun.mjs`, `scripts/engineBTlinkOutcomeEvidence.mjs`, `scripts/engineBTlinkResiduals.mjs`를 비화면 오프라인 측정 도구로 분류하고 의미 판정 시험에 연결해 달라. 069f8bd의 check:merge는 네 파일 모두 UI/감사 import 도달0으로 확인하면서도 RR26 안전 목록 밖이라는 이유로 기존 기하 증거를 거부했다. REMOTE가 독립적인 실패 사례 시험과 분류 규칙을 검토할 대상이며, 이 가지는 안전 목록이나 selector를 직접 바꾸지 않는다. 같은22 selector·27행·540조건의069f8bd 기하는 권리 주장 판독 보완으로 실행 전에 취소했고,2c12d14 기하는 공식 seed 로그/종료 파일을 디렉터리로 오인하던 loader 수정으로 중단했다. 둘 다 통과 증거에서 제외한다. 71bc336 기하에서056 준비 장면의 초기 개방 실패를 확인했고, 지연만 바꾼 별도 공식 탐침에서 같은 청원이 열렸다. 판정 규칙 수정 없이 해당 준비 행을 교정하고 같은27행 전체를 다시 측정한다.
+RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engineBTlinkOutcomeCategoriesRun.mjs`, `scripts/engineBTlinkOutcomeEvidence.mjs`, `scripts/engineBTlinkResiduals.mjs`를 비화면 오프라인 측정 도구로 분류하고 의미 판정 시험에 연결해 달라. 069f8bd의 check:merge는 네 파일 모두 UI/감사 import 도달0으로 확인하면서도 RR26 안전 목록 밖이라는 이유로 기존 기하 증거를 거부했다. REMOTE가 독립적인 실패 사례 시험과 분류 규칙을 검토할 대상이며, 이 가지는 안전 목록이나 selector를 직접 바꾸지 않는다. 같은22 selector·27행·540조건의069f8bd 기하는 권리 주장 판독 보완으로 실행 전에 취소했고,2c12d14 기하는 공식 seed 로그/종료 파일을 디렉터리로 오인하던 loader 수정으로 중단했다. 둘 다 통과 증거에서 제외한다. 71bc336 기하에서056 준비 장면의 초기 개방 실패를 확인했고, 지연만 바꾼 별도 공식 탐침에서 같은 청원이 열렸다. 판정 규칙 수정 없이 해당 준비 행을 교정한53b에서 같은27행·540조건 전체를 다시 측정했고 실패0·미개방0·재시도0으로 끝났다.
 
 새 도구의 [입력·종료 코드·분류 경계·관측 소스 계약](../verification/eb-tlink-four-categories/README.md)을 보존한다. 실제 즉시 변화는 별도 관측기로 읽으며, 처리 기록이나 미검증 미래 기대를 무효과/성공으로 바꾸지 않는다.
 

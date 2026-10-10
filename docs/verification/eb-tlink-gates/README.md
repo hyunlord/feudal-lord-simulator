@@ -28,3 +28,7 @@
 `engineB-tlink-sidecar-tests-71bc336`은 clean 도구71bc336에서23파일167/167·실패0·exit0·79.2초다. [정확한 시험 기록과 실행 영수증](sidecar-71bc336-archive.json)을 보관했다. 재사용 파일과 입력 근거는 원본 gzip 안에 유지하며,167은 실제 실행 시험만 센 수다. 제품 `src`는23d와 동일하다. 이 기록 이후의 문서 변경은 최종 게시 검사에서 별도 판정한다.
 
 056 준비 행 교정 뒤 공식 `engineB-tlink-056-entry-tests-53b4700`은39파일·258시험 중255통과/실패0/skip3, exit0·187.3초다. [원본 시험·실행 영수증](fixture-53b4700-archive.json). 이는53b 소스 범위의 검증이며 후속 문서와 최종 기하는 별도 확인한다.
+
+## 최종 준비 행 교정판 기하
+
+`engineB-tlink-056-entry-geometry-53b4700`은 clean53b47009652731a2bc504f4496314af7fffaf827에서3336.0초·exit0으로 완료했다. 같은27행·540조건 모두 측정했고 실패0·미개방0·재시도0·pageErrors0·경고96이다. 축 축소·판정 완화는 없으며056도 최초 시도에 열렸다. 실패 캡처는0장이다. [실제 보고서](../uiaudit1/geometry/engineB-tlink-056-entry-geometry-53b4700/geometry.json)와 [정확한 실행·감사 로그/영수증](geometry-53b4700-archive.json)을 보존했다. 390px는 여전히 이 축 밖이며 기존 오른쪽 잘림을 해결했다는 뜻은 아니다.

@@ -1,0 +1,59 @@
+{
+  "run": "engineB-tlink-056-entry-geometry-53b4700",
+  "sourceRevision": "53b47009652731a2bc504f4496314af7fffaf827",
+  "commandSeconds": 3336.0,
+  "report": "docs/verification/uiaudit1/geometry/engineB-tlink-056-entry-geometry-53b4700/geometry.json",
+  "reportSha256": "7ed364e213838145e33de83651200ac27de8e34a15601b5a2c4af4489abec3e3",
+  "totals": {
+    "rows": 27,
+    "conditions": 540,
+    "measured": 540,
+    "failures": 0,
+    "unopened": 0,
+    "unreachable": [],
+    "warnings": 96,
+    "byCheck": {
+      "outside": 0,
+      "overflow": 0,
+      "border": 0,
+      "portrait": 0,
+      "overlap": 0,
+      "empty": 0,
+      "controls": 0,
+      "content": 0,
+      "hud": 0,
+      "ornament": 0
+    }
+  },
+  "retried": [],
+  "files": [
+    {
+      "path": "geometry-53b4700-run.log.gz",
+      "rawSha256": "d9d2376caba6cdd654a755341065d579fb82a13aad4c883790bb474f71c95c27",
+      "sha256": "408542b95a35b8bb6cda530d8e3f09571ecdfbec985bd90d850eafa860fd5f63",
+      "rawBytes": 3443,
+      "bytes": 1565
+    },
+    {
+      "path": "geometry-53b4700-exit-code",
+      "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "rawBytes": 2,
+      "bytes": 2
+    },
+    {
+      "path": "geometry-53b4700-timing.env",
+      "rawSha256": "d85f8532cd348250999fc9d175ac2f683546ff27caeb55dfa4ab93608195d734",
+      "sha256": "d85f8532cd348250999fc9d175ac2f683546ff27caeb55dfa4ab93608195d734",
+      "rawBytes": 79,
+      "bytes": 79
+    },
+    {
+      "path": "geometry-53b4700-ui-geometry-audit.log.gz",
+      "rawSha256": "cb72ab13e00846aadcd3dd3b4bf6451e691872d54c1c7af5200c06017cb0cd5c",
+      "sha256": "65f5bc748084099ad25ea6eda33bec3b3972200c20b3375a621c940a71a079e5",
+      "rawBytes": 42412,
+      "bytes": 2479
+    }
+  ]
+}
