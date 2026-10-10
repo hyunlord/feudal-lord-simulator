@@ -40,7 +40,7 @@ function sandbox() {
   const dir = mkdtempSync(join(tmpdir(), "fls-trend-auto-"));
   const git = (...args: string[]) => execFileSync("git", args, { cwd: dir, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
   for (const file of ["scripts/git-hooks/install.sh", "scripts/git-hooks/pre-push", "scripts/git-hooks/post-merge", "scripts/perf/trendAutoCommit.mjs",
-    "scripts/perf/trendMergeDriver.mjs", "scripts/checks/gitRange.mjs", "scripts/checks/trendLag.mjs"]) {
+    "scripts/perf/trendMergeDriver.mjs", "scripts/checks/gitRange.mjs", "scripts/checks/trendLag.mjs", "scripts/gitPaths.mjs"]) {
     mkdirSync(join(dir, dirname(file)), { recursive: true }); copyFileSync(file, join(dir, file));
   }
   git("init", "-q", "-b", "start"); git("config", "user.email", "t@t"); git("config", "user.name", "t");
