@@ -1,6 +1,27 @@
 # EB-TLINK 네 분류 관문
 
-기존 미래 직접 연결 점수를 지우지 않고, 동일 원본의 성숙한 무거운 답을 새 기준으로 분류한다. 이 디렉터리는 도구와 관측 소스의 사용 계약이다. 실제 seed별 새 점수와 통과 여부는 공식 재생 완료 뒤 별도 보관한다.
+관문: **시제품 통과 — 설명 미완0/816(0%)≤10%. 최종 결과 보임622/816(76.23%)은80% 미달.** 기존 미래 직접 연결334/816(40.93%)과 원본 점수 객체를 그대로 보존했다. 실행 위치는 DGX다.
+
+## 공식 결과
+
+| seed | 성숙 분모 | (가) 결과 보임 | (나) 무효과 | (다) 설명 미완 | (라) 관측 부족 / 조건 미충족 | 기존 미래 직접 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 238 | 195 | 43 | 0 | 7 / 0 | 118 |
+| 2 | 275 | 189 | 86 | 0 | 7 / 0 | 96 |
+| 3 | 303 | 238 | 65 | 0 | 6 / 0 | 120 |
+| 합계 | **816** | **622** | **194** | **0** | **20 / 0** | **334** |
+
+관측 부족20은 분모 밖이다. 전체 무거운 답836과 미분류2를 따로 보존한다. 결과 보임622는 기존 미래 연결334와 새로 확인한 실제 즉시 변화288의 서로 겹치지 않는 합이다. 무효과194는 core 특허 거절127(17/61/49)과 감사 묵인67(26/25/16)이다. 처리 상태만 바뀐 답을 결과 보임으로 세지 않았다.
+
+- 관측 `engineB-tlink-immediate-3ecee4b`: exit0, command3746.4초, 세 seed 모두500000tick. 명령열·수집 parity·전체 원시 최종 상태가 원본23d와 일치했다.
+- 채점 `engineB-tlink-category-score-71bc336`: clean 도구 판`71bc3365532b7941ed3deef49c8a0519cadeddd5`, exit0, command226.7초. 모든 capture의 압축/원문 해시·전후 canonical 값·전체 차분·원본 답 ID와 checkpoint를 검증했다.
+- [공식 요약](official-71bc336/summary.json), [전체 답별 보고서](official-71bc336/report.json.gz), [실행/소스/파일 해시](official-71bc336/archive.json). 전체 report 원문 SHA256은`d494e03107c875f9b3dd449b46990cdca9acd216666f6271f93b4973fe59121c`다.
+- 원래 설명 미완179는 실제 즉시 변화112와 실질 무효과67로 해소됐다. 9ad와23d의 해당179개 seed/답 ID 집합은 정확히 같으며 [원본 해시와 답별 대응](legacy-unexplained-join.json)을 보존했다. 감사94 중27은 실제 충성도 변화,67은 포화100→100이며, 등록기69·core 청원15·유언1은 실제 즉시 변화다. 이는 새 미래 영수증179개를 만들었다는 뜻이 아니다. 기존 미래 점수는 변하지 않았다.
+- 등록기 사건은 성숙192/192가 결과 보임, 나머지6은 관측 부족이다. 이 측정에서 확정된 등록기 무효과는0건이므로 정본을 넓히거나 불필요한 `choiceConditions`를 추가하지 않았다. 모든 가능한 상태·선택지에 무효과가 없다는 전수 증명은 아니다.
+
+즉시 변화 판독기를 더한 이후 게임 `src` 바이트는23d와 동일하다. 원래23d의 가드레일 증거와 지정10사건22시험을 유지하며, 새 도구의 공식 변경 시험은`engineB-tlink-sidecar-tests-71bc336`에서167/167 통과했다. 최종 게시의 기하/병합 전 검사는 인계 문서에 별도 기록한다.
+
+## 도구 사용
 
 ```sh
 node scripts/engineBTlinkOutcomeCategoriesRun.mjs CONFIG SCORE OBSERVER_ROOT EXPECTED_HELPER_SHA NEW_OUTPUT
@@ -36,7 +57,7 @@ node scripts/engineBTlinkOutcomeCategoriesRun.mjs CONFIG SCORE OBSERVER_ROOT EXP
 
 관측기는 모든 원래 명령·답 ID, 전체 수집 parity, 최종 원시 상태 해시를 대조하고 답 직전/직후 상태와 전체 차분을 기록한다. loader는 원래 답 직후 command checkpoint에도 대조한다. 원래 자료에 답 직전 checkpoint가 없는 경우 그 값은 **새 공식 관측기의 측정**이며, 옛 자료가 독립적으로 보관한 값이라고 주장하지 않는다. 게시할 때 공식 실행 영수증과 seed manifest 해시를 함께 보존한다. 원시 중간 상태 hash 필드는 원시 바이트가 별도 보존되지 않아 형식만 확인하며, 보존한 canonical 상태와 차분은 직접 재계산한다.
 
-관측 실행 `engineB-tlink-immediate-3ecee4b`은 슬롯을 받아 seed1–3을 재생 중이다. 여기에는 네 분류의 실제 통과 수치를 아직 싣지 않는다. 기존 확정 코어 무효과127건은 [엔진 요청서](../../requests/engine-B-inert.md), 감사94건의 처리 증거는 [별도 보관](../eb-tlink-audit-settlement/README.md)에 있다.
+관측 실행과 채점은 위 공식 결과로 완료했다. 핵심 무효과194건은 [엔진 요청서](../../requests/engine-B-inert.md), 이전 감사94건의 처리 증거는 [별도 보관](../eb-tlink-audit-settlement/README.md)에 있다. 당시 처리 증거만으로는 입증하지 않았던 실제 충성도 값을 이번 전후 관측으로 구분했다. 정확한 capture manifest와 외부 종료 영수증을 이 디렉터리에 보존하고, 전체 전후 snapshot은 보존 지정된 공식 관측 실행에서 `scripts/remote/run.sh --fetch engineB-tlink-immediate-3ecee4b`로 받는다. 재채점은 원래 설정/점수 gzip을 복원한 경로와 전체 capture를 위 CLI에 넘긴다.
 
 중간 원본의 seed1 `h-002358` / 038 `defer`는 답 직후 `estates.claims[1].strength`가55→50으로 바뀌었다. 판독기는 같은 주장 ID가 유일하게 같은 위치에 남아 있을 때 이 수치 변화를 권리 효과로 읽는다. `registryV4.ts:191`의 실제 변경과 `estateSuits.ts:179`의 심리 소비 경로를 소스 해시로 고정했다. 대상 교체·중복 ID·동일 값은 효과로 세지 않으며, 이 보완만으로 모든 효과가0이라는 증명을 만들지 않는다. 관련25시험 통과는 도구 검증이며, 미완료 관측을 전체 판의 점수로 사용하는 근거가 아니다.
 

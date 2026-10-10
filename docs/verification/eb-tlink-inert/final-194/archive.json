@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "measurement": "engineB-tlink-immediate-3ecee4b",
+  "score": "engineB-tlink-category-score-71bc336",
+  "sourceRevision": "23d12264289538de5f6ef3ef3f36aa9257b10aba",
+  "verificationLocation": "Mac: bounded offline artifact comparison only; original capture and scorer DGX",
+  "matureInert": 194,
+  "immatureAnalogues": 7,
+  "files": [
+    {
+      "file": "proof.mjs.gz",
+      "sha256": "a0121d8ed452f0ec45c920b9d3582902a54668f71cab07188953a37e84bdb52a",
+      "rawSha256": "293ce213ed1158c1244c2a073603dfb5b47fefa7fcd980b94cbac343ceb7333d",
+      "bytes": 2601
+    },
+    {
+      "file": "proof.json.gz",
+      "sha256": "e0ef5e1c621af9cf3ff61254def15f54499df456eb395422e799f89a961b605d",
+      "rawSha256": "46d279db37668c620f10f79b297c5495453e7f50d02ee4a5a9bd6fa15b7cd492",
+      "bytes": 108243
+    },
+    {
+      "file": "proof.md",
+      "sha256": "a8586675611f4f0ca48e0c204dd880e79e4b0cdcc4105e618a461162c00f11b3",
+      "rawSha256": "a8586675611f4f0ca48e0c204dd880e79e4b0cdcc4105e618a461162c00f11b3",
+      "bytes": 898
+    }
+  ]
+}
