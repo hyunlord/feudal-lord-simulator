@@ -75,6 +75,7 @@ test("a patch's headers and git grep's lines name Korean paths with spaces as th
     writeFileSync(join(dir, "src/한글 모듈.ts"), "export const a = 1;\n");
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "c1"); const c1 = git("rev-parse", "HEAD");
     writeFileSync(join(dir, KOREAN_PATH), "바뀜\n");
+    // why: a fixture file whose lint exception the scan must find under its Korean name (no exception in this test)
     writeFileSync(join(dir, "src/한글 모듈.ts"), "// eslint-disable-next-line no-console\nexport const a = 2;\n");
     git("add", "-A"); git("commit", "-qm", "c2"); const c2 = git("rev-parse", "HEAD");
     assert.deepEqual(addedLines(c1, c2, [KOREAN_PATH], dir), [{ path: KOREAN_PATH, text: "바뀜" }]);
