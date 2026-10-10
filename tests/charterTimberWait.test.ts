@@ -9,7 +9,9 @@ import test from "node:test";
 import { spawnCarters } from "../src/agents/delivery";
 import type { CarterWalker } from "../src/agents/walker.types";
 import { createConstructionSite, createPalisadeConstructionSite } from "../src/economy/construction";
-import { charterTimberWait, CHARTER_WAIT_WALL_SHARE_PERMILLE, NO_CHARTER_WAIT, wallDeliveryAvailable, withSawmillKeep } from "../src/domain/wallReserve";
+import { charterTimberWait, CHARTER_WAIT_WALL_SHARE_PERMILLE, NO_CHARTER_WAIT, wallDeliveryAvailable, withSupplierKeep } from "../src/domain/wallReserve";
+import { supplierKeep } from "../src/agents/deliveryConstruction";
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { DELIVERY_INVENTORY, building, line, routePort } from "./deliveryFixtures";
 
 const wall = createPalisadeConstructionSite({ id: "wall-1", wallId: "wall", segmentIndex: 0, gateDistance: 0, order: 0,
@@ -57,14 +59,10 @@ test("FIX-16 a placed market short of timber leaves the palisade at most half of
   assert.deepEqual(wallCargo(dispatch([building("store", "storehouse", { inventory: { timber: 10 } })], [wall, market])), [5]);
 });
 
-test("GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material holds no timber back", () => {
+test("GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material holds no timber of its own back", () => {
   const market = building("market-1", "market", {});
   const noStone = () => false;
-  // The church before the quarry: its 60 stone are not in the stores, so it holds none of its 100 back — the quarry
-  // that makes its stone holds its 50 instead, until it stands.
-  assert.deepEqual(charterTimberWait([market], [], cost, noStone), { keep: 50, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE });
-  const quarry = building("quarry-1", "quarry", {});
-  assert.deepEqual(charterTimberWait([market, quarry], [], cost, noStone), NO_CHARTER_WAIT);
+  assert.deepEqual(charterTimberWait([market], [], cost, noStone), NO_CHARTER_WAIT);
   // With its stone held it keeps its 100 timber back, as FIX-16 did.
   assert.deepEqual(charterTimberWait([market], [], cost, () => true), { keep: 100, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE });
   // A placed church still waiting on timber shares as before.
@@ -72,9 +70,23 @@ test("GROW-BLOCK-2a ③: a charter building that cannot be placed for want of an
   assert.deepEqual(charterTimberWait([market], [site], cost, noStone), { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE });
 });
 
-test("GROW-BLOCK-2a ⑥: with logs backing up, the palisade leaves a sawmill's timber too", () => {
-  assert.deepEqual(withSawmillKeep(NO_CHARTER_WAIT, 30), { keep: 30, wallSharePermille: 1_000 });
-  assert.deepEqual(withSawmillKeep({ keep: 100, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE }, 30), { keep: 100, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE });
+test("GROW-BLOCK-2a ③⑥: a material's supplier, wanted and short, keeps its timber from the wall — read from the buildings' definitions", () => {
+  const none = () => 0;
+  const market = building("market-1", "market", {});
+  const masonry = building("masonry-1", "masonry", {});
+  const sawmill = building("sawmill-1", "sawmill", {});
+  // The church's stone needed: no masonry — the masonry keeps its timber; a masonry standing, no quarry — the quarry's.
+  assert.equal(supplierKeep([market], [], none, ["stone"]), BUILDING_CONFIG_BY_KIND.masonry.buildCost.timber);
+  assert.equal(supplierKeep([market, masonry], [], none, ["stone"]), BUILDING_CONFIG_BY_KIND.quarry.buildCost.timber);
+  assert.equal(supplierKeep([market, masonry, building("quarry-1", "quarry", {})], [], none, ["stone"]), 0, "the chain stands");
+  // Logs waiting for a window of a sawmill's intake: another sawmill keeps its timber (none placed yet).
+  const logs = (amount: number) => (resource: string) => resource === "logs" ? amount : 0;
+  assert.equal(supplierKeep([sawmill], [], logs(137), []), BUILDING_CONFIG_BY_KIND.sawmill.buildCost.timber);
+  assert.equal(supplierKeep([sawmill], [], logs(136), []), 0);
+  const placed = createConstructionSite({ ordinal: 3, kind: "sawmill", tx: 9, ty: 9, startedTick: 0 });
+  assert.equal(supplierKeep([sawmill], [placed], logs(500), []), 0, "a sawmill placed already");
+  // Wheat waiting at a mill is no construction material's: nothing kept.
+  assert.equal(supplierKeep([building("mill-1", "mill", {})], [], (resource: string) => resource === "wheat" ? 500 : 0, []), 0);
   // The palisade takes what is above the keep, all of it (no charter building waiting).
-  assert.equal(wallDeliveryAvailable(undefined, "balanced", "store", "timber", 40, { wait: withSawmillKeep(NO_CHARTER_WAIT, 30), townStock: 40 }), 10);
+  assert.equal(wallDeliveryAvailable(undefined, "balanced", "store", "timber", 40, { wait: withSupplierKeep(NO_CHARTER_WAIT, 30), townStock: 40 }), 10);
 });

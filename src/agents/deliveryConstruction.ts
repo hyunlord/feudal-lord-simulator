@@ -3,7 +3,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
   CHARTER_TIMBER_KINDS,
-  withSawmillKeep,
+  withSupplierKeep,
   charterTimberWait,
   wallDeliveryAvailable,
   type CharterTimberWait,
@@ -114,7 +114,7 @@ function siteCandidates(params: {
   readonly busyHomeIds: ReadonlySet<string>;
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
-  readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number };
+  readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number; readonly supplierKeep?: number };
 }): readonly SiteCandidate[] {
   return [...params.sites].sort(byId).flatMap((site) => {
     const need = constructionDeliveryNeed(site);
@@ -149,7 +149,7 @@ function treasuryCandidate(params: {
   readonly busyHomeIds: ReadonlySet<string>;
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
-  readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number };
+  readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number; readonly supplierKeep?: number };
 }): TreasurySiteCandidate | null {
   if (params.treasuryTimber <= 0) return null;
   const homes = [...params.buildings]
@@ -184,27 +184,74 @@ function treasuryCandidate(params: {
 }
 
 /** FIX-16: whether the next charter building waits for timber, and the town's timber (buildings and treasury). */
-/** One sawmill's logs for a window (2 logs a timber every 35 ticks), as the bot's `logBacklog`. */
-const SAWMILL_WINDOW_LOGS = (() => { const mill = BUILDING_CONFIG_BY_KIND.sawmill.production;
-  return mill === null ? 0 : Math.round(mill.inputPerOutput * 2_400 / mill.ticksPerOutput); })();
+type Kind = keyof typeof BUILDING_CONFIG_BY_KIND;
+const KINDS = Object.keys(BUILDING_CONFIG_BY_KIND) as Kind[];
+/** Construction materials: every resource some building's cost names. */
+const CONSTRUCTION_MATERIALS: ReadonlySet<string> = new Set(KINDS.flatMap(kind => Object.keys(BUILDING_CONFIG_BY_KIND[kind].buildCost)));
+const PRODUCERS = (resource: string): readonly Kind[] => KINDS.filter(kind => BUILDING_CONFIG_BY_KIND[kind].production?.output === resource);
+/** A producer's input for one production window (2,400 ticks). */
+const WINDOW_INPUT = (kind: Kind): number => {
+  const production = BUILDING_CONFIG_BY_KIND[kind].production;
+  return production === null || production.input === null ? 0 : Math.round(production.inputPerOutput * 2_400 / production.ticksPerOutput);
+};
+
+/**
+ * GROW-BLOCK-2a ③⑥ (the user's rule 2026-10-10): "a material's supplier that cannot be built for want of material, when
+ * that material is needed, keeps its cost from the wall" — read from the buildings' definitions, so a new building needs
+ * no new rule. A supplier is wanted when
+ *  - a material is needed (what the next charter building lacks, what a building site waits for with none in stock) and
+ *    nothing makes it: the first link of its chain with no building standing or placed (the church's stone: the
+ *    masonry, then the quarry for its raw stone) — seed 1's quarry waited for the whole wall, 528 from 1318 to 1329;
+ *  - a construction material's producer has a window of its input waiting in the stores and none of its kind placed
+ *    (the logs backing up: another sawmill) — seed 5's one sawmill faced 231 logs with 1–4 timber in stock for ten years.
+ * The keep is the largest timber cost of the wanted suppliers.
+ */
+export function supplierKeep(buildings: readonly Building[], sites: readonly ConstructionSite[], held: (resource: ResourceType) => number,
+  needed: readonly string[]): number {
+  const placed = (kind: Kind) => sites.some(site => "kind" in site && site.kind === kind);
+  const present = (kind: Kind) => buildings.some(building => building.kind === kind) || placed(kind);
+  const wanted = new Set<Kind>();
+  const visit = (resource: string, depth: number) => {
+    const producers = PRODUCERS(resource);
+    if (producers.length === 0 || depth > 3) return;
+    const standing = producers.filter(present);
+    if (standing.length === 0) { wanted.add(producers[0]!); return; }
+    for (const kind of standing) {
+      const input = BUILDING_CONFIG_BY_KIND[kind].production?.input ?? null;
+      if (input !== null) visit(input, depth + 1);
+    }
+  };
+  for (const resource of needed) visit(resource, 0);
+  for (const kind of KINDS) {
+    const production = BUILDING_CONFIG_BY_KIND[kind].production;
+    if (production === null || production.input === null || !CONSTRUCTION_MATERIALS.has(production.output)) continue;
+    if (buildings.some(building => building.kind === kind) && !placed(kind) && held(production.input) >= WINDOW_INPUT(kind)) wanted.add(kind);
+  }
+  return Math.max(0, ...[...wanted].map(kind => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0));
+}
 
 export function charterTimberContext(params: {
   readonly buildings: readonly Building[];
   readonly constructionSites: readonly ConstructionSite[];
   readonly inventory: DeliveryInventoryPort;
   readonly treasuryTimber: number;
-}): { readonly wait: CharterTimberWait; readonly townStock: number } {
+}): { readonly wait: CharterTimberWait; readonly townStock: number; readonly supplierKeep: number } {
   const held = (resource: ResourceType) => params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, resource), 0);
   const otherMaterialsHeld = (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => Object.entries(BUILDING_CONFIG_BY_KIND[kind].buildCost)
     .every(([resource, amount]) => resource === "timber" || held(resource as ResourceType) >= Number(amount ?? 0));
-  const timberCost = (kind: string) => BUILDING_CONFIG_BY_KIND[kind as keyof typeof BUILDING_CONFIG_BY_KIND]?.buildCost.timber ?? 0;
+  const timberCost = (kind: string) => BUILDING_CONFIG_BY_KIND[kind as Kind]?.buildCost.timber ?? 0;
   const charter = charterTimberWait(params.buildings, params.constructionSites, timberCost, otherMaterialsHeld);
-  // GROW-BLOCK-2a ⑥: logs backing up — the palisade leaves a sawmill's timber (no sawmill site already waiting).
-  const backlog = held("logs") >= SAWMILL_WINDOW_LOGS && !params.constructionSites.some(site => "kind" in site && site.kind === "sawmill");
-  const wait = backlog ? withSawmillKeep(charter, timberCost("sawmill")) : charter;
-  if (wait.wallSharePermille >= 1_000 && wait.keep <= 0) return { wait, townStock: 0 };
+  // The materials needed: what the next charter building lacks, what a building site waits for with none in stock.
+  const next = CHARTER_TIMBER_KINDS.find(kind => !params.buildings.some(building => building.kind === kind));
+  const lacking = next === undefined ? [] : Object.entries(BUILDING_CONFIG_BY_KIND[next].buildCost)
+    .filter(([resource, amount]) => resource !== "timber" && held(resource as ResourceType) < Number(amount ?? 0)).map(([resource]) => resource);
+  const waiting = params.constructionSites.filter(site => "kind" in site).flatMap(site => Object.entries(constructionDeliveryNeed(site))
+    .filter(([resource, amount]) => resource !== "timber" && Number(amount ?? 0) > 0 && held(resource as ResourceType) <= 0).map(([resource]) => resource));
+  const keep = supplierKeep(params.buildings, params.constructionSites, held, [...new Set([...lacking, ...waiting])]);
+  const wait = withSupplierKeep(charter, keep);
+  if (wait.wallSharePermille >= 1_000 && wait.keep <= 0) return { wait, townStock: 0, supplierKeep: 0 };
   const townStock = params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, "timber"), 0) + Math.max(0, params.treasuryTimber);
-  return { wait, townStock };
+  return { wait, townStock, supplierKeep: keep };
 }
 
 export function spawnSiteDelivery(params: {

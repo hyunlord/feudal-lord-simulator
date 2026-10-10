@@ -127,6 +127,19 @@ test("B6 seed 2 right after the palisade: timber is added for the waiting wall w
     + later.constructionSites.filter(site => site.kind === "market").length, 1, "the market is placed while the wall is built");
 });
 
+test("GROW-BLOCK-2a ③⑥: a supplier the wall starves of its timber is not left unbuilt for two years — logs backing up get their sawmill while the palisade waits", () => {
+  const state = loadAutoplayFixture(SEED2_PALISADE);
+  // The palisade just proclaimed (1,078 timber waiting); its stores hold 300 logs and 5 timber (seed 5's shape).
+  const store = state.buildings.find(building => building.kind === "storehouse")!;
+  // The wall at priority (the lord's answer to a reserve deadlock): it takes every plank but a wanted supplier's.
+  const starved: GameState = { ...state, wallConstructionPriority: "priority", buildings: state.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, logs: 300, timber: 5 } }
+    : building.kind === "storehouse" ? { ...building, inventory: { ...building.inventory, timber: 0 } } : building) };
+  const sawmills = (current: GameState) => current.buildings.filter(building => building.kind === "sawmill").length
+    + current.constructionSites.filter(site => site.kind === "sawmill").length;
+  const later = runWithAdvisor(starved, 8_000);
+  assert.ok(sawmills(later) > sawmills(starved), `${sawmills(starved)} → ${sawmills(later)} sawmills in two years`);
+});
+
 test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, builds them, and reaches L4 24/24", () => {
   const state = loadAutoplayFixture(SEED3_INTERIOR);
   assert.equal(housingLotCount(state), 21);

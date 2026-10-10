@@ -40,9 +40,6 @@ type SiteView = { readonly kind: string; readonly required: Partial<Record<Resou
  * its building cost in stock and takes at most half of the rest — or when its site still needs timber — then the
  * palisade takes at most half of the stock (the site is served first anyway, construction sites before walls).
  */
-/** GROW-BLOCK-2a ③: the building that makes the material a charter building waits for (the church's stone: the quarry). */
-export const CHARTER_MATERIAL_SOURCE_KIND = "quarry";
-
 export function charterTimberWait(
   buildings: readonly { readonly kind: string }[],
   sites: readonly SiteView[],
@@ -51,30 +48,23 @@ export function charterTimberWait(
 ): CharterTimberWait {
   const next = CHARTER_TIMBER_KINDS.find(kind => !buildings.some(building => building.kind === kind));
   if (next === undefined) return NO_CHARTER_WAIT;
-  const waitFor = (kind: string): CharterTimberWait => {
-    const site = sites.find(candidate => candidate.kind === kind);
-    if (site === undefined) return { keep: timberCost(kind), wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE };
-    const need = (site.required.timber ?? 0) - (site.delivered.timber ?? 0) - (site.reserved.timber ?? 0);
-    return need > 0 ? { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE } : NO_CHARTER_WAIT;
-  };
+  const site = sites.find(candidate => candidate.kind === next);
   // GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material (the church's stone) holds
   // no timber of its own back — the wall's timber waited years for it (engine-GROW2a-wall-98667ca: seed 8's palisade at
-  // 671 timber from 1311 to 1316, the stock 17–69 under the church's 100) — but the building that makes that material
-  // (the quarry) does, until it stands: seed 1's quarry waited for the whole wall, its church five years more
-  // (engine-GROW2a-measure-b155099, 528 from 1318 to 1329).
-  if (!sites.some(candidate => candidate.kind === next) && !otherMaterialsHeld(next)) {
-    return buildings.some(building => building.kind === CHARTER_MATERIAL_SOURCE_KIND) ? NO_CHARTER_WAIT : waitFor(CHARTER_MATERIAL_SOURCE_KIND);
-  }
-  return waitFor(next);
+  // 671 timber from 1311 to 1316, the stock 17–69 under the church's 100). What makes that material holds instead
+  // (`withSupplierKeep`).
+  if (site === undefined && !otherMaterialsHeld(next)) return NO_CHARTER_WAIT;
+  if (site === undefined) return { keep: timberCost(next), wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE };
+  const need = (site.required.timber ?? 0) - (site.delivered.timber ?? 0) - (site.reserved.timber ?? 0);
+  return need > 0 ? { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE } : NO_CHARTER_WAIT;
 }
 
 /**
- * GROW-BLOCK-2a ⑥: with a sawmill's window of logs in the stores, the palisade leaves a sawmill's timber too — seed 5's
- * one sawmill faced 231 logs with 1–4 timber in stock for ten years, the wall taking each sawn plank before a second
- * sawmill's 30 could gather (engine-GROW2a-measure-b155099).
+ * GROW-BLOCK-2a ③⑥ (the user's rule 2026-10-10): the palisade leaves in stock what a material's supplier needs to be
+ * built, when that supplier is wanted and short of it (`supplierKeep`, from the buildings' definitions).
  */
-export function withSawmillKeep(wait: CharterTimberWait, sawmillTimber: number): CharterTimberWait {
-  return { keep: Math.max(wait.keep, sawmillTimber), wallSharePermille: wait.wallSharePermille };
+export function withSupplierKeep(wait: CharterTimberWait, keep: number): CharterTimberWait {
+  return keep <= wait.keep ? wait : { keep, wallSharePermille: wait.wallSharePermille };
 }
 
 /**
@@ -93,9 +83,10 @@ export function wallDeliveryAvailable(
   sourceId: string,
   resource: ResourceType,
   available: number,
-  charter: { readonly wait: CharterTimberWait; readonly townStock: number } = { wait: NO_CHARTER_WAIT, townStock: 0 },
+  charter: { readonly wait: CharterTimberWait; readonly townStock: number; readonly supplierKeep?: number } = { wait: NO_CHARTER_WAIT, townStock: 0 },
 ): number {
-  if (priority === "priority") return available;
+  // GROW-BLOCK-2a ③⑥: a wanted supplier's timber stays even when the wall has priority (the rule has no exception).
+  if (priority === "priority") return resource === "timber" ? charterLimited({ keep: charter.supplierKeep ?? 0, wallSharePermille: 1_000 }, available, charter.townStock) : available;
   const floor = reserve?.resource !== resource ? 0 : reserve.sources.find((source) => source.id === sourceId)?.floor ?? 0;
   const aboveFloor = Math.max(0, available - floor);
   return resource === "timber" ? Math.min(aboveFloor, charterLimited(charter.wait, available, charter.townStock)) : aboveFloor;
