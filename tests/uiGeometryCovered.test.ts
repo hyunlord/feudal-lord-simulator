@@ -401,13 +401,14 @@ test("a push whose own run failed and went through the override: neither covers 
 });
 
 /** Review 3, D: the trunk takes a file's content back from a commit the result's branch held but no audit measured. */
-function storyD() {
+function storyD({ t1 = true }: { t1?: boolean } = {}) {
   const s = story({ own: "rows" });
   s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "p2");
   s.write("src/ui/Panel.tsx", "// D, never measured\n"); const q0 = s.commit("q0: Panel D");
   s.write("src/ui/Panel.tsx", "// C\n"); s.write("scripts/tool.mjs", "// p2's script\n"); const q1 = s.commit("q1: Panel C, the script");
   s.full("p2-full", q1); s.commit("p2: its full audit");
-  s.git("checkout", "-q", "trunk"); s.write("src/ui/Panel.tsx", "// B\n"); const t1 = s.commit("t1: Panel B"); s.rowRun("t1-rows", t1);
+  s.git("checkout", "-q", "trunk");
+  if (t1) { s.write("src/ui/Panel.tsx", "// B\n"); const changed = s.commit("t1: Panel B"); s.rowRun("t1-rows", changed); }
   s.git("checkout", "-qb", "take", q0); s.git("checkout", "-q", "trunk");
   try { s.git("merge", "-q", "--no-ff", "--no-edit", "take"); } catch { /* a conflict: resolved below */ }
   s.write("src/ui/Panel.tsx", "// D, never measured\n"); s.git("add", "-A"); s.git("commit", "-qm", "merge q0, Panel resolved to q0's D", "--allow-empty");
@@ -511,5 +512,14 @@ test("an evil merge is a change of the file: a run that measured the same conten
     s.git("checkout", "-qb", "y", fork); s.write("src/ui/Panel.tsx", "// Y\n"); const y1 = s.commit("y: Panel Y"); s.rowRun("y-rows", y1);
     s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-edit", "y");
     refused(s.check(), /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
+
+test("no trunk commit changed the file since the result (a merge took its content back from the result's own history): a report of that old commit is not a cover", () => {
+  const { s } = storyD({ t1: false });
+  try {
+    s.git("checkout", "-q", "trunk"); s.write(`${RUNS}/q0-rows/geometry.json`, JSON.stringify(rowsReport("q0-rows", storyQ0(s)))); s.commit("a report of q0\n\nUI-Geometry-Run: q0-rows");
+    s.git("checkout", "-q", "p2"); const base = s.git("rev-parse", "trunk"); s.git("merge", "-q", "--no-edit", "trunk");
+    refused(checkUiGeometry({ base, head: s.git("rev-parse", "HEAD"), cwd: s.dir, mode: "enforce", env: {} }), /src\/ui\/Panel\.tsx/);
   } finally { s.done(); }
 });
