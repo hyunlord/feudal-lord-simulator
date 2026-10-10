@@ -22,6 +22,11 @@
 .app-shell .lord-screen-nav-reason { font-size: 12px; font-weight: 400; line-height: 1.3; }
 .app-shell .lord-screen-content { min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 .app-shell .lord-screen-empty, .app-shell .lord-screen-soon { margin: 8px 0 0; font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+/* Phone panels use the existing slot's side margins: reserving 280px for the map would leave the fixed navigation
+   wider than the entire panel and collapse its content, making lower standing policies impossible to press. */
+@media (max-width: 719px) {
+  .app-shell .slot-panel.lord-screen { width: calc(100% - 16px); }
+}
 @media (pointer: coarse) {
   /* !important: the 44 px touch floor (uiBoundaries.css) is !important, so a 48 px tablet target must be too (the kit's own rule). */
   .app-shell .lord-screen-nav-item, .app-shell .lord-screen-open { min-height: 48px !important; }

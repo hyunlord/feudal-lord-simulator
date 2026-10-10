@@ -16,7 +16,7 @@
 
 ## 저장
 
-선택 필드 `StewardRecord.auditTolerance`, `AuditRecord.decidedBy/policyAuditId`, `trace.answers[].effects`. 구판의 부재는 그대로 남으며 과거 방침/효과를 역산하지 않는다. 승인된 TRACE-LINK answerEffects 구현·검증기를 최소 이식했다. 잠정 v57 지문은 준비 fixture로 확장했으며 최종 통합 판 번호는 사용자 지시대로 엔진이 정한다. 일반 fingerprint 생성기의 판 변경 거부는 손대지 않았다.
+선택 필드 `StewardRecord.auditTolerance`, `AuditRecord.decidedBy/policyAuditId/superseded`, `trace.answers[].effects`. 구판의 부재는 그대로 남으며 과거 방침/효과를 역산하지 않는다. 승인된 TRACE-LINK answerEffects 구현·검증기를 최소 이식했다. 잠정 v57 지문은 준비 fixture로 확장했으며 최종 통합 판 번호는 사용자 지시대로 엔진이 정한다. 일반 fingerprint 생성기의 판 변경 거부는 손대지 않았다.
 
 ## 측정 계약
 
@@ -27,3 +27,9 @@
 ## 엔진 검토 접점
 
 `stewardship.ts/types`, 새 정책 helper·consequences/config, `decisionReads`, trace/history, ledger 분류·문구, 저장 validator·지문, 기존 청지기/장부 UI. TRACE-LINK와 중복되는 answerEffects 포트는 함께 병합할 때 한 구현으로 정리한다. GROW와 공통인 history/저장 경로는 양쪽 변경을 보존한다. RR22 안전 목록 확대 요청이나 공용 원격 실행기 변경은 없다.
+
+## 초기 실행에서 발견한 경계와 교정
+
+`b467ac61c`는 같은 tick 재임명 시 옛 미결 감사가 되살아나는 결함이 추가 검토에서 재현되어 125년 실행과 대기 중 비영주 실행을 중단했다. 해당 실행을 완료 관문으로 계산하지 않는다. 교체 때 pending 감사에 영구 `superseded:true`를 남겨 재임명해도 처리할 수 없게 했다. 실제 reducer 왕복 교체 회귀와 저장 검증을 추가했다.
+
+브라우저 `engineB-standing-browser-b467ac6`은 375px의 철 손실·자동 보고·장부 표시는 성공했으나 철회 버튼 클릭에서 실패했다. 영주 화면이 지도용280px를 계속 빼서95px가 되고136px 내비게이션보다 좁았기 때문이다. 719px 이하 패널은 기존 양옆8px 여백으로 바꿔 본문을 확보했다. 재검사는 force 클릭 없이 실제 버튼으로 수행한다.

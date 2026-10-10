@@ -16,7 +16,7 @@ function bookkeeping(path: readonly string[]): boolean {
   if (path[0] === 'stewardship' && path.includes('auditTolerance') && ['auditId', 'since'].includes(last)) return true;
   if (last === 'policyAuditId' && path[0] === 'stewardship' && path[1] === 'audits') return true;
   if (last.startsWith('next') && /[A-Z]/.test(last[4] ?? '')) return true;
-  if (path[0] === 'stewardship' && ['petitions', 'audits'].includes(path[1] ?? '') && ['status', 'decidedBy', 'policy', 'unrecovered'].includes(last)) return true;
+  if (path[0] === 'stewardship' && ['petitions', 'audits'].includes(path[1] ?? '') && ['status', 'decidedBy', 'policy', 'unrecovered', 'superseded'].includes(last)) return true;
   if (path[0] === 'politics' && path[1] === 'petitions' && ['status', 'response', 'decidedTick', 'respondedTick'].includes(last)) return true;
   if (path[0] === 'politics' && ['decisions', 'chronicle'].includes(path[1] ?? '')) return true;
   return path[0] === 'agency' && path[1] === 'duesAgreement' && ['tick', 'occurrenceId'].includes(last);

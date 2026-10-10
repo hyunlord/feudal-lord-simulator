@@ -113,7 +113,7 @@ function reviewedScope(row, inertProfile) {
       && numeric(before.tick) && before.tick <= row.tick && numeric(before.deadline) && before.deadline >= row.tick) {
       add([...steward, 'loyalty'], 'relation'); bookkeeping.push([...base, 'status']);
       if (inertProfile) {
-        bookkeeping.push([...base, 'unrecovered'], [...base, 'decidedBy'], [...steward, 'toleratedErrors']);
+        bookkeeping.push([...base, 'unrecovered'], [...base, 'superseded'], [...base, 'decidedBy'], [...steward, 'toleratedErrors']);
         for (const field of ['auditId', 'since', 'baselineLoss', 'baselineLoyalty', 'perSeason'])
           bookkeeping.push([...steward, 'auditTolerance', field]);
       }

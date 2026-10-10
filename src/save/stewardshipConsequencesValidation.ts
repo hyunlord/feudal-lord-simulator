@@ -35,6 +35,8 @@ export function stewardshipConsequencesProblem(state: Readonly<Record<string, un
   }
   if (Array.isArray(own.audits)) for (const row of own.audits) {
     if (!object(row)) continue;
+    if (Object.hasOwn(row, 'superseded') && row.superseded !== true)
+      return 'stewardship.audits.superseded must be true when present';
     if (Object.hasOwn(row, 'decidedBy') && row.decidedBy !== 'lord' && row.decidedBy !== 'steward')
       return 'stewardship.audits.decidedBy is invalid';
     if (row.decidedBy === 'steward' && (row.status !== 'tolerated' || !text(row.policyAuditId))

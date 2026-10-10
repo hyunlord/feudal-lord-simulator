@@ -146,5 +146,20 @@ test('replaced receiver pending audit stays in records but has no actionable lor
   assert.equal(auditAnswerEffect(swapped, 'tolerance', 'tolerate'), null);
   assert.equal(answerAudit(swapped, 'tolerance', 'tolerate'), swapped);
   assert.equal(answerAudit(swapped, 'tolerance', 'tolerate', true), swapped);
-  assert.deepEqual(stewardshipOf(swapped).audits, stewardshipOf(before).audits);
+  assert.deepEqual(stewardshipOf(swapped).audits, stewardshipOf(before).audits.map(row => ({ ...row, superseded: true })));
+});
+
+test('same-tick reducer swap away and back cannot resurrect a previous tenure audit', async () => {
+  const { gameReducer } = await import('../src/state/gameStore');
+  const { auditAnswerEffect } = await import('../src/engine/stewardship');
+  const initial = fixture(), own = stewardshipOf(initial);
+  const before = { ...initial, stewardship: { ...own, audits: own.audits.map(row => ({ ...row, tick: initial.tick })) } };
+  const away = gameReducer(before, { type: 'set_estate_oversight', estateId: 'delegated-estate', mode: 'steward', stewardId: 'replacement' });
+  const back = gameReducer(away, { type: 'set_estate_oversight', estateId: 'delegated-estate', mode: 'steward', stewardId: 'current' });
+  assert.equal(back.tick, before.tick);
+  assert.equal(pendingAudits(back).length, 0);
+  assert.equal(auditAnswerEffect(back, 'tolerance', 'tolerate'), null);
+  assert.equal(gameReducer(back, { type: 'answer_audit', auditId: 'tolerance', choice: 'tolerate' }), back);
+  assert.equal(answerAudit(back, 'tolerance', 'tolerate', true), back);
+  assert.equal(stewardshipOf(back).audits[0]?.status, 'pending');
 });

@@ -27,7 +27,7 @@ export function tolerateAuditErrors(state: GameState, record: StewardRecord, aud
 
 export function reportOnlyAudit(state: GameState, audit: AuditRecord, record: StewardRecord | undefined): boolean {
   if (!lordMode(state)) return false;
-  if (record === undefined || record.status !== 'serving' || record.since > audit.tick
+  if (audit.superseded === true || record === undefined || record.status !== 'serving' || record.since > audit.tick
     || state.stewardship?.oversight.find(row => row.estateId === audit.estateId)?.stewardId !== audit.stewardId
     || state.estates?.people.find(row => row.id === audit.stewardId)?.alive === false) return true;
   return !auditToleranceRequiresDecision(state, audit, record)

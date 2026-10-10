@@ -101,3 +101,11 @@ test('automatic audit provenance rejects unknown actors and absent source IDs', 
       audits: state.stewardship.audits.map(row => ({ ...row, ...provenance })) } }), /audits/);
   }
 });
+
+test('closed old-tenure audits preserve the record and validate the optional superseded flag', () => {
+  const state = pressured();
+  const auditState = (superseded: unknown) => ({ ...state, stewardship: { ...state.stewardship,
+    audits: state.stewardship.audits.map(row => ({ ...row, superseded })) } });
+  assert.doesNotThrow(() => assertGameStateSnapshot(auditState(true)));
+  for (const invalid of [false, null, 'true', 1]) assert.throws(() => assertGameStateSnapshot(auditState(invalid)), /superseded/);
+});

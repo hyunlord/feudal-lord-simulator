@@ -127,6 +127,8 @@ export interface QuarterSummary {
 
 /** SW-6: an estate's audit at Michaelmas. */
 export interface AuditRecord {
+  /** A receiver change closed this decision; the original audit remains in the accounts. */
+  readonly superseded?: true;
   readonly decidedBy?: "steward" | "lord";
   readonly policyAuditId?: string;
   /** Disclosed money left unrecovered at settlement; informational, never a second debit. */

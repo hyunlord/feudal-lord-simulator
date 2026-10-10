@@ -52,8 +52,10 @@ export function stewardshipOf(state: Pick<GameState, "stewardship">): Stewardshi
 
 function revokeAuditPolicy(stewardship: StewardshipState, records: readonly StewardRecord[]): StewardshipState {
   const keys = records.filter(record => record.auditTolerance !== undefined).map(auditTolerancePolicyKey);
-  if (keys.length === 0) return stewardship;
-  return { ...stewardship, standing: { ...stewardship.standing, ...Object.fromEntries(keys.map(key => [key, "lord" as const])) } };
+  const audits = stewardship.audits.map(audit => audit.status === "pending" && records.some(record => record.personId === audit.stewardId
+    && record.estateId === audit.estateId) ? { ...audit, superseded: true as const } : audit);
+  return { ...stewardship, audits,
+    ...(keys.length === 0 ? {} : { standing: { ...stewardship.standing, ...Object.fromEntries(keys.map(key => [key, "lord" as const])) } }) };
 }
 
 function withStewardship(state: GameState, stewardship: StewardshipState): GameState {

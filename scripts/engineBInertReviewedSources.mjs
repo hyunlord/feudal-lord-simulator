@@ -30,7 +30,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/stewardship.ts",
-    "sha256": "a349b28c46488eb1363da369e4742fcf3330a2218ec422f102ea46a1b105f173"
+    "sha256": "bbf203d56023b6fdc254216ba8032e7e5d28646f36a722f892cfc189420b158a"
   },
   {
     "path": "src/engine/history.ts",
@@ -50,7 +50,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/stewardshipConsequences.ts",
-    "sha256": "32c22ddfe991686278bba028faaa6c59e3ba67711b92a076d91973bd36cd92d5"
+    "sha256": "d95e22142e8a16dd0923e0ac30a75c37dec3f924135d3036710497446a6d8a1b"
   },
   {
     "path": "src/content/stewardshipConsequencesConfig.ts",
@@ -78,6 +78,6 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/answerEffectCapture.ts",
-    "sha256": "af8059aaa6cd5987dff9d9447db5e5b6bd089852dfa19e58647545801981a13c"
+    "sha256": "fe5b14063dca6ad59465c9600e11428d19fe546034729c61f05c27c4babfce4a"
   }
 ];

@@ -107,6 +107,16 @@ try {
       for (const selector of ['[data-ledger-tab="lord"]', '[data-lord-open]', '[data-lord-nav="petitions"]']) {
         await page.locator(`${selector}:visible`).first().click();
       }
+      row.policyLayout = await page.locator('.lord-screen').evaluate(panel => {
+        const content = panel.querySelector('.lord-screen-content');
+        const nav = panel.querySelector('.lord-screen-nav');
+        const box = element => { const rect = element.getBoundingClientRect(); return { x: rect.x, y: rect.y, width: rect.width, height: rect.height,
+          clientWidth: element.clientWidth, scrollWidth: element.scrollWidth, overflowY: getComputedStyle(element).overflowY }; };
+        return { panel: box(panel), content: box(content), nav: box(nav), viewport: innerWidth };
+      });
+      assert.ok(row.policyLayout.content.clientWidth > 0, 'Policy content collapsed behind fixed navigation');
+      assert.ok(row.policyLayout.panel.x >= 0 && row.policyLayout.panel.x + row.policyLayout.panel.width <= row.policyLayout.viewport,
+        'Lord panel escaped viewport');
       const policy = page.locator(`.lord-standing-kind[data-kind="${fixture.key}"]`);
       await policy.locator('.lord-standing-open').click();
       const expected = standingPolicyScreen(fixture.state)?.families.flatMap(family => family.kinds).find(item => item.kind === fixture.key);
