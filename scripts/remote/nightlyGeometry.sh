@@ -68,12 +68,19 @@ wait_run() { # prints the exit code, or "no-slot" / "too-long"
 run=$(launch "nightly-GEOMETRY-$(date +%m%d)" "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && bash scripts/remote/tasks.sh ui-geometry")
 log "nightly geometry ${head:0:8}: $run started"
 rc=$(wait_run "$run")
-# The audit exits 1 on any failure, even one in the baseline: the night is done when it left a full result with its
-# measured inputs (the gate judges the failures against the baseline when it is committed). Else it is tried again.
+# The audit exits 1 on any failure, even one in the baseline. The night is done when it left a valid result: the
+# shared summary of this run — a full audit, clean tree, every condition opened, no framed root outside the registry —
+# and its measured inputs (failures against the baseline are the gate's to judge when it is committed; a new one is
+# listed in the status for the next day). Else the head is tried again the next night.
 out=$BASE/$run/docs/verification/uiaudit1/geometry/$run
-if [ -f "$out/geometry.json" ] && [ -f "$out/inputs.json" ]; then state=OK; echo "$head" > "$ST/last-audited"
+valid=$(cd "$BASE/$run" 2> /dev/null && node -e '
+  const fs = require("fs"); const [run, out] = process.argv.slice(1);
+  try { const s = JSON.parse(fs.readFileSync("docs/verification/uiaudit1/geometry.json", "utf8"));
+    const ok = s.run === run && s.full === true && s.dirty === false && s.unopened === 0 && s.unregisteredFramed === 0 && Array.isArray(s.failureKeys) && fs.existsSync(`${out}/inputs.json`);
+    console.log(ok ? `valid ${s.failureKeys.length} failure key(s)` : "invalid"); } catch { console.log("invalid"); }' "$run" "$out" 2> /dev/null)
+if [ "${valid%% *}" = valid ]; then state=OK; echo "$head" > "$ST/last-audited"
 elif [ "$rc" = no-slot ]; then state=SKIPPED; else state=FAILED; fi
 summary=$(grep -m1 'measured' "$BASE/$run/.remote/summary.txt" 2> /dev/null | cut -c1-200)
-printf '%s %s %s %s | audit exit %s | %s\n' "$state" "${head:0:8}" "$(date '+%F %T')" "$run" "$rc" "${summary:-no summary}" > "$ST/status"
+printf '%s %s %s %s | audit exit %s, %s | %s\n' "$state" "${head:0:8}" "$(date '+%F %T')" "$run" "$rc" "${valid:-invalid}" "${summary:-no summary}" > "$ST/status"
 log "$(cat "$ST/status")"
 [ "$state" != FAILED ]   # a skipped night is no failure of the unit

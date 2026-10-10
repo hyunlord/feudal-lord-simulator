@@ -8,8 +8,9 @@ import { checkUiGeometry, formatUiGeometryResult } from "../scripts/checks/uiGeo
 // RR26 covered (user ruling 2026-10-10, per file content approved the same day): a result stays good at <head> when
 // every file changed since it that this push's commits do not change comes as the trunk has it at <base>, and the
 // trunk's own pushes audited exactly that content — a valid UI-Geometry-Run report or new full shared result pushed
-// with it, which saw every change of the file — or carried it in through a recorded UI-Geometry-Override on their head.
-// Each case is made to break the rule on purpose (RR22); the stories of two independent reviews are among them. The
+// with it, which saw every change of the file. An override never covers (user ruling 2026-10-10, amending the first
+// ruling's "covered but recorded"): it is listed. Each case is made to break the rule on purpose (RR22); the stories of
+// three independent reviews are among them. The
 // story (as on 2026-10-10): a push audits its own change on its branch while the trunk takes other pushes; it then
 // merges the trunk and the gate runs on trunk..head.
 const SHARED = "docs/verification/uiaudit1/geometry.json";
@@ -105,17 +106,6 @@ test("a branch commit not on the trunk, merged without a trailer after the audit
   } finally { s.done(); }
 });
 
-test("a trunk commit pushed through the override is covered, and the output records its reason — the commit itself, or a merge of the trunk pushed fast-forward", () => {
-  for (const how of ["merge", "ff"] as const) {
-    const s = story();
-    try {
-      const pushed = s.push("hurried", "src/ui/Card.tsx", "override", how);
-      const result = s.check();
-      assert.equal(result.ok, true, `${how}: ${result.reasons.join("\n")}`);
-      assert.match(formatUiGeometryResult(result), new RegExp(`${short(pushed.evidence)} \\(override, recorded: hurried pushed through the override, a reason; 1 file\\(s\\)\\)`));
-    } finally { s.done(); }
-  }
-});
 
 test("a trunk commit with no evidence of its own is not covered (the change stays a reason)", () => {
   const s = story();
@@ -280,21 +270,6 @@ test("a deleted UI file is not covered by a run whose commit is not there (an ab
   } finally { s.done(); }
 });
 
-test("a push whose own run failed and went through the override: covered only as an override, and the output says so", () => {
-  const s = story();
-  try {
-    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "hurried"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("hurried: the card");
-    s.rowRun("hurried-rows", at, ["overflow|div.card"]);
-    s.git("checkout", "-q", "trunk"); s.write("docs/moves.md", "x\n"); s.commit("the trunk moves");
-    s.git("checkout", "-q", "hurried"); s.git("merge", "-q", "--no-ff", "-m", `${TRUNK_MERGE("hurried")}${OVERRIDE("hurried")}`, "trunk");
-    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--ff-only", "hurried");
-    const result = s.check();
-    assert.equal(result.ok, true, result.reasons.join("\n"));
-    const text = formatUiGeometryResult(result);
-    assert.match(text, /\(override, recorded: hurried pushed through the override, a reason; 1 file\(s\)\)/);
-    assert.doesNotMatch(text, /UI-Geometry-Run hurried-rows/, "the failing run is no measurement");
-  } finally { s.done(); }
-});
 
 test("a measured cover also lists the override in the message of the commit carrying it", () => {
   const s = story();
@@ -369,5 +344,158 @@ test("an old full result is no new evidence: an unaudited revert to what it meas
     s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "later"); s.write("scripts/tool.mjs", "// later's script\n"); const at = s.commit("later: the script"); s.rowRun("later-rows", at);
     s.git("checkout", "-q", "trunk"); s.write("src/ui/Panel.tsx", a); s.commit("trunk: Panel back to A, no evidence");
     refused(s.checkOn("later"), /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
+
+test("a trunk commit pushed through the override is recorded, not covered (amended ruling) — in every shape a push takes", () => {
+  const listed = (text: string, commit: string, name: string) => assert.match(text, new RegExp(`overrides the trunk took since, recorded — an override covers nothing: [^\\n]*${short(commit)} \\(${name} pushed through the override, a reason\\)`));
+  for (const how of ["merge", "ff"] as const) {
+    // The commit itself as the head (ff), or a merge of the trunk into the branch pushed fast-forward (review 2, R5).
+    const s = story();
+    try {
+      const pushed = s.push("hurried", "src/ui/Card.tsx", "override", how);
+      const result = s.check();
+      refused(result, /src\/ui\/Card\.tsx — audit again/);
+      listed(formatUiGeometryResult(result), pushed.evidence, "hurried");
+    } finally { s.done(); }
+  }
+  const c = story();
+  try {
+    // Review 3, C: a fast-forward of several commits, the override on the head.
+    c.git("checkout", "-q", "trunk"); c.git("checkout", "-qb", "two"); c.write("src/ui/Card.tsx", "// k1\n"); c.commit("two: k1"); c.write("src/ui/Other.tsx", "// k2\n");
+    const head = c.commit(`two: k2${OVERRIDE("two")}`); c.git("checkout", "-q", "trunk"); c.git("merge", "-q", "--ff-only", "two");
+    const result = c.check();
+    refused(result, /src\/ui\/Card\.tsx/); listed(formatUiGeometryResult(result), head, "two");
+  } finally { c.done(); }
+  const b = story();
+  try {
+    // Review 3, B: a trunk-side --no-ff merge carrying the override.
+    b.git("checkout", "-q", "trunk"); b.git("checkout", "-qb", "feat"); b.write("src/ui/Card.tsx", "// feat\n"); b.commit("feat: card");
+    b.git("checkout", "-q", "trunk"); b.git("merge", "-q", "--no-ff", "-m", `Merge branch 'feat' into codex/phase15-organic-ground${OVERRIDE("feat")}`, "feat");
+    refused(b.check(), /src\/ui\/Card\.tsx/);
+  } finally { b.done(); }
+  const a = story();
+  try {
+    // Review 3, A3: a trunk-side merge forging the merge-of-trunk message, its override over an unaudited trunk commit.
+    a.git("checkout", "-q", "trunk"); a.write("src/ui/Other.tsx", "// unaudited\n"); a.commit("u: other, no evidence");
+    a.git("checkout", "-qb", "fb", "trunk~1"); a.write("docs/fb.md", "x\n"); a.commit("fb: docs");
+    a.git("checkout", "-q", "trunk"); a.git("merge", "-q", "--no-ff", "-m", `${TRUNK_MERGE("fb")}${OVERRIDE("fb")}`, "fb");
+    refused(a.check(), /src\/ui\/Other\.tsx/);
+  } finally { a.done(); }
+});
+
+test("a push whose own run failed and went through the override: neither covers — the failing run is no measurement, the override is listed", () => {
+  const s = story();
+  try {
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "hurried"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("hurried: the card");
+    s.rowRun("hurried-rows", at, ["overflow|div.card"]);
+    s.git("checkout", "-q", "trunk"); s.write("docs/moves.md", "x\n"); s.commit("the trunk moves");
+    s.git("checkout", "-q", "hurried"); s.git("merge", "-q", "--no-ff", "-m", `${TRUNK_MERGE("hurried")}${OVERRIDE("hurried")}`, "trunk"); const head = s.git("rev-parse", "HEAD");
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--ff-only", "hurried");
+    const result = s.check();
+    refused(result, /src\/ui\/Card\.tsx — audit again/);
+    const text = formatUiGeometryResult(result);
+    assert.doesNotMatch(text, /covered by trunk pushes/);
+    assert.match(text, new RegExp(`an override covers nothing: [^\\n]*${short(head)} \\(hurried pushed through the override, a reason\\)`));
+  } finally { s.done(); }
+});
+
+/** Review 3, D: the trunk takes a file's content back from a commit the result's branch held but no audit measured. */
+function storyD() {
+  const s = story({ own: "rows" });
+  s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "p2");
+  s.write("src/ui/Panel.tsx", "// D, never measured\n"); const q0 = s.commit("q0: Panel D");
+  s.write("src/ui/Panel.tsx", "// C\n"); s.write("scripts/tool.mjs", "// p2's script\n"); const q1 = s.commit("q1: Panel C, the script");
+  s.full("p2-full", q1); s.commit("p2: its full audit");
+  s.git("checkout", "-q", "trunk"); s.write("src/ui/Panel.tsx", "// B\n"); const t1 = s.commit("t1: Panel B"); s.rowRun("t1-rows", t1);
+  s.git("checkout", "-qb", "take", q0); s.git("checkout", "-q", "trunk");
+  try { s.git("merge", "-q", "--no-ff", "--no-edit", "take"); } catch { /* a conflict: resolved below */ }
+  s.write("src/ui/Panel.tsx", "// D, never measured\n"); s.git("add", "-A"); s.git("commit", "-qm", "merge q0, Panel resolved to q0's D", "--allow-empty");
+  s.git("checkout", "-q", "p2"); const base = s.git("rev-parse", "trunk");
+  try { s.git("merge", "-q", "--no-edit", "-X", "theirs", "trunk"); } catch { /* resolved below */ }
+  s.write("src/ui/Panel.tsx", "// D, never measured\n"); s.git("add", "-A"); s.git("commit", "-qm", "p2: the trunk merged", "--allow-empty");
+  return { s, base, q0 };
+}
+
+test("content brought back from a commit no audit measured is not covered, whatever measured the file before — from the top or a subfolder (review 3, D)", () => {
+  for (const cwd of ["", "src"]) {
+    const { s, base } = storyD();
+    try {
+      refused(checkUiGeometry({ base, head: s.git("rev-parse", "HEAD"), cwd: join(s.dir, cwd), mode: "enforce", env: {} }), /src\/ui\/Panel\.tsx/);
+    } finally { s.done(); }
+  }
+});
+
+test("a file no trunk commit changed since the result (its content taken back by a merge) is not covered, though a later report measured that old commit", () => {
+  const { s, base: _ } = storyD();
+  try {
+    // A trunk commit adds a report of a run measured at q0 (the old D): its content matches, but no change was seen.
+    s.git("checkout", "-q", "trunk"); s.write(`${RUNS}/q0-rows/geometry.json`, JSON.stringify(rowsReport("q0-rows", storyQ0(s)))); s.commit("a report of q0\n\nUI-Geometry-Run: q0-rows");
+    s.git("checkout", "-q", "p2"); const base = s.git("rev-parse", "trunk"); s.git("merge", "-q", "--no-edit", "trunk");
+    refused(checkUiGeometry({ base, head: s.git("rev-parse", "HEAD"), cwd: s.dir, mode: "enforce", env: {} }), /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
+const storyQ0 = (s: ReturnType<typeof story>) => s.git("log", "--format=%H", "-1", "--grep=^q0:", "p2");
+
+test("evidence counts as it was when pushed: an old failing run named again, or an old failing full result restored, after the baseline grew is no evidence", () => {
+  const s = story();
+  try {
+    // A push whose run failed (its failure not in the baseline then) went in through the override.
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "f"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("f: the card");
+    s.rowRun("f-rows", at, ["overflow|div.card"]); s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "-m", `Merge f${OVERRIDE("f")}`, "f");
+    // Later the failure enters the baseline, and a docs push names the old run again.
+    s.write("docs/verification/uiaudit1/geometry-baseline.json", JSON.stringify({ entries: [`modal.panel|${CONDITIONS[0]}|overflow|div.card`, `modal.panel|${CONDITIONS[1]}|overflow|div.card`] })); s.commit("baseline: the card's overflow, with its reason");
+    s.write("docs/n.md", "x\n"); s.commit("docs\n\nUI-Geometry-Run: f-rows");
+    refused(s.check(), /src\/ui\/Card\.tsx/);
+  } finally { s.done(); }
+  const t = story({ own: "rows" });
+  try {
+    const key = `modal.other|${CONDITIONS[0]}|overflow|div.card`;   // another row than the push's own changed-rows run
+    t.git("checkout", "-q", "trunk"); t.git("checkout", "-qb", "f"); t.write("src/ui/Card.tsx", "// changed\n"); const at = t.commit("f: the card");
+    t.full("f-full", at, { failureKeys: [key] }); const fullAt = t.commit("f: a failing full audit"); t.git("checkout", "-q", "trunk"); t.git("merge", "-q", "--ff-only", "f");
+    const failing = t.git("show", `${fullAt}:${SHARED}`);
+    t.full("other-full", t.c0); t.commit("another shared result (of an older tree: no evidence for the card)");
+    t.write("docs/verification/uiaudit1/geometry-baseline.json", JSON.stringify({ entries: [key] })); t.commit("baseline: the overflow");
+    t.write(SHARED, failing); t.commit("docs: the failing full result restored");
+    refused(t.check(), /src\/ui\/Card\.tsx/);
+  } finally { t.done(); }
+});
+
+test("paths outside ASCII are read as they are stored (review 3, F)", () => {
+  const s = story();
+  try {
+    s.push("render", "src/ui/패널.tsx", "run");
+    const result = s.check();
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(result), /UI-Geometry-Run render-rows; 1 file\(s\)/);
+  } finally { s.done(); }
+});
+
+test("a run measured on a side branch, carried into the trunk later, covers what it measured (review 2, R9); an evil merge is a change it did not see", () => {
+  const s = story();
+  try {
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "side"); s.write("src/ui/Panel.tsx", "// P1\n"); const s1 = s.commit("side: panel");
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-edit", "side");
+    s.git("checkout", "-qb", "q"); s.write(`${RUNS}/side-rows/geometry.json`, JSON.stringify(rowsReport("side-rows", s1))); s.commit("q: side's run\n\nUI-Geometry-Run: side-rows");
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-edit", "q");
+    assert.equal(s.check().ok, true, s.check().reasons.join("\n"));
+  } finally { s.done(); }
+  const t = story();
+  try {
+    // Review 1, E5: a run measured a branch; the trunk's merge of it changes Panel itself (an evil merge).
+    t.git("checkout", "-q", "trunk"); t.git("checkout", "-qb", "side"); t.write("src/ui/Panel.tsx", "// P1\n"); const s1 = t.commit("side: panel"); t.rowRun("side-rows", s1);
+    t.git("checkout", "-q", "trunk"); t.git("merge", "-q", "--no-ff", "--no-commit", "side"); t.write("src/ui/Panel.tsx", "// P1, and more in the merge\n"); t.git("add", "-A"); t.git("commit", "-qm", "merge side, evil");
+    refused(t.check(), /src\/ui\/Panel\.tsx/);
+  } finally { t.done(); }
+});
+
+test("an accepted changed-rows run lists the overrides the trunk took since it, though they cover nothing", () => {
+  const s = story({ own: "rows" });
+  try {
+    s.git("checkout", "-q", "trunk"); s.write("docs/notes.md", "x\n"); const docs = s.commit(`docs: a note${OVERRIDE("docs")}`);
+    s.push("render", "src/ui/Panel.tsx", "run");
+    const result = s.check();
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(result), new RegExp(`run pushing-rows: overrides the trunk took since, recorded — an override covers nothing: [^\\n]*${short(docs)} \\(docs pushed through the override, a reason\\)`));
   } finally { s.done(); }
 });

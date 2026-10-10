@@ -36,7 +36,7 @@ import { createHash } from 'node:crypto';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import { hostname } from 'node:os';
 import { join, posix } from 'node:path';
-import { git, isMain, resolveRange, TRUNK } from './gitRange.mjs';
+import { git, isMain, resolveRange } from './gitRange.mjs';
 
 export const UI_GEOMETRY_SUMMARY = 'docs/verification/uiaudit1/geometry.json';
 export const UI_GEOMETRY_BASELINE = 'docs/verification/uiaudit1/geometry-baseline.json';
@@ -255,19 +255,17 @@ const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length}
  * judged: a file they change stays a reason. A file they do not change comes as the trunk has it at `base`. Its
  * changers are the commits in `base ^from` (every commit the trunk took since the result, whatever the merge shape —
  * sessions merge the trunk into their branch and push fast-forward, so earlier pushes sit on second parents) that
- * changed it (a merge only where it differs from every parent). The file is covered (per file content, approved
- * 2026-10-10) by:
- *  - a measurement pushed with its own report: a commit of `base ^from` that carries a UI-Geometry-Run trailer and adds
- *    or changes that run's report, or adds a new full shared result with its report — valid as the gate takes it (its
- *    measured commit an ancestor of that commit, clean, every condition, all opened, no framed root outside the
- *    registry, no failure outside that commit's baseline and exceptions) — whose measured tree has the file exactly as
- *    at `base` and holds every changer of it (a revert to old content after it, or a change it never saw, is not
- *    covered); or
- *  - a UI-Geometry-Override in the own message of a pushed head that brought every changer itself: a commit alone, or a
- *    merge of the trunk into a branch (git's message "Merge … branch '[origin/]<trunk>'") with its branch side not on
- *    the trunk — covered, and listed. Another merge's override covers only what the merge itself changed.
- * A measured cover also lists the overrides on the commit carrying it. Without a base, or when the history cannot be
- * read (an unrelated or shallow `from`), nothing is covered. What this gives up: a later push no longer re-measures an
+ * changed it (a merge only where it differs from every parent; none at all: not covered). The file is covered (per
+ * file content, approved 2026-10-10) by a measurement pushed with its own report: a commit of `base ^from` that carries
+ * a UI-Geometry-Run trailer and adds or changes that run's report, or adds a new full shared result with its report —
+ * valid as the gate takes it at that commit (its measured commit an ancestor of it, clean, every condition, all opened,
+ * no framed root outside the registry, no failure outside that commit's baseline and exceptions) — whose measured tree
+ * has the file exactly as at `base` and holds every changer of it (a revert to old content after it, a change it never
+ * saw, content brought back from a commit the trunk never measured: not covered). An override never covers (user
+ * ruling 2026-10-10, amending the first ruling's "covered but recorded"): it is an exception and must not spread to the
+ * next push as evidence; the overrides the trunk took since the result are listed (`overrides`), and a measured cover
+ * names those on the commit carrying it. Without a base, or when the history cannot be read (an unrelated or shallow
+ * `from`), nothing is covered. What this gives up: a later push no longer re-measures an
  * earlier push's rows by chance, catching their cross effects — the nightly full audit does.
  */
 export function coveredChanges(from, base, head, cwd = process.cwd(), cache = new Map()) {
@@ -289,9 +287,11 @@ export function coveredChanges(from, base, head, cwd = process.cwd(), cache = ne
         commits.set(sha.trim(), { sha: sha.trim(), parents: parents.split(' ').filter(Boolean), subject, runs: runs.split('\x1e').map(item => item.trim()).filter(Boolean),
           overrides: overrides.split('\x1e').map(item => item.replace(/\s+/g, ' ').trim()).filter(Boolean), files: new Set() });
       }
+      // -z: paths exactly as stored (no quoting of non-ASCII names). Each commit: \x01<sha>\0, then \n<path>\0 …
       let current = null;
-      for (const lineText of run(['log', '--cc', '--no-renames', '--name-only', '--format=%x01%H', base, `^${from}`]).split('\n')) {
-        if (lineText.startsWith('\x01')) current = commits.get(lineText.slice(1).trim()) ?? null; else if (lineText !== '' && current !== null) current.files.add(lineText);
+      for (const token of run(['log', '-z', '--cc', '--no-renames', '--name-only', '--format=%x01%H', base, `^${from}`]).split('\0')) {
+        if (token.startsWith('\x01')) current = commits.get(token.slice(1).trim()) ?? null;
+        else { const path = token.replace(/^\n/, ''); if (path !== '' && current !== null) current.files.add(path); }
       }
       return commits;
     });
@@ -325,10 +325,6 @@ export function coveredChanges(from, base, head, cwd = process.cwd(), cache = ne
     }
     return out;
   });
-  const trunkMerge = new RegExp(`^Merge (remote-tracking )?branch '(origin/)?${TRUNK.replace(/[/.]/g, '\\$&')}'`);
-  // What a pushed head with an override brought itself: a commit alone; a merge of the trunk, its branch side not on the trunk.
-  const own = commit => memo(`cover-own:${commit.sha}`, () => commit.parents.length === 2 && trunkMerge.test(commit.subject)
-    ? new Set([commit.sha, ...run(['rev-list', commit.parents[0], `^${commit.parents[1]}`]).split('\n').filter(Boolean)]) : new Set([commit.sha]));
   const coverOf = path => {
     const changers = [...history.values()].filter(commit => commit.files.has(path)).map(commit => commit.sha);
     if (changers.length === 0) return null;
@@ -336,9 +332,6 @@ export function coveredChanges(from, base, head, cwd = process.cwd(), cache = ne
     for (const item of measurements) if (blob(item.at, path) === want && changers.every(changer => changer === item.at || since(item.at).has(changer))) {
       const recorded = history.get(item.commit).overrides;
       return { commit: item.commit, what: `${item.what}${recorded.length > 0 ? `; override, recorded: ${recorded.join(' | ')}` : ''}` };
-    }
-    for (const commit of history.values()) if (commit.overrides.length > 0 && blob(commit.sha, path) === want && changers.every(changer => own(commit).has(changer))) {
-      return { commit: commit.sha, what: `override, recorded: ${commit.overrides.join(' | ')}` };
     }
     return null;
   };
@@ -349,11 +342,14 @@ export function coveredChanges(from, base, head, cwd = process.cwd(), cache = ne
     const key = `${cover.commit} ${cover.what}`; covers.set(key, { ...cover, files: (covers.get(key)?.files ?? 0) + 1 });
   }
   const closure = cache.get(`closure:${head}`) ?? null;
-  return { changed: changes.changed, unsafe: left, reaching: closure === null ? changes.reaching : left.filter(path => closure.has(path)).length, covered: [...covers.values()] };
+  const overrides = [...history.values()].filter(commit => commit.overrides.length > 0).map(commit => ({ commit: commit.sha, reasons: commit.overrides }));
+  return { changed: changes.changed, unsafe: left, reaching: closure === null ? changes.reaching : left.filter(path => closure.has(path)).length, covered: [...covers.values()], overrides };
 }
 
 /** The line naming the trunk pushes that covered changes since a result (RR26 covered). */
-const coveredLine = (what, covered) => covered.length === 0 ? [] : [`    ${what}: changes since covered by trunk pushes — ${covered.map(item => `${item.commit.slice(0, 8)} (${item.what}; ${item.files} file(s))`).join(', ')}`];
+const coveredLine = (what, covered, overrides = []) => [
+  ...(covered.length === 0 ? [] : [`    ${what}: changes since covered by trunk pushes — ${covered.map(item => `${item.commit.slice(0, 8)} (${item.what}; ${item.files} file(s))`).join(', ')}`]),
+  ...(overrides.length === 0 ? [] : [`    ${what}: overrides the trunk took since, recorded — an override covers nothing: ${overrides.map(item => `${item.commit.slice(0, 8)} (${item.reasons.join(' | ')})`).join(', ')}`])];
 
 /** Whether `commit` is a commit here and an ancestor of `head`: 'ok' | 'missing' | 'not-ancestor'. */
 export function measuredAt(commit, head, cwd) {
@@ -466,7 +462,7 @@ export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd
   if (comparison.fixed.length > 0) reasons.push(`run ${run}: ${comparison.fixed.length} baseline entr(ies) of its rows fixed, drop them (npm run ui-geometry:baseline):`, ...sample(comparison.fixed));
   const moved = changes === null ? null : changes.changed;
   const cells = [...measured.values()].reduce((sum, set) => sum + set.size, 0);
-  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved, covered: changes?.covered ?? [] };
+  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved, covered: changes?.covered ?? [], overrides: changes?.overrides ?? [] };
 }
 
 /** The UI-Geometry-Override trailers of base..head (the head alone without a base): [{ commit, reason }]. */
@@ -507,13 +503,13 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   const sharedFull = summary !== null && summary.full === true;
   if (!unchanged && summary === null) reasons.push(`no ${UI_GEOMETRY_SUMMARY} at ${head.slice(0, 8)}`);
   else if (!unchanged && !sharedFull) reasons.push(`the shared result (run ${summary.run ?? '?'}, ${summary.rows ?? '?'} row(s)) is not a full audit: a changed-rows run counts only through its own report and a UI-Geometry-Run trailer (RR26)`);
-  let sharedStale = false; let sharedCovered = [];
+  let sharedStale = false; let sharedCovered = []; let sharedOverrides = [];
   if (!unchanged && sharedFull) {
     const commit = /^[0-9a-f]{40}$/.test(String(summary.commit ?? '')) ? summary.commit : '';
     const at = commit === '' ? 'missing' : measuredAt(commit, head, cwd);
     if (at !== 'ok') { sharedStale = true; reasons.push(`the shared result (run ${summary.run ?? '?'}): its measured commit ${commit.slice(0, 8) || '(none)'} is ${at === 'missing' ? 'not here' : 'not in the pushed history'}: refresh it — npm run remote:ui-geometry`); }
     else {
-      const changes = coveredChanges(commit, base, head, cwd, cache); sharedCovered = changes.covered;
+      const changes = coveredChanges(commit, base, head, cwd, cache); sharedCovered = changes.covered; sharedOverrides = changes.overrides ?? [];
       if (changes.unsafe.length > 0) { sharedStale = true; reasons.push(`${unsafeLine(`the shared result (run ${summary.run ?? '?'})`, commit, changes)}: refresh it — npm run remote:ui-geometry, commit docs/verification/uiaudit1/geometry.json (and npm run ui-geometry:baseline if something was fixed)`); }
     }
   }
@@ -578,7 +574,7 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     else override = { reason };
   }
   const pass = ok || (mode === 'warn' && env.FLS_UI_GEOMETRY_GATE !== 'warn') || override?.reason !== undefined;
-  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns, sharedCovered,
+  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns, sharedCovered, sharedOverrides,
     // The retries of a shared result this range brings (a new audit): its rate and the rows it retried again.
     retries: summary !== null && (base === null || readJson(base, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run) ? retryNotes(summary, head, cwd) : null };
 }
@@ -614,11 +610,11 @@ export function formatUiGeometryResult(result) {
   if (result.ok && result.unchanged) return [`ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`, ...retryLines(result.retries)].join('\n');
   if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
     ? `  run ${entry.run}: superseded — ${entry.rows.length > 0 ? `a newer named run measured its rows (${entry.rows.join(', ')}) again` : 'it has no report or no measured row, and a newer named run holds'}`
-    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`), ...result.rowRuns.flatMap(entry => coveredLine(`run ${entry.run}`, entry.covered ?? [])), ...retryLines(result.retries)].join('\n');
-  if (result.ok) return [`ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`, ...coveredLine(`the shared result (run ${result.summary.run})`, result.sharedCovered ?? []), ...retryLines(result.retries)].join('\n');
+    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`), ...result.rowRuns.flatMap(entry => coveredLine(`run ${entry.run}`, entry.covered ?? [], entry.overrides ?? [])), ...retryLines(result.retries)].join('\n');
+  if (result.ok) return [`ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`, ...coveredLine(`the shared result (run ${result.summary.run})`, result.sharedCovered ?? [], result.sharedOverrides ?? []), ...retryLines(result.retries)].join('\n');
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);
-  return [...lines, ...(result.summary ? coveredLine(`the shared result (run ${result.summary.run})`, result.sharedCovered ?? []) : []), ...retryLines(result.retries)].join('\n');
+  return [...lines, ...(result.summary ? coveredLine(`the shared result (run ${result.summary.run})`, result.sharedCovered ?? [], result.sharedOverrides ?? []) : []), ...retryLines(result.retries)].join('\n');
 }
 
 if (isMain(import.meta.url)) {
