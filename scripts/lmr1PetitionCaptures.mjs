@@ -130,24 +130,61 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
 }
 // 3. (DEC-CARD-2: the steward's precedent card is gone — DEC-TRACE DTR-1; his season is the season card's "청지기가 처리한 일".)
 // 4. The town's request.
+/**
+ * The request's card never opens by itself (useStoryPresentation opens a home petition's, an offer's, not the request's):
+ * it is reached as a player does and as the geometry row modal.receipt.request does (the audit's `story` step) — its
+ * chip, the chip's card's [결정하기], the card. Only three chips are shown and the newest win: the lord's moments after
+ * it in the list push the request's chip out, so a told card (no [결정하기]) is opened and closed, which puts it away
+ * and lets the request's chip back in; another decision's chip is opened and folded again, another card put off.
+ */
+const reachRequest = async (page, selector, timeout = 60_000) => {
+  const visible = async target => await page.locator(`${target} >> visible=true`).count() > 0;
+  const tried = [];
+  for (let waited = 0, turn = 0; waited < timeout; turn += 1) {
+    if (await visible(selector)) return { opened: true, tried };
+    const later = page.locator(`.story-modal:not(${selector}) .story-modal-later, .season-ledger-resume, .results-card-continue >> visible=true`);
+    if (await later.count() > 0) { await later.first().click(); await page.waitForTimeout(500); waited += 500; continue; }
+    const own = page.locator('.event-chip[data-story="lord_request"] >> visible=true');
+    const chips = page.locator('.event-chip >> visible=true');
+    const count = await chips.count();
+    if (count === 0) { await page.waitForTimeout(1_000); waited += 1_000; continue; }
+    const chip = await own.count() > 0 ? own.first() : chips.nth(turn % count);
+    const story = await chip.getAttribute('data-story');
+    tried.push(story);
+    if (await chip.getAttribute('aria-expanded') !== 'true') await chip.click();
+    await page.waitForTimeout(600); waited += 600;
+    const opened = page.locator(`.event-card[data-story="${story}"]`).first();
+    if (story === 'lord_request') { await opened.locator('.event-card-decide').click({ timeout: 10_000 }); await page.waitForTimeout(900); waited += 900; continue; }
+    // A told card is closed (put away: its slot frees); another decision's card is folded by its chip again.
+    if (await opened.locator('.event-card-decide').count() === 0) await opened.locator('.event-card-actions > button:last-child').click({ timeout: 5_000 }).catch(() => undefined);
+    else await chip.click();
+    await page.waitForTimeout(500); waited += 500;
+  }
+  return { opened: await visible(selector), tried };
+};
 {
   const state = scene(flags.states, 'request');
-  // The request has no chip once put off (openScene's Escape on a slow load would put it off for good): its story's
-  // delay outlasts the load (20 s, as the house card's rows do) and the card is waited for past it.
-  const { context, page } = await open(state, { query: '&story-delay=20000' });
-  const opened = await waitCard(page, '.lord-card[data-lord-request]', 45_000) || await fromChip(page, 'lord_request', '.lord-card[data-lord-request]');
-  const shown = await card(page);
+  const selector = '.lord-card[data-lord-request]';
+  // The receipt row's scene (src/ui/decisionCard/receiptSurfaces.ts): the story's delay outlasts the scene's own setup.
+  const { context, page } = await open(state);
+  const { opened, tried } = await reachRequest(page, selector);
+  const shown = opened ? await card(page) : null;
   const size = opened ? await shoot(page, 'request') : 0; bytes += size;
   const before = await proof(page);
-  // DEC-CARD: the request's grant is the heavy card's [data-choose]; RECEIPTS: its receipt closed with [확인].
-  if (opened) { await page.locator('.lord-card .petition-option[data-grant="true"], .lord-card [data-choose="grant"]').first().click(); await page.waitForTimeout(800); }
-  const receipt = opened && await closeAnswerReceipt(page);
+  // DEC-CARD: the request's grant is the heavy card's [data-choose]; RECEIPTS: the card turns over to the request's receipt,
+  // closed with its [확인].
+  if (opened) { await page.locator(`${selector} [data-choose="grant"]`).first().click(); await page.waitForTimeout(800); }
+  const family = opened ? await page.locator('.answer-receipt >> visible=true').first().getAttribute('data-answer-receipt', { timeout: 10_000 }).catch(() => null) : null;
+  const receipt = opened && family === 'lord_request' && await closeAnswerReceipt(page);
   const after = await proof(page);
-  rows.request = { opened, card: shown, bytes: size, receipt, before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
+  // The grant is the request's command: the proclamation moves the town's era on.
+  const commanded = before.requests.includes('proclaim_era') && after.era !== before.era;
+  rows.request = { opened, tried, card: shown, bytes: size, family, receipt, closed: (await page.locator(`${selector}, .answer-receipt[data-answer-receipt="lord_request"]`).count()) === 0, commanded,
+    before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
   if (!opened) await page.screenshot({ path: join(out, 'debug-request.jpg'), type: 'jpeg', quality: 30 });
-  console.log(`${opened && receipt ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}, receipt ${receipt}`
+  console.log(`${opened && receipt && rows.request.closed && commanded ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}, receipt ${family} ${receipt}, chips tried ${JSON.stringify(tried)}`
     + (opened ? '' : ` modals ${JSON.stringify(await page.locator('.story-modal, .season-ledger-card, [role=dialog]').evaluateAll(nodes => nodes.map(node => node.className)))}`
-      + ` chips ${JSON.stringify(await page.locator('.event-chip').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-story'))))}`));
+      + ` chips ${JSON.stringify(await page.locator('.event-chip').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-chip-id'))))}`));
   await context.close();
 }
 // 5. The guardian case.
@@ -172,7 +209,7 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
 }
 await browser.close();
 const ok = KINDS.every(kind => rows[`home-${kind}`].opened && rows[`home-${kind}`].pictureOk && rows[`home-${kind}`].answersOk)
-  && rows.request.opened && rows.guardian.opened && rows.campaign.lordChips + rows.campaign.lordCards === 0;
+  && rows.request.opened && rows.request.receipt && rows.request.closed && rows.request.commanded && rows.guardian.opened && rows.campaign.lordChips + rows.campaign.lordCards === 0;
 writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, rows }, null, 1) + '\n');
 console.log(JSON.stringify({ ok, bytes }));
 if (!ok) process.exitCode = 1;
