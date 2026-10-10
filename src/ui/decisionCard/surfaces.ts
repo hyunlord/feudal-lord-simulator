@@ -20,8 +20,8 @@ const CARD = {
  */
 const fromChip = (card: string, story: string) => [{ wait: card, timeout: 20_000, optional: true },
   // Another card that opened first (056's state: the market dues offer over the petition's chip) is put off, once; the
-  // wanted one may then open by itself.
-  { dismiss: [`.story-modal:not(${card}) .story-modal-later`] }, { wait: card, timeout: 4_000, optional: true },
+  // wanted one may then open by itself — 20 s: under a combined run it took over 4 s (render-GROWUI-final-geometry-223e9ec).
+  { dismiss: [`.story-modal:not(${card}) .story-modal-later`] }, { wait: card, timeout: 20_000, optional: true },
   { repeat: `.event-chip[data-story='${story}']`, until: `${card}, .event-card[data-story='${story}']`, max: 3 },
   { click: `.event-card[data-story='${story}'] .event-card-decide`, optional: true }, { wait: card, timeout: 30_000 }, { pause: 600 }] as const;
 const HOME = { ...CARD, root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"],

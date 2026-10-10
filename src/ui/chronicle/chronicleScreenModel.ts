@@ -588,9 +588,12 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const couple = plan !== undefined && [plan.groomId, plan.brideId].includes(person.id) ? (person.id === plan.groomId ? plan.brideId : plan.groomId) : null;
   const kinship = (member: Person) => member.id === parents.father?.id ? "father" as const : member.id === parents.mother?.id ? "mother" as const
     : member.fatherId === person.id || member.motherId === person.id ? "child" as const : member.id === couple ? "spouse" as const : null;
-  // A child whose parents the engine knows does not call the household's head and spouse "부모" when they are not.
+  // A child whose parents the engine knows does not call the household's head and spouse "부모" when they are not, nor
+  // the household's other children "형제자매" when they share no parent (PLAY-2 §4: a kinsman's son among the lord's).
   const known = parentIds.length > 0;
-  const asRole = (member: Person) => known && person.role === "child" && (member.role === "head" || member.role === "spouse") ? "kin" : person.role;
+  const sibling = (member: Person) => [member.fatherId, member.motherId].some(id => id !== undefined && parentIds.includes(id));
+  const asRole = (member: Person) => known && person.role === "child" && (member.role === "head" || member.role === "spouse" || (member.role === "child" && !sibling(member)))
+    ? "kin" : person.role;
   const relations = members.map(member => ({ id: member.id,
     line: CHRONICLE_SCREEN_COPY.relation(asRole(member), member.role, personDisplayName(member), kinship(member), person.householdId === MANOR_HOUSEHOLD),
     portraitId: drawnPortraitId(member, persons.portrait(state, member).portraitId) }));
