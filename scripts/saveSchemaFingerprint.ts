@@ -35,6 +35,7 @@ export const FINGERPRINT_FIXTURES = [
   "fixtures/determinism/seed1/final-state.json",
   "fixtures/saves/v56/eb-tlink-estate-relation.save.json",
   "fixtures/saves/v56/eb-tlink-estate-relation-consumed.save.json",
+  "fixtures/saves/v57/eb-inert-pressure.save.json",
 ] as const;
 /** Fixture states are advanced through current code so fields the engine writes appear in the shape. */
 const ADVANCE_TICKS = 300;

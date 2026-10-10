@@ -1,3 +1,4 @@
+import { INERT_REVIEWED_EFFECT_SOURCES } from './engineBInertReviewedSources.mjs';
 import { isDeepStrictEqual } from 'node:util';
 
 export const TLINK_REVIEWED_EFFECT_SOURCES = [
@@ -63,7 +64,7 @@ function scalarKind(row, path) {
   return null;
 }
 
-function reviewedScope(row) {
+function reviewedScope(row, inertProfile) {
   const paths = new Map(), bookkeeping = [], add = (path, kind) => paths.set(key(path), { path, kind });
   let complete = false, review = 'unsupported_command_or_target';
   if (row.command.type === 'answer_estate_petition') {
@@ -76,6 +77,7 @@ function reviewedScope(row) {
       && after.decidedBy === 'lord' && numeric(before.deadline) && before.deadline >= row.tick) {
       add(['treasuryCoin'], 'money'); add([...oversight, 'tenants'], 'relation'); add([...oversight, 'merchants'], 'relation');
       bookkeeping.push([...base, 'status'], [...base, 'decidedBy']);
+      if (inertProfile && before.kind === 'charter_request' && !row.command.grant) bookkeeping.push([...oversight, 'charterResistance']);
       complete = true; review = 'stewardship.ts:175-185,471-500; history.ts:1045-1110';
       if (before.kind === 'repair' && !row.command.grant) {
         const estate = pairedIndex(row, ['estates', 'estates'], 'id', before.estateId);
@@ -90,6 +92,7 @@ function reviewedScope(row) {
       && before.stewardId === after.stewardId && before.estateId === after.estateId
       && numeric(before.tick) && before.tick <= row.tick && numeric(before.deadline) && before.deadline >= row.tick) {
       add([...steward, 'loyalty'], 'relation'); bookkeeping.push([...base, 'status']);
+      if (inertProfile) bookkeeping.push([...base, 'unrecovered'], [...steward, 'toleratedErrors']);
       complete = true; review = 'stewardship.ts:543-552; history.ts:1110-1115';
     }
   }
@@ -99,12 +102,14 @@ function reviewedScope(row) {
 /** Consumes only authenticated loader rows. Unknown writes never establish an exhaustive zero-effect claim. */
 export function buildTlinkOutcomeEvidence(loaded) {
   const pins = loaded.provenance.sourceFiles;
-  const compatible = TLINK_REVIEWED_EFFECT_SOURCES.every(pin => pins.some(source => source.path === pin.path && source.sha256 === pin.sha256));
-  const sourceFiles = compatible ? TLINK_REVIEWED_EFFECT_SOURCES : pins.slice(0, 1);
+  const matches = profile => profile.every(pin => pins.some(source => source.path === pin.path && source.sha256 === pin.sha256));
+  const inertProfile = matches(INERT_REVIEWED_EFFECT_SOURCES);
+  const compatible = inertProfile || matches(TLINK_REVIEWED_EFFECT_SOURCES);
+  const sourceFiles = inertProfile ? INERT_REVIEWED_EFFECT_SOURCES : compatible ? TLINK_REVIEWED_EFFECT_SOURCES : pins.slice(0, 1);
   const rows = loaded.rows.map(row => {
     const identity = { seed: row.seed, historyId: row.historyId, ordinal: row.ordinal, tick: row.tick, source: row.source };
     if (!compatible) return { ...identity, proofComplete: false, effects: [], scope: { relevantPaths: [], sourceFiles }, unsupportedReason: 'reviewed_source_pin_mismatch' };
-    const scope = reviewedScope(row), effects = new Map(), unknown = [];
+    const scope = reviewedScope(row, inertProfile), effects = new Map(), unknown = [];
     for (const { path, kind } of scope.paths.values()) {
       const value = effect(row, path, kind);
       if (!value.beforePresent || !value.afterPresent || !numeric(value.before) || !numeric(value.after)) scope.complete = false;
@@ -129,6 +134,7 @@ export function buildTlinkOutcomeEvidence(loaded) {
     limitations: ['Only the authenticated loader establishes observed before/after bytes and original answer identity.',
       'Exhaustive zero-effect scopes cover off-map estate petitions and tolerated audits only. Other commands remain partial.',
       'Petition processing status/decidedBy and audit processing status are bookkeeping, never a gameplay effect.',
+      'EB-INERT pressure schedules and unrecovered accounting amounts alone never prove a visible effect: their actual future loss must have an exact linked receipt.',
       'A changed recognised scalar proves that actual value changed; unknown writes prevent an exhaustive inert classification.',
       'No future condition is inferred from an absent receipt, and no receipt or legacy score is changed.'] };
 }

@@ -1,3 +1,4 @@
+import { linkStewardshipLossReceipts } from './decisionTraceStewardshipLosses';
 import { traceEstateRelationCommand, linkEstateRelationSeason } from './decisionTraceEstateRelations';
 import { linkAnswerLedgerReceipts } from './decisionTraceAnswerLedger';
 import { linkRuleAnswerReceipts, linkImmediateAnswerReceipts } from './decisionTraceAnswerReceipts';
@@ -243,6 +244,19 @@ function traceCommandResult(before: GameState, after: GameState, action: Action)
   const root = joined?.trace?.decisions.find(decision => decision !== after.trace?.decisions.find(old => old.id === decision.id));
   const linked = linkMemories(before, rooted);
   const ownTargets = [...answer.targets];
+  if (action.type === "answer_estate_petition" || action.type === "answer_registry_offer") {
+    for (const petition of after.stewardship?.petitions ?? []) {
+      const prior = before.stewardship?.petitions.find(row => row.id === petition.id);
+      if (prior?.status === "open" && (petition.status === "granted" || petition.status === "refused") && petition.decidedBy === "lord")
+        ownTargets.push(`estate_petition:${petition.id}`);
+    }
+  }
+  if (action.type === "answer_audit" || action.type === "answer_registry_offer") {
+    for (const audit of after.stewardship?.audits ?? []) {
+      const prior = before.stewardship?.audits.find(row => row.id === audit.id);
+      if (prior?.status === "pending" && audit.status === "tolerated") ownTargets.push(`audit:tolerate:${audit.id}`);
+    }
+  }
   if (action.type === "answer_registry_offer") {
     const occurrence = after.registry?.occurrences.find(row => row.id === action.occurrenceId);
     const selected = occurrence?.source === "v4" ? v4Entry(occurrence.entryId)?.choices.find(choice => choice.id === action.choiceId) : undefined;
@@ -616,6 +630,7 @@ export function advanceTrace(before: GameState, after: GameState): GameState {
   next = linkAnswerFactionReceipts(before, next);
   next = linkRuleAnswerReceipts(before, next);
   next = linkEstateRelationSeason(before, next);
+  next = linkStewardshipLossReceipts(before, next);
   next = linkAnswerLedgerReceipts(before, next, (target, entry) => {
     const flow = flowOf(target);
     return flow !== null && inFlow(entry, flow) ? flow.key : null;

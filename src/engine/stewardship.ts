@@ -13,6 +13,8 @@ import {
   PUNISH_TENANTS, RATE_RELATION_PER_PERMILLE, REFUSE_RELATION, RENT_SHARE, SOUR_TENANTS, SOUR_YIELD_LOSS, SUMMARIES_KEPT, TOLERATE_LOYALTY,
   HOME_PETITION_KINDS,
 } from "../content/stewardshipConfig";
+import { charterPetitionSuppressed, charterRefusal, charterSeasonLoss, reportOnlyAudit, tolerateAuditErrors, toleratedSeasonLoss } from "./stewardshipConsequences";
+import { lordMode } from "./townAgency";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { DEFAULT_STANDING_SETTING, HOME_PETITION_CUSTOM, STANDING_SETTINGS, type StandingSetting } from "../content/stewardPolicyConfig";
 import { HOME_PETITION_ENTRIES, homeCycleKinds } from "../content/registry/homePetitions";
@@ -307,31 +309,37 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   // DEC-TRACE §1 (P-T3, P-D5): a delegated estate's steward answers by the lord's standing policy for the kind (as custom
   // has it: his own disposition's answer); it comes to the lord when the lord keeps the kind, when his exceptions ask,
   // or when the sum is large. LM9-3's precedent (the lord's earlier answer to the same kind) is gone.
-  const policy = standingSetting(state, kind);
-  const matched = oversight.mode === "direct" ? "direct" as const
-    : exceptionMatch(stewardship.rules, { amount, rights: def.rights === true, marriage: def.marriage === true })
-      ?? (policy === "lord" ? "direct" as const : amount >= largeSumLine(state) ? "amount" as const : null);
-  const rule = matched;
-  const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: estate.id, kind, group: def.group, amount: Math.round(base * size / 1000),
-    rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS + (overloaded ? OVERLOAD_PETITION_DELAY : 0),
-    status: "open", ...(rule === null ? {} : { escalated: rule, ...(overloaded ? { reachesLord: state.tick + OVERLOAD_PETITION_DELAY } : {}) }) };
-  let answered = petition;
-  if (rule === null) {
-    const grant = policy === "lenient" ? true : policy === "strict" ? false : STEWARD_ANSWERS[record.disposition][kind];
-    const effect = petitionEffect(petition, grant, record.disposition === "greedy");
-    incomeDelta += effect.income; tenants += effect.tenants; merchants += effect.merchants; keptExtra += effect.kept;
-    if (effect.neglect) next = neglectEstate(next, estate.id);
-    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", policy };
-  } else if (overloaded) {
-    // An overloaded lord's estate: the petition waits a season before it reaches him.
-    if (petition.group === "tenants") tenants -= OVERLOAD_WAIT_RELATION; else merchants -= OVERLOAD_WAIT_RELATION;
+  let answered: EstatePetition | undefined;
+  if (kind !== "charter_request" || !charterPetitionSuppressed(state, oversight)) {
+    const policy = standingSetting(state, kind);
+    const matched = oversight.mode === "direct" ? "direct" as const
+      : exceptionMatch(stewardship.rules, { amount, rights: def.rights === true, marriage: def.marriage === true })
+        ?? (policy === "lord" ? "direct" as const : amount >= largeSumLine(state) ? "amount" as const : null);
+    const rule = matched;
+    const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: estate.id, kind, group: def.group, amount: Math.round(base * size / 1000),
+      rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS + (overloaded ? OVERLOAD_PETITION_DELAY : 0),
+      status: "open", ...(rule === null ? {} : { escalated: rule, ...(overloaded ? { reachesLord: state.tick + OVERLOAD_PETITION_DELAY } : {}) }) };
+    answered = petition;
+    if (rule === null) {
+      const grant = policy === "lenient" ? true : policy === "strict" ? false : STEWARD_ANSWERS[record.disposition][kind];
+      const effect = petitionEffect(petition, grant, record.disposition === "greedy");
+      incomeDelta += effect.income; tenants += effect.tenants; merchants += effect.merchants; keptExtra += effect.kept;
+      if (effect.neglect) next = neglectEstate(next, estate.id);
+      answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", policy };
+    } else if (overloaded) {
+      // An overloaded lord's estate: the petition waits a season before it reaches him.
+      if (petition.group === "tenants") tenants -= OVERLOAD_WAIT_RELATION; else merchants -= OVERLOAD_WAIT_RELATION;
+    }
+    stewardship = { ...stewardship, petitions: [...stewardship.petitions, answered], nextPetition: stewardship.nextPetition + 1 };
   }
-  stewardship = { ...stewardship, petitions: [...stewardship.petitions, answered], nextPetition: stewardship.nextPetition + 1 };
   // The yield by the rates (the steward's disposition, or the old rates when direct).
   const rates = oversight.mode === "steward" ? DISPOSITION_RATES[record.disposition] : DIRECT_RATES;
   let income = Math.round(base * (RENT_SHARE * rates.rent + (1000 - RENT_SHARE) * rates.dues) / 1_000_000);
   if (tenants <= SOUR_TENANTS) income = Math.round(income * (1000 - SOUR_YIELD_LOSS) / 1000);
   income = Math.max(0, income + incomeDelta);
+  const resistance = charterSeasonLoss(state, oversight, base * (1000 - RENT_SHARE) * rates.dues / 1_000_000, income);
+  income -= resistance.loss;
+  oversight = resistance.oversight;
   tenants += (1000 - rates.rent) * RATE_RELATION_PER_PERMILLE;
   merchants += (1000 - rates.dues) * RATE_RELATION_PER_PERMILLE;
   // What the receiver keeps back (a third when the lord oversees himself), and what the books lose by error.
@@ -339,7 +347,9 @@ function estateSeason(state: GameState, estate: Estate): GameState {
     * (oversight.mode === "direct" ? DIRECT_KEEP_SHARE / 1000 : 1));
   const kept = Math.min(income, Math.round(income * keepPermille / 1000) + keptExtra);
   const errs = hashSeed(state.seed, "estate-error", number, state.tick) % 1000 < (100 - record.ability) * ERROR_PER_ABILITY + (overloaded ? OVERLOAD_ERROR_PERMILLE : 0);
-  const error = errs ? Math.round((income - Math.min(income, kept)) * ERROR_SHARE / 1000) : 0;
+  const ordinaryError = errs ? Math.round((income - Math.min(income, kept)) * ERROR_SHARE / 1000) : 0;
+  const tolerated = toleratedSeasonLoss(state, record, Math.max(0, income - kept - ordinaryError));
+  const error = ordinaryError + tolerated.loss;
   const reported = Math.max(0, income - kept - error);
   if (reported > 0) {
     const posted = postLedgerEntries(next, [{ account: "cash", category: "estate_income", amount: reported,
@@ -347,11 +357,13 @@ function estateSeason(state: GameState, estate: Estate): GameState {
     next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
   }
   oversight = { ...oversight, tenants: clamp(tenants), merchants: clamp(merchants) };
-  stewardship = withSteward(withOversight(stewardship, oversight), { ...record, kept: record.kept + Math.min(income, kept), errors: record.errors + error });
+  stewardship = withSteward(withOversight(stewardship, oversight), { ...tolerated.record, kept: record.kept + Math.min(income, kept), errors: record.errors + error });
   const summary: QuarterSummary = { estateId: estate.id, tick: state.tick, mode: oversight.mode, income, reported, kept: Math.min(income, kept), error,
     rentPermille: rates.rent, duesPermille: rates.dues, petitions: [...lapsed.map(entry => ({ id: entry.id, kind: entry.kind, status: "lapsed" as const })),
-      { id: answered.id, kind: answered.kind, status: answered.status, ...(answered.decidedBy === undefined ? {} : { decidedBy: answered.decidedBy }) }],
-    tenants: oversight.tenants, merchants: oversight.merchants, overloaded };
+      ...(answered === undefined ? [] : [{ id: answered.id, kind: answered.kind, status: answered.status, ...(answered.decidedBy === undefined ? {} : { decidedBy: answered.decidedBy }) }])],
+    tenants: oversight.tenants, merchants: oversight.merchants, overloaded,
+    ...(resistance.evidence === undefined ? {} : { charterLoss: resistance.evidence }),
+    ...(tolerated.evidence.length === 0 ? {} : { toleratedLosses: tolerated.evidence }) };
   const own = stewardship.summaries.filter(entry => entry.estateId === estate.id).slice(-(SUMMARIES_KEPT - 1));
   stewardship = { ...stewardship, summaries: [...stewardship.summaries.filter(entry => entry.estateId !== estate.id), ...own, summary] };
   return withStewardship(next, stewardship);
@@ -436,7 +448,12 @@ export function setExceptionRules(state: GameState, rules: ExceptionRules): Game
 
 /** SW-4 API: the petitions waiting for the lord (escalated, or a direct estate's) that have reached him. */
 export function lordEstatePetitions(state: GameState): readonly EstatePetition[] {
-  return stewardshipOf(state).petitions.filter(petition => petition.status === "open" && (petition.reachesLord ?? petition.tick) <= state.tick);
+  const stewardship = stewardshipOf(state);
+  return stewardship.petitions.filter(petition => {
+    if (petition.status !== "open" || (petition.reachesLord ?? petition.tick) > state.tick) return false;
+    const oversight = stewardship.oversight.find(row => row.estateId === petition.estateId);
+    return petition.kind !== "charter_request" || oversight === undefined || !charterPetitionSuppressed(state, oversight);
+  });
 }
 
 /**
@@ -495,7 +512,8 @@ export function answerEstatePetition(state: GameState, petitionId: string, grant
   if (effect.neglect) next = neglectEstate(next, petition.estateId);
   const updated = withOversight({ ...stewardship, petitions: stewardship.petitions.map(entry => entry.id === petitionId
     ? { ...entry, status: grant ? "granted" as const : "refused" as const, decidedBy: "lord" as const } : entry) },
-  { ...oversight, tenants: clamp(oversight.tenants + effect.tenants), merchants: clamp(oversight.merchants + effect.merchants) });
+  grant ? { ...oversight, tenants: clamp(oversight.tenants + effect.tenants), merchants: clamp(oversight.merchants + effect.merchants) }
+    : charterRefusal(state, { ...oversight, tenants: clamp(oversight.tenants + effect.tenants), merchants: clamp(oversight.merchants + effect.merchants) }, petition));
   return withStewardship(next, updated);
 }
 
@@ -533,6 +551,7 @@ export function auditAnswerEffect(state: GameState, auditId: string, choice: "pu
   const audit = stewardship.audits.find(entry => entry.id === auditId);
   if (audit === undefined || audit.status !== "pending" || state.tick > audit.deadline) return null;
   const record = steward(stewardship, audit.stewardId)!;
+  if (reportOnlyAudit(state, audit, record)) return null;
   if (choice === "tolerate") return { recovered: 0, tenants: 0, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) - record.loyalty, successorId: null };
   const successor = auditSuccessor(state, stewardship, audit, replacementId);
   if (successor === undefined) return null;
@@ -545,10 +564,16 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
   const audit = stewardship.audits.find(entry => entry.id === auditId);
   if (audit === undefined || audit.status !== "pending" || (!lapsed && state.tick > audit.deadline)) return state;
   const record = steward(stewardship, audit.stewardId)!;
+  if (reportOnlyAudit(state, audit, record)) return state;
   const oversight = stewardship.oversight.find(entry => entry.estateId === audit.estateId)!;
   const settled = { ...stewardship, audits: stewardship.audits.map(entry => entry.id === auditId
     ? { ...entry, status: choice === "punish" ? "punished" as const : choice === "replace" ? "replaced" as const : "tolerated" as const } : entry) };
-  if (choice === "tolerate") return withStewardship(state, withSteward(settled, { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) }));
+  if (choice === "tolerate") {
+    const tolerated = tolerateAuditErrors(state, { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) }, audit);
+    const reported = lordMode(state) ? { ...settled, audits: settled.audits.map(entry => entry.id === audit.id
+      ? { ...entry, unrecovered: audit.revealedKept + audit.revealedErrors } : entry) } : settled;
+    return withStewardship(state, withSteward(reported, tolerated));
+  }
   const successor = auditSuccessor(state, settled, audit, replacementId);
   if (successor === undefined) return state;
   let next = state;
@@ -565,7 +590,9 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
 
 /** SW-6 API: the audits that wait for the lord's answer. */
 export function pendingAudits(state: GameState): readonly AuditRecord[] {
-  return stewardshipOf(state).audits.filter(audit => audit.status === "pending" && state.tick <= audit.deadline);
+  const stewardship = stewardshipOf(state);
+  return stewardship.audits.filter(audit => audit.status === "pending" && state.tick <= audit.deadline
+    && !reportOnlyAudit(state, audit, steward(stewardship, audit.stewardId)));
 }
 
 /** SW-8 API: each held off-map estate's oversight as the portfolio shows it. */

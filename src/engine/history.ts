@@ -1066,7 +1066,10 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     line("stewardship.rules", { amount: rules.amountAtLeast ?? -1, rights: rules.rights ? 1 : 0, marriage: rules.marriage ? 1 : 0, recurring: rules.recurring === true ? 1 : 0 });
   }
   for (const summary of now.summaries.filter(entry => !(was?.summaries ?? []).includes(entry))) {
-    line("stewardship.season", { house: house(summary.estateId), reported: summary.reported, mode: summary.mode, overloaded: summary.overloaded ? 1 : 0 }, 0);
+    line("stewardship.season", { house: house(summary.estateId), reported: summary.reported, mode: summary.mode, overloaded: summary.overloaded ? 1 : 0,
+      ...(summary.charterLoss && summary.charterLoss.amount > 0 ? { marketLoss: summary.charterLoss.amount } : {}),
+      ...((summary.toleratedLosses ?? []).some(loss => loss.amount > 0)
+        ? { toleratedError: (summary.toleratedLosses ?? []).reduce((total, loss) => total + Math.max(0, loss.amount), 0) } : {}) }, 0);
   }
   for (const petition of now.petitions) {
     const old = was?.petitions.find(entry => entry.id === petition.id);

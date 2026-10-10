@@ -326,7 +326,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
     // FIX-14 (SW-12): with recurring kinds brought up again (no precedent).
     const again = n(params, "recurring") === 1 ? " — 선례가 있어도 다시 올린다" : "";
     return parts.length === 0 ? `예외를 거뒀다: 청지기가 모두 정한다${again}` : `예외를 정했다: ${parts.join("·")}${josa(parts.at(-1)!, "은", "는")} 영주에게${again}`; },
-  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}${estateRelationTraceWords(params)}`,
+  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}${n(params, "marketLoss") > 0 ? ` (시장 특허 거절 뒤 수입 손실 ${moneyWords(n(params, "marketLoss"))})` : ""}${n(params, "toleratedError") > 0 ? ` (감사 오류를 묵인한 뒤 장부 손실 ${moneyWords(n(params, "toleratedError"))})` : ""}${estateRelationTraceWords(params)}`,
   // FIX-14 (SW-11, SW-12): the home estate's petitions to the lord himself, and the steward's precedent.
   "manor.petition": params => `장원에서 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "이", "가")} 영주에게 왔다${n(params, "amount") > 0 ? ` — ${moneyWords(n(params, "amount"))}` : ""}`,
   "registry.offered": params => `${registryTitle(s(params, "entry"))}`,

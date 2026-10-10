@@ -126,3 +126,31 @@ test('actual strength of the same claim is a rights effect, while replacement an
     assert.equal(changes(mapped({ command, before, after: { estates: { claims } } })).length, 0);
   }
 });
+
+test('reviewed INERT schedules alone are not actual economic outcomes and mutated pins stay unknown', async () => {
+  const { INERT_REVIEWED_EFFECT_SOURCES } = await import(new URL('../scripts/engineBInertReviewedSources.mjs', import.meta.url).href);
+  for (const kind of ['audit', 'petition'] as const) {
+    const item = fixture(kind);
+    if (kind === 'audit') {
+      Object.assign(item.after.stewardship.audits[0] ?? {}, { unrecovered: 64 });
+      Object.assign(item.after.stewardship.stewards[0] ?? {}, { toleratedErrors: [{ auditId: 'a', unrecovered: 64, perSeason: 4, remainingSeasons: 4 }] });
+    } else Object.assign(item.after.stewardship.oversight[0] ?? {}, { charterResistance: { petitionId: 'p', since: 10, remainingSeasons: 4, retryAfter: 12010 } });
+    const row = { ...item, seed: 1, historyId: 'answer', ordinal: 1, tick: 10, source: 'source',
+      deltaPaths: tlinkImmediateDifferences(item.before, item.after).map((delta: { path: string }) => ({ ...delta, path: delta.path.slice(1).split('/') })) };
+    const proof = buildTlinkOutcomeEvidence({ provenance: { sourceFiles: INERT_REVIEWED_EFFECT_SOURCES, originalScoreSha256: '1'.repeat(64) }, rows: [row] }).rows[0];
+    assert.equal(proof.proofComplete, true); assert.equal(changes(proof).length, 0);
+    const altered = INERT_REVIEWED_EFFECT_SOURCES.map((pin: { path: string; sha256: string }) => pin.path.endsWith('stewardshipConsequences.ts') ? { ...pin, sha256: '0'.repeat(64) } : pin);
+    const unknown = buildTlinkOutcomeEvidence({ provenance: { sourceFiles: altered, originalScoreSha256: '1'.repeat(64) }, rows: [row] }).rows[0];
+    assert.equal(unknown.proofComplete, false); assert.deepEqual(unknown.effects, []);
+  }
+});
+
+test('INERT reviewed source profile matches every current reviewed actuator before a measurement run', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { createHash } = await import('node:crypto');
+  const { INERT_REVIEWED_EFFECT_SOURCES } = await import(new URL('../scripts/engineBInertReviewedSources.mjs', import.meta.url).href);
+  for (const pin of INERT_REVIEWED_EFFECT_SOURCES) {
+    const actual = createHash('sha256').update(readFileSync(new URL(`../${pin.path}`, import.meta.url))).digest('hex');
+    assert.equal(actual, pin.sha256, `Source changed after semantic review: ${pin.path}`);
+  }
+});

@@ -7,7 +7,7 @@ const { scoreOutcomeGate } = await import(new URL('../scripts/engineBOutcomeGate
 const { auditTlinkResiduals, RESIDUAL_SOURCE_FILES, PHASE_HISTORY_SOURCES } = await import(new URL('../scripts/engineBTlinkResiduals.mjs', import.meta.url).href);
 
 const encode = (value: unknown) => Buffer.from(JSON.stringify(value));
-interface Options { audit?: boolean; auditIssue?: string; success?: number; target?: string; cause?: string; missing?: boolean; late?: boolean; phase?: boolean; futurePhase?: boolean; incompatible?: boolean; futureAnswer?: boolean; stone?: boolean; wrongPhase?: boolean; baselinePhase?: boolean; phaseLate?: boolean; estate?: 'repair' | 'rent_relief' | 'charter_request'; counter?: boolean; declined?: boolean; contextIssue?: string }
+interface Options { audit?: boolean; auditIssue?: string; success?: number; target?: string; cause?: string; missing?: boolean; late?: boolean; phase?: boolean; futurePhase?: boolean; incompatible?: boolean; futureAnswer?: boolean; stone?: boolean; wrongPhase?: boolean; baselinePhase?: boolean; phaseLate?: boolean; approvedPhaseSha?: string; estate?: 'repair' | 'rent_relief' | 'charter_request'; counter?: boolean; declined?: boolean; contextIssue?: string }
 function fixture(options: Options = {}) {
   const tick = options.late ? 499999 : 10;
   const chosen = options.audit ? 'tolerate' : options.estate === 'charter_request' ? 'refused' : options.counter ? options.declined ? 'declined' : 'accepted' : 'granted';
@@ -27,7 +27,7 @@ function fixture(options: Options = {}) {
     assert.ok(effect);
     history.push({ ...effect, id: 'second-effect' });
   }
-  const provenance = { sourceRevision: 'a'.repeat(40), dirtyPaths: '', node: 'v24.21.0', sourceFiles: options.baselinePhase ? [{ path: 'src/engine/history.ts', sha256: PHASE_HISTORY_SOURCES[0].sha256 }] : RESIDUAL_SOURCE_FILES.map((path: string) => ({ path, sha256: options.incompatible ? '0'.repeat(64) : outcomeSha256(readFileSync(path)) })) };
+  const provenance = { sourceRevision: 'a'.repeat(40), dirtyPaths: '', node: 'v24.21.0', sourceFiles: options.baselinePhase ? [{ path: 'src/engine/history.ts', sha256: options.approvedPhaseSha ?? PHASE_HISTORY_SOURCES[0].sha256 }] : RESIDUAL_SOURCE_FILES.map((path: string) => ({ path, sha256: options.incompatible ? '0'.repeat(64) : outcomeSha256(readFileSync(path)) })) };
   const raw = { seed: 1, years: 125, startYear: 1300, endYearExclusive: 1425, endTick: 500000, provenance,
     observation: { firstTick: 0, lastTick: 500000, maxGap: 1, reversals: 0 }, history, decisions: [], occurrences: [] };
   const rawBytes = encode(raw);
@@ -167,4 +167,18 @@ test('audit settlement requires pinned final state, exact command and receipt, w
     assert.equal(auditTlinkResiduals(fixture({ audit: true, ...options })).residuals[0].category, 'unexplained');
   for (const auditIssue of ['hash', 'seed', 'tick', 'duplicate', 'missing-pin'])
     assert.throws(() => auditTlinkResiduals(fixture({ audit: true, auditIssue })), /final/, auditIssue);
+});
+
+
+test('all frozen reviewed phase producers remain supported while unknown source hashes remain unresolved', () => {
+  for (const source of PHASE_HISTORY_SOURCES) {
+    const result = auditTlinkResiduals(fixture({ phase: true, baselinePhase: true, approvedPhaseSha: source.sha256 }));
+    assert.equal(result.supplemental.phaseAnswers.length, 1, source.sha256);
+    assert.equal(result.supplemental.phaseAnswers[0].classification, 'phase_big');
+    assert.equal(result.supplemental.expandedHeavyRatio.denominator, 2);
+    assert.equal(result.supplemental.expandedHeavyRatio.numerator, 0);
+  }
+  const unknown = auditTlinkResiduals(fixture({ phase: true, baselinePhase: true, approvedPhaseSha: '0'.repeat(64) }));
+  assert.equal(unknown.supplemental.phaseAnswers.length, 0);
+  assert.equal(unknown.supplemental.unresolvedUnclassified.length, 1);
 });

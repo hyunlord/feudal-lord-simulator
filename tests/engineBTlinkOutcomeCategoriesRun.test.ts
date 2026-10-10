@@ -11,12 +11,12 @@ const { runOutcomeGate } = await import(new URL('../scripts/engineBOutcomeRun.mj
 const { loadTlinkCategoryInputs, tlinkImmediateDifferences, runTlinkOutcomeCategories } = await import(new URL('../scripts/engineBTlinkOutcomeCategoriesRun.mjs', import.meta.url).href);
 const { TLINK_REVIEWED_EFFECT_SOURCES } = await import(new URL('../scripts/engineBTlinkOutcomeEvidence.mjs', import.meta.url).href);
 const encode = (value: unknown) => Buffer.from(JSON.stringify(value));
-function fixture(reviewedSources = false) {
+function fixture(reviewedSources = false, embedded = false) {
   const root = mkdtempSync(join(tmpdir(), 'tlink-loader-test-')), original = join(root, 'original'), replay = join(root, 'observer');
   mkdirSync(join(original, 'seed-1'), { recursive: true }); mkdirSync(join(replay, 'seed-1'), { recursive: true });
   const directory = join(original, 'seed-1'), observer = join(replay, 'seed-1');
   const sourceRevision = 'a'.repeat(40), helper = 'e'.repeat(64), sourceFiles = reviewedSources ? TLINK_REVIEWED_EFFECT_SOURCES : [{ path: 'src/engine/a.ts', sha256: 'b'.repeat(64) }];
-  const toolHashes = { 'engineBOutcomeCollect.ts': 'c'.repeat(64) }, source = { revision: sourceRevision, node: 'v24.21.0', platform: 'linux', lock: 'd'.repeat(64), expectedLock: 'd'.repeat(64), status: '' };
+  const toolHashes = { 'engineBOutcomeCollect.ts': 'c'.repeat(64), ...(embedded ? { 'engineBInertCapture.mjs': helper } : {}) }, source = { revision: sourceRevision, node: 'v24.21.0', platform: 'linux', lock: 'd'.repeat(64), expectedLock: 'd'.repeat(64), status: '' };
   const provenance = { sourceRevision, node: source.node, dirtyPaths: '', sourceFiles };
   const command = { type: 'answer_audit', auditId: 's1', choice: 'tolerate' };
   const decision = { id: 'h1', tick: 10, kind: 'decision', template: 'decision.card', params: { command: command.type } };
@@ -46,7 +46,7 @@ function fixture(reviewedSources = false) {
     before, after, differences: tlinkImmediateDifferences(before, after), observerStateHashesStable: true, categoriesAssigned: false };
   const bytes = encode(row), compressed = gzipSync(bytes), file = { file: 'answer-000001.json.gz', ordinal: 1, historyId: 'h1', sha256: sha(compressed), rawSha256: sha(bytes) }; writeFileSync(join(observer, file.file), compressed);
   const observed = { schemaVersion: 1, status: 'verified_original_replay_observer_capture', sourceRevision, executionHead: sourceRevision, seed: 1, years: 125, tick: 500000, commandCount: 1,
-    originalManifestSha256: sha(manifestBytes), inputHashes: Object.fromEntries(Object.entries(originalFiles).map(([name, data]) => [name, sha(data)])), sourceFiles, toolHashes, node: source.node, lockSha256: source.lock, helperSha256: helper,
+    ...(embedded ? { capturePhase: 'producer_replay' } : {}), originalManifestSha256: sha(manifestBytes), inputHashes: Object.fromEntries(Object.entries(originalFiles).map(([name, data]) => [name, sha(data)])), sourceFiles, toolHashes, node: source.node, lockSha256: source.lock, helperSha256: helper,
     files: [file], selectedHeavy: 1, unclassified: 0, commandStreamMatched: true, collectParityMatched: true, fullFinalStateMatched: true, originalFullFinalSha256: sha(finalBytes), exclusions: parity.exclusions, categoriesAssigned: false };
   const save = () => writeFileSync(join(observer, 'manifest.json'), encode(observed)); save();
   return { root, observer, directory, observed, row, file, save, args: { configPath, scorePath, replayRoot: replay, expectedHelperSha: helper, outputPath: join(root, 'report.json') }, load: () => loadTlinkCategoryInputs(configPath, scorePath, replay, helper),
@@ -135,4 +135,17 @@ test('full CLI preserves original score and emits compact classification with co
       assert.ok(run.stdout.length < 5000);
     } finally { rmSync(f.root, { recursive: true, force: true }); }
   }
+});
+
+
+test('embedded producer capture is authenticated against its original pinned helper and exact execution revision', () => {
+  const f = fixture(true, true); try {
+    assert.equal(f.load().rows.length, 1);
+    f.observed.executionHead = 'f'.repeat(40); f.save();
+    assert.throws(f.load, /embedded observer source/);
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+  const legacy = fixture(); try {
+    Object.assign(legacy.observed, { capturePhase: 'producer_replay' }); legacy.save();
+    assert.throws(legacy.load, /embedded observer source/);
+  } finally { rmSync(legacy.root, { recursive: true, force: true }); }
 });

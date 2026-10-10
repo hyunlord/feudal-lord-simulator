@@ -89,7 +89,7 @@ function auditOnlyContinuity(before: GameState, after: GameState, estateId: stri
     const prior = previous.stewards.find(row => row.personId === old.stewardId && row.estateId === old.estateId);
     const steward = next.stewards.find(row => row.personId === old.stewardId && row.estateId === old.estateId);
     return current && audit && prior && steward && old.stewardId === current.stewardId && old.mode === current.mode
-      && old.auditMode === current.auditMode && old.since === current.since
+      && old.auditMode === current.auditMode && old.since === current.since && old.charterResistance === current.charterResistance
       && old.tenants === current.tenants && old.merchants === current.merchants
       && audit.id === `audit-${previous.nextAudit + index}` && audit.estateId === old.estateId && audit.tick === after.tick
       && audit.stewardId === old.stewardId && audit.mode === old.auditMode && audit.deadline === after.tick + AUDIT_ANSWER_TICKS
@@ -98,7 +98,7 @@ function auditOnlyContinuity(before: GameState, after: GameState, estateId: stri
       && audit.status === (audit.revealedKept + prior.errors > 0 ? 'pending' : 'clean')
       && steward.kept === 0 && steward.errors === 0 && prior.ability === steward.ability && prior.loyalty === steward.loyalty
       && prior.disposition === steward.disposition && prior.connection === steward.connection
-      && prior.since === steward.since && prior.status === steward.status;
+      && prior.since === steward.since && prior.status === steward.status && prior.toleratedErrors === steward.toleratedErrors;
   });
 }
 
