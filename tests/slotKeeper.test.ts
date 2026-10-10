@@ -110,6 +110,24 @@ test("the keeper lets the session served longest ago go first, one experiment pe
   } finally { b.done(); }
 });
 
+test("the nightly full audit goes last: first in line, it still waits while another session's experiment may go (RR26 covered)", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const b = bench("nightly");
+  try {
+    b.keeper(); await b.until("the keeper writes its status", () => /slot 4 kept for gates/.test(b.status()));
+    b.start("infra-h", "now", "experiment"); await b.until("infra-h goes", () => /== heavy slot 1\/4/.test(b.out["infra-h"] ?? ""));
+    b.start("astra-a", "now", "experiment"); await b.until("astra-a goes", () => /== heavy slot 2\/4/.test(b.out["astra-a"] ?? ""));
+    b.start("engine-e", "now", "experiment"); await b.until("engine-e goes", () => /== heavy slot 3\/4/.test(b.out["engine-e"] ?? ""));
+    b.start("nightly-GEOMETRY-abc", "now", "experiment"); await b.until("the nightly run waits, named last", () => /nightly: nightly-GEOMETRY-abc — the nightly full audit, last of all/.test(b.status()));
+    b.start("render-r", "now", "experiment"); await b.until("render-r waits behind it in line", () => /render \(served never\): render-r/.test(b.status()));
+    b.release("astra-a");                                      // one experiment slot frees: render, though the nightly run came first
+    await b.until("render-r goes", () => /TOOK/.test(b.out["render-r"] ?? ""));
+    assert.doesNotMatch(b.out["nightly-GEOMETRY-abc"] ?? "", /TOOK/);
+    b.release("engine-e");                                     // nobody else may go now: the nightly run
+    await b.until("the nightly run goes", () => /TOOK/.test(b.out["nightly-GEOMETRY-abc"] ?? ""));
+    b.start("engine-gate", "now", "gate"); await b.until("a gate still has slot 4", () => /== heavy slot 4\/4 \(gate line/.test(b.out["engine-gate"] ?? ""));
+  } finally { b.done(); }
+});
+
 test("an older copy goes only when it is first in its line; when the keeper stops, its fences go and every copy follows its own rules", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
   const b = bench("stop");
   try {

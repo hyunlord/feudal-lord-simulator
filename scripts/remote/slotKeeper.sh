@@ -23,7 +23,8 @@
 # The rules: a waiting gate goes first, first come first served, on any free slot (the last one first); experiments only
 # while no gate waits, on slots 1..cap-1, at most one running per session (the run name's first part: engine, engineB,
 # render, astra, infra, trunk), and of the sessions with none running the one served longest ago
-# (_slots/served/<session>, never served counts as oldest) with its earliest run. A fifo or lines copy can be let in only
+# (_slots/served/<session>, never served counts as oldest) with its earliest run. The nightly full audit (session
+# `nightly`, scripts/remote/nightlyGeometry.sh) goes last: only when no other session's experiment may go (RR26 covered). A fifo or lines copy can be let in only
 # when it is first in the experiment line; until then its session's turn passes to the next session.
 # Every loop it writes _slots/keeper.status (slots, both lines, the turn order, why a session waits, the open door);
 # run.sh --status and the waiting runs of this protocol print it.
@@ -141,7 +142,7 @@ served_at() { stat -c %Y "$D/served/$1" 2> /dev/null || echo 0; }
 
 # --- the rules ----------------------------------------------------------------------------------------------------
 decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
-  local t run s age i=0 seen=" " head best="" best_age="" n
+  local t run s age i=0 seen=" " head best="" best_age="" n nightly=""
   PICK=""; WHY=""; ORDER=""; MAYGO=""
   mapfile -t GATES < <(live "$GQ")
   mapfile -t EXPS < <(live "$EQ")
@@ -160,6 +161,7 @@ decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
     if { [ "$CT" = fifo ] || [ "$CT" = lines ]; } && [ "$t" != "$head" ]; then
       ORDER+="  $s waits: $run — an older copy of heavySlots.sh ($CT), let in only when first in line"$'\n'; continue
     fi
+    if [ "$s" = nightly ]; then ORDER+="  nightly: $run — the nightly full audit, last of all"$'\n'; nightly=$t; continue; fi
     age=$(served_at "$s")
     ORDER+="  $s (served $( [ "$age" -le 1 ] && echo never || date -d "@$age" '+%m-%d %H:%M')): $run ($CT copy)"$'\n'
     if [ -z "$best" ] || [ "$age" -lt "$best_age" ]; then best=$t; best_age=$age; fi
@@ -171,6 +173,7 @@ decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
     return
   fi
   [ "${#EXPS[@]}" -gt 0 ] || return
+  [ -n "$best" ] || best=$nightly
   [ -n "$best" ] || { WHY="no session may start an experiment now"; return; }
   if [ "${#FREE[@]}" -eq 0 ] || [ "${FREE[0]}" -gt "$TOP" ]; then
     WHY="slots 1-$TOP are busy (slot $CAP is the gates')"; return
