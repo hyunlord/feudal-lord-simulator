@@ -157,7 +157,10 @@ test("GROW-BLOCK plan, searching and asked: the town's turn, its request answere
   assert.match(consoleHtml(past), new RegExp(`class="era-action-reason era-plan-done">${COPY.stage.past}<`));
   assert.equal(lordWallPlanDone(state), null);
   // Every one of the engine's six stages has its words, and each of the eight reasons a readable why (none blank).
-  for (const stage of ["waiting", "sites", "searching", "asked", "failed", "past"] as const) assert.ok(stage in COPY.stage && COPY.stage[stage] !== "", stage);
+  for (const stage of ["waiting", "sites", "searching", "asked", "failed", "past"] as const) {
+    const words: string | ((count: number) => string) = COPY.stage[stage];
+    assert.ok((typeof words === "function" ? words(1) : words).length > 0, stage);
+  }
   for (const reason of ["water", "edge", "buildings", "service_space", "rules", "lots", "route", "other"] as const) assert.ok(COPY.reasons[reason].length > 4, reason);
 });
 
