@@ -59,7 +59,7 @@
 | `engineB-tlink-geometry-0b04cd0` — 이전 제품 화면 기하 | 구현0b04 | **PASS** — 27행·540조건, 실패0·미개방0, exit0 |
 | `engineB-tlink-relation-browser-864f1ea` | `864f1ea06851f0508109f34ab355e4843bb16ff4` | 기능 PASS·exit0 — 자기 답→다음 철→원인 답, 두 화면 크기·저장 왕복·틱/ordinal 불변.390px 우측 잘림은 화면 인수 미달 |
 | 이전864 relation125·native / changed·geometry·f264 cards | 864 계열 | **폐기** —125/native는 실행 전 취소, changed/geometry/cards는 구형 partial 중지. 인수 근거 없음 |
-| `engineB-tlink-final125-9ad9253` | `9ad9253468592e7cba144946081d2fbced36adca`, clean | **실행 중** — 연결률/규칙 해시 미판정 |
+| `engineB-tlink-final125-9ad9253` | `9ad9253468592e7cba144946081d2fbced36adca`, clean | **재생 중·수집 완료** — 수집만의 잠정301/816=36.8873%(미달), seed별98/238·93/275·110/303. 수집 checkpoint/최종 규칙 투영은 기준판과 일치. 전체 재생 검증·공식 채점·별도 native 미판정 |
 | `engineB-tlink-final-changed-9ad9253` | 9ad 고정 제품 | **PASS·exit0** —553파일·4425시험:4412통과·실패0·skip13,66파일 재사용, command1947.2초. tree `f36378c83325d6b411f5ae7f6445135e8af19379` |
 | `engineB-tlink-final-geometry-9ad9253` | 9ad 고정 제품 | **실행 중** —전체27행 대상, 완료 판정 없음 |
 | `engineB-tlink-native-latest-9ad9253` | 기준64a / 제품9ad | **대기 중** —24필지·최대500000tick·seed1–3, 표준1200000tick·5seed 관문 아님 |
@@ -68,6 +68,8 @@
 결과 인계에는 각 실행의 실제 sourceRevision·입력/출력 해시, seed별 원래 직접/성숙 분모와 관측부족, 부가 잔여 범주, 보충 phase 분모를 함께 고정해야 한다. 기준판은 seed1=71/238, seed2=114/275, seed3=107/303이며 전체836답 중816답이 관측 충분하다. 원래 scorer는80% 미달과 미분류 선포2건을 그대로 남겨 exit1이다. 보충 분류는 두 실제 BIG 기록을 확인했지만 원래 점수를 덮어쓰지 않았다. [세 판 원본·재계산·해시·측정 커밋 bundle](../verification/eb-tlink-outcomes/README.md)을 보존했다. 0b04 공식 집계는 기존 정확한 own-ID 미래창·분모를 그대로 사용한다. 기준판과 세 판의 명령열·관측 지점별 규칙 투영·최종 투영이 일치했다. 원시 전체 상태 해시는 세 판 모두 다르며 이를 해시 불변으로 부르지 않는다. 이 비교는 매 tick 또는 별도 native 가드레일 검증을 대신하지 않는다. 같은 tick 종결이나 관계 포화0을 미래 성과/조건 미충족으로 바꾸지 않는다. 아직 없는 최신 제품 수치나 전후 해시를 채우지 않는다.
 
 [규칙 비교 방법](../verification/eb-tlink/parity-method.md)은 `history`, `trace.decisions`, `trace.answers`만 투영에서 제외한다. `trace.acts`, faction 기억의 실제 record/decision ID·관계, ledger 금액·모든 참조와 나머지 필드는 해시에 포함한다. 각 명령·각 철·최종 상태·명령 스트림을 대조하며 모든 tick 상태의 동등성을 증명하지 않는다. 일반 성장 가드레일의 전체 상태 해시는 별도 전후 비교다.
+
+최신9ad의 잠정 수집 집계는 원래 분류기·분모·미래창으로 계산했다.836답·성숙816·직접301·미연결515·관측 부족20·미분류2다. `.omo/evidence/tlink-9ad-three-seed-provisional-links.json` SHA256은 `e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8`이다. 이는 수집 완료 원본만의 진단이며 아직 공식 scorer/manifest 재생 관문을 통과한 결과가 아니다. 수집 원시 전체 상태 해시는 세 판 모두 기준판과 다르다. 보존 중인 같은 실행을 재생 종료 뒤 다시 받아 공식 판정으로 확정한다.
 
 ## 저장과 GROW-BLOCK 병합 겹침
 

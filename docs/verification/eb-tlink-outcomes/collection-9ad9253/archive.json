@@ -1,0 +1,236 @@
+{
+  "status": "collection_only_unverified_replay_not_gate",
+  "sourceRevision": "9ad9253468592e7cba144946081d2fbced36adca",
+  "run": "engineB-tlink-final125-9ad9253",
+  "summary": {
+    "heavy": 836,
+    "mature": 816,
+    "direct": 301,
+    "censored": 20,
+    "unlinked": 515,
+    "unclassified": 2,
+    "unresolved": 0
+  },
+  "ratio": 0.36887254901960786,
+  "files": [
+    {
+      "file": "tlink-9ad-three-seed-provisional-links.ts.gz",
+      "rawSha256": "d0353846e337c44caa619768c19aa63afa43291acbbaab3169e95d6f83cfa6e8",
+      "gzipSha256": "c3e16f13e2ad69ece863c677cc75c795326f7bc260640884de62dde24891b24a",
+      "rawBytes": 3982,
+      "gzipBytes": 1500
+    },
+    {
+      "file": "tlink-9ad-three-seed-provisional-links.json.gz",
+      "rawSha256": "e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8",
+      "gzipSha256": "8a66460c044bb1780c2ba0adbd1901810f088a06f15d5c4d1e4bc588f5cbf757",
+      "rawBytes": 518066,
+      "gzipBytes": 28191
+    }
+  ],
+  "sourceDependencies": [
+    {
+      "path": "scripts/engineBOutcomeEvidence.ts",
+      "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+      "sha256": "c4bc87f8bb02014fb4212b42f4fc66adfc6793e07100eb904e63614c89d84875"
+    }
+  ],
+  "inputsBySeed": [
+    {
+      "seed": 1,
+      "inputs": [
+        {
+          "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1.json",
+          "sha256": "0645623165b4b19e4d023c13c086e69253833d2efbb0e99b868161bf1731d4fe"
+        },
+        {
+          "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1/original-contexts.json.gz",
+          "sha256": "77e9278641929979c6747e5302bd4d4bf1ece124b04f3a4c60b5b73944564955"
+        }
+      ],
+      "comparison": {
+        "collect-parity.json": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-1/collect-parity.json",
+              "sha256": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147",
+              "rawSha256": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1/collect-parity.json",
+              "sha256": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147",
+              "rawSha256": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147"
+            }
+          ],
+          "rawBytesEqual": true,
+          "parsedEqual": true
+        },
+        "collect-rule-state.json.gz": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-1/collect-rule-state.json.gz",
+              "sha256": "ee7f0938d8bbb907b86a35c4f995aaf7b3c1abf2996d9b26935770214965bd21",
+              "rawSha256": "8f311a89f84334a0d32be684a2c77a7a58dbb11fd360d0ae2ad768f3c5618d6b"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1/collect-rule-state.json.gz",
+              "sha256": "ee7f0938d8bbb907b86a35c4f995aaf7b3c1abf2996d9b26935770214965bd21",
+              "rawSha256": "8f311a89f84334a0d32be684a2c77a7a58dbb11fd360d0ae2ad768f3c5618d6b"
+            }
+          ],
+          "rawBytesEqual": true,
+          "parsedEqual": true
+        },
+        "original-final-state.json.gz": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-1/original-final-state.json.gz",
+              "sha256": "8140e5c262e792b0d63df60eac57adc0fa3543f793a8146259411405968dc81d",
+              "rawSha256": "125d7d4457a4e1b24c4ec18f76aa0afafffc87e7fcac13dd6f4afbec5e8ca2a7"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1/original-final-state.json.gz",
+              "sha256": "306c08a8ff3db202034cd99b1801b003aa222f0dfa4e205e3aa9f965da92f9b2",
+              "rawSha256": "d5e90b57bf4ead2feeaa6f85472454b61eed4f65a827abb9b651147ce4954f51"
+            }
+          ],
+          "rawBytesEqual": false,
+          "parsedEqual": false
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "inputs": [
+        {
+          "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2.json",
+          "sha256": "4c35fe4caca4ee2959aa3d7849fa1c4ab16d3171c2e0876e34201843bbb55d03"
+        },
+        {
+          "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2/original-contexts.json.gz",
+          "sha256": "08faf301387f598596758cc50ab9dfca432677b8008bc47c042ccdad81432334"
+        }
+      ],
+      "comparison": {
+        "collect-parity.json": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-2/collect-parity.json",
+              "sha256": "174cafc6412357656695679dfd8b422cda9c28955c58aaadae6673e2779123bb",
+              "rawSha256": "174cafc6412357656695679dfd8b422cda9c28955c58aaadae6673e2779123bb"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2/collect-parity.json",
+              "sha256": "174cafc6412357656695679dfd8b422cda9c28955c58aaadae6673e2779123bb",
+              "rawSha256": "174cafc6412357656695679dfd8b422cda9c28955c58aaadae6673e2779123bb"
+            }
+          ],
+          "rawBytesEqual": true,
+          "parsedEqual": true
+        },
+        "collect-rule-state.json.gz": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-2/collect-rule-state.json.gz",
+              "sha256": "2c2d1491d9c2fec42734d76328a66381d66b39c0080e97901384b43c25b30af5",
+              "rawSha256": "c05852f24891621569aacf7d8d5cc8da5940db7ae34b747633fe8bd120887e28"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2/collect-rule-state.json.gz",
+              "sha256": "2c2d1491d9c2fec42734d76328a66381d66b39c0080e97901384b43c25b30af5",
+              "rawSha256": "c05852f24891621569aacf7d8d5cc8da5940db7ae34b747633fe8bd120887e28"
+            }
+          ],
+          "rawBytesEqual": true,
+          "parsedEqual": true
+        },
+        "original-final-state.json.gz": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-2/original-final-state.json.gz",
+              "sha256": "de38d6f9e150b2b74c7a38bb7b13b27f1ac68510af2070efce4190091bfa3ec1",
+              "rawSha256": "65557156df87df5e0b24fdf7ccfd81f7c9ce965d5acb6c2a8f3174801a12b0cb"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2/original-final-state.json.gz",
+              "sha256": "2f7d2f5a09472f7bbc94befae554dd2c2afdcef5bfc86a2b933e37a675ad3299",
+              "rawSha256": "617fb2aab617961bca11f79f6805715b178d2c4c6a6ddbd5a4cd718122f46542"
+            }
+          ],
+          "rawBytesEqual": false,
+          "parsedEqual": false
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "inputs": [
+        {
+          "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3.json",
+          "sha256": "ea92da34d609cdb14f4fff7e94f27387fa8700971d324b4e28bf4a45d936b26d"
+        },
+        {
+          "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3/original-contexts.json.gz",
+          "sha256": "fe1aa6447a56a8e75c68b51f26c01ef134ba2e7d601baea77ab4070f7a610ab1"
+        }
+      ],
+      "comparison": {
+        "collect-parity.json": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-3/collect-parity.json",
+              "sha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3",
+              "rawSha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3/collect-parity.json",
+              "sha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3",
+              "rawSha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3"
+            }
+          ],
+          "rawBytesEqual": true,
+          "parsedEqual": true
+        },
+        "collect-rule-state.json.gz": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-3/collect-rule-state.json.gz",
+              "sha256": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e",
+              "rawSha256": "40467d005c315907d99ddb5fbc53bcb4cfcde243b953ceca4e40ed87ef080145"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3/collect-rule-state.json.gz",
+              "sha256": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e",
+              "rawSha256": "40467d005c315907d99ddb5fbc53bcb4cfcde243b953ceca4e40ed87ef080145"
+            }
+          ],
+          "rawBytesEqual": true,
+          "parsedEqual": true
+        },
+        "original-final-state.json.gz": {
+          "inputs": [
+            {
+              "path": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline/seed-3/original-final-state.json.gz",
+              "sha256": "fad6a380f0d7248c0f54ab780e2e93066d2a81d625fc64ea4b569ecd9273356c",
+              "rawSha256": "b685d2dc93401a15b94cc8e71e5f7a78848b349ecb03bd865e96d260882d8ec8"
+            },
+            {
+              "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3/original-final-state.json.gz",
+              "sha256": "2a2fc484f6ca7ab0eaba274875e08075331cddb015cbffbb480d1122c881a27a",
+              "rawSha256": "64cec9c344a72323526298a875c6a1ffdc917e81c6b616f651e463969e8edd5f"
+            }
+          ],
+          "rawBytesEqual": false,
+          "parsedEqual": false
+        }
+      }
+    }
+  ],
+  "reproduce": "node --import tsx .omo/evidence/tlink-9ad-three-seed-provisional-links.ts",
+  "reproduceSafety": "Restore script at its original relative path in separate9ad source checkout with exact pinned raw/context and baseline comparison files. Output fixed .omo/evidence/tlink-9ad-three-seed-provisional-links.json must be absent (wx). Never overwrite original snapshot.",
+  "limits": [
+    "Collection snapshot only; replay still running at capture. No terminal exit, formal scorer, gate acceptance or whole-goal claim.",
+    "301/816 is unchanged historical own-ID future formula, not strict target proof.",
+    "Do not replace official0b04 archive or claim native/full-state equality."
+  ]
+}

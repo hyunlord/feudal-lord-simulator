@@ -91,3 +91,10 @@ mixed-command 문서는 **9ad 소스의 증명 초안**이며0b04 실행 증거�
 `tlink-hold-cost-audit.{mjs,json}.gz`를 [진단 해시 목록](prototype-0b04/diagnostics/archive.json)에 추가했다. 정식 config/score/residual 연결 및 세 판 manifest/raw/context/final-state 핀3/3을 검증하고 faction ID를 포함한 키로 판독한 **0b04 source-derived 결과**다. 전체 commands[] hold60건은 claim17·관계43이며, 공식 unexplained 교집합47건은 판결 후038 claim10·관계37이다. 관계43건은 실제 clamp 적용 후 각각−2였고 faction 최종값27/27이 맞았다. Claim17건의 실제 강도 변화는 미확인이다. 미래 링크47건을 추가로 입증한 것이 아니며 기존 점수·잔여 분류를 바꾸지 않는다. 이 자료는 최신9ad 실측 점수가 아니다.
 
 강화 전 결과는 분석 근거로 추가하지 않았다. 고정 원본 script SHA `44f324ed8c4e81b1a8ce2a01304fd8c55fbe73677899d986c346cb8549677adc`, JSON SHA `8a470755a64ac44ccfe7fda56e7810a367e2e6cca9fb5b42b02bbe9be70838c5`와 source/input 핀을 보존했다. 별도 checkout에 원래 입력 경로를 복원하고 `node .omo/evidence/tlink-hold-cost-audit.mjs`로 재현한다. 생성기는 고정 JSON 출력을 덮어쓰므로 보존 원본 위치에서 실행하지 않는다. `currentHead`는 작성 시점 provenance이며 다른 checkout에서는 해당 메타데이터가 달라질 수 있다.
+
+
+### 최신9ad 수집 잠정 snapshot — 공식 판정 전
+
+[별도9ad snapshot·입력/소스/재현 핀](collection-9ad9253/archive.json)에 원본 TS/JSON 두 파일을 gzip으로 보존했다. `engineB-tlink-final125-9ad9253`, source `9ad9253468592e7cba144946081d2fbced36adca`의 **수집 시점 잠정값은301/816=36.8873%**(seed1 98/238·seed2 93/275·seed3 110/303)이며 관측 부족20·미연결515·미분류2다. 캡처 시점 replay는 진행 중으로, 종료 코드·정식 scorer·관문 통과를 주장하지 않는다. 앞의0b04 공식 결과와 별도이며 기존 원본/index를 덮어쓰지 않았다.
+
+원본 JSON SHA는 `e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8`이다. 별도9ad checkout에 해시가 맞는 raw/context·baseline 비교 입력과 script를 원래 상대 경로로 복원하고 `node --import tsx .omo/evidence/tlink-9ad-three-seed-provisional-links.ts`로 재현한다. 생성기는 wx이므로 고정 출력 JSON이 없는 새 위치에서만 실행한다. 이번 보관에서는 스크립트를 재실행하지 않았다. 전체 그룹은3MB 미만이며 압축 전후 해시를 검증했다.
