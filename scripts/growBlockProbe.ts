@@ -15,6 +15,9 @@ import type { GameState } from "../src/engine/engine.types";
 import { interiorHouseSites } from "../src/engine/autoplayInteriorPlots";
 import { autoplayCanPlace } from "../src/engine/autoplayZones";
 import { treeStage } from "../src/engine/land";
+import { constructionDeliveryNeed } from "../src/economy/construction";
+import { evaluateEraRequirements } from "../src/engine/era";
+import { houseRequirementRows } from "./autoplayStallProbe";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
@@ -42,6 +45,27 @@ function interior(state: GameState) {
     placeableOffField: placeable.filter(site => !onField(site.tx, site.ty)).length, lotsNeeded: Math.max(0, LORD_MODE_POLICY.maxHousingLots - state.houses.length) };
 }
 
+/**
+ * What a stalled town waits for (the user's split of "other", 2026-10-10): the next era's unmet conditions, the houses
+ * below level 4 and what each lacks (water, bread, a market or church serving it, the wall's protection), and the open
+ * building sites with their stall and the materials they still want.
+ */
+function waiting(state: GameState) {
+  const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met).map(requirement => `${requirement.key}:${requirement.current}/${requirement.target}`);
+  const below = houseRequirementRows(state).filter(house => house.level < 4);
+  const lacks: Record<string, number> = {};
+  for (const house of below) {
+    const missing = [!house.water ? "water" : null, !house.bread ? "bread" : null, house.market !== "served" ? `market:${house.market}` : null,
+      house.church !== "served" ? `church:${house.church}` : null, house.protection === "outside" ? "outside_wall" : null].filter(entry => entry !== null);
+    for (const key of missing) lacks[key!] = (lacks[key!] ?? 0) + 1;
+  }
+  const sites = state.constructionSites.filter(isBuildingConstructionSite).map(site => {
+    const need = Object.entries(constructionDeliveryNeed(site)).filter(([, amount]) => (amount ?? 0) > 0).map(([resource, amount]) => `${resource}${amount}`).join("+");
+    return `${site.kind}:${site.stall ?? "none"}${need === "" ? "" : `:${need}`}`;
+  });
+  return { unmet, belowL4: below.length, lacks, sites };
+}
+
 function row(state: GameState, year: number) {
   const kinds: Record<string, number> = {};
   for (const building of state.buildings) kinds[building.kind] = (kinds[building.kind] ?? 0) + 1;
@@ -56,7 +80,7 @@ function row(state: GameState, year: number) {
     buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
-    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state) };
+    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state) };
 }
 
 /** Renderer A's state bundle and the next Astra play (2026-10-10): saves a season after the market charter, some years on, and at the end. */
