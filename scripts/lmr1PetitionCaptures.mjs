@@ -13,6 +13,7 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/lmr1PetitionCaptures.mjs)", { remote: "scripts/remote/run.sh render-LMR1-petitions-<sha7> -- bash scripts/lmr1PetitionCaptures.sh", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 
 const [out] = process.argv.slice(2);
@@ -87,16 +88,18 @@ for (const kind of KINDS) {
     if (grant) { row.card = await card(page); row.bytes = await shoot(page, `home-${kind}`); bytes += row.bytes; }
     const before = await proof(page);
     await page.locator(`.lord-card .petition-option[data-grant="${grant}"], .lord-card [data-choose="${grant ? 'grant' : 'refuse'}"]`).first().click(); await page.waitForTimeout(600);
+    // RECEIPTS: the answered card turns over to its receipt; [확인] closes it.
+    const receipt = await closeAnswerReceipt(page);
     const after = await proof(page);
     const answered = after.petitions.find(p => p.id === petition.id);
     const shown = row.card?.answers.find(answer => answer.grant === String(grant));
     row.answers[grant ? 'grant' : 'refuse'] = { status: answered?.status ?? null, decidedBy: answered?.decidedBy ?? null, treasury: after.treasury - before.treasury,
-      shownTreasury: shown === undefined ? null : Number(shown.treasury), closed: (await page.locator('.lord-card').count()) === 0 };
+      shownTreasury: shown === undefined ? null : Number(shown.treasury), receipt, closed: (await page.locator('.lord-card').count()) === 0 };
     await context.close();
   }
   row.pictureOk = ART[kind] ? row.card?.art !== null && Array.isArray(row.card?.loaded) && row.card.loaded[0] === 960 : row.card?.art === null && row.card?.src === null;
   row.answersOk = ['grant', 'refuse'].every(key => row.answers[key].status === (key === 'grant' ? 'granted' : 'refused') && row.answers[key].decidedBy === 'lord'
-    && row.answers[key].treasury === row.answers[key].shownTreasury && row.answers[key].closed);
+    && row.answers[key].treasury === row.answers[key].shownTreasury && row.answers[key].receipt && row.answers[key].closed);
   rows[`home-${kind}`] = row;
   console.log(`${row.opened && row.pictureOk && row.answersOk ? 'ok ' : 'BAD'} home-${kind}: art ${row.card?.art} ${JSON.stringify(row.card?.loaded)} · ${JSON.stringify(row.answers)}`);
 }
@@ -119,10 +122,12 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
   const shown = await card(page);
   const size = opened ? await shoot(page, 'request') : 0; bytes += size;
   const before = await proof(page);
-  if (opened) { await page.locator('.lord-card .petition-option[data-grant="true"]').first().click(); await page.waitForTimeout(800); }
+  // DEC-CARD: the request's grant is the heavy card's [data-choose]; RECEIPTS: its receipt closed with [확인].
+  if (opened) { await page.locator('.lord-card .petition-option[data-grant="true"], .lord-card [data-choose="grant"]').first().click(); await page.waitForTimeout(800); }
+  const receipt = opened && await closeAnswerReceipt(page);
   const after = await proof(page);
-  rows.request = { opened, card: shown, bytes: size, before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
-  console.log(`${opened ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}`);
+  rows.request = { opened, card: shown, bytes: size, receipt, before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
+  console.log(`${opened && receipt ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}, receipt ${receipt}`);
   await context.close();
 }
 // 5. The guardian case.

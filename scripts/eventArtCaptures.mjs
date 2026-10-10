@@ -14,6 +14,7 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/eventArtCaptures.mjs)", { remote: "scripts/remote/run.sh render-EVENTART-card -- bash scripts/eventArtCaptures.sh", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { registryOfferView } from '../src/ui/registryCardModel.ts';
 
@@ -101,12 +102,14 @@ const rows = {};
   const pick = viewed.choices.find(entry => entry.enabled && !entry.hold);
   const choice = { ...shown.answers.find(answer => answer.choice === pick.id), treasury: shown.answers.find(answer => answer.choice === pick.id)?.treasury ?? String(pick.treasury) };
   await page.locator(`${CARD} .registry-card-option[data-choice="${choice.choice}"], ${CARD} [data-choose="${choice.choice}"]`).first().click(); await page.waitForTimeout(800);
+  // RECEIPTS: the answered card turns over to its receipt; [확인] closes it.
+  const receipt = await closeAnswerReceipt(page);
   const after = await proof(page);
   const answered = after.occurrences.find(o => o.id === offer.id);
   rows.drawn = { opened, card: shown, bytes: size, choice: choice.choice, status: answered?.status ?? null, choiceId: answered?.choiceId ?? null,
-    dues: [before.dues, after.dues], treasury: after.treasury - before.treasury, shownTreasury: Number(choice.treasury), closed: (await page.locator(CARD).count()) === 0 };
+    dues: [before.dues, after.dues], treasury: after.treasury - before.treasury, shownTreasury: Number(choice.treasury), receipt, closed: (await page.locator(CARD).count()) === 0 };
   const ok = opened && Array.isArray(shown.loaded) && shown.loaded[0] === 960 && shown.loaded[1] === 540 && shown.why.length >= 2 && shown.answers.every(answer => !answer.primary)
-    && shown.answers.every(answer => (answer.line ?? '') !== '') && answered?.status === 'answered' && answered.choiceId === choice.choice && rows.drawn.closed
+    && shown.answers.every(answer => (answer.line ?? '') !== '') && answered?.status === 'answered' && answered.choiceId === choice.choice && receipt && rows.drawn.closed
     && rows.drawn.treasury === (Number.isNaN(rows.drawn.shownTreasury) ? 0 : rows.drawn.shownTreasury);
   rows.drawn.ok = ok;
   console.log(`${ok ? 'ok ' : 'BAD'} drawn ${offer.entryId}: art ${shown.art} ${JSON.stringify(shown.loaded)} why ${JSON.stringify(shown.why)} → ${choice.choice} ${answered?.status} treasury ${rows.drawn.treasury} (shown ${choice.treasury})`);
@@ -138,10 +141,11 @@ const rows = {};
   const hold = shownHold === null ? null : { ...shownHold, cost: shownHold.cost ?? holdView?.cost ?? null };
   const size = opened ? await shoot(page, CARD, `card-hold-${shown.entry}`, 40) : 0;
   if (hold !== null) { await page.locator(`${CARD} .registry-card-option[data-choice="${hold.choice}"], ${CARD} [data-choose="${hold.choice}"]`).first().click(); await page.waitForTimeout(800); }
+  const receipt = hold !== null && await closeAnswerReceipt(page);
   const after = (await proof(page)).occurrences.find(o => o.id === shown?.occurrence) ?? null;
   rows.hold = { opened, entry: shown?.entry ?? null, offer: held?.id ?? null, shownOffer: shown?.occurrence ?? null, choice: hold?.choice ?? null, cost: hold?.cost ?? null, line: hold?.line ?? null,
-    status: after?.status ?? null, kept: after?.hold ?? null, closed: (await page.locator(CARD).count()) === 0, bytes: size };
-  rows.hold.ok = opened && hold !== null && (hold.cost ?? '').startsWith('보류') && after?.status === 'answered' && after.choiceId === hold.choice && after.hold !== null && rows.hold.closed;
+    status: after?.status ?? null, kept: after?.hold ?? null, receipt, closed: (await page.locator(CARD).count()) === 0, bytes: size };
+  rows.hold.ok = opened && hold !== null && (hold.cost ?? '').startsWith('보류') && after?.status === 'answered' && after.choiceId === hold.choice && after.hold !== null && receipt && rows.hold.closed;
   console.log(`${rows.hold.ok ? 'ok ' : 'BAD'} hold: ${JSON.stringify(rows.hold)}`);
   await context.close();
 }

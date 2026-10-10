@@ -18,6 +18,7 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/play2Captures.mjs)", { remote: "scripts/remote/run.sh render-PLAY2-captures-<sha7> --light -- bash scripts/play2Captures.sh", entry: import.meta.url });
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 
 const [out] = process.argv.slice(2);
@@ -130,6 +131,8 @@ if (wanted('famine-campaign')) {
     if (modal) {
       row.chose = await click(page, ".famine-decision [data-choose='laissez_faire']");
       await page.waitForTimeout(600);
+      // RECEIPTS-2: the answered famine card turns over to its receipt; [확인] closes it (time stays stopped until then).
+      row.receipt = await closeAnswerReceipt(page);
       row.modalAfter = await visible(page, '.famine-decision');
       // The scene starts paused: the story beats are sampled as the town runs, so the answered card shows once time
       // moves (a player's game resumes as the card closes) — a moment at 1×.
@@ -142,7 +145,7 @@ if (wanted('famine-campaign')) {
         row.bytes = await shoot(page, 'famine-campaign'); bytes += row.bytes;
       }
     }
-    report('famine-campaign', row, (row.card?.text ?? '').includes('남은 병목') && !(row.card?.text ?? '').includes('다음에 바꿀 조건'));
+    report('famine-campaign', row, row.receipt === true && (row.card?.text ?? '').includes('남은 병목') && !(row.card?.text ?? '').includes('다음에 바꿀 조건'));
     await context.close();
   }
 }
