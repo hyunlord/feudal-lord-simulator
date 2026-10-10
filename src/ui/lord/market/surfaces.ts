@@ -62,7 +62,11 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.famine.market", root: ".event-card[data-chip-id^='famine:']", frame: "css", scene: marketScene("market-proclaimed", "&story-delay=8000"),
     open: chipCard("famine:"), scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"],
     data: "a season after the proclamation, the great famine's chip (1315–17, the bot's answer given) as its card: its line, until when" },
-  { id: "lord.negotiation.market", ...HOST, scene: YEARS, open: openLordScreen("marriage"), requires: [".lord-neg-head h3"],
+  // The treaty's parts draw once their pictures load (uiPartArt), and the frame's inset moves the clauses as they do: the
+  // row waits for them (on a loaded DGX one cell was measured before and painted after — render-MARKET-geometry-f09f0de).
+  { id: "lord.negotiation.market", ...HOST, scene: YEARS, requires: [".lord-neg-head h3"],
+    open: [...openLordScreen("marriage"), { wait: ".lord-neg-treaty[data-art='drawn'] .lord-neg-seal[data-art='drawn']", timeout: 20_000 },
+      { wait: ".lord-neg-treaty .lord-neg-row[data-frame='flat']", timeout: 20_000 }, { pause: 400 }],
     data: "the marriage page four years after the proclamation" },
   { id: "lord.region.market", ...HOST, scene: YEARS, open: openLordScreen("region"), requires: ["h3", ".lord-region-map", ".lord-region-site"],
     siblingsNoOverlap: [".lord-region-site", ".lord-region-zoom"], data: "the region map four years after the proclamation: the estates held and the neighbours" },
