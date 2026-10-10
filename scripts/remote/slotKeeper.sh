@@ -100,7 +100,9 @@ fence_lift() { # <g|e>
   FFD[$line]=""; FPATH[$line]=""
 }
 fences_front() { fence_set g "$FRONT"; fence_set e "$FRONT"; rm -f "$D/served/$FENCE"; }
-trap 'fence_lift g; fence_lift e; rm -f "$D/served/$FENCE"; log "slot keeper stopped: the fences are lifted, every copy follows its own rules"; exit 0' TERM INT
+# Stopping lifts every fence of the keeper's, by name too: a TERM between fence_set's rename and its bookkeeping would
+# leave the new fence standing (seen once in 30 runs of tests/slotKeeper.test.ts on the DGX, 2026-10-10).
+trap 'fence_lift g; fence_lift e; rm -f "$GQ"/*-"$FENCE" "$EQ"/*-"$FENCE" "$D"/.fence-*-$$ "$D/served/$FENCE"; log "slot keeper stopped: the fences are lifted, every copy follows its own rules"; exit 0' TERM INT
 
 # --- what waits, what runs ----------------------------------------------------------------------------------------
 live() { # <dir>: its live tickets, oldest first, fences left out (a stale ticket is removed, as the clients do)
