@@ -13,3 +13,6 @@
 기존 [0b04 결과](changed-result.json)와 [원본](test-changed-0b04cd0.json.gz)은 그대로 유지했다. 이번 기록은9ad 전체 tree에 적용되며 후속 문서·증거 변경이 저장소 읽기 시험에 영향을 주는지는 최종 `check:merge`/`test:changed`에서 다시 판정해야 한다. **기하·125년 연결률·native 해시·전체 목표 완료를 증명하지 않는다.**
 
 원본은 `.remote-runs/engineB-tlink-final-changed-9ad9253/` 및 공식 kept 실행에 보존한다. 재수집 명령은 `scripts/remote/run.sh --fetch engineB-tlink-final-changed-9ad9253`이며 여기서는 원격 작업을 수행하지 않았다. 압축 전후 SHA는 결과 JSON, 보관 파일 SHA는 `SHA256SUMS`에 있다. gzip 복원 byte 일치·source/tree·실행/재사용 집합·종료 코드·로그 시험 합계를 검사했다.
+
+
+최신 기하 실행 `engineB-tlink-final-geometry-9ad9253`도 깨끗한9ad에서 통과했다. [공식 보고서](../uiaudit1/geometry/engineB-tlink-final-geometry-9ad9253/geometry.json): 기존27행·같은5화면×2문구×2수치의540조건, 실패0·미개방0·경고96, command3293.9초.056 초기 미개방3조건은 공식 재시도에서 통과했으며 원래3개 캡처를 보존했다. 축을 좁히지 않았고 예외를 추가하지 않았다. 이 축에390px는 없으므로 별도 관계 브라우저의 오른쪽 잘림을 해결했다는 뜻은 아니다.
