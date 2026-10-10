@@ -95,7 +95,10 @@ for (const kind of KINDS) {
   const row = { petition: petition.id, answers: {} };
   for (const grant of [true, false]) {
     const { context, page } = await open(state);
-    row.opened = await waitCard(page, `.lord-card[data-home-petition="${kind}"]`);
+    // A card put off by a slow load (or after a story card) is reached through its chip, as a player does.
+    const selector = `.lord-card[data-home-petition="${kind}"]`;
+    row.opened = await waitCard(page, selector) || await fromChip(page, 'home_petition', selector);
+    if (!row.opened) { row.answers[grant ? 'grant' : 'refuse'] = { status: null }; await context.close(); continue; }
     if (grant) { row.card = await card(page); row.bytes = await shoot(page, `home-${kind}`); bytes += row.bytes; }
     const before = await proof(page);
     await page.locator(`.lord-card .petition-option[data-grant="${grant}"], .lord-card [data-choose="${grant ? 'grant' : 'refuse'}"]`).first().click(); await page.waitForTimeout(600);
