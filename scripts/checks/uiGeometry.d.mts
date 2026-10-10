@@ -17,6 +17,9 @@ export declare function isSafePath(path: string, importedTests?: ReadonlySet<str
 export declare function importedTests(rev: string, cwd?: string, files?: Map<string, string>): Set<string>;
 export declare function unsafeChanges(from: string, to: string, cwd?: string, cache?: Map<string, unknown>): {
   readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null };
+export type Covered = { readonly commit: string; readonly what: string; readonly files: number };
+export declare function coveredChanges(from: string, base: string | null, head: string, cwd?: string, cache?: Map<string, unknown>): {
+  readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null; readonly covered: readonly Covered[] };
 export type RetryNotes = { readonly run: string | null; readonly timeouts: number; readonly failedThrice: number; readonly cellsRetried: number; readonly treesRetried: number;
   readonly conditions: number | null; readonly rows: readonly string[]; readonly again: readonly string[]; readonly previousRun: string | null };
 export declare function retryNotes(summary: unknown, head: string, cwd?: string): RetryNotes | null;
@@ -29,9 +32,9 @@ export declare function defaultSummaryPath(options: { readonly explicit: string 
 export declare function rowRunsInRange(base: string | null, head: string, cwd?: string): string[];
 export declare function reportFailures(report: unknown): { keys: string[]; measured: Map<string, Set<string>> };
 export type RowRun = { readonly run: string; readonly ok: boolean; readonly reasons: readonly string[]; readonly commit?: string; readonly rows?: readonly string[];
-  readonly cells?: number; readonly failures?: number; readonly moved?: number | null; readonly superseded?: boolean };
+  readonly cells?: number; readonly failures?: number; readonly moved?: number | null; readonly superseded?: boolean; readonly covered?: readonly Covered[] };
 export declare function checkRowRun(options: { readonly run: string; readonly head: string; readonly baseline: readonly string[];
-  readonly exceptions: readonly GeometryException[]; readonly cwd?: string; readonly cache?: Map<string, unknown> }): RowRun;
+  readonly exceptions: readonly GeometryException[]; readonly cwd?: string; readonly cache?: Map<string, unknown>; readonly base?: string | null }): RowRun;
 export declare function geometryInputHash(inputs: readonly string[]): string;
 export declare function logWarnOverride(result: object, options?: { readonly top?: string; readonly head?: string }): string | null;
 export declare function gateMode(env?: Readonly<Record<string, string | undefined>>): "warn" | "enforce";
@@ -47,6 +50,6 @@ export declare function checkUiGeometry(options: { readonly base?: string | null
   readonly skipped: boolean; readonly mode: "warn" | "enforce"; readonly ok: boolean; readonly pass: boolean; readonly reasons: readonly string[];
   readonly summary?: unknown; readonly comparison?: unknown; readonly unchanged?: boolean;
   readonly rangeChanges?: { readonly changed: number; readonly unsafe: readonly string[]; readonly reaching: number | null } | null; readonly override?: { readonly reason?: string; readonly refused?: string } | null;
-  readonly rowRuns?: readonly RowRun[] | null; readonly retries?: RetryNotes | null;
+  readonly rowRuns?: readonly RowRun[] | null; readonly retries?: RetryNotes | null; readonly sharedCovered?: readonly Covered[];
 };
 export declare function formatUiGeometryResult(result: object): string;

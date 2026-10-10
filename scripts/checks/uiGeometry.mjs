@@ -248,6 +248,62 @@ export function unsafeChanges(from, to, cwd = process.cwd(), cache = new Map()) 
 /** The reason line for unsafe changes since a measurement. */
 const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length} file(s) off the safe list changed since it was measured at ${commit.slice(0, 8)} (${changes.reaching === null ? 'the import closure could not be read' : `${changes.reaching} of them reach the UI or the audit by import`}): ${changes.unsafe.slice(0, 6).join(', ')}${changes.unsafe.length > 6 ? ` … ${changes.unsafe.length - 6} more` : ''} — audit again`;
 
+/**
+ * RR26 covered (user ruling 2026-10-10 — a full audit takes 5 hours and the trunk moves meanwhile, so a result was
+ * refused for changes the trunk's own pushes had already audited): the changes since a result's commit `from` that leave
+ * it stale at `head`, less what trunk pushes since then covered. Only the commits this push brings (base..head) are
+ * judged: a file they change stays a reason. A file they do not change comes as the trunk has it at `base`; it is
+ * covered when the trunk's own pushes audited that content — the base's first-parent commits not in `from`'s history (a
+ * result measured on a branch counts the trunk pushes since the branch left it; a fast-forward push puts its own commits
+ * on that line) are searched from the last one that changed the file up to the base for evidence pushed in the range
+ * each merged (first parent..it): a UI-Geometry-Run trailer whose report there measured a tree with the file exactly as
+ * at `base`, or a new full shared result measured so; failing that, the nearest commit with evidence, if it carries a
+ * UI-Geometry-Override reason (covered, and listed) rather than a measurement. Without a base nothing is covered.
+ * What this gives up: a later push no longer re-measures an earlier push's rows by chance, catching their cross effects
+ * — the nightly full audit does.
+ */
+export function coveredChanges(from, base, head, cwd = process.cwd(), cache = new Map()) {
+  const changes = unsafeChanges(from, head, cwd, cache);
+  if (base === null || changes.unsafe.length === 0) return { ...changes, covered: [] };
+  const names = (a, b) => execFileSync('git', ['diff', '--name-only', '--no-renames', '-z', a, b], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0').filter(Boolean);
+  const blob = (rev, path) => { try { return git(['rev-parse', '--verify', '--quiet', `${rev}:${path}`], cwd).trim(); } catch { return null; } };
+  const brought = new Set(names(base, head));
+  const unsafe = new Set(changes.unsafe);
+  const line = git(['rev-list', '--first-parent', base, `^${from}`], cwd).split('\n').filter(Boolean);   // newest first
+  // What each trunk commit changed (of the files that matter) and the evidence pushed in the range it merged.
+  const steps = line.map(commit => {
+    const measured = rowRunsInRange(`${commit}^1`, commit, cwd).flatMap(run => {
+      const report = readJson(commit, `${UI_GEOMETRY_RUNS}/${run}/geometry.json`, cwd);
+      return /^[0-9a-f]{40}$/.test(String(report?.commit ?? '')) ? [{ what: `UI-Geometry-Run ${run}`, at: report.commit }] : [];
+    });
+    const summary = readJson(commit, UI_GEOMETRY_SUMMARY, cwd);
+    if (summary?.full === true && /^[0-9a-f]{40}$/.test(String(summary.commit ?? '')) && readJson(`${commit}^1`, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run) measured.push({ what: `full audit ${summary.run}`, at: summary.commit });
+    return { commit, files: new Set(names(`${commit}^1`, commit).filter(path => unsafe.has(path))), measured, overrides: overridesInRange(`${commit}^1`, commit, cwd).map(item => item.reason) };
+  });
+  const coverOf = path => {
+    const last = steps.findIndex(step => step.files.has(path));
+    if (last === -1) return null;
+    const want = blob(base, path);
+    for (let k = last; k >= 0; k -= 1) for (const item of steps[k].measured) if (blob(item.at, path) === want) return { commit: steps[k].commit, what: item.what };
+    for (let k = last; k >= 0; k -= 1) {
+      if (steps[k].overrides.length > 0) return { commit: steps[k].commit, what: `override, recorded: ${steps[k].overrides.join(' | ')}` };
+      if (steps[k].measured.length > 0) return null;
+    }
+    return null;
+  };
+  const left = []; const covers = new Map();
+  for (const path of changes.unsafe) {
+    const cover = brought.has(path) ? null : coverOf(path);
+    if (cover === null) { left.push(path); continue; }
+    const key = `${cover.commit} ${cover.what}`; covers.set(key, { ...cover, files: (covers.get(key)?.files ?? 0) + 1 });
+  }
+  const closure = cache.get(`closure:${head}`) ?? null;
+  return { changed: changes.changed, unsafe: left, reaching: closure === null ? changes.reaching : left.filter(path => closure.has(path)).length, covered: [...covers.values()] };
+}
+
+/** The line naming the trunk pushes that covered changes since a result (RR26 covered). */
+const coveredLine = (what, covered) => covered.length === 0 ? [] : [`    ${what}: changes since covered by trunk pushes — ${covered.map(item => `${item.commit.slice(0, 8)} (${item.what}; ${item.files} file(s))`).join(', ')}`];
+
 /** Whether `commit` is a commit here and an ancestor of `head`: 'ok' | 'missing' | 'not-ancestor'. */
 export function measuredAt(commit, head, cwd) {
   try { execFileSync('git', ['cat-file', '-e', `${commit}^{commit}`], { cwd, stdio: 'ignore' }); } catch { return 'missing'; }
@@ -329,7 +385,7 @@ export function reportFailures(report) {
 }
 
 /** One changed-rows run against <head> (RR26): ok, the reasons it is not, and the evidence. */
-export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd(), cache = new Map() }) {
+export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd(), cache = new Map(), base = null }) {
   const report = readJson(head, `${UI_GEOMETRY_RUNS}/${run}/geometry.json`, cwd);
   if (report === null) return { run, ok: false, reasons: [`run ${run}: no ${UI_GEOMETRY_RUNS}/${run}/geometry.json at ${head.slice(0, 8)} (commit the run's report)`] };
   const reasons = [];
@@ -341,7 +397,7 @@ export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd
     const at = measuredAt(commit, head, cwd);
     if (at === 'missing') reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not here`);
     else if (at === 'not-ancestor') reasons.push(`run ${run}: its measured commit ${commit.slice(0, 8)} is not in the pushed history (amended or rebased away): audit again`);
-    else { changes = unsafeChanges(commit, head, cwd, cache); if (changes.unsafe.length > 0) reasons.push(unsafeLine(`run ${run}`, commit, changes)); }
+    else { changes = coveredChanges(commit, base, head, cwd, cache); if (changes.unsafe.length > 0) reasons.push(unsafeLine(`run ${run}`, commit, changes)); }
   }
   if (report.axesNarrowed !== false) reasons.push(`run ${run}: ${report.axesNarrowed === true ? 'narrowed by --viewports, --copy or --numbers' : 'its report does not say it measured every condition (an audit from before RR26)'}: audit the rows in every condition`);
   // A report that leaves out what it must say fails (the audit always writes these fields).
@@ -359,7 +415,7 @@ export function checkRowRun({ run, head, baseline, exceptions, cwd = process.cwd
   if (comparison.fixed.length > 0) reasons.push(`run ${run}: ${comparison.fixed.length} baseline entr(ies) of its rows fixed, drop them (npm run ui-geometry:baseline):`, ...sample(comparison.fixed));
   const moved = changes === null ? null : changes.changed;
   const cells = [...measured.values()].reduce((sum, set) => sum + set.size, 0);
-  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved };
+  return { run, ok: reasons.length === 0, reasons, commit, rows: [...measured.keys()].sort(), cells, failures: comparison.failures, moved, covered: changes?.covered ?? [] };
 }
 
 /** The UI-Geometry-Override trailers of base..head (the head alone without a base): [{ commit, reason }]. */
@@ -400,13 +456,13 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
   const sharedFull = summary !== null && summary.full === true;
   if (!unchanged && summary === null) reasons.push(`no ${UI_GEOMETRY_SUMMARY} at ${head.slice(0, 8)}`);
   else if (!unchanged && !sharedFull) reasons.push(`the shared result (run ${summary.run ?? '?'}, ${summary.rows ?? '?'} row(s)) is not a full audit: a changed-rows run counts only through its own report and a UI-Geometry-Run trailer (RR26)`);
-  let sharedStale = false;
+  let sharedStale = false; let sharedCovered = [];
   if (!unchanged && sharedFull) {
     const commit = /^[0-9a-f]{40}$/.test(String(summary.commit ?? '')) ? summary.commit : '';
     const at = commit === '' ? 'missing' : measuredAt(commit, head, cwd);
     if (at !== 'ok') { sharedStale = true; reasons.push(`the shared result (run ${summary.run ?? '?'}): its measured commit ${commit.slice(0, 8) || '(none)'} is ${at === 'missing' ? 'not here' : 'not in the pushed history'}: refresh it — npm run remote:ui-geometry`); }
     else {
-      const changes = unsafeChanges(commit, head, cwd, cache);
+      const changes = coveredChanges(commit, base, head, cwd, cache); sharedCovered = changes.covered;
       if (changes.unsafe.length > 0) { sharedStale = true; reasons.push(`${unsafeLine(`the shared result (run ${summary.run ?? '?'})`, commit, changes)}: refresh it — npm run remote:ui-geometry, commit docs/verification/uiaudit1/geometry.json (and npm run ui-geometry:baseline if something was fixed)`); }
     }
   }
@@ -435,7 +491,7 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
       // new one, so the old trailer must not keep refusing).
       const covered = new Set(); rowRuns = [];
       for (const run of runs) {
-        const entry = checkRowRun({ run, head, baseline: baselineFile?.entries ?? [], exceptions, cwd, cache });
+        const entry = checkRowRun({ run, head, baseline: baselineFile?.entries ?? [], exceptions, cwd, cache, base });
         const rows = entry.rows ?? [];
         if (rows.length > 0 && rows.every(row => covered.has(row))) { rowRuns.push({ ...entry, ok: true, superseded: true, reasons: [] }); continue; }
         // A named run with no report or no measured row counts for nothing; a newer valid named run supersedes it.
@@ -471,7 +527,7 @@ export function checkUiGeometry({ base = null, head, cwd = process.cwd(), mode =
     else override = { reason };
   }
   const pass = ok || (mode === 'warn' && env.FLS_UI_GEOMETRY_GATE !== 'warn') || override?.reason !== undefined;
-  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns,
+  return { skipped: false, mode, ok, pass, reasons: override?.refused === undefined ? reasons : [...reasons, `override refused: ${override.refused}`], summary, comparison, unchanged, rangeChanges, override, rowRuns, sharedCovered,
     // The retries of a shared result this range brings (a new audit): its rate and the rows it retried again.
     retries: summary !== null && (base === null || readJson(base, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run) ? retryNotes(summary, head, cwd) : null };
 }
@@ -507,11 +563,11 @@ export function formatUiGeometryResult(result) {
   if (result.ok && result.unchanged) return [`ui-geometry: only files on the safe list changed (${result.rangeChanges.changed}): no audit needed (RR26)${tag}`, ...retryLines(result.retries)].join('\n');
   if (result.ok && result.rowRuns) return [`ui-geometry: changed rows accepted (decision RR26)${tag}`, ...result.rowRuns.map(entry => entry.superseded
     ? `  run ${entry.run}: superseded — ${entry.rows.length > 0 ? `a newer named run measured its rows (${entry.rows.join(', ')}) again` : 'it has no report or no measured row, and a newer named run holds'}`
-    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`), ...retryLines(result.retries)].join('\n');
-  if (result.ok) return [`ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`, ...retryLines(result.retries)].join('\n');
+    : `  run ${entry.run} (commit ${entry.commit.slice(0, 8)}): ${entry.rows.length} row(s), ${entry.cells} cell(s), no new failure; ${entry.moved} file(s) changed since it was measured, all on the safe list — ${entry.rows.slice(0, 4).join(', ')}${entry.rows.length > 4 ? ' …' : ''}`), ...result.rowRuns.flatMap(entry => coveredLine(`run ${entry.run}`, entry.covered ?? [])), ...retryLines(result.retries)].join('\n');
+  if (result.ok) return [`ui-geometry: run ${result.summary.run}, no new failure${counts}${tag}`, ...coveredLine(`the shared result (run ${result.summary.run})`, result.sharedCovered ?? []), ...retryLines(result.retries)].join('\n');
   const lines = [`ui-geometry: ${result.pass ? 'not green' : 'FAILED'}${counts}${tag}`];
   for (const reason of result.reasons) lines.push(reason.startsWith('    ') ? reason : `  ${reason}`);
-  return [...lines, ...retryLines(result.retries)].join('\n');
+  return [...lines, ...(result.summary ? coveredLine(`the shared result (run ${result.summary.run})`, result.sharedCovered ?? []) : []), ...retryLines(result.retries)].join('\n');
 }
 
 if (isMain(import.meta.url)) {
