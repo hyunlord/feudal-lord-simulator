@@ -12,6 +12,12 @@ const YEARS = marketScene("market-years");
 /** The goal slot's settlement progress opened (the era console inside it), as the registry's ERA_CONSOLE_OPEN. */
 const ERA_CONSOLE_OPEN: readonly OpenStep[] = [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }];
 const HOST = { root: ".slot-panel.lord-screen", frame: "css", scrollParts: [".lord-screen-nav", ".lord-screen-content"] } as const;
+/** market-years with the story's chips coming after a delay that outlasts the scene's setup (GEO-D1). */
+const CHIPS_YEARS = marketScene("market-years", "&story-delay=8000");
+/** The chips come (a first wait past the delay), a card that opened by itself put off. */
+const CHIPS_COME: readonly OpenStep[] = [{ wait: ".event-chip", timeout: 90_000 }, { wait: ".story-modal", timeout: 20_000, optional: true }, { dismiss: [".story-modal-later"] }];
+const chipCard = (head: string): readonly OpenStep[] => [{ wait: `.event-chip[data-chip-id^='${head}']`, timeout: 90_000 }, ...CHIPS_COME.slice(1), { pause: 400 },
+  { click: `.event-chip[data-chip-id^='${head}']` }, { pause: 600 }];
 const LEDGER_LORD: readonly OpenStep[] = [{ click: "[data-dock='ledger']" }, { click: "[data-ledger-tab='lord']" }, { pause: 500 }];
 
 export const MARKET_SURFACES: readonly SurfaceRow[] = [
@@ -37,13 +43,19 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
     data: "the estates screen four years after the proclamation: the totals, the attention, the estates held, the home card" },
   { id: "lord.ledger.market", ...HOST, scene: YEARS, open: openLordScreen("ledger"), requires: [".lord-ledger-book", ".lord-ledger-suit", ".lord-ledger-defence"],
     siblingsNoOverlap: [".lord-ledger-suit"], data: "the ledger four years after the proclamation: the promises, four closed suits and a house's suit against the lord at its evidence stage, his defence" },
-  // A suit against the lord (the engine's lordMattersDue) as its chip's card; the chip comes after the story's delay, which
-  // outlasts the scene's setup (GEO-D1), and the first wait outlasts the delay.
-  { id: "hud.event-card.suit-defence.market", root: ".event-card[data-chip-id^='suit-defence:']", frame: "css", scene: marketScene("market-years", "&story-delay=8000"),
-    open: [{ wait: ".event-chip[data-chip-id^='suit-defence:']", timeout: 90_000 }, { wait: ".story-modal", timeout: 20_000, optional: true }, { dismiss: [".story-modal-later"] },
-      { pause: 400 }, { click: ".event-chip[data-chip-id^='suit-defence:']" }, { pause: 600 }], scroll: "y",
+  // The chips the states hold, and their cards: each chip comes after the story's delay, which outlasts the scene's setup,
+  // and the first wait outlasts the delay (GEO-D1); a card that opened by itself is put off first.
+  { id: "hud.event-chips.market", root: ".event-cards", frame: "flat", scene: CHIPS_YEARS, open: [...CHIPS_COME, { pause: 500 }],
+    requires: [".event-chip[data-chip-id^='suit-defence:']", ".event-chip[data-chip-id^='lord-moment:']"],
+    data: "four years after the proclamation, the rail's chips: a house's suit against the lord, the lord's moment, the last decision's trace" },
+  { id: "hud.event-card.suit-defence.market", root: ".event-card[data-chip-id^='suit-defence:']", frame: "css", scene: CHIPS_YEARS, open: chipCard("suit-defence:"), scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"],
     data: "four years after the proclamation, a house's suit against the lord as its chip's card: its filing, its stage and next season, the button to the ledger" },
+  { id: "hud.event-card.lord-moment.market", root: ".event-card[data-chip-id^='lord-moment:']", frame: "css", scene: CHIPS_YEARS, open: chipCard("lord-moment:"), scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "four years after the proclamation, the lord's latest moment as its chip's card: the ledger's sentence" },
+  { id: "hud.event-card.famine.market", root: ".event-card[data-chip-id^='famine:']", frame: "css", scene: marketScene("market-proclaimed", "&story-delay=8000"),
+    open: chipCard("famine:"), scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"],
+    data: "a season after the proclamation, the great famine's chip (1315–17, the bot's answer given) as its card: its line, until when" },
   { id: "lord.negotiation.market", ...HOST, scene: YEARS, open: openLordScreen("marriage"), requires: [".lord-neg-head h3"],
     data: "the marriage page four years after the proclamation" },
   { id: "lord.region.market", ...HOST, scene: YEARS, open: openLordScreen("region"), requires: ["h3", ".lord-region-map", ".lord-region-site"],
