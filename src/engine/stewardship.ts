@@ -291,6 +291,12 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   let tenants = oversight.tenants, merchants = oversight.merchants;
   let incomeDelta = 0, keptExtra = 0;
   const number = estateNumber(estate.id);
+  // A pending duplicate is settled under the existing refusal, never charged as the lord's unanswered choice.
+  if (charterPetitionSuppressed(state, oversight)) {
+    stewardship = { ...stewardship, petitions: stewardship.petitions.map(petition =>
+      petition.estateId === estate.id && petition.kind === "charter_request" && petition.status === "open"
+        ? { ...petition, status: "refused" as const, decidedBy: "steward" as const } : petition) };
+  }
   // Petitions brought to the lord and not answered by their deadline lapse (refused, and the wait remembered).
   const lapsed = stewardship.petitions.filter(petition => petition.estateId === estate.id && petition.status === "open" && state.tick > petition.deadline);
   for (const petition of lapsed) {

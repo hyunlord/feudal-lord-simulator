@@ -227,3 +227,7 @@ RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engine
 ### 무효과 요청서 선행 게시
 
 완료된194건 요청서·전수 근거는 문서 전용 가지 `codex/engine-b-inert-request`의 `3fff29d3cd96579ef0335c9922e30c2953095e18`로 먼저 게시하고 원격 해시를 확인했다. `engineB-inert-194-docs-3fff29d`136/136·exit0과 `check:merge`를 통과했다. 새 도구 코드는 이 격리 시제품 가지에만 있으며 본선 병합을 뜻하지 않는다.
+
+### EB-INERT 후속의 RR22 정정
+
+사용자의 최신 지시에 따라 위 측정 도구 네 개의 안전 목록 추가 요청은 철회한다. 안전 목록을 손으로 넓히지 않는다. REMOTE의 그림자 측정(a′)이 판단 근거이며, EB-INERT는 격리 가지에서 검토한다. 본선 통합 때 엔진의 src 변경에 따른 기하 감사는 별도 수행한다.

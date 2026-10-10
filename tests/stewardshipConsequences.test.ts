@@ -3,7 +3,7 @@ import test from 'node:test';
 import type { GameState } from '../src/engine/engine.types';
 import { advanceStewardship, answerAudit, answerEstatePetition, pendingAudits, stewardshipOf } from '../src/engine/stewardship';
 import { treasuryBalance } from '../src/ledger/ledger';
-import { delegated } from './helpers/engineBTlinkFixtures';
+import { delegated, transition } from './helpers/engineBTlinkFixtures';
 
 function saturated(): GameState {
   const state = delegated(), own = stewardshipOf(state);
@@ -121,4 +121,17 @@ test('a stale direct audit command cannot answer a report-only audit', () => {
   const before = saturated(), own = stewardshipOf(before);
   const clean = { ...before, stewardship: { ...own, audits: own.audits.map(row => ({ ...row, revealedErrors: 0 })) } };
   assert.equal(answerAudit(clean, 'audit-test', 'tolerate'), clean);
+});
+
+
+test('suppressed backlog becomes a steward report instead of blaming the lord for an unavailable answer', () => {
+  const before = saturated(), own = stewardshipOf(before), petition = own.petitions[0];
+  assert.ok(petition);
+  const queued = { ...before, stewardship: { ...own, petitions: [...own.petitions, { ...petition, id: 'charter-backlog' }] } };
+  const first = answerEstatePetition(queued, 'charter-test', false);
+  const next = transition(first, 3000, advanceStewardship).after;
+  const backlog = stewardshipOf(next).petitions.find(row => row.id === 'charter-backlog');
+  assert.equal(backlog?.status, 'refused');
+  assert.equal(backlog?.decidedBy, 'steward');
+  assert.equal(next.history?.records.some(row => row.template === 'decision.lapsed' && row.params?.subjectId === 'charter-backlog'), false);
 });

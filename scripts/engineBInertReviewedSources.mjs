@@ -30,7 +30,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/stewardship.ts",
-    "sha256": "a741dcd1d432eab20a969d11e09e971ad41105630259ce189139f3dc49b447e0"
+    "sha256": "6d44e8147ecc80d5b28ce433018169e6463b98196fb7beb77640dca5d220cbe7"
   },
   {
     "path": "src/engine/history.ts",
