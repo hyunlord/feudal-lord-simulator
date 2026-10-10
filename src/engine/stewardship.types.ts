@@ -27,7 +27,16 @@ export interface CharterResistance {
   readonly retryAfter: number;
 }
 
+export interface AuditTolerance {
+  readonly auditId: string;
+  readonly since: number;
+  readonly baselineLoss: number;
+  readonly baselineLoyalty: number;
+  readonly perSeason: number;
+}
+
 export interface StewardRecord {
+  readonly auditTolerance?: AuditTolerance;
   /** Uncorrected accounting practices create new losses over the following quarters. */
   readonly toleratedErrors?: readonly ToleratedAuditErrors[];
   readonly personId: string;
@@ -118,6 +127,8 @@ export interface QuarterSummary {
 
 /** SW-6: an estate's audit at Michaelmas. */
 export interface AuditRecord {
+  readonly decidedBy?: "steward" | "lord";
+  readonly policyAuditId?: string;
   /** Disclosed money left unrecovered at settlement; informational, never a second debit. */
   readonly unrecovered?: number;
   readonly id: string;

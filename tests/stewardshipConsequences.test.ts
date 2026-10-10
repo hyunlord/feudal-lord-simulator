@@ -77,11 +77,12 @@ test('charter resistance ends after four quarters and retry suppression has a re
 
 test('audit recurrence exhausts four quarters and clips losses to actual available income', async () => {
   const { toleratedSeasonLoss } = await import('../src/engine/stewardshipConsequences');
-  const state = answerAudit(saturated(), 'audit-test', 'tolerate');
+  const before = saturated(), own = stewardshipOf(before);
+  const state = { ...before, stewardship: { ...own, stewards: own.stewards.map(row => row.personId === 'current'
+    ? { ...row, toleratedErrors: [{ auditId: 'legacy-audit', unrecovered: 160, perSeason: 10, remainingSeasons: 4 }] } : row) } };
   let record = stewardshipOf(state).stewards.find(row => row.personId === 'current');
   assert.ok(record);
   assert.equal(record.toleratedErrors?.[0]?.unrecovered, 160);
-  assert.equal(stewardshipOf(state).audits[0]?.unrecovered, 160);
   for (let quarter = 0; quarter < 4; quarter++) {
     const result = toleratedSeasonLoss(state, record, 3);
     assert.equal(result.loss, 3);

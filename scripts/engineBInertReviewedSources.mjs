@@ -30,11 +30,11 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/stewardship.ts",
-    "sha256": "6d44e8147ecc80d5b28ce433018169e6463b98196fb7beb77640dca5d220cbe7"
+    "sha256": "a349b28c46488eb1363da369e4742fcf3330a2218ec422f102ea46a1b105f173"
   },
   {
     "path": "src/engine/history.ts",
-    "sha256": "8fdb4158b9ecb8f364d077115203da12b623f0475b99cda96d8c8ae5c4b69f3a"
+    "sha256": "f198e59cb4965cc07b3f2d9164a2a7224f32e0da81ac2595951de018042db9ac"
   },
   {
     "path": "src/engine/decisionTrace.ts",
@@ -50,22 +50,34 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/stewardshipConsequences.ts",
-    "sha256": "ad205b7d350b80478590b5fc86dc43e62346261c70f9b5299efc1b8a5db71286"
+    "sha256": "32c22ddfe991686278bba028faaa6c59e3ba67711b92a076d91973bd36cd92d5"
   },
   {
     "path": "src/content/stewardshipConsequencesConfig.ts",
-    "sha256": "8e204b67031fafb47ebb120d3f3d3fffd00ac6c068656c4bb960b73e876a09aa"
+    "sha256": "f9694f7b1e0af3a87df2ed994072d17daa72da397f17a232b77fb38d4d202195"
   },
   {
     "path": "src/engine/decisionTraceStewardshipLosses.ts",
-    "sha256": "5297dc2d439804c9bae052a541b5192182c588fa581ec52c667f6cd0d6c9c3c9"
+    "sha256": "8d902dac1547d7af43fd5b5b042c50c5ddc6e31c9dd66177c0fbdd5583813197"
   },
   {
     "path": "src/engine/decisionTraceEstateRelations.ts",
-    "sha256": "d3367dfd4215281aea075241570b56f12bc3aadfb7107084690463fbe66502ee"
+    "sha256": "0c182d9c95c0072f58e1fab945436fe7ac22fbb741ee3c01434d62755836e3e0"
   },
   {
     "path": "src/content/balanceConfig.ts",
     "sha256": "2e39f6a1b7ef0cfce6dc9baf822de332e723bf7fd3f468729dfeddae36f52bb3"
+  },
+  {
+    "path": "src/engine/auditTolerancePolicy.ts",
+    "sha256": "baf6099bef355bd0184b5a778ce0c45b228efecd1e96906d36186fa28dde9b62"
+  },
+  {
+    "path": "src/engine/decisionTraceAnswers.ts",
+    "sha256": "8cd77be552f4d0e9e9083b817b9e2d9c382a90c3902e9e3f9e5ff120916a0950"
+  },
+  {
+    "path": "src/engine/answerEffectCapture.ts",
+    "sha256": "af8059aaa6cd5987dff9d9447db5e5b6bd089852dfa19e58647545801981a13c"
   }
 ];

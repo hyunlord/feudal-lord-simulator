@@ -61,6 +61,8 @@ export interface EstateRelationEvidence {
 }
 
 export interface TracedAnswerContribution extends TracedDecision {
+  /** Absent for legacy answers; an empty array records no semantic change. */
+  readonly effects?: readonly import("./answerEffects.types").AnswerEffect[];
   readonly estateRelationEvidence?: readonly EstateRelationEvidence[];
   readonly threadId: string;
   readonly memoryEvidence: readonly { readonly factionId: string; readonly recordId: string; readonly tick: number; readonly delta: number; readonly reason: string }[];

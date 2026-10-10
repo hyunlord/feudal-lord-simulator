@@ -1,3 +1,4 @@
+import { answerEffectsProblem } from './answerEffectsValidation';
 import { PRESSURE_BALANCE } from '../content/balanceConfig';
 import { DECISION_WEIGHTS, STANDING_SETTINGS } from '../content/stewardPolicyConfig';
 import type { TracedDecisionKind } from '../engine/decisionTrace.types';
@@ -58,6 +59,10 @@ export function traceAnswerProblem(state: Readonly<Record<string, unknown>>): st
         if (dimensions.has(key)) return `${at}.estateRelationEvidence repeats a dimension`;
         dimensions.add(key);
       }
+    }
+    if (Object.hasOwn(answer, 'effects')) {
+      const problem = answerEffectsProblem(answer.effects);
+      if (problem !== null) return `${at}.${problem}`;
     }
     if (!Array.isArray(answer.memoryEvidence)) return `${at}.memoryEvidence must be an array`;
     const memories = new Set<string>();

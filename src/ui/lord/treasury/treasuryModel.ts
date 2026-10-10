@@ -24,6 +24,7 @@ const KIND_ORDER: readonly TreasuryKind[] = ["rents_dues", "petitions", "contrac
 export type TreasuryGroupRow = Readonly<{ group: TreasuryKind; line: string; amount: number; parts: readonly string[] }>;
 export type TreasuryEstateRow = Readonly<{ estateId: string; name: string; home: boolean; net: string; amount: number; groups: readonly TreasuryGroupRow[] }>;
 export type TreasuryView = Readonly<{
+  toleranceLosses: readonly { readonly id: string; readonly amount: number; readonly line: string }[];
   window: string; net: string; settled: string; estates: readonly TreasuryEstateRow[]; unattributed: string | null; none: string | null; note: string;
 }>;
 
@@ -57,7 +58,11 @@ export const treasuryByEstate = perState((state: GameState): TreasuryView | null
     const amount = lines.reduce((sum, line) => sum + line.income - line.expense, 0);
     return { estateId, name: estateName(state, estateId), home: estateId === HOME_ESTATE_ID, amount, net: COPY.net(amount), groups: groupRows(lines) };
   }).sort((left, right) => rank(left.estateId) - rank(right.estateId) || Math.abs(right.amount) - Math.abs(left.amount) || left.estateId.localeCompare(right.estateId));
-  return { window: COPY.window(calendarLabel({ ...state, tick: first }), calendarLabel(state)), net: COPY.net(breakdown.net),
+  const toleranceLosses = (state.ledger?.entries ?? []).filter(entry => entry.category === "audit_tolerance_loss"
+    && entry.account === "cash" && entry.tick >= first && entry.tick <= state.tick && entry.amount < 0)
+    .map(entry => ({ id: entry.id, amount: entry.amount,
+      line: COPY.toleranceLoss(calendarLabel({ ...state, tick: entry.tick }), entry.amount) }));
+  return { toleranceLosses, window: COPY.window(calendarLabel({ ...state, tick: first }), calendarLabel(state)), net: COPY.net(breakdown.net),
     settled: breakdown.settled ? COPY.settled : COPY.unsettled, estates,
     unattributed: breakdown.unattributed === 0 ? null : COPY.unattributed(breakdown.unattributed),
     none: estates.length === 0 ? COPY.none : null, note: COPY.homeNote };

@@ -5,5 +5,6 @@ export const STEWARDSHIP_CONSEQUENCES = {
   charterRecoveryAbove: -80,
   charterTradeLossPermille: 250,
   toleranceSeasons: 4,
+  toleranceEscalationMultiplier: 2,
   toleranceLossDivisor: 16,
 } as const;

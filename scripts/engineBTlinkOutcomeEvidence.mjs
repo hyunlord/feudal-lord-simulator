@@ -61,7 +61,27 @@ function scalarKind(row, path) {
     && stableItem(row, path.slice(0, 3), 'estateId') && typeof old === 'string' && typeof current === 'string') return 'person';
   if (path.length === 2 && path[0] === 'agency' && path[1] === 'duesPermille' && numeric(old) && numeric(current)) return 'rights';
   if (path.length === 2 && path[0] === 'agency' && path[1] === 'policy' && typeof old === 'string' && typeof current === 'string') return 'command-state';
+  if (path.length === 3 && prefix(path, ['stewardship', 'standing'])
+    && (old === undefined || ['customary', 'lenient', 'strict', 'lord'].includes(old))
+    && (current === undefined || ['customary', 'lenient', 'strict', 'lord'].includes(current))
+    && (old ?? 'customary') !== (current ?? 'customary')) {
+    const auditKey = path[2].startsWith('audit:');
+    const stewards = row.after.stewardship?.stewards ?? [];
+    if (!auditKey || stewards.some(steward => path[2] === `audit:${steward.estateId}:${steward.personId}`)) return 'command-state';
+  }
   return null;
+}
+
+// New optional policy containers arrive as one delta; inspect every leaf so unknown writes remain visible.
+function policyDeltaPaths(row, path) {
+  const policy = prefix(path, ['stewardship', 'standing'])
+    || path.length >= 4 && prefix(path, ['stewardship', 'stewards']) && path[3] === 'auditTolerance';
+  if (!policy) return [path];
+  const before = at(row.before, path), after = at(row.after, path);
+  const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+  if (!object(before) && !object(after)) return [path];
+  const keys = [...new Set([...Object.keys(object(before) ? before : {}), ...Object.keys(object(after) ? after : {})])];
+  return keys.filter(field => !isDeepStrictEqual(before?.[field], after?.[field])).flatMap(field => policyDeltaPaths(row, [...path, field]));
 }
 
 function reviewedScope(row, inertProfile) {
@@ -92,7 +112,11 @@ function reviewedScope(row, inertProfile) {
       && before.stewardId === after.stewardId && before.estateId === after.estateId
       && numeric(before.tick) && before.tick <= row.tick && numeric(before.deadline) && before.deadline >= row.tick) {
       add([...steward, 'loyalty'], 'relation'); bookkeeping.push([...base, 'status']);
-      if (inertProfile) bookkeeping.push([...base, 'unrecovered'], [...steward, 'toleratedErrors']);
+      if (inertProfile) {
+        bookkeeping.push([...base, 'unrecovered'], [...base, 'decidedBy'], [...steward, 'toleratedErrors']);
+        for (const field of ['auditId', 'since', 'baselineLoss', 'baselineLoyalty', 'perSeason'])
+          bookkeeping.push([...steward, 'auditTolerance', field]);
+      }
       complete = true; review = 'stewardship.ts:543-552; history.ts:1110-1115';
     }
   }
@@ -115,11 +139,15 @@ export function buildTlinkOutcomeEvidence(loaded) {
       if (!value.beforePresent || !value.afterPresent || !numeric(value.before) || !numeric(value.after)) scope.complete = false;
       else effects.set(key(path), value);
     }
-    for (const delta of row.deltaPaths) {
-      const path = delta.path;
+    for (const path of row.deltaPaths.flatMap(delta => policyDeltaPaths(row, delta.path))) {
       if (effects.has(key(path))) continue;
       const kind = scalarKind(row, path);
-      const bookkeeping = scope.bookkeeping.some(base => prefix(path, base));
+      const policyMetadata = path[3] === 'auditTolerance';
+      const knownPolicyValue = value => value === undefined || (path[4] === 'auditId'
+        ? typeof value === 'string' && value.length > 0 : Number.isSafeInteger(value) && value >= 0);
+      const bookkeeping = scope.bookkeeping.some(base => policyMetadata
+        ? key(path) === key(base) && knownPolicyValue(at(row.before, path)) && knownPolicyValue(at(row.after, path))
+        : prefix(path, base));
       if (kind) effects.set(key(path), effect(row, path, kind));
       else if (bookkeeping) effects.set(key(path), effect(row, path, 'bookkeeping'));
       else unknown.push(path);

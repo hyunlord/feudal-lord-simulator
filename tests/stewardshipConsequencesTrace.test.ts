@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { MICHAELMAS_IN_YEAR } from '../src/content/stewardshipConfig';
 import test from 'node:test';
 import { gameReducer } from '../src/state/gameStore';
 import { advanceStewardship } from '../src/engine/stewardship';
@@ -66,20 +67,19 @@ function tolerate(state: GameState, id: string) {
   return { after, own };
 }
 
-test('two tolerated audits keep distinct exact causes on actual later error loss', () => {
+test('a renewed tolerance policy supersedes the former answer for subsequent loss', () => {
   // Given two separately tolerated audits of the same steward.
   const first = tolerate(delegated(), 'audit-a');
   const second = tolerate(first.after, 'audit-b');
   // When his next season produces the actual continuing losses.
   const next = transition(second.after, 2000, advanceStewardship).after;
-  // Then both own answers link the same existing account, with the realized total.
+  // Then only the renewed policy owns subsequent loss.
   const receipts = [first.own, second.own].map(own => linked(next, own.id, 'decision_effect').filter(row => row.template === 'stewardship.season'));
-  assert.equal(receipts[0]?.length, 1);
+  assert.equal(receipts[0]?.length, 0);
   assert.equal(receipts[1]?.length, 1);
-  assert.equal(receipts[0]?.[0]?.id, receipts[1]?.[0]?.id);
   const summary = next.stewardship?.summaries.at(-1);
-  assert.ok(summary?.toleratedLosses?.length === 2);
-  assert.equal(receipts[0]?.[0]?.params?.toleratedError, summary.toleratedLosses.reduce((total, loss) => total + loss.amount, 0));
+  assert.ok(summary?.toleratedLosses?.length === 1);
+  assert.equal(receipts[1]?.[0]?.params?.toleratedError, summary.toleratedLosses.reduce((total, loss) => total + loss.amount, 0));
 });
 
 test('a zero-income season creates no monetary consequence for either pressure', () => {
@@ -134,7 +134,7 @@ test('registry tolerance owns the exact settled audit and its later realized los
   const receipts = linked(next, own.id, 'decision_effect').filter(row => row.template === 'stewardship.season');
   assert.equal(receipts.length, 1);
   assert.ok(Number(receipts[0]?.params?.toleratedError) > 0);
-  assert.match(historySummary(receipts[0]!), /묵인한 뒤 장부 손실/);
+  assert.match(historySummary(receipts[0]!), /눈감아 준 오류로 이번 철 수입 −/);
 });
 
 test('registry replacement never acquires the unchosen tolerance target or loss', () => {
@@ -162,4 +162,64 @@ test('unsupported registry hold retains no petition target, while an actual refu
   const targets = contribution(refused.after, refused.ownId).targets;
   assert.ok(targets.includes('estate_petition:repair-a'));
   assert.ok(!targets.includes('estate_petition:repair-b'));
+});
+
+test('persistent tolerance loss keeps its answer after three years without changing answer-time effects', () => {
+  // Given an enacted policy whose answer snapshot is already fixed.
+  const result = tolerate(delegated(), 'durable-audit');
+  const snapshot = result.own.effects;
+  // When a real season runs after the ordinary trace window.
+  const next = transition(result.after, 16000, advanceStewardship).after;
+  // Then its actual loss keeps exact provenance and the original receipt stays immutable.
+  const receipts = linked(next, result.own.id, 'decision_effect').filter(row => row.template === 'stewardship.season');
+  assert.equal(receipts.length, 1);
+  assert.ok(Number(receipts[0]?.params?.toleratedError) > 0);
+  assert.deepEqual(next.trace?.answers?.find(row => row.id === result.own.id)?.effects, snapshot);
+});
+
+test('tolerance and withdrawal receipts record actual standing policy changes as oversight effects', () => {
+  // Given an accepted tolerance policy.
+  const result = tolerate(delegated(), 'policy-audit');
+  const path = 'stewardship.standing.audit:delegated-estate:current';
+  assert.ok(result.own.effects?.every(row => !['unrecovered', 'auditId', 'since'].includes(row.path.at(-1) ?? '')));
+  const accepted = result.own.effects?.find(row => row.path.join('.') === path);
+  assert.equal(accepted?.target, 'oversight');
+  assert.equal(accepted?.after, 'lenient');
+  // When the lord withdraws that policy.
+  const next = gameReducer(result.after, { type: 'set_standing_policy', kind: 'audit:delegated-estate:current', setting: 'lord' });
+  // Then the withdrawal's immutable receipt records the real policy transition.
+  const revoked = next.trace?.answers?.at(-1)?.effects?.find(row => row.path.join('.') === path);
+  assert.equal(revoked?.before, 'lenient');
+  assert.equal(revoked?.after, 'lord');
+  assert.equal(revoked?.delta, null);
+});
+
+test('automatic tolerance audit produces a report without a new lord answer', () => {
+  // Given a high threshold policy and a loyal steward with modest newly found errors.
+  const result = tolerate(delegated(), 'report-audit');
+  assert.ok(result.after.stewardship);
+  const prepared = { ...result.after, stewardship: { ...result.after.stewardship,
+    stewards: result.after.stewardship.stewards.map(row => ({ ...row, errors: 1, kept: 0 })) } };
+  // When Michaelmas closes the next audit.
+  const next = transition(prepared, MICHAELMAS_IN_YEAR, advanceStewardship).after;
+  // Then no new answer is fabricated and the discovered errors appear as a low-priority report.
+  assert.deepEqual(next.trace?.answers, prepared.trace?.answers);
+  const receipt = next.history?.records.find(row => row.template === 'stewardship.audit_found' && row.params?.standingTolerance === 1);
+  assert.ok(receipt);
+  assert.match(historySummary(receipt), /청지기 보고/);
+});
+
+test('legacy finite tolerated pressure retains its original causal receipt', () => {
+  // Given a legacy pressure without a persistent policy field.
+  const result = tolerate(delegated(), 'legacy-audit');
+  assert.ok(result.after.stewardship);
+  const legacy = { ...result.after, stewardship: { ...result.after.stewardship, standing: {},
+    stewards: result.after.stewardship.stewards.map(row => {
+      const { auditTolerance: _policy, ...rest } = row;
+      return { ...rest, toleratedErrors: [{ auditId: 'legacy-audit', unrecovered: 8, perSeason: 1, remainingSeasons: 2 }] };
+    }) } };
+  // When its remaining consequence is realized.
+  const next = transition(legacy, 2000, advanceStewardship).after;
+  // Then the existing answer still owns the real loss.
+  assert.equal(linked(next, result.own.id, 'decision_effect').filter(row => row.template === 'stewardship.season').length, 1);
 });

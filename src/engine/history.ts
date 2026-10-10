@@ -1115,7 +1115,8 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     const old = was?.audits.find(entry => entry.id === audit.id);
     if (old === undefined) {
       line(audit.status === "clean" ? "stewardship.audit_clean" : "stewardship.audit_found",
-        { house: house(audit.estateId), stewardId: audit.stewardId, mode: audit.mode, kept: audit.revealedKept, errors: audit.revealedErrors }, 2);
+        { house: house(audit.estateId), stewardId: audit.stewardId, mode: audit.mode, kept: audit.revealedKept, errors: audit.revealedErrors,
+          ...(audit.decidedBy === "steward" ? { standingTolerance: 1 } : {}) }, audit.decidedBy === "steward" ? 0 : 2);
     } else if (old.status === "pending" && audit.status !== "pending") {
       line("stewardship.audit_answered", { stewardId: audit.stewardId, choice: audit.status, recovered: audit.status === "punished" ? Math.round(audit.revealedKept * PUNISH_RECOVERY / 1000) : 0 }, 2);
       // A punished steward's faction remembers it (its relation moves through the ledger).

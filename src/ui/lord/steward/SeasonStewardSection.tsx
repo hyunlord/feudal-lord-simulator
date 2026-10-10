@@ -18,6 +18,7 @@ export function SeasonStewardSection({ view, onPolicy }: {
       {view.none === null ? null : <p className="season-steward-line">{view.none}</p>}
       {view.handled === null ? null : <p className="season-steward-line">{view.handled}</p>}
       {view.money === null ? null : <p className="season-steward-line">{view.money}</p>}
+      {view.toleratedLosses.map((line, index) => <p key={index} className="season-steward-line">{line}</p>)}
       {view.relations.map(line => <p key={line} className="season-steward-line season-steward-relation">{line}</p>)}
       {view.items.length === 0 ? null : <ul className="season-steward-items">
         {view.items.map(item => (

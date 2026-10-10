@@ -16,7 +16,14 @@ export function stewardshipConsequencesProblem(state: Readonly<Record<string, un
       return 'stewardship.oversight.charterResistance is invalid';
   }
   if (Array.isArray(own.stewards)) for (const row of own.stewards) {
-    if (!object(row) || !Object.hasOwn(row, 'toleratedErrors')) continue;
+    if (!object(row)) continue;
+    if (Object.hasOwn(row, 'auditTolerance')) {
+      const policy = row.auditTolerance;
+      if (!object(policy) || !text(policy.auditId) || !integer(policy.since, 0, end)
+        || !integer(policy.baselineLoss, 0) || !integer(policy.baselineLoyalty, 0, 100) || !integer(policy.perSeason, 0))
+        return 'stewardship.stewards.auditTolerance is invalid';
+    }
+    if (!Object.hasOwn(row, 'toleratedErrors')) continue;
     if (!Array.isArray(row.toleratedErrors)) return 'stewardship.stewards.toleratedErrors must be an array';
     const ids = new Set<string>();
     for (const pressure of row.toleratedErrors) {
@@ -27,6 +34,12 @@ export function stewardshipConsequencesProblem(state: Readonly<Record<string, un
     }
   }
   if (Array.isArray(own.audits)) for (const row of own.audits) {
+    if (!object(row)) continue;
+    if (Object.hasOwn(row, 'decidedBy') && row.decidedBy !== 'lord' && row.decidedBy !== 'steward')
+      return 'stewardship.audits.decidedBy is invalid';
+    if (row.decidedBy === 'steward' && (row.status !== 'tolerated' || !text(row.policyAuditId))
+      || Object.hasOwn(row, 'policyAuditId') && (row.decidedBy !== 'steward' || !text(row.policyAuditId)))
+      return 'stewardship.audits.policyAuditId is invalid';
     if (object(row) && Object.hasOwn(row, 'unrecovered') && !integer(row.unrecovered, 0))
       return 'stewardship.audits.unrecovered must be a nonnegative integer';
   }

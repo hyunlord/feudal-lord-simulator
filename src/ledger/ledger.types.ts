@@ -41,7 +41,7 @@ export const LEDGER_CATEGORIES = [
   // LM-E3 (NG-6, NG-7): the cash a marriage contract pays, and the promised payments kept (pension, debt, a favour).
   "marriage_portion", "promise_payment",
   // LM-E4 (SW-7, SW-6): an off-map estate's season as its accounts show it, and what an audit's punishment recovered.
-  "estate_income", "audit_recovery",
+  "estate_income", "audit_recovery", "audit_tolerance_loss",
   // LM-E9 (ER-4, ER-7): a registry answer's payment, and a timed instalment plan's yearly payment.
   "registry_settlement", "instalment",
   // DEC-TRACE §3: a faction's gift to the treasury, and what a faction demands of it.

@@ -79,3 +79,25 @@ test('prepared v57 fixture contains real active pressures, realized losses and t
   assert.equal(exact.length, 2);
   assert.ok(exact.every(answer => causes.includes(answer.id)));
 });
+
+test('standing tolerance provenance validates even without legacy finite pressures', () => {
+  const state = delegated(); assert.ok(state.stewardship);
+  const own = state.stewardship;
+  const policy = { auditId: 'retained', since: 100, baselineLoss: 48, baselineLoyalty: 100, perSeason: 3 };
+  const withPolicy = (auditTolerance: unknown) => ({ ...state, stewardship: { ...own,
+    stewards: own.stewards.map(row => ({ ...row, auditTolerance })) } });
+  assert.doesNotThrow(() => assertGameStateSnapshot(withPolicy(policy)));
+  for (const invalid of [null, { ...policy, auditId: '' }, { ...policy, since: state.tick + 1 },
+    { ...policy, baselineLoss: -1 }, { ...policy, baselineLoyalty: 101 }, { ...policy, perSeason: 0.5 }]) {
+    assert.throws(() => assertGameStateSnapshot(withPolicy(invalid)), /auditTolerance/);
+  }
+});
+
+test('automatic audit provenance rejects unknown actors and absent source IDs', () => {
+  const state = pressured();
+  for (const provenance of [{ decidedBy: 'unknown' }, { decidedBy: 'steward', policyAuditId: '' },
+    { decidedBy: 'steward' }, { decidedBy: 'lord', policyAuditId: 'other' }]) {
+    assert.throws(() => assertGameStateSnapshot({ ...state, stewardship: { ...state.stewardship,
+      audits: state.stewardship.audits.map(row => ({ ...row, ...provenance })) } }), /audits/);
+  }
+});

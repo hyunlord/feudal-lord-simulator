@@ -43,6 +43,7 @@ export const LEDGER_CATEGORY_LABELS = {
   marriage_portion: "혼인 계약금",
   estate_income: "영지 수입",
   audit_recovery: "감사로 되찾은 돈",
+  audit_tolerance_loss: "눈감아 준 오류로 줄어든 수입",
   faction_gift: "세력의 선물",
   faction_demand: "세력의 요구",
   registry_settlement: "청원·사건 답의 지급",

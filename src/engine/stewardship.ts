@@ -14,6 +14,7 @@ import {
   HOME_PETITION_KINDS,
 } from "../content/stewardshipConfig";
 import { charterPetitionSuppressed, charterRefusal, charterSeasonLoss, reportOnlyAudit, tolerateAuditErrors, toleratedSeasonLoss } from "./stewardshipConsequences";
+import { activeAuditTolerance, auditTolerancePolicyKey, auditToleranceRequiresDecision } from "./auditTolerancePolicy";
 import { lordMode } from "./townAgency";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { DEFAULT_STANDING_SETTING, HOME_PETITION_CUSTOM, STANDING_SETTINGS, type StandingSetting } from "../content/stewardPolicyConfig";
@@ -47,6 +48,12 @@ export const EMPTY_STEWARDSHIP: StewardshipState = { oversight: [], stewards: []
 /** SW-8 API: the stewardship (empty before the lord holds an estate off the map). */
 export function stewardshipOf(state: Pick<GameState, "stewardship">): StewardshipState {
   return state.stewardship ?? EMPTY_STEWARDSHIP;
+}
+
+function revokeAuditPolicy(stewardship: StewardshipState, records: readonly StewardRecord[]): StewardshipState {
+  const keys = records.filter(record => record.auditTolerance !== undefined).map(auditTolerancePolicyKey);
+  if (keys.length === 0) return stewardship;
+  return { ...stewardship, standing: { ...stewardship.standing, ...Object.fromEntries(keys.map(key => [key, "lord" as const])) } };
 }
 
 function withStewardship(state: GameState, stewardship: StewardshipState): GameState {
@@ -166,6 +173,7 @@ function replaceDeadStewards(state: GameState): GameState {
     }
     const successor = [...living(stewardship.stewards)].sort((a, b) => b.loyalty - a.loyalty || a.personId.localeCompare(b.personId))[0]!;
     stewardship = withOversight(withSteward(stewardship, { ...successor, status: "serving", since: state.tick }), { ...oversight, stewardId: successor.personId, since: state.tick });
+    if (lordMode(state)) stewardship = revokeAuditPolicy(stewardship, [successor, steward(stewardship, oversight.stewardId)!]);
     next = withStewardship(next, stewardship);
   }
   return next;
@@ -357,9 +365,12 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   const tolerated = toleratedSeasonLoss(state, record, Math.max(0, income - kept - ordinaryError));
   const error = ordinaryError + tolerated.loss;
   const reported = Math.max(0, income - kept - error);
-  if (reported > 0) {
-    const posted = postLedgerEntries(next, [{ account: "cash", category: "estate_income", amount: reported,
-      sourceRefs: [{ type: "actor", id: `estate:${estate.id}` }, { type: "actor", id: `person:${record.personId}` }] }]);
+  if (reported > 0 || tolerated.loss > 0) {
+    const posted = postLedgerEntries(next, [{ account: "cash", category: "estate_income", amount: reported + tolerated.loss,
+      sourceRefs: [{ type: "actor", id: `estate:${estate.id}` }, { type: "actor", id: `person:${record.personId}` }] },
+    ...tolerated.evidence.map(loss => ({ account: "cash" as const, category: "audit_tolerance_loss" as const, amount: -loss.amount,
+      sourceRefs: [{ type: "actor" as const, id: `estate:${estate.id}` }, { type: "actor" as const, id: `person:${record.personId}` },
+        { type: "claim" as const, id: loss.auditId, detail: "audit" }] as const }))]);
     next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
   }
   oversight = { ...oversight, tenants: clamp(tenants), merchants: clamp(merchants) };
@@ -387,9 +398,14 @@ function michaelmas(state: GameState): GameState {
     const found = hashSeed(state.seed, "audit-find", estateNumber(oversight.estateId), state.tick) % 1000 < find;
     const revealedKept = found ? record.kept : 0;
     const hidden = found ? 0 : record.kept;
-    const audit: AuditRecord = { id: `audit-${stewardship.nextAudit}`, estateId: oversight.estateId, tick: state.tick, stewardId: record.personId,
+    let audit: AuditRecord = { id: `audit-${stewardship.nextAudit}`, estateId: oversight.estateId, tick: state.tick, stewardId: record.personId,
       mode: oversight.auditMode, revealedKept, revealedErrors: record.errors, hidden, status: revealedKept + record.errors > 0 ? "pending" : "clean",
       deadline: state.tick + AUDIT_ANSWER_TICKS };
+    const current = withStewardship(state, stewardship);
+    const tolerance = activeAuditTolerance(current, record);
+    if (auditToleranceRequiresDecision(current, audit, record)) audit = { ...audit, status: "pending" };
+    else if (tolerance !== undefined) audit = { ...audit, status: "tolerated", decidedBy: "steward",
+      policyAuditId: tolerance.auditId, unrecovered: revealedKept + record.errors };
     stewardship = withOversight(withSteward(stewardship, { ...record, kept: 0, errors: 0 }), { ...oversight, undetected: oversight.undetected + hidden });
     stewardship = { ...stewardship, audits: [...stewardship.audits, audit], nextAudit: stewardship.nextAudit + 1,
       ...(oversight.auditMode === "visit" ? { visitTick: state.tick } : {}) };
@@ -440,7 +456,8 @@ export function setEstateOversight(state: GameState, estateId: string, mode: Ove
   if (mode === oversight.mode && chosen === oversight.stewardId) return state;
   const swapped = chosen === oversight.stewardId ? stewardship
     : withSteward(withSteward(stewardship, { ...steward(stewardship, oversight.stewardId)!, status: "candidate" }), { ...record, status: "serving", since: state.tick });
-  return withStewardship(state, withOversight(swapped, { ...oversight, mode, stewardId: chosen, since: state.tick }));
+  const changed = lordMode(state) && chosen !== oversight.stewardId ? revokeAuditPolicy(swapped, [record, steward(stewardship, oversight.stewardId)!]) : swapped;
+  return withStewardship(state, withOversight(changed, { ...oversight, mode, stewardId: chosen, since: state.tick }));
 }
 
 /** SW-5 API: the lord's exceptions (what every steward brings to him). */
@@ -474,6 +491,8 @@ export function precedentReport(state: GameState, startTick = Math.max(0, (Math.
 export function setStandingPolicy(state: GameState, kind: string, setting: StandingSetting): GameState {
   if (state.agency === undefined || !STANDING_SETTINGS.includes(setting)) return state;
   const stewardship = stewardshipOf(state);
+  // Reinstatement requires a fresh audit answer, never an unchecked settings command.
+  if (kind.startsWith("audit:") && setting === "lenient") return state;
   if ((stewardship.standing?.[kind] ?? DEFAULT_STANDING_SETTING) === setting) return state;
   return withStewardship(state, { ...stewardship, standing: { ...(stewardship.standing ?? {}), [kind]: setting } });
 }
@@ -573,11 +592,13 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
   if (reportOnlyAudit(state, audit, record)) return state;
   const oversight = stewardship.oversight.find(entry => entry.estateId === audit.estateId)!;
   const settled = { ...stewardship, audits: stewardship.audits.map(entry => entry.id === auditId
-    ? { ...entry, status: choice === "punish" ? "punished" as const : choice === "replace" ? "replaced" as const : "tolerated" as const } : entry) };
+    ? { ...entry, ...(!lapsed && lordMode(state) ? { decidedBy: "lord" as const } : {}), status: choice === "punish" ? "punished" as const : choice === "replace" ? "replaced" as const : "tolerated" as const } : entry) };
   if (choice === "tolerate") {
-    const tolerated = tolerateAuditErrors(state, { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) }, audit);
+    const loyal = { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) };
+    const tolerated = lapsed ? loyal : tolerateAuditErrors(state, loyal, audit);
     const reported = lordMode(state) ? { ...settled, audits: settled.audits.map(entry => entry.id === audit.id
-      ? { ...entry, unrecovered: audit.revealedKept + audit.revealedErrors } : entry) } : settled;
+      ? { ...entry, unrecovered: audit.revealedKept + audit.revealedErrors, ...(!lapsed ? { decidedBy: "lord" as const } : {}) } : entry),
+      ...(!lapsed ? { standing: { ...settled.standing, [auditTolerancePolicyKey(record)]: "lenient" as const } } : {}) } : settled;
     return withStewardship(state, withSteward(reported, tolerated));
   }
   const successor = auditSuccessor(state, settled, audit, replacementId);
@@ -591,7 +612,7 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
   }
   const updated = withOversight(withSteward(withSteward(settled, { ...record, status: "dismissed" }), { ...successor, status: "serving", since: state.tick }),
     { ...oversight, stewardId: successor.personId, tenants: clamp(oversight.tenants + (choice === "punish" ? PUNISH_TENANTS : 0)), since: state.tick });
-  return withStewardship(next, updated);
+  return withStewardship(next, lordMode(state) ? revokeAuditPolicy(updated, [record, successor]) : updated);
 }
 
 /** SW-6 API: the audits that wait for the lord's answer. */

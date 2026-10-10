@@ -25,8 +25,12 @@ function lossOwners(before: GameState, after: GameState, summary: QuarterSummary
   if (losses.reduce((total, loss) => total + loss.amount, 0) > summary.error) return owners;
   for (const loss of losses) {
     const pressure = steward.toleratedErrors?.find(row => row.auditId === loss.auditId);
+    const policy = steward.auditTolerance;
+    const active = policy?.auditId === loss.auditId
+      && before.stewardship?.standing?.[`audit:${summary.estateId}:${steward.personId}`] === 'lenient';
+    const permitted = active ? policy.perSeason : pressure && pressure.remainingSeasons > 0 ? pressure.perSeason : 0;
     const audit = after.stewardship?.audits.find(row => row.id === loss.auditId);
-    if (loss.amount <= 0 || !pressure || pressure.remainingSeasons <= 0 || loss.amount > pressure.perSeason
+    if (loss.amount <= 0 || loss.amount > permitted
       || audit?.estateId !== summary.estateId || audit.stewardId !== steward.personId || audit.status !== 'tolerated') continue;
     unique(answers.filter(answer => (answer.kind === 'audit' && answer.source === `audit:tolerate:${loss.auditId}`)
       || (answer.kind === 'registry' && answer.targets.includes(`audit:tolerate:${loss.auditId}`))));

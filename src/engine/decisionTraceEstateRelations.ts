@@ -95,10 +95,12 @@ function auditOnlyContinuity(before: GameState, after: GameState, estateId: stri
       && audit.stewardId === old.stewardId && audit.mode === old.auditMode && audit.deadline === after.tick + AUDIT_ANSWER_TICKS
       && audit.revealedErrors === prior.errors && [0, prior.kept].includes(audit.revealedKept)
       && audit.hidden === prior.kept - audit.revealedKept && current.undetected === old.undetected + audit.hidden
-      && audit.status === (audit.revealedKept + prior.errors > 0 ? 'pending' : 'clean')
+      && (audit.status === (audit.revealedKept + prior.errors > 0 ? 'pending' : 'clean')
+        || audit.status === 'tolerated' && audit.decidedBy === 'steward' && prior.auditTolerance !== undefined
+          && previous.standing?.[`audit:${old.estateId}:${old.stewardId}`] === 'lenient')
       && steward.kept === 0 && steward.errors === 0 && prior.ability === steward.ability && prior.loyalty === steward.loyalty
       && prior.disposition === steward.disposition && prior.connection === steward.connection
-      && prior.since === steward.since && prior.status === steward.status && prior.toleratedErrors === steward.toleratedErrors;
+      && prior.since === steward.since && prior.status === steward.status && prior.toleratedErrors === steward.toleratedErrors && prior.auditTolerance === steward.auditTolerance;
   });
 }
 

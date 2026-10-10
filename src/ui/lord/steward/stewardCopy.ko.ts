@@ -11,13 +11,23 @@ export const STEWARD_COPY = {
   /** The four settings, as the screen's buttons and the report's lines name them ("precedent": a save before v52). */
   settings: { customary: "관습대로", lenient: "가볍게", strict: "엄하게", lord: "영주에게" } satisfies Record<StandingSetting, string>,
   precedent: "선례대로",
-  families: { manor: "장원 청원", estate: "지도 밖 영지의 청원", event: "세력이 보내는 작은 일" } as const,
+  families: { manor: "장원 청원", estate: "영지 청원과 감사 방침", event: "세력이 보내는 작은 일" } as const,
   familyLines: {
     manor: "본영 장원의 소작인과 마을이 올리는 청원입니다.",
     estate: "다른 영지의 청지기가 받는 청원입니다. 영주의 예외 규칙(큰 돈·권리·혼인)에 맞으면 방침과 상관없이 영주에게 옵니다.",
     event: "보낸 세력별로 정합니다. 무게가 있는 일(권리·땅·혼인·큰 돈…)은 방침과 상관없이 영주에게 옵니다.",
   } as const,
   /** Event kinds are `sender:<faction>`: the faction's matters. */
+  auditTitle: (name: string) => `${name}의 감사 오류`,
+  auditActive: "오류를 눈감아 줌",
+  auditRevoked: "눈감아 주기를 거둠",
+  auditWithdraw: "눈감아 주기를 거둔다",
+  auditNext: "다음 감사부터 다시 영주의 결정으로 올립니다",
+  auditCost: (amount: number) => `철마다 눈감아 준 오류로 수입 ${moneyFullDelta(-amount)}까지 줄어듭니다`,
+  auditLoss: (estate: string, amount: number) => `${estate} · 눈감아 준 오류로 이번 철 수입 ${moneyFullDelta(-amount)}`,
+  auditReport: (estate: string, amount: number) => `${estate} 감사 · 상시 방침대로 오류 ${moneyFullDelta(amount)}를 보고했습니다`,
+  auditHandled: "감사 보고",
+  auditSteward: "청지기",
   sender: (name: string) => `${name}의 일`,
 
   // --- the season card section ----------------------------------------------------------------------------------------
