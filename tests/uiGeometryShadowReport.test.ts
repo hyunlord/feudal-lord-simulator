@@ -91,6 +91,8 @@ test("SHADOW.md: pushed commits only, both directions, false passes on the carri
     assert.match(text, new RegExp(`\\| ${a.slice(0, 8)} \\| 2026-10-12 09:01 \\| infra \\| \\d+ \\| 바뀐 줄: rows-a \\(10분\\) \\| 1 / 2 \\| \\*\\*거짓 통과\\*\\*: 새 실패 \`hud\\.panel\\|${C1}\\|overflow\\|div\\.panel\``));
     assert.match(text, new RegExp(`\\| ${e.slice(0, 8)} \\| [^|]+ \\| infra \\| \\d+ \\| 바뀐 줄: rows-e \\(5분\\) \\| 1 / 2 \\| 없음 \\| \\*\\*full-2: 새 실패 없음, 못 연 조건 \`lord\\.card\\|${C2}\`\\*\\* \\|`));
     assert.match(text, new RegExp(`\\| ${b.slice(0, 8)} \\| [^|]+ \\| infra \\| the environment: the state folder ui5 changed \\|`));
+    assert.match(text, /그림자 기록이 실제로 시작되는 시점: 그다음 전체 감사부터/);
+    assert.match(text, new RegExp(`a′가 처음 판정한 푸시: ${a.slice(0, 8)} \\(2026-10-12\\)\\.`));
     assert.match(text, /현재: 엇갈린 푸시\(a′가 건너뛰었을 감사\) 2개, 거짓 통과 2개/);
     assert.match(text, /\| 2026-10-12 \| 5 \| 2 \| 15분 \| 1 \| 1 \|/);
     assert.match(text, new RegExp(`\\| 지문 없음 \\| ${d.slice(0, 8)} \\| the DGX did not answer in 5 s \\|`));

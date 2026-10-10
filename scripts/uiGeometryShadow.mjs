@@ -135,6 +135,7 @@ export function formatShadowMarkdown(history) {
   const agree = pushes.filter(push => push.judgement.direction === null && !['undecidable', 'fallback'].includes(push.judgement.aprime));
   const falsePasses = saved.filter(push => (push.carried?.comparison && push.carried.comparison.failures.length + push.carried.comparison.unopened.length > 0)
     || (push.recheck?.status === 'checked' && push.recheck.failures.length + push.recheck.unopened.length > 0));
+  const firstJudged = pushes.find(push => !['fallback', 'undecidable'].includes(push.judgement.aprime));
   const days = pushes.length === 0 ? 0 : Math.floor((Date.parse(pushes.at(-1).record.time) - Date.parse(pushes[0].record.time)) / 86_400_000);
   const lines = ['# RR26 그림자 기록 (a′)', '',
     '사용자 결정(2026-10-10): 관문의 판정은 RR26 안전 목록 그대로이고, a′(측정한 입력)의 판정은 계산해서 기록만 한다. 이 문서는 `node scripts/uiGeometryShadow.mjs`가 DGX의 실행 기록(`~/fls-runs/_shadow/`, check:merge 한 번에 파일 하나)에서 만든다 — 손으로 고치지 않는다.', '',
@@ -142,6 +143,8 @@ export function formatShadowMarkdown(history) {
     '- **판정 불가**: 기록이 없는 본선 구간, 또는 DGX 지문(상태 폴더·Chromium·Playwright·node·시스템 파일·node_modules)을 못 받은 기록. 승격 근거에서 뺀다.',
     '- **안전 목록 대체**: 밑의 공용 결과에 쓸 수 있는 측정 입력이 없어(없음·깨짐·추적 불가·이미 낡음) a′도 안전 목록으로 판정한 푸시. 정의상 RR26과 같다.',
     '- **거짓 통과 확인**: a′라면 건너뛰었을 감사를 푸시가 실제로 가져왔을 때, 그 감사에 앞선 전체 감사에 없던 새 실패나 못 연 조건이 있으면 a′의 거짓 통과다. 바뀐 줄 감사는 그 줄만 비교하고(비교한 줄 / 전체 줄), 다음 전체 감사가 돌면 그 결과로 다시 확인한다. 푸시 전에 실패해 고친 감사는 여기서 보이지 않는다.', '',
+    '**그림자 기록이 실제로 시작되는 시점: 그다음 전체 감사부터**(사용자 판정 2026-10-10). a′는 측정 입력을 단 전체 감사(공용 결과)가 있고 그 측정 목록이 아직 낡지 않은 푸시만 판정한다. 그림자를 들인 푸시의 전체 감사는 곧 이어질 렌더 A의 UI 푸시(바뀐 줄 감사)로 낡으므로(B1), 그 뒤 다음 전체 감사까지의 푸시는 "안전 목록 대체"로 센다(감수).', '',
+    `a′가 처음 판정한 푸시: ${firstJudged === undefined ? `아직 없음 — 그때까지 안전 목록 대체 ${fallback.length}개` : `${short(firstJudged.head)} (${firstJudged.record.time.slice(0, 10)})`}.`, '',
     `기간: ${short(history.since)}..${short(history.trunk)} · 기록된 푸시 ${pushes.length}개(${days}일) · 판정 일치 ${agree.length} · **RR26 감사 필요 / a′ 불필요 ${saved.length}** · **RR26 불필요 / a′ 감사 필요 ${aprimeOnly.length}** · 안전 목록 대체 ${fallback.length} · 판정 불가: 지문 없음 ${undecidable.length}, 기록 없는 구간 ${unrecorded.length}개(커밋 ${unrecorded.reduce((sum, stretch) => sum + stretch.length, 0)}개)`, '',
     `승격 기준(사용자 결정): 2주 또는 엇갈린 푸시 10개 동안 거짓 통과 0, 그리고 의미 있는 절감. 현재: 엇갈린 푸시(a′가 건너뛰었을 감사) ${saved.length}개, 거짓 통과 ${falsePasses.length}개, ${days}일.`, '',
     '## RR26 감사 필요 / a′ 불필요 — a′가 아꼈을 감사', '',
