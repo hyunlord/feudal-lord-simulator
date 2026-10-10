@@ -58,6 +58,57 @@ function verifiedContexts(run, bytes) {
   return byOrdinal;
 }
 
+function verifiedFinalState(run, bytes) {
+  if (bytes === undefined) return null;
+  requireOutcome(bytes instanceof Uint8Array, 'final state bytes invalid');
+  const decoded = gunzipSync(bytes), sha256 = outcomeSha256(decoded);
+  requireOutcome(sha256 === run.manifest.finalComparison.expectedSha256
+    && sha256 === run.manifest.finalComparison.actualSha256 && sha256 === run.manifest.final.stateSha, 'final state hash mismatch');
+  const state = parse(decoded);
+  requireOutcome(state && state.seed === run.raw.seed && state.tick === run.raw.endTick, 'final state seed/tick mismatch');
+  const audits = state.stewardship?.audits;
+  requireOutcome(Array.isArray(audits) && audits.every(audit => audit && typeof audit.id === 'string' && audit.id.length > 0)
+    && new Set(audits.map(audit => audit.id)).size === audits.length, 'final state audit IDs invalid/duplicate');
+  return { audits, sha256, compressedSha256: outcomeSha256(bytes) };
+}
+
+function observedAuditSettlement(run, answer, compatible) {
+  if (!compatible || answer.command !== 'answer_audit' || !run.finalState) return null;
+  const decision = run.history.get(answer.historyId), context = run.contexts?.get(answer.ordinal);
+  const target = decision.params?.subjectId;
+  if (!context || typeof target !== 'string' || !target || context.tick !== answer.tick
+    || context.command.type !== answer.command || context.command.auditId !== target || context.command.choice !== 'tolerate'
+    || decision.params.command !== answer.command || decision.params.chosen !== 'tolerate' || answer.source !== `audit:tolerate:${target}`
+    || !context.stateChanged || !context.agencyPresent || !isDeepStrictEqual(context.history, decision)
+    || !Number.isSafeInteger(context.beforeHistoryLength) || context.beforeHistoryLength < 0
+    || !Number.isSafeInteger(context.afterHistoryLength) || context.afterHistoryLength <= context.beforeHistoryLength) return null;
+  const audit = run.finalState.audits.find(row => row.id === target);
+  if (!audit || audit.status !== 'tolerated' || typeof audit.estateId !== 'string' || !audit.estateId
+    || typeof audit.stewardId !== 'string' || !audit.stewardId || !Number.isSafeInteger(audit.tick) || audit.tick < 0
+    || !Number.isSafeInteger(audit.deadline) || audit.tick > answer.tick || audit.deadline < answer.tick) return null;
+  const answering = [...run.contexts.values()].filter(row => row.command.type === answer.command
+    && row.command.auditId === target && row.stateChanged);
+  if (answering.length !== 1) return null;
+  const own = context.ownRoot;
+  if (own != null && (own.id !== answer.historyId || own.tick !== answer.tick || own.source !== answer.source
+    || !Array.isArray(own.targets) || own.targets.length !== 1 || own.targets[0] !== `estate:${audit.estateId}`)) return null;
+  const receipts = [...run.history.values()].filter(record => record.kind !== 'decision' && record.tick === answer.tick
+    && record.because?.some(cause => cause.decisionId === answer.historyId));
+  if (receipts.length !== 1) return null;
+  const record = receipts[0];
+  if (record.kind !== 'event' || record.template !== 'stewardship.audit_answered'
+    || record.params?.stewardId !== audit.stewardId || record.params.choice !== 'tolerated' || record.params.recovered !== 0
+    || record.because.length !== 1 || record.because[0].decisionId !== answer.historyId || record.because[0].key !== 'decision_effect') return null;
+  return { category: 'immediate-only-observed', reason: 'audit_tolerance_status_settled', processingSettlementOnly: true, loyaltyDeltaObserved: null,
+    evidence: [{ recordId: decision.id, path: ['params'], value: decision.params },
+      { contextOrdinal: context.ordinal, path: ['command'], value: context.command },
+      { contextOrdinal: context.ordinal, path: ['stateChanged'], value: true },
+      { finalStateSha256: run.finalState.sha256, finalStateCompressedSha256: run.finalState.compressedSha256,
+        path: ['stewardship', 'audits'], auditId: target, value: audit },
+      { recordId: record.id, path: ['params'], value: record.params }, { recordId: record.id, path: ['because'], value: record.because }],
+    source: ['src/engine/stewardship.ts:543-552', 'src/engine/history.ts:1110-1115', 'src/engine/decisionTraceAnswerReceipts.ts:62-75'] };
+}
+
 function observedSettlement(run, answer, compatible, contexts) {
   if (!compatible || !['answer_estate_petition', 'answer_counter'].includes(answer.command)) return null;
   const decision = run.history.get(answer.historyId), target = decision.params?.subjectId, chosen = decision.params?.chosen;
@@ -114,7 +165,7 @@ export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, in
       && pins[0].rawSha256 === outcomeSha256(input.rawBytes), 'external replay pin mismatch');
     const run = verifyOutcomeReplay(input);
     requireOutcome(run.raw.seed === seed, 'requested seed mismatch');
-    return { ...run, contexts: verifiedContexts(run, input.contextBytes), contextSha256: input.contextBytes === undefined ? null : outcomeSha256(input.contextBytes) };
+    return { ...run, finalState: verifiedFinalState(run, input.finalStateBytes), contexts: verifiedContexts(run, input.contextBytes), contextSha256: input.contextBytes === undefined ? null : outcomeSha256(input.contextBytes) };
   });
   const recomputed = scoreOutcomeGate(runs, contract, { horizonTicks: config.horizonTicks, ticksPerSeason: config.ticksPerSeason });
   Object.assign(recomputed, { configSha256: outcomeSha256(configBytes), contractSha256: outcomeSha256(contractBytes), scorerHashes: scorerHashes() });
@@ -125,7 +176,7 @@ export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, in
     const phaseSource = PHASE_HISTORY_SOURCES.find(row => row.sha256 === pins.get('src/engine/history.ts'));
     const compatible = sources.every(row => pins.get(row.path) === row.sha256);
     for (const answer of score.answers.filter(row => row.seed === run.raw.seed && row.status !== 'direct')) {
-      const observed = answer.mature ? observedEnforcement(run, answer, compatible) ?? observedSettlement(run, answer, compatible, run.contexts) : null;
+      const observed = answer.mature ? observedAuditSettlement(run, answer, compatible) ?? observedEnforcement(run, answer, compatible) ?? observedSettlement(run, answer, compatible, run.contexts) : null;
       residuals.push({ seed: run.raw.seed, historyId: answer.historyId, ordinal: answer.ordinal, tick: answer.tick, command: answer.command,
         observedFutureReceipts: answer.directReceipts, category: answer.mature ? 'unexplained' : 'insufficient-observation',
         reason: answer.mature ? (compatible ? 'no_supported_retained_domain_proof' : 'matcher_source_mismatch') : 'three_year_window_not_complete',
@@ -163,7 +214,7 @@ export function auditTlinkResiduals({ configBytes, contractBytes, scoreBytes, in
     provenance: { configSha256: outcomeSha256(configBytes), contractSha256: outcomeSha256(contractBytes), inputs: runs.map(run => run.pins),
       toolSha256: outcomeSha256(readFileSync(fileURLToPath(import.meta.url))) },
     limitations: ['Annotations never change the original scorer, denominator, pass flag or receipt sets.',
-      'Immediate matchers cover enforcement, counters and three pinned-context estate settlements only; audit/registry and other unsupported outcomes remain unexplained. Estate settlement does not prove completed repairs or actual relation/treasury deltas.',
+      'Immediate matchers cover enforcement, counters, three pinned-context estate settlements and uniquely joined tolerant audit settlements only; registry and other unsupported outcomes remain unexplained. Audit settlement proves no loyalty delta or future effect. Estate settlement does not prove completed repairs or actual relation/treasury deltas.',
       'A failed enforcement observes failure at that attempt, not proof that all later eligibility conditions stayed false.',
       'Supplemental phase_big is history-based classification, not reconstructed answer-time weights; same-tick results do not count as future receipts.',
       'No missing receipt proves an unmet condition. This audit proves neither rendered visibility nor complete causality nor gameplay acceptance.'] };
@@ -175,8 +226,9 @@ export function runTlinkResiduals(configPath, scorePath, outputPath) {
     && typeof config.contractFile === 'string', 'config paths/seeds missing');
   const inputs = config.seeds.map(seed => {
     const directory = join(resolve(base, config.replayDirectory), `seed-${seed}`);
+    const finalStateFile = ['original-final-state.json.gz', 'final-state.json.gz'].map(name => join(directory, name)).find(path => existsSync(path));
     const contextFile = ['original-contexts.json.gz', 'answer-contexts.json.gz'].map(name => join(directory, name)).find(path => existsSync(path));
-    return { ...(contextFile ? { contextBytes: readFileSync(contextFile) } : {}), format: config.replayFormat, rawBytes: readFileSync(join(resolve(base, config.rawDirectory), `seed-${seed}.json`)),
+    return { ...(finalStateFile ? { finalStateBytes: readFileSync(finalStateFile) } : {}), ...(contextFile ? { contextBytes: readFileSync(contextFile) } : {}), format: config.replayFormat, rawBytes: readFileSync(join(resolve(base, config.rawDirectory), `seed-${seed}.json`)),
       manifestBytes: readFileSync(join(directory, 'manifest.json')), validityBytes: readFileSync(join(directory, 'validity.json')),
       classificationBytes: readFileSync(join(directory, 'answer-classification.json')) };
   });

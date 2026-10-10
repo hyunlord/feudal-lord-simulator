@@ -7,36 +7,46 @@ const { scoreOutcomeGate } = await import(new URL('../scripts/engineBOutcomeGate
 const { auditTlinkResiduals, RESIDUAL_SOURCE_FILES, PHASE_HISTORY_SOURCES } = await import(new URL('../scripts/engineBTlinkResiduals.mjs', import.meta.url).href);
 
 const encode = (value: unknown) => Buffer.from(JSON.stringify(value));
-interface Options { success?: number; target?: string; cause?: string; missing?: boolean; late?: boolean; phase?: boolean; futurePhase?: boolean; incompatible?: boolean; futureAnswer?: boolean; stone?: boolean; wrongPhase?: boolean; baselinePhase?: boolean; phaseLate?: boolean; estate?: 'repair' | 'rent_relief' | 'charter_request'; counter?: boolean; declined?: boolean; contextIssue?: string }
+interface Options { audit?: boolean; auditIssue?: string; success?: number; target?: string; cause?: string; missing?: boolean; late?: boolean; phase?: boolean; futurePhase?: boolean; incompatible?: boolean; futureAnswer?: boolean; stone?: boolean; wrongPhase?: boolean; baselinePhase?: boolean; phaseLate?: boolean; estate?: 'repair' | 'rent_relief' | 'charter_request'; counter?: boolean; declined?: boolean; contextIssue?: string }
 function fixture(options: Options = {}) {
   const tick = options.late ? 499999 : 10;
-  const chosen = options.estate === 'charter_request' ? 'refused' : options.counter ? options.declined ? 'declined' : 'accepted' : 'granted';
-  const command = options.estate ? 'answer_estate_petition' : options.counter ? 'answer_counter' : 'enforce_possession';
-  const row = { ordinal: 1, tick, historyId: 'answer', command, source: options.estate ? `estate_petition:estate-1:${options.estate}:${chosen}` : options.counter ? 'answer_counter:s1' : 'suit:s1:enforce', kind: options.estate ? 'estate_petition' : options.counter ? 'marriage' : 'suit', weights: ['rights'], cameHeavyToLord: true, status: 'classified' };
+  const chosen = options.audit ? 'tolerate' : options.estate === 'charter_request' ? 'refused' : options.counter ? options.declined ? 'declined' : 'accepted' : 'granted';
+  const command = options.audit ? 'answer_audit' : options.estate ? 'answer_estate_petition' : options.counter ? 'answer_counter' : 'enforce_possession';
+  const row = { ordinal: 1, tick, historyId: 'answer', command, source: options.audit ? 'audit:tolerate:s1' : options.estate ? `estate_petition:estate-1:${options.estate}:${chosen}` : options.counter ? 'answer_counter:s1' : 'suit:s1:enforce', kind: options.estate ? 'estate_petition' : options.counter ? 'marriage' : 'suit', weights: ['rights'], cameHeavyToLord: true, status: 'classified' };
   const phase = { ordinal: 2, tick: options.phaseLate ? 499999 : 30, historyId: 'phase', command: options.stone ? 'confirm_stone_town_proclamation' : 'confirm_palisade_proclamation', source: null, kind: null, weights: null, cameHeavyToLord: null, status: 'unclassified' };
   const classification = { rows: options.phase ? [row, phase] : [row], classified: [row], unclassified: options.phase ? [phase] : [], excluded: [], unresolved: [] };
   const history = [
     { id: 'answer', tick, kind: 'decision', template: 'decision.card', params: { command: row.command, subjectId: 's1', chosen } },
-    ...options.missing ? [] : [{ id: 'effect', tick, kind: 'event', template: options.estate ? 'stewardship.lord_decided' : options.counter ? options.declined ? 'negotiation.withdrawn' : 'negotiation.accepted' : 'estate.possession_enforced', params: { kind: options.estate, granted: chosen === 'granted' ? 1 : 0, negotiation: options.target ?? 's1', suit: options.target ?? 's1', attempt: 1, succeeded: options.success ?? 1 }, because: [{ decisionId: options.cause ?? 'answer', key: 'decision_effect' }] }],
+    ...options.missing ? [] : [{ id: 'effect', tick, kind: 'event', template: options.audit ? 'stewardship.audit_answered' : options.estate ? 'stewardship.lord_decided' : options.counter ? options.declined ? 'negotiation.withdrawn' : 'negotiation.accepted' : 'estate.possession_enforced', params: { stewardId: options.auditIssue === 'steward' ? 'other' : 'steward-1', choice: options.auditIssue === 'status' ? 'pending' : 'tolerated', recovered: 0, kind: options.estate, granted: chosen === 'granted' ? 1 : 0, negotiation: options.target ?? 's1', suit: options.target ?? 's1', attempt: 1, succeeded: options.success ?? 1 }, because: [{ decisionId: options.cause ?? 'answer', key: 'decision_effect' }] }],
     ...options.phase ? [{ id: 'phase', tick: phase.tick, kind: 'decision', template: options.wrongPhase ? 'decision.card' : options.stone ? 'decision.stone_town' : 'decision.market_town', params: { decisionKind: options.stone ? 'stone_town' : 'market_town' } }] : [],
     ...options.futureAnswer ? [{ id: 'answer-result', tick: tick + 1, kind: 'event', template: 'consequence', params: {}, because: [{ decisionId: 'answer', key: 'suit_rent' }] }] : [],
     ...options.futurePhase ? [{ id: 'phase-result', tick: 31, kind: 'event', template: 'phase.actual', params: {}, because: [{ decisionId: 'phase', key: 'phase' }] }] : [],
   ];
+  if (options.auditIssue === 'ambiguous-receipt') {
+    const effect = history[1];
+    assert.ok(effect);
+    history.push({ ...effect, id: 'second-effect' });
+  }
   const provenance = { sourceRevision: 'a'.repeat(40), dirtyPaths: '', node: 'v24.21.0', sourceFiles: options.baselinePhase ? [{ path: 'src/engine/history.ts', sha256: PHASE_HISTORY_SOURCES[0].sha256 }] : RESIDUAL_SOURCE_FILES.map((path: string) => ({ path, sha256: options.incompatible ? '0'.repeat(64) : outcomeSha256(readFileSync(path)) })) };
   const raw = { seed: 1, years: 125, startYear: 1300, endYearExclusive: 1425, endTick: 500000, provenance,
     observation: { firstTick: 0, lastTick: 500000, maxGap: 1, reversals: 0 }, history, decisions: [], occurrences: [] };
   const rawBytes = encode(raw);
   const before = { id: 's1', estateId: 'estate-1', kind: options.estate, amount: 20, tick: 0, deadline: 1000, status: 'open' };
-  const context = { ordinal: options.contextIssue === 'ordinal' ? 2 : 1, tick, command: { type: command, petitionId: options.contextIssue === 'target' ? 'wrong' : 's1', grant: chosen === 'granted' }, stateChanged: true, agencyPresent: true,
+  const context = { ordinal: options.contextIssue === 'ordinal' ? 2 : 1, tick, command: { type: command, auditId: options.auditIssue === 'target' ? 'other' : 's1', choice: 'tolerate', petitionId: options.contextIssue === 'target' ? 'wrong' : 's1', grant: chosen === 'granted' }, stateChanged: options.auditIssue !== 'unchanged', agencyPresent: true,
     beforeHistoryLength: 1, afterHistoryLength: 3, history: options.contextIssue === 'history' ? {} : history[0],
+    ownRoot: options.auditIssue?.startsWith('root') ? { id: options.auditIssue === 'root' ? 'root' : 'answer', tick, source: 'audit:tolerate:s1', targets: [options.auditIssue === 'root-target' ? 'estate:other' : 'estate:estate-1'] } : null,
     context: { estateBefore: before, estateAfter: { ...before, status: options.contextIssue === 'transition' ? 'open' : chosen, decidedBy: 'lord' } } };
   const contextBytes = gzipSync(encode(options.contextIssue === 'malformed' ? {} : options.contextIssue === 'duplicate' ? [context, context] : [context]));
+  const audit = { id: 's1', estateId: 'estate-1', stewardId: 'steward-1', status: options.auditIssue === 'pending' ? 'pending' : 'tolerated', tick: 0, deadline: options.auditIssue === 'deadline' ? 0 : 500000 };
+  const finalBytes = encode({ seed: options.auditIssue === 'seed' ? 2 : 1, tick: options.auditIssue === 'tick' ? 499999 : 500000, stewardship: { audits: options.auditIssue === 'duplicate' ? [audit, audit] : [audit], stewards: [{ personId: 'steward-1', loyalty: 100 }] } });
+  const finalStateBytes = gzipSync(finalBytes);
+  const finalSha = outcomeSha256(finalBytes);
   const manifest = { contextSha256: outcomeSha256(contextBytes), valid: true, browserEligible: false, replayFormat: 'outcome-replay-v1', replayVerified: true, seed: 1, sourceRevision: provenance.sourceRevision,
     source: { revision: provenance.sourceRevision, node: provenance.node, platform: 'linux', status: '', lock: 'b'.repeat(64), expectedLock: 'b'.repeat(64) },
     toolHashes: { collector: 'c'.repeat(64) }, raw: { sha256: outcomeSha256(rawBytes), provenance }, commandCount: classification.rows.length, classification, registryAnswerSetVerified: 0,
-    checkpoints: [], final: { hit: true, phase: 'final', tick: raw.endTick }, finalComparison: { expectedSha256: 'd'.repeat(64), actualSha256: 'd'.repeat(64), expectedChecksum: 'sum', actualChecksum: 'sum' } };
+    checkpoints: [], final: { hit: true, phase: 'final', tick: raw.endTick, stateSha: options.auditIssue === 'missing-pin' ? undefined : finalSha }, finalComparison: { expectedSha256: finalSha, actualSha256: finalSha, expectedChecksum: 'sum', actualChecksum: 'sum' } };
   const manifestBytes = encode(manifest);
-  const input = { ...(options.estate && options.contextIssue !== 'missing' ? { contextBytes: options.contextIssue === 'hash' ? Buffer.from('wrong') : contextBytes } : {}), format: 'outcome-replay-v1', rawBytes, manifestBytes, classificationBytes: encode(classification), validityBytes: encode({ valid: true, browserEligible: false, manifestSha256: outcomeSha256(manifestBytes) }) };
+  const input = { ...(options.audit && options.auditIssue !== 'missing-final' ? { finalStateBytes: options.auditIssue === 'hash' ? gzipSync(encode({})) : finalStateBytes } : {}), ...((options.estate || options.audit) && options.contextIssue !== 'missing' ? { contextBytes: options.contextIssue === 'hash' ? Buffer.from('wrong') : contextBytes } : {}), format: 'outcome-replay-v1', rawBytes, manifestBytes, classificationBytes: encode(classification), validityBytes: encode({ valid: true, browserEligible: false, manifestSha256: outcomeSha256(manifestBytes) }) };
   const contractBytes = encode({ schemaVersion: 1, provenance, events: [] });
   const configBytes = encode({ schemaVersion: 1, seeds: [1], replayFormat: input.format, replayDirectory: '.', rawDirectory: '.', contractFile: 'contract.json', contractSha256: outcomeSha256(contractBytes),
     horizonTicks: 12000, ticksPerSeason: 1000, replayPins: [{ seed: 1, manifestSha256: outcomeSha256(manifestBytes), rawSha256: outcomeSha256(rawBytes) }] });
@@ -137,4 +147,24 @@ test('counter immediate settlement requires exact negotiation target and own ans
   assert.equal(auditTlinkResiduals(fixture({ counter: true, declined: true })).residuals[0].category, 'immediate-only-observed');
   for (const options of [{ target: 'wrong' }, { cause: 'wrong' }, { missing: true }, { incompatible: true }])
     assert.equal(auditTlinkResiduals(fixture({ counter: true, ...options })).residuals[0].category, 'unexplained');
+});
+
+
+test('audit tolerance proves only immediate settlement, including capped loyalty, without changing future credit', () => {
+  const input = fixture({ audit: true }), bytes = Buffer.from(input.scoreBytes), result = auditTlinkResiduals(input);
+  assert.equal(result.residuals[0].category, 'immediate-only-observed');
+  assert.equal(result.residuals[0].reason, 'audit_tolerance_status_settled');
+  assert.equal(result.residuals[0].loyaltyDeltaObserved, null);
+  assert.equal(auditTlinkResiduals(fixture({ audit: true, auditIssue: 'root-valid' })).residuals[0].category, 'immediate-only-observed');
+  assert.equal(result.originalPrimaryMetric.numerator, 0);
+  assert.deepEqual(input.scoreBytes, bytes);
+  assert.equal(auditTlinkResiduals(fixture({ audit: true, late: true })).residuals[0].category, 'insufficient-observation');
+});
+test('audit settlement requires pinned final state, exact command and receipt, without root inference', () => {
+  for (const auditIssue of ['missing-final', 'target', 'pending', 'steward', 'status', 'deadline', 'unchanged', 'root', 'root-target', 'ambiguous-receipt'])
+    assert.equal(auditTlinkResiduals(fixture({ audit: true, auditIssue })).residuals[0].category, 'unexplained', auditIssue);
+  for (const options of [{ contextIssue: 'missing' }, { cause: 'root' }, { missing: true }, { incompatible: true }])
+    assert.equal(auditTlinkResiduals(fixture({ audit: true, ...options })).residuals[0].category, 'unexplained');
+  for (const auditIssue of ['hash', 'seed', 'tick', 'duplicate', 'missing-pin'])
+    assert.throws(() => auditTlinkResiduals(fixture({ audit: true, auditIssue })), /final/, auditIssue);
 });
