@@ -14,6 +14,7 @@
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
 import { DECISION_CARD_SURFACES } from "./decisionCard/surfaces";
+import { closeReceipt, RECEIPT_SURFACES } from "./decisionCard/receiptSurfaces";
 import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
@@ -399,7 +400,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer (the speed seals;
     // Digit1 is an overlay key, and Space started the town again), paused, any card that came up put away, then the chip.
     open: [{ wait: ".famine-decision", timeout: 20_000, optional: true }, { story: ".famine-decision" }, { pause: 800 },
-      { click: ".famine-decision [data-choose='laissez_faire']" }, { click: ".speed-seal[data-seal='normal']" }, { pause: 1500 },
+      // RECEIPTS-2: the answered card turns over to its receipt first; its [확인] closes it, then the same moment at 1×.
+      { click: ".famine-decision [data-choose='laissez_faire']" }, ...closeReceipt("famine"), { click: ".speed-seal[data-seal='normal']" }, { pause: 1500 },
       { click: ".speed-seal[data-seal='pause']" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 },
       { repeat: ".event-chip[data-story='famine']", until: ".event-card[data-story='famine']", max: 2 }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
@@ -619,6 +621,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "time run until a suit is judged: the judgment's line with the way to its suit on the ledger screen beside the way on" },
   // ER-13: the home petition's and the registry offer's cards in the canon's variant words (src/ui/decisionCard/surfaces.ts).
   ...DECISION_CARD_SURFACES,
+  // RECEIPTS: the answer's receipt — each heavy card answered on its real state (src/ui/decisionCard/receiptSurfaces.ts).
+  ...RECEIPT_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
   // opens after the load — the end page does, after the story's delay). TRACE-KEEP: the state played on the engine that keeps
