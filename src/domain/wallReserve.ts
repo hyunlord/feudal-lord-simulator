@@ -44,10 +44,15 @@ export function charterTimberWait(
   buildings: readonly { readonly kind: string }[],
   sites: readonly SiteView[],
   timberCost: (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => number,
+  otherMaterialsHeld: (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => boolean = () => true,
 ): CharterTimberWait {
   const next = CHARTER_TIMBER_KINDS.find(kind => !buildings.some(building => building.kind === kind));
   if (next === undefined) return NO_CHARTER_WAIT;
   const site = sites.find(candidate => candidate.kind === next);
+  // GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material (the church's stone before
+  // the quarry) holds no timber back — the wall's timber waited years for it (engine-GROW2a-wall-98667ca: seed 8's
+  // palisade at 671 timber from 1311 to 1316, the town's stock 17–69 under the church's 100).
+  if (site === undefined && !otherMaterialsHeld(next)) return NO_CHARTER_WAIT;
   if (site === undefined) return { keep: timberCost(next), wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE };
   const need = (site.required.timber ?? 0) - (site.delivered.timber ?? 0) - (site.reserved.timber ?? 0);
   return need > 0 ? { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE } : NO_CHARTER_WAIT;

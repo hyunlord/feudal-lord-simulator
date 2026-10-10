@@ -124,3 +124,18 @@ test("GROW-BLOCK-2a ②: the opening village keeps a wall ring's room from the m
   assert.ok(gap(5) >= OPENING_EDGE_MARGIN - 2, `seed 5: ${gap(5)}`);
   assert.equal(gap(1), 13, "the riverside default stays where it is");
 });
+
+test("GROW-BLOCK-2a ⑥: a camp only while the sawmills keep up — none with a sawmill's window of logs in the stores, at most two a sawmill", async () => {
+  const { campAllowed, logBacklog, CAMPS_PER_SAWMILL_MAX } = await import("../src/engine/autoplayTimberDemand");
+  const { loadAutoplayFixture } = await import("../scripts/autoplayStallProbe");
+  const state = loadAutoplayFixture("fixtures/autoplay/seed2-70140.json.gz");
+  const camp = state.buildings.find(building => building.kind === "logging_camp")!;
+  const store = state.buildings.find(building => building.kind === "storehouse")!;
+  assert.equal(logBacklog(), 137);
+  const stores = (logs: number) => ({ ...state, buildings: state.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, logs } }
+    : building.kind === "storehouse" || building.kind === "sawmill" || building.kind === "logging_camp" ? { ...building, inventory: { ...building.inventory, logs: 0 } } : building) });
+  assert.equal(campAllowed(stores(0)), true);
+  assert.equal(campAllowed(stores(137)), false, "a sawmill's window of logs waiting");
+  const camps = { ...stores(0), buildings: [...stores(0).buildings, ...Array.from({ length: CAMPS_PER_SAWMILL_MAX }, (_, n) => ({ ...camp, id: `${camp.id}-more${n}` }))] };
+  assert.equal(campAllowed(camps), false, "three camps to one sawmill");
+});

@@ -42,13 +42,39 @@ function bottleneck(buildings: readonly Building[]): TimberKind {
   return cut < sawn ? 'logging_camp' : 'sawmill';
 }
 
+/**
+ * GROW-BLOCK-2a ⑥ (sandbox and lord mode, P-C3): a camp only while the sawmills keep up — none while the stores hold a
+ * sawmill's window of logs (then a sawmill), and at most two camps a sawmill. The wall probe (engine-GROW2a-wall-98667ca)
+ * found every seed's logs piling to 120–600 in the stores while its camps grew to 4–8; seeds 5 and 10 finished their
+ * palisades in 6.6 years with one camp a sawmill, those with six to eight no sooner — the stumps were the cost.
+ */
+/** At most this many camps a sawmill (a camp cuts a log in 50 ticks, a sawmill takes 2 in 35: 2.85 by their rates). */
+export const CAMPS_PER_SAWMILL_MAX = 2;
+
+/** One sawmill's logs for a window (2 logs a timber every 35 ticks: 137). */
+export function logBacklog(): number {
+  const mill = BUILDING_CONFIG_BY_KIND.sawmill.production;
+  return mill === null ? 0 : Math.round(mill.inputPerOutput * TIMBER_DEMAND_WINDOW_TICKS / mill.ticksPerOutput);
+}
+
+export function heldLogs(state: GameState): number {
+  return state.buildings.reduce((sum, building) => sum + (building.inventory.logs ?? 0), 0);
+}
+
+export function campAllowed(state: GameState): boolean {
+  const count = (kind: TimberKind) => state.buildings.filter(building => building.kind === kind).length
+    + state.constructionSites.filter(site => isBuildingConstructionSite(site) && site.kind === kind).length;
+  return count('logging_camp') < CAMPS_PER_SAWMILL_MAX * Math.max(1, count('sawmill')) && heldLogs(state) < logBacklog();
+}
+
 export function timberDemandExpansionKind(state: GameState): TimberKind | null {
   if (state.constructionSites.some(site => isBuildingConstructionSite(site) && (site.kind === 'logging_camp' || site.kind === 'sawmill'))) return null;
   const made = timberMadePerWindow(state);
   if (made === null) return null;
   const need = waitingTimberNeed(state);
   if (need <= made * (TIMBER_DEMAND_HORIZON_TICKS / TIMBER_DEMAND_WINDOW_TICKS)) return null;
-  const kind = bottleneck(state.buildings);
+  const short = bottleneck(state.buildings);
+  const kind: TimberKind = short === 'logging_camp' && !campAllowed(state) ? 'sawmill' : short;
   const config = BUILDING_CONFIG_BY_KIND[kind];
   if (state.buildings.some(building => building.kind === kind && building.workers < config.workersRequired)
     || state.idleWorkers < config.workersRequired

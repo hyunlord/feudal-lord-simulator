@@ -3,6 +3,7 @@ import { BALANCE } from '../content/balanceConfig';
 import { STORAGE_KIND_BY_RESOURCE } from '../content/resourceConfig';
 import { constructionDeliveryNeed, isBuildingConstructionSite, isWallConstructionSite } from '../economy/construction';
 import { availableStock, storageCapacityBlock } from '../economy/storage';
+import { campAllowed } from './autoplayTimberDemand';
 import { placementSpendableResource } from '../world/placement';
 import type { GameState } from './engine.types';
 
@@ -53,7 +54,8 @@ export function timberExpansionKind(state: GameState): TimberKind | null {
   const inputPerOutput = BUILDING_CONFIG_BY_KIND.sawmill.production?.inputPerOutput ?? 0;
   const existingInputNeed = state.buildings.filter(building => building.kind === 'sawmill')
     .reduce((sum, building) => sum + Math.max(0, inputPerOutput - availableStock(building, 'logs') - (building.reserved.logs ?? 0)), 0);
-  const kind: TimberKind = sourceLogs - existingInputNeed >= BALANCE.CARTER_CAPACITY ? 'sawmill' : 'logging_camp';
+  // GROW-BLOCK-2a ⑥: a camp only while the sawmills keep up (`campAllowed`).
+  const kind: TimberKind = sourceLogs - existingInputNeed >= BALANCE.CARTER_CAPACITY || !campAllowed(state) ? 'sawmill' : 'logging_camp';
   const config = BUILDING_CONFIG_BY_KIND[kind];
   const existing = state.buildings.filter(building => building.kind === kind);
   if (existing.some(building => building.workers < config.workersRequired)

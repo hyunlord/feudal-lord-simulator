@@ -2,6 +2,7 @@ import { BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
+  CHARTER_TIMBER_KINDS,
   charterTimberWait,
   wallDeliveryAvailable,
   type CharterTimberWait,
@@ -188,7 +189,10 @@ export function charterTimberContext(params: {
   readonly inventory: DeliveryInventoryPort;
   readonly treasuryTimber: number;
 }): { readonly wait: CharterTimberWait; readonly townStock: number } {
-  const wait = charterTimberWait(params.buildings, params.constructionSites, kind => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0);
+  const held = (resource: ResourceType) => params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, resource), 0);
+  const otherMaterialsHeld = (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => Object.entries(BUILDING_CONFIG_BY_KIND[kind].buildCost)
+    .every(([resource, amount]) => resource === "timber" || held(resource as ResourceType) >= Number(amount ?? 0));
+  const wait = charterTimberWait(params.buildings, params.constructionSites, kind => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0, otherMaterialsHeld);
   if (wait.wallSharePermille >= 1_000) return { wait, townStock: 0 };
   const townStock = params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, "timber"), 0) + Math.max(0, params.treasuryTimber);
   return { wait, townStock };

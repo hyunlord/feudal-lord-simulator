@@ -56,3 +56,15 @@ test("FIX-16 a placed market short of timber leaves the palisade at most half of
   // palisade still takes only half of the 10 in stock.
   assert.deepEqual(wallCargo(dispatch([building("store", "storehouse", { inventory: { timber: 10 } })], [wall, market])), [5]);
 });
+
+test("GROW-BLOCK-2a ③: a charter building that cannot be placed for want of another material holds no timber back", () => {
+  const market = building("market-1", "market", {});
+  const noStone = () => false;
+  // The church before the quarry: its 60 stone are not in the stores, so the palisade takes the timber.
+  assert.deepEqual(charterTimberWait([market], [], cost, noStone), NO_CHARTER_WAIT);
+  // With its stone held it keeps its 100 timber back, as FIX-16 did.
+  assert.deepEqual(charterTimberWait([market], [], cost, () => true), { keep: 100, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE });
+  // A placed church still waiting on timber shares as before.
+  const site = createConstructionSite({ ordinal: 2, kind: "church", tx: 9, ty: 9, startedTick: 0 });
+  assert.deepEqual(charterTimberWait([market], [site], cost, noStone), { keep: 0, wallSharePermille: CHARTER_WAIT_WALL_SHARE_PERMILLE });
+});
