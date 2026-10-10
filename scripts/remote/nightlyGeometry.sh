@@ -70,10 +70,11 @@ log "nightly geometry ${head:0:8}: $run started"
 rc=$(wait_run "$run")
 # The audit exits 1 on any failure, even one in the baseline. The night is done when it left a valid result: the
 # shared summary of this run — a full audit, clean tree, every condition opened, no framed root outside the registry —
-# and its measured inputs (failures against the baseline are the gate's to judge when it is committed; a new one is
-# listed in the status for the next day). Else the head is tried again the next night.
+# and its measured inputs (failures against the baseline are the gate's to judge when it is committed; the status
+# counts the failure keys for the next day). Else the head is tried again the next night.
 out=$BASE/$run/docs/verification/uiaudit1/geometry/$run
-valid=$(cd "$BASE/$run" 2> /dev/null && node -e '
+NODE=$BASE/_tools/node/bin/node; [ -x "$NODE" ] || NODE=node   # the runs' node, as remote-exec.sh puts it first
+valid=$(cd "$BASE/$run" 2> /dev/null && "$NODE" -e '
   const fs = require("fs"); const [run, out] = process.argv.slice(1);
   try { const s = JSON.parse(fs.readFileSync("docs/verification/uiaudit1/geometry.json", "utf8"));
     const ok = s.run === run && s.full === true && s.dirty === false && s.unopened === 0 && s.unregisteredFramed === 0 && Array.isArray(s.failureKeys) && fs.existsSync(`${out}/inputs.json`);

@@ -426,7 +426,7 @@ test("content brought back from a commit no audit measured is not covered, whate
   }
 });
 
-test("a file no trunk commit changed since the result (its content taken back by a merge) is not covered, though a later report measured that old commit", () => {
+test("content a merge took back from a commit the result already held is not covered by a later report of that old commit (the merge was never measured)", () => {
   const { s, base: _ } = storyD();
   try {
     // A trunk commit adds a report of a run measured at q0 (the old D): its content matches, but no change was seen.
