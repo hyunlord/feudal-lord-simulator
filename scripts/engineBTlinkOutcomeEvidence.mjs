@@ -1,6 +1,9 @@
 import { isDeepStrictEqual } from 'node:util';
 
 export const TLINK_REVIEWED_EFFECT_SOURCES = [
+  { path: 'src/content/stewardshipConfig.ts', sha256: 'aa01e8e7a7929122d75cd26fadce98459d86ff2893eec57a64ea8a03533e5949' },
+  { path: 'src/engine/estates.ts', sha256: 'd592e9373961ed2b23780c83376dc00b78cea69b6c411732ea476629677e1c2e' },
+  { path: 'src/ledger/ledger.ts', sha256: 'e2bfed958ef4dcf195527d03a29f0cb4093a63c4382e19c944ba7b2251064304' },
   { path: 'src/engine/timberTrade.ts', sha256: '0983dcbf2ba146f186845e3f22bc6c764162c2b90c5d7b69ab14e6f8972905ca' },
   { path: 'src/state/gameStore.ts', sha256: '4f965e306b793c443edbf384d8228b487fec028020529c6a675c0ead91e28d12' },
   { path: 'src/engine/stewardship.ts', sha256: '0ee5cbc4f8024c035915cae2f74a40e5db3eccaeab21ec13ecfc061ecf0bcff4' },
@@ -35,7 +38,7 @@ function effect(row, path, kind) {
 function scalarKind(row, path) {
   const old = at(row.before, path), current = at(row.after, path);
   if (path.length === 1 && path[0] === 'timberOrder' && (old === undefined || numeric(old)) && (current === undefined || numeric(current))
-    && (numeric(old) || numeric(current))) return 'command-state';
+    && (numeric(old) || numeric(current)) && (old ?? 0) !== (current ?? 0)) return 'command-state';
   if (path.length === 1 && path[0] === 'treasuryCoin' && numeric(old) && numeric(current)) return 'money';
   if (path.length === 4 && prefix(path, ['factions', 'factions']) && path[3] === 'relation'
     && stableItem(row, path.slice(0, 3), 'id') && numeric(old) && numeric(current)) return 'relation';
