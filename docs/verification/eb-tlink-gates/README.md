@@ -1,6 +1,6 @@
 # EB-TLINK 변경 영향 시험 — 소스별 기록
 
-최신 변경 영향 시험은 `engineB-tlink-audit-changed-23d1226`, clean source `23d12264289538de5f6ef3ef3f36aa9257b10aba`, Git tree `5a85395a59d6526e8ecc2a551e68d2b840c42ffb`다. 공식 exit **0**, command **1769.1초**. 선택 **619파일 = 실행401 + 재사용218**이며 두 집합에 중복이 없다. 실행 시험은 **3464개:3451통과·0실패·13skip**, cancelled/todo0이다. 재사용218은9ad의152파일과0b04의66파일이며 원본 RR25 판정과 출처를 보존했다. 재사용 시험 수를 총 시험 수에 임의로 더하지 않았다.
+고정 제품23d의 변경 영향 시험은 `engineB-tlink-audit-changed-23d1226`, clean source `23d12264289538de5f6ef3ef3f36aa9257b10aba`, Git tree `5a85395a59d6526e8ecc2a551e68d2b840c42ffb`다. 공식 exit **0**, command **1769.1초**. 선택 **619파일 = 실행401 + 재사용218**이며 두 집합에 중복이 없다. 실행 시험은 **3464개:3451통과·0실패·13skip**, cancelled/todo0이다. 재사용218은9ad의152파일과0b04의66파일이며 원본 RR25 판정과 출처를 보존했다. 재사용 시험 수를 총 시험 수에 임의로 더하지 않았다.
 
 [23d 결과·출처](changed-result-23d1226.json), [정확한 원본 gzip](test-changed-23d1226.json.gz). source/tree, 원본·gzip 복원 SHA, 실행 로그 합계와 공식 영수증 SHA, 해당 commit의 selector/runner/lock 바이트 SHA를 확인했다. 원본 영수증은 `.remote-runs/engineB-tlink-audit-changed-23d1226/`에 있으며 재수집은 `scripts/remote/run.sh --fetch engineB-tlink-audit-changed-23d1226`이다. **23d 기록의 통과이며 이후 문서 변경까지 자동 적용되지 않는다. 기하·125년80%·native 동일성·전체 목표 완료는 별도다.**
 
@@ -22,3 +22,7 @@
 기존 9ad 기하 실행 `engineB-tlink-final-geometry-9ad9253`도 깨끗한9ad에서 통과했다. [공식 보고서](../uiaudit1/geometry/engineB-tlink-final-geometry-9ad9253/geometry.json): 기존27행·같은5화면×2문구×2수치의540조건, 실패0·미개방0·경고96, command3293.9초.056 초기 미개방3조건은 공식 재시도에서 통과했으며 원래3개 캡처를 보존했다. 축을 좁히지 않았고 예외를 추가하지 않았다. 이 축에390px는 없으므로 별도 관계 브라우저의 오른쪽 잘림을 해결했다는 뜻은 아니다.
 
 최신23d 기하는 `engineB-tlink-audit-geometry-23d1226`, clean source23d1226에서 command3488.1초·exit0으로 완료했다. [공식 결과](../uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/geometry.json): 같은27행·5화면×2문구×2수치의540조건, 실패0·미개방0·경고96이다. 원래 캡처3개를 보존했다. 390px는 이 감사 축에 없으므로 별도 수동 브라우저의 오른쪽 잘림은 미해결이다.
+
+## 새 네 분류 도구 검증
+
+`engineB-tlink-sidecar-tests-71bc336`은 clean 도구71bc336에서23파일167/167·실패0·exit0·79.2초다. [정확한 시험 기록과 실행 영수증](sidecar-71bc336-archive.json)을 보관했다. 재사용 파일과 입력 근거는 원본 gzip 안에 유지하며,167은 실제 실행 시험만 센 수다. 제품 `src`는23d와 동일하다. 이 기록 이후의 문서 변경은 최종 게시 검사에서 별도 판정한다.

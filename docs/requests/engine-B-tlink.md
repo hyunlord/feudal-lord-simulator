@@ -222,3 +222,7 @@ GROW-BLOCK은 여전히v55다. 2026-10-10 읽기 전용 재확인 경로는 `/Us
 RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engineBTlinkOutcomeCategoriesRun.mjs`, `scripts/engineBTlinkOutcomeEvidence.mjs`, `scripts/engineBTlinkResiduals.mjs`를 비화면 오프라인 측정 도구로 분류하고 의미 판정 시험에 연결해 달라. 069f8bd의 check:merge는 네 파일 모두 UI/감사 import 도달0으로 확인하면서도 RR26 안전 목록 밖이라는 이유로 기존 기하 증거를 거부했다. REMOTE가 독립적인 실패 사례 시험과 분류 규칙을 검토할 대상이며, 이 가지는 안전 목록이나 selector를 직접 바꾸지 않는다. 같은22 selector·27행·540조건의069f8bd 기하는 권리 주장 판독 보완으로 실행 전에 취소했고,2c12d14 기하는 공식 seed 로그/종료 파일을 디렉터리로 오인하던 loader 수정으로 중단했다. 둘 다 통과 증거에서 제외한다. 최종 도구 판의`engineB-tlink-sidecar-geometry-71bc336`으로 재검증한다.
 
 새 도구의 [입력·종료 코드·분류 경계·관측 소스 계약](../verification/eb-tlink-four-categories/README.md)을 보존한다. 실제 즉시 변화는 별도 관측기로 읽으며, 처리 기록이나 미검증 미래 기대를 무효과/성공으로 바꾸지 않는다.
+
+### 무효과 요청서 선행 게시
+
+완료된194건 요청서·전수 근거는 문서 전용 가지 `codex/engine-b-inert-request`의 `3fff29d3cd96579ef0335c9922e30c2953095e18`로 먼저 게시하고 원격 해시를 확인했다. `engineB-inert-194-docs-3fff29d`136/136·exit0과 `check:merge`를 통과했다. 새 도구 코드는 이 격리 시제품 가지에만 있으며 본선 병합을 뜻하지 않는다.
