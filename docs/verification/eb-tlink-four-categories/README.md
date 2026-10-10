@@ -39,3 +39,5 @@ node scripts/engineBTlinkOutcomeCategoriesRun.mjs CONFIG SCORE OBSERVER_ROOT EXP
 관측 실행 `engineB-tlink-immediate-3ecee4b`은 슬롯을 받아 seed1–3을 재생 중이다. 여기에는 네 분류의 실제 통과 수치를 아직 싣지 않는다. 기존 확정 코어 무효과127건은 [엔진 요청서](../../requests/engine-B-inert.md), 감사94건의 처리 증거는 [별도 보관](../eb-tlink-audit-settlement/README.md)에 있다.
 
 중간 원본의 seed1 `h-002358` / 038 `defer`는 답 직후 `estates.claims[1].strength`가55→50으로 바뀌었다. 판독기는 같은 주장 ID가 유일하게 같은 위치에 남아 있을 때 이 수치 변화를 권리 효과로 읽는다. `registryV4.ts:191`의 실제 변경과 `estateSuits.ts:179`의 심리 소비 경로를 소스 해시로 고정했다. 대상 교체·중복 ID·동일 값은 효과로 세지 않으며, 이 보완만으로 모든 효과가0이라는 증명을 만들지 않는다. 관련25시험 통과는 도구 검증이며, 미완료 관측을 전체 판의 점수로 사용하는 근거가 아니다.
+
+046의 주문 소진 가설은 별도 준비 상태에서 실제 reducer로 검증했다. 주문16에서 취소를 제시한 뒤 주문0 상태로 답하면 `offerChoices`가 빈 배열이고 사건은 `invalid`가 된다. 일반 `decision` 이력은 남지만 trace의 성공한 답은 늘지 않고, 기존 수집기가 `invalid_registry_answer`로 제외한다. `tests/engineBTlinkSpecifiedTown.test.ts`가 이력 존재·무효 상태·실제 게임 값 불변·수집기 제외를 함께 확인한다. 따라서 이 사례를 성공한 무효과 답으로 추가하거나 정본 조건을 중복 수정하지 않는다. 처음 세웠던 “일반 결정 이력도 없어야 한다”는 가설은 이력 기록과 성공 분류의 기존 구분에 맞지 않아 폐기했으며, 전체125년의 자연 발생 증거로 확대하지 않는다.

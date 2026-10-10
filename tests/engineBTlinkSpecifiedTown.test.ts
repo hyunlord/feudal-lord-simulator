@@ -3,7 +3,10 @@ import test from 'node:test';
 import { advanceTimberTrade } from '../src/engine/timberTrade';
 import { settleMoneyPeriod } from '../src/engine/moneyRules';
 import { LEDGER_PERIOD_TICKS } from '../src/ledger/ledger';
-import { answer, contribution, linked, repairTown, transition } from './helpers/engineBTlinkFixtures';
+import { answer, contribution, linked, offered, repairTown, transition } from './helpers/engineBTlinkFixtures';
+import { offerChoices, registryOf } from '../src/engine/registry';
+import { gameReducer } from '../src/state/gameStore';
+import { classifyAnswerEvidence, createAnswerEvidenceCollector } from '../scripts/engineBOutcomeEvidence';
 
 const nextPeriod = (tick: number) => Math.ceil((tick + 1) / LEDGER_PERIOD_TICKS) * LEDGER_PERIOD_TICKS;
 
@@ -25,6 +28,32 @@ test('ck_evt_046 cancel stops the real timber order and produces no later delive
   const delivered = transition(after, 1040, advanceTimberTrade);
   assert.equal(delivered.actual, delivered.before);
   assert.equal(linked(delivered.after, ownId, 'goods_delivered').length, 0);
+});
+
+test('ck_evt_046 revalidates an exhausted order instead of recording a successful no-effect cancellation', () => {
+  const opening = offered({ ...repairTown(), timberOrder: 16, treasuryTimber: 10 }, 'ck_evt_046');
+  const occurrence = registryOf(opening).occurrences.at(-1);
+  assert.ok(occurrence);
+  assert.ok(offerChoices(opening, occurrence).includes('cancel'));
+  const before = { ...opening, timberOrder: 0 };
+  assert.deepEqual(offerChoices(before, occurrence), []);
+  const command = { type: 'answer_registry_offer', occurrenceId: occurrence.id, choiceId: 'cancel' } as const;
+  const after = gameReducer(before, command);
+  assert.equal(registryOf(after).occurrences.at(-1)?.status, 'invalid');
+  assert.equal(after.timberOrder, 0);
+  assert.equal(after.treasuryCoin, before.treasuryCoin);
+  assert.deepEqual(after.estates, before.estates);
+  assert.deepEqual(after.factions, before.factions);
+  assert.deepEqual(after.trace?.answers, before.trace?.answers);
+  const collector = createAnswerEvidenceCollector();
+  collector.observe(before, after, command, 1);
+  assert.equal(collector.snapshot()[0]?.history?.kind, 'decision');
+  const classified = classifyAnswerEvidence(collector.snapshot());
+  assert.equal(classified.classified.length, 0);
+  assert.equal(classified.unclassified.length, 0);
+  assert.equal(classified.unresolved.length, 0);
+  assert.equal(classified.excluded.length, 1);
+  assert.equal(classified.excluded[0]?.reason, 'invalid_registry_answer');
 });
 
 for (const id of ['ck_evt_092', 'ck_evt_211']) {
