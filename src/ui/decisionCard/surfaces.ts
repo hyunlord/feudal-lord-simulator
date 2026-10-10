@@ -5,7 +5,7 @@ import type { SceneRef, SurfaceRow } from "../surfaces.registry";
 // the bodies run longer than the kinds' own), and their chips' cards, on the `variants` states (scripts/variantStates.ts:
 // the lord's slice as the lord bot plays it, the lord keeping the three home kinds; states.json says which are prepared).
 
-const scene = (name: string): SceneRef => ({ kind: "state", set: "variants", name, tile: "house", zoom: 1.1, query: "&story-delay=3000" });
+const scene = (name: string, storyDelay = 3000): SceneRef => ({ kind: "state", set: "variants", name, tile: "house", zoom: 1.1, query: `&story-delay=${storyDelay}` });
 const CARD = {
   frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".decision-card-body"],
   siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
@@ -24,7 +24,11 @@ const chipCard = (card: string, chip: string, opened: string) => [{ story: card 
 export const DECISION_CARD_SURFACES: readonly SurfaceRow[] = [
   { id: "modal.lord.home-petition.variant-041", ...HOME, scene: scene("home-041"), data: "the pannage petition on the woodland in autumn in 041's words (the longest variant body)" },
   { id: "modal.lord.home-petition.variant-048", ...HOME, scene: scene("home-048"), data: "the common-pasture petition in 048's words (the commons against the second merchant house)" },
-  { id: "modal.lord.home-petition.variant-056", ...HOME, scene: scene("home-056"), data: "the road and bridge petition beside the market in 056's words" },
+  // Wait past openScene's startup Escape, as HOUSE_DELAY does, before opening this first story card.
+  { id: "modal.lord.home-petition.variant-056", ...HOME,
+    scene: scene("home-056", 20_000),
+    open: [{ wait: ".lord-card[data-home-petition]", timeout: 90_000 }, { pause: 600 }],
+    data: "the road and bridge petition beside the market in 056's words" },
   { id: "modal.lord.registry.variant-067", ...REGISTRY, scene: scene("registry-067"), data: "031's steward offer in 067's words (ability against loyalty; the longest variant title)" },
   { id: "modal.lord.registry.variant-078", ...REGISTRY, scene: scene("registry-078"), data: "019's oversight offer in 078's words (the merchant's man against the peasants')" },
   { id: "hud.event-card.home-petition-variant", root: ".event-card[data-story='home_petition']", frame: "css", scene: scene("home-041"), scroll: "y",
