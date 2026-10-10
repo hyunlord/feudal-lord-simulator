@@ -71,6 +71,8 @@
 
 최신9ad의 잠정 수집 집계는 원래 분류기·분모·미래창으로 계산했다.836답·성숙816·직접301·미연결515·관측 부족20·미분류2다. `.omo/evidence/tlink-9ad-three-seed-provisional-links.json` SHA256은 `e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8`이다. 이는 수집 완료 원본만의 진단이며 아직 공식 scorer/manifest 재생 관문을 통과한 결과가 아니다. 수집 원시 전체 상태 해시는 세 판 모두 기준판과 다르다. 보존 중인 같은 실행을 재생 종료 뒤 다시 받아 공식 판정으로 확정한다.
 
+잠정 미연결 영지 청원336건의 관계 증거는 답 당시 변화0인213·부분 포화4·경계값 도달3·정상 변화 후 무효화116이다.213건 중 수선/감면 허가86건에는 즉시 현금 비용이 따로 있으므로 답 전체 무효로 세지 않는다.116건에서 다음 철 전 같은 대상·차원의 반대 답은0건이어서 부호 제한 완화의 회복 사례는 입증되지 않았다. 최초 무효화 시점은 저장되지 않아 seed3 `h-002840`(62011tick)을 원래 명령열로63000tick 이내까지 재생하는 `engineB-tlink-invalidation-probe-9ad9253`을 공식 실험 줄에 제출했다. 아직 대기 중이며 결과나 추가 연결은 주장하지 않는다. [수집 진단 원본·해시](../verification/eb-tlink-outcomes/collection-9ad9253/archive.json)는 공식 재생 완료와 별도다.
+
 ## 저장과 GROW-BLOCK 병합 겹침
 
 시제품 저장은 **잠정v56**이다. v54→v55의 own-answer 도입에 이어 `src/save/migrations/v55ToV56.ts`는 버전만 올리고 구 답의 관계 증거를 역으로 만들지 않는다. optional `estateRelationEvidence`의 shape·값·상태를 검증하며 pending/consumed 준비 상태까지 `src/save/schemaFingerprint.v56.json`에 포함했다. [표준13개와 관계 준비 저장2개](../../fixtures/saves/v56/README.md), [표준13개 fixture manifest](../../fixtures/saves/v56/manifest.json)를 보존했다. 표준13개는 공식 `buildSaveFixtures.ts --from-version 55`로 이행하여 전체 decoded state·재인코딩을 확인했다. 관계2개는 실제 reducer/계절 경로를 거친 준비 fixture이며 자연125년 증거가 아니다. 기존v55 fixture는 보존했다. 최신9ad는 관계 판정과 회귀 시험만 변경했으며v56 schema·migration·fingerprint·fixture 변경은 없다.

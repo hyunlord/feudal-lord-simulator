@@ -26,6 +26,22 @@
       "gzipSha256": "8a66460c044bb1780c2ba0adbd1901810f088a06f15d5c4d1e4bc588f5cbf757",
       "rawBytes": 518066,
       "gzipBytes": 28191
+    },
+    {
+      "file": "tlink-9ad-estate-residual-audit.mjs.gz",
+      "rawSha256": "b37d57273efb1ed95a7af1b64146dc4c1d6d5b58acaf023159146dc63a36f6ee",
+      "gzipSha256": "aa41849dfa3cbde61b9e8683a253c30942f697b57bb53b141a340f05a884ddf4",
+      "rawBytes": 13450,
+      "gzipBytes": 4610,
+      "scope": "9ad provisional estate residual evidence-status audit, not formal scoring or first-invalidation cause proof"
+    },
+    {
+      "file": "tlink-9ad-estate-residual-audit.json.gz",
+      "rawSha256": "7bab64d3349a719a7bc9588245b9e3643c6c346dbc9d4ebe5d828e448f2b7af2",
+      "gzipSha256": "e2c5d497a72d3911220c1ec67d64ec578bf6fbde75ffaee0b9295aac9f2fccf5",
+      "rawBytes": 632917,
+      "gzipBytes": 22248,
+      "scope": "9ad provisional estate residual evidence-status audit, not formal scoring or first-invalidation cause proof"
     }
   ],
   "sourceDependencies": [
@@ -232,5 +248,162 @@
     "Collection snapshot only; replay still running at capture. No terminal exit, formal scorer, gate acceptance or whole-goal claim.",
     "301/816 is unchanged historical own-ID future formula, not strict target proof.",
     "Do not replace official0b04 archive or claim native/full-state equality."
-  ]
+  ],
+  "estateResidualAudit": {
+    "status": "collection_only_replay_pending_not_formal_acceptance",
+    "sourceRevision": "9ad9253468592e7cba144946081d2fbced36adca",
+    "metricScope": "Exact 336 mature unlinked direct answer_estate_petition own IDs from provisional 301/816; no scorer changes.",
+    "summary": {
+      "exactResidualAnswers": 336,
+      "bySeed": {
+        "1": 86,
+        "2": 110,
+        "3": 140
+      },
+      "byChoice": {
+        "charter_request:refuse": 187,
+        "rent_relief:grant": 33,
+        "repair:grant": 116
+      },
+      "byEvidenceStatus": {
+        "invalidated": 336
+      },
+      "byDiagnosticReason": {
+        "answer_reaches_boundary": 3,
+        "answer_relation_partial_clamp": 4,
+        "answer_relation_zero_at_clamp": 213,
+        "later_invalidation_exact_branch_not_retained": 116
+      },
+      "byActualIntended": {
+        "merchants:actual=-2:intended=-8": 1,
+        "merchants:actual=-3:intended=-8": 1,
+        "merchants:actual=-8:intended=-8": 58,
+        "merchants:actual=0:intended=-8": 127,
+        "tenants:actual=0:intended=4": 68,
+        "tenants:actual=0:intended=8": 18,
+        "tenants:actual=4:intended=4": 48,
+        "tenants:actual=5:intended=8": 1,
+        "tenants:actual=6:intended=8": 1,
+        "tenants:actual=8:intended=8": 13
+      },
+      "noEvidence": 0,
+      "nonzeroRelationAnswers": 123,
+      "zeroOnlyRelationAnswers": 213,
+      "laterInvalidationExpectedAtBoundary": 54,
+      "laterInvalidationExpectedUnchanged": 56,
+      "laterInvalidationExpectedChangedInterior": 6,
+      "fullAnswerNoOpCount": null,
+      "laterWithOppositeKnownCommand": 0,
+      "laterWithOversightOrAuditModeCommand": 2,
+      "laterWithAnyRecordedEstateCommand": 41,
+      "laterWithFirstSeasonCollectedRecord": 0,
+      "relationZeroGrantWithPositiveAmount": 86,
+      "laterWithProvedSubsequentOversightChange": 6,
+      "laterWithOnlyTolerateWitness": 15,
+      "relationZeroCharterRefusal": 127
+    },
+    "sourcePins": [
+      {
+        "path": "src/engine/decisionTraceEstateRelations.ts",
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "sha256": "4fcc895cc73ed2b4bca3f8d23d8bfc5a077d4a841836d7387ff74769d4845eeb",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/stewardship.ts",
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "sha256": "0ee5cbc4f8024c035915cae2f74a40e5db3eccaeab21ec13ecfc061ecf0bcff4",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/content/stewardshipConfig.ts",
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "sha256": "aa01e8e7a7929122d75cd26fadce98459d86ff2893eec57a64ea8a03533e5949",
+        "currentBytesEqual": true
+      },
+      {
+        "path": "src/engine/decisionTrace.types.ts",
+        "revision": "9ad9253468592e7cba144946081d2fbced36adca",
+        "sha256": "7dc0e4a98140c8052554d8a6440e6c57f49f2151a7511df5dbd54c01a2e5f10f",
+        "currentBytesEqual": true
+      }
+    ],
+    "inputs": [
+      {
+        "path": ".omo/evidence/tlink-9ad-three-seed-provisional-links.json",
+        "sha256": "e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8",
+        "uncompressedSha256": "e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1.json",
+        "sha256": "0645623165b4b19e4d023c13c086e69253833d2efbb0e99b868161bf1731d4fe",
+        "uncompressedSha256": "0645623165b4b19e4d023c13c086e69253833d2efbb0e99b868161bf1731d4fe"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1/original-contexts.json.gz",
+        "sha256": "77e9278641929979c6747e5302bd4d4bf1ece124b04f3a4c60b5b73944564955",
+        "uncompressedSha256": "f5264fd061c1953a6c48db2bac2cc96f7da767879f71f6995d20c59cc75ce10f"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-1/original-final-state.json.gz",
+        "sha256": "306c08a8ff3db202034cd99b1801b003aa222f0dfa4e205e3aa9f965da92f9b2",
+        "uncompressedSha256": "d5e90b57bf4ead2feeaa6f85472454b61eed4f65a827abb9b651147ce4954f51"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-prototype125-0b04cd0/eb-tlink-prototype/seed-1.json",
+        "sha256": "d582bc5a5254b9ad635c54a103304b47071b21b743a4ae77726a58a86cc4514b",
+        "uncompressedSha256": "d582bc5a5254b9ad635c54a103304b47071b21b743a4ae77726a58a86cc4514b"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2.json",
+        "sha256": "4c35fe4caca4ee2959aa3d7849fa1c4ab16d3171c2e0876e34201843bbb55d03",
+        "uncompressedSha256": "4c35fe4caca4ee2959aa3d7849fa1c4ab16d3171c2e0876e34201843bbb55d03"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2/original-contexts.json.gz",
+        "sha256": "08faf301387f598596758cc50ab9dfca432677b8008bc47c042ccdad81432334",
+        "uncompressedSha256": "e18d53dbc36d41153406abc4dfcf306c237875fe076e9e2a123456949237a2a2"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-2/original-final-state.json.gz",
+        "sha256": "2f7d2f5a09472f7bbc94befae554dd2c2afdcef5bfc86a2b933e37a675ad3299",
+        "uncompressedSha256": "617fb2aab617961bca11f79f6805715b178d2c4c6a6ddbd5a4cd718122f46542"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-prototype125-0b04cd0/eb-tlink-prototype/seed-2.json",
+        "sha256": "165c3fecaf1f007163caf317024002ddebd28de077d7f5ad6bf206e9ebf46814",
+        "uncompressedSha256": "165c3fecaf1f007163caf317024002ddebd28de077d7f5ad6bf206e9ebf46814"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3.json",
+        "sha256": "ea92da34d609cdb14f4fff7e94f27387fa8700971d324b4e28bf4a45d936b26d",
+        "uncompressedSha256": "ea92da34d609cdb14f4fff7e94f27387fa8700971d324b4e28bf4a45d936b26d"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3/original-contexts.json.gz",
+        "sha256": "fe1aa6447a56a8e75c68b51f26c01ef134ba2e7d601baea77ab4070f7a610ab1",
+        "uncompressedSha256": "e07a727690b8cd80304ab2582c8ad8a6f53c5b0c73b5f61a5df8428d9eb3ef8e"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-final125-9ad9253/eb-tlink-final/seed-3/original-final-state.json.gz",
+        "sha256": "2a2fc484f6ca7ab0eaba274875e08075331cddb015cbffbb480d1122c881a27a",
+        "uncompressedSha256": "64cec9c344a72323526298a875c6a1ffdc917e81c6b616f651e463969e8edd5f"
+      },
+      {
+        "path": ".remote-runs/engineB-tlink-prototype125-0b04cd0/eb-tlink-prototype/seed-3.json",
+        "sha256": "9415fc443e0ed21e6e4d251356a3832f9f661912f28b602c2127eb6902911de8",
+        "uncompressedSha256": "9415fc443e0ed21e6e4d251356a3832f9f661912f28b602c2127eb6902911de8"
+      }
+    ],
+    "limits": [
+      "Final evidence contains status but no invalidation-reason field.",
+      "Actual zero refers only to the named relation dimension, never the whole answer.",
+      "Nonzero answer delta alone does not prove retained next-season contribution or any future cash result.",
+      "No engine ticks, replay, or new remote jobs were run."
+    ],
+    "reproduce": "node .omo/evidence/tlink-9ad-estate-residual-audit.mjs",
+    "outputSafety": "Fixed output overwrites JSON; restore script/input paths in separate checkout, never run against preserved original evidence.",
+    "independentReview": "Reviewed with no blockers; limits retained.",
+    "probe": "engineB-tlink-invalidation-probe-9ad9253 submitted/queued at handoff; no execution/result claim or probe artifact archived."
+  }
 }

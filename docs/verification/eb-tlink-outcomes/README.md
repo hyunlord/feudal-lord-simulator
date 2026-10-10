@@ -98,3 +98,10 @@ mixed-command 문서는 **9ad 소스의 증명 초안**이며0b04 실행 증거�
 [별도9ad snapshot·입력/소스/재현 핀](collection-9ad9253/archive.json)에 원본 TS/JSON 두 파일을 gzip으로 보존했다. `engineB-tlink-final125-9ad9253`, source `9ad9253468592e7cba144946081d2fbced36adca`의 **수집 시점 잠정값은301/816=36.8873%**(seed1 98/238·seed2 93/275·seed3 110/303)이며 관측 부족20·미연결515·미분류2다. 캡처 시점 replay는 진행 중으로, 종료 코드·정식 scorer·관문 통과를 주장하지 않는다. 앞의0b04 공식 결과와 별도이며 기존 원본/index를 덮어쓰지 않았다.
 
 원본 JSON SHA는 `e19b438325ba8cdee31762d488853407d3436f99b5fa8f8566ca6025ab0b79c8`이다. 별도9ad checkout에 해시가 맞는 raw/context·baseline 비교 입력과 script를 원래 상대 경로로 복원하고 `node --import tsx .omo/evidence/tlink-9ad-three-seed-provisional-links.ts`로 재현한다. 생성기는 wx이므로 고정 출력 JSON이 없는 새 위치에서만 실행한다. 이번 보관에서는 스크립트를 재실행하지 않았다. 전체 그룹은3MB 미만이며 압축 전후 해시를 검증했다.
+
+
+### 9ad estate 잔여336건 — 최초 무효화 원인은 미관측
+
+[collection-9ad9253 인덱스](collection-9ad9253/archive.json)에 `tlink-9ad-estate-residual-audit.{mjs,json}.gz` 원문을 추가했다. 잠정301/816에서 성숙 미연결 estate 답336건은 관계 변화0인213·부분 clamp4·답변 후 경계 도달3·나중 무효화116으로 나뉜다. 이는 증거 상태 판독이며 **명령 전체 무효과를 뜻하지 않는다.** 나중116건의 최초 무효화 분기는 보존되지 않았고, expected가 내부값인62건은 조사 우선순위일 뿐 입증된 누락 링크62건이 아니다. 이 집합에서 첫 철 이전 반대 부호의 알려진 같은 차원 명령은0건이므로 mixed-command 증명으로 연결률 증가를 주장하지 않는다.
+
+source/input 핀과 재현 명령 `node .omo/evidence/tlink-9ad-estate-residual-audit.mjs`는 인덱스에 있다. 별도 checkout에 입력을 복원해야 하며 고정 출력을 덮어쓰는 생성기를 보존 원본에서 실행하지 않는다. 원본 script SHA는 `b37d57273efb1ed95a7af1b64146dc4c1d6d5b58acaf023159146dc63a36f6ee`, JSON SHA는 `7bab64d3349a719a7bc9588245b9e3643c6c346dbc9d4ebe5d828e448f2b7af2`다. 독립 검토에서 차단 결함은 없었지만 공식 재생·scorer 인수 결과가 아니다. 별도 `engineB-tlink-invalidation-probe-9ad9253`는 인계 시점 제출·대기 중이며 실행/결과를 주장하거나 probe 자료를 보관하지 않았다.
