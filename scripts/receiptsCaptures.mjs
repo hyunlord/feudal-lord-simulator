@@ -53,12 +53,15 @@ async function reach(page, card, story) {
     for (const selector of ['.season-ledger-resume', '.chronicle-page .chronicle-keep', '.results-card-continue']) {
       const other = page.locator(`${selector} >> visible=true`); if (await other.count() > 0) await other.first().click();
     }
+    // Another modal with none of those buttons (it holds the screen): Esc puts it away, as a player would.
+    if (await page.locator(`.story-modal-backdrop:not(:has(${card})) >> visible=true`).count() > 0) { await page.keyboard.press('Escape'); await page.waitForTimeout(300); continue; }
     const chips = page.locator(`.event-chip[data-story="${story}"] >> visible=true`);
     const count = await chips.count();
     for (let index = 0; index < count; index += 1) {
-      await chips.nth(index).click(); await page.waitForTimeout(300);
+      if (!await chips.nth(index).click({ timeout: 5_000 }).then(() => true, () => false)) break;
+      await page.waitForTimeout(300);
       const decide = page.locator('.event-card .event-card-decide >> visible=true');
-      if (await decide.count() > 0) { await decide.first().click(); await page.waitForTimeout(500); }
+      if (await decide.count() > 0) { await decide.first().click({ timeout: 5_000 }).catch(() => undefined); await page.waitForTimeout(500); }
       if (await page.locator(`${card} >> visible=true`).count() > 0) return true;
     }
     await page.waitForTimeout(500);
