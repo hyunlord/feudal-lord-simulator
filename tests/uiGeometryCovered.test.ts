@@ -251,7 +251,7 @@ test("only the trunk's last change of a file counts: an old run that measured th
   const s = story();
   try {
     s.push("one", "src/ui/Panel.tsx", "run", "ff");                           // measured: Panel as one left it
-    const measured = s.git("show", "trunk:src/ui/Panel.tsx");
+    const measured = `${s.git("show", "trunk:src/ui/Panel.tsx")}\n`;   // (the helper trims the output)
     s.git("checkout", "-q", "trunk"); s.write("src/ui/Panel.tsx", "// unaudited\n"); s.commit("two: the panel, no evidence");
     s.write("src/ui/Panel.tsx", measured); s.commit("three: back as one measured it, no evidence");
     refused(s.check(), /src\/ui\/Panel\.tsx/);
@@ -270,5 +270,19 @@ test("a measured cover also lists the override its push recorded", () => {
     s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "both"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("both: the card");
     s.rowRun("both-rows", at); s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "-m", `Merge both${s.OVERRIDE("both")}`, "both");
     assert.match(formatUiGeometryResult(s.check()), /\(UI-Geometry-Run both-rows; override, recorded: both pushed through the override, a reason; 1 file\(s\)\)/);
+  } finally { s.done(); }
+});
+
+test("an old full result is no new evidence: an unaudited revert to what it measured is not covered", () => {
+  const s = story({ own: "rows" });
+  try {
+    // The trunk's full result (full-0) measured Panel as A. A push changes Panel to B with its run; this push branches
+    // after it and measures B; then an unaudited trunk commit puts Panel back to A — what full-0 measured, long before.
+    const a = `${s.git("show", "trunk:src/ui/Panel.tsx")}\n`;
+    s.push("one", "src/ui/Panel.tsx", "run", "ff");
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "later"); s.write("scripts/tool.mjs", "// later's script\n"); const at = s.commit("later: the script"); s.rowRun("later-rows", at);
+    s.git("checkout", "-q", "trunk"); s.write("src/ui/Panel.tsx", a); s.commit("trunk: Panel back to A, no evidence");
+    s.git("checkout", "-q", "later"); const base = s.git("rev-parse", "trunk"); s.git("merge", "-q", "--no-edit", "trunk");
+    refused(checkUiGeometry({ base, head: s.git("rev-parse", "HEAD"), cwd: s.dir, mode: "enforce", env: {} }), /src\/ui\/Panel\.tsx/);
   } finally { s.done(); }
 });
