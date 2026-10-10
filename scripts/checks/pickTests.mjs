@@ -4,6 +4,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { basename, dirname, extname, join } from "node:path";
+import { gitPaths } from "../gitPaths.mjs";
 import { FOLDER_WALKS, underFolders } from "./sourceScanTests.mjs";
 
 export const SOURCE_SCAN_WHY = "walks a folder (decisions RR24, RR25)";
@@ -23,8 +24,8 @@ export const gitIn = (root) => (...a) => execFileSync("git", a, { cwd: root, enc
 export function pickTests({ root, base, head }) {
   const git = gitIn(root);
   const changed = new Set((head
-    ? git("diff", "--name-only", "--no-renames", base, head).split("\n")
-    : [...git("diff", "--name-only", "--no-renames", base).split("\n"), ...git("ls-files", "--others", "--exclude-standard").split("\n")]
+    ? gitPaths(["diff", "--name-only", "--no-renames", base, head], { cwd: root })
+    : [...gitPaths(["diff", "--name-only", "--no-renames", base], { cwd: root }), ...gitPaths(["ls-files", "--others", "--exclude-standard"], { cwd: root })]
   ).filter(Boolean));
 
   const walk = (dir, out = []) => {
@@ -59,7 +60,7 @@ export function pickTests({ root, base, head }) {
   }
   const tests = files.filter(isTest);
   const nameCount = new Map();
-  for (const f of git("ls-files").split("\n")) nameCount.set(basename(f), (nameCount.get(basename(f)) ?? 0) + 1);
+  for (const f of gitPaths(["ls-files"], { cwd: root })) nameCount.set(basename(f), (nameCount.get(basename(f)) ?? 0) + 1);
   // package.json picks everything only when what is installed changes (a new npm script changes no test).
   const depsChanged = () => {
     const keys = ["dependencies", "devDependencies", "optionalDependencies", "overrides", "type", "imports"];

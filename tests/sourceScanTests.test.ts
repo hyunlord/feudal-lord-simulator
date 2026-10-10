@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
-import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { pickTests, SOURCE_SCAN_WHY } from "../scripts/checks/changedTests.mjs";
 import { FOLDER_WALKS } from "../scripts/checks/sourceScanTests.mjs";
 
@@ -31,6 +31,7 @@ test("a src/ change picks the source scans that exist; a change outside src/ doe
     writeFileSync(join(dir, "src/App.tsx"), "export const onNewGame = (scenarioId: string, land: string) => scenarioId + land;\n");
     writeFileSync(join(dir, "tests/appText.test.ts"), 'const app = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8");\n');
     writeFileSync(join(dir, "docs/notes.md"), "x\n");
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "base");
     const base = git("rev-parse", "HEAD");
     writeFileSync(join(dir, "docs/notes.md"), "y\n");

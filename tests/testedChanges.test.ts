@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
-import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { KOREAN_PATH, QUIET_ENV, QUIET_GIT, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { pickTests, testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges } from "../scripts/checks/testedChanges.mjs";
 
@@ -22,6 +22,7 @@ function repo() {
   writeFileSync(join(dir, "fixtures/onlyHere.json"), "{}\n");
   writeFileSync(join(dir, "docs/notes.md"), "x\n");
   writeFileSync(join(dir, "package.json"), '{"scripts":{}}\n');
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "base");
   return { dir, git, base: git("rev-parse", "HEAD") };
 }
@@ -69,5 +70,17 @@ test("check:merge's tested step: a passing record of exactly the pushed content 
     // RR25, measured: a record of other content counts only by the inputs measured while its tests ran; these have none,
     // and the failed one, which cannot be compared either, blocks.
     assert.match(formatTestedChanges(later), /tests\/a\.test\.ts — FAILED on content it cannot be compared with/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("test:changed: the fixture's Korean-named file, changed, is a changed path by its real name and picks the test that names it", () => {
+  const { dir, git } = repo();
+  try {
+    writeFileSync(join(dir, "tests/korean.test.ts"), `const file = ${JSON.stringify(KOREAN_PATH)};\n`); git("add", "-A"); git("commit", "-qm", "a test naming it");
+    const after = git("rev-parse", "HEAD");
+    writeFileSync(join(dir, KOREAN_PATH), "바뀜\n");
+    const { changed, picked } = pickTests({ root: dir, base: after });
+    assert.deepEqual([...changed], [KOREAN_PATH]);
+    assert.deepEqual([...picked.keys()], ["tests/korean.test.ts"]);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

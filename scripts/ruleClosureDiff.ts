@@ -6,10 +6,10 @@
  *
  *   npx tsx scripts/ruleClosureDiff.ts <base-commit>
  */
-import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join, normalize, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitText } from './gitPaths.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const RULE_ENTRY_POINTS = ['src/engine/tick.ts', 'src/state/gameStore.ts'] as const;
@@ -44,7 +44,7 @@ function main(args: readonly string[]) {
   const base = args[0];
   if (base === undefined) throw new RangeError('Usage: ruleClosureDiff.ts <base-commit>');
   const closure = ruleClosure();
-  const changed = execFileSync('git', ['diff', '--numstat', base, '--', 'src'], { cwd: ROOT, encoding: 'utf8' })
+  const changed = gitText(['diff', '--numstat', base, '--', 'src'], { cwd: ROOT })
     .split('\n').filter(Boolean).map(line => {
       const [added, removed, file] = line.split('\t');
       return { file: file ?? '', lines: Number(added) + Number(removed) };

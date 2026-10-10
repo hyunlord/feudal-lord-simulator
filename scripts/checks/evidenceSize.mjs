@@ -11,6 +11,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitPaths } from '../gitPaths.mjs';
 import { changedFiles } from './gitRange.mjs';
 
 export const EVIDENCE_ROOT = 'docs/verification';
@@ -29,7 +30,7 @@ export const isExempt = path => EXEMPT.some(rule => rule.test(path));
 /** Counted files of a folder at <rev>: [{ path, bytes }] (LFS pointers at their real size), largest first. */
 export function folderFiles(rev, folder, cwd = process.cwd()) {
   const git = args => execFileSync('git', args, { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20 });
-  const rows = git(['ls-tree', '-r', '-l', '-z', rev, '--', `${folder}/`]).split('\0').filter(Boolean).map(row => {
+  const rows = gitPaths(['ls-tree', '-r', '-l', '-z', rev, '--', `${folder}/`], { cwd }).map(row => {
     const [meta, path] = row.split('\t'); const [, , object, size] = meta.split(/\s+/);
     return { path, object, bytes: Number(size) };
   }).filter(row => !isExempt(row.path));

@@ -24,6 +24,7 @@
 //     nothing but the order of the rows and their line ends.
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { gitPaths } from '../gitPaths.mjs';
 import { changedFiles, git, isMain, resolveRange } from './gitRange.mjs';
 
 export const LEDGER = 'assets-inbox/INBOX_LEDGER.csv';
@@ -153,7 +154,7 @@ export function checkInboxLedger({ base, head, cwd = process.cwd() }) {
 export function newImageStorage(base, head, changed, cwd) {
   const addedPaths = new Set(changed.filter(file => file.status === 'A' && IMAGE.test(file.path)).map(file => file.path));
   if (addedPaths.size === 0) return { plainJpegs: [], largePlain: [] };
-  const tree = rev => git(['ls-tree', '-r', '-l', '-z', rev, '--', INBOX], cwd).split('\0').filter(Boolean).map(row => {
+  const tree = rev => gitPaths(['ls-tree', '-r', '-l', '-z', rev, '--', INBOX], { cwd }).map(row => {
     const [meta, path] = row.split('\t'); const [, , object, size] = meta.split(/\s+/); return { path, object, bytes: Number(size) };
   });
   const before = new Set(tree(base).map(entry => entry.object));
@@ -176,7 +177,7 @@ export function newImageStorage(base, head, changed, cwd) {
 
 /** Image paths (.png .jpg .jpeg .webp .gif .svg) under assets-inbox/ at <rev>, relative to it as the ledger writes them. */
 export function inboxImages(rev, cwd) {
-  return git(['ls-tree', '-r', '--name-only', '-z', rev, '--', INBOX], cwd).split('\0')
+  return gitPaths(['ls-tree', '-r', '--name-only', '-z', rev, '--', INBOX], { cwd })
     .filter(path => path.startsWith(INBOX) && IMAGE.test(path)).map(path => path.slice(INBOX.length));
 }
 

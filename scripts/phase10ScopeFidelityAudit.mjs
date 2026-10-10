@@ -1,11 +1,11 @@
-import { execFileSync } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { gitText } from "./gitPaths.mjs";
 
 const PROTECTED_PREFIXES = [`.o${"mo"}/`, `.o${"mx"}/`];
 
 export function auditPhase10ScopeFidelity({ allowDirtyProtected = true, allowDirtyProduct = true } = {}) {
-  const status = execFileSync("git", ["status", "--porcelain", "--untracked-files=all"], { encoding: "utf8" })
+  const status = gitText(["status", "--porcelain", "--untracked-files=all"])
     .split("\n")
     .filter(Boolean);
   const protectedChanges = status.filter((line) => PROTECTED_PREFIXES.some((prefix) => line.slice(3).startsWith(prefix)));

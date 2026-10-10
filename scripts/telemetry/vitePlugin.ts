@@ -10,6 +10,7 @@ import { createHash } from "node:crypto";
 import { appendFile, mkdirSync, readFileSync } from "node:fs";
 import { homedir, hostname } from "node:os";
 import { join, resolve } from "node:path";
+import { gitPaths } from "../gitPaths.mjs";
 import { otherCpuSample, otherCpuShare, type CpuSample } from "../perf/machineLoad";
 
 const CLIENT_PATH = "/@fls-telemetry/client.js"; const SAMPLE_PATH = "/@fls-telemetry/sample";
@@ -28,7 +29,7 @@ export function flsTelemetryPlugin() {
   const head = () => {
     if (Date.now() - commit.at > 60_000) {
       const sha = spawnSync("git", ["rev-parse", "--short=12", "HEAD"], { encoding: "utf8" }).stdout.trim();
-      const dirty = spawnSync("git", ["status", "--porcelain", "--untracked-files=no"], { encoding: "utf8" }).stdout.trim() !== "";
+      const dirty = (() => { try { return gitPaths(["status", "--porcelain", "--untracked-files=no"]).length > 0; } catch { return false; } })();
       commit = { at: Date.now(), sha, dirty };
     }
     return commit;

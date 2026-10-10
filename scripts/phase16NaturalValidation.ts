@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gitPaths } from "./gitPaths.mjs";
 import { SETTLEMENT_CONFIG } from "../src/content/settlementConfig";
 import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import { houseLotArea } from "../src/geometry/buildingFootprint";
@@ -42,13 +43,13 @@ function invalidResource(state: GameState): boolean {
 }
 function sourceProvenance() {
   const root = fileURLToPath(new URL("../", import.meta.url));
-  const files = execFileSync("git", ["ls-files", "-z", "src", "scripts"], { cwd: root }).toString().split("\0").filter(Boolean).sort();
+  const files = gitPaths(["ls-files", "-z", "src", "scripts"], { cwd: root }).sort();
   const hash = createHash("sha256");
   for (const file of files) hash.update(file).update("\0").update(readFileSync(resolve(root, file)));
   return {
     commit: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root }).toString().trim(),
     sourceSha256: hash.digest("hex"), sourceFiles: files.length,
-    dirty: execFileSync("git", ["status", "--porcelain", "--", "src", "scripts"], { cwd: root }).toString().trim() !== "",
+    dirty: gitPaths(["status", "--porcelain", "--", "src", "scripts"], { cwd: root }).length > 0,
   };
 }
 

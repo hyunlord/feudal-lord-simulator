@@ -36,6 +36,7 @@ import { createHash } from 'node:crypto';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import { hostname } from 'node:os';
 import { join, posix } from 'node:path';
+import { gitPaths, gitPathsOut, gitText } from '../gitPaths.mjs';
 import { git, isMain, resolveRange } from './gitRange.mjs';
 
 export const UI_GEOMETRY_SUMMARY = 'docs/verification/uiaudit1/geometry.json';
@@ -113,7 +114,7 @@ const CANDIDATES = ['', '.ts', '.tsx', '.mts', '.mjs', '.js', '.jsx', '.json', '
 
 /** Every file of <rev> (path -> blob id), paths unquoted (-z: Korean letters and spaces stay as they are). */
 export function treeFiles(rev, cwd = process.cwd()) {
-  const out = execFileSync('git', ['ls-tree', '-r', '-z', '--full-tree', rev], { cwd, maxBuffer: 2 ** 30, stdio: ['ignore', 'pipe', 'ignore'] }).toString('utf8');
+  const out = gitPathsOut(['ls-tree', '-r', '-z', '--full-tree', rev], { cwd });
   const files = new Map();
   for (const row of out.split('\0')) { const tab = row.indexOf('\t'); if (tab < 0) continue; const [, type, blob] = row.slice(0, tab).split(' '); if (type === 'blob') files.set(row.slice(tab + 1), blob); }
   return files;
@@ -195,7 +196,7 @@ export function importedTests(rev, cwd = process.cwd(), files = treeFiles(rev, c
 export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
   const files = treeFiles(rev, cwd);
   const tests = importedTests(rev, cwd, files);
-  const status = execFileSync('git', ['status', '--porcelain=v1', '-z', '--untracked-files=all'], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0');
+  const status = gitPathsOut(['status', '--porcelain=v1', '-z', '--untracked-files=all'], { cwd }).split('\0');
   const candidates = [];
   for (let k = 0; k < status.length; k++) {
     const entry = status[k]; if (entry.length < 4) continue;
@@ -235,7 +236,7 @@ export function uiInputsDirty(cwd = process.cwd(), rev = 'HEAD') {
  */
 export function unsafeChanges(from, to, cwd = process.cwd(), cache = new Map()) {
   const key = `${from}..${to}`; if (cache.has(key)) return cache.get(key);
-  const changed = execFileSync('git', ['diff', '--name-only', '--no-renames', '-z', from, to], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0').filter(Boolean);
+  const changed = gitPaths(['diff', '--name-only', '--no-renames', '-z', from, to], { cwd });
   // The closure only names the tests the UI or the audit imports; when it cannot be read, no test is safe (fails closed).
   let closure = null; try { if (!cache.has(`closure:${to}`)) cache.set(`closure:${to}`, uiImportClosure(to, cwd)); closure = cache.get(`closure:${to}`); } catch { /* closure stays null */ }
   const tests = closure === null ? null : new Set([...closure].filter(path => path.startsWith('tests/')));
@@ -272,10 +273,10 @@ export function coveredChanges(from, base, head, cwd = process.cwd(), cache = ne
   const changes = unsafeChanges(from, head, cwd, cache);
   if (base === null || changes.unsafe.length === 0) return { ...changes, covered: [] };
   const memo = (key, make) => { if (!cache.has(key)) cache.set(key, make()); return cache.get(key); };
-  const run = args => execFileSync('git', args, { cwd, encoding: 'utf8', maxBuffer: 1024 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] });
-  const brought = new Set(run(['diff', '--name-only', '--no-renames', '-z', base, head]).split('\0').filter(Boolean));
+  const run = args => gitText(args, { cwd });
+  const brought = new Set(gitPaths(['diff', '--name-only', '--no-renames', '-z', base, head], { cwd }));
   // Every blob of a commit at once (the whole tree, wherever the gate runs from), a missing path null.
-  const tree = rev => memo(`tree:${rev}`, () => { const map = new Map(); try { for (const entry of run(['ls-tree', '-r', '-z', '--full-tree', rev]).split('\0')) { const tab = entry.indexOf('\t'); if (tab > 0) map.set(entry.slice(tab + 1), entry.slice(0, tab).split(' ')[2]); } } catch { /* no such commit */ } return map; });
+  const tree = rev => memo(`tree:${rev}`, () => { const map = new Map(); try { for (const entry of gitPathsOut(['ls-tree', '-r', '-z', '--full-tree', rev], { cwd }).split('\0')) { const tab = entry.indexOf('\t'); if (tab > 0) map.set(entry.slice(tab + 1), entry.slice(0, tab).split(' ')[2]); } } catch { /* no such commit */ } return map; });
   const blob = (rev, path) => tree(rev).get(path) ?? null;
   // The commits the trunk took since the result: their parents, trailers, subject, and the files each changed.
   let history;
@@ -289,7 +290,7 @@ export function coveredChanges(from, base, head, cwd = process.cwd(), cache = ne
       }
       // -z: paths exactly as stored (no quoting of non-ASCII names). Each commit: \x01<sha>\0, then \n<path>\0 …
       let current = null;
-      for (const token of run(['log', '-z', '--cc', '--no-renames', '--name-only', '--format=%x01%H', base, `^${from}`]).split('\0')) {
+      for (const token of gitPathsOut(['log', '-z', '--cc', '--no-renames', '--name-only', '--format=%x01%H', base, `^${from}`], { cwd }).split('\0')) {
         if (token.startsWith('\x01')) current = commits.get(token.slice(1).trim()) ?? null;
         else { const path = token.replace(/^\n/, ''); if (path !== '' && current !== null) current.files.add(path); }
       }

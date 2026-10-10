@@ -3,11 +3,11 @@
 // the repository root ('' is the root itself).
 //   files: files read, required, imported, opened or stat'ed;  dirs: folders listed, walked or copied;
 //   missing: paths looked for and absent;  untraceable: why the inputs cannot be trusted (then nothing is reused).
-import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, realpathSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gitPathsOut } from "../../gitPaths.mjs";
 
 /** Files whose change touches every test: what node_modules holds (its reads are not recorded) and the compiler setup. */
 export const EVERY_TEST = Object.freeze(["package.json", "package-lock.json", "tsconfig.json"]);
@@ -104,7 +104,7 @@ export function unpackInputs(packed, test) {
 
 /** The changes between two trees or commits: [{ status: "A" | "M" | "D" | …, path }], renames as a delete and an add. */
 export function treeChanges(cwd, from, to) {
-  const out = execFileSync("git", ["diff", "--name-status", "--no-renames", "-z", from, to], { cwd, encoding: "utf8", maxBuffer: 256 << 20, stdio: ["ignore", "pipe", "ignore"] });
+  const out = gitPathsOut(["diff", "--name-status", "--no-renames", "-z", from, to], { cwd });
   const parts = out.split("\0"); const changes = [];
   for (let k = 0; k + 1 < parts.length; k += 2) changes.push({ status: parts[k].slice(0, 1), path: parts[k + 1] });
   return changes;

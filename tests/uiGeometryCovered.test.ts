@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { gitIn, tempDir } from "./helpers/tempRepo";
+import { gitIn, KOREAN_PATH, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { checkUiGeometry, formatUiGeometryResult } from "../scripts/checks/uiGeometry.mjs";
 
 // RR26 covered (user ruling 2026-10-10, per file content approved the same day): a result stays good at <head> when
@@ -35,6 +35,7 @@ function story({ own = "full" }: { own?: "full" | "rows" } = {}) {
   write("scripts/uiGeometryAudit.mjs", "// the audit\n"); write("scripts/tool.mjs", "// a script\n");
   for (const path of ["src/main.tsx", "src/ui/Panel.tsx", "src/ui/Card.tsx", "src/ui/Other.tsx"]) write(path, `// ${path}\n`);
   write("docs/verification/uiaudit1/geometry-baseline.json", '{"entries":[]}'); write("docs/verification/uiaudit1/geometry-exceptions.json", '{"exceptions":[]}');
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); const c0 = commit("trunk");
   /** A full shared result measured at `at`, with its report (as the audit writes both). */
   const full = (run: string, at: string, extra: object = {}) => {
@@ -521,5 +522,20 @@ test("no trunk commit changed the file since the result (a merge took its conten
     s.git("checkout", "-q", "trunk"); s.write(`${RUNS}/q0-rows/geometry.json`, JSON.stringify(rowsReport("q0-rows", storyQ0(s)))); s.commit("a report of q0\n\nUI-Geometry-Run: q0-rows");
     s.git("checkout", "-q", "p2"); const base = s.git("rev-parse", "trunk"); s.git("merge", "-q", "--no-edit", "trunk");
     refused(checkUiGeometry({ base, head: s.git("rev-parse", "HEAD"), cwd: s.dir, mode: "enforce", env: {} }), /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
+
+// The fixture's Korean-named file (tests/helpers/tempRepo.ts) through the covered rule: its trunk push covers it, a
+// branch change merged after it is refused — both by its real name (a quoted name would be some other path).
+test("the fixture's Korean-named file: covered by its trunk push with the trailer, refused by its real name when changed off the trunk", () => {
+  const s = story();
+  try {
+    const pushed = s.push("render", KOREAN_PATH, "run");
+    const result = s.check();
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    assert.match(formatUiGeometryResult(result), new RegExp(`covered by trunk pushes — ${short(pushed.evidence)} \\(UI-Geometry-Run render-rows; 1 file\\(s\\)\\)`));
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "side"); s.write(KOREAN_PATH, "// changed off the trunk\n"); s.commit("side: the Korean-named file");
+    s.git("checkout", "-q", "pushing"); s.git("merge", "-q", "--no-ff", "--no-edit", "side");
+    refused(s.check(), new RegExp(`1 file\\(s\\) off the safe list changed since it was measured at [0-9a-f]{8} .*: ${KOREAN_PATH.replace(/[.]/g, "\\.")} — audit again`));
   } finally { s.done(); }
 });

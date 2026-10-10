@@ -168,7 +168,7 @@ if git -C "$MIRROR" cat-file -e "$FULL_SHA^{commit}" 2>/dev/null; then
   fi
   printf '.remote/\n.remote-in/\nnode_modules\n' >> .git/info/exclude
   git read-tree HEAD && git update-index -q --refresh >/dev/null 2>&1
-  echo "== git: HEAD $(git rev-parse --short HEAD), $(git status --porcelain | wc -l) path(s) differ from HEAD"
+  echo "== git: HEAD $(git rev-parse --short HEAD), $(git -c core.quotePath=false status --porcelain | wc -l) path(s) differ from HEAD"
 else
   echo "== git: $FULL_SHA is not in the mirror; the run folder has no .git (commands that call git will fail)"
 fi

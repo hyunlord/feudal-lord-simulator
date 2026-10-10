@@ -38,6 +38,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { gitPaths } from '../gitPaths.mjs';
 import { formatBudgetTable, loadBudgetConfig, measureBuild } from './distBudget.mjs';
 import { changedFiles, git, resolveRange } from './gitRange.mjs';
 import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
@@ -88,7 +89,7 @@ const geometryOverride = logWarnOverride(geometry, { top, head }); if (geometryO
 console.log(formatOverrideCount(base, head));
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.
-const clean = git(['status', '--porcelain', '--untracked-files=no']).trim() === '';
+const clean = gitPaths(['status', '--porcelain', '--untracked-files=no']).length === 0;
 const atHead = git(['rev-parse', 'HEAD']).trim() === head;
 let work = top; let temporary = null;
 if (!(clean && atHead)) {

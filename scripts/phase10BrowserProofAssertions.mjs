@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { gitPaths } from "./gitPaths.mjs";
 
 export const ROAD_MARKER = "🚧 길이 필요합니다";
 
@@ -117,7 +118,7 @@ function revisionProvenance(explicitRevision) {
     return { revision: readCleanRevision(explicitRevision), revisionSource: "explicit", revisionDirty: null };
   }
   const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-  const dirty = execFileSync("git", ["status", "--porcelain", "--untracked-files=normal"], { encoding: "utf8" }).trim() !== "";
+  const dirty = gitPaths(["status", "--porcelain", "--untracked-files=normal"]).length > 0;
   return { revision: `${readCleanRevision(head)}${dirty ? "+dirty" : ""}`, revisionSource: "git-head", revisionDirty: dirty };
 }
 

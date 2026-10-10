@@ -10,6 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
+import { gitPaths } from '../gitPaths.mjs';
 import { git, isMain, resolveRange } from './gitRange.mjs';
 
 const HANGUL = /[ᄀ-ᇿ㄰-㆏가-힯]/;
@@ -41,7 +42,7 @@ function readBlobs(head, paths, cwd) {
 export function findKoreanStrings(head, cwd = process.cwd()) {
   const top = git(['rev-parse', '--show-toplevel'], cwd).trim();
   const ts = typescript(top);
-  const paths = git(['ls-tree', '-r', '--name-only', head, '--', 'src'], cwd).split('\n')
+  const paths = gitPaths(['ls-tree', '-r', '--name-only', head, '--', 'src'], { cwd })
     .filter(path => CODE.test(path) && !ALLOWED.some(pattern => pattern.test(path)));
   const result = new Map();
   for (const [path, text] of readBlobs(head, paths, cwd)) {

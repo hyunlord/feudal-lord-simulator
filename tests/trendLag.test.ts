@@ -5,11 +5,13 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { checkTrendLag, formatTrendLag, logTrendLag, TREND_FILE } from "../scripts/checks/trendLag.mjs";
+import { writeKoreanFile } from "./helpers/tempRepo";
 
 // A throwaway repository: trunk heads h1..h13, the page measures h1 (committed at h2).
 function repo() {
   const dir = mkdtempSync(join(tmpdir(), "fls-trend-lag-"));
   const git = (...args: string[]) => execFileSync("git", args, { cwd: dir, encoding: "utf8" }).trim();
+  writeKoreanFile(dir);
   git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t");
   const heads: string[] = [];
   for (let i = 1; i <= 13; i++) {

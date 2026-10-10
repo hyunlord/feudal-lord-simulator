@@ -15,6 +15,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { gitPathsOut } from '../gitPaths.mjs';
 import { git } from './gitRange.mjs';
 import { inputOverlap, treeChanges, unpackInputs } from './testInputs/testInputs.mjs';
 import { UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_RUNS, UI_GEOMETRY_SUMMARY, compareBaseline, exceptionId, gateMode, measuredAt, overridesInRange,
@@ -59,7 +60,7 @@ export function staleChanges(from, to, cwd = process.cwd(), cache = new Map(), m
   if (measured?.status === 'ok') {
     const changes = treeChanges(cwd, from, to);
     // A folder listed one level counts when its entries differ between the two trees (a missing folder has none).
-    const names = rev => dir => { try { return git(['ls-tree', '--name-only', `${rev}:${dir}`], cwd); } catch { return null; } };
+    const names = rev => dir => { try { return gitPathsOut(['ls-tree', '--name-only', `${rev}:${dir}`], { cwd }); } catch { return null; } };
     const namesChanged = dir => names(from)(dir) !== names(to)(dir);
     return { changed: changes.length, unsafe: inputOverlap(measured.inputs, changes, { namesChanged, shadows: true }), reaching: null, how: 'measured' };
   }

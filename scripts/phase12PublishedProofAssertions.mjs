@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { gitPaths } from "./gitPaths.mjs";
 
 import { readDeploymentProof } from "./phase12PublishedProofDeployment.mjs";
 
@@ -139,7 +140,7 @@ function defaultSpeed(scenario) {
 function revisionProvenance(explicitRevision) {
   if (explicitRevision !== null) return { revision: readCleanRevision(explicitRevision), revisionSource: "explicit", revisionDirty: null };
   const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-  const dirty = execFileSync("git", ["status", "--porcelain", "--untracked-files=normal"], { encoding: "utf8" }).trim() !== "";
+  const dirty = gitPaths(["status", "--porcelain", "--untracked-files=normal"]).length > 0;
   if (dirty) throw new Error("Set --revision to a clean 40-hex published revision when the worktree is dirty.");
   return { revision: readCleanRevision(head), revisionSource: "git-head", revisionDirty: false };
 }

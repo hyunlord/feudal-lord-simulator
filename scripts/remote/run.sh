@@ -144,7 +144,7 @@ T0=$(now)
 SHORT=$(git rev-parse --short=7 HEAD)
 FULL=$(git rev-parse HEAD)
 RUN="$LABEL-$SHORT"
-DIRTY=0; [ -z "$(git status --porcelain --untracked-files=no)" ] || DIRTY=1
+DIRTY=0; [ -z "$(git -c core.quotePath=false status --porcelain --untracked-files=no)" ] || DIRTY=1
 TMP=$(mktemp -d "${TMPDIR:-/tmp}/fls-remote.XXXXXX")
 trap 'rm -rf "$TMP"' EXIT
 

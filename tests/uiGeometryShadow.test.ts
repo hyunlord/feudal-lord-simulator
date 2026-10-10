@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { chmodSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { test } from "node:test";
-import { gitIn, tempDir } from "./helpers/tempRepo";
+import { gitIn, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { checkUiGeometry } from "../scripts/checks/uiGeometry.mjs";
 import { environmentReasons, formatShadow, measuredRange, remoteShadow, shadowJudgement, shadowStep, type Fingerprint } from "../scripts/checks/uiGeometryMeasured.mjs";
 import { cachedFolderHash, environmentFingerprint, folderHash, STATE_SETS, SYSTEM_FILES, writeShadowRecord } from "../scripts/uiGeometryFingerprint.mjs";
@@ -37,6 +37,7 @@ function story(options: { lists?: string[]; measured?: boolean } = {}) {
   for (const path of READ) write(path, `${path}\n`);
   write("src/unused.ts", "export const u = 1;\n");
   write("docs/verification/uiaudit1/geometry-baseline.json", '{"entries":[]}'); write("docs/verification/uiaudit1/geometry-exceptions.json", '{"exceptions":[]}');
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   writeFull(write, { run: "full-1", commit: git("rev-parse", "HEAD"), ...options });
   git("add", "-A"); git("commit", "-qm", "the full audit");

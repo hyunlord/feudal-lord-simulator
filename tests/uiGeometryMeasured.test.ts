@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { gitIn, tempDir } from "./helpers/tempRepo";
+import { gitIn, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { checkUiGeometry, formatUiGeometryResult } from "../scripts/checks/uiGeometry.mjs";
 import { checkUiGeometryMeasured, formatMeasuredResult } from "../scripts/checks/uiGeometryMeasured.mjs";
 import { packInputs } from "../scripts/checks/testInputs/testInputs.mjs";
@@ -51,6 +51,7 @@ function story({ measure = {}, retries }: { measure?: Measure; retries?: Record<
   write("src/unused.ts", "export const u = 1;\n"); write("scripts/checks/other.mjs", "export const o = 1;\n"); write("package-lock.json", "{}\n");
   write("public/assets/other.png", "other\n");
   write("docs/verification/uiaudit1/geometry-baseline.json", '{"entries":[]}'); write("docs/verification/uiaudit1/geometry-exceptions.json", '{"exceptions":[]}');
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   const measured = git("rev-parse", "HEAD");
   writeRun(write, { run: "full-1", commit: measured, rows: SHARED_ROWS, full: true, measure, retries });

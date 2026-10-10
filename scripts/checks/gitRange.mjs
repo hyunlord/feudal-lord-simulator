@@ -1,6 +1,7 @@
 // Shared git helpers for the merge checks (REVIEW-1). Everything reads git objects, never the working tree, so a
 // check judges exactly the commits being merged or pushed.
 import { execFileSync } from 'node:child_process';
+import { gitPaths } from '../gitPaths.mjs';
 
 export const TRUNK = 'codex/phase15-organic-ground';
 
@@ -27,7 +28,7 @@ export function resolveRange(argv = process.argv.slice(2), cwd = process.cwd()) 
 
 /** Files changed base..head as { status, path } (renames are split into a delete and an add). */
 export function changedFiles(base, head, cwd) {
-  return git(['diff', '--name-status', '--no-renames', '-z', base, head], cwd).split('\0').filter(Boolean)
+  return gitPaths(['diff', '--name-status', '--no-renames', '-z', base, head], { cwd })
     .reduce((rows, field, index, all) => index % 2 === 0 ? [...rows, { status: field, path: all[index + 1] }] : rows, []);
 }
 

@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { gitIn, tempDir } from "./helpers/tempRepo";
+import { gitIn, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { checkUiGeometry } from "../scripts/checks/uiGeometry.mjs";
 import { shadowStep, type Fingerprint } from "../scripts/checks/uiGeometryMeasured.mjs";
 import { formatShadowMarkdown, loadRecords, shadowHistory } from "../scripts/uiGeometryShadow.mjs";
@@ -51,6 +51,7 @@ test("SHADOW.md: pushed commits only, both directions, false passes on the carri
     for (const path of READ) write(path, `${path}\n`);
     write("src/unused.ts", "export const u = 1;\n"); write(".gitignore", ".remote-runs/\n");
     write("docs/verification/uiaudit1/geometry-baseline.json", '{"entries":[]}'); write("docs/verification/uiaudit1/geometry-exceptions.json", '{"exceptions":[]}');
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk"); const c0 = commit("trunk");
     report("full-1", c0, { "hud.panel": { [C1]: [], [C2]: [] }, "lord.card": { [C1]: [], [C2]: [] } }, true, 3600);
     const since = commit("the shadow lands, with the full audit");

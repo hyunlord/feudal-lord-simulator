@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { writeFileSync } from 'node:fs';
+import { gitPaths } from './gitPaths.mjs';
 import { parseGrowthOptions } from './phase19GrowthMetrics';
 import { superviseGrowthRecording } from './growthStateRecordSupervisor';
 
@@ -15,7 +16,7 @@ const seconds = Number(args[4] ?? 1_500);
 if (!Number.isFinite(seconds) || seconds <= 0 || seconds > 1_500) throw new RangeError('wallTimeSeconds must be >0 and <=1500');
 const root = fileURLToPath(new URL('../', import.meta.url));
 const git = (...values: string[]) => execFileSync('git', values, { cwd: root, encoding: 'utf8' }).trim();
-const source = { commit: git('rev-parse', 'HEAD'), dirty: git('status', '--porcelain', '--', 'src', 'scripts').length > 0 };
+const source = { commit: git('rev-parse', 'HEAD'), dirty: gitPaths(['status', '--porcelain', '--', 'src', 'scripts'], { cwd: root }).length > 0 };
 const result = await superviseGrowthRecording({ ...options, output: resolve(output), worker: fileURLToPath(new URL('./growthStateRecordWorker.ts', import.meta.url)), wallTimeMs: seconds * 1_000 });
 const record = { source, ...result };
 writeFileSync(resolve(output, 'summary.json'), JSON.stringify(record, null, 2));

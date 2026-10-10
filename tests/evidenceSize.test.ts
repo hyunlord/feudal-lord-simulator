@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { checkEvidenceSize, evidenceFolder, EVIDENCE_LIMIT_BYTES, formatEvidenceResult, isExempt, loadEvidenceBaseline } from "../scripts/checks/evidenceSize.mjs";
+import { writeKoreanFile } from "./helpers/tempRepo";
 
 test("a task folder is docs/verification/<task>; replay captures and the geometry results are not counted", () => {
   assert.equal(evidenceFolder("docs/verification/nat4/world/a.jpg"), "docs/verification/nat4");
@@ -23,6 +24,7 @@ function repo() {
   const dir = mkdtempSync(join(tmpdir(), "fls-evidence-"));
   const git = (...args: string[]) => execFileSync("git", args, { cwd: dir, encoding: "utf8" }).trim();
   const put = (path: string, bytes: number | string) => { mkdirSync(join(dir, dirname(path)), { recursive: true }); writeFileSync(join(dir, path), typeof bytes === "number" ? "x".repeat(bytes) : bytes); };
+  writeKoreanFile(dir);
   git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t");
   put("docs/verification/old/a.jpg", 1500); put("docs/verification/big/a.jpg", 1800); put("README.md", 1);
   git("add", "-A"); git("commit", "-qm", "base");
@@ -59,5 +61,15 @@ test("a Git LFS pointer counts at the size it points to", () => {
     put("docs/verification/lfs/a.jpg", "version https://git-lfs.github.com/spec/v1\noid sha256:" + "0".repeat(64) + "\nsize 4000\n");
     const result = checkEvidenceSize({ base, head: commit(git), cwd: dir, limit: 1000, baseline: {} });
     assert.deepEqual(result.over.map(row => [row.folder, row.bytes]), [["docs/verification/lfs", 4000]]);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("a Korean-named file counts in its folder under its real name", () => {
+  const { dir, git, put, base } = repo();
+  try {
+    put("docs/verification/new/한글 사진.jpg", 1200);
+    const over = checkEvidenceSize({ base, cwd: dir, limit: 1000, baseline: {}, head: commit(git) });
+    assert.deepEqual(over.over.map(row => [row.folder, row.bytes]), [["docs/verification/new", 1200]]);
+    assert.match(formatEvidenceResult(over), /docs\/verification\/new\/한글 사진\.jpg/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

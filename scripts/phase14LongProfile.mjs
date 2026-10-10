@@ -1,6 +1,7 @@
 import { execFileSync as nodeExecFileSync, spawn } from "node:child_process";
 import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { gitText } from "./gitPaths.mjs";
 
 import {
   closeChrome,
@@ -85,7 +86,7 @@ export function resolvePhase14Revision(input) {
   }
   const head = input.execFileSync("git", ["rev-parse", "HEAD"], { cwd: input.repoRoot, encoding: "utf8" }).trim();
   if (!/^[0-9a-f]{40}$/i.test(head)) throw new Error("git HEAD did not resolve to a 40-hex revision");
-  const status = input.execFileSync("git", ["status", "--porcelain"], { cwd: input.repoRoot, encoding: "utf8" }).trim();
+  const status = gitText(["status", "--porcelain"], { cwd: input.repoRoot, exec: input.execFileSync }).trim();
   const revisionDirty = status.length > 0;
   return { revision: revisionDirty ? `${head}+dirty` : head, revisionSource: "git", revisionDirty };
 }

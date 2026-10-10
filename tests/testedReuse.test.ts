@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, rmSync, symlinkSync, unlinkSync, writeFileSync 
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { test } from "node:test";
-import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { pathToFileURL } from "node:url";
 import { testedTree } from "../scripts/checks/changedTests.mjs";
 import { checkTestedChanges, formatTestedChanges, reuseEvidence } from "../scripts/checks/testedChanges.mjs";
@@ -73,6 +73,7 @@ function storyIn(dir: string, trunkMove: Move) {
   write("tests/provenance.test.ts", `${T}import { pictures } from "../scripts/walk.ts";\ntest("pictures", () => { pictures(); });\n`);
   write("tests/shadow.test.ts", `${T}import { which } from "../src/m";\ntest("shadow", () => { if (which !== "index") throw new Error(which); });\n`);
   write("tests/spawn.test.ts", `${T}import { execFileSync } from "node:child_process";\ntest("spawn", () => { execFileSync("git", ["--version"]); });\n`);
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   git("checkout", "-qb", "branch");
   write("src/engine/core.ts", "export const core = 2;\n");                         // the branch's engine change
@@ -234,6 +235,7 @@ test("a range picks a test by what it was measured to read, though no import or 
     write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"type":"module"}\n');
     write("fixtures/saves/v47/a.save.json", '{"a":1}\n');
     write("tests/doorSigns.test.ts", `import { test } from "node:test";\nimport { readFileSync } from "node:fs";\ntest("fixture", () => { for (const name of ["a"]) JSON.parse(readFileSync(\`fixtures/saves/v47/\${name}.save.json\`, "utf8")); });\n`);
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
     const { inputs } = measure(dir, ["tests/doorSigns.test.ts"]);
     write(".remote-runs/full/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/doorSigns.test.ts"], where: "full", at: "2026-10-09T01:00:00Z", inputs }));
@@ -263,6 +265,7 @@ for (const [form, files, specifier, added, touched] of [
       write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"name":"story","type":"module","exports":{"./feature":"./src/feature-a.ts"}}\n');
       for (const [path, text] of Object.entries(files)) write(path, text);
       write("tests/shadow.test.ts", testFile);
+      writeKoreanFile(dir);
       git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
       git("checkout", "-qb", "branch"); write("tests/shadow.test.ts", `${testFile}// the branch\n`); git("commit", "-qam", "branch: the test");
       const { ran, inputs } = measure(dir, ["tests/shadow.test.ts"]);
@@ -300,6 +303,7 @@ test("a .js specifier resolved to .ts: a real .js added beside it loads nothing 
   try {
     write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"name":"story","type":"module"}\n'); write("src/j.ts", 'export const which = "ts";\n');
     write("tests/j.test.ts", testFile);
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
     git("checkout", "-qb", "branch"); write("tests/j.test.ts", `${testFile}// the branch\n`); git("commit", "-qam", "branch: the test");
     const { ran, inputs } = measure(dir, ["tests/j.test.ts"]);
@@ -330,6 +334,7 @@ function singleIn(dir: string, testText: string, setup: Record<string, string>, 
   // "symlink:<target>" makes a tracked symbolic link.
   for (const [path, text] of Object.entries(setup)) if (text.startsWith("symlink:")) { mkdirSync(dirname(join(dir, path)), { recursive: true }); symlinkSync(text.slice(8), join(dir, path)); } else write(path, text);
   write("tests/one.test.ts", testText);
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   git("checkout", "-qb", "branch"); write("tests/one.test.ts", `${testText}// the branch\n`); git("commit", "-qam", "branch: the test");
   const { ran, inputs } = measure(dir, ["tests/one.test.ts"]);
@@ -418,6 +423,7 @@ test("a range picks a test that is not measurable by what it was seen to read (m
     write(".gitignore", "/.remote-runs/\n"); write("tsconfig.json", TSCONFIG); write("package.json", '{"type":"module"}\n');
     write("fixtures/saves/v47/a.save.json", '{"a":1}\n');
     write("tests/spawnFixture.test.ts", `${H}import { execFileSync } from "node:child_process";\nimport { readFileSync } from "node:fs";\ntest("t", () => { execFileSync("git", ["--version"]); for (const n of ["a"]) JSON.parse(readFileSync(\`fixtures/saves/v47/\${n}.save.json\`, "utf8")); });\n`);
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
     const { inputs } = measure(dir, ["tests/spawnFixture.test.ts"]);
     write(".remote-runs/full/test-changed.json", JSON.stringify({ tree: testedTree(dir), head: git("rev-parse", "HEAD"), passed: true, picked: ["tests/spawnFixture.test.ts"], where: "full", at: "2026-10-09T01:00:00Z", inputs }));

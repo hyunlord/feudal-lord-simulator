@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { gitIn, tempDir } from "./helpers/tempRepo";
+import { gitIn, KOREAN_PATH, tempDir, writeKoreanFile } from "./helpers/tempRepo";
 import { checkUiGeometry, defaultSummaryPath, formatUiGeometryResult, isSafePath, uiInputsDirty, withoutComments } from "../scripts/checks/uiGeometry.mjs";
 
 // RR26 (user ruling 2026-10-09, after four reviews found inputs the import closure missed): a geometry result counts on
@@ -41,6 +41,7 @@ function story({ trunkMove, report = {}, baseline = [], trailer = true, shared =
   write("docs/notes.md", "x\n");
   write("docs/verification/uiaudit1/geometry-baseline.json", JSON.stringify({ entries: baseline }));
   write("docs/verification/uiaudit1/geometry-exceptions.json", JSON.stringify({ exceptions }));
+  writeKoreanFile(dir);
   git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "trunk");
   const trunk0 = git("rev-parse", "HEAD");
   // The shared result: a full audit of the trunk as it was (stale once the branch changes the panel).
@@ -161,6 +162,7 @@ test("a range of safe files alone needs no audit at all", () => {
   try {
     write("scripts/uiGeometryAudit.mjs", "// the audit\n"); write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("docs/a.md", "a\n");
     write("docs/verification/uiaudit1/geometry-baseline.json", '{"entries":[]}'); write("docs/verification/uiaudit1/geometry-exceptions.json", '{"exceptions":[]}');
+    writeKoreanFile(dir);
     git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c"); const base = git("rev-parse", "HEAD");
     write("docs/a.md", "b\n"); write("tests/x.test.ts", "export {};\n"); git("add", "-A"); git("commit", "-qm", "docs and a test");
     const result = checkUiGeometry({ base, head: git("rev-parse", "HEAD"), cwd: dir, mode: "enforce", env: {} });
@@ -317,6 +319,7 @@ test("dirty: every uncommitted change off the safe list (edited, untracked, stag
     write("src/ui/Panel.tsx", "export const Panel = 1;\n"); write("src/engine/core.ts", "export const core = 1;\n"); write("public/assets/a.png", "a\n");
     write("public/assets/lfs.png", pointer); write("assets-inbox/w/lfs.png", pointer); write("docs/a.md", "a\n"); write("tests/x.test.ts", "export {};\n");
     write("src/ui/한글 패널.tsx", "export const k = 1;\n");
+    writeKoreanFile(dir);
     git("init", "-q"); git("add", "-A"); git("commit", "-qm", "c");
     write("public/assets/lfs.png", picture); write("assets-inbox/w/lfs.png", picture);   // a run folder holds the pictures, not the pointers
     assert.deepEqual(uiInputsDirty(dir), [], "LFS pictures whose content matches their pointers are clean, wherever they are");
@@ -325,7 +328,10 @@ test("dirty: every uncommitted change off the safe list (edited, untracked, stag
     write("src/engine/core.ts", "export const core = 2;\n"); write("src/ui/New.tsx", "export const New = 1;\n"); write("tests/fixtures/rows.ts", "export const R = 2;\n");
     write("src/ui/한글 패널.tsx", "export const k = 2;\n"); write("tools/x.cfg", "x\n");
     assert.deepEqual(uiInputsDirty(dir), ["src/engine/core.ts", "src/ui/New.tsx", "src/ui/한글 패널.tsx", "tests/fixtures/rows.ts", "tools/x.cfg"]);
-    git("checkout", "-q", "--", "src", "tests"); rmSync(join(dir, "src/ui/New.tsx")); rmSync(join(dir, "tools"), { recursive: true });
+    git("checkout", "-q", "--", "src", "tests"); rmSync(join(dir, "src/ui/New.tsx")); rmSync(join(dir, "tools/x.cfg"));
+    rmSync(join(dir, KOREAN_PATH));   // what the DGX run folder did to the 16 review records (nightly-GEOMETRY-1011-eeae4c8)
+    assert.deepEqual(uiInputsDirty(dir), [KOREAN_PATH], "a deleted Korean-named file, by its real name");
+    writeKoreanFile(dir);
     write("src/ui/Staged.tsx", "export const S = 1;\n"); git("add", "src/ui/Staged.tsx");
     assert.deepEqual(uiInputsDirty(dir), ["src/ui/Staged.tsx"], "a staged new file");
     git("rm", "-q", "--cached", "src/ui/Staged.tsx"); rmSync(join(dir, "src/ui/Staged.tsx"));

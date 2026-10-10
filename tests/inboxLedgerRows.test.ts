@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { checkInboxLedger, fixLedgerForm, formatLedgerResult, ledgerForm, ledgerOk } from "../scripts/checks/inboxLedger.mjs";
+import { writeKoreanFile } from "./helpers/tempRepo";
 
 // One ledger row per image (png, jpg, jpeg, webp, gif, svg) under assets-inbox/, judged whenever a range touches assets-inbox/ (11ca755e moved 8
 // retired sprites in without rows and passed).
@@ -15,6 +16,7 @@ test("an inbox change needs the images and the ledger's file column to be the sa
   const header = "wave,file,sha256,status,replaced_by,verdict_note,installed_by\r\n";
   const commit = () => { git("add", "-A"); git("commit", "-qm", "c"); return git("rev-parse", "HEAD"); };
   try {
+    writeKoreanFile(dir);
     git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t");
     put("assets-inbox/INBOX_LEDGER.csv", `${header}w1,w1/a.png,00,confirmed,,,\r\n`); put("assets-inbox/w1/a.png", "a"); put("assets-inbox/w1/notes.md", "n");
     const base = commit();
@@ -34,6 +36,10 @@ test("an inbox change needs the images and the ledger's file column to be the sa
     git("rm", "-q", "assets-inbox/w1/a.png");
     const gone = checkInboxLedger({ base, head: commit(), cwd: dir });
     assert.deepEqual(gone.fileless, ["w1/a.png"]); assert.match(formatLedgerResult(gone), /NOFILE w1\/a\.png/);
+
+    put("assets-inbox/w1/한글 그림.png", "k");   // a Korean-named image (git quotes such names unless told not to)
+    const korean = checkInboxLedger({ base, head: commit(), cwd: dir });
+    assert.deepEqual(korean.unledgered, ["w1/한글 그림.png"]); assert.match(formatLedgerResult(korean), /NOROW w1\/한글 그림\.png/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
@@ -47,6 +53,7 @@ test("a new inbox JPG outside LFS fails, a large plain image warns, a moved plai
   const ledger = (...files: string[]) => put("assets-inbox/INBOX_LEDGER.csv", `wave,file,sha256,status,replaced_by,verdict_note,installed_by\r\n${files.map((file, i) => ({ file, row: `w,${file},${i},confirmed,,,\r\n` })).sort((x, y) => x.file < y.file ? -1 : 1).map(({ row }) => row).join("")}`);   // in form: sorted by file (check 6)
   const commit = () => { git("add", "-A"); git("commit", "-qm", "c"); return git("rev-parse", "HEAD"); };
   try {
+    writeKoreanFile(dir);
     git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t");
     put("assets-inbox/old/a.jpg", "plain old jpg"); ledger("old/a.jpg");
     const base = commit();
@@ -82,6 +89,7 @@ test("the ledger keeps CRLF rows sorted by file: an LF row or an appended row fa
   const commit = () => { git("add", "-A"); git("commit", "-qm", "c"); return git("rev-parse", "HEAD"); };
   const header = "wave,file,sha256,status,replaced_by,verdict_note\r\n";
   try {
+    writeKoreanFile(dir);
     git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t"); git("config", "core.autocrlf", "false");
     put("assets-inbox/INBOX_LEDGER.csv", `${header}a,a/1.png,00,confirmed,,"note, with comma"\r\nb,b/1.png,11,confirmed,,\r\n`);
     put("assets-inbox/a/1.png", "1"); put("assets-inbox/b/1.png", "2");
