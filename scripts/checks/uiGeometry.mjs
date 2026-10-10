@@ -253,43 +253,64 @@ const unsafeLine = (what, commit, changes) => `${what}: ${changes.unsafe.length}
  * refused for changes the trunk's own pushes had already audited): the changes since a result's commit `from` that leave
  * it stale at `head`, less what trunk pushes since then covered. Only the commits this push brings (base..head) are
  * judged: a file they change stays a reason. A file they do not change comes as the trunk has it at `base`; it is
- * covered when the trunk's own pushes audited that content — the base's first-parent commits not in `from`'s history (a
- * result measured on a branch counts the trunk pushes since the branch left it; a fast-forward push puts its own commits
- * on that line) are searched from the last one that changed the file up to the base for evidence pushed in the range
- * each merged (first parent..it): a UI-Geometry-Run trailer whose report there measured a tree with the file exactly as
- * at `base`, or a new full shared result measured so; failing that, the nearest commit with evidence, if it carries a
- * UI-Geometry-Override reason (covered, and listed) rather than a measurement. Without a base nothing is covered.
- * What this gives up: a later push no longer re-measures an earlier push's rows by chance, catching their cross effects
- * — the nightly full audit does.
+ * covered when the trunk's own pushes audited that content. The trunk commits are the base's first-parent line not in
+ * `from`'s history (a result measured on a branch counts the trunk pushes since the branch left it; a fast-forward push
+ * puts its own commits on that line). From the last of them that changed the file up to the base, the evidence pushed
+ * in the range each merged (first parent..it) is searched: a UI-Geometry-Run whose report there measured a tree with the
+ * file exactly as at `base`, or a new full shared result measured so — each valid as the gate takes it (its commit an
+ * ancestor of the commit carrying it, measured clean, in every condition, every condition opened, no framed root outside
+ * the registry, no failure outside that commit's baseline and exceptions). Failing that, the commit that last changed
+ * the file may carry a UI-Geometry-Override reason in its own message, where the gate reads it on a push's head (the
+ * merge commit of a merged push): covered, and listed. A measured cover also lists the overrides its push recorded.
+ * Without a base nothing is covered. What this gives up: a later push no longer re-measures an earlier push's rows by
+ * chance, catching their cross effects — the nightly full audit does.
  */
 export function coveredChanges(from, base, head, cwd = process.cwd(), cache = new Map()) {
   const changes = unsafeChanges(from, head, cwd, cache);
   if (base === null || changes.unsafe.length === 0) return { ...changes, covered: [] };
-  const names = (a, b) => execFileSync('git', ['diff', '--name-only', '--no-renames', '-z', a, b], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0').filter(Boolean);
-  const blob = (rev, path) => { try { return git(['rev-parse', '--verify', '--quiet', `${rev}:${path}`], cwd).trim(); } catch { return null; } };
+  const memo = (key, make) => { if (!cache.has(key)) cache.set(key, make()); return cache.get(key); };
+  const names = (a, b) => memo(`names:${a}..${b}`, () => execFileSync('git', ['diff', '--name-only', '--no-renames', '-z', a, b], { cwd, encoding: 'utf8', maxBuffer: 256 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0').filter(Boolean));
+  // Every blob of a commit at once (one ls-tree per commit), a missing path null.
+  const tree = rev => memo(`tree:${rev}`, () => { const map = new Map(); try { for (const entry of execFileSync('git', ['ls-tree', '-r', '-z', rev], { cwd, encoding: 'utf8', maxBuffer: 1024 * 2 ** 20, stdio: ['ignore', 'pipe', 'ignore'] }).split('\0')) { const tab = entry.indexOf('\t'); if (tab > 0) map.set(entry.slice(tab + 1), entry.slice(0, tab).split(' ')[2]); } } catch { /* no such commit: nothing */ } return map; });
+  const blob = (rev, path) => tree(rev).get(path) ?? null;
   const brought = new Set(names(base, head));
   const unsafe = new Set(changes.unsafe);
-  const line = git(['rev-list', '--first-parent', base, `^${from}`], cwd).split('\n').filter(Boolean);   // newest first
-  // What each trunk commit changed (of the files that matter) and the evidence pushed in the range it merged.
-  const steps = line.map(commit => {
-    const measured = rowRunsInRange(`${commit}^1`, commit, cwd).flatMap(run => {
-      const report = readJson(commit, `${UI_GEOMETRY_RUNS}/${run}/geometry.json`, cwd);
-      return /^[0-9a-f]{40}$/.test(String(report?.commit ?? '')) ? [{ what: `UI-Geometry-Run ${run}`, at: report.commit }] : [];
-    });
-    const summary = readJson(commit, UI_GEOMETRY_SUMMARY, cwd);
-    if (summary?.full === true && /^[0-9a-f]{40}$/.test(String(summary.commit ?? '')) && readJson(`${commit}^1`, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run) measured.push({ what: `full audit ${summary.run}`, at: summary.commit });
-    return { commit, files: new Set(names(`${commit}^1`, commit).filter(path => unsafe.has(path))), measured, overrides: overridesInRange(`${commit}^1`, commit, cwd).map(item => item.reason) };
+  const line = memo(`line:${base}^${from}`, () => git(['rev-list', '--first-parent', base, `^${from}`], cwd).split('\n').filter(Boolean));   // newest first
+  const files = commit => memo(`cover-files:${commit}:${from}..${head}`, () => new Set(names(`${commit}^1`, commit).filter(path => unsafe.has(path))));
+  const sha = value => /^[0-9a-f]{40}$/.test(String(value ?? '')) ? value : '';
+  // A failure outside the baseline and exceptions the commit carrying the evidence had (the rows the report measured).
+  const clean = (commit, keys, rows) => {
+    const baseline = readJson(commit, UI_GEOMETRY_BASELINE, cwd)?.entries ?? []; const exceptions = readJson(commit, UI_GEOMETRY_EXCEPTIONS, cwd)?.exceptions ?? [];
+    return compareBaseline({ keys, baseline: rows === null ? baseline : baseline.filter(key => rows.has(splitKey(key).row)), exceptions: rows === null ? exceptions : exceptions.filter(entry => rows.has(entry.row)) }).added.length === 0;
+  };
+  // The valid measurements pushed in the range a trunk commit merged: [{ what, at }].
+  const measurements = commit => memo(`cover-evidence:${commit}`, () => {
+    const out = [];
+    for (const run of rowRunsInRange(`${commit}^1`, commit, cwd)) {
+      const report = readJson(commit, `${UI_GEOMETRY_RUNS}/${run}/geometry.json`, cwd); const at = sha(report?.commit);
+      if (report?.run !== run || at === '' || measuredAt(at, commit, cwd) !== 'ok') continue;
+      const { keys, measured } = reportFailures(report);
+      if (report.dirty !== false || report.axesNarrowed !== false || typeof report.totals?.unopened !== 'number' || Math.max(report.totals.unopened, reportNotOpened(report)) !== 0
+        || !Array.isArray(report.unregisteredFramed) || report.unregisteredFramed.length !== 0 || measured.size === 0 || !clean(commit, keys, new Set(measured.keys()))) continue;
+      out.push({ what: `UI-Geometry-Run ${run}`, at });
+    }
+    const summary = readJson(commit, UI_GEOMETRY_SUMMARY, cwd); const at = sha(summary?.commit);
+    if (summary?.full === true && at !== '' && readJson(`${commit}^1`, UI_GEOMETRY_SUMMARY, cwd)?.run !== summary.run && measuredAt(at, commit, cwd) === 'ok'
+      && summary.dirty === false && summary.unopened === 0 && summary.unregisteredFramed === 0 && Array.isArray(summary.failureKeys) && clean(commit, summary.failureKeys, null)) out.push({ what: `full audit ${summary.run}`, at });
+    return out;
   });
+  const ownOverrides = commit => memo(`cover-own:${commit}`, () => overridesInRange(null, commit, cwd).map(item => item.reason));
+  const rangeOverrides = commit => memo(`cover-range:${commit}`, () => overridesInRange(`${commit}^1`, commit, cwd).map(item => item.reason));
   const coverOf = path => {
-    const last = steps.findIndex(step => step.files.has(path));
+    const last = line.findIndex(commit => files(commit).has(path));
     if (last === -1) return null;
     const want = blob(base, path);
-    for (let k = last; k >= 0; k -= 1) for (const item of steps[k].measured) if (blob(item.at, path) === want) return { commit: steps[k].commit, what: item.what };
-    for (let k = last; k >= 0; k -= 1) {
-      if (steps[k].overrides.length > 0) return { commit: steps[k].commit, what: `override, recorded: ${steps[k].overrides.join(' | ')}` };
-      if (steps[k].measured.length > 0) return null;
+    for (let k = last; k >= 0; k -= 1) for (const item of measurements(line[k])) if (blob(item.at, path) === want) {
+      const recorded = rangeOverrides(line[k]);
+      return { commit: line[k], what: `${item.what}${recorded.length > 0 ? `; override, recorded: ${recorded.join(' | ')}` : ''}` };
     }
-    return null;
+    const own = ownOverrides(line[last]);
+    return own.length > 0 ? { commit: line[last], what: `override, recorded: ${own.join(' | ')}` } : null;
   };
   const left = []; const covers = new Map();
   for (const path of changes.unsafe) {

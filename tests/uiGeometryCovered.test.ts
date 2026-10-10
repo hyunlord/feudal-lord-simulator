@@ -37,14 +37,16 @@ function story({ own = "full" }: { own?: "full" | "rows" } = {}) {
   git("checkout", "-qb", "pushing"); write("scripts/tool.mjs", "// the push's script\n"); const at = commit("pushing: the script");
   if (own === "full") { full("full-branch", at); commit("pushing: its full audit"); } else rowRun("pushing-rows", at);
   /** A trunk push: a side branch changes `path`, with `evidence`, merged into the trunk (a merge or fast-forward). */
+  // An override is where the gate reads it: on the push's head — the merge commit of a merged push, or (fast-forward)
+  // the commit that changed the file, pushed as the head.
+  const OVERRIDE = (name: string) => `\n\nUI-Geometry-Override: ${name} pushed through the override, a reason`;
   const push = (name: string, path: string, evidence: "run" | "override" | "none" | "full", how: "merge" | "ff" = "merge") => {
     git("checkout", "-q", "trunk"); git("checkout", "-qb", name);
-    write(path, `// ${path} changed by ${name}\n`); const changed = commit(`${name}: ${path}`);
+    write(path, `// ${path} changed by ${name}\n`); const changed = commit(`${name}: ${path}${evidence === "override" && how === "ff" ? OVERRIDE(name) : ""}`);
     if (evidence === "run") rowRun(`${name}-rows`, changed);
     if (evidence === "full") { full(`${name}-full`, changed); commit(`${name}: a new full audit`); }
-    if (evidence === "override") commit(`${name}: the push\n\nUI-Geometry-Override: ${name} pushed through the override, a reason`);
     git("checkout", "-q", "trunk");
-    if (how === "ff") git("merge", "-q", "--ff-only", name); else git("merge", "-q", "--no-ff", "--no-edit", name);
+    if (how === "ff") git("merge", "-q", "--ff-only", name); else git("merge", "-q", "--no-ff", "-m", `Merge ${name}${evidence === "override" ? OVERRIDE(name) : ""}`, name);
     return head();
   };
   /** The pushing branch merges the trunk (its result stays ours); the gate on trunk..head. */
@@ -53,7 +55,7 @@ function story({ own = "full" }: { own?: "full" | "rows" } = {}) {
     try { git("merge", "-q", "--no-edit", "-X", "ours", "trunk"); } catch { /* a conflict-free story */ }
     return checkUiGeometry({ base, head: head(), cwd: dir, mode: "enforce", env: {} });
   };
-  return { dir, git, write, commit, rowRun, push, check, done: () => rmSync(dir, { recursive: true, force: true }) };
+  return { dir, git, write, commit, rowRun, full, push, check, OVERRIDE, done: () => rmSync(dir, { recursive: true, force: true }) };
 }
 
 const refused = (result: ReturnType<typeof checkUiGeometry>, pattern: RegExp) => assert.ok(!result.ok && result.reasons.some(reason => pattern.test(reason)), result.reasons.join("\n"));
@@ -169,5 +171,104 @@ test("without a base nothing is covered", () => {
     s.check();
     const result = checkUiGeometry({ base: null, head: s.git("rev-parse", "HEAD"), cwd: s.dir, mode: "enforce", env: {} });
     refused(result, /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
+
+test("evidence counts as the gate takes it: a dirty run, a narrowed one, one with a condition not opened or a new failure, a run whose commit is not there, a dirty or partial shared result do not cover", () => {
+  const bad: [string, (s: ReturnType<typeof story>, at: string) => void][] = [
+    ["a dirty run", (s, at) => s.write(`${RUNS}/r/geometry.json`, JSON.stringify({ ...runReport(at), dirty: true }))],
+    ["a narrowed run", (s, at) => s.write(`${RUNS}/r/geometry.json`, JSON.stringify({ ...runReport(at), axesNarrowed: true }))],
+    ["a run with a condition not opened", (s, at) => s.write(`${RUNS}/r/geometry.json`, JSON.stringify({ ...runReport(at), totals: { unopened: 1 } }))],
+    ["a run with a new failure", (s, at) => s.write(`${RUNS}/r/geometry.json`, JSON.stringify(runReport(at, ["overflow|div.x"])))],
+    ["a run whose commit is not there", (s) => s.write(`${RUNS}/r/geometry.json`, JSON.stringify(runReport("0".repeat(40))))],
+  ];
+  for (const [what, write] of bad) {
+    const s = story();
+    try {
+      s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "p"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("p: the card");
+      write(s, at); s.commit("p: its rows\n\nUI-Geometry-Run: r"); s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-edit", "p");
+      refused(s.check(), /src\/ui\/Card\.tsx — audit again/);
+    } finally { s.done(); }
+  }
+  for (const [what, extra] of [["a dirty full result", { dirty: true }], ["a partial shared result", { full: false }], ["a full result with a condition not opened", { unopened: 2 }]] as const) {
+    const s = story({ own: "rows" });
+    try {
+      s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "p"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("p: the card");
+      s.write(SHARED, JSON.stringify({ run: "p-full", full: true, commit: at, dirty: false, failureKeys: [], unopened: 0, unregisteredFramed: 0, rows: 1, ...extra })); s.commit(`p: ${what}`);
+      s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--ff-only", "p");
+      refused(s.check(), /src\/ui\/Card\.tsx — audit again/);
+    } finally { s.done(); }
+  }
+});
+
+test("a deleted UI file is not covered by a run whose commit is not there (an absent blob is not a measurement)", () => {
+  const s = story();
+  try {
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "p"); s.git("rm", "-q", "src/ui/Other.tsx"); s.commit("p: the other panel goes");
+    s.write(`${RUNS}/r/geometry.json`, JSON.stringify(runReport("1".repeat(40)))); s.commit("p: rows\n\nUI-Geometry-Run: r");
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "--no-edit", "p");
+    refused(s.check(), /src\/ui\/Other\.tsx/);
+  } finally { s.done(); }
+});
+
+test("a push whose own run failed and went through the override: covered only as an override, and the output says so", () => {
+  const s = story();
+  try {
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "hurried"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("hurried: the card");
+    s.write(`${RUNS}/hurried-rows/geometry.json`, JSON.stringify({ ...runReport(at, ["overflow|div.card"]), run: "hurried-rows" })); s.commit("hurried: its failing rows\n\nUI-Geometry-Run: hurried-rows");
+    s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "-m", `Merge hurried${s.OVERRIDE("hurried")}`, "hurried");
+    const result = s.check();
+    assert.equal(result.ok, true, result.reasons.join("\n"));
+    const text = formatUiGeometryResult(result);
+    assert.match(text, /\(override, recorded: hurried pushed through the override, a reason; 1 file\(s\)\)/);
+    assert.doesNotMatch(text, /UI-Geometry-Run hurried-rows/, "the failing run is no measurement");
+  } finally { s.done(); }
+});
+
+test("an override counts only on the commit that carries the change into the trunk: not a later docs push's, not an earlier one's", () => {
+  const s = story();
+  try {
+    s.push("bare", "src/ui/Other.tsx", "none", "ff");                        // no evidence
+    s.git("checkout", "-q", "trunk"); s.write("docs/notes.md", "x\n"); s.commit(`docs: a note${s.OVERRIDE("docs")}`);   // a docs push that never needed it
+    refused(s.check(), /src\/ui\/Other\.tsx/);
+  } finally { s.done(); }
+  const t = story();
+  try {
+    t.git("checkout", "-q", "trunk"); t.write("docs/notes.md", "x\n"); t.commit(`docs: a note${t.OVERRIDE("early")}`);   // an override before the change
+    t.push("bare", "src/ui/Other.tsx", "none", "ff");
+    refused(t.check(), /src\/ui\/Other\.tsx/);
+  } finally { t.done(); }
+  const u = story();
+  try {
+    // A fast-forward push whose override sits on a later commit than the change: not where the change came in — refused.
+    u.git("checkout", "-q", "trunk"); u.git("checkout", "-qb", "late"); u.write("src/ui/Card.tsx", "// changed\n"); u.commit("late: the card");
+    u.write("docs/notes.md", "y\n"); u.commit(`late: a note${u.OVERRIDE("late")}`); u.git("checkout", "-q", "trunk"); u.git("merge", "-q", "--ff-only", "late");
+    refused(u.check(), /src\/ui\/Card\.tsx/);
+  } finally { u.done(); }
+});
+
+test("only the trunk's last change of a file counts: an old run that measured the same content before an unaudited change and its revert does not cover", () => {
+  const s = story();
+  try {
+    s.push("one", "src/ui/Panel.tsx", "run", "ff");                           // measured: Panel as one left it
+    const measured = s.git("show", "trunk:src/ui/Panel.tsx");
+    s.git("checkout", "-q", "trunk"); s.write("src/ui/Panel.tsx", "// unaudited\n"); s.commit("two: the panel, no evidence");
+    s.write("src/ui/Panel.tsx", measured); s.commit("three: back as one measured it, no evidence");
+    refused(s.check(), /src\/ui\/Panel\.tsx/);
+  } finally { s.done(); }
+});
+
+/** A valid changed-rows report measured at `at` (with failure `keys`). */
+function runReport(at: string, keys: string[] = []) {
+  return { run: "r", commit: at, axesNarrowed: false, dirty: false, totals: { unopened: 0 }, unregisteredFramed: [],
+    rows: { "modal.panel": { conditions: Object.fromEntries(CONDITIONS.map(condition => [condition, { status: "measured", keys }])) } } };
+}
+
+test("a measured cover also lists the override its push recorded", () => {
+  const s = story();
+  try {
+    s.git("checkout", "-q", "trunk"); s.git("checkout", "-qb", "both"); s.write("src/ui/Card.tsx", "// changed\n"); const at = s.commit("both: the card");
+    s.rowRun("both-rows", at); s.git("checkout", "-q", "trunk"); s.git("merge", "-q", "--no-ff", "-m", `Merge both${s.OVERRIDE("both")}`, "both");
+    assert.match(formatUiGeometryResult(s.check()), /\(UI-Geometry-Run both-rows; override, recorded: both pushed through the override, a reason; 1 file\(s\)\)/);
   } finally { s.done(); }
 });

@@ -46,14 +46,29 @@ launch() { # <label> <sha> <command ...>
 # Made with git archive, the folder holds LFS pointers until its run pulls them: kept looking old so no session's upload
 # takes it as its copy source (run.sh --copy-dest), as trunkClone.sh does.
 old() { touch -d "2 days ago" "$1" 2> /dev/null; }
-wait_run() { while [ ! -f "$BASE/$1/.remote/exit-code" ]; do old "$BASE/$1"; sleep 120; done; old "$BASE/$1"; cat "$BASE/$1/.remote/exit-code"; }
+# The night's limits: a run that has no slot by START_BY (06:00) gives the night up rather than hold an experiment slot
+# into the day; one that runs past RUN_FOR (10 hours) is stopped. Either way the head stays unaudited for tomorrow.
+START_BY=$(date -d "${NIGHTLY_START_BY:-06:00}" +%s); [ "$START_BY" -lt "$(date +%s)" ] && START_BY=$(date -d "tomorrow ${NIGHTLY_START_BY:-06:00}" +%s)
+RUN_FOR=${NIGHTLY_RUN_FOR_S:-36000}
+stop_run() { systemctl --user stop "fls-run-$1-*" 2> /dev/null; }
+wait_run() { # prints the exit code, or "no-slot" / "too-long"
+  local started=""
+  while [ ! -f "$BASE/$1/.remote/exit-code" ]; do
+    old "$BASE/$1"
+    if [ -f "$BASE/$1/.remote/start-marker" ]; then started=${started:-$(date +%s)}
+      [ $(( $(date +%s) - started )) -gt "$RUN_FOR" ] && { stop_run "$1"; echo too-long; return; }
+    elif [ "$(date +%s)" -gt "$START_BY" ]; then stop_run "$1"; echo no-slot; return; fi
+    sleep 120
+  done
+  old "$BASE/$1"; cat "$BASE/$1/.remote/exit-code"
+}
 
 # The audit reads the pictures: pull the LFS files first (the shared store under _cache/lfs), then audit the clean tree.
 run=$(launch nightly-GEOMETRY "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && bash scripts/remote/tasks.sh ui-geometry")
 log "nightly geometry ${head:0:8}: $run started"
 rc=$(wait_run "$run")
-echo "$head" > "$ST/last-audited"
+[ "$rc" = 0 ] && echo "$head" > "$ST/last-audited"   # a failed or skipped night is tried again
 summary=$(grep -m1 'measured' "$BASE/$run/.remote/summary.txt" 2> /dev/null | cut -c1-200)
-printf '%s %s %s %s | %s\n' "$([ "$rc" = 0 ] && echo OK || echo FAILED)" "${head:0:8}" "$(date '+%F %T')" "$run" "${summary:-exit $rc}" > "$ST/status"
+printf '%s %s %s %s | %s\n' "$(case "$rc" in 0) echo OK ;; no-slot) echo SKIPPED ;; *) echo FAILED ;; esac)" "${head:0:8}" "$(date '+%F %T')" "$run" "${summary:-exit $rc}" > "$ST/status"
 log "$(cat "$ST/status")"
 [ "$rc" = 0 ]
