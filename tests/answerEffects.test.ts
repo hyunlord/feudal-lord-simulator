@@ -71,3 +71,13 @@ test('nonlord commands never create answer snapshots and traced recording change
   const { trace: _old, ...expected } = changed; const { trace: _new, ...actual } = recorded;
   assert.deepEqual(actual, expected);
 });
+test('famine relief records the live seasonal instruction, not its duplicate decision-log entry', () => {
+  const state = base();
+  const before: GameState = { ...state, events: { records: [{ id: 'famine-test', defId: 'great_famine', kind: 'dearth',
+    season: 0, arrivalTick: state.tick, losses: { burntHouses: 0, departures: 0, harvestLost: 0 } }], burning: [] } };
+  const after = gameReducer(before, { type: 'famine_response', choice: 'relief' });
+  const answer = after.trace?.answers?.at(-1); assert.ok(answer);
+  const effects = answerEffects(after, answer.id); assert.ok(effects);
+  assert.equal(effects.find(row => row.path.join('.') === 'events.records.famine-test.response.choice')?.after, 'relief');
+  assert.ok(effects.every(row => row.path[0] !== 'politics' || row.path[1] !== 'decisions'));
+});

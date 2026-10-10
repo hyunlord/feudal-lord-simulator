@@ -15,7 +15,8 @@ function bookkeeping(path: readonly string[]): boolean {
     'nextSteward', 'nextPerson', 'nextEstate', 'nextSubsidy', 'nextRequest', 'nextOrder', 'id', 'settledTick'].includes(last)) return true;
   if (last.startsWith('next') && /[A-Z]/.test(last[4] ?? '')) return true;
   if (path[0] === 'stewardship' && ['petitions', 'audits'].includes(path[1] ?? '') && ['status', 'decidedBy', 'policy'].includes(last)) return true;
-  if (path[0] === 'politics' && path[1] === 'petitions' && ['status', 'response', 'decidedTick'].includes(last)) return true;
+  if (path[0] === 'politics' && path[1] === 'petitions' && ['status', 'response', 'decidedTick', 'respondedTick'].includes(last)) return true;
+  if (path[0] === 'politics' && ['decisions', 'chronicle'].includes(path[1] ?? '')) return true;
   return path[0] === 'agency' && path[1] === 'duesAgreement' && ['tick', 'occurrenceId'].includes(last);
 }
 function target(path: readonly string[]): AnswerEffectTarget {
@@ -24,10 +25,11 @@ function target(path: readonly string[]): AnswerEffectTarget {
   if (root === 'factions' || path[1] === 'relations' || ['tenants', 'merchants', 'loyalty'].includes(leaf ?? '')) return 'relation';
   if (path[1] === 'oversight' || path[1] === 'rules' || path[1] === 'stewards') return 'oversight';
   if (path[1] === 'people' || root === 'persons' || root === 'lordship') return 'person';
-  if (path[1] === 'claims' || path[1] === 'suits') return 'right';
+  if (path[1] === 'rights' || path[1] === 'pieces' || path[1] === 'claims' || path[1] === 'suits') return 'right';
   if (path.includes('terms') || path.includes('counterTerms') || path.includes('effectiveTerms') || root === 'registry') return 'term';
   if (root === 'diplomacy') return 'marriage';
   if (root === 'tiles' || root === 'buildings' || root === 'houses' || root === 'estates' || root === 'land' || root === 'zones' || root === 'arableFields') return 'land';
+  if (root === 'events' && path.includes('response')) return 'command';
   if (root === 'palisade' || root === 'wallConstructionReserve' || root === 'eraProclaimedTick' || root === 'timberOrder' || root === 'constructionSites' || root === 'wallConstructionPriority' || path[1] === 'orders' || path[1] === 'requests') return 'command';
   return 'condition';
 }
@@ -57,7 +59,7 @@ export function captureAnswerEffects(before: GameState, after: GameState): reado
     era: state.era, wallConstructionPriority: state.wallConstructionPriority,
     agency: state.agency, estates: estatesOf(state), diplomacy: { ...diplomacyOf(state), relations: Object.fromEntries(relationKeys.map(id => [id, state.diplomacy?.relations[id] ?? 0])) }, stewardship: stewardshipOf(state),
     factions: { factions: state.factions?.factions.map(row => ({ id: row.id, relation: row.relation })) ?? [] },
-    registry: { terms: state.registry?.terms ?? [] }, politics: state.politics,
+    registry: { terms: state.registry?.terms ?? [] }, politics: state.politics, events: state.events, money: state.money, trades: state.trades,
     land: state.land, lordship: state.lordship, persons: state.persons, war: state.war, plague: state.plague,
     reorganisation: state.reorganisation, legacy: state.legacy, ale: state.ale,
     palisade: state.palisade, wallConstructionReserve: state.wallConstructionReserve, eraProclaimedTick: state.eraProclaimedTick,

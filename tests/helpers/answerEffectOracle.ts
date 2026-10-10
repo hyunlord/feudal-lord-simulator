@@ -9,7 +9,7 @@ const object = (x: unknown): x is Record<string, unknown> => typeof x === 'objec
 // Independent whole-state oracle, adapted from Render A answerReceipts.test.ts. Unlike its original exclusions,
 // marriage stages, people, construction and negotiation terms must have exact-value evidence here.
 const IGNORE = [/^(history|trace|ledger|tick|rngState|lastCommand|commandLog|seen)(\.|$)/, /\.(memory|timeline|history)(\.|$)/,
-  /^registry\.(?!terms)/, /^stewardship\.(petitions|audits)\.[^.]+\.(status|decidedBy|policy)$/, /^politics\.petitions\.[^.]+\.(status|response|decidedTick)$/,
+  /^registry\.(?!terms)/, /^politics\.(decisions|chronicle)(\.|$)/, /^stewardship\.(petitions|audits)\.[^.]+\.(status|decidedBy|policy)$/, /^politics\.petitions\.[^.]+\.(status|response|decidedTick|respondedTick)$/,
   /\.(id|settledTick)$/, /(^|\.)next[A-Z][^.]*$/, /^agency\.duesAgreement\.(tick|occurrenceId)$/,
   /^(walkers|workers|pathCache)(\.|$)/];
 export function checkEffectCoverage(before: GameState, after: GameState, effects: readonly AnswerEffect[], label: string): void {
