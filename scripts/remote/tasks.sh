@@ -167,6 +167,7 @@ ui-geometry)
   deccard2=${DECCARD2_STATES:-$HOME/fls-deccard2-results-states}
   slice=${SLICE_STATES:-$HOME/fls-slice-end-states}
   variants=${VARIANT_STATES:-$HOME/fls-variant-states}
+  growplan=${GROWPLAN_STATES:-$HOME/fls-growplan-states}
   # The registry's scenes (src/ui/surfaces.registry.ts) read these; each folder is built by its scripts/ui*States.ts.
   missing=""
   for f in "$states5/merchant-town.json" "$states5/carrying.json" "$states5/famine-arrival.json" "$states5/petition-open.json" "$states5/chapter-end.json" \
@@ -178,11 +179,12 @@ ui-geometry)
     "$lord2/offer-countered.json" "$lord2/marriage-contracted.json" "$lord2/will-change.json" "$lord2/contested.json" "$lord2/inherited.json" \
     "$lord2/audit-pending.json" "$lord2/attention-overloaded.json" "$lord2/promises.json" "$lord2/neighbour-suit.json" \
     "$deccard2/trace-season.json" "$deccard2/trace-later.json" "$deccard2/year-eve.json" "$deccard2/year-loaded.json" "$deccard2/succession.json" \
-    "$slice/slice-end.json" "$variants/home-041.json" "$variants/home-048.json" "$variants/home-056.json" "$variants/registry-067.json" "$variants/registry-078.json"; do
+    "$slice/slice-end.json" "$variants/home-041.json" "$variants/home-048.json" "$variants/home-056.json" "$variants/registry-067.json" "$variants/registry-078.json" \
+    "$growplan/plan-waiting.json" "$growplan/plan-sites.json" "$growplan/plan-searching.json" "$growplan/plan-asked.json" "$growplan/plan-failed.json"; do
     [ -f "$f" ] || missing="$missing $f"
   done
   if [ -n "$missing" ]; then
-    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts, landStates.ts, lmr1PetitionStates.ts, lmr1LordStates.ts, eventArtStates.ts, wave40MomentStates.ts, lmr2States.ts, deccard2ResultsStates.ts, sliceEndsStates.ts, variantStates.ts)" | tee "$OUT/summary.txt"
+    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts, landStates.ts, lmr1PetitionStates.ts, lmr1LordStates.ts, eventArtStates.ts, wave40MomentStates.ts, lmr2States.ts, deccard2ResultsStates.ts, sliceEndsStates.ts, variantStates.ts, growPlanStates.ts)" | tee "$OUT/summary.txt"
     exit 2
   fi
   # No file watching (scripts/remote/viteNoWatch.config.ts): the audit needs the dev transforms, not hot reload, and a
@@ -206,13 +208,13 @@ ui-geometry)
   out=docs/verification/uiaudit1/geometry/$FLS_REMOTE_RUN
   FLS_TRACE_DIR="$trace" FLS_TRACE_ROLE=audit FLS_TRACE_LOOPBACK="$FLS_REMOTE_PORT" FLS_TRACE_CHILDREN="git,$browser_name,chrome,chromium,headless_shell,chrome-headless-shell" NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }$tracer" \
     node_modules/.bin/tsx scripts/uiGeometryAudit.mjs "$out" --url "$url" --states5 "$states5" --states6 "$states6" --states8 "$states8" \
-    --states9 "$states9" --states10 "$states10" --extra "$extra" --states-lands "$lands" --states-petitions "$petitions" --states-lord "$lord" --states-moments "$moments" --states-lord2 "$lord2" --states-deccard2 "$deccard2" --states-slice "$slice" --states-variants "$variants" "$@" > "$OUT/ui-geometry/audit.log" 2>&1
+    --states9 "$states9" --states10 "$states10" --extra "$extra" --states-lands "$lands" --states-petitions "$petitions" --states-lord "$lord" --states-moments "$moments" --states-lord2 "$lord2" --states-deccard2 "$deccard2" --states-slice "$slice" --states-variants "$variants" --states-growplan "$growplan" "$@" > "$OUT/ui-geometry/audit.log" 2>&1
   rc=$?
   sleep 2; fls_stop_servers   # the server writes its record every second; it is idle once the audit ends
   if [ -f "$out/geometry.json" ]; then
     node scripts/uiGeometryInputs.mjs "$out" "$trace" --state ui5="$states5" --state ui6="$states6" --state ui8="$states8" --state ui9="$states9" \
       --state ui10="$states10" --state ui10-extra="$extra" --state lands="$lands" --state petitions="$petitions" --state lord="$lord" --state moments="$moments" \
-      --state lord2="$lord2" --state deccard2="$deccard2" --state slice="$slice" --state variants="$variants" --declared "$HOME/.cache/ms-playwright" \
+      --state lord2="$lord2" --state deccard2="$deccard2" --state slice="$slice" --state variants="$variants" --state growplan="$growplan" --declared "$HOME/.cache/ms-playwright" \
       --system /proc/version --system /usr/bin/ldd --system /etc/os-release \
       2>&1 | tee -a "$OUT/ui-geometry/audit.log" || rc=1
   fi

@@ -42,7 +42,7 @@ import { FamilyLinks } from "../src/ui/chronicle/FamilyLinks";
 import { buildEraConsoleModel } from "../src/ui/EraConsole";
 import type { StoryBeat } from "../src/ui/eventStory";
 import { storyChips } from "../src/ui/hud/useStoryPresentation";
-import { lordWallGuidance } from "../src/ui/lord/advice/lordWall";
+import { lordWallPlan } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { DECISION_CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
 import { familyPeople } from "../src/ui/persons/familyNews";
@@ -145,19 +145,18 @@ test("PLAY-2 연대기 목록 제목: a card answer's line names the event and t
 
 // --- PLAY-2 items 6–8 (the lead's 2026-10-08 additions, from docs/qa/lordplay2-20261008/TOP10_FRICTION.md 10, 9, 8) ---
 
-test("PLAY-2 friction 10: in lord mode the palisade guidance is the town's line and its request, with the lord's lever — drawing it himself only when the town found none", () => {
-  const unmet = evaluateEraRequirements(lord).find(requirement => !requirement.met)!;
-  const waiting = lordWallGuidance(lord, null)!;
-  assert.equal(waiting.line, LORD_WALL_COPY.waiting(unmet.label, unmet.current, unmet.target));
-  assert.equal(waiting.next, lordLevers(lord, { kind: "houses" })[0], "the population's lever: the houses' (명령 › 장려 구역)");
+test("PLAY-2 friction 10 (GROW-BLOCK since): in lord mode the console's one primary is the town's palisade plan — the conditions with the lord's lever, no drawing button", () => {
+  const unmet = evaluateEraRequirements(lord).filter(requirement => !requirement.met);
+  const plan = lordWallPlan(lord)!;
+  assert.equal(plan.stage, "waiting");
+  assert.equal(plan.line, LORD_WALL_COPY.stage.waiting(unmet.length));
+  const population = plan.conditions.find(condition => condition.key === "population")!;
+  assert.equal(population.lever?.line, lordLevers(lord, { kind: "houses" })[0], "the population's lever: the houses' (명령 › 장려 구역)");
   const model = buildEraConsoleModel({ state: lord, draft: null });
-  assert.deepEqual([model.proposal.visible, model.proposal.label, model.proposal.failure], [true, waiting.line, waiting.next]);
-  assert.doesNotMatch(model.proposal.label, /직접 그어/);
-  const asked = { ...lord, agency: { ...lord.agency!, requests: [{ kind: "proclaim_era" }] } } as unknown as GameState;
-  assert.deepEqual(lordWallGuidance(asked, null), { line: LORD_WALL_COPY.asked, next: null });
+  assert.deepEqual([model.action.label, model.action.reason, model.proposal.visible, model.proposal.recommendEnabled], [LORD_WALL_COPY.plan, plan.line, false, false]);
   // Outside lord mode the sandbox's guidance stays.
   const { agency: _agency, ...sandbox } = lord;
-  assert.equal(lordWallGuidance(sandbox as GameState, null), null);
+  assert.equal(lordWallPlan(sandbox as GameState), null);
 });
 
 test("PLAY-2 friction 9: a birth names the child and both parents, each with a biography button; the marriage's first child in its timeline", () => {

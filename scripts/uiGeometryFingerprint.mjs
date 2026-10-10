@@ -14,7 +14,8 @@ import { join } from 'node:path';
 /** The scene state sets scripts/remote/tasks.sh passes the audit (--state <set>=<folder>), by their default folders under $HOME. */
 export const STATE_SETS = Object.freeze({ ui5: 'fls-ui5-states-v22', ui6: 'fls-ui6-states', ui8: 'fls-ui8-states', ui9: 'fls-ui9-states', ui10: 'fls-ui10-states',
   'ui10-extra': 'fls-ui10-states/extra', lands: 'fls-land-states', petitions: 'fls-lmr1-petition-states', lord: 'fls-lord-states', moments: 'fls-wave40-moment-states',
-  lord2: 'fls-lmr2-states', deccard2: 'fls-deccard2-results-states', slice: 'fls-slice-end-states', variants: 'fls-variant-states' });
+  lord2: 'fls-lmr2-states', deccard2: 'fls-deccard2-results-states', slice: 'fls-slice-end-states', variants: 'fls-variant-states',
+  growplan: 'fls-growplan-states' });
 /** The system identity files the task declares (--system). */
 export const SYSTEM_FILES = Object.freeze(['/proc/version', '/usr/bin/ldd', '/etc/os-release']);
 /** Where the DGX keeps the shadow records, one file per check:merge run (under $HOME). */
