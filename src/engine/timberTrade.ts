@@ -88,8 +88,11 @@ export function charterTimberOrder(state: GameState, timberNeeded: number): numb
   const shortfall = timberNeeded - placementSpendableResource(state, "timber");
   if (shortfall <= 0) return null;
   // GB-8 (GROW-BLOCK): stopped (FIX-14), or so slow the charter would wait more than four windows (two years and more)
-  // — seed 1's town gathered its 250 at fifteen a year, thirteen years at 528.
-  if (production.produced > 0 && shortfall <= production.produced * CHARTER_TIMBER_SLOW_WINDOWS) return null;
+  // — seed 1's town gathered its 250 at fifteen a year, thirteen years at 528. Lord mode only (GROW-BLOCK-2a ⑤): in the
+  // sandbox its purchases at 48,000 and 50,400 ticks moved the guardrail's seed 1 onto a third field two cells over the
+  // arable cap (engine-GROW-bisect-6f71b2f); the sandbox keeps FIX-14's stopped-only order.
+  const slowOrders = state.agency !== undefined;
+  if (production.produced > 0 && (!slowOrders || shortfall <= production.produced * CHARTER_TIMBER_SLOW_WINDOWS)) return null;
   // FIX-15 (TT-5): without a market, the carted price and the hamlet's largest order.
   const carted = timberTradeMarket(state) === null;
   const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / (carted ? TIMBER_TRADE_BALANCE.hamletPrice : TIMBER_TRADE_BALANCE.price));

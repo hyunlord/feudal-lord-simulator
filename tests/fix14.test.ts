@@ -123,7 +123,7 @@ test("SW-12 (DEC-TRACE §1, GP-7) a delegated estate's steward answers by the lo
   assert.ok(PETITION_ANSWER_TICKS > 0);
 });
 
-test("FX13-5 (가) the charter waiting on timber the town cannot store: the era step orders the shortfall (FIX-10's rule); a hamlet has no market yet, so the traders cart it to its storehouse (TT-5); not while its sawmills would meet it within four windows (GB-8)", () => {
+test("FX13-5 (가) the charter waiting on timber the town cannot store: the era step orders the shortfall (FIX-10's rule); a hamlet has no market yet, so the traders cart it to its storehouse (TT-5); not while its sawmills work (the sandbox; lord mode orders a slow town's too, GB-8)", () => {
   const saved = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v45/population-176.save.json"))).envelope.state as GameState;
   assert.equal(saved.era, "hamlet");
   assert.ok(!saved.buildings.some(building => building.kind === "market"), "no market before the charter");
@@ -132,11 +132,13 @@ test("FX13-5 (가) the charter waiting on timber the town cannot store: the era 
   const build = () => ({ kind: "none" as const });
   const action = autoplayEraAction(idle, build);
   assert.ok(action.kind === "order_timber" && action.amount > 0, JSON.stringify(action));
-  // GB-8 (GROW-BLOCK): not while its sawmills would meet the shortfall within four windows; a slow town (12 a window) still orders.
+  // GB-8 (GROW-BLOCK) is lord mode's: the sandbox orders nothing while its sawmills work, slow or not.
   const working = { ...idle, timberProductionWindow: { ...idle.timberProductionWindow!, produced: 1_000 } };
   assert.equal(autoplayEraAction(working, build).kind, "none");
   const slow = { ...idle, timberProductionWindow: { ...idle.timberProductionWindow!, produced: 12 } };
-  assert.equal(autoplayEraAction(slow, build).kind, "order_timber");
+  assert.equal(autoplayEraAction(slow, build).kind, "none", "the sandbox orders only when its sawmills stopped (GROW-BLOCK-2a ⑤)");
+  const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
+  assert.equal(autoplayEraAction({ ...slow, agency: lord.agency! }, build).kind, "order_timber", "a lord-mode town orders a slow charter's timber (GB-8)");
   // The sandbox bot's own orders still need a market (TT-4b unchanged).
   assert.equal(botTimberOrderFor(idle, 250), null);
   // Delivered on the market cadence at the hamlet's storehouse, into the treasury's timber.
