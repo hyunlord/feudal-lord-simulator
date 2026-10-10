@@ -9,6 +9,9 @@ const PUT_OFF = [{ wait: ".story-modal", timeout: 6_000, optional: true }, { dis
 const WILL_CHIP = "marriage-decision:will_change:";
 /** A lord2 state with the story's world-first delay short enough for the chip to come. */
 const decisionScene = (name: string): SceneRef => ({ kind: "state", set: "lord2", name, tile: "house", zoom: 1.1, query: "&story-delay=3000" });
+/** GEO-D1: a card that opens by itself is waited for past the scene's own setup (an 8 s delay, a 20 s first wait). */
+const selfOpening = (name: string): SceneRef => ({ kind: "state", set: "lord2", name, tile: "house", zoom: 1.1, query: "&story-delay=8000" });
+const reachCard = (root: string) => [{ wait: root, timeout: 20_000, optional: true }, { story: root }, { pause: 600 }] as const;
 
 const CARD = {
   frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".decision-card-body"],
@@ -55,12 +58,13 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
     open: [{ story: card("contested") }, { pause: 600 }],
     requires: [...HEAVY, ".lord-decision-open", ".story-modal-later"],
     data: "the contested inheritance: the rival's hold, both claims' strength, the lord's suit stage, the way to the suit" },
-  { id: "modal.lord.audit", ...CARD, root: card("audit"), scene: decisionScene("audit-pending"),
-    open: [{ story: card("audit") }, { pause: 600 }],
+  // RECEIPTS: its deadline is the engine's season, as its chip's (lordMattersDue).
+  { id: "modal.lord.audit", ...CARD, root: card("audit"), scene: selfOpening("audit-pending"),
+    open: reachCard(card("audit")),
     requires: [...HEAVY, ...ANSWERS],
     data: "a Michaelmas audit's finding: punish, replace, tolerate — what each recovers, who follows, who remembers" },
-  { id: "modal.lord.offmap-petition", ...CARD, root: card("estate_petition_offmap"), scene: decisionScene("inherited"),
-    open: [{ story: card("estate_petition_offmap") }, { pause: 600 }],
+  { id: "modal.lord.offmap-petition", ...CARD, root: card("estate_petition_offmap"), scene: selfOpening("inherited"),
+    open: reachCard(card("estate_petition_offmap")),
     requires: [...HEAVY, ...ANSWERS],
     data: "an off-map estate's petition: why it came to the lord, both answers' treasury and the estate's goodwill" },
 ];

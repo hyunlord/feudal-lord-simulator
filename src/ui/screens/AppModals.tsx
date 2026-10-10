@@ -15,6 +15,11 @@ import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
 import { LordRequestModal } from "../hud/LordCards";
 import { DecisionCard } from "../decisionCard/DecisionCard";
+import { AnswerReceipt } from "../decisionCard/AnswerReceipt";
+import { answerMeta } from "../decisionCard/answerReceiptModel";
+import type { DecisionCardView } from "../decisionCard/decisionCardTypes";
+import { useAnswerReceipt } from "../decisionCard/useAnswerReceipt";
+import type { GameAction } from "../../state/gameStore.types";
 import { famineCard } from "../decisionCard/families/famineCard";
 import { homePetitionCard } from "../decisionCard/families/homePetitionCard";
 import { lordRequestCard } from "../decisionCard/families/lordRequestCard";
@@ -43,7 +48,7 @@ import { personCardView, petitionerRows, type personRow } from "../persons/perso
 import { PersonCardModal } from "../persons/PersonViews";
 import { seasonLedgerCardModel } from "../seasonLedgerCard";
 import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
-import { topModal, type UiEvent, type UiState } from "../stateMachine/uiStateMachine";
+import { topModal, type UiEvent, type UiModal, type UiState } from "../stateMachine/uiStateMachine";
 import { TutorialToggle } from "../tutorial/TutorialShell";
 import { UiIcon } from "../UiIcon";
 import type { TutorialController } from "../tutorial/useTutorialController";
@@ -81,29 +86,33 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
 }) {
   const { dispatch } = useGameApi();
   const top = topModal(ui);
+  // RECEIPTS: an answered card turns over to its receipt in the same modal; while it is up no card is shown under it.
+  const receipts = useAnswerReceipt();
+  const receipt = receipts.receipt !== null && receipts.receipt.modal === top ? receipts.receipt : null;
+  const shown = receipt === null ? top : null;
   const idleStateRef = useRef<GameState | null>(null);
   const state = useGameUiSelector(top !== null ? presentedState : (current: GameState) => (idleStateRef.current ??= presentedState(current)));
   const seasonCard = top === "season_ledger" ? seasonLedgerCardModel(state) : null;
   // DEC-CARD: the famine and every political petition in the heavy card's layout (each answer run on the state).
-  const famineView = top === "decision" ? famineCard(state) : null;
-  const petitionView = top === "petition" ? petitionCard(state) : null;
+  const famineView = shown === "decision" ? famineCard(state) : null;
+  const petitionView = shown === "petition" ? petitionCard(state) : null;
   const chronicle = top === "chronicle" ? chronicleView(state) : null;
   const personCard = top === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;
   // LM-R1 (lord mode): the home estate's petition, the town's request.
-  const homeView = top === "estate_petition" ? homePetitionView(state) : null;
+  const homeView = shown === "estate_petition" ? homePetitionView(state) : null;
   // DEC-CARD: the home petition in the heavy card's layout (the situation, the stake, each answer now / later / who remembers).
-  const homeCard = top === "estate_petition" ? homePetitionCard(state) : null;
-  const asked = top === "lord_request" ? lordRequestView(state) : null;
+  const homeCard = shown === "estate_petition" ? homePetitionCard(state) : null;
+  const asked = shown === "lord_request" ? lordRequestView(state) : null;
   const request = asked?.command === null ? null : asked;
   // DEC-CARD: the town's request in the heavy card's layout (its grant run on the state: what it opens, the actual to come).
   const requestCard = request === null ? null : lordRequestCard(state);
   // EVENT-ART: the registry's event card; it goes when its offer is answered, lapsed or invalid (no open offer left).
-  const offer = top === "registry_offer" ? registryOfferView(state) : null;
+  const offer = shown === "registry_offer" ? registryOfferView(state) : null;
   // LM-R2: the father's will or the contested inheritance, an audit's finding, an off-map estate's petition.
-  const marriage = top === "marriage_decision" ? marriageDecisionView(state) : null;
-  const audit = top === "audit_decision" ? auditDecisionView(state) : null;
-  const offMap = top === "estate_petition_offmap" ? offMapPetitionView(state) : null;
+  const marriage = shown === "marriage_decision" ? marriageDecisionView(state) : null;
+  const audit = shown === "audit_decision" ? auditDecisionView(state) : null;
+  const offMap = shown === "estate_petition_offmap" ? offMapPetitionView(state) : null;
   // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"; DEC-CARD-2: the engine's yearReview in lord mode); (lord
   // mode, A3) the season's change in the lord's house.
   // LM-R3: opened from the slice's end page, the year card is the slice's last year's (the page took its place).
@@ -113,18 +122,25 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const sliceStart = top === "slice_start" ? sliceStartView(state) : null;
   const sliceEnd = top === "slice_end" ? sliceEndView(state) : null;
   const sliceOver = (top === "history" || top === "pause_menu") && sliceEnded(state);
-  const lordGone = (top === "estate_petition" && homeView === null) || (top === "lord_request" && request === null)
-    || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)
-    || (top === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null)
+  const lordGone = (shown === "estate_petition" && homeView === null) || (shown === "lord_request" && request === null)
+    || (shown === "registry_offer" && offer === null) || (shown === "marriage_decision" && marriage === null) || (shown === "audit_decision" && audit === null)
+    || (shown === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null)
     || (top === "slice_start" && sliceStart === null) || (top === "slice_end" && sliceEnd === null);
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
   const famineGone = famineView === null; const petitionGone = petitionView === null;
   const chronicleGone = chronicle === null; const personCardGone = personCard === null; const legacyGone = legacyView === null;
   useEffect(() => {
-    if ((topModal(ui) === "decision" && famineGone) || (topModal(ui) === "petition" && petitionGone) || (topModal(ui) === "chronicle" && chronicleGone)
+    if ((shown === "decision" && famineGone) || (shown === "petition" && petitionGone) || (topModal(ui) === "chronicle" && chronicleGone)
       || (topModal(ui) === "person_card" && personCardGone) || (topModal(ui) === "legacy_ending" && legacyGone) || lordGone) sendUi({ type: "pop_modal" });
-  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, lordGone, sendUi]);
+  }, [ui, shown, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, lordGone, sendUi]);
+  // A receipt goes with its modal (Esc closes it as it would the card).
+  const { receipt: held, close: closeReceipt } = receipts;
+  useEffect(() => { if (held !== null && held.modal !== top) closeReceipt(); }, [held, top, closeReceipt]);
+  /** RECEIPTS: an answer on a card — the card turns over to its receipt, or (the engine refused it) closes as before. */
+  const answered = (modal: UiModal, command: GameAction, card: DecisionCardView, choiceId: string) => {
+    if (!receipts.answer(modal, command, answerMeta(card, choiceId))) sendUi({ type: "pop_modal" });
+  };
   return <>
     {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto} first={ledgerFirst}
       onAutoChange={onLedgerAuto}
@@ -139,18 +155,19 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {homeView === null || homeCard === null ? null : <DecisionCard view={homeCard} className="lord-card" crest={{ arms: homeView.arms, label: homeView.armsLabel }}
       data={{ "data-home-petition": homeView.kind, "data-petition": homeView.petitionId }}
       onLater={() => sendUi({ type: "pop_modal" })}
-      onChoose={choice => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }); sendUi({ type: "pop_modal" }); }} />}
+      onChoose={choice => answered("estate_petition", { type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }, homeCard, choice)} />}
     {request === null || requestCard === null ? null : <LordRequestModal view={request} card={requestCard} onLater={() => sendUi({ type: "pop_modal" })}
-      onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
+      onGrant={() => { if (request.command !== null) answered("lord_request", request.command, requestCard, "grant"); }} />}
     {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}
-      onAnswer={choiceId => { dispatch({ type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }); sendUi({ type: "pop_modal" }); }} />}
+      onAnswer={choiceId => answered("registry_offer", { type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }, offer.card, choiceId)} />}
     {marriage === null ? null : <MarriageDecisionModal view={marriage} onLater={() => sendUi({ type: "pop_modal" })}
-      onAnswer={choice => { dispatch({ type: "answer_will_change", choice }); sendUi({ type: "pop_modal" }); }}
+      onAnswer={choice => answered("marriage_decision", { type: "answer_will_change", choice }, marriage.card, choice)}
       onOpenSuit={focus => { sendUi({ type: "pop_modal" }); onOpenLord?.("ledger", focus); }} />}
     {audit === null ? null : <AuditDecisionModal view={audit} onLater={() => sendUi({ type: "pop_modal" })}
-      onAnswer={choice => { dispatch({ type: "answer_audit", auditId: audit.auditId, choice }); sendUi({ type: "pop_modal" }); }} />}
+      onAnswer={choice => answered("audit_decision", { type: "answer_audit", auditId: audit.auditId, choice }, audit.card, choice)} />}
     {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
-      onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: offMap.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
+      onAnswer={grant => answered("estate_petition_offmap", { type: "answer_estate_petition", petitionId: offMap.petitionId, grant }, offMap.card, grant ? "grant" : "refuse")} />}
+    {receipt === null ? null : <AnswerReceipt view={receipt} onClose={() => { closeReceipt(); sendUi({ type: "pop_modal" }); }} />}
     {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
       onChronicle={() => { focusChronicleYears(yearView.year, yearView.year); sendUi({ type: "push_modal", modal: "history" }); }} />}
     {sliceStart === null ? null : <SliceStartPage view={sliceStart} onBegin={() => sendUi({ type: "pop_modal" })} />}

@@ -99,12 +99,14 @@ export function marriageDecisionHead(state: GameState): MarriageDecisionHead | n
 const claimStrength = (state: GameState, claimId: string | undefined) =>
   claimId === undefined ? null : estatesOf(state).claims.find(claim => claim.id === claimId)?.strength ?? null;
 
-/** SUIT-THREAD: the will's deadline as the engine sets it (`lordMattersDue` dueTick), as its season; null: none given. */
-function willDueDate(state: GameState): string | null {
-  const plan = diplomacyOf(state).marriage;
-  const due = lordMattersDue(state).find(matter => matter.kind === "will_change" && matter.id === plan?.negotiationId)?.dueTick ?? null;
+/** SUIT-THREAD: a matter's deadline as the engine sets it (`lordMattersDue` dueTick), as its season — the date its chip says
+ * (lordMatterBeats); null: none given. RECEIPTS (user 2026-10-10): the audit's and the off-map petition's cards read it too. */
+function matterDueDate(state: GameState, kind: "will_change" | "audit" | "estate_petition", id: string | undefined): string | null {
+  const due = lordMattersDue(state).find(matter => matter.kind === kind && matter.id === id)?.dueTick ?? null;
   return due === null ? null : dateWord(state, due);
 }
+
+const willDueDate = (state: GameState): string | null => matterDueDate(state, "will_change", diplomacyOf(state).marriage?.negotiationId);
 
 /** The father's will to answer, or the inheritance contested (its suit), as the lord's card shows it; null: neither. */
 export const marriageDecisionView = perState((state: GameState): MarriageDecisionView | null => {
@@ -152,7 +154,7 @@ export const auditDecisionView = perState((state: GameState): AuditDecisionView 
     id === "tolerate" ? COPY.refusedNow : COPY.auditNoSuccessor, id === "tolerate" ? { now: [OUTCOME.stewardStays(name)] } : {});
   return { ...head, card: { family: "audit", subjectId: audit.id, title: head.title, court: courtLine(state), from: head.kicker, situation: head.line,
     stake: COPY.auditStake(estateName(state, audit.estateId), name, steward === undefined ? "" : ESTATES_COPY.dispositions[steward.disposition], connection),
-    deadline: COPY.auditDeadline(calendarDays(audit.deadline - state.tick)), illustration: null,
+    deadline: COPY.auditDeadline(matterDueDate(state, "audit", audit.id), calendarDays(audit.deadline - state.tick)), illustration: null,
     choices: [choice("punish", COPY.auditPunish), choice("replace", COPY.auditReplace), choice("tolerate", COPY.auditTolerate)] } };
 });
 
@@ -190,5 +192,6 @@ export const offMapPetitionView = perState((state: GameState): OffMapPetitionVie
     { type: "answer_estate_petition", petitionId: head.petitionId, grant }, COPY.refusedNow);
   return { ...head, card: { family: "estate_petition_offmap", subjectId: head.petitionId, title: head.title, court: courtLine(state), from: head.kicker,
     situation: head.why === "" ? head.line : `${head.line} ${head.why}.`, stake: COPY.petitionStake(estateName(state, head.estateId), petition.group, goodwill),
-    deadline: COPY.petitionDeadline(calendarDays(petition.deadline - state.tick)), illustration: null, choices: [choice(true), choice(false)] } };
+    deadline: COPY.petitionDeadline(matterDueDate(state, "estate_petition", petition.id), calendarDays(petition.deadline - state.tick)), illustration: null,
+    choices: [choice(true), choice(false)] } };
 });
