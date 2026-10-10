@@ -67,6 +67,9 @@ const waitCard = async (page, selector, timeout = 30_000) => {
     if (await page.locator(`${selector} >> visible=true`).count() > 0) return true;
     const political = page.locator('.petition-card:not(.lord-card) .story-modal-later >> visible=true');
     if (await political.count() > 0) await political.first().click();
+    // Another lord card, the season's card or a result card that came first is put off or closed, as a player does.
+    const other = page.locator(`.lord-card:not(${selector}) .story-modal-later, .season-ledger-resume, .results-card-continue >> visible=true`);
+    if (await other.count() > 0) await other.first().click();
     await page.waitForTimeout(500);
   }
   return false;
@@ -76,7 +79,7 @@ const fromChip = async (page, story, selector) => {
   if (await waitCard(page, selector, 12_000)) return true;
   const chip = page.locator(`.event-chip[data-story="${story}"]`).first();
   if (!(await chip.waitFor({ state: 'visible', timeout: 30_000 }).then(() => true, () => false))) return false;
-  await chip.click(); await page.locator('.event-card .event-card-decide').first().click();
+  await chip.click(); await page.locator('.event-card .event-card-decide').first().click({ timeout: 10_000 }).catch(() => undefined);
   return waitCard(page, selector);
 };
 
@@ -133,7 +136,10 @@ for (const [name, options] of [['home-boundary_dispute-tablet', { width: 1180, h
   const receipt = opened && await closeAnswerReceipt(page);
   const after = await proof(page);
   rows.request = { opened, card: shown, bytes: size, receipt, before: { era: before.era, requests: before.requests }, after: { era: after.era, requests: after.requests } };
-  console.log(`${opened && receipt ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}, receipt ${receipt}`);
+  if (!opened) await page.screenshot({ path: join(out, 'debug-request.jpg'), type: 'jpeg', quality: 30 });
+  console.log(`${opened && receipt ? 'ok ' : 'BAD'} request: ${shown?.title} era ${before.era} → ${after.era}, receipt ${receipt}`
+    + (opened ? '' : ` modals ${JSON.stringify(await page.locator('.story-modal, .season-ledger-card, [role=dialog]').evaluateAll(nodes => nodes.map(node => node.className)))}`
+      + ` chips ${JSON.stringify(await page.locator('.event-chip').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-story'))))}`));
   await context.close();
 }
 // 5. The guardian case.
