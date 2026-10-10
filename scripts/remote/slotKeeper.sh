@@ -24,7 +24,9 @@
 # while no gate waits, on slots 1..cap-1, at most one running per session (the run name's first part: engine, engineB,
 # render, astra, infra, trunk), and of the sessions with none running the one served longest ago
 # (_slots/served/<session>, never served counts as oldest) with its earliest run. The nightly full audit (session
-# `nightly`, scripts/remote/nightlyGeometry.sh) goes last: only when no other session's experiment may go (RR26 covered). A fifo or lines copy can be let in only
+# `nightly`, scripts/remote/nightlyGeometry.sh) goes last: only when no other session's experiment may go (RR26 covered)
+# — unless it has not been let in for 36 hours (KEEPER_NIGHTLY_DUE_S): then it goes before every other experiment (the
+# gates still first), so sessions that queue experiments all night cannot starve it (user ruling 2026-10-10). A fifo or lines copy can be let in only
 # when it is first in the experiment line; until then its session's turn passes to the next session.
 # Every loop it writes _slots/keeper.status (slots, both lines, the turn order, why a session waits, the open door);
 # run.sh --status and the waiting runs of this protocol print it.
@@ -142,7 +144,7 @@ served_at() { stat -c %Y "$D/served/$1" 2> /dev/null || echo 0; }
 
 # --- the rules ----------------------------------------------------------------------------------------------------
 decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
-  local t run s age i=0 seen=" " head best="" best_age="" n nightly=""
+  local t run s age i=0 seen=" " head best="" best_age="" n nightly="" nightly_due=""
   PICK=""; WHY=""; ORDER=""; MAYGO=""
   mapfile -t GATES < <(live "$GQ")
   mapfile -t EXPS < <(live "$EQ")
@@ -161,7 +163,13 @@ decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
     if { [ "$CT" = fifo ] || [ "$CT" = lines ]; } && [ "$t" != "$head" ]; then
       ORDER+="  $s waits: $run — an older copy of heavySlots.sh ($CT), let in only when first in line"$'\n'; continue
     fi
-    if [ "$s" = nightly ]; then ORDER+="  nightly: $run — the nightly full audit, last of all"$'\n'; nightly=$t; continue; fi
+    if [ "$s" = nightly ]; then
+      age=$(served_at nightly)
+      if [ $(( $(date +%s) - age )) -gt "${KEEPER_NIGHTLY_DUE_S:-129600}" ]; then
+        ORDER+="  nightly: $run — the nightly full audit, not let in for 36 hours: before every other experiment"$'\n'; nightly_due=$t
+      else ORDER+="  nightly: $run — the nightly full audit, last of all"$'\n'; nightly=$t; fi
+      continue
+    fi
     age=$(served_at "$s")
     ORDER+="  $s (served $( [ "$age" -le 1 ] && echo never || date -d "@$age" '+%m-%d %H:%M')): $run ($CT copy)"$'\n'
     if [ -z "$best" ] || [ "$age" -lt "$best_age" ]; then best=$t; best_age=$age; fi
@@ -173,6 +181,7 @@ decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
     return
   fi
   [ "${#EXPS[@]}" -gt 0 ] || return
+  [ -n "$nightly_due" ] && best=$nightly_due
   [ -n "$best" ] || best=$nightly
   [ -n "$best" ] || { WHY="no session may start an experiment now"; return; }
   if [ "${#FREE[@]}" -eq 0 ] || [ "${FREE[0]}" -gt "$TOP" ]; then
