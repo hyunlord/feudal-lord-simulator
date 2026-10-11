@@ -397,10 +397,13 @@
 
 /* UI-4 event chips and card (not modal): under the crisis bells, top right. */
 .app-shell .event-cards { --event-cards-top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap));
-  position: absolute; top: var(--event-cards-top); right: 0; z-index: 5; display: grid; justify-items: end; gap: 6px;
+  position: absolute; top: var(--event-cards-top); right: 0; z-index: 5; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
   /* CHIP-FOLD: the chips and the open card stop above the bottom right's dock, however many chips stand over the card
-     (a second chip pushed the famine's card 6 px into the dock at 1280×720): the card shrinks and scrolls instead. */
-  max-height: calc(100vh - var(--event-cards-top) - var(--hud-right-bottom)); grid-template-rows: auto minmax(0, auto); }
+     (a second chip pushed the famine's card 6 px into the dock at 1280×720): the card shrinks and scrolls instead (a
+     column of flex items shrinks to the box's height; a grid's content-sized row did not). */
+  box-sizing: border-box; max-height: calc(100vh - var(--event-cards-top) - var(--hud-right-bottom)); }
+.app-shell .event-cards > .event-chips { flex: 0 0 auto; }
+.app-shell .event-cards > .event-card { flex: 0 1 auto; }
 .app-shell .event-chips { display: grid; justify-items: end; gap: 4px; }
 .app-shell .event-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 4px; font-size: 13px; font-weight: 600; }
 /* NAT-2 (QA-013): an open panel slot (goal log, population, inspector: 340 px; the ledger: the wide token) holds the top
