@@ -24,21 +24,24 @@ test("one cause's chips fold into one at the newest's place: the cause and how m
   const folded = shown.find(beat => beat.kind === "decision_trace")!;
   assert.equal(shown.filter(beat => beat.kind === "decision_trace").length, 1);
   assert.equal(folded.title, "당신의 결정 때문에: 시장 부담 ×12");
-  assert.equal(folded.id, "trace:dues:11", "the newest season's chip");
+  assert.equal(folded.id, "fold:lord:시장 부담", "the cause's chip, the same one season after season");
+  assert.equal(folded.line, seasons.at(-1)!.line, "its card is the newest season's");
   assert.deepEqual(folded.folded, seasons.map(beat => beat.id));
   assert.ok(shown.some(beat => beat.id === "fire-1"), "the other chip stays");
 });
 
 test("a cause seen once keeps its own title; two causes fold apart; chips without a cause never fold", () => {
-  assert.deepEqual(foldChips([trace("trace:a:0", 1300)]).map(beat => [beat.title, beat.folded]), [[RESULTS_COPY.trace.chipTitle(1300, "lord", "시장 부담"), undefined]]);
+  assert.deepEqual(foldChips([trace("trace:a:0", 1300)]).map(beat => [beat.id, beat.title, beat.folded]),
+    [["fold:lord:시장 부담", RESULTS_COPY.trace.chipTitle(1300, "lord", "시장 부담"), ["trace:a:0"]]], "seen once: its own title, already the cause's chip");
   const suit = { key: "lord:소송을 걸었다", title: RESULTS_COPY.trace.foldTitle("lord", "소송을 걸었다") };
   const folded = foldChips([trace("d0", 1300), trace("s0", 1300, suit), trace("d1", 1301), trace("s1", 1301, suit), other("x"), other("x2")]);
   assert.deepEqual(folded.map(beat => beat.title), ["당신의 결정 때문에: 시장 부담 ×2", "당신의 결정 때문에: 소송을 걸었다 ×2", "x", "x2"]);
+  assert.deepEqual(folded.map(beat => beat.id), ["fold:lord:시장 부담", "fold:lord:소송을 걸었다", "x", "x2"], "chips without a cause keep their ids");
 });
 
 test("a folded chip takes one of the rail's three slots: the news after it is not pushed out", () => {
   const shown = chips([...Array.from({ length: 8 }, (_, index) => trace(`trace:dues:${index}`, 1300)), other("news-1"), other("news-2")]);
-  assert.deepEqual(shown.map(beat => beat.id), ["trace:dues:7", "news-1", "news-2"]);
+  assert.deepEqual(shown.map(beat => beat.id), ["fold:lord:시장 부담", "news-1", "news-2"]);
   // Before the fold the eight would have taken the rail and shown only one of the news.
   assert.equal(chips([...Array.from({ length: 8 }, (_, index) => trace(`trace:dues:${index}`, 1300, undefined as never)), other("news-1"), other("news-2")])
     .filter(beat => beat.kind === "decision_trace").length, 1);

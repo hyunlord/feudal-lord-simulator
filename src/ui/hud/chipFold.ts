@@ -11,8 +11,11 @@ export function foldChips(beats: readonly StoryBeat[]): readonly StoryBeat[] {
   for (const beat of beats) if (beat.fold !== undefined) groups.set(beat.fold.key, [...(groups.get(beat.fold.key) ?? []), beat]);
   return beats.flatMap(beat => {
     const group = beat.fold === undefined ? undefined : groups.get(beat.fold.key);
-    if (group === undefined || group.length < 2) return [beat];
+    if (beat.fold === undefined || group === undefined) return [beat];
     if (group[group.length - 1] !== beat) return [];
-    return [{ ...beat, title: RESULTS_COPY.trace.folded(beat.fold!.title, group.length), folded: group.map(entry => entry.id) }];
+    // One chip per cause, its id the cause's (`fold:<key>`): the next season's consequence counts on the same chip instead
+    // of coming as a new one (a new chip each season re-announced it and shut its open card).
+    return [{ ...beat, id: `fold:${beat.fold.key}`, title: group.length < 2 ? beat.title : RESULTS_COPY.trace.folded(beat.fold.title, group.length),
+      folded: group.map(entry => entry.id) }];
   });
 }
