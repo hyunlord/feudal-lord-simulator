@@ -45,6 +45,7 @@ export function shouldDismissInformationalSeasonLedger(observation) {
 async function press(page, selector, evidence) {
   const control = typeof selector === 'string' ? page.locator(selector) : selector;
   check(await control.count() === 1 && await control.isVisible() && await control.isEnabled(), `Unavailable unique control: ${selector}`);
+  await control.scrollIntoViewIfNeeded();
   check(await control.evaluate(el => { const b = el.getBoundingClientRect(), top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2); return top !== null && (el === top || el.contains(top)); }), `Covered control: ${selector}`);
   await control.dispatchEvent('click'); evidence.actions.push({ selector: typeof selector === 'string' ? selector : String(selector), input: 'synthetic DOM click through normal handler' });
 }
@@ -105,7 +106,6 @@ async function manualTrace(page, out, evidence, target, tick) {
   for (const [label, option] of [['중요도', '모든 기록'], ['부터', year], ['까지', year]]) {
     await press(page, page.locator('.chronicle-screen').getByRole('button', { name: new RegExp(`^${label}:`) }), evidence);
     const optionControl = page.getByRole('listbox', { name: label, exact: true }).getByRole('option', { name: option, exact: true });
-    await optionControl.scrollIntoViewIfNeeded();
     await press(page, optionControl, evidence); await settle();
   }
   const list = page.locator('.chronicle-list'); check(await list.count() === 1, 'Unique chronicle list required');
