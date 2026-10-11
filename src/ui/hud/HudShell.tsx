@@ -31,6 +31,7 @@ import { lordMode } from "../../engine/townAgency";
 import { LordPolicyPanel } from "../lord/LordPolicyPanel";
 import { TownSeatButton } from "../lord/camera/TownSeatButton";
 import { ModeTag } from "./ModeTag";
+import { growthMarkOf } from "../lord/growth/growthMark";
 import { TreasuryByEstate } from "../lord/treasury/TreasuryByEstate";
 import { POLICY_COPY } from "../lord/policyCopy.ko";
 import { EmblemImage } from "../heraldry/EmblemImage";
@@ -68,6 +69,7 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onIns
   // LM-R1 (playtest #5): the food cell opens its breakdown (the ledger stays one press away inside it).
   const [foodOpen, setFoodOpen] = useState(false);
   const foodLabel = model.foodDays === null ? HUD_COPY.foodNone : HUD_COPY.foodDays(model.foodDays);
+  const growth = lordMode(state) ? growthMarkOf(state) : null;
   return (
     <nav className="status-pill" aria-label={HUD_COPY.pillWithMode(HUD_COPY.mode[lordMode(state) ? "lord" : "build"])} data-mode={lordMode(state) ? "lord" : "build"} data-frame="tooltip">
       {/* WEL-D1: which mode the game is in, once it has started (a tag, not a control: the cells keep their order). */}
@@ -80,6 +82,8 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onIns
       {stripOpen ? <SeasonStripPanel state={state} food={{ days: model.foodDays, untilTick: model.foodUntilTick }} onClose={() => setStripOpen(false)} /> : null}
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onPress={() => onOpenPopulation()} variant="surface">
         <HudArt id={HUD_ART.population} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="population" />} />{HUD_COPY.population(model.population)}
+        {/* LS1-3: the growth mark (a stop past two seasons) — its place kept until the engine's growthBlock lands. */}
+        {growth === null ? null : <span className="status-pill-growth" data-growth-years={growth.years} aria-label={growth.label}>{growth.text}</span>}
       </Button>
       <Button type="button" className="status-pill-cell" aria-label={FOOD_BREAKDOWN_COPY.pillLabel(foodLabel, model.starving)} data-food-days={model.foodDays ?? ""}
         aria-expanded={foodOpen} onPress={() => { setStripOpen(false); setFoodOpen(open => !open); }}

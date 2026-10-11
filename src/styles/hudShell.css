@@ -658,3 +658,8 @@
   .app-shell .status-pill-mode-icon { display: inline-flex; }
   .app-shell .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
 }
+
+/* LS1-3 (lord-screen-v1.md): the growth mark in the population cell — "정체 N년" after a stop past two seasons (the engine's
+   growthBlock); it outranks the mode's tag for room (the tag hides first). */
+/* contrast-audit selector=".status-pill-growth" fg="--palette-vermilion" bg="--palette-vellum" size="12" role="body" */
+.app-shell .status-pill-growth { margin-left: 4px; font-size: 12px; font-weight: 700; color: var(--palette-vermilion); white-space: nowrap; }

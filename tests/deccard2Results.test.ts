@@ -153,7 +153,7 @@ test("DEC-CARD-2 year card (lord mode): the engine's yearReview — the lord's d
   assert.equal(view.empty, null);
   const html = markup(createElement(YearReviewCard, { view, onContinue: () => undefined, onChronicle: () => undefined }));
   assert.equal(html.match(/ui-btn--primary/g)?.length, 1, "one primary: [계속]");
-  for (const part of [RESULTS_COPY.year.lordDecisions, RESULTS_COPY.year.stewardDecisions, RESULTS_COPY.year.threads, RESULTS_COPY.year.town]) assert.ok(html.includes(part), part);
+  for (const part of [RESULTS_COPY.year.lordDecisions, RESULTS_COPY.year.stewardDecisions, RESULTS_COPY.year.threads, RESULTS_COPY.year.townYear]) assert.ok(html.includes(part), part);
   assert.match(html, /data-year-source="engine"/);
   assert.doesNotMatch(html, /\stitle="/);
   assert.equal(yearCard(sandbox).lord, false, "the sandbox and the campaign keep v1");

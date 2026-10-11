@@ -10,10 +10,14 @@ import type { SeasonLedger } from "../src/engine/season.types";
 import { SEASON_BAND_COPY } from "../src/ui/lord/seasonBand/seasonBandCopy.ko";
 import { SEASON_BAND_MAX, seasonBand, townSnapshot, type TownSnapshot } from "../src/ui/lord/seasonBand/seasonBandModel";
 import { toastLetThrough } from "../src/ui/lord/seasonBand/toastLimit";
+import { clearTownCloses, recordTownClose, townYearEnds } from "../src/ui/lord/seasonBand/townCloses";
+import { lordTownYear } from "../src/ui/results/lordYearReview";
+import { RESULTS_COPY } from "../src/ui/results/resultsCopy.ko";
+import { moneyFull } from "../src/ui/money.ko";
 
 const season = (popDelta: number, income: number, expense: number): SeasonLedger => ({ season: 1, year: 1300, startTick: 1_000, endTick: 2_000, income, expense,
   stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 }, popDelta, notableEvents: [], nextObjectiveHint: null } as unknown as SeasonLedger);
-const snap = (levels: Record<string, number>, buildings: number, fields: number, dead: number): TownSnapshot => ({ levels, buildings, fields, dead });
+const snap = (levels: Record<string, number>, buildings: number, fields: number, dead: number): TownSnapshot => ({ levels, buildings, fields, dead, population: 0, coin: 0 });
 
 test("the band's lines in the design's order, only what is not zero: people, built, levels, fields, the treasury, the dead, the steward", () => {
   const band = seasonBand({ season: season(16, 500, 220), before: snap({ h1: 1, h2: 1 }, 5, 1, 3), after: snap({ h1: 2, h2: 1, h3: 0, h4: 0 }, 6, 1, 4), stewardHandled: 2 });
@@ -47,8 +51,9 @@ test("the snapshot: a house's level by its building, the buildings that are not 
     arableFields: [{ zoneId: "z1", strips: [{}, {}, {}] }, { zoneId: "z2", strips: [{}] }],
     persons: { people: [{ alive: false, classBand: "labour" }, { alive: false, classBand: "gentry" }, { alive: true, classBand: "labour" }],
       past: [{ classBand: "labour" }, { classBand: "gentry" }] },
+    population: 56, treasuryCoin: 340,
   } as unknown as Parameters<typeof townSnapshot>[0];
-  assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2 });
+  assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2, population: 56, coin: 340 });
 });
 
 test("LS1-1: one completion toast a season in lord mode — the first shows, the season's later ones are the band's", () => {
@@ -57,4 +62,17 @@ test("LS1-1: one completion toast a season in lord mode — the first shows, the
   assert.equal(toastLetThrough({ firstAtMs: 100, season: 4 }, { firstAtMs: 900 }, 4), false, "a second in the same season");
   assert.equal(toastLetThrough({ firstAtMs: 100, season: 4 }, { firstAtMs: 900 }, 5), true, "the next season's first");
   assert.equal(toastLetThrough(null, null, 4), false);
+});
+
+test("LS1-5: the year card's 마을의 한 해 — people, houses, fields, the treasury at the year's start and end, from the closes the screen saw", () => {
+  clearTownCloses();
+  assert.equal(lordTownYear(1300), null, "no closes seen: the engine's seasons' sums stand instead");
+  recordTownClose(1299, 3, { ...snap({ h1: 0, h2: 0, h3: 0, h4: 0 }, 5, 0, 0), population: 12, coin: 60 });
+  recordTownClose(1300, 1, { ...snap({ h1: 1 }, 6, 1, 0), population: 28, coin: 0 });
+  assert.equal(townYearEnds(1300), null, "the year's own winter not closed yet");
+  recordTownClose(1300, 3, { ...snap({ h1: 2, h2: 2, h3: 2, h4: 2, h5: 0 }, 8, 1, 1), population: 56, coin: 34 });
+  const line = RESULTS_COPY.year.townFromTo;
+  assert.deepEqual(lordTownYear(1300), [line("인구", "12", "56"), line("집", "4", "5"), line("밭", "0", "1"), line("금고", moneyFull(60), moneyFull(34))]);
+  assert.equal(RESULTS_COPY.year.townYear, "마을의 한 해");
+  clearTownCloses();
 });

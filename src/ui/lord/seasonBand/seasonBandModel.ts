@@ -18,9 +18,12 @@ export type TownSnapshot = Readonly<{
   fields: number;
   /** The town's dead so far (the persons gone; the gentry — the lord's house, the neighbours — are the chips'). */
   dead: number;
+  /** LS1-5: the people and the treasury at the moment (the year card's start and end). */
+  population: number;
+  coin: number;
 }>;
 
-export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "arableFields" | "persons">): TownSnapshot {
+export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "arableFields" | "persons" | "population" | "treasuryCoin">): TownSnapshot {
   const people = state.persons?.people ?? [];
   const past = state.persons?.past ?? [];
   const gentry = (person: { readonly classBand?: string }) => person.classBand === "gentry";
@@ -29,6 +32,8 @@ export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "ar
     buildings: (state.buildings ?? []).filter(building => building.kind !== "house").length,
     fields: state.arableFields?.length ?? 0,
     dead: past.filter(person => !gentry(person)).length + people.filter(person => person.alive === false && !gentry(person)).length,
+    population: state.population ?? 0,
+    coin: state.treasuryCoin ?? 0,
   };
 }
 

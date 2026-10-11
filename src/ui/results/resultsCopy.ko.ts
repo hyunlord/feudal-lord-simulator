@@ -91,6 +91,10 @@ export const RESULTS_COPY = {
     relations: "세력의 마음",
     receipts: "결정이 고른 까닭 중 하나였던 공사",
     town: "올해 마을",
+    /** LS1-5 (lord-screen-v1.md): lord mode's "마을의 한 해" — the year's start and end, and a stop's cause and length. */
+    townYear: "마을의 한 해",
+    townFromTo: (what: string, from: string, to: string) => `${what} ${from} → ${to}`,
+    townWords: { population: "인구", houses: "집", fields: "밭", coin: "금고" },
     noDecision: "올해는 영주가 내린 큰 결정이 없었습니다.",
     nothing: "올해는 달라진 것이 없었습니다.",
     outcome: (predicted: string, actual: string) => `예상 ${predicted} / 실제 ${actual}`,
