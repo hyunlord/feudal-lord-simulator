@@ -26,10 +26,20 @@
 
 ## 원본과 재현
 
-원본은 `provenance.local`의 `eb-live-speed/` 아래에 있다. `manual-answer.png`, `manual-receipt.png`, `manual-return.png`가 실제 왕복 화면이다. `scroll-fixture-*-before/after.png`는 별도 도구 시험이다. 원문 manifest 압축과 전체 파일 해시·크기는 이 폴더에 보존했다. 원문 SHA `e04b620e7d36404f4f874e8530c2483a9ee51dac1fa712022f44684bca0867a7`.
+원본 경로는 `provenance.json`의 `files.archive`에 있다. 아래 영속 화면 링크로 직접 볼 수 있다. `manual-answer.png`, `manual-receipt.png`, `manual-return.png`가 실제 왕복 화면이다. `scroll-fixture-*-before/after.png`는 별도 도구 시험이다. 원문 manifest 압축과 전체 파일 해시·크기는 이 폴더에 보존했다. 원문 SHA `e04b620e7d36404f4f874e8530c2483a9ee51dac1fa712022f44684bca0867a7`.
 
 ```
 scripts/remote/run.sh engineB-live-manual-visible --heavy --experiment --detach --keep -- env EB_BROWSER_REVISION=344c3d9480331c8d49b2f19d1bb0aa54ce4911cd EB_MANUAL_ON_RECEIPT=1 bash scripts/engineBLiveSpeedManualRun.sh
 ```
 
 입력 manifest `e4615d5a01c18d7b6adba9f3eec12c570f0ab14041266e947305674c04e2b93d`; gzip `ck_evt_005-answer-h-002653.save.json.gz` SHA `7c01f32f3e48e5cd18229838c322385cb6b48edc6247b5027f19e287b1b31b16`. Node24.21.0·Playwright1.62.1·1280×800/DPR1. 입력 동등성·깨끗한 소스·소유 localhost 프로세스 검사는 그대로 유지한다.
+
+
+## 영속 원본 보관
+
+실제 게임 재생 PNG·presentation은 기존 재플레이 캡처 분류의 `../replay-captures/`에, 작은 로그·manifest·도구 fixture는 이 보고서 폴더와 `originals/`에 추적 보관한다. 크기 검사나 예외 목록은 바꾸지 않았다. JSON·로그는 gzip으로 무손실 압축했으며 `provenance.json`의 각 `files` 항목에 원래 SHA·크기와 보관 경로·압축 SHA가 있다. 검토에는 임시 작업 디렉터리가 필요 없다.
+
+바로 보기: [답](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-answer.png) · [결과](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-receipt.png) · [원인 복귀](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-return.png).
+
+
+영속 화면 링크: [final](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/final.png) · [manual-after-keyc](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-after-keyc.png) · [manual-answer](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-answer.png) · [manual-before-keyc](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-before-keyc.png) · [manual-receipt](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-receipt.png) · [manual-return](../replay-captures/engineB-live-manual-visible-344c3d9/eb-live-speed/manual-return.png)
