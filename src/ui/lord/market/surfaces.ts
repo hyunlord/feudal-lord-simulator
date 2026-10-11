@@ -80,10 +80,6 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
   { id: "slot.ledger.stock-lord.market", root: ".slot-panel.ledger-drawer", frame: "css", scene: YEARS, open: [{ click: "[data-dock='ledger']" }, { pause: 600 }], scroll: "y",
     scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", ".treasury-estates-list > li"],
     data: "the market town's stock tab: the treasury by estate, then the stocks" },
-  // LS1-2: the season-turn band at the season's close — at every speed, not modal — on the eve state run at 1×.
-  { id: "hud.season-band.market", root: ".season-band", frame: "css", scene: { kind: "state", set: "market", name: "market-season-eve", tile: "house", zoom: 1.1,
-    query: "&story-delay=600000&auto-pause=off", run: true }, open: [{ wait: ".season-band", timeout: 90_000 }, { pause: 600 }], requires: [".season-band-item"],
-    data: "the market town's season close after the proclamation: the band of what changed in it (after a load: the people, the treasury, the steward's)" },
   // The season's close (lord mode: the steward's section), on the eve state (40 ticks before it) run at 1×; LS1-2: the
   // card opens from the season-turn band (lord mode's season card never opens by itself).
   { id: "modal.season-ledger.market", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
