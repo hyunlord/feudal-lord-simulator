@@ -213,14 +213,14 @@ const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice, .season-le
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
-  // WEL-D1: the pill opens with the mode's tag — "직접 짓기" here (the goal campaign), "영주 모드" in lord mode's rows.
-  { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [], requires: [".status-pill[data-mode='build']"],
+  // WEL-D1: the pill opens with the mode's tag ("직접 짓기" here) — it hides first when the pill has no room (tests/hudModeTag.test.ts).
+  { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [],
     data: "seed 1 stone town: the mode's tag, date, population, food, coin" },
   // WEL-D1: a sandbox started from the title as a player does (the mode, the house's start) — the welcome stays closed
   // over the game it started (the start remounts the app); its pill is the game's and says 직접 짓기.
   { id: "hud.status-pill.sandbox", root: ".status-pill", frame: "css", scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario='core:sandbox']" }, { wait: ".welcome-house" }, { click: "[data-house-start]" },
-      { wait: ".status-pill", timeout: 30_000 }, { pause: 2_500 }], requires: [".status-pill-date", ".status-pill[data-mode='build']"],
+      { wait: ".status-pill", timeout: 30_000 }, { pause: 2_500 }], requires: [".status-pill-date"],
     data: "a new sandbox from the title: the mode's tag (직접 짓기), date, population, food, coin, the welcome closed" },
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
@@ -605,7 +605,7 @@ export const SURFACES: readonly SurfaceRow[] = [
     requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
   // DEC-CARD A2: lord mode's pill ends with "내 도시로" (the camera to the town's seat); A5: the stock tab under the
   // treasury line shows the treasury by estate (rent, taxes, contracts, spending), lord mode only.
-  { id: "hud.status-pill.lord", root: ".status-pill", frame: "css", scene: LORD_TOWN, open: [], requires: [".status-pill-town", ".status-pill[data-mode='lord']"],
+  { id: "hud.status-pill.lord", root: ".status-pill", frame: "css", scene: LORD_TOWN, open: [], requires: [".status-pill-town"],
     data: "the lord's slice: date, population, food, coin and the way back to town" },
   { id: "slot.ledger.stock-lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
     scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", "[data-treasury-settled]", ".treasury-estates-list > li", ".treasury-estates-note"],
