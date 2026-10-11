@@ -80,6 +80,9 @@ async function sample(page) {
       ten: document.querySelector('.speed-seal[data-seal="fast"] [data-step="10"]')?.getAttribute('data-on') === 'true' };
   });
 }
+export function manualReceiptTarget(receipts, threads) {
+  return receipts.automaticPresentations[0]?.recordId ?? threads?.threadPresentations?.[0]?.receiptId ?? receipts.receipts[0]?.id;
+}
 async function manualTrace(page, out, evidence, target, tick) {
   const result = { attempted: true, verified: false, targetId: target, answerId: ANSWER };
   evidence.manualDiscovery = result;
@@ -87,8 +90,17 @@ async function manualTrace(page, out, evidence, target, tick) {
     await page.clock.runFor(32);
     check(await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state().tick) === tick, 'Tick advanced during paused manual navigation');
   };
-  await page.keyboard.press('KeyC'); evidence.actions.push({ input: 'KeyC manual chronicle after automatic evidence' }); await settle();
-  check(await page.locator('.chronicle-screen').isVisible(), 'Manual chronicle did not open');
+  const before = await fullSnapshot(page, out, 'manual-before-keyc');
+  await page.keyboard.press('KeyC'); evidence.actions.push({ input: 'KeyC independent manual chronicle; no decision dismissed or answered' }); await settle();
+  const after = await fullSnapshot(page, out, 'manual-after-keyc');
+  const identity = state => ({ tick: state.tick, occurrences: state.registry?.occurrences ?? [],
+    decisions: (state.history?.records ?? []).filter(row => row.kind === 'decision') });
+  result.navigation = { beforeSha256: before.sha256, afterSha256: after.sha256,
+    before: identity(before.state), after: identity(after.state),
+    stateUnchanged: before.sha256 === after.sha256, chronicleVisible: await page.locator('.chronicle-screen').isVisible(),
+    panels: (await sample(page)).panels };
+  check(result.navigation.stateUnchanged, 'Manual KeyC changed presentation state');
+  check(result.navigation.chronicleVisible, 'Manual chronicle did not open; current decision was preserved');
   const year = String(1300 + Math.floor(START / 4000));
   for (const [label, option] of [['중요도', '모든 기록'], ['부터', year], ['까지', year]]) {
     await press(page, page.locator('.chronicle-screen').getByRole('button', { name: new RegExp(`^${label}:`) }), evidence);
@@ -194,9 +206,9 @@ async function capture(browser, item, out, url, evidence) {
     }
     evidence.stop ??= 'frame_or_wall_time_bound';
     if (await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed') !== 'true') await press(page, '.speed-seal[data-seal="pause"]', evidence);
-    const automaticTarget = accumulator.snapshot().automaticPresentations[0]?.recordId ?? evidence.threadEvidence?.threadPresentations[0]?.receiptId;
-    if (automaticTarget !== undefined) {
-      try { await manualTrace(page, out, evidence, automaticTarget, accumulator.snapshot().lastTick); }
+    const manualTarget = manualReceiptTarget(accumulator.snapshot(), evidence.threadEvidence);
+    if (manualTarget !== undefined) {
+      try { await manualTrace(page, out, evidence, manualTarget, accumulator.snapshot().lastTick); }
       catch (error) { evidence.manualDiscovery ??= { attempted: true, verified: false }; evidence.manualDiscovery.error = String(error); }
     }
     evidence.final = await fullSnapshot(page, out, 'final'); delete evidence.final.state;
@@ -228,7 +240,7 @@ async function main() {
     expectedPresentationSha256: sha(JSON.stringify(withResidentWalkers(item.checkpoint.state))), manualDiscovery: { attempted: false, verified: false }, informationalContinues: [], actions: [], frames: [], transitions: [], newHistory: [], errors: [], cleanupErrors: [],
     limits: ['New no-bot continuation, not original replay parity.', 'Proof exposes presentation, not raw browser store.',
       'Direct receipt identity and canonical trace-thread indication are separate; a thread chip does not prove visible receipt text.',
-      'Manual navigation follows accepted automatic identity or exact canonical thread membership; only informational season reports may be dismissed, without state changes.',
+      'Manual navigation independently targets an observed exact-answer receipt; substantive decisions are never dismissed or answered. Automatic visibility remains a separate gate.',
       'Informational acknowledgements interrupt the continuation; unknown or substantive blockers stop without answering.', 'Synthetic DOM control input; no native pointer or real-time performance claim.'] };
   let owned, browser;
   try {
