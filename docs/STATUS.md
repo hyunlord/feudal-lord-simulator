@@ -925,6 +925,7 @@
 
 ## 알려진 문제
 
+- **배급 거리 밖 집 하나가 식량 결정 전체를 멈춤(기록만, 2026-10-11)**: 어느 곡창에서도 배급 거리(`BALANCE.DISTRIBUTOR_RANGE` 40) 밖에 사는 집이 하나라도 있으면 `measuredFoodDecision`(`src/engine/autoplayFoodMeasuredDecision.ts`)이 "food_route_blocked"로 서서 농가·방앗간을 더 짓지 않는다. 지금은 집이 성 안에만 서서 드러나지 않는다. 성 밖 교외 집터를 만들 때 먼저 고칠 약점이다(채팅 판정, 집터 상한 나누기).
 - **시설 밀도(관찰, 미수정)**: R1-fix 가드레일(`0725764`)의 24필지 도시는 seed 1~5에서 건물/필지 3.79~4.12, 방앗간/밀밭 16/25~20/25(0.64~0.80)이다. 기준선 `7db9df85`는 3.17~3.33, 8/24~9/21(0.33~0.43)이었다. 밀밭≤·밀 0 방앗간 0%로 가드레일 안이지만 도시가 다시 시설 밀도로 기울 수 있다. 원인 후보는 R-8 밀 처리 복구와 식량 여유 `BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR = 1.05`(`src/content/balanceConfig.ts:12`)이며, B2/C1에서 판단한다. [seed별 표](verification/b1-contracts/mill-density.md). B2 가드레일(`21caf65`)도 방앗간/밀밭 17~20/25~28, 건물/필지 3.88~4.08로 같은 범위다([B2 기록](verification/b2-scenario-era/guardrails-21caf65.json)). 판단은 C1으로 넘긴다.
 
 ## 결정 대기
