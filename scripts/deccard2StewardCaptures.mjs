@@ -48,7 +48,10 @@ const standingOf = (page, kind) => page.evaluate(key => window.__FEUDAL_PHASE10_
   const { context, page } = await open({ run: true, query: '&story-delay=600000&auto-pause=off' });
   page.on('pageerror', error => errors.push(String(error).slice(0, 300)));
   await page.keyboard.press('Digit3');
-  const opened = await page.locator('.season-ledger-card .season-steward >> visible=true').first().waitFor({ timeout: 120_000 }).then(() => true, () => false);
+  // LS1-2: lord mode's season card never opens by itself — the season-turn band at the close opens it.
+  const band = await page.locator('.season-band >> visible=true').first().waitFor({ timeout: 120_000 }).then(() => true, () => false);
+  if (band) await page.locator('.season-band').first().click();
+  const opened = band && await page.locator('.season-ledger-card .season-steward >> visible=true').first().waitFor({ timeout: 30_000 }).then(() => true, () => false);
   const row = { opened, card: null };
   if (opened) {
     await page.locator('.season-steward').scrollIntoViewIfNeeded();

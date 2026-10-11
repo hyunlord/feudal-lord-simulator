@@ -56,6 +56,10 @@ export const RESULTS_COPY = {
     foldTitle: (by: "lord" | "steward" | "lapsed", subject: string) => `${BY_WORDS[by]} 때문에: ${subject}`,
     preparedFoldTitle: (subject: string) => `결정이 남긴 대비: ${subject}`,
     folded: (title: string, count: number) => `${title} ×${count}`,
+    /** LS1-4 (lord-screen-v1.md): the year's one chip for what the lord's decisions led to, and its card's lines. */
+    yearChip: (count: number) => `올해 당신의 결정이 낳은 일 ${count}`,
+    yearLine: (year: number, count: number) => `${year}년 결정마다 뒤따른 일 — 많은 것부터 (모두 ${count}건)`,
+    yearItem: (title: string, count: number) => `${title} — ${count}건`,
     /** The bad harvest's news: each decision that left the town ready when it came (`because[].relation === "preparedness"`). */
     preparedThen: (about: string) => `그때 이 결정이 남긴 대비 — ${about}`,
     prefixed: (because: string, sentence: string) => `${because} — ${sentence}`,

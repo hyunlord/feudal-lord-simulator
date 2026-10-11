@@ -28,6 +28,7 @@ import { storyBeats } from "../src/ui/eventStory";
 import { yearCardDue, yearCardId } from "../src/ui/hud/useStoryPresentation";
 import { recordSentence } from "../src/ui/legacy/chapterRecords";
 import { traceNews } from "../src/ui/results/decisionThread";
+import { yearResults } from "../src/ui/results/yearResults";
 import { lordYearReview, yearCard } from "../src/ui/results/lordYearReview";
 import { YearReviewCard } from "../src/ui/results/ResultCards";
 import { RESULTS_COPY } from "../src/ui/results/resultsCopy.ko";
@@ -71,10 +72,21 @@ test("DEC-CARD-2 news: one chip per decision whose consequences landed this seas
   for (const row of rows.filter(entry => entry.key === "relation")) {
     assert.ok(duesNews.facts.some(fact => fact.endsWith(DECISION_CARD_COPY.feels(row.delta!))), `${row.actor} ${row.delta}`);
   }
-  const beat = storyBeats(season).find(entry => entry.id === `trace:${dues.id}:0`)!;
-  assert.equal(beat.kind, "decision_trace");
+  // LS1-4: one chip for the year — "올해 당신의 결정이 낳은 일 N" — its card the year's decisions, the most first.
+  const traces = storyBeats(season).filter(entry => entry.kind === "decision_trace");
+  assert.equal(traces.length, 1, "one chip for the year's results");
+  const beat = traces[0]!;
+  const results = yearResults(season)!;
+  assert.equal(beat.id, `results:${results.year}`);
+  assert.equal(results.year, 1300);
+  const rowsOf = (id: string) => traceInRange(season, 0, season.tick + 1).filter(row => row.decisionId === id).length;
+  assert.equal(results.count, rowsOf(dues.id) + rowsOf(suit.id), "everything that followed the two decisions");
+  assert.equal(beat.title, RESULTS_COPY.trace.yearChip(results.count));
+  assert.deepEqual(results.items.map(item => item.count), [...results.items.map(item => item.count)].sort((a, b) => b - a), "the most first");
+  assert.ok(beat.facts.includes(RESULTS_COPY.trace.yearItem(RESULTS_COPY.trace.chipTitle(1300, "lord", "시장 부담"), rowsOf(dues.id))), beat.facts.join(" | "));
   assert.equal(beat.decision, null, "no choice in it: no primary");
-  assert.deepEqual({ recordId: beat.chronicle!.recordId, tick: beat.chronicle!.tick }, { recordId: dues.id, tick: dues.tick }, "it opens the decision in the chronicle");
+  assert.equal(beat.chronicle!.recordId, results.items[0]!.decisionId, "it opens the year's first decision in the chronicle");
+  assert.equal(yearResults(sandbox), null, "lord mode only");
   assert.equal(traceNews(sandbox).length, 0, "lord mode only (the thread is lord mode's)");
 });
 

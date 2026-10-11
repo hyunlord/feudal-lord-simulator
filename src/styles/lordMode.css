@@ -78,3 +78,19 @@
 .app-shell .lord-policy-refusal { color: var(--palette-vermilion); font-weight: 600; }
 .app-shell .lord-policy-set { min-height: 44px; justify-self: start; }
 .app-shell .lord-policy-last-refusal { color: var(--palette-ink-light); }
+
+/* LS1-2 (lord-screen-v1.md): the season-turn band — over the map's top middle, under the status pill's row; one line of
+   what changed in the season (a long translation wraps inside its width); not modal, a press opens the season's card. */
+/* contrast-audit selector=".season-band" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.app-shell .season-band-layer {
+  position: absolute; top: var(--hud-left-top); left: 50%; z-index: 4; transform: translateX(-50%);
+  max-width: min(680px, calc(100vw - 340px)); pointer-events: none;
+}
+.app-shell .season-band {
+  display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: 10px; row-gap: 2px;
+  min-height: 44px; max-width: 100%; padding: 4px 14px; pointer-events: auto;
+  font-size: 13px; font-weight: 700; color: var(--palette-ink); background-color: var(--palette-vellum);
+}
+.app-shell .season-band-item { white-space: nowrap; }
+.app-shell .season-band-item + .season-band-item::before { content: "·"; margin-right: 10px; color: var(--palette-ink-muted); }
+@media (pointer: coarse) { .app-shell .season-band { min-height: 48px; } }

@@ -18,7 +18,8 @@ export const STEWARD_SURFACES: readonly SurfaceRow[] = [
     data: "the heriot opened: the four settings (all secondary, the one in force pressed) and what each would do, this year's count" },
   { id: "modal.season-ledger.steward", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "lord2", name: "attention-overloaded", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off", run: true },
-    open: [{ key: "Digit3" }, { wait: ".season-ledger-card .season-steward", timeout: 120_000 }, { pause: 900 }],
+    // LS1-2: lord mode's season card never opens by itself — the season-turn band opens it, as a player does.
+    open: [{ key: "Digit3" }, { wait: ".season-band", timeout: 120_000 }, { click: ".season-band" }, { wait: ".season-ledger-card .season-steward", timeout: 30_000 }, { pause: 900 }],
     requires: ["h2", ".season-steward h3", ".season-steward-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
     data: "a lord-mode season close with the steward's section: what he handled by which policy (each a drill-in), the money and factions, what he brought" },
 ];
