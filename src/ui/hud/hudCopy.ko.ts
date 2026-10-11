@@ -5,8 +5,6 @@ export const HUD_COPY = {
   pill: "마을 상태",
   /** WEL-D1 (user 2026-10-11): the mode at the pill's head — the town builds by itself, or the player builds (the goal campaign too). */
   mode: { lord: "영주 모드", build: "직접 짓기" },
-  /** The 1024-wide screen's (the pill must not reach the speed seals; the other cells keep their words). */
-  modeShort: { lord: "영주", build: "직접" },
   population: (count: number) => `인구 ${count}`,
   foodDays: (days: number) => `식량 ${days}일`,
   foodNone: "식량 —",

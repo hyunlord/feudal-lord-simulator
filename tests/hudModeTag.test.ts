@@ -23,8 +23,9 @@ const started = (scenarioId: string): GameState => {
 };
 const pill = (state: GameState) => renderToStaticMarkup(createElement(StatusPill, { state, model: statusPillModel(state), onOpenLedger: () => undefined,
   onOpenPopulation: () => undefined, onInspect: () => undefined }));
-const tag = (markup: string) => markup.match(/<span class="status-pill-mode" data-mode="([a-z]+)" role="note" aria-label="([^"]*)">/);
-const words = (markup: string) => [markup.match(/status-pill-mode-long[^>]*>([^<]*)</)?.[1], markup.match(/status-pill-mode-short[^>]*>([^<]*)</)?.[1]];
+const tag = (markup: string) => markup.match(/<span class="status-pill-mode" data-mode="([a-z]+)" role="img" aria-label="([^"]*)" tabindex="0"/);
+const words = (markup: string) => markup.match(/status-pill-mode-words[^>]*>([^<]*)</)?.[1];
+const icon = (markup: string) => markup.match(/status-pill-mode-icon[^>]*>(.{0,80})/)?.[1] ?? "";
 
 test("lord mode's pill opens with 영주 모드; the sandbox's and the goal campaign's with 직접 짓기", () => {
   assert.deepEqual(tag(pill(started(LORD_SLICE_SCENARIO_ID)))?.slice(1), ["lord", HUD_COPY.mode.lord]);
@@ -32,9 +33,12 @@ test("lord mode's pill opens with 영주 모드; the sandbox's and the goal camp
   assert.deepEqual(tag(pill(started(DEFAULT_SCENARIO_ID)))?.slice(1), ["build", HUD_COPY.mode.build]);
   assert.equal(HUD_COPY.mode.lord, "영주 모드");
   assert.equal(HUD_COPY.mode.build, "직접 짓기");
-  // The 1024-wide screen's short words (the stylesheet shows them there only).
-  assert.deepEqual(words(pill(started(LORD_SLICE_SCENARIO_ID))), ["영주 모드", "영주"]);
-  assert.deepEqual(words(pill(started(SANDBOX_SCENARIO_ID))), ["직접 짓기", "직접"]);
+  // Its words (from 1101 px wide) and its picture (1024 and narrower: the stylesheet shows one or the other) — the seal for
+  // lord mode, the build dock's tools for building; its name is the whole words at every width.
+  assert.equal(words(pill(started(LORD_SLICE_SCENARIO_ID))), "영주 모드");
+  assert.equal(words(pill(started(SANDBOX_SCENARIO_ID))), "직접 짓기");
+  assert.match(icon(pill(started(LORD_SLICE_SCENARIO_ID))), /seal-mark/);
+  assert.doesNotMatch(icon(pill(started(SANDBOX_SCENARIO_ID))), /seal-mark/);
 });
 
 test("the tag is the pill's first child and no control; the cells keep their order, the date first", () => {
