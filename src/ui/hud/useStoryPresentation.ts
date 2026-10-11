@@ -9,6 +9,7 @@ import { storySeen } from "../../engine/storySeen";
 import { useGameApi } from "../../state/gameStore";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
+import { foldChips } from "./chipFold";
 import type { UiModal } from "../stateMachine/uiStateMachine";
 import { latestChapterEnd } from "../chronicleModel";
 import { openHomePetitions } from "../lordCardsModel";
@@ -87,9 +88,11 @@ export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSe
     .map(entry => entry.beat);
   const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat);
   const pinned = shown.filter(held);
-  const rest = shown.filter(beat => !held(beat));
-  return [...pinned, ...rest.slice(rest.length - Math.max(0, MAX_CHIPS - pinned.length))].slice(0, MAX_CHIPS);
+  const rest = foldChips(shown.filter(beat => !held(beat)));
+  // The newest that fit beside the pinned (CHIP-FOLD: never a negative start — with fewer chips than room it took from the end).
+  return [...pinned, ...rest.slice(Math.max(0, rest.length - Math.max(0, MAX_CHIPS - pinned.length)))].slice(0, MAX_CHIPS);
 }
+
 
 export function useStoryPresentation(input: {
   readonly state: GameState; readonly nowMs: number; readonly blocked: boolean; readonly topModal: UiModal | null;
@@ -235,6 +238,11 @@ export function useStoryPresentation(input: {
   }, [nextWakeMs]);
   return {
     visible,
-    dismiss: (id: string) => { const entry = seenRef.current.get(id); if (entry !== undefined) { entry.dismissed = true; setRevision(revision => revision + 1); } },
+    // CHIP-FOLD: a folded chip put away puts away every chip it stands for.
+    dismiss: (id: string) => {
+      const ids = visible.find(beat => beat.id === id)?.folded ?? [id];
+      for (const each of ids) { const entry = seenRef.current.get(each); if (entry !== undefined) entry.dismissed = true; }
+      setRevision(revision => revision + 1);
+    },
   };
 }

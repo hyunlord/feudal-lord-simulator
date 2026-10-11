@@ -51,6 +51,11 @@ export const RESULTS_COPY = {
      * engine's `because[].key === "crisis_prepared"`): the head says what it left, not "때문에". */
     prepared: (year: number) => `${year}년 결정이 남긴 대비`,
     preparedChip: (year: number, subject: string) => `${year}년 결정이 남긴 대비: ${subject}`,
+    /** CHIP-FOLD (user 2026-10-11): the chips of one cause folded into one — the cause without its year, and how many
+     * ("당신의 결정 때문에: 시장 부담 ×12"). */
+    foldTitle: (by: "lord" | "steward" | "lapsed", subject: string) => `${BY_WORDS[by]} 때문에: ${subject}`,
+    preparedFoldTitle: (subject: string) => `결정이 남긴 대비: ${subject}`,
+    folded: (title: string, count: number) => `${title} ×${count}`,
     /** The bad harvest's news: each decision that left the town ready when it came (`because[].relation === "preparedness"`). */
     preparedThen: (about: string) => `그때 이 결정이 남긴 대비 — ${about}`,
     prefixed: (because: string, sentence: string) => `${because} — ${sentence}`,

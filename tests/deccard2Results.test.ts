@@ -58,6 +58,8 @@ test("DEC-CARD-2 news: one chip per decision whose consequences landed this seas
   const duesNews = news.find(entry => entry.decisionId === dues.id)!;
   assert.equal(duesNews.title, RESULTS_COPY.trace.chipTitle(1300, "lord", "시장 부담"));
   assert.ok(duesNews.title.startsWith("1300년 당신의 결정 때문에"), duesNews.title);
+  // CHIP-FOLD: the cause it folds by — who decided and about what, without the year.
+  assert.deepEqual(duesNews.fold, { key: "lord:시장 부담", title: "당신의 결정 때문에: 시장 부담" });
   assert.notEqual(news.find(entry => entry.decisionId === suit.id)!.title, duesNews.title, "two of one year read apart");
   const rows = traceInRange(season, 0, season.tick + 1).filter(row => row.decisionId === dues.id);
   // Each consequence is its record's own sentence (a share among other causes said so); the relation rows are feelings.

@@ -145,6 +145,8 @@ export type TraceNews = Readonly<{
   title: string;
   line: string;
   facts: readonly string[];
+  /** CHIP-FOLD: the cause its chip folds by (who decided and about what, any year) and the folded chip's title. */
+  fold: Readonly<{ key: string; title: string }>;
 }>;
 
 /**
@@ -159,9 +161,12 @@ export const traceNews = perState((state: GameState): readonly TraceNews[] => {
   return traceGroups(state, rows).filter(group => !onlyMinds(group)).map(group => {
     const record = index.get(group.decisionId)!;
     const lines = threadLines(state, group.rows);
+    const subject = decisionSubjectWords(state, record); const prepared = preparedOnly(group.rows);
     return { decisionId: group.decisionId, decisionTick: group.decisionTick,
-      title: preparedOnly(group.rows) ? RESULTS_COPY.trace.preparedChip(yearOfTick(state, group.decisionTick), decisionSubjectWords(state, record))
-        : RESULTS_COPY.trace.chipTitle(yearOfTick(state, group.decisionTick), group.by, decisionSubjectWords(state, record)),
+      title: prepared ? RESULTS_COPY.trace.preparedChip(yearOfTick(state, group.decisionTick), subject)
+        : RESULTS_COPY.trace.chipTitle(yearOfTick(state, group.decisionTick), group.by, subject),
+      fold: prepared ? { key: `prepared:${subject}`, title: RESULTS_COPY.trace.preparedFoldTitle(subject) }
+        : { key: `${group.by}:${subject}`, title: RESULTS_COPY.trace.foldTitle(group.by, subject) },
       line: RESULTS_COPY.trace.dated(chronicleDate(state, group.decisionTick), decisionAbout(state, record)), facts: [...lines.lines, ...lines.feelings] };
   });
 });
