@@ -112,7 +112,8 @@ function row(state: GameState, year: number) {
     buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
-    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state) };
+    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state),
+    wallSites: state.constructionSites.filter(site => !isBuildingConstructionSite(site) && (site.kind === "palisade_segment" || site.kind === "stone_wall_segment")).length };
 }
 
 /** Renderer A's state bundle and the next Astra play (2026-10-10): saves a season after the market charter, some years on, and at the end. */
