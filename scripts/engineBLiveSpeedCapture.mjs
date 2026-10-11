@@ -104,7 +104,9 @@ async function manualTrace(page, out, evidence, target, tick) {
   const year = String(1300 + Math.floor(START / 4000));
   for (const [label, option] of [['중요도', '모든 기록'], ['부터', year], ['까지', year]]) {
     await press(page, page.locator('.chronicle-screen').getByRole('button', { name: new RegExp(`^${label}:`) }), evidence);
-    await press(page, page.getByRole('listbox', { name: label, exact: true }).getByRole('option', { name: option, exact: true }), evidence); await settle();
+    const optionControl = page.getByRole('listbox', { name: label, exact: true }).getByRole('option', { name: option, exact: true });
+    await optionControl.scrollIntoViewIfNeeded();
+    await press(page, optionControl, evidence); await settle();
   }
   const list = page.locator('.chronicle-list'); check(await list.count() === 1, 'Unique chronicle list required');
   await list.evaluate(el => { el.scrollTop = 0; });
