@@ -221,7 +221,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.status-pill.sandbox", root: ".status-pill", frame: "css", scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario='core:sandbox']" }, { wait: ".welcome-house" }, { click: "[data-house-start]" },
       { wait: ".status-pill", timeout: 30_000 }, { pause: 2_500 }], requires: [".status-pill-date"],
-    data: "a new sandbox from the title: the mode's tag (직접 짓기), date, population, food, coin, the welcome closed" },
+    data: "a new sandbox from the title: the mode's tag (the building words), date, population, food, coin, the welcome closed" },
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
   { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], requires: [".speed-seal-mark .speed-seal-step"],
