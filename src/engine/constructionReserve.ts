@@ -74,7 +74,7 @@ export function constructionReservedMaterial(
 }
 
 export function wallReserveHeld(
-  state: Pick<GameState, "wallConstructionReserve" | "wallConstructionPriority" | "buildings" | "treasuryTimber"> & Partial<Pick<GameState, "constructionSites">>,
+  state: Pick<GameState, "wallConstructionReserve" | "wallConstructionPriority" | "buildings" | "treasuryTimber"> & Partial<Pick<GameState, "constructionSites" | "agency">>,
   site: ConstructionSite,
   routes: DeliveryRoutePort,
 ): boolean {
@@ -96,7 +96,8 @@ export function wallReserveHeld(
     sourceStocks.push({ id: TREASURY_SOURCE_ID, available: state.treasuryTimber });
   }
   // FIX-16: a waiting charter building holds the palisade's timber too.
-  const charter = charterTimberContext({ buildings: state.buildings, constructionSites: state.constructionSites ?? [], inventory, treasuryTimber: state.treasuryTimber });
+  const charter = charterTimberContext({ buildings: state.buildings, constructionSites: state.constructionSites ?? [], inventory, treasuryTimber: state.treasuryTimber,
+    ...(state.agency === undefined ? {} : { lordSupply: true }) });
   return sourceStocks.length > 0 && sourceStocks.every(({ id, available }) =>
     wallDeliveryAvailable(state.wallConstructionReserve, "balanced", id, resource, available, charter) === 0);
 }

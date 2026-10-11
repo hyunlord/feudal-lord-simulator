@@ -235,19 +235,23 @@ export function charterTimberContext(params: {
   readonly constructionSites: readonly ConstructionSite[];
   readonly inventory: DeliveryInventoryPort;
   readonly treasuryTimber: number;
+  /** GROW-BLOCK-2a ③⑥: lord mode's supply rules (a charter building short of another material holds nothing, a wanted supplier keeps its timber); the sandbox keeps FIX-16's. */
+  readonly lordSupply?: boolean;
 }): { readonly wait: CharterTimberWait; readonly townStock: number; readonly supplierKeep: number } {
   const held = (resource: ResourceType) => params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, resource), 0);
   const otherMaterialsHeld = (kind: (typeof CHARTER_TIMBER_KINDS)[number]) => Object.entries(BUILDING_CONFIG_BY_KIND[kind].buildCost)
     .every(([resource, amount]) => resource === "timber" || held(resource as ResourceType) >= Number(amount ?? 0));
   const timberCost = (kind: string) => BUILDING_CONFIG_BY_KIND[kind as Kind]?.buildCost.timber ?? 0;
-  const charter = charterTimberWait(params.buildings, params.constructionSites, timberCost, otherMaterialsHeld);
+  const lord = params.lordSupply === true;
+  const charter = lord ? charterTimberWait(params.buildings, params.constructionSites, timberCost, otherMaterialsHeld)
+    : charterTimberWait(params.buildings, params.constructionSites, timberCost);
   // The materials needed: what the next charter building lacks, what a building site waits for with none in stock.
   const next = CHARTER_TIMBER_KINDS.find(kind => !params.buildings.some(building => building.kind === kind));
   const lacking = next === undefined ? [] : Object.entries(BUILDING_CONFIG_BY_KIND[next].buildCost)
     .filter(([resource, amount]) => resource !== "timber" && held(resource as ResourceType) < Number(amount ?? 0)).map(([resource]) => resource);
   const waiting = params.constructionSites.filter(site => "kind" in site).flatMap(site => Object.entries(constructionDeliveryNeed(site))
     .filter(([resource, amount]) => resource !== "timber" && Number(amount ?? 0) > 0 && held(resource as ResourceType) <= 0).map(([resource]) => resource));
-  const keep = supplierKeep(params.buildings, params.constructionSites, held, [...new Set([...lacking, ...waiting])]);
+  const keep = lord ? supplierKeep(params.buildings, params.constructionSites, held, [...new Set([...lacking, ...waiting])]) : 0;
   const wait = withSupplierKeep(charter, keep);
   if (wait.wallSharePermille >= 1_000 && wait.keep <= 0) return { wait, townStock: 0, supplierKeep: 0 };
   const townStock = params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, "timber"), 0) + Math.max(0, params.treasuryTimber);
@@ -264,6 +268,7 @@ export function spawnSiteDelivery(params: {
   readonly busyHomeIds: ReadonlySet<string>;
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
+  readonly lordSupply?: boolean;
 }): DeliveryStepResult | null {
   const charter = charterTimberContext(params);
   const candidates = siteCandidates({

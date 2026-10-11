@@ -74,7 +74,8 @@ export function timberDemandExpansionKind(state: GameState): TimberKind | null {
   const need = waitingTimberNeed(state);
   if (need <= made * (TIMBER_DEMAND_HORIZON_TICKS / TIMBER_DEMAND_WINDOW_TICKS)) return null;
   const short = bottleneck(state.buildings);
-  const kind: TimberKind = short === 'logging_camp' && !campAllowed(state) ? 'sawmill' : short;
+  // ⑥ is lord mode's (the sandbox keeps BT6's choice — GROW-BLOCK-2a's guardrail seed 2, the user's ruling 2026-10-11).
+  const kind: TimberKind = short === 'logging_camp' && state.agency !== undefined && !campAllowed(state) ? 'sawmill' : short;
   const config = BUILDING_CONFIG_BY_KIND[kind];
   if (state.buildings.some(building => building.kind === kind && building.workers < config.workersRequired)
     || state.idleWorkers < config.workersRequired

@@ -55,7 +55,7 @@ export function timberExpansionKind(state: GameState): TimberKind | null {
   const existingInputNeed = state.buildings.filter(building => building.kind === 'sawmill')
     .reduce((sum, building) => sum + Math.max(0, inputPerOutput - availableStock(building, 'logs') - (building.reserved.logs ?? 0)), 0);
   // GROW-BLOCK-2a ⑥: a camp only while the sawmills keep up (`campAllowed`).
-  const kind: TimberKind = sourceLogs - existingInputNeed >= BALANCE.CARTER_CAPACITY || !campAllowed(state) ? 'sawmill' : 'logging_camp';
+  const kind: TimberKind = sourceLogs - existingInputNeed >= BALANCE.CARTER_CAPACITY || (state.agency !== undefined && !campAllowed(state)) ? 'sawmill' : 'logging_camp';
   const config = BUILDING_CONFIG_BY_KIND[kind];
   const existing = state.buildings.filter(building => building.kind === kind);
   if (existing.some(building => building.workers < config.workersRequired)

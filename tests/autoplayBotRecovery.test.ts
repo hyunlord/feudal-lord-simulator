@@ -118,21 +118,21 @@ test("B6 seed 2 right after the palisade: timber is added for the waiting wall w
   // FIX-16: the palisade leaves the market's 60 timber in stock, so the market is placed during the wall (tick 3,361)
   // and the second camp follows it (3,601; trunk placed it before the market, within 3,600).
   const later = runWithAdvisor(state, 3_800);
-  // GROW-BLOCK-2a ⑥: at most two camps a sawmill — the second camp, then a sawmill before a third.
-  const sawmills = (current: typeof state) => current.buildings.filter(building => building.kind === "sawmill").length
-    + current.constructionSites.filter(site => site.kind === "sawmill").length;
-  assert.ok(camps(later) + sawmills(later) >= camps(state) + sawmills(state) + 2, "two timber facilities within 3,800 ticks");
-  assert.ok(camps(later) <= 2 * sawmills(later), `${camps(later)} camps, ${sawmills(later)} sawmills`);
+  assert.ok(camps(later) >= camps(state) + 2, "two logging camps within 3,800 ticks (the sandbox keeps BT6's choice; ⑥ is lord mode's)");
   assert.equal(later.buildings.filter(building => building.kind === "market").length
     + later.constructionSites.filter(site => site.kind === "market").length, 1, "the market is placed while the wall is built");
 });
 
-test("GROW-BLOCK-2a ③⑥: a supplier the wall starves of its timber is not left unbuilt for two years — logs backing up get their sawmill while the palisade waits", () => {
+test("GROW-BLOCK-2a ③⑥: a supplier the wall starves of its timber is not left unbuilt for two years — logs backing up get their sawmill while the palisade waits (lord mode)", async () => {
   const state = loadAutoplayFixture(SEED2_PALISADE);
   // The palisade just proclaimed (1,078 timber waiting); its stores hold 300 logs and 5 timber (seed 5's shape).
   const store = state.buildings.find(building => building.kind === "storehouse")!;
-  // The wall at priority (the lord's answer to a reserve deadlock): it takes every plank but a wanted supplier's.
-  const starved: GameState = { ...state, wallConstructionPriority: "priority", buildings: state.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, logs: 300, timber: 5 } }
+  // Lord mode (the rule is lord mode's, GROW-BLOCK-2a's guardrail seed 2), the wall at priority (the lord's answer to a
+  // reserve deadlock): it takes every plank but a wanted supplier's.
+  const { newGameState } = await import("../src/state/newGame");
+  const { LORD_SLICE_SCENARIO_ID } = await import("../src/content/lordSliceConfig");
+  const agency = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!.agency!;
+  const starved: GameState = { ...state, agency, wallConstructionPriority: "priority", buildings: state.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, logs: 300, timber: 5 } }
     : building.kind === "storehouse" ? { ...building, inventory: { ...building.inventory, timber: 0 } } : building) };
   const sawmills = (current: GameState) => current.buildings.filter(building => building.kind === "sawmill").length
     + current.constructionSites.filter(site => site.kind === "sawmill").length;
