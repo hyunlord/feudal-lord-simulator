@@ -8,7 +8,8 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { gunzipSync } from "node:zlib";
 
-type Any = any; // eslint-disable-line @typescript-eslint/no-explicit-any -- saved states read as plain JSON
+// Saved states read as plain JSON.
+type Any = any;
 
 const [out] = process.argv.slice(2);
 if (out === undefined) throw new Error("usage: visibleChangeFacts.ts <run out>");
