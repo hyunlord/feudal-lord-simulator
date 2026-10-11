@@ -28,9 +28,15 @@ const clickSpeed = async name => {
   await button.first().click(); await page.waitForTimeout(300); return true;
 };
 const clickNewGame = async () => {
-  for (const name of ['목표형으로 시작', '새 게임', '새 게임 시작']) {
+  for (const name of ['샌드박스로 시작', '목표형으로 시작', '새 게임', '새 게임 시작']) {
     const button = page.getByRole('button', { name, exact: true });
-    if (await button.count() > 0 && await button.first().isVisible()) { await button.first().click(); await page.waitForTimeout(1500); return name; }
+    if (await button.count() > 0 && await button.first().isVisible()) {
+      await button.first().click(); await page.waitForTimeout(1500);
+      // Since LM-R3 a new game asks for the house first (its first offer is fine).
+      const house = page.getByRole('button', { name: '이 가문으로 시작', exact: true });
+      if (await house.count() > 0 && await house.first().isVisible()) { await house.first().click(); await page.waitForTimeout(1500); }
+      return name;
+    }
   }
   return null;
 };

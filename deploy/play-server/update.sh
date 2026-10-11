@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Play server updater (PLAY-1), run by fls-play-update.timer every 5 minutes (or by hand: update.sh [--force]).
 #  1. git fetch the trunk; if its head equals the serving commit (and no --force), record "unchanged" and stop.
-#  2. Reset the build checkout to that head, npm ci, npm run build.
+#  2. Reset the build checkout to that head, pull its LFS pictures, npm ci, npm run build.
 #  3. On success: copy dist/ into releases/<time>-<sha>, add the commit badge and build.json, and swap the `current`
 #     symlink atomically (ln -s to a temp name + mv -T). The server resolves `current` per request: no restart.
 #     Keep the 3 newest releases besides the serving one. Then refresh bin/ from the new commit.
@@ -53,7 +53,20 @@ fail() { echo "$REMOTE" > "$STATE/failed-commit"; echo "$1" > "$STATE/failed-res
 log "building ${REMOTE:0:7} (serving $(serving_commit | cut -c1-7))"
 git -C "$REPO" reset --hard --quiet "$REMOTE" && git -C "$REPO" clean -fdq -e node_modules
 BUILD_LOG="$STATE/build-${REMOTE:0:7}.log"
-if ! (cd "$REPO" && npm ci --no-audit --no-fund --loglevel=error) >"$BUILD_LOG" 2>&1; then
+# The build reads LFS pictures (public/, the keyart plugin's sources); without them it stops on a pointer (2026-09-26 to
+# 10-11). They come from the DGX's shared LFS store, the run folders' (remote-exec.sh), so only new pictures download.
+LFS_STORE=${FLS_PLAY_LFS_STORE:-$HOME/fls-runs/_cache/lfs}
+[ -x "$HOME/fls-runs/_tools/bin/git-lfs" ] && export PATH="$HOME/fls-runs/_tools/bin:$PATH"   # git-lfs is installed there (setup-dgx.sh)
+[ -d "$LFS_STORE" ] && git -C "$REPO" config lfs.storage "$LFS_STORE"
+git -C "$REPO" config lfs.url https://github.com/hyunlord/feudal-lord-simulator.git/info/lfs
+# The filters by hand, as remote-exec.sh: `git lfs install` refuses the checkout's own pre-push hook.
+git -C "$REPO" config filter.lfs.clean 'git-lfs clean -- %f'; git -C "$REPO" config filter.lfs.smudge 'git-lfs smudge -- %f'
+git -C "$REPO" config filter.lfs.process 'git-lfs filter-process'; git -C "$REPO" config filter.lfs.required true
+if ! git -C "$REPO" lfs pull >"$BUILD_LOG" 2>&1; then
+  log "git lfs pull failed for ${REMOTE:0:7}, still serving $(serving_commit | cut -c1-7)"
+  fail "failed:lfs" "$(tail -5 "$BUILD_LOG")"
+fi
+if ! (cd "$REPO" && npm ci --no-audit --no-fund --loglevel=error) >>"$BUILD_LOG" 2>&1; then
   log "npm ci failed for ${REMOTE:0:7}, still serving $(serving_commit | cut -c1-7)"
   fail "failed:npm-ci" "$(tail -5 "$BUILD_LOG")"
 fi

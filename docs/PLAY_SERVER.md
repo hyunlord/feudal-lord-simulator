@@ -22,9 +22,10 @@
 ## 동작
 - **정적 서버:** `deploy/play-server/serve.mjs`(Node 내장 모듈만). Tailscale 주소 `100.70.109.50:4173`에만 붙는다. 매 요청마다 `~/fls-play/current` 심볼릭 링크를 따라가므로, 바꿔 끼우면 재시작 없이 바로 새 빌드가 나간다.
 - **갱신 스크립트:** `deploy/play-server/update.sh`(설치 사본은 `~/fls-play/bin/`).
-  - 본선 머리가 서빙 중인 커밋과 다르면 `~/fls-play/repo`를 그 커밋으로 맞추고 `npm ci && npm run build`를 한다.
+  - 본선 머리가 서빙 중인 커밋과 다르면 `~/fls-play/repo`를 그 커밋으로 맞추고 LFS 그림을 받은 뒤(`git lfs pull`) `npm ci && npm run build`를 한다.
+  - **LFS:** 빌드는 LFS 그림(`public/`, 키아트 플러그인의 원본)을 읽는다. 받지 않으면 포인터에서 멈춘다(2026-09-26~10-11 이 까닭으로 빌드 실패, 서버는 09-26 빌드를 계속 냈다). 그림은 실행 폴더들이 함께 쓰는 DGX의 LFS 저장소(`~/fls-runs/_cache/lfs`, `lfs.storage`)에서 오므로 새 그림만 내려받는다. `git-lfs`는 `~/fls-runs/_tools/bin`에 있다. 체크아웃에 프로젝트의 pre-push 훅이 있어 `git lfs install`이 거절하므로 LFS 필터를 `git config`로 직접 건다(`remote-exec.sh`와 같다). 실패하면 상태가 `failed:lfs`.
   - **성공하면:** `dist/`를 `~/fls-play/releases/<시각>-<커밋>/`에 복사하고 커밋 표시·`build.json`을 넣은 뒤, `current`를 원자적으로 바꾼다(`ln -s` 임시 이름 + `mv -T`). 서빙 중인 것 말고 최근 3개를 남긴다.
-  - **실패하면:** `current`는 그대로라 이전 빌드가 계속 나간다. 상태가 `failed:npm-ci` 또는 `failed:build`가 되고, 같은 머리는 5분마다 다시 빌드하지 않는다(본선이 움직이거나 `--force`까지).
+  - **실패하면:** `current`는 그대로라 이전 빌드가 계속 나간다. 상태가 `failed:lfs`·`failed:npm-ci`·`failed:build` 중 하나가 되고, 같은 머리는 5분마다 다시 빌드하지 않는다(본선이 움직이거나 `--force`까지).
   - 한 번에 하나만 돈다(`flock`). 성공한 뒤에는 새 커밋의 `update.sh`·`serve.mjs`로 설치 사본을 바꾸고, `serve.mjs`가 바뀌었으면 서버를 재시작한다.
 - **Node:**
   - `fls-play.service`는 `ExecStart=%h/fls-runs/_tools/node/bin/node …/serve.mjs`로 돈다.
