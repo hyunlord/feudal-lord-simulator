@@ -51,13 +51,17 @@ await page.evaluate(async ({ told, grace }) => {
   const { gameReducer } = await import('/src/state/gameStore.ts');
   const { AGENCY_WEEK_TICKS } = await import('/src/content/townAgencyConfig.ts');
   window.__FLS_BOT_LOG__ = [];
-  // An asked answer waits for its card: first seen (by the command), applied only after `grace` ticks without it.
+  // An asked answer waits for its card: first seen (by the matter, not the whole command — the will's choice follows the
+  // treasury), applied only after `grace` ticks without it. A counter-offer has no card (it is answered on the 혼인 page):
+  // the bot answers it at once, as before.
   const waiting = new Map();
+  const matterKey = (kind, command) => `${kind}:${command.type}:${command.occurrenceId ?? command.petitionId ?? command.auditId ?? command.requestId ?? command.negotiationId ?? ''}`;
+  const CARDLESS = new Set(['counter']);
   window.__FLS_BOT__ = state => {
     let next = state;
     for (const { kind, command } of lordBotCommands(next)) {
-      if (ASKED_KINDS.has(kind)) {
-        const key = JSON.stringify(command);
+      if (ASKED_KINDS.has(kind) && !CARDLESS.has(kind)) {
+        const key = matterKey(kind, command);
         if (!waiting.has(key)) waiting.set(key, next.tick);
         if (next.tick - waiting.get(key) < grace) continue;
         waiting.delete(key);
@@ -75,8 +79,8 @@ await page.evaluate(async ({ told, grace }) => {
   window.__FLS_ASKED_NOW__ = () => {
     const state = window.__FEUDAL_PHASE10_PROOF__.state();
     const weekly = { ...state, tick: state.tick - ((state.tick - 1) % AGENCY_WEEK_TICKS + AGENCY_WEEK_TICKS) % AGENCY_WEEK_TICKS };
-    return [...lordBotCommands(state), ...lordBotCommands(weekly)].filter(entry => ASKED_KINDS.has(entry.kind)).map(({ kind, command }) => ({ kind, type: command.type,
-      key: JSON.stringify(command), choice: command.choiceId ?? command.choice ?? command.response ?? (command.grant === true ? 'grant' : command.grant === false ? 'refuse' : 'grant') }));
+    return [...lordBotCommands(state), ...lordBotCommands(weekly)].filter(entry => ASKED_KINDS.has(entry.kind) && !CARDLESS.has(entry.kind)).map(({ kind, command }) => ({ kind, type: command.type,
+      key: matterKey(kind, command), choice: command.choiceId ?? command.choice ?? command.response ?? (command.grant === true ? 'grant' : command.grant === false ? 'refuse' : 'grant') }));
   };
   window.__FLS_ANSWERED__ = key => waiting.delete(key);
   window.__FLS_TOLD__ = [];
