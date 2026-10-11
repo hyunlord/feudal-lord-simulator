@@ -1,7 +1,11 @@
 // VIS-1 (user 2026-10-11, the first play: "10배속으로 돌려도 티가 안 난다"): the lord's slice in the browser as a player sees
 // it — a new lord-mode game (seed 1, the riverside town) at 10x for twenty years (1300–1320), the auto-pause on. The lord
-// bot only answers for him: its commands go into the served tick loop before each tick (as scripts/lordSliceRun.ts does
-// in Node), so the screen, the cards, the stops and the season turns are the game's own. Every season: a screenshot, the
+// bot only answers for him: its own moves go into the served tick loop before each tick (as scripts/lordSliceRun.ts does
+// in Node); its answers to the cards that come to the lord (ASKED_KINDS) wait for the card — when a card stops the game the
+// harness presses the bot's choice on it (its `data-choose`), so the answer's receipt shows and is photographed, then
+// closed (user 2026-10-11: "답 카드가 화면에 한 번 뜬 뒤 답하게"). An answer whose card never shows is applied after
+// ASKED_GRACE ticks (logged), so the game goes on as the bot plays it. The screen, the stops and the season turns are the
+// game's own. Every season: a screenshot, the
 // page's visible text and the state (gzipped, for scripts/visibleChangeFacts.ts); every stop: a screenshot of what
 // stopped the game, then its card put off / its notice resumed and 10x again; all along: every chip, toast, card and
 // notice the page added, with its tick and words.
@@ -35,24 +39,46 @@ const LOOP = { pattern: '**/src/state/fixedTickLoop.ts*', from: 'nextState = adv
 /** What puts off a card, closes a receipt or a page, or resumes after a stop — in that order (never an answer). */
 const CLEAR = ['.answer-receipt-close', '.slice-begin', '.slice-continue', '.season-ledger-resume', '.results-card-continue', '.chronicle-keep', '.story-modal-later', '.auto-pause-resume'];
 /** What the page adds that tells the player something happened (kept with its tick and words). */
+/** Ticks an asked answer waits for its card before the bot applies it itself (a card the screen never opened). */
+const ASKED_GRACE = 600;
 const TOLD = '.event-chip, .event-card, .completion-toast, .story-modal, .auto-pause-notice, .season-ledger-card, .season-notice, .results-card, .chronicle-page, .slice-page, [class*="toast"], [class*="notice"], [role="status"], [role="alert"]';
 
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const { page } = await openScene(browser, { state: start, tile: middle, baseUrl: url, width: 1280, height: 800, rewrite: [LOOP], run: false, initScript: INIT, loadTimeout: 90_000 });
-await page.evaluate(async ({ told }) => {
-  const { lordBotCommands } = await import('/src/engine/lordBot.ts');
+await page.evaluate(async ({ told, grace }) => {
+  const { lordBotCommands, ASKED_KINDS } = await import('/src/engine/lordBot.ts');
   const { gameReducer } = await import('/src/state/gameStore.ts');
+  const { AGENCY_WEEK_TICKS } = await import('/src/content/townAgencyConfig.ts');
   window.__FLS_BOT_LOG__ = [];
+  // An asked answer waits for its card: first seen (by the command), applied only after `grace` ticks without it.
+  const waiting = new Map();
   window.__FLS_BOT__ = state => {
     let next = state;
     for (const { kind, command } of lordBotCommands(next)) {
+      if (ASKED_KINDS.has(kind)) {
+        const key = JSON.stringify(command);
+        if (!waiting.has(key)) waiting.set(key, next.tick);
+        if (next.tick - waiting.get(key) < grace) continue;
+        waiting.delete(key);
+        const after = gameReducer(next, command);
+        if (after !== next) { next = after; window.__FLS_BOT_LOG__.push({ tick: next.tick, kind, type: command.type, without: 'card' }); }
+        continue;
+      }
       const after = gameReducer(next, command);
       if (after === next) continue;
       next = after; window.__FLS_BOT_LOG__.push({ tick: next.tick, kind, type: command.type });
     }
     return next;
   };
+  /** The bot's answers to the asked cards now (its weekly moves read at this week's tick), as the cards' choice ids. */
+  window.__FLS_ASKED_NOW__ = () => {
+    const state = window.__FEUDAL_PHASE10_PROOF__.state();
+    const weekly = { ...state, tick: state.tick - ((state.tick - 1) % AGENCY_WEEK_TICKS + AGENCY_WEEK_TICKS) % AGENCY_WEEK_TICKS };
+    return [...lordBotCommands(state), ...lordBotCommands(weekly)].filter(entry => ASKED_KINDS.has(entry.kind)).map(({ kind, command }) => ({ kind, type: command.type,
+      key: JSON.stringify(command), choice: command.choiceId ?? command.choice ?? command.response ?? (command.grant === true ? 'grant' : command.grant === false ? 'refuse' : 'grant') }));
+  };
+  window.__FLS_ANSWERED__ = key => waiting.delete(key);
   window.__FLS_TOLD__ = [];
   const tick = () => window.__FEUDAL_PHASE10_PROOF__?.state()?.tick ?? null;
   const record = element => {
@@ -66,7 +92,7 @@ await page.evaluate(async ({ told }) => {
       for (const inner of node.querySelectorAll(told)) record(inner);
     }
   }).observe(document.body, { childList: true, subtree: true });
-}, { told: TOLD });
+}, { told: TOLD, grace: ASKED_GRACE });
 
 const read = () => page.evaluate(() => ({ tick: window.__FEUDAL_PHASE10_PROOF__.state().tick }));
 const tenfold = async () => { await page.keyboard.press('Digit0'); await page.waitForTimeout(300); };
@@ -78,8 +104,31 @@ const dumpState = async name => {
   writeFileSync(join(out, 'states', `${name}.json.gz`), gzipSync(json));
 };
 
+/** The open decision card's choices, the bot's answer among them pressed, its receipt waited for, shot and closed. */
+async function answerCard(name) {
+  const choices = await page.evaluate(() => [...document.querySelectorAll('.story-modal.decision-card [data-choose]')]
+    .filter(button => button.offsetParent !== null && !button.disabled).map(button => button.getAttribute('data-choose')));
+  if (choices.length === 0) return null;
+  const asked = await page.evaluate(() => window.__FLS_ASKED_NOW__());
+  const pick = asked.find(entry => choices.includes(entry.choice));
+  if (pick === undefined) return { choice: null, choices, asked: asked.map(entry => `${entry.kind}:${entry.choice}`), receipt: false };
+  const card = await page.evaluate(() => document.querySelector('.story-modal.decision-card h2')?.innerText ?? null);
+  await page.locator(`.story-modal.decision-card [data-choose='${pick.choice}']`).first().click({ timeout: 5_000 }).catch(() => undefined);
+  await page.evaluate(key => window.__FLS_ANSWERED__(key), pick.key);
+  const receipt = await page.locator('.answer-receipt').first().waitFor({ timeout: 10_000 }).then(() => true).catch(() => false);
+  if (receipt) {
+    await page.waitForTimeout(400);
+    await shoot(join(out, 'stops', `${name}-receipt.jpg`));
+    const lines = await page.evaluate(() => [...document.querySelectorAll('.answer-receipt-row')].map(row => row.innerText.replace(/\s+/g, ' ')));
+    await page.locator('.answer-receipt-close').first().click({ timeout: 5_000 }).catch(() => undefined);
+    await page.waitForTimeout(400);
+    return { card, kind: pick.kind, choice: pick.choice, receipt: true, lines };
+  }
+  return { card, kind: pick.kind, choice: pick.choice, receipt: false };
+}
+
 const end = years * TICKS_PER_YEAR;
-const log = { seed, years, startedAt: new Date().toISOString(), seasons: [], stops: [], yearsWall: [] };
+const log = { seed, years, startedAt: new Date().toISOString(), seasons: [], stops: [], answers: [], yearsWall: [] };
 let lastSeason = -1; let pausedSince = null; let lastTick = -1; let stops = 0; let wallYear = Date.now(); let lastYear = 0;
 await dumpState('1300-s0-start'); await shoot(join(out, 'seasons', '1300-s0-start.jpg'));
 await tenfold();
@@ -107,6 +156,9 @@ for (;;) {
       const open = await page.evaluate(() => [...document.querySelectorAll('.story-modal h2, .auto-pause-notice, .season-ledger-card h2, .results-card h2, .chronicle-page h2, .slice-page h2')].map(el => el.innerText.replace(/\s+/g, ' ').slice(0, 300)));
       await shoot(join(out, 'stops', `${name}.jpg`));
       const cleared = [];
+      // A card that comes to the lord: the bot's choice pressed on it, its receipt photographed and closed.
+      const answered = await answerCard(name);
+      if (answered !== null) { cleared.push(`answer:${answered.choice}`); log.answers.push({ name, tick, ...answered }); }
       for (let round = 0; round < 4; round += 1) {
         let clicked = false;
         for (const selector of CLEAR) {
