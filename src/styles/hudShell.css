@@ -640,3 +640,9 @@
   font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); white-space: nowrap; cursor: default;
 }
 .app-shell .status-pill-mode + .status-pill-cell { border-left: 1px solid var(--palette-parchment-dark); }
+/* At 1024 wide its short word ("영주" / "직접"); the tablet's 1180 and wider keep the whole one. */
+.app-shell .status-pill-mode-short { display: none; }
+@media (max-width: 1100px) {
+  .app-shell .status-pill-mode-long { display: none; }
+  .app-shell .status-pill-mode-short { display: inline; }
+}

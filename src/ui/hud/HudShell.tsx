@@ -70,7 +70,10 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onIns
   return (
     <nav className="status-pill" aria-label={HUD_COPY.pill} data-frame="tooltip">
       {/* WEL-D1: which mode the game is in, once it has started (a tag, not a control: the cells keep their order). */}
-      <span className="status-pill-mode" data-mode={lordMode(state) ? "lord" : "build"}>{lordMode(state) ? HUD_COPY.mode.lord : HUD_COPY.mode.build}</span>
+      <span className="status-pill-mode" data-mode={lordMode(state) ? "lord" : "build"} role="note" aria-label={HUD_COPY.mode[lordMode(state) ? "lord" : "build"]}>
+        <span className="status-pill-mode-long" aria-hidden="true">{HUD_COPY.mode[lordMode(state) ? "lord" : "build"]}</span>
+        <span className="status-pill-mode-short" aria-hidden="true">{HUD_COPY.modeShort[lordMode(state) ? "lord" : "build"]}</span>
+      </span>
       <Button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
         aria-expanded={stripOpen} onPress={() => { setFoodOpen(false); setStripOpen(open => !open); }} variant="surface">
         <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
