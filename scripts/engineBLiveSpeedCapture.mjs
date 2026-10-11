@@ -49,6 +49,29 @@ async function press(page, selector, evidence) {
   check(await control.evaluate(el => { const b = el.getBoundingClientRect(), top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2); return top !== null && (el === top || el.contains(top)); }), `Covered control: ${selector}`);
   await control.dispatchEvent('click'); evidence.actions.push({ selector: typeof selector === 'string' ? selector : String(selector), input: 'synthetic DOM click through normal handler' });
 }
+async function verifyNormalScrollInput(browser, out) {
+  const context = await browser.newContext({ viewport: { width: 640, height: 480 } });
+  const page = await context.newPage();
+  const evidence = { valid: false, actions: [], cases: [] };
+  try {
+    await page.setContent('<div id="scroller" style="position:absolute;top:80px;left:40px;width:300px;height:100px;overflow:auto"><div style="height:180px"></div><button id="below" style="height:40px">Below viewport</button><div style="height:100px"></div><button id="partial" style="height:40px">Partially clipped</button><div style="height:200px"></div></div>');
+    await page.evaluate(() => { for (const button of document.querySelectorAll('button')) button.addEventListener('click', () => { button.dataset.clicked = 'true'; }); });
+    for (const id of ['below', 'partial']) {
+      if (id === 'partial') await page.evaluate(() => {
+        const box = document.querySelector('#scroller'), button = document.querySelector('#partial');
+        box.scrollTop += button.getBoundingClientRect().top - box.getBoundingClientRect().top - 80;
+      });
+      const before = await page.locator('#scroller').evaluate(el => el.scrollTop);
+      await page.screenshot({ path: join(out, `scroll-fixture-${id}-before.png`) });
+      await press(page, `#${id}`, evidence);
+      const after = await page.locator('#scroller').evaluate(el => el.scrollTop);
+      check(after !== before && await page.locator(`#${id}`).getAttribute('data-clicked') === 'true', `Normal scrolling did not expose/click ${id}`);
+      evidence.cases.push({ id, beforeScrollTop: before, afterScrollTop: after, clicked: true });
+      await page.screenshot({ path: join(out, `scroll-fixture-${id}-after.png`) });
+    }
+    evidence.valid = true; return evidence;
+  } finally { await context.close(); }
+}
 async function fullSnapshot(page, out, label) {
   const json = await page.evaluate(() => JSON.stringify(window.__FEUDAL_PHASE10_PROOF__.state()));
   writeFileSync(join(out, `${label}.json`), json, { flag: 'wx' });
@@ -256,6 +279,7 @@ async function main() {
   try {
     owned = await startOwnedServer(url, out); evidence.server = owned.provenance;
     browser = await (await loadChromium()).launch({ headless: true, channel: 'chrome' });
+    evidence.scrollFixture = await verifyNormalScrollInput(browser, out);
     await capture(browser, item, out, url, evidence);
     check(git('rev-parse', 'HEAD') === revision && git('status', '--porcelain') === '' && owned.server.exitCode === null, 'Source/server changed');
     evidence.valid = evidence.tenSelected === true && evidence.progressAtTen === true
