@@ -214,13 +214,15 @@ const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice, .season-le
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
-  { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [], data: "seed 1 stone town: date, population, food, coin" },
+  // WEL-D1: the pill opens with the mode's tag ("직접 짓기" here) — it hides first when the pill has no room (tests/hudModeTag.test.ts).
+  { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [],
+    data: "seed 1 stone town: the mode's tag, date, population, food, coin" },
   // WEL-D1: a sandbox started from the title as a player does (the mode, the house's start) — the welcome stays closed
-  // over the game it started (the start remounts the app); its pill is the game's.
+  // over the game it started (the start remounts the app); its pill is the game's and says 직접 짓기.
   { id: "hud.status-pill.sandbox", root: ".status-pill", frame: "css", scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario='core:sandbox']" }, { wait: ".welcome-house" }, { click: "[data-house-start]" },
       { wait: ".status-pill", timeout: 30_000 }, { pause: 2_500 }], requires: [".status-pill-date"],
-    data: "a new sandbox from the title: date, population, food, coin, the welcome closed" },
+    data: "a new sandbox from the title: the mode's tag (the building words), date, population, food, coin, the welcome closed" },
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
   { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], requires: [".speed-seal-mark .speed-seal-step"],
