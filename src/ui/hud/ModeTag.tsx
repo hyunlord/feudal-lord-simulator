@@ -1,10 +1,22 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 import { SealMark } from "../brand/SealMark";
 import { Tooltip } from "../kit";
 import { UiIcon } from "../UiIcon";
 import { HUD_ART, HudArt } from "./hudArt";
 import { HUD_COPY } from "./hudCopy.ko";
+
+/** The room the pill keeps from the speed seals (the audit's gap). */
+export const MODE_TAG_GAP_PX = 8;
+
+/**
+ * WEL-D1 (user 2026-10-11: "자리가 모자라면 꼬리표가 가장 먼저 숨는다"): whether the tag has room — the pill (with the tag when
+ * it shows, without it when hidden) and the gap before the speed seals. The pill's other cells never shrink or wrap.
+ */
+export function modeTagFits(input: { readonly pillRight: number; readonly tagWidth: number; readonly sealsLeft: number; readonly shown: boolean }): boolean {
+  const right = input.shown ? input.pillRight : input.pillRight + input.tagWidth;
+  return right + MODE_TAG_GAP_PX <= input.sealsLeft;
+}
 
 /** The widths where the tag is its picture alone (the stylesheet's own break: 1100 px and narrower). */
 const NARROW = "(max-width: 1100px)";
@@ -29,11 +41,31 @@ function useNarrow(): boolean {
 export function ModeTag({ lord }: { readonly lord: boolean }) {
   const narrow = useNarrow();
   const [tip, setTip] = useState(false);
+  // No room before the speed seals (a long translation, extreme numbers at 1024): the tag hides first; the pill's name
+  // still says the mode. Re-read as the pill's numbers or the window change.
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const width = useRef(0);
+  const [room, setRoom] = useState(true);
+  useLayoutEffect(() => {
+    const tag = ref.current; const pill = tag?.closest(".status-pill");
+    if (tag === null || pill === null || pill === undefined) return undefined;
+    const check = () => {
+      const seals = document.querySelector(".hud-time-cluster");
+      if (seals === null) return;
+      if (!tag.hidden) width.current = tag.getBoundingClientRect().width;
+      setRoom(modeTagFits({ pillRight: pill.getBoundingClientRect().right, tagWidth: width.current, sealsLeft: seals.getBoundingClientRect().left, shown: !tag.hidden }));
+    };
+    check();
+    const observer = new ResizeObserver(check);
+    observer.observe(pill);
+    window.addEventListener("resize", check);
+    return () => { observer.disconnect(); window.removeEventListener("resize", check); };
+  }, [narrow]);
   const tipId = useId();
   const words = HUD_COPY.mode[lord ? "lord" : "build"];
   const shown = narrow && tip;
   return (
-    <span className="status-pill-mode" data-mode={lord ? "lord" : "build"} role="img" aria-label={words} tabIndex={narrow ? 0 : -1}
+    <span ref={ref} hidden={!room} className="status-pill-mode" data-mode={lord ? "lord" : "build"} role="img" aria-label={words} tabIndex={narrow && room ? 0 : -1}
       aria-describedby={shown ? tipId : undefined} onPointerMove={() => setTip(true)} onPointerLeave={() => setTip(false)}
       onFocus={event => { if (event.currentTarget.matches(":focus-visible")) setTip(true); }} onBlur={() => setTip(false)}
       onPointerDown={() => setTip(open => !open)}>

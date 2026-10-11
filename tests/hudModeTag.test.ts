@@ -13,6 +13,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { StatusPill } from "../src/ui/hud/HudShell";
 import { HUD_COPY } from "../src/ui/hud/hudCopy.ko";
+import { MODE_TAG_GAP_PX, modeTagFits } from "../src/ui/hud/ModeTag";
 import { statusPillModel } from "../src/ui/hud/statusPillModel";
 import { DEFAULT_HOUSE_CHOICE } from "../src/ui/houseChoice";
 import { landStartCommand } from "../src/ui/landChoice";
@@ -48,5 +49,21 @@ test("the tag is the pill's first child and no control; the cells keep their ord
     assert.doesNotMatch(markup, /<button[^>]*status-pill-mode/);
     const cells = [...markup.matchAll(/<button[^>]*class="([^"]*status-pill-cell[^"]*)"/g)].map(match => match[1]!);
     assert.match(cells[0]!, /status-pill-date/, "the date stays the first cell");
+  }
+});
+
+test("no room before the speed seals: the tag hides first — the pill's name still says the mode, its other cells unchanged", () => {
+  // render-HUDMODE-pill-9ac5ee0, lord mode at 1024 × 768, the long copy, extreme numbers: without the tag the pill ends at
+  // 766 px, with its picture at 811; the seals begin at 778 (the gap 8).
+  assert.equal(MODE_TAG_GAP_PX, 8);
+  assert.equal(modeTagFits({ pillRight: 811, tagWidth: 45, sealsLeft: 778, shown: true }), false, "shown, it reaches the seals: it hides");
+  assert.equal(modeTagFits({ pillRight: 766, tagWidth: 45, sealsLeft: 778, shown: false }), false, "hidden, it would still not fit: it stays hidden");
+  assert.equal(modeTagFits({ pillRight: 593, tagWidth: 45, sealsLeft: 778, shown: true }), true, "the usual numbers at 1024: it shows");
+  assert.equal(modeTagFits({ pillRight: 548, tagWidth: 45, sealsLeft: 778, shown: false }), true, "room again (the numbers fell): it comes back");
+  assert.equal(modeTagFits({ pillRight: 725, tagWidth: 45, sealsLeft: 778, shown: false }), true, "exactly the gap left: it shows");
+  assert.equal(modeTagFits({ pillRight: 726, tagWidth: 45, sealsLeft: 778, shown: false }), false, "a pixel into the gap: it stays hidden");
+  for (const [scenario, mode] of [[LORD_SLICE_SCENARIO_ID, "lord"], [SANDBOX_SCENARIO_ID, "build"]] as const) {
+    const markup = pill(started(scenario));
+    assert.ok(markup.includes(`aria-label="${HUD_COPY.pillWithMode(HUD_COPY.mode[mode])}" data-mode="${mode}"`), scenario);
   }
 });

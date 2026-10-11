@@ -648,6 +648,7 @@
   position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 6px;
   font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); white-space: nowrap; cursor: default;
 }
+.app-shell .status-pill-mode[hidden] { display: none; }
 .app-shell .status-pill-mode + .status-pill-cell { border-left: 1px solid var(--palette-parchment-dark); }
 .app-shell .status-pill-mode-icon { display: none; }
 .app-shell .status-pill-mode-icon .seal-mark, .app-shell .status-pill-mode-icon .ui-icon { display: block; }
