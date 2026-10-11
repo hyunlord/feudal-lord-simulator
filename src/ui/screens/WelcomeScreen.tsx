@@ -164,12 +164,20 @@ export function welcomeClickCloses(input: { readonly continueLine: string | null
 }
 
 /**
- * WELCOME-MODE (user 2026-10-11): the welcome opens on every load for a player — a player who once closed it and has no
- * save to continue landed in the default state (no town agency: nothing built itself) without choosing a mode. Only a
- * scripted run that stored the dismissal (the phase 8 / 10 proofs) starts without it.
+ * WELCOME-MODE (user 2026-10-11): the welcome opens on every page load for a player — a player who once closed it and has
+ * no save to continue landed in the default state (no town agency: nothing built itself) without choosing a mode. Only a
+ * scripted run that stored the dismissal (the phase 8 / 10 proofs) starts without it. Once closed in this page it stays
+ * closed: a start remounts the whole app (the store's `sessionKey`), and App's first state is read again then — without
+ * this the welcome came back after every mode press (the start it had just made).
  */
-export function welcomeOpensOnLoad(dismissedBefore: boolean, scripted: boolean): boolean {
-  return !(dismissedBefore && scripted);
+export function welcomeOpensOnLoad(dismissedBefore: boolean, scripted: boolean, closedInPage: boolean = welcomeClosedInPage()): boolean {
+  return !closedInPage && !(dismissedBefore && scripted);
+}
+
+/** Whether the welcome was closed since the page loaded (a mode's start, 이어하기, a scripted click). */
+let closedInPage = false;
+export function welcomeClosedInPage(): boolean {
+  return closedInPage;
 }
 
 /** A scripted run: the proof query or a pinned new-game number (scripts and replays; a player never passes either). */
@@ -184,5 +192,6 @@ export function readWelcomeDismissed(): boolean {
 }
 
 export function writeWelcomeDismissed(): void {
+  closedInPage = true;
   platformServices().preferences.set(WELCOME_DISMISSED_KEY, "1");
 }
