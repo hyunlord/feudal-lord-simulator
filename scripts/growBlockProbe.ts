@@ -20,6 +20,8 @@ import { constructionDeliveryNeed } from "../src/economy/construction";
 import { evaluateEraRequirements } from "../src/engine/era";
 import { annualWheatNeed } from "../src/engine/autoplayArable";
 import { expectedAnnualWheat } from "../src/zones/arableOutlook";
+import { arableLayouts, stripTending } from "../src/zones/arableFields";
+import { houseHasFood } from "../src/population/houseFood";
 import { housingLotCount } from "../src/population/housing";
 import { houseRequirementRows } from "./autoplayStallProbe";
 import { lordBotCommands } from "../src/engine/lordBot";
@@ -76,7 +78,24 @@ function wheat(state: GameState) {
   const lots = housingLotCount(state);
   const expected = expectedAnnualWheat(state);
   const need = annualWheatNeed(state);
-  return { arable, lots, expected, need, perCell: arable > 0 ? Math.round(expected / arable * 10) / 10 : null, needPerLot: lots > 0 ? Math.round(need / lots) : null };
+  // The strips a barley farmstead tends (ale), and those a wheat farmstead tends.
+  const layouts = arableLayouts(state);
+  const tending = stripTending(state, layouts);
+  const barleyFarms = new Set(state.buildings.filter(building => building.crop === "barley").map(building => building.id));
+  let barley = 0; let wheatCells = 0;
+  for (const strip of layouts.flatMap(layout => layout.strips)) {
+    const farm = tending.get(strip.id)?.farmsteadId ?? null;
+    if (farm === null) continue;
+    if (barleyFarms.has(farm)) barley += strip.cells.length; else wheatCells += strip.cells.length;
+  }
+  return { arable, lots, expected, need, barley, wheatCells, perWheatCell: wheatCells > 0 ? Math.round(expected / wheatCells * 10) / 10 : null,
+    barleyShare: arable > 0 ? Math.round(barley / arable * 1000) / 1000 : null, margin: need > 0 ? Math.round(expected / need * 1000) / 1000 : null,
+    perCell: arable > 0 ? Math.round(expected / arable * 10) / 10 : null, needPerLot: lots > 0 ? Math.round(need / lots) : null };
+}
+
+/** A season short of food: some home with residents has no bread at the season's end. */
+function shortOfFood(state: GameState): boolean {
+  return state.houses.some(house => house.residents > 0 && !houseHasFood(house));
 }
 
 function row(state: GameState, year: number) {
@@ -108,7 +127,7 @@ function writeState(dir: string, name: string, state: GameState) {
 export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number })[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number })[] = [];
   let lastYear = start;
   // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
   const seenSites = new Set<string>();
@@ -117,12 +136,14 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
   let abandonedBy: Record<string, number> = {};
   let replaced = 0;
   let charterTick: number | null = null;
+  let shortSeasons = 0;
   const saved = new Set<string>();
   const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
     if (saveDir !== undefined && !saved.has(key)) { saved.add(key); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
   while (stateCalendar(state).year < start + years) {
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
+    if (state.tick % 1_000 === 0 && shortOfFood(state)) shortSeasons += 1;
     if (charterTick === null && state.era !== "hamlet") charterTick = state.tick;
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.season) saveOnce("charter-season");
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.years) saveOnce("charter-5y");
@@ -136,7 +157,7 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
       if (isBuildingConstructionSite(site) && abandonedSpots.some(spot => spot.kind === site.kind && spot.tx === site.tx && spot.ty === site.ty)) replaced += 1;
     }
     const year = stateCalendar(state).year;
-    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced }); abandonedBy = {}; replaced = 0; }
+    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons }); abandonedBy = {}; replaced = 0; shortSeasons = 0; }
   }
   saveOnce("final");
   const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
