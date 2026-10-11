@@ -87,6 +87,11 @@ export type StoryBeat = Readonly<{
   lasting?: true;
   /** DEC-CARD-2: the chronicle record the card's [연대기에서 보기] opens on (the decision a consequence followed from). */
   chronicle?: Readonly<{ recordId: string; tick: number; label: string }>;
+  /** CHIP-FOLD (user 2026-10-11): the cause this beat's chip folds by with others of the same cause (a decision's
+   * consequences season after season, the same subject decided again), and the folded chip's title. */
+  fold?: Readonly<{ key: string; title: string }>;
+  /** CHIP-FOLD: the ids a folded chip stands for (storyChips sets it; putting the chip away puts them all away). */
+  folded?: readonly string[];
 }>;
 
 /** The modal a decision beat's [결정하기] opens. */
@@ -239,7 +244,7 @@ function actualBeats(state: GameState): readonly StoryBeat[] {
 function traceBeats(state: GameState): readonly StoryBeat[] {
   const season = Math.floor(state.tick / SEASON);
   return traceNews(state).map(news => ({ id: `trace:${news.decisionId}:${season}`, kind: "decision_trace", illustration: null, tile: null, decision: null,
-    title: news.title, line: news.line, facts: news.facts, advice: RESULTS_COPY.trace.advice,
+    title: news.title, line: news.line, facts: news.facts, advice: RESULTS_COPY.trace.advice, fold: news.fold,
     chronicle: { recordId: news.decisionId, tick: news.decisionTick, label: RESULTS_COPY.trace.openLabel(news.title) } }));
 }
 
