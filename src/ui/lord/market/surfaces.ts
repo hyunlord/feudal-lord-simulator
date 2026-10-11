@@ -12,12 +12,12 @@ const YEARS = marketScene("market-years");
 /** The goal slot's settlement progress opened (the era console inside it), as the registry's ERA_CONSOLE_OPEN. */
 const ERA_CONSOLE_OPEN: readonly OpenStep[] = [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }];
 const HOST = { root: ".slot-panel.lord-screen", frame: "css", scrollParts: [".lord-screen-nav", ".lord-screen-content"] } as const;
-/** market-years with the story's chips coming after a delay that outlasts the scene's setup (GEO-D1). */
-const CHIPS_YEARS = marketScene("market-years", "&story-delay=8000");
-/** The chips come (a first wait past the delay); a card or a chapter's page that opened by itself is put off (kept for later). */
-const CHIPS_COME: readonly OpenStep[] = [{ wait: ".event-chip", timeout: 90_000 }, { wait: ".story-modal, .chronicle-page", timeout: 20_000, optional: true },
+/** market-years with the story's chips after the lord2 rows' 3 s delay (the scene's Esc no longer puts a card away, GEO-D2). */
+const CHIPS_YEARS = marketScene("market-years", "&story-delay=3000");
+/** The chips come; a card or a chapter's page that opened by itself is put off (kept for later). */
+const CHIPS_COME: readonly OpenStep[] = [{ wait: ".event-chip", timeout: 30_000 }, { wait: ".story-modal, .chronicle-page", timeout: 20_000, optional: true },
   { dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later"] }];
-const chipCard = (head: string, firstWait = 90_000): readonly OpenStep[] => [{ wait: `.event-chip[data-chip-id^='${head}']`, timeout: firstWait }, ...CHIPS_COME.slice(1), { pause: 400 },
+const chipCard = (head: string): readonly OpenStep[] => [{ wait: `.event-chip[data-chip-id^='${head}']`, timeout: 30_000 }, ...CHIPS_COME.slice(1), { pause: 400 },
   { click: `.event-chip[data-chip-id^='${head}']` }, { pause: 600 }];
 const LEDGER_LORD: readonly OpenStep[] = [{ click: "[data-dock='ledger']" }, { click: "[data-ledger-tab='lord']" }, { pause: 500 }];
 
@@ -44,8 +44,8 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
     data: "the estates screen four years after the proclamation: the totals, the attention, the estates held, the home card" },
   { id: "lord.ledger.market", ...HOST, scene: YEARS, open: openLordScreen("ledger"), requires: [".lord-ledger-book", ".lord-ledger-suit", ".lord-ledger-defence"],
     siblingsNoOverlap: [".lord-ledger-suit"], data: "the ledger four years after the proclamation: the promises, four closed suits and a house's suit against the lord at its evidence stage, his defence" },
-  // The chips the states hold, and their cards: each chip comes after the story's delay, which outlasts the scene's setup,
-  // and the first wait outlasts the delay (GEO-D1); a card that opened by itself is put off first.
+  // The chips the states hold, and their cards: each chip comes after the story's delay (GEO-D1's 8 s / 90 s back to 3 s /
+  // 30 s, checked under load, GEO-D3); a card that opened by itself is put off first.
   { id: "hud.event-chips.market", root: ".event-cards", frame: "flat", scene: CHIPS_YEARS, open: [...CHIPS_COME, { pause: 500 }],
     requires: [".event-chip[data-chip-id^='suit-defence:']", ".event-chip[data-chip-id^='lord-moment:']"],
     data: "four years after the proclamation, the rail's chips: a house's suit against the lord, the lord's moment, the last decision's trace" },
@@ -62,7 +62,7 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
   // The scene's Esc is only for the welcome and a pause menu (GEO-D2), so the famine's chip needs no delay past the setup:
   // the hamlet famine rows' 5 s delay and an ordinary 30 s first wait (was GEO-D1's 8 s / 90 s).
   { id: "hud.event-card.famine.market", root: ".event-card[data-chip-id^='famine:']", frame: "css", scene: marketScene("market-proclaimed", "&story-delay=5000"),
-    open: chipCard("famine:", 30_000), scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"],
+    open: chipCard("famine:"), scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"],
     data: "a season after the proclamation, the great famine's chip (1315–17, the bot's answer given) as its card: its line, until when" },
   // The treaty's parts draw once their pictures load (uiPartArt), and the frame's inset moves the clauses as they do: the
   // row waits for them (on a loaded DGX one cell was measured before and painted after — render-MARKET-geometry-f09f0de).
