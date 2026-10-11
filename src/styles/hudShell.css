@@ -650,11 +650,10 @@
 }
 .app-shell .status-pill-mode + .status-pill-cell { border-left: 1px solid var(--palette-parchment-dark); }
 .app-shell .status-pill-mode-icon { display: none; }
-.app-shell .status-pill-mode-tip { display: none; }
 .app-shell .status-pill-mode-icon .seal-mark, .app-shell .status-pill-mode-icon .ui-icon { display: block; }
 @media (max-width: 1100px) {
   .app-shell .status-pill-mode { min-width: 44px; padding: 0 6px; }
   .app-shell .status-pill-mode-words { display: none; }
   .app-shell .status-pill-mode-icon { display: inline-flex; }
-  .app-shell .status-pill-mode-tip { display: block; position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
+  .app-shell .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
 }

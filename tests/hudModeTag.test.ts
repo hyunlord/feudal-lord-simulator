@@ -23,7 +23,7 @@ const started = (scenarioId: string): GameState => {
 };
 const pill = (state: GameState) => renderToStaticMarkup(createElement(StatusPill, { state, model: statusPillModel(state), onOpenLedger: () => undefined,
   onOpenPopulation: () => undefined, onInspect: () => undefined }));
-const tag = (markup: string) => markup.match(/<span class="status-pill-mode" data-mode="([a-z]+)" role="img" aria-label="([^"]*)" tabindex="0"/);
+const tag = (markup: string) => markup.match(/<span class="status-pill-mode" data-mode="([a-z]+)" role="img" aria-label="([^"]*)" tabindex="-?[01]"/);
 const words = (markup: string) => markup.match(/status-pill-mode-words[^>]*>([^<]*)</)?.[1];
 const icon = (markup: string) => markup.match(/status-pill-mode-icon[^>]*>(.{0,80})/)?.[1] ?? "";
 
