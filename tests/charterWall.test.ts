@@ -163,3 +163,24 @@ test("GROW-BLOCK-2a ①: the town's request carries the wall the proclamation ru
   const granted = lordBotCommands(botTick).find(move => move.kind === "town_request");
   assert.deepEqual(granted?.command, { type: "confirm_palisade_proclamation", candidatePath: request.candidatePath });
 });
+
+test("GROW-BLOCK-2a growthBlock: why the lord's town is not growing now, and the lord's existing lever (null when there is none)", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { readFileSync } = await import("node:fs");
+  const { decodeSave } = await import("../src/save/saveCodec");
+  const { growthBlock } = await import("../src/engine/growthBlock");
+  const load = (file: string) => decodeSave(new Uint8Array(gunzipSync(readFileSync(file)))).envelope.state as GameState;
+  // Seed 20 in 1316: the town found the wall and asks the lord — his lever is the request.
+  assert.deepEqual(growthBlock(load("fixtures/charter/seed20-1316-asked.save.json.gz")), { reason: "charter_asked", detail: null, since: null, lever: { kind: "answer_request" } });
+  // Seed 9 (old opening) after its failed search: the wall not found — his lever is his own drawing.
+  let nine = load("fixtures/charter/seed9-1319.save.json.gz");
+  for (let tick = 0; tick < 1_200 && nine.agency!.charterWallFailure === undefined; tick += 1) nine = advanceTick(nine);
+  assert.deepEqual(growthBlock(nine), { reason: "wall_not_found", detail: "buildings", since: null, lever: { kind: "draw_wall" } });
+  // The opening: the charter's timber stock unmet — the lord can buy timber.
+  const opening = lordGame();
+  const timber = growthBlock({ ...opening, population: 600, houses: opening.houses });
+  assert.ok(timber === null || timber.reason === "era_condition");
+  // Outside lord mode, nothing.
+  const { agency: _agency, ...sandbox } = opening;
+  assert.equal(growthBlock(sandbox as GameState), null);
+});
