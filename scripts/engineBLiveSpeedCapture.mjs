@@ -182,6 +182,9 @@ async function capture(browser, item, out, url, evidence) {
         await fullSnapshot(page, out, `transition-${evidence.transitions.length}`); lastSignature = signature;
       }
       if (observation.ten && observation.tick > priorTick) evidence.progressAtTen = true;
+      if (evidence.manualAdmission === 'first_exact_receipt' && accumulator.snapshot().receipts.length > 0) {
+        evidence.stop = 'first_exact_receipt_manual_pause'; break;
+      }
       if (accumulator.snapshot().automaticVisible || evidence.threadEvidence.automaticThreadVisible) {
         evidence.stop = accumulator.snapshot().automaticVisible ? 'automatic_exact_receipt_visible' : 'automatic_trace_thread_indicator_visible'; break;
       }
@@ -205,10 +208,15 @@ async function capture(browser, item, out, url, evidence) {
       if (observation.tick === LIMIT) { evidence.stop = 'three_season_bound'; break; }
     }
     evidence.stop ??= 'frame_or_wall_time_bound';
+    const beforePause = await sample(page);
     if (await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed') !== 'true') await press(page, '.speed-seal[data-seal="pause"]', evidence);
+    const afterPause = await sample(page);
+    evidence.manualPause = { beforeTick: beforePause.tick, afterTick: afterPause.tick,
+      paused: afterPause.paused, panels: afterPause.panels, receiptIds: accumulator.snapshot().receipts.map(row => row.id) };
+    check(afterPause.paused, 'Manual navigation requires normal pause control');
     const manualTarget = manualReceiptTarget(accumulator.snapshot(), evidence.threadEvidence);
     if (manualTarget !== undefined) {
-      try { await manualTrace(page, out, evidence, manualTarget, accumulator.snapshot().lastTick); }
+      try { await manualTrace(page, out, evidence, manualTarget, afterPause.tick); }
       catch (error) { evidence.manualDiscovery ??= { attempted: true, verified: false }; evidence.manualDiscovery.error = String(error); }
     }
     evidence.final = await fullSnapshot(page, out, 'final'); delete evidence.final.state;
@@ -235,7 +243,7 @@ async function main() {
   const item = loaded.cases.find(row => row.name === 'ck_evt_005-answer');
   check(item?.pair.decisionId === ANSWER && item.checkpoint.state.tick === START, 'Wrong answer');
   const playwright = playwrightProvenance(); mkdirSync(out);
-  const evidence = { valid: false, sourceRevision: SOURCE, browserRevision: revision, manifestSha256: MANIFEST, input: item.checkpoint.record,
+  const evidence = { valid: false, manualAdmission: process.env.EB_MANUAL_ON_RECEIPT === '1' ? 'first_exact_receipt' : 'after_continuation', sourceRevision: SOURCE, browserRevision: revision, manifestSha256: MANIFEST, input: item.checkpoint.record,
     playwright, changedUiFiles: changes, rawInputStateSha256: sha(JSON.stringify(item.checkpoint.state)),
     expectedPresentationSha256: sha(JSON.stringify(withResidentWalkers(item.checkpoint.state))), manualDiscovery: { attempted: false, verified: false }, informationalContinues: [], actions: [], frames: [], transitions: [], newHistory: [], errors: [], cleanupErrors: [],
     limits: ['New no-bot continuation, not original replay parity.', 'Proof exposes presentation, not raw browser store.',
