@@ -12,7 +12,7 @@ import { LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "../src/content/scen
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { DEFAULT_HOUSE_CHOICE } from "../src/ui/houseChoice";
 import { landStartCommand, type LandChoice } from "../src/ui/landChoice";
-import { WelcomeParchment, welcomeClickCloses, welcomeOpensOnLoad } from "../src/ui/screens/WelcomeScreen";
+import { WelcomeParchment, welcomeClickCloses, welcomeClosedInPage, welcomeOpensOnLoad, writeWelcomeDismissed } from "../src/ui/screens/WelcomeScreen";
 import { TUTORIAL_COPY } from "../src/ui/tutorial/tutorialCopy.ko";
 
 const LAND: LandChoice = { archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 1 };
@@ -35,11 +35,21 @@ test("a player's click outside the buttons closes nothing and starts nothing —
   assert.equal(welcomeClickCloses({ continueLine: "1305년 가을", choosingHouse: false, playable: true, scripted: true }), false);
 });
 
-test("the welcome opens on every load for a player, even one who closed it before; only a scripted run that stored it skips it", () => {
-  assert.equal(welcomeOpensOnLoad(false, false), true);
-  assert.equal(welcomeOpensOnLoad(true, false), true, "a player who once closed it, with no save, still chooses a mode");
-  assert.equal(welcomeOpensOnLoad(false, true), true);
-  assert.equal(welcomeOpensOnLoad(true, true), false);
+test("the welcome opens on every page load for a player, even one who closed it before; only a scripted run that stored it skips it", () => {
+  assert.equal(welcomeOpensOnLoad(false, false, false), true);
+  assert.equal(welcomeOpensOnLoad(true, false, false), true, "a player who once closed it, with no save, still chooses a mode");
+  assert.equal(welcomeOpensOnLoad(false, true, false), true);
+  assert.equal(welcomeOpensOnLoad(true, true, false), false);
+});
+
+test("closed in this page it stays closed: a mode's start remounts the app, and the welcome does not come back over the game it started", () => {
+  assert.equal(welcomeOpensOnLoad(true, false, true), false);
+  assert.equal(welcomeOpensOnLoad(false, false, true), false);
+  // Every close path writes the dismissal (App: a mode's start, a start over a save, 이어하기, a scripted click); the page remembers it.
+  assert.equal(welcomeClosedInPage(), false);
+  writeWelcomeDismissed();
+  assert.equal(welcomeClosedInPage(), true);
+  assert.equal(welcomeOpensOnLoad(true, false), false, "the remounted App reads it closed");
 });
 
 test("영주 모드로 시작 starts with the town's agency; 샌드박스로 시작 without (the player builds)", () => {
