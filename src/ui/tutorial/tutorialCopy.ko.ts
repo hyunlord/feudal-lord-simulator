@@ -66,10 +66,12 @@ export const TUTORIAL_COPY = {
   plotsExpected: (low: number, high: number) => `예상 ${low}~${high}필지`,
   /** LR1-D7: over the default mode (lord mode, foundation §4). */
   modeFirst: "처음이라면 이 모드로",
+  // WELCOME-MODE (user 2026-10-11: a player started the build and "nothing grows or builds by itself"): each line says
+  // who builds — the town by itself in lord mode, the player building by building in the sandbox and the campaign.
   modeLines: {
-    campaign_market_town: "목표를 따라 마을을 시장도시로 키웁니다.",
-    sandbox: "목표와 실패 없이 자유롭게 짓습니다.",
-    lord_slice: "도시는 스스로 짓고, 영주는 방침과 판결로 이끕니다.",
+    campaign_market_town: "건물을 직접 하나하나 짓습니다. 목표를 따라 마을을 시장도시로 키웁니다.",
+    sandbox: "건물을 직접 하나하나 짓습니다.",
+    lord_slice: "도시가 스스로 자랍니다. 영주는 방침과 판결만 내립니다.",
   },
   pickTool: "도구를 고르세요",
   generalCard: { title: (name: string) => name, cta: "조건 보기", arm: (name: string) => `${name} 놓기`, place: (name: string) => `표시한 자리에 ${name} 놓기` },
