@@ -1,0 +1,326 @@
+{
+ "rows": {
+  "console-closed-1280x800": {
+   "state": "offer-countered",
+   "card": {
+    "stage": null,
+    "text": "현재 시대\n촌락\n인구\n12/60\n곡창\n1/1\n예배당\n0/1\n목재\n160/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n목책 둘레는 마을이 잡아 영주에게 청합니다. 선포 조건 3가지가 아직 차지 않았습니다",
+    "primaries": 1,
+    "smallestText": 16,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 965,
+     "width": 274,
+     "right": 1239,
+     "inside": true
+    }
+   },
+   "bytes": 155232,
+   "pass": true
+  },
+  "console-closed-tablet": {
+   "state": "offer-countered",
+   "card": {
+    "stage": null,
+    "text": "현재 시대\n촌락\n인구\n12/60\n곡창\n1/1\n예배당\n0/1\n목재\n160/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n목책 둘레는 마을이 잡아 영주에게 청합니다. 선포 조건 3가지가 아직 차지 않았습니다",
+    "primaries": 1,
+    "smallestText": 16,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 865,
+     "width": 274,
+     "right": 1139,
+     "inside": true
+    }
+   },
+   "bytes": 145922,
+   "pass": true
+  },
+  "plan-waiting-1280x800": {
+   "state": "plan-waiting",
+   "card": {
+    "stage": "waiting",
+    "text": "현재 시대\n촌락\n인구\n12/60\n곡창\n1/1\n예배당\n0/1\n목재\n160/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n목책 둘레는 마을이 잡아 영주에게 청합니다. 선포 조건 3가지가 아직 차지 않았습니다\n인구 12/60\n오두막을 가구들이 짓습니다\n명령 › 장려 구역: 필지를 칠해 두면 마을이 그 안에 짓습니다\n명령 › 장려 구역 열기\n예배당 0/1\n예배당을 교회가 짓습니다\n명령 › 방향: '안정' 방침을 두면 예배당에 점수 +15\n명령 › 방향 열기\n목재 160/250\n벌목소를 가구들이 짓습니다\n명령 › 방향: '방어' 방침을 두면 벌목소에 점수 +10\n명령 › 방향 열기",
+    "primaries": 1,
+    "smallestText": 12,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 44
+     },
+     {
+      "text": "명령 › 장려 구역 열기",
+      "height": 44
+     },
+     {
+      "text": "명령 › 방향 열기",
+      "height": 44
+     },
+     {
+      "text": "명령 › 방향 열기",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 965,
+     "width": 274,
+     "right": 1239,
+     "inside": true
+    }
+   },
+   "bytes": 142307,
+   "pass": true
+  },
+  "plan-waiting-tablet": {
+   "state": "plan-waiting",
+   "card": {
+    "stage": "waiting",
+    "text": "현재 시대\n촌락\n인구\n12/60\n곡창\n1/1\n예배당\n0/1\n목재\n160/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n목책 둘레는 마을이 잡아 영주에게 청합니다. 선포 조건 3가지가 아직 차지 않았습니다\n인구 12/60\n오두막을 가구들이 짓습니다\n명령 › 장려 구역: 필지를 칠해 두면 마을이 그 안에 짓습니다\n명령 › 장려 구역 열기\n예배당 0/1\n예배당을 교회가 짓습니다\n명령 › 방향: '안정' 방침을 두면 예배당에 점수 +15\n명령 › 방향 열기\n목재 160/250\n벌목소를 가구들이 짓습니다\n명령 › 방향: '방어' 방침을 두면 벌목소에 점수 +10\n명령 › 방향 열기",
+    "primaries": 1,
+    "smallestText": 12,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 48
+     },
+     {
+      "text": "명령 › 장려 구역 열기",
+      "height": 44
+     },
+     {
+      "text": "명령 › 방향 열기",
+      "height": 44
+     },
+     {
+      "text": "명령 › 방향 열기",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 865,
+     "width": 274,
+     "right": 1139,
+     "inside": true
+    }
+   },
+   "bytes": 133212,
+   "pass": true
+  },
+  "plan-sites-1280x800": {
+   "state": "plan-sites",
+   "card": {
+    "stage": "sites",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을은 공사장 1곳이 끝나기를 기다렸다가 목책 둘레를 찾습니다\n곡창 공사장 — 1년 1계절째 서 있습니다\n마을이 요즘 접은 공사\n도시가 우물 공사를 접었다 — 1년 동안 길이 닿지 않았다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 965,
+     "width": 274,
+     "right": 1239,
+     "inside": true
+    }
+   },
+   "bytes": 126355,
+   "pass": true
+  },
+  "plan-sites-tablet": {
+   "state": "plan-sites",
+   "card": {
+    "stage": "sites",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을은 공사장 1곳이 끝나기를 기다렸다가 목책 둘레를 찾습니다\n곡창 공사장 — 1년 1계절째 서 있습니다\n마을이 요즘 접은 공사\n도시가 우물 공사를 접었다 — 1년 동안 길이 닿지 않았다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 865,
+     "width": 274,
+     "right": 1139,
+     "inside": true
+    }
+   },
+   "bytes": 118274,
+   "pass": true
+  },
+  "plan-searching-1280x800": {
+   "state": "plan-searching",
+   "card": {
+    "stage": "searching",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다\n\n마을은 주마다 할 일을 정하면서 목책 둘레를 찾습니다. 찾으면 영주에게 시장도시 선포를 청합니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 965,
+     "width": 274,
+     "right": 1239,
+     "inside": true
+    }
+   },
+   "bytes": 125872,
+   "pass": true
+  },
+  "plan-searching-tablet": {
+   "state": "plan-searching",
+   "card": {
+    "stage": "searching",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n선포 조건이 찼습니다. 마을이 목책 둘레를 잡아 청할 차례입니다\n\n마을은 주마다 할 일을 정하면서 목책 둘레를 찾습니다. 찾으면 영주에게 시장도시 선포를 청합니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 865,
+     "width": 274,
+     "right": 1139,
+     "inside": true
+    }
+   },
+   "bytes": 120085,
+   "pass": true
+  },
+  "plan-asked-1280x800": {
+   "state": "plan-asked",
+   "card": {
+    "stage": "asked",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n253/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다\n\n청은 사건 칩 줄의 '시장도시 선포를 기다립니다' 칩에 있습니다. 칩을 눌러 들어주면 마을이 목책 공사를 시작합니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 965,
+     "width": 274,
+     "right": 1239,
+     "inside": true
+    }
+   },
+   "bytes": 127293,
+   "pass": true
+  },
+  "plan-asked-tablet": {
+   "state": "plan-asked",
+   "card": {
+    "stage": "asked",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n253/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 목책 둘레를 잡아 시장도시 선포를 청했습니다. 마을의 청 칩에서 들어주면 마을이 그 둘레로 짓습니다\n\n청은 사건 칩 줄의 '시장도시 선포를 기다립니다' 칩에 있습니다. 칩을 눌러 들어주면 마을이 목책 공사를 시작합니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 865,
+     "width": 274,
+     "right": 1139,
+     "inside": true
+    }
+   },
+   "bytes": 121480,
+   "pass": true
+  },
+  "plan-failed-1280x800": {
+   "state": "plan-failed",
+   "card": {
+    "stage": "failed",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 지난번에 목책 둘레를 찾지 못했습니다\n\n목책이 집들을 장터·교회 마당과 그 길에서 떼어 놓습니다\n\n목책을 두르면 집 2채가 쓰던 마당과 길에서 떨어집니다\n\n떨어지는 집 위치로\n\n2번 잇달아 찾지 못했습니다\n\n내년 봄 초쯤 다시 찾습니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 44
+     },
+     {
+      "text": "떨어지는 집 위치로",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 965,
+     "width": 274,
+     "right": 1239,
+     "inside": true
+    }
+   },
+   "bytes": 126558,
+   "pass": true
+  },
+  "plan-failed-tablet": {
+   "state": "plan-failed",
+   "card": {
+    "stage": "failed",
+    "text": "현재 시대\n촌락\n인구\n447/60\n곡창\n5/1\n예배당\n1/1\n목재\n250/250\n\n선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 54일)\n\n마을의 목책 계획\n마을이 지난번에 목책 둘레를 찾지 못했습니다\n\n목책이 집들을 장터·교회 마당과 그 길에서 떼어 놓습니다\n\n목책을 두르면 집 2채가 쓰던 마당과 길에서 떨어집니다\n\n떨어지는 집 위치로\n\n2번 잇달아 찾지 못했습니다\n\n내년 봄 초쯤 다시 찾습니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "마을의 목책 계획",
+      "height": 48
+     },
+     {
+      "text": "떨어지는 집 위치로",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "box": {
+     "left": 865,
+     "width": 274,
+     "right": 1139,
+     "inside": true
+    }
+   },
+   "bytes": 119670,
+   "pass": true
+  }
+ },
+ "bytes": 1562260,
+ "errors": []
+}

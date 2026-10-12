@@ -23,6 +23,7 @@ import { cpus, loadavg, tmpdir } from "node:os";
 import { otherCpuSample, otherCpuShare } from "./machineLoad";
 import { freePort } from "./freePort";
 import { join } from "node:path";
+import { gitPaths } from "../gitPaths.mjs";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
@@ -117,7 +118,7 @@ const auditError = (text: string) => {
 async function main() {
   const invalid: string[] = [];
   if (process.platform !== "darwin") invalid.push(`이 기계(${process.platform})는 판정하지 않는다: Mac 실제 Chrome 창에서만 판정한다`);
-  const commit = git("rev-parse", "HEAD"); const dirty = git("status", "--porcelain", "--untracked-files=no") !== "";
+  const commit = git("rev-parse", "HEAD"); const dirty = (() => { try { return gitPaths(["status", "--porcelain", "--untracked-files=no"], { cwd: sourceDir }).length > 0; } catch { return false; } })();
   const chrome = run("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", ["--version"]).stdout?.trim() ?? "";
   const model = run("sysctl", ["-n", "hw.model"]).stdout?.trim() ?? "";
   const started = new Date(); const load: number[] = [loadavg()[0] ?? 0];

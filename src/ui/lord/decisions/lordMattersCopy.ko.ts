@@ -1,6 +1,7 @@
 // SUIT-THREAD (Astra lordplay2 ⑦, TOP10 8): the chips of the lord's matters that wait for his answer by a time (the
 // engine's `lordMattersDue`) — the father's will (its chip opens the lord screen's 혼인 page), a suit against the lord
-// and a forcible entry forewarned (theirs open the 약속·소송 page on the suit or the threat). Glossary
+// and a forcible entry forewarned (theirs open the 약속·소송 page on the suit or the threat); PLAY-2 §4: a Michaelmas
+// audit's finding and an off-map estate's petition (theirs open the decision cards). Glossary
 // (docs/design/glossary.md): 강제 점거, 점유 침탈 소송, 최종 합의 ('합의'); dates as "1305년 여름" (rule 5, no days counted).
 
 export const LORD_MATTERS_COPY = {
@@ -22,4 +23,7 @@ export const LORD_MATTERS_COPY = {
   entryComes: (date: string) => `${date}에 들어옵니다`,
   entryOpen: "예고 보기",
   entryAdvice: "약속·소송 화면에서 이 예고에 답합니다. 그대로 두면 판결 없이 점유를 빼앗깁니다.",
+  /** The audit's and the off-map petition's chips: the day they are settled without him (the engine's `dueTick`). */
+  auditDue: (date: string) => `${date}까지 답하지 않으면 눈감아 준 것으로 칩니다.`,
+  petitionDue: (date: string) => `${date}까지 답하지 않으면 기각한 것으로 칩니다.`,
 } as const;

@@ -1,0 +1,11 @@
+# Every night at 01:00 (about 5 hours: done before the day's work). A missed night is not made up (Persistent=false):
+# the gate keeps the last shared result.
+[Unit]
+Description=Feudal Lord Simulator: the nightly full geometry audit timer
+
+[Timer]
+OnCalendar=*-*-* 01:00:00
+Persistent=false
+
+[Install]
+WantedBy=timers.target

@@ -42,7 +42,7 @@ import { FamilyLinks } from "../src/ui/chronicle/FamilyLinks";
 import { buildEraConsoleModel } from "../src/ui/EraConsole";
 import type { StoryBeat } from "../src/ui/eventStory";
 import { storyChips } from "../src/ui/hud/useStoryPresentation";
-import { lordWallGuidance } from "../src/ui/lord/advice/lordWall";
+import { lordWallPlan } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { DECISION_CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
 import { familyPeople } from "../src/ui/persons/familyNews";
@@ -145,22 +145,21 @@ test("PLAY-2 연대기 목록 제목: a card answer's line names the event and t
 
 // --- PLAY-2 items 6–8 (the lead's 2026-10-08 additions, from docs/qa/lordplay2-20261008/TOP10_FRICTION.md 10, 9, 8) ---
 
-test("PLAY-2 friction 10: in lord mode the palisade guidance is the town's line and its request, with the lord's lever — drawing it himself only when the town found none", () => {
-  const unmet = evaluateEraRequirements(lord).find(requirement => !requirement.met)!;
-  const waiting = lordWallGuidance(lord, null)!;
-  assert.equal(waiting.line, LORD_WALL_COPY.waiting(unmet.label, unmet.current, unmet.target));
-  assert.equal(waiting.next, lordLevers(lord, { kind: "houses" })[0], "the population's lever: the houses' (명령 › 장려 구역)");
+test("PLAY-2 friction 10 (GROW-BLOCK since): in lord mode the console's one primary is the town's palisade plan — the conditions with the lord's lever, no drawing button", () => {
+  const unmet = evaluateEraRequirements(lord).filter(requirement => !requirement.met);
+  const plan = lordWallPlan(lord)!;
+  assert.equal(plan.stage, "waiting");
+  assert.equal(plan.line, LORD_WALL_COPY.stage.waiting(unmet.length));
+  const population = plan.conditions.find(condition => condition.key === "population")!;
+  assert.equal(population.lever?.line, lordLevers(lord, { kind: "houses" })[0], "the population's lever: the houses' (명령 › 장려 구역)");
   const model = buildEraConsoleModel({ state: lord, draft: null });
-  assert.deepEqual([model.proposal.visible, model.proposal.label, model.proposal.failure], [true, waiting.line, waiting.next]);
-  assert.doesNotMatch(model.proposal.label, /직접 그어/);
-  const asked = { ...lord, agency: { ...lord.agency!, requests: [{ kind: "proclaim_era" }] } } as unknown as GameState;
-  assert.deepEqual(lordWallGuidance(asked, null), { line: LORD_WALL_COPY.asked, next: null });
+  assert.deepEqual([model.action.label, model.action.reason, model.proposal.visible, model.proposal.recommendEnabled], [LORD_WALL_COPY.plan, plan.line, false, false]);
   // Outside lord mode the sandbox's guidance stays.
   const { agency: _agency, ...sandbox } = lord;
-  assert.equal(lordWallGuidance(sandbox as GameState, null), null);
+  assert.equal(lordWallPlan(sandbox as GameState), null);
 });
 
-test("PLAY-2 friction 9: a birth names the child and both parents, each with a biography button; the marriage's first child in its timeline", () => {
+test("PLAY-2 friction 9: a birth names the child and both parents, each with a biography button; the marriage's first child, its parents named as its record gives them", () => {
   const town = advanceTick(lord);
   const child = town.persons!.people.find(person => person.motherId !== undefined && person.fatherId !== undefined)!;
   const mother = town.persons!.people.find(person => person.id === child.motherId)!;
@@ -174,9 +173,13 @@ test("PLAY-2 friction 9: a birth names the child and both parents, each with a b
   const markup = renderToStaticMarkup(createElement(FamilyLinks, { state: town, record: born, card, onPerson: () => undefined }));
   for (const role of ["child", "mother", "father"]) assert.match(markup, new RegExp(`data-family="${role}"`));
   assert.match(markup, new RegExp(`aria-label="어머니 ${personDisplayName(mother)}의 전기 보기"`));
-  // The marriage's first child: the record names only the bride, so only she is named (no child guessed).
-  const firstChild = familyPeople(town, { template: "marriage.child_born", params: { bride: mother.id }, tick: town.tick });
-  assert.deepEqual(firstChild.map(person => [person.role, person.personId]), [["mother", mother.id]]);
+  // The marriage's first child (PLAY-2 §4): the record names the child and its father beside the bride, so all three are
+  // named (the bot's own record: tests/familyNewsRecords.test.ts); an older record names only the bride, and only she is
+  // named (no child, no father guessed).
+  const firstChild = familyPeople(town, { template: "marriage.child_born", params: { bride: mother.id, child: child.id, father: father.id }, tick: town.tick });
+  assert.deepEqual(firstChild.map(person => [person.role, person.personId]), [["child", child.id], ["mother", mother.id], ["father", father.id]]);
+  const older = familyPeople(town, { template: "marriage.child_born", params: { bride: mother.id }, tick: town.tick });
+  assert.deepEqual(older.map(person => [person.role, person.personId]), [["mother", mother.id]]);
 });
 
 test("PLAY-2 friction 8: a house decision with a deadline stays among the chips until answered — not put away, not pushed out, gone once answered", () => {
@@ -192,7 +195,8 @@ test("PLAY-2 friction 8: a house decision with a deadline stays among the chips 
   assert.ok(!storyChips(entries, current, 10_000, 500, () => false).some(entry => entry.id === will.id), "not due (the adapter's list): put away as closed");
   current.delete(will.id); due.delete(will.id);
   assert.ok(!storyChips(entries, current, 10_000, 500, () => false, due).some(entry => entry.id === will.id), "answered: gone at once");
-  // The chips' ids (lordStoryBeats); SUIT-THREAD: the engine's lordMattersDue and the cards' heads (tests/suitRestScreens.test.ts).
+  // The chips' ids (lordStoryBeats); SUIT-THREAD: the engine's lordMattersDue (tests/suitRestScreens.test.ts; PLAY-2 §4 the
+  // audit and the off-map petition among them, tests/lordMatterDeadlines.test.ts).
   assert.deepEqual([...lordMatterChipIds(lord)], []);
   assert.equal(LORD_MATTER_CHIP.marriage("will_change", "c1"), will.id);
   assert.ok(DECISION_CARDS_COPY.willDeadline(null).length > 0);

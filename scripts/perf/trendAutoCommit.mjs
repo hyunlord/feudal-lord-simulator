@@ -12,6 +12,7 @@ import { existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitPaths } from '../gitPaths.mjs';
 import { git, TRUNK } from '../checks/gitRange.mjs';
 import { checkTrendLag, TREND_LAG_LIMIT } from '../checks/trendLag.mjs';
 
@@ -40,7 +41,7 @@ function run(squashFlag, cwd) {
   const trunk = quiet(['rev-parse', '--verify', '--quiet', `refs/remotes/origin/${TRUNK}`]);
   const trunkInHead = trunk !== null && quiet(['merge-base', '--is-ancestor', trunk, head]) !== null;
   const lag = head === null ? null : checkTrendLag({ head, cwd: top });
-  const dirty = (quiet(['status', '--porcelain', '--', TREND_DIR]) ?? '') !== '';
+  const dirty = (() => { try { return gitPaths(['status', '--porcelain', '--', TREND_DIR], { cwd }).length > 0; } catch { return false; } })();
   const plan = refreshPlan({ branch, squash: squashFlag === '1', trunkInHead, lag: lag?.lag ?? null, dirty });
   if (!plan.refresh) { if (lag?.lag !== null && lag?.lag !== undefined && lag.lag > TREND_LAG_LIMIT) say(`not refreshed — ${plan.reason}`); return; }
   const custom = process.env.FLS_TREND_AUTO_CMD;

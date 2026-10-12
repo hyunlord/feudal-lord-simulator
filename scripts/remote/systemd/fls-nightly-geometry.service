@@ -1,0 +1,11 @@
+# The nightly full geometry audit (scripts/remote/nightlyGeometry.sh, decision RR26). Installed on the DGX as a user unit:
+#   cp scripts/remote/systemd/fls-nightly-geometry.* ~/.config/systemd/user/ && systemctl --user daemon-reload \
+#     && systemctl --user enable --now fls-nightly-geometry.timer
+# It runs the trunk's own copy of nightlyGeometry.sh (read from the mirror), so a change to the script needs no reinstall.
+[Unit]
+Description=Feudal Lord Simulator: the nightly full geometry audit of the trunk head
+
+[Service]
+Type=oneshot
+TimeoutStartSec=infinity
+ExecStart=/bin/bash -c 'B=$HOME/fls-runs; mkdir -p $B/_nightly $B/_locks; ( flock 7; git -C $B/_cache/repo.git fetch -q --prune origin ) 7>$B/_locks/repo-mirror.lock; git -C $B/_cache/repo.git show refs/heads/codex/phase15-organic-ground:scripts/remote/nightlyGeometry.sh > $B/_nightly/nightlyGeometry.sh && exec bash $B/_nightly/nightlyGeometry.sh'

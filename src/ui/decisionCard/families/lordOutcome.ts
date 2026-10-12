@@ -39,13 +39,13 @@ export type LordOutcome = Readonly<{ now: readonly string[]; later: readonly str
 const money = (pennies: number) => pennies > 0 ? COPY.treasuryIn(pennies) : pennies < 0 ? COPY.treasuryOut(-pennies) : COPY.treasurySame;
 
 /** An estate as the ledger screen names it: a neighbour's by its house's Korean reading, else the home estate. */
-function estateWord(state: GameState, estateId: string): string {
+export function estateWord(state: GameState, estateId: string): string {
   const estate = estatesOf(state).estates.find(entry => entry.id === estateId);
   return estate === undefined || !estate.offMap ? WORDS.homeEstate : WORDS.estateName(GENTRY_NAMES_KO[estate.name] ?? estate.name);
 }
 
 /** What a claim or a suit is on: the estate, or one piece of it. */
-function onWhat(state: GameState, estateId: string, pieceId: string | undefined): string {
+export function onWhat(state: GameState, estateId: string, pieceId: string | undefined): string {
   const estate = estatesOf(state).estates.find(entry => entry.id === estateId);
   const piece = pieceId === undefined ? undefined : estate?.pieces.find(entry => entry.id === pieceId);
   return piece === undefined ? COPY.whole(estateWord(state, estateId)) : WORDS.estatePiece(estateWord(state, estateId), WORDS.pieces[piece.kind]);

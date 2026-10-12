@@ -12,6 +12,7 @@
 import { execFileSync, spawnSync } from 'node:child_process';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { gitPaths } from '../gitPaths.mjs';
 import { git, isMain } from './gitRange.mjs';
 
 export const REGISTRY_PATH = 'src/ui/surfaces.registry.ts';
@@ -187,7 +188,7 @@ export function treeReader(root) {
 
 /** Reads git objects at `head` (one cat-file process for all contents). */
 export function gitReader(head, cwd = process.cwd()) {
-  const list = () => git(['ls-tree', '-r', '--name-only', head, '--', 'src/ui', 'src/render', 'src/styles', 'src/App.tsx'], cwd).split('\n').filter(Boolean);
+  const list = () => gitPaths(['ls-tree', '-r', '--name-only', head, '--', 'src/ui', 'src/render', 'src/styles', 'src/App.tsx'], { cwd });
   const cache = new Map();
   const read = path => {
     if (!cache.has(path)) {

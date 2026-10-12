@@ -20,7 +20,8 @@
 //                                                    rows' runs a UI-Geometry-Run trailer names) has only safe-list
 //                                                    changes since it was measured, opened every surface, and has no
 //                                                    failure outside its baseline and exceptions, which only shrink
-//                                                    (UI-AUDIT-1, RR26)
+//                                                    (UI-AUDIT-1, RR26); beside it, recorded only, the measured
+//                                                    judgement a′ (uiGeometryMeasured.mjs shadowStep, RR26 shadow)
 // 10. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
 // 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds
@@ -37,6 +38,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { gitPaths } from '../gitPaths.mjs';
 import { formatBudgetTable, loadBudgetConfig, measureBuild } from './distBudget.mjs';
 import { changedFiles, git, resolveRange } from './gitRange.mjs';
 import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
@@ -45,6 +47,7 @@ import { checkInboxLedger, formatLedgerResult, ledgerOk } from './inboxLedger.mj
 import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
 import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegistry.mjs';
 import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
+import { shadowStep } from './uiGeometryMeasured.mjs';
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 import { checkDecisionIds, formatDecisionIdResult } from './decisionIds.mjs';
 import { checkEvidenceSize, formatEvidenceResult } from './evidenceSize.mjs';
@@ -80,11 +83,13 @@ const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
 const geometry = checkUiGeometry({ base, head });
 report('ui-geometry', geometry.pass, formatUiGeometryResult(geometry));
+// RR26 shadow (user rulings 2026-10-10): a′'s judgement beside the gate's, recorded only — never the verdict.
+console.log(shadowStep({ base, head, gate: geometry, cwd: top }).text);
 const geometryOverride = logWarnOverride(geometry, { top, head }); if (geometryOverride !== null) console.error(geometryOverride);
 console.log(formatOverrideCount(base, head));
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.
-const clean = git(['status', '--porcelain', '--untracked-files=no']).trim() === '';
+const clean = gitPaths(['status', '--porcelain', '--untracked-files=no']).length === 0;
 const atHead = git(['rev-parse', 'HEAD']).trim() === head;
 let work = top; let temporary = null;
 if (!(clean && atHead)) {

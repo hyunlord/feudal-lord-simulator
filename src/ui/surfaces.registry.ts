@@ -14,9 +14,11 @@
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
 import { DECISION_CARD_SURFACES } from "./decisionCard/surfaces";
+import { closeReceipt, RECEIPT_SURFACES } from "./decisionCard/receiptSurfaces";
 import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
+import { MARKET_SURFACES } from "./lord/market/surfaces";
 import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
 import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
@@ -34,7 +36,11 @@ export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "
   // LM-R3: scripts/sliceEndsStates.ts (the lord slice played by the lord bot to its end, ~/fls-slice-end-states).
   | "slice"
   // ER-13: scripts/variantStates.ts (the wording variants' cards, ~/fls-variant-states).
-  | "variants";
+  | "variants"
+  // GROW-BLOCK: scripts/growPlanStates.ts (the palisade plan's stages from the bot's play, ~/fls-growplan-states).
+  | "growplan"
+  // MARKET-TOWN: scripts/marketTownStates.ts (the lord's town after the market charter's proclamation, ~/fls-market-states).
+  | "market";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -142,7 +148,15 @@ const TOWN = { kind: "state", set: "ui5", name: "merchant-town", tile: "house", 
 const TOWN_CLOSE = { ...TOWN, zoom: 1.6 } as const;
 const townAt = (focus: MapTarget) => ({ ...TOWN_CLOSE, focus }) as const;
 const QUIET = "&story-delay=600000";
+/** The goal slot's settlement progress opened (the era console inside it). */
+const ERA_CONSOLE_OPEN: readonly OpenStep[] = [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }];
+/** GROW-BLOCK: the era console's palisade plan opened by its primary (lord mode). */
+const WALL_PLAN_OPEN: readonly OpenStep[] = [...ERA_CONSOLE_OPEN, { click: "[data-wall-plan='open']" }, { pause: 500 }];
+const growPlanScene = (name: string): SceneRef => ({ kind: "state", set: "growplan", name, tile: "house", zoom: 1.1, query: QUIET });
 const DISMISS: OpenStep = { dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"] };
+/** A card the story opened at once (story-delay 0: the first child's state opens a registry offer) is put off before a chip
+ * under it is pressed — the scene setup no longer presses Esc over it (openScene: Esc only for the welcome or a pause menu). */
+const PUT_OFF_FIRST: readonly OpenStep[] = [{ pause: 600 }, DISMISS, { pause: 400 }, DISMISS, { pause: 400 }];
 const LEDGER: OpenStep = { click: "[data-dock='ledger']" };
 const CHRONICLE: readonly OpenStep[] = [LEDGER, { click: ".ledger-tab--chronicle" }, { wait: ".chronicle-screen" }, { pause: 900 }];
 const petitionScene = (set: StateSet, name: string, delay: number) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: `&story-delay=${delay}` }) as const;
@@ -199,7 +213,15 @@ const PAUSE_OPEN: readonly OpenStep[] = [{ wait: ".auto-pause-notice, .season-le
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
-  { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [], data: "seed 1 stone town: date, population, food, coin" },
+  // WEL-D1: the pill opens with the mode's tag ("직접 짓기" here) — it hides first when the pill has no room (tests/hudModeTag.test.ts).
+  { id: "hud.status-pill", root: ".status-pill", frame: "css", scene: TOWN, open: [],
+    data: "seed 1 stone town: the mode's tag, date, population, food, coin" },
+  // WEL-D1: a sandbox started from the title as a player does (the mode, the house's start) — the welcome stays closed
+  // over the game it started (the start remounts the app); its pill is the game's and says 직접 짓기.
+  { id: "hud.status-pill.sandbox", root: ".status-pill", frame: "css", scene: { kind: "title" }, numbers: false,
+    open: [{ click: ".welcome-parchment [data-scenario='core:sandbox']" }, { wait: ".welcome-house" }, { click: "[data-house-start]" },
+      { wait: ".status-pill", timeout: 30_000 }, { pause: 2_500 }], requires: [".status-pill-date"],
+    data: "a new sandbox from the title: the mode's tag (the building words), date, population, food, coin, the welcome closed" },
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
   { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], requires: [".speed-seal-mark .speed-seal-step"],
@@ -231,11 +253,11 @@ export const SURFACES: readonly SurfaceRow[] = [
   // PLAY-2 (friction 9): the first child's moment names the child and the parents; its record opens with their biographies.
   { id: "hud.event-card.family-moment", root: ".event-card[data-story='lord_moment']", frame: "css",
     scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
-    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, ...PUT_OFF_FIRST, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-facts li", ".event-card-chronicle"], data: "the first child: the ledger's sentence, the child and the parents named, the way to the chronicle" },
   { id: "modal.history.family-links", root: ".chronicle-screen", frame: "flat", scrollParts: [".chronicle-list", ".chronicle-detail"],
     scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" },
-    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 },
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, ...PUT_OFF_FIRST, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 },
       { click: ".event-card[data-story='lord_moment'] .event-card-chronicle" }, { wait: ".chronicle-detail [data-family]", timeout: 30_000 }, { pause: 900 }],
     requires: [".chronicle-detail [data-family]"], data: "the first child's record in the chronicle (as modal.history.records: the detail scrolls): a biography button for each person its record names" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
@@ -293,11 +315,22 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.goals.settlement", extends: "slot.goals", root: ".settlement-progress", frame: "flat", scene: TOWN,
     open: [{ click: ".settlement-progress > details > summary" }, { pause: 500 }], data: "the settlement's progress, opened" },
   { id: "slot.goals.era-console", extends: "slot.goals.settlement", root: ".era-console", frame: "flat", scene: TOWN, open: [], data: "the stone town's era console" },
-  // PLAY-2 (friction 10): lord mode's palisade guidance — the town's line and request, the lord's lever (lordWall).
+  // PLAY-2 (friction 10), GROW-BLOCK since: lord mode's era console — its one primary the town's palisade plan (lordWall).
   { id: "slot.goals.era-console.lord", root: ".era-console", frame: "flat",
     scene: { kind: "state", set: "lord2", name: "offer-countered", tile: "house", zoom: 1.1, query: QUIET },
-    open: [{ click: ".goal-drawer-toggle" }, { pause: 600 }, { click: ".settlement-progress > details > summary" }, { pause: 500 }],
-    requires: [".era-requirements", ".era-proposal"], data: "the hamlet's era console in lord mode: the conditions, the town's line and its request, the lord's lever" },
+    open: ERA_CONSOLE_OPEN,
+    requires: [".era-requirements", "[data-wall-plan='open']", ".era-action-reason"], data: "the hamlet's era console in lord mode: the conditions, the plan's primary and where it stands" },
+  // GROW-BLOCK: the plan opened, on the bot's states of each stage (`growplan`: scripts/growPlanStates.ts, ~/fls-growplan-states).
+  { id: "slot.goals.era-console.lord.plan-waiting", root: ".era-console", frame: "flat", scene: growPlanScene("plan-waiting"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", "[data-wall-plan-condition]", "[data-wall-plan-go]"], data: "the plan waiting on a condition: each unmet one, who builds its project, the lord's lever and its way" },
+  { id: "slot.goals.era-console.lord.plan-sites", root: ".era-console", frame: "flat", scene: growPlanScene("plan-sites"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", "[data-wall-plan-site]"], data: "the plan waiting on open building sites: each with its age, and the sites the town gave up" },
+  { id: "slot.goals.era-console.lord.plan-searching", root: ".era-console", frame: "flat", scene: growPlanScene("plan-searching"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", ".era-action-reason"], data: "the plan with every condition met and no site open: the town's turn to find the wall" },
+  { id: "slot.goals.era-console.lord.plan-asked", root: ".era-console", frame: "flat", scene: growPlanScene("plan-asked"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", ".era-action-reason"], data: "the plan with the town's request waiting: answered on its own chip" },
+  { id: "slot.goals.era-console.lord.plan-failed", root: ".era-console", frame: "flat", scene: growPlanScene("plan-failed"), open: WALL_PLAN_OPEN,
+    requires: [".wall-plan", "[data-wall-plan-failure]"], data: "the plan after a failed search: why, the homes cut off, the attempts and the next search" },
   { id: "slot.population", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: TOWN,
     open: [{ click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { pause: 600 }], scroll: "y", data: "the town's population events" },
   { id: "slot.population.panel", extends: "slot.population", root: ".population-event-panel", frame: "flat", scene: TOWN, open: [], data: "the population log inside the slot" },
@@ -376,11 +409,13 @@ export const SURFACES: readonly SurfaceRow[] = [
   // PLAY-2: the famine answered on screen (방관) — its card's line, until when and the bottleneck left (famineAfter).
   { id: "hud.event-card.famine-answered", root: ".event-card[data-story='famine']", frame: "css",
     scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer, then paused
-    // again (Space) so nothing else comes up, and any card that did is put away before the chip.
-    open: [{ story: ".famine-decision" }, { pause: 800 }, { click: ".famine-decision [data-choose='laissez_faire']" }, { key: "Digit1" }, { pause: 1500 },
-      { key: "Space" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 }, { click: ".event-chip[data-story='famine']" },
-      { wait: ".event-card[data-story='famine']", timeout: 10_000 }, { pause: 600 }], scroll: "y",
+    // The scene starts paused and the beats are sampled as the town runs: a moment at 1× after the answer (the speed seals;
+    // Digit1 is an overlay key, and Space started the town again), paused, any card that came up put away, then the chip.
+    open: [{ story: ".famine-decision" }, { pause: 800 },
+      // RECEIPTS-2: the answered card turns over to its receipt first; its [확인] closes it, then the same moment at 1×.
+      { click: ".famine-decision [data-choose='laissez_faire']" }, ...closeReceipt("famine"), { click: ".speed-seal[data-seal='normal']" }, { pause: 1500 },
+      { click: ".speed-seal[data-seal='pause']" }, { pause: 600 }, DISMISS, { wait: ".event-chip[data-story='famine']", timeout: 30_000 },
+      { repeat: ".event-chip[data-story='famine']", until: ".event-card[data-story='famine']", max: 2 }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-actions .ui-btn"], data: "chapter 1's famine after the answer: the line, until when, the bottleneck left" },
   { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
   { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
@@ -584,6 +619,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   ...DECISION_SURFACES,
   // DEC-CARD-2: the standing policies and the season card's steward section (src/ui/lord/steward/surfaces.ts).
   ...STEWARD_SURFACES,
+  // MARKET-TOWN: the lord's screens after the market charter's proclamation (src/ui/lord/market/surfaces.ts, the `market` set).
+  ...MARKET_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
   // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice. Its states are in the `slice` set (scripts/autoPauseStates.ts:
@@ -598,6 +635,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "time run until a suit is judged: the judgment's line with the way to its suit on the ledger screen beside the way on" },
   // ER-13: the home petition's and the registry offer's cards in the canon's variant words (src/ui/decisionCard/surfaces.ts).
   ...DECISION_CARD_SURFACES,
+  // RECEIPTS: the answer's receipt — each heavy card answered on its real state (src/ui/decisionCard/receiptSurfaces.ts).
+  ...RECEIPT_SURFACES,
   // LM-R3 phase 2a: the lord slice's opening page (after the welcome's house step, at the game's first tick: time started)
   // and its end (scripts/sliceEndsStates.ts: the lord bot's seed 3 at the slice's first ended tick; no mark, so no year card
   // opens after the load — the end page does, after the story's delay). TRACE-KEEP: the state played on the engine that keeps

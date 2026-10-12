@@ -23,6 +23,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { arch, cpus, platform, release } from 'node:os';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitText } from './gitPaths.mjs';
 import { loadChromium, openScene, sceneStates, traceMainThreadSplit } from './renderCommitProbe.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -138,7 +139,7 @@ async function main() {
   const output = resolve(flags.output ?? 'docs/verification/b11-render-metrics/baseline');
   await mkdir(output, { recursive: true });
   const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
-  const dirty = execFileSync('git', ['status', '--porcelain', '--untracked-files=no', '--', 'src'], { cwd: ROOT, encoding: 'utf8' }).trim();
+  const dirty = gitText(['status', '--porcelain', '--untracked-files=no', '--', 'src'], { cwd: ROOT }).trim();
   if (dirty !== '' && flags['allow-dirty'] !== 'true') throw new Error(`Dirty src/ in measured checkout:\n${dirty}`);
   const chromium = await loadChromium();
   const cells = flags.matrix === 'b11' ? B11_MATRIX

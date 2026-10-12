@@ -39,6 +39,7 @@ export const FOLDER_WALKS = {
   "tests/touchTargets.test.ts": ["src/styles/", "src/ui/", "src/render/", "src/App.tsx"],
   "tests/uiArtSkin.test.ts": ["src/ui/", "src/styles/", "public/"],       // and that the pictures its CSS names exist
   "tests/uiAuditMoney.test.ts": ["src/ui/", "src/render/"],
+  "tests/uiGeometryShadow.test.ts": [],                                // its readdir lists the shadow records of the throwaway repository it builds
   "tests/wheatFarmRetired.test.ts": ["public/assets/", "src/render/", "fixtures/saves/"],
 };
 

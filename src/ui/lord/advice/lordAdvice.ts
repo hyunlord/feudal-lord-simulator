@@ -72,16 +72,22 @@ export function townStatus(state: GameState, need: TownNeed): string | null {
   return names.length === 0 ? COPY.startedNone : COPY.started(names.join(" · "));
 }
 
-/** What the lord can set for the need, the strongest first: a waiting request, a zone, the policy, a subsidy. */
-export function lordLevers(state: GameState, need: TownNeed): readonly string[] {
+/**
+ * GROW-BLOCK (the palisade plan): a lever with the place on screen where the lord sets it — 명령 › 방향 (the policy and
+ * the subsidies: the ledger's lord tab), 명령 › 장려 구역 (the zone layer), or none (a request answers on its own chip).
+ */
+export type LordLever = Readonly<{ line: string; place: "conditions" | "zone" | null }>;
+
+/** What the lord can set for the need, the strongest first, each with its place: a waiting request, a zone, the policy, a subsidy. */
+export function lordLeverPlaces(state: GameState, need: TownNeed): readonly LordLever[] {
   const agency = state.agency;
   if (!lordMode(state) || agency === undefined) return [];
   const { policy: key, name } = keysOf(need);
-  const levers: string[] = [];
+  const levers: LordLever[] = [];
   // TA-12: while the town holds its buildings for the charter, the lord's answer to its request is what moves it.
-  if (agency.charterSince !== undefined && lordRequests(state).some(action => action.kind === "proclaim_era")) levers.push(COPY.request(COPY.requests.proclaim_era));
-  if (need.kind === "arable") levers.push(COPY.zone(COPY.projects.arable));
-  if (need.kind === "houses") levers.push(COPY.zone(COPY.projects.burgage));
+  if (agency.charterSince !== undefined && lordRequests(state).some(action => action.kind === "proclaim_era")) levers.push({ line: COPY.request(COPY.requests.proclaim_era), place: null });
+  if (need.kind === "arable") levers.push({ line: COPY.zone(COPY.projects.arable), place: "zone" });
+  if (need.kind === "houses") levers.push({ line: COPY.zone(COPY.projects.burgage), place: "zone" });
   const best = POLICIES.map(policy => ({ policy, points: policyWeight(policy, key) })).filter(entry => entry.points > 0)
     .sort((left, right) => right.points - left.points)[0];
   const policyLine = best === undefined ? null : best.policy === agency.policy
@@ -91,8 +97,23 @@ export function lordLevers(state: GameState, need: TownNeed): readonly string[] 
     : subsidy !== undefined ? COPY.subsidyOn(name, moneyFull(subsidy.amount)) : COPY.subsidyOff(name, SUBSIDY_POINTS_PER_10D);
   // A policy already in force is no lever: the subsidy comes first then.
   const ordered = best !== undefined && best.policy === agency.policy ? [subsidyLine, policyLine] : [policyLine, subsidyLine];
-  levers.push(...ordered.filter((line): line is string => line !== null));
+  levers.push(...ordered.filter((line): line is string => line !== null).map(line => ({ line, place: "conditions" as const })));
   return levers;
+}
+
+/** What the lord can set for the need, the strongest first: a waiting request, a zone, the policy, a subsidy. */
+export function lordLevers(state: GameState, need: TownNeed): readonly string[] {
+  return lordLeverPlaces(state, need).map(lever => lever.line);
+}
+
+/**
+ * The need an engine project key names (the town agency's `what`: a building kind, "house" the town's houses; the
+ * engine's ERA_REQUIREMENT_PROJECT gives one per market-charter condition), or null when it names none of the town's projects.
+ */
+export function needOfProject(project: string | null): TownNeed | null {
+  if (project === null) return null;
+  if (project === "house") return { kind: "houses" };
+  return project in BUILDING_CONFIG_BY_KIND ? { kind: "building", building: project as BuildingKind } : null;
 }
 
 /** The lord-mode advice for a need: what the town is doing, then the lord's levers (at most `max` lines). */

@@ -3,7 +3,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
-import { QUIET_ENV, QUIET_GIT, tempDir } from "./helpers/tempRepo";
+import { QUIET_ENV, QUIET_GIT, tempDir, writeKoreanFile, KOREAN_PATH } from "./helpers/tempRepo";
 
 // The trunk's bundled clone names the first bad commit (scripts/remote/tasks.sh trunk-bisect, run by trunkClone.sh):
 // a throwaway repository whose fourth commit breaks a check, with a merge in the range as the trunk has.
@@ -15,6 +15,7 @@ test("trunk-bisect names the first commit where the check fails, across a merge"
   const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, "-c", "user.name=tester", ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
   const commit = (message: string) => { git("add", "-A"); git("commit", "-qm", message); return git("rev-parse", "HEAD"); };
   try {
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk");
     writeFileSync(join(dir, "package-lock.json"), "{}\n"); writeFileSync(join(dir, ".gitignore"), "node_modules\n.remote/\n");
     writeFileSync(join(dir, "value.txt"), "good\n");
@@ -25,7 +26,8 @@ test("trunk-bisect names the first commit where the check fails, across a merge"
     writeFileSync(join(dir, "value.txt"), "bad\n"); commit("EB-C4: BREAKS-IT\n\nConfidence: high");
     writeFileSync(join(dir, "c.txt"), "1\n"); const bad = commit("c5 later");
     mkdirSync(join(dir, "node_modules"));
-    const out = spawnSync("bash", [tasks, "trunk-bisect", good, bad, "--", "grep", "-q", "good", "value.txt"], { cwd: dir, encoding: "utf8" });
+    // The check also needs the fixture's Korean-named file in the bisect tree: a tree that lost it fails at every commit.
+    const out = spawnSync("bash", [tasks, "trunk-bisect", good, bad, "--", "bash", "-c", `test -f "${KOREAN_PATH}" && grep -q good value.txt`], { cwd: dir, encoding: "utf8" });
     assert.equal(out.status, 0, out.stderr);
     // Every session commits as the same git user: the line names the owner from the prefix (user order 2026-10-09).
     assert.match(readFileSync(join(dir, ".remote/bisect.txt"), "utf8"), /^[0-9a-f]{7,} EB-C4: BREAKS-IT \(tester\) — owner: engine B \(Astra\), by its EB- prefix$/m);
@@ -42,6 +44,7 @@ test("the clone notice's owner comes from the commit's prefix and closing lines,
   const commit = (message: string) => { writeFileSync(join(dir, "f.txt"), `${n++}\n`); git("add", "-A"); git("commit", "-qm", message); return git("rev-parse", "HEAD"); };
   const ownerOf = (sha: string) => execFileSync("bash", [owner, sha], { cwd: dir, encoding: "utf8" }).trim();
   try {
+    writeKoreanFile(dir);
     git("init", "-q", "-b", "trunk");
     assert.equal(ownerOf(commit("EB-LME9c-2: ground six more decisions\n\nConfidence: high")), "engine B (Astra), by its EB- prefix");
     assert.equal(ownerOf(commit("RB-HEIGHT-ERA: retain a receipt")), "render B (Astra), by its RB- prefix");

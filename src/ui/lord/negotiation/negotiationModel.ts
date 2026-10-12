@@ -314,6 +314,12 @@ function willDueText(state: GameState, plan: MarriagePlan): string {
   return due === null ? COPY.willDueOpen : COPY.willDue(dateOf(state, due));
 }
 
+/** PLAY-2 §4: the engine's record of the first child (its child and father), else the bride alone (an older game). */
+function childBornRecord(state: GameState, plan: MarriagePlan, tick: number) {
+  return state.history?.records.find(record => record.template === "marriage.child_born" && record.params?.bride === plan.brideId)
+    ?? { template: "marriage.child_born", params: { bride: plan.brideId }, tick };
+}
+
 export function timelineView(state: GameState, plan: MarriagePlan): TimelineView {
   const negotiation = diplomacyOf(state).negotiations.find(entry => entry.id === plan.negotiationId);
   const contracted = negotiation === undefined ? [] : negotiation.counter?.terms ?? negotiation.terms;
@@ -322,7 +328,7 @@ export function timelineView(state: GameState, plan: MarriagePlan): TimelineView
     const tick = plan.events[key];
     // −1: the seed drew no such event (no brother-in-law, no new will).
     if (tick !== undefined && tick >= 0) events.push({ key, tick, date: dateOf(state, tick), text: key === "child_born" // PLAY-2: the child and its parents named
-      ? withFamily(state, { template: "marriage.child_born", params: { bride: plan.brideId }, tick }, COPY.events[key]) : COPY.events[key] });
+      ? withFamily(state, childBornRecord(state, plan, tick), COPY.events[key]) : COPY.events[key] });
   }
   events.sort((a, b) => a.tick - b.tick);
   const details = [

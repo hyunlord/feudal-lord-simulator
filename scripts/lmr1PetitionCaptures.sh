@@ -4,7 +4,7 @@
 # (scripts/lmr1PetitionCaptures.mjs).
 #   scripts/remote/run.sh render-LMR1-petitions-<sha7> -- bash scripts/lmr1PetitionCaptures.sh [out]
 set -u
-out=${1:-docs/verification/lmr1/petitions}
+out=${1:-docs/verification/lmr1-petitions}
 states=${LMR1_PETITION_STATES:-$HOME/fls-lmr1-petition-states}
 states5=${UI5_STATES:-$HOME/fls-ui5-states-v22}
 if [ ! -f "$states/moments.json" ] || [ "${LMR1_REBUILD_STATES:-0}" = 1 ]; then

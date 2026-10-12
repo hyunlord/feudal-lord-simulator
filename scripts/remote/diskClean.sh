@@ -163,7 +163,7 @@ dc__archive_kept() {
   [ -d "$mirror" ] || { echo "== disk: no mirror to look up reports in; _kept/ left as it is"; return 0; }
   ( flock 7; git -C "$mirror" fetch -q origin 2> /dev/null ) 7> "$BASE/_locks/repo-mirror.lock"
   git -C "$mirror" rev-parse -q --verify "refs/heads/$DC_TRUNK" > /dev/null || { echo "== disk: the mirror has no $DC_TRUNK; _kept/ left as it is"; return 0; }
-  named=$(printf '%s\n' "$names" | git -C "$mirror" grep -h -o -F -f - "refs/heads/$DC_TRUNK" 2> /dev/null | sort -u)
+  named=$(printf '%s\n' "$names" | git -C "$mirror" -c core.quotePath=false grep -h -o -F -f - "refs/heads/$DC_TRUNK" 2> /dev/null | sort -u)
   mkdir -p "$BASE/_kept/_archive"
   for name in $names; do
     printf '%s\n' "$named" | grep -qx "$name" && continue

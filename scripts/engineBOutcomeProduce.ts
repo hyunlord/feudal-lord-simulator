@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitPaths } from './gitPaths.mjs';
 import { gzipSync } from 'node:zlib';
 import { BALANCE } from '../src/content/balanceConfig';
 import { LORD_SLICE_SCENARIO_ID } from '../src/content/lordSliceConfig';
@@ -24,13 +25,13 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 function git(...args: string[]): string { return execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim(); }
 function preflight() {
   assert.equal(realpathSync(process.cwd()), realpathSync(root), 'Run from the producer checkout root');
-  assert.equal(git('status', '--porcelain'), '', 'Outcome producer requires a clean committed checkout');
+  assert.equal(gitPaths(['status', '--porcelain'], { cwd: root }).join('\n'), '', 'Outcome producer requires a clean committed checkout');
   const sourceRevision = git('rev-parse', 'HEAD');
   const traceSourceSha256 = verifyOutcomeTaxonomy(readFileSync(join(root, 'src/engine/decisionTrace.ts'), 'utf8'), OUTCOME_COMMAND_KIND);
   const lock = sha(readFileSync(join(root, 'package-lock.json')));
   const toolHashes = Object.fromEntries(['engineBOutcomeProduce.ts', 'engineBOutcomeEvidence.ts', 'engineBOutcomeCollect.ts', 'engineBOutcomeTaxonomy.ts', 'engineBOutcomeArchive.mjs', 'registryDecisionOccurrences.ts']
     .map(name => [name, sha(readFileSync(join(root, 'scripts', name)))]));
-  const sourceFiles = git('ls-files', 'src').split('\n').filter(Boolean).map(path => ({ path, sha256: sha(readFileSync(join(root, path))) }));
+  const sourceFiles = gitPaths(['ls-files', 'src'], { cwd: root }).map(path => ({ path, sha256: sha(readFileSync(join(root, path))) }));
   return { sourceRevision, sourceFiles, traceSourceSha256, toolHashes, source: { revision: sourceRevision, platform: process.platform, node: process.version,
     status: '', lock, expectedLock: lock } };
 }

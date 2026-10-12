@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gitPaths } from "./gitPaths.mjs";
 import { SETTLEMENT_CONFIG } from "../src/content/settlementConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
@@ -45,11 +46,11 @@ export function summarizeCapacityRecovery(observation: {
 function provenance() {
   const root = fileURLToPath(new URL("../", import.meta.url));
   const git = (...args: string[]) => execFileSync("git", args, { cwd: root }).toString();
-  const files = git("ls-files", "--cached", "--others", "--exclude-standard", "-z", "src", "scripts").split("\0").filter(Boolean).sort();
+  const files = gitPaths(["ls-files", "--cached", "--others", "--exclude-standard", "-z", "src", "scripts"], { cwd: root }).sort();
   const hash = createHash("sha256");
   for (const file of files) hash.update(file).update("\0").update(readFileSync(resolve(root, file)));
   return { commit: git("rev-parse", "HEAD").trim(), sourceSha256: hash.digest("hex"), sourceFiles: files.length,
-    dirty: git("status", "--porcelain", "--", "src", "scripts").trim() !== "" };
+    dirty: gitPaths(["status", "--porcelain", "--", "src", "scripts"], { cwd: root }).length > 0 };
 }
 
 export function runPhase19NaturalGrowth(options: {

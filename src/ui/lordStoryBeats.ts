@@ -5,7 +5,7 @@ import { lordMode } from "../engine/townAgency";
 import { dateWord } from "./decisionCard/answerWords";
 import type { StoryBeat } from "./eventStory";
 import { DECISION_CARDS_COPY } from "./lord/decisions/decisionCardsCopy.ko";
-import { auditDecisionHead, marriageDecisionHead, offMapPetitionHead } from "./lord/decisions/decisionCardsModel";
+import { marriageDecisionHead } from "./lord/decisions/decisionCardsModel";
 import { lordMatterBeats } from "./lord/decisions/lordMatterBeats";
 import { LORD_MATTERS_COPY } from "./lord/decisions/lordMattersCopy.ko";
 import { LORD_MATTER_CHIP, lordMatter } from "./lord/decisions/lordMattersDue";
@@ -89,19 +89,10 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: LORD_MATTER_CHIP.marriage(marriage.kind, marriage.claimId), kind: "lord_decision", illustration: null, tile: null, decision: "marriage_decision",
       title: marriage.title, line: marriage.line, facts: [marriage.suit], advice: DECISION_CARDS_COPY.contestOpen });
   }
-  // SUIT-THREAD: a suit against the lord, an entry forewarned (the engine's matters due); a suit's chip stands for its filing's moment.
+  // SUIT-THREAD: a suit against the lord, an entry forewarned (the engine's matters due); a suit's chip stands for its
+  // filing's moment. PLAY-2 §4: the audit's finding and the off-map petition among them (the engine's list, its deadline).
   const matters = lordMatterBeats(state);
   beats.push(...matters);
-  const audit = auditDecisionHead(state);
-  if (audit !== null) {
-    beats.push({ id: LORD_MATTER_CHIP.audit(audit.auditId), kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
-      title: audit.title, line: audit.line, facts: [audit.kicker, audit.waits], advice: DECISION_CARDS_COPY.auditAdvice });
-  }
-  const offMap = offMapPetitionHead(state);
-  if (offMap !== null) {
-    beats.push({ id: LORD_MATTER_CHIP.petition(offMap.petitionId), kind: "lord_decision", illustration: null, tile: null, decision: "estate_petition_offmap",
-      title: offMap.title, line: offMap.line, facts: offMap.why === "" ? [offMap.waits] : [offMap.waits, offMap.why], advice: DECISION_CARDS_COPY.petitionAdvice });
-  }
   // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record. DEC-CARD (A3): a house change's moments
   // (the inheritance, the wardship) are its house card's picture, not chips of their own — one chip stands for the event.
   const folded = houseRecordIds(state);

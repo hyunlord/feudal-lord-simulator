@@ -79,8 +79,10 @@ export const DECISION_CARDS_COPY = {
     `${estate} 전체가 걸려 있습니다.${ours === null ? "" : ` 영주의 청구 힘 ${ours}`}${theirs === null ? "" : `${ours === null ? " " : ", "}상대의 청구 힘 ${theirs}`}${ours === null && theirs === null ? "" : "."}`,
   auditStake: (estate: string, steward: string, disposition: string, faction: string | null) =>
     `${estate}의 장부와, 그 영지를 누구에게 맡길지가 걸려 있습니다. 청지기 ${steward}${josa(steward, "은", "는")} ${disposition} 성향${faction === null ? "입니다" : `이고 ${faction} 쪽 사람입니다`}.`,
-  auditDeadline: (days: number) => `${days}일 안에 답해야 합니다. 답하지 않으면 눈감아 준 것으로 칩니다.`,
+  /** RECEIPTS (user 2026-10-10): the engine's deadline as a season, as the chip says it (lordMattersCopy auditDue); days only without one. */
+  auditDeadline: (date: string | null, days: number) => `${date === null ? `${days}일 안에` : `${date}까지`} 답해야 합니다. 답하지 않으면 눈감아 준 것으로 칩니다.`,
   petitionStake: (estate: string, group: EstatePetition["group"], goodwill: number) =>
     `${estate} ${GROUP[group]}의 마음(지금 호감 ${goodwill})과 영지의 수입이 걸려 있습니다.`,
-  petitionDeadline: (days: number) => `${days}일 안에 답해야 합니다. 답하지 않으면 기각한 것으로 칩니다.`,
+  /** RECEIPTS: as the audit's (lordMattersCopy petitionDue). */
+  petitionDeadline: (date: string | null, days: number) => `${date === null ? `${days}일 안에` : `${date}까지`} 답해야 합니다. 답하지 않으면 기각한 것으로 칩니다.`,
 } as const;

@@ -1,15 +1,14 @@
 import type { GameState } from "../../../engine/engine.types";
 import { lordMattersDue, type LordMatterDue as EngineMatter } from "../../../engine/lordDue";
 import { diplomacyOf } from "../../../engine/negotiation";
-import { auditDecisionHead, offMapPetitionHead } from "./decisionCardsModel";
 
 // PLAY-2 (Astra's second lord-mode play, friction 8: the will's chip was pushed out by newer ones and the will lapsed
 // unanswered): the house's matters that wait for the lord's answer, each by its chip's id. The chips keep these until
 // answered or past (useStoryPresentation `storyChips`). SUIT-THREAD: the matters with a deadline are the engine's
 // (`lordMattersDue`: the father's will with its `dueTick`, the contested inheritance, a suit against the lord with its
-// next stage's tick, a forcible entry forewarned); no deadline rule is computed here. A Michaelmas audit's finding and
-// an off-map estate's petition, which the engine keeps in their own lists, stay among them as before (by the decision
-// cards' heads).
+// next stage's tick, a forcible entry forewarned; PLAY-2 §4: a Michaelmas audit's finding and an off-map estate's
+// petition brought to the lord, by their deadlines); no deadline rule is computed here, and no matter added of the
+// screen's own (decision SUIT-D5's audit and off-map petition now come from the engine's list).
 
 /** The chip id of each matter (lordStoryBeats builds its chips with these). */
 export const LORD_MATTER_CHIP = {
@@ -29,20 +28,14 @@ function chipOf(state: GameState, matter: EngineMatter): string | null {
     }
     case "suit_defence": return LORD_MATTER_CHIP.suit(matter.id);
     case "entry_threat": return LORD_MATTER_CHIP.entry(matter.id);
-    // GROW-BLOCK (engine, an exception in a render file — the renderer takes it over): the engine's list now has these.
     case "audit": return LORD_MATTER_CHIP.audit(matter.id);
     case "estate_petition": return LORD_MATTER_CHIP.petition(matter.id);
   }
 }
 
-/** The chips that stay until answered: the engine's matters due, then the audit's and the off-map petition's. */
+/** The chips that stay until answered: the engine's matters due, each by its chip's id. */
 export function lordMatterChipIds(state: GameState): ReadonlySet<string> {
-  const ids = new Set(lordMattersDue(state).flatMap(matter => { const id = chipOf(state, matter); return id === null ? [] : [id]; }));
-  const audit = auditDecisionHead(state);
-  if (audit !== null) ids.add(LORD_MATTER_CHIP.audit(audit.auditId));
-  const petition = offMapPetitionHead(state);
-  if (petition !== null) ids.add(LORD_MATTER_CHIP.petition(petition.petitionId));
-  return ids;
+  return new Set(lordMattersDue(state).flatMap(matter => { const id = chipOf(state, matter); return id === null ? [] : [id]; }));
 }
 
 /** The engine's matter of a kind with this id (the will's deadline, a suit's next stage, a threat's coming), or null. */

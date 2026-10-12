@@ -110,6 +110,46 @@ test("the keeper lets the session served longest ago go first, one experiment pe
   } finally { b.done(); }
 });
 
+test("the nightly full audit goes last: first in line, it still waits while another session's experiment may go (RR26 covered)", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const b = bench("nightly");
+  try {
+    mkdirSync(join(b.base, "_slots/served"), { recursive: true });
+    writeFileSync(join(b.base, "_slots/served/nightly"), "");   // let in last night: not overdue (never counts as overdue)
+    b.keeper(); await b.until("the keeper writes its status", () => /slot 4 kept for gates/.test(b.status()));
+    b.start("infra-h", "now", "experiment"); await b.until("infra-h goes", () => /== heavy slot 1\/4/.test(b.out["infra-h"] ?? ""));
+    b.start("astra-a", "now", "experiment"); await b.until("astra-a goes", () => /== heavy slot 2\/4/.test(b.out["astra-a"] ?? ""));
+    b.start("engine-e", "now", "experiment"); await b.until("engine-e goes", () => /== heavy slot 3\/4/.test(b.out["engine-e"] ?? ""));
+    b.start("nightly-GEOMETRY-abc", "now", "experiment"); await b.until("the nightly run waits, named last", () => /nightly: nightly-GEOMETRY-abc — the nightly full audit, last of all/.test(b.status()));
+    b.start("render-r", "now", "experiment"); await b.until("render-r waits behind it in line", () => /render \(served never\): render-r/.test(b.status()));
+    b.release("astra-a");                                      // one experiment slot frees: render, though the nightly run came first
+    await b.until("render-r goes", () => /TOOK/.test(b.out["render-r"] ?? ""));
+    assert.doesNotMatch(b.out["nightly-GEOMETRY-abc"] ?? "", /TOOK/);
+    b.release("engine-e");                                     // nobody else may go now: the nightly run
+    await b.until("the nightly run goes", () => /TOOK/.test(b.out["nightly-GEOMETRY-abc"] ?? ""));
+    b.start("engine-gate", "now", "gate"); await b.until("a gate still has slot 4", () => /== heavy slot 4\/4 \(gate line/.test(b.out["engine-gate"] ?? ""));
+  } finally { b.done(); }
+});
+
+test("the nightly full audit cannot starve: not let in for 36 hours, it goes before every other experiment (a gate still first)", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const b = bench("nightly-due");
+  try {
+    mkdirSync(join(b.base, "_slots/served"), { recursive: true });
+    const served = join(b.base, "_slots/served/nightly"); writeFileSync(served, "");
+    const ago = (hours: number) => spawnSync("touch", ["-d", `@${Math.floor(Date.now() / 1000) - hours * 3600}`, served]);
+    ago(37);                                                   // the last nightly run was let in 37 hours ago
+    b.keeper(); await b.until("the keeper writes its status", () => /slot 4 kept for gates/.test(b.status()));
+    b.start("infra-h", "now", "experiment"); await b.until("infra-h goes", () => /== heavy slot 1\/4/.test(b.out["infra-h"] ?? ""));
+    b.start("astra-a", "now", "experiment"); await b.until("astra-a goes", () => /== heavy slot 2\/4/.test(b.out["astra-a"] ?? ""));
+    b.start("engine-e", "now", "experiment"); await b.until("engine-e goes", () => /== heavy slot 3\/4/.test(b.out["engine-e"] ?? ""));
+    b.start("render-r", "now", "experiment"); await b.until("render-r waits", () => /render \(served never\): render-r/.test(b.status()));
+    b.start("nightly-GEOMETRY-def", "now", "experiment"); await b.until("the nightly run is due", () => /nightly: nightly-GEOMETRY-def — the nightly full audit, not let in for 36 hours: before every other experiment/.test(b.status()));
+    b.start("engine-gate", "now", "gate"); await b.until("a gate takes slot 4 first", () => /== heavy slot 4\/4 \(gate line/.test(b.out["engine-gate"] ?? ""));
+    b.release("astra-a");                                      // one experiment slot frees: the overdue nightly run, before render
+    await b.until("the nightly run goes", () => /TOOK/.test(b.out["nightly-GEOMETRY-def"] ?? ""));
+    assert.doesNotMatch(b.out["render-r"] ?? "", /TOOK/);
+  } finally { b.done(); }
+});
+
 test("an older copy goes only when it is first in its line; when the keeper stops, its fences go and every copy follows its own rules", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
   const b = bench("stop");
   try {

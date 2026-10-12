@@ -18,6 +18,7 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/play2Captures.mjs)", { remote: "scripts/remote/run.sh render-PLAY2-captures-<sha7> --light -- bash scripts/play2Captures.sh", entry: import.meta.url });
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 
 const [out] = process.argv.slice(2);
@@ -130,6 +131,8 @@ if (wanted('famine-campaign')) {
     if (modal) {
       row.chose = await click(page, ".famine-decision [data-choose='laissez_faire']");
       await page.waitForTimeout(600);
+      // RECEIPTS-2: the answered famine card turns over to its receipt; [확인] closes it (time stays stopped until then).
+      row.receipt = await closeAnswerReceipt(page);
       row.modalAfter = await visible(page, '.famine-decision');
       // The scene starts paused: the story beats are sampled as the town runs, so the answered card shows once time
       // moves (a player's game resumes as the card closes) — a moment at 1×.
@@ -142,7 +145,7 @@ if (wanted('famine-campaign')) {
         row.bytes = await shoot(page, 'famine-campaign'); bytes += row.bytes;
       }
     }
-    report('famine-campaign', row, (row.card?.text ?? '').includes('남은 병목') && !(row.card?.text ?? '').includes('다음에 바꿀 조건'));
+    report('famine-campaign', row, row.receipt === true && (row.card?.text ?? '').includes('남은 병목') && !(row.card?.text ?? '').includes('다음에 바꿀 조건'));
     await context.close();
   }
 }
@@ -255,11 +258,11 @@ if (wanted('lord-wall')) {
     watch(page, 'lord-wall');
     await click(page, '.goal-drawer-toggle'); await page.waitForTimeout(600);
     await click(page, '.settlement-progress > details > summary'); await page.waitForTimeout(600);
-    const shown = await waitFor(page, '.era-console .era-proposal', 10_000);
-    // The console scrolls inside its slot: the guidance (.era-proposal) brought into view is what is measured.
-    if (shown) { await page.locator('.era-console .era-proposal').first().scrollIntoViewIfNeeded(); await page.waitForTimeout(300); }
-    const row = { state: 'lmr2 offer-countered', shown, card: shown ? await measure(page, '.era-console .era-proposal') : null };
-    if (shown) { row.lines = await page.evaluate(() => [...document.querySelectorAll('.era-console .era-proposal > span')].map(el => el.textContent)); row.bytes = await shoot(page, 'lord-wall'); bytes += row.bytes; }
+    // GROW-BLOCK since: lord mode's guidance is the plan's line under the console's primary (.era-action-reason).
+    const shown = await waitFor(page, '.era-console .era-action-reason', 10_000);
+    if (shown) { await page.locator('.era-console .era-action-reason').first().scrollIntoViewIfNeeded(); await page.waitForTimeout(300); }
+    const row = { state: 'lmr2 offer-countered', shown, card: shown ? await measure(page, '.era-console .era-action-reason') : null };
+    if (shown) { row.bytes = await shoot(page, 'lord-wall'); bytes += row.bytes; }
     const text = row.card?.text ?? '';
     report('lord-wall', row, text.includes('마을이 잡아 영주에게 청합니다') && !text.includes('직접 그어 주세요'));
     await context.close();

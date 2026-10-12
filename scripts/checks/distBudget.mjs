@@ -20,6 +20,7 @@ import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, 
 import { tmpdir } from 'node:os';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitPaths } from '../gitPaths.mjs';
 
 export const CONFIG_PATH = fileURLToPath(new URL('./distBudget.config.json', import.meta.url));
 export const OTHER = 'other';
@@ -269,7 +270,7 @@ async function main() {
   const flag = name => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : undefined; };
   const top = execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
   const sha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: top, encoding: 'utf8' }).trim();
-  const dirty = execFileSync('git', ['status', '--porcelain', '--untracked-files=no'], { cwd: top, encoding: 'utf8' }).trim() !== '';
+  const dirty = gitPaths(['status', '--porcelain', '--untracked-files=no'], { cwd: top }).length > 0;
   const config = loadBudgetConfig();
   let buildMs = null; let result;
   if (argv.includes('--build')) ({ buildMs, result } = measureBuild({ cwd: top, config }));

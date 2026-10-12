@@ -9,6 +9,7 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/deccardCampaignCaptures.mjs)", { remote: "scripts/remote/run.sh render-DECCARD-campaign-<sha7> --light -- bash scripts/deccardCampaignCaptures.sh", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { closeAnswerReceipt } from './answerReceiptPress.mjs';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 
 const [out] = process.argv.slice(2);
@@ -90,17 +91,18 @@ for (const entry of CASES) {
   const shown = opened ? await read(page, entry.card) : null;
   const path = join(out, `${entry.name}.jpg`);
   if (opened) { await page.screenshot({ path, type: 'jpeg', quality: QUALITY }); bytes += statSync(path).size; }
-  // The first answer pressed: the engine records it and the card goes.
+  // The first answer pressed: the engine records it and the card turns over to its receipt (RECEIPTS-2), closed with [확인].
   const before = await proof(page);
   if (opened) { await page.locator(`${entry.card} .decision-card-choose`).first().click(); await page.waitForTimeout(800); }
+  const receipt = opened && await closeAnswerReceipt(page);
   const after = await proof(page);
   const answered = entry.name === 'famine' ? after.famine : after.petitions.find(p => p.response !== null && before.petitions.find(b => b.id === p.id)?.response === null)?.response ?? null;
   const closed = (await page.locator(`${entry.card} >> visible=true`).count()) === 0;
   const ok = opened && shown !== null && shown.choices.length >= 2 && shown.choices.every(choice => choice.parts.length === 3) && shown.primaries === 0 && shown.titled === 0
     && shown.smallestText >= 12 && shown.box.inside && shown.situation !== null && shown.stake !== null && shown.deadline !== null
-    && answered === shown.choices[0].id && closed && (entry.name !== 'ch5-heir_choice' || shown.heirs >= 2) && (entry.name !== 'famine' || shown.steward);
-  rows[entry.name] = { opened, ok, card: shown, answered, closed, treasury: after.treasury - before.treasury, bytes: opened ? statSync(path).size : 0 };
-  console.log(`${ok ? 'ok ' : 'BAD'} ${entry.name}: ${shown?.choices.length} answers in ${shown?.rows} row(s), smallest ${shown?.smallestText}px, body ${JSON.stringify(shown?.body)}, box ${JSON.stringify(shown?.box)}, answered ${answered}, closed ${closed}`);
+    && answered === shown.choices[0].id && receipt && closed && (entry.name !== 'ch5-heir_choice' || shown.heirs >= 2) && (entry.name !== 'famine' || shown.steward);
+  rows[entry.name] = { opened, ok, card: shown, answered, receipt, closed, treasury: after.treasury - before.treasury, bytes: opened ? statSync(path).size : 0 };
+  console.log(`${ok ? 'ok ' : 'BAD'} ${entry.name}: ${shown?.choices.length} answers in ${shown?.rows} row(s), smallest ${shown?.smallestText}px, body ${JSON.stringify(shown?.body)}, box ${JSON.stringify(shown?.box)}, answered ${answered}, receipt ${receipt}, closed ${closed}`);
   await context.close();
 }
 // The widest cards at the smallest view (1024×768): measured, no picture.
@@ -118,7 +120,12 @@ for (const name of SMALL) {
   await context.close();
 }
 await browser.close();
-const ok = Object.values(rows).every(row => row.ok) && bytes <= 600 * 1024;
+// The pictures' budget is per picture (each card's view at quality 50 ≤ 120 KB), so it grows with the cards measured: the
+// first budget (600 KB in all) was set for six cards and the run has eight since the chapter interlude came in — at
+// quality 50 each is 95–106 KB, and a lower quality blurs the cards' text the pictures are for (user 2026-10-10).
+const PICTURE_MAX = 120 * 1024;
+const pictures = Object.values(rows).filter(row => typeof row.bytes === 'number' && row.bytes > 0);
+const ok = Object.values(rows).every(row => row.ok) && pictures.every(row => row.bytes <= PICTURE_MAX) && bytes <= pictures.length * PICTURE_MAX;
 writeFileSync(join(out, 'captures.json'), JSON.stringify({ url, ok, bytes, rows }, null, 1) + '\n');
 console.log(JSON.stringify({ ok, bytes }));
 if (!ok) process.exitCode = 1;

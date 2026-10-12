@@ -104,7 +104,7 @@ import { guidanceSampleKey } from "./ui/hud/guidanceSample";
 import { AppModals } from "./ui/screens/AppModals";
 import { LordScreen } from "./ui/lord/screen/LordScreen";
 import type { LordScreenId } from "./ui/lord/screen/lordScreenTypes";
-import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
+import { readWelcomeDismissed, scriptedRun, WelcomeParchment, welcomeOpensOnLoad, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
 import { DEFAULT_HOUSE_CHOICE, type HouseChoice } from "./ui/houseChoice";
 import { showChapterLoading, useChapterLoading } from "./ui/chapterLoadingStore";
@@ -139,7 +139,7 @@ export function App() {
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [problemOnly, setProblemOnly] = useState(false);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
-  const [welcomeOpen, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
+  const [welcomeOpen, setWelcomeVisible] = useState(() => welcomeOpensOnLoad(readWelcomeDismissed(), scriptedRun()));
   const saveSystem = useSaveSystemContext();
   const welcomeVisible = welcomeOpen || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
@@ -467,7 +467,7 @@ export function App() {
   const startHint = useStartHint();
   // LAND-UI (LU-D7): every start takes the land picked on the welcome; the riverside on map 1 (the default) is today's
   // start exactly, any other land sends its land and seed and gives the tutorial no state (as a start over a save does).
-  // A click anywhere starts the picked land too.
+  // A scripted run's click on the layer closes it too (welcomeClickCloses); a player's never does.
   const dismissWelcome = (land: LandChoice) => {
     if (!saveSystem.offerContinue && !isDefaultLand(land)) { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }
     writeWelcomeDismissed();
@@ -574,6 +574,7 @@ export function App() {
                 onProclaimStoneTown={proclaimStoneTown}
                 onBeginExpansion={beginPalisadeExpansion}
                 onConfirmExpansion={confirmPalisadeExpansion}
+                planCommands={{ onConditions: openConditions, onZones: () => setLayer("zone"), onLookAt: tile => platformServices().input.emit({ kind: "lookAt", tile }) }}
               />
             } />
           </GoalDrawer>

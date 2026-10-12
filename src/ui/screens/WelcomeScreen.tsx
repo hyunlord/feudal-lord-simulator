@@ -16,9 +16,9 @@ import { LandPicker } from "./LandPicker";
 import { wave8ImageStyle, wave8Url } from "../wave8Art";
 
 // CODE-1c (from App): the title screen — the welcome parchment, the saved city on offer, the mode choice.
-// LAND-UI (LU-D7): the land choice above the mode buttons; every start (a mode button, or a click anywhere) takes it.
+// LAND-UI (LU-D7): the land choice above the mode buttons; every start (a mode button; a scripted run's click) takes it.
 // NAT-4: it opens on a random map number (landChoice initialLandChoice); while the number cannot start a game neither
-// the mode buttons nor a click anywhere start one (the picker says why).
+// the mode buttons nor a scripted click start one (the picker says why).
 // LM-R3: the game's logo heads it; a mode button opens the house choice (HouseChoicePanel, every mode: MNR-3), whose
 // start begins the game with the chosen house (de Haverel by default).
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
@@ -50,10 +50,7 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
   const consumeDismissal = (event: MouseEvent | PointerEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    // LR1-D7 (user 2026-10-05): a player starts by a mode button only. A scripted run (the proof query, or a pinned map
-    // number) still closes the welcome by a click on the layer, keeping its injected scene. With a saved city on offer
-    // the choice is always explicit.
-    if (continueLine === null && choosingHouse === null && playable && scriptedRun()) onDismiss(land);
+    if (welcomeClickCloses({ continueLine, choosingHouse: choosingHouse !== null, playable, scripted: scriptedRun() })) onDismiss(land);
   };
   const containKeyboard = (event: ReactKeyboardEvent) => {
     event.stopPropagation();
@@ -157,8 +154,34 @@ function ScenarioModeButtons({ onChoose, playable, withGoal, onGoalChange }: {
   </div>;
 }
 
+/**
+ * LR1-D7 (user 2026-10-05), WELCOME-MODE (2026-10-11): a click outside the buttons starts nothing and closes nothing for a
+ * player — only a mode button (or 이어하기 over a save) does. A scripted run (the proof query, or a pinned map number) still
+ * closes the welcome by a click on the layer, keeping its injected scene; with a saved city on offer never.
+ */
+export function welcomeClickCloses(input: { readonly continueLine: string | null; readonly choosingHouse: boolean; readonly playable: boolean; readonly scripted: boolean }): boolean {
+  return input.scripted && input.continueLine === null && !input.choosingHouse && input.playable;
+}
+
+/**
+ * WELCOME-MODE (user 2026-10-11): the welcome opens on every page load for a player — a player who once closed it and has
+ * no save to continue landed in the default state (no town agency: nothing built itself) without choosing a mode. Only a
+ * scripted run that stored the dismissal (the phase 8 / 10 proofs) starts without it. Once closed in this page it stays
+ * closed: a start remounts the whole app (the store's `sessionKey`), and App's first state is read again then — without
+ * this the welcome came back after every mode press (the start it had just made).
+ */
+export function welcomeOpensOnLoad(dismissedBefore: boolean, scripted: boolean, closedInPage: boolean = welcomeClosedInPage()): boolean {
+  return !closedInPage && !(dismissedBefore && scripted);
+}
+
+/** Whether the welcome was closed since the page loaded (a mode's start, 이어하기, a scripted click). */
+let closedInPage = false;
+export function welcomeClosedInPage(): boolean {
+  return closedInPage;
+}
+
 /** A scripted run: the proof query or a pinned new-game number (scripts and replays; a player never passes either). */
-function scriptedRun(): boolean {
+export function scriptedRun(): boolean {
   if (typeof window === "undefined") return false;
   const query = new URLSearchParams(window.location.search);
   return query.get("phase10-proof") === "1" || query.has("new-game-seed");
@@ -169,5 +192,6 @@ export function readWelcomeDismissed(): boolean {
 }
 
 export function writeWelcomeDismissed(): void {
+  closedInPage = true;
   platformServices().preferences.set(WELCOME_DISMISSED_KEY, "1");
 }

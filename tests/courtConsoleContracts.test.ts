@@ -118,7 +118,8 @@ test("UX-3: the actual app keeps one build drawer (closed at start) and only the
   assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
   // Always on (UX3R section 2): the status pill, the speed, the layer switch and the action dock.
-  assert.match(markup, /<nav class="status-pill" aria-label="마을 상태" data-frame="tooltip">/);
+  // WEL-D1: the pill's name says the mode (its tag may hide for room).
+  assert.match(markup, /<nav class="status-pill" aria-label="마을 상태 · (영주 모드|직접 짓기)" data-mode="(lord|build)" data-frame="tooltip">/);
   assert.match(markup, /aria-label="일시 정지"/);
   assert.match(markup, /aria-label="5배속"/);
   // NAT-4: four seals, the last one fast seal for 5x and 10x (paused: it names 5x; PLAY-2: its mark holds ×5·10, neither on).

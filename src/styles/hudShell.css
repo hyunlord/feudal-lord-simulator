@@ -396,7 +396,15 @@
 .app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }
 
 /* UI-4 event chips and card (not modal): under the crisis bells, top right. */
-.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap)); right: 0; z-index: 5; display: grid; justify-items: end; gap: 6px; }
+.app-shell .event-cards { --event-cards-top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap));
+  position: absolute; top: var(--event-cards-top); right: 0; z-index: 5; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  /* CHIP-FOLD: the chips and the open card stop above the bottom right's dock, however many chips stand over the card
+     (a second chip pushed the famine's card 6 px into the dock at 1280×720): the card shrinks and scrolls instead (a
+     column of flex items shrinks to the box's height; a grid's content-sized row did not). */
+  box-sizing: border-box; max-height: calc(100vh - var(--event-cards-top) - var(--hud-right-bottom)); }
+.app-shell .event-cards > .event-chips { flex: 0 0 auto; }
+/* The squeezed card scrolls; its rows keep their own height (a clipped title or line would shrink to nothing). */
+.app-shell .event-cards > .event-card { flex: 0 1 auto; grid-auto-rows: max-content; }
 .app-shell .event-chips { display: grid; justify-items: end; gap: 4px; }
 .app-shell .event-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 4px; font-size: 13px; font-weight: 600; }
 /* NAT-2 (QA-013): an open panel slot (goal log, population, inspector: 340 px; the ledger: the wide token) holds the top
@@ -408,7 +416,7 @@
   .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: var(--slot-clear); }
 }
 .app-shell .event-chip-art { display: inline-block; flex: 0 0 auto; width: 64px; height: 36px; border: 1px solid var(--palette-ink); }
-.app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); overflow-y: auto; color: var(--palette-ink);
+.app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); min-height: 0; overflow-y: auto; color: var(--palette-ink);
   background-color: var(--palette-vellum); }
 .app-shell .event-card h2 { margin: 0; font-size: 17px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .app-shell .event-card h2.event-card-title--whole { white-space: normal; }
@@ -418,6 +426,13 @@
 .app-shell .event-card-advice { padding: 6px 8px; background-color: var(--palette-parchment); }
 .app-shell .event-card-facts { margin: 0; padding-left: 18px; font-size: 13px; }
 .app-shell .event-card-art { border: 1px solid var(--palette-ink); }
+/* PLAY-2 §4: on a short view a family moment's picture (Wave 40, 296 × 167) is cropped to a 96 px band (cover, centred)
+   so the card with its people named ends above the steward's line and the action dock (render-GROWKIN-geometry-2548cfd:
+   1280 × 720 long names ran 19.5 px under the dock; -d31ed02: 1024 × 768 12.3 px over the steward's line); !important
+   over the picture's own inline height. */
+@media (max-height: 800px) {
+  .app-shell .event-card[data-story='lord_moment']:has(.event-card-facts) .event-card-art { height: 96px !important; }
+}
 .app-shell .event-card-actions { display: flex; flex-wrap: wrap; gap: 4px; }
 .app-shell .event-card-actions button { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; font-size: 13px; }
 
@@ -625,3 +640,21 @@
 .app-shell .qa-overlay-actions { display: flex; gap: 6px; justify-content: flex-end; pointer-events: auto; }
 .app-shell .qa-overlay-copy, .app-shell .qa-overlay-close { min-width: 44px; min-height: 44px; font-size: 13px; }
 @media (pointer: coarse) { .app-shell :is(.qa-overlay-copy, .qa-overlay-close) { min-width: 48px; min-height: 48px; } }
+
+/* WEL-D1 (user 2026-10-11): the mode's tag at the pill's head — its words from 1101 px wide, its picture alone at 1024 and
+   narrower (the whole words in its name and its tooltip); not a button (the pill's buttons keep their order). */
+/* contrast-audit selector=".status-pill-mode" fg="--palette-ink-muted" bg="--palette-vellum" size="12" role="body" */
+.app-shell .status-pill-mode {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 6px;
+  font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); white-space: nowrap; cursor: default;
+}
+.app-shell .status-pill-mode[hidden] { display: none; }
+.app-shell .status-pill-mode + .status-pill-cell { border-left: 1px solid var(--palette-parchment-dark); }
+.app-shell .status-pill-mode-icon { display: none; }
+.app-shell .status-pill-mode-icon .seal-mark, .app-shell .status-pill-mode-icon .ui-icon { display: block; }
+@media (max-width: 1100px) {
+  .app-shell .status-pill-mode { min-width: 44px; padding: 0 6px; }
+  .app-shell .status-pill-mode-words { display: none; }
+  .app-shell .status-pill-mode-icon { display: inline-flex; }
+  .app-shell .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
+}

@@ -1,14 +1,14 @@
 {
  "schema": 1,
- "run": "infra-RR25-full-59bd71c",
- "commit": "59bd71c2f869e3cfe866f6f4be6bf95d80bc489f",
+ "run": "infra-RR26S-full-42df9d6",
+ "commit": "42df9d671808b785024efd06026cb56f380018be",
  "dirty": false,
  "full": true,
  "axesNarrowed": false,
- "inputs": 6152,
- "inputHash": "a7045c732676fec226e3b27531dd24061803c0773f4692b9b37f60cc6a2a0261",
- "measuredAt": "2026-10-09T10:37:45.163Z",
- "report": "docs/verification/uiaudit1/geometry/infra-RR25-full-59bd71c/geometry.json",
+ "inputs": 6157,
+ "inputHash": "e0a3ee6919109cc20775612c8c3062ade57c42b8efb10a3d3de86252656da1f0",
+ "measuredAt": "2026-10-10T04:26:58.073Z",
+ "report": "docs/verification/uiaudit1/geometry/infra-RR26S-full-42df9d6/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -26,9 +26,9 @@
    "extreme"
   ]
  },
- "rows": 191,
- "conditions": 3562,
- "measured": 3562,
+ "rows": 196,
+ "conditions": 3662,
+ "measured": 3662,
  "failures": 0,
  "unopened": 0,
  "unreachable": [
@@ -231,6 +231,31 @@
    "byCheck": {}
   },
   "slot.goals.era-console.lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.plan-waiting": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.plan-sites": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.plan-searching": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.plan-asked": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.plan-failed": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -996,5 +1021,63 @@
    "byCheck": {}
   }
  },
- "failureKeys": []
+ "failureKeys": [],
+ "retries": {
+  "timeouts": 4,
+  "failedThrice": 0,
+  "cellsRetried": 4,
+  "treesRetried": 0,
+  "rows": {
+   "modal.chapter-page.ch3": 2,
+   "modal.lord.home-petition.variant-056": 2
+  }
+ },
+ "browser": {
+  "chromium": "151.0.7922.34"
+ },
+ "measuredInputs": {
+  "file": "docs/verification/uiaudit1/geometry/infra-RR26S-full-42df9d6/inputs.json",
+  "sha256": "73365555b564dced4a504f93d303b92f94295403f95d2972369e8b9592950253",
+  "files": 9281,
+  "dirs": 0,
+  "lists": 228,
+  "missing": 100,
+  "untraceable": [],
+  "declared": {
+   "states": {
+    "deccard2": "acb8e3a021b59f8edcbdccb1230c61322f9c692e5a571fcb6655d2d654e1fd63",
+    "growplan": "7aae391bf4696b9beb00833b252d63f901e76d19fe557635687f7bb5526d0808",
+    "lands": "61f13b079514d01e0895f1e25e79759218415e129bc2fa302d6b9121e9be014d",
+    "lord": "97f15cd58ec49e8a174812c2f128893b715b8322a709a88d5e4c5485293ee3b2",
+    "lord2": "d4436a8ea7427a55da71bd3028472de4c0fee9e046c8cf996e237d5964d9940e",
+    "moments": "9bc7435569a9ef564ee8c8648e96409e716cd4602de4144929d966ffe3addf27",
+    "petitions": "4d1c52b3dfcb987ba224306c045133a428b2a0ab07998116631c9ec7f0875cbf",
+    "slice": "ef0dfc2e5579a922313a4a1721b29e0fa828212abf5b748abc15b796804b071a",
+    "ui10": "11ca523e740ac3207fcf3005d3892918af9a0810888928176add0768abb4cb98",
+    "ui10-extra": "99fb6da9f67249067829c130a971cd1aa49711c6efb3e759b3ca41bed64331b1",
+    "ui5": "05aed83e24fe4d02dc91a401921cb57e0329fd64dc4f9499ce17e05e4cff829f",
+    "ui6": "a285c70a0204e625506e20331a218601b4e2533eabe831482250d8e12c8ba7f1",
+    "ui8": "347b3d7e153c9e92e41c6890ae47c7cecfc0eb0d6a00199e17395470acd55a9b",
+    "ui9": "654ebd09708fda63ecfdeb3f49881de399ba3455380cef73c846ef2235fd2c07",
+    "variants": "92b8678af647aa735a632e8c53f50f33ebcb3cab3208ea5532389093d4dfe7bc"
+   },
+   "lock": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+   "viteDeps": {
+    "lockfileHash": "07e70f32",
+    "optimized": "3a308c10820546119b3304eebb79b3099a088bbf65609a749f3f9b5b17dd589c"
+   },
+   "chromium": "151.0.7922.34",
+   "playwright": "1.62.1",
+   "node": "v24.21.0",
+   "nodeModules": {
+    "key": "26dc99ffc28b42fb-node24.21.0-aarch64",
+    "inode": "144868209"
+   },
+   "system": {
+    "/etc/os-release": "01af466feb100306498c86aa6bad1815e33036019aa34d4362c20f374ea5c829",
+    "/proc/version": "efa1229b81c4eed84f10e34ca819dd8d59f5ff523de890aea4456561009be9da",
+    "/usr/bin/ldd": "a241b34559d0bf762359bdc120babccab6873b8e97b0fae206523fac30126f1e"
+   }
+  }
+ }
 }

@@ -1,0 +1,918 @@
+{
+ "rows": {
+  "market-proclaimed-town-1280x800": {
+   "state": "market-proclaimed",
+   "shot": "town",
+   "view": "1280x800",
+   "measured": {
+    "found": true,
+    "text": "1317년 가을\n인구 528\n식량 489일\n£45 4s\n내 도시로",
+    "primaries": 0,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "1317년 가을",
+      "height": 44
+     },
+     {
+      "text": "인구 528",
+      "height": 44
+     },
+     {
+      "text": "식량 489일",
+      "height": 44
+     },
+     {
+      "text": "£45 4s",
+      "height": 44
+     },
+     {
+      "text": "내 도시로",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 8,
+     "top": 8,
+     "width": 474,
+     "height": 63,
+     "inside": true
+    },
+    "chips": [
+     "famine:great_famine@61"
+    ],
+    "nav": []
+   },
+   "bytes": 130331,
+   "pass": true
+  },
+  "market-proclaimed-era-console-1280x800": {
+   "state": "market-proclaimed",
+   "shot": "era-console",
+   "view": "1280x800",
+   "measured": {
+    "found": true,
+    "text": "현재 시대\n시장도시\n인구\n528/140\n시장\n1/1\n석공소\n1/1\n석재\n0/400\n돈\n£45 4s/16s 8d\n수입원(장부, 최근 기간) 영지 수입 +£12 1s · 지대 +16s · 제분료 +9s 2d · 좌판세 +8d\n\n성벽 공사 인력 0명\n\n석벽 사업 재원 16s 8d를 선포할 때 씁니다 · 남는 돈 £44 7s\n\n성벽 2/25 · 진행 중 0 · 경로 없음 0 · 대기 23\n\n균형 · 25% 비축\n공사 우선\n\n선포 후 성벽 구간은 취소할 수 없습니다. 경로 있는 구간부터 자재와 일꾼이 이동합니다.\n\n석벽 도시 선포\n목책 넓히기\n석재 0/400\n마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "균형 · 25% 비축",
+      "height": 44
+     },
+     {
+      "text": "공사 우선",
+      "height": 44
+     },
+     {
+      "text": "석벽 도시 선포",
+      "height": 44
+     },
+     {
+      "text": "목책 넓히기",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "pastLine": "마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "box": {
+     "left": 965,
+     "top": -301,
+     "width": 274,
+     "height": 808,
+     "inside": true
+    },
+    "chips": [
+     "famine:great_famine@61"
+    ],
+    "nav": []
+   },
+   "bytes": 134642,
+   "pass": true
+  },
+  "market-proclaimed-lord-screen-1280x800": {
+   "state": "market-proclaimed",
+   "shot": "lord-screen",
+   "view": "1280x800",
+   "measured": {
+    "found": true,
+    "text": "영주 집무\n×\n인물\n준비 중\n가문\n준비 중\n지역\n영지\n평의회\n준비 중\n혼인\n약속·소송\n상시 방침\n무력\n규칙 없음\n지역 지도\n\n본 영지와 이웃 영지가 한 지도에 있습니다. 깃발은 누가 어떻게 다스리는지를 보여 줍니다. 영지를 눌러 고르세요.\n\n전체 보기\n확대\n크게 확대\n본 영지 · 직할\n드 이브르쿠르 영지 · 이웃\n드 앰브레스 영지 · 이웃\n드 케스트베일 영지 · 위임\n직할\n영주가 직접 다스립니다\n위임\n관리인에게 맡겼습니다\n이웃\n이웃 가문의 땅입니다\n\n지도에서 영지를 고르면 여기에 그 영지가 나옵니다.",
+    "primaries": 0,
+    "smallestText": 12,
+    "buttons": [
+     {
+      "text": "×",
+      "height": 44
+     },
+     {
+      "text": "인물준비 중",
+      "height": 52
+     },
+     {
+      "text": "가문준비 중",
+      "height": 52
+     },
+     {
+      "text": "지역",
+      "height": 52
+     },
+     {
+      "text": "영지",
+      "height": 52
+     },
+     {
+      "text": "평의회준비 중",
+      "height": 52
+     },
+     {
+      "text": "혼인",
+      "height": 52
+     },
+     {
+      "text": "약속·소송",
+      "height": 44
+     },
+     {
+      "text": "상시 방침",
+      "height": 52
+     },
+     {
+      "text": "무력규칙 없음",
+      "height": 52
+     },
+     {
+      "text": "전체 보기",
+      "height": 44
+     },
+     {
+      "text": "확대",
+      "height": 44
+     },
+     {
+      "text": "크게 확대",
+      "height": 44
+     },
+     {
+      "text": "본 영지 · 직할",
+      "height": 74
+     },
+     {
+      "text": "드 이브르쿠르 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 앰브레스 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 케스트베일 영지 · 위임",
+      "height": 74
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 512,
+     "top": 76,
+     "width": 760,
+     "height": 599,
+     "inside": true
+    },
+    "chips": [
+     "famine:great_famine@61"
+    ],
+    "nav": [
+     {
+      "id": "character",
+      "open": false
+     },
+     {
+      "id": "dynasty",
+      "open": false
+     },
+     {
+      "id": "region",
+      "open": true
+     },
+     {
+      "id": "estates",
+      "open": true
+     },
+     {
+      "id": "council",
+      "open": false
+     },
+     {
+      "id": "marriage",
+      "open": true
+     },
+     {
+      "id": "ledger",
+      "open": true
+     },
+     {
+      "id": "petitions",
+      "open": true
+     },
+     {
+      "id": "military",
+      "open": false
+     }
+    ]
+   },
+   "bytes": 121429,
+   "pass": true
+  },
+  "market-proclaimed-town-tablet": {
+   "state": "market-proclaimed",
+   "shot": "town",
+   "view": "tablet",
+   "measured": {
+    "found": true,
+    "text": "1317년 가을\n인구 528\n식량 489일\n£45 4s\n내 도시로",
+    "primaries": 0,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "1317년 가을",
+      "height": 48
+     },
+     {
+      "text": "인구 528",
+      "height": 48
+     },
+     {
+      "text": "식량 489일",
+      "height": 48
+     },
+     {
+      "text": "£45 4s",
+      "height": 48
+     },
+     {
+      "text": "내 도시로",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 8,
+     "top": 8,
+     "width": 474,
+     "height": 67,
+     "inside": true
+    },
+    "chips": [
+     "famine:great_famine@61"
+    ],
+    "nav": []
+   },
+   "bytes": 126172,
+   "pass": true
+  },
+  "market-proclaimed-era-console-tablet": {
+   "state": "market-proclaimed",
+   "shot": "era-console",
+   "view": "tablet",
+   "measured": {
+    "found": true,
+    "text": "현재 시대\n시장도시\n인구\n528/140\n시장\n1/1\n석공소\n1/1\n석재\n0/400\n돈\n£45 4s/16s 8d\n수입원(장부, 최근 기간) 영지 수입 +£12 1s · 지대 +16s · 제분료 +9s 2d · 좌판세 +8d\n\n성벽 공사 인력 0명\n\n석벽 사업 재원 16s 8d를 선포할 때 씁니다 · 남는 돈 £44 7s\n\n성벽 2/25 · 진행 중 0 · 경로 없음 0 · 대기 23\n\n균형 · 25% 비축\n공사 우선\n\n선포 후 성벽 구간은 취소할 수 없습니다. 경로 있는 구간부터 자재와 일꾼이 이동합니다.\n\n석벽 도시 선포\n목책 넓히기\n석재 0/400\n마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "균형 · 25% 비축",
+      "height": 48
+     },
+     {
+      "text": "공사 우선",
+      "height": 48
+     },
+     {
+      "text": "석벽 도시 선포",
+      "height": 48
+     },
+     {
+      "text": "목책 넓히기",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "pastLine": "마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "box": {
+     "left": 865,
+     "top": -305,
+     "width": 274,
+     "height": 816,
+     "inside": true
+    },
+    "chips": [
+     "famine:great_famine@61"
+    ],
+    "nav": []
+   },
+   "bytes": 128134,
+   "pass": true
+  },
+  "market-proclaimed-lord-screen-tablet": {
+   "state": "market-proclaimed",
+   "shot": "lord-screen",
+   "view": "tablet",
+   "measured": {
+    "found": true,
+    "text": "영주 집무\n×\n인물\n준비 중\n가문\n준비 중\n지역\n영지\n평의회\n준비 중\n혼인\n약속·소송\n상시 방침\n무력\n규칙 없음\n지역 지도\n\n본 영지와 이웃 영지가 한 지도에 있습니다. 깃발은 누가 어떻게 다스리는지를 보여 줍니다. 영지를 눌러 고르세요.\n\n전체 보기\n확대\n크게 확대\n본 영지 · 직할\n드 이브르쿠르 영지 · 이웃\n드 앰브레스 영지 · 이웃\n드 케스트베일 영지 · 위임\n직할\n영주가 직접 다스립니다\n위임\n관리인에게 맡겼습니다\n이웃\n이웃 가문의 땅입니다\n\n지도에서 영지를 고르면 여기에 그 영지가 나옵니다.",
+    "primaries": 0,
+    "smallestText": 12,
+    "buttons": [
+     {
+      "text": "×",
+      "height": 48
+     },
+     {
+      "text": "인물준비 중",
+      "height": 52
+     },
+     {
+      "text": "가문준비 중",
+      "height": 52
+     },
+     {
+      "text": "지역",
+      "height": 52
+     },
+     {
+      "text": "영지",
+      "height": 52
+     },
+     {
+      "text": "평의회준비 중",
+      "height": 52
+     },
+     {
+      "text": "혼인",
+      "height": 52
+     },
+     {
+      "text": "약속·소송",
+      "height": 48
+     },
+     {
+      "text": "상시 방침",
+      "height": 52
+     },
+     {
+      "text": "무력규칙 없음",
+      "height": 52
+     },
+     {
+      "text": "전체 보기",
+      "height": 48
+     },
+     {
+      "text": "확대",
+      "height": 48
+     },
+     {
+      "text": "크게 확대",
+      "height": 48
+     },
+     {
+      "text": "본 영지 · 직할",
+      "height": 74
+     },
+     {
+      "text": "드 이브르쿠르 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 앰브레스 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 케스트베일 영지 · 위임",
+      "height": 74
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 412,
+     "top": 80,
+     "width": 760,
+     "height": 615,
+     "inside": true
+    },
+    "chips": [
+     "famine:great_famine@61"
+    ],
+    "nav": [
+     {
+      "id": "character",
+      "open": false
+     },
+     {
+      "id": "dynasty",
+      "open": false
+     },
+     {
+      "id": "region",
+      "open": true
+     },
+     {
+      "id": "estates",
+      "open": true
+     },
+     {
+      "id": "council",
+      "open": false
+     },
+     {
+      "id": "marriage",
+      "open": true
+     },
+     {
+      "id": "ledger",
+      "open": true
+     },
+     {
+      "id": "petitions",
+      "open": true
+     },
+     {
+      "id": "military",
+      "open": false
+     }
+    ]
+   },
+   "bytes": 114497,
+   "pass": true
+  },
+  "market-years-town-1280x800": {
+   "state": "market-years",
+   "shot": "town",
+   "view": "1280x800",
+   "measured": {
+    "found": true,
+    "text": "1321년 여름\n인구 528\n식량 582일\n£82 4s\n내 도시로",
+    "primaries": 0,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "1321년 여름",
+      "height": 44
+     },
+     {
+      "text": "인구 528",
+      "height": 44
+     },
+     {
+      "text": "식량 582일",
+      "height": 44
+     },
+     {
+      "text": "£82 4s",
+      "height": 44
+     },
+     {
+      "text": "내 도시로",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 8,
+     "top": 8,
+     "width": 474,
+     "height": 63,
+     "inside": true
+    },
+    "chips": [
+     "suit-defence:suit-5",
+     "trace:h-005117:85",
+     "lord-moment:h-005822"
+    ],
+    "nav": []
+   },
+   "bytes": 148913,
+   "pass": true
+  },
+  "market-years-era-console-1280x800": {
+   "state": "market-years",
+   "shot": "era-console",
+   "view": "1280x800",
+   "measured": {
+    "found": true,
+    "text": "현재 시대\n시장도시\n인구\n528/140\n시장\n1/1\n석공소\n1/1\n석재\n0/400\n돈\n£82 4s/16s 8d\n수입원(장부, 최근 기간) 영지 수입 +£13 8s · 지대 +16s · 제분료 +9s 8d · 좌판세 +1s 6d\n\n성벽 공사 인력 0명\n\n석벽 사업 재원 16s 8d를 선포할 때 씁니다 · 남는 돈 £81 7s\n\n성벽 7/25 · 진행 중 0 · 경로 없음 0 · 대기 18\n\n균형 · 25% 비축\n공사 우선\n\n선포 후 성벽 구간은 취소할 수 없습니다. 경로 있는 구간부터 자재와 일꾼이 이동합니다.\n\n석벽 도시 선포\n목책 넓히기\n석재 0/400\n마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "균형 · 25% 비축",
+      "height": 44
+     },
+     {
+      "text": "공사 우선",
+      "height": 44
+     },
+     {
+      "text": "석벽 도시 선포",
+      "height": 44
+     },
+     {
+      "text": "목책 넓히기",
+      "height": 44
+     }
+    ],
+    "titles": 0,
+    "pastLine": "마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "box": {
+     "left": 965,
+     "top": -320,
+     "width": 274,
+     "height": 827,
+     "inside": true
+    },
+    "chips": [
+     "suit-defence:suit-5",
+     "trace:h-005117:85",
+     "lord-moment:h-005822"
+    ],
+    "nav": []
+   },
+   "bytes": 151569,
+   "pass": true
+  },
+  "market-years-lord-screen-1280x800": {
+   "state": "market-years",
+   "shot": "lord-screen",
+   "view": "1280x800",
+   "measured": {
+    "found": true,
+    "text": "영주 집무\n×\n인물\n준비 중\n가문\n준비 중\n지역\n영지\n평의회\n준비 중\n혼인\n약속·소송\n상시 방침\n무력\n규칙 없음\n지역 지도\n\n본 영지와 이웃 영지가 한 지도에 있습니다. 깃발은 누가 어떻게 다스리는지를 보여 줍니다. 영지를 눌러 고르세요.\n\n전체 보기\n확대\n크게 확대\n본 영지 · 직할\n드 이브르쿠르 영지 · 이웃\n드 앰브레스 영지 · 이웃\n드 케스트베일 영지 · 위임\n직할\n영주가 직접 다스립니다\n위임\n관리인에게 맡겼습니다\n이웃\n이웃 가문의 땅입니다\n\n지도에서 영지를 고르면 여기에 그 영지가 나옵니다.",
+    "primaries": 0,
+    "smallestText": 12,
+    "buttons": [
+     {
+      "text": "×",
+      "height": 44
+     },
+     {
+      "text": "인물준비 중",
+      "height": 52
+     },
+     {
+      "text": "가문준비 중",
+      "height": 52
+     },
+     {
+      "text": "지역",
+      "height": 52
+     },
+     {
+      "text": "영지",
+      "height": 52
+     },
+     {
+      "text": "평의회준비 중",
+      "height": 52
+     },
+     {
+      "text": "혼인",
+      "height": 52
+     },
+     {
+      "text": "약속·소송",
+      "height": 44
+     },
+     {
+      "text": "상시 방침",
+      "height": 52
+     },
+     {
+      "text": "무력규칙 없음",
+      "height": 52
+     },
+     {
+      "text": "전체 보기",
+      "height": 44
+     },
+     {
+      "text": "확대",
+      "height": 44
+     },
+     {
+      "text": "크게 확대",
+      "height": 44
+     },
+     {
+      "text": "본 영지 · 직할",
+      "height": 74
+     },
+     {
+      "text": "드 이브르쿠르 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 앰브레스 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 케스트베일 영지 · 위임",
+      "height": 74
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 512,
+     "top": 76,
+     "width": 760,
+     "height": 599,
+     "inside": true
+    },
+    "chips": [
+     "suit-defence:suit-5",
+     "trace:h-005117:85",
+     "lord-moment:h-005822"
+    ],
+    "nav": [
+     {
+      "id": "character",
+      "open": false
+     },
+     {
+      "id": "dynasty",
+      "open": false
+     },
+     {
+      "id": "region",
+      "open": true
+     },
+     {
+      "id": "estates",
+      "open": true
+     },
+     {
+      "id": "council",
+      "open": false
+     },
+     {
+      "id": "marriage",
+      "open": true
+     },
+     {
+      "id": "ledger",
+      "open": true
+     },
+     {
+      "id": "petitions",
+      "open": true
+     },
+     {
+      "id": "military",
+      "open": false
+     }
+    ]
+   },
+   "bytes": 135857,
+   "pass": true
+  },
+  "market-years-town-tablet": {
+   "state": "market-years",
+   "shot": "town",
+   "view": "tablet",
+   "measured": {
+    "found": true,
+    "text": "1321년 여름\n인구 528\n식량 582일\n£82 4s\n내 도시로",
+    "primaries": 0,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "1321년 여름",
+      "height": 48
+     },
+     {
+      "text": "인구 528",
+      "height": 48
+     },
+     {
+      "text": "식량 582일",
+      "height": 48
+     },
+     {
+      "text": "£82 4s",
+      "height": 48
+     },
+     {
+      "text": "내 도시로",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 8,
+     "top": 8,
+     "width": 474,
+     "height": 67,
+     "inside": true
+    },
+    "chips": [
+     "suit-defence:suit-5",
+     "trace:h-005117:85",
+     "lord-moment:h-005822"
+    ],
+    "nav": []
+   },
+   "bytes": 143958,
+   "pass": true
+  },
+  "market-years-era-console-tablet": {
+   "state": "market-years",
+   "shot": "era-console",
+   "view": "tablet",
+   "measured": {
+    "found": true,
+    "text": "현재 시대\n시장도시\n인구\n528/140\n시장\n1/1\n석공소\n1/1\n석재\n0/400\n돈\n£82 4s/16s 8d\n수입원(장부, 최근 기간) 영지 수입 +£13 8s · 지대 +16s · 제분료 +9s 8d · 좌판세 +1s 6d\n\n성벽 공사 인력 0명\n\n석벽 사업 재원 16s 8d를 선포할 때 씁니다 · 남는 돈 £81 7s\n\n성벽 7/25 · 진행 중 0 · 경로 없음 0 · 대기 18\n\n균형 · 25% 비축\n공사 우선\n\n선포 후 성벽 구간은 취소할 수 없습니다. 경로 있는 구간부터 자재와 일꾼이 이동합니다.\n\n석벽 도시 선포\n목책 넓히기\n석재 0/400\n마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "primaries": 1,
+    "smallestText": 13,
+    "buttons": [
+     {
+      "text": "균형 · 25% 비축",
+      "height": 48
+     },
+     {
+      "text": "공사 우선",
+      "height": 48
+     },
+     {
+      "text": "석벽 도시 선포",
+      "height": 48
+     },
+     {
+      "text": "목책 넓히기",
+      "height": 48
+     }
+    ],
+    "titles": 0,
+    "pastLine": "마을의 목책 계획은 시장도시 선포로 끝났습니다",
+    "box": {
+     "left": 865,
+     "top": -324,
+     "width": 274,
+     "height": 835,
+     "inside": true
+    },
+    "chips": [
+     "suit-defence:suit-5",
+     "trace:h-005117:85",
+     "lord-moment:h-005822"
+    ],
+    "nav": []
+   },
+   "bytes": 144445,
+   "pass": true
+  },
+  "market-years-lord-screen-tablet": {
+   "state": "market-years",
+   "shot": "lord-screen",
+   "view": "tablet",
+   "measured": {
+    "found": true,
+    "text": "영주 집무\n×\n인물\n준비 중\n가문\n준비 중\n지역\n영지\n평의회\n준비 중\n혼인\n약속·소송\n상시 방침\n무력\n규칙 없음\n지역 지도\n\n본 영지와 이웃 영지가 한 지도에 있습니다. 깃발은 누가 어떻게 다스리는지를 보여 줍니다. 영지를 눌러 고르세요.\n\n전체 보기\n확대\n크게 확대\n본 영지 · 직할\n드 이브르쿠르 영지 · 이웃\n드 앰브레스 영지 · 이웃\n드 케스트베일 영지 · 위임\n직할\n영주가 직접 다스립니다\n위임\n관리인에게 맡겼습니다\n이웃\n이웃 가문의 땅입니다\n\n지도에서 영지를 고르면 여기에 그 영지가 나옵니다.",
+    "primaries": 0,
+    "smallestText": 12,
+    "buttons": [
+     {
+      "text": "×",
+      "height": 48
+     },
+     {
+      "text": "인물준비 중",
+      "height": 52
+     },
+     {
+      "text": "가문준비 중",
+      "height": 52
+     },
+     {
+      "text": "지역",
+      "height": 52
+     },
+     {
+      "text": "영지",
+      "height": 52
+     },
+     {
+      "text": "평의회준비 중",
+      "height": 52
+     },
+     {
+      "text": "혼인",
+      "height": 52
+     },
+     {
+      "text": "약속·소송",
+      "height": 48
+     },
+     {
+      "text": "상시 방침",
+      "height": 52
+     },
+     {
+      "text": "무력규칙 없음",
+      "height": 52
+     },
+     {
+      "text": "전체 보기",
+      "height": 48
+     },
+     {
+      "text": "확대",
+      "height": 48
+     },
+     {
+      "text": "크게 확대",
+      "height": 48
+     },
+     {
+      "text": "본 영지 · 직할",
+      "height": 74
+     },
+     {
+      "text": "드 이브르쿠르 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 앰브레스 영지 · 이웃",
+      "height": 74
+     },
+     {
+      "text": "드 케스트베일 영지 · 위임",
+      "height": 74
+     }
+    ],
+    "titles": 0,
+    "pastLine": null,
+    "box": {
+     "left": 412,
+     "top": 80,
+     "width": 760,
+     "height": 615,
+     "inside": true
+    },
+    "chips": [
+     "suit-defence:suit-5",
+     "trace:h-005117:85",
+     "lord-moment:h-005822"
+    ],
+    "nav": [
+     {
+      "id": "character",
+      "open": false
+     },
+     {
+      "id": "dynasty",
+      "open": false
+     },
+     {
+      "id": "region",
+      "open": true
+     },
+     {
+      "id": "estates",
+      "open": true
+     },
+     {
+      "id": "council",
+      "open": false
+     },
+     {
+      "id": "marriage",
+      "open": true
+     },
+     {
+      "id": "ledger",
+      "open": true
+     },
+     {
+      "id": "petitions",
+      "open": true
+     },
+     {
+      "id": "military",
+      "open": false
+     }
+    ]
+   },
+   "bytes": 128052,
+   "pass": true
+  }
+ },
+ "bytes": 1607999,
+ "errors": []
+}
