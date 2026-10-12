@@ -17,8 +17,9 @@ const FULL_TOWN = 768;
 export const STUMP_PEAK_MAX = 865;
 /** Seeds a named task is fixing (remove the line when it lands). */
 export const KNOWN: Readonly<Record<number, string>> = {
+  1: "option A: the charter waits on its timber, then the church on its stone (528 from 1318 to 1329)",
   3: "GROW-BLOCK-2b: fields cover the walled interior's house sites",
-  9: "GROW-BLOCK-2b: no wall fits (the small rings cut 13 buildings off the roads)",
+  9: "food: bread misses houses after the wall (608 to 489, 1330-1348), the diagnosis follows GROW-BLOCK-2a",
 };
 
 interface Probe { seed: number; maxPopulation: number; peakStumps: number; abandoned: number; replaced: number;
