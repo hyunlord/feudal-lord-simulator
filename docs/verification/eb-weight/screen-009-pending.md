@@ -1,4 +1,6 @@
-# 009/c 준비 — 연결 장애로 실행 pending
+# 009/c 준비 — DGX 대기 해제
+
+최신 사용자 지시로 DGX 대기가 해제되었다. run.sh 슬롯 규칙과 B 실험 한 번에 한 줄을 지켜009/c를 재개한다. 재개 직전 SSH 조회는 exit0이고 기존 engineB-live-009-0a5ba72의 실행/보존 폴더, B 실행 unit와 대기 항목이 없음을 확인했다. 새 깨끗한 문서 커밋으로 제출하며 아래 연결 장애 기록은 보존한다. Mac 대체 실행은 하지 않는다.
 
 2026-10-12. [기존 입력 목록](screen-resume-readiness.md)의 다음009/c를 선택했다. seed1 h-006591@101011, 압축 입력 SHA `86f9ef14661b241b2383a8fda7da4d9459a4b143d306ffdd2a5003d21a3734d4`. manifest는 기존 e4615d5…다. 정본009/c AST·estateSuits·decisionTrace는2485af4와a5776a8e에서 동일하다. court_roll 증거 추가 뒤 조건부 suit_turned를 기대하며, 원래989틱 뒤 결과의 다른 원인 h-006523와 이 답의 part:true를 유지한다.
 
