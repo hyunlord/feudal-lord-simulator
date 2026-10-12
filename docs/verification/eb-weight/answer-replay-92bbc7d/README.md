@@ -23,7 +23,7 @@
 ## 증거와 한계
 
 - `annual-answer-report.json.gz`: 실제 보고서 원문 gzip. 압축 해제 SHA428725fcb089658a50d89521b7654524ba62424cd053bfe60f797254c26beeb3.
-- `verification.json`: 실제 manifest의 비교 기록·출처·해시를 추린 자료. 전체 분류/문맥/명령 스트림은 보존된 실행 폴더에 있으며 해당 해시를 여기 고정한다.
+- `verification.json.gz`: 실제 manifest의 비교 기록·출처·해시를 추린 자료. 전체 분류/문맥/명령 스트림은 보존된 실행 폴더에 있으며 해당 해시를 여기 고정한다.
 - `expected-tick-manifest.json`: 원본 소스에서 검증된 preclose별 advanceTick을 정확히 한 번 적용한4개 참조. 실제 브라우저 결과가 아니다.
 - `SHA256SUMS`: 집계·비교·참조 manifest와 초과 연도 답변 자료 해시.
 
@@ -50,3 +50,5 @@
 성숙 답변 중 자체 root가 있는 경우는292/337, 별도 root가 없는 경우는0/479다. 후자는 반복 답변이 합쳐진 구조와 연관되므로 ‘효과 없는479건’으로 읽지 않는다. source/also와 root의 시각 범위로 찾은 유일한 후보에는469/479건의 답변 후 root 연결 결과가 있지만, 정식 occurrence 멤버십이나 해당 답변이 주원인이라는 증거는 아니다. 관측 기간 부족20건은 실패 분모에서 제외한다. 미분류 선언2건도 이836분모에는 포함하지 않는다.
 
 `whole-heavy-answer-trace.json.gz`는836개 답변·정확한 후속 ID/tick·분모·입력 해시·추론 제한을 담고, `.mjs.gz`는 순수 파일 대조 생성기다. 사용: `node whole-heavy-answer-trace.mjs REPLAY_DIR RAW_DIR NEW_OUTPUT_JSON`. 부모가 분류와 원본 manifest의 일치, 원본 SHA3개 및 모든836답변의 직접 후속 집합을 별도 방식으로 재계산했다. 새 엔진 실행·화면 검증·주원인 의미 판정은 없다.
+
+보관 압축 전/복원 SHA256: `afc883a8a7ee8dd213e0ee8358f66af80a56da80993de74e0448574a7294af13`. 무손실 gzip 전환이며 원문 내용은 같다.

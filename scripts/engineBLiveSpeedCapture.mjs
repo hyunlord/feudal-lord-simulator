@@ -104,7 +104,8 @@ async function sample(page) {
       ten: document.querySelector('.speed-seal[data-seal="fast"] [data-step="10"]')?.getAttribute('data-on') === 'true' };
   });
 }
-export function manualReceiptTarget(receipts, threads) {
+export function manualReceiptTarget(receipts, threads, observation) {
+  if (shouldDismissInformationalSeasonLedger(observation)) return undefined;
   return receipts.automaticPresentations[0]?.recordId ?? threads?.threadPresentations?.[0]?.receiptId ?? receipts.receipts[0]?.id;
 }
 async function manualTrace(page, out, evidence, target, tick) {
@@ -210,7 +211,8 @@ async function capture(browser, item, out, url, evidence) {
         await fullSnapshot(page, out, `transition-${evidence.transitions.length}`); lastSignature = signature;
       }
       if (observation.ten && observation.tick > priorTick) evidence.progressAtTen = true;
-      if (evidence.manualAdmission === 'first_exact_receipt' && accumulator.snapshot().receipts.length > 0) {
+      const manualReady = evidence.manualAdmission === 'first_exact_receipt' && accumulator.snapshot().receipts.length > 0;
+      if (manualReady && manualReceiptTarget(accumulator.snapshot(), evidence.threadEvidence, observation) !== undefined) {
         evidence.stop = 'first_exact_receipt_manual_pause'; break;
       }
       if (accumulator.snapshot().automaticVisible || evidence.threadEvidence.automaticThreadVisible) {
@@ -223,10 +225,11 @@ async function capture(browser, item, out, url, evidence) {
         const afterContinue = await fullSnapshot(page, out, `${label}-after`);
         check(beforeContinue.sha256 === afterContinue.sha256 && afterContinue.state.tick === observation.tick, 'Informational Continue changed presentation state');
         check((await sample(page)).panels.length === 0, 'Another dialog after informational Continue');
+        evidence.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season, beforeSha256: beforeContinue.sha256, afterSha256: afterContinue.sha256 });
+        if (manualReady) { evidence.stop = 'first_exact_receipt_manual_pause'; break; }
         for (let attempt = 0; attempt < 2 && !await page.locator(`${fast} [data-step="10"]`).getAttribute('data-on').then(value => value === 'true'); attempt += 1) await press(page, fast, evidence);
         const resumed = await sample(page);
         check(resumed.ten && !resumed.paused && resumed.tick === observation.tick, 'Informational resume failed or advanced time');
-        evidence.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season, beforeSha256: beforeContinue.sha256, afterSha256: afterContinue.sha256 });
         priorTick = observation.tick; continue;
       }
       if (observation.panels.length || observation.paused) { evidence.stop = 'intervention_required_unknown_or_substantive_blocker'; break; }

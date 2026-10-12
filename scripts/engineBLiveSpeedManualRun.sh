@@ -47,6 +47,16 @@ set -e
 rm scripts/.engineBLiveTargetBaseline.mjs
 [ "$target_red" -ne 0 ]
 printf '%s\n' "$target_red" > .remote/manual-tests/target-red-exit
+git show 1e758c99b04ac3a86af233f78c35e3714127ce77:scripts/engineBLiveSpeedCapture.mjs > scripts/.engineBLiveLedgerBaseline.mjs
+set +e
+EB_MANUAL_MODULE=./.engineBLiveLedgerBaseline.mjs node --import tsx --test scripts/engineBLiveSpeedManual.test.mjs > .remote/manual-tests/ledger-red.log 2>&1
+ledger_red=$?
+set -e
+rm scripts/.engineBLiveLedgerBaseline.mjs
+[ "$ledger_red" -ne 0 ]
+grep -q 'ERR_ASSERTION' .remote/manual-tests/ledger-red.log
+printf '%s\n' "$ledger_red" > .remote/manual-tests/ledger-red-exit
+
 node --import tsx --test scripts/engineBLiveTarget.test.mjs scripts/engineBLiveSpeedManual.test.mjs tests/engineBLiveSpeedCapture.test.mjs tests/engineBLiveThreadEvidence.test.mjs > .remote/manual-tests/green.log 2>&1
 node_modules/.bin/tsx scripts/engineBLiveSpeedCapture.mjs \
  "$LIVE_SPEED_CHECKPOINTS" "$LIVE_SPEED_MANIFEST" "$LIVE_SPEED_OUTPUT" \
