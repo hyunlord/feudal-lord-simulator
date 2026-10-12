@@ -83,7 +83,7 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
   // The season's close (lord mode: the steward's section), on the eve state (40 ticks before it) run at 1×; LS1-2: the
   // card opens from the season-turn band (lord mode's season card never opens by itself).
   { id: "modal.season-ledger.market", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
-    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "market", name: "market-season-eve", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off", run: true },
+    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "market", name: "market-season-eve", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off&season-band-ms=600000", run: true },
     open: [{ wait: ".season-band", timeout: 90_000 }, { click: ".season-band" }, { wait: ".season-ledger-card", timeout: 30_000 }, { pause: 900 }],
     requires: ["h2", ".season-ledger-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
     data: "the market town's first season close after the proclamation (1317's autumn; lord mode: the steward's section)" },

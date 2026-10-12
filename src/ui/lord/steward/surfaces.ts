@@ -17,7 +17,7 @@ export const STEWARD_SURFACES: readonly SurfaceRow[] = [
     requires: [".lord-standing-detail", ".lord-standing-set", ".lord-standing-does li"], siblingsNoOverlap: [".lord-standing-set"],
     data: "the heriot opened: the four settings (all secondary, the one in force pressed) and what each would do, this year's count" },
   { id: "modal.season-ledger.steward", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
-    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "lord2", name: "attention-overloaded", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off", run: true },
+    frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "lord2", name: "attention-overloaded", tile: "house", zoom: 1.1, query: "&story-delay=600000&auto-pause=off&season-band-ms=600000", run: true },
     // LS1-2: lord mode's season card never opens by itself — the season-turn band opens it, as a player does.
     open: [{ key: "Digit3" }, { wait: ".season-band", timeout: 120_000 }, { click: ".season-band" }, { wait: ".season-ledger-card .season-steward", timeout: 30_000 }, { pause: 900 }],
     requires: ["h2", ".season-steward h3", ".season-steward-line", ".season-ledger-resume"], scrollParts: [".season-ledger-content"],
