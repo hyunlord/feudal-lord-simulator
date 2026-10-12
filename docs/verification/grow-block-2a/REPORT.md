@@ -78,7 +78,7 @@ export type GrowthLever = { kind: "order_timber" } | { kind: "subsidy"; building
 
 ## 필수 조건
 - **typecheck**: 통과 — Mac(본선 병합 뒤).
-- **바뀐 파일에 걸린 시험**: 4,147/4,165 통과(519개 파일, 나머지는 건너뜀) — DGX `engine-GROW2a-tested-bb60cab`. 옛 실패 기록(2026-10-09 `engine-GROW-tested-b230119`)이 남은 20개 파일은 다시 돌려 142/142 — DGX `engine-GROW2a-tested2-e59240c`.
+- **바뀐 파일에 걸린 시험**: 4,147/4,165 통과(519개 파일, 나머지는 건너뜀) — DGX `engine-GROW2a-tested-bb60cab`. 옛 실패 기록(2026-10-09 `engine-GROW-tested-b230119`)이 남은 20개 파일은 다시 돌려 142/142 — DGX `engine-GROW2a-tested2-e59240c`. 이 20개는 트리 전체를 읽어서, 이 보고서를 고친 마지막 커밋에서 한 번 더 돌린다(DGX `engine-GROW2a-tested3`, 그 뒤로는 커밋하지 않고 푸시).
 - **check:merge**: 푸시 훅 — Mac.
 - **기하(바뀐 줄)**: 21줄 410칸, 실패 0, 못 연 조건 0 — DGX `engine-GROW2a-geometry2-edc9256`(RR26 trailer). 엔진 파일이 import로 화면에 닿아 특허 계획·상태 알약·식량·막힌 물자·목표·장부·요청 줄을 쟀다. 첫 실행 `engine-GROW2a-geometry-edc9256`은 작업 트리의 추적 안 된 탐침 결과 47개를 dirty 입력으로 세어 check:merge가 거부했고, 결과 파일을 트리 밖으로 옮겨 다시 돌렸다.
 - **가드레일**: 위 표 — DGX `engine-GROW2a-guard-439ee50`·`engine-GROW2a-guard2-096eb86`.
