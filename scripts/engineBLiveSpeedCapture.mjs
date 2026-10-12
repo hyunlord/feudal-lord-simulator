@@ -11,9 +11,9 @@ import { loadChromium } from './renderCommitProbe.mjs';
 import { routeSceneState, sceneStateRefusal } from './sceneInjection.mjs';
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
 import { createTraceThreadEvidence, isInformationalSeasonLedger } from './engineBLiveThreadEvidence.mjs';
+import { parseLiveTarget, selectLiveTarget } from './engineBLiveTarget.mjs';
+export { parseLiveTarget, selectLiveTarget } from './engineBLiveTarget.mjs';
 const SOURCE = '2485af40046793f1856829fa1161dc4431942aa7';
-const MANIFEST = 'e4615d5a01c18d7b6adba9f3eec12c570f0ab14041266e947305674c04e2b93d';
-const ANSWER = 'h-002653', START = 40015, LIMIT = START + 3000;
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sha = value => createHash('sha256').update(value).digest('hex');
 const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
@@ -108,6 +108,7 @@ export function manualReceiptTarget(receipts, threads) {
   return receipts.automaticPresentations[0]?.recordId ?? threads?.threadPresentations?.[0]?.receiptId ?? receipts.receipts[0]?.id;
 }
 async function manualTrace(page, out, evidence, target, tick) {
+  const { answerId: ANSWER, startTick: START } = evidence.target;
   const result = { attempted: true, verified: false, targetId: target, answerId: ANSWER };
   evidence.manualDiscovery = result;
   const settle = async () => {
@@ -154,6 +155,8 @@ async function manualTrace(page, out, evidence, target, tick) {
   await fullSnapshot(page, out, 'manual-return'); result.verified = true;
 }
 async function capture(browser, item, out, url, evidence) {
+  const { answerId: ANSWER, startTick: START } = evidence.target;
+  const LIMIT = START + 3000;
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: 'ko-KR' });
   const page = await context.newPage(); page.setDefaultTimeout(5000); let initialized = false;
   page.on('pageerror', error => evidence.errors.push(String(error)));
@@ -259,16 +262,18 @@ async function main() {
   refuseHeavyOnMac('EB bounded live10x', { entry: import.meta.url, remote: 'DGX heavy experiment only' });
   check(process.platform === 'linux' && process.version === 'v24.21.0', 'Pinned DGX Node only');
   const [directory, manifestSha256, out, url, revision, ...extra] = process.argv.slice(2);
+  const targetBytes = process.env.EB_LIVE_TARGET_SPEC ? readFileSync(process.env.EB_LIVE_TARGET_SPEC) : undefined;
+  const target = parseLiveTarget(targetBytes === undefined ? undefined : JSON.parse(targetBytes.toString('utf8')));
+  const MANIFEST = target.manifestSha256;
   check(directory && manifestSha256 === MANIFEST && out && url && /^[a-f0-9]{40}$/.test(revision ?? '') && extra.length === 0, 'Usage: tsx scripts/engineBLiveSpeedCapture.mjs checkpointDirectory MANIFEST_SHA NEW_OUTPUT URL browserRevision');
   check(git('rev-parse', 'HEAD') === revision && git('status', '--porcelain') === '', 'Clean pinned checkout required');
   check(sha(readFileSync('package-lock.json')) === sha(execFileSync('git', ['show', `${SOURCE}:package-lock.json`])), 'Original lock mismatch');
   const changes = git('diff', SOURCE, '--name-only', '--', 'src').split('\n').filter(Boolean);
   check(changes.every(path => path === 'src/App.tsx' || /^src\/(ui|styles)\//.test(path)), 'Engine/presentation dependencies changed');
   const loaded = readCheckpoints(directory, MANIFEST); check(loaded.manifest.sourceRevision === SOURCE, 'Checkpoint source mismatch');
-  const item = loaded.cases.find(row => row.name === 'ck_evt_005-answer');
-  check(item?.pair.decisionId === ANSWER && item.checkpoint.state.tick === START, 'Wrong answer');
+  const item = selectLiveTarget(loaded.cases, target);
   const playwright = playwrightProvenance(); mkdirSync(out);
-  const evidence = { valid: false, manualAdmission: process.env.EB_MANUAL_ON_RECEIPT === '1' ? 'first_exact_receipt' : 'after_continuation', sourceRevision: SOURCE, browserRevision: revision, manifestSha256: MANIFEST, input: item.checkpoint.record,
+  const evidence = { valid: false, target, targetSpecSha256: targetBytes === undefined ? null : sha(targetBytes), manualAdmission: process.env.EB_MANUAL_ON_RECEIPT === '1' ? 'first_exact_receipt' : 'after_continuation', sourceRevision: SOURCE, browserRevision: revision, manifestSha256: MANIFEST, input: item.checkpoint.record,
     playwright, changedUiFiles: changes, rawInputStateSha256: sha(JSON.stringify(item.checkpoint.state)),
     expectedPresentationSha256: sha(JSON.stringify(withResidentWalkers(item.checkpoint.state))), manualDiscovery: { attempted: false, verified: false }, informationalContinues: [], actions: [], frames: [], transitions: [], newHistory: [], errors: [], cleanupErrors: [],
     limits: ['New no-bot continuation, not original replay parity.', 'Proof exposes presentation, not raw browser store.',

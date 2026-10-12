@@ -39,7 +39,15 @@ set -e
 rm scripts/.engineBLiveSpeedBaseline.mjs
 [ "$red" -ne 0 ]
 printf '%s\n' "$red" > .remote/manual-tests/red-exit
-node --import tsx --test scripts/engineBLiveSpeedManual.test.mjs tests/engineBLiveSpeedCapture.test.mjs tests/engineBLiveThreadEvidence.test.mjs > .remote/manual-tests/green.log 2>&1
+git show 24bd578cd8fc72b1823f14afa77155efbf44f6f0:scripts/engineBLiveSpeedCapture.mjs > scripts/.engineBLiveTargetBaseline.mjs
+set +e
+EB_TARGET_MODULE=./.engineBLiveTargetBaseline.mjs node --import tsx --test scripts/engineBLiveTarget.test.mjs > .remote/manual-tests/target-red.log 2>&1
+target_red=$?
+set -e
+rm scripts/.engineBLiveTargetBaseline.mjs
+[ "$target_red" -ne 0 ]
+printf '%s\n' "$target_red" > .remote/manual-tests/target-red-exit
+node --import tsx --test scripts/engineBLiveTarget.test.mjs scripts/engineBLiveSpeedManual.test.mjs tests/engineBLiveSpeedCapture.test.mjs tests/engineBLiveThreadEvidence.test.mjs > .remote/manual-tests/green.log 2>&1
 node_modules/.bin/tsx scripts/engineBLiveSpeedCapture.mjs \
  "$LIVE_SPEED_CHECKPOINTS" "$LIVE_SPEED_MANIFEST" "$LIVE_SPEED_OUTPUT" \
  "http://127.0.0.1:$FLS_REMOTE_PORT/" "$EB_BROWSER_REVISION"
