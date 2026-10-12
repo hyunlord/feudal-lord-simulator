@@ -21,7 +21,7 @@
 
 실행 원본은 `engineBWeightAuditRun.ts`, 세 원본의 동일 소스·구간·56 ID·관측 완전성을 검증하는 합산기는 `engineBWeightAuditReport.mjs`다. 연간 분모는 실제 `cameHeavyToLord` trace 사안이며 모든 명령 횟수나 전체 화면 도착 횟수와 구분한다. 후보 판정 기록은 실제 v4 평가를 관측하지만 외부 등록기 예산으로 평가 자체가 생략된 철까지 설명하지 않는다.
 
-`layers.json`은 현재 `registryV4Support()`의 `runs=true` 집합과 정확히 같다. 각 ID마다 지원되는 선택과 실제 명령 인수, 기본 무게와 Engine B 예외, 지속세율 여부, 잠재 trace 대상, because 생산 경로, 처음 관측 가능한 조건과 남은 증거 공백을 담는다. 지원되지 않는 선택도 이유와 함께 별도로 보존한다. 명령 인수의 binding은 실제 세계 대상을 읽는 식이며 아직 실행해서 얻은 대상 ID가 아니다.
+`layers.json.gz`은 현재 `registryV4Support()`의 `runs=true` 집합과 정확히 같다. 각 ID마다 지원되는 선택과 실제 명령 인수, 기본 무게와 Engine B 예외, 지속세율 여부, 잠재 trace 대상, because 생산 경로, 처음 관측 가능한 조건과 남은 증거 공백을 담는다. 지원되지 않는 선택도 이유와 함께 별도로 보존한다. 명령 인수의 binding은 실제 세계 대상을 읽는 식이며 아직 실행해서 얻은 대상 ID가 아니다.
 
 ## TRACE-KEEP 통합 후 15년 장면 확인
 
@@ -78,10 +78,12 @@ node --import tsx scripts/engineBLayerInventory.ts
 node --import tsx scripts/engineBLayerInventory.ts --check
 ```
 
-정적 검증은 단기·장기 실행을 하지 않는다. 다음 증거는 별도로 필요하다: 실제 occurrence별 활성 선택과 배정, 선택 실행 뒤 trace/history/보고의 같은 ID 연결, 후속 because 발생과 지연, 조용한 해의 실제 화면 결과 노출. `layers.json`의 상태는 이 증거가 생기기 전까지 `static_inventory_runtime_pending`이다.
+정적 검증은 단기·장기 실행을 하지 않는다. 다음 증거는 별도로 필요하다: 실제 occurrence별 활성 선택과 배정, 선택 실행 뒤 trace/history/보고의 같은 ID 연결, 후속 because 발생과 지연, 조용한 해의 실제 화면 결과 노출. `layers.json.gz`의 상태는 이 증거가 생기기 전까지 `static_inventory_runtime_pending`이다.
 
 ## 당시 seed1 부분 결과 보존
 
 아래 문단은 seed1만 완료됐던 당시 기록이다. 최신 세 판 합산은 상단 링크를 따른다. `kept-2485af4/`에는 현재 세 원본이 모두 보존돼 있다. 깨끗한2485af400, 원본 SHA-256 `3cf11889398f36ac8dc8c0230dc509d5e46cbaa8abdcd1f568d7a0744600dbfd`. 독립 재계산에서 전체 무거운 결정91건·중앙값1·최대4·조용한 해62, 등록 사건38건·중앙값0·최대2·조용한 해91, B11은4건·중앙값0·최대1·조용한 해121이다. 충분한3년 창을 가진 실제 영주 응답의 후속 연결은 전체132/156·등록26/35·B11 1/3, 청지기 보고641/641이다. 구 소스의 등록 연결 공백9건은 같은 ID/시각으로 남았다.
 
 후보 계측 전체와 지원/관측 ID 자료는 구 소스 seed1과 정확히 같다. 기존40건 중8건은 새 판에서도 한 번씩 제시됐고32건은 미제시다.010은 수용 후보였지만 제시되지 않은 건이 있어 정확한 최종 선택 인과는 미해결이다.3seed 합산과 최종 관문으로 세지 않는다.
+
+정적 목록 보관 압축: layers.json.gz 복원 SHA256 `4d2c2327961d186fb3fa0ea5d261e8dbc24a56a0150c52933e940fea5fb2cc16`, 원문648984바이트. 내용 변화 없는gzip 보관이며 생성기는 원래JSON출력을 유지한다.
