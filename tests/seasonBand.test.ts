@@ -71,8 +71,7 @@ test("LS1-5: the year card's 마을의 한 해 — people, houses, fields, the t
   recordTownClose(1300, 1, { ...snap({ h1: 1 }, 6, 1, 0), population: 28, coin: 0 });
   assert.equal(townYearEnds(1300), null, "the year's own winter not closed yet");
   recordTownClose(1300, 3, { ...snap({ h1: 2, h2: 2, h3: 2, h4: 2, h5: 0 }, 8, 1, 1), population: 56, coin: 34 });
-  const line = RESULTS_COPY.year.townFromTo;
-  assert.deepEqual(lordTownYear(1300), [line("인구", "12", "56"), line("집", "4", "5"), line("밭", "0", "1"), line("금고", moneyFull(60), moneyFull(34))]);
+  assert.deepEqual(lordTownYear(1300), ["인구 12명 → 56명", "집 4채 → 5채", "밭 0곳 → 1곳", `금고 ${moneyFull(60)} → ${moneyFull(34)}`]);
   assert.equal(RESULTS_COPY.year.townYear, "마을의 한 해");
   clearTownCloses();
 });

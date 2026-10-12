@@ -93,8 +93,12 @@ export const RESULTS_COPY = {
     town: "올해 마을",
     /** LS1-5 (lord-screen-v1.md): lord mode's "마을의 한 해" — the year's start and end, and a stop's cause and length. */
     townYear: "마을의 한 해",
-    townFromTo: (what: string, from: string, to: string) => `${what} ${from} → ${to}`,
-    townWords: { population: "인구", houses: "집", fields: "밭", coin: "금고" },
+    townLine: {
+      population: (from: number, to: number) => `인구 ${from}명 → ${to}명`,
+      houses: (from: number, to: number) => `집 ${from}채 → ${to}채`,
+      fields: (from: number, to: number) => `밭 ${from}곳 → ${to}곳`,
+      coin: (from: string, to: string) => `금고 ${from} → ${to}`,
+    },
     noDecision: "올해는 영주가 내린 큰 결정이 없었습니다.",
     nothing: "올해는 달라진 것이 없었습니다.",
     outcome: (predicted: string, actual: string) => `예상 ${predicted} / 실제 ${actual}`,

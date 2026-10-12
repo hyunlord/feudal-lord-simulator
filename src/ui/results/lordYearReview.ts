@@ -76,10 +76,9 @@ export const yearCard = perState((state: GameState): YearReviewView =>
 export function lordTownYear(year: number): readonly string[] | null {
   const ends = townYearEnds(year);
   if (ends === null) return null;
-  const words = RESULTS_COPY.year.townWords;
-  const line = RESULTS_COPY.year.townFromTo;
-  return [line(words.population, String(ends.start.population), String(ends.end.population)),
-    line(words.houses, String(Object.keys(ends.start.levels).length), String(Object.keys(ends.end.levels).length)),
-    line(words.fields, String(ends.start.fields), String(ends.end.fields)),
-    line(words.coin, moneyFull(ends.start.coin), moneyFull(ends.end.coin))];
+  const line = RESULTS_COPY.year.townLine;
+  return [line.population(ends.start.population, ends.end.population),
+    line.houses(Object.keys(ends.start.levels).length, Object.keys(ends.end.levels).length),
+    line.fields(ends.start.fields, ends.end.fields),
+    line.coin(moneyFull(ends.start.coin), moneyFull(ends.end.coin))];
 }
