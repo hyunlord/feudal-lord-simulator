@@ -8,6 +8,13 @@ import { seasonBand, townSnapshot, type SeasonBand, type TownSnapshot } from "./
 
 /** LS1-2: how long the band stays (real time; a newer band replaces it sooner; held while the pointer is on it). */
 export const SEASON_BAND_MS = 5_000;
+/** The time in use: SEASON_BAND_MS, or the proof query `season-band-ms=<ms>` (the audit holds the band to measure and
+ * press it on a busy machine, as `story-delay` holds a card's world). */
+export function seasonBandMs(): number {
+  if (typeof window === "undefined") return SEASON_BAND_MS;
+  const value = Number(new URLSearchParams(window.location.search).get("season-band-ms"));
+  return Number.isFinite(value) && value > 0 ? value : SEASON_BAND_MS;
+}
 const SEASON_TICKS = BALANCE.TICKS_PER_YEAR / 4;
 
 /**
@@ -24,6 +31,7 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
   const [band, setBand] = useState<SeasonBand | null>(null);
   const [held, setHeld] = useState(false);
   const [shownAt, setShownAt] = useState(0);
+  const [stayMs] = useState(seasonBandMs);
   useEffect(() => {
     const previous = lastEndRef.current;
     lastEndRef.current = lastEnd;
@@ -39,9 +47,9 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
   }, [lastEnd]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (band === null || held) return undefined;
-    const timer = window.setTimeout(() => setBand(null), Math.max(0, SEASON_BAND_MS - (performance.now() - shownAt)));
+    const timer = window.setTimeout(() => setBand(null), Math.max(0, stayMs - (performance.now() - shownAt)));
     return () => window.clearTimeout(timer);
-  }, [band, held, shownAt]);
+  }, [band, held, shownAt, stayMs]);
   return {
     band: enabled ? band : null,
     // Held while the pointer is on it; let go, it stays its full time again from then.

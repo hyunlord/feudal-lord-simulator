@@ -79,12 +79,14 @@
 .app-shell .lord-policy-set { min-height: 44px; justify-self: start; }
 .app-shell .lord-policy-last-refusal { color: var(--palette-ink-light); }
 
-/* LS1-2 (lord-screen-v1.md): the season-turn band — over the map's top middle, under the status pill's row; one line of
-   what changed in the season (a long translation wraps inside its width); not modal, a press opens the season's card. */
+/* LS1-2 (lord-screen-v1.md): the season-turn band — under the status pill, right of the left column's chronicle button and
+   left of the centred pause badge (half its long-copy width 122 px and a gap), so the crisis row's stuck-goods chip on the
+   right never meets it (it covered the band's middle at 1024 with extreme numbers); a long translation wraps inside its
+   width. Not modal; a press opens the season's card. */
 /* contrast-audit selector=".season-band" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .app-shell .season-band-layer {
-  position: absolute; top: var(--hud-left-top); left: 50%; z-index: 4; transform: translateX(-50%);
-  max-width: min(680px, calc(100vw - 340px)); pointer-events: none;
+  position: absolute; top: var(--hud-left-top); left: calc(var(--hud-edge) + 56px); z-index: 4;
+  max-width: min(640px, calc(50vw - var(--hud-edge) - 56px - 134px)); pointer-events: none;
 }
 .app-shell .season-band {
   display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: 10px; row-gap: 2px;
