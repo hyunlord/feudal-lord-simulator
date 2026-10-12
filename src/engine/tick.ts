@@ -260,7 +260,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     ...(progressed.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: progressed.wallConstructionPriority }),
     ...(state.autoplayMaterialRecovery === undefined ? {} : { materialActivity }),
     // RECOVER-1 (RC-1, RC-5): lord mode's converters pull their input (`INPUT_PULL`).
-    ...(state.agency === undefined ? {} : { inputPull: true }),
+    ...(state.agency === undefined ? {} : { inputPull: true, lordSupply: true }),
   });
   const spawnedDistributors = spawnDistributors({
     tick,

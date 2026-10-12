@@ -16,6 +16,7 @@ import { buildArchetypeWorld } from "../world/archetypeTerrain";
 import { buildWorldGrid } from "../world/terrain";
 import { RIVERSIDE_ARCHETYPE_ID } from "../content/scenario/archetypes";
 import { archetypeById } from "../content/scenario/registry";
+import { OPENING_EDGE_MARGIN } from "../content/charterRingConfig";
 
 export class InvalidGrowthOpeningError extends Error {
   readonly code = "invalid-opening-fixture";
@@ -81,7 +82,8 @@ function terrainAllowsOpening(world: Grid, offset: TileCoordinate): boolean {
   });
 }
 
-function stampOpening(world: Grid, seed: number, offset: TileCoordinate): GameState {
+/** The opening village stamped at a translation (tests pin a layout by its offset). */
+export function stampOpening(world: Grid, seed: number, offset: TileCoordinate): GameState {
   const state = structuredClone(DEFAULT_GAME_STATE);
   const { footprint, roads } = openingShape();
   const ids = new Map(footprint.map(tile => [`${tile.tx + offset.tx},${tile.ty + offset.ty}`, tile.id]));
@@ -100,12 +102,15 @@ export function selectGrowthOpening(world: Grid, seed: number) {
     for (let tx = -minX; tx < world.width - maxX; tx++) offsets.push({ tx, ty });
   }
   offsets.sort((a, b) => Math.abs(a.tx) + Math.abs(a.ty) - Math.abs(b.tx) - Math.abs(b.ty) || a.ty - b.ty || a.tx - b.tx);
-  for (const offset of offsets) {
+  // GROW-BLOCK-2a ②: a wall ring's room from the map's edge first; a map with no such legal place takes the nearest.
+  const roomy = (offset: TileCoordinate) => minX + offset.tx >= OPENING_EDGE_MARGIN && minY + offset.ty >= OPENING_EDGE_MARGIN
+    && world.width - 1 - (maxX + offset.tx) >= OPENING_EDGE_MARGIN && world.height - 1 - (maxY + offset.ty) >= OPENING_EDGE_MARGIN;
+  for (const offset of [...offsets.filter(roomy), ...offsets.filter(offset => !roomy(offset))]) {
     if (!terrainAllowsOpening(world, offset)) continue;
     const state = stampOpening(world, seed, offset);
     if (openingIssues(state).length > 0) continue;
     return { state, provenance: { mode: "translated-opening", offset,
-      selection: "minimum Manhattan offset, then dy, then dx; zero when legal" } as const };
+      selection: "minimum Manhattan offset with a wall ring's room from the edge, then dy, then dx; zero when legal" } as const };
   }
   throw new InvalidGrowthOpeningError(seed, ["no-legal-offset: all in-bounds rigid opening translations rejected"]);
 }

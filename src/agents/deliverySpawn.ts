@@ -333,6 +333,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     busyHomeIds: busyHomes,
     ...(input.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: input.wallConstructionReserve }),
     ...(input.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: input.wallConstructionPriority }),
+    ...(input.lordSupply === true ? { lordSupply: true } : {}),
   });
   const siteWalker = siteDispatch?.walkers[0] ?? null;
   if (siteDispatch !== null && siteWalker !== null && !busyHomes.has(siteWalker.homeBuildingId)) {

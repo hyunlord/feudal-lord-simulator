@@ -75,6 +75,8 @@ export interface DeliveryStepInput {
   readonly routes: DeliveryRoutePort;
   /** RECOVER-1 (RC-5): lord mode — a converter of an `INPUT_PULL` chain pulls its input by its round trip. */
   readonly inputPull?: boolean;
+  /** GROW-BLOCK-2a ③⑥: lord mode's construction supply rules (`charterTimberContext`). */
+  readonly lordSupply?: boolean;
 }
 
 export interface DeliveryStepResult {

@@ -3,7 +3,10 @@
 // sawmills). The summary: the highest population (the gate: past 528), the first palisade, and every stall — ten years
 // or more with the population and the wall both unchanged below the lord mode's full town (24 lots at level 4, 768), and
 // whether the walled town's house sites had all run out under its fields through it (GROW-BLOCK-2's count).
-//   tsx scripts/growBlockProbe.ts <seed> [years] > out.json
+//   tsx scripts/growBlockProbe.ts <seed> [years] [saveDir] > out.json   (saveDir: saves a season and five years after the
+//   market charter, and at the end — seed<n>-charter-season-<year>, seed<n>-charter-5y-<year>, seed<n>-final-<year>;
+//   [saveYears], comma-separated: also at the first tick of each — seed<n>-year-<year>)
+import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
@@ -13,10 +16,19 @@ import type { GameState } from "../src/engine/engine.types";
 import { interiorHouseSites } from "../src/engine/autoplayInteriorPlots";
 import { autoplayCanPlace } from "../src/engine/autoplayZones";
 import { treeStage } from "../src/engine/land";
+import { constructionDeliveryNeed } from "../src/economy/construction";
+import { evaluateEraRequirements } from "../src/engine/era";
+import { annualWheatNeed } from "../src/engine/autoplayArable";
+import { expectedAnnualWheat } from "../src/zones/arableOutlook";
+import { arableLayouts, stripTending } from "../src/zones/arableFields";
+import { houseHasFood } from "../src/population/houseFood";
+import { housingLotCount } from "../src/population/housing";
+import { houseRequirementRows } from "./autoplayStallProbe";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { LORD_MODE_POLICY } from "../src/engine/townAgency";
+import { encodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { zonesOf } from "../src/zones/zoneEdits";
@@ -39,6 +51,53 @@ function interior(state: GameState) {
     placeableOffField: placeable.filter(site => !onField(site.tx, site.ty)).length, lotsNeeded: Math.max(0, LORD_MODE_POLICY.maxHousingLots - state.houses.length) };
 }
 
+/**
+ * What a stalled town waits for (the user's split of "other", 2026-10-10): the next era's unmet conditions, the houses
+ * below level 4 and what each lacks (water, bread, a market or church serving it, the wall's protection), and the open
+ * building sites with their stall and the materials they still want.
+ */
+function waiting(state: GameState) {
+  const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met).map(requirement => `${requirement.key}:${requirement.current}/${requirement.target}`);
+  const below = houseRequirementRows(state).filter(house => house.level < 4);
+  const lacks: Record<string, number> = {};
+  for (const house of below) {
+    const missing = [!house.water ? "water" : null, !house.bread ? "bread" : null, house.market !== "served" ? `market:${house.market}` : null,
+      house.church !== "served" ? `church:${house.church}` : null, house.protection === "outside" ? "outside_wall" : null].filter(entry => entry !== null);
+    for (const key of missing) lacks[key!] = (lacks[key!] ?? 0) + 1;
+  }
+  const sites = state.constructionSites.filter(isBuildingConstructionSite).map(site => {
+    const need = Object.entries(constructionDeliveryNeed(site)).filter(([, amount]) => (amount ?? 0) > 0).map(([resource, amount]) => `${resource}${amount}`).join("+");
+    return `${site.kind}:${site.stall ?? "none"}${need === "" ? "" : `:${need}`}`;
+  });
+  return { unmet, belowL4: below.length, lacks, sites };
+}
+
+/** GROW-BLOCK-2a (the user's check 2026-10-11): the town's effective wheat a cell and the need a lot — does the 9.6-cell cap feed a lot? */
+function wheat(state: GameState) {
+  const arable = zonesOf(state).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0);
+  const lots = housingLotCount(state);
+  const expected = expectedAnnualWheat(state);
+  const need = annualWheatNeed(state);
+  // The strips a barley farmstead tends (ale), and those a wheat farmstead tends.
+  const layouts = arableLayouts(state);
+  const tending = stripTending(state, layouts);
+  const barleyFarms = new Set(state.buildings.filter(building => building.crop === "barley").map(building => building.id));
+  let barley = 0; let wheatCells = 0;
+  for (const strip of layouts.flatMap(layout => layout.strips)) {
+    const farm = tending.get(strip.id)?.farmsteadId ?? null;
+    if (farm === null) continue;
+    if (barleyFarms.has(farm)) barley += strip.cells.length; else wheatCells += strip.cells.length;
+  }
+  return { arable, lots, expected, need, barley, wheatCells, perWheatCell: wheatCells > 0 ? Math.round(expected / wheatCells * 10) / 10 : null,
+    barleyShare: arable > 0 ? Math.round(barley / arable * 1000) / 1000 : null, margin: need > 0 ? Math.round(expected / need * 1000) / 1000 : null,
+    perCell: arable > 0 ? Math.round(expected / arable * 10) / 10 : null, needPerLot: lots > 0 ? Math.round(need / lots) : null };
+}
+
+/** A season short of food: some home with residents has no bread at the season's end. */
+function shortOfFood(state: GameState): boolean {
+  return state.houses.some(house => house.residents > 0 && !houseHasFood(house));
+}
+
 function row(state: GameState, year: number) {
   const kinds: Record<string, number> = {};
   for (const building of state.buildings) kinds[building.kind] = (kinds[building.kind] ?? 0) + 1;
@@ -53,13 +112,23 @@ function row(state: GameState, year: number) {
     buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
-    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state) };
+    abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state),
+    wallSites: state.constructionSites.filter(site => !isBuildingConstructionSite(site) && (site.kind === "palisade_segment" || site.kind === "stone_wall_segment")).length };
 }
 
-export function growBlockProbe(seed: number, years = 125) {
+/** Renderer A's state bundle and the next Astra play (2026-10-10): saves a season after the market charter, some years on, and at the end. */
+const SAVE_AFTER_CHARTER = { season: 1_000, years: 5 * YEAR } as const;
+
+function writeState(dir: string, name: string, state: GameState) {
+  mkdirSync(dir, { recursive: true });
+  const now = new Date().toISOString();
+  writeFileSync(`${dir}/${name}.save.json`, encodeSave({ state, createdAt: now, savedAt: now }).bytes);
+}
+
+export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number })[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number })[] = [];
   let lastYear = start;
   // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
   const seenSites = new Set<string>();
@@ -67,9 +136,20 @@ export function growBlockProbe(seed: number, years = 125) {
   const abandonedSpots: { kind: string; tx: number; ty: number }[] = [];
   let abandonedBy: Record<string, number> = {};
   let replaced = 0;
+  let charterTick: number | null = null;
+  let shortSeasons = 0;
+  const saved = new Set<string>();
+  const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
+    if (saveDir !== undefined && !saved.has(key)) { saved.add(key); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
   while (stateCalendar(state).year < start + years) {
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
+    if (state.tick % 1_000 === 0 && shortOfFood(state)) shortSeasons += 1;
+    if (charterTick === null && state.era !== "hamlet") charterTick = state.tick;
+    if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.season) saveOnce("charter-season");
+    if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.years) saveOnce("charter-5y");
+    // The years asked for (a stall's middle, for engine B's handoff): the first tick of each.
+    if (saveYears.has(stateCalendar(state).year)) saveOnce(`year`);
     for (const entry of state.agency?.abandonedSites ?? []) if (!seenAbandoned.has(entry.id)) {
       seenAbandoned.add(entry.id); abandonedSpots.push(entry); abandonedBy[entry.reason] = (abandonedBy[entry.reason] ?? 0) + 1;
     }
@@ -78,8 +158,9 @@ export function growBlockProbe(seed: number, years = 125) {
       if (isBuildingConstructionSite(site) && abandonedSpots.some(spot => spot.kind === site.kind && spot.tx === site.tx && spot.ty === site.ty)) replaced += 1;
     }
     const year = stateCalendar(state).year;
-    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced }); abandonedBy = {}; replaced = 0; }
+    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons }); abandonedBy = {}; replaced = 0; shortSeasons = 0; }
   }
+  saveOnce("final");
   const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
   let runStart = 0;
   for (let index = 1; index <= rows.length; index += 1) {
@@ -100,6 +181,7 @@ export function growBlockProbe(seed: number, years = 125) {
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const [seed = "1", years = "125"] = process.argv.slice(2);
-  process.stdout.write(`${JSON.stringify(growBlockProbe(Number(seed), Number(years)))}\n`);
+  const [seed = "1", years = "125", saveDir, saveYears = ""] = process.argv.slice(2);
+  const asked = new Set(saveYears.split(",").filter(entry => entry !== "").map(Number));
+  process.stdout.write(`${JSON.stringify(growBlockProbe(Number(seed), Number(years), saveDir, asked))}\n`);
 }
