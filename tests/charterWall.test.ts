@@ -89,3 +89,98 @@ test("GB-5: a site is laid out only where its materials can come; a spot given u
   // A corner of the map no road reaches is not.
   assert.equal(constructionSiteReachable(state, "well", { tx: 1, ty: 1 }), false);
 });
+
+test("GROW-BLOCK-2a ①: a charter search that finds no wall is a failed search with its reason — never a request without a wall (seed 9, 1319)", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { readFileSync } = await import("node:fs");
+  const { decodeSave } = await import("../src/save/saveCodec");
+  const { autoplayEraAction, takeCharterSearchReport } = await import("../src/engine/autoplayEra");
+  const { lordRequests } = await import("../src/engine/townAgency");
+  // A natural lord-bot state (seed 9 at 1319 before GROW-BLOCK-2a): every condition met, 24 houses, and the mills,
+  // farmsteads and granaries round the houses leave no wall line clear (engine-GROW2-remeasure-588d28d: 528 to the end).
+  const saved = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed9-1319.save.json.gz")))).envelope.state as GameState;
+  takeCharterSearchReport();
+  assert.equal(autoplayEraAction(saved, () => ({ kind: "none" }) as never).kind, "none");
+  assert.equal(takeCharterSearchReport()?.reason, "buildings");
+  // The town's weeks (a full town may reuse a week's walk, TA-13): within 1,200 ticks the failure is on record.
+  let week = saved;
+  for (let tick = 0; tick < 1_200 && week.agency!.charterWallFailure === undefined; tick += 1) week = advanceTick(week);
+  assert.equal(week.agency!.charterWallFailure?.reason, "buildings");
+  assert.equal(week.agency!.charterWallFailure?.attempts, 1);
+  assert.equal(lordRequests(week).some(action => action.kind === "proclaim_era"), false, "no request without a wall");
+  assert.equal(charterWallPlan(week)!.stage, "failed");
+});
+
+test("GROW-BLOCK-2a ②: the opening village keeps a wall ring's room from the map's edge where the map has such a place", async () => {
+  const { OPENING_EDGE_MARGIN } = await import("../src/content/charterRingConfig");
+  const { newGameState } = await import("../src/state/newGame");
+  const gap = (seed: number) => {
+    const state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed })!;
+    const village = state.buildings.filter(building => building.kind !== "manor_house");
+    return Math.min(...village.map(building => Math.min(building.tx, building.ty, state.width - 1 - building.tx, state.height - 1 - building.ty)));
+  };
+  // Seed 9 opened 5 tiles from the east edge and its town reached x 63 of 64; seed 5 6 tiles from the north.
+  assert.ok(gap(9) >= OPENING_EDGE_MARGIN - 2, `seed 9: ${gap(9)}`);
+  assert.ok(gap(5) >= OPENING_EDGE_MARGIN - 2, `seed 5: ${gap(5)}`);
+  assert.equal(gap(1), 13, "the riverside default stays where it is");
+});
+
+test("GROW-BLOCK-2a ⑥: a camp only while the sawmills keep up — none with a sawmill's window of logs in the stores, at most two a sawmill", async () => {
+  const { campAllowed, logBacklog, CAMPS_PER_SAWMILL_MAX } = await import("../src/engine/autoplayTimberDemand");
+  const { loadAutoplayFixture } = await import("../scripts/autoplayStallProbe");
+  const state = loadAutoplayFixture("fixtures/autoplay/seed2-70140.json.gz");
+  const camp = state.buildings.find(building => building.kind === "logging_camp")!;
+  const store = state.buildings.find(building => building.kind === "storehouse")!;
+  assert.equal(logBacklog(), 137);
+  const stores = (logs: number) => ({ ...state, buildings: state.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, logs } }
+    : building.kind === "storehouse" || building.kind === "sawmill" || building.kind === "logging_camp" ? { ...building, inventory: { ...building.inventory, logs: 0 } } : building) });
+  assert.equal(campAllowed(stores(0)), true);
+  assert.equal(campAllowed(stores(137)), false, "a sawmill's window of logs waiting");
+  const camps = { ...stores(0), buildings: [...stores(0).buildings, ...Array.from({ length: CAMPS_PER_SAWMILL_MAX }, (_, n) => ({ ...camp, id: `${camp.id}-more${n}` }))] };
+  assert.equal(campAllowed(camps), false, "three camps to one sawmill");
+});
+
+test("GROW-BLOCK-2a ①: the town's request carries the wall the proclamation rules take — the player's command and the lord's bot raise the same wall (seed 20, 1316)", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { readFileSync } = await import("node:fs");
+  const { decodeSave } = await import("../src/save/saveCodec");
+  const { lordRequests } = await import("../src/engine/townAgency");
+  const { lordBotCommands } = await import("../src/engine/lordBot");
+  const { gameReducer } = await import("../src/state/gameStore");
+  // The town's own search found no wall (its service-space and room tests); the nearest reachable wall the proclamation
+  // takes stands — on the trunk the bot raised it from a request with no wall in 1316 (engine-GROW2a-growth-50fbcbe).
+  const state = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed20-1316-asked.save.json.gz")))).envelope.state as GameState;
+  const request = lordRequests(state).find(action => action.kind === "proclaim_era");
+  assert.ok(request !== undefined && request.kind === "proclaim_era" && request.candidatePath !== undefined && request.ruled === true, "the request carries its wall");
+  assert.equal(charterWallPlan(state)!.stage, "asked");
+  // The player: the proclamation command with the requested wall.
+  const player = gameReducer(state, { type: "confirm_palisade_proclamation", candidatePath: request.candidatePath });
+  assert.equal(player.era, "palisade");
+  assert.ok(player.palisade !== null);
+  // The lord's bot (it answers on the week's first tick): the same command for the same wall.
+  const { AGENCY_WEEK_TICKS } = await import("../src/content/townAgencyConfig");
+  const botTick = { ...state, tick: Math.ceil(state.tick / AGENCY_WEEK_TICKS) * AGENCY_WEEK_TICKS + 1 };
+  const granted = lordBotCommands(botTick).find(move => move.kind === "town_request");
+  assert.deepEqual(granted?.command, { type: "confirm_palisade_proclamation", candidatePath: request.candidatePath });
+});
+
+test("GROW-BLOCK-2a growthBlock: why the lord's town is not growing now, and the lord's existing lever (null when there is none)", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { readFileSync } = await import("node:fs");
+  const { decodeSave } = await import("../src/save/saveCodec");
+  const { growthBlock } = await import("../src/engine/growthBlock");
+  const load = (file: string) => decodeSave(new Uint8Array(gunzipSync(readFileSync(file)))).envelope.state as GameState;
+  // Seed 20 in 1316: the town found the wall and asks the lord — his lever is the request.
+  assert.deepEqual(growthBlock(load("fixtures/charter/seed20-1316-asked.save.json.gz")), { reason: "charter_asked", detail: null, since: null, lever: { kind: "answer_request" } });
+  // Seed 9 (old opening) after its failed search: the wall not found — his lever is his own drawing.
+  let nine = load("fixtures/charter/seed9-1319.save.json.gz");
+  for (let tick = 0; tick < 1_200 && nine.agency!.charterWallFailure === undefined; tick += 1) nine = advanceTick(nine);
+  assert.deepEqual(growthBlock(nine), { reason: "wall_not_found", detail: "buildings", since: null, lever: { kind: "draw_wall" } });
+  // The opening: the charter's timber stock unmet — the lord can buy timber.
+  const opening = lordGame();
+  const timber = growthBlock({ ...opening, population: 600, houses: opening.houses });
+  assert.ok(timber === null || timber.reason === "era_condition");
+  // Outside lord mode, nothing.
+  const { agency: _agency, ...sandbox } = opening;
+  assert.equal(growthBlock(sandbox as GameState), null);
+});

@@ -28,6 +28,7 @@ import type { AutoplayAction } from "./autoplay.types";
 import type { GameState } from "./engine.types";
 import { resolveBuildingRoute } from "./routing";
 import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
+import { housingLotCount } from "../population/housing";
 
 /** AF-13: the planner keeps the expected harvest this far above a year's need (growth headroom). */
 export const ARABLE_MARGIN_PERMILLE = 1200;
@@ -62,7 +63,18 @@ export function annualWheatNeed(state: GameState): number {
 }
 
 /** AF-13: the expected harvest falls short of the need with margin (`margin` ‰, default the planner's). */
+/**
+ * GROW-BLOCK-2a (the user's ruling 2026-10-11): the town's arable land, barley's fields too, stops at this many cells a
+ * housing lot — the guardrail's cap (scripts/efficientGrowthAcceptance.ts, 9.6). The margin's headroom took the
+ * guardrail's seed 1 past it after the Black Death's recovery each time its timeline moved (208, 232, then 248 cells for
+ * 24 lots — expected 2,334 against a need of 1,920, the margin asking 2,304 at 9.4 wheat a cell). A level-4 lot eats about
+ * 80 wheat a year; its 9.6 cells grow about 90.
+ */
+export const ARABLE_CELLS_PER_LOT_MAX = 9.6;
+
 export function arableSupplyShort(state: GameState, margin: number = activeMarginPermille): boolean {
+  const lots = housingLotCount(state);
+  if (lots > 0 && zonesOf(state).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0) >= ARABLE_CELLS_PER_LOT_MAX * lots) return false;
   return expectedAnnualWheat(state) * 1000 < annualWheatNeed(state) * margin;
 }
 
