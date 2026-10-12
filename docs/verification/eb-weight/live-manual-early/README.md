@@ -20,7 +20,7 @@ The wrapper fixes input manifest e4615d5a01c18d7b6adba9f3eec12c570f0ab14041266e9
 
 ## 영속 원본 보관
 
-실제 게임 재생 PNG·presentation은 기존 재플레이 캡처 분류의 `../replay-captures/`에, 작은 로그·manifest·도구 fixture는 이 보고서 폴더와 `originals/`에 추적 보관한다. 크기 검사나 예외 목록은 바꾸지 않았다. JSON·로그는 gzip으로 무손실 압축했으며 `provenance.json`의 각 `files` 항목에 원래 SHA·크기와 보관 경로·압축 SHA가 있다. 검토에는 임시 작업 디렉터리가 필요 없다.
+실제 게임 재생 PNG·presentation은 기존 재플레이 캡처 분류의 `../replay-captures/`에, 작은 로그·manifest·도구 fixture는 이 보고서 폴더와 `originals/`에 추적 보관한다. 크기 검사나 예외 목록은 바꾸지 않았다. JSON·로그는 gzip으로 무손실 압축했으며 `provenance.json.gz`의 각 `files` 항목에 원래 SHA·크기와 보관 경로·압축 SHA가 있다. 검토에는 임시 작업 디렉터리가 필요 없다.
 
 
 영속 화면 링크: [final](../replay-captures/engineB-live-manual-early-f1163d1/eb-live-speed/final.png) · [manual-after-keyc](../replay-captures/engineB-live-manual-early-f1163d1/eb-live-speed/manual-after-keyc.png) · [manual-before-keyc](../replay-captures/engineB-live-manual-early-f1163d1/eb-live-speed/manual-before-keyc.png)
