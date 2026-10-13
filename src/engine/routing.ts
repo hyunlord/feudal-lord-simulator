@@ -18,6 +18,8 @@ import { wallCarryRoute } from './wallCarryRoute';
 export interface RouteResolution {
   readonly path: readonly TileCoordinate[] | null;
   readonly pathCache: RoadPathCache;
+  /** SIM-SPEED: the one entry a miss adds to the cache (`pathCache` is the old cache with it), for callers that keep their own copy. */
+  readonly added?: { readonly key: string; readonly path: readonly TileCoordinate[] };
 }
 
 function compareCoordinates(left: TileCoordinate, right: TileCoordinate): number {
@@ -267,6 +269,7 @@ function withCachedPath(path: readonly TileCoordinate[], cache: RoadPathCache, k
   return {
     path,
     get pathCache() { return added ??= { ...cache, [key]: cached }; },
+    added: { key, path: cached },
   };
 }
 
