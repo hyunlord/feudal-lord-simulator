@@ -110,7 +110,49 @@ function isRoadTile(grid: WallGrid, coordinate: TileCoordinate): boolean {
   return (stepMask(grid, roadStepsOf(grid), index) & ROAD) !== 0;
 }
 
+/**
+ * SIM-SPEED: a tile's road bit, read from the tile first — a tile without a road never has the ROAD step bit (stepMask
+ * needs hasRoad), so only road tiles pay for their steps. The bot's what-if maps (a new tile array each) labelled every
+ * tile of the map that way before.
+ */
+function isRoadIndex(grid: WallGrid, steps: RoadSteps, index: number): boolean {
+  return grid.tiles[index]?.hasRoad === true && (stepMask(grid, steps, index) & ROAD) !== 0;
+}
+
+/**
+ * The road tiles connected to `starts`, in the order of the search below it (`existingRoadComponentByKeys`, kept for
+ * starts off the grid): a queue that may hold a tile twice, a tile taken when first dequeued, its neighbours north,
+ * east, south, west; a start is returned as the caller's own object. SIM-SPEED: indexes and a typed visit array
+ * instead of a string key per tile — the same tiles in the same order.
+ */
 export function existingRoadComponent(
+  grid: WallGrid,
+  starts: readonly TileCoordinate[],
+): readonly TileCoordinate[] {
+  const startIndexes = starts.map(start => tileIndex(grid, start));
+  if (startIndexes.some(index => index < 0)) return existingRoadComponentByKeys(grid, starts);
+  const steps = roadStepsOf(grid);
+  const frontier: number[] = []; const fromStart: number[] = [];
+  for (let at = 0; at < starts.length; at += 1) if (isRoadIndex(grid, steps, startIndexes[at]!)) { frontier.push(startIndexes[at]!); fromStart.push(at); }
+  const visited = new Uint8Array(grid.width * grid.height);
+  const component: TileCoordinate[] = [];
+  for (let head = 0; head < frontier.length; head += 1) {
+    const current = frontier[head]!;
+    if (visited[current] === 1) continue;
+    visited[current] = 1;
+    const tx = current % grid.width; const ty = (current - tx) / grid.width;
+    component.push(fromStart[head]! >= 0 ? starts[fromStart[head]!]! : { tx, ty });
+    const mask = stepMask(grid, steps, current);
+    for (let direction = 0; direction < 4; direction += 1) {
+      if ((mask & (1 << direction)) === 0) continue;
+      const next = (ty + STEP_Y[direction]!) * grid.width + tx + STEP_X[direction]!;
+      if (visited[next] !== 1) { frontier.push(next); fromStart.push(-1); }
+    }
+  }
+  return component;
+}
+
+export function existingRoadComponentByKeys(
   grid: WallGrid,
   starts: readonly TileCoordinate[],
 ): readonly TileCoordinate[] {
@@ -260,10 +302,17 @@ export function labelRoadComponents(grid: WallGrid): ReadonlyMap<string, number>
   if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade && cached.river === grid.river) return cached.labels;
   const labels = new Map<string, number>();
   let component = 0;
+  // SIM-SPEED: a labelled tile marked by index, a tile without a road skipped from the tile (isRoadIndex) — the same
+  // labels in the same insertion order as one string key and one step reading per tile of the map.
+  const steps = roadStepsOf(grid);
+  const labelled = new Uint8Array(grid.width * grid.height);
   for (let index = 0; index < grid.width * grid.height; index += 1) {
+    if (labelled[index] === 1 || !isRoadIndex(grid, steps, index)) continue;
     const tile = { tx: index % grid.width, ty: Math.floor(index / grid.width) };
-    if (labels.has(roadCoordinateKey(tile)) || !isRoadTile(grid, tile)) continue;
-    for (const coordinate of existingRoadComponent(grid, [tile])) labels.set(roadCoordinateKey(coordinate), component);
+    for (const coordinate of existingRoadComponent(grid, [tile])) {
+      labels.set(roadCoordinateKey(coordinate), component);
+      labelled[coordinate.ty * grid.width + coordinate.tx] = 1;
+    }
     component += 1;
   }
   componentLabels.set(grid.tiles, { width: grid.width, height: grid.height, wall: grid.palisade, river: grid.river, labels });
