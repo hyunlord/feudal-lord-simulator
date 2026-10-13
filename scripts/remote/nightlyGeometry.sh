@@ -65,7 +65,10 @@ wait_run() { # prints the exit code, or "no-slot" / "too-long"
 
 # The audit reads the pictures: pull the LFS files first (the shared store under _cache/lfs), then audit the clean tree.
 # The date in the name: a night tried again never takes the folder of an earlier night's kept run.
-run=$(launch "nightly-GEOMETRY-$(date +%m%d)" "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && bash scripts/remote/tasks.sh ui-geometry")
+# Then the lord-mode HUD area, three runs and their median (HUD-MEDIAN; RR22 review 2026-10-13: the night, not the push
+# gate — the zone state's area crept 8.4 → 8.8 → 9.1 % unmeasured, docs/verification/ls1-6/README.md). Its verdict never
+# makes the night invalid; it goes on the status line, and an OVER row is told to the session that last changed it.
+run=$(launch "nightly-GEOMETRY-$(date +%m%d)" "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && { bash scripts/remote/tasks.sh ui-geometry; rc=\$?; bash scripts/uiaudit1HudThrice.sh --only lord --out .remote/hud-lord > .remote/hud-lord.log 2>&1; echo \$? > .remote/hud-lord.exit; exit \$rc; }")
 log "nightly geometry ${head:0:8}: $run started"
 rc=$(wait_run "$run")
 # The audit exits 1 on any failure, even one in the baseline. The night is done when it left a valid result: the
@@ -82,6 +85,11 @@ valid=$(cd "$BASE/$run" 2> /dev/null && "$NODE" -e '
 if [ "${valid%% *}" = valid ]; then state=OK; echo "$head" > "$ST/last-audited"
 elif [ "$rc" = no-slot ]; then state=SKIPPED; else state=FAILED; fi
 summary=$(grep -m1 'measured' "$BASE/$run/.remote/summary.txt" 2> /dev/null | cut -c1-200)
-printf '%s %s %s %s | audit exit %s, %s | %s\n' "$state" "${head:0:8}" "$(date '+%F %T')" "$run" "$rc" "${valid:-invalid}" "${summary:-no summary}" > "$ST/status"
+# HUD lord: "ok", "OVER <state:view resolution median/budget>…", or "not measured".
+hud=$(cd "$BASE/$run" 2> /dev/null && "$NODE" -e '
+  try { const m = JSON.parse(require("fs").readFileSync(".remote/hud-lord/median.json", "utf8"));
+    const over = m.rows.filter(row => !row.pass).map(row => `${row.state}:${row.view ?? ""} ${row.resolution} ${row.median}/${row.budget}%`);
+    console.log(m.pass ? `ok (${m.rows.length} rows)` : `OVER ${over.join("; ")}`); } catch { console.log("not measured"); }' 2> /dev/null)
+printf '%s %s %s %s | audit exit %s, %s | %s | HUD lord: %s\n' "$state" "${head:0:8}" "$(date '+%F %T')" "$run" "$rc" "${valid:-invalid}" "${summary:-no summary}" "${hud:-not measured}" > "$ST/status"
 log "$(cat "$ST/status")"
 [ "$state" != FAILED ]   # a skipped night is no failure of the unit
