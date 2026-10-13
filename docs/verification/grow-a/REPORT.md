@@ -58,7 +58,7 @@
 
 ## 필수 조건
 - typecheck: 통과 — Mac.
-- 바뀐 파일에 걸린 시험: 아래 줄 — DGX.
+- 바뀐 파일에 걸린 시험: 3,982/4,000 통과(495개 파일, 나머지는 건너뜀) — DGX `engine-GROWA-tested-68ee13e`. 트리 전체를 읽는 시험은 이 보고서를 고친 마지막 커밋에서 다시 돌린다(DGX `engine-GROWA-tested2`, 그 뒤로는 커밋하지 않고 푸시).
 - 기하(바뀐 줄): 29줄 560칸, 실패 0, 못 연 조건 0 — DGX `engine-GROWA-geometry-6962630`(RR26 trailer). 특허 계획·성장 표시(`slot.population.*`·`hud.event-card.growth.market`·`hud.status-pill.*`)·식량·장부·요청 줄.
 - check:merge: 푸시 훅 — Mac.
 
