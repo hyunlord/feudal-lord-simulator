@@ -38,11 +38,15 @@ export function replaceBuilding(
   );
 }
 
+// SIM-SPEED: one collator for every comparison. String.prototype.localeCompare with no locale and no options is
+// defined (ECMA-402) as new Intl.Collator(undefined, undefined).compare — the same order, without a lookup per call.
+const ID_ORDER = new Intl.Collator();
+
 export function byId(
   left: { readonly id: string },
   right: { readonly id: string },
 ): number {
-  return left.id.localeCompare(right.id);
+  return ID_ORDER.compare(left.id, right.id);
 }
 
 /** Homes whose main cart is out (LB-7: a second cart does not block the main one). */
