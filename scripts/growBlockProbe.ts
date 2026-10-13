@@ -27,6 +27,7 @@ import { houseRequirementRows } from "./autoplayStallProbe";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
+import { idleLabourPermille } from "../src/engine/labourDemand";
 import { LORD_MODE_POLICY } from "../src/engine/townAgency";
 import { encodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
@@ -109,7 +110,9 @@ function row(state: GameState, year: number) {
   }
   const harvests = state.forestHarvests ?? [];
   return { year, population: state.population, era: state.era, palisade: state.palisade?.polygon.length ?? 0, houses: state.houses.length,
-    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
+    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, masonry: kinds.masonry ?? 0, church: kinds.church ?? 0,
+    // Option A's judgement (the user's ruling 2026-10-12): idle labour, permille of the adults (LB-9's `labour.idle`).
+    idlePermille: idleLabourPermille(state),
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
     abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state),
@@ -128,7 +131,7 @@ function writeState(dir: string, name: string, state: GameState) {
 export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number })[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number; ms: number })[] = [];
   let lastYear = start;
   // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
   const seenSites = new Set<string>();
@@ -138,6 +141,7 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
   let replaced = 0;
   let charterTick: number | null = null;
   let shortSeasons = 0;
+  let yearStart = performance.now();
   const saved = new Set<string>();
   const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
     if (saveDir !== undefined && !saved.has(key)) { saved.add(key); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
@@ -158,7 +162,8 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
       if (isBuildingConstructionSite(site) && abandonedSpots.some(spot => spot.kind === site.kind && spot.tx === site.tx && spot.ty === site.ty)) replaced += 1;
     }
     const year = stateCalendar(state).year;
-    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons }); abandonedBy = {}; replaced = 0; shortSeasons = 0; }
+    // The year's wall-clock time on this machine (quarry access ⑤'s tick-time check; a DGX run's figures only compare with its own).
+    if (year !== lastYear) { const now = performance.now(); rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons, ms: Math.round(now - yearStart) }); yearStart = now; lastYear = year; abandonedBy = {}; replaced = 0; shortSeasons = 0; }
   }
   saveOnce("final");
   const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
