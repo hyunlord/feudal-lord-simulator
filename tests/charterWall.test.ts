@@ -175,7 +175,9 @@ test("GROW-BLOCK-2a growthBlock: why the lord's town is not growing now, and the
   // Seed 9 (old opening) after its failed search: the wall not found — his lever is his own drawing.
   let nine = load("fixtures/charter/seed9-1319.save.json.gz");
   for (let tick = 0; tick < 1_200 && nine.agency!.charterWallFailure === undefined; tick += 1) nine = advanceTick(nine);
-  assert.deepEqual(growthBlock(nine), { reason: "wall_not_found", detail: "buildings", since: null, lever: { kind: "draw_wall" } });
+  // `since` (v56): the week the walks first recorded the town's population as its highest (the fixture is a v55 save).
+  assert.equal(nine.agency!.lastGrowth?.population, nine.population);
+  assert.deepEqual(growthBlock(nine), { reason: "wall_not_found", detail: "buildings", since: nine.agency!.lastGrowth!.tick, lever: { kind: "draw_wall" } });
   // The opening: the charter's timber stock unmet — the lord can buy timber.
   const opening = lordGame();
   const timber = growthBlock({ ...opening, population: 600, houses: opening.houses });
