@@ -1,3 +1,4 @@
+import { INERT_REVIEWED_EFFECT_SOURCES } from './engineBInertReviewedSources.mjs';
 import { isDeepStrictEqual } from 'node:util';
 
 export const TLINK_REVIEWED_EFFECT_SOURCES = [
@@ -60,10 +61,30 @@ function scalarKind(row, path) {
     && stableItem(row, path.slice(0, 3), 'estateId') && typeof old === 'string' && typeof current === 'string') return 'person';
   if (path.length === 2 && path[0] === 'agency' && path[1] === 'duesPermille' && numeric(old) && numeric(current)) return 'rights';
   if (path.length === 2 && path[0] === 'agency' && path[1] === 'policy' && typeof old === 'string' && typeof current === 'string') return 'command-state';
+  if (path.length === 3 && prefix(path, ['stewardship', 'standing'])
+    && (old === undefined || ['customary', 'lenient', 'strict', 'lord'].includes(old))
+    && (current === undefined || ['customary', 'lenient', 'strict', 'lord'].includes(current))
+    && (old ?? 'customary') !== (current ?? 'customary')) {
+    const auditKey = path[2].startsWith('audit:');
+    const stewards = row.after.stewardship?.stewards ?? [];
+    if (!auditKey || stewards.some(steward => path[2] === `audit:${steward.estateId}:${steward.personId}`)) return 'command-state';
+  }
   return null;
 }
 
-function reviewedScope(row) {
+// New optional policy containers arrive as one delta; inspect every leaf so unknown writes remain visible.
+function policyDeltaPaths(row, path) {
+  const policy = prefix(path, ['stewardship', 'standing'])
+    || path.length >= 4 && prefix(path, ['stewardship', 'stewards']) && path[3] === 'auditTolerance';
+  if (!policy) return [path];
+  const before = at(row.before, path), after = at(row.after, path);
+  const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+  if (!object(before) && !object(after)) return [path];
+  const keys = [...new Set([...Object.keys(object(before) ? before : {}), ...Object.keys(object(after) ? after : {})])];
+  return keys.filter(field => !isDeepStrictEqual(before?.[field], after?.[field])).flatMap(field => policyDeltaPaths(row, [...path, field]));
+}
+
+function reviewedScope(row, inertProfile) {
   const paths = new Map(), bookkeeping = [], add = (path, kind) => paths.set(key(path), { path, kind });
   let complete = false, review = 'unsupported_command_or_target';
   if (row.command.type === 'answer_estate_petition') {
@@ -76,6 +97,7 @@ function reviewedScope(row) {
       && after.decidedBy === 'lord' && numeric(before.deadline) && before.deadline >= row.tick) {
       add(['treasuryCoin'], 'money'); add([...oversight, 'tenants'], 'relation'); add([...oversight, 'merchants'], 'relation');
       bookkeeping.push([...base, 'status'], [...base, 'decidedBy']);
+      if (inertProfile && before.kind === 'charter_request' && !row.command.grant) bookkeeping.push([...oversight, 'charterResistance']);
       complete = true; review = 'stewardship.ts:175-185,471-500; history.ts:1045-1110';
       if (before.kind === 'repair' && !row.command.grant) {
         const estate = pairedIndex(row, ['estates', 'estates'], 'id', before.estateId);
@@ -90,6 +112,11 @@ function reviewedScope(row) {
       && before.stewardId === after.stewardId && before.estateId === after.estateId
       && numeric(before.tick) && before.tick <= row.tick && numeric(before.deadline) && before.deadline >= row.tick) {
       add([...steward, 'loyalty'], 'relation'); bookkeeping.push([...base, 'status']);
+      if (inertProfile) {
+        bookkeeping.push([...base, 'unrecovered'], [...base, 'superseded'], [...base, 'decidedBy'], [...steward, 'toleratedErrors']);
+        for (const field of ['auditId', 'since', 'baselineLoss', 'baselineLoyalty', 'perSeason'])
+          bookkeeping.push([...steward, 'auditTolerance', field]);
+      }
       complete = true; review = 'stewardship.ts:543-552; history.ts:1110-1115';
     }
   }
@@ -99,22 +126,28 @@ function reviewedScope(row) {
 /** Consumes only authenticated loader rows. Unknown writes never establish an exhaustive zero-effect claim. */
 export function buildTlinkOutcomeEvidence(loaded) {
   const pins = loaded.provenance.sourceFiles;
-  const compatible = TLINK_REVIEWED_EFFECT_SOURCES.every(pin => pins.some(source => source.path === pin.path && source.sha256 === pin.sha256));
-  const sourceFiles = compatible ? TLINK_REVIEWED_EFFECT_SOURCES : pins.slice(0, 1);
+  const matches = profile => profile.every(pin => pins.some(source => source.path === pin.path && source.sha256 === pin.sha256));
+  const inertProfile = matches(INERT_REVIEWED_EFFECT_SOURCES);
+  const compatible = inertProfile || matches(TLINK_REVIEWED_EFFECT_SOURCES);
+  const sourceFiles = inertProfile ? INERT_REVIEWED_EFFECT_SOURCES : compatible ? TLINK_REVIEWED_EFFECT_SOURCES : pins.slice(0, 1);
   const rows = loaded.rows.map(row => {
     const identity = { seed: row.seed, historyId: row.historyId, ordinal: row.ordinal, tick: row.tick, source: row.source };
     if (!compatible) return { ...identity, proofComplete: false, effects: [], scope: { relevantPaths: [], sourceFiles }, unsupportedReason: 'reviewed_source_pin_mismatch' };
-    const scope = reviewedScope(row), effects = new Map(), unknown = [];
+    const scope = reviewedScope(row, inertProfile), effects = new Map(), unknown = [];
     for (const { path, kind } of scope.paths.values()) {
       const value = effect(row, path, kind);
       if (!value.beforePresent || !value.afterPresent || !numeric(value.before) || !numeric(value.after)) scope.complete = false;
       else effects.set(key(path), value);
     }
-    for (const delta of row.deltaPaths) {
-      const path = delta.path;
+    for (const path of row.deltaPaths.flatMap(delta => policyDeltaPaths(row, delta.path))) {
       if (effects.has(key(path))) continue;
       const kind = scalarKind(row, path);
-      const bookkeeping = scope.bookkeeping.some(base => prefix(path, base));
+      const policyMetadata = path[3] === 'auditTolerance';
+      const knownPolicyValue = value => value === undefined || (path[4] === 'auditId'
+        ? typeof value === 'string' && value.length > 0 : Number.isSafeInteger(value) && value >= 0);
+      const bookkeeping = scope.bookkeeping.some(base => policyMetadata
+        ? key(path) === key(base) && knownPolicyValue(at(row.before, path)) && knownPolicyValue(at(row.after, path))
+        : prefix(path, base));
       if (kind) effects.set(key(path), effect(row, path, kind));
       else if (bookkeeping) effects.set(key(path), effect(row, path, 'bookkeeping'));
       else unknown.push(path);
@@ -129,6 +162,7 @@ export function buildTlinkOutcomeEvidence(loaded) {
     limitations: ['Only the authenticated loader establishes observed before/after bytes and original answer identity.',
       'Exhaustive zero-effect scopes cover off-map estate petitions and tolerated audits only. Other commands remain partial.',
       'Petition processing status/decidedBy and audit processing status are bookkeeping, never a gameplay effect.',
+      'EB-INERT pressure schedules and unrecovered accounting amounts alone never prove a visible effect: their actual future loss must have an exact linked receipt.',
       'A changed recognised scalar proves that actual value changed; unknown writes prevent an exhaustive inert classification.',
       'No future condition is inferred from an absent receipt, and no receipt or legacy score is changed.'] };
 }

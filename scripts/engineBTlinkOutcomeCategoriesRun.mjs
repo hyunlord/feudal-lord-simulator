@@ -67,6 +67,9 @@ export function loadTlinkCategoryInputs(configPath, scorePath, replayRoot, expec
       && isDeepStrictEqual(manifest.toolHashes, original.toolHashes)
       && manifest.commandStreamMatched === true && manifest.collectParityMatched === true && manifest.fullFinalStateMatched === true
       && manifest.categoriesAssigned === false && isDeepStrictEqual(manifest.exclusions, exclusions), 'observer manifest provenance/status mismatch');
+    if (manifest.capturePhase !== undefined) requireProof(manifest.capturePhase === 'producer_replay'
+      && manifest.executionHead === manifest.sourceRevision && original.toolHashes['engineBInertCapture.mjs'] === expectedHelperSha,
+    'embedded observer source/helper mismatch');
     const expectedInputs = ['manifest.json', 'preflight.json', 'original-contexts.json.gz', 'answer-classification.json', 'collect-parity.json', 'original-final-state.json.gz'];
     requireProof(isDeepStrictEqual(Object.keys(manifest.inputHashes ?? {}).sort(), [...expectedInputs].sort()), 'observer input set mismatch');
     const inputs = Object.fromEntries(expectedInputs.map(name => {
@@ -161,7 +164,7 @@ export async function runTlinkOutcomeCategories({ configPath, scorePath, replayR
     artifacts: loaded.rows.map(row => ({ seed: row.seed, historyId: row.historyId, ordinal: row.ordinal, artifact: row.artifact })) };
   report.semanticEvidence = evidence;
   report.limitations = [...loaded.limitations, ...report.limitations, ...(evidence.limitations ?? [])];
-  report.toolHashes = Object.fromEntries(['engineBTlinkOutcomeCategoriesRun.mjs', 'engineBTlinkOutcomeCategories.mjs', 'engineBTlinkOutcomeEvidence.mjs']
+  report.toolHashes = Object.fromEntries(['engineBTlinkOutcomeCategoriesRun.mjs', 'engineBTlinkOutcomeCategories.mjs', 'engineBTlinkOutcomeEvidence.mjs', 'engineBInertReviewedSources.mjs']
     .map(name => [name, sha(readFileSync(new URL(name, import.meta.url)))]));
   writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`, { flag: 'wx' });
   return report;

@@ -27,6 +27,7 @@ export function TreasuryByEstate({ state }: { readonly state: GameState }): Reac
               </li>))}</ul>
           </li>))}
       </ul>}
+      {view.toleranceLosses.map(loss => <p key={loss.id} className="treasury-estates-line" data-tolerance-entry={loss.id} data-tolerance-amount={String(loss.amount)}>{loss.line}</p>)}
       {view.unattributed === null ? null : <p className="treasury-estates-line" data-treasury-unattributed>{view.unattributed}</p>}
       <p className="treasury-estates-note">{view.note}</p>
     </section>

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "producerRun": "engineB-inert-125-72c77f6",
+  "scoreRun": "engineB-inert-rescore2-2e28807",
+  "runtimeRevision": "72c77f6157ac91f21d9fde73cf262702d0f787a0",
+  "scorerCheckout": "2e2880786c04c772f9c4746520450ad35aca6923",
+  "files": [
+    {
+      "file": "categories.json.gz",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/eb-inert-rescore/categories.json",
+      "bytes": 616197,
+      "sha256": "a7777c936d51c60b531a34570563f4556eeeed79fbc6f092c8c8e934fd27c34c",
+      "rawSha256": "5403805b1ce634521b1a4a4ea4a345f55ab3b789af94bf2f1559821ce4452311"
+    },
+    {
+      "file": "legacy-score.json.gz",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/eb-inert-rescore/legacy-score.json",
+      "bytes": 57598,
+      "sha256": "57dc7467a2ad141cdbb3e8fe29e566904b8b56e18b81882e6b46e967494f5ee8",
+      "rawSha256": "fd2ce49a4d41cab8cbc347b29cb04403d2ca0ad2086d7b8bf20d7d2ce1218793"
+    },
+    {
+      "file": "comparison.json",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/eb-inert-rescore/comparison.json",
+      "bytes": 19366,
+      "sha256": "6863bca53bda60d22b8ac957bc8f296d67e24590728d1062264592bdeb7d5c9d",
+      "rawSha256": "6863bca53bda60d22b8ac957bc8f296d67e24590728d1062264592bdeb7d5c9d"
+    },
+    {
+      "file": "config.json",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/eb-inert-rescore/config.json",
+      "bytes": 1012,
+      "sha256": "6daa2a26695d8efbeab007205e447ffeba6bbfc12d31dbd57d90c5392b9fe55d",
+      "rawSha256": "6daa2a26695d8efbeab007205e447ffeba6bbfc12d31dbd57d90c5392b9fe55d"
+    },
+    {
+      "file": "legacy-scorer-exit-code",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/eb-inert-rescore/legacy-scorer-exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "rawSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "file": "category-scorer-exit-code",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/eb-inert-rescore/category-scorer-exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "rawSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "file": "producer-run.log",
+      "source": ".remote-runs/engineB-inert-125-72c77f6/run.log",
+      "bytes": 17820,
+      "sha256": "7fa186caff415562f411822a26576e19ebf8b079d486368aa541637398212836",
+      "rawSha256": "7fa186caff415562f411822a26576e19ebf8b079d486368aa541637398212836"
+    },
+    {
+      "file": "producer-exit-code",
+      "source": ".remote-runs/engineB-inert-125-72c77f6/exit-code",
+      "bytes": 4,
+      "sha256": "e726b440cc164001999e718b51780d80314709efe06e7857282377be9111127b",
+      "rawSha256": "e726b440cc164001999e718b51780d80314709efe06e7857282377be9111127b"
+    },
+    {
+      "file": "producer-timing.env",
+      "source": ".remote-runs/engineB-inert-125-72c77f6/timing.env",
+      "bytes": 81,
+      "sha256": "251aedd297aac8a42b6734d3aaf6c75ec6c5938fd864b293b8192c6e796c883d",
+      "rawSha256": "251aedd297aac8a42b6734d3aaf6c75ec6c5938fd864b293b8192c6e796c883d"
+    },
+    {
+      "file": "rescore-run.log",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/run.log",
+      "bytes": 2380,
+      "sha256": "d23710fc2699a001d08c2ccd9f7127b2aa24507ece2fd334891de32d06552c93",
+      "rawSha256": "d23710fc2699a001d08c2ccd9f7127b2aa24507ece2fd334891de32d06552c93"
+    },
+    {
+      "file": "rescore-exit-code",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "rawSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "file": "rescore-timing.env",
+      "source": ".remote-runs/engineB-inert-rescore2-2e28807/timing.env",
+      "bytes": 77,
+      "sha256": "c5abbcafa4d2f6308d175e0b8d5e12e3f945cc673facbae3571c09be0b5c97c7",
+      "rawSha256": "c5abbcafa4d2f6308d175e0b8d5e12e3f945cc673facbae3571c09be0b5c97c7"
+    },
+    {
+      "file": "producer-status.json",
+      "source": ".remote-runs/engineB-inert-125-72c77f6/eb-inert-125/producer-status.json",
+      "bytes": 189,
+      "sha256": "6c254be569492435a4db2ed6542e70526264d6546209d8650a7c1a4dc3918396",
+      "rawSha256": "6c254be569492435a4db2ed6542e70526264d6546209d8650a7c1a4dc3918396"
+    },
+    {
+      "file": "frequency-detail.json",
+      "bytes": 3552,
+      "sha256": "ddc291da23f4f891f73bdbc7adb6ad2b879947b49a662657debe8dcdfdd3c793"
+    }
+  ]
+}

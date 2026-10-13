@@ -4,6 +4,7 @@ import type { TreasuryKind } from "../../../engine/treasuryReads";
 import { moneyFull, moneyFullDelta } from "../../money.ko";
 
 export const TREASURY_COPY = {
+  toleranceLoss: (date: string, amount: number) => `${date} · 눈감아 준 오류로 수입 ${moneyFullDelta(amount)}(위 합계에 포함)`,
   heading: "영지별 금고 출납",
   regionLabel: "영지별 금고 출납: 지대, 청원, 계약, 지출",
   window: (from: string, to: string) => `최근 기간 ${from} ~ ${to} · 장부 그대로`,

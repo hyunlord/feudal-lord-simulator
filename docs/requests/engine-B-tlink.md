@@ -241,3 +241,7 @@ RR22 확인 요청: `scripts/engineBTlinkOutcomeCategories.mjs`, `scripts/engine
 RR22 정정: 위의 측정 도구 안전 목록 요청은 사용자의 후속 지시로 철회됐다. 안전 목록은 넓히지 않으며 REMOTE 그림자 측정(a′)에 맡긴다.
 
 EB-ANSWER-EFFECTS 최종 측정 소스 `82012446cce47a09386708159f577d9977194d29`. 표준fixture13개 v56→v57은 기존 생성기의 재인코딩 경로로 보존했고 이전/이후 state 완전동등, 소비8파일54/54를 별도확인했다. `decisionTrace.ts`, `decisionTrace.types.ts`, `decisionTraceAnswers.ts`, 저장 migration/index/version/fingerprint는 EB-INERT/GROW와 겹칠 수 있으므로 엔진이 양쪽을 함께 검토한다.
+
+### EB-INERT 후속의 RR22 정정
+
+사용자의 최신 지시에 따라 위 측정 도구 네 개의 안전 목록 추가 요청은 철회한다. 안전 목록을 손으로 넓히지 않는다. REMOTE의 그림자 측정(a′)이 판단 근거이며, EB-INERT는 격리 가지에서 검토한다. 본선 통합 때 엔진의 src 변경에 따른 기하 감사는 별도 수행한다.

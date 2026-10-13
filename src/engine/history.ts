@@ -1075,7 +1075,10 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     line("stewardship.rules", { amount: rules.amountAtLeast ?? -1, rights: rules.rights ? 1 : 0, marriage: rules.marriage ? 1 : 0, recurring: rules.recurring === true ? 1 : 0 });
   }
   for (const summary of now.summaries.filter(entry => !(was?.summaries ?? []).includes(entry))) {
-    line("stewardship.season", { house: house(summary.estateId), reported: summary.reported, mode: summary.mode, overloaded: summary.overloaded ? 1 : 0 }, 0);
+    line("stewardship.season", { house: house(summary.estateId), reported: summary.reported, mode: summary.mode, overloaded: summary.overloaded ? 1 : 0,
+      ...(summary.charterLoss && summary.charterLoss.amount > 0 ? { marketLoss: summary.charterLoss.amount } : {}),
+      ...((summary.toleratedLosses ?? []).some(loss => loss.amount > 0)
+        ? { toleratedError: (summary.toleratedLosses ?? []).reduce((total, loss) => total + Math.max(0, loss.amount), 0) } : {}) }, 0);
   }
   for (const petition of now.petitions) {
     const old = was?.petitions.find(entry => entry.id === petition.id);
@@ -1110,6 +1113,8 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
       line("stewardship.escalated", { stewardId, kind: petition.kind, rule: petition.escalated, amount: petition.amount });
     } else if (old === undefined && petition.escalated === "direct") {
       line("stewardship.brought", { house: house(petition.estateId), kind: petition.kind, late: petition.reachesLord === undefined ? 0 : 1, amount: petition.amount }, 0);
+    } else if (old !== undefined && old.status === "open" && petition.decidedBy === "steward") {
+      line("stewardship.steward_decided", { stewardId, kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
     } else if (old !== undefined && old.status === "open" && petition.status !== "open") {
       line(petition.status === "lapsed" ? "stewardship.lapsed" : "stewardship.lord_decided", { house: house(petition.estateId), kind: petition.kind, granted: petition.status === "granted" ? 1 : 0 });
     }
@@ -1119,7 +1124,8 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     const old = was?.audits.find(entry => entry.id === audit.id);
     if (old === undefined) {
       line(audit.status === "clean" ? "stewardship.audit_clean" : "stewardship.audit_found",
-        { house: house(audit.estateId), stewardId: audit.stewardId, mode: audit.mode, kept: audit.revealedKept, errors: audit.revealedErrors }, 2);
+        { house: house(audit.estateId), stewardId: audit.stewardId, mode: audit.mode, kept: audit.revealedKept, errors: audit.revealedErrors,
+          ...(audit.decidedBy === "steward" ? { standingTolerance: 1 } : {}) }, audit.decidedBy === "steward" ? 0 : 2);
     } else if (old.status === "pending" && audit.status !== "pending") {
       line("stewardship.audit_answered", { stewardId: audit.stewardId, choice: audit.status, recovered: audit.status === "punished" ? Math.round(audit.revealedKept * PUNISH_RECOVERY / 1000) : 0 }, 2);
       // A punished steward's faction remembers it (its relation moves through the ledger).

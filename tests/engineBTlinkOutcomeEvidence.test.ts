@@ -126,3 +126,80 @@ test('actual strength of the same claim is a rights effect, while replacement an
     assert.equal(changes(mapped({ command, before, after: { estates: { claims } } })).length, 0);
   }
 });
+
+test('reviewed INERT schedules alone are not actual economic outcomes and mutated pins stay unknown', async () => {
+  const { INERT_REVIEWED_EFFECT_SOURCES } = await import(new URL('../scripts/engineBInertReviewedSources.mjs', import.meta.url).href);
+  for (const kind of ['audit', 'petition'] as const) {
+    const item = fixture(kind);
+    if (kind === 'audit') {
+      Object.assign(item.after.stewardship.audits[0] ?? {}, { unrecovered: 64 });
+      Object.assign(item.after.stewardship.stewards[0] ?? {}, { toleratedErrors: [{ auditId: 'a', unrecovered: 64, perSeason: 4, remainingSeasons: 4 }] });
+    } else Object.assign(item.after.stewardship.oversight[0] ?? {}, { charterResistance: { petitionId: 'p', since: 10, remainingSeasons: 4, retryAfter: 12010 } });
+    const row = { ...item, seed: 1, historyId: 'answer', ordinal: 1, tick: 10, source: 'source',
+      deltaPaths: tlinkImmediateDifferences(item.before, item.after).map((delta: { path: string }) => ({ ...delta, path: delta.path.slice(1).split('/') })) };
+    const proof = buildTlinkOutcomeEvidence({ provenance: { sourceFiles: INERT_REVIEWED_EFFECT_SOURCES, originalScoreSha256: '1'.repeat(64) }, rows: [row] }).rows[0];
+    assert.equal(proof.proofComplete, true); assert.equal(changes(proof).length, 0);
+    const altered = INERT_REVIEWED_EFFECT_SOURCES.map((pin: { path: string; sha256: string }) => pin.path.endsWith('stewardshipConsequences.ts') ? { ...pin, sha256: '0'.repeat(64) } : pin);
+    const unknown = buildTlinkOutcomeEvidence({ provenance: { sourceFiles: altered, originalScoreSha256: '1'.repeat(64) }, rows: [row] }).rows[0];
+    assert.equal(unknown.proofComplete, false); assert.deepEqual(unknown.effects, []);
+  }
+});
+
+test('INERT reviewed source profile matches every current reviewed actuator before a measurement run', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { createHash } = await import('node:crypto');
+  const { INERT_REVIEWED_EFFECT_SOURCES } = await import(new URL('../scripts/engineBInertReviewedSources.mjs', import.meta.url).href);
+  for (const pin of INERT_REVIEWED_EFFECT_SOURCES) {
+    const actual = createHash('sha256').update(readFileSync(new URL(`../${pin.path}`, import.meta.url))).digest('hex');
+    assert.equal(actual, pin.sha256, `Source changed after semantic review: ${pin.path}`);
+  }
+});
+
+async function policyProof(extra: Record<string, unknown> = {}, active = true) {
+  const { INERT_REVIEWED_EFFECT_SOURCES } = await import(new URL('../scripts/engineBInertReviewedSources.mjs', import.meta.url).href);
+  const item = fixture('audit');
+  const before = { ...item.before, stewardship: { ...item.before.stewardship,
+    stewards: [{ personId: 's', estateId: 'e', loyalty: 100 }] } };
+  const after = { ...item.after, stewardship: { ...item.after.stewardship,
+    ...(active ? { standing: { 'audit:e:s': 'lenient' } } : {}),
+    audits: item.after.stewardship.audits.map(audit => ({ ...audit, decidedBy: 'lord', unrecovered: 8 })),
+    stewards: [{ personId: 's', estateId: 'e', loyalty: 100,
+      auditTolerance: { auditId: 'a', since: 10, baselineLoss: 8, baselineLoyalty: 100, perSeason: 1, ...extra } }] } };
+  const deltaPaths = tlinkImmediateDifferences(before, after).map((delta: { path: string }) => ({ ...delta, path: delta.path.slice(1).split('/') }));
+  return buildTlinkOutcomeEvidence({ provenance: { sourceFiles: INERT_REVIEWED_EFFECT_SOURCES }, rows: [{ before, after,
+    command: item.command, tick: 10, deltaPaths }] }).rows[0];
+}
+
+test('INERT standing policy enactment is an actual oversight change, not imaginary immediate cash', async () => {
+  const proof = await policyProof();
+  assert.equal(proof.proofComplete, true);
+  assert.equal(changes(proof).length, 1);
+  assert.equal(changes(proof)[0].kind, 'command-state');
+  assert.deepEqual(changes(proof)[0].path, ['stewardship', 'standing', 'audit:e:s']);
+});
+test('INERT tolerance metadata and future loss schedule alone never prove a visible outcome', async () => {
+  const proof = await policyProof({}, false);
+  assert.equal(proof.proofComplete, true);
+  assert.equal(changes(proof).length, 0);
+  assert.equal(proof.noImmediateChangeClaim, true);
+});
+test('INERT new unknown policy fields remain unknown instead of being blanket hidden', async () => {
+  const proof = await policyProof({ secretCashEffect: 50 });
+  assert.equal(proof.proofComplete, false);
+  assert.ok(proof.unknownChangedPaths.some((path: string[]) => path.at(-1) === 'secretCashEffect'));
+});
+test('INERT malformed nested known policy fields are still unknown writes', async () => {
+  const proof = await policyProof({ baselineLoss: { secretCashEffect: 50 } });
+  assert.equal(proof.proofComplete, false);
+  assert.ok(proof.unknownChangedPaths.some((path: string[]) => path.at(-1) === 'secretCashEffect'));
+});
+test('standing policy withdrawal is actual command state but malformed settings are unknown', () => {
+  const item = fixture('audit');
+  const before = { ...item.before, stewardship: { ...item.before.stewardship, standing: { 'sender:merchants': 'lenient' } } };
+  for (const [setting, expected] of [['lord', 1], ['invented', 0]] as const) {
+    const after = { ...item.before, stewardship: { ...item.before.stewardship, standing: { 'sender:merchants': setting } } };
+    const proof = mapped({ before, after, command: { type: 'set_standing_policy', kind: 'sender:merchants', setting } });
+    assert.equal(changes(proof).length, expected);
+    if (!expected) assert.equal(proof.proofComplete, false);
+  }
+});

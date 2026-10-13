@@ -62,7 +62,7 @@ export function traceAnswerProblem(state: Readonly<Record<string, unknown>>): st
     }
     if (Object.hasOwn(answer, 'effects')) {
       const problem = answerEffectsProblem(answer.effects);
-      if (problem) return `${at}.${problem}`;
+      if (problem !== null) return `${at}.${problem}`;
     }
     if (!Array.isArray(answer.memoryEvidence)) return `${at}.memoryEvidence must be an array`;
     const memories = new Set<string>();

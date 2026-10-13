@@ -13,8 +13,10 @@ function bookkeeping(path: readonly string[]): boolean {
   const last = path.at(-1) ?? '';
   if (['memory', 'timeline', 'history', 'nextOrdinal', 'nextNegotiation', 'nextPromise', 'nextClaim', 'nextSuit', 'nextPetition', 'nextAudit',
     'nextSteward', 'nextPerson', 'nextEstate', 'nextSubsidy', 'nextRequest', 'nextOrder', 'id', 'settledTick'].includes(last)) return true;
+  if (path[0] === 'stewardship' && path.includes('auditTolerance') && ['auditId', 'since'].includes(last)) return true;
+  if (last === 'policyAuditId' && path[0] === 'stewardship' && path[1] === 'audits') return true;
   if (last.startsWith('next') && /[A-Z]/.test(last[4] ?? '')) return true;
-  if (path[0] === 'stewardship' && ['petitions', 'audits'].includes(path[1] ?? '') && ['status', 'decidedBy', 'policy'].includes(last)) return true;
+  if (path[0] === 'stewardship' && ['petitions', 'audits'].includes(path[1] ?? '') && ['status', 'decidedBy', 'policy', 'unrecovered', 'superseded'].includes(last)) return true;
   if (path[0] === 'politics' && path[1] === 'petitions' && ['status', 'response', 'decidedTick', 'respondedTick'].includes(last)) return true;
   if (path[0] === 'politics' && ['decisions', 'chronicle'].includes(path[1] ?? '')) return true;
   return path[0] === 'agency' && path[1] === 'duesAgreement' && ['tick', 'occurrenceId'].includes(last);
@@ -23,7 +25,7 @@ function target(path: readonly string[]): AnswerEffectTarget {
   const root = path[0], leaf = path.at(-1);
   if (root === 'treasuryCoin' || root === 'treasuryTimber') return 'treasury';
   if (root === 'factions' || path[1] === 'relations' || ['tenants', 'merchants', 'loyalty'].includes(leaf ?? '')) return 'relation';
-  if (path[1] === 'oversight' || path[1] === 'rules' || path[1] === 'stewards') return 'oversight';
+  if (path[1] === 'standing' || path[1] === 'oversight' || path[1] === 'rules' || path[1] === 'stewards') return 'oversight';
   if (path[1] === 'people' || root === 'persons' || root === 'lordship') return 'person';
   if (path[1] === 'rights' || path[1] === 'pieces' || path[1] === 'claims' || path[1] === 'suits') return 'right';
   if (path.includes('terms') || path.includes('counterTerms') || path.includes('effectiveTerms') || root === 'registry') return 'term';

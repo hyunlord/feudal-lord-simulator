@@ -1,3 +1,4 @@
+import { INERT_REVIEWED_EFFECT_SOURCES } from './engineBInertReviewedSources.mjs';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -7,10 +8,12 @@ import { verifyOutcomeReplay, outcomeSha256, requireOutcome } from './engineBOut
 import { scoreOutcomeGate } from './engineBOutcomeGate.mjs';
 
 export const RESIDUAL_SOURCE_FILES = ['src/engine/history.ts', 'src/engine/estateSuits.ts', 'src/engine/stewardship.ts', 'src/engine/decisionTraceAnswerReceipts.ts'];
-// The reviewed diff only adds card presentation params; both BIG decision branches are unchanged.
+// Reviewed diffs add card presentation params or seasonal loss receipt fields; both BIG decision branches are unchanged.
 export const PHASE_HISTORY_SOURCES = [
   { revision: '64a16b5a6c1d91024415039db89bb88412528e15', sha256: 'f1872051959a546188109683e61a317d27c41ed8ea73443a5fe6e8b3c5452215' },
   { revision: 'f527d6856a21ddf5943fd8094bc24a06f54ade97', sha256: '133037b55d3c0c0c9f9147f0799053a47d0de7c07a5ddc8a28c8971172087429' },
+  { review: 'EB-INERT seasonal receipt fields; unchanged market/stone phase producers',
+    sha256: INERT_REVIEWED_EFFECT_SOURCES.find(pin => pin.path === 'src/engine/history.ts').sha256 },
 ];
 const root = fileURLToPath(new URL('../', import.meta.url));
 const categories = ['insufficient-observation', 'immediate-only-observed', 'conditional-unmet-observed', 'unexplained'];
