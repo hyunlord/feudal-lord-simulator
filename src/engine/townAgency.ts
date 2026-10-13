@@ -569,7 +569,9 @@ export function advanceTownAgency(input: GameState): GameState {
   const charterSince = ready ? agency.charterSince ?? state.tick : undefined;
   const holding = charterSince !== undefined && state.tick - charterSince < CHARTER_HOLD_WEEKS * AGENCY_WEEK_TICKS;
   const { charterSince: _since, ...rest } = agency;
-  const week: GameState = { ...state, agency: { ...rest, actors, ...(charterSince === undefined ? {} : { charterSince }) } };
+  // GB2A-7: the week the population first passes its highest yet is the town's last growth (growthBlock's `since`).
+  const lastGrowth = state.population > (agency.lastGrowth?.population ?? 0) ? { tick: state.tick, population: state.population } : agency.lastGrowth;
+  const week: GameState = { ...state, agency: { ...rest, actors, ...(charterSince === undefined ? {} : { charterSince }), ...(lastGrowth === undefined ? {} : { lastGrowth }) } };
   const open = (current: GameState) => current.constructionSites.filter(site => isBuildingConstructionSite(site)).length;
   // LM-E1b (TA-11): a town with every site busy starts nothing — no walk; its request is only the wall's priority when
   // the reserve locks the work (`planningEarlyNeeds`). Otherwise the week's one walk gives the needs and the requests.

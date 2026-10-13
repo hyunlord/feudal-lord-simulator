@@ -42,6 +42,8 @@ const SEASON = PRESSURE_BALANCE.seasonTicks;
 const YEAR = 4 * SEASON;
 const DISPOSITIONS: readonly StewardDisposition[] = ["merchant", "peasant", "greedy"];
 const PETITION_ORDER: readonly EstatePetitionKind[] = ["rent_relief", "market_dues", "repair", "common_dispute", "charter_request", "marriage_licence"];
+/** INERT: the kinds a season's slot goes to when the charter request is held back. */
+const FREE_PETITION_ORDER: readonly EstatePetitionKind[] = PETITION_ORDER.filter(kind => kind !== "charter_request");
 
 export const EMPTY_STEWARDSHIP: StewardshipState = { oversight: [], stewards: [], petitions: [], summaries: [], audits: [], rules: DEFAULT_RULES, nextPetition: 1, nextAudit: 1 };
 
@@ -305,7 +307,7 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   if (charterPetitionSuppressed(state, oversight)) {
     stewardship = { ...stewardship, petitions: stewardship.petitions.map(petition =>
       petition.estateId === estate.id && petition.kind === "charter_request" && petition.status === "open"
-        ? { ...petition, status: "refused" as const, decidedBy: "steward" as const } : petition) };
+        ? { ...petition, status: "refused" as const, decidedBy: "steward" as const, precedent: true as const } : petition) };
   }
   // Petitions brought to the lord and not answered by their deadline lapse (refused, and the wait remembered).
   const lapsed = stewardship.petitions.filter(petition => petition.estateId === estate.id && petition.status === "open" && state.tick > petition.deadline);
@@ -317,7 +319,18 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   }
   stewardship = { ...stewardship, petitions: stewardship.petitions.map(petition => lapsed.includes(petition) ? { ...petition, status: "lapsed" as const } : petition) };
   // The season's petition.
-  const kind = PETITION_ORDER[hashSeed(state.seed, "estate-petition", number, state.tick) % PETITION_ORDER.length]!;
+  const drawn = PETITION_ORDER[hashSeed(state.seed, "estate-petition", number, state.tick) % PETITION_ORDER.length]!;
+  // INERT (the user's rulings 2026-10-10/13): a charter request the merchants' resistance holds back is closed by the
+  // steward under the lord's last refusal — no effect, one line in his report ("선례대로 거절": `precedent`) — and the
+  // season's slot goes to another kind, so the estate's other petitions are not held back with it.
+  const suppressed = drawn === "charter_request" && charterPetitionSuppressed(state, oversight);
+  const kind = suppressed ? FREE_PETITION_ORDER[hashSeed(state.seed, "estate-petition-free", number, state.tick) % FREE_PETITION_ORDER.length]! : drawn;
+  if (suppressed) {
+    const charter = PETITION_KINDS.charter_request;
+    stewardship = { ...stewardship, petitions: [...stewardship.petitions, { id: `estate-petition-${stewardship.nextPetition}`, estateId: estate.id,
+      kind: "charter_request", group: charter.group, amount: 0, rights: charter.rights === true, marriage: charter.marriage === true, tick: state.tick,
+      deadline: state.tick, status: "refused", decidedBy: "steward", precedent: true }], nextPetition: stewardship.nextPetition + 1 };
+  }
   const def = PETITION_KINDS[kind];
   const base = Math.round(estatesOf(next).estates.find(entry => entry.id === estate.id)!.annualValue / 4);
   const size = def.size[0] + hashSeed(state.seed, "estate-petition-size", number, state.tick) % (def.size[1] - def.size[0] + 1);
@@ -326,7 +339,7 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   // has it: his own disposition's answer); it comes to the lord when the lord keeps the kind, when his exceptions ask,
   // or when the sum is large. LM9-3's precedent (the lord's earlier answer to the same kind) is gone.
   let answered: EstatePetition | undefined;
-  if (kind !== "charter_request" || !charterPetitionSuppressed(state, oversight)) {
+  {
     const policy = standingSetting(state, kind);
     const matched = oversight.mode === "direct" ? "direct" as const
       : exceptionMatch(stewardship.rules, { amount, rights: def.rights === true, marriage: def.marriage === true })

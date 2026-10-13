@@ -25,7 +25,7 @@ test('v54 migration preserves unknown membership without deriving answers from a
 });
 test('actual command own-answer state roundtrips without changes', () => {
   const state = answered();
-  assert.equal(SAVE_SCHEMA_VERSION, 57, 'isolated provisional number; engine integration must renumber the GROW collision');
+  assert.equal(SAVE_SCHEMA_VERSION, 56, 'TRACE-LINK and INERT land together as v56 (the user ruling 2026-10-10)');
   assert.deepEqual(reload(state), state);
 });
 test('old saves and pruned roots do not require invented answer membership', () => {
@@ -67,7 +67,7 @@ test('v54 envelope decoding leaves legacy membership absent', () => {
   assert.equal(Object.hasOwn(decoded.envelope.state.trace ?? {}, 'answers'), false);
 });
 test('prepared fingerprint fixture contains real own answers and nested memory evidence', () => {
-  const state = decodeSave(new Uint8Array(readFileSync('fixtures/saves/v55/eb-tlink-own-answer.save.json'))).envelope.state;
+  const state = decodeSave(new Uint8Array(readFileSync('fixtures/saves/v56/eb-tlink-own-answer.save.json'))).envelope.state;
   assert.equal(state.trace?.answers?.length, 2);
   assert.ok(state.trace?.answers?.some(answer => answer.memoryEvidence.length > 0));
   assert.deepEqual(reload(state), state);

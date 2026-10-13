@@ -7,7 +7,7 @@ import { gameReducer } from '../src/state/gameStore';
 import { answerEffects, retainAnswer } from '../src/engine/decisionTraceAnswers';
 import { captureAnswerEffects } from '../src/engine/answerEffectCapture';
 import type { GameState } from '../src/engine/engine.types';
-import { migrateV56ToV57 } from '../src/save/migrations/v56ToV57';
+import { migrateV55ToV56 } from '../src/save/migrations/v55ToV56';
 const base = (): GameState => ({ ...decodeSave(new Uint8Array(readFileSync('fixtures/saves/v49/chapter-two-town.save.json'))).envelope.state,
   agency: initialAgency(), trace: { decisions: [], acts: [] } });
 const roundTrip = (state: GameState) => decodeSave(encodeSave({ state, createdAt: '2026-10-10T00:00:00Z', savedAt: '2026-10-10T00:00:00Z' }).bytes).envelope.state;
@@ -27,8 +27,8 @@ test('unknown legacy absence is distinct from a recorded zero-effect answer', ()
   const after = retainAnswer(state, state, { id: 'h-test', tick: state.tick, by: 'lord', kind: 'audit', source: 'audit:tolerate:a', weights: [], targets: [] }, 'h-test');
   assert.deepEqual(answerEffects(after, 'h-test'), []);
   assert.equal(answerEffects(after, 'unknown'), undefined);
-  const legacy = migrateV56ToV57({ schemaVersion: 56, state });
-  assert.deepEqual(legacy, { schemaVersion: 57, state });
+  const legacy = migrateV55ToV56({ schemaVersion: 55, state });
+  assert.deepEqual(legacy, { schemaVersion: 56, state });
   assert.equal(answerEffects(state, 'h-test'), undefined);
 });
 test('snapshots copy scalars rather than retaining mutable domain values', () => {

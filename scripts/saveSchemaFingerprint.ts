@@ -17,8 +17,8 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 export const FINGERPRINT_PATH = resolve(ROOT, `src/save/schemaFingerprint.v${SAVE_SCHEMA_VERSION}.json`);
 export const FINGERPRINT_FIXTURES = [
-  "fixtures/saves/v57/eb-answer-effects.save.json",
-  "fixtures/saves/v55/eb-tlink-own-answer.save.json",
+  "fixtures/saves/v56/eb-answer-effects.save.json",
+  "fixtures/saves/v56/eb-tlink-own-answer.save.json",
   "fixtures/saves/v1/new-game.save.json",
   "fixtures/saves/v1/population-176.save.json",
   "fixtures/saves/v1/palisade-construction.save.json",
@@ -36,9 +36,9 @@ export const FINGERPRINT_FIXTURES = [
   "fixtures/determinism/seed1/final-state.json",
   "fixtures/saves/v56/eb-tlink-estate-relation.save.json",
   "fixtures/saves/v56/eb-tlink-estate-relation-consumed.save.json",
-  "fixtures/saves/v57/eb-inert-pressure.save.json",
-  "fixtures/saves/v57/eb-inert-standing.save.json",
-  "fixtures/saves/v57/eb-inert-superseded.save.json",
+  "fixtures/saves/v56/eb-inert-pressure.save.json",
+  "fixtures/saves/v56/eb-inert-standing.save.json",
+  "fixtures/saves/v56/eb-inert-superseded.save.json",
 ] as const;
 /** Fixture states are advanced through current code so fields the engine writes appear in the shape. */
 const ADVANCE_TICKS = 300;

@@ -22,15 +22,15 @@ function pressured() {
 test('active pressures and seasonal loss provenance survive save roundtrip', () => {
   const state = pressured();
   const saved = encodeSave({ state, createdAt: '2026-10-10', savedAt: '2026-10-10' });
-  assert.equal(saved.header.schemaVersion, 57);
+  assert.equal(saved.header.schemaVersion, 56);
   assert.deepEqual(decodeSave(saved.bytes).envelope.state, state);
 });
-test('v56 migration preserves legacy state without inventing tolerated errors or charter resistance', () => {
+test('v55→v56 migration preserves legacy state without inventing tolerated errors or charter resistance', () => {
   const state = delegated();
   const saved = encodeSave({ state, createdAt: '2026-10-10', savedAt: '2026-10-10' });
-  const text = new TextDecoder().decode(saved.bytes).replace(`"schemaVersion":${SAVE_SCHEMA_VERSION}`, '"schemaVersion":56');
+  const text = new TextDecoder().decode(saved.bytes).replace(`"schemaVersion":${SAVE_SCHEMA_VERSION}`, '"schemaVersion":55');
   const restored = decodeSave(new TextEncoder().encode(text));
-  assert.equal(restored.migratedFrom, 56);
+  assert.equal(restored.migratedFrom, 55);
   assert.deepEqual(restored.envelope.state, state);
 });
 test('malformed pressure identities, amounts and bounded durations are rejected', () => {
@@ -59,8 +59,8 @@ test('expired charter cooldown and zero audit recovery are valid without live so
   } }));
 });
 
-test('prepared v57 fixture contains real active pressures, realized losses and their exact answers', () => {
-  const { envelope } = decodeSave(new Uint8Array(readFileSync('fixtures/saves/v57/eb-inert-pressure.save.json')));
+test('prepared v56 fixture contains real active pressures, realized losses and their exact answers', () => {
+  const { envelope } = decodeSave(new Uint8Array(readFileSync('fixtures/saves/v56/eb-inert-pressure.save.json')));
   const state = envelope.state, own = state.stewardship;
   assert.ok(own);
   assert.equal(own.oversight[0]?.charterResistance?.remainingSeasons, 3);
