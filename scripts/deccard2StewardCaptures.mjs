@@ -45,10 +45,13 @@ const standingOf = (page, kind) => page.evaluate(key => window.__FEUDAL_PHASE10_
 // 1–3. The season card's steward section, its drill-in, the way to the kind's policy, the screen.
 {
   // LM-R3 pauseReasons: time runs on to the season's close (the lord-mode auto-pause would stop it).
-  const { context, page } = await open({ run: true, query: '&story-delay=600000&auto-pause=off' });
+  const { context, page } = await open({ run: true, query: '&story-delay=600000&auto-pause=off&season-band-ms=600000' });
   page.on('pageerror', error => errors.push(String(error).slice(0, 300)));
   await page.keyboard.press('Digit3');
-  const opened = await page.locator('.season-ledger-card .season-steward >> visible=true').first().waitFor({ timeout: 120_000 }).then(() => true, () => false);
+  // LS1-2: lord mode's season card never opens by itself — the season-turn band at the close opens it.
+  const band = await page.locator('.season-band >> visible=true').first().waitFor({ timeout: 120_000 }).then(() => true, () => false);
+  if (band) await page.locator('.season-band').first().click();
+  const opened = band && await page.locator('.season-ledger-card .season-steward >> visible=true').first().waitFor({ timeout: 30_000 }).then(() => true, () => false);
   const row = { opened, card: null };
   if (opened) {
     await page.locator('.season-steward').scrollIntoViewIfNeeded();

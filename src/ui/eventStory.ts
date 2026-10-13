@@ -24,7 +24,8 @@ import { petitionPresentation } from "./petitionPresentation";
 import type { StoryIllustration } from "./storyArt";
 import { houseBeats, lordBeats } from "./lordStoryBeats";
 import { actualNews } from "./results/actualNews";
-import { preparedThen, traceNews } from "./results/decisionThread";
+import { preparedThen } from "./results/decisionThread";
+import { yearResults } from "./results/yearResults";
 import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { UiModal } from "./stateMachine/uiStateMachine";
 import type { LordScreenId } from "./lord/screen/lordScreenTypes";
@@ -237,15 +238,19 @@ function actualBeats(state: GameState): readonly StoryBeat[] {
 }
 
 /**
- * DEC-CARD-2 (lord mode): one chip per decision whose consequences landed this season — "1300년 당신의 결정 때문에", the
- * decision's subject and answer, each consequence in the engine's sentence and the factions' moves in feeling words. Its
- * card opens the decision in the chronicle (`trace:<decision id>:<season>`: a later season's consequences are new news).
+ * LS1-4 (lord-screen-v1.md; replaces DEC-CARD-2's chip per decision and CHIP-D1's fold by cause): one chip for the
+ * year — "올해 당신의 결정이 낳은 일 N" — its card the year's decisions, the one with the most that followed first, and
+ * the way to the first in the chronicle. Its id is the year's (`results:<year>`): its count rises on the same chip, and
+ * a new year starts a new one (the year card takes the year before).
  */
 function traceBeats(state: GameState): readonly StoryBeat[] {
-  const season = Math.floor(state.tick / SEASON);
-  return traceNews(state).map(news => ({ id: `trace:${news.decisionId}:${season}`, kind: "decision_trace", illustration: null, tile: null, decision: null,
-    title: news.title, line: news.line, facts: news.facts, advice: RESULTS_COPY.trace.advice, fold: news.fold,
-    chronicle: { recordId: news.decisionId, tick: news.decisionTick, label: RESULTS_COPY.trace.openLabel(news.title) } }));
+  const results = yearResults(state);
+  const top = results?.items[0];
+  if (results === null || top === undefined) return [];
+  return [{ id: `results:${results.year}`, kind: "decision_trace", illustration: null, tile: null, decision: null,
+    title: RESULTS_COPY.trace.yearChip(results.count), line: RESULTS_COPY.trace.yearLine(results.year, results.count),
+    facts: results.items.map(item => RESULTS_COPY.trace.yearItem(item.title, item.count)), advice: RESULTS_COPY.trace.advice,
+    chronicle: { recordId: top.decisionId, tick: top.decisionTick, label: RESULTS_COPY.trace.openLabel(top.title) } }];
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */

@@ -46,6 +46,9 @@ import { showStartHint as setStartHint, useStartHint } from "./ui/startHintStore
 import { requestSliceStart, sliceEndOwnsTurn } from "./ui/slice/sliceDue";
 import { wave8Url } from "./ui/wave8Art";
 import { seasonJustClosed } from "./ui/seasonLedgerCard";
+import { SeasonBand } from "./ui/lord/seasonBand/SeasonBand";
+import { useSeasonBand } from "./ui/lord/seasonBand/useSeasonBand";
+import { useSeasonToastLimit } from "./ui/lord/seasonBand/toastLimit";
 import { seasonLedgerChoice, setSeasonLedgerAuto, type SeasonLedgerChoice } from "./ui/seasonLedgerPreference";
 import type { BuildCategory } from "./ui/buildMenuPresentation";
 import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
@@ -303,6 +306,9 @@ export function App() {
   // LM-R3: whether the lord slice's end page is due as the season closes (read in the close's effect, not a dependency).
   const sliceEndRef = useRef(false);
   sliceEndRef.current = sliceEndOwnsTurn(state);
+  const lordModeRef = useRef(false);
+  lordModeRef.current = lordMode(state);
+  const seasonBandView = useSeasonBand(state, lordMode(state) && !welcomeVisible);
   // UX-0b: the card waits until the pointer has been still for LEDGER_PRESS_GRACE_MS (the cold start audit's presses at
   // a season's close landed on the card's backdrop four times and were lost).
   useEffect(() => bindPressClock(), []);
@@ -310,6 +316,9 @@ export function App() {
     const previous = lastClosedEndRef.current;
     lastClosedEndRef.current = lastClosedEnd;
     if (!seasonJustClosed(previous, lastClosedEnd, priorClosedEnd) || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
+    // LS1-2: in lord mode the season card never opens by itself and no notice stacks — the season-turn band says the
+    // season and opens its card (useSeasonBand).
+    if (lordModeRef.current) return;
     // LM-R3 (the user's ruling): the season that closes at the lord slice's end is its end page's link, not a card of its own.
     if (sliceEndRef.current) return;
     if (ledgerChoice === "notice") { setLedgerNotices(count => count + 1); return; }
@@ -390,7 +399,9 @@ export function App() {
   // Sound starts with the player's first input intent (a press or key, so the browser's autoplay rule allows it).
   useEffect(() => platformServices().input.subscribe(() => { unlockAudio(import.meta.env?.BASE_URL ?? "/"); return undefined; }, INTENT_ORDER.world - 1), []);
   // F0-V: completions grouped into one toast (names within COMPLETION_GROUP_MS, shown for COMPLETION_TOAST_MS).
-  const toastVisible = completionToast !== null && presentationNowMs - completionToast.firstAtMs < COMPLETION_TOAST_MS;
+  // LS1-1: in lord mode one completion toast a season (the rest are the season-turn band's "새 건물 N").
+  const toastThrough = useSeasonToastLimit(completionToast, state.tick, lordMode(state));
+  const toastVisible = completionToast !== null && toastThrough && presentationNowMs - completionToast.firstAtMs < COMPLETION_TOAST_MS;
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
   // CODE-1c: the clock runs for the tutorial, the era ceremony and the toast (story chips wake themselves).
   const clockNeeded = tutorial.awaitsClock || visibleCeremony !== null || toastVisible;
@@ -543,6 +554,8 @@ export function App() {
         {/* NAT-2: the QA info overlay (settings → developer, key `): nothing mounted while it is off. */}
         <QaOverlay store={store} />
         <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
+        {seasonBandView.band !== null && visibility.crisis ? <SeasonBand band={seasonBandView.band} onHold={seasonBandView.hold}
+          onOpen={() => { seasonBandView.dismiss(); sendUi({ type: "push_modal", modal: "season_ledger" }); }} /> : null}
         <AutoPauseNotice state={state} hold={autoPause.hold} paused={speed === 0 && !welcomeVisible} ui={ui} onLord={openLord} onModal={modal => sendUi({ type: "push_modal", modal })} onDismiss={autoPause.dismiss} />
         <div className="hud-time-cluster" data-frame="strip-top" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}

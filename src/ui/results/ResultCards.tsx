@@ -61,7 +61,7 @@ export function YearReviewCard({ view, onContinue, onChronicle }: {
         {view.threads.length === 0 ? null : <Part heading={COPY.year.threads}><Groups groups={view.threads} /></Part>}
         {view.receipts.length === 0 ? null : <Part heading={COPY.year.receipts}><List lines={view.receipts} /></Part>}
         {view.community.length === 0 ? null : <Part heading={COPY.year.community}><List lines={view.community} /></Part>}
-        {view.town.length === 0 ? null : <Part heading={COPY.year.town}><List lines={view.town} /></Part>}
+        {view.town.length === 0 ? null : <Part heading={view.lord ? COPY.year.townYear : COPY.year.town}><List lines={view.town} /></Part>}
       </>}
       <div className="results-card-actions">
         <Button type="button" className="results-card-chronicle" variant="secondary" onPress={() => onChronicle()}>{COPY.year.chronicle}</Button>

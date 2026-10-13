@@ -21,6 +21,8 @@ const CSS_FILES = [...files("src/styles", /\.css$/), ...files("src/ui", /\.css$/
 const HOVER_ALLOWLIST: Readonly<Record<string, string>> = {
   // UI-KIT-1: the kit button's `onHover` prop is the one host hover handler; each screen that passes `onHover` is listed.
   "src/ui/kit/Button.tsx:onMouseEnter": "the kit's `onHover` prop (never the only path: every user below has a tap path)",
+  // LS1-2: the pointer on the season-turn band holds it (it shows nothing more); its press opens the season's card.
+  "src/ui/lord/seasonBand/SeasonBand.tsx:onHover": "holds the season-turn band while the pointer is on it (nothing new shows); a press opens the season's card with the same and more",
   "src/ui/BuildMenu.tsx:onHover": "desktop preview of the build summary; a tap on an unbuildable card pins the same lines, a selected card shows them in the summary and the detail panel",
 };
 

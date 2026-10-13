@@ -6,6 +6,8 @@ import { lordMode } from "../../engine/townAgency";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { chronicleDate, yearOfTick } from "../chronicle/chronicleScreenModel";
 import { recordIndex } from "../chronicle/historyIndex";
+import { townYearEnds } from "../lord/seasonBand/townCloses";
+import { moneyFull } from "../money.ko";
 import { perState } from "../perState";
 import { metricsLine } from "./actualNews";
 import { decisionAbout, onlyMinds, preparedOnly, threadLines, traceGroups, traceTitle } from "./decisionThread";
@@ -52,7 +54,8 @@ export function lordYearReview(state: GameState, year: number): YearReviewView {
   const minds = threadLines(state, groups.filter(onlyMinds).flatMap(group => group.rows)).feelings;
   if (minds.length > 0) threads.push({ key: "steward-minds", heading: copy.stewardMinds, lines: capped(minds) });
   const community = review.communityBuilt.map(entry => copy.dated(chronicleDate(state, entry.tick), historySummary({ template: "consequence", params: entry.params }, state)));
-  const town = yearTown(state, year);
+  // LS1-5: the town's year start → end when the screen saw both (its season closes), else the engine's seasons' sums.
+  const town = lordTownYear(year) ?? yearTown(state, year);
   const quiet = house.length === 0 && decisions.length === 0 && steward.length === 0 && threads.length === 0 && community.length === 0;
   return { year, title: copy.title(year), lord: true, house, decisions: cappedDecisions(decisions), steward: cappedDecisions(steward), answers: [], relations: [], receipts: [], threads, community: capped(community),
     town, empty: quiet && town.length === 0 ? copy.nothing : null };
@@ -67,3 +70,15 @@ function cappedDecisions(entries: readonly YearReviewDecision[]): readonly YearR
 /** The card the hook opens for the year just ended: the engine's review in lord mode, else v1. Once per state. */
 export const yearCard = perState((state: GameState): YearReviewView =>
   lordMode(state) ? lordYearReview(state, stateCalendar(state).year - 1) : lastYearReview(state));
+
+/** LS1-5 (lord-screen-v1.md): "마을의 한 해" — people, houses, fields and the treasury at the year's start and end (the
+ * town at the closes the screen saw: townCloses); null when it did not see both. */
+export function lordTownYear(year: number): readonly string[] | null {
+  const ends = townYearEnds(year);
+  if (ends === null) return null;
+  const line = RESULTS_COPY.year.townLine;
+  return [line.population(ends.start.population, ends.end.population),
+    line.houses(Object.keys(ends.start.levels).length, Object.keys(ends.end.levels).length),
+    line.fields(ends.start.fields, ends.end.fields),
+    line.coin(moneyFull(ends.start.coin), moneyFull(ends.end.coin))];
+}
