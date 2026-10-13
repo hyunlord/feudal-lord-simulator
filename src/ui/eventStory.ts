@@ -270,8 +270,8 @@ function growthBeats(state: GameState): readonly StoryBeat[] {
   const view = run.closes === 0 ? null : growthView(state, run);
   if (view === null) return [];
   const key = run.start === null ? "seen" : `${run.start.year}:${run.start.season}`;
-  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title,
-    line: view.reason, facts: [view.since, view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
+  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason),
+    line: view.since, facts: [view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */

@@ -45,7 +45,8 @@ export const GROWTH_COPY = {
     since: (year: number, season: string) => `${year}년 ${season}부터`,
     sinceUnknown: "언제부터인지는 이 화면이 보지 못했습니다(불러오기 전부터)",
   },
-  chip: { title: "마을이 자라지 않습니다", open: "까닭 보기", advice: "상태 띠의 인구 칸을 누르면 같은 까닭과 영주가 할 일을 다시 볼 수 있습니다." },
+  /** The chip carries the cause in its title, so the rail says why while the stop holds (LS1-6: the cause seen). */
+  chip: { title: (reason: string) => `마을이 자라지 않습니다 — ${reason}`, open: "까닭 보기", advice: "상태 띠의 인구 칸을 누르면 같은 까닭과 영주가 할 일을 다시 볼 수 있습니다." },
   /** The year card's line: the seasons the screen saw the town held, and the last cause. */
   year: (seasons: number, reason: string) => `자라지 못한 철 ${seasons} — ${reason}`,
 } as const;

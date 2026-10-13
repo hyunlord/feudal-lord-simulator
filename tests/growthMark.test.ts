@@ -85,7 +85,8 @@ test("the band's first line, the chip when a stop begins, the year card's line",
   const chip = storyBeats(lord).find(beat => beat.kind === "growth_block")!;
   assert.equal(chip.id, "growth:1300:0");
   assert.equal(chip.slot, "population");
-  assert.equal(chip.line, GROWTH_COPY.reason("food", null));
+  assert.equal(chip.title, GROWTH_COPY.chip.title(GROWTH_COPY.reason("food", null)), "the cause on the rail");
+  assert.equal(chip.line, GROWTH_COPY.panel.since(1300, "봄"));
   closes(3, block({ reason: "no_lots" }), 1300);
   assert.equal(growthYear(1300).seasons, 4);
   assert.deepEqual(growthYearLine(1300), ["자라지 못한 철 4 — 성 안에 집을 지을 자리가 없습니다"]);
