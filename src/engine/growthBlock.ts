@@ -29,7 +29,10 @@ export type GrowthLever =
   | { readonly kind: "order_timber" }
   | { readonly kind: "subsidy"; readonly building: BuildingKind }
   | { readonly kind: "wall_priority" }
-  | { readonly kind: "answer_request" };
+  | { readonly kind: "answer_request" }
+  /** The sandbox's own drawing of the wall — a build command, so never a lord-mode lever (GB2A-8): growthBlock does not
+   * return it; kept in the kinds for the screens that already name it (renderer A's growth mark reads it as none). */
+  | { readonly kind: "draw_wall" };
 
 export interface GrowthBlock {
   readonly reason: GrowthBlockReason;
