@@ -111,6 +111,12 @@ export function stoneDemandExpansionKind(state: GameState): 'quarry' | 'masonry'
   const rawHeld = state.buildings.reduce((sum, building) => sum + (building.inventory.stone_raw ?? 0), 0);
   const kind = quarries === 0 ? 'quarry' : masonries === 0 ? 'masonry'
     : rawHeld >= rawStoneBacklog() || quarries >= QUARRIES_PER_MASONRY_MAX * masonries ? 'masonry' : 'quarry';
+  // A masonry only while every staffed one has its raw stone: raw stone the masonries cannot get (in a storehouse —
+  // only the mills pull their input, RECOVER-1) is a delivery gap another masonry does not close (judgement run
+  // engine-GROWA-after2-06c2cb7: seed 24 to eight masonries beside two quarries, idle for raw stone 395 seasons of 432).
+  const dressing = BUILDING_CONFIG_BY_KIND.masonry.production?.inputPerOutput ?? 0;
+  if (kind === 'masonry' && state.buildings.some(building => building.kind === 'masonry'
+    && building.workers >= BUILDING_CONFIG_BY_KIND.masonry.workersRequired && (building.inventory.stone_raw ?? 0) < dressing)) return null;
   const config = BUILDING_CONFIG_BY_KIND[kind];
   const output = kind === 'quarry' ? 'stone_raw' : 'stone';
   if (state.buildings.some(building => building.kind === kind && building.workers < config.workersRequired)

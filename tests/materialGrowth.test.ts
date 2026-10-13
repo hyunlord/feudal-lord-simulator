@@ -60,8 +60,13 @@ test("Option A builds no more than the horizon wants: the staffed quarries and m
   // A masonry with no quarry and no raw stone makes nothing: the quarry first, however many masonries stand.
   assert.equal(stoneDemandExpansionKind(withBuildings(charter, staffed("church"), staffed("masonry"), staffed("masonry"))), "quarry");
   // Two quarries a masonry at most (⑥'s rule): the church unplaced (460 wait), two quarries and the masonry short of it —
-  // the next stone facility is a masonry, not a third quarry.
-  assert.equal(stoneDemandExpansionKind(withBuildings(charter, staffed("quarry"), staffed("quarry"))), "masonry");
+  // the next stone facility is a masonry, not a third quarry — once the masonry has its raw stone.
+  const fed = (state: GameState) => ({ ...state, buildings: state.buildings.map(building => building.kind === "masonry" ? { ...building, inventory: { ...building.inventory, stone_raw: 4 } } : building) });
+  assert.equal(stoneDemandExpansionKind(fed(withBuildings(charter, staffed("quarry"), staffed("quarry")))), "masonry");
+  // No masonry while a staffed one sits without raw stone (raw stone in a storehouse does not reach it).
+  const starved = withBuildings(charter, staffed("quarry"), staffed("quarry"));
+  assert.equal(starved.buildings.some(building => building.kind === "masonry" && (building.inventory.stone_raw ?? 0) < 2), true);
+  assert.equal(stoneDemandExpansionKind(starved), null);
 });
 
 test("Option A is lord mode's: the sandbox grows no stone (its BT6 reads the open sites only, autoplayTimberDemand)", () => {
