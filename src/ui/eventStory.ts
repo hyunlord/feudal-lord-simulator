@@ -64,7 +64,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // DEC-CARD-2 (lord mode): "○○년 당신의 결정 때문에" — what followed a decision this season (results/decisionThread.ts).
   | "decision_trace"
   // LS1-3 (lord mode): the town's growth stopped (the engine's growthBlock) — its cause and the lord's lever.
-  | "growth_block";
+  | "growth_block"
+  // LS1-6 (lord mode): a birth, a death or a marriage in the lord's family (persons/familyBeats.ts).
+  | "family_news";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -261,17 +263,18 @@ function traceBeats(state: GameState): readonly StoryBeat[] {
 }
 
 /**
- * LS1-3 (lord-screen-v1.md §3, "성장 멈춤 시작"): one chip when a stop of the town's growth begins (the first season close
- * the screen saw it hold) — its cause and the lord's lever; its button opens the growth panel (the pill's population cell).
- * Keyed by the stop, so a new stop is a new chip.
+ * LS1-3 (lord-screen-v1.md §3, "성장 멈춤 시작"): one chip when a stop of the town's growth begins — once it has held past
+ * two season closes, as the pill's mark and the band's line (LS1-6: the town not growing, not growthBlock alone) — its
+ * cause and the lord's lever; its button opens the growth panel (the pill's population cell). Keyed by the stop, so a new
+ * stop is a new chip.
  */
 function growthBeats(state: GameState): readonly StoryBeat[] {
   const run = growthRun();
-  const view = run.closes === 0 ? null : growthView(state, run);
-  if (view === null) return [];
+  const view = growthView(state, run);
+  if (view === null || view.mark === null) return [];
   const key = run.start === null ? "seen" : `${run.start.year}:${run.start.season}`;
   return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason),
-    line: view.since, facts: [view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
+    line: view.since ?? view.reason, facts: [view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */

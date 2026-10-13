@@ -12,6 +12,7 @@ import { LORD_MATTER_CHIP, lordMatter } from "./lord/decisions/lordMattersDue";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
 import { homePetitionView, lordRequestView, type LordRequestView } from "./lordCardsModel";
 import { lordMomentBeats } from "./lordMomentBeats";
+import { familyBeats } from "./persons/familyBeats";
 import { REGISTRY_CARD_COPY } from "./registryCardCopy.ko";
 import { registryHeadline } from "./registryCardModel";
 import { houseChangeViews, houseRecordIds } from "./results/houseChange";
@@ -99,5 +100,7 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
   const defended = new Set(matters.map(beat => beat.id));
   const moments = lordMomentBeats(state, seatTile(state)).filter(beat => !folded.has(beat.id.slice("lord-moment:".length)) && !defendedFiling(state, beat, defended));
   beats.push(...(marriage?.kind === "will_change" ? moments.filter(beat => beat.illustration !== WILL_MOMENT) : moments));
+  // LS1-6: every birth, death and marriage in the lord's family (one chip each; not those a house card or a moment has).
+  beats.push(...familyBeats(state));
   return beats;
 }
