@@ -53,6 +53,12 @@ test("Option A builds no more than the horizon wants: the staffed quarries and m
   // One quarry and its masonry make 20 a window — short: the second quarry (the raw stone does not back up).
   const short = withBuildings(charter, staffed("church"), staffed("quarry"));
   assert.equal(stoneDemandExpansionKind(short), "quarry");
+  // The raw stone already held counts (two to a stone): one quarry and 400 raw stone in a masonry make the 400 in time.
+  const masonry = short.buildings.find(building => building.kind === "masonry" && !building.id.startsWith("test"))!;
+  const stocked = { ...short, buildings: short.buildings.map(building => building.id === masonry.id ? { ...building, inventory: { ...building.inventory, stone_raw: 400 } } : building) };
+  assert.equal(stoneDemandExpansionKind(stocked), null);
+  // A masonry with no quarry and no raw stone makes nothing: the quarry first, however many masonries stand.
+  assert.equal(stoneDemandExpansionKind(withBuildings(charter, staffed("church"), staffed("masonry"), staffed("masonry"))), "quarry");
   // Two quarries a masonry at most (⑥'s rule): the church unplaced (460 wait), two quarries and the masonry short of it —
   // the next stone facility is a masonry, not a third quarry.
   assert.equal(stoneDemandExpansionKind(withBuildings(charter, staffed("quarry"), staffed("quarry"))), "masonry");

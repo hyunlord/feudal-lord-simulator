@@ -72,21 +72,27 @@ export function materialGrowthNeed(state: GameState, resource: Material): number
  * Option A, the stone side by ⑥'s rule: the quarry while the masonries keep up — a masonry instead while the stores hold a
  * masonry's window of raw stone, and at most two quarries a masonry (a quarry cuts one in 60 ticks, a masonry takes two
  * in 45: 2.7 by their rates, as the camps' two a sawmill). The stone the town makes is read from its staffed quarries and
- * masonries (the buildings' rates) — the state keeps no stone record as it keeps `timberProductionWindow`, and one would
- * change the save — over BT6's window and horizon. One facility at a time; staffed; storage not full; its timber held.
+ * masonries (the buildings' rates) and the raw stone held — the state keeps no stone record as it keeps
+ * `timberProductionWindow`, and one would change the save — over BT6's horizon. One facility at a time; staffed; storage not full; its timber held.
  */
 export const QUARRIES_PER_MASONRY_MAX = 2;
 const STONE_WINDOW_TICKS = 2400;
 const STONE_HORIZON_TICKS = 24_000;
 
-function stoneMadePerWindow(state: GameState): number {
+/**
+ * The stone the town can make over the horizon: no more than its staffed masonries can dress, and no more than the raw
+ * stone they will have — the staffed quarries' cut over the horizon and the raw stone already held — two to a stone
+ * (min(quarries' raw stone, masonries' dressing); a masonry with no raw stone makes nothing, the user's check 2026-10-13).
+ */
+function stoneMadeOverHorizon(state: GameState): number {
   const quarry = BUILDING_CONFIG_BY_KIND.quarry.production;
   const masonry = BUILDING_CONFIG_BY_KIND.masonry.production;
   if (quarry === null || masonry === null) return 0;
   const staffed = (kind: BuildingKind) => state.buildings.filter(building => building.kind === kind
     && building.workers >= BUILDING_CONFIG_BY_KIND[kind].workersRequired).length;
-  const raw = staffed('quarry') * STONE_WINDOW_TICKS / quarry.ticksPerOutput;
-  return Math.min(staffed('masonry') * STONE_WINDOW_TICKS / masonry.ticksPerOutput, raw / masonry.inputPerOutput);
+  const rawHeld = state.buildings.reduce((sum, building) => sum + (building.inventory.stone_raw ?? 0), 0);
+  const raw = staffed('quarry') * STONE_HORIZON_TICKS / quarry.ticksPerOutput + rawHeld;
+  return Math.min(staffed('masonry') * STONE_HORIZON_TICKS / masonry.ticksPerOutput, raw / masonry.inputPerOutput);
 }
 
 /** One masonry's raw stone for a window (2 a stone every 45 ticks: 107). */
@@ -99,7 +105,7 @@ export function stoneDemandExpansionKind(state: GameState): 'quarry' | 'masonry'
   if (state.agency === undefined) return null;
   if (state.constructionSites.some(site => isBuildingConstructionSite(site) && (site.kind === 'quarry' || site.kind === 'masonry'))) return null;
   const need = materialGrowthNeed(state, 'stone');
-  if (need <= 0 || need <= stoneMadePerWindow(state) * (STONE_HORIZON_TICKS / STONE_WINDOW_TICKS)) return null;
+  if (need <= 0 || need <= stoneMadeOverHorizon(state)) return null;
   const quarries = builtOrPlaced(state, 'quarry');
   const masonries = builtOrPlaced(state, 'masonry');
   const rawHeld = state.buildings.reduce((sum, building) => sum + (building.inventory.stone_raw ?? 0), 0);
