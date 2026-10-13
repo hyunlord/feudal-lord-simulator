@@ -8,8 +8,8 @@
  *  - `lever`: one of the lord's existing commands that lifts it (`order_timber`, `set_project_subsidy` for a building,
  *    `set_wall_construction_priority`, the town's request card, the lord's own palisade drawing), or null — the lord has
  *    no verb for it (a gap the screen design takes up: a full town, fields over the walled lots);
- *  - `since`: the week the town last grew (its population first past its highest yet, `agency.lastGrowth`, save v56) —
- *    null on a save from before v56 until the town next grows.
+ *  - `since`: the last season's close at which the town's houses or population stood above the close before
+ *    (`agency.seasonGrowth`, save v56) — null on a save from before v56 until the town next grows.
  */
 import type { BuildingKind } from "../content/buildingConfig";
 import { isWallConstructionSite } from "../economy/construction";
@@ -51,7 +51,7 @@ const CONDITION_LEVER: Readonly<Record<string, GrowthLever | null>> = {
 /** GROW-BLOCK-2a API: why the lord's town is not growing now, and the lord's lever; null outside lord mode or while it grows. */
 export function growthBlock(state: GameState): GrowthBlock | null {
   if (!lordMode(state)) return null;
-  const since = state.agency?.lastGrowth?.tick ?? null;
+  const since = state.agency?.seasonGrowth?.lastGrowthTick ?? null;
   const block = (reason: GrowthBlockReason, detail: string | null, lever: GrowthLever | null): GrowthBlock => ({ reason, detail, since, lever });
   // The charter first: its unmet condition, the town still searching or waiting on its sites, its request, its failure.
   const plan = charterWallPlan(state);

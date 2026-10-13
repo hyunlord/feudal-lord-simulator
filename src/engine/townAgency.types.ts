@@ -144,10 +144,11 @@ export interface AgencyState {
   /** DUES-REL (save v53): the stall fee agreed at a registry answer (absent when none was). */
   readonly duesAgreement?: DuesAgreement;
   /**
-   * GB2A-7 (save v56): when the town last grew — the week its population first passed its highest yet, and that height
-   * (growthBlock's `since`; absent on a save from before v56 until the town next grows, never guessed backwards).
+   * GB2A-7 (save v56): the town's houses and population at the last season's close, and the last close at which either
+   * stood above the close before (growthBlock's `since`) — counted by the season, not by the week's births and deaths;
+   * absent on a save from before v56 (its first close records the counts, the next compares).
    */
-  readonly lastGrowth?: { readonly tick: number; readonly population: number };
+  readonly seasonGrowth?: { readonly houses: number; readonly population: number; readonly lastGrowthTick?: number };
 }
 
 /** DUES-REL: a stall fee agreed with a faction at a registry answer — its rate, when, with whom, the answer; when broken. */

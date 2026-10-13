@@ -6,7 +6,7 @@
  *    relations' evidence, and the displayed wording's entry id on the answered commands;
  *  - INERT: an estate's `charterResistance`, a steward's `toleratedErrors` and `auditTolerance`, an audit's `decidedBy`,
  *    `policyAuditId` and `superseded`, a season summary's `charterLoss` and `toleratedLosses`;
- *  - growthBlock (GB2A-7): `agency.lastGrowth`, the week the town last grew.
+ *  - growthBlock (GB2A-7): `agency.seasonGrowth`, the town at the last season's close and the last close it grew.
  * So only the version moves (the TRACE-LINK and INERT branches' provisional v55–v57 steps are not used).
  */
 export function migrateV55ToV56(input: unknown): unknown {

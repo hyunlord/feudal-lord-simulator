@@ -1,6 +1,6 @@
 {
   "schemaVersion": 56,
-  "sha256": "c8268dada17f51487db94623475beb1caa058e5d0a1bf6b2ac53cbd151d6b0f3",
+  "sha256": "23a1057a72d0eb87fda61ac342161694b2c29c09edf2a0a5b79801d5e82f76a4",
   "inputs": [
     "DEFAULT_GAME_STATE",
     "fixtures/saves/v56/eb-answer-effects.save.json",
@@ -101,9 +101,6 @@
     "$.agency.actors[].kind:string",
     "$.agency.actors[]:object",
     "$.agency.duesPermille:number",
-    "$.agency.lastGrowth.population:number",
-    "$.agency.lastGrowth.tick:number",
-    "$.agency.lastGrowth:object",
     "$.agency.lastWalk.fundThreshold:null",
     "$.agency.lastWalk.idleWeeks:number",
     "$.agency.lastWalk.key:string",
