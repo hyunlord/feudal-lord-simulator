@@ -5,9 +5,10 @@
  *  - `reason`: the first block in the town's growth path — the charter (its unmet condition, the town still searching,
  *    its request waiting for the lord, its wall not found), the wall's work, the food, the houses' next level (the church
  *    or market a house lacks, the church's stone), the lots inside the wall, a full town;
- *  - `lever`: one of the lord's existing commands that lifts it (`order_timber`, `set_project_subsidy` for a building,
- *    `set_wall_construction_priority`, the town's request card, the lord's own palisade drawing), or null — the lord has
- *    no verb for it (a gap the screen design takes up: a full town, fields over the walled lots);
+ *  - `lever`: one of the commands lord mode gives its player that lifts it (`order_timber`, `set_project_subsidy` for a
+ *    building, `set_wall_construction_priority`, the town's request card), or null — the lord has no verb for it (a gap
+ *    the screen design takes up: a full town, fields over the walled lots, a wall not found — drawing it is a build
+ *    command, the sandbox's, GB2A-8);
  *  - `since`: the tick the town last grew — null until its save field comes with the next save version (v56, TRACE-LINK).
  */
 import type { BuildingKind } from "../content/buildingConfig";
@@ -28,8 +29,7 @@ export type GrowthLever =
   | { readonly kind: "order_timber" }
   | { readonly kind: "subsidy"; readonly building: BuildingKind }
   | { readonly kind: "wall_priority" }
-  | { readonly kind: "answer_request" }
-  | { readonly kind: "draw_wall" };
+  | { readonly kind: "answer_request" };
 
 export interface GrowthBlock {
   readonly reason: GrowthBlockReason;
@@ -57,7 +57,8 @@ export function growthBlock(state: GameState): GrowthBlock | null {
     const unmet = plan.requirements.find(requirement => !requirement.met);
     if (unmet !== undefined && unmet.key !== "population") return block("era_condition", unmet.key, CONDITION_LEVER[unmet.key] ?? null);
     if (plan.stage === "asked") return block("charter_asked", null, { kind: "answer_request" });
-    if (plan.stage === "failed") return block("wall_not_found", plan.failure?.reason ?? null, { kind: "draw_wall" });
+    // GB2A-8: the lord draws no wall himself — lord mode's player has no build command, so no lever.
+    if (plan.stage === "failed") return block("wall_not_found", plan.failure?.reason ?? null, null);
     if (unmet === undefined) return block("charter_search", plan.stage, null);
   }
   const walls = state.constructionSites.filter(isWallConstructionSite);
