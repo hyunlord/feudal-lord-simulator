@@ -49,6 +49,7 @@ import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
 import { granaryGapAction, keepsHouseInMarketReach, marketGapAction, marketRelocationAction, recordBotRecovery, type AdvisorAction, type BotRecoveryCollector } from './autoplayBotRecovery';
 import { logOverflowKind, timberDemandExpansionKind } from './autoplayTimberDemand';
+import { stoneDemandExpansionKind } from './autoplayMaterialGrowth';
 import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorPlots';
 import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin } from './autoplayArable';
 import { winterReserveAction } from './autoplayWinterReserve';
@@ -334,6 +335,16 @@ function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): Auto
     const action = buildAction(state, "sawmill");
     if (action.kind !== "none") {
       recordBotRecovery(diagnostic, "log_overflow", [], action);
+      return action;
+    }
+  }
+  // Option A (lord mode): the stone the next era or the church waits for, by ⑥'s rule — a material's supply in the timber
+  // step's place (a step of its own would shift every later step's need in the town's scores).
+  const stone = stoneDemandExpansionKind(state);
+  if (stone !== null) {
+    const action = buildAction(state, stone);
+    if (action.kind !== "none") {
+      recordBotRecovery(diagnostic, "stone_demand", [], action);
       return action;
     }
   }
