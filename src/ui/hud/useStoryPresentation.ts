@@ -25,6 +25,9 @@ import { SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLa
 // a new chip stops time (UI-4: cards are not modal by default). storyBeats reads the state only (0.01–0.02 ms).
 const LINGER_MS = 60_000;
 const MAX_CHIPS = 3;
+/** Beats whose chip goes the moment the beat is over: a decision once answered; the year's results chip (LS1-4) once the
+ * year turns — the year card takes the year before, so the rail holds one results chip at a time (LS1-6). */
+const NO_LINGER: ReadonlySet<StoryBeat["kind"]> = new Set(["lord_decision", "decision_trace"]);
 
 type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean };
 
@@ -84,7 +87,7 @@ export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSe
   const unanswered = (beat: StoryBeat) => due.has(beat.id) && current.has(beat.id);
   const shown = entries
     .filter(entry => (!entry.dismissed || unanswered(entry.beat)) && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs
-      && (current.has(entry.beat.id) || (entry.beat.kind !== "lord_decision" && nowMs - entry.lastSeenMs < LINGER_MS)))
+      && (current.has(entry.beat.id) || (!NO_LINGER.has(entry.beat.kind) && nowMs - entry.lastSeenMs < LINGER_MS)))
     .map(entry => entry.beat);
   const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat);
   const pinned = shown.filter(held);

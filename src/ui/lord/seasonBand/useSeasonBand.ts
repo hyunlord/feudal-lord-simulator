@@ -5,7 +5,11 @@ import { seasonJustClosed } from "../../seasonLedgerCard";
 import { scenarioOf } from "../../../engine/scenarioState";
 import { seasonStewardView } from "../steward/seasonStewardModel";
 import { recordTownClose } from "./townCloses";
-import { seasonBand, townSnapshot, type SeasonBand, type TownSnapshot } from "./seasonBandModel";
+import { growthBlock } from "../../../engine/growthBlock";
+import { GROWTH_COPY } from "../growth/growthCopy.ko";
+import { growthView } from "../growth/growthMark";
+import { growthHeldQuery, noteGrowthClose, startGrowthTrack } from "../growth/growthTrack";
+import { seasonBand, townSize, townSnapshot, type SeasonBand, type TownSnapshot } from "./seasonBandModel";
 
 /** LS1-2: how long the band stays (real time; a newer band replaces it sooner; held while the pointer is on it). */
 export const SEASON_BAND_MS = 5_000;
@@ -28,6 +32,9 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
   const priorEnd = history.at(-2)?.endTick ?? null;
   const lastEndRef = useRef(lastEnd);
   const snapshotRef = useRef<TownSnapshot | null>(null);
+  // LS1-3: the stop's count starts with the page — a new game knows the town's growth from its first tick, a load does not.
+  const trackRef = useRef(false);
+  if (!trackRef.current) { trackRef.current = true; startGrowthTrack(state.tick < 5, townSize(townSnapshot(state)), growthHeldQuery()); }
   // A new game's first tick counts as the close before it (LS1-5: its first year's start).
   if (snapshotRef.current === null && state.tick < 5) {
     snapshotRef.current = townSnapshot(state);
@@ -43,10 +50,12 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
     if (previous === lastEnd) return;
     const closed = history.at(-1);
     const after = townSnapshot(state);
-    if (closed !== undefined) recordTownClose(closed.year, closed.season, after);
+    if (closed !== undefined) { recordTownClose(closed.year, closed.season, after); noteGrowthClose(closed.year, closed.season, growthBlock(state), townSize(after)); }
     if (!enabled || closed === undefined || !seasonJustClosed(previous, lastEnd, priorEnd)) { snapshotRef.current = after; return; }
     const stewardHandled = seasonStewardView(state, closed.startTick)?.items.length ?? 0;
-    setBand(seasonBand({ season: closed, before: snapshotRef.current, after, stewardHandled }));
+    const growth = growthView(state);
+    setBand(seasonBand({ season: closed, before: snapshotRef.current, after, stewardHandled,
+      growth: growth === null || growth.mark === null ? null : GROWTH_COPY.band(growth.years, growth.reason) }));
     setShownAt(performance.now());
     snapshotRef.current = after;
   // why: keyed by the season's close only; the state read is the close's own

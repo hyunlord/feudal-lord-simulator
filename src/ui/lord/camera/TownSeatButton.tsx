@@ -14,6 +14,6 @@ export function TownSeatButton({ state }: { readonly state: GameState }): ReactE
   if (seat === null) return null;
   return <Button type="button" className="status-pill-cell status-pill-town" data-town-seat={`${seat.tx},${seat.ty}`} aria-label={COPY.toTownLabel}
     onPress={() => platformServices().input.emit({ kind: "lookAt", tile: seat })} variant="surface">
-    <UiIcon sheet="action" cell="look" />{COPY.toTown}
+    <UiIcon sheet="action" cell="look" /><span className="status-pill-town-words">{COPY.toTown}</span>
   </Button>;
 }

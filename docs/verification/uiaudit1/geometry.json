@@ -1,14 +1,14 @@
 {
  "schema": 1,
- "run": "infra-RR26S-full-42df9d6",
- "commit": "42df9d671808b785024efd06026cb56f380018be",
+ "run": "nightly-GEOMETRY-1013-90e0d4f",
+ "commit": "90e0d4f9319a645495afdab77bbd2e9d19ef1eed",
  "dirty": false,
  "full": true,
  "axesNarrowed": false,
- "inputs": 6157,
- "inputHash": "e0a3ee6919109cc20775612c8c3062ade57c42b8efb10a3d3de86252656da1f0",
- "measuredAt": "2026-10-10T04:26:58.073Z",
- "report": "docs/verification/uiaudit1/geometry/infra-RR26S-full-42df9d6/geometry.json",
+ "inputs": 6179,
+ "inputHash": "d690288593c52dd748ab773ef0b382f922f3d59973ecc0cb79bb4a2fd099dbba",
+ "measuredAt": "2026-10-12T16:20:38.602Z",
+ "report": "docs/verification/uiaudit1/geometry/nightly-GEOMETRY-1013-90e0d4f/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -26,9 +26,9 @@
    "extreme"
   ]
  },
- "rows": 196,
- "conditions": 3662,
- "measured": 3662,
+ "rows": 236,
+ "conditions": 4442,
+ "measured": 4442,
  "failures": 0,
  "unopened": 0,
  "unreachable": [
@@ -37,7 +37,7 @@
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 878,
+ "warnings": 1063,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -61,6 +61,11 @@
  },
  "bySurface": {
   "hud.status-pill": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.status-pill.sandbox": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -890,6 +895,16 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "hud.event-card.audit-kept": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.offmap-kept": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.lord.contested": {
    "failures": 0,
    "unopened": 0,
@@ -916,6 +931,111 @@
    "byCheck": {}
   },
   "modal.season-ledger.steward": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.past": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.era-console.lord.past-years": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.goals.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.status-pill.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.status-pill.market-years": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.command-pins.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.screen.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.estates.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.ledger.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-chips.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.suit-defence.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.lord-moment.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-page.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.famine.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.negotiation.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.region.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.standing.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.stock-lord.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.season-ledger.market": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.season-band.market": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -995,6 +1115,86 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "modal.receipt.home-grant": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.home-refuse": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.audit-punish": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.audit-tolerate": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.offmap-grant": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.offmap-refuse": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.registry-evidence": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.registry-hold": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.registry-marriage": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.request": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.famine-relief": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.famine-laissez": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.petition-charter": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.petition-wool": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.petition-autonomy": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.receipt.petition-heir": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.slice-start": {
    "failures": 0,
    "unopened": 0,
@@ -1023,25 +1223,22 @@
  },
  "failureKeys": [],
  "retries": {
-  "timeouts": 4,
+  "timeouts": 0,
   "failedThrice": 0,
-  "cellsRetried": 4,
+  "cellsRetried": 0,
   "treesRetried": 0,
-  "rows": {
-   "modal.chapter-page.ch3": 2,
-   "modal.lord.home-petition.variant-056": 2
-  }
+  "rows": {}
  },
  "browser": {
   "chromium": "151.0.7922.34"
  },
  "measuredInputs": {
-  "file": "docs/verification/uiaudit1/geometry/infra-RR26S-full-42df9d6/inputs.json",
-  "sha256": "73365555b564dced4a504f93d303b92f94295403f95d2972369e8b9592950253",
-  "files": 9281,
+  "file": "docs/verification/uiaudit1/geometry/nightly-GEOMETRY-1013-90e0d4f/inputs.json",
+  "sha256": "87103b546dd893649be06e94a82a10dfcf3990f2243a6564bc9607d26238733d",
+  "files": 9301,
   "dirs": 0,
   "lists": 228,
-  "missing": 100,
+  "missing": 101,
   "untraceable": [],
   "declared": {
    "states": {
@@ -1050,7 +1247,8 @@
     "lands": "61f13b079514d01e0895f1e25e79759218415e129bc2fa302d6b9121e9be014d",
     "lord": "97f15cd58ec49e8a174812c2f128893b715b8322a709a88d5e4c5485293ee3b2",
     "lord2": "d4436a8ea7427a55da71bd3028472de4c0fee9e046c8cf996e237d5964d9940e",
-    "moments": "9bc7435569a9ef564ee8c8648e96409e716cd4602de4144929d966ffe3addf27",
+    "market": "189356978f0374acaff05ecafb5d6465303e729b56a68e42e72f27059128410e",
+    "moments": "996356bc9a35080669e31a86949c1977f327fcacdbef2dbeea6a5ed1cbd13ae5",
     "petitions": "4d1c52b3dfcb987ba224306c045133a428b2a0ab07998116631c9ec7f0875cbf",
     "slice": "ef0dfc2e5579a922313a4a1721b29e0fa828212abf5b748abc15b796804b071a",
     "ui10": "11ca523e740ac3207fcf3005d3892918af9a0810888928176add0768abb4cb98",

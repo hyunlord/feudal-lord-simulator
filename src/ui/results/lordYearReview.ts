@@ -7,6 +7,8 @@ import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { chronicleDate, yearOfTick } from "../chronicle/chronicleScreenModel";
 import { recordIndex } from "../chronicle/historyIndex";
 import { townYearEnds } from "../lord/seasonBand/townCloses";
+import { GROWTH_COPY } from "../lord/growth/growthCopy.ko";
+import { growthYear } from "../lord/growth/growthTrack";
 import { moneyFull } from "../money.ko";
 import { perState } from "../perState";
 import { metricsLine } from "./actualNews";
@@ -55,7 +57,7 @@ export function lordYearReview(state: GameState, year: number): YearReviewView {
   if (minds.length > 0) threads.push({ key: "steward-minds", heading: copy.stewardMinds, lines: capped(minds) });
   const community = review.communityBuilt.map(entry => copy.dated(chronicleDate(state, entry.tick), historySummary({ template: "consequence", params: entry.params }, state)));
   // LS1-5: the town's year start → end when the screen saw both (its season closes), else the engine's seasons' sums.
-  const town = lordTownYear(year) ?? yearTown(state, year);
+  const town = [...(lordTownYear(year) ?? yearTown(state, year)), ...growthYearLine(year)];
   const quiet = house.length === 0 && decisions.length === 0 && steward.length === 0 && threads.length === 0 && community.length === 0;
   return { year, title: copy.title(year), lord: true, house, decisions: cappedDecisions(decisions), steward: cappedDecisions(steward), answers: [], relations: [], receipts: [], threads, community: capped(community),
     town, empty: quiet && town.length === 0 ? copy.nothing : null };
@@ -81,4 +83,10 @@ export function lordTownYear(year: number): readonly string[] | null {
     line.houses(Object.keys(ends.start.levels).length, Object.keys(ends.end.levels).length),
     line.fields(ends.start.fields, ends.end.fields),
     line.coin(moneyFull(ends.start.coin), moneyFull(ends.end.coin))];
+}
+
+/** LS1-3 / LS1-5: the year's stop of the town's growth — the season closes the screen saw it held at, and its last cause. */
+export function growthYearLine(year: number): readonly string[] {
+  const held = growthYear(year);
+  return held.seasons === 0 || held.last === null ? [] : [GROWTH_COPY.year(held.seasons, GROWTH_COPY.reason(held.last.reason!, held.last.detail))];
 }

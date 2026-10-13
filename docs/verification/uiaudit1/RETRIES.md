@@ -8,6 +8,8 @@
 
 | 감사(실행) | 측정 커밋 | 칸 | 첫 시도 시간 초과 | 세 번 실패 | 재시도 트리 | 최종 못 연 조건 | 걸린 줄(시간 초과·실패 줄 수) |
 |---|---|---|---|---|---|---|---|
+| nightly-GEOMETRY-1013-90e0d4f (밤 감사, Esc 고침 28fb2c54 뒤 첫 유효한 전체 감사, 236줄) | 90e0d4f9 | 4,442 | 0 | 0 | 0 | 0 | 없음 — `variant-056`·`famine-answered`·`chapter-page.ch3`도 20개 조건 모두 첫 시도에 열림(밤의 DGX는 한가해 부하 아래 확인은 렌더 A 몫); Esc 고침 뒤 다시 재지 않았던 101줄도 실패 0·못 연 조건 0 |
+| nightly-GEOMETRY-1012-77636db (밤 감사 — **건너뜀**: 06:00까지 빈 칸 없음, 공용 결과 아님) | 77636db6 | — | — | — | — | — | 재지 않음(다음 밤이 그때의 머리를 감사) |
 | nightly-GEOMETRY-1011-eeae4c8 (첫 밤 감사, 234줄 — **무효: 더러운 트리**, 공용 결과 아님) | eeae4c81 | 4,412 | 1 | 0 | 0 | 0 | `modal.lord.home-petition` 1(두 번째 시도에 열림). Esc 고침(28fb2c54) 앞 커밋인데도 `variant-056`·`famine-answered`·`chapter-page.ch3`는 재시도 0 — 밤의 DGX는 한가해 세 줄이 빠지는지는 부하 없는 증거다 |
 | infra-RR26C-rows-ed67968 (바뀐 줄만: `modal.chapter-page.ch3`·`hud.status-pill.lord`, RR26 covered 푸시의 증거) | ed679689 | 40 | 16 | 7 | 7 | 0 | `modal.chapter-page.ch3` 9(7개 조건 세 번 실패 — 재시도 라운드에서만 측정; 바로 앞 전체 감사에서도 재시도: **연속 재시도, 대기 조건 문제**) |
 | infra-RR26S-full-42df9d6 (RR26 그림자, 측정 입력 포함) | 42df9d67 | 3,662 | 4 | 0 | 0 | 0 | `modal.chapter-page.ch3` 2, `modal.lord.home-petition.variant-056` 2 — 모두 두 번째 시도에 열림, 재시도 라운드 없음(감사가 직접 센 `retries`) |

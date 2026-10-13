@@ -96,3 +96,12 @@
 .app-shell .season-band-item { white-space: nowrap; }
 .app-shell .season-band-item + .season-band-item::before { content: "·"; margin-right: 10px; color: var(--palette-ink-muted); }
 @media (pointer: coarse) { .app-shell .season-band { min-height: 48px; } }
+
+/* LS1-3 (lord-screen-v1.md): the growth panel at the head of the population slot — the cause, since when, the lord's lever. */
+/* contrast-audit selector=".growth-panel" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.app-shell .growth-panel { display: grid; gap: 4px; margin: 0 0 10px; padding: 0 0 10px; border-bottom: 1px solid var(--palette-parchment-dark); font-size: 13px; }
+.app-shell .growth-panel h3 { margin: 0; font-size: 14px; color: var(--palette-vermilion); }
+.app-shell .growth-panel p { margin: 0; }
+.app-shell .growth-panel-since { font-size: 12px; color: var(--palette-ink-muted); }
+.app-shell .growth-panel-act { justify-self: start; min-height: 44px; }
+@media (pointer: coarse) { .app-shell .growth-panel-act { min-height: 48px; } }

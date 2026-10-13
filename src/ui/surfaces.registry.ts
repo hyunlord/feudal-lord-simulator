@@ -20,6 +20,8 @@ import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
 import { MARKET_SURFACES } from "./lord/market/surfaces";
 import { SEASON_BAND_SURFACES } from "./lord/seasonBand/surfaces";
+import { GROWTH_SURFACES } from "./lord/growth/surfaces";
+import { FAMILY_SURFACES } from "./persons/surfaces";
 import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
 import { REGION_SURFACES } from "./lord/region/surfaces";
 import { SCREEN_SURFACES } from "./lord/screen/surfaces";
@@ -623,6 +625,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   // MARKET-TOWN: the lord's screens after the market charter's proclamation (src/ui/lord/market/surfaces.ts, the `market` set).
   ...MARKET_SURFACES,
   ...SEASON_BAND_SURFACES,
+  ...GROWTH_SURFACES,
+  ...FAMILY_SURFACES,
   // DEC-CARD-2: the result thread (src/ui/results/surfaces.ts; the house card's lord-died row moved there).
   ...RESULTS_SURFACES,
   // LM-R3 (lord slice LS-2): the lord-mode auto-pause's notice. Its states are in the `slice` set (scripts/autoPauseStates.ts:

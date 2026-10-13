@@ -81,7 +81,7 @@ export function EventCardDetail({ open, onDismiss, onDecide }: {
       {open.facts.length === 0 ? null : <ul className="event-card-facts">{open.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>}
       {adviceId === open.id ? <p className="event-card-advice" role="status">{open.advice}</p> : null}
       <div className="event-card-actions">
-        {open.decision !== null || open.screen !== undefined ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
+        {open.decision !== null || open.screen !== undefined || open.slot !== undefined ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
         {open.tile === null ? null : <Button type="button" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: open.tile! }); }} variant="secondary"><UiIcon sheet="action" cell="look" />{EVENT_STORY_COPY.lookAt}</Button>}
         {/* DEC-CARD-2: what followed a decision opens that decision in the chronicle. */}
         {open.chronicle === undefined ? null : <Button type="button" className="event-card-chronicle" aria-label={open.chronicle.label}

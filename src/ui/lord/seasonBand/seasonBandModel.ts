@@ -37,7 +37,11 @@ export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "ar
   };
 }
 
-export type SeasonBandItem = Readonly<{ key: "population" | "built" | "levels" | "fields" | "money" | "deaths" | "steward"; text: string }>;
+/** LS1-3 (LS1-6): the town's size the growth count compares — its houses and its people. */
+export const townSize = (snapshot: TownSnapshot): Readonly<{ houses: number; population: number }> =>
+  ({ houses: Object.keys(snapshot.levels).length, population: snapshot.population });
+
+export type SeasonBandItem = Readonly<{ key: "growth" | "population" | "built" | "levels" | "fields" | "money" | "deaths" | "steward"; text: string }>;
 export type SeasonBand = Readonly<{ key: string; items: readonly SeasonBandItem[]; quiet: boolean }>;
 export const SEASON_BAND_MAX = 5;
 
@@ -45,9 +49,12 @@ export const SEASON_BAND_MAX = 5;
  * The band for the season that closed: `before` the snapshot at the season's start (its prior close; null after a load
  * — then only the engine's own season numbers), `after` at its close, `stewardHandled` the steward's small matters in it.
  */
-export function seasonBand(input: { readonly season: SeasonLedger; readonly before: TownSnapshot | null; readonly after: TownSnapshot; readonly stewardHandled: number }): SeasonBand {
+export function seasonBand(input: { readonly season: SeasonLedger; readonly before: TownSnapshot | null; readonly after: TownSnapshot; readonly stewardHandled: number;
+  /** LS1-3: the stop of the town's growth, its line (the band's first), when it has held past two seasons. */
+  readonly growth?: string | null }): SeasonBand {
   const { season, before, after } = input;
   const items: SeasonBandItem[] = [];
+  if (input.growth !== undefined && input.growth !== null) items.push({ key: "growth", text: input.growth });
   const add = (key: SeasonBandItem["key"], value: number, text: string) => { if (value !== 0) items.push({ key, text }); };
   add("population", season.popDelta, COPY.population(season.popDelta));
   if (before !== null) {

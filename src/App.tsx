@@ -47,6 +47,8 @@ import { requestSliceStart, sliceEndOwnsTurn } from "./ui/slice/sliceDue";
 import { wave8Url } from "./ui/wave8Art";
 import { seasonJustClosed } from "./ui/seasonLedgerCard";
 import { SeasonBand } from "./ui/lord/seasonBand/SeasonBand";
+import { GrowthPanel } from "./ui/lord/growth/GrowthPanel";
+import { growthView } from "./ui/lord/growth/growthMark";
 import { useSeasonBand } from "./ui/lord/seasonBand/useSeasonBand";
 import { useSeasonToastLimit } from "./ui/lord/seasonBand/toastLimit";
 import { seasonLedgerChoice, setSeasonLedgerAuto, type SeasonLedgerChoice } from "./ui/seasonLedgerPreference";
@@ -309,6 +311,7 @@ export function App() {
   const lordModeRef = useRef(false);
   lordModeRef.current = lordMode(state);
   const seasonBandView = useSeasonBand(state, lordMode(state) && !welcomeVisible);
+  const growthNow = ui.mode === "population" ? growthView(state) : null;
   // UX-0b: the card waits until the pointer has been still for LEDGER_PRESS_GRACE_MS (the cold start audit's presses at
   // a season's close landed on the card's backdrop four times and were lost).
   useEffect(() => bindPressClock(), []);
@@ -564,7 +567,7 @@ export function App() {
         {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector}
           lead={stuckChip === null ? null : <StuckGoodsChip view={stuckChip} onInspect={openInspector} />} /> : null}
         {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
-          onDecide={beat => { if (beat.screen !== undefined) openLord(beat.screen.screen, beat.screen.focus); else if (beat.decision !== null) sendUi({ type: "push_modal", modal: decisionModal(beat.decision) }); }}
+          onDecide={beat => { if (beat.screen !== undefined) openLord(beat.screen.screen, beat.screen.focus); else if (beat.slot === "population") sendUi({ type: "open_population" }); else if (beat.decision !== null) sendUi({ type: "push_modal", modal: decisionModal(beat.decision) }); }}
           notice={ledgerNotices > 0 ? <SeasonNotice count={ledgerNotices} onOpen={openSeasonNotice} /> : null} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
@@ -594,6 +597,12 @@ export function App() {
         </aside> : null}
         {ui.mode === "population" ? (
           <div id="population-ledger-drawer" className="ledger-population-drawer slot-panel" data-frame="slot">
+            {/* LS1-3: what holds the town's growth, at the slot's head (lord mode, while it holds). */}
+            {growthNow !== null ? <GrowthPanel view={growthNow} onLever={action => {
+              if (action === "policy") openConditions();
+              else if (action === "wall") sendUi({ type: "open_goals" });
+              else sendUi({ type: "push_modal", modal: "lord_request" });
+            }} /> : null}
             <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} note={menAwayLine(state)} />
           </div>
         ) : null}
