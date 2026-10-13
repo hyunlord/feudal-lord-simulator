@@ -26,6 +26,9 @@ import { houseBeats, lordBeats } from "./lordStoryBeats";
 import { actualNews } from "./results/actualNews";
 import { preparedThen } from "./results/decisionThread";
 import { yearResults } from "./results/yearResults";
+import { GROWTH_COPY } from "./lord/growth/growthCopy.ko";
+import { growthView } from "./lord/growth/growthMark";
+import { growthRun } from "./lord/growth/growthTrack";
 import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { UiModal } from "./stateMachine/uiStateMachine";
 import type { LordScreenId } from "./lord/screen/lordScreenTypes";
@@ -59,7 +62,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // DEC-CARD: a big decision's actual written (every mode); (lord mode, Astra A3) a change in the lord's house.
   | "decision_actual" | "house_change"
   // DEC-CARD-2 (lord mode): "○○년 당신의 결정 때문에" — what followed a decision this season (results/decisionThread.ts).
-  | "decision_trace";
+  | "decision_trace"
+  // LS1-3 (lord mode): the town's growth stopped (the engine's growthBlock) — its cause and the lord's lever.
+  | "growth_block";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -93,6 +98,8 @@ export type StoryBeat = Readonly<{
   fold?: Readonly<{ key: string; title: string }>;
   /** CHIP-FOLD: the ids a folded chip stands for (storyChips sets it; putting the chip away puts them all away). */
   folded?: readonly string[];
+  /** LS1-3: the HUD slot the chip's button opens instead of a modal or a lord screen (the growth panel's). */
+  slot?: "population";
 }>;
 
 /** The modal a decision beat's [결정하기] opens. */
@@ -127,7 +134,7 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
   // DEC-CARD (Astra A3): a change in the lord's house first — before any petition of the same tick.
   // DEC-CARD-2: then what followed the lord's decisions this season — first in the list, so the season's newer chips
   // (a petition, an offer) push them out of the three shown before anything else.
-  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state)];
+  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state), ...growthBeats(state)];
   const copy = EVENT_STORY_COPY;
   const records = state.events?.records ?? [];
   const burning = state.events?.burning ?? [];
@@ -251,6 +258,20 @@ function traceBeats(state: GameState): readonly StoryBeat[] {
     title: RESULTS_COPY.trace.yearChip(results.count), line: RESULTS_COPY.trace.yearLine(results.year, results.count),
     facts: results.items.map(item => RESULTS_COPY.trace.yearItem(item.title, item.count)), advice: RESULTS_COPY.trace.advice,
     chronicle: { recordId: top.decisionId, tick: top.decisionTick, label: RESULTS_COPY.trace.openLabel(top.title) } }];
+}
+
+/**
+ * LS1-3 (lord-screen-v1.md §3, "성장 멈춤 시작"): one chip when a stop of the town's growth begins (the first season close
+ * the screen saw it hold) — its cause and the lord's lever; its button opens the growth panel (the pill's population cell).
+ * Keyed by the stop, so a new stop is a new chip.
+ */
+function growthBeats(state: GameState): readonly StoryBeat[] {
+  const run = growthRun();
+  const view = run.closes === 0 ? null : growthView(state, run);
+  if (view === null) return [];
+  const key = run.start === null ? "seen" : `${run.start.year}:${run.start.season}`;
+  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title,
+    line: view.reason, facts: [view.since, view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */

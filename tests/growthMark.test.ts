@@ -1,14 +1,93 @@
 /**
- * LS1-3 (lord-screen-v1.md): the status pill's growth mark keeps its place until the engine's growthBlock is connected
- * (GB2A-7, with GROW-BLOCK-2a): no mark is read and the pill shows none.
+ * LS1-3 (lord-screen-v1.md; GB2A-7; the user's ruling 2026-10-13): the engine's growthBlock on the screen — the pill's mark
+ * after a stop held past two season closes, "정체 N년" only when the screen saw it begin (a new game, or growth seen first),
+ * "정체 중" after a load (no number: a load's "1년" may be the eighth, A4 / P-C4), the engine's `since` instead when it has
+ * one; the lever's button to its command's existing screen, none for lord mode's `draw_wall` (A1) or none at all; the
+ * band's first line, the chip when a stop begins, the year card's line.
  */
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { growthMarkOf } from "../src/ui/lord/growth/growthMark";
+import { BALANCE } from "../src/content/balanceConfig";
+import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
+import type { GrowthBlock } from "../src/engine/growthBlock";
+import { newGameState } from "../src/state/newGame";
+import { storyBeats } from "../src/ui/eventStory";
 import { GROWTH_COPY } from "../src/ui/lord/growth/growthCopy.ko";
+import { growthMarkOf, growthView } from "../src/ui/lord/growth/growthMark";
+import { growthRun, growthYear, noteGrowthClose, startGrowthTrack } from "../src/ui/lord/growth/growthTrack";
+import { seasonBand, type TownSnapshot } from "../src/ui/lord/seasonBand/seasonBandModel";
+import { growthYearLine } from "../src/ui/results/lordYearReview";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import type { SeasonLedger } from "../src/engine/season.types";
 
-test("until the engine's growthBlock is connected, no mark is read; its words are ready", () => {
+const YEAR = BALANCE.TICKS_PER_YEAR;
+const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
+const block = (over: Partial<GrowthBlock> = {}): GrowthBlock => ({ reason: "no_lots", detail: null, since: null, lever: null, ...over });
+const closes = (count: number, read: GrowthBlock | null, from = 1300) => { for (let index = 0; index < count; index += 1) noteGrowthClose(from + Math.floor(index / 4), index % 4, read); };
+
+test("a stop the screen saw begin: no mark until it held past two closes, then 정체 N년 (whole years, at least one)", () => {
+  startGrowthTrack(true);
+  closes(2, block());
+  assert.equal(growthView(lord, growthRun(), block())?.mark, null, "two closes: not yet");
+  closes(1, block());
+  assert.deepEqual(growthView(lord, growthRun(), block())?.mark, { years: 1, text: "정체 1년", label: "마을이 1년째 자라지 않습니다" });
+  closes(6, block());
+  assert.equal(growthView(lord, growthRun(), block())?.mark?.text, "정체 2년", "nine closes in a row");
+  noteGrowthClose(1303, 0, null);
+  assert.equal(growthRun().closes, 0, "growth again: the count ends");
+});
+
+test("after a load: 정체 중, no number — until the stop ends and a new one begins in the session", () => {
+  startGrowthTrack(false);
+  closes(5, block());
+  assert.deepEqual(growthView(lord, growthRun(), block())?.mark, { years: null, text: "정체 중", label: "마을이 자라지 않고 있습니다" });
+  assert.equal(growthView(lord, growthRun(), block())?.since, GROWTH_COPY.panel.sinceUnknown);
+  noteGrowthClose(1302, 1, null);
+  closes(3, block(), 1303);
+  assert.equal(growthView(lord, growthRun(), block())?.mark?.text, "정체 1년", "seen to begin this session: counted");
+  assert.equal(growthView(lord, growthRun(), block())?.since, GROWTH_COPY.panel.since(1303, "봄"));
+});
+
+test("the engine's since, when it has one, stands for the screen's count", () => {
+  startGrowthTrack(false);
+  const state = { ...lord, tick: 5 * YEAR };
+  assert.equal(growthView(state, growthRun(), block({ since: 2 * YEAR }))?.mark?.text, "정체 3년", "a load, no close seen: the engine knows");
+  assert.equal(growthView(state, growthRun(), block({ since: 5 * YEAR - 100 }))?.mark, null, "held less than two seasons");
+});
+
+test("the lever: a button to the command's existing screen; none for lord mode's draw_wall (A1) or no lever", () => {
+  startGrowthTrack(true);
+  const subsidy = growthView(lord, growthRun(), block({ reason: "food", lever: { kind: "subsidy", building: "farmstead" } }))!;
+  assert.deepEqual(subsidy.lever, { line: "농가 공사를 장려금으로 도우면 풀립니다", button: "장려금 정하기", action: "policy" });
+  assert.equal(growthView(lord, growthRun(), block({ reason: "wall_building", lever: { kind: "wall_priority" } }))!.lever.action, "wall");
+  const drawn = growthView(lord, growthRun(), block({ reason: "wall_not_found", lever: { kind: "draw_wall" } }))!;
+  assert.deepEqual(drawn.lever, { line: "지금은 영주가 직접 풀 길이 없습니다 — 마을이 목책 자리를 찾지 못하고 있습니다", button: null, action: null });
+  assert.equal(growthView(lord, growthRun(), block({ reason: "town_full" }))!.lever.button, null);
+  // The timber order and the request lead to the town's request card only while one waits (none in a new game).
+  assert.equal(growthView(lord, growthRun(), block({ reason: "era_condition", detail: "timber", lever: { kind: "order_timber" } }))!.lever.button, null);
+});
+
+test("outside lord mode or while the town grows: no view, no mark", () => {
+  assert.equal(growthView(DEFAULT_GAME_STATE, growthRun(), block()), null);
+  assert.equal(growthView(lord, growthRun(), null), null);
   assert.equal(growthMarkOf(DEFAULT_GAME_STATE), null);
-  assert.equal(GROWTH_COPY.stalled(3), "정체 3년");
+});
+
+test("the band's first line, the chip when a stop begins, the year card's line", () => {
+  const ledger = { season: 1, year: 1301, startTick: 0, endTick: 1, income: 0, expense: 0, popDelta: 4, notableEvents: [], nextObjectiveHint: null } as unknown as SeasonLedger;
+  const snap: TownSnapshot = { levels: {}, buildings: 0, fields: 0, dead: 0, population: 0, coin: 0 };
+  const band = seasonBand({ season: ledger, before: snap, after: snap, stewardHandled: 0, growth: GROWTH_COPY.band(2, "성 안에 집을 지을 자리가 없습니다") });
+  assert.deepEqual(band.items.map(item => item.key), ["growth", "population"]);
+  assert.equal(band.items[0]!.text, "마을이 2년째 자라지 않습니다 — 성 안에 집을 지을 자리가 없습니다");
+  startGrowthTrack(true);
+  assert.equal(storyBeats(lord).some(beat => beat.kind === "growth_block"), false, "no close seen yet: no chip");
+  noteGrowthClose(1300, 0, block({ reason: "food" }));
+  const chip = storyBeats(lord).find(beat => beat.kind === "growth_block")!;
+  assert.equal(chip.id, "growth:1300:0");
+  assert.equal(chip.slot, "population");
+  assert.equal(chip.line, GROWTH_COPY.reason("food", null));
+  closes(3, block({ reason: "no_lots" }), 1300);
+  assert.equal(growthYear(1300).seasons, 4);
+  assert.deepEqual(growthYearLine(1300), ["자라지 못한 철 4 — 성 안에 집을 지을 자리가 없습니다"]);
+  assert.deepEqual(growthYearLine(1299), []);
 });
