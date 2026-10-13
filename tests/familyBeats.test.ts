@@ -1,7 +1,7 @@
 /**
  * LS1-6 (lord-screen-v1.md §3, "영주 집안 출생·사망·혼인 — 가족 칩, 모든 출생·사망"; the user's ruling 2026-10-13): one chip for
  * each birth, death and marriage in the lord's family, the season after it, its people named by the ids the records give
- * (KIN-D1); the lord's own children, which have no `person.born` record, read from the persons. Not twice: the lord's
+ * (KIN-D1), from the engine's `person.born`, `person.died` and `person.married` records. Not twice: the lord's
  * death a house change follows is the house card's, the first child of an arranged marriage its moment's. And the one
  * place the screen picks a Korean particle (particle.ko.ts).
  */
@@ -41,16 +41,15 @@ test("a death, a marriage in the lord's family: a chip each, the season after, i
   assert.equal(familyBeats(town(2_001 + 1_000, [record("h-9001", 2_001, "person.died", spouse.id, {})])).length, 0, "a season on: gone");
 });
 
-test("the lord's own child born at the year's turn (no record): a chip by its own ids for the first season", () => {
+test("a child of the lord's house born: its record, the child by name, its parents by the record's ids", () => {
   const child = { ...family.find(person => person.role === "child")!, id: "m-900002", givenName: "Roger", sex: "male", birthYear: 1300, motherId: spouse.id, fatherId: head.id } as Person;
   const people = [...start.persons!.people, child];
-  const born = familyBeats(town(400, [], people));
-  assert.deepEqual(born.map(beat => beat.id), ["family-born:m-900002"]);
+  const born = familyBeats(town(400, [record("h-9301", 0, "person.born", child.id, { motherId: spouse.id, fatherId: head.id, nameFrom: "common" })], people));
+  assert.deepEqual(born.map(beat => beat.id), ["family:h-9301"]);
   assert.equal(born[0]!.title, "로저가 태어났습니다");
-  assert.equal(born[0]!.line, "1300년 봄, 영주 집안에 아이가 태어났습니다");
   assert.deepEqual(born[0]!.facts, ["어머니 앨리스 · 아버지 월터"]);
-  assert.equal(familyBeats(town(1_200, [], people)).length, 0, "after the first season: gone");
-  assert.equal(familyBeats(town(400, [])).length, 0, "the family the game began with: no births");
+  assert.equal(born[0]!.chronicle?.recordId, "h-9301");
+  assert.equal(familyBeats(town(400, [], people)).length, 0, "no record, no chip: the screen reads the engine's records only");
 });
 
 test("not twice: the lord's death a house change follows, an arranged marriage's first child", () => {
@@ -58,7 +57,8 @@ test("not twice: the lord's death a house change follows, an arranged marriage's
     { ...record("h-9102", 17_001, "house.succession", head.id), params: { deceasedId: head.id } } as HistoryRecord]);
   assert.equal(familyBeats(state).length, 0, "the house card tells it");
   const child = { ...family.find(person => person.role === "child")!, id: "m-900003", birthYear: 1300, motherId: spouse.id } as Person;
-  const arranged = town(400, [{ ...record("h-9103", 300, "marriage.child_born", child.id), subject: { type: "town", id: "town" }, params: { child: child.id } } as unknown as HistoryRecord],
+  const arranged = town(400, [record("h-9104", 300, "person.born", child.id, { motherId: spouse.id }),
+    { ...record("h-9103", 300, "marriage.child_born", child.id), subject: { type: "town", id: "town" }, params: { child: child.id } } as unknown as HistoryRecord],
     [...start.persons!.people, child]);
   assert.equal(familyBeats(arranged).length, 0, "the moment's chip tells it");
 });

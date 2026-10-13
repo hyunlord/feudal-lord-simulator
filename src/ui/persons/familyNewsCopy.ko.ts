@@ -18,8 +18,6 @@ export const FAMILY_NEWS_COPY = {
     born: (given: string) => `${withParticle(given, "이/가")} 태어났습니다`,
     died: (given: string) => `${withParticle(given, "이/가")} 세상을 떠났습니다`,
     married: (one: string, other: string | null) => other === null ? `${withParticle(one, "이/가")} 혼인했습니다` : `${one}${particle(one, "과/와")} ${withParticle(other, "이/가")} 혼인했습니다`,
-    bornLine: (year: number, season: string) => `${year}년 ${season}, 영주 집안에 아이가 태어났습니다`,
     advice: "연대기에서 이 사람들의 전기를 볼 수 있습니다.",
-    bornAdvice: "영주 집안에 아이가 하나 늘었습니다.",
   },
 } as const;
