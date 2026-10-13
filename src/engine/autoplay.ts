@@ -50,6 +50,7 @@ import type { AutoplayAction } from "./autoplay.types";
 import { granaryGapAction, keepsHouseInMarketReach, marketGapAction, marketRelocationAction, recordBotRecovery, type AdvisorAction, type BotRecoveryCollector } from './autoplayBotRecovery';
 import { logOverflowKind, timberDemandExpansionKind } from './autoplayTimberDemand';
 import { stoneDemandExpansionKind } from './autoplayMaterialGrowth';
+import { cutsQuarryAccess } from './quarryAccess';
 import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorPlots';
 import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin } from './autoplayArable';
 import { winterReserveAction } from './autoplayWinterReserve';
@@ -149,12 +150,13 @@ function findBuildSite(
 }
 
 /** LM-E1b (TA-10): the site check that failed, in the order the bot runs them. */
-export type SiteRefusal = "clearance" | "accepts" | "placement" | "wall_space" | "service_space" | "road_expansion";
+export type SiteRefusal = "clearance" | "accepts" | "placement" | "wall_space" | "quarry_access" | "service_space" | "road_expansion";
 
 /**
  * LM-E1b (TA-10): the bot's checks of one site, lifted out of its site search so the town's candidates take the same:
  * the setback, the step's own test, the placement rules (zones, fields), the wall's room (the palisade still fits, or
- * a house stands inside it), the town's service space, and the road's room to grow. `road_first` is a site that needs
+ * a house stands inside it), a road to a quarry site (lord mode, `quarryAccess`), the town's service space, and the road's
+ * room to grow. `road_first` is a site that needs
  * its road laid before the building (the bot lays the road; a town candidate is refused).
  */
 export function autoplaySiteCheck(state: GameState, kind: BuildingKind, coordinate: TileCoordinate,
@@ -163,6 +165,8 @@ export function autoplaySiteCheck(state: GameState, kind: BuildingKind, coordina
   if (!accepts(coordinate)) return "accepts";
   if (!autoplayCanPlace(state, kind, coordinate.tx, coordinate.ty)) return "placement";
   if (!preservesAutoplayWallSpace(state, kind, coordinate)) return "wall_space";
+  // Quarry access ② (lord mode): no building where it would leave the town no road to a quarry site, while it has no quarry.
+  if (cutsQuarryAccess(state, kind, coordinate)) return "quarry_access";
   if (!preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })) return "service_space";
   const expansion = preserveRoadExpansion(state, { ...coordinate, kind });
   if (expansion?.kind === 'none') return "road_expansion";
