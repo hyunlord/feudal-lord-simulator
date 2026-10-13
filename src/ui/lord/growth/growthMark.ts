@@ -6,7 +6,7 @@ import { scenarioOf } from "../../../engine/scenarioState";
 import { lordMode } from "../../../engine/townAgency";
 import { lordRequestView } from "../../lordCardsModel";
 import { GROWTH_COPY } from "./growthCopy.ko";
-import { growthRun, type GrowthRun } from "./growthTrack";
+import { GROWTH_HELD_CLOSES, growthRun, type GrowthRun } from "./growthTrack";
 
 const SEASON = BALANCE.TICKS_PER_YEAR / 4;
 const YEAR = BALANCE.TICKS_PER_YEAR;
@@ -18,11 +18,13 @@ export type GrowthLeverAction = "policy" | "wall" | "request";
 export type GrowthView = Readonly<{
   block: GrowthBlock;
   reason: string;
-  /** Shown once the stop has held past two seasons (LS1-3), else null. */
+  /** Shown once the stop has held past two seasons (LS1-3), else null — the town still grows, or not for long: what
+   * holds its next step is said only in the growth panel ("다음 단계를 막는 것"), not as a stop (A4). */
   mark: GrowthMark | null;
   /** Whole years of the stop when known (the engine's since, else the screen saw it begin), else null. */
   years: number | null;
-  since: string;
+  /** Since when the stop holds (null while there is no stop). */
+  since: string | null;
   lever: Readonly<{ line: string; button: string | null; action: GrowthLeverAction | null }>;
 }>;
 
@@ -37,12 +39,12 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   const block = read;
   if (block === null) return null;
   const reason = GROWTH_COPY.reason(block.reason, block.detail);
-  const held = block.since !== null ? state.tick - block.since > 2 * SEASON : run.closes > 2;
+  const held = block.since !== null ? state.tick - block.since > GROWTH_HELD_CLOSES * SEASON : run.closes > GROWTH_HELD_CLOSES;
   const years = block.since !== null ? Math.max(1, Math.floor((state.tick - block.since) / YEAR)) : run.known ? Math.max(1, Math.floor(run.closes / 4)) : null;
   const mark = !held ? null : years === null ? { years: null, text: GROWTH_COPY.stalledUnknown, label: GROWTH_COPY.stalledUnknownLabel }
     : { years, text: GROWTH_COPY.stalled(years), label: GROWTH_COPY.stalledLabel(years) };
   const sinceTick = block.since;
-  const since = sinceTick !== null ? GROWTH_COPY.panel.since(yearOf(state, sinceTick), SCENARIO_COPY.seasons[seasonOf(sinceTick)])
+  const since = !held ? null : sinceTick !== null ? GROWTH_COPY.panel.since(yearOf(state, sinceTick), SCENARIO_COPY.seasons[seasonOf(sinceTick)])
     : run.known && run.start !== null ? GROWTH_COPY.panel.since(run.start.year, SCENARIO_COPY.seasons[run.start.season as 0 | 1 | 2 | 3]) : GROWTH_COPY.panel.sinceUnknown;
   return { block, reason, mark, years: held ? years : null, since, lever: leverOf(state, block, reason) };
 }

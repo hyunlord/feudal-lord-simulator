@@ -6,6 +6,7 @@
 //   tsx scripts/growBlockProbe.ts <seed> [years] [saveDir] > out.json   (saveDir: saves a season and five years after the
 //   market charter, and at the end — seed<n>-charter-season-<year>, seed<n>-charter-5y-<year>, seed<n>-final-<year>;
 //   [saveYears], comma-separated: also at the first tick of each — seed<n>-year-<year>)
+import { createHash } from "node:crypto";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -27,6 +28,7 @@ import { houseRequirementRows } from "./autoplayStallProbe";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
+import { idleLabourPermille } from "../src/engine/labourDemand";
 import { LORD_MODE_POLICY } from "../src/engine/townAgency";
 import { encodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
@@ -109,7 +111,9 @@ function row(state: GameState, year: number) {
   }
   const harvests = state.forestHarvests ?? [];
   return { year, population: state.population, era: state.era, palisade: state.palisade?.polygon.length ?? 0, houses: state.houses.length,
-    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, church: kinds.church ?? 0,
+    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, masonry: kinds.masonry ?? 0, church: kinds.church ?? 0,
+    // Option A's judgement (the user's ruling 2026-10-12): idle labour, permille of the adults (LB-9's `labour.idle`).
+    idlePermille: idleLabourPermille(state),
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
     abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state),
@@ -128,7 +132,7 @@ function writeState(dir: string, name: string, state: GameState) {
 export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number })[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number; masonrySeasons: number; masonryIdleSeasons: number; masonryIdleStoredSeasons: number; ms: number })[] = [];
   let lastYear = start;
   // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
   const seenSites = new Set<string>();
@@ -138,6 +142,10 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
   let replaced = 0;
   let charterTick: number | null = null;
   let shortSeasons = 0;
+  let masonrySeasons = 0;
+  let masonryIdleSeasons = 0;
+  let masonryIdleStoredSeasons = 0;
+  let yearStart = performance.now();
   const saved = new Set<string>();
   const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
     if (saveDir !== undefined && !saved.has(key)) { saved.add(key); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
@@ -145,6 +153,20 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
     if (state.tick % 1_000 === 0 && shortOfFood(state)) shortSeasons += 1;
+    // Option A (the user's check 2026-10-13): a staffed masonry without the raw stone for its next stone sits idle — the
+    // stone the rule reads from the masonries' rate would then be too much.
+    // The delivery gap's size (the user's ruling 2026-10-13): of those, the seasons a store held raw stone it did not send.
+    if (state.tick % 1_000 === 0) {
+      const dressing = BUILDING_CONFIG_BY_KIND.masonry.production?.inputPerOutput ?? 0;
+      const stored = state.buildings.some(building => building.kind !== "masonry" && building.kind !== "quarry" && (building.inventory.stone_raw ?? 0) >= dressing);
+      for (const building of state.buildings) {
+        if (building.kind !== "masonry" || building.workers < BUILDING_CONFIG_BY_KIND.masonry.workersRequired) continue;
+        masonrySeasons += 1;
+        if ((building.inventory.stone_raw ?? 0) >= dressing) continue;
+        masonryIdleSeasons += 1;
+        if (stored) masonryIdleStoredSeasons += 1;
+      }
+    }
     if (charterTick === null && state.era !== "hamlet") charterTick = state.tick;
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.season) saveOnce("charter-season");
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.years) saveOnce("charter-5y");
@@ -158,7 +180,9 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
       if (isBuildingConstructionSite(site) && abandonedSpots.some(spot => spot.kind === site.kind && spot.tx === site.tx && spot.ty === site.ty)) replaced += 1;
     }
     const year = stateCalendar(state).year;
-    if (year !== lastYear) { lastYear = year; rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons }); abandonedBy = {}; replaced = 0; shortSeasons = 0; }
+    // The year's wall-clock time on this machine (quarry access ⑤'s tick-time check; a DGX run's figures only compare with its own).
+    if (year !== lastYear) { const now = performance.now(); rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons, masonrySeasons, masonryIdleSeasons, masonryIdleStoredSeasons, ms: Math.round(now - yearStart) });
+      yearStart = now; lastYear = year; abandonedBy = {}; replaced = 0; shortSeasons = 0; masonrySeasons = 0; masonryIdleSeasons = 0; masonryIdleStoredSeasons = 0; }
   }
   saveOnce("final");
   const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
@@ -175,7 +199,9 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
       interior: last.interior });
     runStart = index;
   }
-  return { seed, years, maxPopulation: Math.max(...rows.map(entry => entry.population)), firstPalisade: rows.find(entry => entry.palisade > 0)?.year ?? null,
+  // The final state's hash (a decision-preserving change, e.g. a search memory, must leave it as it was).
+  const finalStateSha256 = createHash("sha256").update(JSON.stringify(state)).digest("hex");
+  return { seed, years, finalStateSha256, maxPopulation: Math.max(...rows.map(entry => entry.population)), firstPalisade: rows.find(entry => entry.palisade > 0)?.year ?? null,
     stalls, peakStumps: Math.max(...rows.map(entry => entry.stumps)), abandoned: rows.reduce((sum, entry) => sum + Object.values(entry.abandonedBy).reduce((a, b) => a + b, 0), 0),
     replaced: rows.reduce((sum, entry) => sum + entry.replaced, 0), rows };
 }

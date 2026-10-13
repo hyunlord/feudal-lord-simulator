@@ -52,3 +52,12 @@ test("fewer chips than the rail's room all show (a negative slice start once kep
   assert.deepEqual(chips([other("a")]).map(beat => beat.id), ["a"]);
   assert.deepEqual(chips([other("a"), other("b"), other("c"), other("d")]).map(beat => beat.id), ["b", "c", "d"], "four: the newest three");
 });
+
+test("LS1-6: the year's results chip goes the moment its year is over (the year card takes it): one on the rail at a time", () => {
+  const year = (id: string) => ({ ...other(id), kind: "decision_trace" }) as unknown as StoryBeat;
+  const last = year("results:1302"); const now = year("results:1303"); const fire = other("fire-2");
+  const seen = [last, fire, now].map((beat, index) => ({ beat, firstSeenMs: 1_000 + index, lastSeenMs: 9_000, dismissed: false }));
+  const shown = storyChips(seen, new Set([now.id]), 10_000, 500, () => false);
+  assert.deepEqual(shown.map(beat => beat.id).filter(id => id.startsWith("results:")), ["results:1303"], "last year's chip is not kept its minute");
+  assert.ok(shown.some(beat => beat.id === "fire-2"), "another chip over keeps its minute");
+});

@@ -37,6 +37,10 @@ export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "ar
   };
 }
 
+/** LS1-3 (LS1-6): the town's size the growth count compares — its houses and its people. */
+export const townSize = (snapshot: TownSnapshot): Readonly<{ houses: number; population: number }> =>
+  ({ houses: Object.keys(snapshot.levels).length, population: snapshot.population });
+
 export type SeasonBandItem = Readonly<{ key: "growth" | "population" | "built" | "levels" | "fields" | "money" | "deaths" | "steward"; text: string }>;
 export type SeasonBand = Readonly<{ key: string; items: readonly SeasonBandItem[]; quiet: boolean }>;
 export const SEASON_BAND_MAX = 5;

@@ -2,6 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfi
 import { constructionDeliveryNeed, isBuildingConstructionSite } from '../economy/construction';
 import { storageCapacityBlock } from '../economy/storage';
 import { placementSpendableResource } from '../world/placement';
+import { materialGrowthNeed } from './autoplayMaterialGrowth';
 import type { GameState } from './engine.types';
 
 /**
@@ -71,7 +72,9 @@ export function timberDemandExpansionKind(state: GameState): TimberKind | null {
   if (state.constructionSites.some(site => isBuildingConstructionSite(site) && (site.kind === 'logging_camp' || site.kind === 'sawmill'))) return null;
   const made = timberMadePerWindow(state);
   if (made === null) return null;
-  const need = waitingTimberNeed(state);
+  // Option A (lord mode): the timber the next era, the next charter building and the stone chain's missing links wait
+  // for counts beside the open sites' (`materialGrowthNeed`); the sandbox keeps BT6's sites only.
+  const need = state.agency !== undefined ? materialGrowthNeed(state, 'timber') : waitingTimberNeed(state);
   if (need <= made * (TIMBER_DEMAND_HORIZON_TICKS / TIMBER_DEMAND_WINDOW_TICKS)) return null;
   const short = bottleneck(state.buildings);
   // ⑥ is lord mode's (the sandbox keeps BT6's choice — GROW-BLOCK-2a's guardrail seed 2, the user's ruling 2026-10-11).

@@ -85,15 +85,26 @@ await page.evaluate(async ({ told, grace }) => {
   window.__FLS_ANSWERED__ = key => waiting.delete(key);
   window.__FLS_TOLD__ = [];
   const tick = () => window.__FEUDAL_PHASE10_PROOF__?.state()?.tick ?? null;
+  // LS1-6: a chip's id (`data-chip-id`, its beat's) with it, and a chip's leaving (`gone`), so a chip shown again is told
+  // apart from a new one (the distinct chips a year; the times the same chip came back, and why).
   const record = element => {
     const text = (element.innerText ?? element.textContent ?? '').replace(/\s+/g, ' ').trim();
-    if (text !== '') window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: text.slice(0, 400) });
+    const id = element.getAttribute('data-chip-id');
+    if (text !== '') window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: text.slice(0, 400), ...(id === null ? {} : { id }) });
   };
+  const gone = element => window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: '', id: element.getAttribute('data-chip-id'), gone: true });
   new MutationObserver(changes => {
-    for (const change of changes) for (const node of change.addedNodes) {
-      if (!(node instanceof HTMLElement)) continue;
-      if (node.matches(told)) record(node);
-      for (const inner of node.querySelectorAll(told)) record(inner);
+    for (const change of changes) {
+      for (const node of change.addedNodes) {
+        if (!(node instanceof HTMLElement)) continue;
+        if (node.matches(told)) record(node);
+        for (const inner of node.querySelectorAll(told)) record(inner);
+      }
+      for (const node of change.removedNodes) {
+        if (!(node instanceof HTMLElement)) continue;
+        if (node.matches('.event-chip')) gone(node);
+        for (const inner of node.querySelectorAll('.event-chip')) gone(inner);
+      }
     }
   }).observe(document.body, { childList: true, subtree: true });
 }, { told: TOLD, grace: ASKED_GRACE });

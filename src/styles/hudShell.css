@@ -652,6 +652,12 @@
 .app-shell .status-pill-mode + .status-pill-cell { border-left: 1px solid var(--palette-parchment-dark); }
 .app-shell .status-pill-mode-icon { display: none; }
 .app-shell .status-pill-mode-icon .seal-mark, .app-shell .status-pill-mode-icon .ui-icon { display: block; }
+/* LS1-6 (the zone state's area at 1280 × 800 over its budget, 9.1 % of 8.5 %: the pill had grown by the mode tag and the way
+   back to the town): while the zone layer is open the pill takes its short form — the tag goes first (WEL-D2's order; the
+   pill's name still says the mode), the way back to the town keeps its picture, its words in its name. */
+.app-shell:has(.zone-toolbar:not([hidden])) .status-pill-mode { display: none; }
+.app-shell:has(.zone-toolbar:not([hidden])) .status-pill-town-words { display: none; }
+.app-shell:has(.zone-toolbar:not([hidden])) .status-pill-town { min-width: 44px; justify-content: center; }
 @media (max-width: 1100px) {
   .app-shell .status-pill-mode { min-width: 44px; padding: 0 6px; }
   .app-shell .status-pill-mode-words { display: none; }
