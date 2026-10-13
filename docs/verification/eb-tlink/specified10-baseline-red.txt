@@ -1,0 +1,243 @@
+Baseline HEAD: cf3fa941659ecb78396eed3780f88024a2bde0dd
+Baseline src byte tree equals 64a16b5a6c1d91024415039db89bb88412528e15; src working tree clean.
+Isolated directory: /var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar
+Source, fixtures, node_modules symlink baseline; only tests and package.json copied. Baseline not modified.
+SHA256 tests/engineBTlinkSpecifiedEstate.test.ts: 0ea379f7779ade4a06e67261acab043fcf44eb41f4821028a2d8297adabfc1d7
+SHA256 tests/engineBTlinkSpecifiedTown.test.ts: baf75ae15aecee3b54b704ec4cb0bbc3fb125c6a50d7c5f6f1b37125b73a2060
+SHA256 tests/helpers/engineBTlinkFixtures.ts: db15791c73841af51b58bb1a4b6eb51aadd1801a976bbac1d7f36b4148bb4966
+Command: node --import tsx --test tests/engineBTlinkSpecifiedEstate.test.ts tests/engineBTlinkSpecifiedTown.test.ts
+Exit: 1
+
+✖ ck_evt_061 records immediate rules and links an actual later rights petition routing (17.320209ms)
+✖ ck_evt_077 records immediate rules and links an actual later rights petition routing (9.674625ms)
+✖ ck_evt_130 records immediate rules and links an actual later rights petition routing (9.292375ms)
+✖ ck_evt_038 real enforcement success records actual possession and expense (14.589167ms)
+✖ ck_evt_038 real enforcement failure records actual possession and expense (10.526ms)
+✖ ck_evt_140 fifth audit-mode answer owns the actual audit without superseded settings (13.304459ms)
+✖ ck_evt_083 timber answer owns timber delivery without borrowing unselected dues target (18.183958ms)
+✔ ck_evt_046 cancel stops the real timber order and produces no later delivery receipt (10.63875ms)
+✖ ck_evt_092 real dues income belongs to its latest own answer, not the preceding dues root (10.987042ms)
+✖ ck_evt_211 real dues income belongs to its latest own answer, not the preceding dues root (9.368583ms)
+✖ ck_evt_209 cancel has no invented future delivery (9.360833ms)
+✖ ck_evt_209 hold has no invented future delivery (10.37525ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 1
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 647.031334
+
+✖ failing tests:
+
+test at tests/engineBTlinkSpecifiedEstate.test.ts:1:577
+✖ ck_evt_061 records immediate rules and links an actual later rights petition routing (17.320209ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedEstate.test.ts:18:15)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedEstate.test.ts:1:577
+✖ ck_evt_077 records immediate rules and links an actual later rights petition routing (9.674625ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedEstate.test.ts:18:15)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedEstate.test.ts:1:577
+✖ ck_evt_130 records immediate rules and links an actual later rights petition routing (9.292375ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedEstate.test.ts:18:15)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedEstate.test.ts:1:2019
+✖ ck_evt_038 real enforcement success records actual possession and expense (14.589167ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(linked(result.after, result.ownId, 'decision_effect').some(row => row.template === 'estate.possession_enforced' && row.params?.succeeded === Number(success) && row.params?.attempt === 1))
+  
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedEstate.test.ts:39:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedEstate.test.ts:1:2019
+✖ ck_evt_038 real enforcement failure records actual possession and expense (10.526ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(linked(result.after, result.ownId, 'decision_effect').some(row => row.template === 'estate.possession_enforced' && row.params?.succeeded === Number(success) && row.params?.attempt === 1))
+  
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedEstate.test.ts:39:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedEstate.test.ts:1:2951
+✖ ck_evt_140 fifth audit-mode answer owns the actual audit without superseded settings (13.304459ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(id)
+  
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedEstate.test.ts:55:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedTown.test.ts:1:547
+✖ ck_evt_083 timber answer owns timber delivery without borrowing unselected dues target (18.183958ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedTown.test.ts:13:13)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedTown.test.ts:1:1719
+✖ ck_evt_092 real dues income belongs to its latest own answer, not the preceding dues root (10.987042ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedTown.test.ts:35:15)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedTown.test.ts:1:1719
+✖ ck_evt_211 real dues income belongs to its latest own answer, not the preceding dues root (9.368583ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedTown.test.ts:35:15)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedTown.test.ts:1:2521
+✖ ck_evt_209 cancel has no invented future delivery (9.360833ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedTown.test.ts:50:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/engineBTlinkSpecifiedTown.test.ts:1:2521
+✖ ck_evt_209 hold has no invented future delivery (10.37525ms)
+  AssertionError [ERR_ASSERTION]: own answer contribution
+      at contribution (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/helpers/engineBTlinkFixtures.ts:77:10)
+      at TestContext.<anonymous> (/private/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/eb-tlink-baseline-tests-k0u9usar/tests/engineBTlinkSpecifiedTown.test.ts:50:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

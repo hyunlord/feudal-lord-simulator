@@ -1,0 +1,1457 @@
+{
+  "schemaVersion": 1,
+  "prior": [
+    {
+      "path": "docs/verification/eb-tlink-outcomes/final-9ad-residuals.json.gz",
+      "compressedSha256": "39f2b3a4cb55f8b79e27284fd06f0859fc77767a93ca3daff9aa4848f9c416e7",
+      "rawSha256": "a5ae985a9bc6e6e47952cfa899ff02f16873fb151ac48609189047792bcea2bf",
+      "unexplained": 179
+    },
+    {
+      "path": "docs/verification/eb-tlink-outcomes/final-23d-residuals.json.gz",
+      "compressedSha256": "d42218eb2eab9ce70dd329fa15ad9c5ccce404c90be565b5e915139b010e6988",
+      "rawSha256": "2bfbf4a88df7abaddbeea034e9afea6979970d96263bca651facc8f10c814ed7",
+      "unexplained": 179
+    }
+  ],
+  "sameAnswerIds": true,
+  "reportCompressedSha256": "5519e0d87775f5c48dd3629f36b676cdc49d7e4c35b32a1f5f4459bc03d14d33",
+  "counts": {
+    "outcome-visible": 112,
+    "inert": 67
+  },
+  "rows": [
+    {
+      "seed": 1,
+      "historyId": "h-002358",
+      "ordinal": 503,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-002653",
+      "ordinal": 539,
+      "source": "registry:ck_evt_005:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-002663",
+      "ordinal": 541,
+      "source": "answer_will_change",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-003827",
+      "ordinal": 560,
+      "source": "audit:tolerate:audit-2",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-004308",
+      "ordinal": 568,
+      "source": "audit:tolerate:audit-4",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-005079",
+      "ordinal": 681,
+      "source": "audit:tolerate:audit-7",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-005298",
+      "ordinal": 708,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-005367",
+      "ordinal": 711,
+      "source": "audit:tolerate:audit-8",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-005650",
+      "ordinal": 718,
+      "source": "audit:tolerate:audit-9",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-006179",
+      "ordinal": 724,
+      "source": "audit:tolerate:audit-11",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-006890",
+      "ordinal": 844,
+      "source": "audit:tolerate:audit-14",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-007357",
+      "ordinal": 970,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-007412",
+      "ordinal": 973,
+      "source": "audit:tolerate:audit-16",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-007606",
+      "ordinal": 978,
+      "source": "registry:ck_evt_140:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-008119",
+      "ordinal": 983,
+      "source": "audit:tolerate:audit-19",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-008386",
+      "ordinal": 990,
+      "source": "audit:tolerate:audit-20",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-008645",
+      "ordinal": 995,
+      "source": "audit:tolerate:audit-21",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009169",
+      "ordinal": 1128,
+      "source": "audit:tolerate:audit-23",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009409",
+      "ordinal": 1220,
+      "source": "audit:tolerate:audit-24",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009583",
+      "ordinal": 1253,
+      "source": "registry:ck_evt_130:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009651",
+      "ordinal": 1291,
+      "source": "petition:wool_payment:accept_with_price",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009669",
+      "ordinal": 1296,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009737",
+      "ordinal": 1349,
+      "source": "audit:tolerate:audit-25",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-009869",
+      "ordinal": 1372,
+      "source": "petition:levy_response:accept_with_price",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-010020",
+      "ordinal": 1378,
+      "source": "audit:tolerate:audit-26",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-010318",
+      "ordinal": 1383,
+      "source": "petition:refugee_admission:refuse",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-010335",
+      "ordinal": 1385,
+      "source": "audit:tolerate:audit-27",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-011431",
+      "ordinal": 1526,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-011520",
+      "ordinal": 1530,
+      "source": "audit:tolerate:audit-31",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-012527",
+      "ordinal": 1668,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-012582",
+      "ordinal": 1671,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-012858",
+      "ordinal": 1680,
+      "source": "petition:vacant_priest:accept",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-014646",
+      "ordinal": 1780,
+      "source": "audit:tolerate:audit-43",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-014884",
+      "ordinal": 1790,
+      "source": "audit:tolerate:audit-44",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-015306",
+      "ordinal": 1793,
+      "source": "audit:tolerate:audit-46",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-016087",
+      "ordinal": 1803,
+      "source": "audit:tolerate:audit-49",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-016393",
+      "ordinal": 1806,
+      "source": "audit:tolerate:audit-50",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-017957",
+      "ordinal": 1871,
+      "source": "audit:tolerate:audit-56",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-019226",
+      "ordinal": 1889,
+      "source": "audit:tolerate:audit-61",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-019696",
+      "ordinal": 1908,
+      "source": "audit:tolerate:audit-63",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-021511",
+      "ordinal": 1940,
+      "source": "audit:tolerate:audit-70",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-022834",
+      "ordinal": 1950,
+      "source": "registry:ck_evt_092:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-024261",
+      "ordinal": 1964,
+      "source": "registry:ck_evt_211:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-024777",
+      "ordinal": 1968,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-025296",
+      "ordinal": 1981,
+      "source": "audit:tolerate:audit-85",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-026011",
+      "ordinal": 1993,
+      "source": "registry:ck_evt_211:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-027319",
+      "ordinal": 2057,
+      "source": "registry:ck_evt_211:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-027390",
+      "ordinal": 2058,
+      "source": "registry:ck_evt_092:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-027989",
+      "ordinal": 2076,
+      "source": "audit:tolerate:audit-95",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-028626",
+      "ordinal": 2085,
+      "source": "registry:ck_evt_211:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-030075",
+      "ordinal": 2099,
+      "source": "audit:tolerate:audit-103",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-030351",
+      "ordinal": 2102,
+      "source": "audit:tolerate:audit-104",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-030922",
+      "ordinal": 2104,
+      "source": "audit:tolerate:audit-106",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 1,
+      "historyId": "h-031775",
+      "ordinal": 2106,
+      "source": "audit:tolerate:audit-109",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-002817",
+      "ordinal": 384,
+      "source": "registry:ck_evt_092:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-003603",
+      "ordinal": 555,
+      "source": "registry:ck_evt_038:enforce",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-005112",
+      "ordinal": 611,
+      "source": "registry:ck_evt_130:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-005761",
+      "ordinal": 654,
+      "source": "audit:tolerate:audit-10",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-006007",
+      "ordinal": 753,
+      "source": "audit:tolerate:audit-11",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-007034",
+      "ordinal": 1043,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-007126",
+      "ordinal": 1053,
+      "source": "registry:ck_evt_046:cancel",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-007455",
+      "ordinal": 1068,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-007548",
+      "ordinal": 1072,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-007691",
+      "ordinal": 1074,
+      "source": "audit:tolerate:audit-17",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-008249",
+      "ordinal": 1098,
+      "source": "audit:tolerate:audit-19",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-009099",
+      "ordinal": 1242,
+      "source": "audit:tolerate:audit-22",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-009346",
+      "ordinal": 1249,
+      "source": "audit:tolerate:audit-23",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-009592",
+      "ordinal": 1346,
+      "source": "audit:tolerate:audit-24",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-009795",
+      "ordinal": 1372,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-010101",
+      "ordinal": 1394,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-010586",
+      "ordinal": 1416,
+      "source": "petition:wool_payment:accept_with_price",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-010659",
+      "ordinal": 1419,
+      "source": "audit:tolerate:audit-28",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-010712",
+      "ordinal": 1420,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-010773",
+      "ordinal": 1421,
+      "source": "petition:levy_response:accept_with_price",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-011059",
+      "ordinal": 1433,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-011191",
+      "ordinal": 1434,
+      "source": "petition:refugee_admission:refuse",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-011205",
+      "ordinal": 1436,
+      "source": "audit:tolerate:audit-30",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-012011",
+      "ordinal": 1549,
+      "source": "audit:tolerate:audit-33",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-012205",
+      "ordinal": 1577,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-012567",
+      "ordinal": 1604,
+      "source": "audit:tolerate:audit-35",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-012827",
+      "ordinal": 1605,
+      "source": "audit:tolerate:audit-36",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-013358",
+      "ordinal": 1614,
+      "source": "audit:tolerate:audit-38",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-013493",
+      "ordinal": 1615,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-013617",
+      "ordinal": 1616,
+      "source": "petition:vacant_priest:accept",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-013675",
+      "ordinal": 1618,
+      "source": "audit:tolerate:audit-39",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-014086",
+      "ordinal": 1624,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-014485",
+      "ordinal": 1631,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-015428",
+      "ordinal": 1646,
+      "source": "registry:ck_evt_140:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-015434",
+      "ordinal": 1648,
+      "source": "audit:tolerate:audit-46",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-015774",
+      "ordinal": 1655,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-016580",
+      "ordinal": 1677,
+      "source": "audit:tolerate:audit-51",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-017154",
+      "ordinal": 1682,
+      "source": "audit:tolerate:audit-53",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-017520",
+      "ordinal": 1698,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-017952",
+      "ordinal": 1718,
+      "source": "audit:tolerate:audit-56",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-018235",
+      "ordinal": 1720,
+      "source": "audit:tolerate:audit-57",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-018765",
+      "ordinal": 1727,
+      "source": "audit:tolerate:audit-59",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-019004",
+      "ordinal": 1730,
+      "source": "audit:tolerate:audit-60",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-019231",
+      "ordinal": 1733,
+      "source": "audit:tolerate:audit-61",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-020694",
+      "ordinal": 1755,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-021475",
+      "ordinal": 1788,
+      "source": "audit:tolerate:audit-67",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-022836",
+      "ordinal": 1825,
+      "source": "audit:tolerate:audit-71",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-024045",
+      "ordinal": 1851,
+      "source": "audit:tolerate:audit-75",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-024358",
+      "ordinal": 1853,
+      "source": "audit:tolerate:audit-76",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-026939",
+      "ordinal": 1918,
+      "source": "audit:tolerate:audit-83",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-027014",
+      "ordinal": 1920,
+      "source": "registry:ck_evt_204:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-028050",
+      "ordinal": 1957,
+      "source": "audit:tolerate:audit-86",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-028215",
+      "ordinal": 1958,
+      "source": "petition:church_rebuilding:accept",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-029080",
+      "ordinal": 1987,
+      "source": "registry:ck_evt_204:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-029084",
+      "ordinal": 1988,
+      "source": "audit:tolerate:audit-89",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-029828",
+      "ordinal": 1992,
+      "source": "audit:tolerate:audit-91",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-030182",
+      "ordinal": 1995,
+      "source": "audit:tolerate:audit-92",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-030350",
+      "ordinal": 1996,
+      "source": "petition:heir_choice:accept",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-030894",
+      "ordinal": 2001,
+      "source": "audit:tolerate:audit-94",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-031606",
+      "ordinal": 2010,
+      "source": "audit:tolerate:audit-96",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-032273",
+      "ordinal": 2026,
+      "source": "registry:ck_evt_204:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-032626",
+      "ordinal": 2040,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-033338",
+      "ordinal": 2058,
+      "source": "audit:tolerate:audit-101",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-033706",
+      "ordinal": 2060,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-033710",
+      "ordinal": 2061,
+      "source": "audit:tolerate:audit-102",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-035146",
+      "ordinal": 2093,
+      "source": "audit:tolerate:audit-106",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-035246",
+      "ordinal": 2094,
+      "source": "registry:ck_evt_204:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-035509",
+      "ordinal": 2096,
+      "source": "audit:tolerate:audit-107",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-035592",
+      "ordinal": 2097,
+      "source": "registry:ck_evt_204:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-036883",
+      "ordinal": 2103,
+      "source": "audit:tolerate:audit-111",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-036974",
+      "ordinal": 2105,
+      "source": "registry:ck_evt_204:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 2,
+      "historyId": "h-037165",
+      "ordinal": 2106,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-001136",
+      "ordinal": 239,
+      "source": "registry:ck_evt_042:firm",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-001950",
+      "ordinal": 278,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-003039",
+      "ordinal": 503,
+      "source": "audit:tolerate:audit-5",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-003343",
+      "ordinal": 508,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-003451",
+      "ordinal": 513,
+      "source": "audit:tolerate:audit-7",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-003699",
+      "ordinal": 517,
+      "source": "registry:ck_evt_130:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-004030",
+      "ordinal": 524,
+      "source": "audit:tolerate:audit-10",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-004307",
+      "ordinal": 531,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-004364",
+      "ordinal": 534,
+      "source": "registry:ck_evt_140:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-004816",
+      "ordinal": 656,
+      "source": "audit:tolerate:audit-14",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-004977",
+      "ordinal": 658,
+      "source": "audit:tolerate:audit-15",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-005514",
+      "ordinal": 670,
+      "source": "audit:tolerate:audit-18",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-005704",
+      "ordinal": 678,
+      "source": "audit:tolerate:audit-19",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-005897",
+      "ordinal": 682,
+      "source": "audit:tolerate:audit-20",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-006088",
+      "ordinal": 689,
+      "source": "audit:tolerate:audit-21",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-006163",
+      "ordinal": 693,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-006246",
+      "ordinal": 696,
+      "source": "audit:tolerate:audit-22",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-006376",
+      "ordinal": 697,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-006845",
+      "ordinal": 933,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-006961",
+      "ordinal": 935,
+      "source": "petition:wool_payment:accept_with_price",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-007123",
+      "ordinal": 940,
+      "source": "petition:levy_response:accept_with_price",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-007404",
+      "ordinal": 949,
+      "source": "petition:refugee_admission:refuse",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-008420",
+      "ordinal": 1256,
+      "source": "registry:ck_evt_038:defer",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-009255",
+      "ordinal": 1392,
+      "source": "petition:vacant_priest:accept",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-009598",
+      "ordinal": 1402,
+      "source": "audit:tolerate:audit-38",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-009886",
+      "ordinal": 1414,
+      "source": "audit:tolerate:audit-40",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-010084",
+      "ordinal": 1424,
+      "source": "audit:tolerate:audit-41",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-010206",
+      "ordinal": 1429,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-010364",
+      "ordinal": 1433,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-010638",
+      "ordinal": 1439,
+      "source": "audit:tolerate:audit-44",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-011181",
+      "ordinal": 1452,
+      "source": "registry:ck_evt_201:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-012242",
+      "ordinal": 1464,
+      "source": "audit:tolerate:audit-52",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-012499",
+      "ordinal": 1468,
+      "source": "audit:tolerate:audit-53",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-012542",
+      "ordinal": 1469,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-012737",
+      "ordinal": 1475,
+      "source": "audit:tolerate:audit-54",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-013525",
+      "ordinal": 1497,
+      "source": "audit:tolerate:audit-58",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-013965",
+      "ordinal": 1509,
+      "source": "audit:tolerate:audit-60",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-016098",
+      "ordinal": 1564,
+      "source": "audit:tolerate:audit-70",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-016265",
+      "ordinal": 1571,
+      "source": "registry:ck_evt_092:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-016524",
+      "ordinal": 1587,
+      "source": "audit:tolerate:audit-72",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-016689",
+      "ordinal": 1594,
+      "source": "registry:ck_evt_211:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-017330",
+      "ordinal": 1610,
+      "source": "audit:tolerate:audit-76",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-018126",
+      "ordinal": 1628,
+      "source": "registry:ck_evt_083:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-018758",
+      "ordinal": 1643,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-020111",
+      "ordinal": 1689,
+      "source": "petition:heir_choice:accept",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-020257",
+      "ordinal": 1701,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-021765",
+      "ordinal": 1730,
+      "source": "audit:tolerate:audit-98",
+      "category": "inert",
+      "reason": "all_gameplay_effects_unchanged"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-022500",
+      "ordinal": 1740,
+      "source": "registry:ck_evt_209:d",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-022849",
+      "ordinal": 1748,
+      "source": "registry:ck_evt_083:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-023214",
+      "ordinal": 1759,
+      "source": "registry:ck_evt_211:b",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-023463",
+      "ordinal": 1761,
+      "source": "audit:tolerate:audit-106",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-023632",
+      "ordinal": 1767,
+      "source": "registry:ck_evt_211:c",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    },
+    {
+      "seed": 3,
+      "historyId": "h-024144",
+      "ordinal": 1799,
+      "source": "registry:ck_evt_211:a",
+      "category": "outcome-visible",
+      "reason": "actual_immediate_gameplay_change"
+    }
+  ]
+}

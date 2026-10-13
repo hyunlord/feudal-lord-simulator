@@ -1,3 +1,4 @@
+import { traceAnswerProblem } from "./traceAnswerValidation";
 import { contentStateProblem } from "../content/contentRegistry";
 import { ledgerStateProblem } from "../ledger/ledgerValidation";
 import { moneyStateProblem } from "../engine/moneyValidation";
@@ -339,6 +340,8 @@ export function assertGameStateSnapshot(value: unknown): asserts value is GameSt
   }
   if (typeof state.pathCache !== "object" || state.pathCache === null) throw new SaveFormatError("Save state pathCache must be an object");
   // EXT-1: every content id the state names is one the registry knows (a pack's kinds join it at EXT-3b).
+  const answerProblem = traceAnswerProblem(state);
+  if (answerProblem !== null) throw new SaveFormatError(`Save state ${answerProblem}`);
   const contentProblem = contentStateProblem(state);
   if (contentProblem !== null) throw new SaveFormatError(`Save state ${contentProblem}`);
   const zoneProblem = zoneStateProblem(state);

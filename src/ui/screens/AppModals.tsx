@@ -154,11 +154,11 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {homeView === null || homeCard === null ? null : <DecisionCard view={homeCard} className="lord-card" crest={{ arms: homeView.arms, label: homeView.armsLabel }}
       data={{ "data-home-petition": homeView.kind, "data-petition": homeView.petitionId }}
       onLater={() => sendUi({ type: "pop_modal" })}
-      onChoose={choice => answered("estate_petition", { type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }, homeCard, choice)} />}
+      onChoose={choice => answered("estate_petition", { type: "answer_estate_petition", petitionId: homeView.petitionId, displayEntryId: homeView.displayEntryId, grant: choice === "grant" }, homeCard, choice)} />}
     {request === null || requestCard === null ? null : <LordRequestModal view={request} card={requestCard} onLater={() => sendUi({ type: "pop_modal" })}
       onGrant={() => { if (request.command !== null) answered("lord_request", request.command, requestCard, "grant"); }} />}
     {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}
-      onAnswer={choiceId => answered("registry_offer", { type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }, offer.card, choiceId)} />}
+      onAnswer={choiceId => answered("registry_offer", { type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId, displayEntryId: offer.displayEntryId }, offer.card, choiceId)} />}
     {marriage === null ? null : <MarriageDecisionModal view={marriage} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={choice => answered("marriage_decision", { type: "answer_will_change", choice }, marriage.card, choice)}
       onOpenSuit={focus => { sendUi({ type: "pop_modal" }); onOpenLord?.("ledger", focus); }} />}

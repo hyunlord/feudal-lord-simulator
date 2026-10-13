@@ -1,3 +1,4 @@
+import { answerPresentationParams } from "./decisionPresentation";
 import { registryChapterPetitionDef } from "./registryChapterPetitions";
 /**
  * F0-C2 history ledger v0 (spec docs/design/history-ledger.md HL-1…HL-10). Append-only: records are only added; the
@@ -278,7 +279,7 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   if (!BIG_DECISION_KINDS.includes(kind) && after.agency !== undefined && CARD_KINDS.includes(kind) && (kind !== "operation" || command.type === "order_timber")) {
     const card = cardChoice(before, command);
     return { ...after, history: append(history, [{ tick: after.tick, kind: "decision", template: "decision.card", severity: 1, subject: TOWN,
-      params: { decisionKind: kind, command: command.type, subjectId: card.subjectId, chosen: card.chosen },
+      params: { decisionKind: kind, command: command.type, subjectId: card.subjectId, chosen: card.chosen, ...answerPresentationParams(before, after, command) },
       decision: { chosen: card.chosen, alternatives: card.alternatives, predicted: {} } }]) };
   }
   if (!BIG_DECISION_KINDS.includes(kind)) {
