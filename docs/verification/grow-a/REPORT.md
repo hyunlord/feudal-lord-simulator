@@ -59,7 +59,7 @@
 ## 필수 조건
 - typecheck: 통과 — Mac.
 - 바뀐 파일에 걸린 시험: 아래 줄 — DGX.
-- 기하(바뀐 줄): 아래 줄 — DGX.
+- 기하(바뀐 줄): 29줄 560칸, 실패 0, 못 연 조건 0 — DGX `engine-GROWA-geometry-6962630`(RR26 trailer). 특허 계획·성장 표시(`slot.population.*`·`hud.event-card.growth.market`·`hud.status-pill.*`)·식량·장부·요청 줄.
 - check:merge: 푸시 훅 — Mac.
 
 ## 다음
