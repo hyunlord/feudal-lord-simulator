@@ -6,6 +6,7 @@
 //   tsx scripts/growBlockProbe.ts <seed> [years] [saveDir] > out.json   (saveDir: saves a season and five years after the
 //   market charter, and at the end — seed<n>-charter-season-<year>, seed<n>-charter-5y-<year>, seed<n>-final-<year>;
 //   [saveYears], comma-separated: also at the first tick of each — seed<n>-year-<year>)
+import { createHash } from "node:crypto";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -198,7 +199,9 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
       interior: last.interior });
     runStart = index;
   }
-  return { seed, years, maxPopulation: Math.max(...rows.map(entry => entry.population)), firstPalisade: rows.find(entry => entry.palisade > 0)?.year ?? null,
+  // The final state's hash (a decision-preserving change, e.g. a search memory, must leave it as it was).
+  const finalStateSha256 = createHash("sha256").update(JSON.stringify(state)).digest("hex");
+  return { seed, years, finalStateSha256, maxPopulation: Math.max(...rows.map(entry => entry.population)), firstPalisade: rows.find(entry => entry.palisade > 0)?.year ?? null,
     stalls, peakStumps: Math.max(...rows.map(entry => entry.stumps)), abandoned: rows.reduce((sum, entry) => sum + Object.values(entry.abandonedBy).reduce((a, b) => a + b, 0), 0),
     replaced: rows.reduce((sum, entry) => sum + entry.replaced, 0), rows };
 }
