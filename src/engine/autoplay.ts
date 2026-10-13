@@ -419,7 +419,7 @@ function plannerPlan(state: GameState, policy: AutoplayPolicy, diagnostic?: Food
   // unbuilt for 100,000+ ticks at 192: every probe failed within the budget, at 768 the same search finds the site).
   // BOT-1 (AR-7): behind a wall the market or church takes a site that leaves the remaining lots their house sites.
   const serviceDecision = (current: GameState) => urbanServiceAction(current, diagnostic,
-    action => keepsInteriorHouseSites(current, action, policy.maxHousingLots, "check"));
+    action => keepsInteriorHouseSites(current, action, policy.maxHousingLots, "check"), `interior:${policy.maxHousingLots}`);
   // BOT-1: walled homes out of every granary's road reach get a granary beside them (LB9 seed 3).
   const granaryGap = (current: GameState) => granaryGapAction(current, buildAction, diagnostic);
   // BOT-1: walled homes out of every market's reach get the market the service-space guard refuses (LB9 seed 2).
