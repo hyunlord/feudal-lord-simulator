@@ -58,7 +58,7 @@ test("the engine's since, when it has one, stands for the screen's count", () =>
 test("the lever: a button to the command's existing screen; none for lord mode's draw_wall (A1) or no lever", () => {
   startGrowthTrack(true);
   const subsidy = growthView(lord, growthRun(), block({ reason: "food", lever: { kind: "subsidy", building: "farmstead" } }))!;
-  assert.deepEqual(subsidy.lever, { line: "농가 공사를 장려금으로 도우면 풀립니다", button: "장려금 정하기", action: "policy" });
+  assert.deepEqual(subsidy.lever, { line: "헛간 공사를 장려금으로 도우면 풀립니다", button: "장려금 정하기", action: "policy" });
   assert.equal(growthView(lord, growthRun(), block({ reason: "wall_building", lever: { kind: "wall_priority" } }))!.lever.action, "wall");
   const drawn = growthView(lord, growthRun(), block({ reason: "wall_not_found", lever: { kind: "draw_wall" } }))!;
   assert.deepEqual(drawn.lever, { line: "지금은 영주가 직접 풀 길이 없습니다 — 마을이 목책 자리를 찾지 못하고 있습니다", button: null, action: null });
