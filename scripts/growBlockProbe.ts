@@ -131,7 +131,7 @@ function writeState(dir: string, name: string, state: GameState) {
 export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number; ms: number })[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number; masonrySeasons: number; masonryIdleSeasons: number; ms: number })[] = [];
   let lastYear = start;
   // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
   const seenSites = new Set<string>();
@@ -141,6 +141,8 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
   let replaced = 0;
   let charterTick: number | null = null;
   let shortSeasons = 0;
+  let masonrySeasons = 0;
+  let masonryIdleSeasons = 0;
   let yearStart = performance.now();
   const saved = new Set<string>();
   const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
@@ -149,6 +151,13 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
     for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
     state = advanceTick(state);
     if (state.tick % 1_000 === 0 && shortOfFood(state)) shortSeasons += 1;
+    // Option A (the user's check 2026-10-13): a staffed masonry without the raw stone for its next stone sits idle — the
+    // stone the rule reads from the masonries' rate would then be too much.
+    if (state.tick % 1_000 === 0) for (const building of state.buildings) {
+      if (building.kind !== "masonry" || building.workers < BUILDING_CONFIG_BY_KIND.masonry.workersRequired) continue;
+      masonrySeasons += 1;
+      if ((building.inventory.stone_raw ?? 0) < (BUILDING_CONFIG_BY_KIND.masonry.production?.inputPerOutput ?? 0)) masonryIdleSeasons += 1;
+    }
     if (charterTick === null && state.era !== "hamlet") charterTick = state.tick;
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.season) saveOnce("charter-season");
     if (charterTick !== null && state.tick - charterTick === SAVE_AFTER_CHARTER.years) saveOnce("charter-5y");
@@ -163,7 +172,8 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
     }
     const year = stateCalendar(state).year;
     // The year's wall-clock time on this machine (quarry access ⑤'s tick-time check; a DGX run's figures only compare with its own).
-    if (year !== lastYear) { const now = performance.now(); rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons, ms: Math.round(now - yearStart) }); yearStart = now; lastYear = year; abandonedBy = {}; replaced = 0; shortSeasons = 0; }
+    if (year !== lastYear) { const now = performance.now(); rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons, masonrySeasons, masonryIdleSeasons, ms: Math.round(now - yearStart) });
+      yearStart = now; lastYear = year; abandonedBy = {}; replaced = 0; shortSeasons = 0; masonrySeasons = 0; masonryIdleSeasons = 0; }
   }
   saveOnce("final");
   const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
