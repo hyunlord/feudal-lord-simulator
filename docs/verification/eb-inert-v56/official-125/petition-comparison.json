@@ -1,0 +1,3104 @@
+{
+  "sources": [
+    {
+      "file": "docs/verification/eb-tlink-four-categories/official-71bc336/report.json.gz",
+      "sha256": "5519e0d87775f5c48dd3629f36b676cdc49d7e4c35b32a1f5f4459bc03d14d33"
+    },
+    {
+      "file": "docs/verification/eb-inert-standing/official-125/categories.json.gz",
+      "sha256": "01149234b0446d2a59cce14b31df696a53c9f8f1f8bcaa18f65070fd8252c711"
+    },
+    {
+      "file": ".remote/eb-inert-125/categories.json",
+      "sha256": "50b5fb783d6b80a17a1c645b9c7f2e068a20d23a0c2a72c30d2cdcd4c04a66f1"
+    }
+  ],
+  "tables": [
+    {
+      "seed": null,
+      "rows": [
+        {
+          "source": "answer_counter:negotiation-1",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "answer_will_change",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "audit:tolerate:*",
+          "baseline": 95,
+          "standing": 41,
+          "integrated": 42,
+          "deltaBaseline": -53,
+          "deltaStanding": 1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 236,
+          "standing": 121,
+          "integrated": 120,
+          "deltaBaseline": -116,
+          "deltaStanding": -1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 52,
+          "standing": 53,
+          "integrated": 61,
+          "deltaBaseline": 9,
+          "deltaStanding": 8
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 164,
+          "standing": 154,
+          "integrated": 170,
+          "deltaBaseline": 6,
+          "deltaStanding": 16
+        },
+        {
+          "source": "famine:relief",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:accept",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 3,
+          "deltaBaseline": 3,
+          "deltaStanding": 3
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 0,
+          "deltaBaseline": -3,
+          "deltaStanding": -3
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_005:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_005:b",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_005:c",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_009:c",
+          "baseline": 8,
+          "standing": 8,
+          "integrated": 6,
+          "deltaBaseline": -2,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_009:defer",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 4,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_024:lower",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_031:able",
+          "baseline": 1,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_031:loyal",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_032:defer",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 3,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_032:roll",
+          "baseline": 5,
+          "standing": 5,
+          "integrated": 5,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_038:defer",
+          "baseline": 10,
+          "standing": 10,
+          "integrated": 9,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_038:enforce",
+          "baseline": 8,
+          "standing": 8,
+          "integrated": 8,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_042:firm",
+          "baseline": 2,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_042:light",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_046:cancel",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_046:trim",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 2,
+          "deltaBaseline": 2,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_053:roll",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 5,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_083:a",
+          "baseline": 5,
+          "standing": 5,
+          "integrated": 4,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_083:c",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 3,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_092:a",
+          "baseline": 6,
+          "standing": 6,
+          "integrated": 8,
+          "deltaBaseline": 2,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_092:b",
+          "baseline": 5,
+          "standing": 9,
+          "integrated": 4,
+          "deltaBaseline": -1,
+          "deltaStanding": -5
+        },
+        {
+          "source": "registry:ck_evt_130:b",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_130:c",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_140:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 3,
+          "deltaBaseline": 2,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_140:b",
+          "baseline": 2,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -2,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_140:c",
+          "baseline": 0,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": 0,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_165:a",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_201:a",
+          "baseline": 10,
+          "standing": 9,
+          "integrated": 10,
+          "deltaBaseline": 0,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_201:b",
+          "baseline": 10,
+          "standing": 9,
+          "integrated": 9,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_201:c",
+          "baseline": 10,
+          "standing": 10,
+          "integrated": 11,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_204:a",
+          "baseline": 5,
+          "standing": 5,
+          "integrated": 12,
+          "deltaBaseline": 7,
+          "deltaStanding": 7
+        },
+        {
+          "source": "registry:ck_evt_204:b",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 14,
+          "deltaBaseline": 10,
+          "deltaStanding": 10
+        },
+        {
+          "source": "registry:ck_evt_204:c",
+          "baseline": 7,
+          "standing": 7,
+          "integrated": 15,
+          "deltaBaseline": 8,
+          "deltaStanding": 8
+        },
+        {
+          "source": "registry:ck_evt_206:a",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_206:b",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_206:d",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_209:a",
+          "baseline": 9,
+          "standing": 8,
+          "integrated": 2,
+          "deltaBaseline": -7,
+          "deltaStanding": -6
+        },
+        {
+          "source": "registry:ck_evt_209:b",
+          "baseline": 10,
+          "standing": 10,
+          "integrated": 3,
+          "deltaBaseline": -7,
+          "deltaStanding": -7
+        },
+        {
+          "source": "registry:ck_evt_209:c",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_209:d",
+          "baseline": 10,
+          "standing": 12,
+          "integrated": 3,
+          "deltaBaseline": -7,
+          "deltaStanding": -9
+        },
+        {
+          "source": "registry:ck_evt_211:a",
+          "baseline": 13,
+          "standing": 11,
+          "integrated": 7,
+          "deltaBaseline": -6,
+          "deltaStanding": -4
+        },
+        {
+          "source": "registry:ck_evt_211:b",
+          "baseline": 9,
+          "standing": 14,
+          "integrated": 15,
+          "deltaBaseline": 6,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_211:c",
+          "baseline": 14,
+          "standing": 10,
+          "integrated": 14,
+          "deltaBaseline": 0,
+          "deltaStanding": 4
+        },
+        {
+          "source": "steward_punished:*",
+          "baseline": 27,
+          "standing": 23,
+          "integrated": 23,
+          "deltaBaseline": -4,
+          "deltaStanding": 0
+        }
+      ],
+      "petitions": [
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 236,
+          "standing": 121,
+          "integrated": 120,
+          "deltaBaseline": -116,
+          "deltaStanding": -1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 52,
+          "standing": 53,
+          "integrated": 61,
+          "deltaBaseline": 9,
+          "deltaStanding": 8
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 164,
+          "standing": 154,
+          "integrated": 170,
+          "deltaBaseline": 6,
+          "deltaStanding": 16
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:accept",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 3,
+          "deltaBaseline": 3,
+          "deltaStanding": 3
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 0,
+          "deltaBaseline": -3,
+          "deltaStanding": -3
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "rows": [
+        {
+          "source": "answer_counter:negotiation-1",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "answer_will_change",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "audit:tolerate:*",
+          "baseline": 33,
+          "standing": 14,
+          "integrated": 14,
+          "deltaBaseline": -19,
+          "deltaStanding": 0
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 71,
+          "standing": 35,
+          "integrated": 36,
+          "deltaBaseline": -35,
+          "deltaStanding": 1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 16,
+          "standing": 18,
+          "integrated": 19,
+          "deltaBaseline": 3,
+          "deltaStanding": 1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 50,
+          "standing": 40,
+          "integrated": 42,
+          "deltaBaseline": -8,
+          "deltaStanding": 2
+        },
+        {
+          "source": "famine:relief",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_005:c",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_009:c",
+          "baseline": 5,
+          "standing": 5,
+          "integrated": 4,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_009:defer",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_024:lower",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_031:able",
+          "baseline": 0,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_031:loyal",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_032:roll",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 2,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_038:defer",
+          "baseline": 6,
+          "standing": 6,
+          "integrated": 5,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_038:enforce",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 3,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_042:firm",
+          "baseline": 0,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_042:light",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_046:cancel",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_053:roll",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_083:a",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_083:c",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 2,
+          "deltaBaseline": 2,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_092:a",
+          "baseline": 3,
+          "standing": 4,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_092:b",
+          "baseline": 1,
+          "standing": 3,
+          "integrated": 2,
+          "deltaBaseline": 1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_130:c",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_140:a",
+          "baseline": 0,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_140:b",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_165:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_201:a",
+          "baseline": 4,
+          "standing": 3,
+          "integrated": 4,
+          "deltaBaseline": 0,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_201:b",
+          "baseline": 3,
+          "standing": 2,
+          "integrated": 4,
+          "deltaBaseline": 1,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_204:a",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 6,
+          "deltaBaseline": 6,
+          "deltaStanding": 6
+        },
+        {
+          "source": "registry:ck_evt_204:b",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 7,
+          "deltaBaseline": 7,
+          "deltaStanding": 7
+        },
+        {
+          "source": "registry:ck_evt_204:c",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 3,
+          "deltaBaseline": 3,
+          "deltaStanding": 3
+        },
+        {
+          "source": "registry:ck_evt_206:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_209:a",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_209:d",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_211:a",
+          "baseline": 5,
+          "standing": 5,
+          "integrated": 1,
+          "deltaBaseline": -4,
+          "deltaStanding": -4
+        },
+        {
+          "source": "registry:ck_evt_211:b",
+          "baseline": 3,
+          "standing": 4,
+          "integrated": 6,
+          "deltaBaseline": 3,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_211:c",
+          "baseline": 3,
+          "standing": 2,
+          "integrated": 6,
+          "deltaBaseline": 3,
+          "deltaStanding": 4
+        },
+        {
+          "source": "steward_punished:*",
+          "baseline": 8,
+          "standing": 6,
+          "integrated": 6,
+          "deltaBaseline": -2,
+          "deltaStanding": 0
+        }
+      ],
+      "petitions": [
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 71,
+          "standing": 35,
+          "integrated": 36,
+          "deltaBaseline": -35,
+          "deltaStanding": 1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 16,
+          "standing": 18,
+          "integrated": 19,
+          "deltaBaseline": 3,
+          "deltaStanding": 1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 50,
+          "standing": 40,
+          "integrated": 42,
+          "deltaBaseline": -8,
+          "deltaStanding": 2
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "rows": [
+        {
+          "source": "answer_counter:negotiation-1",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "audit:tolerate:*",
+          "baseline": 38,
+          "standing": 15,
+          "integrated": 16,
+          "deltaBaseline": -22,
+          "deltaStanding": 1
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 81,
+          "standing": 47,
+          "integrated": 45,
+          "deltaBaseline": -36,
+          "deltaStanding": -2
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 13,
+          "standing": 12,
+          "integrated": 14,
+          "deltaBaseline": 1,
+          "deltaStanding": 2
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 45,
+          "standing": 44,
+          "integrated": 52,
+          "deltaBaseline": 7,
+          "deltaStanding": 8
+        },
+        {
+          "source": "famine:relief",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_005:b",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_009:c",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 1,
+          "deltaBaseline": -2,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_009:defer",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_032:defer",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_032:roll",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 1,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_038:defer",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_038:enforce",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 1,
+          "deltaBaseline": -2,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_042:firm",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_046:cancel",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_046:trim",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_053:roll",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 2,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_083:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 2,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_083:c",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 1,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_092:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 3,
+          "deltaBaseline": 2,
+          "deltaStanding": 2
+        },
+        {
+          "source": "registry:ck_evt_092:b",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 1,
+          "deltaBaseline": -2,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_130:c",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_140:a",
+          "baseline": 1,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_140:c",
+          "baseline": 0,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": 0,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_165:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_201:a",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 2,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_201:b",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 3,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_201:c",
+          "baseline": 6,
+          "standing": 6,
+          "integrated": 7,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_204:a",
+          "baseline": 5,
+          "standing": 5,
+          "integrated": 5,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_204:b",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 3,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_204:c",
+          "baseline": 7,
+          "standing": 7,
+          "integrated": 7,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_206:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_206:d",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_209:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_209:b",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_209:d",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_211:a",
+          "baseline": 2,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -2,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_211:b",
+          "baseline": 4,
+          "standing": 6,
+          "integrated": 7,
+          "deltaBaseline": 3,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_211:c",
+          "baseline": 7,
+          "standing": 5,
+          "integrated": 5,
+          "deltaBaseline": -2,
+          "deltaStanding": 0
+        },
+        {
+          "source": "steward_punished:*",
+          "baseline": 9,
+          "standing": 8,
+          "integrated": 8,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        }
+      ],
+      "petitions": [
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 81,
+          "standing": 47,
+          "integrated": 45,
+          "deltaBaseline": -36,
+          "deltaStanding": -2
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 13,
+          "standing": 12,
+          "integrated": 14,
+          "deltaBaseline": 1,
+          "deltaStanding": 2
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 45,
+          "standing": 44,
+          "integrated": 52,
+          "deltaBaseline": 7,
+          "deltaStanding": 8
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "rows": [
+        {
+          "source": "answer_counter:negotiation-1",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "audit:tolerate:*",
+          "baseline": 24,
+          "standing": 12,
+          "integrated": 12,
+          "deltaBaseline": -12,
+          "deltaStanding": 0
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 84,
+          "standing": 39,
+          "integrated": 39,
+          "deltaBaseline": -45,
+          "deltaStanding": 0
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 23,
+          "standing": 23,
+          "integrated": 28,
+          "deltaBaseline": 5,
+          "deltaStanding": 5
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 69,
+          "standing": 70,
+          "integrated": 76,
+          "deltaBaseline": 7,
+          "deltaStanding": 6
+        },
+        {
+          "source": "famine:relief",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_005:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_009:c",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_009:defer",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_024:lower",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_031:able",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_032:defer",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 1,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_032:roll",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_038:defer",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_038:enforce",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 4,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_042:firm",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_046:trim",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_053:roll",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_083:a",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 1,
+          "deltaBaseline": -3,
+          "deltaStanding": -3
+        },
+        {
+          "source": "registry:ck_evt_083:c",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 0,
+          "deltaBaseline": -2,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_092:a",
+          "baseline": 2,
+          "standing": 1,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_092:b",
+          "baseline": 1,
+          "standing": 3,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_130:b",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_140:a",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_140:b",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_165:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_201:a",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 4,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_201:b",
+          "baseline": 3,
+          "standing": 3,
+          "integrated": 2,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "registry:ck_evt_201:c",
+          "baseline": 4,
+          "standing": 4,
+          "integrated": 4,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_204:a",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_204:b",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 4,
+          "deltaBaseline": 4,
+          "deltaStanding": 4
+        },
+        {
+          "source": "registry:ck_evt_204:c",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 5,
+          "deltaBaseline": 5,
+          "deltaStanding": 5
+        },
+        {
+          "source": "registry:ck_evt_206:a",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_206:b",
+          "baseline": 2,
+          "standing": 2,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "registry:ck_evt_209:a",
+          "baseline": 8,
+          "standing": 7,
+          "integrated": 1,
+          "deltaBaseline": -7,
+          "deltaStanding": -6
+        },
+        {
+          "source": "registry:ck_evt_209:b",
+          "baseline": 9,
+          "standing": 9,
+          "integrated": 3,
+          "deltaBaseline": -6,
+          "deltaStanding": -6
+        },
+        {
+          "source": "registry:ck_evt_209:c",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_209:d",
+          "baseline": 9,
+          "standing": 11,
+          "integrated": 1,
+          "deltaBaseline": -8,
+          "deltaStanding": -10
+        },
+        {
+          "source": "registry:ck_evt_211:a",
+          "baseline": 6,
+          "standing": 5,
+          "integrated": 6,
+          "deltaBaseline": 0,
+          "deltaStanding": 1
+        },
+        {
+          "source": "registry:ck_evt_211:b",
+          "baseline": 2,
+          "standing": 4,
+          "integrated": 2,
+          "deltaBaseline": 0,
+          "deltaStanding": -2
+        },
+        {
+          "source": "registry:ck_evt_211:c",
+          "baseline": 4,
+          "standing": 3,
+          "integrated": 3,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        },
+        {
+          "source": "steward_punished:*",
+          "baseline": 10,
+          "standing": 9,
+          "integrated": 9,
+          "deltaBaseline": -1,
+          "deltaStanding": 0
+        }
+      ],
+      "petitions": [
+        {
+          "source": "estate_petition:estate-neighbour-3:charter_request:refused",
+          "baseline": 84,
+          "standing": 39,
+          "integrated": 39,
+          "deltaBaseline": -45,
+          "deltaStanding": 0
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:rent_relief:granted",
+          "baseline": 23,
+          "standing": 23,
+          "integrated": 28,
+          "deltaBaseline": 5,
+          "deltaStanding": 5
+        },
+        {
+          "source": "estate_petition:estate-neighbour-3:repair:granted",
+          "baseline": 69,
+          "standing": 70,
+          "integrated": 76,
+          "deltaBaseline": 7,
+          "deltaStanding": 6
+        },
+        {
+          "source": "petition:borough_autonomy:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:borough_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cash_rent:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:church_rebuilding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:cloth_or_grain:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:guild_dispute:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:heir_choice:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:land_redistribution:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:levy_response:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:market_charter:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:refugee_admission:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:royal_tax:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:tax_collection:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:vacant_priest:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wages:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wall_or_market:accept_with_price",
+          "baseline": 0,
+          "standing": 0,
+          "integrated": 1,
+          "deltaBaseline": 1,
+          "deltaStanding": 1
+        },
+        {
+          "source": "petition:wall_or_market:refuse",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 0,
+          "deltaBaseline": -1,
+          "deltaStanding": -1
+        },
+        {
+          "source": "petition:war_funding:accept",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        },
+        {
+          "source": "petition:wool_payment:accept_with_price",
+          "baseline": 1,
+          "standing": 1,
+          "integrated": 1,
+          "deltaBaseline": 0,
+          "deltaStanding": 0
+        }
+      ]
+    }
+  ],
+  "replacementAnswers": [
+    {
+      "seed": 1,
+      "answerId": "h-007341",
+      "answerTick": 102025,
+      "petitionId": "estate-petition-114",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 102000,
+      "precedingPetitionId": "estate-petition-113",
+      "captureFile": ".remote/eb-inert-125/capture/seed-1/answer-000826.json.gz",
+      "captureSha256": "30fa6a763a4160cc0bbc695ba677fc20cd26056f15b6c8ba91d529a31230aec5"
+    },
+    {
+      "seed": 1,
+      "answerId": "h-009507",
+      "answerTick": 128077,
+      "petitionId": "estate-petition-158",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 128000,
+      "precedingPetitionId": "estate-petition-157",
+      "captureFile": ".remote/eb-inert-125/capture/seed-1/answer-001011.json.gz",
+      "captureSha256": "fa75c95d9a3399a4b844e14cf50e1219fc5f019539f74d4e4c18e3ce4a891e11"
+    },
+    {
+      "seed": 1,
+      "answerId": "h-010826",
+      "answerTick": 145003,
+      "petitionId": "estate-petition-189",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 145000,
+      "precedingPetitionId": "estate-petition-188",
+      "captureFile": ".remote/eb-inert-125/capture/seed-1/answer-001186.json.gz",
+      "captureSha256": "c8d3ef254d79191994b7496e8f4f2cecdee0ea9a0538b56a893384b40acf5a76"
+    },
+    {
+      "seed": 1,
+      "answerId": "h-021897",
+      "answerTick": 270037,
+      "petitionId": "estate-petition-411",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 270000,
+      "precedingPetitionId": "estate-petition-410",
+      "captureFile": ".remote/eb-inert-125/capture/seed-1/answer-001864.json.gz",
+      "captureSha256": "4e52f62e89cbc9bf4afb247981fa09c42435cc22ef1be076cc9f55aa1d20a248"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-007444",
+      "answerTick": 89077,
+      "petitionId": "estate-petition-110",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 89000,
+      "precedingPetitionId": "estate-petition-109",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001001.json.gz",
+      "captureSha256": "4e35e0cd6aed8e4d533d7a02de53a2f6d3fb9e2033277631707dc2b2d4130285"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-007540",
+      "answerTick": 90013,
+      "petitionId": "estate-petition-112",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 90000,
+      "precedingPetitionId": "estate-petition-111",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001003.json.gz",
+      "captureSha256": "36112ad97de3a254cec46ed7c72d94de6c75981e04d1e0971a5ea5eb9a6a956a"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-010103",
+      "answerTick": 123007,
+      "petitionId": "estate-petition-164",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 123000,
+      "precedingPetitionId": "estate-petition-163",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001303.json.gz",
+      "captureSha256": "b14716f50afbf4b66a45787983390bcb233a39f17a131f456380cd06d526e9e4"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-011778",
+      "answerTick": 141025,
+      "petitionId": "estate-petition-198",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 141000,
+      "precedingPetitionId": "estate-petition-197",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001459.json.gz",
+      "captureSha256": "5c3fd2f848c7080251f96fe897b4206c3879989961689ab2a0d870f4414cc3c8"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-012832",
+      "answerTick": 153037,
+      "petitionId": "estate-petition-219",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 153000,
+      "precedingPetitionId": "estate-petition-218",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001497.json.gz",
+      "captureSha256": "133feb0d2fa2589c75b9b5ef069deb20bd408380b542bdc323cccf3fc93035cd"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-013455",
+      "answerTick": 160057,
+      "petitionId": "estate-petition-233",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 160000,
+      "precedingPetitionId": "estate-petition-232",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001507.json.gz",
+      "captureSha256": "d8a97bff4baccbfb896ac83694893506d7d15e83c51849ffbdb36ac33ba3b17a"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-014791",
+      "answerTick": 176047,
+      "petitionId": "estate-petition-261",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 176000,
+      "precedingPetitionId": "estate-petition-260",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001519.json.gz",
+      "captureSha256": "713d0800bf82dbe1c3be266d90cce546c8ee3f5bae985661e40443f72093b7c3"
+    },
+    {
+      "seed": 2,
+      "answerId": "h-035813",
+      "answerTick": 416053,
+      "petitionId": "estate-petition-655",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 416000,
+      "precedingPetitionId": "estate-petition-654",
+      "captureFile": ".remote/eb-inert-125/capture/seed-2/answer-001688.json.gz",
+      "captureSha256": "e231d243a2d999f77c8c592ed0487dc26592e58d9e832eab042b05f66f4778fd"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-005123",
+      "answerTick": 92041,
+      "petitionId": "estate-petition-103",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 92000,
+      "precedingPetitionId": "estate-petition-102",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-000497.json.gz",
+      "captureSha256": "93b6b19c60e1350da1d51314a988d7119cf406afe52421950a8b464e9ccec2e2"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-009776",
+      "answerTick": 150073,
+      "petitionId": "estate-petition-196",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 150000,
+      "precedingPetitionId": "estate-petition-195",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-000893.json.gz",
+      "captureSha256": "a3ad77376a338a3d760f33d5c0eedc3d57677674171c50a0ea0f70dab886317a"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-012545",
+      "answerTick": 184003,
+      "petitionId": "estate-petition-253",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 184000,
+      "precedingPetitionId": "estate-petition-252",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001218.json.gz",
+      "captureSha256": "4c37140cd9c9965ab568874cfc1cf0425d9b7499d79a803737ba055a3ddfa839"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-017675",
+      "answerTick": 248041,
+      "petitionId": "estate-petition-367",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 248000,
+      "precedingPetitionId": "estate-petition-366",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001397.json.gz",
+      "captureSha256": "bacb2226f93670e3cdae51232cfcd1aba3dff1bb7579df0f75387f5a99e0203d"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-020723",
+      "answerTick": 282049,
+      "petitionId": "estate-petition-421",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 282000,
+      "precedingPetitionId": "estate-petition-420",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001430.json.gz",
+      "captureSha256": "a9e1717ae74bf37d11ba8201655f6891479318dd5b77a85671c445802deafff0"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-024224",
+      "answerTick": 324013,
+      "petitionId": "estate-petition-494",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 324000,
+      "precedingPetitionId": "estate-petition-493",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001460.json.gz",
+      "captureSha256": "5e822cc0c131e91bded8db2707e2dcb03b0e19e6b9a45ff26e8f1974bbfc57f5"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-026054",
+      "answerTick": 345073,
+      "petitionId": "estate-petition-530",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 345000,
+      "precedingPetitionId": "estate-petition-529",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001484.json.gz",
+      "captureSha256": "8de78142525983c93f2b146cef9ef99643b43f7ce1346c98ef4bafab56acd297"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-026936",
+      "answerTick": 355057,
+      "petitionId": "estate-petition-547",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 355000,
+      "precedingPetitionId": "estate-petition-546",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001492.json.gz",
+      "captureSha256": "e8fd738ccc403c32d8ff10a5cb11caaee93be0ce2e9589cebe006cc59eb42b16"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-031462",
+      "answerTick": 406069,
+      "petitionId": "estate-petition-638",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 406000,
+      "precedingPetitionId": "estate-petition-637",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001534.json.gz",
+      "captureSha256": "d7ac1d5b63bf4acf4103bae523fd6808885e901166eef635a5b75868158c6155"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-034972",
+      "answerTick": 446005,
+      "petitionId": "estate-petition-695",
+      "kind": "repair",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 446000,
+      "precedingPetitionId": "estate-petition-694",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001571.json.gz",
+      "captureSha256": "e6372d61535f98c38c78d4d96851218e537e6b926fa39d5c1eec92e6856d2963"
+    },
+    {
+      "seed": 3,
+      "answerId": "h-037418",
+      "answerTick": 473071,
+      "petitionId": "estate-petition-743",
+      "kind": "rent_relief",
+      "estateId": "estate-neighbour-3",
+      "creationTick": 473000,
+      "precedingPetitionId": "estate-petition-742",
+      "captureFile": ".remote/eb-inert-125/capture/seed-3/answer-001600.json.gz",
+      "captureSha256": "070f347630f23d8c8e9fbdc9c43a167d7d761d7c675f054f78fbf150df4232f3"
+    }
+  ],
+  "limitations": [
+    "Independent cohorts also differ in growth rules; aggregate changes are not a controlled causal estimate.",
+    "Replacement evidence covers captured lord answers, not a census of all steward-handled seasonal petitions."
+  ]
+}
