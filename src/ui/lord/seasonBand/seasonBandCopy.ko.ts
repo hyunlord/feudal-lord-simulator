@@ -12,6 +12,9 @@ export const SEASON_BAND_COPY = {
   fields: (delta: number) => `밭 ${signed(delta)}`,
   money: (pennies: number) => `금고 ${pennies > 0 ? "+" : ""}${moneyShort(pennies)}`,
   deaths: (count: number) => `사망 ${count}`,
+  /** v1.1 b: a heavy season's deaths with their main cause (the engine's `person.died` cause). */
+  deathsWithCause: (count: number, cause: string) => `사망 ${count} — ${cause}`,
+  causes: { fire: "불", plague: "역병", famine: "굶주림", famine_year: "기근 해의 병", captivity: "유폐", age: "노환" },
   steward: (count: number) => `청지기가 작은 일 ${count}건 처리`,
   quiet: "조용한 철 — 마을은 그대로입니다",
 } as const;

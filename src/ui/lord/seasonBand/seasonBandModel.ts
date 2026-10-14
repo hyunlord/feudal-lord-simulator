@@ -16,7 +16,8 @@ export type TownSnapshot = Readonly<{
   buildings: number;
   /** The fields laid out (arableFields: one per field, its strips not counted). */
   fields: number;
-  /** The town's dead so far (the persons gone; the gentry — the lord's house, the neighbours — are the chips'). */
+  /** The town's dead so far (the persons dead — not those who left, who are kept in `past` as well; the gentry — the lord's
+   * house, the neighbours — are the chips'). */
   dead: number;
   /** LS1-5: the people and the treasury at the moment (the year card's start and end). */
   population: number;
@@ -31,7 +32,7 @@ export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "ar
     levels: Object.fromEntries((state.houses ?? []).map(house => [house.buildingId, house.level])),
     buildings: (state.buildings ?? []).filter(building => building.kind !== "house").length,
     fields: state.arableFields?.length ?? 0,
-    dead: past.filter(person => !gentry(person)).length + people.filter(person => person.alive === false && !gentry(person)).length,
+    dead: [...past, ...people].filter(person => person.alive === false && !gentry(person)).length,
     population: state.population ?? 0,
     coin: state.treasuryCoin ?? 0,
   };
@@ -40,6 +41,31 @@ export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "ar
 /** LS1-3 (LS1-6): the town's size the growth count compares — its houses and its people. */
 export const townSize = (snapshot: TownSnapshot): Readonly<{ houses: number; population: number }> =>
   ({ houses: Object.keys(snapshot.levels).length, population: snapshot.population });
+
+/** v1.1 b: a season's deaths over this share of the town at its start say their main cause. */
+export const DEATH_CAUSE_SHARE = 0.1;
+/** Equal counts: the cause first in this order. */
+const CAUSE_ORDER = ["fire", "plague", "famine", "famine_year", "captivity", "age"] as const;
+
+/** v1.1 b: the season's deaths by the engine's cause — its `person.died` records' `cause` in (from, to] (the season's own
+ * span, as its ledger counts), the town's people (not the gentry). */
+export function seasonDeathCauses(state: Pick<GameState, "history" | "persons">, from: number, to: number): Readonly<Record<string, number>> {
+  const gentry = new Set([...(state.persons?.people ?? []), ...(state.persons?.past ?? [])].filter(person => person.classBand === "gentry").map(person => person.id));
+  const causes: Record<string, number> = {};
+  for (const record of state.history?.records ?? []) {
+    if (record.template !== "person.died" || record.tick <= from || record.tick > to || record.subject?.type !== "person" || gentry.has(record.subject.id)) continue;
+    const cause = typeof record.params?.cause === "string" ? record.params.cause : null;
+    if (cause !== null) causes[cause] = (causes[cause] ?? 0) + 1;
+  }
+  return causes;
+}
+
+/** The main cause: the most deaths, equal counts by CAUSE_ORDER; null with no recorded cause or one the band has no word for. */
+function mainCause(causes: Readonly<Record<string, number>>): keyof typeof COPY.causes | null {
+  const known = CAUSE_ORDER.filter(cause => (causes[cause] ?? 0) > 0);
+  if (known.length === 0) return null;
+  return known.reduce((best, cause) => (causes[cause] ?? 0) > (causes[best] ?? 0) ? cause : best);
+}
 
 export type SeasonBandItem = Readonly<{ key: "growth" | "population" | "built" | "levels" | "fields" | "money" | "deaths" | "steward"; text: string }>;
 export type SeasonBand = Readonly<{ key: string; items: readonly SeasonBandItem[]; quiet: boolean }>;
@@ -51,7 +77,9 @@ export const SEASON_BAND_MAX = 5;
  */
 export function seasonBand(input: { readonly season: SeasonLedger; readonly before: TownSnapshot | null; readonly after: TownSnapshot; readonly stewardHandled: number;
   /** LS1-3: the stop of the town's growth, its line (the band's first), when it has held past two seasons. */
-  readonly growth?: string | null }): SeasonBand {
+  readonly growth?: string | null;
+  /** v1.1 b: the season's deaths by the engine's cause (seasonDeathCauses). */
+  readonly deathCauses?: Readonly<Record<string, number>> }): SeasonBand {
   const { season, before, after } = input;
   const items: SeasonBandItem[] = [];
   if (input.growth !== undefined && input.growth !== null) items.push({ key: "growth", text: input.growth });
@@ -67,7 +95,12 @@ export function seasonBand(input: { readonly season: SeasonLedger; readonly befo
   }
   const net = Math.round(season.income - season.expense);
   add("money", net, COPY.money(net));
-  if (before !== null) add("deaths", Math.max(0, after.dead - before.dead), COPY.deaths(Math.max(0, after.dead - before.dead)));
+  if (before !== null) {
+    const dead = Math.max(0, after.dead - before.dead);
+    // v1.1 b: a heavy season (over a tenth of the town at its start) says its main cause, from the engine's records.
+    const cause = before.population > 0 && dead / before.population > DEATH_CAUSE_SHARE ? mainCause(input.deathCauses ?? {}) : null;
+    add("deaths", dead, cause === null ? COPY.deaths(dead) : COPY.deathsWithCause(dead, COPY.causes[cause]));
+  }
   add("steward", input.stewardHandled, COPY.steward(input.stewardHandled));
   return { key: `${season.year}:${season.season}`, items: items.slice(0, SEASON_BAND_MAX), quiet: items.length === 0 };
 }
