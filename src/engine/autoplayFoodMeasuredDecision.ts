@@ -69,9 +69,10 @@ export function measuredFoodDecision(state: GameState, options: { readonly ignor
   // F1 (the user's ruling 2026-10-14): mills starved with less than a cart of wheat anywhere in the town is the year's
   // grain run out before the harvest, not a hauling gap — fields, while the cap allows (seed 1's 1302 and 1304 summers:
   // the whole town held 2 wheat, the mills dry three quarters of the window, read as transport and answered with
-  // granaries; engine-FOOD-early-c5fd693).
+  // granaries; engine-FOOD-early-c5fd693). F1′ (the user's ruling 2026-10-14): starved in the measured window
+  // (`rawStarvedTicks`), not just empty this tick — a mill that never went short over the window is not the grain run out.
   const townWheat = state.buildings.reduce((sum, b) => sum + availableStock(b, 'wheat'), 0);
-  if (!millsSupplied && townWheat < BALANCE.CARTER_CAPACITY && arableBelowCap(state)) return { kind: 'farmstead', reason: 'actual_wheat_deficit' };
+  if (!millsSupplied && sample.rawStarvedTicks > 0 && townWheat < BALANCE.CARTER_CAPACITY && arableBelowCap(state)) return { kind: 'farmstead', reason: 'actual_wheat_deficit' };
   if (!millsSupplied) return { kind: null, reason: 'wheat_transport_blocked' };
   return { kind: 'mill', reason: 'actual_bread_deficit' };
 }
