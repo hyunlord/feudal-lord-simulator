@@ -90,10 +90,11 @@ guardrail)
       let s = null; try { s = JSON.parse(fs.readFileSync(`${dir}/seed-${seed}/summary.json`, "utf8")); } catch {}
       rows.push({ seed: Number(seed), exit, seconds, stopReason: s?.stopReason ?? null, tick: s?.final?.tick ?? null, maxTicks: s?.maxTicks ?? null,
         simulationPassed: s?.simulationPassed ?? null, guardrail: s?.guardrail?.status ?? null,
-        checks: s?.guardrail?.checks ?? null, finalStateSha256: s?.finalStateSha256 ?? null });
+        checks: s?.guardrail?.checks ?? null, finalStateSha256: s?.finalStateSha256 ?? null, earlyStopTick: s?.earlyStopTick ?? null });
     }
     fs.writeFileSync(`${dir}/summary.json`, JSON.stringify(rows, null, 2) + "\n");
     for (const r of rows) console.log(`seed ${r.seed}: exit ${r.exit} ${r.seconds}s stop=${r.stopReason} tick=${r.tick} guardrail=${r.guardrail}` +
+      (r.stopReason === "unreached-early-stop" ? ` 미도달(조기 종료, 틱 ${r.earlyStopTick ?? r.tick})` : "") +
       (r.maxTicks !== null && r.maxTicks < 1200000 ? " (short run: the verdict compares with full 1,200,000-tick baselines and is not a gate result)" : ""));
     const [humanExit, humanSeconds] = fs.readFileSync(`${dir}/human-path.exit`, "utf8").trim().split(" ").map(Number);
     const humanTotals = fs.readFileSync(`${dir}/human-path.txt`, "utf8").trim();

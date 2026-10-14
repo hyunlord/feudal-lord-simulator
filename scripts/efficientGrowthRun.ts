@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { parseGrowthOptions } from './phase19GrowthMetrics';
 import { runPhase19NaturalGrowth } from './phase19NaturalGrowth';
 import { efficientGrowthMetrics } from './efficientGrowthMetrics';
-import { growthGuardrail } from './growthGuardrail';
+import { growthGuardrail, guardrailEarlyStopTick } from './growthGuardrail';
 import { createMillZeroWheatObservation, millWheatSamples } from './efficientGrowthMillContinuity';
 import { moneyPeriodSample, type MoneyPeriodSample } from './moneyPeriodRecord';
 import { treasuryBalance } from '../src/ledger/ledger';
@@ -35,7 +35,8 @@ export function runEfficientGrowth(args: readonly string[]) {
   const labourSamples: { tick: number; idle: number; population: number; fieldHands: number; hauling: number; mills: number; wheatlessMills: number }[] = [];
   let money200Tick: number | null = null;
   let stoneProclaimedTick: number | null = null;
-  const report = runPhase19NaturalGrowth({ ...options, naiveReserve, noWells,
+  const stopUnwonAt = guardrailEarlyStopTick(options.seed) ?? undefined;
+  const report = runPhase19NaturalGrowth({ ...options, naiveReserve, noWells, ...(stopUnwonAt === undefined ? {} : { stopUnwonAt }),
     onDiagnostic: receipt => { diagnostics.last = receipt; },
     onTick: (state, stableSince) => {
       millObservation.observe(state.tick, stableSince, millWheatSamples(state));
@@ -79,7 +80,7 @@ export function runEfficientGrowth(args: readonly string[]) {
     targetLots: options.targetLots, maxTicks: report.maxTicks, final: report.final,
     strict: { stableSince: report.stableSince, sustainedTicks: report.sustainedTicks, interruptions: report.stabilityInterruptions },
     stableLabour: stableLabourSummary(labourSamples, report.stableSince),
-    victoryTick: report.victoryTick, money200Tick, stoneProclaimedTick, stopReason: report.stopReason, failures: report.failures,
+    victoryTick: report.victoryTick, earlyStopTick: report.earlyStopTick, money200Tick, stoneProclaimedTick, stopReason: report.stopReason, failures: report.failures,
     elapsedSeconds: report.elapsedSeconds };
   writeFileSync(resolve(output, 'summary.json'), JSON.stringify(summary, null, 2));
   writeFileSync(resolve(output, 'money-periods.jsonl'), moneyPeriods.map(period => JSON.stringify(period)).join('\n') + '\n');
