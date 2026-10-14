@@ -68,3 +68,20 @@ test('current mill input exhaustion still blocks capacity expansion despite an e
   const state={...observed,buildings:observed.buildings.map(b=>b.kind==='mill'?{...b,inventory:{wheat:0}}:b)};
   assert.deepEqual(measuredFoodDecision(state),{kind:null,reason:'wheat_transport_blocked'});
 });
+
+// F1 (the user's ruling 2026-10-14): mills starved with no wheat left anywhere is the grain run out before the harvest
+// (seed 1's 1302 and 1304 summers, engine-FOOD-early-c5fd693) — fields, not transport, while the arable cap allows.
+const emptied = (state: GameState): GameState => ({ ...state, buildings: state.buildings.map(b => ({ ...b, inventory: { ...b.inventory, wheat: 0 } })) });
+
+test('F1: starved mills with no wheat in the whole town ask for fields, not transport', () => {
+  const state = emptied(replayFoodObservation(stockedTown(false, true), { wheat: 1000, bread: 70, exports: 0 }, 1200));
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'farmstead', reason: 'actual_wheat_deficit' });
+});
+
+test('F1: the same town at the arable cap keeps the transport reading (no fields past 9.6 cells a lot)', () => {
+  const town = emptied(replayFoodObservation(stockedTown(false, true), { wheat: 1000, bread: 70, exports: 0 }, 1200));
+  const membership: number[] = [];
+  for (let index = 0; index < town.width * town.height; index += 1) membership.push(index);
+  const capped: GameState = { ...town, zones: [{ id: 'zone-arable-cap', kind: 'arable', strokes: [], membership, createdOrdinal: 1 }] };
+  assert.deepEqual(measuredFoodDecision(capped), { kind: null, reason: 'wheat_transport_blocked' });
+});
