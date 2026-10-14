@@ -22,7 +22,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/timberTrade.ts",
-    "sha256": "0983dcbf2ba146f186845e3f22bc6c764162c2b90c5d7b69ab14e6f8972905ca"
+    "sha256": "6389e719c18fe8f3840985e78e292e5f6eb6341f573f9f1a7951f7e2f2a5f67d"
   },
   {
     "path": "src/state/gameStore.ts",
@@ -30,15 +30,15 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/stewardship.ts",
-    "sha256": "bbf203d56023b6fdc254216ba8032e7e5d28646f36a722f892cfc189420b158a"
+    "sha256": "38f207d3a1259ffa50151f69167d06243ec7feb657ce0801d35f7a669c0d7543"
   },
   {
     "path": "src/engine/history.ts",
-    "sha256": "f198e59cb4965cc07b3f2d9164a2a7224f32e0da81ac2595951de018042db9ac"
+    "sha256": "519e9c46708071e88b4f9e9319af52fcc7dc7cac48a43b5baa1f05c4d70e4449"
   },
   {
     "path": "src/engine/decisionTrace.ts",
-    "sha256": "19a774693d9f979fd02540475b83a580ba6bfbb9939b25aa69832908d3c7a07c"
+    "sha256": "54e17689aa9b3ac110dc035222b21e914b5191b5f87620aa23c2ea7654d18f65"
   },
   {
     "path": "src/engine/factions.ts",
@@ -46,7 +46,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/townAgency.ts",
-    "sha256": "6544b913535b63385da3b3c8f59db243d41c3a2231d00ff9150740407ec886a3"
+    "sha256": "8a1b9c5c518b1835580cdf21e7f80ef20c2265aa43f2139be1d40c6bf1360448"
   },
   {
     "path": "src/engine/stewardshipConsequences.ts",
@@ -74,7 +74,7 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
   },
   {
     "path": "src/engine/decisionTraceAnswers.ts",
-    "sha256": "8cd77be552f4d0e9e9083b817b9e2d9c382a90c3902e9e3f9e5ff120916a0950"
+    "sha256": "3cd3f36dd85e4a8066458556a741ae5da710e35f25f12faf38d6e36922a87b87"
   },
   {
     "path": "src/engine/answerEffectCapture.ts",

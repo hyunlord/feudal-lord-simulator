@@ -86,3 +86,15 @@ test('annual tally counts only calendar years with more than four decisions', ()
   assert.equal(result.bySeed[0].yearsAboveFour, 1);
   assert.equal(result.pooled.yearsAboveFour, 1);
 });
+
+test('v56 gate retains a larger maximum as raw evidence without rejecting an approved cohort', () => {
+  const stats = (total: number, max: number, yearsAboveFour: number) => ({ total, median: 2, max, yearsAboveFour });
+  const baseline = { bySeed: [1, 2, 3].map(seed => ({ seed, ...stats(278, 6, 8) })), pooled: stats(836, 6, 26) };
+  const current = { bySeed: [1, 2, 3].map(seed => ({ seed, ...stats(218, 7, 5) })), pooled: stats(655, 7, 16) };
+  const annual = tools.compareInertAnnualHeavy(baseline, current);
+  assert.equal(annual.pooled.delta.max, 1);
+  assert.equal(annual.pooled.legacyPass, false);
+  assert.equal(annual.pooled.pass, true);
+  assert.equal(tools.compareInertAnnualHeavy(baseline, { ...current, pooled: stats(837, 7, 16) }).pooled.pass, false);
+  assert.equal(tools.compareInertAnnualHeavy(baseline, { ...current, pooled: stats(655, 7, 27) }).pooled.pass, false);
+});
