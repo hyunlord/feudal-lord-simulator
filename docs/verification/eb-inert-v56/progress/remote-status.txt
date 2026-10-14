@@ -1,0 +1,23 @@
+Wed Oct 14 11:32:47 UTC 2026
+✔ pooled comparison rejects the measured 864 answers and 27 crowded years (0.194855ms)
+✔ pooled gate permits opposite per-seed maximum shifts when all pooled bounds hold (0.138709ms)
+✔ annual tally counts only calendar years with more than four decisions (0.184614ms)
+✔ v56 gate retains a larger maximum as raw evidence without rejecting an approved cohort (0.247433ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3727.881837
+seed 1
+{"phase":"replay","seed":1,"tick":500000,"endTick":500000,"commandCount":2215}
+{"seed":1,"years":125,"directory":"/home/hyunlord/fls-runs/engineB-V56-inert-d4c9249/.remote/eb-inert-125/original/seed-1","replayVerified":true,"classifiedHeavyAnswers":210}
+seed 2
+{"phase":"replay","seed":2,"tick":500000,"endTick":500000,"commandCount":1764}
+{"seed":2,"years":125,"directory":"/home/hyunlord/fls-runs/engineB-V56-inert-d4c9249/.remote/eb-inert-125/original/seed-2","replayVerified":true,"classifiedHeavyAnswers":222}
+seed 3
+{"phase":"replay","seed":3,"tick":250000,"endTick":500000,"commandCount":1398}
+{"phase":"replay","seed":3,"tick":260000,"endTick":500000,"commandCount":1403}
+INERT_NOT_FINISHED
