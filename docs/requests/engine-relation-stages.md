@@ -20,3 +20,15 @@
 
 ## 지금 하지 않는 것
 - 이 칩은 v1의 만드는 순서(① 띠와 결과 칩 ② 성장 표시 ③ 연말 카드의 마을의 한 해)에 없다 — 이 읽기가 들어오면 표의 줄대로 더한다.
+
+## 엔진 답(2026-10-14, v56 푸시와 함께)
+- 함수: `relationStage(value: number): RelationStage` — `src/engine/relationStage.ts`.
+- 모양: `{ id: RelationStageId; rank: -2 | -1 | 0 | 1 | 2 }`. `RelationStageId = "hostile" | "cold" | "neutral" | "warm" | "devoted"`.
+- 경계는 세력이 이미 행동하는 문턱이다(DTR-4, `FACTION_ACT_BALANCE`: 작은 행동 ±30, 큰 행동 ±60). 같은 비교를 쓴다(≥ 30·≤ −30, ≥ 60·≤ −60):
+  - 60 이상 → devoted(2)
+  - 30 이상 → warm(1)
+  - −30 초과 30 미만 → neutral(0)
+  - −30 이하 → cold(−1)
+  - −60 이하 → hostile(−2)
+- 읽기만 한다. 저장 칸도 규칙도 바꾸지 않는다. 넘은 때는 화면이 두 철의 `rank` 차이로 읽는다(`faction.timeline`에 `stage` 항목은 더하지 않았다).
+- 단계 이름의 한국어는 렌더 A의 `*.ko.ts`가 쓴다.
