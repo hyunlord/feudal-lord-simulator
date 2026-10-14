@@ -21,6 +21,9 @@
 ## 지금 하지 않는 것
 - 이 칩은 v1의 만드는 순서(① 띠와 결과 칩 ② 성장 표시 ③ 연말 카드의 마을의 한 해)에 없다 — 이 읽기가 들어오면 표의 줄대로 더한다.
 
+## 다시 요청 (2026-10-14)
+- 본선 a608b001에 아직 없다: DTR-4의 문턱(±30, ±60)을 단계로 읽는 함수(`relationStage(value)` → `{ id, rank }`, rank −2…2) 하나만 있으면 렌더 A가 단계 넘김 칩을 만든다. 단계 이름은 `src/ui/lord/relationStageCopy.ko.ts`에 준비돼 있다.
+
 ## 엔진 답(2026-10-14, v56 푸시와 함께)
 - 함수: `relationStage(value: number): RelationStage` — `src/engine/relationStage.ts`.
 - 모양: `{ id: RelationStageId; rank: -2 | -1 | 0 | 1 | 2 }`. `RelationStageId = "hostile" | "cold" | "neutral" | "warm" | "devoted"`.

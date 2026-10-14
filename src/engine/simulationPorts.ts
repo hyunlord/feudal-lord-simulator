@@ -28,6 +28,7 @@ import {
   resolveBuildingRoute,
   resolveRoadToConstructionSiteRoute,
   resolveRoadToBuildingRoute,
+  type RouteResolution,
 } from "./routing";
 import type { CarterDestination } from "../agents/walker.types";
 import { canTraverseWallCarryEdge, isWallCarryTile, wallCarrySiteAccessTile } from './wallCarryRoute';
@@ -77,6 +78,15 @@ export function createDeliveryInventoryPort(intakeRules?: IntakeRules): Delivery
 
 export function createSimulationRoutePorts(state: GameState): SimulationRoutePorts {
   let pathCache = state.pathCache;
+  // SIM-SPEED: the port's routes go into one copy of the cache it owns, in the order they are found — the same entries
+  // and key order as copying the whole cache on every miss (resolution.pathCache), which cost 9 % of a 60-year run
+  // (each key carries the wall's signature). Once the cache is handed out (getPathCache), the next miss copies again.
+  let owned = false;
+  const remember = (resolved: RouteResolution) => {
+    if (resolved.added === undefined) return;
+    if (!owned) { pathCache = { ...pathCache }; owned = true; }
+    (pathCache as Record<string, RoadPathCache[string]>)[resolved.added.key] = resolved.added.path;
+  };
   // SMOOTH-2E: one copy of the state per cache the routes have made (the state is immutable), not one per lookup.
   let routed: GameState | null = null;
   const routeState = (): GameState => routed !== null && routed.pathCache === pathCache ? routed : (routed = stateWithCache(state, pathCache));
@@ -114,7 +124,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       if (from === null || to === null) return null;
 
       const resolved = resolveBuildingRoute(routeState(), from, to);
-      pathCache = resolved.pathCache;
+      remember(resolved);
       return resolved.path;
     },
     fromBuildingToDestination: (fromBuildingId, destination) => {
@@ -130,7 +140,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
             from,
             to,
           );
-          pathCache = resolved.pathCache;
+          remember(resolved);
           return resolved.path;
         }
       }
@@ -207,6 +217,6 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
   return {
     delivery,
     roaming,
-    getPathCache: () => pathCache,
+    getPathCache: () => { owned = false; return pathCache; },
   };
 }

@@ -8,7 +8,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { SeasonLedger } from "../src/engine/season.types";
 import { SEASON_BAND_COPY } from "../src/ui/lord/seasonBand/seasonBandCopy.ko";
-import { SEASON_BAND_MAX, seasonBand, townSnapshot, type TownSnapshot } from "../src/ui/lord/seasonBand/seasonBandModel";
+import { SEASON_BAND_MAX, seasonBand, seasonDeathCauses, townSnapshot, type TownSnapshot } from "../src/ui/lord/seasonBand/seasonBandModel";
 import { toastLetThrough } from "../src/ui/lord/seasonBand/toastLimit";
 import { clearTownCloses, recordTownClose, townYearEnds } from "../src/ui/lord/seasonBand/townCloses";
 import { lordTownYear } from "../src/ui/results/lordYearReview";
@@ -44,13 +44,13 @@ test("a quiet season says it was quiet; after a load (no season-start snapshot) 
   assert.deepEqual(loaded.items.map(item => item.key), ["population", "money"], "no houses, levels, fields or dead without the season's start");
 });
 
-test("the snapshot: a house's level by its building, the buildings that are not houses, the fields, the dead but the gentry", () => {
+test("the snapshot: a house's level by its building, the buildings that are not houses, the fields, the dead (not those who left) but the gentry", () => {
   const state = {
     houses: [{ buildingId: "house-1", level: 2 }, { buildingId: "house-2", level: 1 }],
     buildings: [{ kind: "house" }, { kind: "house" }, { kind: "mill" }, { kind: "granary" }],
     arableFields: [{ zoneId: "z1", strips: [{}, {}, {}] }, { zoneId: "z2", strips: [{}] }],
     persons: { people: [{ alive: false, classBand: "labour" }, { alive: false, classBand: "gentry" }, { alive: true, classBand: "labour" }],
-      past: [{ classBand: "labour" }, { classBand: "gentry" }] },
+      past: [{ alive: false, classBand: "labour" }, { alive: true, leftYear: 1301, classBand: "labour" }, { alive: false, classBand: "gentry" }] },
     population: 56, treasuryCoin: 340,
   } as unknown as Parameters<typeof townSnapshot>[0];
   assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2, population: 56, coin: 340 });
@@ -74,4 +74,21 @@ test("LS1-5: the year card's 마을의 한 해 — people, houses, fields, the t
   assert.deepEqual(lordTownYear(1300), ["인구 12명 → 56명", "집 4채 → 5채", "밭 0곳 → 1곳", `금고 ${moneyFull(60)} → ${moneyFull(34)}`]);
   assert.equal(RESULTS_COPY.year.townYear, "마을의 한 해");
   clearTownCloses();
+});
+
+test("v1.1 b: a season whose deaths pass a tenth of the town says their main cause, from the engine's person.died records", () => {
+  const died = (id: string, tick: number, subject: string, cause: string) => ({ id, tick, template: "person.died", subject: { type: "person", id: subject }, params: { cause, age: 30 } });
+  const state = { persons: { people: [], past: [{ id: "lord", classBand: "gentry" }] }, history: { records: [
+    ...Array.from({ length: 9 }, (_, index) => died(`f${index}`, 1_200 + index, `p${index}`, "famine")), died("a1", 1_500, "q1", "age"), died("a2", 1_600, "q2", "age"),
+    died("g1", 1_700, "lord", "fire"), died("x1", 900, "q3", "fire"), died("x2", 2_100, "q4", "fire")] } } as unknown as Parameters<typeof seasonDeathCauses>[0];
+  const causes = seasonDeathCauses(state, 1_000, 2_000);
+  assert.deepEqual(causes, { famine: 9, age: 2 }, "the season's span only; the gentry are the chips'");
+  const heavy = seasonBand({ season: season(-11, 0, 0), before: { ...snap({ h1: 2 }, 5, 1, 0), population: 100 }, after: snap({ h1: 2 }, 5, 1, 11), stewardHandled: 0, deathCauses: causes });
+  assert.equal(heavy.items.find(item => item.key === "deaths")?.text, "사망 11 — 굶주림");
+  const light = seasonBand({ season: season(-10, 0, 0), before: { ...snap({ h1: 2 }, 5, 1, 0), population: 100 }, after: snap({ h1: 2 }, 5, 1, 10), stewardHandled: 0, deathCauses: causes });
+  assert.equal(light.items.find(item => item.key === "deaths")?.text, "사망 10", "a tenth is not over a tenth");
+  const unknown = seasonBand({ season: season(-30, 0, 0), before: { ...snap({ h1: 2 }, 5, 1, 0), population: 100 }, after: snap({ h1: 2 }, 5, 1, 30), stewardHandled: 0, deathCauses: {} });
+  assert.equal(unknown.items.find(item => item.key === "deaths")?.text, "사망 30", "no recorded cause: none made up");
+  const tied = seasonBand({ season: season(-30, 0, 0), before: { ...snap({ h1: 2 }, 5, 1, 0), population: 100 }, after: snap({ h1: 2 }, 5, 1, 30), stewardHandled: 0, deathCauses: { age: 15, fire: 15 } });
+  assert.equal(tied.items.find(item => item.key === "deaths")?.text, "사망 30 — 불", "equal counts: the order (fire before age)");
 });
