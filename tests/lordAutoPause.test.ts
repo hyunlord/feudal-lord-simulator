@@ -26,16 +26,17 @@ import { SURFACES } from "../src/ui/surfaces.registry";
 // LM-R3 (lord slice LS-2; the user's ruling 2026-10-09): the lord-mode auto-pause, read as the store meets the game —
 // after every command (the store's previous render state is then the new state) and after every tick batch (the
 // previous is the state the batch started from). It stops only for the engine's big events (`pauseReasons`) and new
-// matters due (`lordMattersDue`), once a season. The lord bot plays seed 3 from the slice's start into its eighth year:
+// matters due (`lordMattersDue`), once a season. The lord bot plays seed 1 from the slice's start into its eighth year:
 // a great person's death (1304), the lord's wardship (1305) and the counter that comes in the same tick as the offer
-// (1307). AUTO_PAUSE_PAIRS=<dir> (the DGX's `scripts/autoPauseStates.ts` pairs, ~/fls-slice-end-states/pairs) also walks
+// (1306). Seed 3 until FOOD-EARLY: its faster town never filled the treasury to the bot's one marriage offer. AUTO_PAUSE_PAIRS=<dir> (the DGX's `scripts/autoPauseStates.ts` pairs, ~/fls-slice-end-states/pairs) also walks
 // the first stop of every other reason the bot's twenty years reach.
 
 type Stop = { readonly before: GameState; readonly after: GameState; readonly by: "tick" | "command"; readonly command?: string; readonly items: readonly AutoPauseItem[] };
 const PLAY_UNTIL = 29_100;
+const SEED = 1;
 
 const played = (() => {
-  let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 3 })!;
+  let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: SEED })!;
   let memory: AutoPauseMemory = autoPauseMemory(state);
   const stops: Stop[] = [];
   /** Ticks where the town finished a building or began a project of its own, with nothing else of note. */
@@ -116,7 +117,7 @@ test("a load, a new game or the tick going back is no turn: the baseline moves o
   // A save of the same tick loaded over it (a command's tick, another object): nothing new in it either.
   assert.deepEqual(autoPauseStep(autoPauseMemory(inheritance.after), roundTrip(inheritance.after), inheritance.after).fresh, []);
   // A new game, and an earlier save: the tick goes back.
-  const fresh = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 3 })!;
+  const fresh = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: SEED })!;
   assert.deepEqual(autoPauseStep(autoPauseMemory(played.last), fresh, fresh).fresh, []);
   assert.deepEqual(autoPauseStep(autoPauseMemory(played.last), played.states[0]!, played.states[0]!).fresh, []);
   // And the game after a load stops again on its own turns.
