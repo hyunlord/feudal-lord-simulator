@@ -60,7 +60,7 @@ tools(categories.toolHashes);
 for (const seed of [1, 2, 3]) {
   assert.equal(Number(read(`seed-${seed}.exit-code`)), 0);
   read(`seed-${seed}.log`, true, true);
-  const dir = `original/seed-${seed}`, manifestBytes = read(`${dir}/manifest.json`), manifest = JSON.parse(manifestBytes);
+  const dir = `original/seed-${seed}`, manifestBytes = read(`${dir}/manifest.json`, true, true), manifest = JSON.parse(manifestBytes);
   const parity = json(`${dir}/collect-parity.json`, true, true), capture = json(`capture/seed-${seed}/manifest.json`, true, true);
   assert.equal(manifest.sourceRevision, REVISION); assert.equal(manifest.source.revision, REVISION);
   assert.equal(manifest.source.status, ''); assert.equal(manifest.source.platform, 'linux'); assert.equal(manifest.source.node, 'v24.21.0');
@@ -129,7 +129,7 @@ const beforeEvents = events(baseline), afterEvents = events(categories);
 const byEvent = [...new Set([...beforeEvents.keys(), ...afterEvents.keys()])].sort().map(source => ({ source,
   before: beforeEvents.get(source) ?? 0, after: afterEvents.get(source) ?? 0, delta: (afterEvents.get(source) ?? 0) - (beforeEvents.get(source) ?? 0) }));
 add('frequency-detail.json', encode({ years, byEvent, pooled: annual.pooled }), 'derived:comparison.json and authenticated category answers');
-const text = `# v56 integrated INERT cohort\n\nRun: ${RUN}\nSource: ${REVISION}\n\nMeasured gate: **${comparison.gate.pass ? 'PASS' : 'FAIL'}**. Native hashes and render acceptance are separate.\n\n| Metric | Before | After |\n| --- | ---: | ---: |\n${['total', 'median', 'max', 'yearsAboveFour'].map(key => `| ${key} | ${annual.pooled.baseline[key]} | ${annual.pooled.current[key]} |`).join('\n')}\n\nAll 375 calendar rows and event/choice source counts are in frequency-detail.json. Raw observer files remain in the kept official run; manifest.json preserves original byte sizes and hashes. Both pass and fail are archived. No missing result is interpreted as a verdict.\n`;
+const text = `# v56 integrated INERT cohort\n\nRun: ${RUN}\nSource: ${REVISION}\n\nMeasured gate: **${comparison.gate.pass ? 'PASS' : 'FAIL'}**. Native hashes and render acceptance are separate.\n\n| Metric | Before | After |\n| --- | ---: | ---: |\n${['total', 'median', 'max', 'yearsAboveFour'].map(key => `| ${key} | ${annual.pooled.baseline[key]} | ${annual.pooled.current[key]} |`).join('\n')}\n\nThe original seed manifests are retained as original/seed-{1,2,3}/manifest.json.gz; raw provenance hashes identify their decompressed JSON bytes. All 375 calendar rows and event/choice source counts are in frequency-detail.json. Raw observer files remain in the kept official run; manifest.json preserves original byte sizes and hashes. Both pass and fail are archived. No missing result is interpreted as a verdict.\n`;
 add('README.md', Buffer.from(text), 'derived:comparison.json');
 add('archive.mjs', readFileSync(new URL(import.meta.url)), 'self');
 // Finish every verification before writing any output artifact.
