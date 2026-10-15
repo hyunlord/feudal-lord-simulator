@@ -184,38 +184,38 @@
     }
   },
   {
-    "seed": 3,
-    "manifestFile": "docs/verification/eb-weight/kept-2485af4/seed3-checkpoint-manifest.json",
+    "seed": 1,
+    "manifestFile": "docs/verification/eb-weight/kept-2485af4/checkpoint-manifest.json",
     "entryId": "ck_evt_032",
-    "choice": "defer",
-    "answerId": "h-002188",
-    "startTick": 49063,
-    "maximumTick": 50200,
-    "decisionId": "h-002188",
-    "decisionTick": 49063,
-    "source": "registry:ck_evt_032:defer",
+    "choice": "roll",
+    "answerId": "h-008835",
+    "startTick": 137047,
+    "maximumTick": 138200,
+    "decisionId": "h-008835",
+    "decisionTick": 137047,
+    "source": "registry:ck_evt_032:roll",
     "answer": {
-      "file": "ck_evt_032-answer-h-002188.save.json.gz",
-      "fileSha256": "2e16a933d0d8ac4a84cdad2d77a8e9d063bc4a87ed4b72a57786cdba8830321b",
-      "encodedSaveSha256": "f052fb1e6c50f0c509709bbf7006d411e8e6fc3d01df9fbccfb4362a0ba96fa5",
-      "observedTick": 49063,
-      "bytes": 100121
+      "file": "ck_evt_032-answer-h-008835.save.json.gz",
+      "fileSha256": "7400751c4f435fdcf000ac359ab41bdb3a5831bf1be73ad7ad3a35a6110af97c",
+      "encodedSaveSha256": "c097be4ca225d2766e139a3134505be9881a48c03d731473fb55a6d30ce41747",
+      "observedTick": 137047,
+      "bytes": 164673
     },
     "consequence": {
-      "file": "ck_evt_032-consequence-h-002242.save.json.gz",
-      "fileSha256": "f3e638ab3722fa30b729ac14ccf4307fe7efcceca596327e6d483d283c57aafe",
-      "encodedSaveSha256": "fc5f06831646cac166df18c6cd227e98c9a5bff1da9c1db6f4534c4ac7254064",
-      "observedTick": 50000,
-      "bytes": 103283,
-      "historyId": "h-002242",
-      "historyTick": 50000,
+      "file": "ck_evt_032-consequence-h-008896.save.json.gz",
+      "fileSha256": "00bbafef7b3117673fe9b70fe2eddcc2e0ed9263690024240ad658c3040b94e6",
+      "encodedSaveSha256": "1c455abc8a8b8041b33f60675f76d7272ff00fe4a3ee1f820162e86674659a9b",
+      "observedTick": 138000,
+      "bytes": 166348,
+      "historyId": "h-008896",
+      "historyTick": 138000,
       "because": [
         {
-          "decisionId": "h-002118",
+          "decisionId": "h-008761",
           "key": "suit_turned"
         },
         {
-          "decisionId": "h-002188",
+          "decisionId": "h-008835",
           "key": "suit_turned",
           "part": true
         }
@@ -225,7 +225,7 @@
     "expectedConsequence": {
       "template": "consequence",
       "key": "suit_turned",
-      "target": "suit:suit-3"
+      "target": "suit:suit-13"
     }
   },
   {

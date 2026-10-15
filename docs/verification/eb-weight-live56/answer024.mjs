@@ -96,6 +96,9 @@ try {
   if (report.actual.delta === 0) report.failureClass = 'rule_inert_relation_saturation';
   else if (!report.after.item) report.failureClass = report.after.rows.length ? 'year_results_omission' : 'immediate_effect_missing_trace';
   else {
+    assert.ok(report.after.rows.some(row => row.key === 'relation' && row.actor === 'town'
+      && row.delta === report.actual.delta && row.decisionId === report.answer.id && row.decisionTick === after.tick),
+    'Trace relation must match the exact town delta and successful answer');
     const chip = `.event-chip[data-story="decision_trace"][data-chip-id="results:${report.after.results.year}"]`;
     assert.equal(await page.locator(chip).textContent(), report.after.expectedChip);
     const beforeNavigation = sha(JSON.stringify(await state()));
@@ -116,7 +119,9 @@ try {
   report.errors.push(String(error)); report.failureClass ??= 'harness_or_screen_requires_classification';
   if (page) await snapshot('failure').catch(() => {});
 } finally {
-  if (context) await context.close(); if (browser) await browser.close();
+  if (context) await context.close().catch(error => report.errors.push(`Context close: ${error}`));
+  if (browser) await browser.close().catch(error => report.errors.push(`Browser close: ${error}`));
+  if (report.errors.length) report.valid = false;
   writeFileSync(join(out, 'answer024.json.gz'), gzipSync(JSON.stringify(report, null, 2), { level: 9 }));
 }
 console.log(JSON.stringify({ valid: report.valid, actual: report.actual, failureClass: report.failureClass, errors: report.errors }));

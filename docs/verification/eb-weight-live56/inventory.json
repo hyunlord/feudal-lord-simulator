@@ -1,0 +1,957 @@
+{
+  "schemaVersion": 1,
+  "eventCount": 56,
+  "choiceCount": 163,
+  "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "rows": [
+    {
+      "entryId": "ck_evt_002",
+      "supportedChoices": [
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_005",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 1,
+        "choice": "c"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_009",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c",
+        "defer"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "c"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_010",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "only_invalid_occurrences"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_011",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_013",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_015",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_018",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_019",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_024",
+      "supportedChoices": [
+        "lower",
+        "keep"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "partial_lower_pass_keep_pending",
+      "liveCase": {
+        "seed": 1,
+        "choice": "lower"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_025",
+      "supportedChoices": [
+        "punish",
+        "replace",
+        "tolerate"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_029",
+      "supportedChoices": [
+        "accounts",
+        "visit",
+        "replace_accounts"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_031",
+      "supportedChoices": [
+        "able",
+        "loyal",
+        "direct"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 3,
+        "choice": "able"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_032",
+      "supportedChoices": [
+        "charter",
+        "roll",
+        "both",
+        "defer"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 1,
+        "choice": "roll"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_033",
+      "supportedChoices": [
+        "deed",
+        "witnesses",
+        "both",
+        "defer"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_034",
+      "supportedChoices": [
+        "precedent",
+        "hear",
+        "rights_only"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "steward_answers_not_retained_as_lord_checkpoints"
+      ],
+      "priorStewardAnswers": 3,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_035",
+      "supportedChoices": [
+        "larger",
+        "smaller",
+        "wait"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_037",
+      "supportedChoices": [
+        "direct",
+        "delegate_visit"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_038",
+      "supportedChoices": [
+        "enforce",
+        "defer"
+      ],
+      "originalInputStatus": "not_included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_042",
+      "supportedChoices": [
+        "light",
+        "firm"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "firm"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_046",
+      "supportedChoices": [
+        "trim",
+        "cancel"
+      ],
+      "originalInputStatus": "not_included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_051",
+      "supportedChoices": [
+        "file",
+        "leave",
+        "file_with_deed"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "only_invalid_occurrences"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_052",
+      "supportedChoices": [
+        "punish",
+        "replace",
+        "tolerate"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_053",
+      "supportedChoices": [
+        "deed",
+        "roll",
+        "both",
+        "defer"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 1,
+        "choice": "roll"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_057",
+      "supportedChoices": [
+        "light",
+        "fee",
+        "refuse"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_058",
+      "supportedChoices": [
+        "remit",
+        "collect"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "steward_answers_not_retained_as_lord_checkpoints"
+      ],
+      "priorStewardAnswers": 3,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_059",
+      "supportedChoices": [
+        "delegate",
+        "direct",
+        "loyal_candidate"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "only_invalid_occurrences"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_061",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_075",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_076",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_077",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_080",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_083",
+      "supportedChoices": [
+        "a",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 3,
+        "choice": "a"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_090",
+      "supportedChoices": [
+        "a",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_092",
+      "supportedChoices": [
+        "a",
+        "b"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 3,
+        "choice": "b"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_124",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_128",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_130",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "c"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_131",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_132",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_133",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_139",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_140",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "no_trace_yet_at_answer",
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "a"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_143",
+      "supportedChoices": [
+        "a",
+        "b"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_144",
+      "supportedChoices": [
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "steward_answers_not_retained_as_lord_checkpoints"
+      ],
+      "priorStewardAnswers": 2,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_147",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_150",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_157",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_163",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "steward_answers_not_retained_as_lord_checkpoints"
+      ],
+      "priorStewardAnswers": 2,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_165",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "a"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_174",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "missing_input",
+      "originalInputReasons": [
+        "unobserved_in_historical_cohort"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_201",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 3,
+        "choice": "c"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_204",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "a"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_206",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 1,
+        "choice": "a"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_209",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": null,
+      "limits": "Original reader inclusion is not screen acceptance."
+    },
+    {
+      "entryId": "ck_evt_211",
+      "supportedChoices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "originalInputStatus": "included",
+      "originalInputReasons": [
+        "included",
+        "no_trace_yet_at_answer"
+      ],
+      "priorStewardAnswers": 0,
+      "screenVerdict": "pending",
+      "liveCase": {
+        "seed": 2,
+        "choice": "b"
+      },
+      "limits": "Original reader inclusion is not screen acceptance."
+    }
+  ]
+}
