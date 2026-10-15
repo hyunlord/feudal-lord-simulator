@@ -45,7 +45,7 @@
 | 092 | a, b | b | 통과(한 선택) | [증거1](../eb-weight-092-live/README.md); b: actual stall_fee income 8d, partial cause; chip absent→2 (initial year count null, not displayed 0), target 1; exact card and navigation SHA verified. Other choices are not claimed. |
 | 124 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 128 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 130 | a, b, c | c | 미통과: 관측 중단 | [증거1](../eb-weight-130-live/README.md); c: combined rights-petition and suit-against-lord pause at 68001 precedes historical expected audit 74320; helper accepts only exact suit_defence. Harness observation limit, not an established trace/product defect. No actual receipt, card, or navigation SHA pair observed. Retry planned after current queue; original retained. |
+| 130 | a, b, c | c | 미통과: 하네스 | [증거1](../eb-weight-130-live/README.md) · [증거2](../eb-weight-130-notices/README.md); c: first run paused at combined notice; follow-up normal notice and year-report Continue preserved SHA, but helper advanced 32 ms after Later restored speed (69151→69154), contaminating navigation SHA with runtime progress. Harness failure, not established screen/trace defect; actual target result/card unobserved. Retry after removal of extra clock advance remains pending. |
 | 131 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 132 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 133 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |

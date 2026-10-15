@@ -650,13 +650,16 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_observation_interrupted",
+      "screenVerdict": "fail_harness",
       "liveCase": {
         "seed": 2,
         "choice": "c"
       },
-      "limits": "c: combined rights-petition and suit-against-lord pause at 68001 precedes historical expected audit 74320; helper accepts only exact suit_defence. Harness observation limit, not an established trace/product defect. No actual receipt, card, or navigation SHA pair observed. Retry planned after current queue; original retained.",
-      "evidence": "../eb-weight-130-live/README.md"
+      "limits": "c: first run paused at combined notice; follow-up normal notice and year-report Continue preserved SHA, but helper advanced 32 ms after Later restored speed (69151→69154), contaminating navigation SHA with runtime progress. Harness failure, not established screen/trace defect; actual target result/card unobserved. Retry after removal of extra clock advance remains pending.",
+      "evidence": [
+        "../eb-weight-130-live/README.md",
+        "../eb-weight-130-notices/README.md"
+      ]
     },
     {
       "entryId": "ck_evt_131",

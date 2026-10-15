@@ -1,0 +1,60 @@
+{
+  "verdict": "FAIL_HARNESS",
+  "choice": "c",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected registry-after-later-1.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "registry-after-later-1.jpg",
+      "sha256": "c8f98b734e602e1aa38bd6c2c6bc3ee590f070eb45fe28da2902a799c10129ad"
+    }
+  ],
+  "observed": "Normal world is visible after Later, not a blocking modal. The helper explicitly ran the clock for 32 ms after Later restored speed, allowing 3 ticks before comparing the SHA.",
+  "causeClassification": "harness_mixed_runtime_progress_with_navigation",
+  "productDefectEstablished": false,
+  "stateComparison": {
+    "beforeTick": 69151,
+    "afterTick": 69154,
+    "beforeSha256": "6b66b1b440fec70896c47598384e6de90cd8a556366dd718fbee36f878605cd9",
+    "afterSha256": "572eaffb22a3fe8d796b911db8e2e339e91937c8569516efe73deefdba35019e",
+    "changedTopLevelKeys": [
+      "tick",
+      "buildings",
+      "walkers",
+      "wallTick",
+      "autoplayFoodFlow",
+      "autoplayRecurringDelivery",
+      "timberProductionWindow",
+      "settlement",
+      "arableFields"
+    ]
+  },
+  "successfulNavigation": [
+    {
+      "tick": 68001,
+      "reasons": [
+        "rights_petition",
+        "suit_defence"
+      ],
+      "beforeSha256": "5a0a3184d1f78d9febaf07e4f5279d751592659b35456f9f196052ffb74138be",
+      "afterSha256": "5a0a3184d1f78d9febaf07e4f5279d751592659b35456f9f196052ffb74138be"
+    },
+    {
+      "tick": 69001,
+      "reasons": [
+        "suit_defence"
+      ],
+      "beforeSha256": "059e7bbcd2980630ff8f9e87234c849ec72e2d3dca587e8e36ab5dc141e8f300",
+      "afterSha256": "059e7bbcd2980630ff8f9e87234c849ec72e2d3dca587e8e36ab5dc141e8f300"
+    }
+  ],
+  "yearReportContinue": [
+    {
+      "tick": 68150,
+      "year": "1316",
+      "beforeSha256": "28f72ed28e8a7d80f9ea82d45b514bbf0765fa42621a75b13e3ff58bc1f21417",
+      "afterSha256": "28f72ed28e8a7d80f9ea82d45b514bbf0765fa42621a75b13e3ff58bc1f21417"
+    }
+  ],
+  "retry": "Parent removed the explicit post-Later clock advance in the main audit helper; a further retry is needed. Original failure is preserved."
+}

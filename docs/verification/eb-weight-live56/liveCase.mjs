@@ -230,9 +230,10 @@ async function deferCoveringRegistryCard(observation) {
     await page.mouse.wheel(0, 400); await page.clock.runFor(64);
     assert.equal(sha(await stateJson()), before.sha256, 'Deferred-card scroll changed state');
   }
-  await press(selector); await page.clock.runFor(32);
+  await press(selector);
   const after = await snapshot(`registry-after-later-${number}`);
   assert.equal(after.sha256, before.sha256, 'Normal Later changed game state');
+  assert.equal((await sample()).tick, observation.tick, 'Later advanced time before the next clock sample');
   assert.equal((await sample()).panels.length, 0, 'Another dialog followed Later');
   report.resultNavigation.push({ kind: 'normal_registry_later_without_answer', offer, pending,
     beforeSha256: before.sha256, afterSha256: after.sha256, coveredObservation: observation,
