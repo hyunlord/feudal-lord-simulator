@@ -1,0 +1,16 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "roll",
+  "reviewer": "parent",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "05e6ec557c36a1251e1579ac605d2f5f2625a209192b2ebb25060ec5b285d42c"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "ed404eed51d2f3d3859a52ae23c78e4861982e27d568cbd2317aac1c54baa95b"
+    }
+  ],
+  "observed": "Results chip5 and exact canonical032 item once fully visible; paused navigation SHA unchanged."
+}

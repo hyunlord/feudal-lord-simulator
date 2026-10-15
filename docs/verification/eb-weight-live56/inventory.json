@@ -226,12 +226,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "fail_observation_interrupted",
       "liveCase": {
         "seed": 3,
         "choice": "able"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Unrelatedsuitnotice@276000 stoppedbeforeexpectedresult. Separate normalContinue replayplanned, nottracefailure.",
+      "evidence": "../eb-weight-031-live/README.md"
     },
     {
       "entryId": "ck_evt_032",
@@ -247,12 +248,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 1,
         "choice": "roll"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "roll actualsuittransition, chip3→5 target0→1, exactcardonce andnavigationSHA; otherchoicesnotclaimed.",
+      "evidence": "../eb-weight-032-live/README.md"
     },
     {
       "entryId": "ck_evt_033",

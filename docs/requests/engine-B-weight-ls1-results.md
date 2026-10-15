@@ -10,3 +10,5 @@
 009 소스 근거: src/ui/hud/useStoryPresentation.ts:25(MAX_CHIPS), :81–96(storyChips). 새 결과는 trace와 연간 읽기에 이미 있다. 현재 화면의 화재·불탄 자리·소송 칩이 3개 자리를 차지한다. 초기 results:1302 9건은 보였으나 새 결과 뒤 칩이 밀렸다. 이 관측 창에서 자동 표시 미달이며 영구 접근 불가를 주장하지 않는다. 본선/화면 수정은 하지 않았다.
 
 005/b 후속: [engineB-weight005-later-430d8d6](../verification/eb-weight-005-later/README.md) 종료1. 실제 수입23d·정확한 부분원인·칩1건은 존재한다.042 ‘나중에’로 닫으니1308 연말 카드가 자동으로 열리고 seen.year-review:1308이 추가돼 탐색SHA가 변했다(틱36151 동일). 원인은 useStoryPresentation.ts:218–224의 밀린 연말 카드·markOpened 경로. 영지 규칙 변경이 아니라 읽음 기록이며, 전체SHA조건을 임의로 완화하지 않는다. 렌더A 검토.
+
+032/roll: [증빙](../verification/eb-weight-032-live/README.md) 실제소송단계전이·칩3→5·대상1항목·SHA동일·원본JPEG검토 통과. 다른 선택의 통과로 확대하지 않는다.

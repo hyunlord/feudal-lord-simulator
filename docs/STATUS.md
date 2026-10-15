@@ -1,3 +1,5 @@
+2026-10-15 Engine B [032/roll](verification/eb-weight-032-live/README.md) 실제 소송전이·칩3→5·정확한카드1항목·SHA동일·JPEG검토 통과.031첫관측은별도소송알림에서멈춰하네스중단으로보존,정상계속경로를분리재검증한다.042부터공식줄한판씩계속,전체56미완료.
+
 2026-10-15 Engine B 추가 화면 판정: [009/c](verification/eb-weight-009-live/README.md)는 실제 소송 전이·정확한 부분원인·연간 reader 항목은 있으나 3칩 상한에서 결과 칩이 밀려 미통과. 카드·탐색SHA는 미검증. 렌더 검토용 [인계](requests/engine-B-weight-ls1-results.md)에 분리 기록. 005 정상 나중에 재검증은 밀린1308연말카드의seen추가로SHA미달(틱동일)을 보존했다.031부터13사례순차검증, 전체56 계속. 제품·056 변경 없음.
 
 2026-10-15 Engine B 56사건 전수 재개: [입력 확보](verification/eb-weight-024-input/README.md) engineB-weight024-input-ef5a483 종료0, 원본031 결과 저장에서 정상 봇으로024 제시305000(lower/keep)와046 제시298000(trim/cancel)을 확보했다. [024/keep](verification/eb-weight-024-keep/README.md)은 DGX39c26b5 종료0:town38→36·좌판세800유지·정확한관계trace·칩13→14·카드1항목·탐색SHA동일·JPEG3장확인.024두지원선택완료.005부터나머지사건순차검증중. [전수 입력 장부](verification/eb-weight-live56/README.md)는56 ID/163선택을 유지하며, 미발생·청지기·invalid와 실제 화면 실패를 구분한다. 제품0eddc146c/v55와056은 수정하지 않았다. 실험은 한 번에 한 판.
