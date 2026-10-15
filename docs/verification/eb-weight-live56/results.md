@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 7/56, 실패·관측미달 5, 미검증 44, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 9/56, 실패·관측미달 5, 미검증 42, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -59,8 +59,8 @@
 | 163 | a, b, c | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 165 | a, b, c | a | 통과(한 선택) | [증거1](../eb-weight-165-live/README.md); a: actual timber delivery 2, order remaining 12→10; chip 1→2 and target 1→2, exact canonical item once fully visible, navigation SHA unchanged. Other choices are not claimed. |
 | 174 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 201 | a, b, c | 예정: b | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
-| 204 | a, b, c | 예정: a | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 201 | a, b, c | b | 통과(한 선택) | [증거1](../eb-weight-201-live/README.md); b: actual stall_fee income 24d, ledger-000441 at 40800, h-003172 partial cause h-003145; chip 2→3, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed. |
+| 204 | a, b, c | a | 통과(한 선택) | [증거1](../eb-weight-204-live/README.md); a: actual stall_fee income 20d, ledger-013028 at 326400, h-023125 partial cause h-023122; chip 3→5, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed. |
 | 206 | a, b, c, d | 예정: a | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 209 | a, b, c, d | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 211 | a, b, c | 예정: b | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |

@@ -892,12 +892,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "b"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "b: actual stall_fee income 24d, ledger-000441 at 40800, h-003172 partial cause h-003145; chip 2→3, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed.",
+      "evidence": "../eb-weight-201-live/README.md"
     },
     {
       "entryId": "ck_evt_204",
@@ -911,12 +912,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "a"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "a: actual stall_fee income 20d, ledger-013028 at 326400, h-023125 partial cause h-023122; chip 3→5, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed.",
+      "evidence": "../eb-weight-204-live/README.md"
     },
     {
       "entryId": "ck_evt_206",

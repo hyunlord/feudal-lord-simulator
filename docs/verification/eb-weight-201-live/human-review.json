@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "b",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "2ddbffab2b2a721737edfb856f4963e6d7c06ef1ea1aafe5ab552c8f80866b8f"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "18ca91fee640228223cbd594a87690523f53e431fb76873049a4bfb5e2f23134"
+    }
+  ],
+  "observed": "Results chip 3 and the exact canonical 이번 철 좌판의 몫 — 2건 item are fully visible once; paused navigation SHA unchanged.",
+  "expectedFact": "1310년 당신의 결정 때문에: 이번 철 좌판의 몫 — 2건",
+  "navigationSha256": "44fb0c27993c269a91aecb2bf03f0fda0929cae2f80709e195fdfb3888eedf47"
+}

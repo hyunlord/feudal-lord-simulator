@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "9cc71750e9d0ad08283b88764a08844b4ec682dd8e6d3e1fc10c9e78b10b4d43"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "a91691e865db0eebd0d30c7cb8c0e8745077c6369474f38a92c8cc71b3e4a7c2"
+    }
+  ],
+  "observed": "Results chip 5 and the exact canonical 1381년 당신의 결정 때문에: 직물 꾸러미가 놓인 장터 — 2건 item are fully visible once; paused navigation SHA unchanged.",
+  "expectedFact": "1381년 당신의 결정 때문에: 직물 꾸러미가 놓인 장터 — 2건",
+  "navigationSha256": "5cb266e4a7f4012fe7ef0c335fcbc754404ffeae408e0e7470b41f52a6a5803c"
+}
