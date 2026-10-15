@@ -1,6 +1,7 @@
 import type { StandingSetting } from "../../../content/stewardPolicyConfig";
 import { standingPolicies, standingSettings, type SettingAnswer, type StandingPolicyView } from "../../../engine/decisionReads";
 import type { GameState } from "../../../engine/engine.types";
+import { displayName } from "../../../engine/persons";
 import { calendarLabel } from "../../../engine/scenarioState";
 import { stewardshipOf } from "../../../engine/stewardship";
 import { lordMode } from "../../../engine/townAgency";
@@ -53,11 +54,13 @@ function does(state: GameState, view: StandingPolicyView, setting: StandingSetti
 }
 
 function kindRow(state: GameState, view: StandingPolicyView): PolicyKindRow {
-  const title = kindTitle(state, view.kind);
-  const current = settingWord(view.setting);
+  const tolerance = view.auditTolerance;
+  const person = tolerance === undefined ? undefined : state.estates?.people.find(row => row.id === tolerance.personId);
+  const title = tolerance === undefined ? kindTitle(state, view.kind) : COPY.auditTitle(person === undefined ? COPY.auditSteward : displayName(person));
+  const current = tolerance === undefined ? settingWord(view.setting) : tolerance.active ? COPY.auditActive : COPY.auditRevoked;
   return {
-    kind: view.kind, title, family: view.family, current, row: COPY.kindRow(current, view.handledThisYear),
-    options: standingSettings().map(setting => ({ setting, label: settingWord(setting), current: setting === view.setting, does: does(state, view, setting),
+    kind: view.kind, title, family: view.family, current, row: COPY.kindRow(current, view.handledThisYear) + (tolerance?.active === true ? ` · ${COPY.auditCost(tolerance.perSeason)}` : ""),
+    options: (view.allowedSettings ?? standingSettings()).map(setting => ({ setting, label: tolerance === undefined ? settingWord(setting) : COPY.auditWithdraw, current: setting === view.setting, does: tolerance === undefined ? does(state, view, setting) : [COPY.auditNext],
       command: { type: "set_standing_policy", kind: view.kind, setting } as GameAction })),
     handled: view.handledThisYear === 0 ? COPY.noneThisYear : COPY.handledThisYear(view.handledThisYear),
     last: view.last === null ? null : COPY.last(calendarLabel({ ...state, tick: view.last.tick }), view.last.granted === null ? null : view.last.granted ? COPY.granted : COPY.refused),

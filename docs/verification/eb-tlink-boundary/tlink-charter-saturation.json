@@ -1,0 +1,101 @@
+{
+  "source": "0b04cd0becc4d73059fbfcf372395c8672d1a381",
+  "scope": "Synthetic saturated estate boundary; two actual season-produced charter petitions, real reducer refusals, one actual next-season transition per refusal. Control copies only answered petition bookkeeping, excludes history/trace and petitions from domain comparison; no engine ticks or 125-year simulation.",
+  "rows": [
+    {
+      "tick": 2000,
+      "petition": {
+        "id": "estate-petition-1",
+        "estateId": "delegated-estate",
+        "kind": "charter_request",
+        "group": "merchants",
+        "amount": 2,
+        "rights": true,
+        "marriage": false,
+        "tick": 2000,
+        "deadline": 3000,
+        "status": "open",
+        "escalated": "rights"
+      },
+      "own": {
+        "id": "h-000016",
+        "tick": 2000,
+        "by": "lord",
+        "kind": "estate_petition",
+        "source": "estate_petition:delegated-estate:charter_request:refused",
+        "weights": [
+          "rights"
+        ],
+        "targets": [
+          "estate:delegated-estate"
+        ],
+        "threadId": "h-000016",
+        "memoryEvidence": []
+      },
+      "heavy": true,
+      "merchantsBefore": -100,
+      "merchantsAfter": -100,
+      "changedPaths": [
+        "/trace/decisions/0",
+        "/trace/answers",
+        "/stewardship/petitions/1/status",
+        "/stewardship/petitions/1/decidedBy",
+        "/history/records/14",
+        "/history/records/15",
+        "/history/nextOrdinal"
+      ],
+      "actualDelta": [],
+      "nextTick": 3000,
+      "futureDelta": [],
+      "futureLinks": []
+    },
+    {
+      "tick": 6000,
+      "petition": {
+        "id": "estate-petition-2",
+        "estateId": "delegated-estate",
+        "kind": "charter_request",
+        "group": "merchants",
+        "amount": 2,
+        "rights": true,
+        "marriage": false,
+        "tick": 6000,
+        "deadline": 7000,
+        "status": "open",
+        "escalated": "rights"
+      },
+      "own": {
+        "id": "h-000020",
+        "tick": 6000,
+        "by": "lord",
+        "kind": "estate_petition",
+        "source": "estate_petition:delegated-estate:charter_request:refused",
+        "weights": [
+          "rights"
+        ],
+        "targets": [
+          "estate:delegated-estate"
+        ],
+        "threadId": "h-000016",
+        "memoryEvidence": []
+      },
+      "heavy": true,
+      "merchantsBefore": -100,
+      "merchantsAfter": -100,
+      "changedPaths": [
+        "/trace/decisions/0/also",
+        "/trace/decisions/0/lastTick",
+        "/trace/answers/1",
+        "/stewardship/petitions/2/status",
+        "/stewardship/petitions/2/decidedBy",
+        "/history/records/18",
+        "/history/records/19",
+        "/history/nextOrdinal"
+      ],
+      "actualDelta": [],
+      "nextTick": 7000,
+      "futureDelta": [],
+      "futureLinks": []
+    }
+  ]
+}

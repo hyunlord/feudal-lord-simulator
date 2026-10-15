@@ -38,6 +38,9 @@ export const ANSWER_RECEIPT_COPY = {
   steward: (estate: string) => `${estate} 청지기`,
   auditMode: (estate: string) => `${estate} 감사 방식`,
   loyalty: (name: string) => `청지기 ${name}의 충성`,
+  /** v56: a tolerated audit's standing policy — this steward's audits tolerated from now on, the loss each season. */
+  auditTolerance: (name: string) => `청지기 ${name}의 감사`,
+  auditToleranceValue: (loss: string) => `앞으로 묵인 · 철마다 손실 ${loss}`,
   stewardOf: (name: string) => `청지기 ${name}`,
   stewardStatus: { candidate: "후보", serving: "맡음", dismissed: "물러남", dead: "죽음" } as const,
   rules: "청지기가 영주에게 올리는 일",

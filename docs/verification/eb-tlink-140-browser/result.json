@@ -1,0 +1,118 @@
+{
+  "pass": true,
+  "source": "ce4ea9af6454ad557a7df6ad385a45b7e1ec0232",
+  "dirty": " M docs/requests/engine-B-tlink.md\n?? docs/verification/eb-tlink-gates/\n",
+  "driver": {
+    "path": "driver.mjs",
+    "bytes": 6980,
+    "sha256": "d36afdf5c20d56956bb063e271e0b5a648d70f6278bd41e2a2a2c1a781d82b3f"
+  },
+  "errors": [],
+  "limits": [
+    "Prepared actual reducer answer and one actual advanceStewardship seasonal transition; synthetic seasonal boundary, not natural 125-year evidence."
+  ],
+  "ownId": "h-000011",
+  "resultId": "h-000015",
+  "answerTick": 1004,
+  "resultTick": 2000,
+  "priorIds": [
+    "h-000002",
+    "h-000004",
+    "h-000006",
+    "h-000008"
+  ],
+  "ownRecord": {
+    "tick": 1004,
+    "kind": "decision",
+    "template": "decision.card",
+    "severity": 1,
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "params": {
+      "decisionKind": "registry",
+      "command": "answer_registry_offer",
+      "subjectId": "answer:ck_evt_140:1004",
+      "chosen": "b"
+    },
+    "decision": {
+      "chosen": "b",
+      "alternatives": [
+        "a",
+        "c"
+      ],
+      "predicted": {}
+    },
+    "id": "h-000011"
+  },
+  "receipt": {
+    "tick": 2000,
+    "kind": "event",
+    "template": "stewardship.brought",
+    "subject": {
+      "type": "town",
+      "id": "town"
+    },
+    "severity": 0,
+    "params": {
+      "house": "home",
+      "kind": "repair",
+      "late": 0,
+      "amount": 8,
+      "tracePetition": "estate-petition-2",
+      "traceEstate": "delegated-estate"
+    },
+    "id": "h-000015",
+    "because": [
+      {
+        "decisionId": "h-000011",
+        "key": "petition_routed",
+        "part": true
+      }
+    ]
+  },
+  "petition": {
+    "id": "estate-petition-2",
+    "estateId": "delegated-estate",
+    "kind": "repair",
+    "group": "tenants",
+    "amount": 8,
+    "rights": false,
+    "marriage": false,
+    "tick": 2000,
+    "deadline": 3000,
+    "status": "open",
+    "escalated": "direct"
+  },
+  "ordinals": {
+    "before": 12,
+    "recorded": 28,
+    "annotated": 28,
+    "final": 29
+  },
+  "save": {
+    "path": "prepared.save.json.gz",
+    "bytes": 56907,
+    "sha256": "6c7352b141a56790944479a1667209883812f386c9288f6416c0641a9b1fa2b0"
+  },
+  "saveSHA256": "bd6bbf343aedf72f58998f67c34c5d39c6a5c2d56e33ca7a448df1659ca3be86",
+  "dismissed": [],
+  "chronicleAdmission": "chapter full chronicle button",
+  "ownText": "1300년 여름\n\n멀리 있는 땅을 보는 비용: 직접 감독으로 전환한다\n\n고른 길\n직접 감독으로 전환한다\n다른 길\n이번 영지를 방문 감사 방식으로 바꾼다\n실제 유효 후보에게 위임을 바꾼다\n예측과 실제\n그 뒤에 일어난 일\n1300년 여름 — home 영지를 영주가 직접 본다 — 장부는 로버트 스펜서 (여러 까닭 가운데 하나)\n1300년 가을 — home 영지의 제방·헛간 수리 청원이 영주에게 왔다 (여러 까닭 가운데 하나)",
+  "followText": "1300년 가을 — home 영지의 제방·헛간 수리 청원이 영주에게 왔다 (여러 까닭 가운데 하나)",
+  "answerScreenshot": {
+    "path": "answer-followed.png",
+    "bytes": 604418,
+    "sha256": "c5a583b4d44c39e4dbba8001b566f737680b6f4ec8dcde41e2c1e7f86df4d806"
+  },
+  "resultText": "1300년 가을\n\n1300년 당신의 결정도 한몫해 — home 영지의 제방·헛간 수리 청원이 영주에게 왔다\n\n이 일이 따라 나온 결정\n1300년 당신의 결정도 한몫해 — 멀리 있는 땅을 보는 비용: 직접 감독으로 전환한다\n\n이 무렵의 지도는 남아 있지 않습니다",
+  "becauseText": "1300년 당신의 결정도 한몫해 — 멀리 있는 땅을 보는 비용: 직접 감독으로 전환한다",
+  "resultScreenshot": {
+    "path": "petition-because.png",
+    "bytes": 462446,
+    "sha256": "0217fea1f851ffdf01d863e56950565659f0845a21cac39855e05dd8a5b76cf1"
+  },
+  "returnedOwnId": "h-000011",
+  "tickUnchanged": true
+}

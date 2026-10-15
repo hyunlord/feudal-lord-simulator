@@ -1,0 +1,9 @@
+# 23d collection-only provisional diagnostic
+
+This is **collection-only, unverified replay, not a gate** for source `23d12264289538de5f6ef3ef3f36aa9257b10aba`, run `engineB-tlink-audit125-23d1226`. At this archive handoff the parent reported seed2 replay in progress; no terminal or replay acceptance is inferred. The parent's running fetch exit255 (missing terminal exit-code) is not a producer failure. This archive neither consumes nor overwrites any later terminal fetch.
+
+Exact own-answer future links, original 12000-tick horizon: **334/816 mature answers**, seed1 **118/238**, seed2 **96/275**, seed3 **120/303**. All836 heavy answers include20 right-censored;482 mature unlinked,2 unclassified commands,0 unresolved. Counts are provisional; this is not a formal scorer report or an80% pass. No final manifest is fabricated.
+
+The exact diagnostic JSON, helper and log are gzip-preserved. Packaging independently checked input byte hashes, original source/tool pins, every diagnostic answer's later own-ID receipt join and maturity, and all paired collection artifact equalities. Collected checkpoint/command parity and final rule projection match the baseline for each seed; full final-state raw bytes differ for all three. These are collection comparisons, not completed replay validation, native guardrail equality, every-tick rule parity, or UI acceptance. The helper imports the source-pinned existing classification tool; packaging does not re-execute the engine or reclassify evidence.
+
+Large original collection inputs remain external at the exact paths and hashes in manifest.json and the diagnostic. Fetch the existing run via `scripts/remote/run.sh --fetch engineB-tlink-audit125-23d1226` only when needed; no new simulation is required for archival. Preserve original diagnostics when later formal results arrive. SHA256SUMS covers every archive member except itself.

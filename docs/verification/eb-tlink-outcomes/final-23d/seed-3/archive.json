@@ -1,0 +1,87 @@
+{
+  "seed": 3,
+  "sourceRevision": "23d12264289538de5f6ef3ef3f36aa9257b10aba",
+  "manifestSha256": "77889870fab414a39aa645d339407d280ed4829af25e9c5888d7a8614f0149da",
+  "members": [
+    {
+      "path": "seed-3.json",
+      "bytes": 1382094,
+      "sha256": "092cabde1a0377447a1eb484c873bbd80038f310b8f3784338de9277f3f5d5ab"
+    },
+    {
+      "path": "seed-3/answer-classification.json",
+      "bytes": 771887,
+      "sha256": "66e23a817f7e2fc256891f16b5f9f214fdd4ffd2e851c9dce3399a0539085809"
+    },
+    {
+      "path": "seed-3/answer-contexts.json.gz",
+      "bytes": 54086,
+      "sha256": "8acbf7e67d17920fee40cc6e82f0c68b3130c52c91ce7a447101e31fb8f6fd50"
+    },
+    {
+      "path": "seed-3/collect-parity.json",
+      "bytes": 302449,
+      "sha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3"
+    },
+    {
+      "path": "seed-3/collect-rule-state.json.gz",
+      "bytes": 161889,
+      "sha256": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e"
+    },
+    {
+      "path": "seed-3/final-state.json.gz",
+      "bytes": 348834,
+      "sha256": "26df3ff0961a13c93332441a3e0a7ecf23b7543d5cfe44e939bd11867176d5df"
+    },
+    {
+      "path": "seed-3/manifest.json",
+      "bytes": 1118683,
+      "sha256": "77889870fab414a39aa645d339407d280ed4829af25e9c5888d7a8614f0149da"
+    },
+    {
+      "path": "seed-3/original-contexts.json.gz",
+      "bytes": 54086,
+      "sha256": "8acbf7e67d17920fee40cc6e82f0c68b3130c52c91ce7a447101e31fb8f6fd50"
+    },
+    {
+      "path": "seed-3/original-final-state.json.gz",
+      "bytes": 348834,
+      "sha256": "26df3ff0961a13c93332441a3e0a7ecf23b7543d5cfe44e939bd11867176d5df"
+    },
+    {
+      "path": "seed-3/pins.json",
+      "bytes": 229,
+      "sha256": "488d17e2ce5e625ae106ccb31ed83ed2077d10284e266c95d2210a433c4ef182"
+    },
+    {
+      "path": "seed-3/preflight.json",
+      "bytes": 173133,
+      "sha256": "1a13ad0bc39be53483ce84eaea4ec4bab49c84529bff1c44b44b850948d57afc"
+    },
+    {
+      "path": "seed-3/progress.json",
+      "bytes": 79,
+      "sha256": "e50d60ed3db6c2c6fbe8bd71bcddb32370a6a57bfc60cf97da96311c5f6b4b66"
+    },
+    {
+      "path": "seed-3/replay-parity.json",
+      "bytes": 302449,
+      "sha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3"
+    },
+    {
+      "path": "seed-3/replay-rule-state.json.gz",
+      "bytes": 161889,
+      "sha256": "018ab9aa5242a17d28d62c936c7040f2a72b6534c6c82320fdbb47eab712bd2e"
+    },
+    {
+      "path": "seed-3/validity.json",
+      "bytes": 123,
+      "sha256": "2acabf72d404deff8acd143ac9e1dedf9c3514bc8023aa1aa5172589ad5cadde"
+    }
+  ],
+  "rawLocation": ".remote-runs/engineB-tlink-audit125-23d1226/eb-tlink-audit-final",
+  "remoteKeptLocation": "~/fls-runs/_kept/engineB-tlink-audit125-23d1226/",
+  "fetch": "scripts/remote/run.sh --fetch engineB-tlink-audit125-23d1226",
+  "fullRawCopied": false,
+  "verification": "Every retained member hashed; original manifest/context/replay-final pins checked."
+}

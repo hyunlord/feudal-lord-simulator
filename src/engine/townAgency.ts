@@ -5,6 +5,7 @@
  * reasons, and start the best they can pay for. Every start leaves a receipt: who, what, where, its five largest
  * reasons and the lord's decisions behind them. With no `state.agency` (sandbox, campaign) nothing here runs.
  */
+import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { CHARTER_RING } from "../content/charterRingConfig";
 import { holdsCharterSearch } from "./palisadeFootprints";
 import { cancelConstruction } from "./constructionCancellation";
@@ -556,6 +557,22 @@ function abandonUnreachedSites(state: GameState): GameState {
     since: site.startedTick, reason: reasonOf(site.stall) }))]
     .slice(-CHARTER_RING.abandonedKept);
   return { ...next, agency: { ...next.agency!, abandonedSites } };
+}
+
+/**
+ * GB2A-7 (the user's ruling 2026-10-13, renderer A's stall "houses and population not grown for over two seasons"): at
+ * each season's close the town's houses and population are set beside the close before; a close where either stands
+ * higher is the town's last growth (growthBlock's `since`). By the season, so a town recovering from a great loss (the
+ * Black Death) has grown at each close it gains, not only once it passes its old height. Lord mode only.
+ */
+export function recordSeasonGrowth(state: GameState): GameState {
+  const agency = state.agency;
+  if (agency === undefined || state.tick <= 0 || state.tick % PRESSURE_BALANCE.seasonTicks !== 0) return state;
+  const houses = state.houses.length, population = state.population;
+  const before = agency.seasonGrowth;
+  const grew = before !== undefined && (houses > before.houses || population > before.population);
+  const lastGrowthTick = grew ? state.tick : before?.lastGrowthTick;
+  return { ...state, agency: { ...agency, seasonGrowth: { houses, population, ...(lastGrowthTick === undefined ? {} : { lastGrowthTick }) } } };
 }
 
 export function advanceTownAgency(input: GameState): GameState {

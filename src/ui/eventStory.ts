@@ -66,7 +66,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // LS1-3 (lord mode): the town's growth stopped (the engine's growthBlock) — its cause and the lord's lever.
   | "growth_block"
   // LS1-6 (lord mode): a birth, a death or a marriage in the lord's family (persons/familyBeats.ts).
-  | "family_news";
+  | "family_news"
+  // LS1 ③ (lord mode): a faction's relation crossed a stage at a season's close (lord/relations/relationStageBeats.ts).
+  | "relation_stage";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;

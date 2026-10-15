@@ -1,0 +1,210 @@
+{
+  "functionalPass": true,
+  "source": "93245c466759b98d8fd9774eb4bd110e213508d3",
+  "workingTree": " M scripts/engineBTlinkBrowser.mjs\n",
+  "scriptSHA256": "47536aa838328bc863121c0d2714e6e52fb50c99f7123a747891686282f12e1d",
+  "url": "http://127.0.0.1:4304/",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "statesManifest": {
+    "path": "states.json",
+    "bytes": 1314,
+    "sha256": "61bb1c0bedbc692baf76137c9c50132de5544ea177357cb304c7e8b3e7b8c1f4"
+  },
+  "rows": [
+    {
+      "name": "home-041",
+      "fixtureSHA256": "e8070a9cbf5ef56ab9bb33bed398945f9346f0c10893701a70fb15fe0a6df1ce",
+      "fixtureBytes": 1491076,
+      "fixtureMetadata": {
+        "seed": 3,
+        "tick": 18000,
+        "year": 1304,
+        "season": 2,
+        "land": "core:forest_edge",
+        "petition": "estate-petition-11",
+        "kind": "pannage",
+        "variant": "ck_evt_041",
+        "prepared": false
+      },
+      "expectedVariant": "ck_evt_041",
+      "subjectId": "estate-petition-11",
+      "sourceEntryId": "home:pannage",
+      "choiceId": "grant",
+      "pass": true,
+      "admission": [],
+      "shownTitle": "숲의 돼지와 가을 납부금",
+      "cardScreenshot": {
+        "path": "home-041-card.png",
+        "bytes": 700073,
+        "sha256": "f5d86b1976e97e42f561f319c38642a7ec0074d6680bd5b7ea36125bd30bb397"
+      },
+      "ownAnswer": {
+        "tick": 18000,
+        "kind": "decision",
+        "template": "decision.card",
+        "severity": 1,
+        "subject": {
+          "type": "town",
+          "id": "town"
+        },
+        "params": {
+          "decisionKind": "stewardship",
+          "command": "answer_estate_petition",
+          "subjectId": "estate-petition-11",
+          "chosen": "granted",
+          "sourceEntryId": "home:pannage",
+          "displayEntryId": "ck_evt_041"
+        },
+        "decision": {
+          "chosen": "granted",
+          "alternatives": [
+            "refused"
+          ],
+          "predicted": {}
+        },
+        "id": "h-001370"
+      },
+      "contribution": {
+        "id": "h-001370",
+        "tick": 18000,
+        "by": "lord",
+        "kind": "manor_petition",
+        "source": "manor_petition:pannage:granted",
+        "weights": [],
+        "targets": [
+          "faction:commons"
+        ],
+        "threadId": "h-001370",
+        "memoryEvidence": [
+          {
+            "factionId": "commons",
+            "recordId": "h-001369",
+            "tick": 18000,
+            "delta": 4,
+            "reason": "manor_petition:pannage:granted"
+          }
+        ]
+      },
+      "savedAnswer": {
+        "path": "home-041-answered.save.json.gz",
+        "bytes": 86480,
+        "sha256": "672dcddbaa6d719388434e850723345b77e8870b66a75d534c0f3f74443517cd"
+      },
+      "uncompressedSaveSHA256": "ac9198020c08e2c6305e05064ee0a2679f7b22712dee1a7a1c4ec598e8a5f319",
+      "chronicle": {
+        "reached": true,
+        "recordId": "h-001370",
+        "titleObserved": true,
+        "text": "1304년 가을\n\n장원 청원 '숲의 돼지와 가을 납부금': 들어준다\n\n고른 길\n들어줌\n다른 길\n물리침\n예측과 실제\n그 뒤에 일어난 일\n1304년 가을 — 영주가 영주의 숲에 돼지를 놓게 해 달라는 청원에 답했다: 들어주었다 (여러 까닭 가운데 하나)\n기억하는 이\n농민 공동체: 조금 반깁니다 (관계 +4)\n그때 지도",
+        "screenshot": {
+          "path": "home-041-chronicle.png",
+          "bytes": 605485,
+          "sha256": "caaefd01008424a687e0ce807ed269bcffe52d674cecf345d00a950b02c8fd88"
+        }
+      }
+    },
+    {
+      "name": "registry-067",
+      "fixtureSHA256": "01a55811d8531e51d5cd807ddd385911bc879cfcdf6b17ef8a5156b846160b28",
+      "fixtureBytes": 1438872,
+      "fixtureMetadata": {
+        "seed": 3,
+        "tick": 40000,
+        "year": 1310,
+        "season": 0,
+        "offer": "registry:ck_evt_031:steward.appoint|:40",
+        "entryId": "ck_evt_031",
+        "variant": "ck_evt_067",
+        "prepared": "the first neighbour estate held under a steward with two candidates"
+      },
+      "expectedVariant": "ck_evt_067",
+      "subjectId": "registry:ck_evt_031:steward.appoint|:40",
+      "sourceEntryId": "ck_evt_031",
+      "choiceId": "able",
+      "pass": true,
+      "admission": [
+        {
+          "action": "open-chip",
+          "chipId": "registry:registry:ck_evt_031:steward.appoint|:40"
+        },
+        {
+          "action": "open-decision",
+          "chipId": "registry:registry:ck_evt_031:steward.appoint|:40"
+        }
+      ],
+      "shownTitle": "둘이 나누던 일을 한 사람에게",
+      "cardScreenshot": {
+        "path": "registry-067-card.png",
+        "bytes": 678469,
+        "sha256": "1d895140b38525a703c262784cc0f7db14181ae18664278bf27bab36f76068f0"
+      },
+      "ownAnswer": {
+        "tick": 40000,
+        "kind": "decision",
+        "template": "decision.card",
+        "severity": 1,
+        "subject": {
+          "type": "town",
+          "id": "town"
+        },
+        "params": {
+          "decisionKind": "registry",
+          "command": "answer_registry_offer",
+          "subjectId": "registry:ck_evt_031:steward.appoint|:40",
+          "chosen": "able",
+          "sourceEntryId": "ck_evt_031",
+          "displayEntryId": "ck_evt_067"
+        },
+        "decision": {
+          "chosen": "able",
+          "alternatives": [
+            "loyal",
+            "direct"
+          ],
+          "predicted": {}
+        },
+        "id": "h-001713"
+      },
+      "contribution": {
+        "id": "h-001713",
+        "tick": 40000,
+        "by": "lord",
+        "kind": "registry",
+        "source": "registry:ck_evt_031:able",
+        "weights": [],
+        "targets": [
+          "estate:estate-neighbour-1",
+          "oversight:estate-neighbour-1"
+        ],
+        "threadId": "h-001713",
+        "memoryEvidence": []
+      },
+      "savedAnswer": {
+        "path": "registry-067-answered.save.json.gz",
+        "bytes": 88667,
+        "sha256": "972dbf59877e93b2aa5d1b5f918099898e2520d01bc206126977c1dbf6d0bcf4"
+      },
+      "uncompressedSaveSHA256": "6e74c45dc4b79308af2977cc49d27e377872d1dbbc4b853cec4258c31f8a8edc",
+      "chronicle": {
+        "reached": true,
+        "recordId": "h-001713",
+        "titleObserved": true,
+        "text": "1310년 봄\n\n둘이 나누던 일을 한 사람에게: 능력이 높은 후보로 교체한다\n\n고른 길\n능력이 높은 후보로 교체한다\n다른 길\n충성도가 높은 후보로 교체한다\n수납 담당은 두고 영주가 직접 감독한다\n예측과 실제\n그 뒤에 일어난 일\n1310년 봄 — 드 코르벨 영지를 청지기 앨리스 드 손넬에게 맡겼다 (여러 까닭 가운데 하나)\n그때 지도",
+        "screenshot": {
+          "path": "registry-067-chronicle.png",
+          "bytes": 636186,
+          "sha256": "7d68ad8cb7f0b0f18e735bf87b0b63aaf9b46468f4ac192232b5f24b3eb1903e"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Prepared fixture display/answer verification; not natural eligibility or 125-year evidence.",
+    "No visual verdict is inferred from screenshots. Chronicle title observation is reported separately.",
+    "State injection uses the existing openScene admission helper; answers use only rendered buttons."
+  ]
+}

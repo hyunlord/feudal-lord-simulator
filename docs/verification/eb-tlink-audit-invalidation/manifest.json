@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "9ad9253468592e7cba144946081d2fbced36adca",
+  "runs": [
+    {
+      "run": "engineB-tlink-invalidation-retry-9ad9253",
+      "receiptSource": "/Users/rexxa/fls-astra-engineB-tlink-probe/.remote-runs/engineB-tlink-invalidation-retry-9ad9253",
+      "exitCode": 0,
+      "commandSeconds": 120.3,
+      "scope": "target-specific original replay prefix"
+    },
+    {
+      "run": "engineB-tlink-invalidation-probe-9ad9253",
+      "receiptSource": "/Users/rexxa/fls-astra-engineB-tlink-probe/.remote-runs/engineB-tlink-invalidation-probe-9ad9253",
+      "exitCode": 1,
+      "commandSeconds": 2.4,
+      "scope": "preflight failure before newGameState; no engine transition evidence"
+    }
+  ],
+  "resultRawSha256": "bb1bea07a6fe01f1b4b35a0cd8db4b02cdc14c3ff9e2b2046baba049f274bc43",
+  "resultRawBytes": 232183,
+  "target": {
+    "seed": 3,
+    "id": "h-002840",
+    "tick": 62011,
+    "estate": "estate-neighbour-3",
+    "limit": 63000
+  },
+  "invalidationTick": 62320,
+  "commandOrdinal": 483,
+  "sampledPrefixCheckpoints": 546,
+  "commandPrefixSha256": "eadd78e8e003e20fcebb5d4fe47d58acdb51beea1900bb64874807c6b325fceb",
+  "packagingCommandPrefixRecomputed": true,
+  "inputPins": {
+    "contextSha256": "fe1aa6447a56a8e75c68b51f26c01ef134ba2e7d601baea77ab4070f7a610ab1",
+    "paritySha256": "4cf1d7e52dcb00a2f839f49d1645f7da6be2988e33a5bd46356137c322ffd5e3",
+    "preflightSha256": "73b945af393119d7985a7bd1da1222d1294cf784b493e40b3cd39a859c05dcdf"
+  },
+  "scoreUpliftProven": false,
+  "members": [
+    {
+      "path": "result.json.gz",
+      "bytes": 73047,
+      "sha256": "88f5e6d07073882ab9fede3f6ccdb67c5fa837e17518ac184548e3d680fe5d84",
+      "uncompressedSha256": "bb1bea07a6fe01f1b4b35a0cd8db4b02cdc14c3ff9e2b2046baba049f274bc43"
+    },
+    {
+      "path": "helpers/tlink-relation-invalidation-probe.ts",
+      "bytes": 7214,
+      "sha256": "8b660299a5735476e8c489d9bc37984782e9b58f39e32f148a7e30d1843c4c1e"
+    },
+    {
+      "path": "helpers/tlink-relation-invalidation-probe-initial.ts",
+      "bytes": 7073,
+      "sha256": "a57d5b439ab21e14a48fd61212be8440f5bfe972ac3ed0dd06a3a6c7d08a795d"
+    },
+    {
+      "path": "retry/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "retry/timing.env",
+      "bytes": 76,
+      "sha256": "cd0d1db42b81fc1af4922c63a7516de52d35d05fbd6774c046b2008316a55790"
+    },
+    {
+      "path": "retry/run.log.gz",
+      "bytes": 5624,
+      "sha256": "4d489df0f09a4977c5bb40db0b22098eff2f8cef7e10365ed8d5a606226f7ad9",
+      "uncompressedSha256": "3ab9bf80c1a120aeb9fa6df173c20669305808a02e79facce00f1d92de71249c"
+    },
+    {
+      "path": "initial/exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "initial/timing.env",
+      "bytes": 77,
+      "sha256": "9ac15ccf7892c26cc7bfcfb83f1f21c2544721c66385bf64c425a78360a786f2"
+    },
+    {
+      "path": "initial/run.log.gz",
+      "bytes": 6132,
+      "sha256": "7285be1bdbf8330b0790ab5c3bb3421680210b2715ebaad0683bd78719fc1198",
+      "uncompressedSha256": "b57ce61983c3517264f7bf4e3b1e85b8a42fbcf21795a3f9ca9590efb3fe4bfb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2560,
+      "sha256": "f8404623ae8a139114ad0bc1f835d6db06e5c9a617687666a66bd68e1d752132"
+    }
+  ]
+}

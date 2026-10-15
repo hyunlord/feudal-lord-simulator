@@ -1,0 +1,966 @@
+{
+  "baseProductRevision": "23d12264289538de5f6ef3ef3f36aa9257b10aba",
+  "revisedToolsRevision": "71bc3365532b7941ed3deef49c8a0519cadeddd5",
+  "auditFixtureRevision": "53b47009652731a2bc504f4496314af7fffaf827",
+  "scope": "Tracked changes after the frozen product, ending at the revised tool and audit fixture source; later evidence-only commits are excluded.",
+  "runtimeProductSourceChanged": false,
+  "auditMetadataSourcePaths": [
+    "src/ui/decisionCard/surfaces.ts"
+  ],
+  "changes": [
+    {
+      "status": "M",
+      "paths": [
+        "docs/ROADMAP.html"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/STATUS.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/ops/DISPATCH_LEDGER.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/requests/engine-B-inert.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/requests/engine-B-tlink.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/archive.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe/helper.mjs.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe/report.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe/shot.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe2/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe2/helper.mjs.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe2/report.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe2/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe2/shot.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe2/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe3/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe3/helper.mjs.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe3/report.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe3/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe3/shot.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe3/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe4/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe4/helper.mjs.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe4/report.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe4/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe4/shot.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/probe4/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/superseded-71bc336/audit.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/superseded-71bc336/cancelled-geometry.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/superseded-71bc336/initial-056-timeout.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/superseded-71bc336/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/superseded-71bc336/scope-stop.txt"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-056-entry/superseded-71bc336/status.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/manifest.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/result.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-repair/tlink-audit-repair-probe.ts"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-settlement/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-settlement/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-settlement/manifest.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-settlement/tlink-audit-settlement-23d.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-audit-settlement/tlink-audit-settlement-23d.py.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/capture-23d.ts.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/capture-source.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/legacy-unexplained-join.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/archive.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/capture-exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/capture-run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/capture-seed-1-manifest.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/capture-seed-2-manifest.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/capture-seed-3-manifest.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/capture-timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/report.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/score-exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/score-run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/score-timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/scorer-exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/official-71bc336/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-four-categories/review-71bc336.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/verification/eb-tlink-gates/README.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/verification/eb-tlink-gates/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/changed-result-23d1226.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/sidecar-71bc336-archive.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/sidecar-71bc336-exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/sidecar-71bc336-run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/sidecar-71bc336-test-changed.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/sidecar-71bc336-timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-gates/test-changed-23d1226.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/final-194/archive.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/final-194/proof.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/final-194/proof.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/final-194/proof.mjs.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/manifest.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/tlink-inert-23d-charter.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/tlink-inert-23d-charter.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-inert/tlink-inert-23d-charter.py"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/aggregate-exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/seed-1.exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/seed-1/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/seed-2.exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/seed-2/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/seed-3.exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/seed-3/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/baseline/source-tree.txt"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/seed-1.exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/seed-1/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/seed-2.exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/seed-2/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/seed-3.exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/seed-3/summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/changed/source-tree.txt"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/comparison.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/manifest.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/official/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/official/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/official/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/provenance.txt"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/recording-diff.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/tlink-native-archive-23d.mjs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-native-23d/tlink-native-recording-diff-23d.ts"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/collection-23d1226/README.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/collection-23d1226/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/collection-23d1226/manifest.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/collection-23d1226/tlink-23d-three-seed-provisional-links.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/collection-23d1226/tlink-23d-three-seed-provisional-links.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/collection-23d1226/tlink-23d-three-seed-provisional-links.ts.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-config.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-config.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-parity.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-residuals.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-score.json.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d-summary.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d/official/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d/official/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d/official/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d/seed-1/archive.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d/seed-2/archive.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-outcomes/final-23d/seed-3/archive.json"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/README.md"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/SHA256SUMS"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/receipts/changed-files.txt"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/receipts/exit-code"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/receipts/run.log.gz"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/receipts/timing.env"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/result-9ad9253.json.gz"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "docs/verification/eb-tlink-relation-browser/result.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/eb-tlink/changed-files-23d.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/geometry.json"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/geometry.md"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/shots/x-modal.lord.home-petition.variant-056--1280x800-long-extreme.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/shots/x-modal.lord.home-petition.variant-056--1280x800-long-normal.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "docs/verification/uiaudit1/geometry/engineB-tlink-audit-geometry-23d1226/shots/x-modal.lord.home-petition.variant-056--1280x800-normal-extreme.jpg"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "scripts/engineBTlinkOutcomeCategories.mjs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "scripts/engineBTlinkOutcomeCategoriesRun.mjs"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "scripts/engineBTlinkOutcomeEvidence.mjs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "scripts/engineBTlinkResiduals.mjs"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "src/ui/decisionCard/surfaces.ts"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "tests/engineBTlinkOutcomeCategories.test.ts"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "tests/engineBTlinkOutcomeCategoriesRun.test.ts"
+      ]
+    },
+    {
+      "status": "A",
+      "paths": [
+        "tests/engineBTlinkOutcomeEvidence.test.ts"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "tests/engineBTlinkResiduals.test.ts"
+      ]
+    },
+    {
+      "status": "M",
+      "paths": [
+        "tests/engineBTlinkSpecifiedTown.test.ts"
+      ]
+    }
+  ]
+}

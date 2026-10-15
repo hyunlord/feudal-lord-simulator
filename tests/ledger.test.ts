@@ -96,7 +96,10 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
     // FIX-10 (TT-2)
     "timber_purchase",
     // LM-E1 (TA-6)
-    "project_subsidy", "lawsuit", "marriage_portion", "promise_payment", "estate_income", "audit_recovery", "registry_settlement", "instalment",
+    "project_subsidy", "lawsuit", "marriage_portion", "promise_payment", "estate_income", "audit_recovery",
+    // INERT (v56): a standing audit tolerance's seasonal loss, posted as a negative entry.
+    "audit_tolerance_loss",
+    "registry_settlement", "instalment",
     // DEC-TRACE §3: a faction's gift and demand.
     "faction_gift", "faction_demand"]);
 });

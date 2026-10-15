@@ -47,7 +47,7 @@ export type RegistryChoiceView = Readonly<{
   treasury: number | null;
 }>;
 export type RegistryOfferView = Readonly<{
-  occurrenceId: string; entryId: string; art: EventArtId | null; title: string; body: string; court: string; from: string; waits: string;
+  occurrenceId: string; entryId: string; displayEntryId: string; art: EventArtId | null; title: string; body: string; court: string; from: string; waits: string;
   /** Why it came: what the offer is bound to, then its season's draw. */
   why: readonly string[];
   choices: readonly RegistryChoiceView[];
@@ -174,7 +174,7 @@ function senderParts(state: GameState, entryId: string): readonly [string, strin
 }
 const sender = (state: GameState, entryId: string) => REGISTRY_CARD_COPY.from(...senderParts(state, entryId));
 
-export type RegistryHeadline = Pick<RegistryOfferView, "occurrenceId" | "entryId" | "art" | "title" | "body" | "waits">;
+export type RegistryHeadline = Pick<RegistryOfferView, "occurrenceId" | "entryId" | "displayEntryId" | "art" | "title" | "body" | "waits">;
 
 /** An offer's picture, words and deadline (the story chip's; no answer is tried). ER-13 (engine B): the canon's variant words
  * for this very offer (067 for 031 · 059, 078 for 019) when the engine finds them so — words only; its choices, targets,
@@ -183,7 +183,7 @@ function headline(state: GameState, { occurrence, entry }: RegistryCard): Regist
   const copy = V4_COPY[entry.id];
   const variant = registryVariantFor(state, occurrence);
   const end = stateCalendar({ ...state, tick: occurrence.deadline });
-  return { occurrenceId: occurrence.id, entryId: entry.id, art: eventArtFor(entry.id), title: variant?.title ?? copy?.title ?? REGISTRY_CARD_COPY.title,
+  return { occurrenceId: occurrence.id, entryId: entry.id, displayEntryId: variant?.variantEntryId ?? entry.id, art: eventArtFor(entry.id), title: variant?.title ?? copy?.title ?? REGISTRY_CARD_COPY.title,
     body: variant?.body ?? copy?.body ?? "",
     waits: REGISTRY_CARD_COPY.waits(calendarDays(occurrence.deadline - state.tick), end.year, SCENARIO_COPY.seasons[end.season] ?? "") };
 }

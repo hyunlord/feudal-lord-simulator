@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "scope": "24 lots; max 500000 ticks; seeds 1,2,3; legitimate early stop; NOT standard guardrail",
+  "officialRun": {
+    "runId": "engineB-tlink-native-latest-23d1226",
+    "runIdBasis": "fetched artifact directory name",
+    "artifactDirectory": "/Users/rexxa/fls-astra-engineB-tlink/.remote-runs/engineB-tlink-native-latest-23d1226",
+    "nativeInputDirectory": "/Users/rexxa/fls-astra-engineB-tlink/.remote-runs/engineB-tlink-native-latest-23d1226/eb-tlink-native-paired",
+    "exitCode": 0,
+    "commandSeconds": 1529.5,
+    "timing": {
+      "SYNC_S": "131.0",
+      "PREPARE_S": "22.6",
+      "WAIT_S": "4601.5",
+      "COMMAND_S": "1529.5",
+      "NM_CACHE": "hit",
+      "PORT": "4300"
+    },
+    "runLogRawSha256": "e40a29df70a5b707421147f5bef079aa8c98a173e59b3ec18c1de24ec8bd74d5"
+  },
+  "revisions": {
+    "baseline": "64a16b5a6c1d91024415039db89bb88412528e15",
+    "changed": "23d12264289538de5f6ef3ef3f36aa9257b10aba"
+  },
+  "rawFinalStateAllEqual": true,
+  "nativeAggregateExitCode": 0,
+  "nonRecordingAllEqual": true,
+  "diagnosticStatus": "final_nonrecording_equal",
+  "rawFinalStates": [
+    {
+      "side": "baseline",
+      "seed": 1,
+      "path": "baseline/seed-1/final-state.json",
+      "bytes": 9942765,
+      "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+      "tick": 372667,
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "baseline",
+      "seed": 2,
+      "path": "baseline/seed-2/final-state.json",
+      "bytes": 3872500,
+      "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+      "tick": 281540,
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "baseline",
+      "seed": 3,
+      "path": "baseline/seed-3/final-state.json",
+      "bytes": 4037517,
+      "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+      "tick": 299186,
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 1,
+      "path": "changed/seed-1/final-state.json",
+      "bytes": 9942765,
+      "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+      "tick": 372667,
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 2,
+      "path": "changed/seed-2/final-state.json",
+      "bytes": 3872500,
+      "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+      "tick": 281540,
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 3,
+      "path": "changed/seed-3/final-state.json",
+      "bytes": 4037517,
+      "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+      "tick": 299186,
+      "retainedInCompactArchive": false
+    }
+  ],
+  "members": [
+    {
+      "path": "official/exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "official/timing.env",
+      "sha256": "c669142d614220e45c9d783bf94e022cdb6dda8b0a58e94e803de86fa0c2ac0d",
+      "size": 82
+    },
+    {
+      "path": "official/run.log.gz",
+      "sha256": "777b528db73879e8d15fdb681a933c4093455f1d00bdefa587aef232b4d2e923",
+      "size": 3386,
+      "originalSha256": "e40a29df70a5b707421147f5bef079aa8c98a173e59b3ec18c1de24ec8bd74d5"
+    },
+    {
+      "path": "comparison.json",
+      "sha256": "15744fb38074f710bff7ee7bb94b69898813e51753b7125b5cd400b0a97493b7",
+      "size": 2509
+    },
+    {
+      "path": "provenance.txt",
+      "sha256": "720552a3ac8d9359ea63ac981cd0e808a0ba637ce24b8bccbc82786b1821dd08",
+      "size": 404
+    },
+    {
+      "path": "aggregate-exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "baseline/source-tree.txt",
+      "sha256": "944afd554b4e8dc2e60aaf5946d9cdf90927e3e193da7338d7e2aa232c728405",
+      "size": 185124
+    },
+    {
+      "path": "baseline/seed-1.exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "baseline/seed-1/summary.json",
+      "sha256": "069ba3d1bdf3315852455f51b2682b64f25cd2e12b4d9401855292a0bc4cdc67",
+      "size": 7468
+    },
+    {
+      "path": "baseline/seed-2.exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "baseline/seed-2/summary.json",
+      "sha256": "2db254d1a3ed54416dd931860a46094f70a5fd507b7fa55ba4181c745bbf0e51",
+      "size": 7287
+    },
+    {
+      "path": "baseline/seed-3.exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "baseline/seed-3/summary.json",
+      "sha256": "388b86d5dfeadaaf6c7bfbc2247460a280bbe4eeadc39dd8845491d4d39fa071",
+      "size": 7309
+    },
+    {
+      "path": "changed/source-tree.txt",
+      "sha256": "4559a0ef900e9f5341e2c29a57f2f710ce9c0bf3e313b244a640d59eb665b68f",
+      "size": 186448
+    },
+    {
+      "path": "changed/seed-1.exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "changed/seed-1/summary.json",
+      "sha256": "026282869caa3f7341a299c17adfed4900fe8a344a1abaf6a4e090224cbdd55c",
+      "size": 7468
+    },
+    {
+      "path": "changed/seed-2.exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "changed/seed-2/summary.json",
+      "sha256": "c38a861e63d9262534441bbf610dc1cf04f3b8efd57263aa75e23d511052552e",
+      "size": 7281
+    },
+    {
+      "path": "changed/seed-3.exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "changed/seed-3/summary.json",
+      "sha256": "81b61c8cfcf78213e05df45a8a8784ea52c2ef752f37edf0982bc2db46ce8db0",
+      "size": 7309
+    },
+    {
+      "path": "recording-diff.json.gz",
+      "sha256": "7c325049946e1d0c7b2bf1af97a64011605999d8761f63cacfa17457c6bbe36f",
+      "size": 2047,
+      "originalSha256": "bb34dac8abdba2a670ebe3947ca24a5123f2722887df6cf5d1dfc730d3e26988"
+    },
+    {
+      "path": "tlink-native-recording-diff-23d.ts",
+      "sha256": "ddd01d1f88d39e1e7ab1722a07e706d0da88b8df98f7dfa37e03f96155b52b86",
+      "size": 7628
+    },
+    {
+      "path": "tlink-native-archive-23d.mjs",
+      "sha256": "9637d9eac84efc1517e7447c522f5c544618204858bb2c80566c8a9dbe768ba2",
+      "size": 7249
+    }
+  ],
+  "limits": [
+    "Flags copied from hash-bound completed diagnostic; archive packaging is not an independent simulation or parity adjudication.",
+    "Raw final-state files are omitted for size; fetch all six original files to reproduce the diagnostic.",
+    "Final-state projection comparison does not prove trajectory parity, standard guardrail acceptance, or 125-year outcome coverage."
+  ]
+}

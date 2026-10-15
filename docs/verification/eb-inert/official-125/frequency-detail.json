@@ -1,0 +1,142 @@
+{
+  "bySeed": [
+    {
+      "seed": 1,
+      "baseline": {
+        "other": 22,
+        "registry": 45,
+        "estate:charter_request": 71,
+        "audit:tolerate": 33,
+        "estate:repair": 50,
+        "audit:punish": 8,
+        "estate:rent_relief": 16
+      },
+      "current": {
+        "other": 22,
+        "registry": 47,
+        "estate:charter_request": 56,
+        "audit:tolerate": 81,
+        "estate:repair": 50,
+        "audit:punish": 8,
+        "estate:rent_relief": 16
+      }
+    },
+    {
+      "seed": 2,
+      "baseline": {
+        "registry": 75,
+        "other": 21,
+        "estate:charter_request": 81,
+        "estate:repair": 45,
+        "audit:punish": 9,
+        "estate:rent_relief": 13,
+        "audit:tolerate": 38
+      },
+      "current": {
+        "registry": 74,
+        "other": 21,
+        "estate:charter_request": 39,
+        "estate:repair": 42,
+        "audit:punish": 9,
+        "estate:rent_relief": 10,
+        "audit:tolerate": 67
+      }
+    },
+    {
+      "seed": 3,
+      "baseline": {
+        "other": 21,
+        "registry": 78,
+        "estate:repair": 69,
+        "audit:punish": 10,
+        "estate:rent_relief": 23,
+        "estate:charter_request": 84,
+        "audit:tolerate": 24
+      },
+      "current": {
+        "other": 21,
+        "registry": 73,
+        "estate:repair": 70,
+        "audit:punish": 9,
+        "estate:rent_relief": 23,
+        "estate:charter_request": 39,
+        "audit:tolerate": 87
+      }
+    }
+  ],
+  "peakExample": {
+    "seed": 1,
+    "year": 1338,
+    "baseline": [
+      {
+        "tick": 152000,
+        "historyId": "h-009869",
+        "source": "petition:levy_response:accept_with_price",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 153037,
+        "historyId": "h-009944",
+        "source": "estate_petition:estate-neighbour-3:repair:granted",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 153037,
+        "historyId": "h-009947",
+        "source": "registry:ck_evt_042:light",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 154000,
+        "historyId": "h-010009",
+        "source": "petition:war_funding:accept",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 154363,
+        "historyId": "h-010020",
+        "source": "audit:tolerate:audit-26",
+        "category": "inert"
+      }
+    ],
+    "current": [
+      {
+        "tick": 152000,
+        "historyId": "h-009884",
+        "source": "petition:levy_response:accept_with_price",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 152023,
+        "historyId": "h-009892",
+        "source": "registry:ck_evt_042:firm",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 153037,
+        "historyId": "h-009960",
+        "source": "estate_petition:estate-neighbour-3:repair:granted",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 153037,
+        "historyId": "h-009962",
+        "source": "registry:ck_evt_092:a",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 154000,
+        "historyId": "h-010025",
+        "source": "petition:war_funding:accept",
+        "category": "outcome-visible"
+      },
+      {
+        "tick": 154363,
+        "historyId": "h-010036",
+        "source": "audit:tolerate:audit-26",
+        "category": "outcome-visible"
+      }
+    ]
+  },
+  "limitation": "Descriptive cohort comparison, not a counterfactual causal proof; no rules or scorer changed after observing the failed gate."
+}
