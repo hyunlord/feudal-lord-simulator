@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "limits": [
+    "Each case is a separate official DGX experiment, never concurrent.",
+    "Resumed current-rule natural trajectory, not reproduction of the historical original.",
+    "Offers are input evidence, not actual UI, effect, chip or card acceptance.",
+    "038 uses ordinary newGameState and normal bot only; no opening policies are edited."
+  ],
+  "cases": [
+    {
+      "id": "059-seed3",
+      "seed": 3,
+      "targets": [
+        "ck_evt_059"
+      ],
+      "endTick": 52000,
+      "input": {
+        "kind": "save",
+        "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-3/ck_evt_209-answer-h-001950.save.json.gz",
+        "gzipSha256": "85774149303f8496cb9c1d492bb6fede608c27dbb2b2d57cf536c154c7b7b489",
+        "encodedSha256": "a7e57b176f188d1fdb01f96149ea5b5d38600bb3739585a6fe0606497f620ce5",
+        "tick": 44149
+      },
+      "advanceFirst": false,
+      "continueToLimit": false
+    },
+    {
+      "id": "051-seed1",
+      "seed": 1,
+      "targets": [
+        "ck_evt_051"
+      ],
+      "endTick": 188000,
+      "input": {
+        "kind": "save",
+        "file": "/home/hyunlord/fls-runs/_kept/engineB-answer-json-92bbc7d-92bbc7d/.remote/eb-answer-replay/seed-1/ck_evt_034-preclose-171999.save.json.gz",
+        "gzipSha256": "6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d",
+        "stateSha256": "abcf5fc595d6ac3d9b17d4db8334c1829504d0248412b978f9f2706b77f3217b",
+        "tick": 171999
+      },
+      "advanceFirst": true,
+      "continueToLimit": false
+    },
+    {
+      "id": "010-seed3",
+      "seed": 3,
+      "targets": [
+        "ck_evt_010"
+      ],
+      "endTick": 188000,
+      "input": {
+        "kind": "save",
+        "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-3/ck_evt_009-consequence-h-008234.save.json.gz",
+        "gzipSha256": "8df710b14bd8893cdf6e3cd8e46493d2f12e5a053b7de2e06423ade729d04bc2",
+        "encodedSha256": "a6965ecc2d6710a8ac88499e525c7c0b8b797dfed9a06cee3db9c29739effa28",
+        "tick": 174000
+      },
+      "advanceFirst": false,
+      "continueToLimit": false
+    },
+    {
+      "id": "209-seed2",
+      "seed": 2,
+      "targets": [
+        "ck_evt_209"
+      ],
+      "endTick": 108000,
+      "input": {
+        "kind": "save",
+        "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-2/ck_evt_046-answer-h-007126.save.json.gz",
+        "gzipSha256": "fa50acdba9eab95ac63dfb5a46170e79abd0bba340f5fd1f7cf272c7e2971048",
+        "encodedSha256": "09ac27c1ba2cf4383533bdb38912f1f5692a02a07103d1c6ca2d5ee33362397d",
+        "tick": 98047
+      },
+      "advanceFirst": false,
+      "continueToLimit": false
+    },
+    {
+      "id": "080-174-seed1",
+      "seed": 1,
+      "targets": [
+        "ck_evt_080",
+        "ck_evt_174"
+      ],
+      "endTick": 560000,
+      "input": {
+        "kind": "save",
+        "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-1/final.save.json.gz",
+        "gzipSha256": "5de286bcda2b99f235577e9bbb8425f2623923caea0dd043e9aaee635bdfae98",
+        "encodedSha256": "afb794d140afe4b59cbdc3b05e63889e4763ce36f263dee79ff32a05fb5fdf14",
+        "tick": 500000
+      },
+      "advanceFirst": false,
+      "continueToLimit": true
+    },
+    {
+      "id": "038-seed1-new-game",
+      "seed": 1,
+      "targets": [
+        "ck_evt_038"
+      ],
+      "endTick": 40000,
+      "input": {
+        "kind": "new_game",
+        "options": {
+          "scenarioId": "core:lord_slice",
+          "seed": 1,
+          "mode": "lord"
+        },
+        "tick": 0
+      },
+      "advanceFirst": false,
+      "continueToLimit": false
+    }
+  ]
+}

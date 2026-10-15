@@ -33,7 +33,7 @@ const report = { schemaVersion: 1, mode: 'one_historical_answer_current_UI_natur
   sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
   answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,
   valid: false, automatic: null, manual: null, actions: [], states: [], samples: [], transitions: [],
-  receipts: [], informationalContinues: [], errors: [],
+  receipts: [], informationalContinues: [], resultNavigation: [], errors: [],
   limits: ['Proof snapshots contain presentation walkers, not a raw store snapshot.',
     'This is one current-product replay from a genuine historical answer, not a fresh 125-year run.',
     'Automatic yearly aggregation is distinct from automatic opening of a card or a new notification.',
@@ -186,6 +186,35 @@ async function continueInformation(observation) {
     beforeSha256: before.sha256, afterSha256: sha(after) });
 }
 
+// Only after the real result exists: defer an unrelated registry card without answering it.
+async function deferCoveringRegistryCard(observation) {
+  const selector = '.story-modal[data-registry-offer] .story-modal-later';
+  const control = page.locator(selector);
+  if (observation.panels.length !== 1 || !observation.paused || await control.count() !== 1
+    || !observation.receipts.some(row => row.semanticMatch && row.actualEvidence) || !observation.target) return false;
+  const before = await snapshot('result-covered-by-registry-card');
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    const point = await control.evaluate(el => {
+      const b = el.getBoundingClientRect(), x = b.x + b.width / 2, y = b.y + b.height / 2;
+      const top = document.elementFromPoint(x, y);
+      return b.top >= 0 && b.bottom <= innerHeight && top && el.contains(top);
+    });
+    if (point) break;
+    const body = page.locator('.story-modal[data-registry-offer] .decision-card-body');
+    const box = await body.boundingBox(); assert.ok(box);
+    await page.mouse.move(box.x + box.width / 2, Math.min(700, box.y + box.height / 2));
+    await page.mouse.wheel(0, 400); await page.clock.runFor(64);
+    assert.equal(sha(await stateJson()), before.sha256, 'Deferred-card scroll changed state');
+  }
+  await press(selector); await page.clock.runFor(32);
+  const after = await snapshot('result-after-normal-later');
+  assert.equal(after.sha256, before.sha256, 'Normal Later changed game state');
+  assert.equal((await sample()).panels.length, 0, 'Later did not uncover the result');
+  report.resultNavigation.push({ kind: 'normal_registry_later_after_actual_result',
+    beforeSha256: before.sha256, afterSha256: after.sha256, coveredObservation: observation });
+  return true;
+}
+
 async function selectTen() {
   for (let attempt = 0; attempt < 2 && !(await sample()).ten; attempt += 1) await press('.speed-seal[data-seal="fast"]');
   const observed = await sample();
@@ -257,7 +286,7 @@ try {
       // Stop a few ticks early rather than risk a normal 10x frame crossing the pinned tick ceiling.
       if (previousTick >= LIMIT - 4) { report.stop = 'bounded_original_first_result_plus_200_ticks'; break; }
       await page.clock.runFor(16);
-      const observation = await sample();
+      let observation = await sample();
       assert.ok(observation.tick >= previousTick && observation.tick <= LIMIT, 'Observed tick reversal/overshoot');
       assert.ok(observation.autoplayOff, 'Autoplay was enabled');
       report.samples.push([frame, observation.tick, observation.paused, observation.ten, observation.results?.count ?? 0,
@@ -269,7 +298,8 @@ try {
       report.receipts = observation.receipts;
       if (observation.tick > previousTick && observation.ten) report.progressAtTen = true;
       if (observation.panels.length && !informational(observation)) {
-        report.stop = 'substantive_or_unknown_intervention_required'; break;
+        if (await deferCoveringRegistryCard(observation)) observation = await sample();
+        else { report.stop = 'substantive_or_unknown_intervention_required'; break; }
       }
       const match = observation.panels.length === 0 ? automaticMatch(observation) : null;
       if (match) {
