@@ -650,12 +650,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "fail_observation_interrupted",
       "liveCase": {
         "seed": 2,
         "choice": "c"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "c: combined rights-petition and suit-against-lord pause at 68001 precedes historical expected audit 74320; helper accepts only exact suit_defence. Harness observation limit, not an established trace/product defect. No actual receipt, card, or navigation SHA pair observed. Retry planned after current queue; original retained.",
+      "evidence": "../eb-weight-130-live/README.md"
     },
     {
       "entryId": "ck_evt_131",
@@ -734,12 +735,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "fail_observation_interrupted",
       "liveCase": {
         "seed": 2,
         "choice": "a"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "a: registry event 025 blocks at 223153 before historical expected audit 230320; helper permits normal Later only after the target result. Harness observation limit, not an established trace/product defect. No actual target receipt, card, or navigation SHA pair observed. Normal Later pre-result follow-up being prepared; original retained.",
+      "evidence": "../eb-weight-140-live/README.md"
     },
     {
       "entryId": "ck_evt_143",

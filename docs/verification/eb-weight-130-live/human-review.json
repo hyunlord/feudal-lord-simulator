@@ -1,0 +1,16 @@
+{
+  "verdict": "FAIL_OBSERVATION_INTERRUPTED",
+  "choice": "c",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected final.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "final.jpg",
+      "sha256": "00c434a3c53e0bd08d675fbf13fdc8381eef0d0c70aedbfab0c561e403e9ab58"
+    }
+  ],
+  "observed": "At tick 68001 the combined rights-petition and suit-against-lord notice pauses observation before the historical expected audit at 74320. The current helper accepts only the exact suit_defence notice. No actual receipt, result card, or navigation SHA pair was observed.",
+  "causeClassification": "harness_observer_limited",
+  "productDefectEstablished": false,
+  "retry": "Planned after the current sequential queue; this failed run remains retained."
+}

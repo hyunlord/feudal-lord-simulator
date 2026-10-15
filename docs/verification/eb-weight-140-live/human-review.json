@@ -1,0 +1,16 @@
+{
+  "verdict": "FAIL_OBSERVATION_INTERRUPTED",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected final.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "final.jpg",
+      "sha256": "d4432622ba49074d78561d84f4cc11aeebea0455b96f4caa2639f8d807054bf0"
+    }
+  ],
+  "observed": "Registry event 025 card blocks observation at tick 223153 before historical expected audit 230320. The current helper permits normal Later only after the actual target result, so the replay stops before any actual target receipt. Target result card and navigation SHA pair were not observed.",
+  "causeClassification": "harness_observer_limited",
+  "productDefectEstablished": false,
+  "retry": "Parent is preparing a normal Later pre-result observer follow-up. This failed run remains retained; no retry pass is claimed."
+}

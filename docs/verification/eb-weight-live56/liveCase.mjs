@@ -203,13 +203,20 @@ async function continueInformation(observation) {
     beforeSha256: before.sha256, afterSha256: sha(after) });
 }
 
-// Only after the real result exists: defer an unrelated registry card without answering it.
+// Normal Later leaves the offer unanswered; its deadline continues on the natural path.
 async function deferCoveringRegistryCard(observation) {
   const selector = '.story-modal[data-registry-offer] .story-modal-later';
   const control = page.locator(selector);
-  if (observation.panels.length !== 1 || !observation.paused || await control.count() !== 1
-    || !observation.receipts.some(row => row.semanticMatch && row.actualEvidence) || !observation.target) return false;
-  const before = await snapshot('result-covered-by-registry-card');
+  if (observation.panels.length !== 1 || !observation.paused || await control.count() !== 1) return false;
+  assert.ok(report.resultNavigation.length < 16, 'Bounded registry deferral count');
+  const number = report.resultNavigation.length + 1;
+  const offer = await page.locator('.story-modal[data-registry-offer]').getAttribute('data-registry-offer');
+  const pending = await page.evaluate(async () => {
+    const { openRegistryOffers } = await import('/src/engine/registry.ts');
+    return openRegistryOffers(window.__FEUDAL_PHASE10_PROOF__.state());
+  });
+  assert.ok(pending.some(row => row.entryId === offer), 'Deferral requires a genuine current offer');
+  const before = await snapshot(`registry-covered-${number}`);
   for (let attempt = 0; attempt < 12; attempt += 1) {
     const point = await control.evaluate(el => {
       const b = el.getBoundingClientRect(), x = b.x + b.width / 2, y = b.y + b.height / 2;
@@ -224,32 +231,39 @@ async function deferCoveringRegistryCard(observation) {
     assert.equal(sha(await stateJson()), before.sha256, 'Deferred-card scroll changed state');
   }
   await press(selector); await page.clock.runFor(32);
-  const after = await snapshot('result-after-normal-later');
+  const after = await snapshot(`registry-after-later-${number}`);
   assert.equal(after.sha256, before.sha256, 'Normal Later changed game state');
-  assert.equal((await sample()).panels.length, 0, 'Later did not uncover the result');
-  report.resultNavigation.push({ kind: 'normal_registry_later_after_actual_result',
-    beforeSha256: before.sha256, afterSha256: after.sha256, coveredObservation: observation });
+  assert.equal((await sample()).panels.length, 0, 'Another dialog followed Later');
+  report.resultNavigation.push({ kind: 'normal_registry_later_without_answer', offer, pending,
+    beforeSha256: before.sha256, afterSha256: after.sha256, coveredObservation: observation,
+    policy: 'No choice selected; normal time may expire this unanswered offer.' });
   return true;
 }
 
-async function continueUnansweredSuit(observation) {
-  const selector = '.auto-pause-notice[data-mode="stopped"][data-reasons="suit_defence"] .auto-pause-resume';
+async function continueUnansweredNotice(observation) {
+  const notice = '.auto-pause-notice[data-mode="stopped"]';
+  const selector = `${notice} .auto-pause-resume`;
   if (!observation.paused || observation.panels.length || await page.locator(selector).count() !== 1) return false;
-  assert.ok(report.unansweredSuitContinues.length < 16, 'Bounded unanswered-suit continuation count');
+  const rawReasons = await page.locator(notice).getAttribute('data-reasons');
+  const reasons = rawReasons?.split(/\s+/).filter(Boolean) ?? [];
+  const allowed = new Set(['counter_offer', 'major_death', 'inheritance', 'judgment', 'rights_petition',
+    'estate_crisis', 'estate_gained', 'estate_lost', 'will_change', 'contested', 'suit_defence', 'entry_threat']);
+  if (!reasons.length || reasons.some(reason => !allowed.has(reason))) return false;
+  assert.ok(await page.locator(selector).isVisible(), 'Stopped notice Continue must be visible');
+  assert.ok(report.unansweredSuitContinues.length < 16, 'Bounded unanswered-notice continuation count');
   const matters = await page.evaluate(async () => {
     const { lordMattersDue } = await import('/src/engine/lordDue.ts');
-    return lordMattersDue(window.__FEUDAL_PHASE10_PROOF__.state()).filter(row => row.kind === 'suit_defence');
+    return lordMattersDue(window.__FEUDAL_PHASE10_PROOF__.state());
   });
-  assert.ok(matters.length > 0, 'Actual pending suit and deadline required');
-  const before = await snapshot(`unanswered-suit-${report.unansweredSuitContinues.length + 1}`);
-  const text = await page.locator('.auto-pause-notice[data-mode="stopped"]').innerText();
+  const before = await snapshot(`unanswered-notice-${report.unansweredSuitContinues.length + 1}`);
+  const text = await page.locator(notice).innerText();
   await press(selector);
   const after = await stateJson();
-  assert.equal(sha(after), before.sha256, 'Suit Continue changed state before normal clock progression');
+  assert.equal(sha(after), before.sha256, 'Notice Continue changed state before normal clock progression');
   assert.equal(JSON.parse(after).tick, observation.tick);
-  report.unansweredSuitContinues.push({ tick: observation.tick, matters, text,
+  report.unansweredSuitContinues.push({ tick: observation.tick, rawReasons, reasons, matters, text,
     beforeSha256: before.sha256, afterSha256: sha(after),
-    policy: 'Continue normal time without answering this unrelated suit; its deadline still runs.' });
+    policy: 'Continue normal time without answering any pending matter; all deadlines still run. Event notices may have no pending matter.' });
   await selectTen();
   return true;
 }
@@ -337,7 +351,7 @@ try {
       report.receipts = observation.receipts;
       if (observation.tick > previousTick && observation.ten) report.progressAtTen = true;
       if (observation.panels.length && !informational(observation)) {
-        if (await deferCoveringRegistryCard(observation)) observation = await sample();
+        if (await deferCoveringRegistryCard(observation)) { await selectTen(); observation = await sample(); }
         else { report.stop = 'substantive_or_unknown_intervention_required'; break; }
       }
       const match = observation.panels.length === 0 ? automaticMatch(observation) : null;
@@ -352,7 +366,7 @@ try {
         await continueInformation(observation); await selectTen();
         assert.equal((await sample()).tick, observation.tick, 'Resume advanced time outside the clock sampler');
       } else if (observation.paused) {
-        if (!await continueUnansweredSuit(observation)) { report.stop = 'substantive_or_unknown_intervention_required'; break; }
+        if (!await continueUnansweredNotice(observation)) { report.stop = 'substantive_or_unknown_intervention_required'; break; }
       } else assert.ok(observation.ten, '10x was no longer selected');
       previousTick = observation.tick;
     }

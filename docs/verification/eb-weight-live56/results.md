@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 6/56, 실패·관측미달 3, 미검증 47, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 6/56, 실패·관측미달 5, 미검증 45, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -45,12 +45,12 @@
 | 092 | a, b | b | 통과(한 선택) | [증거1](../eb-weight-092-live/README.md); b: actual stall_fee income 8d, partial cause; chip absent→2 (initial year count null, not displayed 0), target 1; exact card and navigation SHA verified. Other choices are not claimed. |
 | 124 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 128 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 130 | a, b, c | 예정: c | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 130 | a, b, c | c | 미통과: 관측 중단 | [증거1](../eb-weight-130-live/README.md); c: combined rights-petition and suit-against-lord pause at 68001 precedes historical expected audit 74320; helper accepts only exact suit_defence. Harness observation limit, not an established trace/product defect. No actual receipt, card, or navigation SHA pair observed. Retry planned after current queue; original retained. |
 | 131 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 132 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 133 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 139 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 140 | a, b, c | 예정: a | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 140 | a, b, c | a | 미통과: 관측 중단 | [증거1](../eb-weight-140-live/README.md); a: registry event 025 blocks at 223153 before historical expected audit 230320; helper permits normal Later only after the target result. Harness observation limit, not an established trace/product defect. No actual target receipt, card, or navigation SHA pair observed. Normal Later pre-result follow-up being prepared; original retained. |
 | 143 | a, b | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 144 | b, c | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 147 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
