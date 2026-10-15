@@ -6,6 +6,7 @@ import { storyArtStyle } from "../storyArt";
 import { wave8FrameLayerStyle } from "../wave8Art";
 import { DECISION_CARD_COPY as COPY } from "./decisionCardCopy.ko";
 import type { DecisionCardView, DecisionChoiceView } from "./decisionCardTypes";
+import { useReturnToMap } from "./receiptClose";
 
 // DEC-CARD: the heavy decision card. Every family's card is this one layout in the petition frame (Wave 8), wider than
 // before (only heavy decisions reach the lord now, GP-7): the situation and the stake in words, then the answers side
@@ -45,6 +46,8 @@ export function DecisionCard({ view, onChoose, onLater, extra = null, laterLabel
   /** A family's own class and data attributes (the selectors its captures and geometry rows already use). */
   readonly className?: string; readonly data?: Readonly<Record<`data-${string}`, string>>;
 }): ReactElement {
+  // LS1-7: a card with 나중에 that shows while the lord is being returned to the map (a receipt's close) puts itself off.
+  useReturnToMap(onLater, `${view.family}:${view.subjectId}`);
   return (
     <div className="story-modal-backdrop" role="presentation">
       <section className={`story-modal petition-card decision-card${className === "" ? "" : ` ${className}`}`} data-frame="petition" role="dialog" aria-modal="true"
