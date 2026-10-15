@@ -72,9 +72,14 @@ export function annualWheatNeed(state: GameState): number {
  */
 export const ARABLE_CELLS_PER_LOT_MAX = 9.6;
 
-export function arableSupplyShort(state: GameState, margin: number = activeMarginPermille): boolean {
+/** GB2A-6: the town's arable land is below its cap (9.6 cells a housing lot; no cap before the first lot). */
+export function arableBelowCap(state: GameState): boolean {
   const lots = housingLotCount(state);
-  if (lots > 0 && zonesOf(state).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0) >= ARABLE_CELLS_PER_LOT_MAX * lots) return false;
+  return lots === 0 || zonesOf(state).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0) < ARABLE_CELLS_PER_LOT_MAX * lots;
+}
+
+export function arableSupplyShort(state: GameState, margin: number = activeMarginPermille): boolean {
+  if (!arableBelowCap(state)) return false;
   return expectedAnnualWheat(state) * 1000 < annualWheatNeed(state) * margin;
 }
 

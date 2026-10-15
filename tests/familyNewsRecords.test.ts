@@ -26,10 +26,10 @@ import { timelineView } from "../src/ui/lord/negotiation/negotiationModel";
 import { lordMomentBeats } from "../src/ui/lordMomentBeats";
 import { familyPeople } from "../src/ui/persons/familyNews";
 
-/** The lord bot's seed 3 played until the marriage's first child is recorded. */
+/** The lord bot's seed 3 played until the marriage's first child is recorded (45,029 since FOOD-EARLY's faster town, 1311). */
 const town = (() => {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 3 })!;
-  while (state.tick < 40_000 && !(state.history?.records ?? []).some(record => record.template === "marriage.child_born")) {
+  while (state.tick < 50_000 && !(state.history?.records ?? []).some(record => record.template === "marriage.child_born")) {
     for (const { command } of lordBotCommands(state)) state = gameReducer(state, command);
     state = advanceTick(state);
   }

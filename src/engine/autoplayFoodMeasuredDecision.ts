@@ -2,7 +2,7 @@ import { BALANCE } from '../content/balanceConfig';
 import { strandedFoodSupply } from './autoplayFoodRoutes';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableSpace, availableStock } from '../economy/storage';
-import { arableSupplyShort } from './autoplayArable';
+import { arableBelowCap, arableSupplyShort } from './autoplayArable';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
@@ -66,6 +66,16 @@ export function measuredFoodDecision(state: GameState, options: { readonly ignor
     && stockedWheat >= Math.max(0, breadDeficit) * (BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2)) {
     return { kind: 'mill', reason: 'actual_bread_deficit' };
   }
+  // F1 (the user's ruling 2026-10-14): mills starved with less than a cart of wheat anywhere in the town is the year's
+  // grain run out before the harvest, not a hauling gap — fields, while the cap allows (seed 1's 1302 and 1304 summers:
+  // the whole town held 2 wheat, the mills dry three quarters of the window, read as transport and answered with
+  // granaries; engine-FOOD-early-c5fd693). F1′ (the user's ruling 2026-10-14): starved in the measured window
+  // (`rawStarvedTicks`), not just empty this tick — a mill that never went short over the window is not the grain run out.
+  // Lord mode only (the user's ruling 2026-10-15, branch (가)): in the sandbox the extra fields left guardrail seed 4 a
+  // hamlet whose every wall the bot's era step refused for service space — a deadlock of the sandbox bot alone, which
+  // lacks lord mode's wider ring and ruled wall (engine-F1p-diag4d-3bd88e8).
+  const townWheat = state.buildings.reduce((sum, b) => sum + availableStock(b, 'wheat'), 0);
+  if (state.agency !== undefined && !millsSupplied && sample.rawStarvedTicks > 0 && townWheat < BALANCE.CARTER_CAPACITY && arableBelowCap(state)) return { kind: 'farmstead', reason: 'actual_wheat_deficit' };
   if (!millsSupplied) return { kind: null, reason: 'wheat_transport_blocked' };
   return { kind: 'mill', reason: 'actual_bread_deficit' };
 }
