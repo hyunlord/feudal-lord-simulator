@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 12/56, 실패·관측미달 6, 미검증 37, 청지기 별도 경로 1. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 12/56, 실패·관측미달 6, 미검증 34, 청지기 별도 경로 4. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -33,7 +33,7 @@
 | 052 | punish, replace, tolerate | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 053 | deed, roll, both, defer | roll | 통과(한 선택) | [증거1](../eb-weight-053-live/README.md); roll: actual suit-4 filed→evidence transition; chip 1→3, target 0→1; exact card and navigation SHA verified. Other choices are not claimed. |
 | 057 | light, fee, refuse | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 058 | remit, collect | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 058 | remit, collect | remit | 별도 청지기 보고 경로 | [증거1](../eb-weight-058-steward/README.md); Historical steward answer h-008107; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only. Canonical result incorrectly names lord despite steward actor; render wording review. |
 | 059 | delegate, direct, loyal_candidate | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 061 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 075 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
@@ -52,11 +52,11 @@
 | 139 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 140 | a, b, c | a | 통과(한 선택) | [증거1](../eb-weight-140-live/README.md) · [증거2](../eb-weight-140-notices/README.md) · [증거3](../eb-weight-140-result/README.md); a: corrected run actual audit-48 at 230320 (kept 39, errors 0), exact partial cause h-015888→h-015428; initial chip absent→3 (null, not displayed 0), target 0→1, exact item once and navigation SHA unchanged. Earlier event-025 interruption and post-Later 32ms timing failure retained. Other choices not claimed; decoded state bytes retained but original gzip containers absent from repository archive. |
 | 143 | a, b | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 144 | b, c | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 144 | b, c | b | 별도 청지기 보고 경로 | [증거1](../eb-weight-144-steward/README.md); Historical steward answer h-026951; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only. |
 | 147 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 150 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 157 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 163 | a, b, c | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 163 | a, b, c | b | 별도 청지기 보고 경로 | [증거1](../eb-weight-163-steward/README.md); Historical steward answer h-029251; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only. |
 | 165 | a, b, c | a | 통과(한 선택) | [증거1](../eb-weight-165-live/README.md); a: actual timber delivery 2, order remaining 12→10; chip 1→2 and target 1→2, exact canonical item once fully visible, navigation SHA unchanged. Other choices are not claimed. |
 | 174 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 201 | a, b, c | b | 통과(한 선택) | [증거1](../eb-weight-201-live/README.md); b: actual stall_fee income 24d, ledger-000441 at 40800, h-003172 partial cause h-003145; chip 2→3, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed. |

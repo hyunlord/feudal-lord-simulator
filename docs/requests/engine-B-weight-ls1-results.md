@@ -50,3 +50,9 @@
 124/b 첫 실행: [증빙](../verification/eb-weight-124-first/README.md) 진짜 제안의 유효 선택 b/c는 확인했으나 부모가 failure.jpg에서 별개 코어 「경계 다툼」 모달과 정상 ‘나중에’를 확인했다. 대상124 선택자0에서 답하기 전 실패하여 fail_harness(목표 도달 경로 누락)로 분류한다. 제품 결함·무효과 판정이 아니며 답·효과·대상카드·결과탐색SHA는 모두 미관측이다. 정상 입력 도달 도구를 준비 중이며 원본 실패는 보존한다.
 
 034/precedent 청지기 경로: [증빙](../verification/eb-weight-034-steward/README.md) 역사 답 h-011244(by=steward)과 실제 철 보고 경로를 확인했다. 부모가 원본 JPEG7장에서 철 띠3건·정본 제목/선택/상세/결과 전체 노출을 확인했고 탐색 SHA동일, wronglyIncluded=[]다. steward_route_verified이며 lord56Pass=false: 실제 상태 효과나 영주 결과 관문 통과로 세지 않는다. 실제 행위자는 청지기인데 결과 정본이 「영주는…기준을 정했다」인 문구 불일치는 렌더 A 검토 대상으로 넘긴다(수정 없음).
+
+058/remit 청지기 경로: [증빙](../verification/eb-weight-058-steward/README.md) h-008107@126000, 철 띠 「청지기가 작은 일 2건 처리」·정본 제목/선택/상세/결과를 원본 JPEG로 직접 확인했다. 탐색 SHA 동일, wronglyIncluded=[]. steward_route_only, lord56Pass=false이며 실제 상태 효과·영주 결과 관문으로 세지 않는다. 실제 청지기 답인데 정본 결과가 「영주는…」인 행위자 문구 불일치를 렌더 A 검토로 넘긴다.
+
+144/b 청지기 경로: [증빙](../verification/eb-weight-144-steward/README.md) h-026951@415000, 철 띠 「청지기가 작은 일 1건 처리」·정본 제목/선택/상세/결과를 원본 JPEG로 직접 확인했다. 탐색 SHA 동일, wronglyIncluded=[]. steward_route_only, lord56Pass=false이며 실제 상태 효과·영주 결과 관문으로 세지 않는다.
+
+163/b 청지기 경로: [증빙](../verification/eb-weight-163-steward/README.md) h-029251@450000, 철 띠 「청지기가 작은 일 3건 처리」·정본 제목/선택/상세/결과를 원본 JPEG로 직접 확인했다. 탐색 SHA 동일, wronglyIncluded=[]. steward_route_only, lord56Pass=false이며 실제 상태 효과·영주 결과 관문으로 세지 않는다.

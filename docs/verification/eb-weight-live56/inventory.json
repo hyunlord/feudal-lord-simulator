@@ -461,9 +461,13 @@
         "steward_answers_not_retained_as_lord_checkpoints"
       ],
       "priorStewardAnswers": 3,
-      "screenVerdict": "pending",
-      "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "screenVerdict": "steward_route_only",
+      "liveCase": {
+        "seed": 1,
+        "choice": "remit"
+      },
+      "limits": "Historical steward answer h-008107; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only. Canonical result incorrectly names lord despite steward actor; render wording review.",
+      "evidence": "../eb-weight-058-steward/README.md"
     },
     {
       "entryId": "ck_evt_059",
@@ -792,9 +796,13 @@
         "steward_answers_not_retained_as_lord_checkpoints"
       ],
       "priorStewardAnswers": 2,
-      "screenVerdict": "pending",
-      "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "screenVerdict": "steward_route_only",
+      "liveCase": {
+        "seed": 1,
+        "choice": "b"
+      },
+      "limits": "Historical steward answer h-026951; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only.",
+      "evidence": "../eb-weight-144-steward/README.md"
     },
     {
       "entryId": "ck_evt_147",
@@ -856,9 +864,13 @@
         "steward_answers_not_retained_as_lord_checkpoints"
       ],
       "priorStewardAnswers": 2,
-      "screenVerdict": "pending",
-      "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "screenVerdict": "steward_route_only",
+      "liveCase": {
+        "seed": 1,
+        "choice": "b"
+      },
+      "limits": "Historical steward answer h-029251; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only.",
+      "evidence": "../eb-weight-163-steward/README.md"
     },
     {
       "entryId": "ck_evt_165",

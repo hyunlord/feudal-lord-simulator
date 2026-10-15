@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "runId": "engineB-weight-input-080-174-seed1-9f769ee",
+  "officialExitCode": 2,
+  "originalStatus": "bounded_search_no_target",
+  "inputAcquisition": "bounded_search_no_target",
+  "uiGate": "not_tested",
+  "archiveIntegrity": "verified",
+  "checks": [],
+  "caseId": "080-174-seed1",
+  "productRevision": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "toolRevision": "9f769ee5b51f356ef0a1f9f61db1adb3e7a2cd84",
+  "targets": [
+    "ck_evt_080",
+    "ck_evt_174"
+  ],
+  "targetsFound": [],
+  "allTargetsFound": false,
+  "startTick": 500000,
+  "endTick": 560000,
+  "originalErrors": [],
+  "provenance": "Natural current-rule trajectory from verified save or ordinary new game; no state fabrication or policy edits.",
+  "limits": [
+    "Each case is a separate official DGX experiment, never concurrent.",
+    "Resumed current-rule natural trajectory, not reproduction of the historical original.",
+    "Offers are input evidence, not actual UI, effect, chip or card acceptance.",
+    "038 uses ordinary newGameState and normal bot only; no opening policies are edited."
+  ],
+  "input": {
+    "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-1/final.save.json.gz",
+    "gzipSha256": "5de286bcda2b99f235577e9bbb8425f2623923caea0dd043e9aaee635bdfae98",
+    "encodedSha256": "afb794d140afe4b59cbdc3b05e63889e4763ce36f263dee79ff32a05fb5fdf14",
+    "stateSha256": "fea6f05e6c4a6a006be4ac8366c9d51c97843af28e8a66b2a1b8dd19cb1d254e"
+  },
+  "externalReferences": [
+    {
+      "location": "report.case.input",
+      "kind": "save",
+      "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-1/final.save.json.gz",
+      "gzipSha256": "5de286bcda2b99f235577e9bbb8425f2623923caea0dd043e9aaee635bdfae98",
+      "encodedSha256": "afb794d140afe4b59cbdc3b05e63889e4763ce36f263dee79ff32a05fb5fdf14",
+      "tick": 500000,
+      "retainedByPath": false,
+      "matchingFetchedFiles": []
+    },
+    {
+      "location": "report.input",
+      "file": "/home/hyunlord/fls-runs/_kept/engineB-weight125-kept-clean-2485af4/.remote/eb-weight-kept/checkpoints/seed-1/final.save.json.gz",
+      "gzipSha256": "5de286bcda2b99f235577e9bbb8425f2623923caea0dd043e9aaee635bdfae98",
+      "encodedSha256": "afb794d140afe4b59cbdc3b05e63889e4763ce36f263dee79ff32a05fb5fdf14",
+      "stateSha256": "fea6f05e6c4a6a006be4ac8366c9d51c97843af28e8a66b2a1b8dd19cb1d254e",
+      "retainedByPath": false,
+      "matchingFetchedFiles": []
+    }
+  ],
+  "saves": [
+    {
+      "location": "report.offered.0",
+      "file": "ck_evt_083-offered-501000-0.save.json.gz",
+      "expected": {
+        "file": "ck_evt_083-offered-501000-0.save.json.gz",
+        "tick": 501000,
+        "encodedSha256": "fa5de23782e5111d65e73daf5f4a9f7242c7896ef5f03ae5fc6b6ead70c5e7a7",
+        "gzipSha256": "8ef10ce13e03cf424400238c42f276cedb044b37bdc358c8348f093226657527",
+        "stateSha256": "95cc271ab6a41e0483248bcc7b649862d74d3b54eb23f40d24fb8bd68a702315",
+        "entryId": "ck_evt_083",
+        "offer": {
+          "id": "registry:ck_evt_083:mt.market_supply|construction-site-000039|[\"p-001110\"]|{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000039\",\"timberNeeded\":885,\"siteIds\":[\"construction-site-000064\",\"construction-site-000065\",\"construction-site-000066\",\"construction-site-000067\",\"palisade-000062-segment-000\",\"palisade-000062-segment-001\",\"palisade-000062-segment-003\",\"palisade-000062-segment-004\",\"palisade-000062-segment-005\",\"palisade-000062-segment-006\",\"palisade-000062-segment-007\",\"palisade-000062-segment-008\",\"palisade-000062-segment-009\",\"palisade-000062-segment-010\",\"palisade-000062-segment-011\",\"palisade-000062-segment-012\",\"palisade-000062-segment-013\",\"palisade-000062-segment-014\",\"palisade-000062-segment-015\",\"palisade-000062-segment-016\",\"palisade-000062-segment-017\",\"palisade-000062-segment-018\",\"palisade-000062-segment-019\",\"palisade-000062-segment-020\",\"palisade-000062-segment-021\",\"palisade-000062-segment-022\",\"palisade-000062-segment-023\",\"palisade-000062-segment-024\"]}:501",
+          "entryId": "ck_evt_083",
+          "boundId": "{\"subjectKey\":\"construction-site-000039\",\"partyIds\":[\"p-001110\"],\"materialBefore\":{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0},\"triggerEvidence\":{\"marketId\":\"construction-site-000039\",\"timberNeeded\":885,\"siteIds\":[\"construction-site-000064\",\"construction-site-000065\",\"construction-site-000066\",\"construction-site-000067\",\"palisade-000062-segment-000\",\"palisade-000062-segment-001\",\"palisade-000062-segment-003\",\"palisade-000062-segment-004\",\"palisade-000062-segment-005\",\"palisade-000062-segment-006\",\"palisade-000062-segment-007\",\"palisade-000062-segment-008\",\"palisade-000062-segment-009\",\"palisade-000062-segment-010\",\"palisade-000062-segment-011\",\"palisade-000062-segment-012\",\"palisade-000062-segment-013\",\"palisade-000062-segment-014\",\"palisade-000062-segment-015\",\"palisade-000062-segment-016\",\"palisade-000062-segment-017\",\"palisade-000062-segment-018\",\"palisade-000062-segment-019\",\"palisade-000062-segment-020\",\"palisade-000062-segment-021\",\"palisade-000062-segment-022\",\"palisade-000062-segment-023\",\"palisade-000062-segment-024\"]}}",
+          "offeredTick": 501000,
+          "deadline": 502000,
+          "status": "offered",
+          "receipt": {
+            "draw": 420,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "authoredContext": "{\"subjectKey\":\"construction-site-000039\",\"partyIds\":[\"p-001110\"],\"materialBefore\":{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0},\"triggerEvidence\":{\"marketId\":\"construction-site-000039\",\"timberNeeded\":885,\"siteIds\":[\"construction-site-000064\",\"construction-site-000065\",\"construction-site-000066\",\"construction-site-000067\",\"palisade-000062-segment-000\",\"palisade-000062-segment-001\",\"palisade-000062-segment-003\",\"palisade-000062-segment-004\",\"palisade-000062-segment-005\",\"palisade-000062-segment-006\",\"palisade-000062-segment-007\",\"palisade-000062-segment-008\",\"palisade-000062-segment-009\",\"palisade-000062-segment-010\",\"palisade-000062-segment-011\",\"palisade-000062-segment-012\",\"palisade-000062-segment-013\",\"palisade-000062-segment-014\",\"palisade-000062-segment-015\",\"palisade-000062-segment-016\",\"palisade-000062-segment-017\",\"palisade-000062-segment-018\",\"palisade-000062-segment-019\",\"palisade-000062-segment-020\",\"palisade-000062-segment-021\",\"palisade-000062-segment-022\",\"palisade-000062-segment-023\",\"palisade-000062-segment-024\"]}}"
+          },
+          "key": "mt.market_supply|construction-site-000039|[\"p-001110\"]|{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000039\",\"timberNeeded\":885,\"siteIds\":[\"construction-site-000064\",\"construction-site-000065\",\"construction-site-000066\",\"construction-site-000067\",\"palisade-000062-segment-000\",\"palisade-000062-segment-001\",\"palisade-000062-segment-003\",\"palisade-000062-segment-004\",\"palisade-000062-segment-005\",\"palisade-000062-segment-006\",\"palisade-000062-segment-007\",\"palisade-000062-segment-008\",\"palisade-000062-segment-009\",\"palisade-000062-segment-010\",\"palisade-000062-segment-011\",\"palisade-000062-segment-012\",\"palisade-000062-segment-013\",\"palisade-000062-segment-014\",\"palisade-000062-segment-015\",\"palisade-000062-segment-016\",\"palisade-000062-segment-017\",\"palisade-000062-segment-018\",\"palisade-000062-segment-019\",\"palisade-000062-segment-020\",\"palisade-000062-segment-021\",\"palisade-000062-segment-022\",\"palisade-000062-segment-023\",\"palisade-000062-segment-024\"]}",
+          "context": "construction-site-000039|[\"p-001110\"]|{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000039\",\"timberNeeded\":885,\"siteIds\":[\"construction-site-000064\",\"construction-site-000065\",\"construction-site-000066\",\"construction-site-000067\",\"palisade-000062-segment-000\",\"palisade-000062-segment-001\",\"palisade-000062-segment-003\",\"palisade-000062-segment-004\",\"palisade-000062-segment-005\",\"palisade-000062-segment-006\",\"palisade-000062-segment-007\",\"palisade-000062-segment-008\",\"palisade-000062-segment-009\",\"palisade-000062-segment-010\",\"palisade-000062-segment-011\",\"palisade-000062-segment-012\",\"palisade-000062-segment-013\",\"palisade-000062-segment-014\",\"palisade-000062-segment-015\",\"palisade-000062-segment-016\",\"palisade-000062-segment-017\",\"palisade-000062-segment-018\",\"palisade-000062-segment-019\",\"palisade-000062-segment-020\",\"palisade-000062-segment-021\",\"palisade-000062-segment-022\",\"palisade-000062-segment-023\",\"palisade-000062-segment-024\"]}",
+          "weights": [
+            "large_sum"
+          ]
+        },
+        "choices": [
+          "a",
+          "c"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "8ef10ce13e03cf424400238c42f276cedb044b37bdc358c8348f093226657527",
+      "encodedSha256": "fa5de23782e5111d65e73daf5f4a9f7242c7896ef5f03ae5fc6b6ead70c5e7a7",
+      "stateSha256": "95cc271ab6a41e0483248bcc7b649862d74d3b54eb23f40d24fb8bd68a702315",
+      "tick": 501000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.1",
+      "file": "ck_evt_046-offered-509000-1.save.json.gz",
+      "expected": {
+        "file": "ck_evt_046-offered-509000-1.save.json.gz",
+        "tick": 509000,
+        "encodedSha256": "dc16dd6170813535580402f9f2d09649c9a77cdbdc16b6197a03e2994d266457",
+        "gzipSha256": "95c24da6ae0564d10a91d526f976c5b282c5a0f0621eaa30927a1f5646bc7d8d",
+        "stateSha256": "9010366d8362e9423040be9d6f097f7e082abcc37637d64a93e656da07b33762",
+        "entryId": "ck_evt_046",
+        "offer": {
+          "id": "registry:ck_evt_046:timber.order|:509",
+          "entryId": "ck_evt_046",
+          "boundId": "",
+          "offeredTick": 509000,
+          "deadline": 510000,
+          "status": "offered",
+          "receipt": {
+            "draw": 790,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {},
+          "key": "timber.order|",
+          "context": "|||",
+          "weights": [
+            "large_sum"
+          ]
+        },
+        "choices": [
+          "trim",
+          "cancel"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "95c24da6ae0564d10a91d526f976c5b282c5a0f0621eaa30927a1f5646bc7d8d",
+      "encodedSha256": "dc16dd6170813535580402f9f2d09649c9a77cdbdc16b6197a03e2994d266457",
+      "stateSha256": "9010366d8362e9423040be9d6f097f7e082abcc37637d64a93e656da07b33762",
+      "tick": 509000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.2",
+      "file": "ck_evt_092-offered-534000-2.save.json.gz",
+      "expected": {
+        "file": "ck_evt_092-offered-534000-2.save.json.gz",
+        "tick": 534000,
+        "encodedSha256": "89742c2b3b8907d54bda046abde4556c3a428db9a4adf42a2b0fb16d8636dbeb",
+        "gzipSha256": "494c4537f570218e230e7e2056db88535a6b62d517775d34f37b01a194d122da",
+        "stateSha256": "4fc86adcf085c50be9a4c87f95a9b530e75b43d6e200b1cbf497406893255b36",
+        "entryId": "ck_evt_092",
+        "offer": {
+          "id": "registry:ck_evt_092:mt.dues_rebalance|construction-site-000039|[\"p-001311\"]|{\"duesPermille\":1100}|{\"marketId\":\"construction-site-000039\",\"householdId\":\"construction-site-000032\"}:534",
+          "entryId": "ck_evt_092",
+          "boundId": "{\"subjectKey\":\"construction-site-000039\",\"partyIds\":[\"p-001311\"],\"materialBefore\":{\"duesPermille\":1100},\"triggerEvidence\":{\"marketId\":\"construction-site-000039\",\"householdId\":\"construction-site-000032\"}}",
+          "offeredTick": 534000,
+          "deadline": 535000,
+          "status": "offered",
+          "receipt": {
+            "draw": 282,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "authoredContext": "{\"subjectKey\":\"construction-site-000039\",\"partyIds\":[\"p-001311\"],\"materialBefore\":{\"duesPermille\":1100},\"triggerEvidence\":{\"marketId\":\"construction-site-000039\",\"householdId\":\"construction-site-000032\"}}"
+          },
+          "key": "mt.dues_rebalance|construction-site-000039|[\"p-001311\"]|{\"duesPermille\":1100}|{\"marketId\":\"construction-site-000039\",\"householdId\":\"construction-site-000032\"}",
+          "context": "construction-site-000039|[\"p-001311\"]|{\"duesPermille\":1100}|{\"marketId\":\"construction-site-000039\",\"householdId\":\"construction-site-000032\"}",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "a",
+          "b"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "494c4537f570218e230e7e2056db88535a6b62d517775d34f37b01a194d122da",
+      "encodedSha256": "89742c2b3b8907d54bda046abde4556c3a428db9a4adf42a2b0fb16d8636dbeb",
+      "stateSha256": "4fc86adcf085c50be9a4c87f95a9b530e75b43d6e200b1cbf497406893255b36",
+      "tick": 534000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.3",
+      "file": "ck_evt_083-offered-551000-3.save.json.gz",
+      "expected": {
+        "file": "ck_evt_083-offered-551000-3.save.json.gz",
+        "tick": 551000,
+        "encodedSha256": "c756bcaf44a7ef518a11d17f089d44ca3089c9d108471423ca6980c8a518cc95",
+        "gzipSha256": "703fe699e16de62b642226b2b681786a90fa745630c6e8c5d895efe7368b3bb2",
+        "stateSha256": "a20da6e79e6ae1fce526fe0283b31a524773361d2061124a6c7e94a5222a4359",
+        "entryId": "ck_evt_083",
+        "offer": {
+          "id": "registry:ck_evt_083:mt.market_supply|construction-site-000039|[\"p-001311\"]|{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000039\",\"timberNeeded\":34,\"siteIds\":[\"construction-site-000087\"]}:551",
+          "entryId": "ck_evt_083",
+          "boundId": "{\"subjectKey\":\"construction-site-000039\",\"partyIds\":[\"p-001311\"],\"materialBefore\":{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0},\"triggerEvidence\":{\"marketId\":\"construction-site-000039\",\"timberNeeded\":34,\"siteIds\":[\"construction-site-000087\"]}}",
+          "offeredTick": 551000,
+          "deadline": 552000,
+          "status": "offered",
+          "receipt": {
+            "draw": 227,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "authoredContext": "{\"subjectKey\":\"construction-site-000039\",\"partyIds\":[\"p-001311\"],\"materialBefore\":{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0},\"triggerEvidence\":{\"marketId\":\"construction-site-000039\",\"timberNeeded\":34,\"siteIds\":[\"construction-site-000087\"]}}"
+          },
+          "key": "mt.market_supply|construction-site-000039|[\"p-001311\"]|{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000039\",\"timberNeeded\":34,\"siteIds\":[\"construction-site-000087\"]}",
+          "context": "construction-site-000039|[\"p-001311\"]|{\"duesPermille\":1000,\"timberOrder\":0,\"market\":0}|{\"marketId\":\"construction-site-000039\",\"timberNeeded\":34,\"siteIds\":[\"construction-site-000087\"]}",
+          "weights": [
+            "large_sum"
+          ]
+        },
+        "choices": [
+          "a",
+          "c"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "703fe699e16de62b642226b2b681786a90fa745630c6e8c5d895efe7368b3bb2",
+      "encodedSha256": "c756bcaf44a7ef518a11d17f089d44ca3089c9d108471423ca6980c8a518cc95",
+      "stateSha256": "a20da6e79e6ae1fce526fe0283b31a524773361d2061124a6c7e94a5222a4359",
+      "tick": 551000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.finalSave",
+      "file": "final.save.json.gz",
+      "expected": {
+        "file": "final.save.json.gz",
+        "tick": 560000,
+        "encodedSha256": "ebc5c7bba4d1bbd8a66b96ecbdabd57885c53edaa035f7222076f96906c38111",
+        "gzipSha256": "680d2d67a5416272f125ce48ed0299522c7070c7cde60b78a3a0ae9abef144a6",
+        "stateSha256": "8cff554bd021f00a530dd17449917bdde80cad6aea89c6b65c3689403de4781a"
+      },
+      "valid": true,
+      "gzipSha256": "680d2d67a5416272f125ce48ed0299522c7070c7cde60b78a3a0ae9abef144a6",
+      "encodedSha256": "ebc5c7bba4d1bbd8a66b96ecbdabd57885c53edaa035f7222076f96906c38111",
+      "stateSha256": "8cff554bd021f00a530dd17449917bdde80cad6aea89c6b65c3689403de4781a",
+      "tick": 560000,
+      "schemaVersion": 55
+    }
+  ],
+  "originals": [
+    {
+      "source": "changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/changed-files.txt",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/080-174-seed1/acquisition.json.gz",
+      "originalBytes": 3429,
+      "originalSha256": "030a9ad2970ad71771aec9558d66d24b5d396c0dd6ca5a35480784f54c80e4dc",
+      "archive": "files/eb-weight-acquire-remaining/080-174-seed1/acquisition.json.gz",
+      "archivedBytes": 3429,
+      "archivedSha256": "030a9ad2970ad71771aec9558d66d24b5d396c0dd6ca5a35480784f54c80e4dc",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/080-174-seed1/ck_evt_046-offered-509000-1.save.json.gz",
+      "originalBytes": 411420,
+      "originalSha256": "95c24da6ae0564d10a91d526f976c5b282c5a0f0621eaa30927a1f5646bc7d8d",
+      "archive": "files/eb-weight-acquire-remaining/080-174-seed1/ck_evt_046-offered-509000-1.save.json.gz",
+      "archivedBytes": 411420,
+      "archivedSha256": "95c24da6ae0564d10a91d526f976c5b282c5a0f0621eaa30927a1f5646bc7d8d",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/080-174-seed1/ck_evt_083-offered-501000-0.save.json.gz",
+      "originalBytes": 364489,
+      "originalSha256": "8ef10ce13e03cf424400238c42f276cedb044b37bdc358c8348f093226657527",
+      "archive": "files/eb-weight-acquire-remaining/080-174-seed1/ck_evt_083-offered-501000-0.save.json.gz",
+      "archivedBytes": 364489,
+      "archivedSha256": "8ef10ce13e03cf424400238c42f276cedb044b37bdc358c8348f093226657527",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/080-174-seed1/ck_evt_083-offered-551000-3.save.json.gz",
+      "originalBytes": 397136,
+      "originalSha256": "703fe699e16de62b642226b2b681786a90fa745630c6e8c5d895efe7368b3bb2",
+      "archive": "files/eb-weight-acquire-remaining/080-174-seed1/ck_evt_083-offered-551000-3.save.json.gz",
+      "archivedBytes": 397136,
+      "archivedSha256": "703fe699e16de62b642226b2b681786a90fa745630c6e8c5d895efe7368b3bb2",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/080-174-seed1/ck_evt_092-offered-534000-2.save.json.gz",
+      "originalBytes": 390485,
+      "originalSha256": "494c4537f570218e230e7e2056db88535a6b62d517775d34f37b01a194d122da",
+      "archive": "files/eb-weight-acquire-remaining/080-174-seed1/ck_evt_092-offered-534000-2.save.json.gz",
+      "archivedBytes": 390485,
+      "archivedSha256": "494c4537f570218e230e7e2056db88535a6b62d517775d34f37b01a194d122da",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/080-174-seed1/final.save.json.gz",
+      "originalBytes": 397128,
+      "originalSha256": "680d2d67a5416272f125ce48ed0299522c7070c7cde60b78a3a0ae9abef144a6",
+      "archive": "files/eb-weight-acquire-remaining/080-174-seed1/final.save.json.gz",
+      "archivedBytes": 397128,
+      "archivedSha256": "680d2d67a5416272f125ce48ed0299522c7070c7cde60b78a3a0ae9abef144a6",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "exit-code",
+      "originalBytes": 2,
+      "originalSha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "archive": "files/exit-code",
+      "archivedBytes": 2,
+      "archivedSha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/keep",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "pid",
+      "originalBytes": 8,
+      "originalSha256": "e0b11cb0e05f139398a871410c6a25cb3e25a7e54359b04d02673e72cc181e36",
+      "archive": "files/pid",
+      "archivedBytes": 8,
+      "archivedSha256": "e0b11cb0e05f139398a871410c6a25cb3e25a7e54359b04d02673e72cc181e36",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "run.log",
+      "originalBytes": 5963,
+      "originalSha256": "f31f00edcc1df55a8cc22469c0a0dbbee205cb289347d88adcbd79d06ae64e9f",
+      "archive": "files/run.log.gz",
+      "archivedBytes": 1461,
+      "archivedSha256": "d6889bc91ff26856e6670796f142f769a384d43198655862c2e67c69f237b00e",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/start-marker",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "timing.env",
+      "originalBytes": 77,
+      "originalSha256": "24162b0623ac045736ba756eac112d2e30823e43d75628f7b411349704c6f92a",
+      "archive": "files/timing.env",
+      "archivedBytes": 77,
+      "archivedSha256": "24162b0623ac045736ba756eac112d2e30823e43d75628f7b411349704c6f92a",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "unit",
+      "originalBytes": 62,
+      "originalSha256": "0dd3047479059d12389f0e94903b5f877c1c05ba05ac401a7c6a225cd6d2fc06",
+      "archive": "files/unit",
+      "archivedBytes": 62,
+      "archivedSha256": "0dd3047479059d12389f0e94903b5f877c1c05ba05ac401a7c6a225cd6d2fc06",
+      "encoding": "unchanged_bytes"
+    }
+  ],
+  "reportSource": "eb-weight-acquire-remaining/080-174-seed1/acquisition.json.gz",
+  "reportDecodedSha256": "438b64ef75d58db66bec365fb3636c4f24ce1a73a8549f7fd644d07655c33f4d",
+  "storage": {
+    "mode": "loose_lossless_files",
+    "fetchedOriginalsRetained": true
+  }
+}

@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "runId": "engineB-weight-input-038-seed1-new-game-9f769ee",
+  "officialExitCode": 0,
+  "originalStatus": "targets_acquired",
+  "inputAcquisition": "input_acquired",
+  "uiGate": "not_tested",
+  "archiveIntegrity": "verified",
+  "checks": [],
+  "caseId": "038-seed1-new-game",
+  "productRevision": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "toolRevision": "9f769ee5b51f356ef0a1f9f61db1adb3e7a2cd84",
+  "targets": [
+    "ck_evt_038"
+  ],
+  "targetsFound": [
+    "ck_evt_038"
+  ],
+  "allTargetsFound": true,
+  "startTick": 0,
+  "endTick": 36000,
+  "originalErrors": [],
+  "provenance": "Natural current-rule trajectory from verified save or ordinary new game; no state fabrication or policy edits.",
+  "limits": [
+    "Each case is a separate official DGX experiment, never concurrent.",
+    "Resumed current-rule natural trajectory, not reproduction of the historical original.",
+    "Offers are input evidence, not actual UI, effect, chip or card acceptance.",
+    "038 uses ordinary newGameState and normal bot only; no opening policies are edited."
+  ],
+  "input": {
+    "kind": "new_game",
+    "options": {
+      "scenarioId": "core:lord_slice",
+      "seed": 1,
+      "mode": "lord"
+    },
+    "file": "initial.save.json.gz",
+    "tick": 0,
+    "encodedSha256": "5e9409365af8fa2f714cde8705beae70600c705bf9f30c232f8f886efbde73a9",
+    "gzipSha256": "e75f44add9ef90121582d74698433e987b7c7a302f0f5b00b13d37a0686fb332",
+    "stateSha256": "29c23e16920187953302303617869774b6e475cd6d1c73d4bd27c8215d1a6b7e"
+  },
+  "externalReferences": [],
+  "saves": [
+    {
+      "location": "report.input",
+      "file": "initial.save.json.gz",
+      "expected": {
+        "kind": "new_game",
+        "options": {
+          "scenarioId": "core:lord_slice",
+          "seed": 1,
+          "mode": "lord"
+        },
+        "file": "initial.save.json.gz",
+        "tick": 0,
+        "encodedSha256": "5e9409365af8fa2f714cde8705beae70600c705bf9f30c232f8f886efbde73a9",
+        "gzipSha256": "e75f44add9ef90121582d74698433e987b7c7a302f0f5b00b13d37a0686fb332",
+        "stateSha256": "29c23e16920187953302303617869774b6e475cd6d1c73d4bd27c8215d1a6b7e"
+      },
+      "valid": true,
+      "gzipSha256": "e75f44add9ef90121582d74698433e987b7c7a302f0f5b00b13d37a0686fb332",
+      "encodedSha256": "5e9409365af8fa2f714cde8705beae70600c705bf9f30c232f8f886efbde73a9",
+      "stateSha256": "29c23e16920187953302303617869774b6e475cd6d1c73d4bd27c8215d1a6b7e",
+      "tick": 0,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.0",
+      "file": "ck_evt_005-offered-26000-0.save.json.gz",
+      "expected": {
+        "file": "ck_evt_005-offered-26000-0.save.json.gz",
+        "tick": 26000,
+        "encodedSha256": "8a61651e4df585697b3210fd2432c10a84883bb97e2d81be56a1712c4357058c",
+        "gzipSha256": "2f056a5ef944accb140951800c85cfb442a978df1b2efe3d291dc00eb5d5d84a",
+        "stateSha256": "40b2a70b380bfbd611f4e516371be3fb660df9b1eea9727946e622bc40695250",
+        "entryId": "ck_evt_005",
+        "offer": {
+          "id": "registry:ck_evt_005:market_dues|:26",
+          "entryId": "ck_evt_005",
+          "boundId": "",
+          "offeredTick": 26000,
+          "deadline": 27000,
+          "status": "offered",
+          "receipt": {
+            "draw": 208,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {},
+          "key": "market_dues|",
+          "context": "|||",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "2f056a5ef944accb140951800c85cfb442a978df1b2efe3d291dc00eb5d5d84a",
+      "encodedSha256": "8a61651e4df585697b3210fd2432c10a84883bb97e2d81be56a1712c4357058c",
+      "stateSha256": "40b2a70b380bfbd611f4e516371be3fb660df9b1eea9727946e622bc40695250",
+      "tick": 26000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.1",
+      "file": "ck_evt_042-offered-27000-1.save.json.gz",
+      "expected": {
+        "file": "ck_evt_042-offered-27000-1.save.json.gz",
+        "tick": 27000,
+        "encodedSha256": "487cb46431f9e3027efaeba9051fcf01b6fbf6e334e436e74df6edc98fab141a",
+        "gzipSha256": "2fda035fe234651a69e451f0be7713903e0f79d144c6e294df3b86ddc250b867",
+        "stateSha256": "43908f7d21cec58246e38e9a47723f3d98c594513da6e5444cfdb39f37fade37",
+        "entryId": "ck_evt_042",
+        "offer": {
+          "id": "registry:ck_evt_042:market_dues|:27",
+          "entryId": "ck_evt_042",
+          "boundId": "",
+          "offeredTick": 27000,
+          "deadline": 28000,
+          "status": "offered",
+          "receipt": {
+            "draw": 419,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {},
+          "key": "market_dues|",
+          "context": "|||",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "light",
+          "firm"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "2fda035fe234651a69e451f0be7713903e0f79d144c6e294df3b86ddc250b867",
+      "encodedSha256": "487cb46431f9e3027efaeba9051fcf01b6fbf6e334e436e74df6edc98fab141a",
+      "stateSha256": "43908f7d21cec58246e38e9a47723f3d98c594513da6e5444cfdb39f37fade37",
+      "tick": 27000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.2",
+      "file": "ck_evt_211-offered-29000-2.save.json.gz",
+      "expected": {
+        "file": "ck_evt_211-offered-29000-2.save.json.gz",
+        "tick": 29000,
+        "encodedSha256": "54c0c55b57cf3e18c4f46465367ca0f8f01ec7668979e43b41e1fa3cbcff767d",
+        "gzipSha256": "a86302f57d69bfffe85b1d34bb32bd51cd8a7d7e2071207a368964f46e711eb8",
+        "stateSha256": "f050479acbb685aa91c2a21bb26af5e30ae47f0e38a4408b766a006bf8d2f599",
+        "entryId": "ck_evt_211",
+        "offer": {
+          "id": "registry:ck_evt_211:v41.F1|merchant_house_1|p-000076:29",
+          "entryId": "ck_evt_211",
+          "boundId": "merchant_house_1",
+          "offeredTick": 29000,
+          "deadline": 30000,
+          "status": "offered",
+          "receipt": {
+            "draw": 385,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "faction": "merchant_house_1",
+            "higherDues": "1350",
+            "lowerDues": "1150"
+          },
+          "key": "v41.F1|merchant_house_1|p-000076",
+          "context": "merchant_house_1|p-000076",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "a86302f57d69bfffe85b1d34bb32bd51cd8a7d7e2071207a368964f46e711eb8",
+      "encodedSha256": "54c0c55b57cf3e18c4f46465367ca0f8f01ec7668979e43b41e1fa3cbcff767d",
+      "stateSha256": "f050479acbb685aa91c2a21bb26af5e30ae47f0e38a4408b766a006bf8d2f599",
+      "tick": 29000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.3",
+      "file": "ck_evt_201-offered-31000-3.save.json.gz",
+      "expected": {
+        "file": "ck_evt_201-offered-31000-3.save.json.gz",
+        "tick": 31000,
+        "encodedSha256": "22798f7366f455875e7ce3dcdd188835101a249fd3e8a06a56d72fcc02aa44e3",
+        "gzipSha256": "6744eaa47c8fae5f00c7f404a0a9d4ad218ee93073aade5d0f41ba386cc7c29a",
+        "stateSha256": "4ebe961765590551b51f86b0d091d1940f9864730055e025ccd5b2833804f9fc",
+        "entryId": "ck_evt_201",
+        "offer": {
+          "id": "registry:ck_evt_201:v41.T1|31:31",
+          "entryId": "ck_evt_201",
+          "boundId": "1450",
+          "offeredTick": 31000,
+          "deadline": 32000,
+          "status": "offered",
+          "receipt": {
+            "draw": 0,
+            "chancePermille": 45,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "higherDues": "1450",
+            "lowerDues": "1250",
+            "seasonContext": "31"
+          },
+          "key": "v41.T1|31",
+          "context": "31",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "6744eaa47c8fae5f00c7f404a0a9d4ad218ee93073aade5d0f41ba386cc7c29a",
+      "encodedSha256": "22798f7366f455875e7ce3dcdd188835101a249fd3e8a06a56d72fcc02aa44e3",
+      "stateSha256": "4ebe961765590551b51f86b0d091d1940f9864730055e025ccd5b2833804f9fc",
+      "tick": 31000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.4",
+      "file": "ck_evt_092-offered-32000-4.save.json.gz",
+      "expected": {
+        "file": "ck_evt_092-offered-32000-4.save.json.gz",
+        "tick": 32000,
+        "encodedSha256": "9ca1ac27c09f4da874294b4b83c25b248003009403a3dd935258f18b14a04b86",
+        "gzipSha256": "2829c7ea635962992d99e21776b628266f24aaf5ad0099064aec1ace473f1d97",
+        "stateSha256": "0212877953834d8143d5faa2a5d09988af176fce413993337077a63e03d5bfeb",
+        "entryId": "ck_evt_092",
+        "offer": {
+          "id": "registry:ck_evt_092:mt.dues_rebalance|construction-site-000036|[\"p-000098\"]|{\"duesPermille\":1450}|{\"marketId\":\"construction-site-000036\",\"householdId\":\"construction-site-000013\"}:32",
+          "entryId": "ck_evt_092",
+          "boundId": "{\"subjectKey\":\"construction-site-000036\",\"partyIds\":[\"p-000098\"],\"materialBefore\":{\"duesPermille\":1450},\"triggerEvidence\":{\"marketId\":\"construction-site-000036\",\"householdId\":\"construction-site-000013\"}}",
+          "offeredTick": 32000,
+          "deadline": 33000,
+          "status": "offered",
+          "receipt": {
+            "draw": 307,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "authoredContext": "{\"subjectKey\":\"construction-site-000036\",\"partyIds\":[\"p-000098\"],\"materialBefore\":{\"duesPermille\":1450},\"triggerEvidence\":{\"marketId\":\"construction-site-000036\",\"householdId\":\"construction-site-000013\"}}"
+          },
+          "key": "mt.dues_rebalance|construction-site-000036|[\"p-000098\"]|{\"duesPermille\":1450}|{\"marketId\":\"construction-site-000036\",\"householdId\":\"construction-site-000013\"}",
+          "context": "construction-site-000036|[\"p-000098\"]|{\"duesPermille\":1450}|{\"marketId\":\"construction-site-000036\",\"householdId\":\"construction-site-000013\"}",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "a",
+          "b"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "2829c7ea635962992d99e21776b628266f24aaf5ad0099064aec1ace473f1d97",
+      "encodedSha256": "9ca1ac27c09f4da874294b4b83c25b248003009403a3dd935258f18b14a04b86",
+      "stateSha256": "0212877953834d8143d5faa2a5d09988af176fce413993337077a63e03d5bfeb",
+      "tick": 32000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.5",
+      "file": "ck_evt_038-offered-36000-5.save.json.gz",
+      "expected": {
+        "file": "ck_evt_038-offered-36000-5.save.json.gz",
+        "tick": 36000,
+        "encodedSha256": "4a769c66bc20f3ba2dd0673c0686ebaccbc774d3e422d85dacd307e027021119",
+        "gzipSha256": "01042ca22fffeeeeb3021b30e3b8a67976cea6a67ea51eca29c72405eff03476",
+        "stateSha256": "1738f168b6e3fc8b28960f3fc9bf59e31d2e28dd6e0427b36c833fa56e344f60",
+        "entryId": "ck_evt_038",
+        "offer": {
+          "id": "registry:ck_evt_038:suit.enforce|suit-2:36",
+          "entryId": "ck_evt_038",
+          "boundId": "suit-2",
+          "offeredTick": 36000,
+          "deadline": 37000,
+          "status": "offered",
+          "receipt": {
+            "draw": 32,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "suit": "suit-2",
+            "claim": "claim-2"
+          },
+          "key": "suit.enforce|suit-2",
+          "context": "suit-2",
+          "weights": [
+            "land"
+          ]
+        },
+        "choices": [
+          "enforce",
+          "defer"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "01042ca22fffeeeeb3021b30e3b8a67976cea6a67ea51eca29c72405eff03476",
+      "encodedSha256": "4a769c66bc20f3ba2dd0673c0686ebaccbc774d3e422d85dacd307e027021119",
+      "stateSha256": "1738f168b6e3fc8b28960f3fc9bf59e31d2e28dd6e0427b36c833fa56e344f60",
+      "tick": 36000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.finalSave",
+      "file": "final.save.json.gz",
+      "expected": {
+        "file": "final.save.json.gz",
+        "tick": 36000,
+        "encodedSha256": "cc64a120146d0ed9272751bd97e8354d62dbe407ead85f9770405b2949868d7d",
+        "gzipSha256": "04207b7a6a09af40c71e020db8bd81682a6c03d3fd1bf1f5e6618501d216bab6",
+        "stateSha256": "1738f168b6e3fc8b28960f3fc9bf59e31d2e28dd6e0427b36c833fa56e344f60"
+      },
+      "valid": true,
+      "gzipSha256": "04207b7a6a09af40c71e020db8bd81682a6c03d3fd1bf1f5e6618501d216bab6",
+      "encodedSha256": "cc64a120146d0ed9272751bd97e8354d62dbe407ead85f9770405b2949868d7d",
+      "stateSha256": "1738f168b6e3fc8b28960f3fc9bf59e31d2e28dd6e0427b36c833fa56e344f60",
+      "tick": 36000,
+      "schemaVersion": 55
+    }
+  ],
+  "originals": [
+    {
+      "source": "changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/changed-files.txt",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/acquisition.json.gz",
+      "originalBytes": 5489,
+      "originalSha256": "7e47b49d61f928bbcb0f5d6ae254e788d29f3b42544a8fd9c70c8e997dd6c677",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/acquisition.json.gz",
+      "archivedBytes": 5489,
+      "archivedSha256": "7e47b49d61f928bbcb0f5d6ae254e788d29f3b42544a8fd9c70c8e997dd6c677",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_005-offered-26000-0.save.json.gz",
+      "originalBytes": 89950,
+      "originalSha256": "2f056a5ef944accb140951800c85cfb442a978df1b2efe3d291dc00eb5d5d84a",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_005-offered-26000-0.save.json.gz",
+      "archivedBytes": 89950,
+      "archivedSha256": "2f056a5ef944accb140951800c85cfb442a978df1b2efe3d291dc00eb5d5d84a",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_038-offered-36000-5.save.json.gz",
+      "originalBytes": 105832,
+      "originalSha256": "01042ca22fffeeeeb3021b30e3b8a67976cea6a67ea51eca29c72405eff03476",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_038-offered-36000-5.save.json.gz",
+      "archivedBytes": 105832,
+      "archivedSha256": "01042ca22fffeeeeb3021b30e3b8a67976cea6a67ea51eca29c72405eff03476",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_042-offered-27000-1.save.json.gz",
+      "originalBytes": 93206,
+      "originalSha256": "2fda035fe234651a69e451f0be7713903e0f79d144c6e294df3b86ddc250b867",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_042-offered-27000-1.save.json.gz",
+      "archivedBytes": 93206,
+      "archivedSha256": "2fda035fe234651a69e451f0be7713903e0f79d144c6e294df3b86ddc250b867",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_092-offered-32000-4.save.json.gz",
+      "originalBytes": 98858,
+      "originalSha256": "2829c7ea635962992d99e21776b628266f24aaf5ad0099064aec1ace473f1d97",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_092-offered-32000-4.save.json.gz",
+      "archivedBytes": 98858,
+      "archivedSha256": "2829c7ea635962992d99e21776b628266f24aaf5ad0099064aec1ace473f1d97",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_201-offered-31000-3.save.json.gz",
+      "originalBytes": 99071,
+      "originalSha256": "6744eaa47c8fae5f00c7f404a0a9d4ad218ee93073aade5d0f41ba386cc7c29a",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_201-offered-31000-3.save.json.gz",
+      "archivedBytes": 99071,
+      "archivedSha256": "6744eaa47c8fae5f00c7f404a0a9d4ad218ee93073aade5d0f41ba386cc7c29a",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_211-offered-29000-2.save.json.gz",
+      "originalBytes": 94962,
+      "originalSha256": "a86302f57d69bfffe85b1d34bb32bd51cd8a7d7e2071207a368964f46e711eb8",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/ck_evt_211-offered-29000-2.save.json.gz",
+      "archivedBytes": 94962,
+      "archivedSha256": "a86302f57d69bfffe85b1d34bb32bd51cd8a7d7e2071207a368964f46e711eb8",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/final.save.json.gz",
+      "originalBytes": 105832,
+      "originalSha256": "04207b7a6a09af40c71e020db8bd81682a6c03d3fd1bf1f5e6618501d216bab6",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/final.save.json.gz",
+      "archivedBytes": 105832,
+      "archivedSha256": "04207b7a6a09af40c71e020db8bd81682a6c03d3fd1bf1f5e6618501d216bab6",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/038-seed1-new-game/initial.save.json.gz",
+      "originalBytes": 13969,
+      "originalSha256": "e75f44add9ef90121582d74698433e987b7c7a302f0f5b00b13d37a0686fb332",
+      "archive": "files/eb-weight-acquire-remaining/038-seed1-new-game/initial.save.json.gz",
+      "archivedBytes": 13969,
+      "archivedSha256": "e75f44add9ef90121582d74698433e987b7c7a302f0f5b00b13d37a0686fb332",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "exit-code",
+      "originalBytes": 2,
+      "originalSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "archive": "files/exit-code",
+      "archivedBytes": 2,
+      "archivedSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/keep",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "pid",
+      "originalBytes": 8,
+      "originalSha256": "198fb27d44a8058e1aa2012b30a8ab93908b382554b4c1c1d6725715918f9581",
+      "archive": "files/pid",
+      "archivedBytes": 8,
+      "archivedSha256": "198fb27d44a8058e1aa2012b30a8ab93908b382554b4c1c1d6725715918f9581",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "run.log",
+      "originalBytes": 4419,
+      "originalSha256": "3cb43f66ee444c814785b99d13a25be11228ae4b9449725b03580d7f38aa35a1",
+      "archive": "files/run.log.gz",
+      "archivedBytes": 1247,
+      "archivedSha256": "869807d8b509862c643b48c82f992c9b3f5934503f9bd1d9c6eda6c8435206dd",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/start-marker",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "timing.env",
+      "originalBytes": 77,
+      "originalSha256": "ec404d60b3001f583b363328284c4f64519da56f198bcd1bf97f4a99af9b7312",
+      "archive": "files/timing.env",
+      "archivedBytes": 77,
+      "archivedSha256": "ec404d60b3001f583b363328284c4f64519da56f198bcd1bf97f4a99af9b7312",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "unit",
+      "originalBytes": 67,
+      "originalSha256": "077665b588d72ed43690d7aaf2fc29863cb6d178274702503bfd16cfde058335",
+      "archive": "files/unit",
+      "archivedBytes": 67,
+      "archivedSha256": "077665b588d72ed43690d7aaf2fc29863cb6d178274702503bfd16cfde058335",
+      "encoding": "unchanged_bytes"
+    }
+  ],
+  "reportSource": "eb-weight-acquire-remaining/038-seed1-new-game/acquisition.json.gz",
+  "reportDecodedSha256": "0d1c0f7a53fcf06712d9d079bc324ad29752f4ca7c508ab604e1674137500dd9",
+  "storage": {
+    "mode": "loose_lossless_files",
+    "fetchedOriginalsRetained": true
+  }
+}

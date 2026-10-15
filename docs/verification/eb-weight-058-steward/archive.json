@@ -1,0 +1,133 @@
+{
+  "run": "engineB-weight058-steward-9f769ee",
+  "exitCode": 0,
+  "storage": "originals.tar.xz retains every fetched original byte, including original JPEG, gzip, report and logs.",
+  "verification": "All members extracted and checked by original byte count and SHA256.",
+  "members": [
+    {
+      "path": "changed-files.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/before.jpg",
+      "bytes": 151644,
+      "sha256": "88144d18161b63be4860b97b06f81b786d37a117ad2f04689ae75927bb444d35"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/before.state.json.gz",
+      "bytes": 152074,
+      "sha256": "2718c330d40c5110472706626c07490ec3d6a587c4699c2d58930f34bb6190a9"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/closed.jpg",
+      "bytes": 163514,
+      "sha256": "caef3e03b3f69d0545523003b28f1167b0057a9ff98369d87c94e77e5c5b24e4"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/closed.state.json.gz",
+      "bytes": 152610,
+      "sha256": "96bb9c2f65d7521587d97d2ca7f519cfcfc42b7fc7da5fc2f25e097ae827d083"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-0.jpg",
+      "bytes": 139536,
+      "sha256": "45b7fef40767e719c05a7b45050523988e3f12f0fbabc24410aaeb8052f89422"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-0.state.json.gz",
+      "bytes": 152610,
+      "sha256": "96bb9c2f65d7521587d97d2ca7f519cfcfc42b7fc7da5fc2f25e097ae827d083"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-1.jpg",
+      "bytes": 139536,
+      "sha256": "45b7fef40767e719c05a7b45050523988e3f12f0fbabc24410aaeb8052f89422"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-1.state.json.gz",
+      "bytes": 152610,
+      "sha256": "96bb9c2f65d7521587d97d2ca7f519cfcfc42b7fc7da5fc2f25e097ae827d083"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-2.jpg",
+      "bytes": 139536,
+      "sha256": "45b7fef40767e719c05a7b45050523988e3f12f0fbabc24410aaeb8052f89422"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-2.state.json.gz",
+      "bytes": 152610,
+      "sha256": "96bb9c2f65d7521587d97d2ca7f519cfcfc42b7fc7da5fc2f25e097ae827d083"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-3.jpg",
+      "bytes": 139536,
+      "sha256": "45b7fef40767e719c05a7b45050523988e3f12f0fbabc24410aaeb8052f89422"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/detail-3.state.json.gz",
+      "bytes": 152610,
+      "sha256": "96bb9c2f65d7521587d97d2ca7f519cfcfc42b7fc7da5fc2f25e097ae827d083"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/expanded.jpg",
+      "bytes": 139536,
+      "sha256": "45b7fef40767e719c05a7b45050523988e3f12f0fbabc24410aaeb8052f89422"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/expanded.state.json.gz",
+      "bytes": 152610,
+      "sha256": "96bb9c2f65d7521587d97d2ca7f519cfcfc42b7fc7da5fc2f25e097ae827d083"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/source-revision.txt",
+      "bytes": 41,
+      "sha256": "7fca4c0c869eeb34756339c68437553f4e0dc0d2443ace8c200786a84e92ab2d"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/steward.json.gz",
+      "bytes": 2939,
+      "sha256": "97b30bf7bfc4e6e00aba960538277496319ca78568188a18763ab5685715e38c"
+    },
+    {
+      "path": "eb-weight-live56/steward-058/vite.log",
+      "bytes": 225103,
+      "sha256": "60a7bc69f08d8a4dbd6662e3c00fa43d4aa64d56d93aba9ebe144c18c4aa61d9"
+    },
+    {
+      "path": "exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "keep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pid",
+      "bytes": 8,
+      "sha256": "59b2529b31d21889b491d0bdb32d11b6b3e454f5de5b59ef47a75b2254d90245"
+    },
+    {
+      "path": "run.log",
+      "bytes": 1785,
+      "sha256": "aec8c8ee1f0028a6dab7415acc1679bd356151d03e894ad6aa2dab998291b90e"
+    },
+    {
+      "path": "start-marker",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "timing.env",
+      "bytes": 76,
+      "sha256": "5dde3363dfde155203e2b3db20faef4e58de8c2394b13d6920a70ae7f25399e1"
+    },
+    {
+      "path": "unit",
+      "bytes": 53,
+      "sha256": "0e69e3198d3fd02012a19572140f24afc8be11bc06b695511e96a0a92f86898e"
+    }
+  ]
+}

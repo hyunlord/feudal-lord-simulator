@@ -1,0 +1,26 @@
+{
+  "verdict": "steward_route_only",
+  "lord56Pass": false,
+  "reviewer": "archive_042_053",
+  "files": [
+    {
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-live56/steward-058/closed.jpg",
+      "sha256": "caef3e03b3f69d0545523003b28f1167b0057a9ff98369d87c94e77e5c5b24e4"
+    },
+    {
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-live56/steward-058/detail-3.jpg",
+      "sha256": "45b7fef40767e719c05a7b45050523988e3f12f0fbabc24410aaeb8052f89422"
+    }
+  ],
+  "observed": "Directly viewed originals: season band, canonical target title, selected choice, body and result exposed on detail screen.",
+  "choice": "remit",
+  "navigationSha256": "ab4d912b57380c31965010fcb8df83e4da90b7de952189eb45e0f29e948fd88d",
+  "wronglyIncluded": [],
+  "actorWordingMismatch": {
+    "actualActor": "steward",
+    "displayed": "영주는 상인들과 납부금 없는 합의를 택했다."
+  },
+  "limits": "Historical steward answer and season-report display route only. No fresh answer or independent before/after actual state effect proof. Not lord56 acceptance."
+}

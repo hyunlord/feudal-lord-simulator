@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "runId": "engineB-weight-audit-input-9f769ee",
+  "officialExitCode": 0,
+  "originalStatus": "at_least_one_target_acquired",
+  "inputAcquisition": "input_acquired",
+  "uiGate": "not_tested",
+  "archiveIntegrity": "verified",
+  "checks": [],
+  "caseId": null,
+  "productRevision": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "toolRevision": "9f769ee5b51f356ef0a1f9f61db1adb3e7a2cd84",
+  "targets": [
+    "ck_evt_013",
+    "ck_evt_025",
+    "ck_evt_052"
+  ],
+  "targetsFound": [
+    "ck_evt_052"
+  ],
+  "allTargetsFound": false,
+  "startTick": 54320,
+  "endTick": 55000,
+  "originalErrors": [],
+  "provenance": {
+    "remoteSource": "/home/hyunlord/fls-lmr2-states/audit-pending.json",
+    "archive": "codex/engine-b-tlink:docs/verification/eb-answer-effects/fixtures.tar.xz",
+    "archiveSha256": "03a010b04a9de48492b4fc0de7c5ec994f3d20d7216e1010c0b12ccf9c5057e4",
+    "member": "lmr2/audit-pending.json",
+    "generation": "scripts/lmr2States.ts marriageStates/stewardshipStates: real marriagePath, then normal set_estate_oversight(greedy candidate) and set_audit_mode(visit) commands, then first pending Michaelmas audit.",
+    "limits": [
+      "A deliberately chosen player-policy path, not the original default lord-bot cohort.",
+      "No bot commands: player leaves the genuine pending audit unanswered for 680 normal ticks, before its deadline 55320.",
+      "No state fields are injected, repaired, filled, or reverted. Raw state must pass lossless current codec admission.",
+      "Offers prove acquired inputs only; chance, pace and competing offers can leave target events absent. No screen acceptance."
+    ]
+  },
+  "limits": [
+    "A deliberately chosen player-policy path, not the original default lord-bot cohort.",
+    "No bot commands: player leaves the genuine pending audit unanswered for 680 normal ticks, before its deadline 55320.",
+    "No state fields are injected, repaired, filled, or reverted. Raw state must pass lossless current codec admission.",
+    "Offers prove acquired inputs only; chance, pace and competing offers can leave target events absent. No screen acceptance."
+  ],
+  "input": "/home/hyunlord/fls-lmr2-states/audit-pending.json",
+  "externalReferences": [
+    {
+      "location": "report.input",
+      "file": "/home/hyunlord/fls-lmr2-states/audit-pending.json",
+      "originalSha256": "2cfdff1a7f0ba416f41df4508291b533fddd8b739b81568ddcb94abcbb9fd804",
+      "retainedByPath": false,
+      "matchingFetchedFiles": []
+    }
+  ],
+  "saves": [
+    {
+      "location": "report.offered.0",
+      "file": "ck_evt_052-offered-55000-0.save.json.gz",
+      "expected": {
+        "file": "ck_evt_052-offered-55000-0.save.json.gz",
+        "tick": 55000,
+        "stateSha256": "45de878ad8d909ce4143f160abd9738e6071c6ba7becf1f65450628162b99fe5",
+        "encodedSha256": "90f51f5c1193c5216df3d844c0da248115c4401a4d7e06e2cfca22ca273f46e9",
+        "gzipSha256": "071246248df679090065075ad828c168399b479c7b0e157cd4c994ce15236599",
+        "entryId": "ck_evt_052",
+        "offer": {
+          "id": "registry:ck_evt_052:audit_findings|:55",
+          "entryId": "ck_evt_052",
+          "boundId": "audit-1",
+          "offeredTick": 55000,
+          "deadline": 56000,
+          "status": "offered",
+          "receipt": {
+            "draw": 725,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "audit": "audit-1",
+            "estate": "estate-neighbour-3",
+            "oversight": "estate-neighbour-3",
+            "currentSteward": "est-000006",
+            "currentPerson": "est-000006",
+            "successor": "est-000005"
+          },
+          "key": "audit_findings|",
+          "context": "|||",
+          "weights": [
+            "land"
+          ]
+        },
+        "choices": [
+          "punish",
+          "replace",
+          "tolerate"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "071246248df679090065075ad828c168399b479c7b0e157cd4c994ce15236599",
+      "encodedSha256": "90f51f5c1193c5216df3d844c0da248115c4401a4d7e06e2cfca22ca273f46e9",
+      "stateSha256": "45de878ad8d909ce4143f160abd9738e6071c6ba7becf1f65450628162b99fe5",
+      "tick": 55000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.initialSave",
+      "file": "initial-admitted.save.json.gz",
+      "expected": {
+        "file": "initial-admitted.save.json.gz",
+        "tick": 54320,
+        "stateSha256": "2cfdff1a7f0ba416f41df4508291b533fddd8b739b81568ddcb94abcbb9fd804",
+        "encodedSha256": "b9c9a57d74feb44a9d7c67db19d0ad8cd7d5cfbe5c422ec496e36b016784a8b9",
+        "gzipSha256": "6af366e2df8871b67e4cb85dff18d633adcaae551807a7ddaf7d8c3ddf047011"
+      },
+      "valid": true,
+      "gzipSha256": "6af366e2df8871b67e4cb85dff18d633adcaae551807a7ddaf7d8c3ddf047011",
+      "encodedSha256": "b9c9a57d74feb44a9d7c67db19d0ad8cd7d5cfbe5c422ec496e36b016784a8b9",
+      "stateSha256": "2cfdff1a7f0ba416f41df4508291b533fddd8b739b81568ddcb94abcbb9fd804",
+      "tick": 54320,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.finalSave",
+      "file": "final.save.json.gz",
+      "expected": {
+        "file": "final.save.json.gz",
+        "tick": 55000,
+        "stateSha256": "45de878ad8d909ce4143f160abd9738e6071c6ba7becf1f65450628162b99fe5",
+        "encodedSha256": "9b430521b67523c22e5208d164d9d35c4831d310f3ef7c21880bcd1430e9adb3",
+        "gzipSha256": "2ececf164e195f1a9ae9244d690b274277dd57807b828d41b82ddd256afa50b1"
+      },
+      "valid": true,
+      "gzipSha256": "2ececf164e195f1a9ae9244d690b274277dd57807b828d41b82ddd256afa50b1",
+      "encodedSha256": "9b430521b67523c22e5208d164d9d35c4831d310f3ef7c21880bcd1430e9adb3",
+      "stateSha256": "45de878ad8d909ce4143f160abd9738e6071c6ba7becf1f65450628162b99fe5",
+      "tick": 55000,
+      "schemaVersion": 55
+    }
+  ],
+  "originals": [
+    {
+      "source": "changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/changed-files.txt",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-audit-acquire/acquisition.json.gz",
+      "originalBytes": 1682,
+      "originalSha256": "4b9333b0eda7aa063cb16cb4ae316e3aa0b9ee41b290c78a01c72b9b172bf87a",
+      "archive": "files/eb-weight-audit-acquire/acquisition.json.gz",
+      "archivedBytes": 1682,
+      "archivedSha256": "4b9333b0eda7aa063cb16cb4ae316e3aa0b9ee41b290c78a01c72b9b172bf87a",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-audit-acquire/ck_evt_052-offered-55000-0.save.json.gz",
+      "originalBytes": 106271,
+      "originalSha256": "071246248df679090065075ad828c168399b479c7b0e157cd4c994ce15236599",
+      "archive": "files/eb-weight-audit-acquire/ck_evt_052-offered-55000-0.save.json.gz",
+      "archivedBytes": 106271,
+      "archivedSha256": "071246248df679090065075ad828c168399b479c7b0e157cd4c994ce15236599",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-audit-acquire/final.save.json.gz",
+      "originalBytes": 106271,
+      "originalSha256": "2ececf164e195f1a9ae9244d690b274277dd57807b828d41b82ddd256afa50b1",
+      "archive": "files/eb-weight-audit-acquire/final.save.json.gz",
+      "archivedBytes": 106271,
+      "archivedSha256": "2ececf164e195f1a9ae9244d690b274277dd57807b828d41b82ddd256afa50b1",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-audit-acquire/initial-admitted.save.json.gz",
+      "originalBytes": 104653,
+      "originalSha256": "6af366e2df8871b67e4cb85dff18d633adcaae551807a7ddaf7d8c3ddf047011",
+      "archive": "files/eb-weight-audit-acquire/initial-admitted.save.json.gz",
+      "archivedBytes": 104653,
+      "archivedSha256": "6af366e2df8871b67e4cb85dff18d633adcaae551807a7ddaf7d8c3ddf047011",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "exit-code",
+      "originalBytes": 2,
+      "originalSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "archive": "files/exit-code",
+      "archivedBytes": 2,
+      "archivedSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/keep",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "pid",
+      "originalBytes": 8,
+      "originalSha256": "721b207fff5090a301fc3aead2bfee5b949b2220d34cb2a2c0843639a1ecf352",
+      "archive": "files/pid",
+      "archivedBytes": 8,
+      "archivedSha256": "721b207fff5090a301fc3aead2bfee5b949b2220d34cb2a2c0843639a1ecf352",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "run.log",
+      "originalBytes": 1706,
+      "originalSha256": "081a9785d826a616b9fc889bea40d66ded4fb708308bafdaa2d3794cb7f82753",
+      "archive": "files/run.log.gz",
+      "archivedBytes": 905,
+      "archivedSha256": "a9a8beab5ca88ee4a82587a47e74c38338af7ab9a0e56ef26c97ccbf7acaf64a",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/start-marker",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "timing.env",
+      "originalBytes": 75,
+      "originalSha256": "c53002f0d5ca14c872b4eeaf81adf6b455c50b81c80518b045db3f323a6646c4",
+      "archive": "files/timing.env",
+      "archivedBytes": 75,
+      "archivedSha256": "c53002f0d5ca14c872b4eeaf81adf6b455c50b81c80518b045db3f323a6646c4",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "unit",
+      "originalBytes": 54,
+      "originalSha256": "c7b6de35e1320ec0865b11d169ffeb606e5ddf350707c4ed86e7d8ffbab10024",
+      "archive": "files/unit",
+      "archivedBytes": 54,
+      "archivedSha256": "c7b6de35e1320ec0865b11d169ffeb606e5ddf350707c4ed86e7d8ffbab10024",
+      "encoding": "unchanged_bytes"
+    }
+  ],
+  "reportSource": "eb-weight-audit-acquire/acquisition.json.gz",
+  "reportDecodedSha256": "1490bcdfb602598b41e5029282f751bf2ad610cf6283819c43f6a36e3096466e",
+  "storage": {
+    "mode": "loose_lossless_files",
+    "fetchedOriginalsRetained": true
+  }
+}

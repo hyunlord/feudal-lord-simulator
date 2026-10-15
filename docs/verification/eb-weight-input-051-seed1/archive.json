@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "runId": "engineB-weight-input-051-seed1-9f769ee",
+  "officialExitCode": 0,
+  "originalStatus": "targets_acquired",
+  "inputAcquisition": "input_acquired",
+  "uiGate": "not_tested",
+  "archiveIntegrity": "verified",
+  "checks": [],
+  "caseId": "051-seed1",
+  "productRevision": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "toolRevision": "9f769ee5b51f356ef0a1f9f61db1adb3e7a2cd84",
+  "targets": [
+    "ck_evt_051"
+  ],
+  "targetsFound": [
+    "ck_evt_051"
+  ],
+  "allTargetsFound": true,
+  "startTick": 171999,
+  "endTick": 184000,
+  "originalErrors": [],
+  "provenance": "Natural current-rule trajectory from verified save or ordinary new game; no state fabrication or policy edits.",
+  "limits": [
+    "Each case is a separate official DGX experiment, never concurrent.",
+    "Resumed current-rule natural trajectory, not reproduction of the historical original.",
+    "Offers are input evidence, not actual UI, effect, chip or card acceptance.",
+    "038 uses ordinary newGameState and normal bot only; no opening policies are edited."
+  ],
+  "input": {
+    "file": "/home/hyunlord/fls-runs/_kept/engineB-answer-json-92bbc7d-92bbc7d/.remote/eb-answer-replay/seed-1/ck_evt_034-preclose-171999.save.json.gz",
+    "gzipSha256": "6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d",
+    "encodedSha256": "3bb5d7a88e72726d305f24e8f09df6f1c9b445b1a3cba0b9d53bb22c401fd228",
+    "stateSha256": "abcf5fc595d6ac3d9b17d4db8334c1829504d0248412b978f9f2706b77f3217b"
+  },
+  "externalReferences": [
+    {
+      "location": "report.case.input",
+      "kind": "save",
+      "file": "/home/hyunlord/fls-runs/_kept/engineB-answer-json-92bbc7d-92bbc7d/.remote/eb-answer-replay/seed-1/ck_evt_034-preclose-171999.save.json.gz",
+      "gzipSha256": "6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d",
+      "stateSha256": "abcf5fc595d6ac3d9b17d4db8334c1829504d0248412b978f9f2706b77f3217b",
+      "tick": 171999,
+      "retainedByPath": false,
+      "matchingFetchedFiles": []
+    },
+    {
+      "location": "report.input",
+      "file": "/home/hyunlord/fls-runs/_kept/engineB-answer-json-92bbc7d-92bbc7d/.remote/eb-answer-replay/seed-1/ck_evt_034-preclose-171999.save.json.gz",
+      "gzipSha256": "6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d",
+      "encodedSha256": "3bb5d7a88e72726d305f24e8f09df6f1c9b445b1a3cba0b9d53bb22c401fd228",
+      "stateSha256": "abcf5fc595d6ac3d9b17d4db8334c1829504d0248412b978f9f2706b77f3217b",
+      "retainedByPath": false,
+      "matchingFetchedFiles": []
+    }
+  ],
+  "saves": [
+    {
+      "location": "report.offered.0",
+      "file": "ck_evt_038-offered-173000-0.save.json.gz",
+      "expected": {
+        "file": "ck_evt_038-offered-173000-0.save.json.gz",
+        "tick": 173000,
+        "encodedSha256": "28fff510e4dc362af5fd01de9ebbc8585e92e9d03150eaee3ffc56712729cc8b",
+        "gzipSha256": "954ba8694eaf2dbc8cdb9c5e51288578ee64caa3c57b3318ba5c7dab49c5dc71",
+        "stateSha256": "619fdc22441ca0a5a409699b0f97b2be42c44568503f29bc49c4c861831ca0be",
+        "entryId": "ck_evt_038",
+        "offer": {
+          "id": "registry:ck_evt_038:suit.enforce|suit-22:173",
+          "entryId": "ck_evt_038",
+          "boundId": "suit-22",
+          "offeredTick": 173000,
+          "deadline": 174000,
+          "status": "offered",
+          "receipt": {
+            "draw": 545,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "suit": "suit-22",
+            "claim": "claim-23"
+          },
+          "key": "suit.enforce|suit-22",
+          "context": "suit-22",
+          "weights": [
+            "land"
+          ]
+        },
+        "choices": [
+          "enforce",
+          "defer"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "954ba8694eaf2dbc8cdb9c5e51288578ee64caa3c57b3318ba5c7dab49c5dc71",
+      "encodedSha256": "28fff510e4dc362af5fd01de9ebbc8585e92e9d03150eaee3ffc56712729cc8b",
+      "stateSha256": "619fdc22441ca0a5a409699b0f97b2be42c44568503f29bc49c4c861831ca0be",
+      "tick": 173000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.1",
+      "file": "ck_evt_209-offered-179000-1.save.json.gz",
+      "expected": {
+        "file": "ck_evt_209-offered-179000-1.save.json.gz",
+        "tick": 179000,
+        "encodedSha256": "392bc941f0ff24b39a4cb3b1b4f714f201814f800dabcfcaaecf846ef1163e52",
+        "gzipSha256": "768233dc9488b8d273b7af49a0e69ad4a3627fcda938235bbc8a6efd0f3f0b14",
+        "stateSha256": "31905691b1f56bbc5059c673aed379aa294c77911555f64332a9b93d4daae4ff",
+        "entryId": "ck_evt_209",
+        "offer": {
+          "id": "registry:ck_evt_209:v41.N4|179:179",
+          "entryId": "ck_evt_209",
+          "boundId": "179",
+          "offeredTick": 179000,
+          "deadline": 180000,
+          "status": "offered",
+          "receipt": {
+            "draw": 64,
+            "chancePermille": 140,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "seasonContext": "179"
+          },
+          "key": "v41.N4|179",
+          "context": "179",
+          "weights": [
+            "large_sum"
+          ]
+        },
+        "choices": [
+          "a",
+          "b",
+          "d"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "768233dc9488b8d273b7af49a0e69ad4a3627fcda938235bbc8a6efd0f3f0b14",
+      "encodedSha256": "392bc941f0ff24b39a4cb3b1b4f714f201814f800dabcfcaaecf846ef1163e52",
+      "stateSha256": "31905691b1f56bbc5059c673aed379aa294c77911555f64332a9b93d4daae4ff",
+      "tick": 179000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.2",
+      "file": "ck_evt_046-offered-182000-2.save.json.gz",
+      "expected": {
+        "file": "ck_evt_046-offered-182000-2.save.json.gz",
+        "tick": 182000,
+        "encodedSha256": "8610707be34befb4b66aa1e229a1da24fa1d92e7dc952e6dcd0381aa26da825a",
+        "gzipSha256": "3f397181c793515ebe48fbda12baf8a750376d9c4a82f30fbd70554e9c7ac85d",
+        "stateSha256": "24acfe1575b24679c49cdd7e6c334dc367c8d7433384defc75b386d1eed10a6b",
+        "entryId": "ck_evt_046",
+        "offer": {
+          "id": "registry:ck_evt_046:timber.order|:182",
+          "entryId": "ck_evt_046",
+          "boundId": "",
+          "offeredTick": 182000,
+          "deadline": 183000,
+          "status": "offered",
+          "receipt": {
+            "draw": 581,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {},
+          "key": "timber.order|",
+          "context": "|||",
+          "weights": [
+            "large_sum"
+          ]
+        },
+        "choices": [
+          "trim",
+          "cancel"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "3f397181c793515ebe48fbda12baf8a750376d9c4a82f30fbd70554e9c7ac85d",
+      "encodedSha256": "8610707be34befb4b66aa1e229a1da24fa1d92e7dc952e6dcd0381aa26da825a",
+      "stateSha256": "24acfe1575b24679c49cdd7e6c334dc367c8d7433384defc75b386d1eed10a6b",
+      "tick": 182000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.offered.3",
+      "file": "ck_evt_051-offered-184000-3.save.json.gz",
+      "expected": {
+        "file": "ck_evt_051-offered-184000-3.save.json.gz",
+        "tick": 184000,
+        "encodedSha256": "a638b9cc3c2e1b977425dac8f0316a174a844ba559f400e35f5c52055d2b1b0a",
+        "gzipSha256": "8b38caa8f85b3e0aafa3fe432d60701c65a353df7a2c19afb9098c2d3f88ac46",
+        "stateSha256": "b955d69aceff2b354a0931b66ab9ab09606dfdea2369b72da59eb4abca26d727",
+        "entryId": "ck_evt_051",
+        "offer": {
+          "id": "registry:ck_evt_051:old_fishery_claim|:184",
+          "entryId": "ck_evt_051",
+          "boundId": "claim-26",
+          "offeredTick": 184000,
+          "deadline": 185000,
+          "status": "offered",
+          "receipt": {
+            "draw": 32,
+            "chancePermille": 1000,
+            "conditions": []
+          },
+          "source": "v4",
+          "bound": {
+            "claim": "claim-26"
+          },
+          "key": "old_fishery_claim|",
+          "context": "|||",
+          "weights": [
+            "rights"
+          ]
+        },
+        "choices": [
+          "file",
+          "leave",
+          "file_with_deed"
+        ]
+      },
+      "valid": true,
+      "gzipSha256": "8b38caa8f85b3e0aafa3fe432d60701c65a353df7a2c19afb9098c2d3f88ac46",
+      "encodedSha256": "a638b9cc3c2e1b977425dac8f0316a174a844ba559f400e35f5c52055d2b1b0a",
+      "stateSha256": "b955d69aceff2b354a0931b66ab9ab09606dfdea2369b72da59eb4abca26d727",
+      "tick": 184000,
+      "schemaVersion": 55
+    },
+    {
+      "location": "report.finalSave",
+      "file": "final.save.json.gz",
+      "expected": {
+        "file": "final.save.json.gz",
+        "tick": 184000,
+        "encodedSha256": "d6f5136d0e037576304c991705de76b3726215fa6f24c6a61ea81a56f2467aeb",
+        "gzipSha256": "dc2ea0b304224bb433ec2c5e4391bc6734ed61911c91d8fc5bb6d14b46045c32",
+        "stateSha256": "b955d69aceff2b354a0931b66ab9ab09606dfdea2369b72da59eb4abca26d727"
+      },
+      "valid": true,
+      "gzipSha256": "dc2ea0b304224bb433ec2c5e4391bc6734ed61911c91d8fc5bb6d14b46045c32",
+      "encodedSha256": "d6f5136d0e037576304c991705de76b3726215fa6f24c6a61ea81a56f2467aeb",
+      "stateSha256": "b955d69aceff2b354a0931b66ab9ab09606dfdea2369b72da59eb4abca26d727",
+      "tick": 184000,
+      "schemaVersion": 55
+    }
+  ],
+  "originals": [
+    {
+      "source": "changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/changed-files.txt",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/051-seed1/acquisition.json.gz",
+      "originalBytes": 2689,
+      "originalSha256": "844cc7d82cdbca3f9003f296f002d5a7022168556ba8187e90929eeb1ef4f614",
+      "archive": "files/eb-weight-acquire-remaining/051-seed1/acquisition.json.gz",
+      "archivedBytes": 2689,
+      "archivedSha256": "844cc7d82cdbca3f9003f296f002d5a7022168556ba8187e90929eeb1ef4f614",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/051-seed1/ck_evt_038-offered-173000-0.save.json.gz",
+      "originalBytes": 208882,
+      "originalSha256": "954ba8694eaf2dbc8cdb9c5e51288578ee64caa3c57b3318ba5c7dab49c5dc71",
+      "archive": "files/eb-weight-acquire-remaining/051-seed1/ck_evt_038-offered-173000-0.save.json.gz",
+      "archivedBytes": 208882,
+      "archivedSha256": "954ba8694eaf2dbc8cdb9c5e51288578ee64caa3c57b3318ba5c7dab49c5dc71",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/051-seed1/ck_evt_046-offered-182000-2.save.json.gz",
+      "originalBytes": 239148,
+      "originalSha256": "3f397181c793515ebe48fbda12baf8a750376d9c4a82f30fbd70554e9c7ac85d",
+      "archive": "files/eb-weight-acquire-remaining/051-seed1/ck_evt_046-offered-182000-2.save.json.gz",
+      "archivedBytes": 239148,
+      "archivedSha256": "3f397181c793515ebe48fbda12baf8a750376d9c4a82f30fbd70554e9c7ac85d",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/051-seed1/ck_evt_051-offered-184000-3.save.json.gz",
+      "originalBytes": 252537,
+      "originalSha256": "8b38caa8f85b3e0aafa3fe432d60701c65a353df7a2c19afb9098c2d3f88ac46",
+      "archive": "files/eb-weight-acquire-remaining/051-seed1/ck_evt_051-offered-184000-3.save.json.gz",
+      "archivedBytes": 252537,
+      "archivedSha256": "8b38caa8f85b3e0aafa3fe432d60701c65a353df7a2c19afb9098c2d3f88ac46",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/051-seed1/ck_evt_209-offered-179000-1.save.json.gz",
+      "originalBytes": 206601,
+      "originalSha256": "768233dc9488b8d273b7af49a0e69ad4a3627fcda938235bbc8a6efd0f3f0b14",
+      "archive": "files/eb-weight-acquire-remaining/051-seed1/ck_evt_209-offered-179000-1.save.json.gz",
+      "archivedBytes": 206601,
+      "archivedSha256": "768233dc9488b8d273b7af49a0e69ad4a3627fcda938235bbc8a6efd0f3f0b14",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-acquire-remaining/051-seed1/final.save.json.gz",
+      "originalBytes": 252537,
+      "originalSha256": "dc2ea0b304224bb433ec2c5e4391bc6734ed61911c91d8fc5bb6d14b46045c32",
+      "archive": "files/eb-weight-acquire-remaining/051-seed1/final.save.json.gz",
+      "archivedBytes": 252537,
+      "archivedSha256": "dc2ea0b304224bb433ec2c5e4391bc6734ed61911c91d8fc5bb6d14b46045c32",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "exit-code",
+      "originalBytes": 2,
+      "originalSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "archive": "files/exit-code",
+      "archivedBytes": 2,
+      "archivedSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/keep",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "pid",
+      "originalBytes": 8,
+      "originalSha256": "a2f2c51165ff7b9f292512bc11aa435e9bd1e55b7c63db4e43c9933858d44929",
+      "archive": "files/pid",
+      "archivedBytes": 8,
+      "archivedSha256": "a2f2c51165ff7b9f292512bc11aa435e9bd1e55b7c63db4e43c9933858d44929",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "run.log",
+      "originalBytes": 2549,
+      "originalSha256": "8954f8b35ae04f52fcac91885de7b3a72ff82c1406f39454f555d763f8c984df",
+      "archive": "files/run.log.gz",
+      "archivedBytes": 1050,
+      "archivedSha256": "a0ab2a5e885c4dfe2312c9dab4631e3e76158c34c7bd8cdeef98529bc2954fef",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "files/start-marker",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "timing.env",
+      "originalBytes": 77,
+      "originalSha256": "32b5161f62bac04108f2e5c0f61c498ec6c8c00a90a576bd6537036f500967ff",
+      "archive": "files/timing.env",
+      "archivedBytes": 77,
+      "archivedSha256": "32b5161f62bac04108f2e5c0f61c498ec6c8c00a90a576bd6537036f500967ff",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "unit",
+      "originalBytes": 58,
+      "originalSha256": "6b258fa169550089ddfcfbaacc9838fb72fd89f399f20216132e81259950323c",
+      "archive": "files/unit",
+      "archivedBytes": 58,
+      "archivedSha256": "6b258fa169550089ddfcfbaacc9838fb72fd89f399f20216132e81259950323c",
+      "encoding": "unchanged_bytes"
+    }
+  ],
+  "reportSource": "eb-weight-acquire-remaining/051-seed1/acquisition.json.gz",
+  "reportDecodedSha256": "c20cdd6555fbac8512b58f1d40c5e795aefb5bf5a104b1868c14489c52637212",
+  "storage": {
+    "mode": "loose_lossless_files",
+    "fetchedOriginalsRetained": true
+  }
+}
