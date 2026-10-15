@@ -122,7 +122,7 @@
 - [x] **GROW-BLOCK-2a** (본선 `bb60cab`) 마을 자동 동작 고침: 빈 목책 탐색·성벽 자리 예방·목재 대기·가드레일 seed 1·BT6(사용자 판정 2026-10-10)
 - [x] **GROW-A** (본선 `68ee13e`) A안: 다음 시대·헌장 건물이 기다리는 자재의 생산 + 채석장 길 막힘 방지(사용자 판정 2026-10-11~14)
 - [ ] **GROW-BLOCK-2b** 성벽 안 밭이 집터를 내줌·둘레 지렛대(렌더 화면, 사용자 판정 2026-10-10)
-- [ ] **TRACE-LINK** 개별 답변 → 결과 → 다음 행동 + INERT(사용자 지시 2026-10-10, 엔진 B 가지 codex/engine-b-tlink, 요청 engine-B-tlink.md·engine-B-inert.md)
+- [x] **TRACE-LINK** (본선 `ef7ab0ce`, v56) 개별 답변 → 결과 → 다음 행동 + INERT(사용자 지시 2026-10-10, 엔진 B 가지 codex/engine-b-tlink, 요청 engine-B-tlink.md·engine-B-inert.md)
 - [x] **SUIT-THREAD** (본선 `c7f107a6`) 판결 집행의 결과를 결과의 실로 + 소송 균형·피고 방어·강제 점거·Astra 둘째 플레이 엔진 몫(사용자 지시 2026-10-08·09)
 - [x] **TRACE-KEEP** (본선 `4deafcb3`) 큰 결정의 실과 기억은 끝까지(A5, 사용자 판정 2026-10-09)
 - [ ] **MONEY-SINK** 금고가 늘 빠듯하게(MS-1~4, 설계 승인 2026-10-08) + NW08 고침 — GROW-BLOCK 다음
