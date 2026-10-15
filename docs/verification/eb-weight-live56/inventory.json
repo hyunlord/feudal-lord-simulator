@@ -597,12 +597,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 3,
         "choice": "b"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "b: actual stall_fee income 8d, partial cause; chip absent→2 (initial year count null, not displayed 0), target 1; exact card and navigation SHA verified. Other choices are not claimed.",
+      "evidence": "../eb-weight-092-live/README.md"
     },
     {
       "entryId": "ck_evt_124",

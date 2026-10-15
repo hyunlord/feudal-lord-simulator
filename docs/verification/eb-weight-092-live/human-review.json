@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "b",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e"
+    }
+  ],
+  "observed": "Initial yearly results chip absent; after the actual result, chip 2 and the exact canonical 092 item with 1 result are fully visible. Paused navigation SHA unchanged.",
+  "expectedFact": "1308년 당신의 결정 때문에: 큰 부담을 거두는 작은 시장 — 1건",
+  "navigationSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd"
+}

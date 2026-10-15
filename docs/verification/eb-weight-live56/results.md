@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 5/56, 실패·관측미달 3, 미검증 48, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 6/56, 실패·관측미달 3, 미검증 47, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -42,7 +42,7 @@
 | 080 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 083 | a, c | a | 통과(한 선택) | [증거1](../eb-weight-083-live/README.md); a: actual timber order remaining 16→14, delivery 2; chip 7→8, target 0→1; exact card and navigation SHA verified. Other choices are not claimed. |
 | 090 | a, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 092 | a, b | 예정: b | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 092 | a, b | b | 통과(한 선택) | [증거1](../eb-weight-092-live/README.md); b: actual stall_fee income 8d, partial cause; chip absent→2 (initial year count null, not displayed 0), target 1; exact card and navigation SHA verified. Other choices are not claimed. |
 | 124 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 128 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 130 | a, b, c | 예정: c | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |

@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "runId": "engineB-weight092-live-4a61b4a",
+  "entryId": "ck_evt_092",
+  "choice": "b",
+  "answerId": "h-001317",
+  "officialExitCode": 0,
+  "originalValid": true,
+  "verdict": "PASS_automated_only_pending_human_JPEG_review",
+  "humanJpegReview": "pending",
+  "productRevision": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "historicalSourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "toolRevision": "4a61b4a657249ccccf9722c803710d9e3e6fc8e7",
+  "canonicalContractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+  "canonicalTitle": "큰 부담을 거두는 작은 시장",
+  "canonicalTitleMatches": true,
+  "selectedSource": [
+    "registry:ck_evt_092:b"
+  ],
+  "expectedSource": "registry:ck_evt_092:b",
+  "originalReportSha256": "659e3946d79c406a4a09abd62aea26a130fc760023b63d152ff137b63afdf448",
+  "stop": "new_exact_result_in_automatic_year_chip",
+  "absence": null,
+  "errors": [],
+  "archiveChecks": [],
+  "metrics": {
+    "initialTick": 32059,
+    "finalTick": 33627,
+    "initialYearCount": null,
+    "automaticYearCount": 2,
+    "exactReceiptCount": 1,
+    "actualEffectReceiptCount": 1,
+    "exactNewRowCount": 1,
+    "progressAtTen": true,
+    "manualTargetCaptured": true,
+    "navigationUnchanged": true
+  },
+  "manualExpectedFact": "1308년 당신의 결정 때문에: 큰 부담을 거두는 작은 시장 — 1건",
+  "manualBeforeSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd",
+  "manualAfterSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd",
+  "states": [
+    {
+      "label": "initial",
+      "tick": 32059,
+      "stateFile": "initial.state.json.gz",
+      "stateSha256": "2ececa75439e5bf1ba43445551fd43299f2eb435eb8a916799a083d97cf17889",
+      "compressedSha256": "7ba3b47a44439452cb507f90b03954403d245c1d13444850588324bfb57531d2",
+      "screen": "initial.jpg",
+      "screenSha256": "6bfe4285fe1eb0f439c16ae061e44ff2e3a5cc7441cee87d301bd93bb8d8245b",
+      "valid": true
+    },
+    {
+      "label": "first-exact-receipt",
+      "tick": 33601,
+      "stateFile": "first-exact-receipt.state.json.gz",
+      "stateSha256": "85b1cb2185a2c82200fa4b25b0e58d3847a5718a535114006758dda86210a438",
+      "compressedSha256": "37ceb92e4defce0b37d23186d0c62c89161ddf8638c83d9879787cd984189478",
+      "screen": "first-exact-receipt.jpg",
+      "screenSha256": "11deea7bebe7de36cc68470f26b26ec26d2d96783439de8b656bd18e84a5b964",
+      "valid": true
+    },
+    {
+      "label": "automatic-chip",
+      "tick": 33627,
+      "stateFile": "automatic-chip.state.json.gz",
+      "stateSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd",
+      "compressedSha256": "f128c169767bd36e130549bfec2a32685dc5168227171a7da282db80c15cf440",
+      "screen": "automatic-chip.jpg",
+      "screenSha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e",
+      "valid": true
+    },
+    {
+      "label": "before-manual",
+      "tick": 33627,
+      "stateFile": "automatic-chip.state.json.gz",
+      "stateSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd",
+      "compressedSha256": "f128c169767bd36e130549bfec2a32685dc5168227171a7da282db80c15cf440",
+      "screen": "before-manual.jpg",
+      "screenSha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e",
+      "valid": true
+    },
+    {
+      "label": "manual-card",
+      "tick": 33627,
+      "stateFile": "automatic-chip.state.json.gz",
+      "stateSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd",
+      "compressedSha256": "f128c169767bd36e130549bfec2a32685dc5168227171a7da282db80c15cf440",
+      "screen": "manual-card.jpg",
+      "screenSha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e",
+      "valid": true
+    },
+    {
+      "label": "final",
+      "tick": 33627,
+      "stateFile": "automatic-chip.state.json.gz",
+      "stateSha256": "8989093be5242721edbf7e4269547749b3ee8b579ede68240fee13f6d6e7afbd",
+      "compressedSha256": "f128c169767bd36e130549bfec2a32685dc5168227171a7da282db80c15cf440",
+      "screen": "final.jpg",
+      "screenSha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e",
+      "valid": true
+    }
+  ],
+  "originals": [
+    {
+      "source": "eb-weight-live56/ck_evt_092/automatic-chip.jpg",
+      "archive": "automatic-chip.jpg",
+      "originalBytes": 83730,
+      "originalSha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e",
+      "archivedBytes": 83730,
+      "archivedSha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/automatic-chip.state.json.gz",
+      "archive": "automatic-chip.state.json.gz",
+      "originalBytes": 81145,
+      "originalSha256": "f128c169767bd36e130549bfec2a32685dc5168227171a7da282db80c15cf440",
+      "archivedBytes": 81145,
+      "archivedSha256": "f128c169767bd36e130549bfec2a32685dc5168227171a7da282db80c15cf440",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/before-manual.jpg",
+      "archive": "before-manual.jpg",
+      "originalBytes": 83730,
+      "originalSha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e",
+      "archivedBytes": 83730,
+      "archivedSha256": "69b91c43c4aa8e4f5c6995734b69230453f960f1373fbb91fda23f440c26d17e",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/final.jpg",
+      "archive": "final.jpg",
+      "originalBytes": 86805,
+      "originalSha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e",
+      "archivedBytes": 86805,
+      "archivedSha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/first-exact-receipt.jpg",
+      "archive": "first-exact-receipt.jpg",
+      "originalBytes": 82353,
+      "originalSha256": "11deea7bebe7de36cc68470f26b26ec26d2d96783439de8b656bd18e84a5b964",
+      "archivedBytes": 82353,
+      "archivedSha256": "11deea7bebe7de36cc68470f26b26ec26d2d96783439de8b656bd18e84a5b964",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/first-exact-receipt.state.json.gz",
+      "archive": "first-exact-receipt.state.json.gz",
+      "originalBytes": 80887,
+      "originalSha256": "37ceb92e4defce0b37d23186d0c62c89161ddf8638c83d9879787cd984189478",
+      "archivedBytes": 80887,
+      "archivedSha256": "37ceb92e4defce0b37d23186d0c62c89161ddf8638c83d9879787cd984189478",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/initial.jpg",
+      "archive": "initial.jpg",
+      "originalBytes": 109847,
+      "originalSha256": "6bfe4285fe1eb0f439c16ae061e44ff2e3a5cc7441cee87d301bd93bb8d8245b",
+      "archivedBytes": 109847,
+      "archivedSha256": "6bfe4285fe1eb0f439c16ae061e44ff2e3a5cc7441cee87d301bd93bb8d8245b",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/initial.state.json.gz",
+      "archive": "initial.state.json.gz",
+      "originalBytes": 79930,
+      "originalSha256": "7ba3b47a44439452cb507f90b03954403d245c1d13444850588324bfb57531d2",
+      "archivedBytes": 79930,
+      "archivedSha256": "7ba3b47a44439452cb507f90b03954403d245c1d13444850588324bfb57531d2",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/live-case.json",
+      "archive": "live-case.json.gz",
+      "originalBytes": 115840,
+      "originalSha256": "659e3946d79c406a4a09abd62aea26a130fc760023b63d152ff137b63afdf448",
+      "archivedBytes": 9751,
+      "archivedSha256": "5f00af00d4823925d507c86d2177c1736d5ef23203a97b00bbe1af23aa89b1f5",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/manual-card.jpg",
+      "archive": "manual-card.jpg",
+      "originalBytes": 86805,
+      "originalSha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e",
+      "archivedBytes": 86805,
+      "archivedSha256": "f3dc0c631d91b84fad877aa521629a43bfdadbae3a27c6fa1cdc065131c1bb0e",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/source-revision.txt",
+      "archive": "source-revision.txt",
+      "originalBytes": 41,
+      "originalSha256": "0702ed8a70662160ddbc729a034ca66b9d8fb363489ec92f0723e4bcb5f50d1f",
+      "archivedBytes": 41,
+      "archivedSha256": "0702ed8a70662160ddbc729a034ca66b9d8fb363489ec92f0723e4bcb5f50d1f",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_092/vite.log",
+      "archive": "vite.log.gz",
+      "originalBytes": 225167,
+      "originalSha256": "c45724e223b4ab60498c25485f7e82ca5b0e6119c86ce56a55f27f2bae289cee",
+      "archivedBytes": 18462,
+      "archivedSha256": "685f7c4f810885b2679941d3a310793d49bbf226179e6a23bb58e0d8c2570799",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "changed-files.txt",
+      "archive": "runner/changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "exit-code",
+      "archive": "runner/exit-code",
+      "originalBytes": 2,
+      "originalSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "archivedBytes": 2,
+      "archivedSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "keep",
+      "archive": "runner/keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "pid",
+      "archive": "runner/pid",
+      "originalBytes": 8,
+      "originalSha256": "cdb7ea929169b7a0da6a180c039d9606198543a29a777f15916117bfc9926fa5",
+      "archivedBytes": 8,
+      "archivedSha256": "cdb7ea929169b7a0da6a180c039d9606198543a29a777f15916117bfc9926fa5",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "run.log",
+      "archive": "runner/run.log.gz",
+      "originalBytes": 1813,
+      "originalSha256": "df1ef512d32d42ac5721c1cdd91114ce4129d86ba054896fff2479b5668a487a",
+      "archivedBytes": 945,
+      "archivedSha256": "5ef52bd742efc0a3640b2b0162bb1c0594ecf3e6bbc2e7c1f5adb6051cd1df21",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "start-marker",
+      "archive": "runner/start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "timing.env",
+      "archive": "runner/timing.env",
+      "originalBytes": 76,
+      "originalSha256": "d3936f18fc57a9a62027aab4aa064cea55f4f62560dd70b78acacace4611875e",
+      "archivedBytes": 76,
+      "archivedSha256": "d3936f18fc57a9a62027aab4aa064cea55f4f62560dd70b78acacace4611875e",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "unit",
+      "archive": "runner/unit",
+      "originalBytes": 50,
+      "originalSha256": "475a804593a2e1193d75e1634cdc3ade5276172ee9f6d4ec3ff6afc1964d558d",
+      "archivedBytes": 50,
+      "archivedSha256": "475a804593a2e1193d75e1634cdc3ade5276172ee9f6d4ec3ff6afc1964d558d",
+      "encoding": "unchanged_bytes"
+    }
+  ],
+  "limits": [
+    "Proof snapshots contain presentation walkers, not a raw store snapshot.",
+    "This is one current-product replay from a genuine historical answer, not a fresh 125-year run.",
+    "Automatic yearly aggregation is distinct from automatic opening of a card or a new notification.",
+    "A bounded replay may stop at an unrelated required decision; that is not proof of a trace or display defect.",
+    "The observation bound is the original first consequence tick plus 200 ticks; old and current simulation may diverge."
+  ]
+}

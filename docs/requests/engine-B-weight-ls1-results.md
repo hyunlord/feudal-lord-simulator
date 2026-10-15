@@ -18,3 +18,5 @@
 053/roll: [증빙](../verification/eb-weight-053-live/README.md) 실제 suit-4 filed→evidence(tick 78000), h-005067→h-005003 부분원인(소송 시작 h-004944와 함께). 칩 1→3, 대상 카드 0→1건, 원본 JPEG 두 장에서 정확한 제목·건수 노출과 탐색 SHA 동일을 확인했다. roll 한 선택만 통과다.
 
 083/a: [증빙](../verification/eb-weight-083-live/README.md) 실제 목재 주문 잔량 16→14, 배송 2단(tick 73040), h-003392→h-003391 직접 원인. 칩 7→8, 대상 카드 0→1건, 원본 JPEG 두 장에서 정확한 제목·건수 노출과 탐색 SHA 동일을 확인했다. 다른 선택지의 세율 명령에 기대지 않았으며 a 한 선택만 통과다.
+
+092/b: [증빙](../verification/eb-weight-092-live/README.md) 실제 stall_fee 수입 8d(ledger-000262, tick 33600), h-001368→h-001317 부분원인. 칩 없음→2(initialYearCount null이며 숫자 0 표시가 아님), 정확한 대상 카드 1건. 부모가 원본 JPEG 두 장에서 제목·건수 전체 노출을 확인했고 탐색 SHA도 동일하다. b 한 선택만 통과다.
