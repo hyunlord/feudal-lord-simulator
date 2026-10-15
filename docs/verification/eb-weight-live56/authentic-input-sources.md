@@ -68,3 +68,5 @@
 | `scripts/marriagePath.ts` | `43e27a4168b9a3200bc53e7511193b062909be45645bbfd62a0fb9efc7c1e94e` |
 
 위 값은 원본 생성 실행의 HEAD를 역산한 것이 아니라 이번 생성 경로 검토 대상을 고정한 값이다.
+
+후속 제한 관측 도구: `acquire-candidate.sh attention`은54321→55000의019, `acquire-candidate.sh contested`는52029→53000의033·143·150를 대상으로 각각 한 공식 실험만 실행한다. `acquireCandidate.mjs`는 원본 식별값과 무손실 codec 입장을 확인한 뒤 정상 tick만 진행한다. 현재는 구문 검사만 완료했으며 기존 실행 줄이 끝나기 전에 병렬 제출하지 않는다. 실제 제안이 생기지 않으면 한 철의 제한 검색 실패로 보존한다.
