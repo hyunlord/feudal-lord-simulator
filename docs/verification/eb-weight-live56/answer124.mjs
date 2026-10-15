@@ -44,7 +44,7 @@ async function snapshot(label) {
   await page.screenshot({ path: join(out, `${label}.jpg`), type: 'jpeg', quality: 55 });
   report.screenshots.push({ label, file, sha256: sha(json), image: `${label}.jpg` }); return s;
 }
-async function press(selector) {
+async function press(selector, settle = true) {
   const el = page.locator(selector); assert.equal(await el.count(), 1); assert.ok(await el.isEnabled());
   for (let attempt = 0; attempt < 4; attempt += 1) {
     const scroll = await el.evaluate(el => {
@@ -73,7 +73,8 @@ async function press(selector) {
       && top !== null && (el === top || el.contains(top)) ? { x, y } : null;
   });
   assert.ok(point, `Unavailable/covered control: ${selector}`); await page.mouse.click(point.x, point.y);
-  report.actions.push({ selector, tick: (await state()).tick }); await page.clock.runFor(32);
+  report.actions.push({ selector, tick: (await state()).tick });
+  if (settle) await page.clock.runFor(32);
 }
 async function read(answer) {
   return page.evaluate(async answer => {
@@ -119,6 +120,47 @@ try {
   assert.equal(before.tick, witness.tick); assert.equal(before.seed, 1);
   assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
   const card = `.lord-card[data-registry-offer="ck_evt_124"][data-occurrence="${witness.offer.id}"]`;
+  report.offerNavigation = [];
+  async function navigateOffer(selector) {
+    const prior = await state();
+    assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
+    await press(selector, false);
+    const immediate = await state();
+    const evidence = { selector, beforeTick: prior.tick, afterTick: immediate.tick,
+      beforeSha256: sha(JSON.stringify(prior)), afterSha256: sha(JSON.stringify(immediate)),
+      sourceOfferBefore: prior.registry.occurrences.find(row => row.id === witness.offer.id),
+      sourceOfferAfter: immediate.registry.occurrences.find(row => row.id === witness.offer.id) };
+    report.offerNavigation.push(evidence);
+    assert.equal(evidence.afterSha256, evidence.beforeSha256, 'Offer navigation changed game state');
+    assert.equal(evidence.afterTick, evidence.beforeTick, 'Offer navigation advanced the clock');
+    assert.deepEqual(evidence.sourceOfferAfter, evidence.sourceOfferBefore);
+    assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
+    await page.clock.runFor(32);
+    evidence.settledSha256 = sha(JSON.stringify(await state()));
+    assert.equal(evidence.settledSha256, evidence.beforeSha256, 'Deferred navigation changed state after settling');
+    assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
+  }
+  if (await page.locator(card).count() === 0) {
+    // AppModals home-petition Later only pops the UI modal; never answer the unrelated petition.
+    const blocking = '.lord-card[data-home-petition="boundary_dispute"]:visible';
+    if (await page.locator(blocking).count() === 1) {
+      const later = `${blocking} .story-modal-later`;
+      assert.equal(await page.locator(later).textContent(), '나중에 정한다');
+      await navigateOffer(later);
+    }
+    if (await page.locator(card).count() === 0) {
+      assert.equal(await page.locator('[role="dialog"]:visible').count(), 0, 'Unknown covering modal; do not dismiss');
+      const chip = `.event-chip[data-story="registry_event"][data-chip-id="registry:${witness.offer.id}"]`;
+      await navigateOffer(chip);
+      if (await page.locator(card).count() === 0) {
+        const eventCard = `.event-card[data-story="registry_event"][data-chip-id="registry:${witness.offer.id}"]`;
+        await navigateOffer(`${eventCard} .event-card-decide`);
+      }
+    }
+  }
+  assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(before)), 'Reaching the target offer changed state');
+  assert.equal(await page.locator(card).count(), 1);
+  await snapshot('target-offered');
   await press(`${card} [data-choose="b"]`);
   const after = await snapshot('answered');
   const occurrence = after.registry.occurrences.find(row => row.id === witness.offer.id);
