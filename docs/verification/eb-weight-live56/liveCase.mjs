@@ -69,16 +69,51 @@ async function press(selector) {
 }
 
 async function sample() {
-  return page.evaluate(({ answer, start }) => {
+  return page.evaluate(({ answer, start, expected }) => {
     const state = window.__FEUDAL_PHASE10_PROOF__.state(), reads = window.__EB_WEIGHT_READS__;
     const from = state.tick - state.tick % reads.yearLength;
     const rows = reads.traceInRange(state, from, state.tick + 1).filter(row => row.decisionId === answer);
     const groups = reads.traceGroups(state, rows), results = reads.yearResults(state);
     const target = results?.items.find(item => item.decisionId === answer) ?? null;
+    const probe = { tick: state.tick, timberOrder: state.timberOrder ?? 0,
+      suits: state.estates?.suits ?? [], audits: state.stewardship?.audits ?? [] };
+    const previous = window.__EB_WEIGHT_PREVIOUS_PROBE__;
+    window.__EB_WEIGHT_PREVIOUS_PROBE__ = probe;
+    window.__EB_WEIGHT_ACTUAL__ ??= new Map();
     const receipts = (state.history?.records ?? []).filter(record => !window.__EB_WEIGHT_INITIAL_IDS__.has(record.id)
       && record.kind !== 'decision' && record.tick > start && record.because?.some(cause => cause.decisionId === answer))
-      .map(record => ({ id: record.id, tick: record.tick, kind: record.kind, template: record.template,
-        params: record.params, because: record.because }));
+      .map(record => {
+        const p = record.params;
+        const semanticMatch = record.template === expected.template && p?.key === expected.key
+          && p.target === expected.target && (!expected.category || p.category === expected.category);
+        if (semanticMatch && !window.__EB_WEIGHT_ACTUAL__.has(record.id)) {
+          let evidence = null;
+          if (p.key === 'payment_flow') {
+            const entries = (state.ledger?.entries ?? []).filter(row => row.tick === record.tick && row.category === p.category && row.amount !== 0);
+            const income = entries.reduce((sum, row) => sum + Math.max(0, row.amount), 0);
+            const expense = entries.reduce((sum, row) => sum - Math.min(0, row.amount), 0);
+            if (income + expense > 0 && income === p.income && expense === p.expense) evidence = { kind: 'actual_ledger_postings', entries, income, expense };
+          } else if (previous && previous.tick < record.tick) {
+            if (p.key === 'goods_delivered' && p.brought > 0 && previous.timberOrder - probe.timberOrder === p.brought)
+              evidence = { kind: 'actual_order_decrease', before: previous.timberOrder, after: probe.timberOrder, delta: -p.brought };
+            if (p.key === 'suit_turned') {
+              const id = p.target.slice('suit:'.length), before = previous.suits.find(row => row.id === id), after = probe.suits.find(row => row.id === id);
+              if (before && after && after.stage === p.stage && (p.verdict === undefined || after.verdict === p.verdict)
+                && (before.stage !== after.stage || before.verdict !== after.verdict || before.enforced !== after.enforced))
+                evidence = { kind: 'actual_suit_transition', before, after };
+            }
+            if (p.key === 'audit') {
+              const audits = probe.audits.filter(row => !previous.audits.some(old => old.id === row.id)
+                && `estate:${row.estateId}` === p.target && row.status === p.status && row.revealedKept + row.revealedErrors === p.revealed);
+              if (audits.length === 1) evidence = { kind: 'actual_new_audit_result', audit: audits[0] };
+            }
+          }
+          if (evidence) window.__EB_WEIGHT_ACTUAL__.set(record.id, evidence);
+        }
+        return { id: record.id, tick: record.tick, kind: record.kind, template: record.template,
+          params: record.params, because: record.because, semanticMatch,
+          actualEvidence: window.__EB_WEIGHT_ACTUAL__.get(record.id) ?? null };
+      });
     const visible = el => {
       const b = el.getBoundingClientRect(), style = getComputedStyle(el);
       return b.width > 0 && b.height > 0 && style.visibility !== 'hidden' && style.display !== 'none';
@@ -104,7 +139,7 @@ async function sample() {
       paused: document.querySelector('.speed-seal[data-seal="pause"]')?.getAttribute('aria-pressed') === 'true',
       ten: document.querySelector('.speed-seal[data-seal="fast"] [data-step="10"]')?.getAttribute('data-on') === 'true',
       autoplayOff: document.querySelector('.autoplay-control > button')?.getAttribute('aria-pressed') === 'false' };
-  }, { answer: ANSWER, start: START });
+  }, { answer: ANSWER, start: START, expected: selected.expectedConsequence });
 }
 
 function automaticMatch(observation) {
@@ -115,7 +150,7 @@ function automaticMatch(observation) {
   const chips = observation.chips.filter(chip => chip.exposed && chip.id === `results:${observation.results.year}`
     && chip.text === observation.expectedChipText);
   if (chips.length !== 1) return null;
-  const links = observation.receipts.flatMap(receipt => observation.targetRows.filter(row => row.recordId === receipt.id
+  const links = observation.receipts.filter(receipt => receipt.semanticMatch && receipt.actualEvidence).flatMap(receipt => observation.targetRows.filter(row => row.recordId === receipt.id
     && row.tick === receipt.tick && row.decisionTick === START && receipt.tick <= observation.tick
     && receipt.because.some(cause => cause.decisionId === ANSWER && cause.key === row.key && (cause.part === true) === row.part)));
   const group = observation.targetGroups.find(item => item.decisionId === ANSWER && item.by !== 'steward');
@@ -258,13 +293,23 @@ try {
     const card = page.locator('.event-card[data-story="decision_trace"]:visible');
     assert.equal(await card.count(), 1, 'Exactly one actual yearly results card required');
     const facts = await card.locator('.event-card-facts li').allTextContents();
+    const visibleFacts = await card.locator('.event-card-facts li').evaluateAll(elements => elements.map(el => {
+      const b = el.getBoundingClientRect(), style = getComputedStyle(el), top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2);
+      return { text: el.textContent, exposed: b.width > 0 && b.height > 0 && b.x >= 0 && b.y >= 0
+        && b.right <= innerWidth && b.bottom <= innerHeight && style.display !== 'none' && style.visibility !== 'hidden'
+        && top !== null && (el === top || el.contains(top)) };
+    }));
     const after = await snapshot('manual-card');
-    report.manual = { facts, expectedFact: report.automatic.expectedFact, targetCaptured: facts.includes(report.automatic.expectedFact),
+    report.manual = { facts, visibleFacts, expectedFact: report.automatic.expectedFact,
+      targetCaptured: visibleFacts.filter(row => row.text === report.automatic.expectedFact).length === 1
+        && visibleFacts.some(row => row.text === report.automatic.expectedFact && row.exposed),
       beforeSha256: beforePause.sha256, afterSha256: after.sha256, stateUnchanged: beforePause.sha256 === after.sha256 };
     assert.ok(report.manual.targetCaptured && report.manual.stateUnchanged, 'Actual card or navigation-state invariant failed');
   }
   report.final = await sample();
   report.absence = report.automatic ? null : !report.receipts.length ? 'no_new_exact_because_result_in_observed_window'
+    : !report.receipts.some(row => row.semanticMatch) ? 'expected_result_semantics_not_observed'
+      : !report.receipts.some(row => row.semanticMatch && row.actualEvidence) ? 'actual_effect_evidence_missing'
     : !report.final.targetDecisionPresent ? 'target_decision_record_missing'
       : !report.final.targetRows.length ? 'new_result_outside_current_year_or_not_exposed_by_trace_read'
         : report.final.targetGroups.some(group => group.by === 'steward') ? 'steward_excluded'

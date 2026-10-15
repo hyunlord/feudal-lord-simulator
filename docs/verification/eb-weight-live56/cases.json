@@ -33,7 +33,13 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   },
   {
     "seed": 2,
@@ -73,7 +79,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "suit_turned",
+      "target": "suit:suit-2"
+    }
   },
   {
     "seed": 1,
@@ -109,7 +120,13 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   },
   {
     "seed": 3,
@@ -159,7 +176,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "audit",
+      "target": "estate:estate-neighbour-3"
+    }
   },
   {
     "seed": 3,
@@ -199,7 +221,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "suit_turned",
+      "target": "suit:suit-3"
+    }
   },
   {
     "seed": 2,
@@ -235,7 +262,13 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   },
   {
     "seed": 1,
@@ -275,7 +308,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "suit_turned",
+      "target": "suit:suit-4"
+    }
   },
   {
     "seed": 3,
@@ -310,7 +348,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "goods_delivered",
+      "target": "timber"
+    }
   },
   {
     "seed": 3,
@@ -346,7 +389,13 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   },
   {
     "seed": 2,
@@ -396,7 +445,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "audit",
+      "target": "estate:estate-neighbour-3"
+    }
   },
   {
     "seed": 2,
@@ -446,7 +500,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "audit",
+      "target": "estate:estate-neighbour-3"
+    }
   },
   {
     "seed": 2,
@@ -481,7 +540,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "goods_delivered",
+      "target": "timber"
+    }
   },
   {
     "seed": 3,
@@ -517,7 +581,13 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   },
   {
     "seed": 2,
@@ -553,7 +623,13 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   },
   {
     "seed": 1,
@@ -588,7 +664,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "goods_delivered",
+      "target": "timber"
+    }
   },
   {
     "seed": 2,
@@ -624,6 +705,12 @@
         }
       ]
     },
-    "status": "paired"
+    "status": "paired",
+    "expectedConsequence": {
+      "template": "consequence",
+      "key": "payment_flow",
+      "target": "dues",
+      "category": "stall_fee"
+    }
   }
 ]
