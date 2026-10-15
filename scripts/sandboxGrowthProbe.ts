@@ -10,6 +10,8 @@ import { foodEfficiencyMetrics } from "../src/engine/autoplayFoodEfficiency";
 import { arableBelowCap, arableSupplyShort } from "../src/engine/autoplayArable";
 import { hasActiveFoodObservation } from "../src/engine/autoplayFoodThroughput";
 import { zonesOf } from "../src/zones/zoneEdits";
+import { evaluateEraRequirements } from "../src/engine/era";
+import { isBuildingConstructionSite } from "../src/economy/construction";
 import { houseRequirementRows } from "./autoplayStallProbe";
 import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 
@@ -33,6 +35,11 @@ function sample(state: GameState) {
   const observation = state.autoplayFoodObservation;
   return {
     tick: state.tick, population: state.population, era: state.era, levels, lacks,
+    // What the next era waits for, the open building sites with their stall, the stock of the building materials.
+    unmet: evaluateEraRequirements(state).filter(requirement => !requirement.met).map(requirement => `${requirement.key}:${requirement.current}/${requirement.target}`),
+    sites: state.constructionSites.filter(isBuildingConstructionSite).map(site => `${site.kind}:${site.stall ?? "none"}`),
+    stock: Object.fromEntries((["timber", "logs", "stone", "stone_raw"] as const).map(resource => [resource, state.buildings.reduce((sum, building) => sum + availableStock(building, resource), 0)])),
+    palisade: state.palisade === null ? null : { segments: state.palisade.segments?.length ?? null },
     food: {
       decision: count("mill") > 0 && count("granary") > 0 && count("farmstead") > 0 ? measuredFoodDecision(state) : null,
       grainShort: arableSupplyShort(state), belowCap: arableBelowCap(state),
