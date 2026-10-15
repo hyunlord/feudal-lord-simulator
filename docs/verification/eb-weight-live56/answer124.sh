@@ -6,7 +6,7 @@ grep -q '^SLOT=heavy$' .remote-in/meta.env
 grep -q '^RUN_CLASS=experiment$' .remote-in/meta.env
 [ -z "$(git status --porcelain)" ]
 git diff --exit-code 0eddc146c7d57b4cae091bff62295a1fc16e1f97 HEAD -- src package.json package-lock.json
-out=".remote/eb-weight-124-a"
+out=".remote/eb-weight-124-b"
 mkdir -p "$out"
 git rev-parse HEAD > "$out/source-revision.txt"
 . scripts/remote/devServers.sh

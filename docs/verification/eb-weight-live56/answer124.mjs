@@ -19,20 +19,20 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const report = { product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  input, entryId: 'ck_evt_124', choice: 'a', screenshots: [], actions: [], errors: [], valid: false,
+  input, entryId: 'ck_evt_124', choice: 'b', screenshots: [], actions: [], errors: [], valid: false,
   provenance: { source: '/home/hyunlord/fls-lord-states/registry-offer.json',
     rawSha256: '0ff4d88a516b6b6868529ccc80281a4ea8a4e68c79b5ecf9ac01a024332bb508',
     archive: 'codex/engine-b-tlink:docs/verification/eb-answer-effects/fixtures.tar.xz',
     archiveSha256: '03a010b04a9de48492b4fc0de7c5ec994f3d20d7216e1010c0b12ccf9c5057e4', member: 'lord/registry-offer.json',
     generation: 'scripts/eventArtStates.ts play: ordinary newGameState, lordBotCommands/gameReducer and advanceTick; first registry offer captured before bot answer.' },
   limits: ['No state fields invented or repaired; raw save requires lossless current-codec admission.',
-    'Choice a proposes 80d plus consent. A proposal is not a completed marriage; accepted/rejected/countered are distinct actual results.',
+    'Choice b proposes 40d plus political support and consent. A proposal is not a completed marriage; accepted/rejected/countered are distinct actual results.',
     'No future ticks or counter acceptance. Conditional future marriage events remain unobserved.',
     'No precise immediate marriage-effect trace is assumed from processing records; missing exact effect evidence stays diagnostic.',
     'Yearly chip aggregation is automatic; result-card opening is manual.'] };
-const contract = JSON.parse(readFileSync('docs/design/engine-B-outcomes.json')).events.find(row => row.id === 'ck_evt_124').choices.find(row => row.id === 'a');
+const contract = JSON.parse(readFileSync('docs/design/engine-B-outcomes.json')).events.find(row => row.id === 'ck_evt_124').choices.find(row => row.id === 'b');
 assert.equal(contract.commands[0].type, 'propose_marriage');
-assert.deepEqual(contract.commands[0].args.terms, [{ kind: 'cash', giver: 'proposer', amount: 80 }]);
+assert.deepEqual(contract.commands[0].args.terms, [{ kind: 'cash', giver: 'proposer', amount: 40 }, { kind: 'political_support', giver: 'proposer' }]);
 assert.ok(contract.outcomes.some(row => row.effectKind === 'immediate' && row.target.kind === 'negotiation'));
 report.contract = contract;
 let raw, admitted, witness;
@@ -91,6 +91,7 @@ try {
   assert.equal(sha(inputBytes), report.provenance.rawSha256, 'Authentic raw input pin mismatch');
   admitted = JSON.parse(inputBytes);
   assert.equal(admitted.seed, 1); assert.equal(admitted.tick, 13000);
+  assert.equal(admitted.treasuryCoin, 46, 'Pinned genuine input has 46d; never supplement funds');
   const now = new Date().toISOString();
   raw = Buffer.from(encodeSave({ state: admitted, createdAt: now, savedAt: now }).bytes);
   assert.equal(JSON.stringify(decodeSave(raw).envelope.state), JSON.stringify(admitted), 'Raw-state admission changed values; no repairs allowed');
@@ -101,7 +102,7 @@ try {
   const choices = offerChoices(admitted, offer);
   witness = { offer, choices, tick: admitted.tick };
   report.witness = witness;
-  assert.ok(choices.includes('a'), 'Canonical 80d choice must genuinely be enabled; no alternative invented');
+  assert.ok(choices.includes('b'), 'Canonical 40d plus political-support choice b must genuinely be enabled; no alternative invented');
   browser = await (await loadChromium()).launch({ channel: 'chrome', headless: true });
   context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: 'ko-KR' });
   page = await context.newPage(); page.setDefaultTimeout(10000); page.on('pageerror', e => report.errors.push(String(e)));
@@ -118,16 +119,16 @@ try {
   assert.equal(before.tick, witness.tick); assert.equal(before.seed, 1);
   assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
   const card = `.lord-card[data-registry-offer="ck_evt_124"][data-occurrence="${witness.offer.id}"]`;
-  await press(`${card} [data-choose="a"]`);
+  await press(`${card} [data-choose="b"]`);
   const after = await snapshot('answered');
   const occurrence = after.registry.occurrences.find(row => row.id === witness.offer.id);
-  assert.equal(occurrence.status, 'answered'); assert.equal(occurrence.choiceId, 'a');
+  assert.equal(occurrence.status, 'answered'); assert.equal(occurrence.choiceId, 'b');
   const oldIds = new Set(before.trace.decisions.map(row => row.id));
-  const answers = after.trace.decisions.filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_124:a');
+  const answers = after.trace.decisions.filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_124:b');
   assert.equal(answers.length, 1); report.answer = answers[0];
   const oldNegotiations = before.diplomacy?.negotiations ?? [];
   const created = (after.diplomacy?.negotiations ?? []).filter(row => !oldNegotiations.some(old => old.id === row.id));
-  assert.equal(created.length, 1, 'A successful 124/a must create exactly one negotiation');
+  assert.equal(created.length, 1, 'A successful 124/b must create exactly one negotiation');
   const negotiation = created[0];
   assert.equal(negotiation.purpose, 'marriage');
   assert.equal(negotiation.groomId, witness.offer.bound.groom);

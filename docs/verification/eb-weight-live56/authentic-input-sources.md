@@ -26,7 +26,7 @@
 
 [생성 소스 eventArtStates.ts](../../../scripts/eventArtStates.ts)의 `play`(33행)는 정상 `newGameState`에서 시작하고, 매 tick 미답 카드를 먼저 관찰한 다음 정상 `lordBotCommands`/`gameReducer`와 `advanceTick`을 적용한다. 최초 제안을 잡는 부분은 37–45행, raw 상태를 저장하는 부분은 54–58행이다. 이 경로는 제안·당사자를 삽입하지 않는다. 과거 `2485af4` seed1–3에서 미관측이었다는 결과를 삭제하지 않고 **다른 보존 경로에서 새 입력을 찾은 것**으로 구별한다.
 
-[answer124.mjs](answer124.mjs)는 선택 a의 정본 `propose_marriage`(현금80d+동의)를 현재 실제 enabled 상태에서만 누른다. 선택이 닫혔으면 실패를 남기며 임의 다른 선택·현금 보충으로 통과시키지 않는다. 협상 생성과 accepted/rejected/countered를 혼인 성사와 구별한다.
+고정 원본의 현금은 raw 상태·장부 모두 46d다. 당초 계획한 a(현금80d)는 이 입력에서 지원되지 않으므로 그 계획을 b로 정정한다. [answer124.mjs](answer124.mjs)는 정본 b의 `propose_marriage`(현금40d+정치적 지지+동의)를 현재 실제 enabled 목록에 b가 있을 때만 누른다. b도 닫혔으면 실패를 남기며 임의 다른 선택·현금 보충으로 통과시키지 않는다. 선택 ID, 새 답의 source, 실제 당사자와 협상 조항을 모두 b 기준으로 대조하며 출력은 `.remote/eb-weight-124-b`에 보존한다. 협상 생성과 accepted/rejected/countered를 혼인 성사와 구별한다. 이 정정은 b의 화면 통과를 뜻하지 않으며 실제 효과·정확한 흔적·칩·카드·탐색 SHA 관문은 그대로다.
 
 ## 감사: 013·025·052의 다음 제한 관측
 
