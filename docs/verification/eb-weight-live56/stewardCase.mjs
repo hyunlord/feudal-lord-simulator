@@ -1,3 +1,4 @@
+import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -21,7 +22,7 @@ const cases = {
 };
 assert.ok(Object.hasOwn(cases, caseId));
 const [tick, choice, occurrenceId, gzipSha] = cases[caseId], entryId = 'ck_evt_' + caseId;
-const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, entryId, choice, occurrenceId, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, entryId, choice, occurrenceId, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   valid: false, lord56Pass: false, route: 'steward-season-report', actions: [], screenshots: [], errors: [],
   limits: ['Historical steward answer already occurred before input. This observes its actual season report becoming visible, not a fresh lord answer.',
     'One occurrence only; this event ID is not asserted to be exclusively steward-owned.', 'DOM checks require separate human screenshot review.'] };
@@ -52,9 +53,9 @@ async function press(selector, click = true) {
       return null;
     });
     if (!scroll) break;
-    const before = sha(JSON.stringify(await state()));
+    const before = navSha(await state());
     await page.mouse.move(scroll.x, scroll.y); await page.mouse.wheel(0, scroll.delta); await page.clock.runFor(64);
-    const after = sha(JSON.stringify(await state())); assert.equal(after, before, 'Card scroll changed game state');
+    const after = navSha(await state()); assert.equal(after, before, 'Card scroll changed game state');
     report.actions.push({ input: 'native wheel', selector, scroll, beforeSha256: before, afterSha256: after });
   }
   const point = await el.evaluate(el => {
@@ -136,7 +137,7 @@ try {
   assert.deepEqual(readers.wronglyIncluded, []);
   report.bandText = await page.locator('.season-band:visible').textContent();
   assert.equal(await page.locator('.season-band:visible [data-item="steward"]').textContent(), readers.expectedBandSteward);
-  const beforeNavigation = sha(JSON.stringify(await state()));
+  const beforeNavigation = navSha(await state());
   await press('.season-band[data-season="' + readers.season.year + ':' + readers.season.season + '"]');
   const selector = 'li[data-steward-item="' + occurrenceId + '"]';
   await press(selector + ' summary');
@@ -150,13 +151,13 @@ try {
   assert.equal(actual[1], readers.canonical.body);
   assert.ok(actual[2].includes(readers.canonical.label));
   assert.equal(actual.at(-1), readers.canonical.chronicle);
-  report.navigation = { beforeSha256: beforeNavigation, afterSha256: sha(JSON.stringify(await state())), expected, actual };
+  report.navigation = { beforeSha256: beforeNavigation, afterSha256: navSha(await state()), expected, actual };
   assert.equal(report.navigation.beforeSha256, report.navigation.afterSha256);
   await snapshot('expanded');
   report.exposedDetails = [];
   for (let index = 0; index < expected.length; index += 1) {
     const point = await press(selector + ' dd:nth-of-type(' + (index + 1) + ')', false);
-    assert.equal(sha(JSON.stringify(await state())), beforeNavigation, 'Detail navigation changed state');
+    assert.equal(navSha(await state()), beforeNavigation, 'Detail navigation changed state');
     await snapshot('detail-' + index); report.exposedDetails.push({ index, text: actual[index], point });
   }
   report.valid = report.errors.length === 0;

@@ -1,3 +1,4 @@
+import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -20,7 +21,7 @@ assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
-const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   input, entryId: 'ck_evt_124', choice: 'b', screenshots: [], actions: [], errors: [], valid: false,
   provenance: { source: '/home/hyunlord/fls-lord-states/registry-offer.json',
     rawSha256: '0ff4d88a516b6b6868529ccc80281a4ea8a4e68c79b5ecf9ac01a024332bb508',
@@ -64,9 +65,9 @@ async function press(selector, settle = true) {
       return null;
     });
     if (!scroll) break;
-    const before = sha(JSON.stringify(await state()));
+    const before = navSha(await state());
     await page.mouse.move(scroll.x, scroll.y); await page.mouse.wheel(0, scroll.delta); await page.clock.runFor(64);
-    const after = sha(JSON.stringify(await state())); assert.equal(after, before, 'Card scroll changed game state');
+    const after = navSha(await state()); assert.equal(after, before, 'Card scroll changed game state');
     report.actions.push({ input: 'native wheel', selector, scroll, beforeSha256: before, afterSha256: after });
   }
   const point = await el.evaluate(el => {
@@ -129,7 +130,7 @@ try {
     await press(selector, false);
     const immediate = await state();
     const evidence = { selector, beforeTick: prior.tick, afterTick: immediate.tick,
-      beforeSha256: sha(JSON.stringify(prior)), afterSha256: sha(JSON.stringify(immediate)),
+      beforeSha256: navSha(prior), afterSha256: navSha(immediate),
       sourceOfferBefore: prior.registry.occurrences.find(row => row.id === witness.offer.id),
       sourceOfferAfter: immediate.registry.occurrences.find(row => row.id === witness.offer.id) };
     report.offerNavigation.push(evidence);
@@ -138,7 +139,7 @@ try {
     assert.deepEqual(evidence.sourceOfferAfter, evidence.sourceOfferBefore);
     assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
     await page.clock.runFor(32);
-    evidence.settledSha256 = sha(JSON.stringify(await state()));
+    evidence.settledSha256 = navSha(await state());
     assert.equal(evidence.settledSha256, evidence.beforeSha256, 'Deferred navigation changed state after settling');
     assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
   }
@@ -160,7 +161,7 @@ try {
       }
     }
   }
-  assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(before)), 'Reaching the target offer changed state');
+  assert.equal(navSha(await state()), navSha(before), 'Reaching the target offer changed state');
   assert.equal(await page.locator(card).count(), 1);
   await snapshot('target-offered');
   await press(`${card} [data-choose="b"]`);
@@ -202,10 +203,10 @@ try {
     }, negotiation.status);
     report.receipt.exactNegotiationStatus = report.receipt.rows.some(row => row.key === `offer:${negotiation.id}:answer` && row.change === report.receipt.expectedStatus);
     await press('.answer-receipt:visible .answer-receipt-close');
-    assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(after)), 'Closing receipt changed state');
+    assert.equal(navSha(await state()), navSha(after), 'Closing receipt changed state');
   }
   await page.clock.runFor(4000);
-  assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(after)), 'Paused UI settling changed state');
+  assert.equal(navSha(await state()), navSha(after), 'Paused UI settling changed state');
   report.after = await read(report.answer.id); await snapshot('chip');
   report.chipCount = { before: report.before.results?.count ?? 0, after: report.after.results?.count ?? 0 };
   report.chipCount.delta = report.chipCount.after - report.chipCount.before;
@@ -236,7 +237,7 @@ try {
     const chip = `.event-chip[data-story="decision_trace"][data-chip-id="results:${report.after.results.year}"]`;
     assert.equal(await page.locator(chip).textContent(), report.after.expectedChip);
     report.navigation = { attempted: true, reason: 'Exact answer-linked result item and effect trace found.' };
-    const beforeNavigation = sha(JSON.stringify(await state()));
+    const beforeNavigation = navSha(await state());
     await press(chip);
     const actualCard = page.locator('.event-card[data-story="decision_trace"]:visible'); assert.equal(await actualCard.count(), 1);
     const items = await actualCard.locator('.event-card-facts li').evaluateAll(elements => elements.map(el => {
@@ -244,7 +245,7 @@ try {
       return { text: el.textContent, exposed: b.width > 0 && b.height > 0 && b.x >= 0 && b.y >= 0 && b.right <= innerWidth && b.bottom <= innerHeight && top !== null && (el === top || el.contains(top)) };
     }));
     report.manual = { items, expectedFact: report.after.expectedFact, beforeSha256: beforeNavigation,
-      afterSha256: sha(JSON.stringify(await state())) };
+      afterSha256: navSha(await state()) };
     assert.equal(items.filter(row => row.text === report.after.expectedFact).length, 1);
     assert.ok(items.some(row => row.text === report.after.expectedFact && row.exposed));
     assert.equal(report.manual.beforeSha256, report.manual.afterSha256);

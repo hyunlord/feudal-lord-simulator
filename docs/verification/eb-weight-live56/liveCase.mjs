@@ -1,3 +1,4 @@
+import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import { saveAdmissions } from './reviewedSaveAdmission.mjs';
 // One genuine answer, normal UI time, and passive reads. No decision is answered by this observer.
 import assert from 'node:assert/strict';
@@ -30,7 +31,7 @@ assert.ok(contract.outcomes.some(row => row.effectKind === 'conditional'
 const ANSWER = selected.answerId, START = selected.startTick, LIMIT = selected.maximumTick;
 const seedDirectory = join(input, `seed-${selected.seed}`);
 const PRODUCT = '53407fe6946921ddd448fcffeb417ae07e7351f2';
-const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
+const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
   sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
   answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,
   historicalReference: { consequence: selected.consequence, originalObservationBound: selected.maximumTick, notCurrentEvidence: true },
@@ -56,7 +57,7 @@ async function snapshot(label) {
   }
   const screen = `${label}.jpg`;
   await page.screenshot({ path: join(out, screen), type: 'jpeg', quality: 55, timeout: 15000 });
-  const item = { label, tick: JSON.parse(json).tick, sha256: digest, stateFile,
+  const item = { label, tick: JSON.parse(json).tick, sha256: digest, navigationSha256: navSha(json), stateFile,
     compressedSha256: sha(readFileSync(join(out, stateFile))), screen };
   report.states.push(item);
   return item;
@@ -193,17 +194,17 @@ async function continueInformation(observation) {
       const box = await page.locator('.results-card.year-review .results-card-body').boundingBox(); assert.ok(box);
       await page.mouse.move(box.x + box.width / 2, Math.min(700, box.y + box.height / 2));
       await page.mouse.wheel(0, 400); await page.clock.runFor(64);
-      assert.equal(sha(await stateJson()), before.sha256, 'Year report scroll changed state');
+      assert.equal(navSha(await stateJson()), before.navigationSha256, 'Year report scroll changed state');
     }
   }
   await press(selector);
   const after = await stateJson();
-  assert.equal(sha(after), before.sha256, 'Informational Continue changed presentation state');
+  assert.equal(navSha(after), before.navigationSha256, 'Informational Continue changed presentation state');
   const resumed = await sample();
   assert.equal(resumed.tick, observation.tick, 'Informational Continue advanced time');
   assert.equal(resumed.panels.length, 0, 'Another dialog followed the informational report');
   report.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season, year: observation.panels[0].year,
-    beforeSha256: before.sha256, afterSha256: sha(after) });
+    beforeSha256: before.navigationSha256, afterSha256: navSha(after), rawBeforeSha256: before.sha256, rawAfterSha256: sha(after) });
 }
 
 // Normal Later leaves the offer unanswered; its deadline continues on the natural path.
@@ -231,15 +232,15 @@ async function deferCoveringRegistryCard(observation) {
     const box = await body.boundingBox(); assert.ok(box);
     await page.mouse.move(box.x + box.width / 2, Math.min(700, box.y + box.height / 2));
     await page.mouse.wheel(0, 400); await page.clock.runFor(64);
-    assert.equal(sha(await stateJson()), before.sha256, 'Deferred-card scroll changed state');
+    assert.equal(navSha(await stateJson()), before.navigationSha256, 'Deferred-card scroll changed state');
   }
   await press(selector);
   const after = await snapshot(`registry-after-later-${number}`);
-  assert.equal(after.sha256, before.sha256, 'Normal Later changed game state');
+  assert.equal(after.navigationSha256, before.navigationSha256, 'Normal Later changed game state');
   assert.equal((await sample()).tick, observation.tick, 'Later advanced time before the next clock sample');
   assert.equal((await sample()).panels.length, 0, 'Another dialog followed Later');
   report.resultNavigation.push({ kind: 'normal_registry_later_without_answer', offer, pending,
-    beforeSha256: before.sha256, afterSha256: after.sha256, coveredObservation: observation,
+    beforeSha256: before.navigationSha256, afterSha256: after.navigationSha256, rawBeforeSha256: before.sha256, rawAfterSha256: after.sha256, coveredObservation: observation,
     policy: 'No choice selected; normal time may expire this unanswered offer.' });
   return true;
 }
@@ -263,10 +264,10 @@ async function continueUnansweredNotice(observation) {
   const text = await page.locator(notice).innerText();
   await press(selector);
   const after = await stateJson();
-  assert.equal(sha(after), before.sha256, 'Notice Continue changed state before normal clock progression');
+  assert.equal(navSha(after), before.navigationSha256, 'Notice Continue changed state before normal clock progression');
   assert.equal(JSON.parse(after).tick, observation.tick);
   report.unansweredSuitContinues.push({ tick: observation.tick, rawReasons, reasons, matters, text,
-    beforeSha256: before.sha256, afterSha256: sha(after),
+    beforeSha256: before.navigationSha256, afterSha256: navSha(after), rawBeforeSha256: before.sha256, rawAfterSha256: sha(after),
     policy: 'Continue normal time without answering any pending matter; all deadlines still run. Event notices may have no pending matter.' });
   await selectTen();
   return true;
@@ -381,7 +382,7 @@ try {
     if (!(await sample()).paused) await press('.speed-seal[data-seal="pause"]');
     assert.ok((await sample()).paused, 'Normal pause control did not pause');
     await page.clock.runFor(32);
-    assert.equal(sha(await stateJson()), beforePause.sha256, 'Pause changed presentation state');
+    assert.equal(navSha(await stateJson()), beforePause.navigationSha256, 'Pause changed presentation state');
     await press(`.event-chip[data-story="decision_trace"][data-chip-id="${report.automatic.chip.id}"]`);
     await page.clock.runFor(32);
     const card = page.locator('.event-card[data-story="decision_trace"]:visible');
@@ -397,7 +398,7 @@ try {
     report.manual = { facts, visibleFacts, expectedFact: report.automatic.expectedFact,
       targetCaptured: visibleFacts.filter(row => row.text === report.automatic.expectedFact).length === 1
         && visibleFacts.some(row => row.text === report.automatic.expectedFact && row.exposed),
-      beforeSha256: beforePause.sha256, afterSha256: after.sha256, stateUnchanged: beforePause.sha256 === after.sha256 };
+      beforeSha256: beforePause.navigationSha256, afterSha256: after.navigationSha256, rawBeforeSha256: beforePause.sha256, rawAfterSha256: after.sha256, stateUnchanged: beforePause.navigationSha256 === after.navigationSha256 };
     assert.ok(report.manual.targetCaptured && report.manual.stateUnchanged, 'Actual card or navigation-state invariant failed');
   }
   report.final = await sample();

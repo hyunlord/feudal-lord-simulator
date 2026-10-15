@@ -1,15 +1,15 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 12/56, 실제 실패 5, 관측 미달(사건/조건 미도달) 0, 하네스 관측 미완 1, 미검증 34, 청지기 별도 경로 4. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 13/56, 실제 실패 4, 관측 미달(사건/조건 미도달) 0, 하네스 관측 미완 1, 미검증 34, 청지기 별도 경로 4. 전체 관문 통과가 아니다.
 
-다음 실행 제품 53407fe6946921ddd448fcffeb417ae07e7351f2. 통과12건과 기존 실패 증거는 기준 0eddc146이며 새 본선의 재검증 결과가 아니다. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
+다음 실행 제품 53407fe6946921ddd448fcffeb417ae07e7351f2. 통과13건과 기존 실패 증거는 기준 0eddc146이며 새 본선의 재검증 결과가 아니다. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
-통과 기준은 실제 결과, 그 뒤 칩 갱신·노출, 정확한 카드 항목, 탐색 SHA 불변, 원본 JPEG 검토다. reader 포함만으로 통과시키지 않는다. 입력이 없는 사건은 제품 결함이나 영구 도달불가로 단정하지 않는다.
+통과 기준은 실제 결과, 그 뒤 칩 갱신·노출, 정확한 카드 항목, 탐색 SHA 불변(/seen만 제외), 원본 JPEG 검토다. reader 포함만으로 통과시키지 않는다. 입력이 없는 사건은 제품 결함이나 영구 도달불가로 단정하지 않는다.
 
 | ID | 지원 선택 | 선택(검증/예정) | 현재 판정 | 증거 / 제한 |
 |---|---|---|---|---|
 | 002 | b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 005 | a, b, c | b | 실패: 탐색 SHA 변경 | [증거1](../eb-weight-005-later/README.md); 정상 나중에 탐색으로 같은 tick의 연말 카드 seen이 바뀌어 전체 SHA 불변 위반. Actual income23d and exact trace exist. Normal Later triggers deferred year card and mutates seen at unchanged tick36151. FullSHA invariant failed. |
+| 005 | a, b, c | b | 통과(한 선택) | [증거1](../eb-weight-005-later/README.md); 기준 0eddc146. 사용자 승인 /seen 단독 제외 기준으로 기존 증빙 재판정. 005/b 실제 수입23d·답 연결·기존 화면 증빙. /seen만 제외한 탐색 상태 동일: 2026-10-16 사용자 판정에 따라 통과. 기존 원시 전체 SHA 및 실패 로그는 역사 기록으로 보존. |
 | 009 | a, b, c, defer | c | 실패: 칩 자리 제한 | [증거1](../eb-weight-009-live/README.md); 실제 결과와 reader 포함은 있지만 결과 칩이 화면에 표시되지 않음. Actual result and exact trace present; annual reader includes item, automatic rail omits results chip within observed window. Card/SHA not observed. |
 | 010 | a, b, c | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 011 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |

@@ -1,0 +1,21 @@
+{
+  "event": "ck_evt_005",
+  "choice": "b",
+  "run": "engineB-weight005-later-430d8d6",
+  "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "scope": "JSON state excluding only top-level /seen; raw evidence hashes remain unchanged",
+  "excludedPaths": [
+    "/seen"
+  ],
+  "reason": "/seen은 화면 표시 상태(저장 v51). 시뮬레이션은 읽지 않음.",
+  "beforeSha256": "e1715cd5f7c6ff1cacdb7faeed11c865a60bd7e0471ab9f3e48d7e6dec8c5a41",
+  "afterSha256": "e1715cd5f7c6ff1cacdb7faeed11c865a60bd7e0471ab9f3e48d7e6dec8c5a41",
+  "otherPathsDeepEqual": true,
+  "beforeTick": 36151,
+  "afterTick": 36151,
+  "navigationPass": true,
+  "verdict": "pass_one_choice",
+  "basis": "2026-10-16 user-approved reassessment of retained evidence",
+  "newRun": false,
+  "originalFailureRetained": true
+}

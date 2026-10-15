@@ -33,18 +33,20 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_navigation_state_changed",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "b"
       },
-      "limits": "Actual income23d and exact trace exist. Normal Later triggers deferred year card and mutates seen at unchanged tick36151. FullSHA invariant failed.",
+      "limits": "005/b 실제 수입23d·답 연결·기존 화면 증빙. /seen만 제외한 탐색 상태 동일: 2026-10-16 사용자 판정에 따라 통과. 기존 원시 전체 SHA 및 실패 로그는 역사 기록으로 보존.",
       "evidence": "../eb-weight-005-later/README.md",
       "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
-      "retestRequired": true,
-      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
-      "failureCause": "정상 나중에 탐색으로 같은 tick의 연말 카드 seen이 바뀌어 전체 SHA 불변 위반.",
-      "verdictGroup": "actual_failure"
+      "retestRequired": false,
+      "verdictGroup": "accepted",
+      "baselineNote": "기준 0eddc146. 사용자 승인 /seen 단독 제외 기준으로 기존 증빙 재판정.",
+      "foodGrowthDependent": true,
+      "historicalVerdict": "fail_navigation_state_changed",
+      "acceptanceBasis": "user-approved existing-evidence reassessment excluding only /seen"
     },
     {
       "entryId": "ck_evt_009",
@@ -1163,5 +1165,12 @@
     }
   ],
   "previousProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
-  "baselinePolicy": "Twelve accepted cases remain historical 0eddc146 evidence and are not rerun. All remaining observations run on 53407fe69; historical results are not new-baseline evidence."
+  "baselinePolicy": "Twelve accepted cases remain historical 0eddc146 evidence and are not rerun. All remaining observations run on 53407fe69; historical results are not new-baseline evidence.",
+  "navigationHashPolicy": {
+    "excludedPaths": [
+      "/seen"
+    ],
+    "reason": "/seen은 화면 표시 상태(저장 v51). 시뮬레이션은 읽지 않음.",
+    "futurePushGateReview": "RR22 by REMOTE if promoted to push gate"
+  }
 }

@@ -1,3 +1,4 @@
+import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -32,7 +33,7 @@ const packed = readFileSync(join(input, witness.file)); assert.equal(sha(packed)
 const raw = gunzipSync(packed); assert.equal(sha(raw), witness.encodedSha256);
 const admitted = decodeSave(raw).envelope.state;
 assert.equal(sha(JSON.stringify(admitted)), witness.stateSha256);
-const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   acquisitionSha256: sha(acquisitionBytes), witness, entryId: 'ck_evt_046', choice: 'cancel', screenshots: [], actions: [], errors: [], valid: false,
   limits: ['Actual UI answer from a genuine normally resumed offer. No state fields invented.',
     'Cancellation is complete when timberOrder becomes absent/zero. Later delivery from a new order is not its effect.',
@@ -68,9 +69,9 @@ async function press(selector) {
       return null;
     });
     if (!scroll) break;
-    const before = sha(JSON.stringify(await state()));
+    const before = navSha(await state());
     await page.mouse.move(scroll.x, scroll.y); await page.mouse.wheel(0, scroll.delta); await page.clock.runFor(64);
-    const after = sha(JSON.stringify(await state())); assert.equal(after, before, 'Card scroll changed game state');
+    const after = navSha(await state()); assert.equal(after, before, 'Card scroll changed game state');
     report.actions.push({ input: 'native wheel', selector, scroll, beforeSha256: before, afterSha256: after });
   }
   const point = await el.evaluate(el => {
@@ -139,10 +140,10 @@ try {
       && await timberRow.locator('.answer-receipt-what').innerText() === report.receipt.expected.what
       && await timberRow.locator('.answer-receipt-change').innerText() === report.receipt.expected.change;
     await press('.answer-receipt:visible .answer-receipt-close');
-    assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(after)), 'Closing receipt changed state');
+    assert.equal(navSha(await state()), navSha(after), 'Closing receipt changed state');
   }
   await page.clock.runFor(4000);
-  assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(after)), 'Paused UI settling changed state');
+  assert.equal(navSha(await state()), navSha(after), 'Paused UI settling changed state');
   report.after = await read(report.answer.id); await snapshot('chip');
   report.chipCount = { before: report.before.results?.count ?? 0, after: report.after.results?.count ?? 0 };
   report.chipCount.delta = report.chipCount.after - report.chipCount.before;
@@ -166,7 +167,7 @@ try {
     const chip = `.event-chip[data-story="decision_trace"][data-chip-id="results:${report.after.results.year}"]`;
     assert.equal(await page.locator(chip).textContent(), report.after.expectedChip);
     report.navigation = { attempted: true, reason: 'Exact answer-linked result item and effect trace found.' };
-    const beforeNavigation = sha(JSON.stringify(await state()));
+    const beforeNavigation = navSha(await state());
     await press(chip);
     const actualCard = page.locator('.event-card[data-story="decision_trace"]:visible'); assert.equal(await actualCard.count(), 1);
     const items = await actualCard.locator('.event-card-facts li').evaluateAll(elements => elements.map(el => {
@@ -174,7 +175,7 @@ try {
       return { text: el.textContent, exposed: b.width > 0 && b.height > 0 && b.x >= 0 && b.y >= 0 && b.right <= innerWidth && b.bottom <= innerHeight && top !== null && (el === top || el.contains(top)) };
     }));
     report.manual = { items, expectedFact: report.after.expectedFact, beforeSha256: beforeNavigation,
-      afterSha256: sha(JSON.stringify(await state())) };
+      afterSha256: navSha(await state()) };
     assert.equal(items.filter(row => row.text === report.after.expectedFact).length, 1);
     assert.ok(items.some(row => row.text === report.after.expectedFact && row.exposed));
     assert.equal(report.manual.beforeSha256, report.manual.afterSha256);

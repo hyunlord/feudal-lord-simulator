@@ -1,6 +1,6 @@
 # ck_evt_005/b — 빈 좌판 곁의 세금 장부
 
-Status: **FAIL — original failure retained; after-Later JPEG reviewed by parent**.
+Status: **PASS — 2026-10-16 사용자 승인 /seen 단독 제외 기준으로 기존 증빙 재판정. 원래 전체 SHA 실패는 역사 기록으로 보존.**
 
 Official run: `engineB-weight005-later-430d8d6`; exit 1; original valid: false.
 Product: `0eddc146c7d57b4cae091bff62295a1fc16e1f97`; historical input: `2485af40046793f1856829fa1161dc4431942aa7`; tool: `430d8d656aebb5e8896bb666e77e3fa23b40d6a1`.
@@ -71,3 +71,7 @@ Verify the retained files with `shasum -a 256 -c SHA256SUMS` from this directory
 코드 위치(측정 제품0eddc146 및53407fe69에서 동일): `src/ui/hud/useStoryPresentation.ts:221`이 밀린 연말 카드를 열며 `markOpened`를 호출하고, 같은 파일109줄에서 `{type:"mark_story_seen", id:"year-review:1308", how:"opened"}`를 dispatch한다. `src/state/gameStore.ts:167`이 `src/engine/storySeen.ts:40–51`의 명시적 쓰기 함수로 보내 새 상태의 seen.marks를 만든다. 조회 `storySeen`(31–32줄)은 읽기만 한다.
 
 **담당: 렌더 A — 화면 자동열림이 명령을 보내는 경로이며 엔진 조회 함수가 상태를 고치는 경우가 아니다.** 전체 상태 SHA 불변은 실제 실패다. 저장 읽음 표시 변경만 입증했으며 경제 상태·시뮬레이션 결정성·별도 가드레일 해시의 변화까지 입증한 것은 아니다. 새005실행을 대기열에서 빼고 진단만 인계한다.
+
+## 2026-10-16 사용자 판정 변경: 통과
+
+/seen은 화면 표시 상태(저장 v51). 시뮬레이션은 읽지 않음. 최상위 /seen만 제외한 두 상태가 같으므로 **005/b 통과**, 제품 실패 아님. 새 실행·제품 수정 없음. 위의 렌더 A 결함 인계 및 전체 SHA 실패 결론은 변경 전 역사 기록이며 현재 유효한 결함 판정이 아니다. 기존 원본 로그의 exit1/valid:false는 당시 전체 SHA 기준의 결과로 보존한다. 재계산 수치는 navigation-reassessment.json에 기록한다.

@@ -19,8 +19,8 @@ const harnessIncomplete = inventory.rows.filter(row => row.verdictGroup === 'har
 const lines = [
   '# EB-WEIGHT 56사건 실제 화면 관문', '',
   `진행 중: 사건별 통과 ${count('pass_')}/56, 실제 실패 ${actualFailures.length}, 관측 미달(사건/조건 미도달) ${observationShortfall.length}, 하네스 관측 미완 ${harnessIncomplete.length}, 미검증 ${count('pending')}, 청지기 별도 경로 ${count('steward_')}. 전체 관문 통과가 아니다.`, '',
-  `다음 실행 제품 ${inventory.product}. 통과12건과 기존 실패 증거는 기준 0eddc146이며 새 본선의 재검증 결과가 아니다. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.`, '',
-  '통과 기준은 실제 결과, 그 뒤 칩 갱신·노출, 정확한 카드 항목, 탐색 SHA 불변, 원본 JPEG 검토다. reader 포함만으로 통과시키지 않는다. 입력이 없는 사건은 제품 결함이나 영구 도달불가로 단정하지 않는다.', '',
+  `다음 실행 제품 ${inventory.product}. 통과${count('pass_')}건과 기존 실패 증거는 기준 0eddc146이며 새 본선의 재검증 결과가 아니다. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.`, '',
+  '통과 기준은 실제 결과, 그 뒤 칩 갱신·노출, 정확한 카드 항목, 탐색 SHA 불변(/seen만 제외), 원본 JPEG 검토다. reader 포함만으로 통과시키지 않는다. 입력이 없는 사건은 제품 결함이나 영구 도달불가로 단정하지 않는다.', '',
   '| ID | 지원 선택 | 선택(검증/예정) | 현재 판정 | 증거 / 제한 |',
   '|---|---|---|---|---|',
 ];

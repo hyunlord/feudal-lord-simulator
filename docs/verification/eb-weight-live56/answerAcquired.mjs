@@ -1,3 +1,4 @@
+import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -13,7 +14,7 @@ const [caseId, input, out, url] = process.argv.slice(2);
 assert.ok(out, 'Output directory required'); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
-const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, caseId, product, valid: false, lord56Pass: false, humanJpegReview: "pending",
+const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, caseId, product, valid: false, lord56Pass: false, humanJpegReview: "pending",
   screenshots: [], actions: [], errors: [], offerNavigation: [], screenCaptureValid: false,
   limits: ['One genuine acquired offer answered through ordinary UI; no fabricated state.',
     'Immediate actual effect only; no claim that a filing won, enforcement succeeded, or timber was delivered.',
@@ -45,9 +46,9 @@ async function press(selector, settle = true) {
       return null;
     });
     if (!scroll) break;
-    const before = sha(JSON.stringify(await state()));
+    const before = navSha(await state());
     await page.mouse.move(scroll.x, scroll.y); await page.mouse.wheel(0, scroll.delta); await page.clock.runFor(64);
-    const after = sha(JSON.stringify(await state())); assert.equal(after, before, 'Card scroll changed game state');
+    const after = navSha(await state()); assert.equal(after, before, 'Card scroll changed game state');
     report.actions.push({ input: 'native wheel', selector, scroll, beforeSha256: before, afterSha256: after });
   }
   const point = await el.evaluate(el => {
@@ -75,7 +76,7 @@ async function navigate(selector) {
   await press(selector, false);
   const after = await state();
   const row = { selector, beforeTick: before.tick, afterTick: after.tick,
-    beforeSha256: sha(JSON.stringify(before)), afterSha256: sha(JSON.stringify(after)),
+    beforeSha256: navSha(before), afterSha256: navSha(after),
     offerBefore: before.registry.occurrences.find(row => row.id === witness.offer.id),
     offerAfter: after.registry.occurrences.find(row => row.id === witness.offer.id) };
   report.offerNavigation.push(row);
@@ -83,7 +84,7 @@ async function navigate(selector) {
   assert.deepEqual(row.offerAfter, row.offerBefore);
   assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
   await page.clock.runFor(32);
-  row.settledSha256 = sha(JSON.stringify(await state()));
+  row.settledSha256 = navSha(await state());
   assert.equal(row.settledSha256, row.beforeSha256);
   assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
 }
@@ -217,7 +218,7 @@ try {
     }
   }
   assert.equal(await page.locator('.speed-seal[data-seal="pause"]').getAttribute('aria-pressed'), 'true');
-  assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(before)));
+  assert.equal(navSha(await state()), navSha(before));
   await snapshot('target-offered');
   report.phase = 'answer'; await press(`${card} [data-choose="${selected.choice}"]`);
   const after = await snapshot('answered'); assert.equal(after.tick, before.tick);
@@ -239,7 +240,7 @@ try {
     await navigate('.answer-receipt:visible .answer-receipt-close');
   }
   await page.clock.runFor(4000);
-  assert.equal(sha(JSON.stringify(await state())), sha(JSON.stringify(after)), 'Paused settling changed state');
+  assert.equal(navSha(await state()), navSha(after), 'Paused settling changed state');
   report.after = await read(report.answer.id); await snapshot('chip');
   const newHistoryIds = new Set(report.newHistory.map(row => row.id));
   report.primaryEffectTrace = report.after.rows.filter(row => {
@@ -280,13 +281,13 @@ try {
     report.phase = 'chip_card'; assert.ok(report.chipCount.delta > 0);
     const chip = `.event-chip[data-story="decision_trace"][data-chip-id="results:${report.after.results.year}"]`;
     assert.equal(await page.locator(chip).textContent(), report.after.expectedChip);
-    const beforeNavigation = sha(JSON.stringify(await state())); await navigate(chip);
+    const beforeNavigation = navSha(await state()); await navigate(chip);
     const actualCard = page.locator('.event-card[data-story="decision_trace"]:visible'); assert.equal(await actualCard.count(), 1);
     const items = await actualCard.locator('.event-card-facts li').evaluateAll(elements => elements.map(el => {
       const b = el.getBoundingClientRect(), top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2);
       return { text: el.textContent, exposed: b.width > 0 && b.height > 0 && b.x >= 0 && b.y >= 0 && b.right <= innerWidth && b.bottom <= innerHeight && top !== null && (el === top || el.contains(top)) };
     }));
-    report.manual = { items, expectedFact: report.after.expectedFact, beforeSha256: beforeNavigation, afterSha256: sha(JSON.stringify(await state())) };
+    report.manual = { items, expectedFact: report.after.expectedFact, beforeSha256: beforeNavigation, afterSha256: navSha(await state()) };
     assert.equal(items.filter(row => row.text === report.after.expectedFact).length, 1);
     assert.ok(items.some(row => row.text === report.after.expectedFact && row.exposed));
     assert.equal(report.manual.beforeSha256, report.manual.afterSha256); await snapshot('card');
