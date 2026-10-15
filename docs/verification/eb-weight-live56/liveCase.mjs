@@ -1,0 +1,289 @@
+// One genuine answer, normal UI time, and passive reads. No decision is answered by this observer.
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { basename, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { gunzipSync, gzipSync } from 'node:zlib';
+
+assert.equal(process.platform, 'linux', 'Game/browser execution belongs on DGX');
+assert.equal(process.env.FLS_REMOTE, '1', 'Use the official remote runner');
+const [input, out, url, entryId] = process.argv.slice(2);
+assert.ok(input && out && url, 'Usage: tsx liveCase.mjs INPUT_CHECKPOINT_ROOT OUTPUT_DIR URL ENTRY_ID');
+assert.equal(new URL(url).search, '', 'Use the default story delay; supply a bare base URL');
+mkdirSync(out, { recursive: true });
+const repo = resolve(fileURLToPath(new URL('../../..', import.meta.url)));
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
+const cases = JSON.parse(readFileSync(new URL('./cases.json', import.meta.url)));
+const selected = cases.find(item => item.entryId === entryId);
+assert.ok(selected, 'Case must be explicitly pinned in cases.json');
+const ANSWER = selected.answerId, START = selected.startTick, LIMIT = selected.maximumTick;
+const seedDirectory = join(input, `seed-${selected.seed}`);
+const PRODUCT = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const report = { schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
+  sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
+  answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,
+  valid: false, automatic: null, manual: null, actions: [], states: [], samples: [], transitions: [],
+  receipts: [], informationalContinues: [], errors: [],
+  limits: ['Proof snapshots contain presentation walkers, not a raw store snapshot.',
+    'This is one current-product replay from a genuine historical answer, not a fresh 125-year run.',
+    'Automatic yearly aggregation is distinct from automatic opening of a card or a new notification.',
+    'A bounded replay may stop at an unrelated required decision; that is not proof of a trace or display defect.',
+    'The observation bound is the original first consequence tick plus 200 ticks; old and current simulation may diverge.'] };
+let browser, context, page, initialized = false;
+const stateFiles = new Map();
+const stateJson = () => page.evaluate(() => JSON.stringify(window.__FEUDAL_PHASE10_PROOF__.state()));
+
+async function snapshot(label) {
+  const json = await stateJson(), digest = sha(json);
+  let stateFile = stateFiles.get(digest);
+  if (!stateFile) {
+    stateFile = `${label}.state.json.gz`;
+    writeFileSync(join(out, stateFile), gzipSync(json, { level: 9 }), { flag: 'wx' });
+    stateFiles.set(digest, stateFile);
+  }
+  const screen = `${label}.jpg`;
+  await page.screenshot({ path: join(out, screen), type: 'jpeg', quality: 55, timeout: 15000 });
+  const item = { label, tick: JSON.parse(json).tick, sha256: digest, stateFile,
+    compressedSha256: sha(readFileSync(join(out, stateFile))), screen };
+  report.states.push(item);
+  return item;
+}
+
+// Native pointer input at a verified exposed centre; no force click or synthetic DOM dispatch.
+async function press(selector) {
+  const control = page.locator(selector);
+  assert.equal(await control.count(), 1, `Unique control required: ${selector}`);
+  assert.ok(await control.isVisible() && await control.isEnabled(), `Unavailable control: ${selector}`);
+  const point = await control.evaluate(el => {
+    const b = el.getBoundingClientRect(), x = b.x + b.width / 2, y = b.y + b.height / 2;
+    const top = document.elementFromPoint(x, y);
+    return b.width > 0 && b.height > 0 && x >= 0 && y >= 0 && x < innerWidth && y < innerHeight
+      && top !== null && (el === top || el.contains(top)) ? { x, y } : null;
+  });
+  assert.ok(point, `Covered control: ${selector}`);
+  await page.mouse.click(point.x, point.y);
+  report.actions.push({ selector, input: 'native pointer click through normal UI', tick: (await sample()).tick });
+}
+
+async function sample() {
+  return page.evaluate(({ answer, start }) => {
+    const state = window.__FEUDAL_PHASE10_PROOF__.state(), reads = window.__EB_WEIGHT_READS__;
+    const from = state.tick - state.tick % reads.yearLength;
+    const rows = reads.traceInRange(state, from, state.tick + 1).filter(row => row.decisionId === answer);
+    const groups = reads.traceGroups(state, rows), results = reads.yearResults(state);
+    const target = results?.items.find(item => item.decisionId === answer) ?? null;
+    const receipts = (state.history?.records ?? []).filter(record => !window.__EB_WEIGHT_INITIAL_IDS__.has(record.id)
+      && record.kind !== 'decision' && record.tick > start && record.because?.some(cause => cause.decisionId === answer))
+      .map(record => ({ id: record.id, tick: record.tick, kind: record.kind, template: record.template,
+        params: record.params, because: record.because }));
+    const visible = el => {
+      const b = el.getBoundingClientRect(), style = getComputedStyle(el);
+      return b.width > 0 && b.height > 0 && style.visibility !== 'hidden' && style.display !== 'none';
+    };
+    const exposed = el => {
+      if (!visible(el)) return false;
+      const b = el.getBoundingClientRect(), top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2);
+      return b.x >= 0 && b.y >= 0 && b.right <= innerWidth && b.bottom <= innerHeight
+        && top !== null && (el === top || el.contains(top));
+    };
+    const chips = [...document.querySelectorAll('.event-chip[data-story="decision_trace"]')].map(el => ({
+      id: el.getAttribute('data-chip-id'), text: el.textContent?.trim(), visible: visible(el), exposed: exposed(el) }));
+    const panels = [...document.querySelectorAll('[role="dialog"]')].filter(visible).map(el => {
+      const controls = [...el.querySelectorAll('button.season-ledger-resume')];
+      return { className: el.className, season: el.getAttribute('data-season'), text: el.textContent?.slice(0, 700),
+        continueCount: controls.length, continueAvailable: controls.length === 1 && !controls[0].disabled && exposed(controls[0]) };
+    });
+    return { tick: state.tick, yearStartTick: from, receipts, targetRows: rows, targetGroups: groups,
+      results, target, expectedChipText: results ? reads.copy.trace.yearChip(results.count) : null,
+      expectedFact: target ? reads.copy.trace.yearItem(target.title, target.count) : null, chips, panels,
+      targetDecisionPresent: state.history?.records.some(row => row.id === answer) ?? false,
+      automaticCardOpen: [...document.querySelectorAll('.event-card[data-story="decision_trace"]')].some(visible),
+      paused: document.querySelector('.speed-seal[data-seal="pause"]')?.getAttribute('aria-pressed') === 'true',
+      ten: document.querySelector('.speed-seal[data-seal="fast"] [data-step="10"]')?.getAttribute('data-on') === 'true',
+      autoplayOff: document.querySelector('.autoplay-control > button')?.getAttribute('aria-pressed') === 'false' };
+  }, { answer: ANSWER, start: START });
+}
+
+function automaticMatch(observation) {
+  if (!observation.results || !observation.target) return null;
+  if (report.initial.results?.year === observation.results.year
+    && report.initial.chips.some(chip => chip.id === `results:${observation.results.year}` && chip.visible)
+    && report.initial.results.count === observation.results.count) return null;
+  const chips = observation.chips.filter(chip => chip.exposed && chip.id === `results:${observation.results.year}`
+    && chip.text === observation.expectedChipText);
+  if (chips.length !== 1) return null;
+  const links = observation.receipts.flatMap(receipt => observation.targetRows.filter(row => row.recordId === receipt.id
+    && row.tick === receipt.tick && row.decisionTick === START && receipt.tick <= observation.tick
+    && receipt.because.some(cause => cause.decisionId === ANSWER && cause.key === row.key && (cause.part === true) === row.part)));
+  const group = observation.targetGroups.find(item => item.decisionId === ANSWER && item.by !== 'steward');
+  if (!links.length || !group || observation.target.count !== group.rows.length) return null;
+  return { observedTick: observation.tick, evidenceKind: 'automatic_yearly_aggregation', chip: chips[0],
+    results: observation.results, target: observation.target, expectedFact: observation.expectedFact, exactNewRows: links,
+    automaticCardOpen: observation.automaticCardOpen };
+}
+
+function informational(observation) {
+  const panel = observation.panels[0];
+  return observation.panels.length === 1 && panel.className === 'season-ledger-card'
+    && /^(\d+):([0-3])$/.test(panel.season ?? '') && panel.continueCount === 1 && panel.continueAvailable;
+}
+
+async function continueInformation(observation) {
+  assert.ok(report.informationalContinues.length < 16, 'Bounded informational-report limit');
+  const before = await snapshot(`information-${report.informationalContinues.length + 1}`);
+  await press('.season-ledger-card button.season-ledger-resume');
+  const after = await stateJson();
+  assert.equal(sha(after), before.sha256, 'Informational Continue changed presentation state');
+  const resumed = await sample();
+  assert.equal(resumed.tick, observation.tick, 'Informational Continue advanced time');
+  assert.equal(resumed.panels.length, 0, 'Another dialog followed the informational report');
+  report.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season,
+    beforeSha256: before.sha256, afterSha256: sha(after) });
+}
+
+async function selectTen() {
+  for (let attempt = 0; attempt < 2 && !(await sample()).ten; attempt += 1) await press('.speed-seal[data-seal="fast"]');
+  const observed = await sample();
+  assert.ok(observed.ten && !observed.paused && observed.autoplayOff, 'Normal 10x required; autoplay must stay off');
+}
+
+try {
+  report.toolRevision = git('rev-parse', 'HEAD');
+  assert.equal(git('diff', PRODUCT, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'), '', 'Product source must match the agreed revision');
+  const manifestBytes = readFileSync(join(seedDirectory, 'manifest.json'));
+  const pinnedManifestBytes = readFileSync(join(repo, selected.manifestFile));
+  assert.equal(sha(manifestBytes), sha(pinnedManifestBytes), 'Remote manifest must match retained original bytes');
+  const pair = JSON.parse(manifestBytes).pairs.find(row => row.entryId === selected.entryId);
+  assert.deepEqual(pair.answer, selected.answer);
+  assert.equal(pair.decisionId, ANSWER);
+  assert.equal(pair.decisionTick, START);
+  assert.equal(basename(pair.answer.file), pair.answer.file);
+  const compressed = readFileSync(join(seedDirectory, pair.answer.file));
+  assert.equal(compressed.length, pair.answer.bytes);
+  assert.equal(sha(compressed), pair.answer.fileSha256);
+  const raw = gunzipSync(compressed);
+  assert.equal(sha(raw), pair.answer.encodedSaveSha256);
+  const [{ decodeSave }, { withResidentWalkers }, { loadChromium }, scene] = await Promise.all([
+    import('../../../src/save/saveCodec.ts'), import('../../../src/render/presentation/residentWalkerState.ts'),
+    import('../../../scripts/renderCommitProbe.mjs'), import('../../../scripts/sceneInjection.mjs')]);
+  const original = JSON.parse(raw), decoded = decodeSave(raw), state = decoded.envelope.state;
+  assert.equal(state.seed, selected.seed); assert.equal(state.tick, START);
+  assert.equal(state.trace.decisions.find(row => row.id === ANSWER)?.source, selected.source);
+  report.input = { manifestSha256: sha(manifestBytes), answer: pair.answer, decisionId: pair.decisionId,
+    rawSchemaVersion: original.schemaVersion, currentSchemaVersion: decoded.envelope.schemaVersion,
+    rawStateSha256: sha(JSON.stringify(original.state)), decodedStateSha256: sha(JSON.stringify(state)),
+    changedTopLevelKeys: [...new Set([...Object.keys(original.state), ...Object.keys(state)])]
+      .filter(key => JSON.stringify(original.state[key]) !== JSON.stringify(state[key])).sort() };
+  browser = await (await loadChromium()).launch({ channel: 'chrome', headless: true });
+  context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: 'ko-KR' });
+  page = await context.newPage(); page.setDefaultTimeout(10000);
+  page.on('pageerror', error => report.errors.push(String(error)));
+  await page.clock.install();
+  await context.addInitScript("globalThis.__name ??= target => target; localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({enabled:false,acks:[],pulsed:[],log:[]}));");
+  await page.routeWebSocket('**', socket => socket.close());
+  await scene.routeSceneState(page, raw.toString('utf8'));
+  const refused = scene.sceneStateRefusal(page);
+  await page.goto(`${url}?phase10-proof=1`, { timeout: 90000 });
+  await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90000 }), refused]);
+  initialized = true;
+  await page.evaluate(async () => {
+    const [reads, thread, years, words, config] = await Promise.all([import('/src/engine/decisionReads.ts'),
+      import('/src/ui/results/decisionThread.ts'), import('/src/ui/results/yearResults.ts'),
+      import('/src/ui/results/resultsCopy.ko.ts'), import('/src/content/balanceConfig.ts')]);
+    window.__EB_WEIGHT_READS__ = { traceInRange: reads.traceInRange, traceGroups: thread.traceGroups,
+      yearResults: years.yearResults, copy: words.RESULTS_COPY, yearLength: config.BALANCE.TICKS_PER_YEAR };
+    window.__EB_WEIGHT_INITIAL_IDS__ = new Set(window.__FEUDAL_PHASE10_PROOF__.state().history.records.map(row => row.id));
+  });
+  report.expectedPresentationSha256 = sha(JSON.stringify(withResidentWalkers(state)));
+  const initial = await snapshot('initial');
+  assert.equal(initial.sha256, report.expectedPresentationSha256, 'Initial presentation differs from the genuine codec-admitted save');
+  if (await page.locator('.welcome-dismiss-layer').isVisible()) await press('.welcome-dismiss-layer');
+  assert.ok((await sample()).paused && (await sample()).autoplayOff, 'Initial game must be paused with autoplay off');
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1000));
+  await page.clock.runFor(32);
+  assert.equal(sha(await stateJson()), initial.sha256, 'Pre-input state drift');
+  report.initial = await sample();
+  if (informational(report.initial)) await continueInformation(report.initial);
+  if ((await sample()).panels.length) report.stop = 'pre_input_substantive_or_unknown_dialog';
+  else {
+    await selectTen();
+    const started = Date.now(); let previousTick = START, signature = '';
+    for (let frame = 0; frame < 160000 && Date.now() - started < 900000; frame += 1) {
+      // Stop a few ticks early rather than risk a normal 10x frame crossing the pinned tick ceiling.
+      if (previousTick >= LIMIT - 4) { report.stop = 'bounded_original_first_result_plus_200_ticks'; break; }
+      await page.clock.runFor(16);
+      const observation = await sample();
+      assert.ok(observation.tick >= previousTick && observation.tick <= LIMIT, 'Observed tick reversal/overshoot');
+      assert.ok(observation.autoplayOff, 'Autoplay was enabled');
+      report.samples.push([frame, observation.tick, observation.paused, observation.ten, observation.results?.count ?? 0,
+        observation.target?.count ?? 0, observation.receipts.length, observation.panels.length]);
+      const nextSignature = JSON.stringify([observation.paused, observation.ten, observation.chips, observation.panels,
+        observation.targetRows, observation.results?.count]);
+      if (signature !== nextSignature) { report.transitions.push({ frame, ...observation }); signature = nextSignature; }
+      if (!report.receipts.length && observation.receipts.length) await snapshot('first-exact-receipt');
+      report.receipts = observation.receipts;
+      if (observation.tick > previousTick && observation.ten) report.progressAtTen = true;
+      if (observation.panels.length && !informational(observation)) {
+        report.stop = 'substantive_or_unknown_intervention_required'; break;
+      }
+      const match = observation.panels.length === 0 ? automaticMatch(observation) : null;
+      if (match) {
+        report.automatic = { ...match, initialCount: report.initial.results?.count ?? 0,
+          initialTargetCount: report.initial.target?.count ?? 0,
+          countChangedFromInitial: report.initial.results?.count !== match.results.count,
+          chipExistedInitially: report.initial.chips.some(chip => chip.id === match.chip.id && chip.visible) };
+        await snapshot('automatic-chip'); report.stop = 'new_exact_result_in_automatic_year_chip'; break;
+      }
+      if (informational(observation)) {
+        await continueInformation(observation); await selectTen();
+        assert.equal((await sample()).tick, observation.tick, 'Resume advanced time outside the clock sampler');
+      } else if (observation.paused) {
+        report.stop = 'substantive_or_unknown_intervention_required'; break;
+      } else assert.ok(observation.ten, '10x was no longer selected');
+      previousTick = observation.tick;
+    }
+    report.stop ??= 'frame_or_wall_time_bound';
+  }
+  if (report.automatic) {
+    const beforePause = await snapshot('before-manual');
+    if (!(await sample()).paused) await press('.speed-seal[data-seal="pause"]');
+    assert.ok((await sample()).paused, 'Normal pause control did not pause');
+    await page.clock.runFor(32);
+    assert.equal(sha(await stateJson()), beforePause.sha256, 'Pause changed presentation state');
+    await press(`.event-chip[data-story="decision_trace"][data-chip-id="${report.automatic.chip.id}"]`);
+    await page.clock.runFor(32);
+    const card = page.locator('.event-card[data-story="decision_trace"]:visible');
+    assert.equal(await card.count(), 1, 'Exactly one actual yearly results card required');
+    const facts = await card.locator('.event-card-facts li').allTextContents();
+    const after = await snapshot('manual-card');
+    report.manual = { facts, expectedFact: report.automatic.expectedFact, targetCaptured: facts.includes(report.automatic.expectedFact),
+      beforeSha256: beforePause.sha256, afterSha256: after.sha256, stateUnchanged: beforePause.sha256 === after.sha256 };
+    assert.ok(report.manual.targetCaptured && report.manual.stateUnchanged, 'Actual card or navigation-state invariant failed');
+  }
+  report.final = await sample();
+  report.absence = report.automatic ? null : !report.receipts.length ? 'no_new_exact_because_result_in_observed_window'
+    : !report.final.targetDecisionPresent ? 'target_decision_record_missing'
+      : !report.final.targetRows.length ? 'new_result_outside_current_year_or_not_exposed_by_trace_read'
+        : report.final.targetGroups.some(group => group.by === 'steward') ? 'steward_excluded'
+          : !report.final.target ? 'trace_rows_not_in_year_results'
+            : 'canonical_membership_exists_but_matching_uncovered_chip_not_observed';
+  await snapshot('final');
+  report.valid = Boolean(report.automatic && report.manual?.targetCaptured && report.manual.stateUnchanged
+    && report.progressAtTen && report.errors.length === 0);
+} catch (error) {
+  report.errors.push(String(error));
+  if (initialized) {
+    try { report.failureObservation = await sample(); await snapshot('failure'); }
+    catch (captureError) { report.errors.push(`Failure capture: ${captureError}`); }
+  }
+} finally {
+  if (context) await context.close().catch(error => report.errors.push(`Context close: ${error}`));
+  if (browser) await browser.close().catch(error => report.errors.push(`Browser close: ${error}`));
+  if (report.errors.length) report.valid = false;
+  report.sampleColumns = ['frame', 'tick', 'paused', 'ten', 'yearCount', 'targetCount', 'newExactReceipts', 'dialogs'];
+  writeFileSync(join(out, 'live-case.json'), `${JSON.stringify(report, null, 2)}\n`);
+}
+process.exitCode = report.valid ? 0 : 1;
