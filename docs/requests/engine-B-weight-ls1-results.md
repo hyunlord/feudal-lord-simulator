@@ -56,3 +56,5 @@
 144/b 청지기 경로: [증빙](../verification/eb-weight-144-steward/README.md) h-026951@415000, 철 띠 「청지기가 작은 일 1건 처리」·정본 제목/선택/상세/결과를 원본 JPEG로 직접 확인했다. 탐색 SHA 동일, wronglyIncluded=[]. steward_route_only, lord56Pass=false이며 실제 상태 효과·영주 결과 관문으로 세지 않는다.
 
 163/b 청지기 경로: [증빙](../verification/eb-weight-163-steward/README.md) h-029251@450000, 철 띠 「청지기가 작은 일 3건 처리」·정본 제목/선택/상세/결과를 원본 JPEG로 직접 확인했다. 탐색 SHA 동일, wronglyIncluded=[]. steward_route_only, lord56Pass=false이며 실제 상태 효과·영주 결과 관문으로 세지 않는다.
+
+124/b 정상 접근 후속: [증빙](../verification/eb-weight-124-navigation/README.md) 경계 다툼 정상 ‘나중에’ 앞뒤 tick13000/SHA가 같고 실제 대상 b 답 h-000725·역제안 영수증까지 도달했다. 원본 화면3장을 직접 확인했다. 답 전 trace가 없는 저장에서 하네스가 before.trace.decisions를 읽어 TypeError로 중단했으므로 fail_harness다. 결과칩·카드·결과탐색SHA 관문은 미완이며 optional 읽기 수정의 재실행 전이다. 첫 실패도 보존한다.

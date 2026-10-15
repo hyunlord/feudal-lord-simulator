@@ -1,0 +1,43 @@
+{
+  "verdict": "fail_harness",
+  "reviewer": "archive_042_053",
+  "files": [
+    {
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-124-b/target-offered.jpg",
+      "sha256": "38d620ce553283da4db85ca5a206c8905980a4afc1af99f939f2dee945441271"
+    },
+    {
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-124-b/answered.jpg",
+      "sha256": "f14831d5fa372c613f9143c6b435a9e9b1e70c57bd243c18db6ea04d15fec746"
+    },
+    {
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-124-b/failure.jpg",
+      "sha256": "f14831d5fa372c613f9143c6b435a9e9b1e70c57bd243c18db6ea04d15fec746"
+    }
+  ],
+  "observed": "Directly viewed target124 with enabled b/c, then receipt for actual b proposal stating counterpart returned revised terms. Failure image shows same receipt. No LS1 result-chip/card verification followed.",
+  "cause": "before.trace absent; harness reads before.trace.decisions and throws TypeError after actual answer.",
+  "answerId": "h-000725",
+  "tick": 13000,
+  "navigation": {
+    "kind": "normal boundary Later before answering",
+    "tickUnchanged": true,
+    "shaUnchanged": true
+  },
+  "limits": "Pre-answer navigation SHA is not a result-card navigation check. No final chip/card/effect gate claimed. Optional trace read fix unrun.",
+  "parentOfflineStateEvidence": {
+    "negotiationId": "negotiation-1",
+    "status": "countered",
+    "terms": [
+      "cash40",
+      "political_support",
+      "consent"
+    ],
+    "answerId": "h-000725",
+    "acts": [],
+    "limits": "Not completed marriage or cash payment. Chip/card still untested due harness."
+  }
+}

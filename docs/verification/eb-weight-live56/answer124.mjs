@@ -165,7 +165,7 @@ try {
   const after = await snapshot('answered');
   const occurrence = after.registry.occurrences.find(row => row.id === witness.offer.id);
   assert.equal(occurrence.status, 'answered'); assert.equal(occurrence.choiceId, 'b');
-  const oldIds = new Set(before.trace.decisions.map(row => row.id));
+  const oldIds = new Set((before.trace?.decisions ?? []).map(row => row.id));
   const answers = after.trace.decisions.filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_124:b');
   assert.equal(answers.length, 1); report.answer = answers[0];
   const oldNegotiations = before.diplomacy?.negotiations ?? [];
