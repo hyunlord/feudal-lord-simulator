@@ -180,7 +180,7 @@ const RESULTS_CARD = {
 /** DEC-CARD: the famine and the political petitions in the heavy decision card (the petition frame; the situation, the
  * stake, the deadline, then the answers as a grid, each with now / later / who remembers). Its body scrolls past the view. */
 const DECISION_CARD = {
-  ...PETITION, root: ".story-modal.petition-card.decision-card.petition-decision", scrollParts: [".decision-card-body"],
+  ...PETITION, root: ".story-modal.petition-card.decision-card.petition-decision", scrollParts: [".decision-card-scroll", ".decision-card-choices"],
   siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
   requires: ["h2", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
 } as const;
@@ -540,16 +540,16 @@ export const SURFACES: readonly SurfaceRow[] = [
   // and the town's request (from its chip). DEC-CARD-2: the precedent card is gone (DTR-1; the season card's steward).
   // The picture is not a required element: the content check proves paint by text and controls changing between its two
   // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
-  { id: "modal.lord.home-petition", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+  { id: "modal.lord.home-petition", ...PETITION, scrollParts: [".decision-card-scroll", ".decision-card-choices"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01) in the DEC-CARD layout: the situation, the stake, each answer now / later / who remembers" },
-  { id: "modal.lord.home-petition.no-art", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+  { id: "modal.lord.home-petition.no-art", ...PETITION, scrollParts: [".decision-card-scroll", ".decision-card-choices"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
-  { id: "modal.lord.home-petition.guardian", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+  { id: "modal.lord.home-petition.guardian", ...PETITION, scrollParts: [".decision-card-scroll", ".decision-card-choices"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
-  { id: "modal.lord.request", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
+  { id: "modal.lord.request", ...PETITION, scrollParts: [".decision-card-scroll", ".decision-card-choices"], root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }],
@@ -570,12 +570,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   // slice played by the lord bot to the first content canon v4 offer the registry draws, and to the first whose card has a
   // hold (ER-19: its cost under its tradeoff); it opens by itself after the world, as a petition does. The picture is not
   // a required element (as above).
-  { id: "modal.lord.registry", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+  { id: "modal.lord.registry", ...PETITION, scrollParts: [".decision-card-scroll", ".decision-card-choices"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
     data: "the first v4 offer the registry drew in the lord's slice (DEC-CARD layout): its why, each answer's tradeoff, now / later / who remembers, the shut one with why" },
-  { id: "modal.lord.registry-hold", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+  { id: "modal.lord.registry-hold", ...PETITION, scrollParts: [".decision-card-scroll", ".decision-card-choices"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer-hold", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],

@@ -7,7 +7,7 @@ import type { SceneRef, SurfaceRow } from "../surfaces.registry";
 
 const scene = (name: string): SceneRef => ({ kind: "state", set: "variants", name, tile: "house", zoom: 1.1, query: "&story-delay=3000" });
 const CARD = {
-  frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".decision-card-body"],
+  frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".decision-card-scroll", ".decision-card-choices"],
   siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
 } as const;
 /**
