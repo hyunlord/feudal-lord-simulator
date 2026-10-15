@@ -28,6 +28,7 @@
 
 - 관측 부족 13은 분모 밖이다. seed별로 1: 206/206, 2: 216/216, 3: 247/247.
 - 증빙 `docs/verification/eb-inert-v56/official-125/`, 판정서 `docs/requests/engine-B-v56-result.md`, 청원별 전후와 선례로 바꾼 답 `petition-comparison.json`. 원본 관측 파일은 보존 실행에 있다.
+- 증빙 크기(규칙 1): 엔진 B가 원본 manifest 셋을 gzip했다(`cf59dfc82`, 폴더 2,846,322바이트 < 3 MB). 합치기 전에 `docs/verification/eb-inert-v56/verify-archive.mjs`로 복원을 확인했다 — Mac, 종료 0, 파일 31개, 풀어 잰 해시가 압축 전 `SHA256SUMS`의 원본 해시와 같음(seed 1 `dac1ac10…` 1,264,310바이트, seed 2 `0597917e…` 1,084,302, seed 3 `511ddb9d…` 1,054,996).
 - 옛 채점기(`legacy-scorer-exit-code`)는 1이다. 엔진 B의 공식 관문(`official/exit-code`)과 네 범주 채점기는 0이다. 옛 채점기는 이 관문의 기준이 아니다(엔진 B 판정서).
 - 엔진 B의 관문은 비영주 가드레일 해시, 지정 10사건 시험, 화면 받아들임을 빼고 잰다. 셋은 아래에서 따로 본다.
 
@@ -43,7 +44,7 @@
 ## 필수 조건
 - typecheck: 통과 — Mac.
 - 저장 지문·relationStage·since·청지기 빈자리 시험 5/5, 지정 10사건 파일 `engineBTlinkSpecifiedTown` 7/7 — Mac.
-- 바뀐 파일에 걸린 시험(지정 10사건 포함): 이 보고서를 고친 마지막 커밋에서 DGX `engine-V56-tested-…`로 돌리고, 그 뒤로는 커밋하지 않고 푸시한다.
+- 바뀐 파일에 걸린 시험(지정 10사건 포함): 증빙 압축을 합치기 전 머리 `137c87e48`에서 5,067/5,086 통과·19 건너뜀·실패 0 — DGX `engine-V56-tested-137c87e`. 합친 뒤 이 보고서를 고친 마지막 커밋에서 DGX `engine-V56-tested2-…`로 다시 돌리고(앞 결과는 쓰지 않음), 그 뒤로는 커밋하지 않고 푸시한다.
 - check:merge: 푸시 훅 — Mac.
 
 ## 고친 시험(까닭)
