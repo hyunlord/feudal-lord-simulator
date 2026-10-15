@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 12/56, 실패·관측미달 4, 미검증 40, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 12/56, 실패·관측미달 6, 미검증 37, 청지기 별도 경로 1. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -23,12 +23,12 @@
 | 031 | able, loyal, direct | able | 통과(한 선택) | [증거1](../eb-weight-031-live/README.md) · [증거2](../eb-weight-031-result/README.md); able: audit-59 at 282320 (kept759/errors0), h-013700 partial cause h-013352; target0→1 and exact item once, SHA unchanged. Initial results:1368 chip2 and final results:1370 chip2 differ by year; final-year chip absent initially→2, no numeric increase from2 claimed. Earlier suit-notice interruption retained. Other choices not claimed. |
 | 032 | charter, roll, both, defer | roll | 통과(한 선택) | [증거1](../eb-weight-032-live/README.md); roll actualsuittransition, chip3→5 target0→1, exactcardonce andnavigationSHA; otherchoicesnotclaimed. |
 | 033 | deed, witnesses, both, defer | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 034 | precedent, hear, rights_only | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 034 | precedent, hear, rights_only | precedent | 별도 청지기 보고 경로 | [증거1](../eb-weight-034-steward/README.md); Historical steward answer h-011244 and season report route verified; band3, canonical title/choice/details visible after normal scroll, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state effect not proved by this report. Canonical result says lord despite actual steward actor; render wording review needed. One occurrence only. |
 | 035 | larger, smaller, wait | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 037 | direct, delegate_visit | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 038 | enforce, defer | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 042 | light, firm | firm | 통과(한 선택) | [증거1](../eb-weight-042-live/README.md); firm: actual stall_fee income 23d; chip 2→4, target 1→2; exact card and navigation SHA verified. light is not claimed. |
-| 046 | trim, cancel | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 046 | trim, cancel | cancel | 실패: 실제 효과의 trace 없음 | [증거1](../eb-weight-046-cancel/README.md); cancel: genuine UI answer h-019506 at298000 changes timberOrder350→0 (field removed), exact receipt visible; effectTrace=[], chip30→30 and no answer item. Trace failure, not no-effect or receipt failure. Result card/navigation SHA NOT OBSERVED; confirmation SHA is separate. Other choices not claimed. |
 | 051 | file, leave, file_with_deed | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 052 | punish, replace, tolerate | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 053 | deed, roll, both, defer | roll | 통과(한 선택) | [증거1](../eb-weight-053-live/README.md); roll: actual suit-4 filed→evidence transition; chip 1→3, target 0→1; exact card and navigation SHA verified. Other choices are not claimed. |
@@ -43,7 +43,7 @@
 | 083 | a, c | a | 통과(한 선택) | [증거1](../eb-weight-083-live/README.md); a: actual timber order remaining 16→14, delivery 2; chip 7→8, target 0→1; exact card and navigation SHA verified. Other choices are not claimed. |
 | 090 | a, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 092 | a, b | b | 통과(한 선택) | [증거1](../eb-weight-092-live/README.md); b: actual stall_fee income 8d, partial cause; chip absent→2 (initial year count null, not displayed 0), target 1; exact card and navigation SHA verified. Other choices are not claimed. |
-| 124 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
+| 124 | a, b, c | b | 미통과: 하네스 | [증거1](../eb-weight-124-first/README.md); Genuine offer at13000 supports b/c and planned b is valid. Unrelated core boundary-dispute modal covers target; selector count0 fails before target press. Harness target-reaching path missing, not an established product defect. No answer, effect, target card, or result-navigation SHA observed; retry being prepared. |
 | 128 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 130 | a, b, c | c | 실패: 칩 자리 제한 | [증거1](../eb-weight-130-live/README.md) · [증거2](../eb-weight-130-notices/README.md) · [증거3](../eb-weight-130-result/README.md); c: corrected run observed audit-9 at 74320 (458 kept + 77 errors = 535), exact partial cause h-005537→h-005112 and yearly reader 4/target 1, but target chip absent through 74516; lawsuit/patent/Michaelmas audit occupy MAX_CHIPS=3. Card/navigation SHA pair NOT OBSERVED, not changed. Earlier combined-notice interruption and post-Later 32ms harness failure remain preserved; not permanent inaccessibility or whole-56 acceptance. |
 | 131 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |

@@ -288,7 +288,7 @@
         "steward_answers_not_retained_as_lord_checkpoints"
       ],
       "priorStewardAnswers": 3,
-      "screenVerdict": "steward_route_verified",
+      "screenVerdict": "steward_route_only",
       "liveCase": {
         "seed": 1,
         "choice": "precedent"
@@ -372,7 +372,7 @@
         "no_trace_yet_at_answer"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_immediate_effect_missing_trace",
+      "screenVerdict": "fail_missing_trace",
       "liveCase": {
         "seed": 1,
         "choice": "cancel"
