@@ -1,0 +1,32 @@
+{
+  "verdict": "FAIL_HARNESS",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected registry-after-later-1.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "registry-after-later-1.jpg",
+      "sha256": "68cdecd533116b8ae4d36f8da4becf6d84552437d0dd91b87e28ce8b90d7e1e6"
+    }
+  ],
+  "observed": "Normal world is uncovered after Later. No exact target receipt was observed. The helper explicitly ran the clock for 32 ms after Later restored speed, allowing 3 ticks before the SHA comparison.",
+  "causeClassification": "harness_mixed_runtime_progress_with_navigation",
+  "productDefectEstablished": false,
+  "stateComparison": {
+    "beforeTick": 223153,
+    "afterTick": 223156,
+    "beforeSha256": "36858e139dabf96291fdcda4f3c1b65679743c4b8a4699b1bdc32befe8aaad53",
+    "afterSha256": "e29a9d65a23e7cfe3a0a9b6f9b2e8f9186b043647352a0b53c86aa4ccb009ee8",
+    "changedTopLevelKeys": [
+      "tick",
+      "buildings",
+      "walkers",
+      "wallTick",
+      "autoplayFoodFlow",
+      "autoplayRecurringDelivery",
+      "timberProductionWindow",
+      "settlement"
+    ]
+  },
+  "retry": "Parent fix ce1f4ba8a removes the extra clock advance; it was not in this run. Retry still required; original failure preserved."
+}

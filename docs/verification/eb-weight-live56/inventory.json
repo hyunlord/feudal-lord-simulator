@@ -738,13 +738,16 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_observation_interrupted",
+      "screenVerdict": "fail_harness",
       "liveCase": {
         "seed": 2,
         "choice": "a"
       },
-      "limits": "a: registry event 025 blocks at 223153 before historical expected audit 230320; helper permits normal Later only after the target result. Harness observation limit, not an established trace/product defect. No actual target receipt, card, or navigation SHA pair observed. Normal Later pre-result follow-up being prepared; original retained.",
-      "evidence": "../eb-weight-140-live/README.md"
+      "limits": "a: first run blocked by event 025; follow-up Later uncovered the world, but helper explicitly advanced 32 ms after restoring speed (223153→223156), mixing runtime progress into navigation SHA. Harness failure, not established screen/trace defect; no exact target receipt/card observed. Retry with ce1f4ba8a still required.",
+      "evidence": [
+        "../eb-weight-140-live/README.md",
+        "../eb-weight-140-notices/README.md"
+      ]
     },
     {
       "entryId": "ck_evt_143",
@@ -852,12 +855,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "a"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "a: actual timber delivery 2, order remaining 12→10; chip 1→2 and target 1→2, exact canonical item once fully visible, navigation SHA unchanged. Other choices are not claimed.",
+      "evidence": "../eb-weight-165-live/README.md"
     },
     {
       "entryId": "ck_evt_174",

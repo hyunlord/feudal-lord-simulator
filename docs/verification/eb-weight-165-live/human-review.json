@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected automatic-chip.jpg and manual-card.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "49566afd4bfaf9c2c16cb8873e1d1122f700e4cc1cc04d33f30fc7911385791b"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "2a072652ebc0f4cebc8b361efb439e672a1c82b1b2d9e3e306f33cfc3e8e61fe"
+    }
+  ],
+  "observed": "Results chip 2 and the exact canonical 눈길에 앞서 올린 주문 — 2건 are fully visible as one item; paused navigation SHA unchanged.",
+  "expectedFact": "1391년 당신의 결정 때문에: 눈길에 앞서 올린 주문 — 2건",
+  "navigationSha256": "ed1741ab108767c1721cc8fc0fc46afe652521429a5ba01c06ccdbb521f78e5a"
+}
