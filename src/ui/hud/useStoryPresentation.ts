@@ -16,6 +16,7 @@ import { openHomePetitions } from "../lordCardsModel";
 import { openRegistryCards } from "../registryCardModel";
 import { houseChangeView } from "../results/houseChange";
 import { heldChipIds } from "../lord/decisions/heldChips";
+import { mapTurnTaken } from "../decisionCard/receiptClose";
 import { SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLastYear, slicePageDue, takeSliceStart } from "../slice/sliceDue";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
@@ -182,6 +183,11 @@ export function useStoryPresentation(input: {
   }, [topModal, house]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (blocked || topModal !== null) return;
+    // LS1-7: after a receipt's return to the map, whether this turn opened a card (that card decides: 나중에 or it stays).
+    let opened = false;
+    autoOpen(modal => { opened = true; pushModal(modal); }); mapTurnTaken(opened);
+  });
+  function autoOpen(pushModal: (modal: UiModal) => void): void {
     // LM-R3: the lord slice's opening page before anything; its end after the year's card (the year, then the twenty).
     const slice = slicePageDue(state);
     const endSince = sliceEndSinceRef.current;
@@ -220,7 +226,7 @@ export function useStoryPresentation(input: {
     if (due !== null && nowMs - due.sinceMs >= delayMs) {
       yearDueRef.current = null; yearShownRef.current.add(due.year); pushModal("year_review"); markOpened(yearCardId(due.year));
     }
-  });
+  }
   // CODE-1c: no presentation clock for the story — one timer wakes this hook when the next chip is due (its delay out),
   // a lingering chip goes, or a chapter end's chronicle may open. App's 100 ms clock stops when nothing else needs it.
   const wakes: number[] = [];

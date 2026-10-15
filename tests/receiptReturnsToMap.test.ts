@@ -18,7 +18,7 @@ import { stewardshipOf } from "../src/engine/stewardship";
 import { advanceTick } from "../src/engine/tick";
 import { newGameState } from "../src/state/newGame";
 import type { StoryBeat } from "../src/ui/eventStory";
-import { laterIfReturning, returningToMap, settleReturnToMap, startReturnToMap } from "../src/ui/decisionCard/receiptClose";
+import { laterIfReturning, mapTurnTaken, returningToMap, settleReturnToMap, startReturnToMap } from "../src/ui/decisionCard/receiptClose";
 import { storyChips } from "../src/ui/hud/useStoryPresentation";
 import { heldChipIds } from "../src/ui/lord/decisions/heldChips";
 
@@ -32,9 +32,28 @@ test("a receipt's close returns to the map: each card that shows with 나중에 
   assert.equal(laterIfReturning(() => pressed.push("audit"), "audit:a1"), true, "the next card with 나중에 too");
   settleReturnToMap("audit_decision");
   settleReturnToMap(null);
-  assert.equal(returningToMap(), false, "the map: the return is over");
+  assert.equal(returningToMap(), true, "at the map: the auto-open has its turn first");
+  mapTurnTaken(false);
+  assert.equal(returningToMap(), false, "it opened nothing: the return is over");
   assert.deepEqual(pressed, ["092", "audit"]);
   assert.equal(laterIfReturning(() => pressed.push("later"), "home:p1"), false, "a card opened afterwards is not put off");
+});
+
+test("ID 056: a card the auto-open opens just as the map is reached (092) is put off the same way; then the return ends", () => {
+  const pressed: string[] = [];
+  startReturnToMap();
+  settleReturnToMap(null);
+  mapTurnTaken(true);
+  assert.equal(returningToMap(), true, "the auto-open opened 092: the return goes on");
+  assert.equal(laterIfReturning(() => pressed.push("092"), "registry:092"), true, "092 shows and puts itself off");
+  settleReturnToMap("registry_offer");
+  settleReturnToMap(null);
+  mapTurnTaken(false);
+  assert.equal(returningToMap(), false);
+  assert.deepEqual(pressed, ["092"]);
+  // The year card opened by the auto-open at the map (no 나중에): it stays, the return ends there.
+  startReturnToMap(); settleReturnToMap(null); mapTurnTaken(true); settleReturnToMap("year_review");
+  assert.equal(returningToMap(), false);
 });
 
 test("a card without 나중에 (the house's change, the year card) is not put off: it shows next and the return ends there", () => {
