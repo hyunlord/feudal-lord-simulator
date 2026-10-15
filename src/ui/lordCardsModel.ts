@@ -35,7 +35,7 @@ import { HOME_PETITION_ART, type Wave44ImageId } from "./wave44Art";
 // `kingAt`, the lord's age, the guardian of a minor lord).
 
 export type HomePetitionView = Readonly<{
-  petitionId: string; kind: HomePetitionKind; art: Wave44ImageId | null; title: string; demand: string; court: string; waits: string;
+  petitionId: string; kind: HomePetitionKind; displayEntryId: string; art: Wave44ImageId | null; title: string; demand: string; court: string; waits: string;
   /** DTR-1: the kind's standing policy and what the steward does with the kind from now on (and why this one came). */
   standing: string;
   /** LR1-D5 (user 2026-10-05): the lord house's arms in the frame's roundel, as the lordship screen shows them. */
@@ -102,7 +102,7 @@ export const homePetitionView = perState((state: GameState): HomePetitionView | 
   // the petition, its answers, costs, deadline and picture stay its own (the card reads its title and words here).
   const variant = estatePetitionVariantFor(state, petition.id);
   return {
-    petitionId: petition.id, kind: petition.kind, art: HOME_PETITION_ART[petition.kind], title: variant?.title ?? copy.title,
+    petitionId: petition.id, kind: petition.kind, displayEntryId: variant?.variantEntryId ?? `home:${petition.kind}`, art: HOME_PETITION_ART[petition.kind], title: variant?.title ?? copy.title,
     demand: variant?.body ?? copy.demand(petition.amount, parties(state, petition)), court: courtLine(state),
     waits: LORD_CARDS_COPY.waits(calendarDays(petition.deadline - state.tick)),
     standing: homeStanding(state, petition),

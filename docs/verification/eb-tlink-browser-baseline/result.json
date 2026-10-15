@@ -1,0 +1,246 @@
+{
+  "functionalPass": true,
+  "source": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+  "workingTree": "",
+  "scriptSHA256": "958161db0ead8917ddb6ead7c71c1f372fe5b2a91c4f77f9f2d7c1c1af575043",
+  "url": "http://127.0.0.1:4304/",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "statesManifest": {
+    "path": "states.json",
+    "bytes": 1314,
+    "sha256": "61bb1c0bedbc692baf76137c9c50132de5544ea177357cb304c7e8b3e7b8c1f4"
+  },
+  "rows": [
+    {
+      "name": "home-041",
+      "fixtureSHA256": "e8070a9cbf5ef56ab9bb33bed398945f9346f0c10893701a70fb15fe0a6df1ce",
+      "fixtureBytes": 1491076,
+      "fixtureMetadata": {
+        "seed": 3,
+        "tick": 18000,
+        "year": 1304,
+        "season": 2,
+        "land": "core:forest_edge",
+        "petition": "estate-petition-11",
+        "kind": "pannage",
+        "variant": "ck_evt_041",
+        "prepared": false
+      },
+      "expectedVariant": "ck_evt_041",
+      "subjectId": "estate-petition-11",
+      "sourceEntryId": "home:pannage",
+      "choiceId": "grant",
+      "pass": true,
+      "admission": [
+        {
+          "action": "open-chip",
+          "chipId": "home-petition:estate-petition-11"
+        },
+        {
+          "action": "open-decision",
+          "chipId": "home-petition:estate-petition-11"
+        }
+      ],
+      "shownTitle": "숲의 돼지와 가을 납부금",
+      "cardScreenshot": {
+        "path": "home-041-card.png",
+        "bytes": 699709,
+        "sha256": "2ee18899ac02162acee37570bd83c3f28f42b59015fdc378ba7e2b2288a73579"
+      },
+      "laterScroll": {
+        "before": {
+          "scrollTop": 0,
+          "scrollHeight": 566,
+          "clientHeight": 566,
+          "later": {
+            "top": 633.3125,
+            "bottom": 677.3125,
+            "text": "나중에 정한다"
+          },
+          "fullyVisible": true
+        },
+        "after": {
+          "scrollTop": 0,
+          "scrollHeight": 566,
+          "clientHeight": 566,
+          "later": {
+            "top": 633.3125,
+            "bottom": 677.3125,
+            "text": "나중에 정한다"
+          },
+          "fullyVisible": true
+        },
+        "screenshot": {
+          "path": "home-041-scrolled.png",
+          "bytes": 699722,
+          "sha256": "5dd1a8f00ba660879eda3a81b57bc35fb441a5b4b044b8f19a676285d4071752"
+        },
+        "clicked": true
+      },
+      "ownAnswer": {
+        "tick": 18000,
+        "kind": "decision",
+        "template": "decision.card",
+        "severity": 1,
+        "subject": {
+          "type": "town",
+          "id": "town"
+        },
+        "params": {
+          "decisionKind": "stewardship",
+          "command": "answer_estate_petition",
+          "subjectId": "estate-petition-11",
+          "chosen": "granted"
+        },
+        "decision": {
+          "chosen": "granted",
+          "alternatives": [
+            "refused"
+          ],
+          "predicted": {}
+        },
+        "id": "h-001370"
+      },
+      "contribution": null,
+      "savedAnswer": {
+        "path": "home-041-answered.save.json.gz",
+        "bytes": 86374,
+        "sha256": "566855f2329534bfa1aabe75708a3b66d9e10feda7d7682803bf9eaa20972321"
+      },
+      "uncompressedSaveSHA256": "afa11f9b30cfaa933d1801a1e284a96706898ae35551e9751781e160af311db7",
+      "chronicle": {
+        "reached": true,
+        "recordId": "h-001370",
+        "titleObserved": false,
+        "text": "1304년 가을\n\n장원 청원 '돼지 방목 사용료': 들어준다\n\n고른 길\n들어줌\n다른 길\n물리침\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n기억하는 이\n농민 공동체: 조금 반깁니다 (관계 +4)\n그때 지도",
+        "screenshot": {
+          "path": "home-041-chronicle.png",
+          "bytes": 588907,
+          "sha256": "4c960381cc46aa07c16ccebe18b4433b0668abf866e6dd3e604b1dc611d0248e"
+        }
+      }
+    },
+    {
+      "name": "registry-067",
+      "fixtureSHA256": "01a55811d8531e51d5cd807ddd385911bc879cfcdf6b17ef8a5156b846160b28",
+      "fixtureBytes": 1438872,
+      "fixtureMetadata": {
+        "seed": 3,
+        "tick": 40000,
+        "year": 1310,
+        "season": 0,
+        "offer": "registry:ck_evt_031:steward.appoint|:40",
+        "entryId": "ck_evt_031",
+        "variant": "ck_evt_067",
+        "prepared": "the first neighbour estate held under a steward with two candidates"
+      },
+      "expectedVariant": "ck_evt_067",
+      "subjectId": "registry:ck_evt_031:steward.appoint|:40",
+      "sourceEntryId": "ck_evt_031",
+      "choiceId": "able",
+      "pass": true,
+      "admission": [
+        {
+          "action": "open-chip",
+          "chipId": "registry:registry:ck_evt_031:steward.appoint|:40"
+        },
+        {
+          "action": "open-decision",
+          "chipId": "registry:registry:ck_evt_031:steward.appoint|:40"
+        },
+        {
+          "action": "open-decision",
+          "chipId": "registry:registry:ck_evt_031:steward.appoint|:40"
+        }
+      ],
+      "shownTitle": "둘이 나누던 일을 한 사람에게",
+      "cardScreenshot": {
+        "path": "registry-067-card.png",
+        "bytes": 678401,
+        "sha256": "210ddb5745ac45ffea9bf6884fb04d5840cfc7cb85dfda115ec2aa11d5036156"
+      },
+      "laterScroll": {
+        "before": {
+          "scrollTop": 0,
+          "scrollHeight": 721,
+          "clientHeight": 687,
+          "later": {
+            "top": 727.71875,
+            "bottom": 771.71875,
+            "text": "나중에 정한다"
+          },
+          "fullyVisible": false
+        },
+        "after": {
+          "scrollTop": 34,
+          "scrollHeight": 721,
+          "clientHeight": 687,
+          "later": {
+            "top": 693.71875,
+            "bottom": 737.71875,
+            "text": "나중에 정한다"
+          },
+          "fullyVisible": true
+        },
+        "screenshot": {
+          "path": "registry-067-scrolled.png",
+          "bytes": 671262,
+          "sha256": "3bc60e8307a788520408dafdf7cfbe10de70502f97779d1c02b96b5b92b27246"
+        },
+        "clicked": true
+      },
+      "ownAnswer": {
+        "tick": 40000,
+        "kind": "decision",
+        "template": "decision.card",
+        "severity": 1,
+        "subject": {
+          "type": "town",
+          "id": "town"
+        },
+        "params": {
+          "decisionKind": "registry",
+          "command": "answer_registry_offer",
+          "subjectId": "registry:ck_evt_031:steward.appoint|:40",
+          "chosen": "able"
+        },
+        "decision": {
+          "chosen": "able",
+          "alternatives": [
+            "loyal",
+            "direct"
+          ],
+          "predicted": {}
+        },
+        "id": "h-001713"
+      },
+      "contribution": null,
+      "savedAnswer": {
+        "path": "registry-067-answered.save.json.gz",
+        "bytes": 88589,
+        "sha256": "210d0a89a3de9813a1b8fe6b706d4fb8f75475e05ea803947e9678a9e655f114"
+      },
+      "uncompressedSaveSHA256": "e21f6720495c96b866831a9b7dbdbfac174e2cf982908e329a7d9643b85d6fd2",
+      "chronicle": {
+        "reached": true,
+        "recordId": "h-001713",
+        "titleObserved": false,
+        "text": "1310년 봄\n\n청지기를 갈아야 할 때: 능력이 높은 후보로 교체한다\n\n고른 길\n능력이 높은 후보로 교체한다\n다른 길\n충성도가 높은 후보로 교체한다\n수납 담당은 두고 영주가 직접 감독한다\n예측과 실제\n그 뒤에 일어난 일\n\n아직 이 결정 뒤에 적힌 일이 없습니다\n\n그때 지도",
+        "screenshot": {
+          "path": "registry-067-chronicle.png",
+          "bytes": 622530,
+          "sha256": "6a770c1f03608ed655ed8967482c19c5488ad89a8ee9d38cfa2d42fd606899d3"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Baseline same-fixture browser comparison; not natural eligibility or 125-year evidence.",
+    "No visual verdict is inferred from screenshots. Chronicle title observation is reported separately.",
+    "State injection uses the existing openScene admission helper; answers use only rendered buttons."
+  ]
+}

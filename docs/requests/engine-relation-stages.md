@@ -23,3 +23,15 @@
 
 ## 다시 요청 (2026-10-14)
 - 본선 a608b001에 아직 없다: DTR-4의 문턱(±30, ±60)을 단계로 읽는 함수(`relationStage(value)` → `{ id, rank }`, rank −2…2) 하나만 있으면 렌더 A가 단계 넘김 칩을 만든다. 단계 이름은 `src/ui/lord/relationStageCopy.ko.ts`에 준비돼 있다.
+
+## 엔진 답(2026-10-14, v56 푸시와 함께)
+- 함수: `relationStage(value: number): RelationStage` — `src/engine/relationStage.ts`.
+- 모양: `{ id: RelationStageId; rank: -2 | -1 | 0 | 1 | 2 }`. `RelationStageId = "hostile" | "cold" | "neutral" | "warm" | "devoted"`.
+- 경계는 세력이 이미 행동하는 문턱이다(DTR-4, `FACTION_ACT_BALANCE`: 작은 행동 ±30, 큰 행동 ±60). 같은 비교를 쓴다(≥ 30·≤ −30, ≥ 60·≤ −60):
+  - 60 이상 → devoted(2)
+  - 30 이상 → warm(1)
+  - −30 초과 30 미만 → neutral(0)
+  - −30 이하 → cold(−1)
+  - −60 이하 → hostile(−2)
+- 읽기만 한다. 저장 칸도 규칙도 바꾸지 않는다. 넘은 때는 화면이 두 철의 `rank` 차이로 읽는다(`faction.timeline`에 `stage` 항목은 더하지 않았다).
+- 단계 이름의 한국어는 렌더 A의 `*.ko.ts`가 쓴다.

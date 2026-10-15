@@ -162,8 +162,9 @@ test("slice end (the user's ruling): the page takes the live end's cards' place 
 test("slice end (TRACE-KEEP, DTR-24): in the twentieth year each year's big decisions come from the engine's thread with what followed; its small matters are one line by who handled them; zeros unsaid", () => {
   const endTick = lordSliceEndTick(town);
   const at20 = advanceTrace(town, { ...town, tick: endTick });
-  const kept = new Map(traceOf(at20).decisions.map(decision => [decision.id, decision] as const));
-  assert.ok(kept.size < traceOf(town).decisions.length, "the twentieth year's turn dropped 1300's small decisions from the thread");
+  const trace = traceOf(at20);
+  const kept = new Map([...trace.decisions, ...(trace.answers ?? [])].map(decision => [decision.id, decision] as const));
+  assert.ok(trace.decisions.length < traceOf(town).decisions.length, "the twentieth year's turn dropped 1300's small decisions from the thread");
   assert.ok(Object.values(yearReview(at20, 1300).summarised).some(count => count > 0), "the engine counts them instead");
   const view = sliceEndView(at20)!;
   const index = recordIndex(at20);

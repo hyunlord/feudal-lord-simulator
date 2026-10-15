@@ -10,6 +10,7 @@ export const FOLDER_WALKS = {
   "tests/buildingCatalog.test.ts": SRC,                                   // no per-building table outside the catalog
   "tests/buildingCatalogExtensibility.test.ts": ["src/", "scripts/", "tests/", "tsconfig.json", "vite.config.ts"],   // copies them, runs tsc
   "tests/economyHarness.test.ts": ["src/engine/"],
+  "tests/engineBInertCapture.test.ts": [],                              // its readdir lists the capture folder of the temporary root it makes
   "tests/engineFrameBudget.test.ts": ["fixtures/saves/v32/"],
   "tests/frameTokens.test.ts": ["src/styles/", "src/ui/", "src/render/", "src/App.tsx"],
   "tests/hoverOnlyInfo.test.ts": ["src/ui/", "src/render/", "src/App.tsx"],

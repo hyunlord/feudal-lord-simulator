@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "replayFormat": "outcome-replay-v1",
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "replayDirectory": "original",
+  "rawDirectory": "original",
+  "contractFile": "../../docs/design/engine-B-outcomes.json",
+  "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+  "horizonTicks": 12000,
+  "ticksPerSeason": 1000,
+  "replayPins": [
+    {
+      "seed": 1,
+      "manifestSha256": "dac1ac10a8c473b53be6f17f2f5fab5d11c05f2af8984900293d5263a68405f6",
+      "rawSha256": "de3080e38bc6d59d9b80a120ec1a67ae9d0cb394c650762c35de1470ab8ea7ef"
+    },
+    {
+      "seed": 2,
+      "manifestSha256": "0597917e6041aa87c9902aecb0d4c38edd304f9b754b28019a22a61eb0c36d43",
+      "rawSha256": "e7f3d39a540b5cc3e845c62a99b6ae6d443d6cb93041ea6911e2890def063596"
+    },
+    {
+      "seed": 3,
+      "manifestSha256": "511ddb9d3e090a8efaff388e9df8540439558658fb85a717ff479e2f767c7dd4",
+      "rawSha256": "d344cbe380ede8e935b677405b7fa804539566b6efbce38939320e60b06798cf"
+    }
+  ]
+}

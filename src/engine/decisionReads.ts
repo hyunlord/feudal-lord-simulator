@@ -9,6 +9,7 @@ import { HOME_PETITION_KINDS, PETITION_KINDS } from "../content/stewardshipConfi
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { V4_SENDER_FACTION } from "../content/registry/registryHoldCopy.ko";
 import { BALANCE } from "../content/balanceConfig";
+import { activeAuditTolerance, auditTolerancePolicyKey } from "./auditTolerancePolicy";
 import { standingSetting } from "./decisionLayer";
 import { v4SenderFaction } from "./registryV4";
 import { traceOf } from "./decisionTrace";
@@ -46,6 +47,16 @@ function rowDelta(record: HistoryRecord): number | null {
   return null;
 }
 
+function rememberedAnswers(state: GameState) {
+  const owners = new Map<string, string>();
+  for (const answer of state.trace?.answers ?? []) for (const memory of answer.memoryEvidence)
+    owners.set(JSON.stringify([memory.factionId, memory.recordId, memory.tick, memory.reason]), answer.id);
+  return (state.factions?.factions ?? []).flatMap(faction => faction.memory.flatMap(memory => {
+    const decisionId = owners.get(JSON.stringify([faction.id, memory.recordId, memory.tick, memory.reason])) ?? memory.decisionId;
+    return decisionId === undefined ? [] : [{ actor: faction.id, delta: memory.delta, tick: memory.tick, recordId: memory.recordId, decisionId }];
+  }));
+}
+
 /**
  * DEC-TRACE §2 API (`traceInRange`): what followed decisions in [from, to) — the history's records with the decisions
  * behind them, and the factions' minds the decisions moved at once (their memories) — in time order.
@@ -61,20 +72,17 @@ export function traceInRange(state: GameState, fromTick: number, toTick: number)
         decisionId: because.decisionId, decisionTick: records.get(because.decisionId)?.tick ?? null });
     }
   }
-  for (const faction of state.factions?.factions ?? []) {
-    for (const memory of faction.memory) {
-      if (memory.decisionId === undefined || memory.tick < fromTick || memory.tick >= toTick) continue;
-      rows.push({ recordId: memory.recordId, tick: memory.tick, key: "relation", actor: faction.id, delta: memory.delta, part: false,
-        decisionId: memory.decisionId, decisionTick: records.get(memory.decisionId)?.tick ?? null });
-    }
+  for (const memory of rememberedAnswers(state)) {
+    if (memory.tick < fromTick || memory.tick >= toTick) continue;
+    rows.push({ ...memory, key: "relation", part: false, decisionTick: records.get(memory.decisionId)?.tick ?? null });
   }
   return rows.sort((left, right) => left.tick - right.tick || (left.recordId < right.recordId ? -1 : 1));
 }
 
 /** DEC-TRACE §2 API (`decisionRemembers`): who remembers a decision — the factions whose minds it moved, and by how much. */
 export function decisionRemembers(state: GameState, decisionId: string): readonly { readonly actor: string; readonly delta: number; readonly tick: number; readonly recordId: string }[] {
-  return (state.factions?.factions ?? []).flatMap(faction => faction.memory.filter(memory => memory.decisionId === decisionId)
-    .map(memory => ({ actor: faction.id, delta: memory.delta, tick: memory.tick, recordId: memory.recordId })));
+  return rememberedAnswers(state).filter(memory => memory.decisionId === decisionId)
+    .map(({ actor, delta, tick, recordId }) => ({ actor, delta, tick, recordId }));
 }
 
 export interface YearDecision {
@@ -108,7 +116,8 @@ export function yearReview(state: GameState, year: number): {
   readonly summarised: { readonly lord: number; readonly steward: number; readonly lapsed: number } } {
   const from = (year - scenarioOf(state).startYear) * YEAR;
   const to = from + YEAR;
-  const traced = new Map(traceOf(state).decisions.map(decision => [decision.id, decision] as const));
+  const trace = traceOf(state);
+  const traced = new Map([...trace.decisions, ...(trace.answers ?? [])].map(decision => [decision.id, decision] as const));
   const decisions = (state.history?.records ?? []).filter(record => record.kind === "decision" && record.tick >= from && record.tick < to && traced.has(record.id))
     .map(record => {
       const decision = traced.get(record.id)!;
@@ -147,6 +156,8 @@ export interface StandingPolicyView {
   readonly heavyBecause: string | null;
   readonly setting: StandingSetting;
   readonly answers: Readonly<Record<Exclude<StandingSetting, "lord">, SettingAnswer>>;
+  readonly allowedSettings?: readonly StandingSetting[];
+  readonly auditTolerance?: { readonly estateId: string; readonly personId: string; readonly perSeason: number; readonly baselineLoss: number; readonly baselineLoyalty: number; readonly active: boolean };
   readonly handledThisYear: number;
   readonly last: { readonly tick: number; readonly granted: boolean | null } | null;
 }
@@ -178,6 +189,22 @@ export function standingPolicies(state: GameState): readonly StandingPolicyView[
     const fixed = (granted: boolean | null): SettingAnswer => ({ granted, treasury: null, factions: {} });
     views.push({ kind, family: "estate", heavy: false, heavyBecause: null, setting: standingSetting(state, kind),
       answers: { customary: fixed(null), lenient: fixed(true), strict: fixed(false) }, ...lastOf(petition => petition.estateId !== HOME_ESTATE_ID && petition.kind === kind) });
+  }
+  for (const record of state.stewardship?.stewards ?? []) {
+    const tolerance = record.auditTolerance;
+    if (tolerance === undefined || record.status !== "serving"
+      || state.stewardship?.oversight.find(row => row.estateId === record.estateId)?.stewardId !== record.personId) continue;
+    const active = activeAuditTolerance(state, record) !== undefined;
+    const audits = (state.stewardship?.audits ?? []).filter(audit => audit.stewardId === record.personId && audit.decidedBy === "steward");
+    const last = audits.at(-1);
+    const unavailable: SettingAnswer = { granted: null, treasury: null, factions: {} };
+    views.push({ kind: auditTolerancePolicyKey(record), family: "estate", heavy: false, heavyBecause: null,
+      setting: active ? "lenient" : "lord", allowedSettings: active ? ["lord"] : [],
+      auditTolerance: { estateId: record.estateId, personId: record.personId, perSeason: tolerance.perSeason,
+        baselineLoss: tolerance.baselineLoss, baselineLoyalty: tolerance.baselineLoyalty, active },
+      answers: { customary: unavailable, lenient: unavailable, strict: unavailable },
+      handledThisYear: audits.filter(audit => audit.tick >= yearFrom).length,
+      last: last === undefined ? null : { tick: last.tick, granted: null } });
   }
   const occurrences = state.registry?.occurrences ?? [];
   for (const faction of [...new Set(Object.values(V4_SENDER_FACTION))].sort()) {
@@ -221,8 +248,15 @@ export function stewardReport(state: GameState, fromTick: number, toTick: number
     .map(occurrence => ({ subjectId: occurrence.id, kind: occurrence.entryId, layer: occurrence.weights!.join(",") }))];
   const lapsed = petitions.filter(petition => petition.status === "lapsed").length
     + (state.registry?.occurrences ?? []).filter(occurrence => occurrence.status === "lapsed" && (occurrence.settledTick ?? -1) >= fromTick && (occurrence.settledTick ?? -1) < toTick).length;
-  return { handled, events, brought, lapsed, policyRelations };
+  const toleratedLosses = (state.stewardship?.summaries ?? [])
+    .filter(summary => summary.tick >= fromTick && summary.tick < toTick)
+    .flatMap(summary => (summary.toleratedLosses ?? []).map(loss => ({ ...loss, estateId: summary.estateId, tick: summary.tick })));
+  const audits = (state.stewardship?.audits ?? [])
+    .filter(audit => audit.decidedBy === "steward" && audit.tick >= fromTick && audit.tick < toTick);
+  return { handled, events, audits, brought, lapsed, policyRelations, toleratedLosses };
 }
 
 /** The settings a standing policy takes (for the screens' choice). */
 export const standingSettings = (): readonly StandingSetting[] => STANDING_SETTINGS;
+
+export { answerEffects } from "./decisionTraceAnswers";

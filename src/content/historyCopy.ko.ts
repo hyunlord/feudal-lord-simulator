@@ -19,6 +19,17 @@ const s = (params: P, key: string): string => String(params[key] ?? "");
 
 /** LM-E4: an off-map estate by its house's name, an estate petition's subject, an exception's rule. */
 const estateWord = (house: string) => `${SURNAMES_KO[house] ?? house} 영지`;
+function estateRelationTraceWords(params: P): string {
+  if (typeof params.traceEstate !== "string" || params.traceEstate.length === 0) return "";
+  const parts: string[] = [];
+  for (const [dimension, group] of [["Tenants", "소작인"], ["Merchants", "상인"]] as const) {
+    const contribution = params[`trace${dimension}Contribution`], current = params[`traceRelation${dimension}`];
+    if (typeof contribution !== "number" || !Number.isSafeInteger(contribution) || contribution === 0
+      || typeof current !== "number" || !Number.isSafeInteger(current) || current <= -100 || current >= 100) continue;
+    parts.push(`${group}들과 ${contribution > 0 ? "가까워진" : "멀어진"}`);
+  }
+  return parts.length === 0 ? "" : ` — 앞선 답으로 ${parts.join(" · ")} 영향이 이번 철에도 남았다`;
+}
 const ESTATE_PETITION_KO: Readonly<Record<string, string>> = { rent_relief: "소작인의 지대 감면 청원", market_dues: "상인의 장세 인하 청원", repair: "제방·헛간 수리 청원",
   common_dispute: "공유지 다툼", charter_request: "상인의 특허 청원", marriage_licence: "소작인 딸의 혼인 허가",
   // FIX-14 (SW-11): the home estate's petitions.
@@ -318,7 +329,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
     // FIX-14 (SW-12): with recurring kinds brought up again (no precedent).
     const again = n(params, "recurring") === 1 ? " — 선례가 있어도 다시 올린다" : "";
     return parts.length === 0 ? `예외를 거뒀다: 청지기가 모두 정한다${again}` : `예외를 정했다: ${parts.join("·")}${josa(parts.at(-1)!, "은", "는")} 영주에게${again}`; },
-  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}`,
+  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}${n(params, "marketLoss") > 0 ? ` (시장 특허 거절 뒤 수입 손실 ${moneyWords(n(params, "marketLoss"))})` : ""}${n(params, "toleratedError") > 0 ? ` (눈감아 준 오류로 이번 철 수입 −${moneyWords(n(params, "toleratedError"))})` : ""}${estateRelationTraceWords(params)}`,
   // FIX-14 (SW-11, SW-12): the home estate's petitions to the lord himself, and the steward's precedent.
   "manor.petition": params => `장원에서 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "이", "가")} 영주에게 왔다${n(params, "amount") > 0 ? ` — ${moneyWords(n(params, "amount"))}` : ""}`,
   "registry.offered": params => `${registryTitle(s(params, "entry"))}`,
@@ -342,7 +353,9 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
     : `영주가 ${estateWord(s(params, "house"))}의 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} ${n(params, "granted") === 1 ? "허락했다" : "기각했다"}`,
   "stewardship.lapsed": params => `${estateWord(s(params, "house"))}의 ${estatePetitionWord(s(params, "kind"))}에 답하지 않았다 — 기다리다 거둬졌다`,
   "stewardship.audit_clean": params => `미카엘마스 감사(${s(params, "mode") === "visit" ? "방문" : "장부"}): ${estateWord(s(params, "house"))}의 장부가 맞았다`,
-  "stewardship.audit_found": params => `미카엘마스 감사(${s(params, "mode") === "visit" ? "방문" : "장부"}): 청지기 ${s(params, "steward")}의 장부에서 ${moneyWords(n(params, "kept") + n(params, "errors"))}${josa(moneyWords(n(params, "kept") + n(params, "errors")), "이", "가")} 비었다 — 빼돌림 ${moneyWords(n(params, "kept"))}, 잘못 ${moneyWords(n(params, "errors"))}`,
+  "stewardship.audit_found": params => n(params, "standingTolerance") === 1
+    ? `청지기 보고: 상시 묵인 방침에 따라 장부 오류 ${moneyWords(n(params, "kept") + n(params, "errors"))}을 보고했다`
+    : `미카엘마스 감사(${s(params, "mode") === "visit" ? "방문" : "장부"}): 청지기 ${s(params, "steward")}의 장부에서 ${moneyWords(n(params, "kept") + n(params, "errors"))}${josa(moneyWords(n(params, "kept") + n(params, "errors")), "이", "가")} 비었다 — 빼돌림 ${moneyWords(n(params, "kept"))}, 잘못 ${moneyWords(n(params, "errors"))}`,
   "stewardship.audit_answered": params => s(params, "choice") === "punished" ? (n(params, "recovered") > 0
     ? `영주가 청지기 ${s(params, "steward")}${josa(s(params, "steward"), "을", "를")} 벌하고 ${moneyWords(n(params, "recovered"))}${josa(moneyWords(n(params, "recovered")), "을", "를")} 되찾았다`
     : `영주가 청지기 ${s(params, "steward")}${josa(s(params, "steward"), "을", "를")} 장부의 잘못으로 벌했다`)

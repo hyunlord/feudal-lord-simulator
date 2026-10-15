@@ -1,0 +1,120 @@
+{
+  "packagingOnly": true,
+  "originalGate": false,
+  "originalExitCode": 1,
+  "fullStrictArchives": {
+    "cohort": {
+      "fullArchiveLocalPath": ".remote-runs/eb-inert-standing-cohort-strict.tar.gz",
+      "sha256": "765b6af0c606e4d2223ebe4191fc3d72991725c0d34929b878ae69ed68eb3f8d",
+      "size": 2319448
+    },
+    "native": {
+      "fullArchiveLocalPath": ".remote-runs/eb-inert-standing-native-strict.tar.gz",
+      "sha256": "0891d50c7495fd06f85be21d6937b439aa0904713ff34c608d85e42f8faf9e1a",
+      "size": 169112
+    }
+  },
+  "files": [
+    {
+      "path": "official-125/README.md",
+      "bytes": 604,
+      "sha256": "6fa16a77369a9e7e8aaf0a25ee7be89dee6f0322997a587261b455b35ab3a7b6"
+    },
+    {
+      "path": "official-125/SHA256SUMS",
+      "bytes": 2656,
+      "sha256": "173a7f6be297e2abada7a37f552d5e6a213d1b340fcd32e1966d647dca3269c1"
+    },
+    {
+      "path": "official-125/categories.json.gz",
+      "bytes": 538141,
+      "sha256": "01149234b0446d2a59cce14b31df696a53c9f8f1f8bcaa18f65070fd8252c711"
+    },
+    {
+      "path": "official-125/category-scorer-exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "official-125/comparison.json",
+      "bytes": 19896,
+      "sha256": "40c02ba11a018b88ff1a453ae1345a791cd3f53c891d05ca8999a85867429844"
+    },
+    {
+      "path": "official-125/frequency-detail.json",
+      "bytes": 47424,
+      "sha256": "419c8f10913f2e2fd6d09ffe30a3e36ca3187f42bd84ed12ea7092e582e24aa5"
+    },
+    {
+      "path": "official-125/legacy-score.json.gz",
+      "bytes": 43353,
+      "sha256": "9996d484ebe76013ecad5bfa492f6bdd823ad1cfd0e4940eac92d26bdfd621b5"
+    },
+    {
+      "path": "official-125/legacy-scorer-exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "official-125/manifest.json.gz",
+      "bytes": 108980,
+      "sha256": "0b033f3b02be600ba20c1549e1c66db068f59af6607bf681cc18d765f2b3dc87"
+    },
+    {
+      "path": "official-125/official/exit-code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "official-125/official/run.log.gz",
+      "bytes": 3348,
+      "sha256": "fabcd0f8df75216882118afb0493d4b5029ba3a4c9d73b82b586e21dde0e856f"
+    },
+    {
+      "path": "official-125/official/timing.env",
+      "bytes": 82,
+      "sha256": "cd8da5546b532d985abac7b95f7433c12a163034cdc985cfda44ed72d136eb68"
+    },
+    {
+      "path": "official-125/producer-status.json",
+      "bytes": 189,
+      "sha256": "6c254be569492435a4db2ed6542e70526264d6546209d8650a7c1a4dc3918396"
+    },
+    {
+      "path": "native/official/README.md",
+      "bytes": 1944,
+      "sha256": "eb3a38a4594819ed34ca01e0e8b9474ee8caae487827c33bc4c526de1a454bd3"
+    },
+    {
+      "path": "native/official/SHA256SUMS",
+      "bytes": 2781,
+      "sha256": "a345a84dfe89f07a89e9ef40691fe5d4dccf19816011202dde8a2306d3381d78"
+    },
+    {
+      "path": "native/official/aggregate-exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "native/official/comparison.json",
+      "bytes": 4088,
+      "sha256": "b26bfd2ccf396986658ddb0d2d8dc4b57d86b373bbafb1113ce1a4c7e4debc32"
+    },
+    {
+      "path": "native/official/manifest.json",
+      "bytes": 9808,
+      "sha256": "1d0b84a185168f8476b64279e9d08ec3981bde014969f857042840a457f3d627"
+    },
+    {
+      "path": "native/official/provenance.txt",
+      "bytes": 409,
+      "sha256": "64cad04307aeec12d3c9598e87823c817ad4e754732715beb4631abe075275e2"
+    },
+    {
+      "path": "native/official/strict-archive.tar.gz",
+      "bytes": 169112,
+      "sha256": "0891d50c7495fd06f85be21d6937b439aa0904713ff34c608d85e42f8faf9e1a"
+    }
+  ],
+  "note": "Original SHA256SUMS describe full strict archive members, not the reduced publication directory. Native full archive retained in strict-archive.tar.gz; cohort full archive local and reproducible from kept official run using unchanged archive.mjs. Cohort manifest gzip restores exact original bytes."
+}

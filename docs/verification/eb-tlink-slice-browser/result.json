@@ -1,0 +1,65 @@
+{
+  "pass": true,
+  "source": "7a4c6ae7e208dc8ad4b5678651713e84a34377dd",
+  "workingTree": "",
+  "driverSHA256": "4bd72eb374df475757fd6fce5878b5cd9b4c0657dddffb04420e9f25de3522ba",
+  "errors": [],
+  "limits": [
+    "Prepared regression state with actual reducer answers and synthetic end boundary; no natural 125-year claim.",
+    "Year answer rows are text, not links; normal end-page chronicle button then own record click tests navigation."
+  ],
+  "save": {
+    "path": "prepared-ended.save.json.gz",
+    "bytes": 56135,
+    "sha256": "83b57d4e2f5fbf2abdd350a3da2dc50f42430f923d903d8d4827752bd37c6d54"
+  },
+  "saveSHA256": "cf0b462833ef110b6f9b43c200ce32c4e855110e38bb2aa4ff12b464fc73739e",
+  "answerIds": [
+    "h-000002",
+    "h-000004"
+  ],
+  "tick": 20000,
+  "saveRoundtrip": true,
+  "initial": {
+    "path": "slice-initial.png",
+    "bytes": 806092,
+    "sha256": "15fead612b5d200bd78857e539adc2f8c95a4e3d2f57b8d1aed21cf776fd6595"
+  },
+  "rows": [
+    {
+      "id": "h-000002",
+      "box": {
+        "x": 240,
+        "y": 457.59375,
+        "width": 832,
+        "height": 38.234375
+      },
+      "text": "1300년 여름 — 영지 청원 '공유지 다툼': 상인 편을 든다 뒤따른 일 1건\n영주가 home 영지의 공유지 다툼에서 상인 편을 들었다 (여러 까닭 가운데 하나)"
+    },
+    {
+      "id": "h-000004",
+      "box": {
+        "x": 240,
+        "y": 498.828125,
+        "width": 832,
+        "height": 38.234375
+      },
+      "text": "1300년 여름 — 영지 청원 '공유지 다툼': 상인 편을 든다 뒤따른 일 1건\n영주가 home 영지의 공유지 다툼에서 상인 편을 들었다 (여러 까닭 가운데 하나)"
+    }
+  ],
+  "rowsScreenshot": {
+    "path": "slice-own-answers.png",
+    "bytes": 829742,
+    "sha256": "48914788928029535e65039a4d4784aef53488f9017e73bf818f7273b9908054"
+  },
+  "chronicle": {
+    "id": "h-000004",
+    "text": "1300년 여름\n\n영지 청원 '공유지 다툼': 상인 편을 든다\n\n고른 길\n물리침\n다른 길\n들어줌\n예측과 실제",
+    "screenshot": {
+      "path": "own-answer-chronicle.png",
+      "bytes": 592989,
+      "sha256": "2ab8d7fbcd559fc690509b224694adb426908f5e3ee4bbc0b057f94d2418ad8c"
+    }
+  },
+  "tickUnchanged": true
+}

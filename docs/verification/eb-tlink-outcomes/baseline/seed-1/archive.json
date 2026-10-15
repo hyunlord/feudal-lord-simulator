@@ -1,0 +1,93 @@
+{
+  "seed": 1,
+  "sourceRevision": "cf3fa941659ecb78396eed3780f88024a2bde0dd",
+  "archive": "evidence.tar.gz",
+  "archiveBytes": 1664957,
+  "archiveSha256": "6b7d38c82426b9a74abbcb31debca9e34607137473ebad3f46142389e3fb0520",
+  "members": [
+    {
+      "path": "seed-1.json",
+      "bytes": 906736,
+      "sha256": "19126d2d638bb67913b30583b24c36f59893a6bb84c49cec368538508b556a20"
+    },
+    {
+      "path": "seed-1/answer-classification.json",
+      "bytes": 872731,
+      "sha256": "139d539762f004344548a72d973234f6d509d01ae7e7a76b399c2ab770820936"
+    },
+    {
+      "path": "seed-1/answer-contexts.json.gz",
+      "bytes": 52653,
+      "sha256": "d4bcd4ac0ec7ceda1a03189f765b73a7483dfe13c5818bbfde87d3055eb2a59a"
+    },
+    {
+      "path": "seed-1/collect-parity.json",
+      "bytes": 337250,
+      "sha256": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147"
+    },
+    {
+      "path": "seed-1/collect-rule-state.json.gz",
+      "bytes": 185370,
+      "sha256": "ee7f0938d8bbb907b86a35c4f995aaf7b3c1abf2996d9b26935770214965bd21"
+    },
+    {
+      "path": "seed-1/final-state.json.gz",
+      "bytes": 347276,
+      "sha256": "8140e5c262e792b0d63df60eac57adc0fa3543f793a8146259411405968dc81d"
+    },
+    {
+      "path": "seed-1/manifest.json",
+      "bytes": 1216811,
+      "sha256": "048ad8acf64c2fef2f9e7ef514c5ad9aed19846a0b8527d7787b0d0c22c94045"
+    },
+    {
+      "path": "seed-1/original-contexts.json.gz",
+      "bytes": 52653,
+      "sha256": "d4bcd4ac0ec7ceda1a03189f765b73a7483dfe13c5818bbfde87d3055eb2a59a"
+    },
+    {
+      "path": "seed-1/original-final-state.json.gz",
+      "bytes": 347276,
+      "sha256": "8140e5c262e792b0d63df60eac57adc0fa3543f793a8146259411405968dc81d"
+    },
+    {
+      "path": "seed-1/pins.json",
+      "bytes": 229,
+      "sha256": "f0831fd87b9f297f321cb5af7e0247efd609559ca4138da31214392d91bdb5b2"
+    },
+    {
+      "path": "seed-1/preflight.json",
+      "bytes": 171775,
+      "sha256": "e010f0b8bb9c0444ab771f008fe89b09b97dc35d6b2d4f243d14c5a9f3dc156f"
+    },
+    {
+      "path": "seed-1/progress.json",
+      "bytes": 79,
+      "sha256": "3308a20972baa07deda48b7698c257f7203f2f2b8aea3f4b948e5e0a575f840b"
+    },
+    {
+      "path": "seed-1/replay-parity.json",
+      "bytes": 337250,
+      "sha256": "376058e9ac370d222722b7247eeb82ccc0fffabb082ea5dba1417d4f353dd147"
+    },
+    {
+      "path": "seed-1/replay-rule-state.json.gz",
+      "bytes": 185370,
+      "sha256": "ee7f0938d8bbb907b86a35c4f995aaf7b3c1abf2996d9b26935770214965bd21"
+    },
+    {
+      "path": "seed-1/validity.json",
+      "bytes": 123,
+      "sha256": "1935fe2a2b61c89548d5447091dc0cd5507aed342a3fe30db0013cfd22a58821"
+    }
+  ],
+  "verified": "Every member re-read from gzip/tar and matched to original bytes; no data filtering.",
+  "storage": {
+    "trackedArchive": false,
+    "localArchive": ".remote-runs/engineB-tlink-baseline125-cf3fa94/packed-baseline/seed-1/evidence.tar.gz",
+    "originalRun": "engineB-tlink-baseline125-cf3fa94",
+    "fetchCommand": "scripts/remote/run.sh --fetch engineB-tlink-baseline125-cf3fa94",
+    "fetchedOriginalDirectory": ".remote-runs/engineB-tlink-baseline125-cf3fa94/eb-tlink-baseline",
+    "reason": "Repository evidence budget: bulk data stays in the kept official run and ignored local results."
+  }
+}
