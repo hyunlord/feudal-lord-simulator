@@ -1,0 +1,49 @@
+{
+  "verdict": "FAIL_SCREEN_CHIP_CAPACITY",
+  "choice": "c",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected the original first-exact-receipt.jpg and final.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "first-exact-receipt.jpg",
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-live56/ck_evt_130/first-exact-receipt.jpg",
+      "sha256": "d13cf094d5cbc4609279c44f2504ff4f8cefe52e34b3feeec05093bf63f3a8a2"
+    },
+    {
+      "file": "final.jpg",
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-live56/ck_evt_130/final.jpg",
+      "sha256": "e9c9ea3c8694bd6e302964353b62dbf73aade3c6f0fc8d2819ff04daf7f9bd8a"
+    }
+  ],
+  "observed": "Target yearly results chip is absent. Final screen shows lawsuit, patent petition, and Michaelmas audit chips. Exact target result exists in trace and yearly reader; no result card navigation was performed.",
+  "actualResult": {
+    "auditId": "audit-9",
+    "tick": 74320,
+    "revealedKept": 458,
+    "revealedErrors": 77,
+    "revealedTotal": 535,
+    "recordId": "h-005537",
+    "selectedAnswerId": "h-005112",
+    "partialCause": true
+  },
+  "reader": {
+    "year": 1318,
+    "count": 4,
+    "targetTitle": "1316년 당신의 결정 때문에: 권리 이야기는 내 책상으로",
+    "targetCount": 1
+  },
+  "finalObservation": {
+    "tick": 74516,
+    "targetChips": [],
+    "panels": [],
+    "paused": false,
+    "actualReceipts": 1
+  },
+  "causeClassification": "screen_chip_capacity",
+  "source": "src/ui/hud/useStoryPresentation.ts:25,81–96 (MAX_CHIPS=3)",
+  "manualCard": "NOT_OBSERVED",
+  "navigationShaPair": "NOT_OBSERVED",
+  "limits": "This bounded observation does not establish permanent inaccessibility. Previous harness failures remain preserved and distinct; no whole-56 pass is claimed."
+}

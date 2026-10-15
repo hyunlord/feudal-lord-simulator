@@ -1,7 +1,9 @@
 // Offline archival only: preserves a finished official run without importing game or browser code.
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { basename, dirname, join, relative, resolve, sep } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 
@@ -147,7 +149,68 @@ const readme = [
 payload.set('README.md', Buffer.from(readme.join('\n')));
 payload.set('SHA256SUMS', Buffer.from([...payload].sort(([a], [b]) => a.localeCompare(b))
   .map(([name, bytes]) => `${sha(bytes)}  ${name}\n`).join('')));
-const total = [...payload.values()].reduce((sum, bytes) => sum + bytes.length, 0);
+let total = [...payload.values()].reduce((sum, bytes) => sum + bytes.length, 0);
+if (total >= 3 * 1024 * 1024) {
+  // Only the oversized path changes storage. Pack original fetched bytes, not JPEG recompressions or projected states.
+  const temporary = mkdtempSync(join(tmpdir(), 'eb-weight-archive-'));
+  try {
+    const bundle = 'originals.tar.xz', bundlePath = join(temporary, bundle), list = join(temporary, 'members');
+    for (const row of originals) {
+      assert.ok(!row.source.includes('\0') && !row.source.includes('\n'), 'Unsafe tar member name');
+      assert.equal(sha(readFileSync(join(input, row.source))), row.originalSha256, 'Fetched evidence changed');
+    }
+    writeFileSync(list, originals.map(row => `${row.source}\0`).join(''));
+    execFileSync('tar', ['-cJf', bundlePath, '-C', input, '--null', '-T', list],
+      { env: { ...process.env, COPYFILE_DISABLE: '1' }, stdio: 'pipe' });
+    const extracted = join(temporary, 'verified'); mkdirSync(extracted);
+    execFileSync('tar', ['-xJf', bundlePath, '-C', extracted], { stdio: 'pipe' });
+    assert.deepEqual(files(extracted).map(path => relative(extracted, path)).sort(), originals.map(row => row.source).sort(),
+      'Extracted tar members differ from the original evidence set');
+    for (const row of originals) {
+      const bytes = readFileSync(join(extracted, row.source));
+      assert.equal(bytes.length, row.originalBytes, `Extracted size changed: ${row.source}`);
+      assert.equal(sha(bytes), row.originalSha256, `Extracted hash changed: ${row.source}`);
+    }
+    const bundled = readFileSync(bundlePath);
+    const loose = new Map(['final.jpg', 'live-case.json.gz', 'source-revision.txt']
+      .filter(name => payload.has(name)).map(name => [name, payload.get(name)]));
+    summary.storage = { mode: 'lossless_tar_xz_original_files', bundle, bundleBytes: bundled.length,
+      bundleSha256: sha(bundled), originalPayloadBytes: total, extractedMembersVerified: originals.length,
+      bundledPayloadFiles: originals.map(row => row.archive), looseReviewCopies: [...loose.keys()] };
+    summary.originals = originals.map(row => ({ source: row.source, originalBytes: row.originalBytes,
+      originalSha256: row.originalSha256, archive: bundle, member: row.source,
+      memberBytes: row.originalBytes, memberSha256: row.originalSha256, encoding: 'tar_xz_original_bytes',
+      ...(loose.has(row.archive) ? { reviewCopy: { archive: row.archive, encoding: row.encoding,
+        archivedBytes: row.archivedBytes, archivedSha256: row.archivedSha256 } } : {}) }));
+    const byArchive = new Map(originals.map(row => [row.archive, row]));
+    const bundledReadme = readme.map(line => line.startsWith('- Original JSON/log bytes')
+      ? '- All fetched evidence bytes are preserved in originals.tar.xz; loose review copies duplicate final.jpg, source-revision.txt and the losslessly gzipped report.'
+      : line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (link, label, path) => {
+        const row = byArchive.get(path);
+        return row && !loose.has(path) ? `[${label} in bundle](${bundle}), member \`${row.source}\`` : link;
+      }));
+    bundledReadme.push('', 'Lossless size fallback:', '',
+      `The ordinary archive was ${total} bytes. All ${originals.length} original members were extracted and matched by byte length and SHA256 before publication.`,
+      'archive.json lists each bundled original path/hash and its former loose payload filename in storage.bundledPayloadFiles.',
+      'Only storage changed: no JPEG was transformed, no fetched evidence was deleted, and the original result remains unchanged.',
+      'Extract outside the repository into a fresh temporary directory, then verify every member:', '', '```sh',
+      'archive="$(pwd)"', 'review_dir="$(mktemp -d "${TMPDIR:-/tmp}/eb-weight-review.XXXXXX")"',
+      'tar -xJf "$archive/originals.tar.xz" -C "$review_dir"',
+      '(cd "$review_dir" && shasum -a 256 -c "$archive/original-members.SHA256SUMS")', '```', '');
+    payload.clear();
+    for (const [name, bytes] of loose) payload.set(name, bytes);
+    payload.set(bundle, bundled);
+    payload.set('original-members.SHA256SUMS', Buffer.from(originals.map(row => `${row.originalSha256}  ${row.source}\n`).join('')));
+    payload.set('archive.json', Buffer.from(`${JSON.stringify(summary, null, 2)}\n`));
+    payload.set('README.md', Buffer.from(bundledReadme.join('\n')));
+    payload.set('SHA256SUMS', Buffer.from([...payload].sort(([a], [b]) => a.localeCompare(b))
+      .map(([name, bytes]) => `${sha(bytes)}  ${name}\n`).join('')));
+    total = [...payload.values()].reduce((sum, bytes) => sum + bytes.length, 0);
+  } finally {
+    // This directory contains only newly created verification copies; fetched originals and existing archives are untouched.
+    rmSync(temporary, { recursive: true, force: true });
+  }
+}
 assert.ok(total < 3 * 1024 * 1024,
   `Archive would be ${total} bytes, not below 3 MiB. No evidence was deleted or written; fetched originals remain intact.`);
 mkdirSync(output, { recursive: true });

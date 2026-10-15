@@ -650,15 +650,16 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_harness",
+      "screenVerdict": "fail_screen_chip_capacity",
       "liveCase": {
         "seed": 2,
         "choice": "c"
       },
-      "limits": "c: first run paused at combined notice; follow-up normal notice and year-report Continue preserved SHA, but helper advanced 32 ms after Later restored speed (69151→69154), contaminating navigation SHA with runtime progress. Harness failure, not established screen/trace defect; actual target result/card unobserved. Retry after removal of extra clock advance remains pending.",
+      "limits": "c: corrected run observed audit-9 at 74320 (458 kept + 77 errors = 535), exact partial cause h-005537→h-005112 and yearly reader 4/target 1, but target chip absent through 74516; lawsuit/patent/Michaelmas audit occupy MAX_CHIPS=3. Card/navigation SHA pair NOT OBSERVED, not changed. Earlier combined-notice interruption and post-Later 32ms harness failure remain preserved; not permanent inaccessibility or whole-56 acceptance.",
       "evidence": [
         "../eb-weight-130-live/README.md",
-        "../eb-weight-130-notices/README.md"
+        "../eb-weight-130-notices/README.md",
+        "../eb-weight-130-result/README.md"
       ]
     },
     {
