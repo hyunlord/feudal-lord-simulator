@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 9/56, 실패·관측미달 5, 미검증 42, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 11/56, 실패·관측미달 5, 미검증 40, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -50,7 +50,7 @@
 | 132 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 133 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 139 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 140 | a, b, c | a | 미통과: 하네스 | [증거1](../eb-weight-140-live/README.md) · [증거2](../eb-weight-140-notices/README.md); a: first run blocked by event 025; follow-up Later uncovered the world, but helper explicitly advanced 32 ms after restoring speed (223153→223156), mixing runtime progress into navigation SHA. Harness failure, not established screen/trace defect; no exact target receipt/card observed. Retry with ce1f4ba8a still required. |
+| 140 | a, b, c | a | 통과(한 선택) | [증거1](../eb-weight-140-live/README.md) · [증거2](../eb-weight-140-notices/README.md) · [증거3](../eb-weight-140-result/README.md); a: corrected run actual audit-48 at 230320 (kept 39, errors 0), exact partial cause h-015888→h-015428; initial chip absent→3 (null, not displayed 0), target 0→1, exact item once and navigation SHA unchanged. Earlier event-025 interruption and post-Later 32ms timing failure retained. Other choices not claimed; decoded state bytes retained but original gzip containers absent from repository archive. |
 | 143 | a, b | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 144 | b, c | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
 | 147 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
@@ -61,9 +61,9 @@
 | 174 | a, b, c | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 201 | a, b, c | b | 통과(한 선택) | [증거1](../eb-weight-201-live/README.md); b: actual stall_fee income 24d, ledger-000441 at 40800, h-003172 partial cause h-003145; chip 2→3, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed. |
 | 204 | a, b, c | a | 통과(한 선택) | [증거1](../eb-weight-204-live/README.md); a: actual stall_fee income 20d, ledger-013028 at 326400, h-023125 partial cause h-023122; chip 3→5, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed. |
-| 206 | a, b, c, d | 예정: a | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 206 | a, b, c, d | a | 실패: 칩 자리 제한 | [증거1](../eb-weight-206-live/README.md); a: actual 2-unit timber deliveries at 314080/314160/314240, remaining 10→8→6→4, exact direct causes h-020521/522/524→h-020520. Reader 7/target 4 at 314277, but lawsuit/burnt-plot/poll-tax chips occupy MAX_CHIPS=3 and target chip absent. Card/navigation SHA NOT OBSERVED, not changed; bounded window, not permanent inaccessibility. |
 | 209 | a, b, c, d | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
-| 211 | a, b, c | 예정: b | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |
+| 211 | a, b, c | b | 통과(한 선택) | [증거1](../eb-weight-211-live/README.md); b: actual stall_fee income 16d, ledger-000312 at 33600, h-002538 partial cause h-002496; chip 2→4, target 0→1, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed. |
 
 ## 실패 원인 구분
 

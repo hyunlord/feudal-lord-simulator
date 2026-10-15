@@ -206,6 +206,70 @@ if (total >= 3 * 1024 * 1024) {
     payload.set('SHA256SUMS', Buffer.from([...payload].sort(([a], [b]) => a.localeCompare(b))
       .map(([name, bytes]) => `${sha(bytes)}  ${name}\n`).join('')));
     total = [...payload.values()].reduce((sum, bytes) => sum + bytes.length, 0);
+    if (total >= 3 * 1024 * 1024) {
+      const contentBundle = 'evidence-content.tar.xz', contentPath = join(temporary, contentBundle);
+      const staged = join(temporary, 'decoded-source'); mkdirSync(staged);
+      const members = originals.map(row => {
+        const original = readFileSync(join(input, row.source));
+        assert.equal(sha(original), row.originalSha256, 'Fetched evidence changed before content packing');
+        const decoded = row.source.endsWith('.state.json.gz');
+        const bytes = decoded ? gunzipSync(original) : original;
+        const member = decoded ? row.source.slice(0, -3) : row.source;
+        const path = join(staged, member); mkdirSync(dirname(path), { recursive: true });
+        writeFileSync(path, bytes, { flag: 'wx' });
+        return { source: row.source, originalBytes: row.originalBytes, originalSha256: row.originalSha256,
+          archive: contentBundle, member, memberBytes: bytes.length, memberSha256: sha(bytes),
+          encoding: decoded ? 'tar_xz_exact_gunzip_content' : 'tar_xz_original_bytes',
+          ...(decoded ? { originalGzipBytes: row.originalBytes, originalGzipSha256: row.originalSha256,
+            decodedBytes: bytes.length, decodedSha256: sha(bytes), originalGzipRetainedInRepository: false,
+            originalGzipReconstruction: 'not_supported' } : {}),
+          ...(loose.has(row.archive) ? { reviewCopy: { archive: row.archive, encoding: row.encoding,
+            archivedBytes: row.archivedBytes, archivedSha256: row.archivedSha256 } } : {}) };
+      });
+      writeFileSync(list, members.map(row => `${row.member}\0`).join(''));
+      execFileSync('tar', ['-cJf', contentPath, '-C', staged, '--null', '-T', list],
+        { env: { ...process.env, COPYFILE_DISABLE: '1' }, stdio: 'pipe' });
+      const verified = join(temporary, 'decoded-verified'); mkdirSync(verified);
+      execFileSync('tar', ['-xJf', contentPath, '-C', verified], { stdio: 'pipe' });
+      assert.deepEqual(files(verified).map(path => relative(verified, path)).sort(), members.map(row => row.member).sort());
+      for (const row of members) {
+        const bytes = readFileSync(join(verified, row.member));
+        assert.equal(bytes.length, row.memberBytes, `Extracted content size changed: ${row.member}`);
+        assert.equal(sha(bytes), row.memberSha256, `Extracted content hash changed: ${row.member}`);
+      }
+      const content = readFileSync(contentPath), bySource = new Map(members.map(row => [row.source, row]));
+      summary.storage = { mode: 'lossless_decoded_state_content_tar_xz', bundle: contentBundle,
+        bundleBytes: content.length, bundleSha256: sha(content), originalPayloadBytes: summary.storage.originalPayloadBytes,
+        originalTarXzPayloadBytes: total, extractedMembersVerified: members.length,
+        exactDecodedStateMembers: members.filter(row => row.encoding === 'tar_xz_exact_gunzip_content').length,
+        originalStateGzipContainersRetainedInRepository: false, originalGzipReconstruction: 'not_supported',
+        fetchedOriginalsRetained: true, looseReviewCopies: [...loose.keys()] };
+      summary.originals = members;
+      const contentReadme = readme.map(line => line.startsWith('- Original JSON/log bytes')
+        ? '- State gzip containers are replaced by their exact gunzip output bytes in the bundle. JPEG, log, report and other bundled files retain their original bytes.'
+        : line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (link, label, path) => {
+          const original = byArchive.get(path), member = original && bySource.get(original.source);
+          return member && !loose.has(path) ? `[${label} in bundle](${contentBundle}), member \`${member.member}\`` : link;
+        }));
+      contentReadme.push('', 'Lossless state-content fallback:', '',
+        `The original-container tar.xz archive was ${total} bytes. All ${members.length} extracted members passed size/SHA checks; ${summary.storage.exactDecodedStateMembers} state members preserve exact decoded bytes, not original gzip container bytes.`,
+        'No JSON parsing/reserialization is used in this storage transform. No JPEG is transformed and no fetched original is deleted.',
+        'The original state gzip containers are NOT retained in this repository archive and cannot be reproduced byte-for-byte from it by the supplied tools. They remain intact in the fetched run.',
+        'archive.json records each original gzip SHA/size separately from its decoded content SHA/size. Original-container hashes are provenance, not hashes of extracted decoded files.',
+        'Extract outside the repository into a fresh temporary directory, then verify decoded state content and all other original members:', '', '```sh',
+        'archive="$(pwd)"', 'review_dir="$(mktemp -d "${TMPDIR:-/tmp}/eb-weight-review.XXXXXX")"',
+        'tar -xJf "$archive/evidence-content.tar.xz" -C "$review_dir"',
+        '(cd "$review_dir" && shasum -a 256 -c "$archive/content-members.SHA256SUMS")', '```', '');
+      payload.clear();
+      for (const [name, bytes] of loose) payload.set(name, bytes);
+      payload.set(contentBundle, content);
+      payload.set('content-members.SHA256SUMS', Buffer.from(members.map(row => `${row.memberSha256}  ${row.member}\n`).join('')));
+      payload.set('archive.json', Buffer.from(`${JSON.stringify(summary, null, 2)}\n`));
+      payload.set('README.md', Buffer.from(contentReadme.join('\n')));
+      payload.set('SHA256SUMS', Buffer.from([...payload].sort(([a], [b]) => a.localeCompare(b))
+        .map(([name, bytes]) => `${sha(bytes)}  ${name}\n`).join('')));
+      total = [...payload.values()].reduce((sum, bytes) => sum + bytes.length, 0);
+    }
   } finally {
     // This directory contains only newly created verification copies; fetched originals and existing archives are untouched.
     rmSync(temporary, { recursive: true, force: true });

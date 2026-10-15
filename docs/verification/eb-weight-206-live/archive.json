@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "runId": "engineB-weight206-live-9f769ee",
+  "entryId": "ck_evt_206",
+  "choice": "a",
+  "answerId": "h-020520",
+  "officialExitCode": 1,
+  "originalValid": false,
+  "verdict": "FAIL",
+  "humanJpegReview": "pending",
+  "productRevision": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "historicalSourceRevision": "2485af40046793f1856829fa1161dc4431942aa7",
+  "toolRevision": "9f769ee5b51f356ef0a1f9f61db1adb3e7a2cd84",
+  "canonicalContractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+  "canonicalTitle": "불길 뒤에 남은 서까래",
+  "canonicalTitleMatches": false,
+  "selectedSource": [
+    "registry:ck_evt_206:a"
+  ],
+  "expectedSource": "registry:ck_evt_206:a",
+  "originalReportSha256": "588080fc73a9df2d11ddd2ae41d08ea4c1f0d00cb8d2fa637933c84841b2efeb",
+  "stop": "bounded_original_first_result_plus_200_ticks",
+  "absence": "canonical_membership_exists_but_matching_uncovered_chip_not_observed",
+  "errors": [],
+  "archiveChecks": [
+    "official_exit_code:1",
+    "original_report_valid_is_not_true",
+    "canonical_title_missing_from_manual_expected_fact",
+    "exact_manual_fact_not_confirmed_exposed",
+    "manual_navigation_state_hash_not_confirmed",
+    "automatic_exact_answer_aggregation_not_confirmed"
+  ],
+  "metrics": {
+    "initialTick": 314029,
+    "finalTick": 314277,
+    "initialYearCount": 4,
+    "automaticYearCount": null,
+    "exactReceiptCount": 3,
+    "actualEffectReceiptCount": 3,
+    "exactNewRowCount": 0,
+    "progressAtTen": true,
+    "manualTargetCaptured": null,
+    "navigationUnchanged": null
+  },
+  "manualExpectedFact": null,
+  "manualBeforeSha256": null,
+  "manualAfterSha256": null,
+  "states": [
+    {
+      "label": "initial",
+      "tick": 314029,
+      "stateFile": "initial.state.json.gz",
+      "stateSha256": "2210d8500e28ba5323b64c3401e1aee4c8c30e057b9f4acb1e200f036082b6f0",
+      "compressedSha256": "e72ba4823837d811b941a38c4ea63dbca52860e388b9dcea61c356ac6acc3b3f",
+      "screen": "initial.jpg",
+      "screenSha256": "eda9aec6770a478ac4574a9ad20be10da5221bf8d8ca8d3227ecb5378593d6d3",
+      "valid": true
+    },
+    {
+      "label": "first-exact-receipt",
+      "tick": 314080,
+      "stateFile": "first-exact-receipt.state.json.gz",
+      "stateSha256": "e9447b34cd09aa8ecd94ac0f88c1b16edf3d757aa6ab5dc2f4d143696cea1987",
+      "compressedSha256": "812b351df5272b1508dedde85f5971bd7571924af0e83244923fe60b15603f0b",
+      "screen": "first-exact-receipt.jpg",
+      "screenSha256": "35805d8a5c579ee276a4c1acd07d1f80e0cb6653ff5e94400969ca973df55b28",
+      "valid": true
+    },
+    {
+      "label": "final",
+      "tick": 314277,
+      "stateFile": "final.state.json.gz",
+      "stateSha256": "984d82e74ed30b0f6d682759977a239ff5117f3840db679ee64f4887f1cee360",
+      "compressedSha256": "38ce553a52d619a769ab32f6f7b00b5220756b40aecd52ff07960fa1d0207972",
+      "screen": "final.jpg",
+      "screenSha256": "6666a411c9cad502a757799920edf5c73c0d558c981ce0e8b3987071cae6f75c",
+      "valid": true
+    }
+  ],
+  "originals": [
+    {
+      "source": "eb-weight-live56/ck_evt_206/final.jpg",
+      "archive": "final.jpg",
+      "originalBytes": 167785,
+      "originalSha256": "6666a411c9cad502a757799920edf5c73c0d558c981ce0e8b3987071cae6f75c",
+      "archivedBytes": 167785,
+      "archivedSha256": "6666a411c9cad502a757799920edf5c73c0d558c981ce0e8b3987071cae6f75c",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/final.state.json.gz",
+      "archive": "final.state.json.gz",
+      "originalBytes": 255689,
+      "originalSha256": "38ce553a52d619a769ab32f6f7b00b5220756b40aecd52ff07960fa1d0207972",
+      "archivedBytes": 255689,
+      "archivedSha256": "38ce553a52d619a769ab32f6f7b00b5220756b40aecd52ff07960fa1d0207972",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/first-exact-receipt.jpg",
+      "archive": "first-exact-receipt.jpg",
+      "originalBytes": 167849,
+      "originalSha256": "35805d8a5c579ee276a4c1acd07d1f80e0cb6653ff5e94400969ca973df55b28",
+      "archivedBytes": 167849,
+      "archivedSha256": "35805d8a5c579ee276a4c1acd07d1f80e0cb6653ff5e94400969ca973df55b28",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/first-exact-receipt.state.json.gz",
+      "archive": "first-exact-receipt.state.json.gz",
+      "originalBytes": 255412,
+      "originalSha256": "812b351df5272b1508dedde85f5971bd7571924af0e83244923fe60b15603f0b",
+      "archivedBytes": 255412,
+      "archivedSha256": "812b351df5272b1508dedde85f5971bd7571924af0e83244923fe60b15603f0b",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/initial.jpg",
+      "archive": "initial.jpg",
+      "originalBytes": 109848,
+      "originalSha256": "eda9aec6770a478ac4574a9ad20be10da5221bf8d8ca8d3227ecb5378593d6d3",
+      "archivedBytes": 109848,
+      "archivedSha256": "eda9aec6770a478ac4574a9ad20be10da5221bf8d8ca8d3227ecb5378593d6d3",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/initial.state.json.gz",
+      "archive": "initial.state.json.gz",
+      "originalBytes": 255500,
+      "originalSha256": "e72ba4823837d811b941a38c4ea63dbca52860e388b9dcea61c356ac6acc3b3f",
+      "archivedBytes": 255500,
+      "archivedSha256": "e72ba4823837d811b941a38c4ea63dbca52860e388b9dcea61c356ac6acc3b3f",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/live-case.json",
+      "archive": "live-case.json.gz",
+      "originalBytes": 43291,
+      "originalSha256": "588080fc73a9df2d11ddd2ae41d08ea4c1f0d00cb8d2fa637933c84841b2efeb",
+      "archivedBytes": 4334,
+      "archivedSha256": "4745352a78669256de88249e62623edd2d2f883e05dc777f34d3396e4014b1a3",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/source-revision.txt",
+      "archive": "source-revision.txt",
+      "originalBytes": 41,
+      "originalSha256": "7fca4c0c869eeb34756339c68437553f4e0dc0d2443ace8c200786a84e92ab2d",
+      "archivedBytes": 41,
+      "archivedSha256": "7fca4c0c869eeb34756339c68437553f4e0dc0d2443ace8c200786a84e92ab2d",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "eb-weight-live56/ck_evt_206/vite.log",
+      "archive": "vite.log.gz",
+      "originalBytes": 225039,
+      "originalSha256": "25a85d0a7d6356a013748a0828f0e19e271015bd91d48f811302ded51e8ab4ba",
+      "archivedBytes": 18423,
+      "archivedSha256": "ec48c81309f7900dd26d94e0891207668af7645776fce6bea544951c0ec8e172",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "changed-files.txt",
+      "archive": "runner/changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "exit-code",
+      "archive": "runner/exit-code",
+      "originalBytes": 2,
+      "originalSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "archivedBytes": 2,
+      "archivedSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "keep",
+      "archive": "runner/keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "pid",
+      "archive": "runner/pid",
+      "originalBytes": 8,
+      "originalSha256": "039f6bde0c482bba09f749b3fa963ab713b2dd1b17a58fba9e5f610d7c2c95f9",
+      "archivedBytes": 8,
+      "archivedSha256": "039f6bde0c482bba09f749b3fa963ab713b2dd1b17a58fba9e5f610d7c2c95f9",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "run.log",
+      "archive": "runner/run.log.gz",
+      "originalBytes": 1525,
+      "originalSha256": "352b39b1778323c346b96e2bcf05715e5465c53f3077fb0bdaf3343582875f74",
+      "archivedBytes": 801,
+      "archivedSha256": "b4a20164ecdd05bc805b7fff982668e7e2c812e615ba2c87056d25cb2483e8db",
+      "encoding": "lossless_gzip"
+    },
+    {
+      "source": "start-marker",
+      "archive": "runner/start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivedBytes": 0,
+      "archivedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "timing.env",
+      "archive": "runner/timing.env",
+      "originalBytes": 75,
+      "originalSha256": "65f2b9b4c3d076865fbd57d5772b05634a1606245f57c3ebf0171afe57f0545a",
+      "archivedBytes": 75,
+      "archivedSha256": "65f2b9b4c3d076865fbd57d5772b05634a1606245f57c3ebf0171afe57f0545a",
+      "encoding": "unchanged_bytes"
+    },
+    {
+      "source": "unit",
+      "archive": "runner/unit",
+      "originalBytes": 50,
+      "originalSha256": "a2d230c97f41035ff30f1608375c65288e76e5c98e636c7a7ec408dcf5698b90",
+      "archivedBytes": 50,
+      "archivedSha256": "a2d230c97f41035ff30f1608375c65288e76e5c98e636c7a7ec408dcf5698b90",
+      "encoding": "unchanged_bytes"
+    }
+  ],
+  "limits": [
+    "Proof snapshots contain presentation walkers, not a raw store snapshot.",
+    "This is one current-product replay from a genuine historical answer, not a fresh 125-year run.",
+    "Automatic yearly aggregation is distinct from automatic opening of a card or a new notification.",
+    "A bounded replay may stop at an unrelated required decision; that is not proof of a trace or display defect.",
+    "The observation bound is the original first consequence tick plus 200 ticks; old and current simulation may diverge."
+  ]
+}

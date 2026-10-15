@@ -739,15 +739,16 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_harness",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "a"
       },
-      "limits": "a: first run blocked by event 025; follow-up Later uncovered the world, but helper explicitly advanced 32 ms after restoring speed (223153→223156), mixing runtime progress into navigation SHA. Harness failure, not established screen/trace defect; no exact target receipt/card observed. Retry with ce1f4ba8a still required.",
+      "limits": "a: corrected run actual audit-48 at 230320 (kept 39, errors 0), exact partial cause h-015888→h-015428; initial chip absent→3 (null, not displayed 0), target 0→1, exact item once and navigation SHA unchanged. Earlier event-025 interruption and post-Later 32ms timing failure retained. Other choices not claimed; decoded state bytes retained but original gzip containers absent from repository archive.",
       "evidence": [
         "../eb-weight-140-live/README.md",
-        "../eb-weight-140-notices/README.md"
+        "../eb-weight-140-notices/README.md",
+        "../eb-weight-140-result/README.md"
       ]
     },
     {
@@ -933,12 +934,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "fail_screen_chip_capacity",
       "liveCase": {
         "seed": 1,
         "choice": "a"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "a: actual 2-unit timber deliveries at 314080/314160/314240, remaining 10→8→6→4, exact direct causes h-020521/522/524→h-020520. Reader 7/target 4 at 314277, but lawsuit/burnt-plot/poll-tax chips occupy MAX_CHIPS=3 and target chip absent. Card/navigation SHA NOT OBSERVED, not changed; bounded window, not permanent inaccessibility.",
+      "evidence": "../eb-weight-206-live/README.md"
     },
     {
       "entryId": "ck_evt_209",
@@ -970,12 +972,13 @@
         "no_trace_yet_at_answer"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "b"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "b: actual stall_fee income 16d, ledger-000312 at 33600, h-002538 partial cause h-002496; chip 2→4, target 0→1, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed.",
+      "evidence": "../eb-weight-211-live/README.md"
     }
   ]
 }

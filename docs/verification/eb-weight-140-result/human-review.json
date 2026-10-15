@@ -1,0 +1,33 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "archive": "evidence-content.tar.xz",
+      "member": "eb-weight-live56/ck_evt_140/automatic-chip.jpg",
+      "sha256": "5a1d1fd64e8ba7457aa689e11a5ea2b6dcfd5de7d062cb0975ffcc8a81f9dd20"
+    },
+    {
+      "file": "manual-card.jpg",
+      "archive": "evidence-content.tar.xz",
+      "member": "eb-weight-live56/ck_evt_140/manual-card.jpg",
+      "sha256": "6e954af465cc4d33c8e189330a06c32e64aac7ca24ffd5fbfe16b802a0de9c1f"
+    }
+  ],
+  "observed": "Annual chip 3 is fully visible. Exact 1355년 당신의 결정 때문에: 멀리 있는 땅을 보는 비용 — 1건 item is fully exposed once, with the other two card items also matching. Initial annual chip absent, not a displayed zero.",
+  "expectedFact": "1355년 당신의 결정 때문에: 멀리 있는 땅을 보는 비용 — 1건",
+  "navigationSha256": "aa9b03f9411f7fc5e99d5c2a6e5d679389932330069077cea80a50cee732400e",
+  "actualAudit": {
+    "id": "audit-48",
+    "tick": 230320,
+    "revealedKept": 39,
+    "revealedErrors": 0,
+    "recordId": "h-015888",
+    "selectedAnswerId": "h-015428",
+    "partialCause": true
+  },
+  "limits": "Only choice a accepted. Earlier two failures retain their historical conditions. State decoded bytes are preserved; original state gzip container bytes are not retained in the repository archive."
+}

@@ -1,0 +1,47 @@
+{
+  "verdict": "FAIL_SCREEN_CHIP_CAPACITY",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected original final.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "final.jpg",
+      "sha256": "6666a411c9cad502a757799920edf5c73c0d558c981ce0e8b3987071cae6f75c"
+    }
+  ],
+  "observed": "Annual target chip absent; three other chips show suit against lord, burnt plot, and poll tax collection.",
+  "actualResults": [
+    {
+      "recordId": "h-020521",
+      "tick": 314080,
+      "orderBefore": 10,
+      "orderAfter": 8
+    },
+    {
+      "recordId": "h-020522",
+      "tick": 314160,
+      "orderBefore": 8,
+      "orderAfter": 6
+    },
+    {
+      "recordId": "h-020524",
+      "tick": 314240,
+      "orderBefore": 6,
+      "orderAfter": 4
+    }
+  ],
+  "selectedAnswerId": "h-020520",
+  "cause": "direct",
+  "reader": {
+    "year": 1378,
+    "count": 7,
+    "targetCount": 4,
+    "targetTitle": "1378년 당신의 결정 때문에: 불길 뒤에 남은 서까래"
+  },
+  "finalTick": 314277,
+  "causeClassification": "screen_chip_capacity",
+  "source": "src/ui/hud/useStoryPresentation.ts:25,81–96 (MAX_CHIPS=3)",
+  "manualCard": "NOT_OBSERVED",
+  "navigationShaPair": "NOT_OBSERVED",
+  "limits": "Bounded observation, not permanent inaccessibility. No UI fix or whole-56 pass claimed."
+}
