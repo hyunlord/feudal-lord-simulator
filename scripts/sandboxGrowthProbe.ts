@@ -12,11 +12,26 @@ import { hasActiveFoodObservation } from "../src/engine/autoplayFoodThroughput";
 import { zonesOf } from "../src/zones/zoneEdits";
 import { evaluateEraRequirements } from "../src/engine/era";
 import { isBuildingConstructionSite } from "../src/economy/construction";
+import { palisadeCoreProposalForState } from "../src/engine/palisadeFootprints";
 import { houseRequirementRows } from "./autoplayStallProbe";
 import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 
 const [seedArg = "4", maxArg = "120000", sampleArg = "4000"] = process.argv.slice(2);
 const SAMPLE = Number(sampleArg);
+
+// Whether the bot could still draw the palisade around the town's core (`palisadeCoreProposalForState`; once it cannot,
+// `preservesAutoplayWallSpace` stops keeping the wall's room), the failure's reason and the buildings it names.
+function wallStatus(state: GameState) {
+  const proposal = palisadeCoreProposalForState(state);
+  if (proposal.ok) return { ok: true as const };
+  const kinds = (proposal.affectedFootprintIds ?? []).map(id => state.buildings.find(building => building.id === id)?.kind
+    ?? state.constructionSites.filter(isBuildingConstructionSite).find(site => site.id === id)?.kind ?? id);
+  return { ok: false as const, reason: proposal.reason, affected: kinds };
+}
+const occupants = (state: GameState) => [...state.buildings.map(building => `${building.id}:${building.kind}@${building.tx},${building.ty}`),
+  ...state.constructionSites.filter(isBuildingConstructionSite).map(site => `${site.id}:${site.kind}@${site.tx},${site.ty}`)];
+let lastFeasible: { tick: number; occupants: Set<string> } | null = null;
+let wallBreak: { tick: number; lastFeasibleTick: number | null; status: ReturnType<typeof wallStatus>; added: string[] } | null = null;
 
 function sample(state: GameState) {
   const rows = houseRequirementRows(state);
@@ -40,6 +55,7 @@ function sample(state: GameState) {
     sites: state.constructionSites.filter(isBuildingConstructionSite).map(site => `${site.kind}:${site.stall ?? "none"}`),
     stock: Object.fromEntries((["timber", "logs", "stone", "stone_raw"] as const).map(resource => [resource, state.buildings.reduce((sum, building) => sum + availableStock(building, resource), 0)])),
     palisade: state.palisade === null ? null : { segments: state.palisade.segments?.length ?? null },
+    wall: wallStatus(state),
     food: {
       decision: count("mill") > 0 && count("granary") > 0 && count("farmstead") > 0 ? measuredFoodDecision(state) : null,
       grainShort: arableSupplyShort(state), belowCap: arableBelowCap(state),
@@ -61,5 +77,13 @@ function sample(state: GameState) {
 
 const samples: ReturnType<typeof sample>[] = [];
 const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: Number(maxArg), seed: Number(seedArg),
-  onTick: state => { if (state.tick % SAMPLE === 0) samples.push(sample(state)); } });
-process.stdout.write(`${JSON.stringify({ seed: Number(seedArg), maxTicks: Number(maxArg), finalTick: report.final?.tick ?? null, samples })}\n`);
+  onTick: state => {
+    if (state.tick % SAMPLE === 0) samples.push(sample(state));
+    if (wallBreak === null && state.era === "hamlet" && state.tick % 250 === 0) {
+      const status = wallStatus(state);
+      if (status.ok) lastFeasible = { tick: state.tick, occupants: new Set(occupants(state)) };
+      else wallBreak = { tick: state.tick, lastFeasibleTick: lastFeasible?.tick ?? null, status,
+        added: occupants(state).filter(entry => !(lastFeasible?.occupants.has(entry) ?? false)) };
+    }
+  } });
+process.stdout.write(`${JSON.stringify({ seed: Number(seedArg), maxTicks: Number(maxArg), finalTick: report.final?.tick ?? null, wallBreak, samples })}\n`);
