@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "firm",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "3c9b2922ccf4c9ae265b3d6dd3be5c2ff1ba62fa8120cb49faf7ec13e667cef9"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "d9e2e4fd886200e78a5a38552119cf9cb192343a96c0372f51faebab084c7430"
+    }
+  ],
+  "observed": "Results chip 4 and exact canonical 042 item fully visible with 2 results; paused navigation SHA unchanged.",
+  "expectedFact": "1309년 당신의 결정 때문에: 옆 시장으로 향하는 수레 — 2건",
+  "navigationSha256": "c5dcdbf78c80008db522e6b0f81794ce61fd49e2990dc671bcb0b44d58e18560"
+}

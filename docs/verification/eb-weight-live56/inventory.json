@@ -346,12 +346,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 2,
         "choice": "firm"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "firm: actual stall_fee income 23d; chip 2→4, target 1→2; exact card and navigation SHA verified. light is not claimed.",
+      "evidence": "../eb-weight-042-live/README.md"
     },
     {
       "entryId": "ck_evt_046",
@@ -414,12 +415,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 1,
         "choice": "roll"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "roll: actual suit-4 filed→evidence transition; chip 1→3, target 0→1; exact card and navigation SHA verified. Other choices are not claimed.",
+      "evidence": "../eb-weight-053-live/README.md"
     },
     {
       "entryId": "ck_evt_057",
@@ -560,12 +562,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 3,
         "choice": "a"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "a: actual timber order remaining 16→14, delivery 2; chip 7→8, target 0→1; exact card and navigation SHA verified. Other choices are not claimed.",
+      "evidence": "../eb-weight-083-live/README.md"
     },
     {
       "entryId": "ck_evt_090",

@@ -12,3 +12,9 @@
 005/b 후속: [engineB-weight005-later-430d8d6](../verification/eb-weight-005-later/README.md) 종료1. 실제 수입23d·정확한 부분원인·칩1건은 존재한다.042 ‘나중에’로 닫으니1308 연말 카드가 자동으로 열리고 seen.year-review:1308이 추가돼 탐색SHA가 변했다(틱36151 동일). 원인은 useStoryPresentation.ts:218–224의 밀린 연말 카드·markOpened 경로. 영지 규칙 변경이 아니라 읽음 기록이며, 전체SHA조건을 임의로 완화하지 않는다. 렌더A 검토.
 
 032/roll: [증빙](../verification/eb-weight-032-live/README.md) 실제소송단계전이·칩3→5·대상1항목·SHA동일·원본JPEG검토 통과. 다른 선택의 통과로 확대하지 않는다.
+
+042/firm: [증빙](../verification/eb-weight-042-live/README.md) 실제 stall_fee 수입 23d(ledger-000393, tick 38400), h-003000→h-002984 부분원인. 칩 2→4, 대상 카드 1→2건, 원본 JPEG 두 장에서 정확한 제목·건수 노출과 탐색 SHA 동일을 확인했다. firm 한 선택만 통과다.
+
+053/roll: [증빙](../verification/eb-weight-053-live/README.md) 실제 suit-4 filed→evidence(tick 78000), h-005067→h-005003 부분원인(소송 시작 h-004944와 함께). 칩 1→3, 대상 카드 0→1건, 원본 JPEG 두 장에서 정확한 제목·건수 노출과 탐색 SHA 동일을 확인했다. roll 한 선택만 통과다.
+
+083/a: [증빙](../verification/eb-weight-083-live/README.md) 실제 목재 주문 잔량 16→14, 배송 2단(tick 73040), h-003392→h-003391 직접 원인. 칩 7→8, 대상 카드 0→1건, 원본 JPEG 두 장에서 정확한 제목·건수 노출과 탐색 SHA 동일을 확인했다. 다른 선택지의 세율 명령에 기대지 않았으며 a 한 선택만 통과다.

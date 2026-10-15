@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "a",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "205412aa6db7dd7cec855f09b8706a771058bd96c5a081be81685e127625213e"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "b692dec66bd68e51555b911459d435fa1c475ca56a6f01e8899bdff8f909109c"
+    }
+  ],
+  "observed": "Results chip 8 and exact canonical 083 item fully visible with 1 result; paused navigation SHA unchanged.",
+  "expectedFact": "1318년 당신의 결정 때문에: 목재가 도착할 장터 — 1건",
+  "navigationSha256": "014df0a4721fb1d4093bd1005f298771e6cdb85472d4eca5278df8c054b8123a"
+}

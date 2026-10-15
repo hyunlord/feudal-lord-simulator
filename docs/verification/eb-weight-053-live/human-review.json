@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "roll",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "sha256": "c74d249ab830b004248d656b82662b0a084ab8bd15b6f26e4887f9e8b0516bf7"
+    },
+    {
+      "file": "manual-card.jpg",
+      "sha256": "b75028e6c1c942600c6fcc6d035ffbe8e3b84ee3efe156ea19d395fef5c01171"
+    }
+  ],
+  "observed": "Results chip 3 and exact canonical 053 item fully visible with 1 results; paused navigation SHA unchanged.",
+  "expectedFact": "1319년 당신의 결정 때문에: 가문의 증서와 장원 법정 기록 — 1건",
+  "navigationSha256": "6418783fc93019b55f20d449b39bc070cb037b1572538ab6a07764e1176a59d4"
+}
