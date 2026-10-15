@@ -226,13 +226,16 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_observation_interrupted",
+      "screenVerdict": "pass_one_choice",
       "liveCase": {
         "seed": 3,
         "choice": "able"
       },
-      "limits": "Unrelatedsuitnotice@276000 stoppedbeforeexpectedresult. Separate normalContinue replayplanned, nottracefailure.",
-      "evidence": "../eb-weight-031-live/README.md"
+      "limits": "able: audit-59 at 282320 (kept759/errors0), h-013700 partial cause h-013352; target0→1 and exact item once, SHA unchanged. Initial results:1368 chip2 and final results:1370 chip2 differ by year; final-year chip absent initially→2, no numeric increase from2 claimed. Earlier suit-notice interruption retained. Other choices not claimed.",
+      "evidence": [
+        "../eb-weight-031-live/README.md",
+        "../eb-weight-031-result/README.md"
+      ]
     },
     {
       "entryId": "ck_evt_032",

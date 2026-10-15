@@ -1,6 +1,6 @@
 # EB-WEIGHT 56사건 실제 화면 관문
 
-진행 중: 사건별 통과 11/56, 실패·관측미달 5, 미검증 40, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
+진행 중: 사건별 통과 12/56, 실패·관측미달 4, 미검증 40, 청지기 별도 경로 0. 전체 관문 통과가 아니다.
 
 제품 0eddc146c7d57b4cae091bff62295a1fc16e1f97. 분모 56사건/163지원선택을 유지한다. 한 선택 통과를 다른 선택의 통과로 확대하지 않는다. 056은 이 분모 밖이며 렌더A 소유다.
 
@@ -20,7 +20,7 @@
 | 024 | lower, keep | lower, keep | 통과(두 지원 선택) | [증거1](../eb-weight-024-ls1/README.md) · [증거2](../eb-weight-024-keep/README.md); Original reader inclusion is not screen acceptance. |
 | 025 | punish, replace, tolerate | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 029 | accounts, visit, replace_accounts | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
-| 031 | able, loyal, direct | able | 미통과: 관측 중단 | [증거1](../eb-weight-031-live/README.md); Unrelatedsuitnotice@276000 stoppedbeforeexpectedresult. Separate normalContinue replayplanned, nottracefailure. |
+| 031 | able, loyal, direct | able | 통과(한 선택) | [증거1](../eb-weight-031-live/README.md) · [증거2](../eb-weight-031-result/README.md); able: audit-59 at 282320 (kept759/errors0), h-013700 partial cause h-013352; target0→1 and exact item once, SHA unchanged. Initial results:1368 chip2 and final results:1370 chip2 differ by year; final-year chip absent initially→2, no numeric increase from2 claimed. Earlier suit-notice interruption retained. Other choices not claimed. |
 | 032 | charter, roll, both, defer | roll | 통과(한 선택) | [증거1](../eb-weight-032-live/README.md); roll actualsuittransition, chip3→5 target0→1, exactcardonce andnavigationSHA; otherchoicesnotclaimed. |
 | 033 | deed, witnesses, both, defer | 아직 없음 | 미검증 | [입력 조건](missing-inputs.md); Original reader inclusion is not screen acceptance. |
 | 034 | precedent, hear, rights_only | 아직 없음 | 미검증 | 입력 장부만 있음; Original reader inclusion is not screen acceptance. |

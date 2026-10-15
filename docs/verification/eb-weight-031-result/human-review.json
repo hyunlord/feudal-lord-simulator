@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS_ONE_CHOICE",
+  "choice": "able",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected both original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "automatic-chip.jpg",
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-live56/ck_evt_031/automatic-chip.jpg",
+      "sha256": "7383978872c88464f5facea5a5391104e7efba7c6844cc83fe7ef9cccd594ba6"
+    },
+    {
+      "file": "manual-card.jpg",
+      "archive": "originals.tar.xz",
+      "member": "eb-weight-live56/ck_evt_031/manual-card.jpg",
+      "sha256": "4539b88c63de032bd77523fbd55a14e4812ad816d3102bd59f6cc2fdb772a65d"
+    }
+  ],
+  "observed": "Final annual chip 2 and the exact canonical 1368년 당신의 결정 때문에: 청지기를 갈아야 할 때 — 1건 item are fully exposed once. Navigation SHA unchanged.",
+  "yearComparison": {
+    "initial": {
+      "year": 1368,
+      "count": 2,
+      "chipVisible": true
+    },
+    "final": {
+      "year": 1370,
+      "count": 2,
+      "chipVisible": true
+    },
+    "finalYearChipPresentAtInitial": false,
+    "targetInitialCount": 0,
+    "targetFinalCount": 1,
+    "limitation": "Different yearly groups: no numeric increase from 2 is claimed. The results:1370 chip was absent initially and is now visible with 2."
+  },
+  "actualAudit": {
+    "id": "audit-59",
+    "tick": 282320,
+    "revealedKept": 759,
+    "revealedErrors": 0,
+    "recordId": "h-013700",
+    "selectedAnswerId": "h-013352",
+    "partialCause": true
+  },
+  "navigationSha256": "cebb84fa9e3990c611d2fb8a65efcb91a4ecdad796c76c04fcae8f7acd909988",
+  "limits": "Only able accepted. Original interrupted run remains preserved; no whole-56 pass claimed."
+}
