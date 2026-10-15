@@ -33,8 +33,8 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": {
-        "seed": 1,
-        "choice": "c"
+        "seed": 2,
+        "choice": "b"
       },
       "limits": "Original reader inclusion is not screen acceptance."
     },
@@ -52,12 +52,13 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
+      "screenVerdict": "fail_screen_chip_capacity",
       "liveCase": {
         "seed": 2,
         "choice": "c"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Actual result and exact trace present; annual reader includes item, automatic rail omits results chip within observed window. Card/SHA not observed.",
+      "evidence": "../eb-weight-009-live/README.md"
     },
     {
       "entryId": "ck_evt_010",
@@ -876,8 +877,8 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": {
-        "seed": 3,
-        "choice": "c"
+        "seed": 2,
+        "choice": "b"
       },
       "limits": "Original reader inclusion is not screen acceptance."
     },
