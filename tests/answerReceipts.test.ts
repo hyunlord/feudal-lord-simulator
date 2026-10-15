@@ -175,7 +175,7 @@ const BOOKKEEPING = [/^\.(history|trace|ledger|tick|rngState|lastCommand|command
   /^\.events\.records\[[^\]]+\]\.response$/, /^\.politics\.petitions\[[^\]]+\]\.(response|respondedTick)$/, /^\.politics\.decisions\[/,
   /^\.(war|plague|reorganisation|legacy)\.answers\./, /^\.houses\[[^\]]+\]\.abandonedTick$/, /^\.persons\.past\[/];
 const WATCHED = [/^\.treasuryCoin$/, /^\.factions\.factions\[[^\]]+\]\.relation$/, /^\.diplomacy\.relations\./, /^\.stewardship\.oversight\[[^\]]+\]\.(tenants|merchants|mode|stewardId|auditMode)$/,
-  /^\.stewardship\.stewards\[[^\]]+\]\.loyalty$/, /^\.stewardship\.rules\./, /^\.agency\.(policy|duesPermille|subsidies|duesAgreement\.(permille|faction))/, /^\.timberOrder$/,
+  /^\.stewardship\.stewards\[[^\]]+\]\.(loyalty|auditTolerance)$/, /^\.stewardship\.standing\b/, /^\.stewardship\.rules\./, /^\.agency\.(policy|duesPermille|subsidies|duesAgreement\.(permille|faction))/, /^\.timberOrder$/,
   /^\.wallConstructionPriority$/, /^\.era$/, /^\.estates\.(claims|suits|estates)\[/, /^\.diplomacy\.(promises|negotiations)\[/, /^\.registry\.terms\[/,
   /^\.population$/, /^\.houses\[[^\]]+\]\.residents$/, /^\.politics\.merchantGauge$/, /^\.politics\.rights\[[^\]]+\]$/,
   /^\.lordship\.(titleDemoted|titleReturnsTick|decline(\.petitionFrom)?)$/, /^\.war\.(favour|conscripts|taxSeasonsLeft|wall)$/, /^\.war\.instalments\[[^\]]+\]$/,
@@ -272,7 +272,13 @@ test("an audit's finding punished and tolerated: the treasury recovered, the ste
   assert.equal(pendingAudits(state).length, 1);
   for (const choice of ["punish", "tolerate", "replace"] as const) {
     const rows = checkAnswer(`audit ${choice}`, state, { type: "answer_audit", auditId: "receipt-audit", choice }, null, choice);
-    if (choice === "tolerate") assert.ok(rows.some(row => row.key === "loyalty:receipt-steward"), "tolerated: the steward's loyalty");
+    if (choice === "tolerate") {
+      assert.ok(rows.some(row => row.key === "loyalty:receipt-steward"), "tolerated: the steward's loyalty");
+      // v56: the standing tolerance it leaves, with the engine's loss per season.
+      const after = gameReducer(state, { type: "answer_audit", auditId: "receipt-audit", choice });
+      const perSeason = after.stewardship!.stewards.find(entry => entry.personId === "receipt-steward")!.auditTolerance!.perSeason;
+      assert.equal(rows.find(row => row.key === "tolerance:receipt-steward")?.change, `앞으로 묵인 · 철마다 손실 ${moneyShort(perSeason)}`);
+    }
     else assert.ok(rows.some(row => row.key.startsWith("steward:")), `${choice}: the estate's new steward`);
     if (choice === "punish") assert.ok(rows.some(row => row.key === "treasury"), "punished: what is recovered");
   }

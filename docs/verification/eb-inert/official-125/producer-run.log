@@ -1,0 +1,223 @@
+== engineB-inert-125-72c77f6  unit=fls-run-engineB-inert-125-72c77f6-1791619950  host=aitopatom-d6bb  commit=72c77f6157ac91f21d9fde73cf262702d0f787a0  dirty=0  branch=codex/engine-b-inert
+== limits: nice 10  memory.max 51539607552  cpu.max 1200000 100000
+== git: HEAD 72c77f615, 0 path(s) differ from HEAD
+== node_modules: hit (26dc99ffc28b42fb-node24.21.0-aarch64)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:12:56: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-5cd2f92 (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+   nobody goes now: no session may start an experiment now
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:12:58: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-5cd2f92 (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:22:57: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-5cd2f92 (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:23:13: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: free
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:26:18: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: free
+   gate line (first come first served):
+     1. render-RECEIPTS-geometry-d4aea1e (keeper copy)
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   letting in: render-RECEIPTS-geometry-d4aea1e → slot 3
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:26:20: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:28:27: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     render (served 10-09 22:59): render-MARKET-states2-b0ef9ba-b0ef9ba (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:38:26: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     render (served 10-09 22:59): render-MARKET-states2-b0ef9ba-b0ef9ba (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:41:05: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:51:06: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 17:51:45: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     trunk (served 10-10 14:18): trunk-CLONE-7913cf2 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 18:01:44: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     trunk (served 10-10 14:18): trunk-CLONE-7913cf2 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 18:06:58: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: engine-GROW2a-base-growth-26e53ed (experiment of engine)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line (first come first served):
+     1. render-MARKET-geometry-6bdd01e-6bdd01e (keeper copy)
+   experiment line by session (the earliest served goes next):
+     engine waits: engine-GROW2a-base-wall-26e53ed — engine has an experiment running (one at a time)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     trunk (served 10-10 14:18): trunk-CLONE-7913cf2 (keeper copy)
+   nobody goes now: every slot is busy; the first gate goes at the next free one
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 18:11:49: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: free
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line (first come first served):
+     1. render-MARKET-geometry-6bdd01e-6bdd01e (keeper copy)
+   experiment line by session (the earliest served goes next):
+     engine (served 10-10 16:56): engine-GROW2a-base-wall-26e53ed (keeper copy)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     trunk (served 10-10 14:18): trunk-CLONE-7913cf2 (keeper copy)
+   letting in: render-MARKET-geometry-6bdd01e-6bdd01e → slot 1
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 18:11:51: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: render-MARKET-geometry-6bdd01e-6bdd01e (gate)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: render-RECEIPTS-geometry-d4aea1e (gate)
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine (served 10-10 16:56): engine-GROW2a-base-wall-26e53ed (keeper copy)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     trunk (served 10-10 14:18): trunk-CLONE-7913cf2 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== waiting for a heavy slot (experiment line) — the DGX slot keeper lets runs in (decision RR23):
+   the DGX slot keeper (decision RR23), 10-10 18:17:22: cap 3, slots 1-2 for experiments, slot 3 kept for gates
+     slot 1: render-MARKET-geometry-6bdd01e-6bdd01e (gate)
+     slot 2: infra-RR26S-full-42df9d6 (gate)
+     slot 3: free
+   gate line: empty
+   experiment line by session (the earliest served goes next):
+     engine (served 10-10 16:56): engine-GROW2a-base-wall-26e53ed (keeper copy)
+     engineB (served 10-10 12:35): engineB-inert-125-72c77f6 (keeper copy)
+     trunk (served 10-10 14:18): trunk-CLONE-7913cf2 (keeper copy)
+   nobody goes now: slots 1-2 are busy (slot 3 is the gates')
+   last anomaly (_slots/keeper-anomalies.log): 2026-10-07 20:25:19 astra-WET-geometry-b65ca77 is in slot 3 but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)
+== heavy slot 2/3 (experiment line, let in by the DGX slot keeper)
+== port 4300  chromium /home/hyunlord/.cache/ms-playwright/chromium-1234/chrome-linux/chrome  node v24.21.0 (/home/hyunlord/fls-runs/_tools/node/bin/node)
+== command: bash -c mkdir\ -p\ .remote\;\ exec\ node\ --import\ tsx\ scripts/engineBInertRun.mjs\ --experiment\ .remote/eb-inert-125\ \"\$FULL_SHA\"\ docs/design/engine-B-outcomes.json\ docs/verification/eb-tlink-four-categories/official-71bc336/report.json.gz\ 5519e0d87775f5c48dd3629f36b676cdc49d7e4c35b32a1f5f4459bc03d14d33 
+== prepare 25.9s (node_modules hit), slot wait 4351.9s
+
+
+<--- Last few GCs --->
+
+[3360350:0xf156546c0000]  6636672 ms: Scavenge 3995.5 (4046.0) -> 3983.2 (4080.2) MB, pooled: 0 MB, 9.06 / 0.00 ms  (average mu = 0.311, current mu = 0.269) allocation failure; 
+[3360350:0xf156546c0000]  6637682 ms: Mark-Compact (reduce) 3983.2 (4080.2) -> 3968.2 (4005.1) MB, pooled: 0 MB, 1000.78 / 0.00 ms  (+ 2.3 ms in 1 steps since start of marking, biggest step 2.3 ms, walltime since start of marking 1010 ms) (average mu = 0.
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x8ffeac  [node]
+ 2: 0x754b88 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]
+ 3: 0xbfc47c  [node]
+ 4: 0xbfc554  [node]
+ 5: 0xe7893c  [node]
+ 6: 0xe7896c  [node]
+ 7: 0xe78cc4  [node]
+ 8: 0xe88474  [node]
+ 9: 0xe8c0d4  [node]
+10: 0x1882864  [node]
+/home/hyunlord/fls-runs/engineB-inert-125-72c77f6/scripts/remote/remote-exec.sh: line 255: 3360350 Aborted                 (core dumped) bash -c "$CMD"
+
+== exit 134 after 6639.5s
+remote-exec: kept results in _kept/engineB-inert-125-72c77f6 (release: run.sh --release engineB-inert-125-72c77f6)
+remote-exec: pruned old run folder render-RECEIPTS2-play2caps-3f61cdf
+remote-exec: pruned old run folder infra-COV-keepermut-8a4daf8
+== disk: 786 GB free (after engineB-inert-125-72c77f6, normal)
+== disk: packed _kept/engine-DECTRACE-changed-25db576-25db576 into _kept/_archive/engine-DECTRACE-changed-25db576-25db576.tar.zst (no report names it)
+== disk: tsx cache: removed 919 file(s) not read for 3 days (12 MB)
+== disk: 786 GB free after cleaning (after engineB-inert-125-72c77f6)

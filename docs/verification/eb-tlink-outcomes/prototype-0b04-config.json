@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "replayFormat": "outcome-replay-v1",
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "replayDirectory": "../../../.remote-runs/engineB-tlink-prototype125-0b04cd0/eb-tlink-prototype",
+  "rawDirectory": "../../../.remote-runs/engineB-tlink-prototype125-0b04cd0/eb-tlink-prototype",
+  "contractFile": "../../design/engine-B-outcomes.json",
+  "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+  "horizonTicks": 12000,
+  "ticksPerSeason": 1000,
+  "replayPins": [
+    {
+      "seed": 1,
+      "manifestSha256": "99b0eb6a4450d988f8d09fb9db33b872d5441bca8eb31028163dd5be12dd32e9",
+      "rawSha256": "d582bc5a5254b9ad635c54a103304b47071b21b743a4ae77726a58a86cc4514b"
+    },
+    {
+      "seed": 2,
+      "manifestSha256": "35fe84fe97f03ba164d69b742887c5da7e4a0491ae0e7a014ae201c5803a7629",
+      "rawSha256": "165c3fecaf1f007163caf317024002ddebd28de077d7f5ad6bf206e9ebf46814"
+    },
+    {
+      "seed": 3,
+      "manifestSha256": "628980f15beafb1863043a789a243f861535fb5ee4011336ff4285b692fc2c6d",
+      "rawSha256": "9415fc443e0ed21e6e4d251356a3832f9f661912f28b602c2127eb6902911de8"
+    }
+  ]
+}

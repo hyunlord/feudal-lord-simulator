@@ -29,6 +29,7 @@ export type StewardSeasonView = Readonly<{
   none: string | null;
   money: string | null;
   relations: readonly string[];
+  toleratedLosses: readonly string[];
   items: readonly StewardItem[];
   brought: readonly string[];
   lapsed: string | null;
@@ -80,15 +81,22 @@ function eventItems(state: GameState, report: ReturnType<typeof stewardReport>):
 export function seasonStewardView(state: GameState, start: number): StewardSeasonView | null {
   if (!lordMode(state)) return null;
   const report = stewardReport(state, start, start + SEASON);
-  const items = [...petitionItems(state, report), ...eventItems(state, report)];
+  const auditItems: StewardItem[] = report.audits.map(audit => ({ id: audit.id,
+    kind: audit.policyAuditId === undefined ? null : `audit:${audit.estateId}:${audit.stewardId}`,
+    summary: COPY.auditReport(estateName(state, audit.estateId), audit.revealedKept + audit.revealedErrors),
+    where: COPY.itemWhere(dateAt(state, audit.tick), estateName(state, audit.estateId)), what: COPY.auditHandled,
+    policy: audit.policyAuditId === undefined ? COPY.precedent : COPY.auditActive, results: [COPY.offMapResult] }));
+  const items = [...petitionItems(state, report), ...eventItems(state, report), ...auditItems];
   const counts = new Map<string, number>();
   for (const policy of [...report.handled.map(entry => entry.policy), ...report.events.map(event => event.policy)]) counts.set(policy, (counts.get(policy) ?? 0) + 1);
+  if (auditItems.length > 0) counts.set(COPY.auditHandled, auditItems.length);
   const known = report.handled.filter(entry => entry.treasury !== null);
   const titles = new Map(stewardshipOf(state).petitions.map(petition => [petition.id, kindTitle(state, petition.kind)]));
   return {
     handled: items.length === 0 ? null : COPY.handledCount(items.length, [...counts].map(([policy, count]) => COPY.policyCount(settingWord(policy), count))),
     none: items.length === 0 ? COPY.none : null,
     money: known.length === 0 ? null : COPY.money(known.reduce((sum, entry) => sum + (entry.treasury ?? 0), 0)),
+    toleratedLosses: report.toleratedLosses.map(loss => COPY.auditLoss(estateName(state, loss.estateId), loss.amount)),
     relations: report.policyRelations.map(move => COPY.policyRelation(settingWord(move.policy), factionWord(state, move.faction), move.delta)),
     items,
     brought: report.brought.map(entry => COPY.brought(titles.get(entry.subjectId) ?? V4_COPY[entry.kind]?.title ?? kindTitle(state, entry.kind), why(entry.layer))),

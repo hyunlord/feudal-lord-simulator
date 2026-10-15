@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "verdict": "raw_final_state_equal_5_of_5",
+  "scope": "Non-lord paired native run; 24 lots; maximum 1200000 ticks; seeds 1–5; measured early stops retained. Not the standard baseline-JSON guardrail.",
+  "standardGuardrail": false,
+  "runId": "engineB-inert-native-72c77f6",
+  "revisions": {
+    "baseline": "db750c16486a283e7f320ceaca70504589a00f93",
+    "changed": "72c77f6157ac91f21d9fde73cf262702d0f787a0",
+    "lockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697"
+  },
+  "provenance": {
+    "baseline": "db750c16486a283e7f320ceaca70504589a00f93",
+    "changed": "72c77f6157ac91f21d9fde73cf262702d0f787a0",
+    "lockSha256": "26dc99ffc28b42fb06be47ac220f206a101d8cd2217b2391a20cb8006cc18697",
+    "node": "v24.21.0",
+    "nodePath": "/home/hyunlord/fls-runs/_tools/node/bin/node",
+    "nodeSha256": "0f8949d1028f6d61506b2d5bc57e7e6fe893d7b1997509b7847294fc9c616584",
+    "platform": "Linux aarch64",
+    "scope": "24lots max1200000ticks seeds1,2,3,4,5 not-standard-guardrail"
+  },
+  "officialExitCode": 0,
+  "cleanCheckoutEvidence": "Official runner log records zero paths different from product HEAD; successful submitted command asserts DIRTY=0 and clean tracked files for both source trees.",
+  "timing": {
+    "SYNC_S": "21.8",
+    "PREPARE_S": "24.5",
+    "WAIT_S": "12617.7",
+    "COMMAND_S": "5728.6",
+    "NM_CACHE": "hit",
+    "PORT": "4302"
+  },
+  "rawFinalStateAllEqual": true,
+  "rawFinalStates": [
+    {
+      "side": "baseline",
+      "seed": 1,
+      "path": "baseline/seed-1/final-state.json",
+      "bytes": 9942765,
+      "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+      "tick": 372667,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "baseline",
+      "seed": 2,
+      "path": "baseline/seed-2/final-state.json",
+      "bytes": 3872500,
+      "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+      "tick": 281540,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "baseline",
+      "seed": 3,
+      "path": "baseline/seed-3/final-state.json",
+      "bytes": 4037517,
+      "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+      "tick": 299186,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "baseline",
+      "seed": 4,
+      "path": "baseline/seed-4/final-state.json",
+      "bytes": 3927605,
+      "sha256": "52114274ff6260212fc2769cc85d4ad523f338d76cf3fe545cc42b12f16c5c1e",
+      "tick": 281572,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "baseline",
+      "seed": 5,
+      "path": "baseline/seed-5/final-state.json",
+      "bytes": 13822824,
+      "sha256": "abebbf9529dc3f063148d1146e29b3c1767c3fdd3a013fedd0294907cbc82f27",
+      "tick": 599642,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 1,
+      "path": "changed/seed-1/final-state.json",
+      "bytes": 9942765,
+      "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+      "tick": 372667,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 2,
+      "path": "changed/seed-2/final-state.json",
+      "bytes": 3872500,
+      "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+      "tick": 281540,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 3,
+      "path": "changed/seed-3/final-state.json",
+      "bytes": 4037517,
+      "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+      "tick": 299186,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 4,
+      "path": "changed/seed-4/final-state.json",
+      "bytes": 3927605,
+      "sha256": "52114274ff6260212fc2769cc85d4ad523f338d76cf3fe545cc42b12f16c5c1e",
+      "tick": 281572,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    },
+    {
+      "side": "changed",
+      "seed": 5,
+      "path": "changed/seed-5/final-state.json",
+      "bytes": 13822824,
+      "sha256": "abebbf9529dc3f063148d1146e29b3c1767c3fdd3a013fedd0294907cbc82f27",
+      "tick": 599642,
+      "stopReason": "target-scale-stable",
+      "retainedInCompactArchive": false
+    }
+  ],
+  "members": [
+    {
+      "path": "provenance.txt",
+      "size": 409,
+      "sha256": "6793e15043f5c22ad7af3e07ec6f8136d7b37c0706f238a24d960f336e1b8a30"
+    },
+    {
+      "path": "aggregate-exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "comparison.json",
+      "size": 4088,
+      "sha256": "b26bfd2ccf396986658ddb0d2d8dc4b57d86b373bbafb1113ce1a4c7e4debc32"
+    },
+    {
+      "path": "baseline/source-tree.txt",
+      "size": 186734,
+      "sha256": "ebf6688cd44c516c0292515ebb6838163eff78360eb14c0d1ccd84d85becf0ca"
+    },
+    {
+      "path": "baseline/seed-1.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "baseline/seed-1/summary.json",
+      "size": 7466,
+      "sha256": "64ff491b80f0daf79254fa55bb5dab765cab0b9d1a59952b603629c0f035b8a8"
+    },
+    {
+      "path": "baseline/seed-2.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "baseline/seed-2/summary.json",
+      "size": 7287,
+      "sha256": "a20822ac5935648129838ebe686a172a8b9d2b8774039487d5083a57fc24b436"
+    },
+    {
+      "path": "baseline/seed-3.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "baseline/seed-3/summary.json",
+      "size": 7310,
+      "sha256": "15ba9e9af471058b88c43d04d643202c1612efed5d49ad91a2e4687350831a49"
+    },
+    {
+      "path": "baseline/seed-4.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "baseline/seed-4/summary.json",
+      "size": 7649,
+      "sha256": "4fae30a082a7adb13db7a89121b8d9f73e9f03bc6c393f4115dc1bc4f7db7a62"
+    },
+    {
+      "path": "baseline/seed-5.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "baseline/seed-5/summary.json",
+      "size": 7671,
+      "sha256": "bfb68b08dc6725384eb89b805cccfe5fe7b70671a30810b8ce40df9bc40f519d"
+    },
+    {
+      "path": "changed/source-tree.txt",
+      "size": 187642,
+      "sha256": "19a4920f0cd51df05ab64f586b0f0a39acc1c6383f5157f94f141a8d53420575"
+    },
+    {
+      "path": "changed/seed-1.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "changed/seed-1/summary.json",
+      "size": 7466,
+      "sha256": "0a05948d82898f6132d00af41971266f5f74da773123ce7e69847648338577d9"
+    },
+    {
+      "path": "changed/seed-2.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "changed/seed-2/summary.json",
+      "size": 7288,
+      "sha256": "d894b3b5de30258d4e827d76803784f0e1f76e2a4e982792e1096a44fd51107b"
+    },
+    {
+      "path": "changed/seed-3.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "changed/seed-3/summary.json",
+      "size": 7311,
+      "sha256": "c826b0955c32a7bd9dba07ac8b4b0422123595b1fe2977b6e3c9b6c0b4098e58"
+    },
+    {
+      "path": "changed/seed-4.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "changed/seed-4/summary.json",
+      "size": 7654,
+      "sha256": "7b7b4a3fa10f5f48345408475a39021b7c803efa0d7e4abec77a9ff401c95234"
+    },
+    {
+      "path": "changed/seed-5.exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "changed/seed-5/summary.json",
+      "size": 7671,
+      "sha256": "c4e8e79c651904036087045d8ea84ba796877d14143e198e89d94a54e54fcefa"
+    },
+    {
+      "path": "official/exit-code",
+      "size": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "official/timing.env",
+      "size": 82,
+      "sha256": "42af834ecb3bd5851e4a06e1b21f7b3485297d198d6b48ef2bfa2ffffab565c9"
+    },
+    {
+      "path": "official/run.log.gz",
+      "size": 4486,
+      "sha256": "2a9eae52ca6dfbb85703ab292c490f1d810be646e627a641107834b9f6c49fce",
+      "rawSha256": "6d3e163eab0a23ca20c4e0127994b0a31ccde1afeb80e712f333154ba577941c"
+    },
+    {
+      "path": "archive.mjs",
+      "size": 8407,
+      "sha256": "9bbe9f8eec32b0b9cd484a7449de7c7bb0050896bb20eb69450084741fd1f7ad"
+    },
+    {
+      "path": "README.md",
+      "size": 1907,
+      "sha256": "c545de52874e86d5c5637aeb3aa431cda5198606f59ebb227bafd7c115e72e7d"
+    }
+  ],
+  "limitations": [
+    "Raw final-state bytes were independently hashed against both summaries and the remote comparison. They remain in the kept official run and local fetched folder, not this compact archive.",
+    "Raw final-state equality does not claim full-trajectory equivalence, 125-year lord-mode acceptance, or the standard baseline-JSON guardrail."
+  ]
+}

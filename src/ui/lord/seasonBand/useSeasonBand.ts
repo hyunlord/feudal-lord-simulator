@@ -9,6 +9,7 @@ import { growthBlock } from "../../../engine/growthBlock";
 import { GROWTH_COPY } from "../growth/growthCopy.ko";
 import { growthView } from "../growth/growthMark";
 import { growthHeldQuery, noteGrowthClose, startGrowthTrack } from "../growth/growthTrack";
+import { noteStageClose, stageSeedQuery, startStageTrack } from "../relations/stageTrack";
 import { seasonBand, seasonDeathCauses, townSize, townSnapshot, type SeasonBand, type TownSnapshot } from "./seasonBandModel";
 
 /** LS1-2: how long the band stays (real time; a newer band replaces it sooner; held while the pointer is on it). */
@@ -34,7 +35,7 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
   const snapshotRef = useRef<TownSnapshot | null>(null);
   // LS1-3: the stop's count starts with the page — a new game knows the town's growth from its first tick, a load does not.
   const trackRef = useRef(false);
-  if (!trackRef.current) { trackRef.current = true; startGrowthTrack(state.tick < 5, townSize(townSnapshot(state)), growthHeldQuery()); }
+  if (!trackRef.current) { trackRef.current = true; startGrowthTrack(state.tick < 5, townSize(townSnapshot(state)), growthHeldQuery()); const seed = stageSeedQuery(); startStageTrack(state.tick < 5 || seed !== null ? state : null, seed); }
   // A new game's first tick counts as the close before it (LS1-5: its first year's start).
   if (snapshotRef.current === null && state.tick < 5) {
     snapshotRef.current = townSnapshot(state);
@@ -50,7 +51,7 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
     if (previous === lastEnd) return;
     const closed = history.at(-1);
     const after = townSnapshot(state);
-    if (closed !== undefined) { recordTownClose(closed.year, closed.season, after); noteGrowthClose(closed.year, closed.season, growthBlock(state), townSize(after)); }
+    if (closed !== undefined) { recordTownClose(closed.year, closed.season, after); noteGrowthClose(closed.year, closed.season, growthBlock(state), townSize(after)); noteStageClose(state, closed); }
     if (!enabled || closed === undefined || !seasonJustClosed(previous, lastEnd, priorEnd)) { snapshotRef.current = after; return; }
     const stewardHandled = seasonStewardView(state, closed.startTick)?.items.length ?? 0;
     const growth = growthView(state);

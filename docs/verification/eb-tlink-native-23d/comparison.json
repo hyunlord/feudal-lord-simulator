@@ -1,0 +1,74 @@
+{
+  "scope": "24lots max500000ticks seeds1,2,3",
+  "standardGuardrail": false,
+  "rawFinalStateAllEqual": true,
+  "failed": false,
+  "rows": [
+    {
+      "seed": 1,
+      "rawFinalStateEqual": true,
+      "sides": {
+        "baseline": {
+          "exitCode": 0,
+          "tick": 372667,
+          "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+          "reportedSha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+          "stopReason": "target-scale-stable",
+          "simulationPassed": true
+        },
+        "changed": {
+          "exitCode": 0,
+          "tick": 372667,
+          "sha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+          "reportedSha256": "9b630fec6cf85de5a58462b39625621f670b6e05eb6013f0160b49a0d0672cfb",
+          "stopReason": "target-scale-stable",
+          "simulationPassed": true
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "rawFinalStateEqual": true,
+      "sides": {
+        "baseline": {
+          "exitCode": 0,
+          "tick": 281540,
+          "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+          "reportedSha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+          "stopReason": "target-scale-stable",
+          "simulationPassed": true
+        },
+        "changed": {
+          "exitCode": 0,
+          "tick": 281540,
+          "sha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+          "reportedSha256": "b2a14294ff70b33ba508424abb27b3bd1fbabf3d9532a005820c0b82a6e2dc2e",
+          "stopReason": "target-scale-stable",
+          "simulationPassed": true
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "rawFinalStateEqual": true,
+      "sides": {
+        "baseline": {
+          "exitCode": 0,
+          "tick": 299186,
+          "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+          "reportedSha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+          "stopReason": "target-scale-stable",
+          "simulationPassed": true
+        },
+        "changed": {
+          "exitCode": 0,
+          "tick": 299186,
+          "sha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+          "reportedSha256": "d93f5bee752950820a534371eeedf6cafd1631b01498d80d6829b2b6382d680f",
+          "stopReason": "target-scale-stable",
+          "simulationPassed": true
+        }
+      }
+    }
+  ]
+}

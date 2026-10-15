@@ -1,0 +1,56 @@
+{
+ "home-048": {
+  "seed": 3,
+  "tick": 40000,
+  "year": 1310,
+  "season": 0,
+  "land": "the slice's land",
+  "petition": "estate-petition-24",
+  "kind": "common_pasture",
+  "variant": "ck_evt_048",
+  "shownInPlay": true,
+  "prepared": "the petition placed (a pasture made of the smallest field zone if none)"
+ },
+ "home-056": {
+  "seed": 3,
+  "tick": 32000,
+  "year": 1308,
+  "season": 0,
+  "land": "the slice's land",
+  "petition": "estate-petition-19",
+  "kind": "road_bridge",
+  "variant": "ck_evt_056",
+  "prepared": false
+ },
+ "home-041": {
+  "seed": 3,
+  "tick": 18000,
+  "year": 1304,
+  "season": 2,
+  "land": "core:forest_edge",
+  "petition": "estate-petition-11",
+  "kind": "pannage",
+  "variant": "ck_evt_041",
+  "prepared": false
+ },
+ "registry-067": {
+  "seed": 3,
+  "tick": 40000,
+  "year": 1310,
+  "season": 0,
+  "offer": "registry:ck_evt_031:steward.appoint|:40",
+  "entryId": "ck_evt_031",
+  "variant": "ck_evt_067",
+  "prepared": "the first neighbour estate held under a steward with two candidates"
+ },
+ "registry-078": {
+  "seed": 3,
+  "tick": 40000,
+  "year": 1310,
+  "season": 0,
+  "offer": "registry:ck_evt_019:estate_oversight|:40",
+  "entryId": "ck_evt_019",
+  "variant": "ck_evt_078",
+  "prepared": "the three neighbour estates held direct, a steward and two candidates on the first"
+ }
+}

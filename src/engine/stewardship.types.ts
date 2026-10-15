@@ -12,7 +12,33 @@ import type { HolderId } from "./estates.types";
 export type StewardDisposition = "merchant" | "peasant" | "greedy";
 
 /** SW-3: a steward of an estate (the person is an estate person, `estates.people`). */
+export interface ToleratedAuditErrors {
+  readonly auditId: string;
+  /** Previously lost money, not a new cash debit. */
+  readonly unrecovered: number;
+  readonly perSeason: number;
+  readonly remainingSeasons: number;
+}
+
+export interface CharterResistance {
+  readonly petitionId: string;
+  readonly since: number;
+  readonly remainingSeasons: number;
+  readonly retryAfter: number;
+}
+
+export interface AuditTolerance {
+  readonly auditId: string;
+  readonly since: number;
+  readonly baselineLoss: number;
+  readonly baselineLoyalty: number;
+  readonly perSeason: number;
+}
+
 export interface StewardRecord {
+  readonly auditTolerance?: AuditTolerance;
+  /** Uncorrected accounting practices create new losses over the following quarters. */
+  readonly toleratedErrors?: readonly ToleratedAuditErrors[];
   readonly personId: string;
   readonly estateId: string;
   /** 0–100: how well he keeps the books (errors) and how well he hides what he keeps back. */
@@ -80,6 +106,8 @@ export interface ExceptionRules {
 
 /** SW-7: one season of an off-map estate, as the lord sees it (and what he does not). */
 export interface QuarterSummary {
+  readonly charterLoss?: { readonly petitionId: string; readonly amount: number };
+  readonly toleratedLosses?: readonly { readonly auditId: string; readonly amount: number }[];
   readonly estateId: string;
   readonly tick: number;
   readonly mode: OversightMode;
@@ -99,6 +127,12 @@ export interface QuarterSummary {
 
 /** SW-6: an estate's audit at Michaelmas. */
 export interface AuditRecord {
+  /** A receiver change closed this decision; the original audit remains in the accounts. */
+  readonly superseded?: true;
+  readonly decidedBy?: "steward" | "lord";
+  readonly policyAuditId?: string;
+  /** Disclosed money left unrecovered at settlement; informational, never a second debit. */
+  readonly unrecovered?: number;
   readonly id: string;
   readonly estateId: string;
   readonly tick: number;
@@ -113,6 +147,7 @@ export interface AuditRecord {
 }
 
 export interface EstateOversight {
+  readonly charterResistance?: CharterResistance;
   readonly estateId: string;
   readonly mode: OversightMode;
   /** The steward (or, in a direct estate, the receiver who keeps its accounts). */

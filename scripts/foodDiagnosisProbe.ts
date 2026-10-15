@@ -7,7 +7,10 @@
 // route to a granary, houses beyond the range, stranded supply), the measured food window, the food facilities with
 // their staff and stock, the houses without bread with their distance to the nearest granary, the carters and
 // distributors (busy or idle, what they carry), and the labour summary.
-//   tsx scripts/foodDiagnosisProbe.ts <save .save.json[.gz]> [years] > out.json
+//   tsx scripts/foodDiagnosisProbe.ts <save .save.json[.gz] | new:<seed>> [years] [sampleTicks] > out.json
+// `new:<seed>`: the lord slice from its first tick (the default map's early food, the user's question 2026-10-14). Each
+// sample also has the food step's gates before the decision (a chain pending, an observation open, a repeat blocked,
+// staffing), the mills' wheat and bread one by one, the stock stuck where no store takes it, and the houses without bread.
 import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { BALANCE } from "../src/content/balanceConfig";
@@ -25,15 +28,21 @@ import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { houseHasFood } from "../src/population/houseFood";
 import { decodeSave } from "../src/save/saveCodec";
+import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
+import { newGameState } from "../src/state/newGame";
+import { hasPendingFoodChain } from "../src/engine/autoplayFood";
+import { blocksRepeatedFoodExpansion, hasActiveFoodObservation } from "../src/engine/autoplayFoodThroughput";
+import { canStaffFoodExpansion } from "../src/engine/autoplayFoodBottleneck";
+import { stuckStock } from "../src/engine/stuckStock";
 import { gameReducer } from "../src/state/gameStore";
 
 const FOOD_KINDS = ["farmstead", "mill", "granary"] as const;
-const SAMPLE_TICKS = 1_000;
-
-const [path, years = "10"] = process.argv.slice(2);
-if (path === undefined) throw new Error("usage: foodDiagnosisProbe.ts <save .save.json[.gz]> [years]");
-const bytes = readFileSync(path);
-let state = decodeSave(new Uint8Array(path.endsWith(".gz") ? gunzipSync(bytes) : bytes)).envelope.state as GameState;
+const [path, years = "10", sampleTicks = "1000"] = process.argv.slice(2);
+if (path === undefined) throw new Error("usage: foodDiagnosisProbe.ts <save .save.json[.gz] | new:<seed>> [years] [sampleTicks]");
+const SAMPLE_TICKS = Number(sampleTicks);
+let state: GameState = path.startsWith("new:")
+  ? newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: Number(path.slice(4)) }) as GameState
+  : (() => { const bytes = readFileSync(path); return decodeSave(new Uint8Array(path.endsWith(".gz") ? gunzipSync(bytes) : bytes)).envelope.state as GameState; })();
 
 function nearestGranary(state: GameState, houseId: string): number | null {
   const distances = state.buildings.filter(building => building.kind === "granary")
@@ -73,6 +82,12 @@ function sample(state: GameState) {
         const key = `${walker.kind}:${walker.cargo?.resource ?? "empty"}`; sum[key] = (sum[key] ?? 0) + 1; return sum; }, {}),
     },
     labour: state.labour ?? null,
+    stepGates: { pendingChain: hasPendingFoodChain(state), observation: hasActiveFoodObservation(state),
+      millRepeatBlocked: blocksRepeatedFoodExpansion(state, "mill"), millStaff: canStaffFoodExpansion(state, "mill") },
+    mills: facilities.filter(building => building.kind === "mill").map(building => ({ id: building.id, workers: building.workers,
+      wheat: building.inventory.wheat ?? 0, bread: building.inventory.bread ?? 0 })),
+    stuck: stuckStock(state).map(entry => ({ resource: entry.resource, amount: entry.amount, reason: entry.reason, kind: state.buildings.find(b => b.id === entry.buildingId)?.kind ?? null })),
+    housesNoBread: state.houses.filter(house => house.residents > 0 && house.breadStock === 0).length,
   };
 }
 

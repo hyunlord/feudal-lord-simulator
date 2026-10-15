@@ -1,0 +1,9 @@
+{
+  "ruleSource": "239c8239880d063752d2713fad8902c3e8724c09",
+  "browserSource": "13d4429e4b479278456ac177223dd42d0eba98f7",
+  "changedSrcAndScripts": [
+    "scripts/engineBStandingBrowser.mjs",
+    "src/styles/lordSteward.css"
+  ],
+  "meaning": "Only standing-policy CSS and the browser verification harness differ; engine, ledger, save, content and economic measurement code are identical."
+}

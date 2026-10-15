@@ -43,8 +43,8 @@ type GameCommand =
   | { readonly type: "set_exception_rules"; readonly rules: import("../engine/stewardship.types").ExceptionRules }
   /** DEC-TRACE §1: the lord's standing policy for a kind of small matter (a home petition's kind, or `sender:<faction>`). */
   | { readonly type: "set_standing_policy"; readonly kind: string; readonly setting: import("../content/stewardPolicyConfig").StandingSetting }
-  | { readonly type: "answer_estate_petition"; readonly petitionId: string; readonly grant: boolean }
-  | { readonly type: "answer_registry_offer"; readonly occurrenceId: string; readonly choiceId: string }
+  | { readonly type: "answer_estate_petition"; readonly petitionId: string; readonly grant: boolean; readonly displayEntryId?: string }
+  | { readonly type: "answer_registry_offer"; readonly occurrenceId: string; readonly choiceId: string; readonly displayEntryId?: string }
   | { readonly type: "set_audit_mode"; readonly estateId: string; readonly mode: "accounts" | "visit" }
   | { readonly type: "answer_audit"; readonly auditId: string; readonly choice: "punish" | "replace" | "tolerate"; readonly replacementId?: string }
   /** QA032: the player saw the chapter's page (the screens open it once; kept in the save). */

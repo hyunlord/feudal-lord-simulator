@@ -4,6 +4,7 @@ import { wallConstructionPriority } from "../../engine/constructionReserve";
 import type { GameState } from "../../engine/engine.types";
 import { estatesOf } from "../../engine/estates";
 import { diplomacyOf } from "../../engine/negotiation";
+import { auditTolerancePolicyKey } from "../../engine/auditTolerancePolicy";
 import { stewardshipOf } from "../../engine/stewardship";
 import { NEGOTIATION_COPY } from "../lord/negotiation/negotiationCopy.ko";
 import { ESTATES_COPY } from "../lord/estates/estatesCopy.ko";
@@ -20,7 +21,8 @@ import { politicalReceiptRows } from "./politicalReceiptRows";
 // RECEIPTS (user 2026-10-10, "결과가 티가 안 난다"): what an answer changed, at once and with its numbers — read off the
 // store's state just before the answer and just after it (the engine's own reducer ran it; nothing here decides what an
 // answer does, P-D4). One row per thing that moved: the treasury, each faction's and house's relation, an estate's
-// goodwill, who manages it and how it is audited, a steward's loyalty and place, the steward's rules, the town's
+// goodwill, who manages it and how it is audited, a steward's loyalty and place (and v56's standing tolerance of his
+// audits), the steward's rules, the town's
 // conditions (policy, dues, subsidies, timber, the wall), claims and suits, possession, an estate's value and a ruling's
 // share, promises, registry terms and a marriage offer sent; RECEIPTS-2: what the famine's and the political petitions'
 // answers move (politicalReceiptRows.ts). The card's own "later" lines for the chosen answer follow
@@ -81,6 +83,12 @@ function stewardRows(before: GameState, after: GameState, said: ReadonlySet<stri
     const name = stewardName(after, entry.personId);
     const rows: ReceiptRow[] = [];
     if (entry.loyalty !== old.loyalty) rows.push(row(`loyalty:${entry.personId}`, COPY.loyalty(name), COPY.points(entry.loyalty - old.loyalty, old.loyalty, entry.loyalty)));
+    // v56: a tolerated audit leaves a standing policy (the engine's auditTolerance with its standing "lenient"): his
+    // audits tolerated from now on, the loss it allows each season the engine's number.
+    const tolerance = entry.auditTolerance;
+    if (tolerance !== undefined && tolerance !== old.auditTolerance && stewardshipOf(after).standing?.[auditTolerancePolicyKey(entry)] === "lenient") {
+      rows.push(row(`tolerance:${entry.personId}`, COPY.auditTolerance(name), COPY.auditToleranceValue(moneyShort(tolerance.perSeason))));
+    }
     if (entry.status !== old.status && !said.has(entry.personId)) {
       rows.push(row(`status:${entry.personId}`, COPY.stewardOf(name), COPY.change(COPY.stewardStatus[old.status], COPY.stewardStatus[entry.status])));
     }

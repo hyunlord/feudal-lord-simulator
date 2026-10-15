@@ -1,0 +1,569 @@
+{
+  "functionalPass": true,
+  "visualReview": "pending-human-or-oracle-review",
+  "source": "13d4429e4b479278456ac177223dd42d0eba98f7",
+  "workingTree": "",
+  "fixture": {
+    "path": "standing.save.json.gz",
+    "bytes": 58225,
+    "sha256": "efc1a1b48cdba78abce95b0bd17fde3fcccf1eff34e06d8f7fb349525af22e16"
+  },
+  "expectedLoss": 10,
+  "rows": [
+    {
+      "width": 375,
+      "pass": true,
+      "report": {
+        "geometry": {
+          "x": 30,
+          "y": 561.328125,
+          "width": 319,
+          "height": 44,
+          "viewport": {
+            "width": 375,
+            "height": 900
+          },
+          "scrollWidth": 319,
+          "clientWidth": 319,
+          "text": "home 영지 감사 · 상시 방침대로 오류 +10d를 보고했습니다",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "375-report.jpg",
+          "bytes": 60952,
+          "sha256": "03fd8f0e965f65854587331ba31d8915d5053d40dd0c863bb8d3c9e571081224"
+        },
+        "text": "청지기가 처리한 일\n\n청지기가 2건을 처리했습니다 · 관습대로 1건 · 감사 보고 1건\n\n이 일들로 금고 −5s 8d\n\nhome 영지 · 눈감아 준 오류로 이번 철 수입 −10d\n\n관습대로 답해 도시 공동체 관계 +1\n\n길·다리 수리 분담 · 관습대로 · 들어줌\nhome 영지 감사 · 상시 방침대로 오류 +10d를 보고했습니다\n영주에게 올린 일\n수리 — 돈이 커서",
+        "wordBreak": "keep-all"
+      },
+      "loss": {
+        "geometry": {
+          "x": 30,
+          "y": 467.640625,
+          "width": 319,
+          "height": 18.84375,
+          "viewport": {
+            "width": 375,
+            "height": 900
+          },
+          "scrollWidth": 319,
+          "clientWidth": 319,
+          "text": "home 영지 · 눈감아 준 오류로 이번 철 수입 −10d",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "375-season-loss.jpg",
+          "bytes": 59359,
+          "sha256": "ee3bae73cbc3356d6bb77ea3400fdf7375f6b29e5a4a56d4ff750d6548ac651f"
+        }
+      },
+      "ledger": {
+        "geometry": {
+          "x": 28,
+          "y": 488.953125,
+          "width": 320,
+          "height": 17.390625,
+          "viewport": {
+            "width": 375,
+            "height": 900
+          },
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "text": "1300년 가을 · 눈감아 준 오류로 수입 −10d(위 합계에 포함)",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "375-ledger-loss.jpg",
+          "bytes": 59208,
+          "sha256": "8516f2c8fce7af09e8a686010843bb8b206dc26f425801b737bb15154c8d2353"
+        }
+      },
+      "policyLayout": {
+        "panel": {
+          "x": 8,
+          "y": 76,
+          "width": 359,
+          "height": 699.140625,
+          "clientWidth": 357,
+          "scrollWidth": 357,
+          "overflowY": "hidden"
+        },
+        "content": {
+          "x": 161,
+          "y": 135,
+          "width": 197,
+          "height": 631.140625,
+          "clientWidth": 197,
+          "scrollWidth": 197,
+          "overflowY": "auto"
+        },
+        "nav": {
+          "x": 17,
+          "y": 135,
+          "width": 136,
+          "height": 631.140625,
+          "clientWidth": 136,
+          "scrollWidth": 136,
+          "overflowY": "auto"
+        },
+        "viewport": 375
+      },
+      "active": {
+        "geometry": {
+          "x": 169,
+          "y": 496.734375,
+          "width": 185,
+          "height": 44,
+          "viewport": {
+            "width": 375,
+            "height": 900
+          },
+          "scrollWidth": 181,
+          "clientWidth": 181,
+          "text": "눈감아 주기를 거둔다",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "375-policy-active.jpg",
+          "bytes": 65628,
+          "sha256": "bc05ff5c558ab2e62ac13428c08fcecd868204b3d90fa77e2382cdffa70d7c91"
+        },
+        "lines": [
+          {
+            "text": "지금: 오류를 눈감아 줌 · 올해 청지기가 1건 · 철마다 눈감아 준 오류로 수입 −10d까지 줄어듭니다",
+            "left": 171,
+            "right": 348,
+            "paneLeft": 161,
+            "paneRight": 358,
+            "clientWidth": 177,
+            "scrollWidth": 177,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "눈감아 주기를 거둔다",
+            "left": 169,
+            "right": 354,
+            "paneLeft": 161,
+            "paneRight": 358,
+            "clientWidth": 181,
+            "scrollWidth": 181,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "다음 감사부터 다시 영주의 결정으로 올립니다",
+            "left": 169,
+            "right": 354,
+            "paneLeft": 161,
+            "paneRight": 358,
+            "clientWidth": 185,
+            "scrollWidth": 185,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "올해 청지기가 1건 처리 · 마지막: 1300년 가을",
+            "left": 169,
+            "right": 354,
+            "paneLeft": 161,
+            "paneRight": 358,
+            "clientWidth": 185,
+            "scrollWidth": 185,
+            "wordBreak": "keep-all"
+          }
+        ]
+      },
+      "revoked": {
+        "geometry": {
+          "x": 161,
+          "y": 410.625,
+          "width": 197,
+          "height": 121.609375,
+          "viewport": {
+            "width": 375,
+            "height": 900
+          },
+          "scrollWidth": 197,
+          "clientWidth": 197,
+          "text": "Robert Spenser의 감사 오류\n지금: 눈감아 주기를 거둠 · 올해 청지기가 1건\n\n올해 청지기가 1건 처리 · 마지막: 1300년 가을",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "375-policy-revoked.jpg",
+          "bytes": 62990,
+          "sha256": "b421a1cd8861ec6722f5b306c60107542ff06c9382ff494a0216d087f70df098"
+        }
+      }
+    },
+    {
+      "width": 768,
+      "pass": true,
+      "report": {
+        "geometry": {
+          "x": 224,
+          "y": 561.328125,
+          "width": 319,
+          "height": 44,
+          "viewport": {
+            "width": 768,
+            "height": 900
+          },
+          "scrollWidth": 319,
+          "clientWidth": 319,
+          "text": "home 영지 감사 · 상시 방침대로 오류 +10d를 보고했습니다",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "768-report.jpg",
+          "bytes": 123764,
+          "sha256": "87a8237559df9e57250e76b93f8a9ed9dca289916f29136d1e2957dd4931bbbe"
+        },
+        "text": "청지기가 처리한 일\n\n청지기가 2건을 처리했습니다 · 관습대로 1건 · 감사 보고 1건\n\n이 일들로 금고 −5s 8d\n\nhome 영지 · 눈감아 준 오류로 이번 철 수입 −10d\n\n관습대로 답해 도시 공동체 관계 +1\n\n길·다리 수리 분담 · 관습대로 · 들어줌\nhome 영지 감사 · 상시 방침대로 오류 +10d를 보고했습니다\n영주에게 올린 일\n수리 — 돈이 커서",
+        "wordBreak": "keep-all"
+      },
+      "loss": {
+        "geometry": {
+          "x": 224,
+          "y": 467.640625,
+          "width": 319,
+          "height": 18.84375,
+          "viewport": {
+            "width": 768,
+            "height": 900
+          },
+          "scrollWidth": 319,
+          "clientWidth": 319,
+          "text": "home 영지 · 눈감아 준 오류로 이번 철 수입 −10d",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "768-season-loss.jpg",
+          "bytes": 123919,
+          "sha256": "4af77ffe716f0e850ae1d3ebdb3cce383cf67e431277b26e0aeb58a0c229f058"
+        }
+      },
+      "ledger": {
+        "geometry": {
+          "x": 300,
+          "y": 454.5625,
+          "width": 441,
+          "height": 17.390625,
+          "viewport": {
+            "width": 768,
+            "height": 900
+          },
+          "scrollWidth": 441,
+          "clientWidth": 441,
+          "text": "1300년 가을 · 눈감아 준 오류로 수입 −10d(위 합계에 포함)",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "768-ledger-loss.jpg",
+          "bytes": 112012,
+          "sha256": "c2ab060ac00f2e5a686f9abb305f3bd16e1f7fa83ef8ab25dc83082aaf4d9d27"
+        }
+      },
+      "policyLayout": {
+        "panel": {
+          "x": 272,
+          "y": 76,
+          "width": 488,
+          "height": 699.140625,
+          "clientWidth": 486,
+          "scrollWidth": 486,
+          "overflowY": "hidden"
+        },
+        "content": {
+          "x": 425,
+          "y": 135,
+          "width": 326,
+          "height": 631.140625,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "overflowY": "auto"
+        },
+        "nav": {
+          "x": 281,
+          "y": 135,
+          "width": 136,
+          "height": 631.140625,
+          "clientWidth": 136,
+          "scrollWidth": 136,
+          "overflowY": "auto"
+        },
+        "viewport": 768
+      },
+      "active": {
+        "geometry": {
+          "x": 433,
+          "y": 488.546875,
+          "width": 146.921875,
+          "height": 44,
+          "viewport": {
+            "width": 768,
+            "height": 900
+          },
+          "scrollWidth": 143,
+          "clientWidth": 143,
+          "text": "눈감아 주기를 거둔다",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "768-policy-active.jpg",
+          "bytes": 123030,
+          "sha256": "e4b13f9fadb5c38b6d0c5de8912db8c12cf8a93de3189cdbc2d139a9573cab18"
+        },
+        "lines": [
+          {
+            "text": "지금: 오류를 눈감아 줌 · 올해 청지기가 1건 · 철마다 눈감아 준 오류로 수입 −10d까지 줄어듭니다",
+            "left": 435,
+            "right": 741,
+            "paneLeft": 425,
+            "paneRight": 751,
+            "clientWidth": 306,
+            "scrollWidth": 306,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "눈감아 주기를 거둔다",
+            "left": 433,
+            "right": 579.921875,
+            "paneLeft": 425,
+            "paneRight": 751,
+            "clientWidth": 143,
+            "scrollWidth": 143,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "다음 감사부터 다시 영주의 결정으로 올립니다",
+            "left": 587.921875,
+            "right": 747,
+            "paneLeft": 425,
+            "paneRight": 751,
+            "clientWidth": 159,
+            "scrollWidth": 159,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "올해 청지기가 1건 처리 · 마지막: 1300년 가을",
+            "left": 433,
+            "right": 747,
+            "paneLeft": 425,
+            "paneRight": 751,
+            "clientWidth": 314,
+            "scrollWidth": 314,
+            "wordBreak": "keep-all"
+          }
+        ]
+      },
+      "revoked": {
+        "geometry": {
+          "x": 425,
+          "y": 418.625,
+          "width": 326,
+          "height": 86.578125,
+          "viewport": {
+            "width": 768,
+            "height": 900
+          },
+          "scrollWidth": 326,
+          "clientWidth": 326,
+          "text": "Robert Spenser의 감사 오류\n지금: 눈감아 주기를 거둠 · 올해 청지기가 1건\n\n올해 청지기가 1건 처리 · 마지막: 1300년 가을",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "768-policy-revoked.jpg",
+          "bytes": 119781,
+          "sha256": "8bedffd43785d54bb6510738b81842a6347e880b0c6fba13ad60b2887c39e905"
+        }
+      }
+    },
+    {
+      "width": 1280,
+      "pass": true,
+      "report": {
+        "geometry": {
+          "x": 480,
+          "y": 561.328125,
+          "width": 319,
+          "height": 44,
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "scrollWidth": 319,
+          "clientWidth": 319,
+          "text": "home 영지 감사 · 상시 방침대로 오류 +10d를 보고했습니다",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "1280-report.jpg",
+          "bytes": 208963,
+          "sha256": "d743b56bae099096ad793ae250033f61afbbcbb84cfa62573cf0d34ee577272e"
+        },
+        "text": "청지기가 처리한 일\n\n청지기가 2건을 처리했습니다 · 관습대로 1건 · 감사 보고 1건\n\n이 일들로 금고 −5s 8d\n\nhome 영지 · 눈감아 준 오류로 이번 철 수입 −10d\n\n관습대로 답해 도시 공동체 관계 +1\n\n길·다리 수리 분담 · 관습대로 · 들어줌\nhome 영지 감사 · 상시 방침대로 오류 +10d를 보고했습니다\n영주에게 올린 일\n수리 — 돈이 커서",
+        "wordBreak": "keep-all"
+      },
+      "loss": {
+        "geometry": {
+          "x": 480,
+          "y": 467.640625,
+          "width": 319,
+          "height": 18.84375,
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "scrollWidth": 319,
+          "clientWidth": 319,
+          "text": "home 영지 · 눈감아 준 오류로 이번 철 수입 −10d",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "1280-season-loss.jpg",
+          "bytes": 208925,
+          "sha256": "9618e09e0c9eb58f8221c58eaae97cad97ff7224309895d33a573f6fa83d5a6b"
+        }
+      },
+      "ledger": {
+        "geometry": {
+          "x": 812,
+          "y": 454.5625,
+          "width": 441,
+          "height": 17.390625,
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "scrollWidth": 441,
+          "clientWidth": 441,
+          "text": "1300년 가을 · 눈감아 준 오류로 수입 −10d(위 합계에 포함)",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "1280-ledger-loss.jpg",
+          "bytes": 202060,
+          "sha256": "0795889268281793840f31c69b4a5ac5de5b95c5799596b0ebce1d11a75cc907"
+        }
+      },
+      "policyLayout": {
+        "panel": {
+          "x": 512,
+          "y": 76,
+          "width": 760,
+          "height": 699.140625,
+          "clientWidth": 758,
+          "scrollWidth": 758,
+          "overflowY": "hidden"
+        },
+        "content": {
+          "x": 665,
+          "y": 135,
+          "width": 598,
+          "height": 631.140625,
+          "clientWidth": 598,
+          "scrollWidth": 598,
+          "overflowY": "auto"
+        },
+        "nav": {
+          "x": 521,
+          "y": 135,
+          "width": 136,
+          "height": 631.140625,
+          "clientWidth": 136,
+          "scrollWidth": 136,
+          "overflowY": "auto"
+        },
+        "viewport": 1280
+      },
+      "active": {
+        "geometry": {
+          "x": 673,
+          "y": 480.671875,
+          "width": 146.921875,
+          "height": 44,
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "scrollWidth": 143,
+          "clientWidth": 143,
+          "text": "눈감아 주기를 거둔다",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "1280-policy-active.jpg",
+          "bytes": 185648,
+          "sha256": "1d2f80c317a1e3799d260bfc8674680772d6ac5732a23ca243211d908815e9f2"
+        },
+        "lines": [
+          {
+            "text": "지금: 오류를 눈감아 줌 · 올해 청지기가 1건 · 철마다 눈감아 준 오류로 수입 −10d까지 줄어듭니다",
+            "left": 675,
+            "right": 1161.359375,
+            "paneLeft": 665,
+            "paneRight": 1263,
+            "clientWidth": 486,
+            "scrollWidth": 486,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "눈감아 주기를 거둔다",
+            "left": 673,
+            "right": 819.921875,
+            "paneLeft": 665,
+            "paneRight": 1263,
+            "clientWidth": 143,
+            "scrollWidth": 143,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "다음 감사부터 다시 영주의 결정으로 올립니다",
+            "left": 827.921875,
+            "right": 1259,
+            "paneLeft": 665,
+            "paneRight": 1263,
+            "clientWidth": 431,
+            "scrollWidth": 431,
+            "wordBreak": "keep-all"
+          },
+          {
+            "text": "올해 청지기가 1건 처리 · 마지막: 1300년 가을",
+            "left": 673,
+            "right": 1259,
+            "paneLeft": 665,
+            "paneRight": 1263,
+            "clientWidth": 586,
+            "scrollWidth": 586,
+            "wordBreak": "keep-all"
+          }
+        ]
+      },
+      "revoked": {
+        "geometry": {
+          "x": 665,
+          "y": 426.9375,
+          "width": 598,
+          "height": 82.84375,
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "scrollWidth": 598,
+          "clientWidth": 598,
+          "text": "Robert Spenser의 감사 오류\n지금: 눈감아 주기를 거둠 · 올해 청지기가 1건\n\n올해 청지기가 1건 처리 · 마지막: 1300년 가을",
+          "documentOverflow": false
+        },
+        "screenshot": {
+          "path": "1280-policy-revoked.jpg",
+          "bytes": 183671,
+          "sha256": "4b6983bf212154f323428201f791ad3051daab847572fd391b6401eeece9fafd"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Fixture built by real reducer/season/audit handlers; not natural eligibility or 125-year evidence.",
+    "Only normal buttons advance time and withdraw policy after codec-validated scene admission.",
+    "Screenshots and DOM measurements support visual review; they do not declare a visual verdict."
+  ]
+}

@@ -106,7 +106,10 @@ test("§1 the steward never grants a home petition that costs more than the trea
     const posted = postLedgerEntries(from, [{ account: "cash", category: "upkeep", amount: -held, sourceRefs: [{ type: "actor", id: "test" }] }]);
     return { ...from, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
   };
-  for (let tick = 0; tick < 12_000; tick += 1) state = advanceTick(empty(state));
+  // The treasury empty when the steward decides, not only between ticks: a period close (every 2,400) posts the rent
+  // within the tick before the season's petition (every 1,000), first together at 12,000 — seed 1's 52 mill suit met 64
+  // of rent there and was granted rightly (FOOD-EARLY's faster town). The window ends the tick before.
+  for (let tick = 0; tick < 12_000 - 1; tick += 1) state = advanceTick(empty(state));
   const homes = (state.stewardship?.petitions ?? []).filter(petition => petition.estateId === HOME_ESTATE_ID && petition.decidedBy === "steward");
   const costs = (kind: string) => HOME_PETITION_KINDS[kind as keyof typeof HOME_PETITION_KINDS].grant.income < 0;
   assert.ok(homes.length > 0);
