@@ -70,6 +70,8 @@ export function runPhase19NaturalGrowth(options: {
   /** ARCH-1 gate (MA-7): the land (absent = the riverside town, the open field). */
   readonly archetypeId?: string;
   readonly additionalAcceptance?: (state: GameState) => boolean;
+  /** RR22 2026-10-15: no victory by this tick ends the run early ("unreached-early-stop"); a run that has won goes on. */
+  readonly stopUnwonAt?: number;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
   readonly onTick?: (state: GameState, stableSince: number | null) => void;
@@ -98,6 +100,7 @@ export function runPhase19NaturalGrowth(options: {
   const failures: string[] = [...resourcePreflight.failures];
   let guardSamples = 0;
   let victoryTick: number | null = null;
+  let earlyStopTick: number | null = null;
   let eligibleStreak = 0;
   let victoryEligibleTicks = 0;
   let targetReachedTick: number | null = null;
@@ -137,6 +140,7 @@ export function runPhase19NaturalGrowth(options: {
       victoryTick = state.tick; victoryEligibleTicks = eligibleStreak; record("victory");
       if (eligibleStreak < SETTLEMENT_CONFIG.prosperityHoldTicks) failures.push("Premature victory");
     }
+    if (victoryTick === null && options.stopUnwonAt !== undefined && state.tick >= options.stopUnwonAt) { earlyStopTick = state.tick; break; }
     stability.observe({ tick: state.tick, lots: current.lots,
       victory: (state.settlement?.milestones.prosperity ?? null) !== null, fullService: fullServicePopulation(state) });
     const window = stability.report();
@@ -182,7 +186,9 @@ export function runPhase19NaturalGrowth(options: {
   return {
     status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, opening: opening.provenance, acceptance,
     policy, maxTicks, targetReachedTick, maximumLots,
-    stopReason: failures.length > 0 ? "invalid-run" : complete && (options.additionalAcceptance?.(state) ?? true) ? "target-scale-stable" : "tick-budget",
+    stopReason: failures.length > 0 ? "invalid-run" : earlyStopTick !== null ? "unreached-early-stop"
+      : complete && (options.additionalAcceptance?.(state) ?? true) ? "target-scale-stable" : "tick-budget",
+    earlyStopTick,
     growthBlocker: null,
     sourceContract: "Verification-only rigid opening translation on unchanged buildWorldGrid(seed), nearest legal Manhattan/dy/dx offset; not a product seed feature. Seed1 preserves DEFAULT_GAME_STATE; actual reducer and advanceTick; economics and save schema unchanged",
     resourcePreflight,

@@ -116,13 +116,14 @@ function siteCandidates(params: {
   readonly wallConstructionPriority?: WallConstructionPriority;
   readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number; readonly supplierKeep?: number };
 }): readonly SiteCandidate[] {
+  const sources = [...params.buildings].sort(byId);   // SIM-SPEED: sorted once, not once per site and resource
   return [...params.sites].sort(byId).flatMap((site) => {
     const need = constructionDeliveryNeed(site);
     return RESOURCE_TYPES.flatMap((resource) => {
       const missing = amountOf(need, resource);
       if (missing === 0) return [];
       const destination = siteDestination(site);
-      return [...params.buildings].sort(byId).flatMap((source) => {
+      return sources.flatMap((source) => {
         if (params.busyHomeIds.has(source.id)) return [];
         const sourceAvailable = params.inventory.availableStock(source, resource);
         const available = site.kind === "palisade_segment" || site.kind === "stone_wall_segment"

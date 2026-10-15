@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { efficientAcceptance } from '../scripts/efficientGrowthAcceptance';
-import { compareChronicZeroWheat, growthGuardrail } from '../scripts/growthGuardrail';
+import { compareChronicZeroWheat, growthGuardrail, guardrailEarlyStopTick } from '../scripts/growthGuardrail';
+import { runPhase19NaturalGrowth } from '../scripts/phase19NaturalGrowth';
 
 const metrics = { lots: 24, arableCells: 96, farmsteads: 4, mills: 8, chronicZeroWheatMills: 0, chronicZeroWheatKnown: true,
   chronicZeroWheatObservedTicks: 24000, granaries: 7, markets: 2, churches: 2,
@@ -49,4 +50,29 @@ test('Given comparable chronic mill ratios When compared Then only material wors
 test('Given excessive facilities or warning markers When evaluated Then hard caps remain fail-closed', () => {
   const verdict = growthGuardrail(result, efficientAcceptance({ ...metrics, mills: 21, granaries: 8, warnings: 8 }));
   assert.equal(verdict.checks.efficiency, false);
+});
+
+// RR22 (user approval 2026-10-15): a seed that has not won by twice its baseline victory tick (or the baseline's plus
+// 200,000, the later) stops early and is a regression; a seed that has won runs to its end.
+test('Given the pinned baselines When the early stop is set Then it is the later of twice the victory tick and the victory tick plus 200,000', () => {
+  assert.equal(guardrailEarlyStopTick(4), 543_776);   // victory 271,888: twice it
+  assert.equal(guardrailEarlyStopTick(2), 926_814);   // victory 463,407: twice it
+  assert.equal(guardrailEarlyStopTick(9), null);      // no pinned baseline: the run keeps its budget
+});
+
+test('Given a seed stopped early unwon When evaluated Then it is a regression; one that won is not', () => {
+  const early = growthGuardrail({ ...result, stopReason: 'unreached-early-stop' }, efficientAcceptance(metrics));
+  assert.equal(early.checks.reached, false);
+  assert.equal(early.status, 'regression');
+  assert.equal(growthGuardrail(result, efficientAcceptance(metrics)).checks.reached, true);
+});
+
+test('Given a run with no victory by stopUnwonAt When run Then it stops there as unreached-early-stop; without it the budget ends it', () => {
+  const stopped = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 400, seed: 1, stopUnwonAt: 150 });
+  assert.equal(stopped.stopReason, 'unreached-early-stop');
+  assert.equal(stopped.earlyStopTick, stopped.final.tick);
+  assert.ok(stopped.final.tick >= 150 && stopped.final.tick < 400 + 150);
+  const budget = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 150, seed: 1 });
+  assert.equal(budget.stopReason, 'tick-budget');
+  assert.equal(budget.earlyStopTick, null);
 });

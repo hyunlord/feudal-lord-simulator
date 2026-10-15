@@ -23,6 +23,16 @@ type BaselineSeed = Omit<typeof baseline.seeds['1'], 'chronicZeroWheatMillRatio'
 const seedBaselines: readonly (BaselineSeed | undefined)[] = [undefined, baseline.seeds['1'], baseline.seeds['2'], baseline.seeds['3'],
   baseline.seeds['4'], baseline.seeds['5']];
 
+/**
+ * RR22 (user approval 2026-10-15): the tick at which a seed that has not won stops — twice its baseline victory tick, or
+ * the baseline's plus 200,000, whichever is later; null for a seed with no pinned baseline (the run goes on to its budget).
+ * An F1 guardrail seed stuck at tick 48,000 ran to 1,200,000 for 11 hours.
+ */
+export function guardrailEarlyStopTick(seed: number): number | null {
+  const victory = seedBaselines[seed]?.victoryTick;
+  return typeof victory === 'number' ? Math.max(2 * victory, victory + 200_000) : null;
+}
+
 export function growthGuardrail(observation: GuardrailObservation, efficiency: ReturnType<typeof efficientAcceptance>) {
   const reference = seedBaselines[observation.seed];
   if (reference === undefined) throw new RangeError(`No pinned growth baseline for seed ${observation.seed}`);
@@ -32,6 +42,7 @@ export function growthGuardrail(observation: GuardrailObservation, efficiency: R
   const millComparison = compareChronicZeroWheat(efficiency.zeroWheatMillRatio, reference.chronicZeroWheatMillRatio);
   const checks = {
     efficiency: efficiency.passed,
+    reached: observation.stopReason !== 'unreached-early-stop',
     baselineL4: !belowBaselineL4,
     serviceGap: !newServiceGap,
     newDeadlock: !(observation.stopReason === 'tick-budget' && observation.diagnosticResult === 'no_action' &&
