@@ -1,33 +1,33 @@
 [
   {
-    "seed": 1,
-    "manifestFile": "docs/verification/eb-weight/kept-2485af4/checkpoint-manifest.json",
+    "seed": 2,
+    "manifestFile": "docs/verification/eb-weight/kept-2485af4/seed2-checkpoint-manifest.json",
     "entryId": "ck_evt_005",
-    "choice": "c",
-    "answerId": "h-002653",
-    "startTick": 40015,
-    "maximumTick": 41000,
-    "decisionId": "h-002653",
-    "decisionTick": 40015,
-    "source": "registry:ck_evt_005:c",
+    "choice": "b",
+    "answerId": "h-002615",
+    "startTick": 34009,
+    "maximumTick": 36200,
+    "decisionId": "h-002615",
+    "decisionTick": 34009,
+    "source": "registry:ck_evt_005:b",
     "answer": {
-      "file": "ck_evt_005-answer-h-002653.save.json.gz",
-      "fileSha256": "7c01f32f3e48e5cd18229838c322385cb6b48edc6247b5027f19e287b1b31b16",
-      "encodedSaveSha256": "ce8a2f7c975bf400f9a4da910356837c832943041fb64dc64b8984f88c056b1c",
-      "observedTick": 40015,
-      "bytes": 108421
+      "file": "ck_evt_005-answer-h-002615.save.json.gz",
+      "fileSha256": "a801fbbb99ffca7c7ee1d31793d50859aee169345ae523e9328fed81b8d5ee0f",
+      "encodedSaveSha256": "7320a2323216ccf6351cf980e265132a1e05469ccb63e221655bc320ea9ff3bd",
+      "observedTick": 34009,
+      "bytes": 104820
     },
     "consequence": {
-      "file": "ck_evt_005-consequence-h-002666.save.json.gz",
-      "fileSha256": "c52617438a4c446318b068723f0bd1db63f3b2299e75a5af512a9368ff02e476",
-      "encodedSaveSha256": "4869cd5e630c9360dbc726ecd64e2724a5ab84f5cb12a4d151872256daba1878",
-      "observedTick": 40800,
-      "bytes": 110007,
-      "historyId": "h-002666",
-      "historyTick": 40800,
+      "file": "ck_evt_005-consequence-h-002813.save.json.gz",
+      "fileSha256": "7342ff3c10d3ad69451ea31696ccda604bbd4683648521725353ea76503c4b1f",
+      "encodedSaveSha256": "e9eb6c634526e997530df120568c92ea1254fe2cc32633ea3efd06cc8823b137",
+      "observedTick": 36000,
+      "bytes": 107811,
+      "historyId": "h-002813",
+      "historyTick": 36000,
       "because": [
         {
-          "decisionId": "h-002653",
+          "decisionId": "h-002615",
           "key": "payment_flow",
           "part": true
         }
@@ -39,7 +39,14 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_005:b:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   },
   {
     "seed": 2,
@@ -84,7 +91,14 @@
       "template": "consequence",
       "key": "suit_turned",
       "target": "suit:suit-2"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_009:c:command-0-followup"
+    ],
+    "contractTargets": [
+      "suit:<suitId>",
+      "suit:<suitId>"
+    ]
   },
   {
     "seed": 1,
@@ -126,7 +140,14 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_024:lower:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   },
   {
     "seed": 3,
@@ -181,7 +202,14 @@
       "template": "consequence",
       "key": "audit",
       "target": "estate:estate-neighbour-3"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_031:able:command-0-followup"
+    ],
+    "contractTargets": [
+      "estate:<estateId>",
+      "estate:<estateId>"
+    ]
   },
   {
     "seed": 1,
@@ -226,7 +254,14 @@
       "template": "consequence",
       "key": "suit_turned",
       "target": "suit:suit-13"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_032:roll:command-0-followup"
+    ],
+    "contractTargets": [
+      "suit:<suitId>",
+      "suit:<suitId>"
+    ]
   },
   {
     "seed": 2,
@@ -268,7 +303,14 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_042:firm:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   },
   {
     "seed": 1,
@@ -313,7 +355,14 @@
       "template": "consequence",
       "key": "suit_turned",
       "target": "suit:suit-4"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_053:roll:command-0-followup"
+    ],
+    "contractTargets": [
+      "suit:<suitId>",
+      "suit:<suitId>"
+    ]
   },
   {
     "seed": 3,
@@ -353,7 +402,14 @@
       "template": "consequence",
       "key": "goods_delivered",
       "target": "timber"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_083:a:command-0-followup"
+    ],
+    "contractTargets": [
+      "timber",
+      "timber"
+    ]
   },
   {
     "seed": 3,
@@ -395,7 +451,14 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_092:b:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   },
   {
     "seed": 2,
@@ -450,7 +513,14 @@
       "template": "consequence",
       "key": "audit",
       "target": "estate:estate-neighbour-3"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_130:c:command-0-followup"
+    ],
+    "contractTargets": [
+      "estate:<estateId>",
+      "estate:<estateId>"
+    ]
   },
   {
     "seed": 2,
@@ -505,7 +575,14 @@
       "template": "consequence",
       "key": "audit",
       "target": "estate:estate-neighbour-3"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_140:a:command-0-followup"
+    ],
+    "contractTargets": [
+      "estate:<estateId>",
+      "estate:<estateId>"
+    ]
   },
   {
     "seed": 2,
@@ -545,37 +622,44 @@
       "template": "consequence",
       "key": "goods_delivered",
       "target": "timber"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_165:a:command-0-followup"
+    ],
+    "contractTargets": [
+      "timber",
+      "timber"
+    ]
   },
   {
-    "seed": 3,
-    "manifestFile": "docs/verification/eb-weight/kept-2485af4/seed3-checkpoint-manifest.json",
+    "seed": 2,
+    "manifestFile": "docs/verification/eb-weight/kept-2485af4/seed2-checkpoint-manifest.json",
     "entryId": "ck_evt_201",
-    "choice": "c",
-    "answerId": "h-004307",
-    "startTick": 91027,
-    "maximumTick": 91400,
-    "decisionId": "h-004307",
-    "decisionTick": 91027,
-    "source": "registry:ck_evt_201:c",
+    "choice": "b",
+    "answerId": "h-003145",
+    "startTick": 40015,
+    "maximumTick": 41000,
+    "decisionId": "h-003145",
+    "decisionTick": 40015,
+    "source": "registry:ck_evt_201:b",
     "answer": {
-      "file": "ck_evt_201-answer-h-004307.save.json.gz",
-      "fileSha256": "431b03142fa50ad8ae0892090546aa41377f30a7fd9c582bc51fa4e648e0badf",
-      "encodedSaveSha256": "965d04c856bf3a07da1f8c1ea69ff1027a8b660b17c3f8c4f8c3dff25b535257",
-      "observedTick": 91027,
-      "bytes": 122981
+      "file": "ck_evt_201-answer-h-003145.save.json.gz",
+      "fileSha256": "a6524df43534886d84b095b759144d8701a5ea4b6f8746490476d5abf698615c",
+      "encodedSaveSha256": "6ae9b66cf23ce0dbaa8de8a132f2cf82831f4055255986b4142f82bc02673261",
+      "observedTick": 40015,
+      "bytes": 111981
     },
     "consequence": {
-      "file": "ck_evt_201-consequence-h-004309.save.json.gz",
-      "fileSha256": "056caabbb4b556569ece49465da0791e03550b7fd570fe4905745621aaedda1b",
-      "encodedSaveSha256": "9ce55b15d2112df3bdbe3eae3f2365b2fc04022f1318c7ee3595e0cbaa7636e6",
-      "observedTick": 91200,
-      "bytes": 123356,
-      "historyId": "h-004309",
-      "historyTick": 91200,
+      "file": "ck_evt_201-consequence-h-003190.save.json.gz",
+      "fileSha256": "374a437511c1471b8d382b06fdc3f8cbdd70189e114142defc3513b3ee2bc24e",
+      "encodedSaveSha256": "a7b2e51ab26421ff43a8a533ba16204a355c5d6aa3961e2ac4a30d438669d7b1",
+      "observedTick": 40800,
+      "bytes": 114769,
+      "historyId": "h-003190",
+      "historyTick": 40800,
       "because": [
         {
-          "decisionId": "h-004307",
+          "decisionId": "h-003145",
           "key": "payment_flow",
           "part": true
         }
@@ -587,7 +671,14 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_201:b:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   },
   {
     "seed": 2,
@@ -629,7 +720,14 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_204:a:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   },
   {
     "seed": 1,
@@ -669,7 +767,14 @@
       "template": "consequence",
       "key": "goods_delivered",
       "target": "timber"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_206:a:command-0-followup"
+    ],
+    "contractTargets": [
+      "timber",
+      "timber"
+    ]
   },
   {
     "seed": 2,
@@ -711,6 +816,13 @@
       "key": "payment_flow",
       "target": "dues",
       "category": "stall_fee"
-    }
+    },
+    "contractOutcomeIds": [
+      "ck_evt_211:b:command-0-followup"
+    ],
+    "contractTargets": [
+      "dues",
+      "dues"
+    ]
   }
 ]

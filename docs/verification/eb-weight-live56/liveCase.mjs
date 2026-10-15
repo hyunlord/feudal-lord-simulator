@@ -19,6 +19,13 @@ const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8'
 const cases = JSON.parse(readFileSync(new URL('./cases.json', import.meta.url)));
 const selected = cases.find(item => item.entryId === entryId);
 assert.ok(selected, 'Case must be explicitly pinned in cases.json');
+const contract = JSON.parse(readFileSync(new URL('../../design/engine-B-outcomes.json', import.meta.url)))
+  .events.find(event => event.id === selected.entryId)?.choices.find(choice => choice.id === selected.choice);
+assert.ok(contract, 'Exact chosen option must exist in the outcome contract');
+assert.deepEqual(selected.contractOutcomeIds, contract.outcomes.filter(row => row.effectKind === 'conditional').map(row => row.id));
+assert.ok(contract.outcomes.some(row => row.effectKind === 'conditional'
+  && new RegExp(`^${row.target.traceTarget.replace(/<[^>]+>/g, '[^:]+')}$`).test(selected.expectedConsequence.target)),
+'Expected result must belong to the actually chosen option, not another choice in the same event');
 const ANSWER = selected.answerId, START = selected.startTick, LIMIT = selected.maximumTick;
 const seedDirectory = join(input, `seed-${selected.seed}`);
 const PRODUCT = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
