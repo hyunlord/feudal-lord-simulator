@@ -39,6 +39,27 @@ async function snapshot(label) {
 }
 async function press(selector) {
   const el = page.locator(selector); assert.equal(await el.count(), 1); assert.ok(await el.isEnabled());
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const scroll = await el.evaluate(el => {
+      const target = el.getBoundingClientRect();
+      for (let parent = el.parentElement; parent; parent = parent.parentElement) {
+        const style = getComputedStyle(parent), b = parent.getBoundingClientRect();
+        if (!['auto', 'scroll'].includes(style.overflowY) || parent.scrollHeight <= parent.clientHeight) continue;
+        if (target.top >= b.top && target.bottom <= b.bottom) return null;
+        const x = Math.min(innerWidth - 2, Math.max(2, b.x + b.width / 2));
+        const y = Math.min(innerHeight - 2, Math.max(2, b.y + b.height / 2));
+        const top = document.elementFromPoint(x, y);
+        return top && parent.contains(top) ? { x, y, delta: target.bottom > b.bottom ? 500 : -500,
+          scrollTop: parent.scrollTop, target: { top: target.top, bottom: target.bottom } } : null;
+      }
+      return null;
+    });
+    if (!scroll) break;
+    const before = sha(JSON.stringify(await state()));
+    await page.mouse.move(scroll.x, scroll.y); await page.mouse.wheel(0, scroll.delta); await page.clock.runFor(64);
+    const after = sha(JSON.stringify(await state())); assert.equal(after, before, 'Card scroll changed game state');
+    report.actions.push({ input: 'native wheel', selector, scroll, beforeSha256: before, afterSha256: after });
+  }
   const point = await el.evaluate(el => {
     const b = el.getBoundingClientRect(), x = b.x + b.width / 2, y = b.y + b.height / 2, top = document.elementFromPoint(x, y);
     return b.width > 0 && b.height > 0 && b.x >= 0 && b.y >= 0 && b.right <= innerWidth && b.bottom <= innerHeight
