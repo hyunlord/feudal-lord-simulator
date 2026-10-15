@@ -15,7 +15,7 @@ import { latestChapterEnd } from "../chronicleModel";
 import { openHomePetitions } from "../lordCardsModel";
 import { openRegistryCards } from "../registryCardModel";
 import { houseChangeView } from "../results/houseChange";
-import { lordMatterChipIds } from "../lord/decisions/lordMattersDue";
+import { heldChipIds } from "../lord/decisions/heldChips";
 import { SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLastYear, slicePageDue, takeSliceStart } from "../slice/sliceDue";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
@@ -76,9 +76,9 @@ export function yearCardDue(previous: Readonly<{ year: number; tick: number }> |
 /**
  * The chips shown now, at most MAX_CHIPS: each beat seen `delayMs` ago, not put away, still current or within its minute
  * after. DEC-CARD (A3): a house change's chip is never pushed out by newer chips (at 10× a season's chips come fast).
- * PLAY-2 (friction 8): a house matter due with a deadline (`due`: lordMatterChipIds — SUIT-THREAD: the engine's
+ * PLAY-2 (friction 8): a house matter due with a deadline (`due`: heldChipIds, LS1-7 — SUIT-THREAD: the engine's
  * `lordMattersDue`, the will, the contested inheritance, a suit against the lord, an entry forewarned; and an audit, an
- * off-map estate's petition) stays among the chips until it is answered or past: closing its card does not put it away,
+ * off-map estate's petition; LS1-7: a home petition, a registry offer) stays among the chips until answered or past: closing its card does not put it away,
  * newer chips do not push it out, and it goes the moment it is answered (no lingering). SUIT-THREAD: the lord's loss of
  * a possession (`lasting`) is pinned as a house change is, until put away.
  */
@@ -154,7 +154,7 @@ export function useStoryPresentation(input: {
     if (changed) setRevision(revision => revision + 1);
   });
   const current = new Set(beats.map(beat => beat.id));
-  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead, lordMatterChipIds(state));
+  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead, heldChipIds(state));
   const visibleKey = visible.map(beat => beat.id).join("|");
   // A new chip: stop time if the setting asks for it.
   useEffect(() => {

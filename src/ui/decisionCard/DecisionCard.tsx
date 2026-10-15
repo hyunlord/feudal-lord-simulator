@@ -52,18 +52,21 @@ export function DecisionCard({ view, onChoose, onLater, extra = null, laterLabel
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         {crest === null ? null : <span className="petition-roundel"><EmblemImage emblem={crest.arms} size={38} label={crest.label} /></span>}
         <div className="petition-body decision-card-body">
-          {view.court === null ? null : <p className="decision-card-court">{view.court}</p>}
-          <header className="decision-card-head">
-            {view.illustration === null ? null : <div className="decision-card-art" aria-hidden="true" data-art={view.illustration} style={storyArtStyle(view.illustration, ART_WIDTH)} />}
-            <div className="decision-card-heading">
-              {view.from === null ? null : <p className="decision-card-from">{view.from}</p>}
-              <h2>{view.title}</h2>
-              <p className="decision-card-situation"><span className="decision-card-part-head">{COPY.situation}</span>{view.situation}</p>
-              <p className="decision-card-stake"><span className="decision-card-part-head">{COPY.stake}</span>{view.stake}</p>
-              {view.deadline === null ? null : <p className="decision-card-deadline">{view.deadline}</p>}
-            </div>
-          </header>
-          {extra}
+          {/* LS1-7: the body alone scrolls; the answers and 나중에 stay at the card's foot (never past the view). */}
+          <div className="decision-card-scroll">
+            {view.court === null ? null : <p className="decision-card-court">{view.court}</p>}
+            <header className="decision-card-head">
+              {view.illustration === null ? null : <div className="decision-card-art" aria-hidden="true" data-art={view.illustration} style={storyArtStyle(view.illustration, ART_WIDTH)} />}
+              <div className="decision-card-heading">
+                {view.from === null ? null : <p className="decision-card-from">{view.from}</p>}
+                <h2>{view.title}</h2>
+                <p className="decision-card-situation"><span className="decision-card-part-head">{COPY.situation}</span>{view.situation}</p>
+                <p className="decision-card-stake"><span className="decision-card-part-head">{COPY.stake}</span>{view.stake}</p>
+                {view.deadline === null ? null : <p className="decision-card-deadline">{view.deadline}</p>}
+              </div>
+            </header>
+            {extra}
+          </div>
           <ol className="decision-card-choices">{view.choices.map(choice => <Choice key={choice.id} choice={choice} onChoose={onChoose} />)}</ol>
           <Button type="button" className="story-modal-later" variant="secondary" onPress={() => onLater()}>{laterLabel}</Button>
         </div>

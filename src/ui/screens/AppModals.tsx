@@ -17,6 +17,7 @@ import { LordRequestModal } from "../hud/LordCards";
 import { DecisionCard } from "../decisionCard/DecisionCard";
 import { AnswerReceipt } from "../decisionCard/AnswerReceipt";
 import { answerMeta } from "../decisionCard/answerReceiptModel";
+import { receiptPops } from "../decisionCard/receiptClose";
 import type { DecisionCardView } from "../decisionCard/decisionCardTypes";
 import { useAnswerReceipt } from "../decisionCard/useAnswerReceipt";
 import type { GameAction } from "../../state/gameStore.types";
@@ -166,7 +167,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onAnswer={choice => answered("audit_decision", { type: "answer_audit", auditId: audit.auditId, choice }, audit.card, choice)} />}
     {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={grant => answered("estate_petition_offmap", { type: "answer_estate_petition", petitionId: offMap.petitionId, grant }, offMap.card, grant ? "grant" : "refuse")} />}
-    {receipt === null ? null : <AnswerReceipt view={receipt} onClose={() => { closeReceipt(); sendUi({ type: "pop_modal" }); }} />}
+    {receipt === null ? null : <AnswerReceipt view={receipt} onClose={() => { closeReceipt(); for (let pop = 0; pop < receiptPops(ui); pop += 1) sendUi({ type: "pop_modal" }); }} />}
     {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
       onChronicle={() => { focusChronicleYears(yearView.year, yearView.year); sendUi({ type: "push_modal", modal: "history" }); }} />}
     {sliceStart === null ? null : <SliceStartPage view={sliceStart} onBegin={() => sendUi({ type: "pop_modal" })} />}
