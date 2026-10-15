@@ -1,0 +1,19 @@
+{
+  "compression": "gzip; original bytes including whitespace preserved",
+  "files": [
+    {
+      "archive": "056-v0-rejected/run.txt.gz",
+      "original": "056-v0-rejected/run.txt",
+      "originalBytes": 1675,
+      "originalSha256": "652053209d4b61b1ec921c5e240986397cb3fc123790c2c3c25334f55f8dfd45",
+      "archiveSha256": "8fc1ead1f20798e3a7f96c5c559015e8802befb19b0a9828c226ed150db89963"
+    },
+    {
+      "archive": "checkpoint-audit/run.txt.gz",
+      "original": "checkpoint-audit/run.txt",
+      "originalBytes": 1668,
+      "originalSha256": "60aa06be6f965ea35fd236319faecac721e35960141addb50ae52039b0962884",
+      "archiveSha256": "80c43862b752d57369b4cdf73ade269106c2bd75a4762c9efa3295684bd5066f"
+    }
+  ]
+}

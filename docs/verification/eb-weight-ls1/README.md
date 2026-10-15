@@ -36,3 +36,5 @@ DGX `engineB-weight-LS1-e7b4e4d`, 도구 `e7b4e4d7406e9fc3b50207b5fc226cc6e650bd
 ID 056은 기존 56개 감사 집합과 별개인 `road_bridge` 문구 변형이다. 실제 청원 답 ID를 따라야 하며 `ck_evt_056` registry 기록이 없다는 이유만으로 trace 결함을 선언하지 않는다.
 
 관련 원칙: P-C3(실제 원인 연결), A5(원본과 실패 보존), P-T3(청지기 처리 제외와 미관측을 구분).
+
+실행 로그는 원래 공백까지 보존하는 `run.txt.gz`로 묶었다. `log-archives.json`에 원문 크기·SHA와 압축 SHA를 함께 기록했다.
