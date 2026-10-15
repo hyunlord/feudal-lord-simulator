@@ -53,8 +53,9 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   const decision = completeChain ? measuredFoodDecision(state) : null;
   // F1 (the user's ruling 2026-10-14): an open observation waits out the last addition's effect — but not a grain
   // shortage, which no mill or granary under observation can make up (seed 1's 1304 summer asked for fields only while
-  // one was open, engine-FOOD-early-c5fd693).
-  if (hasActiveFoodObservation(state) && decision?.reason !== 'actual_wheat_deficit') return finish({ kind: "none" }, 'active_observation');
+  // one was open, engine-FOOD-early-c5fd693). Lord mode only, as F1's fields reading (the user's ruling 2026-10-15).
+  const grainExempt = state.agency !== undefined && decision?.reason === 'actual_wheat_deficit';
+  if (hasActiveFoodObservation(state) && !grainExempt) return finish({ kind: "none" }, 'active_observation');
   if (decision?.reason === 'observation_warmup') return finish({ kind: 'none' }, decision.reason);
   if (decision?.kind === null || decision === null) {
     const coverage = foodCoverageAction(state);
