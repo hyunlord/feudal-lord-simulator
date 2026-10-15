@@ -166,10 +166,15 @@ try {
   report.navigation = { attempted: false, reason: 'Only navigate an exact answer-linked result item; no unrelated card substitute.' };
   report.effectTrace = report.after.rows.filter(row => {
     const record = after.history.records.find(record => record.id === row.recordId);
+    const plan = after.diplomacy?.marriage;
+    const matchesActualStatus = record?.params?.status === negotiation.status;
+    const matchesActualStage = plan?.negotiationId === negotiation.id && record?.params?.stage === plan.stage
+      && record?.params?.events === Object.keys(plan.events).length;
     return row.decisionId === report.answer.id && row.decisionTick === after.tick && row.tick === after.tick
       && row.key === 'marriage_turned' && record !== undefined && record.kind !== 'decision'
       && record.template !== 'registry.answered'
-      && (record.subject?.id === negotiation.id || record.params?.negotiationId === negotiation.id || record.params?.negotiation === negotiation.id);
+      && record.params?.target === `negotiation:${negotiation.id}`
+      && (matchesActualStatus || matchesActualStage);
   });
   report.traceContract = 'Conservative diagnostic: immediate non-processing marriage_turned history must identify this created negotiation and exact successful answer ID. No generic processing record or unrelated relation is accepted.';
   if (!report.after.item) report.failureClass = report.after.rows.length ? 'year_results_omission' : 'immediate_negotiation_missing_trace';
