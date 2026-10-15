@@ -168,12 +168,16 @@
         "included"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "partial_lower_pass_keep_pending",
+      "screenVerdict": "pass_two_supported_choices",
       "liveCase": {
         "seed": 1,
         "choice": "lower"
       },
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "evidence": [
+        "../eb-weight-024-ls1/README.md",
+        "../eb-weight-024-keep/README.md"
+      ]
     },
     {
       "entryId": "ck_evt_025",
