@@ -1,0 +1,353 @@
+[
+  {
+    "id": "052",
+    "entryId": "ck_evt_052",
+    "choice": "punish",
+    "seed": 1,
+    "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+    "acquisitionRun": "engineB-weight-audit-input-9f769ee",
+    "remoteDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight-audit-input-9f769ee/.remote/eb-weight-audit-acquire",
+    "acquisitionSha256": "4b9333b0eda7aa063cb16cb4ae316e3aa0b9ee41b290c78a01c72b9b172bf87a",
+    "witness": {
+      "file": "ck_evt_052-offered-55000-0.save.json.gz",
+      "tick": 55000,
+      "stateSha256": "45de878ad8d909ce4143f160abd9738e6071c6ba7becf1f65450628162b99fe5",
+      "encodedSha256": "90f51f5c1193c5216df3d844c0da248115c4401a4d7e06e2cfca22ca273f46e9",
+      "gzipSha256": "071246248df679090065075ad828c168399b479c7b0e157cd4c994ce15236599",
+      "entryId": "ck_evt_052",
+      "offer": {
+        "id": "registry:ck_evt_052:audit_findings|:55",
+        "entryId": "ck_evt_052",
+        "boundId": "audit-1",
+        "offeredTick": 55000,
+        "deadline": 56000,
+        "status": "offered",
+        "receipt": {
+          "draw": 725,
+          "chancePermille": 1000,
+          "conditions": []
+        },
+        "source": "v4",
+        "bound": {
+          "audit": "audit-1",
+          "estate": "estate-neighbour-3",
+          "oversight": "estate-neighbour-3",
+          "currentSteward": "est-000006",
+          "currentPerson": "est-000006",
+          "successor": "est-000005"
+        },
+        "key": "audit_findings|",
+        "context": "|||",
+        "weights": [
+          "land"
+        ]
+      },
+      "choices": [
+        "punish",
+        "replace",
+        "tolerate"
+      ]
+    },
+    "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+    "commands": [
+      {
+        "type": "answer_audit",
+        "args": {
+          "auditId": {
+            "binding": "bound.audit.id"
+          },
+          "choice": "punish",
+          "replacementId": {
+            "binding": "bound.successor.personId"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "038",
+    "entryId": "ck_evt_038",
+    "choice": "enforce",
+    "seed": 1,
+    "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+    "acquisitionRun": "engineB-weight-input-038-seed1-new-game-9f769ee",
+    "remoteDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight-input-038-seed1-new-game-9f769ee/.remote/eb-weight-acquire-remaining/038-seed1-new-game",
+    "acquisitionSha256": "7e47b49d61f928bbcb0f5d6ae254e788d29f3b42544a8fd9c70c8e997dd6c677",
+    "witness": {
+      "file": "ck_evt_038-offered-36000-5.save.json.gz",
+      "tick": 36000,
+      "encodedSha256": "4a769c66bc20f3ba2dd0673c0686ebaccbc774d3e422d85dacd307e027021119",
+      "gzipSha256": "01042ca22fffeeeeb3021b30e3b8a67976cea6a67ea51eca29c72405eff03476",
+      "stateSha256": "1738f168b6e3fc8b28960f3fc9bf59e31d2e28dd6e0427b36c833fa56e344f60",
+      "entryId": "ck_evt_038",
+      "offer": {
+        "id": "registry:ck_evt_038:suit.enforce|suit-2:36",
+        "entryId": "ck_evt_038",
+        "boundId": "suit-2",
+        "offeredTick": 36000,
+        "deadline": 37000,
+        "status": "offered",
+        "receipt": {
+          "draw": 32,
+          "chancePermille": 1000,
+          "conditions": []
+        },
+        "source": "v4",
+        "bound": {
+          "suit": "suit-2",
+          "claim": "claim-2"
+        },
+        "key": "suit.enforce|suit-2",
+        "context": "suit-2",
+        "weights": [
+          "land"
+        ]
+      },
+      "choices": [
+        "enforce",
+        "defer"
+      ]
+    },
+    "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+    "commands": [
+      {
+        "type": "enforce_possession",
+        "args": {
+          "suitId": {
+            "binding": "bound.suit.id"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "059",
+    "entryId": "ck_evt_059",
+    "choice": "delegate",
+    "seed": 3,
+    "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+    "acquisitionRun": "engineB-weight-input-059-seed3-9f769ee",
+    "remoteDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight-input-059-seed3-9f769ee/.remote/eb-weight-acquire-remaining/059-seed3",
+    "acquisitionSha256": "b948a583051baeb5d6e968c4833b1a53e25dbde14ef1a31386202c84dfa9f4d7",
+    "witness": {
+      "file": "ck_evt_059-offered-48000-0.save.json.gz",
+      "tick": 48000,
+      "encodedSha256": "e8db6b5494f45d8bbc57d77b724de2d71cc7c4e2af82c4929768fc7188a92c4c",
+      "gzipSha256": "e25370e0b0dc64a2316a47495c8bd9e579cc70e78d6d01c1b5cb7284659c6846",
+      "stateSha256": "90d5be656c1389668f8492b4d0c1e0513abd5169e23acf0bbc1916adfec70f08",
+      "entryId": "ck_evt_059",
+      "offer": {
+        "id": "registry:ck_evt_059:estate_oversight|:48",
+        "entryId": "ck_evt_059",
+        "boundId": "estate-neighbour-3",
+        "offeredTick": 48000,
+        "deadline": 49000,
+        "status": "offered",
+        "receipt": {
+          "draw": 686,
+          "chancePermille": 1000,
+          "conditions": []
+        },
+        "source": "v4",
+        "bound": {
+          "estate": "estate-neighbour-3",
+          "oversight": "estate-neighbour-3",
+          "currentSteward": "est-000004",
+          "ableCandidate": "est-000006",
+          "currentPerson": "est-000004",
+          "loyalCandidate": "est-000005"
+        },
+        "key": "estate_oversight|",
+        "context": "|||",
+        "weights": [
+          "land"
+        ]
+      },
+      "choices": [
+        "delegate",
+        "loyal_candidate"
+      ]
+    },
+    "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+    "commands": [
+      {
+        "type": "set_estate_oversight",
+        "args": {
+          "estateId": {
+            "binding": "bound.estate.id"
+          },
+          "mode": "steward",
+          "stewardId": {
+            "binding": "bound.ableCandidate.personId"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "051",
+    "entryId": "ck_evt_051",
+    "choice": "file",
+    "seed": 1,
+    "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+    "acquisitionRun": "engineB-weight-input-051-seed1-9f769ee",
+    "remoteDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight-input-051-seed1-9f769ee/.remote/eb-weight-acquire-remaining/051-seed1",
+    "acquisitionSha256": "844cc7d82cdbca3f9003f296f002d5a7022168556ba8187e90929eeb1ef4f614",
+    "witness": {
+      "file": "ck_evt_051-offered-184000-3.save.json.gz",
+      "tick": 184000,
+      "encodedSha256": "a638b9cc3c2e1b977425dac8f0316a174a844ba559f400e35f5c52055d2b1b0a",
+      "gzipSha256": "8b38caa8f85b3e0aafa3fe432d60701c65a353df7a2c19afb9098c2d3f88ac46",
+      "stateSha256": "b955d69aceff2b354a0931b66ab9ab09606dfdea2369b72da59eb4abca26d727",
+      "entryId": "ck_evt_051",
+      "offer": {
+        "id": "registry:ck_evt_051:old_fishery_claim|:184",
+        "entryId": "ck_evt_051",
+        "boundId": "claim-26",
+        "offeredTick": 184000,
+        "deadline": 185000,
+        "status": "offered",
+        "receipt": {
+          "draw": 32,
+          "chancePermille": 1000,
+          "conditions": []
+        },
+        "source": "v4",
+        "bound": {
+          "claim": "claim-26"
+        },
+        "key": "old_fishery_claim|",
+        "context": "|||",
+        "weights": [
+          "rights"
+        ]
+      },
+      "choices": [
+        "file",
+        "leave",
+        "file_with_deed"
+      ]
+    },
+    "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+    "commands": [
+      {
+        "type": "file_suit",
+        "args": {
+          "claimId": {
+            "binding": "bound.claim.id"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "010",
+    "entryId": "ck_evt_010",
+    "choice": "a",
+    "seed": 3,
+    "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+    "acquisitionRun": "engineB-weight-input-010-seed3-9f769ee",
+    "remoteDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight-input-010-seed3-9f769ee/.remote/eb-weight-acquire-remaining/010-seed3",
+    "acquisitionSha256": "498c88c6b0e5f038190cd3c8a324f58dd2e837241395ee1f3ac7666a77e08549",
+    "witness": {
+      "file": "ck_evt_010-offered-184000-4.save.json.gz",
+      "tick": 184000,
+      "encodedSha256": "6fdc8d1b09f96d6582993d79954a9a4351ee351427f1aac1bdae69edb5695b17",
+      "gzipSha256": "ab7e8768356d2be6a0ab5bcc0346b16d5b06b81526245d5863e845cc2149d2a2",
+      "stateSha256": "da477d8f4d4ce7f8141a9e3be2fbfd558bec4e903855c66362755211a5643176",
+      "entryId": "ck_evt_010",
+      "offer": {
+        "id": "registry:ck_evt_010:old_fishery_claim|:184",
+        "entryId": "ck_evt_010",
+        "boundId": "claim-21",
+        "offeredTick": 184000,
+        "deadline": 185000,
+        "status": "offered",
+        "receipt": {
+          "draw": 523,
+          "chancePermille": 1000,
+          "conditions": []
+        },
+        "source": "v4",
+        "bound": {
+          "claim": "claim-21"
+        },
+        "key": "old_fishery_claim|",
+        "context": "|||",
+        "weights": [
+          "rights"
+        ]
+      },
+      "choices": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+    "commands": [
+      {
+        "type": "file_suit",
+        "args": {
+          "claimId": {
+            "binding": "bound.claim.id"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "209",
+    "entryId": "ck_evt_209",
+    "choice": "a",
+    "seed": 2,
+    "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+    "acquisitionRun": "engineB-weight-input-209-seed2-9f769ee",
+    "remoteDirectory": "/home/hyunlord/fls-runs/_kept/engineB-weight-input-209-seed2-9f769ee/.remote/eb-weight-acquire-remaining/209-seed2",
+    "acquisitionSha256": "c3a4259ccb9ad2d28b25cede0479e1d9443aa1537b94530cb758ffacc6fb1daa",
+    "witness": {
+      "file": "ck_evt_209-offered-103000-0.save.json.gz",
+      "tick": 103000,
+      "encodedSha256": "379aa85f50fd6e1855a472d77448934445c2038b4fd27f86c5b3c0d5ed522c7e",
+      "gzipSha256": "744f5f801176d1349ed264b22f0f488978ba512b36d01938a7d38a92cee969d3",
+      "stateSha256": "8fd3fbf0aa13edff1359c408c1ce458b92a61d5ddb209d065bc5f3d0f92b1a2b",
+      "entryId": "ck_evt_209",
+      "offer": {
+        "id": "registry:ck_evt_209:v41.N4|103:103",
+        "entryId": "ck_evt_209",
+        "boundId": "103",
+        "offeredTick": 103000,
+        "deadline": 104000,
+        "status": "offered",
+        "receipt": {
+          "draw": 98,
+          "chancePermille": 140,
+          "conditions": []
+        },
+        "source": "v4",
+        "bound": {
+          "seasonContext": "103"
+        },
+        "key": "v41.N4|103",
+        "context": "103",
+        "weights": [
+          "large_sum"
+        ]
+      },
+      "choices": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "contractSha256": "bc027a9b0e93a19f00e6ad4a8adbfdaff2c9f9adfa20f4020f65d7d2282c0332",
+    "commands": [
+      {
+        "type": "order_timber",
+        "args": {
+          "amount": 10
+        }
+      }
+    ]
+  }
+]
