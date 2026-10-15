@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "eventId": "ck_evt_056",
+  "mode": "genuine-historical-variant-real-UI-answers-paused",
+  "sourceRevision": "e2b820583a5ee9c7ff36b67617429a21f293c296",
+  "input": "/home/hyunlord/fls-variant-states/home-056.json",
+  "errors": [
+    "Error: Save state zone undo ordinal is out of range"
+  ],
+  "rows": [],
+  "limits": [
+    "No natural-play frequency claim; historical generator used player standing policies.",
+    "Each choice starts fresh from the same genuine save. No ticks advanced; future consequences are unobserved.",
+    "Variant provenance is witnessed on the actual card before the answer; v55 does not persist the variant ID."
+  ],
+  "rawSha256": "00c8eeab4b4c17443e3b3c53f0a6a2af639e7fc3bf1c23ea8de6a56fd181405c",
+  "pass": false
+}

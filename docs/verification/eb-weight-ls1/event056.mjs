@@ -32,20 +32,22 @@ let browser;
 try {
   const [{ decodeSave, encodeSave }, { withResidentWalkers }, { estatePetitionVariantFor }, { homePetitionView },
     { homePetitionCard }, { yearResults }, { traceInRange }, { traceGroups }, { BALANCE }, { RESULTS_COPY },
-    { loadChromium, openScene }] = await Promise.all([
+    { loadChromium, openScene }, { admitSceneState }, { DEFAULT_GAME_STATE }] = await Promise.all([
     import('../../../src/save/saveCodec.ts'), import('../../../src/render/presentation/residentWalkerState.ts'),
     import('../../../src/engine/registryVariants.ts'), import('../../../src/ui/lordCardsModel.ts'),
     import('../../../src/ui/decisionCard/families/homePetitionCard.ts'), import('../../../src/ui/results/yearResults.ts'),
     import('../../../src/engine/decisionReads.ts'), import('../../../src/ui/results/decisionThread.ts'),
     import('../../../src/content/balanceConfig.ts'), import('../../../src/ui/results/resultsCopy.ko.ts'),
     import('../../../scripts/renderCommitProbe.mjs'),
+    import('../../../scripts/sceneState.ts'), import('../../../src/state/gameStore.ts'),
   ]);
   const bytes = readFileSync(input);
   report.rawSha256 = sha(bytes);
   assert.equal(report.rawSha256, '00c8eeab4b4c17443e3b3c53f0a6a2af639e7fc3bf1c23ea8de6a56fd181405c');
   const raw = JSON.parse(bytes);
-  const decoded = decodeSave(bytes);
-  const state = decoded.envelope.state;
+  assert.equal(raw.schemaVersion, undefined, 'This pinned input is an unversioned scene snapshot');
+  const state = admitSceneState(raw, DEFAULT_GAME_STATE);
+  assert.equal(jsonSha(state), jsonSha(raw), 'Official scene admission must preserve every source value');
   const metadataBytes = readFileSync(join(repo, 'docs/verification/variants/states.json'));
   const metadata = JSON.parse(metadataBytes)['home-056'];
   assert.equal(metadata.prepared, false);
@@ -60,15 +62,16 @@ try {
   const model = homePetitionCard(state);
   assert.equal(model?.subjectId, petitionId);
   assert.equal(model.title, variant.title);
-  report.inputProvenance = { metadata, metadataSha256: sha(metadataBytes), rawSchemaVersion: raw.schemaVersion ?? 0,
-    migratedFrom: decoded.migratedFrom, currentSchemaVersion: decoded.envelope.schemaVersion,
-    rawStateSha256: jsonSha(raw.state ?? raw), decodedStateSha256: jsonSha(state),
-    migrationChanges: difference(raw.state ?? raw, state), variant, offeredChoices: model.choices };
-  const encoded = encodeSave({ state, createdAt: decoded.envelope.createdAt, savedAt: decoded.envelope.savedAt,
-    scenarioId: decoded.envelope.scenarioId, gameVersion: decoded.envelope.gameVersion });
-  assert.equal(jsonSha(decodeSave(encoded.bytes).envelope.state), jsonSha(state));
+  const encoded = encodeSave({ state, createdAt: '2026-10-15T00:00:00.000Z', savedAt: '2026-10-15T00:00:00.000Z' });
+  const decoded = decodeSave(encoded.bytes);
+  assert.equal(jsonSha(decoded.envelope.state), jsonSha(state));
+  report.inputProvenance = { metadata, metadataSha256: sha(metadataBytes), rawSchemaVersion: null,
+    admission: 'RES-REG current bare admission; unchanged snapshot repack, not a v0 migration',
+    admittedStateSha256: jsonSha(state), currentSchemaVersion: decoded.envelope.schemaVersion,
+    rawStateSha256: jsonSha(raw), repackedStateSha256: jsonSha(decoded.envelope.state),
+    admissionChanges: difference(raw, state), variant, offeredChoices: model.choices };
   report.sceneSaveSha256 = sha(encoded.bytes);
-  writeFileSync(join(out, '056-migrated.save.json.gz'), gzipSync(encoded.bytes, { level: 9 }));
+  writeFileSync(join(out, '056-admitted.save.json.gz'), gzipSync(encoded.bytes, { level: 9 }));
   const seat = state.buildings.find(building => building.kind === 'manor_house') ?? state.buildings[0];
   assert(seat);
   browser = await (await loadChromium()).launch({ channel: 'chrome', headless: true });
