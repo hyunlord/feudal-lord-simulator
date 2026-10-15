@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { decodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { withResidentWalkers } from '../../../src/render/presentation/residentWalkerState.ts';
 import { loadChromium } from '../../../scripts/renderCommitProbe.mjs';
 import { routeSceneState, sceneStateRefusal } from '../../../scripts/sceneInjection.mjs';
@@ -12,7 +12,7 @@ assert.equal(process.platform, 'linux'); assert.equal(process.env.FLS_REMOTE, '1
 const [input, out, url, caseId] = process.argv.slice(2);
 assert.ok(input && out && url && caseId); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 const cases = {
   '034': [171999, 'precedent', 'registry:ck_evt_034:steward.precedent|:171', '6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d'],
   '058': [126999, 'remit', 'registry:ck_evt_058:petition.charterFee|ck_evt_058@126000:126', '4b71ac273c1bf3cc4cd4ae64b953fd88d44e31bf727a3b68079d91ccb2209e5e'],
@@ -21,7 +21,7 @@ const cases = {
 };
 assert.ok(Object.hasOwn(cases, caseId));
 const [tick, choice, occurrenceId, gzipSha] = cases[caseId], entryId = 'ck_evt_' + caseId;
-const report = { product, entryId, choice, occurrenceId, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, entryId, choice, occurrenceId, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   valid: false, lord56Pass: false, route: 'steward-season-report', actions: [], screenshots: [], errors: [],
   limits: ['Historical steward answer already occurred before input. This observes its actual season report becoming visible, not a fresh lord answer.',
     'One occurrence only; this event ID is not asserted to be exclusively steward-owned.', 'DOM checks require separate human screenshot review.'] };

@@ -1,3 +1,4 @@
+import { saveAdmissions } from './reviewedSaveAdmission.mjs';
 // One genuine answer, normal UI time, and passive reads. No decision is answered by this observer.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -28,17 +29,19 @@ assert.ok(contract.outcomes.some(row => row.effectKind === 'conditional'
 'Expected result must belong to the actually chosen option, not another choice in the same event');
 const ANSWER = selected.answerId, START = selected.startTick, LIMIT = selected.maximumTick;
 const seedDirectory = join(input, `seed-${selected.seed}`);
-const PRODUCT = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
-const report = { schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
+const PRODUCT = '53407fe6946921ddd448fcffeb417ae07e7351f2';
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
   sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
   answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,
+  historicalReference: { consequence: selected.consequence, originalObservationBound: selected.maximumTick, notCurrentEvidence: true },
+  runtimeExpectation: { semantics: selected.expectedConsequence, observedEvidence: 'receipts and samples from this run only' },
   valid: false, automatic: null, manual: null, actions: [], states: [], samples: [], transitions: [],
   receipts: [], informationalContinues: [], resultNavigation: [], unansweredSuitContinues: [], errors: [],
   limits: ['Proof snapshots contain presentation walkers, not a raw store snapshot.',
     'This is one current-product replay from a genuine historical answer, not a fresh 125-year run.',
     'Automatic yearly aggregation is distinct from automatic opening of a card or a new notification.',
     'A bounded replay may stop at an unrelated required decision; that is not proof of a trace or display defect.',
-    'The observation bound is the original first consequence tick plus 200 ticks; old and current simulation may diverge.'] };
+    'Historical consequence ID/tick is provenance only, never a required current outcome. The retained old bound is a limited diagnostic window; absence is not proof of impossibility under current rules.'] };
 let browser, context, page, initialized = false;
 const stateFiles = new Map();
 const stateJson = () => page.evaluate(() => JSON.stringify(window.__FEUDAL_PHASE10_PROOF__.state()));
@@ -292,7 +295,7 @@ try {
   const raw = gunzipSync(compressed);
   assert.equal(sha(raw), pair.answer.encodedSaveSha256);
   const [{ decodeSave }, { withResidentWalkers }, { loadChromium }, scene] = await Promise.all([
-    import('../../../src/save/saveCodec.ts'), import('../../../src/render/presentation/residentWalkerState.ts'),
+    import('./reviewedSaveAdmission.mjs'), import('../../../src/render/presentation/residentWalkerState.ts'),
     import('../../../scripts/renderCommitProbe.mjs'), import('../../../scripts/sceneInjection.mjs')]);
   const original = JSON.parse(raw), decoded = decodeSave(raw), state = decoded.envelope.state;
   assert.equal(state.seed, selected.seed); assert.equal(state.tick, START);

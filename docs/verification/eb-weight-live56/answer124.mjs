@@ -1,10 +1,12 @@
+import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { decodeSave, encodeSave } from '../../../src/save/saveCodec.ts';
+import { encodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { openRegistryOffers, offerChoices } from '../../../src/engine/registry.ts';
 import { withResidentWalkers } from '../../../src/render/presentation/residentWalkerState.ts';
 import { loadChromium } from '../../../scripts/renderCommitProbe.mjs';
@@ -16,9 +18,9 @@ assert.match(meta, /^SLOT=heavy$/m); assert.match(meta, /^RUN_CLASS=experiment$/
 const [input, out, url] = process.argv.slice(2);
 assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
-const report = { product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   input, entryId: 'ck_evt_124', choice: 'b', screenshots: [], actions: [], errors: [], valid: false,
   provenance: { source: '/home/hyunlord/fls-lord-states/registry-offer.json',
     rawSha256: '0ff4d88a516b6b6868529ccc80281a4ea8a4e68c79b5ecf9ac01a024332bb508',
@@ -165,9 +167,10 @@ try {
   const after = await snapshot('answered');
   const occurrence = after.registry.occurrences.find(row => row.id === witness.offer.id);
   assert.equal(occurrence.status, 'answered'); assert.equal(occurrence.choiceId, 'b');
-  const oldIds = new Set((before.trace?.decisions ?? []).map(row => row.id));
-  const answers = after.trace.decisions.filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_124:b');
+  const oldIds = new Set((before.trace?.answers ?? []).map(row => row.id));
+  const answers = (after.trace?.answers ?? []).filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_124:b');
   assert.equal(answers.length, 1); report.answer = answers[0];
+  report.answerEffects = answerEffects(after, report.answer.id) ?? null;
   const oldNegotiations = before.diplomacy?.negotiations ?? [];
   const created = (after.diplomacy?.negotiations ?? []).filter(row => !oldNegotiations.some(old => old.id === row.id));
   assert.equal(created.length, 1, 'A successful 124/b must create exactly one negotiation');
@@ -220,8 +223,14 @@ try {
       && (matchesActualStatus || matchesActualStage);
   });
   report.traceContract = 'Conservative diagnostic: immediate non-processing marriage_turned history must identify this created negotiation and exact successful answer ID. No generic processing record or unrelated relation is accepted.';
-  if (!report.after.item) report.failureClass = report.after.rows.length ? 'year_results_omission' : 'immediate_negotiation_missing_trace';
-  else if (!report.effectTrace.length) report.failureClass = 'immediate_negotiation_trace_contract_unproven';
+  report.primaryAnswerEffects = (report.answerEffects ?? []).filter(effect => effect.target === 'marriage'
+    && JSON.stringify(effect.path) === JSON.stringify(['diplomacy', 'negotiations', negotiation.id, 'status'])
+    && effect.before === null && effect.beforePresent === false && effect.after === negotiation.status && effect.afterPresent === true && effect.delta === null);
+  report.primaryEffectTraceValid = report.effectTrace.length > 0 || report.primaryAnswerEffects.length === 1;
+  report.screenCaptureValid = false;
+  report.screenFailureClass = report.after.item ? null : 'year_results_omission';
+  if (!report.after.item) report.failureClass = (report.primaryEffectTraceValid || report.after.rows.length > 0) ? 'year_results_omission' : 'immediate_negotiation_missing_trace';
+  else if (!report.primaryEffectTraceValid) report.failureClass = 'immediate_negotiation_trace_contract_unproven';
   else {
     assert.ok(report.chipCount.delta > 0, 'A real result must increase the yearly chip count');
     const chip = `.event-chip[data-story="decision_trace"][data-chip-id="results:${report.after.results.year}"]`;
@@ -239,7 +248,7 @@ try {
     assert.equal(items.filter(row => row.text === report.after.expectedFact).length, 1);
     assert.ok(items.some(row => row.text === report.after.expectedFact && row.exposed));
     assert.equal(report.manual.beforeSha256, report.manual.afterSha256);
-    await snapshot('card'); report.valid = report.actual.addedNegotiations === 1 && report.errors.length === 0;
+    await snapshot('card'); report.screenCaptureValid = report.errors.length === 0; report.valid = report.actual.addedNegotiations === 1 && report.errors.length === 0;
   }
 } catch (error) {
   report.errors.push(String(error)); report.failureClass ??= 'harness_or_screen_requires_classification';

@@ -1,10 +1,11 @@
+import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { decodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { withResidentWalkers } from '../../../src/render/presentation/residentWalkerState.ts';
 import { loadChromium } from '../../../scripts/renderCommitProbe.mjs';
 import { routeSceneState, sceneStateRefusal } from '../../../scripts/sceneInjection.mjs';
@@ -15,12 +16,12 @@ assert.match(meta, /^SLOT=heavy$/m); assert.match(meta, /^RUN_CLASS=experiment$/
 const [input, out, url] = process.argv.slice(2);
 assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const acquisitionBytes = readFileSync(join(input, 'acquisition.json.gz'));
 assert.equal(sha(acquisitionBytes), '7797c4940af51d990eb4deced57d94e0e0e5679ef86f51220ab46c906a41edc0');
 const acquisition = JSON.parse(gunzipSync(acquisitionBytes));
-assert.equal(acquisition.product, product); assert.equal(acquisition.found, true); assert.deepEqual(acquisition.errors, []);
+assert.equal(acquisition.product, '0eddc146c7d57b4cae091bff62295a1fc16e1f97', 'Historical acquisition provenance'); assert.equal(acquisition.found, true); assert.deepEqual(acquisition.errors, []);
 const witness = acquisition.offered.find(row => row.entryId === 'ck_evt_046');
 assert.ok(witness?.choices.includes('cancel'));
 assert.equal(witness.tick, 298000);
@@ -31,7 +32,7 @@ const packed = readFileSync(join(input, witness.file)); assert.equal(sha(packed)
 const raw = gunzipSync(packed); assert.equal(sha(raw), witness.encodedSha256);
 const admitted = decodeSave(raw).envelope.state;
 assert.equal(sha(JSON.stringify(admitted)), witness.stateSha256);
-const report = { product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   acquisitionSha256: sha(acquisitionBytes), witness, entryId: 'ck_evt_046', choice: 'cancel', screenshots: [], actions: [], errors: [], valid: false,
   limits: ['Actual UI answer from a genuine normally resumed offer. No state fields invented.',
     'Cancellation is complete when timberOrder becomes absent/zero. Later delivery from a new order is not its effect.',
@@ -112,9 +113,10 @@ try {
   const after = await snapshot('answered');
   const occurrence = after.registry.occurrences.find(row => row.id === witness.offer.id);
   assert.equal(occurrence.status, 'answered'); assert.equal(occurrence.choiceId, 'cancel');
-  const oldIds = new Set(before.trace.decisions.map(row => row.id));
-  const answers = after.trace.decisions.filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_046:cancel');
+  const oldIds = new Set((before.trace?.answers ?? []).map(row => row.id));
+  const answers = (after.trace?.answers ?? []).filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_046:cancel');
   assert.equal(answers.length, 1); report.answer = answers[0];
+  report.answerEffects = answerEffects(after, report.answer.id) ?? null;
   report.actual = { target: 'state.timberOrder', before: before.timberOrder ?? 0,
     after: after.timberOrder ?? 0, beforePresent: Object.hasOwn(before, 'timberOrder'), afterPresent: Object.hasOwn(after, 'timberOrder') };
   report.actual.delta = report.actual.after - report.actual.before;
@@ -151,9 +153,14 @@ try {
       && record !== undefined && record.kind !== 'decision' && record.template !== 'registry.answered'
       && row.delta === report.actual.delta && /timber|order/.test(`${row.key} ${row.actor}`);
   });
+  report.primaryAnswerEffects = (report.answerEffects ?? []).filter(effect => effect.target === 'command' && JSON.stringify(effect.path) === JSON.stringify(['timberOrder'])
+    && effect.before === 350 && effect.after === 0 && effect.delta === -350 && effect.beforePresent && effect.afterPresent);
+  report.primaryEffectTraceValid = report.effectTrace.length > 0 || report.primaryAnswerEffects.length === 1;
+  report.screenCaptureValid = false;
+  report.screenFailureClass = report.after.item ? null : 'year_results_omission';
   if (report.actual.delta === 0) report.failureClass = 'rule_inert_order_cancel';
-  else if (!report.after.item) report.failureClass = report.after.rows.length ? 'year_results_omission' : 'immediate_effect_missing_trace';
-  else if (!report.effectTrace.length) report.failureClass = 'order_cancel_missing_effect_trace';
+  else if (!report.after.item) report.failureClass = (report.primaryEffectTraceValid || report.after.rows.length > 0) ? 'year_results_omission' : 'immediate_effect_missing_trace';
+  else if (!report.primaryEffectTraceValid) report.failureClass = 'order_cancel_missing_effect_trace';
   else {
     assert.ok(report.chipCount.delta > 0, 'A real result must increase the yearly chip count');
     const chip = `.event-chip[data-story="decision_trace"][data-chip-id="results:${report.after.results.year}"]`;
@@ -171,7 +178,7 @@ try {
     assert.equal(items.filter(row => row.text === report.after.expectedFact).length, 1);
     assert.ok(items.some(row => row.text === report.after.expectedFact && row.exposed));
     assert.equal(report.manual.beforeSha256, report.manual.afterSha256);
-    await snapshot('card'); report.valid = report.actual.delta !== 0 && report.errors.length === 0;
+    await snapshot('card'); report.screenCaptureValid = report.errors.length === 0; report.valid = report.actual.delta !== 0 && report.errors.length === 0;
   }
 } catch (error) {
   report.errors.push(String(error)); report.failureClass ??= 'harness_or_screen_requires_classification';

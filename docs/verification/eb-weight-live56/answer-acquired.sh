@@ -5,7 +5,7 @@ set -euo pipefail
 grep -q '^SLOT=heavy$' .remote-in/meta.env
 grep -q '^RUN_CLASS=experiment$' .remote-in/meta.env
 [ -z "$(git status --porcelain)" ]
-git diff --exit-code 0eddc146c7d57b4cae091bff62295a1fc16e1f97 HEAD -- src package.json package-lock.json
+git diff --exit-code 53407fe6946921ddd448fcffeb417ae07e7351f2 HEAD -- src package.json package-lock.json
 case_id=${1:?One acquired answer case per experiment}
 case "$case_id" in 052|038|059|051|010|209) ;; *) exit 2 ;; esac
 input=$(node -e 'const fs=require("node:fs"); const cases=JSON.parse(fs.readFileSync("docs/verification/eb-weight-live56/acquired-answer-cases.json")); console.log(cases.find(c=>c.id===process.argv[1]).remoteDirectory)' "$case_id")

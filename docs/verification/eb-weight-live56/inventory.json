@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "eventCount": 56,
   "choiceCount": 163,
-  "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "product": "53407fe6946921ddd448fcffeb417ae07e7351f2",
   "rows": [
     {
       "entryId": "ck_evt_002",
@@ -17,7 +17,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_005",
@@ -37,7 +39,12 @@
         "choice": "b"
       },
       "limits": "Actual income23d and exact trace exist. Normal Later triggers deferred year card and mutates seen at unchanged tick36151. FullSHA invariant failed.",
-      "evidence": "../eb-weight-005-later/README.md"
+      "evidence": "../eb-weight-005-later/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
+      "failureCause": "정상 나중에 탐색으로 같은 tick의 연말 카드 seen이 바뀌어 전체 SHA 불변 위반.",
+      "verdictGroup": "actual_failure"
     },
     {
       "entryId": "ck_evt_009",
@@ -59,7 +66,12 @@
         "choice": "c"
       },
       "limits": "Actual result and exact trace present; annual reader includes item, automatic rail omits results chip within observed window. Card/SHA not observed.",
-      "evidence": "../eb-weight-009-live/README.md"
+      "evidence": "../eb-weight-009-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
+      "failureCause": "실제 결과와 reader 포함은 있지만 결과 칩이 화면에 표시되지 않음.",
+      "verdictGroup": "actual_failure"
     },
     {
       "entryId": "ck_evt_010",
@@ -75,7 +87,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_011",
@@ -91,7 +105,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_013",
@@ -107,7 +123,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_015",
@@ -123,7 +141,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_018",
@@ -140,7 +160,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_019",
@@ -156,7 +178,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_024",
@@ -179,7 +203,11 @@
       "evidence": [
         "../eb-weight-024-ls1/README.md",
         "../eb-weight-024-keep/README.md"
-      ]
+      ],
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_025",
@@ -195,7 +223,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_029",
@@ -211,7 +241,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_031",
@@ -235,7 +267,11 @@
       "evidence": [
         "../eb-weight-031-live/README.md",
         "../eb-weight-031-result/README.md"
-      ]
+      ],
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 기존 통과 유지, 새 기준 검증으로 간주하지 않음.",
+      "foodGrowthDependent": false
     },
     {
       "entryId": "ck_evt_032",
@@ -257,7 +293,11 @@
         "choice": "roll"
       },
       "limits": "roll actualsuittransition, chip3→5 target0→1, exactcardonce andnavigationSHA; otherchoicesnotclaimed.",
-      "evidence": "../eb-weight-032-live/README.md"
+      "evidence": "../eb-weight-032-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 기존 통과 유지, 새 기준 검증으로 간주하지 않음.",
+      "foodGrowthDependent": false
     },
     {
       "entryId": "ck_evt_033",
@@ -274,7 +314,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_034",
@@ -294,7 +336,8 @@
         "choice": "precedent"
       },
       "limits": "Historical steward answer h-011244 and season report route verified; band3, canonical title/choice/details visible after normal scroll, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state effect not proved by this report. Canonical result says lord despite actual steward actor; render wording review needed. One occurrence only.",
-      "evidence": "../eb-weight-034-steward/README.md"
+      "evidence": "../eb-weight-034-steward/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97"
     },
     {
       "entryId": "ck_evt_035",
@@ -310,7 +353,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_037",
@@ -325,7 +370,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_038",
@@ -340,7 +387,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_042",
@@ -359,7 +408,11 @@
         "choice": "firm"
       },
       "limits": "firm: actual stall_fee income 23d; chip 2→4, target 1→2; exact card and navigation SHA verified. light is not claimed.",
-      "evidence": "../eb-weight-042-live/README.md"
+      "evidence": "../eb-weight-042-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_046",
@@ -378,7 +431,12 @@
         "choice": "cancel"
       },
       "limits": "cancel: genuine UI answer h-019506 at298000 changes timberOrder350→0 (field removed), exact receipt visible; effectTrace=[], chip30→30 and no answer item. Trace failure, not no-effect or receipt failure. Result card/navigation SHA NOT OBSERVED; confirmation SHA is separate. Other choices not claimed.",
-      "evidence": "../eb-weight-046-cancel/README.md"
+      "evidence": "../eb-weight-046-cancel/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
+      "failureCause": "실제 주문350→0 취소와 영수증은 있으나 답의 결과 trace와 칩 항목 없음.",
+      "verdictGroup": "actual_failure"
     },
     {
       "entryId": "ck_evt_051",
@@ -394,7 +452,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_052",
@@ -410,7 +470,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_053",
@@ -432,7 +494,11 @@
         "choice": "roll"
       },
       "limits": "roll: actual suit-4 filed→evidence transition; chip 1→3, target 0→1; exact card and navigation SHA verified. Other choices are not claimed.",
-      "evidence": "../eb-weight-053-live/README.md"
+      "evidence": "../eb-weight-053-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 기존 통과 유지, 새 기준 검증으로 간주하지 않음.",
+      "foodGrowthDependent": false
     },
     {
       "entryId": "ck_evt_057",
@@ -448,7 +514,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_058",
@@ -467,7 +535,8 @@
         "choice": "remit"
       },
       "limits": "Historical steward answer h-008107; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only. Canonical result incorrectly names lord despite steward actor; render wording review.",
-      "evidence": "../eb-weight-058-steward/README.md"
+      "evidence": "../eb-weight-058-steward/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97"
     },
     {
       "entryId": "ck_evt_059",
@@ -483,7 +552,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_061",
@@ -499,7 +570,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_075",
@@ -515,7 +588,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_076",
@@ -531,7 +606,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_077",
@@ -547,7 +624,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_080",
@@ -563,7 +642,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_083",
@@ -583,7 +664,11 @@
         "choice": "a"
       },
       "limits": "a: actual timber order remaining 16→14, delivery 2; chip 7→8, target 0→1; exact card and navigation SHA verified. Other choices are not claimed.",
-      "evidence": "../eb-weight-083-live/README.md"
+      "evidence": "../eb-weight-083-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_090",
@@ -598,7 +683,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_092",
@@ -618,7 +705,11 @@
         "choice": "b"
       },
       "limits": "b: actual stall_fee income 8d, partial cause; chip absent→2 (initial year count null, not displayed 0), target 1; exact card and navigation SHA verified. Other choices are not claimed.",
-      "evidence": "../eb-weight-092-live/README.md"
+      "evidence": "../eb-weight-092-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_124",
@@ -632,7 +723,7 @@
         "unobserved_in_historical_cohort"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "fail_harness",
+      "screenVerdict": "incomplete_harness_after_answer",
       "liveCase": {
         "seed": 1,
         "choice": "b"
@@ -641,7 +732,13 @@
       "evidence": [
         "../eb-weight-124-first/README.md",
         "../eb-weight-124-navigation/README.md"
-      ]
+      ],
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
+      "historicalRunVerdict": "fail_harness",
+      "verdictGroup": "harness_incomplete",
+      "failureCause": "실제 답과 역제안 뒤 하네스의 답전 trace 필수 읽기로 중단; 사건 미발생 아님."
     },
     {
       "entryId": "ck_evt_128",
@@ -657,7 +754,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_130",
@@ -682,7 +781,12 @@
         "../eb-weight-130-live/README.md",
         "../eb-weight-130-notices/README.md",
         "../eb-weight-130-result/README.md"
-      ]
+      ],
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
+      "failureCause": "감사535와 부분 원인은 있으나 다른3칩 때문에 결과 칩 미표시.",
+      "verdictGroup": "actual_failure"
     },
     {
       "entryId": "ck_evt_131",
@@ -698,7 +802,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_132",
@@ -714,7 +820,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_133",
@@ -730,7 +838,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_139",
@@ -746,7 +856,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_140",
@@ -771,7 +883,11 @@
         "../eb-weight-140-live/README.md",
         "../eb-weight-140-notices/README.md",
         "../eb-weight-140-result/README.md"
-      ]
+      ],
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 기존 통과 유지, 새 기준 검증으로 간주하지 않음.",
+      "foodGrowthDependent": false
     },
     {
       "entryId": "ck_evt_143",
@@ -786,7 +902,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_144",
@@ -805,7 +923,8 @@
         "choice": "b"
       },
       "limits": "Historical steward answer h-026951; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only.",
-      "evidence": "../eb-weight-144-steward/README.md"
+      "evidence": "../eb-weight-144-steward/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97"
     },
     {
       "entryId": "ck_evt_147",
@@ -821,7 +940,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_150",
@@ -837,7 +958,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_157",
@@ -853,7 +976,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_163",
@@ -873,7 +998,8 @@
         "choice": "b"
       },
       "limits": "Historical steward answer h-029251; season report band/title/choice/body/result directly viewed, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state-effect before/after not proved, one occurrence only.",
-      "evidence": "../eb-weight-163-steward/README.md"
+      "evidence": "../eb-weight-163-steward/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97"
     },
     {
       "entryId": "ck_evt_165",
@@ -893,7 +1019,11 @@
         "choice": "a"
       },
       "limits": "a: actual timber delivery 2, order remaining 12→10; chip 1→2 and target 1→2, exact canonical item once fully visible, navigation SHA unchanged. Other choices are not claimed.",
-      "evidence": "../eb-weight-165-live/README.md"
+      "evidence": "../eb-weight-165-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_174",
@@ -909,7 +1039,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_201",
@@ -929,7 +1061,11 @@
         "choice": "b"
       },
       "limits": "b: actual stall_fee income 24d, ledger-000441 at 40800, h-003172 partial cause h-003145; chip 2→3, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed.",
-      "evidence": "../eb-weight-201-live/README.md"
+      "evidence": "../eb-weight-201-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_204",
@@ -949,7 +1085,11 @@
         "choice": "a"
       },
       "limits": "a: actual stall_fee income 20d, ledger-013028 at 326400, h-023125 partial cause h-023122; chip 3→5, target 1→2, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed.",
-      "evidence": "../eb-weight-204-live/README.md"
+      "evidence": "../eb-weight-204-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     },
     {
       "entryId": "ck_evt_206",
@@ -970,7 +1110,12 @@
         "choice": "a"
       },
       "limits": "a: actual 2-unit timber deliveries at 314080/314160/314240, remaining 10→8→6→4, exact direct causes h-020521/522/524→h-020520. Reader 7/target 4 at 314277, but lawsuit/burnt-plot/poll-tax chips occupy MAX_CHIPS=3 and target chip absent. Card/navigation SHA NOT OBSERVED, not changed; bounded window, not permanent inaccessibility.",
-      "evidence": "../eb-weight-206-live/README.md"
+      "evidence": "../eb-weight-206-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2",
+      "failureCause": "실제 목재 배송과 직접 원인은 있으나 다른3칩 때문에 결과 칩 미표시.",
+      "verdictGroup": "actual_failure"
     },
     {
       "entryId": "ck_evt_209",
@@ -987,7 +1132,9 @@
       "priorStewardAnswers": 0,
       "screenVerdict": "pending",
       "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "limits": "Original reader inclusion is not screen acceptance.",
+      "retestRequired": true,
+      "nextProduct": "53407fe6946921ddd448fcffeb417ae07e7351f2"
     },
     {
       "entryId": "ck_evt_211",
@@ -1008,7 +1155,13 @@
         "choice": "b"
       },
       "limits": "b: actual stall_fee income 16d, ledger-000312 at 33600, h-002538 partial cause h-002496; chip 2→4, target 0→1, exact canonical item fully exposed once and navigation SHA unchanged. Other choices are not claimed.",
-      "evidence": "../eb-weight-211-live/README.md"
+      "evidence": "../eb-weight-211-live/README.md",
+      "evidenceProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+      "retestRequired": false,
+      "baselineNote": "기준 0eddc146 — 식량·성장에 따른 경제 상태 의존 경로; 기존 통과 유지, 재실행 안 함.",
+      "foodGrowthDependent": true
     }
-  ]
+  ],
+  "previousProduct": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "baselinePolicy": "Twelve accepted cases remain historical 0eddc146 evidence and are not rerun. All remaining observations run on 53407fe69; historical results are not new-baseline evidence."
 }

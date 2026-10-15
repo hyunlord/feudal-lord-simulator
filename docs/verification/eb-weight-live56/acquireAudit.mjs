@@ -5,7 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { decodeSave, encodeSave } from '../../../src/save/saveCodec.ts';
+import { encodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { openRegistryOffers, offerChoices } from '../../../src/engine/registry.ts';
 import { advanceTick } from '../../../src/engine/tick.ts';
 assert.equal(process.platform, 'linux');
@@ -19,14 +20,14 @@ assert.ok(input && out, 'Expected authentic raw audit-pending.json and output di
 mkdirSync(out, { recursive: true });
 assert.equal(readdirSync(out).length, 0, 'Never overwrite acquisition evidence');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 const expectedInput = '2cfdff1a7f0ba416f41df4508291b533fddd8b739b81568ddcb94abcbb9fd804';
 const targets = ['ck_evt_013', 'ck_evt_025', 'ck_evt_052'];
 const cohort = new Set(JSON.parse(readFileSync(new URL('./inventory.json', import.meta.url))).rows.map(row => row.entryId));
 assert.equal(cohort.size, 56);
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const started = Date.now();
-const report = { schemaVersion: 1, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   input, expectedInputSha256: expectedInput, targets, startTick: 54320, endLimit: 55000, offered: [], targetsFound: [], errors: [],
   provenance: {
     remoteSource: '/home/hyunlord/fls-lmr2-states/audit-pending.json',

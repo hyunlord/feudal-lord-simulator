@@ -5,7 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { decodeSave, encodeSave } from '../../../src/save/saveCodec.ts';
+import { encodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { lordBotCommands } from '../../../src/engine/lordBot.ts';
 import { openRegistryOffers, offerChoices } from '../../../src/engine/registry.ts';
 import { advanceTick } from '../../../src/engine/tick.ts';
@@ -16,7 +17,7 @@ const [input, out] = process.argv.slice(2);
 assert.ok(input && out);
 mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const compressed = readFileSync(input);
 assert.equal(sha(compressed), '4bfde9d9015d5d5957b11b23bd779e83c39d69f85f7ddb8930e5035e0bc921ec');
@@ -24,9 +25,9 @@ const raw = gunzipSync(compressed);
 assert.equal(sha(raw), '7dc728ae13b1eebbcf53c10290b3f6b62f1e4b29eb9585c1c19c317056bb8a22');
 let state = decodeSave(raw).envelope.state;
 assert.equal(state.tick, 286320); assert.equal(state.seed, 1);
-const report = { product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), input,
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), input,
   inputGzipSha256: sha(compressed), inputEncodedSha256: sha(raw), startTick: state.tick, endLimit: state.tick + 24000,
-  provenance: 'genuine 2485af4 consequence save resumed under current 0edd rules; normal lordBotCommands/gameReducer/advanceTick only',
+  provenance: 'genuine 2485af4 consequence save resumed under current 53407fe69 rules; normal lordBotCommands/gameReducer/advanceTick only',
   commands: [], offered: [], found: false, errors: [] };
 const seen = new Set();
 function observe() {

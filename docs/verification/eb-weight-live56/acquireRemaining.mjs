@@ -5,7 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { decodeSave, encodeSave } from '../../../src/save/saveCodec.ts';
+import { encodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { lordBotCommands } from '../../../src/engine/lordBot.ts';
 import { openRegistryOffers, offerChoices } from '../../../src/engine/registry.ts';
 import { advanceTick } from '../../../src/engine/tick.ts';
@@ -30,7 +31,7 @@ mkdirSync(out, { recursive: true });
 assert.equal(readdirSync(out).length, 0, 'Never overwrite acquisition evidence');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const started = Date.now();
-const report = { schemaVersion: 1, case: selected, product: config.product,
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, case: selected, product: config.product,
   toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   provenance: 'Natural current-rule trajectory from verified save or ordinary new game; no state fabrication or policy edits.',
   limits: config.limits, input: null, commands: [], offered: [], targetsFound: [], found: false, errors: [] };
@@ -70,6 +71,7 @@ try {
     report.input = { file: selected.input.file, gzipSha256: sha(packed), encodedSha256: sha(bytes), stateSha256: sha(JSON.stringify(state)) };
   } else {
     assert.equal(selected.input.kind, 'new_game');
+    report.trajectoryScope = 'new_game_under_current_product';
     state = newGameState(selected.input.options);
     assert.ok(state, 'Ordinary new game rejected configured options');
     report.input = { kind: 'new_game', options: selected.input.options, ...saveState('initial.save.json.gz') };

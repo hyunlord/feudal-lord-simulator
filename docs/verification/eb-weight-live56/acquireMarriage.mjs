@@ -5,7 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { decodeSave, encodeSave } from '../../../src/save/saveCodec.ts';
+import { encodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { openRegistryOffers, offerChoices } from '../../../src/engine/registry.ts';
 import { gameReducer } from '../../../src/state/gameStore.ts';
 import { treasuryBalance } from '../../../src/ledger/ledger.ts';
@@ -37,14 +38,14 @@ assert.ok(selected, 'Unknown case; only marriage and small-rights are allowed');
 mkdirSync(out, { recursive: true });
 assert.equal(readdirSync(out).length, 0, 'Never overwrite acquisition evidence');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 const expectedInput = selected.rawSha256;
 const targets = selected.targets;
 const cohort = new Set(JSON.parse(readFileSync(new URL('./inventory.json', import.meta.url))).rows.map(row => row.entryId));
 assert.equal(cohort.size, 56);
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const started = Date.now();
-const report = { schemaVersion: 1, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   caseId, input, expectedInputSha256: expectedInput, targets, startTick: selected.startTick, endLimit: selected.endTick, offered: [], targetsFound: [], commands: [], errors: [],
   provenance: {
     remoteSource: selected.remoteSource,

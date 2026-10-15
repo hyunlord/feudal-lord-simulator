@@ -1,10 +1,11 @@
+import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { decodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { withResidentWalkers } from '../../../src/render/presentation/residentWalkerState.ts';
 import { HOLD_RELATION_DELTA } from '../../../src/content/registry/registryHoldConfig.ts';
 import { loadChromium } from '../../../scripts/renderCommitProbe.mjs';
@@ -13,18 +14,18 @@ assert.equal(process.platform, 'linux'); assert.equal(process.env.FLS_REMOTE, '1
 const [input, out, url] = process.argv.slice(2);
 assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const acquisitionBytes = readFileSync(join(input, 'acquisition.json.gz'));
 const acquisition = JSON.parse(gunzipSync(acquisitionBytes));
-assert.equal(acquisition.product, product); assert.equal(acquisition.found, true); assert.deepEqual(acquisition.errors, []);
+assert.equal(acquisition.product, '0eddc146c7d57b4cae091bff62295a1fc16e1f97', 'Historical acquisition provenance'); assert.equal(acquisition.found, true); assert.deepEqual(acquisition.errors, []);
 const witness = acquisition.offered.find(row => row.entryId === 'ck_evt_024');
 assert.ok(witness?.choices.includes('keep'));
 const packed = readFileSync(join(input, witness.file)); assert.equal(sha(packed), witness.gzipSha256);
 const raw = gunzipSync(packed); assert.equal(sha(raw), witness.encodedSha256);
 const admitted = decodeSave(raw).envelope.state;
 assert.equal(sha(JSON.stringify(admitted)), witness.stateSha256);
-const report = { product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, product, toolRevision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   acquisitionSha256: sha(acquisitionBytes), witness, entryId: 'ck_evt_024', choice: 'keep', screenshots: [], actions: [], errors: [], valid: false,
   limits: ['Actual UI answer from a genuine normally resumed offer. No state fields invented.',
     'Immediate faction relation effect is checked; conditional later faction acts remain unobserved.',
@@ -100,9 +101,10 @@ try {
   const after = await snapshot('answered');
   const occurrence = after.registry.occurrences.find(row => row.id === witness.offer.id);
   assert.equal(occurrence.status, 'answered'); assert.equal(occurrence.choiceId, 'keep');
-  const oldIds = new Set(before.trace.decisions.map(row => row.id));
-  const answers = after.trace.decisions.filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_024:keep');
+  const oldIds = new Set((before.trace?.answers ?? []).map(row => row.id));
+  const answers = (after.trace?.answers ?? []).filter(row => !oldIds.has(row.id) && row.source === 'registry:ck_evt_024:keep');
   assert.equal(answers.length, 1); report.answer = answers[0];
+  report.answerEffects = answerEffects(after, report.answer.id) ?? null;
   report.actual = { beforeRelation: before.factions.factions.find(row => row.id === 'town')?.relation,
     afterRelation: after.factions.factions.find(row => row.id === 'town')?.relation,
     beforeDues: before.agency.duesPermille, afterDues: after.agency.duesPermille };

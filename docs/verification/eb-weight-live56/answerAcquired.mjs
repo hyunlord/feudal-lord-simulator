@@ -1,18 +1,19 @@
+import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { decodeSave } from '../../../src/save/saveCodec.ts';
+import { decodeSave, saveAdmissions } from './reviewedSaveAdmission.mjs';
 import { withResidentWalkers } from '../../../src/render/presentation/residentWalkerState.ts';
 import { loadChromium } from '../../../scripts/renderCommitProbe.mjs';
 import { routeSceneState, sceneStateRefusal } from '../../../scripts/sceneInjection.mjs';
 const [caseId, input, out, url] = process.argv.slice(2);
 assert.ok(out, 'Output directory required'); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0eddc146c7d57b4cae091bff62295a1fc16e1f97';
-const report = { schemaVersion: 1, caseId, product, valid: false, lord56Pass: false, humanJpegReview: "pending",
+const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
+const report = { trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, caseId, product, valid: false, lord56Pass: false, humanJpegReview: "pending",
   screenshots: [], actions: [], errors: [], offerNavigation: [], screenCaptureValid: false,
   limits: ['One genuine acquired offer answered through ordinary UI; no fabricated state.',
     'Immediate actual effect only; no claim that a filing won, enforcement succeeded, or timber was delivered.',
@@ -124,8 +125,8 @@ function actualEffect(before, after) {
   if (selected.id === '209') {
     assert.equal(before.timberOrder ?? 0, 0); assert.equal(after.timberOrder, 10);
     Object.assign(proof, { target: 'state.timberOrder', before: 0, after: 10, delta: 10 });
-    proof.immediateTraceSupport = 'unsupported_in_reviewed_product';
-    proof.traceReason = 'orderTimber changes the order immediately; reviewed history only writes agency.timber_ordered for autonomous orders. No reviewed exact lord-order consequence exists.';
+    proof.immediateTraceSupport = 'v56_answerEffects_command_path';
+    proof.traceReason = 'Exact answerEffects timberOrder before/after is checked independently of future history.';
     return () => false;
   }
   const oldClaim = before.estates.claims.find(row => row.id === bound.claim);
@@ -168,11 +169,11 @@ try {
   assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
   report.toolRevision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
   selected = JSON.parse(readFileSync('docs/verification/eb-weight-live56/acquired-answer-cases.json')).find(row => row.id === caseId);
-  assert.ok(selected); report.selected = selected; report.entryId = selected.entryId; report.choice = selected.choice;
+  assert.ok(selected); assert.equal(selected.executionProduct, product); report.selected = selected; report.entryId = selected.entryId; report.choice = selected.choice;
   const packedReport = readFileSync(join(input, 'acquisition.json.gz'));
   assert.equal(sha(packedReport), selected.acquisitionSha256);
   const acquisition = JSON.parse(gunzipSync(packedReport));
-  assert.equal(acquisition.product, product); assert.equal(acquisition.found, true); assert.deepEqual(acquisition.errors, []);
+  assert.equal(acquisition.product, '0eddc146c7d57b4cae091bff62295a1fc16e1f97', 'Historical acquisition provenance'); assert.equal(acquisition.found, true); assert.deepEqual(acquisition.errors, []);
   witness = acquisition.offered.find(row => row.file === selected.witness.file);
   assert.deepEqual(witness, selected.witness); report.witness = witness;
   const packed = readFileSync(join(input, witness.file)); assert.equal(sha(packed), witness.gzipSha256);
@@ -225,10 +226,11 @@ try {
   report.phase = 'actual_effect'; const matchesEffect = actualEffect(before, after);
   report.actualVerified = true;
   report.phase = 'answer_trace';
-  const oldIds = new Set((before.trace?.decisions ?? []).map(row => row.id));
-  const answers = (after.trace?.decisions ?? []).filter(row => !oldIds.has(row.id) && row.source === `registry:${selected.entryId}:${selected.choice}`);
+  const oldIds = new Set((before.trace?.answers ?? []).map(row => row.id));
+  const answers = (after.trace?.answers ?? []).filter(row => !oldIds.has(row.id) && row.source === `registry:${selected.entryId}:${selected.choice}`);
   if (answers.length !== 1) report.failureClass = 'actual_effect_present_exact_answer_trace_missing';
   assert.equal(answers.length, 1); report.answer = answers[0];
+  report.answerEffects = answerEffects(after, report.answer.id) ?? null;
   report.newHistory = after.history.records.filter(row => !before.history.records.some(old => old.id === row.id));
   const receipt = page.locator('.answer-receipt:visible');
   report.receipt = { present: await receipt.count() === 1, diagnosticOnly: true };
@@ -249,14 +251,28 @@ try {
   });
   report.chipCount = { before: report.before.results?.count ?? 0, after: report.after.results?.count ?? 0 };
   report.chipCount.delta = report.chipCount.after - report.chipCount.before;
+  const ownsMemory = (factionId, memory) => memory.decisionId === report.answer.id
+    || (report.answer.memoryEvidence ?? []).some(evidence => evidence.factionId === factionId
+      && evidence.recordId === memory.recordId && evidence.tick === memory.tick && evidence.reason === memory.reason);
   report.relationDiagnostics = {
     interpretation: 'Raw answer-linked relation evidence only; not proof of the primary effect or actual relation delta.',
     rows: report.after.rows.filter(row => row.key === 'relation'),
-    factions: (after.factions?.factions ?? []).filter(faction => faction.memory.some(memory => memory.decisionId === report.answer.id))
+    factions: (after.factions?.factions ?? []).filter(faction => faction.memory.some(memory => ownsMemory(faction.id, memory)))
       .map(faction => ({ id: faction.id, beforeRelation: before.factions?.factions.find(old => old.id === faction.id)?.relation ?? null,
-        afterRelation: faction.relation, memories: faction.memory.filter(memory => memory.decisionId === report.answer.id) })),
+        afterRelation: faction.relation, memories: faction.memory.filter(memory => ownsMemory(faction.id, memory)) })),
   };
-  report.primaryEffectTraceValid = report.primaryEffectTrace.length > 0;
+  const exactEffect = (target, path, before, after, beforePresent = true, afterPresent = true) =>
+    (report.answerEffects ?? []).filter(effect => effect.target === target && JSON.stringify(effect.path) === JSON.stringify(path)
+      && effect.before === before && effect.after === after && effect.beforePresent === beforePresent && effect.afterPresent === afterPresent
+      && effect.delta === (typeof before === 'number' && typeof after === 'number' ? after - before : null));
+  const actual = report.actual, bound = witness.offer.bound;
+  report.primaryAnswerEffects = selected.id === '209' ? exactEffect('command', ['timberOrder'], 0, 10)
+    : selected.id === '059' ? exactEffect('oversight', ['stewardship', 'oversight', bound.estate, 'stewardId'], actual.before.stewardId, actual.after.stewardId)
+    : selected.id === '038' ? exactEffect('right', ['estates', 'suits', bound.suit, 'hold'], 75, 55)
+    : selected.id === '052' ? actual.newLedger.filter(row => row.category === 'audit_recovery').flatMap(row =>
+        exactEffect('audit_recovery', ['auditRecovery', bound.audit, row.id], 0, 178))
+    : exactEffect('right', ['estates', 'suits', actual.after.id, 'stage'], null, 'filed', false, true);
+  report.primaryEffectTraceValid = report.primaryEffectTrace.length > 0 || report.primaryAnswerEffects.length === 1;
   if (!report.primaryEffectTraceValid) report.failureClass = 'actual_effect_present_exact_trace_missing';
   report.screenFailureClass = report.after.item ? null : 'year_results_omission';
   if (!report.after.item) report.failureClass ??= 'year_results_omission';

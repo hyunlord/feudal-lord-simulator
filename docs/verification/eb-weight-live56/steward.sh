@@ -5,7 +5,7 @@ set -euo pipefail
 grep -q '^SLOT=heavy$' .remote-in/meta.env
 grep -q '^RUN_CLASS=experiment$' .remote-in/meta.env
 [ -z "$(git status --porcelain)" ]
-git diff --exit-code 0eddc146c7d57b4cae091bff62295a1fc16e1f97 HEAD -- src package.json package-lock.json
+git diff --exit-code 53407fe6946921ddd448fcffeb417ae07e7351f2 HEAD -- src package.json package-lock.json
 case_id=${1:?one steward case per official experiment}
 case "$case_id" in 034|058|144|163) ;; *) exit 2 ;; esac
 out=".remote/eb-weight-live56/steward-$case_id"
