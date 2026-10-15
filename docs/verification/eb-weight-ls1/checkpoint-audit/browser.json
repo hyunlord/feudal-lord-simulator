@@ -1,0 +1,99 @@
+{
+  "mode": "paused_genuine_checkpoint_current_UI",
+  "rows": [
+    {
+      "stage": "answer",
+      "input": {
+        "file": "ck_evt_024-answer-h-019919.save.json.gz",
+        "fileSha256": "84c61a1e778654cf9812fe10dbcb6e461f26b184947e58387b6ee93dc1c8fd40",
+        "encodedSaveSha256": "50a369d619f56f58b369424e342d80ca298acc120d929522d89ce4ef6b15f277",
+        "observedTick": 305059,
+        "bytes": 263109
+      },
+      "model": null,
+      "errors": [],
+      "actions": [],
+      "screenshots": [
+        "024-answer-initial.png"
+      ],
+      "expectedPresentationSha256": "c104e4b5879604d0b8266d6ec4dcb2eea8e90fae0721fe29eaeb729803ad95e7",
+      "initialPresentationSha256": "c104e4b5879604d0b8266d6ec4dcb2eea8e90fae0721fe29eaeb729803ad95e7",
+      "initialChipCount": 0,
+      "chipCount": 0,
+      "targetCaptured": false,
+      "finalPresentationSha256": "c104e4b5879604d0b8266d6ec4dcb2eea8e90fae0721fe29eaeb729803ad95e7"
+    },
+    {
+      "stage": "consequence",
+      "input": {
+        "file": "ck_evt_024-consequence-h-020028.save.json.gz",
+        "fileSha256": "35e6d3598a553bf55431f60e8a14f18bc6a7003f6b53b535d156843b72e2c739",
+        "encodedSaveSha256": "3b1f515a7d5132e9a0fa33f6b87eb465a85f13bba5bfd1f6501ff485e089c53d",
+        "observedTick": 307200,
+        "bytes": 265230,
+        "historyId": "h-020028",
+        "historyTick": 307200,
+        "because": [
+          {
+            "decisionId": "h-019919",
+            "key": "payment_flow",
+            "part": true
+          }
+        ]
+      },
+      "model": {
+        "year": 1376,
+        "count": 3,
+        "items": [
+          {
+            "decisionId": "h-017957",
+            "decisionTick": 274327,
+            "count": 1,
+            "title": "1368년 당신의 결정 때문에: 감사 결과에 답했다"
+          },
+          {
+            "decisionId": "h-018652",
+            "decisionTick": 285013,
+            "count": 1,
+            "title": "1371년 당신의 결정 때문에: 영지 청원 '특허 청원'"
+          },
+          {
+            "decisionId": "h-019919",
+            "decisionTick": 305059,
+            "count": 1,
+            "title": "1376년 당신의 결정 때문에: 비어 있는 노점의 몫"
+          }
+        ]
+      },
+      "target": {
+        "decisionId": "h-019919",
+        "decisionTick": 305059,
+        "count": 1,
+        "title": "1376년 당신의 결정 때문에: 비어 있는 노점의 몫"
+      },
+      "errors": [],
+      "actions": [
+        "open-year-results-chip"
+      ],
+      "screenshots": [
+        "024-consequence-initial.png",
+        "024-consequence-card.png"
+      ],
+      "expectedPresentationSha256": "db9f973f3ddbfd4de3f51344d1850d8c58bc71c2cc58663e27fc1f255bc305d7",
+      "initialPresentationSha256": "db9f973f3ddbfd4de3f51344d1850d8c58bc71c2cc58663e27fc1f255bc305d7",
+      "initialChipCount": 1,
+      "chipCount": 1,
+      "chipTitle": "올해 당신의 결정이 낳은 일 3",
+      "chipId": "results:1376",
+      "cardText": "올해 당신의 결정이 낳은 일 3\n\n1376년 결정마다 뒤따른 일 — 많은 것부터 (모두 3건)\n\n1368년 당신의 결정 때문에: 감사 결과에 답했다 — 1건\n1371년 당신의 결정 때문에: 영지 청원 '특허 청원' — 1건\n1376년 당신의 결정 때문에: 비어 있는 노점의 몫 — 1건\n연대기에서 보기\n조언\n닫기",
+      "facts": [
+        "1368년 당신의 결정 때문에: 감사 결과에 답했다 — 1건",
+        "1371년 당신의 결정 때문에: 영지 청원 '특허 청원' — 1건",
+        "1376년 당신의 결정 때문에: 비어 있는 노점의 몫 — 1건"
+      ],
+      "expectedFact": "1376년 당신의 결정 때문에: 비어 있는 노점의 몫 — 1건",
+      "targetCaptured": true,
+      "finalPresentationSha256": "db9f973f3ddbfd4de3f51344d1850d8c58bc71c2cc58663e27fc1f255bc305d7"
+    }
+  ]
+}
