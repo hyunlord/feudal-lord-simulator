@@ -22,7 +22,7 @@ DGX `engineB-weight-LS1-e7b4e4d`, 도구 `e7b4e4d7406e9fc3b50207b5fc226cc6e650bd
 
 이 표의 포함은 해당 사건에서 보존된 선택지/seed 중 한 사례 이상이 현재 읽기에 잡혔다는 뜻이다. 163개 선택 전체, 자연 진행 중 자동 등장, 다른 해상도의 통과를 뜻하지 않는다. 기존 024 자연 진행 판의 자동 표시 실패도 덮어쓰지 않는다.
 
-별도 ID 056은 자연 발생 열린 저장(`/home/hyunlord/fls-variant-states/home-056.json`, SHA `00c8eeab4b4c17443e3b3c53f0a6a2af639e7fc3bf1c23ea8de6a56fd181405c`)을 찾아 후속 실제 UI 답 대조를 준비했다. `variants/states.json`의 seed 3, 1308년 봄, `estate-petition-19`, `prepared:false`와 대조한다. 과거 bare 저장은 공식 codec으로 이행하며 새 사실을 만들지 않는다. **이 후속 실행 결과는 아직 없음.**
+별도 ID 056도 [실제 UI에서 허가·거절을 대조했다](../eb-weight-056-ls1/README.md). 두 답 모두 LS1-4 칩 1건에 정확한 답 ID로 잡혔지만, 이어 열린 092 결정 모달이 칩 클릭을 막아 결과 카드 접근은 0/2다. 첫 입력 형식 실패와 후속 화면 접근 실패(종료 1)를 모두 남겼다. 원본에 기존 RES-REG 장면 허용 검사를 적용하고 상태 SHA가 한 값도 바뀌지 않은 뒤 현재 저장으로 포장했다. 제품·UI·규칙은 그대로다.
 
 실행 절차:
 

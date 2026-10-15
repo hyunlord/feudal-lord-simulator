@@ -1,3 +1,5 @@
+2026-10-15 Engine B LS1-4 재개: v56 증거 gzip 가지 `codex/engine-b-v56-pins`를 `cf59dfc823dca1165b7a27d4e2b80902fb00ecae`로 원격 게시했다(본선 병합은 엔진). 별도 제품 0eddc146c/v55에서 024 실제 결과 칩·항목 확인, 상태 SHA 불변. 보존 87저장/56행은 포함17·미포함2(038·046 즉시효과 경로)·입력없음37. 별도 ID056의 실제 허가·거절은 칩2/2 포착, 이어진092 모달 때문에 결과카드 접근0/2·종료1 보존. 전체56 화면 관문은 미완료다. [024와 56행](verification/eb-weight-ls1/README.md), [056](verification/eb-weight-056-ls1/README.md).
+
 2026-10-12 엔진 세션 메모(모든 세션): 시험·탐침 결과 파일(`output/…` 등)은 작업 트리 밖(스크래치 폴더)에 쓴다. 작업 트리에 남은 추적 안 된 결과 파일도 `run.sh`가 DGX로 함께 올려서, 기하 감사가 그 파일을 "dirty UI inputs"로 세고 check:merge가 그 실행을 거부한다(`engine-GROW2a-geometry-edc9256`, 47개, 다시 돌림). 관문 규칙은 그대로다.
 
 2026-10-10 Engine B EB-OUTCOME 완료: 기대표56사건·163선택·323효과와 125년 answer-replay 상시80% 도구, 조건34 정본 감사·075 어댑터 수정·048 정상 영주 사실 요청을 마쳤다. 기존 원자료 CLI 직접292/816=35.78%로 제품 기준 미달을 보존한다. clean2024df1cc DGX 변경 시험446파일3686통과·0실패·13skip, 생산기1년 재현/짧은 입력 거부, 기하2행40조건 실패0. 게시 전 최종 트리 test:changed/check:merge를 적용한다. [인계와 증거](verification/eb-outcome/README.md). TRACE-LINK는 GROW-BLOCK 두 단계 뒤·MONEY-SINK 앞, 슬롯은 MONEY-SINK 뒤 엔진 검토·채택 후135→묶음7→묶음9.
