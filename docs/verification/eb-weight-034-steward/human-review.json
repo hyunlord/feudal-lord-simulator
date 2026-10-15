@@ -1,0 +1,46 @@
+{
+  "verdict": "STEWARD_ROUTE_VERIFIED",
+  "lord56Pass": false,
+  "choice": "precedent",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected before, closed, expanded, and detail-0 through detail-3 original JPEG files and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "original/eb-weight-live56/steward-034/before.jpg",
+      "sha256": "3bd34c54771799c50833e06fd9dceae9d6755ea7c0898ca47de146477c2a0970"
+    },
+    {
+      "file": "original/eb-weight-live56/steward-034/closed.jpg",
+      "sha256": "a25d1d2c42f46208bcf922d1a9e0f5126760265fc3faeafe11b4b557e65cd52d"
+    },
+    {
+      "file": "original/eb-weight-live56/steward-034/expanded.jpg",
+      "sha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78"
+    },
+    {
+      "file": "original/eb-weight-live56/steward-034/detail-0.jpg",
+      "sha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78"
+    },
+    {
+      "file": "original/eb-weight-live56/steward-034/detail-1.jpg",
+      "sha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78"
+    },
+    {
+      "file": "original/eb-weight-live56/steward-034/detail-2.jpg",
+      "sha256": "3b43d868e77170264a07b3fce81a9a30f8d02da2aea20ea68400e12f38b3dae1"
+    },
+    {
+      "file": "original/eb-weight-live56/steward-034/detail-3.jpg",
+      "sha256": "b87b7f7b277451d6c03a4a5ca58d93b7bf9518f088c4d628155cadfff45f42ab"
+    }
+  ],
+  "observed": "Season band 청지기가 작은 일 3건 처리 and canonical 034 title/precedent choice/details/result fully exposed through normal scroll.",
+  "navigationSha256": "4db501d45f2c088a9bf78f243e27def207fe62cc728451ebd3a46188b3f93458",
+  "actorWordingMismatch": {
+    "actualActor": "steward",
+    "answerId": "h-011244",
+    "displayed": "영주는 앞으로 청원을 어디까지 직접 들을지 기준을 정했다.",
+    "classification": "canonical wording actor mismatch; render review requested, no fix"
+  },
+  "limits": "Historical steward answer and actual season-report route only. This report does not establish actual state effects. One occurrence, not all instances of 034. Not lord56 pass."
+}

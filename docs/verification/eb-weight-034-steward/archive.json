@@ -1,0 +1,233 @@
+{
+  "run": "engineB-weight034-steward-9f769ee",
+  "exitCode": 0,
+  "originalFileCount": 25,
+  "originals": [
+    {
+      "originalPath": "changed-files.txt",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "storedPath": "original/changed-files.txt",
+      "storedBytes": 0,
+      "storedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/before.jpg",
+      "originalBytes": 159911,
+      "originalSha256": "3bd34c54771799c50833e06fd9dceae9d6755ea7c0898ca47de146477c2a0970",
+      "storedPath": "original/eb-weight-live56/steward-034/before.jpg",
+      "storedBytes": 159911,
+      "storedSha256": "3bd34c54771799c50833e06fd9dceae9d6755ea7c0898ca47de146477c2a0970",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/before.state.json.gz",
+      "originalBytes": 180503,
+      "originalSha256": "60777aa95176364fa41c4d249cf6fa4f955461dac39f2ddebe48b9f289394b76",
+      "storedPath": "original/eb-weight-live56/steward-034/before.state.json.gz",
+      "storedBytes": 180503,
+      "storedSha256": "60777aa95176364fa41c4d249cf6fa4f955461dac39f2ddebe48b9f289394b76",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/closed.jpg",
+      "originalBytes": 159447,
+      "originalSha256": "a25d1d2c42f46208bcf922d1a9e0f5126760265fc3faeafe11b4b557e65cd52d",
+      "storedPath": "original/eb-weight-live56/steward-034/closed.jpg",
+      "storedBytes": 159447,
+      "storedSha256": "a25d1d2c42f46208bcf922d1a9e0f5126760265fc3faeafe11b4b557e65cd52d",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/closed.state.json.gz",
+      "originalBytes": 179636,
+      "originalSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "storedPath": "original/eb-weight-live56/steward-034/closed.state.json.gz",
+      "storedBytes": 179636,
+      "storedSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-0.jpg",
+      "originalBytes": 144337,
+      "originalSha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-0.jpg",
+      "storedBytes": 144337,
+      "storedSha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-0.state.json.gz",
+      "originalBytes": 179636,
+      "originalSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-0.state.json.gz",
+      "storedBytes": 179636,
+      "storedSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-1.jpg",
+      "originalBytes": 144337,
+      "originalSha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-1.jpg",
+      "storedBytes": 144337,
+      "storedSha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-1.state.json.gz",
+      "originalBytes": 179636,
+      "originalSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-1.state.json.gz",
+      "storedBytes": 179636,
+      "storedSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-2.jpg",
+      "originalBytes": 144535,
+      "originalSha256": "3b43d868e77170264a07b3fce81a9a30f8d02da2aea20ea68400e12f38b3dae1",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-2.jpg",
+      "storedBytes": 144535,
+      "storedSha256": "3b43d868e77170264a07b3fce81a9a30f8d02da2aea20ea68400e12f38b3dae1",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-2.state.json.gz",
+      "originalBytes": 179636,
+      "originalSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-2.state.json.gz",
+      "storedBytes": 179636,
+      "storedSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-3.jpg",
+      "originalBytes": 143512,
+      "originalSha256": "b87b7f7b277451d6c03a4a5ca58d93b7bf9518f088c4d628155cadfff45f42ab",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-3.jpg",
+      "storedBytes": 143512,
+      "storedSha256": "b87b7f7b277451d6c03a4a5ca58d93b7bf9518f088c4d628155cadfff45f42ab",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/detail-3.state.json.gz",
+      "originalBytes": 179636,
+      "originalSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "storedPath": "original/eb-weight-live56/steward-034/detail-3.state.json.gz",
+      "storedBytes": 179636,
+      "storedSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/expanded.jpg",
+      "originalBytes": 144337,
+      "originalSha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78",
+      "storedPath": "original/eb-weight-live56/steward-034/expanded.jpg",
+      "storedBytes": 144337,
+      "storedSha256": "f44174aca5a2311fc906bf94715cb944c1d5bd0c3ed7b6e2327eba7f515e2f78",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/expanded.state.json.gz",
+      "originalBytes": 179636,
+      "originalSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "storedPath": "original/eb-weight-live56/steward-034/expanded.state.json.gz",
+      "storedBytes": 179636,
+      "storedSha256": "033f7ad8856d379c7ce36825eb6710f90f4a2e520744f9d565b1029644fd7948",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/source-revision.txt",
+      "originalBytes": 41,
+      "originalSha256": "7fca4c0c869eeb34756339c68437553f4e0dc0d2443ace8c200786a84e92ab2d",
+      "storedPath": "original/eb-weight-live56/steward-034/source-revision.txt",
+      "storedBytes": 41,
+      "storedSha256": "7fca4c0c869eeb34756339c68437553f4e0dc0d2443ace8c200786a84e92ab2d",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/steward.json.gz",
+      "originalBytes": 3462,
+      "originalSha256": "da0c1a7322c1854788c2f075b5040700138325e1492cda219d0eb9626b304654",
+      "storedPath": "original/eb-weight-live56/steward-034/steward.json.gz",
+      "storedBytes": 3462,
+      "storedSha256": "da0c1a7322c1854788c2f075b5040700138325e1492cda219d0eb9626b304654",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "eb-weight-live56/steward-034/vite.log",
+      "originalBytes": 225103,
+      "originalSha256": "cad202921fdabd3ed6c7b7420dddd87f9313c4a86503b5d8126db5fdf0b0685c",
+      "storedPath": "original/eb-weight-live56/steward-034/vite.log.gz",
+      "storedBytes": 19103,
+      "storedSha256": "3644da75433e599f508ada50e5fbc25094b112067ed9b1f8ef0a9a0a7530ab71",
+      "transform": "lossless_gzip"
+    },
+    {
+      "originalPath": "exit-code",
+      "originalBytes": 2,
+      "originalSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "storedPath": "original/exit-code",
+      "storedBytes": 2,
+      "storedSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "keep",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "storedPath": "original/keep",
+      "storedBytes": 0,
+      "storedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "pid",
+      "originalBytes": 8,
+      "originalSha256": "160a77bb29c7518a681e857f24c0144037b0cea9ee0bc8f39b7e560171d6492a",
+      "storedPath": "original/pid",
+      "storedBytes": 8,
+      "storedSha256": "160a77bb29c7518a681e857f24c0144037b0cea9ee0bc8f39b7e560171d6492a",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "run.log",
+      "originalBytes": 1646,
+      "originalSha256": "e5b56b02a18085d78215772fb0e497f535212b0a0dd45d4adf12112a3e1cf643",
+      "storedPath": "original/run.log.gz",
+      "storedBytes": 879,
+      "storedSha256": "567934b3d8c8694c99cd048547659519a6bcf8f7be60acc29f30f83b81ad3ef1",
+      "transform": "lossless_gzip"
+    },
+    {
+      "originalPath": "start-marker",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "storedPath": "original/start-marker",
+      "storedBytes": 0,
+      "storedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "timing.env",
+      "originalBytes": 76,
+      "originalSha256": "823f2e6975be6cb234a438caf92ef8bb761d2e66831cc1813958181b8ee68930",
+      "storedPath": "original/timing.env",
+      "storedBytes": 76,
+      "storedSha256": "823f2e6975be6cb234a438caf92ef8bb761d2e66831cc1813958181b8ee68930",
+      "transform": "identity"
+    },
+    {
+      "originalPath": "unit",
+      "originalBytes": 53,
+      "originalSha256": "614b6c9184f6da98f0598e38ab424eb04fd436928f748425a4344033d15e1e18",
+      "storedPath": "original/unit",
+      "storedBytes": 53,
+      "storedSha256": "614b6c9184f6da98f0598e38ab424eb04fd436928f748425a4344033d15e1e18",
+      "transform": "identity"
+    }
+  ],
+  "storage": "Every fetched file retained; .log files losslessly gzipped; other original bytes unchanged."
+}

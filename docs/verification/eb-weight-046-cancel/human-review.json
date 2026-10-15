@@ -1,0 +1,35 @@
+{
+  "verdict": "FAIL_IMMEDIATE_EFFECT_MISSING_TRACE",
+  "choice": "cancel",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected original offered.jpg, answered.jpg, and chip.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "original/eb-weight-046-cancel/offered.jpg",
+      "sha256": "cf7f974d8256e54ba35b7e4ca66570cd19f801a370ad7de8ead6a8b5d2a1f44a"
+    },
+    {
+      "file": "original/eb-weight-046-cancel/answered.jpg",
+      "sha256": "2d8bc98e08e25b039abcc9283e191f64b5291c1b7009cd90ad516a279172ce10"
+    },
+    {
+      "file": "original/eb-weight-046-cancel/chip.jpg",
+      "sha256": "aa5baee228483ca60b9cd9cfd0bbb74df28db220e605929f5418617b595c60ed"
+    }
+  ],
+  "observed": "Normal cancel UI; receipt clearly shows actual 350단 → 0단. After confirmation annual chip remains 30. Real effect and receipt are present; exact effect trace is absent.",
+  "answerId": "h-019506",
+  "actual": {
+    "target": "state.timberOrder",
+    "before": 350,
+    "after": 0,
+    "delta": -350,
+    "fieldRemoved": true
+  },
+  "effectTrace": [],
+  "failureClassification": "immediate_effect_missing_trace",
+  "ls1Target": "NOT_OBSERVED",
+  "resultCard": "NOT_OBSERVED",
+  "resultNavigationShaPair": "NOT_OBSERVED",
+  "limits": "Receipt confirmation snapshots have the same SHA, but they are not a result-card navigation check. No-effect and receipt-failure classifications would be incorrect."
+}

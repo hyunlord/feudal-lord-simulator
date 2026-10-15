@@ -1,0 +1,29 @@
+{
+  "verdict": "FAIL_HARNESS",
+  "choice": "b",
+  "reviewer": "parent",
+  "reviewBasis": "Parent personally inspected original failure.jpg and delegated recording of that observation.",
+  "files": [
+    {
+      "file": "original/eb-weight-124-b/failure.jpg",
+      "sha256": "fdf34fe2cd4cc1ce720035cfc746d53bbde8eef410d377f2432b0aca2e9d8041"
+    }
+  ],
+  "observed": "Unrelated core 경계 다툼 modal with native Later visible; target registry 124 card is not on screen. Target selector count is 0 before any target answer.",
+  "witness": {
+    "tick": 13000,
+    "choices": [
+      "b",
+      "c"
+    ],
+    "selectedPlannedChoice": "b",
+    "validOffer": true
+  },
+  "causeClassification": "harness_target_reach_missing",
+  "answer": "NOT_OBSERVED",
+  "actualEffect": "NOT_OBSERVED",
+  "targetResultCard": "NOT_OBSERVED",
+  "resultNavigationShaPair": "NOT_OBSERVED",
+  "productDefectEstablished": false,
+  "retry": "Parent is preparing the normal target-reaching helper. Original failure retained; no pass claimed."
+}

@@ -288,9 +288,13 @@
         "steward_answers_not_retained_as_lord_checkpoints"
       ],
       "priorStewardAnswers": 3,
-      "screenVerdict": "pending",
-      "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "screenVerdict": "steward_route_verified",
+      "liveCase": {
+        "seed": 1,
+        "choice": "precedent"
+      },
+      "limits": "Historical steward answer h-011244 and season report route verified; band3, canonical title/choice/details visible after normal scroll, navigation SHA unchanged, wronglyIncluded=[]. lord56Pass=false; actual state effect not proved by this report. Canonical result says lord despite actual steward actor; render wording review needed. One occurrence only.",
+      "evidence": "../eb-weight-034-steward/README.md"
     },
     {
       "entryId": "ck_evt_035",
@@ -368,9 +372,13 @@
         "no_trace_yet_at_answer"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
-      "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "screenVerdict": "fail_immediate_effect_missing_trace",
+      "liveCase": {
+        "seed": 1,
+        "choice": "cancel"
+      },
+      "limits": "cancel: genuine UI answer h-019506 at298000 changes timberOrder350→0 (field removed), exact receipt visible; effectTrace=[], chip30→30 and no answer item. Trace failure, not no-effect or receipt failure. Result card/navigation SHA NOT OBSERVED; confirmation SHA is separate. Other choices not claimed.",
+      "evidence": "../eb-weight-046-cancel/README.md"
     },
     {
       "entryId": "ck_evt_051",
@@ -620,9 +628,13 @@
         "unobserved_in_historical_cohort"
       ],
       "priorStewardAnswers": 0,
-      "screenVerdict": "pending",
-      "liveCase": null,
-      "limits": "Original reader inclusion is not screen acceptance."
+      "screenVerdict": "fail_harness",
+      "liveCase": {
+        "seed": 1,
+        "choice": "b"
+      },
+      "limits": "Genuine offer at13000 supports b/c and planned b is valid. Unrelated core boundary-dispute modal covers target; selector count0 fails before target press. Harness target-reaching path missing, not an established product defect. No answer, effect, target card, or result-navigation SHA observed; retry being prepared.",
+      "evidence": "../eb-weight-124-first/README.md"
     },
     {
       "entryId": "ck_evt_128",
