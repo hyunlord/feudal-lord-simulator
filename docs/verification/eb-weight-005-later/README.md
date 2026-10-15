@@ -63,3 +63,11 @@ Verify the retained files with `shasum -a 256 -c SHA256SUMS` from this directory
 탐색 전 SHA `e1715cd5f7c6ff1cacdb7faeed11c865a60bd7e0471ab9f3e48d7e6dec8c5a41` → 후 `01acf56be84a7108f07c74db088f56cfcbb572aba4d2e87058620f5d9e907d58`. 원인: 화면 전환 뒤 밀린 연말 카드 자동열림/읽음 표시 기록. src/ui/hud/useStoryPresentation.ts:218–224의 yearDueRef 처리와 markOpened(yearCardId(due.year)). 실제 수입·정확한 답 연결·칩1건 존재와 별개로 전체 화면 관문은 미통과다.
 
 ‘나중에’가 영지 규칙을 바꿨다고 주장하지 않는다. 그러나 요구된 전체 상태 SHA 불변은 깨졌으므로 seen을 빼거나 기준선을 새로 잡아 이 탐색을 통과로 만들지 않는다. 제품 수정 없이 렌더 검토 인계. 056을 재검증한 것이 아니다.
+
+## 2026-10-16 005 우선 진단: 담당 렌더 A
+
+기존 두 gzip 증빙을 재귀 비교한 결과는 [navigation-diff.json](navigation-diff.json)에 보존했다. `/seen`: **필드 없음 → {"marks":[{"id":"year-review:1308","tick":36151,"opened":true}]}**. tick은36151→36151이고 그 밖의 모든 경로는 동일하다. 새 실행이나 제품 수정은 하지 않았다.
+
+코드 위치(측정 제품0eddc146 및53407fe69에서 동일): `src/ui/hud/useStoryPresentation.ts:221`이 밀린 연말 카드를 열며 `markOpened`를 호출하고, 같은 파일109줄에서 `{type:"mark_story_seen", id:"year-review:1308", how:"opened"}`를 dispatch한다. `src/state/gameStore.ts:167`이 `src/engine/storySeen.ts:40–51`의 명시적 쓰기 함수로 보내 새 상태의 seen.marks를 만든다. 조회 `storySeen`(31–32줄)은 읽기만 한다.
+
+**담당: 렌더 A — 화면 자동열림이 명령을 보내는 경로이며 엔진 조회 함수가 상태를 고치는 경우가 아니다.** 전체 상태 SHA 불변은 실제 실패다. 저장 읽음 표시 변경만 입증했으며 경제 상태·시뮬레이션 결정성·별도 가드레일 해시의 변화까지 입증한 것은 아니다. 새005실행을 대기열에서 빼고 진단만 인계한다.

@@ -1,0 +1,40 @@
+{
+  "run": "engineB-weight005-later-430d8d6",
+  "product": "0eddc146c7d57b4cae091bff62295a1fc16e1f97",
+  "snapshots": [
+    {
+      "file": "result-covered-by-registry-card.state.json.gz",
+      "decompressedSha256": "e1715cd5f7c6ff1cacdb7faeed11c865a60bd7e0471ab9f3e48d7e6dec8c5a41",
+      "tick": 36151
+    },
+    {
+      "file": "result-after-normal-later.state.json.gz",
+      "decompressedSha256": "01acf56be84a7108f07c74db088f56cfcbb572aba4d2e87058620f5d9e907d58",
+      "tick": 36151
+    }
+  ],
+  "changes": [
+    {
+      "path": "/seen",
+      "beforePresent": false,
+      "afterPresent": true,
+      "after": {
+        "marks": [
+          {
+            "id": "year-review:1308",
+            "tick": 36151,
+            "opened": true
+          }
+        ]
+      }
+    }
+  ],
+  "allOtherPathsEqual": true,
+  "owner": "Render A",
+  "command": {
+    "type": "mark_story_seen",
+    "id": "year-review:1308",
+    "how": "opened"
+  },
+  "newRun": false
+}
