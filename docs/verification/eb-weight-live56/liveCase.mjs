@@ -33,7 +33,7 @@ const report = { schemaVersion: 1, mode: 'one_historical_answer_current_UI_natur
   sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
   answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,
   valid: false, automatic: null, manual: null, actions: [], states: [], samples: [], transitions: [],
-  receipts: [], informationalContinues: [], resultNavigation: [], errors: [],
+  receipts: [], informationalContinues: [], resultNavigation: [], unansweredSuitContinues: [], errors: [],
   limits: ['Proof snapshots contain presentation walkers, not a raw store snapshot.',
     'This is one current-product replay from a genuine historical answer, not a fresh 125-year run.',
     'Automatic yearly aggregation is distinct from automatic opening of a card or a new notification.',
@@ -134,9 +134,10 @@ async function sample() {
     const chips = [...document.querySelectorAll('.event-chip[data-story="decision_trace"]')].map(el => ({
       id: el.getAttribute('data-chip-id'), text: el.textContent?.trim(), visible: visible(el), exposed: exposed(el) }));
     const panels = [...document.querySelectorAll('[role="dialog"]')].filter(visible).map(el => {
-      const controls = [...el.querySelectorAll('button.season-ledger-resume')];
-      return { className: el.className, season: el.getAttribute('data-season'), text: el.textContent?.slice(0, 700),
-        continueCount: controls.length, continueAvailable: controls.length === 1 && !controls[0].disabled && exposed(controls[0]) };
+      const yearReview = el.className === 'story-modal petition-card results-card year-review';
+      const controls = [...el.querySelectorAll(yearReview ? 'button.results-card-continue' : 'button.season-ledger-resume')];
+      return { className: el.className, season: el.getAttribute('data-season'), year: el.getAttribute('data-year-review'), text: el.textContent?.slice(0, 700),
+        continueCount: controls.length, continueAvailable: controls.length === 1 && !controls[0].disabled && (yearReview || exposed(controls[0])) };
     });
     return { tick: state.tick, yearStartTick: from, receipts, targetRows: rows, targetGroups: groups,
       results, target, expectedChipText: results ? reads.copy.trace.yearChip(results.count) : null,
@@ -169,20 +170,36 @@ function automaticMatch(observation) {
 
 function informational(observation) {
   const panel = observation.panels[0];
-  return observation.panels.length === 1 && panel.className === 'season-ledger-card'
-    && /^(\d+):([0-3])$/.test(panel.season ?? '') && panel.continueCount === 1 && panel.continueAvailable;
+  return observation.panels.length === 1 && panel.continueCount === 1 && panel.continueAvailable
+    && ((panel.className === 'season-ledger-card' && /^(\d+):([0-3])$/.test(panel.season ?? ''))
+      || (panel.className === 'story-modal petition-card results-card year-review' && /^\d{4}$/.test(panel.year ?? '')));
 }
 
 async function continueInformation(observation) {
   assert.ok(report.informationalContinues.length < 16, 'Bounded informational-report limit');
   const before = await snapshot(`information-${report.informationalContinues.length + 1}`);
-  await press('.season-ledger-card button.season-ledger-resume');
+  const isYear = observation.panels[0].year !== null;
+  const selector = isYear ? '.results-card.year-review .results-card-continue' : '.season-ledger-card button.season-ledger-resume';
+  if (isYear) {
+    for (let attempt = 0; attempt < 16; attempt += 1) {
+      const exposed = await page.locator(selector).evaluate(el => {
+        const b = el.getBoundingClientRect(), top = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2);
+        return b.top >= 0 && b.bottom <= innerHeight && top !== null && el.contains(top);
+      });
+      if (exposed) break;
+      const box = await page.locator('.results-card.year-review .results-card-body').boundingBox(); assert.ok(box);
+      await page.mouse.move(box.x + box.width / 2, Math.min(700, box.y + box.height / 2));
+      await page.mouse.wheel(0, 400); await page.clock.runFor(64);
+      assert.equal(sha(await stateJson()), before.sha256, 'Year report scroll changed state');
+    }
+  }
+  await press(selector);
   const after = await stateJson();
   assert.equal(sha(after), before.sha256, 'Informational Continue changed presentation state');
   const resumed = await sample();
   assert.equal(resumed.tick, observation.tick, 'Informational Continue advanced time');
   assert.equal(resumed.panels.length, 0, 'Another dialog followed the informational report');
-  report.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season,
+  report.informationalContinues.push({ tick: observation.tick, season: observation.panels[0].season, year: observation.panels[0].year,
     beforeSha256: before.sha256, afterSha256: sha(after) });
 }
 
@@ -212,6 +229,28 @@ async function deferCoveringRegistryCard(observation) {
   assert.equal((await sample()).panels.length, 0, 'Later did not uncover the result');
   report.resultNavigation.push({ kind: 'normal_registry_later_after_actual_result',
     beforeSha256: before.sha256, afterSha256: after.sha256, coveredObservation: observation });
+  return true;
+}
+
+async function continueUnansweredSuit(observation) {
+  const selector = '.auto-pause-notice[data-mode="stopped"][data-reasons="suit_defence"] .auto-pause-resume';
+  if (!observation.paused || observation.panels.length || await page.locator(selector).count() !== 1) return false;
+  assert.ok(report.unansweredSuitContinues.length < 16, 'Bounded unanswered-suit continuation count');
+  const matters = await page.evaluate(async () => {
+    const { lordMattersDue } = await import('/src/engine/lordDue.ts');
+    return lordMattersDue(window.__FEUDAL_PHASE10_PROOF__.state()).filter(row => row.kind === 'suit_defence');
+  });
+  assert.ok(matters.length > 0, 'Actual pending suit and deadline required');
+  const before = await snapshot(`unanswered-suit-${report.unansweredSuitContinues.length + 1}`);
+  const text = await page.locator('.auto-pause-notice[data-mode="stopped"]').innerText();
+  await press(selector);
+  const after = await stateJson();
+  assert.equal(sha(after), before.sha256, 'Suit Continue changed state before normal clock progression');
+  assert.equal(JSON.parse(after).tick, observation.tick);
+  report.unansweredSuitContinues.push({ tick: observation.tick, matters, text,
+    beforeSha256: before.sha256, afterSha256: sha(after),
+    policy: 'Continue normal time without answering this unrelated suit; its deadline still runs.' });
+  await selectTen();
   return true;
 }
 
@@ -313,7 +352,7 @@ try {
         await continueInformation(observation); await selectTen();
         assert.equal((await sample()).tick, observation.tick, 'Resume advanced time outside the clock sampler');
       } else if (observation.paused) {
-        report.stop = 'substantive_or_unknown_intervention_required'; break;
+        if (!await continueUnansweredSuit(observation)) { report.stop = 'substantive_or_unknown_intervention_required'; break; }
       } else assert.ok(observation.ten, '10x was no longer selected');
       previousTick = observation.tick;
     }
