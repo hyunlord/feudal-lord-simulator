@@ -3,6 +3,7 @@ import { pauseReasons, type PauseEvent } from "../../engine/autoPause";
 import { lordMattersDue, type LordMatterDue } from "../../engine/lordDue";
 import { stateCalendar } from "../../engine/scenarioState";
 import { lordMode } from "../../engine/townAgency";
+import { heldDeadlines, inLastSeason, type HeldDeadline } from "../lord/decisions/deadlines";
 
 // LM-R3 (lord slice LS-2, lord-mode design 3.5; the user's ruling 2026-10-09): the screen's half of the auto-pause. It
 // stops only for what the engine names — a big event (`pauseReasons`: a counter, a great person's death, an inheritance,
@@ -15,20 +16,29 @@ import { lordMode } from "../../engine/townAgency";
 /** One reason to stop: an engine event, or a matter newly due. */
 export type AutoPauseItem =
   | { readonly kind: "event"; readonly key: string; readonly event: PauseEvent }
-  | { readonly kind: "matter"; readonly key: string; readonly matter: LordMatterDue };
+  | { readonly kind: "matter"; readonly key: string; readonly matter: LordMatterDue }
+  /** LS1-11: a held decision whose lapse does something, its last season begun (once, when it begins). */
+  | { readonly kind: "deadline"; readonly key: string; readonly deadline: HeldDeadline };
 
 /** What the screen remembers between states: the last state seen, its matters due, and the stops already counted. */
 export interface AutoPauseMemory {
   readonly baseline: GameState;
   readonly matters: ReadonlySet<string>;
   readonly seen: ReadonlySet<string>;
+  /** LS1-11: the effectful deadlines already in their last season (a load inside one does not stop again). */
+  readonly near: ReadonlySet<string>;
 }
 
 /** A matter's key: a suit's next stage is a new deadline, so a new matter (the engine's `dueTick` moves with it). */
 export const matterKey = (matter: LordMatterDue): string => `matter:${matter.kind}:${matter.id}:${matter.dueTick ?? "open"}`;
 const mattersOf = (state: GameState): ReadonlySet<string> => new Set(lordMattersDue(state).map(matterKey));
+/** LS1-11: a deadline's key — the chip and the engine's deadline (a new deadline is a new stop). */
+const deadlineKey = (deadline: HeldDeadline): string => `deadline:${deadline.chipId}:${deadline.dueTick}`;
+const nearDeadlines = (state: GameState): readonly HeldDeadline[] =>
+  heldDeadlines(state).filter(deadline => deadline.effect && state.tick <= deadline.dueTick && inLastSeason(state.tick, deadline.dueTick));
 
-export const autoPauseMemory = (state: GameState): AutoPauseMemory => ({ baseline: state, matters: mattersOf(state), seen: new Set() });
+export const autoPauseMemory = (state: GameState): AutoPauseMemory =>
+  ({ baseline: state, matters: mattersOf(state), seen: new Set(), near: new Set(nearDeadlines(state).map(deadlineKey)) });
 
 /** One stop, once: the ledger line it was read from, or the petition. */
 export const pauseEventKey = (event: PauseEvent): string => event.recordId ?? `petition:${event.petitionId ?? `${event.reason}:${event.tick}`}`;
@@ -59,8 +69,11 @@ export function autoPauseStep(memory: AutoPauseMemory, state: GameState, previou
   const matters: AutoPauseItem[] = due.filter(matter => matter.kind !== "audit" && matter.kind !== "estate_petition")
     .filter(matter => !memory.matters.has(matterKey(matter)) && !(contested && matter.kind === "contested"))
     .map(matter => ({ kind: "matter", key: matterKey(matter), matter }));
-  const fresh = [...events, ...matters].filter(item => !memory.seen.has(item.key));
-  const next = { baseline: state, matters: new Set(due.map(matterKey)), seen: fresh.length === 0 ? memory.seen : new Set([...memory.seen, ...fresh.map(item => item.key)]) };
+  const near = nearDeadlines(state);
+  const deadlines: AutoPauseItem[] = near.filter(deadline => !memory.near.has(deadlineKey(deadline))).map(deadline => ({ kind: "deadline", key: deadlineKey(deadline), deadline }));
+  const fresh = [...events, ...matters, ...deadlines].filter(item => !memory.seen.has(item.key));
+  const next = { baseline: state, matters: new Set(due.map(matterKey)), near: new Set(near.map(deadlineKey)),
+    seen: fresh.length === 0 ? memory.seen : new Set([...memory.seen, ...fresh.map(item => item.key)]) };
   return { memory: next, fresh };
 }
 

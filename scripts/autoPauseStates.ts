@@ -55,8 +55,8 @@ const checked = checks.map(check => {
 if (checks.length > 0) writeFileSync(join(out, "pause-checks.json"), JSON.stringify(checked, null, 1));
 
 /** A reason's name: the engine event's reason, or the matter's kind. */
-const nameOf = (item: AutoPauseItem): string => item.kind === "event" ? item.event.reason : `matter:${item.matter.kind}`;
-const templateOf = (item: AutoPauseItem): string => item.kind === "event" ? item.event.template ?? "petition" : `lordMattersDue.${item.matter.kind}`;
+const nameOf = (item: AutoPauseItem): string => item.kind === "event" ? item.event.reason : item.kind === "deadline" ? `deadline:${item.deadline.kind}` : `matter:${item.matter.kind}`;
+const templateOf = (item: AutoPauseItem): string => item.kind === "event" ? item.event.template ?? "petition" : item.kind === "deadline" ? `deadline.${item.deadline.kind}` : `lordMattersDue.${item.matter.kind}`;
 type Stop = { readonly tick: number; readonly reason: string; readonly template: string; readonly by: "tick" | "command"; readonly season: string };
 const stops: Stop[] = [];
 const found: Record<string, Record<string, unknown>> = {};

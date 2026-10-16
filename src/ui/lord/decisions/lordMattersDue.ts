@@ -33,9 +33,14 @@ function chipOf(state: GameState, matter: EngineMatter): string | null {
   }
 }
 
+/** The engine's matters due, each with its chip's id (LS1-11: their deadlines on the rail). */
+export function lordMatterChips(state: GameState): readonly { readonly matter: EngineMatter; readonly chipId: string }[] {
+  return lordMattersDue(state).flatMap(matter => { const chipId = chipOf(state, matter); return chipId === null ? [] : [{ matter, chipId }]; });
+}
+
 /** The chips that stay until answered: the engine's matters due, each by its chip's id. */
 export function lordMatterChipIds(state: GameState): ReadonlySet<string> {
-  return new Set(lordMattersDue(state).flatMap(matter => { const id = chipOf(state, matter); return id === null ? [] : [id]; }));
+  return new Set(lordMatterChips(state).map(entry => entry.chipId));
 }
 
 /** The engine's matter of a kind with this id (the will's deadline, a suit's next stage, a threat's coming), or null. */

@@ -32,6 +32,7 @@ import { growthRun } from "./lord/growth/growthTrack";
 import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { UiModal } from "./stateMachine/uiStateMachine";
 import type { LordScreenId } from "./lord/screen/lordScreenTypes";
+import { lapseBeats } from "./lord/decisions/lapseBeats";
 
 // UI-4 (world before UI): what the town is living through now, as story beats. Each beat is read from the engine's
 // state (F0-B events and forecast, F0-C1 politics) — nothing here decides anything. The app shows a beat's card only
@@ -68,7 +69,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // LS1-6 (lord mode): a birth, a death or a marriage in the lord's family (persons/familyBeats.ts).
   | "family_news"
   // LS1 ③ (lord mode): a faction's relation crossed a stage at a season's close (lord/relations/relationStageBeats.ts).
-  | "relation_stage";
+  | "relation_stage"
+  // LS1-11 (lord mode): what a decision left past its deadline came to (lord/decisions/lapseBeats.ts).
+  | "decision_lapsed";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -138,7 +141,7 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
   // DEC-CARD (Astra A3): a change in the lord's house first — before any petition of the same tick.
   // DEC-CARD-2: then what followed the lord's decisions this season — first in the list, so the season's newer chips
   // (a petition, an offer) push them out of the three shown before anything else.
-  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state), ...growthBeats(state)];
+  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state), ...lapseBeats(state), ...growthBeats(state)];
   const copy = EVENT_STORY_COPY;
   const records = state.events?.records ?? [];
   const burning = state.events?.burning ?? [];

@@ -145,7 +145,7 @@ test("their chips say the engine's deadline as a season, as the will's (no days 
 test("the user's ruling: an audit or an off-map petition never stops the auto-pause as a matter due — its own event stops it (a steward's petition for a right)", () => {
   assert.ok(played.states.some(state => lordMattersDue(state).some(matter => matter.kind === "audit")), "an audit waited");
   assert.ok(played.states.some(state => lordMattersDue(state).some(matter => matter.kind === "estate_petition")), "a petition waited");
-  for (const stop of played.stops) for (const item of stop.items) assert.ok(item.kind === "event" || (item.matter.kind !== "audit" && item.matter.kind !== "estate_petition"), item.key);
+  for (const stop of played.stops) for (const item of stop.items) assert.ok(item.kind !== "matter" || (item.matter.kind !== "audit" && item.matter.kind !== "estate_petition"), item.key);
   // The petition a steward brought for a right still stops time, by its own ledger line.
   const raised = played.stops.find(stop => stop.items.some(item => item.kind === "event" && item.event.template === "stewardship.escalated"));
   assert.ok(raised !== undefined, "the steward brought a right to the lord");

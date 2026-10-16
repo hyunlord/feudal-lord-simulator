@@ -64,4 +64,9 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
     open: [{ story: card("estate_petition_offmap") }, { pause: 600 }],
     requires: [...HEAVY, ...ANSWERS],
     data: "an off-map estate's petition: why it came to the lord, both answers' treasury and the estate's goodwill" },
+  // LS1-11: a decision left past its deadline — the chip and card that say what the engine did with it (here an audit
+  // tolerated for want of an answer, its deadline in the season just gone).
+  { id: "hud.event-card.lapsed", root: ".event-card[data-story='decision_lapsed']", frame: "css", scene: decisionScene("promises"),
+    open: [{ wait: ".event-chip[data-story='decision_lapsed']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-story='decision_lapsed']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-facts li"], data: "a lapse told: the decision left past its deadline and what the engine did with it" },
 ];

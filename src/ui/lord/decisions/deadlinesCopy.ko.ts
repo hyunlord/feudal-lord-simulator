@@ -1,0 +1,48 @@
+import type { DeadlineKind } from "./deadlines";
+
+// LS1-11: the held chips' time left, the auto-pause's line for a deadline in its last season, and the chip that says
+// what a lapse did (the engine's `decision.lapsed`, and an audit tolerated for want of an answer).
+
+/** A lapsed decision's kind, as the engine's trace names it (`decision.lapsed` params.decisionKind), or the audit's. */
+export type LapseKind = "manor_petition" | "estate_petition" | "registry" | "chapter_petition" | "marriage" | "audit";
+
+const DEADLINE_SUBJECT: Readonly<Record<DeadlineKind, string>> = {
+  will_change: "유언 바꿈", audit: "감사", estate_petition: "영지 밖 청원", suit_defence: "소송 방어", entry_threat: "강제 진입 경고",
+  home_petition: "본령 청원", registry: "제안", famine: "대기근",
+};
+
+/** What the engine will do if the deadline passes (the effectful kinds the auto-pause tells). */
+const IF_LAPSED: Readonly<Partial<Record<DeadlineKind, string>>> = {
+  will_change: "유언은 그대로 둡니다", audit: "묵인으로 처리됩니다", estate_petition: "거절로 처리되고 기다린 쪽의 마음이 상합니다",
+  registry: "정해 둔 답으로 처리됩니다",
+};
+
+const LAPSE_SUBJECT: Readonly<Record<LapseKind, string>> = {
+  manor_petition: "본령 청원", estate_petition: "영지 밖 청원", registry: "제안", chapter_petition: "청원", marriage: "유언 바꿈", audit: "감사",
+};
+
+/** What the lapse did, as the engine settled it. */
+const LAPSED: Readonly<Record<LapseKind, string>> = {
+  manor_petition: "기한이 지나 없던 일이 됐습니다",
+  estate_petition: "기한이 지나 거절로 처리됐습니다",
+  registry: "기한이 지나 제안이 사라졌습니다",
+  chapter_petition: "기한이 지나 거절로 처리됐습니다",
+  marriage: "답하지 않아 유언을 그대로 두었습니다",
+  audit: "기한이 지나 묵인으로 처리됐습니다",
+};
+
+export const DEADLINE_COPY = {
+  thisSeason: "이번 철까지",
+  past: "기한 지남",
+  seasonsLeft: (seasons: number) => `${seasons}철 남음`,
+  /** The auto-pause's word and line for a deadline in its last season. */
+  pauseWord: "기한 임박",
+  pauseLine: (kind: DeadlineKind) => `${DEADLINE_SUBJECT[kind]}: 이번 철이 지나면 ${IF_LAPSED[kind] ?? "답할 수 없게 됩니다"}`,
+  /** The lapse chip: one lapse says itself; more say how many. */
+  lapsedOne: (kind: LapseKind) => `${LAPSE_SUBJECT[kind]}: ${LAPSED[kind]}`,
+  lapsedRegistryAnswered: "제안: 기한이 지나 정해 둔 답으로 처리됐습니다",
+  lapsedMany: (count: number) => `기한이 지나 처리된 일 ${count}`,
+  lapsedLine: (count: number) => count === 1 ? "답하지 않은 결정이 기한을 넘겨 처리됐습니다." : `답하지 않은 결정 ${count}건이 기한을 넘겨 처리됐습니다.`,
+  lapsedAdvice: "칩으로 내린 결정은 기한이 있습니다. 칩에 남은 철이 적혀 있고, 마지막 철에는 칩 모양이 바뀝니다.",
+  openLabel: "연대기에서 보기",
+} as const;

@@ -9,6 +9,7 @@ import { storySeen } from "../../engine/storySeen";
 import { useGameApi } from "../../state/gameStore";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
+import { chipDues } from "../lord/decisions/deadlines";
 import { LINGER_MS, storyChips } from "./storyChips";
 import type { UiModal } from "../stateMachine/uiStateMachine";
 import { latestChapterEnd } from "../chronicleModel";
@@ -222,6 +223,8 @@ export function useStoryPresentation(input: {
   }, [nextWakeMs]);
   return {
     visible,
+    // LS1-11: each held chip's time left by the engine's deadline (the last season marks it near).
+    due: chipDues(state),
     openId,
     setOpenId,
     // CHIP-FOLD: a folded chip put away puts away every chip it stands for.
