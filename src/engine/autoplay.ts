@@ -11,6 +11,7 @@ import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { timberExpansionKind } from './autoplayTimberRecovery';
 import { botTimberOrder, botTimberOrderFor } from './timberTrade';
+import { constructionRoadDistance } from './autoplayRoadReach';
 import { crossingAction } from './autoplayCrossing';
 import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
@@ -307,9 +308,12 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
   const site = findBuildSite(state, kind, (coordinate) => accepts(coordinate) && routed(coordinate));
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
   if (autoplaySearchExhausted()) return NONE;
-  const roads = roadTiles(state);
+  // DELIVERY-GAP ①a (the user's ruling 2026-10-16, both modes): the "road first" candidates are the sites a construction
+  // road reaches, nearest by that road — not the straight line to any road, whose nearest sites may have no road at all
+  // (seed 26's quarry, engine-GAP-diag2-00125eb). The 24 tried stay 24.
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty, 'later') && accepts(tile))
-    .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
+    .map(tile => ({ tile, distance: constructionRoadDistance(state, kind, tile) }))
+    .filter(candidate => Number.isFinite(candidate.distance))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
     if (autoplaySearchExhausted()) return NONE;

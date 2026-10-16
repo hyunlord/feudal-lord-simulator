@@ -58,6 +58,29 @@ function interior(state: GameState) {
  * below level 4 and what each lacks (water, bread, a market or church serving it, the wall's protection), and the open
  * building sites with their stall and the materials they still want.
  */
+/**
+ * DELIVERY-GAP ①a (the user's ruling 2026-10-17): the quarries standing with water in their setback ring, and of those
+ * the ones whose ring holds a ford, a bridge site or a bridge's road — where such a quarry could stand in a crossing's way.
+ */
+function waterQuarries(state: GameState) {
+  const fords = new Set(state.river?.fords ?? []);
+  const bridges = new Set((state.river?.bridgeSites ?? []).map(site => site.ty * state.width + site.tx));
+  let water = 0; let nearCrossing = 0;
+  for (const quarry of state.buildings.filter(building => building.kind === "quarry")) {
+    const { width, height } = BUILDING_CONFIG_BY_KIND.quarry;
+    let wet = false; let crossing = false;
+    for (let ty = quarry.ty - 1; ty <= quarry.ty + height; ty += 1) for (let tx = quarry.tx - 1; tx <= quarry.tx + width; tx += 1) {
+      if (tx < 0 || ty < 0 || tx >= state.width || ty >= state.height) continue;
+      const index = ty * state.width + tx; const tile = state.tiles[index];
+      if (tile?.terrain === "water") { wet = true; if (tile.hasRoad) crossing = true; }
+      if (fords.has(index) || bridges.has(index)) crossing = true;
+    }
+    if (wet) water += 1;
+    if (wet && crossing) nearCrossing += 1;
+  }
+  return { waterQuarries: water, waterQuarriesNearCrossing: nearCrossing };
+}
+
 function waiting(state: GameState) {
   const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met).map(requirement => `${requirement.key}:${requirement.current}/${requirement.target}`);
   const below = houseRequirementRows(state).filter(house => house.level < 4);
@@ -111,7 +134,7 @@ function row(state: GameState, year: number) {
   }
   const harvests = state.forestHarvests ?? [];
   return { year, population: state.population, era: state.era, palisade: state.palisade?.polygon.length ?? 0, houses: state.houses.length,
-    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, masonry: kinds.masonry ?? 0, church: kinds.church ?? 0,
+    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, masonry: kinds.masonry ?? 0, ...waterQuarries(state), church: kinds.church ?? 0,
     // Option A's judgement (the user's ruling 2026-10-12): idle labour, permille of the adults (LB-9's `labour.idle`).
     idlePermille: idleLabourPermille(state),
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
