@@ -4,12 +4,16 @@ import type { PalisadeFootprint, PalisadePath, TileEdgePoint } from "./palisadeG
 const key = (x: number, y: number) => `${x},${y}`;
 
 export function palisadeLandEnvelopes(grid: Grid, footprints: readonly PalisadeFootprint[], margin: number): readonly PalisadePath[] {
+  return palisadeCellBoundaryLoops(palisadeEnvelopeCells(grid, footprints, margin));
+}
+
+export function palisadeEnvelopeCells(grid: Grid, footprints: readonly PalisadeFootprint[], margin: number, waterReach = false): Set<string> {
   const cells = new Set<string>();
   for (const footprint of footprints) {
     for (let ty = footprint.ty - margin; ty < footprint.ty + footprint.height + margin; ty += 1) {
       for (let tx = footprint.tx - margin; tx < footprint.tx + footprint.width + margin; tx += 1) {
         const tile = getTile(grid, { tx, ty });
-        if (tile !== null && tile.terrain !== "water") cells.add(key(tx, ty));
+        if (tile !== null && (waterReach || tile.terrain !== "water")) cells.add(key(tx, ty));
       }
     }
   }
@@ -31,7 +35,7 @@ export function palisadeLandEnvelopes(grid: Grid, footprints: readonly PalisadeF
     const row = rowBounds.get(ty);
     if (row === undefined) continue;
     const left = row.min; const right = row.max;
-    const dry = Array.from({ length: right - left + 1 }, (_, offset) => getTile(grid, { tx: left + offset, ty })).every(tile => tile !== null && tile.terrain !== "water");
+    const dry = Array.from({ length: right - left + 1 }, (_, offset) => getTile(grid, { tx: left + offset, ty })).every(tile => tile !== null && (waterReach || tile.terrain !== "water"));
     if (dry) for (let tx = left; tx <= right; tx += 1) cells.add(key(tx, ty));
   }
   const columnBounds = bounds(false);
@@ -39,9 +43,13 @@ export function palisadeLandEnvelopes(grid: Grid, footprints: readonly PalisadeF
     const column = columnBounds.get(tx);
     if (column === undefined) continue;
     const top = column.min; const bottom = column.max;
-    const dry = Array.from({ length: bottom - top + 1 }, (_, offset) => getTile(grid, { tx, ty: top + offset })).every(tile => tile !== null && tile.terrain !== "water");
+    const dry = Array.from({ length: bottom - top + 1 }, (_, offset) => getTile(grid, { tx, ty: top + offset })).every(tile => tile !== null && (waterReach || tile.terrain !== "water"));
     if (dry) for (let ty = top; ty <= bottom; ty += 1) cells.add(key(tx, ty));
   }
+  return cells;
+}
+
+export function palisadeCellBoundaryLoops(cells: ReadonlySet<string>): readonly PalisadePath[] {
   const outgoing = new Map<string, TileEdgePoint[]>();
   const add = (a: TileEdgePoint, b: TileEdgePoint) => outgoing.set(key(a.x, a.y), [...(outgoing.get(key(a.x, a.y)) ?? []), b]);
   for (const cell of cells) {
