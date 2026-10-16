@@ -241,7 +241,7 @@ test("every reason's first stop in the bot's twenty years (AUTO_PAUSE_PAIRS)", {
     const { by } = JSON.parse(readFileSync(join(pairs!, `${name}.json`), "utf8")) as { by: "tick" | "command" };
     const before = read(`${name}.before.json`); const after = read(`${name}.after.json`);
     const step = autoPauseStep(autoPauseMemory(before), after, by === "tick" ? before : after);
-    const items = step.fresh.filter(item => item.kind === "event" ? item.event.reason === name : `matter-${item.matter.kind}` === name);
+    const items = step.fresh.filter(item => item.kind === "event" ? item.event.reason === name : item.kind === "matter" && `matter-${item.matter.kind}` === name);
     assert.ok(items.length > 0, name);
     if (by === "tick") assert.deepEqual(autoPauseStep(autoPauseMemory(before), after, after).fresh, [], `${name}: as a load, no stop`);
     const line = autoPauseLines(after, items)[0]!;
@@ -252,7 +252,7 @@ test("every reason's first stop in the bot's twenty years (AUTO_PAUSE_PAIRS)", {
       const want = { will_change: "lord", contested: "modal", suit_defence: "lord", entry_threat: "lord", audit: "lord", estate_petition: "lord" }[item.matter.kind];
       assert.equal(line.link?.kind, want, name);
       if (item.matter.kind === "suit_defence" || item.matter.kind === "entry_threat") assert.deepEqual(line.link, { kind: "lord", screen: "ledger", focus: item.matter.id });
-    } else {
+    } else if (item.kind === "event") {
       const reason = item.event.reason;
       assert.equal(line.word, AUTO_PAUSE_COPY.reasons[reason]);
       const record = after.history?.records.find(entry => entry.id === item.event.recordId);

@@ -29,7 +29,8 @@ export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSe
   // LS1-8: the rail's order — the held chips, then the year's results chip (the lord's decisions, LS1-4), then the rest,
   // the newest that fit (the oldest go first): no other chip keeps the results chip off the rail.
   const pinned = shown.filter(held);
-  const isResults = (beat: StoryBeat) => !held(beat) && beat.kind === "decision_trace" && beat.fold === undefined;
+  // LS1-11: a decision left past its deadline is one of the lord's results too (what came of his silence).
+  const isResults = (beat: StoryBeat) => !held(beat) && ((beat.kind === "decision_trace" && beat.fold === undefined) || beat.kind === "decision_lapsed");
   const results = shown.filter(isResults);
   const rest = foldChips(shown.filter(beat => !held(beat) && !isResults(beat)));
   const room = Math.max(0, MAX_CHIPS - pinned.length - results.length);

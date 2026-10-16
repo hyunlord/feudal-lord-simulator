@@ -9,12 +9,15 @@ import { storyArtStyle } from "../storyArt";
 import { NAT1_BOX_COPY } from "../nat1TextBoxCopy.ko";
 import { textCut } from "./textCut";
 import { openChronicleRecord } from "../lord/chronicleFocus";
+import type { ChipDue } from "../lord/decisions/deadlines";
 
 // UI-4 event cards (not modal: time runs on unless the setting stops it): a folded chip under the crisis icons for
 // each beat the world has already shown; a tap opens its card — the Wave 16 illustration, one line, the facts,
 // [위치로] and [조언]; a decision beat's card opens its modal instead ([결정하기]).
-export function EventCards({ beats, onDismiss, onDecide, notice = null }: {
+export function EventCards({ beats, due = new Map(), onDismiss, onDecide, notice = null }: {
   readonly beats: readonly StoryBeat[];
+  /** LS1-11: a held chip's time left by the engine's deadline, and whether it is in its last season. */
+  readonly due?: ReadonlyMap<string, ChipDue>;
   readonly onDismiss: (id: string) => void;
   readonly onDecide: (beat: StoryBeat) => void;
   /** LM-R1: the seasons' stacked notice, after the beats' chips (`SeasonNotice`). */
@@ -28,8 +31,11 @@ export function EventCards({ beats, onDismiss, onDecide, notice = null }: {
       <div className="event-chips">
         {beats.map(beat => (
           <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} data-chip-id={beat.id} aria-expanded={openId === beat.id}
-            aria-label={EVENT_STORY_COPY.chipLabel(beat.title)} onPress={() => setOpenId(current => current === beat.id ? null : beat.id)} variant="secondary">
+            data-near={due.get(beat.id)?.near === true ? "true" : undefined}
+            aria-label={EVENT_STORY_COPY.chipLabel(due.has(beat.id) ? `${beat.title} · ${due.get(beat.id)!.left}` : beat.title)}
+            onPress={() => setOpenId(current => current === beat.id ? null : beat.id)} variant="secondary">
             {beat.illustration === null ? null : <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />}{beat.title}
+            {due.has(beat.id) ? <span className="event-chip-due">{due.get(beat.id)!.left}</span> : null}
           </Button>
         ))}
         {notice}
