@@ -128,7 +128,9 @@ export function useStoryPresentation(input: {
     if (changed) setRevision(revision => revision + 1);
   });
   const current = new Set(beats.map(beat => beat.id));
-  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead, heldChipIds(state));
+  // The chip whose card is open (EventCards): held on the rail while it is.
+  const [openId, setOpenId] = useState<string | null>(null);
+  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead, heldChipIds(state), openId);
   const visibleKey = visible.map(beat => beat.id).join("|");
   // A new chip: stop time if the setting asks for it.
   useEffect(() => {
@@ -220,6 +222,8 @@ export function useStoryPresentation(input: {
   }, [nextWakeMs]);
   return {
     visible,
+    openId,
+    setOpenId,
     // CHIP-FOLD: a folded chip put away puts away every chip it stands for.
     dismiss: (id: string) => {
       const ids = visible.find(beat => beat.id === id)?.folded ?? [id];
