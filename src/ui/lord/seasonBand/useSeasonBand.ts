@@ -8,7 +8,7 @@ import { recordTownClose } from "./townCloses";
 import { growthBlock } from "../../../engine/growthBlock";
 import { GROWTH_COPY } from "../growth/growthCopy.ko";
 import { growthView } from "../growth/growthMark";
-import { growthHeldQuery, noteGrowthClose, startGrowthTrack } from "../growth/growthTrack";
+import { growthHeldQuery, markLastClose, noteGrowthClose, startGrowthTrack } from "../growth/growthTrack";
 import { noteStageClose, stageSeedQuery, startStageTrack } from "../relations/stageTrack";
 import { seasonBand, seasonDeathCauses, townSize, townSnapshot, type SeasonBand, type TownSnapshot } from "./seasonBandModel";
 
@@ -51,7 +51,8 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
     if (previous === lastEnd) return;
     const closed = history.at(-1);
     const after = townSnapshot(state);
-    if (closed !== undefined) { recordTownClose(closed.year, closed.season, after); noteGrowthClose(closed.year, closed.season, growthBlock(state), townSize(after)); noteStageClose(state, closed); }
+    if (closed !== undefined) { recordTownClose(closed.year, closed.season, after); noteGrowthClose(closed.year, closed.season, growthBlock(state), townSize(after));
+      markLastClose((growthView(state)?.mark ?? null) !== null); noteStageClose(state, closed); }
     if (!enabled || closed === undefined || !seasonJustClosed(previous, lastEnd, priorEnd)) { snapshotRef.current = after; return; }
     const stewardHandled = seasonStewardView(state, closed.startTick)?.items.length ?? 0;
     const growth = growthView(state);

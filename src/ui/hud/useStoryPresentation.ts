@@ -9,7 +9,7 @@ import { storySeen } from "../../engine/storySeen";
 import { useGameApi } from "../../state/gameStore";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
-import { foldChips } from "./chipFold";
+import { LINGER_MS, storyChips } from "./storyChips";
 import type { UiModal } from "../stateMachine/uiStateMachine";
 import { latestChapterEnd } from "../chronicleModel";
 import { openHomePetitions } from "../lordCardsModel";
@@ -24,11 +24,6 @@ import { SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLa
 // minute after the beat is over (its facts as last seen). A decision beat also opens its modal once, on the same
 // delay (the famine's answer, the petition); the chapter's end opens the chronicle page once. With the setting on,
 // a new chip stops time (UI-4: cards are not modal by default). storyBeats reads the state only (0.01–0.02 ms).
-const LINGER_MS = 60_000;
-const MAX_CHIPS = 3;
-/** Beats whose chip goes the moment the beat is over: a decision once answered; the year's results chip (LS1-4) once the
- * year turns — the year card takes the year before, so the rail holds one results chip at a time (LS1-6). */
-const NO_LINGER: ReadonlySet<StoryBeat["kind"]> = new Set(["lord_decision", "decision_trace"]);
 
 type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean };
 
@@ -74,28 +69,6 @@ export function yearCardDue(previous: Readonly<{ year: number; tick: number }> |
   return loaded && state.tick % YEAR_TICKS < YEAR_TICKS / 4 && (state.seen?.marks.length ?? 0) > 0 ? last : null;
 }
 
-/**
- * The chips shown now, at most MAX_CHIPS: each beat seen `delayMs` ago, not put away, still current or within its minute
- * after. DEC-CARD (A3): a house change's chip is never pushed out by newer chips (at 10× a season's chips come fast).
- * PLAY-2 (friction 8): a house matter due with a deadline (`due`: heldChipIds, LS1-7 — SUIT-THREAD: the engine's
- * `lordMattersDue`, the will, the contested inheritance, a suit against the lord, an entry forewarned; and an audit, an
- * off-map estate's petition; LS1-7: a home petition, a registry offer) stays among the chips until answered or past: closing its card does not put it away,
- * newer chips do not push it out, and it goes the moment it is answered (no lingering). SUIT-THREAD: the lord's loss of
- * a possession (`lasting`) is pinned as a house change is, until put away.
- */
-export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean }>[],
-  current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean, due: ReadonlySet<string> = new Set()): readonly StoryBeat[] {
-  const unanswered = (beat: StoryBeat) => due.has(beat.id) && current.has(beat.id);
-  const shown = entries
-    .filter(entry => (!entry.dismissed || unanswered(entry.beat)) && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs
-      && (current.has(entry.beat.id) || (!NO_LINGER.has(entry.beat.kind) && nowMs - entry.lastSeenMs < LINGER_MS)))
-    .map(entry => entry.beat);
-  const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat);
-  const pinned = shown.filter(held);
-  const rest = foldChips(shown.filter(beat => !held(beat)));
-  // The newest that fit beside the pinned (CHIP-FOLD: never a negative start — with fewer chips than room it took from the end).
-  return [...pinned, ...rest.slice(Math.max(0, rest.length - Math.max(0, MAX_CHIPS - pinned.length)))].slice(0, MAX_CHIPS);
-}
 
 
 export function useStoryPresentation(input: {

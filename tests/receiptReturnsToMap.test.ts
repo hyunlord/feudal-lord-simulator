@@ -19,7 +19,7 @@ import { advanceTick } from "../src/engine/tick";
 import { newGameState } from "../src/state/newGame";
 import type { StoryBeat } from "../src/ui/eventStory";
 import { laterIfReturning, mapTurnTaken, returningToMap, settleReturnToMap, startReturnToMap } from "../src/ui/decisionCard/receiptClose";
-import { storyChips } from "../src/ui/hud/useStoryPresentation";
+import { storyChips } from "../src/ui/hud/storyChips";
 import { heldChipIds } from "../src/ui/lord/decisions/heldChips";
 
 test("a receipt's close returns to the map: each card that shows with 나중에 presses its own, once (StrictMode), until the map", () => {

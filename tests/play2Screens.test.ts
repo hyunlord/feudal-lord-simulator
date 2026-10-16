@@ -41,7 +41,7 @@ import { advanceTick } from "../src/engine/tick";
 import { FamilyLinks } from "../src/ui/chronicle/FamilyLinks";
 import { buildEraConsoleModel } from "../src/ui/EraConsole";
 import type { StoryBeat } from "../src/ui/eventStory";
-import { storyChips } from "../src/ui/hud/useStoryPresentation";
+import { storyChips } from "../src/ui/hud/storyChips";
 import { lordWallPlan } from "../src/ui/lord/advice/lordWall";
 import { LORD_WALL_COPY } from "../src/ui/lord/advice/lordWallCopy.ko";
 import { DECISION_CARDS_COPY } from "../src/ui/lord/decisions/decisionCardsCopy.ko";
