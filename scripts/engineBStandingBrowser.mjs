@@ -2,6 +2,7 @@
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
 refuseHeavyOnMac('EB-INERT standing policy browser QA', { entry: import.meta.url });
 import assert from 'node:assert/strict';
+import { gitText } from './gitPaths.mjs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
@@ -27,7 +28,7 @@ const artifact = (name, bytes) => { writeFileSync(join(out, name), bytes); retur
 const fixture = standingBrowserFixture();
 const result = { functionalPass: false, visualReview: 'pending-human-or-oracle-review',
   source: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  workingTree: execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }),
+  workingTree: gitText(['status', '--porcelain']),
   fixture: artifact('standing.save.json.gz', gzipSync(fixture.save, { level: 9 })),
   expectedLoss: fixture.loss, rows: [], errors: [],
   limits: ['Fixture built by real reducer/season/audit handlers; not natural eligibility or 125-year evidence.',
