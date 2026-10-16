@@ -32,7 +32,7 @@ assert.ok(contract.outcomes.some(row => row.effectKind === 'conditional'
 'Expected result must belong to the actually chosen option, not another choice in the same event');
 const ANSWER = selected.answerId, START = selected.startTick, LIMIT = selected.maximumTick;
 const seedDirectory = join(input, `seed-${selected.seed}`);
-const PRODUCT = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
+const PRODUCT = '00125eb96838ea1143d496c41953159d631e6bd3';
 const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
   sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
   answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,

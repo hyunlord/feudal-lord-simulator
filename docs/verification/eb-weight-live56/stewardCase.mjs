@@ -13,7 +13,7 @@ assert.equal(process.platform, 'linux'); assert.equal(process.env.FLS_REMOTE, '1
 const [input, out, url, caseId] = process.argv.slice(2);
 assert.ok(input && out && url && caseId); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
+const product = '00125eb96838ea1143d496c41953159d631e6bd3';
 const cases = {
   '034': [171999, 'precedent', 'registry:ck_evt_034:steward.precedent|:171', '6034332a3877ebfecc9bd82c009fec694c0ba7003c69183e6d4e2c67e939f06d'],
   '058': [126999, 'remit', 'registry:ck_evt_058:petition.charterFee|ck_evt_058@126000:126', '4b71ac273c1bf3cc4cd4ae64b953fd88d44e31bf727a3b68079d91ccb2209e5e'],

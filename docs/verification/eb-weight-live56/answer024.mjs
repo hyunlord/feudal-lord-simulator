@@ -15,7 +15,7 @@ assert.equal(process.platform, 'linux'); assert.equal(process.env.FLS_REMOTE, '1
 const [input, out, url] = process.argv.slice(2);
 assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
+const product = '00125eb96838ea1143d496c41953159d631e6bd3';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const acquisitionBytes = readFileSync(join(input, 'acquisition.json.gz'));
 const acquisition = JSON.parse(gunzipSync(acquisitionBytes));

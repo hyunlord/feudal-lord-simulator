@@ -49,3 +49,7 @@
 사용자 전달: 화면 시계 재시작 첫 그림에서 옛 시각을 반환하는 `src/ui/usePresentationClock.ts` 문제이며 렌더A의 `claude/ls1-flicker` 수정 대상이다(엔진 변경 없음). 현재5ade799a 네 판을 유지한다. **깜빡임 의심으로 실제 분류된 사례만** 수정의 본선 반영 후 그 기준으로 한 번 재확인한다. 그 외 실패는 현재 기준으로 판정하며 전체 네 판을 자동 반복하지 않는다.
 
 현재 네 판은 종료했다: engineB-ls18-live-{009,130,206}-ff9b96c는 exit0/valid:true, 정확 카드 항목·탐색 SHA 자동 검사 통과, rail=no_observed_absence; JPEG 검토 전 최종 승격하지 않는다. engineB-ls18-answer-046-ff9b96c는 exit1, primaryEffectTraceValid:true, screenCaptureValid:false, year_results_omission. 현재 항목 자체가 없어 rail=unknown_no_current_target이며 깜빡임 의심이 아니다. 이 네 보고서에서 현재 깜빡임 재확인 대상은0건이다.
+
+## 2026-10-16 목책 본선 반영 이후 기준
+
+남은 판은 다음 실행부터00125eb96을 사용한다.이미 제출·종료된 판의 기준과 증빙은 바꾸지 않는다. 기존 통과를 이 기준에서 재검증했다고 표시하지 않는다.5ade799a 네 판은 모두 종료 상태이며 현재 제출 중인 판은 없다.깜빡임 의심만 수정 본선에서1회 확인한다는 제한은 유지한다.

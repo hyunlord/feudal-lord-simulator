@@ -17,7 +17,7 @@ const [input, out] = process.argv.slice(2);
 assert.ok(input && out);
 mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
+const product = '00125eb96838ea1143d496c41953159d631e6bd3';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const compressed = readFileSync(input);
 assert.equal(sha(compressed), '4bfde9d9015d5d5957b11b23bd779e83c39d69f85f7ddb8930e5035e0bc921ec');

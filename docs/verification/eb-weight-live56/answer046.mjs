@@ -18,7 +18,7 @@ assert.match(meta, /^SLOT=heavy$/m); assert.match(meta, /^RUN_CLASS=experiment$/
 const [input, out, url] = process.argv.slice(2);
 assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
+const product = '00125eb96838ea1143d496c41953159d631e6bd3';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const acquisitionBytes = readFileSync(join(input, 'acquisition.json.gz'));
 assert.equal(sha(acquisitionBytes), '7797c4940af51d990eb4deced57d94e0e0e5679ef86f51220ab46c906a41edc0');
