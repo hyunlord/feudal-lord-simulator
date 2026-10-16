@@ -5,11 +5,8 @@ set -euo pipefail
 grep -q '^SLOT=heavy$' .remote-in/meta.env
 grep -q '^RUN_CLASS=experiment$' .remote-in/meta.env
 [ -z "$(git status --porcelain)" ]
-git diff --exit-code 0b9e1a6bbb7c6b47cd19b5a1f1358dedde6afa96 HEAD -- src package.json package-lock.json
+git diff --exit-code 5ade799acb870c00d3fab7f52fe1ca88279854ed HEAD -- src package.json package-lock.json
 case_id=${1:?one case per official experiment}
-case "$case_id" in
-  130|206) echo "LS1-8 must land on main and this audit baseline must be reviewed before replaying $case_id" >&2; exit 2;;
-esac
 out=".remote/eb-weight-live56/$case_id"
 mkdir -p "$out"
 git rev-parse HEAD > "$out/source-revision.txt"

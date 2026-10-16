@@ -38,7 +38,7 @@ assert.ok(selected, 'Unknown case; only marriage and small-rights are allowed');
 mkdirSync(out, { recursive: true });
 assert.equal(readdirSync(out).length, 0, 'Never overwrite acquisition evidence');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0b9e1a6bbb7c6b47cd19b5a1f1358dedde6afa96';
+const product = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
 const expectedInput = selected.rawSha256;
 const targets = selected.targets;
 const cohort = new Set(JSON.parse(readFileSync(new URL('./inventory.json', import.meta.url))).rows.map(row => row.entryId));

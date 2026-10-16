@@ -1,3 +1,4 @@
+import { observeChipRail } from './chipRailObservation.mjs';
 import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import { saveAdmissions } from './reviewedSaveAdmission.mjs';
 // One genuine answer, normal UI time, and passive reads. No decision is answered by this observer.
@@ -11,7 +12,8 @@ import { gunzipSync, gzipSync } from 'node:zlib';
 
 assert.equal(process.platform, 'linux', 'Game/browser execution belongs on DGX');
 assert.equal(process.env.FLS_REMOTE, '1', 'Use the official remote runner');
-const [input, out, url, entryId] = process.argv.slice(2);
+const [input, out, url, requestedEntryId] = process.argv.slice(2);
+const entryId = /^\d{3}$/.test(requestedEntryId ?? '') ? `ck_evt_${requestedEntryId}` : requestedEntryId;
 assert.ok(input && out && url, 'Usage: tsx liveCase.mjs INPUT_CHECKPOINT_ROOT OUTPUT_DIR URL ENTRY_ID');
 assert.equal(new URL(url).search, '', 'Use the default story delay; supply a bare base URL');
 mkdirSync(out, { recursive: true });
@@ -30,7 +32,7 @@ assert.ok(contract.outcomes.some(row => row.effectKind === 'conditional'
 'Expected result must belong to the actually chosen option, not another choice in the same event');
 const ANSWER = selected.answerId, START = selected.startTick, LIMIT = selected.maximumTick;
 const seedDirectory = join(input, `seed-${selected.seed}`);
-const PRODUCT = '0b9e1a6bbb7c6b47cd19b5a1f1358dedde6afa96';
+const PRODUCT = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
 const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, mode: 'one_historical_answer_current_UI_natural_10x', productRevision: PRODUCT,
   sourceRevision: '2485af40046793f1856829fa1161dc4431942aa7', entryId: selected.entryId, choice: selected.choice,
   answerId: ANSWER, startTick: START, maximumTick: LIMIT, defaultStoryDelay: true,
@@ -80,7 +82,7 @@ async function press(selector) {
 }
 
 async function sample() {
-  return page.evaluate(({ answer, start, expected }) => {
+  const observation = await page.evaluate(({ answer, start, expected }) => {
     const state = window.__FEUDAL_PHASE10_PROOF__.state(), reads = window.__EB_WEIGHT_READS__;
     const from = state.tick - state.tick % reads.yearLength;
     const rows = reads.traceInRange(state, from, state.tick + 1).filter(row => row.decisionId === answer);
@@ -152,6 +154,8 @@ async function sample() {
       ten: document.querySelector('.speed-seal[data-seal="fast"] [data-step="10"]')?.getAttribute('data-on') === 'true',
       autoplayOff: document.querySelector('.autoplay-control > button')?.getAttribute('aria-pressed') === 'false' };
   }, { answer: ANSWER, start: START, expected: selected.expectedConsequence });
+  await observeChipRail(page, report, observation.target ? `results:${observation.results.year}` : null, 'sample');
+  return observation;
 }
 
 function automaticMatch(observation) {

@@ -1,3 +1,4 @@
+import { observeChipRail } from './chipRailObservation.mjs';
 import { navigationStateSha256 as navSha, NAVIGATION_HASH_SCOPE } from './navigationState.mjs';
 import { answerEffects } from '../../../src/engine/decisionTraceAnswers.ts';
 import assert from 'node:assert/strict';
@@ -17,7 +18,7 @@ assert.match(meta, /^SLOT=heavy$/m); assert.match(meta, /^RUN_CLASS=experiment$/
 const [input, out, url] = process.argv.slice(2);
 assert.ok(input && out && url); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '0b9e1a6bbb7c6b47cd19b5a1f1358dedde6afa96';
+const product = '5ade799acb870c00d3fab7f52fe1ca88279854ed';
 assert.equal(execFileSync('git', ['diff', product, 'HEAD', '--', 'src', 'package.json', 'package-lock.json'], { encoding: 'utf8' }), '');
 const acquisitionBytes = readFileSync(join(input, 'acquisition.json.gz'));
 assert.equal(sha(acquisitionBytes), '7797c4940af51d990eb4deced57d94e0e0e5679ef86f51220ab46c906a41edc0');
@@ -47,6 +48,8 @@ let browser, context, page;
 async function state() { return page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state()); }
 async function snapshot(label) {
   const s = await state(), json = JSON.stringify(s), file = `${label}.state.json.gz`;
+  const observation = await read(report.answer?.id ?? null);
+  await observeChipRail(page, report, observation.item ? `results:${observation.results.year}` : null, label);
   writeFileSync(join(out, file), gzipSync(json, { level: 9 }));
   await page.screenshot({ path: join(out, `${label}.jpg`), type: 'jpeg', quality: 55 });
   report.screenshots.push({ label, file, sha256: sha(json), image: `${label}.jpg` }); return s;
