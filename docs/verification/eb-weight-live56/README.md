@@ -43,3 +43,9 @@
 ## 2026-10-16 LS1-8 반영 후 네 사례 재검증
 
 5ade799a를 기준으로009·046·130·206을 다시 확인한다.130·206의LS1-8 대기를 해제했다. 완공 알림 직후0–10틱에만 결과 칩 미노출이 관측되고 그 밖에서 복구되면 **깜빡임 의심**으로 분리한다. 알림 시점이나 복구를 확인하지 못한 경우에는 이 분류를 단정하지 않는다. 레일의 다른 칩 및 결과 칩 노출 관측을 함께 남기며 렌더A가 조사 중인 원인을 엔진 결함으로 확대하지 않는다.
+
+## 2026-10-16 깜빡임 원인 전달과 재확인 범위
+
+사용자 전달: 화면 시계 재시작 첫 그림에서 옛 시각을 반환하는 `src/ui/usePresentationClock.ts` 문제이며 렌더A의 `claude/ls1-flicker` 수정 대상이다(엔진 변경 없음). 현재5ade799a 네 판을 유지한다. **깜빡임 의심으로 실제 분류된 사례만** 수정의 본선 반영 후 그 기준으로 한 번 재확인한다. 그 외 실패는 현재 기준으로 판정하며 전체 네 판을 자동 반복하지 않는다.
+
+현재 네 판은 종료했다: engineB-ls18-live-{009,130,206}-ff9b96c는 exit0/valid:true, 정확 카드 항목·탐색 SHA 자동 검사 통과, rail=no_observed_absence; JPEG 검토 전 최종 승격하지 않는다. engineB-ls18-answer-046-ff9b96c는 exit1, primaryEffectTraceValid:true, screenCaptureValid:false, year_results_omission. 현재 항목 자체가 없어 rail=unknown_no_current_target이며 깜빡임 의심이 아니다. 이 네 보고서에서 현재 깜빡임 재확인 대상은0건이다.
