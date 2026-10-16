@@ -25,9 +25,10 @@ const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, ind
 const url = flags.url ?? 'http://127.0.0.1:4300/';
 const years = Number(flags.years ?? 20);
 const seed = Number(flags.seed ?? 1);
-// LS1-11 (the user 2026-10-16): `--leave-one 1` — the first matter of each asked kind is left: its card put off (나중에)
-// and never answered, nor applied by the bot, so its deadline runs out and the screen's warning, stop and lapse chip show.
-const leaveOne = flags['leave-one'] === '1';
+// LS1-11 / LS1-10 (the user 2026-10-17): `--leave audit,estate_petition,will` — the first matter of each kind named is
+// left: its card put off (나중에) and never answered, nor applied by the bot, so its deadline runs out and the screen's
+// warning, last-season stop and lapse chip show. The kinds not named are answered as the bot plays them.
+const leaveKinds = (flags.leave ?? '').split(',').filter(kind => kind !== '');
 const TICKS_PER_YEAR = 4000;
 const SEASON = TICKS_PER_YEAR / 4;
 for (const dir of ['seasons', 'stops', 'states']) mkdirSync(join(out, dir), { recursive: true });
@@ -68,7 +69,7 @@ await page.evaluate(async ({ told, grace, leave }) => {
     for (const { kind, command } of lordBotCommands(next)) {
       if (ASKED_KINDS.has(kind) && !CARDLESS.has(kind)) {
         const key = matterKey(kind, command);
-        if (leave && !leftKinds.has(kind) && !window.__FLS_LEFT__.has(key)) { leftKinds.add(kind); window.__FLS_LEFT__.add(key); window.__FLS_LEFT_LOG__.push({ tick: next.tick, kind, key }); }
+        if (leave.includes(kind) && !leftKinds.has(kind) && !window.__FLS_LEFT__.has(key)) { leftKinds.add(kind); window.__FLS_LEFT__.add(key); window.__FLS_LEFT_LOG__.push({ tick: next.tick, kind, key }); }
         if (window.__FLS_LEFT__.has(key)) continue;
         if (!waiting.has(key)) waiting.set(key, next.tick);
         if (next.tick - waiting.get(key) < grace) continue;
@@ -115,7 +116,7 @@ await page.evaluate(async ({ told, grace, leave }) => {
       }
     }
   }).observe(document.body, { childList: true, subtree: true });
-}, { told: TOLD, grace: ASKED_GRACE, leave: leaveOne });
+}, { told: TOLD, grace: ASKED_GRACE, leave: leaveKinds });
 
 const read = () => page.evaluate(() => ({ tick: window.__FEUDAL_PHASE10_PROOF__.state().tick }));
 const tenfold = async () => { await page.keyboard.press('Digit0'); await page.waitForTimeout(300); };
@@ -221,5 +222,6 @@ const rail = railReport(told);
 writeFileSync(join(out, 'rail.json'), JSON.stringify(rail, null, 1));
 writeFileSync(join(out, 'bot.json'), JSON.stringify(bot));
 console.log(JSON.stringify({ seasons: log.seasons.length, stops: log.stops.length, told: told.length, botCommands: bot.length,
-  railFlickers: rail.flickers, resultsPushedByPlain: rail.resultsPushedByPlain, seenAgainAfterAYear: rail.seenAgainAfterAYear }));
+  railFlickers: rail.flickers, resultsPushedByPlain: rail.resultsPushedByPlain, seenAgainAfterAYear: rail.seenAgainAfterAYear,
+  townRequestsSeenAgain: rail.townRequestsSeenAgain, left: log.left?.length ?? 0 }));
 await browser.close();

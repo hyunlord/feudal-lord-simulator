@@ -34,6 +34,8 @@ const LAPSED: Readonly<Record<LapseKind, string>> = {
 export const DEADLINE_COPY = {
   thisSeason: "이번 철까지",
   past: "기한 지남",
+  /** LS1-10: a held chip past its deadline, the engine yet to settle it (the screen keeps its last look). */
+  pastSettling: "기한 지남 — 철 말에 정리",
   seasonsLeft: (seasons: number) => `${seasons}철 남음`,
   /** The auto-pause's word and line for a deadline in its last season. */
   pauseWord: "기한 임박",

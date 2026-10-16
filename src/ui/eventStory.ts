@@ -100,6 +100,8 @@ export type StoryBeat = Readonly<{
   lasting?: true;
   /** DEC-CARD-2: the chronicle record the card's [연대기에서 보기] opens on (the decision a consequence followed from). */
   chronicle?: Readonly<{ recordId: string; tick: number; label: string }>;
+  /** LS1-10: news of the lord's family (a moment naming its people): its chip stands in the results layer. */
+  family?: true;
   /** CHIP-FOLD (user 2026-10-11): the cause this beat's chip folds by with others of the same cause (a decision's
    * consequences season after season, the same subject decided again), and the folded chip's title. */
   fold?: Readonly<{ key: string; title: string }>;
@@ -137,11 +139,11 @@ const arableTile = (state: GameState) => {
   return cell === undefined ? null : { tx: cell % state.width, ty: Math.floor(cell / state.width) };
 };
 
-export function storyBeats(state: GameState): readonly StoryBeat[] {
+export function storyBeats(state: GameState, inPlace: ReadonlySet<string> = new Set()): readonly StoryBeat[] {
   // DEC-CARD (Astra A3): a change in the lord's house first — before any petition of the same tick.
   // DEC-CARD-2: then what followed the lord's decisions this season — first in the list, so the season's newer chips
   // (a petition, an offer) push them out of the three shown before anything else.
-  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state), ...lapseBeats(state), ...growthBeats(state)];
+  const beats: StoryBeat[] = [...houseBeats(state), ...traceBeats(state), ...lapseBeats(state, inPlace), ...growthBeats(state)];
   const copy = EVENT_STORY_COPY;
   const records = state.events?.records ?? [];
   const burning = state.events?.burning ?? [];
