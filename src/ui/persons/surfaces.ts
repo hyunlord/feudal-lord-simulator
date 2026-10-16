@@ -8,6 +8,13 @@ const DISMISS: OpenStep = { dismiss: [".chronicle-page .chronicle-keep", ".story
 const FAMILY_CHIP = ".event-chip[data-story='family_news']";
 const open = (put: boolean): readonly OpenStep[] => [{ wait: FAMILY_CHIP, timeout: 90_000 }, ...(put ? [{ pause: 600 }, DISMISS, { pause: 400 }, DISMISS, { pause: 400 }] : []),
   { click: FAMILY_CHIP }, { pause: 600 }];
+// LS1-10: on `first_child` the results layer holds the year's results chip and the first child's moment (both before the
+// marriage's news in the order they came); the marriage's chip waits for its place, so it comes once the results card
+// is read and closed, as a player would.
+const RESULTS_CHIP = ".event-chip[data-story='decision_trace']";
+const openAfterResults: readonly OpenStep[] = [{ wait: RESULTS_CHIP, timeout: 90_000 }, { pause: 600 }, DISMISS, { pause: 400 }, DISMISS, { pause: 400 },
+  { click: RESULTS_CHIP }, { pause: 600 }, { click: ".event-card[data-story='decision_trace'] .event-card-actions > button:last-child" },
+  { wait: FAMILY_CHIP, timeout: 30_000 }, { click: FAMILY_CHIP }, { pause: 600 }];
 
 export const FAMILY_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.family-born", root: ".event-card[data-story='family_news']", frame: "css",
@@ -17,6 +24,6 @@ export const FAMILY_SURFACES: readonly SurfaceRow[] = [
     scene: { kind: "state", set: "petitions", name: "home-pannage", tile: "house", zoom: 1.1, query: "&story-delay=0" }, open: open(true), scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-chronicle"], data: "a death in the lord's family: the ledger's sentence, the spouse left, the way to the chronicle" },
   { id: "hud.event-card.family-married", root: ".event-card[data-story='family_news']", frame: "css",
-    scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" }, open: open(true), scroll: "y",
+    scene: { kind: "state", set: "moments", name: "first_child", tile: "house", zoom: 1.1, query: "&story-delay=0" }, open: openAfterResults, scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-chronicle"], data: "a marriage in the lord's family: the two by name, the ledger's sentence, the way to the chronicle" },
 ];
