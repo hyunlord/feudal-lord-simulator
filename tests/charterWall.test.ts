@@ -90,22 +90,26 @@ test("GB-5: a site is laid out only where its materials can come; a spot given u
   assert.equal(constructionSiteReachable(state, "well", { tx: 1, ty: 1 }), false);
 });
 
-test("GROW-BLOCK-2a ①: a charter search that finds no wall is a failed search with its reason — never a request without a wall (seed 9, 1319)", async () => {
+test("GROW-BLOCK-2a ①: a charter search that finds no wall is a failed search with its reason — never a request without a wall (seed 31, 1330)", async () => {
   const { gunzipSync } = await import("node:zlib");
   const { readFileSync } = await import("node:fs");
   const { decodeSave } = await import("../src/save/saveCodec");
   const { autoplayEraAction, takeCharterSearchReport } = await import("../src/engine/autoplayEra");
   const { lordRequests } = await import("../src/engine/townAgency");
-  // A natural lord-bot state (seed 9 at 1319 before GROW-BLOCK-2a): every condition met, 24 houses, and the mills,
-  // farmsteads and granaries round the houses leave no wall line clear (engine-GROW2-remeasure-588d28d: 528 to the end).
-  const saved = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed9-1319.save.json.gz")))).envelope.state as GameState;
+  // A natural lord-bot state (seed 31 at 1330, GROW-BLOCK-2a's final run, engine B's frozen follow-up save): every
+  // condition met, 24 houses, a start at the map's edge — no wall ring fits (the obstacle envelopes of the palisade
+  // prototype find none either). Seed 9 at 1319 was this test's town until that prototype found its wall
+  // (palisadeBlockedCore). The failure already on record is cleared, so the town's own search records it again.
+  const kept = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed31-1330.save.json.gz")))).envelope.state as GameState;
+  const { charterWallFailure: _kept, ...agency } = kept.agency!;
+  const saved: GameState = { ...kept, agency };
   takeCharterSearchReport();
   assert.equal(autoplayEraAction(saved, () => ({ kind: "none" }) as never).kind, "none");
-  assert.equal(takeCharterSearchReport()?.reason, "buildings");
+  assert.equal(takeCharterSearchReport()?.reason, "edge");
   // The town's weeks (a full town may reuse a week's walk, TA-13): within 1,200 ticks the failure is on record.
   let week = saved;
   for (let tick = 0; tick < 1_200 && week.agency!.charterWallFailure === undefined; tick += 1) week = advanceTick(week);
-  assert.equal(week.agency!.charterWallFailure?.reason, "buildings");
+  assert.equal(week.agency!.charterWallFailure?.reason, "edge");
   assert.equal(week.agency!.charterWallFailure?.attempts, 1);
   assert.equal(lordRequests(week).some(action => action.kind === "proclaim_era"), false, "no request without a wall");
   assert.equal(charterWallPlan(week)!.stage, "failed");
@@ -172,11 +176,11 @@ test("GROW-BLOCK-2a growthBlock: why the lord's town is not growing now, and the
   const load = (file: string) => decodeSave(new Uint8Array(gunzipSync(readFileSync(file)))).envelope.state as GameState;
   // Seed 20 in 1316: the town found the wall and asks the lord — his lever is the request.
   assert.deepEqual(growthBlock(load("fixtures/charter/seed20-1316-asked.save.json.gz")), { reason: "charter_asked", detail: null, since: null, lever: { kind: "answer_request" } });
-  // Seed 9 (old opening) after its failed search: the wall not found — his lever is his own drawing.
-  let nine = load("fixtures/charter/seed9-1319.save.json.gz");
-  for (let tick = 0; tick < 1_200 && nine.agency!.charterWallFailure === undefined; tick += 1) nine = advanceTick(nine);
+  // Seed 31 at 1330 after its failed searches (a start at the map's edge, no ring fits): the wall not found — no lever
+  // (GB2A-8). Seed 9 at 1319 was this test's town until the palisade prototype found its wall (palisadeBlockedCore).
+  const edge = load("fixtures/charter/seed31-1330.save.json.gz");
   // `since` (v56): the last season's close the town grew at, from the record (a v55 fixture: none until it grows).
-  assert.deepEqual(growthBlock(nine), { reason: "wall_not_found", detail: "buildings", since: nine.agency!.seasonGrowth?.lastGrowthTick ?? null, lever: null }, "no build command in lord mode (GB2A-8)");
+  assert.deepEqual(growthBlock(edge), { reason: "wall_not_found", detail: "edge", since: edge.agency!.seasonGrowth?.lastGrowthTick ?? null, lever: null }, "no build command in lord mode (GB2A-8)");
   // The opening: the charter's timber stock unmet — the lord can buy timber.
   const opening = lordGame();
   const timber = growthBlock({ ...opening, population: 600, houses: opening.houses });

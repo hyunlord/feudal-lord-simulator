@@ -37,7 +37,7 @@ export function AutoPauseNotice({ state, hold, paused, ui, onLord, onModal, onDi
   const follow = (link: AutoPauseLink) => { if (link.kind === "lord") onLord(link.screen, link.focus); else onModal(link.modal); };
   return (
     <section className="auto-pause-notice" data-frame="light" aria-live="polite" aria-label={AUTO_PAUSE_COPY.region} data-mode={hold.mode}
-      data-reasons={hold.shown.map(item => item.kind === "event" ? item.event.reason : item.matter.kind).join(" ")}>
+      data-reasons={hold.shown.map(item => item.kind === "event" ? item.event.reason : item.kind === "deadline" ? `deadline_${item.deadline.kind}` : item.matter.kind).join(" ")}>
       <p className="auto-pause-title">{stopped ? AUTO_PAUSE_COPY.title : AUTO_PAUSE_COPY.addedTitle}</p>
       <ul className="auto-pause-lines">
         {lines.slice(0, MAX_LINES).map(line => (

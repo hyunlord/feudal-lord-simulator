@@ -11,6 +11,7 @@
 // notice the page added, with its tick and words.
 //   scripts/remote/run.sh render-VIS-run-<sha7> --heavy --detach -- bash scripts/visibleChangeRun.sh [out]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+import { railReport } from "./visibleChangeRail.mjs";
 refuseHeavyOnMac("브라우저 실행(scripts/visibleChangeRun.mjs)", { remote: "scripts/remote/run.sh render-VIS-run-<sha7> --heavy --detach -- bash scripts/visibleChangeRun.sh", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -24,6 +25,9 @@ const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, ind
 const url = flags.url ?? 'http://127.0.0.1:4300/';
 const years = Number(flags.years ?? 20);
 const seed = Number(flags.seed ?? 1);
+// LS1-11 (the user 2026-10-16): `--leave-one 1` — the first matter of each asked kind is left: its card put off (나중에)
+// and never answered, nor applied by the bot, so its deadline runs out and the screen's warning, stop and lapse chip show.
+const leaveOne = flags['leave-one'] === '1';
 const TICKS_PER_YEAR = 4000;
 const SEASON = TICKS_PER_YEAR / 4;
 for (const dir of ['seasons', 'stops', 'states']) mkdirSync(join(out, dir), { recursive: true });
@@ -46,7 +50,7 @@ const TOLD = '.event-chip, .event-card, .completion-toast, .story-modal, .auto-p
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const { page } = await openScene(browser, { state: start, tile: middle, baseUrl: url, width: 1280, height: 800, rewrite: [LOOP], run: false, initScript: INIT, loadTimeout: 90_000 });
-await page.evaluate(async ({ told, grace }) => {
+await page.evaluate(async ({ told, grace, leave }) => {
   const { lordBotCommands, ASKED_KINDS } = await import('/src/engine/lordBot.ts');
   const { gameReducer } = await import('/src/state/gameStore.ts');
   const { AGENCY_WEEK_TICKS } = await import('/src/content/townAgencyConfig.ts');
@@ -57,11 +61,15 @@ await page.evaluate(async ({ told, grace }) => {
   const waiting = new Map();
   const matterKey = (kind, command) => `${kind}:${command.type}:${command.occurrenceId ?? command.petitionId ?? command.auditId ?? command.requestId ?? command.negotiationId ?? ''}`;
   const CARDLESS = new Set(['counter']);
+  window.__FLS_LEFT__ = new Set(); window.__FLS_LEFT_LOG__ = [];
+  const leftKinds = new Set();
   window.__FLS_BOT__ = state => {
     let next = state;
     for (const { kind, command } of lordBotCommands(next)) {
       if (ASKED_KINDS.has(kind) && !CARDLESS.has(kind)) {
         const key = matterKey(kind, command);
+        if (leave && !leftKinds.has(kind) && !window.__FLS_LEFT__.has(key)) { leftKinds.add(kind); window.__FLS_LEFT__.add(key); window.__FLS_LEFT_LOG__.push({ tick: next.tick, kind, key }); }
+        if (window.__FLS_LEFT__.has(key)) continue;
         if (!waiting.has(key)) waiting.set(key, next.tick);
         if (next.tick - waiting.get(key) < grace) continue;
         waiting.delete(key);
@@ -79,7 +87,7 @@ await page.evaluate(async ({ told, grace }) => {
   window.__FLS_ASKED_NOW__ = () => {
     const state = window.__FEUDAL_PHASE10_PROOF__.state();
     const weekly = { ...state, tick: state.tick - ((state.tick - 1) % AGENCY_WEEK_TICKS + AGENCY_WEEK_TICKS) % AGENCY_WEEK_TICKS };
-    return [...lordBotCommands(state), ...lordBotCommands(weekly)].filter(entry => ASKED_KINDS.has(entry.kind) && !CARDLESS.has(entry.kind)).map(({ kind, command }) => ({ kind, type: command.type,
+    return [...lordBotCommands(state), ...lordBotCommands(weekly)].filter(entry => ASKED_KINDS.has(entry.kind) && !CARDLESS.has(entry.kind) && !window.__FLS_LEFT__.has(matterKey(entry.kind, entry.command))).map(({ kind, command }) => ({ kind, type: command.type,
       key: matterKey(kind, command), choice: command.choiceId ?? command.choice ?? command.response ?? (command.grant === true ? 'grant' : command.grant === false ? 'refuse' : 'grant') }));
   };
   window.__FLS_ANSWERED__ = key => waiting.delete(key);
@@ -107,7 +115,7 @@ await page.evaluate(async ({ told, grace }) => {
       }
     }
   }).observe(document.body, { childList: true, subtree: true });
-}, { told: TOLD, grace: ASKED_GRACE });
+}, { told: TOLD, grace: ASKED_GRACE, leave: leaveOne });
 
 const read = () => page.evaluate(() => ({ tick: window.__FEUDAL_PHASE10_PROOF__.state().tick }));
 const tenfold = async () => { await page.keyboard.press('Digit0'); await page.waitForTimeout(300); };
@@ -124,6 +132,13 @@ async function answerCard(name) {
   const choices = await page.evaluate(() => [...document.querySelectorAll('.story-modal.decision-card [data-choose]')]
     .filter(button => button.offsetParent !== null && !button.disabled).map(button => button.getAttribute('data-choose')));
   if (choices.length === 0) return null;
+  // A left matter's card (its subject among the left keys, the famine by its kind): put off, never answered.
+  const left = await page.evaluate(() => {
+    const card = document.querySelector('.story-modal.decision-card');
+    const subject = card?.getAttribute('data-subject') ?? ''; const family = card?.getAttribute('data-decision-card') ?? '';
+    return [...window.__FLS_LEFT__].find(key => (subject !== '' && key.endsWith(`:${subject}`)) || (family === 'famine' && key.startsWith('famine:'))) ?? null;
+  });
+  if (left !== null) return { card: await page.evaluate(() => document.querySelector('.story-modal.decision-card h2')?.innerText ?? null), kind: 'left', choice: null, left, receipt: false };
   const asked = await page.evaluate(() => window.__FLS_ASKED_NOW__());
   const pick = asked.find(entry => choices.includes(entry.choice));
   if (pick === undefined) return { choice: null, choices, asked: asked.map(entry => `${entry.kind}:${entry.choice}`), receipt: false };
@@ -198,8 +213,13 @@ const told = await page.evaluate(() => window.__FLS_TOLD__);
 const bot = await page.evaluate(() => window.__FLS_BOT_LOG__);
 await dumpState('1320-s0-end'); await shoot(join(out, 'seasons', '1320-s0-end.jpg'));
 log.finishedAt = new Date().toISOString();
+log.left = await page.evaluate(() => window.__FLS_LEFT_LOG__);
 writeFileSync(join(out, 'run.json'), JSON.stringify(log, null, 1));
 writeFileSync(join(out, 'told.json'), JSON.stringify(told));
+// The rail's flickers told apart from its pushes and its chips seen again (scripts/visibleChangeRail.mjs).
+const rail = railReport(told);
+writeFileSync(join(out, 'rail.json'), JSON.stringify(rail, null, 1));
 writeFileSync(join(out, 'bot.json'), JSON.stringify(bot));
-console.log(JSON.stringify({ seasons: log.seasons.length, stops: log.stops.length, told: told.length, botCommands: bot.length }));
+console.log(JSON.stringify({ seasons: log.seasons.length, stops: log.stops.length, told: told.length, botCommands: bot.length,
+  railFlickers: rail.flickers, resultsPushedByPlain: rail.resultsPushedByPlain, seenAgainAfterAYear: rail.seenAgainAfterAYear }));
 await browser.close();

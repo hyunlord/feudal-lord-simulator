@@ -19,17 +19,21 @@ const NO_LINGER: ReadonlySet<StoryBeat["kind"]> = new Set(["lord_decision", "dec
  * a possession (`lasting`) is pinned as a house change is, until put away.
  */
 export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean }>[],
-  current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean, due: ReadonlySet<string> = new Set()): readonly StoryBeat[] {
+  current: ReadonlySet<string>, nowMs: number, delayMs: number, houseRead: (id: string) => boolean, due: ReadonlySet<string> = new Set(),
+  open: string | null = null): readonly StoryBeat[] {
   const unanswered = (beat: StoryBeat) => due.has(beat.id) && current.has(beat.id);
   const shown = entries
     .filter(entry => (!entry.dismissed || unanswered(entry.beat)) && !(entry.beat.kind === "house_change" && houseRead(entry.beat.id)) && nowMs - entry.firstSeenMs >= delayMs
       && (current.has(entry.beat.id) || (!NO_LINGER.has(entry.beat.kind) && nowMs - entry.lastSeenMs < LINGER_MS)))
     .map(entry => entry.beat);
-  const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat);
+  // The open card's chip is held while its card is open (render-GROWCARD-probe: the market town's growth card closed under
+  // the reader when a held petition came and the rail had no room left for its plain chip).
+  const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat) || beat.id === open;
   // LS1-8: the rail's order — the held chips, then the year's results chip (the lord's decisions, LS1-4), then the rest,
   // the newest that fit (the oldest go first): no other chip keeps the results chip off the rail.
   const pinned = shown.filter(held);
-  const isResults = (beat: StoryBeat) => !held(beat) && beat.kind === "decision_trace" && beat.fold === undefined;
+  // LS1-11: a decision left past its deadline is one of the lord's results too (what came of his silence).
+  const isResults = (beat: StoryBeat) => !held(beat) && ((beat.kind === "decision_trace" && beat.fold === undefined) || beat.kind === "decision_lapsed");
   const results = shown.filter(isResults);
   const rest = foldChips(shown.filter(beat => !held(beat) && !isResults(beat)));
   const room = Math.max(0, MAX_CHIPS - pinned.length - results.length);
