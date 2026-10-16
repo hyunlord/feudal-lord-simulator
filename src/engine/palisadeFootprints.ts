@@ -8,11 +8,13 @@ import {
   isPointInsidePalisade,
   palisadePathHasBuildingClearance,
   palisadePathEnclosesFootprints,
+  validatePalisadeCandidate,
   type PalisadeFootprint,
   type PalisadePath,
   type PalisadeProposalResult,
 } from "../world/palisadeGeometry";
 import type { GameState } from "./engine.types";
+import { palisadeObstacleEnvelopes } from '../world/palisadeObstacleEnvelope';
 
 const MANOR_FOOTPRINT_PREFIX = "manor-house-";
 const LIVING_CORE_KINDS = new Set<BuildingKind>([
@@ -55,6 +57,8 @@ type ProposalCandidates = {
   compactCandidates?: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
   /** FIX-15 (WP-2): rings that take the water as their bound, tried only once no ring stands on land. */
   waterCandidates?: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
+  obstacleLandCandidates?: readonly (readonly Extract<PalisadeProposalResult, { readonly ok: true }>[])[];
+  obstacleWaterCandidates?: readonly (readonly Extract<PalisadeProposalResult, { readonly ok: true }>[])[];
 };
 /** Immutable tiles plus layout and candidate limit fully determine geometric candidates.
  * Stocks/workers are omitted because supply validation runs after this geometry cache.
@@ -238,6 +242,39 @@ export function computePalisadeProposalForState(
   if (cached.limited) onBudgetHit?.();
   const compact = cached.compactCandidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
   if (compact !== undefined) return compact;
+  const cache = cached;
+  const obstacleCandidate = (waterReach: boolean): Extract<PalisadeProposalResult, { readonly ok: true }> | undefined => {
+    const key = waterReach ? 'obstacleWaterCandidates' : 'obstacleLandCandidates';
+    if (cache[key] === undefined) {
+      const groups: Extract<PalisadeProposalResult, { readonly ok: true }>[][] = [];
+      const seen = new Set<string>();
+      let attempts = 0;
+      for (const clearance of [1, 2, 3]) {
+        const candidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
+        for (const margin of [1, 2, 3]) {
+          if (attempts++ >= candidateLimit) { cache.limited = true; break; }
+          for (const path of palisadeObstacleEnvelopes(state, buildings, all, margin, waterReach, clearance)) {
+            const validation = validatePalisadeCandidate(state, path, all, core, 1, { waterReach });
+            if (!validation.ok) continue;
+            const { candidate } = validation;
+            const pathKey = JSON.stringify(candidate.path);
+            if (seen.has(pathKey)) continue;
+            seen.add(pathKey);
+            candidates.set(pathKey, { ok: true, path: candidate.path, runs: candidate.runs,
+              perimeterSteps: candidate.perimeterSteps });
+          }
+        }
+        groups.push([...candidates.values()].sort((left, right) => left.perimeterSteps - right.perimeterSteps
+          || JSON.stringify(left.path).localeCompare(JSON.stringify(right.path))));
+        if (attempts >= candidateLimit && clearance < 3) { cache.limited = true; break; }
+      }
+      cache[key] = groups;
+    }
+    if (cache.limited) onBudgetHit?.();
+    return cache[key]?.flat().find(candidate => acceptPath === undefined || acceptPath(candidate.path));
+  };
+  const dryObstacle = obstacleCandidate(false);
+  if (dryObstacle !== undefined) return dryObstacle;
   // FIX-15 (WP-2): no ring on land at all — rings that take the water as their bound where they must, shortest first.
   if (cached.waterCandidates === undefined) {
     const waterCandidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
@@ -257,6 +294,8 @@ export function computePalisadeProposalForState(
   if (cached.limited) onBudgetHit?.();
   const watered = cached.waterCandidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
   if (watered !== undefined) return watered;
+  const obstacle = obstacleCandidate(true);
+  if (obstacle !== undefined) return obstacle;
   return proposal.ok && acceptPath !== undefined
     ? { ok: false, reason: 'rejected_candidate' }
     : cached.failure;
