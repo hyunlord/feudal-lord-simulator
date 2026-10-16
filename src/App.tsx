@@ -566,7 +566,7 @@ export function App() {
         </div>
         {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector}
           lead={stuckChip === null ? null : <StuckGoodsChip view={stuckChip} onInspect={openInspector} />} /> : null}
-        {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
+        {visibility.crisis ? <EventCards beats={story.visible} openId={story.openId} onOpen={story.setOpenId} onDismiss={story.dismiss}
           onDecide={beat => { if (beat.screen !== undefined) openLord(beat.screen.screen, beat.screen.focus); else if (beat.slot === "population") sendUi({ type: "open_population" }); else if (beat.decision !== null) sendUi({ type: "push_modal", modal: decisionModal(beat.decision) }); }}
           notice={ledgerNotices > 0 ? <SeasonNotice count={ledgerNotices} onOpen={openSeasonNotice} /> : null} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
