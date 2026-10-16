@@ -34,7 +34,7 @@ assert.ok(selected, 'Unknown case; only attention and contested are allowed');
 mkdirSync(out, { recursive: true });
 assert.equal(readdirSync(out).length, 0, 'Never overwrite acquisition evidence');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
+const product = '0b9e1a6bbb7c6b47cd19b5a1f1358dedde6afa96';
 const expectedInput = selected.rawSha256;
 const targets = selected.targets;
 const cohort = new Set(JSON.parse(readFileSync(new URL('./inventory.json', import.meta.url))).rows.map(row => row.entryId));

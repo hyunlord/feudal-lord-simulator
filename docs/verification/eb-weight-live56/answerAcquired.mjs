@@ -13,7 +13,7 @@ import { routeSceneState, sceneStateRefusal } from '../../../scripts/sceneInject
 const [caseId, input, out, url] = process.argv.slice(2);
 assert.ok(out, 'Output directory required'); mkdirSync(out, { recursive: true });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const product = '53407fe6946921ddd448fcffeb417ae07e7351f2';
+const product = '0b9e1a6bbb7c6b47cd19b5a1f1358dedde6afa96';
 const report = { navigationHashScope: NAVIGATION_HASH_SCOPE, trajectoryScope: 'resumed_old_input_under_new_rules', saveAdmissions, schemaVersion: 1, caseId, product, valid: false, lord56Pass: false, humanJpegReview: "pending",
   screenshots: [], actions: [], errors: [], offerNavigation: [], screenCaptureValid: false,
   limits: ['One genuine acquired offer answered through ordinary UI; no fabricated state.',
