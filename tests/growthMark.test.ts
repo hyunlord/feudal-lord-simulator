@@ -15,7 +15,7 @@ import { newGameState } from "../src/state/newGame";
 import { storyBeats } from "../src/ui/eventStory";
 import { GROWTH_COPY } from "../src/ui/lord/growth/growthCopy.ko";
 import { growthMarkOf, growthView } from "../src/ui/lord/growth/growthMark";
-import { growthRun, growthYear, noteGrowthClose, startGrowthTrack } from "../src/ui/lord/growth/growthTrack";
+import { growthRun, growthYear, markLastClose, noteGrowthClose, startGrowthTrack } from "../src/ui/lord/growth/growthTrack";
 import { seasonBand, type TownSnapshot } from "../src/ui/lord/seasonBand/seasonBandModel";
 import { growthYearLine } from "../src/ui/results/lordYearReview";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
@@ -87,6 +87,24 @@ test("the engine's since, when it has one, stands for the screen's count", () =>
   const state = { ...lord, tick: 5 * YEAR };
   assert.equal(growthView(state, growthRun(), block({ since: 2 * YEAR }))?.mark?.text, "정체 3년", "a load, no close seen: the engine knows");
   assert.equal(growthView(state, growthRun(), block({ since: 5 * YEAR - 100 }))?.mark, null, "held less than two seasons");
+});
+
+test("LS1-9: with the engine's since, 정체 only after three whole closes without growth — a band read a tick late counts the same", () => {
+  startGrowthTrack(false);
+  const at = (tick: number) => growthView({ ...lord, tick }, growthRun(), block({ since: 15_000 }))?.mark ?? null;
+  assert.equal(at(16_000), null, "one close without growth");
+  assert.equal(at(17_000), null, "two closes");
+  assert.equal(at(17_001), null, "render-VIS-ls17's 1304 summer: two closes, read a tick late — still not a stop");
+  assert.notEqual(at(18_000), null, "three closes: the stop is said");
+  assert.notEqual(at(18_001), null, "three closes, read a tick late: the same");
+  assert.equal(growthView({ ...lord, tick: 17_001 }, growthRun(), block({ since: 17_000 }))?.mark ?? null, null, "the town grew at the close just past: no stop");
+});
+
+test("LS1-9: the year card's line counts the closes the screen said the town held at (the engine's since as the band says it)", () => {
+  startGrowthTrack(true, town());
+  noteGrowthClose(1300, 0, block(), town()); markLastClose(false);
+  noteGrowthClose(1300, 1, block(), town()); markLastClose(true);
+  assert.equal(growthYear(1300).seasons, 1, "only the close the band said 정체 at");
 });
 
 test("the lever: a button to the command's existing screen; none for lord mode's draw_wall (A1) or no lever", () => {

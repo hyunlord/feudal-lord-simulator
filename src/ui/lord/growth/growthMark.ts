@@ -39,7 +39,10 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   const block = read;
   if (block === null) return null;
   const reason = GROWTH_COPY.reason(block.reason, block.detail);
-  const held = block.since !== null ? state.tick - block.since > GROWTH_HELD_CLOSES * SEASON : run.closes > GROWTH_HELD_CLOSES;
+  // LS1-9: the engine's since is the last close the town grew at (its houses or people above the close before), so the
+  // closes it has not grown at are the whole seasons since — counted whole, a band read a tick after its close counts
+  // the same as one read at it (render-VIS-ls17: 1304's summer said 정체 a season early at 2,001 ticks > 2,000).
+  const held = block.since !== null ? Math.floor((state.tick - block.since) / SEASON) > GROWTH_HELD_CLOSES : run.closes > GROWTH_HELD_CLOSES;
   const years = block.since !== null ? Math.max(1, Math.floor((state.tick - block.since) / YEAR)) : run.known ? Math.max(1, Math.floor(run.closes / 4)) : null;
   const mark = !held ? null : years === null ? { years: null, text: GROWTH_COPY.stalledUnknown, label: GROWTH_COPY.stalledUnknownLabel }
     : { years, text: GROWTH_COPY.stalled(years), label: GROWTH_COPY.stalledLabel(years) };

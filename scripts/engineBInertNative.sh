@@ -10,7 +10,7 @@ expected=$1; baseline=$2; lock=$3
 repo=$PWD
 [[ $(uname -s) == Linux && $(uname -m) == aarch64 && $(node -v) == v24.21.0 ]]
 [[ $(git rev-parse HEAD) == "$expected" && ${FULL_SHA:-} == "$expected" && ${DIRTY:-1} == 0 ]]
-[[ -z $(git status --porcelain --untracked-files=no) ]]
+[[ -z $(git -c core.quotePath=false status --porcelain --untracked-files=no) ]]
 [[ $(sha256sum package-lock.json | awk '{print $1}') == "$lock" ]]
 [[ $(git show "$baseline:package-lock.json" | sha256sum | awk '{print $1}') == "$lock" ]]
 git cat-file -e "$baseline^{commit}"
@@ -39,9 +39,9 @@ for side in baseline changed; do
   tree=$repo; sha=$expected
   if [[ "$side" == baseline ]]; then tree=$worktree; sha=$baseline; fi
   [[ $(git -C "$tree" rev-parse HEAD) == "$sha" ]]
-  [[ -z $(git -C "$tree" status --porcelain --untracked-files=no) ]]
+  [[ -z $(git -c core.quotePath=false -C "$tree" status --porcelain --untracked-files=no) ]]
   mkdir "$out/$side"
-  git -C "$tree" ls-tree -r HEAD src scripts package.json package-lock.json > "$out/$side/source-tree.txt"
+  git -c core.quotePath=false -C "$tree" ls-tree -r HEAD src scripts package.json package-lock.json > "$out/$side/source-tree.txt"
   pids=()
   for seed in 1 2 3 4 5; do
     (cd "$tree"; exec node --import tsx scripts/efficientGrowthRun.ts 24 1200000 "$out/$side/seed-$seed" "$seed" --checkpoint) > "$out/$side/seed-$seed.log" 2>&1 &

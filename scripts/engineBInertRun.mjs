@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { gitText } from './gitPaths.mjs';
 import { execFileSync, spawn } from 'node:child_process';
 import { createWriteStream, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -51,7 +52,7 @@ export async function scoreInertCohort(root, contract, baselinePath, expectedBas
 async function produce(seed, root, revision) {
   assert.match(revision, /^[a-f0-9]{40}$/);
   assert.equal(git('rev-parse', 'HEAD'), revision, 'Execution revision mismatch');
-  assert.equal(git('status', '--porcelain'), '', 'Clean committed checkout required');
+  assert.equal(gitText(['status', '--porcelain']).trim(), '', 'Clean committed checkout required');
   assert.equal(process.platform, 'linux', 'Official Linux runner required');
   assert.equal(process.version, 'v24.21.0', 'Pinned measurement Node runtime required');
   for (const pin of INERT_REVIEWED_EFFECT_SOURCES)

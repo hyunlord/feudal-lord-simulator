@@ -8,7 +8,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { StoryBeat } from "../src/ui/eventStory";
 import { foldChips } from "../src/ui/hud/chipFold";
-import { storyChips } from "../src/ui/hud/useStoryPresentation";
+import { storyChips } from "../src/ui/hud/storyChips";
 import { RESULTS_COPY } from "../src/ui/results/resultsCopy.ko";
 
 const DUES = { key: "lord:시장 부담", title: RESULTS_COPY.trace.foldTitle("lord", "시장 부담") };
@@ -60,4 +60,17 @@ test("LS1-6: the year's results chip goes the moment its year is over (the year 
   const shown = storyChips(seen, new Set([now.id]), 10_000, 500, () => false);
   assert.deepEqual(shown.map(beat => beat.id).filter(id => id.startsWith("results:")), ["results:1303"], "last year's chip is not kept its minute");
   assert.ok(shown.some(beat => beat.id === "fire-2"), "another chip over keeps its minute");
+});
+
+test("LS1-8: the year's results chip keeps its place on a full rail — the oldest plain chip goes; held chips still come first", () => {
+  const year = ({ ...other("results:1305"), kind: "decision_trace" }) as unknown as StoryBeat;
+  const plain = ["wet-1", "family-1", "actual-1"].map(other);
+  const order = [year, ...plain];
+  const seen = order.map((beat, index) => ({ beat, firstSeenMs: 1_000 + index, lastSeenMs: 9_000, dismissed: false }));
+  const ids = storyChips(seen, new Set(order.map(beat => beat.id)), 10_000, 500, () => false).map(beat => beat.id);
+  assert.deepEqual(ids, ["results:1305", "family-1", "actual-1"], "results first among the unheld; the oldest plain chip (wet-1) gives way");
+  const held = ["audit:a1", "registry:r1"].map(other);
+  const withHeld = [...held, year, ...plain].map((beat, index) => ({ beat, firstSeenMs: 1_000 + index, lastSeenMs: 9_000, dismissed: false }));
+  const heldIds = storyChips(withHeld, new Set(withHeld.map(entry => entry.beat.id)), 10_000, 500, () => false, new Set(["audit:a1", "registry:r1"])).map(beat => beat.id);
+  assert.deepEqual(heldIds, ["audit:a1", "registry:r1", "results:1305"], "two held chips, then the results chip; no plain chip");
 });

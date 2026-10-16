@@ -52,6 +52,13 @@ export function noteGrowthClose(year: number, season: number, block: GrowthBlock
   while (state.closes.length > KEEP) state.closes.shift();
 }
 
+/** LS1-9: the close just noted as the screen said it (the band's line, the pill's mark: the engine's since when it has
+ * one), so the year card's "자라지 못한 철" counts the closes the screen said the town held at, whichever count said it. */
+export function markLastClose(said: boolean): void {
+  const last = state.closes.at(-1);
+  if (last !== undefined) state.closes[state.closes.length - 1] = { ...last, marked: said };
+}
+
 export type GrowthRun = Readonly<{ closes: number; known: boolean; start: Readonly<{ year: number; season: number }> | null }>;
 
 /** The stop now: the closes in a row it held, whether the screen saw it begin, and the close it was first seen at. */

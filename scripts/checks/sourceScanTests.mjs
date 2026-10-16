@@ -12,8 +12,12 @@ export const FOLDER_WALKS = {
   "tests/economyHarness.test.ts": ["src/engine/"],
   "tests/engineBInertCapture.test.ts": [],                              // its readdir lists the capture folder of the temporary root it makes
   "tests/engineFrameBudget.test.ts": ["fixtures/saves/v32/"],
+  "tests/eventArtAuto.test.ts": ["assets-inbox/event-art/"],             // scripts/eventArtIntake.ts lists it with readdir when imported
+  "tests/eventArtGeneration.test.ts": ["assets-inbox/event-art/"],       // scripts/eventArtIntake.ts lists it with readdir when imported
   "tests/frameTokens.test.ts": ["src/styles/", "src/ui/", "src/render/", "src/App.tsx"],
+  "tests/gitPaths.test.ts": ["scripts/"],                                // gitPathCalls.mjs scriptFiles lists scripts/ with git ls-files (RR27)
   "tests/hoverOnlyInfo.test.ts": ["src/ui/", "src/render/", "src/App.tsx"],
+  "tests/inputIntentBoundary.test.ts": ["src/render/", "src/ui/", "src/App.tsx"],   // scripts/inputIntentBoundary.ts walks them with readdir
   "tests/inventedNames.test.ts": SRC,
   "tests/ledger.test.ts": SRC,
   "tests/lmr2Ledger.test.ts": SRC,                                        // who imports src/ui/lord/ledger
@@ -41,6 +45,7 @@ export const FOLDER_WALKS = {
   "tests/uiArtSkin.test.ts": ["src/ui/", "src/styles/", "public/"],       // and that the pictures its CSS names exist
   "tests/uiAuditMoney.test.ts": ["src/ui/", "src/render/"],
   "tests/uiGeometryShadow.test.ts": [],                                // its readdir lists the shadow records of the throwaway repository it builds
+  "tests/verifyProvenance.test.ts": ["public/"],                         // scripts/provenanceLedgerFs.ts listAllPublicFiles walks it with readdir
   "tests/wheatFarmRetired.test.ts": ["public/assets/", "src/render/", "fixtures/saves/"],
 };
 
