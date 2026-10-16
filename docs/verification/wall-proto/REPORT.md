@@ -48,8 +48,8 @@
 
 ## 필수 조건
 - typecheck 통과, 목책 관련 시험 225/227(2 건너뜀) — Mac.
-- 기하(바뀐 줄): DGX `engine-WALL-geometry2-aa1c5bc`(RR26 trailer) — 시대 판의 목책 계획 단계(`slot.goals.era-console.*`)·요청 카드·특허 계획·성장 줄 28줄. 선포 의식(`hud.era-ceremony`)은 설계상 열 수 없는 줄이다(시대에 들어서는 틱에만 보임).
-  - 실패한 판들(`engine-WALL-geometry-aa1c5bc`, `engine-WALL-geometry2-aa1c5bc`, `engine-WALL-geometry3-6315fa0`)의 원인은 렌더 A가 찾았다: 성장 카드를 연 지 7–10초 뒤 기한 고정 청원이 오면 LS1-8 레일 순서 때문에 성장 칩이 빠지고 읽던 카드가 함께 닫혔다(`render-GROWCARD-probe-5a293a2`, 4/4) — 실패 사진에 카드가 없던 까닭이다. 렌더 A가 열린 카드의 칩을 레일에 고정하는 고침을 본선 `e9dc519f`에 넣었고, 그 위에서 다시 쟀다.
+- 기하(바뀐 줄): DGX `engine-WALL-geometry4-4a8412e`(RR26 trailer, 본선 `e9dc519f` 위) — 28줄 520칸, 실패 0, 못 연 조건 0, 등록 안 된 틀 0, 깨끗한 트리 — 시대 판의 목책 계획 단계(`slot.goals.era-console.*`)·요청 카드·특허 계획·성장 줄 28줄. 선포 의식(`hud.era-ceremony`)은 설계상 열 수 없는 줄이다(시대에 들어서는 틱에만 보임).
+  - 실패한 판들(`engine-WALL-geometry-aa1c5bc`, `engine-WALL-geometry2-aa1c5bc`, `engine-WALL-geometry3-6315fa0`)의 원인은 렌더 A가 찾았다: 성장 카드를 연 지 7–10초 뒤 기한 고정 청원이 오면 LS1-8 레일 순서 때문에 성장 칩이 빠지고 읽던 카드가 함께 닫혔다(`render-GROWCARD-probe-5a293a2`, 4/4) — 실패 사진에 카드가 없던 까닭이다. 렌더 A가 열린 카드의 칩을 레일에 고정하는 고침을 본선 `e9dc519f`에 넣었고, 그 위에서 다시 쟀다(`engine-WALL-geometry4-4a8412e`, 실패 0). "그 줄만 재면 통과, 28줄 판에서만 실패"는 이 때문이었다 — 판이 길면 기한 고정 청원이 카드가 열린 동안 올 수 있다.
   - 첫 판 `engine-WALL-geometry-aa1c5bc`는 `hud.event-card.growth.market`의 긴 문구 1280×800 두 칸에서 장식 검사(카드 글줄을 가로지르는 세로선 — 카드 뒤 세계에 그려진 목책 기둥)가 걸렸다. 같은 커밋에서 그 줄만 다시 재니 20칸 실패 0(`engine-WALL-row2-aa1c5bc`), 본선 `5ade799a`도 실패 0(`engine-WALL-trunkrow-5ade799`) — 흔들리는 실패로 보고 전체를 한 번 다시 쟀다.
 - 시험: 마지막 커밋에서 DGX test:changed(`--all`), 그 뒤로는 커밋하지 않고 푸시.
 - 시험 고침: `palisadeBlockedCore`의 저장을 엔진 B 증빙 폴더에서 `fixtures/charter/`로 옮기고 seed 26·30을 더함. `charterWall`의 "목책을 못 찾음" 시험 둘을 seed 9(1319, 이제 목책을 찾음)에서 seed 31(1330, 지도 가장자리 시작, 까닭 `edge`)로 옮김 — 저장에 기록된 실패는 지우고 마을이 다시 기록하는지 본다.
