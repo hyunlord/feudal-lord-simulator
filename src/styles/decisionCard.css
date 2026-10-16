@@ -3,6 +3,12 @@
    ~240 px wide (three at 960, two at 720), stacked below that. Text 13 px, nothing under 12 (LM-R2 floor). */
 .petition-card.decision-card { width: min(960px, 96vw); min-height: 0; }
 .decision-card-body { gap: 8px; }
+/* LS1-7 (the user's ruling 2026-10-15; ID 056's follow-up card had its 나중에 below the fold at 1280 × 800): the body alone
+   scrolls — the court line, the head and a family's own part — and the answers and 나중에 stay at the card's foot. The
+   answers keep a scroll of their own only if they alone are taller than the card (their buttons inside it, 나중에 below). */
+.decision-card-body:has(> .decision-card-scroll) { grid-template-rows: minmax(0, 1fr) minmax(0, max-content) auto; overflow: hidden; }
+.decision-card-scroll { display: grid; gap: 8px; align-content: start; min-height: 0; overflow-y: auto; }
+.decision-card-body:has(> .decision-card-scroll) > .decision-card-choices { min-height: 0; overflow-y: auto; }
 .decision-card-court { margin: 0; font-size: 12px; line-height: 1.4; color: var(--palette-ink-light); }
 .decision-card-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; }
 .decision-card-head:not(:has(.decision-card-art)) { grid-template-columns: minmax(0, 1fr); }

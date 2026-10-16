@@ -17,6 +17,7 @@ import { LordRequestModal } from "../hud/LordCards";
 import { DecisionCard } from "../decisionCard/DecisionCard";
 import { AnswerReceipt } from "../decisionCard/AnswerReceipt";
 import { answerMeta } from "../decisionCard/answerReceiptModel";
+import { settleReturnToMap, startReturnToMap } from "../decisionCard/receiptClose";
 import type { DecisionCardView } from "../decisionCard/decisionCardTypes";
 import { useAnswerReceipt } from "../decisionCard/useAnswerReceipt";
 import type { GameAction } from "../../state/gameStore.types";
@@ -135,6 +136,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   }, [ui, shown, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, lordGone, sendUi]);
   // A receipt goes with its modal (Esc closes it as it would the card).
   const { receipt: held, close: closeReceipt } = receipts;
+  // LS1-7: a receipt's close returns to the map — it ends at the map or at the first card that did not put itself off.
+  useEffect(() => { settleReturnToMap(top); }, [top]);
   useEffect(() => { if (held !== null && held.modal !== top) closeReceipt(); }, [held, top, closeReceipt]);
   /** RECEIPTS: an answer on a card — the card turns over to its receipt, or (the engine refused it) closes as before. */
   const answered = (modal: UiModal, command: GameAction, card: DecisionCardView, choiceId: string) => {
@@ -166,7 +169,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onAnswer={choice => answered("audit_decision", { type: "answer_audit", auditId: audit.auditId, choice }, audit.card, choice)} />}
     {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={grant => answered("estate_petition_offmap", { type: "answer_estate_petition", petitionId: offMap.petitionId, grant }, offMap.card, grant ? "grant" : "refuse")} />}
-    {receipt === null ? null : <AnswerReceipt view={receipt} onClose={() => { closeReceipt(); sendUi({ type: "pop_modal" }); }} />}
+    {receipt === null ? null : <AnswerReceipt view={receipt} onClose={() => { closeReceipt(); startReturnToMap(); sendUi({ type: "pop_modal" }); }} />}
     {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
       onChronicle={() => { focusChronicleYears(yearView.year, yearView.year); sendUi({ type: "push_modal", modal: "history" }); }} />}
     {sliceStart === null ? null : <SliceStartPage view={sliceStart} onBegin={() => sendUi({ type: "pop_modal" })} />}
