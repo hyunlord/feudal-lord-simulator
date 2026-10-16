@@ -11,6 +11,7 @@
 // notice the page added, with its tick and words.
 //   scripts/remote/run.sh render-VIS-run-<sha7> --heavy --detach -- bash scripts/visibleChangeRun.sh [out]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+import { railReport } from "./visibleChangeRail.mjs";
 refuseHeavyOnMac("브라우저 실행(scripts/visibleChangeRun.mjs)", { remote: "scripts/remote/run.sh render-VIS-run-<sha7> --heavy --detach -- bash scripts/visibleChangeRun.sh", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -200,6 +201,10 @@ await dumpState('1320-s0-end'); await shoot(join(out, 'seasons', '1320-s0-end.jp
 log.finishedAt = new Date().toISOString();
 writeFileSync(join(out, 'run.json'), JSON.stringify(log, null, 1));
 writeFileSync(join(out, 'told.json'), JSON.stringify(told));
+// The rail's flickers told apart from its pushes and its chips seen again (scripts/visibleChangeRail.mjs).
+const rail = railReport(told);
+writeFileSync(join(out, 'rail.json'), JSON.stringify(rail, null, 1));
 writeFileSync(join(out, 'bot.json'), JSON.stringify(bot));
-console.log(JSON.stringify({ seasons: log.seasons.length, stops: log.stops.length, told: told.length, botCommands: bot.length }));
+console.log(JSON.stringify({ seasons: log.seasons.length, stops: log.stops.length, told: told.length, botCommands: bot.length,
+  railFlickers: rail.flickers, resultsPushedByPlain: rail.resultsPushedByPlain, seenAgainAfterAYear: rail.seenAgainAfterAYear }));
 await browser.close();
