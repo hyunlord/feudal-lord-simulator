@@ -33,7 +33,7 @@ import { LedgerPanel } from "../src/ui/lord/ledger/LedgerPanel";
 import { SUIT_DEFENCE_COPY } from "../src/ui/lord/ledger/suitDefenceCopy.ko";
 import { LORD_MOMENT_COPY, lordMomentWords } from "../src/ui/lordMomentCopy.ko";
 import type { StoryBeat } from "../src/ui/eventStory";
-import { storyChips } from "../src/ui/hud/useStoryPresentation";
+import { storyChips } from "../src/ui/hud/storyChips";
 import { lordMomentBeats } from "../src/ui/lordMomentBeats";
 import { moneyShort } from "../src/ui/money.ko";
 import { wave40RecordSide } from "../src/ui/wave40Art";
