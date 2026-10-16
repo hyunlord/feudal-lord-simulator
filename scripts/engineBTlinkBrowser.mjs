@@ -1,6 +1,7 @@
 // DGX only. Existing variantStates.ts outputs are inputs; no state generation or engine command injection.
 // node_modules/.bin/tsx scripts/engineBTlinkBrowser.mjs --states /home/hyunlord/fls-variant-states --url http://127.0.0.1:4300/ --out .remote/eb-tlink-browser
 import assert from 'node:assert/strict';
+import { gitText } from './gitPaths.mjs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -29,7 +30,7 @@ const artifact = (name, bytes) => { writeFileSync(join(out, name), bytes); retur
 const metadataBytes = readFileSync(join(flags.states, 'states.json'));
 const metadata = JSON.parse(metadataBytes.toString());
 const result = { functionalPass: false, source: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  workingTree: execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }),
+  workingTree: gitText(['status', '--porcelain']),
   scriptSHA256: sha(readFileSync(new URL(import.meta.url))), url: flags.url, viewport: { width: 1280, height: 800 },
   statesManifest: artifact('states.json', metadataBytes), rows: [], errors: [],
   limits: ['Prepared fixture display/answer verification; not natural eligibility or 125-year evidence.',
