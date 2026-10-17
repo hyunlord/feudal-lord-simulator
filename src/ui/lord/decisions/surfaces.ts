@@ -69,4 +69,9 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.lapsed", root: ".event-card[data-story='decision_lapsed']", frame: "css", scene: decisionScene("promises"),
     open: [{ wait: ".event-chip[data-story='decision_lapsed']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-story='decision_lapsed']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li"], data: "a lapse told: the decision left past its deadline and what the engine did with it" },
+  // LS1-12: held decisions of one kind folded into one chip ("영지 밖 청원 2건" on the promises scene) and its card — each
+  // decision with its time left and its own [결정하기].
+  { id: "hud.event-card.held-fold", root: ".event-card[data-chip-id='held:estate-petition']", frame: "css", scene: decisionScene("promises"),
+    open: [{ wait: ".event-chip[data-chip-id='held:estate-petition']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id='held:estate-petition']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-member", ".event-card-member-decide"], data: "the held decisions of one kind as one chip's card: each with its time left and its answer" },
 ];
