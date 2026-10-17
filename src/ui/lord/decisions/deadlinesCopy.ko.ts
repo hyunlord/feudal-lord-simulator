@@ -31,6 +31,11 @@ const LAPSED: Readonly<Record<LapseKind, string>> = {
   audit: "기한이 지나 묵인으로 처리됐습니다",
 };
 
+/** LS1-12: a folded chip's subject, by its members' chip id prefix. */
+const HELD_FOLD_SUBJECT: Readonly<Record<string, string>> = {
+  "estate-petition": "영지 밖 청원", registry: "제안", "home-petition": "본령 청원", audit: "감사", petition: "청원",
+};
+
 export const DEADLINE_COPY = {
   thisSeason: "이번 철까지",
   past: "기한 지남",
@@ -39,7 +44,9 @@ export const DEADLINE_COPY = {
   seasonsLeft: (seasons: number) => `${seasons}철 남음`,
   /** The auto-pause's word and line for a deadline in its last season. */
   pauseWord: "기한 임박",
-  pauseLine: (kind: DeadlineKind) => `${DEADLINE_SUBJECT[kind]}: 이번 철이 지나면 ${IF_LAPSED[kind] ?? "답할 수 없게 됩니다"}`,
+  /** LS1-12: with the decision's own name (its chip's title) when there is one: "영지 밖 청원(지대 감면): …". */
+  pauseLine: (kind: DeadlineKind, name: string | null = null) =>
+    `${DEADLINE_SUBJECT[kind]}${name === null || name === DEADLINE_SUBJECT[kind] ? "" : `(${name})`}: 이번 철이 지나면 ${IF_LAPSED[kind] ?? "답할 수 없게 됩니다"}`,
   /** The lapse chip: one lapse says itself; more say how many. */
   lapsedOne: (kind: LapseKind) => `${LAPSE_SUBJECT[kind]}: ${LAPSED[kind]}`,
   lapsedRegistryAnswered: "제안: 기한이 지나 정해 둔 답으로 처리됐습니다",
@@ -47,4 +54,7 @@ export const DEADLINE_COPY = {
   lapsedLine: (count: number) => count === 1 ? "답하지 않은 결정이 기한을 넘겨 처리됐습니다." : `답하지 않은 결정 ${count}건이 기한을 넘겨 처리됐습니다.`,
   lapsedAdvice: "칩으로 내린 결정은 기한이 있습니다. 칩에 남은 철이 적혀 있고, 마지막 철에는 칩 모양이 바뀝니다.",
   openLabel: "연대기에서 보기",
+  /** LS1-12: held decisions of one kind folded into one chip, and its card. */
+  heldFold: (prefix: string, count: number) => `${HELD_FOLD_SUBJECT[prefix] ?? "결정"} ${count}건`,
+  heldFoldLine: (count: number) => `답을 기다리는 결정 ${count}건입니다. 기한이 이른 것부터 하나씩 답하세요.`,
 } as const;

@@ -7,6 +7,7 @@ import { HOME_PETITION_ART } from "../../wave44Art";
 import type { DecisionCardView, DecisionChoiceView } from "../decisionCardTypes";
 import { outlookLater, outlookOf, outlookRemembers, outlookTreasury } from "../outlook";
 import { HOME_PETITION_CARD_COPY as COPY, HOME_PETITION_STAKE } from "./homePetitionCopy.ko";
+import { askedOrFirst } from "../../lord/decisions/decisionFocus";
 
 // DEC-CARD, the home estate's petition (LM-R1 FIX-14): the petition's own words as the situation, its kind's stake,
 // and each answer from the engine's outlook (DEC-CARD-2, DC-D7 `answerOutlook`): the treasury's change now, what it sets
@@ -18,7 +19,7 @@ import { HOME_PETITION_CARD_COPY as COPY, HOME_PETITION_STAKE } from "./homePeti
 const money = (pennies: number): string => pennies > 0 ? COPY.treasuryIn(pennies) : pennies < 0 ? COPY.treasuryOut(-pennies) : COPY.treasurySame;
 
 export const homePetitionCard = perState((state: GameState): DecisionCardView | null => {
-  const petition = openHomePetitions(state)[0];
+  const petition = askedOrFirst(openHomePetitions(state), entry => `home-petition:${entry.id}`);
   // The petition's title and words as its chip shows them (ER-13: the canon's variant words when the engine finds them so).
   const head = homePetitionView(state);
   if (petition === undefined || head === null) return null;

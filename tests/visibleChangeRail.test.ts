@@ -48,4 +48,8 @@ test("a chip off the rail for more than a year and back for good is a chip seen 
   const report = railReport(told);
   assert.equal(report.seenAgainAfterAYear, 1);
   assert.equal(report.townRequestsSeenAgain, 1, "the same kind's request remade under its id (v1.1 §7 item 7)");
+  const kind = railReport([...commit([add(100, "held:estate-petition")]), ...commit([gone(300, "held:estate-petition")]), ...commit([add(6000, "held:estate-petition")]),
+    ...commit([{ ...add(6010, "held:estate-petition"), fresh: true }])]);
+  assert.equal(kind.heldKindsBack, 1, "a kind's chip back after a season is new, counted apart (LS1-13)");
+  assert.equal(kind.seenAgainAfterAYear, 0);
 });

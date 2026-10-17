@@ -26,6 +26,7 @@ import { perState } from "./perState";
 import { HOME_PETITION_COPY, LORD_CARDS_COPY, type PetitionParties } from "./lordCardsCopy.ko";
 import { PETITION_COPY } from "./petitionCopy.ko";
 import { HOME_PETITION_ART, type Wave44ImageId } from "./wave44Art";
+import { askedOrFirst } from "./lord/decisions/decisionFocus";
 
 // LM-R1 (petitions) the lord's cards, lord mode only (`lordMode`): the home estate's petitions as the engine raises them
 // (`lordEstatePetitions`, estate "estate-home", FIX-14 SW-11) — a different API from the political petitions'
@@ -95,7 +96,7 @@ export function homeStanding(state: GameState, petition: EstatePetition & { read
 /** The first home petition waiting for the lord as its chip and card frame show it, or null (none, or not lord mode). Once per
  * state (`perState`): the story's chips read it on every render; it runs no answer (the card's outlook is homePetitionCard's). */
 export const homePetitionView = perState((state: GameState): HomePetitionView | null => {
-  const petition = openHomePetitions(state)[0];
+  const petition = askedOrFirst(openHomePetitions(state), entry => `home-petition:${entry.id}`);
   if (petition === undefined) return null;
   const copy = HOME_PETITION_COPY[petition.kind];
   // ER-13 (engine B): the canon's words for this very petition (041 · 048 · 056) when the engine finds them so — words only;

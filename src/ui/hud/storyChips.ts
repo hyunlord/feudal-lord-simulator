@@ -1,5 +1,6 @@
 import type { StoryBeat } from "../eventStory";
 import { foldChips } from "./chipFold";
+import { foldHeld } from "./heldFold";
 
 // The rail's chips (UI-4; out of useStoryPresentation.ts, LS1-8): which beats show as chips now, in what order, at most
 // MAX_CHIPS — the held first, then the year's results chip, then the newest of the rest.
@@ -33,7 +34,8 @@ export function storyChips(entries: readonly Readonly<{ beat: StoryBeat; firstSe
   const held = (beat: StoryBeat) => beat.kind === "house_change" || beat.lasting === true || unanswered(beat) || beat.id === open;
   // LS1-8: the rail's order — the held chips, then the year's results chip (the lord's decisions, LS1-4), then the rest,
   // the newest that fit (the oldest go first): no other chip keeps the results chip off the rail.
-  const pinned = shown.filter(held);
+  // LS1-12: held decisions of one kind fold into one chip (heldFold.ts).
+  const pinned = foldHeld(shown.filter(held));
   // LS1-11: a decision left past its deadline is one of the lord's results too (what came of his silence). LS1-10: so is
   // the lord's family's news. The layer keeps the order things came in (the entries' first sighting): a newer chip never
   // takes the place of one already shown or waiting longer, and room that comes goes to the longest waiting first.

@@ -6,7 +6,8 @@ import type { StoryBeat } from "../../eventStory";
 import { recordSentence } from "../../legacy/chapterRecords";
 import { SUIT_STAGE_WORDS } from "../../registryCardCopy.ko";
 import { DECISION_CARDS_COPY } from "./decisionCardsCopy.ko";
-import { auditDecisionHead, offMapPetitionHead } from "./decisionCardsModel";
+import { pendingAudits } from "../../../engine/stewardship";
+import { auditHeadOf, offMapPetitionHeadOf, openOffMapPetitions } from "./decisionCardsModel";
 import { LORD_MATTER_CHIP } from "./lordMattersDue";
 import { LORD_MATTERS_COPY as COPY } from "./lordMattersCopy.ko";
 
@@ -34,8 +35,9 @@ function sentenceOf(state: GameState, template: string, key: string, id: string,
  * mode only: the engine's list is empty otherwise). */
 export function lordMatterBeats(state: GameState): readonly StoryBeat[] {
   const beats: StoryBeat[] = [];
-  const audit = auditDecisionHead(state);
-  const petition = offMapPetitionHead(state);
+  // LS1-12: every audit and off-map petition waiting has its chip (before, only the first did: a second held one had none
+  // until the first was answered); held ones of a kind fold into one (heldFold.ts).
+  const audits = pendingAudits(state); const petitions = openOffMapPetitions(state);
   for (const matter of lordMattersDue(state)) {
     const when = matter.dueTick === null ? null : dateWord(state, matter.dueTick);
     if (matter.kind === "suit_defence") {
@@ -50,10 +52,12 @@ export function lordMatterBeats(state: GameState): readonly StoryBeat[] {
         screen: { screen: "ledger", focus: matter.id }, openLabel: COPY.entryOpen,
         title: COPY.entryTitle, line: sentenceOf(state, "estate.entry_threatened", "threat", matter.id, COPY.entryLine),
         facts: when === null ? [] : [COPY.entryComes(when)], advice: COPY.entryAdvice });
-    } else if (matter.kind === "audit" && audit?.auditId === matter.id) {
+    } else if (matter.kind === "audit" && audits.some(entry => entry.id === matter.id)) {
+      const audit = auditHeadOf(state, audits.find(entry => entry.id === matter.id)!);
       beats.push({ id: LORD_MATTER_CHIP.audit(audit.auditId), kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
         title: audit.title, line: audit.line, facts: [audit.kicker, when === null ? audit.waits : COPY.auditDue(when)], advice: DECISION_CARDS_COPY.auditAdvice });
-    } else if (matter.kind === "estate_petition" && petition?.petitionId === matter.id) {
+    } else if (matter.kind === "estate_petition" && petitions.some(entry => entry.id === matter.id)) {
+      const petition = offMapPetitionHeadOf(state, petitions.find(entry => entry.id === matter.id)!);
       const due = when === null ? petition.waits : COPY.petitionDue(when);
       beats.push({ id: LORD_MATTER_CHIP.petition(petition.petitionId), kind: "lord_decision", illustration: null, tile: null, decision: "estate_petition_offmap",
         title: petition.title, line: petition.line, facts: petition.why === "" ? [due] : [due, petition.why], advice: DECISION_CARDS_COPY.petitionAdvice });

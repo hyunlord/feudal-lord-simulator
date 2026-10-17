@@ -56,7 +56,7 @@ const lastSeasonOf = (dueTick: number): number => Math.floor((dueTick - 1) / SEA
 export const inLastSeason = (tick: number, dueTick: number): boolean => Math.floor(tick / SEASON_TICKS) >= lastSeasonOf(dueTick);
 
 /** A held chip's time left as it says it, and whether it is near (its last season). */
-export interface ChipDue { readonly left: string; readonly near: boolean }
+export interface ChipDue { readonly left: string; readonly near: boolean; /** The engine's deadline (LS1-12: a fold shows its earliest). */ readonly dueTick?: number }
 
 /**
  * Each held chip's time left: the seasons to the one its deadline closes, counting this one. Past its deadline and not
@@ -64,9 +64,9 @@ export interface ChipDue { readonly left: string; readonly near: boolean }
  */
 export function chipDues(state: GameState): ReadonlyMap<string, ChipDue> {
   return new Map(heldDeadlines(state).map(due => {
-    if (due.dueTick < state.tick) return [due.chipId, { left: DEADLINE_COPY.past, near: true }] as const;
+    if (due.dueTick < state.tick) return [due.chipId, { left: DEADLINE_COPY.past, near: true, dueTick: due.dueTick }] as const;
     const seasons = lastSeasonOf(due.dueTick) - Math.floor(state.tick / SEASON_TICKS) + 1;
     const near = inLastSeason(state.tick, due.dueTick);
-    return [due.chipId, { left: near ? DEADLINE_COPY.thisSeason : DEADLINE_COPY.seasonsLeft(seasons), near }] as const;
+    return [due.chipId, { left: near ? DEADLINE_COPY.thisSeason : DEADLINE_COPY.seasonsLeft(seasons), near, dueTick: due.dueTick }] as const;
   }));
 }

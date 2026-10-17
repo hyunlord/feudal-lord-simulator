@@ -12,12 +12,13 @@ export const FLICKER_TICKS = 10;
 const YEAR_TICKS = 4000;
 const SAME_COMMIT_MS = 5;
 // The chips held on the rail until answered or past (heldChipIds) and the house card's: they may push the results chip.
-const HELD = ['registry:', 'home-petition:', 'petition:', 'famine:', 'audit:', 'estate-petition:', 'marriage-decision:', 'suit-defence:', 'entry-threat:', 'house:'];
+const HELD = ['held:', 'registry:', 'home-petition:', 'petition:', 'famine:', 'audit:', 'estate-petition:', 'marriage-decision:', 'suit-defence:', 'entry-threat:', 'house:'];
 const yearOf = tick => 1300 + Math.floor(tick / YEAR_TICKS);
 
 /** The rail's changes: the told log's chip entries grouped into the commits that made them (same tick, within 5 ms). */
 function railChanges(told) {
-  const chips = told.filter(entry => String(entry.cls).startsWith('event-chip') && typeof entry.id === 'string');
+  // A chip lit or its words changed in place (LS1-13) is no change of the rail.
+  const chips = told.filter(entry => String(entry.cls).startsWith('event-chip') && typeof entry.id === 'string' && entry.fresh !== true && entry.changed !== true);
   const changes = [];
   for (const entry of chips) {
     const last = changes.at(-1);
@@ -70,8 +71,11 @@ export function railReport(told) {
   // The town's requests come back under one id by design (a kind's request is remade each week, lordCardsModel): counted
   // apart until the screen tells a returning one as new (v1.1 §7 item 7).
   const townRequest = entry => entry.id.startsWith('lord-request:');
+  // A kind's chip (LS1-13: one id for the kind's held decisions) gone a season and back is a new chip: counted apart.
+  const heldKind = entry => entry.id.startsWith('held:');
   return { flickers: flickers.length, resultsPushedByPlain: pushed.plain.length, resultsPushedByHeld: pushed.held.length,
-    seenAgainAfterAYear: seenAgain.filter(entry => !townRequest(entry)).length, townRequestsSeenAgain: seenAgain.filter(townRequest).length,
+    seenAgainAfterAYear: seenAgain.filter(entry => !townRequest(entry) && !heldKind(entry)).length, townRequestsSeenAgain: seenAgain.filter(townRequest).length,
+    heldKindsBack: seenAgain.filter(heldKind).length,
     flickerList: flickers, pushed, seenAgain };
 }
 
