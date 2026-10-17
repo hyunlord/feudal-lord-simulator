@@ -308,25 +308,37 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
   const site = findBuildSite(state, kind, (coordinate) => accepts(coordinate) && routed(coordinate));
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
   if (autoplaySearchExhausted()) return NONE;
-  // DELIVERY-GAP ①a (the user's ruling 2026-10-16, both modes): the quarry's "road first" candidates are the sites a
-  // construction road reaches, nearest by that road — not the straight line to any road, whose nearest sites may have no
-  // road at all (seed 26's quarry, engine-GAP-diag2-00125eb). The 24 tried stay 24. Every other kind keeps the straight
-  // line: on every kind it moved the sandbox's houses (seed 3's interior lots, a house closing the wall's line —
-  // engine-GAP-tested-dc50f62).
-  const byRoad = kind === 'quarry';
-  const roads = byRoad ? [] : roadTiles(state);
+  const roads = roadTiles(state);
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty, 'later') && accepts(tile))
-    .map(tile => ({ tile, distance: byRoad ? constructionRoadDistance(state, kind, tile) : Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
-    .filter(candidate => !byRoad || Number.isFinite(candidate.distance))
+    .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
+  const road = roadFirst(state, kind, candidates);
+  if (road.kind !== "none" || autoplaySearchExhausted()) return road;
+  // DELIVERY-GAP ①a (the user's rulings 2026-10-16/17, both modes): when the straight line's 24 lay no road, the quarry
+  // tries the sites a construction road reaches, nearest by that road — the straight line's nearest may have no road at
+  // all (seed 26's quarry, engine-GAP-diag2-00125eb). The old order first, the new one only where it fails: on every
+  // kind, or first, it moved the town's houses (B7 seed 3, a house closing the wall's line, engine-GAP-tested-dc50f62)
+  // and its stone (three stone towns fewer, engine-GAP-after-99fb371).
+  if (kind === 'quarry') {
+    const reached = candidates.map(({ tile }) => ({ tile, distance: constructionRoadDistance(state, kind, tile) }))
+      .filter(candidate => Number.isFinite(candidate.distance))
+      .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
+    const byRoad = roadFirst(state, kind, reached);
+    if (byRoad.kind !== "none" || autoplaySearchExhausted()) return byRoad;
+  }
+  // FIX-10 (FD-4): no site for the quarry or logging camp on this side — a ford or bridge to the far bank's rock or wood.
+  return crossingAction(state, kind);
+}
+
+/** The "road first" step: the road to the first of `candidates` (24 at most) that keeps the wall's and the services' space. */
+function roadFirst(state: GameState, kind: BuildingKind, candidates: readonly { readonly tile: TileCoordinate }[]): AutoplayAction {
   for (const candidate of candidates.slice(0, 24)) {
     if (autoplaySearchExhausted()) return NONE;
     if (!preservesAutoplayWallSpace(state, kind, candidate.tile) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tile.tx, ty: candidate.tile.ty })) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;
   }
-  // FIX-10 (FD-4): no site for the quarry or logging camp on this side — a ford or bridge to the far bank's rock or wood.
-  return crossingAction(state, kind);
+  return NONE;
 }
 
 function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): AutoplayAction {

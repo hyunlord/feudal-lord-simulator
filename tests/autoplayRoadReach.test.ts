@@ -60,3 +60,14 @@ test("DELIVERY-GAP ①a: a quarry site not on a field and refused only for its w
   assert.equal(Number.isFinite(constructionRoadDistance(town, "quarry", placed!)), true);
   assert.equal(onField(placed!), false);
 });
+
+test("DELIVERY-GAP ①a: the water setback stays while a dry quarry site is reached — the old setback first, the new one only where it fails", () => {
+  // The same 1316 town with its field lifted off (21,47): that dry site, five road tiles off, is now one the bot can
+  // build on — so (21,45) keeps its water setback, and the road first goes to the dry site.
+  const lifted = new Set([0, 1].flatMap(dy => [0, 1].map(dx => (47 + dy) * state.width + 21 + dx)));
+  const dry: GameState = { ...state, zones: zonesOf(state).map(zone => zone.kind !== "arable" ? zone
+    : { ...zone, membership: zone.membership.filter(index => !lifted.has(index)) }) } as GameState;
+  assert.equal(autoplayCanPlace(dry, "quarry", 21, 47, "later"), true);
+  assert.equal(hasAutoplayBuildingClearance(dry, "quarry", { tx: 21, ty: 45 }), false, "a dry site is reached: the water setback stays");
+  assert.equal(hasAutoplayBuildingClearance(state, "quarry", { tx: 21, ty: 45 }), true, "no dry site reached: it opens");
+});
