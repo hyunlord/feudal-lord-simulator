@@ -10,6 +10,7 @@ import { homePetitionView } from "../lordCardsModel";
 import { marriageDecisionHead, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
 import { lordMatterBeats } from "../lord/decisions/lordMatterBeats";
 import { DEADLINE_COPY } from "../lord/decisions/deadlinesCopy.ko";
+import { storyBeats } from "../eventStory";
 import { LORD_MATTER_CHIP } from "../lord/decisions/lordMattersDue";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
 import { houseChangeView } from "../results/houseChange";
@@ -40,7 +41,8 @@ const none = { link: null, label: null } as const;
 /** The notice's lines, in the order they came: the reason's word, the engine's sentence and its link. */
 export function autoPauseLines(state: GameState, items: readonly AutoPauseItem[]): readonly AutoPauseLine[] {
   return items.map(item => item.kind === "event" ? eventLine(state, item.key, item.event)
-    : item.kind === "deadline" ? { key: item.key, word: DEADLINE_COPY.pauseWord, sentence: DEADLINE_COPY.pauseLine(item.deadline.kind), link: null, linkLabel: null }
+    : item.kind === "deadline" ? { key: item.key, word: DEADLINE_COPY.pauseWord,
+      sentence: DEADLINE_COPY.pauseLine(item.deadline.kind, storyBeats(state).find(beat => beat.id === item.deadline.chipId)?.title ?? null), link: null, linkLabel: null }
     : matterLine(state, item.key, item.matter));
 }
 

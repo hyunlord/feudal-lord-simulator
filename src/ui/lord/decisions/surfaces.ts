@@ -44,11 +44,11 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "a house's forcible entry forewarned: the engine's warning, the season it comes, the button to the warning in the ledger" },
   // PLAY-2 §4: a Michaelmas audit's finding and an off-map estate's petition (the engine's lordMattersDue) as their chips'
   // cards — the engine's deadline as a season, as the will's; [결정하기] opens the decision card; kept until answered.
-  { id: "hud.event-card.audit-kept", root: ".event-card[data-chip-id^='audit:']", frame: "css", scene: decisionScene("audit-pending"),
-    open: [{ wait: ".event-chip[data-chip-id^='audit:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='audit:']" }, { pause: 600 }], scroll: "y",
+  { id: "hud.event-card.audit-kept", root: ".event-card[data-chip-id='held:audit']", frame: "css", scene: decisionScene("audit-pending"),
+    open: [{ wait: ".event-chip[data-chip-id='held:audit']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id='held:audit']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"], data: "an audit's finding as its chip's card: what it found, the engine's deadline as a season, the button to the card" },
-  { id: "hud.event-card.offmap-kept", root: ".event-card[data-chip-id^='estate-petition:']", frame: "css", scene: decisionScene("inherited"),
-    open: [{ wait: ".event-chip[data-chip-id^='estate-petition:']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id^='estate-petition:']" }, { pause: 600 }],
+  { id: "hud.event-card.offmap-kept", root: ".event-card[data-chip-id='held:estate-petition']", frame: "css", scene: decisionScene("inherited"),
+    open: [{ wait: ".event-chip[data-chip-id='held:estate-petition']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id='held:estate-petition']" }, { pause: 600 }],
     scroll: "y", requires: ["h2", ".event-card-line", ".event-card-facts li", ".event-card-decide"],
     data: "an off-map estate's petition as its chip's card: the ask, the engine's deadline as a season, why it came to the lord, the button to the card" },
   { id: "modal.lord.contested", ...CARD, root: card("contested"), scene: decisionScene("contested"),
@@ -69,4 +69,13 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.lapsed", root: ".event-card[data-story='decision_lapsed']", frame: "css", scene: decisionScene("promises"),
     open: [{ wait: ".event-chip[data-story='decision_lapsed']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-story='decision_lapsed']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li"], data: "a lapse told: the decision left past its deadline and what the engine did with it" },
+  // LS1-12: held decisions of one kind folded into one chip ("영지 밖 청원 2건") and its card — each decision with its time
+  // left and its own [결정하기]. Its scene is a copy in the lord2 set of the ledger set's promise-due (the user's ruling
+  // 2026-10-17: no lord2 scene holds two answerable decisions of a kind): ~/fls-lmr2-ledger-states/promise-due.json, built
+  // by scripts/lmr2LedgerStates.ts (`tsx scripts/lmr2LedgerStates.ts ~/fls-lmr2-ledger-states`; seed 1, the lord2
+  // "promises" path played on), tick 63000, off-map petitions 46 (deadline 63000) and 47 (64000) both answerable,
+  // sha256 12524719fde1b1d5fa181f42f8f61ef9df85e8a844e8b17448659e6366156e32. Goes once lmr2States.ts builds a fold scene.
+  { id: "hud.event-card.held-fold", root: ".event-card[data-chip-id='held:estate-petition']", frame: "css", scene: decisionScene("promise-due"),
+    open: [{ wait: ".event-chip[data-chip-id='held:estate-petition']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id='held:estate-petition']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-member", ".event-card-member-decide"], data: "the held decisions of one kind as one chip's card: each with its time left and its answer" },
 ];

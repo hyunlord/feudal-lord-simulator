@@ -22,6 +22,7 @@ import { courtLine } from "../../lordCardsModel";
 import { perState } from "../../perState";
 import { ESTATES_COPY } from "../estates/estatesCopy.ko";
 import { DECISION_CARDS_COPY as COPY, OFFMAP_PETITION_COPY } from "./decisionCardsCopy.ko";
+import { askedOrFirst } from "./decisionFocus";
 
 // LM-R2 (lord mode) the lord's decision cards as view models: the father's new will and the contested inheritance
 // (NG-8 `marriageDecisionDue`), a Michaelmas audit's finding (SW-6 `pendingAudits`) and an off-map estate's petition
@@ -128,11 +129,15 @@ export const marriageDecisionView = perState((state: GameState): MarriageDecisio
 
 export type AuditDecisionHead = Readonly<{ auditId: string; estateId: string; kicker: string; title: string; line: string; waits: string }>;
 
-/** The first audit that found something and waits for the lord, as its chip says it (no dry run); null: none. */
+/** The first audit that found something and waits for the lord (LS1-12: the one asked for), as its chip says it (no dry run); null: none. */
 export function auditDecisionHead(state: GameState): AuditDecisionHead | null {
   if (!lordMode(state)) return null;
-  const audit = pendingAudits(state)[0];
-  if (audit === undefined) return null;
+  const audit = askedOrFirst(pendingAudits(state), entry => `audit:${entry.id}`);
+  return audit === undefined ? null : auditHeadOf(state, audit);
+}
+
+/** LS1-12: an audit waiting for the lord, as its chip says it (every one has its chip; held ones of a kind fold). */
+export function auditHeadOf(state: GameState, audit: ReturnType<typeof pendingAudits>[number]): AuditDecisionHead {
   const steward = personOf(state, audit.stewardId);
   return {
     auditId: audit.id, estateId: audit.estateId, kicker: COPY.auditKicker(audit.mode === "visit"), title: COPY.auditTitle,
@@ -145,7 +150,7 @@ export function auditDecisionHead(state: GameState): AuditDecisionHead | null {
 export const auditDecisionView = perState((state: GameState): AuditDecisionView | null => {
   const head = auditDecisionHead(state);
   if (head === null) return null;
-  const audit = pendingAudits(state)[0]!;
+  const audit = askedOrFirst(pendingAudits(state), entry => `audit:${entry.id}`)!;
   const steward = stewardshipOf(state).stewards.find(entry => entry.personId === audit.stewardId);
   const person = personOf(state, audit.stewardId);
   const name = person === undefined ? COPY.rivalUnknown : personDisplayName(person);
@@ -168,10 +173,14 @@ export function openOffMapPetitions(state: GameState): readonly EstatePetition[]
 export type OffMapPetitionHead = Readonly<{ petitionId: string; estateId: string; kind: EstatePetition["kind"]; kicker: string; title: string;
   line: string; why: string; waits: string }>;
 
-/** The first off-map estate's petition waiting for the lord, as its chip says it (no dry run); null: none. */
+/** The first off-map estate's petition waiting for the lord (LS1-12: the one asked for), as its chip says it (no dry run); null: none. */
 export function offMapPetitionHead(state: GameState): OffMapPetitionHead | null {
-  const petition = openOffMapPetitions(state)[0];
-  if (petition === undefined) return null;
+  const petition = askedOrFirst(openOffMapPetitions(state), entry => `estate-petition:${entry.id}`);
+  return petition === undefined ? null : offMapPetitionHeadOf(state, petition);
+}
+
+/** LS1-12: an off-map estate's petition waiting for the lord, as its chip says it (every one has its chip). */
+export function offMapPetitionHeadOf(state: GameState, petition: EstatePetition): OffMapPetitionHead {
   const copy = OFFMAP_PETITION_COPY[petition.kind as keyof typeof OFFMAP_PETITION_COPY];
   const estate = estateName(state, petition.estateId);
   return {
@@ -185,7 +194,7 @@ export function offMapPetitionHead(state: GameState): OffMapPetitionHead | null 
 export const offMapPetitionView = perState((state: GameState): OffMapPetitionView | null => {
   const head = offMapPetitionHead(state);
   if (head === null) return null;
-  const petition = openOffMapPetitions(state)[0]!;
+  const petition = askedOrFirst(openOffMapPetitions(state), entry => `estate-petition:${entry.id}`)!;
   const copy = OFFMAP_PETITION_COPY[head.kind as keyof typeof OFFMAP_PETITION_COPY];
   const goodwill = stewardshipOf(state).oversight.find(entry => entry.estateId === head.estateId)?.[petition.group] ?? 0;
   const choice = (grant: boolean) => answer(state, grant ? "grant" : "refuse", grant ? copy.grant : copy.refuse,

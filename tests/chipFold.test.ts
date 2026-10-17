@@ -72,5 +72,5 @@ test("LS1-8: the year's results chip keeps its place on a full rail — the olde
   const held = ["audit:a1", "registry:r1"].map(other);
   const withHeld = [...held, year, ...plain].map((beat, index) => ({ beat, firstSeenMs: 1_000 + index, lastSeenMs: 9_000, dismissed: false }));
   const heldIds = storyChips(withHeld, new Set(withHeld.map(entry => entry.beat.id)), 10_000, 500, () => false, new Set(["audit:a1", "registry:r1"])).map(beat => beat.id);
-  assert.deepEqual(heldIds, ["audit:a1", "registry:r1", "results:1305"], "two held chips, then the results chip; no plain chip");
+  assert.deepEqual(heldIds, ["held:audit", "held:registry", "results:1305"], "two held chips (LS1-13: each under its kind's chip), then the results chip; no plain chip");
 });

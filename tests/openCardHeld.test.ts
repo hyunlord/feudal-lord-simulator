@@ -19,5 +19,5 @@ const rail = (open: string | null) => storyChips(entries, current, 10_000, 0, ()
 test("the open card's chip stays on the rail when held chips and the results chip leave no room for a plain one", () => {
   assert.ok(!rail(null).includes("growth:seen"), "closed, the plain chip gives way (LS1-8)");
   assert.ok(rail("growth:seen").includes("growth:seen"), "open, its chip is held");
-  assert.ok(rail("growth:seen").includes("famine:great_famine@61") && rail("growth:seen").includes("estate-petition:58"), "the held chips stay");
+  assert.ok(rail("growth:seen").includes("famine:great_famine@61") && rail("growth:seen").includes("held:estate-petition"), "the held chips stay (LS1-13: the petition under its kind's chip)");
 });

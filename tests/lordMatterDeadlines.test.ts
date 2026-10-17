@@ -17,7 +17,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
 import { lordMattersDue, type LordMatterDue } from "../src/engine/lordDue";
 import { MARRIAGE_ESTATE_ID } from "../src/engine/marriage";
-import { stewardCandidates, stewardshipOf } from "../src/engine/stewardship";
+import { pendingAudits, stewardCandidates, stewardshipOf } from "../src/engine/stewardship";
 import { advanceTick } from "../src/engine/tick";
 import { initialAgency } from "../src/engine/townAgency";
 import { gameReducer } from "../src/state/gameStore";
@@ -26,7 +26,7 @@ import { storyBeats } from "../src/ui/eventStory";
 import { AUTO_PAUSE_COPY } from "../src/ui/hud/autoPauseCopy.ko";
 import { autoPauseLines } from "../src/ui/hud/autoPauseLines";
 import { autoPauseMemory, autoPauseStep, type AutoPauseItem, type AutoPauseMemory } from "../src/ui/hud/autoPauseModel";
-import { auditDecisionHead, offMapPetitionHead } from "../src/ui/lord/decisions/decisionCardsModel";
+import { auditDecisionHead, offMapPetitionHead, openOffMapPetitions } from "../src/ui/lord/decisions/decisionCardsModel";
 import { LORD_MATTERS_COPY } from "../src/ui/lord/decisions/lordMattersCopy.ko";
 import { LORD_MATTER_CHIP, lordMatterChipIds } from "../src/ui/lord/decisions/lordMattersDue";
 
@@ -74,10 +74,11 @@ test("the audit and the off-map petition come from the engine's list only: the s
       due.filter(matter => matter.kind === "audit" || matter.kind === "estate_petition").map(chipOf).sort(), `tick ${state.tick}`);
     const beats = storyBeats(state).map(beat => beat.id);
     assert.equal(new Set(beats).size, beats.length, `no chip twice at tick ${state.tick}`);
-    // A card shows the first waiting one of its kind: that one's chip only, and it is the engine's.
+    // LS1-12 (the user's ruling 2026-10-17): every one still answerable has its chip — held ones of a kind fold into one on
+    // the rail, each answered from its card (before, only the first waiting one of a kind had a chip).
     const audit = auditDecisionHead(state); const petition = offMapPetitionHead(state);
-    assert.deepEqual(beats.filter(id => id.startsWith("audit:")), audit === null ? [] : [LORD_MATTER_CHIP.audit(audit.auditId)]);
-    assert.deepEqual(beats.filter(id => id.startsWith("estate-petition:")), petition === null ? [] : [LORD_MATTER_CHIP.petition(petition.petitionId)]);
+    assert.deepEqual(beats.filter(id => id.startsWith("audit:")).sort(), pendingAudits(state).map(entry => LORD_MATTER_CHIP.audit(entry.id)).sort());
+    assert.deepEqual(beats.filter(id => id.startsWith("estate-petition:")).sort(), openOffMapPetitions(state).map(entry => LORD_MATTER_CHIP.petition(entry.id)).sort());
     for (const id of beats.filter(entry => entry.startsWith("audit:") || entry.startsWith("estate-petition:"))) assert.ok(ids.has(id), id);
     if (audit !== null && petition !== null) both += 1;
   }

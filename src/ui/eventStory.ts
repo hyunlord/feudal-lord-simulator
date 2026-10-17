@@ -102,6 +102,10 @@ export type StoryBeat = Readonly<{
   chronicle?: Readonly<{ recordId: string; tick: number; label: string }>;
   /** LS1-10: news of the lord's family (a moment naming its people): its chip stands in the results layer. */
   family?: true;
+  /** LS1-10: a held chip past its deadline, changed in its place (never folded, LS1-12). */
+  fated?: true;
+  /** LS1-12: the held decisions a folded chip stands for (its card lists them, each answered from there). */
+  members?: readonly StoryBeat[];
   /** CHIP-FOLD (user 2026-10-11): the cause this beat's chip folds by with others of the same cause (a decision's
    * consequences season after season, the same subject decided again), and the folded chip's title. */
   fold?: Readonly<{ key: string; title: string }>;
