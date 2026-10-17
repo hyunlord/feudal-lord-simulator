@@ -68,5 +68,10 @@ export const INPUT_PULL = {
   maxIntakeCarts: 3,
   chains: [
     { converter: "mill", input: "wheat", minReorder: LABOUR_BALANCE.millWheatTarget, sources: ["farmstead"], stores: [{ kind: "granary", target: 40 }] },
+    // STONE-FEED (the user's ruling 2026-10-17): the masonry's one cart carried its stone out, to the stores and the sites, and
+    // fetched its raw stone only once it was down to its last stone's — idle while raw stone lay in the stores (DGX
+    // engine-FEED-diag-cd35df4: seeds 22, 27, 39, the cart out on 90–100 % of those idle samples). Its floor is one stone's
+    // raw stone (the old fetch below 2); no store target — the stores already hold the quarries' raw stone.
+    { converter: "masonry", input: "stone_raw", minReorder: 2, sources: ["quarry"], stores: [] },
   ] satisfies readonly InputPullChain[] as readonly InputPullChain[],
 } as const;
