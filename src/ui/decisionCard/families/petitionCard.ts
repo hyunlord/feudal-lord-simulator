@@ -27,6 +27,7 @@ import { outlookLater, outlookOf, outlookTreasury, type AnswerOutlook } from "..
 import { afterAnswer, remembersFor } from "../remembers";
 import { PETITION_ANSWER_COPY as ANSWER, PETITION_CARD_COPY as COPY, PETITION_STAKE, type AnswerWords } from "./petitionCardCopy.ko";
 import { deadlineLine } from "./petitionSilence";
+import { askedOrFirst } from "../../lord/decisions/decisionFocus";
 
 // DEC-CARD, every political petition (chapter 1's charter and the right's buy-back, the war's five, the plague's four,
 // chapter 4's four, chapter 5's four and the interlude's two). DEC-CARD-2 (DC-D7): each answer reads the engine's outlook
@@ -175,7 +176,7 @@ function laterLines(state: GameState, after: GameState, outlook: AnswerOutlook):
 }
 
 export const petitionCard = perState((state: GameState): PetitionCardView | null => {
-  const petition = openPetitions(state)[0];
+  const petition = askedOrFirst(openPetitions(state), entry => `petition:${entry.id}`);
   const view = petitionDecisionView(state);
   if (petition === undefined || view === null) return null;
   const def = PETITION_DEFS.find(entry => entry.id === petition.defId);

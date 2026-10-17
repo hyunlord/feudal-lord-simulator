@@ -10,6 +10,7 @@ import { NAT1_BOX_COPY } from "../nat1TextBoxCopy.ko";
 import { textCut } from "./textCut";
 import { openChronicleRecord } from "../lord/chronicleFocus";
 import type { ChipDue } from "../lord/decisions/deadlines";
+import { askDecision } from "../lord/decisions/decisionFocus";
 
 // UI-4 event cards (not modal: time runs on unless the setting stops it): a folded chip under the crisis icons for
 // each beat the world has already shown; a tap opens its card — the Wave 16 illustration, one line, the facts,
@@ -46,7 +47,7 @@ export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, 
         // NAT-1: key={open.id} resets the expand state when the player switches to a different card.
         // PLAY-2: [닫기] closes the card; a house decision's chip stays until answered (useStoryPresentation).
         // SUIT-THREAD: a chip that opens a lord screen page folds its card (the page takes the panel slot).
-        <EventCardDetail key={open.id} open={open} onDismiss={id => { onOpen(null); onDismiss(id); }}
+        <EventCardDetail key={open.id} open={open} due={due} onDismiss={id => { onOpen(null); onDismiss(id); }}
           onDecide={beat => { if (beat.screen !== undefined) onOpen(null); onDecide(beat); }} />
       )}
     </section>
@@ -54,8 +55,10 @@ export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, 
 }
 
 /** NAT-1: extracted card body so useState resets on key change (different event card opened). */
-export function EventCardDetail({ open, onDismiss, onDecide }: {
+export function EventCardDetail({ open, due = new Map(), onDismiss, onDecide }: {
   readonly open: StoryBeat;
+  /** LS1-12: a folded chip's members' time left (its card lists them). */
+  readonly due?: ReadonlyMap<string, ChipDue>;
   readonly onDismiss: (id: string) => void;
   readonly onDecide: (beat: StoryBeat) => void;
 }) {
@@ -87,6 +90,16 @@ export function EventCardDetail({ open, onDismiss, onDecide }: {
         </Button>
       )}
       {open.facts.length === 0 ? null : <ul className="event-card-facts">{open.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>}
+      {/* LS1-12: a folded chip's decisions, each with its time left, each answered from here. */}
+      {open.members === undefined ? null : (
+        <ul className="event-card-members">{open.members.map(member => (
+          <li key={member.id} className="event-card-member" data-chip-id={member.id} data-near={due.get(member.id)?.near === true ? "true" : undefined}>
+            <span className="event-card-member-title">{member.title}</span>
+            {due.has(member.id) ? <span className="event-card-member-due">{due.get(member.id)!.left}</span> : null}
+            <Button type="button" className="event-card-member-decide" variant="secondary" onPress={() => { askDecision(member.id); onDecide(member); }}>{member.openLabel ?? EVENT_STORY_COPY.decide}</Button>
+          </li>
+        ))}</ul>
+      )}
       {adviceId === open.id ? <p className="event-card-advice" role="status">{open.advice}</p> : null}
       <div className="event-card-actions">
         {open.decision !== null || open.screen !== undefined || open.slot !== undefined ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}

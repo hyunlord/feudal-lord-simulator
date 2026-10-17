@@ -16,6 +16,7 @@ import { heirCandidateViews, type HeirCandidateView } from "./heirCandidateModel
 import { petitionPresentation, type PetitionPresentation } from "./petitionPresentation";
 import type { Wave8ImageId } from "./wave8Art";
 import type { Wave16ImageId } from "./wave16Art";
+import { askedOrFirst } from "./lord/decisions/decisionFocus";
 
 // UI-4 decisions (modals, time stopped): the Great Famine's answer (F0-C1 FC-2) and the merchants' petition (FC-3).
 // Each option shows the numbers the engine itself predicts for it (F0-C2 HL-3: `recordDecision` on the state that
@@ -59,7 +60,7 @@ const ORDER: readonly PetitionResponse[] = ["accept", "accept_with_price", "refu
  * else the def's, else all three; chapter 5's and the interlude's predict with `legacyDecisionForecast`.
  */
 export function petitionDecisionView(state: GameState): PetitionDecisionView | null {
-  const petition = openPetitions(state)[0];
+  const petition = askedOrFirst(openPetitions(state), entry => `petition:${entry.id}`);
   if (petition === undefined) return null;
   const presentation = petitionPresentation(state, petition);
   const now = { treasury: state.treasuryCoin, merchantGauge: state.politics?.merchantGauge ?? 50 };

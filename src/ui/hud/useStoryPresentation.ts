@@ -232,7 +232,7 @@ export function useStoryPresentation(input: {
   return {
     visible,
     // LS1-11: each held chip's time left by the engine's deadline (the last season marks it near).
-    due: fatedDues(chipDues(state), fates),
+    due: fatedDues(chipDues(state), fates, visible),
     openId,
     setOpenId,
     // CHIP-FOLD: a folded chip put away puts away every chip it stands for.

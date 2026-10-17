@@ -75,7 +75,7 @@ test("a held chip's time left is the engine's deadline less the tick now; its la
     for (const deadline of heldDeadlines(state)) {
       assert.ok(held.has(deadline.chipId), `${deadline.chipId} is a held chip`);
       const due = dues.get(deadline.chipId)!;
-      if (deadline.dueTick < state.tick) { assert.deepEqual(due, { left: DEADLINE_COPY.past, near: true }, deadline.chipId); seen += 1; continue; }
+      if (deadline.dueTick < state.tick) { assert.deepEqual({ left: due.left, near: due.near }, { left: DEADLINE_COPY.past, near: true }, deadline.chipId); seen += 1; continue; }
       const lastSeason = Math.floor((deadline.dueTick - 1) / SEASON_TICKS);
       const seasons = lastSeason - Math.floor(state.tick / SEASON_TICKS) + 1;
       assert.equal(due.near, seasons <= 1, deadline.chipId);
@@ -97,7 +97,9 @@ test("an effectful deadline stops the auto-pause once, as its last season begins
       assert.equal(Math.floor(stop.after.tick / SEASON_TICKS), Math.floor((item.deadline.dueTick - 1) / SEASON_TICKS), `${item.key}: in its last season`);
       const line = autoPauseLines(stop.after, [item])[0]!;
       assert.equal(line.word, DEADLINE_COPY.pauseWord);
-      assert.equal(line.sentence, DEADLINE_COPY.pauseLine(item.deadline.kind));
+      const name = storyBeats(stop.after).find(beat => beat.id === item.deadline.chipId)?.title ?? null;
+      assert.equal(line.sentence, DEADLINE_COPY.pauseLine(item.deadline.kind, name));
+      if (name !== null && name !== "") assert.ok(line.sentence.includes(`(${name})`), `${item.key}: the stop names it: ${line.sentence}`);
     }
   }
 });

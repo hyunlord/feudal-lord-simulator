@@ -419,6 +419,12 @@
 .app-shell .event-chip-due { flex: 0 0 auto; padding: 0 6px; border-left: 1px solid var(--palette-ink); font-size: 12px; font-weight: 600; }
 .app-shell .event-chip[data-near="true"] { border-color: var(--palette-vermilion); box-shadow: inset 0 0 0 2px var(--palette-vermilion); }
 .app-shell .event-chip[data-near="true"] .event-chip-due { border-left-color: var(--palette-vermilion); color: var(--palette-vermilion); }
+/* LS1-12: a folded chip's card lists its decisions, each with its time left and its own answer. */
+.app-shell .event-card-members { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.app-shell .event-card-member { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 6px; align-items: center; min-height: 44px; font-size: 13px; }
+.app-shell .event-card-member-title { min-width: 0; overflow-wrap: anywhere; }
+.app-shell .event-card-member-due { font-size: 12px; font-weight: 600; }
+.app-shell .event-card-member[data-near="true"] .event-card-member-due { color: var(--palette-vermilion); }
 .app-shell .event-chip-art { display: inline-block; flex: 0 0 auto; width: 64px; height: 36px; border: 1px solid var(--palette-ink); }
 .app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); min-height: 0; overflow-y: auto; color: var(--palette-ink);
   background-color: var(--palette-vellum); }
