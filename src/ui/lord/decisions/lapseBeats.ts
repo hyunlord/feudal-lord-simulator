@@ -12,9 +12,11 @@ import { DEADLINE_COPY, type LapseKind } from "./deadlinesCopy.ko";
 
 const LAPSE_KINDS: ReadonlySet<string> = new Set<LapseKind>(["manor_petition", "estate_petition", "registry", "chapter_petition", "marriage"]);
 
-interface Lapse { readonly kind: LapseKind; readonly tick: number; readonly recordId: string | null; readonly answered: boolean }
+/** One lapse the engine settled: its kind, when, its record (none for an audit), its matter's id. */
+export interface Lapse { readonly kind: LapseKind; readonly tick: number; readonly recordId: string | null; readonly answered: boolean; readonly subjectId: string }
 
-function lapses(state: GameState): readonly Lapse[] {
+/** The lapses settled in the season gone (the lapse chip's window). */
+export function lapses(state: GameState): readonly Lapse[] {
   const since = state.tick - SEASON_TICKS;
   const out: Lapse[] = [];
   for (const record of state.history?.records ?? []) {
@@ -23,27 +25,34 @@ function lapses(state: GameState): readonly Lapse[] {
     if (!LAPSE_KINDS.has(kind)) continue;
     // A registry offer's lapse answer, when its entry has one, is in its source (`registry:<entry>:<choice>`).
     const answered = kind === "registry" && !String(record.params?.source ?? "").endsWith(":lapsed");
-    out.push({ kind: kind as LapseKind, tick: record.tick, recordId: record.id, answered });
+    out.push({ kind: kind as LapseKind, tick: record.tick, recordId: record.id, answered, subjectId: String(record.params?.subjectId ?? "") });
   }
   // An audit the lord left: tolerated at its deadline by lapseAudits, with no one's answer on it.
   for (const audit of state.stewardship?.audits ?? []) {
     if (audit.status !== "tolerated" || audit.decidedBy !== undefined || audit.superseded === true || audit.policyAuditId !== undefined) continue;
     if (audit.deadline >= state.tick || audit.deadline < since) continue;
-    out.push({ kind: "audit", tick: audit.deadline + 1, recordId: null, answered: false });
+    out.push({ kind: "audit", tick: audit.deadline + 1, recordId: null, answered: false, subjectId: audit.id });
   }
   return out.sort((a, b) => a.tick - b.tick);
 }
 
-/** The season's lapse chip (lord mode): its title the lapse itself, or how many; its card each one. */
-export function lapseBeats(state: GameState): readonly StoryBeat[] {
+/** What a lapse came to, in a line. */
+export const lapseLine = (lapse: Lapse): string => lapse.answered ? DEADLINE_COPY.lapsedRegistryAnswered : DEADLINE_COPY.lapsedOne(lapse.kind);
+
+/**
+ * The season's lapse chip (lord mode): its title the lapse itself, or how many; its card each one. LS1-10: a lapse whose
+ * held chip turns into it in place (`inPlace`, by matter id) is not told again here.
+ */
+export function lapseBeats(state: GameState, inPlace: ReadonlySet<string> = new Set()): readonly StoryBeat[] {
   if (!lordMode(state)) return [];
   const bySeason = new Map<number, Lapse[]>();
   for (const lapse of lapses(state)) {
+    if (inPlace.has(lapse.subjectId)) continue;
     const season = Math.floor(lapse.tick / SEASON_TICKS);
     bySeason.set(season, [...(bySeason.get(season) ?? []), lapse]);
   }
   return [...bySeason].map(([season, group]) => {
-    const say = (lapse: Lapse) => lapse.answered ? DEADLINE_COPY.lapsedRegistryAnswered : DEADLINE_COPY.lapsedOne(lapse.kind);
+    const say = lapseLine;
     const first = group.find(lapse => lapse.recordId !== null);
     return {
       id: `lapsed:${season}`, kind: "decision_lapsed", illustration: null, tile: null, decision: null,

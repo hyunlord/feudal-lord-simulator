@@ -40,19 +40,7 @@ export interface SimulationRoutePorts {
   readonly getPathCache: () => RoadPathCache;
 }
 
-function findBuilding(
-  buildings: readonly Building[],
-  buildingId: string,
-): Building | null {
-  return buildings.find((building) => building.id === buildingId) ?? null;
-}
 
-function findSite(
-  state: GameState,
-  siteId: string,
-) {
-  return state.constructionSites.find((site) => site.id === siteId) ?? null;
-}
 
 function stateWithCache(
   state: GameState,
@@ -77,6 +65,19 @@ export function createDeliveryInventoryPort(intakeRules?: IntakeRules): Delivery
 }
 
 export function createSimulationRoutePorts(state: GameState): SimulationRoutePorts {
+  // SIM-SPEED ①b: buildings and sites by id, indexed once for the port (its state never changes) — `find` over every
+  // building twice per route asked was 8 % of a late-game lord year (2026-10-17 profile). The first of an id wins, as
+  // `find` returns the first.
+  let buildingIndex: Map<string, Building> | null = null;
+  let siteIndex: Map<string, GameState["constructionSites"][number]> | null = null;
+  const buildingById = (buildingId: string): Building | null => {
+    if (buildingIndex === null) { buildingIndex = new Map(); for (const building of state.buildings) if (!buildingIndex.has(building.id)) buildingIndex.set(building.id, building); }
+    return buildingIndex.get(buildingId) ?? null;
+  };
+  const siteById = (siteId: string) => {
+    if (siteIndex === null) { siteIndex = new Map(); for (const site of state.constructionSites) if (!siteIndex.has(site.id)) siteIndex.set(site.id, site); }
+    return siteIndex.get(siteId) ?? null;
+  };
   let pathCache = state.pathCache;
   // SIM-SPEED: the port's routes go into one copy of the cache it owns, in the order they are found — the same entries
   // and key order as copying the whole cache on every miss (resolution.pathCache), which cost 9 % of a 60-year run
@@ -95,7 +96,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     start: TilePos,
     toBuildingId: string,
   ): readonly TilePos[] | null => {
-    const destination = findBuilding(state.buildings, toBuildingId);
+    const destination = buildingById(toBuildingId);
     return destination === null
       ? null
       : resolveRoadToBuildingRoute(routeState(), start, destination);
@@ -109,7 +110,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       case "building":
         return routeToBuilding(start, destination.buildingId);
       case "construction_site": {
-        const site = findSite(state, destination.siteId);
+        const site = siteById(destination.siteId);
         return site === null
           ? null
           : resolveRoadToConstructionSiteRoute(routeState(), start, site);
@@ -119,8 +120,8 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
 
   const delivery: DeliveryRoutePort = {
     betweenBuildings: (fromBuildingId, toBuildingId) => {
-      const from = findBuilding(state.buildings, fromBuildingId);
-      const to = findBuilding(state.buildings, toBuildingId);
+      const from = buildingById(fromBuildingId);
+      const to = buildingById(toBuildingId);
       if (from === null || to === null) return null;
 
       const resolved = resolveBuildingRoute(routeState(), from, to);
@@ -132,8 +133,8 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
         case "building":
           return delivery.betweenBuildings(fromBuildingId, destination.buildingId);
         case "construction_site": {
-          const from = findBuilding(state.buildings, fromBuildingId);
-          const to = findSite(state, destination.siteId);
+          const from = buildingById(fromBuildingId);
+          const to = siteById(destination.siteId);
           if (from === null || to === null) return null;
           const resolved = resolveBuildingToConstructionSiteRoute(
             routeState(),
@@ -149,11 +150,11 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       const accesses = (() => {
         switch (destination.kind) {
           case "building": {
-            const target = findBuilding(state.buildings, destination.buildingId);
+            const target = buildingById(destination.buildingId);
             return target === null ? [] : buildingRoadAccessTiles(state, target);
           }
           case "construction_site": {
-            const target = findSite(state, destination.siteId);
+            const target = siteById(destination.siteId);
             if (target !== null && (target.kind === 'palisade_segment' || target.kind === 'stone_wall_segment')
               && wallCarrySiteAccessTile(state, target, tile)) return [tile];
             return target === null ? [] : constructionSiteRoadAccessTiles(state, target);
@@ -164,7 +165,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     },
     canCarryForDestination: (tile, destination) => {
       if (destination.kind !== 'construction_site') return false;
-      const site = findSite(state, destination.siteId);
+      const site = siteById(destination.siteId);
       const stillOnWall = state.palisade?.segments.some(segment =>
         segment.id === destination.siteId
         || segment.constructionSiteId === destination.siteId
@@ -183,13 +184,13 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
 
   const roaming: RoamingRoutePort = {
     homePath: (buildingId) => {
-      const building = findBuilding(state.buildings, buildingId);
+      const building = buildingById(buildingId);
       if (building === null) return null;
       const exits = eligibleRoamingExits(state, building);
       let access = exits[0] ?? null;
       if (building.kind === 'granary') {
         const houses = state.houses.flatMap(house => {
-          const home = findBuilding(state.buildings, house.buildingId);
+          const home = buildingById(house.buildingId);
           return home === null ? [] : [{ ...house, tx: home.tx, ty: home.ty, ...buildingFootprint(home) }];
         });
         let best = access === null ? null : bestHouseDemand(access, houses, roaming, BALANCE.DISTRIBUTOR_RANGE, 0);

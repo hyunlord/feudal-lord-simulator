@@ -24,6 +24,8 @@ import { autoPauseMemory, autoPauseStep, type AutoPauseItem, type AutoPauseMemor
 import { storyChips } from "../src/ui/hud/storyChips";
 import { chipDues, heldDeadlines } from "../src/ui/lord/decisions/deadlines";
 import { DEADLINE_COPY } from "../src/ui/lord/decisions/deadlinesCopy.ko";
+import { deadlineFates, type DeadlineFate } from "../src/ui/lord/decisions/deadlineRail";
+import type { HeldDeadline } from "../src/ui/lord/decisions/deadlines";
 import { heldChipIds } from "../src/ui/lord/decisions/heldChips";
 
 const ESTATE = MARRIAGE_ESTATE_ID;
@@ -43,6 +45,9 @@ const played = (() => {
   const deadlineStops: { readonly after: GameState; readonly items: readonly AutoPauseItem[] }[] = [];
   const samples: GameState[] = [];
   const lapsed: { readonly state: GameState; readonly beat: StoryBeat }[] = [];
+  // LS1-10: each held deadline's fate tick by tick, as the screen remembers them.
+  let fateMemory: ReadonlyMap<string, HeldDeadline> = new Map();
+  const fates = new Map<string, { readonly tick: number; readonly stage: DeadlineFate["stage"] | "held" }[]>();
   const end = state.tick + 4_100;
   while (state.tick < end) {
     const before = state;
@@ -52,10 +57,14 @@ const played = (() => {
     const items = step.fresh.filter(item => item.kind === "deadline");
     if (items.length > 0) deadlineStops.push({ after: state, items });
     if (state.tick % 250 === 0) samples.push(state);
+    const step2 = deadlineFates(fateMemory, state);
+    fateMemory = step2.memory;
+    for (const due of heldDeadlines(state)) if (!step2.fates.has(due.chipId)) fates.set(due.chipId, [...(fates.get(due.chipId) ?? []), { tick: state.tick, stage: "held" }]);
+    for (const [chipId, fate] of step2.fates) fates.set(chipId, [...(fates.get(chipId) ?? []), { tick: state.tick, stage: fate.stage }]);
     const beat = storyBeats(state).find(entry => entry.kind === "decision_lapsed");
     if (beat !== undefined && !lapsed.some(entry => entry.beat.id === beat.id)) lapsed.push({ state, beat });
   }
-  return { deadlineStops, samples, lapsed };
+  return { deadlineStops, samples, lapsed, fates };
 })();
 
 test("a held chip's time left is the engine's deadline less the tick now; its last season marks it near", () => {
@@ -104,4 +113,18 @@ test("a decision left past its deadline is told: a chip says what the engine did
     const shown = storyChips(entries, new Set(entries.map(entry => entry.beat.id)), 10_000, 0, () => false, heldChipIds(state)).map(entry => entry.id);
     assert.ok(shown.includes(beat.id), `${beat.id} on the rail`);
   }
+});
+
+test("LS1-10: a held chip left past its deadline stays in its place, past then settled, with no tick of nothing between", () => {
+  let settled = 0;
+  for (const [chipId, timeline] of played.fates) {
+    const stages = timeline.map(entry => entry.stage);
+    if (!stages.includes("lapsed")) continue;
+    settled += 1;
+    // From the first tick it was seen to its lapse's end, one entry a tick: held, then past (if the engine waited), then lapsed.
+    for (let index = 1; index < timeline.length; index += 1) assert.equal(timeline[index]!.tick, timeline[index - 1]!.tick + 1, `${chipId}: no gap at ${timeline[index]!.tick}`);
+    const order = stages.filter((stage, index) => index === 0 || stage !== stages[index - 1]);
+    assert.ok(["held,past,lapsed", "held,lapsed"].includes(order.join(",")), `${chipId}: ${order.join(",")}`);
+  }
+  assert.ok(settled > 0, "a held decision lapsed and was settled in place");
 });

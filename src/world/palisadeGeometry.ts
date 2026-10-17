@@ -238,23 +238,38 @@ function clearanceFromFootprint(point: TileEdgePoint, footprint: PalisadeFootpri
   return Math.max(dx, dy);
 }
 
+/**
+ * Whether every raster point of the path, and the middle of each step, keeps `margin` tiles from every footprint.
+ * SIM-SPEED ③a: `clearanceFromFootprint(point, footprint) < margin` holds exactly when margin > 0 and the point lies
+ * strictly inside the footprint's rectangle widened by `margin` (the points are whole and half tiles, the margins whole
+ * tiles: the comparisons are exact), so the widened rectangles are made once and the path walked without the raster
+ * arrays and middle objects — the same points as `rasterSegment` (10 % of a late-game year in the 2026-10-11 profile).
+ */
 export function palisadePathHasBuildingClearance(
   path: PalisadePath,
   footprints: readonly PalisadeFootprint[],
   margin = 1,
 ): boolean {
+  if (!(margin > 0)) return true;   // a clearance is never negative: nothing is closer than a margin of 0 or less
+  const boxes = new Float64Array(footprints.length * 4);
+  footprints.forEach((footprint, at) => {
+    boxes[at * 4] = footprint.tx - margin; boxes[at * 4 + 1] = footprint.ty - margin;
+    boxes[at * 4 + 2] = footprint.tx + footprint.width + margin; boxes[at * 4 + 3] = footprint.ty + footprint.height + margin;
+  });
+  const near = (x: number, y: number): boolean => {
+    for (let at = 0; at < boxes.length; at += 4) if (x > boxes[at]! && x < boxes[at + 2]! && y > boxes[at + 1]! && y < boxes[at + 3]!) return true;
+    return false;
+  };
   for (let index = 1; index < path.length; index += 1) {
     const from = path[index - 1]; const to = path[index];
     if (from === undefined || to === undefined) continue;
-    const points = rasterSegment(from, to);
-    for (let step = 0; step < points.length; step += 1) {
-      const point = points[step]; const next = points[step + 1];
-      if (point === undefined) continue;
-      if (footprints.some(footprint => clearanceFromFootprint(point, footprint) < margin)) return false;
-      if (next !== undefined) {
-        const middle = { x: (point.x + next.x) / 2, y: (point.y + next.y) / 2 };
-        if (footprints.some(footprint => clearanceFromFootprint(middle, footprint) < margin)) return false;
-      }
+    let x = from.x; let y = from.y;
+    for (;;) {
+      if (near(x, y)) return false;
+      if (x === to.x && y === to.y) break;
+      const nextX = x + Math.sign(to.x - x); const nextY = y + Math.sign(to.y - y);
+      if (near((x + nextX) / 2, (y + nextY) / 2)) return false;
+      x = nextX; y = nextY;
     }
   }
   return true;

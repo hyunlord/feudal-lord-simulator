@@ -67,8 +67,12 @@ export function railReport(told) {
       lastGone.delete(entry.id);
     }
   });
+  // The town's requests come back under one id by design (a kind's request is remade each week, lordCardsModel): counted
+  // apart until the screen tells a returning one as new (v1.1 §7 item 7).
+  const townRequest = entry => entry.id.startsWith('lord-request:');
   return { flickers: flickers.length, resultsPushedByPlain: pushed.plain.length, resultsPushedByHeld: pushed.held.length,
-    seenAgainAfterAYear: seenAgain.length, flickerList: flickers, pushed, seenAgain };
+    seenAgainAfterAYear: seenAgain.filter(entry => !townRequest(entry)).length, townRequestsSeenAgain: seenAgain.filter(townRequest).length,
+    flickerList: flickers, pushed, seenAgain };
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {

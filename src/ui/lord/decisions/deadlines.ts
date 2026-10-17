@@ -18,6 +18,8 @@ export type DeadlineKind = "will_change" | "audit" | "estate_petition" | "suit_d
 export interface HeldDeadline {
   readonly chipId: string;
   readonly kind: DeadlineKind;
+  /** The engine's id of the matter (its lapse record's `subjectId`: the negotiation, audit, petition, occurrence). */
+  readonly subjectId: string;
   /** The engine's deadline: the last tick an answer is still taken. */
   readonly dueTick: number;
   /** Whether its lapse does something (the 8-kind table's "기한이 지나면"): the auto-pause tells only these. */
@@ -38,13 +40,13 @@ export function heldDeadlines(state: GameState): readonly HeldDeadline[] {
   const out: HeldDeadline[] = [];
   for (const { matter, chipId } of lordMatterChips(state)) {
     if (matter.dueTick === null || matter.kind === "contested") continue;
-    out.push({ chipId, kind: matter.kind, dueTick: matter.dueTick, effect: EFFECT[matter.kind] });
+    out.push({ chipId, kind: matter.kind, subjectId: matter.id, dueTick: matter.dueTick, effect: EFFECT[matter.kind] });
   }
-  for (const petition of openHomePetitions(state)) out.push({ chipId: `home-petition:${petition.id}`, kind: "home_petition", dueTick: petition.deadline, effect: false });
+  for (const petition of openHomePetitions(state)) out.push({ chipId: `home-petition:${petition.id}`, kind: "home_petition", subjectId: petition.id, dueTick: petition.deadline, effect: false });
   for (const { occurrence } of openRegistryCards(state))
-    out.push({ chipId: `registry:${occurrence.id}`, kind: "registry", dueTick: occurrence.deadline, effect: registryEntry(occurrence.entryId)?.lapseChoice !== undefined });
+    out.push({ chipId: `registry:${occurrence.id}`, kind: "registry", subjectId: occurrence.id, dueTick: occurrence.deadline, effect: registryEntry(occurrence.entryId)?.lapseChoice !== undefined });
   const famine = famineStatus(state);
-  if (famine !== null && famine.choices.length > 0) out.push({ chipId: `famine:${famine.eventId}`, kind: "famine", dueTick: famine.endTick, effect: false });
+  if (famine !== null && famine.choices.length > 0) out.push({ chipId: `famine:${famine.eventId}`, kind: "famine", subjectId: famine.eventId, dueTick: famine.endTick, effect: false });
   return out;
 }
 

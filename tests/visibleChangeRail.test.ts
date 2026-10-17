@@ -42,7 +42,10 @@ test("the year's results chip pushed off by a plain chip, for good, is counted; 
   assert.equal(report.resultsPushedByHeld, 1);
 });
 
-test("a chip off the rail for more than a year and back for good is a chip seen again", () => {
-  const told = [...commit([add(100, "plain:a")]), ...commit([gone(300, "plain:a")]), ...commit([add(6000, "plain:a")])];
-  assert.equal(railReport(told).seenAgainAfterAYear, 1);
+test("a chip off the rail for more than a year and back for good is a chip seen again; a town request is counted apart", () => {
+  const told = [...commit([add(100, "plain:a")]), ...commit([gone(300, "plain:a")]), ...commit([add(6000, "plain:a")]),
+    ...commit([add(6100, "lord-request:order_timber")]), ...commit([gone(6200, "lord-request:order_timber")]), ...commit([add(11000, "lord-request:order_timber")])];
+  const report = railReport(told);
+  assert.equal(report.seenAgainAfterAYear, 1);
+  assert.equal(report.townRequestsSeenAgain, 1, "the same kind's request remade under its id (v1.1 §7 item 7)");
 });

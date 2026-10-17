@@ -56,6 +56,8 @@ export function lordMomentBeats(state: GameState, seat: { readonly tx: number; r
     return { id: `lord-moment:${record.id}`, kind: "lord_moment", illustration: art, tile: AT_SEAT.has(art) ? seat : null, decision: null,
       title: words.title, line: recordSentence(state, record), facts: people === null ? [] : [people], advice: words.advice,
       ...(side === "against" && art === "moment_possession_taken" ? { lasting: true } : {}),
+      // LS1-10: a moment naming the lord's family (a marriage, a birth) is family news: the results layer keeps it.
+      ...(people === null ? {} : { family: true as const }),
       ...(people === null ? {} : { chronicle: { recordId: record.id, tick: record.tick, label: FAMILY_NEWS_COPY.openLabel(words.title) } }) };
   });
 }

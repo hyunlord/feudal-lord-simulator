@@ -10,6 +10,7 @@ import { useGameApi } from "../../state/gameStore";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
 import { chipDues } from "../lord/decisions/deadlines";
+import { fatedBeat, fatedDues, useDeadlineFates } from "../lord/decisions/deadlineRail";
 import { LINGER_MS, storyChips } from "./storyChips";
 import type { UiModal } from "../stateMachine/uiStateMachine";
 import { latestChapterEnd } from "../chronicleModel";
@@ -26,7 +27,7 @@ import { SLICE_START_ID, sliceEndDue, sliceEndMarkIds, sliceEndOwnsTurn, sliceLa
 // delay (the famine's answer, the petition); the chapter's end opens the chronicle page once. With the setting on,
 // a new chip stops time (UI-4: cards are not modal by default). storyBeats reads the state only (0.01–0.02 ms).
 
-type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean };
+type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean; shownMs?: number };
 
 /** A chapter's page opens only this long after its end (one season). */
 const CHAPTER_PAGE_TICKS = 1_000;
@@ -94,7 +95,9 @@ export function useStoryPresentation(input: {
   const sliceEndSinceRef = useRef<number | null>(null);
   const [, setRevision] = useState(0);
   const [delayMs] = useState(eventWorldFirstMs);
-  const beats = storyBeats(state);
+  // LS1-10: the held deadlines' fates — past and waiting for the engine, or settled — each in its chip's own place.
+  const fates = useDeadlineFates(state);
+  const beats = storyBeats(state, new Set([...fates.values()].flatMap(fate => fate.stage === "lapsed" ? [fate.deadline.subjectId] : [])));
   // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
   const end = chapterPageDue(state);
   const year = stateCalendar(state).year;
@@ -128,15 +131,20 @@ export function useStoryPresentation(input: {
     if (!blocked && sliceEndSinceRef.current === null && sliceEndDue(state)) { sliceEndSinceRef.current = now; changed = true; }
     if (changed) setRevision(revision => revision + 1);
   });
-  const current = new Set(beats.map(beat => beat.id));
+  const current = new Set([...beats.map(beat => beat.id), ...fates.keys()]);
   // The chip whose card is open (EventCards): held on the rail while it is.
   const [openId, setOpenId] = useState<string | null>(null);
-  const visible = storyChips([...seenRef.current.values()], current, nowMs, delayMs, houseRead, heldChipIds(state), openId);
+  const entries = [...seenRef.current.values()].map(entry => fates.has(entry.beat.id) ? { ...entry, beat: fatedBeat(entry.beat, fates.get(entry.beat.id)) } : entry);
+  const visible = storyChips(entries, current, nowMs, delayMs, houseRead, new Set([...heldChipIds(state), ...fates.keys()]), openId);
   const visibleKey = visible.map(beat => beat.id).join("|");
   // A new chip: stop time if the setting asks for it.
   useEffect(() => {
     let fresh = false;
-    for (const beat of visible) if (!announcedRef.current.has(beat.id)) { announcedRef.current.add(beat.id); fresh = true; }
+    for (const beat of visible) {
+      const entry = seenRef.current.get(beat.id);
+      if (entry !== undefined && entry.shownMs === undefined) entry.shownMs = Date.now();
+      if (!announcedRef.current.has(beat.id)) { announcedRef.current.add(beat.id); fresh = true; }
+    }
     if (fresh && !blocked && presentationPreference("eventPause")) pause();
   // why: keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new
   }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -224,7 +232,7 @@ export function useStoryPresentation(input: {
   return {
     visible,
     // LS1-11: each held chip's time left by the engine's deadline (the last season marks it near).
-    due: chipDues(state),
+    due: fatedDues(chipDues(state), fates),
     openId,
     setOpenId,
     // CHIP-FOLD: a folded chip put away puts away every chip it stands for.
