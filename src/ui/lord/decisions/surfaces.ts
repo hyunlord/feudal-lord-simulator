@@ -69,9 +69,13 @@ export const DECISION_SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-card.lapsed", root: ".event-card[data-story='decision_lapsed']", frame: "css", scene: decisionScene("promises"),
     open: [{ wait: ".event-chip[data-story='decision_lapsed']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-story='decision_lapsed']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-facts li"], data: "a lapse told: the decision left past its deadline and what the engine did with it" },
-  // LS1-12: held decisions of one kind folded into one chip ("영지 밖 청원 2건" on the promises scene) and its card — each
-  // decision with its time left and its own [결정하기].
-  { id: "hud.event-card.held-fold", root: ".event-card[data-chip-id='held:estate-petition']", frame: "css", scene: decisionScene("promises"),
+  // LS1-12: held decisions of one kind folded into one chip ("영지 밖 청원 2건") and its card — each decision with its time
+  // left and its own [결정하기]. Its scene is a copy in the lord2 set of the ledger set's promise-due (the user's ruling
+  // 2026-10-17: no lord2 scene holds two answerable decisions of a kind): ~/fls-lmr2-ledger-states/promise-due.json, built
+  // by scripts/lmr2LedgerStates.ts (`tsx scripts/lmr2LedgerStates.ts ~/fls-lmr2-ledger-states`; seed 1, the lord2
+  // "promises" path played on), tick 63000, off-map petitions 46 (deadline 63000) and 47 (64000) both answerable,
+  // sha256 12524719fde1b1d5fa181f42f8f61ef9df85e8a844e8b17448659e6366156e32. Goes once lmr2States.ts builds a fold scene.
+  { id: "hud.event-card.held-fold", root: ".event-card[data-chip-id='held:estate-petition']", frame: "css", scene: decisionScene("promise-due"),
     open: [{ wait: ".event-chip[data-chip-id='held:estate-petition']", timeout: 90_000 }, ...PUT_OFF, { click: ".event-chip[data-chip-id='held:estate-petition']" }, { pause: 600 }], scroll: "y",
     requires: ["h2", ".event-card-line", ".event-card-member", ".event-card-member-decide"], data: "the held decisions of one kind as one chip's card: each with its time left and its answer" },
 ];
