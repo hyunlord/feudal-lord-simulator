@@ -136,7 +136,7 @@ export function useStoryPresentation(input: {
   const [openId, setOpenId] = useState<string | null>(null);
   const entries = [...seenRef.current.values()].map(entry => fates.has(entry.beat.id) ? { ...entry, beat: fatedBeat(entry.beat, fates.get(entry.beat.id)) } : entry);
   const visible = storyChips(entries, current, nowMs, delayMs, houseRead, new Set([...heldChipIds(state), ...fates.keys()]), openId);
-  const visibleKey = visible.map(beat => beat.id).join("|");
+  const visibleKey = visible.map(beat => [beat.id, ...(beat.members ?? []).map(member => member.id)].join(",")).join("|");
   // A new chip: stop time if the setting asks for it.
   useEffect(() => {
     let fresh = false;
@@ -144,6 +144,8 @@ export function useStoryPresentation(input: {
       const entry = seenRef.current.get(beat.id);
       if (entry !== undefined && entry.shownMs === undefined) entry.shownMs = Date.now();
       if (!announcedRef.current.has(beat.id)) { announcedRef.current.add(beat.id); fresh = true; }
+      // LS1-13: a decision newly come into a kind's chip is new as a new chip is.
+      for (const member of beat.members ?? []) if (!announcedRef.current.has(member.id)) { announcedRef.current.add(member.id); fresh = true; }
     }
     if (fresh && !blocked && presentationPreference("eventPause")) pause();
   // why: keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new

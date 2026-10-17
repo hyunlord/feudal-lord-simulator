@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 import { platformServices } from "../../platform/platform";
 import { EVENT_STORY_COPY } from "../eventStoryCopy.ko";
@@ -15,6 +15,9 @@ import { askDecision } from "../lord/decisions/decisionFocus";
 // UI-4 event cards (not modal: time runs on unless the setting stops it): a folded chip under the crisis icons for
 // each beat the world has already shown; a tap opens its card — the Wave 16 illustration, one line, the facts,
 // [위치로] and [조언]; a decision beat's card opens its modal instead ([결정하기]).
+/** LS1-13: how long a kind's chip lights when a decision comes into it. */
+const FRESH_MS = 1_800;
+
 export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, onDecide, notice = null }: {
   readonly beats: readonly StoryBeat[];
   /** LS1-11: a held chip's time left by the engine's deadline, and whether it is in its last season. */
@@ -27,6 +30,25 @@ export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, 
   /** LM-R1: the seasons' stacked notice, after the beats' chips (`SeasonNotice`). */
   readonly notice?: ReactNode;
 }) {
+  // LS1-13: a decision newly come into a kind's chip is told there as a new chip would be — its count changes and the
+  // chip lights briefly (a chip that comes back after it went is new on the rail and needs no light).
+  const membersRef = useRef(new Map<string, ReadonlySet<string>>());
+  const [fresh, setFresh] = useState<ReadonlySet<string>>(new Set());
+  const memberKey = beats.map(beat => `${beat.id}=${(beat.members ?? []).map(member => member.id).join(",")}`).join("|");
+  useEffect(() => {
+    const before = membersRef.current; const next = new Map<string, ReadonlySet<string>>(); const grown: string[] = [];
+    for (const beat of beats) {
+      if (beat.members === undefined) continue;
+      const ids = new Set(beat.members.map(member => member.id)); next.set(beat.id, ids);
+      const old = before.get(beat.id);
+      if (old !== undefined && [...ids].some(id => !old.has(id))) grown.push(beat.id);
+    }
+    membersRef.current = next;
+    if (grown.length === 0) return;
+    setFresh(current => new Set([...current, ...grown]));
+    window.setTimeout(() => setFresh(current => new Set([...current].filter(id => !grown.includes(id)))), FRESH_MS);
+  // why: keyed by the chips and their members (a new list each render)
+  }, [memberKey]); // eslint-disable-line react-hooks/exhaustive-deps
   if (beats.length === 0 && notice === null) return null;
   const open = beats.find(beat => beat.id === openId) ?? null;
   return (
@@ -34,7 +56,7 @@ export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, 
       <div className="event-chips">
         {beats.map(beat => (
           <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} data-chip-id={beat.id} aria-expanded={openId === beat.id}
-            data-near={due.get(beat.id)?.near === true ? "true" : undefined}
+            data-near={due.get(beat.id)?.near === true ? "true" : undefined} data-fresh={fresh.has(beat.id) ? "true" : undefined}
             aria-label={EVENT_STORY_COPY.chipLabel(due.has(beat.id) ? `${beat.title} · ${due.get(beat.id)!.left}` : beat.title)}
             onPress={() => onOpen(openId === beat.id ? null : beat.id)} variant="secondary">
             {beat.illustration === null ? null : <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />}{beat.title}
@@ -91,7 +113,7 @@ export function EventCardDetail({ open, due = new Map(), onDismiss, onDecide }: 
       )}
       {open.facts.length === 0 ? null : <ul className="event-card-facts">{open.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>}
       {/* LS1-12: a folded chip's decisions, each with its time left, each answered from here. */}
-      {open.members === undefined ? null : (
+      {open.members === undefined || open.members.length < 2 ? null : (
         <ul className="event-card-members">{open.members.map(member => (
           <li key={member.id} className="event-card-member" data-chip-id={member.id} data-near={due.get(member.id)?.near === true ? "true" : undefined}>
             <span className="event-card-member-title">{member.title}</span>
@@ -102,7 +124,7 @@ export function EventCardDetail({ open, due = new Map(), onDismiss, onDecide }: 
       )}
       {adviceId === open.id ? <p className="event-card-advice" role="status">{open.advice}</p> : null}
       <div className="event-card-actions">
-        {open.decision !== null || open.screen !== undefined || open.slot !== undefined ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
+        {open.decision !== null || open.screen !== undefined || open.slot !== undefined ? <Button type="button" className="event-card-decide" onPress={() => { if (open.members?.length === 1) askDecision(open.members[0]!.id); onDecide(open); }} variant="primary"><UiIcon sheet="action" cell="open" />{open.openLabel ?? EVENT_STORY_COPY.decide}</Button> : null}
         {open.tile === null ? null : <Button type="button" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: open.tile! }); }} variant="secondary"><UiIcon sheet="action" cell="look" />{EVENT_STORY_COPY.lookAt}</Button>}
         {/* DEC-CARD-2: what followed a decision opens that decision in the chronicle. */}
         {open.chronicle === undefined ? null : <Button type="button" className="event-card-chronicle" aria-label={open.chronicle.label}

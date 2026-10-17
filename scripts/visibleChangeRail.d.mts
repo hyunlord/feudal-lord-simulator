@@ -5,7 +5,7 @@ type Flicker = { readonly tick: number; readonly back: number; readonly rail: re
 type Push = { readonly tick: number; readonly by: readonly string[] };
 
 export function railReport(told: readonly ToldEntry[]): {
-  readonly flickers: number; readonly resultsPushedByPlain: number; readonly resultsPushedByHeld: number; readonly seenAgainAfterAYear: number; readonly townRequestsSeenAgain: number;
+  readonly flickers: number; readonly resultsPushedByPlain: number; readonly resultsPushedByHeld: number; readonly seenAgainAfterAYear: number; readonly townRequestsSeenAgain: number; readonly heldKindsBack: number;
   readonly flickerList: readonly Flicker[]; readonly pushed: { readonly plain: readonly Push[]; readonly held: readonly Push[] };
   readonly seenAgain: readonly { readonly id: string; readonly tick: number; readonly goneAt: number }[];
 };

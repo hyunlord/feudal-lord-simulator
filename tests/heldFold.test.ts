@@ -27,8 +27,11 @@ test("held decisions of one kind fold into one chip, the count its title, its me
   assert.deepEqual(shown.map(entry => entry.id), [heldFoldId("estate-petition"), "results:1316", "fire:1"]);
   assert.equal(shown[0]!.title, DEADLINE_COPY.heldFold("estate-petition", 3));
   assert.deepEqual(shown[0]!.members!.map(member => member.id), petitions.map(entry => entry.id));
-  // One alone stays as it is.
-  assert.deepEqual(rail([petitions[0]!, results], [petitions[0]!.id]).map(entry => entry.id), ["estate-petition:p1", "results:1316"]);
+  // LS1-13: one alone takes the kind's id too (a year counts the kind once), in its own words.
+  const alone = rail([petitions[0]!, results], [petitions[0]!.id]);
+  assert.deepEqual(alone.map(entry => entry.id), [heldFoldId("estate-petition"), "results:1316"]);
+  assert.equal(alone[0]!.title, petitions[0]!.title);
+  assert.deepEqual(alone[0]!.members!.map(member => member.id), ["estate-petition:p1"]);
 });
 
 test("one past its deadline leaves the fold and changes in its own place; the others stay folded", () => {
@@ -36,6 +39,10 @@ test("one past its deadline leaves the fold and changes in its own place; the ot
   const shown = rail([past, petitions[1]!, petitions[2]!, results], petitions.map(entry => entry.id));
   assert.deepEqual(shown.map(entry => entry.id), ["estate-petition:p1", heldFoldId("estate-petition"), "results:1316"]);
   assert.equal(shown[1]!.title, DEADLINE_COPY.heldFold("estate-petition", 2));
+  // LS1-13: two past it, one left — still the kind's chip, the one left in its own words.
+  const two = rail([past, { ...petitions[1]!, decision: null, fated: true as const }, petitions[2]!, results], petitions.map(entry => entry.id));
+  assert.deepEqual(two.map(entry => entry.id), ["estate-petition:p1", "estate-petition:p2", heldFoldId("estate-petition")]);
+  assert.equal(two[2]!.title, petitions[2]!.title);
 });
 
 test("the folded chip's time left is its earliest member's, near when that one is", () => {

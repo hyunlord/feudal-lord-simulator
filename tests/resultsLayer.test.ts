@@ -26,11 +26,11 @@ const rail = (entries: readonly Entry[], current: readonly string[], held: reado
 test("the family chip takes its place before a newer lapse chip, and never yields it to a newer lord moment", () => {
   // 36139: the registry offer held, the year's results chip, the family news (36001), the political petition's lapse (36139).
   const at36139 = [entry(results, 1_000), entry(registry, 2_000), entry(family, 3_000), entry(lapsed, 4_000)];
-  assert.deepEqual(rail(at36139, ["registry:offer", "results:1309", "family:h-002746", "lapsed:36"], ["registry:offer"]), ["registry:offer", "results:1309", "family:h-002746"]);
+  assert.deepEqual(rail(at36139, ["registry:offer", "results:1309", "family:h-002746", "lapsed:36"], ["registry:offer"]), ["held:registry", "results:1309", "family:h-002746"]);
   // 37001: a newer lord moment comes (plain); the results layer keeps its order and the moment waits below it.
   const at37001 = [...at36139, entry(moment, 5_000)];
   assert.deepEqual(rail(at37001, ["registry:offer", "results:1309", "family:h-002746", "lapsed:36", "lord-moment:h-002753"], ["registry:offer"]),
-    ["registry:offer", "results:1309", "family:h-002746"]);
+    ["held:registry", "results:1309", "family:h-002746"]);
 });
 
 test("a family chip never shown waits past its beat's own time; once shown, it goes as any chip does", () => {

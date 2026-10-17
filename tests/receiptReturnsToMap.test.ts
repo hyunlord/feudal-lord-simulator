@@ -98,6 +98,6 @@ test("a held chip is not pushed off the rail by newer chips", () => {
   const beats = [chip(`registry:${offer.id}`, "registry_event"), chip("a"), chip("b"), chip("c")];
   const entries = beats.map((beat, index) => ({ beat, firstSeenMs: 1_000 + index, lastSeenMs: 9_000, dismissed: index === 0 }));
   const shown = storyChips(entries, new Set(beats.map(beat => beat.id)), 10_000, 500, () => false, heldChipIds(withBoth)).map(beat => beat.id);
-  assert.ok(shown.includes(`registry:${offer.id}`), "put off (its card closed) yet kept, ahead of the newer chips");
+  assert.ok(shown.includes("held:registry"), "put off (its card closed) yet kept, ahead of the newer chips (LS1-13: under its kind's chip)");
   assert.equal(shown.length, 3);
 });

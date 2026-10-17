@@ -102,8 +102,15 @@ await page.evaluate(async ({ told, grace, leave }) => {
     if (text !== '') window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: text.slice(0, 400), ...(id === null ? {} : { id }) });
   };
   const gone = element => window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: '', id: element.getAttribute('data-chip-id'), gone: true });
+  // LS1-13: a kind's chip lit (a decision come into it) and its words changed in place (the count) are told too.
+  const fresh = element => window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80),
+    text: (element.innerText ?? '').replace(/\s+/g, ' ').trim().slice(0, 400), id: element.getAttribute('data-chip-id'), fresh: true });
+  const changed = element => window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80),
+    text: (element.innerText ?? '').replace(/\s+/g, ' ').trim().slice(0, 400), id: element.getAttribute('data-chip-id'), changed: true });
   new MutationObserver(changes => {
     for (const change of changes) {
+      if (change.type === 'attributes') { if (change.target instanceof HTMLElement && change.target.matches('.event-chip') && change.target.getAttribute('data-fresh') === 'true') fresh(change.target); continue; }
+      if (change.type === 'characterData') { const chip = change.target.parentElement?.closest(".event-chip[data-chip-id^='held:']"); if (chip instanceof HTMLElement) changed(chip); continue; }
       for (const node of change.addedNodes) {
         if (!(node instanceof HTMLElement)) continue;
         if (node.matches(told)) record(node);
@@ -115,7 +122,7 @@ await page.evaluate(async ({ told, grace, leave }) => {
         for (const inner of node.querySelectorAll('.event-chip')) gone(inner);
       }
     }
-  }).observe(document.body, { childList: true, subtree: true });
+  }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['data-fresh'] });
 }, { told: TOLD, grace: ASKED_GRACE, leave: leaveKinds });
 
 const read = () => page.evaluate(() => ({ tick: window.__FEUDAL_PHASE10_PROOF__.state().tick }));
