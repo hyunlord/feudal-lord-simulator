@@ -130,3 +130,16 @@ test("LS1-10: a held chip left past its deadline stays in its place, past then s
   }
   assert.ok(settled > 0, "a held decision lapsed and was settled in place");
 });
+
+test("LS1-12: every held audit and off-map petition still answerable has its own chip (before, only the first did)", () => {
+  let seen = 0;
+  for (const state of played.samples) {
+    const beats = new Set(storyBeats(state).map(entry => entry.id));
+    for (const due of heldDeadlines(state)) {
+      if ((due.kind !== "audit" && due.kind !== "estate_petition") || due.dueTick < state.tick) continue;
+      assert.ok(beats.has(due.chipId), `${due.chipId} at ${state.tick} has its chip`);
+      seen += 1;
+    }
+  }
+  assert.ok(seen > 0);
+});
