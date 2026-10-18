@@ -57,6 +57,7 @@ export function lapseBeats(state: GameState, inPlace: ReadonlySet<string> = new 
     return {
       id: `lapsed:${season}`, kind: "decision_lapsed", illustration: null, tile: null, decision: null,
       title: group.length === 1 ? say(group[0]!) : DEADLINE_COPY.lapsedMany(group.length),
+      chip: group.length === 1 ? DEADLINE_COPY.lapsedShort(group[0]!.kind, group[0]!.answered) : DEADLINE_COPY.lapsedManyShort(group.length),
       line: DEADLINE_COPY.lapsedLine(group.length), facts: group.map(say), advice: DEADLINE_COPY.lapsedAdvice,
       ...(first === undefined ? {} : { chronicle: { recordId: first.recordId!, tick: first.tick, label: DEADLINE_COPY.openLabel } }),
     } satisfies StoryBeat;

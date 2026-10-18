@@ -13,7 +13,7 @@ import type { StuckRow } from "./stuckStockView";
 // worst pile (the largest), its reason, and how many more. A press looks at that building and opens its inspector.
 // LM-R1: the piles are the engine's (`stuckRows`); a pile waiting on a full store names that store's fullness.
 
-export type StuckGoodsChipView = Readonly<{ row: StuckRow; line: string; reason: string; more: string | null; label: string }>;
+export type StuckGoodsChipView = Readonly<{ row: StuckRow; line: string; reason: string; more: string | null; label: string; short: string }>;
 
 export function stuckGoodsChipView(state: GameState, rows: readonly StuckRow[]): StuckGoodsChipView | null {
   const row = rows[0];
@@ -21,7 +21,10 @@ export function stuckGoodsChipView(state: GameState, rows: readonly StuckRow[]):
   const copy = STUCK_GOODS_COPY;
   const line = copy.line(copy.where[compassFromCentre(state, row.tile)], BUILDING_CONFIG_BY_KIND[row.kind].name, resourceName(row.good), row.amount);
   const reason = stuckReasonText(row);
-  return { row, line, reason, more: rows.length > 1 ? copy.more(rows.length - 1) : null, label: copy.pressLabel(line, reason) };
+  // LS1-14: the label keeps the whole line (and how many more) for those who hear it; the chip shows the short one.
+  const more = rows.length > 1 ? copy.more(rows.length - 1) : null;
+  return { row, line, reason, more, label: copy.pressLabel(more === null ? line : `${line} ${more}`, reason),
+    short: copy.short(resourceName(row.good), row.amount, rows.length) };
 }
 
 /** The press: the camera to the pile's building, then its inspector. */
@@ -35,9 +38,7 @@ export function StuckGoodsChip({ view, onInspect }: { readonly view: StuckGoodsC
     <Button type="button" className="stuck-goods-chip" aria-label={view.label} data-stuck-reason={view.row.reason}
       data-stuck-building={view.row.buildingId} onPress={() => pressStuckGoods(view.row, onInspect)} variant="secondary">
       <span className="stuck-goods-bell" aria-hidden="true" style={wave8ImageStyle("icon_alert_bell_bad", 16)} />
-      <span className="stuck-goods-line">{view.line}</span>
-      <span className="stuck-goods-reason">{view.reason}</span>
-      {view.more === null ? null : <span className="stuck-goods-more">{view.more}</span>}
+      <span className="stuck-goods-line">{view.short}</span>
     </Button>
   );
 }

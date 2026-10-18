@@ -415,6 +415,8 @@
   .app-shell [data-slot="ledger"] { --slot-clear: calc(min(var(--box-w-wide), 100% - 16px) + 8px); }
   .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: var(--slot-clear); }
 }
+/* LS1-14: a chip's name on one line — the whole title is its card's and its accessible name's. */
+.app-shell .event-chip-name { min-width: 0; max-width: 16em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 /* LS1-11: a held chip's time left by the engine's deadline; in its last season the chip is marked near. */
 .app-shell .event-chip-due { flex: 0 0 auto; padding: 0 6px; border-left: 1px solid var(--palette-ink); font-size: 12px; font-weight: 600; }
 .app-shell .event-chip[data-near="true"] { border-color: var(--palette-vermilion); box-shadow: inset 0 0 0 2px var(--palette-vermilion); }
@@ -429,6 +431,17 @@
 .app-shell .event-card-member-title { min-width: 0; overflow-wrap: anywhere; }
 .app-shell .event-card-member-due { font-size: 12px; font-weight: 600; }
 .app-shell .event-card-member[data-near="true"] .event-card-member-due { color: var(--palette-vermilion); }
+/* LS1-15 (the user's ruling 2026-10-18: 1280 x 800 zone with held decisions 10.2 % of 10.0 %): while the zone tools are open
+   a chip is a colour mark and its time left — a held decision gold, near or past its deadline vermilion, the others muted
+   — its picture and name gone (the name stays its accessible name); the near look and a press opening its card stay. The
+   tools closed, the chip is as before. */
+.app-shell .event-chip-mark { display: none; }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip { justify-content: center; min-width: 44px; padding: 0 8px; }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip :is(.event-chip-art, .event-chip-name) { display: none; }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip-mark { display: inline-block; flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background-color: var(--palette-ink-muted); }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip[data-due="true"] .event-chip-mark { background-color: var(--palette-gold-dark); }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip[data-near="true"] .event-chip-mark { background-color: var(--palette-vermilion); }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip-due { padding: 0 2px 0 6px; }
 .app-shell .event-chip-art { display: inline-block; flex: 0 0 auto; width: 64px; height: 36px; border: 1px solid var(--palette-ink); }
 .app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); min-height: 0; overflow-y: auto; color: var(--palette-ink);
   background-color: var(--palette-vellum); }
@@ -677,6 +690,19 @@
   .app-shell .status-pill-mode-words { display: none; }
   .app-shell .status-pill-mode-icon { display: inline-flex; }
   .app-shell .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
+}
+/* LS1-14 (the user's ruling 2026-10-18: the status pill's length bound; the HUD area with held decisions at 1280 x 800 and
+   the tablet): lord mode's pill at 1366 px and narrower is its short form at every layer — the tag its seal (its words in
+   its name and tooltip), the population and the food their picture and number (the word in the text and the name), the way
+   back to the town its picture. */
+@media (max-width: 1366px) {
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode { min-width: 44px; padding: 0 6px; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode-words { display: none; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode-icon { display: inline-flex; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-word { display: none; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-town-words { display: none; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-town { min-width: 44px; justify-content: center; }
 }
 
 /* LS1-3 (lord-screen-v1.md): the growth mark in the population cell — "정체 N년" after a stop past two seasons (the engine's

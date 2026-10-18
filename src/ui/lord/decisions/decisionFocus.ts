@@ -9,3 +9,18 @@ export function askDecision(chipId: string | null): void { asked = chipId; }
 export function askedOrFirst<T>(open: readonly T[], chipIdOf: (item: T) => string): T | undefined {
   return (asked === null ? undefined : open.find(item => chipIdOf(item) === asked)) ?? open[0];
 }
+
+/**
+ * LS1-14: a card view cached per state (as perState) and per the decision asked — a folded chip's [결정하기] asks for
+ * another decision on the same state (time stopped), and a cache by the state alone would show the one before.
+ */
+export function perStateAsked<S extends object, T>(compute: (state: S) => T): (state: S) => T {
+  const memo = new WeakMap<S, { readonly asked: string | null; readonly value: T }>();
+  return state => {
+    const hit = memo.get(state);
+    if (hit !== undefined && hit.asked === asked) return hit.value;
+    const value = compute(state);
+    memo.set(state, { asked, value });
+    return value;
+  };
+}

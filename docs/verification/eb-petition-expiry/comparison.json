@@ -1,0 +1,148 @@
+{
+  "baseline": "e18c0d248e5d370134d1f39a4b9546993d695af4",
+  "changed": "94e3fbce695b4abceb9f45112d5d634c4f173dc4",
+  "scope": "full state; no excluded fields; sandbox standard run termination and lord 30 years",
+  "rows": [
+    {
+      "mode": "sandbox",
+      "seed": 1,
+      "baseline": {
+        "hash": "4acbfbf73150c374662e4c0ad98c526652ae04ddc2402d48118b50aeb8f122b2",
+        "tick": 372667,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "changed": {
+        "hash": "4acbfbf73150c374662e4c0ad98c526652ae04ddc2402d48118b50aeb8f122b2",
+        "tick": 372667,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "identical": true
+    },
+    {
+      "mode": "sandbox",
+      "seed": 2,
+      "baseline": {
+        "hash": "3d768a2009ecf6b6f6bc6c9ff9eb3d1ba7c8e448e1db57df2547439969725f53",
+        "tick": 281575,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "changed": {
+        "hash": "3d768a2009ecf6b6f6bc6c9ff9eb3d1ba7c8e448e1db57df2547439969725f53",
+        "tick": 281575,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "identical": true
+    },
+    {
+      "mode": "sandbox",
+      "seed": 3,
+      "baseline": {
+        "hash": "33b3d88a225ba3998eb8e0eae348ea30da62b9109dbcc7141a4a3ade4f7a51a7",
+        "tick": 299309,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "changed": {
+        "hash": "33b3d88a225ba3998eb8e0eae348ea30da62b9109dbcc7141a4a3ade4f7a51a7",
+        "tick": 299309,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "identical": true
+    },
+    {
+      "mode": "sandbox",
+      "seed": 4,
+      "baseline": {
+        "hash": "db0ba1ff69a915f7142a024373889e0406ba5dd2de982fda288d363ecda78980",
+        "tick": 281572,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "changed": {
+        "hash": "db0ba1ff69a915f7142a024373889e0406ba5dd2de982fda288d363ecda78980",
+        "tick": 281572,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "identical": true
+    },
+    {
+      "mode": "sandbox",
+      "seed": 5,
+      "baseline": {
+        "hash": "8c04888603b9163966aa02fa538984c0e3ca898c8f3ef2bb2d9dc3ce6c3d1f57",
+        "tick": 333724,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "changed": {
+        "hash": "8c04888603b9163966aa02fa538984c0e3ca898c8f3ef2bb2d9dc3ce6c3d1f57",
+        "tick": 333724,
+        "stop": "target-scale-stable",
+        "guardrailPassed": true,
+        "exitCode": "0"
+      },
+      "identical": true
+    },
+    {
+      "mode": "lord",
+      "seed": 1,
+      "baseline": {
+        "hash": "6c4feba286c29b0be6752e60dad326a4926b1582d6b9cd5ccace5a15b4d29919",
+        "tick": 120000,
+        "finalYear": 1330
+      },
+      "changed": {
+        "hash": "6c4feba286c29b0be6752e60dad326a4926b1582d6b9cd5ccace5a15b4d29919",
+        "tick": 120000,
+        "finalYear": 1330
+      },
+      "identical": true
+    },
+    {
+      "mode": "lord",
+      "seed": 2,
+      "baseline": {
+        "hash": "9267d13816497870142c2670a35606613bb64cd53b1cf5c8ba069c532d6fa402",
+        "tick": 120000,
+        "finalYear": 1330
+      },
+      "changed": {
+        "hash": "9267d13816497870142c2670a35606613bb64cd53b1cf5c8ba069c532d6fa402",
+        "tick": 120000,
+        "finalYear": 1330
+      },
+      "identical": true
+    },
+    {
+      "mode": "lord",
+      "seed": 3,
+      "baseline": {
+        "hash": "d80935f16440bb13ecd7517457d448697ff4f7a7bd124aa7f1978d086f5c4126",
+        "tick": 120000,
+        "finalYear": 1330
+      },
+      "changed": {
+        "hash": "d80935f16440bb13ecd7517457d448697ff4f7a7bd124aa7f1978d086f5c4126",
+        "tick": 120000,
+        "finalYear": 1330
+      },
+      "identical": true
+    }
+  ],
+  "pass": true
+}

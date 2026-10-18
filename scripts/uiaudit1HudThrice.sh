@@ -14,7 +14,7 @@ export URL="http://127.0.0.1:$port/"
 for _ in $(seq 1 120); do curl -sf "$URL" > /dev/null && break; sleep 1; done
 out=docs/verification/uiaudit1/hud; only=()
 while [ $# -gt 0 ]; do
-  case "$1" in --only) only=(--only "$2"); shift 2 ;; --out) out=$2; shift 2 ;; *) echo "unknown option $1" >&2; exit 2 ;; esac
+  case "$1" in --only) only+=(--only "$2"); shift 2 ;; --lord-pinned) only+=(--lord-pinned "$2"); shift 2 ;; --out) out=$2; shift 2 ;; *) echo "unknown option $1" >&2; exit 2 ;; esac
 done
 mkdir -p "$out"
 for n in 1 2 3; do

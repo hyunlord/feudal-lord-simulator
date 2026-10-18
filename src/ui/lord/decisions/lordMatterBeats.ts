@@ -55,7 +55,7 @@ export function lordMatterBeats(state: GameState): readonly StoryBeat[] {
     } else if (matter.kind === "audit" && audits.some(entry => entry.id === matter.id)) {
       const audit = auditHeadOf(state, audits.find(entry => entry.id === matter.id)!);
       beats.push({ id: LORD_MATTER_CHIP.audit(audit.auditId), kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
-        title: audit.title, line: audit.line, facts: [audit.kicker, when === null ? audit.waits : COPY.auditDue(when)], advice: DECISION_CARDS_COPY.auditAdvice });
+        title: audit.title, chip: DECISION_CARDS_COPY.auditChip, line: audit.line, facts: [audit.kicker, when === null ? audit.waits : COPY.auditDue(when)], advice: DECISION_CARDS_COPY.auditAdvice });
     } else if (matter.kind === "estate_petition" && petitions.some(entry => entry.id === matter.id)) {
       const petition = offMapPetitionHeadOf(state, petitions.find(entry => entry.id === matter.id)!);
       const due = when === null ? petition.waits : COPY.petitionDue(when);

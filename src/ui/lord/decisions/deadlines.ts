@@ -1,6 +1,6 @@
 import type { GameState } from "../../../engine/engine.types";
 import { SEASON_TICKS } from "../../../engine/eventSchedule";
-import { famineStatus } from "../../../engine/politics";
+import { famineStatus, openPetitions, politicalPetitionExpiryTick } from "../../../engine/politics";
 import { registryEntry } from "../../../engine/registry";
 import { openHomePetitions } from "../../lordCardsModel";
 import { openRegistryCards } from "../../registryCardModel";
@@ -11,9 +11,10 @@ import { lordMatterChips } from "./lordMattersDue";
 // engine's own value (`lordMattersDue`'s dueTick, a home petition's and a registry offer's deadline, the famine's answer
 // window to its `endTick`), never one of the screen's. The time left is that deadline less the tick now; the last season
 // (the one the deadline falls in) marks the chip as near. A political petition has no tick of its own (the engine
-// expires it once the year passes its definition's `toYear`, politics.ts), so it shows none.
+// expires it once the year passes its definition's `toYear`, politics.ts), so it shows none. LS1-14: the engine now
+// gives it (politicalPetitionExpiryTick), and it shows its time left as the others do.
 
-export type DeadlineKind = "will_change" | "audit" | "estate_petition" | "suit_defence" | "entry_threat" | "home_petition" | "registry" | "famine";
+export type DeadlineKind = "will_change" | "audit" | "estate_petition" | "suit_defence" | "entry_threat" | "home_petition" | "registry" | "famine" | "petition";
 
 export interface HeldDeadline {
   readonly chipId: string;
@@ -33,6 +34,8 @@ export interface HeldDeadline {
  */
 const EFFECT: Readonly<Record<Exclude<DeadlineKind, "registry">, boolean>> = {
   will_change: true, audit: true, estate_petition: true, suit_defence: false, entry_threat: false, home_petition: false, famine: false,
+  // LS1-14: a political petition left past its expiry is refused (the factions read "expired" as "refuse").
+  petition: true,
 };
 
 /** Every held chip with a deadline, each by the engine's own value. */
@@ -45,6 +48,12 @@ export function heldDeadlines(state: GameState): readonly HeldDeadline[] {
   for (const petition of openHomePetitions(state)) out.push({ chipId: `home-petition:${petition.id}`, kind: "home_petition", subjectId: petition.id, dueTick: petition.deadline, effect: false });
   for (const { occurrence } of openRegistryCards(state))
     out.push({ chipId: `registry:${occurrence.id}`, kind: "registry", subjectId: occurrence.id, dueTick: occurrence.deadline, effect: registryEntry(occurrence.entryId)?.lapseChoice !== undefined });
+  // LS1-14 (engine B's politicalPetitionExpiryTick, trunk 0ee84b1d): its first expired tick, so the last answerable one
+  // is the tick before — the engine's value, no year counted here.
+  for (const petition of openPetitions(state)) {
+    const expiry = politicalPetitionExpiryTick(state, petition);
+    if (expiry !== null) out.push({ chipId: `petition:${petition.id}`, kind: "petition", subjectId: petition.id, dueTick: expiry - 1, effect: EFFECT.petition });
+  }
   const famine = famineStatus(state);
   if (famine !== null && famine.choices.length > 0) out.push({ chipId: `famine:${famine.eventId}`, kind: "famine", subjectId: famine.eventId, dueTick: famine.endTick, effect: false });
   return out;
@@ -56,7 +65,12 @@ const lastSeasonOf = (dueTick: number): number => Math.floor((dueTick - 1) / SEA
 export const inLastSeason = (tick: number, dueTick: number): boolean => Math.floor(tick / SEASON_TICKS) >= lastSeasonOf(dueTick);
 
 /** A held chip's time left as it says it, and whether it is near (its last season). */
-export interface ChipDue { readonly left: string; readonly near: boolean; /** The engine's deadline (LS1-12: a fold shows its earliest). */ readonly dueTick?: number }
+export interface ChipDue {
+  readonly left: string; readonly near: boolean;
+  /** LS1-14: the chip's short mark ("이번 철", "2철", "기한 지남"); `left` stays for the card. */
+  readonly short: string;
+  /** The engine's deadline (LS1-12: a fold shows its earliest). */ readonly dueTick?: number;
+}
 
 /**
  * Each held chip's time left: the seasons to the one its deadline closes, counting this one. Past its deadline and not
@@ -64,9 +78,10 @@ export interface ChipDue { readonly left: string; readonly near: boolean; /** Th
  */
 export function chipDues(state: GameState): ReadonlyMap<string, ChipDue> {
   return new Map(heldDeadlines(state).map(due => {
-    if (due.dueTick < state.tick) return [due.chipId, { left: DEADLINE_COPY.past, near: true, dueTick: due.dueTick }] as const;
+    if (due.dueTick < state.tick) return [due.chipId, { left: DEADLINE_COPY.past, short: DEADLINE_COPY.short.past, near: true, dueTick: due.dueTick }] as const;
     const seasons = lastSeasonOf(due.dueTick) - Math.floor(state.tick / SEASON_TICKS) + 1;
     const near = inLastSeason(state.tick, due.dueTick);
-    return [due.chipId, { left: near ? DEADLINE_COPY.thisSeason : DEADLINE_COPY.seasonsLeft(seasons), near, dueTick: due.dueTick }] as const;
+    return [due.chipId, { left: near ? DEADLINE_COPY.thisSeason : DEADLINE_COPY.seasonsLeft(seasons), short: near ? DEADLINE_COPY.short.thisSeason : DEADLINE_COPY.short.seasons(seasons),
+      near, dueTick: due.dueTick }] as const;
   }));
 }

@@ -9,6 +9,8 @@ years=${2:-20}
 # scripts/visibleChangeRun.mjs --leave); a fourth, the seed (1).
 leave=${3:-}
 seed=${4:-1}
+# a fifth, the speed (10; 1 or 3 for the slower seals).
+speed=${5:-10}
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
 node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort > .remote/vite.log 2>&1 &
 vite=$!
@@ -17,7 +19,7 @@ url="http://127.0.0.1:$port/"
 for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done
 curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }
 mkdir -p "$out"
-node_modules/.bin/tsx scripts/visibleChangeRun.mjs "$out" --url "$url" --years "$years" ${leave:+--leave "$leave"} --seed "$seed" 2>&1 | tee .remote/visible-change-run.log
+node_modules/.bin/tsx scripts/visibleChangeRun.mjs "$out" --url "$url" --years "$years" ${leave:+--leave "$leave"} --seed "$seed" --speed "$speed" 2>&1 | tee .remote/visible-change-run.log
 code=${PIPESTATUS[0]}
 [ "$code" = 0 ] || exit "$code"
 if [ -f scripts/visibleChangeFacts.ts ]; then node_modules/.bin/tsx scripts/visibleChangeFacts.ts "$out" > "$out/facts.json" 2> .remote/visible-change-facts.log || exit 1; fi

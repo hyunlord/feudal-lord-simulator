@@ -10,12 +10,13 @@ import { lordMatterBeats } from "./lord/decisions/lordMatterBeats";
 import { LORD_MATTERS_COPY } from "./lord/decisions/lordMattersCopy.ko";
 import { LORD_MATTER_CHIP, lordMatter } from "./lord/decisions/lordMattersDue";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
-import { homePetitionView, lordRequestView, type LordRequestView } from "./lordCardsModel";
+import { homePetitionViews, lordRequestView, type LordRequestView } from "./lordCardsModel";
 import { lordMomentBeats } from "./lordMomentBeats";
 import { familyBeats } from "./persons/familyBeats";
 import { relationStageBeats } from "./lord/relations/relationStageBeats";
 import { REGISTRY_CARD_COPY } from "./registryCardCopy.ko";
-import { registryHeadline } from "./registryCardModel";
+import { registryHeadlines } from "./registryCardModel";
+import { HOME_PETITION_COPY } from "./lordCardsCopy.ko";
 import { houseChangeViews, houseRecordIds } from "./results/houseChange";
 import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { StoryIllustration } from "./storyArt";
@@ -62,13 +63,11 @@ function defendedFiling(state: GameState, beat: StoryBeat, chips: ReadonlySet<st
 export function lordBeats(state: GameState): readonly StoryBeat[] {
   if (!lordMode(state)) return [];
   const beats: StoryBeat[] = [];
-  const home = homePetitionView(state);
-  if (home !== null) {
+  for (const home of homePetitionViews(state)) {
     beats.push({ id: `home-petition:${home.petitionId}`, kind: "home_petition", illustration: home.art, tile: seatTile(state), decision: "estate_petition",
-      title: home.title, line: home.demand, facts: [home.waits], advice: home.standing });
+      title: home.title, chip: HOME_PETITION_COPY[home.kind].chip ?? HOME_PETITION_COPY[home.kind].title, line: home.demand, facts: [home.waits], advice: home.standing });
   }
-  const offer = registryHeadline(state);
-  if (offer !== null) {
+  for (const offer of registryHeadlines(state)) {
     beats.push({ id: `registry:${offer.occurrenceId}`, kind: "registry_event", illustration: offer.art, tile: seatTile(state), decision: "registry_offer",
       title: offer.title, line: offer.body, facts: [offer.waits], advice: REGISTRY_CARD_COPY.advice });
   }

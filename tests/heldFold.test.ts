@@ -47,9 +47,9 @@ test("one past its deadline leaves the fold and changes in its own place; the ot
 
 test("the folded chip's time left is its earliest member's, near when that one is", () => {
   const folded = rail(petitions, petitions.map(entry => entry.id));
-  const dues = new Map([["estate-petition:p1", { left: "3철 남음", near: false, dueTick: 30_000 }], ["estate-petition:p2", { left: "이번 철까지", near: true, dueTick: 25_000 }],
-    ["estate-petition:p3", { left: "2철 남음", near: false, dueTick: 27_000 }]]);
-  assert.deepEqual(fatedDues(dues, new Map(), folded).get(heldFoldId("estate-petition")), { left: "이번 철까지", near: true, dueTick: 25_000 });
+  const dues = new Map([["estate-petition:p1", { left: "3철 남음", short: "3철", near: false, dueTick: 30_000 }], ["estate-petition:p2", { left: "이번 철까지", short: "이번 철", near: true, dueTick: 25_000 }],
+    ["estate-petition:p3", { left: "2철 남음", short: "2철", near: false, dueTick: 27_000 }]]);
+  assert.deepEqual(fatedDues(dues, new Map(), folded).get(heldFoldId("estate-petition")), { left: "이번 철까지", short: "이번 철", near: true, dueTick: 25_000 });
 });
 
 test("a member's [결정하기] opens that one's card; with none asked, the first", () => {

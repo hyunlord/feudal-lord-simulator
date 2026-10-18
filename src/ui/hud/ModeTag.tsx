@@ -18,17 +18,20 @@ export function modeTagFits(input: { readonly pillRight: number; readonly tagWid
   return right + MODE_TAG_GAP_PX <= input.sealsLeft;
 }
 
-/** The widths where the tag is its picture alone (the stylesheet's own break: 1100 px and narrower). */
+/** The widths where the tag is its picture alone (the stylesheet's own breaks: 1100 px and narrower; lord mode's short pill,
+ * LS1-14, from 1366 px). */
 const NARROW = "(max-width: 1100px)";
+export const LORD_SHORT_PILL = "(max-width: 1366px)";
 
-function useNarrow(): boolean {
-  const [narrow, setNarrow] = useState(() => typeof window !== "undefined" && window.matchMedia(NARROW).matches);
+function useNarrow(media: string): boolean {
+  const [narrow, setNarrow] = useState(() => typeof window !== "undefined" && window.matchMedia(media).matches);
   useEffect(() => {
-    const query = window.matchMedia(NARROW);
+    const query = window.matchMedia(media);
     const change = () => setNarrow(query.matches);
     query.addEventListener("change", change);
+    setNarrow(query.matches);
     return () => query.removeEventListener("change", change);
-  }, []);
+  }, [media]);
   return narrow;
 }
 
@@ -39,7 +42,7 @@ function useNarrow(): boolean {
  * resting there or focus the page moved). A tag, not a button: the pill's cells (its buttons) keep their order.
  */
 export function ModeTag({ lord }: { readonly lord: boolean }) {
-  const narrow = useNarrow();
+  const narrow = useNarrow(lord ? LORD_SHORT_PILL : NARROW);
   const [tip, setTip] = useState(false);
   // No room before the speed seals (a long translation, extreme numbers at 1024): the tag hides first; the pill's name
   // still says the mode. Re-read as the pill's numbers or the window change.

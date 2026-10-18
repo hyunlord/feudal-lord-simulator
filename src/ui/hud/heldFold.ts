@@ -33,7 +33,7 @@ export function foldHeld(pinned: readonly StoryBeat[]): readonly StoryBeat[] {
     if (group[0] !== beat) continue;
     if (group.length === 1) { out.push({ ...beat, id: heldFoldId(prefixOf(beat.id)), members: group }); continue; }
     out.push({ id: heldFoldId(prefixOf(beat.id)), kind: beat.kind, illustration: null, tile: null, decision: null,
-      title: DEADLINE_COPY.heldFold(prefixOf(beat.id), group.length), line: DEADLINE_COPY.heldFoldLine(group.length), facts: [], advice: DEADLINE_COPY.lapsedAdvice,
+      title: DEADLINE_COPY.heldFold(prefixOf(beat.id), group.length), chip: DEADLINE_COPY.heldFoldShort(prefixOf(beat.id), group.length), line: DEADLINE_COPY.heldFoldLine(group.length), facts: [], advice: DEADLINE_COPY.lapsedAdvice,
       members: group });
   }
   return out;

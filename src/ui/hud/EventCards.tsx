@@ -56,11 +56,15 @@ export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, 
       <div className="event-chips">
         {beats.map(beat => (
           <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} data-chip-id={beat.id} aria-expanded={openId === beat.id}
-            data-near={due.get(beat.id)?.near === true ? "true" : undefined} data-fresh={fresh.has(beat.id) ? "true" : undefined}
+            data-near={due.get(beat.id)?.near === true ? "true" : undefined} data-due={due.has(beat.id) ? "true" : undefined} data-fresh={fresh.has(beat.id) ? "true" : undefined}
             aria-label={EVENT_STORY_COPY.chipLabel(due.has(beat.id) ? `${beat.title} · ${due.get(beat.id)!.left}` : beat.title)}
             onPress={() => onOpen(openId === beat.id ? null : beat.id)} variant="secondary">
-            {beat.illustration === null ? null : <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />}{beat.title}
-            {due.has(beat.id) ? <span className="event-chip-due">{due.get(beat.id)!.left}</span> : null}
+            {/* LS1-14: a held chip is its short name and mark only (its picture and long words are its card's). */}
+            {/* LS1-15: while the zone tools are open the chip is this colour mark and its time left (the stylesheet). */}
+            <span className="event-chip-mark" aria-hidden="true" />
+            {beat.illustration === null || due.has(beat.id) ? null : <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />}
+            <span className="event-chip-name">{beat.chip ?? beat.title}</span>
+            {due.has(beat.id) ? <span className="event-chip-due">{due.get(beat.id)!.short}</span> : null}
           </Button>
         ))}
         {notice}

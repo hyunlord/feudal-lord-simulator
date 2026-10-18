@@ -29,6 +29,9 @@ const seed = Number(flags.seed ?? 1);
 // left: its card put off (나중에) and never answered, nor applied by the bot, so its deadline runs out and the screen's
 // warning, last-season stop and lapse chip show. The kinds not named are answered as the bot plays them.
 const leaveKinds = (flags.leave ?? '').split(',').filter(kind => kind !== '');
+// The speed the slice runs at (10, as the player's fastest; 1 or 3 for the season band's pace at the slower seals — the
+// user 2026-10-18: is the band too often at 1× and 3×?). The run comes back to it after every stop.
+const speed = Number(flags.speed ?? 10);
 const TICKS_PER_YEAR = 4000;
 const SEASON = TICKS_PER_YEAR / 4;
 for (const dir of ['seasons', 'stops', 'states']) mkdirSync(join(out, dir), { recursive: true });
@@ -99,7 +102,13 @@ await page.evaluate(async ({ told, grace, leave }) => {
   const record = element => {
     const text = (element.innerText ?? element.textContent ?? '').replace(/\s+/g, ' ').trim();
     const id = element.getAttribute('data-chip-id');
-    if (text !== '') window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: text.slice(0, 400), ...(id === null ? {} : { id }) });
+    // The season band's own box and what on screen it overlaps as it comes (the band's pace at the slower seals).
+    const band = element.matches('.season-band-layer') ? element.getBoundingClientRect() : null;
+    const overlaps = band === null ? undefined : [...document.querySelectorAll('.event-chip, .event-card, .story-modal, .auto-pause-notice, .completion-toast, .season-notice, .status-pill')]
+      .filter(other => other !== element && !element.contains(other) && other.offsetParent !== null).filter(other => { const r = other.getBoundingClientRect();
+        return r.left < band.right && r.right > band.left && r.top < band.bottom && r.bottom > band.top; }).map(other => String(other.className).split(' ')[0]);
+    if (text !== '') window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: text.slice(0, 400), ...(id === null ? {} : { id }),
+      ...(band === null ? {} : { box: [Math.round(band.left), Math.round(band.top), Math.round(band.right), Math.round(band.bottom)], overlaps }) });
   };
   const gone = element => window.__FLS_TOLD__.push({ tick: tick(), at: Math.round(performance.now()), cls: String(element.className).slice(0, 80), text: '', id: element.getAttribute('data-chip-id'), gone: true });
   // LS1-13: a kind's chip lit (a decision come into it) and its words changed in place (the count) are told too.
@@ -118,7 +127,7 @@ await page.evaluate(async ({ told, grace, leave }) => {
       }
       for (const node of change.removedNodes) {
         if (!(node instanceof HTMLElement)) continue;
-        if (node.matches('.event-chip')) gone(node);
+        if (node.matches('.event-chip, .season-band-layer')) gone(node);
         for (const inner of node.querySelectorAll('.event-chip')) gone(inner);
       }
     }
@@ -126,7 +135,11 @@ await page.evaluate(async ({ told, grace, leave }) => {
 }, { told: TOLD, grace: ASKED_GRACE, leave: leaveKinds });
 
 const read = () => page.evaluate(() => ({ tick: window.__FEUDAL_PHASE10_PROOF__.state().tick }));
-const tenfold = async () => { await page.keyboard.press('Digit0'); await page.waitForTimeout(300); };
+const tenfold = async () => {
+  if (speed === 10) await page.keyboard.press('Digit0');
+  else await page.locator('.speed-seals .speed-seal').nth(speed === 1 ? 1 : 2).click({ timeout: 5_000 }).catch(() => undefined);
+  await page.waitForTimeout(300);
+};
 const shoot = async (path) => page.screenshot({ path, type: 'jpeg', quality: 55 }).catch(() => undefined);
 const label = tick => { const year = 1300 + Math.floor(tick / TICKS_PER_YEAR); const season = Math.floor((tick % TICKS_PER_YEAR) / SEASON); return `${year}-s${season}`; };
 const visibleText = () => page.evaluate(() => document.body.innerText.replace(/[ \t]+/g, ' ').slice(0, 20_000));
@@ -166,7 +179,7 @@ async function answerCard(name) {
 }
 
 const end = years * TICKS_PER_YEAR;
-const log = { seed, years, startedAt: new Date().toISOString(), seasons: [], stops: [], answers: [], yearsWall: [] };
+const log = { seed, years, speed, startedAt: new Date().toISOString(), seasons: [], stops: [], answers: [], yearsWall: [] };
 let lastSeason = -1; let pausedSince = null; let lastTick = -1; let stops = 0; let wallYear = Date.now(); let lastYear = 0;
 await dumpState('1300-s0-start'); await shoot(join(out, 'seasons', '1300-s0-start.jpg'));
 await tenfold();

@@ -67,3 +67,13 @@ test("no room before the speed seals: the tag hides first — the pill's name st
     assert.ok(markup.includes(`aria-label="${HUD_COPY.pillWithMode(HUD_COPY.mode[mode])}" data-mode="${mode}"`), scenario);
   }
 });
+
+test("LS1-14: the pill's population and food cells keep their word in a span (lord mode's short pill hides it), the text whole", () => {
+  const markup = pill(started(LORD_SLICE_SCENARIO_ID));
+  const words = [...markup.matchAll(/<span class="status-pill-word">([^<]*)<\/span>/g)].map(match => match[1]);
+  assert.deepEqual(words, ["인구 ", "식량 "]);
+  const text = markup.replace(/<[^>]*>/g, "");
+  const model = statusPillModel(started(LORD_SLICE_SCENARIO_ID));
+  assert.ok(text.includes(HUD_COPY.population(model.population)), "the population's text stays whole");
+  assert.ok(text.includes(model.foodDays === null ? HUD_COPY.foodNone : HUD_COPY.foodDays(model.foodDays)), "the food's text stays whole");
+});
