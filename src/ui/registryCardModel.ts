@@ -21,10 +21,10 @@ import { calendarDays } from "./gameTimeCopy.ko";
 import type { DecisionCardView, DecisionChoiceView } from "./decisionCard/decisionCardTypes";
 import { lordAnswer } from "./decisionCard/families/lordOutcome";
 import { courtLine } from "./lordCardsModel";
-import { perState } from "./perState";
 import { sinceLastAnswer, type SinceLastView } from "./lord/since/sinceLastModel";
 import { BINDING_WORDS, PIECE_WORDS, REGISTRY_CARD_COPY, SUIT_STAGE_WORDS, type ShutReason } from "./registryCardCopy.ko";
-import { askedOrFirst } from "./lord/decisions/decisionFocus";
+import { askedOrFirst, perStateAsked } from "./lord/decisions/decisionFocus";
+import { perState } from "./perState";
 
 // EVENT-ART: the registry event card (lord mode only, `lordMode`) — an offer the registry made from the content canon v4
 // (LM-E9b: `occurrence.source === "v4"`, its targets in `occurrence.bound`; `openRegistryOffers`: offered, not past its
@@ -191,10 +191,13 @@ function headline(state: GameState, { occurrence, entry }: RegistryCard): Regist
 
 /** The first registry offer waiting for the lord, for its story chip, or null. Once per state (`perState`): the chips read it
  * on every render, and its variant words bind the offer's fixed targets. */
-export const registryHeadline = perState((state: GameState): RegistryHeadline | null => {
+export const registryHeadline = perStateAsked((state: GameState): RegistryHeadline | null => {
   const card = askedOrFirst(openRegistryCards(state), entry => `registry:${entry.occurrence.id}`);
   return card === undefined ? null : headline(state, card);
 });
+
+/** LS1-14: every registry offer waiting has its chip (before, only the first did); held ones fold into the kind's chip. */
+export const registryHeadlines = perState((state: GameState): readonly RegistryHeadline[] => openRegistryCards(state).map(card => headline(state, card)));
 
 /** One offer as its card shows it: each answer the engine would carry out is run on the state (`answer_registry_offer`). */
 export function registryCardView(state: GameState, card: RegistryCard): RegistryOfferView {
@@ -239,7 +242,7 @@ export function registryCardView(state: GameState, card: RegistryCard): Registry
 /** The first registry offer waiting for the lord as its card shows it, or null (none, or not lord mode). Once per state
  * (`perState`): it runs each answer on the state, and AppModals re-renders on clock and UI events while the card is up;
  * the chip reads `registryHeadline`, which runs nothing. */
-export const registryOfferView = perState((state: GameState): RegistryOfferView | null => {
+export const registryOfferView = perStateAsked((state: GameState): RegistryOfferView | null => {
   const card = askedOrFirst(openRegistryCards(state), entry => `registry:${entry.occurrence.id}`);
   return card === undefined ? null : registryCardView(state, card);
 });

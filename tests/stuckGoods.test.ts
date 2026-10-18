@@ -101,15 +101,19 @@ test("the chip copy: the worst pile in one line, its reason, and how many more",
   assert.equal(view.line, "북쪽 헛간에 밀 800 묶임");
   assert.equal(view.reason, "길 없음");
   assert.equal(view.more, "외 1곳");
-  assert.equal(view.label, "북쪽 헛간에 밀 800 묶임 — 길 없음. 누르면 그 건물로 갑니다");
+  // LS1-14: the chip shows the short line (the good of the largest, every pile counted); the label keeps the whole one.
+  assert.equal(view.short, "밀 묶임 2곳");
+  assert.ok(view.label.includes("북쪽 헛간에 밀 800 묶임 외 1곳"));
+  assert.equal(view.label, "북쪽 헛간에 밀 800 묶임 외 1곳 — 길 없음. 누르면 그 건물로 갑니다");
   assert.equal(STUCK_GOODS_COPY.reason.receiver_full, "받을 곳 가득");
   assert.equal(STUCK_GOODS_COPY.line("남쪽", "헛간", "밀", 1200), "남쪽 헛간에 밀 1,200 묶임");
   assert.equal(stuckGoodsChipView(state, []), null);
 
   const markup = renderToStaticMarkup(createElement(StuckGoodsChip, { view, onInspect: () => undefined }));
   assert.match(markup, /^<button type="button" class="stuck-goods-chip ui-btn ui-btn--secondary"/);
-  assert.match(markup, /aria-label="북쪽 헛간에 밀 800 묶임 — 길 없음\. 누르면 그 건물로 갑니다"/);
-  assert.match(markup, /외 1곳/);
+  assert.match(markup, /aria-label="북쪽 헛간에 밀 800 묶임 외 1곳 — 길 없음\. 누르면 그 건물로 갑니다"/);
+  // LS1-14: the chip reads its short line; where, why and how many more are its label's and its inspector's.
+  assert.match(markup, /<span class="stuck-goods-line">밀 묶임 2곳<\/span>/);
   assert.doesNotMatch(markup, /title=/);
 });
 

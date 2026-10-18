@@ -11,6 +11,8 @@ import { moneyJosa, moneyObject, moneyShort } from "./money.ko";
 export type PetitionParties = Readonly<{ party: string; firstHouse: string; secondHouse: string; bishop: string }>;
 type KindCopy = Readonly<{
   title: string;
+  /** LS1-14: the chip's short name on the rail (absent: the title). */
+  chip?: string;
   demand: (amount: number, parties: PetitionParties) => string;
   grant: (parties: PetitionParties) => string;
   refuse: (parties: PetitionParties) => string;
@@ -33,11 +35,13 @@ export const HOME_PETITION_COPY: Readonly<Record<HomePetitionKind, KindCopy>> = 
   },
   heriot: {
     title: "사망 부과금(헤리엇)",
+    chip: "헤리엇",
     demand: amount => `소작인이 죽어 과부와 아들이 가장 좋은 소를 영주에게 바쳐야 합니다. 부과금을 면해 달라고 청합니다. 소의 값은 ${sum(amount)}입니다.`,
     grant: () => "부과금을 면해 준다", refuse: () => "관습대로 소를 받는다",
   },
   merchet: {
     title: "혼인 부담금(머쳇)",
+    chip: "머쳇",
     demand: amount => `소작인이 딸을 장원 밖으로 시집보내려 허락을 청합니다. 혼인 부담금 ${moneyObject(amount)} 내겠다고 합니다.`,
     grant: () => "부담금을 받고 허락한다", refuse: () => "혼인을 허락하지 않는다",
   },
@@ -48,16 +52,19 @@ export const HOME_PETITION_COPY: Readonly<Record<HomePetitionKind, KindCopy>> = 
   },
   road_bridge: {
     title: "길·다리 수리 분담",
+    chip: "수리 분담",
     demand: amount => `장원의 길과 다리가 무너져 갑니다. 도시 공동체가 수리비 ${moneyObject(amount)} 영주가 나눠 맡아 달라고 청합니다.`,
     grant: () => "수리비를 나눠 맡는다", refuse: () => "도시가 고치게 둔다",
   },
   stall_dispute: {
     title: "시장 좌판 다툼",
+    chip: "좌판 다툼",
     demand: (_amount, p) => `${p.firstHouse}과 ${p.secondHouse}이 장날 같은 좌판 자리를 두고 다툽니다. 어느 집에 자리를 줄지 정해 주십시오.`,
     grant: p => `${p.firstHouse} 편을 든다`, refuse: p => `${p.secondHouse} 편을 든다`,
   },
   wardship: {
     title: "미성년 상속자 후견",
+    chip: "후견",
     demand: amount => `소작인이 어린 상속자를 남기고 죽었습니다. 친족이 아이와 땅의 후견을 맡겠다고 청합니다. 영주가 후견을 쥐면 ${sumSubject(amount)} 들어옵니다.`,
     grant: () => "후견을 친족에게 준다", refuse: () => "후견을 영주가 쥔다",
   },
@@ -68,16 +75,19 @@ export const HOME_PETITION_COPY: Readonly<Record<HomePetitionKind, KindCopy>> = 
   },
   newcomer: {
     title: "이주민 정착 허가",
+    chip: "정착 허가",
     demand: amount => `새로 온 이주민 가족이 장원에 땅을 얻어 살겠다고 청합니다. 입주금 ${moneyObject(amount)} 내겠다고 합니다.`,
     grant: () => "입주금을 받고 정착을 허락한다", refuse: () => "정착을 허락하지 않는다",
   },
   pannage: {
     title: "돼지 방목 사용료",
+    chip: "돼지 방목",
     demand: amount => `소작인들이 도토리 철에 영주의 숲에 돼지를 놓는 사용료 ${moneyObject(amount)} 면해 달라고 청합니다.`,
     grant: () => "사용료를 면해 준다", refuse: () => "관습대로 사용료를 받는다",
   },
   chancel_repair: {
     title: "교회 성단 수리",
+    chip: "성단 수리",
     demand: (amount, p) => `${p.bishop}가 교회 제단 쪽(성단)의 수리비 ${moneyObject(amount)} 영주가 맡아 달라고 청합니다.`,
     grant: () => "수리비를 맡는다", refuse: () => "수리비를 맡지 않는다",
   },

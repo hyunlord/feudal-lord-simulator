@@ -52,6 +52,8 @@ export const DECISION_CARDS_COPY = {
   suitStage: { filed: "제기됨", evidence: "증거 모으는 중", patronage: "후원 구하는 중", hearing: "심리 중", judged: "판결 남", enforcing: "점유 집행 중", closed: "끝남" } as Readonly<Record<string, string>>,
   // A Michaelmas audit (SW-6).
   auditTitle: "미카엘마스 감사",
+  /** LS1-14: the audit's chip on the rail. */
+  auditChip: "감사",
   auditKicker: (visit: boolean) => visit ? "영주가 직접 찾아간 감사" : "장부로 본 감사",
   auditLine: (estate: string, steward: string, kept: number, errors: number) =>
     `${estate}의 감사에서 청지기 ${steward}의 장부에 드러난 것: ${[kept > 0 ? `빼돌린 돈 ${moneyShort(kept)}` : "", errors > 0 ? `오류 ${moneyShort(errors)}` : ""].filter(part => part !== "").join(" · ")}.`,

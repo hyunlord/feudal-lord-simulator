@@ -415,6 +415,8 @@
   .app-shell [data-slot="ledger"] { --slot-clear: calc(min(var(--box-w-wide), 100% - 16px) + 8px); }
   .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: var(--slot-clear); }
 }
+/* LS1-14: a chip's name on one line — the whole title is its card's and its accessible name's. */
+.app-shell .event-chip-name { min-width: 0; max-width: 16em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 /* LS1-11: a held chip's time left by the engine's deadline; in its last season the chip is marked near. */
 .app-shell .event-chip-due { flex: 0 0 auto; padding: 0 6px; border-left: 1px solid var(--palette-ink); font-size: 12px; font-weight: 600; }
 .app-shell .event-chip[data-near="true"] { border-color: var(--palette-vermilion); box-shadow: inset 0 0 0 2px var(--palette-vermilion); }

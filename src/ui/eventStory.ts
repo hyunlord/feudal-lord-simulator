@@ -80,6 +80,8 @@ export type StoryBeat = Readonly<{
   /** Where [위치로] looks (null: nowhere in particular). */
   tile: { readonly tx: number; readonly ty: number } | null;
   title: string;
+  /** LS1-14: the chip's short name on the rail (its card keeps `title`); absent: the title, one line. */
+  chip?: string;
   line: string;
   facts: readonly string[];
   advice: string;

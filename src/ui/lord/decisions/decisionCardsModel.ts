@@ -22,7 +22,7 @@ import { courtLine } from "../../lordCardsModel";
 import { perState } from "../../perState";
 import { ESTATES_COPY } from "../estates/estatesCopy.ko";
 import { DECISION_CARDS_COPY as COPY, OFFMAP_PETITION_COPY } from "./decisionCardsCopy.ko";
-import { askedOrFirst } from "./decisionFocus";
+import { askedOrFirst, perStateAsked } from "./decisionFocus";
 
 // LM-R2 (lord mode) the lord's decision cards as view models: the father's new will and the contested inheritance
 // (NG-8 `marriageDecisionDue`), a Michaelmas audit's finding (SW-6 `pendingAudits`) and an off-map estate's petition
@@ -147,7 +147,7 @@ export function auditHeadOf(state: GameState, audit: ReturnType<typeof pendingAu
 }
 
 /** The first audit that found something and waits for the lord, as its card shows it; null: none (or not lord mode). */
-export const auditDecisionView = perState((state: GameState): AuditDecisionView | null => {
+export const auditDecisionView = perStateAsked((state: GameState): AuditDecisionView | null => {
   const head = auditDecisionHead(state);
   if (head === null) return null;
   const audit = askedOrFirst(pendingAudits(state), entry => `audit:${entry.id}`)!;
@@ -191,7 +191,7 @@ export function offMapPetitionHeadOf(state: GameState, petition: EstatePetition)
 }
 
 /** The first off-map estate's petition waiting for the lord, as its card shows it; null: none. */
-export const offMapPetitionView = perState((state: GameState): OffMapPetitionView | null => {
+export const offMapPetitionView = perStateAsked((state: GameState): OffMapPetitionView | null => {
   const head = offMapPetitionHead(state);
   if (head === null) return null;
   const petition = askedOrFirst(openOffMapPetitions(state), entry => `estate-petition:${entry.id}`)!;

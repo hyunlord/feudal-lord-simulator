@@ -8,13 +8,14 @@ export type LapseKind = "manor_petition" | "estate_petition" | "registry" | "cha
 
 const DEADLINE_SUBJECT: Readonly<Record<DeadlineKind, string>> = {
   will_change: "유언 바꿈", audit: "감사", estate_petition: "영지 밖 청원", suit_defence: "소송 방어", entry_threat: "강제 진입 경고",
-  home_petition: "본령 청원", registry: "제안", famine: "대기근",
+  home_petition: "본령 청원", registry: "제안", famine: "대기근", petition: "청원",
 };
 
 /** What the engine will do if the deadline passes (the effectful kinds the auto-pause tells). */
 const IF_LAPSED: Readonly<Partial<Record<DeadlineKind, string>>> = {
   will_change: "유언은 그대로 둡니다", audit: "묵인으로 처리됩니다", estate_petition: "거절로 처리되고 기다린 쪽의 마음이 상합니다",
   registry: "정해 둔 답으로 처리됩니다",
+  petition: "거절로 처리됩니다",
 };
 
 const LAPSE_SUBJECT: Readonly<Record<LapseKind, string>> = {
@@ -36,7 +37,16 @@ const HELD_FOLD_SUBJECT: Readonly<Record<string, string>> = {
   "estate-petition": "영지 밖 청원", registry: "제안", "home-petition": "본령 청원", audit: "감사", petition: "청원",
 };
 
+/** LS1-14: a folded chip's short subject on the rail ("청원 2건 · 이번 철"); its card keeps the whole one. */
+const HELD_FOLD_SHORT: Readonly<Record<string, string>> = {
+  "estate-petition": "청원", registry: "제안", "home-petition": "본령 청원", audit: "감사", petition: "청원",
+};
+
 export const DEADLINE_COPY = {
+  /** LS1-14 (the user's ruling 2026-10-18; REMOTE's lord-pinned HUD measure over budget): the chip's short marks — the
+   * card keeps the long ones. */
+  short: { thisSeason: "이번 철", seasons: (seasons: number) => `${seasons}철`, past: "기한 지남" },
+  heldFoldShort: (prefix: string, count: number) => `${HELD_FOLD_SHORT[prefix] ?? "결정"} ${count}건`,
   thisSeason: "이번 철까지",
   past: "기한 지남",
   /** LS1-10: a held chip past its deadline, the engine yet to settle it (the screen keeps its last look). */

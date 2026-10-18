@@ -20,6 +20,9 @@ export const STUCK_GOODS_COPY = {
   storeFullness: (store: string, used: number, capacity: number) => `${store} ${used.toLocaleString("ko-KR")}/${capacity.toLocaleString("ko-KR")}`,
   /** The reason with the store's fullness: `받을 곳 가득 · 창고 200/200`. */
   withStore: (reason: string, store: string) => `${reason} · ${store}`,
+  /** LS1-14: the chip's short line — one pile `밀 800 묶임`, more `밀 묶임 12곳` (the good of the largest, every pile counted);
+   * where, why and the store's fullness are the inspector's that its press opens, and its accessible name's. */
+  short: (good: string, amount: number, piles: number) => piles <= 1 ? `${good} ${amount.toLocaleString("ko-KR")} 묶임` : `${good} 묶임 ${piles}곳`,
   /** More piles than the one shown: `외 2곳`. */
   more: (count: number) => `외 ${count}곳`,
   /** The engine's field entry: this year's ripe wheat the full barn could not take. */
