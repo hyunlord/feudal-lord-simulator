@@ -57,6 +57,7 @@ import { answerWarPetition, chapterTwoWallOutcome } from "./war";
 import { answerPlaguePetition } from "./plague";
 import { answerReorganisationPetition } from "./reorganisation";
 import { answerLegacyPetition, legacyChronicleStats } from "./legacy";
+import { BALANCE } from "../content/balanceConfig";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { housingLotCount } from "../population/housing";
 
@@ -402,6 +403,19 @@ export function chapterGoals(state: Pick<GameState, "politics" | "settlement">):
   return goals;
 }
 
+/** First simulation tick at which the calendar petition is expired, not its last answerable tick.
+ * advancePolitics applies this cutoff on its existing 50-tick samples. Unknown/non-calendar definitions and
+ * scenarios without the politics event return null: their toYear is not an automatic expiry rule here.
+ * The cutoff is definition-derived even for an already answered petition; no state is written or reinterpreted.
+ */
+export function politicalPetitionExpiryTick(state: Pick<GameState, "scenarioId">, petition: Pick<PetitionRecord, "defId">): number | null {
+  const scenario = scenarioOf(state);
+  if (!scenario.activeEvents.includes(GREAT_FAMINE_EVENT_ID)) return null;
+  const def = PETITION_DEFS.find(candidate => candidate.id === petition.defId);
+  if (def === undefined || (def.trigger ?? "calendar") !== "calendar") return null;
+  return Math.max(0, (def.toYear + 1 - scenario.startYear) * BALANCE.TICKS_PER_YEAR);
+}
+
 /** One tick of F0-C1 (no-op between 50-tick samples, and for a scenario without the famine). */
 export function advancePolitics(state: GameState): GameState {
   if (state.tick % SAMPLE !== 0 && state.politics !== undefined) return state;
@@ -427,7 +441,7 @@ export function advancePolitics(state: GameState): GameState {
       if (Math.floor(tick / SEASON_TICKS) >= petitionSeason(next, def) && year <= def.toYear && ready) {
         politics = { ...politics, petitions: [...politics.petitions, { id: `${def.id}@${tick}`, defId: def.id, petitioner: def.petitioner, arrivedTick: tick }] };
       }
-    } else if (existing.response === undefined && year > def.toYear) {
+    } else if (existing.response === undefined && tick >= (politicalPetitionExpiryTick(next, existing) ?? Infinity)) {
       politics = { ...politics, merchantGauge: clampGauge(politics.merchantGauge + def.expiredGauge),
         petitions: politics.petitions.map(petition => petition === existing ? { ...petition, response: "expired" as const, respondedTick: tick } : petition) };
     }
