@@ -65,7 +65,7 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
   const beats: StoryBeat[] = [];
   for (const home of homePetitionViews(state)) {
     beats.push({ id: `home-petition:${home.petitionId}`, kind: "home_petition", illustration: home.art, tile: seatTile(state), decision: "estate_petition",
-      title: home.title, chip: HOME_PETITION_COPY[home.kind].chip ?? home.title, line: home.demand, facts: [home.waits], advice: home.standing });
+      title: home.title, chip: HOME_PETITION_COPY[home.kind].chip ?? HOME_PETITION_COPY[home.kind].title, line: home.demand, facts: [home.waits], advice: home.standing });
   }
   for (const offer of registryHeadlines(state)) {
     beats.push({ id: `registry:${offer.occurrenceId}`, kind: "registry_event", illustration: offer.art, tile: seatTile(state), decision: "registry_offer",
