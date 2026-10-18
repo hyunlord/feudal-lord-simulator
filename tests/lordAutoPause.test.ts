@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { gunzipSync } from "node:zlib";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -27,8 +28,8 @@ import { SURFACES } from "../src/ui/surfaces.registry";
 // after every command (the store's previous render state is then the new state) and after every tick batch (the
 // previous is the state the batch started from). It stops only for the engine's big events (`pauseReasons`) and new
 // matters due (`lordMattersDue`), once a season. The lord bot plays seed 1 from the slice's start into its eighth year:
-// a great person's death (1304), the lord's wardship (1305) and the counter that comes in the same tick as the offer
-// (1306). Seed 3 until FOOD-EARLY: its faster town never filled the treasury to the bot's one marriage offer. AUTO_PAUSE_PAIRS=<dir> (the DGX's `scripts/autoPauseStates.ts` pairs, ~/fls-slice-end-states/pairs) also walks
+// a great person's death (1304) and the lord's wardship (1305); the counter that comes in the same tick as the offer is played from a save (below, 1308; it was
+// 1306 in the played game before CONVERTER-FEED). Seed 3 until FOOD-EARLY: its faster town never filled the treasury to the bot's one marriage offer. AUTO_PAUSE_PAIRS=<dir> (the DGX's `scripts/autoPauseStates.ts` pairs, ~/fls-slice-end-states/pairs) also walks
 // the first stop of every other reason the bot's twenty years reach.
 
 type Stop = { readonly before: GameState; readonly after: GameState; readonly by: "tick" | "command"; readonly command?: string; readonly items: readonly AutoPauseItem[] };
@@ -64,9 +65,27 @@ const played = (() => {
   return { stops, quiet, states, last: state };
 })();
 
+// The bot's one marriage offer (the counter in the same tick) comes from a natural save: seed 1 played by the lord bot to
+// the tick it first sends `propose_marriage` (35,023 with CONVERTER-FEED's pull; DGX engine-CONV-save1-a0946b2,
+// `scripts/saveBeforeLordCommand.ts`) — the user's note 2026-10-15: a history-bound test starts from a saved state when it
+// next breaks, instead of moving its seed or window. The commands of that tick are sent as the store sends them.
+const counterStop: Stop | undefined = (() => {
+  let state = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/lordPause/seed1-propose.save.json.gz")))).envelope.state as GameState;
+  let memory = autoPauseMemory(state);
+  for (const { command } of lordBotCommands(state)) {
+    const next = gameReducer(state, command);
+    const step = autoPauseStep(memory, next, next);
+    memory = step.memory;
+    if (command.type === "propose_marriage") return step.fresh.length > 0 ? { before: state, after: next, by: "command" as const, command: command.type, items: step.fresh } : undefined;
+    state = next;
+  }
+  return undefined;
+})();
+
 const eventsOf = (items: readonly AutoPauseItem[], reason?: PauseReason) =>
   items.flatMap(item => item.kind === "event" && (reason === undefined || item.event.reason === reason) ? [item] : []);
-const stopOf = (reason: PauseReason) => played.stops.find(stop => eventsOf(stop.items, reason).length > 0);
+const stopOf = (reason: PauseReason) => played.stops.find(stop => eventsOf(stop.items, reason).length > 0)
+  ?? (reason === "counter_offer" ? counterStop : undefined);
 const roundTrip = (state: GameState): GameState =>
   decodeSave(encodeSave({ state, createdAt: "2026-10-09T00:00:00.000Z", savedAt: "2026-10-09T00:00:00.000Z" }).bytes).envelope.state as GameState;
 const primaries = (markup: string) => markup.match(/ui-btn--primary/g)?.length ?? 0;
