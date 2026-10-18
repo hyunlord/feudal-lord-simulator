@@ -15,7 +15,7 @@ import { GOAL_PIN_COPY } from "../hud/goalPinCopy.ko";
 // line, one button), the unlock banner, the pause veil and the goal drawer. UX-2 dresses them in the P0 art (frames in
 // src/styles/uiSkin.css, painted icons through UiIcon, the steward's portrait by the line's tone).
 
-export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, maxActive }: {
+export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, maxActive, compact = false }: {
   readonly tutorial: TutorialController;
   readonly onToggleDrawer: () => void;
   readonly drawerOpen: boolean;
@@ -23,6 +23,9 @@ export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, 
   readonly warn?: boolean;
   /** UX-3 S-80: at most this many active cards (the most urgent first); finished cards still flash. */
   readonly maxActive?: number;
+  /** LS1-14 (lord mode): an active card is one line — its title, count and short reason — and its press does what its
+   * button did; the whole reason and the button's words are its name (the HUD area with held chips over budget). */
+  readonly compact?: boolean;
 }) {
   // The lean-season warning (UI-3) outranks the other goal cards; otherwise the controller's order stands.
   const active = tutorial.cards.filter(card => card.status === "active")
@@ -31,7 +34,9 @@ export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, 
     : tutorial.cards.filter(card => card.status !== "active" || active.indexOf(card) < maxActive);
   return (
     <section className="goal-cards" aria-label={TUTORIAL_COPY.cardsLabel}>
-      {shown.map(card => <GoalCardView key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} onLook={tutorial.lookAt} />)}
+      {shown.map(card => compact && card.status === "active" && card.ctaLabel !== null
+        ? <GoalCardLine key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} />
+        : <GoalCardView key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} onLook={tutorial.lookAt} />)}
       <Button type="button" className="goal-drawer-toggle" aria-expanded={drawerOpen} onPress={() => onToggleDrawer()} variant="toggle">
         <UiIcon sheet="action" cell="log" /><span className="goal-drawer-toggle-label">{TUTORIAL_COPY.drawer}{tutorial.log.length > 0 ? ` (${tutorial.log.length})` : ""}</span>
       </Button>
@@ -74,6 +79,22 @@ function FoldableGoalCard({ card, warn, onPress, onLook }: { readonly card: Goal
   );
   if (!open) return <article className={warn ? "goal-card goal-card--folded goal-card--warn" : "goal-card goal-card--folded"} data-frame="objective" data-goal-card={card.key} data-folded="true">{chip}</article>;
   return <GoalCardBody card={card} warn={warn} onPress={onPress} onLook={onLook} heading={chip} />;
+}
+
+/** LS1-14: the lord-mode goal on one line; a press does what the card's button did. */
+function GoalCardLine({ card, warn, onPress }: { readonly card: GoalCard; readonly warn: boolean; readonly onPress: () => void }) {
+  const count = card.progress === null ? null : TUTORIAL_COPY.progress(card.progress.current, card.progress.target);
+  const reason = card.whyShort ?? card.why;
+  return (
+    <article className={warn ? "goal-card goal-card--line goal-card--warn" : "goal-card goal-card--line"} data-frame="objective" data-goal-card={card.key} data-compact="true">
+      <Button type="button" className="goal-card-line" data-tutorial-cta={card.key} onPress={() => onPress()} variant="toggle"
+        aria-label={`${card.title}${count === null ? "" : ` ${count}`} — ${card.why}. ${card.ctaLabel ?? ""}`.trim()}>
+        <span className="goal-card-title">{card.title}</span>
+        {count === null ? null : <span className="goal-card-count">{count}</span>}
+        {reason === "" ? null : <span className="goal-card-line-why">{reason}</span>}
+      </Button>
+    </article>
+  );
 }
 
 function GoalCardBody({ card, warn, onPress, onLook, heading }: { readonly card: GoalCard; readonly warn: boolean; readonly onPress: () => void; readonly onLook: () => void; readonly heading?: ReactNode }) {

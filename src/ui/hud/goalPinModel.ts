@@ -22,7 +22,7 @@ export type GoalPinAction =
   | Readonly<{ kind: "ledger" }>
   | Readonly<{ kind: "goals" }>;
 
-export type GoalPinNext = Readonly<{ line: string; cta: string; action: GoalPinAction }>;
+export type GoalPinNext = Readonly<{ line: string; /** LS1-14: the lord-mode HUD's one short line. */ short: string; cta: string; action: GoalPinAction }>;
 
 export type ChapterFlow = Readonly<{ number: number; title: string; goal: string; reached: number; total: number }>;
 
@@ -38,40 +38,43 @@ const GOALS: GoalPinAction = { kind: "goals" };
 /** The next action for a resource the stage asks for: the full store holding it back, else the stock ledger. */
 function resourceNext(state: GameState, requirement: EraRequirement): GoalPinNext {
   const missing = Math.max(0, Math.ceil(requirement.target - requirement.current));
-  if (requirement.key === "coin") return { line: GOAL_PIN_COPY.money(moneyShort(requirement.target), moneyShort(missing)), cta: GOAL_PIN_COPY.cta.ledger, action: { kind: "ledger" } };
+  if (requirement.key === "coin") return { line: GOAL_PIN_COPY.money(moneyShort(requirement.target), moneyShort(missing)), short: GOAL_PIN_COPY.brief.money(moneyShort(missing)), cta: GOAL_PIN_COPY.cta.ledger, action: { kind: "ledger" } };
   const line = GOAL_PIN_COPY.short(requirement.label, requirement.target, missing, GOAL_PIN_COPY.units[requirement.key] ?? "");
+  const short = GOAL_PIN_COPY.brief.resource(requirement.label, missing, GOAL_PIN_COPY.units[requirement.key] ?? "");
   const heldBy = stuckRows(state).find(row => row.good === requirement.key && row.store !== null)?.store ?? null;
   if (heldBy !== null) {
     const store = state.buildings.find(building => building.id === heldBy.id);
-    if (store !== undefined) return { line, cta: GOAL_PIN_COPY.cta.store(BUILDING_CONFIG_BY_KIND[store.kind].name), action: { kind: "inspect", buildingId: store.id, tile: { tx: store.tx, ty: store.ty } } };
+    if (store !== undefined) return { line, short, cta: GOAL_PIN_COPY.cta.store(BUILDING_CONFIG_BY_KIND[store.kind].name), action: { kind: "inspect", buildingId: store.id, tile: { tx: store.tx, ty: store.ty } } };
   }
-  return { line, cta: GOAL_PIN_COPY.cta.ledger, action: { kind: "ledger" } };
+  return { line, short, cta: GOAL_PIN_COPY.cta.ledger, action: { kind: "ledger" } };
 }
 
 /** What a stage proclamation still waits on (the era console's rows): the first unmet one, or "선포할 수 있습니다". */
 function stageNext(state: GameState): GoalPinNext {
   const unmet = evaluateEraRequirements(state).find(requirement => !requirement.met);
-  if (unmet === undefined) return { line: GOAL_PIN_COPY.proclaim, cta: GOAL_PIN_COPY.cta.proclaim, action: GOALS };
-  if (unmet.key === "population") return { line: GOAL_PIN_COPY.population(unmet.target, Math.max(0, unmet.target - unmet.current)), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
+  if (unmet === undefined) return { line: GOAL_PIN_COPY.proclaim, short: GOAL_PIN_COPY.brief.proclaim, cta: GOAL_PIN_COPY.cta.proclaim, action: GOALS };
+  if (unmet.key === "population") return { line: GOAL_PIN_COPY.population(unmet.target, Math.max(0, unmet.target - unmet.current)),
+    short: GOAL_PIN_COPY.brief.population(Math.max(0, unmet.target - unmet.current)), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
   if (unmet.key === "timber" || unmet.key === "stone" || unmet.key === "coin") return resourceNext(state, unmet);
-  return { line: GOAL_PIN_COPY.building(unmet.label, unmet.current, unmet.target), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
+  return { line: GOAL_PIN_COPY.building(unmet.label, unmet.current, unmet.target), short: GOAL_PIN_COPY.brief.building(unmet.label, unmet.current, unmet.target), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
 }
 
 function criterionNext(state: GameState, item: SettlementCriterion): GoalPinNext {
   const current = Math.floor(item.current);
   switch (item.id) {
-    case "population": return { line: GOAL_PIN_COPY.population(item.target, Math.max(0, item.target - current)), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
-    case "supplied": return { line: GOAL_PIN_COPY.supplied(current, item.target), cta: GOAL_PIN_COPY.cta.ledger, action: { kind: "ledger" } };
-    case "occupiedL4Lots": return { line: GOAL_PIN_COPY.lots(current, item.target), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
-    case "era": return state.era === "hamlet" ? stageNext(state) : { line: item.label, cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
+    case "population": return { line: GOAL_PIN_COPY.population(item.target, Math.max(0, item.target - current)), short: GOAL_PIN_COPY.brief.population(Math.max(0, item.target - current)), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
+    case "supplied": return { line: GOAL_PIN_COPY.supplied(current, item.target), short: GOAL_PIN_COPY.brief.supplied(current, item.target), cta: GOAL_PIN_COPY.cta.ledger, action: { kind: "ledger" } };
+    case "occupiedL4Lots": return { line: GOAL_PIN_COPY.lots(current, item.target), short: GOAL_PIN_COPY.brief.lots(current, item.target), cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
+    case "era": return state.era === "hamlet" ? stageNext(state) : { line: item.label, short: item.label, cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
     case "wall":
     case "stoneWall": {
       if (state.era === "hamlet") return stageNext(state);
       const segments = state.palisade?.segments ?? [];
-      return segments.length === 0 ? { line: GOAL_PIN_COPY.wallStart, cta: GOAL_PIN_COPY.cta.wall, action: GOALS }
-        : { line: GOAL_PIN_COPY.wall(segments.filter(segment => segment.completed).length, segments.length), cta: GOAL_PIN_COPY.cta.wall, action: GOALS };
+      const done = segments.filter(segment => segment.completed).length;
+      return segments.length === 0 ? { line: GOAL_PIN_COPY.wallStart, short: GOAL_PIN_COPY.brief.wallStart, cta: GOAL_PIN_COPY.cta.wall, action: GOALS }
+        : { line: GOAL_PIN_COPY.wall(done, segments.length), short: GOAL_PIN_COPY.brief.wall(done, segments.length), cta: GOAL_PIN_COPY.cta.wall, action: GOALS };
     }
-    default: return { line: item.label, cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
+    default: return { line: item.label, short: item.label, cta: GOAL_PIN_COPY.cta.goals, action: GOALS };
   }
 }
 
@@ -80,7 +83,7 @@ export function goalPinFor(state: GameState, goal: SettlementGoal): GoalPin {
   const unmet = goal.criteria.find(item => !item.met);
   if (unmet === undefined) {
     const left = Math.max(0, goal.requiredHoldTicks - goal.holdTicks);
-    return { title: goal.title, count: null, next: { line: GOAL_PIN_COPY.hold(durationLabel(left)), cta: GOAL_PIN_COPY.cta.goals, action: GOALS } };
+    return { title: goal.title, count: null, next: { line: GOAL_PIN_COPY.hold(durationLabel(left)), short: GOAL_PIN_COPY.brief.hold(durationLabel(left)), cta: GOAL_PIN_COPY.cta.goals, action: GOALS } };
   }
   return { title: goal.title, count: { current: Math.floor(unmet.current), target: unmet.target }, next: criterionNext(state, unmet) };
 }

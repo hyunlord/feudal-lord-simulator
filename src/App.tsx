@@ -570,7 +570,7 @@ export function App() {
           onDecide={beat => { if (beat.screen !== undefined) openLord(beat.screen.screen, beat.screen.focus); else if (beat.slot === "population") sendUi({ type: "open_population" }); else if (beat.decision !== null) sendUi({ type: "push_modal", modal: decisionModal(beat.decision) }); }}
           notice={ledgerNotices > 0 ? <SeasonNotice count={ledgerNotices} onOpen={openSeasonNotice} /> : null} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
-          <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
+          <GoalCards tutorial={tutorial} maxActive={1} compact={lordMode(state)} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}
         {/* S-30: one panel slot — the goal log, the population log, the inspector or the ledger (the build drawer is below). */}
         {ui.mode === "goals" ? <aside className="slot-panel goal-slot" data-frame="slot" aria-label={KO_UI.informationRail}>

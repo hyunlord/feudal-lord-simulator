@@ -39,7 +39,7 @@ test("#1: the pin is the town goal, the very next thing it waits on and where to
   // A hamlet short of timber for the proclamation: "목재 250단까지 n단 부족", the stock ledger (no full store holds it).
   const hamlet: GameState = { ...town, era: "hamlet", palisade: null, constructionSites: town.constructionSites.filter(site => site.kind !== "palisade_segment") };
   const goal = { id: "palisade", title: "목책 마을", description: "", criteria: [{ id: "era", label: "시장도시 이상", current: 0, target: 1, met: false }], holdTicks: 0, requiredHoldTicks: 0 } as const;
-  assert.deepEqual(goalPinFor(hamlet, goal).next, { line: "목재 250단까지 54단 부족", cta: "저장·생산 보기", action: { kind: "ledger" } });
+  assert.deepEqual(goalPinFor(hamlet, goal).next, { line: "목재 250단까지 54단 부족", short: "목재 54단 부족", cta: "저장·생산 보기", action: { kind: "ledger" } }); // LS1-14: the lord-mode line's short form
   // Every storehouse full (of logs) and a sawmill's timber with nowhere to go: the pin goes to the nearest full store.
   const saw = town.buildings.find(building => building.kind === "sawmill")!;
   const blocked: GameState = { ...hamlet, buildings: hamlet.buildings.map(building => building.kind === "storehouse" ? { ...building, inventory: { logs: 200 }, reserved: {} }
