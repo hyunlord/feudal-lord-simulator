@@ -12,8 +12,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import type { StoryBeat } from "../src/ui/eventStory";
 import { EventCards } from "../src/ui/hud/EventCards";
 
-const beat = (id: string, title: string, chip?: string): StoryBeat => ({ id, kind: "home_petition", illustration: null, tile: null, title, chip,
-  line: "", facts: [], advice: "", decision: "estate_petition" });
+const beat = (id: string, title: string, chip?: string): StoryBeat => ({ id, kind: "home_petition", illustration: null, tile: null, title,
+  ...(chip === undefined ? {} : { chip }), line: "", facts: [], advice: "", decision: "estate_petition" });
 
 test("every chip carries its mark; a held one says so (data-due), its name stays in its accessible name", () => {
   const due = new Map([["held:audit", { left: "이번 철까지", short: "이번 철", near: true }]]);
