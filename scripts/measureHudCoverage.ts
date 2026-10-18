@@ -63,6 +63,15 @@ export const BUDGETS_1280: Partial<Record<keyof typeof BUDGETS, number>> = { nor
 export const budgetFor = (state: keyof typeof BUDGETS, resolution: { readonly name: string; readonly touch?: boolean }): number =>
   resolution.touch ? BUDGETS[state][1] : resolution.name === "1280x800" ? BUDGETS_1280[state] ?? BUDGETS[state][0] : BUDGETS[state][0];
 type StateName = keyof typeof BUDGETS;
+/**
+ * HUD-MEDIAN (user ruling 2026-10-19): the screen with held decisions (the lord-pinned scene) has its own normal and zone
+ * budgets — 1280 × 800 8.0 % and 10.0 %, tablet 9.5 % and 12 % (as BUDGETS), 1920 × 1080 as budgetFor.
+ */
+export const BUDGETS_HELD = { "1280x800": { normal: 8.0, zone: 10.0 }, tablet: { normal: 9.5, zone: 12 } } as const;
+export const heldBudgetFor = (state: StateName, resolution: { readonly name: string; readonly touch?: boolean }): number => {
+  const held: Partial<Record<StateName, number>> = resolution.touch ? BUDGETS_HELD.tablet : resolution.name === "1280x800" ? BUDGETS_HELD["1280x800"] : {};
+  return held[state] ?? budgetFor(state, resolution);
+};
 const RESOLUTIONS = [
   { name: "1280x800", width: 1280, height: 800, touch: false },
   { name: "1920x1080", width: 1920, height: 1080, touch: false },
@@ -238,7 +247,7 @@ for (const resolution of RESOLUTIONS) {
     await lord.context.close();
     // RR22 review 2026-10-18: the start has no pinned chip, so the text held chips carry (LS1-11 to LS1-13) was never
     // measured. `--lord-pinned <state file>` (the nightly passes the lord2 set's promise-due, LS1-12's fold scene: two
-    // petitions held) adds its normal and zone states, view "lord-pinned", same budgets.
+    // petitions held) adds its normal and zone states, view "lord-pinned", against the held budgets (BUDGETS_HELD).
     if (flags["lord-pinned"] !== undefined) {
       const held = JSON.parse(readFileSync(flags["lord-pinned"], "utf8")) as GameState;
       const seat = held.buildings.find(building => building.kind === "manor_house") ?? held.buildings[0]!;
@@ -258,7 +267,7 @@ for (const resolution of RESOLUTIONS) {
       const rest = { x: restPoint.clientX, y: restPoint.clientY };
       const pinnedPush = async (name: StateName) => {
         const measured = await measure(pinned.page, name, flags.shots, `${resolution.name}-lord-pinned`, rest);
-        rows.push({ resolution: resolution.name, ...measured, view: "lord-pinned", budget: budgetFor(name, resolution), pass: measured.percent <= budgetFor(name, resolution) });
+        rows.push({ resolution: resolution.name, ...measured, view: "lord-pinned", budget: heldBudgetFor(name, resolution), pass: measured.percent <= heldBudgetFor(name, resolution) });
       };
       await pinnedPush("normal");
       await pinned.page.locator("[data-dock='build']").first().click(); await pinned.page.waitForTimeout(400);
