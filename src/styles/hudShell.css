@@ -431,6 +431,17 @@
 .app-shell .event-card-member-title { min-width: 0; overflow-wrap: anywhere; }
 .app-shell .event-card-member-due { font-size: 12px; font-weight: 600; }
 .app-shell .event-card-member[data-near="true"] .event-card-member-due { color: var(--palette-vermilion); }
+/* LS1-15 (the user's ruling 2026-10-18: 1280 x 800 zone with held decisions 10.2 % of 10.0 %): while the zone tools are open
+   a chip is a colour mark and its time left — a held decision gold, near or past its deadline vermilion, the others muted
+   — its picture and name gone (the name stays its accessible name); the near look and a press opening its card stay. The
+   tools closed, the chip is as before. */
+.app-shell .event-chip-mark { display: none; }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip { justify-content: center; min-width: 44px; padding: 0 8px; }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip :is(.event-chip-art, .event-chip-name) { display: none; }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip-mark { display: inline-block; flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background-color: var(--palette-ink-muted); }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip[data-due="true"] .event-chip-mark { background-color: var(--palette-gold-dark); }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip[data-near="true"] .event-chip-mark { background-color: var(--palette-vermilion); }
+.app-shell:has(.zone-toolbar:not([hidden])) .event-chip-due { padding: 0 2px 0 6px; }
 .app-shell .event-chip-art { display: inline-block; flex: 0 0 auto; width: 64px; height: 36px; border: 1px solid var(--palette-ink); }
 .app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); min-height: 0; overflow-y: auto; color: var(--palette-ink);
   background-color: var(--palette-vellum); }
