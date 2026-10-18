@@ -55,8 +55,6 @@ export type GoalCard = {
   readonly foldKey?: string;
   /** UI-AUDIT-1: the folded chip's short title at 1280 px and below (the chapter's number); undefined = the title. */
   readonly shortTitle?: string;
-  /** LS1-14: the reason's short form for the lord-mode HUD's one line ("목재 82단 부족"); undefined = the reason. */
-  readonly whyShort?: string;
 };
 
 type Transition = { readonly id: string; readonly title: string; readonly already: boolean; readonly until: number };
@@ -358,7 +356,7 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
   if (goal !== null) {
     const pin = goalPinFor(state, goal);
     pinAction = pin.next?.action ?? null;
-    cards.push({ key: "settlement", title: goal.title, why: pin.next?.line ?? humanizeTicks(goal.description), ...(pin.next === null ? {} : { whyShort: pin.next.short }), progress: pin.count,
+    cards.push({ key: "settlement", title: goal.title, why: pin.next?.line ?? humanizeTicks(goal.description), progress: pin.count,
       ctaLabel: pin.next?.cta ?? TUTORIAL_COPY.generalCard.cta, status: "active", help: humanizeTicks(goal.description), hasTarget: false });
   }
   if (tutorialRan) {

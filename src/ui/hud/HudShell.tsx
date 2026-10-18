@@ -31,6 +31,7 @@ import { lordMode } from "../../engine/townAgency";
 import { LordPolicyPanel } from "../lord/LordPolicyPanel";
 import { TownSeatButton } from "../lord/camera/TownSeatButton";
 import { ModeTag } from "./ModeTag";
+import { Worded } from "./PillWord";
 import { growthMarkOf } from "../lord/growth/growthMark";
 import { TreasuryByEstate } from "../lord/treasury/TreasuryByEstate";
 import { POLICY_COPY } from "../lord/policyCopy.ko";
@@ -81,14 +82,14 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onIns
       </Button>
       {stripOpen ? <SeasonStripPanel state={state} food={{ days: model.foodDays, untilTick: model.foodUntilTick }} onClose={() => setStripOpen(false)} /> : null}
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onPress={() => onOpenPopulation()} variant="surface">
-        <HudArt id={HUD_ART.population} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="population" />} />{HUD_COPY.population(model.population)}
+        <HudArt id={HUD_ART.population} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="population" />} /><Worded label={HUD_COPY.population(model.population)} />
         {/* LS1-3: the growth mark (a stop past two seasons) — its place kept until the engine's growthBlock lands. */}
         {growth === null ? null : <span className="status-pill-growth" data-growth-years={growth.years} aria-label={growth.label}>{growth.text}</span>}
       </Button>
       <Button type="button" className="status-pill-cell" aria-label={FOOD_BREAKDOWN_COPY.pillLabel(foodLabel, model.starving)} data-food-days={model.foodDays ?? ""}
         aria-expanded={foodOpen} onPress={() => { setStripOpen(false); setFoodOpen(open => !open); }}
         data-short={(model.foodDays !== null && model.foodDays < 14) || model.starving > 0 ? "true" : undefined} variant="surface">
-        <HudArt id={HUD_ART.food} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="bread" />} />{foodLabel}
+        <HudArt id={HUD_ART.food} width={24} className="ui-icon" fallback={<UiIcon sheet="resource" cell="bread" />} /><Worded label={foodLabel} />
         {model.starving > 0 ? <span className="status-pill-starving" data-starving={model.starving}>{FOOD_BREAKDOWN_COPY.pillStarving(model.starving)}</span> : null}
       </Button>
       {foodOpen ? <FoodBreakdownPanel state={state} onInspect={onInspect} onOpenLedger={onOpenLedger} onClose={() => setFoodOpen(false)} /> : null}

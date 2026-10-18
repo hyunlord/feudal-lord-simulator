@@ -17,20 +17,6 @@ export const GOAL_PIN_COPY = {
   supplied: (current: number, target: number) => `물과 빵이 닿는 가구 ${current}% — ${target}%가 필요합니다`,
   lots: (current: number, target: number) => `입주한 L4 주거 ${current}/${target}필지`,
   hold: (left: string) => `모든 조건을 갖췄습니다 — ${left} 더 유지하십시오`,
-  /** LS1-14 (lord mode): the goal's one HUD line — what is short, no more ("목재 82단 부족"); the whole line and the
-   * button's words are its accessible name, and its press does what the button did. */
-  brief: {
-    resource: (label: string, missing: number, unit: string) => `${label} ${missing.toLocaleString("ko-KR")}${unit} 부족`,
-    money: (missing: string) => `금고 ${missing} 부족`,
-    population: (missing: number) => `인구 ${missing.toLocaleString("ko-KR")}명 부족`,
-    building: (name: string, current: number, target: number) => `${name} ${current}/${target}`,
-    proclaim: "선포할 수 있음",
-    wall: (done: number, total: number) => `성벽 ${done}/${total}`,
-    wallStart: "성벽 공사 전",
-    supplied: (current: number, target: number) => `물·빵 ${current}/${target}%`,
-    lots: (current: number, target: number) => `L4 주거 ${current}/${target}`,
-    hold: (left: string) => `${left} 더 유지`,
-  },
   /** The next action's button. */
   cta: { store: (store: string) => `${store} 보기`, ledger: "저장·생산 보기", goals: "조건 보기", proclaim: "선포하러 가기", wall: "공사 보기" },
   /** The chapter beside the town goal: its goal, and how many of the chapter's goals are reached. */

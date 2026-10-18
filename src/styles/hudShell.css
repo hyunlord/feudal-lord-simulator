@@ -680,6 +680,19 @@
   .app-shell .status-pill-mode-icon { display: inline-flex; }
   .app-shell .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
 }
+/* LS1-14 (the user's ruling 2026-10-18: the status pill's length bound; the HUD area with held decisions at 1280 x 800 and
+   the tablet): lord mode's pill at 1366 px and narrower is its short form at every layer — the tag its seal (its words in
+   its name and tooltip), the population and the food their picture and number (the word in the text and the name), the way
+   back to the town its picture. */
+@media (max-width: 1366px) {
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode { min-width: 44px; padding: 0 6px; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode-words { display: none; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode-icon { display: inline-flex; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-mode > .status-pill-mode-tip { position: absolute; top: 100%; left: 0; z-index: 6; margin-top: 4px; white-space: nowrap; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-word { display: none; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-town-words { display: none; }
+  .app-shell .status-pill[data-mode="lord"] .status-pill-town { min-width: 44px; justify-content: center; }
+}
 
 /* LS1-3 (lord-screen-v1.md): the growth mark in the population cell — "정체 N년" after a stop past two seasons (the engine's
    growthBlock); it outranks the mode's tag for room (the tag hides first). */
