@@ -948,6 +948,7 @@
 
 ## 다음 작업
 
+- **CONVERTER-FEED — 완료, 본선 병합**([보고서](verification/converter-feed/REPORT.md), 결정 CONV-1~4): 제재소·엿기름 가마를 INPUT_PULL에(영주 모드), 창고에도 "길 먼저" 두 번째 순회(최대 200곳). 768 18, 석조 도시 16 → 19, seed 39 헌장 1318, 가드레일 해시 불변. 다음: FOOD-DIST(분배꾼 경로 진단) → CLOTH-DIAG → 집터 상한 → 2b → MONEY-SINK.
 - **STONE-FEED — 완료, 본선 병합**([보고서](verification/stone-feed/REPORT.md), 결정 FEED-1~2): 석공소를 INPUT_PULL 당기기에 넣었다(영주 모드) — 진단에서 원석이 창고에 있는데 석공소가 놀던 때의 90–100 %가 수레 하나가 나가 있던 때. 석조 도시 10 → 16, seed 39 1325에 석조 도시, 768 17 → 18, 가드레일 해시 불변. 다음: 제재소도 같은 모양인지(사용자 판정 대기), lot cap 다시 보기 → 2b → MONEY-SINK.
 - **DELIVERY-GAP ①a — 완료, 본선 병합**([보고서](verification/delivery-gap/REPORT.md), 결정 GAP-1~3): 채석장 "길 먼저"는 옛 직선 거리 24곳이 실패할 때만 공사 길 거리 순, 물가 간격은 길이 닿는 마른 자리가 없을 때만(두 모드). 헌장 뒤 채석장 0인 seed 26 → 0(1316 채석장, 인구 528 → 728), 768 17 = 17, 판정 seed 22개 중 20개 해시가 본선과 같음, 가드레일 해시 불변. 다음: STONE-FEED(③ (나)) 진단 한 판.
 - **WALL-PROTO — 완료, 본선 병합**([보고서](verification/wall-proto/REPORT.md), 결정 WALLP-1~3): 엔진 B 목책 시제품을 이어받았다 — 옛 둘레 탐색이 실패하면 부딪는 건물마다 국소 여유를 더한 둘레(두 모드). 목책 교착 9·14·26·30 모두 0, 석조 도시 7→11, 768 14→17. 다음: seed 26 막다른 길 진단(실험 칸), 그 뒤 배달 공백 ③.
@@ -968,6 +969,8 @@
 
 ## 알려진 문제
 
+- **seed 25 628 정체(CONVERTER-FEED 뒤, 2026-10-18)**: 1319–1330 인구 628, 집 24채(집터 상한)·남은 집터 0 — 집터 상한 다시 보기에서 다룬다(DGX `engine-CONV-after-c766a63`).
+- **직물 사슬 맨 앞이 빔(2026-10-18)**: 영주 모드에서 직조공 집·염색집·텐터 틀이 100 % 재료 없음, 축융 방앗간은 지어지지 않음 — CLOTH-DIAG(DGX `engine-CONV-diag-bbea3fe`).
 - **석조 도시 11 → 10(seed 39), DELIVERY-GAP ①a 뒤(닫음, 2026-10-18)**: STONE-FEED가 풀었다 — 석조 도시 16, seed 39 1325(DGX `engine-FEED-after-d351966`).
 - **seed 21 헌장 뒤 채석장 0(따로 기록, 2026-10-17)**: 채석장 자리 93곳 모두 공사 길이 닿지 않는다 — 물과 목책을 함께 들어야만 닿는다. 길이 닿는 물가 자리도 없어 GAP-2가 열 자리가 없다. 시작은 지도 가장자리에서 21칸(seed 31의 뿌리와 다름). 다음 질문: 성문을 나가 물을 건너는 경로를 여울·다리 동작(`crossingAction`)이 보는가(DGX `engine-GAP-diag2-00125eb`). 앞 줄 "placement 거부 전부 needs_road"(`engine-WALL-quarry26b-aa1c5bc`)는 틀렸다 — 탐침이 첫 거부에서 멈췄다(26의 (21,47)은 밭, [보고서](verification/delivery-gap/REPORT.md)에 바로잡음).
 - **WALL-PROTO 뒤의 정체 변화(기록만, 2026-10-16)**: seed 9 정체가 1325·704에서 1322·640(밭)으로, seed 21에 새 정체 1315–1330·462(밭). `charterWall`의 "목책을 못 찾음" 시험 둘은 seed 31에 기대므로 31을 고칠 때 다른 실패 저장으로 옮긴다.

@@ -73,5 +73,10 @@ export const INPUT_PULL = {
     // engine-FEED-diag-cd35df4: seeds 22, 27, 39, the cart out on 90–100 % of those idle samples). Its floor is one stone's
     // raw stone (the old fetch below 2); no store target — the stores already hold the quarries' raw stone.
     { converter: "masonry", input: "stone_raw", minReorder: 2, sources: ["quarry"], stores: [] },
+    // CONVERTER-FEED (the user's ruling 2026-10-18): the sawmill and the malt kiln had the masonry's shape — one cart, idle
+    // with the input in the stores while it was out (DGX engine-CONV-diag-bbea3fe: sawmill idle 76–86 % of its staffed
+    // samples, the cart out on most; malt kiln 47–55 %, the cart out on 78–89 %). Floors one output's input; no store target.
+    { converter: "sawmill", input: "logs", minReorder: 2, sources: ["logging_camp"], stores: [] },
+    { converter: "malt_kiln", input: "barley", minReorder: 1, sources: ["farmstead"], stores: [] },
   ] satisfies readonly InputPullChain[] as readonly InputPullChain[],
 } as const;
