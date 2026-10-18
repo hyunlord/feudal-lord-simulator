@@ -19,7 +19,7 @@
 //    one public work (the keep) opens at the fortified town, so nothing is placeable at its start.
 // The gate is not one run: HUD-MEDIAN (docs/decisions/README.md) judges each row by the median of three runs
 // (scripts/uiaudit1HudThrice.sh, then scripts/hudMedian.ts); this run's own `pass` and exit code are one sample.
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls]
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls|lord] [--lord-pinned <state file>]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/measureHudCoverage.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/measureHudCoverage.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -236,6 +236,36 @@ for (const resolution of RESOLUTIONS) {
     await lord.page.locator(".command-pin[data-command-pin='zone']").first().click(); await lord.page.waitForTimeout(500);
     await lord.page.locator("[data-zone-tool]:not([aria-disabled='true'])").first().click(); await lord.page.waitForTimeout(400); await lordPush("zone", lordRest);
     await lord.context.close();
+    // RR22 review 2026-10-18: the start has no pinned chip, so the text held chips carry (LS1-11 to LS1-13) was never
+    // measured. `--lord-pinned <state file>` (the nightly passes the lord2 set's promise-due, LS1-12's fold scene: two
+    // petitions held) adds its normal and zone states, view "lord-pinned", same budgets.
+    if (flags["lord-pinned"] !== undefined) {
+      const held = JSON.parse(readFileSync(flags["lord-pinned"], "utf8")) as GameState;
+      const seat = held.buildings.find(building => building.kind === "manor_house") ?? held.buildings[0]!;
+      // The steps of the geometry row hud.event-card.held-fold (src/ui/lord/decisions/surfaces.ts): the story's first
+      // delay short (3 s) so the held chip comes, up to 90 s; a story card that opens first is put off ("나중에").
+      // Opened as the geometry audit opens a state scene (run: false — the loaded town runs; a card opened first would
+      // block the speed button — and a long load allowance).
+      const pinned = await openScene(browser, { state: held, tile: [seat.tx, seat.ty], baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: false, hasTouch: resolution.touch,
+        loadTimeout: 120_000, query: "&story-delay=3000&weather=none", initScript: TUTORIAL_OFF }) as { context: { close: () => Promise<void> }; page: Page };
+      await pinned.page.waitForFunction(() => document.querySelector(".event-chip[data-chip-id='held:estate-petition']") !== null, null, { timeout: 90_000 });
+      const later = pinned.page.locator(".story-modal-later");
+      if (await later.count() > 0) { await later.first().click(); await pinned.page.waitForTimeout(400); }
+      // The game runs while measured (a paused one adds its badge, which is not HUD): a town left paused is let run.
+      if (await pinned.page.evaluate(() => document.body.innerText.includes("일시 정지 중"))) { await pinned.page.keyboard.press("Space"); await pinned.page.waitForTimeout(600); }
+      await pinned.page.waitForFunction(() => document.querySelector(".steward-bubble") === null, null, { timeout: 12_000 }).catch(() => undefined);
+      const restPoint = await pinned.page.evaluate(t => (window as unknown as Proof).__FEUDAL_PHASE10_PROOF__.tileClientPoint(t), { tx: seat.tx - 6, ty: seat.ty + 4 });
+      const rest = { x: restPoint.clientX, y: restPoint.clientY };
+      const pinnedPush = async (name: StateName) => {
+        const measured = await measure(pinned.page, name, flags.shots, `${resolution.name}-lord-pinned`, rest);
+        rows.push({ resolution: resolution.name, ...measured, view: "lord-pinned", budget: budgetFor(name, resolution), pass: measured.percent <= budgetFor(name, resolution) });
+      };
+      await pinnedPush("normal");
+      await pinned.page.locator("[data-dock='build']").first().click(); await pinned.page.waitForTimeout(400);
+      await pinned.page.locator(".command-pin[data-command-pin='zone']").first().click(); await pinned.page.waitForTimeout(500);
+      await pinned.page.locator("[data-zone-tool]:not([aria-disabled='true'])").first().click(); await pinned.page.waitForTimeout(400); await pinnedPush("zone");
+      await pinned.context.close();
+    }
   }
   if (flags.only === "lord") continue;
   // INSTALL-3b: chapter 2 with its walls under construction (the tags on the canvas count; see the header).
