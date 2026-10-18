@@ -80,7 +80,17 @@ export function deliverCandidate(
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });
+  if (resource === "bread" && routes.breadSpread !== undefined) return spreadBreadCandidate(candidates, routes.breadSpread);
   return bestCandidate(candidates, resource === "bread");
+}
+
+/** FOOD-DIST (lord mode): the granary holding the least bread (held and coming), then serving the most houses, then nearest. */
+function spreadBreadCandidate(candidates: readonly RouteCandidate[], served: (granaryId: string) => number): RouteCandidate | null {
+  const committed = (candidate: RouteCandidate): number => amountOf(candidate.building.inventory, "bread") + amountOf(candidate.building.reserved, "bread");
+  return [...candidates].sort((left, right) => committed(left) - committed(right)
+    || served(right.building.id) - served(left.building.id)
+    || left.path.length - right.path.length
+    || left.building.id.localeCompare(right.building.id))[0] ?? null;
 }
 
 export function fetchCandidate(

@@ -33,6 +33,7 @@ import {
 import type { CarterDestination } from "../agents/walker.types";
 import { canTraverseWallCarryEdge, isWallCarryTile, wallCarrySiteAccessTile } from './wallCarryRoute';
 import { stoneReplacementSiteId } from './era';
+import { buildingFootprintDistance } from '../geometry/buildingDistance';
 
 export interface SimulationRoutePorts {
   readonly delivery: DeliveryRoutePort;
@@ -118,7 +119,30 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     }
   };
 
+  // FOOD-DIST (lord mode, the user's ruling 2026-10-18): the lived-in houses each granary serves — those nearer it than
+  // any other granary (footprint distance, then id) — counted once for the port (its state never changes).
+  let served: Map<string, number> | null = null;
+  const breadSpread = (granaryId: string): number => {
+    if (served === null) {
+      served = new Map();
+      const granaries = state.buildings.filter(building => building.kind === 'granary');
+      for (const house of state.houses) {
+        if (house.residents <= 0) continue;
+        const home = buildingById(house.buildingId);
+        if (home === null) continue;
+        let best: Building | null = null; let bestDistance = Infinity;
+        for (const granary of granaries) {
+          const distance = buildingFootprintDistance(home, granary);
+          if (distance < bestDistance || (distance === bestDistance && best !== null && granary.id < best.id)) { best = granary; bestDistance = distance; }
+        }
+        if (best !== null) served.set(best.id, (served.get(best.id) ?? 0) + 1);
+      }
+    }
+    return served.get(granaryId) ?? 0;
+  };
+
   const delivery: DeliveryRoutePort = {
+    ...(state.agency === undefined ? {} : { breadSpread }),
     betweenBuildings: (fromBuildingId, toBuildingId) => {
       const from = buildingById(fromBuildingId);
       const to = buildingById(toBuildingId);

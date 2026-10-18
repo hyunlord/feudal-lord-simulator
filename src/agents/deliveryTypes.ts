@@ -58,6 +58,13 @@ export interface DeliveryRoutePort {
   readonly canTraverse?: (from: TilePos, to: TilePos) => boolean;
   /** FIX-10 (FD-2): a ford road tile — a step onto or off it goes at `1 / FORD_PACE_DIVISOR` of the pace. */
   readonly isFord?: (tile: TilePos) => boolean;
+  /**
+   * FOOD-DIST (lord mode, the user's ruling 2026-10-18): the lived-in houses a granary serves (those nearer it than any
+   * other granary). Present, a mill's bread goes to the granary holding the least bread first, then the one serving the
+   * most houses, then the nearest — not always the nearest, which left every other granary empty and their distributors
+   * at home (DGX engine-FOOD-route-4e5057f).
+   */
+  readonly breadSpread?: (granaryId: string) => number;
 }
 
 export interface DeliveryStepInput {
