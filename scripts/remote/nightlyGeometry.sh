@@ -68,7 +68,8 @@ wait_run() { # prints the exit code, or "no-slot" / "too-long"
 # Then the lord-mode HUD area, three runs and their median (HUD-MEDIAN; RR22 review 2026-10-13: the night, not the push
 # gate — the zone state's area crept 8.4 → 8.8 → 9.1 % unmeasured, docs/verification/ls1-6/README.md). Its verdict never
 # makes the night invalid; it goes on the status line, and an OVER row is told to the session that last changed it.
-run=$(launch "nightly-GEOMETRY-$(date +%m%d)" "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && { bash scripts/remote/tasks.sh ui-geometry; rc=\$?; bash scripts/uiaudit1HudThrice.sh --only lord --out .remote/hud-lord > .remote/hud-lord.log 2>&1; echo \$? > .remote/hud-lord.exit; exit \$rc; }")
+# With the lord2 set's promise-due (held chips, RR22 review 2026-10-18): the start has no pinned chip to measure.
+run=$(launch "nightly-GEOMETRY-$(date +%m%d)" "$head" bash -c "git config lfs.url $LFS_URL && git lfs pull && { bash scripts/remote/tasks.sh ui-geometry; rc=\$?; bash scripts/uiaudit1HudThrice.sh --only lord --lord-pinned \$HOME/fls-lmr2-states/promise-due.json --out .remote/hud-lord > .remote/hud-lord.log 2>&1; echo \$? > .remote/hud-lord.exit; exit \$rc; }")
 log "nightly geometry ${head:0:8}: $run started"
 rc=$(wait_run "$run")
 # The audit exits 1 on any failure, even one in the baseline. The night is done when it left a valid result: the
