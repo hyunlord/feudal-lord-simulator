@@ -71,3 +71,13 @@ test("DELIVERY-GAP ①a: the water setback stays while a dry quarry site is reac
   assert.equal(hasAutoplayBuildingClearance(dry, "quarry", { tx: 21, ty: 45 }), false, "a dry site is reached: the water setback stays");
   assert.equal(hasAutoplayBuildingClearance(state, "quarry", { tx: 21, ty: 45 }), true, "no dry site reached: it opens");
 });
+
+test("CONVERTER-FEED: a hamlet whose one storehouse is full of the charter's timber lays the road to a second one a construction road reaches (seed 39, 1320)", () => {
+  // The natural lord-slice save (DGX engine-CONV-save39-0fc5ba8): one storehouse, 200 timber in its 200, the charter's
+  // 250 unmet; the 24 storehouse sites nearest by the straight line all keep the wall's space.
+  const hamlet = decodeSave(new Uint8Array(gunzipSync(readFileSync("fixtures/charter/seed39-1320.save.json.gz")))).envelope.state as GameState;
+  assert.equal(hamlet.era, "hamlet");
+  assert.equal(hamlet.buildings.filter(building => building.kind === "storehouse").length, 1);
+  const action = autoplayBuildAction(hamlet, "storehouse");
+  assert.ok(action.kind === "place_road" || action.kind === "place_building", JSON.stringify(action));
+});

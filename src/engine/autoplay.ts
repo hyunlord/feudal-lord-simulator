@@ -319,11 +319,16 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
   // all (seed 26's quarry, engine-GAP-diag2-00125eb). The old order first, the new one only where it fails: on every
   // kind, or first, it moved the town's houses (B7 seed 3, a house closing the wall's line, engine-GAP-tested-dc50f62)
   // and its stone (three stone towns fewer, engine-GAP-after-99fb371).
-  if (kind === 'quarry') {
+  // CONVERTER-FEED (the user's ruling 2026-10-18): the storehouse too — a hamlet whose one storehouse filled with the
+  // charter's timber found no second one: the 24 nearest by the straight line all kept the wall's space, while 744 sites a
+  // construction road reaches lay further (seed 39 at 1320, engine-CONV-save39-0fc5ba8).
+  if (kind === 'quarry' || kind === 'storehouse') {
     const reached = candidates.map(({ tile }) => ({ tile, distance: constructionRoadDistance(state, kind, tile) }))
       .filter(candidate => Number.isFinite(candidate.distance))
       .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
-    const byRoad = roadFirst(state, kind, reached);
+    // The space checks go first here: near a hamlet the sites nearest by road keep the wall's space (seed 39's 50 nearest),
+    // so the 24 tried are the 24 nearest that keep it, among at most 200 looked at.
+    const byRoad = roadFirst(state, kind, reached, { skipSpace: true, lookAt: 200 });
     if (byRoad.kind !== "none" || autoplaySearchExhausted()) return byRoad;
   }
   // FIX-10 (FD-4): no site for the quarry or logging camp on this side — a ford or bridge to the far bank's rock or wood.
@@ -331,10 +336,15 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
 }
 
 /** The "road first" step: the road to the first of `candidates` (24 at most) that keeps the wall's and the services' space. */
-function roadFirst(state: GameState, kind: BuildingKind, candidates: readonly { readonly tile: TileCoordinate }[]): AutoplayAction {
-  for (const candidate of candidates.slice(0, 24)) {
-    if (autoplaySearchExhausted()) return NONE;
+function roadFirst(state: GameState, kind: BuildingKind, candidates: readonly { readonly tile: TileCoordinate }[],
+  options: { readonly skipSpace: boolean; readonly lookAt: number } = { skipSpace: false, lookAt: 24 }): AutoplayAction {
+  let tried = 0;
+  for (const candidate of candidates.slice(0, options.lookAt)) {
+    if (tried >= 24 || autoplaySearchExhausted()) return NONE;
+    // Without skipSpace a site failing the space checks counts among the 24 (the old step, unchanged).
+    if (!options.skipSpace) tried += 1;
     if (!preservesAutoplayWallSpace(state, kind, candidate.tile) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tile.tx, ty: candidate.tile.ty })) continue;
+    if (options.skipSpace) tried += 1;
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;
   }
