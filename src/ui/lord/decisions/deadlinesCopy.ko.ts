@@ -42,6 +42,12 @@ const HELD_FOLD_SHORT: Readonly<Record<string, string>> = {
   "estate-petition": "청원", registry: "제안", "home-petition": "본령 청원", audit: "감사", petition: "청원",
 };
 
+/** LS1-14: a lapse chip's short name on the rail (render-VIS-ls114: the whole sentence was cut, "청원: 기한이 지나 거절로 처리됐습…"). */
+const LAPSED_SHORT: Readonly<Record<LapseKind, string>> = {
+  manor_petition: "본령 청원 · 없던 일로", estate_petition: "청원 · 거절로", registry: "제안 · 사라짐", chapter_petition: "청원 · 거절로",
+  marriage: "유언 · 그대로", audit: "감사 · 묵인으로",
+};
+
 export const DEADLINE_COPY = {
   /** LS1-14 (the user's ruling 2026-10-18; REMOTE's lord-pinned HUD measure over budget): the chip's short marks — the
    * card keeps the long ones. */
@@ -61,6 +67,9 @@ export const DEADLINE_COPY = {
   lapsedOne: (kind: LapseKind) => `${LAPSE_SUBJECT[kind]}: ${LAPSED[kind]}`,
   lapsedRegistryAnswered: "제안: 기한이 지나 정해 둔 답으로 처리됐습니다",
   lapsedMany: (count: number) => `기한이 지나 처리된 일 ${count}`,
+  /** LS1-14: the lapse chip's short name; a registry offer answered by its lapse answer reads "제안 · 정해 둔 답으로". */
+  lapsedShort: (kind: LapseKind, answered = false) => answered ? "제안 · 정해 둔 답으로" : LAPSED_SHORT[kind],
+  lapsedManyShort: (count: number) => `기한 지남 ${count}건`,
   lapsedLine: (count: number) => count === 1 ? "답하지 않은 결정이 기한을 넘겨 처리됐습니다." : `답하지 않은 결정 ${count}건이 기한을 넘겨 처리됐습니다.`,
   lapsedAdvice: "칩으로 내린 결정은 기한이 있습니다. 칩에 남은 철이 적혀 있고, 마지막 철에는 칩 모양이 바뀝니다.",
   openLabel: "연대기에서 보기",

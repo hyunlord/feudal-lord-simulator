@@ -57,7 +57,7 @@ export function fatedBeat(beat: StoryBeat, fate: DeadlineFate | undefined): Stor
   void screen; void openLabel;
   if (fate.stage === "past") return { ...rest, decision: null, fated: true };
   const line = lapseLine(fate.lapse);
-  return { ...rest, kind: "decision_lapsed", illustration: null, decision: null, fated: true, title: line, line: DEADLINE_COPY.lapsedLine(1), facts: [line],
+  return { ...rest, kind: "decision_lapsed", illustration: null, decision: null, fated: true, title: line, chip: DEADLINE_COPY.lapsedShort(fate.lapse.kind, fate.lapse.answered), line: DEADLINE_COPY.lapsedLine(1), facts: [line],
     advice: DEADLINE_COPY.lapsedAdvice, ...(fate.lapse.recordId === null ? {} : { chronicle: { recordId: fate.lapse.recordId, tick: fate.lapse.tick, label: DEADLINE_COPY.openLabel } }) };
 }
 
