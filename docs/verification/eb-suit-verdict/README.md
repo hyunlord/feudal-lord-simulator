@@ -39,3 +39,12 @@
 - 이 가지의 읽기 API는 화면에 아직 연결하지 않았다. 본선 병합은 REMOTE가 수행한다.
 
 증빙 무결성 확인: 이 폴더에서 `shasum -a 256 -c SHA256SUMS`. 압축 원본은 `tar -xzf raw-evidence.tar.gz`로 읽는다.
+
+## 검토 고정값 후속 수정 (2026-10-19)
+
+`infra-SUIT-tests`가 드러낸 누락: `scripts/engineBInertReviewedSources.mjs`의 `estateSuits.ts` 검토 해시가 구현 전 `79ae19be…`에 머물러 있었다. 의미 검토 후 `cba61a00e4fed9f651972a059d9ba1f38a1a8619628a20c1caaf2cdd1b75e98d`로 갱신하고 목록에 검토 메모를 남겼다.
+
+- 비교: 기준 `16bc0436a` → 구현 `502d2bc64`. 기존 실행 경로의 유일한 교체는 `suitActions().stageCosts`의 단계 순회다. 일반/단축 전이표는 같으며 `judged`의 비용을 제외하므로 비용 항목과 순서가 같다. `judged`에는 후속 단계가 없어 기존 조기 종료와도 동일하다.
+- 새 읽기 함수는 상태를 쓰지 않는다. `suitAwaitsLord`는 기존 대응 조회의 refusal 판정을 그대로 읽는다. `advanceSuits`·지불·판결 함수와 저장 필드는 변경하지 않았다. 기존 `engineB-suit-verdict-9131d40`의 전체 상태 해시 8/8 일치 증빙은 같은 제품 소스를 검증했다.
+- 수정 전 지정 시험을 Mac에서 직접 실행해 해당 고정 해시 불일치를 재현했다. 고정값만 갱신한 후 `tests/engineBTlinkOutcomeEvidence.test.ts` 20/20 통과.
+- **후속 관문 통과**: DGX `engineB-suit-pin-gate-794aa17` (검증 커밋 `794aa1778`), 지정 시험 20/20 통과, 본선 `16bc0436a` 대비 `test:changed` 496개 파일에서 4,037개 시험: 통과 4,019·실패 0·건너뜀 18. 종료 코드 0, 명령 실행 4,374.4초. 기존 건너뜀을 통과 수에 포함하지 않았다. 원본 로그와 시험 입력·결과 기록은 `pin-gate-*.gz`, 수정 전 재현은 `pin-before.log.gz`로 보관한다. 제품 소스와 시험 기대값의 추가 변경 없음.
