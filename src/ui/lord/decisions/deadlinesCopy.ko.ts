@@ -11,6 +11,12 @@ const DEADLINE_SUBJECT: Readonly<Record<DeadlineKind, string>> = {
   home_petition: "본령 청원", registry: "제안", famine: "대기근", petition: "청원",
 };
 
+/** LS1-18: a kind's short word for the stop's folded line (the rail's fold words). */
+const DEADLINE_SHORT: Readonly<Record<DeadlineKind, string>> = {
+  will_change: "유언 바꿈", audit: "감사", estate_petition: "청원", suit_defence: "소송", entry_threat: "강제 진입 경고",
+  home_petition: "본령 청원", registry: "제안", famine: "대기근", petition: "청원",
+};
+
 /** What the engine will do if the deadline passes (the effectful kinds the auto-pause tells). */
 const IF_LAPSED: Readonly<Partial<Record<DeadlineKind, string>>> = {
   will_change: "유언은 그대로 둡니다", audit: "묵인으로 처리됩니다", estate_petition: "거절로 처리되고 기다린 쪽의 마음이 상합니다",
@@ -63,6 +69,11 @@ export const DEADLINE_COPY = {
   /** The auto-pause's word and line for a deadline in its last season. */
   pauseWord: "기한 임박",
   /** LS1-12: with the decision's own name (its chip's title) when there is one: "영지 밖 청원(지대 감면): …". */
+  /** LS1-18: several deadlines of one kind in one stop — one line, their count and names ("청원 2건 · 마지막 철"). */
+  pauseMany: (kind: DeadlineKind, names: readonly (string | null)[]) => {
+    const named = names.filter((name): name is string => name !== null && name !== DEADLINE_SUBJECT[kind]);
+    return `${DEADLINE_SHORT[kind]} ${names.length}건 · 마지막 철${named.length === 0 ? "" : `(${named.join(", ")})`}: 이번 철이 지나면 ${IF_LAPSED[kind] ?? "답할 수 없게 됩니다"}`;
+  },
   pauseLine: (kind: DeadlineKind, name: string | null = null) =>
     `${DEADLINE_SUBJECT[kind]}${name === null || name === DEADLINE_SUBJECT[kind] ? "" : `(${name})`}: 이번 철이 지나면 ${IF_LAPSED[kind] ?? "답할 수 없게 됩니다"}`,
   /** The lapse chip: one lapse says itself; more say how many. */

@@ -32,15 +32,19 @@ export function AutoPauseNotice({ state, hold, paused, ui, onLord, onModal, onDi
   if (hold === null || hold.mode === null || hold.shown.length === 0 || topModal(ui) !== null || (ui.mode !== "idle" && ui.mode !== "build")) return null;
   if (hold.mode === "stopped" && !paused) return null;
   const stopped = hold.mode === "stopped";
-  const lines = autoPauseLines(state, hold.shown);
-  const more = lines.length - MAX_LINES;
+  // LS1-18: a deadline's line always shows (the stop is there to tell what is about to lapse); only the other reasons fill
+  // what is left of MAX_LINES and the rest are counted.
+  const all = autoPauseLines(state, hold.shown);
+  let room = Math.max(0, MAX_LINES - all.filter(line => line.deadline === true).length);
+  const lines = all.filter(line => line.deadline === true || (room -= 1) >= 0);
+  const more = all.length - lines.length;
   const follow = (link: AutoPauseLink) => { if (link.kind === "lord") onLord(link.screen, link.focus); else onModal(link.modal); };
   return (
     <section className="auto-pause-notice" data-frame="light" aria-live="polite" aria-label={AUTO_PAUSE_COPY.region} data-mode={hold.mode}
       data-reasons={hold.shown.map(item => item.kind === "event" ? item.event.reason : item.kind === "deadline" ? `deadline_${item.deadline.kind}` : item.matter.kind).join(" ")}>
       <p className="auto-pause-title">{stopped ? AUTO_PAUSE_COPY.title : AUTO_PAUSE_COPY.addedTitle}</p>
       <ul className="auto-pause-lines">
-        {lines.slice(0, MAX_LINES).map(line => (
+        {lines.map(line => (
           <li key={line.key} className="auto-pause-line">
             <span className="auto-pause-text"><span className="auto-pause-word">{line.word}</span>{line.sentence === "" ? null : <span className="auto-pause-sentence">{line.sentence}</span>}</span>
             {line.link === null || line.linkLabel === null ? null : (

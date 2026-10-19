@@ -33,17 +33,34 @@ export interface AutoPauseLine {
   readonly sentence: string;
   readonly link: AutoPauseLink | null;
   readonly linkLabel: string | null;
+  /** LS1-18: a deadline in its last season — never folded into the notice's "그 밖에 N건". */
+  readonly deadline?: true;
 }
 
 const LINKS = AUTO_PAUSE_COPY.links;
 const none = { link: null, label: null } as const;
 
-/** The notice's lines, in the order they came: the reason's word, the engine's sentence and its link. */
+/**
+ * The notice's lines, in the order they came: the reason's word, the engine's sentence and its link. LS1-18: deadlines
+ * of one kind are one line where the first of them came ("청원 2건 · 마지막 철", their names), as the rail's one chip per
+ * kind; each deadline line is marked so the notice never folds it.
+ */
 export function autoPauseLines(state: GameState, items: readonly AutoPauseItem[]): readonly AutoPauseLine[] {
-  return items.map(item => item.kind === "event" ? eventLine(state, item.key, item.event)
-    : item.kind === "deadline" ? { key: item.key, word: DEADLINE_COPY.pauseWord,
-      sentence: DEADLINE_COPY.pauseLine(item.deadline.kind, storyBeats(state).find(beat => beat.id === item.deadline.chipId)?.title ?? null), link: null, linkLabel: null }
-    : matterLine(state, item.key, item.matter));
+  const deadlines = items.flatMap(item => item.kind === "deadline" ? [item] : []);
+  const beats = deadlines.length === 0 ? [] : storyBeats(state);
+  const nameOf = (chipId: string) => beats.find(beat => beat.id === chipId)?.title ?? null;
+  const told = new Set<string>();
+  return items.flatMap((item): AutoPauseLine[] => {
+    if (item.kind === "event") return [eventLine(state, item.key, item.event)];
+    if (item.kind !== "deadline") return [matterLine(state, item.key, item.matter)];
+    const kind = item.deadline.kind;
+    if (told.has(kind)) return [];
+    told.add(kind);
+    const same = deadlines.filter(entry => entry.deadline.kind === kind);
+    const sentence = same.length === 1 ? DEADLINE_COPY.pauseLine(kind, nameOf(item.deadline.chipId))
+      : DEADLINE_COPY.pauseMany(kind, same.map(entry => nameOf(entry.deadline.chipId)));
+    return [{ key: same.length === 1 ? item.key : `deadlines:${kind}`, word: DEADLINE_COPY.pauseWord, sentence, link: null, linkLabel: null, deadline: true }];
+  });
 }
 
 function eventLine(state: GameState, key: string, event: PauseEvent): AutoPauseLine {
