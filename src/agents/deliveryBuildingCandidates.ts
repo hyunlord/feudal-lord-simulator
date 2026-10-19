@@ -84,9 +84,17 @@ export function deliverCandidate(
   return bestCandidate(candidates, resource === "bread");
 }
 
-/** FOOD-DIST (lord mode): the granary holding the least bread (held and coming), then serving the most houses, then nearest. */
+/**
+ * FOOD-DIST (lord mode, (가′) the user's ruling 2026-10-19): the nearest granary first, as before; only once it already holds
+ * two distributors' loads (held and coming) the bread goes to the granary holding the least, then serving the most houses,
+ * then the nearest. Sending every load to the least stocked one sent the mill's one cart on long trips and left the bread
+ * at the mills while the granaries stood empty (DGX engine-FOOD-after-073faa4).
+ */
+const BREAD_SPREAD_FROM = 2 * BALANCE.DISTRIBUTOR_CAPACITY;
 function spreadBreadCandidate(candidates: readonly RouteCandidate[], served: (granaryId: string) => number): RouteCandidate | null {
   const committed = (candidate: RouteCandidate): number => amountOf(candidate.building.inventory, "bread") + amountOf(candidate.building.reserved, "bread");
+  const nearest = bestCandidate(candidates, true);
+  if (nearest === null || committed(nearest) < BREAD_SPREAD_FROM) return nearest;
   return [...candidates].sort((left, right) => committed(left) - committed(right)
     || served(right.building.id) - served(left.building.id)
     || left.path.length - right.path.length

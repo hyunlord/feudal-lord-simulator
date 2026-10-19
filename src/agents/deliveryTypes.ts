@@ -60,9 +60,9 @@ export interface DeliveryRoutePort {
   readonly isFord?: (tile: TilePos) => boolean;
   /**
    * FOOD-DIST (lord mode, the user's ruling 2026-10-18): the lived-in houses a granary serves (those nearer it than any
-   * other granary). Present, a mill's bread goes to the granary holding the least bread first, then the one serving the
-   * most houses, then the nearest — not always the nearest, which left every other granary empty and their distributors
-   * at home (DGX engine-FOOD-route-4e5057f).
+   * other granary). Present, a mill's bread goes to the nearest granary until it holds two distributors' loads, then to
+   * the one holding the least, then serving the most houses — the nearest alone left every other granary empty and their
+   * distributors at home (DGX engine-FOOD-route-4e5057f); the least stocked always kept the bread at the mills.
    */
   readonly breadSpread?: (granaryId: string) => number;
 }
