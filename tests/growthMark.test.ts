@@ -132,7 +132,7 @@ test("outside lord mode or with no block: no view, no mark", () => {
 
 test("the band's first line, the chip once the stop is said, the year card's line (its marked seasons)", () => {
   const ledger = { season: 1, year: 1301, startTick: 0, endTick: 1, income: 0, expense: 0, popDelta: 4, notableEvents: [], nextObjectiveHint: null } as unknown as SeasonLedger;
-  const snap: TownSnapshot = { levels: {}, buildings: 0, fields: 0, dead: 0, population: 0, coin: 0 };
+  const snap: TownSnapshot = { levels: {}, buildings: 0, fields: 0, dead: 0, population: 0, coin: 0, wallLeft: 0, wallKind: null };
   const band = seasonBand({ season: ledger, before: snap, after: snap, stewardHandled: 0, growth: GROWTH_COPY.band(2, "성 안에 집을 지을 자리가 없습니다") });
   assert.deepEqual(band.items.map(item => item.key), ["growth", "population"]);
   assert.equal(band.items[0]!.text, "마을이 2년째 자라지 않습니다 — 성 안에 집을 지을 자리가 없습니다");

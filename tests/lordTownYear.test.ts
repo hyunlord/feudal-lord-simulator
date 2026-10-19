@@ -17,7 +17,7 @@ import { RESULTS_COPY } from "../src/ui/results/resultsCopy.ko";
 
 const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
 const snap = (houses: number, fields: number, population: number, coin: number): TownSnapshot =>
-  ({ levels: Object.fromEntries(Array.from({ length: houses }, (_, index) => [`h${index}`, 1])), buildings: 5, fields, dead: 0, population, coin });
+  ({ levels: Object.fromEntries(Array.from({ length: houses }, (_, index) => [`h${index}`, 1])), buildings: 5, fields, dead: 0, population, coin, wallLeft: 0, wallKind: null });
 
 test("a year with no decisions still has 마을의 한 해 — the card is not empty, its heading the town's year", () => {
   clearTownCloses();

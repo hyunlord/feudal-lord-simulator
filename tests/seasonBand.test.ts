@@ -17,7 +17,7 @@ import { moneyFull } from "../src/ui/money.ko";
 
 const season = (popDelta: number, income: number, expense: number): SeasonLedger => ({ season: 1, year: 1300, startTick: 1_000, endTick: 2_000, income, expense,
   stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 }, popDelta, notableEvents: [], nextObjectiveHint: null } as unknown as SeasonLedger);
-const snap = (levels: Record<string, number>, buildings: number, fields: number, dead: number): TownSnapshot => ({ levels, buildings, fields, dead, population: 0, coin: 0 });
+const snap = (levels: Record<string, number>, buildings: number, fields: number, dead: number): TownSnapshot => ({ levels, buildings, fields, dead, population: 0, coin: 0, wallLeft: 0, wallKind: null });
 
 test("the band's lines in the design's order, only what is not zero: people, built, levels, fields, the treasury, the dead, the steward", () => {
   const band = seasonBand({ season: season(16, 500, 220), before: snap({ h1: 1, h2: 1 }, 5, 1, 3), after: snap({ h1: 2, h2: 1, h3: 0, h4: 0 }, 6, 1, 4), stewardHandled: 2 });
@@ -53,7 +53,7 @@ test("the snapshot: a house's level by its building, the buildings that are not 
       past: [{ alive: false, classBand: "labour" }, { alive: true, leftYear: 1301, classBand: "labour" }, { alive: false, classBand: "gentry" }] },
     population: 56, treasuryCoin: 340,
   } as unknown as Parameters<typeof townSnapshot>[0];
-  assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2, population: 56, coin: 340 });
+  assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2, population: 56, coin: 340, wallLeft: 0, wallKind: null });
 });
 
 test("LS1-1: one completion toast a season in lord mode — the first shows, the season's later ones are the band's", () => {

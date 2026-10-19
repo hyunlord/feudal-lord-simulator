@@ -19,6 +19,24 @@ export function townYearEnds(year: number): Readonly<{ start: TownSnapshot; end:
   return start === undefined || end === undefined ? null : { start, end };
 }
 
+/** LS1-16: the wall's segments left at a close when fewer than at the close before it (the works went on), else null —
+ * the engine's construction sites only; whether the wall holds the town stays the engine's growthBlock. */
+export type WallProgress = Readonly<{ left: number; kind: "palisade" | "stone" }>;
+export function wallProgressAt(year: number, season: number): WallProgress | null {
+  const now = closes.get(`${year}:${season}`);
+  const before = closes.get(season === 0 ? `${year - 1}:3` : `${year}:${season - 1}`);
+  if (now === undefined || before === undefined || now.wallKind === null || now.wallLeft >= before.wallLeft) return null;
+  return { left: now.wallLeft, kind: now.wallKind };
+}
+
+/** The same at the latest close the screen saw. */
+export function lastWallProgress(): WallProgress | null {
+  const key = [...closes.keys()].at(-1);
+  if (key === undefined) return null;
+  const [year, season] = key.split(":").map(Number) as [number, number];
+  return wallProgressAt(year, season);
+}
+
 /** Tests: start again. */
 export function clearTownCloses(): void {
   closes.clear();

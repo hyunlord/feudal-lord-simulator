@@ -10,6 +10,7 @@ import type { CameraState } from "./camera";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, snapToPixel } from "./style";
 import { constructionLabelsVisible, noteConstructionTag } from "./constructionTagProbe";
+import { coversBox, hudCovers } from "../ui/hud/hudCover";
 
 // INSTALL-3b ①: a wall under construction is one works with one tag (minimal HUD). Every segment used to raise its own
 // ("벽을 따라 운반 · 도로 연결 구간에서 N칸", "성벽 N번째 대기"), dozens over a chapter 2 town. Now each works (the
@@ -94,6 +95,9 @@ export function drawWallSiteLabels(context: CanvasRenderingContext2D, input: {
   const sites = input.state.constructionSites.filter(isWallConstructionSite);
   if (sites.length === 0) return;
   const { zoom, panX, panY } = input.camera;
+  // LS1-16: a tag that would sit under the rail (the event chips, the crisis icons) counts as off the screen — the
+  // works' tag moves to a segment in the open, or waits (drawTag's box, its text at most TAG_MAX_W wide).
+  const covers = hudCovers();
   const plan = wallSiteLabelPlan({
     sites,
     labelOf: site => segmentLabel(input.state, site),
@@ -102,12 +106,16 @@ export function drawWallSiteLabels(context: CanvasRenderingContext2D, input: {
     visible: point => {
       const x = point.x * zoom + panX;
       const y = point.y * zoom + panY;
-      return x >= 0 && x <= input.viewport.width && y >= 0 && y <= input.viewport.height;
+      return x >= 0 && x <= input.viewport.width && y >= 0 && y <= input.viewport.height
+        && !coversBox({ x: x - 26 * zoom, y: y - 77 * zoom, w: TAG_MAX_W, h: 18 * zoom }, covers);
     },
     centre: { x: (input.viewport.width / 2 - panX) / zoom, y: (input.viewport.height / 2 - panY) / zoom },
   });
   for (const label of plan) drawTag(context, label, zoom);
 }
+
+/** The widest tag the cover check assumes, in screen pixels (a works' tag: "성벽 21 · 목재 14/32" at 12 px). */
+const TAG_MAX_W = 160;
 
 function drawTag(context: CanvasRenderingContext2D, label: WallSiteLabel, zoom: number): void {
   const x = snapToPixel(label.anchor.x - 22);

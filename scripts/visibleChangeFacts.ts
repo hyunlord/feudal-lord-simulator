@@ -33,7 +33,10 @@ function facts(state: Any) {
     houses: state.houses?.length ?? 0, houseLevels: count(state.houses ?? [], (h: Any) => `L${h.level}`),
     buildings: count((state.buildings ?? []).filter((b: Any) => b.kind !== "house"), (b: Any) => b.kind),
     sites: count(state.constructionSites ?? [], (s: Any) => s.kind), stalledSites: (state.constructionSites ?? []).filter((s: Any) => s.stall !== undefined && s.stall !== "none").length,
-    palisade: state.palisade === null || state.palisade === undefined ? null : { segments: state.palisade.segments?.length ?? null, built: (state.palisade.segments ?? []).filter((s: Any) => s.built === true || s.state === "built").length },
+    palisade: state.palisade === null || state.palisade === undefined ? null : { segments: state.palisade.segments?.length ?? null,
+      // LS1-16: the engine marks a finished segment `completed` (the check-up run read a field it never sets: 0 always).
+      built: (state.palisade.segments ?? []).filter((s: Any) => s.completed === true).length,
+      left: (state.constructionSites ?? []).filter((s: Any) => s.kind === "palisade_segment" || s.kind === "stone_wall_segment").length },
     coin: state.treasuryCoin, timber: state.treasuryTimber,
     relations: Object.fromEntries((state.factions?.factions ?? []).map((f: Any) => [`${f.kind}:${f.name}`, f.relation])),
     held: homePieces.filter((p: Any) => p.possessor === "lord").map((p: Any) => p.id).sort(),

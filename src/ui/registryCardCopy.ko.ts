@@ -55,7 +55,22 @@ const SHUT_WORDS: Readonly<Record<Exclude<ShutReason["kind"], "money" | "evidenc
 /** Who sends it: the canon's sender, and the faction it speaks for. */
 const senderWords = (sender: string, faction: string | null) => sender === "" ? faction ?? "영지에 온 일" : faction === null || faction === sender ? sender : `${sender}(${faction})`;
 
+/** LS1-16: the rail chip's short word for the party an offer comes from — the canon's `senderFaction`, its first party
+ * (before "·", "와", "과"), by the first word it holds; none — "제안" alone. */
+const CHIP_PARTY: readonly (readonly [string, string])[] = [
+  ["이웃", "이웃"], ["영주 가문", "가문"], ["혼인 상대", "가문"], ["왕실", "왕실"], ["교회", "교회"], ["본당", "교회"], ["교구", "교회"], ["주교", "교회"],
+  ["길드", "길드"], ["직인", "길드"], ["장인", "길드"], ["지도 밖", "영지"], ["위임 영지", "영지"], ["해당 영지", "영지"], ["회계", "영지"],
+  ["상인", "상인"], ["도시", "도시"], ["이주", "도시"], ["가구", "도시"], ["농민", "농민"], ["소작인", "농민"],
+];
+const partyWord = (senderFaction: string | undefined): string | null => {
+  const first = senderFaction?.split(/·|와 |과 /)[0] ?? "";
+  return CHIP_PARTY.find(([key]) => first.includes(key))?.[1] ?? null;
+};
+
 export const REGISTRY_CARD_COPY = {
+  /** LS1-16 (render-VIS-checkup-d7f391e: the canon's long titles cut on the rail): the chip's short form — its faction's
+   * word and "제안"; the whole title is the card's. */
+  chip: (senderFaction: string | undefined) => { const word = partyWord(senderFaction); return word === null ? "제안" : `${word} 제안`; },
   /** The card's kicker: who sends it — the canon's sender, and the faction it speaks for. */
   from: (sender: string, faction: string | null) => `보낸 쪽 · ${senderWords(sender, faction)}`,
   /** An entry the canon has no words for (one added before its copy). */

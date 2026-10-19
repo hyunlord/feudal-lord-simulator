@@ -1,0 +1,311 @@
+{
+ "commit": "d7f391e5633f6c9403894dd668afd6d679ccdacc",
+ "subject": "CONVERTER-FEED: the gate's changed-rows run (hud.status-pill: 20 cells, 0 failures, 0 not opened; DGX engine-CONV-geo-37",
+ "committed": "2026-10-19T00:26:04+09:00",
+ "measured": "2026-10-18T15:38:31.219Z",
+ "host": "aitopatom-d6bb",
+ "machine": "dgx-headless",
+ "rounds": 3,
+ "seconds": 45,
+ "scenes": {
+  "big-town-x5": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 23.076,
+    "heapAllocKBPerTick": 623.4,
+    "canvasPer1kTicks": 291.6,
+    "scriptMsPerFrame": 65.133,
+    "taskMsPerFrame": 82.755,
+    "heapAllocMBps": 21.1,
+    "gcPerMin": 110.3,
+    "canvasPerSec": 1.77,
+    "bitmapPerSec": 0,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 76.7,
+    "heapAfterGcMB": 43.4,
+    "p50": 83.4,
+    "p95": 116.7,
+    "p99": 133.3,
+    "max": 166.6,
+    "over33PerMin": 718.7,
+    "otherCpu": 0.15
+   },
+   "values": {
+    "scriptMsPerTick": [
+     23.076,
+     24.111,
+     21.98
+    ],
+    "heapAllocKBPerTick": [
+     623.4,
+     603.8,
+     643.9
+    ],
+    "canvasPer1kTicks": [
+     305.8,
+     291.6,
+     285.2
+    ],
+    "scriptMsPerFrame": [
+     65.133,
+     67.816,
+     58.279
+    ],
+    "taskMsPerFrame": [
+     82.755,
+     85.925,
+     73.335
+    ],
+    "heapAllocMBps": [
+     21.1,
+     19.7,
+     23.1
+    ],
+    "gcPerMin": [
+     110.3,
+     116.9,
+     109.1
+    ],
+    "canvasPerSec": [
+     1.77,
+     1.77,
+     1.86
+    ],
+    "bitmapPerSec": [
+     0,
+     0,
+     0
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     76.7,
+     74.7,
+     85.6
+    ],
+    "heapAfterGcMB": [
+     42.8,
+     44.6,
+     43.4
+    ],
+    "p50": [
+     83.4,
+     83.4,
+     83.3
+    ],
+    "p95": [
+     116.7,
+     116.7,
+     116.6
+    ],
+    "p99": [
+     133.3,
+     133.4,
+     116.7
+    ],
+    "max": [
+     183.4,
+     166.6,
+     150
+    ],
+    "over33PerMin": [
+     718.7,
+     691.9,
+     812.9
+    ],
+    "otherCpu": [
+     0.2,
+     0.15,
+     0.07
+    ]
+   }
+  },
+  "new-game-x3": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 16.518,
+    "heapAllocKBPerTick": 977.5,
+    "canvasPer1kTicks": 70.9,
+    "scriptMsPerFrame": 16.106,
+    "taskMsPerFrame": 34.803,
+    "heapAllocMBps": 27.2,
+    "gcPerMin": 127.9,
+    "canvasPerSec": 0.64,
+    "bitmapPerSec": 0,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 44,
+    "heapAfterGcMB": 26.8,
+    "p50": 33.3,
+    "p95": 50,
+    "p99": 66.6,
+    "max": 66.8,
+    "over33PerMin": 1466.4,
+    "otherCpu": 0.08
+   },
+   "values": {
+    "scriptMsPerTick": [
+     16.618,
+     16.518,
+     16.516
+    ],
+    "heapAllocKBPerTick": [
+     942.1,
+     977.5,
+     989.3
+    ],
+    "canvasPer1kTicks": [
+     70.9,
+     70.2,
+     71.3
+    ],
+    "scriptMsPerFrame": [
+     16.5,
+     16.106,
+     16.016
+    ],
+    "taskMsPerFrame": [
+     35.325,
+     34.803,
+     34.733
+    ],
+    "heapAllocMBps": [
+     26.3,
+     27.2,
+     27.4
+    ],
+    "gcPerMin": [
+     127.9,
+     126.5,
+     130.5
+    ],
+    "canvasPerSec": [
+     0.64,
+     0.64,
+     0.64
+    ],
+    "bitmapPerSec": [
+     0,
+     0,
+     0
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     38.3,
+     44,
+     55.4
+    ],
+    "heapAfterGcMB": [
+     27,
+     26.4,
+     26.8
+    ],
+    "p50": [
+     33.3,
+     33.3,
+     33.3
+    ],
+    "p95": [
+     50.1,
+     50,
+     50
+    ],
+    "p99": [
+     66.6,
+     66.6,
+     66.7
+    ],
+    "max": [
+     83.4,
+     66.8,
+     66.7
+    ],
+    "over33PerMin": [
+     1477.1,
+     1463.8,
+     1466.4
+    ],
+    "otherCpu": [
+     0.09,
+     0.07,
+     0.08
+    ]
+   }
+  }
+ },
+ "codeBudgets": {
+  "budgets": {
+   "install26-entries": {
+    "label": "INSTALL-26 집 400채 항목 ms",
+    "budgetMs": 50,
+    "values": [
+     1.896,
+     1.511,
+     1.948
+    ],
+    "median": 1.896
+   },
+   "install26-assign": {
+    "label": "INSTALL-26 집 그림 배정 ms",
+    "budgetMs": 100,
+    "values": [
+     1.373,
+     1.244,
+     1.357
+    ],
+    "median": 1.357
+   },
+   "install26-held": {
+    "label": "INSTALL-26 같은 입력 프레임 ms",
+    "budgetMs": 0.5,
+    "values": [
+     0.036,
+     0.034,
+     0.031
+    ],
+    "median": 0.034
+   },
+   "install26-new-houses": {
+    "label": "INSTALL-26 새 집 배열 프레임 ms",
+    "budgetMs": 50,
+    "values": [
+     1.064,
+     2.143,
+     1.712
+    ],
+    "median": 1.712
+   },
+   "chron1-open-30k": {
+    "label": "CHRON-1 연대기 30,000건 열기 ms",
+    "budgetMs": 120,
+    "values": [
+     20.803,
+     17.819,
+     33.689
+    ],
+    "median": 20.803
+   },
+   "h8-query-10k": {
+    "label": "H8 기록 10,000건 질의 ms",
+    "budgetMs": 5,
+    "values": [
+     0.337,
+     0.496,
+     0.4
+    ],
+    "median": 0.4
+   }
+  },
+  "otherCpu": [
+   0.15,
+   0.12,
+   0.17
+  ]
+ }
+}

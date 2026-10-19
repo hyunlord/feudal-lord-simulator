@@ -22,9 +22,12 @@ export type TownSnapshot = Readonly<{
   /** LS1-5: the people and the treasury at the moment (the year card's start and end). */
   population: number;
   coin: number;
+  /** LS1-16: the wall's segments still to build (the engine's construction sites) and their wall, null when none. */
+  wallLeft: number;
+  wallKind: "palisade" | "stone" | null;
 }>;
 
-export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "arableFields" | "persons" | "population" | "treasuryCoin">): TownSnapshot {
+export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "arableFields" | "persons" | "population" | "treasuryCoin"> & Partial<Pick<GameState, "constructionSites">>): TownSnapshot {
   const people = state.persons?.people ?? [];
   const past = state.persons?.past ?? [];
   const gentry = (person: { readonly classBand?: string }) => person.classBand === "gentry";
@@ -35,7 +38,14 @@ export function townSnapshot(state: Pick<GameState, "houses" | "buildings" | "ar
     dead: [...past, ...people].filter(person => person.alive === false && !gentry(person)).length,
     population: state.population ?? 0,
     coin: state.treasuryCoin ?? 0,
+    ...wallLeftOf(state.constructionSites ?? []),
   };
+}
+
+function wallLeftOf(sites: readonly { readonly kind: string }[]): Pick<TownSnapshot, "wallLeft" | "wallKind"> {
+  const stone = sites.filter(site => site.kind === "stone_wall_segment").length;
+  const palisade = sites.filter(site => site.kind === "palisade_segment").length;
+  return { wallLeft: stone + palisade, wallKind: stone > 0 ? "stone" : palisade > 0 ? "palisade" : null };
 }
 
 /** LS1-3 (LS1-6): the town's size the growth count compares — its houses and its people. */

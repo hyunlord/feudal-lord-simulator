@@ -8,6 +8,7 @@ import { Button } from "../kit";
 import { storyArtStyle } from "../storyArt";
 import { NAT1_BOX_COPY } from "../nat1TextBoxCopy.ko";
 import { textCut } from "./textCut";
+import { hudCoverRef } from "./hudCover";
 import { openChronicleRecord } from "../lord/chronicleFocus";
 import type { ChipDue } from "../lord/decisions/deadlines";
 import { askDecision } from "../lord/decisions/decisionFocus";
@@ -52,7 +53,7 @@ export function EventCards({ beats, due = new Map(), openId, onOpen, onDismiss, 
   if (beats.length === 0 && notice === null) return null;
   const open = beats.find(beat => beat.id === openId) ?? null;
   return (
-    <section className="event-cards" aria-label={EVENT_STORY_COPY.region}>
+    <section ref={hudCoverRef("event-cards")} className="event-cards" aria-label={EVENT_STORY_COPY.region}>
       <div className="event-chips">
         {beats.map(beat => (
           <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} data-chip-id={beat.id} aria-expanded={openId === beat.id}

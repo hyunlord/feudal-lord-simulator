@@ -8,6 +8,12 @@ import { withParticle } from "../../particle.ko";
 /** A condition's or a building's name: the catalog's for a building (BLD-REG: the catalog holds the kinds' words), the
  * era conditions' own words for what is not a building. */
 const NOT_BUILDINGS: Readonly<Record<string, string>> = { timber: "목재", stone: "석재", coin: "금고", population: "인구" };
+const WALL_NAME = { palisade: "목책", stone: "성벽" } as const;
+/** LS1-16: the cause's short word for the rail chip ("정체 · 목책 공사"); the whole cause is the chip's card. */
+const REASON_SHORT: Readonly<Record<string, string>> = {
+  era_condition: "선포 조건", charter_search: "목책 자리", wall_not_found: "목책 자리", charter_asked: "청 기다림", wall_building: "목책 공사",
+  food: "먹을 것", no_lots: "집터 없음", town_full: "가득 참",
+};
 const nameOf = (key: string | null): string => key === null ? "조건" : BUILDING_COPY[key as BuildingKind]?.name ?? NOT_BUILDINGS[key] ?? key;
 
 export const GROWTH_COPY = {
@@ -18,8 +24,10 @@ export const GROWTH_COPY = {
   stalledUnknownLabel: "마을이 자라지 않고 있습니다",
   /** The season-turn band's first line. */
   band: (years: number | null, reason: string) => years === null ? `마을이 자라지 않고 있습니다 — ${reason}` : `마을이 ${years}년째 자라지 않습니다 — ${reason}`,
-  /** The cause, by the engine's reason and detail. */
-  reason: (reason: string, detail: string | null): string => {
+  /** The cause, by the engine's reason and detail. LS1-16: the wall's works that went on since the close before (its
+   * segments left fewer) are said as works going on, not stopped — the cause stays the engine's. */
+  reason: (reason: string, detail: string | null, wall: Readonly<{ left: number; kind: "palisade" | "stone" }> | null = null): string => {
+    if (reason === "wall_building" && wall !== null) return `${WALL_NAME[wall.kind]} 공사 중 · ${wall.left}구간 남음`;
     switch (reason) {
       case "era_condition": return `시장도시 선포의 조건이 모자랍니다(${nameOf(detail)})`;
       case "charter_search": return "마을이 목책을 두를 자리를 찾고 있습니다";
@@ -50,7 +58,9 @@ export const GROWTH_COPY = {
     sinceUnknown: "언제부터인지는 이 화면이 보지 못했습니다(불러오기 전부터)",
   },
   /** The chip carries the cause in its title, so the rail says why while the stop holds (LS1-6: the cause seen). */
-  chip: { title: (reason: string) => `마을이 자라지 않습니다 — ${reason}`, open: "까닭 보기", advice: "상태 띠의 인구 칸을 누르면 같은 까닭과 영주가 할 일을 다시 볼 수 있습니다." },
+  chip: { title: (reason: string) => `마을이 자라지 않습니다 — ${reason}`,
+    /** LS1-16: the rail's short form — "정체 · " and the cause's short word (a service: the building's name). */
+    short: (reason: string, detail: string | null) => `정체 · ${REASON_SHORT[reason] ?? (reason === "service_missing" || reason === "service_outside" ? nameOf(detail) : "까닭")}`, open: "까닭 보기", advice: "상태 띠의 인구 칸을 누르면 같은 까닭과 영주가 할 일을 다시 볼 수 있습니다." },
   /** The year card's line: the seasons the screen saw the town held, and the last cause. */
   year: (seasons: number, reason: string) => `자라지 못한 철 ${seasons} — ${reason}`,
 } as const;

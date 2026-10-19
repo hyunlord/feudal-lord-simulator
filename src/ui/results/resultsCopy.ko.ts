@@ -62,6 +62,8 @@ export const RESULTS_COPY = {
     yearItem: (title: string, count: number) => `${title} — ${count}건`,
     /** The bad harvest's news: each decision that left the town ready when it came (`because[].relation === "preparedness"`). */
     preparedThen: (about: string) => `그때 이 결정이 남긴 대비 — ${about}`,
+    /** LS1-16: a group that stands for more decisions saying the same ("… 외 3건"). */
+    andMore: (heading: string, more: number) => more > 0 ? `${heading} 외 ${more}건` : heading,
     prefixed: (because: string, sentence: string) => `${because} — ${sentence}`,
     part: (sentence: string) => `${sentence} (여러 까닭 가운데 하나)`,
     /** What the decision was about and its answer ("장원 청원 '공동 목초지': 들어준다"). */

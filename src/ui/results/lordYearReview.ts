@@ -6,7 +6,7 @@ import { lordMode } from "../../engine/townAgency";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { chronicleDate, yearOfTick } from "../chronicle/chronicleScreenModel";
 import { recordIndex } from "../chronicle/historyIndex";
-import { townYearEnds } from "../lord/seasonBand/townCloses";
+import { townYearEnds, wallProgressAt } from "../lord/seasonBand/townCloses";
 import { GROWTH_COPY } from "../lord/growth/growthCopy.ko";
 import { growthYear } from "../lord/growth/growthTrack";
 import { moneyFull } from "../money.ko";
@@ -33,25 +33,51 @@ export function lordYearReview(state: GameState, year: number): YearReviewView {
   const review = engineYearReview(state, year);
   const index = recordIndex(state);
   const house = review.house.map(entry => copy.dated(chronicleDate(state, entry.tick), historySummary(entry, state)));
-  const decided = (entry: YearDecision): YearReviewDecision => {
-    const record = index.get(entry.decisionId);
-    const line = copy.dated(chronicleDate(state, entry.tick), record === undefined ? entry.kind : decisionAbout(state, record));
-    const outcome = entry.actual !== null ? copy.outcome(metricsLine(entry.predicted), metricsLine(entry.actual))
-      : entry.actualDueTick !== null ? CHRONICLE_SCREEN_COPY.actualPending(chronicleDate(state, entry.actualDueTick)) : "";
-    return { id: entry.decisionId, line, outcome };
+  // LS1-16 (render-VIS-checkup-d7f391e: "목재 주문을 정했다" twice in 1316): the same decision with the same outcome is one
+  // line, its first date and its count.
+  const decided = (entries: readonly YearDecision[]): YearReviewDecision[] => {
+    const merged = new Map<string, { id: string; date: string; about: string; outcome: string; count: number }>();
+    for (const entry of entries) {
+      const record = index.get(entry.decisionId);
+      const about = record === undefined ? entry.kind : decisionAbout(state, record);
+      const outcome = entry.actual !== null ? copy.outcome(metricsLine(entry.predicted), metricsLine(entry.actual))
+        : entry.actualDueTick !== null ? CHRONICLE_SCREEN_COPY.actualPending(chronicleDate(state, entry.actualDueTick)) : "";
+      const key = `${about}\u0000${outcome}`; const seen = merged.get(key);
+      if (seen !== undefined) seen.count += 1;
+      else merged.set(key, { id: entry.decisionId, date: chronicleDate(state, entry.tick), about, outcome, count: 1 });
+    }
+    return [...merged.values()].map(row => ({ id: row.id, line: copy.times(copy.dated(row.date, row.about), row.count), outcome: row.outcome }));
   };
-  const decisions = review.decisions.filter(entry => entry.by === "lord").map(decided);
-  const steward = review.decisions.filter(entry => entry.by === "steward").map(decided);
+  const decisions = decided(review.decisions.filter(entry => entry.by === "lord"));
+  const steward = decided(review.decisions.filter(entry => entry.by === "steward"));
   // What followed (the year's consequences of this year's decisions and the years before), by the decision behind it;
   // the community's building is its own section.
   const groups = traceGroups(state, review.consequences.filter(row => row.key !== "community_built"));
-  const threads: YearReviewGroup[] = groups.filter(group => !onlyMinds(group)).flatMap(group => {
+  // LS1-16 (render-VIS-checkup-d7f391e: "약속을 지켰다" three groups, "목재 주문을 정했다" two, each its own lines): decisions
+  // whose heading reads the same are one group — their rows together, so a repeated line is counted once ("(36건)").
+  const byHeading = new Map<string, { key: string; heading: string; rows: (typeof groups)[number]["rows"][number][] }>();
+  for (const group of groups.filter(entry => !onlyMinds(entry))) {
     const record = index.get(group.decisionId);
+    if (record === undefined) continue;
+    const heading = RESULTS_COPY.trace.prefixed(traceTitle(yearOfTick(state, group.decisionTick), group.by, preparedOnly(group.rows)), decisionAbout(state, record));
+    const seen = byHeading.get(heading);
+    if (seen !== undefined) seen.rows.push(...group.rows);
+    else byHeading.set(heading, { key: group.decisionId, heading, rows: [...group.rows] });
+  }
+  // Then decisions whose lines say the same (counts aside: "혼인이 한 걸음 나아갔다" after the proposal, the counter-offer
+  // and each promise kept) are one group too, its first heading and how many more ("… 외 3건").
+  const bySaying = new Map<string, { key: string; heading: string; more: number; rows: (typeof groups)[number]["rows"][number][] }>();
+  for (const group of byHeading.values()) {
     const lines = threadLines(state, group.rows);
-    const all = [...lines.lines, ...lines.feelings];
-    if (record === undefined || all.length === 0) return [];
-    return [{ key: group.decisionId, heading: RESULTS_COPY.trace.prefixed(traceTitle(yearOfTick(state, group.decisionTick), group.by, preparedOnly(group.rows)), decisionAbout(state, record)),
-      lines: capped(all) }];
+    const saying = [...lines.lines.map(line => line.replace(/ \(\d+건\)$/, "")), ...lines.feelings].join("\n");
+    if (saying === "") continue;
+    const seen = bySaying.get(saying);
+    if (seen !== undefined) { seen.rows.push(...group.rows); seen.more += 1; }
+    else bySaying.set(saying, { key: group.key, heading: group.heading, more: 0, rows: [...group.rows] });
+  }
+  const threads: YearReviewGroup[] = [...bySaying.values()].map(group => {
+    const lines = threadLines(state, group.rows);
+    return { key: group.key, heading: RESULTS_COPY.trace.andMore(group.heading, group.more), lines: capped([...lines.lines, ...lines.feelings]) };
   });
   const minds = threadLines(state, groups.filter(onlyMinds).flatMap(group => group.rows)).feelings;
   if (minds.length > 0) threads.push({ key: "steward-minds", heading: copy.stewardMinds, lines: capped(minds) });
@@ -88,5 +114,5 @@ export function lordTownYear(year: number): readonly string[] | null {
 /** LS1-3 / LS1-5: the year's stop of the town's growth — the season closes the screen saw it held at, and its last cause. */
 export function growthYearLine(year: number): readonly string[] {
   const held = growthYear(year);
-  return held.seasons === 0 || held.last === null ? [] : [GROWTH_COPY.year(held.seasons, GROWTH_COPY.reason(held.last.reason!, held.last.detail))];
+  return held.seasons === 0 || held.last === null ? [] : [GROWTH_COPY.year(held.seasons, GROWTH_COPY.reason(held.last.reason!, held.last.detail, wallProgressAt(held.last.year, held.last.season)))];
 }

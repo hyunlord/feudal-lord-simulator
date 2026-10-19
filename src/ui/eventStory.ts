@@ -187,7 +187,9 @@ export function storyBeats(state: GameState, inPlace: ReadonlySet<string> = new 
       facts: [copy.badHarvest.lost(record.losses.harvestLost), ...preparedThen(state, record.id)] });
   }
   const famine = famineStatus(state);
-  if (famine !== null && (famine.stage === "arrival" || famine.stage === "recovery")) {
+  // LS1-16: the famine's chip while it lasts — the engine's arrival stage, up to its end tick (render-VIS-checkup-d7f391e:
+  // it stayed through the recovery, ended 69,500, gone 72,106 — "대기근" still on the rail in 1317 summer).
+  if (famine !== null && famine.stage === "arrival") {
     beats.push({ id: `famine:${famine.eventId}`, kind: "famine", illustration: "decision_famine_intro", tile: arableTile(state),
       decision: famine.choices.length > 0 ? "famine" : null, title: copy.famine.title, line: famine.response === null ? copy.famine.lineOpen : copy.famine.lineAnswered(famine.response),
       advice: copy.famine.advice, facts: [copy.famine.until(famine.endTick, state), ...famineAfterFacts(state)] });
@@ -286,7 +288,7 @@ function growthBeats(state: GameState): readonly StoryBeat[] {
   const view = growthView(state, run);
   if (view === null || view.mark === null) return [];
   const key = run.start === null ? "seen" : `${run.start.year}:${run.start.season}`;
-  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason),
+  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason), chip: GROWTH_COPY.chip.short(view.block.reason, view.block.detail),
     line: view.since ?? view.reason, facts: [view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
 }
 

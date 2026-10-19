@@ -5,8 +5,9 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
     "sha256": "a2f9b9fc60e0281d5bce348d644da012a2c51f533f94f17f1170d64d939481bf"
   },
   {
+    // Reviewed 502d2bc64: pure reads + shared stage traversal; costs/order and advanceSuits unchanged; DGX engineB-suit-verdict-9131d40 hashes 8/8 identical.
     "path": "src/engine/estateSuits.ts",
-    "sha256": "79ae19be3060a587241a80e0d966ad38a83a47f9aa2fdc8bee7d751df3c04779"
+    "sha256": "cba61a00e4fed9f651972a059d9ba1f38a1a8619628a20c1caaf2cdd1b75e98d"
   },
   {
     "path": "src/content/stewardshipConfig.ts",
