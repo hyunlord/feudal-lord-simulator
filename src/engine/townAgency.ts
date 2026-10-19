@@ -15,10 +15,11 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingC
 import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
-  COMMUNITY_FALLBACK, LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
+  CLOTH_OPPORTUNITY_KINDS, COMMUNITY_FALLBACK, LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
   START_SCORE, STARTS_PER_WEEK, TEMPERAMENT_SPREAD, CHOICE_SPAN, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
   WALK_REUSE_IDLE_WEEKS, WALK_REUSE_TICKS,
 } from "../content/townAgencyConfig";
+import { clothTime } from "./autoplayCloth";
 import { constructionSiteId, isBuildingConstructionSite } from "../economy/construction";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import { paintZone } from "../zones/zoneEdits";
@@ -401,6 +402,7 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
   for (const kind of OPPORTUNITY_KINDS) {
     const backed = agency.subsidies.some(subsidy => subsidy.kind === kind) || policyWeight(agency.policy, kind) >= 20;
     if (!backed || proposals.some(proposal => proposal.what === kind)) continue;
+    if (CLOTH_OPPORTUNITY_KINDS.includes(kind) && !clothTime(state)) continue;
     const count = state.buildings.filter(building => building.kind === kind).length
       + state.constructionSites.filter(site => isBuildingConstructionSite(site) && site.kind === kind).length;
     if (count > Math.floor(houses / 4)) continue;

@@ -131,6 +131,12 @@ export const SUBSIDY_TREASURY_PERMILLE = 250;
 // Houses come only as needs (a burgage plot, the housing step): a house on the first legal tile would break the lots' plan.
 export const OPPORTUNITY_KINDS: readonly BuildingKind[] = ["market", "granary", "storehouse", "well", "mill", "malt_kiln", "chapel",
   "sawmill", "masonry", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard", "farmstead", "logging_camp", "quarry"];
+/**
+ * CLOTH-1 (the user's ruling 2026-10-19): the cloth chain's buildings are no opportunity before the cloth's time
+ * (`clothTime`, after chapter 3 — 1364 in lord mode, decision CL7): the revenue policy backed them and the merchants built
+ * up to seven of each with no wool to work (DGX engine-CLOTH-diag-228eb96).
+ */
+export const CLOTH_OPPORTUNITY_KINDS: readonly BuildingKind[] = ["weaver_house", "fulling_mill", "dyehouse", "tenter_yard"];
 /** TA-13 (LM-E9b): a walk that started nothing is reused at most a season (1,000 ticks) from the tick it ran. */
 export const WALK_REUSE_TICKS = 1_000;
 /**
