@@ -1,6 +1,7 @@
 import type { GameState } from "../engine/engine.types";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { diplomacyOf } from "../engine/negotiation";
+import { V4_COPY } from "../content/registry/v4Copy.generated";
 import { lordMode } from "../engine/townAgency";
 import { dateWord } from "./decisionCard/answerWords";
 import type { StoryBeat } from "./eventStory";
@@ -69,7 +70,7 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
   }
   for (const offer of registryHeadlines(state)) {
     beats.push({ id: `registry:${offer.occurrenceId}`, kind: "registry_event", illustration: offer.art, tile: seatTile(state), decision: "registry_offer",
-      title: offer.title, line: offer.body, facts: [offer.waits], advice: REGISTRY_CARD_COPY.advice });
+      title: offer.title, chip: REGISTRY_CARD_COPY.chip(V4_COPY[offer.entryId]?.senderFaction), line: offer.body, facts: [offer.waits], advice: REGISTRY_CARD_COPY.advice });
   }
   const request = lordRequestView(state);
   if (request !== null && request.command !== null) {

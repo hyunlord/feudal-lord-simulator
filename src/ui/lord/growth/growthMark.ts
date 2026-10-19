@@ -6,6 +6,7 @@ import { scenarioOf } from "../../../engine/scenarioState";
 import { lordMode } from "../../../engine/townAgency";
 import { lordRequestView } from "../../lordCardsModel";
 import { GROWTH_COPY } from "./growthCopy.ko";
+import { lastWallProgress } from "../seasonBand/townCloses";
 import { GROWTH_HELD_CLOSES, growthRun, type GrowthRun } from "./growthTrack";
 
 const SEASON = BALANCE.TICKS_PER_YEAR / 4;
@@ -38,7 +39,7 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   if (!lordMode(state)) return null;
   const block = read;
   if (block === null) return null;
-  const reason = GROWTH_COPY.reason(block.reason, block.detail);
+  const reason = GROWTH_COPY.reason(block.reason, block.detail, lastWallProgress());
   // LS1-9: the engine's since is the last close the town grew at (its houses or people above the close before), so the
   // closes it has not grown at are the whole seasons since — counted whole, a band read a tick after its close counts
   // the same as one read at it (render-VIS-ls17: 1304's summer said 정체 a season early at 2,001 ticks > 2,000).

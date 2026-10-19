@@ -31,6 +31,7 @@ import { lordMode } from "../../engine/townAgency";
 import { LordPolicyPanel } from "../lord/LordPolicyPanel";
 import { TownSeatButton } from "../lord/camera/TownSeatButton";
 import { ModeTag } from "./ModeTag";
+import { hudCoverRef } from "./hudCover";
 import { Worded } from "./PillWord";
 import { growthMarkOf } from "../lord/growth/growthMark";
 import { TreasuryByEstate } from "../lord/treasury/TreasuryByEstate";
@@ -201,7 +202,7 @@ export function CrisisIcons({ rows: all, onInspect, lead = null }: { readonly ro
   const rows = all.slice(0, 3);
   if (rows.length === 0 && lead === null) return null;
   return (
-    <section className="crisis-icons" aria-label={HUD_COPY.crisis}>
+    <section ref={hudCoverRef("crisis-icons")} className="crisis-icons" aria-label={HUD_COPY.crisis}>
       {lead}
       {rows.map(row => (
         <Button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
