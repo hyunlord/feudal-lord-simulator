@@ -1,0 +1,560 @@
+{
+  "run": "engineB-suit-verdict-9131d40",
+  "baseline": "16bc0436a170ca1d774bdb307debc0cf845377ea",
+  "source": "9131d406fcfedf8e78ac08d6a1a927f73144e531",
+  "keptRoot": "hyunlord@100.70.109.50:~/fls-runs/_kept/engineB-suit-verdict-9131d40/.remote",
+  "files": [
+    {
+      "path": "changed-files.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-1/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-1/result.json",
+      "bytes": 12579,
+      "sha256": "748f3f72086849eb757504cd22fccd927a6368efad7a0ee4ad89b3ab9f03aeb4",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-1/run.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-2/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-2/result.json",
+      "bytes": 17317,
+      "sha256": "75339395c5b078f82e0d43ed4e50f6d1a605c4589fe83adbe6b8d62282c2f1a4",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-2/run.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-3/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-3/result.json",
+      "bytes": 15729,
+      "sha256": "5a29729c8b1443a3f7b4148140e74a5f23e7c56ec50661606055e84ee304d6ae",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/lord/seed-3/run.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-1/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-1/final-state.json",
+      "bytes": 9948837,
+      "sha256": "4acbfbf73150c374662e4c0ad98c526652ae04ddc2402d48118b50aeb8f122b2",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-1/food-periods.jsonl",
+      "bytes": 76558,
+      "sha256": "9e0d0e5b128c02fae14a9ddc7af668352be8381306a21daf0d1b9ae093d97667",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-1/money-periods.jsonl",
+      "bytes": 48231,
+      "sha256": "aa6e3254ce6d7a47eec1e2cd955ce7c0c4c22e9540aa48724d2d897ec8e40dd5",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-1/run.log",
+      "bytes": 6246,
+      "sha256": "b134ce1bb0b0bc04eee0cec4f28018e3487dbf391960bbbb561bcc98b700bbfb",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-1/summary.json",
+      "bytes": 7552,
+      "sha256": "0cdffc31b37f6ab2fead18f7d0071de60b785b222cc9244942cebab804c81e3e",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-2/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-2/final-state.json",
+      "bytes": 4075206,
+      "sha256": "3d768a2009ecf6b6f6bc6c9ff9eb3d1ba7c8e448e1db57df2547439969725f53",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-2/food-periods.jsonl",
+      "bytes": 57684,
+      "sha256": "de039b5256a71e73ffce548090f4c2c215788d475870fd6d4c5505716f000805",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-2/money-periods.jsonl",
+      "bytes": 36635,
+      "sha256": "8332b9b29d3855eead67a15c64f3ef24563bed39ed8b4ad10b83947e6ab2be17",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-2/run.log",
+      "bytes": 5854,
+      "sha256": "1d88e5146fab64dee02779952cea27c1d88b9a2efab3fb255ce29d8b8f6da2ed",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-2/summary.json",
+      "bytes": 7356,
+      "sha256": "dca1339a23b991819ac1565c636ed27de02d4f66fece9c9a156f810af93429e2",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-3/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-3/final-state.json",
+      "bytes": 3778944,
+      "sha256": "33b3d88a225ba3998eb8e0eae348ea30da62b9109dbcc7141a4a3ade4f7a51a7",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-3/food-periods.jsonl",
+      "bytes": 61011,
+      "sha256": "4a661b176f4b2ef0ddbb1d6b116e2114793c7ae367629b68e58fdfbe355ef829",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-3/money-periods.jsonl",
+      "bytes": 39071,
+      "sha256": "d98459086612bcdc1d909cfced2288aedef54478f85e368c3177c7300e99e120",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-3/run.log",
+      "bytes": 5923,
+      "sha256": "8dbc731467807cf2455acf562caacfde1bd3483477f9108d56c81e53d72327cb",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-3/summary.json",
+      "bytes": 7393,
+      "sha256": "d520cd1dadcfa18c81ab7c53028b514929a183668699c930a6a51f3143cf6155",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-4/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-4/final-state.json",
+      "bytes": 3932148,
+      "sha256": "db0ba1ff69a915f7142a024373889e0406ba5dd2de982fda288d363ecda78980",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-4/food-periods.jsonl",
+      "bytes": 57830,
+      "sha256": "e30d8d6eae7864cee65b241092733b57b0fbb81420506d7804927e33e099d8a6",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-4/money-periods.jsonl",
+      "bytes": 35582,
+      "sha256": "0ec70a46136ee689b4ac3d6e9bb68dfeb43c036e4683c9a7c809ec04b58a6ebd",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-4/run.log",
+      "bytes": 6088,
+      "sha256": "e4ca87b9e54feae47cf4cc41f09a07f81acc116e0b04d19d325420ad6801ada9",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-4/summary.json",
+      "bytes": 7740,
+      "sha256": "27b51a796131505700165ceb4e4b48fe4d65e39771834d4a34bc58aa59446632",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-5/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-5/final-state.json",
+      "bytes": 5684542,
+      "sha256": "8c04888603b9163966aa02fa538984c0e3ca898c8f3ef2bb2d9dc3ce6c3d1f57",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-5/food-periods.jsonl",
+      "bytes": 68781,
+      "sha256": "a713f69b67f5001dafe7920a5dc9b2faa2c5ceb7d2864810cf8b644ce5654b41",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-5/money-periods.jsonl",
+      "bytes": 42817,
+      "sha256": "3b7864b2947999704fe661845ddbcfdffaa9405ce18f75a36feddf64bddb78a9",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-5/run.log",
+      "bytes": 6110,
+      "sha256": "129ad8814ed540b4b0edb02faef2fd1feebe61e56708a2270502ca2d6e2a9806",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline/sandbox/seed-5/summary.json",
+      "bytes": 7551,
+      "sha256": "ce4e063fca90d68c64e5dec5f47766be6c53b3a0dd1a27cc56b907a81975df3d",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/baseline-revision.txt",
+      "bytes": 41,
+      "sha256": "95794008cca4fc89b87196ed24eb395ce1d9d4a6d59a0bf18f80408c0e6b388e",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/boundary-tests.log",
+      "bytes": 651,
+      "sha256": "d2524156af6df75bcb6efde0e2f1a6d6fa8c8395cb4bb6f9412c16d069a2e903",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-1/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-1/result.json",
+      "bytes": 12579,
+      "sha256": "64a8eed954b165dedce5775a0921db4965d72f4a49aa5004f73d22adc4d0a83e",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-1/run.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-2/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-2/result.json",
+      "bytes": 17317,
+      "sha256": "ce23440d76c5badb35e3b0358fe4f3d75d1afa3516d6af9147958ea187ba965b",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-2/run.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-3/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-3/result.json",
+      "bytes": 15729,
+      "sha256": "87b227bd557ba71cab0a15ace218639aa45806490849f5ddd1300b573301b9cc",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/lord/seed-3/run.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-1/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-1/final-state.json",
+      "bytes": 9948837,
+      "sha256": "4acbfbf73150c374662e4c0ad98c526652ae04ddc2402d48118b50aeb8f122b2",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-1/food-periods.jsonl",
+      "bytes": 76558,
+      "sha256": "9e0d0e5b128c02fae14a9ddc7af668352be8381306a21daf0d1b9ae093d97667",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-1/money-periods.jsonl",
+      "bytes": 48231,
+      "sha256": "aa6e3254ce6d7a47eec1e2cd955ce7c0c4c22e9540aa48724d2d897ec8e40dd5",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-1/run.log",
+      "bytes": 6246,
+      "sha256": "d01c76875746b0c6fdc5e3e4cce7a2ae2260d85a0231abe6957c75807b7d2bba",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-1/summary.json",
+      "bytes": 7552,
+      "sha256": "31a629336debf6134e5da016f44cffe03758133588a4d739c22f15f7a6effc28",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-2/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-2/final-state.json",
+      "bytes": 4075206,
+      "sha256": "3d768a2009ecf6b6f6bc6c9ff9eb3d1ba7c8e448e1db57df2547439969725f53",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-2/food-periods.jsonl",
+      "bytes": 57684,
+      "sha256": "de039b5256a71e73ffce548090f4c2c215788d475870fd6d4c5505716f000805",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-2/money-periods.jsonl",
+      "bytes": 36635,
+      "sha256": "8332b9b29d3855eead67a15c64f3ef24563bed39ed8b4ad10b83947e6ab2be17",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-2/run.log",
+      "bytes": 5854,
+      "sha256": "2d224aec0f80e0a77d1f39726e754ce3c2ac8831cf85090da4a815634114bb24",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-2/summary.json",
+      "bytes": 7356,
+      "sha256": "7f5b51497ddfc56813a5bcfd3d499167289e03b24ded88d1f8e8b5ee73bcbd86",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/.final-state.json.xGuPdVhekP",
+      "bytes": 2162688,
+      "sha256": "0fa2b0fc79938485feaea44b76daf48107ca65e6f5d59e2ef6455da0b081f171",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/final-state.json",
+      "bytes": 3778944,
+      "sha256": "33b3d88a225ba3998eb8e0eae348ea30da62b9109dbcc7141a4a3ade4f7a51a7",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/food-periods.jsonl",
+      "bytes": 61011,
+      "sha256": "4a661b176f4b2ef0ddbb1d6b116e2114793c7ae367629b68e58fdfbe355ef829",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/money-periods.jsonl",
+      "bytes": 39071,
+      "sha256": "d98459086612bcdc1d909cfced2288aedef54478f85e368c3177c7300e99e120",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/run.log",
+      "bytes": 5927,
+      "sha256": "6b9671da0afa8cefebe0d6b0840ee24aa7738c675983d490c031329785d55905",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-3/summary.json",
+      "bytes": 7397,
+      "sha256": "fcc88c47f4af9e855ba562edc5621848e598a650eaf1fe6f15abb516942ccb94",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-4/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-4/final-state.json",
+      "bytes": 3932148,
+      "sha256": "db0ba1ff69a915f7142a024373889e0406ba5dd2de982fda288d363ecda78980",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-4/food-periods.jsonl",
+      "bytes": 57830,
+      "sha256": "e30d8d6eae7864cee65b241092733b57b0fbb81420506d7804927e33e099d8a6",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-4/money-periods.jsonl",
+      "bytes": 35582,
+      "sha256": "0ec70a46136ee689b4ac3d6e9bb68dfeb43c036e4683c9a7c809ec04b58a6ebd",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-4/run.log",
+      "bytes": 6084,
+      "sha256": "67d0af0cb5c6686ce0e0f50091187cbc1f8f2e55287c733b9a1b58e7956dfac1",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-4/summary.json",
+      "bytes": 7736,
+      "sha256": "ff6742d71b9cbafe98db7d7525b8d526996917b04b3ae38de6fec7e7ddf9e172",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-5/exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-5/final-state.json",
+      "bytes": 5684542,
+      "sha256": "8c04888603b9163966aa02fa538984c0e3ca898c8f3ef2bb2d9dc3ce6c3d1f57",
+      "includedInArchive": false
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-5/food-periods.jsonl",
+      "bytes": 68781,
+      "sha256": "a713f69b67f5001dafe7920a5dc9b2faa2c5ceb7d2864810cf8b644ce5654b41",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-5/money-periods.jsonl",
+      "bytes": 42817,
+      "sha256": "3b7864b2947999704fe661845ddbcfdffaa9405ce18f75a36feddf64bddb78a9",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-5/run.log",
+      "bytes": 6105,
+      "sha256": "7c3d498a53521f6b41ef561a05789b138fb4fab29f1678c6370d5f41c25fe58e",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed/sandbox/seed-5/summary.json",
+      "bytes": 7546,
+      "sha256": "3156e945ac57206821fc55fc0d11d224fbc559414151d85917a624883d65a56b",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/changed-revision.txt",
+      "bytes": 41,
+      "sha256": "163eaf39d452689283319ce956fa15bd1779f659173f3404be52f334a8f4b888",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/comparison.json",
+      "bytes": 4170,
+      "sha256": "f332651e867788e394217c8bd890b83bdd82a08f487cfb0ff6f909e589ae7a15",
+      "includedInArchive": true
+    },
+    {
+      "path": "eb-suit-verdict/typecheck.log",
+      "bytes": 57,
+      "sha256": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff",
+      "includedInArchive": true
+    },
+    {
+      "path": "exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "includedInArchive": true
+    },
+    {
+      "path": "keep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "pid",
+      "bytes": 8,
+      "sha256": "d51fe89b4b0b21d2cd0c8c50356d47c1c37a4e62a61d13ac6cc474f790627d83",
+      "includedInArchive": true
+    },
+    {
+      "path": "run.log",
+      "bytes": 5082,
+      "sha256": "fca4d0bb20b48bece86fa627303b0e363b6ca6d51c0f6215dd3e386598a9a434",
+      "includedInArchive": true
+    },
+    {
+      "path": "start-marker",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "includedInArchive": true
+    },
+    {
+      "path": "timing.env",
+      "bytes": 77,
+      "sha256": "54c837be2e19c6878f0c6e4237599f786fe5b30b073e5a253c8d404c5c63d92e",
+      "includedInArchive": true
+    },
+    {
+      "path": "unit",
+      "bytes": 48,
+      "sha256": "7b2bab21c633e4433af1c56cc27deec06c7d5f4940152104fe7006ceaa4b031c",
+      "includedInArchive": true
+    }
+  ]
+}
