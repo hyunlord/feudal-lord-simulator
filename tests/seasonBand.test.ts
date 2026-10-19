@@ -53,7 +53,7 @@ test("the snapshot: a house's level by its building, the buildings that are not 
       past: [{ alive: false, classBand: "labour" }, { alive: true, leftYear: 1301, classBand: "labour" }, { alive: false, classBand: "gentry" }] },
     population: 56, treasuryCoin: 340,
   } as unknown as Parameters<typeof townSnapshot>[0];
-  assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2, population: 56, coin: 340 });
+  assert.deepEqual(townSnapshot(state), { levels: { "house-1": 2, "house-2": 1 }, buildings: 2, fields: 2, dead: 2, population: 56, coin: 340, wallLeft: 0, wallKind: null });
 });
 
 test("LS1-1: one completion toast a season in lord mode — the first shows, the season's later ones are the band's", () => {
