@@ -14,7 +14,7 @@ import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
 import type { Claim, Estate, EstatesState, Evidence, RightPiece, Suit, SuitStage } from "./estates.types";
-import { advanceEntryThreats } from "./suitDefence";
+import { advanceEntryThreats, suitDefenceActions } from "./suitDefence";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 
@@ -298,8 +298,8 @@ export function suitActions(state: GameState, suitId: string): SuitActions | nul
     refusal: suit.stage !== "enforcing" ? "stage" as const : enforceCost > 0 && treasury < enforceCost ? "treasury" as const : null };
   const nextStageTick = nextSuitStage(suit) === undefined ? null : Math.ceil((suit.stageSince + SEASON) / SEASON) * SEASON;
   const stageCosts: { stage: SuitStage; cost: number }[] = [];
-  for (let stage = nextSuitStage(suit); stage !== undefined && stage !== "judged"; stage = nextSuitStage({ stage, ...(suit.fast === true ? { fast: true as const } : {}) })) {
-    stageCosts.push({ stage, cost: suitStageCost(state, suit, stage) });
+  for (const stage of remainingSuitStages(suit)) {
+    if (stage !== "judged") stageCosts.push({ stage, cost: suitStageCost(state, suit, stage) });
   }
   if (suit.stage !== "closed" && suit.verdict !== "defendant") stageCosts.push({ stage: "enforcing", cost: enforceCost });
   return { evidence, patrons, enforce, nextStageTick, stageCosts };
@@ -311,6 +311,39 @@ const NEXT_STAGE: Readonly<Partial<Record<SuitStage, SuitStage>>> = { filed: "ev
 const FAST_NEXT_STAGE: Readonly<Partial<Record<SuitStage, SuitStage>>> = { filed: "hearing", hearing: "judged" };
 /** The stage after this suit's own (a novel disseisin's is shorter). */
 export const nextSuitStage = (suit: Pick<Suit, "stage" | "fast">): SuitStage | undefined => (suit.fast === true ? FAST_NEXT_STAGE : NEXT_STAGE)[suit.stage];
+
+/** The same remaining track supplies both the cost list and the verdict schedule. */
+function* remainingSuitStages(suit: Pick<Suit, "stage" | "fast">): Generator<SuitStage> {
+  for (let stage = nextSuitStage(suit); stage !== undefined; stage = nextSuitStage({ ...suit, stage })) yield stage;
+}
+
+/**
+ * Earliest verdict on the seasonal track, assuming future fees can be paid. A missed fee can delay it;
+ * this is not a guarantee of funding. State is the completed tick: a due seasonal transition has
+ * already run. Null once no future judgment remains (including settlement).
+ */
+export function suitVerdictTick(state: Pick<GameState, "tick">, suit: Suit): number | null {
+  const stages = [...remainingSuitStages(suit)];
+  if (!stages.includes("judged")) return null;
+  const first = Math.max(Math.ceil((suit.stageSince + SEASON) / SEASON), (Math.floor(state.tick / SEASON) + 1)) * SEASON;
+  return first + (stages.length - 1) * SEASON;
+}
+
+/**
+ * A currently available, stage-specific lord response, not a simulation pause: evidence, patronage,
+ * or possession. Optional concord/yield does not make the automatic hearing await an answer.
+ * Existing action reads own affordability, already-given evidence and patron/hold eligibility.
+ */
+export function suitAwaitsLord(state: GameState, suit: Suit): boolean {
+  if (suit.plaintiff === LORD) {
+    const actions = suitActions(state, suit.id);
+    return actions !== null && (actions.evidence.some(option => option.refusal === null)
+      || actions.patrons.some(option => option.refusal === null) || actions.enforce?.refusal === null);
+  }
+  const actions = suitDefenceActions(state, suit.id);
+  return actions !== null && (actions.evidence.some(option => option.refusal === null)
+    || actions.patrons.some(option => option.refusal === null) || actions.hold.refusal === null);
+}
 
 /** ES-7: the suits' season, at each season's first tick (nothing with no stored estates or no suit going). */
 export function advanceSuits(state: GameState): GameState {
