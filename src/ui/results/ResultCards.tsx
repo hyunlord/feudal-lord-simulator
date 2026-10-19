@@ -31,14 +31,18 @@ function Groups({ groups }: { readonly groups: YearReviewView["relations"] }): R
     <p className="year-review-group-head">{group.heading}</p><List lines={group.lines} /></div>)}</>;
 }
 
-function Frame({ className, label, data, children }: {
+// LS1-17 (the user's ruling 2026-10-19; render-VIS-ls116: the 1316 card's buttons cut at the body's lower edge): the
+// buttons are the card's own last row, outside the scrolling body — always whole, clear of the frame.
+function Frame({ className, label, data, children, actions }: {
   readonly className: string; readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: ReactNode;
+  readonly actions: ReactNode;
 }): ReactElement {
   return (
     <div className="story-modal-backdrop" role="presentation">
       <section className={`story-modal petition-card results-card ${className}`} data-frame="petition" role="dialog" aria-modal="true" aria-label={label} {...data}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         <div className="petition-body results-card-body">{children}</div>
+        <div className="results-card-actions">{actions}</div>
       </section>
     </div>
   );
@@ -48,7 +52,10 @@ export function YearReviewCard({ view, onContinue, onChronicle }: {
   readonly view: YearReviewView; readonly onContinue: () => void; readonly onChronicle: () => void;
 }): ReactElement {
   return (
-    <Frame className="year-review" label={view.title} data={{ "data-year-review": String(view.year), "data-year-source": view.lord ? "engine" : "v1" }}>
+    <Frame className="year-review" label={view.title} data={{ "data-year-review": String(view.year), "data-year-source": view.lord ? "engine" : "v1" }} actions={<>
+      <Button type="button" className="results-card-chronicle" variant="secondary" onPress={() => onChronicle()}>{COPY.year.chronicle}</Button>
+      <Button type="button" className="story-modal-later results-card-continue" variant="primary" onPress={() => onContinue()}>{COPY.year.continue}</Button>
+    </>}>
       <h2>{view.title}</h2>
       {view.empty !== null ? <p className="results-card-empty">{view.empty}</p> : <>
         {view.house.length === 0 ? null : <Part heading={COPY.year.house}><List lines={view.house} /></Part>}
@@ -63,10 +70,6 @@ export function YearReviewCard({ view, onContinue, onChronicle }: {
         {view.community.length === 0 ? null : <Part heading={COPY.year.community}><List lines={view.community} /></Part>}
         {view.town.length === 0 ? null : <Part heading={view.lord ? COPY.year.townYear : COPY.year.town}><List lines={view.town} /></Part>}
       </>}
-      <div className="results-card-actions">
-        <Button type="button" className="results-card-chronicle" variant="secondary" onPress={() => onChronicle()}>{COPY.year.chronicle}</Button>
-        <Button type="button" className="story-modal-later results-card-continue" variant="primary" onPress={() => onContinue()}>{COPY.year.continue}</Button>
-      </div>
     </Frame>
   );
 }
@@ -76,7 +79,8 @@ export function HouseChangeCard({ view, onContinue, onNext }: {
 }): ReactElement {
   const next = view.next;
   return (
-    <Frame className="house-change" label={view.title} data={{ "data-house-change": view.kind, "data-record": view.id }}>
+    <Frame className="house-change" label={view.title} data={{ "data-house-change": view.kind, "data-record": view.id }} actions={
+      <Button type="button" className="story-modal-later results-card-continue" variant={next === null ? "primary" : "secondary"} onPress={() => onContinue()}>{COPY.house.continue}</Button>}>
       <p className="results-card-court">{view.court}</p>
       <header className="results-card-head">
         {view.illustration === null ? null : <div className="results-card-art" aria-hidden="true" style={storyArtStyle(view.illustration, ART_WIDTH)} />}
@@ -92,9 +96,6 @@ export function HouseChangeCard({ view, onContinue, onNext }: {
       {next === null ? null : <Part heading={COPY.house.next}>
         <Button type="button" className="house-change-next" data-next={next.kind === "screen" ? next.screen : "person"} variant="primary"
           onPress={() => onNext(next)}>{next.label}</Button></Part>}
-      <div className="results-card-actions">
-        <Button type="button" className="story-modal-later results-card-continue" variant={next === null ? "primary" : "secondary"} onPress={() => onContinue()}>{COPY.house.continue}</Button>
-      </div>
     </Frame>
   );
 }

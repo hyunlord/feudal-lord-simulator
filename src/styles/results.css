@@ -1,7 +1,10 @@
 /* DEC-CARD (result side): the year's card and the house card (src/ui/results/ResultCards.tsx) — the petition frame's card
    (hudShell.css .petition-card) as wide as the decision card (decisionCard.css), its height its content's (the body
    scrolls inside on a short view). Text 13–14 px, nothing under 12 (LM-R2 floor). */
-.petition-card.results-card { width: min(880px, 96vw); min-height: 0; }
+.petition-card.results-card { width: min(880px, 96vw); min-height: 0; grid-template-rows: minmax(0, 1fr) auto; }
+/* LS1-17: the buttons are the card's last row, outside the scrolling body (whole, clear of the frame's lower edge); painted
+   above the frame layer as the body is (QA-034). */
+.results-card > .results-card-actions { position: relative; padding: 8px 0 6px; }
 .results-card-body { gap: 10px; }
 .results-card-body h2 { margin: 0; font-size: 18px; line-height: 1.3; }
 .results-card-court, .results-card-from { margin: 0; font-size: 12px; line-height: 1.4; color: var(--palette-ink-light); }

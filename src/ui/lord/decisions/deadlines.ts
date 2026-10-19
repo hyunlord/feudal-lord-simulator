@@ -1,6 +1,8 @@
 import type { GameState } from "../../../engine/engine.types";
 import { SEASON_TICKS } from "../../../engine/eventSchedule";
 import { famineStatus, openPetitions, politicalPetitionExpiryTick } from "../../../engine/politics";
+import { estatesOf } from "../../../engine/estates";
+import { suitAwaitsLord, suitVerdictTick } from "../../../engine/estateSuits";
 import { registryEntry } from "../../../engine/registry";
 import { openHomePetitions } from "../../lordCardsModel";
 import { openRegistryCards } from "../../registryCardModel";
@@ -25,6 +27,9 @@ export interface HeldDeadline {
   readonly dueTick: number;
   /** Whether its lapse does something (the 8-kind table's "기한이 지나면"): the auto-pause tells only these. */
   readonly effect: boolean;
+  /** LS1-17: a suit against the lord counts to its verdict (engine B's suitVerdictTick, then `dueTick`), and is near
+   * only while its stage waits for his answer (suitAwaitsLord) — never by the season alone. */
+  readonly verdict?: Readonly<{ awaits: boolean }>;
 }
 
 /**
@@ -42,6 +47,15 @@ const EFFECT: Readonly<Record<Exclude<DeadlineKind, "registry">, boolean>> = {
 export function heldDeadlines(state: GameState): readonly HeldDeadline[] {
   const out: HeldDeadline[] = [];
   for (const { matter, chipId } of lordMatterChips(state)) {
+    if (matter.kind === "suit_defence") {
+      // LS1-17 (engine B's suit reads, trunk e9a227e7): the verdict's planned tick (it moves if a fee goes unpaid; so does
+      // the chip), none once no judgment remains.
+      const suit = estatesOf(state).suits.find(entry => entry.id === matter.id);
+      const verdict = suit === undefined ? null : suitVerdictTick(state, suit);
+      if (suit !== undefined && verdict !== null)
+        out.push({ chipId, kind: "suit_defence", subjectId: matter.id, dueTick: verdict, effect: EFFECT.suit_defence, verdict: { awaits: suitAwaitsLord(state, suit) } });
+      continue;
+    }
     if (matter.dueTick === null || matter.kind === "contested") continue;
     out.push({ chipId, kind: matter.kind, subjectId: matter.id, dueTick: matter.dueTick, effect: EFFECT[matter.kind] });
   }
@@ -78,6 +92,11 @@ export interface ChipDue {
  */
 export function chipDues(state: GameState): ReadonlyMap<string, ChipDue> {
   return new Map(heldDeadlines(state).map(due => {
+    if (due.verdict !== undefined) {
+      // The seasons to the verdict's (it falls on a season's first tick), at least one.
+      const seasons = Math.max(1, Math.floor(due.dueTick / SEASON_TICKS) - Math.floor(state.tick / SEASON_TICKS));
+      return [due.chipId, { left: DEADLINE_COPY.toVerdict(seasons), short: DEADLINE_COPY.toVerdict(seasons), near: due.verdict.awaits, dueTick: due.dueTick }] as const;
+    }
     if (due.dueTick < state.tick) return [due.chipId, { left: DEADLINE_COPY.past, short: DEADLINE_COPY.short.past, near: true, dueTick: due.dueTick }] as const;
     const seasons = lastSeasonOf(due.dueTick) - Math.floor(state.tick / SEASON_TICKS) + 1;
     const near = inLastSeason(state.tick, due.dueTick);
