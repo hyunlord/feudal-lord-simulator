@@ -21,7 +21,7 @@ export function relationStageBeats(state: GameState): readonly StoryBeat[] {
     const name = factionWord(state, crossing.factionId);
     const title = COPY.crossed(name, COPY.names[String(crossing.from) as keyof typeof COPY.names], COPY.names[String(crossing.to) as keyof typeof COPY.names]);
     return { id: `stage:${crossing.factionId}:${crossing.year}:${crossing.season}`, kind: "relation_stage", illustration: null, tile: null, decision: null,
-      title, line: causeOf(state, crossing), facts: [], advice: COPY.advice };
+      title, chip: COPY.chip(crossing.factionId, name, COPY.names[String(crossing.to) as keyof typeof COPY.names]), line: causeOf(state, crossing), facts: [], advice: COPY.advice };
   });
 }
 

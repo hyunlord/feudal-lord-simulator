@@ -1,5 +1,7 @@
 import type { GameState } from "../../engine/engine.types";
 import { pauseReasons, type PauseEvent } from "../../engine/autoPause";
+import { estatesOf } from "../../engine/estates";
+import { suitAwaitsLord } from "../../engine/estateSuits";
 import { lordMattersDue, type LordMatterDue } from "../../engine/lordDue";
 import { stateCalendar } from "../../engine/scenarioState";
 import { lordMode } from "../../engine/townAgency";
@@ -64,7 +66,10 @@ export function autoPauseStep(memory: AutoPauseMemory, state: GameState, previou
   const events: AutoPauseItem[] = pauseReasons(memory.baseline, state).map(event => ({ kind: "event", key: pauseEventKey(event), event }));
   // A contested inheritance comes with its own ledger line (an inheritance event): one line for the one matter.
   const contested = events.some(item => item.kind === "event" && item.event.template === "marriage.contested");
-  const due = lordMattersDue(state);
+  // LS1-17 (the user's ruling 2026-10-19): a suit against the lord stops only at a stage that waits for his answer
+  // (engine B's suitAwaitsLord; a hearing does not) — a stage that needs none is not urgent. Not counted till then, so a
+  // stage that comes to wait for him (an answer he can now afford) still stops once.
+  const due = lordMattersDue(state).filter(matter => matter.kind !== "suit_defence" || suitWaits(state, matter.id));
   // GROW-BLOCK (engine exception — render to take over): an audit's and an escalated petition's own events stop already.
   const matters: AutoPauseItem[] = due.filter(matter => matter.kind !== "audit" && matter.kind !== "estate_petition")
     .filter(matter => !memory.matters.has(matterKey(matter)) && !(contested && matter.kind === "contested"))
@@ -75,6 +80,12 @@ export function autoPauseStep(memory: AutoPauseMemory, state: GameState, previou
   const next = { baseline: state, matters: new Set(due.map(matterKey)), near: new Set(near.map(deadlineKey)),
     seen: fresh.length === 0 ? memory.seen : new Set([...memory.seen, ...fresh.map(item => item.key)]) };
   return { memory: next, fresh };
+}
+
+/** Whether the suit's stage waits for the lord's answer (engine B's read; a suit gone does not). */
+function suitWaits(state: GameState, suitId: string): boolean {
+  const suit = estatesOf(state).suits.find(entry => entry.id === suitId);
+  return suit !== undefined && suitAwaitsLord(state, suit);
 }
 
 /** The season a state stands in (the stops are counted by it). */

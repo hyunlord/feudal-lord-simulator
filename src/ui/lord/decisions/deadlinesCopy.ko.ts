@@ -54,6 +54,8 @@ export const DEADLINE_COPY = {
   short: { thisSeason: "이번 철", seasons: (seasons: number) => `${seasons}철`, past: "기한 지남" },
   heldFoldShort: (prefix: string, count: number) => `${HELD_FOLD_SHORT[prefix] ?? "결정"} ${count}건`,
   thisSeason: "이번 철까지",
+  /** LS1-17: a suit against the lord — the seasons to its verdict (engine B's suitVerdictTick), on the chip and its card. */
+  toVerdict: (seasons: number) => `판결까지 ${seasons}철`,
   past: "기한 지남",
   /** LS1-10: a held chip past its deadline, the engine yet to settle it (the screen keeps its last look). */
   pastSettling: "기한 지남 — 철 말에 정리",
