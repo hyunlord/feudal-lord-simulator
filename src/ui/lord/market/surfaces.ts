@@ -59,11 +59,9 @@ export const MARKET_SURFACES: readonly SurfaceRow[] = [
     contentSlot: ".chapter-page-body", scrollParts: [".chapter-page-scroll"], scene: marketScene("market-proclaimed", "&story-delay=20000"),
     open: [{ wait: ".chronicle-page", timeout: 90_000 }, { pause: 800 }], requires: ["h2", ".chronicle-keep"],
     data: "chapter 1's page in the lord's slice, a season after the market charter's proclamation: 1300–1317 as the chronicle keeps it" },
-  // The scene's Esc is only for the welcome and a pause menu (GEO-D2), so the famine's chip needs no delay past the setup:
-  // the hamlet famine rows' 5 s delay and an ordinary 30 s first wait (was GEO-D1's 8 s / 90 s).
-  { id: "hud.event-card.famine.market", root: ".event-card[data-chip-id^='famine:']", frame: "css", scene: marketScene("market-proclaimed", "&story-delay=5000"),
-    open: chipCard("famine:"), scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"],
-    data: "a season after the proclamation, the great famine's chip (1315–17, the bot's answer given) as its card: its line, until when" },
+  // LS1-16 (the user's ruling 2026-10-19; REMOTE review, RR22): hud.event-card.famine.market retired — its scene's tick
+  // (70,266) is after the famine's end (the engine's endTick 69,500), so with the famine's chip leaving at its end there is
+  // no surface to open; the answered famine card stays measured by hud.event-card.famine-answered (the hamlet set).
   // The treaty's parts draw once their pictures load (uiPartArt), and the frame's inset moves the clauses as they do: the
   // row waits for them (on a loaded DGX one cell was measured before and painted after — render-MARKET-geometry-f09f0de).
   { id: "lord.negotiation.market", ...HOST, scene: YEARS, requires: [".lord-neg-head h3"],
