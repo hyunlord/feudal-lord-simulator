@@ -102,6 +102,10 @@ guardrail)
     console.log(`human path: exit ${humanExit} ${humanSeconds}s ${humanTotals}`);
     process.exit(rows.every(r => r.exit === 0) && humanExit === 0 ? 0 : 1);
   ' "$OUT/guardrail" "$seeds"
+  rc=$?
+  # RR30: each seed against the trunk's expected end states (seeds/trunk-hashes.json) — printed, not judged.
+  node scripts/guardrailTrunkHashes.mjs "$OUT/guardrail" || echo "trunk hashes: not compared (the comparison failed)"
+  exit "$rc"
   ;;
 
 browser)

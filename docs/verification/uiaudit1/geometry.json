@@ -1,14 +1,14 @@
 {
  "schema": 1,
- "run": "nightly-GEOMETRY-1019-701518c",
- "commit": "701518cddecfd076f4136d584594d7181cc59e95",
+ "run": "nightly-GEOMETRY-1021-ae3dee1",
+ "commit": "ae3dee1b5198589471e863a65589d97c97f4dea5",
  "dirty": false,
  "full": true,
  "axesNarrowed": false,
- "inputs": 6219,
- "inputHash": "d2808c9b68b6180e57506dc4aba0892d39a839660c7844583dee1792abc1655f",
- "measuredAt": "2026-10-18T16:00:24.799Z",
- "report": "docs/verification/uiaudit1/geometry/nightly-GEOMETRY-1019-701518c/geometry.json",
+ "inputs": 6220,
+ "inputHash": "5038306d6c31d0f1382e19c7cb1c9494412a32c2e677c4a2afbb9d751ced22f4",
+ "measuredAt": "2026-10-20T16:00:54.065Z",
+ "report": "docs/verification/uiaudit1/geometry/nightly-GEOMETRY-1021-ae3dee1/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -26,9 +26,9 @@
    "extreme"
   ]
  },
- "rows": 245,
- "conditions": 4622,
- "measured": 4622,
+ "rows": 244,
+ "conditions": 4602,
+ "measured": 4602,
  "failures": 0,
  "unopened": 0,
  "unreachable": [
@@ -37,7 +37,7 @@
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 1111,
+ "warnings": 1112,
  "byCheck": {
   "outside": 0,
   "overflow": 0,
@@ -1010,11 +1010,6 @@
    "unopened": 0,
    "byCheck": {}
   },
-  "hud.event-card.famine.market": {
-   "failures": 0,
-   "unopened": 0,
-   "byCheck": {}
-  },
   "lord.negotiation.market": {
    "failures": 0,
    "unopened": 0,
@@ -1278,9 +1273,9 @@
   "chromium": "151.0.7922.34"
  },
  "measuredInputs": {
-  "file": "docs/verification/uiaudit1/geometry/nightly-GEOMETRY-1019-701518c/inputs.json",
-  "sha256": "5685075d794aced8a20d091eb473d7cc055ab00f5edf3339805ad0ea782b8e11",
-  "files": 9345,
+  "file": "docs/verification/uiaudit1/geometry/nightly-GEOMETRY-1021-ae3dee1/inputs.json",
+  "sha256": "90a8525e39416ce539e2f171cb989ac39dfd1e6290d4d643d16a8da2737aab08",
+  "files": 9346,
   "dirs": 0,
   "lists": 228,
   "missing": 102,
