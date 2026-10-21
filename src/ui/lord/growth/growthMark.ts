@@ -27,6 +27,8 @@ export type GrowthView = Readonly<{
   /** Since when the stop holds (null while there is no stop). */
   since: string | null;
   lever: Readonly<{ line: string; button: string | null; action: GrowthLeverAction | null }>;
+  /** LS1-19: the wall the town's works are on — its sites', else the era's (a stone town's is the stone wall). */
+  wallKind: "palisade" | "stone";
 }>;
 
 /**
@@ -39,7 +41,8 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   if (!lordMode(state)) return null;
   const block = read;
   if (block === null) return null;
-  const reason = GROWTH_COPY.reason(block.reason, block.detail, lastWallProgress());
+  const wallKind = wallKindNow(state);
+  const reason = GROWTH_COPY.reason(block.reason, block.detail, lastWallProgress(), wallKind);
   // LS1-9: the engine's since is the last close the town grew at (its houses or people above the close before), so the
   // closes it has not grown at are the whole seasons since — counted whole, a band read a tick after its close counts
   // the same as one read at it (render-VIS-ls17: 1304's summer said 정체 a season early at 2,001 ticks > 2,000).
@@ -50,7 +53,7 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   const sinceTick = block.since;
   const since = !held ? null : sinceTick !== null ? GROWTH_COPY.panel.since(yearOf(state, sinceTick), SCENARIO_COPY.seasons[seasonOf(sinceTick)])
     : run.known && run.start !== null ? GROWTH_COPY.panel.since(run.start.year, SCENARIO_COPY.seasons[run.start.season as 0 | 1 | 2 | 3]) : GROWTH_COPY.panel.sinceUnknown;
-  return { block, reason, mark, years: held ? years : null, since, lever: leverOf(state, block, reason) };
+  return { block, reason, mark, years: held ? years : null, since, lever: leverOf(state, block, reason), wallKind };
 }
 
 function leverOf(state: GameState, block: GrowthBlock, reason: string): GrowthView["lever"] {
@@ -62,6 +65,14 @@ function leverOf(state: GameState, block: GrowthBlock, reason: string): GrowthVi
   const copy = GROWTH_COPY.lever[lever.kind];
   const waits = request !== null && (lever.kind === "answer_request" || request.kind === "order_timber");
   return { line: copy.line, button: waits ? copy.button : null, action: waits ? "request" : null };
+}
+
+/** LS1-19: the wall the works are on: a stone wall's sites, else a palisade's, else the era's (the stone town's wall). */
+export function wallKindNow(state: Pick<GameState, "constructionSites" | "era">): "palisade" | "stone" {
+  const sites = state.constructionSites ?? [];
+  if (sites.some(site => site.kind === "stone_wall_segment")) return "stone";
+  if (sites.some(site => site.kind === "palisade_segment")) return "palisade";
+  return state.era === "stone_town" ? "stone" : "palisade";
 }
 
 const yearOf = (state: GameState, tick: number) => scenarioOf(state).startYear + Math.floor(tick / YEAR);

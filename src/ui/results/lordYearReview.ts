@@ -6,7 +6,8 @@ import { lordMode } from "../../engine/townAgency";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { chronicleDate, yearOfTick } from "../chronicle/chronicleScreenModel";
 import { recordIndex } from "../chronicle/historyIndex";
-import { townYearEnds, wallProgressAt } from "../lord/seasonBand/townCloses";
+import { townYearEnds, wallKindAt, wallProgressAt } from "../lord/seasonBand/townCloses";
+import { wallKindNow } from "../lord/growth/growthMark";
 import { GROWTH_COPY } from "../lord/growth/growthCopy.ko";
 import { growthYear } from "../lord/growth/growthTrack";
 import { moneyFull } from "../money.ko";
@@ -83,7 +84,7 @@ export function lordYearReview(state: GameState, year: number): YearReviewView {
   if (minds.length > 0) threads.push({ key: "steward-minds", heading: copy.stewardMinds, lines: capped(minds) });
   const community = review.communityBuilt.map(entry => copy.dated(chronicleDate(state, entry.tick), historySummary({ template: "consequence", params: entry.params }, state)));
   // LS1-5: the town's year start → end when the screen saw both (its season closes), else the engine's seasons' sums.
-  const town = [...(lordTownYear(year) ?? yearTown(state, year)), ...growthYearLine(year)];
+  const town = [...(lordTownYear(year) ?? yearTown(state, year)), ...growthYearLine(year, state)];
   const quiet = house.length === 0 && decisions.length === 0 && steward.length === 0 && threads.length === 0 && community.length === 0;
   return { year, title: copy.title(year), lord: true, house, decisions: cappedDecisions(decisions), steward: cappedDecisions(steward), answers: [], relations: [], receipts: [], threads, community: capped(community),
     town, empty: quiet && town.length === 0 ? copy.nothing : null };
@@ -112,7 +113,10 @@ export function lordTownYear(year: number): readonly string[] | null {
 }
 
 /** LS1-3 / LS1-5: the year's stop of the town's growth — the season closes the screen saw it held at, and its last cause. */
-export function growthYearLine(year: number): readonly string[] {
+export function growthYearLine(year: number, state?: Pick<GameState, "constructionSites" | "era">): readonly string[] {
   const held = growthYear(year);
-  return held.seasons === 0 || held.last === null ? [] : [GROWTH_COPY.year(held.seasons, GROWTH_COPY.reason(held.last.reason!, held.last.detail, wallProgressAt(held.last.year, held.last.season)))];
+  if (held.seasons === 0 || held.last === null) return [];
+  // LS1-19: the wall of that close (its snapshot), else the town's now.
+  const wallKind = wallKindAt(held.last.year, held.last.season) ?? (state === undefined ? "palisade" : wallKindNow(state));
+  return [GROWTH_COPY.year(held.seasons, GROWTH_COPY.reason(held.last.reason!, held.last.detail, wallProgressAt(held.last.year, held.last.season), wallKind))];
 }

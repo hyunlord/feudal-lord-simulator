@@ -13,7 +13,7 @@ const josa = (word: string, withFinal: string, without: string) => {
 
 /** A big decision's subject, by the engine's decision kind (a petition's by its own subject words). */
 export const DECISION_SUBJECTS: Readonly<Record<string, string>> = {
-  famine_response: "대기근 대응", petition_response: "청원에 한 답", market_town: "시장도시 선포", stone_town: "석벽 선포",
+  famine_response: "대기근 대응", petition_response: "청원에 한 답", market_town: "시장도시 선포", stone_town: "석벽 도시 선포",
   rebuild: "불탄 집 다시 짓기", wall_expand: "목책 넓히기", drainage: "배수 공사", estate_policy: "영지 방침",
   project_subsidy: "장려금", market_dues: "시장 부담",
 };

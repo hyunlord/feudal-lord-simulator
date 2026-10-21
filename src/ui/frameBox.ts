@@ -44,6 +44,11 @@ export function frameArt(kind: FrameKind, scale = TOKENS[kind].scale, variant?: 
   return `url("${url(art.url)}") ${top} ${right} ${bottom} ${left} fill / ${sidesPx(times(art.width, scale / token.scale))} / 0 ${token.repeat}`;
 }
 
+/** LS1-19: the frame's picture (its 9-slice's whole image), for waiting on it before the surface shows. */
+export function frameArtUrl(kind: FrameKind): string {
+  return url(TOKENS[kind].url);
+}
+
 /** A frame layer (an absolutely placed sibling span): it covers the surface's border box (its parent's padding box
  * grown by the safe border) and draws the frame there. */
 export function frameLayerStyle(kind: FrameKind, scale = TOKENS[kind].scale): CSSProperties {

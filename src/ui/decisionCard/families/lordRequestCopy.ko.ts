@@ -9,6 +9,9 @@ export const LORD_REQUEST_STAKE: Readonly<Record<LordRequest["kind"], string>> =
   order_timber: "도시가 지을 것에 쓸 목재가 걸려 있습니다.",
 };
 
+/** LS1-19: the proclamation asked in the market town — the stone town's stake. */
+export const PROCLAIM_STONE_TOWN_STAKE = "도시가 석벽을 두른 석벽 도시로 올라서는 일이 걸려 있습니다. 선포하면 석벽 공사가 시작되고, 그 공사에 도시의 일손과 자재가 듭니다.";
+
 export const LORD_REQUEST_CARD_COPY = {
   /** A request has no deadline (TA-7): it waits until the lord grants it or the town no longer needs it. */
   deadline: "기한은 없습니다. 미뤄도 요청은 그대로 남습니다.",

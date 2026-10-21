@@ -288,7 +288,7 @@ function growthBeats(state: GameState): readonly StoryBeat[] {
   const view = growthView(state, run);
   if (view === null || view.mark === null) return [];
   const key = run.start === null ? "seen" : `${run.start.year}:${run.start.season}`;
-  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason), chip: GROWTH_COPY.chip.short(view.block.reason, view.block.detail),
+  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason), chip: GROWTH_COPY.chip.short(view.block.reason, view.block.detail, view.wallKind),
     line: view.since ?? view.reason, facts: [view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
 }
 

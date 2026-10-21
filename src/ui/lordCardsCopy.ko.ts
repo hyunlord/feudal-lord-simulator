@@ -109,6 +109,9 @@ export const LORD_CARDS_COPY = {
   request: {
     proclaim_era: { title: "시장도시 선포를 기다립니다", demand: "도시가 목책을 두르고 시장도시로 선포해 달라고 청합니다. 선포하면 장이 서고 도시가 더 자랍니다.",
       grant: "시장도시를 선포한다" },
+    /** LS1-19: the same request in the market town — the next era is the stone town's (the request names the era to come). */
+    proclaim_stone_town: { title: "석벽 도시 선포를 기다립니다", demand: "도시가 석벽을 두르고 석벽 도시로 선포해 달라고 청합니다. 선포하면 석벽 공사가 시작됩니다.",
+      grant: "석벽 도시를 선포한다" },
     set_wall_construction_priority: { title: "성벽 공사를 먼저", demand: "도시가 성벽 공사에 일손과 자재를 먼저 돌려 달라고 청합니다.",
       grant: "성벽 공사를 먼저 하게 한다" },
     order_timber: { title: "목재 주문", demand: (amount: number) => `도시가 시장 상인에게 목재 ${amount}개를 주문해 달라고 청합니다.`,

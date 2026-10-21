@@ -8,7 +8,9 @@ export const LINGER_MS = 60_000;
 const MAX_CHIPS = 3;
 /** Beats whose chip goes the moment the beat is over: a decision once answered; the year's results chip (LS1-4) once the
  * year turns — the year card takes the year before, so the rail holds one results chip at a time (LS1-6). */
-const NO_LINGER: ReadonlySet<StoryBeat["kind"]> = new Set(["lord_decision", "decision_trace"]);
+// LS1-19: a town's request too — once the engine drops it (answered, or its era proclaimed) its chip goes (render-VIS-checkup33:
+// "시장도시 선포를 기다립니다" lingered after the stone town's proclamation).
+const NO_LINGER: ReadonlySet<StoryBeat["kind"]> = new Set(["lord_decision", "decision_trace", "lord_request"]);
 
 /**
  * The chips shown now, at most MAX_CHIPS: each beat seen `delayMs` ago, not put away, still current or within its minute

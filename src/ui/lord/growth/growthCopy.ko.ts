@@ -26,14 +26,16 @@ export const GROWTH_COPY = {
   band: (years: number | null, reason: string) => years === null ? `마을이 자라지 않고 있습니다 — ${reason}` : `마을이 ${years}년째 자라지 않습니다 — ${reason}`,
   /** The cause, by the engine's reason and detail. LS1-16: the wall's works that went on since the close before (its
    * segments left fewer) are said as works going on, not stopped — the cause stays the engine's. */
-  reason: (reason: string, detail: string | null, wall: Readonly<{ left: number; kind: "palisade" | "stone" }> | null = null): string => {
+  reason: (reason: string, detail: string | null, wall: Readonly<{ left: number; kind: "palisade" | "stone" }> | null = null,
+    /** LS1-19: the wall the works are on (its sites', else the era's), so a stopped stone wall says 성벽. */
+    wallKind: "palisade" | "stone" = wall?.kind ?? "palisade"): string => {
     if (reason === "wall_building" && wall !== null) return `${WALL_NAME[wall.kind]} 공사 중 · ${wall.left}구간 남음`;
+    if (reason === "wall_building") return `${WALL_NAME[wallKind]} 공사가 멈춰 있습니다`;
     switch (reason) {
       case "era_condition": return `시장도시 선포의 조건이 모자랍니다(${nameOf(detail)})`;
       case "charter_search": return "마을이 목책을 두를 자리를 찾고 있습니다";
       case "wall_not_found": return "마을이 목책 자리를 찾지 못하고 있습니다";
       case "charter_asked": return "마을의 청이 영주의 답을 기다립니다";
-      case "wall_building": return "목책 공사가 멈춰 있습니다";
       case "food": return "먹을 것이 모자란 집이 있습니다";
       case "service_missing": return `집이 다음 단계로 가려면 ${withParticle(nameOf(detail), "이/가")} 있어야 합니다`;
       case "service_outside": return `${withParticle(nameOf(detail), "이/가")} 너무 멀어 집이 다음 단계로 가지 못합니다`;
@@ -60,7 +62,8 @@ export const GROWTH_COPY = {
   /** The chip carries the cause in its title, so the rail says why while the stop holds (LS1-6: the cause seen). */
   chip: { title: (reason: string) => `마을이 자라지 않습니다 — ${reason}`,
     /** LS1-16: the rail's short form — "정체 · " and the cause's short word (a service: the building's name). */
-    short: (reason: string, detail: string | null) => `정체 · ${REASON_SHORT[reason] ?? (reason === "service_missing" || reason === "service_outside" ? nameOf(detail) : "까닭")}`, open: "까닭 보기", advice: "상태 띠의 인구 칸을 누르면 같은 까닭과 영주가 할 일을 다시 볼 수 있습니다." },
+    short: (reason: string, detail: string | null, wallKind: "palisade" | "stone" = "palisade") => `정체 · ${reason === "wall_building" ? `${WALL_NAME[wallKind]} 공사`
+      : REASON_SHORT[reason] ?? (reason === "service_missing" || reason === "service_outside" ? nameOf(detail) : "까닭")}`, open: "까닭 보기", advice: "상태 띠의 인구 칸을 누르면 같은 까닭과 영주가 할 일을 다시 볼 수 있습니다." },
   /** The year card's line: the seasons the screen saw the town held, and the last cause. */
   year: (seasons: number, reason: string) => `자라지 못한 철 ${seasons} — ${reason}`,
 } as const;
