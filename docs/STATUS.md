@@ -956,7 +956,7 @@
 
 ## 다음 작업
 
-- **STONE-1a — 완료, 본선 병합**([보고서](verification/stone-1a/REPORT.md), 결정 STONE1A-1~2): 영주 모드에서 성벽이 성 밖 건물을 성 안과 길로 끊으면 철 끝에 성문을 연다(덩어리마다 하나, 추가 성문 합쳐 3개까지). seed 32 성벽 1324 완공, 끝 인구 750 → 768. 석조 도시 20·768 19, 가드레일 해시 본선과 같음.
+- **STONE-1a — 완료, 본선 병합**([보고서](verification/stone-1a/REPORT.md), 결정 STONE1A-1~3·SAVE-57): 영주 모드에서 성벽이 성 밖 건물을 성 안과 길로 끊으면 철 끝에 성문을 연다(성벽이 닫힌 뒤 첫 철 끝은 건너뜀, 덩어리마다 하나, 추가 성문 합쳐 3개까지). 저장 v57 `palisade.closedTick`. seed 32 성벽 1324 완공, 끝 인구 750 → 768. 석조 도시 20·768 19, 가드레일 해시 본선과 같음. 다음: FOOD-RE 진단.
 - **STONE-1 ⓑ — 완료, 본선 병합**(결정 STONE1-1~2): 읽기 함수 `wallStallCause` — 성벽 공사장이 `reserve_held`인데 자재가 길이 닿지 않는 건물에 있으면 `stock_unreachable`. 화면 문구는 렌더 A(STONE-1-R, [요청](requests/render-wall-stall-cause.md)). 다음: STONE-1a(둘째 성문). CHURCH-CAP 착륙 확인됨(8c6412f71, 사용자 2026-10-21). 판정 표에 끝 인구 줄(JUDGE-POP).
 - **SUBSIDY-CLOTH(엔진 몫) — 완료, 본선 병합**(결정 SUBC-1): 순수 함수 `subsidyEffect(state, kind)` — 1364 전 직물 넷은 "아직 아님(1364년부터)", 그 밖은 효과 있음. 화면은 렌더 A에 넘김(SUBSIDY-CLOTH-R, [요청](requests/render-subsidy-cloth.md)).
 - **CHURCH-CAP — 완료, 본선 병합**([보고서](verification/church-cap/REPORT.md), 결정 CAP-1~2): 영주 모드에서 범위 밖 집이 있고 두 철 넘게 자라지 않으면 교회 상한 +1(최대 3). seed 25가 1318 셋째 교회로 768, 768 도달 18 → 19, 석조 도시 20 유지, 가드레일 해시 본선과 같음.
@@ -985,7 +985,7 @@
 
 ## 알려진 문제
 
-- **성벽 놓기 때 성문 자리가 성 밖 길을 자주 놓침(2026-10-21)**: STONE-1a 판에서 성벽이 닫히는 철에 40 seed 가운데 여섯(1·22·32·34·36·37)이 성 밖 건물과 성 안이 길로 끊겨 성문이 열렸다. 본선 판에서는 32·36이 해마다 첫 틱 기록에 끝까지 끊긴 채였다(seed 32는 하나뿐인 성문이 강 쪽). 영주 모드는 STONE-1a가 철 끝에 성문을 연다. 샌드박스와 성벽 놓기 규칙(WALL-PROTO, 두 모드)은 그대로 — 고칠 근거([STONE-1a](verification/stone-1a/REPORT.md)).
+- **성벽 놓기 때 성문 자리가 성 밖 길을 자주 놓침(2026-10-21)**: STONE-1a 판에서 성벽이 닫히는 철에 40 seed 가운데 여섯(1·22·32·34·36·37)이 성 밖 건물과 성 안이 길로 끊겨 성문이 열렸다. 본선 판에서는 32·36이 해마다 첫 틱 기록에 끝까지 끊긴 채였다(seed 32는 하나뿐인 성문이 강 쪽). 영주 모드는 STONE-1a가 철 끝에 성문을 연다. 샌드박스와 성벽 놓기 규칙(WALL-PROTO, 두 모드)은 그대로 — 근본 고침은 WALL-GATE([STONE-1a](verification/stone-1a/REPORT.md)).
 - **석조 도시 창고 반출(③)·몫 상한(④)**: 상한에 찬 seed 23·32·33에서 1325–1330 모자란 철 없음(STONE-1a 뒤) — 알려진 문제로 둔다([STONE-SINK](verification/stone-sink/REPORT.md)).
 - **직물 시점 전 직물 건물 보조금이 아무 일도 하지 않음(2026-10-21)**: CLOTH-1 뒤 영주가 1364 전에 직조공 집·축융 방앗간·염색집·텐터 틀에 보조금을 걸어도 사업이 서지 않고 돈도 나가지 않는다. 보조금 화면은 여전히 그 넷을 낸다(`SUBSIDY_KINDS` = `OPPORTUNITY_KINDS`). 결정 INERT-PIN-1. 엔진 몫은 SUBSIDY-CLOTH로 끝났다(`subsidyEffect`, SUBC-1). 화면의 비활성·까닭은 렌더 A(SUBSIDY-CLOTH-R, [요청](requests/render-subsidy-cloth.md)).
 - **`test:changed`가 원본을 읽는 시험을 못 고름(2026-10-21)**: `tests/engineBTlinkOutcomeEvidence.test.ts`는 검토 핀의 원본을 `readFileSync`로 읽어, 그 원본이 바뀌어도 골라지지 않는다(`sourceScanTests.mjs`에 없음). 검사 규칙 변경이라 REMOTE 검토가 필요하다(RR22).
