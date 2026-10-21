@@ -3,6 +3,7 @@ import { advanceTrace } from "./decisionTrace";
 import { lordIntakeRules } from "./recovery";
 import { advanceStuckStock } from "./stuckStock";
 import { advanceTownAgency, recordSeasonGrowth } from "./townAgency";
+import { openCutOffGates } from "./cutOffGates";
 import { advanceTrades } from "./trades";
 import { advanceRegistry } from "./registry";
 import { advanceTimberTrade } from "./timberTrade";
@@ -294,12 +295,13 @@ export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   // FIX-11 (SK-3): the stuck-stock since-ticks after the tick's moves.
+  // STONE-1a: at a season's close, lord mode's gates for a town its wall cut in two, before the town's week.
   // LM-E1 (TA-3): lord mode's town agency, each week, after the tick's moves (nothing without `state.agency`).
   // LM-E4 (SW-7): the off-map estates' seasons and Michaelmas, after the diplomacy (nothing until the lord holds one).
   // LM-E5 (LG-3): then the land's own changes (footfall, footpaths, fallow, regrowth).
   // LM-E6a (TR-4…TR-8): lord mode's trades after the town agency — the season's trades and the carters' haulage.
   // LM-E9 (ER-3, ER-7): then the registry's season — terms at the year's turn, lapses, the season's offer.
-  return advanceTrace(state, advanceHistory(state, advanceFactionActs(advanceRegistry(advanceTrades(recordSeasonGrowth(advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  return advanceTrace(state, advanceHistory(state, advanceFactionActs(advanceRegistry(advanceTrades(recordSeasonGrowth(advanceTownAgency(openCutOffGates(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceWarTick(advanceLand(advanceStewardship(advanceDiplomacy(advanceSuits(advanceNeighbourRules(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))))))))),
-  ))))))))))));
+  )))))))))))));
 }

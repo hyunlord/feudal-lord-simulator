@@ -1,3 +1,4 @@
+import { PRESSURE_BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { palisadeProtectionForBuilding } from '../geometry/palisadeProtection';
 import { getTile, type TileCoordinate } from '../world/grid';
@@ -77,4 +78,15 @@ export function cutOffGateChoices(state: GameState, room: number): readonly Tile
     if (best !== undefined) chosen.push(best.point);
   }
   return chosen;
+}
+
+/** STONE-1a: the extra gates (the wall's own included) stop here — a guard against runaway openings, not a count. */
+export const CUT_OFF_GATES_TOTAL_MAX = 3;
+
+/** STONE-1a: at each season's close in lord mode, the gates a cut-off town needs, while its extra gates stay at most three. */
+export function openCutOffGates(state: GameState): GameState {
+  const wall = state.palisade;
+  if (state.agency === undefined || wall === null || state.tick <= 0 || state.tick % PRESSURE_BALANCE.seasonTicks !== 0) return state;
+  const gates = cutOffGateChoices(state, CUT_OFF_GATES_TOTAL_MAX - (wall.additionalGates?.length ?? 0));
+  return gates.length === 0 ? state : { ...state, palisade: { ...wall, additionalGates: [...(wall.additionalGates ?? []), ...gates] } };
 }
