@@ -1,0 +1,49 @@
+{
+  "description": "The guardrail's expected end states on the trunk, seeds 1-5 (decision RR30): one list, the one every guardrail run compares with. It changes only with an accepted change that moves the sandbox (two-mode) state, in the same commit as that change's decision row, and each change is a row in updates.",
+  "seeds": {
+    "1": {
+      "finalStateSha256": "4acbfbf73150c374662e4c0ad98c526652ae04ddc2402d48118b50aeb8f122b2",
+      "tick": 372667,
+      "victoryTick": 100686,
+      "since": "096eb86 GROW-BLOCK-2a (baseline-096eb86)"
+    },
+    "2": {
+      "finalStateSha256": "3d768a2009ecf6b6f6bc6c9ff9eb3d1ba7c8e448e1db57df2547439969725f53",
+      "tick": 281575,
+      "victoryTick": 84756,
+      "since": "cf6b2053 WALL-PROTO (decision WALLP-3; baseline-096eb86 had 35b34c8c…)"
+    },
+    "3": {
+      "finalStateSha256": "33b3d88a225ba3998eb8e0eae348ea30da62b9109dbcc7141a4a3ade4f7a51a7",
+      "tick": 299309,
+      "victoryTick": 87500,
+      "since": "096eb86 GROW-BLOCK-2a (baseline-096eb86)"
+    },
+    "4": {
+      "finalStateSha256": "db0ba1ff69a915f7142a024373889e0406ba5dd2de982fda288d363ecda78980",
+      "tick": 281572,
+      "victoryTick": 97962,
+      "since": "096eb86 GROW-BLOCK-2a (baseline-096eb86)"
+    },
+    "5": {
+      "finalStateSha256": "8c04888603b9163966aa02fa538984c0e3ca898c8f3ef2bb2d9dc3ce6c3d1f57",
+      "tick": 333724,
+      "victoryTick": 98430,
+      "since": "096eb86 GROW-BLOCK-2a (baseline-096eb86)"
+    }
+  },
+  "updates": [
+    {
+      "date": "2026-10-21",
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "decision": "RR30",
+      "why": "list started from the trunk's guardrail runs engine-STORE-guard-1a2bbce and engine-CAP-guard-456f00a (5/5 the same in both)"
+    }
+  ]
+}
