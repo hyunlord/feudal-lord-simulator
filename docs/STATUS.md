@@ -954,6 +954,7 @@
 
 ## 다음 작업
 
+- **STONE-1 ⓑ — 완료, 본선 병합**(결정 STONE1-1~2): 읽기 함수 `wallStallCause` — 성벽 공사장이 `reserve_held`인데 자재가 길이 닿지 않는 건물에 있으면 `stock_unreachable`. 화면 문구는 렌더 A(STONE-1-R, [요청](requests/render-wall-stall-cause.md)). 다음: STONE-1a(둘째 성문). CHURCH-CAP 착륙 확인됨(8c6412f71, 사용자 2026-10-21). 판정 표에 끝 인구 줄(JUDGE-POP).
 - **SUBSIDY-CLOTH(엔진 몫) — 완료, 본선 병합**(결정 SUBC-1): 순수 함수 `subsidyEffect(state, kind)` — 1364 전 직물 넷은 "아직 아님(1364년부터)", 그 밖은 효과 있음. 화면은 렌더 A에 넘김(SUBSIDY-CLOTH-R, [요청](requests/render-subsidy-cloth.md)).
 - **CHURCH-CAP — 완료, 본선 병합**([보고서](verification/church-cap/REPORT.md), 결정 CAP-1~2): 영주 모드에서 범위 밖 집이 있고 두 철 넘게 자라지 않으면 교회 상한 +1(최대 3). seed 25가 1318 셋째 교회로 768, 768 도달 18 → 19, 석조 도시 20 유지, 가드레일 해시 본선과 같음.
 - **STONE-SINK — 진단 완료**([보고서](verification/stone-sink/REPORT.md)): 석조 도시 뒤 돌을 쓰는 곳은 성벽 교체 구간뿐이고(교회 상한, 성채는 영주만 짓는데 영주 봇은 0), 창고를 채우는 절반은 몫 상한의 목재 350·통나무 150. seed 32 성벽 9구간은 1320부터 돌 0 — 돌을 든 창고 셋과 석공소가 성벽 밖이라 성벽 공사장으로 가는 배달 길이 없다(표시는 "비축 때문에 멈춤"). 고친 것 없음, 다음 후보 넷은 보고서.
@@ -981,7 +982,7 @@
 
 ## 알려진 문제
 
-- **seed 32 돌 성벽이 1320부터 멈춤(2026-10-21)**: 돌을 든 창고·석공소가 성벽 밖이라 성벽 공사장으로 가는 배달 길이 없고, 성벽 안 창고 하나의 돌은 바닥선과 같아 `reserve_held`로 보인다(원인과 표시가 다름). [STONE-SINK](verification/stone-sink/REPORT.md).
+- **seed 32 돌 성벽이 1320부터 멈춤(2026-10-21)**: 돌을 든 창고·석공소가 성벽 밖이라 성벽 공사장으로 가는 배달 길이 없고, 성벽 안 창고 하나의 돌은 바닥선과 같아 `reserve_held`로 보인다(원인과 표시가 다름). [STONE-SINK](verification/stone-sink/REPORT.md). 화면이 읽을 까닭은 STONE-1 ⓑ(`wallStallCause` → `stock_unreachable`). 하나뿐인 성문이 강 쪽(50,34 물)으로 열려 성 밖 동네가 길로 끊겼다 — 둘째 성문은 STONE-1a.
 - **직물 시점 전 직물 건물 보조금이 아무 일도 하지 않음(2026-10-21)**: CLOTH-1 뒤 영주가 1364 전에 직조공 집·축융 방앗간·염색집·텐터 틀에 보조금을 걸어도 사업이 서지 않고 돈도 나가지 않는다. 보조금 화면은 여전히 그 넷을 낸다(`SUBSIDY_KINDS` = `OPPORTUNITY_KINDS`). 결정 INERT-PIN-1. 엔진 몫은 SUBSIDY-CLOTH로 끝났다(`subsidyEffect`, SUBC-1). 화면의 비활성·까닭은 렌더 A(SUBSIDY-CLOTH-R, [요청](requests/render-subsidy-cloth.md)).
 - **`test:changed`가 원본을 읽는 시험을 못 고름(2026-10-21)**: `tests/engineBTlinkOutcomeEvidence.test.ts`는 검토 핀의 원본을 `readFileSync`로 읽어, 그 원본이 바뀌어도 골라지지 않는다(`sourceScanTests.mjs`에 없음). 검사 규칙 변경이라 REMOTE 검토가 필요하다(RR22).
 - **석조 도시 목록에 storage 단계 없음(샌드박스 봇, 2026-10-20)**: 영주 모드는 STORE-1로 고쳤고, 샌드박스 봇의 석조 도시 계획 목록에는 여전히 저장 단계가 없다. 고치면 샌드박스 가드레일 해시가 바뀌어 지금은 두었다.
