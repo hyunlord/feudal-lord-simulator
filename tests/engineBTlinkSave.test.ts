@@ -25,7 +25,8 @@ test('v54 migration preserves unknown membership without deriving answers from a
 });
 test('actual command own-answer state roundtrips without changes', () => {
   const state = answered();
-  assert.equal(SAVE_SCHEMA_VERSION, 56, 'TRACE-LINK and INERT land together as v56 (the user ruling 2026-10-10)');
+  // TRACE-LINK and INERT landed together as v56 (the user ruling 2026-10-10); later versions carry them (v57: STONE-1a).
+  assert.ok(SAVE_SCHEMA_VERSION >= 56, 'TRACE-LINK and INERT land together as v56 (the user ruling 2026-10-10)');
   assert.deepEqual(reload(state), state);
 });
 test('old saves and pruned roots do not require invented answer membership', () => {

@@ -46,6 +46,11 @@ export interface PalisadeState {
   readonly polygon: PalisadePath;
   readonly gate: TileEdgePoint;
   readonly additionalGates?: readonly TileEdgePoint[];
+  /**
+   * STONE-1a (save v57, lord mode only): the tick the wall's last segment was done — absent while a segment is open,
+   * in the sandbox, and on an older save (where a closed wall reads as closed long ago).
+   */
+  readonly closedTick?: number;
   readonly segments: readonly PalisadeSegment[];
   /** WALL-2 (WX-4, save v17): the last expansion and the arable cells it took inside, until they have turned to pasture. */
   readonly expansion?: { readonly tick: number; readonly arableCells: readonly number[] };

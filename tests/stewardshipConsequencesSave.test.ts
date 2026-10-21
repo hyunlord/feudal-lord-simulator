@@ -22,7 +22,7 @@ function pressured() {
 test('active pressures and seasonal loss provenance survive save roundtrip', () => {
   const state = pressured();
   const saved = encodeSave({ state, createdAt: '2026-10-10', savedAt: '2026-10-10' });
-  assert.equal(saved.header.schemaVersion, 56);
+  assert.equal(saved.header.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.deepEqual(decodeSave(saved.bytes).envelope.state, state);
 });
 test('v55→v56 migration preserves legacy state without inventing tolerated errors or charter resistance', () => {

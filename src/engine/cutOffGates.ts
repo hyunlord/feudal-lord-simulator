@@ -83,10 +83,34 @@ export function cutOffGateChoices(state: GameState, room: number): readonly Tile
 /** STONE-1a: the extra gates (the wall's own included) stop here — a guard against runaway openings, not a count. */
 export const CUT_OFF_GATES_TOTAL_MAX = 3;
 
+/** STONE-1a (save v57): lord mode keeps the tick its wall closed — set when the last segment is done, cleared when one opens. */
+export function recordWallClosed(state: GameState): GameState {
+  const wall = state.palisade;
+  if (state.agency === undefined || wall === null) return state;
+  const closed = wall.segments.length > 0 && wall.segments.every(segment => segment.completed);
+  if (closed === (wall.closedTick !== undefined)) return state;
+  if (closed) return { ...state, palisade: { ...wall, closedTick: state.tick } };
+  const { closedTick: _closedTick, ...open } = wall;
+  return { ...state, palisade: open };
+}
+
+/**
+ * STONE-1a: a wall's first season close is not counted — a town the closing wall cuts for a moment is joined again by
+ * its own roads by the next close (seeds 1, 22, 34 and 37, DGX engine-STONE1a-gatewhy-base-1f47ec2), so a gate opens from
+ * the second close on (the user's ruling 2026-10-21, an approximation of "cut off a whole season": a building cut off for
+ * a moment later still gets one — the cap of three bounds it). An older save's closed wall has no tick: closed long ago.
+ */
+export function pastFirstCloseAfterClosing(wall: { readonly closedTick?: number }, tick: number): boolean {
+  if (wall.closedTick === undefined) return true;
+  const season = PRESSURE_BALANCE.seasonTicks;
+  return tick >= Math.ceil(wall.closedTick / season) * season + season;
+}
+
 /** STONE-1a: at each season's close in lord mode, the gates a cut-off town needs, while its extra gates stay at most three. */
 export function openCutOffGates(state: GameState): GameState {
   const wall = state.palisade;
   if (state.agency === undefined || wall === null || state.tick <= 0 || state.tick % PRESSURE_BALANCE.seasonTicks !== 0) return state;
+  if (!pastFirstCloseAfterClosing(wall, state.tick)) return state;
   const gates = cutOffGateChoices(state, CUT_OFF_GATES_TOTAL_MAX - (wall.additionalGates?.length ?? 0));
   return gates.length === 0 ? state : { ...state, palisade: { ...wall, additionalGates: [...(wall.additionalGates ?? []), ...gates] } };
 }
