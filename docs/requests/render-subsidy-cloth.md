@@ -5,11 +5,11 @@
 
 ## 엔진이 주는 것(본선에 있음)
 `subsidyEffect(state, kind)` — `src/engine/subsidyEffect.ts`, 순수 함수(상태를 바꾸지 않음):
-- `{ kind: "effective" }` — 지금 보조금이 사업을 받친다.
-- `{ kind: "not_yet", reason: "cloth_time", fromYear: 1364, fromChapter: null }` — 영주 모드·샌드박스, 직물 시점 전의 직물 넷.
-- 캠페인에서는 `fromYear: null, fromChapter: 4`(3장 뒤).
-- 문구는 돌려주지 않는다(규칙 5·9, 계층 규칙). 시험: `tests/subsidyEffect.test.ts`(넷은 1364 전 "아직 아님", 그 밖은 언제나 "효과 있음", 1364부터 넷도 "효과 있음", "아직 아님"이면 보조금을 걸어도 마을 제안에 그 건물이 없음).
+- `{ effect: "effective" }` — 지금 보조금이 사업을 받친다.
+- `{ effect: "not_yet", reason: "cloth_time", from: { year: 1364 } }` — 영주 모드·샌드박스, 직물 시점 전의 직물 넷.
+- `{ effect: "not_yet", reason: "cloth_time", from: { chapter: 4 } }` — 캠페인, 3장까지.
+- 문구는 돌려주지 않는다(규칙 5·9, 계층 규칙). 시험: `tests/subsidyEffect.test.ts`(넷은 1364 전 "아직 아님"·`from.year` 1364, 그 밖은 언제나 "효과 있음", 1364부터 넷도 "효과 있음", "아직 아님"이면 보조금을 걸어도 마을 제안에 그 건물이 없음, 캠페인 4장 전은 `from.chapter` 4).
 
 ## 화면에 바라는 것(사용자 판정)
-- 보조금 대상 고르기에서 `not_yet`인 종류는 비활성으로 두고 까닭을 함께 보인다: "아직 아님 · 1364년부터"(문구는 렌더의 `*.ko.ts`, 호버 전용 금지).
+- 보조금 대상 고르기에서 `not_yet`인 종류는 비활성으로 두고 까닭을 함께 보인다. 문구는 `from` 값으로 만든다: `from.year`면 "아직 아님 · 1364년부터", `from.chapter`면 "아직 아님 · 4장부터"(숫자를 하드코딩하지 않음, 문구는 렌더의 `*.ko.ts`, 호버 전용 금지).
 - 이미 걸려 있는 그런 보조금(옛 저장)이 있으면 같은 까닭을 그 줄에 보인다.
