@@ -17,6 +17,10 @@ const REASON_SHORT: Readonly<Record<string, string>> = {
 const nameOf = (key: string | null): string => key === null ? "조건" : BUILDING_COPY[key as BuildingKind]?.name ?? NOT_BUILDINGS[key] ?? key;
 
 export const GROWTH_COPY = {
+  /** LS1-20 (the user's ruling 2026-10-21): a town full with every house at its highest step is complete, not stalled —
+   * the pill's mark, its name, the band's line, the chip and the year card's line say so (no "정체", no "자라지 않습니다"). */
+  complete: { mark: "완성", line: "마을이 가득 찼습니다 — 모든 집이 가장 높은 단계입니다", chip: "가득 참",
+    year: (seasons: number) => `가득 찬 철 ${seasons} — 모든 집이 가장 높은 단계입니다` },
   /** The pill's mark: whole years when the screen saw the stop begin (or the engine says when), else no number. */
   stalled: (years: number) => `정체 ${years}년`,
   stalledUnknown: "정체 중",

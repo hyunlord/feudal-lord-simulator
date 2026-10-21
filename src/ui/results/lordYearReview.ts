@@ -118,5 +118,6 @@ export function growthYearLine(year: number, state?: Pick<GameState, "constructi
   if (held.seasons === 0 || held.last === null) return [];
   // LS1-19: the wall of that close (its snapshot), else the town's now.
   const wallKind = wallKindAt(held.last.year, held.last.season) ?? (state === undefined ? "palisade" : wallKindNow(state));
+  if (held.last.reason === "town_full") return [GROWTH_COPY.complete.year(held.seasons)];
   return [GROWTH_COPY.year(held.seasons, GROWTH_COPY.reason(held.last.reason!, held.last.detail, wallProgressAt(held.last.year, held.last.season), wallKind))];
 }

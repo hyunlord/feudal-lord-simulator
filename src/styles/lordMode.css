@@ -94,6 +94,10 @@
   font-size: 13px; font-weight: 700; color: var(--palette-ink); background-color: var(--palette-vellum);
 }
 .app-shell .season-band-item { white-space: nowrap; }
+/* LS1-20 (render-VIS-checkup33-ae3dee1: the growth line, one long sentence, ran past the band both sides — under the
+   chronicle button at its left): the growth line is its own row and wraps inside the band's width. */
+.app-shell .season-band-item[data-item="growth"] { flex: 1 1 100%; min-width: 0; white-space: normal; text-align: center; }
+.app-shell .season-band-item[data-item="growth"] + .season-band-item::before { content: none; margin-right: 0; }
 .app-shell .season-band-item + .season-band-item::before { content: "·"; margin-right: 10px; color: var(--palette-ink-muted); }
 @media (pointer: coarse) { .app-shell .season-band { min-height: 48px; } }
 

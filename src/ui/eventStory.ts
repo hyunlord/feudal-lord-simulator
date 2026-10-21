@@ -40,7 +40,7 @@ import { lapseBeats } from "./lord/decisions/lapseBeats";
 // chip; blighted fields and rain first, then the chip. Decisions (the famine's answer, a petition) open as modals the
 // same way. A beat's `id` is stable for as long as the beat lasts (the card is not re-announced).
 export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer" | "bad_harvest" | "famine_omen" | "famine"
-  | "first_winter" | "petition" | "market_charter" | "market_town" | "palisade"
+  | "first_winter" | "petition" | "market_charter" | "market_town" | "palisade" | "stone_town"
   | "war_messenger" | "beacon" | "raid" | "raid_aftermath" | "conscripts_away" | "stone_wall"
   // UI-8: nine plague beats (F3-A PL-1…PL-10).
   | "plague_rumour" | "plague_arrival" | "plague_priest_death" | "plague_new_graves" | "plague_empty_streets"
@@ -235,6 +235,11 @@ export function storyBeats(state: GameState, inPlace: ReadonlySet<string> = new 
     if (!building && state.tick - since < 3 * SEASON) beats.push({ id: "palisade", kind: "palisade", illustration: "event_palisade", tile: null, decision: null,
       title: copy.palisade.title, line: copy.palisade.line, advice: copy.palisade.advice, facts: [] });
   }
+  // LS1-20: the stone town's proclamation has its moment as the market town's has (a chip for the season after it; no
+  // stop) — by the engine's proclamation tick.
+  if (state.era === "stone_town" && state.eraProclaimedTick !== undefined && state.eraProclaimedTick !== null && state.tick - state.eraProclaimedTick < SEASON)
+    beats.push({ id: "stone_town", kind: "stone_town", illustration: "event_stonewall_charter", tile: marketTile(state), decision: null,
+      title: copy.stoneTown.title, line: copy.stoneTown.line, advice: copy.stoneTown.advice, facts: [] });
   beats.push(...actualBeats(state));
   // DEC-CARD A1: in lord mode the town builds — the [조언] that asks to build says the lord's levers instead.
   return withLordAdvice(state, beats);
@@ -288,7 +293,8 @@ function growthBeats(state: GameState): readonly StoryBeat[] {
   const view = growthView(state, run);
   if (view === null || view.mark === null) return [];
   const key = run.start === null ? "seen" : `${run.start.year}:${run.start.season}`;
-  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: GROWTH_COPY.chip.title(view.reason), chip: GROWTH_COPY.chip.short(view.block.reason, view.block.detail, view.wallKind),
+  return [{ id: `growth:${key}`, kind: "growth_block", illustration: null, tile: null, decision: null, title: view.mark.complete === true ? GROWTH_COPY.complete.line : GROWTH_COPY.chip.title(view.reason),
+    chip: view.mark.complete === true ? GROWTH_COPY.complete.chip : GROWTH_COPY.chip.short(view.block.reason, view.block.detail, view.wallKind),
     line: view.since ?? view.reason, facts: [view.lever.line], advice: GROWTH_COPY.chip.advice, openLabel: GROWTH_COPY.chip.open, slot: "population" }];
 }
 

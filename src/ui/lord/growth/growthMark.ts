@@ -12,8 +12,9 @@ import { GROWTH_HELD_CLOSES, growthRun, type GrowthRun } from "./growthTrack";
 const SEASON = BALANCE.TICKS_PER_YEAR / 4;
 const YEAR = BALANCE.TICKS_PER_YEAR;
 
-/** The mark in the status pill: "정체 N년" with its whole years when known, "정체 중" when not. */
-export type GrowthMark = Readonly<{ years: number | null; text: string; label: string }>;
+/** The mark in the status pill: "정체 N년" with its whole years when known, "정체 중" when not; LS1-20: "완성" when the town
+ * is full with every house at its highest step (the engine's town_full). */
+export type GrowthMark = Readonly<{ years: number | null; text: string; label: string; complete?: true }>;
 /** Where the lord's lever leads: the existing screen of its command. */
 export type GrowthLeverAction = "policy" | "wall" | "request";
 export type GrowthView = Readonly<{
@@ -48,7 +49,9 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   // the same as one read at it (render-VIS-ls17: 1304's summer said 정체 a season early at 2,001 ticks > 2,000).
   const held = block.since !== null ? Math.floor((state.tick - block.since) / SEASON) > GROWTH_HELD_CLOSES : run.closes > GROWTH_HELD_CLOSES;
   const years = block.since !== null ? Math.max(1, Math.floor((state.tick - block.since) / YEAR)) : run.known ? Math.max(1, Math.floor(run.closes / 4)) : null;
-  const mark = !held ? null : years === null ? { years: null, text: GROWTH_COPY.stalledUnknown, label: GROWTH_COPY.stalledUnknownLabel }
+  const complete = block.reason === "town_full";
+  const mark = !held ? null : complete ? { years: null, text: GROWTH_COPY.complete.mark, label: GROWTH_COPY.complete.line, complete: true as const }
+    : years === null ? { years: null, text: GROWTH_COPY.stalledUnknown, label: GROWTH_COPY.stalledUnknownLabel }
     : { years, text: GROWTH_COPY.stalled(years), label: GROWTH_COPY.stalledLabel(years) };
   const sinceTick = block.since;
   const since = !held ? null : sinceTick !== null ? GROWTH_COPY.panel.since(yearOf(state, sinceTick), SCENARIO_COPY.seasons[seasonOf(sinceTick)])
@@ -77,6 +80,12 @@ export function wallKindNow(state: Pick<GameState, "constructionSites" | "era">)
 
 const yearOf = (state: GameState, tick: number) => scenarioOf(state).startYear + Math.floor(tick / YEAR);
 const seasonOf = (tick: number) => Math.floor((tick % YEAR) / SEASON) as 0 | 1 | 2 | 3;
+
+/** LS1-20: the season band's growth line — a complete town's own line, else the stop's years and cause. */
+export function growthBandLine(view: GrowthView): string | null {
+  if (view.mark === null) return null;
+  return view.mark.complete === true ? GROWTH_COPY.complete.line : GROWTH_COPY.band(view.years, view.reason);
+}
 
 /** The pill's mark for the state (none outside lord mode, while the town grows, or before the stop has held). */
 export function growthMarkOf(state: GameState): GrowthMark | null {

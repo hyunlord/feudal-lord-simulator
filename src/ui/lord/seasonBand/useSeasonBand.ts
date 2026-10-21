@@ -6,8 +6,7 @@ import { scenarioOf } from "../../../engine/scenarioState";
 import { seasonStewardView } from "../steward/seasonStewardModel";
 import { recordTownClose } from "./townCloses";
 import { growthBlock } from "../../../engine/growthBlock";
-import { GROWTH_COPY } from "../growth/growthCopy.ko";
-import { growthView } from "../growth/growthMark";
+import { growthBandLine, growthView } from "../growth/growthMark";
 import { growthHeldQuery, markLastClose, noteGrowthClose, startGrowthTrack } from "../growth/growthTrack";
 import { noteStageClose, stageSeedQuery, startStageTrack } from "../relations/stageTrack";
 import { seasonBand, seasonDeathCauses, townSize, townSnapshot, type SeasonBand, type TownSnapshot } from "./seasonBandModel";
@@ -57,7 +56,7 @@ export function useSeasonBand(state: GameState, enabled: boolean): { readonly ba
     const stewardHandled = seasonStewardView(state, closed.startTick)?.items.length ?? 0;
     const growth = growthView(state);
     setBand(seasonBand({ season: closed, before: snapshotRef.current, after, stewardHandled,
-      growth: growth === null || growth.mark === null ? null : GROWTH_COPY.band(growth.years, growth.reason),
+      growth: growth === null ? null : growthBandLine(growth),
       deathCauses: seasonDeathCauses(state, closed.startTick, closed.endTick) }));
     setShownAt(performance.now());
     snapshotRef.current = after;
