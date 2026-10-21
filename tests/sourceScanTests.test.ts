@@ -45,3 +45,22 @@ test("a src/ change picks the source scans that exist; a change outside src/ doe
     assert.equal(pickTests({ root: dir, base }).picked.get("tests/appText.test.ts"), "names src/App.tsx");
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+test("a change to a file on the INERT review list picks the pin check (RR22 review 2026-10-21, CLOTH-1 59b42df3)", () => {
+  const pinTest = "tests/engineBTlinkOutcomeEvidence.test.ts";
+  const pinned = FOLDER_WALKS[pinTest];
+  assert.ok(pinned.includes("src/engine/townAgency.ts"), "the map follows scripts/engineBInertReviewedSources.mjs");
+  const dir = tempDir("fls-scan-pin-");
+  const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();
+  try {
+    for (const d of ["src/engine", "tests"]) mkdirSync(join(dir, d), { recursive: true });
+    writeFileSync(join(dir, "src/engine/townAgency.ts"), "export const opportunities = 1;\n");
+    writeFileSync(join(dir, pinTest), "export {};\n");   // reads the list's files by a built path, imports none of them
+    writeKoreanFile(dir);
+    git("init", "-q", "-b", "trunk"); git("add", "-A"); git("commit", "-qm", "base");
+    const base = git("rev-parse", "HEAD");
+    writeFileSync(join(dir, "src/engine/townAgency.ts"), "export const opportunities = 2;\n");
+    const picked = pickTests({ root: dir, base }).picked;
+    assert.ok(picked.get(pinTest)?.startsWith(SOURCE_SCAN_WHY), `${pinTest}: ${picked.get(pinTest)}`);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
