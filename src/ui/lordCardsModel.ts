@@ -27,6 +27,7 @@ import { PETITION_COPY } from "./petitionCopy.ko";
 import { HOME_PETITION_ART, type Wave44ImageId } from "./wave44Art";
 import { askedOrFirst, perStateAsked } from "./lord/decisions/decisionFocus";
 import { perState } from "./perState";
+import { PROCLAIM_STONE_TOWN_STAKE } from "./decisionCard/families/lordRequestCopy.ko";
 
 // LM-R1 (petitions) the lord's cards, lord mode only (`lordMode`): the home estate's petitions as the engine raises them
 // (`lordEstatePetitions`, estate "estate-home", FIX-14 SW-11) — a different API from the political petitions'
@@ -120,19 +121,25 @@ export function homePetitionViewOf(state: GameState, petition: ReturnType<typeof
 }
 
 export type LordRequestView = Readonly<{ key: string; kind: LordRequest["kind"]; title: string; demand: string; grant: string; court: string;
-  more: string; command: GameAction | null }>;
+  more: string; command: GameAction | null;
+  /** LS1-19: what is at stake, for the proclamation by the era it asks for (else the kind's own, LORD_REQUEST_STAKE). */
+  stake?: string }>;
 
 /** TA-7: the town's first request of the week as its card shows it (a proclamation waiting for the lord), or null. */
 export function lordRequestView(state: GameState): LordRequestView | null {
   if (!lordMode(state)) return null;
-  const requests = lordRequests(state).filter((action): action is LordRequest => Object.hasOwn(LORD_CARDS_COPY.request, action.kind));
+  // LS1-19 (render-VIS-checkup33-ae3dee1: "시장도시 선포를 기다립니다" after the stone town's proclamation): a proclamation
+  // asks for the era after the town's own, and none comes after the stone town's.
+  const requests = lordRequests(state).filter((action): action is LordRequest => Object.hasOwn(LORD_CARDS_COPY.request, action.kind)
+    && !(action.kind === "proclaim_era" && state.era === "stone_town"));
   const request = requests[0];
   if (request === undefined) return null;
-  const copy = LORD_CARDS_COPY.request[request.kind];
+  const stone = request.kind === "proclaim_era" && state.era === "palisade";
+  const copy = stone ? LORD_CARDS_COPY.request.proclaim_stone_town : LORD_CARDS_COPY.request[request.kind];
   return {
     key: request.kind, kind: request.kind, title: copy.title,
-    demand: request.kind === "order_timber" ? LORD_CARDS_COPY.request.order_timber.demand(request.amount) : LORD_CARDS_COPY.request[request.kind].demand,
-    grant: copy.grant, court: courtLine(state), more: LORD_CARDS_COPY.requestWaits(requests.length),
+    demand: request.kind === "order_timber" ? LORD_CARDS_COPY.request.order_timber.demand(request.amount) : stone ? copy.demand as string : LORD_CARDS_COPY.request[request.kind].demand,
+    grant: copy.grant, court: courtLine(state), more: LORD_CARDS_COPY.requestWaits(requests.length), ...(stone ? { stake: PROCLAIM_STONE_TOWN_STAKE } : {}),
     // The bot's own conversion (lordBot `townMoves`): the request granted is the game command it names.
     command: autoplayActionToGameAction(request, state),
   };

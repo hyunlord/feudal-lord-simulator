@@ -5,6 +5,7 @@ import { wave8FrameLayerStyle } from "../wave8Art";
 import type { HouseChangeView, HouseNextAction } from "./houseChange";
 import { RESULTS_COPY as COPY } from "./resultsCopy.ko";
 import type { YearReviewView } from "./yearReview";
+import { useFrameReady } from "../frameReady";
 
 // DEC-CARD (result side): the year's card and the house card in the petition frame (Wave 8), as the decision card is.
 // Neither is a choice: the year's card has one primary [계속] and the way to the chronicle; the house card's primary is
@@ -37,9 +38,12 @@ function Frame({ className, label, data, children, actions }: {
   readonly className: string; readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: ReactNode;
   readonly actions: ReactNode;
 }): ReactElement {
+  // LS1-19: hidden until the frame's picture is decoded (never a card's text over the map without its parchment).
+  const shown = useFrameReady("petition");
   return (
     <div className="story-modal-backdrop" role="presentation">
-      <section className={`story-modal petition-card results-card ${className}`} data-frame="petition" role="dialog" aria-modal="true" aria-label={label} {...data}>
+      <section className={`story-modal petition-card results-card ${className}`} data-frame="petition" role="dialog" aria-modal="true" aria-label={label}
+        data-frame-ready={shown ? undefined : "false"} {...data}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         <div className="petition-body results-card-body">{children}</div>
         <div className="results-card-actions">{actions}</div>

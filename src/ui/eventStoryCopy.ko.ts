@@ -82,6 +82,12 @@ export const EVENT_STORY_COPY = {
     line: "상인들이 장을 열 권리를 얻었습니다. 권리 목록에 한 줄이 늘었습니다",
     advice: "장날에 사람들이 모입니다",
   },
+  /** LS1-20: the stone town's proclamation, as the market town's. */
+  stoneTown: {
+    title: "석벽 도시",
+    line: "석벽 도시를 선포했습니다",
+    advice: "석벽을 다 두르면 도시가 지켜집니다",
+  },
   marketTown: {
     title: "시장도시",
     line: "목책을 두르고 시장도시를 선포했습니다",

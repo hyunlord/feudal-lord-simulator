@@ -21,7 +21,7 @@ export const lordRequestCard = perState((state: GameState): DecisionCardView | n
   return {
     family: "lord_request", subjectId: request.key, title: request.title, court: request.court,
     from: request.more === "" ? LORD_CARDS_COPY.requestFrom : `${LORD_CARDS_COPY.requestFrom} · ${request.more}`,
-    situation: request.demand, stake: LORD_REQUEST_STAKE[request.kind], deadline: COPY.deadline, illustration: requestArt(request.kind),
+    situation: request.demand, stake: request.stake ?? LORD_REQUEST_STAKE[request.kind], deadline: COPY.deadline, illustration: requestArt(request.kind),
     choices: [{ id: "grant", label: request.grant, now: outcome?.now ?? [], later: outcome?.later ?? [], remembers: outcome?.remembers ?? [],
       refusal: outcome === null ? COPY.refused : null }],
   };

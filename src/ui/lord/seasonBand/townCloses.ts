@@ -29,6 +29,11 @@ export function wallProgressAt(year: number, season: number): WallProgress | nul
   return { left: now.wallLeft, kind: now.wallKind };
 }
 
+/** LS1-19: the wall a close's works were on (its snapshot's), null when it had none or the screen did not see it. */
+export function wallKindAt(year: number, season: number): "palisade" | "stone" | null {
+  return closes.get(`${year}:${season}`)?.wallKind ?? null;
+}
+
 /** The same at the latest close the screen saw. */
 export function lastWallProgress(): WallProgress | null {
   const key = [...closes.keys()].at(-1);

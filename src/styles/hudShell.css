@@ -709,3 +709,6 @@
    growthBlock); it outranks the mode's tag for room (the tag hides first). */
 /* contrast-audit selector=".status-pill-growth" fg="--palette-vermilion" bg="--palette-vellum" size="12" role="body" */
 .app-shell .status-pill-growth { margin-left: 4px; font-size: 12px; font-weight: 700; color: var(--palette-vermilion); white-space: nowrap; }
+/* LS1-20: a complete town (full, every house at its highest step) is no stop — its mark in the pill's own ink. */
+/* contrast-audit selector=".status-pill-growth[data-growth-complete]" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
+.app-shell .status-pill-growth[data-growth-complete="true"] { color: var(--palette-ink); }

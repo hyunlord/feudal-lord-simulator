@@ -12,8 +12,9 @@ import { GROWTH_HELD_CLOSES, growthRun, type GrowthRun } from "./growthTrack";
 const SEASON = BALANCE.TICKS_PER_YEAR / 4;
 const YEAR = BALANCE.TICKS_PER_YEAR;
 
-/** The mark in the status pill: "정체 N년" with its whole years when known, "정체 중" when not. */
-export type GrowthMark = Readonly<{ years: number | null; text: string; label: string }>;
+/** The mark in the status pill: "정체 N년" with its whole years when known, "정체 중" when not; LS1-20: "완성" when the town
+ * is full with every house at its highest step (the engine's town_full). */
+export type GrowthMark = Readonly<{ years: number | null; text: string; label: string; complete?: true }>;
 /** Where the lord's lever leads: the existing screen of its command. */
 export type GrowthLeverAction = "policy" | "wall" | "request";
 export type GrowthView = Readonly<{
@@ -27,6 +28,8 @@ export type GrowthView = Readonly<{
   /** Since when the stop holds (null while there is no stop). */
   since: string | null;
   lever: Readonly<{ line: string; button: string | null; action: GrowthLeverAction | null }>;
+  /** LS1-19: the wall the town's works are on — its sites', else the era's (a stone town's is the stone wall). */
+  wallKind: "palisade" | "stone";
 }>;
 
 /**
@@ -39,18 +42,21 @@ export function growthView(state: GameState, run: GrowthRun = growthRun(), read:
   if (!lordMode(state)) return null;
   const block = read;
   if (block === null) return null;
-  const reason = GROWTH_COPY.reason(block.reason, block.detail, lastWallProgress());
+  const wallKind = wallKindNow(state);
+  const reason = GROWTH_COPY.reason(block.reason, block.detail, lastWallProgress(), wallKind);
   // LS1-9: the engine's since is the last close the town grew at (its houses or people above the close before), so the
   // closes it has not grown at are the whole seasons since — counted whole, a band read a tick after its close counts
   // the same as one read at it (render-VIS-ls17: 1304's summer said 정체 a season early at 2,001 ticks > 2,000).
   const held = block.since !== null ? Math.floor((state.tick - block.since) / SEASON) > GROWTH_HELD_CLOSES : run.closes > GROWTH_HELD_CLOSES;
   const years = block.since !== null ? Math.max(1, Math.floor((state.tick - block.since) / YEAR)) : run.known ? Math.max(1, Math.floor(run.closes / 4)) : null;
-  const mark = !held ? null : years === null ? { years: null, text: GROWTH_COPY.stalledUnknown, label: GROWTH_COPY.stalledUnknownLabel }
+  const complete = block.reason === "town_full";
+  const mark = !held ? null : complete ? { years: null, text: GROWTH_COPY.complete.mark, label: GROWTH_COPY.complete.line, complete: true as const }
+    : years === null ? { years: null, text: GROWTH_COPY.stalledUnknown, label: GROWTH_COPY.stalledUnknownLabel }
     : { years, text: GROWTH_COPY.stalled(years), label: GROWTH_COPY.stalledLabel(years) };
   const sinceTick = block.since;
   const since = !held ? null : sinceTick !== null ? GROWTH_COPY.panel.since(yearOf(state, sinceTick), SCENARIO_COPY.seasons[seasonOf(sinceTick)])
     : run.known && run.start !== null ? GROWTH_COPY.panel.since(run.start.year, SCENARIO_COPY.seasons[run.start.season as 0 | 1 | 2 | 3]) : GROWTH_COPY.panel.sinceUnknown;
-  return { block, reason, mark, years: held ? years : null, since, lever: leverOf(state, block, reason) };
+  return { block, reason, mark, years: held ? years : null, since, lever: leverOf(state, block, reason), wallKind };
 }
 
 function leverOf(state: GameState, block: GrowthBlock, reason: string): GrowthView["lever"] {
@@ -64,8 +70,22 @@ function leverOf(state: GameState, block: GrowthBlock, reason: string): GrowthVi
   return { line: copy.line, button: waits ? copy.button : null, action: waits ? "request" : null };
 }
 
+/** LS1-19: the wall the works are on: a stone wall's sites, else a palisade's, else the era's (the stone town's wall). */
+export function wallKindNow(state: Pick<GameState, "constructionSites" | "era">): "palisade" | "stone" {
+  const sites = state.constructionSites ?? [];
+  if (sites.some(site => site.kind === "stone_wall_segment")) return "stone";
+  if (sites.some(site => site.kind === "palisade_segment")) return "palisade";
+  return state.era === "stone_town" ? "stone" : "palisade";
+}
+
 const yearOf = (state: GameState, tick: number) => scenarioOf(state).startYear + Math.floor(tick / YEAR);
 const seasonOf = (tick: number) => Math.floor((tick % YEAR) / SEASON) as 0 | 1 | 2 | 3;
+
+/** LS1-20: the season band's growth line — a complete town's own line, else the stop's years and cause. */
+export function growthBandLine(view: GrowthView): string | null {
+  if (view.mark === null) return null;
+  return view.mark.complete === true ? GROWTH_COPY.complete.line : GROWTH_COPY.band(view.years, view.reason);
+}
 
 /** The pill's mark for the state (none outside lord mode, while the town grows, or before the stop has held). */
 export function growthMarkOf(state: GameState): GrowthMark | null {

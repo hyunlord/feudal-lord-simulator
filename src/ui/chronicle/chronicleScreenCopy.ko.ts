@@ -5,7 +5,7 @@ import { PERSONS_COPY } from "../persons/personsCopy.ko";
 // CHRON-1 chronicle screen copy (the records' own sentences are src/content/historyCopy.ko.ts).
 const METRIC_NAMES: Readonly<Record<string, string>> = { population: "인구", treasury: "금고", merchantGauge: "상인 게이지", lots: "필지", l4: "도시 대가옥" };
 const DECISION_KIND_NAMES: Readonly<Record<string, string>> = {
-  famine_response: "대기근 대응", petition_response: "상인 청원", market_town: "시장도시 선포", stone_town: "석벽 선포", rebuild: "재건",
+  famine_response: "대기근 대응", petition_response: "상인 청원", market_town: "시장도시 선포", stone_town: "석벽 도시 선포", rebuild: "재건",
   wall_expand: "목책 넓히기",
   // DEC-CARD request §6.2: the lord-mode settings recorded as big decisions.
   estate_policy: "영지 방침", project_subsidy: "장려금", market_dues: "시장 부담", drainage: "배수 공사",

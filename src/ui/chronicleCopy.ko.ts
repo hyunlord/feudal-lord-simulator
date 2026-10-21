@@ -6,7 +6,7 @@ import { moneyShort } from "./money.ko";
 
 // UI-4 chronicle page and chapter screens (the ledger's sentences come from src/content/historyCopy.ko.ts).
 const DECISION_KINDS: Readonly<Record<string, string>> = {
-  famine_response: "대기근 대응", petition_response: "상인 청원", market_town: "시장도시 선포", stone_town: "석벽 선포", rebuild: "재건",
+  famine_response: "대기근 대응", petition_response: "상인 청원", market_town: "시장도시 선포", stone_town: "석벽 도시 선포", rebuild: "재건",
 };
 const METRICS: Readonly<Record<string, (value: number) => string>> = {
   population: value => `인구 ${value}`, treasury: value => `금고 ${moneyShort(value)}`, merchantGauge: value => `상인 게이지 ${value}`, lots: value => `필지 ${value}`,
