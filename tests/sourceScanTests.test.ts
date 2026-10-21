@@ -48,7 +48,7 @@ test("a src/ change picks the source scans that exist; a change outside src/ doe
 
 test("a change to a file on the INERT review list picks the pin check (RR22 review 2026-10-21, CLOTH-1 59b42df3)", () => {
   const pinTest = "tests/engineBTlinkOutcomeEvidence.test.ts";
-  const pinned = FOLDER_WALKS[pinTest];
+  const pinned = FOLDER_WALKS[pinTest] ?? [];
   assert.ok(pinned.includes("src/engine/townAgency.ts"), "the map follows scripts/engineBInertReviewedSources.mjs");
   const dir = tempDir("fls-scan-pin-");
   const git = (...args: string[]) => execFileSync("git", [...QUIET_GIT, ...args], { cwd: dir, encoding: "utf8", env: QUIET_ENV }).trim();

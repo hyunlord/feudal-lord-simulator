@@ -25,7 +25,7 @@ test("each seed reads same, different (with both hashes and ticks) or not listed
     { seed: 9, finalStateSha256: "1".repeat(64), tick: 5 },
   ], list);
   assert.deepEqual(results.map(result => result.trunkHash), ["same", "different", "different", "not listed"]);
-  assert.equal(results[0].line, `seed 2: trunk hash same (${two.finalStateSha256.slice(0, 8)}… tick 281,575)`);
-  assert.match(results[1].line, /^seed 3: trunk hash DIFFERENT — expected 33b3d88a… tick 299,309 \(since .+\), this run 00000000… tick 1,200,000$/);
-  assert.match(results[2].line, /this run none tick \?$/);
+  assert.equal(results[0]!.line, `seed 2: trunk hash same (${two.finalStateSha256.slice(0, 8)}… tick 281,575)`);
+  assert.match(results[1]!.line, /^seed 3: trunk hash DIFFERENT — expected 33b3d88a… tick 299,309 \(since .+\), this run 00000000… tick 1,200,000$/);
+  assert.match(results[2]!.line, /this run none tick \?$/);
 });
