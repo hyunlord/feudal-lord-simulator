@@ -31,6 +31,7 @@ import { advanceTick } from "../src/engine/tick";
 import { idleLabourPermille } from "../src/engine/labourDemand";
 import { LORD_MODE_POLICY } from "../src/engine/townAgency";
 import { encodeSave } from "../src/save/saveCodec";
+import { cutOffComponents } from "../src/engine/cutOffGates";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { zonesOf } from "../src/zones/zoneEdits";
@@ -143,7 +144,12 @@ function row(state: GameState, year: number) {
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
     felled: harvests.filter(harvest => harvest.harvestedAtTick > state.tick - YEAR).length, timber, logs,
     abandoned: state.agency?.abandonedSites?.length ?? 0, charterFailures: state.agency?.charterWallFailure?.attempts ?? 0, interior: interior(state), waiting: waiting(state), wheat: wheat(state),
-    wallSites: state.constructionSites.filter(site => !isBuildingConstructionSite(site) && (site.kind === "palisade_segment" || site.kind === "stone_wall_segment")).length };
+    wallSites: state.constructionSites.filter(site => !isBuildingConstructionSite(site) && (site.kind === "palisade_segment" || site.kind === "stone_wall_segment")).length,
+    // STONE-1a: the wall's extra gates, the road components outside cut from the inside, and the stone wall's progress.
+    gates: state.palisade?.additionalGates?.length ?? 0, cutOff: cutOffComponents(state).length,
+    stoneWall: { done: state.palisade?.segments.filter(segment => segment.completed && segment.material === "stone").length ?? 0,
+      open: state.constructionSites.filter(site => site.kind === "stone_wall_segment").length,
+      delivered: state.constructionSites.filter(site => site.kind === "stone_wall_segment").reduce((sum, site) => sum + (site.delivered.stone ?? 0), 0) } };
 }
 
 /** Renderer A's state bundle and the next Astra play (2026-10-10): saves a season after the market charter, some years on, and at the end. */
