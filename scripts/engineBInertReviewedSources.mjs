@@ -46,8 +46,9 @@ export const INERT_REVIEWED_EFFECT_SOURCES = [
     "sha256": "66bf718a318d1cd965e49a806ca8b2f13a3a61669eb8cf4630b0a9e23c40bf36"
   },
   {
+    // Reviewed 59b42df32 (CLOTH-1): one line in townProposals' opportunities — the cloth kinds wait for clothTime; the commands' handlers (setProjectSubsidy, policy, dues) and the week's start/payment unchanged. A cloth subsidy before the cloth's time now starts and pays nothing (left as a known gap).
     "path": "src/engine/townAgency.ts",
-    "sha256": "8a1b9c5c518b1835580cdf21e7f80ef20c2265aa43f2139be1d40c6bf1360448"
+    "sha256": "18f332913a563e92d5f1c63c95c56523d2de1fe3ecbb1c8dd408abc3802d3bf0"
   },
   {
     "path": "src/engine/stewardshipConsequences.ts",
