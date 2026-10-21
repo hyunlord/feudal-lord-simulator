@@ -494,6 +494,11 @@ function plannerPlan(state: GameState, policy: AutoplayPolicy, diagnostic?: Food
       // GB-9 (GROW-BLOCK): a stone town's wall too small for the lots still wanted is widened as a palisade's is (seed 3
       // kept 18 houses from 1373 to 1425 inside its 28-tile ring).
       step("wall_expansion", () => autoplayWallExpansionAction(state, policy.maxHousingLots)),
+      // STORE (lord mode, the user's ruling 2026-10-20): a stone town's storehouses too, last of its steps, on the
+      // palisade era's rule (`storageAction`) — the list had none, and seed 32's four filled in 1326 and stayed full,
+      // the masonry with nowhere to send its stone (DGX engine-STORE-diag-e7a0f01). The sandbox bot's stone town keeps
+      // its list (a known gap, STATUS).
+      ...(state.agency === undefined ? [] : [step("storage", () => storageAction(state))]),
     ] };
   }
   // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the

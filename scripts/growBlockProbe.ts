@@ -134,7 +134,10 @@ function row(state: GameState, year: number) {
   }
   const harvests = state.forestHarvests ?? [];
   return { year, population: state.population, era: state.era, palisade: state.palisade?.polygon.length ?? 0, houses: state.houses.length,
-    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, masonry: kinds.masonry ?? 0, ...waterQuarries(state), church: kinds.church ?? 0,
+    buildings: state.buildings.length, camps: kinds.logging_camp ?? 0, sawmills: kinds.sawmill ?? 0, quarry: kinds.quarry ?? 0, masonry: kinds.masonry ?? 0, ...waterQuarries(state),
+    // STORE (the user's ruling 2026-10-20): the storehouses and how full they stand.
+    stores: kinds.storehouse ?? 0, storeHeld: state.buildings.filter(building => building.kind === "storehouse")
+      .reduce((sum, building) => sum + Object.values(building.inventory).reduce((held, amount) => held + (amount ?? 0), 0), 0), church: kinds.church ?? 0,
     // Option A's judgement (the user's ruling 2026-10-12): idle labour, permille of the adults (LB-9's `labour.idle`).
     idlePermille: idleLabourPermille(state),
     stumps: harvests.filter(harvest => treeStage(harvest, state.tick) === "stump").length,
