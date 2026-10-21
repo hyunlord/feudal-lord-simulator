@@ -18,6 +18,7 @@ import { isBuildingConstructionSite } from "../src/economy/construction";
 import { decideNextAction, planningNeeds } from "../src/engine/autoplay";
 import type { FoodDiagnosticCollector } from "../src/engine/autoplayFoodDiagnostic";
 import { foodFacilityWithinLimit } from "../src/engine/autoplayFoodLimits";
+import { measuredFoodDecision } from "../src/engine/autoplayFoodMeasuredDecision";
 import type { GameState } from "../src/engine/engine.types";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
@@ -78,6 +79,8 @@ while (stateCalendar(state).year < start + years) {
       cap: foodFacilityWithinLimit(state, "mill"),
       food: collector.food === undefined ? null : { reason: collector.food.reason, recovery: collector.food.recovery ?? null,
         action: collector.food.action === null ? null : JSON.stringify(collector.food.action).slice(0, 60), counts: collector.food.counts ?? null },
+      // What the measured decision itself reads (it runs before the observation gate stops the step).
+      measured: (() => { const d = measuredFoodDecision(state); return `${d.kind ?? "none"}:${d.reason ?? ""}`; })(),
       botAction: JSON.stringify(action).slice(0, 70),
       millNeed: planningNeeds(state, LORD_MODE_POLICY).filter(need => JSON.stringify(need.action).includes('"mill"')).map(need => need.planner),
       millProposal: proposal === null ? null : { rank, of: proposals.length, actor: proposal.actor, score: proposal.score, cost: proposal.cost, funds: funds[proposal.actor] ?? null },
