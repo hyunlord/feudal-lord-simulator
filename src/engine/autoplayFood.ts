@@ -48,14 +48,23 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   if (repair.kind !== 'none') return finish(repair, 'food_route_repair');
   const distribution = distributionRoadRecoveryAction(state);
   if (distribution.kind !== 'none') return finish(distribution, 'food_route_repair');
-  if (hasPendingFoodChain(state)) return finish({ kind: "none" }, 'pending_chain');
   const completeChain = wheatCount > 0 && millCount > 0 && granaryCount > 0;
-  const decision = completeChain ? measuredFoodDecision(state) : null;
+  // FOOD-P (the user's ruling 2026-10-22, lord mode, F1's shape): a measured bread shortage asks for a mill past the
+  // waits — another food site still building, the last addition's observation — that no other site or observation can
+  // make up (seed 1 asked from 1303 spring and began its third mill in 1304 autumn, DGX engine-FOODRE-diag2-3eb6ead).
+  // A mill already building still waits. The old step reads the decision after the pending check, so the sandbox's order
+  // is unchanged.
+  const breadExempt = (measured: ReturnType<typeof measuredFoodDecision> | null): boolean => state.agency !== undefined
+    && measured?.kind === 'mill' && measured.reason === 'actual_bread_deficit'
+    && !state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'mill');
+  const early = state.agency !== undefined && completeChain ? measuredFoodDecision(state) : null;
+  if (hasPendingFoodChain(state) && !breadExempt(early)) return finish({ kind: "none" }, 'pending_chain');
+  const decision = early ?? (completeChain ? measuredFoodDecision(state) : null);
   // F1 (the user's ruling 2026-10-14): an open observation waits out the last addition's effect — but not a grain
   // shortage, which no mill or granary under observation can make up (seed 1's 1304 summer asked for fields only while
   // one was open, engine-FOOD-early-c5fd693). Lord mode only, as F1's fields reading (the user's ruling 2026-10-15).
   const grainExempt = state.agency !== undefined && decision?.reason === 'actual_wheat_deficit';
-  if (hasActiveFoodObservation(state) && !grainExempt) return finish({ kind: "none" }, 'active_observation');
+  if (hasActiveFoodObservation(state) && !grainExempt && !breadExempt(decision)) return finish({ kind: "none" }, 'active_observation');
   if (decision?.reason === 'observation_warmup') return finish({ kind: 'none' }, decision.reason);
   if (decision?.kind === null || decision === null) {
     const coverage = foodCoverageAction(state);
