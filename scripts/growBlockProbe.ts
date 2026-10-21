@@ -147,6 +147,8 @@ function row(state: GameState, year: number) {
     wallSites: state.constructionSites.filter(site => !isBuildingConstructionSite(site) && (site.kind === "palisade_segment" || site.kind === "stone_wall_segment")).length,
     // STONE-1a: the wall's extra gates, the road components outside cut from the inside, and the stone wall's progress.
     gates: state.palisade?.additionalGates?.length ?? 0, cutOff: cutOffComponents(state).length,
+    // FOOD-P: the tick the lord-mode wall closed (v57), for "did the wall finish later".
+    wallClosedTick: state.palisade?.closedTick ?? null,
     stoneWall: { done: state.palisade?.segments.filter(segment => segment.completed && segment.material === "stone").length ?? 0,
       open: state.constructionSites.filter(site => site.kind === "stone_wall_segment").length,
       delivered: state.constructionSites.filter(site => site.kind === "stone_wall_segment").reduce((sum, site) => sum + (site.delivered.stone ?? 0), 0) } };
