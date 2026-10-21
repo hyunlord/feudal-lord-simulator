@@ -1,5 +1,6 @@
 import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
+import { PRESSURE_BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
@@ -28,6 +29,24 @@ function candidateBuilding(kind: UrbanService, tx: number, ty: number): Building
 }
 
 export type ServicePlanningReason = 'worker_shortage' | 'facility_limit';
+
+/**
+ * CHURCH-CAP (lord mode, the user's ruling 2026-10-21, (나)): the churches' cap is `ceil(lots / 32) + 1`, and one more —
+ * at most `CHURCH_CAP_MAX` — while a house stands outside every church's reach, the town has not grown for more than
+ * `CHURCH_STALL_SEASONS` seasons (`seasonGrowth.lastGrowthTick`, GB2A-7) and no church is being built (a church site
+ * already skips the step). Seed 25 held one house outside its two churches at 758 from 1319 (DGX
+ * engine-CHURCH-diag-e7a0f01). The sandbox bot keeps the old cap; no saved field is added.
+ */
+export const CHURCH_STALL_SEASONS = 2;
+export const CHURCH_CAP_MAX = 3;
+
+export function churchCap(state: GameState, outsideReach: boolean): number {
+  const base = Math.ceil(housingLotCount(state) / 32) + 1;
+  const lastGrowthTick = state.agency?.seasonGrowth?.lastGrowthTick;
+  const stalled = state.agency !== undefined && lastGrowthTick !== undefined
+    && state.tick - lastGrowthTick > CHURCH_STALL_SEASONS * PRESSURE_BALANCE.seasonTicks;
+  return outsideReach && stalled && base < CHURCH_CAP_MAX ? base + 1 : base;
+}
 export interface ServicePlanningDiagnostic { readonly service: UrbanService; readonly reason: ServicePlanningReason }
 export interface ServicePlanningCollector { services?: readonly ServicePlanningDiagnostic[] }
 
@@ -72,7 +91,8 @@ export function urbanServiceAction(state: GameState, diagnostic?: ServicePlannin
     // MARKET-1 (MK-2): no count cap on markets; another only while 12 lots or more go unserved (churches keep theirs).
     const capped = kind === 'market'
       ? planned.some(site => site.kind === 'market') || !anotherMarketAllowed(state, current)
-      : providers.length + planned.filter(site => site.kind === kind).length >= Math.ceil(housingLotCount(state) / 32) + 1;
+      : providers.length + planned.filter(site => site.kind === kind).length
+        >= churchCap(state, needsBuilding.some(home => current.houses.get(home.id)?.church.kind === 'outside'));
     if (capped) {
       if (diagnostic !== undefined) diagnostic.services = [...(diagnostic.services ?? []), { service: kind, reason: 'facility_limit' }];
       continue;
