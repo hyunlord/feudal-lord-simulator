@@ -951,6 +951,7 @@
 
 ## 다음 작업
 
+- **WALL-ALT-RE — 영구히 접음**([보고서](verification/wall-alt/REPORT.md), 결정 WALLRE-1): STORE가 든 본선에서 (가)를 한 번 다시 쟀으나 석조 도시 20 → 19(seed 32 목책 시대 창고가 꽉 차 돌 멈춤). 가드레일은 돌리지 않았다. 다음: CHURCH-CAP → STONE-SINK 진단.
 - **STORE — 완료, 본선 병합**([보고서](verification/store/REPORT.md), 결정 STORE-1~2): 영주 모드의 석조 도시 계획 목록에 저장 단계. seed 32 다섯째 창고 1322, 돌 멈춤 풀림, 석조 도시 20·768 18 유지. 다음: WALL-ALT (가) 재측정 한 번 → CHURCH-CAP.
 - **CLOTH-1 — 완료, 본선 병합**([보고서](verification/cloth-1/REPORT.md), 결정 CLOTH1-1~2): 직물 시점(1364, CL7) 전에는 상인 기회 사업이 직물 건물을 내지 않는다(영주 모드). 석조 도시 19 → 20, 768 18, seed 1 1311–1314 목책 배달 17 → 201. 다음: WALL-ALT(공사장 배달 번갈아) → CHURCH-25.
 - **CONVERTER-FEED — 완료, 본선 병합**([보고서](verification/converter-feed/REPORT.md), 결정 CONV-1~4): 제재소·엿기름 가마를 INPUT_PULL에(영주 모드), 창고에도 "길 먼저" 두 번째 순회(최대 200곳). 768 18, 석조 도시 16 → 19, seed 39 헌장 1318, 가드레일 해시 불변. 다음: FOOD-DIST(분배꾼 경로 진단) → CLOTH-DIAG → 집터 상한 → 2b → MONEY-SINK.
