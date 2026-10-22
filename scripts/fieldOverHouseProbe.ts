@@ -18,7 +18,7 @@ import { LORD_MODE_POLICY } from "../src/engine/townAgency";
 import { encodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
-import { zonesOf } from "../src/zones/zoneEdits";
+import { cellInsideWall, zonesOf } from "../src/zones/zoneEdits";
 
 const seed = Number(process.argv[2] ?? 26);
 const years = Number(process.argv[3] ?? 20);
@@ -32,6 +32,8 @@ const freeInteriorSites = (state: GameState) => {
 let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
 const start = stateCalendar(state).year;
 const events: unknown[] = [];
+const atWall: unknown[] = [];
+let wallSeen = false;
 let saved = false;
 let closedSeen = false;
 const atClose: unknown[] = [];
@@ -44,10 +46,12 @@ const note = (before: GameState, after: GameState, by: string) => {
   if (needed === 0) return;
   const free = new Set(freeInteriorSites(before));
   const covered = added.filter(index => free.has(index));
-  if (covered.length === 0) return;
+  // Also a field drawn inside the wall (built or building) while lots are still wanted — before its cells are sites.
+  const insideWall = before.palisade === null ? 0 : added.filter(index => cellInsideWall(before, index)).length;
+  if (covered.length === 0 && insideWall === 0) return;
   const calendar = stateCalendar(after);
   events.push({ tick: after.tick, year: calendar.year, season: Math.floor((after.tick % 4_000) / 1_000), by, lotsNeeded: needed,
-    freeInteriorSites: free.size, covered: covered.length, added: added.length, houses: before.houses.length });
+    freeInteriorSites: free.size, covered: covered.length, insideWall, wallClosed: before.palisade?.segments.every(s => s.completed) ?? false, added: added.length, houses: before.houses.length });
   if (outDir !== undefined && !saved) {
     mkdirSync(outDir, { recursive: true });
     const now = "2026-10-22T00:00:00.000Z";
@@ -64,6 +68,13 @@ while (stateCalendar(state).year < start + years) {
   const before = state;
   state = advanceTick(state);
   note(before, state, "tick");
+  // The wall's first appearance (the charter's ring): the fields it takes in, and the lots then still wanted.
+  if (!wallSeen && state.palisade !== null) {
+    wallSeen = true;
+    const fields = [...arable(state)];
+    atWall.push({ tick: state.tick, year: stateCalendar(state).year, arable: fields.length, arableInside: fields.filter(index => cellInsideWall(state, index)).length,
+      lotsNeeded: housingLotsStillNeeded(state, LORD_MODE_POLICY.maxHousingLots), houses: state.houses.length });
+  }
   if (!closedSeen && state.palisade !== null && state.palisade.segments.length > 0 && state.palisade.segments.every(segment => segment.completed)) {
     closedSeen = true;
     const zoned = new Set(zonesOf(state).flatMap(zone => zone.membership));
@@ -72,4 +83,4 @@ while (stateCalendar(state).year < start + years) {
       lotsNeeded: housingLotsStillNeeded(state, LORD_MODE_POLICY.maxHousingLots), houses: state.houses.length });
   }
 }
-console.log(JSON.stringify({ seed, years, wallClosed: atClose, events }, null, 1));
+console.log(JSON.stringify({ seed, years, atWall, wallClosed: atClose, events }, null, 1));
