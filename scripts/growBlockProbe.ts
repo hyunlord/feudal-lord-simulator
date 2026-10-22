@@ -34,7 +34,7 @@ import { encodeSave } from "../src/save/saveCodec";
 import { cutOffComponents } from "../src/engine/cutOffGates";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
-import { zonesOf } from "../src/zones/zoneEdits";
+import { cellInsideWall, zonesOf } from "../src/zones/zoneEdits";
 
 const YEAR = 4_000;
 const FULL_TOWN = 768;
@@ -149,6 +149,8 @@ function row(state: GameState, year: number) {
     gates: state.palisade?.additionalGates?.length ?? 0, cutOff: cutOffComponents(state).length,
     // FOOD-P: the tick the lord-mode wall closed (v57), for "did the wall finish later".
     wallClosedTick: state.palisade?.closedTick ?? null,
+    // LOT-FIX: the field cells inside the wall (a release takes one).
+    arableInside: zonesOf(state).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership).filter(index => cellInsideWall(state, index)).length,
     stoneWall: { done: state.palisade?.segments.filter(segment => segment.completed && segment.material === "stone").length ?? 0,
       open: state.constructionSites.filter(site => site.kind === "stone_wall_segment").length,
       delivered: state.constructionSites.filter(site => site.kind === "stone_wall_segment").reduce((sum, site) => sum + (site.delivered.stone ?? 0), 0) } };

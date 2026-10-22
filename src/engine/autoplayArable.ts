@@ -116,6 +116,17 @@ function openFieldCell(state: GameState, tx: number, ty: number, zoneCells: Read
     && !zoneCells.has(index) && !cellInsideWall(state, index);
 }
 
+/** LOT-FIX: whether a field block could still be drawn outside the wall (four free, unzoned cells outside it). */
+export function outsideFieldBlockExists(state: GameState): boolean {
+  const zoneCells = new Set(zonesOf(state).flatMap(zone => zone.membership));
+  for (let ty = 1; ty < state.height - BLOCK; ty += 1) {
+    for (let tx = 1; tx < state.width - BLOCK; tx += 1) {
+      if (blockCells({ tx, ty }).every(cell => openFieldCell(state, cell.tx, cell.ty, zoneCells))) return true;
+    }
+  }
+  return false;
+}
+
 function blockCells(anchor: TileCoordinate): readonly TileCoordinate[] {
   return [anchor, { tx: anchor.tx + 1, ty: anchor.ty }, { tx: anchor.tx, ty: anchor.ty + 1 }, { tx: anchor.tx + 1, ty: anchor.ty + 1 }];
 }

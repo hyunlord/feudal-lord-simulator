@@ -4,6 +4,7 @@ import { lordIntakeRules } from "./recovery";
 import { advanceStuckStock } from "./stuckStock";
 import { advanceTownAgency, recordSeasonGrowth } from "./townAgency";
 import { openCutOffGates, recordWallClosed } from "./cutOffGates";
+import { releaseEnclosedFieldLot } from "./enclosedFieldLots";
 import { advanceTrades } from "./trades";
 import { advanceRegistry } from "./registry";
 import { advanceTimberTrade } from "./timberTrade";
@@ -296,13 +297,14 @@ export function advanceTick(state: GameState): GameState {
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   // FIX-11 (SK-3): the stuck-stock since-ticks after the tick's moves.
   // STONE-1a: lord mode notes the tick its wall closed (v57); at a season's close, past the wall's first, its gates for a
-  // town the wall cut in two, before the town's week.
+  // town the wall cut in two, before the town's week; and (LOT-FIX) one enclosed field cell back as a house site when the
+  // walled town still wants lots and has no free interior site.
   // LM-E1 (TA-3): lord mode's town agency, each week, after the tick's moves (nothing without `state.agency`).
   // LM-E4 (SW-7): the off-map estates' seasons and Michaelmas, after the diplomacy (nothing until the lord holds one).
   // LM-E5 (LG-3): then the land's own changes (footfall, footpaths, fallow, regrowth).
   // LM-E6a (TR-4…TR-8): lord mode's trades after the town agency — the season's trades and the carters' haulage.
   // LM-E9 (ER-3, ER-7): then the registry's season — terms at the year's turn, lapses, the season's offer.
-  return advanceTrace(state, advanceHistory(state, advanceFactionActs(advanceRegistry(advanceTrades(recordSeasonGrowth(advanceTownAgency(openCutOffGates(recordWallClosed(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  return advanceTrace(state, advanceHistory(state, advanceFactionActs(advanceRegistry(advanceTrades(recordSeasonGrowth(advanceTownAgency(releaseEnclosedFieldLot(openCutOffGates(recordWallClosed(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceWarTick(advanceLand(advanceStewardship(advanceDiplomacy(advanceSuits(advanceNeighbourRules(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))))))))),
-  ))))))))))))));
+  )))))))))))))));
 }
