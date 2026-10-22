@@ -956,6 +956,7 @@
 
 ## 다음 작업
 
+- **FOOD-P — 접음**([보고서](verification/food-p/REPORT.md), 결정 FOODP-1): 빵 없는 집 10.2 → 4.7 %였으나 석조 도시 19·끝 인구 줄어든 seed로 두 판 모두 실패. **LOT-DIAG — 진단 완료**([보고서](verification/lot-diag/REPORT.md)): seed 26·39 집 21채는 성 안 집 자리 위의 밭 — 남은 집 자리를 지키는 규칙이 밭을 검사하지 않음. 다음: LOT-FIX → FOOD-P-RE → FOOD-D.
 - **FOOD-RE — 진단 완료**([보고서](verification/food-re/REPORT.md)): 셋째 방앗간이 늦는 까닭은 식량 단계의 "앞 사슬 대기"·"관찰 중" — 측정된 판단은 이미 "방앗간: 실제 빵 부족"(seed 1은 1303 봄부터, 셋째 방앗간 1304 가을). 다음: FOOD-P(생산) → FOOD-D(분배, 따로). STONE-1a 착륙 확인됨(349da108c, 사용자 2026-10-22).
 - **STONE-1a — 완료, 본선 병합**([보고서](verification/stone-1a/REPORT.md), 결정 STONE1A-1~3·SAVE-57): 영주 모드에서 성벽이 성 밖 건물을 성 안과 길로 끊으면 철 끝에 성문을 연다(성벽이 닫힌 뒤 첫 철 끝은 건너뜀, 덩어리마다 하나, 추가 성문 합쳐 3개까지). 저장 v57 `palisade.closedTick`. seed 32 성벽 1324 완공, 끝 인구 750 → 768. 석조 도시 20·768 19, 가드레일 해시 본선과 같음. 다음: FOOD-RE 진단.
 - **STONE-1 ⓑ — 완료, 본선 병합**(결정 STONE1-1~2): 읽기 함수 `wallStallCause` — 성벽 공사장이 `reserve_held`인데 자재가 길이 닿지 않는 건물에 있으면 `stock_unreachable`. 화면 문구는 렌더 A(STONE-1-R, [요청](requests/render-wall-stall-cause.md)). 다음: STONE-1a(둘째 성문). CHURCH-CAP 착륙 확인됨(8c6412f71, 사용자 2026-10-21). 판정 표에 끝 인구 줄(JUDGE-POP).
