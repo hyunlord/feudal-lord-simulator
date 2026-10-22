@@ -12,6 +12,7 @@ import { gunzipSync } from "node:zlib";
 import { autoplayBuildAction, decideNextAction } from "../src/engine/autoplay";
 import { foodAction, hasPendingFoodChain } from "../src/engine/autoplayFood";
 import type { FoodDiagnosticCollector } from "../src/engine/autoplayFoodDiagnostic";
+import { foodFlowOver } from "../src/engine/autoplayFoodEfficiency";
 import { measuredFoodDecision } from "../src/engine/autoplayFoodMeasuredDecision";
 import { hasActiveFoodObservation } from "../src/engine/autoplayFoodThroughput";
 import type { GameState } from "../src/engine/engine.types";
@@ -58,4 +59,17 @@ test("FOOD-P: the sandbox still waits, and a mill already building still waits",
   const millBuilding = withTimber({ ...town, constructionSites: town.constructionSites.map(site => site.id === granary.id ? { ...site, kind: "mill" } as typeof site : site) });
   assert.equal(foodStep(millBuilding), "pending_chain");
   assert.notEqual(foodStep(withTimber(town)), "pending_chain", "the same town with a granary building passes");
+});
+
+test("FOOD-P2: only while the last season's bread fell short of the homes' asks — with it made, the mill waits", () => {
+  const season = foodFlowOver(town, 1_000);
+  assert.equal(season.fullWindow, true);
+  assert.ok(season.breadProduced < season.requestedBread, `${season.breadProduced} made, ${season.requestedBread} asked`);
+  // The same town, its last season's bread raised to what the homes asked (the flow's running total only).
+  const flow = town.autoplayFoodFlow!;
+  const rolling = flow.rolling!;
+  const enough = withTimber({ ...town, autoplayFoodFlow: { ...flow, rolling: { ...rolling,
+    totals: { ...rolling.totals, breadProduced: rolling.totals.breadProduced + season.requestedBread - season.breadProduced } } } });
+  assert.ok(foodFlowOver(enough, 1_000).breadProduced >= foodFlowOver(enough, 1_000).requestedBread);
+  assert.equal(foodStep(enough), "pending_chain");
 });

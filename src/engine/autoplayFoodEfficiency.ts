@@ -68,14 +68,19 @@ export function recordFoodEfficiency(state: GameState, activity: Partial<FoodEff
 }
 
 export function foodEfficiencyMetrics(state: GameState): FoodEfficiencyMetrics {
+  return foodFlowOver(state, FOOD_EFFICIENCY_WINDOW);
+}
+
+/** The food flow over the last `window` ticks (at most `FOOD_EFFICIENCY_WINDOW`, the history kept). */
+export function foodFlowOver(state: GameState, window: number): FoodEfficiencyMetrics {
   const history = state.autoplayFoodFlow?.rolling;
-  const coveredTicks = history === undefined ? 0 : Math.min(FOOD_EFFICIENCY_WINDOW, state.tick - history.startedTick);
+  const coveredTicks = history === undefined ? 0 : Math.min(window, state.tick - history.startedTick);
   const start = state.tick - coveredTicks;
   const baseline = history?.chunks.find(chunk => (chunk.at(-1)?.tick ?? -1) >= start)?.find(point => point.tick === start);
   if (history === undefined || baseline === undefined || history.throughTick !== state.tick) {
     return { ...ZERO, coveredTicks: 0, fullWindow: false, known: false };
   }
-  return { coveredTicks, fullWindow: coveredTicks === FOOD_EFFICIENCY_WINDOW, known: true,
+  return { coveredTicks, fullWindow: coveredTicks === window, known: true,
     wheatProduced: history.totals.wheatProduced - baseline.wheatProduced,
     wheatConsumed: history.totals.wheatConsumed - baseline.wheatConsumed,
     breadProduced: history.totals.breadProduced - baseline.breadProduced,

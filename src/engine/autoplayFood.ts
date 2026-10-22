@@ -14,6 +14,8 @@ import { arableAction, type FarmsteadBuildAction } from './autoplayArable';
 import { isBuildingConstructionSite } from '../economy/construction';
 import type { AutoplayAction } from './autoplay.types';
 import type { GameState } from './engine.types';
+import { PRESSURE_BALANCE } from '../content/balanceConfig';
+import { foodFlowOver } from './autoplayFoodEfficiency';
 
 type BuildAction = FarmsteadBuildAction;
 
@@ -54,8 +56,15 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   // make up (seed 1 asked from 1303 spring and began its third mill in 1304 autumn, DGX engine-FOODRE-diag2-3eb6ead).
   // A mill already building still waits. The old step reads the decision after the pending check, so the sandbox's order
   // is unchanged.
+  // FOOD-P2 (the user's ruling 2026-10-22): and only while the last season's bread made fell short of the bread the homes
+  // asked for — a measured shortage with the mills already making enough is the distributors' (FOOD-D): FOOD-P built 77 of
+  // its 152 skipped mills in such seasons, 2,310 timber (DGX engine-FPDIAG-after-8a692f4).
+  const lastSeasonShort = (): boolean => {
+    const lastSeason = foodFlowOver(state, PRESSURE_BALANCE.seasonTicks);
+    return lastSeason.fullWindow && lastSeason.breadProduced < lastSeason.requestedBread;
+  };
   const breadExempt = (measured: ReturnType<typeof measuredFoodDecision> | null): boolean => state.agency !== undefined
-    && measured?.kind === 'mill' && measured.reason === 'actual_bread_deficit'
+    && measured?.kind === 'mill' && measured.reason === 'actual_bread_deficit' && lastSeasonShort()
     && !state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'mill');
   const early = state.agency !== undefined && completeChain ? measuredFoodDecision(state) : null;
   if (hasPendingFoodChain(state) && !breadExempt(early)) return finish({ kind: "none" }, 'pending_chain');
