@@ -956,7 +956,8 @@
 
 ## 다음 작업
 
-- **FOOD-P-RE — 실패, FOOD-P 영구히 접음**([보고서](verification/food-p/REPORT.md#food-p-re--food-p2badac67ff-코드-그대로-lot-fix가-들어간-본선-866defec9에서-한-번--영구히-접음), 결정 FOODP-2): LOT-FIX 본선에서도 석조 도시 19·끝 인구 줄어든 seed 26(밀 모자람)·39(LOT-FIX 안 돔). 빵 없는 집 10.2 → 4.7 %. 다음: FOOD-D(분배만, 본선 위).
+- **FOOD-D — 실패, FOOD-DIST 영구히 접음**([보고서](verification/food-dist/REPORT.md), 결정 FOODD-1): 빵 없는 집 10.2 → 8.9 %, 석조 도시 19·768 18·끝 인구 줄어든 seed 9·26·36. seed 26은 LOT-FIX 없이도 밭이 148칸에서 멈춰 밀이 모자람. 다음: LOT-GAP(seed 39에서 LOT-FIX가 안 켜진 까닭) → FIELD-OUT(성 밖 밭이 늘지 않음), 둘 다 진단만.
+- **FOOD-P-RE — 실패, FOOD-P 영구히 접음**([보고서](verification/food-p/REPORT.md#food-p-re--food-p2badac67ff-코드-그대로-lot-fix가-들어간-본선-866defec9에서-한-번--영구히-접음), 결정 FOODP-2): LOT-FIX 본선에서도 석조 도시 19·끝 인구 줄어든 seed 26(밀 모자람)·39(LOT-FIX 안 돔). 빵 없는 집 10.2 → 4.7 %. 
 - **LOT-FIX — 완료, 본선 병합**([보고서](verification/lot-fix/REPORT.md), 결정 LOTFIX-1~2): 영주 모드에서 성벽이 닫혔고 집터가 더 필요한데 성 안에 빈 집 자리가 없으면 성 안 밭 한 칸을 집 자리로 돌린다(성 밖에 밭 자리가 있을 때만). 헌장 성벽이 촌락 시절 밭을 둘러싼다(본선 20/23 seed). 판정 판은 본선과 같고 돌린 칸은 seed 33 하나. 착륙 866defec9(사용자 판정 2026-10-22).
 - **FOOD-P — 접음**([보고서](verification/food-p/REPORT.md), 결정 FOODP-1): 빵 없는 집 10.2 → 4.7 %였으나 석조 도시 19·끝 인구 줄어든 seed로 두 판 모두 실패. **LOT-DIAG — 진단 완료**([보고서](verification/lot-diag/REPORT.md)): seed 26·39 집 21채는 성 안 집 자리 위의 밭 — 남은 집 자리를 지키는 규칙이 밭을 검사하지 않음. 다음: LOT-FIX → FOOD-P-RE → FOOD-D.
 - **FOOD-RE — 진단 완료**([보고서](verification/food-re/REPORT.md)): 셋째 방앗간이 늦는 까닭은 식량 단계의 "앞 사슬 대기"·"관찰 중" — 측정된 판단은 이미 "방앗간: 실제 빵 부족"(seed 1은 1303 봄부터, 셋째 방앗간 1304 가을). 다음: FOOD-P(생산) → FOOD-D(분배, 따로). STONE-1a 착륙 확인됨(349da108c, 사용자 2026-10-22).
