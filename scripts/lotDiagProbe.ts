@@ -20,7 +20,9 @@ import type { GameState } from "../src/engine/engine.types";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
-import { LORD_MODE_POLICY } from "../src/engine/townAgency";
+import { LORD_MODE_POLICY, townProposals } from "../src/engine/townAgency";
+import { planningNeeds } from "../src/engine/autoplay";
+import { derelictPermille } from "../src/engine/lordship";
 import { houseLotArea } from "../src/geometry/buildingFootprint";
 import { houseBuiltLevel, houseCondition } from "../src/population/houseCondition";
 import { housingLotCount } from "../src/population/housing";
@@ -75,6 +77,12 @@ while (stateCalendar(state).year < start + years) {
     houseRecords: state.houses.length, houseBuildings: homes.length, lots, merged: homes.filter(b => b.houseLot !== undefined).length,
     abandoned: state.houses.filter(h => h.abandonedTick !== undefined).length, burnt: state.houses.filter(h => h.burntTick !== undefined).length,
     houseSites: state.constructionSites.filter(s => isBuildingConstructionSite(s) && s.kind === "house").length,
-    capacity: capacity(state), gates, interiorSites: state.palisade === null ? null : interiorHouseSites(state).length, vanished, watched });
+    capacity: capacity(state), gates,
+    // LOT-DIAG 2: the housing step's own hold (homesHeld: derelict houses at a fifth or more), the houses' conditions, and
+    // whether a house is a planning need and a town proposal.
+    derelictPermille: derelictPermille(state) ?? null,
+    conditions: state.houses.reduce((acc, h) => { const c = houseCondition(h); acc[c] = (acc[c] ?? 0) + 1; return acc; }, {} as Record<string, number>),
+    houseNeed: planningNeeds(state, LORD_MODE_POLICY).filter(need => need.planner === "housing").length,
+    houseProposal: (() => { const p = townProposals(state); const i = p.findIndex(x => x.what === "house"); return i < 0 ? null : `${i}/${p.length}:${p[i]!.actor}:${p[i]!.score}`; })(), interiorSites: state.palisade === null ? null : interiorHouseSites(state).length, vanished, watched });
 }
 console.log(JSON.stringify({ seed, years, gateSeasonsBelowCap: gateSeasons, rows }, null, 1));
