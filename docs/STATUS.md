@@ -956,6 +956,7 @@
 
 ## 다음 작업
 
+- **LOT-GAP — 진단 완료**([보고서](verification/lot-gap/REPORT.md)): seed 39에서 LOT-FIX를 막은 것은 조건 c(빈 자리 3)지만, 그 3칸도 밭을 지운 칸도 집 단계가 `service_space`로 거절한다 — 도시 전체 서비스 계획이 1314부터 이미 불가능해서 집을 하나도 더 받지 못함. 고칠 곳: `preservesAutoplayServiceSpace` 집 갈래(계획이 이미 불가능할 때만 지역 검사). 다음: FIELD-OUT.
 - **FOOD-D — 실패, FOOD-DIST 영구히 접음**([보고서](verification/food-dist/REPORT.md), 결정 FOODD-1): 빵 없는 집 10.2 → 8.9 %, 석조 도시 19·768 18·끝 인구 줄어든 seed 9·26·36. seed 26은 LOT-FIX 없이도 밭이 148칸에서 멈춰 밀이 모자람. 다음: LOT-GAP(seed 39에서 LOT-FIX가 안 켜진 까닭) → FIELD-OUT(성 밖 밭이 늘지 않음), 둘 다 진단만.
 - **FOOD-P-RE — 실패, FOOD-P 영구히 접음**([보고서](verification/food-p/REPORT.md#food-p-re--food-p2badac67ff-코드-그대로-lot-fix가-들어간-본선-866defec9에서-한-번--영구히-접음), 결정 FOODP-2): LOT-FIX 본선에서도 석조 도시 19·끝 인구 줄어든 seed 26(밀 모자람)·39(LOT-FIX 안 돔). 빵 없는 집 10.2 → 4.7 %. 
 - **LOT-FIX — 완료, 본선 병합**([보고서](verification/lot-fix/REPORT.md), 결정 LOTFIX-1~2): 영주 모드에서 성벽이 닫혔고 집터가 더 필요한데 성 안에 빈 집 자리가 없으면 성 안 밭 한 칸을 집 자리로 돌린다(성 밖에 밭 자리가 있을 때만). 헌장 성벽이 촌락 시절 밭을 둘러싼다(본선 20/23 seed). 판정 판은 본선과 같고 돌린 칸은 seed 33 하나. 착륙 866defec9(사용자 판정 2026-10-22).
