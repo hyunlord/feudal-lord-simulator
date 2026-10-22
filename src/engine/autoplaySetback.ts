@@ -44,6 +44,19 @@ function hasDryQuarrySiteReached(state: GameState): boolean {
   return found;
 }
 
+/**
+ * FIELD-OUT (lord mode, the user's ruling 2026-10-23): a field block whose setback ring fails only on water — the map's
+ * edge and the wall's clearance still kept. The grain step takes such a block only when no block keeps the old setback
+ * (`fieldBlockAction`), the quarry's ①a shape below: seed 26's town stood by its river, every block near a farmstead or a
+ * road failed on the water, and its fields stopped at 141 cells while the wheat ran short (docs/verification/field-out).
+ * Fields by the river are as the period had them.
+ */
+export function hasAutoplayFieldWaterRingClearance(state: GameState, origin: TileCoordinate): boolean {
+  if (setbackRing(state, 'wheat_farm', origin) === 'edge') return false;
+  const { width, height } = BUILDING_CONFIG_BY_KIND.wheat_farm;
+  return hasBuildingWallClearance(state, { ...origin, width, height, id: 'autoplay-candidate' });
+}
+
 /** Reserve land for a future wall and its inner access before the town reaches the shore. */
 export function hasAutoplayBuildingClearance(state: GameState, kind: BuildingKind, origin: TileCoordinate): boolean {
   const ring = setbackRing(state, kind, origin);

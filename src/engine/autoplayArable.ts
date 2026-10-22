@@ -21,7 +21,7 @@ import { cellInsideWall, zonesOf } from "../zones/zoneEdits";
 import type { ZoneStroke } from "../zones/zone.types";
 import { foodEfficiencyMetrics } from "./autoplayFoodEfficiency";
 import { autoplaySearchExhausted } from "./autoplaySearchBudget";
-import { hasAutoplayBuildingClearance } from "./autoplaySetback";
+import { hasAutoplayBuildingClearance, hasAutoplayFieldWaterRingClearance } from "./autoplaySetback";
 import { preservesAutoplayServiceSpace } from "./autoplayServiceSpace";
 import { preservesAutoplayWallSpace } from "./autoplayWallSpace";
 import type { AutoplayAction } from "./autoplay.types";
@@ -116,15 +116,14 @@ function openFieldCell(state: GameState, tx: number, ty: number, zoneCells: Read
     && !zoneCells.has(index) && !cellInsideWall(state, index);
 }
 
-/** LOT-FIX: whether a field block could still be drawn outside the wall (four free, unzoned cells outside it). */
+/**
+ * LOT-FIX: whether the grain step could still draw a field block outside the wall — its own search (`fieldBlockAction`,
+ * a new farmstead allowed: a block to paint, or a road toward one), so the setback, the farmsteads' reach and the roads
+ * count here as they do there (FIELD-OUT, the user's ruling 2026-10-23: one question, one rule — four open cells alone
+ * said yes in seed 26 while the step found none).
+ */
 export function outsideFieldBlockExists(state: GameState): boolean {
-  const zoneCells = new Set(zonesOf(state).flatMap(zone => zone.membership));
-  for (let ty = 1; ty < state.height - BLOCK; ty += 1) {
-    for (let tx = 1; tx < state.width - BLOCK; tx += 1) {
-      if (blockCells({ tx, ty }).every(cell => openFieldCell(state, cell.tx, cell.ty, zoneCells))) return true;
-    }
-  }
-  return false;
+  return fieldBlockAction(state, true).kind !== "none";
 }
 
 function blockCells(anchor: TileCoordinate): readonly TileCoordinate[] {
@@ -140,9 +139,13 @@ function virtualBlock(anchor: TileCoordinate): Building {
   return { id: "autoplay-field-block", kind: "wheat_farm", ...anchor, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
 }
 
-/** The block keeps the land autoplay needs for walls and services, like an old farm did. */
-function blockKeepsSpace(state: GameState, anchor: TileCoordinate): boolean {
-  return hasAutoplayBuildingClearance(state, "wheat_farm", anchor) && preservesAutoplayWallSpace(state, "wheat_farm", anchor)
+/**
+ * The block keeps the land autoplay needs for walls and services, like an old farm did. With `waterRing` (FIELD-OUT,
+ * lord mode, only once no block keeps the old setback) a setback ring that fails only on water is enough.
+ */
+function blockKeepsSpace(state: GameState, anchor: TileCoordinate, waterRing: boolean): boolean {
+  const clear = hasAutoplayBuildingClearance(state, "wheat_farm", anchor) || (waterRing && hasAutoplayFieldWaterRingClearance(state, anchor));
+  return clear && preservesAutoplayWallSpace(state, "wheat_farm", anchor)
     && preservesAutoplayServiceSpace(state, { kind: "place_building", building: "wheat_farm", tx: anchor.tx, ty: anchor.ty });
 }
 
@@ -175,6 +178,13 @@ function farmsteadRoomBeside(state: GameState, anchor: TileCoordinate, zoneCells
  * road (up to 24 route checks, like the other late food searches).
  */
 export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean): AutoplayAction {
+  const action = fieldBlockSearch(state, newFarmsteadAllowed, false);
+  // FIELD-OUT (lord mode, the user's ruling 2026-10-23): the old setback first; only when it finds nothing, blocks
+  // whose setback fails only on the water (`hasAutoplayFieldWaterRingClearance`).
+  return action.kind !== "none" || state.agency === undefined ? action : fieldBlockSearch(state, newFarmsteadAllowed, true);
+}
+
+function fieldBlockSearch(state: GameState, newFarmsteadAllowed: boolean, waterRing: boolean): AutoplayAction {
   const zoneCells = new Set(zonesOf(state).flatMap(zone => zone.membership));
   const arableCells = new Set(zonesOf(state).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership));
   const roomy = farmsteadYears(state).filter(year => year.cells + BLOCK * BLOCK <= ARABLE_CONFIG.predictedCellsPerFarmstead)
@@ -203,14 +213,14 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
   extension.sort((a, b) => Number(b.touches) - Number(a.touches) || a.distance - b.distance || a.anchor.ty - b.anchor.ty || a.anchor.tx - b.anchor.tx);
   for (const candidate of extension) {
     if (autoplaySearchExhausted()) return NONE;
-    if (blockKeepsSpace(state, candidate.anchor)) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(candidate.anchor) };
+    if (blockKeepsSpace(state, candidate.anchor, waterRing)) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(candidate.anchor) };
   }
   fresh.sort((a, b) => a.distance - b.distance || a.anchor.ty - b.anchor.ty || a.anchor.tx - b.anchor.tx);
   let best: { anchor: TileCoordinate; route: number } | null = null;
   let checked = 0;
   for (const candidate of fresh) {
     if (checked >= 24 || autoplaySearchExhausted()) break;
-    if (!farmsteadRoomBeside(state, candidate.anchor, zoneCells) || !blockKeepsSpace(state, candidate.anchor)) continue;
+    if (!farmsteadRoomBeside(state, candidate.anchor, zoneCells) || !blockKeepsSpace(state, candidate.anchor, waterRing)) continue;
     checked += 1;
     const block = virtualBlock(candidate.anchor);
     const routes = granaries.map(granary => resolveBuildingRoute(state, block, granary).path).filter(path => path !== null);
@@ -219,14 +229,14 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
     if (best === null || route < best.route) best = { anchor: candidate.anchor, route };
   }
   if (best !== null) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(best.anchor) };
-  return newFarmsteadAllowed ? fieldRoadAction(state, zoneCells) : NONE;
+  return newFarmsteadAllowed ? fieldRoadAction(state, zoneCells, waterRing) : NONE;
 }
 
 /**
  * No block beside a road qualifies: like the old farm search, lay a road toward the nearest open block that keeps
  * the wall and service space (up to 24 candidates by distance to the road network).
  */
-function fieldRoadAction(state: GameState, zoneCells: ReadonlySet<number>): AutoplayAction {
+function fieldRoadAction(state: GameState, zoneCells: ReadonlySet<number>, waterRing: boolean): AutoplayAction {
   const roads = state.tiles.filter(tile => tile.hasRoad);
   if (roads.length === 0) return NONE;
   const open: { anchor: TileCoordinate; distance: number }[] = [];
@@ -240,7 +250,7 @@ function fieldRoadAction(state: GameState, zoneCells: ReadonlySet<number>): Auto
   open.sort((a, b) => a.distance - b.distance || a.anchor.ty - b.anchor.ty || a.anchor.tx - b.anchor.tx);
   for (const candidate of open.slice(0, 24)) {
     if (autoplaySearchExhausted()) return NONE;
-    if (!blockKeepsSpace(state, candidate.anchor)) continue;
+    if (!blockKeepsSpace(state, candidate.anchor, waterRing)) continue;
     const road = plannedBuildingRoadAction(state, virtualBlock(candidate.anchor));
     if (road.kind !== "none") return road;
   }

@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { isBuildingConstructionSite } from "../src/economy/construction";
+import { hasAutoplayBuildingClearance } from "../src/engine/autoplaySetback";
 import type { GameState } from "../src/engine/engine.types";
 import { interiorHouseSites } from "../src/engine/autoplayInteriorPlots";
 import { autoplayCanPlace } from "../src/engine/autoplayZones";
@@ -168,7 +169,7 @@ function writeState(dir: string, name: string, state: GameState) {
 export function growBlockProbe(seed: number, years = 125, saveDir?: string, saveYears: ReadonlySet<number> = new Set()) {
   let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameState;
   const start = stateCalendar(state).year;
-  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number; masonrySeasons: number; masonryIdleSeasons: number; masonryIdleStoredSeasons: number; ms: number })[] = [];
+  const rows: (ReturnType<typeof row> & { abandonedBy: Record<string, number>; replaced: number; shortSeasons: number; masonrySeasons: number; masonryIdleSeasons: number; masonryIdleStoredSeasons: number; waterRingBlocks: number; ms: number })[] = [];
   let lastYear = start;
   // GB-4/GB-5: the sites given up this year by their reason, and a site laid out again where one was given up.
   const seenSites = new Set<string>();
@@ -185,9 +186,21 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
   const saved = new Set<string>();
   const saveOnce = (name: string) => { const key = name === "year" ? `year-${stateCalendar(state).year}` : name;
     if (saveDir !== undefined && !saved.has(key)) { saved.add(key); writeState(saveDir, `seed${seed}-${name}-${stateCalendar(state).year}`, state); } };
+  // FIELD-OUT: the field blocks drawn that the old setback refuses (the water-ring exception), this year.
+  let waterRingBlocks = 0;
+  const noteFieldBlock = (before: GameState, after: GameState) => {
+    if (before.zones === after.zones) return;
+    const was = new Set(zonesOf(before).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership));
+    const added = zonesOf(after).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership).filter(index => !was.has(index));
+    if (added.length === 0) return;
+    const anchor = added.map(index => ({ tx: index % after.width, ty: Math.floor(index / after.width) })).sort((a, b) => a.ty - b.ty || a.tx - b.tx)[0]!;
+    if (!hasAutoplayBuildingClearance(before, "wheat_farm", anchor)) waterRingBlocks += 1;
+  };
   while (stateCalendar(state).year < start + years) {
-    for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) state = next; }
+    for (const { command } of lordBotCommands(state)) { const next = gameReducer(state, command); if (next !== state) { noteFieldBlock(state, next); state = next; } }
+    const beforeTick = state;
     state = advanceTick(state);
+    noteFieldBlock(beforeTick, state);
     if (state.tick % 1_000 === 0 && shortOfFood(state)) shortSeasons += 1;
     // Option A (the user's check 2026-10-13): a staffed masonry without the raw stone for its next stone sits idle — the
     // stone the rule reads from the masonries' rate would then be too much.
@@ -217,8 +230,8 @@ export function growBlockProbe(seed: number, years = 125, saveDir?: string, save
     }
     const year = stateCalendar(state).year;
     // The year's wall-clock time on this machine (quarry access ⑤'s tick-time check; a DGX run's figures only compare with its own).
-    if (year !== lastYear) { const now = performance.now(); rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons, masonrySeasons, masonryIdleSeasons, masonryIdleStoredSeasons, ms: Math.round(now - yearStart) });
-      yearStart = now; lastYear = year; abandonedBy = {}; replaced = 0; shortSeasons = 0; masonrySeasons = 0; masonryIdleSeasons = 0; masonryIdleStoredSeasons = 0; }
+    if (year !== lastYear) { const now = performance.now(); rows.push({ ...row(state, year), abandonedBy, replaced, shortSeasons, masonrySeasons, masonryIdleSeasons, masonryIdleStoredSeasons, waterRingBlocks, ms: Math.round(now - yearStart) });
+      yearStart = now; lastYear = year; abandonedBy = {}; replaced = 0; shortSeasons = 0; masonrySeasons = 0; masonryIdleSeasons = 0; masonryIdleStoredSeasons = 0; waterRingBlocks = 0; }
   }
   saveOnce("final");
   const stalls: { from: number; to: number; population: number; palisade: number; fieldBound: boolean; interior: ReturnType<typeof interior> }[] = [];
