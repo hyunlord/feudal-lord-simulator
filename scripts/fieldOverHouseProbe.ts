@@ -33,6 +33,8 @@ let state = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed }) as GameSt
 const start = stateCalendar(state).year;
 const events: unknown[] = [];
 let saved = false;
+let closedSeen = false;
+const atClose: unknown[] = [];
 const note = (before: GameState, after: GameState, by: string) => {
   if (before.palisade === null) return;
   const was = arable(before);
@@ -62,5 +64,12 @@ while (stateCalendar(state).year < start + years) {
   const before = state;
   state = advanceTick(state);
   note(before, state, "tick");
+  if (!closedSeen && state.palisade !== null && state.palisade.segments.length > 0 && state.palisade.segments.every(segment => segment.completed)) {
+    closedSeen = true;
+    const zoned = new Set(zonesOf(state).flatMap(zone => zone.membership));
+    const sites = interiorHouseSites(state).map(site => site.ty * state.width + site.tx);
+    atClose.push({ tick: state.tick, year: stateCalendar(state).year, interiorSites: sites.length, underZone: sites.filter(index => zoned.has(index)).length,
+      lotsNeeded: housingLotsStillNeeded(state, LORD_MODE_POLICY.maxHousingLots), houses: state.houses.length });
+  }
 }
-console.log(JSON.stringify({ seed, years, events }, null, 1));
+console.log(JSON.stringify({ seed, years, wallClosed: atClose, events }, null, 1));
