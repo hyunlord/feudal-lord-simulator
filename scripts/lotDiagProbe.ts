@@ -24,6 +24,8 @@ import { LORD_MODE_POLICY, townProposals } from "../src/engine/townAgency";
 import { planningNeeds } from "../src/engine/autoplay";
 import { derelictPermille } from "../src/engine/lordship";
 import { houseLotArea } from "../src/geometry/buildingFootprint";
+import { zoneRuleActive } from "../src/zones/zonePlacement";
+import { zonesOf } from "../src/zones/zoneEdits";
 import { houseBuiltLevel, houseCondition } from "../src/population/houseCondition";
 import { housingLotCount } from "../src/population/housing";
 import { gameReducer } from "../src/state/gameStore";
@@ -81,6 +83,11 @@ while (stateCalendar(state).year < start + years) {
     // LOT-DIAG 2: the housing step's own hold (homesHeld: derelict houses at a fifth or more), the houses' conditions, and
     // whether a house is a planning need and a town proposal.
     derelictPermille: derelictPermille(state) ?? null,
+    // LOT-DIAG 3: the housing step's other none — a burgage zone (houses only onto its plots, Z-15a) — and the zones.
+    burgage: zoneRuleActive(state, "burgage"),
+    zones: zonesOf(state).reduce((acc, zone) => { acc[zone.kind] = (acc[zone.kind] ?? 0) + zone.membership.length; return acc; }, {} as Record<string, number>),
+    interiorByRoad: state.palisade === null ? null : interiorHouseSites(state).filter(site => state.tiles.find(t => t.tx === site.tx && t.ty === site.ty)?.terrain === "grass"
+      && [[0, -1], [1, 0], [0, 1], [-1, 0]].some(([dx, dy]) => state.tiles.find(t => t.tx === site.tx + dx! && t.ty === site.ty + dy!)?.hasRoad === true)).length,
     conditions: state.houses.reduce((acc, h) => { const c = houseCondition(h); acc[c] = (acc[c] ?? 0) + 1; return acc; }, {} as Record<string, number>),
     houseNeed: planningNeeds(state, LORD_MODE_POLICY).filter(need => need.planner === "housing").length,
     houseProposal: (() => { const p = townProposals(state); const i = p.findIndex(x => x.what === "house"); return i < 0 ? null : `${i}/${p.length}:${p[i]!.actor}:${p[i]!.score}`; })(), interiorSites: state.palisade === null ? null : interiorHouseSites(state).length, vanished, watched });
