@@ -956,7 +956,8 @@
 
 ## 다음 작업
 
-- **FIELD-OUT — 진단 완료**([보고서](verification/field-out/REPORT.md)): seed 26 식량 단계는 밀 부족으로 밭을 청하지만, 길·농가 가까이의 성 밖 블록은 모두 강가라 물 고리 띄우기에 걸리고 띄우기를 지키는 블록은 길에서 11칸 넘어 탐색 밖. 고칠 곳: `blockKeepsSpace` 물 고리(옛 방식 먼저). LOT-FIX 조건 d는 그리기 규칙보다 넓다. 다음: 사용자 판정.
+- **FIELD-OUT-FIX — 완료, 본선 병합**([보고서](verification/field-out/REPORT.md#field-out-fix--고침과-판정), 결정 FIELDOUT-1~2): 영주 모드 밭 블록 찾기가 옛 띄우기로 못 찾으면 강가(물 고리) 블록을 받음, LOT-FIX 조건 d는 같은 찾기를 부름. 판정 본선과 같음, seed 26 밭 164 → 192, seed 31 끝 381 → 506. **LOT-GAP-FIX — 접음**(결정 LOTGAP-1): 성벽 직전엔 마을 전체 서비스 계획이 있었고 성벽 줄이 깔리자 없어짐(seed 39) — 성벽이 깨뜨림. **WALL-PLACE(설계 대기)**: 성문·촌락 밭·둘째 시장 자리, 성벽 놓기 자체를 다시 봄(WALL-GATE 합침).
+- **FIELD-OUT — 진단 완료**([보고서](verification/field-out/REPORT.md)): seed 26 식량 단계는 밀 부족으로 밭을 청하지만, 길·농가 가까이의 성 밖 블록은 모두 강가라 물 고리 띄우기에 걸리고 띄우기를 지키는 블록은 길에서 11칸 넘어 탐색 밖. 고칠 곳: `blockKeepsSpace` 물 고리(옛 방식 먼저). LOT-FIX 조건 d는 그리기 규칙보다 넓다.
 - **LOT-GAP — 진단 완료**([보고서](verification/lot-gap/REPORT.md)): seed 39에서 LOT-FIX를 막은 것은 조건 c(빈 자리 3)지만, 그 3칸도 밭을 지운 칸도 집 단계가 `service_space`로 거절한다 — 도시 전체 서비스 계획이 1314부터 이미 불가능해서 집을 하나도 더 받지 못함. 고칠 곳: `preservesAutoplayServiceSpace` 집 갈래(계획이 이미 불가능할 때만 지역 검사).
 - **FOOD-D — 실패, FOOD-DIST 영구히 접음**([보고서](verification/food-dist/REPORT.md), 결정 FOODD-1): 빵 없는 집 10.2 → 8.9 %, 석조 도시 19·768 18·끝 인구 줄어든 seed 9·26·36. seed 26은 LOT-FIX 없이도 밭이 148칸에서 멈춰 밀이 모자람. 다음: LOT-GAP(seed 39에서 LOT-FIX가 안 켜진 까닭) → FIELD-OUT(성 밖 밭이 늘지 않음), 둘 다 진단만.
 - **FOOD-P-RE — 실패, FOOD-P 영구히 접음**([보고서](verification/food-p/REPORT.md#food-p-re--food-p2badac67ff-코드-그대로-lot-fix가-들어간-본선-866defec9에서-한-번--영구히-접음), 결정 FOODP-2): LOT-FIX 본선에서도 석조 도시 19·끝 인구 줄어든 seed 26(밀 모자람)·39(LOT-FIX 안 돔). 빵 없는 집 10.2 → 4.7 %. 
